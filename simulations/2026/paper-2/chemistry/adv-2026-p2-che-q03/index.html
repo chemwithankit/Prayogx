@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ADV-2026-P2-CHE-Q03 · Ozonolysis of Natural Rubber and Intramolecular Aldol</title>
+<meta name="description" content="Interactive simulation for JEE Advanced 2026 Paper 2 Chemistry Q3: ozonolysis of cis-1,4-polyisoprene to 4-oxopentanal, and the ring-size choice that makes cyclopent-2-en-1-one the aldol product.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232a78d6'/%3E%3Cpath d='M12.5 6.5h7M13.6 6.5v7.2L7.9 24.1a1.5 1.5 0 0 0 1.3 2.3h13.6a1.5 1.5 0 0 0 1.3-2.3l-5.7-10.4V6.5' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M10.6 20.6h10.8' stroke='white' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E">
+<meta name="sim-id" content="ADV-2026-P2-CHE-Q03">
+<style>
+:root{
+  color-scheme: light;
+  --surface-0:#f4f4f1; --surface-1:#fcfcfb; --surface-2:#ececea;
+  --line:#d9d9d4; --line-strong:#bcbcb5;
+  --text-primary:#0b0b0b; --text-secondary:#52514e; --text-muted:#77766f;
+  --s1:#2a78d6; --s2:#eb6834; --s3:#1baf7a; --s4:#4a3aa7;
+  --good:#00743f; --bad:#c0392b; --accent:#2a78d6;
+  --atom-o:#e34948; --bondc:#3a3a36;
+  --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+  --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --serif:ui-serif,Georgia,"Times New Roman",serif;
+  --radius:10px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  color-scheme: dark;
+  --surface-0:#111110; --surface-1:#1a1a19; --surface-2:#232322;
+  --line:#34342f; --line-strong:#4a4a44;
+  --text-primary:#ffffff; --text-secondary:#c3c2b7; --text-muted:#95948b;
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#9085e9;
+  --good:#3fae7a; --bad:#e66767; --accent:#3987e5;
+  --atom-o:#e66767; --bondc:#d8d7cd;
+}}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --surface-0:#111110; --surface-1:#1a1a19; --surface-2:#232322;
+  --line:#34342f; --line-strong:#4a4a44;
+  --text-primary:#ffffff; --text-secondary:#c3c2b7; --text-muted:#95948b;
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#9085e9;
+  --good:#3fae7a; --bad:#e66767; --accent:#3987e5;
+  --atom-o:#e66767; --bondc:#d8d7cd;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--surface-0);color:var(--text-primary);font-family:var(--sans);
+  font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px 80px}
+
+header.top{border-bottom:1px solid var(--line);background:var(--surface-1)}
+.top-inner{max-width:1120px;margin:0 auto;padding:22px 20px 18px;position:relative;
+  display:flex;flex-wrap:wrap;gap:16px;align-items:flex-start;justify-content:space-between}
+.simid{font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--text-muted)}
+h1{font-size:23px;line-height:1.25;margin:6px 0 10px;font-weight:640;max-width:640px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-size:11.5px;padding:3px 9px;border:1px solid var(--line-strong);border-radius:999px;
+  color:var(--text-secondary);background:var(--surface-2);white-space:nowrap}
+.chip.k{border-color:var(--accent);color:var(--accent);background:transparent}
+.answerbox{border:1px solid var(--line-strong);border-radius:var(--radius);background:var(--surface-2);
+  padding:12px 16px;min-width:200px}
+.answerbox .lbl{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted)}
+.answerbox .val{font-family:var(--mono);font-size:25px;font-weight:600;color:var(--good);line-height:1.22}
+.answerbox .sub{font-size:12px;color:var(--text-secondary)}
+.themebtn{position:absolute;top:14px;right:16px;border:1px solid var(--line-strong);background:var(--surface-2);
+  color:var(--text-secondary);border-radius:8px;padding:4px 9px;font-size:12px;cursor:pointer}
+.brandbar{display:flex;align-items:center;gap:8px;margin-bottom:9px;text-decoration:none}
+.brandbar .pxmark{width:21px;height:21px;flex:none;display:block}
+.brandbar .wm{font-size:13px;font-weight:800;letter-spacing:.17em;color:var(--text-secondary);line-height:1}
+.brandbar .wm i{font-style:normal;color:var(--accent)}
+
+nav.jump{position:sticky;top:0;z-index:20;background:var(--surface-0);border-bottom:1px solid var(--line);
+  padding:8px 0;margin-bottom:26px}
+nav.jump ul{max-width:1120px;margin:0 auto;padding:0 20px;list-style:none;display:flex;gap:4px;overflow-x:auto}
+nav.jump a{display:block;padding:5px 11px;border-radius:7px;font-size:13px;text-decoration:none;
+  color:var(--text-secondary);white-space:nowrap}
+nav.jump a:hover{background:var(--surface-2);color:var(--text-primary)}
+
+section{margin:0 0 42px;scroll-margin-top:56px}
+h2{font-size:17px;font-weight:640;margin:0 0 4px;display:flex;align-items:baseline;gap:9px}
+h2 .n{font-family:var(--mono);font-size:12px;color:var(--text-muted);font-weight:400}
+.lede{color:var(--text-secondary);font-size:13.5px;margin:0 0 16px;max-width:76ch}
+.card,.panel{background:var(--surface-1);border:1px solid var(--line);border-radius:var(--radius);padding:18px}
+.panel h3{margin:0 0 12px;font-size:13px;letter-spacing:.05em;text-transform:uppercase;
+  color:var(--text-muted);font-weight:600}
+.lab{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:16px}
+@media(max-width:900px){.lab{grid-template-columns:1fr !important}}
+svg.mol{display:block;width:100%;height:auto;background:var(--surface-2);border-radius:8px}
+
+.qtext{font-family:var(--serif);font-size:16px;line-height:1.7}
+.opts{list-style:none;padding:0;margin:16px 0 0;display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(min(230px,100%),1fr));gap:10px}
+.opts li{border:1px solid var(--line);border-radius:10px;padding:10px;background:var(--surface-1);
+  cursor:pointer;display:flex;flex-direction:column;gap:6px}
+.opts li:hover{border-color:var(--line-strong)}
+.opts li.correct{border-color:var(--good);background:color-mix(in srgb,var(--good) 11%,transparent)}
+.opts li.wrong{border-color:var(--s2);opacity:.7}
+.opts li .hd{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--text-muted);font-family:var(--mono)}
+.opts li .mark{margin-left:auto;font-family:var(--sans);font-size:11.5px}
+.opts li .nm{font-size:12px;color:var(--text-secondary)}
+
+.ctrl{margin:14px 0}
+.ctrl label{display:flex;justify-content:space-between;align-items:baseline;font-size:13px;margin-bottom:5px}
+.ctrl label .v{font-family:var(--mono);font-size:13px;color:var(--text-primary)}
+input[type=range]{width:100%;accent-color:var(--accent)}
+.segbtns{display:flex;gap:6px;flex-wrap:wrap}
+.segbtns button{flex:1;min-width:70px;padding:8px 6px;border-radius:8px;border:1px solid var(--line-strong);
+  background:var(--surface-2);color:var(--text-secondary);font-size:13.5px;cursor:pointer;font-family:var(--mono)}
+.segbtns button[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:700}
+.segbtns button:disabled{opacity:.35;cursor:not-allowed}
+button.act{padding:7px 13px;border-radius:8px;border:1px solid var(--line-strong);background:var(--surface-2);
+  color:var(--text-primary);font-size:13px;cursor:pointer}
+button.act:hover{border-color:var(--accent);color:var(--accent)}
+button.act.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+
+.readouts{display:grid;grid-template-columns:repeat(auto-fit,minmax(116px,1fr));gap:8px}
+.ro{border:1px solid var(--line);border-radius:8px;padding:8px 10px;background:var(--surface-2)}
+.ro .k{font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--text-muted)}
+.ro .v{font-family:var(--mono);font-size:16px;font-weight:600;line-height:1.35}
+.ro .u{font-size:10.5px;color:var(--text-muted)}
+
+table.data{border-collapse:collapse;font-size:13px;width:100%}
+table.data th,table.data td{border:1px solid var(--line-strong);padding:6px 10px;text-align:center}
+table.data th{background:var(--surface-2);font-weight:600;font-size:12px;color:var(--text-secondary)}
+.scrollx{overflow-x:auto}
+.yes{color:var(--good);font-weight:700} .no{color:var(--bad);font-weight:700}
+
+.chartwrap{position:relative;background:var(--surface-1);border:1px solid var(--line);
+  border-radius:var(--radius);padding:16px}
+svg.chart{display:block;width:100%;height:auto;overflow:visible}
+.tip{position:absolute;pointer-events:none;background:var(--surface-1);border:1px solid var(--line-strong);
+  border-radius:8px;padding:8px 11px;font-size:12px;box-shadow:0 4px 14px rgba(0,0,0,.13);opacity:0;
+  transition:opacity .1s;z-index:5;min-width:150px}
+.tip .t{font-family:var(--mono);font-size:11px;color:var(--text-muted);margin-bottom:4px}
+.tip .r{display:flex;gap:10px;color:var(--text-secondary)}
+.tip .r b{margin-left:auto;font-family:var(--mono);color:var(--text-primary)}
+.legend{display:flex;flex-wrap:wrap;gap:14px;margin-top:10px;font-size:12.5px;color:var(--text-secondary)}
+.legend span{display:flex;align-items:center;gap:6px}
+.legend i{width:13px;height:13px;border-radius:3px;display:block}
+
+.verdict{border-radius:9px;padding:10px 13px;font-size:13.5px;margin-top:12px;border:1px solid var(--line-strong);
+  background:var(--surface-2)}
+.verdict.ok{border-color:var(--good);background:color-mix(in srgb,var(--good) 10%,transparent)}
+.verdict.no{border-color:var(--bad);background:color-mix(in srgb,var(--bad) 9%,transparent)}
+.verdict b{font-size:14px}
+
+ol.steps{list-style:none;counter-reset:s;padding:0;margin:0;display:grid;gap:10px}
+ol.steps li{min-width:0;counter-increment:s;border:1px solid var(--line);border-radius:var(--radius);
+  background:var(--surface-1);padding:14px 16px 14px 52px;position:relative}
+ol.steps li::before{content:counter(s);position:absolute;left:15px;top:14px;width:23px;height:23px;
+  border-radius:50%;background:var(--accent);color:#fff;font-size:12px;font-weight:700;
+  display:grid;place-items:center;font-family:var(--mono)}
+ol.steps h4{margin:0 0 6px;font-size:14px;font-weight:640}
+ol.steps p{margin:0 0 6px;font-size:13.5px;color:var(--text-secondary)}
+.eq{min-width:0;font-family:var(--serif);font-size:15px;background:var(--surface-2);border-radius:7px;padding:9px 13px;
+  margin:8px 0;overflow-x:auto}
+.eq .hl{color:var(--good);font-weight:700}
+sub{font-size:.72em} sup{font-size:.72em}
+.verify{border:1px solid var(--good);border-radius:var(--radius);
+  background:color-mix(in srgb,var(--good) 8%,transparent);padding:14px 16px;font-size:13.5px}
+.verify h4{margin:0 0 6px;font-size:13.5px;color:var(--good)}
+.verify ul{margin:6px 0 0;padding-left:18px;color:var(--text-secondary)}
+.meta-tbl{width:100%;border-collapse:collapse;font-size:13.5px}
+.meta-tbl td{padding:6px 0;border-bottom:1px solid var(--line);vertical-align:top}
+.meta-tbl td:first-child{color:var(--text-muted);width:160px;font-size:12.5px;padding-right:14px}
+footer{border-top:1px solid var(--line);margin-top:40px;padding-top:16px;font-size:12px;color:var(--text-muted)}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-inner">
+    <div>
+      <div class="brandbar"><svg class="pxmark" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><rect width="32" height="32" rx="8" fill="var(--accent)"/><path d="M12.5 6.5h7M13.6 6.5v7.2L7.9 24.1a1.5 1.5 0 0 0 1.3 2.3h13.6a1.5 1.5 0 0 0 1.3-2.3l-5.7-10.4V6.5" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.6 20.6h10.8" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg><span class="wm">PRAYOG<i>X</i></span></div>
+      <div class="simid">ADV-2026-P2-CHE-Q03</div>
+      <h1>Natural rubber → ozonolysis → intramolecular aldol: why the ring is five-membered</h1>
+      <div class="chips">
+        <span class="chip">JEE Advanced 2026</span>
+        <span class="chip">Paper 2</span>
+        <span class="chip">Chemistry</span>
+        <span class="chip">Q.3 · Section 1</span>
+        <span class="chip k">Aldehydes &amp; Ketones</span>
+        <span class="chip k">Aldol condensation</span>
+      </div>
+    </div>
+    <div class="answerbox">
+      <div class="lbl">Answer</div>
+      <div class="val">(A)</div>
+      <div class="sub">X = 4-oxopentanal · Y = cyclopent-2-en-1-one</div>
+    </div>
+    <button class="themebtn" id="themebtn" type="button">◐ theme</button>
+  </div>
+</header>
+
+<nav class="jump">
+  <ul>
+    <li><a href="#question">Question</a></li>
+    <li><a href="#ozone">Ozonolysis lab</a></li>
+    <li><a href="#identify">Identifying X</a></li>
+    <li><a href="#aldol">Ring-size explorer</a></li>
+    <li><a href="#strain">Ring strain</a></li>
+    <li><a href="#solution">Step-by-step solution</a></li>
+    <li><a href="#concepts">Concepts &amp; classification</a></li>
+  </ul>
+</nav>
+
+<div class="wrap">
+
+<!-- 01 QUESTION -->
+<section id="question">
+  <h2><span class="n">01</span>Original question
+      <span style="font-weight:400;font-size:12.5px;color:var(--text-muted)">— verbatim</span></h2>
+  <div class="card">
+    <div class="qtext">
+      Natural rubber on complete ozonolysis (O<sub>3</sub>/Zn-H<sub>2</sub>O) gives compound <strong>X</strong>
+      as the major product. <strong>X</strong> gives positive iodoform and Tollen's tests. <strong>X</strong>
+      on heating with aqueous NaOH gives <strong>Y</strong> as the major product. <strong>Y</strong> is
+    </div>
+    <ul class="opts" id="opts">
+      <li data-k="A"><div class="hd">(A)<span class="mark"></span></div>
+        <svg class="mol" data-draw="optA" viewBox="0 0 240 150" role="img" aria-label="cyclopent-2-en-1-one"></svg>
+        <div class="nm">cyclopent-2-en-1-one</div></li>
+      <li data-k="B"><div class="hd">(B)<span class="mark"></span></div>
+        <svg class="mol" data-draw="optB" viewBox="0 0 240 150" role="img" aria-label="1-(2-hydroxycyclopropyl)ethan-1-one"></svg>
+        <div class="nm">1-(2-hydroxycyclopropyl)ethan-1-one</div></li>
+      <li data-k="C"><div class="hd">(C)<span class="mark"></span></div>
+        <svg class="mol" data-draw="optC" viewBox="0 0 240 150" role="img" aria-label="1,4-diacetylcyclohexa-1,4-diene"></svg>
+        <div class="nm">1,4-diacetylcyclohexa-1,4-diene</div></li>
+      <li data-k="D"><div class="hd">(D)<span class="mark"></span></div>
+        <svg class="mol" data-draw="optD" viewBox="0 0 240 150" role="img" aria-label="bicyclic lactol from a seven-membered ring"></svg>
+        <div class="nm">bicyclic lactol (7-ring fused to a hydroxy-tetrahydrofuran)</div></li>
+    </ul>
+    <p style="font-size:12.5px;color:var(--text-muted);margin:12px 0 0">
+      Click an option to check it. Structures redrawn from the printed paper.</p>
+  </div>
+</section>
+
+<!-- 02 OZONOLYSIS -->
+<section id="ozone">
+  <h2><span class="n">02</span>Ozonolysis of natural rubber</h2>
+  <p class="lede">
+    Natural rubber is <em>cis</em>-1,4-polyisoprene: the repeat unit
+    –CH<sub>2</sub>–C(CH<sub>3</sub>)=CH–CH<sub>2</sub>– carries exactly one C=C. Reductive ozonolysis
+    (O<sub>3</sub> then Zn/H<sub>2</sub>O) cuts every one of them and caps each cut carbon with =O — the
+    trisubstituted end becomes a <strong>ketone</strong>, the monosubstituted end an <strong>aldehyde</strong>.
+    Drag the slider to run the reaction and watch what a single fragment turns out to be.
+  </p>
+  <div class="panel" style="margin-bottom:16px">
+    <h3>Polymer chain</h3>
+    <svg class="mol" id="poly" viewBox="0 0 1080 300" role="img"
+         aria-label="cis-1,4-polyisoprene chain being cleaved at every carbon-carbon double bond"></svg>
+    <p style="font-size:12px;color:var(--text-muted);margin:8px 0 0" id="polycap"></p>
+  </div>
+  <div class="lab" style="grid-template-columns:minmax(0,1fr) minmax(0,1.2fr)">
+    <div class="panel">
+      <h3>Controls</h3>
+      <div class="ctrl">
+        <label for="prog"><span>Ozonolysis progress</span> <span class="v" id="progv">0 %</span></label>
+        <input type="range" id="prog" min="0" max="100" value="0">
+      </div>
+      <div class="ctrl">
+        <label for="nunits"><span>Repeat units shown</span> <span class="v" id="nv">3</span></label>
+        <input type="range" id="nunits" min="2" max="5" value="3">
+      </div>
+      <div class="ctrl">
+        <label><span>Work-up</span></label>
+        <div class="segbtns" id="workup">
+          <button type="button" data-w="red" aria-pressed="true">Zn / H₂O</button>
+          <button type="button" data-w="ox" aria-pressed="false">H₂O₂</button>
+        </div>
+        <div style="font-size:12px;color:var(--text-secondary);margin-top:6px" id="wumsg"></div>
+      </div>
+      <h3 style="margin-top:18px">Reaction bookkeeping</h3>
+      <div class="readouts">
+        <div class="ro"><div class="k">C=C cut</div><div class="v" id="ro-cuts">0</div><div class="u">per chain shown</div></div>
+        <div class="ro"><div class="k">Fragments</div><div class="v" id="ro-frag">1</div><div class="u">molecules</div></div>
+        <div class="ro"><div class="k">Product X</div><div class="v" id="ro-prod" style="font-size:13px">—</div><div class="u" id="ro-prodf">—</div></div>
+        <div class="ro"><div class="k">Carbons per fragment</div><div class="v" id="ro-c">—</div><div class="u">C₅ = one isoprene unit</div></div>
+      </div>
+      <div class="verdict" id="ozverdict" style="margin-top:14px"></div>
+    </div>
+    <div class="panel">
+      <h3>One fragment, drawn out</h3>
+    <svg class="mol" id="xmol" viewBox="0 0 620 190" role="img" aria-label="structure of 4-oxopentanal with carbons numbered"></svg>
+    <p style="font-size:12.5px;color:var(--text-secondary);margin:10px 0 0">
+      Notice the fragment <em>straddles two repeat units</em>: the aldehyde carbon comes from one unit's
+      =CH–, the methyl ketone from the next unit's =C(CH<sub>3</sub>)–.
+    </p>
+  </div>
+</section>
+
+<!-- 03 IDENTIFY X -->
+<section id="identify">
+  <h2><span class="n">03</span>Which C<sub>5</sub>H<sub>8</sub>O<sub>2</sub> is X? Run the tests</h2>
+  <p class="lede">
+    The question hands you two diagnostic tests. Iodoform (I<sub>2</sub>/NaOH) needs a
+    CH<sub>3</sub>–CO– group (or a CH<sub>3</sub>–CH(OH)– that oxidises to one); Tollens' reagent
+    (Ag(NH<sub>3</sub>)<sub>2</sub><sup>+</sup>) needs an aldehyde. Pick a candidate and run both.
+  </p>
+  <div class="lab" style="grid-template-columns:minmax(0,1.45fr) minmax(0,1fr)">
+    <div class="panel">
+      <h3>Candidate</h3>
+      <svg class="mol" id="cand" viewBox="0 0 620 230" role="img" aria-label="structure of the selected candidate for compound X"></svg>
+      <div class="segbtns" id="candbtns" style="margin-top:12px"></div>
+    </div>
+    <div class="panel">
+      <h3>Test results</h3>
+      <div class="scrollx"><table class="data" id="testtbl"></table></div>
+      <div class="verdict" id="candverdict"></div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 ALDOL -->
+<section id="aldol">
+  <h2><span class="n">04</span>Intramolecular aldol — the ring size decides everything</h2>
+  <p class="lede">
+    Warm 4-oxopentanal with aqueous NaOH and an enolate forms, then attacks a carbonyl <em>in the same
+    molecule</em>. There are three ways to do that. Pick the α-carbon that gets deprotonated and the
+    carbonyl it attacks — the ring size is then fixed by the carbon skeleton, and only one choice survives.
+  </p>
+  <div class="lab">
+    <div class="panel">
+      <h3>Choose the closure</h3>
+      <div class="ctrl">
+        <label><span>Deprotonate the α-carbon…</span></label>
+        <div class="segbtns" id="alpha">
+          <button type="button" data-a="2" aria-pressed="false">C2 <span style="font-size:10px">(α to CHO)</span></button>
+          <button type="button" data-a="3" aria-pressed="false">C3 <span style="font-size:10px">(α to C=O)</span></button>
+          <button type="button" data-a="5" aria-pressed="true">C5 <span style="font-size:10px">(α to C=O)</span></button>
+        </div>
+      </div>
+      <div class="ctrl">
+        <label><span>…and let it attack the carbonyl at</span></label>
+        <div class="segbtns" id="elec">
+          <button type="button" data-e="1" aria-pressed="true">C1 (aldehyde)</button>
+          <button type="button" data-e="4" aria-pressed="false">C4 (ketone)</button>
+        </div>
+      </div>
+      <div class="readouts" style="margin-top:6px">
+        <div class="ro"><div class="k">Ring formed</div><div class="v" id="ro-ring">5</div><div class="u">-membered</div></div>
+        <div class="ro"><div class="k">Ring strain</div><div class="v" id="ro-strain">6.2</div><div class="u">kcal mol⁻¹</div></div>
+        <div class="ro"><div class="k">Viable?</div><div class="v" id="ro-viable" style="font-size:14px">—</div><div class="u">at 298 K, aq. NaOH</div></div>
+      </div>
+      <div class="verdict" id="aldolverdict"></div>
+      <div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap">
+        <button class="act primary" id="dehydrate" type="button">Heat — eliminate water</button>
+        <button class="act" id="resetaldol" type="button">Back to the aldol</button>
+      </div>
+    </div>
+    <div class="panel">
+      <h3 id="prodhd">Product</h3>
+      <svg class="mol" id="prod" viewBox="0 0 480 300" role="img" aria-label="structure of the aldol closure product"></svg>
+      <p style="font-size:12.5px;color:var(--text-secondary);margin:10px 0 0" id="prodnote"></p>
+    </div>
+  </div>
+</section>
+
+<!-- 05 STRAIN CHART -->
+<section id="strain">
+  <h2><span class="n">05</span>Why five and not three — measured ring strain</h2>
+  <p class="lede">
+    Total strain energies of the cycloalkanes, from heats of combustion. A three-membered ring costs
+    about 27 kcal mol<sup>−1</sup>; a five-membered ring costs 6. That gap is the whole reason the
+    C5→C1 closure wins, and it is why cyclopentenones are such common aldol products.
+  </p>
+  <div class="chartwrap" id="cw">
+    <svg class="chart" id="chart" viewBox="0 0 760 300" role="img"
+         aria-label="Bar chart of cycloalkane ring strain energy against ring size, marking which rings this molecule can reach"></svg>
+    <div class="tip" id="tip"></div>
+  </div>
+  <div class="legend">
+    <span><i style="background:var(--s1)"></i>reachable from 4-oxopentanal</span>
+    <span><i style="background:var(--line-strong)"></i>not reachable from this skeleton</span>
+  </div>
+  <div class="scrollx" style="margin-top:16px">
+    <table class="data">
+      <thead><tr><th>Ring size</th><th>Cycloalkane</th><th>Total strain (kcal mol⁻¹)</th>
+        <th>Reachable here?</th><th>Closure</th></tr></thead>
+      <tbody id="straintbody"></tbody>
+    </table>
+  </div>
+</section>
+
+<!-- 06 SOLUTION -->
+<section id="solution">
+  <h2><span class="n">06</span>Step-by-step solution</h2>
+  <ol class="steps">
+    <li>
+      <h4>Write natural rubber properly</h4>
+      <p>Natural rubber is <em>cis</em>-1,4-polyisoprene. Its repeat unit is
+      –CH<sub>2</sub>–C(CH<sub>3</sub>)=CH–CH<sub>2</sub>–, C<sub>5</sub>H<sub>8</sub>, with one
+      trisubstituted C=C per unit.</p>
+    </li>
+    <li>
+      <h4>Cleave every double bond reductively</h4>
+      <p>O<sub>3</sub> followed by Zn/H<sub>2</sub>O breaks each C=C and puts =O on both carbons, stopping
+      at the carbonyl stage (Zn destroys H<sub>2</sub>O<sub>2</sub>, so the aldehyde is not oxidised
+      further). The =C(CH<sub>3</sub>)– end becomes a methyl ketone, the =CH– end an aldehyde.</p>
+      <div class="eq">
+        ⋯CH<sub>2</sub>–C(CH<sub>3</sub>)=CH–CH<sub>2</sub>⋯ &nbsp;→&nbsp;
+        CH<sub>3</sub>–CO–CH<sub>2</sub>–CH<sub>2</sub>–CHO &nbsp;=&nbsp;
+        <span class="hl">X, 4-oxopentanal (levulinaldehyde), C<sub>5</sub>H<sub>8</sub>O<sub>2</sub></span>
+      </div>
+      <p>Each fragment straddles two repeat units, so one repeat unit gives exactly one molecule of X.</p>
+    </li>
+    <li>
+      <h4>Check X against both tests</h4>
+      <div class="eq">
+        CH<sub>3</sub>CO– present ⟹ <span class="hl">iodoform positive</span> &nbsp;·&nbsp;
+        –CHO present ⟹ <span class="hl">Tollens positive</span>
+      </div>
+      <p>Both tests fit, which confirms X rather than levulinic acid (an oxidative work-up product, no CHO)
+      or pentane-2,4-dione (no CHO).</p>
+    </li>
+    <li>
+      <h4>Let NaOH close the ring — count the atoms</h4>
+      <p>Number X as C1 (CHO), C2, C3, C4 (C=O), C5 (CH<sub>3</sub>). An enolate can form at C2 (α to the
+      aldehyde), or at C3 and C5 (α to the ketone). Ring size = |α − carbonyl| + 1:</p>
+      <div class="eq">
+        C2 → C4: 3-membered &nbsp;·&nbsp; C3 → C1: 3-membered &nbsp;·&nbsp;
+        <span class="hl">C5 → C1: 5-membered</span>
+      </div>
+      <p>Three-membered rings carry ~27 kcal mol<sup>−1</sup> of strain and do not form here; the
+      five-membered closure is both unstrained and kinetically fast. The ketone enolate attacking the more
+      electrophilic aldehyde is also the favoured direction.</p>
+      <div class="eq">aldol product = 3-hydroxycyclopentan-1-one, C<sub>5</sub>H<sub>8</sub>O<sub>2</sub>
+        (an isomer of X — nothing is lost yet)</div>
+    </li>
+    <li>
+      <h4>Heat drives the dehydration</h4>
+      <p>The OH sits β to the ketone, so E1cb elimination of water gives the conjugated enone — the
+      thermodynamic sink that makes aldol <em>condensation</em> irreversible.</p>
+      <div class="eq">
+        3-hydroxycyclopentanone &nbsp;−H<sub>2</sub>O→&nbsp;
+        <span class="hl">cyclopent-2-en-1-one, C<sub>5</sub>H<sub>6</sub>O = Y</span>
+      </div>
+      <p>Answer: <strong>(A)</strong>.</p>
+    </li>
+  </ol>
+
+  <div class="verify" style="margin-top:18px">
+    <h4>✓ Independent verification</h4>
+    <ul>
+      <li><strong>Atom economy:</strong> one C<sub>5</sub> repeat unit → one C<sub>5</sub> product. X is
+          C<sub>5</sub>H<sub>8</sub>O<sub>2</sub>, the aldol is its isomer C<sub>5</sub>H<sub>8</sub>O<sub>2</sub>,
+          and Y is C<sub>5</sub>H<sub>6</sub>O = C<sub>5</sub>H<sub>8</sub>O<sub>2</sub> − H<sub>2</sub>O.
+          Checked in RDKit: 100.12 − 18.02 = 82.10 = M(Y). No carbon appears or disappears.</li>
+      <li><strong>Both diagnostic tests re-derived from the structure</strong> by substructure match
+          (SMARTS <code>[CH3]C(=O)[#6]</code> and <code>[CX3H1](=O)[#6]</code>): X matches both; every
+          other C<sub>5</sub>H<sub>8</sub>O<sub>2</sub> candidate fails at least one.</li>
+      <li><strong>Ring-size arithmetic done independently of the drawing:</strong> enumerating all
+          (α-carbon, carbonyl) pairs on the C1–C5 chain gives ring sizes {3, 3, 5} — only one is viable.</li>
+      <li><strong>Literature precedent:</strong> the base-mediated cyclisation of levulinaldehyde to
+          cyclopent-2-enone is a textbook intramolecular aldol; the same 1,4-dicarbonyl → cyclopentenone
+          logic underlies the Hajos–Parrish and Weiss–Cook style closures.</li>
+      <li><strong>Distractor audit:</strong> (B) is the 3-membered aldol that ring strain forbids, and it
+          is un-dehydrated; (C) is C<sub>10</sub>H<sub>12</sub>O<sub>2</sub> — it needs two molecules of X,
+          so it cannot be the major product of an intramolecular reaction; (D) is a C<sub>10</sub>
+          bicyclic lactol, again a dimer and requiring a seven-membered closure. Only (A) is
+          C<sub>5</sub> and conjugated.</li>
+      <li><strong>Conjugation check:</strong> Y must be the thermodynamic product, so it has to contain
+          C=C–C=O. (A) does; (B) does not.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 07 CONCEPTS -->
+<section id="concepts">
+  <h2><span class="n">07</span>Concepts and classification</h2>
+  <div class="lab">
+    <div class="panel">
+      <h3>Reactions used</h3>
+      <div class="eq">R<sub>2</sub>C=CR′<sub>2</sub> &nbsp;<u>O₃, then Zn/H₂O</u>→&nbsp; R<sub>2</sub>C=O + O=CR′<sub>2</sub></div>
+      <div class="eq">with H<sub>2</sub>O<sub>2</sub> work-up instead: any –CHO is oxidised on to –COOH</div>
+      <div class="eq">CH<sub>3</sub>CO–R + 3I<sub>2</sub> + 4NaOH → CHI<sub>3</sub>↓ + RCOONa + 3NaI + 3H<sub>2</sub>O</div>
+      <div class="eq">RCHO + 2[Ag(NH<sub>3</sub>)<sub>2</sub>]<sup>+</sup> + 3OH<sup>−</sup> → RCOO<sup>−</sup> + 2Ag↓ + 4NH<sub>3</sub> + 2H<sub>2</sub>O</div>
+      <div class="eq">aldol: enolate + C=O → β-hydroxy carbonyl &nbsp;<u>Δ, −H₂O</u>→&nbsp; α,β-unsaturated carbonyl</div>
+      <div class="eq">ring size = |n<sub>α</sub> − n<sub>carbonyl</sub>| + 1</div>
+    </div>
+    <div class="panel">
+      <h3>Classification</h3>
+      <table class="meta-tbl">
+        <tr><td>Simulation ID</td><td><code>ADV-2026-P2-CHE-Q03</code></td></tr>
+        <tr><td>Exam / Year / Paper</td><td>JEE Advanced · 2026 · Paper 2</td></tr>
+        <tr><td>Subject</td><td>Chemistry (Organic)</td></tr>
+        <tr><td>Chapter</td><td>Aldehydes, Ketones and Carboxylic Acids</td></tr>
+        <tr><td>Topic</td><td>Aldol condensation</td></tr>
+        <tr><td>Subtopics</td><td>Reductive ozonolysis · Structure of natural rubber (<em>cis</em>-1,4-polyisoprene) · Iodoform test · Tollens' test · Intramolecular aldol and ring size · Dehydration to an α,β-unsaturated ketone</td></tr>
+        <tr><td>Question type</td><td>Single correct MCQ (+3 / 0 / −1)</td></tr>
+        <tr><td>Difficulty</td><td>Moderate–Hard</td></tr>
+        <tr><td>Answer</td><td><strong>(A) cyclopent-2-en-1-one</strong></td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<footer>
+  ADV-2026-P2-CHE-Q03 · PrayogX · JEE Advanced Interactive Simulation Library · question text reproduced
+  from the official JEE (Advanced) 2026 Paper 2 for educational use.
+</footer>
+</div>
+
+<script>
+(function(){
+"use strict";
+var NS="http://www.w3.org/2000/svg";
+function css(v){ return getComputedStyle(document.documentElement).getPropertyValue(v).trim(); }
+function el(n,a){ var e=document.createElementNS(NS,n); for(var k in a) e.setAttribute(k,a[k]); return e; }
+
+/* ============================================================
+   Minimal skeletal-structure renderer.
+   spec = { atoms:[{x,y,l?,c?}], bonds:[[i,j,order,opts]] }
+   Coordinates are arbitrary units, y up. Scaled to fit the svg viewBox.
+   ============================================================ */
+function render(svg, spec, opts){
+  opts = opts || {};
+  while(svg.firstChild) svg.removeChild(svg.firstChild);
+  var vb = svg.getAttribute("viewBox").split(/\s+/).map(Number);
+  var W = vb[2], H = vb[3], pad = opts.pad === undefined ? 26 : opts.pad;
+  var A = spec.atoms;
+  if(!A.length) return;
+  var BB = A.concat(spec.notes || []);           // captions count towards the bounding box
+  var xs = BB.map(function(a){return a.x;}), ys = BB.map(function(a){return a.y;});
+  var x0 = Math.min.apply(null,xs), x1 = Math.max.apply(null,xs);
+  var y0 = Math.min.apply(null,ys), y1 = Math.max.apply(null,ys);
+  var sx = (W-2*pad)/Math.max(x1-x0, 0.001), sy = (H-2*pad)/Math.max(y1-y0, 0.001);
+  var s = Math.min(sx, sy); if(opts.maxScale) s = Math.min(s, opts.maxScale);
+  var ox = (W - (x1-x0)*s)/2 - x0*s, oy = (H + (y1-y0)*s)/2 + y0*s;
+  function P(a){ return [a.x*s+ox, -a.y*s+oy]; }
+
+  var bondCol = css("--bondc"), inkO = css("--atom-o"), muted = css("--text-muted");
+  function colOf(a){
+    if(a.c) return css(a.c);
+    if(!a.l) return bondCol;
+    if(a.l.charAt(0)==="O") return inkO;
+    return css("--text-primary");
+  }
+  var g = el("g",{}); svg.appendChild(g);
+
+  spec.bonds.forEach(function(b){
+    var i=b[0], j=b[1], order=b[2]||1, o=b[3]||{};
+    var a=A[i], c=A[j];
+    if(o.hide) return;
+    var p=P(a), q=P(c);
+    var dx=q[0]-p[0], dy=q[1]-p[1], L=Math.hypot(dx,dy)||1, ux=dx/L, uy=dy/L;
+    var t1 = a.l ? 13 : 0, t2 = c.l ? 13 : 0;
+    var x1b=p[0]+ux*t1, y1b=p[1]+uy*t1, x2b=q[0]-ux*t2, y2b=q[1]-uy*t2;
+    var nx=-uy, ny=ux, col = o.col ? css(o.col) : bondCol;
+    var op = (o.op===undefined?1:o.op);
+    function line(off, dash, shrink){
+      shrink = shrink||0;
+      g.appendChild(el("line",{x1:x1b+nx*off+ux*shrink, y1:y1b+ny*off+uy*shrink,
+        x2:x2b+nx*off-ux*shrink, y2:y2b+ny*off-uy*shrink,
+        stroke:col,"stroke-width":o.w||2.4,"stroke-linecap":"round",opacity:op,
+        "stroke-dasharray":dash||"none"}));
+    }
+    if(order===2){ line(-3.2,null); line(3.2, o.dash?"5 4":null, 0); }
+    else if(order===0){ line(0,"4 4"); }
+    else line(0, o.dash?"5 4":null);
+  });
+
+  A.forEach(function(a){
+    if(!a.l) return;
+    var p=P(a);
+    var t=el("text",{x:p[0],y:p[1]+5.5,"text-anchor":"middle",fill:colOf(a),
+      "font-size":a.fs||15,"font-weight":600,"font-family":"ui-sans-serif,system-ui,sans-serif"});
+    t.textContent=a.l; g.appendChild(t);
+  });
+  A.forEach(function(a){
+    if(!a.tag) return;
+    var p=P(a);
+    var t=el("text",{x:p[0]+(a.tdx||0),y:p[1]+(a.tdy||-13),"text-anchor":"middle",fill:muted,
+      "font-size":10.5,"font-family":"ui-monospace,monospace"});
+    t.textContent=a.tag; g.appendChild(t);
+  });
+  if(spec.notes) spec.notes.forEach(function(n){
+    var p=P({x:n.x,y:n.y});
+    var t=el("text",{x:p[0],y:p[1],"text-anchor":n.anchor||"middle",
+      fill:n.col?css(n.col):muted,"font-size":n.fs||12,"font-weight":n.bold?700:400,
+      "font-family":"ui-sans-serif,system-ui,sans-serif"});
+    t.textContent=n.t; g.appendChild(t);
+  });
+}
+function ring(n, cx, cy, r, rotDeg){
+  var out=[], rot=(rotDeg||0)*Math.PI/180;
+  for(var i=0;i<n;i++){
+    var a = rot + i*2*Math.PI/n;
+    out.push({x:cx + r*Math.cos(a), y:cy + r*Math.sin(a)});
+  }
+  return out;
+}
+
+/* ---------------- option structures ---------------- */
+function specCyclopentenone(){
+  var R = ring(5, 0, 0, 1, 90);           // C1 top, then anticlockwise
+  var atoms = R.map(function(p){ return {x:p.x, y:p.y}; });
+  atoms.push({x:R[0].x, y:R[0].y+1.15, l:"O"});
+  return {atoms:atoms, bonds:[[0,1,1],[1,2,2],[2,3,1],[3,4,1],[4,0,1],[0,5,2]]};
+}
+function specHydroxycyclopropylketone(){
+  var R = ring(3, -0.5, 0.15, 0.72, 90);
+  var a = R.map(function(p){ return {x:p.x,y:p.y}; });
+  a.push({x:R[0].x, y:R[0].y+1.0, l:"OH"});          // 3 : OH on top vertex
+  a.push({x:R[2].x+0.95, y:R[2].y-0.15});            // 4 : carbonyl C
+  a.push({x:R[2].x+0.95, y:R[2].y-1.15, l:"O"});     // 5 : =O
+  a.push({x:R[2].x+1.9, y:R[2].y+0.4, l:"CH₃"});     // 6
+  return {atoms:a, bonds:[[0,1,1],[1,2,1],[2,0,1],[0,3,1],[2,4,1],[4,5,2],[4,6,1]]};
+}
+function specDiacetylcyclohexadiene(){
+  var R = ring(6, 0, 0, 1, 90);
+  var a = R.map(function(p){ return {x:p.x,y:p.y}; });
+  a.push({x:R[0].x+1.0, y:R[0].y+0.45});             // 6 acetyl C on ring atom 0
+  a.push({x:R[0].x+1.0, y:R[0].y+1.45, l:"O"});      // 7
+  a.push({x:R[0].x+1.95, y:R[0].y-0.1, l:"CH₃"});    // 8
+  a.push({x:R[3].x-1.0, y:R[3].y-0.45});             // 9 acetyl C on ring atom 3
+  a.push({x:R[3].x-1.0, y:R[3].y-1.45, l:"O"});      // 10
+  a.push({x:R[3].x-1.95, y:R[3].y+0.1, l:"H₃C"});    // 11
+  return {atoms:a, bonds:[[0,1,2],[1,2,1],[2,3,1],[3,4,2],[4,5,1],[5,0,1],
+                          [0,6,1],[6,7,2],[6,8,1],[3,9,1],[9,10,2],[9,11,1]]};
+}
+function specBicyclicLactol(){
+  var S = ring(7, -0.75, 0, 1.1, 100);
+  var a = S.map(function(p){ return {x:p.x,y:p.y}; });
+  var f0 = S[0], f1 = S[6];                              // fusion atoms
+  a.push({x:f0.x+1.0, y:f0.y+0.75, l:"CH₃"});            // 7 methyl on fusion C
+  a.push({x:f0.x+1.15, y:f0.y-0.15, l:"O"});             // 8 ring O of the THF
+  a.push({x:f0.x+1.55, y:f0.y-1.15});                    // 9 CH-OH
+  a.push({x:f0.x+2.55, y:f0.y-1.35, l:"OH"});            // 10
+  a.push({x:f1.x+1.05, y:f1.y-1.3});                     // 11 CH2
+  a.push({x:S[5].x, y:S[5].y-1.15, l:"O"});              // 12 ketone O
+  return {atoms:a, bonds:[[0,1,1],[1,2,2],[2,3,1],[3,4,1],[4,5,1],[5,6,1],[6,0,1],
+                          [0,7,1],[0,8,1],[8,9,1],[9,10,1],[9,11,1],[11,6,1],[5,12,2]]};
+}
+var OPTSPEC = {optA:specCyclopentenone, optB:specHydroxycyclopropylketone,
+               optC:specDiacetylcyclohexadiene, optD:specBicyclicLactol};
+
+/* ---------------- 02 polymer / ozonolysis ---------------- */
+var polySvg = document.getElementById("poly");
+var oz = { p:0, n:3, workup:"red" };
+var PITCH = 3.74;
+
+function polySpec(){
+  var atoms=[], bonds=[], notes=[];
+  var gap = 1.55*oz.p;
+  var cut = oz.p;                                  // 0 -> intact, 1 -> fully cleaved
+  var fadeCC = Math.max(0, 1 - cut*2);             // C=C disappears over the first half
+  var fadeCO = Math.max(0, (cut-0.45)/0.55);       // C=O appears over the second half
+  for(var k=0;k<oz.n;k++){
+    var bx = k*PITCH + k*gap;
+    var i0 = atoms.length;
+    atoms.push({x:bx+0.00, y:0.00, tag:cut>0.6?"C1":null, tdy:-16});   // Ca  -> CHO
+    atoms.push({x:bx+0.87, y:-0.50, tag:cut>0.6?"C2":null, tdy:16});
+    atoms.push({x:bx+1.87, y:-0.50, tag:cut>0.6?"C3":null, tdy:16});
+    atoms.push({x:bx+2.74, y:0.00, tag:cut>0.6?"C4":null, tdy:-16});   // Cd  -> ketone
+    atoms.push({x:bx+2.74, y:1.00, l:"CH₃", tag:cut>0.6?"C5":null, tdy:-15});
+    bonds.push([i0,i0+1,1],[i0+1,i0+2,1],[i0+2,i0+3,1],[i0+3,i0+4,1]);
+    // new C=O on both ends once cleaved
+    var oL = atoms.length; atoms.push({x:bx-0.72, y:0.00, l:fadeCO>0.05?"O":""});
+    bonds.push([i0,oL,2,{op:fadeCO, col:"--atom-o"}]);
+    var oR = atoms.length; atoms.push({x:bx+3.46, y:0.00, l:fadeCO>0.05?"O":""});
+    bonds.push([i0+3,oR,2,{op:fadeCO, col:"--atom-o"}]);
+    if(fadeCO>0.05){
+      notes.push({x:bx-0.72, y:-0.62, t:"aldehyde", col:"--s1", fs:10});
+      notes.push({x:bx+3.46, y:-0.62, t:"ketone", col:"--s2", fs:10});
+    }
+    // the C=C to the next fragment
+    if(k<oz.n-1 && fadeCC>0.02){
+      var nb = (k+1)*PITCH + (k+1)*gap;
+      var iNext = atoms.length + 0; // next fragment's first atom index (added next loop)
+      atoms.push({x:nb+0.00, y:0.00, hidden:true});
+      bonds.push([i0+3, atoms.length-1, 2, {op:fadeCC, col:"--s3", w:3}]);
+    }
+  }
+  if(fadeCC>0.02) notes.push({x:PITCH*0.5, y:1.9, t:"C=C cleaved here", col:"--s3", fs:11, bold:true});
+  // chain-continues marks
+  notes.push({x:-1.5, y:0, t:"⋯", fs:20});
+  notes.push({x:(oz.n-1)*(PITCH+gap)+4.4, y:0, t:"⋯", fs:20});
+  return {atoms:atoms, bonds:bonds, notes:notes};
+}
+
+function xSpec(oxidative){
+  var a=[
+    {x:0.00,y:0.00,l:"H₃C", tag:"C5", tdy:-16},
+    {x:1.00,y:0.55},                                   // C4 ketone
+    {x:1.00,y:1.60,l:"O"},
+    {x:2.00,y:0.00},                                   // C3
+    {x:3.00,y:0.55},                                   // C2
+    {x:4.00,y:0.00},                                   // C1
+    {x:5.00,y:0.55,l:"O"},
+    {x:4.00,y:-1.00,l:oxidative?"OH":"H"}
+  ];
+  a[0].tdx=-4; a[0].tdy=-18;
+  a[1].tag="C4"; a[1].tdx=-19; a[1].tdy=-7;
+  a[3].tag="C3"; a[3].tdy=19;
+  a[4].tag="C2"; a[4].tdy=-15;
+  a[5].tag="C1"; a[5].tdx=-19; a[5].tdy=-7;
+  return {atoms:a, bonds:[[0,1,1],[1,2,2],[1,3,1],[3,4,1],[4,5,1],[5,6,2],[5,7,1]],
+    notes:[{x:2.5,y:-1.5,t:oxidative?"4-oxopentanoic acid (levulinic acid) — H₂O₂ work-up":"X = 4-oxopentanal (levulinaldehyde), C₅H₈O₂",
+            col:oxidative?"--s2":"--good", fs:13, bold:true}]};
+}
+
+function drawPoly(){
+  render(polySvg, polySpec(), {pad:44});
+  var cuts = oz.p>0.5 ? oz.n-1 : 0;
+  var frags = oz.p>0.5 ? oz.n : 1;
+  document.getElementById("ro-cuts").textContent = cuts;
+  document.getElementById("ro-frag").textContent = frags;
+  var done = oz.p>0.95;
+  var ox = oz.workup==="ox";
+  document.getElementById("ro-prod").textContent = done ? (ox?"levulinic acid":"4-oxopentanal") : "—";
+  document.getElementById("ro-prodf").textContent = done ? (ox?"C₅H₈O₃":"C₅H₈O₂") : "—";
+  document.getElementById("ro-c").textContent = done ? "5" : "—";
+  document.getElementById("progv").textContent = Math.round(oz.p*100)+" %";
+  document.getElementById("nv").textContent = oz.n;
+  document.getElementById("polycap").textContent = oz.p<0.05
+    ? "Intact cis-1,4-polyisoprene. Each green C=C is one cleavage site."
+    : (oz.p<0.95 ? "Cleaving… each C=C becomes two C=O groups."
+                 : oz.n+" repeat units → "+oz.n+" identical fragments.");
+  var v = document.getElementById("ozverdict");
+  if(!done){ v.className="verdict"; v.innerHTML="Run the reaction to the end to see the fragment."; }
+  else if(ox){ v.className="verdict no";
+    v.innerHTML="<b>H₂O₂ work-up is the wrong one.</b> It oxidises the aldehyde to –COOH, giving levulinic acid, which fails Tollens' test. The question specifies Zn/H₂O."; }
+  else { v.className="verdict ok";
+    v.innerHTML="<b>X = 4-oxopentanal</b>, CH₃COCH₂CH₂CHO. One C₅ repeat unit → one C₅ molecule; carbon is conserved."; }
+  render(document.getElementById("xmol"), xSpec(ox && done), {pad:38});
+}
+document.getElementById("prog").addEventListener("input", function(){ oz.p = +this.value/100; drawPoly(); });
+document.getElementById("nunits").addEventListener("input", function(){ oz.n = +this.value; drawPoly(); });
+document.getElementById("workup").addEventListener("click", function(e){
+  var b=e.target.closest("button"); if(!b) return;
+  var bs=this.querySelectorAll("button");
+  for(var i=0;i<bs.length;i++) bs[i].setAttribute("aria-pressed", bs[i]===b?"true":"false");
+  oz.workup=b.dataset.w;
+  document.getElementById("wumsg").textContent = oz.workup==="red"
+    ? "Reductive work-up: Zn mops up H₂O₂, so the reaction stops at the aldehyde. This is what the question specifies."
+    : "Oxidative work-up: H₂O₂ carries any aldehyde on to a carboxylic acid.";
+  drawPoly();
+});
+
+/* ---------------- 03 candidates for X ---------------- */
+var CANDS = [
+  { key:"oxopentanal", name:"4-oxopentanal", formula:"C₅H₈O₂",
+    iodoform:true, tollens:true, fromOzonolysis:true,
+    why:"CH₃CO– and –CHO both present, and it is exactly what one isoprene unit gives.",
+    spec:function(){ return xSpec(false); } },
+  { key:"pentanedione", name:"pentane-2,4-dione", formula:"C₅H₈O₂",
+    iodoform:true, tollens:false, fromOzonolysis:false,
+    why:"Two methyl ketones, but no aldehyde — Tollens' test fails.",
+    spec:function(){ return {atoms:[
+      {x:0,y:0,l:"H₃C"},{x:1,y:0.55},{x:1,y:1.6,l:"O"},{x:2,y:0},{x:3,y:0.55},
+      {x:3,y:1.6,l:"O"},{x:4,y:0,l:"CH₃"}],
+      bonds:[[0,1,1],[1,2,2],[1,3,1],[3,4,1],[4,5,2],[4,6,1]]}; } },
+  { key:"pentanedial", name:"pentanedial (glutaraldehyde)", formula:"C₅H₈O₂",
+    iodoform:false, tollens:true, fromOzonolysis:false,
+    why:"Two aldehydes, but no methyl ketone — the iodoform test fails.",
+    spec:function(){ return {atoms:[
+      {x:0,y:0.55,l:"O"},{x:1,y:0},{x:2,y:0.55},{x:3,y:0},{x:4,y:0.55},{x:5,y:0},{x:6,y:0.55,l:"O"}],
+      bonds:[[0,1,2],[1,2,1],[2,3,1],[3,4,1],[4,5,1],[5,6,2]]}; } },
+  { key:"levulinic", name:"levulinic acid", formula:"C₅H₈O₃",
+    iodoform:true, tollens:false, fromOzonolysis:false,
+    why:"The H₂O₂ work-up product. The –COOH is not reduced by Tollens' reagent.",
+    spec:function(){ return xSpec(true); } }
+];
+var candIdx = 0;
+document.getElementById("candbtns").innerHTML = CANDS.map(function(c,i){
+  return '<button type="button" data-i="'+i+'" aria-pressed="'+(i===0)+'" style="font-family:var(--sans);font-size:12.5px">'+c.name+'</button>';
+}).join("");
+function drawCand(){
+  var c = CANDS[candIdx];
+  render(document.getElementById("cand"), c.spec(), {pad:40});
+  function row(k,v,ok){ return "<tr><td style='text-align:left'>"+k+"</td><td class='"+(ok?"yes":"no")+"'>"+v+"</td></tr>"; }
+  document.getElementById("testtbl").innerHTML =
+    "<thead><tr><th style='text-align:left'>Test</th><th>Result</th></tr></thead><tbody>" +
+    row("Iodoform (I₂ / NaOH)", c.iodoform?"positive — CHI₃ ↓":"negative", c.iodoform) +
+    row("Tollens' (Ag(NH₃)₂⁺)", c.tollens?"positive — silver mirror":"negative", c.tollens) +
+    row("Product of O₃ / Zn-H₂O on rubber?", c.fromOzonolysis?"yes":"no", c.fromOzonolysis) +
+    "<tr><td style='text-align:left'>Molecular formula</td><td>"+c.formula+"</td></tr></tbody>";
+  var v = document.getElementById("candverdict");
+  var all = c.iodoform && c.tollens && c.fromOzonolysis;
+  v.className = "verdict " + (all?"ok":"no");
+  v.innerHTML = (all ? "<b>This is X.</b> " : "<b>Not X.</b> ") + c.why;
+}
+document.getElementById("candbtns").addEventListener("click", function(e){
+  var b=e.target.closest("button"); if(!b) return;
+  var bs=this.querySelectorAll("button");
+  for(var i=0;i<bs.length;i++) bs[i].setAttribute("aria-pressed", bs[i]===b?"true":"false");
+  candIdx = +b.dataset.i; drawCand();
+});
+
+/* ---------------- 04 aldol ring-size explorer ---------------- */
+var STRAIN = {3:27.5, 4:26.3, 5:6.2, 6:0.1, 7:6.2};
+var ald = { a:5, e:1, dehydrated:false };
+/* alpha carbons that actually bear acidic H: C2 (alpha to CHO), C3 and C5 (alpha to the C4 ketone) */
+var ALPHA_OF = {2:1, 3:4, 5:4};      // which carbonyl each alpha carbon belongs to
+
+function ringSize(a,e){ return Math.abs(a-e)+1; }
+
+function specAldol5(){                       // 3-hydroxycyclopentan-1-one
+  var R = ring(5, 0, 0, 1, 90);
+  var a = R.map(function(p){return {x:p.x,y:p.y};});
+  a.push({x:R[0].x, y:R[0].y+1.15, l:"O"});          // ketone at ring atom 0
+  a.push({x:R[2].x-1.1, y:R[2].y-0.35, l:"OH"});     // OH at ring atom 2 (beta)
+  return {atoms:a, bonds:[[0,1,1],[1,2,1],[2,3,1],[3,4,1],[4,0,1],[0,5,2],[2,6,1]],
+    notes:[{x:0,y:-1.9,t:"3-hydroxycyclopentan-1-one — the aldol",fs:12.5,col:"--s1",bold:true}]};
+}
+function specEnone(){
+  var s = specCyclopentenone();
+  s.notes = [{x:0,y:-1.9,t:"cyclopent-2-en-1-one = Y",fs:13,col:"--good",bold:true}];
+  return s;
+}
+function spec3ring(a,e){
+  var R = ring(3, -0.3, 0.1, 0.8, 90);
+  var at = R.map(function(p){return {x:p.x,y:p.y};});
+  at.push({x:R[0].x-0.1, y:R[0].y+1.05, l:"OH"});
+  at.push({x:R[2].x+1.0, y:R[2].y-0.2});
+  at.push({x:R[2].x+1.0, y:R[2].y-1.2, l:"O"});
+  at.push({x:R[2].x+1.95, y:R[2].y+0.35, l:"CH₃"});
+  return {atoms:at, bonds:[[0,1,1],[1,2,1],[2,0,1],[0,3,1],[2,4,1],[4,5,2],[4,6,1]],
+    notes:[{x:0.4,y:-1.75,t:"a three-membered ring — C"+a+" → C"+e,fs:12.5,col:"--bad",bold:true}]};
+}
+function specNoRing(a,e){
+  var s = xSpec(false);
+  s.notes = [{x:2.5,y:-1.6,t:"C"+a+" and C"+e+" are already bonded — no ring, just enolisation",
+              fs:12.5,col:"--bad",bold:true}];
+  return s;
+}
+
+function drawAldol(){
+  var a=ald.a, e=ald.e, n=ringSize(a,e);
+  var valid = ALPHA_OF[a] !== e;                    // the enolate must attack the OTHER carbonyl
+  var strain = STRAIN[n] !== undefined ? STRAIN[n] : null;
+  document.getElementById("ro-ring").textContent = n<3 ? "—" : n;
+  document.getElementById("ro-strain").textContent = (n<3||strain===null) ? "—" : strain.toFixed(1);
+  var viable = valid && n>=5;
+  document.getElementById("ro-viable").textContent = !valid ? "n/a" : (viable ? "yes" : "no");
+  document.getElementById("ro-viable").style.color = !valid ? "" : (viable? css("--good") : css("--bad"));
+
+  var v = document.getElementById("aldolverdict");
+  var hd = document.getElementById("prodhd");
+  var note = document.getElementById("prodnote");
+
+  if(!valid){
+    v.className="verdict no";
+    v.innerHTML="<b>C"+a+" is α to the carbonyl at C"+e+" itself.</b> Deprotonating it just gives the enolate back — the two carbons are already bonded, so no ring can close.";
+    hd.textContent="No ring"; note.textContent="";
+    render(document.getElementById("prod"), specNoRing(a,e), {pad:34});
+    ald.dehydrated=false; return;
+  }
+  if(n===3){
+    v.className="verdict no";
+    v.innerHTML="<b>Three-membered ring — "+STRAIN[3]+" kcal mol⁻¹ of strain.</b> This closure is far too strained to compete; it is what option (B) would require.";
+    hd.textContent="Product (not formed)"; note.textContent="Ring strain kills this pathway.";
+    render(document.getElementById("prod"), spec3ring(a,e), {pad:34});
+    ald.dehydrated=false; return;
+  }
+  // n === 5
+  v.className="verdict ok";
+  v.innerHTML="<b>Five-membered ring — only "+STRAIN[5]+" kcal mol⁻¹ of strain.</b> The ketone enolate at C5 attacks the more electrophilic aldehyde at C1. This is the closure that happens.";
+  if(ald.dehydrated){
+    hd.textContent="Product after heating";
+    note.innerHTML="The β-hydroxy ketone loses water to give the conjugated enone — that conjugation is the driving force, and it makes the condensation irreversible. <strong>This is Y, option (A).</strong>";
+    render(document.getElementById("prod"), specEnone(), {pad:44});
+  } else {
+    hd.textContent="Aldol product";
+    note.innerHTML="C₅H₈O₂ — an isomer of X. The OH sits β to the ketone, so heating will eliminate water. Press <em>Heat</em>.";
+    render(document.getElementById("prod"), specAldol5(), {pad:44});
+  }
+}
+function bindSeg(id, key){
+  document.getElementById(id).addEventListener("click", function(e){
+    var b=e.target.closest("button"); if(!b) return;
+    var bs=this.querySelectorAll("button");
+    for(var i=0;i<bs.length;i++) bs[i].setAttribute("aria-pressed", bs[i]===b?"true":"false");
+    ald[key] = +(b.dataset.a || b.dataset.e);
+    ald.dehydrated=false; drawAldol(); drawChart();
+  });
+}
+bindSeg("alpha","a"); bindSeg("elec","e");
+document.getElementById("dehydrate").addEventListener("click", function(){
+  if(ringSize(ald.a,ald.e)===5 && ALPHA_OF[ald.a]!==ald.e){ ald.dehydrated=true; drawAldol(); }
+});
+document.getElementById("resetaldol").addEventListener("click", function(){ ald.dehydrated=false; drawAldol(); });
+
+/* ---------------- 05 ring-strain chart ---------------- */
+var chart=document.getElementById("chart"), tip=document.getElementById("tip");
+var CW=760, CH=300, M={l:74,r:70,t:26,b:48}, SMAX=30;
+var RINGS=[3,4,5,6,7];
+var NAMES={3:"cyclopropane",4:"cyclobutane",5:"cyclopentane",6:"cyclohexane",7:"cycloheptane"};
+/* which ring sizes this molecule can actually close to */
+function reachable(){
+  var s={};
+  [[2,4],[3,1],[5,1]].forEach(function(pair){ s[ringSize(pair[0],pair[1])] = pair; });
+  return s;
+}
+function bx(v){ return M.l + (v/SMAX)*(CW-M.l-M.r); }
+function drawChart(){
+  while(chart.firstChild) chart.removeChild(chart.firstChild);
+  var grid=css("--line"), muted=css("--text-muted"), ink=css("--text-secondary"), strong=css("--line-strong");
+  var reach=reachable();
+  var rowsH=(CH-M.t-M.b)/RINGS.length, barH=Math.min(26, rowsH*0.55);
+  for(var v=0; v<=30.001; v+=5){
+    chart.appendChild(el("line",{x1:bx(v),x2:bx(v),y1:M.t,y2:CH-M.b,stroke:grid,"stroke-width":1}));
+    var t=el("text",{x:bx(v),y:CH-M.b+18,"text-anchor":"middle",fill:muted,"font-size":11,
+      "font-family":"ui-monospace,monospace"}); t.textContent=v; chart.appendChild(t);
+  }
+  chart.appendChild(el("line",{x1:M.l,x2:M.l,y1:M.t,y2:CH-M.b,stroke:strong,"stroke-width":1.5}));
+  RINGS.forEach(function(n,i){
+    var isReach = !!reach[n];
+    var col = isReach ? css("--s1") : strong;
+    var y = M.t + i*rowsH + (rowsH-barH)/2;
+    var w = Math.max(2, bx(STRAIN[n]) - M.l);
+    chart.appendChild(el("rect",{x:M.l,y:y,width:w,height:barH,rx:4,fill:col,
+      stroke:css("--surface-1"),"stroke-width":2,"data-n":n,"pointer-events":"all",
+      opacity: isReach?1:0.55}));
+    var lb=el("text",{x:M.l-12,y:y+barH/2+5,"text-anchor":"end",fill:css("--text-primary"),
+      "font-size":13,"font-weight":600}); lb.textContent=n+"-ring"; chart.appendChild(lb);
+    var vl=el("text",{x:M.l+w+9,y:y+barH/2+5,fill:css("--text-primary"),"font-size":12.5,
+      "font-weight":600,"font-family":"ui-monospace,monospace"});
+    vl.textContent=STRAIN[n].toFixed(1); chart.appendChild(vl);
+    if(isReach){
+      var rk=el("text",{x:M.l-12,y:y+barH/2+19,"text-anchor":"end",fill:muted,"font-size":10});
+      rk.textContent="C"+reach[n][0]+" → C"+reach[n][1]; chart.appendChild(rk);
+    }
+  });
+  var ax=el("text",{x:(M.l+CW-M.r)/2,y:CH-8,"text-anchor":"middle",fill:ink,"font-size":12.5});
+  ax.textContent="total ring strain  (kcal mol⁻¹)"; chart.appendChild(ax);
+  // table
+  document.getElementById("straintbody").innerHTML = RINGS.map(function(n){
+    var r = reach[n];
+    return "<tr><td><b>"+n+"</b></td><td>"+NAMES[n]+"</td><td>"+STRAIN[n].toFixed(1)+"</td>"+
+      "<td class='"+(r?"yes":"")+"'>"+(r?"yes":"—")+"</td>"+
+      "<td>"+(r?("C"+r[0]+" enolate → C"+r[1]):"—")+"</td></tr>";
+  }).join("");
+}
+chart.addEventListener("mousemove", function(ev){
+  var n = ev.target && ev.target.getAttribute && ev.target.getAttribute("data-n");
+  if(!n){ tip.style.opacity=0; return; }
+  var reach=reachable(), r=reach[n];
+  tip.innerHTML = '<div class="t">'+NAMES[n]+'</div>' +
+    '<div class="r">ring strain <b>'+STRAIN[n].toFixed(1)+'</b></div>' +
+    '<div class="r">per CH₂ <b>'+(STRAIN[n]/n).toFixed(1)+'</b></div>' +
+    '<div class="r">reachable <b>'+(r?("C"+r[0]+"→C"+r[1]):"no")+'</b></div>';
+  tip.style.opacity=1;
+  var rect=document.getElementById("cw").getBoundingClientRect();
+  var lx=ev.clientX-rect.left+14; if(lx>rect.width-175) lx=ev.clientX-rect.left-185;
+  tip.style.left=lx+"px"; tip.style.top=Math.max(4, ev.clientY-rect.top-60)+"px";
+});
+chart.addEventListener("mouseleave", function(){ tip.style.opacity=0; });
+
+/* ---------------- options + theme ---------------- */
+function drawOptions(){
+  var list = document.querySelectorAll("svg[data-draw]");
+  for(var i=0;i<list.length;i++){
+    render(list[i], OPTSPEC[list[i].getAttribute("data-draw")](), {pad:22});
+  }
+}
+document.getElementById("opts").addEventListener("click", function(e){
+  var li=e.target.closest("li"); if(!li) return;
+  var all=this.querySelectorAll("li");
+  for(var i=0;i<all.length;i++){ all[i].classList.remove("correct","wrong"); all[i].querySelector(".mark").textContent=""; }
+  if(li.dataset.k==="A"){ li.classList.add("correct"); li.querySelector(".mark").textContent="correct"; }
+  else{
+    li.classList.add("wrong"); li.querySelector(".mark").textContent="not correct";
+    var c=this.querySelector('[data-k="A"]'); c.classList.add("correct");
+    c.querySelector(".mark").textContent="correct";
+  }
+});
+document.getElementById("themebtn").addEventListener("click", function(){
+  var r=document.documentElement;
+  var dark = r.getAttribute("data-theme")==="dark" ||
+    (!r.getAttribute("data-theme") && matchMedia("(prefers-color-scheme: dark)").matches);
+  r.setAttribute("data-theme", dark?"light":"dark");
+  drawOptions(); drawPoly(); drawCand(); drawAldol(); drawChart();
+});
+
+/* ---------------- init ---------------- */
+document.getElementById("wumsg").textContent =
+  "Reductive work-up: Zn mops up H₂O₂, so the reaction stops at the aldehyde. This is what the question specifies.";
+drawOptions(); drawPoly(); drawCand(); drawAldol(); drawChart();
+})();
+</script>
+</body>
+</html>

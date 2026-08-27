@@ -1,0 +1,106 @@
+{
+  "id": "ADV-2026-P2-CHE-Q01",
+  "slug": "adv-2026-p2-che-q01",
+  "revision": 1,
+  "path": "simulations/2026/paper-2/chemistry/adv-2026-p2-che-q01/index.html",
+  "folder": "simulations/2026/paper-2/chemistry/adv-2026-p2-che-q01/",
+  "title": "Molar conductivity, Kohlrausch's law and the solubility of saturated AgCl",
+  "shortTitle": "Solubility of AgCl from conductance",
+  "summary": "Extrapolate molar conductivities of NaNO3, NaCl and AgNO3 to infinite dilution, combine them by Kohlrausch's law to get the limiting molar conductivity of AgCl, and convert the measured conductivity of a saturated solution into its solubility.",
+  "exam": "JEE Advanced",
+  "year": 2026,
+  "paper": "Paper 2",
+  "paperNumber": 2,
+  "subject": "Chemistry",
+  "branch": "Physical Chemistry",
+  "questionNumber": 1,
+  "section": "Section 1",
+  "questionType": "Single correct MCQ",
+  "marking": {
+    "full": 3,
+    "zero": 0,
+    "negative": -1
+  },
+  "chapter": "Electrochemistry",
+  "topic": "Conductance of electrolytic solutions",
+  "subtopics": [
+    "Molar conductivity and its concentration dependence",
+    "Limiting molar conductivity by extrapolation",
+    "Kohlrausch's law of independent migration of ions",
+    "Solubility of a sparingly soluble salt from conductance measurements"
+  ],
+  "concepts": [
+    "Conductivity vs molar conductivity",
+    "Debye-Hückel-Onsager square-root law",
+    "Strong vs sparingly soluble electrolytes",
+    "Solubility product from solubility"
+  ],
+  "formulas": [
+    "kappa = G * G_cell = (1/R)(l/A)",
+    "Lambda_m = 1000 * kappa / c",
+    "Lambda_m = Lambda_m_0 - A*sqrt(c)",
+    "Lambda_m_0 = nu+ * lambda+_0 + nu- * lambda-_0",
+    "Ksp(AgCl) = X^2"
+  ],
+  "tags": [
+    "electrochemistry",
+    "conductivity",
+    "molar conductivity",
+    "limiting molar conductivity",
+    "kohlrausch law",
+    "independent migration",
+    "debye-huckel-onsager",
+    "solubility",
+    "solubility product",
+    "ksp",
+    "silver chloride",
+    "agcl",
+    "sparingly soluble salt",
+    "conductivity cell",
+    "cell constant",
+    "extrapolation",
+    "physical chemistry",
+    "jee advanced 2026",
+    "paper 2",
+    "chemistry q1"
+  ],
+  "difficulty": "Moderate",
+  "estimatedMinutes": 8,
+  "answer": "(C) 5",
+  "answerValue": 5,
+  "derivedQuantities": {
+    "Lambda0_NaNO3": 121,
+    "Lambda0_NaCl": 127,
+    "Lambda0_AgNO3": 134,
+    "Lambda0_AgCl": 140,
+    "solubility_X_mol_per_L": 1e-05,
+    "Ksp": 1e-10
+  },
+  "verification": {
+    "status": "verified",
+    "methods": [
+      "Independent recomputation of slopes and intercepts from the raw table",
+      "Closed-form cross-check Lambda0 = 2*Lambda(0.01) - Lambda(0.04)",
+      "Dimensional analysis of 1000*kappa/Lambda",
+      "Numeric script check: 1000*1.40e-6/140 = 1.000000e-5, -log10 = 5.000000",
+      "Physical sanity check against literature Ksp(AgCl) ~ 1.8e-10",
+      "Headless-browser run of the simulation reproducing the answer from the live model"
+    ],
+    "verifiedOn": "2026-08-26"
+  },
+  "interactivity": [
+    "Animated conductivity cell with ion drift, selectable salt, concentration, cell constant and temperature",
+    "Live readouts of kappa, Lambda_m, conductance and resistance",
+    "Measurement log with least-squares fit of Lambda_m vs sqrt(c)",
+    "Lambda_m vs sqrt(c) chart with crosshair tooltip, tabulated points and extrapolated intercepts",
+    "Kohlrausch builder with animated spectator-ion cancellation",
+    "Saturated-AgCl solubility calculator with kappa and Lambda sliders",
+    "Option checker and reveal-style step-by-step solution"
+  ],
+  "source": {
+    "file": "papers/adv_2026_paper_2.pdf",
+    "page": 20
+  },
+  "createdAt": "2026-08-26",
+  "updatedAt": "2026-08-26"
+}

@@ -1,0 +1,120 @@
+{
+  "id": "ADV-2026-P2-CHE-Q03",
+  "slug": "adv-2026-p2-che-q03",
+  "revision": 1,
+  "path": "simulations/2026/paper-2/chemistry/adv-2026-p2-che-q03/index.html",
+  "folder": "simulations/2026/paper-2/chemistry/adv-2026-p2-che-q03/",
+  "title": "Ozonolysis of natural rubber and the intramolecular aldol that follows",
+  "shortTitle": "Rubber to cyclopentenone",
+  "summary": "Cleave every C=C of cis-1,4-polyisoprene to reach 4-oxopentanal, confirm it with the iodoform and Tollens tests, then discover why the base-mediated ring closure gives a five-membered ring and, after dehydration, cyclopent-2-en-1-one.",
+  "exam": "JEE Advanced",
+  "year": 2026,
+  "paper": "Paper 2",
+  "paperNumber": 2,
+  "subject": "Chemistry",
+  "branch": "Organic Chemistry",
+  "questionNumber": 3,
+  "section": "Section 1",
+  "questionType": "Single correct MCQ",
+  "marking": {
+    "full": 3,
+    "zero": 0,
+    "negative": -1
+  },
+  "chapter": "Aldehydes, Ketones and Carboxylic Acids",
+  "topic": "Aldol condensation",
+  "subtopics": [
+    "Reductive ozonolysis of alkenes (O3 then Zn/H2O)",
+    "Structure of natural rubber as cis-1,4-polyisoprene",
+    "Iodoform test for a methyl ketone",
+    "Tollens test for an aldehyde",
+    "Intramolecular aldol and the choice of ring size",
+    "Dehydration to an alpha,beta-unsaturated ketone"
+  ],
+  "concepts": [
+    "Alkene cleavage and the effect of the work-up",
+    "Enolate formation at the alpha carbon",
+    "Ring strain controls which closure happens",
+    "Conjugation as the thermodynamic driving force"
+  ],
+  "formulas": [
+    "R2C=CR'2 + O3, then Zn/H2O -> R2C=O + O=CR'2",
+    "CH3CO-R + 3I2 + 4NaOH -> CHI3 + RCOONa + 3NaI + 3H2O",
+    "RCHO + 2[Ag(NH3)2]+ + 3OH- -> RCOO- + 2Ag + 4NH3 + 2H2O",
+    "ring size = |n_alpha - n_carbonyl| + 1",
+    "beta-hydroxy carbonyl -> alpha,beta-unsaturated carbonyl + H2O"
+  ],
+  "tags": [
+    "organic chemistry",
+    "ozonolysis",
+    "natural rubber",
+    "polyisoprene",
+    "isoprene",
+    "polymers",
+    "aldol condensation",
+    "intramolecular aldol",
+    "enolate",
+    "ring strain",
+    "ring size",
+    "cyclopentenone",
+    "levulinaldehyde",
+    "4-oxopentanal",
+    "iodoform test",
+    "tollens test",
+    "methyl ketone",
+    "aldehyde",
+    "dehydration",
+    "conjugation",
+    "alpha beta unsaturated ketone",
+    "jee advanced 2026",
+    "paper 2",
+    "chemistry q3"
+  ],
+  "difficulty": "Moderate-Hard",
+  "estimatedMinutes": 9,
+  "answer": "(A)",
+  "answerValue": "cyclopent-2-en-1-one",
+  "derivedQuantities": {
+    "X": "4-oxopentanal (C5H8O2)",
+    "aldol": "3-hydroxycyclopentan-1-one (C5H8O2)",
+    "Y": "cyclopent-2-en-1-one (C5H6O)",
+    "ring_size": 5,
+    "ring_strain_kcal_per_mol": {
+      "3": 27.5,
+      "4": 26.3,
+      "5": 6.2,
+      "6": 0.1,
+      "7": 6.2
+    }
+  },
+  "verification": {
+    "status": "verified",
+    "methods": [
+      "Atom economy: one C5 repeat unit gives one C5 product; X, the aldol and Y balance exactly",
+      "Mass balance checked in RDKit: 100.12 - 18.02 = 82.10 = M(Y)",
+      "Both diagnostic tests re-derived by SMARTS substructure match on the structure of X",
+      "Ring sizes enumerated independently of the drawing for every (alpha carbon, carbonyl) pair: {3,3,5}",
+      "Literature precedent: base-mediated cyclisation of levulinaldehyde to cyclopent-2-enone",
+      "Conjugation requirement: the thermodynamic product must contain C=C-C=O",
+      "Distractor audit: (C) and (D) are C10 dimers, (B) is the strain-forbidden 3-ring aldol",
+      "Headless-browser run of the finished page: ozonolysis, both work-ups, all candidates and all six aldol combinations behave correctly"
+    ],
+    "verifiedOn": "2026-08-26"
+  },
+  "interactivity": [
+    "Ozonolysis slider that cleaves every C=C of a drawn polyisoprene chain and separates the fragments",
+    "Choice of reductive (Zn/H2O) or oxidative (H2O2) work-up, with the product changing accordingly",
+    "Adjustable number of repeat units, with live bookkeeping of cuts, fragments and carbon count",
+    "Candidate picker running the iodoform and Tollens tests on four C5 isomers",
+    "Ring-size explorer: choose the alpha carbon and the carbonyl, and the app computes the ring formed",
+    "Dehydration step that converts the aldol into the conjugated enone",
+    "Bar chart of measured cycloalkane ring strain marking which closures are reachable",
+    "Option checker and step-by-step solution with an independent verification log"
+  ],
+  "source": {
+    "file": "papers/adv_2026_paper_2.pdf",
+    "page": 21
+  },
+  "createdAt": "2026-08-26",
+  "updatedAt": "2026-08-26"
+}

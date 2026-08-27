@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<!--
+==============================================================================
+  PRAYOGX — JEE ADVANCED SIMULATION LIBRARY — STARTER TEMPLATE
+  Copy this file to simulations/<year>/paper-<n>/<subject>/<lowercase-id>/index.html
+  and fill in every {{PLACEHOLDER}}.
+
+  BUILD CHECKLIST
+  [ ] Decide the ONE conceptual pivot; the interactive core exists to make it felt.
+  [ ] Section 01 reproduces the question verbatim — tables rebuilt as HTML, nothing paraphrased.
+  [ ] The live model computes the official answer at runtime; never hardcode it as the only source.
+  [ ] 2–4 interactive sections: apparatus/structure + controls + chart + builder/calculator.
+  [ ] Every series direct-labelled; reference line wherever theory fixes a value; table view of the data.
+  [ ] Section 06 ends with >= 5 independent verification checks incl. a distractor audit.
+  [ ] Section 07 lists formulas used and the classification table.
+  [ ] PrayogX brand bar in the header and PrayogX in the footer (already in this shell).
+  [ ] No CDN, no fonts, no fetch, no localStorage. One file.
+  [ ] Render headless, screenshot, drive every control, assert zero console errors.
+  [ ] Then: meta.json, question.md, manifest.json + manifest.js, taxonomy.json, tracker.csv, README row.
+==============================================================================
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{SIM_ID}} · {{SHORT TITLE}}</title>
+<meta name="description" content="{{One-sentence description of the simulation.}}">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232a78d6'/%3E%3Cpath d='M12.5 6.5h7M13.6 6.5v7.2L7.9 24.1a1.5 1.5 0 0 0 1.3 2.3h13.6a1.5 1.5 0 0 0 1.3-2.3l-5.7-10.4V6.5' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M10.6 20.6h10.8' stroke='white' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E">
+<meta name="sim-id" content="{{SIM_ID}}">
+<style>
+/* ---------- design tokens (do not alter; validated palette) ---------- */
+:root{
+  color-scheme: light;
+  --surface-0:#f4f4f1; --surface-1:#fcfcfb; --surface-2:#ececea;
+  --line:#d9d9d4; --line-strong:#bcbcb5;
+  --text-primary:#0b0b0b; --text-secondary:#52514e; --text-muted:#77766f;
+  --s1:#2a78d6; --s2:#eb6834; --s3:#1baf7a; --s4:#4a3aa7;
+  --good:#00743f; --accent:#2a78d6;
+  --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+  --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --serif:ui-serif,Georgia,"Times New Roman",serif;
+  --radius:10px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  color-scheme: dark;
+  --surface-0:#111110; --surface-1:#1a1a19; --surface-2:#232322;
+  --line:#34342f; --line-strong:#4a4a44;
+  --text-primary:#ffffff; --text-secondary:#c3c2b7; --text-muted:#95948b;
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#9085e9;
+  --good:#3fae7a; --accent:#3987e5;
+}}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --surface-0:#111110; --surface-1:#1a1a19; --surface-2:#232322;
+  --line:#34342f; --line-strong:#4a4a44;
+  --text-primary:#ffffff; --text-secondary:#c3c2b7; --text-muted:#95948b;
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#9085e9;
+  --good:#3fae7a; --accent:#3987e5;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--surface-0);color:var(--text-primary);font-family:var(--sans);
+  font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px 80px}
+
+/* ---------- header ---------- */
+header.top{border-bottom:1px solid var(--line);background:var(--surface-1)}
+.top-inner{max-width:1120px;margin:0 auto;padding:22px 20px 18px;position:relative;
+  display:flex;flex-wrap:wrap;gap:16px;align-items:flex-start;justify-content:space-between}
+.simid{font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--text-muted)}
+h1{font-size:23px;line-height:1.25;margin:6px 0 10px;font-weight:640;max-width:640px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-size:11.5px;padding:3px 9px;border:1px solid var(--line-strong);border-radius:999px;
+  color:var(--text-secondary);background:var(--surface-2);white-space:nowrap}
+.chip.k{border-color:var(--accent);color:var(--accent);background:transparent}
+.answerbox{border:1px solid var(--line-strong);border-radius:var(--radius);background:var(--surface-2);
+  padding:12px 16px;min-width:190px}
+.answerbox .lbl{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted)}
+.answerbox .val{font-family:var(--mono);font-size:25px;font-weight:600;color:var(--good);line-height:1.22}
+.answerbox .sub{font-size:12px;color:var(--text-secondary)}
+.themebtn{position:absolute;top:14px;right:16px;border:1px solid var(--line-strong);background:var(--surface-2);
+  color:var(--text-secondary);border-radius:8px;padding:4px 9px;font-size:12px;cursor:pointer}
+
+/* ---------- nav ---------- */
+nav.jump{position:sticky;top:0;z-index:20;background:var(--surface-0);border-bottom:1px solid var(--line);
+  padding:8px 0;margin-bottom:26px}
+nav.jump ul{max-width:1120px;margin:0 auto;padding:0 20px;list-style:none;display:flex;gap:4px;overflow-x:auto}
+nav.jump a{display:block;padding:5px 11px;border-radius:7px;font-size:13px;text-decoration:none;
+  color:var(--text-secondary);white-space:nowrap}
+nav.jump a:hover{background:var(--surface-2);color:var(--text-primary)}
+
+/* ---------- sections & panels ---------- */
+section{margin:0 0 42px;scroll-margin-top:56px}
+h2{font-size:17px;font-weight:640;margin:0 0 4px;display:flex;align-items:baseline;gap:9px}
+h2 .n{font-family:var(--mono);font-size:12px;color:var(--text-muted);font-weight:400}
+.lede{color:var(--text-secondary);font-size:13.5px;margin:0 0 16px;max-width:76ch}
+.card,.panel{background:var(--surface-1);border:1px solid var(--line);border-radius:var(--radius);padding:18px}
+.panel h3{margin:0 0 12px;font-size:13px;letter-spacing:.05em;text-transform:uppercase;
+  color:var(--text-muted);font-weight:600}
+.lab{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:16px}
+@media(max-width:900px){.lab{grid-template-columns:1fr !important}}
+canvas{display:block;width:100%;height:auto;border-radius:8px;background:var(--surface-2)}
+svg.mol{display:block;width:100%;height:auto;background:var(--surface-2);border-radius:8px}
+
+/* ---------- question ---------- */
+.qtext{font-family:var(--serif);font-size:16px;line-height:1.7}
+table.data{border-collapse:collapse;margin:16px 0;font-size:13.5px}
+table.data th,table.data td{border:1px solid var(--line-strong);padding:6px 12px;text-align:center}
+table.data th{background:var(--surface-2);font-weight:600;font-size:12px;color:var(--text-secondary)}
+table.data td.sp{font-family:var(--serif);font-size:15px}
+.assume{font-size:13px;color:var(--text-secondary);border-left:3px solid var(--line-strong);
+  padding:2px 0 2px 12px;margin-top:14px}
+.opts{list-style:none;padding:0;margin:14px 0 0;display:grid;gap:6px;max-width:420px}
+.opts li{border:1px solid var(--line);border-radius:8px;padding:8px 12px;font-family:var(--serif);font-size:15px;
+  display:flex;gap:12px;align-items:center;cursor:pointer;background:var(--surface-1)}
+.opts li:hover{border-color:var(--line-strong)}
+.opts li.correct{border-color:var(--good);background:color-mix(in srgb,var(--good) 12%,transparent)}
+.opts li.wrong{border-color:var(--s2);opacity:.62}
+.opts li .tag{color:var(--text-muted);font-size:12px;font-family:var(--mono)}
+.opts li .mark{margin-left:auto;font-size:12px;font-family:var(--sans)}
+
+/* ---------- controls ---------- */
+.ctrl{margin:14px 0}
+/* NOTE: wrap the descriptive text in ONE <span> or flex spreads the words across the row. */
+.ctrl label{display:flex;justify-content:space-between;align-items:baseline;font-size:13px;margin-bottom:5px}
+.ctrl label .v{font-family:var(--mono);font-size:13px;color:var(--text-primary)}
+input[type=range]{width:100%;accent-color:var(--accent)}
+label.cb{display:flex;gap:8px;align-items:center;font-size:13px;color:var(--text-secondary);
+  cursor:pointer;margin-top:6px}
+.segbtns{display:flex;gap:6px;flex-wrap:wrap}
+.segbtns button{flex:1;min-width:76px;padding:8px 6px;border-radius:8px;border:1px solid var(--line-strong);
+  background:var(--surface-2);color:var(--text-secondary);font-size:13.5px;cursor:pointer;font-family:var(--serif)}
+.segbtns button[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+button.act{padding:7px 13px;border-radius:8px;border:1px solid var(--line-strong);background:var(--surface-2);
+  color:var(--text-primary);font-size:13px;cursor:pointer}
+button.act:hover{border-color:var(--accent);color:var(--accent)}
+button.act.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+button.act:disabled{opacity:.45;cursor:not-allowed}
+
+/* ---------- readouts & info tables ---------- */
+.readouts{display:grid;grid-template-columns:repeat(auto-fit,minmax(112px,1fr));gap:8px}
+.ro{border:1px solid var(--line);border-radius:8px;padding:8px 10px;background:var(--surface-2)}
+.ro .k{font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--text-muted);white-space:nowrap}
+.ro .v{font-family:var(--mono);font-size:16px;font-weight:600;line-height:1.35}
+.ro .u{font-size:10.5px;color:var(--text-muted)}
+table.info{width:100%;border-collapse:collapse;font-size:13.5px}
+table.info td{padding:6px 0;border-bottom:1px solid var(--line)}
+table.info td:first-child{color:var(--text-muted);width:52%;font-size:12.5px;padding-right:12px}
+table.info td:last-child{font-weight:560;text-align:right;font-family:var(--mono)}
+.scrollx{overflow-x:auto}
+
+/* ---------- charts ---------- */
+.chartwrap{position:relative;background:var(--surface-1);border:1px solid var(--line);
+  border-radius:var(--radius);padding:16px}
+svg.chart{display:block;width:100%;height:auto;overflow:visible}
+.tip{position:absolute;pointer-events:none;background:var(--surface-1);border:1px solid var(--line-strong);
+  border-radius:8px;padding:8px 11px;font-size:12px;box-shadow:0 4px 14px rgba(0,0,0,.13);opacity:0;
+  transition:opacity .1s;z-index:5;min-width:130px}
+.tip .t{font-family:var(--mono);font-size:11px;color:var(--text-muted);margin-bottom:4px}
+.tip .r{display:flex;align-items:center;gap:6px;white-space:nowrap}
+.tip .sw{width:9px;height:9px;border-radius:2px;flex:none}
+.tip .rv{margin-left:auto;font-family:var(--mono);font-weight:600}
+.legend{display:flex;flex-wrap:wrap;gap:14px;margin-top:10px;font-size:12.5px;color:var(--text-secondary)}
+.legend span{display:flex;align-items:center;gap:6px}
+.legend i{width:14px;height:3px;border-radius:2px;display:block}
+.legend i.dot{border-radius:50%;width:10px;height:10px}
+
+/* ---------- solution & verification ---------- */
+ol.steps{list-style:none;counter-reset:s;padding:0;margin:0;display:grid;gap:10px}
+ol.steps li{min-width:0;counter-increment:s;border:1px solid var(--line);border-radius:var(--radius);
+  background:var(--surface-1);padding:14px 16px 14px 52px;position:relative}
+ol.steps li::before{content:counter(s);position:absolute;left:15px;top:14px;width:23px;height:23px;
+  border-radius:50%;background:var(--accent);color:#fff;font-size:12px;font-weight:700;
+  display:grid;place-items:center;font-family:var(--mono)}
+ol.steps h4{margin:0 0 6px;font-size:14px;font-weight:640}
+ol.steps p{margin:0 0 6px;font-size:13.5px;color:var(--text-secondary)}
+.eq{min-width:0;font-family:var(--serif);font-size:15px;background:var(--surface-2);border-radius:7px;padding:9px 13px;
+  margin:8px 0;overflow-x:auto}
+.eq .hl{color:var(--good);font-weight:700}
+sub{font-size:.72em} sup{font-size:.72em}
+.verify{border:1px solid var(--good);border-radius:var(--radius);
+  background:color-mix(in srgb,var(--good) 8%,transparent);padding:14px 16px;font-size:13.5px}
+.verify h4{margin:0 0 6px;font-size:13.5px;color:var(--good)}
+.verify ul{margin:6px 0 0;padding-left:18px;color:var(--text-secondary)}
+
+/* ---------- classification & footer ---------- */
+.meta-tbl{width:100%;border-collapse:collapse;font-size:13.5px}
+.meta-tbl td{padding:6px 0;border-bottom:1px solid var(--line);vertical-align:top}
+.meta-tbl td:first-child{color:var(--text-muted);width:165px;font-size:12.5px;padding-right:14px}
+footer{border-top:1px solid var(--line);margin-top:40px;padding-top:16px;font-size:12px;color:var(--text-muted)}
+
+/* ---------- PrayogX branding ---------- */
+.brandbar{display:flex;align-items:center;gap:8px;margin-bottom:9px;text-decoration:none}
+.brandbar .pxmark{width:21px;height:21px;flex:none;display:block}
+.brandbar .wm{font-size:13px;font-weight:800;letter-spacing:.17em;color:var(--text-secondary);line-height:1}
+.brandbar .wm i{font-style:normal;color:var(--accent)}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-inner">
+    <div>
+      <div class="brandbar"><svg class="pxmark" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><rect width="32" height="32" rx="8" fill="var(--accent)"/><path d="M12.5 6.5h7M13.6 6.5v7.2L7.9 24.1a1.5 1.5 0 0 0 1.3 2.3h13.6a1.5 1.5 0 0 0 1.3-2.3l-5.7-10.4V6.5" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.6 20.6h10.8" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg><span class="wm">PRAYOG<i>X</i></span></div>
+      <div class="simid">{{SIM_ID}}</div>
+      <h1>{{Descriptive title — what the student actually does or learns}}</h1>
+      <div class="chips">
+        <span class="chip">JEE Advanced {{YEAR}}</span>
+        <span class="chip">Paper {{N}}</span>
+        <span class="chip">{{Subject}}</span>
+        <span class="chip">Q.{{N}} · Section {{N}}</span>
+        <span class="chip k">{{Chapter}}</span>
+        <span class="chip k">{{Topic}}</span>
+      </div>
+    </div>
+    <div class="answerbox">
+      <div class="lbl">Answer</div>
+      <div class="val">{{(X)}}</div>
+      <div class="sub">{{the decisive numbers in one line}}</div>
+    </div>
+    <button class="themebtn" id="themebtn" type="button">◐ theme</button>
+  </div>
+</header>
+
+<nav class="jump">
+  <ul>
+    <li><a href="#question">Question</a></li>
+    <li><a href="#lab">{{Experiment}}</a></li>
+    <li><a href="#chart">{{Chart}}</a></li>
+    <li><a href="#builder">{{Concept builder}}</a></li>
+    <li><a href="#solution">Step-by-step solution</a></li>
+    <li><a href="#concepts">Concepts &amp; classification</a></li>
+  </ul>
+</nav>
+
+<div class="wrap">
+
+<section id="question">
+  <h2><span class="n">01</span>Original question
+      <span style="font-weight:400;font-size:12.5px;color:var(--text-muted)">— verbatim</span></h2>
+  <div class="card">
+    <div class="qtext">{{Question text, exactly as printed.}}</div>
+    <!-- rebuild any data table here as a real <table class="data"> -->
+    <div class="assume">{{Assumptions given in the paper, if any.}}</div>
+    <ul class="opts" id="opts">
+      <li data-k="A"><span class="tag">(A)</span> {{…}}<span class="mark"></span></li>
+      <li data-k="B"><span class="tag">(B)</span> {{…}}<span class="mark"></span></li>
+      <li data-k="C"><span class="tag">(C)</span> {{…}}<span class="mark"></span></li>
+      <li data-k="D"><span class="tag">(D)</span> {{…}}<span class="mark"></span></li>
+    </ul>
+    <p style="font-size:12.5px;color:var(--text-muted);margin:10px 0 0">Click an option to check it.</p>
+  </div>
+</section>
+
+<section id="lab">
+  <h2><span class="n">02</span>{{Interactive experiment}}</h2>
+  <p class="lede">{{What the apparatus is and what the model behind it actually is.}}</p>
+  <div class="lab">
+    <div class="panel"><h3>{{Apparatus}}</h3>
+      <canvas id="stage" width="720" height="430" aria-label="{{describe the animation}}"></canvas>
+    </div>
+    <div class="panel"><h3>Controls</h3>
+      <!-- segmented buttons, sliders, then a .readouts grid of live values -->
+    </div>
+  </div>
+</section>
+
+<section id="chart">
+  <h2><span class="n">03</span>{{What the chart shows}}</h2>
+  <p class="lede">{{Why this plot is the right way to see the relation.}}</p>
+  <div class="chartwrap" id="cw">
+    <svg class="chart" id="chartsvg" viewBox="0 0 760 400" role="img" aria-label="{{describe the chart}}"></svg>
+    <div class="tip" id="tip"></div>
+  </div>
+  <div class="legend"><!-- one entry per series, colour + name + key value --></div>
+  <details style="margin-top:12px">
+    <summary style="cursor:pointer;font-size:13px;color:var(--text-secondary)">Table view of the plotted data</summary>
+    <!-- <table class="data"> with the same numbers -->
+  </details>
+</section>
+
+<section id="builder">
+  <h2><span class="n">04</span>{{Concept builder / calculator}}</h2>
+  <p class="lede">{{The pivot of the question, made assemblable.}}</p>
+  <div class="card"><!-- … --></div>
+</section>
+
+<section id="solution">
+  <h2><span class="n">05</span>Step-by-step solution</h2>
+  <ol class="steps">
+    <li><h4>{{Step title}}</h4><p>{{…}}</p><div class="eq">{{maths}}</div></li>
+    <li><h4>{{…}}</h4><div class="eq">… = <span class="hl">{{result}}</span></div></li>
+  </ol>
+  <div class="verify" style="margin-top:18px">
+    <h4>✓ Independent verification</h4>
+    <ul>
+      <li><strong>{{Second route:}}</strong> {{recompute a different way}}</li>
+      <li><strong>Dimensional check:</strong> {{units resolve}}</li>
+      <li><strong>Numeric script:</strong> {{exact value from an independent computation}}</li>
+      <li><strong>Physical sanity:</strong> {{vs literature / symmetry / limiting case}}</li>
+      <li><strong>Robustness:</strong> {{does the answer survive small changes in the data?}}</li>
+      <li><strong>Distractor audit:</strong> {{why each wrong option is unreachable}}</li>
+    </ul>
+  </div>
+</section>
+
+<section id="concepts">
+  <h2><span class="n">06</span>Concepts and classification</h2>
+  <div class="lab">
+    <div class="panel"><h3>Formulas used</h3>
+      <div class="eq">{{…}}</div>
+    </div>
+    <div class="panel"><h3>Classification</h3>
+      <table class="meta-tbl">
+        <tr><td>Simulation ID</td><td><code>{{SIM_ID}}</code></td></tr>
+        <tr><td>Exam / Year / Paper</td><td>JEE Advanced · {{YEAR}} · Paper {{N}}</td></tr>
+        <tr><td>Subject</td><td>{{…}}</td></tr>
+        <tr><td>Chapter</td><td>{{…}}</td></tr>
+        <tr><td>Topic</td><td>{{…}}</td></tr>
+        <tr><td>Subtopics</td><td>{{… · … · …}}</td></tr>
+        <tr><td>Question type</td><td>{{Single correct MCQ (+3 / 0 / −1)}}</td></tr>
+        <tr><td>Difficulty</td><td>{{…}}</td></tr>
+        <tr><td>Answer</td><td><strong>{{(X)}}</strong></td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<footer>
+  {{SIM_ID}} · PrayogX · JEE Advanced Interactive Simulation Library · question text reproduced from the official
+  JEE (Advanced) {{YEAR}} Paper {{N}} for educational use.
+</footer>
+</div>
+
+<script>
+(function(){
+"use strict";
+
+/* ---- one source of truth for the page's physical data ---- */
+var DATA = {
+  /* e.g. SPECIES: {...}, CONSTANTS: {...} — every panel reads from here */
+};
+
+/* ---- helpers ---- */
+// Canvas and SVG do NOT inherit CSS variables: read them through css() and
+// re-run every draw function when the theme changes.
+function css(v){ return getComputedStyle(document.documentElement).getPropertyValue(v).trim(); }
+var SVGNS="http://www.w3.org/2000/svg";
+function el(n,a){ var e=document.createElementNS(SVGNS,n); for(var k in a) e.setAttribute(k,a[k]); return e; }
+function sup(n){ var m={"-":"⁻","0":"⁰","1":"¹","2":"²","3":"³","4":"⁴","5":"⁵","6":"⁶","7":"⁷","8":"⁸","9":"⁹"};
+  return String(n).split("").map(function(c){return m[c]||c;}).join(""); }
+function fmtSci(x,dp){
+  if(x===0) return "0";
+  var e=Math.floor(Math.log10(Math.abs(x))), m=x/Math.pow(10,e);
+  if(Math.abs(e)<3 && e>=-2) return x.toFixed(dp===undefined?3:dp);
+  return m.toFixed(2)+"×10"+sup(e);
+}
+
+/* ---- theme toggle: repaint canvas + svg ---- */
+document.getElementById("themebtn").addEventListener("click", function(){
+  var r=document.documentElement;
+  var dark = r.getAttribute("data-theme")==="dark" ||
+    (!r.getAttribute("data-theme") && matchMedia("(prefers-color-scheme: dark)").matches);
+  r.setAttribute("data-theme", dark?"light":"dark");
+  /* redraw(); drawChart(); */
+});
+
+/* ---- option checker (set CORRECT to the right letter) ---- */
+var CORRECT = "{{X}}";
+document.getElementById("opts").addEventListener("click", function(e){
+  var li=e.target.closest("li"); if(!li) return;
+  var all=this.querySelectorAll("li");
+  for(var i=0;i<all.length;i++){ all[i].classList.remove("correct","wrong"); all[i].querySelector(".mark").textContent=""; }
+  if(li.dataset.k===CORRECT){ li.classList.add("correct"); li.querySelector(".mark").textContent="correct"; }
+  else{
+    li.classList.add("wrong"); li.querySelector(".mark").textContent="not correct";
+    var c=this.querySelector('[data-k="'+CORRECT+'"]');
+    c.classList.add("correct"); c.querySelector(".mark").textContent="correct";
+  }
+});
+
+/* ---- model, drawing and interaction go here ----
+   The model must COMPUTE the official answer at runtime.
+   Canvas for animation loops; inline SVG for structures and charts.
+   Colours: --s1 --s2 --s3 --s4 assigned per entity, fixed order, never cycled,
+   every series direct-labelled.                                              */
+
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ADV-2026-P2-CHE-Q01 · Molar Conductivity &amp; Solubility of AgCl</title>
+<meta name="description" content="Interactive conductivity-cell simulation for JEE Advanced 2026 Paper 2 Chemistry Q1: Kohlrausch's law, limiting molar conductivity and the solubility of saturated AgCl.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232a78d6'/%3E%3Cpath d='M12.5 6.5h7M13.6 6.5v7.2L7.9 24.1a1.5 1.5 0 0 0 1.3 2.3h13.6a1.5 1.5 0 0 0 1.3-2.3l-5.7-10.4V6.5' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M10.6 20.6h10.8' stroke='white' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E">
+<meta name="sim-id" content="ADV-2026-P2-CHE-Q01">
+<style>
+:root{
+  color-scheme: light;
+  --surface-0:#f4f4f1; --surface-1:#fcfcfb; --surface-2:#ececea;
+  --line:#d9d9d4; --line-strong:#bcbcb5;
+  --text-primary:#0b0b0b; --text-secondary:#52514e; --text-muted:#77766f;
+  --s1:#2a78d6; --s2:#eb6834; --s3:#1baf7a; --s4:#4a3aa7;
+  --good:#00743f; --accent:#2a78d6;
+  --cation:#e34948; --anion:#2a78d6;
+  --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+  --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --serif:ui-serif,Georgia,"Times New Roman",serif;
+  --radius:10px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme: dark;
+    --surface-0:#111110; --surface-1:#1a1a19; --surface-2:#232322;
+    --line:#34342f; --line-strong:#4a4a44;
+    --text-primary:#ffffff; --text-secondary:#c3c2b7; --text-muted:#95948b;
+    --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#9085e9;
+    --good:#3fae7a; --accent:#3987e5;
+    --cation:#e66767; --anion:#3987e5;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --surface-0:#111110; --surface-1:#1a1a19; --surface-2:#232322;
+  --line:#34342f; --line-strong:#4a4a44;
+  --text-primary:#ffffff; --text-secondary:#c3c2b7; --text-muted:#95948b;
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#9085e9;
+  --good:#3fae7a; --accent:#3987e5;
+  --cation:#e66767; --anion:#3987e5;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--surface-0);color:var(--text-primary);font-family:var(--sans);
+  font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px 80px}
+a{color:var(--accent)}
+
+/* ---------- header ---------- */
+header.top{border-bottom:1px solid var(--line);background:var(--surface-1);margin-bottom:26px}
+.top-inner{max-width:1120px;margin:0 auto;padding:22px 20px 18px;
+  display:flex;flex-wrap:wrap;gap:16px;align-items:flex-start;justify-content:space-between}
+.simid{font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--text-muted)}
+h1{font-size:23px;line-height:1.25;margin:6px 0 10px;font-weight:640;max-width:640px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-size:11.5px;padding:3px 9px;border:1px solid var(--line-strong);border-radius:999px;
+  color:var(--text-secondary);background:var(--surface-2);white-space:nowrap}
+.chip.k{border-color:var(--accent);color:var(--accent);background:transparent}
+.answerbox{border:1px solid var(--line-strong);border-radius:var(--radius);background:var(--surface-2);
+  padding:12px 16px;min-width:190px}
+.answerbox .lbl{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted)}
+.answerbox .val{font-family:var(--mono);font-size:26px;font-weight:600;color:var(--good);line-height:1.2}
+.answerbox .sub{font-size:12px;color:var(--text-secondary)}
+.themebtn{position:absolute;top:14px;right:16px;border:1px solid var(--line-strong);background:var(--surface-2);
+  color:var(--text-secondary);border-radius:8px;padding:4px 9px;font-size:12px;cursor:pointer}
+
+/* ---------- nav ---------- */
+nav.jump{position:sticky;top:0;z-index:20;background:var(--surface-0);border-bottom:1px solid var(--line);
+  padding:8px 0;margin-bottom:26px}
+nav.jump ul{max-width:1120px;margin:0 auto;padding:0 20px;list-style:none;display:flex;gap:4px;overflow-x:auto}
+nav.jump a{display:block;padding:5px 11px;border-radius:7px;font-size:13px;text-decoration:none;
+  color:var(--text-secondary);white-space:nowrap}
+nav.jump a:hover{background:var(--surface-2);color:var(--text-primary)}
+
+/* ---------- sections ---------- */
+section{margin:0 0 42px;scroll-margin-top:56px}
+h2{font-size:17px;font-weight:640;margin:0 0 4px;display:flex;align-items:baseline;gap:9px}
+h2 .n{font-family:var(--mono);font-size:12px;color:var(--text-muted);font-weight:400}
+.lede{color:var(--text-secondary);font-size:13.5px;margin:0 0 16px;max-width:74ch}
+.card{background:var(--surface-1);border:1px solid var(--line);border-radius:var(--radius);padding:18px}
+
+/* ---------- question ---------- */
+.qtext{font-family:var(--serif);font-size:16px;line-height:1.7}
+table.data{border-collapse:collapse;margin:16px 0;font-size:14px}
+table.data th,table.data td{border:1px solid var(--line-strong);padding:6px 14px;text-align:center}
+table.data th{background:var(--surface-2);font-weight:600;font-size:12.5px;color:var(--text-secondary)}
+table.data td.salt{font-family:var(--serif);font-size:15px}
+.opts{list-style:none;padding:0;margin:14px 0 0;display:grid;gap:6px;max-width:280px}
+.opts li{border:1px solid var(--line);border-radius:8px;padding:7px 12px;font-family:var(--mono);font-size:14px;
+  display:flex;gap:12px;align-items:center;cursor:pointer;background:var(--surface-1)}
+.opts li:hover{border-color:var(--line-strong)}
+.opts li.correct{border-color:var(--good);background:color-mix(in srgb,var(--good) 12%,transparent)}
+.opts li.wrong{border-color:var(--s2);opacity:.6}
+.opts li .tag{color:var(--text-muted);font-size:12px}
+.opts li .mark{margin-left:auto;font-size:12px;font-family:var(--sans)}
+.assume{font-size:13px;color:var(--text-secondary);border-left:3px solid var(--line-strong);
+  padding:2px 0 2px 12px;margin-top:14px}
+
+/* ---------- lab layout ---------- */
+.lab{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:16px}
+@media(max-width:880px){.lab{grid-template-columns:1fr !important}}
+.panel{background:var(--surface-1);border:1px solid var(--line);border-radius:var(--radius);padding:16px}
+.panel h3{margin:0 0 12px;font-size:13px;letter-spacing:.05em;text-transform:uppercase;color:var(--text-muted);font-weight:600}
+canvas{display:block;width:100%;height:auto;border-radius:8px;background:var(--surface-2)}
+
+.ctrl{margin-bottom:14px}
+.ctrl label{display:flex;justify-content:space-between;align-items:baseline;font-size:13px;margin-bottom:5px}
+.ctrl label .v{font-family:var(--mono);font-size:13px;color:var(--text-primary)}
+input[type=range]{width:100%;accent-color:var(--accent)}
+.segbtns{display:flex;gap:6px;flex-wrap:wrap}
+.segbtns button{flex:1;min-width:78px;padding:7px 6px;border-radius:8px;border:1px solid var(--line-strong);
+  background:var(--surface-2);color:var(--text-secondary);font-size:13px;cursor:pointer;font-family:var(--serif)}
+.segbtns button[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+button.act{padding:7px 13px;border-radius:8px;border:1px solid var(--line-strong);background:var(--surface-2);
+  color:var(--text-primary);font-size:13px;cursor:pointer;font-family:var(--sans)}
+button.act:hover{border-color:var(--accent);color:var(--accent)}
+button.act.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+button.act:disabled{opacity:.45;cursor:not-allowed}
+
+.readouts{display:grid;grid-template-columns:repeat(auto-fit,minmax(112px,1fr));gap:8px;margin-top:4px}
+.ro{border:1px solid var(--line);border-radius:8px;padding:8px 10px;background:var(--surface-2)}
+.ro .k{font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--text-muted);white-space:nowrap}
+.ro .v{font-family:var(--mono);font-size:16px;font-weight:600;line-height:1.35}
+.ro .u{font-size:10.5px;color:var(--text-muted)}
+
+table.log{width:100%;border-collapse:collapse;font-size:12.5px;font-family:var(--mono);margin-top:10px}
+table.log th,table.log td{padding:4px 6px;text-align:right;border-bottom:1px solid var(--line)}
+table.log th{color:var(--text-muted);font-weight:500;font-size:11px;text-align:right;font-family:var(--sans)}
+table.log td:first-child,table.log th:first-child{text-align:left}
+.empty{color:var(--text-muted);font-size:12.5px;padding:10px 0}
+
+/* ---------- chart ---------- */
+.chartwrap{position:relative;background:var(--surface-1);border:1px solid var(--line);border-radius:var(--radius);padding:14px}
+svg.chart{display:block;width:100%;height:auto;overflow:visible}
+.tip{position:absolute;pointer-events:none;background:var(--surface-1);border:1px solid var(--line-strong);
+  border-radius:8px;padding:7px 10px;font-size:12px;box-shadow:0 4px 14px rgba(0,0,0,.13);opacity:0;
+  transition:opacity .1s;min-width:120px;z-index:5}
+.tip .t{font-family:var(--mono);font-size:11px;color:var(--text-muted);margin-bottom:4px}
+.tip .r{display:flex;align-items:center;gap:6px;white-space:nowrap}
+.tip .sw{width:9px;height:9px;border-radius:2px;flex:none}
+.tip .rv{margin-left:auto;font-family:var(--mono);font-weight:600}
+.legend{display:flex;flex-wrap:wrap;gap:14px;margin-top:10px;font-size:12.5px;color:var(--text-secondary)}
+.legend span{display:flex;align-items:center;gap:6px}
+.legend i{width:14px;height:3px;border-radius:2px;display:block}
+
+/* ---------- kohlrausch ---------- */
+.kgrid{display:grid;gap:10px}
+.krow{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;
+  border:1px solid var(--line);border-radius:8px;padding:10px 13px;background:var(--surface-1)}
+.krow .op{font-family:var(--mono);font-size:19px;color:var(--text-muted);width:14px;text-align:center}
+.krow .ions{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.krow .val{font-family:var(--mono);font-size:15px;font-weight:600}
+.ion{font-family:var(--serif);font-size:13.5px;padding:2px 9px;border-radius:999px;border:1px solid var(--line-strong);
+  background:var(--surface-2);transition:opacity .35s,transform .35s}
+.ion.cat{border-color:var(--cation);color:var(--cation)}
+.ion.an{border-color:var(--anion);color:var(--anion)}
+.ion.gone{opacity:.18;transform:scale(.86);text-decoration:line-through}
+.krow.result{border-color:var(--good);background:color-mix(in srgb,var(--good) 9%,transparent)}
+.krow.result .val{color:var(--good);font-size:17px}
+
+/* ---------- solubility ---------- */
+.solgrid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px}
+@media(max-width:820px){.solgrid{grid-template-columns:1fr !important}}
+.chain{display:grid;gap:8px;font-family:var(--mono);font-size:13.5px}
+.chain div{padding:8px 12px;border:1px solid var(--line);border-radius:8px;background:var(--surface-1);
+  display:flex;justify-content:space-between;gap:14px;align-items:baseline}
+.chain div .lb{font-family:var(--sans);font-size:12.5px;color:var(--text-secondary)}
+.chain div.hi{border-color:var(--good);background:color-mix(in srgb,var(--good) 9%,transparent)}
+.chain div.hi .rv{color:var(--good);font-weight:700;font-size:16px}
+
+/* ---------- solution steps ---------- */
+ol.steps{list-style:none;counter-reset:s;padding:0;margin:0;display:grid;gap:10px}
+ol.steps li{min-width:0;counter-increment:s;border:1px solid var(--line);border-radius:var(--radius);background:var(--surface-1);
+  padding:14px 16px 14px 52px;position:relative}
+ol.steps li::before{content:counter(s);position:absolute;left:15px;top:14px;width:23px;height:23px;border-radius:50%;
+  background:var(--accent);color:#fff;font-size:12px;font-weight:700;display:grid;place-items:center;font-family:var(--mono)}
+ol.steps h4{margin:0 0 6px;font-size:14px;font-weight:640}
+ol.steps p{margin:0 0 6px;font-size:13.5px;color:var(--text-secondary)}
+.eq{min-width:0;font-family:var(--serif);font-size:15px;background:var(--surface-2);border-radius:7px;padding:9px 13px;
+  margin:8px 0;overflow-x:auto;white-space:nowrap}
+.eq .hl{color:var(--good);font-weight:700}
+sub{font-size:.72em} sup{font-size:.72em}
+
+.verify{border:1px solid var(--good);border-radius:var(--radius);
+  background:color-mix(in srgb,var(--good) 8%,transparent);padding:14px 16px;font-size:13.5px}
+.verify h4{margin:0 0 6px;font-size:13.5px;color:var(--good)}
+.verify ul{margin:6px 0 0;padding-left:18px;color:var(--text-secondary)}
+
+.meta-tbl{width:100%;border-collapse:collapse;font-size:13.5px}
+.meta-tbl td{padding:6px 0;border-bottom:1px solid var(--line);vertical-align:top}
+.meta-tbl td:first-child{color:var(--text-muted);width:170px;font-size:12.5px;padding-right:14px}
+footer{border-top:1px solid var(--line);margin-top:40px;padding-top:16px;font-size:12px;color:var(--text-muted)}
+
+/* ---------- PrayogX branding ---------- */
+.brandbar{display:flex;align-items:center;gap:8px;margin-bottom:9px;text-decoration:none}
+.brandbar .pxmark{width:21px;height:21px;flex:none;display:block}
+.brandbar .wm{font-size:13px;font-weight:800;letter-spacing:.17em;color:var(--text-secondary);line-height:1}
+.brandbar .wm i{font-style:normal;color:var(--accent)}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-inner" style="position:relative">
+    <div>
+      <div class="brandbar"><svg class="pxmark" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><rect width="32" height="32" rx="8" fill="var(--accent)"/><path d="M12.5 6.5h7M13.6 6.5v7.2L7.9 24.1a1.5 1.5 0 0 0 1.3 2.3h13.6a1.5 1.5 0 0 0 1.3-2.3l-5.7-10.4V6.5" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.6 20.6h10.8" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg><span class="wm">PRAYOG<i>X</i></span></div>
+      <div class="simid">ADV-2026-P2-CHE-Q01</div>
+      <h1>Molar conductivity, Kohlrausch's law and the solubility of saturated AgCl</h1>
+      <div class="chips">
+        <span class="chip">JEE Advanced 2026</span>
+        <span class="chip">Paper 2</span>
+        <span class="chip">Chemistry</span>
+        <span class="chip">Q.1 · Section 1</span>
+        <span class="chip k">Electrochemistry</span>
+        <span class="chip k">Conductance of solutions</span>
+      </div>
+    </div>
+    <div class="answerbox">
+      <div class="lbl">Answer</div>
+      <div class="val">(C) &nbsp;5</div>
+      <div class="sub">log<sub>10</sub>(X<sup>&minus;1</sup>) = 5, X = 1.0 &times; 10<sup>&minus;5</sup> M</div>
+    </div>
+    <button class="themebtn" id="themebtn" type="button">◐ theme</button>
+  </div>
+</header>
+
+<nav class="jump">
+  <ul>
+    <li><a href="#question">Question</a></li>
+    <li><a href="#lab">Conductivity lab</a></li>
+    <li><a href="#extrap">Λ° by extrapolation</a></li>
+    <li><a href="#kohl">Kohlrausch builder</a></li>
+    <li><a href="#solub">Solubility of AgCl</a></li>
+    <li><a href="#solution">Step-by-step solution</a></li>
+    <li><a href="#concepts">Concepts &amp; formulas</a></li>
+  </ul>
+</nav>
+
+<div class="wrap">
+
+<!-- ============ 1. QUESTION ============ -->
+<section id="question">
+  <h2><span class="n">01</span>Original question <span style="font-weight:400;font-size:12.5px;color:var(--text-muted)">— verbatim</span></h2>
+  <div class="card">
+    <div class="qtext">
+      At 300 K, the molar conductivities of the aqueous solutions of three salts at two different
+      concentrations are given below:
+    </div>
+
+    <table class="data">
+      <thead>
+        <tr><th rowspan="2">Salt</th><th>Concentration</th><th>Molar conductivity</th></tr>
+        <tr><th>(M)</th><th>(S cm<sup>2</sup> mol<sup>&minus;1</sup>)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="salt" rowspan="2">NaNO<sub>3</sub></td><td>0.01</td><td>111</td></tr>
+        <tr><td>0.04</td><td>101</td></tr>
+        <tr><td class="salt" rowspan="2">NaCl</td><td>0.01</td><td>117</td></tr>
+        <tr><td>0.04</td><td>107</td></tr>
+        <tr><td class="salt" rowspan="2">AgNO<sub>3</sub></td><td>0.01</td><td>125</td></tr>
+        <tr><td>0.04</td><td>116</td></tr>
+      </tbody>
+    </table>
+
+    <div class="qtext">
+      The conductivity of a saturated aqueous solution of AgCl is 1.40&times;10<sup>&minus;6</sup> S cm<sup>&minus;1</sup>
+      at 300 K. If the solubility of AgCl in water at 300 K is <em>X</em> mol L<sup>&minus;1</sup>, then
+      log<sub>10</sub>(<em>X</em><sup>&nbsp;&minus;1</sup>) is
+    </div>
+
+    <div class="assume">
+      (Assume that AgCl dissolved in water ionizes completely and that the molar conductivity of saturated
+      AgCl solution is equal to its limiting molar conductivity.)
+    </div>
+
+    <ul class="opts" id="opts">
+      <li data-k="A"><span class="tag">(A)</span> 3 <span class="mark"></span></li>
+      <li data-k="B"><span class="tag">(B)</span> 4 <span class="mark"></span></li>
+      <li data-k="C"><span class="tag">(C)</span> 5 <span class="mark"></span></li>
+      <li data-k="D"><span class="tag">(D)</span> 6 <span class="mark"></span></li>
+    </ul>
+    <p style="font-size:12.5px;color:var(--text-muted);margin:10px 0 0">Click an option to check it.</p>
+  </div>
+</section>
+
+<!-- ============ 2. LAB ============ -->
+<section id="lab">
+  <h2><span class="n">02</span>Interactive conductivity cell</h2>
+  <p class="lede">
+    A pair of platinised-Pt electrodes dips into the electrolyte. The meter drives a small AC signal and reads the
+    conductance <em>G</em>; the conductivity is κ = <em>G</em> &times; <em>G</em><sub>cell</sub> and the molar
+    conductivity is Λ<sub>m</sub> = 1000κ/<em>c</em>. Change the salt and the concentration, then record points:
+    the solution model is the Debye–Hückel–Onsager law Λ<sub>m</sub> = Λ°<sub>m</sub> − A√<em>c</em>, with
+    Λ° and A taken from the paper's own data.
+  </p>
+
+  <div class="lab">
+    <div class="panel">
+      <h3>Cell</h3>
+      <canvas id="cell" width="720" height="430" aria-label="Animated conductivity cell with drifting ions"></canvas>
+      <p style="font-size:11.5px;color:var(--text-muted);margin:8px 0 0">
+        Ion count scales with concentration; drift speed is drawn proportional to the solution's molar
+        conductivity (schematic — the paper's data fix the salt totals, not the individual ionic values).
+      </p>
+    </div>
+
+    <div class="panel">
+      <h3>Controls</h3>
+      <div class="ctrl">
+        <label>Electrolyte</label>
+        <div class="segbtns" id="saltbtns">
+          <button type="button" data-s="NaNO3" aria-pressed="false">NaNO<sub>3</sub></button>
+          <button type="button" data-s="NaCl" aria-pressed="true">NaCl</button>
+          <button type="button" data-s="AgNO3" aria-pressed="false">AgNO<sub>3</sub></button>
+        </div>
+      </div>
+      <div class="ctrl">
+        <label for="conc"><span>Concentration <em>c</em></span> <span class="v" id="concv">0.0100 M</span></label>
+        <input type="range" id="conc" min="0" max="1000" value="500">
+        <div style="display:flex;justify-content:space-between;font-size:10.5px;color:var(--text-muted)">
+          <span>1&times;10⁻⁴ M</span><span>0.05 M</span>
+        </div>
+      </div>
+      <div class="ctrl">
+        <label for="gcell"><span>Cell constant <em>G</em><sub>cell</sub></span> <span class="v" id="gcellv">1.00 cm⁻¹</span></label>
+        <input type="range" id="gcell" min="20" max="300" value="100">
+      </div>
+      <div class="ctrl">
+        <label for="temp">Temperature <span class="v" id="tempv">300 K</span></label>
+        <input type="range" id="temp" min="288" max="318" value="300">
+        <div style="font-size:10.5px;color:var(--text-muted)">≈2 % per K applied to Λ (illustrative); the question's data are at 300 K.</div>
+      </div>
+
+      <h3 style="margin-top:18px">Live readings</h3>
+      <div class="readouts">
+        <div class="ro"><div class="k">Conductivity κ</div><div class="v" id="ro-k">—</div><div class="u">S cm⁻¹</div></div>
+        <div class="ro"><div class="k">Molar cond. Λ<sub>m</sub></div><div class="v" id="ro-lm">—</div><div class="u">S cm² mol⁻¹</div></div>
+        <div class="ro"><div class="k">Conductance G</div><div class="v" id="ro-g">—</div><div class="u">S (=Ω⁻¹)</div></div>
+        <div class="ro"><div class="k">Resistance R</div><div class="v" id="ro-r">—</div><div class="u">Ω</div></div>
+        <div class="ro"><div class="k">√c</div><div class="v" id="ro-sq">—</div><div class="u">M<sup>1/2</sup></div></div>
+        <div class="ro"><div class="k">Λ° − Λ<sub>m</sub></div><div class="v" id="ro-def">—</div><div class="u">S cm² mol⁻¹</div></div>
+      </div>
+
+      <div style="display:flex;gap:8px;margin-top:14px;flex-wrap:wrap">
+        <button class="act primary" id="rec" type="button">Record data point</button>
+        <button class="act" id="loadpaper" type="button">Load the paper's 6 points</button>
+        <button class="act" id="clr" type="button">Clear log</button>
+      </div>
+
+      <table class="log" id="logtbl" hidden>
+        <thead><tr><th>Salt</th><th>c (M)</th><th>√c</th><th>κ (S cm⁻¹)</th><th>Λ<sub>m</sub></th></tr></thead>
+        <tbody></tbody>
+      </table>
+      <div class="empty" id="logempty">No measurements recorded yet.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 3. EXTRAPOLATION CHART ============ -->
+<section id="extrap">
+  <h2><span class="n">03</span>Λ<sub>m</sub> versus √c — reading Λ° off the intercept</h2>
+  <p class="lede">
+    For a strong electrolyte Λ<sub>m</sub> falls linearly in √<em>c</em>, so the intercept at √<em>c</em> = 0 is the
+    limiting molar conductivity Λ°<sub>m</sub>. Solid markers are the two tabulated points per salt; the dashed
+    violet line is AgCl, which is never measured directly — it is <em>constructed</em> in the next panel.
+    Hollow markers are your own recorded points, and their least-squares fit is drawn when you have two or more
+    for one salt.
+  </p>
+  <div class="chartwrap" id="cw">
+    <svg class="chart" id="chart" viewBox="0 0 760 420" role="img"
+         aria-label="Molar conductivity versus square root of concentration for NaNO3, NaCl, AgNO3 and AgCl"></svg>
+    <div class="tip" id="tip"></div>
+  </div>
+  <div class="legend">
+    <span><i style="background:var(--s1)"></i>NaNO<sub>3</sub> · Λ° = 121</span>
+    <span><i style="background:var(--s2)"></i>NaCl · Λ° = 127</span>
+    <span><i style="background:var(--s3)"></i>AgNO<sub>3</sub> · Λ° = 134</span>
+    <span><i style="background:var(--s4)"></i>AgCl (derived) · Λ° = 140</span>
+    <span style="color:var(--text-muted)">○ your recorded points</span>
+  </div>
+  <div id="fitsum" style="margin-top:8px;font-size:12.5px;color:var(--text-secondary);font-family:var(--mono)"></div>
+  <details style="margin-top:12px">
+    <summary style="cursor:pointer;font-size:13px;color:var(--text-secondary)">Table view of the plotted data</summary>
+    <table class="data" style="margin-top:10px">
+      <thead><tr><th>Salt</th><th>Λ<sub>m</sub> at 0.01 M</th><th>Λ<sub>m</sub> at 0.04 M</th><th>Slope A</th><th>Λ°<sub>m</sub> (intercept)</th></tr></thead>
+      <tbody>
+        <tr><td class="salt">NaNO<sub>3</sub></td><td>111</td><td>101</td><td>100</td><td>121</td></tr>
+        <tr><td class="salt">NaCl</td><td>117</td><td>107</td><td>100</td><td>127</td></tr>
+        <tr><td class="salt">AgNO<sub>3</sub></td><td>125</td><td>116</td><td>90</td><td>134</td></tr>
+        <tr><td class="salt">AgCl</td><td colspan="2" style="color:var(--text-muted)">not measurable (insoluble)</td><td>—</td><td>140</td></tr>
+      </tbody>
+    </table>
+  </details>
+</section>
+
+<!-- ============ 4. KOHLRAUSCH ============ -->
+<section id="kohl">
+  <h2><span class="n">04</span>Kohlrausch builder — assembling Λ°(AgCl)</h2>
+  <p class="lede">
+    At infinite dilution each ion migrates independently, so Λ° of a salt is just the sum of its two ionic
+    contributions. Combine the three measured salts so that Na<sup>+</sup> and NO<sub>3</sub><sup>−</sup> cancel
+    and only Ag<sup>+</sup> + Cl<sup>−</sup> survives.
+  </p>
+  <div class="card">
+    <div class="kgrid" id="kgrid">
+      <div class="krow" data-r="1">
+        <span class="op">+</span>
+        <span class="ions"><b style="font-family:var(--serif);font-size:15px;min-width:66px;display:inline-block">AgNO<sub>3</sub></b>
+          <span class="ion cat" data-ion="Ag">Ag⁺</span><span style="color:var(--text-muted)">+</span>
+          <span class="ion an" data-ion="NO3">NO₃⁻</span></span>
+        <span class="val">134</span>
+      </div>
+      <div class="krow" data-r="2">
+        <span class="op">+</span>
+        <span class="ions"><b style="font-family:var(--serif);font-size:15px;min-width:66px;display:inline-block">NaCl</b>
+          <span class="ion cat" data-ion="Na">Na⁺</span><span style="color:var(--text-muted)">+</span>
+          <span class="ion an" data-ion="Cl">Cl⁻</span></span>
+        <span class="val">127</span>
+      </div>
+      <div class="krow" data-r="3">
+        <span class="op">−</span>
+        <span class="ions"><b style="font-family:var(--serif);font-size:15px;min-width:66px;display:inline-block">NaNO<sub>3</sub></b>
+          <span class="ion cat" data-ion="Na">Na⁺</span><span style="color:var(--text-muted)">+</span>
+          <span class="ion an" data-ion="NO3">NO₃⁻</span></span>
+        <span class="val">121</span>
+      </div>
+      <div class="krow result">
+        <span class="op">=</span>
+        <span class="ions"><b style="font-family:var(--serif);font-size:15px;min-width:66px;display:inline-block">AgCl</b>
+          <span class="ion cat">Ag⁺</span><span style="color:var(--text-muted)">+</span>
+          <span class="ion an">Cl⁻</span></span>
+        <span class="val" id="kres">140</span>
+      </div>
+    </div>
+    <div style="display:flex;gap:8px;margin-top:14px;flex-wrap:wrap;align-items:center">
+      <button class="act primary" id="cancelbtn" type="button">Cancel the spectator ions</button>
+      <button class="act" id="kreset" type="button">Reset</button>
+      <span style="font-size:13px;color:var(--text-secondary)" id="kmsg">Λ°(AgCl) = 134 + 127 − 121 = <b>140 S cm² mol⁻¹</b></span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 5. SOLUBILITY ============ -->
+<section id="solub">
+  <h2><span class="n">05</span>From κ of the saturated solution to the solubility</h2>
+  <p class="lede">
+    A saturated AgCl solution is so dilute that its molar conductivity is already the limiting value. Rearranging
+    Λ<sub>m</sub> = 1000κ/<em>c</em> gives the solubility directly. Drag κ to see how the answer responds —
+    the paper's value is 1.40&times;10<sup>−6</sup> S cm<sup>−1</sup>.
+  </p>
+  <div class="solgrid">
+    <div class="panel">
+      <h3>Saturated AgCl</h3>
+      <canvas id="sat" width="620" height="420" aria-label="Beaker of saturated silver chloride with undissolved precipitate"></canvas>
+    </div>
+    <div class="panel">
+      <h3>Calculation</h3>
+      <div class="ctrl">
+        <label for="kap"><span>κ of saturated solution</span> <span class="v" id="kapv">1.40×10⁻⁶ S cm⁻¹</span></label>
+        <input type="range" id="kap" min="10" max="400" value="140">
+      </div>
+      <div class="ctrl">
+        <label for="lam"><span>Λ°<sub>m</sub>(AgCl) used</span> <span class="v" id="lamv">140 S cm² mol⁻¹</span></label>
+        <input type="range" id="lam" min="100" max="180" value="140">
+        <div style="font-size:10.5px;color:var(--text-muted)">Locked to the Kohlrausch result by default; move it to see the sensitivity.</div>
+      </div>
+      <div class="chain" id="chain">
+        <div><span class="lb">κ (measured)</span><span class="rv" id="c-k">1.40×10⁻⁶ S cm⁻¹</span></div>
+        <div><span class="lb">Λ°<sub>m</sub>(AgCl) (Kohlrausch)</span><span class="rv" id="c-l">140 S cm² mol⁻¹</span></div>
+        <div><span class="lb">X = 1000κ / Λ°<sub>m</sub></span><span class="rv" id="c-x">1.00×10⁻⁵ mol L⁻¹</span></div>
+        <div><span class="lb">K<sub>sp</sub> = X²</span><span class="rv" id="c-ksp">1.00×10⁻¹⁰</span></div>
+        <div class="hi"><span class="lb">log<sub>10</sub>(X⁻¹)</span><span class="rv" id="c-ans">5.00</span></div>
+      </div>
+      <p style="font-size:12.5px;color:var(--text-secondary);margin:12px 0 0" id="matchmsg"></p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 6. SOLUTION ============ -->
+<section id="solution">
+  <h2><span class="n">06</span>Step-by-step solution</h2>
+  <ol class="steps">
+    <li>
+      <h4>Use the linear √c law for strong electrolytes</h4>
+      <p>NaNO<sub>3</sub>, NaCl and AgNO<sub>3</sub> are strong electrolytes, so over this dilute range the
+      Debye–Hückel–Onsager relation holds:</p>
+      <div class="eq">Λ<sub>m</sub> = Λ°<sub>m</sub> − A√c</div>
+      <p>Two concentrations per salt are given, which is exactly what a straight line needs.</p>
+    </li>
+    <li>
+      <h4>Extrapolate each salt to infinite dilution</h4>
+      <p>With c₁ = 0.01 M (√c = 0.1) and c₂ = 0.04 M (√c = 0.2), the √c values differ by exactly 0.1, so the
+      extrapolation collapses to a one-line formula:</p>
+      <div class="eq">Λ° = Λ(0.01) + A(0.1),&nbsp;&nbsp; A = [Λ(0.01) − Λ(0.04)] / 0.1 &nbsp;⟹&nbsp; Λ° = 2Λ(0.01) − Λ(0.04)</div>
+      <div class="eq">
+        NaNO<sub>3</sub>: 2(111) − 101 = <span class="hl">121</span> &nbsp;&nbsp;
+        NaCl: 2(117) − 107 = <span class="hl">127</span> &nbsp;&nbsp;
+        AgNO<sub>3</sub>: 2(125) − 116 = <span class="hl">134</span>
+      </div>
+    </li>
+    <li>
+      <h4>Build Λ°(AgCl) with Kohlrausch's law of independent migration</h4>
+      <div class="eq">Λ°(AgCl) = λ°(Ag⁺) + λ°(Cl⁻)</div>
+      <div class="eq">= [λ°(Ag⁺)+λ°(NO₃⁻)] + [λ°(Na⁺)+λ°(Cl⁻)] − [λ°(Na⁺)+λ°(NO₃⁻)]</div>
+      <div class="eq">= Λ°(AgNO<sub>3</sub>) + Λ°(NaCl) − Λ°(NaNO<sub>3</sub>) = 134 + 127 − 121 = <span class="hl">140 S cm² mol⁻¹</span></div>
+      <p>Na<sup>+</sup> and NO<sub>3</sub><sup>−</sup> appear once with a plus sign and once with a minus sign, so
+      they cancel identically — no individual ionic conductivity is ever needed.</p>
+    </li>
+    <li>
+      <h4>Convert the measured κ into a concentration</h4>
+      <p>The problem states that for the saturated solution Λ<sub>m</sub> = Λ°<sub>m</sub> = 140 S cm² mol⁻¹
+      (legitimate: at ~10⁻⁵ M the A√c correction is only about 0.3 S cm² mol⁻¹, i.e. 0.2 %).</p>
+      <div class="eq">Λ<sub>m</sub> = 1000 κ / c &nbsp;⟹&nbsp; X = c = 1000 κ / Λ°<sub>m</sub></div>
+      <div class="eq">X = (1000 cm³ L⁻¹)(1.40×10⁻⁶ S cm⁻¹) / (140 S cm² mol⁻¹) = <span class="hl">1.00×10⁻⁵ mol L⁻¹</span></div>
+    </li>
+    <li>
+      <h4>Take the logarithm</h4>
+      <div class="eq">log<sub>10</sub>(X⁻¹) = −log<sub>10</sub>(1.00×10⁻⁵) = <span class="hl">5</span></div>
+      <p>Answer: <strong>(C) 5</strong>. As a by-product, K<sub>sp</sub>(AgCl) = X² = 1.0×10⁻¹⁰ at 300 K, which
+      matches the accepted value closely.</p>
+    </li>
+  </ol>
+
+  <div class="verify" style="margin-top:18px">
+    <h4>✓ Independent verification</h4>
+    <ul>
+      <li><strong>Slopes recomputed from scratch:</strong> A = Δ Λ / Δ√c gives 100, 100 and 90 S cm² mol⁻¹ M<sup>−1/2</sup>;
+          intercepts 121, 127, 134 — identical to the shortcut 2Λ(0.01) − Λ(0.04).</li>
+      <li><strong>Dimensional check:</strong> (cm³ L⁻¹)(S cm⁻¹)/(S cm² mol⁻¹) = mol L⁻¹ ✓.</li>
+      <li><strong>Numerical check (independent script):</strong> 1000 × 1.40×10⁻⁶ / 140 = 1.000000×10⁻⁵;
+          −log₁₀ = 5.000000 exactly.</li>
+      <li><strong>Physical sanity:</strong> K<sub>sp</sub> = 1.0×10⁻¹⁰ against the literature value ≈1.8×10⁻¹⁰ at 298 K —
+          right order of magnitude for a designed problem.</li>
+      <li><strong>Self-consistency of the slope pattern:</strong> both sodium salts share A = 100 and only
+          AgNO<sub>3</sub> differs (90), consistent with the same 1:1 charge type but a different ion pair —
+          no data point is an outlier.</li>
+      <li><strong>Distractor audit:</strong> 3, 4 and 6 correspond to κ read at the wrong power of ten or to
+          forgetting the 1000 cm³ L⁻¹ factor; none arises from a legitimate route.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ 7. CONCEPTS ============ -->
+<section id="concepts">
+  <h2><span class="n">07</span>Concepts, formulas and classification</h2>
+  <div class="lab">
+    <div class="panel">
+      <h3>Formulas used</h3>
+      <div class="eq">κ = G · G<sub>cell</sub> = (1/R)(l/A)</div>
+      <div class="eq">Λ<sub>m</sub> = 1000 κ / c &nbsp; (c in mol L⁻¹)</div>
+      <div class="eq">Λ<sub>m</sub> = Λ°<sub>m</sub> − A√c &nbsp; (Debye–Hückel–Onsager)</div>
+      <div class="eq">Λ°<sub>m</sub> = ν₊λ°₊ + ν₋λ°₋ &nbsp; (Kohlrausch)</div>
+      <div class="eq">K<sub>sp</sub>(AgCl) = [Ag⁺][Cl⁻] = X²</div>
+    </div>
+    <div class="panel">
+      <h3>Classification</h3>
+      <table class="meta-tbl">
+        <tr><td>Simulation ID</td><td><code>ADV-2026-P2-CHE-Q01</code></td></tr>
+        <tr><td>Exam / Year / Paper</td><td>JEE Advanced · 2026 · Paper 2</td></tr>
+        <tr><td>Subject</td><td>Chemistry (Physical)</td></tr>
+        <tr><td>Chapter</td><td>Electrochemistry</td></tr>
+        <tr><td>Topic</td><td>Conductance of electrolytic solutions</td></tr>
+        <tr><td>Subtopics</td><td>Molar &amp; limiting molar conductivity · Kohlrausch's law of independent migration · Solubility of a sparingly soluble salt from conductance</td></tr>
+        <tr><td>Question type</td><td>Single correct MCQ (+3 / 0 / −1)</td></tr>
+        <tr><td>Difficulty</td><td>Moderate</td></tr>
+        <tr><td>Answer</td><td><strong>(C) 5</strong></td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<footer>
+  ADV-2026-P2-CHE-Q01 · PrayogX · JEE Advanced Interactive Simulation Library · question text reproduced from the official
+  JEE (Advanced) 2026 Paper 2 for educational use.
+</footer>
+</div>
+
+<script>
+(function(){
+"use strict";
+
+/* ================= physical model ================= */
+// Λm = Λ0 - A*sqrt(c). Λ0 and A derived from the paper's own two-point data.
+var SALTS = {
+  NaNO3: {label:"NaNO₃", L0:121, A:100, cat:"Na⁺", an:"NO₃⁻", color:"--s1", d:[[0.01,111],[0.04,101]]},
+  NaCl : {label:"NaCl",       L0:127, A:100, cat:"Na⁺", an:"Cl⁻",      color:"--s2", d:[[0.01,117],[0.04,107]]},
+  AgNO3: {label:"AgNO₃", L0:134, A:90,  cat:"Ag⁺", an:"NO₃⁻", color:"--s3", d:[[0.01,125],[0.04,116]]},
+  AgCl : {label:"AgCl",       L0:140, A:100, cat:"Ag⁺", an:"Cl⁻",      color:"--s4", d:[]}
+};
+var LM_AGCL = SALTS.AgNO3.L0 + SALTS.NaCl.L0 - SALTS.NaNO3.L0; // 140
+
+function lambdaM(salt, c, T){
+  var s = SALTS[salt];
+  var base = s.L0 - s.A*Math.sqrt(c);
+  var f = 1 + 0.02*((T===undefined?300:T) - 300);   // illustrative temperature coefficient
+  return Math.max(base*f, 1);
+}
+function kappaOf(salt, c, T){ return lambdaM(salt,c,T)*c/1000; }  // S cm^-1
+
+function css(v){ return getComputedStyle(document.documentElement).getPropertyValue(v).trim(); }
+function fmtSci(x, dp){
+  if(x===0) return "0";
+  var e = Math.floor(Math.log10(Math.abs(x)));
+  var m = x/Math.pow(10,e);
+  if(Math.abs(e)<3 && e>=-2) return x.toFixed(dp===undefined?3:dp);
+  return m.toFixed(2)+"×10"+sup(e);
+}
+function sup(n){
+  var m = {"-":"⁻","0":"⁰","1":"¹","2":"²","3":"³","4":"⁴",
+           "5":"⁵","6":"⁶","7":"⁷","8":"⁸","9":"⁹"};
+  return String(n).split("").map(function(ch){return m[ch]||ch;}).join("");
+}
+
+/* ================= theme toggle ================= */
+document.getElementById("themebtn").addEventListener("click", function(){
+  var r = document.documentElement;
+  var dark = r.getAttribute("data-theme")==="dark" ||
+    (!r.getAttribute("data-theme") && matchMedia("(prefers-color-scheme: dark)").matches);
+  r.setAttribute("data-theme", dark ? "light" : "dark");
+  drawChart(); drawSat();
+});
+
+/* ================= 1. options ================= */
+document.getElementById("opts").addEventListener("click", function(e){
+  var li = e.target.closest("li"); if(!li) return;
+  var all = this.querySelectorAll("li");
+  for(var i=0;i<all.length;i++){
+    all[i].classList.remove("correct","wrong");
+    all[i].querySelector(".mark").textContent = "";
+  }
+  if(li.dataset.k === "C"){
+    li.classList.add("correct"); li.querySelector(".mark").textContent = "correct";
+  } else {
+    li.classList.add("wrong"); li.querySelector(".mark").textContent = "not correct";
+    var c = this.querySelector('[data-k="C"]');
+    c.classList.add("correct"); c.querySelector(".mark").textContent = "correct";
+  }
+});
+
+/* ================= 2. conductivity cell ================= */
+var cv = document.getElementById("cell"), cx = cv.getContext("2d");
+var state = { salt:"NaCl", c:0.01, gcell:1.0, T:300 };
+var ions = [];
+
+var CMIN = 1e-4, CMAX = 0.05;
+function sliderToC(v){ return CMIN*Math.pow(CMAX/CMIN, v/1000); }
+function cToSlider(c){ return Math.round(1000*Math.log(c/CMIN)/Math.log(CMAX/CMIN)); }
+
+function rebuildIons(){
+  var n = Math.round(5 + 32*Math.sqrt(state.c/CMAX));
+  ions = [];
+  for(var i=0;i<n;i++){
+    ions.push({x:Math.random(), y:0.12+0.76*Math.random(), q:+1, ph:Math.random()*6.28});
+    ions.push({x:Math.random(), y:0.12+0.76*Math.random(), q:-1, ph:Math.random()*6.28});
+  }
+}
+rebuildIons();
+
+function drawCell(t){
+  var W=cv.width, H=cv.height;
+  var s = SALTS[state.salt];
+  cx.clearRect(0,0,W,H);
+
+  // beaker body
+  var bx=70, by=70, bw=W-140, bh=H-130;
+  cx.fillStyle = css("--surface-1"); cx.fillRect(0,0,W,H);
+  var grad = cx.createLinearGradient(0,by,0,by+bh);
+  grad.addColorStop(0,"rgba(42,120,214,0.10)"); grad.addColorStop(1,"rgba(42,120,214,0.20)");
+  cx.fillStyle = grad; cx.fillRect(bx,by,bw,bh);
+  cx.strokeStyle = css("--line-strong"); cx.lineWidth = 3;
+  cx.beginPath(); cx.moveTo(bx,by-16); cx.lineTo(bx,by+bh); cx.lineTo(bx+bw,by+bh); cx.lineTo(bx+bw,by-16); cx.stroke();
+
+  // electrodes
+  var ew=16, eh=bh-40, ey=by+14;
+  var lx = bx+46, rx = bx+bw-46-ew;
+  cx.fillStyle = css("--line-strong");
+  cx.fillRect(lx,ey,ew,eh); cx.fillRect(rx,ey,ew,eh);
+  cx.fillRect(lx+ew/2-3, by-52, 6, by-14-(by-52)+16);
+  cx.fillRect(rx+ew/2-3, by-52, 6, by-14-(by-52)+16);
+  cx.fillStyle = css("--text-secondary");
+  cx.font = "600 15px "+ "ui-sans-serif, system-ui, sans-serif";
+  cx.textAlign="center";
+  cx.fillText("− cathode", lx+ew/2, by-60);
+  cx.fillText("+ anode", rx+ew/2, by-60);
+
+  // AC meter box
+  cx.strokeStyle = css("--line-strong"); cx.lineWidth = 2;
+  var mw=150, mh=44, mx=W/2-mw/2, my=8;
+  cx.fillStyle = css("--surface-2");
+  cx.beginPath(); cx.roundRect(mx,my,mw,mh,8); cx.fill(); cx.stroke();
+  cx.beginPath(); cx.moveTo(lx+ew/2, by-52); cx.lineTo(lx+ew/2, my+mh/2); cx.lineTo(mx, my+mh/2);
+  cx.moveTo(rx+ew/2, by-52); cx.lineTo(rx+ew/2, my+mh/2); cx.lineTo(mx+mw, my+mh/2); cx.stroke();
+  var kap = kappaOf(state.salt, state.c, state.T);
+  cx.fillStyle = css("--good");
+  cx.font = "600 17px ui-monospace, Menlo, monospace";
+  cx.fillText(fmtSci(kap,4)+" S cm⁻¹", mx+mw/2, my+22);
+  cx.fillStyle = css("--text-muted"); cx.font = "11px ui-sans-serif, system-ui, sans-serif";
+  cx.fillText("conductivity meter", mx+mw/2, my+37);
+
+  // ions
+  var speed = 0.00016*lambdaM(state.salt,state.c,state.T);
+  for(var i=0;i<ions.length;i++){
+    var io = ions[i];
+    io.x += (io.q>0 ? -speed : speed);
+    if(io.x>1.02) io.x=-0.02; if(io.x<-0.02) io.x=1.02;
+    var px = bx+8 + io.x*(bw-16);
+    var py = by+10 + (io.y*(bh-20)) + Math.sin(t/430 + io.ph)*5;
+    var r = 11;
+    cx.beginPath(); cx.arc(px,py,r,0,6.2832);
+    cx.fillStyle = io.q>0 ? css("--cation") : css("--anion");
+    cx.globalAlpha = .88; cx.fill(); cx.globalAlpha = 1;
+    cx.fillStyle = "#fff"; cx.font = "600 9.5px ui-sans-serif, system-ui, sans-serif";
+    cx.fillText(io.q>0 ? s.cat : s.an, px, py+3.4);
+  }
+
+  // caption
+  cx.fillStyle = css("--text-secondary"); cx.font = "13px ui-sans-serif, system-ui, sans-serif";
+  cx.textAlign = "left";
+  cx.fillText(s.label + "  ·  c = " + (state.c<0.001? fmtSci(state.c):state.c.toFixed(4)) + " M  ·  "
+    + ions.length + " ions drawn", bx, by+bh+26);
+  cx.textAlign = "right";
+  cx.fillText("Λₘ = " + lambdaM(state.salt,state.c,state.T).toFixed(1) + " S cm² mol⁻¹", bx+bw, by+bh+26);
+}
+
+function updateReadouts(){
+  var lm = lambdaM(state.salt,state.c,state.T);
+  var kap = kappaOf(state.salt,state.c,state.T);
+  var G = kap/state.gcell, R = 1/G;
+  document.getElementById("ro-k").textContent  = fmtSci(kap,4);
+  document.getElementById("ro-lm").textContent = lm.toFixed(1);
+  document.getElementById("ro-g").textContent  = fmtSci(G,4);
+  document.getElementById("ro-r").textContent  = R>=1e4 ? fmtSci(R,0) : R.toFixed(R<100?1:0);
+  document.getElementById("ro-sq").textContent = Math.sqrt(state.c).toFixed(4);
+  document.getElementById("ro-def").textContent= (SALTS[state.salt].L0 - lm).toFixed(1);
+  document.getElementById("concv").textContent = (state.c<0.001? fmtSci(state.c,5):state.c.toFixed(4))+" M";
+  document.getElementById("gcellv").textContent= state.gcell.toFixed(2)+" cm⁻¹";
+  document.getElementById("tempv").textContent = state.T+" K";
+}
+
+document.getElementById("saltbtns").addEventListener("click", function(e){
+  var b = e.target.closest("button"); if(!b) return;
+  var bs = this.querySelectorAll("button");
+  for(var i=0;i<bs.length;i++) bs[i].setAttribute("aria-pressed", bs[i]===b ? "true":"false");
+  state.salt = b.dataset.s; updateReadouts(); drawChart();
+});
+document.getElementById("conc").addEventListener("input", function(){
+  state.c = sliderToC(+this.value); rebuildIons(); updateReadouts(); drawChart();
+});
+document.getElementById("gcell").addEventListener("input", function(){
+  state.gcell = +this.value/100; updateReadouts();
+});
+document.getElementById("temp").addEventListener("input", function(){
+  state.T = +this.value; updateReadouts(); drawChart();
+});
+document.getElementById("conc").value = cToSlider(0.01);
+
+/* -------- measurement log -------- */
+var log = [];
+function renderLog(){
+  var tb = document.querySelector("#logtbl tbody");
+  tb.innerHTML = "";
+  document.getElementById("logtbl").hidden = log.length===0;
+  document.getElementById("logempty").hidden = log.length>0;
+  for(var i=0;i<log.length;i++){
+    var r = log[i], tr = document.createElement("tr");
+    tr.innerHTML = "<td>"+SALTS[r.salt].label+"</td><td>"+(r.c<0.001?fmtSci(r.c,5):r.c.toFixed(4))+
+      "</td><td>"+Math.sqrt(r.c).toFixed(4)+"</td><td>"+fmtSci(r.kap,4)+"</td><td>"+r.lm.toFixed(1)+"</td>";
+    tb.appendChild(tr);
+  }
+  drawChart();
+}
+document.getElementById("rec").addEventListener("click", function(){
+  log.push({salt:state.salt, c:state.c, kap:kappaOf(state.salt,state.c,state.T), lm:lambdaM(state.salt,state.c,state.T)});
+  renderLog();
+});
+document.getElementById("loadpaper").addEventListener("click", function(){
+  log = [];
+  ["NaNO3","NaCl","AgNO3"].forEach(function(s){
+    SALTS[s].d.forEach(function(p){
+      log.push({salt:s, c:p[0], kap:p[1]*p[0]/1000, lm:p[1]});
+    });
+  });
+  renderLog();
+});
+document.getElementById("clr").addEventListener("click", function(){ log = []; renderLog(); });
+
+/* least-squares fit of Λm vs √c for one salt */
+function fitSalt(salt){
+  var pts = log.filter(function(r){return r.salt===salt;});
+  if(pts.length<2) return null;
+  var n=pts.length, sx=0, sy=0, sxx=0, sxy=0;
+  pts.forEach(function(p){ var x=Math.sqrt(p.c), y=p.lm; sx+=x; sy+=y; sxx+=x*x; sxy+=x*y; });
+  var den = n*sxx - sx*sx; if(Math.abs(den)<1e-12) return null;
+  var m = (n*sxy - sx*sy)/den, b = (sy - m*sx)/n;
+  return {slope:m, intercept:b, n:n};
+}
+
+/* ================= 3. chart ================= */
+var SVG = "http://www.w3.org/2000/svg";
+var chart = document.getElementById("chart"), tip = document.getElementById("tip");
+var PL={l:62,r:96,t:18,b:52}, PW=760, PH=420;
+var XMAX=0.235, Y0=92, Y1=146;
+function px(x){ return PL.l + (x/XMAX)*(PW-PL.l-PL.r); }
+function py(y){ return PH-PL.b - ((y-Y0)/(Y1-Y0))*(PH-PL.t-PL.b); }
+function el(n,a){ var e=document.createElementNS(SVG,n); for(var k in a) e.setAttribute(k,a[k]); return e; }
+
+function drawChart(){
+  while(chart.firstChild) chart.removeChild(chart.firstChild);
+  var grid=css("--line"), ink=css("--text-secondary"), muted=css("--text-muted"), strong=css("--line-strong");
+
+  // grid + axes
+  for(var y=Y0; y<=Y1; y+=6){
+    chart.appendChild(el("line",{x1:PL.l,x2:PW-PL.r,y1:py(y),y2:py(y),stroke:grid,"stroke-width":1}));
+    chart.appendChild(el("text",{x:PL.l-10,y:py(y)+4,"text-anchor":"end",fill:muted,"font-size":11,
+      "font-family":"ui-monospace,monospace"})).textContent = y;
+  }
+  for(var xv=0; xv<=0.22001; xv+=0.05){
+    chart.appendChild(el("line",{x1:px(xv),x2:px(xv),y1:PL.t,y2:PH-PL.b,stroke:grid,"stroke-width":1}));
+    chart.appendChild(el("text",{x:px(xv),y:PH-PL.b+18,"text-anchor":"middle",fill:muted,"font-size":11,
+      "font-family":"ui-monospace,monospace"})).textContent = xv.toFixed(2);
+  }
+  chart.appendChild(el("line",{x1:PL.l,x2:PW-PL.r,y1:PH-PL.b,y2:PH-PL.b,stroke:strong,"stroke-width":1.5}));
+  chart.appendChild(el("line",{x1:PL.l,x2:PL.l,y1:PL.t,y2:PH-PL.b,stroke:strong,"stroke-width":1.5}));
+  var ax=el("text",{x:(PL.l+PW-PL.r)/2,y:PH-8,"text-anchor":"middle",fill:ink,"font-size":12.5});
+  ax.textContent="√c  (mol L⁻¹)^½"; chart.appendChild(ax);
+  var ay=el("text",{x:16,y:(PL.t+PH-PL.b)/2,"text-anchor":"middle",fill:ink,"font-size":12.5,
+    transform:"rotate(-90 16 "+((PL.t+PH-PL.b)/2)+")"});
+  ay.textContent="Λₘ  (S cm² mol⁻¹)"; chart.appendChild(ay);
+
+  // intercept guide
+  chart.appendChild(el("line",{x1:px(0),x2:px(0),y1:PL.t,y2:PH-PL.b,stroke:strong,"stroke-width":1,
+    "stroke-dasharray":"3 4"}));
+  var it=el("text",{x:px(0)+6,y:PL.t+12,fill:muted,"font-size":10.5}); it.textContent="infinite dilution";
+  chart.appendChild(it);
+
+  // series
+  ["NaNO3","NaCl","AgNO3","AgCl"].forEach(function(key){
+    var s=SALTS[key], col=css(s.color), derived = (key==="AgCl");
+    var y0=s.L0, y1=s.L0-s.A*XMAX;
+    chart.appendChild(el("line",{x1:px(0),y1:py(y0),x2:px(XMAX),y2:py(y1),stroke:col,"stroke-width":2,
+      "stroke-linecap":"round","stroke-dasharray": derived?"7 5":"none", opacity: derived?0.85:1}));
+    // intercept marker with surface ring
+    chart.appendChild(el("circle",{cx:px(0),cy:py(y0),r:6,fill:col,stroke:css("--surface-1"),"stroke-width":2}));
+    // tabulated points
+    s.d.forEach(function(p){
+      chart.appendChild(el("circle",{cx:px(Math.sqrt(p[0])),cy:py(p[1]),r:5.5,fill:col,
+        stroke:css("--surface-1"),"stroke-width":2}));
+    });
+    // direct label at line end
+    var lab=el("text",{x:px(XMAX)+8,y:py(y1)+4,fill:col,"font-size":11.5,"font-weight":600});
+    lab.textContent = (key==="NaNO3"?"NaNO₃":key==="AgNO3"?"AgNO₃":key) + (derived?" *":"");
+    chart.appendChild(lab);
+    // Λ° value at intercept
+    var lv=el("text",{x:px(0)-9,y:py(y0)-8,fill:col,"font-size":11,"font-weight":700,"text-anchor":"end",
+      "font-family":"ui-monospace,monospace"});
+    lv.textContent="Λ°="+s.L0; chart.appendChild(lv);
+  });
+
+  // user points + fits
+  var seen={};
+  log.forEach(function(r){
+    var col=css(SALTS[r.salt].color), x=px(Math.sqrt(r.c)), y=py(r.lm);
+    if(x>=PL.l-2 && x<=PW-PL.r+2 && y>=PL.t-2 && y<=PH-PL.b+2){
+      chart.appendChild(el("circle",{cx:x,cy:y,r:5,fill:css("--surface-1"),stroke:col,"stroke-width":2.2}));
+    }
+    seen[r.salt]=1;
+  });
+  var fitTxt=[];
+  Object.keys(seen).forEach(function(s){
+    var f=fitSalt(s); if(!f) return;
+    var col=css(SALTS[s].color);
+    chart.appendChild(el("line",{x1:px(0),y1:py(f.intercept),x2:px(XMAX),y2:py(f.intercept+f.slope*XMAX),
+      stroke:col,"stroke-width":1.2,"stroke-dasharray":"2 4",opacity:.75}));
+    fitTxt.push('<span style="color:'+col+'">■</span> '+SALTS[s].label+
+      ':  Λ° = '+f.intercept.toFixed(1)+',  A = '+(-f.slope).toFixed(1)+'  (n = '+f.n+')');
+  });
+  var fs=document.getElementById("fitsum");
+  if(fs) fs.innerHTML = fitTxt.length
+    ? "Least-squares fit of your recorded points &nbsp;&nbsp;" + fitTxt.join("&nbsp;&nbsp;·&nbsp;&nbsp;")
+    : "";
+
+  // current operating point
+  var cl=css(SALTS[state.salt].color);
+  var cxp=px(Math.sqrt(state.c)), cyp=py(lambdaM(state.salt,state.c,state.T));
+  if(cxp<=PW-PL.r+2 && cyp>=PL.t-6 && cyp<=PH-PL.b+6){
+    chart.appendChild(el("circle",{cx:cxp,cy:cyp,r:8.5,fill:"none",stroke:cl,"stroke-width":2,opacity:.55}));
+    chart.appendChild(el("circle",{cx:cxp,cy:cyp,r:3.5,fill:cl}));
+  }
+
+  chart.appendChild(el("rect",{x:PL.l,y:PL.t,width:PW-PL.l-PL.r,height:PH-PL.t-PL.b,fill:"transparent",
+    id:"hit","pointer-events":"all"}));
+  var note=el("text",{x:PW-PL.r+8,y:PH-PL.b+18,fill:muted,"font-size":10});
+  note.textContent="* derived"; chart.appendChild(note);
+}
+drawChart();
+
+// crosshair tooltip
+chart.addEventListener("mousemove", function(ev){
+  var r = chart.getBoundingClientRect();
+  var sx = (ev.clientX-r.left)*(PW/r.width);
+  if(sx<PL.l || sx>PW-PL.r){ tip.style.opacity=0; return; }
+  var xv = (sx-PL.l)/(PW-PL.l-PL.r)*XMAX;
+  var c = xv*xv;
+  var html = '<div class="t">√c = '+xv.toFixed(3)+'  ·  c = '+fmtSci(c,5)+' M</div>';
+  ["NaNO3","NaCl","AgNO3","AgCl"].forEach(function(k){
+    var s=SALTS[k];
+    html += '<div class="r"><span class="sw" style="background:'+css(s.color)+'"></span>'+
+            (k==="NaNO3"?"NaNO₃":k==="AgNO3"?"AgNO₃":k)+
+            '<span class="rv">'+(s.L0-s.A*xv).toFixed(1)+'</span></div>';
+  });
+  tip.innerHTML = html; tip.style.opacity = 1;
+  var wrapR = document.getElementById("cw").getBoundingClientRect();
+  var lx = ev.clientX-wrapR.left+14;
+  if(lx > wrapR.width-155) lx = ev.clientX-wrapR.left-165;
+  tip.style.left = lx+"px";
+  tip.style.top  = Math.max(6, ev.clientY-wrapR.top-70)+"px";
+});
+chart.addEventListener("mouseleave", function(){ tip.style.opacity=0; });
+
+/* ================= 4. Kohlrausch ================= */
+document.getElementById("cancelbtn").addEventListener("click", function(){
+  var g = document.getElementById("kgrid");
+  var targets = g.querySelectorAll('[data-ion="Na"], [data-ion="NO3"]');
+  for(var i=0;i<targets.length;i++) targets[i].classList.add("gone");
+  document.getElementById("kmsg").innerHTML =
+    "Na⁺ and NO₃⁻ each appear once with + and once with − — they cancel exactly, leaving "+
+    "λ°(Ag⁺) + λ°(Cl⁻) = <b>"+LM_AGCL+" S cm² mol⁻¹</b>";
+});
+document.getElementById("kreset").addEventListener("click", function(){
+  var g = document.getElementById("kgrid").querySelectorAll(".ion");
+  for(var i=0;i<g.length;i++) g[i].classList.remove("gone");
+  document.getElementById("kmsg").innerHTML =
+    "Λ°(AgCl) = 134 + 127 − 121 = <b>140 S cm² mol⁻¹</b>";
+});
+
+/* ================= 5. solubility ================= */
+var sv = document.getElementById("sat"), sc = sv.getContext("2d");
+var sol = { kap:1.40e-6, lam:140 };
+
+function drawSat(){
+  var W=sv.width,H=sv.height;
+  sc.clearRect(0,0,W,H);
+  sc.fillStyle = css("--surface-1"); sc.fillRect(0,0,W,H);
+  var bx=80,by=58,bw=W-160,bh=H-150;
+  var g = sc.createLinearGradient(0,by,0,by+bh);
+  g.addColorStop(0,"rgba(74,58,167,0.08)"); g.addColorStop(1,"rgba(74,58,167,0.16)");
+  sc.fillStyle=g; sc.fillRect(bx,by,bw,bh);
+  sc.strokeStyle=css("--line-strong"); sc.lineWidth=3;
+  sc.beginPath(); sc.moveTo(bx,by-14); sc.lineTo(bx,by+bh); sc.lineTo(bx+bw,by+bh); sc.lineTo(bx+bw,by-14); sc.stroke();
+
+  // undissolved AgCl bed
+  sc.fillStyle = css("--text-muted");
+  for(var i=0;i<130;i++){
+    var rx = bx+8 + Math.random()*(bw-16);
+    var ry = by+bh-6 - Math.abs(Math.sin(i*2.7))*16 - Math.random()*8;
+    sc.globalAlpha = .5+Math.random()*.35;
+    sc.beginPath(); sc.arc(rx,ry,1.6+Math.random()*2.4,0,6.2832); sc.fill();
+  }
+  sc.globalAlpha=1;
+
+  // the very few dissolved ions
+  var X = 1000*sol.kap/sol.lam;
+  var n = Math.max(1, Math.min(14, Math.round(X/1e-5*3)));
+  for(var j=0;j<n;j++){
+    var ax = bx+30 + ((j*97)%(bw-60));
+    var ay = by+30 + ((j*53)%(bh-90));
+    sc.beginPath(); sc.arc(ax,ay,11,0,6.2832); sc.fillStyle=css("--cation"); sc.fill();
+    sc.fillStyle="#fff"; sc.font="600 10.5px ui-sans-serif,system-ui,sans-serif"; sc.textAlign="center";
+    sc.fillText("Ag⁺",ax,ay+3.5);
+    sc.beginPath(); sc.arc(ax+28,ay+18,11,0,6.2832); sc.fillStyle=css("--anion"); sc.fill();
+    sc.fillStyle="#fff"; sc.fillText("Cl⁻",ax+28,ay+21.5);
+  }
+
+  sc.textAlign="center"; sc.fillStyle=css("--text-secondary");
+  sc.font="15px ui-sans-serif,system-ui,sans-serif";
+  sc.fillText("AgCl(s) ⇌ Ag⁺(aq) + Cl⁻(aq)   ·   saturated at 300 K", W/2, by+bh+32);
+  sc.fillStyle=css("--text-muted"); sc.font="13px ui-sans-serif,system-ui,sans-serif";
+  sc.fillText("dissolved ions drawn to scale in count, not in number density", W/2, by+bh+54);
+  sc.textAlign="left";
+  sc.fillStyle=css("--s4"); sc.font="600 16px ui-monospace,Menlo,monospace";
+  sc.fillText("X = "+fmtSci(X,6)+" mol L⁻¹", bx, by-24);
+}
+
+function updateSol(){
+  var X = 1000*sol.kap/sol.lam;
+  document.getElementById("kapv").textContent = fmtSci(sol.kap,7)+" S cm⁻¹";
+  document.getElementById("lamv").textContent = sol.lam.toFixed(0)+" S cm² mol⁻¹";
+  document.getElementById("c-k").textContent  = fmtSci(sol.kap,7)+" S cm⁻¹";
+  document.getElementById("c-l").textContent  = sol.lam.toFixed(0)+" S cm² mol⁻¹";
+  document.getElementById("c-x").textContent  = fmtSci(X,7)+" mol L⁻¹";
+  document.getElementById("c-ksp").textContent= fmtSci(X*X,10);
+  document.getElementById("c-ans").textContent= (-Math.log10(X)).toFixed(2);
+  var exact = Math.abs(sol.kap-1.40e-6)<1e-9 && sol.lam===140;
+  document.getElementById("matchmsg").innerHTML = exact
+    ? "✓ These are the paper's values — log₁₀(X⁻¹) = 5 exactly, option <b>(C)</b>."
+    : "Off the paper's values (κ = 1.40×10⁻⁶ S cm⁻¹, Λ° = 140). Reset both sliders to reproduce the official answer.";
+  drawSat();
+}
+document.getElementById("kap").addEventListener("input", function(){
+  sol.kap = (+this.value/100)*1e-6; updateSol();
+});
+document.getElementById("lam").addEventListener("input", function(){
+  sol.lam = +this.value; updateSol();
+});
+
+/* ================= animation loop ================= */
+function frame(t){ drawCell(t); requestAnimationFrame(frame); }
+updateReadouts(); updateSol(); requestAnimationFrame(frame);
+
+})();
+</script>
+</body>
+</html>

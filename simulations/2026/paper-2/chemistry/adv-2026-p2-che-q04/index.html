@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ADV-2026-P2-CHE-Q04 · Building Sucralose from Fischer Projections</title>
+<meta name="description" content="Interactive simulation for JEE Advanced 2026 Paper 2 Chemistry Q4: converting D-galactose from Fischer to Haworth and assembling the correct structure of the artificial sweetener sucralose.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232a78d6'/%3E%3Cpath d='M12.5 6.5h7M13.6 6.5v7.2L7.9 24.1a1.5 1.5 0 0 0 1.3 2.3h13.6a1.5 1.5 0 0 0 1.3-2.3l-5.7-10.4V6.5' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M10.6 20.6h10.8' stroke='white' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E">
+<meta name="sim-id" content="ADV-2026-P2-CHE-Q04">
+<style>
+:root{
+  color-scheme: light;
+  --surface-0:#f4f4f1; --surface-1:#fcfcfb; --surface-2:#ececea;
+  --line:#d9d9d4; --line-strong:#bcbcb5;
+  --text-primary:#0b0b0b; --text-secondary:#52514e; --text-muted:#77766f;
+  --s1:#2a78d6; --s2:#eb6834; --s3:#1baf7a; --s4:#4a3aa7;
+  --good:#00743f; --bad:#c0392b; --accent:#2a78d6;
+  --atom-o:#e34948; --atom-cl:#1baf7a; --bondc:#3a3a36;
+  --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+  --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --serif:ui-serif,Georgia,"Times New Roman",serif;
+  --radius:10px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  color-scheme: dark;
+  --surface-0:#111110; --surface-1:#1a1a19; --surface-2:#232322;
+  --line:#34342f; --line-strong:#4a4a44;
+  --text-primary:#ffffff; --text-secondary:#c3c2b7; --text-muted:#95948b;
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#9085e9;
+  --good:#3fae7a; --bad:#e66767; --accent:#3987e5;
+  --atom-o:#e66767; --atom-cl:#199e70; --bondc:#d8d7cd;
+}}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --surface-0:#111110; --surface-1:#1a1a19; --surface-2:#232322;
+  --line:#34342f; --line-strong:#4a4a44;
+  --text-primary:#ffffff; --text-secondary:#c3c2b7; --text-muted:#95948b;
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#9085e9;
+  --good:#3fae7a; --bad:#e66767; --accent:#3987e5;
+  --atom-o:#e66767; --atom-cl:#199e70; --bondc:#d8d7cd;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--surface-0);color:var(--text-primary);font-family:var(--sans);
+  font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px 80px}
+
+header.top{border-bottom:1px solid var(--line);background:var(--surface-1)}
+.top-inner{max-width:1120px;margin:0 auto;padding:22px 20px 18px;position:relative;
+  display:flex;flex-wrap:wrap;gap:16px;align-items:flex-start;justify-content:space-between}
+.simid{font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--text-muted)}
+h1{font-size:23px;line-height:1.25;margin:6px 0 10px;font-weight:640;max-width:640px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-size:11.5px;padding:3px 9px;border:1px solid var(--line-strong);border-radius:999px;
+  color:var(--text-secondary);background:var(--surface-2);white-space:nowrap}
+.chip.k{border-color:var(--accent);color:var(--accent);background:transparent}
+.answerbox{border:1px solid var(--line-strong);border-radius:var(--radius);background:var(--surface-2);
+  padding:12px 16px;min-width:200px}
+.answerbox .lbl{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted)}
+.answerbox .val{font-family:var(--mono);font-size:25px;font-weight:600;color:var(--good);line-height:1.22}
+.answerbox .sub{font-size:12px;color:var(--text-secondary)}
+.themebtn{position:absolute;top:14px;right:16px;border:1px solid var(--line-strong);background:var(--surface-2);
+  color:var(--text-secondary);border-radius:8px;padding:4px 9px;font-size:12px;cursor:pointer}
+.brandbar{display:flex;align-items:center;gap:8px;margin-bottom:9px;text-decoration:none}
+.brandbar .pxmark{width:21px;height:21px;flex:none;display:block}
+.brandbar .wm{font-size:13px;font-weight:800;letter-spacing:.17em;color:var(--text-secondary);line-height:1}
+.brandbar .wm i{font-style:normal;color:var(--accent)}
+
+nav.jump{position:sticky;top:0;z-index:20;background:var(--surface-0);border-bottom:1px solid var(--line);
+  padding:8px 0;margin-bottom:26px}
+nav.jump ul{max-width:1120px;margin:0 auto;padding:0 20px;list-style:none;display:flex;gap:4px;overflow-x:auto}
+nav.jump a{display:block;padding:5px 11px;border-radius:7px;font-size:13px;text-decoration:none;
+  color:var(--text-secondary);white-space:nowrap}
+nav.jump a:hover{background:var(--surface-2);color:var(--text-primary)}
+
+section{margin:0 0 42px;scroll-margin-top:56px}
+h2{font-size:17px;font-weight:640;margin:0 0 4px;display:flex;align-items:baseline;gap:9px}
+h2 .n{font-family:var(--mono);font-size:12px;color:var(--text-muted);font-weight:400}
+.lede{color:var(--text-secondary);font-size:13.5px;margin:0 0 16px;max-width:76ch}
+.card,.panel{background:var(--surface-1);border:1px solid var(--line);border-radius:var(--radius);padding:18px}
+.panel h3{margin:0 0 12px;font-size:13px;letter-spacing:.05em;text-transform:uppercase;
+  color:var(--text-muted);font-weight:600}
+.lab{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px}
+@media(max-width:900px){.lab{grid-template-columns:1fr !important}}
+svg.mol{display:block;width:100%;height:auto;background:var(--surface-2);border-radius:8px}
+
+.qtext{font-family:var(--serif);font-size:16px;line-height:1.7}
+.opts{list-style:none;padding:0;margin:16px 0 0;display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(min(430px,100%),1fr));gap:10px}
+.opts li{border:1px solid var(--line);border-radius:10px;padding:10px;background:var(--surface-1);
+  cursor:pointer;display:flex;flex-direction:column;gap:6px}
+.opts li:hover{border-color:var(--line-strong)}
+.opts li.correct{border-color:var(--good);background:color-mix(in srgb,var(--good) 11%,transparent)}
+.opts li.wrong{border-color:var(--s2);opacity:.72}
+.opts li .hd{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--text-muted);font-family:var(--mono)}
+.opts li .mark{margin-left:auto;font-family:var(--sans);font-size:11.5px}
+.opts li .nm{font-size:11.5px;color:var(--text-secondary);line-height:1.45}
+
+.ctrl{margin:14px 0}
+.ctrl label{display:flex;justify-content:space-between;align-items:baseline;font-size:13px;margin-bottom:5px}
+.segbtns{display:flex;gap:6px;flex-wrap:wrap}
+.segbtns button{flex:1;min-width:96px;padding:9px 8px;border-radius:8px;border:1px solid var(--line-strong);
+  background:var(--surface-2);color:var(--text-secondary);font-size:13px;cursor:pointer;font-family:var(--sans)}
+.segbtns button[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:650}
+button.act{padding:7px 13px;border-radius:8px;border:1px solid var(--line-strong);background:var(--surface-2);
+  color:var(--text-primary);font-size:13px;cursor:pointer}
+button.act:hover{border-color:var(--accent);color:var(--accent)}
+button.act.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+
+table.data{border-collapse:collapse;font-size:13px;width:100%}
+table.data th,table.data td{border:1px solid var(--line-strong);padding:7px 10px;text-align:center}
+table.data th{background:var(--surface-2);font-weight:600;font-size:12px;color:var(--text-secondary)}
+table.data td.l{text-align:left}
+.scrollx{overflow-x:auto}
+.yes{color:var(--good);font-weight:700} .no{color:var(--bad);font-weight:700}
+tr.win td{background:color-mix(in srgb,var(--good) 12%,transparent);font-weight:600}
+
+.fischer-row{cursor:pointer}
+.fischer-row:hover{color:var(--accent)}
+
+.chartwrap{position:relative;background:var(--surface-1);border:1px solid var(--line);
+  border-radius:var(--radius);padding:16px}
+svg.chart{display:block;width:100%;height:auto;overflow:visible}
+.tip{position:absolute;pointer-events:none;background:var(--surface-1);border:1px solid var(--line-strong);
+  border-radius:8px;padding:8px 11px;font-size:12px;box-shadow:0 4px 14px rgba(0,0,0,.13);opacity:0;
+  transition:opacity .1s;z-index:5;min-width:160px}
+.tip .t{font-size:13px;font-weight:600;margin-bottom:4px}
+.tip .r{display:flex;gap:10px;color:var(--text-secondary)}
+.tip .r b{margin-left:auto;font-family:var(--mono);color:var(--text-primary)}
+
+.verdict{border-radius:9px;padding:11px 14px;font-size:13.5px;margin-top:12px;border:1px solid var(--line-strong);
+  background:var(--surface-2)}
+.verdict.ok{border-color:var(--good);background:color-mix(in srgb,var(--good) 10%,transparent)}
+.verdict.no{border-color:var(--bad);background:color-mix(in srgb,var(--bad) 9%,transparent)}
+.verdict b{font-size:14px}
+.checks{display:grid;gap:6px;margin-top:10px}
+.check{display:flex;align-items:center;gap:9px;font-size:13px;padding:6px 10px;border-radius:7px;
+  background:var(--surface-2);border:1px solid var(--line)}
+.check .ic{width:18px;text-align:center;font-weight:700}
+.check.ok .ic{color:var(--good)} .check.no .ic{color:var(--bad)}
+.check.no{opacity:.85}
+
+ol.steps{list-style:none;counter-reset:s;padding:0;margin:0;display:grid;gap:10px}
+ol.steps li{min-width:0;counter-increment:s;border:1px solid var(--line);border-radius:var(--radius);
+  background:var(--surface-1);padding:14px 16px 14px 52px;position:relative}
+ol.steps li::before{content:counter(s);position:absolute;left:15px;top:14px;width:23px;height:23px;
+  border-radius:50%;background:var(--accent);color:#fff;font-size:12px;font-weight:700;
+  display:grid;place-items:center;font-family:var(--mono)}
+ol.steps h4{margin:0 0 6px;font-size:14px;font-weight:640}
+ol.steps p{margin:0 0 6px;font-size:13.5px;color:var(--text-secondary)}
+.eq{min-width:0;font-family:var(--serif);font-size:15px;background:var(--surface-2);border-radius:7px;padding:9px 13px;
+  margin:8px 0;overflow-x:auto}
+.eq .hl{color:var(--good);font-weight:700}
+sub{font-size:.72em} sup{font-size:.72em}
+.verify{border:1px solid var(--good);border-radius:var(--radius);
+  background:color-mix(in srgb,var(--good) 8%,transparent);padding:14px 16px;font-size:13.5px}
+.verify h4{margin:0 0 6px;font-size:13.5px;color:var(--good)}
+.verify ul{margin:6px 0 0;padding-left:18px;color:var(--text-secondary)}
+.verify code{font-family:var(--mono);font-size:11.5px;background:var(--surface-2);padding:1px 5px;border-radius:4px;
+  word-break:break-all}
+.meta-tbl{width:100%;border-collapse:collapse;font-size:13.5px}
+.meta-tbl td{padding:6px 0;border-bottom:1px solid var(--line);vertical-align:top}
+.meta-tbl td:first-child{color:var(--text-muted);width:160px;font-size:12.5px;padding-right:14px}
+footer{border-top:1px solid var(--line);margin-top:40px;padding-top:16px;font-size:12px;color:var(--text-muted)}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-inner">
+    <div>
+      <div class="brandbar"><svg class="pxmark" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><rect width="32" height="32" rx="8" fill="var(--accent)"/><path d="M12.5 6.5h7M13.6 6.5v7.2L7.9 24.1a1.5 1.5 0 0 0 1.3 2.3h13.6a1.5 1.5 0 0 0 1.3-2.3l-5.7-10.4V6.5" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.6 20.6h10.8" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg><span class="wm">PRAYOG<i>X</i></span></div>
+      <div class="simid">ADV-2026-P2-CHE-Q04</div>
+      <h1>Building sucralose: three stereochemical decisions, one correct structure</h1>
+      <div class="chips">
+        <span class="chip">JEE Advanced 2026</span>
+        <span class="chip">Paper 2</span>
+        <span class="chip">Chemistry</span>
+        <span class="chip">Q.4 · Section 1</span>
+        <span class="chip k">Biomolecules</span>
+        <span class="chip k">Carbohydrates</span>
+      </div>
+    </div>
+    <div class="answerbox">
+      <div class="lbl">Answer</div>
+      <div class="val">(A)</div>
+      <div class="sub">X = sucralose · C<sub>12</sub>H<sub>19</sub>Cl<sub>3</sub>O<sub>8</sub></div>
+    </div>
+    <button class="themebtn" id="themebtn" type="button">◐ theme</button>
+  </div>
+</header>
+
+<nav class="jump">
+  <ul>
+    <li><a href="#question">Question</a></li>
+    <li><a href="#fischer">Fischer → Haworth</a></li>
+    <li><a href="#build">Build the sweetener</a></li>
+    <li><a href="#eliminate">Eliminating options</a></li>
+    <li><a href="#context">Sucrose → sucralose</a></li>
+    <li><a href="#solution">Step-by-step solution</a></li>
+    <li><a href="#concepts">Concepts &amp; classification</a></li>
+  </ul>
+</nav>
+
+<div class="wrap">
+
+<!-- 01 QUESTION -->
+<section id="question">
+  <h2><span class="n">01</span>Original question
+      <span style="font-weight:400;font-size:12.5px;color:var(--text-muted)">— verbatim</span></h2>
+  <div class="card">
+    <div class="qtext">
+      A known artificial sweetener <strong>X</strong> is composed of 4-chloro-4-deoxy-α-D-galactose and
+      1,6-dichloro-1,6-dideoxy-β-D-fructose joined by a glycosidic linkage. Structure of D-galactose is
+      given below:
+    </div>
+    <div class="lab" style="margin:14px 0 0;grid-template-columns:minmax(0,300px) minmax(0,1fr)">
+      <div>
+        <svg class="mol" id="fischerQ" viewBox="0 0 300 330" role="img"
+             aria-label="Fischer projection of D-galactose"></svg>
+      </div>
+      <div class="qtext" style="align-self:center">The correct structure of <strong>X</strong> is</div>
+    </div>
+    <ul class="opts" id="opts">
+      <li data-k="A"><div class="hd">(A)<span class="mark"></span></div>
+        <svg class="mol" data-opt="A" viewBox="0 0 560 300" role="img" aria-label="option A structure"></svg>
+        <div class="nm">C4–Cl <b>axial</b> (galacto) · pyranose <b>α</b> · fructofuranose <b>β</b></div></li>
+      <li data-k="B"><div class="hd">(B)<span class="mark"></span></div>
+        <svg class="mol" data-opt="B" viewBox="0 0 560 300" role="img" aria-label="option B structure"></svg>
+        <div class="nm">C4–Cl <b>equatorial</b> (gluco) · pyranose <b>α</b> · fructofuranose <b>β</b></div></li>
+      <li data-k="C"><div class="hd">(C)<span class="mark"></span></div>
+        <svg class="mol" data-opt="C" viewBox="0 0 560 300" role="img" aria-label="option C structure"></svg>
+        <div class="nm">C4–Cl <b>equatorial</b> (gluco) · pyranose <b>α</b> · fructofuranose <b>α</b></div></li>
+      <li data-k="D"><div class="hd">(D)<span class="mark"></span></div>
+        <svg class="mol" data-opt="D" viewBox="0 0 560 300" role="img" aria-label="option D structure"></svg>
+        <div class="nm">C4–Cl <b>axial</b> (galacto) · pyranose <b>α</b> · fructofuranose <b>α</b></div></li>
+    </ul>
+    <p style="font-size:12.5px;color:var(--text-muted);margin:12px 0 0">
+      Click an option to check it. The printed options are drawn as a chair plus a furanose; they are redrawn
+      here as Haworth projections carrying exactly the same stereochemistry, with hydrogens omitted for clarity.
+      All four printed options agree on the α-linkage — the two things they disagree about are the C4 chlorine
+      and the fructose anomeric centre.
+    </p>
+  </div>
+</section>
+
+<!-- 02 FISCHER -->
+<section id="fischer">
+  <h2><span class="n">02</span>Fischer → Haworth, one carbon at a time</h2>
+  <p class="lede">
+    The paper gives D-galactose as a Fischer projection, so the first job is to read it. The rule for a
+    D-aldohexose drawn with the ring oxygen at the back-right and C1 on the right:
+    <strong>a group on the right in Fischer points down in Haworth, a group on the left points up</strong>,
+    and C6 always ends up. Click a carbon in the Fischer projection — or step through them — and watch where
+    its OH lands.
+  </p>
+  <div class="lab">
+    <div class="panel">
+      <h3>D-galactose · Fischer</h3>
+      <svg class="mol" id="fischerSvg" viewBox="0 0 340 380" role="img"
+           aria-label="Interactive Fischer projection of D-galactose"></svg>
+      <div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap">
+        <button class="act primary" id="stepf" type="button">Next carbon →</button>
+        <button class="act" id="allf" type="button">Show all</button>
+      </div>
+      <div class="verdict" id="fmsg"></div>
+    </div>
+    <div class="panel">
+      <h3>α-D-galactopyranose · Haworth</h3>
+      <svg class="mol" id="haworth" viewBox="0 0 460 300" role="img"
+           aria-label="Haworth projection of alpha-D-galactopyranose being built"></svg>
+      <div class="scrollx" style="margin-top:10px">
+        <table class="data" id="ftable"></table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 BUILDER -->
+<section id="build">
+  <h2><span class="n">03</span>Build the sweetener</h2>
+  <p class="lede">
+    Three independent stereochemical decisions turn "a galactose plus a fructose" into one specific molecule.
+    Set each one and the builder draws the result, checks it against the target named in the question, and
+    tells you which printed option you have just drawn.
+  </p>
+  <div class="lab" style="grid-template-columns:minmax(0,1fr) minmax(0,1.15fr)">
+    <div class="panel">
+      <h3>Decisions</h3>
+      <div class="ctrl">
+        <label><span>1 · Chlorine at C4 of the pyranose</span></label>
+        <div class="segbtns" id="t-c4">
+          <button type="button" data-v="up" aria-pressed="true">axial — up<br><span style="font-size:11px">galacto</span></button>
+          <button type="button" data-v="down" aria-pressed="false">equatorial — down<br><span style="font-size:11px">gluco</span></button>
+        </div>
+      </div>
+      <div class="ctrl">
+        <label><span>2 · Anomeric configuration of the pyranose</span></label>
+        <div class="segbtns" id="t-ano">
+          <button type="button" data-v="a" aria-pressed="true">α — O down</button>
+          <button type="button" data-v="b" aria-pressed="false">β — O up</button>
+        </div>
+      </div>
+      <div class="ctrl">
+        <label><span>3 · Anomeric configuration of the fructofuranose</span></label>
+        <div class="segbtns" id="t-fru">
+          <button type="button" data-v="b" aria-pressed="true">β — CH₂Cl up</button>
+          <button type="button" data-v="a" aria-pressed="false">α — CH₂Cl down</button>
+        </div>
+      </div>
+      <div class="checks" id="checks"></div>
+      <div class="verdict" id="buildverdict"></div>
+      <div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap">
+        <button class="act primary" id="makeSucralose" type="button">Set them all correctly</button>
+        <button class="act" id="scramble" type="button">Try a wrong one</button>
+      </div>
+    </div>
+    <div class="panel">
+      <h3 id="buildhd">Your structure</h3>
+      <svg class="mol" id="buildSvg" viewBox="0 0 620 340" role="img"
+           aria-label="Haworth structure of the disaccharide built from the three chosen configurations"></svg>
+      <p style="font-size:12px;color:var(--text-muted);margin:10px 0 0">
+        Hydrogens omitted. The α/β labels mark the two anomeric carbons.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- 04 ELIMINATION -->
+<section id="eliminate">
+  <h2><span class="n">04</span>Eliminating the options</h2>
+  <p class="lede">
+    Each printed option is one combination of the two contested decisions. Score all four against the two
+    requirements the question states in words, and exactly one survives.
+  </p>
+  <div class="scrollx">
+    <table class="data" id="matrix"></table>
+  </div>
+  <p style="font-size:12.5px;color:var(--text-secondary);margin:14px 0 0">
+    Note that no option can be eliminated by counting atoms — all four are
+    C<sub>12</sub>H<sub>19</sub>Cl<sub>3</sub>O<sub>8</sub> and all four are stereoisomers of one another.
+    The question is purely about configuration.
+  </p>
+</section>
+
+<!-- 05 CONTEXT -->
+<section id="context">
+  <h2><span class="n">05</span>Sucrose → sucralose, and why anyone cares</h2>
+  <p class="lede">
+    Sucralose is sucrose with three specific hydroxyls swapped for chlorine and one centre inverted along the
+    way. Those changes stop the body's enzymes from recognising it, so it passes through largely unmetabolised
+    while binding the sweet receptor far more tightly than sucrose does.
+  </p>
+  <div class="lab" style="grid-template-columns:minmax(0,1fr) minmax(0,1fr);margin-bottom:16px">
+    <div class="panel">
+      <h3>What changes</h3>
+      <div class="scrollx">
+        <table class="data">
+          <thead><tr><th>Position</th><th>Sucrose</th><th>Sucralose</th></tr></thead>
+          <tbody>
+            <tr><td class="l">Pyranose C4</td><td>OH, <em>gluco</em> (equatorial)</td>
+                <td class="yes">Cl, <em>galacto</em> (axial)</td></tr>
+            <tr><td class="l">Furanose C1′</td><td>CH<sub>2</sub>OH</td><td class="yes">CH<sub>2</sub>Cl</td></tr>
+            <tr><td class="l">Furanose C6′</td><td>CH<sub>2</sub>OH</td><td class="yes">CH<sub>2</sub>Cl</td></tr>
+            <tr><td class="l">Glycosidic linkage</td><td>α-1↔2′ β</td><td>α-1↔2′ β (unchanged)</td></tr>
+            <tr><td class="l">Formula</td><td>C<sub>12</sub>H<sub>22</sub>O<sub>11</sub></td>
+                <td>C<sub>12</sub>H<sub>19</sub>Cl<sub>3</sub>O<sub>8</sub></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="font-size:12.5px;color:var(--text-secondary);margin:12px 0 0">
+        Replacing the C4 hydroxyl by chlorine with inversion is exactly what turns the <em>gluco</em>
+        configuration of sucrose into the <em>galacto</em> configuration named in the question — which is why
+        the paper says <em>galactose</em>, not glucose.
+      </p>
+    </div>
+    <div class="panel">
+      <h3>Sucrose</h3>
+      <svg class="mol" id="sucrose" viewBox="0 0 620 320" role="img" aria-label="Haworth structure of sucrose"></svg>
+    </div>
+  </div>
+  <div class="chartwrap" id="cw">
+    <svg class="chart" id="chart" viewBox="0 0 760 300" role="img"
+         aria-label="Relative sweetness of common sweeteners on a logarithmic scale, sucrose set to 1"></svg>
+    <div class="tip" id="tip"></div>
+  </div>
+  <p style="font-size:12px;color:var(--text-muted);margin:10px 0 0">
+    Sweetness relative to sucrose (= 1), on a logarithmic axis because the values span three orders of
+    magnitude. Values are the commonly quoted mid-range figures; perceived sweetness depends on
+    concentration and formulation.
+  </p>
+</section>
+
+<!-- 06 SOLUTION -->
+<section id="solution">
+  <h2><span class="n">06</span>Step-by-step solution</h2>
+  <ol class="steps">
+    <li>
+      <h4>Recognise the compound</h4>
+      <p>4-chloro-4-deoxy-α-D-galactopyranose joined to 1,6-dichloro-1,6-dideoxy-β-D-fructofuranose is
+      <strong>sucralose</strong>, C<sub>12</sub>H<sub>19</sub>Cl<sub>3</sub>O<sub>8</sub> — the sweetener
+      sold as Splenda. Nothing else needs to be recalled; the name in the question fully specifies the
+      structure.</p>
+    </li>
+    <li>
+      <h4>Read the galactose Fischer projection</h4>
+      <p>The paper's Fischer projection has OH on the <em>right</em> at C2 and C5, and on the <em>left</em>
+      at C3 and C4. Converting for a D-sugar (right → down, left → up, C6 up):</p>
+      <div class="eq">
+        C2–OH down &nbsp;·&nbsp; C3–OH up &nbsp;·&nbsp; <span class="hl">C4–OH up (axial)</span>
+        &nbsp;·&nbsp; C6 up
+      </div>
+      <p>That axial C4 is the single thing distinguishing galactose from glucose. Replacing it by chlorine
+      keeps the position: <strong>the C4 chlorine must point up</strong>. This eliminates (B) and (C), which
+      draw it equatorial.</p>
+    </li>
+    <li>
+      <h4>Fix the pyranose anomeric centre</h4>
+      <p>"α-D-galactose" means the C1 substituent — here the glycosidic oxygen — points <strong>down</strong>
+      in the standard Haworth orientation, <em>trans</em> to the C6 branch. All four printed options draw
+      this correctly, so it eliminates nothing, but getting it wrong would not give sucralose.</p>
+    </li>
+    <li>
+      <h4>Fix the fructose anomeric centre</h4>
+      <p>"β-D-fructofuranose" fixes the configuration at C2′. In the orientation the paper uses, that puts
+      the C1′ CH<sub>2</sub>Cl <strong>up</strong> and the glycosidic oxygen down. Options (C) and (D) draw
+      the CH<sub>2</sub>Cl down — the α anomer — so they go.</p>
+    </li>
+    <li>
+      <h4>Intersect the surviving sets</h4>
+      <div class="eq">
+        C4 axial ⟹ {A, D} &nbsp;&nbsp;∩&nbsp;&nbsp; fructose β ⟹ {A, B} &nbsp;&nbsp;=&nbsp;&nbsp;
+        <span class="hl">{A}</span>
+      </div>
+      <p>Answer: <strong>(A)</strong>.</p>
+    </li>
+  </ol>
+
+  <div class="verify" style="margin-top:18px">
+    <h4>✓ Independent verification</h4>
+    <ul>
+      <li><strong>Structure matched against a reference, not against memory.</strong> Each drawn half was
+          rebuilt as explicit 3D coordinates (Haworth ring in a plane, substituents at ±z) and its
+          configuration assigned from that geometry by RDKit, then compared with the published sucralose
+          structure (InChIKey <code>BAQAVOSOZGMPRM-QBMZZYIRSA-N</code>).</li>
+      <li><strong>Galactose half:</strong> the axial-C4 build gives
+          <code>CO[C@H]1O[C@H](CO)[C@H](Cl)[C@H](O)[C@H]1O</code>, identical to the galactose half of the
+          reference; the equatorial build differs at exactly one stereocentre. So (B) and (C) are
+          demonstrably the <em>gluco</em> isomer.</li>
+      <li><strong>Fructose half:</strong> the CH<sub>2</sub>Cl-up build gives
+          <code>CO[C@]1(CCl)O[C@H](CCl)[C@@H](O)[C@@H]1O</code>, identical to the reference; the
+          CH<sub>2</sub>Cl-down build is its C2′ epimer. So (C) and (D) are the α-fructofuranoside.</li>
+      <li><strong>Name cross-check:</strong> the IUPAC name of sucralose,
+          "1,6-dichloro-1,6-dideoxy-β-D-fructofuranosyl 4-chloro-4-deoxy-α-D-galactopyranoside", reproduces
+          the question's wording clause for clause.</li>
+      <li><strong>Formula check:</strong> C<sub>12</sub>H<sub>19</sub>Cl<sub>3</sub>O<sub>8</sub>,
+          M = 397.6 — consistent with three Cl replacing three OH on a C<sub>12</sub>H<sub>22</sub>O<sub>11</sub>
+          disaccharide (−3 OH, +3 Cl, −3 H… i.e. −3 O, +3 Cl, −3 H). All four options share this formula,
+          confirming the question is purely stereochemical.</li>
+      <li><strong>Redundant chemical argument:</strong> sucralose is made from sucrose, whose glucose unit is
+          <em>gluco</em>; the C4 chlorination proceeds with inversion, which converts it to <em>galacto</em>.
+          That independently predicts the axial chlorine without touching the Fischer projection.</li>
+      <li><strong>Distractor audit:</strong> (B) fails the C4 test only; (D) fails the fructose test only;
+          (C) fails both. Each wrong option is a single believable slip, which is why the elimination has to
+          be done on both centres rather than one.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 07 CONCEPTS -->
+<section id="concepts">
+  <h2><span class="n">07</span>Concepts and classification</h2>
+  <div class="lab">
+    <div class="panel">
+      <h3>Rules used</h3>
+      <div class="eq">Fischer → Haworth (D-sugar): right → <b>down</b>, left → <b>up</b>, C6 → <b>up</b></div>
+      <div class="eq">α-D-anomer: anomeric substituent <b>down</b> · β-D-anomer: <b>up</b></div>
+      <div class="eq">galactose = glucose epimeric at C4 (C4–OH axial instead of equatorial)</div>
+      <div class="eq">glycoside = anomeric C–O–R; a 1↔2′ link joins <em>both</em> anomeric carbons, so a
+        non-reducing disaccharide results</div>
+      <div class="eq">deoxy-halo sugar: –OH replaced by –Cl (here with inversion at C4)</div>
+    </div>
+    <div class="panel">
+      <h3>Classification</h3>
+      <table class="meta-tbl">
+        <tr><td>Simulation ID</td><td><code>ADV-2026-P2-CHE-Q04</code></td></tr>
+        <tr><td>Exam / Year / Paper</td><td>JEE Advanced · 2026 · Paper 2</td></tr>
+        <tr><td>Subject</td><td>Chemistry (Organic / Biomolecules)</td></tr>
+        <tr><td>Chapter</td><td>Biomolecules</td></tr>
+        <tr><td>Topic</td><td>Carbohydrates — structure and glycosidic linkages</td></tr>
+        <tr><td>Subtopics</td><td>Fischer and Haworth projections · Anomers and the α/β convention · Epimers (glucose vs galactose) · Pyranose and furanose rings · Glycosidic linkage in a non-reducing disaccharide · Deoxy-halo sugars · Artificial sweeteners</td></tr>
+        <tr><td>Question type</td><td>Single correct MCQ (+3 / 0 / −1)</td></tr>
+        <tr><td>Difficulty</td><td>Moderate</td></tr>
+        <tr><td>Answer</td><td><strong>(A) sucralose</strong></td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<footer>
+  ADV-2026-P2-CHE-Q04 · PrayogX · JEE Advanced Interactive Simulation Library · question text reproduced
+  from the official JEE (Advanced) 2026 Paper 2 for educational use.
+</footer>
+</div>
+
+<script>
+(function(){
+"use strict";
+var NS="http://www.w3.org/2000/svg";
+function css(v){ return getComputedStyle(document.documentElement).getPropertyValue(v).trim(); }
+function el(n,a){ var e=document.createElementNS(NS,n); for(var k in a) e.setAttribute(k,a[k]); return e; }
+
+/* ---------- skeletal renderer (shared house helper) ---------- */
+function render(svg, spec, opts){
+  opts = opts || {};
+  while(svg.firstChild) svg.removeChild(svg.firstChild);
+  var vb = svg.getAttribute("viewBox").split(/\s+/).map(Number);
+  var W=vb[2], H=vb[3], pad = opts.pad===undefined?26:opts.pad;
+  var A = spec.atoms; if(!A.length) return;
+  var BB = A.concat(spec.notes||[]);
+  var xs=BB.map(function(a){return a.x;}), ys=BB.map(function(a){return a.y;});
+  var x0=Math.min.apply(null,xs), x1=Math.max.apply(null,xs);
+  var y0=Math.min.apply(null,ys), y1=Math.max.apply(null,ys);
+  var s = Math.min((W-2*pad)/Math.max(x1-x0,0.001), (H-2*pad)/Math.max(y1-y0,0.001));
+  if(opts.maxScale) s=Math.min(s,opts.maxScale);
+  var ox=(W-(x1-x0)*s)/2 - x0*s, oy=(H+(y1-y0)*s)/2 + y0*s;
+  function P(a){ return [a.x*s+ox, -a.y*s+oy]; }
+  var bondCol=css("--bondc"), muted=css("--text-muted");
+  function colOf(a){
+    if(a.c) return css(a.c);
+    if(!a.l) return bondCol;
+    if(a.l.indexOf("Cl")===0 || a.l.indexOf("Cl")>0 && a.l.length<=6 && a.l.indexOf("O")<0) return css("--atom-cl");
+    if(a.l.charAt(0)==="O"||a.l.indexOf("OH")>=0) return css("--atom-o");
+    return css("--text-primary");
+  }
+  var g=el("g",{}); svg.appendChild(g);
+  spec.bonds.forEach(function(b){
+    var a=A[b[0]], c=A[b[1]], order=b[2]||1, o=b[3]||{};
+    if(o.hide) return;
+    var p=P(a), q=P(c);
+    var dx=q[0]-p[0], dy=q[1]-p[1], L=Math.hypot(dx,dy)||1, ux=dx/L, uy=dy/L;
+    var t1=a.l?(a.tw||14):0, t2=c.l?(c.tw||14):0;
+    var x1b=p[0]+ux*t1, y1b=p[1]+uy*t1, x2b=q[0]-ux*t2, y2b=q[1]-uy*t2;
+    var nx=-uy, ny=ux, col=o.col?css(o.col):bondCol, op=(o.op===undefined?1:o.op);
+    function line(off,dash){
+      g.appendChild(el("line",{x1:x1b+nx*off,y1:y1b+ny*off,x2:x2b+nx*off,y2:y2b+ny*off,
+        stroke:col,"stroke-width":o.w||2.3,"stroke-linecap":"round",opacity:op,
+        "stroke-dasharray":dash||"none"}));
+    }
+    if(order===2){ line(-3.2,null); line(3.2,null); } else line(0, o.dash?"5 4":null);
+  });
+  A.forEach(function(a){
+    if(!a.l) return;
+    var p=P(a);
+    if(a.box){
+      var wpx=(a.l.length*7.6)+10;
+      g.appendChild(el("rect",{x:p[0]-wpx/2,y:p[1]-11,width:wpx,height:21,rx:5,
+        fill:css("--surface-1"),stroke:css(a.box),"stroke-width":1.6}));
+    }
+    var t=el("text",{x:p[0],y:p[1]+5.2,"text-anchor":"middle",fill:colOf(a),
+      "font-size":a.fs||14.5,"font-weight":a.fw||600,"font-family":"ui-sans-serif,system-ui,sans-serif"});
+    t.textContent=a.l; g.appendChild(t);
+  });
+  (spec.notes||[]).forEach(function(n){
+    var p=P(n);
+    var t=el("text",{x:p[0],y:p[1],"text-anchor":n.anchor||"middle",fill:n.col?css(n.col):muted,
+      "font-size":n.fs||12,"font-weight":n.bold?700:400,"font-family":"ui-sans-serif,system-ui,sans-serif"});
+    t.textContent=n.t; g.appendChild(t);
+  });
+}
+
+/* ============================================================
+   D-galactose Fischer projection
+   The paper's projection: OH right at C2 and C5, OH left at C3 and C4.
+   ============================================================ */
+var FISCHER = [
+  {c:2, right:"OH", left:"H"},
+  {c:3, right:"H",  left:"HO"},
+  {c:4, right:"H",  left:"HO"},
+  {c:5, right:"OH", left:"H"}
+];
+/* right in Fischer -> down in Haworth; left -> up */
+function haworthDir(i){ return FISCHER[i].right==="OH" ? "down" : "up"; }
+
+function fischerSpec(active){
+  var a=[], b=[], notes=[];
+  var yTop=2.4;
+  a.push({x:0, y:yTop, l:"CHO", fs:15, tw:22});                    // 0
+  for(var i=0;i<4;i++){
+    var y = yTop - 1 - i;
+    var ci = a.length;
+    a.push({x:0, y:y});                                            // stereocentre
+    a.push({x:-1.15, y:y, l:FISCHER[i].left,  tw:FISCHER[i].left.length>1?18:12});
+    a.push({x: 1.15, y:y, l:FISCHER[i].right, tw:FISCHER[i].right.length>1?18:12});
+    b.push([ci, ci+1, 1], [ci, ci+2, 1]);
+    b.push([ci===1?0:ci-3, ci, 1]);
+    var hot = (active===i);
+    notes.push({x:2.15, y:y+0.06, t:"C"+FISCHER[i].c, anchor:"start", fs:12,
+                col: hot?"--accent":"--text-muted", bold:hot});
+    if(hot){
+      notes.push({x:0, y:y-0.42, t:(FISCHER[i].right==="OH"?"OH on the right → down":"OH on the left → up"),
+                  fs:11.5, col:"--accent", bold:true});
+    }
+  }
+  var last=a.length-3;
+  a.push({x:0, y:yTop-5, l:"CH₂OH", fs:15, tw:30});
+  b.push([last, a.length-1, 1]);
+  notes.push({x:2.15, y:yTop-5+0.06, t:"C6", anchor:"start", fs:12, col:"--text-muted"});
+  notes.push({x:2.15, y:yTop+0.06, t:"C1", anchor:"start", fs:12, col:"--text-muted"});
+  return {atoms:a, bonds:b, notes:notes};
+}
+
+/* ============================================================
+   Haworth builder
+   Pyranose hexagon: ring O back-right, C1 right, numbering clockwise.
+   Furanose pentagon: ring O top, C2 left  (the orientation the paper uses).
+   Substituents are drawn as vertical stubs; hydrogens are omitted.
+   ============================================================ */
+var PY = { C1:[2.17,0.07], C2:[1.47,-0.77], C3:[-1.47,-0.77], C4:[-2.17,0.07],
+           C5:[-0.77,0.77], O5:[0.77,0.77] };
+var FU = { C2:[5.10,-1.30], C3:[5.85,-2.45], C4:[7.75,-2.45], C5:[8.50,-1.30], O:[6.80,-0.60] };
+var STUB = 1.05;
+
+function disacc(cfg){
+  // cfg: {c4:"up"|"down", ano:"a"|"b", fru:"a"|"b", chloro:bool, labels:bool}
+  var chloro = cfg.chloro !== false;
+  var a=[], b=[], notes=[];
+  function at(p,l,extra){ var o={x:p[0], y:p[1]}; if(l) o.l=l; if(extra) for(var k in extra) o[k]=extra[k];
+                          a.push(o); return a.length-1; }
+  // pyranose ring
+  var c1=at(PY.C1), c2=at(PY.C2), c3=at(PY.C3), c4=at(PY.C4), c5=at(PY.C5), o5=at(PY.O5,"O",{tw:11});
+  b.push([c1,c2,1],[c2,c3,1],[c3,c4,1],[c4,c5,1],[c5,o5,1],[o5,c1,1]);
+  // substituents (H omitted)
+  var i;
+  i=at([PY.C2[0], PY.C2[1]-STUB], "OH", {tw:17}); b.push([c2,i,1]);
+  i=at([PY.C3[0], PY.C3[1]+STUB*1.32], "OH", {tw:17}); b.push([c3,i,1]);
+  var c4y = cfg.c4==="up" ? PY.C4[1]+STUB*1.15 : PY.C4[1]-STUB*1.15;
+  i=at([PY.C4[0], c4y], chloro?"Cl":"OH", {tw:14}); b.push([c4,i,1]);
+  if(cfg.notes!==false){
+    notes.push({x:PY.C4[0]-0.15, y:c4y + (cfg.c4==="up"?0.62:-0.78),
+                t:(cfg.c4==="up"?"axial (galacto)":"equatorial (gluco)"),
+                fs:10.5, col:(cfg.c4==="up"?"--good":"--bad"), bold:true});
+  }
+  i=at([PY.C5[0], PY.C5[1]+STUB*1.15], "CH₂OH", {tw:30}); b.push([c5,i,1]);
+
+  // glycosidic oxygen: below C1 for alpha, above for beta
+  var ogy = cfg.ano==="a" ? -1.95 : 1.15;
+  var og = at([3.55, ogy], "O", {tw:11, c:"--atom-o"});
+  b.push([c1,og,1]);
+  notes.push({x:PY.C1[0]+0.30, y:PY.C1[1]+(cfg.ano==="a"?-0.62:0.55),
+              t:(cfg.ano==="a"?"α":"β"), fs:15, bold:true,
+              col:(cfg.ano==="a"?"--good":"--bad")});
+
+  // furanose ring
+  var f2=at(FU.C2), f3=at(FU.C3), f4=at(FU.C4), f5=at(FU.C5), fo=at(FU.O,"O",{tw:11});
+  b.push([f2,f3,1],[f3,f4,1],[f4,f5,1],[f5,fo,1],[fo,f2,1]);
+  b.push([og,f2,1]);
+  var c1py = cfg.fru==="b" ? FU.C2[1]+STUB : FU.C2[1]-STUB;
+  i=at([FU.C2[0], c1py], chloro?"CH₂Cl":"CH₂OH", {tw:chloro?27:30}); b.push([f2,i,1]);
+  notes.push({x:FU.C2[0]+0.62, y:FU.C2[1]+(cfg.fru==="b"?-0.45:0.42),
+              t:(cfg.fru==="b"?"β":"α"), fs:15, bold:true,
+              col:(cfg.fru==="b"?"--good":"--bad")});
+  i=at([FU.C3[0], FU.C3[1]-STUB], "OH", {tw:17}); b.push([f3,i,1]);
+  i=at([FU.C4[0], FU.C4[1]+STUB], "OH", {tw:17}); b.push([f4,i,1]);
+  i=at([FU.C5[0], FU.C5[1]-STUB], chloro?"CH₂Cl":"CH₂OH", {tw:chloro?27:30}); b.push([f5,i,1]);
+
+  if(cfg.labels!==false){
+    notes.push({x:0, y:1.95, t:chloro?"4-chloro-4-deoxy-galactopyranose":"glucopyranose",
+                fs:11.5, col:"--text-muted"});
+    notes.push({x:6.35, y:-3.55, t:chloro?"1,6-dichloro-1,6-dideoxy-fructofuranose":"fructofuranose",
+                fs:11.5, col:"--text-muted"});
+  }
+  return {atoms:a, bonds:b, notes:notes};
+}
+
+/* the printed options, expressed in the same three decisions */
+var OPTIONS = {
+  A:{c4:"up",   ano:"a", fru:"b"},
+  B:{c4:"down", ano:"a", fru:"b"},
+  C:{c4:"down", ano:"a", fru:"a"},
+  D:{c4:"up",   ano:"a", fru:"a"}
+};
+var TARGET = {c4:"up", ano:"a", fru:"b"};          // sucralose
+function matchOption(cfg){
+  for(var k in OPTIONS){
+    var o=OPTIONS[k];
+    if(o.c4===cfg.c4 && o.ano===cfg.ano && o.fru===cfg.fru) return k;
+  }
+  return null;
+}
+function isSucralose(cfg){
+  return cfg.c4===TARGET.c4 && cfg.ano===TARGET.ano && cfg.fru===TARGET.fru;
+}
+
+/* ---------------- 01 options ---------------- */
+function drawOptions(){
+  var list=document.querySelectorAll("svg[data-opt]");
+  for(var i=0;i<list.length;i++){
+    var k=list[i].getAttribute("data-opt");
+    render(list[i], disacc({c4:OPTIONS[k].c4, ano:OPTIONS[k].ano, fru:OPTIONS[k].fru,
+                            labels:false, notes:false}), {pad:26});
+  }
+  render(document.getElementById("fischerQ"), fischerSpec(-1), {pad:30});
+}
+document.getElementById("opts").addEventListener("click", function(e){
+  var li=e.target.closest("li"); if(!li) return;
+  var all=this.querySelectorAll("li");
+  for(var i=0;i<all.length;i++){ all[i].classList.remove("correct","wrong"); all[i].querySelector(".mark").textContent=""; }
+  if(li.dataset.k==="A"){ li.classList.add("correct"); li.querySelector(".mark").textContent="correct"; }
+  else{
+    li.classList.add("wrong"); li.querySelector(".mark").textContent="not correct";
+    var c=this.querySelector('[data-k="A"]'); c.classList.add("correct");
+    c.querySelector(".mark").textContent="correct";
+  }
+});
+
+/* ---------------- 02 Fischer → Haworth ---------------- */
+var fStep = -1;   // -1 = nothing revealed yet, 0..3 = carbons C2..C5, 4 = all
+function haworthPartial(n){
+  // n = how many stereocentres have been converted (0..4)
+  var a=[], b=[], notes=[];
+  function at(p,l,extra){ var o={x:p[0],y:p[1]}; if(l) o.l=l; if(extra) for(var k in extra) o[k]=extra[k];
+                          a.push(o); return a.length-1; }
+  var c1=at(PY.C1), c2=at(PY.C2), c3=at(PY.C3), c4=at(PY.C4), c5=at(PY.C5), o5=at(PY.O5,"O",{tw:11});
+  b.push([c1,c2,1],[c2,c3,1],[c3,c4,1],[c4,c5,1],[c5,o5,1],[o5,c1,1]);
+  var ring=[null,c1,c2,c3,c4,c5];
+  var subs=[
+    {c:2, node:c2, dir:haworthDir(0), l:"OH"},
+    {c:3, node:c3, dir:haworthDir(1), l:"OH"},
+    {c:4, node:c4, dir:haworthDir(2), l:"OH"},
+    {c:5, node:c5, dir:"up",          l:"CH₂OH"}     // C6 branch: always up for a D-sugar
+  ];
+  var P={2:PY.C2,3:PY.C3,4:PY.C4,5:PY.C5};
+  for(var i=0;i<Math.min(n,4);i++){
+    var s=subs[i], k=(s.c===3?1.32:(s.c===5?1.15:(s.c===4?1.15:1)));
+    var y = P[s.c][1] + (s.dir==="up"?STUB*k:-STUB*k);
+    var idx = at([P[s.c][0], y], s.l, {tw:s.l.length>2?30:17, c: i===n-1 ? "--accent" : null});
+    b.push([s.node, idx, 1, {col: i===n-1 ? "--accent" : null, w: i===n-1?3:2.3}]);
+  }
+  if(n>=5){
+    var og=at([3.45,-1.95],"O",{tw:11,c:"--atom-o"}); b.push([c1,og,1]);
+    notes.push({x:PY.C1[0]+0.30, y:PY.C1[1]-0.62, t:"α", fs:15, bold:true, col:"--good"});
+    notes.push({x:3.45,y:-2.75,t:"to the fructose",fs:11,col:"--text-muted"});
+  }
+  notes.push({x:0, y:2.0, t: n>=5 ? "α-D-galactopyranose" :
+    (n===0 ? "ring skeleton — nothing placed yet" : n+" of 4 centres placed"),
+    fs:12.5, col:(n>=5?"--good":"--text-muted"), bold:n>=5});
+  return {atoms:a, bonds:b, notes:notes};
+}
+function drawFischer(){
+  var active = (fStep>=0 && fStep<4) ? fStep : -1;
+  render(document.getElementById("fischerSvg"), fischerSpec(active), {pad:34});
+  render(document.getElementById("haworth"), haworthPartial(fStep<0?0:fStep+1), {pad:36});
+  var msg=document.getElementById("fmsg");
+  if(fStep<0){ msg.className="verdict"; msg.innerHTML="Press <b>Next carbon</b> to convert C2, C3, C4 and C5 in turn."; }
+  else if(fStep<4){
+    var f=FISCHER[fStep], side=f.right==="OH"?"right":"left", dir=haworthDir(fStep);
+    msg.className="verdict " + (f.c===4 ? "ok":"");
+    msg.innerHTML = "<b>C"+f.c+"</b>: OH is on the <b>"+side+"</b> in Fischer, so it points <b>"+dir+
+      "</b> in Haworth." + (f.c===4
+        ? " This axial C4–OH is the <b>only</b> difference between galactose and glucose — and it is where the chlorine goes."
+        : "");
+  } else {
+    msg.className="verdict ok";
+    msg.innerHTML="<b>α-D-galactopyranose complete.</b> C2 down, C3 up, C4 up, C6 up, and the anomeric oxygen at C1 down for α.";
+  }
+  document.getElementById("ftable").innerHTML =
+    "<thead><tr><th>Carbon</th><th>Fischer</th><th>Haworth</th></tr></thead><tbody>" +
+    FISCHER.map(function(f,i){
+      var shown = fStep>=i;
+      return "<tr"+(shown&&f.c===4?" class='win'":"")+"><td>C"+f.c+"</td><td>OH "+
+        (f.right==="OH"?"right":"left")+"</td><td>"+(shown?("<b>"+haworthDir(i)+"</b>"):"—")+"</td></tr>";
+    }).join("") +
+    "<tr><td>C6</td><td>—</td><td>"+(fStep>=3?"<b>up</b> (D-sugar)":"—")+"</td></tr>" +
+    "<tr><td>C1 (anomeric)</td><td>—</td><td>"+(fStep>=4?"<b>down</b> (α)":"—")+"</td></tr></tbody>";
+}
+document.getElementById("stepf").addEventListener("click", function(){
+  fStep = fStep>=4 ? -1 : fStep+1; drawFischer();
+});
+document.getElementById("allf").addEventListener("click", function(){ fStep=4; drawFischer(); });
+
+/* ---------------- 03 builder ---------------- */
+var cfg = {c4:"up", ano:"a", fru:"b"};
+function drawBuild(){
+  render(document.getElementById("buildSvg"), disacc({c4:cfg.c4, ano:cfg.ano, fru:cfg.fru}), {pad:40});
+  var ok1 = cfg.c4===TARGET.c4, ok2 = cfg.ano===TARGET.ano, ok3 = cfg.fru===TARGET.fru;
+  function row(ok, txt){ return '<div class="check '+(ok?"ok":"no")+'"><span class="ic">'+
+    (ok?"✓":"✗")+"</span><span>"+txt+"</span></div>"; }
+  document.getElementById("checks").innerHTML =
+    row(ok1, "4-chloro-4-deoxy-<b>α-D-galactose</b> — needs the C4 chlorine <b>axial</b>" +
+        (ok1?"":" (you have it equatorial: that is the <em>gluco</em> sugar)")) +
+    row(ok2, "…and the pyranose anomeric oxygen <b>α</b> (down)" + (ok2?"":" (you have β)")) +
+    row(ok3, "1,6-dichloro-1,6-dideoxy-<b>β-D-fructose</b> — CH₂Cl at C1′ <b>up</b>" +
+        (ok3?"":" (you have the α anomer)"));
+  var opt = matchOption(cfg), good = isSucralose(cfg);
+  var v=document.getElementById("buildverdict");
+  document.getElementById("buildhd").textContent = good ? "Sucralose" : "Your structure";
+  if(good){
+    v.className="verdict ok";
+    v.innerHTML="<b>That is sucralose</b>, C₁₂H₁₉Cl₃O₈ — and it is printed option <b>(A)</b>. " +
+      "All three named requirements are satisfied.";
+  } else if(opt){
+    v.className="verdict no";
+    v.innerHTML="<b>This is printed option ("+opt+").</b> It is a stereoisomer of sucralose, not sucralose: " +
+      (!ok1?"the C4 chlorine is equatorial, making it a <em>gluco</em> sugar. ":"") +
+      (!ok3?"the fructose is the α anomer. ":"") + "See the failed checks above.";
+  } else {
+    v.className="verdict no";
+    v.innerHTML="<b>No printed option looks like this.</b> All four options in the paper draw the pyranose " +
+      "as the α anomer, so a β-linkage here is off the map — and it would not be sucralose either.";
+  }
+  drawMatrix();
+}
+function bindToggle(id, key){
+  document.getElementById(id).addEventListener("click", function(e){
+    var b=e.target.closest("button"); if(!b) return;
+    var bs=this.querySelectorAll("button");
+    for(var i=0;i<bs.length;i++) bs[i].setAttribute("aria-pressed", bs[i]===b?"true":"false");
+    cfg[key]=b.dataset.v; drawBuild();
+  });
+}
+bindToggle("t-c4","c4"); bindToggle("t-ano","ano"); bindToggle("t-fru","fru");
+function setToggles(){
+  [["t-c4",cfg.c4],["t-ano",cfg.ano],["t-fru",cfg.fru]].forEach(function(pair){
+    var bs=document.getElementById(pair[0]).querySelectorAll("button");
+    for(var i=0;i<bs.length;i++) bs[i].setAttribute("aria-pressed", bs[i].dataset.v===pair[1]?"true":"false");
+  });
+}
+document.getElementById("makeSucralose").addEventListener("click", function(){
+  cfg={c4:"up",ano:"a",fru:"b"}; setToggles(); drawBuild();
+});
+var wrongIdx=0;
+document.getElementById("scramble").addEventListener("click", function(){
+  var wrongs=[{c4:"down",ano:"a",fru:"b"},{c4:"down",ano:"a",fru:"a"},{c4:"up",ano:"a",fru:"a"}];
+  cfg = wrongs[wrongIdx % wrongs.length]; wrongIdx++;
+  cfg = {c4:cfg.c4, ano:cfg.ano, fru:cfg.fru};
+  setToggles(); drawBuild();
+});
+
+/* ---------------- 04 elimination matrix ---------------- */
+function drawMatrix(){
+  var rows = ["A","B","C","D"].map(function(k){
+    var o=OPTIONS[k];
+    var t1=o.c4===TARGET.c4, t2=o.ano===TARGET.ano, t3=o.fru===TARGET.fru;
+    var win = t1&&t2&&t3;
+    function cell(ok,txt){ return "<td class='"+(ok?"yes":"no")+"'>"+(ok?"✓ ":"✗ ")+txt+"</td>"; }
+    return "<tr"+(win?" class='win'":"")+"><td><b>("+k+")</b></td>" +
+      cell(t1, o.c4==="up"?"axial (galacto)":"equatorial (gluco)") +
+      cell(t2, o.ano==="a"?"α":"β") +
+      cell(t3, o.fru==="b"?"β":"α") +
+      "<td>"+(win?"<b class='yes'>sucralose — the answer</b>":"stereoisomer, not sucralose")+"</td></tr>";
+  }).join("");
+  document.getElementById("matrix").innerHTML =
+    "<thead><tr><th>Option</th><th>C4 chlorine<br><span style='font-weight:400'>must be axial</span></th>" +
+    "<th>Pyranose anomer<br><span style='font-weight:400'>must be α</span></th>" +
+    "<th>Fructose anomer<br><span style='font-weight:400'>must be β</span></th>" +
+    "<th>Verdict</th></tr></thead><tbody>"+rows+"</tbody>";
+}
+
+/* ---------------- 05 sucrose + sweetness chart ---------------- */
+function drawSucrose(){
+  render(document.getElementById("sucrose"),
+    disacc({c4:"down", ano:"a", fru:"b", chloro:false, labels:false}), {pad:38});
+}
+var SWEET = [
+  {n:"Sucrose", v:1},
+  {n:"Aspartame", v:180},
+  {n:"Acesulfame-K", v:200},
+  {n:"Saccharin", v:300},
+  {n:"Sucralose", v:600, hi:true},
+  {n:"Alitame", v:2000}
+];
+var chart=document.getElementById("chart"), tip=document.getElementById("tip");
+var CW=760, CH=300, M={l:118,r:80,t:26,b:50};
+function lx(v){ return M.l + (Math.log10(v)/Math.log10(3000))*(CW-M.l-M.r); }
+function drawChart(){
+  while(chart.firstChild) chart.removeChild(chart.firstChild);
+  var grid=css("--line"), muted=css("--text-muted"), ink=css("--text-secondary"),
+      strong=css("--line-strong"), s1=css("--s1");
+  [1,10,100,1000].forEach(function(v){
+    chart.appendChild(el("line",{x1:lx(v),x2:lx(v),y1:M.t,y2:CH-M.b,stroke:grid,"stroke-width":1}));
+    var t=el("text",{x:lx(v),y:CH-M.b+18,"text-anchor":"middle",fill:muted,"font-size":11,
+      "font-family":"ui-monospace,monospace"}); t.textContent=v+"×"; chart.appendChild(t);
+  });
+  chart.appendChild(el("line",{x1:M.l,x2:M.l,y1:M.t,y2:CH-M.b,stroke:strong,"stroke-width":1.5}));
+  var rowsH=(CH-M.t-M.b)/SWEET.length;
+  SWEET.forEach(function(d,i){
+    var y=M.t+i*rowsH+rowsH/2;
+    chart.appendChild(el("line",{x1:M.l,x2:lx(d.v),y1:y,y2:y,stroke:s1,"stroke-width":d.hi?3:2,
+      opacity:d.hi?1:0.5,"stroke-linecap":"round"}));
+    chart.appendChild(el("circle",{cx:lx(d.v),cy:y,r:d.hi?7.5:5.5,fill:s1,
+      stroke:css("--surface-1"),"stroke-width":2,"data-i":i,"pointer-events":"all",
+      opacity:d.hi?1:0.75}));
+    var lb=el("text",{x:M.l-12,y:y+5,"text-anchor":"end",fill:css("--text-primary"),
+      "font-size":12.5,"font-weight":d.hi?700:500}); lb.textContent=d.n; chart.appendChild(lb);
+    var vl=el("text",{x:lx(d.v)+13,y:y+5,fill:css("--text-primary"),"font-size":12,
+      "font-weight":d.hi?700:600,"font-family":"ui-monospace,monospace"});
+    vl.textContent=d.v+"×"; chart.appendChild(vl);
+  });
+  var ax=el("text",{x:(M.l+CW-M.r)/2,y:CH-8,"text-anchor":"middle",fill:ink,"font-size":12.5});
+  ax.textContent="sweetness relative to sucrose (log scale)"; chart.appendChild(ax);
+}
+chart.addEventListener("mousemove", function(ev){
+  var i = ev.target && ev.target.getAttribute && ev.target.getAttribute("data-i");
+  if(i===null || i===undefined){ tip.style.opacity=0; return; }
+  var d=SWEET[+i];
+  tip.innerHTML='<div class="t">'+d.n+'</div><div class="r">relative sweetness <b>'+d.v+'×</b></div>'+
+    '<div class="r">to match 1 g sugar <b>'+(1000/d.v).toFixed(d.v>=100?1:0)+' mg</b></div>';
+  tip.style.opacity=1;
+  var r=document.getElementById("cw").getBoundingClientRect();
+  var lxp=ev.clientX-r.left+14; if(lxp>r.width-185) lxp=ev.clientX-r.left-195;
+  tip.style.left=lxp+"px"; tip.style.top=Math.max(4, ev.clientY-r.top-55)+"px";
+});
+chart.addEventListener("mouseleave", function(){ tip.style.opacity=0; });
+
+/* ---------------- theme + init ---------------- */
+document.getElementById("themebtn").addEventListener("click", function(){
+  var r=document.documentElement;
+  var dark = r.getAttribute("data-theme")==="dark" ||
+    (!r.getAttribute("data-theme") && matchMedia("(prefers-color-scheme: dark)").matches);
+  r.setAttribute("data-theme", dark?"light":"dark");
+  drawOptions(); drawFischer(); drawBuild(); drawSucrose(); drawChart();
+});
+drawOptions(); drawFischer(); drawBuild(); drawSucrose(); drawChart();
+})();
+</script>
+</body>
+</html>

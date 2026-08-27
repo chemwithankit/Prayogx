@@ -1,0 +1,112 @@
+{
+  "schemaVersion": "1.0.0",
+  "note": "Chapter/topic vocabulary for the library. Extend as new simulations are added; keep names stable so filters do not fragment.",
+  "subjects": {
+    "Physics": {
+      "chapters": {}
+    },
+    "Chemistry": {
+      "chapters": {
+        "Electrochemistry": {
+          "topics": {
+            "Conductance of electrolytic solutions": {
+              "subtopics": [
+                "Molar conductivity and its concentration dependence",
+                "Limiting molar conductivity by extrapolation",
+                "Kohlrausch's law of independent migration of ions",
+                "Solubility of a sparingly soluble salt from conductance measurements"
+              ],
+              "simulations": [
+                "ADV-2026-P2-CHE-Q01"
+              ]
+            },
+            "Electrochemical cells and EMF": {
+              "subtopics": [],
+              "simulations": []
+            },
+            "Electrolysis and Faraday's laws": {
+              "subtopics": [],
+              "simulations": []
+            }
+          }
+        },
+        "Chemical Bonding and Molecular Structure": {
+          "topics": {
+            "VSEPR theory and molecular geometry": {
+              "subtopics": [
+                "Electron-domain (steric number) counting",
+                "Lone-pair vs bond-pair vs single-electron repulsion",
+                "Odd-electron (radical) species",
+                "Resonance and fractional bond order",
+                "Isoelectronic series",
+                "Walsh's rules for AB2 triatomics"
+              ],
+              "simulations": [
+                "ADV-2026-P2-CHE-Q02"
+              ]
+            },
+            "Hybridisation": {
+              "subtopics": [],
+              "simulations": []
+            },
+            "Molecular orbital theory": {
+              "subtopics": [],
+              "simulations": []
+            }
+          }
+        },
+        "Aldehydes, Ketones and Carboxylic Acids": {
+          "topics": {
+            "Aldol condensation": {
+              "subtopics": [
+                "Reductive ozonolysis of alkenes (O3 then Zn/H2O)",
+                "Structure of natural rubber as cis-1,4-polyisoprene",
+                "Iodoform test for a methyl ketone",
+                "Tollens test for an aldehyde",
+                "Intramolecular aldol and the choice of ring size",
+                "Dehydration to an alpha,beta-unsaturated ketone"
+              ],
+              "simulations": [
+                "ADV-2026-P2-CHE-Q03"
+              ]
+            },
+            "Nucleophilic addition to the carbonyl group": {
+              "subtopics": [],
+              "simulations": []
+            },
+            "Oxidation and reduction of carbonyl compounds": {
+              "subtopics": [],
+              "simulations": []
+            }
+          }
+        },
+        "Biomolecules": {
+          "topics": {
+            "Carbohydrates - structure and glycosidic linkages": {
+              "subtopics": [
+                "Fischer and Haworth projections",
+                "Anomers and the alpha/beta convention",
+                "Epimers: glucose versus galactose at C4",
+                "Pyranose and furanose ring forms",
+                "Glycosidic linkage in a non-reducing disaccharide",
+                "Deoxy-halo sugars",
+                "Artificial sweeteners"
+              ],
+              "simulations": [
+                "ADV-2026-P2-CHE-Q04"
+              ]
+            },
+            "Amino acids and proteins": {
+              "subtopics": [],
+              "simulations": []
+            },
+            "Nucleic acids": {
+              "subtopics": [],
+              "simulations": []
+            }
+          }
+        }
+      }
+    }
+  }
+}

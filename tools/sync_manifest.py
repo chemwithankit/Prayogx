@@ -1,0 +1,62 @@
+#!/usr/bin/env python3
+"""
+Rebuild the derived parts of the catalogue from data/manifest.json.
+
+data/manifest.json is the single source of truth. This script:
+  1. sorts simulations by id,
+  2. recomputes `counts` (total / byYear / bySubject / byChapter),
+  3. regenerates data/manifest.js, which is the same object exposed as
+     window.SIM_MANIFEST so the website works when opened straight from disk.
+
+Run it after adding or editing a simulation entry:
+
+    python3 tools/sync_manifest.py
+
+It never touches simulation files.
+"""
+import json
+import os
+import sys
+
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+JSON_PATH = os.path.join(ROOT, "data", "manifest.json")
+JS_PATH = os.path.join(ROOT, "data", "manifest.js")
+
+BANNER = ("/* Auto-generated from manifest.json by tools/sync_manifest.py — do not edit by hand.\n"
+          "   Exposes the manifest as window.SIM_MANIFEST so the website works from file://,\n"
+          "   where fetch() of a local JSON file is blocked. */\n")
+
+
+def main():
+    with open(JSON_PATH, encoding="utf-8") as fh:
+        manifest = json.load(fh)
+
+    sims = manifest.get("simulations", [])
+    sims.sort(key=lambda s: s.get("id", ""))
+
+    counts = {"total": len(sims), "byYear": {}, "bySubject": {}, "byChapter": {}}
+    for sim in sims:
+        for key, field in (("byYear", "year"), ("bySubject", "subject"), ("byChapter", "chapter")):
+            value = str(sim.get(field, "unknown"))
+            counts[key][value] = counts[key].get(value, 0) + 1
+    manifest["counts"] = counts
+    manifest["simulations"] = sims
+
+    with open(JSON_PATH, "w", encoding="utf-8") as fh:
+        json.dump(manifest, fh, indent=2, ensure_ascii=False)
+        fh.write("\n")
+
+    with open(JS_PATH, "w", encoding="utf-8") as fh:
+        fh.write(BANNER)
+        fh.write("window.SIM_MANIFEST = ")
+        json.dump(manifest, fh, indent=2, ensure_ascii=False)
+        fh.write(";\n")
+
+    print("synced %d simulation(s)" % counts["total"])
+    for key in ("byYear", "bySubject", "byChapter"):
+        print("  %-10s %s" % (key + ":", counts[key]))
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

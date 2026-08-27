@@ -1,0 +1,113 @@
+{
+  "id": "ADV-2026-P2-CHE-Q02",
+  "slug": "adv-2026-p2-che-q02",
+  "revision": 1,
+  "path": "simulations/2026/paper-2/chemistry/adv-2026-p2-che-q02/index.html",
+  "folder": "simulations/2026/paper-2/chemistry/adv-2026-p2-che-q02/",
+  "title": "ONO bond angles in NO2+, NO2, NO3- and NO2-",
+  "shortTitle": "Ordering ONO bond angles by VSEPR",
+  "summary": "Count electron domains on nitrogen for four nitrogen oxo species, see each one drawn to scale at its experimental bond angle, and rank them: a lone pair closes the angle below 120 degrees while a single odd electron lets it open above.",
+  "exam": "JEE Advanced",
+  "year": 2026,
+  "paper": "Paper 2",
+  "paperNumber": 2,
+  "subject": "Chemistry",
+  "branch": "Inorganic / Physical Chemistry",
+  "questionNumber": 2,
+  "section": "Section 1",
+  "questionType": "Single correct MCQ",
+  "marking": {
+    "full": 3,
+    "zero": 0,
+    "negative": -1
+  },
+  "chapter": "Chemical Bonding and Molecular Structure",
+  "topic": "VSEPR theory and molecular geometry",
+  "subtopics": [
+    "Electron-domain (steric number) counting",
+    "Lone-pair vs bond-pair vs single-electron repulsion",
+    "Odd-electron (radical) species",
+    "Resonance and fractional bond order",
+    "Isoelectronic series",
+    "Walsh's rules for AB2 triatomics"
+  ],
+  "concepts": [
+    "Steric number and electron geometry",
+    "Deviation from the ideal 120 degree angle",
+    "Symmetry-fixed geometries (D3h, D-infinity-h)",
+    "Electron count controls bending in AB2 species"
+  ],
+  "formulas": [
+    "Steric number = sigma-bonded atoms + non-bonding domains on the central atom",
+    "Repulsion: lone pair > bonding pair > single electron",
+    "SN 2 -> linear 180 deg; SN 3 -> trigonal planar 120 deg (bent if a domain is non-bonding)",
+    "Walsh (AB2): 16 valence e- linear; 17-20 bent with angle decreasing",
+    "Formal charge = V - N_nonbonding - 0.5 * N_bonding"
+  ],
+  "tags": [
+    "chemical bonding",
+    "vsepr",
+    "bond angle",
+    "molecular geometry",
+    "lone pair",
+    "bond pair",
+    "odd electron",
+    "radical",
+    "nitrite",
+    "nitrate",
+    "nitronium",
+    "nitrogen dioxide",
+    "no2",
+    "no2+",
+    "no2-",
+    "no3-",
+    "steric number",
+    "hybridisation",
+    "resonance",
+    "bond order",
+    "isoelectronic",
+    "walsh rules",
+    "inorganic chemistry",
+    "jee advanced 2026",
+    "paper 2",
+    "chemistry q2"
+  ],
+  "difficulty": "Easy-Moderate",
+  "estimatedMinutes": 6,
+  "answer": "(B)",
+  "answerValue": "NO2- < NO3- < NO2 < NO2+",
+  "derivedQuantities": {
+    "angle_NO2_minus_deg": 115.4,
+    "angle_NO3_minus_deg": 120.0,
+    "angle_NO2_deg": 134.1,
+    "angle_NO2_plus_deg": 180.0
+  },
+  "verification": {
+    "status": "verified",
+    "methods": [
+      "Symmetry argument fixes NO3- at 120 deg (D3h) and NO2+ at 180 deg (D-infinity-h) exactly",
+      "Isoelectronic cross-checks: NO2+ with CO2 (linear), NO2- with O3 (116.8 deg) and SO2 (119 deg)",
+      "Walsh's rules reproduce the 180 -> 134.1 -> 115.4 sequence for 16/17/18 valence electrons",
+      "Redundant qualitative ranking by repulsion strength alone, using no numerical angles",
+      "Robustness check: order unchanged for any NO2 angle in 121-180 deg and any NO2- angle below 120 deg",
+      "Distractor audit of options A, C and D",
+      "Headless-browser run: geometry viewer, VSEPR builder, chart and ordering checker all correct, no console errors"
+    ],
+    "verifiedOn": "2026-08-26"
+  },
+  "interactivity": [
+    "2D geometry viewer drawing each species to scale at its experimental angle, with lone pair / single electron shown",
+    "Overlay mode superimposing the other three angles as guides",
+    "Free-drag mode to set the angle yourself and compare with experiment",
+    "Walsh electron-count slider driving the 16/17/18-electron NO2 series",
+    "VSEPR domain builder: choose sigma-bonded oxygens and the non-bonding domain to identify the species",
+    "Bar chart of measured angles with hover tooltips and the ideal 120 degree reference",
+    "Click-to-order exercise with checking, plus the option checker and step-by-step solution"
+  ],
+  "source": {
+    "file": "papers/adv_2026_paper_2.pdf",
+    "page": 20
+  },
+  "createdAt": "2026-08-26",
+  "updatedAt": "2026-08-26"
+}
