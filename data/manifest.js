@@ -11,10 +11,11 @@ window.SIM_MANIFEST = {
     "tracker": {
       "type": "Google Sheet",
       "title": "PrayogX — Simulation Progress Tracker",
-      "id": "1TPwZ9rvYbVjYj8aRckp2A5TkuU8qV-BCcEvUgfx-gFA",
-      "url": "https://docs.google.com/spreadsheets/d/1TPwZ9rvYbVjYj8aRckp2A5TkuU8qV-BCcEvUgfx-gFA/edit",
+      "id": "1UpAAvc8vkKIKPgdpdMvYrlZGd9SRbvn8HkQR7R9HLIE",
+      "url": "https://docs.google.com/spreadsheets/d/1UpAAvc8vkKIKPgdpdMvYrlZGd9SRbvn8HkQR7R9HLIE/edit",
       "localSource": "data/tracker.csv",
-      "note": "data/tracker.csv is the local source of truth. The Drive connector cannot append rows to an existing sheet, so the sheet is recreated from the CSV on each update and its URL changes; always take the URL from here."
+      "note": "data/tracker.csv is the local source of truth. The Drive connector cannot append rows to an existing sheet, so the sheet is recreated from the CSV on each update and its URL changes; always take the URL from here.",
+      "syncedAt": "2026-08-27"
     },
     "fullName": "PrayogX — JEE Advanced Interactive Simulation Library",
     "tagline": "Interactive JEE Advanced Physics and Chemistry simulations"
