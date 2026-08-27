@@ -28,7 +28,7 @@ publish.sh                     validate, commit and push to GitHub (one command)
 .github/workflows/static.yml   GitHub Pages deploy workflow — do not delete
 .nojekyll                      tells GitHub Pages to serve the files as-is
 papers/
-  adv_2026_paper_2.pdf         source question papers
+  adv_2026_paper_2.pdf         source question papers - LOCAL ONLY, git-ignored, never deployed
 templates/
   simulation-template.html     starter shell: design tokens, seven-section skeleton, build checklist
 simulations/
@@ -175,7 +175,21 @@ manifest's relative paths resolve. No build step.
   Publish directory: the project root.
 - **Any static host or S3 bucket** — upload the folder, serve `index.html` as the index document.
 
-Exclude `papers/` if you do not want the source PDFs public; nothing else depends on them at runtime.
+### What gets published
+
+`.github/workflows/static.yml` assembles the deploy directory with a deny list, so a new simulation folder
+or site asset is published automatically. These are kept in the repository but never deployed:
+
+| Not published | Why |
+|---|---|
+| `papers/` | source exam PDFs — also git-ignored, so they never leave this computer |
+| `tools/` | maintenance scripts |
+| `templates/` | the authoring shell |
+| `data/tracker.csv` | internal progress tracker |
+| `README.md`, `publish.sh`, `.gitignore` | working files |
+
+The workflow has a guard step that fails the deploy if `papers/` or any `.pdf` reaches the deploy directory,
+so the PDFs cannot leak through a future edit by accident.
 
 ## Contents
 
