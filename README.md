@@ -199,3 +199,4 @@ so the PDFs cannot leak through a future edit by accident.
 | `ADV-2026-P2-CHE-Q02` | 2026 | 2 | Chemistry | Chemical Bonding and Molecular Structure | Q.2 | (B) |
 | `ADV-2026-P2-CHE-Q03` | 2026 | 2 | Chemistry | Aldehydes, Ketones and Carboxylic Acids | Q.3 | (A) |
 | `ADV-2026-P2-CHE-Q04` | 2026 | 2 | Chemistry | Biomolecules | Q.4 | (A) |
+| `ADV-2026-P2-CHE-Q05` | 2026 | 2 | Chemistry | Chemical Kinetics | Q.5 | (C) and (D) |

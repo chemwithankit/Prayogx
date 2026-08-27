@@ -1,0 +1,119 @@
+{
+  "id": "ADV-2026-P2-CHE-Q05",
+  "slug": "adv-2026-p2-che-q05",
+  "revision": 1,
+  "path": "simulations/2026/paper-2/chemistry/adv-2026-p2-che-q05/index.html",
+  "folder": "simulations/2026/paper-2/chemistry/adv-2026-p2-che-q05/",
+  "title": "Graphical representations of a first-order reaction R to P",
+  "shortTitle": "Reading first-order kinetics graphs",
+  "summary": "Run a first-order reactor at a chosen concentration and rate constant, log your own samples, then replot those samples on each of the four printed sets of axes and watch two of them fail on curvature and on sign.",
+  "exam": "JEE Advanced",
+  "year": 2026,
+  "paper": "Paper 2",
+  "paperNumber": 2,
+  "subject": "Chemistry",
+  "branch": "Physical Chemistry / Chemical Kinetics",
+  "questionNumber": 5,
+  "section": "Section 2",
+  "questionType": "Multiple correct MCQ",
+  "marking": {
+    "full": 4,
+    "partial": 2,
+    "zero": 0,
+    "negative": -1
+  },
+  "chapter": "Chemical Kinetics",
+  "topic": "First-order reactions",
+  "subtopics": [
+    "Integrated first-order rate law",
+    "Rate versus rate constant",
+    "Sign conventions for d[R]/dt and d[P]/dt",
+    "Half-life independence from initial concentration",
+    "Arrhenius temperature dependence of k",
+    "Reading and interpreting kinetics graphs"
+  ],
+  "concepts": [
+    "A rate is a slope and carries a sign; a rate constant does not",
+    "Exponential decay of [R] forces concave-down growth of [P]",
+    "d[R]/dt is linear in [R] with slope minus k, through the origin",
+    "k depends on temperature only, never on time or on concentration",
+    "t-half = ln2/k is the operational signature of first order"
+  ],
+  "formulas": [
+    "-d[R]/dt = k[R]",
+    "[R] = [R]0 e^(-kt) and ln[R] = ln[R]0 - kt",
+    "[P] = [R]0 - [R] = [R]0 (1 - e^(-kt))",
+    "d[P]/dt = -d[R]/dt = k[R] = k[R]0 e^(-kt)",
+    "d2[P]/dt2 = -k^2 [R]0 e^(-kt) < 0 for all t",
+    "t_half = ln2 / k, independent of [R]0",
+    "k = A e^(-Ea/RT)"
+  ],
+  "tags": [
+    "chemical kinetics",
+    "first order reaction",
+    "integrated rate law",
+    "rate law",
+    "rate constant",
+    "exponential decay",
+    "half-life",
+    "graphical representation",
+    "concentration vs time",
+    "rate vs concentration",
+    "sign convention",
+    "arrhenius equation",
+    "activation energy",
+    "multiple correct",
+    "jee advanced 2026",
+    "paper 2",
+    "chemistry q5"
+  ],
+  "difficulty": "Moderate",
+  "estimatedMinutes": 8,
+  "answer": "(C) and (D)",
+  "answerValue": "C,D",
+  "derivedQuantities": {
+    "default_R0_mol_per_L": 1.0,
+    "default_k_per_s": 0.3,
+    "default_half_life_s": 2.3105,
+    "activation_energy_J_per_mol": 50000,
+    "reference_temperature_K": 300,
+    "second_derivative_of_P": "negative for all t (concave down)",
+    "slope_of_dRdt_vs_R": -0.3
+  },
+  "verification": {
+    "status": "verified",
+    "methods": [
+      "Second derivative of [P] evaluated over the whole run: maximum value -2e-4 M s^-2, negative everywhere, so [P] against t is concave down and the printed concave-up curve in (A) is wrong",
+      "Least-squares fit of d[R]/dt against [R] returns slope -0.3000 = -k exactly; the maximum value reached is -7e-4 M s^-1, never positive, so the rising line in (B) is wrong",
+      "d[P]/dt confirmed positive and monotonically decreasing; ratio of its value at t = 0 to t = 1/k is 2.7196, matching e, the signature of a true exponential, so (C) is correct",
+      "k held constant at fixed T by construction and confirmed constant across every logged sample, so (D) is correct",
+      "Half-life independence checked at [R]0 = 0.5, 1, 2 and 5 M: t-half = 2.3105 s in every case, matching ln2/k",
+      "Dimensional check: k[R] has units s^-1 x mol L^-1 = mol L^-1 s^-1, a rate; a first-order k is s^-1 and carries no concentration unit",
+      "Distractor audit: (A) confuses exponential decay with exponential growth; (B) is the classic dropped minus sign, correct as a magnitude plot of -d[R]/dt against [R]",
+      "Headless-browser run of the finished page: every control driven, both k modes exercised, two runs completed, all four axes inspected, gate opened and answer resolved to (C) and (D) with a clean console and zero horizontal overflow at 390 px and 360 px"
+    ],
+    "verifiedOn": "2026-08-27",
+    "note": "Every verdict shown on the page is computed from the samples the student logs, using the same integrated rate law that drives the reactor; the page holds no stored answer key."
+  },
+  "interactivity": [
+    "Animated reactor vessel whose particle mix tracks [R] and [P] and whose jiggle speed tracks temperature",
+    "Rate constant set either directly or through temperature via the Arrhenius equation, as a constraint model",
+    "Slider plus typed input plus steppers on every parameter, accepting 1/2, 5e-1 and similar forms with validation messages",
+    "Run, pause, resume, 0.5x/1x/2x speed, reset and a time scrubber",
+    "Live readouts for [R], [P], d[R]/dt, d[P]/dt, k, half-life, conversion and sample count with change flashes",
+    "Live integrated rate law that substitutes the current numbers as you change them",
+    "Concentration-time chart with logged sample points, a ghost of the previous run and a hover tooltip",
+    "Axis switcher that replots your own samples on each of the four printed sets of axes with the printed shape drawn behind for comparison",
+    "Half-life trial table comparing measured t-half against ln2/k across runs",
+    "Auto-written observation notebook and insight cards that appear only once the evidence exists",
+    "Predict-then-check panel for each option with a prediction-versus-measurement matrix",
+    "Answer gated until two runs are completed and all four sets of axes inspected, with a reveal-anyway escape",
+    "Step-by-step solution with an independent verification log"
+  ],
+  "source": {
+    "file": "papers/adv_2026_paper_2.pdf",
+    "page": 22
+  },
+  "createdAt": "2026-08-27",
+  "updatedAt": "2026-08-27"
+}
