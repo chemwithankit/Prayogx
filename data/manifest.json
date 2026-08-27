@@ -33,19 +33,22 @@
     "idPolicy": "Simulation IDs are permanent. A redo or fix edits the existing folder in place and bumps `updatedAt` / `revision`; it never mints a new ID."
   },
   "counts": {
-    "total": 5,
+    "total": 8,
     "byYear": {
-      "2026": 5
+      "2026": 8
     },
     "bySubject": {
-      "Chemistry": 5
+      "Chemistry": 8
     },
     "byChapter": {
       "Electrochemistry": 1,
       "Chemical Bonding and Molecular Structure": 1,
       "Aldehydes, Ketones and Carboxylic Acids": 1,
       "Biomolecules": 1,
-      "Chemical Kinetics": 1
+      "Chemical Kinetics": 1,
+      "The p-Block Elements (Group 18)": 1,
+      "Classification of Elements and Periodicity": 1,
+      "Amines and Diazonium Salts": 1
     }
   },
   "simulations": [
@@ -624,6 +627,396 @@
       "source": {
         "file": "papers/adv_2026_paper_2.pdf",
         "page": 22
+      },
+      "createdAt": "2026-08-27",
+      "updatedAt": "2026-08-27"
+    },
+    {
+      "id": "ADV-2026-P2-CHE-Q06",
+      "slug": "adv-2026-p2-che-q06",
+      "revision": 1,
+      "path": "simulations/2026/paper-2/chemistry/adv-2026-p2-che-q06/index.html",
+      "folder": "simulations/2026/paper-2/chemistry/adv-2026-p2-che-q06/",
+      "title": "Xenon fluorides: identifying P, Q and R and testing their geometries",
+      "shortTitle": "Xenon fluorides and XeO3",
+      "summary": "Set the Xe:F2 ratio, temperature and pressure to make XeF4, push it to XeF6 with O2F2 and hydrolyse that to XeO3, then count lone pairs on a rotatable 3D model to test each printed statement.",
+      "exam": "JEE Advanced",
+      "year": 2026,
+      "paper": "Paper 2",
+      "paperNumber": 2,
+      "subject": "Chemistry",
+      "branch": "Inorganic Chemistry / p-Block",
+      "questionNumber": 6,
+      "section": "Section 2",
+      "questionType": "Multiple correct MCQ",
+      "marking": {
+        "full": 4,
+        "partial": 2,
+        "zero": 0,
+        "negative": -1
+      },
+      "chapter": "The p-Block Elements (Group 18)",
+      "topic": "Noble gas compounds",
+      "subtopics": [
+        "Preparation of xenon fluorides and the role of the Xe:F2 ratio",
+        "VSEPR and steric number from valence-electron counting",
+        "Lone pairs and distorted geometries",
+        "Complete versus partial hydrolysis of XeF6",
+        "Xenon fluorides as fluorinating agents",
+        "Oxidation states of xenon"
+      ],
+      "concepts": [
+        "Lone pairs come from valence electrons left over after bonding",
+        "Steric number 7 cannot give a perfect octahedron",
+        "The fluorine-to-xenon ratio selects which fluoride forms",
+        "Hydrolysis substitutes without changing the oxidation state",
+        "A high oxidation state held by fluorine makes a fluorinating agent"
+      ],
+      "formulas": [
+        "lone pairs = (valence electrons - bonding electrons) / 2",
+        "steric number = bond pairs + lone pairs",
+        "Xe + 2F2 -> XeF4 (1:5 ratio, 873 K, 7 bar)",
+        "XeF4 + O2F2 -> XeF6 + O2 (143 K)",
+        "XeF6 + 3H2O -> XeO3 + 6HF (complete hydrolysis)",
+        "XeF6 + H2O -> XeOF4 + 2HF (partial hydrolysis)",
+        "XeF6 + 3H2 -> Xe + 6HF"
+      ],
+      "tags": [
+        "p-block",
+        "group 18",
+        "noble gases",
+        "xenon",
+        "xenon fluorides",
+        "xef2",
+        "xef4",
+        "xef6",
+        "xenon trioxide",
+        "xeo3",
+        "dioxygen difluoride",
+        "vsepr",
+        "steric number",
+        "lone pair",
+        "square planar",
+        "distorted octahedral",
+        "trigonal pyramidal",
+        "hydrolysis",
+        "fluorinating agent",
+        "oxidation state",
+        "multiple correct",
+        "jee advanced 2026",
+        "paper 2",
+        "chemistry q6"
+      ],
+      "difficulty": "Moderate",
+      "estimatedMinutes": 8,
+      "answer": "(A), (C), (D)",
+      "answerValue": "A,C,D",
+      "derivedQuantities": {
+        "P": "XeF4",
+        "Q": "XeF6",
+        "R": "XeO3",
+        "XeF4_lone_pairs": 2,
+        "XeF4_steric_number": 6,
+        "XeF6_lone_pairs": 1,
+        "XeF6_steric_number": 7,
+        "XeO3_lone_pairs": 1,
+        "XeO3_steric_number": 4,
+        "XeO3_bond_angle_deg": 103,
+        "oxidation_ladder": "Xe(+4) -> Xe(+6) -> Xe(+6)"
+      },
+      "verification": {
+        "status": "verified",
+        "methods": [
+          "Every geometry derived by one routine from valence-electron counting rather than recalled: XeF4 gives 2 lone pairs, XeF6 gives 1, XeO3 gives 1, applied identically in all three cases",
+          "Each step balanced element by element: Xe + 2F2 -> XeF4; XeF4 + O2F2 -> XeF6 + O2; XeF6 + 3H2O -> XeO3 + 6HF",
+          "Fluorine bookkeeping on the second step forces XeF6: 4 F from XeF4 plus 2 F from O2F2",
+          "Oxidation-state ladder checked: +4 -> +6 -> +6, confirming the O2F2 step is the only redox step and that hydrolysis is a substitution",
+          "Statement (B) refuted geometrically rather than by assertion: perfect octahedral requires steric number 6 with zero lone pairs, and XeF6 has steric number 7",
+          "Preparation conditions cross-checked against the standard recipes: 2:1 at 673 K / 1 bar gives XeF2, 1:5 at 873 K / 7 bar gives XeF4, 1:20 at 573 K / 60-70 bar gives XeF6",
+          "The XeF4 + O2F2 reaction at 143 K confirmed against independent sources as the standard preparation of XeF6",
+          "Literature cross-check on the shapes: XeF4 square planar (D4h), XeF6 distorted octahedral (fluxional C3v), XeO3 trigonal pyramidal with O-Xe-O about 103 degrees",
+          "Answer derived independently first, then cross-checked against a published answer key and worked solution for this paper, which agree on (A), (C) and (D)",
+          "Headless-browser run of the finished page: 47 assertions covering every control, both product-selection boundaries, the full chain with atom ledgers, all four molecule models, the fluorinating assay, the gate, predictions, theme toggle, clean console and zero horizontal overflow at 390 px and 360 px"
+        ],
+        "verifiedOn": "2026-08-27",
+        "note": "IIT Roorkee's official key was not retrievable; the published key used for cross-checking is a coaching-institute key that agrees with the independent derivation in every respect."
+      },
+      "interactivity": [
+        "Animated nickel reactor whose particle mix tracks the Xe:F2 ratio, jiggle speed tracks temperature and crowding tracks pressure",
+        "Ratio, temperature and pressure each on a slider plus typed input plus steppers, with validation messages",
+        "Log-scale phase map showing which fluoride each mixture gives, with the three standard recipes marked and your current setting plotted",
+        "A one-click button that sets the paper's exact printed recipe",
+        "Three-step reaction chain that only advances when the atom ledger balances, element by element",
+        "Fluorinating assay offering Q four substrates including an argon control, with an oxidation-state before-and-after chart",
+        "Molecule bench with real 3D coordinates for XeF2, XeF4, XeF6 and XeO3, drag or slider rotation, depth sorting and a lone-pair visibility toggle",
+        "Live electron bookkeeping deriving lone pairs, steric number, electron geometry and molecular shape from the counts",
+        "Comparison table across all four species",
+        "Auto-written lab notebook recording only what was demonstrated",
+        "Predict-then-check panel with a prediction-versus-measurement matrix",
+        "Answer gated until all four statements have been tested, with a reveal-anyway escape",
+        "Step-by-step solution with an independent verification log"
+      ],
+      "source": {
+        "file": "papers/adv_2026_paper_2.pdf",
+        "page": 24
+      },
+      "createdAt": "2026-08-27",
+      "updatedAt": "2026-08-27"
+    },
+    {
+      "id": "ADV-2026-P2-CHE-Q07",
+      "slug": "adv-2026-p2-che-q07",
+      "revision": 1,
+      "path": "simulations/2026/paper-2/chemistry/adv-2026-p2-che-q07/index.html",
+      "folder": "simulations/2026/paper-2/chemistry/adv-2026-p2-che-q07/",
+      "title": "Periodic properties: ionisation reversal, isoelectronic radii, alkali densities and bond strength",
+      "shortTitle": "Four periodic trends tested",
+      "summary": "Strip electrons off boron and carbon to find where the second-ionisation trend reverses, shrink an isoelectronic series by adding protons, weigh a cubic centimetre of each alkali metal and break H-H against F-F.",
+      "exam": "JEE Advanced",
+      "year": 2026,
+      "paper": "Paper 2",
+      "paperNumber": 2,
+      "subject": "Chemistry",
+      "branch": "Inorganic Chemistry / Periodicity",
+      "questionNumber": 7,
+      "section": "Section 2",
+      "questionType": "Multiple correct MCQ",
+      "marking": {
+        "full": 4,
+        "partial": 2,
+        "zero": 0,
+        "negative": -1
+      },
+      "chapter": "Classification of Elements and Periodicity",
+      "topic": "Periodic trends in physical properties",
+      "subtopics": [
+        "Successive ionisation enthalpies and cation configurations",
+        "Isoelectronic ionic radii",
+        "Densities of the alkali metals and the Na-K inversion",
+        "Bond dissociation enthalpy of the halogens and the F-F anomaly",
+        "Effective nuclear charge and shielding"
+      ],
+      "concepts": [
+        "The second ionisation removes an electron from the cation, not the atom",
+        "A filled subshell in the cation makes the next ionisation expensive",
+        "Within an isoelectronic set the radius falls as the nuclear charge rises",
+        "Density is a ratio, so a faster-growing volume can outrun a growing mass",
+        "Lone-pair repulsion on small atoms weakens a single bond"
+      ],
+      "formulas": [
+        "Zeff = Z - sigma",
+        "density = mass / volume",
+        "IE2(C) = 2352.6 < IE2(B) = 2427.1 kJ/mol",
+        "radii: Al3+ 53.5 < Mg2+ 72 < Na+ 102 pm (all 10 electrons)",
+        "densities: Li 0.534, Na 0.968, K 0.856, Rb 1.532, Cs 1.879 g/cm3",
+        "bond enthalpies: H-H 436, Cl-Cl 242, Br-Br 193, F-F 158.8, I-I 151 kJ/mol"
+      ],
+      "tags": [
+        "periodicity",
+        "periodic properties",
+        "periodic table",
+        "ionization enthalpy",
+        "second ionization energy",
+        "successive ionization",
+        "boron",
+        "carbon",
+        "ionic radius",
+        "isoelectronic",
+        "effective nuclear charge",
+        "shielding",
+        "alkali metals",
+        "density",
+        "sodium",
+        "potassium",
+        "bond dissociation enthalpy",
+        "halogens",
+        "fluorine anomaly",
+        "multiple correct",
+        "jee advanced 2026",
+        "paper 2",
+        "chemistry q7"
+      ],
+      "difficulty": "Moderate",
+      "estimatedMinutes": 7,
+      "answer": "(A) and (B)",
+      "answerValue": "A,B",
+      "derivedQuantities": {
+        "IE2_boron_kJ_per_mol": 2427.1,
+        "IE2_carbon_kJ_per_mol": 2352.6,
+        "IE2_gap_kJ_per_mol": 74.5,
+        "radius_Na_plus_pm": 102.0,
+        "radius_Mg_2plus_pm": 72.0,
+        "radius_Al_3plus_pm": 53.5,
+        "density_Na_g_per_cm3": 0.968,
+        "density_K_g_per_cm3": 0.856,
+        "BDE_H_H_kJ_per_mol": 436.0,
+        "BDE_F_F_kJ_per_mol": 158.8
+      },
+      "verification": {
+        "status": "verified",
+        "methods": [
+          "Ionisation values taken from primary reference data (Wikipedia element pages, which cite CRC): B 800.6 / 2427.1, C 1086.5 / 2352.6 kJ/mol",
+          "The reversal explained structurally, not just numerically: B+ is 1s2 2s2 with a filled penetrating 2s, while C+ is 1s2 2s2 2p1 and loses a shielded 2p electron",
+          "The IE2 gap is 74.5 kJ/mol, far outside any measurement uncertainty, so the ordering is not a rounding artefact",
+          "All three ions confirmed to hold exactly 10 electrons before their radii were compared, since the trend statement is only meaningful within an isoelectronic set",
+          "Shannon six-coordinate radii used throughout: Na+ 102, Mg2+ 72, Al3+ 53.5 pm",
+          "Densities cross-checked against element reference pages: K 0.859 g/cm3 at 20 C against Na 0.968, confirming the inversion",
+          "Bond enthalpies checked across the whole halogen series: Cl-Cl 242 > Br-Br 193 > F-F 158.8 > I-I 151 kJ/mol, showing fluorine out of place",
+          "Distractor audit: (C) and (D) are both correct-sounding generalisations with a famous exception, which is what makes them effective",
+          "Answer derived independently first, then cross-checked against a published answer key and worked solution for this paper, which agree on (A) and (B) and quote the same values",
+          "Headless-browser run of the finished page: 30 assertions covering the periodic table selector, electron stripping on both elements, the comparison selector, the isoelectronic sweep, both bulk benches, the gate, predictions, theme toggle, clean console and zero horizontal overflow at 390 px and 360 px"
+        ],
+        "verifiedOn": "2026-08-27",
+        "note": "IIT Roorkee's official key was not retrievable; the published key used for cross-checking is a coaching-institute key that agrees with the independent derivation in every respect."
+      },
+      "interactivity": [
+        "Clickable period-2 strip of the periodic table selecting the element on the ionisation bench",
+        "Electron-by-electron stripping with the orbital each electron leaves from shown as a shell diagram",
+        "Successive-ionisation bar chart with a selectable comparison element overlaid",
+        "Live readouts for IE1, IE2, their difference and which orbital the second electron comes from",
+        "Isoelectronic slider from O2- to Al3+ holding the electron count at ten, with the ion drawn to scale",
+        "Radius-against-nuclear-charge chart with the current species highlighted",
+        "Side-by-side scaled circles for Na+, Mg2+ and Al3+ with a comparison table",
+        "Alkali-metal bench weighing a fixed cubic centimetre of each metal, with cylinders drawn to density",
+        "Density-down-the-group bar chart showing the Na-K inversion",
+        "Bond-breaking rig across H2 and the four halogens with a stretch slider reporting the work done",
+        "Auto-written lab notebook recording only measurements actually taken",
+        "Predict-then-check panel with a prediction-versus-measurement matrix",
+        "Answer gated until all four statements have been tested, with a reveal-anyway escape",
+        "Step-by-step solution with an independent verification log"
+      ],
+      "source": {
+        "file": "papers/adv_2026_paper_2.pdf",
+        "page": 25
+      },
+      "createdAt": "2026-08-27",
+      "updatedAt": "2026-08-27"
+    },
+    {
+      "id": "ADV-2026-P2-CHE-Q08",
+      "slug": "adv-2026-p2-che-q08",
+      "revision": 1,
+      "path": "simulations/2026/paper-2/chemistry/adv-2026-p2-che-q08/index.html",
+      "folder": "simulations/2026/paper-2/chemistry/adv-2026-p2-che-q08/",
+      "title": "Diazonium chemistry and azo coupling: identifying P, Q, S and T",
+      "shortTitle": "Aniline to an azo dye",
+      "summary": "Walk aniline through acetylation, nitration, hydrolysis and diazotisation, take cumene to salicylic acid by the cumene process and Kolbe-Schmitt, then couple the two and watch the absorption move into the visible.",
+      "exam": "JEE Advanced",
+      "year": 2026,
+      "paper": "Paper 2",
+      "paperNumber": 2,
+      "subject": "Chemistry",
+      "branch": "Organic Chemistry / Amines",
+      "questionNumber": 8,
+      "section": "Section 2",
+      "questionType": "Multiple correct MCQ",
+      "marking": {
+        "full": 4,
+        "partial": 2,
+        "zero": 0,
+        "negative": -1
+      },
+      "chapter": "Amines and Diazonium Salts",
+      "topic": "Diazotisation and azo coupling",
+      "subtopics": [
+        "Acetylation as a protecting group for aniline",
+        "Nitration of acetanilide and para selectivity",
+        "Diazotisation at 273-278 K",
+        "Reduction of diazonium salts by ethanol",
+        "Cumene process for phenol",
+        "Kolbe-Schmitt reaction",
+        "Phthalein dye test and the free para position",
+        "Azo dyes, conjugation and colour"
+      ],
+      "concepts": [
+        "A protonated amine is deactivating and meta-directing, which is why aniline is acetylated first",
+        "The acetyl group moderates activation enough to stop nitration at one substitution",
+        "A diazonium salt couples only with a strongly activated ring",
+        "Ethanol reduces a diazonium salt and is itself oxidised to an aliphatic aldehyde",
+        "The phthalein test needs a free position para to the phenolic OH",
+        "Extended push-pull conjugation moves absorption out of the UV into the visible"
+      ],
+      "formulas": [
+        "PhNH2 + (CH3CO)2O -> PhNHCOCH3",
+        "PhNHCOCH3 + HNO3/H2SO4, 288 K -> p-nitroacetanilide (P)",
+        "P + H3O+ -> p-nitroaniline; + NaNO2/HCl, 273-278 K -> p-nitrobenzenediazonium chloride (Q)",
+        "ArN2+ + C2H5OH -> ArH + CH3CHO + N2 + HCl",
+        "cumene + O2 then H3O+ -> phenol + acetone",
+        "phenoxide + CO2 (Kolbe-Schmitt) -> salicylate, ortho",
+        "S + Q / aq. NaOH -> T, an azo dye coupled para to the phenolic O"
+      ],
+      "tags": [
+        "amines",
+        "aniline",
+        "acetanilide",
+        "protecting group",
+        "nitration",
+        "electrophilic aromatic substitution",
+        "diazotisation",
+        "diazonium salt",
+        "p-nitroaniline",
+        "azo coupling",
+        "azo dye",
+        "cumene process",
+        "phenol",
+        "kolbe schmitt",
+        "salicylic acid",
+        "phthalein dye test",
+        "conjugation",
+        "colour",
+        "chromophore",
+        "multiple correct",
+        "jee advanced 2026",
+        "paper 2",
+        "chemistry q8"
+      ],
+      "difficulty": "Moderate-Hard",
+      "estimatedMinutes": 9,
+      "answer": "(B) and (D)",
+      "answerValue": "B,D",
+      "derivedQuantities": {
+        "P": "p-nitroacetanilide, C8H8N2O3",
+        "Q": "p-nitrobenzenediazonium chloride, C6H4N3O2+",
+        "S": "salicylic acid, C7H6O3",
+        "T": "azo dye, C13H9N3O5",
+        "nitro_groups_in_P": 1,
+        "coupling_position": "C5 of salicylic acid, para to the phenolic OH",
+        "aldehyde_from_ethanol": "acetaldehyde (aliphatic)"
+      },
+      "verification": {
+        "status": "verified",
+        "methods": [
+          "Every intermediate written as SMILES and parsed with RDKit; the counts quoted come from substructure matching, not from reading a drawing",
+          "P returns exactly one nitro substructure match, confirming it is a mononitro compound and refuting statement (C)",
+          "T returns exactly one aryl-N=N-aryl match plus one nitro match, confirming the azo chromophore",
+          "The para position of salicylic acid located programmatically: starting from the phenolic oxygen and walking three ring atoms lands on C5, which carries one hydrogen - the structural requirement for the phthalein test",
+          "The phthalein requirement itself verified against independent sources, which state that p-cresol fails the test precisely because its para position is blocked",
+          "Reaction of a diazonium salt with ethanol verified against independent sources: it gives the arene plus acetaldehyde plus nitrogen, so the aldehyde formed is aliphatic and statement (A) fails on the word 'aromatic'",
+          "Formula bookkeeping across both routes: aniline C6H7N -> acetanilide C8H9NO -> P C8H8N2O3 -> p-nitroaniline C6H6N2O2 -> Q C6H4N3O2+; cumene C9H12 -> phenol C6H6O -> S C7H6O3; T C13H9N3O5",
+          "Distractor audit: (A) is half true because an aldehyde really is formed, and (C) is plausible because a nitrating mixture suggests forcing conditions - the acetyl group and the 288 K are what hold it to one substitution",
+          "Answer derived independently first, then cross-checked against a published answer key and worked solution for this paper, which agree on (B) and (D) and on coupling at position 5",
+          "Headless-browser run of the finished page: 43 assertions covering both routes forwards and backwards, formula and nitro counts at every step, the protecting-group experiment, three bench tests including a negative control on cumene, all four fates of Q, the conjugation sweep, the gate, predictions, theme toggle, clean console and zero horizontal overflow at 390 px and 360 px"
+        ],
+        "verifiedOn": "2026-08-27",
+        "note": "IIT Roorkee's official key was not retrievable; the published key used for cross-checking is a coaching-institute key that agrees with the independent derivation in every respect."
+      },
+      "interactivity": [
+        "The printed reaction scheme redrawn as live SVG structures rather than an image",
+        "Route 1 stepper through aniline, acetanilide, P, p-nitroaniline and Q with the structure redrawn at each step, forwards and backwards",
+        "Live readouts for the compound, molecular formula, nitro-group count and ring activation at every stage",
+        "A protecting-group experiment contrasting nitration with and without the acetyl group and showing what each gives",
+        "Route 2 stepper through cumene, phenol, sodium salicylate and salicylic acid with the free para position marked",
+        "Three bench tests on whatever is in the flask - phthalein dye, neutral FeCl3 and NaHCO3 - each with a colour swatch and each correctly negative on the wrong compound",
+        "Four alternative fates for the diazonium salt including ethanol, water and Sandmeyer, each drawing its actual product",
+        "Conjugation slider walking the absorption across a visible spectrum strip, reporting wavelength, colour absorbed and complementary colour seen",
+        "Auto-written lab notebook recording only what was demonstrated",
+        "Predict-then-check panel with a prediction-versus-measurement matrix",
+        "Answer gated until all four statements have been tested, with a reveal-anyway escape",
+        "Step-by-step solution with an independent verification log"
+      ],
+      "source": {
+        "file": "papers/adv_2026_paper_2.pdf",
+        "page": 25
       },
       "createdAt": "2026-08-27",
       "updatedAt": "2026-08-27"

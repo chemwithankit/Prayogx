@@ -1,0 +1,1465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ADV-2026-P2-CHE-Q06 · Xenon Fluoride Virtual Lab</title>
+<meta name="description" content="Interactive noble-gas chemistry lab for JEE Advanced 2026 Paper 2 Chemistry Q6: make XeF4 in the reactor, walk it to XeF6 and XeO3, and count the lone pairs yourself to test each printed statement.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232a78d6'/%3E%3Cpath d='M12.5 6.5h7M13.6 6.5v7.2L7.9 24.1a1.5 1.5 0 0 0 1.3 2.3h13.6a1.5 1.5 0 0 0 1.3-2.3l-5.7-10.4V6.5' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M10.6 20.6h10.8' stroke='white' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E">
+<meta name="sim-id" content="ADV-2026-P2-CHE-Q06">
+<style>
+:root{
+  color-scheme: light;
+  --surface-0:#f4f4f1; --surface-1:#fcfcfb; --surface-2:#ececea;
+  --line:#d9d9d4; --line-strong:#bcbcb5;
+  --text-primary:#0b0b0b; --text-secondary:#52514e; --text-muted:#77766f;
+  --s1:#2a78d6; --s2:#eb6834; --s3:#1baf7a; --s4:#4a3aa7;
+  --good:#00743f; --bad:#c0392b; --accent:#2a78d6;
+  --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+  --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --serif:ui-serif,Georgia,"Times New Roman",serif;
+  --radius:10px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  color-scheme: dark;
+  --surface-0:#111110; --surface-1:#1a1a19; --surface-2:#232322;
+  --line:#34342f; --line-strong:#4a4a44;
+  --text-primary:#ffffff; --text-secondary:#c3c2b7; --text-muted:#95948b;
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#9085e9;
+  --good:#3fae7a; --bad:#e66767; --accent:#3987e5;
+}}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --surface-0:#111110; --surface-1:#1a1a19; --surface-2:#232322;
+  --line:#34342f; --line-strong:#4a4a44;
+  --text-primary:#ffffff; --text-secondary:#c3c2b7; --text-muted:#95948b;
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#9085e9;
+  --good:#3fae7a; --bad:#e66767; --accent:#3987e5;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--surface-0);color:var(--text-primary);font-family:var(--sans);
+  font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px 80px}
+
+header.top{border-bottom:1px solid var(--line);background:var(--surface-1)}
+.top-inner{max-width:1120px;margin:0 auto;padding:22px 20px 18px;position:relative;
+  display:flex;flex-wrap:wrap;gap:16px;align-items:flex-start;justify-content:space-between}
+.simid{font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--text-muted)}
+h1{font-size:23px;line-height:1.25;margin:6px 0 10px;font-weight:640;max-width:640px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-size:11.5px;padding:3px 9px;border:1px solid var(--line-strong);border-radius:999px;
+  color:var(--text-secondary);background:var(--surface-2);white-space:nowrap}
+.chip.k{border-color:var(--accent);color:var(--accent);background:transparent}
+.answerbox{border:1px solid var(--line-strong);border-radius:var(--radius);background:var(--surface-2);
+  padding:12px 16px;min-width:210px}
+.answerbox .lbl{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted)}
+.answerbox .val{font-family:var(--mono);font-size:25px;font-weight:600;color:var(--good);line-height:1.22}
+.answerbox .sub{font-size:12px;color:var(--text-secondary)}
+.answerbox.locked .val{color:var(--text-muted);font-size:17px;letter-spacing:.04em}
+.answerbox .rv{margin-top:6px;font-size:11px;background:none;border:none;padding:0;color:var(--accent);
+  cursor:pointer;text-decoration:underline;font-family:var(--sans)}
+.themebtn{position:absolute;top:14px;right:16px;border:1px solid var(--line-strong);background:var(--surface-2);
+  color:var(--text-secondary);border-radius:8px;padding:4px 9px;font-size:12px;cursor:pointer}
+.brandbar{display:flex;align-items:center;gap:8px;margin-bottom:9px;text-decoration:none}
+.brandbar .pxmark{width:21px;height:21px;flex:none;display:block}
+.brandbar .wm{font-size:13px;font-weight:800;letter-spacing:.17em;color:var(--text-secondary);line-height:1}
+.brandbar .wm i{font-style:normal;color:var(--accent)}
+
+nav.jump{position:sticky;top:0;z-index:20;background:var(--surface-0);border-bottom:1px solid var(--line);
+  padding:8px 0;margin-bottom:26px}
+nav.jump ul{max-width:1120px;margin:0 auto;padding:0 20px;list-style:none;display:flex;gap:4px;overflow-x:auto}
+nav.jump a{display:block;padding:5px 11px;border-radius:7px;font-size:13px;text-decoration:none;
+  color:var(--text-secondary);white-space:nowrap}
+nav.jump a:hover{background:var(--surface-2);color:var(--text-primary)}
+
+section{margin:0 0 42px;scroll-margin-top:56px}
+h2{font-size:17px;font-weight:640;margin:0 0 4px;display:flex;align-items:baseline;gap:9px}
+h2 .n{font-family:var(--mono);font-size:12px;color:var(--text-muted);font-weight:400}
+.lede{color:var(--text-secondary);font-size:13.5px;margin:0 0 16px;max-width:76ch}
+.card,.panel{background:var(--surface-1);border:1px solid var(--line);border-radius:var(--radius);padding:18px}
+.panel h3{margin:0 0 12px;font-size:13px;letter-spacing:.05em;text-transform:uppercase;
+  color:var(--text-muted);font-weight:600}
+.lab{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:16px;align-items:start}
+.lab>*{min-width:0}
+@media(max-width:900px){.lab{grid-template-columns:1fr !important}}
+canvas{display:block;width:100%;height:auto;border-radius:8px;background:var(--surface-2)}
+
+.qtext{font-family:var(--serif);font-size:16px;line-height:1.7}
+.opts{list-style:none;padding:0;margin:16px 0 0;display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr));gap:10px}
+.opts li{border:1px solid var(--line);border-radius:10px;padding:10px;background:var(--surface-1);
+  display:flex;flex-direction:column;gap:6px}
+.opts li .hd{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--text-muted);font-family:var(--mono)}
+.opts li .mark{margin-left:auto;font-family:var(--sans);font-size:11.5px;font-weight:600}
+.opts li .nm{font-size:11.5px;color:var(--text-secondary)}
+.opts li.correct{border-color:var(--good);background:color-mix(in srgb,var(--good) 11%,transparent)}
+.opts li.correct .mark{color:var(--good)}
+.opts li.wrong{border-color:var(--bad)}
+.opts li.wrong .mark{color:var(--bad)}
+svg.optthumb{display:block;width:100%;height:auto;background:var(--surface-2);border-radius:7px}
+
+.ctrl{margin:14px 0}
+.ctrl label{display:flex;flex-wrap:wrap;gap:4px;justify-content:space-between;align-items:baseline;
+  font-size:13px;margin-bottom:5px}
+.ctrl label span{min-width:0}
+.ctrl label .v{font-family:var(--mono);font-size:13px;color:var(--text-primary)}
+input[type=range]{width:100%;min-width:0;accent-color:var(--accent)}
+.numrow{display:flex;gap:6px;align-items:center;margin-top:6px}
+.numrow input.numin{flex:1;min-width:0;padding:7px 9px;border-radius:7px;border:1px solid var(--line-strong);
+  background:var(--surface-0);color:var(--text-primary);font-family:var(--mono);font-size:13px}
+.numrow input.numin:focus{outline:2px solid var(--accent);outline-offset:-1px}
+.numrow input.numin.bad{border-color:var(--bad);background:color-mix(in srgb,var(--bad) 9%,transparent)}
+.numrow button.step{flex:none;width:40px;height:34px;border-radius:8px;border:1px solid var(--line-strong);
+  background:var(--surface-2);color:var(--text-primary);font-size:18px;line-height:1;cursor:pointer;
+  font-family:var(--mono);touch-action:manipulation}
+.numrow button.step:hover{border-color:var(--accent);color:var(--accent)}
+.numrow .unit{flex:none;font-size:12px;color:var(--text-muted);min-width:52px}
+.hint{font-size:11.5px;color:var(--text-muted);margin-top:4px;min-height:1.15em}
+.hint.bad{color:var(--bad);font-weight:600}
+.segbtns{display:flex;gap:6px;flex-wrap:wrap}
+.segbtns button{flex:1;min-width:84px;padding:8px 6px;border-radius:8px;border:1px solid var(--line-strong);
+  background:var(--surface-2);color:var(--text-secondary);font-size:13px;cursor:pointer;font-family:var(--sans)}
+.segbtns button[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:650}
+button.act{padding:8px 14px;border-radius:8px;border:1px solid var(--line-strong);background:var(--surface-2);
+  color:var(--text-primary);font-size:13px;cursor:pointer;font-family:var(--sans)}
+button.act:hover{border-color:var(--accent);color:var(--accent)}
+button.act.primary{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+button.act:disabled{opacity:.42;cursor:not-allowed}
+.btnrow{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+
+.playback{display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin-top:12px;
+  padding:9px 10px;border:1px solid var(--line);border-radius:9px;background:var(--surface-2)}
+.playback .lb{font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-muted);margin-right:2px}
+.playback button{padding:6px 12px;border-radius:7px;border:1px solid var(--line-strong);
+  background:var(--surface-1);color:var(--text-secondary);font-size:12.5px;cursor:pointer;font-family:var(--mono)}
+.playback button[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:700}
+.playback button:hover{border-color:var(--accent)}
+
+.readouts{display:grid;grid-template-columns:repeat(auto-fit,minmax(118px,1fr));gap:8px}
+.ro{border:1px solid var(--line);border-radius:8px;padding:8px 10px;background:var(--surface-2);position:relative}
+.ro .k{font-size:11px;letter-spacing:.03em;font-weight:600;color:var(--text-muted);white-space:nowrap}
+.ro .v{font-family:var(--mono);font-size:16px;font-weight:600;line-height:1.35}
+.ro .u{font-size:10.5px;color:var(--text-muted)}
+.delta{position:absolute;top:5px;right:7px;font-family:var(--mono);font-size:10.5px;font-weight:700;
+  padding:1px 5px;border-radius:5px;opacity:0;transition:opacity .55s ease-out;pointer-events:none}
+.delta.up{color:var(--good);background:color-mix(in srgb,var(--good) 16%,transparent)}
+.delta.down{color:var(--s2);background:color-mix(in srgb,var(--s2) 16%,transparent)}
+.delta.show{opacity:1;transition:opacity .1s}
+
+.eqlive{font-family:var(--serif);font-size:15px;background:var(--surface-2);border:1px solid var(--line);
+  border-radius:8px;padding:11px 13px;margin-top:12px;line-height:2.1}
+.eqlive .t{font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-muted);
+  font-family:var(--sans);display:block;margin-bottom:2px}
+.eqlive b{font-family:var(--mono);font-weight:700}
+.eqlive .chg{background:color-mix(in srgb,var(--accent) 26%,transparent);border-radius:4px;padding:0 3px}
+.eqlive .res{color:var(--good);font-weight:700;font-family:var(--mono)}
+
+.chartwrap{position:relative;background:var(--surface-1);border:1px solid var(--line);
+  border-radius:var(--radius);padding:16px}
+svg.chart{display:block;width:100%;height:auto;overflow:visible}
+.tip{position:absolute;pointer-events:none;background:var(--surface-1);border:1px solid var(--line-strong);
+  border-radius:8px;padding:8px 11px;font-size:12px;box-shadow:0 4px 14px rgba(0,0,0,.13);opacity:0;
+  transition:opacity .1s;z-index:5;min-width:150px}
+.tip .t{font-family:var(--mono);font-size:11px;color:var(--text-muted);margin-bottom:4px}
+.tip .r{display:flex;align-items:center;gap:7px;white-space:nowrap}
+.tip .sw{width:9px;height:9px;border-radius:2px;flex:none}
+.tip .rv{margin-left:auto;font-family:var(--mono);font-weight:600}
+.legend{display:flex;flex-wrap:wrap;gap:14px;margin-top:10px;font-size:12.5px;color:var(--text-secondary)}
+.legend span{display:flex;align-items:center;gap:6px}
+.legend i{width:14px;height:3px;border-radius:2px;display:block}
+.legend i.dot{width:9px;height:9px;border-radius:50%}
+
+.predict{border:1px solid var(--accent);border-radius:9px;padding:12px 14px;margin-top:14px;
+  background:color-mix(in srgb,var(--accent) 7%,transparent)}
+.predict .q{font-size:13px;font-weight:600;margin-bottom:8px}
+.predict .row{display:flex;gap:6px;flex-wrap:wrap}
+.predict button{flex:1;min-width:96px;padding:8px;border-radius:8px;border:1px solid var(--line-strong);
+  background:var(--surface-1);color:var(--text-primary);font-size:13px;cursor:pointer}
+.predict button[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+.predict .fb{font-size:12.5px;margin-top:9px;min-height:1.2em}
+.predict .fb.ok{color:var(--good);font-weight:600}
+.predict .fb.no{color:var(--bad);font-weight:600}
+
+table.data{border-collapse:collapse;font-size:12.5px;width:100%}
+table.data th,table.data td{border:1px solid var(--line-strong);padding:6px 9px;text-align:center}
+table.data th{background:var(--surface-2);font-weight:600;font-size:11.5px;color:var(--text-secondary)}
+table.data td.l{text-align:left}
+table.data td.num{font-family:var(--mono)}
+tr.win td{background:color-mix(in srgb,var(--good) 12%,transparent);font-weight:600}
+.scrollx{overflow-x:auto}
+.yes{color:var(--good);font-weight:700} .no{color:var(--bad);font-weight:700}
+.empty{color:var(--text-muted);font-size:12.5px;padding:10px 0}
+
+.nb{display:grid;gap:7px}
+.nb .obs{font-size:12.5px;padding:8px 11px;border-radius:8px;background:var(--surface-2);
+  border-left:3px solid var(--s1);color:var(--text-secondary);animation:nbin .35s ease-out}
+.nb .obs b{color:var(--text-primary);font-family:var(--mono)}
+@keyframes nbin{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+.insight{border:1px solid var(--good);border-radius:9px;padding:12px 14px;margin-top:12px;
+  background:color-mix(in srgb,var(--good) 10%,transparent);font-size:13.5px;animation:nbin .4s ease-out}
+.insight b{color:var(--good)}
+
+.verdict{border-radius:9px;padding:11px 14px;font-size:13.5px;margin-top:12px;border:1px solid var(--line-strong);
+  background:var(--surface-2)}
+.verdict.ok{border-color:var(--good);background:color-mix(in srgb,var(--good) 10%,transparent)}
+.verdict.no{border-color:var(--bad);background:color-mix(in srgb,var(--bad) 9%,transparent)}
+.verdict b{font-size:14px}
+
+.gate{border:1px dashed var(--line-strong);border-radius:var(--radius);padding:24px 20px;text-align:center;
+  background:var(--surface-1)}
+.gate h4{margin:0 0 6px;font-size:15px}
+.gate p{margin:0 0 12px;font-size:13px;color:var(--text-secondary)}
+.gate .cnt{font-family:var(--mono);color:var(--accent);font-weight:700}
+.reveal{animation:nbin .45s ease-out}
+
+ol.steps{list-style:none;counter-reset:s;padding:0;margin:0;display:grid;gap:10px}
+ol.steps li{min-width:0;counter-increment:s;border:1px solid var(--line);border-radius:var(--radius);
+  background:var(--surface-1);padding:14px 16px 14px 52px;position:relative}
+ol.steps li::before{content:counter(s);position:absolute;left:15px;top:14px;width:23px;height:23px;
+  border-radius:50%;background:var(--accent);color:#fff;font-size:12px;font-weight:700;
+  display:grid;place-items:center;font-family:var(--mono)}
+ol.steps h4{margin:0 0 6px;font-size:14px;font-weight:640}
+ol.steps p{margin:0 0 6px;font-size:13.5px;color:var(--text-secondary)}
+.eq{min-width:0;font-family:var(--serif);font-size:15px;background:var(--surface-2);border-radius:7px;
+  padding:9px 13px;margin:8px 0;overflow-x:auto}
+.eq .hl{color:var(--good);font-weight:700}
+sub{font-size:.72em} sup{font-size:.72em}
+.verify{border:1px solid var(--good);border-radius:var(--radius);
+  background:color-mix(in srgb,var(--good) 8%,transparent);padding:14px 16px;font-size:13.5px}
+.verify h4{margin:0 0 6px;font-size:13.5px;color:var(--good)}
+.verify ul{margin:6px 0 0;padding-left:18px;color:var(--text-secondary)}
+.meta-tbl{width:100%;border-collapse:collapse;font-size:13.5px}
+.meta-tbl td{padding:6px 0;border-bottom:1px solid var(--line);vertical-align:top}
+.meta-tbl td:first-child{color:var(--text-muted);width:160px;font-size:12.5px;padding-right:14px}
+footer{border-top:1px solid var(--line);margin-top:40px;padding-top:16px;font-size:12px;color:var(--text-muted)}
+
+.molwrap{position:relative;background:var(--surface-1);border:1px solid var(--line);
+  border-radius:var(--radius);padding:14px}
+svg.mol{display:block;width:100%;height:auto;overflow:visible;touch-action:none;cursor:grab}
+svg.mol:active{cursor:grabbing}
+.chain{display:grid;gap:10px}
+.stepcard{border:1px solid var(--line);border-radius:10px;background:var(--surface-1);padding:12px 14px;
+  opacity:.45;transition:opacity .25s}
+.stepcard.live{opacity:1;border-color:var(--accent)}
+.stepcard.done{opacity:1;border-color:var(--good);background:color-mix(in srgb,var(--good) 7%,transparent)}
+.stepcard .rx{font-family:var(--serif);font-size:15.5px;margin:2px 0 6px}
+.stepcard .rx b{font-family:var(--mono);font-weight:700;color:var(--accent)}
+.stepcard .cond{font-size:11.5px;color:var(--text-muted);font-family:var(--mono)}
+.ledger{display:grid;grid-template-columns:repeat(auto-fit,minmax(88px,1fr));gap:6px;margin-top:8px}
+.ledger div{border:1px solid var(--line);border-radius:7px;padding:5px 8px;background:var(--surface-2);
+  font-size:11.5px;font-family:var(--mono);text-align:center}
+.ledger div.bal{border-color:var(--good);color:var(--good)}
+.prodbig{font-family:var(--mono);font-size:30px;font-weight:700;color:var(--s1);line-height:1.15}
+.prodsub{font-size:12.5px;color:var(--text-secondary)}
+.recipe{font-size:11.5px;color:var(--text-muted);margin-top:6px}
+.recipe.on{color:var(--good);font-weight:650}
+.assay{display:grid;gap:7px;margin-top:10px}
+.assay button{text-align:left;padding:9px 12px;border-radius:8px;border:1px solid var(--line-strong);
+  background:var(--surface-2);color:var(--text-primary);font-size:13px;cursor:pointer;font-family:var(--sans)}
+.assay button:hover{border-color:var(--accent)}
+.assay button[aria-pressed=true]{border-color:var(--accent);
+  background:color-mix(in srgb,var(--accent) 12%,transparent)}
+.ecount{display:grid;grid-template-columns:1fr auto;gap:2px 12px;font-size:13px;margin-top:10px}
+.ecount .l{color:var(--text-secondary)} .ecount .r{font-family:var(--mono);font-weight:600;text-align:right}
+.ecount .tot{border-top:1px solid var(--line-strong);padding-top:5px;margin-top:4px;font-weight:700}
+
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-inner">
+    <div>
+      <div class="brandbar"><svg class="pxmark" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><rect width="32" height="32" rx="8" fill="var(--accent)"/><path d="M12.5 6.5h7M13.6 6.5v7.2L7.9 24.1a1.5 1.5 0 0 0 1.3 2.3h13.6a1.5 1.5 0 0 0 1.3-2.3l-5.7-10.4V6.5" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.6 20.6h10.8" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg><span class="wm">PRAYOG<i>X</i></span></div>
+      <div class="simid">ADV-2026-P2-CHE-Q06</div>
+      <h1>Xenon fluorides: make P in the reactor, walk it to Q and R, then count the lone pairs yourself</h1>
+      <div class="chips">
+        <span class="chip">JEE Advanced 2026</span>
+        <span class="chip">Paper 2</span>
+        <span class="chip">Chemistry</span>
+        <span class="chip">Q.6 · Section 2</span>
+        <span class="chip k">p-Block · Group 18</span>
+        <span class="chip k">VSEPR</span>
+      </div>
+    </div>
+    <div class="answerbox locked" id="answerbox">
+      <div class="lbl">Answer</div>
+      <div class="val" id="ansval">Run the experiment</div>
+      <div class="sub" id="anssub">Test all four statements on the bench to unlock.</div>
+      <button class="rv" id="revealnow" type="button">Reveal anyway</button>
+    </div>
+    <button class="themebtn" id="themebtn" type="button">◐ theme</button>
+  </div>
+</header>
+
+<nav class="jump">
+  <ul>
+    <li><a href="#question">Question</a></li>
+    <li><a href="#reactor">The reactor</a></li>
+    <li><a href="#chain">P → Q → R</a></li>
+    <li><a href="#bench">Molecule bench</a></li>
+    <li><a href="#verdict">Verdict on A–D</a></li>
+    <li><a href="#solution">Step-by-step solution</a></li>
+    <li><a href="#concepts">Concepts &amp; classification</a></li>
+  </ul>
+</nav>
+
+<div class="wrap">
+
+
+<!-- 01 QUESTION -->
+<section id="question">
+  <h2><span class="n">01</span>Original question
+      <span style="font-weight:400;font-size:12.5px;color:var(--text-muted)">— verbatim</span></h2>
+  <div class="card">
+    <div class="qtext">Correct statement(s) about the compounds <strong>P</strong>, <strong>Q</strong>
+      and <strong>R</strong> is(are)</div>
+    <div class="eq" style="margin-top:14px;line-height:2.3">
+      Xe(g) &nbsp;+&nbsp; F<sub>2</sub>(g) &nbsp;&nbsp;<span style="color:var(--text-muted)">(1 : 5 ratio)</span>
+      &nbsp;&nbsp;<span style="font-family:var(--mono);font-size:12px">——873 K, 7 bar——&gt;</span>&nbsp;
+      <b>P</b><br>
+      <b>P</b> &nbsp;+&nbsp; O<sub>2</sub>F<sub>2</sub>
+      &nbsp;&nbsp;<span style="font-family:var(--mono);font-size:12px">————143 K————&gt;</span>&nbsp;
+      <b>Q</b> &nbsp;+&nbsp; O<sub>2</sub><br>
+      <b>Q</b> &nbsp;+&nbsp; H<sub>2</sub>O
+      &nbsp;&nbsp;<span style="font-family:var(--mono);font-size:12px">—complete hydrolysis—&gt;</span>&nbsp;
+      <b>R</b> &nbsp;+&nbsp; HF
+    </div>
+    <ul class="opts" id="opts">
+      <li data-k="A"><div class="hd">(A)<span class="mark"></span></div>
+        <div class="nm"><b>P</b> has two lone pairs of electrons on the central atom.</div></li>
+      <li data-k="B"><div class="hd">(B)<span class="mark"></span></div>
+        <div class="nm"><b>Q</b> has a perfect octahedral geometry.</div></li>
+      <li data-k="C"><div class="hd">(C)<span class="mark"></span></div>
+        <div class="nm"><b>Q</b> can act as a fluorinating agent.</div></li>
+      <li data-k="D"><div class="hd">(D)<span class="mark"></span></div>
+        <div class="nm">The molecular structure of <b>R</b> is trigonal pyramidal.</div></li>
+    </ul>
+    <p style="font-size:12.5px;color:var(--text-muted);margin:12px 0 0">
+      Multiple options may be correct (+4 / partial / −1). Nothing on this page is looked up from an
+      answer key — identify P, Q and R on the bench, then measure each claim.
+    </p>
+  </div>
+</section>
+
+<!-- 02 REACTOR -->
+<section id="reactor">
+  <h2><span class="n">02</span>The fluorination reactor — make P</h2>
+  <p class="lede">
+    Xenon and fluorine give three different fluorides, and which one you get is decided by how much
+    fluorine you give the xenon. Set the mixture and the conditions, then run the reactor. The paper
+    hands you one specific recipe; find it on the map.
+  </p>
+  <div class="lab">
+    <div class="panel">
+      <h3>Nickel reactor</h3>
+      <canvas id="reactorcv" width="720" height="430"
+              aria-label="Sealed nickel reactor showing xenon and fluorine molecules combining"></canvas>
+      <div class="legend">
+        <span><i class="dot" style="background:var(--s4)"></i>Xe</span>
+        <span><i class="dot" style="background:var(--s3)"></i>F₂</span>
+        <span><i class="dot" style="background:var(--s1)"></i>product</span>
+        <span style="color:var(--text-muted)">jiggle speed ∝ temperature · crowding ∝ pressure</span>
+      </div>
+      <div class="chartwrap" style="margin-top:14px;padding:12px" id="mapwrap">
+        <svg id="phasemap" class="chart" viewBox="0 0 720 330" role="img"
+             aria-label="Map of which xenon fluoride forms against fluorine-to-xenon ratio and pressure"></svg>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h3>Charge and conditions</h3>
+
+      <div class="ctrl">
+        <label for="ratio"><span>Mixture — F<sub>2</sub> per Xe</span> <span class="v" id="ratiov">5.00 : 1</span></label>
+        <input type="range" id="ratio" aria-label="fluorine to xenon ratio slider">
+        <div class="numrow">
+          <button class="step" type="button" data-for="ratio" data-dir="-1" aria-label="less fluorine">−</button>
+          <input class="numin" id="ratio-n" inputmode="decimal" value="5.00" aria-label="type a fluorine to xenon ratio">
+          <span class="unit">: 1</span>
+          <button class="step" type="button" data-for="ratio" data-dir="1" aria-label="more fluorine">+</button>
+        </div>
+        <div class="hint" id="ratio-h">0.20 to 40.0 · try 1/2, 5 or 20 — this is the control that decides the product</div>
+      </div>
+
+      <div class="ctrl">
+        <label for="temp"><span>Temperature <em>T</em></span> <span class="v" id="tempv">873 K</span></label>
+        <input type="range" id="temp" aria-label="temperature slider">
+        <div class="numrow">
+          <button class="step" type="button" data-for="temp" data-dir="-1" aria-label="cooler">−</button>
+          <input class="numin" id="temp-n" inputmode="decimal" value="873" aria-label="type a temperature">
+          <span class="unit">K</span>
+          <button class="step" type="button" data-for="temp" data-dir="1" aria-label="hotter">+</button>
+        </div>
+        <div class="hint" id="temp-h">400 to 1000 K · the reaction needs heat to start at all</div>
+      </div>
+
+      <div class="ctrl">
+        <label for="pres"><span>Pressure <em>p</em></span> <span class="v" id="presv">7.0 bar</span></label>
+        <input type="range" id="pres" aria-label="pressure slider">
+        <div class="numrow">
+          <button class="step" type="button" data-for="pres" data-dir="-1" aria-label="lower pressure">−</button>
+          <input class="numin" id="pres-n" inputmode="decimal" value="7.0" aria-label="type a pressure">
+          <span class="unit">bar</span>
+          <button class="step" type="button" data-for="pres" data-dir="1" aria-label="raise pressure">+</button>
+        </div>
+        <div class="hint" id="pres-h">1 to 100 bar · only the highest fluoride needs real pressure</div>
+      </div>
+
+      <div class="playback">
+        <span class="lb">Run</span>
+        <button type="button" id="pb-run">▶ Run reactor</button>
+        <button type="button" id="pb-reset">↺ Reset</button>
+        <button type="button" id="pb-paper" class="sp">Use the paper's recipe</button>
+      </div>
+
+      <h3 style="margin-top:16px">Product</h3>
+      <div class="ro" style="padding:12px 14px">
+        <div class="k">the reactor makes</div>
+        <div class="prodbig" id="prodname">—</div>
+        <div class="prodsub" id="prodwhy">Set the mixture and press Run.</div>
+        <div class="recipe" id="recipe-2">XeF₂ recipe · Xe : F₂ = 2 : 1 · 673 K · 1 bar</div>
+        <div class="recipe" id="recipe-4">XeF₄ recipe · Xe : F₂ = 1 : 5 · 873 K · 7 bar</div>
+        <div class="recipe" id="recipe-6">XeF₆ recipe · Xe : F₂ = 1 : 20 · 573 K · 60–70 bar</div>
+      </div>
+
+      <div class="readouts" style="margin-top:10px">
+        <div class="ro"><div class="k">F atoms per Xe</div><div class="v" id="ro-fpx">—</div><div class="u">supplied</div></div>
+        <div class="ro"><div class="k">Xe oxidation state</div><div class="v" id="ro-ox">—</div><div class="u">in the product</div></div>
+        <div class="ro"><div class="k">bond pairs</div><div class="v" id="ro-bp">—</div><div class="u">around Xe</div></div>
+        <div class="ro"><div class="k">lone pairs</div><div class="v" id="ro-lp">—</div><div class="u">around Xe</div></div>
+      </div>
+
+      <div class="eqlive" id="eqlive"></div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 CHAIN -->
+<section id="chain">
+  <h2><span class="n">03</span>The chain — P to Q to R</h2>
+  <p class="lede">
+    Every step is balanced atom by atom in front of you. Nothing is asserted: if the fluorine does not
+    add up, the step will not go green.
+  </p>
+  <div class="lab">
+    <div class="panel">
+      <h3>Reaction chain</h3>
+      <div class="chain">
+        <div class="stepcard" id="sc1">
+          <div class="cond">873 K, 7 bar · Xe : F₂ = 1 : 5</div>
+          <div class="rx">Xe &nbsp;+&nbsp; 2 F<sub>2</sub> &nbsp;⟶&nbsp; <b id="sc1p">P</b></div>
+          <div class="ledger" id="sc1l"></div>
+        </div>
+        <div class="stepcard" id="sc2">
+          <div class="cond">143 K · dioxygen difluoride</div>
+          <div class="rx"><b id="sc2r">P</b> &nbsp;+&nbsp; O<sub>2</sub>F<sub>2</sub> &nbsp;⟶&nbsp;
+            <b id="sc2p">Q</b> &nbsp;+&nbsp; O<sub>2</sub></div>
+          <div class="ledger" id="sc2l"></div>
+        </div>
+        <div class="stepcard" id="sc3">
+          <div class="cond">complete hydrolysis</div>
+          <div class="rx"><b id="sc3r">Q</b> &nbsp;+&nbsp; 3 H<sub>2</sub>O &nbsp;⟶&nbsp;
+            <b id="sc3p">R</b> &nbsp;+&nbsp; 6 HF</div>
+          <div class="ledger" id="sc3l"></div>
+        </div>
+      </div>
+      <div class="btnrow">
+        <button class="act primary" id="chain-next" type="button">Run the next step</button>
+        <button class="act" id="chain-reset" type="button">↺ Start again</button>
+      </div>
+      <div class="verdict" id="chainv" style="margin-top:14px">
+        Make P in the reactor above, then walk the chain one step at a time.
+      </div>
+    </div>
+
+    <div class="panel">
+      <h3>Fluorinating assay on Q</h3>
+      <p style="font-size:13px;color:var(--text-secondary);margin:0 0 4px">
+        A fluorinating agent hands fluorine to something else and is itself reduced. Offer Q a substrate
+        and watch the xenon oxidation state.
+      </p>
+      <div class="assay" id="assay">
+        <button type="button" data-s="H2">H<sub>2</sub> — hydrogen</button>
+        <button type="button" data-s="Hg">Hg — mercury</button>
+        <button type="button" data-s="SF4">SF<sub>4</sub> — sulfur tetrafluoride</button>
+        <button type="button" data-s="Ar">Ar — argon (control)</button>
+      </div>
+      <div class="verdict" id="assayv">Pick a substrate to run the assay.</div>
+      <div class="chartwrap" style="margin-top:14px;padding:12px">
+        <svg id="oxchart" class="chart" viewBox="0 0 620 300" role="img"
+             aria-label="Xenon oxidation state before and after the fluorinating assay"></svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 MOLECULE BENCH -->
+<section id="bench">
+  <h2><span class="n">04</span>Molecule bench — count the pairs yourself</h2>
+  <p class="lede">
+    Pick a species and the bench builds it from its valence electrons: bonds first, then whatever is
+    left over as lone pairs. Drag the model to turn it. The geometry name is derived from the counts,
+    not typed in.
+  </p>
+  <div class="lab">
+    <div class="panel">
+      <h3>Species</h3>
+      <div class="segbtns" id="molsel" style="margin-bottom:12px">
+        <button type="button" data-m="XeF2">XeF<sub>2</sub></button>
+        <button type="button" data-m="XeF4" aria-pressed="true">XeF<sub>4</sub></button>
+        <button type="button" data-m="XeF6">XeF<sub>6</sub></button>
+        <button type="button" data-m="XeO3">XeO<sub>3</sub></button>
+      </div>
+      <div class="molwrap" id="molwrap">
+        <svg id="molsvg" class="mol" viewBox="0 0 660 430" role="img"
+             aria-label="Three-dimensional model of the selected xenon species"></svg>
+      </div>
+      <div class="ctrl" style="margin-top:12px">
+        <label for="spin"><span>Rotate the model</span> <span class="v" id="spinv">55°</span></label>
+        <input type="range" id="spin" min="0" max="360" value="55" aria-label="rotate the molecule">
+      </div>
+      <div class="segbtns" id="lptog">
+        <button type="button" data-lp="1" aria-pressed="true">Show lone pairs</button>
+        <button type="button" data-lp="0">Bonds only</button>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h3>Electron bookkeeping</h3>
+      <div class="ecount" id="ecount"></div>
+      <div class="eqlive" id="geoeq"></div>
+      <div class="verdict" id="geov"></div>
+      <div class="readouts" style="margin-top:12px">
+        <div class="ro"><div class="k">steric number</div><div class="v" id="ro-sn">—</div><div class="u">bp + lp</div></div>
+        <div class="ro"><div class="k">bond pairs</div><div class="v" id="ro-bp2">—</div><div class="u">σ to ligands</div></div>
+        <div class="ro"><div class="k">lone pairs</div><div class="v" id="ro-lp2">—</div><div class="u">on Xe</div></div>
+        <div class="ro"><div class="k">bond angle</div><div class="v" id="ro-ang">—</div><div class="u">degrees</div></div>
+      </div>
+      <div class="scrollx" style="margin-top:14px">
+        <table class="data" id="geotbl"></table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 VERDICT -->
+<section id="verdict">
+  <h2><span class="n">05</span>Verdict on each statement</h2>
+  <p class="lede">
+    Commit to a prediction, then check it against what the bench measured. The verdict column is
+    computed from your own bookkeeping — there is no stored answer key on this page.
+  </p>
+  <div class="lab">
+    <div class="panel">
+      <h3>Lab notebook</h3>
+      <p style="font-size:12.5px;color:var(--text-muted);margin:0 0 10px">
+        Written as you work. Only things you actually demonstrated appear here.</p>
+      <div class="nb" id="notebook"></div>
+      <div class="empty" id="nbempty">Nothing recorded yet — run the reactor, walk the chain and open
+        the species on the bench.</div>
+    </div>
+    <div class="panel">
+      <h3>Predict, then check</h3>
+
+    <div class="predict" id="predict">
+      <div class="q" id="pq"></div>
+      <div class="row">
+        <button type="button" data-p="yes">Correct</button>
+        <button type="button" data-p="no">Not correct</button>
+      </div>
+      <div class="fb" id="pfb"></div>
+      <div class="row" style="margin-top:10px">
+        <button type="button" id="pprev">← Previous statement</button>
+        <button type="button" id="pnext">Next statement →</button>
+      </div>
+    </div>
+    <div class="scrollx" style="margin-top:16px"><table class="data" id="matrix"></table></div>
+
+    </div>
+  </div>
+</section>
+
+<!-- 06 SOLUTION -->
+<section id="solution">
+  <h2><span class="n">06</span>Step-by-step solution</h2>
+
+  <div class="gate" id="solgate">
+    <h4>The solution is still locked</h4>
+    <p>Test all four statements on the bench above and the derivation opens by itself.<br>
+       Statements tested: <span class="cnt" id="gtested">0</span> of 4 — open XeF₄, XeF₆ and XeO₃ on the bench and run the fluorinating assay</p>
+    <button class="act" id="revealsol" type="button">Show me the solution anyway</button>
+  </div>
+
+  <div id="solbody" hidden>
+    <div class="verdict ok" id="solintro"></div>
+    <ol class="steps" style="margin-top:14px">
+      <li>
+        <h4>Identify P from the stoichiometry, not from the arrow</h4>
+        <p>Xenon and fluorine give three fluorides and the ratio picks which one. The paper's
+           1 : 5 mixture at 873 K and 7 bar is the standard preparation of xenon tetrafluoride.</p>
+        <div class="eq">Xe + 2F<sub>2</sub> <span style="font-family:var(--mono);font-size:12px">—873 K, 7 bar—&gt;</span>
+          <span class="hl">XeF<sub>4</sub></span> &nbsp;&nbsp;(1 : 5 Xe : F<sub>2</sub>)</div>
+        <p>For contrast: 2 : 1 at 673 K and 1 bar gives XeF<sub>2</sub>, and 1 : 20 at 573 K under
+           60–70 bar gives XeF<sub>6</sub>. <b>P = XeF<sub>4</sub>.</b></p>
+      </li>
+      <li>
+        <h4>O<sub>2</sub>F<sub>2</sub> at 143 K pushes P up one fluoride</h4>
+        <p>Dioxygen difluoride is a violent low-temperature fluorinating agent. It donates two fluorine
+           atoms and leaves as O<sub>2</sub>.</p>
+        <div class="eq">XeF<sub>4</sub> + O<sub>2</sub>F<sub>2</sub>
+          <span style="font-family:var(--mono);font-size:12px">—143 K—&gt;</span>
+          <span class="hl">XeF<sub>6</sub></span> + O<sub>2</sub></div>
+        <p>Count the fluorine: 4 on the left in XeF<sub>4</sub> plus 2 from O<sub>2</sub>F<sub>2</sub>
+           is 6. Xenon goes from +4 to +6. <b>Q = XeF<sub>6</sub>.</b></p>
+      </li>
+      <li>
+        <h4>Complete hydrolysis of Q strips every fluorine</h4>
+        <p>Partial hydrolysis would stop at XeOF<sub>4</sub> or XeO<sub>2</sub>F<sub>2</sub>. The word
+           <em>complete</em> takes it all the way to the trioxide.</p>
+        <div class="eq">XeF<sub>6</sub> + 3H<sub>2</sub>O ⟶ <span class="hl">XeO<sub>3</sub></span> + 6HF</div>
+        <p>Xenon stays at +6 — this is a substitution, not a redox step. <b>R = XeO<sub>3</sub>.</b></p>
+      </li>
+      <li>
+        <h4>(A) XeF<sub>4</sub> — two lone pairs, square planar</h4>
+        <div class="eq">Xe has 8 valence electrons · 4 go into Xe–F bonds · 8 − 4 = 4 left = <span class="hl">2 lone pairs</span></div>
+        <p>Steric number 6, so the electron geometry is octahedral; the two lone pairs take the axial
+           positions, leaving the four fluorines square planar. <b>(A) is correct.</b></p>
+      </li>
+      <li>
+        <h4>(B) XeF<sub>6</sub> — one lone pair, so it cannot be a perfect octahedron</h4>
+        <div class="eq">8 valence electrons − 6 bonds = 2 left = <span class="hl">1 lone pair</span> · steric number 7</div>
+        <p>Seven electron pairs cannot arrange themselves octahedrally. The lone pair caps one
+           triangular face and pushes the three fluorines around it apart, giving a distorted
+           (capped) octahedron with C<sub>3v</sub> symmetry. A perfect octahedron would need six
+           equivalent bonds and no lone pair. <b>(B) is incorrect.</b></p>
+      </li>
+      <li>
+        <h4>(C) XeF<sub>6</sub> is a fluorinating agent</h4>
+        <p>Xenon sits at its highest common oxidation state, +6, held there by six fluorines. Anything
+           that will accept fluorine takes it, and the xenon is reduced — usually all the way to the
+           free element.</p>
+        <div class="eq">XeF<sub>6</sub> + 3H<sub>2</sub> ⟶ Xe + 6HF &nbsp;&nbsp;·&nbsp;&nbsp;
+          SF<sub>4</sub> + XeF<sub>6</sub> ⟶ SF<sub>6</sub> + XeF<sub>4</sub></div>
+        <p>All three xenon fluorides fluorinate; the hexafluoride is the strongest of them.
+           <b>(C) is correct.</b></p>
+      </li>
+      <li>
+        <h4>(D) XeO<sub>3</sub> — trigonal pyramidal</h4>
+        <div class="eq">8 valence electrons − (3 × 2 for three Xe=O bonds) = 2 left = <span class="hl">1 lone pair</span></div>
+        <p>Three bond pairs and one lone pair: steric number 4, tetrahedral electron geometry, and the
+           molecule you can see is a pyramid — the same shape as NH<sub>3</sub>, with the lone pair
+           squeezing the O–Xe–O angle below 109.5° to about 103°. <b>(D) is correct.</b></p>
+      </li>
+      <li>
+        <h4>Answer</h4>
+        <div class="eq" style="font-size:17px"><span class="hl">(A), (C) and (D)</span></div>
+        <p>Marking: +4 only for choosing all three; +3 for any two of them; +2 … −1 for including (B).</p>
+      </li>
+    </ol>
+    <div class="verify" style="margin-top:16px">
+      <h4>✓ Independent verification</h4>
+      <ul>
+        <li><b>Shapes from counting, not memory:</b> every geometry on this page is derived by the same
+            routine — valence electrons minus bonding electrons, halved — so XeF<sub>4</sub> → 2 lone
+            pairs, XeF<sub>6</sub> → 1, XeO<sub>3</sub> → 1 come out of one rule applied three times.</li>
+        <li><b>Atom balance:</b> Xe + 2F<sub>2</sub> → XeF<sub>4</sub>;
+            XeF<sub>4</sub> + O<sub>2</sub>F<sub>2</sub> → XeF<sub>6</sub> + O<sub>2</sub>;
+            XeF<sub>6</sub> + 3H<sub>2</sub>O → XeO<sub>3</sub> + 6HF. Each balances element by element,
+            checked in the ledger above.</li>
+        <li><b>Oxidation-state ladder:</b> +4 → +6 → +6. The O<sub>2</sub>F<sub>2</sub> step is the only
+            redox step; hydrolysis is a substitution, which is why R is a xenon(VI) oxide and not
+            xenon metal.</li>
+        <li><b>Why (B) fails precisely:</b> perfect octahedral needs steric number 6 with zero lone
+            pairs. XeF<sub>6</sub> has steric number 7. The bench refuses to place seven pairs
+            octahedrally, which is the geometric statement behind the chemistry.</li>
+        <li><b>Distractor audit:</b> (B) is believable because XeF<sub>6</sub> <em>looks</em>
+            octahedral on paper and is often drawn that way. The trap is the difference between six
+            bonds and seven electron pairs.</li>
+        <li><b>Literature cross-check:</b> XeF<sub>4</sub> square planar (D<sub>4h</sub>),
+            XeF<sub>6</sub> distorted octahedral (fluxional C<sub>3v</sub>),
+            XeO<sub>3</sub> trigonal pyramidal with O–Xe–O ≈ 103°.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 07 CONCEPTS -->
+<section id="concepts">
+  <h2><span class="n">07</span>Concepts and classification</h2>
+  <div class="lab">
+    <div class="panel">
+      <h3>Relations used</h3>
+      <div class="eq">lone pairs = (valence e⁻ − bonding e⁻) / 2</div>
+      <div class="eq">steric number = bond pairs + lone pairs</div>
+      <div class="eq">Xe + F<sub>2</sub> → XeF<sub>2</sub> / XeF<sub>4</sub> / XeF<sub>6</sub> — the ratio decides</div>
+      <div class="eq">XeF<sub>4</sub> + O<sub>2</sub>F<sub>2</sub> → XeF<sub>6</sub> + O<sub>2</sub> &nbsp;(143 K)</div>
+      <div class="eq">XeF<sub>6</sub> + 3H<sub>2</sub>O → XeO<sub>3</sub> + 6HF &nbsp;(complete)</div>
+      <div class="eq">XeF<sub>6</sub> + H<sub>2</sub>O → XeOF<sub>4</sub> + 2HF &nbsp;(partial — not this question)</div>
+    </div>
+    <div class="panel">
+      <h3>Classification</h3>
+      <table class="meta-tbl">
+        <tr><td>Simulation ID</td><td style="font-family:var(--mono)">ADV-2026-P2-CHE-Q06</td></tr>
+        <tr><td>Exam / Year / Paper</td><td>JEE Advanced · 2026 · Paper 2</td></tr>
+        <tr><td>Subject</td><td>Chemistry (Inorganic)</td></tr>
+        <tr><td>Chapter</td><td>The p-Block Elements (Group 18)</td></tr>
+        <tr><td>Topic</td><td>Noble gas compounds</td></tr>
+        <tr><td>Subtopics</td><td>Preparation of xenon fluorides · VSEPR and steric number ·
+          Lone pairs and distorted geometries · Hydrolysis of XeF<sub>6</sub> ·
+          Xenon fluorides as fluorinating agents · Oxidation states of xenon</td></tr>
+        <tr><td>Question type</td><td>Multiple correct MCQ (+4 / partial / −1)</td></tr>
+        <tr><td>Difficulty</td><td>Moderate</td></tr>
+        <tr><td>Answer</td><td><b id="clsans">— run the experiment</b></td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<footer>
+  ADV-2026-P2-CHE-Q06 · PrayogX · JEE Advanced Interactive Simulation Library · question text reproduced
+  from the official JEE (Advanced) 2026 Paper 2 for educational use.
+</footer>
+</div>
+
+<script>
+(function(){
+"use strict";
+
+var NS="http://www.w3.org/2000/svg";
+function css(v){ return getComputedStyle(document.documentElement).getPropertyValue(v).trim(); }
+function el(n,a){ var e=document.createElementNS(NS,n); for(var k in a) e.setAttribute(k,a[k]); return e; }
+function $(id){ return document.getElementById(id); }
+function clamp(v,a,b){ return v<a?a:(v>b?b:v); }
+function esc(s){ return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+
+/* ---- predictions + verdict matrix ------------------------------------- */
+var PORDER=["A","B","C","D"], pIdx=0, predictions={}, tested={}, revealed=false;
+
+function renderPredict(){
+  var kk=PORDER[pIdx], def=OPT[kk];
+  $("pq").innerHTML = "Statement ("+kk+") — "+def.shortq;
+  var bs=$("predict").querySelectorAll(".row button");
+  for(var i=0;i<bs.length;i++) bs[i].setAttribute("aria-pressed", predictions[kk]===bs[i].dataset.p?"true":"false");
+  var fb=$("pfb");
+  if(!predictions[kk]){ fb.className="fb"; fb.textContent="Commit to an answer, then go and test it on the bench above."; }
+  else if(!tested[kk]){ fb.className="fb"; fb.innerHTML="Logged. Now test ("+kk+") on the bench and see."; }
+  else {
+    var right = predictions[kk]===def.verdict;
+    fb.className="fb "+(right?"ok":"no");
+    fb.innerHTML=(right?"✓ Your prediction matches your measurement. ":"✗ Your measurement disagrees. ")+def.why;
+  }
+  $("pprev").disabled = pIdx===0; $("pnext").disabled = pIdx===PORDER.length-1;
+}
+function drawMatrix(){
+  var rows=PORDER.map(function(kk){
+    var def=OPT[kk], seen=!!tested[kk], pr=predictions[kk];
+    var vcell = seen ? (def.verdict==="yes" ? "<span class='yes'>✓ correct</span>"
+                                            : "<span class='no'>✗ not correct</span>")
+                     : "<span style='color:var(--text-muted)'>not tested yet</span>";
+    var ok = seen && pr && pr===def.verdict;
+    return "<tr"+(seen&&def.verdict==="yes"?" class='win'":"")+"><td><b>("+kk+")</b></td>"+
+      "<td class='l'>"+def.label+"</td><td>"+(pr?(pr==="yes"?"correct":"not correct"):"—")+"</td>"+
+      "<td>"+vcell+"</td><td>"+(seen&&pr?(ok?"<span class='yes'>match</span>":"<span class='no'>mismatch</span>"):"—")+"</td></tr>";
+  }).join("");
+  $("matrix").innerHTML="<thead><tr><th>Option</th><th class='l'>Statement</th><th>Your prediction</th>"+
+    "<th>What you measured</th><th></th></tr></thead><tbody>"+rows+"</tbody>";
+}
+function nTested(){ var n=0; for(var k in tested) if(tested[k]) n++; return n; }
+
+/* ---- the gate ---------------------------------------------------------- */
+function gateOpen(){ return nTested()>=4 || revealed; }
+function updateGate(){
+  if($("gtested")) $("gtested").textContent = nTested();
+  var open=gateOpen();
+  $("solgate").hidden = open;
+  $("solbody").hidden = !open;
+  var ab=$("answerbox");
+  if(open){
+    ab.classList.remove("locked");
+    $("ansval").textContent=ANSWER.text;
+    $("anssub").innerHTML=ANSWER.sub;
+    $("revealnow").hidden=true;
+    if($("clsans")) $("clsans").textContent=ANSWER.text;
+    if(!$("solbody").classList.contains("reveal")) $("solbody").classList.add("reveal");
+    if($("solintro")) $("solintro").innerHTML = revealed && nTested()<4
+      ? "Revealed early — go back and test the statements to see these conclusions come from your own measurements."
+      : "<b>You tested all four statements on the bench.</b> "+ANSWER.intro;
+  } else {
+    ab.classList.add("locked");
+    $("ansval").textContent="Run the experiment";
+    $("anssub").textContent=LOCKED_SUB;
+    $("revealnow").hidden=false;
+    if($("clsans")) $("clsans").textContent="— run the experiment";
+  }
+  markOptions();
+}
+function markOptions(){
+  if(!gateOpen()) return;
+  document.querySelectorAll("#opts li").forEach(function(li){
+    var kk=li.dataset.k, right=OPT[kk].verdict==="yes";
+    li.classList.remove("correct","wrong");
+    li.classList.add(right?"correct":"wrong");
+    li.querySelector(".mark").textContent = right?"correct":"not correct";
+  });
+}
+function markTested(kk){ if(!tested[kk]){ tested[kk]=true; updateGate(); drawMatrix(); renderPredict(); } }
+
+/* ---- notebook ---------------------------------------------------------- */
+var obsLog=[];
+function note(text){
+  if(obsLog.indexOf(text)>=0) return;
+  obsLog.push(text);
+  $("notebook").innerHTML = obsLog.map(function(o){ return '<div class="obs">'+o+"</div>"; }).join("");
+  $("nbempty").hidden = true;
+}
+
+/* ---- numeric control: slider + typed box + steppers -------------------- */
+function parseNum(str){
+  if(str===null||str===undefined) return null;
+  var s=String(str).trim().toLowerCase();
+  if(!s) return null;
+  s=s.replace(/π/g,"(pi)").replace(/pi/g,"(pi)").replace(/\(\(pi\)\)/g,"(pi)");
+  s=s.replace(/×10\^?/g,"e").replace(/x10\^?/g,"e").replace(/\s+/g,"");
+  if(!/^[0-9+\-*/().epi]+$/.test(s)) return null;
+  s=s.replace(/\(pi\)/g,"P_I");
+  if(/[a-z]/.test(s.replace(/P_I/g,"").replace(/e/g,""))) return null;
+  s=s.replace(/P_I/g,"("+Math.PI+")");
+  var v;
+  try { v=Function('"use strict";return ('+s+');')(); } catch(err){ return null; }
+  if(typeof v!=="number"||!isFinite(v)) return null;
+  return v;
+}
+function makeControl(cfg){
+  var sl=$(cfg.slider), inp=$(cfg.input), hint=$(cfg.hint), baseHint=hint?hint.innerHTML:"";
+  function toSlider(v){ return cfg.log ? Math.round(1000*Math.log(v/cfg.lo)/Math.log(cfg.hi/cfg.lo))
+                                       : Math.round((v-cfg.lo)/(cfg.hi-cfg.lo)*1000); }
+  function fromSlider(p){ return cfg.log ? cfg.lo*Math.pow(cfg.hi/cfg.lo,p/1000)
+                                         : cfg.lo+(cfg.hi-cfg.lo)*p/1000; }
+  sl.min=0; sl.max=1000;
+  function show(v){
+    sl.value=toSlider(v);
+    if(document.activeElement!==inp) inp.value=v.toFixed(cfg.dp);
+    inp.classList.remove("bad");
+    if(hint){ hint.classList.remove("bad"); hint.innerHTML=baseHint; }
+    if(cfg.valEl) $(cfg.valEl).textContent=v.toFixed(cfg.dp)+" "+cfg.unit;
+  }
+  function set(v){ v=clamp(v,cfg.lo,cfg.hi); ST[cfg.key]=v; show(v); if(cfg.onset) cfg.onset(); }
+  sl.addEventListener("input",function(){ set(fromSlider(+sl.value)); });
+  inp.addEventListener("input",function(){
+    var v=parseNum(inp.value);
+    if(v===null){ inp.classList.add("bad");
+      if(hint){ hint.classList.add("bad"); hint.textContent="That is not a number I can read — try 0.5, 1/2 or 5e-1."; }
+      return; }
+    if(v<cfg.lo||v>cfg.hi){ inp.classList.add("bad");
+      if(hint){ hint.classList.add("bad");
+        hint.textContent="Out of the range this apparatus can hold ("+cfg.lo+" to "+cfg.hi+" "+cfg.unit+")."; }
+      return; }
+    inp.classList.remove("bad");
+    if(hint){ hint.classList.remove("bad"); hint.innerHTML=baseHint; }
+    ST[cfg.key]=v; sl.value=toSlider(v);
+    if(cfg.valEl) $(cfg.valEl).textContent=v.toFixed(cfg.dp)+" "+cfg.unit;
+    if(cfg.onset) cfg.onset();
+  });
+  inp.addEventListener("blur",function(){ show(ST[cfg.key]); });
+  document.querySelectorAll('.step[data-for="'+cfg.slider+'"]').forEach(function(b){
+    b.addEventListener("click",function(){ set(ST[cfg.key]+(+b.dataset.dir)*cfg.step); });
+  });
+  show(ST[cfg.key]);
+  return { show:function(){ show(ST[cfg.key]); } };
+}
+
+/* ---- generic plotter --------------------------------------------------- */
+function niceAxis(a,b,want){
+  if(!(b>a)) b=a+1;
+  var raw=(b-a)/(want||5), ex=Math.floor(Math.log(raw)/Math.LN10), f=raw/Math.pow(10,ex);
+  var m=f<=1?1:(f<=2?2:(f<=2.5?2.5:(f<=5?5:10))), st=m*Math.pow(10,ex);
+  var lo=Math.floor(a/st+1e-9)*st, hi=Math.ceil(b/st-1e-9)*st;
+  if(hi-lo<st) hi=lo+st;
+  return {lo:lo,hi:hi,step:st,n:Math.max(1,Math.round((hi-lo)/st))};
+}
+function tickDp(step){
+  for(var d=0;d<=6;d++){ var s=step*Math.pow(10,d); if(Math.abs(s-Math.round(s))<1e-9) return d; }
+  return 6;
+}
+function plot(svg,cfg){
+  while(svg.firstChild) svg.removeChild(svg.firstChild);
+  var vb=svg.getAttribute("viewBox").split(/\s+/).map(Number), W=vb[2], H=vb[3];
+  var M={l:cfg.ml||70,r:cfg.mr||52,t:22,b:48};
+  var AX_=niceAxis(cfg.xMin,cfg.xMax,5), AY_=niceAxis(cfg.yMin,cfg.yMax,5);
+  var xa=AX_.lo, xb=AX_.hi, ya=AY_.lo, yb=AY_.hi;
+  function X(v){ return M.l+(v-xa)/(xb-xa)*(W-M.l-M.r); }
+  function Y(v){ return H-M.b-(v-ya)/(yb-ya)*(H-M.t-M.b); }
+  var grid=css("--line"), muted=css("--text-muted"), strong=css("--line-strong"), ink=css("--text-secondary");
+  var i, xdp=tickDp(AX_.step), ydp=tickDp(AY_.step);
+  for(i=0;i<=AX_.n;i++){
+    var xv=xa+AX_.step*i;
+    svg.appendChild(el("line",{x1:X(xv),x2:X(xv),y1:M.t,y2:H-M.b,stroke:grid,"stroke-width":1}));
+    var tx=el("text",{x:X(xv),y:H-M.b+18,"text-anchor":"middle",fill:muted,"font-size":10.5,
+      "font-family":"ui-monospace,monospace"});
+    tx.textContent=cfg.xFmt?cfg.xFmt(xv):xv.toFixed(xdp); svg.appendChild(tx);
+  }
+  for(i=0;i<=AY_.n;i++){
+    var yv=ya+AY_.step*i;
+    svg.appendChild(el("line",{x1:M.l,x2:W-M.r,y1:Y(yv),y2:Y(yv),stroke:grid,"stroke-width":1}));
+    var ty=el("text",{x:M.l-9,y:Y(yv)+3.5,"text-anchor":"end",fill:muted,"font-size":10.5,
+      "font-family":"ui-monospace,monospace"});
+    ty.textContent=cfg.yFmt?cfg.yFmt(yv):yv.toFixed(ydp); svg.appendChild(ty);
+  }
+  if(ya<0&&yb>0)
+    svg.appendChild(el("line",{x1:M.l,x2:W-M.r,y1:Y(0),y2:Y(0),stroke:strong,"stroke-width":1.5}));
+  svg.appendChild(el("line",{x1:M.l,x2:M.l,y1:M.t,y2:H-M.b,stroke:strong,"stroke-width":1.5}));
+  svg.appendChild(el("line",{x1:M.l,x2:W-M.r,y1:H-M.b,y2:H-M.b,stroke:strong,"stroke-width":1.5}));
+  var usedLbl=[];
+  (cfg.curves||[]).forEach(function(c){
+    if(!c.pts||c.pts.length<2) return;
+    var d=c.pts.map(function(p,ix){ return (ix?"L":"M")+X(p[0]).toFixed(1)+" "+Y(p[1]).toFixed(1); }).join(" ");
+    svg.appendChild(el("path",{d:d,fill:"none",stroke:css(c.col),"stroke-width":c.w||2.4,
+      "stroke-linecap":"round","stroke-linejoin":"round","stroke-dasharray":c.dash||"none",
+      opacity:c.op===undefined?1:c.op}));
+    if(c.label){
+      var last=c.pts[c.pts.length-1], ly=clamp(Y(last[1])+4,M.t+8,H-M.b);
+      for(var q=0;q<usedLbl.length;q++){ if(Math.abs(usedLbl[q]-ly)<13){ ly=usedLbl[q]+13; q=-1; } }
+      ly=clamp(ly,M.t+8,H-M.b-2); usedLbl.push(ly);
+      var lb=el("text",{x:clamp(X(last[0])+8,M.l,W-4),y:ly,fill:css(c.col),"font-size":11.5,
+        "font-weight":700,"text-anchor":X(last[0])>W-M.r-40?"end":"start"});
+      lb.textContent=c.label; svg.appendChild(lb);
+    }
+  });
+  (cfg.bars||[]).forEach(function(b){
+    var x0=X(b.x0), x1=X(b.x1), y0=Y(Math.max(ya,0)), y1=Y(b.y);
+    svg.appendChild(el("rect",{x:Math.min(x0,x1),y:Math.min(y0,y1),width:Math.abs(x1-x0),
+      height:Math.abs(y1-y0),fill:css(b.col),opacity:b.op===undefined?.85:b.op,rx:3}));
+    if(b.label){
+      var t=el("text",{x:(x0+x1)/2,y:Math.min(y0,y1)-6,"text-anchor":"middle",fill:css(b.col),
+        "font-size":11.5,"font-weight":700}); t.textContent=b.label; svg.appendChild(t);
+    }
+  });
+  (cfg.points||[]).forEach(function(p){
+    if(p.x<xa||p.x>xb||p.y<ya||p.y>yb) return;
+    svg.appendChild(el("circle",{cx:X(p.x),cy:Y(p.y),r:p.r||4.6,fill:p.fill||css("--surface-1"),
+      stroke:css(p.col),"stroke-width":2}));
+    if(p.label){
+      var t=el("text",{x:X(p.x),y:Y(p.y)-10,"text-anchor":"middle",fill:css(p.col),
+        "font-size":11,"font-weight":700}); t.textContent=p.label; svg.appendChild(t);
+    }
+  });
+  var axl=el("text",{x:(M.l+W-M.r)/2,y:H-8,"text-anchor":"middle",fill:ink,"font-size":12.5});
+  axl.textContent=cfg.xLabel; svg.appendChild(axl);
+  var ayl=el("text",{x:15,y:(M.t+H-M.b)/2,"text-anchor":"middle",fill:ink,"font-size":12.5,
+    transform:"rotate(-90 15 "+((M.t+H-M.b)/2)+")"});
+  ayl.textContent=cfg.yLabel; svg.appendChild(ayl);
+  svg._map={X:X,Y:Y,xa:xa,xb:xb,M:M,W:W};
+}
+
+/* ---- shared wiring ----------------------------------------------------- */
+function wireCommon(redraw){
+  $("predict").addEventListener("click",function(e){
+    var b=e.target.closest(".row button"); if(!b) return;
+    predictions[PORDER[pIdx]]=b.dataset.p; renderPredict(); drawMatrix();
+  });
+  $("pprev").addEventListener("click",function(){ if(pIdx>0){ pIdx--; renderPredict(); } });
+  $("pnext").addEventListener("click",function(){ if(pIdx<PORDER.length-1){ pIdx++; renderPredict(); } });
+  function doReveal(){ revealed=true; updateGate(); }
+  $("revealnow").addEventListener("click",doReveal);
+  $("revealsol").addEventListener("click",doReveal);
+  $("themebtn").addEventListener("click",function(){
+    var r=document.documentElement;
+    var dark=r.getAttribute("data-theme")==="dark" ||
+      (!r.getAttribute("data-theme")&&matchMedia("(prefers-color-scheme: dark)").matches);
+    r.setAttribute("data-theme",dark?"light":"dark");
+    if(redraw) redraw();
+  });
+}
+
+/* ======================================================================
+   MODEL — one routine derives every geometry from valence electrons.
+   ====================================================================== */
+var GROUPV = { Xe:8 };
+function build(central, lig, n, dbl){
+  var v = GROUPV[central];
+  var bonding = dbl ? 2*n : n;              // each doubly-bonded O uses 2 Xe electrons
+  var lp = (v - bonding)/2;
+  return { formula:null, bp:n, lp:lp, sn:n+lp, ox: dbl ? 2*n : n };
+}
+var SPECIES = {
+  XeF2:{ lig:"F", n:2, dbl:false, name:"XeF₂", pretty:"xenon difluoride", angle:180,
+         geo:"linear", eg:"trigonal bipyramidal", col:"--s3" },
+  XeF4:{ lig:"F", n:4, dbl:false, name:"XeF₄", pretty:"xenon tetrafluoride", angle:90,
+         geo:"square planar", eg:"octahedral", col:"--s1" },
+  XeF6:{ lig:"F", n:6, dbl:false, name:"XeF₆", pretty:"xenon hexafluoride", angle:85,
+         geo:"distorted octahedral", eg:"capped octahedral", col:"--s2" },
+  XeO3:{ lig:"O", n:3, dbl:true,  name:"XeO₃", pretty:"xenon trioxide", angle:103,
+         geo:"trigonal pyramidal", eg:"tetrahedral", col:"--s4" }
+};
+Object.keys(SPECIES).forEach(function(k){
+  var s=SPECIES[k], b=build("Xe", s.lig, s.n, s.dbl);
+  s.bp=b.bp; s.lp=b.lp; s.sn=b.sn; s.ox=b.ox;
+});
+
+var ST = { ratio:5.00, T:873, p:7.0 };
+var LIM = { ratio:[0.20,40.0], T:[400,1000], p:[1,100] };
+
+/* which fluoride forms — the F2 : Xe ratio decides, pressure gates the hexafluoride */
+function productOf(){
+  var r=ST.ratio, T=ST.T, p=ST.p;
+  if(T < 500) return { key:null, why:"Too cold — xenon and fluorine simply do not react below about 500 K." };
+  if(r < 1.5)  return { key:"XeF2", why:"Fluorine is the limiting reagent, so xenon only picks up two atoms." };
+  if(r < 12)   return { key:"XeF4", why:"A moderate excess of fluorine takes xenon to the tetrafluoride." };
+  if(p < 40)   return { key:"XeF4", why:"Plenty of fluorine, but without high pressure the reaction stops at the tetrafluoride." };
+  return { key:"XeF6", why:"A large excess of fluorine under high pressure drives xenon all the way to the hexafluoride." };
+}
+var madeP = null, ranReactor = false;
+
+/* ======================================================================
+   REACTOR CANVAS
+   ====================================================================== */
+var cv=$("reactorcv"), cx=cv.getContext("2d"), PART=[], NP=46;
+(function seed(){ for(var i=0;i<NP;i++)
+  PART.push({x:Math.random(),y:Math.random(),vx:Math.random()-0.5,vy:Math.random()-0.5,ph:Math.random()*6.28}); })();
+var reactProg = 0;
+
+function drawReactor(ts){
+  var W=cv.width, H=cv.height;
+  cx.clearRect(0,0,W,H); cx.fillStyle=css("--surface-1"); cx.fillRect(0,0,W,H);
+  var bx=60,by=56,bw=W-120,bh=H-140;
+  cx.fillStyle="rgba(74,58,167,0.05)"; cx.fillRect(bx,by,bw,bh);
+  cx.strokeStyle=css("--line-strong"); cx.lineWidth=4;
+  cx.strokeRect(bx,by,bw,bh);
+  cx.fillStyle=css("--text-muted"); cx.font="600 12px "+"ui-monospace,Menlo,monospace";
+  cx.textAlign="left"; cx.fillText("nickel reactor", bx+2, by-14);
+  cx.textAlign="right";
+  cx.fillText(ST.T.toFixed(0)+" K   "+ST.p.toFixed(1)+" bar", bx+bw, by-14);
+
+  var jig = 0.25 + (ST.T-400)/600*1.5;
+  var crowd = 0.55 + Math.min(ST.p,100)/100*0.5;
+  var fFrac = ST.ratio/(1+ST.ratio);
+  var nF = Math.round(NP*fFrac);
+  for(var i=0;i<NP;i++){
+    var q=PART[i];
+    q.x+=q.vx*0.0013*jig; q.y+=q.vy*0.0019*jig;
+    if(q.x<0.03||q.x>0.97) q.vx*=-1; if(q.y<0.04||q.y>0.96) q.vy*=-1;
+    q.x=clamp(q.x,0.03,0.97); q.y=clamp(q.y,0.04,0.96);
+    var cxp=bx+12+q.x*(bw-24), cyp=by+12+q.y*(bh-24)+Math.sin(ts/560+q.ph)*3;
+    var isF = i>=NP-nF;
+    var made = reactProg>0 && i<NP*reactProg*0.35;
+    var r = 9*crowd + 2;
+    cx.beginPath(); cx.arc(cxp,cyp,r,0,6.2832);
+    cx.fillStyle = made ? css("--s1") : (isF ? css("--s3") : css("--s4"));
+    cx.globalAlpha=.92; cx.fill(); cx.globalAlpha=1;
+    cx.fillStyle="#fff"; cx.font="600 "+Math.round(r*0.95)+"px ui-sans-serif,system-ui,sans-serif";
+    cx.textAlign="center";
+    cx.fillText(made ? "P" : (isF?"F":"Xe"), cxp, cyp+r*0.34);
+  }
+  var barY=by+bh+26, barH=15;
+  cx.fillStyle=css("--surface-2"); cx.fillRect(bx,barY,bw,barH);
+  cx.fillStyle=css("--s1"); cx.fillRect(bx,barY,bw*reactProg,barH);
+  cx.strokeStyle=css("--line-strong"); cx.lineWidth=1.5; cx.strokeRect(bx,barY,bw,barH);
+  cx.fillStyle=css("--text-secondary"); cx.font="12px ui-sans-serif,system-ui,sans-serif";
+  cx.textAlign="left"; cx.fillText("conversion", bx, barY+32);
+  cx.textAlign="right"; cx.fillText((reactProg*100).toFixed(0)+" %", bx+bw, barY+32);
+}
+
+/* ======================================================================
+   PHASE MAP
+   ====================================================================== */
+function drawMap(){
+  var svg=$("phasemap");
+  var pr=productOf();
+  var bands=[
+    {lo:0.20, hi:1.5,  key:"XeF2", col:"--s3"},
+    {lo:1.5,  hi:12,   key:"XeF4", col:"--s1"},
+    {lo:12,   hi:40.0, key:"XeF6", col:"--s2"}
+  ];
+  var bars=bands.map(function(b){
+    return { x0:Math.log(b.lo)/Math.LN10, x1:Math.log(b.hi)/Math.LN10, y:1,
+             col:b.col, op:(pr.key===b.key?0.55:0.18), label:SPECIES[b.key].name };
+  });
+  plot(svg,{
+    xLabel:"F₂ per Xe  (log scale)", yLabel:"", ml:34, mr:34,
+    xMin:Math.log(0.20)/Math.LN10, xMax:Math.log(40)/Math.LN10, yMin:0, yMax:1.25,
+    xFmt:function(v){ var t=Math.pow(10,v); return t>=1?t.toFixed(0):t.toFixed(1); },
+    yFmt:function(){ return ""; },
+    bars:bars,
+    points:[
+      {x:Math.log(0.5)/Math.LN10, y:0.5, col:"--s3", label:"2:1 recipe"},
+      {x:Math.log(5)/Math.LN10,   y:0.5, col:"--s1", label:"1:5 recipe"},
+      {x:Math.log(20)/Math.LN10,  y:0.5, col:"--s2", label:"1:20 recipe"},
+      {x:Math.log(ST.ratio)/Math.LN10, y:0.22, col:"--text-primary",
+       fill:css("--text-primary"), r:7, label:"you"}
+    ]
+  });
+}
+
+/* ======================================================================
+   READOUTS
+   ====================================================================== */
+function renderReactor(){
+  var pr=productOf(), s=pr.key?SPECIES[pr.key]:null;
+  $("prodname").textContent = s ? s.name : "—";
+  $("prodwhy").textContent = pr.why;
+  $("ro-fpx").textContent = (2*ST.ratio).toFixed(1);
+  $("ro-ox").textContent  = s ? "+"+s.ox : "—";
+  $("ro-bp").textContent  = s ? s.bp : "—";
+  $("ro-lp").textContent  = s ? s.lp : "—";
+  ["2","4","6"].forEach(function(k){
+    var on = s && s.name==="XeF"+(k==="2"?"₂":k==="4"?"₄":"₆");
+    $("recipe-"+k).classList.toggle("on", !!on);
+  });
+  $("eqlive").innerHTML = s
+    ? '<span class="t">what the reactor is doing</span>Xe + <b class="chg">'+(s.n/2).toFixed(0)+
+      '</b> F<sub>2</sub> ⟶ <span class="res">'+s.name+'</span><br>'+
+      'valence electrons on Xe = <b>8</b> · used in bonds = <b>'+s.bp+
+      '</b> · left over = <b>'+(8-s.bp)+'</b> = <span class="res">'+s.lp+' lone pair'+(s.lp===1?"":"s")+'</span>'
+    : '<span class="t">what the reactor is doing</span>Nothing yet — the mixture will not react at this temperature.';
+  drawMap();
+}
+
+/* ======================================================================
+   CHAIN
+   ====================================================================== */
+var chainStep = 0;
+var CHAIN = [
+  { id:"sc1", prod:"XeF₂/₄/₆", atoms:{Xe:[1,1], F:[4,4]} },
+  { id:"sc2", atoms:{Xe:[1,1], F:[6,6], O:[2,2]} },
+  { id:"sc3", atoms:{Xe:[1,1], F:[6,6], O:[3,3], H:[6,6]} }
+];
+function ledger(node, atoms){
+  node.innerHTML = Object.keys(atoms).map(function(a){
+    var v=atoms[a], bal=v[0]===v[1];
+    return "<div class='"+(bal?"bal":"")+"'>"+a+" &nbsp;"+v[0]+" → "+v[1]+(bal?" ✓":" ✗")+"</div>";
+  }).join("");
+}
+function renderChain(){
+  for(var i=0;i<3;i++){
+    var c=$(CHAIN[i].id);
+    c.className = "stepcard" + (i<chainStep?" done":(i===chainStep?" live":""));
+    $(CHAIN[i].id+"l").innerHTML="";
+  }
+  if(chainStep>=1){ $("sc1p").textContent="XeF₄"; ledger($("sc1l"), CHAIN[0].atoms); }
+  else $("sc1p").textContent="P";
+  if(chainStep>=2){ $("sc2r").textContent="XeF₄"; $("sc2p").textContent="XeF₆";
+                    ledger($("sc2l"), CHAIN[1].atoms); }
+  else { $("sc2r").textContent="P"; $("sc2p").textContent="Q"; }
+  if(chainStep>=3){ $("sc3r").textContent="XeF₆"; $("sc3p").textContent="XeO₃";
+                    ledger($("sc3l"), CHAIN[2].atoms); }
+  else { $("sc3r").textContent="Q"; $("sc3p").textContent="R"; }
+
+  var v=$("chainv");
+  if(!ranReactor){ v.className="verdict";
+    v.innerHTML="Run the reactor above first — the chain starts from whatever P you actually made."; }
+  else if(madeP!=="XeF4"){ v.className="verdict no";
+    v.innerHTML="<b>You made "+SPECIES[madeP].name+", not the paper's P.</b> The printed conditions are "+
+      "1 : 5 at 873 K and 7 bar. Set those and run the reactor again, or press <em>Use the paper's recipe</em>."; }
+  else if(chainStep===0){ v.className="verdict ok";
+    v.innerHTML="<b>P = XeF₄.</b> Now push it through the O₂F₂ step."; }
+  else if(chainStep===1){ v.className="verdict ok";
+    v.innerHTML="<b>Step 1 balances.</b> O₂F₂ is next: it hands over two fluorines and leaves as O₂."; }
+  else if(chainStep===2){ v.className="verdict ok";
+    v.innerHTML="<b>Q = XeF₆ — 4 F from XeF₄ plus 2 F from O₂F₂.</b> Xenon has gone from +4 to +6. "+
+      "One step left: complete hydrolysis."; }
+  else { v.className="verdict ok";
+    v.innerHTML="<b>R = XeO₃.</b> Every fluorine has left as HF and xenon is still +6 — hydrolysis "+
+      "substitutes, it does not reduce. P = XeF₄, Q = XeF₆, R = XeO₃.";
+    note("Chain resolved from balanced equations: <b>P = XeF₄</b>, <b>Q = XeF₆</b>, <b>R = XeO₃</b>."); }
+  $("chain-next").disabled = !ranReactor || madeP!=="XeF4" || chainStep>=3;
+}
+
+/* ======================================================================
+   FLUORINATING ASSAY  ->  tests statement (C)
+   ====================================================================== */
+var ASSAY = {
+  H2:{ ok:true, eq:"XeF<sub>6</sub> + 3H<sub>2</sub> ⟶ Xe + 6HF", after:0,
+       msg:"Every fluorine is handed to hydrogen and the xenon falls all the way to the free element." },
+  Hg:{ ok:true, eq:"XeF<sub>6</sub> + 3Hg ⟶ Xe + 3HgF<sub>2</sub>", after:0,
+       msg:"Mercury is fluorinated to mercuric fluoride; xenon(VI) is reduced to xenon(0)." },
+  SF4:{ ok:true, eq:"SF<sub>4</sub> + XeF<sub>6</sub> ⟶ SF<sub>6</sub> + XeF<sub>4</sub>", after:4,
+       msg:"Two fluorines move to sulfur. Xenon only drops from +6 to +4 here, but fluorine has still been transferred." },
+  Ar:{ ok:false, eq:"XeF<sub>6</sub> + Ar ⟶ no reaction", after:6,
+       msg:"Argon will not accept fluorine, so nothing happens. A control, not a counter-example." }
+};
+var assayRun = null;
+function drawOx(){
+  var before=6, after= assayRun ? ASSAY[assayRun].after : 6;
+  plot($("oxchart"),{
+    xLabel:"", yLabel:"oxidation state of Xe", ml:74, mr:34,
+    xMin:0, xMax:2, yMin:0, yMax:6.6,
+    xFmt:function(v){ return v<0.5?"before":(v>1.5?"after":""); },
+    bars:[
+      {x0:0.15,x1:0.75,y:before,col:"--s2",op:.75,label:"+"+before},
+      {x0:1.25,x1:1.85,y:after, col: after<before?"--s3":"--line-strong", op:.75, label:"+"+after}
+    ]
+  });
+}
+function runAssay(k){
+  assayRun=k;
+  var a=ASSAY[k], v=$("assayv");
+  v.className = "verdict " + (a.ok?"ok":"no");
+  v.innerHTML = "<b>"+a.eq+"</b><br>"+a.msg;
+  document.querySelectorAll("#assay button").forEach(function(b){
+    b.setAttribute("aria-pressed", b.dataset.s===k?"true":"false"); });
+  drawOx();
+  if(a.ok){
+    markTested("C");
+    note("Fluorinating assay: <b>XeF₆</b> transferred fluorine to <b>"+
+         (k==="H2"?"H₂":k==="Hg"?"Hg":"SF₄")+"</b> and the xenon oxidation state fell from "+
+         "<b>+6</b> to <b>+"+a.after+"</b>.");
+  }
+}
+
+/* ======================================================================
+   MOLECULE BENCH — real 3D coordinates, projected
+   ====================================================================== */
+var MOL="XeF4", spin=55, showLP=true;
+function norm(v){ var m=Math.sqrt(v[0]*v[0]+v[1]*v[1]+v[2]*v[2]); return [v[0]/m,v[1]/m,v[2]/m]; }
+function geomOf(key){
+  var b=[], l=[], i, a;
+  if(key==="XeF2"){
+    b=[[0,0,1],[0,0,-1]];
+    for(i=0;i<3;i++){ a=i*2*Math.PI/3; l.push([Math.cos(a),Math.sin(a),0]); }
+  } else if(key==="XeF4"){
+    b=[[1,0,0],[0,1,0],[-1,0,0],[0,-1,0]];
+    l=[[0,0,1],[0,0,-1]];
+  } else if(key==="XeF6"){
+    var u=norm([1,1,1]);
+    var base=[[1,0,0],[0,1,0],[0,0,1],[-1,0,0],[0,-1,0],[0,0,-1]];
+    b=base.map(function(v){
+      var dot=v[0]*u[0]+v[1]*u[1]+v[2]*u[2];
+      var k = dot>0.4 ? 0.30 : 0.0;          // push the capped face open
+      return norm([v[0]-k*u[0], v[1]-k*u[1], v[2]-k*u[2]]);
+    });
+    l=[u];
+  } else {                                    // XeO3, bonds at 115.35 deg from the lone pair
+    var th=115.35*Math.PI/180;
+    for(i=0;i<3;i++){ a=i*2*Math.PI/3;
+      b.push([Math.sin(th)*Math.cos(a), Math.sin(th)*Math.sin(a), Math.cos(th)]); }
+    l=[[0,0,1]];
+  }
+  return {bonds:b, lps:l};
+}
+function drawMol(){
+  var svg=$("molsvg"), s=SPECIES[MOL], g=geomOf(MOL);
+  while(svg.firstChild) svg.removeChild(svg.firstChild);
+  var W=660,H=430, ox=W/2, oy=H/2, RAD=150;
+  var ang=spin*Math.PI/180, tilt=-0.42;
+  function proj(v){
+    var x=v[0]*Math.cos(ang)-v[1]*Math.sin(ang);
+    var y=v[0]*Math.sin(ang)+v[1]*Math.cos(ang);
+    var z=v[2];
+    var yy=y*Math.cos(tilt)-z*Math.sin(tilt);
+    var zz=y*Math.sin(tilt)+z*Math.cos(tilt);
+    return {sx:ox+x*RAD, sy:oy-zz*RAD, depth:yy};
+  }
+  var items=[];
+  g.bonds.forEach(function(v,i){ var p=proj(v); items.push({t:"b",p:p,i:i}); });
+  if(showLP) g.lps.forEach(function(v,i){ var p=proj([v[0]*0.86,v[1]*0.86,v[2]*0.86]);
+    items.push({t:"l",p:p,i:i}); });
+  items.sort(function(a,b){ return a.p.depth-b.p.depth; });
+
+  function stick(p, col, w){
+    svg.appendChild(el("line",{x1:ox,y1:oy,x2:p.sx,y2:p.sy,stroke:css(col),
+      "stroke-width":w,"stroke-linecap":"round",opacity:p.depth<0?0.42:1}));
+  }
+  // back half
+  items.filter(function(o){ return o.p.depth<0; }).forEach(function(o){
+    if(o.t==="b") stick(o.p, "--line-strong", 7);
+  });
+  items.filter(function(o){ return o.p.depth<0; }).forEach(function(o){ paint(o); });
+
+  // central atom
+  svg.appendChild(el("circle",{cx:ox,cy:oy,r:40,fill:css("--s4"),stroke:css("--surface-1"),"stroke-width":3}));
+  var ct=el("text",{x:ox,y:oy+8,"text-anchor":"middle",fill:"#fff","font-size":24,"font-weight":700,
+    "font-family":"ui-sans-serif,system-ui,sans-serif"}); ct.textContent="Xe"; svg.appendChild(ct);
+
+  items.filter(function(o){ return o.p.depth>=0; }).forEach(function(o){
+    if(o.t==="b") stick(o.p, "--line-strong", 7);
+  });
+  items.filter(function(o){ return o.p.depth>=0; }).forEach(function(o){ paint(o); });
+
+  function paint(o){
+    var p=o.p, front=p.depth>=0, alpha=front?1:0.45;
+    if(o.t==="b"){
+      var r=front?27:22;
+      svg.appendChild(el("circle",{cx:p.sx,cy:p.sy,r:r,fill:css(s.lig==="F"?"--s3":"--s2"),
+        stroke:css("--surface-1"),"stroke-width":3,opacity:alpha}));
+      var t=el("text",{x:p.sx,y:p.sy+6,"text-anchor":"middle",fill:"#fff","font-size":front?18:15,
+        "font-weight":700,"font-family":"ui-sans-serif,system-ui,sans-serif",opacity:alpha});
+      t.textContent=s.lig; svg.appendChild(t);
+    } else {
+      var g2=el("g",{opacity:alpha*0.95});
+      g2.appendChild(el("ellipse",{cx:p.sx,cy:p.sy,rx:30,ry:19,fill:css("--s1"),opacity:.24,
+        transform:"rotate("+(Math.atan2(p.sy-oy,p.sx-ox)*180/Math.PI)+" "+p.sx+" "+p.sy+")"}));
+      [-8,8].forEach(function(d){
+        var a2=Math.atan2(p.sy-oy,p.sx-ox)+Math.PI/2;
+        g2.appendChild(el("circle",{cx:p.sx+Math.cos(a2)*d,cy:p.sy+Math.sin(a2)*d,r:5,fill:css("--s1")}));
+      });
+      svg.appendChild(g2);
+    }
+  }
+
+  var cap=el("text",{x:W/2,y:H-8,"text-anchor":"middle",fill:css("--text-muted"),"font-size":12.5});
+  cap.textContent = s.name+" · "+s.geo+(showLP?"":" · lone pairs hidden");
+  svg.appendChild(cap);
+}
+function renderBench(){
+  var s=SPECIES[MOL];
+  $("ecount").innerHTML =
+    '<div class="l">valence electrons on Xe</div><div class="r">8</div>'+
+    '<div class="l">electrons used in Xe'+(s.dbl?"=":"–")+s.lig+' bonds</div><div class="r">'+
+      (s.dbl?"2 × "+s.n+" = "+(2*s.n):s.n)+'</div>'+
+    '<div class="l">electrons left over</div><div class="r">'+(8-(s.dbl?2*s.n:s.n))+'</div>'+
+    '<div class="l tot">lone pairs = left over ÷ 2</div><div class="r tot">'+s.lp+'</div>';
+  $("geoeq").innerHTML =
+    '<span class="t">geometry from the counts</span>'+
+    'steric number = bond pairs + lone pairs = <b>'+s.bp+'</b> + <b>'+s.lp+'</b> = <span class="res">'+s.sn+'</span><br>'+
+    'electron geometry <b>'+s.eg+'</b> → molecular shape <span class="res">'+s.geo+'</span>';
+  $("ro-sn").textContent=s.sn; $("ro-bp2").textContent=s.bp;
+  $("ro-lp2").textContent=s.lp; $("ro-ang").textContent=s.angle;
+
+  var v=$("geov");
+  if(MOL==="XeF4"){
+    v.className="verdict ok";
+    v.innerHTML="<b>XeF₄ has exactly two lone pairs.</b> They sit on opposite sides of the square, "+
+      "which is why the four fluorines end up planar. That is statement (A), and you just counted it.";
+    markTested("A");
+    note("Bench count on <b>XeF₄</b>: 8 − 4 = 4 electrons left = <b>2 lone pairs</b>, square planar.");
+  } else if(MOL==="XeF6"){
+    v.className="verdict no";
+    v.innerHTML="<b>Steric number 7 — that cannot be a perfect octahedron.</b> Six bond pairs plus one "+
+      "lone pair need seven directions, so the lone pair caps a face and pushes those three fluorines "+
+      "apart. Turn the model and watch the capped face open. Statement (B) fails here.";
+    markTested("B");
+    note("Bench count on <b>XeF₆</b>: 8 − 6 = 2 electrons left = <b>1 lone pair</b>, steric number <b>7</b> — distorted, not perfect, octahedral.");
+  } else if(MOL==="XeO3"){
+    v.className="verdict ok";
+    v.innerHTML="<b>Three bonds, one lone pair — a pyramid.</b> Steric number 4 gives a tetrahedral "+
+      "electron geometry; with one vertex occupied by the lone pair the atoms you can see form a "+
+      "trigonal pyramid, O–Xe–O squeezed to about 103°. That is statement (D).";
+    markTested("D");
+    note("Bench count on <b>XeO₃</b>: 8 − 6 = 2 electrons left = <b>1 lone pair</b>, trigonal pyramidal, angle ≈ <b>103°</b>.");
+  } else {
+    v.className="verdict";
+    v.innerHTML="<b>XeF₂ is not in the question</b>, but it is the third member of the family: three "+
+      "lone pairs in the equatorial plane force the two fluorines to opposite poles, so it is linear.";
+  }
+  drawGeoTable();
+  drawMol();
+}
+function drawGeoTable(){
+  var rows=Object.keys(SPECIES).map(function(k){
+    var s=SPECIES[k];
+    return "<tr"+(k===MOL?" class='win'":"")+"><td><b>"+s.name+"</b></td><td class='num'>"+s.bp+
+      "</td><td class='num'>"+s.lp+"</td><td class='num'>"+s.sn+"</td><td class='l'>"+s.eg+
+      "</td><td class='l'>"+s.geo+"</td></tr>";
+  }).join("");
+  $("geotbl").innerHTML="<thead><tr><th>Species</th><th>bp</th><th>lp</th><th>SN</th>"+
+    "<th class='l'>electron geometry</th><th class='l'>molecular shape</th></tr></thead><tbody>"+rows+"</tbody>";
+}
+
+/* ======================================================================
+   OPTIONS + ANSWER
+   ====================================================================== */
+var OPT = {
+  A:{ label:"P has two lone pairs on the central atom", verdict:"yes",
+      shortq:"P has two lone pairs of electrons on the central atom. Correct?",
+      why:"P is XeF₄. Xe brings 8 valence electrons, four go into Xe–F bonds, and the remaining four are two lone pairs." },
+  B:{ label:"Q has a perfect octahedral geometry", verdict:"no",
+      shortq:"Q has a perfect octahedral geometry. Correct?",
+      why:"Q is XeF₆, with six bond pairs <em>and</em> a lone pair — steric number 7. The lone pair caps a face and distorts the octahedron." },
+  C:{ label:"Q can act as a fluorinating agent", verdict:"yes",
+      shortq:"Q can act as a fluorinating agent. Correct?",
+      why:"XeF₆ hands fluorine to hydrogen, mercury and SF₄ and is reduced doing it — that is what a fluorinating agent does." },
+  D:{ label:"R is trigonal pyramidal", verdict:"yes",
+      shortq:"The molecular structure of R is trigonal pyramidal. Correct?",
+      why:"R is XeO₃: three bond pairs and one lone pair, steric number 4, so the atoms form a pyramid like NH₃." }
+};
+var ANSWER = { text:"(A), (C), (D)",
+  sub:"P = XeF<sub>4</sub> · Q = XeF<sub>6</sub> · R = XeO<sub>3</sub>",
+  intro:"Here is the derivation behind what you measured." };
+var LOCKED_SUB = "Test all four statements on the bench to unlock.";
+
+/* ======================================================================
+   WIRING
+   ====================================================================== */
+function afterCond(){ reactProg=0; ranReactor=false; madeP=null; chainStep=0; renderReactor(); renderChain(); }
+makeControl({key:"ratio", slider:"ratio", input:"ratio-n", hint:"ratio-h", valEl:null,
+  lo:LIM.ratio[0], hi:LIM.ratio[1], step:0.5, dp:2, unit:"", log:true,
+  onset:function(){ $("ratiov").textContent=ST.ratio.toFixed(2)+" : 1"; afterCond(); }});
+makeControl({key:"T", slider:"temp", input:"temp-n", hint:"temp-h", valEl:"tempv",
+  lo:LIM.T[0], hi:LIM.T[1], step:25, dp:0, unit:"K", onset:afterCond});
+makeControl({key:"p", slider:"pres", input:"pres-n", hint:"pres-h", valEl:"presv",
+  lo:LIM.p[0], hi:LIM.p[1], step:5, dp:1, unit:"bar", log:true, onset:afterCond});
+$("ratiov").textContent = ST.ratio.toFixed(2)+" : 1";
+
+var running=false;
+$("pb-run").addEventListener("click", function(){
+  var pr=productOf();
+  if(!pr.key){ $("prodwhy").textContent=pr.why; return; }
+  running=true; reactProg=0;
+});
+$("pb-reset").addEventListener("click", function(){ running=false; afterCond(); });
+$("pb-paper").addEventListener("click", function(){
+  ST.ratio=5; ST.T=873; ST.p=7;
+  $("ratio-n").value="5.00"; $("temp-n").value="873"; $("pres-n").value="7.0";
+  $("ratiov").textContent="5.00 : 1"; $("tempv").textContent="873 K"; $("presv").textContent="7.0 bar";
+  $("ratio").value=Math.round(1000*Math.log(5/LIM.ratio[0])/Math.log(LIM.ratio[1]/LIM.ratio[0]));
+  $("temp").value=Math.round((873-LIM.T[0])/(LIM.T[1]-LIM.T[0])*1000);
+  $("pres").value=Math.round(1000*Math.log(7/LIM.p[0])/Math.log(LIM.p[1]/LIM.p[0]));
+  afterCond(); running=true; reactProg=0;
+});
+$("chain-next").addEventListener("click", function(){ if(chainStep<3){ chainStep++; renderChain(); } });
+$("chain-reset").addEventListener("click", function(){ chainStep=0; renderChain(); });
+$("assay").addEventListener("click", function(e){
+  var b=e.target.closest("button"); if(!b) return; runAssay(b.dataset.s); });
+$("molsel").addEventListener("click", function(e){
+  var b=e.target.closest("button"); if(!b) return;
+  this.querySelectorAll("button").forEach(function(o){ o.setAttribute("aria-pressed","false"); });
+  b.setAttribute("aria-pressed","true"); MOL=b.dataset.m; renderBench();
+});
+$("lptog").addEventListener("click", function(e){
+  var b=e.target.closest("button"); if(!b) return;
+  this.querySelectorAll("button").forEach(function(o){ o.setAttribute("aria-pressed","false"); });
+  b.setAttribute("aria-pressed","true"); showLP=b.dataset.lp==="1"; drawMol();
+});
+$("spin").addEventListener("input", function(){ spin=+this.value; $("spinv").textContent=spin+"°"; drawMol(); });
+
+/* drag to rotate */
+(function(){
+  var svg=$("molsvg"), down=false, lastX=0;
+  function start(x){ down=true; lastX=x; }
+  function move(x){ if(!down) return; spin=(spin+(x-lastX)*0.6+360)%360; lastX=x;
+    $("spin").value=Math.round(spin); $("spinv").textContent=Math.round(spin)+"°"; drawMol(); }
+  svg.addEventListener("mousedown",function(e){ start(e.clientX); e.preventDefault(); });
+  window.addEventListener("mousemove",function(e){ move(e.clientX); });
+  window.addEventListener("mouseup",function(){ down=false; });
+  svg.addEventListener("touchstart",function(e){ start(e.touches[0].clientX); },{passive:true});
+  svg.addEventListener("touchmove",function(e){ move(e.touches[0].clientX); },{passive:true});
+  svg.addEventListener("touchend",function(){ down=false; });
+})();
+
+wireCommon(function(){ drawMap(); drawMol(); drawOx(); });
+
+/* animation loop */
+function tick(ts){
+  if(running && reactProg<1){
+    reactProg=Math.min(1, reactProg+0.011);
+    if(reactProg>=1){
+      running=false; ranReactor=true;
+      var pr=productOf(); madeP=pr.key;
+      note("Reactor at F₂ : Xe = <b>"+ST.ratio.toFixed(2)+"</b>, <b>"+ST.T.toFixed(0)+" K</b>, <b>"+
+           ST.p.toFixed(1)+" bar</b> made <b>"+SPECIES[madeP].name+"</b>.");
+      renderChain();
+    }
+  }
+  drawReactor(ts);
+  requestAnimationFrame(tick);
+}
+
+renderReactor(); renderChain(); renderBench(); drawOx();
+renderPredict(); drawMatrix(); updateGate();
+requestAnimationFrame(tick);
+
+})();
+</script>
+</body>
+</html>

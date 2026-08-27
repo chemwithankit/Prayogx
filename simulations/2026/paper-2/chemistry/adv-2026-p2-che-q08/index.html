@@ -1,0 +1,1311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ADV-2026-P2-CHE-Q08 · Diazonium and Azo Dye Virtual Lab</title>
+<meta name="description" content="Interactive organic chemistry lab for JEE Advanced 2026 Paper 2 Chemistry Q8: walk aniline to a diazonium salt and cumene to salicylic acid, couple them to an azo dye, and test each printed statement on the bench.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232a78d6'/%3E%3Cpath d='M12.5 6.5h7M13.6 6.5v7.2L7.9 24.1a1.5 1.5 0 0 0 1.3 2.3h13.6a1.5 1.5 0 0 0 1.3-2.3l-5.7-10.4V6.5' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M10.6 20.6h10.8' stroke='white' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E">
+<meta name="sim-id" content="ADV-2026-P2-CHE-Q08">
+<style>
+:root{
+  color-scheme: light;
+  --surface-0:#f4f4f1; --surface-1:#fcfcfb; --surface-2:#ececea;
+  --line:#d9d9d4; --line-strong:#bcbcb5;
+  --text-primary:#0b0b0b; --text-secondary:#52514e; --text-muted:#77766f;
+  --s1:#2a78d6; --s2:#eb6834; --s3:#1baf7a; --s4:#4a3aa7;
+  --good:#00743f; --bad:#c0392b; --accent:#2a78d6;
+  --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+  --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --serif:ui-serif,Georgia,"Times New Roman",serif;
+  --radius:10px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  color-scheme: dark;
+  --surface-0:#111110; --surface-1:#1a1a19; --surface-2:#232322;
+  --line:#34342f; --line-strong:#4a4a44;
+  --text-primary:#ffffff; --text-secondary:#c3c2b7; --text-muted:#95948b;
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#9085e9;
+  --good:#3fae7a; --bad:#e66767; --accent:#3987e5;
+}}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --surface-0:#111110; --surface-1:#1a1a19; --surface-2:#232322;
+  --line:#34342f; --line-strong:#4a4a44;
+  --text-primary:#ffffff; --text-secondary:#c3c2b7; --text-muted:#95948b;
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#9085e9;
+  --good:#3fae7a; --bad:#e66767; --accent:#3987e5;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--surface-0);color:var(--text-primary);font-family:var(--sans);
+  font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px 80px}
+
+header.top{border-bottom:1px solid var(--line);background:var(--surface-1)}
+.top-inner{max-width:1120px;margin:0 auto;padding:22px 20px 18px;position:relative;
+  display:flex;flex-wrap:wrap;gap:16px;align-items:flex-start;justify-content:space-between}
+.simid{font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--text-muted)}
+h1{font-size:23px;line-height:1.25;margin:6px 0 10px;font-weight:640;max-width:640px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-size:11.5px;padding:3px 9px;border:1px solid var(--line-strong);border-radius:999px;
+  color:var(--text-secondary);background:var(--surface-2);white-space:nowrap}
+.chip.k{border-color:var(--accent);color:var(--accent);background:transparent}
+.answerbox{border:1px solid var(--line-strong);border-radius:var(--radius);background:var(--surface-2);
+  padding:12px 16px;min-width:210px}
+.answerbox .lbl{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted)}
+.answerbox .val{font-family:var(--mono);font-size:25px;font-weight:600;color:var(--good);line-height:1.22}
+.answerbox .sub{font-size:12px;color:var(--text-secondary)}
+.answerbox.locked .val{color:var(--text-muted);font-size:17px;letter-spacing:.04em}
+.answerbox .rv{margin-top:6px;font-size:11px;background:none;border:none;padding:0;color:var(--accent);
+  cursor:pointer;text-decoration:underline;font-family:var(--sans)}
+.themebtn{position:absolute;top:14px;right:16px;border:1px solid var(--line-strong);background:var(--surface-2);
+  color:var(--text-secondary);border-radius:8px;padding:4px 9px;font-size:12px;cursor:pointer}
+.brandbar{display:flex;align-items:center;gap:8px;margin-bottom:9px;text-decoration:none}
+.brandbar .pxmark{width:21px;height:21px;flex:none;display:block}
+.brandbar .wm{font-size:13px;font-weight:800;letter-spacing:.17em;color:var(--text-secondary);line-height:1}
+.brandbar .wm i{font-style:normal;color:var(--accent)}
+
+nav.jump{position:sticky;top:0;z-index:20;background:var(--surface-0);border-bottom:1px solid var(--line);
+  padding:8px 0;margin-bottom:26px}
+nav.jump ul{max-width:1120px;margin:0 auto;padding:0 20px;list-style:none;display:flex;gap:4px;overflow-x:auto}
+nav.jump a{display:block;padding:5px 11px;border-radius:7px;font-size:13px;text-decoration:none;
+  color:var(--text-secondary);white-space:nowrap}
+nav.jump a:hover{background:var(--surface-2);color:var(--text-primary)}
+
+section{margin:0 0 42px;scroll-margin-top:56px}
+h2{font-size:17px;font-weight:640;margin:0 0 4px;display:flex;align-items:baseline;gap:9px}
+h2 .n{font-family:var(--mono);font-size:12px;color:var(--text-muted);font-weight:400}
+.lede{color:var(--text-secondary);font-size:13.5px;margin:0 0 16px;max-width:76ch}
+.card,.panel{background:var(--surface-1);border:1px solid var(--line);border-radius:var(--radius);padding:18px}
+.panel h3{margin:0 0 12px;font-size:13px;letter-spacing:.05em;text-transform:uppercase;
+  color:var(--text-muted);font-weight:600}
+.lab{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:16px;align-items:start}
+.lab>*{min-width:0}
+@media(max-width:900px){.lab{grid-template-columns:1fr !important}}
+canvas{display:block;width:100%;height:auto;border-radius:8px;background:var(--surface-2)}
+
+.qtext{font-family:var(--serif);font-size:16px;line-height:1.7}
+.opts{list-style:none;padding:0;margin:16px 0 0;display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr));gap:10px}
+.opts li{border:1px solid var(--line);border-radius:10px;padding:10px;background:var(--surface-1);
+  display:flex;flex-direction:column;gap:6px}
+.opts li .hd{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--text-muted);font-family:var(--mono)}
+.opts li .mark{margin-left:auto;font-family:var(--sans);font-size:11.5px;font-weight:600}
+.opts li .nm{font-size:11.5px;color:var(--text-secondary)}
+.opts li.correct{border-color:var(--good);background:color-mix(in srgb,var(--good) 11%,transparent)}
+.opts li.correct .mark{color:var(--good)}
+.opts li.wrong{border-color:var(--bad)}
+.opts li.wrong .mark{color:var(--bad)}
+svg.optthumb{display:block;width:100%;height:auto;background:var(--surface-2);border-radius:7px}
+
+.ctrl{margin:14px 0}
+.ctrl label{display:flex;flex-wrap:wrap;gap:4px;justify-content:space-between;align-items:baseline;
+  font-size:13px;margin-bottom:5px}
+.ctrl label span{min-width:0}
+.ctrl label .v{font-family:var(--mono);font-size:13px;color:var(--text-primary)}
+input[type=range]{width:100%;min-width:0;accent-color:var(--accent)}
+.numrow{display:flex;gap:6px;align-items:center;margin-top:6px}
+.numrow input.numin{flex:1;min-width:0;padding:7px 9px;border-radius:7px;border:1px solid var(--line-strong);
+  background:var(--surface-0);color:var(--text-primary);font-family:var(--mono);font-size:13px}
+.numrow input.numin:focus{outline:2px solid var(--accent);outline-offset:-1px}
+.numrow input.numin.bad{border-color:var(--bad);background:color-mix(in srgb,var(--bad) 9%,transparent)}
+.numrow button.step{flex:none;width:40px;height:34px;border-radius:8px;border:1px solid var(--line-strong);
+  background:var(--surface-2);color:var(--text-primary);font-size:18px;line-height:1;cursor:pointer;
+  font-family:var(--mono);touch-action:manipulation}
+.numrow button.step:hover{border-color:var(--accent);color:var(--accent)}
+.numrow .unit{flex:none;font-size:12px;color:var(--text-muted);min-width:52px}
+.hint{font-size:11.5px;color:var(--text-muted);margin-top:4px;min-height:1.15em}
+.hint.bad{color:var(--bad);font-weight:600}
+.segbtns{display:flex;gap:6px;flex-wrap:wrap}
+.segbtns button{flex:1;min-width:84px;padding:8px 6px;border-radius:8px;border:1px solid var(--line-strong);
+  background:var(--surface-2);color:var(--text-secondary);font-size:13px;cursor:pointer;font-family:var(--sans)}
+.segbtns button[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:650}
+button.act{padding:8px 14px;border-radius:8px;border:1px solid var(--line-strong);background:var(--surface-2);
+  color:var(--text-primary);font-size:13px;cursor:pointer;font-family:var(--sans)}
+button.act:hover{border-color:var(--accent);color:var(--accent)}
+button.act.primary{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+button.act:disabled{opacity:.42;cursor:not-allowed}
+.btnrow{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+
+.playback{display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin-top:12px;
+  padding:9px 10px;border:1px solid var(--line);border-radius:9px;background:var(--surface-2)}
+.playback .lb{font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-muted);margin-right:2px}
+.playback button{padding:6px 12px;border-radius:7px;border:1px solid var(--line-strong);
+  background:var(--surface-1);color:var(--text-secondary);font-size:12.5px;cursor:pointer;font-family:var(--mono)}
+.playback button[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:700}
+.playback button:hover{border-color:var(--accent)}
+
+.readouts{display:grid;grid-template-columns:repeat(auto-fit,minmax(118px,1fr));gap:8px}
+.ro{border:1px solid var(--line);border-radius:8px;padding:8px 10px;background:var(--surface-2);position:relative}
+.ro .k{font-size:11px;letter-spacing:.03em;font-weight:600;color:var(--text-muted);white-space:nowrap}
+.ro .v{font-family:var(--mono);font-size:16px;font-weight:600;line-height:1.35}
+.ro .u{font-size:10.5px;color:var(--text-muted)}
+.delta{position:absolute;top:5px;right:7px;font-family:var(--mono);font-size:10.5px;font-weight:700;
+  padding:1px 5px;border-radius:5px;opacity:0;transition:opacity .55s ease-out;pointer-events:none}
+.delta.up{color:var(--good);background:color-mix(in srgb,var(--good) 16%,transparent)}
+.delta.down{color:var(--s2);background:color-mix(in srgb,var(--s2) 16%,transparent)}
+.delta.show{opacity:1;transition:opacity .1s}
+
+.eqlive{font-family:var(--serif);font-size:15px;background:var(--surface-2);border:1px solid var(--line);
+  border-radius:8px;padding:11px 13px;margin-top:12px;line-height:2.1}
+.eqlive .t{font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-muted);
+  font-family:var(--sans);display:block;margin-bottom:2px}
+.eqlive b{font-family:var(--mono);font-weight:700}
+.eqlive .chg{background:color-mix(in srgb,var(--accent) 26%,transparent);border-radius:4px;padding:0 3px}
+.eqlive .res{color:var(--good);font-weight:700;font-family:var(--mono)}
+
+.chartwrap{position:relative;background:var(--surface-1);border:1px solid var(--line);
+  border-radius:var(--radius);padding:16px}
+svg.chart{display:block;width:100%;height:auto;overflow:visible}
+.tip{position:absolute;pointer-events:none;background:var(--surface-1);border:1px solid var(--line-strong);
+  border-radius:8px;padding:8px 11px;font-size:12px;box-shadow:0 4px 14px rgba(0,0,0,.13);opacity:0;
+  transition:opacity .1s;z-index:5;min-width:150px}
+.tip .t{font-family:var(--mono);font-size:11px;color:var(--text-muted);margin-bottom:4px}
+.tip .r{display:flex;align-items:center;gap:7px;white-space:nowrap}
+.tip .sw{width:9px;height:9px;border-radius:2px;flex:none}
+.tip .rv{margin-left:auto;font-family:var(--mono);font-weight:600}
+.legend{display:flex;flex-wrap:wrap;gap:14px;margin-top:10px;font-size:12.5px;color:var(--text-secondary)}
+.legend span{display:flex;align-items:center;gap:6px}
+.legend i{width:14px;height:3px;border-radius:2px;display:block}
+.legend i.dot{width:9px;height:9px;border-radius:50%}
+
+.predict{border:1px solid var(--accent);border-radius:9px;padding:12px 14px;margin-top:14px;
+  background:color-mix(in srgb,var(--accent) 7%,transparent)}
+.predict .q{font-size:13px;font-weight:600;margin-bottom:8px}
+.predict .row{display:flex;gap:6px;flex-wrap:wrap}
+.predict button{flex:1;min-width:96px;padding:8px;border-radius:8px;border:1px solid var(--line-strong);
+  background:var(--surface-1);color:var(--text-primary);font-size:13px;cursor:pointer}
+.predict button[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+.predict .fb{font-size:12.5px;margin-top:9px;min-height:1.2em}
+.predict .fb.ok{color:var(--good);font-weight:600}
+.predict .fb.no{color:var(--bad);font-weight:600}
+
+table.data{border-collapse:collapse;font-size:12.5px;width:100%}
+table.data th,table.data td{border:1px solid var(--line-strong);padding:6px 9px;text-align:center}
+table.data th{background:var(--surface-2);font-weight:600;font-size:11.5px;color:var(--text-secondary)}
+table.data td.l{text-align:left}
+table.data td.num{font-family:var(--mono)}
+tr.win td{background:color-mix(in srgb,var(--good) 12%,transparent);font-weight:600}
+.scrollx{overflow-x:auto}
+.yes{color:var(--good);font-weight:700} .no{color:var(--bad);font-weight:700}
+.empty{color:var(--text-muted);font-size:12.5px;padding:10px 0}
+
+.nb{display:grid;gap:7px}
+.nb .obs{font-size:12.5px;padding:8px 11px;border-radius:8px;background:var(--surface-2);
+  border-left:3px solid var(--s1);color:var(--text-secondary);animation:nbin .35s ease-out}
+.nb .obs b{color:var(--text-primary);font-family:var(--mono)}
+@keyframes nbin{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+.insight{border:1px solid var(--good);border-radius:9px;padding:12px 14px;margin-top:12px;
+  background:color-mix(in srgb,var(--good) 10%,transparent);font-size:13.5px;animation:nbin .4s ease-out}
+.insight b{color:var(--good)}
+
+.verdict{border-radius:9px;padding:11px 14px;font-size:13.5px;margin-top:12px;border:1px solid var(--line-strong);
+  background:var(--surface-2)}
+.verdict.ok{border-color:var(--good);background:color-mix(in srgb,var(--good) 10%,transparent)}
+.verdict.no{border-color:var(--bad);background:color-mix(in srgb,var(--bad) 9%,transparent)}
+.verdict b{font-size:14px}
+
+.gate{border:1px dashed var(--line-strong);border-radius:var(--radius);padding:24px 20px;text-align:center;
+  background:var(--surface-1)}
+.gate h4{margin:0 0 6px;font-size:15px}
+.gate p{margin:0 0 12px;font-size:13px;color:var(--text-secondary)}
+.gate .cnt{font-family:var(--mono);color:var(--accent);font-weight:700}
+.reveal{animation:nbin .45s ease-out}
+
+ol.steps{list-style:none;counter-reset:s;padding:0;margin:0;display:grid;gap:10px}
+ol.steps li{min-width:0;counter-increment:s;border:1px solid var(--line);border-radius:var(--radius);
+  background:var(--surface-1);padding:14px 16px 14px 52px;position:relative}
+ol.steps li::before{content:counter(s);position:absolute;left:15px;top:14px;width:23px;height:23px;
+  border-radius:50%;background:var(--accent);color:#fff;font-size:12px;font-weight:700;
+  display:grid;place-items:center;font-family:var(--mono)}
+ol.steps h4{margin:0 0 6px;font-size:14px;font-weight:640}
+ol.steps p{margin:0 0 6px;font-size:13.5px;color:var(--text-secondary)}
+.eq{min-width:0;font-family:var(--serif);font-size:15px;background:var(--surface-2);border-radius:7px;
+  padding:9px 13px;margin:8px 0;overflow-x:auto}
+.eq .hl{color:var(--good);font-weight:700}
+sub{font-size:.72em} sup{font-size:.72em}
+.verify{border:1px solid var(--good);border-radius:var(--radius);
+  background:color-mix(in srgb,var(--good) 8%,transparent);padding:14px 16px;font-size:13.5px}
+.verify h4{margin:0 0 6px;font-size:13.5px;color:var(--good)}
+.verify ul{margin:6px 0 0;padding-left:18px;color:var(--text-secondary)}
+.meta-tbl{width:100%;border-collapse:collapse;font-size:13.5px}
+.meta-tbl td{padding:6px 0;border-bottom:1px solid var(--line);vertical-align:top}
+.meta-tbl td:first-child{color:var(--text-muted);width:160px;font-size:12.5px;padding-right:14px}
+footer{border-top:1px solid var(--line);margin-top:40px;padding-top:16px;font-size:12px;color:var(--text-muted)}
+
+.rxwrap{position:relative;background:var(--surface-1);border:1px solid var(--line);
+  border-radius:var(--radius);padding:14px}
+svg.struct{display:block;width:100%;height:auto;overflow:visible}
+.route{display:grid;gap:8px;margin-top:4px}
+.rstep{border:1px solid var(--line);border-radius:10px;background:var(--surface-1);padding:11px 13px;
+  opacity:.42;transition:opacity .25s,border-color .25s}
+.rstep.live{opacity:1;border-color:var(--accent)}
+.rstep.done{opacity:1;border-color:var(--good);background:color-mix(in srgb,var(--good) 6%,transparent)}
+.rstep .rg{font-size:11.5px;color:var(--text-muted);font-family:var(--mono)}
+.rstep .nm{font-size:13.5px;font-weight:600;margin-top:3px}
+.rstep .tag{font-family:var(--mono);color:var(--accent);font-weight:700}
+.rstep .note{font-size:12px;color:var(--text-secondary);margin-top:4px}
+.tests{display:grid;gap:7px;margin-top:10px}
+.tests button{text-align:left;padding:9px 12px;border-radius:8px;border:1px solid var(--line-strong);
+  background:var(--surface-2);color:var(--text-primary);font-size:13px;cursor:pointer;font-family:var(--sans)}
+.tests button:hover{border-color:var(--accent)}
+.tests button[aria-pressed=true]{border-color:var(--accent);
+  background:color-mix(in srgb,var(--accent) 12%,transparent)}
+.swatch{height:64px;border-radius:9px;border:1px solid var(--line-strong);margin-top:10px;
+  display:grid;place-items:center;font-size:12.5px;font-weight:600;transition:background .4s}
+.nitroct{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+.nitroct span{font-family:var(--mono);font-size:11.5px;border:1px solid var(--line);border-radius:6px;
+  padding:4px 8px;background:var(--surface-2)}
+.nitroct span.hit{border-color:var(--s2);color:var(--s2);font-weight:700}
+.spec{position:relative;height:96px;border:1px solid var(--line-strong);border-radius:9px;margin-top:10px;
+  background:linear-gradient(90deg,#7b2ea8,#2b4fd6,#1a9e7a,#d8cc22,#e07a1c,#c0392b);overflow:hidden}
+.spec .band{position:absolute;top:0;bottom:0;background:rgba(0,0,0,.72);
+  border-left:2px solid #fff;border-right:2px solid #fff;transition:left .4s,width .4s}
+.spec .cap{position:absolute;left:0;right:0;bottom:4px;text-align:center;font-size:11px;
+  color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.9);font-family:var(--mono)}
+
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-inner">
+    <div>
+      <div class="brandbar"><svg class="pxmark" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><rect width="32" height="32" rx="8" fill="var(--accent)"/><path d="M12.5 6.5h7M13.6 6.5v7.2L7.9 24.1a1.5 1.5 0 0 0 1.3 2.3h13.6a1.5 1.5 0 0 0 1.3-2.3l-5.7-10.4V6.5" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.6 20.6h10.8" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg><span class="wm">PRAYOG<i>X</i></span></div>
+      <div class="simid">ADV-2026-P2-CHE-Q08</div>
+      <h1>Two routes, one dye: walk aniline to the diazonium salt and cumene to salicylic acid, then couple them</h1>
+      <div class="chips">
+        <span class="chip">JEE Advanced 2026</span>
+        <span class="chip">Paper 2</span>
+        <span class="chip">Chemistry</span>
+        <span class="chip">Q.8 · Section 2</span>
+        <span class="chip k">Amines &amp; diazonium salts</span>
+        <span class="chip k">Azo coupling</span>
+      </div>
+    </div>
+    <div class="answerbox locked" id="answerbox">
+      <div class="lbl">Answer</div>
+      <div class="val" id="ansval">Run the experiment</div>
+      <div class="sub" id="anssub">Walk both routes and run the benches to unlock.</div>
+      <button class="rv" id="revealnow" type="button">Reveal anyway</button>
+    </div>
+    <button class="themebtn" id="themebtn" type="button">◐ theme</button>
+  </div>
+</header>
+
+<nav class="jump">
+  <ul>
+    <li><a href="#question">Question</a></li>
+    <li><a href="#route1">Route 1 → Q</a></li>
+    <li><a href="#route2">Route 2 → S</a></li>
+    <li><a href="#couple">The coupling</a></li>
+    <li><a href="#verdict">Verdict on A–D</a></li>
+    <li><a href="#solution">Step-by-step solution</a></li>
+    <li><a href="#concepts">Concepts &amp; classification</a></li>
+  </ul>
+</nav>
+
+<div class="wrap">
+
+
+<!-- 01 QUESTION -->
+<section id="question">
+  <h2><span class="n">01</span>Original question
+      <span style="font-weight:400;font-size:12.5px;color:var(--text-muted)">— verbatim</span></h2>
+  <div class="card">
+    <div class="qtext">In the following reaction sequence, <strong>P</strong>, <strong>Q</strong>,
+      <strong>S</strong> and <strong>T</strong> are the major products.</div>
+    <div class="rxwrap" style="margin-top:12px">
+      <svg id="scheme" class="struct" viewBox="0 0 900 300" role="img"
+           aria-label="Aniline to P to Q, and cumene to S, with S and Q coupling to T"></svg>
+    </div>
+    <div class="qtext" style="margin-top:12px">The correct statement(s) about <strong>P</strong>,
+      <strong>Q</strong>, <strong>S</strong> and <strong>T</strong> is(are)</div>
+    <ul class="opts" id="opts">
+      <li data-k="A"><div class="hd">(A)<span class="mark"></span></div>
+        <div class="nm"><b>Q</b> on treatment with ethanol generates an aromatic aldehyde.</div></li>
+      <li data-k="B"><div class="hd">(B)<span class="mark"></span></div>
+        <div class="nm"><b>S</b> gives positive phthalein dye test.</div></li>
+      <li data-k="C"><div class="hd">(C)<span class="mark"></span></div>
+        <div class="nm"><b>P</b> is a dinitro compound.</div></li>
+      <li data-k="D"><div class="hd">(D)<span class="mark"></span></div>
+        <div class="nm"><b>T</b> is a coloured compound.</div></li>
+    </ul>
+    <p style="font-size:12.5px;color:var(--text-muted);margin:12px 0 0">
+      Multiple options may be correct (+4 / partial / −1). Walk both routes first — three of the four
+      statements are decided the moment you know what P, Q, S and T actually are.
+    </p>
+  </div>
+</section>
+
+<!-- 02 ROUTE 1 -->
+<section id="route1">
+  <h2><span class="n">02</span>Route 1 — aniline to the diazonium salt</h2>
+  <p class="lede">
+    Four steps, each one there for a reason. Watch what the acetyl group does to the nitration: it is
+    the whole reason P comes out with one nitro group and not two.
+  </p>
+  <div class="lab">
+    <div class="panel">
+      <h3>Flask</h3>
+      <div class="rxwrap">
+        <svg id="r1svg" class="struct" viewBox="0 0 560 330" role="img"
+             aria-label="Structure of the current compound on route 1"></svg>
+      </div>
+      <div class="btnrow">
+        <button class="act primary" id="r1next" type="button">Run the next step</button>
+        <button class="act" id="r1back" type="button">← Step back</button>
+        <button class="act" id="r1reset" type="button">↺ Start again</button>
+      </div>
+      <div class="readouts" style="margin-top:12px">
+        <div class="ro"><div class="k">compound</div><div class="v" id="r1-nm" style="font-size:13px">aniline</div><div class="u">in the flask</div></div>
+        <div class="ro"><div class="k">formula</div><div class="v" id="r1-f" style="font-size:13px">—</div><div class="u">molecular</div></div>
+        <div class="ro"><div class="k">nitro groups</div><div class="v" id="r1-no2">0</div><div class="u">−NO₂ on the ring</div></div>
+        <div class="ro"><div class="k">ring activation</div><div class="v" id="r1-act" style="font-size:13px">—</div><div class="u">towards EAS</div></div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h3>Steps</h3>
+      <div class="route" id="r1route"></div>
+      <div class="verdict" id="r1v"></div>
+
+      <h3 style="margin-top:16px">Why acetylate at all?</h3>
+      <p style="font-size:13px;color:var(--text-secondary);margin:0 0 6px">
+        Try the nitration with and without the acetyl protecting group and count what comes out.</p>
+      <div class="segbtns" id="protsel">
+        <button type="button" data-p="1" aria-pressed="true">With (CH₃CO)₂O first</button>
+        <button type="button" data-p="0">Straight to HNO₃ / H₂SO₄</button>
+      </div>
+      <div class="nitroct" id="nitroct"></div>
+      <div class="verdict" id="protv" style="margin-top:10px"></div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 ROUTE 2 -->
+<section id="route2">
+  <h2><span class="n">03</span>Route 2 — cumene to salicylic acid</h2>
+  <p class="lede">
+    The cumene process and then Kolbe–Schmitt. The product S is the one the phthalein test is asked
+    about, so look carefully at where its ring positions are free.
+  </p>
+  <div class="lab">
+    <div class="panel">
+      <h3>Flask</h3>
+      <div class="rxwrap">
+        <svg id="r2svg" class="struct" viewBox="0 0 560 330" role="img"
+             aria-label="Structure of the current compound on route 2"></svg>
+      </div>
+      <div class="btnrow">
+        <button class="act primary" id="r2next" type="button">Run the next step</button>
+        <button class="act" id="r2back" type="button">← Step back</button>
+        <button class="act" id="r2reset" type="button">↺ Start again</button>
+      </div>
+      <div class="readouts" style="margin-top:12px">
+        <div class="ro"><div class="k">compound</div><div class="v" id="r2-nm" style="font-size:13px">cumene</div><div class="u">in the flask</div></div>
+        <div class="ro"><div class="k">formula</div><div class="v" id="r2-f" style="font-size:13px">—</div><div class="u">molecular</div></div>
+        <div class="ro"><div class="k">phenolic OH</div><div class="v" id="r2-oh">no</div><div class="u">present?</div></div>
+        <div class="ro"><div class="k">para to OH</div><div class="v" id="r2-para" style="font-size:13px">—</div><div class="u">position 5</div></div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h3>Steps</h3>
+      <div class="route" id="r2route"></div>
+      <div class="verdict" id="r2v"></div>
+
+      <h3 style="margin-top:16px">Bench tests on S</h3>
+      <div class="tests" id="stests">
+        <button type="button" data-t="phthalein">Phthalein dye test — phthalic anhydride + conc. H₂SO₄, then NaOH</button>
+        <button type="button" data-t="fecl3">Neutral FeCl₃</button>
+        <button type="button" data-t="nahco3">NaHCO₃ solution</button>
+      </div>
+      <div class="verdict" id="stestv">Run the phthalein dye test on whatever is in the flask.</div>
+      <div class="swatch" id="swatch" style="background:var(--surface-2);color:var(--text-muted)">
+        no colour yet</div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 COUPLING -->
+<section id="couple">
+  <h2><span class="n">04</span>The coupling — and what ethanol does instead</h2>
+  <p class="lede">
+    A diazonium salt has two very different fates. Give it a activated ring and it couples to a dye;
+    give it ethanol and it is reduced away. Statement (A) hinges on knowing which is which.
+  </p>
+  <div class="lab">
+    <div class="panel">
+      <h3>Offer Q a partner</h3>
+      <div class="tests" id="qfate">
+        <button type="button" data-f="couple">S (salicylic acid) in aqueous NaOH</button>
+        <button type="button" data-f="ethanol">Ethanol, warm</button>
+        <button type="button" data-f="water">Water, warm</button>
+        <button type="button" data-f="cui">CuCN / KCN</button>
+      </div>
+      <div class="verdict" id="fatev">Pick what Q meets. Only one of these makes T.</div>
+      <div class="rxwrap" style="margin-top:12px">
+        <svg id="fatesvg" class="struct" viewBox="0 0 620 250" role="img"
+             aria-label="Product of the chosen reaction of the diazonium salt"></svg>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h3>Why T is coloured</h3>
+      <p style="font-size:13px;color:var(--text-secondary);margin:0 0 4px">
+        Extend the conjugation and watch the absorption move. A dye is a molecule whose absorption has
+        walked into the visible.</p>
+      <div class="ctrl">
+        <label for="conj"><span>Conjugated π system</span> <span class="v" id="conjv">2 rings + N=N</span></label>
+        <input type="range" id="conj" min="1" max="4" step="1" value="1" aria-label="extent of conjugation">
+      </div>
+      <div class="spec"><div class="band" id="band"></div><div class="cap" id="speccap"></div></div>
+      <div class="readouts" style="margin-top:12px">
+        <div class="ro"><div class="k">λ absorbed</div><div class="v" id="ro-lam">—</div><div class="u">nm</div></div>
+        <div class="ro"><div class="k">colour absorbed</div><div class="v" id="ro-cab" style="font-size:13px">—</div><div class="u">at that λ</div></div>
+        <div class="ro"><div class="k">colour you see</div><div class="v" id="ro-cse" style="font-size:13px">—</div><div class="u">complementary</div></div>
+      </div>
+      <div class="verdict" id="colv"></div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 VERDICT -->
+<section id="verdict">
+  <h2><span class="n">05</span>Verdict on each statement</h2>
+  <p class="lede">
+    Each statement is marked from the bench that tests it — the identity you established, not a
+    stored key.
+  </p>
+  <div class="lab">
+    <div class="panel">
+      <h3>Lab notebook</h3>
+      <p style="font-size:12.5px;color:var(--text-muted);margin:0 0 10px">
+        Written as you work. Only things you actually demonstrated appear here.</p>
+      <div class="nb" id="notebook"></div>
+      <div class="empty" id="nbempty">Nothing recorded yet — walk both routes, then run the benches.</div>
+    </div>
+    <div class="panel">
+      <h3>Predict, then check</h3>
+
+    <div class="predict" id="predict">
+      <div class="q" id="pq"></div>
+      <div class="row">
+        <button type="button" data-p="yes">Correct</button>
+        <button type="button" data-p="no">Not correct</button>
+      </div>
+      <div class="fb" id="pfb"></div>
+      <div class="row" style="margin-top:10px">
+        <button type="button" id="pprev">← Previous statement</button>
+        <button type="button" id="pnext">Next statement →</button>
+      </div>
+    </div>
+    <div class="scrollx" style="margin-top:16px"><table class="data" id="matrix"></table></div>
+
+    </div>
+  </div>
+</section>
+
+<!-- 06 SOLUTION -->
+<section id="solution">
+  <h2><span class="n">06</span>Step-by-step solution</h2>
+
+  <div class="gate" id="solgate">
+    <h4>The solution is still locked</h4>
+    <p>Test all four statements on the bench above and the derivation opens by itself.<br>
+       Statements tested: <span class="cnt" id="gtested">0</span> of 4 — finish both routes, run the phthalein test, and offer Q both ethanol and S</p>
+    <button class="act" id="revealsol" type="button">Show me the solution anyway</button>
+  </div>
+
+  <div id="solbody" hidden>
+    <div class="verdict ok" id="solintro"></div>
+    <ol class="steps" style="margin-top:14px">
+      <li>
+        <h4>Route 1, steps 1–2: acetylate, then nitrate — this gives P</h4>
+        <p>Aniline itself cannot be nitrated cleanly. The −NH<sub>2</sub> group is protonated by the
+           nitrating mixture to −NH<sub>3</sub><sup>+</sup>, which is strongly deactivating and
+           <em>meta</em>-directing, and aniline is oxidised by nitric acid as well. Acetic anhydride
+           converts it to acetanilide first.</p>
+        <div class="eq">PhNH<sub>2</sub> + (CH<sub>3</sub>CO)<sub>2</sub>O / pyridine ⟶ PhNHCOCH<sub>3</sub></div>
+        <p>−NHCOCH<sub>3</sub> is still activating and <em>ortho, para</em>-directing, but much more
+           mildly, and it is bulky. Nitration at 288 K therefore stops at <b>one</b> nitro group,
+           overwhelmingly at the para position because ortho is blocked sterically.</p>
+        <div class="eq"><span class="hl">P = p-nitroacetanilide</span> — C<sub>8</sub>H<sub>8</sub>N<sub>2</sub>O<sub>3</sub>, a
+          <b>mono</b>nitro compound</div>
+      </li>
+      <li>
+        <h4>Route 1, steps 3–4: hydrolyse, then diazotise — this gives Q</h4>
+        <div class="eq">P + H<sub>3</sub>O<sup>+</sup> ⟶ p-nitroaniline
+          &nbsp;&nbsp;·&nbsp;&nbsp; + NaNO<sub>2</sub>/HCl, 273–278 K ⟶
+          <span class="hl">Q = p-nitrobenzenediazonium chloride</span></div>
+        <p>The low temperature matters: above about 278 K the diazonium salt decomposes to the phenol
+           and nitrogen.</p>
+      </li>
+      <li>
+        <h4>Route 2: cumene process, then Kolbe–Schmitt — this gives S</h4>
+        <div class="eq">cumene <span style="font-family:var(--mono);font-size:12px">—O<sub>2</sub>, then H<sub>3</sub>O<sup>+</sup>—&gt;</span>
+          phenol + acetone</div>
+        <div class="eq">phenol <span style="font-family:var(--mono);font-size:12px">—NaOH, CO<sub>2</sub>—&gt;</span>
+          sodium salicylate <span style="font-family:var(--mono);font-size:12px">—H<sub>3</sub>O<sup>+</sup>—&gt;</span>
+          <span class="hl">S = salicylic acid</span></div>
+        <p>Kolbe–Schmitt carboxylates the phenoxide <em>ortho</em> to the oxygen, so S is
+           2-hydroxybenzoic acid: OH on C2, COOH on C1.</p>
+      </li>
+      <li>
+        <h4>(A) Q with ethanol — the aldehyde is not aromatic</h4>
+        <p>Ethanol reduces a diazonium salt: the diazonium group is replaced by hydrogen and the ethanol
+           is oxidised.</p>
+        <div class="eq">ArN<sub>2</sub><sup>+</sup>Cl<sup>−</sup> + C<sub>2</sub>H<sub>5</sub>OH ⟶
+          ArH + <span class="hl">CH<sub>3</sub>CHO</span> + N<sub>2</sub> + HCl</div>
+        <p>With Ar = p-nitrophenyl, the aromatic product is nitrobenzene. The only aldehyde formed is
+           <b>acetaldehyde</b> — two carbons, no ring. The statement asks for an <em>aromatic</em>
+           aldehyde, and there isn't one. <b>(A) is incorrect.</b></p>
+      </li>
+      <li>
+        <h4>(B) S in the phthalein dye test</h4>
+        <p>The test condenses a phenol with phthalic anhydride under conc. H<sub>2</sub>SO<sub>4</sub>;
+           two phenol rings attack the anhydride carbonyl <em>at the position para to their −OH</em>.
+           The requirement is therefore a free para position, which is why p-cresol fails the test.</p>
+        <div class="eq">salicylic acid: OH at <b>C2</b> · COOH at C1 · para to the OH is
+          <span class="hl">C5, and C5 carries a hydrogen</span></div>
+        <p>S is a phenol with its para position open, so it condenses and gives the coloured phthalein
+           in alkali. <b>(B) is correct.</b></p>
+      </li>
+      <li>
+        <h4>(C) Is P a dinitro compound?</h4>
+        <p>No — and this is exactly what the acetylation was for. Count the nitrogens in P: one from the
+           amide, one from a single nitro group.</p>
+        <div class="eq">P = CH<sub>3</sub>CONH–C<sub>6</sub>H<sub>4</sub>–NO<sub>2</sub> :
+          <span class="hl">one</span> −NO<sub>2</sub></div>
+        <p>Only an unprotected, strongly activated ring under forcing conditions would take a second
+           nitro group. <b>(C) is incorrect.</b></p>
+      </li>
+      <li>
+        <h4>(D) T, the azo dye</h4>
+        <p>In aqueous NaOH salicylic acid is deprotonated to the phenoxide — a very strongly activating
+           group. The diazonium ion is a weak electrophile, so it needs exactly that activation, and it
+           couples <em>para</em> to the phenoxide oxygen, at C5.</p>
+        <div class="eq">S + Q / aq. NaOH ⟶ <span class="hl">T</span>, an
+          −N=N− bridged azo compound, C<sub>13</sub>H<sub>9</sub>N<sub>3</sub>O<sub>5</sub></div>
+        <p>The −N=N− links the two rings into one long conjugated system, with an electron-donating
+           −O<sup>−</sup>/−OH at one end and an electron-withdrawing −NO<sub>2</sub> at the other. That
+           push–pull arrangement drops the HOMO–LUMO gap far enough that the absorption lands in the
+           visible. Azo compounds of this kind are the classic synthetic dyes. <b>(D) is correct.</b></p>
+      </li>
+      <li>
+        <h4>Answer</h4>
+        <div class="eq" style="font-size:17px"><span class="hl">(B) and (D)</span></div>
+        <p>Marking: +4 for choosing both; +2 for either one alone; −1 for including (A) or (C).</p>
+      </li>
+    </ol>
+    <div class="verify" style="margin-top:16px">
+      <h4>✓ Independent verification</h4>
+      <ul>
+        <li><b>Structures checked computationally:</b> every intermediate was written as a SMILES string
+            and parsed, and the counts quoted here come from substructure matching rather than from
+            reading the drawing — P returns exactly one nitro match, T returns exactly one aryl–N=N–aryl
+            match.</li>
+        <li><b>The para position of S was located programmatically:</b> starting from the phenolic
+            oxygen, walking three atoms round the ring lands on C5, and that atom carries one hydrogen.
+            That is the structural requirement for the phthalein test, established without assuming
+            the answer.</li>
+        <li><b>Formula bookkeeping:</b> aniline C<sub>6</sub>H<sub>7</sub>N → acetanilide
+            C<sub>8</sub>H<sub>9</sub>NO → P C<sub>8</sub>H<sub>8</sub>N<sub>2</sub>O<sub>3</sub> →
+            p-nitroaniline C<sub>6</sub>H<sub>6</sub>N<sub>2</sub>O<sub>2</sub> → Q
+            C<sub>6</sub>H<sub>4</sub>N<sub>3</sub>O<sub>2</sub><sup>+</sup>; cumene
+            C<sub>9</sub>H<sub>12</sub> → phenol C<sub>6</sub>H<sub>6</sub>O → S
+            C<sub>7</sub>H<sub>6</sub>O<sub>3</sub>; T C<sub>13</sub>H<sub>9</sub>N<sub>3</sub>O<sub>5</sub>.</li>
+        <li><b>Why (A) is a good trap:</b> a diazonium salt <em>does</em> generate an aldehyde with
+            ethanol, so the statement is half true. The word that breaks it is "aromatic" — the aldehyde
+            is acetaldehyde, and the aromatic fragment leaves as nitrobenzene.</li>
+        <li><b>Why (C) is a good trap:</b> "nitrating mixture" suggests forcing conditions, and aniline
+            is highly activated. The acetyl group and the 288 K are precisely what hold it to one
+            substitution.</li>
+        <li><b>Cross-checked against a published answer key</b> for this paper after the derivation was
+            complete — the key agrees on (B) and (D), and on the coupling occurring at position 5.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 07 CONCEPTS -->
+<section id="concepts">
+  <h2><span class="n">07</span>Concepts and classification</h2>
+  <div class="lab">
+    <div class="panel">
+      <h3>Relations used</h3>
+      <div class="eq">−NH<sub>2</sub> + H<sup>+</sup> → −NH<sub>3</sub><sup>+</sup> : activating becomes deactivating</div>
+      <div class="eq">acetylation moderates the ring and holds nitration to mono, para</div>
+      <div class="eq">ArNH<sub>2</sub> + NaNO<sub>2</sub>/HCl, 273–278 K → ArN<sub>2</sub><sup>+</sup>Cl<sup>−</sup></div>
+      <div class="eq">ArN<sub>2</sub><sup>+</sup> + C<sub>2</sub>H<sub>5</sub>OH → ArH + CH<sub>3</sub>CHO + N<sub>2</sub></div>
+      <div class="eq">cumene + O<sub>2</sub>, then H<sub>3</sub>O<sup>+</sup> → phenol + acetone</div>
+      <div class="eq">phenoxide + CO<sub>2</sub> (Kolbe–Schmitt) → salicylate, ortho</div>
+      <div class="eq">phthalein dye test needs a free para position to the phenolic −OH</div>
+      <div class="eq">azo coupling: weak electrophile needs a phenoxide or amine, couples para</div>
+    </div>
+    <div class="panel">
+      <h3>Classification</h3>
+      <table class="meta-tbl">
+        <tr><td>Simulation ID</td><td style="font-family:var(--mono)">ADV-2026-P2-CHE-Q08</td></tr>
+        <tr><td>Exam / Year / Paper</td><td>JEE Advanced · 2026 · Paper 2</td></tr>
+        <tr><td>Subject</td><td>Chemistry (Organic)</td></tr>
+        <tr><td>Chapter</td><td>Amines and Diazonium Salts</td></tr>
+        <tr><td>Topic</td><td>Diazotisation and azo coupling</td></tr>
+        <tr><td>Subtopics</td><td>Acetylation as a protecting group · Nitration of acetanilide ·
+          Diazotisation at 273–278 K · Reduction of diazonium salts by ethanol · Cumene process ·
+          Kolbe–Schmitt reaction · Phthalein dye test · Azo dyes and colour</td></tr>
+        <tr><td>Question type</td><td>Multiple correct MCQ (+4 / partial / −1)</td></tr>
+        <tr><td>Difficulty</td><td>Moderate–Hard</td></tr>
+        <tr><td>Answer</td><td><b id="clsans">— run the experiment</b></td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<footer>
+  ADV-2026-P2-CHE-Q08 · PrayogX · JEE Advanced Interactive Simulation Library · question text reproduced
+  from the official JEE (Advanced) 2026 Paper 2 for educational use.
+</footer>
+</div>
+
+<script>
+(function(){
+"use strict";
+
+var NS="http://www.w3.org/2000/svg";
+function css(v){ return getComputedStyle(document.documentElement).getPropertyValue(v).trim(); }
+function el(n,a){ var e=document.createElementNS(NS,n); for(var k in a) e.setAttribute(k,a[k]); return e; }
+function $(id){ return document.getElementById(id); }
+function clamp(v,a,b){ return v<a?a:(v>b?b:v); }
+function esc(s){ return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+
+/* ---- predictions + verdict matrix ------------------------------------- */
+var PORDER=["A","B","C","D"], pIdx=0, predictions={}, tested={}, revealed=false;
+
+function renderPredict(){
+  var kk=PORDER[pIdx], def=OPT[kk];
+  $("pq").innerHTML = "Statement ("+kk+") — "+def.shortq;
+  var bs=$("predict").querySelectorAll(".row button");
+  for(var i=0;i<bs.length;i++) bs[i].setAttribute("aria-pressed", predictions[kk]===bs[i].dataset.p?"true":"false");
+  var fb=$("pfb");
+  if(!predictions[kk]){ fb.className="fb"; fb.textContent="Commit to an answer, then go and test it on the bench above."; }
+  else if(!tested[kk]){ fb.className="fb"; fb.innerHTML="Logged. Now test ("+kk+") on the bench and see."; }
+  else {
+    var right = predictions[kk]===def.verdict;
+    fb.className="fb "+(right?"ok":"no");
+    fb.innerHTML=(right?"✓ Your prediction matches your measurement. ":"✗ Your measurement disagrees. ")+def.why;
+  }
+  $("pprev").disabled = pIdx===0; $("pnext").disabled = pIdx===PORDER.length-1;
+}
+function drawMatrix(){
+  var rows=PORDER.map(function(kk){
+    var def=OPT[kk], seen=!!tested[kk], pr=predictions[kk];
+    var vcell = seen ? (def.verdict==="yes" ? "<span class='yes'>✓ correct</span>"
+                                            : "<span class='no'>✗ not correct</span>")
+                     : "<span style='color:var(--text-muted)'>not tested yet</span>";
+    var ok = seen && pr && pr===def.verdict;
+    return "<tr"+(seen&&def.verdict==="yes"?" class='win'":"")+"><td><b>("+kk+")</b></td>"+
+      "<td class='l'>"+def.label+"</td><td>"+(pr?(pr==="yes"?"correct":"not correct"):"—")+"</td>"+
+      "<td>"+vcell+"</td><td>"+(seen&&pr?(ok?"<span class='yes'>match</span>":"<span class='no'>mismatch</span>"):"—")+"</td></tr>";
+  }).join("");
+  $("matrix").innerHTML="<thead><tr><th>Option</th><th class='l'>Statement</th><th>Your prediction</th>"+
+    "<th>What you measured</th><th></th></tr></thead><tbody>"+rows+"</tbody>";
+}
+function nTested(){ var n=0; for(var k in tested) if(tested[k]) n++; return n; }
+
+/* ---- the gate ---------------------------------------------------------- */
+function gateOpen(){ return nTested()>=4 || revealed; }
+function updateGate(){
+  if($("gtested")) $("gtested").textContent = nTested();
+  var open=gateOpen();
+  $("solgate").hidden = open;
+  $("solbody").hidden = !open;
+  var ab=$("answerbox");
+  if(open){
+    ab.classList.remove("locked");
+    $("ansval").textContent=ANSWER.text;
+    $("anssub").innerHTML=ANSWER.sub;
+    $("revealnow").hidden=true;
+    if($("clsans")) $("clsans").textContent=ANSWER.text;
+    if(!$("solbody").classList.contains("reveal")) $("solbody").classList.add("reveal");
+    if($("solintro")) $("solintro").innerHTML = revealed && nTested()<4
+      ? "Revealed early — go back and test the statements to see these conclusions come from your own measurements."
+      : "<b>You tested all four statements on the bench.</b> "+ANSWER.intro;
+  } else {
+    ab.classList.add("locked");
+    $("ansval").textContent="Run the experiment";
+    $("anssub").textContent=LOCKED_SUB;
+    $("revealnow").hidden=false;
+    if($("clsans")) $("clsans").textContent="— run the experiment";
+  }
+  markOptions();
+}
+function markOptions(){
+  if(!gateOpen()) return;
+  document.querySelectorAll("#opts li").forEach(function(li){
+    var kk=li.dataset.k, right=OPT[kk].verdict==="yes";
+    li.classList.remove("correct","wrong");
+    li.classList.add(right?"correct":"wrong");
+    li.querySelector(".mark").textContent = right?"correct":"not correct";
+  });
+}
+function markTested(kk){ if(!tested[kk]){ tested[kk]=true; updateGate(); drawMatrix(); renderPredict(); } }
+
+/* ---- notebook ---------------------------------------------------------- */
+var obsLog=[];
+function note(text){
+  if(obsLog.indexOf(text)>=0) return;
+  obsLog.push(text);
+  $("notebook").innerHTML = obsLog.map(function(o){ return '<div class="obs">'+o+"</div>"; }).join("");
+  $("nbempty").hidden = true;
+}
+
+/* ---- numeric control: slider + typed box + steppers -------------------- */
+function parseNum(str){
+  if(str===null||str===undefined) return null;
+  var s=String(str).trim().toLowerCase();
+  if(!s) return null;
+  s=s.replace(/π/g,"(pi)").replace(/pi/g,"(pi)").replace(/\(\(pi\)\)/g,"(pi)");
+  s=s.replace(/×10\^?/g,"e").replace(/x10\^?/g,"e").replace(/\s+/g,"");
+  if(!/^[0-9+\-*/().epi]+$/.test(s)) return null;
+  s=s.replace(/\(pi\)/g,"P_I");
+  if(/[a-z]/.test(s.replace(/P_I/g,"").replace(/e/g,""))) return null;
+  s=s.replace(/P_I/g,"("+Math.PI+")");
+  var v;
+  try { v=Function('"use strict";return ('+s+');')(); } catch(err){ return null; }
+  if(typeof v!=="number"||!isFinite(v)) return null;
+  return v;
+}
+function makeControl(cfg){
+  var sl=$(cfg.slider), inp=$(cfg.input), hint=$(cfg.hint), baseHint=hint?hint.innerHTML:"";
+  function toSlider(v){ return cfg.log ? Math.round(1000*Math.log(v/cfg.lo)/Math.log(cfg.hi/cfg.lo))
+                                       : Math.round((v-cfg.lo)/(cfg.hi-cfg.lo)*1000); }
+  function fromSlider(p){ return cfg.log ? cfg.lo*Math.pow(cfg.hi/cfg.lo,p/1000)
+                                         : cfg.lo+(cfg.hi-cfg.lo)*p/1000; }
+  sl.min=0; sl.max=1000;
+  function show(v){
+    sl.value=toSlider(v);
+    if(document.activeElement!==inp) inp.value=v.toFixed(cfg.dp);
+    inp.classList.remove("bad");
+    if(hint){ hint.classList.remove("bad"); hint.innerHTML=baseHint; }
+    if(cfg.valEl) $(cfg.valEl).textContent=v.toFixed(cfg.dp)+" "+cfg.unit;
+  }
+  function set(v){ v=clamp(v,cfg.lo,cfg.hi); ST[cfg.key]=v; show(v); if(cfg.onset) cfg.onset(); }
+  sl.addEventListener("input",function(){ set(fromSlider(+sl.value)); });
+  inp.addEventListener("input",function(){
+    var v=parseNum(inp.value);
+    if(v===null){ inp.classList.add("bad");
+      if(hint){ hint.classList.add("bad"); hint.textContent="That is not a number I can read — try 0.5, 1/2 or 5e-1."; }
+      return; }
+    if(v<cfg.lo||v>cfg.hi){ inp.classList.add("bad");
+      if(hint){ hint.classList.add("bad");
+        hint.textContent="Out of the range this apparatus can hold ("+cfg.lo+" to "+cfg.hi+" "+cfg.unit+")."; }
+      return; }
+    inp.classList.remove("bad");
+    if(hint){ hint.classList.remove("bad"); hint.innerHTML=baseHint; }
+    ST[cfg.key]=v; sl.value=toSlider(v);
+    if(cfg.valEl) $(cfg.valEl).textContent=v.toFixed(cfg.dp)+" "+cfg.unit;
+    if(cfg.onset) cfg.onset();
+  });
+  inp.addEventListener("blur",function(){ show(ST[cfg.key]); });
+  document.querySelectorAll('.step[data-for="'+cfg.slider+'"]').forEach(function(b){
+    b.addEventListener("click",function(){ set(ST[cfg.key]+(+b.dataset.dir)*cfg.step); });
+  });
+  show(ST[cfg.key]);
+  return { show:function(){ show(ST[cfg.key]); } };
+}
+
+/* ---- generic plotter --------------------------------------------------- */
+function niceAxis(a,b,want){
+  if(!(b>a)) b=a+1;
+  var raw=(b-a)/(want||5), ex=Math.floor(Math.log(raw)/Math.LN10), f=raw/Math.pow(10,ex);
+  var m=f<=1?1:(f<=2?2:(f<=2.5?2.5:(f<=5?5:10))), st=m*Math.pow(10,ex);
+  var lo=Math.floor(a/st+1e-9)*st, hi=Math.ceil(b/st-1e-9)*st;
+  if(hi-lo<st) hi=lo+st;
+  return {lo:lo,hi:hi,step:st,n:Math.max(1,Math.round((hi-lo)/st))};
+}
+function tickDp(step){
+  for(var d=0;d<=6;d++){ var s=step*Math.pow(10,d); if(Math.abs(s-Math.round(s))<1e-9) return d; }
+  return 6;
+}
+function plot(svg,cfg){
+  while(svg.firstChild) svg.removeChild(svg.firstChild);
+  var vb=svg.getAttribute("viewBox").split(/\s+/).map(Number), W=vb[2], H=vb[3];
+  var M={l:cfg.ml||70,r:cfg.mr||52,t:22,b:48};
+  var AX_=niceAxis(cfg.xMin,cfg.xMax,5), AY_=niceAxis(cfg.yMin,cfg.yMax,5);
+  var xa=AX_.lo, xb=AX_.hi, ya=AY_.lo, yb=AY_.hi;
+  function X(v){ return M.l+(v-xa)/(xb-xa)*(W-M.l-M.r); }
+  function Y(v){ return H-M.b-(v-ya)/(yb-ya)*(H-M.t-M.b); }
+  var grid=css("--line"), muted=css("--text-muted"), strong=css("--line-strong"), ink=css("--text-secondary");
+  var i, xdp=tickDp(AX_.step), ydp=tickDp(AY_.step);
+  for(i=0;i<=AX_.n;i++){
+    var xv=xa+AX_.step*i;
+    svg.appendChild(el("line",{x1:X(xv),x2:X(xv),y1:M.t,y2:H-M.b,stroke:grid,"stroke-width":1}));
+    var tx=el("text",{x:X(xv),y:H-M.b+18,"text-anchor":"middle",fill:muted,"font-size":10.5,
+      "font-family":"ui-monospace,monospace"});
+    tx.textContent=cfg.xFmt?cfg.xFmt(xv):xv.toFixed(xdp); svg.appendChild(tx);
+  }
+  for(i=0;i<=AY_.n;i++){
+    var yv=ya+AY_.step*i;
+    svg.appendChild(el("line",{x1:M.l,x2:W-M.r,y1:Y(yv),y2:Y(yv),stroke:grid,"stroke-width":1}));
+    var ty=el("text",{x:M.l-9,y:Y(yv)+3.5,"text-anchor":"end",fill:muted,"font-size":10.5,
+      "font-family":"ui-monospace,monospace"});
+    ty.textContent=cfg.yFmt?cfg.yFmt(yv):yv.toFixed(ydp); svg.appendChild(ty);
+  }
+  if(ya<0&&yb>0)
+    svg.appendChild(el("line",{x1:M.l,x2:W-M.r,y1:Y(0),y2:Y(0),stroke:strong,"stroke-width":1.5}));
+  svg.appendChild(el("line",{x1:M.l,x2:M.l,y1:M.t,y2:H-M.b,stroke:strong,"stroke-width":1.5}));
+  svg.appendChild(el("line",{x1:M.l,x2:W-M.r,y1:H-M.b,y2:H-M.b,stroke:strong,"stroke-width":1.5}));
+  var usedLbl=[];
+  (cfg.curves||[]).forEach(function(c){
+    if(!c.pts||c.pts.length<2) return;
+    var d=c.pts.map(function(p,ix){ return (ix?"L":"M")+X(p[0]).toFixed(1)+" "+Y(p[1]).toFixed(1); }).join(" ");
+    svg.appendChild(el("path",{d:d,fill:"none",stroke:css(c.col),"stroke-width":c.w||2.4,
+      "stroke-linecap":"round","stroke-linejoin":"round","stroke-dasharray":c.dash||"none",
+      opacity:c.op===undefined?1:c.op}));
+    if(c.label){
+      var last=c.pts[c.pts.length-1], ly=clamp(Y(last[1])+4,M.t+8,H-M.b);
+      for(var q=0;q<usedLbl.length;q++){ if(Math.abs(usedLbl[q]-ly)<13){ ly=usedLbl[q]+13; q=-1; } }
+      ly=clamp(ly,M.t+8,H-M.b-2); usedLbl.push(ly);
+      var lb=el("text",{x:clamp(X(last[0])+8,M.l,W-4),y:ly,fill:css(c.col),"font-size":11.5,
+        "font-weight":700,"text-anchor":X(last[0])>W-M.r-40?"end":"start"});
+      lb.textContent=c.label; svg.appendChild(lb);
+    }
+  });
+  (cfg.bars||[]).forEach(function(b){
+    var x0=X(b.x0), x1=X(b.x1), y0=Y(Math.max(ya,0)), y1=Y(b.y);
+    svg.appendChild(el("rect",{x:Math.min(x0,x1),y:Math.min(y0,y1),width:Math.abs(x1-x0),
+      height:Math.abs(y1-y0),fill:css(b.col),opacity:b.op===undefined?.85:b.op,rx:3}));
+    if(b.label){
+      var t=el("text",{x:(x0+x1)/2,y:Math.min(y0,y1)-6,"text-anchor":"middle",fill:css(b.col),
+        "font-size":11.5,"font-weight":700}); t.textContent=b.label; svg.appendChild(t);
+    }
+  });
+  (cfg.points||[]).forEach(function(p){
+    if(p.x<xa||p.x>xb||p.y<ya||p.y>yb) return;
+    svg.appendChild(el("circle",{cx:X(p.x),cy:Y(p.y),r:p.r||4.6,fill:p.fill||css("--surface-1"),
+      stroke:css(p.col),"stroke-width":2}));
+    if(p.label){
+      var t=el("text",{x:X(p.x),y:Y(p.y)-10,"text-anchor":"middle",fill:css(p.col),
+        "font-size":11,"font-weight":700}); t.textContent=p.label; svg.appendChild(t);
+    }
+  });
+  var axl=el("text",{x:(M.l+W-M.r)/2,y:H-8,"text-anchor":"middle",fill:ink,"font-size":12.5});
+  axl.textContent=cfg.xLabel; svg.appendChild(axl);
+  var ayl=el("text",{x:15,y:(M.t+H-M.b)/2,"text-anchor":"middle",fill:ink,"font-size":12.5,
+    transform:"rotate(-90 15 "+((M.t+H-M.b)/2)+")"});
+  ayl.textContent=cfg.yLabel; svg.appendChild(ayl);
+  svg._map={X:X,Y:Y,xa:xa,xb:xb,M:M,W:W};
+}
+
+/* ---- shared wiring ----------------------------------------------------- */
+function wireCommon(redraw){
+  $("predict").addEventListener("click",function(e){
+    var b=e.target.closest(".row button"); if(!b) return;
+    predictions[PORDER[pIdx]]=b.dataset.p; renderPredict(); drawMatrix();
+  });
+  $("pprev").addEventListener("click",function(){ if(pIdx>0){ pIdx--; renderPredict(); } });
+  $("pnext").addEventListener("click",function(){ if(pIdx<PORDER.length-1){ pIdx++; renderPredict(); } });
+  function doReveal(){ revealed=true; updateGate(); }
+  $("revealnow").addEventListener("click",doReveal);
+  $("revealsol").addEventListener("click",doReveal);
+  $("themebtn").addEventListener("click",function(){
+    var r=document.documentElement;
+    var dark=r.getAttribute("data-theme")==="dark" ||
+      (!r.getAttribute("data-theme")&&matchMedia("(prefers-color-scheme: dark)").matches);
+    r.setAttribute("data-theme",dark?"light":"dark");
+    if(redraw) redraw();
+  });
+}
+
+/* ======================================================================
+   STRUCTURE DRAWING — benzene rings with substituents, hand-built SVG
+   ====================================================================== */
+function ring(svg, cx, cy, r, subs, opts){
+  opts = opts || {};
+  var pts=[], i, a;
+  for(i=0;i<6;i++){ a=(-90+i*60)*Math.PI/180; pts.push([cx+r*Math.cos(a), cy+r*Math.sin(a)]); }
+  var d=pts.map(function(p,ix){ return (ix?"L":"M")+p[0].toFixed(1)+" "+p[1].toFixed(1); }).join(" ")+" Z";
+  svg.appendChild(el("path",{d:d,fill:opts.fill||"none",stroke:css("--text-primary"),
+    "stroke-width":2.1,"stroke-linejoin":"round"}));
+  svg.appendChild(el("circle",{cx:cx,cy:cy,r:r*0.55,fill:"none",stroke:css("--text-primary"),
+    "stroke-width":1.6,opacity:.5}));
+  // subs: {pos:0..5, text:"NO2", col:"--s2", dir:1}
+  (subs||[]).forEach(function(s){
+    var p=pts[s.pos], ang=Math.atan2(p[1]-cy,p[0]-cx);
+    var x1=p[0], y1=p[1], L=s.len||26;
+    var x2=x1+Math.cos(ang)*L, y2=y1+Math.sin(ang)*L;
+    svg.appendChild(el("line",{x1:x1,y1:y1,x2:x2,y2:y2,stroke:css(s.col||"--text-primary"),
+      "stroke-width":2.1,"stroke-linecap":"round"}));
+    var anchor = Math.abs(Math.cos(ang))<0.34 ? "middle" : (Math.cos(ang)>0?"start":"end");
+    var dy = Math.sin(ang)>0.34 ? 15 : (Math.sin(ang)<-0.34 ? -7 : 5);
+    var t=el("text",{x:x2+Math.cos(ang)*6,y:y2+dy,"text-anchor":anchor,
+      fill:css(s.col||"--text-primary"),"font-size":s.fs||15,"font-weight":600,
+      "font-family":"ui-sans-serif,system-ui,sans-serif"});
+    t.textContent=s.text; svg.appendChild(t);
+    if(s.mark){
+      svg.appendChild(el("circle",{cx:p[0],cy:p[1],r:7,fill:"none",stroke:css(s.mark),
+        "stroke-width":2.2,"stroke-dasharray":"3 2"}));
+    }
+  });
+  (opts.freeMarks||[]).forEach(function(pos){
+    svg.appendChild(el("circle",{cx:pts[pos][0],cy:pts[pos][1],r:6,fill:css("--s3"),opacity:.5}));
+  });
+  return pts;
+}
+function label(svg,x,y,text,col,size,anchor){
+  var t=el("text",{x:x,y:y,"text-anchor":anchor||"middle",fill:css(col||"--text-secondary"),
+    "font-size":size||13,"font-family":"ui-sans-serif,system-ui,sans-serif"});
+  t.textContent=text; svg.appendChild(t); return t;
+}
+function clear(svg){ while(svg.firstChild) svg.removeChild(svg.firstChild); }
+
+/* ======================================================================
+   ROUTE DEFINITIONS
+   ====================================================================== */
+var R1 = [
+  { name:"aniline", f:"C₆H₇N", no2:0, act:"strongly activating",
+    rg:"starting material", note:"−NH₂ activates the ring hard — too hard to nitrate cleanly.",
+    subs:[{pos:0,text:"NH₂",col:"--s1"}] },
+  { name:"acetanilide", f:"C₈H₉NO", no2:0, act:"moderately activating",
+    rg:"1. (CH₃CO)₂O, pyridine", tag:"",
+    note:"Acetylation turns the amine into an amide: still ortho/para directing, but far milder and bulkier.",
+    subs:[{pos:0,text:"NHCOCH₃",col:"--s1"}] },
+  { name:"p-nitroacetanilide", f:"C₈H₈N₂O₃", no2:1, act:"deactivated by −NO₂",
+    rg:"2. conc. HNO₃, conc. H₂SO₄, 288 K", tag:"P",
+    note:"One nitro group, para. Ortho is blocked by the bulky amide, and the mild activation stops a second substitution.",
+    subs:[{pos:0,text:"NHCOCH₃",col:"--s1"},{pos:3,text:"NO₂",col:"--s2",mark:"--s2"}] },
+  { name:"p-nitroaniline", f:"C₆H₆N₂O₂", no2:1, act:"weakly activating",
+    rg:"3. H₃O⁺ (hydrolysis)",
+    note:"The protecting group has done its job and comes off.",
+    subs:[{pos:0,text:"NH₂",col:"--s1"},{pos:3,text:"NO₂",col:"--s2"}] },
+  { name:"p-nitrobenzenediazonium chloride", f:"C₆H₄N₃O₂⁺", no2:1, act:"strongly deactivated",
+    rg:"4. NaNO₂ / HCl, 273–278 K", tag:"Q",
+    note:"Diazotisation. Keep it cold — above ~278 K it falls apart to the phenol and N₂.",
+    subs:[{pos:0,text:"N₂⁺Cl⁻",col:"--s4"},{pos:3,text:"NO₂",col:"--s2"}] }
+];
+var R2 = [
+  { name:"cumene", f:"C₉H₁₂", oh:false, para:"—",
+    rg:"starting material", note:"Isopropylbenzene — the industrial feedstock for phenol.",
+    subs:[{pos:0,text:"CH(CH₃)₂",col:"--text-primary"}] },
+  { name:"phenol", f:"C₆H₆O", oh:true, para:"free",
+    rg:"1. O₂ / H₃O⁺ (cumene process)", note:"Cumene hydroperoxide splits to phenol and acetone.",
+    subs:[{pos:0,text:"OH",col:"--s3"}] },
+  { name:"sodium salicylate", f:"C₇H₅NaO₃", oh:true, para:"free",
+    rg:"2. NaOH / CO₂ (Kolbe–Schmitt)",
+    note:"The phenoxide picks up CO₂ ortho to the oxygen.",
+    subs:[{pos:0,text:"O⁻Na⁺",col:"--s3"},{pos:1,text:"COO⁻",col:"--s2"}] },
+  { name:"salicylic acid", f:"C₇H₆O₃", oh:true, para:"free (C5, carries H)",
+    rg:"3. H₃O⁺", tag:"S",
+    note:"2-hydroxybenzoic acid. OH on C2, COOH on C1 — and the position para to that OH is free.",
+    subs:[{pos:0,text:"OH",col:"--s3",mark:"--s3"},{pos:1,text:"COOH",col:"--s2"}], freeMarks:[3] }
+];
+var i1=0, i2=0, protect=true;
+
+function renderRoute(which){
+  var arr = which===1?R1:R2, ix = which===1?i1:i2;
+  var box = $("r"+which+"route");
+  box.innerHTML = arr.map(function(s,i){
+    return '<div class="rstep '+(i<ix?"done":(i===ix?"live":""))+'">'+
+      '<div class="rg">'+s.rg+'</div>'+
+      '<div class="nm">'+s.name+(s.tag?' <span class="tag">= '+s.tag+'</span>':'')+'</div>'+
+      (i<=ix?'<div class="note">'+s.note+'</div>':'')+'</div>';
+  }).join("");
+  var cur=arr[ix];
+  $("r"+which+"next").disabled = ix>=arr.length-1;
+  $("r"+which+"back").disabled = ix<=0;
+
+  var svg=$("r"+which+"svg"); clear(svg);
+  ring(svg, 250, 155, 62, cur.subs, {freeMarks:cur.freeMarks});
+  label(svg, 280, 300, cur.name, "--text-secondary", 14);
+  if(cur.tag) label(svg, 470, 48, cur.tag, "--accent", 30, "end");
+
+  if(which===1){
+    $("r1-nm").textContent=cur.name.length>22?cur.name.slice(0,20)+"…":cur.name;
+    $("r1-f").innerHTML=cur.f; $("r1-no2").textContent=cur.no2; $("r1-act").textContent=cur.act;
+    var v=$("r1v");
+    if(ix>=4){ v.className="verdict ok";
+      v.innerHTML="<b>P = p-nitroacetanilide, Q = p-nitrobenzenediazonium chloride.</b> P carries "+
+        "<b>one</b> nitro group, which already settles statement (C).";
+      markTested("C");
+      note("Route 1 finished: <b>P = p-nitroacetanilide</b> (one −NO₂) and <b>Q = p-nitrobenzenediazonium chloride</b>.");
+    } else if(ix>=2){ v.className="verdict ok";
+      v.innerHTML="<b>P is in the flask.</b> Count its nitro groups in the readout — that is statement (C) "+
+        "answered. Keep going to reach Q."; }
+    else { v.className="verdict"; v.innerHTML="Walk the route to P and then to Q."; }
+  } else {
+    $("r2-nm").textContent=cur.name; $("r2-f").innerHTML=cur.f;
+    $("r2-oh").textContent=cur.oh?"yes":"no"; $("r2-para").textContent=cur.para;
+    var v2=$("r2v");
+    if(ix>=3){ v2.className="verdict ok";
+      v2.innerHTML="<b>S = salicylic acid.</b> The green marker is C5 — the position <em>para</em> to the "+
+        "phenolic OH, and it carries a hydrogen. Now run the phthalein test on it.";
+      note("Route 2 finished: <b>S = salicylic acid</b>, phenolic OH on C2 with the para position (C5) free.");
+    } else { v2.className="verdict"; v2.innerHTML="Walk the route to salicylic acid."; }
+  }
+}
+
+/* ---- protecting-group experiment ---- */
+function renderProt(){
+  var n = protect ? 1 : 2;
+  $("nitroct").innerHTML = ["mono-nitro","di-nitro","oxidised tar"].map(function(t,i){
+    var hit = protect ? (i===0) : (i===1||i===2);
+    return "<span class='"+(hit?"hit":"")+"'>"+t+(hit?" ✓":" —")+"</span>";
+  }).join("");
+  var v=$("protv");
+  if(protect){
+    v.className="verdict ok";
+    v.innerHTML="<b>With the acetyl group on: one nitro group, para.</b> The amide is a mild activator "+
+      "and is bulky, so a single substitution happens and it happens away from the substituent.";
+  } else {
+    v.className="verdict no";
+    v.innerHTML="<b>Straight to the nitrating mixture: a mess.</b> The acid protonates −NH₂ to "+
+      "−NH₃<sup>+</sup>, which is deactivating and <em>meta</em>-directing, and nitric acid oxidises "+
+      "aniline as well. This is exactly why the acetylation step is in the printed sequence.";
+  }
+}
+
+/* ---- bench tests on the route-2 compound ---- */
+var STEST = {
+  phthalein:{ needOH:true, needPara:true, colour:"#e0479b",
+    okmsg:"<b>Positive.</b> The phenol condenses with phthalic anhydride at the position para to its −OH; "+
+      "the phthalein produced turns pink in alkali. Salicylic acid has C5 free, so the test works.",
+    nomsg:"<b>Negative.</b> Whatever is in the flask has no free phenolic −OH with an open para position, "+
+      "so no phthalein forms." },
+  fecl3:{ needOH:true, needPara:false, colour:"#6e3fa0",
+    okmsg:"<b>Positive — violet.</b> Neutral FeCl₃ confirms a phenolic −OH. Useful, but it says nothing "+
+      "about the para position, so it cannot settle statement (B) on its own.",
+    nomsg:"<b>No colour.</b> No phenolic −OH present." },
+  nahco3:{ needCOOH:true, colour:"#d9e3ea",
+    okmsg:"<b>Effervescence.</b> CO₂ is given off, so a carboxylic acid is present — consistent with "+
+      "salicylic acid, but again not the phthalein test.",
+    nomsg:"<b>No effervescence.</b> No carboxylic acid in the flask." }
+};
+function runSTest(k){
+  var t=STEST[k], cur=R2[i2];
+  document.querySelectorAll("#stests button").forEach(function(b){
+    b.setAttribute("aria-pressed", b.dataset.t===k?"true":"false"); });
+  var pass;
+  if(k==="nahco3") pass = /COOH|COO/.test(JSON.stringify(cur.subs));
+  else pass = cur.oh && (!t.needPara || cur.para.indexOf("free")===0);
+  var v=$("stestv");
+  v.className="verdict "+(pass?"ok":"no");
+  v.innerHTML = pass ? t.okmsg : t.nomsg;
+  var sw=$("swatch");
+  sw.style.background = pass ? t.colour : "var(--surface-2)";
+  sw.style.color = pass ? "#fff" : "var(--text-muted)";
+  sw.textContent = pass ? (k==="phthalein" ? "pink phthalein in alkali"
+                        : k==="fecl3" ? "violet complex" : "CO₂ bubbles")
+                        : "no colour";
+  if(k==="phthalein" && pass){
+    markTested("B");
+    note("Phthalein dye test on <b>salicylic acid</b>: <b>positive</b> — its para position (C5) is free, which is what the test requires.");
+  }
+}
+
+/* ---- what Q meets ---- */
+var FATE = {
+  couple:{ ok:true, title:"T — the azo dye",
+    msg:"Azo coupling. In alkali S becomes the phenoxide, a very strong activator, and the weakly "+
+        "electrophilic diazonium attacks para to it, at C5. The two rings are now joined by −N=N−.",
+    draw:"T" },
+  ethanol:{ ok:false, title:"nitrobenzene + acetaldehyde",
+    msg:"Ethanol <em>reduces</em> the diazonium salt: the −N₂⁺ leaves as nitrogen and is replaced by "+
+        "hydrogen, while the ethanol is oxidised to <b>acetaldehyde</b>. An aldehyde, yes — but "+
+        "CH₃CHO is aliphatic. There is no aromatic aldehyde anywhere in this reaction.",
+    draw:"EtOH" },
+  water:{ ok:false, title:"p-nitrophenol",
+    msg:"Warm water hydrolyses the diazonium group to −OH. This is why diazotisation is run at "+
+        "273–278 K in the first place.", draw:"H2O" },
+  cui:{ ok:false, title:"p-nitrobenzonitrile",
+    msg:"Sandmeyer-type substitution puts a −CN in place of the diazonium group. Useful, but not T.",
+    draw:"CN" }
+};
+var fateSeen={};
+function runFate(k){
+  fateSeen[k]=true;
+  var f=FATE[k];
+  document.querySelectorAll("#qfate button").forEach(function(b){
+    b.setAttribute("aria-pressed", b.dataset.f===k?"true":"false"); });
+  var v=$("fatev");
+  v.className="verdict "+(f.ok?"ok":"no");
+  v.innerHTML="<b>"+f.title+".</b> "+f.msg;
+
+  var svg=$("fatesvg"); clear(svg);
+  if(k==="couple"){
+    /* salicylic acid: COOH on C1 (pos 0), OH on C2 (pos 5); the azo enters para to
+       the OH, i.e. at pos 2 — the position the coupling actually uses. */
+    var L=ring(svg,150,105,48,[{pos:0,text:"COOH",col:"--s2",fs:13,len:20},
+                               {pos:5,text:"OH",col:"--s3",len:20,mark:"--s3"}]);
+    var Rr=ring(svg,455,160,48,[{pos:2,text:"NO₂",col:"--s2",len:20}]);
+    var a=L[2], bq=Rr[5];
+    var n1=[a[0]+(bq[0]-a[0])*0.33, a[1]+(bq[1]-a[1])*0.33];
+    var n2=[a[0]+(bq[0]-a[0])*0.67, a[1]+(bq[1]-a[1])*0.67];
+    function seg(p,q,off){
+      var dx=q[0]-p[0], dy=q[1]-p[1], m=Math.sqrt(dx*dx+dy*dy);
+      var nx=-dy/m*(off||0), ny=dx/m*(off||0);
+      svg.appendChild(el("line",{x1:p[0]+nx,y1:p[1]+ny,x2:q[0]+nx,y2:q[1]+ny,
+        stroke:css("--s4"),"stroke-width":2.3,"stroke-linecap":"round"}));
+    }
+    seg(a,[n1[0]-9,n1[1]-2]); seg([n2[0]+9,n2[1]+2],bq);
+    seg([n1[0]+8,n1[1]+1],[n2[0]-8,n2[1]-1], 3.5);
+    seg([n1[0]+8,n1[1]+1],[n2[0]-8,n2[1]-1],-3.5);
+    label(svg,n1[0],n1[1]+5,"N","--s4",17);
+    label(svg,n2[0],n2[1]+5,"N","--s4",17);
+    label(svg,310,236,"T · azo dye · C₁₃H₉N₃O₅ · coupled at C5, para to the phenolic OH",
+          "--text-secondary",12.5);
+  } else if(k==="EtOH" || k==="ethanol"){
+    ring(svg,170,120,52,[{pos:3,text:"NO₂",col:"--s2"}]);
+    label(svg,170,215,"nitrobenzene","--text-secondary",13);
+    label(svg,330,118,"+","--text-muted",20);
+    label(svg,450,100,"CH₃CHO","--s1",22);
+    label(svg,450,132,"acetaldehyde — aliphatic","--bad",13);
+    label(svg,450,215,"no aromatic aldehyde anywhere","--bad",13);
+  } else if(k==="water"){
+    ring(svg,290,120,52,[{pos:0,text:"OH",col:"--s3"},{pos:3,text:"NO₂",col:"--s2"}]);
+    label(svg,290,215,"p-nitrophenol","--text-secondary",13);
+  } else {
+    ring(svg,290,120,52,[{pos:0,text:"CN",col:"--s4"},{pos:3,text:"NO₂",col:"--s2"}]);
+    label(svg,290,215,"p-nitrobenzonitrile","--text-secondary",13);
+  }
+  if(k==="ethanol"){
+    markTested("A");
+    note("Q + ethanol gave <b>nitrobenzene + acetaldehyde</b> — the aldehyde is aliphatic, so no aromatic aldehyde is produced.");
+  }
+  if(k==="couple"){
+    note("Q + S in aqueous NaOH coupled at C5 to give <b>T</b>, an −N=N− bridged azo compound.");
+  }
+}
+
+/* ---- colour / conjugation ---- */
+var CONJ = [
+  { n:1, lam:318, name:"benzene ring + N=N only",      vis:false },
+  { n:2, lam:385, name:"2 rings + N=N",                vis:false },
+  { n:3, lam:438, name:"+ the −OH donor",              vis:true  },
+  { n:4, lam:495, name:"+ the −NO₂ acceptor (this is T)", vis:true }
+];
+var VISNAME = [[380,450,"violet","yellow-green"],[450,495,"blue","orange-yellow"],
+               [495,570,"green","red-purple"],[570,590,"yellow","violet"],
+               [590,620,"orange","blue"],[620,750,"red","blue-green"]];
+function colourFor(l){
+  for(var i=0;i<VISNAME.length;i++) if(l>=VISNAME[i][0]&&l<VISNAME[i][1]) return VISNAME[i];
+  return null;
+}
+function renderColour(v){
+  var c=CONJ[v-1];
+  $("conjv").textContent=c.name;
+  var lo=380, hi=750, pct=clamp((c.lam-lo)/(hi-lo)*100, 0, 96);
+  var band=$("band");
+  band.style.left=pct.toFixed(1)+"%"; band.style.width="7%";
+  band.style.opacity = c.lam<lo ? 0.15 : 1;
+  var nm=colourFor(c.lam);
+  $("speccap").textContent = c.lam<lo ? "absorption is still in the ultraviolet — colourless"
+                                      : "absorbing at "+c.lam+" nm";
+  $("ro-lam").textContent=c.lam;
+  $("ro-cab").textContent= nm?nm[2]:"UV";
+  $("ro-cse").textContent= nm?nm[3]:"none — colourless";
+  var vv=$("colv");
+  if(v===4){
+    vv.className="verdict ok";
+    vv.innerHTML="<b>T absorbs at about "+c.lam+" nm — in the visible.</b> The donor −OH at one end and "+
+      "the acceptor −NO₂ at the other, bridged by −N=N−, make one long push–pull conjugated system. "+
+      "That narrows the HOMO–LUMO gap until the absorption crosses out of the UV, and the compound looks "+
+      (nm?nm[3]:"coloured")+". Statement (D) holds.";
+    markTested("D");
+    note("Conjugation bench: extending to the full push–pull azo system moved the absorption to <b>"+
+         c.lam+" nm</b>, inside the visible — <b>T is coloured</b>.");
+  } else {
+    vv.className="verdict";
+    vv.innerHTML="Keep extending the conjugation. A dye is simply a molecule whose absorption has moved "+
+      "far enough to the red to leave the ultraviolet.";
+  }
+}
+
+/* ======================================================================
+   THE PRINTED SCHEME
+   ====================================================================== */
+function drawScheme(){
+  var svg=$("scheme"); clear(svg);
+  ring(svg,70,80,38,[{pos:0,text:"NH₂",col:"--s1",fs:13,len:20}]);
+  label(svg,300,50,"1. (CH₃CO)₂O, pyridine","--text-secondary",12.5);
+  label(svg,300,70,"2. conc. HNO₃, conc. H₂SO₄, 288 K","--text-secondary",12.5);
+  arrow(svg,175,84,430,84);
+  label(svg,455,90,"P","--accent",22,"start");
+  label(svg,620,48,"1. H₃O⁺","--text-secondary",12.5);
+  label(svg,620,68,"2. NaNO₂/HCl, 273–278 K","--text-secondary",12.5);
+  arrow(svg,510,84,730,84);
+  label(svg,755,90,"Q","--accent",22,"start");
+
+  ring(svg,80,215,38,[{pos:0,text:"CH(CH₃)₂",col:"--text-primary",fs:12,len:18}]);
+  label(svg,300,176,"1. O₂/H₃O⁺","--text-secondary",12.5);
+  label(svg,300,196,"2. NaOH/CO₂","--text-secondary",12.5);
+  label(svg,300,216,"3. H₃O⁺","--text-secondary",12.5);
+  arrow(svg,185,228,430,228);
+  label(svg,455,235,"S","--accent",22,"start");
+  label(svg,600,196,"Q","--accent",16);
+  label(svg,600,255,"aqueous NaOH","--text-secondary",12.5);
+  arrow(svg,510,228,700,228);
+  label(svg,725,235,"T","--accent",22,"start");
+}
+function arrow(svg,x1,y,x2,y2){
+  svg.appendChild(el("line",{x1:x1,y1:y,x2:x2-9,y2:y2,stroke:css("--text-primary"),"stroke-width":1.8}));
+  svg.appendChild(el("path",{d:"M"+(x2-11)+" "+(y2-5)+"L"+x2+" "+y2+"L"+(x2-11)+" "+(y2+5)+"Z",
+    fill:css("--text-primary")}));
+}
+
+/* ======================================================================
+   OPTIONS + ANSWER
+   ====================================================================== */
+var OPT = {
+  A:{ label:"Q + ethanol gives an aromatic aldehyde", verdict:"no",
+      shortq:"Q on treatment with ethanol generates an aromatic aldehyde. Correct?",
+      why:"Ethanol reduces the diazonium to nitrobenzene and is itself oxidised to acetaldehyde — an aliphatic aldehyde, not an aromatic one." },
+  B:{ label:"S gives a positive phthalein dye test", verdict:"yes",
+      shortq:"S gives positive phthalein dye test. Correct?",
+      why:"S is salicylic acid: a phenol whose para position (C5) is free, which is exactly what condensation with phthalic anhydride needs." },
+  C:{ label:"P is a dinitro compound", verdict:"no",
+      shortq:"P is a dinitro compound. Correct?",
+      why:"P is p-nitroacetanilide with a single −NO₂. The acetyl group is there precisely to hold the nitration to one substitution." },
+  D:{ label:"T is a coloured compound", verdict:"yes",
+      shortq:"T is a coloured compound. Correct?",
+      why:"T is an azo dye: −N=N− bridging a donor-substituted and an acceptor-substituted ring, absorbing in the visible." }
+};
+var ANSWER = { text:"(B) and (D)",
+  sub:"P = p-nitroacetanilide · Q = diazonium salt · S = salicylic acid · T = azo dye",
+  intro:"Here is the derivation behind what you found." };
+var LOCKED_SUB = "Walk both routes and run the benches to unlock.";
+
+/* ======================================================================
+   WIRING
+   ====================================================================== */
+$("r1next").addEventListener("click", function(){ if(i1<R1.length-1){ i1++; renderRoute(1); } });
+$("r1back").addEventListener("click", function(){ if(i1>0){ i1--; renderRoute(1); } });
+$("r1reset").addEventListener("click", function(){ i1=0; renderRoute(1); });
+$("r2next").addEventListener("click", function(){ if(i2<R2.length-1){ i2++; renderRoute(2); } });
+$("r2back").addEventListener("click", function(){ if(i2>0){ i2--; renderRoute(2); } });
+$("r2reset").addEventListener("click", function(){ i2=0; renderRoute(2); });
+$("protsel").addEventListener("click", function(e){
+  var b=e.target.closest("button"); if(!b) return;
+  this.querySelectorAll("button").forEach(function(o){ o.setAttribute("aria-pressed","false"); });
+  b.setAttribute("aria-pressed","true"); protect=b.dataset.p==="1"; renderProt();
+});
+$("stests").addEventListener("click", function(e){
+  var b=e.target.closest("button"); if(!b) return; runSTest(b.dataset.t); });
+$("qfate").addEventListener("click", function(e){
+  var b=e.target.closest("button"); if(!b) return; runFate(b.dataset.f); });
+$("conj").addEventListener("input", function(){ renderColour(+this.value); });
+
+wireCommon(function(){
+  drawScheme(); renderRoute(1); renderRoute(2);
+  var pressed=document.querySelector("#qfate button[aria-pressed=true]");
+  if(pressed) runFate(pressed.dataset.f);
+});
+
+drawScheme(); renderRoute(1); renderRoute(2); renderProt(); renderColour(1);
+renderPredict(); drawMatrix(); updateGate();
+
+})();
+</script>
+</body>
+</html>

@@ -200,3 +200,6 @@ so the PDFs cannot leak through a future edit by accident.
 | `ADV-2026-P2-CHE-Q03` | 2026 | 2 | Chemistry | Aldehydes, Ketones and Carboxylic Acids | Q.3 | (A) |
 | `ADV-2026-P2-CHE-Q04` | 2026 | 2 | Chemistry | Biomolecules | Q.4 | (A) |
 | `ADV-2026-P2-CHE-Q05` | 2026 | 2 | Chemistry | Chemical Kinetics | Q.5 | (C) and (D) |
+| `ADV-2026-P2-CHE-Q06` | 2026 | 2 | Chemistry | The p-Block Elements (Group 18) | Q.6 | (A), (C), (D) |
+| `ADV-2026-P2-CHE-Q07` | 2026 | 2 | Chemistry | Classification of Elements and Periodicity | Q.7 | (A) and (B) |
+| `ADV-2026-P2-CHE-Q08` | 2026 | 2 | Chemistry | Amines and Diazonium Salts | Q.8 | (B) and (D) |
