@@ -25,6 +25,7 @@ tools/
   sync_manifest.py             rebuild counts + regenerate manifest.js from manifest.json
   check_library.py             validate every manifest path, id, metadata match and count
 publish.sh                     validate, commit and push to GitHub (one command)
+.github/workflows/static.yml   GitHub Pages deploy workflow — do not delete
 .nojekyll                      tells GitHub Pages to serve the files as-is
 papers/
   adv_2026_paper_2.pdf         source question papers
@@ -158,12 +159,18 @@ that run, the repository matches this folder exactly.
 If you would rather not use the script: `git add -A && git commit -m "..." && git push` does the same
 thing, minus the safety checks.
 
+**Nothing on GitHub is ever deleted by the script.** Anything that exists in the repository but not in this
+folder — the Pages workflow, a LICENSE, a CNAME, anything added through the GitHub web interface — is pulled
+back into the folder and committed before the push. For files that exist in both places, this folder's
+version wins, and the script lists them so you can see what it is about to overwrite.
+
 ### Deploy it as a static site
 
 The whole project folder *is* the site — deploy it as-is, with `index.html` at the web root so the
 manifest's relative paths resolve. No build step.
 
-- **GitHub Pages** — push the folder to a repo, then Settings → Pages → deploy from branch root.
+- **GitHub Pages** — already set up. `.github/workflows/static.yml` uploads the whole repository and
+  deploys it on every push to `main`. Leave that file alone; `publish.sh` protects it (see below).
 - **Netlify / Vercel / Cloudflare Pages** — drag the folder in, or connect the repo. Build command: none.
   Publish directory: the project root.
 - **Any static host or S3 bucket** — upload the folder, serve `index.html` as the index document.

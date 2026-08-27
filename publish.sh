@@ -14,6 +14,10 @@
 #  If the library check fails it stops before pushing, so a broken simulation
 #  never reaches the live site.
 #
+#  Files that exist on GitHub but not in this folder (the GitHub Pages workflow,
+#  LICENSE, CNAME, anything added through the web interface) are pulled in and
+#  kept. Nothing on GitHub is ever deleted by this script.
+#
 #  First run only: it links this folder to your GitHub repository.
 # =============================================================================
 set -euo pipefail
@@ -82,22 +86,41 @@ if ! git rev-parse --quiet --verify HEAD >/dev/null 2>&1; then
 fi
 
 # ------------------------------------- 4. reconcile with history already on GitHub
+#  Anything that exists on GitHub but not in this folder is PULLED IN and kept —
+#  never deleted. That protects .github/workflows/*, LICENSE, CNAME and anything
+#  else added through the GitHub web interface.
 if [ "$REMOTE_HAS_BRANCH" = yes ]; then
   git fetch -q origin "$BRANCH"
   if ! git merge-base --is-ancestor "origin/$BRANCH" HEAD 2>/dev/null; then
-    say "GitHub has history this folder does not know about"
-    ONLY_REMOTE="$(git diff --name-only HEAD "origin/$BRANCH" -- 2>/dev/null \
-                   | while read -r f; do [ -e "$f" ] || echo "$f"; done)"
+
+    ONLY_REMOTE=""
+    while IFS= read -r f; do
+      [ -e "$f" ] || ONLY_REMOTE="$ONLY_REMOTE$f"$'\n'
+    done < <(git ls-tree -r --name-only "origin/$BRANCH")
+
     if [ -n "$ONLY_REMOTE" ]; then
-      warn "These files exist on GitHub but NOT in this folder:"
-      printf '     %s\n' $ONLY_REMOTE
-      warn "Publishing will remove them from the repository."
-      read -rp "Continue and make GitHub match this folder? [y/N] " OK
-      case "$OK" in [yY]*) ;; *) warn "Stopped. Nothing pushed."; exit 1 ;; esac
-    else
-      echo "    Nothing on GitHub is missing here — safe to proceed."
+      say "Preserving files that exist on GitHub but not in this folder"
+      while IFS= read -r f; do
+        [ -z "$f" ] && continue
+        echo "    keeping  $f"
+        mkdir -p "$(dirname "$f")"
+        git checkout "origin/$BRANCH" -- "$f"
+      done <<< "$ONLY_REMOTE"
+      git add -A
+      if ! git diff --cached --quiet; then
+        git commit -q -m "Preserve files already on GitHub (GitHub Pages workflow and friends)"
+        git --no-pager log --oneline -1
+      fi
     fi
-    # keep the remote history as a parent, keep this folder's content as the result
+
+    DIFFERING="$(git diff --name-only HEAD "origin/$BRANCH" 2>/dev/null || true)"
+    if [ -n "$DIFFERING" ]; then
+      echo
+      echo "    These files exist in both places; this folder's version wins:"
+      printf '      %s\n' $DIFFERING
+    fi
+
+    # remote history becomes a parent; this folder's content is the result
     git merge -q -s ours --allow-unrelated-histories \
       -m "Merge existing GitHub history; this folder is authoritative" "origin/$BRANCH"
   fi
