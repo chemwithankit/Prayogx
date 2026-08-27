@@ -11,10 +11,10 @@ window.SIM_MANIFEST = {
     "tracker": {
       "type": "Google Sheet",
       "title": "PrayogX — Simulation Progress Tracker",
-      "id": "1UpAAvc8vkKIKPgdpdMvYrlZGd9SRbvn8HkQR7R9HLIE",
-      "url": "https://docs.google.com/spreadsheets/d/1UpAAvc8vkKIKPgdpdMvYrlZGd9SRbvn8HkQR7R9HLIE/edit",
+      "id": "1_DYTqW7x_d6Ris8g010AziCiNE5Nm7cSNAx3Hd48B2g",
+      "url": "https://docs.google.com/spreadsheets/d/1_DYTqW7x_d6Ris8g010AziCiNE5Nm7cSNAx3Hd48B2g/edit",
       "localSource": "data/tracker.csv",
-      "note": "data/tracker.csv is the local source of truth. The Drive connector cannot append rows to an existing sheet, so the sheet is recreated from the CSV on each update and its URL changes; always take the URL from here.",
+      "note": "data/tracker.csv is the local source of truth. The Drive connector cannot append rows to an existing sheet, so the sheet is recreated from the CSV on each update and its URL changes; always take the URL from here. When uploading, replace the '; ' list separators with ' · ' first - Drive's CSV importer picks whichever of comma or semicolon is more frequent, and semicolons otherwise win and collapse every row into one cell.",
       "syncedAt": "2026-08-27"
     },
     "fullName": "PrayogX — JEE Advanced Interactive Simulation Library",
