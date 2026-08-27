@@ -1,4 +1,16 @@
-# Simple workflow for deploying static content to GitHub Pages
+# Deploy the PrayogX static site to GitHub Pages
+#
+# Only the website and the simulation assets it serves are deployed. Working
+# files stay in the repository but are never published:
+#   papers/           source exam PDFs - deliberately not public
+#   tools/            maintenance scripts
+#   templates/        the authoring shell for new simulations
+#   data/tracker.csv  internal progress tracker
+#   README.md, publish.sh
+#
+# The exclude list is deliberately a *deny* list, not an allow list, so a new
+# simulation folder or a new site asset is published automatically with no
+# change to this file.
 name: Deploy static content to Pages
 
 on:
@@ -31,13 +43,46 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Assemble the site
+        run: |
+          mkdir -p _site
+          tar -cf - \
+            --exclude='./.git' \
+            --exclude='./.github' \
+            --exclude='./_site' \
+            --exclude='./papers' \
+            --exclude='./tools' \
+            --exclude='./templates' \
+            --exclude='./data/tracker.csv' \
+            --exclude='./publish.sh' \
+            --exclude='./README.md' \
+            --exclude='./.gitignore' \
+            --exclude='.DS_Store' \
+            . | tar -xf - -C _site
+
+      - name: Fail if anything private slipped into the deploy
+        run: |
+          if [ -e _site/papers ]; then
+            echo "::error::papers/ must never be deployed"
+            exit 1
+          fi
+          if find _site -iname '*.pdf' | grep -q .; then
+            echo "::error::a PDF reached the deploy directory:"
+            find _site -iname '*.pdf'
+            exit 1
+          fi
+          echo "Deploying:"
+          find _site -maxdepth 2 -mindepth 1 | sort
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Upload entire repository
-          path: '.'
+          path: '_site'
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v5
