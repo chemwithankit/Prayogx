@@ -204,3 +204,4 @@ so the PDFs cannot leak through a future edit by accident.
 | `ADV-2026-P2-CHE-Q07` | 2026 | 2 | Chemistry | Classification of Elements and Periodicity | Q.7 | (A) and (B) |
 | `ADV-2026-P2-CHE-Q08` | 2026 | 2 | Chemistry | Amines and Diazonium Salts | Q.8 | (B) and (D) |
 | `ADV-2026-P2-CHE-Q09` | 2026 | 2 | Chemistry | Biomolecules | Q.9 | (B) and (C) |
+| `ADV-2026-P2-CHE-Q10` | 2026 | 2 | Chemistry | Atomic Structure | Q.10 | 3 |

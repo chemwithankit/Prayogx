@@ -1,0 +1,2295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ADV-2026-P2-CHE-Q10 · Virtual Atomic Spectroscopy Lab</title>
+<meta name="description" content="Interactive atomic spectroscopy lab for JEE Advanced 2026 Paper 2 Chemistry Q10: build a hydrogen-like ion, fire photons at it, watch the electron jump, hunt the nine-times wavelength ratio and count protons and electrons to get a + b.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232a78d6'/%3E%3Cpath d='M12.5 6.5h7M13.6 6.5v7.2L7.9 24.1a1.5 1.5 0 0 0 1.3 2.3h13.6a1.5 1.5 0 0 0 1.3-2.3l-5.7-10.4V6.5' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M10.6 20.6h10.8' stroke='white' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E">
+<meta name="sim-id" content="ADV-2026-P2-CHE-Q10">
+<style>
+:root{
+  color-scheme: light;
+  --surface-0:#f4f4f1; --surface-1:#fcfcfb; --surface-2:#ececea;
+  --line:#d9d9d4; --line-strong:#bcbcb5;
+  --text-primary:#0b0b0b; --text-secondary:#52514e; --text-muted:#77766f;
+  --s1:#2a78d6; --s2:#eb6834; --s3:#1baf7a; --s4:#4a3aa7;
+  --good:#00743f; --bad:#c0392b; --accent:#2a78d6;
+  --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+  --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --serif:ui-serif,Georgia,"Times New Roman",serif;
+  --radius:10px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  color-scheme: dark;
+  --surface-0:#111110; --surface-1:#1a1a19; --surface-2:#232322;
+  --line:#34342f; --line-strong:#4a4a44;
+  --text-primary:#ffffff; --text-secondary:#c3c2b7; --text-muted:#95948b;
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#9085e9;
+  --good:#3fae7a; --bad:#e66767; --accent:#3987e5;
+}}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --surface-0:#111110; --surface-1:#1a1a19; --surface-2:#232322;
+  --line:#34342f; --line-strong:#4a4a44;
+  --text-primary:#ffffff; --text-secondary:#c3c2b7; --text-muted:#95948b;
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#9085e9;
+  --good:#3fae7a; --bad:#e66767; --accent:#3987e5;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--surface-0);color:var(--text-primary);font-family:var(--sans);
+  font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px 80px}
+
+header.top{border-bottom:1px solid var(--line);background:var(--surface-1)}
+.top-inner{max-width:1120px;margin:0 auto;padding:22px 20px 18px;position:relative;
+  display:flex;flex-wrap:wrap;gap:16px;align-items:flex-start;justify-content:space-between}
+.simid{font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--text-muted)}
+h1{font-size:23px;line-height:1.25;margin:6px 0 10px;font-weight:640;max-width:640px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-size:11.5px;padding:3px 9px;border:1px solid var(--line-strong);border-radius:999px;
+  color:var(--text-secondary);background:var(--surface-2);white-space:nowrap}
+.chip.k{border-color:var(--accent);color:var(--accent);background:transparent}
+.answerbox{border:1px solid var(--line-strong);border-radius:var(--radius);background:var(--surface-2);
+  padding:12px 16px;min-width:210px}
+.answerbox .lbl{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted)}
+.answerbox .val{font-family:var(--mono);font-size:25px;font-weight:600;color:var(--good);line-height:1.22}
+.answerbox .sub{font-size:12px;color:var(--text-secondary)}
+.answerbox.locked .val{color:var(--text-muted);font-size:17px;letter-spacing:.04em}
+.answerbox .rv{margin-top:6px;font-size:11px;background:none;border:none;padding:0;color:var(--accent);
+  cursor:pointer;text-decoration:underline;font-family:var(--sans)}
+.themebtn{position:absolute;top:14px;right:16px;border:1px solid var(--line-strong);background:var(--surface-2);
+  color:var(--text-secondary);border-radius:8px;padding:4px 9px;font-size:12px;cursor:pointer}
+.brandbar{display:flex;align-items:center;gap:8px;margin-bottom:9px;text-decoration:none}
+.brandbar .pxmark{width:21px;height:21px;flex:none;display:block}
+.brandbar .wm{font-size:13px;font-weight:800;letter-spacing:.17em;color:var(--text-secondary);line-height:1}
+.brandbar .wm i{font-style:normal;color:var(--accent)}
+
+nav.jump{position:sticky;top:0;z-index:20;background:var(--surface-0);border-bottom:1px solid var(--line);
+  padding:8px 0;margin-bottom:26px}
+nav.jump ul{max-width:1120px;margin:0 auto;padding:0 20px;list-style:none;display:flex;gap:4px;overflow-x:auto}
+nav.jump a{display:block;padding:5px 11px;border-radius:7px;font-size:13px;text-decoration:none;
+  color:var(--text-secondary);white-space:nowrap}
+nav.jump a:hover{background:var(--surface-2);color:var(--text-primary)}
+
+section{margin:0 0 42px;scroll-margin-top:56px}
+h2{font-size:17px;font-weight:640;margin:0 0 4px;display:flex;align-items:baseline;gap:9px}
+h2 .n{font-family:var(--mono);font-size:12px;color:var(--text-muted);font-weight:400}
+.lede{color:var(--text-secondary);font-size:13.5px;margin:0 0 16px;max-width:76ch}
+.card,.panel{background:var(--surface-1);border:1px solid var(--line);border-radius:var(--radius);padding:18px}
+.panel h3{margin:0 0 12px;font-size:13px;letter-spacing:.05em;text-transform:uppercase;
+  color:var(--text-muted);font-weight:600}
+.lab{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:16px;align-items:start}
+.lab>*{min-width:0}
+@media(max-width:900px){.lab{grid-template-columns:1fr !important}}
+canvas{display:block;width:100%;height:auto;border-radius:8px;background:var(--surface-2)}
+
+.qtext{font-family:var(--serif);font-size:16px;line-height:1.7}
+.opts{list-style:none;padding:0;margin:16px 0 0;display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr));gap:10px}
+.opts li{border:1px solid var(--line);border-radius:10px;padding:10px;background:var(--surface-1);
+  display:flex;flex-direction:column;gap:6px}
+.opts li .hd{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--text-muted);font-family:var(--mono)}
+.opts li .mark{margin-left:auto;font-family:var(--sans);font-size:11.5px;font-weight:600}
+.opts li .nm{font-size:11.5px;color:var(--text-secondary)}
+.opts li.correct{border-color:var(--good);background:color-mix(in srgb,var(--good) 11%,transparent)}
+.opts li.correct .mark{color:var(--good)}
+.opts li.wrong{border-color:var(--bad)}
+.opts li.wrong .mark{color:var(--bad)}
+svg.optthumb{display:block;width:100%;height:auto;background:var(--surface-2);border-radius:7px}
+
+.ctrl{margin:14px 0}
+.ctrl label{display:flex;flex-wrap:wrap;gap:4px;justify-content:space-between;align-items:baseline;
+  font-size:13px;margin-bottom:5px}
+.ctrl label span{min-width:0}
+.ctrl label .v{font-family:var(--mono);font-size:13px;color:var(--text-primary)}
+input[type=range]{width:100%;min-width:0;accent-color:var(--accent)}
+.numrow{display:flex;gap:6px;align-items:center;margin-top:6px}
+.numrow input.numin{flex:1;min-width:0;padding:7px 9px;border-radius:7px;border:1px solid var(--line-strong);
+  background:var(--surface-0);color:var(--text-primary);font-family:var(--mono);font-size:13px}
+.numrow input.numin:focus{outline:2px solid var(--accent);outline-offset:-1px}
+.numrow input.numin.bad{border-color:var(--bad);background:color-mix(in srgb,var(--bad) 9%,transparent)}
+.numrow button.step{flex:none;width:40px;height:34px;border-radius:8px;border:1px solid var(--line-strong);
+  background:var(--surface-2);color:var(--text-primary);font-size:18px;line-height:1;cursor:pointer;
+  font-family:var(--mono);touch-action:manipulation}
+.numrow button.step:hover{border-color:var(--accent);color:var(--accent)}
+.numrow .unit{flex:none;font-size:12px;color:var(--text-muted);min-width:52px}
+.hint{font-size:11.5px;color:var(--text-muted);margin-top:4px;min-height:1.15em}
+.hint.bad{color:var(--bad);font-weight:600}
+.segbtns{display:flex;gap:6px;flex-wrap:wrap}
+.segbtns button{flex:1;min-width:84px;padding:8px 6px;border-radius:8px;border:1px solid var(--line-strong);
+  background:var(--surface-2);color:var(--text-secondary);font-size:13px;cursor:pointer;font-family:var(--sans)}
+.segbtns button[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:650}
+button.act{padding:8px 14px;border-radius:8px;border:1px solid var(--line-strong);background:var(--surface-2);
+  color:var(--text-primary);font-size:13px;cursor:pointer;font-family:var(--sans)}
+button.act:hover{border-color:var(--accent);color:var(--accent)}
+button.act.primary{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+button.act:disabled{opacity:.42;cursor:not-allowed}
+.btnrow{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+
+.playback{display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin-top:12px;
+  padding:9px 10px;border:1px solid var(--line);border-radius:9px;background:var(--surface-2)}
+.playback .lb{font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-muted);margin-right:2px}
+.playback button{padding:6px 12px;border-radius:7px;border:1px solid var(--line-strong);
+  background:var(--surface-1);color:var(--text-secondary);font-size:12.5px;cursor:pointer;font-family:var(--mono)}
+.playback button[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:700}
+.playback button:hover{border-color:var(--accent)}
+
+.readouts{display:grid;grid-template-columns:repeat(auto-fit,minmax(118px,1fr));gap:8px}
+.ro{border:1px solid var(--line);border-radius:8px;padding:8px 10px;background:var(--surface-2);position:relative}
+.ro .k{font-size:11px;letter-spacing:.03em;font-weight:600;color:var(--text-muted);white-space:nowrap}
+.ro .v{font-family:var(--mono);font-size:16px;font-weight:600;line-height:1.35}
+.ro .u{font-size:10.5px;color:var(--text-muted)}
+.delta{position:absolute;top:5px;right:7px;font-family:var(--mono);font-size:10.5px;font-weight:700;
+  padding:1px 5px;border-radius:5px;opacity:0;transition:opacity .55s ease-out;pointer-events:none}
+.delta.up{color:var(--good);background:color-mix(in srgb,var(--good) 16%,transparent)}
+.delta.down{color:var(--s2);background:color-mix(in srgb,var(--s2) 16%,transparent)}
+.delta.show{opacity:1;transition:opacity .1s}
+
+.eqlive{font-family:var(--serif);font-size:15px;background:var(--surface-2);border:1px solid var(--line);
+  border-radius:8px;padding:11px 13px;margin-top:12px;line-height:2.1}
+.eqlive .t{font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-muted);
+  font-family:var(--sans);display:block;margin-bottom:2px}
+.eqlive b{font-family:var(--mono);font-weight:700}
+.eqlive .chg{background:color-mix(in srgb,var(--accent) 26%,transparent);border-radius:4px;padding:0 3px}
+.eqlive .res{color:var(--good);font-weight:700;font-family:var(--mono)}
+
+.chartwrap{position:relative;background:var(--surface-1);border:1px solid var(--line);
+  border-radius:var(--radius);padding:16px}
+svg.chart{display:block;width:100%;height:auto;overflow:visible}
+.tip{position:absolute;pointer-events:none;background:var(--surface-1);border:1px solid var(--line-strong);
+  border-radius:8px;padding:8px 11px;font-size:12px;box-shadow:0 4px 14px rgba(0,0,0,.13);opacity:0;
+  transition:opacity .1s;z-index:5;min-width:150px}
+.tip .t{font-family:var(--mono);font-size:11px;color:var(--text-muted);margin-bottom:4px}
+.tip .r{display:flex;align-items:center;gap:7px;white-space:nowrap}
+.tip .sw{width:9px;height:9px;border-radius:2px;flex:none}
+.tip .rv{margin-left:auto;font-family:var(--mono);font-weight:600}
+.legend{display:flex;flex-wrap:wrap;gap:14px;margin-top:10px;font-size:12.5px;color:var(--text-secondary)}
+.legend span{display:flex;align-items:center;gap:6px}
+.legend i{width:14px;height:3px;border-radius:2px;display:block}
+.legend i.dot{width:9px;height:9px;border-radius:50%}
+
+.predict{border:1px solid var(--accent);border-radius:9px;padding:12px 14px;margin-top:14px;
+  background:color-mix(in srgb,var(--accent) 7%,transparent)}
+.predict .q{font-size:13px;font-weight:600;margin-bottom:8px}
+.predict .row{display:flex;gap:6px;flex-wrap:wrap}
+.predict button{flex:1;min-width:96px;padding:8px;border-radius:8px;border:1px solid var(--line-strong);
+  background:var(--surface-1);color:var(--text-primary);font-size:13px;cursor:pointer}
+.predict button[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+.predict .fb{font-size:12.5px;margin-top:9px;min-height:1.2em}
+.predict .fb.ok{color:var(--good);font-weight:600}
+.predict .fb.no{color:var(--bad);font-weight:600}
+
+table.data{border-collapse:collapse;font-size:12.5px;width:100%}
+table.data th,table.data td{border:1px solid var(--line-strong);padding:6px 9px;text-align:center}
+table.data th{background:var(--surface-2);font-weight:600;font-size:11.5px;color:var(--text-secondary)}
+table.data td.l{text-align:left}
+table.data td.num{font-family:var(--mono)}
+tr.win td{background:color-mix(in srgb,var(--good) 12%,transparent);font-weight:600}
+.scrollx{overflow-x:auto}
+.yes{color:var(--good);font-weight:700} .no{color:var(--bad);font-weight:700}
+.empty{color:var(--text-muted);font-size:12.5px;padding:10px 0}
+
+.nb{display:grid;gap:7px}
+.nb .obs{font-size:12.5px;padding:8px 11px;border-radius:8px;background:var(--surface-2);
+  border-left:3px solid var(--s1);color:var(--text-secondary);animation:nbin .35s ease-out}
+.nb .obs b{color:var(--text-primary);font-family:var(--mono)}
+@keyframes nbin{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+.insight{border:1px solid var(--good);border-radius:9px;padding:12px 14px;margin-top:12px;
+  background:color-mix(in srgb,var(--good) 10%,transparent);font-size:13.5px;animation:nbin .4s ease-out}
+.insight b{color:var(--good)}
+
+.verdict{border-radius:9px;padding:11px 14px;font-size:13.5px;margin-top:12px;border:1px solid var(--line-strong);
+  background:var(--surface-2)}
+.verdict.ok{border-color:var(--good);background:color-mix(in srgb,var(--good) 10%,transparent)}
+.verdict.no{border-color:var(--bad);background:color-mix(in srgb,var(--bad) 9%,transparent)}
+.verdict b{font-size:14px}
+
+.gate{border:1px dashed var(--line-strong);border-radius:var(--radius);padding:24px 20px;text-align:center;
+  background:var(--surface-1)}
+.gate h4{margin:0 0 6px;font-size:15px}
+.gate p{margin:0 0 12px;font-size:13px;color:var(--text-secondary)}
+.gate .cnt{font-family:var(--mono);color:var(--accent);font-weight:700}
+.reveal{animation:nbin .45s ease-out}
+
+ol.steps{list-style:none;counter-reset:s;padding:0;margin:0;display:grid;gap:10px}
+ol.steps li{min-width:0;counter-increment:s;border:1px solid var(--line);border-radius:var(--radius);
+  background:var(--surface-1);padding:14px 16px 14px 52px;position:relative}
+ol.steps li::before{content:counter(s);position:absolute;left:15px;top:14px;width:23px;height:23px;
+  border-radius:50%;background:var(--accent);color:#fff;font-size:12px;font-weight:700;
+  display:grid;place-items:center;font-family:var(--mono)}
+ol.steps h4{margin:0 0 6px;font-size:14px;font-weight:640}
+ol.steps p{margin:0 0 6px;font-size:13.5px;color:var(--text-secondary)}
+.eq{min-width:0;font-family:var(--serif);font-size:15px;background:var(--surface-2);border-radius:7px;
+  padding:9px 13px;margin:8px 0;overflow-x:auto}
+.eq .hl{color:var(--good);font-weight:700}
+sub{font-size:.72em} sup{font-size:.72em}
+.verify{border:1px solid var(--good);border-radius:var(--radius);
+  background:color-mix(in srgb,var(--good) 8%,transparent);padding:14px 16px;font-size:13.5px}
+.verify h4{margin:0 0 6px;font-size:13.5px;color:var(--good)}
+.verify ul{margin:6px 0 0;padding-left:18px;color:var(--text-secondary)}
+.meta-tbl{width:100%;border-collapse:collapse;font-size:13.5px}
+.meta-tbl td{padding:6px 0;border-bottom:1px solid var(--line);vertical-align:top}
+.meta-tbl td:first-child{color:var(--text-muted);width:160px;font-size:12.5px;padding-right:14px}
+footer{border-top:1px solid var(--line);margin-top:40px;padding-top:16px;font-size:12px;color:var(--text-muted)}
+
+.toolbar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;background:var(--surface-1);
+  border:1px solid var(--line);border-radius:var(--radius);padding:12px 14px;margin:0 0 28px}
+.toolbar .mission{flex:1 1 260px;min-width:0;font-size:13px;color:var(--text-secondary)}
+.toolbar .mission b{color:var(--text-primary)}
+.bar{flex:none;display:flex;align-items:center;gap:9px}
+.bar .track{width:120px;height:9px;border-radius:5px;background:var(--surface-2);
+  border:1px solid var(--line-strong);overflow:hidden}
+.bar .track i{display:block;height:100%;background:var(--good);width:0;transition:width .5s ease-out}
+.bar .cnt{font-family:var(--mono);font-size:12.5px;font-weight:700;white-space:nowrap}
+.badges{display:flex;gap:6px;flex-wrap:wrap}
+.badge{font-size:11px;border:1px solid var(--line-strong);border-radius:999px;padding:3px 10px;
+  color:var(--text-muted);background:var(--surface-2);transition:.3s;white-space:nowrap}
+.badge.won{border-color:var(--good);color:var(--good);font-weight:650;
+  background:color-mix(in srgb,var(--good) 12%,transparent)}
+.viz{display:block;width:100%;height:auto;overflow:visible}
+.vizwrap{background:var(--surface-1);border:1px solid var(--line);border-radius:var(--radius);
+  padding:12px;margin-top:12px}
+.vizwrap.wide{padding:12px 10px}
+.caption{font-size:11.5px;color:var(--text-muted);margin-top:7px;text-align:center}
+.info{border-left:3px solid var(--accent);background:var(--surface-2);border-radius:0 8px 8px 0;
+  padding:9px 12px;font-size:12.5px;margin-top:10px;min-height:2.6em;color:var(--text-secondary)}
+.info b{color:var(--text-primary)}
+.pred{border:1px solid var(--accent);border-radius:10px;padding:12px 14px;margin-top:12px;
+  background:color-mix(in srgb,var(--accent) 7%,transparent)}
+.pred .q{font-size:13px;font-weight:650;margin-bottom:8px}
+.pred .opts2{display:grid;gap:6px}
+.pred .opts2 button{text-align:left;padding:8px 11px;border-radius:8px;border:1px solid var(--line-strong);
+  background:var(--surface-1);color:var(--text-primary);font-size:12.5px;cursor:pointer;font-family:var(--sans)}
+.pred .opts2 button:hover{border-color:var(--accent)}
+.pred .opts2 button[aria-pressed=true]{border-color:var(--accent);font-weight:650;
+  background:color-mix(in srgb,var(--accent) 14%,transparent)}
+.pred .fb2{font-size:12.5px;margin-top:8px;min-height:1.2em}
+.pred .fb2.ok{color:var(--good);font-weight:650}
+.pred .fb2.no{color:var(--bad);font-weight:650}
+.hintbox{font-size:12.5px;color:var(--text-secondary);border:1px dashed var(--line-strong);
+  border-radius:8px;padding:9px 12px;margin-top:10px;display:none}
+.hintbox.on{display:block}
+.hintbox b{color:var(--accent)}
+.stamp{display:inline-block;padding:5px 14px;border:2.5px solid var(--bad);color:var(--bad);
+  border-radius:7px;font-weight:800;letter-spacing:.09em;font-size:13px;transform:rotate(-4deg);
+  opacity:0;transition:opacity .5s;margin-top:10px}
+.stamp.ok{border-color:var(--good);color:var(--good)}
+.stamp.show{opacity:1;animation:thump .45s cubic-bezier(.2,1.4,.4,1)}
+@keyframes thump{0%{transform:rotate(-4deg) scale(2.1);opacity:0}60%{opacity:1}
+  100%{transform:rotate(-4deg) scale(1)}}
+.nrow{display:flex;gap:5px;flex-wrap:wrap;margin-top:5px}
+.nrow button{flex:1 1 44px;min-width:44px;padding:7px 4px;border-radius:8px;
+  border:1px solid var(--line-strong);background:var(--surface-2);color:var(--text-secondary);
+  font-family:var(--mono);font-size:13px;cursor:pointer}
+.nrow button[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:#fff;
+  font-weight:700}
+.nrow button:disabled{opacity:.3;cursor:not-allowed}
+.tally{width:100%;border-collapse:collapse;font-size:13px;margin-top:8px}
+.tally td{padding:7px 8px;border-bottom:1px solid var(--line)}
+.tally td:first-child{color:var(--text-muted);font-size:12.5px}
+.tally td:last-child{text-align:right;font-family:var(--mono);font-weight:700;font-size:15px}
+.tally tr.sum td{border-bottom:none;border-top:2px solid var(--line-strong);padding-top:9px}
+.tally tr.sum td:last-child{color:var(--good);font-size:20px}
+.big{font-family:var(--mono);font-size:34px;font-weight:700;text-align:center;line-height:1.1;
+  color:var(--s1);margin:4px 0 2px}
+.big small{display:block;font-size:12px;color:var(--text-muted);font-weight:400;font-family:var(--sans)}
+.big.lock{color:var(--good)}
+.lockmsg{text-align:center;font-size:12.5px;color:var(--text-muted);min-height:1.3em}
+.lockmsg.on{color:var(--good);font-weight:700}
+.trap{border:1px solid var(--line-strong);border-radius:10px;padding:11px 13px;margin-bottom:8px;
+  background:var(--surface-1);cursor:pointer}
+.trap .t{font-size:12.5px;font-weight:650;color:var(--bad)}
+.trap .a{font-size:12.5px;color:var(--text-secondary);margin-top:6px;display:none}
+.trap.open .a{display:block}
+.trap .a b{color:var(--good)}
+.teach{border:1px solid var(--s4);border-radius:var(--radius);padding:14px 16px;margin-top:16px;
+  background:color-mix(in srgb,var(--s4) 8%,transparent);font-size:13.5px;display:none}
+.teach.on{display:block}
+.teach h4{margin:0 0 6px;font-size:13.5px;color:var(--s4)}
+.teach ul{margin:6px 0 0;padding-left:18px;color:var(--text-secondary)}
+.pairs{max-height:186px;overflow-y:auto}
+#celebrate{position:fixed;inset:0;z-index:60;display:none;place-items:center;
+  background:color-mix(in srgb,var(--surface-0) 88%,transparent);backdrop-filter:blur(3px)}
+#celebrate.on{display:grid}
+#celebrate .card{text-align:center;padding:26px 30px;border-radius:16px;background:var(--surface-1);
+  border:1px solid var(--good);box-shadow:0 18px 60px rgba(0,0,0,.28);
+  animation:pop .5s cubic-bezier(.2,1.3,.4,1)}
+@keyframes pop{from{transform:scale(.82);opacity:0}to{transform:none;opacity:1}}
+#celebrate .gr{font-size:clamp(26px,6vw,46px);font-weight:900;letter-spacing:-.02em;line-height:1.05;
+  background:linear-gradient(92deg,var(--s1),var(--s3) 46%,var(--s2));-webkit-background-clip:text;
+  background-clip:text;color:transparent;transform:rotate(-2.5deg);margin-bottom:6px}
+#celebrate .sub{font-size:13.5px;color:var(--text-secondary);margin-bottom:14px}
+#celebrate .ans{font-family:var(--mono);font-size:34px;font-weight:700;color:var(--good);margin:10px 0 4px}
+.confetti{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.confetti i{position:absolute;width:8px;height:13px;border-radius:2px;animation:fall linear forwards}
+@keyframes fall{to{transform:translateY(105vh) rotate(760deg);opacity:.15}}
+
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-inner">
+    <div>
+      <div class="brandbar"><svg class="pxmark" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><rect width="32" height="32" rx="8" fill="var(--accent)"/><path d="M12.5 6.5h7M13.6 6.5v7.2L7.9 24.1a1.5 1.5 0 0 0 1.3 2.3h13.6a1.5 1.5 0 0 0 1.3-2.3l-5.7-10.4V6.5" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.6 20.6h10.8" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg><span class="wm">PRAYOG<i>X</i></span></div>
+      <div class="simid">ADV-2026-P2-CHE-Q10</div>
+      <h1>Two ions, two wavelengths: build them, take their spectra and count the charge</h1>
+      <div class="chips">
+        <span class="chip">JEE Advanced 2026</span>
+        <span class="chip">Paper 2</span>
+        <span class="chip">Chemistry</span>
+        <span class="chip">Q.10 · Section 3</span>
+        <span class="chip k">Atomic structure</span>
+        <span class="chip k">Bohr model</span>
+      </div>
+    </div>
+    <div class="answerbox locked" id="answerbox">
+      <div class="lbl">Answer</div>
+      <div class="val" id="ansval">Run the experiment</div>
+      <div class="sub" id="anssub">Run all four benches to unlock.</div>
+      <button class="rv" id="revealnow" type="button">Reveal anyway</button>
+    </div>
+    <button class="themebtn" id="themebtn" type="button">◐ theme</button>
+  </div>
+</header>
+
+<nav class="jump">
+  <ul>
+    <li><a href="#question">Question</a></li>
+    <li><a href="#foundry">Bench A · ion foundry</a></li>
+    <li><a href="#spectro">Bench B · spectrometer</a></li>
+    <li><a href="#ratio">Bench C · ratio hunter</a></li>
+    <li><a href="#charge">Bench D · charge counter</a></li>
+    <li><a href="#verdict">Evidence board</a></li>
+    <li><a href="#solution">Step-by-step solution</a></li>
+    <li><a href="#concepts">Concepts &amp; classification</a></li>
+  </ul>
+</nav>
+
+<div class="wrap">
+
+
+<div class="toolbar">
+  <div class="mission"><b>Mission.</b> Two unknown ions, X and Y, sit in the spectrometer. Everything
+    the question tells you is a pair of wavelengths. Build the ions, take their spectra, and work out
+    how much charge each one is carrying.</div>
+  <div class="bar">
+    <span class="track"><i id="progbar"></i></span>
+    <span class="cnt" id="progtxt">0 / 4 benches</span>
+  </div>
+  <div class="badges" id="badges"></div>
+  <button class="act" id="autoplay" type="button">▶ Auto play</button>
+  <button class="act" id="teachbtn" type="button">Teacher mode</button>
+  <button class="act" id="resetlab" type="button">↺ Reset lab</button>
+</div>
+
+<!-- 01 QUESTION -->
+<section id="question">
+  <h2><span class="n">01</span>Original question
+      <span style="font-weight:400;font-size:12.5px;color:var(--text-muted)">— verbatim</span></h2>
+  <div class="card">
+    <div class="qtext">
+      X<sup>a+</sup> and Y<sup>b+</sup> are hydrogen-like species. The wavelength of light absorbed
+      during the transition between the states with principal quantum numbers <em>n</em> = 1 and
+      <em>n</em> = 2 of X<sup>a+</sup> is λ. The wavelength of light absorbed during the transition
+      between the states with principal quantum numbers <em>n</em> = 2 and <em>n</em> = 4 of
+      Y<sup>b+</sup> is 9λ. The lowest possible value of (a + b) is ______.
+    </div>
+    <p style="font-size:12.5px;color:var(--text-muted);margin:14px 0 0">
+      Section 3 — non-negative integer answer (+4 for the correct value, 0 otherwise, no negative
+      marking). There are no printed options. What there <em>are</em> are four decisions you have to
+      get right on the way, and every one of them is a place students lose the mark. The lab settles
+      all four by measurement.
+    </p>
+    <ul class="opts" id="opts">
+      <li data-k="A"><div class="hd">Claim A<span class="mark"></span></div>
+        <div class="nm">"Hydrogen-like" means the species has exactly one <b>proton</b>.</div></li>
+      <li data-k="B"><div class="hd">Claim B<span class="mark"></span></div>
+        <div class="nm">The transition in Y, at 9λ, involves <b>more</b> energy than the transition
+          in X, at λ.</div></li>
+      <li data-k="C"><div class="hd">Claim C<span class="mark"></span></div>
+        <div class="nm">λ<sub>Y</sub> = 9λ<sub>X</sub> forces Z<sub>X</sub> : Z<sub>Y</sub> = 3 : 2,
+          so the smallest atomic numbers are 3 and 2.</div></li>
+      <li data-k="D"><div class="hd">Claim D<span class="mark"></span></div>
+        <div class="nm">For a hydrogen-like ion the charge on the ion equals its atomic
+          number.</div></li>
+    </ul>
+  </div>
+</section>
+
+<!-- 02 BENCH A -->
+<section id="foundry">
+  <h2><span class="n">02</span>Bench A — the ion foundry</h2>
+  <p class="lede">
+    Before you can measure anything you have to know what is in the tube. Add protons to the nucleus,
+    strip electrons off the outside, and watch the label change. One rule decides whether the Bohr
+    formula is allowed to run at all.
+  </p>
+  <div class="lab">
+    <div class="panel">
+      <h3>Assemble the species</h3>
+      <div class="ctrl">
+        <label><span>Protons in the nucleus, <b>Z</b></span><span class="v" id="fzv">1</span></label>
+        <input type="range" id="fz" min="1" max="12" step="1" value="1">
+        <div class="numrow">
+          <button class="act" id="fzdn" type="button">−</button>
+          <span class="unit" style="flex:1;text-align:center" id="fzname">hydrogen</span>
+          <button class="act" id="fzup" type="button">+</button>
+        </div>
+      </div>
+      <div class="ctrl">
+        <label><span>Electrons left on it</span><span class="v" id="fev">1</span></label>
+        <div class="btnrow" style="margin-top:0">
+          <button class="act" id="festrip" type="button">⚡ Strip one electron</button>
+          <button class="act" id="feadd" type="button">＋ Put one back</button>
+          <button class="act" id="fehl" type="button">Make it hydrogen-like</button>
+        </div>
+      </div>
+      <div class="vizwrap">
+        <svg id="fatom" class="viz" viewBox="0 0 360 292" role="img"
+             aria-label="Nucleus and electrons of the assembled species"></svg>
+        <div class="caption" id="fcap"></div>
+      </div>
+      <div class="btnrow">
+        <button class="act" id="fhint" type="button">Hint</button>
+      </div>
+      <div class="hintbox" id="fhintbox"></div>
+    </div>
+
+    <div class="panel">
+      <h3>Predict, then build</h3>
+      <div class="pred" id="fpred">
+        <div class="q">Claim A says a hydrogen-like species has exactly one <em>proton</em>.
+          Before you build anything — is that what the term means?</div>
+        <div class="opts2">
+          <button type="button" data-p="yes">Yes — one proton, so only H and H-like nuclei count</button>
+          <button type="button" data-p="no">No — it is about the electrons, not the protons</button>
+        </div>
+        <div class="fb2" id="ffb">Commit to an answer, then build two hydrogen-like species with
+          different Z.</div>
+      </div>
+
+      <h3 style="margin-top:16px">Read-out</h3>
+      <div class="readouts">
+        <div class="ro"><div class="k">protons Z</div><div class="v" id="rop">1</div></div>
+        <div class="ro"><div class="k">electrons</div><div class="v" id="roe">1</div></div>
+        <div class="ro"><div class="k">charge</div><div class="v" id="roq">0</div></div>
+        <div class="ro"><div class="k">species</div><div class="v" id="roi">H</div></div>
+      </div>
+      <div class="info" id="finfo"></div>
+
+      <h3 style="margin-top:16px">Hydrogen-like species built</h3>
+      <div class="scrollx"><table class="data" id="ftbl"></table></div>
+      <div class="verdict" id="fv">Build <b>two different</b> hydrogen-like species and compare how
+        many protons each one has.</div>
+      <span class="stamp" id="fstamp">claim A disproved</span>
+    </div>
+  </div>
+</section>
+
+<!-- 03 BENCH B -->
+<section id="spectro">
+  <h2><span class="n">03</span>Bench B — the absorption spectrometer</h2>
+  <p class="lede">
+    A photon only gets absorbed if its energy matches a gap in the ladder exactly. Tune the source,
+    fire it at the sample, and watch what happens to the electron. Anything that is not absorbed
+    carries straight on to the detector.
+  </p>
+
+  <div class="vizwrap wide">
+    <svg id="beam" class="viz" viewBox="0 0 720 208" role="img"
+         aria-label="Lamp, sample chamber, photon and detector"></svg>
+    <div class="caption">Source → collimator → sample chamber → detector. The packet drawn on the beam
+      has the wavelength you tuned; short wavelength means high energy.</div>
+  </div>
+
+  <div class="lab" style="margin-top:16px">
+    <div class="panel">
+      <h3>The sample and the transition</h3>
+      <div class="ctrl">
+        <label><span>Sample: hydrogen-like ion with <b>Z</b></span><span class="v" id="szv">1</span></label>
+        <input type="range" id="sz" min="1" max="12" step="1" value="1">
+      </div>
+      <div class="ctrl">
+        <label><span>Start level <b>n</b><sub>i</sub></span><span class="v" id="sniv">1</span></label>
+        <div class="nrow" id="sni"></div>
+      </div>
+      <div class="ctrl">
+        <label><span>Finish level <b>n</b><sub>f</sub></span><span class="v" id="snfv">2</span></label>
+        <div class="nrow" id="snf"></div>
+      </div>
+      <div class="ctrl">
+        <label><span>Photon energy from the source</span><span class="v" id="sev">10.20 eV</span></label>
+        <input type="range" id="se" min="0" max="1000" step="1" value="500">
+        <div class="numrow">
+          <input class="numin" id="seinp" inputmode="decimal" value="10.20">
+          <span class="unit">eV</span>
+          <button class="act" id="stune" type="button">Tune to the gap</button>
+        </div>
+        <div class="hint" id="sehint">Absorption needs an exact match. Try missing it on purpose
+          once.</div>
+      </div>
+      <div class="btnrow">
+        <button class="act primary" id="sfire" type="button">☄ Fire the photon</button>
+        <button class="act" id="sreset" type="button">↺ Reset the electron</button>
+        <button class="act" id="shint" type="button">Hint</button>
+      </div>
+      <div class="hintbox" id="shintbox"></div>
+      <div class="btnrow">
+        <button class="act" id="sloadx" type="button">Load X: Z = 3, n = 1 → 2</button>
+        <button class="act" id="sloady" type="button">Load Y: Z = 2, n = 2 → 4</button>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h3>Energy ladder</h3>
+      <div class="vizwrap" style="margin-top:0">
+        <svg id="ladder" class="viz" viewBox="0 0 330 350" role="img"
+             aria-label="Energy levels of the sample and the electron's position"></svg>
+        <div class="caption" id="ladcap"></div>
+      </div>
+      <div class="readouts" style="margin-top:12px">
+        <div class="ro"><div class="k">ΔE needed</div><div class="v" id="rode">—</div>
+          <div class="u">eV</div></div>
+        <div class="ro"><div class="k">wavelength</div><div class="v" id="rolam">—</div>
+          <div class="u">nm</div></div>
+        <div class="ro"><div class="k">region</div><div class="v" id="roband" style="font-size:13px">—</div></div>
+        <div class="ro"><div class="k">electron now at</div><div class="v" id="ronow">n = 1</div></div>
+      </div>
+      <div class="info" id="sinfo">Pick a transition, tune the source and fire.</div>
+    </div>
+  </div>
+
+  <div class="vizwrap wide" style="margin-top:16px">
+    <svg id="spectrum" class="viz" viewBox="0 0 720 152" role="img"
+         aria-label="Absorption lines recorded so far"></svg>
+    <div class="caption">Every absorbed photon leaves a dark line at its own wavelength. This strip is
+      the spectrum you are building.</div>
+  </div>
+
+  <div class="lab" style="margin-top:16px">
+    <div class="panel">
+      <h3>Predict, then fire</h3>
+      <div class="pred" id="spred">
+        <div class="q">Claim B: the Y photon has <em>nine times the wavelength</em> of the X photon.
+          Does that mean it carries more energy?</div>
+        <div class="opts2">
+          <button type="button" data-p="yes">Yes — a bigger wavelength is a bigger photon</button>
+          <button type="button" data-p="no">No — longer wavelength means less energy</button>
+        </div>
+        <div class="fb2" id="sfb">Load X, absorb it, then load Y and absorb that. Compare the two
+          energies.</div>
+      </div>
+      <div class="scrollx" style="margin-top:14px"><table class="data" id="stbl"></table></div>
+      <div class="verdict" id="sv">Record <b>both</b> lines — X at Z = 3 and Y at Z = 2 — and the
+        comparison makes itself.</div>
+      <span class="stamp" id="sstamp">claim B disproved</span>
+    </div>
+    <div class="panel">
+      <h3>Why Z matters so much: ΔE against Z</h3>
+      <div class="chartwrap">
+        <svg id="zchart" class="chart" viewBox="0 0 560 320" role="img"
+             aria-label="Transition energy against atomic number"></svg>
+      </div>
+      <div class="legend">
+        <span><i style="background:var(--s1)"></i>ΔE for n<sub>i</sub> → n<sub>f</sub> as set</span>
+        <span><i class="dot" style="background:var(--s2)"></i>your current sample</span>
+      </div>
+      <div class="info" id="zinfo"></div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 BENCH C -->
+<section id="ratio">
+  <h2><span class="n">04</span>Bench C — the ratio hunter</h2>
+  <p class="lede">
+    Now both ions at once, each locked to the transition the question gives it. You are not told the
+    atomic numbers — you are told one number, that λ<sub>Y</sub> is nine times λ<sub>X</sub>. Turn the
+    two dials until the apparatus says nine.
+  </p>
+  <div class="lab">
+    <div class="panel">
+      <h3>Two samples, two fixed transitions</h3>
+      <div class="ctrl">
+        <label><span>X<sup>a+</sup> — atomic number Z<sub>X</sub>, transition n = 1 → 2</span>
+          <span class="v" id="rzxv">1</span></label>
+        <input type="range" id="rzx" min="1" max="12" step="1" value="1">
+      </div>
+      <div class="ctrl">
+        <label><span>Y<sup>b+</sup> — atomic number Z<sub>Y</sub>, transition n = 2 → 4</span>
+          <span class="v" id="rzyv">1</span></label>
+        <input type="range" id="rzy" min="1" max="12" step="1" value="1">
+      </div>
+      <div class="vizwrap">
+        <svg id="twolad" class="viz" viewBox="0 0 460 300" role="img"
+             aria-label="The two energy ladders side by side with their transitions marked"></svg>
+        <div class="caption">Both ladders have exactly the same shape. Only the scale changes — and it
+          changes as Z².</div>
+      </div>
+      <div class="btnrow">
+        <button class="act" id="rhint" type="button">Hint</button>
+        <button class="act" id="rauto" type="button">Sweep Z<sub>X</sub> for me</button>
+      </div>
+      <div class="hintbox" id="rhintbox"></div>
+    </div>
+
+    <div class="panel">
+      <h3>The measurement</h3>
+      <div class="readouts">
+        <div class="ro"><div class="k">λ<sub>X</sub></div><div class="v" id="rolx">—</div>
+          <div class="u">nm</div></div>
+        <div class="ro"><div class="k">λ<sub>Y</sub></div><div class="v" id="roly">—</div>
+          <div class="u">nm</div></div>
+      </div>
+      <div class="big" id="rbig">—<small>λ<sub>Y</sub> ÷ λ<sub>X</sub> — the question says this must
+        be 9</small></div>
+      <div class="lockmsg" id="rlock">Turn the dials.</div>
+      <div class="eqlive" id="reqn"></div>
+      <div class="chartwrap" style="margin-top:12px">
+        <svg id="rchart" class="chart" viewBox="0 0 560 300" role="img"
+             aria-label="Wavelength ratio against Z sub X"></svg>
+      </div>
+      <div class="legend">
+        <span><i style="background:var(--s1)"></i>λ<sub>Y</sub>/λ<sub>X</sub> at your Z<sub>Y</sub></span>
+        <span><i style="background:var(--s3)"></i>the target, 9</span>
+      </div>
+      <h3 style="margin-top:16px">Pairs that give exactly 9</h3>
+      <div class="scrollx pairs"><table class="data" id="rtbl"></table></div>
+      <div class="verdict" id="rv">Nothing found yet.</div>
+      <span class="stamp ok" id="rstamp">claim C confirmed</span>
+    </div>
+  </div>
+</section>
+
+<!-- 05 BENCH D -->
+<section id="charge">
+  <h2><span class="n">05</span>Bench D — the charge counter</h2>
+  <p class="lede">
+    The question does not ask for atomic numbers. It asks for <em>a</em> and <em>b</em>, the charges.
+    That is one subtraction away — and it is the subtraction most of the marks are lost on.
+  </p>
+  <div class="lab">
+    <div class="panel">
+      <h3>Count what is actually there</h3>
+      <div class="segbtns" id="cwhich">
+        <button type="button" data-w="X" aria-pressed="true">Ion X (Z<sub>X</sub> = 3)</button>
+        <button type="button" data-w="Y">Ion Y (Z<sub>Y</sub> = 2)</button>
+      </div>
+      <div class="vizwrap">
+        <svg id="catom" class="viz" viewBox="0 0 360 280" role="img"
+             aria-label="Protons and the single electron of the ion being counted"></svg>
+        <div class="caption" id="ccap"></div>
+      </div>
+      <div class="btnrow">
+        <button class="act primary" id="ccount" type="button">🔢 Count the particles</button>
+        <button class="act" id="chint" type="button">Hint</button>
+      </div>
+      <div class="hintbox" id="chintbox"></div>
+      <div class="pred" id="cpred">
+        <div class="q">Claim D: for a hydrogen-like ion the charge equals the atomic number.
+          Ion X has Z = 3 — is it X³⁺?</div>
+        <div class="opts2">
+          <button type="button" data-p="yes">Yes — charge 3, so X³⁺</button>
+          <button type="button" data-p="no">No — there is still one electron on it</button>
+        </div>
+        <div class="fb2" id="cfb">Count both ions and read the tally.</div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h3>Tally</h3>
+      <table class="tally" id="ctally"></table>
+      <div class="info" id="cinfo">Count ion X, then ion Y.</div>
+      <h3 style="margin-top:16px">Is that really the lowest?</h3>
+      <p style="font-size:12.5px;color:var(--text-secondary);margin:0 0 6px">
+        Any pair (Z<sub>X</sub>, Z<sub>Y</sub>) = (3m, 2m) satisfies the ratio. Slide m and watch the
+        total.</p>
+      <div class="ctrl">
+        <label><span>multiplier <b>m</b></span><span class="v" id="cmv">1</span></label>
+        <input type="range" id="cm" min="1" max="6" step="1" value="1">
+      </div>
+      <div class="chartwrap">
+        <svg id="mchart" class="chart" viewBox="0 0 560 250" role="img"
+             aria-label="a plus b against the multiplier m"></svg>
+      </div>
+      <div class="eqlive" id="ceqn"></div>
+      <span class="stamp" id="cstamp">claim D disproved</span>
+    </div>
+  </div>
+</section>
+
+<!-- 06 VERDICT -->
+<section id="verdict">
+  <h2><span class="n">06</span>Evidence board</h2>
+  <p class="lede">
+    Everything below came out of a bench you ran. The traps are the wrong turns this question is built
+    to catch — open one only after you have formed your own view.
+  </p>
+  <div class="lab">
+    <div class="panel">
+      <h3>Lab notebook</h3>
+      <p style="font-size:12.5px;color:var(--text-muted);margin:0 0 10px">
+        Written as you work. Only what you actually demonstrated appears here.</p>
+      <div class="nb" id="notebook"></div>
+      <div class="empty" id="nbempty">Nothing recorded yet — work through the four benches above.</div>
+
+      <h3 style="margin-top:18px">Common traps</h3>
+      <div id="traps"></div>
+    </div>
+    <div class="panel">
+      <h3>Predict, then check</h3>
+
+    <div class="predict" id="predict">
+      <div class="q" id="pq"></div>
+      <div class="row">
+        <button type="button" data-p="yes">Correct</button>
+        <button type="button" data-p="no">Not correct</button>
+      </div>
+      <div class="fb" id="pfb"></div>
+      <div class="row" style="margin-top:10px">
+        <button type="button" id="pprev">← Previous statement</button>
+        <button type="button" id="pnext">Next statement →</button>
+      </div>
+    </div>
+    <div class="scrollx" style="margin-top:16px"><table class="data" id="matrix"></table></div>
+
+    </div>
+  </div>
+</section>
+
+<!-- 07 SOLUTION -->
+<section id="solution">
+  <h2><span class="n">07</span>Step-by-step solution</h2>
+
+  <div class="gate" id="solgate">
+    <h4>The solution is still locked</h4>
+    <p>Test all four statements on the bench above and the derivation opens by itself.<br>
+       Statements tested: <span class="cnt" id="gtested">0</span> of 4 — build an ion, take both spectra, lock the ratio at 9 and count the charges</p>
+    <button class="act" id="revealsol" type="button">Show me the solution anyway</button>
+  </div>
+
+  <div id="solbody" hidden>
+    <div class="verdict ok" id="solintro"></div>
+    <ol class="steps" style="margin-top:14px">
+      <li>
+        <h4>What "hydrogen-like" actually fixes</h4>
+        <p>A hydrogen-like species has <b>exactly one electron</b> — the number of protons is free.
+           H, He<sup>+</sup>, Li<sup>2+</sup>, Be<sup>3+</sup> are all hydrogen-like. That single
+           electron is the whole reason the Bohr result is allowed to run:</p>
+        <div class="eq">E<sub>n</sub> = −13.6 Z² / n² eV &nbsp;&nbsp;·&nbsp;&nbsp;
+          1/λ = R Z² (1/n<sub>1</sub>² − 1/n<sub>2</sub>²)</div>
+        <p>It also fixes the bookkeeping you need at the end: one electron and Z protons means the
+           charge is <span class="hl">Z − 1</span>, so <b>Z = a + 1</b>. Claims (A) and (D) both die
+           here.</p>
+      </li>
+      <li>
+        <h4>Write down both transitions</h4>
+        <div class="eq">X: n = 1 → 2 &nbsp;&nbsp;
+          1/λ = R Z<sub>X</sub>² (1/1² − 1/2²) = R Z<sub>X</sub>² ·
+          <span class="hl">3/4</span></div>
+        <div class="eq">Y: n = 2 → 4 &nbsp;&nbsp;
+          1/(9λ) = R Z<sub>Y</sub>² (1/2² − 1/4²) = R Z<sub>Y</sub>² ·
+          <span class="hl">3/16</span></div>
+        <p>The two geometric factors are 3/4 and 3/16 — the 3's are about to cancel, which is why the
+           numbers come out clean.</p>
+      </li>
+      <li>
+        <h4>Divide, and the constants disappear</h4>
+        <div class="eq" style="font-size:17px">
+          λ<sub>Y</sub>/λ<sub>X</sub> = [Z<sub>X</sub>² · 3/4] ÷ [Z<sub>Y</sub>² · 3/16]
+          = 4 Z<sub>X</sub>²/Z<sub>Y</sub>² = 9</div>
+        <div class="eq">Z<sub>X</sub>²/Z<sub>Y</sub>² = 9/4 &nbsp;⟹&nbsp;
+          <span class="hl">Z<sub>X</sub> : Z<sub>Y</sub> = 3 : 2</span></div>
+        <p>R never had to be known, and neither did λ. That is what makes this a ratio question rather
+           than a calculation. <b>Claim (C) is correct.</b></p>
+      </li>
+      <li>
+        <h4>Smallest integers that fit</h4>
+        <p>Z must be a whole number, so (Z<sub>X</sub>, Z<sub>Y</sub>) = (3m, 2m) for m = 1, 2, 3 …
+           The smallest is:</p>
+        <div class="eq">Z<sub>X</sub> = 3 → <span class="hl">Li</span> &nbsp;·&nbsp;
+          Z<sub>Y</sub> = 2 → <span class="hl">He</span></div>
+      </li>
+      <li>
+        <h4>Atomic number is not the charge</h4>
+        <p>Each ion keeps one electron, so subtract it:</p>
+        <div class="eq">a = Z<sub>X</sub> − 1 = 3 − 1 = <span class="hl">2</span> &nbsp;⟹&nbsp;
+          X<sup>a+</sup> = Li<sup>2+</sup></div>
+        <div class="eq">b = Z<sub>Y</sub> − 1 = 2 − 1 = <span class="hl">1</span> &nbsp;⟹&nbsp;
+          Y<sup>b+</sup> = He<sup>+</sup></div>
+        <p>Stopping at Z<sub>X</sub> + Z<sub>Y</sub> = 5 is the single commonest way to lose this
+           mark.</p>
+      </li>
+      <li>
+        <h4>Check that m = 1 really is the minimum</h4>
+        <div class="eq">a + b = (3m − 1) + (2m − 1) = <span class="hl">5m − 2</span></div>
+        <p>That increases with m — 3, 8, 13, 18 … — so m = 1 gives the lowest value. Both ions are
+           also genuinely positive there (a = 2, b = 1), which the notation X<sup>a+</sup>,
+           Y<sup>b+</sup> requires.</p>
+      </li>
+      <li>
+        <h4>Answer</h4>
+        <div class="eq" style="font-size:19px">a + b = 2 + 1 = <span class="hl">3</span></div>
+        <p>Marking: +4 for 3, 0 otherwise. No negative marking, so there is never a reason to leave
+           this blank.</p>
+      </li>
+    </ol>
+    <div class="verify" style="margin-top:16px">
+      <h4>✓ Independent verification</h4>
+      <ul>
+        <li><b>Derived before anything was looked up.</b> The ratio, the pair (3, 2) and the value 3
+            were fixed from the Bohr result alone, and only then compared with a published solution.</li>
+        <li><b>The geometric factors computed as exact fractions,</b> not decimals: 1 − 1/4 = 3/4 and
+            1/4 − 1/16 = 3/16, whose quotient is exactly 4. So the condition is
+            4Z<sub>X</sub>²/Z<sub>Y</sub>² = 9 with no rounding anywhere.</li>
+        <li><b>Brute force over every integer pair</b> with 1 ≤ Z ≤ 60: the pairs that give a ratio of
+            exactly 9.000000 are (3,2), (6,4), (9,6), (12,8) … — every one in the ratio 3 : 2, and
+            none outside it. The smallest is (3, 2).</li>
+        <li><b>Two independent numerical routes agree:</b> Bohr energies with the Rydberg energy
+            13.6057 eV give λ<sub>X</sub> = 13.5003 nm and λ<sub>Y</sub> = 121.5023 nm; the Rydberg
+            constant 1.0973732 × 10⁷ m⁻¹ gives the same two numbers. Their quotient is 9.0000000000.</li>
+        <li><b>ΔE/Z² checked to be constant</b> across Z = 1, 2, 3, 4, 6 at 2.5511 eV for n = 2 → 4,
+            confirming the Z² scaling the whole argument rests on.</li>
+        <li><b>The direction of the ratio checked:</b> reversing it to Z<sub>X</sub> : Z<sub>Y</sub> =
+            2 : 3 gives 1.7778, and two hydrogens give exactly 4 — neither is 9.</li>
+        <li><b>The traps reproduced deliberately:</b> Z<sub>X</sub> + Z<sub>Y</sub> = 5 is a different
+            number from a + b = 3, and a + b = 5m − 2 was confirmed strictly increasing.</li>
+        <li><b>Answer key cross-check:</b> a published worked solution for this paper reports the same
+            intermediate values — Z<sub>X</sub> = 3, Z<sub>Y</sub> = 2, a = 2, b = 1 — and the same
+            answer, 3. IIT Roorkee's official key was not retrievable at the time of writing.</li>
+        <li><b>Headless-browser run</b> of this page: every control driven, every drawing checked,
+            clean console, and zero horizontal overflow at 390 px and 360 px.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 08 CONCEPTS -->
+<section id="concepts">
+  <h2><span class="n">08</span>Concepts and classification</h2>
+  <div class="lab">
+    <div class="panel">
+      <h3>Relations used</h3>
+      <div class="eq">hydrogen-like ⟺ exactly one electron ⟹ charge = Z − 1</div>
+      <div class="eq">E<sub>n</sub> = −13.6 Z²/n² eV &nbsp;(one-electron ions only)</div>
+      <div class="eq">ΔE = 13.6 Z² (1/n<sub>1</sub>² − 1/n<sub>2</sub>²) eV</div>
+      <div class="eq">1/λ = R Z² (1/n<sub>1</sub>² − 1/n<sub>2</sub>²), R = 1.097 × 10⁷ m⁻¹</div>
+      <div class="eq">λ = hc/ΔE ⟹ longer wavelength means <em>less</em> energy</div>
+      <div class="eq">n = 1 → 2 factor = 3/4 &nbsp;·&nbsp; n = 2 → 4 factor = 3/16 &nbsp;·&nbsp;
+        their ratio = 4</div>
+      <div class="eq">4 Z<sub>X</sub>²/Z<sub>Y</sub>² = 9 ⟹ Z<sub>X</sub> : Z<sub>Y</sub> = 3 : 2</div>
+      <div class="eq">a + b = (3m − 1) + (2m − 1) = 5m − 2, minimum at m = 1</div>
+      <div class="eq">orbit radius r<sub>n</sub> = a<sub>0</sub> n²/Z — bigger n, smaller Z, wider
+        orbit</div>
+    </div>
+    <div class="panel">
+      <h3>Classification</h3>
+      <table class="meta-tbl">
+        <tr><td>Simulation ID</td><td style="font-family:var(--mono)">ADV-2026-P2-CHE-Q10</td></tr>
+        <tr><td>Exam / Year / Paper</td><td>JEE Advanced · 2026 · Paper 2</td></tr>
+        <tr><td>Subject</td><td>Chemistry (Physical)</td></tr>
+        <tr><td>Chapter</td><td>Atomic Structure</td></tr>
+        <tr><td>Topic</td><td>Bohr model of hydrogen-like species and the Rydberg equation</td></tr>
+        <tr><td>Subtopics</td><td>Hydrogen-like species · Energy levels and the Z² scaling ·
+          Absorption and emission transitions · Rydberg equation · Ratio of wavelengths ·
+          Atomic number versus ionic charge</td></tr>
+        <tr><td>Question type</td><td>Non-negative integer (+4 / 0, no negative marking)</td></tr>
+        <tr><td>Difficulty</td><td>Moderate</td></tr>
+        <tr><td>Answer</td><td><b id="clsans">— run the experiment</b></td></tr>
+      </table>
+      <div class="teach" id="teachpanel">
+        <h4>Teacher notes</h4>
+        <ul>
+          <li><b>Objective.</b> Get students to treat "hydrogen-like" as a statement about electrons,
+              and to finish the question rather than stopping at the atomic numbers.</li>
+          <li><b>Teaching order that works.</b> Do bench D <em>first</em>. Ask the class what the
+              charge on a hydrogen-like lithium is before any spectroscopy — the wrong answer comes
+              fast and is memorable.</li>
+          <li><b>Expected wrong answers.</b> <b>5</b> by far (Z<sub>X</sub> + Z<sub>Y</sub>, forgetting
+              the electron); then <b>2</b> (using the ratio 3:2 as the answer itself); occasionally
+              <b>8</b> (taking m = 2).</li>
+          <li><b>The step that decides it.</b> 9 = 4Z<sub>X</sub>²/Z<sub>Y</sub>², not
+              Z<sub>X</sub>²/Z<sub>Y</sub>². Students who drop the factor of 4 get
+              Z<sub>X</sub>:Z<sub>Y</sub> = 3:1 and then a + b = 4.</li>
+          <li><b>Discussion question.</b> "The Y photon has nine times the wavelength. Is it a bigger
+              photon?" Longer wavelength, lower energy — worth the two minutes.</li>
+          <li><b>Board demonstration.</b> Draw the ladder for Z = 1 and Z = 2 side by side to scale.
+              Identical shape, four times the size. Everything else follows from that picture.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="celebrate">
+  <div class="confetti" id="confetti"></div>
+  <div class="card">
+    <div class="gr">SPECTRUM<br>SOLVED</div>
+    <div class="sub">Four benches run · both ions identified from their light alone</div>
+    <div class="ans" id="celans">a + b = 3</div>
+    <div style="font-size:12.5px;color:var(--text-muted)" id="celstats"></div>
+    <div class="btnrow" style="justify-content:center">
+      <button class="act primary" id="celclose" type="button">See the derivation</button>
+    </div>
+  </div>
+</div>
+
+<footer>
+  ADV-2026-P2-CHE-Q10 · PrayogX · JEE Advanced Interactive Simulation Library · question text reproduced
+  from the official JEE (Advanced) 2026 Paper 2 for educational use.
+</footer>
+</div>
+
+<script>
+(function(){
+"use strict";
+
+var NS="http://www.w3.org/2000/svg";
+function css(v){ return getComputedStyle(document.documentElement).getPropertyValue(v).trim(); }
+function el(n,a){ var e=document.createElementNS(NS,n); for(var k in a) e.setAttribute(k,a[k]); return e; }
+function $(id){ return document.getElementById(id); }
+function clamp(v,a,b){ return v<a?a:(v>b?b:v); }
+function esc(s){ return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+
+/* ---- predictions + verdict matrix ------------------------------------- */
+var PORDER=["A","B","C","D"], pIdx=0, predictions={}, tested={}, revealed=false;
+
+function renderPredict(){
+  var kk=PORDER[pIdx], def=OPT[kk];
+  $("pq").innerHTML = "Statement ("+kk+") — "+def.shortq;
+  var bs=$("predict").querySelectorAll(".row button");
+  for(var i=0;i<bs.length;i++) bs[i].setAttribute("aria-pressed", predictions[kk]===bs[i].dataset.p?"true":"false");
+  var fb=$("pfb");
+  if(!predictions[kk]){ fb.className="fb"; fb.textContent="Commit to an answer, then go and test it on the bench above."; }
+  else if(!tested[kk]){ fb.className="fb"; fb.innerHTML="Logged. Now test ("+kk+") on the bench and see."; }
+  else {
+    var right = predictions[kk]===def.verdict;
+    fb.className="fb "+(right?"ok":"no");
+    fb.innerHTML=(right?"✓ Your prediction matches your measurement. ":"✗ Your measurement disagrees. ")+def.why;
+  }
+  $("pprev").disabled = pIdx===0; $("pnext").disabled = pIdx===PORDER.length-1;
+}
+function drawMatrix(){
+  var rows=PORDER.map(function(kk){
+    var def=OPT[kk], seen=!!tested[kk], pr=predictions[kk];
+    var vcell = seen ? (def.verdict==="yes" ? "<span class='yes'>✓ correct</span>"
+                                            : "<span class='no'>✗ not correct</span>")
+                     : "<span style='color:var(--text-muted)'>not tested yet</span>";
+    var ok = seen && pr && pr===def.verdict;
+    return "<tr"+(seen&&def.verdict==="yes"?" class='win'":"")+"><td><b>("+kk+")</b></td>"+
+      "<td class='l'>"+def.label+"</td><td>"+(pr?(pr==="yes"?"correct":"not correct"):"—")+"</td>"+
+      "<td>"+vcell+"</td><td>"+(seen&&pr?(ok?"<span class='yes'>match</span>":"<span class='no'>mismatch</span>"):"—")+"</td></tr>";
+  }).join("");
+  $("matrix").innerHTML="<thead><tr><th>Option</th><th class='l'>Statement</th><th>Your prediction</th>"+
+    "<th>What you measured</th><th></th></tr></thead><tbody>"+rows+"</tbody>";
+}
+function nTested(){ var n=0; for(var k in tested) if(tested[k]) n++; return n; }
+
+/* ---- the gate ---------------------------------------------------------- */
+function gateOpen(){ return nTested()>=4 || revealed; }
+function updateGate(){
+  if($("gtested")) $("gtested").textContent = nTested();
+  var open=gateOpen();
+  $("solgate").hidden = open;
+  $("solbody").hidden = !open;
+  var ab=$("answerbox");
+  if(open){
+    ab.classList.remove("locked");
+    $("ansval").textContent=ANSWER.text;
+    $("anssub").innerHTML=ANSWER.sub;
+    $("revealnow").hidden=true;
+    if($("clsans")) $("clsans").textContent=ANSWER.text;
+    if(!$("solbody").classList.contains("reveal")) $("solbody").classList.add("reveal");
+    if($("solintro")) $("solintro").innerHTML = revealed && nTested()<4
+      ? "Revealed early — go back and test the statements to see these conclusions come from your own measurements."
+      : "<b>You tested all four statements on the bench.</b> "+ANSWER.intro;
+  } else {
+    ab.classList.add("locked");
+    $("ansval").textContent="Run the experiment";
+    $("anssub").textContent=LOCKED_SUB;
+    $("revealnow").hidden=false;
+    if($("clsans")) $("clsans").textContent="— run the experiment";
+  }
+  markOptions();
+}
+function markOptions(){
+  if(!gateOpen()) return;
+  document.querySelectorAll("#opts li").forEach(function(li){
+    var kk=li.dataset.k, right=OPT[kk].verdict==="yes";
+    li.classList.remove("correct","wrong");
+    li.classList.add(right?"correct":"wrong");
+    li.querySelector(".mark").textContent = right?"correct":"not correct";
+  });
+}
+function markTested(kk){ if(!tested[kk]){ tested[kk]=true; updateGate(); drawMatrix(); renderPredict(); } }
+
+/* ---- notebook ---------------------------------------------------------- */
+var obsLog=[];
+function note(text){
+  if(obsLog.indexOf(text)>=0) return;
+  obsLog.push(text);
+  $("notebook").innerHTML = obsLog.map(function(o){ return '<div class="obs">'+o+"</div>"; }).join("");
+  $("nbempty").hidden = true;
+}
+
+/* ---- numeric control: slider + typed box + steppers -------------------- */
+function parseNum(str){
+  if(str===null||str===undefined) return null;
+  var s=String(str).trim().toLowerCase();
+  if(!s) return null;
+  s=s.replace(/π/g,"(pi)").replace(/pi/g,"(pi)").replace(/\(\(pi\)\)/g,"(pi)");
+  s=s.replace(/×10\^?/g,"e").replace(/x10\^?/g,"e").replace(/\s+/g,"");
+  if(!/^[0-9+\-*/().epi]+$/.test(s)) return null;
+  s=s.replace(/\(pi\)/g,"P_I");
+  if(/[a-z]/.test(s.replace(/P_I/g,"").replace(/e/g,""))) return null;
+  s=s.replace(/P_I/g,"("+Math.PI+")");
+  var v;
+  try { v=Function('"use strict";return ('+s+');')(); } catch(err){ return null; }
+  if(typeof v!=="number"||!isFinite(v)) return null;
+  return v;
+}
+function makeControl(cfg){
+  var sl=$(cfg.slider), inp=$(cfg.input), hint=$(cfg.hint), baseHint=hint?hint.innerHTML:"";
+  function toSlider(v){ return cfg.log ? Math.round(1000*Math.log(v/cfg.lo)/Math.log(cfg.hi/cfg.lo))
+                                       : Math.round((v-cfg.lo)/(cfg.hi-cfg.lo)*1000); }
+  function fromSlider(p){ return cfg.log ? cfg.lo*Math.pow(cfg.hi/cfg.lo,p/1000)
+                                         : cfg.lo+(cfg.hi-cfg.lo)*p/1000; }
+  sl.min=0; sl.max=1000;
+  function show(v){
+    sl.value=toSlider(v);
+    if(document.activeElement!==inp) inp.value=v.toFixed(cfg.dp);
+    inp.classList.remove("bad");
+    if(hint){ hint.classList.remove("bad"); hint.innerHTML=baseHint; }
+    if(cfg.valEl) $(cfg.valEl).textContent=v.toFixed(cfg.dp)+" "+cfg.unit;
+  }
+  function set(v){ v=clamp(v,cfg.lo,cfg.hi); ST[cfg.key]=v; show(v); if(cfg.onset) cfg.onset(); }
+  sl.addEventListener("input",function(){ set(fromSlider(+sl.value)); });
+  inp.addEventListener("input",function(){
+    var v=parseNum(inp.value);
+    if(v===null){ inp.classList.add("bad");
+      if(hint){ hint.classList.add("bad"); hint.textContent="That is not a number I can read — try 0.5, 1/2 or 5e-1."; }
+      return; }
+    if(v<cfg.lo||v>cfg.hi){ inp.classList.add("bad");
+      if(hint){ hint.classList.add("bad");
+        hint.textContent="Out of the range this apparatus can hold ("+cfg.lo+" to "+cfg.hi+" "+cfg.unit+")."; }
+      return; }
+    inp.classList.remove("bad");
+    if(hint){ hint.classList.remove("bad"); hint.innerHTML=baseHint; }
+    ST[cfg.key]=v; sl.value=toSlider(v);
+    if(cfg.valEl) $(cfg.valEl).textContent=v.toFixed(cfg.dp)+" "+cfg.unit;
+    if(cfg.onset) cfg.onset();
+  });
+  inp.addEventListener("blur",function(){ show(ST[cfg.key]); });
+  document.querySelectorAll('.step[data-for="'+cfg.slider+'"]').forEach(function(b){
+    b.addEventListener("click",function(){ set(ST[cfg.key]+(+b.dataset.dir)*cfg.step); });
+  });
+  show(ST[cfg.key]);
+  return { show:function(){ show(ST[cfg.key]); } };
+}
+
+/* ---- generic plotter --------------------------------------------------- */
+function niceAxis(a,b,want){
+  if(!(b>a)) b=a+1;
+  var raw=(b-a)/(want||5), ex=Math.floor(Math.log(raw)/Math.LN10), f=raw/Math.pow(10,ex);
+  var m=f<=1?1:(f<=2?2:(f<=2.5?2.5:(f<=5?5:10))), st=m*Math.pow(10,ex);
+  var lo=Math.floor(a/st+1e-9)*st, hi=Math.ceil(b/st-1e-9)*st;
+  if(hi-lo<st) hi=lo+st;
+  return {lo:lo,hi:hi,step:st,n:Math.max(1,Math.round((hi-lo)/st))};
+}
+function tickDp(step){
+  for(var d=0;d<=6;d++){ var s=step*Math.pow(10,d); if(Math.abs(s-Math.round(s))<1e-9) return d; }
+  return 6;
+}
+function plot(svg,cfg){
+  while(svg.firstChild) svg.removeChild(svg.firstChild);
+  var vb=svg.getAttribute("viewBox").split(/\s+/).map(Number), W=vb[2], H=vb[3];
+  var M={l:cfg.ml||70,r:cfg.mr||52,t:22,b:48};
+  var AX_=niceAxis(cfg.xMin,cfg.xMax,5), AY_=niceAxis(cfg.yMin,cfg.yMax,5);
+  var xa=AX_.lo, xb=AX_.hi, ya=AY_.lo, yb=AY_.hi;
+  function X(v){ return M.l+(v-xa)/(xb-xa)*(W-M.l-M.r); }
+  function Y(v){ return H-M.b-(v-ya)/(yb-ya)*(H-M.t-M.b); }
+  var grid=css("--line"), muted=css("--text-muted"), strong=css("--line-strong"), ink=css("--text-secondary");
+  var i, xdp=tickDp(AX_.step), ydp=tickDp(AY_.step);
+  for(i=0;i<=AX_.n;i++){
+    var xv=xa+AX_.step*i;
+    svg.appendChild(el("line",{x1:X(xv),x2:X(xv),y1:M.t,y2:H-M.b,stroke:grid,"stroke-width":1}));
+    var tx=el("text",{x:X(xv),y:H-M.b+18,"text-anchor":"middle",fill:muted,"font-size":10.5,
+      "font-family":"ui-monospace,monospace"});
+    tx.textContent=cfg.xFmt?cfg.xFmt(xv):xv.toFixed(xdp); svg.appendChild(tx);
+  }
+  for(i=0;i<=AY_.n;i++){
+    var yv=ya+AY_.step*i;
+    svg.appendChild(el("line",{x1:M.l,x2:W-M.r,y1:Y(yv),y2:Y(yv),stroke:grid,"stroke-width":1}));
+    var ty=el("text",{x:M.l-9,y:Y(yv)+3.5,"text-anchor":"end",fill:muted,"font-size":10.5,
+      "font-family":"ui-monospace,monospace"});
+    ty.textContent=cfg.yFmt?cfg.yFmt(yv):yv.toFixed(ydp); svg.appendChild(ty);
+  }
+  if(ya<0&&yb>0)
+    svg.appendChild(el("line",{x1:M.l,x2:W-M.r,y1:Y(0),y2:Y(0),stroke:strong,"stroke-width":1.5}));
+  svg.appendChild(el("line",{x1:M.l,x2:M.l,y1:M.t,y2:H-M.b,stroke:strong,"stroke-width":1.5}));
+  svg.appendChild(el("line",{x1:M.l,x2:W-M.r,y1:H-M.b,y2:H-M.b,stroke:strong,"stroke-width":1.5}));
+  var usedLbl=[];
+  (cfg.curves||[]).forEach(function(c){
+    if(!c.pts||c.pts.length<2) return;
+    var d=c.pts.map(function(p,ix){ return (ix?"L":"M")+X(p[0]).toFixed(1)+" "+Y(p[1]).toFixed(1); }).join(" ");
+    svg.appendChild(el("path",{d:d,fill:"none",stroke:css(c.col),"stroke-width":c.w||2.4,
+      "stroke-linecap":"round","stroke-linejoin":"round","stroke-dasharray":c.dash||"none",
+      opacity:c.op===undefined?1:c.op}));
+    if(c.label){
+      var last=c.pts[c.pts.length-1], ly=clamp(Y(last[1])+4,M.t+8,H-M.b);
+      for(var q=0;q<usedLbl.length;q++){ if(Math.abs(usedLbl[q]-ly)<13){ ly=usedLbl[q]+13; q=-1; } }
+      ly=clamp(ly,M.t+8,H-M.b-2); usedLbl.push(ly);
+      var lb=el("text",{x:clamp(X(last[0])+8,M.l,W-4),y:ly,fill:css(c.col),"font-size":11.5,
+        "font-weight":700,"text-anchor":X(last[0])>W-M.r-40?"end":"start"});
+      lb.textContent=c.label; svg.appendChild(lb);
+    }
+  });
+  (cfg.bars||[]).forEach(function(b){
+    var x0=X(b.x0), x1=X(b.x1), y0=Y(Math.max(ya,0)), y1=Y(b.y);
+    svg.appendChild(el("rect",{x:Math.min(x0,x1),y:Math.min(y0,y1),width:Math.abs(x1-x0),
+      height:Math.abs(y1-y0),fill:css(b.col),opacity:b.op===undefined?.85:b.op,rx:3}));
+    if(b.label){
+      var t=el("text",{x:(x0+x1)/2,y:Math.min(y0,y1)-6,"text-anchor":"middle",fill:css(b.col),
+        "font-size":11.5,"font-weight":700}); t.textContent=b.label; svg.appendChild(t);
+    }
+  });
+  (cfg.points||[]).forEach(function(p){
+    if(p.x<xa||p.x>xb||p.y<ya||p.y>yb) return;
+    svg.appendChild(el("circle",{cx:X(p.x),cy:Y(p.y),r:p.r||4.6,fill:p.fill||css("--surface-1"),
+      stroke:css(p.col),"stroke-width":2}));
+    if(p.label){
+      var t=el("text",{x:X(p.x),y:Y(p.y)-10,"text-anchor":"middle",fill:css(p.col),
+        "font-size":11,"font-weight":700}); t.textContent=p.label; svg.appendChild(t);
+    }
+  });
+  var axl=el("text",{x:(M.l+W-M.r)/2,y:H-8,"text-anchor":"middle",fill:ink,"font-size":12.5});
+  axl.textContent=cfg.xLabel; svg.appendChild(axl);
+  var ayl=el("text",{x:15,y:(M.t+H-M.b)/2,"text-anchor":"middle",fill:ink,"font-size":12.5,
+    transform:"rotate(-90 15 "+((M.t+H-M.b)/2)+")"});
+  ayl.textContent=cfg.yLabel; svg.appendChild(ayl);
+  svg._map={X:X,Y:Y,xa:xa,xb:xb,M:M,W:W};
+}
+
+/* ---- shared wiring ----------------------------------------------------- */
+function wireCommon(redraw){
+  $("predict").addEventListener("click",function(e){
+    var b=e.target.closest(".row button"); if(!b) return;
+    predictions[PORDER[pIdx]]=b.dataset.p; renderPredict(); drawMatrix();
+  });
+  $("pprev").addEventListener("click",function(){ if(pIdx>0){ pIdx--; renderPredict(); } });
+  $("pnext").addEventListener("click",function(){ if(pIdx<PORDER.length-1){ pIdx++; renderPredict(); } });
+  function doReveal(){ revealed=true; updateGate(); }
+  $("revealnow").addEventListener("click",doReveal);
+  $("revealsol").addEventListener("click",doReveal);
+  $("themebtn").addEventListener("click",function(){
+    var r=document.documentElement;
+    var dark=r.getAttribute("data-theme")==="dark" ||
+      (!r.getAttribute("data-theme")&&matchMedia("(prefers-color-scheme: dark)").matches);
+    r.setAttribute("data-theme",dark?"light":"dark");
+    if(redraw) redraw();
+  });
+}
+
+/* ======================================================================
+   PHYSICS — one place, used by every bench.  Nothing below is hard-coded.
+   ====================================================================== */
+var RY = 13.605693122994;          /* Rydberg energy, eV                 */
+var HCNM = 1239.841984;            /* h*c in eV.nm                       */
+
+function En(Z, n){ return -RY * Z * Z / (n * n); }
+function dEV(Z, ni, nf){ return En(Z, nf) - En(Z, ni); }
+function lamNM(Z, ni, nf){ return HCNM / dEV(Z, ni, nf); }
+
+var ELEM = ["", "H", "He", "Li", "Be", "B", "C", "N", "O", "F", "Ne", "Na", "Mg"];
+var ENAME = ["", "hydrogen", "helium", "lithium", "beryllium", "boron", "carbon", "nitrogen",
+             "oxygen", "fluorine", "neon", "sodium", "magnesium"];
+var SUPCH = {"0":"⁰","1":"¹","2":"²","3":"³","4":"⁴","5":"⁵",
+             "6":"⁶","7":"⁷","8":"⁸","9":"⁹","+":"⁺","-":"⁻"};
+function sup(s){ var o="",i; s=String(s); for(i=0;i<s.length;i++) o+=SUPCH[s.charAt(i)]||s.charAt(i); return o; }
+function mnum(v, d){ return (v<0?"−":"") + Math.abs(v).toFixed(d); }
+function nmfmt(v){ return v<1 ? v.toFixed(4) : (v<10 ? v.toFixed(3) : (v<1000 ? v.toFixed(2) : v.toFixed(1))); }
+function ionName(Z, ne){
+  var q = Z - ne, s = ELEM[Z] || ("Z=" + Z);
+  if(q === 0) return s;
+  return s + sup((Math.abs(q) > 1 ? String(Math.abs(q)) : "") + (q > 0 ? "+" : "-"));
+}
+/* Band edges follow the usual convention: below 10 nm is soft X-ray, 10-100 nm
+   is the extreme ultraviolet, and the ultraviolet proper runs 100-400 nm. */
+function bandOf(lam){
+  if(lam < 10) return "X-ray";
+  if(lam < 100) return "extreme UV";
+  if(lam < 400) return "ultraviolet";
+  if(lam < 700) return "visible";
+  return "infrared";
+}
+function photonCol(lam){
+  if(lam < 10)  return "#8b5cf6";
+  if(lam < 100) return "#7c4dff";
+  if(lam < 400) return "#9b6bff";
+  if(lam < 450) return "#6d4bc9";
+  if(lam < 490) return "#3b7fe0";
+  if(lam < 510) return "#1fa8a0";
+  if(lam < 565) return "#2fae57";
+  if(lam < 590) return "#c9b431";
+  if(lam < 640) return "#e0812c";
+  if(lam < 700) return "#d24136";
+  return "#a3352c";
+}
+
+/* ======================================================================
+   SVG helpers
+   ====================================================================== */
+function clear(svg){ while(svg.firstChild) svg.removeChild(svg.firstChild); }
+function txt(svg, x, y, s, col, size, weight, anchor){
+  var t = el("text", {x:x, y:y, "text-anchor":anchor||"middle", fill:(col&&col.charAt(0)==="#")?col:css(col||"--text-primary"),
+    "font-size":size||13, "font-weight":weight||600,
+    "font-family":"ui-sans-serif,system-ui,sans-serif"});
+  t.textContent = s; svg.appendChild(t); return t;
+}
+function mono(svg, x, y, s, col, size, weight, anchor){
+  var t = txt(svg, x, y, s, col, size, weight, anchor);
+  t.setAttribute("font-family", "ui-monospace,SFMono-Regular,Menlo,monospace");
+  return t;
+}
+function ln(svg, x1, y1, x2, y2, col, w, dash){
+  svg.appendChild(el("line", {x1:x1, y1:y1, x2:x2, y2:y2,
+    stroke:(col&&col.charAt(0)==="#")?col:css(col||"--text-primary"),
+    "stroke-width":w||2, "stroke-linecap":"round", "stroke-dasharray":dash||"none"}));
+}
+function rect(svg, x, y, w, h, fill, stroke, r){
+  svg.appendChild(el("rect", {x:x, y:y, width:w, height:h, rx:r===undefined?7:r,
+    fill:fill?((fill.charAt(0)==="#")?fill:css(fill)):"none",
+    stroke:stroke?((stroke.charAt(0)==="#")?stroke:css(stroke)):"none", "stroke-width":1.4}));
+}
+function circ(svg, cx, cy, r, fill, stroke, sw){
+  var c = el("circle", {cx:cx, cy:cy, r:r,
+    fill:fill?((fill.charAt(0)==="#")?fill:css(fill)):"none",
+    stroke:stroke?((stroke.charAt(0)==="#")?stroke:css(stroke)):"none", "stroke-width":sw||1.4});
+  svg.appendChild(c); return c;
+}
+function arrowhead(svg, x, y, dir, col, size){
+  var s = size || 6, c = (col&&col.charAt(0)==="#")?col:css(col);
+  var d = dir === "up" ? "M" + x + " " + y + " l" + (-s) + " " + (s*1.5) + " l" + (2*s) + " 0 z"
+                       : "M" + x + " " + y + " l" + (-s) + " " + (-s*1.5) + " l" + (2*s) + " 0 z";
+  svg.appendChild(el("path", {d:d, fill:c}));
+}
+
+/* the nucleus, drawn proton by proton so it can actually be counted */
+function drawNucleus(svg, cx, cy, Z, scale){
+  var s = scale || 1, pr = 7 * s, g = el("g", {});
+  /* small nuclei read better as a single ring than as a centre plus a ring */
+  var rings = Z <= 6 ? [[(Z === 1 ? 0 : (5 + Z * 1.6)) * s, 6]]
+                     : [[0, 1], [15 * s, 6], [28 * s, 12], [40 * s, 18]];
+  var placed = 0, i, j;
+  for(i = 0; i < rings.length && placed < Z; i++){
+    var rad = rings[i][0], cap = rings[i][1], take = Math.min(cap, Z - placed);
+    for(j = 0; j < take; j++){
+      var ang = (j / take) * Math.PI * 2 + (i * 0.5);
+      var px = cx + rad * Math.cos(ang), py = cy + rad * Math.sin(ang);
+      var c = el("circle", {cx:px, cy:py, r:pr, fill:css("--s2"), stroke:css("--surface-1"),
+        "stroke-width":1.4});
+      g.appendChild(c);
+      if(s >= 0.9){
+        var t = el("text", {x:px, y:py + 3.4, "text-anchor":"middle", fill:"#fff",
+          "font-size":8.5 * s, "font-weight":700, "font-family":"ui-sans-serif,system-ui,sans-serif"});
+        t.textContent = "+"; g.appendChild(t);
+      }
+      placed++;
+    }
+  }
+  svg.appendChild(g);
+  return g;
+}
+
+/* ======================================================================
+   STATE
+   ====================================================================== */
+var ST = {
+  fz:1, fe:1,                     /* bench A: foundry                    */
+  sz:1, sni:1, snf:2, sph:10.20,  /* bench B: spectrometer               */
+  slevel:1,
+  rzx:1, rzy:1,                   /* bench C: ratio hunter               */
+  cwhich:"X", cm:1                /* bench D: charge counter             */
+};
+var builtHL = {};                 /* hydrogen-like species built (by Z)  */
+var fTouched = false;             /* the student has worked the foundry  */
+var fDone = false;                /* claim A already settled             */
+var linesFound = [];              /* absorption lines recorded           */
+var gotX = false, gotY = false;   /* the two named lines                 */
+var ratioHits = {};               /* pairs that gave exactly 9           */
+var counted = {};                 /* ions whose particles were counted   */
+var firing = false;
+
+/* ======================================================================
+   BENCH A — THE ION FOUNDRY
+   ====================================================================== */
+var SHELLCAP = [2, 8, 18, 32];
+function shellsFor(ne){
+  var out = [], left = ne, i;
+  for(i = 0; i < SHELLCAP.length && left > 0; i++){
+    var t = Math.min(SHELLCAP[i], left); out.push(t); left -= t;
+  }
+  return out;
+}
+function drawFoundry(){
+  var svg = $("fatom"); clear(svg);
+  var cx = 180, cy = 148, Z = ST.fz, ne = ST.fe;
+  var sh = shellsFor(ne), i, j;
+  /* shells first, so the nucleus sits on top */
+  for(i = 0; i < sh.length; i++){
+    var rad = 52 + i * 30;
+    circ(svg, cx, cy, rad, null, "--line-strong", 1.1)
+      .setAttribute("stroke-dasharray", "3 4");
+    for(j = 0; j < sh[i]; j++){
+      var ang = (j / sh[i]) * Math.PI * 2 - Math.PI / 2;
+      var ex = cx + rad * Math.cos(ang), ey = cy + rad * Math.sin(ang);
+      circ(svg, ex, ey, 6.2, "--s1", "--surface-1", 1.4);
+      var t = el("text", {x:ex, y:ey + 3.2, "text-anchor":"middle", fill:"#fff",
+        "font-size":8.5, "font-weight":700, "font-family":"ui-sans-serif,system-ui,sans-serif"});
+      t.textContent = "−"; svg.appendChild(t);
+    }
+  }
+  drawNucleus(svg, cx, cy, Z, 1);
+  mono(svg, cx, 24, ionName(Z, ne), ne === 1 ? "--good" : "--text-primary", 22, 700);
+  txt(svg, cx, 42, ne === 1 ? "hydrogen-like — one electron"
+                            : (ne === 0 ? "bare nucleus — no electron at all"
+                                        : ne + " electrons — not hydrogen-like"),
+      ne === 1 ? "--good" : "--text-muted", 12, 600);
+  txt(svg, 62, 286, Z + (Z === 1 ? " proton" : " protons"), "--s2", 12, 700);
+  txt(svg, 298, 286, ne + (ne === 1 ? " electron" : " electrons"), "--s1", 12, 700);
+  if(ne !== 1){
+    txt(svg, cx, 268, "Bohr's Eₙ = −13.6 Z²/n² does not apply here",
+        "--bad", 12, 700);
+  } else {
+    txt(svg, cx, 268, "Eₙ = −13.6 × " + Z + "²/n² eV applies",
+        "--good", 12, 700);
+  }
+}
+function renderFoundry(){
+  var Z = ST.fz, ne = ST.fe, q = Z - ne;
+  $("fzv").textContent = Z;
+  $("fz").value = Z;
+  $("fzname").textContent = ENAME[Z] || ("Z = " + Z);
+  $("fev").textContent = ne;
+  $("rop").textContent = Z;
+  $("roe").textContent = ne;
+  $("roq").textContent = (q > 0 ? "+" : "") + q;
+  $("roi").textContent = ionName(Z, ne);
+  $("feadd").disabled = ne >= Z;
+  $("festrip").disabled = ne <= 0;
+  $("fcap").innerHTML = "Orbit shells are drawn schematically. The nucleus is drawn proton by proton "
+    + "so you can count them: <b>" + Z + "</b>.";
+  if(ne === 1){
+    if(fTouched) builtHL[Z] = true;
+    $("finfo").innerHTML = "<b>" + ionName(Z, ne) + " is hydrogen-like.</b> It has " + Z
+      + " proton" + (Z === 1 ? "" : "s") + " and one electron, and its charge is "
+      + (q === 0 ? "zero" : "+" + q) + " — that is <b>Z − 1</b>, not Z.";
+  } else if(ne === 0){
+    $("finfo").innerHTML = "No electron at all, so there is nothing to make a transition. "
+      + "Hydrogen-like needs exactly one.";
+  } else {
+    $("finfo").innerHTML = "With " + ne + " electrons the electrons repel each other, the energies "
+      + "are no longer −13.6 Z²/n², and this question's method would not work.";
+  }
+  var ks = Object.keys(builtHL).sort(function(a, b){ return a - b; });
+  $("ftbl").innerHTML = "<thead><tr><th>species</th><th>protons</th><th>electrons</th>"
+    + "<th>charge</th><th>hydrogen-like?</th></tr></thead><tbody>"
+    + (ks.length ? ks.map(function(z){
+        z = +z;
+        return "<tr><td class='num'>" + ionName(z, 1) + "</td><td class='num'>" + z
+          + "</td><td class='num'>1</td><td class='num'>+" + (z - 1)
+          + "</td><td><span class='yes'>yes</span></td></tr>"; }).join("")
+      : "<tr><td colspan='5' style='color:var(--text-muted)'>none built yet</td></tr>")
+    + "</tbody>";
+  drawFoundry();
+  checkFoundry();
+}
+function checkFoundry(){
+  var ks = Object.keys(builtHL).map(Number).sort(function(a, b){ return a - b; });
+  if(ks.length < 2) return;
+  var maxZ = ks[ks.length - 1];
+  if(maxZ < 2) return;
+  $("fv").className = "verdict no";
+  $("fv").innerHTML = "You have built hydrogen-like species with <b>" + ks.join(", ")
+    + "</b> protons. They cannot all have one proton, so “hydrogen-like” cannot mean "
+    + "one proton — it means <b>one electron</b>. <b>Claim A is wrong.</b>";
+  $("fstamp").classList.add("show");
+  var fb = $("ffb");
+  if(predictions.A){
+    var right = predictions.A === "no";
+    fb.className = "fb2 " + (right ? "ok" : "no");
+    fb.innerHTML = (right ? "✓ " : "✗ ") + "It is the electron count that matters. "
+      + ionName(maxZ, 1) + " has " + maxZ + " protons and is still hydrogen-like.";
+  }
+  if(fDone) return;
+  fDone = true;
+  note("Built hydrogen-like species with different numbers of protons — so “hydrogen-like” "
+     + "counts <b>electrons</b>, not protons, and the charge is <b>Z − 1</b>.");
+  award("ion");
+  markTested("A");
+}
+
+/* ======================================================================
+   BENCH B — THE SPECTROMETER
+   ====================================================================== */
+var LAMP = {x:34, y:78, w:74, h:74};
+var CHAM = {x:296, y:56, w:132, h:118};
+var DET  = {x:606, y:66, w:78, h:98};
+var BEAMY = 115;
+
+function drawBeam(packet){
+  var svg = $("beam"); clear(svg);
+  var lam = curLam(), col = photonCol(lam);
+  /* lamp */
+  rect(svg, LAMP.x, LAMP.y, LAMP.w, LAMP.h, "--surface-2", "--line-strong", 9);
+  circ(svg, LAMP.x + LAMP.w / 2, LAMP.y + 32, 15, col, "--line-strong", 1.4);
+  txt(svg, LAMP.x + LAMP.w / 2, LAMP.y + 62, "source", "--text-muted", 10.5, 600);
+  txt(svg, LAMP.x + LAMP.w / 2, LAMP.y - 10, "tuneable", "--text-muted", 10.5, 600);
+  /* collimator */
+  rect(svg, 150, BEAMY - 26, 13, 52, "--line-strong", null, 3);
+  rect(svg, 150, BEAMY - 4, 13, 8, "--surface-0", null, 1);
+  txt(svg, 156, BEAMY + 44, "slit", "--text-muted", 10, 600);
+  /* chamber with the ion inside */
+  rect(svg, CHAM.x, CHAM.y, CHAM.w, CHAM.h, "--surface-1", "--s1", 10);
+  txt(svg, CHAM.x + CHAM.w / 2, CHAM.y - 9, "sample chamber", "--text-muted", 10.5, 600);
+  var icx = CHAM.x + CHAM.w / 2, icy = CHAM.y + CHAM.h / 2 + 4;
+  /* the electron's orbit: r proportional to n^2/Z */
+  var orb = 16 + 34 * Math.sqrt((ST.slevel * ST.slevel / ST.sz) / 36);
+  circ(svg, icx, icy, orb, null, "--line-strong", 1).setAttribute("stroke-dasharray", "3 4");
+  drawNucleus(svg, icx, icy, ST.sz, 0.55);
+  var eang = -Math.PI / 2 + (packet && packet.t ? packet.t * 3 : 0);
+  circ(svg, icx + orb * Math.cos(eang), icy + orb * Math.sin(eang), 5.4, "--s1", "--surface-1", 1.3);
+  mono(svg, icx, CHAM.y + CHAM.h - 8, ionName(ST.sz, 1) + "  n=" + ST.slevel,
+       "--text-secondary", 11.5, 700);
+  /* detector */
+  rect(svg, DET.x, DET.y, DET.w, DET.h, "--surface-2", "--line-strong", 9);
+  txt(svg, DET.x + DET.w / 2, DET.y + DET.h + 16, "detector", "--text-muted", 10.5, 600);
+  var hit = packet && packet.phase === "through";
+  circ(svg, DET.x + DET.w / 2, DET.y + 34, 17, hit ? col : "--surface-1", "--line-strong", 1.5);
+  txt(svg, DET.x + DET.w / 2, DET.y + 66, hit ? "photon arrived" : "waiting",
+      hit ? "--good" : "--text-muted", 10, 600);
+  /* beam guides */
+  ln(svg, LAMP.x + LAMP.w, BEAMY, CHAM.x, BEAMY, "--line", 1.4, "2 5");
+  ln(svg, CHAM.x + CHAM.w, BEAMY, DET.x, BEAMY, "--line", 1.4, "2 5");
+  /* the packet itself */
+  if(packet && packet.phase !== "gone"){
+    var period = clamp(6 + 26 * Math.log(Math.max(lam, 0.5) / 5) / Math.log(400), 5, 34);
+    var w = 78, x0 = packet.x - w, d = "", k;
+    for(k = 0; k <= 60; k++){
+      var xx = x0 + w * k / 60;
+      var env = Math.sin(Math.PI * k / 60);
+      var yy = BEAMY - 15 * env * Math.sin((xx - x0) / period * Math.PI * 2);
+      d += (k ? "L" : "M") + xx.toFixed(1) + " " + yy.toFixed(1);
+    }
+    svg.appendChild(el("path", {d:d, fill:"none", stroke:col, "stroke-width":2.6,
+      "stroke-linecap":"round", opacity:packet.op === undefined ? 1 : packet.op}));
+    mono(svg, packet.x - w / 2, BEAMY - 30, nmfmt(lam) + " nm", col, 11, 700);
+  }
+  if(packet && packet.phase === "absorbed"){
+    var fl = circ(svg, icx, icy, 26 + 22 * packet.fade, col, null, 0);
+    fl.setAttribute("opacity", (1 - packet.fade) * 0.55);
+    txt(svg, icx, CHAM.y - 24, "ABSORBED", "--good", 13, 800);
+  }
+  if(packet && packet.phase === "through"){
+    txt(svg, (CHAM.x + CHAM.w + DET.x) / 2, BEAMY - 40, "passed straight through",
+        "--text-muted", 11, 650);
+  }
+}
+
+function ladderY(n, Z, top, bot){
+  var e1 = En(Z, 1);
+  return top + (En(Z, n) / e1) * (bot - top);
+}
+function drawLadder(){
+  var svg = $("ladder"); clear(svg);
+  var Z = ST.sz, top = 44, bot = 292, L = 74, R = 232, i;
+  ln(svg, L - 14, top, L - 14, bot + 6, "--line-strong", 1.5);
+  txt(svg, L - 42, top - 16, "energy", "--text-secondary", 11.5, 600, "start");
+  mono(svg, L - 20, top - 4, "0", "--text-muted", 10.5, 600, "end");
+  /* Levels crowd towards zero, so a label is only printed where there is room
+     for it.  n = 1, 2 and the two levels in the transition are always shown. */
+  var lastLbl = top;
+  for(i = 6; i >= 1; i--){
+    var y = ladderY(i, Z, top, bot);
+    var here = i === ST.slevel;
+    ln(svg, L, y, R, y, here ? "--s1" : "--line-strong", here ? 3 : 1.6);
+    {
+      var ly2 = y;
+      if(y - lastLbl <= 12) ly2 = lastLbl + 12;
+      if(ly2 - y > 1){
+        ln(svg, L - 18, ly2, L, y, "--line-strong", 0.8);
+        ln(svg, R, y, R + 6, ly2, "--line-strong", 0.8);
+      }
+      mono(svg, L - 20, ly2 + 4, "n=" + i, here ? "--s1" : "--text-muted", 10.5, 700, "end");
+      mono(svg, R + 8, ly2 + 4, mnum(En(Z, i), Math.abs(En(Z, i)) >= 100 ? 1 : 2),
+           "--text-muted", 10, 600, "start");
+      lastLbl = ly2;
+    }
+    if(here) circ(svg, L + 16, y, 6, "--s1", "--surface-1", 1.6);
+  }
+  mono(svg, R + 8, top - 8, "eV", "--text-muted", 9.5, 600, "start");
+  /* the transition arrow */
+  var y1 = ladderY(ST.sni, Z, top, bot), y2 = ladderY(ST.snf, Z, top, bot);
+  var ax = (L + R) / 2 + 22;
+  ln(svg, ax, y1, ax, y2 + 9, "--s3", 2.6);
+  arrowhead(svg, ax, y2, "up", "--s3", 6);
+  /* the label gets its own plate, centred on the arrow so it never lands on the
+     energy column running down the right-hand side */
+  var lbl = "ΔE = " + dEV(Z, ST.sni, ST.snf).toFixed(2) + " eV";
+  var ly = clamp((y1 + y2) / 2, top + 18, bot - 10), lw = lbl.length * 6.1 + 14;
+  rect(svg, ax - lw / 2, ly - 10, lw, 20, "--surface-1", "--s3", 5);
+  mono(svg, ax, ly + 4, lbl, "--s3", 10.5, 700);
+  txt(svg, 165, 326, "same shape for every Z — only the scale changes, as Z²",
+      "--text-muted", 10.5, 500);
+  $("ladcap").innerHTML = "Every level here is E<sub>n</sub> = −13.6 × <b>" + Z
+    + "²</b>/n² eV. Levels crowd towards zero as n grows.";
+}
+
+function curDE(){ return dEV(ST.sz, ST.sni, ST.snf); }
+function curLam(){ return HCNM / Math.max(ST.sph, 0.01); }
+function matched(){ return Math.abs(ST.sph - curDE()) < Math.max(0.02, curDE() * 0.004); }
+
+function renderSpectro(){
+  var Z = ST.sz, de = curDE(), lam = HCNM / de;
+  $("szv").textContent = Z;
+  $("sz").value = Z;
+  $("sniv").textContent = ST.sni;
+  $("snfv").textContent = ST.snf;
+  $("sev").textContent = ST.sph.toFixed(2) + " eV";
+  if(document.activeElement !== $("seinp")) $("seinp").value = ST.sph.toFixed(2);
+  $("se").value = Math.round(1000 * Math.log(ST.sph / 0.3) / Math.log(400 / 0.3));
+  $("rode").textContent = de.toFixed(2);
+  $("rolam").textContent = nmfmt(lam);
+  $("roband").textContent = bandOf(lam);
+  $("ronow").textContent = "n = " + ST.slevel;
+  $("sehint").innerHTML = matched()
+    ? "<b style='color:var(--good)'>Matched.</b> This photon can be absorbed."
+    : "Off the gap by " + Math.abs(ST.sph - de).toFixed(2) + " eV — it will pass straight through.";
+  drawNRows();
+  drawLadder();
+  drawBeam(null);
+  drawSpectrum();
+  drawZChart();
+  $("zinfo").innerHTML = "ΔE ∝ Z². Going from Z = 1 to Z = " + Z + " multiplies the gap by <b>"
+    + (Z * Z) + "</b>, so the wavelength divides by the same factor.";
+}
+function drawNRows(){
+  var i, h = "";
+  for(i = 1; i <= 5; i++)
+    h += "<button type='button' data-n='" + i + "' aria-pressed='" + (ST.sni === i) + "'>" + i + "</button>";
+  $("sni").innerHTML = h;
+  h = "";
+  for(i = 2; i <= 6; i++)
+    h += "<button type='button' data-n='" + i + "' aria-pressed='" + (ST.snf === i) + "'"
+      + (i <= ST.sni ? " disabled" : "") + ">" + i + "</button>";
+  $("snf").innerHTML = h;
+}
+
+/* --- the spectrum strip: log wavelength axis with the found lines ------- */
+function drawSpectrum(){
+  var svg = $("spectrum"); clear(svg);
+  var L = 44, R = 700, T = 26, B = 76;
+  var lo = Math.log(1), hi = Math.log(3000);
+  function X(l){ return L + (Math.log(l) - lo) / (hi - lo) * (R - L); }
+  var bands = [[1, 10, "X-ray", "#6a4bb8"], [10, 100, "extreme UV", "#7c4dff"],
+               [100, 400, "ultraviolet", "#9b6bff"],
+               [400, 700, "visible", null], [700, 3000, "infrared", "#a3352c"]];
+  bands.forEach(function(b){
+    var x0 = X(b[0]), x1 = X(b[1]);
+    if(b[3]){
+      rect(svg, x0, T, x1 - x0, B - T, b[3], null, 0);
+      svg.lastChild.setAttribute("opacity", 0.4);
+    } else {
+      var k, steps = 26;
+      for(k = 0; k < steps; k++){
+        var l0 = 400 + (700 - 400) * k / steps, l1 = 400 + (700 - 400) * (k + 1) / steps;
+        rect(svg, X(l0), T, X(l1) - X(l0) + 0.8, B - T, photonCol((l0 + l1) / 2), null, 0);
+        svg.lastChild.setAttribute("opacity", 0.72);
+      }
+    }
+    txt(svg, (x0 + x1) / 2, T - 8, b[2], "--text-muted", 9.5, 600);
+  });
+  rect(svg, L, T, R - L, B - T, null, "--line-strong", 4);
+  [1, 10, 100, 1000].forEach(function(v){
+    ln(svg, X(v), B, X(v), B + 5, "--line-strong", 1.2);
+    mono(svg, X(v), B + 17, String(v), "--text-muted", 10, 600);
+  });
+  mono(svg, R + 8, B + 17, "nm", "--text-muted", 10, 600, "start");
+  txt(svg, L, 106, "wavelength / nm, logarithmic scale", "--text-secondary", 11, 500, "start");
+  if(!linesFound.length){
+    txt(svg, (L + R) / 2, (T + B) / 2 + 4, "no lines recorded yet", "#ffffff", 12, 700);
+    return;
+  }
+  var used = [];
+  linesFound.slice().sort(function(a, b){ return a.lam - b.lam; }).forEach(function(f){
+    var x = X(clamp(f.lam, 1, 3000));
+    ln(svg, x, T, x, B, "#111110", 3.2);
+    ln(svg, x, T, x, B, "#ffffff", 1);
+    /* stagger labels vertically when two lines sit close together */
+    var ly = 124, q;
+    for(q = 0; q < used.length; q++)
+      if(Math.abs(used[q].x - x) < 84 && Math.abs(used[q].y - ly) < 12){ ly = used[q].y + 14; q = -1; }
+    used.push({x:x, y:ly});
+    ln(svg, x, B, x, ly - 9, "--line-strong", 1, "2 3");
+    mono(svg, clamp(x, L + 34, R - 34), ly, f.tag + " · " + nmfmt(f.lam) + " nm",
+         "--text-primary", 10.5, 700);
+  });
+}
+
+function drawZChart(){
+  var pts = [], i;
+  for(i = 1; i <= 12; i++) pts.push([i, dEV(i, ST.sni, ST.snf)]);
+  plot($("zchart"), {
+    xMin:0, xMax:14, yMin:0, yMax:dEV(12, ST.sni, ST.snf),
+    xLabel:"atomic number Z", yLabel:"ΔE  (eV)",
+    curves:[{pts:pts, col:"--s1", label:"n=" + ST.sni + "→" + ST.snf}],
+    points:[{x:ST.sz, y:dEV(ST.sz, ST.sni, ST.snf), col:"--s2",
+             label:"Z=" + ST.sz}]
+  });
+}
+
+/* --- firing a photon --------------------------------------------------- */
+function fire(){
+  if(firing) return;
+  firing = true;
+  var willAbsorb = matched() && ST.slevel === ST.sni;
+  var de = curDE(), lam = HCNM / ST.sph;
+  var stopX = willAbsorb ? CHAM.x + CHAM.w / 2 : DET.x + 6;
+  var t0 = null, dur = 950;
+  $("sfire").disabled = true;
+  function step(ts){
+    if(t0 === null) t0 = ts;
+    var t = clamp((ts - t0) / dur, 0, 1);
+    drawBeam({x:LAMP.x + LAMP.w + t * (stopX - LAMP.x - LAMP.w), phase:"fly", t:t});
+    if(t < 1){ requestAnimationFrame(step); return; }
+    if(willAbsorb) absorb(de, lam); else passThrough(lam);
+  }
+  requestAnimationFrame(step);
+}
+function absorb(de, lam){
+  var f0 = null;
+  ST.slevel = ST.snf;
+  function fade(ts){
+    if(f0 === null) f0 = ts;
+    var t = clamp((ts - f0) / 620, 0, 1);
+    drawBeam({x:CHAM.x + CHAM.w / 2, phase:"absorbed", fade:t, op:0});
+    if(t < 1){ requestAnimationFrame(fade); return; }
+    finishAbsorb(de, lam);
+  }
+  requestAnimationFrame(fade);
+}
+function finishAbsorb(de, lam){
+  firing = false;
+  $("sfire").disabled = false;
+  var tag = "Z=" + ST.sz + " " + ST.sni + "→" + ST.snf;
+  var isX = ST.sz === 3 && ST.sni === 1 && ST.snf === 2;
+  var isY = ST.sz === 2 && ST.sni === 2 && ST.snf === 4;
+  if(isX){ gotX = true; tag = "X"; }
+  if(isY){ gotY = true; tag = "Y"; }
+  if(!linesFound.some(function(f){ return Math.abs(f.lam - lam) < 1e-9; }))
+    linesFound.push({lam:lam, de:de, tag:tag, Z:ST.sz, ni:ST.sni, nf:ST.snf});
+  $("sinfo").innerHTML = "<b>Absorbed.</b> The photon is gone and the electron is now at n = "
+    + ST.snf + ". It took exactly " + de.toFixed(2) + " eV, which is why only this one wavelength ("
+    + nmfmt(lam) + " nm, " + bandOf(lam) + ") is missing from the transmitted beam.";
+  renderSpectro();
+  drawLineTable();
+  checkSpectro();
+  setTimeout(relax, 1100);
+}
+function relax(){
+  if(firing) return;
+  if(ST.slevel === ST.sni) return;
+  ST.slevel = ST.sni;
+  renderSpectro();
+  $("sinfo").innerHTML += " <em>The electron has now fallen back and re-emitted the photon in a "
+    + "random direction — which is why the line looks dark from where the detector sits.</em>";
+}
+function passThrough(lam){
+  var f0 = null;
+  function go(ts){
+    if(f0 === null) f0 = ts;
+    var t = clamp((ts - f0) / 420, 0, 1);
+    drawBeam({x:DET.x + 6 + t * 40, phase:"through", op:1 - t * 0.2});
+    if(t < 1){ requestAnimationFrame(go); return; }
+    firing = false;
+    $("sfire").disabled = false;
+    $("sinfo").innerHTML = ST.slevel !== ST.sni
+      ? "<b>Nothing happened.</b> The electron is at n = " + ST.slevel + ", not at n = " + ST.sni
+        + ", so this transition is not available. Reset the electron."
+      : "<b>Straight through.</b> " + ST.sph.toFixed(2) + " eV is not the gap ("
+        + curDE().toFixed(2) + " eV), so the atom cannot take it. Absorption is all-or-nothing.";
+    note("A photon whose energy missed the gap passed <b>straight through</b> the sample — "
+       + "absorption is all-or-nothing and needs an exact match.");
+  }
+  requestAnimationFrame(go);
+}
+function drawLineTable(){
+  $("stbl").innerHTML = "<thead><tr><th>line</th><th>sample</th><th>transition</th><th>ΔE / eV</th>"
+    + "<th>λ / nm</th></tr></thead><tbody>"
+    + (linesFound.length ? linesFound.map(function(f){
+        return "<tr" + (f.tag === "X" || f.tag === "Y" ? " class='win'" : "") + "><td>" + f.tag
+          + "</td><td>" + ionName(f.Z, 1) + "</td><td class='num'>" + f.ni + "→" + f.nf
+          + "</td><td class='num'>" + f.de.toFixed(2) + "</td><td class='num'>" + nmfmt(f.lam)
+          + "</td></tr>"; }).join("")
+      : "<tr><td colspan='5' style='color:var(--text-muted)'>nothing absorbed yet</td></tr>")
+    + "</tbody>";
+}
+function checkSpectro(){
+  if(!(gotX && gotY)) return;
+  var lx = lamNM(3, 1, 2), ly = lamNM(2, 2, 4);
+  var ex = dEV(3, 1, 2), ey = dEV(2, 2, 4);
+  $("sv").className = "verdict no";
+  $("sv").innerHTML = "Measured: X needs <b>" + ex.toFixed(2) + " eV</b> at " + nmfmt(lx)
+    + " nm, Y needs <b>" + ey.toFixed(2) + " eV</b> at " + nmfmt(ly) + " nm. Y's wavelength is "
+    + (ly / lx).toFixed(2) + "× X's and its energy is " + (ey / ex).toFixed(3)
+    + "× — nine times the wavelength is <b>one ninth</b> of the energy. "
+    + "<b>Claim B is wrong.</b>";
+  $("sstamp").classList.add("show");
+  var fb = $("sfb");
+  if(predictions.B){
+    var right = predictions.B === "no";
+    fb.className = "fb2 " + (right ? "ok" : "no");
+    fb.innerHTML = (right ? "✓ " : "✗ ") + "E = hc/λ, so energy and wavelength move "
+      + "in opposite directions. The 9λ photon is the weaker one.";
+  }
+  note("Both lines recorded: X at <b>" + nmfmt(lx) + " nm</b> (" + ex.toFixed(2)
+     + " eV) and Y at <b>" + nmfmt(ly) + " nm</b> (" + ey.toFixed(2)
+     + " eV). λᵧ = 9λₓ and Eᵧ = Eₓ/9.");
+  award("spec");
+  markTested("B");
+}
+
+/* ======================================================================
+   BENCH C — THE RATIO HUNTER
+   ====================================================================== */
+function drawTwoLadders(){
+  var svg = $("twolad"); clear(svg);
+  var top = 46, bot = 246;
+  [[0, ST.rzx, 1, 2, "X", "--s1"], [1, ST.rzy, 2, 4, "Y", "--s2"]].forEach(function(cfg){
+    var ox = cfg[0] * 238, Z = cfg[1], ni = cfg[2], nf = cfg[3], nm = cfg[4], col = cfg[5];
+    var L = 56 + ox, R = 176 + ox, i, lastLbl = -99;
+    mono(svg, (L + R) / 2, 26, nm + "  —  " + ionName(Z, 1), col, 14, 700);
+    for(i = 6; i >= 1; i--){
+      var y = ladderY(i, Z, top, bot);
+      var act = (i === ni || i === nf);
+      ln(svg, L, y, R, y, act ? col : "--line-strong", act ? 2.6 : 1.3);
+      if(act || i <= 2 || y - lastLbl > 11){
+        var ly2 = y;
+        if(y - lastLbl <= 11) ly2 = lastLbl + 11;        /* nudge, then point back */
+        if(ly2 - y > 1) ln(svg, L - 6, ly2, L, y, "--line-strong", 0.8);
+        mono(svg, L - 8, ly2 + 3.5, "n=" + i, act ? col : "--text-muted", 9.5,
+             act ? 700 : 500, "end");
+        lastLbl = ly2;
+      }
+    }
+    var y1 = ladderY(ni, Z, top, bot), y2 = ladderY(nf, Z, top, bot);
+    var ax = (L + R) / 2;
+    ln(svg, ax, y1, ax, y2 + 9, col, 2.4);
+    arrowhead(svg, ax, y2, "up", col, 5.5);
+    circ(svg, L + 12, y1, 5, col, "--surface-1", 1.4);
+    mono(svg, (L + R) / 2, 268, ni + " → " + nf, col, 11, 700);
+    mono(svg, (L + R) / 2, 286, nmfmt(lamNM(Z, ni, nf)) + " nm", "--text-secondary", 11, 600);
+  });
+  ln(svg, 228, 40, 228, 292, "--line", 1.2, "3 5");
+}
+function renderRatio(){
+  var zx = ST.rzx, zy = ST.rzy;
+  var lx = lamNM(zx, 1, 2), ly = lamNM(zy, 2, 4), r = ly / lx;
+  $("rzxv").textContent = zx; $("rzx").value = zx;
+  $("rzyv").textContent = zy; $("rzy").value = zy;
+  $("rolx").textContent = nmfmt(lx);
+  $("roly").textContent = nmfmt(ly);
+  var lock = Math.abs(r - 9) < 1e-9;
+  $("rbig").textContent = r.toFixed(4);
+  var sm = document.createElement("small");
+  sm.innerHTML = "λ<sub>Y</sub> ÷ λ<sub>X</sub> — the question says this must be 9";
+  $("rbig").appendChild(sm);
+  $("rbig").className = "big" + (lock ? " lock" : "");
+  $("rlock").className = "lockmsg" + (lock ? " on" : "");
+  $("rlock").innerHTML = lock
+    ? "✓ LOCKED — Z<sub>X</sub> : Z<sub>Y</sub> = " + zx + " : " + zy
+      + ", which is " + (zx / gcd(zx, zy)) + " : " + (zy / gcd(zx, zy))
+    : (r > 9 ? "Too high — lower Z<sub>X</sub> or raise Z<sub>Y</sub>"
+             : "Too low — raise Z<sub>X</sub> or lower Z<sub>Y</sub>");
+  $("reqn").innerHTML =
+    "<span class='t'>the ratio, symbolically</span>"
+    + "λ<sub>Y</sub>/λ<sub>X</sub> = [Z<sub>X</sub>² × <b class='chg'>3/4</b>]"
+    + " ÷ [Z<sub>Y</sub>² × <b class='chg'>3/16</b>] = 4 × (<b>" + zx + "</b>/<b>" + zy
+    + "</b>)² = <span class='res'>" + r.toFixed(4) + "</span>";
+  if(lock) ratioHits[zx + ":" + zy] = true;
+  drawTwoLadders();
+  drawRatioChart();
+  drawPairs();
+  checkRatio(lock, zx, zy);
+}
+function gcd(a, b){ return b ? gcd(b, a % b) : a; }
+function drawRatioChart(){
+  var cur = lamNM(ST.rzy, 2, 4) / lamNM(ST.rzx, 1, 2);
+  var top = Math.max(12, cur * 1.15);
+  /* the curve is a parabola in Z_X and would otherwise run far off the top of
+     the axes, so it is trimmed to the plotted window rather than clipped */
+  var pts = [], i;
+  for(i = 10; i <= 130; i++){
+    var z = i / 10, y = lamNM(ST.rzy, 2, 4) / lamNM(z, 1, 2);
+    if(y > top) break;
+    pts.push([z, y]);
+  }
+  if(pts.length < 2) pts = [[1, lamNM(ST.rzy, 2, 4) / lamNM(1, 1, 2)]];
+  plot($("rchart"), {
+    xMin:0, xMax:14, yMin:0, yMax:top,
+    xLabel:"atomic number of ion X", yLabel:"λ(Y) \u00f7 λ(X)",
+    curves:[{pts:pts, col:"--s1", label:"Z(Y) = " + ST.rzy},
+            {pts:[[0, 9], [14, 9]], col:"--s3", dash:"6 5", w:2, label:"9"}],
+    points:cur <= top ? [{x:ST.rzx, y:cur, col:"--s2"}] : []
+  });
+}
+function drawPairs(){
+  var ks = Object.keys(ratioHits).sort(function(a, b){
+    return (+a.split(":")[0]) - (+b.split(":")[0]); });
+  $("rtbl").innerHTML = "<thead><tr><th>Z<sub>X</sub></th><th>Z<sub>Y</sub></th>"
+    + "<th>ratio</th><th>a = Z<sub>X</sub>−1</th><th>b = Z<sub>Y</sub>−1</th>"
+    + "<th>a + b</th></tr></thead><tbody>"
+    + (ks.length ? ks.map(function(k){
+        var p = k.split(":"), zx = +p[0], zy = +p[1], lowest = (zx === 3 && zy === 2);
+        return "<tr" + (lowest ? " class='win'" : "") + "><td class='num'>" + zx
+          + "</td><td class='num'>" + zy + "</td><td class='num'>9.0000</td><td class='num'>"
+          + (zx - 1) + "</td><td class='num'>" + (zy - 1) + "</td><td class='num'>"
+          + (zx + zy - 2) + "</td></tr>"; }).join("")
+      : "<tr><td colspan='6' style='color:var(--text-muted)'>no pair has hit 9 yet</td></tr>")
+    + "</tbody>";
+}
+function checkRatio(lock, zx, zy){
+  if(!lock) return;
+  var n = Object.keys(ratioHits).length;
+  $("rv").className = "verdict ok";
+  $("rv").innerHTML = "Locked at 9.0000 with Z<sub>X</sub> = <b>" + zx + "</b>, Z<sub>Y</sub>"
+    + " = <b>" + zy + "</b>. Every pair that works is in the ratio <b>3 : 2</b>, and the smallest "
+    + "whole numbers in that ratio are <b>3 and 2</b> — lithium and helium. "
+    + "<b>Claim C is correct.</b>"
+    + (n > 1 ? " You have found " + n + " such pairs; they are all multiples of (3, 2)." : "");
+  $("rstamp").classList.add("show");
+  note("Ratio locked at exactly 9.0000 for Z<sub>X</sub>:Z<sub>Y</sub> = " + zx + ":" + zy
+     + " — the condition is <b>3 : 2</b>, smallest pair <b>Z=3 (Li) and Z=2 (He)</b>.");
+  award("ratio");
+  markTested("C");
+}
+
+/* ======================================================================
+   BENCH D — THE CHARGE COUNTER
+   ====================================================================== */
+var CINFO = {X:{Z:3, sym:"Li", lab:"X"}, Y:{Z:2, sym:"He", lab:"Y"}};
+function drawCountAtom(){
+  var svg = $("catom"); clear(svg);
+  var d = CINFO[ST.cwhich], Z = d.Z, cx = 180, cy = 132;
+  circ(svg, cx, cy, 74, null, "--line-strong", 1.1).setAttribute("stroke-dasharray", "3 4");
+  drawNucleus(svg, cx, cy, Z, 1.15);
+  var ex = cx, ey = cy - 74;
+  circ(svg, ex, ey, 8, "--s1", "--surface-1", 1.6);
+  var t = el("text", {x:ex, y:ey + 3.6, "text-anchor":"middle", fill:"#fff", "font-size":10,
+    "font-weight":700, "font-family":"ui-sans-serif,system-ui,sans-serif"});
+  t.textContent = "−"; svg.appendChild(t);
+  mono(svg, cx, 26, "ion " + d.lab, "--text-muted", 12, 700);
+  mono(svg, cx, 250, ionName(Z, 1), counted[ST.cwhich] ? "--good" : "--text-primary", 24, 700);
+  txt(svg, 78, 232, Z + " protons", "--s2", 12, 700);
+  txt(svg, 286, 232, "1 electron", "--s1", 12, 700);
+  $("ccap").innerHTML = "Count the orange circles: <b>" + Z + "</b> protons. There is exactly "
+    + "<b>one</b> blue electron, because the species is hydrogen-like.";
+}
+function renderCharge(){
+  var d = CINFO[ST.cwhich];
+  $("cwhich").querySelectorAll("button").forEach(function(b){
+    b.setAttribute("aria-pressed", b.dataset.w === ST.cwhich ? "true" : "false"); });
+  var rows = "";
+  ["X", "Y"].forEach(function(w){
+    var c = CINFO[w], done = !!counted[w];
+    rows += "<tr><td>ion " + w + " — protons (Z)</td><td>" + (done ? c.Z : "?") + "</td></tr>"
+      + "<tr><td>ion " + w + " — electrons</td><td>" + (done ? "1" : "?") + "</td></tr>"
+      + "<tr><td>ion " + w + " — charge = Z − 1</td><td>"
+      + (done ? "+" + (c.Z - 1) + "  (" + ionName(c.Z, 1) + ")" : "?") + "</td></tr>";
+  });
+  var both = counted.X && counted.Y;
+  rows += "<tr class='sum'><td>a + b</td><td>"
+    + (both ? (CINFO.X.Z - 1) + " + " + (CINFO.Y.Z - 1) + " = " + (CINFO.X.Z + CINFO.Y.Z - 2) : "?")
+    + "</td></tr>";
+  $("ctally").innerHTML = rows;
+  drawCountAtom();
+  var m = ST.cm;
+  $("cmv").textContent = m;
+  /* the m study is the last step of the argument, so it stays blank until both
+     ions have actually been counted - otherwise it prints the answer on load */
+  if(both){
+    drawMChart();
+    $("ceqn").innerHTML = "<span class='t'>the general pair</span>"
+      + "Z<sub>X</sub> = 3m = <b>" + (3 * m) + "</b>, Z<sub>Y</sub> = 2m = <b>" + (2 * m)
+      + "</b> &nbsp;⇒&nbsp; a + b = (3m−1) + (2m−1) = 5m − 2 = "
+      + "<span class='res'>" + (5 * m - 2) + "</span>"
+      + (m === 1 ? " &nbsp;← the lowest" : "");
+  } else {
+    var svg = $("mchart"); while(svg.firstChild) svg.removeChild(svg.firstChild);
+    txt(svg, 280, 120, "count both ions first", "--text-muted", 13, 600);
+    $("ceqn").innerHTML = "<span class='t'>the general pair</span>"
+      + "Z<sub>X</sub> = 3m, Z<sub>Y</sub> = 2m &nbsp;⇒&nbsp; a + b = (3m−1) + (2m−1) = 5m − 2";
+  }
+  if(both) settleCharge();
+}
+function drawMChart(){
+  var bars = [], i;
+  for(i = 1; i <= 6; i++)
+    bars.push({x0:i - 0.34, x1:i + 0.34, y:5 * i - 2, col:i === ST.cm ? "--s2" : "--s1",
+      op:i === ST.cm ? 0.95 : 0.4, label:String(5 * i - 2)});
+  plot($("mchart"), {
+    xMin:0.4, xMax:6.6, yMin:0, yMax:32,
+    xLabel:"multiplier m", yLabel:"a + b", ml:56, mr:20,
+    bars:bars
+  });
+}
+function settleCharge(){
+  var a = CINFO.X.Z - 1, b = CINFO.Y.Z - 1;
+  $("cinfo").innerHTML = "<b>Counted.</b> X has 3 protons and 1 electron, so a = <b>" + a
+    + "</b> and X is Li" + sup("2+") + " — not Li" + sup("3+") + ". Y has 2 protons and 1 "
+    + "electron, so b = <b>" + b + "</b> and Y is He" + sup("+") + ". Therefore a + b = <b>"
+    + (a + b) + "</b>, not " + (CINFO.X.Z + CINFO.Y.Z) + ". <b>Claim D is wrong.</b>";
+  $("cstamp").classList.add("show");
+  var fb = $("cfb");
+  if(predictions.D){
+    var right = predictions.D === "no";
+    fb.className = "fb2 " + (right ? "ok" : "no");
+    fb.innerHTML = (right ? "✓ " : "✗ ") + "One electron is still on board, so the charge "
+      + "is Z − 1. X is Li" + sup("2+") + ", not Li" + sup("3+") + ".";
+  }
+  note("Counted the particles: X is <b>Li" + sup("2+") + "</b> (3 protons, 1 electron, a = 2) and Y "
+     + "is <b>He" + sup("+") + "</b> (2 protons, 1 electron, b = 1), so <b>a + b = 3</b>.");
+  award("chg");
+  markTested("D");
+}
+
+/* ======================================================================
+   HINTS
+   ====================================================================== */
+var FHINTS = [
+  "The word is hydrogen-<em>like</em>, not hydrogen. What exactly does it have in common with a hydrogen atom?",
+  "A hydrogen atom has one proton and one electron. Only one of those two is what the label copies.",
+  "Try building lithium and stripping electrons off it one at a time. Watch when the species is called hydrogen-like.",
+  "Hydrogen-like = exactly one electron, any number of protons. So the charge is Z − 1, and Z = a + 1."
+];
+var SHINTS = [
+  "The photon is either absorbed completely or not at all. What has to be true of its energy?",
+  "E = hc/λ. If one photon has nine times the wavelength of another, what is the ratio of their energies?",
+  "Load X (Z = 3, n = 1 → 2) and Y (Z = 2, n = 2 → 4) in turn and read ΔE for each.",
+  "X needs 91.84 eV; Y needs 10.20 eV. The 9λ photon is nine times weaker, not stronger."
+];
+var RHINTS = [
+  "Write 1/λ = R Z² (1/n₁² − 1/n₂²) for each ion, then divide one by the other.",
+  "The bracket for X is 1 − 1/4 = 3/4. For Y it is 1/4 − 1/16 = 3/16. Their ratio is 4.",
+  "So λᵧ/λₓ = 4 Zₓ²/Zᵧ². Setting that equal to 9 gives Zₓ²/Zᵧ² = 9/4.",
+  "Zₓ : Zᵧ = 3 : 2. Smallest whole numbers: Zₓ = 3, Zᵧ = 2. Try those on the dials."
+];
+var CHINTS = [
+  "The question asks for a and b, which are charges — not for Zₓ and Zᵧ.",
+  "Charge = protons − electrons. How many electrons does a hydrogen-like ion have?",
+  "Li has 3 protons and the ion has 1 electron, so the charge is 3 − 1 = 2, i.e. Li²⁺.",
+  "a = 2, b = 1, so a + b = 3. Adding the atomic numbers instead would give 5 — that is the trap."
+];
+
+/* ======================================================================
+   TRAPS
+   ====================================================================== */
+var TRAPS = [
+  { t:"“The answer is 5 — that's 3 + 2.”",
+    a:"3 and 2 are the <b>atomic numbers</b>. The question asks for the <b>charges</b>. Each ion keeps one electron, so a = 3 − 1 = 2 and b = 2 − 1 = 1, giving <b>3</b>. This is the single commonest way to lose the mark." },
+  { t:"“Hydrogen-like means it has one proton.”",
+    a:"It means exactly <b>one electron</b>. He⁺, Li²⁺, Be³⁺ and even U⁹¹⁺ are all hydrogen-like. That is the only condition under which Eₙ = −13.6 Z²/n² is valid." },
+  { t:"“9λ means nine times the energy.”",
+    a:"E = hc/λ, so energy is <b>inversely</b> proportional to wavelength. Nine times the wavelength is <b>one ninth</b> of the energy. Bench B measures both: 91.84 eV against 10.20 eV." },
+  { t:"“λᵧ/λₓ = Zₓ²/Zᵧ², so the ratio is 3 : 1.”",
+    a:"You dropped the geometric factors. The brackets are 3/4 and 3/16, whose ratio is <b>4</b>. So the condition is 4Zₓ²/Zᵧ² = 9, giving 3 : 2 — not 3 : 1." },
+  { t:"“The transition n = 2 to n = 4 is an emission.”",
+    a:"Going <b>up</b> in n absorbs; coming down emits. The question says 'absorbed' for both, and the arrows on both ladders point upwards. The magnitude of ΔE would be the same either way, but the physical process is not." },
+  { t:"“Take m = 2 to be safe — bigger integers, cleaner numbers.”",
+    a:"a + b = 5m − 2 increases with m: 3, 8, 13, 18 … The question asks for the <b>lowest</b> possible value, so m = 1. Check on bench D that Z = 3 and Z = 2 really are positive ions — they are, at 2+ and 1+." },
+  { t:"“You need the value of λ, or of R, to do this.”",
+    a:"You need neither. Dividing the two Rydberg equations cancels R and λ completely. That is what makes this solvable in about a minute once you spot it." }
+];
+function drawTraps(){
+  $("traps").innerHTML = TRAPS.map(function(t, i){
+    return "<div class='trap' data-i='" + i + "'><div class='t'>⚠ " + t.t
+      + "</div><div class='a'>" + t.a + "</div></div>"; }).join("");
+}
+
+/* ======================================================================
+   PROGRESS, BADGES, CELEBRATION
+   ====================================================================== */
+var BADGES = [
+  {k:"ion",   n:"⚛ Ion builder"},
+  {k:"spec",  n:"📡 Spectroscopist"},
+  {k:"ratio", n:"🎯 Ratio hunter"},
+  {k:"chg",   n:"🔢 Charge counter"}
+];
+var won = {};
+function drawBadges(){
+  $("badges").innerHTML = BADGES.map(function(b){
+    return "<span class='badge" + (won[b.k] ? " won" : "") + "'>" + b.n + "</span>"; }).join("");
+}
+function award(k){ if(!won[k]){ won[k] = true; drawBadges(); } }
+function updateProgress(){
+  var n = nTested();
+  $("progbar").style.width = (n / 4 * 100) + "%";
+  $("progtxt").textContent = n + " / 4 benches";
+}
+var celebrated = false;
+function celebrate(){
+  if(celebrated) return; celebrated = true;
+  var right = 0, tot = 0;
+  PORDER.forEach(function(k){
+    if(predictions[k]){ tot++; if(predictions[k] === OPT[k].verdict) right++; } });
+  $("celstats").innerHTML = "Evidence collected 4/4 · predictions correct " + right + "/" + tot
+    + " · badges " + Object.keys(won).length + "/4";
+  var wrap = $("confetti"); wrap.innerHTML = "";
+  var cols = ["--s1", "--s2", "--s3", "--s4", "--good"], i;
+  for(i = 0; i < 70; i++){
+    var s = document.createElement("i");
+    s.style.left = (Math.random() * 100) + "%";
+    s.style.background = css(cols[i % cols.length]);
+    s.style.animationDuration = (2.4 + Math.random() * 2.4) + "s";
+    s.style.animationDelay = (Math.random() * 0.9) + "s";
+    s.style.top = (-14 - Math.random() * 90) + "px";
+    wrap.appendChild(s);
+  }
+  $("celebrate").classList.add("on");
+}
+
+/* ======================================================================
+   CLAIMS + ANSWER
+   ====================================================================== */
+var OPT = {
+  A:{ label:"“Hydrogen-like” means exactly one proton", verdict:"no",
+      shortq:"A hydrogen-like species is one that has exactly one proton. Correct?",
+      why:"It means exactly one <em>electron</em>. Li²⁺ has three protons and is hydrogen-like — you built it. That is also why the charge is Z − 1." },
+  B:{ label:"The 9λ transition in Y carries more energy than the λ transition in X",
+      verdict:"no",
+      shortq:"The transition in Y, at 9λ, involves more energy than the transition in X, at λ. Correct?",
+      why:"E = hc/λ. You measured 91.84 eV for X and 10.20 eV for Y — nine times the wavelength is one ninth of the energy." },
+  C:{ label:"λᵧ = 9λₓ forces Zₓ : Zᵧ = 3 : 2, lowest pair 3 and 2",
+      verdict:"yes",
+      shortq:"λᵧ = 9λₓ forces Zₓ : Zᵧ = 3 : 2, so the smallest atomic numbers are 3 and 2. Correct?",
+      why:"Dividing the two Rydberg equations gives 4Zₓ²/Zᵧ² = 9, so Zₓ : Zᵧ = 3 : 2. The dials only lock on 9.0000 at multiples of (3, 2)." },
+  D:{ label:"A hydrogen-like ion's charge equals its atomic number", verdict:"no",
+      shortq:"For a hydrogen-like ion the charge equals its atomic number. Correct?",
+      why:"One electron is still on it, so the charge is Z − 1. X is Li²⁺ not Li³⁺, and that single subtraction is the difference between 3 and 5." }
+};
+var ANSWER = { text:"3",
+  sub:"a = 2 (Li²⁺) and b = 1 (He⁺)",
+  intro:"Here is the derivation behind what you measured." };
+var LOCKED_SUB = "Run all four benches to unlock.";
+
+/* hook the house gate so the celebration fires once */
+var _updateGate = updateGate;
+updateGate = function(){
+  _updateGate();
+  updateProgress();
+  if(gateOpen() && nTested() >= 4) celebrate();
+};
+
+/* ======================================================================
+   WIRING
+   ====================================================================== */
+/* --- bench A --- */
+$("fz").addEventListener("input", function(){ fTouched = true; ST.fz = +this.value;
+  if(ST.fe > ST.fz) ST.fe = ST.fz; renderFoundry(); });
+$("fzup").addEventListener("click", function(){ fTouched = true;
+  ST.fz = clamp(ST.fz + 1, 1, 12); renderFoundry(); });
+$("fzdn").addEventListener("click", function(){ fTouched = true; ST.fz = clamp(ST.fz - 1, 1, 12);
+  if(ST.fe > ST.fz) ST.fe = ST.fz; renderFoundry(); });
+$("festrip").addEventListener("click", function(){ fTouched = true;
+  ST.fe = clamp(ST.fe - 1, 0, ST.fz); renderFoundry(); });
+$("feadd").addEventListener("click", function(){ fTouched = true;
+  ST.fe = clamp(ST.fe + 1, 0, ST.fz); renderFoundry(); });
+$("fehl").addEventListener("click", function(){ fTouched = true; ST.fe = 1; renderFoundry(); });
+$("fpred").addEventListener("click", function(e){
+  var b = e.target.closest(".opts2 button"); if(!b) return;
+  predictions.A = b.dataset.p;
+  $("fpred").querySelectorAll("button").forEach(function(x){
+    x.setAttribute("aria-pressed", x.dataset.p === predictions.A ? "true" : "false"); });
+  $("ffb").className = "fb2";
+  $("ffb").textContent = "Logged. Now build two hydrogen-like species with different Z.";
+  renderPredict(); drawMatrix(); checkFoundry();
+});
+
+/* --- bench B --- */
+$("sz").addEventListener("input", function(){ ST.sz = +this.value; ST.slevel = ST.sni;
+  tuneToGap(); renderSpectro(); });
+$("sni").addEventListener("click", function(e){
+  var b = e.target.closest("button"); if(!b) return;
+  ST.sni = +b.dataset.n;
+  if(ST.snf <= ST.sni) ST.snf = Math.min(6, ST.sni + 1);
+  ST.slevel = ST.sni; tuneToGap(); renderSpectro();
+});
+$("snf").addEventListener("click", function(e){
+  var b = e.target.closest("button"); if(!b || b.disabled) return;
+  ST.snf = +b.dataset.n; tuneToGap(); renderSpectro();
+});
+function tuneToGap(){ ST.sph = curDE(); }
+$("se").addEventListener("input", function(){
+  ST.sph = 0.3 * Math.pow(400 / 0.3, +this.value / 1000); renderSpectro(); });
+$("seinp").addEventListener("input", function(){
+  var v = parseNum(this.value);
+  if(v === null || v <= 0 || v > 400){ this.classList.add("bad"); return; }
+  this.classList.remove("bad"); ST.sph = v; renderSpectro();
+});
+$("seinp").addEventListener("blur", function(){ this.classList.remove("bad"); renderSpectro(); });
+$("stune").addEventListener("click", function(){ tuneToGap(); renderSpectro(); });
+$("sfire").addEventListener("click", fire);
+$("sreset").addEventListener("click", function(){ ST.slevel = ST.sni; renderSpectro();
+  $("sinfo").innerHTML = "Electron put back at n = " + ST.sni + "."; });
+$("sloadx").addEventListener("click", function(){
+  ST.sz = 3; ST.sni = 1; ST.snf = 2; ST.slevel = 1; tuneToGap(); renderSpectro(); });
+$("sloady").addEventListener("click", function(){
+  ST.sz = 2; ST.sni = 2; ST.snf = 4; ST.slevel = 2; tuneToGap(); renderSpectro(); });
+$("spred").addEventListener("click", function(e){
+  var b = e.target.closest(".opts2 button"); if(!b) return;
+  predictions.B = b.dataset.p;
+  $("spred").querySelectorAll("button").forEach(function(x){
+    x.setAttribute("aria-pressed", x.dataset.p === predictions.B ? "true" : "false"); });
+  $("sfb").className = "fb2";
+  $("sfb").textContent = "Logged. Now absorb both lines and compare the energies.";
+  renderPredict(); drawMatrix(); checkSpectro();
+});
+
+/* --- bench C --- */
+$("rzx").addEventListener("input", function(){ ST.rzx = +this.value; renderRatio(); });
+$("rzy").addEventListener("input", function(){ ST.rzy = +this.value; renderRatio(); });
+var sweepT = null;
+$("rauto").addEventListener("click", function(){
+  if(sweepT){ clearInterval(sweepT); sweepT = null; this.textContent = "Sweep Zₓ for me"; return; }
+  var self = this; self.textContent = "❚❚ Stop";
+  ST.rzx = 1; renderRatio();
+  sweepT = setInterval(function(){
+    ST.rzx = ST.rzx >= 12 ? 1 : ST.rzx + 1;
+    renderRatio();
+    if(Math.abs(lamNM(ST.rzy, 2, 4) / lamNM(ST.rzx, 1, 2) - 9) < 1e-9){
+      clearInterval(sweepT); sweepT = null; self.textContent = "Sweep Zₓ for me";
+    }
+  }, 520);
+});
+
+/* --- bench D --- */
+$("cwhich").addEventListener("click", function(e){
+  var b = e.target.closest("button"); if(!b) return;
+  ST.cwhich = b.dataset.w; renderCharge();
+});
+$("ccount").addEventListener("click", function(){
+  counted[ST.cwhich] = true;
+  if(!counted.X || !counted.Y){
+    $("cinfo").innerHTML = "Ion " + ST.cwhich + " counted: " + CINFO[ST.cwhich].Z
+      + " protons, 1 electron, charge +" + (CINFO[ST.cwhich].Z - 1)
+      + ". Now switch to the other ion and count that one too.";
+  }
+  renderCharge();
+});
+$("cm").addEventListener("input", function(){ ST.cm = +this.value; renderCharge(); });
+$("cpred").addEventListener("click", function(e){
+  var b = e.target.closest(".opts2 button"); if(!b) return;
+  predictions.D = b.dataset.p;
+  $("cpred").querySelectorAll("button").forEach(function(x){
+    x.setAttribute("aria-pressed", x.dataset.p === predictions.D ? "true" : "false"); });
+  $("cfb").className = "fb2";
+  $("cfb").textContent = "Logged. Now count both ions.";
+  renderPredict(); drawMatrix();
+  if(counted.X && counted.Y) settleCharge();
+});
+
+/* --- progressive hints --- */
+var fHintN = 0, sHintN = 0, rHintN = 0, cHintN = 0;
+function bindHint(btn, box, arr, getN, setN){
+  $(btn).addEventListener("click", function(){
+    var n = getN();
+    if(n >= arr.length){ setN(0); $(box).classList.remove("on"); this.textContent = "Hint"; return; }
+    $(box).classList.add("on");
+    $(box).innerHTML = "<b>Hint " + (n + 1) + " of " + arr.length + ".</b> " + arr[n];
+    setN(n + 1);
+    this.textContent = n + 1 >= arr.length ? "Hide hints" : "Next hint";
+  });
+}
+bindHint("fhint", "fhintbox", FHINTS, function(){ return fHintN; }, function(v){ fHintN = v; });
+bindHint("shint", "shintbox", SHINTS, function(){ return sHintN; }, function(v){ sHintN = v; });
+bindHint("rhint", "rhintbox", RHINTS, function(){ return rHintN; }, function(v){ rHintN = v; });
+bindHint("chint", "chintbox", CHINTS, function(){ return cHintN; }, function(v){ cHintN = v; });
+
+$("traps").addEventListener("click", function(e){
+  var t = e.target.closest(".trap"); if(!t) return; t.classList.toggle("open"); });
+
+$("teachbtn").addEventListener("click", function(){
+  var on = $("teachpanel").classList.toggle("on");
+  this.setAttribute("aria-pressed", on ? "true" : "false");
+  this.textContent = on ? "Hide teacher mode" : "Teacher mode";
+  if(on) $("teachpanel").scrollIntoView({behavior:"smooth", block:"center"});
+});
+$("resetlab").addEventListener("click", function(){ location.reload(); });
+$("celclose").addEventListener("click", function(){
+  $("celebrate").classList.remove("on");
+  $("solution").scrollIntoView({behavior:"smooth"});
+});
+
+/* --- auto play --- */
+var apTimer = null, apStep = 0;
+var AP = [
+  { go:"question", say:"Read it once. Two wavelengths, one ratio." },
+  { go:"foundry",  say:"First: what does hydrogen-like actually mean?",
+    act:function(){ fTouched = true; ST.fz = 3; ST.fe = 1; renderFoundry();
+      if(!predictions.A){ predictions.A = "no"; renderPredict(); drawMatrix(); } } },
+  { go:"foundry",  say:"Lithium with one electron — three protons, still hydrogen-like.",
+    act:function(){ fTouched = true; ST.fz = 2; ST.fe = 1; renderFoundry(); } },
+  { go:"spectro",  say:"Now put X in the spectrometer.",
+    act:function(){ ST.sz = 3; ST.sni = 1; ST.snf = 2; ST.slevel = 1; tuneToGap(); renderSpectro();
+      if(!predictions.B){ predictions.B = "no"; renderPredict(); drawMatrix(); } fire(); } },
+  { go:"spectro",  say:"…and now Y, at nine times the wavelength.",
+    act:function(){ ST.sz = 2; ST.sni = 2; ST.snf = 4; ST.slevel = 2; tuneToGap(); renderSpectro();
+      fire(); } },
+  { go:"ratio",    say:"Hunt the ratio: it only locks at 3 : 2.",
+    act:function(){ ST.rzx = 3; ST.rzy = 2; renderRatio();
+      if(!predictions.C){ predictions.C = "yes"; renderPredict(); drawMatrix(); } } },
+  { go:"charge",   say:"Last step — charges, not atomic numbers.",
+    act:function(){ counted.X = true; counted.Y = true; renderCharge();
+      if(!predictions.D){ predictions.D = "no"; renderPredict(); drawMatrix(); } } },
+  { go:"verdict",  say:"Four claims, all settled on the bench." },
+  { go:"solution", say:"a + b = 3." }
+];
+function apStop(){ if(apTimer){ clearTimeout(apTimer); apTimer = null; }
+  $("autoplay").textContent = "▶ Auto play"; }
+function apRun(){
+  if(apStep >= AP.length){ apStep = 0; apStop(); return; }
+  var s = AP[apStep++];
+  document.getElementById(s.go).scrollIntoView({behavior:"smooth", block:"start"});
+  $("progtxt").textContent = s.say;
+  if(s.act) setTimeout(s.act, 700);
+  apTimer = setTimeout(function(){ updateProgress(); apRun(); }, 3400);
+}
+$("autoplay").addEventListener("click", function(){
+  if(apTimer){ apStop(); updateProgress(); return; }
+  this.textContent = "❚❚ Stop"; apStep = 0; apRun();
+});
+
+wireCommon(function(){
+  renderFoundry(); renderSpectro(); renderRatio(); renderCharge(); drawBadges();
+});
+
+/* ---------------- init ---------------- */
+tuneToGap();
+renderFoundry();
+renderSpectro();
+drawLineTable();
+renderRatio();
+renderCharge();
+drawTraps();
+drawBadges();
+updateProgress();
+renderPredict();
+drawMatrix();
+updateGate();
+
+})();
+</script>
+</body>
+</html>

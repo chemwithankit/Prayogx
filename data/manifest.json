@@ -4,7 +4,7 @@
     "name": "PrayogX",
     "description": "PrayogX: interactive 2D scientific simulations built from selected JEE Advanced Physics and Chemistry questions.",
     "generator": "Cowork autonomous simulation agent",
-    "updatedAt": "2026-08-27",
+    "updatedAt": "2026-08-30",
     "tracker": {
       "type": "Google Sheet",
       "title": "PrayogX — Simulation Progress Tracker",
@@ -33,12 +33,12 @@
     "idPolicy": "Simulation IDs are permanent. A redo or fix edits the existing folder in place and bumps `updatedAt` / `revision`; it never mints a new ID."
   },
   "counts": {
-    "total": 9,
+    "total": 10,
     "byYear": {
-      "2026": 9
+      "2026": 10
     },
     "bySubject": {
-      "Chemistry": 9
+      "Chemistry": 10
     },
     "byChapter": {
       "Electrochemistry": 1,
@@ -48,7 +48,8 @@
       "Chemical Kinetics": 1,
       "The p-Block Elements (Group 18)": 1,
       "Classification of Elements and Periodicity": 1,
-      "Amines and Diazonium Salts": 1
+      "Amines and Diazonium Salts": 1,
+      "Atomic Structure": 1
     }
   },
   "simulations": [
@@ -1166,6 +1167,157 @@
       },
       "createdAt": "2026-08-27",
       "updatedAt": "2026-08-27"
+    },
+    {
+      "id": "ADV-2026-P2-CHE-Q10",
+      "slug": "adv-2026-p2-che-q10",
+      "revision": 1,
+      "path": "simulations/2026/paper-2/chemistry/adv-2026-p2-che-q10/index.html",
+      "folder": "simulations/2026/paper-2/chemistry/adv-2026-p2-che-q10/",
+      "title": "Hydrogen-like species: wavelength ratio, atomic number and ionic charge",
+      "shortTitle": "The spectroscopy lab",
+      "summary": "Build a hydrogen-like ion proton by proton, fire tuned photons at it and watch the electron jump, hunt the pair of atomic numbers that makes one wavelength exactly nine times the other, then count the particles to turn Z into the ionic charge.",
+      "exam": "JEE Advanced",
+      "year": 2026,
+      "paper": "Paper 2",
+      "paperNumber": 2,
+      "subject": "Chemistry",
+      "branch": "Physical Chemistry / Atomic Structure",
+      "questionNumber": 10,
+      "section": "Section 3",
+      "questionType": "Non-negative integer",
+      "marking": {
+        "full": 4,
+        "partial": 0,
+        "zero": 0,
+        "negative": 0
+      },
+      "chapter": "Atomic Structure",
+      "topic": "Bohr model of hydrogen-like species and the Rydberg equation",
+      "subtopics": [
+        "Hydrogen-like species and the one-electron condition",
+        "Energy levels and the Z-squared scaling",
+        "Absorption and emission transitions",
+        "Rydberg equation and the ratio of two wavelengths",
+        "Wavelength versus photon energy",
+        "Atomic number versus ionic charge"
+      ],
+      "concepts": [
+        "Hydrogen-like means exactly one electron, not one proton",
+        "The Bohr result E = -13.6 Z^2 / n^2 holds only for a one-electron species",
+        "Dividing two Rydberg equations cancels the constant and the wavelength alike",
+        "Longer wavelength means lower photon energy, never higher",
+        "The charge on a hydrogen-like ion is Z - 1, so the question is one subtraction longer than it looks"
+      ],
+      "formulas": [
+        "E_n = -13.6 Z^2 / n^2 eV",
+        "1/lambda = R Z^2 (1/n1^2 - 1/n2^2), R = 1.097e7 per metre",
+        "lambda = hc / dE, so energy and wavelength are inversely related",
+        "n = 1 -> 2 factor = 3/4; n = 2 -> 4 factor = 3/16; their ratio = 4",
+        "4 Z_X^2 / Z_Y^2 = 9 gives Z_X : Z_Y = 3 : 2",
+        "charge = protons - electrons = Z - 1 for a hydrogen-like ion",
+        "a + b = (3m - 1) + (2m - 1) = 5m - 2, minimum at m = 1",
+        "r_n = a0 n^2 / Z"
+      ],
+      "tags": [
+        "atomic structure",
+        "bohr model",
+        "hydrogen-like species",
+        "hydrogenic ion",
+        "rydberg equation",
+        "rydberg constant",
+        "energy levels",
+        "principal quantum number",
+        "absorption spectrum",
+        "emission spectrum",
+        "spectral lines",
+        "photon energy",
+        "wavelength ratio",
+        "atomic number",
+        "ionic charge",
+        "lithium ion",
+        "helium ion",
+        "Li2+",
+        "He+",
+        "z squared scaling",
+        "spectroscopy",
+        "integer answer",
+        "jee advanced 2026",
+        "paper 2",
+        "chemistry q10"
+      ],
+      "difficulty": "Moderate",
+      "estimatedMinutes": 10,
+      "answer": "3",
+      "answerValue": "3",
+      "derivedQuantities": {
+        "Z_X": 3,
+        "Z_Y": 2,
+        "a": 2,
+        "b": 1,
+        "a_plus_b": 3,
+        "ion_X": "Li2+",
+        "ion_Y": "He+",
+        "geometric_factor_X_n1_to_n2": "3/4",
+        "geometric_factor_Y_n2_to_n4": "3/16",
+        "ratio_of_geometric_factors": 4,
+        "Z_ratio": "3:2",
+        "dE_X_eV": 91.8384,
+        "dE_Y_eV": 10.2043,
+        "lambda_X_nm": 13.5003,
+        "lambda_Y_nm": 121.5023,
+        "lambda_ratio": 9.0,
+        "general_family": "(Z_X, Z_Y) = (3m, 2m), a + b = 5m - 2",
+        "printed_trap_sum_of_Z": 5
+      },
+      "verification": {
+        "status": "verified",
+        "methods": [
+          "Derived from first principles before any published key was consulted: the one-electron condition, the two geometric factors, the ratio and the final subtraction were all fixed independently",
+          "The geometric factors computed as exact fractions rather than decimals: 1 - 1/4 = 3/4 and 1/4 - 1/16 = 3/16, whose quotient is exactly 4, so the condition is 4 Z_X^2 / Z_Y^2 = 9 with no rounding anywhere",
+          "Brute force over every integer pair with 1 <= Z <= 60: the pairs giving a wavelength ratio of exactly 9.000000 are (3,2), (6,4), (9,6), (12,8) and so on - every one in the ratio 3 : 2 and none outside it, with (3,2) the smallest",
+          "Two independent numerical routes agree: Bohr energies with the Rydberg energy 13.605693 eV give lambda_X = 13.5003 nm and lambda_Y = 121.5023 nm, and the Rydberg constant 1.0973732e7 per metre gives the same two numbers; their quotient is 9.0000000000",
+          "dE / Z^2 confirmed constant at 2.5511 eV across Z = 1, 2, 3, 4 and 6 for the n = 2 -> 4 transition, which is the Z^2 scaling the whole argument rests on",
+          "Direction of the ratio checked: reversing it to Z_X : Z_Y = 2 : 3 gives 1.7778, and two hydrogen atoms give exactly 4 - neither is 9",
+          "Both ions confirmed to be genuinely positive at the minimum, a = 2 and b = 1, as the notation X(a+) and Y(b+) requires",
+          "a + b = 5m - 2 confirmed strictly increasing, so m = 1 is the minimum rather than an assumption",
+          "The printed traps reproduced deliberately: Z_X + Z_Y = 5 is a different number from a + b = 3, and dropping the factor of 4 would give the ratio 3 : 1 instead of 3 : 2",
+          "Answer cross-checked afterwards against a published worked solution for this paper, which reports the same intermediate values (Z_X = 3, Z_Y = 2, a = 2, b = 1) and the same answer, 3. IIT Roorkee's official key was not retrievable at the time of writing",
+          "Headless-browser run of the finished page: 88 assertions covering the ion foundry and its non-hydrogen-like refusal, the spectrometer with a deliberately mistuned photon passing through and a matched one being absorbed, the recorded absorption lines and the spectrum strip, the Z-squared chart, the ratio hunter locking only on multiples of (3,2), the self-stopping sweep, the charge tally, the m study staying blank until it is earned, the gate, badges, celebration, traps, progressive hints, teacher mode, theme toggle, clean console and zero horizontal overflow at 390 px and 360 px"
+        ],
+        "verifiedOn": "2026-08-30",
+        "note": "IIT Roorkee's official key was not retrievable; the published solution used for cross-checking is a coaching-institute solution that agrees with the independent derivation at every intermediate step, not only on the final number."
+      },
+      "interactivity": [
+        "Four benches, one per decision the question hides, each gated behind a prediction the student must commit to before the apparatus will settle anything",
+        "Ion foundry: a Z slider builds the nucleus proton by proton so the protons can actually be counted, with electrons stripped and replaced one at a time",
+        "The species is named live - H, He+, Li2+, Be3+ - and the drawing states plainly when Bohr's E = -13.6 Z^2/n^2 no longer applies because more than one electron is present",
+        "Claim A refuses to settle on a single species: two hydrogen-like species with different atomic numbers have to be built before the comparison can be made",
+        "Working absorption spectrometer: tuneable source, slit, sample chamber holding the ion, and a detector",
+        "The photon is drawn as a wave packet whose drawn wavelength and colour follow the energy actually selected, and it travels along the beam rather than appearing at its destination",
+        "Absorption is all-or-nothing: a mistuned photon flies through the sample to the detector, a matched one vanishes into the atom, the electron visibly jumps, and after a moment it falls back and re-emits",
+        "Energy ladder drawn to scale from E_n = -13.6 Z^2/n^2, with level labels nudged apart and led back to their lines so the crowding towards zero stays readable",
+        "Every absorbed photon leaves a dark line on a logarithmic spectrum strip banded X-ray, extreme UV, ultraviolet, visible and infrared, so the student sees that neither line in this question is visible light",
+        "Chart of transition energy against atomic number, showing the Z-squared law with the current sample marked on it",
+        "Ratio hunter: two ladders side by side, each locked to the transition the question gives it, with two atomic-number dials and a live wavelength ratio that only locks at exactly 9.0000",
+        "A sweep helper that walks Z_X upwards and stops itself the moment the ratio locks",
+        "Found-pair table showing that every solution is a multiple of (3, 2), with a + b growing for every multiple above the first",
+        "Charge counter: the ion drawn with countable protons and its single electron, a tally that converts protons and electrons into a and b, and the sum",
+        "An m study proving the minimum rather than asserting it - it stays blank until both ions have been counted, so it cannot print the answer to a student who is only scrolling",
+        "Seven expandable JEE traps, each phrased as the misconception a student actually holds, starting with the 3 + 2 = 5 error",
+        "Progressive four-level hint system on every bench, conceptual clue first and near-solution last",
+        "Progress bar, four earnable badges and an end-of-lab celebration reporting evidence collected and prediction accuracy",
+        "Auto play that walks the whole investigation, pausing at each prediction",
+        "Teacher mode with objectives, the expected wrong answers ranked, a teaching order and a discussion question",
+        "Answer gated until all four benches have been run, with a reveal-anyway escape",
+        "Step-by-step solution with an independent verification log"
+      ],
+      "source": {
+        "file": "papers/adv_2026_paper_2.pdf",
+        "page": 26
+      },
+      "createdAt": "2026-08-30",
+      "updatedAt": "2026-08-30"
     }
   ]
 }
