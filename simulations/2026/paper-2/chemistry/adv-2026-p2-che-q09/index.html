@@ -1,0 +1,1971 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ADV-2026-P2-CHE-Q09 · Virtual Sugar Chemistry Lab</title>
+<meta name="description" content="Interactive sugar chemistry lab for JEE Advanced 2026 Paper 2 Chemistry Q9: oxidise glucose and gluconic acid, run Fehling's on a ketose, hydrolyse sucrose and measure invert sugar on a polarimeter to test each printed statement.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232a78d6'/%3E%3Cpath d='M12.5 6.5h7M13.6 6.5v7.2L7.9 24.1a1.5 1.5 0 0 0 1.3 2.3h13.6a1.5 1.5 0 0 0 1.3-2.3l-5.7-10.4V6.5' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M10.6 20.6h10.8' stroke='white' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E">
+<meta name="sim-id" content="ADV-2026-P2-CHE-Q09">
+<style>
+:root{
+  color-scheme: light;
+  --surface-0:#f4f4f1; --surface-1:#fcfcfb; --surface-2:#ececea;
+  --line:#d9d9d4; --line-strong:#bcbcb5;
+  --text-primary:#0b0b0b; --text-secondary:#52514e; --text-muted:#77766f;
+  --s1:#2a78d6; --s2:#eb6834; --s3:#1baf7a; --s4:#4a3aa7;
+  --good:#00743f; --bad:#c0392b; --accent:#2a78d6;
+  --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+  --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --serif:ui-serif,Georgia,"Times New Roman",serif;
+  --radius:10px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  color-scheme: dark;
+  --surface-0:#111110; --surface-1:#1a1a19; --surface-2:#232322;
+  --line:#34342f; --line-strong:#4a4a44;
+  --text-primary:#ffffff; --text-secondary:#c3c2b7; --text-muted:#95948b;
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#9085e9;
+  --good:#3fae7a; --bad:#e66767; --accent:#3987e5;
+}}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --surface-0:#111110; --surface-1:#1a1a19; --surface-2:#232322;
+  --line:#34342f; --line-strong:#4a4a44;
+  --text-primary:#ffffff; --text-secondary:#c3c2b7; --text-muted:#95948b;
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#9085e9;
+  --good:#3fae7a; --bad:#e66767; --accent:#3987e5;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--surface-0);color:var(--text-primary);font-family:var(--sans);
+  font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px 80px}
+
+header.top{border-bottom:1px solid var(--line);background:var(--surface-1)}
+.top-inner{max-width:1120px;margin:0 auto;padding:22px 20px 18px;position:relative;
+  display:flex;flex-wrap:wrap;gap:16px;align-items:flex-start;justify-content:space-between}
+.simid{font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--text-muted)}
+h1{font-size:23px;line-height:1.25;margin:6px 0 10px;font-weight:640;max-width:640px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-size:11.5px;padding:3px 9px;border:1px solid var(--line-strong);border-radius:999px;
+  color:var(--text-secondary);background:var(--surface-2);white-space:nowrap}
+.chip.k{border-color:var(--accent);color:var(--accent);background:transparent}
+.answerbox{border:1px solid var(--line-strong);border-radius:var(--radius);background:var(--surface-2);
+  padding:12px 16px;min-width:210px}
+.answerbox .lbl{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted)}
+.answerbox .val{font-family:var(--mono);font-size:25px;font-weight:600;color:var(--good);line-height:1.22}
+.answerbox .sub{font-size:12px;color:var(--text-secondary)}
+.answerbox.locked .val{color:var(--text-muted);font-size:17px;letter-spacing:.04em}
+.answerbox .rv{margin-top:6px;font-size:11px;background:none;border:none;padding:0;color:var(--accent);
+  cursor:pointer;text-decoration:underline;font-family:var(--sans)}
+.themebtn{position:absolute;top:14px;right:16px;border:1px solid var(--line-strong);background:var(--surface-2);
+  color:var(--text-secondary);border-radius:8px;padding:4px 9px;font-size:12px;cursor:pointer}
+.brandbar{display:flex;align-items:center;gap:8px;margin-bottom:9px;text-decoration:none}
+.brandbar .pxmark{width:21px;height:21px;flex:none;display:block}
+.brandbar .wm{font-size:13px;font-weight:800;letter-spacing:.17em;color:var(--text-secondary);line-height:1}
+.brandbar .wm i{font-style:normal;color:var(--accent)}
+
+nav.jump{position:sticky;top:0;z-index:20;background:var(--surface-0);border-bottom:1px solid var(--line);
+  padding:8px 0;margin-bottom:26px}
+nav.jump ul{max-width:1120px;margin:0 auto;padding:0 20px;list-style:none;display:flex;gap:4px;overflow-x:auto}
+nav.jump a{display:block;padding:5px 11px;border-radius:7px;font-size:13px;text-decoration:none;
+  color:var(--text-secondary);white-space:nowrap}
+nav.jump a:hover{background:var(--surface-2);color:var(--text-primary)}
+
+section{margin:0 0 42px;scroll-margin-top:56px}
+h2{font-size:17px;font-weight:640;margin:0 0 4px;display:flex;align-items:baseline;gap:9px}
+h2 .n{font-family:var(--mono);font-size:12px;color:var(--text-muted);font-weight:400}
+.lede{color:var(--text-secondary);font-size:13.5px;margin:0 0 16px;max-width:76ch}
+.card,.panel{background:var(--surface-1);border:1px solid var(--line);border-radius:var(--radius);padding:18px}
+.panel h3{margin:0 0 12px;font-size:13px;letter-spacing:.05em;text-transform:uppercase;
+  color:var(--text-muted);font-weight:600}
+.lab{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:16px;align-items:start}
+.lab>*{min-width:0}
+@media(max-width:900px){.lab{grid-template-columns:1fr !important}}
+canvas{display:block;width:100%;height:auto;border-radius:8px;background:var(--surface-2)}
+
+.qtext{font-family:var(--serif);font-size:16px;line-height:1.7}
+.opts{list-style:none;padding:0;margin:16px 0 0;display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr));gap:10px}
+.opts li{border:1px solid var(--line);border-radius:10px;padding:10px;background:var(--surface-1);
+  display:flex;flex-direction:column;gap:6px}
+.opts li .hd{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--text-muted);font-family:var(--mono)}
+.opts li .mark{margin-left:auto;font-family:var(--sans);font-size:11.5px;font-weight:600}
+.opts li .nm{font-size:11.5px;color:var(--text-secondary)}
+.opts li.correct{border-color:var(--good);background:color-mix(in srgb,var(--good) 11%,transparent)}
+.opts li.correct .mark{color:var(--good)}
+.opts li.wrong{border-color:var(--bad)}
+.opts li.wrong .mark{color:var(--bad)}
+svg.optthumb{display:block;width:100%;height:auto;background:var(--surface-2);border-radius:7px}
+
+.ctrl{margin:14px 0}
+.ctrl label{display:flex;flex-wrap:wrap;gap:4px;justify-content:space-between;align-items:baseline;
+  font-size:13px;margin-bottom:5px}
+.ctrl label span{min-width:0}
+.ctrl label .v{font-family:var(--mono);font-size:13px;color:var(--text-primary)}
+input[type=range]{width:100%;min-width:0;accent-color:var(--accent)}
+.numrow{display:flex;gap:6px;align-items:center;margin-top:6px}
+.numrow input.numin{flex:1;min-width:0;padding:7px 9px;border-radius:7px;border:1px solid var(--line-strong);
+  background:var(--surface-0);color:var(--text-primary);font-family:var(--mono);font-size:13px}
+.numrow input.numin:focus{outline:2px solid var(--accent);outline-offset:-1px}
+.numrow input.numin.bad{border-color:var(--bad);background:color-mix(in srgb,var(--bad) 9%,transparent)}
+.numrow button.step{flex:none;width:40px;height:34px;border-radius:8px;border:1px solid var(--line-strong);
+  background:var(--surface-2);color:var(--text-primary);font-size:18px;line-height:1;cursor:pointer;
+  font-family:var(--mono);touch-action:manipulation}
+.numrow button.step:hover{border-color:var(--accent);color:var(--accent)}
+.numrow .unit{flex:none;font-size:12px;color:var(--text-muted);min-width:52px}
+.hint{font-size:11.5px;color:var(--text-muted);margin-top:4px;min-height:1.15em}
+.hint.bad{color:var(--bad);font-weight:600}
+.segbtns{display:flex;gap:6px;flex-wrap:wrap}
+.segbtns button{flex:1;min-width:84px;padding:8px 6px;border-radius:8px;border:1px solid var(--line-strong);
+  background:var(--surface-2);color:var(--text-secondary);font-size:13px;cursor:pointer;font-family:var(--sans)}
+.segbtns button[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:650}
+button.act{padding:8px 14px;border-radius:8px;border:1px solid var(--line-strong);background:var(--surface-2);
+  color:var(--text-primary);font-size:13px;cursor:pointer;font-family:var(--sans)}
+button.act:hover{border-color:var(--accent);color:var(--accent)}
+button.act.primary{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+button.act:disabled{opacity:.42;cursor:not-allowed}
+.btnrow{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+
+.playback{display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin-top:12px;
+  padding:9px 10px;border:1px solid var(--line);border-radius:9px;background:var(--surface-2)}
+.playback .lb{font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-muted);margin-right:2px}
+.playback button{padding:6px 12px;border-radius:7px;border:1px solid var(--line-strong);
+  background:var(--surface-1);color:var(--text-secondary);font-size:12.5px;cursor:pointer;font-family:var(--mono)}
+.playback button[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:700}
+.playback button:hover{border-color:var(--accent)}
+
+.readouts{display:grid;grid-template-columns:repeat(auto-fit,minmax(118px,1fr));gap:8px}
+.ro{border:1px solid var(--line);border-radius:8px;padding:8px 10px;background:var(--surface-2);position:relative}
+.ro .k{font-size:11px;letter-spacing:.03em;font-weight:600;color:var(--text-muted);white-space:nowrap}
+.ro .v{font-family:var(--mono);font-size:16px;font-weight:600;line-height:1.35}
+.ro .u{font-size:10.5px;color:var(--text-muted)}
+.delta{position:absolute;top:5px;right:7px;font-family:var(--mono);font-size:10.5px;font-weight:700;
+  padding:1px 5px;border-radius:5px;opacity:0;transition:opacity .55s ease-out;pointer-events:none}
+.delta.up{color:var(--good);background:color-mix(in srgb,var(--good) 16%,transparent)}
+.delta.down{color:var(--s2);background:color-mix(in srgb,var(--s2) 16%,transparent)}
+.delta.show{opacity:1;transition:opacity .1s}
+
+.eqlive{font-family:var(--serif);font-size:15px;background:var(--surface-2);border:1px solid var(--line);
+  border-radius:8px;padding:11px 13px;margin-top:12px;line-height:2.1}
+.eqlive .t{font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-muted);
+  font-family:var(--sans);display:block;margin-bottom:2px}
+.eqlive b{font-family:var(--mono);font-weight:700}
+.eqlive .chg{background:color-mix(in srgb,var(--accent) 26%,transparent);border-radius:4px;padding:0 3px}
+.eqlive .res{color:var(--good);font-weight:700;font-family:var(--mono)}
+
+.chartwrap{position:relative;background:var(--surface-1);border:1px solid var(--line);
+  border-radius:var(--radius);padding:16px}
+svg.chart{display:block;width:100%;height:auto;overflow:visible}
+.tip{position:absolute;pointer-events:none;background:var(--surface-1);border:1px solid var(--line-strong);
+  border-radius:8px;padding:8px 11px;font-size:12px;box-shadow:0 4px 14px rgba(0,0,0,.13);opacity:0;
+  transition:opacity .1s;z-index:5;min-width:150px}
+.tip .t{font-family:var(--mono);font-size:11px;color:var(--text-muted);margin-bottom:4px}
+.tip .r{display:flex;align-items:center;gap:7px;white-space:nowrap}
+.tip .sw{width:9px;height:9px;border-radius:2px;flex:none}
+.tip .rv{margin-left:auto;font-family:var(--mono);font-weight:600}
+.legend{display:flex;flex-wrap:wrap;gap:14px;margin-top:10px;font-size:12.5px;color:var(--text-secondary)}
+.legend span{display:flex;align-items:center;gap:6px}
+.legend i{width:14px;height:3px;border-radius:2px;display:block}
+.legend i.dot{width:9px;height:9px;border-radius:50%}
+
+.predict{border:1px solid var(--accent);border-radius:9px;padding:12px 14px;margin-top:14px;
+  background:color-mix(in srgb,var(--accent) 7%,transparent)}
+.predict .q{font-size:13px;font-weight:600;margin-bottom:8px}
+.predict .row{display:flex;gap:6px;flex-wrap:wrap}
+.predict button{flex:1;min-width:96px;padding:8px;border-radius:8px;border:1px solid var(--line-strong);
+  background:var(--surface-1);color:var(--text-primary);font-size:13px;cursor:pointer}
+.predict button[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+.predict .fb{font-size:12.5px;margin-top:9px;min-height:1.2em}
+.predict .fb.ok{color:var(--good);font-weight:600}
+.predict .fb.no{color:var(--bad);font-weight:600}
+
+table.data{border-collapse:collapse;font-size:12.5px;width:100%}
+table.data th,table.data td{border:1px solid var(--line-strong);padding:6px 9px;text-align:center}
+table.data th{background:var(--surface-2);font-weight:600;font-size:11.5px;color:var(--text-secondary)}
+table.data td.l{text-align:left}
+table.data td.num{font-family:var(--mono)}
+tr.win td{background:color-mix(in srgb,var(--good) 12%,transparent);font-weight:600}
+.scrollx{overflow-x:auto}
+.yes{color:var(--good);font-weight:700} .no{color:var(--bad);font-weight:700}
+.empty{color:var(--text-muted);font-size:12.5px;padding:10px 0}
+
+.nb{display:grid;gap:7px}
+.nb .obs{font-size:12.5px;padding:8px 11px;border-radius:8px;background:var(--surface-2);
+  border-left:3px solid var(--s1);color:var(--text-secondary);animation:nbin .35s ease-out}
+.nb .obs b{color:var(--text-primary);font-family:var(--mono)}
+@keyframes nbin{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+.insight{border:1px solid var(--good);border-radius:9px;padding:12px 14px;margin-top:12px;
+  background:color-mix(in srgb,var(--good) 10%,transparent);font-size:13.5px;animation:nbin .4s ease-out}
+.insight b{color:var(--good)}
+
+.verdict{border-radius:9px;padding:11px 14px;font-size:13.5px;margin-top:12px;border:1px solid var(--line-strong);
+  background:var(--surface-2)}
+.verdict.ok{border-color:var(--good);background:color-mix(in srgb,var(--good) 10%,transparent)}
+.verdict.no{border-color:var(--bad);background:color-mix(in srgb,var(--bad) 9%,transparent)}
+.verdict b{font-size:14px}
+
+.gate{border:1px dashed var(--line-strong);border-radius:var(--radius);padding:24px 20px;text-align:center;
+  background:var(--surface-1)}
+.gate h4{margin:0 0 6px;font-size:15px}
+.gate p{margin:0 0 12px;font-size:13px;color:var(--text-secondary)}
+.gate .cnt{font-family:var(--mono);color:var(--accent);font-weight:700}
+.reveal{animation:nbin .45s ease-out}
+
+ol.steps{list-style:none;counter-reset:s;padding:0;margin:0;display:grid;gap:10px}
+ol.steps li{min-width:0;counter-increment:s;border:1px solid var(--line);border-radius:var(--radius);
+  background:var(--surface-1);padding:14px 16px 14px 52px;position:relative}
+ol.steps li::before{content:counter(s);position:absolute;left:15px;top:14px;width:23px;height:23px;
+  border-radius:50%;background:var(--accent);color:#fff;font-size:12px;font-weight:700;
+  display:grid;place-items:center;font-family:var(--mono)}
+ol.steps h4{margin:0 0 6px;font-size:14px;font-weight:640}
+ol.steps p{margin:0 0 6px;font-size:13.5px;color:var(--text-secondary)}
+.eq{min-width:0;font-family:var(--serif);font-size:15px;background:var(--surface-2);border-radius:7px;
+  padding:9px 13px;margin:8px 0;overflow-x:auto}
+.eq .hl{color:var(--good);font-weight:700}
+sub{font-size:.72em} sup{font-size:.72em}
+.verify{border:1px solid var(--good);border-radius:var(--radius);
+  background:color-mix(in srgb,var(--good) 8%,transparent);padding:14px 16px;font-size:13.5px}
+.verify h4{margin:0 0 6px;font-size:13.5px;color:var(--good)}
+.verify ul{margin:6px 0 0;padding-left:18px;color:var(--text-secondary)}
+.meta-tbl{width:100%;border-collapse:collapse;font-size:13.5px}
+.meta-tbl td{padding:6px 0;border-bottom:1px solid var(--line);vertical-align:top}
+.meta-tbl td:first-child{color:var(--text-muted);width:160px;font-size:12.5px;padding-right:14px}
+footer{border-top:1px solid var(--line);margin-top:40px;padding-top:16px;font-size:12px;color:var(--text-muted)}
+
+.toolbar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;background:var(--surface-1);
+  border:1px solid var(--line);border-radius:var(--radius);padding:12px 14px;margin:0 0 28px}
+.toolbar .mission{flex:1 1 260px;min-width:0;font-size:13px;color:var(--text-secondary)}
+.toolbar .mission b{color:var(--text-primary)}
+.bar{flex:none;display:flex;align-items:center;gap:9px}
+.bar .track{width:120px;height:9px;border-radius:5px;background:var(--surface-2);
+  border:1px solid var(--line-strong);overflow:hidden}
+.bar .track i{display:block;height:100%;background:var(--good);width:0;transition:width .5s ease-out}
+.bar .cnt{font-family:var(--mono);font-size:12.5px;font-weight:700;white-space:nowrap}
+.badges{display:flex;gap:6px;flex-wrap:wrap}
+.badge{font-size:11px;border:1px solid var(--line-strong);border-radius:999px;padding:3px 10px;
+  color:var(--text-muted);background:var(--surface-2);transition:.3s;white-space:nowrap}
+.badge.won{border-color:var(--good);color:var(--good);font-weight:650;
+  background:color-mix(in srgb,var(--good) 12%,transparent)}
+.mol{display:block;width:100%;height:auto;overflow:visible}
+svg.tall{max-height:340px;width:auto;margin:0 auto}
+.molwrap{background:var(--surface-1);border:1px solid var(--line);border-radius:var(--radius);padding:12px}
+.grp{cursor:pointer}
+.grp:hover .gtx{fill:var(--accent)}
+.info{border-left:3px solid var(--accent);background:var(--surface-2);border-radius:0 8px 8px 0;
+  padding:9px 12px;font-size:12.5px;margin-top:10px;min-height:2.6em;color:var(--text-secondary)}
+.info b{color:var(--text-primary)}
+.shelf{display:grid;grid-template-columns:repeat(auto-fit,minmax(112px,1fr));gap:8px}
+.bottle{border:1px solid var(--line-strong);border-radius:9px;background:var(--surface-2);
+  padding:9px;cursor:pointer;text-align:center;font-size:12px;transition:.18s}
+.bottle:hover{border-color:var(--accent)}
+.bottle[aria-pressed=true]{border-color:var(--accent);
+  background:color-mix(in srgb,var(--accent) 13%,transparent);font-weight:650}
+.bottle .b{display:block;margin:0 auto 5px;width:26px;height:34px;border-radius:3px 3px 6px 6px;
+  border:1.5px solid var(--line-strong);position:relative;background:var(--surface-1)}
+.bottle .b::before{content:"";position:absolute;left:8px;right:8px;top:-5px;height:5px;
+  border:1.5px solid var(--line-strong);border-bottom:none;border-radius:2px 2px 0 0}
+.bottle .b i{position:absolute;left:1px;right:1px;bottom:1px;height:62%;border-radius:0 0 4px 4px;display:block}
+.pred{border:1px solid var(--accent);border-radius:10px;padding:12px 14px;margin-top:12px;
+  background:color-mix(in srgb,var(--accent) 7%,transparent)}
+.pred .q{font-size:13px;font-weight:650;margin-bottom:8px}
+.pred .opts2{display:grid;gap:6px}
+.pred .opts2 button{text-align:left;padding:8px 11px;border-radius:8px;border:1px solid var(--line-strong);
+  background:var(--surface-1);color:var(--text-primary);font-size:12.5px;cursor:pointer;font-family:var(--sans)}
+.pred .opts2 button:hover{border-color:var(--accent)}
+.pred .opts2 button[aria-pressed=true]{border-color:var(--accent);font-weight:650;
+  background:color-mix(in srgb,var(--accent) 14%,transparent)}
+.pred .fb2{font-size:12.5px;margin-top:8px;min-height:1.2em}
+.pred .fb2.ok{color:var(--good);font-weight:650}
+.pred .fb2.no{color:var(--bad);font-weight:650}
+.hintbox{font-size:12.5px;color:var(--text-secondary);border:1px dashed var(--line-strong);
+  border-radius:8px;padding:9px 12px;margin-top:10px;display:none}
+.hintbox.on{display:block}
+.hintbox b{color:var(--accent)}
+.tube{width:74px;height:210px;margin:0 auto;position:relative;
+  border:2.5px solid var(--line-strong);border-top:none;border-radius:0 0 36px 36px;
+  background:var(--surface-1);overflow:hidden}
+.tube .liq{position:absolute;left:0;right:0;bottom:0;height:66%;transition:background 1.2s ease}
+.tube .ppt{position:absolute;left:0;right:0;bottom:0;height:0;background:#c0392b;
+  transition:height 1.6s ease-out;border-radius:0 0 32px 32px}
+.tube .bub{position:absolute;width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.55);
+  bottom:-10px;animation:rise 2.2s linear infinite}
+@keyframes rise{to{transform:translateY(-190px);opacity:0}}
+.flame{width:52px;height:34px;margin:6px auto 0;border-radius:50% 50% 46% 46%;opacity:0;
+  background:radial-gradient(circle at 50% 78%,#ffd479,#e8721c 62%,transparent 74%);
+  transition:opacity .4s}
+.flame.on{opacity:1;animation:flick .5s ease-in-out infinite alternate}
+@keyframes flick{from{transform:scaleY(.9)}to{transform:scaleY(1.12)}}
+.stamp{display:inline-block;padding:5px 14px;border:2.5px solid var(--bad);color:var(--bad);
+  border-radius:7px;font-weight:800;letter-spacing:.09em;font-size:13px;transform:rotate(-4deg);
+  opacity:0;transition:opacity .5s}
+.stamp.ok{border-color:var(--good);color:var(--good)}
+.stamp.show{opacity:1;animation:thump .45s cubic-bezier(.2,1.4,.4,1)}
+@keyframes thump{0%{transform:rotate(-4deg) scale(2.1);opacity:0}60%{opacity:1}100%{transform:rotate(-4deg) scale(1)}}
+.balance{display:flex;align-items:flex-end;justify-content:center;gap:0;margin-top:6px}
+.tiles{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.tile{padding:9px 15px;border-radius:9px;border:1.5px solid var(--line-strong);background:var(--surface-2);
+  font-family:var(--mono);font-size:15px;font-weight:700;cursor:pointer;transition:.18s;user-select:none}
+.tile:hover{border-color:var(--accent)}
+.tile.sel{border-color:var(--accent);background:color-mix(in srgb,var(--accent) 20%,transparent)}
+.tile.used{opacity:.32;pointer-events:none}
+.calc{display:flex;align-items:center;justify-content:center;gap:12px;margin-top:12px;
+  font-family:var(--serif);font-size:20px;flex-wrap:wrap}
+.slot{min-width:74px;height:44px;border:2px dashed var(--line-strong);border-radius:9px;
+  display:grid;place-items:center;font-family:var(--mono);font-size:16px;font-weight:700;
+  cursor:pointer;color:var(--text-muted);background:var(--surface-2);padding:0 8px}
+.slot.filled{border-style:solid;border-color:var(--good);color:var(--good);background:transparent}
+.frac{display:inline-flex;flex-direction:column;align-items:center;gap:4px}
+.frac .ln{width:100%;height:2px;background:var(--text-primary)}
+.pol{position:relative}
+.dial{font-family:var(--mono);font-size:30px;font-weight:700;text-align:center;color:var(--s1)}
+.dial small{font-size:13px;color:var(--text-muted);font-weight:400;display:block}
+.dlswitch{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px}
+.dlswitch .sw{border:1px solid var(--line-strong);border-radius:9px;padding:10px;text-align:center;
+  cursor:pointer;background:var(--surface-2);font-size:12.5px}
+.dlswitch .sw[aria-pressed=true]{border-color:var(--accent);font-weight:650;
+  background:color-mix(in srgb,var(--accent) 13%,transparent)}
+.trap{border:1px solid var(--line-strong);border-radius:10px;padding:11px 13px;margin-bottom:8px;
+  background:var(--surface-1);cursor:pointer}
+.trap .t{font-size:12.5px;font-weight:650;color:var(--bad)}
+.trap .a{font-size:12.5px;color:var(--text-secondary);margin-top:6px;display:none}
+.trap.open .a{display:block}
+.trap .a b{color:var(--good)}
+.teach{border:1px solid var(--s4);border-radius:var(--radius);padding:14px 16px;margin-top:16px;
+  background:color-mix(in srgb,var(--s4) 8%,transparent);font-size:13.5px;display:none}
+.teach.on{display:block}
+.teach h4{margin:0 0 6px;font-size:13.5px;color:var(--s4)}
+.teach ul{margin:6px 0 0;padding-left:18px;color:var(--text-secondary)}
+#celebrate{position:fixed;inset:0;z-index:60;display:none;place-items:center;
+  background:color-mix(in srgb,var(--surface-0) 88%,transparent);backdrop-filter:blur(3px)}
+#celebrate.on{display:grid}
+#celebrate .card{text-align:center;padding:26px 30px;border-radius:16px;background:var(--surface-1);
+  border:1px solid var(--good);box-shadow:0 18px 60px rgba(0,0,0,.28);animation:pop .5s cubic-bezier(.2,1.3,.4,1)}
+@keyframes pop{from{transform:scale(.82);opacity:0}to{transform:none;opacity:1}}
+#celebrate .gr{font-size:clamp(26px,6vw,46px);font-weight:900;letter-spacing:-.02em;line-height:1.05;
+  background:linear-gradient(92deg,var(--s1),var(--s3) 46%,var(--s2));-webkit-background-clip:text;
+  background-clip:text;color:transparent;transform:rotate(-2.5deg);margin-bottom:6px}
+#celebrate .sub{font-size:13.5px;color:var(--text-secondary);margin-bottom:14px}
+#celebrate .ans{font-family:var(--mono);font-size:30px;font-weight:700;color:var(--good);margin:10px 0 4px}
+.confetti{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.confetti i{position:absolute;width:8px;height:13px;border-radius:2px;animation:fall linear forwards}
+@keyframes fall{to{transform:translateY(105vh) rotate(760deg);opacity:.15}}
+
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-inner">
+    <div>
+      <div class="brandbar"><svg class="pxmark" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><rect width="32" height="32" rx="8" fill="var(--accent)"/><path d="M12.5 6.5h7M13.6 6.5v7.2L7.9 24.1a1.5 1.5 0 0 0 1.3 2.3h13.6a1.5 1.5 0 0 0 1.3-2.3l-5.7-10.4V6.5" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.6 20.6h10.8" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg><span class="wm">PRAYOG<i>X</i></span></div>
+      <div class="simid">ADV-2026-P2-CHE-Q09</div>
+      <h1>The sugar lab: oxidise, reduce, hydrolyse and measure — four statements, four benches</h1>
+      <div class="chips">
+        <span class="chip">JEE Advanced 2026</span>
+        <span class="chip">Paper 2</span>
+        <span class="chip">Chemistry</span>
+        <span class="chip">Q.9 · Section 2</span>
+        <span class="chip k">Biomolecules</span>
+        <span class="chip k">Optical rotation</span>
+      </div>
+    </div>
+    <div class="answerbox locked" id="answerbox">
+      <div class="lbl">Answer</div>
+      <div class="val" id="ansval">Run the experiment</div>
+      <div class="sub" id="anssub">Run all four benches to unlock.</div>
+      <button class="rv" id="revealnow" type="button">Reveal anyway</button>
+    </div>
+    <button class="themebtn" id="themebtn" type="button">◐ theme</button>
+  </div>
+</header>
+
+<nav class="jump">
+  <ul>
+    <li><a href="#question">Question</a></li>
+    <li><a href="#oxidise">Bench A · oxidation</a></li>
+    <li><a href="#fehling">Bench B · Fehling's</a></li>
+    <li><a href="#invert">Bench C · invert sugar</a></li>
+    <li><a href="#polarimeter">Bench D · polarimeter</a></li>
+    <li><a href="#verdict">Verdict on A–D</a></li>
+    <li><a href="#solution">Step-by-step solution</a></li>
+    <li><a href="#concepts">Concepts &amp; classification</a></li>
+  </ul>
+</nav>
+
+<div class="wrap">
+
+
+<div class="toolbar">
+  <div class="mission"><b>Mission.</b> Four statements have walked into the sugar lab and only some of
+    them survive contact with an experiment. Collect the evidence bench by bench.</div>
+  <div class="bar">
+    <span class="track"><i id="progbar"></i></span>
+    <span class="cnt" id="progtxt">0 / 4 benches</span>
+  </div>
+  <div class="badges" id="badges"></div>
+  <button class="act" id="autoplay" type="button">▶ Auto play</button>
+  <button class="act" id="teachbtn" type="button">Teacher mode</button>
+  <button class="act" id="resetlab" type="button">↺ Reset lab</button>
+</div>
+
+<!-- 01 QUESTION -->
+<section id="question">
+  <h2><span class="n">01</span>Original question
+      <span style="font-weight:400;font-size:12.5px;color:var(--text-muted)">— verbatim</span></h2>
+  <div class="card">
+    <div class="qtext">The correct statement(s) regarding sugars is(are)</div>
+    <div class="eq" style="margin-top:10px"><b>Given:</b> Specific rotations of
+      L-(−)-glucose and L-(+)-fructose are <b>−52.5°</b> and <b>+92.5°</b>, respectively.</div>
+    <ul class="opts" id="opts">
+      <li data-k="A"><div class="hd">(A)<span class="mark"></span></div>
+        <div class="nm">On treatment with HNO<sub>3</sub>, gluconic acid is oxidized to saccharic acid,
+          whereas glucose is not oxidized to saccharic acid.</div></li>
+      <li data-k="B"><div class="hd">(B)<span class="mark"></span></div>
+        <div class="nm">Fructose gives a positive Fehling's test because it isomerises to glucose and
+          another aldohexose in the presence of Fehling's reagent.</div></li>
+      <li data-k="C"><div class="hd">(C)<span class="mark"></span></div>
+        <div class="nm">Invert sugar is an equimolar mixture of D-glucose and D-fructose formed after
+          hydrolysis of the corresponding disaccharide.</div></li>
+      <li data-k="D"><div class="hd">(D)<span class="mark"></span></div>
+        <div class="nm">Specific rotation of invert sugar is −40°.</div></li>
+    </ul>
+    <p style="font-size:12.5px;color:var(--text-muted);margin:12px 0 0">
+      Multiple options may be correct (+4 / partial / −1). Four statements, four benches. Predict first,
+      then run the experiment — the verdicts below are computed from what you observe, not looked up.
+    </p>
+  </div>
+</section>
+
+<!-- 02 OXIDATION -->
+<section id="oxidise">
+  <h2><span class="n">02</span>Bench A — the oxidation flask</h2>
+  <p class="lede">
+    Nitric acid is a strong oxidising agent: it attacks an aldehyde and a primary alcohol alike. Put
+    something in the flask, look at which ends are oxidisable, and heat it.
+  </p>
+  <div class="lab">
+    <div class="panel">
+      <h3>Reagent shelf</h3>
+      <div class="shelf" id="oxshelf">
+        <button class="bottle" type="button" data-s="glucose" aria-pressed="true">
+          <span class="b"><i style="background:var(--s1)"></i></span>D-glucose</button>
+        <button class="bottle" type="button" data-s="gluconic">
+          <span class="b"><i style="background:var(--s3)"></i></span>gluconic acid</button>
+        <button class="bottle" type="button" data-s="fructose">
+          <span class="b"><i style="background:var(--s2)"></i></span>D-fructose</button>
+      </div>
+      <div class="molwrap" style="margin-top:12px">
+        <svg id="oxmol" class="mol tall" viewBox="0 0 340 412" role="img"
+             aria-label="Open-chain structure of the sugar in the flask"></svg>
+      </div>
+      <div class="info" id="oxinfo">Tap any group on the structure to find out what HNO<sub>3</sub>
+        does to it.</div>
+      <div class="flame" id="oxflame"></div>
+      <div class="btnrow">
+        <button class="act primary" id="oxheat" type="button">🔥 Add HNO₃ and heat</button>
+        <button class="act" id="oxreset" type="button">↺ Empty the flask</button>
+        <button class="act" id="oxhint" type="button">Hint</button>
+      </div>
+      <div class="hintbox" id="oxhintbox"></div>
+    </div>
+
+    <div class="panel">
+      <h3>Predict, then run</h3>
+      <div class="pred" id="oxpred">
+        <div class="q">Statement (A) says glucose is <em>not</em> oxidised to saccharic acid by
+          HNO₃. Before you heat anything — is that right?</div>
+        <div class="opts2">
+          <button type="button" data-p="yes">Right — only gluconic acid reaches saccharic acid</button>
+          <button type="button" data-p="no">Wrong — glucose gets there too</button>
+        </div>
+        <div class="fb2" id="oxfb">Commit to an answer, then run both experiments.</div>
+      </div>
+
+      <h3 style="margin-top:16px">Products so far</h3>
+      <div class="scrollx"><table class="data" id="oxtbl"></table></div>
+      <div class="molwrap" style="margin-top:12px">
+        <svg id="oxprod" class="mol tall" viewBox="0 0 340 412" role="img"
+             aria-label="Structure of the oxidation product"></svg>
+      </div>
+      <div class="verdict" id="oxv">Run HNO₃ on <b>both</b> glucose and gluconic acid, then compare
+        the two products.</div>
+      <span class="stamp" id="oxstamp">experimentally disproved</span>
+    </div>
+  </div>
+</section>
+
+<!-- 03 FEHLING -->
+<section id="fehling">
+  <h2><span class="n">03</span>Bench B — Fehling's test on a ketose</h2>
+  <p class="lede">
+    Fehling's reagent is alkaline, and that one word is the whole story. Run the test on a ketose that
+    has no aldehyde group of its own and see what the copper does.
+  </p>
+  <div class="lab">
+    <div class="panel">
+      <h3>Test-tube station</h3>
+      <div class="shelf" id="fshelf">
+        <button class="bottle" type="button" data-s="fructose" aria-pressed="true">
+          <span class="b"><i style="background:var(--s2)"></i></span>D-fructose</button>
+        <button class="bottle" type="button" data-s="glucose">
+          <span class="b"><i style="background:var(--s1)"></i></span>D-glucose</button>
+        <button class="bottle" type="button" data-s="sucrose">
+          <span class="b"><i style="background:var(--s4)"></i></span>sucrose</button>
+      </div>
+      <div class="tube" id="ftube" style="margin-top:16px">
+        <div class="liq" id="fliq" style="background:linear-gradient(180deg,#3f7fd6,#1f4f9e)"></div>
+        <div class="ppt" id="fppt"></div>
+      </div>
+      <div class="flame" id="fflame"></div>
+      <div style="text-align:center;font-size:12px;color:var(--text-muted);margin-top:6px"
+           id="ftubecap">Fehling's solution — deep blue Cu(II)</div>
+      <div class="btnrow">
+        <button class="act primary" id="fheat" type="button">🔥 Add Fehling's and heat</button>
+        <button class="act" id="freset" type="button">↺ Fresh tube</button>
+        <button class="act" id="fhint" type="button">Hint</button>
+      </div>
+      <div class="hintbox" id="fhintbox"></div>
+      <div class="readouts" style="margin-top:12px">
+        <div class="ro"><div class="k">Cu oxidation state</div><div class="v" id="ro-cu">+2</div><div class="u">in the tube</div></div>
+        <div class="ro"><div class="k">reducing sugar</div><div class="v" id="ro-red">—</div><div class="u">present?</div></div>
+        <div class="ro"><div class="k">result</div><div class="v" id="ro-res" style="font-size:13px">—</div><div class="u">Fehling's test</div></div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h3>Predict, then run</h3>
+      <div class="pred" id="fpred">
+        <div class="q">Fructose is a ketose with no −CHO. Will it give a positive Fehling's test?</div>
+        <div class="opts2">
+          <button type="button" data-p="a">No — only aldehydes reduce Cu(II)</button>
+          <button type="button" data-p="b">Yes — alkali rearranges it into aldoses first</button>
+          <button type="button" data-p="c">No reaction at all</button>
+          <button type="button" data-p="d">Yes — the ketone group itself is oxidised directly</button>
+        </div>
+        <div class="fb2" id="ffb">Commit to an answer, then heat the tube.</div>
+      </div>
+
+      <h3 style="margin-top:16px">What the alkali does</h3>
+      <div class="molwrap">
+        <svg id="fmech" class="mol" viewBox="0 0 660 300" role="img"
+             aria-label="Fructose rearranging through the enediol to glucose and mannose"></svg>
+      </div>
+      <div class="playback">
+        <span class="lb">Mechanism</span>
+        <button type="button" id="mstep0">Simple</button>
+        <button type="button" id="mprev">◀ Step</button>
+        <button type="button" id="mplay">▶ Play</button>
+        <button type="button" id="mnext">Step ▶</button>
+      </div>
+      <div class="info" id="fmechinfo"></div>
+      <div class="verdict" id="fv">Heat the tube and watch the copper.</div>
+      <span class="stamp ok" id="fstamp">experimentally confirmed</span>
+    </div>
+  </div>
+</section>
+
+<!-- 04 INVERT -->
+<section id="invert">
+  <h2><span class="n">04</span>Bench C — hydrolysing sucrose</h2>
+  <p class="lede">
+    Sucrose is one glucose and one fructose held together by a glycosidic bond. Break that bond and
+    count what comes out — then watch the polarimeter needle change sides, which is where the name
+    comes from.
+  </p>
+  <div class="lab">
+    <div class="panel">
+      <h3>Sucrose</h3>
+      <div class="molwrap">
+        <svg id="sucmol" class="mol" viewBox="0 0 620 300" role="img"
+             aria-label="Sucrose: a glucose unit and a fructose unit joined by a glycosidic bond"></svg>
+      </div>
+      <div class="info" id="sucinfo">Tap the bond in the middle, or either ring, to identify it.</div>
+      <div class="segbtns" id="hydsel" style="margin-top:10px">
+        <button type="button" data-h="acid" aria-pressed="true">Dilute H⁺, warm</button>
+        <button type="button" data-h="enz">Invertase (enzyme)</button>
+      </div>
+      <div class="btnrow">
+        <button class="act primary" id="hydro" type="button">💧 Add water and hydrolyse</button>
+        <button class="act" id="hydreset" type="button">↺ Re-form sucrose</button>
+        <button class="act" id="chint" type="button">Hint</button>
+      </div>
+      <div class="hintbox" id="chintbox"></div>
+    </div>
+
+    <div class="panel">
+      <h3>Predict, then run</h3>
+      <div class="pred" id="cpred">
+        <div class="q">One molecule of sucrose is hydrolysed completely. What comes out?</div>
+        <div class="opts2">
+          <button type="button" data-p="a">Two glucose molecules</button>
+          <button type="button" data-p="b">One glucose and one fructose, 1 : 1</button>
+          <button type="button" data-p="c">Glucose and fructose, but 2 : 1</button>
+          <button type="button" data-p="d">Glucose and mannose</button>
+        </div>
+        <div class="fb2" id="cfb">Commit to an answer, then hydrolyse.</div>
+      </div>
+
+      <h3 style="margin-top:16px">The balance</h3>
+      <div class="molwrap">
+        <svg id="balsvg" class="mol" viewBox="0 0 620 260" role="img"
+             aria-label="Balance showing equimolar glucose and fructose"></svg>
+      </div>
+      <div class="readouts" style="margin-top:10px">
+        <div class="ro"><div class="k">glucose</div><div class="v" id="ro-ng">0</div><div class="u">molecules</div></div>
+        <div class="ro"><div class="k">fructose</div><div class="v" id="ro-nf">0</div><div class="u">molecules</div></div>
+        <div class="ro"><div class="k">ratio</div><div class="v" id="ro-ratio" style="font-size:14px">—</div><div class="u">glucose : fructose</div></div>
+        <div class="ro"><div class="k">rotation</div><div class="v" id="ro-rot" style="font-size:14px">+66.5</div><div class="u">degrees</div></div>
+      </div>
+      <div class="verdict" id="cv">Hydrolyse the sucrose and read the balance.</div>
+      <span class="stamp ok" id="cstamp">experimentally confirmed</span>
+    </div>
+  </div>
+</section>
+
+<!-- 05 POLARIMETER -->
+<section id="polarimeter">
+  <h2><span class="n">05</span>Bench D — the polarimeter</h2>
+  <p class="lede">
+    The paper gives you the <em>L</em> sugars. Invert sugar is made of the <em>D</em> ones. Sort that
+    out first, then mix and measure — and watch what happens if you forget one step of the arithmetic.
+  </p>
+  <div class="lab">
+    <div class="panel">
+      <h3>Polarimeter</h3>
+      <div class="molwrap pol">
+        <svg id="polsvg" class="mol" viewBox="0 0 640 260" role="img"
+             aria-label="Polarimeter with light source, polariser, sample tube and analyser"></svg>
+      </div>
+      <div class="dial" id="poldial">—<small>observed specific rotation</small></div>
+      <div class="ctrl" style="margin-top:10px">
+        <label for="mix"><span>Mixing chamber — mole % glucose</span>
+          <span class="v" id="mixv">50 %</span></label>
+        <input type="range" id="mix" min="0" max="100" step="5" value="50"
+               aria-label="mole percent glucose in the mixture">
+        <div class="hint">Glucose and fructose are both C₆H₁₂O₆, so equal moles means equal mass and the
+          mixture's rotation is the plain average of the two.</div>
+      </div>
+      <div class="btnrow">
+        <button class="act" id="dhint" type="button">Hint</button>
+      </div>
+      <div class="hintbox" id="dhintbox"></div>
+    </div>
+
+    <div class="panel">
+      <h3>First: D or L?</h3>
+      <p style="font-size:13px;color:var(--text-secondary);margin:0 0 6px">
+        <b>D/L is configuration. (+)/(−) is which way the light turns.</b> They are independent — that is
+        the whole trap in this statement.</p>
+      <div class="dlswitch" id="dlsw">
+        <div class="sw" data-d="L" aria-pressed="true">Use the printed <b>L</b> sugars<br>
+          <span style="font-family:var(--mono);font-size:12px">L-(−)-glucose −52.5 · L-(+)-fructose +92.5</span></div>
+        <div class="sw" data-d="D" aria-pressed="false">Convert to the <b>D</b> sugars<br>
+          <span style="font-family:var(--mono);font-size:12px">D-(?)-glucose · D-(?)-fructose</span></div>
+      </div>
+      <div class="info" id="dlinfo">Invert sugar is made of D-glucose and D-fructose. Which pair of
+        numbers should go into the calculation?</div>
+
+      <h3 style="margin-top:16px">Build the calculation</h3>
+      <p style="font-size:12.5px;color:var(--text-muted);margin:0 0 4px">
+        Tap a tile, then tap a slot. Get it right and the polarimeter locks in.</p>
+      <div class="tiles" id="tiles"></div>
+      <div class="calc">
+        <span class="frac">
+          <span style="display:flex;gap:8px;align-items:center">
+            <span class="slot" id="s1" data-slot="1">?</span><span>+</span>
+            <span class="slot" id="s2" data-slot="2">?</span>
+          </span>
+          <span class="ln"></span>
+          <span class="slot" id="s3" data-slot="3" style="min-width:52px">?</span>
+        </span>
+        <span style="font-size:24px">=</span>
+        <span class="slot" id="sres" style="min-width:92px;border-style:solid">?</span>
+      </div>
+      <div class="btnrow">
+        <button class="act" id="calcclear" type="button">↺ Clear the tiles</button>
+      </div>
+      <div class="verdict" id="dv">Set the configuration, then build the average.</div>
+      <span class="stamp" id="dstamp">experimentally disproved</span>
+    </div>
+  </div>
+</section>
+
+<!-- 06 VERDICT -->
+<section id="verdict">
+  <h2><span class="n">06</span>Verdict on each statement</h2>
+  <p class="lede">
+    Every verdict below came out of a bench you ran. The traps are the wrong turns this question is
+    built to catch — open one only after you have formed your own view.
+  </p>
+  <div class="lab">
+    <div class="panel">
+      <h3>Lab notebook</h3>
+      <p style="font-size:12.5px;color:var(--text-muted);margin:0 0 10px">
+        Written as you work. Only what you actually demonstrated appears here.</p>
+      <div class="nb" id="notebook"></div>
+      <div class="empty" id="nbempty">Nothing recorded yet — work through the four benches above.</div>
+
+      <h3 style="margin-top:18px">Common traps</h3>
+      <div id="traps"></div>
+    </div>
+    <div class="panel">
+      <h3>Predict, then check</h3>
+
+    <div class="predict" id="predict">
+      <div class="q" id="pq"></div>
+      <div class="row">
+        <button type="button" data-p="yes">Correct</button>
+        <button type="button" data-p="no">Not correct</button>
+      </div>
+      <div class="fb" id="pfb"></div>
+      <div class="row" style="margin-top:10px">
+        <button type="button" id="pprev">← Previous statement</button>
+        <button type="button" id="pnext">Next statement →</button>
+      </div>
+    </div>
+    <div class="scrollx" style="margin-top:16px"><table class="data" id="matrix"></table></div>
+
+    </div>
+  </div>
+</section>
+
+<!-- 07 SOLUTION -->
+<section id="solution">
+  <h2><span class="n">07</span>Step-by-step solution</h2>
+
+  <div class="gate" id="solgate">
+    <h4>The solution is still locked</h4>
+    <p>Test all four statements on the bench above and the derivation opens by itself.<br>
+       Statements tested: <span class="cnt" id="gtested">0</span> of 4 — oxidise both compounds, run Fehling's on fructose, hydrolyse sucrose and finish the average</p>
+    <button class="act" id="revealsol" type="button">Show me the solution anyway</button>
+  </div>
+
+  <div id="solbody" hidden>
+    <div class="verdict ok" id="solintro"></div>
+    <ol class="steps" style="margin-top:14px">
+      <li>
+        <h4>(A) HNO<sub>3</sub> oxidises <em>both</em> ends of a hexose</h4>
+        <p>Nitric acid is a strong oxidising agent. Open-chain glucose offers it two oxidisable
+           positions — the C1 aldehyde and the C6 primary alcohol — and it takes both.</p>
+        <div class="eq">glucose &nbsp;<span style="font-family:var(--mono);font-size:12px">—HNO<sub>3</sub>—&gt;</span>&nbsp;
+          <span class="hl">saccharic acid</span> &nbsp;&nbsp;(CHO → COOH <em>and</em> CH<sub>2</sub>OH → COOH)</div>
+        <p>Gluconic acid is simply glucose whose C1 has already been oxidised — by a mild oxidant such
+           as bromine water, which stops there. Its C6 −CH<sub>2</sub>OH is still untouched, so HNO<sub>3</sub>
+           takes it to the same dicarboxylic acid.</p>
+        <div class="eq">gluconic acid &nbsp;<span style="font-family:var(--mono);font-size:12px">—HNO<sub>3</sub>—&gt;</span>&nbsp;
+          <span class="hl">saccharic acid</span> &nbsp;&nbsp;(CH<sub>2</sub>OH → COOH)</div>
+        <p>Both routes land on saccharic acid. The statement's first half is fine; the clause
+           "whereas glucose is not oxidized to saccharic acid" is what breaks it.
+           <b>(A) is incorrect.</b></p>
+      </li>
+      <li>
+        <h4>(B) Fehling's is alkaline, and alkali rearranges a ketose</h4>
+        <p>Fructose has no aldehyde of its own. But Fehling's solution is strongly basic, and base
+           removes the acidic α-hydrogen at C1 to give a <b>1,2-enediol</b>. That enediol can collapse
+           back in three directions.</p>
+        <div class="eq">fructose ⇌ <span class="hl">1,2-enediol</span> ⇌ glucose &nbsp;·&nbsp;
+          enediol ⇌ mannose</div>
+        <p>This is the Lobry de Bruyn–van Ekenstein rearrangement. It produces glucose <em>and mannose</em>
+           — two aldohexoses differing only at C2, which is exactly the "another aldohexose" the statement
+           names. Aldoses reduce Cu(II) to Cu<sub>2</sub>O, the red precipitate.</p>
+        <div class="eq">RCHO + 2Cu<sup>2+</sup> + 5OH<sup>−</sup> ⟶ RCOO<sup>−</sup> +
+          <span class="hl">Cu<sub>2</sub>O↓</span> + 3H<sub>2</sub>O</div>
+        <p>So a ketose does give a positive test, and for exactly the reason stated.
+           <b>(B) is correct.</b></p>
+      </li>
+      <li>
+        <h4>(C) Sucrose splits 1 : 1</h4>
+        <div class="eq">C<sub>12</sub>H<sub>22</sub>O<sub>11</sub> + H<sub>2</sub>O ⟶
+          <span class="hl">C<sub>6</sub>H<sub>12</sub>O<sub>6</sub> + C<sub>6</sub>H<sub>12</sub>O<sub>6</sub></span>
+          &nbsp;&nbsp;(342.30 + 18.02 = 180.16 + 180.16)</div>
+        <p>One glycosidic bond, one water, two monosaccharides — one D-glucose and one D-fructose, in
+           strictly equal numbers. That equimolar mixture is what "invert sugar" names.
+           <b>(C) is correct.</b></p>
+      </li>
+      <li>
+        <h4>Why it is called <em>invert</em> sugar</h4>
+        <p>Sucrose is dextrorotatory, [α] = +66.5°. The mixture it hydrolyses into is laevorotatory.
+           The sign of the rotation flips during the reaction — the rotation inverts. It has nothing to
+           do with any configuration inverting.</p>
+      </li>
+      <li>
+        <h4>(D) The number is −20°, not −40°</h4>
+        <p>Start from the printed data, which is for the <b>L</b> sugars. Enantiomers rotate equally and
+           oppositely, so the D sugars follow by a sign flip:</p>
+        <div class="eq">L-(−)-glucose −52.5° &nbsp;⟹&nbsp; <span class="hl">D-(+)-glucose +52.5°</span><br>
+          L-(+)-fructose +92.5° &nbsp;⟹&nbsp; <span class="hl">D-(−)-fructose −92.5°</span></div>
+        <p>Invert sugar is equimolar, and glucose and fructose have the same molar mass (180.16), so
+           equal moles means equal mass and the specific rotation of the mixture is the plain average:</p>
+        <div class="eq" style="font-size:17px">[α] = (+52.5 − 92.5) / 2 =
+          <span class="hl">−20°</span></div>
+        <p>−40° is what you get by <em>adding</em> the two and never dividing. It is the right pair of
+           numbers with the last step missing. <b>(D) is incorrect.</b></p>
+      </li>
+      <li>
+        <h4>Answer</h4>
+        <div class="eq" style="font-size:17px"><span class="hl">(B) and (C)</span></div>
+        <p>Marking: +4 for both; +2 for either one alone; −1 for including (A) or (D).</p>
+      </li>
+    </ol>
+    <div class="verify" style="margin-top:16px">
+      <h4>✓ Independent verification</h4>
+      <ul>
+        <li><b>Functional groups counted, not eyeballed:</b> every structure was written as SMILES and
+            matched against SMARTS patterns — glucose returns one aldehyde and one primary alcohol,
+            gluconic acid one carboxyl and one primary alcohol, saccharic acid two carboxyls and no
+            oxidisable end left. That is why both starting materials converge.</li>
+        <li><b>Isomerisation is atom-conserving:</b> fructose, glucose and mannose all return the
+            formula C<sub>6</sub>H<sub>12</sub>O<sub>6</sub>, confirming the alkaline step rearranges
+            rather than adds or removes anything.</li>
+        <li><b>Glucose and mannose confirmed as C2 epimers:</b> comparing assigned stereocentres, they
+            differ at exactly one centre — so "another aldohexose" is a real, specific compound and not
+            hand-waving.</li>
+        <li><b>Hydrolysis mass balance:</b> 342.30 (sucrose) + 18.02 (water) = 360.31 =
+            180.16 + 180.16. Equal molar masses are also what make the plain average legitimate in (D).</li>
+        <li><b>The average computed by mass fraction, not assumed:</b> weighting properly by mass
+            fraction gives −20.000°, identical to the simple average, because the two molar masses are
+            equal. The distinction matters whenever they are not.</li>
+        <li><b>The trap reproduced deliberately:</b> +52.5 + (−92.5) = −40 exactly, confirming that the
+            printed distractor is the sum rather than a different chemistry.</li>
+        <li><b>Answer key cross-check:</b> derived from first principles first — the four verdicts above
+            were fixed before any key was consulted — and then compared against a published answer key
+            and worked solution for this paper, which agree on (B) and (C). IIT Roorkee's official key
+            was not retrievable at the time of writing.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 08 CONCEPTS -->
+<section id="concepts">
+  <h2><span class="n">08</span>Concepts and classification</h2>
+  <div class="lab">
+    <div class="panel">
+      <h3>Relations used</h3>
+      <div class="eq">mild oxidation (Br<sub>2</sub>/H<sub>2</sub>O): CHO → COOH only ⟹ gluconic acid</div>
+      <div class="eq">strong oxidation (HNO<sub>3</sub>): CHO → COOH <em>and</em> CH<sub>2</sub>OH → COOH ⟹ saccharic acid</div>
+      <div class="eq">ketose + OH⁻ ⇌ 1,2-enediol ⇌ aldoses (Lobry de Bruyn–van Ekenstein)</div>
+      <div class="eq">RCHO + 2Cu²⁺ + 5OH⁻ ⟶ RCOO⁻ + Cu<sub>2</sub>O↓ + 3H<sub>2</sub>O</div>
+      <div class="eq">sucrose + H<sub>2</sub>O ⟶ D-glucose + D-fructose (1 : 1)</div>
+      <div class="eq">enantiomers: [α]<sub>D</sub> equal in size, opposite in sign</div>
+      <div class="eq">mixture: [α] = Σ (mass fraction × [α]<sub>i</sub>)</div>
+      <div class="eq">D / L is configuration · (+) / (−) is observed rotation · the two are independent</div>
+    </div>
+    <div class="panel">
+      <h3>Classification</h3>
+      <table class="meta-tbl">
+        <tr><td>Simulation ID</td><td style="font-family:var(--mono)">ADV-2026-P2-CHE-Q09</td></tr>
+        <tr><td>Exam / Year / Paper</td><td>JEE Advanced · 2026 · Paper 2</td></tr>
+        <tr><td>Subject</td><td>Chemistry (Organic)</td></tr>
+        <tr><td>Chapter</td><td>Biomolecules</td></tr>
+        <tr><td>Topic</td><td>Monosaccharides, reducing sugars and optical rotation</td></tr>
+        <tr><td>Subtopics</td><td>Mild versus strong oxidation of glucose ·
+          Lobry de Bruyn–van Ekenstein rearrangement · Fehling's test and reducing sugars ·
+          Hydrolysis of sucrose and invert sugar · Specific rotation of a mixture ·
+          D/L configuration versus (+)/(−) rotation</td></tr>
+        <tr><td>Question type</td><td>Multiple correct MCQ (+4 / partial / −1)</td></tr>
+        <tr><td>Difficulty</td><td>Moderate–Hard</td></tr>
+        <tr><td>Answer</td><td><b id="clsans">— run the experiment</b></td></tr>
+      </table>
+      <div class="teach" id="teachpanel">
+        <h4>Teacher notes</h4>
+        <ul>
+          <li><b>Objective.</b> Separate three ideas students routinely fuse: what an oxidant attacks,
+              what alkali does to a ketose, and what "specific rotation of a mixture" means.</li>
+          <li><b>Teaching order that works.</b> Run bench D <em>first</em> in class — the −40 trap is
+              the fastest way to get attention — then go back to A, B, C.</li>
+          <li><b>Expected wrong answers.</b> Most students pick (A) and (C), or (B), (C) and (D). The
+              (D) error is arithmetic, not chemical, so it survives a strong conceptual student.</li>
+          <li><b>Discussion question.</b> "If invert sugar were equal <em>masses</em> instead of equal
+              moles, would the answer change?" (Here no — identical molar masses. Ask them why that
+              matters.)</li>
+          <li><b>Shortcut worth teaching.</b> Any statement of the form "X is oxidised but Y is not"
+              deserves a check of what oxidisable groups Y still has. Glucose has two.</li>
+          <li><b>Board demonstration.</b> Fehling's on fructose is a real thirty-second demo and it
+              lands hard — students expect nothing to happen.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="celebrate">
+  <div class="confetti" id="confetti"></div>
+  <div class="card">
+    <div class="gr">YOU CRACKED<br>THE SUGAR LAB</div>
+    <div class="sub">Four benches run · four statements settled on evidence</div>
+    <div class="ans" id="celans">(B) and (C)</div>
+    <div style="font-size:12.5px;color:var(--text-muted)" id="celstats"></div>
+    <div class="btnrow" style="justify-content:center">
+      <button class="act primary" id="celclose" type="button">See the derivation</button>
+    </div>
+  </div>
+</div>
+
+<footer>
+  ADV-2026-P2-CHE-Q09 · PrayogX · JEE Advanced Interactive Simulation Library · question text reproduced
+  from the official JEE (Advanced) 2026 Paper 2 for educational use.
+</footer>
+</div>
+
+<script>
+(function(){
+"use strict";
+
+var NS="http://www.w3.org/2000/svg";
+function css(v){ return getComputedStyle(document.documentElement).getPropertyValue(v).trim(); }
+function el(n,a){ var e=document.createElementNS(NS,n); for(var k in a) e.setAttribute(k,a[k]); return e; }
+function $(id){ return document.getElementById(id); }
+function clamp(v,a,b){ return v<a?a:(v>b?b:v); }
+function esc(s){ return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+
+/* ---- predictions + verdict matrix ------------------------------------- */
+var PORDER=["A","B","C","D"], pIdx=0, predictions={}, tested={}, revealed=false;
+
+function renderPredict(){
+  var kk=PORDER[pIdx], def=OPT[kk];
+  $("pq").innerHTML = "Statement ("+kk+") — "+def.shortq;
+  var bs=$("predict").querySelectorAll(".row button");
+  for(var i=0;i<bs.length;i++) bs[i].setAttribute("aria-pressed", predictions[kk]===bs[i].dataset.p?"true":"false");
+  var fb=$("pfb");
+  if(!predictions[kk]){ fb.className="fb"; fb.textContent="Commit to an answer, then go and test it on the bench above."; }
+  else if(!tested[kk]){ fb.className="fb"; fb.innerHTML="Logged. Now test ("+kk+") on the bench and see."; }
+  else {
+    var right = predictions[kk]===def.verdict;
+    fb.className="fb "+(right?"ok":"no");
+    fb.innerHTML=(right?"✓ Your prediction matches your measurement. ":"✗ Your measurement disagrees. ")+def.why;
+  }
+  $("pprev").disabled = pIdx===0; $("pnext").disabled = pIdx===PORDER.length-1;
+}
+function drawMatrix(){
+  var rows=PORDER.map(function(kk){
+    var def=OPT[kk], seen=!!tested[kk], pr=predictions[kk];
+    var vcell = seen ? (def.verdict==="yes" ? "<span class='yes'>✓ correct</span>"
+                                            : "<span class='no'>✗ not correct</span>")
+                     : "<span style='color:var(--text-muted)'>not tested yet</span>";
+    var ok = seen && pr && pr===def.verdict;
+    return "<tr"+(seen&&def.verdict==="yes"?" class='win'":"")+"><td><b>("+kk+")</b></td>"+
+      "<td class='l'>"+def.label+"</td><td>"+(pr?(pr==="yes"?"correct":"not correct"):"—")+"</td>"+
+      "<td>"+vcell+"</td><td>"+(seen&&pr?(ok?"<span class='yes'>match</span>":"<span class='no'>mismatch</span>"):"—")+"</td></tr>";
+  }).join("");
+  $("matrix").innerHTML="<thead><tr><th>Option</th><th class='l'>Statement</th><th>Your prediction</th>"+
+    "<th>What you measured</th><th></th></tr></thead><tbody>"+rows+"</tbody>";
+}
+function nTested(){ var n=0; for(var k in tested) if(tested[k]) n++; return n; }
+
+/* ---- the gate ---------------------------------------------------------- */
+function gateOpen(){ return nTested()>=4 || revealed; }
+function updateGate(){
+  if($("gtested")) $("gtested").textContent = nTested();
+  var open=gateOpen();
+  $("solgate").hidden = open;
+  $("solbody").hidden = !open;
+  var ab=$("answerbox");
+  if(open){
+    ab.classList.remove("locked");
+    $("ansval").textContent=ANSWER.text;
+    $("anssub").innerHTML=ANSWER.sub;
+    $("revealnow").hidden=true;
+    if($("clsans")) $("clsans").textContent=ANSWER.text;
+    if(!$("solbody").classList.contains("reveal")) $("solbody").classList.add("reveal");
+    if($("solintro")) $("solintro").innerHTML = revealed && nTested()<4
+      ? "Revealed early — go back and test the statements to see these conclusions come from your own measurements."
+      : "<b>You tested all four statements on the bench.</b> "+ANSWER.intro;
+  } else {
+    ab.classList.add("locked");
+    $("ansval").textContent="Run the experiment";
+    $("anssub").textContent=LOCKED_SUB;
+    $("revealnow").hidden=false;
+    if($("clsans")) $("clsans").textContent="— run the experiment";
+  }
+  markOptions();
+}
+function markOptions(){
+  if(!gateOpen()) return;
+  document.querySelectorAll("#opts li").forEach(function(li){
+    var kk=li.dataset.k, right=OPT[kk].verdict==="yes";
+    li.classList.remove("correct","wrong");
+    li.classList.add(right?"correct":"wrong");
+    li.querySelector(".mark").textContent = right?"correct":"not correct";
+  });
+}
+function markTested(kk){ if(!tested[kk]){ tested[kk]=true; updateGate(); drawMatrix(); renderPredict(); } }
+
+/* ---- notebook ---------------------------------------------------------- */
+var obsLog=[];
+function note(text){
+  if(obsLog.indexOf(text)>=0) return;
+  obsLog.push(text);
+  $("notebook").innerHTML = obsLog.map(function(o){ return '<div class="obs">'+o+"</div>"; }).join("");
+  $("nbempty").hidden = true;
+}
+
+/* ---- numeric control: slider + typed box + steppers -------------------- */
+function parseNum(str){
+  if(str===null||str===undefined) return null;
+  var s=String(str).trim().toLowerCase();
+  if(!s) return null;
+  s=s.replace(/π/g,"(pi)").replace(/pi/g,"(pi)").replace(/\(\(pi\)\)/g,"(pi)");
+  s=s.replace(/×10\^?/g,"e").replace(/x10\^?/g,"e").replace(/\s+/g,"");
+  if(!/^[0-9+\-*/().epi]+$/.test(s)) return null;
+  s=s.replace(/\(pi\)/g,"P_I");
+  if(/[a-z]/.test(s.replace(/P_I/g,"").replace(/e/g,""))) return null;
+  s=s.replace(/P_I/g,"("+Math.PI+")");
+  var v;
+  try { v=Function('"use strict";return ('+s+');')(); } catch(err){ return null; }
+  if(typeof v!=="number"||!isFinite(v)) return null;
+  return v;
+}
+function makeControl(cfg){
+  var sl=$(cfg.slider), inp=$(cfg.input), hint=$(cfg.hint), baseHint=hint?hint.innerHTML:"";
+  function toSlider(v){ return cfg.log ? Math.round(1000*Math.log(v/cfg.lo)/Math.log(cfg.hi/cfg.lo))
+                                       : Math.round((v-cfg.lo)/(cfg.hi-cfg.lo)*1000); }
+  function fromSlider(p){ return cfg.log ? cfg.lo*Math.pow(cfg.hi/cfg.lo,p/1000)
+                                         : cfg.lo+(cfg.hi-cfg.lo)*p/1000; }
+  sl.min=0; sl.max=1000;
+  function show(v){
+    sl.value=toSlider(v);
+    if(document.activeElement!==inp) inp.value=v.toFixed(cfg.dp);
+    inp.classList.remove("bad");
+    if(hint){ hint.classList.remove("bad"); hint.innerHTML=baseHint; }
+    if(cfg.valEl) $(cfg.valEl).textContent=v.toFixed(cfg.dp)+" "+cfg.unit;
+  }
+  function set(v){ v=clamp(v,cfg.lo,cfg.hi); ST[cfg.key]=v; show(v); if(cfg.onset) cfg.onset(); }
+  sl.addEventListener("input",function(){ set(fromSlider(+sl.value)); });
+  inp.addEventListener("input",function(){
+    var v=parseNum(inp.value);
+    if(v===null){ inp.classList.add("bad");
+      if(hint){ hint.classList.add("bad"); hint.textContent="That is not a number I can read — try 0.5, 1/2 or 5e-1."; }
+      return; }
+    if(v<cfg.lo||v>cfg.hi){ inp.classList.add("bad");
+      if(hint){ hint.classList.add("bad");
+        hint.textContent="Out of the range this apparatus can hold ("+cfg.lo+" to "+cfg.hi+" "+cfg.unit+")."; }
+      return; }
+    inp.classList.remove("bad");
+    if(hint){ hint.classList.remove("bad"); hint.innerHTML=baseHint; }
+    ST[cfg.key]=v; sl.value=toSlider(v);
+    if(cfg.valEl) $(cfg.valEl).textContent=v.toFixed(cfg.dp)+" "+cfg.unit;
+    if(cfg.onset) cfg.onset();
+  });
+  inp.addEventListener("blur",function(){ show(ST[cfg.key]); });
+  document.querySelectorAll('.step[data-for="'+cfg.slider+'"]').forEach(function(b){
+    b.addEventListener("click",function(){ set(ST[cfg.key]+(+b.dataset.dir)*cfg.step); });
+  });
+  show(ST[cfg.key]);
+  return { show:function(){ show(ST[cfg.key]); } };
+}
+
+/* ---- generic plotter --------------------------------------------------- */
+function niceAxis(a,b,want){
+  if(!(b>a)) b=a+1;
+  var raw=(b-a)/(want||5), ex=Math.floor(Math.log(raw)/Math.LN10), f=raw/Math.pow(10,ex);
+  var m=f<=1?1:(f<=2?2:(f<=2.5?2.5:(f<=5?5:10))), st=m*Math.pow(10,ex);
+  var lo=Math.floor(a/st+1e-9)*st, hi=Math.ceil(b/st-1e-9)*st;
+  if(hi-lo<st) hi=lo+st;
+  return {lo:lo,hi:hi,step:st,n:Math.max(1,Math.round((hi-lo)/st))};
+}
+function tickDp(step){
+  for(var d=0;d<=6;d++){ var s=step*Math.pow(10,d); if(Math.abs(s-Math.round(s))<1e-9) return d; }
+  return 6;
+}
+function plot(svg,cfg){
+  while(svg.firstChild) svg.removeChild(svg.firstChild);
+  var vb=svg.getAttribute("viewBox").split(/\s+/).map(Number), W=vb[2], H=vb[3];
+  var M={l:cfg.ml||70,r:cfg.mr||52,t:22,b:48};
+  var AX_=niceAxis(cfg.xMin,cfg.xMax,5), AY_=niceAxis(cfg.yMin,cfg.yMax,5);
+  var xa=AX_.lo, xb=AX_.hi, ya=AY_.lo, yb=AY_.hi;
+  function X(v){ return M.l+(v-xa)/(xb-xa)*(W-M.l-M.r); }
+  function Y(v){ return H-M.b-(v-ya)/(yb-ya)*(H-M.t-M.b); }
+  var grid=css("--line"), muted=css("--text-muted"), strong=css("--line-strong"), ink=css("--text-secondary");
+  var i, xdp=tickDp(AX_.step), ydp=tickDp(AY_.step);
+  for(i=0;i<=AX_.n;i++){
+    var xv=xa+AX_.step*i;
+    svg.appendChild(el("line",{x1:X(xv),x2:X(xv),y1:M.t,y2:H-M.b,stroke:grid,"stroke-width":1}));
+    var tx=el("text",{x:X(xv),y:H-M.b+18,"text-anchor":"middle",fill:muted,"font-size":10.5,
+      "font-family":"ui-monospace,monospace"});
+    tx.textContent=cfg.xFmt?cfg.xFmt(xv):xv.toFixed(xdp); svg.appendChild(tx);
+  }
+  for(i=0;i<=AY_.n;i++){
+    var yv=ya+AY_.step*i;
+    svg.appendChild(el("line",{x1:M.l,x2:W-M.r,y1:Y(yv),y2:Y(yv),stroke:grid,"stroke-width":1}));
+    var ty=el("text",{x:M.l-9,y:Y(yv)+3.5,"text-anchor":"end",fill:muted,"font-size":10.5,
+      "font-family":"ui-monospace,monospace"});
+    ty.textContent=cfg.yFmt?cfg.yFmt(yv):yv.toFixed(ydp); svg.appendChild(ty);
+  }
+  if(ya<0&&yb>0)
+    svg.appendChild(el("line",{x1:M.l,x2:W-M.r,y1:Y(0),y2:Y(0),stroke:strong,"stroke-width":1.5}));
+  svg.appendChild(el("line",{x1:M.l,x2:M.l,y1:M.t,y2:H-M.b,stroke:strong,"stroke-width":1.5}));
+  svg.appendChild(el("line",{x1:M.l,x2:W-M.r,y1:H-M.b,y2:H-M.b,stroke:strong,"stroke-width":1.5}));
+  var usedLbl=[];
+  (cfg.curves||[]).forEach(function(c){
+    if(!c.pts||c.pts.length<2) return;
+    var d=c.pts.map(function(p,ix){ return (ix?"L":"M")+X(p[0]).toFixed(1)+" "+Y(p[1]).toFixed(1); }).join(" ");
+    svg.appendChild(el("path",{d:d,fill:"none",stroke:css(c.col),"stroke-width":c.w||2.4,
+      "stroke-linecap":"round","stroke-linejoin":"round","stroke-dasharray":c.dash||"none",
+      opacity:c.op===undefined?1:c.op}));
+    if(c.label){
+      var last=c.pts[c.pts.length-1], ly=clamp(Y(last[1])+4,M.t+8,H-M.b);
+      for(var q=0;q<usedLbl.length;q++){ if(Math.abs(usedLbl[q]-ly)<13){ ly=usedLbl[q]+13; q=-1; } }
+      ly=clamp(ly,M.t+8,H-M.b-2); usedLbl.push(ly);
+      var lb=el("text",{x:clamp(X(last[0])+8,M.l,W-4),y:ly,fill:css(c.col),"font-size":11.5,
+        "font-weight":700,"text-anchor":X(last[0])>W-M.r-40?"end":"start"});
+      lb.textContent=c.label; svg.appendChild(lb);
+    }
+  });
+  (cfg.bars||[]).forEach(function(b){
+    var x0=X(b.x0), x1=X(b.x1), y0=Y(Math.max(ya,0)), y1=Y(b.y);
+    svg.appendChild(el("rect",{x:Math.min(x0,x1),y:Math.min(y0,y1),width:Math.abs(x1-x0),
+      height:Math.abs(y1-y0),fill:css(b.col),opacity:b.op===undefined?.85:b.op,rx:3}));
+    if(b.label){
+      var t=el("text",{x:(x0+x1)/2,y:Math.min(y0,y1)-6,"text-anchor":"middle",fill:css(b.col),
+        "font-size":11.5,"font-weight":700}); t.textContent=b.label; svg.appendChild(t);
+    }
+  });
+  (cfg.points||[]).forEach(function(p){
+    if(p.x<xa||p.x>xb||p.y<ya||p.y>yb) return;
+    svg.appendChild(el("circle",{cx:X(p.x),cy:Y(p.y),r:p.r||4.6,fill:p.fill||css("--surface-1"),
+      stroke:css(p.col),"stroke-width":2}));
+    if(p.label){
+      var t=el("text",{x:X(p.x),y:Y(p.y)-10,"text-anchor":"middle",fill:css(p.col),
+        "font-size":11,"font-weight":700}); t.textContent=p.label; svg.appendChild(t);
+    }
+  });
+  var axl=el("text",{x:(M.l+W-M.r)/2,y:H-8,"text-anchor":"middle",fill:ink,"font-size":12.5});
+  axl.textContent=cfg.xLabel; svg.appendChild(axl);
+  var ayl=el("text",{x:15,y:(M.t+H-M.b)/2,"text-anchor":"middle",fill:ink,"font-size":12.5,
+    transform:"rotate(-90 15 "+((M.t+H-M.b)/2)+")"});
+  ayl.textContent=cfg.yLabel; svg.appendChild(ayl);
+  svg._map={X:X,Y:Y,xa:xa,xb:xb,M:M,W:W};
+}
+
+/* ---- shared wiring ----------------------------------------------------- */
+function wireCommon(redraw){
+  $("predict").addEventListener("click",function(e){
+    var b=e.target.closest(".row button"); if(!b) return;
+    predictions[PORDER[pIdx]]=b.dataset.p; renderPredict(); drawMatrix();
+  });
+  $("pprev").addEventListener("click",function(){ if(pIdx>0){ pIdx--; renderPredict(); } });
+  $("pnext").addEventListener("click",function(){ if(pIdx<PORDER.length-1){ pIdx++; renderPredict(); } });
+  function doReveal(){ revealed=true; updateGate(); }
+  $("revealnow").addEventListener("click",doReveal);
+  $("revealsol").addEventListener("click",doReveal);
+  $("themebtn").addEventListener("click",function(){
+    var r=document.documentElement;
+    var dark=r.getAttribute("data-theme")==="dark" ||
+      (!r.getAttribute("data-theme")&&matchMedia("(prefers-color-scheme: dark)").matches);
+    r.setAttribute("data-theme",dark?"light":"dark");
+    if(redraw) redraw();
+  });
+}
+
+/* ======================================================================
+   CHEMISTRY DATA — kept separate from the simulation logic and the UI
+   ====================================================================== */
+var SUGAR = {
+  glucose:{ name:"D-glucose", top:"CHO", topG:"cho", bot:"CH₂OH", botG:"prim",
+    rows:[{l:"H",r:"OH"},{l:"OH",r:"H"},{l:"H",r:"OH"},{l:"H",r:"OH"}],
+    formula:"C₆H₁₂O₆", cls:"aldohexose", reducing:true, rot:52.5 },
+  mannose:{ name:"D-mannose", top:"CHO", topG:"cho", bot:"CH₂OH", botG:"prim",
+    rows:[{l:"OH",r:"H"},{l:"OH",r:"H"},{l:"H",r:"OH"},{l:"H",r:"OH"}],
+    formula:"C₆H₁₂O₆", cls:"aldohexose", reducing:true },
+  fructose:{ name:"D-fructose", top:"CH₂OH", topG:"prim", bot:"CH₂OH", botG:"prim",
+    rows:[{ket:true},{l:"OH",r:"H"},{l:"H",r:"OH"},{l:"H",r:"OH"}],
+    formula:"C₆H₁₂O₆", cls:"ketohexose", reducing:true, rot:-92.5 },
+  gluconic:{ name:"gluconic acid", top:"COOH", topG:"cooh", bot:"CH₂OH", botG:"prim",
+    rows:[{l:"H",r:"OH"},{l:"OH",r:"H"},{l:"H",r:"OH"},{l:"H",r:"OH"}],
+    formula:"C₆H₁₂O₇", cls:"aldonic acid", reducing:false },
+  saccharic:{ name:"saccharic acid", top:"COOH", topG:"cooh", bot:"COOH", botG:"cooh",
+    rows:[{l:"H",r:"OH"},{l:"OH",r:"H"},{l:"H",r:"OH"},{l:"H",r:"OH"}],
+    formula:"C₆H₁₀O₈", cls:"aldaric (dicarboxylic) acid", reducing:false },
+  enediol:{ name:"1,2-enediol", top:"CHOH", topG:"enol", bot:"CH₂OH", botG:"prim",
+    rows:[{enol:true},{l:"OH",r:"H"},{l:"H",r:"OH"},{l:"H",r:"OH"}],
+    formula:"C₆H₁₂O₆", cls:"enediol intermediate", reducing:false }
+};
+var GROUPINFO = {
+  cho:{ t:"Aldehyde, −CHO (C1)",
+    d:"The reducing end. <b>Mild</b> oxidants (Br₂/H₂O) take this to −COOH and stop. HNO₃ takes it too." },
+  prim:{ t:"Primary alcohol, −CH₂OH (C6)",
+    d:"Untouched by mild oxidants, but <b>HNO₃ oxidises it all the way to −COOH</b>. This is the group that decides statement (A)." },
+  cooh:{ t:"Carboxylic acid, −COOH",
+    d:"Already fully oxidised — HNO₃ can do nothing more here." },
+  oh:{ t:"Secondary alcohol, −OH",
+    d:"A stereocentre. HNO₃ leaves these alone; they set the D/L configuration and the sign of rotation." },
+  enol:{ t:"Enediol carbon",
+    d:"Two −OH groups on a C=C. Formed when base pulls the acidic α-hydrogen. It can collapse three ways, which is the whole of statement (B)." },
+  glyco:{ t:"Glycosidic bond (acetal linkage)",
+    d:"The C1–O–C2′ bridge holding sucrose together. Water plus H⁺ or invertase cuts it, giving one glucose and one fructose." },
+  ringg:{ t:"Glucopyranose unit",
+    d:"The six-membered glucose half of sucrose. Released as <b>D-(+)-glucose</b>, [α] = +52.5°." },
+  ringf:{ t:"Fructofuranose unit",
+    d:"The five-membered fructose half. Released as <b>D-(−)-fructose</b>, [α] = −92.5°." }
+};
+var ROT = { L_glucose:-52.5, L_fructose:+92.5, sucrose:+66.5 };
+ROT.D_glucose = -ROT.L_glucose;      // enantiomers: equal and opposite
+ROT.D_fructose = -ROT.L_fructose;
+
+/* ======================================================================
+   DRAWING — Fischer projections, rings, apparatus
+   ====================================================================== */
+function clear(svg){ while(svg.firstChild) svg.removeChild(svg.firstChild); }
+function txt(svg,x,y,s,col,size,weight,anchor){
+  var t=el("text",{x:x,y:y,"text-anchor":anchor||"middle",fill:css(col||"--text-primary"),
+    "font-size":size||14,"font-weight":weight||600,"font-family":"ui-sans-serif,system-ui,sans-serif"});
+  t.textContent=s; svg.appendChild(t); return t;
+}
+function line(svg,x1,y1,x2,y2,col,w,dash){
+  svg.appendChild(el("line",{x1:x1,y1:y1,x2:x2,y2:y2,stroke:css(col||"--text-primary"),
+    "stroke-width":w||2,"stroke-linecap":"round","stroke-dasharray":dash||"none"}));
+}
+function hotgroup(svg,x,y,label,gkey,col,size,onpick,anchor){
+  var g=el("g",{class:"grp",tabindex:"0",role:"button"});
+  var t=el("text",{x:x,y:y,"text-anchor":anchor||"middle",fill:css(col||"--text-primary"),
+    "font-size":size||15,"font-weight":700,class:"gtx",
+    "font-family":"ui-sans-serif,system-ui,sans-serif"});
+  t.textContent=label; g.appendChild(t);
+  var w=label.length*size*0.62+14;
+  g.appendChild(el("rect",{x:x-(anchor==="start"?4:w/2),y:y-size,width:w,height:size*1.5,
+    fill:"transparent"}));
+  g.addEventListener("click",function(){ onpick(gkey); });
+  g.addEventListener("keydown",function(e){ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); onpick(gkey); } });
+  svg.appendChild(g); return g;
+}
+function drawFischer(svg, key, onpick, flash){
+  var s=SUGAR[key]; clear(svg);
+  var cx=170, y0=52, dy=56, n=s.rows.length;
+  var yBot=y0+dy*(n+1);
+  line(svg,cx,y0+12,cx,yBot-12,"--text-primary",2.2);
+  hotgroup(svg,cx,y0,s.top,s.topG,flash===s.topG?"--s2":"--text-primary",17,onpick);
+  hotgroup(svg,cx,yBot+4,s.bot,s.botG,flash===s.botG?"--s2":"--text-primary",17,onpick);
+  s.rows.forEach(function(r,i){
+    var y=y0+dy*(i+1);
+    if(r.ket){
+      line(svg,cx,y-3,cx+40,y-3,"--s2",2.2); line(svg,cx,y+3,cx+40,y+3,"--s2",2.2);
+      hotgroup(svg,cx+50,y+5,"O","ket","--s2",17,onpick,"start");
+      txt(svg,cx-52,y+5,"(C2 ketone)","--text-muted",11,400);
+    } else if(r.enol){
+      line(svg,cx-4,y0+18,cx-4,y-14,"--s3",2.2);
+      line(svg,cx+4,y0+18,cx+4,y-14,"--s3",2.2);
+      line(svg,cx,y,cx+40,y,"--s3",2.2);
+      hotgroup(svg,cx+50,y+5,"OH","enol","--s3",16,onpick,"start");
+      txt(svg,cx-58,y+5,"C1=C2","--s3",11.5,700);
+    } else {
+      line(svg,cx-42,y,cx+42,y,"--text-primary",2);
+      hotgroup(svg,cx-50,y+5,r.l,r.l==="OH"?"oh":"h","--text-secondary",14,onpick,"end");
+      hotgroup(svg,cx+50,y+5,r.r,r.r==="OH"?"oh":"h","--text-secondary",14,onpick,"start");
+    }
+    txt(svg,cx-96,y+5,"C"+(i+2),"--text-muted",10.5,400);
+  });
+  txt(svg,cx,yBot+42,s.name,"--text-secondary",13.5,700);
+  txt(svg,cx,yBot+61,s.formula+" · "+s.cls,"--text-muted",11.5,400);
+}
+function ringShape(svg,cx,cy,r,six,subs,onpick,gkey){
+  var pts=[],i,a,N=six?6:5;
+  for(i=0;i<N;i++){ a=(-90+i*(360/N))*Math.PI/180; pts.push([cx+r*Math.cos(a),cy+r*Math.sin(a)]); }
+  var d=pts.map(function(p,ix){ return (ix?"L":"M")+p[0].toFixed(1)+" "+p[1].toFixed(1); }).join(" ")+" Z";
+  var path=el("path",{d:d,fill:"none",stroke:css("--text-primary"),"stroke-width":2.1,
+    "stroke-linejoin":"round",class:"grp"});
+  if(onpick){ path.addEventListener("click",function(){ onpick(gkey); }); }
+  svg.appendChild(path);
+  txt(svg,cx,cy-2,"O","--s2",13,700);
+  (subs||[]).forEach(function(t){ txt(svg,t.x,t.y,t.s,t.c||"--text-secondary",12,600); });
+  return pts;
+}
+
+/* ======================================================================
+   BENCH A — OXIDATION
+   ====================================================================== */
+var oxSel="glucose", oxDone={}, oxFlash=null, oxHintN=0;
+var OXRESULT = { glucose:"saccharic", gluconic:"saccharic", fructose:null };
+function oxPick(g){
+  var inf=GROUPINFO[g];
+  oxFlash=g;
+  $("oxinfo").innerHTML = inf ? "<b>"+inf.t+"</b><br>"+inf.d
+    : "<b>Hydrogen</b><br>Along for the ride — it marks which side the −OH sits on.";
+  drawFischer($("oxmol"), oxSel, oxPick, oxFlash);
+}
+function renderOx(){
+  drawFischer($("oxmol"), oxSel, oxPick, oxFlash);
+  var rows=["glucose","gluconic"].map(function(k){
+    var done=oxDone[k];
+    return "<tr"+(done?" class='win'":"")+"><td><b>"+SUGAR[k].name+"</b></td>"+
+      "<td>"+(SUGAR[k].top==="CHO"?"−CHO ✓":"−COOH")+"</td>"+
+      "<td>−CH₂OH ✓</td><td>"+(done?"<span class='yes'>saccharic acid</span>":"—")+"</td></tr>";
+  }).join("");
+  $("oxtbl").innerHTML="<thead><tr><th>Starting material</th><th>C1 group</th>"+
+    "<th>C6 group</th><th>Product with HNO₃</th></tr></thead><tbody>"+rows+"</tbody>";
+
+  var v=$("oxv");
+  if(oxDone.glucose && oxDone.gluconic){
+    v.className="verdict no";
+    v.innerHTML="<b>Both flasks gave the same product: saccharic acid.</b> Glucose had two oxidisable "+
+      "ends (−CHO and −CH₂OH) and HNO₃ took both. Gluconic acid had only the −CH₂OH left, and HNO₃ "+
+      "took that. So glucose <em>is</em> oxidised to saccharic acid — the second half of statement (A) "+
+      "is false.";
+    $("oxstamp").classList.add("show");
+    award("ox");
+    markTested("A");
+    note("Bench A: <b>glucose + HNO₃ → saccharic acid</b> and <b>gluconic acid + HNO₃ → saccharic acid</b> — the same product from both.");
+  } else if(oxDone.glucose || oxDone.gluconic){
+    v.className="verdict";
+    v.innerHTML="<b>One down.</b> You have oxidised "+
+      (oxDone.glucose?"glucose":"gluconic acid")+". Now do the other one — statement (A) is a "+
+      "<em>comparison</em>, so one flask cannot settle it.";
+  } else {
+    v.className="verdict";
+    v.innerHTML="Run HNO₃ on <b>both</b> glucose and gluconic acid, then compare the two products.";
+  }
+}
+function oxRun(){
+  if(!predictions.A){ $("oxfb").className="fb2 no";
+    $("oxfb").textContent="Commit to a prediction first — that is the point of the bench."; return; }
+  if(oxSel==="fructose"){
+    $("oxv").className="verdict";
+    $("oxv").innerHTML="<b>A ketose is a different story.</b> HNO₃ cleaves fructose rather than giving "+
+      "a clean dicarboxylic acid, so it is not the comparison this statement is about. Try glucose and "+
+      "gluconic acid.";
+    return;
+  }
+  $("oxflame").classList.add("on");
+  setTimeout(function(){
+    $("oxflame").classList.remove("on");
+    oxDone[oxSel]=true;
+    drawFischer($("oxprod"), "saccharic", function(){}, null);
+    renderOx();
+    var fb=$("oxfb");
+    if(oxDone.glucose && oxDone.gluconic){
+      var right = predictions.A==="no";
+      fb.className="fb2 "+(right?"ok":"no");
+      fb.innerHTML = right
+        ? "✓ You predicted glucose would get there too — and it did."
+        : "✗ You predicted only gluconic acid would reach saccharic acid. The flask disagrees: glucose has a −CH₂OH as well.";
+    }
+  }, 1300);
+}
+var OXHINTS=[
+  "What exactly does HNO₃ attack? List every group in glucose that <em>can</em> be oxidised.",
+  "Look at C1 and C6 on the structure — tap them. One is an aldehyde, one is a primary alcohol.",
+  "Saccharic acid is a <b>di</b>carboxylic acid. How many ends must be oxidised to make one?",
+  "Gluconic acid is just glucose with C1 already done. Glucose still has C1 <em>and</em> C6 available — so what stops it?"
+];
+
+/* ======================================================================
+   BENCH B — FEHLING'S
+   ====================================================================== */
+var fSel="fructose", fHintN=0, mechStep=0, mechTimer=null;
+var FEHL = {
+  fructose:{ pos:true, why:"A ketose — but Fehling's is <b>alkaline</b>, and base converts it through the 1,2-enediol into glucose and mannose. Those aldoses reduce the copper." },
+  glucose:{ pos:true, why:"An aldose with a free −CHO. It reduces Cu(II) directly — the control that shows the test itself works." },
+  sucrose:{ pos:false, why:"Both anomeric carbons are locked into the glycosidic bond, so sucrose is <b>non-reducing</b>. No enediol, no Cu₂O. A clean negative control." }
+};
+var MECH = [
+  { t:"Fructose in alkali", d:"The base removes the slightly acidic hydrogen on C1, next to the C2 carbonyl.", mols:["fructose"] },
+  { t:"The 1,2-enediol forms", d:"The negative charge is delocalised onto oxygen and a C=C appears between C1 and C2, each carbon carrying an −OH. This intermediate has no fixed carbonyl.", mols:["fructose","enediol"] },
+  { t:"It collapses two ways", d:"Re-protonating at C2 gives an aldehyde at C1. Which face the proton arrives on decides the C2 configuration — so you get <b>glucose</b> and <b>mannose</b>, C2 epimers.", mols:["fructose","enediol","glucose","mannose"] },
+  { t:"The aldoses reduce copper", d:"RCHO + 2Cu²⁺ + 5OH⁻ → RCOO⁻ + Cu₂O↓ + 3H₂O. The brick-red Cu₂O is the positive result.", mols:["fructose","enediol","glucose","mannose"] }
+];
+function drawMech(){
+  var svg=$("fmech"); clear(svg);
+  var step=MECH[mechStep], shown=step.mols;
+  var box=[["fructose",90,86],["enediol",280,86],["glucose",480,44],["mannose",480,150]];
+  box.forEach(function(b){
+    var key=b[0], x=b[1], y=b[2], on=shown.indexOf(key)>=0;
+    var g=el("g",{opacity:on?1:0.16});
+    var w=150,h=(key==="glucose"||key==="mannose")?62:78;
+    g.appendChild(el("rect",{x:x-w/2,y:y-h/2,width:w,height:h,rx:10,fill:css("--surface-2"),
+      stroke:css(on?(key==="enediol"?"--s3":"--s1"):"--line"),"stroke-width":on?2:1}));
+    var t1=el("text",{x:x,y:y-6,"text-anchor":"middle",fill:css("--text-primary"),"font-size":13.5,
+      "font-weight":700,"font-family":"ui-sans-serif,system-ui,sans-serif"});
+    t1.textContent=SUGAR[key].name; g.appendChild(t1);
+    var t2=el("text",{x:x,y:y+13,"text-anchor":"middle",fill:css("--text-muted"),"font-size":11,
+      "font-family":"ui-sans-serif,system-ui,sans-serif"});
+    t2.textContent=SUGAR[key].cls; g.appendChild(t2);
+    if(key==="enediol"&&on){
+      var t3=el("text",{x:x,y:y+30,"text-anchor":"middle",fill:css("--s3"),"font-size":10.5,
+        "font-weight":700,"font-family":"ui-sans-serif,system-ui,sans-serif"});
+      t3.textContent="C1=C2, two −OH"; g.appendChild(t3);
+    }
+    svg.appendChild(g);
+  });
+  function eq(x1,y1,x2,y2,on){
+    /* a proper equilibrium: two parallel harpoons pointing opposite ways */
+    var o=on?1:0.16, dx=x2-x1, dy=y2-y1, m=Math.sqrt(dx*dx+dy*dy);
+    var ux=dx/m, uy=dy/m, nx=-uy*3.6, ny=ux*3.6, col=css("--text-secondary");
+    function harpoon(ax,ay,bx,by){
+      svg.appendChild(el("line",{x1:ax,y1:ay,x2:bx,y2:by,stroke:col,"stroke-width":1.7,
+        opacity:o,"stroke-linecap":"round"}));
+      var hx=(bx-ax)/m, hy=(by-ay)/m;
+      svg.appendChild(el("line",{x1:bx,y1:by,x2:bx-hx*7-hy*4,y2:by-hy*7+hx*4,
+        stroke:col,"stroke-width":1.7,opacity:o,"stroke-linecap":"round"}));
+    }
+    harpoon(x1+nx,y1+ny,x2+nx,y2+ny);
+    harpoon(x2-nx,y2-ny,x1-nx,y1-ny);
+  }
+  eq(168,86,202,86, shown.indexOf("enediol")>=0);
+  txt(svg,185,70,"OH⁻","--s3",11,700);
+  eq(358,78,398,52, shown.indexOf("glucose")>=0);
+  eq(358,96,398,146, shown.indexOf("mannose")>=0);
+  if(mechStep>=3){
+    txt(svg,480,92,"reduces Cu²⁺ → Cu₂O↓","--good",11.5,700);
+    txt(svg,480,198,"reduces Cu²⁺ → Cu₂O↓","--good",11.5,700);
+  }
+  txt(svg,330,232,"Lobry de Bruyn–van Ekenstein rearrangement","--text-muted",12,400);
+  txt(svg,330,256,"step "+(mechStep+1)+" of "+MECH.length+" — "+step.t,"--text-secondary",12.5,700);
+  $("fmechinfo").innerHTML="<b>"+step.t+".</b> "+step.d;
+  ["mstep0","mprev","mnext"].forEach(function(id){ $(id).setAttribute("aria-pressed","false"); });
+}
+function renderFehl(){
+  var f=FEHL[fSel];
+  $("ro-red").textContent = SUGAR[fSel] ? (SUGAR[fSel].reducing?"yes":"no") : (fSel==="sucrose"?"no":"—");
+  if(fSel==="sucrose") $("ro-red").textContent="no";
+}
+function fRun(){
+  if(!predictions.B){ $("ffb").className="fb2 no";
+    $("ffb").textContent="Predict first — the whole point is to be wrong on paper before you are wrong in the exam."; return; }
+  var f=FEHL[fSel];
+  $("fflame").classList.add("on");
+  $("ftubecap").textContent="heating…";
+  var i, tube=$("ftube");
+  for(i=0;i<5;i++){
+    var b=document.createElement("span");
+    b.className="bub"; b.style.left=(10+i*13)+"px"; b.style.animationDelay=(i*0.32)+"s";
+    tube.appendChild(b);
+  }
+  setTimeout(function(){
+    $("fflame").classList.remove("on");
+    tube.querySelectorAll(".bub").forEach(function(b){ b.remove(); });
+    if(f.pos){
+      $("fliq").style.background="linear-gradient(180deg,#7ea6c9,#4d6d8f)";
+      $("fppt").style.height="34%";
+      $("ro-cu").textContent="+1";
+      $("ro-res").textContent="POSITIVE";
+      $("ftubecap").textContent="brick-red Cu₂O precipitate";
+    } else {
+      $("ro-cu").textContent="+2";
+      $("ro-res").textContent="negative";
+      $("ftubecap").textContent="still blue — no reaction";
+    }
+    var v=$("fv");
+    v.className="verdict "+(f.pos?"ok":"no");
+    v.innerHTML="<b>"+(fSel==="sucrose"?"Sucrose":SUGAR[fSel].name)+": "+
+      (f.pos?"positive":"negative")+".</b> "+f.why;
+    if(fSel==="fructose" && f.pos){
+      mechStep=MECH.length-1; drawMech();
+      $("fstamp").classList.add("show");
+      award("fehl");
+      markTested("B");
+      note("Bench B: <b>fructose gave a positive Fehling's test</b> — Cu(II) → Cu₂O — via the enediol route to glucose and mannose.");
+      var right = predictions.B==="yes";
+      $("ffb").className="fb2 "+(right?"ok":"no");
+      $("ffb").innerHTML = right
+        ? "✓ Exactly — the alkali does the work before the copper ever sees an aldehyde."
+        : "✗ The tube says otherwise. A ketose <em>does</em> reduce Fehling's, because alkali rearranges it into aldoses first.";
+    }
+  }, 1600);
+}
+var FHINTS=[
+  "What kind of solution is Fehling's reagent — acidic, neutral or alkaline? That word matters more than the sugar does.",
+  "Look at C1 of fructose on the mechanism panel. Its hydrogen sits next to a carbonyl, which makes it unusually acidic.",
+  "Once the C1=C2 enediol forms, there is no fixed carbonyl any more. What can it turn into when it collapses back?",
+  "Re-protonating C2 from either face gives two different aldohexoses. Name them — one is glucose, and the statement is asking you for the other."
+];
+
+/* ======================================================================
+   BENCH C — INVERT SUGAR
+   ====================================================================== */
+var hydDone=false, hydMode="acid", cHintN=0;
+function sucPick(g){
+  var inf=GROUPINFO[g];
+  $("sucinfo").innerHTML = inf ? "<b>"+inf.t+"</b><br>"+inf.d : "";
+}
+function drawSucrose(){
+  var svg=$("sucmol"); clear(svg);
+  if(!hydDone){
+    ringShape(svg,150,140,58,true,[{x:150,y:212,s:"glucopyranose"},{x:150,y:78,s:"CH₂OH",c:"--s1"}],
+              sucPick,"ringg");
+    ringShape(svg,450,140,52,false,[{x:450,y:212,s:"fructofuranose"},{x:450,y:82,s:"CH₂OH",c:"--s2"}],
+              sucPick,"ringf");
+    var g=el("g",{class:"grp"});
+    g.appendChild(el("line",{x1:210,y1:140,x2:396,y2:140,stroke:css("--s3"),"stroke-width":3}));
+    g.appendChild(el("circle",{cx:303,cy:140,r:15,fill:css("--surface-1"),stroke:css("--s3"),"stroke-width":2.4}));
+    var t=el("text",{x:303,y:145,"text-anchor":"middle",fill:css("--s3"),"font-size":14,"font-weight":700,
+      "font-family":"ui-sans-serif,system-ui,sans-serif"}); t.textContent="O"; g.appendChild(t);
+    g.addEventListener("click",function(){ sucPick("glyco"); });
+    svg.appendChild(g);
+    txt(svg,303,112,"glycosidic bond","--s3",11.5,700);
+    txt(svg,303,250,"sucrose · C₁₂H₂₂O₁₁ · non-reducing · [α] = +66.5°","--text-secondary",13,600);
+  } else {
+    ringShape(svg,140,140,56,true,[{x:140,y:210,s:"D-(+)-glucose",c:"--s1"},{x:140,y:232,s:"[α] = +52.5°",c:"--text-muted"}],
+              sucPick,"ringg");
+    ringShape(svg,470,140,50,false,[{x:470,y:210,s:"D-(−)-fructose",c:"--s2"},{x:470,y:232,s:"[α] = −92.5°",c:"--text-muted"}],
+              sucPick,"ringf");
+    txt(svg,305,120,"+ H₂O","--s3",15,700);
+    txt(svg,305,146,"bond cut","--text-muted",11.5,400);
+    txt(svg,305,262,"invert sugar — one of each, 1 : 1","--good",13.5,700);
+  }
+}
+function drawBalance(){
+  var svg=$("balsvg"); clear(svg);
+  var cx=310, top=64, arm=hydDone?0:0;
+  line(svg,cx,top,cx,190,"--line-strong",4);
+  line(svg,cx-160,top,cx+160,top,"--text-primary",3.4);
+  svg.appendChild(el("path",{d:"M"+(cx-26)+" 190L"+(cx+26)+" 190L"+cx+" 150Z",fill:css("--line-strong")}));
+  [[-160,"glucose","--s1",hydDone?1:0],[160,"fructose","--s2",hydDone?1:0]].forEach(function(p){
+    var x=cx+p[0];
+    line(svg,x,top,x,top+34,"--line-strong",2);
+    svg.appendChild(el("path",{d:"M"+(x-52)+" "+(top+34)+"Q"+x+" "+(top+76)+" "+(x+52)+" "+(top+34),
+      fill:"none",stroke:css("--line-strong"),"stroke-width":2.4}));
+    if(p[3]){
+      svg.appendChild(el("circle",{cx:x,cy:top+44,r:15,fill:css(p[2]),opacity:.9}));
+      txt(svg,x,top+49,"1","#ffffff",14,700);
+    }
+    txt(svg,x,top+104,p[1],p[3]?p[2]:"--text-muted",13,600);
+  });
+  txt(svg,cx,236,hydDone?"1 : 1 — equimolar":"nothing on the pans yet",
+      hydDone?"--good":"--text-muted",14,700);
+}
+function runHydrolysis(){
+  if(!predictions.C){ $("cfb").className="fb2 no";
+    $("cfb").textContent="Predict first, then cut the bond."; return; }
+  hydDone=true;
+  drawSucrose(); drawBalance();
+  $("ro-ng").textContent="1"; $("ro-nf").textContent="1"; $("ro-ratio").textContent="1 : 1";
+  $("ro-rot").textContent="−20.0";
+  var v=$("cv");
+  v.className="verdict ok";
+  v.innerHTML="<b>One glucose, one fructose — exactly 1 : 1.</b> "+
+    (hydMode==="enz"?"Invertase cuts the same bond as acid does; the enzyme is just fussier about which one. ":"")+
+    "That equimolar mixture is invert sugar, and the name comes from the polarimeter: sucrose reads "+
+    "<b>+66.5°</b>, the mixture reads <b>−20°</b>. The rotation inverted. Statement (C) describes this "+
+    "correctly.";
+  $("cstamp").classList.add("show");
+  award("hyd");
+  markTested("C");
+  note("Bench C: sucrose + H₂O gave <b>D-glucose and D-fructose 1 : 1</b>; rotation went from <b>+66.5°</b> to <b>−20°</b> — it inverted.");
+  var right = predictions.C==="yes";
+  $("cfb").className="fb2 "+(right?"ok":"no");
+  $("cfb").innerHTML = right ? "✓ One of each, equimolar — that is invert sugar."
+    : "✗ The balance says one of each, 1 : 1. Sucrose has exactly one glucose unit and one fructose unit.";
+}
+var CHINTS=[
+  "How many monosaccharide units does one sucrose molecule contain, and what are they?",
+  "Tap the green bridge in the middle of the structure — that is the bond water has to cut.",
+  "Cutting one bond in one molecule can only give one of each fragment. What does that make the ratio?",
+  "Now ask why it is called <em>invert</em> sugar. Compare the rotation before (+66.5°) and after."
+];
+
+/* ======================================================================
+   BENCH D — POLARIMETER
+   ====================================================================== */
+var useD=false, mixPct=50, slots={1:null,2:null,3:null}, dHintN=0, dSolved=false;
+var TILES=[
+  {id:"t1", v:"+52.5"}, {id:"t2", v:"−92.5"}, {id:"t3", v:"2"},
+  {id:"t4", v:"−52.5"}, {id:"t5", v:"+92.5"}, {id:"t6", v:"1"}
+];
+var selTile=null;
+function deg(v,dp){
+  var d = dp===undefined?1:dp;
+  return (v<0?"\u2212":"+") + Math.abs(v).toFixed(d) + "\u00b0";
+}
+function alphaOf(pct){
+  var g = useD ? ROT.D_glucose : ROT.L_glucose;
+  var f = useD ? ROT.D_fructose : ROT.L_fructose;
+  return (pct/100)*g + (1-pct/100)*f;      // equal molar masses -> mole % = mass %
+}
+function drawPolarimeter(){
+  var svg=$("polsvg"); clear(svg);
+  var a=alphaOf(mixPct);
+  var y=120;
+  svg.appendChild(el("circle",{cx:56,cy:y,r:22,fill:css("--s2"),opacity:.85}));
+  txt(svg,56,y+5,"☀","#ffffff",18,700);
+  txt(svg,56,y+44,"source","--text-muted",11,400);
+  [[140,"polariser"],[500,"analyser"]].forEach(function(p){
+    svg.appendChild(el("rect",{x:p[0]-11,y:y-46,width:22,height:92,rx:4,fill:css("--surface-2"),
+      stroke:css("--line-strong"),"stroke-width":2}));
+    txt(svg,p[0],y+64,p[1],"--text-muted",11,400);
+  });
+  svg.appendChild(el("rect",{x:210,y:y-34,width:250,height:68,rx:12,fill:css("--surface-2"),
+    stroke:css("--line-strong"),"stroke-width":2.2}));
+  txt(svg,335,y-44,"sample tube","--text-muted",11,400);
+  var frac=clamp((a+92.5)/185,0,1);
+  var col = a<0 ? "--s4" : (a>0 ? "--s2" : "--text-muted");
+  svg.appendChild(el("rect",{x:214,y:y-30,width:242,height:60,rx:10,fill:css(col),opacity:.16}));
+  line(svg,78,y,500,y,"--s3",2.6);
+  var i;
+  for(i=0;i<9;i++){
+    var x=224+i*28, ang=(a/92.5)*34*(i/8);
+    var g=el("g",{transform:"rotate("+ang+" "+x+" "+y+")"});
+    g.appendChild(el("line",{x1:x,y1:y-19,x2:x,y2:y+19,stroke:css(col),"stroke-width":2.6,
+      "stroke-linecap":"round",opacity:.55+0.05*i}));
+    svg.appendChild(g);
+  }
+  var ax=582, ay=y;
+  svg.appendChild(el("circle",{cx:ax,cy:ay,r:42,fill:"none",stroke:css("--line-strong"),"stroke-width":2}));
+  line(svg,ax-42,ay,ax+42,ay,"--line",1.4);
+  var th=(-a/92.5)*Math.PI*0.42;
+  line(svg,ax,ay,ax+Math.sin(th)*38,ay-Math.cos(th)*38,col,3.2);
+  txt(svg,ax,ay+66,"analyser dial","--text-muted",11,400);
+  txt(svg,ax,ay-54,deg(a),col,15,700);
+}
+function renderPol(){
+  var a=alphaOf(mixPct);
+  $("mixv").textContent=mixPct+" %";
+  $("poldial").innerHTML=deg(a)+"<small>observed specific rotation · "+
+    mixPct+" % glucose / "+(100-mixPct)+" % fructose"+(useD?" · D sugars":" · L sugars (wrong pair)")+"</small>";
+  $("dlinfo").innerHTML = useD
+    ? "<b>Converted.</b> D-(+)-glucose = <b>+52.5°</b> and D-(−)-fructose = <b>−92.5°</b>. Enantiomers rotate equally and oppositely, so flipping the configuration flips the sign — and notice the letters and the signs do not travel together."
+    : "Invert sugar is made of the <b>D</b> sugars. The paper deliberately hands you the <b>L</b> ones. Convert before you calculate.";
+  document.querySelectorAll("#dlsw .sw").forEach(function(s){
+    s.setAttribute("aria-pressed", (s.dataset.d==="D")===useD ? "true":"false"); });
+  drawPolarimeter();
+  checkD();
+}
+function renderTiles(){
+  $("tiles").innerHTML=TILES.map(function(t){
+    var used=[slots[1],slots[2],slots[3]].indexOf(t.id)>=0;
+    return "<span class='tile"+(used?" used":"")+(selTile===t.id?" sel":"")+"' data-t='"+t.id+"'>"+
+      t.v+"</span>";
+  }).join("");
+  [1,2,3].forEach(function(k){
+    var s=$("s"+k), id=slots[k];
+    if(id){ var tv=TILES.filter(function(t){return t.id===id;})[0].v;
+      s.textContent=tv; s.classList.add("filled"); }
+    else { s.textContent="?"; s.classList.remove("filled"); }
+  });
+  var ok3 = slots[1] && slots[2] && slots[3];
+  if(ok3){
+    var v1=+TILES.filter(function(t){return t.id===slots[1];})[0].v.replace("−","-").replace("+","");
+    var v2=+TILES.filter(function(t){return t.id===slots[2];})[0].v.replace("−","-").replace("+","");
+    var v3=+TILES.filter(function(t){return t.id===slots[3];})[0].v.replace("−","-").replace("+","");
+    var res=(v1+v2)/v3;
+    $("sres").textContent=deg(res);
+    $("sres").classList.add("filled");
+  } else { $("sres").textContent="?"; $("sres").classList.remove("filled"); }
+  checkD();
+}
+function checkD(){
+  var v=$("dv");
+  var ids=[slots[1],slots[2],slots[3]];
+  var vals=ids.map(function(i){ return i?TILES.filter(function(t){return t.id===i;})[0].v:null; });
+  var correctPair = (vals[0]==="+52.5"&&vals[1]==="−92.5")||(vals[0]==="−92.5"&&vals[1]==="+52.5");
+  var correct = correctPair && vals[2]==="2";
+  if(correct && useD){
+    if(!dSolved){
+      dSolved=true;
+      $("dstamp").classList.add("show");
+      award("pol");
+      markTested("D");
+      note("Bench D: D sugars are <b>+52.5</b> and <b>−92.5</b>; the equimolar average is <b>−20.0°</b>, not −40°.");
+    }
+    v.className="verdict no";
+    v.innerHTML="<b>(+52.5 − 92.5) / 2 = −20.0°.</b> The printed −40° is that same pair of numbers "+
+      "<em>added and never divided</em>. Both sugars have molar mass 180.16, so equal moles is equal "+
+      "mass and the plain average is exactly right here. Statement (D) is false.";
+  } else if(correctPair && vals[2]==="1"){
+    v.className="verdict no";
+    v.innerHTML="<b>That gives −40° — and that is precisely the trap.</b> You have summed the two "+
+      "rotations. A mixture's specific rotation is a weighted <em>average</em>, so divide by 2 for an "+
+      "equimolar pair.";
+  } else if(!useD && (vals[0]||vals[1])){
+    v.className="verdict";
+    v.innerHTML="Careful — those are the <b>L</b> values. Invert sugar contains the D sugars. Convert "+
+      "the configuration first.";
+  } else if(ids.every(function(i){return i;})){
+    v.className="verdict";
+    v.innerHTML="Not the right pair yet. You want the rotation of <b>D-glucose</b> and of "+
+      "<b>D-fructose</b>, averaged.";
+  } else {
+    v.className="verdict";
+    v.innerHTML="Set the configuration, then build the average.";
+  }
+}
+var DHINTS=[
+  "Which sugars is invert sugar actually made of — the D forms or the L forms? Read statement (C) again.",
+  "The printed data is for L sugars. What does going from an enantiomer to its mirror image do to the sign of the rotation?",
+  "You now have +52.5 and −92.5. A mixture's rotation is not their sum — it is weighted by how much of each is present.",
+  "Equimolar means half and half, and both sugars weigh the same per mole. So divide the sum by 2."
+];
+
+/* ======================================================================
+   TRAPS
+   ====================================================================== */
+var TRAPS=[
+  { t:"“Fructose is a ketose, so it cannot reduce Fehling's.”",
+    a:"Run bench B. Fehling's is <b>alkaline</b>, and base turns fructose into the 1,2-enediol, which collapses to glucose and mannose. Those aldoses do the reducing." },
+  { t:"“D means dextrorotatory and L means laevorotatory.”",
+    a:"D/L is a <b>configuration</b> label, fixed by the −OH at the highest-numbered stereocentre. (+)/(−) is a <b>measured</b> property. D-fructose is laevorotatory; L-fructose is dextrorotatory. That mismatch is what this question is built on." },
+  { t:"“Invert sugar means the sugar molecules invert their configuration.”",
+    a:"Nothing inverts its configuration. The <b>sign of the optical rotation</b> inverts: +66.5° for sucrose, −20° for the products." },
+  { t:"“−40° — just add the two rotations.”",
+    a:"Specific rotation of a mixture is a weighted <b>average</b>, not a sum. (+52.5 − 92.5)/2 = <b>−20°</b>. The missing division by 2 is the entire distractor." },
+  { t:"“Glucose can't give saccharic acid — that's what gluconic acid is for.”",
+    a:"Gluconic acid is what a <b>mild</b> oxidant (Br₂/H₂O) gives, because it stops at the aldehyde. HNO₃ is strong: it takes both the −CHO and the −CH₂OH, so glucose goes straight to saccharic acid." },
+  { t:"“Sucrose should also reduce Fehling's — it contains glucose.”",
+    a:"Both anomeric carbons are tied up in the glycosidic bond, so there is no free carbonyl and no enediol. Try it on bench B: the tube stays blue." }
+];
+function drawTraps(){
+  $("traps").innerHTML=TRAPS.map(function(t,i){
+    return "<div class='trap' data-i='"+i+"'><div class='t'>⚠ "+t.t+"</div><div class='a'>"+t.a+"</div></div>";
+  }).join("");
+}
+
+/* ======================================================================
+   PROGRESS, BADGES, CELEBRATION
+   ====================================================================== */
+var BADGES=[
+  {k:"ox",   n:"🧪 Oxidation detective"},
+  {k:"fehl", n:"🔥 Fehling explorer"},
+  {k:"hyd",  n:"🍬 Hydrolysis expert"},
+  {k:"pol",  n:"🔬 Polarimeter master"}
+];
+var won={};
+function drawBadges(){
+  $("badges").innerHTML=BADGES.map(function(b){
+    return "<span class='badge"+(won[b.k]?" won":"")+"'>"+b.n+"</span>"; }).join("");
+}
+function award(k){ if(!won[k]){ won[k]=true; drawBadges(); } }
+function updateProgress(){
+  var n=nTested();
+  $("progbar").style.width=(n/4*100)+"%";
+  $("progtxt").textContent=n+" / 4 benches";
+}
+var celebrated=false;
+function celebrate(){
+  if(celebrated) return; celebrated=true;
+  var right=0, tot=0;
+  PORDER.forEach(function(k){ if(predictions[k]){ tot++; if(predictions[k]===OPT[k].verdict) right++; } });
+  $("celstats").innerHTML="Evidence collected 4/4 · predictions correct "+right+"/"+tot+
+    " · badges "+Object.keys(won).length+"/4";
+  var wrap=$("confetti"); wrap.innerHTML="";
+  var cols=["--s1","--s2","--s3","--s4","--good"];
+  for(var i=0;i<70;i++){
+    var s=document.createElement("i");
+    s.style.left=(Math.random()*100)+"%";
+    s.style.background=css(cols[i%cols.length]);
+    s.style.animationDuration=(2.4+Math.random()*2.4)+"s";
+    s.style.animationDelay=(Math.random()*0.9)+"s";
+    s.style.top=(-14-Math.random()*90)+"px";
+    wrap.appendChild(s);
+  }
+  $("celebrate").classList.add("on");
+}
+
+/* ======================================================================
+   OPTIONS + ANSWER
+   ====================================================================== */
+var OPT = {
+  A:{ label:"Gluconic acid → saccharic acid but glucose does not", verdict:"no",
+      shortq:"On treatment with HNO₃, gluconic acid is oxidised to saccharic acid whereas glucose is not. Correct?",
+      why:"HNO₃ is a strong oxidant: it takes glucose's −CHO <em>and</em> its −CH₂OH, so glucose reaches saccharic acid too. Both flasks gave the same product." },
+  B:{ label:"Fructose gives a positive Fehling's test via isomerisation", verdict:"yes",
+      shortq:"Fructose gives a positive Fehling's test because it isomerises to glucose and another aldohexose. Correct?",
+      why:"Fehling's is alkaline; the 1,2-enediol forms and collapses to glucose and mannose, two aldohexoses, which reduce Cu(II) to Cu₂O." },
+  C:{ label:"Invert sugar is equimolar D-glucose + D-fructose", verdict:"yes",
+      shortq:"Invert sugar is an equimolar mixture of D-glucose and D-fructose from hydrolysis of the disaccharide. Correct?",
+      why:"One sucrose gives exactly one of each. The name records the rotation flipping from +66.5° to −20°." },
+  D:{ label:"Specific rotation of invert sugar is −40°", verdict:"no",
+      shortq:"Specific rotation of invert sugar is −40°. Correct?",
+      why:"The D sugars are +52.5 and −92.5, and a mixture takes the weighted average: (+52.5 − 92.5)/2 = −20°. −40° is the sum, undivided." }
+};
+var ANSWER = { text:"(B) and (C)",
+  sub:"the enediol rearrangement and the 1 : 1 hydrolysis",
+  intro:"Here is the derivation behind what you measured." };
+var LOCKED_SUB = "Run all four benches to unlock.";
+
+/* hook the house gate so the celebration fires once */
+var _updateGate = updateGate;
+updateGate = function(){
+  _updateGate();
+  updateProgress();
+  if(gateOpen() && nTested()>=4) celebrate();
+};
+
+/* ======================================================================
+   WIRING
+   ====================================================================== */
+function bindShelf(id, get, set, after){
+  $(id).addEventListener("click", function(e){
+    var b=e.target.closest("button"); if(!b) return;
+    this.querySelectorAll("button").forEach(function(o){ o.setAttribute("aria-pressed","false"); });
+    b.setAttribute("aria-pressed","true"); set(b.dataset.s); after();
+  });
+}
+bindShelf("oxshelf", function(){return oxSel;}, function(v){ oxSel=v; oxFlash=null; },
+  function(){ $("oxinfo").innerHTML="Tap any group on the structure to find out what HNO₃ does to it."; renderOx(); });
+bindShelf("fshelf", function(){return fSel;}, function(v){ fSel=v; }, function(){ fReset(); renderFehl(); });
+
+$("oxheat").addEventListener("click", oxRun);
+$("oxreset").addEventListener("click", function(){ oxDone={}; clear($("oxprod"));
+  $("oxstamp").classList.remove("show"); renderOx(); });
+$("oxpred").addEventListener("click", function(e){
+  var b=e.target.closest(".opts2 button"); if(!b) return;
+  this.querySelectorAll(".opts2 button").forEach(function(o){ o.setAttribute("aria-pressed","false"); });
+  b.setAttribute("aria-pressed","true");
+  predictions.A=b.dataset.p; renderPredict(); drawMatrix();
+  $("oxfb").className="fb2"; $("oxfb").textContent="Logged. Now run both flasks and see.";
+});
+
+function fReset(){
+  $("fliq").style.background="linear-gradient(180deg,#3f7fd6,#1f4f9e)";
+  $("fppt").style.height="0"; $("ro-cu").textContent="+2"; $("ro-res").textContent="—";
+  $("ftubecap").textContent="Fehling's solution — deep blue Cu(II)";
+  $("fv").className="verdict"; $("fv").innerHTML="Heat the tube and watch the copper.";
+}
+$("fheat").addEventListener("click", fRun);
+$("freset").addEventListener("click", fReset);
+$("fpred").addEventListener("click", function(e){
+  var b=e.target.closest(".opts2 button"); if(!b) return;
+  this.querySelectorAll(".opts2 button").forEach(function(o){ o.setAttribute("aria-pressed","false"); });
+  b.setAttribute("aria-pressed","true");
+  predictions.B = b.dataset.p==="b" ? "yes" : "no";
+  renderPredict(); drawMatrix();
+  $("ffb").className="fb2"; $("ffb").textContent="Logged. Now heat the tube.";
+});
+$("mstep0").addEventListener("click", function(){ mechStep=0; drawMech(); });
+$("mprev").addEventListener("click", function(){ if(mechStep>0){ mechStep--; drawMech(); } });
+$("mnext").addEventListener("click", function(){ if(mechStep<MECH.length-1){ mechStep++; drawMech(); } });
+$("mplay").addEventListener("click", function(){
+  if(mechTimer){ clearInterval(mechTimer); mechTimer=null; this.textContent="▶ Play"; return; }
+  this.textContent="❙❙ Pause"; var self=this;
+  mechTimer=setInterval(function(){
+    mechStep=(mechStep+1)%MECH.length; drawMech();
+    if(mechStep===MECH.length-1){ clearInterval(mechTimer); mechTimer=null; self.textContent="▶ Play"; }
+  }, 2100);
+});
+
+$("hydsel").addEventListener("click", function(e){
+  var b=e.target.closest("button"); if(!b) return;
+  this.querySelectorAll("button").forEach(function(o){ o.setAttribute("aria-pressed","false"); });
+  b.setAttribute("aria-pressed","true"); hydMode=b.dataset.h;
+});
+$("hydro").addEventListener("click", runHydrolysis);
+$("hydreset").addEventListener("click", function(){
+  hydDone=false; drawSucrose(); drawBalance();
+  $("ro-ng").textContent="0"; $("ro-nf").textContent="0"; $("ro-ratio").textContent="—";
+  $("ro-rot").textContent="+66.5"; $("cstamp").classList.remove("show");
+  $("cv").className="verdict"; $("cv").innerHTML="Hydrolyse the sucrose and read the balance.";
+});
+$("cpred").addEventListener("click", function(e){
+  var b=e.target.closest(".opts2 button"); if(!b) return;
+  this.querySelectorAll(".opts2 button").forEach(function(o){ o.setAttribute("aria-pressed","false"); });
+  b.setAttribute("aria-pressed","true");
+  predictions.C = b.dataset.p==="b" ? "yes" : "no";
+  renderPredict(); drawMatrix();
+  $("cfb").className="fb2"; $("cfb").textContent="Logged. Now hydrolyse.";
+});
+
+$("dlsw").addEventListener("click", function(e){
+  var s=e.target.closest(".sw"); if(!s) return;
+  useD = s.dataset.d==="D"; renderPol();
+});
+$("mix").addEventListener("input", function(){ mixPct=+this.value; renderPol(); });
+$("tiles").addEventListener("click", function(e){
+  var t=e.target.closest(".tile"); if(!t||t.classList.contains("used")) return;
+  selTile = selTile===t.dataset.t ? null : t.dataset.t; renderTiles();
+});
+document.querySelectorAll(".slot[data-slot]").forEach(function(s){
+  s.addEventListener("click", function(){
+    var k=+this.dataset.slot;
+    if(slots[k]){ slots[k]=null; }
+    else if(selTile){ slots[k]=selTile; selTile=null; }
+    renderTiles();
+  });
+});
+$("calcclear").addEventListener("click", function(){
+  slots={1:null,2:null,3:null}; selTile=null; renderTiles(); });
+
+/* progressive hints */
+function bindHint(btn, box, arr, getN, setN){
+  $(btn).addEventListener("click", function(){
+    var n=getN();
+    if(n>=arr.length){ setN(0); $(box).classList.remove("on"); this.textContent="Hint"; return; }
+    $(box).classList.add("on");
+    $(box).innerHTML="<b>Hint "+(n+1)+" of "+arr.length+".</b> "+arr[n];
+    setN(n+1);
+    this.textContent = n+1>=arr.length ? "Hide hints" : "Next hint";
+  });
+}
+bindHint("oxhint","oxhintbox",OXHINTS,function(){return oxHintN;},function(v){oxHintN=v;});
+bindHint("fhint","fhintbox",FHINTS,function(){return fHintN;},function(v){fHintN=v;});
+bindHint("chint","chintbox",CHINTS,function(){return cHintN;},function(v){cHintN=v;});
+bindHint("dhint","dhintbox",DHINTS,function(){return dHintN;},function(v){dHintN=v;});
+
+$("traps").addEventListener("click", function(e){
+  var t=e.target.closest(".trap"); if(!t) return; t.classList.toggle("open"); });
+
+$("teachbtn").addEventListener("click", function(){
+  var on=$("teachpanel").classList.toggle("on");
+  this.setAttribute("aria-pressed", on?"true":"false");
+  this.textContent = on ? "Hide teacher mode" : "Teacher mode";
+  if(on) $("teachpanel").scrollIntoView({behavior:"smooth", block:"center"});
+});
+$("resetlab").addEventListener("click", function(){ location.reload(); });
+$("celclose").addEventListener("click", function(){
+  $("celebrate").classList.remove("on");
+  $("solution").scrollIntoView({behavior:"smooth"});
+});
+
+/* auto play — walks the benches, pausing on each prediction */
+var apTimer=null, apStep=0;
+var AP=[
+  { go:"question", say:"Four statements. Every one gets its own bench." },
+  { go:"oxidise",  say:"Bench A. Predict whether glucose really stops short of saccharic acid…",
+    act:function(){ if(!predictions.A){ predictions.A="no";
+      $("oxpred").querySelector('[data-p="no"]').setAttribute("aria-pressed","true");
+      renderPredict(); drawMatrix(); } } },
+  { go:"oxidise",  say:"Oxidising glucose…", act:function(){ oxSel="glucose";
+      $("oxshelf").querySelectorAll("button").forEach(function(b){
+        b.setAttribute("aria-pressed", b.dataset.s==="glucose"?"true":"false"); });
+      renderOx(); oxRun(); } },
+  { go:"oxidise",  say:"…and gluconic acid. Same product.", act:function(){ oxSel="gluconic";
+      $("oxshelf").querySelectorAll("button").forEach(function(b){
+        b.setAttribute("aria-pressed", b.dataset.s==="gluconic"?"true":"false"); });
+      renderOx(); oxRun(); } },
+  { go:"fehling",  say:"Bench B. A ketose with no aldehyde — will the copper move?",
+    act:function(){ if(!predictions.B){ predictions.B="yes";
+      $("fpred").querySelector('[data-p="b"]').setAttribute("aria-pressed","true");
+      renderPredict(); drawMatrix(); } } },
+  { go:"fehling",  say:"Heating…", act:function(){ fRun(); } },
+  { go:"invert",   say:"Bench C. One glycosidic bond, one water.",
+    act:function(){ if(!predictions.C){ predictions.C="yes";
+      $("cpred").querySelector('[data-p="b"]').setAttribute("aria-pressed","true");
+      renderPredict(); drawMatrix(); } runHydrolysis(); } },
+  { go:"polarimeter", say:"Bench D. Convert to the D sugars first…",
+    act:function(){ useD=true; renderPol(); } },
+  { go:"polarimeter", say:"…then average, not add.", act:function(){
+      slots={1:"t1",2:"t2",3:"t3"}; renderTiles();
+      if(!predictions.D){ predictions.D="no"; renderPredict(); drawMatrix(); } } },
+  { go:"verdict",  say:"Four verdicts, all from the benches." },
+  { go:"solution", say:"Case closed." }
+];
+function apStop(){ if(apTimer){ clearTimeout(apTimer); apTimer=null; }
+  $("autoplay").textContent="▶ Auto play"; }
+function apRun(){
+  if(apStep>=AP.length){ apStep=0; apStop(); return; }
+  var s=AP[apStep++];
+  document.getElementById(s.go).scrollIntoView({behavior:"smooth", block:"start"});
+  $("progtxt").textContent=s.say;
+  if(s.act) setTimeout(s.act, 700);
+  apTimer=setTimeout(function(){ updateProgress(); apRun(); }, 3200);
+}
+$("autoplay").addEventListener("click", function(){
+  if(apTimer){ apStop(); updateProgress(); return; }
+  this.textContent="❙❙ Stop"; apStep=0; apRun();
+});
+
+wireCommon(function(){
+  drawFischer($("oxmol"), oxSel, oxPick, oxFlash);
+  if(oxDone.glucose||oxDone.gluconic) drawFischer($("oxprod"),"saccharic",function(){},null);
+  drawMech(); drawSucrose(); drawBalance(); drawPolarimeter(); drawBadges();
+});
+
+/* ---------------- init ---------------- */
+renderOx(); renderFehl(); fReset(); drawMech();
+drawSucrose(); drawBalance(); renderPol(); renderTiles();
+drawTraps(); drawBadges(); updateProgress();
+renderPredict(); drawMatrix(); updateGate();
+
+})();
+</script>
+</body>
+</html>
