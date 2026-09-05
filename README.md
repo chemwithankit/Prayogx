@@ -205,3 +205,4 @@ so the PDFs cannot leak through a future edit by accident.
 | `ADV-2026-P2-CHE-Q08` | 2026 | 2 | Chemistry | Amines and Diazonium Salts | Q.8 | (B) and (D) |
 | `ADV-2026-P2-CHE-Q09` | 2026 | 2 | Chemistry | Biomolecules | Q.9 | (B) and (C) |
 | `ADV-2026-P2-CHE-Q10` | 2026 | 2 | Chemistry | Atomic Structure | Q.10 | 3 |
+| `ADV-2026-P2-CHE-Q11` | 2026 | 2 | Chemistry | Surface Chemistry | Q.11 | 1.5 |

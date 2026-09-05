@@ -1,0 +1,2241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ADV-2026-P2-CHE-Q11 · Acetic Acid Adsorption on Charcoal</title>
+<meta name="description" content="Interactive adsorption lab for JEE Advanced 2026 Paper 2 Chemistry Q11: dissolve acetic acid, shake it with charcoal and watch the molecules stick, measure the pH, run the mass balance and read the Freundlich constant off the log-log plot.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232a78d6'/%3E%3Cpath d='M12.5 6.5h7M13.6 6.5v7.2L7.9 24.1a1.5 1.5 0 0 0 1.3 2.3h13.6a1.5 1.5 0 0 0 1.3-2.3l-5.7-10.4V6.5' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M10.6 20.6h10.8' stroke='white' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E">
+<meta name="sim-id" content="ADV-2026-P2-CHE-Q11">
+<style>
+:root{
+  color-scheme: light;
+  --surface-0:#f4f4f1; --surface-1:#fcfcfb; --surface-2:#ececea;
+  --line:#d9d9d4; --line-strong:#bcbcb5;
+  --text-primary:#0b0b0b; --text-secondary:#52514e; --text-muted:#77766f;
+  --s1:#2a78d6; --s2:#eb6834; --s3:#1baf7a; --s4:#4a3aa7;
+  --good:#00743f; --bad:#c0392b; --accent:#2a78d6;
+  --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+  --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --serif:ui-serif,Georgia,"Times New Roman",serif;
+  --radius:10px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  color-scheme: dark;
+  --surface-0:#111110; --surface-1:#1a1a19; --surface-2:#232322;
+  --line:#34342f; --line-strong:#4a4a44;
+  --text-primary:#ffffff; --text-secondary:#c3c2b7; --text-muted:#95948b;
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#9085e9;
+  --good:#3fae7a; --bad:#e66767; --accent:#3987e5;
+}}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --surface-0:#111110; --surface-1:#1a1a19; --surface-2:#232322;
+  --line:#34342f; --line-strong:#4a4a44;
+  --text-primary:#ffffff; --text-secondary:#c3c2b7; --text-muted:#95948b;
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#9085e9;
+  --good:#3fae7a; --bad:#e66767; --accent:#3987e5;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--surface-0);color:var(--text-primary);font-family:var(--sans);
+  font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px 80px}
+
+header.top{border-bottom:1px solid var(--line);background:var(--surface-1)}
+.top-inner{max-width:1120px;margin:0 auto;padding:22px 20px 18px;position:relative;
+  display:flex;flex-wrap:wrap;gap:16px;align-items:flex-start;justify-content:space-between}
+.simid{font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--text-muted)}
+h1{font-size:23px;line-height:1.25;margin:6px 0 10px;font-weight:640;max-width:640px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-size:11.5px;padding:3px 9px;border:1px solid var(--line-strong);border-radius:999px;
+  color:var(--text-secondary);background:var(--surface-2);white-space:nowrap}
+.chip.k{border-color:var(--accent);color:var(--accent);background:transparent}
+.answerbox{border:1px solid var(--line-strong);border-radius:var(--radius);background:var(--surface-2);
+  padding:12px 16px;min-width:210px}
+.answerbox .lbl{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted)}
+.answerbox .val{font-family:var(--mono);font-size:25px;font-weight:600;color:var(--good);line-height:1.22}
+.answerbox .sub{font-size:12px;color:var(--text-secondary)}
+.answerbox.locked .val{color:var(--text-muted);font-size:17px;letter-spacing:.04em}
+.answerbox .rv{margin-top:6px;font-size:11px;background:none;border:none;padding:0;color:var(--accent);
+  cursor:pointer;text-decoration:underline;font-family:var(--sans)}
+.themebtn{position:absolute;top:14px;right:16px;border:1px solid var(--line-strong);background:var(--surface-2);
+  color:var(--text-secondary);border-radius:8px;padding:4px 9px;font-size:12px;cursor:pointer}
+.brandbar{display:flex;align-items:center;gap:8px;margin-bottom:9px;text-decoration:none}
+.brandbar .pxmark{width:21px;height:21px;flex:none;display:block}
+.brandbar .wm{font-size:13px;font-weight:800;letter-spacing:.17em;color:var(--text-secondary);line-height:1}
+.brandbar .wm i{font-style:normal;color:var(--accent)}
+
+nav.jump{position:sticky;top:0;z-index:20;background:var(--surface-0);border-bottom:1px solid var(--line);
+  padding:8px 0;margin-bottom:26px}
+nav.jump ul{max-width:1120px;margin:0 auto;padding:0 20px;list-style:none;display:flex;gap:4px;overflow-x:auto}
+nav.jump a{display:block;padding:5px 11px;border-radius:7px;font-size:13px;text-decoration:none;
+  color:var(--text-secondary);white-space:nowrap}
+nav.jump a:hover{background:var(--surface-2);color:var(--text-primary)}
+
+section{margin:0 0 42px;scroll-margin-top:56px}
+h2{font-size:17px;font-weight:640;margin:0 0 4px;display:flex;align-items:baseline;gap:9px}
+h2 .n{font-family:var(--mono);font-size:12px;color:var(--text-muted);font-weight:400}
+.lede{color:var(--text-secondary);font-size:13.5px;margin:0 0 16px;max-width:76ch}
+.card,.panel{background:var(--surface-1);border:1px solid var(--line);border-radius:var(--radius);padding:18px}
+.panel h3{margin:0 0 12px;font-size:13px;letter-spacing:.05em;text-transform:uppercase;
+  color:var(--text-muted);font-weight:600}
+.lab{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:16px;align-items:start}
+.lab>*{min-width:0}
+@media(max-width:900px){.lab{grid-template-columns:1fr !important}}
+canvas{display:block;width:100%;height:auto;border-radius:8px;background:var(--surface-2)}
+
+.qtext{font-family:var(--serif);font-size:16px;line-height:1.7}
+.opts{list-style:none;padding:0;margin:16px 0 0;display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr));gap:10px}
+.opts li{border:1px solid var(--line);border-radius:10px;padding:10px;background:var(--surface-1);
+  display:flex;flex-direction:column;gap:6px}
+.opts li .hd{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--text-muted);font-family:var(--mono)}
+.opts li .mark{margin-left:auto;font-family:var(--sans);font-size:11.5px;font-weight:600}
+.opts li .nm{font-size:11.5px;color:var(--text-secondary)}
+.opts li.correct{border-color:var(--good);background:color-mix(in srgb,var(--good) 11%,transparent)}
+.opts li.correct .mark{color:var(--good)}
+.opts li.wrong{border-color:var(--bad)}
+.opts li.wrong .mark{color:var(--bad)}
+svg.optthumb{display:block;width:100%;height:auto;background:var(--surface-2);border-radius:7px}
+
+.ctrl{margin:14px 0}
+.ctrl label{display:flex;flex-wrap:wrap;gap:4px;justify-content:space-between;align-items:baseline;
+  font-size:13px;margin-bottom:5px}
+.ctrl label span{min-width:0}
+.ctrl label .v{font-family:var(--mono);font-size:13px;color:var(--text-primary)}
+input[type=range]{width:100%;min-width:0;accent-color:var(--accent)}
+.numrow{display:flex;gap:6px;align-items:center;margin-top:6px}
+.numrow input.numin{flex:1;min-width:0;padding:7px 9px;border-radius:7px;border:1px solid var(--line-strong);
+  background:var(--surface-0);color:var(--text-primary);font-family:var(--mono);font-size:13px}
+.numrow input.numin:focus{outline:2px solid var(--accent);outline-offset:-1px}
+.numrow input.numin.bad{border-color:var(--bad);background:color-mix(in srgb,var(--bad) 9%,transparent)}
+.numrow button.step{flex:none;width:40px;height:34px;border-radius:8px;border:1px solid var(--line-strong);
+  background:var(--surface-2);color:var(--text-primary);font-size:18px;line-height:1;cursor:pointer;
+  font-family:var(--mono);touch-action:manipulation}
+.numrow button.step:hover{border-color:var(--accent);color:var(--accent)}
+.numrow .unit{flex:none;font-size:12px;color:var(--text-muted);min-width:52px}
+.hint{font-size:11.5px;color:var(--text-muted);margin-top:4px;min-height:1.15em}
+.hint.bad{color:var(--bad);font-weight:600}
+.segbtns{display:flex;gap:6px;flex-wrap:wrap}
+.segbtns button{flex:1;min-width:84px;padding:8px 6px;border-radius:8px;border:1px solid var(--line-strong);
+  background:var(--surface-2);color:var(--text-secondary);font-size:13px;cursor:pointer;font-family:var(--sans)}
+.segbtns button[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:650}
+button.act{padding:8px 14px;border-radius:8px;border:1px solid var(--line-strong);background:var(--surface-2);
+  color:var(--text-primary);font-size:13px;cursor:pointer;font-family:var(--sans)}
+button.act:hover{border-color:var(--accent);color:var(--accent)}
+button.act.primary{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+button.act:disabled{opacity:.42;cursor:not-allowed}
+.btnrow{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+
+.playback{display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin-top:12px;
+  padding:9px 10px;border:1px solid var(--line);border-radius:9px;background:var(--surface-2)}
+.playback .lb{font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-muted);margin-right:2px}
+.playback button{padding:6px 12px;border-radius:7px;border:1px solid var(--line-strong);
+  background:var(--surface-1);color:var(--text-secondary);font-size:12.5px;cursor:pointer;font-family:var(--mono)}
+.playback button[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:700}
+.playback button:hover{border-color:var(--accent)}
+
+.readouts{display:grid;grid-template-columns:repeat(auto-fit,minmax(118px,1fr));gap:8px}
+.ro{border:1px solid var(--line);border-radius:8px;padding:8px 10px;background:var(--surface-2);position:relative}
+.ro .k{font-size:11px;letter-spacing:.03em;font-weight:600;color:var(--text-muted);white-space:nowrap}
+.ro .v{font-family:var(--mono);font-size:16px;font-weight:600;line-height:1.35}
+.ro .u{font-size:10.5px;color:var(--text-muted)}
+.delta{position:absolute;top:5px;right:7px;font-family:var(--mono);font-size:10.5px;font-weight:700;
+  padding:1px 5px;border-radius:5px;opacity:0;transition:opacity .55s ease-out;pointer-events:none}
+.delta.up{color:var(--good);background:color-mix(in srgb,var(--good) 16%,transparent)}
+.delta.down{color:var(--s2);background:color-mix(in srgb,var(--s2) 16%,transparent)}
+.delta.show{opacity:1;transition:opacity .1s}
+
+.eqlive{font-family:var(--serif);font-size:15px;background:var(--surface-2);border:1px solid var(--line);
+  border-radius:8px;padding:11px 13px;margin-top:12px;line-height:2.1}
+.eqlive .t{font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-muted);
+  font-family:var(--sans);display:block;margin-bottom:2px}
+.eqlive b{font-family:var(--mono);font-weight:700}
+.eqlive .chg{background:color-mix(in srgb,var(--accent) 26%,transparent);border-radius:4px;padding:0 3px}
+.eqlive .res{color:var(--good);font-weight:700;font-family:var(--mono)}
+
+.chartwrap{position:relative;background:var(--surface-1);border:1px solid var(--line);
+  border-radius:var(--radius);padding:16px}
+svg.chart{display:block;width:100%;height:auto;overflow:visible}
+.tip{position:absolute;pointer-events:none;background:var(--surface-1);border:1px solid var(--line-strong);
+  border-radius:8px;padding:8px 11px;font-size:12px;box-shadow:0 4px 14px rgba(0,0,0,.13);opacity:0;
+  transition:opacity .1s;z-index:5;min-width:150px}
+.tip .t{font-family:var(--mono);font-size:11px;color:var(--text-muted);margin-bottom:4px}
+.tip .r{display:flex;align-items:center;gap:7px;white-space:nowrap}
+.tip .sw{width:9px;height:9px;border-radius:2px;flex:none}
+.tip .rv{margin-left:auto;font-family:var(--mono);font-weight:600}
+.legend{display:flex;flex-wrap:wrap;gap:14px;margin-top:10px;font-size:12.5px;color:var(--text-secondary)}
+.legend span{display:flex;align-items:center;gap:6px}
+.legend i{width:14px;height:3px;border-radius:2px;display:block}
+.legend i.dot{width:9px;height:9px;border-radius:50%}
+
+.predict{border:1px solid var(--accent);border-radius:9px;padding:12px 14px;margin-top:14px;
+  background:color-mix(in srgb,var(--accent) 7%,transparent)}
+.predict .q{font-size:13px;font-weight:600;margin-bottom:8px}
+.predict .row{display:flex;gap:6px;flex-wrap:wrap}
+.predict button{flex:1;min-width:96px;padding:8px;border-radius:8px;border:1px solid var(--line-strong);
+  background:var(--surface-1);color:var(--text-primary);font-size:13px;cursor:pointer}
+.predict button[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+.predict .fb{font-size:12.5px;margin-top:9px;min-height:1.2em}
+.predict .fb.ok{color:var(--good);font-weight:600}
+.predict .fb.no{color:var(--bad);font-weight:600}
+
+table.data{border-collapse:collapse;font-size:12.5px;width:100%}
+table.data th,table.data td{border:1px solid var(--line-strong);padding:6px 9px;text-align:center}
+table.data th{background:var(--surface-2);font-weight:600;font-size:11.5px;color:var(--text-secondary)}
+table.data td.l{text-align:left}
+table.data td.num{font-family:var(--mono)}
+tr.win td{background:color-mix(in srgb,var(--good) 12%,transparent);font-weight:600}
+.scrollx{overflow-x:auto}
+.yes{color:var(--good);font-weight:700} .no{color:var(--bad);font-weight:700}
+.empty{color:var(--text-muted);font-size:12.5px;padding:10px 0}
+
+.nb{display:grid;gap:7px}
+.nb .obs{font-size:12.5px;padding:8px 11px;border-radius:8px;background:var(--surface-2);
+  border-left:3px solid var(--s1);color:var(--text-secondary);animation:nbin .35s ease-out}
+.nb .obs b{color:var(--text-primary);font-family:var(--mono)}
+@keyframes nbin{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+.insight{border:1px solid var(--good);border-radius:9px;padding:12px 14px;margin-top:12px;
+  background:color-mix(in srgb,var(--good) 10%,transparent);font-size:13.5px;animation:nbin .4s ease-out}
+.insight b{color:var(--good)}
+
+.verdict{border-radius:9px;padding:11px 14px;font-size:13.5px;margin-top:12px;border:1px solid var(--line-strong);
+  background:var(--surface-2)}
+.verdict.ok{border-color:var(--good);background:color-mix(in srgb,var(--good) 10%,transparent)}
+.verdict.no{border-color:var(--bad);background:color-mix(in srgb,var(--bad) 9%,transparent)}
+.verdict b{font-size:14px}
+
+.gate{border:1px dashed var(--line-strong);border-radius:var(--radius);padding:24px 20px;text-align:center;
+  background:var(--surface-1)}
+.gate h4{margin:0 0 6px;font-size:15px}
+.gate p{margin:0 0 12px;font-size:13px;color:var(--text-secondary)}
+.gate .cnt{font-family:var(--mono);color:var(--accent);font-weight:700}
+.reveal{animation:nbin .45s ease-out}
+
+ol.steps{list-style:none;counter-reset:s;padding:0;margin:0;display:grid;gap:10px}
+ol.steps li{min-width:0;counter-increment:s;border:1px solid var(--line);border-radius:var(--radius);
+  background:var(--surface-1);padding:14px 16px 14px 52px;position:relative}
+ol.steps li::before{content:counter(s);position:absolute;left:15px;top:14px;width:23px;height:23px;
+  border-radius:50%;background:var(--accent);color:#fff;font-size:12px;font-weight:700;
+  display:grid;place-items:center;font-family:var(--mono)}
+ol.steps h4{margin:0 0 6px;font-size:14px;font-weight:640}
+ol.steps p{margin:0 0 6px;font-size:13.5px;color:var(--text-secondary)}
+.eq{min-width:0;font-family:var(--serif);font-size:15px;background:var(--surface-2);border-radius:7px;
+  padding:9px 13px;margin:8px 0;overflow-x:auto}
+.eq .hl{color:var(--good);font-weight:700}
+sub{font-size:.72em} sup{font-size:.72em}
+.verify{border:1px solid var(--good);border-radius:var(--radius);
+  background:color-mix(in srgb,var(--good) 8%,transparent);padding:14px 16px;font-size:13.5px}
+.verify h4{margin:0 0 6px;font-size:13.5px;color:var(--good)}
+.verify ul{margin:6px 0 0;padding-left:18px;color:var(--text-secondary)}
+.meta-tbl{width:100%;border-collapse:collapse;font-size:13.5px}
+.meta-tbl td{padding:6px 0;border-bottom:1px solid var(--line);vertical-align:top}
+.meta-tbl td:first-child{color:var(--text-muted);width:160px;font-size:12.5px;padding-right:14px}
+footer{border-top:1px solid var(--line);margin-top:40px;padding-top:16px;font-size:12px;color:var(--text-muted)}
+
+.lab.bench{align-items:stretch}
+.toolbar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;background:var(--surface-1);
+  border:1px solid var(--line);border-radius:var(--radius);padding:12px 14px;margin:0 0 28px}
+.toolbar .mission{flex:1 1 240px;min-width:0;font-size:13px;color:var(--text-secondary)}
+.toolbar .mission b{color:var(--text-primary)}
+.bar{flex:none;display:flex;align-items:center;gap:9px}
+.bar .track{width:120px;height:9px;border-radius:5px;background:var(--surface-2);
+  border:1px solid var(--line-strong);overflow:hidden}
+.bar .track i{display:block;height:100%;background:var(--good);width:0;transition:width .5s ease-out}
+.bar .cnt{font-family:var(--mono);font-size:12.5px;font-weight:700;white-space:nowrap}
+.badges{display:flex;gap:6px;flex-wrap:wrap}
+.badge{font-size:11px;border:1px solid var(--line-strong);border-radius:999px;padding:3px 10px;
+  color:var(--text-muted);background:var(--surface-2);transition:.3s;white-space:nowrap}
+.badge.won{border-color:var(--good);color:var(--good);font-weight:650;
+  background:color-mix(in srgb,var(--good) 12%,transparent)}
+.mode{display:flex;border:1px solid var(--line-strong);border-radius:8px;overflow:hidden;flex:none}
+.mode button{padding:7px 13px;border:none;background:var(--surface-2);color:var(--text-secondary);
+  font-size:12.5px;cursor:pointer;font-family:var(--sans)}
+.mode button[aria-pressed=true]{background:var(--accent);color:#fff;font-weight:650}
+.viz{display:block;width:100%;height:auto;overflow:visible}
+.vizwrap{background:var(--surface-1);border:1px solid var(--line);border-radius:var(--radius);
+  padding:12px;margin-top:12px}
+.caption{font-size:11.5px;color:var(--text-muted);margin-top:7px;text-align:center}
+.info{border-left:3px solid var(--accent);background:var(--surface-2);border-radius:0 8px 8px 0;
+  padding:9px 12px;font-size:12.5px;margin-top:10px;min-height:2.6em;color:var(--text-secondary)}
+.info b{color:var(--text-primary)}
+.xp{display:none;border:1px solid var(--s4);border-radius:9px;padding:10px 13px;margin-top:10px;
+  background:color-mix(in srgb,var(--s4) 8%,transparent);font-size:12.5px;color:var(--text-secondary)}
+.xp b{color:var(--s4)}
+body.explain .xp{display:block}
+.steps2{display:grid;gap:7px;margin-top:10px}
+.st{display:flex;gap:9px;align-items:flex-start;font-size:13px;padding:8px 11px;border-radius:9px;
+  background:var(--surface-2);border:1px solid var(--line);opacity:.32;transition:opacity .4s}
+.st.on{opacity:1;border-color:var(--accent);animation:nbin .4s ease-out}
+.st .no{font-family:var(--mono);font-size:11px;color:var(--text-muted);flex:none;width:16px;
+  padding-top:2px}
+.st .bd{min-width:0;flex:1}
+.st .eqn{font-family:var(--mono);font-size:13.5px;color:var(--text-primary);margin-top:3px;
+  overflow-x:auto}
+.st .eqn b{color:var(--good)}
+.pick{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+.pick button{flex:1 1 120px;padding:9px 8px;border-radius:9px;border:1px solid var(--line-strong);
+  background:var(--surface-1);color:var(--text-primary);font-family:var(--mono);font-size:13.5px;
+  cursor:pointer}
+.pick button:hover{border-color:var(--accent)}
+.pick button.good{border-color:var(--good);background:color-mix(in srgb,var(--good) 14%,transparent);
+  font-weight:700}
+.pick button.bad{border-color:var(--bad);background:color-mix(in srgb,var(--bad) 11%,transparent)}
+.pred{border:1px solid var(--accent);border-radius:10px;padding:12px 14px;margin-top:12px;
+  background:color-mix(in srgb,var(--accent) 7%,transparent)}
+.pred .q{font-size:13px;font-weight:650;margin-bottom:8px}
+.pred .opts2{display:grid;gap:6px}
+.pred .opts2 button{text-align:left;padding:8px 11px;border-radius:8px;border:1px solid var(--line-strong);
+  background:var(--surface-1);color:var(--text-primary);font-size:12.5px;cursor:pointer;font-family:var(--sans)}
+.pred .opts2 button:hover{border-color:var(--accent)}
+.pred .opts2 button[aria-pressed=true]{border-color:var(--accent);font-weight:650;
+  background:color-mix(in srgb,var(--accent) 14%,transparent)}
+.pred .fb2{font-size:12.5px;margin-top:8px;min-height:1.2em}
+.pred .fb2.ok{color:var(--good);font-weight:650}
+.pred .fb2.no{color:var(--bad);font-weight:650}
+.hintbox{font-size:12.5px;color:var(--text-secondary);border:1px dashed var(--line-strong);
+  border-radius:8px;padding:9px 12px;margin-top:10px;display:none}
+.hintbox.on{display:block}
+.hintbox b{color:var(--accent)}
+.stamp{display:inline-block;padding:5px 14px;border:2.5px solid var(--bad);color:var(--bad);
+  border-radius:7px;font-weight:800;letter-spacing:.09em;font-size:13px;transform:rotate(-4deg);
+  opacity:0;transition:opacity .5s;margin-top:10px}
+.stamp.ok{border-color:var(--good);color:var(--good)}
+.stamp.show{opacity:1;animation:thump .45s cubic-bezier(.2,1.4,.4,1)}
+@keyframes thump{0%{transform:rotate(-4deg) scale(2.1);opacity:0}60%{opacity:1}
+  100%{transform:rotate(-4deg) scale(1)}}
+.tally{width:100%;border-collapse:collapse;font-size:13px;margin-top:8px}
+.tally td{padding:7px 8px;border-bottom:1px solid var(--line)}
+.tally td:first-child{color:var(--text-muted);font-size:12.5px}
+.tally td:last-child{text-align:right;font-family:var(--mono);font-weight:700;font-size:15px}
+.tally tr.sum td{border-bottom:none;border-top:2px solid var(--line-strong);padding-top:9px}
+.tally tr.sum td:last-child{color:var(--good);font-size:18px}
+.tally tr.q td:last-child{color:var(--text-muted)}
+.big{font-family:var(--mono);font-size:32px;font-weight:700;text-align:center;line-height:1.1;
+  color:var(--s1);margin:6px 0 2px}
+.big small{display:block;font-size:12px;color:var(--text-muted);font-weight:400;font-family:var(--sans);
+  margin-top:4px}
+.big.lock{color:var(--good)}
+.finalbox{border:2.5px solid var(--good);border-radius:12px;padding:16px;text-align:center;
+  background:color-mix(in srgb,var(--good) 9%,transparent);margin-top:12px;opacity:0;
+  transition:opacity .5s}
+.finalbox.on{opacity:1;animation:pop .5s cubic-bezier(.2,1.3,.4,1)}
+.finalbox .v{font-family:var(--mono);font-size:32px;font-weight:800;color:var(--good)}
+.finalbox .l{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted)}
+.trap{border:1px solid var(--line-strong);border-radius:10px;padding:11px 13px;margin-bottom:8px;
+  background:var(--surface-1);cursor:pointer}
+.trap .t{font-size:12.5px;font-weight:650;color:var(--bad)}
+.trap .a{font-size:12.5px;color:var(--text-secondary);margin-top:6px;display:none}
+.trap.open .a{display:block}
+.trap .a b{color:var(--good)}
+.teach{border:1px solid var(--s4);border-radius:var(--radius);padding:14px 16px;margin-top:16px;
+  background:color-mix(in srgb,var(--s4) 8%,transparent);font-size:13.5px;display:none}
+.teach.on{display:block}
+.teach h4{margin:0 0 6px;font-size:13.5px;color:var(--s4)}
+.teach ul{margin:6px 0 0;padding-left:18px;color:var(--text-secondary)}
+#celebrate{position:fixed;inset:0;z-index:60;display:none;place-items:center;
+  background:color-mix(in srgb,var(--surface-0) 88%,transparent);backdrop-filter:blur(3px)}
+#celebrate.on{display:grid}
+#celebrate .card{text-align:center;padding:26px 30px;border-radius:16px;background:var(--surface-1);
+  border:1px solid var(--good);box-shadow:0 18px 60px rgba(0,0,0,.28);
+  animation:pop .5s cubic-bezier(.2,1.3,.4,1)}
+@keyframes pop{from{transform:scale(.82);opacity:0}to{transform:none;opacity:1}}
+#celebrate .gr{font-size:clamp(26px,6vw,46px);font-weight:900;letter-spacing:-.02em;line-height:1.05;
+  background:linear-gradient(92deg,var(--s1),var(--s3) 46%,var(--s2));-webkit-background-clip:text;
+  background-clip:text;color:transparent;transform:rotate(-2.5deg);margin-bottom:6px}
+#celebrate .sub{font-size:13.5px;color:var(--text-secondary);margin-bottom:14px}
+#celebrate .ans{font-family:var(--mono);font-size:32px;font-weight:700;color:var(--good);margin:10px 0 4px}
+.confetti{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.confetti i{position:absolute;width:8px;height:13px;border-radius:2px;animation:fall linear forwards}
+@keyframes fall{to{transform:translateY(105vh) rotate(760deg);opacity:.15}}
+
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-inner">
+    <div>
+      <div class="brandbar"><svg class="pxmark" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><rect width="32" height="32" rx="8" fill="var(--accent)"/><path d="M12.5 6.5h7M13.6 6.5v7.2L7.9 24.1a1.5 1.5 0 0 0 1.3 2.3h13.6a1.5 1.5 0 0 0 1.3-2.3l-5.7-10.4V6.5" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.6 20.6h10.8" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg><span class="wm">PRAYOG<i>X</i></span></div>
+      <div class="simid">ADV-2026-P2-CHE-Q11</div>
+      <h1>Acetic acid on charcoal: follow the missing acid from the flask to the surface</h1>
+      <div class="chips">
+        <span class="chip">JEE Advanced 2026</span>
+        <span class="chip">Paper 2</span>
+        <span class="chip">Chemistry</span>
+        <span class="chip">Q.11 · Section 3</span>
+        <span class="chip k">Surface chemistry</span>
+        <span class="chip k">Freundlich isotherm</span>
+      </div>
+    </div>
+    <div class="answerbox locked" id="answerbox">
+      <div class="lbl">Answer</div>
+      <div class="val" id="ansval">Run the experiment</div>
+      <div class="sub" id="anssub">Run all four benches to unlock.</div>
+      <button class="rv" id="revealnow" type="button">Reveal anyway</button>
+    </div>
+    <button class="themebtn" id="themebtn" type="button">◐ theme</button>
+  </div>
+</header>
+
+<nav class="jump">
+  <ul>
+    <li><a href="#question">Question</a></li>
+    <li><a href="#prepare">Bench A · dissolve</a></li>
+    <li><a href="#shake">Bench B · adsorb</a></li>
+    <li><a href="#measure">Bench C · pH &amp; balance</a></li>
+    <li><a href="#isotherm">Bench D · the plot</a></li>
+    <li><a href="#verdict">Evidence board</a></li>
+    <li><a href="#solution">Step-by-step solution</a></li>
+    <li><a href="#concepts">Concepts &amp; classification</a></li>
+  </ul>
+</nav>
+
+<div class="wrap">
+
+
+<div class="toolbar">
+  <div class="mission"><b>Mission.</b> Some of the acetic acid in this flask is about to disappear
+    from the solution — but not from the flask. Follow it onto the charcoal and measure how much
+    stuck.</div>
+  <div class="bar">
+    <span class="track"><i id="progbar"></i></span>
+    <span class="cnt" id="progtxt">0 / 4 benches</span>
+  </div>
+  <div class="badges" id="badges"></div>
+  <div class="mode" id="mode">
+    <button type="button" data-m="exp" aria-pressed="true">Experiment</button>
+    <button type="button" data-m="why">Explain</button>
+  </div>
+  <button class="act" id="autoplay" type="button">▶ Auto play</button>
+  <button class="act" id="teachbtn" type="button">Teacher mode</button>
+  <button class="act" id="resetlab" type="button">↺ Reset lab</button>
+</div>
+
+<!-- 01 QUESTION -->
+<section id="question">
+  <h2><span class="n">01</span>Original question
+      <span style="font-weight:400;font-size:12.5px;color:var(--text-muted)">— verbatim</span></h2>
+  <div class="card">
+    <div class="qtext">
+      At a given temperature, 0.45 g of acetic acid in 50 mL of water is shaken with 1.0 g of
+      charcoal and the pH of the resulting solution is 3.0. Assume, the adsorption of acetic acid
+      from the aqueous solution by charcoal follows Freundlich isotherm,
+    </div>
+    <div class="eq" style="font-size:18px;text-align:center">
+      <i>x</i>/<i>m</i> = <i>k</i> C<sup>1/<i>n</i></sup></div>
+    <div class="qtext">
+      If the plot of log<sub>10</sub>(<i>x</i>/<i>m</i>) against log<sub>10</sub>C gives a straight
+      line with slope 1, the value of <i>k</i> in L mol<sup>−1</sup> is ______.
+    </div>
+    <div class="eq" style="margin-top:12px;font-size:13.5px">
+      <b>Given:</b> molar mass of acetic acid = 60 g mol<sup>−1</sup> ·
+      K<sub>a</sub> = 1.0 × 10<sup>−5</sup> ·
+      <i>x</i> = mass (g) of acetic acid adsorbed ·
+      <i>m</i> = mass (g) of charcoal ·
+      C = equilibrium concentration of acetic acid in solution after adsorption ·
+      <i>k</i> and <i>n</i> are constants for the acetic acid–charcoal system.
+    </div>
+    <p style="font-size:12.5px;color:var(--text-muted);margin:14px 0 0">
+      Section 3 — non-negative numerical value (+4 for the correct value, 0 otherwise, no negative
+      marking). There are no printed options. What there <em>are</em> are four decisions on the way
+      to <i>k</i>, and every one of them is a place students lose the mark. The lab settles all four
+      by measurement.
+    </p>
+    <ul class="opts" id="opts">
+      <li data-k="A"><div class="hd">Claim A<span class="mark"></span></div>
+        <div class="nm">0.45 g of acetic acid dissolved in 50 mL of water is
+          <b>0.15 mol L<sup>−1</sup></b>.</div></li>
+      <li data-k="B"><div class="hd">Claim B<span class="mark"></span></div>
+        <div class="nm">Adding charcoal removes acetic acid from the flask, so the
+          <b>total</b> amount of acid goes down.</div></li>
+      <li data-k="C"><div class="hd">Claim C<span class="mark"></span></div>
+        <div class="nm">pH = 3.0 means the acetic acid left in solution is
+          <b>1.0 × 10<sup>−3</sup> mol L<sup>−1</sup></b>.</div></li>
+      <li data-k="D"><div class="hd">Claim D<span class="mark"></span></div>
+        <div class="nm">A slope of 1 makes the isotherm <i>x</i>/<i>m</i> = <i>k</i>C, so <i>k</i>
+          is <i>x</i>/<i>m</i> divided by the <b>equilibrium</b> C.</div></li>
+    </ul>
+  </div>
+</section>
+
+<!-- 02 BENCH A -->
+<section id="prepare">
+  <h2><span class="n">02</span>Bench A — weigh it, dissolve it</h2>
+  <p class="lede">
+    Nothing can be calculated until you know what is actually in the flask. Weigh the acid, measure
+    the water, and turn those two readings into a concentration.
+  </p>
+  <div class="lab bench">
+    <div class="panel">
+      <h3>The bench</h3>
+      <div class="vizwrap" style="margin-top:0">
+        <svg id="benchA" class="viz" viewBox="0 0 460 300" role="img"
+             aria-label="Digital balance, measuring cylinder and conical flask"></svg>
+        <div class="caption" id="capA">A digital balance, a 50 mL measuring cylinder and a conical
+          flask.</div>
+      </div>
+      <div class="btnrow">
+        <button class="act primary" id="aWeigh" type="button">⚖ Weigh the acetic acid</button>
+        <button class="act" id="aWater" type="button">💧 Measure 50 mL water</button>
+        <button class="act" id="aMix" type="button">🌀 Dissolve</button>
+      </div>
+      <div class="btnrow">
+        <button class="act" id="aHint" type="button">Hint</button>
+      </div>
+      <div class="hintbox" id="aHintbox"></div>
+      <div class="xp"><b>What you are doing.</b> Concentration is "how much stuff per litre of
+        liquid". So you need two numbers: how many <em>moles</em> of acid, and how many
+        <em>litres</em> of solution. The balance gives you grams, and the molar mass turns grams
+        into moles.</div>
+    </div>
+
+    <div class="panel">
+      <h3>Predict, then measure</h3>
+      <div class="pred" id="aPred">
+        <div class="q">Claim A: 0.45 g of acetic acid in 50 mL of water. Is that 0.15 mol L⁻¹?</div>
+        <div class="opts2">
+          <button type="button" data-p="yes">Yes — 0.0075 mol in 0.050 L</button>
+          <button type="button" data-p="no">No — it works out to something else</button>
+        </div>
+        <div class="fb2" id="aFb">Commit to an answer, then work it out on the bench.</div>
+      </div>
+
+      <h3 style="margin-top:16px">Working it out</h3>
+      <div class="steps2" id="aSteps"></div>
+      <div id="aPickWrap" hidden>
+        <div class="info">You have <b>0.0075 mol</b>. Concentration is moles per <b>litre</b> —
+          so what do you divide by?</div>
+        <div class="pick" id="aPick">
+          <button type="button" data-v="50">÷ 50</button>
+          <button type="button" data-v="0.05">÷ 0.050 L</button>
+        </div>
+      </div>
+      <div class="readouts" style="margin-top:14px">
+        <div class="ro"><div class="k">acid taken</div><div class="v" id="roMass">—</div>
+          <div class="u">g</div></div>
+        <div class="ro"><div class="k">moles</div><div class="v" id="roMol">—</div>
+          <div class="u">mol</div></div>
+        <div class="ro"><div class="k">volume</div><div class="v" id="roVol">—</div>
+          <div class="u">mL</div></div>
+        <div class="ro"><div class="k">C initial</div><div class="v" id="roC0">—</div>
+          <div class="u">mol L⁻¹</div></div>
+      </div>
+      <div class="verdict" id="aV">Weigh the acid and measure the water, then settle claim A.</div>
+      <span class="stamp ok" id="aStamp">claim A confirmed</span>
+    </div>
+  </div>
+</section>
+
+<!-- 03 BENCH B -->
+<section id="shake">
+  <h2><span class="n">03</span>Bench B — charcoal, and the shaker</h2>
+  <p class="lede">
+    Charcoal is riddled with pores, so one gram of it carries an enormous surface. Drop it in, shake
+    the flask, and watch where the acid molecules end up. Keep an eye on the totals.
+  </p>
+  <div class="lab bench">
+    <div class="panel">
+      <h3>The flask</h3>
+      <div class="vizwrap" style="margin-top:0">
+        <svg id="benchB" class="viz" viewBox="0 0 420 330" role="img"
+             aria-label="Conical flask with acetic acid molecules and charcoal grains"></svg>
+        <div class="caption" id="capB">Each dot is 0.01 g of acetic acid. The dark grains are
+          charcoal.</div>
+      </div>
+      <div class="btnrow">
+        <button class="act primary" id="bAdd" type="button">🖤 Add 1.0 g charcoal</button>
+        <button class="act" id="bShake" type="button" disabled>🔄 Start shaking</button>
+        <button class="act" id="bHint" type="button">Hint</button>
+      </div>
+      <div class="hintbox" id="bHintbox"></div>
+      <div class="xp"><b>What adsorption is.</b> The acid molecules are not reacting and they are
+        not being destroyed — they stick to the <em>outside</em> of the charcoal. That is what the
+        word adsorb means: onto a surface, not into the solid. Everything you put in is still in the
+        flask.</div>
+    </div>
+
+    <div class="panel">
+      <h3>Predict, then shake</h3>
+      <div class="pred" id="bPred">
+        <div class="q">Claim B: does adding charcoal make the <em>total</em> amount of acetic acid
+          in the flask go down?</div>
+        <div class="opts2">
+          <button type="button" data-p="yes">Yes — the charcoal takes some acid away</button>
+          <button type="button" data-p="no">No — it just moves out of the solution onto the surface</button>
+        </div>
+        <div class="fb2" id="bFb">Commit to an answer, then watch the tally while it shakes.</div>
+      </div>
+
+      <h3 style="margin-top:16px">Live tally</h3>
+      <table class="tally" id="bTally"></table>
+      <div class="info" id="bInfo">Add the charcoal to begin.</div>
+      <div class="verdict" id="bV">Shake until the numbers stop changing.</div>
+      <span class="stamp" id="bStamp">claim B disproved</span>
+    </div>
+  </div>
+</section>
+
+<!-- 04 BENCH C -->
+<section id="measure">
+  <h2><span class="n">04</span>Bench C — the pH meter, and the mass balance</h2>
+  <p class="lede">
+    The meter measures hydrogen ions, not acetic acid. Turning one into the other is the step this
+    question is really about — and once you have it, the mass balance falls out.
+  </p>
+  <div class="lab bench">
+    <div class="panel">
+      <h3>Measure the solution</h3>
+      <div class="vizwrap" style="margin-top:0">
+        <svg id="benchC" class="viz" viewBox="0 0 420 300" role="img"
+             aria-label="Digital pH meter with its probe in the flask"></svg>
+        <div class="caption" id="capC">A digital pH meter. The probe reads the hydrogen-ion
+          activity.</div>
+      </div>
+      <div class="btnrow">
+        <button class="act primary" id="cMeasure" type="button">🌡 Measure pH</button>
+        <button class="act" id="cKa" type="button" disabled>🧮 Use K<sub>a</sub></button>
+        <button class="act" id="cHint" type="button">Hint</button>
+      </div>
+      <div class="hintbox" id="cHintbox"></div>
+      <div class="xp"><b>Why the meter is not enough.</b> Acetic acid is weak — only about one
+        molecule in a hundred has given its proton away. So the hydrogen ions you measure are a
+        small sample of the acid that is really there. K<sub>a</sub> is the conversion factor
+        between the two.</div>
+
+      <h3 style="margin-top:18px">Where the 0.45 g went</h3>
+      <div class="vizwrap" style="margin-top:0">
+        <svg id="balance" class="viz" viewBox="0 0 460 250" role="img"
+             aria-label="Mass balance between acid in solution and acid on the charcoal"></svg>
+        <div class="caption">The bar always adds up to the 0.45 g you weighed out.</div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h3>Predict, then measure</h3>
+      <div class="pred" id="cPred">
+        <div class="q">Claim C: the meter reads pH 3.0. Does that mean the acetic acid left in
+          solution is 1.0 × 10⁻³ mol L⁻¹?</div>
+        <div class="opts2">
+          <button type="button" data-p="yes">Yes — pH 3 means the acid is 10⁻³ M</button>
+          <button type="button" data-p="no">No — that is the H⁺, and the acid is far more than that</button>
+        </div>
+        <div class="fb2" id="cFb">Commit to an answer, then take the reading.</div>
+      </div>
+
+      <h3 style="margin-top:16px">Chemist's reasoning</h3>
+      <div class="steps2" id="cSteps"></div>
+      <div class="verdict" id="cV">Take the reading, then convert it.</div>
+      <span class="stamp" id="cStamp">claim C disproved</span>
+
+      <h3 style="margin-top:18px">The books</h3>
+      <table class="tally" id="cTally"></table>
+      <div class="info" id="cInfo">The mass balance fills in once you have the equilibrium
+        concentration.</div>
+      <div class="big" id="xmBig">—<small><i>x</i>/<i>m</i> — grams of acid held per gram of
+        charcoal</small></div>
+      <div class="xp"><b>What x/m means.</b> Two grams of charcoal would hold twice as much acid, so
+        the raw mass adsorbed is not a property of the charcoal. Dividing by the mass of charcoal
+        gives a number that describes the <em>material</em> rather than the amount of it.</div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 BENCH D -->
+<section id="isotherm">
+  <h2><span class="n">05</span>Bench D — the Freundlich plot</h2>
+  <p class="lede">
+    Take logarithms of the isotherm and it straightens out. The slope of that straight line is the
+    only thing standing between you and <i>k</i>.
+  </p>
+  <div class="lab bench">
+    <div class="panel">
+      <h3>Straightening the isotherm</h3>
+      <div class="eq" style="font-size:17px;text-align:center">
+        <i>x</i>/<i>m</i> = <i>k</i> C<sup>1/<i>n</i></sup></div>
+      <div class="eq" style="text-align:center">
+        log<sub>10</sub>(<i>x</i>/<i>m</i>) = log<sub>10</sub><i>k</i> +
+        <span class="hl">(1/<i>n</i>)</span> log<sub>10</sub>C</div>
+      <p style="font-size:12.5px;color:var(--text-secondary);margin:8px 0 0">
+        That is <i>y</i> = <i>c</i> + <i>sx</i>. The slope <i>s</i> is 1/<i>n</i> and the intercept
+        is log<sub>10</sub><i>k</i>. Set the slope the question gives you and read the rest off.</p>
+      <div class="ctrl">
+        <label><span>slope of the line you drew</span><span class="v" id="dSlopeV">0.60</span></label>
+        <input type="range" id="dSlope" min="40" max="200" step="1" value="60">
+        <div class="hint" id="dHint">The question says the plot is a straight line of slope
+          <b>1</b>.</div>
+      </div>
+      <div class="chartwrap">
+        <svg id="dChart" class="chart" viewBox="0 0 560 340" role="img"
+             aria-label="log of x over m against log of C"></svg>
+      </div>
+      <div class="legend">
+        <span><i style="background:var(--s1)"></i>your line</span>
+        <span><i class="dot" style="background:var(--s2)"></i>your measurement</span>
+        <span><i style="background:var(--s3)"></i>slope triangle</span>
+      </div>
+      <div class="btnrow">
+        <button class="act" id="dSnap" type="button">Set the slope to 1</button>
+        <button class="act" id="dHintBtn" type="button">Hint</button>
+      </div>
+      <div class="hintbox" id="dHintbox"></div>
+    </div>
+
+    <div class="panel">
+      <h3>Predict, then read it off</h3>
+      <div class="pred" id="dPred">
+        <div class="q">Claim D: with slope 1 the isotherm is just <i>x</i>/<i>m</i> = <i>k</i>C, so
+          <i>k</i> = (<i>x</i>/<i>m</i>) ÷ C. Which C goes in?</div>
+        <div class="opts2">
+          <button type="button" data-p="yes">The equilibrium C — after adsorption</button>
+          <button type="button" data-p="no">The initial C — what you started with</button>
+        </div>
+        <div class="fb2" id="dFb">Commit, then try both on the bench below.</div>
+      </div>
+
+      <h3 style="margin-top:16px">Which concentration?</h3>
+      <div class="segbtns" id="dWhich">
+        <button type="button" data-c="eq" aria-pressed="true">equilibrium C = 0.10 M</button>
+        <button type="button" data-c="init">initial C = 0.15 M</button>
+      </div>
+      <div class="readouts" style="margin-top:12px">
+        <div class="ro"><div class="k">slope = 1/n</div><div class="v" id="roSlope">—</div></div>
+        <div class="ro"><div class="k">n</div><div class="v" id="roN">—</div></div>
+        <div class="ro"><div class="k">x/m</div><div class="v" id="roXm">—</div></div>
+        <div class="ro"><div class="k">C used</div><div class="v" id="roCu">0.10</div>
+          <div class="u">mol L⁻¹</div></div>
+      </div>
+      <div class="eqlive" id="dEqn"></div>
+      <div class="finalbox" id="dFinal">
+        <div class="l">Freundlich constant</div>
+        <div class="v" id="dK">—</div>
+        <div style="font-size:12.5px;color:var(--text-secondary);margin-top:4px">Experiment
+          complete.</div>
+      </div>
+      <div class="verdict" id="dV">Drag the slope until it matches the line the question describes.</div>
+      <span class="stamp ok" id="dStamp">claim D confirmed</span>
+    </div>
+  </div>
+</section>
+
+<!-- 06 VERDICT -->
+<section id="verdict">
+  <h2><span class="n">06</span>Evidence board</h2>
+  <p class="lede">
+    Everything below came out of a bench you ran. The traps are the wrong turns this question is
+    built to catch — open one only after you have formed your own view.
+  </p>
+  <div class="lab">
+    <div class="panel">
+      <h3>Lab notebook</h3>
+      <p style="font-size:12.5px;color:var(--text-muted);margin:0 0 10px">
+        Written as you work. Only what you actually demonstrated appears here.</p>
+      <div class="nb" id="notebook"></div>
+      <div class="empty" id="nbempty">Nothing recorded yet — work through the four benches above.</div>
+
+      <h3 style="margin-top:18px">Final record</h3>
+      <table class="tally" id="record"></table>
+
+      <h3 style="margin-top:18px">Common traps</h3>
+      <div id="traps"></div>
+    </div>
+    <div class="panel">
+      <h3>Predict, then check</h3>
+
+    <div class="predict" id="predict">
+      <div class="q" id="pq"></div>
+      <div class="row">
+        <button type="button" data-p="yes">Correct</button>
+        <button type="button" data-p="no">Not correct</button>
+      </div>
+      <div class="fb" id="pfb"></div>
+      <div class="row" style="margin-top:10px">
+        <button type="button" id="pprev">← Previous statement</button>
+        <button type="button" id="pnext">Next statement →</button>
+      </div>
+    </div>
+    <div class="scrollx" style="margin-top:16px"><table class="data" id="matrix"></table></div>
+
+    </div>
+  </div>
+</section>
+
+<!-- 07 SOLUTION -->
+<section id="solution">
+  <h2><span class="n">07</span>Step-by-step solution</h2>
+
+  <div class="gate" id="solgate">
+    <h4>The solution is still locked</h4>
+    <p>Test all four statements on the bench above and the derivation opens by itself.<br>
+       Statements tested: <span class="cnt" id="gtested">0</span> of 4 — dissolve the acid, shake it with charcoal, measure the pH and read the plot</p>
+    <button class="act" id="revealsol" type="button">Show me the solution anyway</button>
+  </div>
+
+  <div id="solbody" hidden>
+    <div class="verdict ok" id="solintro"></div>
+    <ol class="steps" style="margin-top:14px">
+      <li>
+        <h4>What went into the flask</h4>
+        <div class="eq">moles = 0.45 g ÷ 60 g mol<sup>−1</sup> = <span class="hl">0.0075 mol</span></div>
+        <div class="eq">C<sub>initial</sub> = 0.0075 mol ÷ 0.050 L =
+          <span class="hl">0.15 mol L<sup>−1</sup></span></div>
+        <p>The volume has to be in <b>litres</b>. Dividing by 50 instead of 0.050 gives 0.00015,
+           which is moles per millilitre.</p>
+      </li>
+      <li>
+        <h4>The pH reading is about H<sup>+</sup>, not about the acid</h4>
+        <div class="eq">[H<sup>+</sup>] = 10<sup>−pH</sup> = 10<sup>−3.0</sup> =
+          <span class="hl">1.0 × 10<sup>−3</sup> mol L<sup>−1</sup></span></div>
+        <p>Acetic acid is <em>weak</em>: only a small fraction of it has given up a proton. So the
+           hydrogen ions you measure are nowhere near the amount of acid present. That conversion is
+           the whole point of being handed K<sub>a</sub>.</p>
+      </li>
+      <li>
+        <h4>K<sub>a</sub> turns [H<sup>+</sup>] into the acid concentration</h4>
+        <div class="eq">CH<sub>3</sub>COOH ⇌ CH<sub>3</sub>COO<sup>−</sup> + H<sup>+</sup>
+          &nbsp;&nbsp;&nbsp; K<sub>a</sub> = [CH<sub>3</sub>COO<sup>−</sup>][H<sup>+</sup>] /
+          [CH<sub>3</sub>COOH]</div>
+        <p>Both ions come only from the acid, so [CH<sub>3</sub>COO<sup>−</sup>] ≈
+           [H<sup>+</sup>], and the expression collapses:</p>
+        <div class="eq">K<sub>a</sub> = [H<sup>+</sup>]² / C &nbsp;⟹&nbsp;
+          C = [H<sup>+</sup>]² / K<sub>a</sub></div>
+        <div class="eq" style="font-size:17px">C = (1.0 × 10<sup>−3</sup>)² ÷ (1.0 × 10<sup>−5</sup>)
+          = <span class="hl">0.10 mol L<sup>−1</sup></span></div>
+        <p>Sense check: 0.10 M is <em>below</em> the 0.15 M you started with, which is exactly what
+           adsorption should do.</p>
+      </li>
+      <li>
+        <h4>Mass balance — the acid moved, it did not vanish</h4>
+        <div class="eq">n<sub>left</sub> = C × V = 0.10 × 0.050 = 0.005 mol</div>
+        <div class="eq">mass left = 0.005 × 60 = <span class="hl">0.30 g</span></div>
+        <div class="eq" style="font-size:17px"><i>x</i> = 0.45 − 0.30 =
+          <span class="hl">0.15 g adsorbed</span></div>
+        <p>0.30 g in the solution plus 0.15 g on the charcoal is the 0.45 g you weighed out. A third
+           of the acid ended up on the surface.</p>
+      </li>
+      <li>
+        <h4><i>x</i>/<i>m</i></h4>
+        <div class="eq"><i>x</i>/<i>m</i> = 0.15 g ÷ 1.0 g = <span class="hl">0.15</span></div>
+        <p><i>x</i> is a <b>mass</b>, as the question states, so <i>x</i>/<i>m</i> is grams per
+           gram — a pure number.</p>
+      </li>
+      <li>
+        <h4>The slope gives <i>n</i></h4>
+        <div class="eq">log<sub>10</sub>(<i>x</i>/<i>m</i>) = log<sub>10</sub><i>k</i> +
+          (1/<i>n</i>) log<sub>10</sub>C</div>
+        <p>That is a straight line whose gradient is 1/<i>n</i>. The question hands you the
+           gradient:</p>
+        <div class="eq">1/<i>n</i> = 1 &nbsp;⟹&nbsp; <span class="hl"><i>n</i> = 1</span>
+          &nbsp;⟹&nbsp; <i>x</i>/<i>m</i> = <i>k</i>C</div>
+      </li>
+      <li>
+        <h4><i>k</i></h4>
+        <div class="eq" style="font-size:17px">0.15 = <i>k</i> × (0.10)<sup>1</sup>
+          &nbsp;⟹&nbsp; <i>k</i> = 0.15 ÷ 0.10 = <span class="hl">1.5</span></div>
+        <div class="eq">units: (g/g) ÷ (mol L<sup>−1</sup>) =
+          <span class="hl">L mol<sup>−1</sup></span></div>
+        <p>The C in the isotherm is the concentration left <em>at equilibrium</em>, 0.10 M — not the
+           0.15 M you started with. Using 0.15 gives 1.0 and is the commonest wrong answer here.</p>
+      </li>
+      <li>
+        <h4>Answer</h4>
+        <div class="eq" style="font-size:19px"><i>k</i> =
+          <span class="hl">1.5 L mol<sup>−1</sup></span></div>
+        <p>Marking: +4 for 1.5, 0 otherwise. No negative marking, so there is never a reason to
+           leave this blank.</p>
+      </li>
+    </ol>
+    <div class="verify" style="margin-top:16px">
+      <h4>✓ Independent verification</h4>
+      <ul>
+        <li><b>Derived before anything was looked up.</b> Every step — the mole calculation, the
+            K<sub>a</sub> inversion, the mass balance, the slope and the final division — was fixed
+            from first principles, and only then compared with a published solution.</li>
+        <li><b>The K<sub>a</sub> route checked in both directions:</b> forwards it gives C = 0.10 M
+            from pH 3.00, and substituting back, [H<sup>+</sup>] = √(K<sub>a</sub>C) = 1.000 ×
+            10<sup>−3</sup>, reproducing the meter reading exactly.</li>
+        <li><b>Conservation checked explicitly:</b> 0.30 g in solution + 0.15 g adsorbed = 0.45 g
+            weighed out, to machine precision. The simulation enforces the same identity frame by
+            frame while the flask is shaking.</li>
+        <li><b>Two independent routes to <i>k</i>:</b> dividing (<i>x</i>/<i>m</i>) by C gives 1.5,
+            and reading the intercept of the log–log line gives log<sub>10</sub><i>k</i> = 0.176091,
+            i.e. <i>k</i> = 1.500000. They agree.</li>
+        <li><b>Units confirmed by dimensional analysis:</b> (g g<sup>−1</sup>) ÷ (mol L<sup>−1</sup>)
+            = L mol<sup>−1</sup>, which is the unit the question asks for — a check that
+            <i>x</i> was correctly taken as a mass rather than a number of moles.</li>
+        <li><b>The traps reproduced deliberately:</b> using the initial 0.15 M gives exactly 1.0;
+            treating pH 3 as the acid concentration gives an absurd 150; dividing by 50 instead of
+            0.050 L gives 0.00015; putting <i>x</i> in moles gives 0.025 L g<sup>−1</sup>. None is
+            1.5.</li>
+        <li><b>The approximation quantified rather than assumed:</b> solving the weak-acid
+            equilibrium exactly, without treating the remaining acid as wholly undissociated, gives
+            C = 0.1010 M and <i>k</i> = 1.455 — a 3.0% shift. The question's round numbers are
+            chosen so the standard approximation lands on a clean 1.5, which is the intended
+            answer.</li>
+        <li><b>Answer key cross-check:</b> a published worked solution for this paper follows the
+            same steps and reports the same intermediate values (10<sup>−3</sup> M, 0.10 M, 0.005
+            mol, 0.30 g, 0.15 g, n = 1) and the same answer, 1.5 L mol<sup>−1</sup>. IIT Roorkee's
+            official key was not retrievable at the time of writing.</li>
+        <li><b>Headless-browser run</b> of this page: every control driven, mass conservation
+            asserted during the shake, both concentration choices exercised, clean console, and zero
+            horizontal overflow at 390 px and 360 px.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 08 CONCEPTS -->
+<section id="concepts">
+  <h2><span class="n">08</span>Concepts and classification</h2>
+  <div class="lab">
+    <div class="panel">
+      <h3>Relations used</h3>
+      <div class="eq">moles = mass ÷ molar mass</div>
+      <div class="eq">C = moles ÷ volume <b>in litres</b></div>
+      <div class="eq">[H<sup>+</sup>] = 10<sup>−pH</sup></div>
+      <div class="eq">weak acid: K<sub>a</sub> = [H<sup>+</sup>]² / C ⟹ C = [H<sup>+</sup>]²/K<sub>a</sub></div>
+      <div class="eq">mass balance: <i>x</i> = mass taken − mass left in solution</div>
+      <div class="eq">Freundlich: <i>x</i>/<i>m</i> = <i>k</i> C<sup>1/<i>n</i></sup></div>
+      <div class="eq">log form: log(<i>x</i>/<i>m</i>) = log <i>k</i> + (1/<i>n</i>) log C</div>
+      <div class="eq">slope = 1/<i>n</i> &nbsp;·&nbsp; intercept = log <i>k</i></div>
+      <div class="eq">adsorption is a <em>surface</em> process — nothing leaves the flask</div>
+    </div>
+    <div class="panel">
+      <h3>Classification</h3>
+      <table class="meta-tbl">
+        <tr><td>Simulation ID</td><td style="font-family:var(--mono)">ADV-2026-P2-CHE-Q11</td></tr>
+        <tr><td>Exam / Year / Paper</td><td>JEE Advanced · 2026 · Paper 2</td></tr>
+        <tr><td>Subject</td><td>Chemistry (Physical)</td></tr>
+        <tr><td>Chapter</td><td>Surface Chemistry</td></tr>
+        <tr><td>Topic</td><td>Freundlich adsorption isotherm from solution</td></tr>
+        <tr><td>Subtopics</td><td>Adsorption from solution · Freundlich isotherm and its logarithmic
+          form · Slope and intercept of the log–log plot · Weak-acid equilibrium and K<sub>a</sub> ·
+          pH and hydrogen-ion concentration · Mass balance on the adsorbate</td></tr>
+        <tr><td>Question type</td><td>Numerical value (+4 / 0, no negative marking)</td></tr>
+        <tr><td>Difficulty</td><td>Moderate</td></tr>
+        <tr><td>Answer</td><td><b id="clsans">— run the experiment</b></td></tr>
+      </table>
+      <div class="teach" id="teachpanel">
+        <h4>Teacher notes</h4>
+        <ul>
+          <li><b>Objective.</b> Two chapters in one question: the ionic-equilibrium step that turns
+              a pH into a concentration, and the surface-chemistry step that turns a concentration
+              into <i>k</i>. Students who know both separately still lose this one at the join.</li>
+          <li><b>Teaching order that works.</b> Ask the class for the acid concentration at pH 3
+              <em>before</em> mentioning K<sub>a</sub>. Most will say 10<sup>−3</sup> M. Then hand
+              them K<sub>a</sub> and let them find 0.10 M — a hundred times bigger.</li>
+          <li><b>Expected wrong answers.</b> <b>1.0</b> by far (using the initial 0.15 M in the
+              isotherm); then <b>150</b> (treating pH as the acid concentration); occasionally
+              <b>0.025</b> (putting <i>x</i> in moles).</li>
+          <li><b>The step that decides it.</b> C in the Freundlich equation is the concentration
+              <em>left at equilibrium</em>. Say it twice.</li>
+          <li><b>Discussion question.</b> "If we doubled the charcoal to 2.0 g, what would happen to
+              <i>x</i>, to <i>x</i>/<i>m</i>, and to <i>k</i>?" (More acid adsorbed, a lower
+              equilibrium C, but <i>k</i> unchanged — it is a constant of the system.)</li>
+          <li><b>Board demonstration.</b> Shaking tea with a spoonful of activated charcoal
+              decolourises it in under a minute. Same physics, and it lands.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="celebrate">
+  <div class="confetti" id="confetti"></div>
+  <div class="card">
+    <div class="gr">EXPERIMENT<br>COMPLETE</div>
+    <div class="sub">Four benches run · the acid tracked from the balance to the charcoal</div>
+    <div class="ans" id="celans">—</div>
+    <div style="font-size:12.5px;color:var(--text-muted)" id="celstats"></div>
+    <div class="btnrow" style="justify-content:center">
+      <button class="act primary" id="celclose" type="button">See the derivation</button>
+    </div>
+  </div>
+</div>
+
+<footer>
+  ADV-2026-P2-CHE-Q11 · PrayogX · JEE Advanced Interactive Simulation Library · question text reproduced
+  from the official JEE (Advanced) 2026 Paper 2 for educational use.
+</footer>
+</div>
+
+<script>
+(function(){
+"use strict";
+
+var NS="http://www.w3.org/2000/svg";
+function css(v){ return getComputedStyle(document.documentElement).getPropertyValue(v).trim(); }
+function el(n,a){ var e=document.createElementNS(NS,n); for(var k in a) e.setAttribute(k,a[k]); return e; }
+function $(id){ return document.getElementById(id); }
+function clamp(v,a,b){ return v<a?a:(v>b?b:v); }
+function esc(s){ return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+
+/* ---- predictions + verdict matrix ------------------------------------- */
+var PORDER=["A","B","C","D"], pIdx=0, predictions={}, tested={}, revealed=false;
+
+function renderPredict(){
+  var kk=PORDER[pIdx], def=OPT[kk];
+  $("pq").innerHTML = "Statement ("+kk+") — "+def.shortq;
+  var bs=$("predict").querySelectorAll(".row button");
+  for(var i=0;i<bs.length;i++) bs[i].setAttribute("aria-pressed", predictions[kk]===bs[i].dataset.p?"true":"false");
+  var fb=$("pfb");
+  if(!predictions[kk]){ fb.className="fb"; fb.textContent="Commit to an answer, then go and test it on the bench above."; }
+  else if(!tested[kk]){ fb.className="fb"; fb.innerHTML="Logged. Now test ("+kk+") on the bench and see."; }
+  else {
+    var right = predictions[kk]===def.verdict;
+    fb.className="fb "+(right?"ok":"no");
+    fb.innerHTML=(right?"✓ Your prediction matches your measurement. ":"✗ Your measurement disagrees. ")+def.why;
+  }
+  $("pprev").disabled = pIdx===0; $("pnext").disabled = pIdx===PORDER.length-1;
+}
+function drawMatrix(){
+  var rows=PORDER.map(function(kk){
+    var def=OPT[kk], seen=!!tested[kk], pr=predictions[kk];
+    var vcell = seen ? (def.verdict==="yes" ? "<span class='yes'>✓ correct</span>"
+                                            : "<span class='no'>✗ not correct</span>")
+                     : "<span style='color:var(--text-muted)'>not tested yet</span>";
+    var ok = seen && pr && pr===def.verdict;
+    return "<tr"+(seen&&def.verdict==="yes"?" class='win'":"")+"><td><b>("+kk+")</b></td>"+
+      "<td class='l'>"+def.label+"</td><td>"+(pr?(pr==="yes"?"correct":"not correct"):"—")+"</td>"+
+      "<td>"+vcell+"</td><td>"+(seen&&pr?(ok?"<span class='yes'>match</span>":"<span class='no'>mismatch</span>"):"—")+"</td></tr>";
+  }).join("");
+  $("matrix").innerHTML="<thead><tr><th>Option</th><th class='l'>Statement</th><th>Your prediction</th>"+
+    "<th>What you measured</th><th></th></tr></thead><tbody>"+rows+"</tbody>";
+}
+function nTested(){ var n=0; for(var k in tested) if(tested[k]) n++; return n; }
+
+/* ---- the gate ---------------------------------------------------------- */
+function gateOpen(){ return nTested()>=4 || revealed; }
+function updateGate(){
+  if($("gtested")) $("gtested").textContent = nTested();
+  var open=gateOpen();
+  $("solgate").hidden = open;
+  $("solbody").hidden = !open;
+  var ab=$("answerbox");
+  if(open){
+    ab.classList.remove("locked");
+    $("ansval").textContent=ANSWER.text;
+    $("anssub").innerHTML=ANSWER.sub;
+    $("revealnow").hidden=true;
+    if($("clsans")) $("clsans").textContent=ANSWER.text;
+    if(!$("solbody").classList.contains("reveal")) $("solbody").classList.add("reveal");
+    if($("solintro")) $("solintro").innerHTML = revealed && nTested()<4
+      ? "Revealed early — go back and test the statements to see these conclusions come from your own measurements."
+      : "<b>You tested all four statements on the bench.</b> "+ANSWER.intro;
+  } else {
+    ab.classList.add("locked");
+    $("ansval").textContent="Run the experiment";
+    $("anssub").textContent=LOCKED_SUB;
+    $("revealnow").hidden=false;
+    if($("clsans")) $("clsans").textContent="— run the experiment";
+  }
+  markOptions();
+}
+function markOptions(){
+  if(!gateOpen()) return;
+  document.querySelectorAll("#opts li").forEach(function(li){
+    var kk=li.dataset.k, right=OPT[kk].verdict==="yes";
+    li.classList.remove("correct","wrong");
+    li.classList.add(right?"correct":"wrong");
+    li.querySelector(".mark").textContent = right?"correct":"not correct";
+  });
+}
+function markTested(kk){ if(!tested[kk]){ tested[kk]=true; updateGate(); drawMatrix(); renderPredict(); } }
+
+/* ---- notebook ---------------------------------------------------------- */
+var obsLog=[];
+function note(text){
+  if(obsLog.indexOf(text)>=0) return;
+  obsLog.push(text);
+  $("notebook").innerHTML = obsLog.map(function(o){ return '<div class="obs">'+o+"</div>"; }).join("");
+  $("nbempty").hidden = true;
+}
+
+/* ---- numeric control: slider + typed box + steppers -------------------- */
+function parseNum(str){
+  if(str===null||str===undefined) return null;
+  var s=String(str).trim().toLowerCase();
+  if(!s) return null;
+  s=s.replace(/π/g,"(pi)").replace(/pi/g,"(pi)").replace(/\(\(pi\)\)/g,"(pi)");
+  s=s.replace(/×10\^?/g,"e").replace(/x10\^?/g,"e").replace(/\s+/g,"");
+  if(!/^[0-9+\-*/().epi]+$/.test(s)) return null;
+  s=s.replace(/\(pi\)/g,"P_I");
+  if(/[a-z]/.test(s.replace(/P_I/g,"").replace(/e/g,""))) return null;
+  s=s.replace(/P_I/g,"("+Math.PI+")");
+  var v;
+  try { v=Function('"use strict";return ('+s+');')(); } catch(err){ return null; }
+  if(typeof v!=="number"||!isFinite(v)) return null;
+  return v;
+}
+function makeControl(cfg){
+  var sl=$(cfg.slider), inp=$(cfg.input), hint=$(cfg.hint), baseHint=hint?hint.innerHTML:"";
+  function toSlider(v){ return cfg.log ? Math.round(1000*Math.log(v/cfg.lo)/Math.log(cfg.hi/cfg.lo))
+                                       : Math.round((v-cfg.lo)/(cfg.hi-cfg.lo)*1000); }
+  function fromSlider(p){ return cfg.log ? cfg.lo*Math.pow(cfg.hi/cfg.lo,p/1000)
+                                         : cfg.lo+(cfg.hi-cfg.lo)*p/1000; }
+  sl.min=0; sl.max=1000;
+  function show(v){
+    sl.value=toSlider(v);
+    if(document.activeElement!==inp) inp.value=v.toFixed(cfg.dp);
+    inp.classList.remove("bad");
+    if(hint){ hint.classList.remove("bad"); hint.innerHTML=baseHint; }
+    if(cfg.valEl) $(cfg.valEl).textContent=v.toFixed(cfg.dp)+" "+cfg.unit;
+  }
+  function set(v){ v=clamp(v,cfg.lo,cfg.hi); ST[cfg.key]=v; show(v); if(cfg.onset) cfg.onset(); }
+  sl.addEventListener("input",function(){ set(fromSlider(+sl.value)); });
+  inp.addEventListener("input",function(){
+    var v=parseNum(inp.value);
+    if(v===null){ inp.classList.add("bad");
+      if(hint){ hint.classList.add("bad"); hint.textContent="That is not a number I can read — try 0.5, 1/2 or 5e-1."; }
+      return; }
+    if(v<cfg.lo||v>cfg.hi){ inp.classList.add("bad");
+      if(hint){ hint.classList.add("bad");
+        hint.textContent="Out of the range this apparatus can hold ("+cfg.lo+" to "+cfg.hi+" "+cfg.unit+")."; }
+      return; }
+    inp.classList.remove("bad");
+    if(hint){ hint.classList.remove("bad"); hint.innerHTML=baseHint; }
+    ST[cfg.key]=v; sl.value=toSlider(v);
+    if(cfg.valEl) $(cfg.valEl).textContent=v.toFixed(cfg.dp)+" "+cfg.unit;
+    if(cfg.onset) cfg.onset();
+  });
+  inp.addEventListener("blur",function(){ show(ST[cfg.key]); });
+  document.querySelectorAll('.step[data-for="'+cfg.slider+'"]').forEach(function(b){
+    b.addEventListener("click",function(){ set(ST[cfg.key]+(+b.dataset.dir)*cfg.step); });
+  });
+  show(ST[cfg.key]);
+  return { show:function(){ show(ST[cfg.key]); } };
+}
+
+/* ---- generic plotter --------------------------------------------------- */
+function niceAxis(a,b,want){
+  if(!(b>a)) b=a+1;
+  var raw=(b-a)/(want||5), ex=Math.floor(Math.log(raw)/Math.LN10), f=raw/Math.pow(10,ex);
+  var m=f<=1?1:(f<=2?2:(f<=2.5?2.5:(f<=5?5:10))), st=m*Math.pow(10,ex);
+  var lo=Math.floor(a/st+1e-9)*st, hi=Math.ceil(b/st-1e-9)*st;
+  if(hi-lo<st) hi=lo+st;
+  return {lo:lo,hi:hi,step:st,n:Math.max(1,Math.round((hi-lo)/st))};
+}
+function tickDp(step){
+  for(var d=0;d<=6;d++){ var s=step*Math.pow(10,d); if(Math.abs(s-Math.round(s))<1e-9) return d; }
+  return 6;
+}
+function plot(svg,cfg){
+  while(svg.firstChild) svg.removeChild(svg.firstChild);
+  var vb=svg.getAttribute("viewBox").split(/\s+/).map(Number), W=vb[2], H=vb[3];
+  var M={l:cfg.ml||70,r:cfg.mr||52,t:22,b:48};
+  var AX_=niceAxis(cfg.xMin,cfg.xMax,5), AY_=niceAxis(cfg.yMin,cfg.yMax,5);
+  var xa=AX_.lo, xb=AX_.hi, ya=AY_.lo, yb=AY_.hi;
+  function X(v){ return M.l+(v-xa)/(xb-xa)*(W-M.l-M.r); }
+  function Y(v){ return H-M.b-(v-ya)/(yb-ya)*(H-M.t-M.b); }
+  var grid=css("--line"), muted=css("--text-muted"), strong=css("--line-strong"), ink=css("--text-secondary");
+  var i, xdp=tickDp(AX_.step), ydp=tickDp(AY_.step);
+  for(i=0;i<=AX_.n;i++){
+    var xv=xa+AX_.step*i;
+    svg.appendChild(el("line",{x1:X(xv),x2:X(xv),y1:M.t,y2:H-M.b,stroke:grid,"stroke-width":1}));
+    var tx=el("text",{x:X(xv),y:H-M.b+18,"text-anchor":"middle",fill:muted,"font-size":10.5,
+      "font-family":"ui-monospace,monospace"});
+    tx.textContent=cfg.xFmt?cfg.xFmt(xv):xv.toFixed(xdp); svg.appendChild(tx);
+  }
+  for(i=0;i<=AY_.n;i++){
+    var yv=ya+AY_.step*i;
+    svg.appendChild(el("line",{x1:M.l,x2:W-M.r,y1:Y(yv),y2:Y(yv),stroke:grid,"stroke-width":1}));
+    var ty=el("text",{x:M.l-9,y:Y(yv)+3.5,"text-anchor":"end",fill:muted,"font-size":10.5,
+      "font-family":"ui-monospace,monospace"});
+    ty.textContent=cfg.yFmt?cfg.yFmt(yv):yv.toFixed(ydp); svg.appendChild(ty);
+  }
+  if(ya<0&&yb>0)
+    svg.appendChild(el("line",{x1:M.l,x2:W-M.r,y1:Y(0),y2:Y(0),stroke:strong,"stroke-width":1.5}));
+  svg.appendChild(el("line",{x1:M.l,x2:M.l,y1:M.t,y2:H-M.b,stroke:strong,"stroke-width":1.5}));
+  svg.appendChild(el("line",{x1:M.l,x2:W-M.r,y1:H-M.b,y2:H-M.b,stroke:strong,"stroke-width":1.5}));
+  var usedLbl=[];
+  (cfg.curves||[]).forEach(function(c){
+    if(!c.pts||c.pts.length<2) return;
+    var d=c.pts.map(function(p,ix){ return (ix?"L":"M")+X(p[0]).toFixed(1)+" "+Y(p[1]).toFixed(1); }).join(" ");
+    svg.appendChild(el("path",{d:d,fill:"none",stroke:css(c.col),"stroke-width":c.w||2.4,
+      "stroke-linecap":"round","stroke-linejoin":"round","stroke-dasharray":c.dash||"none",
+      opacity:c.op===undefined?1:c.op}));
+    if(c.label){
+      var last=c.pts[c.pts.length-1], ly=clamp(Y(last[1])+4,M.t+8,H-M.b);
+      for(var q=0;q<usedLbl.length;q++){ if(Math.abs(usedLbl[q]-ly)<13){ ly=usedLbl[q]+13; q=-1; } }
+      ly=clamp(ly,M.t+8,H-M.b-2); usedLbl.push(ly);
+      var lb=el("text",{x:clamp(X(last[0])+8,M.l,W-4),y:ly,fill:css(c.col),"font-size":11.5,
+        "font-weight":700,"text-anchor":X(last[0])>W-M.r-40?"end":"start"});
+      lb.textContent=c.label; svg.appendChild(lb);
+    }
+  });
+  (cfg.bars||[]).forEach(function(b){
+    var x0=X(b.x0), x1=X(b.x1), y0=Y(Math.max(ya,0)), y1=Y(b.y);
+    svg.appendChild(el("rect",{x:Math.min(x0,x1),y:Math.min(y0,y1),width:Math.abs(x1-x0),
+      height:Math.abs(y1-y0),fill:css(b.col),opacity:b.op===undefined?.85:b.op,rx:3}));
+    if(b.label){
+      var t=el("text",{x:(x0+x1)/2,y:Math.min(y0,y1)-6,"text-anchor":"middle",fill:css(b.col),
+        "font-size":11.5,"font-weight":700}); t.textContent=b.label; svg.appendChild(t);
+    }
+  });
+  (cfg.points||[]).forEach(function(p){
+    if(p.x<xa||p.x>xb||p.y<ya||p.y>yb) return;
+    svg.appendChild(el("circle",{cx:X(p.x),cy:Y(p.y),r:p.r||4.6,fill:p.fill||css("--surface-1"),
+      stroke:css(p.col),"stroke-width":2}));
+    if(p.label){
+      var t=el("text",{x:X(p.x),y:Y(p.y)-10,"text-anchor":"middle",fill:css(p.col),
+        "font-size":11,"font-weight":700}); t.textContent=p.label; svg.appendChild(t);
+    }
+  });
+  var axl=el("text",{x:(M.l+W-M.r)/2,y:H-8,"text-anchor":"middle",fill:ink,"font-size":12.5});
+  axl.textContent=cfg.xLabel; svg.appendChild(axl);
+  var ayl=el("text",{x:15,y:(M.t+H-M.b)/2,"text-anchor":"middle",fill:ink,"font-size":12.5,
+    transform:"rotate(-90 15 "+((M.t+H-M.b)/2)+")"});
+  ayl.textContent=cfg.yLabel; svg.appendChild(ayl);
+  svg._map={X:X,Y:Y,xa:xa,xb:xb,M:M,W:W};
+}
+
+/* ---- shared wiring ----------------------------------------------------- */
+function wireCommon(redraw){
+  $("predict").addEventListener("click",function(e){
+    var b=e.target.closest(".row button"); if(!b) return;
+    predictions[PORDER[pIdx]]=b.dataset.p; renderPredict(); drawMatrix();
+  });
+  $("pprev").addEventListener("click",function(){ if(pIdx>0){ pIdx--; renderPredict(); } });
+  $("pnext").addEventListener("click",function(){ if(pIdx<PORDER.length-1){ pIdx++; renderPredict(); } });
+  function doReveal(){ revealed=true; updateGate(); }
+  $("revealnow").addEventListener("click",doReveal);
+  $("revealsol").addEventListener("click",doReveal);
+  $("themebtn").addEventListener("click",function(){
+    var r=document.documentElement;
+    var dark=r.getAttribute("data-theme")==="dark" ||
+      (!r.getAttribute("data-theme")&&matchMedia("(prefers-color-scheme: dark)").matches);
+    r.setAttribute("data-theme",dark?"light":"dark");
+    if(redraw) redraw();
+  });
+}
+
+/* ======================================================================
+   CHEMISTRY — one place, used by every bench.  Nothing below is hard-coded.
+   ====================================================================== */
+var M_ACID = 60.0;      /* g/mol            */
+var MASS_0 = 0.45;      /* g of acid taken  */
+var VOL_ML = 50.0;      /* mL of water      */
+var VOL_L  = VOL_ML / 1000;
+var M_CHAR = 1.0;       /* g of charcoal    */
+var KA     = 1.0e-5;
+var PH     = 3.0;
+
+function molesTaken(){ return MASS_0 / M_ACID; }                 /* 0.0075 mol   */
+function cInitial(){ return molesTaken() / VOL_L; }              /* 0.15  mol/L  */
+function hPlus(){ return Math.pow(10, -PH); }                    /* 1e-3  mol/L  */
+function cEquil(){ return hPlus() * hPlus() / KA; }              /* 0.10  mol/L  */
+function molesLeft(){ return cEquil() * VOL_L; }                 /* 0.005 mol    */
+function massLeft(){ return molesLeft() * M_ACID; }              /* 0.30  g      */
+function massAdsorbed(){ return MASS_0 - massLeft(); }           /* 0.15  g      */
+function xOverM(){ return massAdsorbed() / M_CHAR; }             /* 0.15         */
+function kFrom(xm, c, slope){ return xm / Math.pow(c, slope); }  /* x/m = k C^s  */
+
+function num(v, d){ return (v < 0 ? "−" : "") + Math.abs(v).toFixed(d); }
+
+/* ======================================================================
+   SVG helpers
+   ====================================================================== */
+function clear(svg){ while(svg.firstChild) svg.removeChild(svg.firstChild); }
+function col(c){ return (c && c.charAt(0) === "#") ? c : css(c || "--text-primary"); }
+function txt(svg, x, y, s, c, size, weight, anchor){
+  var t = el("text", {x:x, y:y, "text-anchor":anchor || "middle", fill:col(c),
+    "font-size":size || 13, "font-weight":weight || 600,
+    "font-family":"ui-sans-serif,system-ui,sans-serif"});
+  t.textContent = s; svg.appendChild(t); return t;
+}
+function mono(svg, x, y, s, c, size, weight, anchor){
+  var t = txt(svg, x, y, s, c, size, weight, anchor);
+  t.setAttribute("font-family", "ui-monospace,SFMono-Regular,Menlo,monospace");
+  return t;
+}
+function ln(svg, x1, y1, x2, y2, c, w, dash){
+  svg.appendChild(el("line", {x1:x1, y1:y1, x2:x2, y2:y2, stroke:col(c), "stroke-width":w || 2,
+    "stroke-linecap":"round", "stroke-dasharray":dash || "none"}));
+}
+function rect(svg, x, y, w, h, fill, stroke, r, op){
+  var e = el("rect", {x:x, y:y, width:Math.max(0, w), height:Math.max(0, h),
+    rx:r === undefined ? 6 : r, fill:fill ? col(fill) : "none",
+    stroke:stroke ? col(stroke) : "none", "stroke-width":1.5});
+  if(op !== undefined) e.setAttribute("opacity", op);
+  svg.appendChild(e); return e;
+}
+function circ(svg, cx, cy, r, fill, stroke, sw, op){
+  var e = el("circle", {cx:cx, cy:cy, r:r, fill:fill ? col(fill) : "none",
+    stroke:stroke ? col(stroke) : "none", "stroke-width":sw || 1.4});
+  if(op !== undefined) e.setAttribute("opacity", op);
+  svg.appendChild(e); return e;
+}
+function path(svg, d, fill, stroke, w, op){
+  var e = el("path", {d:d, fill:fill ? col(fill) : "none", stroke:stroke ? col(stroke) : "none",
+    "stroke-width":w || 2, "stroke-linejoin":"round", "stroke-linecap":"round"});
+  if(op !== undefined) e.setAttribute("opacity", op);
+  svg.appendChild(e); return e;
+}
+/* a small digital display, used by the balance and the pH meter */
+function lcd(svg, x, y, w, h, value, unit, cc){
+  rect(svg, x, y, w, h, "#0f1a16", "--line-strong", 6);
+  var t = el("text", {x:x + w - 10, y:y + h * 0.68, "text-anchor":"end", fill:cc || "#5ef2b0",
+    "font-size":h * 0.52, "font-weight":700,
+    "font-family":"ui-monospace,SFMono-Regular,Menlo,monospace"});
+  t.textContent = value; svg.appendChild(t);
+  if(unit){
+    var u = el("text", {x:x + 9, y:y + h * 0.68, "text-anchor":"start", fill:"#7f9a8f",
+      "font-size":h * 0.3, "font-family":"ui-sans-serif,system-ui,sans-serif"});
+    u.textContent = unit; svg.appendChild(u);
+  }
+}
+
+/* ======================================================================
+   STATE
+   ====================================================================== */
+var ST = {
+  weighed:false, watered:false, dissolved:false, volOK:false,     /* bench A */
+  charcoal:false, shaking:false, adsorbed:0, equilibrium:false,   /* bench B */
+  phDone:false, kaDone:false,                                     /* bench C */
+  slope:0.60, useEq:true                                          /* bench D */
+};
+var N_MOL = 45;              /* one dot per 0.01 g of acid  */
+var N_ADS = 15;              /* 0.15 g ends up on the surface */
+
+/* ======================================================================
+   BENCH A — weigh and dissolve
+   ====================================================================== */
+var balanceShown = 0;
+function drawBenchA(){
+  var svg = $("benchA"); clear(svg);
+  /* worktop */
+  ln(svg, 12, 268, 448, 268, "--line-strong", 2.5);
+  rect(svg, 12, 268, 436, 8, "--surface-2", null, 3);
+
+  /* --- digital balance --- */
+  rect(svg, 26, 214, 132, 54, "--surface-2", "--line-strong", 8);
+  rect(svg, 44, 198, 96, 18, "--line-strong", null, 4);
+  lcd(svg, 38, 226, 108, 30, ST.weighed ? balanceShown.toFixed(2) : "0.00", "g");
+  txt(svg, 92, 286, "digital balance", "--text-muted", 10.5, 600);
+  /* weighing boat with the acid on it */
+  if(!ST.dissolved){
+    path(svg, "M60 198 L74 186 L110 186 L124 198 Z", "--surface-1", "--line-strong", 1.4);
+    if(ST.weighed){
+      var i;
+      for(i = 0; i < 9; i++)
+        circ(svg, 74 + (i % 5) * 9 + (i > 4 ? 4.5 : 0), 192 - (i > 4 ? 5 : 0), 3.2,
+             "--s2", null, 0, 0.9);
+      mono(svg, 92, 178, "CH₃COOH", "--s2", 10.5, 700);
+    }
+  }
+
+  /* --- measuring cylinder --- */
+  var cx = 216, top = 96, bot = 264, w = 26;
+  rect(svg, cx - w / 2, top, w, bot - top, "--surface-1", "--line-strong", 4);
+  var lvl = ST.watered ? bot : top + 14;
+  if(!ST.watered) rect(svg, cx - w / 2 + 2, top + 14, w - 4, bot - top - 16, "#7cc4e8", null, 3, 0.5);
+  var g;
+  for(g = 0; g <= 5; g++){
+    var gy = bot - (bot - top - 14) * g / 5;
+    ln(svg, cx + w / 2 - 8, gy, cx + w / 2 - 1, gy, "--text-muted", 1);
+  }
+  mono(svg, cx + w / 2 + 4, top + 20, "50", "--text-muted", 9.5, 600, "start");
+  txt(svg, cx, 286, "50 mL", "--text-muted", 10.5, 600);
+
+  /* --- conical flask --- */
+  var fx = 356, fTop = 120, fNeck = 168, fBot = 262, hw = 46;
+  path(svg, "M" + (fx - 11) + " " + fTop + " L" + (fx - 11) + " " + fNeck +
+        " L" + (fx - hw) + " " + (fBot - 10) + " Q" + (fx - hw) + " " + fBot + " " +
+        (fx - hw + 10) + " " + fBot + " L" + (fx + hw - 10) + " " + fBot +
+        " Q" + (fx + hw) + " " + fBot + " " + (fx + hw) + " " + (fBot - 10) +
+        " L" + (fx + 11) + " " + fNeck + " L" + (fx + 11) + " " + fTop,
+       null, "--line-strong", 2);
+  if(ST.watered){
+    var liqTop = 206;
+    var hwAt = function(y){
+      if(y <= fNeck) return 11;
+      return 11 + (y - fNeck) / (fBot - fNeck) * (hw - 11);
+    };
+    path(svg, "M" + (fx - hwAt(liqTop)) + " " + liqTop +
+          " L" + (fx - hw) + " " + (fBot - 10) + " Q" + (fx - hw) + " " + fBot + " " +
+          (fx - hw + 10) + " " + fBot + " L" + (fx + hw - 10) + " " + fBot +
+          " Q" + (fx + hw) + " " + fBot + " " + (fx + hw) + " " + (fBot - 10) +
+          " L" + (fx + hwAt(liqTop)) + " " + liqTop + " Z",
+         ST.dissolved ? "#8fd0ea" : "#a8dcf2", null, 0, 0.75);
+    if(ST.dissolved){
+      var j;
+      for(j = 0; j < 22; j++){
+        var ang = j * 2.399, rr = 6 + (j % 7) * 5.4;
+        var mx = fx + Math.cos(ang) * rr * 1.5, my = 232 + Math.sin(ang) * rr * 0.6;
+        circ(svg, mx, my, 2.6, "--s2", null, 0, 0.85);
+      }
+    }
+  }
+  txt(svg, fx, 286, "conical flask", "--text-muted", 10.5, 600);
+  mono(svg, fx, 104, ST.dissolved ? "acetic acid solution" : (ST.watered ? "water" : "empty"),
+       ST.dissolved ? "--s2" : "--text-muted", 10.5, 650);
+
+  /* title strip */
+  mono(svg, 230, 26, "ACETIC ACID ADSORPTION ON CHARCOAL", "--text-secondary", 12, 700);
+  txt(svg, 230, 44, "weigh → dissolve → adsorb → measure → plot",
+      "--text-muted", 11, 500);
+}
+var A_STEPS = [
+  {t:"Mass of acetic acid weighed out", e:"0.45 g"},
+  {t:"Molar mass is given", e:"60 g mol⁻¹"},
+  {t:"Moles taken", e:"0.45 ÷ 60 = <b>0.0075 mol</b>"},
+  {t:"Volume of solution", e:"50 mL = 0.050 L"},
+  {t:"Initial concentration", e:"0.0075 ÷ 0.050 = <b>0.15 mol L⁻¹</b>"}
+];
+var aShown = 0;
+function renderASteps(){
+  $("aSteps").innerHTML = A_STEPS.map(function(s, i){
+    return "<div class='st" + (i < aShown ? " on" : "") + "'><span class='no'>" + (i + 1)
+      + "</span><span class='bd'>" + s.t + "<div class='eqn'>" + s.e + "</div></span></div>";
+  }).join("");
+}
+function revealA(n){ if(n > aShown){ aShown = n; renderASteps(); } }
+function renderA(){
+  $("roMass").textContent = ST.weighed ? MASS_0.toFixed(2) : "—";
+  $("roMol").textContent = aShown >= 3 ? molesTaken().toFixed(4) : "—";
+  $("roVol").textContent = ST.watered ? VOL_ML.toFixed(0) : "—";
+  $("roC0").textContent = ST.volOK ? cInitial().toFixed(2) : "—";
+  $("aWater").disabled = !ST.weighed;
+  $("aMix").disabled = !(ST.weighed && ST.watered) || ST.dissolved;
+  drawBenchA();
+  if(ST.volOK) settleA();
+}
+function settleA(){
+  $("aV").className = "verdict ok";
+  $("aV").innerHTML = "0.45 g is <b>0.0075 mol</b>, and 50 mL is <b>0.050 L</b>, so the solution "
+    + "is <b>0.15 mol L⁻¹</b>. <b>Claim A is correct.</b> Remember this number — it is "
+    + "<em>not</em> the one that goes into the isotherm at the end.";
+  $("aStamp").classList.add("show");
+  var fb = $("aFb");
+  if(predictions.A){
+    var right = predictions.A === "yes";
+    fb.className = "fb2 " + (right ? "ok" : "no");
+    fb.innerHTML = (right ? "✓ " : "✗ ") + "0.0075 mol in 0.050 L is 0.15 mol L⁻¹.";
+  }
+  if(aDone) return;
+  aDone = true;
+  note("Weighed 0.45 g of acetic acid into 50 mL of water: <b>0.0075 mol</b> in 0.050 L, so "
+     + "C<sub>initial</sub> = <b>0.15 mol L⁻¹</b>.");
+  award("prep");
+  markTested("A");
+  updateRecord();
+}
+var aDone = false;
+
+/* ======================================================================
+   BENCH B — charcoal and the shaker
+   ====================================================================== */
+var FX = 210, F_NECK = 118, F_BOT = 286, F_HW = 96, LIQ_TOP = 150;
+function hwAt(y){
+  if(y <= F_NECK) return 14;
+  return 14 + (y - F_NECK) / (F_BOT - F_NECK) * (F_HW - 14);
+}
+var GRAINS = [], MOLS = [], shakePhase = 0, shakeT0 = null, rafB = null;
+function seedBench(){
+  GRAINS = []; MOLS = [];
+  var gs = [[168, 208, 15], [252, 196, 13], [200, 246, 17], [138, 254, 12],
+            [268, 252, 14], [214, 176, 11]];
+  gs.forEach(function(g, i){
+    var pts = [], k, nn = 7;
+    for(k = 0; k < nn; k++){
+      var a = k / nn * Math.PI * 2 + i;
+      var r = g[2] * (0.72 + 0.3 * ((k * 7 + i * 3) % 5) / 5);
+      pts.push([g[0] + r * Math.cos(a), g[1] + r * Math.sin(a)]);
+    }
+    var sites = [];
+    for(k = 0; k < 5; k++){
+      var aa = k / 5 * Math.PI * 2 + i * 0.7;
+      sites.push({x:g[0] + (g[2] + 4) * Math.cos(aa), y:g[1] + (g[2] + 4) * Math.sin(aa),
+                  free:true});
+    }
+    GRAINS.push({x:g[0], y:g[1], r:g[2], pts:pts, sites:sites});
+  });
+  var m;
+  for(m = 0; m < N_MOL; m++){
+    var y = LIQ_TOP + 12 + Math.random() * (F_BOT - LIQ_TOP - 26);
+    var w = hwAt(y) - 8;
+    MOLS.push({x:FX + (Math.random() * 2 - 1) * w, y:y,
+               vx:(Math.random() * 2 - 1) * 0.9, vy:(Math.random() * 2 - 1) * 0.9,
+               stuck:false, sx:0, sy:0});
+  }
+}
+function drawBenchB(){
+  var svg = $("benchB"); clear(svg);
+  var wob = ST.shaking ? Math.sin(shakePhase) * 3.2 : 0;
+  var g = el("g", {transform:"rotate(" + wob.toFixed(2) + " " + FX + " " + F_BOT + ")"});
+  svg.appendChild(g);
+
+  /* flask outline */
+  path(g, "M" + (FX - 14) + " 70 L" + (FX - 14) + " " + F_NECK +
+        " L" + (FX - F_HW) + " " + (F_BOT - 12) + " Q" + (FX - F_HW) + " " + F_BOT + " " +
+        (FX - F_HW + 12) + " " + F_BOT + " L" + (FX + F_HW - 12) + " " + F_BOT +
+        " Q" + (FX + F_HW) + " " + F_BOT + " " + (FX + F_HW) + " " + (F_BOT - 12) +
+        " L" + (FX + 14) + " " + F_NECK + " L" + (FX + 14) + " 70",
+       null, "--line-strong", 2.2);
+  rect(g, FX - 18, 62, 36, 9, "--line-strong", null, 3);
+
+  /* liquid */
+  var sway = ST.shaking ? Math.sin(shakePhase * 1.3) * 5 : 0;
+  path(g, "M" + (FX - hwAt(LIQ_TOP)) + " " + (LIQ_TOP + sway) +
+        " Q" + FX + " " + (LIQ_TOP - sway * 2.2) + " " + (FX + hwAt(LIQ_TOP)) + " " +
+        (LIQ_TOP + sway) +
+        " L" + (FX + F_HW) + " " + (F_BOT - 12) + " Q" + (FX + F_HW) + " " + F_BOT + " " +
+        (FX + F_HW - 12) + " " + F_BOT + " L" + (FX - F_HW + 12) + " " + F_BOT +
+        " Q" + (FX - F_HW) + " " + F_BOT + " " + (FX - F_HW) + " " + (F_BOT - 12) + " Z",
+       "#8fd0ea", null, 0, 0.55);
+
+  /* charcoal grains */
+  if(ST.charcoal){
+    GRAINS.forEach(function(gr){
+      var d = gr.pts.map(function(p, i){
+        return (i ? "L" : "M") + p[0].toFixed(1) + " " + p[1].toFixed(1); }).join(" ") + " Z";
+      path(g, d, "#2b2b2b", "#4a4a44", 1.1);
+      path(g, d, "#5a5a55", null, 0, 0.25);
+    });
+  }
+
+  /* molecules */
+  MOLS.forEach(function(m){
+    var c = m.stuck ? "--s3" : "--s2";
+    circ(g, m.x, m.y, m.stuck ? 3.4 : 3.0, c, m.stuck ? "--surface-1" : null, m.stuck ? 1 : 0,
+         m.stuck ? 1 : 0.9);
+  });
+
+  /* labels */
+  mono(svg, FX, 40, ST.equilibrium ? "EQUILIBRIUM REACHED"
+        : (ST.shaking ? "SHAKING…" : (ST.charcoal ? "charcoal added" : "acetic acid solution")),
+       ST.equilibrium ? "--good" : (ST.shaking ? "--s1" : "--text-muted"), 12, 700);
+  circ(svg, 40, 308, 4.4, "--s2", null, 0);
+  txt(svg, 50, 312, "in solution", "--text-secondary", 10.5, 600, "start");
+  circ(svg, 148, 308, 4.4, "--s3", "--surface-1", 1);
+  txt(svg, 158, 312, "adsorbed on charcoal", "--text-secondary", 10.5, 600, "start");
+  if(ST.charcoal){
+    rect(svg, 300, 300, 14, 12, "#2b2b2b", "#4a4a44", 3);
+    txt(svg, 320, 312, "charcoal", "--text-secondary", 10.5, 600, "start");
+  }
+}
+function stepBench(dt){
+  var i, j;
+  /* target number adsorbed rises towards N_ADS and then stops */
+  var t = (Date.now() - shakeT0) / 1000;
+  var target = Math.round(N_ADS * (1 - Math.exp(-t / 1.15)));
+  if(t > 4.6) target = N_ADS;
+  for(i = 0; i < MOLS.length; i++){
+    var m = MOLS[i];
+    if(m.stuck){ m.x = m.sx; m.y = m.sy; continue; }
+    m.x += m.vx * dt * 42; m.y += m.vy * dt * 42;
+    var w = hwAt(m.y) - 7;
+    if(m.x < FX - w){ m.x = FX - w; m.vx = Math.abs(m.vx); }
+    if(m.x > FX + w){ m.x = FX + w; m.vx = -Math.abs(m.vx); }
+    if(m.y < LIQ_TOP + 8){ m.y = LIQ_TOP + 8; m.vy = Math.abs(m.vy); }
+    if(m.y > F_BOT - 8){ m.y = F_BOT - 8; m.vy = -Math.abs(m.vy); }
+    /* bounce off the grains so the collisions read as collisions */
+    for(j = 0; j < GRAINS.length; j++){
+      var gr = GRAINS[j], dx = m.x - gr.x, dy = m.y - gr.y;
+      var dd = Math.sqrt(dx * dx + dy * dy);
+      if(dd < gr.r + 4 && dd > 0.01){
+        m.x = gr.x + dx / dd * (gr.r + 4); m.y = gr.y + dy / dd * (gr.r + 4);
+        m.vx = dx / dd * Math.abs(m.vx || 0.6); m.vy = dy / dd * Math.abs(m.vy || 0.6);
+      }
+    }
+  }
+  /* adsorb the free molecule closest to a free site */
+  while(ST.adsorbed < target){
+    var best = null, bs = null, bd = 1e9;
+    for(i = 0; i < MOLS.length; i++){
+      if(MOLS[i].stuck) continue;
+      for(j = 0; j < GRAINS.length; j++){
+        var k, ss = GRAINS[j].sites;
+        for(k = 0; k < ss.length; k++){
+          if(!ss[k].free) continue;
+          var ddx = MOLS[i].x - ss[k].x, ddy = MOLS[i].y - ss[k].y;
+          var d2 = ddx * ddx + ddy * ddy;
+          if(d2 < bd){ bd = d2; best = MOLS[i]; bs = ss[k]; }
+        }
+      }
+    }
+    if(!best) break;
+    best.stuck = true; best.sx = bs.x; best.sy = bs.y; bs.free = false;
+    ST.adsorbed++;
+  }
+  renderBTally();
+}
+function loopB(ts){
+  if(!ST.shaking){ rafB = null; return; }
+  shakePhase += 0.28;
+  stepBench(1 / 60);
+  drawBenchB();
+  if(ST.adsorbed >= N_ADS && (Date.now() - shakeT0) > 4800){ stopShake(true); return; }
+  rafB = requestAnimationFrame(loopB);
+}
+function startShake(){
+  if(ST.shaking || !ST.charcoal) return;
+  ST.shaking = true; shakeT0 = Date.now();
+  $("bShake").textContent = "❚❚ Shaking";
+  $("bInfo").innerHTML = "Molecules are moving, colliding with the grains and sticking to the "
+    + "surface. Watch the two counts trade places while the total stays put.";
+  if(!rafB) rafB = requestAnimationFrame(loopB);
+}
+function stopShake(done){
+  ST.shaking = false;
+  if(rafB){ cancelAnimationFrame(rafB); rafB = null; }
+  $("bShake").textContent = done ? "✓ Equilibrium reached" : "↻ Shake again";
+  $("bShake").disabled = !!done;
+  if(done) ST.equilibrium = true;
+  drawBenchB();
+  if(done){
+    $("bInfo").innerHTML = "<b>Adsorption equilibrium reached.</b> The counts have stopped "
+      + "changing: molecules still land on the surface and leave it, but at the same rate.";
+    settleB();
+  }
+}
+function renderBTally(){
+  var inSol = N_MOL - ST.adsorbed;
+  var gsol = (inSol * 0.01), gads = (ST.adsorbed * 0.01);
+  $("bTally").innerHTML =
+      "<tr><td>acetic acid in the solution</td><td>" + gsol.toFixed(2) + " g</td></tr>"
+    + "<tr><td>acetic acid on the charcoal</td><td>" + gads.toFixed(2) + " g</td></tr>"
+    + "<tr class='sum'><td>total in the flask</td><td>" + (gsol + gads).toFixed(2)
+    + " g</td></tr>";
+}
+var bDone = false;
+function settleB(){
+  $("bV").className = "verdict no";
+  $("bV").innerHTML = "The acid in solution fell while the acid on the charcoal rose, and the "
+    + "<b>total never moved off 0.45 g</b>. Nothing was removed from the flask — it changed "
+    + "address. <b>Claim B is wrong.</b>";
+  $("bStamp").classList.add("show");
+  var fb = $("bFb");
+  if(predictions.B){
+    var right = predictions.B === "no";
+    fb.className = "fb2 " + (right ? "ok" : "no");
+    fb.innerHTML = (right ? "✓ " : "✗ ") + "Adsorption is a surface process: the acid "
+      + "moves from the liquid onto the charcoal, and the flask still holds all 0.45 g.";
+  }
+  if(bDone) return;
+  bDone = true;
+  note("Shook the flask with 1.0 g of charcoal to equilibrium. Acid in solution fell and acid on "
+     + "the surface rose, with the <b>total held at 0.45 g</b> throughout — adsorption moves it, "
+     + "it does not destroy it.");
+  award("shake");
+  markTested("B");
+  updateRecord();
+}
+
+/* ======================================================================
+   BENCH C — pH meter and the mass balance
+   ====================================================================== */
+var phShown = 0, rafC = null;
+function drawBenchC(){
+  var svg = $("benchC"); clear(svg);
+  var probeY = ST.phDone ? 196 : 132;
+  /* meter body */
+  rect(svg, 26, 60, 150, 118, "--surface-2", "--line-strong", 10);
+  lcd(svg, 40, 78, 122, 46, ST.phDone ? phShown.toFixed(2) : "--.--", "pH");
+  txt(svg, 101, 148, "digital pH meter", "--text-muted", 10.5, 600);
+  rect(svg, 62, 158, 34, 10, "--line-strong", null, 3);
+  rect(svg, 106, 158, 34, 10, "--line-strong", null, 3);
+  /* lead + probe */
+  path(svg, "M176 108 Q248 108 262 " + (probeY - 46), null, "--line-strong", 2.4);
+  rect(svg, 256, probeY - 46, 12, 44, "--surface-2", "--line-strong", 4);
+  circ(svg, 262, probeY, 6.5, "#7cc4e8", "--line-strong", 1.4);
+
+  /* small flask */
+  var fx = 348, fTop = 128, fNeck = 168, fBot = 258, hw = 44;
+  path(svg, "M" + (fx - 11) + " " + fTop + " L" + (fx - 11) + " " + fNeck +
+        " L" + (fx - hw) + " " + (fBot - 10) + " Q" + (fx - hw) + " " + fBot + " " +
+        (fx - hw + 10) + " " + fBot + " L" + (fx + hw - 10) + " " + fBot +
+        " Q" + (fx + hw) + " " + fBot + " " + (fx + hw) + " " + (fBot - 10) +
+        " L" + (fx + 11) + " " + fNeck + " L" + (fx + 11) + " " + fTop,
+       null, "--line-strong", 2);
+  path(svg, "M" + (fx - 24) + " 200 L" + (fx - hw) + " " + (fBot - 10) +
+        " Q" + (fx - hw) + " " + fBot + " " + (fx - hw + 10) + " " + fBot +
+        " L" + (fx + hw - 10) + " " + fBot + " Q" + (fx + hw) + " " + fBot + " " +
+        (fx + hw) + " " + (fBot - 10) + " L" + (fx + 24) + " 200 Z",
+       "#8fd0ea", null, 0, 0.6);
+  var i;
+  for(i = 0; i < 5; i++) circ(svg, fx - 26 + i * 13, 236 + (i % 2) * 12, 5.5, "#2b2b2b", null, 0, 0.9);
+  for(i = 0; i < 10; i++) circ(svg, fx - 30 + (i % 5) * 15, 214 + Math.floor(i / 5) * 30, 2.6,
+                               "--s2", null, 0, 0.85);
+  ln(svg, 268, probeY, fx - 30, probeY, "--line", 1.2, "3 4");
+  mono(svg, 230, 40, ST.phDone ? "pH 3.00 → [H⁺] = 1.0 × 10⁻³ M"
+        : "dip the probe and read the meter",
+       ST.phDone ? "--s1" : "--text-muted", 12, 700);
+  txt(svg, 348, 286, "the shaken solution", "--text-muted", 10.5, 600);
+}
+var C_STEPS = [
+  {t:"The meter reads", e:"pH = 3.00"},
+  {t:"Hydrogen-ion concentration", e:"[H⁺] = 10⁻ᵖᴴ = <b>1.0 × 10⁻³ M</b>"},
+  {t:"Acetic acid is a weak acid", e:"CH₃COOH ⇌ CH₃COO⁻ + H⁺"},
+  {t:"Both ions come only from the acid", e:"[CH₃COO⁻] ≈ [H⁺]"},
+  {t:"So the Kₐ expression collapses",
+   e:"Kₐ = [H⁺]² / C &nbsp;⇒&nbsp; C = [H⁺]² / Kₐ"},
+  {t:"Equilibrium concentration of the acid",
+   e:"(1.0×10⁻³)² ÷ 1.0×10⁻⁵ = <b>0.10 mol L⁻¹</b>"}
+];
+var cShown = 0;
+function renderCSteps(){
+  $("cSteps").innerHTML = C_STEPS.map(function(s, i){
+    return "<div class='st" + (i < cShown ? " on" : "") + "'><span class='no'>" + (i + 1)
+      + "</span><span class='bd'>" + s.t + "<div class='eqn'>" + s.e + "</div></span></div>";
+  }).join("");
+}
+function measurePH(){
+  if(ST.phDone) return;
+  var t0 = Date.now();
+  $("cMeasure").disabled = true;
+  function tick(){
+    var t = Math.min(1, (Date.now() - t0) / 1300);
+    phShown = 7.0 - 4.0 * (1 - Math.pow(1 - t, 3)) + (t < 1 ? (Math.random() - 0.5) * 0.14 : 0);
+    ST.phDone = true;            /* so the probe animates down while it settles */
+    drawBenchC();
+    if(t < 1){ rafC = requestAnimationFrame(tick); return; }
+    phShown = 3.00; drawBenchC();
+    $("cMeasure").textContent = "✓ pH = 3.00";
+    $("cKa").disabled = false;
+    cShown = 2; renderCSteps();
+    $("cV").innerHTML = "The meter says <b>pH 3.00</b>, so [H⁺] = 1.0 × 10⁻³ M. "
+      + "That is the <em>hydrogen ion</em>. Now convert it into acetic acid.";
+    note("Measured the shaken solution: <b>pH 3.00</b>, so [H⁺] = 1.0 × "
+       + "10⁻³ mol L⁻¹.");
+  }
+  rafC = requestAnimationFrame(tick);
+}
+var cDone = false;
+function useKa(){
+  cShown = C_STEPS.length; renderCSteps();
+  $("cKa").disabled = true;
+  updateMassBalance();
+  settleC();
+}
+function settleC(){
+  $("cV").className = "verdict no";
+  $("cV").innerHTML = "The acid left in solution is <b>0.10 mol L⁻¹</b> — a hundred "
+    + "times the 1.0 × 10⁻³ M the meter read, because only about one molecule in a "
+    + "hundred has given up its proton. <b>Claim C is wrong.</b>";
+  $("cStamp").classList.add("show");
+  var fb = $("cFb");
+  if(predictions.C){
+    var right = predictions.C === "no";
+    fb.className = "fb2 " + (right ? "ok" : "no");
+    fb.innerHTML = (right ? "✓ " : "✗ ") + "pH gives [H⁺]. Kₐ is what turns "
+      + "[H⁺] into the concentration of the acid itself: 0.10 M, not 0.001 M.";
+  }
+  if(cDone) return;
+  cDone = true;
+  note("Converted the reading with Kₐ: C = [H⁺]²/Kₐ = <b>0.10 mol "
+     + "L⁻¹</b>, down from 0.15 M — and the mass balance gives <b>x = 0.15 g</b> "
+     + "adsorbed, so <b>x/m = 0.15</b>.");
+  award("ph");
+  markTested("C");
+  updateRecord();
+}
+function updateMassBalance(){
+  var svg = $("balance"); clear(svg);
+  var have = cShown >= C_STEPS.length;
+  var L = 40, R = 420, y = 96, h = 34;
+  /* the whole 0.45 g */
+  rect(svg, L, y, R - L, h, "--surface-2", "--line-strong", 7);
+  mono(svg, (L + R) / 2, y - 12, "0.45 g of acetic acid weighed out", "--text-secondary", 12, 700);
+  if(!have){
+    txt(svg, (L + R) / 2, y + 22, "run the Kₐ step to split this bar",
+        "--text-muted", 12, 600);
+  } else {
+    var frac = massLeft() / MASS_0;
+    var wSol = (R - L) * frac;
+    rect(svg, L, y, wSol, h, "--s1", "--line-strong", 7, 0.85);
+    rect(svg, L + wSol, y, (R - L) - wSol, h, "--s3", "--line-strong", 7, 0.85);
+    mono(svg, L + wSol / 2, y + 23, "0.30 g", "#ffffff", 14, 700);
+    mono(svg, L + wSol + ((R - L) - wSol) / 2, y + 23, "0.15 g", "#ffffff", 14, 700);
+    txt(svg, L + wSol / 2, y + 52, "still in solution", "--s1", 11.5, 650);
+    txt(svg, L + wSol + ((R - L) - wSol) / 2, y + 52, "adsorbed on charcoal", "--s3", 11.5, 650);
+    ln(svg, L + wSol, y - 6, L + wSol, y + h + 6, "--text-primary", 1.6, "3 3");
+    /* the arithmetic under the bar */
+    mono(svg, (L + R) / 2, 176, "n = C × V = 0.10 × 0.050 = 0.005 mol",
+         "--text-secondary", 12.5, 650);
+    mono(svg, (L + R) / 2, 198, "mass left = 0.005 × 60 = 0.30 g",
+         "--text-secondary", 12.5, 650);
+    mono(svg, (L + R) / 2, 222, "x = 0.45 − 0.30 = 0.15 g", "--good", 14, 750);
+  }
+  $("cTally").innerHTML =
+      "<tr><td>C at equilibrium</td><td>" + (have ? "0.10 M" : "?") + "</td></tr>"
+    + "<tr><td>moles left in solution</td><td>" + (have ? "0.005 mol" : "?") + "</td></tr>"
+    + "<tr><td>mass left in solution</td><td>" + (have ? "0.30 g" : "?") + "</td></tr>"
+    + "<tr><td>mass taken at the start</td><td>0.45 g</td></tr>"
+    + "<tr class='sum'><td>mass adsorbed, x</td><td>" + (have ? "0.15 g" : "?") + "</td></tr>";
+  if(have){
+    $("cInfo").innerHTML = "A third of the acid ended up on the charcoal. Dividing by the "
+      + "<b>1.0 g</b> of charcoal gives x/m.";
+    $("xmBig").innerHTML = xOverM().toFixed(2)
+      + "<small><i>x</i>/<i>m</i> — grams of acid held per gram of charcoal</small>";
+    $("xmBig").className = "big lock";
+  }
+  renderD();
+}
+
+/* ======================================================================
+   BENCH D — the Freundlich plot
+   ====================================================================== */
+function cUsed(){ return ST.useEq ? cEquil() : cInitial(); }
+function haveXm(){ return cShown >= C_STEPS.length; }
+function drawDChart(){
+  var svg = $("dChart");
+  var xm = xOverM(), s = ST.slope, cu = cUsed();
+  var lx = Math.log(cu) / Math.LN10, ly = Math.log(xm) / Math.LN10;
+  var inter = ly - s * lx;
+  var pts = [], i;
+  for(i = 0; i <= 40; i++){
+    var X = -2.05 + (0.05 - (-2.05)) * i / 40;
+    pts.push([X, inter + s * X]);
+  }
+  plot(svg, {
+    xMin:-2.1, xMax:0.1, yMin:Math.min(-2.2, inter + s * -2.1), yMax:Math.max(0.4, inter + 0.2),
+    xLabel:"log₁₀ C", yLabel:"log₁₀ (x/m)", ml:66, mr:44,
+    curves:[{pts:pts, col:"--s1", w:2.6}],
+    points:haveXm() ? [{x:lx, y:ly, col:"--s2", r:5.6}] : []
+  });
+  if(!haveXm()){
+    var m0 = svg._map;
+    var t0 = el("text", {x:(m0.M.l + m0.W - 44) / 2, y:150, "text-anchor":"middle",
+      fill:css("--text-muted"), "font-size":12.5, "font-weight":600,
+      "font-family":"ui-sans-serif,system-ui,sans-serif"});
+    t0.textContent = "measure x/m on bench C to place your point";
+    svg.appendChild(t0);
+    return;
+  }
+  /* slope triangle: rise over run, one decade wide */
+  var mp = svg._map, x1 = lx - 0.6, x2 = lx, y1 = inter + s * x1, y2 = inter + s * x2;
+  var X1 = mp.X(x1), X2 = mp.X(x2), Y1 = mp.Y(y1), Y2 = mp.Y(y2);
+  ln(svg, X1, Y1, X2, Y1, "--s3", 1.8, "4 3");
+  ln(svg, X2, Y1, X2, Y2, "--s3", 1.8, "4 3");
+  mono(svg, (X1 + X2) / 2, Y1 + 16, "run " + (0.6).toFixed(2), "--s3", 10.5, 700);
+  mono(svg, X2 + 8, (Y1 + Y2) / 2 + 4, "rise " + (s * 0.6).toFixed(2), "--s3", 10.5, 700, "start");
+  mono(svg, (X1 + X2) / 2, Y2 - 10, "rise/run = " + s.toFixed(2), "--s3", 11.5, 750);
+  /* the intercept at log C = 0 IS log k - the second route to the answer */
+  var Xi = mp.X(0), Yi = mp.Y(inter);
+  ln(svg, Xi, mp.Y(mp.ya !== undefined ? mp.ya : inter - 1), Xi, Yi, "--s4", 1.2, "3 4");
+  circ(svg, Xi, Yi, 4.2, "--s4", "--surface-1", 1.6);
+  mono(svg, Xi - 8, Yi - 10, "log k = " + inter.toFixed(2), "--s4", 10.5, 700, "end");
+}
+function renderD(){
+  var s = ST.slope, xm = xOverM(), cu = cUsed();
+  $("dSlopeV").textContent = s.toFixed(2);
+  $("dSlope").value = Math.round(s * 100);
+  $("roSlope").textContent = s.toFixed(2);
+  $("roN").textContent = (1 / s).toFixed(2);
+  $("roXm").textContent = haveXm() ? xm.toFixed(2) : "—";
+  $("roCu").textContent = cu.toFixed(2);
+  $("dWhich").querySelectorAll("button").forEach(function(b){
+    b.setAttribute("aria-pressed", (b.dataset.c === "eq") === ST.useEq ? "true" : "false"); });
+  var k = kFrom(xm, cu, s);
+  var atOne = Math.abs(s - 1) < 1e-9;
+  if(haveXm()){
+    $("dEqn").innerHTML = "<span class='t'>reading it off</span>"
+      + "slope = <b>" + s.toFixed(2) + "</b> = 1/n &nbsp;⇒&nbsp; n = <b>"
+      + (1 / s).toFixed(2) + "</b><br>"
+      + "x/m = k C<sup>1/n</sup> &nbsp;⇒&nbsp; k = " + xm.toFixed(2) + " ÷ ("
+      + cu.toFixed(2) + ")<sup>" + s.toFixed(2) + "</sup> = <span class='res'>"
+      + k.toFixed(2) + "</span> L mol⁻¹";
+  } else {
+    $("dEqn").innerHTML = "<span class='t'>reading it off</span>"
+      + "slope = <b>" + s.toFixed(2) + "</b> = 1/n &nbsp;⇒&nbsp; n = <b>"
+      + (1 / s).toFixed(2) + "</b><br>x/m is still unknown — finish bench C first.";
+  }
+  var good = haveXm() && atOne && ST.useEq;
+  $("dFinal").className = "finalbox" + (good ? " on" : "");
+  $("dK").textContent = good ? k.toFixed(1) + " L mol⁻¹" : "—";
+  if(haveXm() && atOne && !ST.useEq){
+    $("dV").className = "verdict no";
+    $("dV").innerHTML = "With the <b>initial</b> 0.15 M you get k = <b>1.00</b>. But the isotherm "
+      + "describes the balance actually reached, so C must be the concentration left "
+      + "<em>after</em> adsorption. Switch back to 0.10 M.";
+  } else if(good){
+    settleD(k);
+  } else if(haveXm()){
+    $("dV").className = "verdict";
+    $("dV").innerHTML = "The question says the line has slope <b>1</b>. Set it there and the "
+      + "isotherm becomes x/m = kC.";
+  }
+  drawDChart();
+}
+var dDone = false;
+function settleD(k){
+  $("dV").className = "verdict ok";
+  $("dV").innerHTML = "Slope 1 means 1/n = 1, so <b>n = 1</b> and the isotherm is simply "
+    + "x/m = kC. With x/m = <b>0.15</b> and the equilibrium C = <b>0.10 M</b>, "
+    + "k = <b>1.5 L mol⁻¹</b>. <b>Claim D is correct.</b>";
+  $("dStamp").classList.add("show");
+  var fb = $("dFb");
+  if(predictions.D){
+    var right = predictions.D === "yes";
+    fb.className = "fb2 " + (right ? "ok" : "no");
+    fb.innerHTML = (right ? "✓ " : "✗ ") + "The C in the isotherm is the equilibrium "
+      + "concentration, 0.10 M. Using the initial 0.15 M gives 1.0 and is the commonest wrong "
+      + "answer here.";
+  }
+  if(dDone) return;
+  dDone = true;
+  note("Plotted log(x/m) against log C. Slope <b>1</b> ⇒ 1/n = 1 ⇒ <b>n = 1</b>, so "
+     + "k = (x/m) ÷ C = 0.15 ÷ 0.10 = <b>1.5 L mol⁻¹</b>.");
+  award("plot");
+  markTested("D");
+  updateRecord();
+}
+
+/* ======================================================================
+   THE FINAL RECORD
+   ====================================================================== */
+function updateRecord(){
+  var rows = [
+    ["acetic acid taken", aDone ? "0.45 g" : null],
+    ["initial concentration", aDone ? "0.15 mol L⁻¹" : null],
+    ["charcoal", bDone ? "1.0 g" : null],
+    ["pH after shaking", cDone ? "3.00" : null],
+    ["equilibrium concentration", cDone ? "0.10 mol L⁻¹" : null],
+    ["acid left in solution", cDone ? "0.30 g" : null],
+    ["acid adsorbed, x", cDone ? "0.15 g" : null],
+    ["x/m", cDone ? "0.15" : null],
+    ["slope of the log-log plot", dDone ? "1" : null],
+    ["n", dDone ? "1" : null]
+  ];
+  var h = rows.map(function(r){
+    return "<tr" + (r[1] ? "" : " class='q'") + "><td>" + r[0] + "</td><td>"
+      + (r[1] || "?") + "</td></tr>"; }).join("");
+  h += "<tr class='sum'><td>k</td><td>" + (dDone ? "1.5 L mol⁻¹" : "?") + "</td></tr>";
+  $("record").innerHTML = h;
+}
+
+/* ======================================================================
+   HINTS
+   ====================================================================== */
+var AHINTS = [
+  "Concentration is moles per litre. You have grams and millilitres — both need converting.",
+  "Grams → moles: divide by the molar mass, 60 g mol⁻¹.",
+  "Millilitres → litres: divide by 1000. 50 mL is 0.050 L, not 50 L and not 50.",
+  "0.45/60 = 0.0075 mol; 0.0075/0.050 = 0.15 mol L⁻¹."
+];
+var BHINTS = [
+  "Watch the two counters, not the flask. What is the sum doing?",
+  "Adsorption is a surface process — the acid sticks to the outside of the charcoal.",
+  "Nothing leaves the flask and nothing reacts, so the total mass of acid cannot change.",
+  "0.30 g stays in solution and 0.15 g ends up on the charcoal: still 0.45 g."
+];
+var CHINTS = [
+  "pH measures hydrogen ions. Is acetic acid fully dissociated?",
+  "[H⁺] = 10⁻ᵖᴴ = 10⁻³ M. Now ask how much acid it took to make that.",
+  "For a weak acid, [CH₃COO⁻] ≈ [H⁺], so Kₐ = [H⁺]²/C.",
+  "C = (10⁻³)² / 10⁻⁵ = 0.10 M — a hundred times the [H⁺]."
+];
+var DHINTS = [
+  "Take log₁₀ of both sides of x/m = kC^(1/n) and see what shape it becomes.",
+  "log(x/m) = log k + (1/n) log C. That is y = c + sx, so the gradient is 1/n.",
+  "The question gives the gradient as 1, so 1/n = 1 and n = 1: x/m = kC.",
+  "k = (x/m) ÷ C = 0.15 ÷ 0.10 = 1.5. Use the equilibrium C, not the initial one."
+];
+
+/* ======================================================================
+   TRAPS
+   ====================================================================== */
+var TRAPS = [
+  { t:"“k = 0.15 / 0.15 = 1.0 — use the concentration you started with.”",
+    a:"The Freundlich isotherm relates the amount adsorbed to the concentration <b>left in solution at equilibrium</b>, because that is the concentration the surface is in balance with. That is 0.10 M, not 0.15 M. This single substitution is the commonest wrong answer on this question." },
+  { t:"“pH 3 means the acetic acid is 10⁻³ M.”",
+    a:"pH measures <b>hydrogen ions</b>. Acetic acid is weak, so most of it never dissociated — the acid is 0.10 M while its H⁺ is only 0.001 M, a hundredfold difference. Kₐ is given precisely so you can make that conversion." },
+  { t:"“Charcoal removes the acid, so there is less acid in the flask.”",
+    a:"Adsorption sticks molecules to a <b>surface</b>. Nothing leaves and nothing reacts: 0.30 g in the solution plus 0.15 g on the charcoal is still the 0.45 g you weighed. That conservation is what lets you get x by subtraction." },
+  { t:"“0.0075 mol in 50 mL — so C = 0.0075/50.”",
+    a:"Molarity is moles per <b>litre</b>. 50 mL is 0.050 L, so C = 0.0075/0.050 = 0.15 M. Dividing by 50 gives 0.00015, which is moles per millilitre and wrong by a factor of 1000." },
+  { t:"“Slope = 1, so n = 1/1… or is it 1/n = n?”",
+    a:"Compare with y = c + sx. In log(x/m) = log k + (1/n)log C the gradient <b>is</b> 1/n and the intercept is log k. Slope 1 gives 1/n = 1, hence n = 1. It is worth writing the straight-line form out once rather than trying to remember which way up it goes." },
+  { t:"“x should be in moles — chemistry is always in moles.”",
+    a:"The question states x is the <b>mass in grams</b> adsorbed and m the mass in grams of charcoal, so x/m is a pure number. Using moles instead gives 0.0025/1.0 and k = 0.025 L g⁻¹, which does not even carry the unit the question asks for. The requested unit L mol⁻¹ is itself the clue." },
+  { t:"“The intercept is k.”",
+    a:"The intercept is <b>log₁₀ k</b>, not k. Here it is 0.176, and 10<sup>0.176</sup> = 1.5. Reading 0.176 straight off as the answer is an easy slip when you work from the graph rather than the equation." }
+];
+function drawTraps(){
+  $("traps").innerHTML = TRAPS.map(function(t, i){
+    return "<div class='trap' data-i='" + i + "'><div class='t'>⚠ " + t.t
+      + "</div><div class='a'>" + t.a + "</div></div>"; }).join("");
+}
+
+/* ======================================================================
+   PROGRESS, BADGES, CELEBRATION
+   ====================================================================== */
+var BADGES = [
+  {k:"prep",  n:"⚖ Solution maker"},
+  {k:"shake", n:"⚫ Adsorption watcher"},
+  {k:"ph",    n:"🌡 pH detective"},
+  {k:"plot",  n:"📈 Isotherm reader"}
+];
+var won = {};
+function drawBadges(){
+  $("badges").innerHTML = BADGES.map(function(b){
+    return "<span class='badge" + (won[b.k] ? " won" : "") + "'>" + b.n + "</span>"; }).join("");
+}
+function award(k){ if(!won[k]){ won[k] = true; drawBadges(); } }
+function updateProgress(){
+  var n = nTested();
+  $("progbar").style.width = (n / 4 * 100) + "%";
+  $("progtxt").textContent = n + " / 4 benches";
+}
+var celebrated = false;
+function celebrate(){
+  if(celebrated) return; celebrated = true;
+  $("celans").textContent = "k = " + ANSWER.text + " L mol\u207b\u00b9";
+  var right = 0, tot = 0;
+  PORDER.forEach(function(k){
+    if(predictions[k]){ tot++; if(predictions[k] === OPT[k].verdict) right++; } });
+  $("celstats").innerHTML = "Evidence collected 4/4 · predictions correct " + right + "/" + tot
+    + " · badges " + Object.keys(won).length + "/4";
+  var wrap = $("confetti"); wrap.innerHTML = "";
+  var cols = ["--s1", "--s2", "--s3", "--s4", "--good"], i;
+  for(i = 0; i < 70; i++){
+    var s = document.createElement("i");
+    s.style.left = (Math.random() * 100) + "%";
+    s.style.background = css(cols[i % cols.length]);
+    s.style.animationDuration = (2.4 + Math.random() * 2.4) + "s";
+    s.style.animationDelay = (Math.random() * 0.9) + "s";
+    s.style.top = (-14 - Math.random() * 90) + "px";
+    wrap.appendChild(s);
+  }
+  $("celebrate").classList.add("on");
+}
+
+/* ======================================================================
+   CLAIMS + ANSWER
+   ====================================================================== */
+var OPT = {
+  A:{ label:"0.45 g in 50 mL is 0.15 mol L⁻¹", verdict:"yes",
+      shortq:"0.45 g of acetic acid dissolved in 50 mL of water is 0.15 mol L⁻¹. Correct?",
+      why:"0.45/60 = 0.0075 mol, and 50 mL is 0.050 L, so C = 0.15 mol L⁻¹. It is the initial concentration though — not the one the isotherm uses." },
+  B:{ label:"Charcoal lowers the total amount of acid in the flask", verdict:"no",
+      shortq:"Adding charcoal removes acetic acid from the flask, so the total amount of acid goes down. Correct?",
+      why:"Adsorption is a surface process. You watched 0.15 g move from the solution onto the charcoal while the total held at 0.45 g." },
+  C:{ label:"pH 3 means the acid left in solution is 10⁻³ M", verdict:"no",
+      shortq:"pH = 3.0 means the acetic acid left in solution is 1.0 × 10⁻³ mol L⁻¹. Correct?",
+      why:"That is the H⁺ concentration. Acetic acid is weak, so Kₐ = [H⁺]²/C gives C = 0.10 M — a hundred times larger." },
+  D:{ label:"Slope 1 gives x/m = kC, with C the equilibrium concentration", verdict:"yes",
+      shortq:"A slope of 1 makes the isotherm x/m = kC, so k is x/m divided by the equilibrium C. Correct?",
+      why:"Slope = 1/n = 1 so n = 1, and the C in the isotherm is the 0.10 M left after adsorption: k = 0.15/0.10 = 1.5 L mol⁻¹." }
+};
+var ANSWER = { text:"1.5",
+  sub:"k = 0.15 ÷ 0.10 L mol⁻¹",
+  intro:"Here is the derivation behind what you measured." };
+var LOCKED_SUB = "Run all four benches to unlock.";
+
+/* hook the house gate so the celebration fires once */
+var _updateGate = updateGate;
+updateGate = function(){
+  _updateGate();
+  updateProgress();
+  if(gateOpen() && nTested() >= 4) celebrate();
+};
+
+/* ======================================================================
+   WIRING
+   ====================================================================== */
+/* --- bench A --- */
+$("aWeigh").addEventListener("click", function(){
+  if(ST.weighed) return;
+  this.disabled = true;
+  var t0 = Date.now();
+  (function tick(){
+    var t = Math.min(1, (Date.now() - t0) / 900);
+    balanceShown = MASS_0 * (1 - Math.pow(1 - t, 3)) + (t < 1 ? (Math.random() - 0.5) * 0.02 : 0);
+    ST.weighed = true; renderA();
+    if(t < 1){ requestAnimationFrame(tick); return; }
+    balanceShown = MASS_0; renderA();
+    revealA(2);
+    setTimeout(function(){ revealA(3); renderA(); }, 400);
+  })();
+});
+$("aWater").addEventListener("click", function(){
+  ST.watered = true; this.disabled = true; revealA(4); renderA();
+});
+$("aMix").addEventListener("click", function(){
+  ST.dissolved = true; this.disabled = true; renderA();
+  $("aPickWrap").hidden = false;
+});
+$("aPick").addEventListener("click", function(e){
+  var b = e.target.closest("button"); if(!b) return;
+  var v = b.dataset.v;
+  $("aPick").querySelectorAll("button").forEach(function(x){ x.className = ""; });
+  if(v === "0.05"){
+    b.className = "good"; ST.volOK = true; revealA(5); renderA();
+  } else {
+    b.className = "bad";
+    $("aV").className = "verdict no";
+    $("aV").innerHTML = "0.0075 ÷ 50 = <b>0.00015</b>. That is moles per <em>millilitre</em>. "
+      + "Molarity is per litre — convert 50 mL to 0.050 L first.";
+  }
+});
+$("aPred").addEventListener("click", function(e){
+  var b = e.target.closest(".opts2 button"); if(!b) return;
+  predictions.A = b.dataset.p;
+  $("aPred").querySelectorAll("button").forEach(function(x){
+    x.setAttribute("aria-pressed", x.dataset.p === predictions.A ? "true" : "false"); });
+  $("aFb").className = "fb2";
+  $("aFb").textContent = "Logged. Now work it out on the bench.";
+  renderPredict(); drawMatrix(); if(ST.volOK) settleA();
+});
+
+/* --- bench B --- */
+$("bAdd").addEventListener("click", function(){
+  if(ST.charcoal) return;
+  ST.charcoal = true; this.disabled = true; this.textContent = "✓ 1.0 g charcoal added";
+  $("bShake").disabled = false;
+  $("bInfo").innerHTML = "<b>Charcoal added successfully.</b> One gram of it carries a surface of "
+    + "hundreds of square metres, folded up inside its pores. Now shake.";
+  drawBenchB(); renderBTally();
+});
+$("bShake").addEventListener("click", function(){
+  if(ST.shaking) stopShake(false); else startShake();
+});
+$("bPred").addEventListener("click", function(e){
+  var b = e.target.closest(".opts2 button"); if(!b) return;
+  predictions.B = b.dataset.p;
+  $("bPred").querySelectorAll("button").forEach(function(x){
+    x.setAttribute("aria-pressed", x.dataset.p === predictions.B ? "true" : "false"); });
+  $("bFb").className = "fb2";
+  $("bFb").textContent = "Logged. Now shake and watch the totals.";
+  renderPredict(); drawMatrix(); if(ST.equilibrium) settleB();
+});
+
+/* --- bench C --- */
+$("cMeasure").addEventListener("click", measurePH);
+$("cKa").addEventListener("click", useKa);
+$("cPred").addEventListener("click", function(e){
+  var b = e.target.closest(".opts2 button"); if(!b) return;
+  predictions.C = b.dataset.p;
+  $("cPred").querySelectorAll("button").forEach(function(x){
+    x.setAttribute("aria-pressed", x.dataset.p === predictions.C ? "true" : "false"); });
+  $("cFb").className = "fb2";
+  $("cFb").textContent = "Logged. Now take the reading and convert it.";
+  renderPredict(); drawMatrix(); if(cShown >= C_STEPS.length) settleC();
+});
+
+/* --- bench D --- */
+$("dSlope").addEventListener("input", function(){ ST.slope = (+this.value) / 100; renderD(); });
+$("dSnap").addEventListener("click", function(){ ST.slope = 1.00; renderD(); });
+$("dWhich").addEventListener("click", function(e){
+  var b = e.target.closest("button"); if(!b) return;
+  ST.useEq = b.dataset.c === "eq"; renderD();
+});
+$("dPred").addEventListener("click", function(e){
+  var b = e.target.closest(".opts2 button"); if(!b) return;
+  predictions.D = b.dataset.p;
+  $("dPred").querySelectorAll("button").forEach(function(x){
+    x.setAttribute("aria-pressed", x.dataset.p === predictions.D ? "true" : "false"); });
+  $("dFb").className = "fb2";
+  $("dFb").textContent = "Logged. Now try both concentrations on the bench.";
+  renderPredict(); drawMatrix(); renderD();
+});
+
+/* --- progressive hints --- */
+var aHintN = 0, bHintN = 0, cHintN = 0, dHintN = 0;
+function bindHint(btn, box, arr, getN, setN){
+  $(btn).addEventListener("click", function(){
+    var n = getN();
+    if(n >= arr.length){ setN(0); $(box).classList.remove("on"); this.textContent = "Hint"; return; }
+    $(box).classList.add("on");
+    $(box).innerHTML = "<b>Hint " + (n + 1) + " of " + arr.length + ".</b> " + arr[n];
+    setN(n + 1);
+    this.textContent = n + 1 >= arr.length ? "Hide hints" : "Next hint";
+  });
+}
+bindHint("aHint", "aHintbox", AHINTS, function(){ return aHintN; }, function(v){ aHintN = v; });
+bindHint("bHint", "bHintbox", BHINTS, function(){ return bHintN; }, function(v){ bHintN = v; });
+bindHint("cHint", "cHintbox", CHINTS, function(){ return cHintN; }, function(v){ cHintN = v; });
+bindHint("dHintBtn", "dHintbox", DHINTS, function(){ return dHintN; }, function(v){ dHintN = v; });
+
+$("traps").addEventListener("click", function(e){
+  var t = e.target.closest(".trap"); if(!t) return; t.classList.toggle("open"); });
+
+/* --- experiment / explain --- */
+$("mode").addEventListener("click", function(e){
+  var b = e.target.closest("button"); if(!b) return;
+  var why = b.dataset.m === "why";
+  document.body.classList.toggle("explain", why);
+  $("mode").querySelectorAll("button").forEach(function(x){
+    x.setAttribute("aria-pressed", (x.dataset.m === "why") === why ? "true" : "false"); });
+});
+
+$("teachbtn").addEventListener("click", function(){
+  var on = $("teachpanel").classList.toggle("on");
+  this.setAttribute("aria-pressed", on ? "true" : "false");
+  this.textContent = on ? "Hide teacher mode" : "Teacher mode";
+  if(on) $("teachpanel").scrollIntoView({behavior:"smooth", block:"center"});
+});
+$("resetlab").addEventListener("click", function(){ location.reload(); });
+$("celclose").addEventListener("click", function(){
+  $("celebrate").classList.remove("on");
+  $("solution").scrollIntoView({behavior:"smooth"});
+});
+
+/* --- auto play --- */
+var apTimer = null, apStep = 0;
+var AP = [
+  { go:"question", say:"Read it once. A pH, a mass, and an isotherm." },
+  { go:"prepare",  say:"Weigh the acid and dissolve it.",
+    act:function(){
+      if(!predictions.A){ predictions.A = "yes"; renderPredict(); drawMatrix(); }
+      ST.weighed = true; balanceShown = MASS_0; ST.watered = true; ST.dissolved = true;
+      ST.volOK = true; revealA(5); $("aPickWrap").hidden = false; renderA(); } },
+  { go:"shake",    say:"Charcoal in, and shake.",
+    act:function(){
+      if(!predictions.B){ predictions.B = "no"; renderPredict(); drawMatrix(); }
+      if(!ST.charcoal){ ST.charcoal = true; $("bAdd").disabled = true;
+        $("bAdd").textContent = "✓ 1.0 g charcoal added"; $("bShake").disabled = false; }
+      startShake(); } },
+  { go:"shake",    say:"Watch the total: it never moves." },
+  { go:"measure",  say:"Now the pH — and what it really tells you.",
+    act:function(){
+      if(!predictions.C){ predictions.C = "no"; renderPredict(); drawMatrix(); }
+      measurePH(); } },
+  { go:"measure",  say:"Kₐ turns the reading into the acid concentration.",
+    act:function(){ useKa(); } },
+  { go:"isotherm", say:"Slope 1, equilibrium C, and out comes k.",
+    act:function(){
+      if(!predictions.D){ predictions.D = "yes"; renderPredict(); drawMatrix(); }
+      ST.slope = 1.00; ST.useEq = true; renderD(); } },
+  { go:"verdict",  say:"Four claims, all settled on the bench." },
+  { go:"solution", say:"k = 1.5 L mol⁻¹." }
+];
+function apStop(){ if(apTimer){ clearTimeout(apTimer); apTimer = null; }
+  $("autoplay").textContent = "▶ Auto play"; }
+function apRun(){
+  if(apStep >= AP.length){ apStep = 0; apStop(); return; }
+  var s = AP[apStep++];
+  document.getElementById(s.go).scrollIntoView({behavior:"smooth", block:"start"});
+  $("progtxt").textContent = s.say;
+  if(s.act) setTimeout(s.act, 700);
+  apTimer = setTimeout(function(){ updateProgress(); apRun(); }, 3600);
+}
+$("autoplay").addEventListener("click", function(){
+  if(apTimer){ apStop(); updateProgress(); return; }
+  this.textContent = "❚❚ Stop"; apStep = 0; apRun();
+});
+
+wireCommon(function(){
+  drawBenchA(); drawBenchB(); drawBenchC(); updateMassBalance(); renderD(); drawBadges();
+});
+
+/* ---------------- init ---------------- */
+seedBench();
+renderASteps(); renderA();
+renderBTally(); drawBenchB();
+renderCSteps(); drawBenchC();
+updateMassBalance();
+renderD();
+updateRecord();
+drawTraps();
+drawBadges();
+updateProgress();
+renderPredict();
+drawMatrix();
+updateGate();
+
+})();
+</script>
+</body>
+</html>

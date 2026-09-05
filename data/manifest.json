@@ -4,7 +4,7 @@
     "name": "PrayogX",
     "description": "PrayogX: interactive 2D scientific simulations built from selected JEE Advanced Physics and Chemistry questions.",
     "generator": "Cowork autonomous simulation agent",
-    "updatedAt": "2026-08-30",
+    "updatedAt": "2026-09-05",
     "tracker": {
       "type": "Google Sheet",
       "title": "PrayogX — Simulation Progress Tracker",
@@ -34,12 +34,12 @@
     "idPolicy": "Simulation IDs are permanent. A redo or fix edits the existing folder in place and bumps `updatedAt` / `revision`; it never mints a new ID."
   },
   "counts": {
-    "total": 10,
+    "total": 11,
     "byYear": {
-      "2026": 10
+      "2026": 11
     },
     "bySubject": {
-      "Chemistry": 10
+      "Chemistry": 11
     },
     "byChapter": {
       "Electrochemistry": 1,
@@ -50,7 +50,8 @@
       "The p-Block Elements (Group 18)": 1,
       "Classification of Elements and Periodicity": 1,
       "Amines and Diazonium Salts": 1,
-      "Atomic Structure": 1
+      "Atomic Structure": 1,
+      "Surface Chemistry": 1
     }
   },
   "simulations": [
@@ -1319,6 +1320,160 @@
       },
       "createdAt": "2026-08-30",
       "updatedAt": "2026-08-30"
+    },
+    {
+      "id": "ADV-2026-P2-CHE-Q11",
+      "slug": "adv-2026-p2-che-q11",
+      "revision": 1,
+      "path": "simulations/2026/paper-2/chemistry/adv-2026-p2-che-q11/index.html",
+      "folder": "simulations/2026/paper-2/chemistry/adv-2026-p2-che-q11/",
+      "title": "Freundlich adsorption of acetic acid on charcoal: from a pH reading to the constant k",
+      "shortTitle": "The adsorption lab",
+      "summary": "Weigh acetic acid into 50 mL of water, shake it with charcoal and watch a third of the molecules stick to the surface while the total never changes, then turn a pH reading into the equilibrium concentration and read the Freundlich constant off the log-log plot.",
+      "exam": "JEE Advanced",
+      "year": 2026,
+      "paper": "Paper 2",
+      "paperNumber": 2,
+      "subject": "Chemistry",
+      "branch": "Physical Chemistry / Surface Chemistry",
+      "questionNumber": 11,
+      "section": "Section 3",
+      "questionType": "Numerical value",
+      "marking": {
+        "full": 4,
+        "partial": 0,
+        "zero": 0,
+        "negative": 0
+      },
+      "chapter": "Surface Chemistry",
+      "topic": "Freundlich adsorption isotherm from solution",
+      "subtopics": [
+        "Adsorption from solution onto a solid",
+        "Freundlich isotherm and its logarithmic form",
+        "Slope and intercept of the log-log plot",
+        "Weak-acid equilibrium and Ka",
+        "pH and hydrogen-ion concentration",
+        "Mass balance on the adsorbate"
+      ],
+      "concepts": [
+        "Adsorption is a surface process, so nothing leaves the flask - the adsorbate only changes address",
+        "A pH reading gives the hydrogen ion, not the weak acid that produced it",
+        "Ka is the conversion factor between [H+] and the concentration of an undissociated weak acid",
+        "The C in the Freundlich isotherm is the concentration left at equilibrium, never the initial one",
+        "Taking logarithms turns a power law into a straight line whose gradient is 1/n and whose intercept is log k"
+      ],
+      "formulas": [
+        "moles = mass / molar mass",
+        "C = moles / volume in litres",
+        "[H+] = 10^(-pH)",
+        "weak acid: Ka = [H+]^2 / C, so C = [H+]^2 / Ka",
+        "x = mass taken - mass left in solution",
+        "x/m = k C^(1/n)",
+        "log10(x/m) = log10 k + (1/n) log10 C",
+        "slope = 1/n and intercept = log10 k",
+        "k = (x/m) / C when n = 1"
+      ],
+      "tags": [
+        "surface chemistry",
+        "adsorption",
+        "adsorption from solution",
+        "freundlich isotherm",
+        "freundlich adsorption isotherm",
+        "activated charcoal",
+        "acetic acid",
+        "adsorbate",
+        "adsorbent",
+        "log-log plot",
+        "slope and intercept",
+        "weak acid",
+        "acid dissociation constant",
+        "ka",
+        "ph",
+        "hydrogen ion concentration",
+        "ionic equilibrium",
+        "mass balance",
+        "equilibrium concentration",
+        "numerical value",
+        "jee advanced 2026",
+        "paper 2",
+        "chemistry q11"
+      ],
+      "difficulty": "Moderate",
+      "estimatedMinutes": 10,
+      "answer": "1.5",
+      "answerValue": "1.5",
+      "derivedQuantities": {
+        "mass_acid_taken_g": 0.45,
+        "molar_mass_g_per_mol": 60,
+        "moles_taken": 0.0075,
+        "volume_L": 0.05,
+        "C_initial_mol_per_L": 0.15,
+        "pH": 3.0,
+        "H_plus_mol_per_L": 0.001,
+        "Ka": 1e-05,
+        "C_equilibrium_mol_per_L": 0.1,
+        "moles_left_in_solution": 0.005,
+        "mass_left_in_solution_g": 0.3,
+        "mass_adsorbed_x_g": 0.15,
+        "mass_charcoal_m_g": 1.0,
+        "x_over_m": 0.15,
+        "slope": 1,
+        "n": 1,
+        "k_L_per_mol": 1.5,
+        "log10_k_intercept": 0.176091,
+        "fraction_adsorbed_percent": 33.3,
+        "trap_using_initial_C": 1.0,
+        "trap_pH_as_concentration": 150,
+        "trap_x_in_moles_L_per_g": 0.025,
+        "exact_weak_acid_treatment_k": 1.4554
+      },
+      "verification": {
+        "status": "verified",
+        "methods": [
+          "Derived from first principles before any published solution was consulted: the mole calculation, the Ka inversion, the mass balance, the slope-to-n step and the final division were all fixed independently",
+          "The Ka route checked in both directions: forwards it gives C = 0.10 mol/L from pH 3.00, and substituting back, [H+] = sqrt(Ka x C) = 1.000e-3, reproducing the meter reading exactly",
+          "Conservation checked explicitly to machine precision: 0.30 g left in solution + 0.15 g adsorbed = 0.45 g weighed out, and the simulation enforces the same identity frame by frame while the flask is shaking",
+          "Two independent routes to k agree: dividing (x/m) by C gives 1.5, and the intercept of the log-log line gives log10 k = 0.176091, i.e. k = 1.500000",
+          "Units confirmed by dimensional analysis: (g/g) / (mol/L) = L/mol, which is the unit the question asks for - itself a check that x was correctly taken as a mass rather than a number of moles",
+          "The traps reproduced deliberately: using the initial 0.15 M gives exactly 1.0; treating pH 3 as the acid concentration gives an absurd 150; dividing by 50 instead of 0.050 L gives 0.00015; putting x in moles gives 0.025 L/g. None is 1.5",
+          "The intended approximation quantified rather than assumed: solving the weak-acid equilibrium exactly, without treating the acid left in solution as wholly undissociated, gives C = 0.1010 mol/L and k = 1.455 - a 3.0% shift. The question's round numbers are chosen so the standard approximation lands on a clean 1.5, which is the intended answer",
+          "Answer cross-checked afterwards against a published worked solution for this paper, which follows the same steps and reports the same intermediate values (1e-3 M, 0.10 M, 0.005 mol, 0.30 g, 0.15 g, n = 1) and the same answer, 1.5 L/mol. IIT Roorkee's official key was not retrievable at the time of writing",
+          "Headless-browser run of the finished page: 98 assertions covering the balance animation, the deliberate wrong divisor being refused, the charcoal addition, mass conservation asserted mid-shake as well as at equilibrium, the pH meter settling, the six-step Ka reasoning revealing progressively, the mass balance splitting 0.45 into 0.30 and 0.15, the slope slider driving n, the 0.15-versus-0.10 concentration trap, the slope triangle, the gate, badges, celebration, traps, progressive hints, experiment/explain modes, teacher mode, theme toggle, clean console and zero horizontal overflow at 390 px and 360 px"
+        ],
+        "verifiedOn": "2026-09-05",
+        "note": "IIT Roorkee's official key was not retrievable; the published solution used for cross-checking is a coaching-institute solution that agrees with the independent derivation at every intermediate step, not only on the final number."
+      },
+      "interactivity": [
+        "Four benches, one per decision the question hides, each gated behind a prediction the student must commit to before the apparatus will settle anything",
+        "Laboratory bench drawn as a scene: a digital balance whose display counts up to 0.45 g, a 50 mL measuring cylinder that empties as the water is poured, and a conical flask that fills and then shows the acid dispersing through it",
+        "The mole calculation reveals one line at a time as the corresponding action is performed, rather than arriving as a finished block",
+        "The volume conversion is a choice, not a given: the student picks between dividing by 50 and by 0.050 L, and the wrong one is refused with the 0.00015 it actually produces",
+        "Charcoal grains drawn as irregular porous particles, with 45 acid molecules moving through the liquid, bouncing off the grains and snapping onto surface sites as adsorption proceeds",
+        "The flask rocks and the liquid surface sways while shaking, and the animation stops itself the moment equilibrium is reached",
+        "Live tally of acid in solution, acid on the charcoal and the total - the total is held at 0.45 g every frame, which is what settles the conservation claim",
+        "Digital pH meter whose probe descends into the flask and whose reading settles from 7 down to 3.00 with a little noise before locking",
+        "Six-step chemist's reasoning card that walks from the meter reading through [H+], the dissociation equilibrium and the Ka approximation to the equilibrium concentration",
+        "Animated mass-balance bar that splits the 0.45 g into the 0.30 g still dissolved and the 0.15 g on the surface, with the arithmetic written underneath",
+        "Interactive log-log plot of the Freundlich isotherm with a slope slider: the line pivots about the measured point and the student has to set the gradient the question describes",
+        "Animated slope triangle reporting rise, run and rise/run, so 1/n is read off rather than recalled",
+        "The intercept marked at log C = 0 and labelled log k, giving a second, independent route to the same answer",
+        "A concentration switch that lets the student deliberately build the commonest wrong answer - k = 1.0 from the initial 0.15 M - and be told which quantity the isotherm actually needs",
+        "Experiment / Explain toggle that overlays short conceptual notes on every bench without leaving the experiment",
+        "Seven expandable JEE traps, each phrased as the misconception a student actually holds, starting with the initial-concentration error",
+        "Progressive four-level hint system on every bench, conceptual clue first and near-solution last",
+        "Progress bar, four earnable badges and an end-of-lab celebration reporting evidence collected and prediction accuracy",
+        "Lab notebook written as the student works, plus a final record table that fills in quantity by quantity and ends at k",
+        "Auto play that walks the whole investigation, pausing at each prediction",
+        "Teacher mode with objectives, the expected wrong answers ranked by frequency, a teaching order and a discussion question",
+        "Answer gated until all four benches have been run, with a reveal-anyway escape",
+        "Step-by-step solution with an independent verification log"
+      ],
+      "source": {
+        "file": "papers/adv_2026_paper_2.pdf",
+        "page": 27
+      },
+      "createdAt": "2026-09-05",
+      "updatedAt": "2026-09-05"
     }
   ]
 }
