@@ -144,45 +144,50 @@ blank.
 - **Answer key cross-check:** a published worked solution for this paper follows the same steps and
   reports the same intermediate values — 10⁻³ M, 0.10 M, 0.005 mol, 0.30 g, 0.15 g, n = 1 — and the
   same answer, 1.5 L mol⁻¹. IIT Roorkee's official key was not retrievable at the time of writing.
-- **Headless-browser run:** 98 assertions — the balance animation, the deliberate wrong divisor being
-  refused, the charcoal addition, mass conservation mid-shake and at equilibrium, the pH meter
-  settling, the six-step Kₐ reasoning revealing progressively, the mass balance splitting 0.45 into
-  0.30 and 0.15, the slope slider driving n, the 0.15-versus-0.10 concentration trap, the slope
-  triangle, the gate, badges, celebration, traps, progressive hints, experiment/explain modes,
-  teacher mode, theme toggle, clean console and zero horizontal overflow at 390 px and 360 px.
+- **Headless-browser run:** 87 assertions driving the whole run end to end — the balance
+  animation, the charcoal addition, mass conservation asserted mid-shake as well as at
+  equilibrium, the self-stopping shake, the pH meter settling, the working revealing one line at a
+  time with nothing shown before it is earned, the mass balance, the Calculate-k button staying
+  locked until the gradient matches the question, the slope triangle and the intercept route, the
+  answer appearing only at the final step, the concentration switch, the notebook and final
+  record, auto run, explain mode, teacher mode, theme toggle, clean console and zero horizontal
+  overflow at 390 px and 360 px.
 
 ---
 
 ## What the simulation lets you do
 
-The page is a four-bench adsorption laboratory. This is a numerical-answer question with no printed
-options, so the four benches test the four **decisions** on the way to *k*, and none of them will
-settle anything until you have committed to a prediction.
+The page is **one continuous experiment on a single dashboard**. There are no separate exercises and
+nothing to predict up front: you press one button at a time, the bench responds, and the numbers
+appear as the measurements that produce them land. The answer is withheld until the run concludes.
 
-1. **02 Bench A — weigh it, dissolve it.** A digital balance counts up to 0.45 g, a measuring
-   cylinder empties into the flask, and the acid disperses through the water. The mole calculation
-   appears one line at a time as you act. The volume conversion is a *choice*: pick "÷ 50" and the
-   bench shows you the 0.00015 it produces and explains why it is moles per millilitre.
-2. **03 Bench B — charcoal, and the shaker.** Forty-five dots, one per 0.01 g of acid, move through
-   the liquid, bounce off the charcoal grains and snap onto the surface. The flask rocks while you
-   shake it and stops itself at equilibrium. A live tally shows acid in solution, acid on the
-   charcoal and the total — and the total never leaves 0.45 g, which is what settles the claim that
-   charcoal "removes" the acid.
-3. **04 Bench C — the pH meter, and the mass balance.** The probe descends and the reading settles on
-   3.00. Then a six-step reasoning card walks from that reading through [H⁺], the dissociation
-   equilibrium and Kₐ to the equilibrium concentration, 0.10 M — a hundred times the [H⁺]. The mass
-   bar then splits 0.45 g into the 0.30 g still dissolved and the 0.15 g on the surface, and *x/m*
-   appears.
-4. **05 Bench D — the Freundlich plot.** The slope is *not* handed to you. Drag it until it matches
-   the line the question describes; a slope triangle reports rise, run and rise/run so 1/n is read
-   off rather than recalled, and the intercept is marked at log C = 0 and labelled log k as a second
-   route to the same number. A concentration switch lets you deliberately build the commonest wrong
-   answer — k = 1.0 from the initial 0.15 M — and be told which quantity the isotherm actually needs.
-5. **06 Evidence board** — the notebook, a final record that fills in quantity by quantity, seven
-   expandable JEE traps, and predict-then-check against what you measured.
-6. **07 Step-by-step solution** — unlocked once all four benches have been run.
+A step rail across the top tracks the seven steps:
 
-An **Experiment / Explain** toggle overlays short conceptual notes on every bench without leaving the
-experiment. Progressive hints sit on each bench, there is an auto-play walkthrough that pauses at
-each prediction, and a teacher mode with objectives, the expected wrong answers ranked by frequency,
-a teaching order and a discussion question.
+1. **Dissolve.** The balance counts up to 0.45 g and the acid disperses through the water as 45
+   dots, one per 0.01 g. The first two lines of working appear: 0.0075 mol, and 0.15 mol L⁻¹.
+2. **Add charcoal.** Irregular porous grains drop into the flask. Nothing happens while it sits
+   still — the molecules have to reach the surface.
+3. **Shake.** The flask rocks on the shaker, the liquid sways, and the molecules move, collide with
+   the grains and stick. The instrument panel shows the acid in solution falling and the acid
+   adsorbed rising — and the two always sum to 0.45 g. The shake stops itself at equilibrium.
+4. **Measure the pH.** The probe descends down the neck of the flask and the meter settles from 7
+   to 3.00. [H⁺] = 1.0 × 10⁻³ M joins the panel; the acid concentration deliberately does not.
+5. **Apply Kₐ.** The reasoning appears in full — the dissociation equilibrium, the approximation,
+   and C = 0.10 M. The mass bar splits the 0.45 g into 0.30 g dissolved and 0.15 g adsorbed, and
+   *x*/*m* = 0.15 arrives.
+6. **Plot.** The measured point is placed automatically, but the gradient is not handed over: it
+   starts at 0.60 and the final button stays locked until it is set to the value the question
+   specifies. A slope triangle reports rise/run, and the intercept at log C = 0 is marked and
+   labelled log *k* — a second, independent route to the same number.
+7. **Find k.** The result box, a placeholder until now, reveals **k = 1.5 L mol⁻¹**, and the
+   derivation in section 06 unlocks with it.
+
+Alongside the run: a **live instrument panel** of thirteen gauges, measured quantities in blue and
+derived ones in green, so it is always clear how much is actually known; a **lab notebook** written
+as you go and a **final record** that fills in quantity by quantity; a **concentration switch** that
+reruns the arithmetic with the initial 0.15 M so the commonest wrong answer, 1.0, can be seen and
+understood rather than just warned about; seven notes on **the mistakes students actually make**; an
+**Experiment / Explain** toggle that overlays short conceptual notes without leaving the experiment;
+**Auto run**, which plays the whole thing through in about half a minute for a classroom
+demonstration; and a **teacher mode** with objectives, the expected wrong answers ranked by
+frequency, a teaching order and a discussion question.
