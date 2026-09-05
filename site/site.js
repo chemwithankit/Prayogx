@@ -60,6 +60,13 @@
     }
     return { view: "list", f: f };
   }
+  // A simulation page is a plain static file, so a browser will happily serve a
+  // stale copy after the page has been updated. Tagging the link with the
+  // revision from the manifest makes each revision a distinct URL.
+  function simHref(sim) {
+    return esc(sim.path) + (sim.revision ? "?v=" + encodeURIComponent(sim.revision) : "");
+  }
+
   function filterHash(f) {
     var parts = [];
     ["q", "y", "s", "c", "t"].forEach(function (k) {
@@ -190,7 +197,7 @@
         "</dl>" +
         '<div class="tags">' + tags + "</div>" +
         '<div class="foot">' +
-          '<a class="open" href="' + esc(s.path) + '">OPEN SIMULATION</a>' +
+          '<a class="open" href="' + simHref(s) + '">OPEN SIMULATION</a>' +
           '<span class="simid">' + esc(s.id) + "</span>" +
         "</div>" +
       "</article>";
@@ -289,7 +296,7 @@
         "</div>" +
         (s.summary ? '<p class="summary">' + esc(s.summary) + "</p>" : "") +
         '<div class="ctarow">' +
-          '<a class="cta" href="' + esc(s.path) + '">OPEN SIMULATION</a>' +
+          '<a class="cta" href="' + simHref(s) + '">OPEN SIMULATION</a>' +
           '<span class="ctanote">Opens the interactive simulation. Everything is on one page — no sign-in, works offline.</span>' +
         "</div>" +
         '<div class="cols">' +
