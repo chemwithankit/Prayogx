@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Boiling point of a partially dissociated solute — JEE Advanced 2026 Paper 2 Q.11 | PrayogX</title>
-<meta name="description" content="A one-screen virtual bench for JEE Advanced 2026 Paper 2 Chemistry Q.11: break up the dissolved compound B into 2C + 2D, watch the particle count and the boiling point rise together, and find the mole percent dissociated that puts the thermometer on 408 K.">
+<title>Boiling point of a partially dissociated solute — JEE Advanced 2026 Paper 2 Q.12 | PrayogX</title>
+<meta name="description" content="Type the data from JEE Advanced 2026 Paper 2 Chemistry Q.12 into the bench, press Run experiment, and watch it boil the solvent, dissolve B, find the gap between the predicted and the measured boiling point, and break B apart until the flask matches — the mole percent dissociated falls out of the run.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232a78d6'/%3E%3Cpath d='M12.5 6.5h7M13.6 6.5v7.2L7.9 24.1a1.5 1.5 0 0 0 1.3 2.3h13.6a1.5 1.5 0 0 0 1.3-2.3l-5.7-10.4V6.5' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M10.6 20.6h10.8' stroke='white' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E">
 <meta name="sim-id" content="ADV-2026-P2-CHE-Q12">
 <style>
@@ -235,55 +235,110 @@ footer{border-top:1px solid var(--line);margin-top:40px;padding-top:16px;font-si
 
 /* ---- the one-screen deck ------------------------------------------- */
 .deck{border:1px solid var(--line);border-radius:var(--radius);background:var(--surface-1);padding:14px}
-.brief{display:flex;flex-wrap:wrap;gap:7px;align-items:center;padding-bottom:11px;
-  border-bottom:1px solid var(--line);margin-bottom:11px}
-.brief .lb{font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--text-muted);
-  margin-right:2px}
-.brief .g{font-size:11.5px;font-family:var(--mono);padding:3px 9px;border-radius:999px;
-  border:1px solid var(--line-strong);background:var(--surface-2);color:var(--text-secondary);
-  white-space:nowrap}
-.brief .g.t{border-color:var(--s2);color:var(--s2);font-weight:700}
-.brief .g.q{border-color:var(--s4);color:var(--s4);font-weight:700}
+.phasebar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;padding-bottom:11px;
+  border-bottom:1px solid var(--line);margin-bottom:12px}
+.phasebar .ph{font-size:11.5px;padding:4px 11px;border-radius:999px;border:1px solid var(--line-strong);
+  background:var(--surface-2);color:var(--text-muted);white-space:nowrap;display:flex;gap:6px;
+  align-items:center}
+.phasebar .ph .n{font-family:var(--mono);font-size:10px;opacity:.8}
+.phasebar .ph.now{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:650}
+.phasebar .ph.done{border-color:var(--good);color:var(--good);
+  background:color-mix(in srgb,var(--good) 12%,transparent);font-weight:600}
+.phasebar .sp{flex:1}
+.phasebar .tag{font-size:11px;color:var(--text-muted);font-family:var(--mono)}
 
-.status{display:flex;gap:11px;align-items:flex-start;padding:9px 12px;border-radius:9px;
-  border:1px solid var(--accent);background:color-mix(in srgb,var(--accent) 7%,transparent);
-  font-size:13px;margin-bottom:12px}
-.status .ic{flex:none;width:20px;height:20px;border-radius:50%;background:var(--accent);color:#fff;
-  font-size:12px;font-weight:700;display:grid;place-items:center;margin-top:1px;font-family:var(--mono)}
-.status .tx{min-width:0}
-.status .tx b{font-family:var(--mono)}
-.status.near{border-color:var(--s2);background:color-mix(in srgb,var(--s2) 9%,transparent)}
-.status.near .ic{background:var(--s2)}
-.status.ok{border-color:var(--good);background:color-mix(in srgb,var(--good) 11%,transparent)}
-.status.ok .ic{background:var(--good)}
-
-.deckmain{display:grid;grid-template-columns:286px minmax(0,1fr);gap:14px;align-items:start}
+.deckmain{display:grid;grid-template-columns:300px minmax(0,1fr);gap:14px;align-items:start}
 @media(max-width:900px){.deckmain{grid-template-columns:1fr !important}}
-.bay{border:1px solid var(--line);border-radius:9px;background:var(--surface-2);padding:9px 10px 6px}
+.bay{border:1px solid var(--line);border-radius:9px;background:var(--surface-2);padding:9px 10px 7px}
 .bay .cap{font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-muted);
-  margin-bottom:4px;display:flex;justify-content:space-between;gap:8px;align-items:baseline}
+  margin-bottom:5px;display:flex;justify-content:space-between;gap:8px;align-items:baseline}
 .bay .cap b{font-family:var(--mono);font-size:11px;color:var(--text-secondary);letter-spacing:0;
   text-transform:none}
-svg.scene{display:block;width:100%;height:auto;overflow:visible}
-.scale-note{font-size:10.5px;color:var(--text-muted);margin:3px 0 1px;line-height:1.3}
-#gauges .ro{padding:7px 9px}
-#gauges .ro .v{font-size:15px}
-@media(min-width:1000px){#gauges{grid-template-columns:repeat(7,minmax(0,1fr))}}
-.eqlive{line-height:1.95;font-size:14px;padding:9px 12px}
+svg.scene{display:block;width:100%;height:auto}
+@media(max-width:900px){svg.scene{width:auto;max-width:100%;max-height:330px;margin:0 auto}}
 
 .rightcol{display:grid;gap:11px}
-.duo{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:11px;
-  align-items:start}
-.duo>*{min-width:0}
-.eqlive{margin-top:0}
-.chartwrap{padding:11px}
+.swap{min-height:176px;border:1px solid var(--line);border-radius:9px;background:var(--surface-2);
+  padding:11px 13px}
+.swap h3{margin:0 0 9px;font-size:12px;letter-spacing:.05em;text-transform:uppercase;
+  color:var(--text-muted);font-weight:600;display:flex;justify-content:space-between;gap:10px;
+  align-items:baseline}
+.swap h3 em{font-style:normal;font-size:11px;text-transform:none;letter-spacing:0;
+  color:var(--text-muted);font-weight:400}
 
-.ctlbar{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(268px,100%),1fr));gap:16px;
-  margin-top:13px;padding-top:12px;border-top:1px solid var(--line);align-items:start}
-.ctlbar>*{min-width:0}
-.ctlbar .ctrl{margin:0}
-.ctlbar .acts{display:flex;flex-direction:column;gap:7px;justify-content:flex-start}
-.ctlbar .acts button{width:100%}
+/* ---- the data-entry form -------------------------------------------- */
+.form{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(196px,100%),1fr));gap:9px 12px}
+.form>*{min-width:0}
+.fld label{display:block;font-size:11.5px;font-weight:600;margin-bottom:3px;line-height:1.25}
+.fld .box{display:flex;gap:6px;align-items:center}
+.fld input{flex:1;min-width:0;padding:6px 8px;border-radius:7px;border:1px solid var(--line-strong);
+  background:var(--surface-0);color:var(--text-primary);font-family:var(--mono);font-size:13.5px}
+.fld input:focus{outline:2px solid var(--accent);outline-offset:-1px}
+.fld input.bad{border-color:var(--bad);background:color-mix(in srgb,var(--bad) 9%,transparent)}
+.fld input.ok{border-color:var(--good)}
+.fld .u{flex:none;font-size:11px;color:var(--text-muted);white-space:nowrap;max-width:92px}
+.fld .fh{font-size:10.5px;color:var(--text-muted);margin-top:2px;line-height:1.3;min-height:1.2em}
+.fld .fh.bad{color:var(--bad);font-weight:600}
+.fld.stoich .box{gap:5px;font-family:var(--serif);font-size:14px}
+.fld.stoich input{flex:none;width:52px;text-align:center}
+
+.runrow{display:flex;gap:11px;align-items:center;flex-wrap:wrap;margin-top:10px;padding-top:9px;
+  border-top:1px solid var(--line)}
+button.run{flex:none;padding:10px 24px;border-radius:10px;border:none;background:var(--accent);
+  color:#fff;font-size:15px;font-weight:700;cursor:pointer;font-family:var(--sans);
+  box-shadow:0 3px 12px color-mix(in srgb,var(--accent) 34%,transparent);transition:.18s}
+button.run:hover:not(:disabled){filter:brightness(1.08)}
+button.run:disabled{opacity:.45;cursor:not-allowed;box-shadow:none}
+.runrow .msg{flex:1 1 190px;min-width:0;font-size:12px;color:var(--text-secondary)}
+.runrow .msg b{color:var(--text-primary)}
+
+/* ---- the running narration ------------------------------------------ */
+.rail{display:flex;gap:0;flex-wrap:wrap;margin-bottom:10px}
+.rail .s{flex:1 1 62px;min-width:0;padding:6px 5px;font-size:10.5px;text-align:center;
+  background:var(--surface-1);border:1px solid var(--line);border-right:none;
+  color:var(--text-muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rail .s:first-child{border-radius:8px 0 0 8px}
+.rail .s:last-child{border-right:1px solid var(--line);border-radius:0 8px 8px 0}
+.rail .s.done{background:color-mix(in srgb,var(--good) 13%,transparent);border-color:var(--good);
+  color:var(--good);font-weight:640}
+.rail .s.now{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:700}
+.narr{font-size:13px;line-height:1.5;min-height:58px}
+.narr b{font-family:var(--mono)}
+.narr .lead{font-weight:650;font-size:13.5px;display:block;margin-bottom:2px}
+
+/* ---- the result ------------------------------------------------------ */
+.res{display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap}
+.res .big{flex:none;border:1px solid var(--good);border-radius:10px;padding:10px 16px;
+  background:color-mix(in srgb,var(--good) 11%,transparent);text-align:center}
+.res .big .v{font-family:var(--mono);font-size:33px;font-weight:700;color:var(--good);line-height:1.1}
+.res .big .k{font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-muted)}
+.res .why{flex:1 1 230px;min-width:0;font-size:12.5px;line-height:1.55;color:var(--text-secondary)}
+.res .why b{color:var(--text-primary);font-family:var(--mono)}
+.res.no .big{border-color:var(--bad);background:color-mix(in srgb,var(--bad) 9%,transparent)}
+.res.no .big .v{color:var(--bad);font-size:19px}
+
+/* ---- the working, one card per step ---------------------------------- */
+.work{border:1px solid var(--line);border-radius:9px;background:var(--surface-2);padding:10px}
+.work .t{font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-muted);
+  margin-bottom:7px}
+.ec{font-family:var(--serif);font-size:12px;background:var(--surface-1);border:1px solid var(--line);
+  border-left:3px solid var(--s1);border-radius:6px;padding:4px 8px;margin-bottom:4px;
+  animation:nbin .32s ease-out;line-height:1.45}
+#work{max-height:212px;overflow-y:auto}
+.ec b{font-family:var(--mono);font-weight:700}
+.ec .res2{color:var(--good);font-family:var(--mono);font-weight:700}
+.ec.key{border-left-color:var(--good)}
+.work .pend{font-size:11.5px;color:var(--text-muted);padding:5px 2px}
+
+.playback{margin-top:10px;padding:7px 8px}
+.playback button{padding:5px 10px;font-size:12px}
+.chartwrap{padding:11px}
+#gauges .ro{padding:6px 8px}
+#gauges .ro .k{font-size:10.5px;white-space:normal;line-height:1.25}
+#gauges .ro .u{font-size:10px}
+#gauges .ro .v{font-size:15px}
+@media(min-width:1000px){#gauges{grid-template-columns:repeat(6,minmax(0,1fr))}}
+.dim{opacity:.45}
 
 .trapgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(250px,100%),1fr));gap:11px}
 .trap{border:1px solid var(--line);border-left:3px solid var(--bad);border-radius:9px;
@@ -292,19 +347,20 @@ svg.scene{display:block;width:100%;height:auto;overflow:visible}
 .trap .n{font-family:var(--mono);font-size:12px;color:var(--bad);font-weight:700}
 .trap p{margin:4px 0 0;font-size:12.5px;color:var(--text-secondary)}
 
-.record{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(210px,100%),1fr));gap:10px}
+.record{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(206px,100%),1fr));gap:10px}
 .rec{border:1px solid var(--line);border-radius:9px;background:var(--surface-1);padding:11px 13px}
 .rec .k{font-size:11px;letter-spacing:.04em;color:var(--text-muted);font-weight:600}
 .rec .v{font-family:var(--mono);font-size:17px;font-weight:650;margin-top:2px}
 .rec .v.pend{color:var(--text-muted);font-size:14px}
 .rec .v.fin{color:var(--good)}
 .rec .n{font-size:11.5px;color:var(--text-secondary);margin-top:3px}
+
 details.fold{margin-top:12px;border-top:1px solid var(--line);padding-top:10px}
 details.fold>summary{cursor:pointer;font-size:12.5px;color:var(--accent);list-style:none;
   display:flex;align-items:center;gap:6px}
 details.fold>summary::-webkit-details-marker{display:none}
-details.fold>summary::before{content:"▸";font-family:var(--mono);font-size:11px}
-details.fold[open]>summary::before{content:"▾"}
+details.fold>summary::before{content:"\25B8";font-family:var(--mono);font-size:11px}
+details.fold[open]>summary::before{content:"\25BE"}
 
 </style>
 </head>
@@ -318,18 +374,18 @@ details.fold[open]>summary::before{content:"▾"}
       <h1>Boiling a solution whose solute keeps splitting in two</h1>
       <div class="chips">
         <span class="chip">JEE Advanced 2026</span>
-        <span class="chip">Paper 2 · Q.11</span>
+        <span class="chip">Paper 2 · Q.12</span>
         <span class="chip">Chemistry</span>
         <span class="chip">Solutions &amp; colligative properties</span>
         <span class="chip">Numerical value</span>
         <span class="chip">+4 / 0</span>
-        <span class="chip k">One screen</span>
+        <span class="chip k">Enter the data · run it</span>
       </div>
     </div>
     <div class="answerbox locked" id="answerbox">
       <div class="lbl">Answer</div>
       <div class="val" id="ansval">Run the experiment</div>
-      <div class="sub" id="anssub">Match the thermometer to 408.00 K.</div>
+      <div class="sub" id="anssub">Enter the data and run the experiment.</div>
       <button class="rv" id="revealnow" type="button">Reveal anyway</button>
     </div>
     <button class="themebtn" id="themebtn" type="button">◐ theme</button>
@@ -340,7 +396,7 @@ details.fold[open]>summary::before{content:"▾"}
   <ul>
     <li><a href="#question">Question</a></li>
     <li><a href="#bench">The bench</a></li>
-    <li><a href="#evidence">Your evidence</a></li>
+    <li><a href="#whyms">Why M?</a></li>
     <li><a href="#traps">Where it goes wrong</a></li>
     <li><a href="#result">Record</a></li>
     <li><a href="#solution">Solution</a></li>
@@ -353,8 +409,9 @@ details.fold[open]>summary::before{content:"▾"}
 
 <section id="question">
   <h2><span class="n">01</span>The question <span style="font-size:12px;color:var(--text-muted);
-    font-weight:400">— verbatim</span></h2>
-  <p class="lede">Section 3, numerical value — +4 for the correct value, 0 otherwise.</p>
+    font-weight:400">&mdash; verbatim</span></h2>
+  <p class="lede">Section 3, numerical value &mdash; +4 for the correct value, 0 otherwise. Read it,
+    then type what it gives you into the bench below.</p>
   <div class="card">
     <div class="qtext">
       <p style="margin-top:0">In a solvent <b>S</b>, a compound <b>B</b> is partially dissociated
@@ -368,7 +425,7 @@ details.fold[open]>summary::before{content:"▾"}
       In this solution, the mole percent of B that has been dissociated is ______.</p>
     </div>
     <div class="eq" style="margin-top:14px"><b>Not given:</b> the molar mass of the solvent itself.
-      That is deliberate — part of the experiment below is finding out why it is not needed.</div>
+      That is deliberate &mdash; section 03 shows why the experiment never needs it.</div>
     <details class="fold"><summary>What each number in the question is for</summary>
     <div class="scrollx" style="margin-top:10px">
       <table class="data">
@@ -380,13 +437,16 @@ details.fold[open]>summary::before{content:"▾"}
             rise is measured from</td></tr>
           <tr><td class="l">Enthalpy of vaporisation of the solvent</td><td>&Delta;H<sub>vap</sub></td>
             <td class="num">10R J mol<sup>&minus;1</sup></td>
-            <td class="l">builds K<sub>b</sub> — and cancels the R in it</td></tr>
+            <td class="l">builds K<sub>b</sub> &mdash; and cancels the R in it</td></tr>
           <tr><td class="l">Molar mass of B relative to S</td><td>M<sub>B</sub></td>
             <td class="num">10 M<sub>S</sub></td><td class="l">turns the 0.25% into a molality</td></tr>
           <tr><td class="l">Initial concentration of B</td><td>&mdash;</td>
             <td class="num">0.25% (m/m)</td><td class="l">0.25 g of B per 100 g of solvent</td></tr>
+          <tr><td class="l">The dissociation</td><td>B &#8652; 2C + 2D</td>
+            <td class="num">1 &rarr; 4</td><td class="l">how many particles one B leaves behind</td></tr>
           <tr class="win"><td class="l">Boiling point of the solution</td><td>T<sub>b</sub></td>
-            <td class="num">408 K</td><td class="l">the one measurement — everything is read from it</td></tr>
+            <td class="num">408 K</td><td class="l">the one measurement &mdash; everything is read
+            from it</td></tr>
         </tbody>
       </table>
     </div>
@@ -396,72 +456,59 @@ details.fold[open]>summary::before{content:"▾"}
 
 <section id="bench">
   <h2><span class="n">02</span>The bench</h2>
-  <p class="lede">One screen, two dials. Break up the dissolved B until the thermometer reads the
-    408.00 K the question quotes.</p>
+  <p class="lede">Type the data from the question into the instrument panel, press
+    <b>Run experiment</b>, and watch the bench work. Nothing here is precomputed &mdash; every
+    number comes out of the values you enter.</p>
 
   <div class="deck">
-    <div class="brief">
-      <span class="lb">on the bench</span>
-      <span class="g">solvent S &nbsp;T<sub>b</sub>&deg; = 400 K</span>
-      <span class="g">&Delta;H<sub>vap</sub> = 10R</span>
-      <span class="g">B: 0.25% m/m</span>
-      <span class="g">M<sub>B</sub> = 10 M<sub>S</sub></span>
-      <span class="g">B &#8652; 2C + 2D</span>
-      <span class="g t">target: 408.00 K</span>
-      <span class="g q">find: mole % of B dissociated</span>
-    </div>
-
-    <div class="status" id="status">
-      <div class="ic" id="statusic">1</div>
-      <div class="tx" id="statustx"></div>
+    <div class="phasebar">
+      <span class="ph now" id="ph0"><span class="n">1</span>Enter the data</span>
+      <span class="ph" id="ph1"><span class="n">2</span>Run the experiment</span>
+      <span class="ph" id="ph2"><span class="n">3</span>Read the result</span>
+      <span class="sp"></span>
+      <span class="tag" id="phtag">waiting for your data</span>
     </div>
 
     <div class="deckmain">
       <div class="bay">
-        <div class="cap"><span>The flask, boiling</span><b id="pcount">12 particles</b></div>
-        <svg class="scene" id="scene" viewBox="0 44 360 330" role="img"
-          aria-label="A beaker of solvent S boiling on a hotplate with a digital thermometer.
+        <div class="cap"><span>The apparatus</span><b id="pcount">empty</b></div>
+        <svg class="scene" id="scene" viewBox="0 0 300 500" role="img"
+          aria-label="A flask of solvent on a hotplate with a temperature scale beside it.
           Purple B particles break apart into two blue C and two orange D particles as the
-          dissociation dial is turned."></svg>
-        <div class="scale-note" id="scalenote">Visual scale: 12 drawn units stand for all the
-          dissolved B; each one that breaks up leaves 4 particles behind.</div>
+          experiment runs."></svg>
       </div>
 
       <div class="rightcol">
+        <div class="swap" id="swap"></div>
         <div class="readouts" id="gauges"></div>
-        <div class="duo">
-          <div class="eqlive" id="chain"></div>
+        <div class="duo" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:11px;align-items:start">
+          <div class="work">
+            <div class="t">The working, written as it is earned</div>
+            <div id="work"></div>
+          </div>
           <div class="chartwrap">
-            <svg class="chart" id="chart" viewBox="0 0 470 250" role="img"
+            <svg class="chart" id="chart" viewBox="0 0 470 220" role="img"
               aria-label="Boiling point of the solution against the mole percent of B dissociated,
-              with the measured 408 kelvin line marked."></svg>
+              with the measured boiling point marked."></svg>
             <div class="legend">
-              <span><i style="background:var(--s1)"></i>your bench</span>
-              <span><i style="background:var(--s2)"></i>408 K measured</span>
-              <span><i class="dot" style="background:var(--s4)"></i>where the dial is now</span>
+              <span><i style="background:var(--s1)"></i>predicted</span>
+              <span><i style="background:var(--s2)"></i>your reading</span>
+              <span><i class="dot" style="background:var(--s4)"></i>flask now</span>
             </div>
           </div>
         </div>
       </div>
     </div>
+  </div>
+</section>
 
-    <div class="ctlbar">
-      <div class="ctrl">
-        <label for="alphasl"><span>Mole percent of B that has broken up</span>
-          <span class="v" id="alphaval">0.00 %</span></label>
-        <input type="range" id="alphasl" aria-label="Mole percent of B dissociated">
-        <div class="numrow">
-          <button class="step" type="button" data-for="alphasl" data-dir="-1"
-            aria-label="less dissociation">&minus;</button>
-          <input class="numin" id="alphain" inputmode="decimal" aria-label="mole percent dissociated">
-          <button class="step" type="button" data-for="alphasl" data-dir="1"
-            aria-label="more dissociation">+</button>
-          <span class="unit">%</span>
-        </div>
-        <div class="hint" id="alphahint">This is the unknown. Turn it until the thermometer reads
-          408.00 K.</div>
-      </div>
-
+<section id="whyms">
+  <h2><span class="n">03</span>Why the solvent&rsquo;s molar mass never mattered</h2>
+  <p class="lede">The question never tells you what S is. This panel, driven by the data you
+    entered, shows that it could not have mattered &mdash; and keeps a log of every run you make.</p>
+  <div class="lab">
+    <div class="panel">
+      <h3>Pick any solvent you like</h3>
       <div class="ctrl">
         <label for="mssl"><span>Molar mass of the solvent S</span>
           <span class="v" id="msval">40.0 g mol&#8315;&#185;</span></label>
@@ -474,94 +521,75 @@ details.fold[open]>summary::before{content:"▾"}
             aria-label="heavier solvent">+</button>
           <span class="unit">g mol&#8315;&#185;</span>
         </div>
-        <div class="hint" id="mshint">The question never tells you this. Change it and watch what
-          happens to the thermometer.</div>
+        <div class="hint" id="mshint">K<sub>b</sub> rises with it, the molality falls with it.</div>
       </div>
-
-      <div class="acts">
-        <button class="act primary" id="logbtn" type="button">Log this reading</button>
-        <button class="act" id="resetbtn" type="button">Reset the bench</button>
-        <div class="hint" id="acthint">Readings you log are collected in section 03.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="evidence">
-  <h2><span class="n">03</span>Your evidence</h2>
-  <p class="lede">Two logs, both written from what you actually did on the bench: the readings you
-    chose to keep, and every solvent molar mass you tried.</p>
-  <div class="lab">
-    <div class="panel">
-      <h3>Readings you logged</h3>
-      <div class="scrollx"><table class="data" id="trials"></table></div>
-      <div class="empty" id="trialempty">Nothing logged yet — set the dial and press
-        <b>Log this reading</b>.</div>
+      <div class="readouts" id="msgauges" style="margin-top:12px"></div>
+      <div class="hint" style="margin-top:9px">K<sub>b</sub> carries one factor of M<sub>S</sub>
+        and the molality carries one factor of 1/M<sub>S</sub>, so their product is fixed by the
+        data you entered and by nothing else. That product is what the whole experiment runs on.</div>
     </div>
     <div class="panel">
-      <h3>Every solvent you tried</h3>
-      <div class="scrollx"><table class="data" id="mstable"></table></div>
-      <div class="hint" style="margin-top:8px">K<sub>b</sub> is proportional to M<sub>S</sub> and the
-        molality is inversely proportional to it, so their product cannot depend on M<sub>S</sub>
-        at all.</div>
+      <h3>Runs you have made</h3>
+      <div class="scrollx"><table class="data" id="runs"></table></div>
+      <div class="empty" id="runsempty">No runs yet &mdash; enter the data above and press
+        <b>Run experiment</b>.</div>
+      <div style="margin-top:14px">
+        <h3>Lab notebook</h3>
+        <div class="nb" id="notebook"></div>
+        <div class="empty" id="nbempty">The notebook writes itself as the bench settles things.</div>
+      </div>
     </div>
-  </div>
-  <div class="panel" style="margin-top:16px">
-    <h3>Lab notebook</h3>
-    <div class="nb" id="notebook"></div>
-    <div class="empty" id="nbempty">The notebook writes itself as you find things.</div>
   </div>
 </section>
 
 <section id="traps">
   <h2><span class="n">04</span>Where it goes wrong</h2>
-  <p class="lede">Four answers that come out of this question every year. Each one is a single wrong
-    move, and the bench above will reproduce all of them if you make it.</p>
+  <p class="lede">Four answers this question produces every year. Each is a single wrong move, and
+    the bench above will reproduce all of them if you enter the data that way.</p>
   <div class="trapgrid">
     <div class="trap">
-      <div class="h"><span class="n">100</span> &mdash; using i = 1 + &alpha;</div>
-      <p>Reading &ldquo;B &#8652; 2C + 2D&rdquo; as though one molecule became one particle. One B
-        gives <b>four</b> particles, so i = 1 &minus; &alpha; + 4&alpha; = 1 + 3&alpha;. With
-        i = 1 + &alpha; you get &alpha; = 1, i.e. 100% — complete dissociation, which the word
-        <i>partially</i> in the question rules out.</p>
+      <div class="h"><span class="n">100</span> &mdash; one particle instead of four</div>
+      <p>Reading &ldquo;B &#8652; 2C + 2D&rdquo; as though one molecule became one. Enter
+        <b>1</b> C and <b>1</b> D in the stoichiometry boxes and the bench returns 100&nbsp;% &mdash;
+        complete dissociation, which the word <i>partially</i> rules out. One B leaves four
+        particles, so i = 1 + 3&alpha;.</p>
     </div>
     <div class="trap">
       <div class="h"><span class="n">404 K</span> &mdash; forgetting dissociation</div>
-      <p>Taking i = 1 gives &Delta;T<sub>b</sub> = 4 K and a boiling point of 404 K. The
-        thermometer says 408 K, so the extra 4 K has to come from somewhere — and the only thing
-        left is more particles.</p>
+      <p>Step 3 of the run boils the solution with nothing dissociated and lands on 404 K. The
+        thermometer says 408 K, so the extra 4 K has to come from somewhere &mdash; and the only
+        thing left is more particles.</p>
     </div>
     <div class="trap">
-      <div class="h"><span class="n">102</span> &mdash; using T<sub>b</sub> instead of &Delta;T<sub>b</sub></div>
+      <div class="h"><span class="n">102</span> &mdash; T<sub>b</sub> instead of &Delta;T<sub>b</sub></div>
       <p>Putting 408 K into &Delta;T<sub>b</sub> = i K<sub>b</sub> m gives i = 102. The van&rsquo;t
-        Hoff factor here can never exceed 4, so any i above 4 is a signal that a boiling point was
-        used where a <i>rise</i> in boiling point was meant.</p>
+        Hoff factor here can never exceed 4, so any i above 4 says a boiling point was used where a
+        <i>rise</i> was meant. Enter 808 K as the solution&rsquo;s boiling point and the bench
+        refuses the run for exactly that reason.</p>
     </div>
     <div class="trap">
-      <div class="h"><span class="n">stuck</span> &mdash; looking for M<sub>S</sub></div>
-      <p>The molar mass of the solvent is not in the question and it is not missing. K<sub>b</sub>
-        carries one factor of M<sub>S</sub> and the molality carries one factor of
-        1/M<sub>S</sub>; the product is 4 K whatever the solvent is. The second dial on the bench
-        demonstrates it.</p>
+      <div class="h"><span class="n">stuck</span> &mdash; hunting for M<sub>S</sub></div>
+      <p>The molar mass of the solvent is not in the question and it is not missing. There is no
+        input box for it on the bench because the experiment does not need one &mdash; section 03
+        shows why.</p>
     </div>
   </div>
 </section>
 
 <section id="result">
   <h2><span class="n">05</span>The record of the run</h2>
-  <p class="lede">Filled in from the bench, quantity by quantity, as each one becomes known.</p>
+  <p class="lede">Filled in from your own run, quantity by quantity, as each one is established.</p>
   <div class="record" id="record"></div>
 </section>
 
 <section id="solution">
   <h2><span class="n">06</span>Step-by-step solution</h2>
-  <p class="lede" id="solintro">Match the thermometer to 408.00 K on the bench and the derivation
-    opens by itself.</p>
+  <p class="lede" id="solintro">Complete a run on the bench and the derivation opens by itself.</p>
 
   <div class="gate" id="solgate">
     <h4>The solution is still locked</h4>
-    <p>Turn the dissociation dial until the thermometer reads <b>408.00 K</b> — the boiling point
-      the question quotes — and both this section and the answer box unlock.</p>
+    <p>Enter the data from the question and let the experiment finish &mdash; the derivation and the
+      answer box unlock the moment the flask matches your measurement.</p>
     <button class="act" id="revealsol" type="button">Show me the solution anyway</button>
   </div>
 
@@ -593,7 +621,8 @@ details.fold[open]>summary::before{content:"▾"}
           M<sub>S</sub>, the molality goes down with it, and the product is a pure number:</p>
         <div class="eq">K<sub>b</sub> m = (16 M<sub>S</sub>) &times; (0.25 / M<sub>S</sub>)
           = <span class="hl">4.000 K</span></div>
-        <p>So the solvent&rsquo;s identity never enters the answer, which is why it was never given.</p>
+        <p>So the solvent&rsquo;s identity never enters the answer, which is why it was never given
+          and why the bench has no input box for it.</p>
       </li>
       <li>
         <h4>Read the van&rsquo;t Hoff factor off the thermometer</h4>
@@ -601,13 +630,14 @@ details.fold[open]>summary::before{content:"▾"}
           = 408 &minus; 400 = 8 K</div>
         <div class="eq">i = &Delta;T<sub>b</sub> / (K<sub>b</sub> m) = 8 / 4
           = <span class="hl">2</span></div>
-        <p>Two particles now exist for every one that was dissolved. An undissociated solution would
-          have boiled at 404 K, so the second 4 K is entirely the work of the dissociation.</p>
+        <p>Two particles now exist for every one that was dissolved. That is exactly what step 4 of
+          the run exposes: an undissociated solution boils at 404 K, and the second 4 K is entirely
+          the work of the dissociation.</p>
       </li>
       <li>
         <h4>Count the particles the dissociation makes</h4>
         <p>Start with 1 mol of B and let a fraction &alpha; break up. Each one that goes produces
-          2 C and 2 D — four particles from one:</p>
+          2 C and 2 D &mdash; four particles from one:</p>
         <div class="eq">B &#8652; 2C + 2D &nbsp;&nbsp;&rarr;&nbsp;&nbsp;
           (1 &minus; &alpha;) + 2&alpha; + 2&alpha; = <span class="hl">1 + 3&alpha;</span></div>
         <p>The limits check out: &alpha; = 0 gives i = 1, and complete dissociation gives i = 4.</p>
@@ -618,8 +648,8 @@ details.fold[open]>summary::before{content:"▾"}
           = <span class="hl">0.3333</span></div>
         <div class="eq">mole percent dissociated = 100 &alpha;
           = <span class="hl">33.33 %</span></div>
-        <p>Which is exactly the reading the bench locks onto: 4 of the 12 drawn units broken up,
-          8 whole B left plus 16 fragments — 24 particles where there were 12.</p>
+        <p>Which is what the flask shows at the end of the run: 4 of the 12 drawn units broken up,
+          8 whole B plus 16 fragments &mdash; 24 particles where there were 12.</p>
       </li>
     </ol>
 
@@ -628,36 +658,38 @@ details.fold[open]>summary::before{content:"▾"}
       <ul>
         <li><b>Derived before anything was looked up.</b> K<sub>b</sub> from thermodynamics, the
           molality from the mass percent, i from the measured rise and &alpha; from the
-          stoichiometry — all fixed independently, and only then compared with a published
+          stoichiometry &mdash; all fixed independently, and only then compared with a published
           solution.</li>
-        <li><b>Back-substitution.</b> Taking any M<sub>S</sub> at all — 12, 20, 33.3, 58.5, 180
-          g mol<sup>&minus;1</sup> — and putting &alpha; = 1/3 back into
-          &Delta;T<sub>b</sub> = i K<sub>b</sub> m returns 8.000000 K and a boiling point of
-          exactly 408 K.</li>
+        <li><b>Back-substitution.</b> Taking any M<sub>S</sub> at all &mdash; 12, 20, 33.3, 58.5,
+          180 g mol<sup>&minus;1</sup> &mdash; and putting &alpha; = 1/3 back into
+          &Delta;T<sub>b</sub> = i K<sub>b</sub> m returns 8.000000 K and a boiling point of exactly
+          408 K.</li>
         <li><b>The cancellation checked symbolically,</b> not just numerically: K<sub>b</sub> m
           reduces to the constant 4 with M<sub>S</sub> carried as a free symbol, so the result holds
-          for every solvent, not merely for the values tried.</li>
+          for every solvent, not merely for the values tried. The bench proves the same thing by
+          construction &mdash; it never asks for M<sub>S</sub> and still reaches the answer.</li>
         <li><b>Limiting cases.</b> i = 1 + 3&alpha; gives i = 1 at &alpha; = 0 and i = 4 at
           &alpha; = 1, bracketing boiling points of 404 K and 416 K. The measured 408 K sits inside
-          that window, so a partially dissociated solution is consistent with the data — as the
-          question states.</li>
-        <li><b>The distractors reproduced deliberately.</b> i = 1 + &alpha; gives 100%;
-          ignoring dissociation gives 404 K; using T<sub>b</sub> in place of
+          that window, so a partially dissociated solution is consistent with the data &mdash; as
+          the question states. The bench enforces the same bracket and refuses any measurement
+          outside it, saying why.</li>
+        <li><b>The distractors reproduced deliberately.</b> One C and one D in the stoichiometry
+          boxes gives 100&nbsp;%; ignoring dissociation gives 404 K; using T<sub>b</sub> in place of
           &Delta;T<sub>b</sub> gives i = 102, above the maximum of 4; ignoring the factor of ten in
           M<sub>B</sub> multiplies the molality by ten and gives a rise of 80 K. None of them is
           33.33.</li>
         <li><b>Units.</b> K<sub>b</sub> in K kg mol<sup>&minus;1</sup> times m in
-          mol kg<sup>&minus;1</sup> leaves kelvin, and i is dimensionless — so
+          mol kg<sup>&minus;1</sup> leaves kelvin, and i is dimensionless &mdash; so
           &Delta;T<sub>b</sub> comes out in kelvin as it must.</li>
         <li><b>Answer key cross-check.</b> A published worked solution for this paper follows the
-          same route — K<sub>b</sub> = 16 M<sub>S</sub>, K<sub>b</sub>m = 4, i = 2, i = 1 + 3&alpha;
-          — and reports the same 33.33. IIT Roorkee&rsquo;s official key was not retrievable at the
-          time of writing.</li>
-        <li><b>Headless-browser run</b> of this page, driving both dials across their full range and
-          asserting that the scene, the gauges, the equation chain, the chart and the thermometer
-          all move together, that K<sub>b</sub>m stays at 4.000 for every solvent, that the answer
-          is nowhere on the page before the match, and that the page never scrolls sideways at
-          390 px.</li>
+          same route &mdash; K<sub>b</sub> = 16 M<sub>S</sub>, K<sub>b</sub>m = 4, i = 2,
+          i = 1 + 3&alpha; &mdash; and reports the same 33.33. IIT Roorkee&rsquo;s official key was
+          not retrievable at the time of writing.</li>
+        <li><b>Headless-browser run</b> of this page, driving the form with the paper&rsquo;s data
+          and with deliberately wrong data, asserting that the run refuses impossible measurements,
+          that the answer is nowhere on the page until the run finishes, that the scene, gauges,
+          working, chart and thermometer all move together, and that the page never scrolls sideways
+          at 390 px.</li>
       </ul>
     </div>
   </div>
@@ -675,22 +707,22 @@ details.fold[open]>summary::before{content:"▾"}
       <div class="eq">m = n<sub>solute</sub> / (mass of solvent in kg)</div>
       <div class="eq">i = (particles after) / (particles before)</div>
       <div class="eq">B &#8652; 2C + 2D &nbsp;&rarr;&nbsp; i = 1 + 3&alpha;</div>
-      <div class="hint" style="margin-top:8px">Every one of these is applied on the bench above, in
-        this order.</div>
+      <div class="hint" style="margin-top:8px">The bench applies these in exactly this order, one
+        per step of the run.</div>
     </div>
     <div class="panel">
       <h3>Classification</h3>
       <table class="meta-tbl">
         <tr><td>Exam</td><td>JEE (Advanced) 2026, Paper 2</td></tr>
-        <tr><td>Question</td><td>Q.11, Section 3 — numerical value</td></tr>
+        <tr><td>Question</td><td>Q.12, Section 3 &mdash; numerical value</td></tr>
         <tr><td>Marking</td><td>+4 for the correct value, 0 otherwise, no negative marking</td></tr>
         <tr><td>Subject</td><td>Physical Chemistry</td></tr>
         <tr><td>Chapter</td><td>Solutions and Colligative Properties</td></tr>
         <tr><td>Topic</td><td>Elevation of boiling point with a partially dissociated solute</td></tr>
         <tr><td>Also needs</td><td>Thermodynamic origin of K<sub>b</sub>; concentration terms;
           van&rsquo;t Hoff factor from stoichiometry</td></tr>
-        <tr><td>Difficulty</td><td>Moderate — the arithmetic is short, the trap is structural</td></tr>
-        <tr><td>Answer</td><td><b id="clsans">— run the experiment</b></td></tr>
+        <tr><td>Difficulty</td><td>Moderate &mdash; the arithmetic is short, the trap is structural</td></tr>
+        <tr><td>Answer</td><td><b id="clsans">&mdash; run the experiment</b></td></tr>
       </table>
     </div>
   </div>
@@ -950,49 +982,643 @@ function wireCommon(redraw){
   });
 }
 
-"use strict";
-
 /* =====================================================================
-   ADV-2026-P2-CHE-Q12  -  the boiling point bench
+   ADV-2026-P2-CHE-Q12  -  enter the data, run the experiment, read the
+   result.  Every number on this page is computed from what the student
+   types; nothing is hard-coded to the paper.
    ===================================================================== */
 
-/* ---- the physics, one source of truth ------------------------------- */
-var TB0    = 400.0;      /* standard boiling point of S, K                */
-var DHVAP  = 10.0;       /* enthalpy of vaporisation / R                  */
-var PCT    = 0.25;       /* g of B per 100 g of solvent                   */
-var SOLV_G = 100.0;      /* g of solvent                                  */
-var RATIO  = 10.0;       /* M_B = RATIO * M_S                             */
-var TARGET = 408.0;      /* the boiling point the question quotes         */
-var NUNITS = 12;         /* drawn units of B                              */
-var TOL    = 0.12;       /* K - how close the meter has to be to lock     */
+var NUNITS = 12;                 /* drawn units of B                      */
+var SOLV_KG = 0.100;             /* the 100 g basis the mass percent uses */
 
-function kbOf(Ms){  return R_TB2() * (Ms / 1000) / DHVAP; }   /* K kg/mol  */
-function R_TB2(){   return TB0 * TB0; }                       /* R cancels */
-function molalOf(Ms){ return (PCT / (RATIO * Ms)) / (SOLV_G / 1000); }
-function iOf(a){    return 1 + 3 * a; }
-function dTOf(a, Ms){ return iOf(a) * kbOf(Ms) * molalOf(Ms); }
-function tbOf(a, Ms){ return TB0 + dTOf(a, Ms); }
-var ALPHA_ANS = 1 / 3;
+/* the whole model, from the entered data ------------------------------- */
+function kbTimesM(D){
+  /* Kb = R Tb0^2 Ms/1000 / (h R)   and   m = (pct/(ratio Ms)) / 0.100
+     so Kb*m = Tb0^2 * pct / (1000 * h * ratio * 0.100)   - Ms cancels     */
+  return D.tb0 * D.tb0 * D.pct / (1000 * D.hvap * D.ratio * SOLV_KG);
+}
+function kbOf(D, Ms){ return D.tb0 * D.tb0 * (Ms / 1000) / D.hvap; }
+function molalOf(D, Ms){ return (D.pct / (D.ratio * Ms)) / SOLV_KG; }
+function nuOf(D){ return D.pc + D.pd; }                 /* particles per B */
+function iOf(D, a){ return 1 + (nuOf(D) - 1) * a; }
+function tbOf(D, a){ return D.tb0 + iOf(D, a) * kbTimesM(D); }
 
-var ANSWER = { text: "33.33", sub: "mole % of B dissociated &middot; i = 2 &middot; &alpha; = 1/3" };
-var LOCKED_SUB = "Match the thermometer to 408.00 K.";
+var LOCKED_SUB = "Enter the data and run the experiment.";
 
 /* ---- central state --------------------------------------------------- */
-var ST = { alpha100: 0, Ms: 40, matched: false, snapping: 0, clock: 0 };
-var ctlAlpha = null, ctlMs = null;
-var trials = [], msSeen = [], msTimer = 0, celebrated = false, firstBreak = false;
+var ST = {
+  phase: "setup",                /* setup | running | done | refused      */
+  D: null,                       /* the accepted data                     */
+  R: null,                       /* the result of the run                 */
+  stage: -1, t: 0, playing: false, speed: 1,
+  Ms: 40,
+  a: { level: 0, added: 0, T: 0, alpha: 0, boil: 0, gap: 0 }
+};
+var runs = [], ctlMs = null, workShown = 0, WORK = [], SC = null, celebrated = false;
+
+/* =====================================================================
+   the data-entry form
+   ===================================================================== */
+var FIELDS = [
+  { k: "tb0",   lab: "Boiling point of pure S", u: "K",
+    lo: 50, hi: 1500, dp: 2,
+    hint: "the standard boiling point the question gives for S" },
+  { k: "hvap",  lab: "Enthalpy of vaporisation of S", u: "&times; R",
+    lo: 0.05, hi: 500, dp: 3,
+    hint: "the question quotes it as a multiple of R — enter that multiple" },
+  { k: "ratio", lab: "Molar mass of B ÷ that of S", u: "&times;",
+    lo: 0.01, hi: 2000, dp: 3,
+    hint: "“the molar mass of B is … times the molar mass of S”" },
+  { k: "pct",   lab: "Concentration of B", u: "% (m/m)",
+    lo: 0.0001, hi: 60, dp: 4,
+    hint: "grams of B per 100 g of solvent" },
+  { k: "tbsol", lab: "Boiling point of the solution", u: "K",
+    lo: 50, hi: 2000, dp: 2,
+    hint: "the one measurement the question hands you" }
+];
+var STOICH = [
+  { k: "pc", lo: 0, hi: 12 },
+  { k: "pd", lo: 0, hi: 12 }
+];
+var entry = {};                  /* raw strings the student typed          */
+
+function formHTML(){
+  var out = '<h3><span>Instrument panel — enter the data from the question</span>'
+          + '<em>every value is in section 01</em></h3><div class="form">', i;
+  for(i = 0; i < FIELDS.length; i++){
+    var f = FIELDS[i];
+    out += '<div class="fld"><label for="in_' + f.k + '">' + f.lab + '</label>'
+        + '<div class="box"><input id="in_' + f.k + '" inputmode="decimal" placeholder="?" '
+        + 'value="' + (entry[f.k] === undefined ? "" : esc(entry[f.k])) + '" '
+        + 'aria-label="' + f.lab.replace(/"/g, "") + '">'
+        + '<span class="u">' + f.u + '</span></div>'
+        + '<div class="fh" id="fh_' + f.k + '">' + f.hint + '</div></div>';
+  }
+  out += '<div class="fld stoich"><label for="in_pc">What one B breaks into</label>'
+      + '<div class="box">B&nbsp;&#8652;<input id="in_pc" inputmode="numeric" placeholder="?" '
+      + 'value="' + (entry.pc === undefined ? "" : esc(entry.pc)) + '" aria-label="moles of C">'
+      + 'C&nbsp;+<input id="in_pd" inputmode="numeric" placeholder="?" '
+      + 'value="' + (entry.pd === undefined ? "" : esc(entry.pd)) + '" aria-label="moles of D">'
+      + 'D</div><div class="fh" id="fh_stoich">how many C and how many D one B leaves</div></div>';
+  out += '</div><div class="runrow">'
+      + '<button class="run" id="runbtn" type="button" disabled>&#9654;&nbsp; Run experiment</button>'
+      + '<div class="msg" id="runmsg">Fill in all six boxes to arm the bench.</div></div>';
+  return out;
+}
+
+function readForm(){
+  var D = {}, ok = true, filled = 0, total = FIELDS.length + 2, i;
+  function grade(id, key, lo, hi, integer){
+    var el2 = $("in_" + key), fh = $("fh_" + (key === "pc" || key === "pd" ? "stoich" : key));
+    var raw = el2 ? el2.value : "";
+    entry[key] = raw;
+    if(!raw || !raw.trim()){ if(el2){ el2.classList.remove("bad", "ok"); } return null; }
+    filled++;
+    var v = parseNum(raw);
+    var bad = null;
+    if(v === null) bad = "That is not a number I can read.";
+    else if(integer && Math.abs(v - Math.round(v)) > 1e-9) bad = "Whole numbers only here.";
+    else if(v < lo || v > hi) bad = "Out of range (" + lo + " to " + hi + ").";
+    if(bad){
+      if(el2){ el2.classList.add("bad"); el2.classList.remove("ok"); }
+      if(fh){ fh.classList.add("bad"); fh.textContent = bad; }
+      return undefined;
+    }
+    if(el2){ el2.classList.remove("bad"); el2.classList.add("ok"); }
+    return integer ? Math.round(v) : v;
+  }
+  for(i = 0; i < FIELDS.length; i++){
+    var f = FIELDS[i], fh2 = $("fh_" + f.k);
+    if(fh2){ fh2.classList.remove("bad"); fh2.innerHTML = f.hint; }
+  }
+  var fs = $("fh_stoich");
+  if(fs){ fs.classList.remove("bad"); fs.innerHTML = "how many C and how many D one B leaves"; }
+  for(i = 0; i < FIELDS.length; i++){
+    var g = grade(0, FIELDS[i].k, FIELDS[i].lo, FIELDS[i].hi, false);
+    if(g === undefined) ok = false;
+    else if(g === null) ok = false;
+    else D[FIELDS[i].k] = g;
+  }
+  for(i = 0; i < STOICH.length; i++){
+    var s = grade(0, STOICH[i].k, STOICH[i].lo, STOICH[i].hi, true);
+    if(s === undefined) ok = false;
+    else if(s === null) ok = false;
+    else D[STOICH[i].k] = s;
+  }
+  return { ok: ok && filled === total, D: D, filled: filled, total: total };
+}
+
+function syncForm(){
+  if(ST.phase !== "setup") return;
+  var r = readForm(), btn = $("runbtn"), msg = $("runmsg");
+  if(!btn) return;
+  btn.disabled = !r.ok;
+  if(r.ok){
+    var nu = nuOf(r.D);
+    if(nu < 2){
+      btn.disabled = true;
+      msg.innerHTML = "One B has to leave at least <b>2</b> particles for anything to dissociate "
+        + "into — check the C and D boxes.";
+      return;
+    }
+    msg.innerHTML = "<b>Armed.</b> The bench will boil the pure solvent, dissolve B, and find out "
+      + "how much of it has to break apart to reach " + r.D.tbsol.toFixed(2) + " K.";
+  } else {
+    msg.innerHTML = "<b>" + r.filled + " of " + r.total + "</b> boxes filled. Read the question in "
+      + "section 01 and enter every value it gives you.";
+  }
+}
+
+/* =====================================================================
+   the run
+   ===================================================================== */
+var STAGES = [
+  { key: "base",  rail: "Boil S",     dur: 2.6 },
+  { key: "add",   rail: "Add B",      dur: 2.4 },
+  { key: "noboil",rail: "Boil again", dur: 2.6 },
+  { key: "gap",   rail: "Compare",    dur: 2.4 },
+  { key: "split", rail: "Dissociate", dur: 4.4 },
+  { key: "count", rail: "Count",      dur: 2.6 }
+];
+
+function solve(D){
+  var km = kbTimesM(D), nu = nuOf(D);
+  var dT = D.tbsol - D.tb0;
+  var i = dT / km;
+  var alpha = (i - 1) / (nu - 1);
+  var out = { km: km, nu: nu, dT: dT, i: i, alpha: alpha, tbNo: D.tb0 + km,
+              tbFull: D.tb0 + nu * km, ok: true, why: "" };
+  if(!(km > 0) || !isFinite(km)){ out.ok = false; out.why =
+    "Those numbers give a Kb·m of " + km + " K, which is not a boiling point elevation at all."; }
+  else if(i < 1){ out.ok = false; out.why =
+    "Your solution would have to boil at least at " + out.tbNo.toFixed(2) + " K, because that much "
+    + "rise comes from the undissolved B alone. A non-volatile solute can only raise a boiling "
+    + "point, never lower it, so " + D.tbsol.toFixed(2) + " K is below what is physically possible."; }
+  else if(alpha > 1){ out.ok = false; out.why =
+    "Even if every single B broke apart, the flask could only reach " + out.tbFull.toFixed(2)
+    + " K (i = " + nu.toFixed(0) + ", the ceiling for B ⇌ " + D.pc + "C + " + D.pd + "D). "
+    + "You entered " + D.tbsol.toFixed(2) + " K, which is above that ceiling."; }
+  return out;
+}
+
+function startRun(){
+  var r = readForm();
+  if(!r.ok) return;
+  ST.D = r.D;
+  ST.R = solve(r.D);
+  ST.phase = "running";
+  ST.stage = 0; ST.t = 0; ST.playing = true;
+  ST.a = { level: 0, added: 0, T: tMin(), alpha: 0, boil: 0, gap: 0 };
+  workShown = 0;
+  WORK = buildWork(ST.D, ST.R);
+  celebrated = false;
+  buildScene();
+  revealWork();
+  renderSwap(); drawGauges(); renderWork(); drawChart(); drawRecord();
+  ctlMs.show();
+  drawMsGauges();
+}
+
+function buildWork(D, R){
+  var Ms = "M<sub>S</sub>";
+  var w = [];
+  w.push({ st: 0, h: "K<sub>b</sub> from the solvent alone",
+    e: "K<sub>b</sub> = R T<sub>b</sub>&deg;<sup>2</sup> " + Ms + " / ΔH<sub>vap</sub> = "
+     + D.tb0 + "<sup>2</sup> &times; " + Ms + "/1000 ÷ " + fmt(D.hvap)
+     + " = <b>" + fmt(D.tb0 * D.tb0 / (1000 * D.hvap)) + " " + Ms + "</b>" });
+  w.push({ st: 1, h: "the molality of B",
+    e: "m = " + fmt(D.pct) + " ÷ (" + fmt(D.ratio) + " " + Ms + ") ÷ 0.100 kg = <b>"
+     + fmt(D.pct / (D.ratio * SOLV_KG)) + " / " + Ms + "</b> mol kg<sup>−1</sup>" });
+  w.push({ st: 1, key: 1, h: "and their product — " + Ms + " cancels",
+    e: "K<sub>b</sub> m = <span class='res2'>" + R.km.toFixed(3) + " K</span>" });
+  w.push({ st: 2, h: "with nothing dissociated, i = 1",
+    e: "ΔT<sub>b</sub> = 1 &times; " + R.km.toFixed(3) + " = <b>" + R.km.toFixed(2)
+     + "</b> K &rarr; T<sub>b</sub> = <b>" + R.tbNo.toFixed(2) + " K</b>" });
+  w.push({ st: 3, h: "but you measured",
+    e: "ΔT<sub>b</sub> = " + D.tbsol.toFixed(2) + " − " + D.tb0.toFixed(2) + " = <b>"
+     + R.dT.toFixed(2) + "</b> K &nbsp;&rarr;&nbsp; i = " + R.dT.toFixed(2) + " / "
+     + R.km.toFixed(3) + " = <span class='res2'>" + R.i.toFixed(3) + "</span>" });
+  if(R.ok){
+    w.push({ st: 4, h: "one B leaves " + R.nu + " particles",
+      e: "(1 − &alpha;) + " + D.pc + "&alpha; + " + D.pd + "&alpha; = 1 + " + (R.nu - 1)
+       + "&alpha; = <b>" + R.i.toFixed(3) + "</b>" });
+    w.push({ st: 5, key: 1, h: "so the mole percent dissociated is",
+      e: "&alpha; = (" + R.i.toFixed(3) + " − 1) / " + (R.nu - 1) + " = "
+       + R.alpha.toFixed(4) + " &nbsp;&rarr;&nbsp; <span class='res2'>"
+       + (100 * R.alpha).toFixed(2) + " %</span>" });
+  }
+  return w;
+}
+
+function fmt(x){
+  if(Math.abs(x - Math.round(x)) < 1e-9) return String(Math.round(x));
+  var s = x.toFixed(4);
+  while(s.length > 1 && s.charAt(s.length - 1) === "0") s = s.slice(0, -1);
+  if(s.charAt(s.length - 1) === ".") s = s.slice(0, -1);
+  return s;
+}
+
+/* how far the run gets: a refused measurement stops after stage 3 */
+function lastStage(){ return ST.R && ST.R.ok ? 5 : 3; }
+
+function tickRun(dt){
+  if(ST.phase !== "running" || !ST.playing) return;
+  ST.t += dt * ST.speed;
+  var s = STAGES[ST.stage];
+  if(ST.t >= s.dur){
+    ST.t = 0;
+    if(ST.stage >= lastStage()){
+      ST.playing = false;
+      ST.phase = ST.R.ok ? "done" : "refused";
+      finishRun();
+      return;
+    }
+    ST.stage++;
+    revealWork();
+    renderSwap();
+    drawGauges();
+  }
+  applyStage();
+}
+
+function applyStage(){
+  var D = ST.D, R = ST.R, s = STAGES[ST.stage], p = clamp(ST.t / s.dur, 0, 1), A = ST.a;
+  function ease(x){ return x < 0.5 ? 2 * x * x : 1 - Math.pow(-2 * x + 2, 2) / 2; }
+  if(s.key === "base"){
+    A.level = clamp(p / 0.35, 0, 1);
+    A.boil = clamp((p - 0.4) / 0.25, 0, 1);
+    A.T = tMin() + (D.tb0 - tMin()) * ease(clamp((p - 0.3) / 0.7, 0, 1));
+    A.added = 0; A.alpha = 0; A.gap = 0;
+  } else if(s.key === "add"){
+    A.level = 1; A.boil = 0.35 + 0.15 * p; A.T = D.tb0;
+    A.added = ease(clamp(p / 0.6, 0, 1));
+  } else if(s.key === "noboil"){
+    A.added = 1; A.boil = 1;
+    A.T = D.tb0 + (R.tbNo - D.tb0) * ease(p);
+  } else if(s.key === "gap"){
+    A.T = R.tbNo; A.gap = ease(clamp(p / 0.5, 0, 1));
+  } else if(s.key === "split"){
+    A.gap = 1;
+    var q = ease(p);
+    A.alpha = R.alpha * q;
+    A.T = R.tbNo + (D.tbsol - R.tbNo) * q;
+  } else if(s.key === "count"){
+    A.alpha = R.alpha; A.T = D.tbsol; A.gap = 1;
+  }
+}
+
+function revealWork(){
+  var n = 0, i;
+  for(i = 0; i < WORK.length; i++) if(WORK[i].st <= ST.stage) n++;
+  if(n !== workShown){ workShown = n; renderWork(); }
+}
+
+function finishRun(){
+  var D = ST.D, R = ST.R;
+  workShown = WORK.length;
+  renderWork(); renderSwap(); drawGauges(); drawChart(); drawRecord(); syncGate();
+  runs.push({ tb0: D.tb0, tbsol: D.tbsol, nu: R.nu, km: R.km, i: R.i,
+              pct: R.ok ? 100 * R.alpha : null, ok: R.ok });
+  if(runs.length > 10) runs.shift();
+  drawRuns();
+  if(R.ok){
+    note("Ran the bench on T<sub>b</sub>&deg; = <b>" + D.tb0.toFixed(2) + " K</b>, measurement <b>"
+       + D.tbsol.toFixed(2) + " K</b>, B ⇌ " + D.pc + "C + " + D.pd + "D: the flask matched "
+       + "when <b>" + (100 * R.alpha).toFixed(2) + " %</b> of the B had broken apart.");
+    if(!celebrated){
+      celebrated = true;
+      var ins = document.createElement("div");
+      ins.className = "insight";
+      ins.innerHTML = "<b>What the run showed.</b> Undissociated, your solution boils at <b>"
+        + R.tbNo.toFixed(2) + " K</b>. You measured <b>" + D.tbsol.toFixed(2)
+        + " K</b>. The whole of that difference is extra particles — i = <b>" + R.i.toFixed(3)
+        + "</b> — and since one B leaves " + R.nu + " particles, "
+        + "1 + " + (R.nu - 1) + "&alpha; = " + R.i.toFixed(3) + " and &alpha; = <b>"
+        + (100 * R.alpha).toFixed(2) + " %</b>.";
+      $("notebook").parentNode.appendChild(ins);
+    }
+  } else {
+    note("The bench refused a run: " + esc(R.why));
+  }
+}
+
+/* =====================================================================
+   the swapping panel
+   ===================================================================== */
+function renderSwap(){
+  var el2 = $("swap"), D = ST.D, R = ST.R;
+  if(ST.phase === "setup"){
+    el2.innerHTML = formHTML();
+    wireForm();
+    setPhase(0);
+    syncForm();
+    return;
+  }
+  if(ST.phase === "running"){
+    setPhase(1);
+    el2.innerHTML = '<h3><span>The experiment is running</span><em>step '
+      + (ST.stage + 1) + ' of ' + (lastStage() + 1) + '</em></h3>'
+      + railHTML() + '<div class="narr">' + narrate() + '</div>' + PBHTML();
+    wirePlayback();
+    return;
+  }
+  setPhase(2);
+  if(ST.phase === "refused"){
+    el2.innerHTML = '<h3><span>The bench stopped the run</span><em>the data cannot be '
+      + 'reconciled</em></h3>'
+      + '<div class="res no"><div class="big"><div class="k">no answer</div>'
+      + '<div class="v">impossible</div></div>'
+      + '<div class="why">' + esc(R.why) + '<br><br>Press <b>change the data</b> and check what you '
+      + 'typed against the question.</div></div>' + PBHTML();
+    wirePlayback();
+    return;
+  }
+  el2.innerHTML = '<h3><span>Result of your run</span><em>mole percent of B dissociated</em></h3>'
+    + '<div class="res"><div class="big"><div class="k">answer</div>'
+    + '<div class="v" id="bigans">' + (100 * R.alpha).toFixed(2) + ' %</div></div>'
+    + '<div class="why">The pure solvent boiled at <b>' + D.tb0.toFixed(2)
+    + ' K</b>. Dissolving B without letting any of it break apart raised that to <b>'
+    + R.tbNo.toFixed(2) + ' K</b> &mdash; a rise of <b>' + R.km.toFixed(2)
+    + ' K</b>. Your flask actually boiled at <b>' + D.tbsol.toFixed(2)
+    + ' K</b>, a rise of <b>' + R.dT.toFixed(2) + ' K</b>, so there are <b>' + R.i.toFixed(3)
+    + '&times;</b> as many particles as were dissolved. One B leaves <b>' + R.nu
+    + '</b> particles, so 1 + ' + (R.nu - 1) + '&alpha; = ' + R.i.toFixed(3)
+    + ' and <b>&alpha; = ' + (100 * R.alpha).toFixed(2) + ' %</b>.</div></div>' + PBHTML();
+  wirePlayback();
+}
+
+function PBHTML(){
+  return '<div class="playback" id="pbbar">'
+    + '<span class="lb">run</span>'
+    + '<button type="button" id="pbpause">\u258F\u258F pause</button>'
+    + '<button type="button" id="pbreplay">\u21BB replay</button>'
+    + '<span class="lb" style="margin-left:6px">speed</span>'
+    + '<button type="button" id="sp05" data-s="0.5">0.5\u00D7</button>'
+    + '<button type="button" id="sp1" data-s="1">1\u00D7</button>'
+    + '<button type="button" id="sp2" data-s="2">2\u00D7</button>'
+    + '<button class="act" type="button" id="pbedit" style="margin-left:auto">'
+    + '\u2190 change the data</button></div>';
+}
+
+function wirePlayback(){
+  var ids = ["sp05", "sp1", "sp2"], i;
+  var pause = $("pbpause");
+  if(!pause) return;
+  pause.innerHTML = (ST.phase === "running" && !ST.playing) ? "\u25B6 resume" : "\u258F\u258F pause";
+  pause.disabled = ST.phase !== "running";
+  pause.addEventListener("click", function(){
+    if(ST.phase !== "running") return;
+    ST.playing = !ST.playing;
+    pause.innerHTML = ST.playing ? "\u258F\u258F pause" : "\u25B6 resume";
+  });
+  $("pbreplay").addEventListener("click", function(){
+    if(!ST.D) return;
+    ST.phase = "running"; ST.stage = 0; ST.t = 0; ST.playing = true;
+    ST.a = { level: 0, added: 0, T: tMin(), alpha: 0, boil: 0, gap: 0 };
+    workShown = 0; revealWork();
+    renderSwap(); drawGauges(); renderWork(); drawChart(); drawRecord();
+  });
+  for(i = 0; i < ids.length; i++)
+    (function(id){
+      var b = $(id);
+      b.setAttribute("aria-pressed", (+b.dataset.s === ST.speed) ? "true" : "false");
+      b.addEventListener("click", function(){
+        ST.speed = +b.dataset.s;
+        for(var j = 0; j < ids.length; j++)
+          $(ids[j]).setAttribute("aria-pressed", ids[j] === id ? "true" : "false");
+      });
+    })(ids[i]);
+  $("pbedit").addEventListener("click", toSetup);
+}
+
+function railHTML(){
+  var out = '<div class="rail">', i, last = lastStage();
+  for(i = 0; i <= last; i++){
+    var c = i < ST.stage ? " done" : (i === ST.stage ? " now" : "");
+    out += '<span class="s' + c + '">' + STAGES[i].rail + '</span>';
+  }
+  return out + '</div>';
+}
+
+function narrate(){
+  var D = ST.D, R = ST.R, s = STAGES[ST.stage];
+  if(s.key === "base") return '<span class="lead">Boiling the pure solvent first.</span>'
+    + 'The bench needs a baseline. With no solute in it, S boils at the <b>' + D.tb0.toFixed(2)
+    + ' K</b> you entered — that is the mark every later reading is measured from.';
+  if(s.key === "add") return '<span class="lead">Weighing in the compound B.</span>'
+    + '<b>' + fmt(D.pct) + ' g</b> of B per 100 g of S, and B is <b>' + fmt(D.ratio)
+    + '&times;</b> heavier than S, so the molality follows. Twelve drawn units stand for all of it.';
+  if(s.key === "noboil") return '<span class="lead">Boiling it again — with nothing broken '
+    + 'apart yet.</span>Every B still whole means one particle each, i = 1, and the flask climbs '
+    + 'to <b>' + R.tbNo.toFixed(2) + ' K</b>.';
+  if(s.key === "gap") return '<span class="lead">Comparing that with your measurement.</span>'
+    + 'You entered <b>' + D.tbsol.toFixed(2) + ' K</b>. The bench reached <b>'
+    + R.tbNo.toFixed(2) + ' K</b>. The orange band on the scale is the <b>'
+    + (D.tbsol - R.tbNo).toFixed(2) + ' K</b> nobody has accounted for yet.';
+  if(s.key === "split") return '<span class="lead">Letting B break apart until the flask '
+    + 'matches.</span>Each unit that goes leaves <b>' + R.nu + '</b> particles behind. Watch the '
+    + 'particle count and the temperature climb together — the bench stops the moment the '
+    + 'thermometer reaches your <b>' + D.tbsol.toFixed(2) + ' K</b>.';
+  return '<span class="lead">Counting what is in the flask.</span>'
+    + '<b>' + (NUNITS * R.i).toFixed(1) + '</b> particles where <b>' + NUNITS
+    + '</b> were dissolved — that ratio is the van’t Hoff factor, and it is all the '
+    + 'bench needs.';
+}
+
+function setPhase(n){
+  var i;
+  for(i = 0; i < 3; i++){
+    var e = $("ph" + i);
+    e.className = "ph" + (i === n ? " now" : (i < n ? " done" : ""));
+  }
+  $("phtag").textContent = n === 0 ? "waiting for your data"
+    : (n === 1 ? "experiment in progress" : (ST.phase === "refused" ? "run refused" : "run complete"));
+}
+
+/* =====================================================================
+   gauges, working, chart, record
+   ===================================================================== */
+function gaugeDefs(){
+  var D = ST.D, R = ST.R, A = ST.a;
+  if(!D) return [
+    { k: "K<sub>b</sub> &times; m", v: "—", u: "K", c: "" },
+    { k: "ΔT<sub>b</sub> measured", v: "—", u: "K", c: "" },
+    { k: "particles per B", v: "—", u: "stoichiometry", c: "" },
+    { k: "particles now", v: "—", u: "of " + NUNITS, c: "" },
+    { k: "van 't Hoff i", v: "—", u: "after ÷ before", c: "" },
+    { k: "mole % dissociated", v: "—", u: "the answer", c: "" }
+  ];
+  var known = ST.stage;                 /* how much the run has established */
+  var iNow = 1 + (R.nu - 1) * A.alpha;
+  return [
+    { k: "K<sub>b</sub> &times; m", v: known >= 1 ? R.km.toFixed(3) : "—",
+      u: "K", c: known >= 1 ? "--good" : "" },
+    { k: "ΔT<sub>b</sub> measured", v: known >= 3 ? R.dT.toFixed(2) : "—",
+      u: "K", c: known >= 3 ? "--s2" : "" },
+    { k: "particles per B", v: known >= 1 ? String(R.nu) : "—",
+      u: "stoichiometry", c: known >= 1 ? "--s4" : "" },
+    { k: "particles now", v: known >= 1 ? (NUNITS * iNow).toFixed(1) : "—",
+      u: "of " + NUNITS, c: "--s4" },
+    { k: "van 't Hoff i", v: known >= 3 ? R.i.toFixed(3) : iNow.toFixed(3),
+      u: "after ÷ before", c: known >= 3 ? "--s1" : "" },
+    { k: "mole % dissociated",
+      v: (ST.phase === "done" || (ST.phase === "running" && ST.stage >= 5))
+         ? (100 * R.alpha).toFixed(2) : "—",
+      u: "the answer", c: ST.phase === "done" ? "--good" : "" }
+  ];
+}
+function drawGauges(){
+  var d = gaugeDefs(), out = "", i;
+  for(i = 0; i < d.length; i++)
+    out += '<div class="ro' + (d[i].v === "—" ? " dim" : "") + '"><div class="k">' + d[i].k
+        + '</div><div class="v"' + (d[i].c ? ' style="color:var(' + d[i].c + ')"' : "") + '>'
+        + d[i].v + '</div><div class="u">' + d[i].u + '</div></div>';
+  $("gauges").innerHTML = out;
+}
+
+function renderWork(){
+  var out = "", i;
+  for(i = 0; i < workShown; i++)
+    out += '<div class="ec' + (WORK[i].key ? " key" : "") + '">' + WORK[i].e + '</div>';
+  var left = WORK.length - workShown;
+  if(!WORK.length)
+    out = '<div class="pend">Enter the data and run the experiment — each line of working '
+        + 'appears as the step that earns it is carried out.</div>';
+  else if(left > 0)
+    out += '<div class="pend">' + left + ' more line' + (left === 1 ? "" : "s")
+        + ' as the run proceeds…</div>';
+  var box = $("work");
+  box.innerHTML = out;
+  box.scrollTop = box.scrollHeight;
+}
+
+function tMin(){ return ST.D ? ST.D.tb0 - 0.22 * tSpan() : 0; }
+function tMax(){ return ST.D ? ST.D.tb0 + 1.18 * tSpan() : 1; }
+function tSpan(){
+  var R = ST.R, D = ST.D;
+  var hi = Math.max(R && R.ok ? D.tbsol - D.tb0 : 0, R ? R.km : 1, 1e-6);
+  if(R && !R.ok) hi = Math.max(hi, Math.abs(D.tbsol - D.tb0), R.tbFull - D.tb0);
+  return hi;
+}
+
+function drawChart(){
+  var D = ST.D, R = ST.R;
+  if(!D){
+    var svg = $("chart");
+    while(svg.firstChild) svg.removeChild(svg.firstChild);
+    svg.appendChild(el("rect", { x: 10, y: 10, width: 450, height: 200, rx: 10,
+      fill: "none", stroke: css("--line"), "stroke-width": 1.4, "stroke-dasharray": "7 6" }));
+    var t1 = el("text", { x: 235, y: 100, "text-anchor": "middle", fill: css("--text-muted"),
+      "font-size": 15 });
+    t1.textContent = "boiling point against mole % dissociated";
+    svg.appendChild(t1);
+    var t2 = el("text", { x: 235, y: 126, "text-anchor": "middle", fill: css("--text-muted"),
+      "font-size": 13.5 });
+    t2.textContent = "drawn from your data once the run starts";
+    svg.appendChild(t2);
+    return;
+  }
+  var pts = [], k;
+  for(k = 0; k <= 100; k += 2) pts.push([k, tbOf(D, k / 100)]);
+  var curves = [
+    { pts: [[0, D.tbsol], [100, D.tbsol]], col: "--s2", w: 1.8, dash: "6 4" },
+    { pts: pts, col: "--s1", w: 2.4 }
+  ];
+  var showMark = ST.stage >= 4 || ST.phase === "done";
+  var cur = 100 * ST.a.alpha;
+  var points = [];
+  if(showMark) points.push({ x: cur, y: tbOf(D, ST.a.alpha), col: "--s4", r: 5.4,
+    label: ST.phase === "done" ? (100 * R.alpha).toFixed(2) + " %" : "" });
+  if(ST.phase === "done" && R.ok)
+    curves.push({ pts: [[cur, Math.min(D.tb0, D.tbsol) - 0.12 * (R.tbFull - D.tb0)],
+      [cur, D.tbsol]], col: "--good", w: 1.6, dash: "5 4" });
+  var span = Math.max(R.tbFull - D.tb0, Math.abs(D.tbsol - D.tb0), 1e-6);
+  plot($("chart"), {
+    xMin: 0, xMax: 100,
+    yMin: Math.min(D.tb0, D.tbsol) - 0.12 * span,
+    yMax: Math.max(R.tbFull, D.tbsol) + 0.12 * span,
+    ml: 58, mr: 46, xLabel: "mole % of B dissociated", yLabel: "boiling point / K",
+    curves: curves, points: points
+  });
+}
+
+function drawRecord(){
+  var D = ST.D, R = ST.R, done = ST.phase === "done", open = done || revealed;
+  var st = ST.stage;
+  function cell(k, v, n, fin){
+    return '<div class="rec"><div class="k">' + k + '</div><div class="v'
+      + (v === null ? " pend" : (fin ? " fin" : "")) + '">'
+      + (v === null ? "— not yet" : v) + '</div><div class="n">' + n + '</div></div>';
+  }
+  var rows;
+  if(!D){
+    rows = cell("K<sub>b</sub> &times; m", null, "built from the solvent data you enter", 0)
+         + cell("ΔT<sub>b</sub>", null, "your measurement minus the pure solvent", 0)
+         + cell("van 't Hoff i", null, "the rise divided by K<sub>b</sub> m", 0)
+         + cell("mole % dissociated", null, "what the run is for", 1);
+  } else {
+    rows = cell("K<sub>b</sub> &times; m", st >= 1 ? R.km.toFixed(3) + " K" : null,
+             "T<sub>b</sub>&deg;<sup>2</sup> &times; " + fmt(D.pct) + " / (1000 &times; "
+             + fmt(D.hvap) + " &times; " + fmt(D.ratio) + " &times; 0.100)", 0)
+         + cell("without dissociation", st >= 2 ? R.tbNo.toFixed(2) + " K" : null,
+             "i = 1, so the rise is K<sub>b</sub> m alone", 0)
+         + cell("ΔT<sub>b</sub> measured", st >= 3 ? R.dT.toFixed(2) + " K" : null,
+             D.tbsol.toFixed(2) + " − " + D.tb0.toFixed(2), 0)
+         + cell("van 't Hoff i", st >= 3 ? R.i.toFixed(3) : null,
+             "the measured rise ÷ K<sub>b</sub> m", 0)
+         + cell("particles from one B", st >= 1 ? String(R.nu) : null,
+             "B ⇌ " + D.pc + "C + " + D.pd + "D", 0)
+         + cell("mole % dissociated", (open && R.ok) ? (100 * R.alpha).toFixed(2) + " %" : null,
+             "1 + " + (R.nu - 1) + "&alpha; = i", 1);
+  }
+  $("record").innerHTML = rows;
+}
+
+function drawRuns(){
+  if(!runs.length){ $("runs").innerHTML = ""; $("runsempty").hidden = false; return; }
+  $("runsempty").hidden = true;
+  var out = "<thead><tr><th>#</th><th>T<sub>b</sub>&deg;</th><th>measured</th>"
+    + "<th>particles per B</th><th>i</th><th>mole % dissociated</th></tr></thead><tbody>", i;
+  for(i = 0; i < runs.length; i++){
+    var r = runs[i];
+    out += "<tr" + (r.ok ? " class='win'" : "") + "><td class='num'>" + (i + 1)
+        + "</td><td class='num'>" + r.tb0.toFixed(2) + "</td><td class='num'>" + r.tbsol.toFixed(2)
+        + "</td><td class='num'>" + r.nu + "</td><td class='num'>" + r.i.toFixed(3) + "</td><td>"
+        + (r.ok ? "<b class='yes'>" + r.pct.toFixed(2) + " %</b>"
+                : "<span class='no'>refused</span>") + "</td></tr>";
+  }
+  $("runs").innerHTML = out + "</tbody>";
+}
+
+function drawMsGauges(){
+  var D = ST.D;
+  if(!D){
+    $("msgauges").innerHTML = '<div class="ro dim"><div class="k">K<sub>b</sub></div>'
+      + '<div class="v">—</div><div class="u">run the bench first</div></div>';
+    return;
+  }
+  var Kb = kbOf(D, ST.Ms), m = molalOf(D, ST.Ms);
+  $("msgauges").innerHTML =
+      '<div class="ro"><div class="k">K<sub>b</sub></div><div class="v">' + Kb.toFixed(1)
+    + '</div><div class="u">K kg mol⁻¹</div></div>'
+    + '<div class="ro"><div class="k">molality m</div><div class="v">' + m.toFixed(5)
+    + '</div><div class="u">mol kg⁻¹</div></div>'
+    + '<div class="ro"><div class="k">K<sub>b</sub> &times; m</div>'
+    + '<div class="v" style="color:var(--good)">' + (Kb * m).toFixed(3)
+    + '</div><div class="u">K — never moves</div></div>';
+}
 
 /* =====================================================================
    the scene
    ===================================================================== */
-var SC = null;                    /* cached scene nodes                   */
-var LIQ = { x0: 34, x1: 186, y0: 158, y1: 326 };
-var COLS = [62, 110, 158], ROWS = [186, 222, 258, 294];
-var SCX = { x0: 236, x1: 252, yTop: 170, yBot: 350, tLo: 396, tHi: 418 };
+var LIQ = { x0: 32, x1: 170, yTop: 190, yBot: 392 };
+var COLS = [60, 100, 140], ROWS = [222, 264, 306, 348];
+var SCX = { x0: 206, x1: 226, yTop: 150, yBot: 396 };
 
 function scaleY(t){
-  return SCX.yBot - (clamp(t, SCX.tLo, SCX.tHi) - SCX.tLo) / (SCX.tHi - SCX.tLo)
-         * (SCX.yBot - SCX.yTop);
+  var lo = tMin(), hi = tMax();
+  if(!(hi > lo)) return SCX.yBot;
+  return SCX.yBot - (clamp(t, lo, hi) - lo) / (hi - lo) * (SCX.yBot - SCX.yTop);
 }
 
 function buildScene(){
@@ -1005,47 +1631,55 @@ function buildScene(){
 
   var defs = el("defs", {});
   var cp = el("clipPath", { id: "liqclip" });
-  cp.appendChild(el("path", { d: "M34 158 L186 158 L186 316 Q186 326 176 326 L44 326 "
-    + "Q34 326 34 316 Z" }));
-  defs.appendChild(cp);
-  svg.appendChild(defs);
+  cp.appendChild(el("path", { d: "M30 150 L172 150 L172 382 Q172 394 160 394 L42 394 "
+    + "Q30 394 30 382 Z" }));
+  defs.appendChild(cp); svg.appendChild(defs);
 
-  /* hotplate ---------------------------------------------------------- */
-  svg.appendChild(el("rect", { x: 14, y: 332, width: 194, height: 12, rx: 4,
-    fill: surf2, stroke: strong, "stroke-width": 1.2 }));
-  svg.appendChild(el("rect", { x: 22, y: 344, width: 178, height: 16, rx: 5,
-    fill: surf1, stroke: strong, "stroke-width": 1.2 }));
-  var glow = el("rect", { x: 20, y: 330, width: 182, height: 5, rx: 2.5, fill: s2, opacity: .5 });
-  glow.setAttribute("id", "glow"); svg.appendChild(glow);
-  var kn = el("circle", { cx: 186, cy: 352, r: 4.5, fill: s2, opacity: .85 });
-  svg.appendChild(kn);
-  var ht = el("text", { x: 30, y: 356, fill: muted, "font-size": 8.5,
+  /* the digital readout across the top */
+  svg.appendChild(el("rect", { x: 8, y: 8, width: 284, height: 76, rx: 11, fill: surf1,
+    stroke: strong, "stroke-width": 1.4 }));
+  var tl = el("text", { x: 20, y: 26, fill: muted, "font-size": 9,
+    "font-family": "ui-monospace,monospace" });
+  tl.textContent = "THERMOMETER"; svg.appendChild(tl);
+  var big = el("text", { x: 150, y: 62, "text-anchor": "middle", fill: ink, "font-size": 30,
+    "font-weight": 700, "font-family": "ui-monospace,monospace" });
+  big.textContent = "—"; svg.appendChild(big);
+  var bu = el("text", { x: 272, y: 26, "text-anchor": "end", fill: muted, "font-size": 9,
+    "font-family": "ui-monospace,monospace" });
+  bu.textContent = "KELVIN · 1 bar"; svg.appendChild(bu);
+  var lock = el("text", { x: 150, y: 78, "text-anchor": "middle", fill: good, "font-size": 10,
+    "font-weight": 700, "font-family": "ui-monospace,monospace", opacity: 0 });
+  lock.textContent = "✓ MATCHES YOUR MEASUREMENT"; svg.appendChild(lock);
+
+  /* hotplate */
+  svg.appendChild(el("rect", { x: 14, y: 396, width: 176, height: 13, rx: 4, fill: surf2,
+    stroke: strong, "stroke-width": 1.2 }));
+  svg.appendChild(el("rect", { x: 22, y: 409, width: 160, height: 17, rx: 5, fill: surf1,
+    stroke: strong, "stroke-width": 1.2 }));
+  var glow = el("rect", { x: 20, y: 393, width: 164, height: 5, rx: 2.5, fill: s2, opacity: 0 });
+  svg.appendChild(glow);
+  var ht = el("text", { x: 30, y: 421, fill: muted, "font-size": 8.5,
     "font-family": "ui-monospace,monospace" });
   ht.textContent = "HOTPLATE"; svg.appendChild(ht);
 
-  /* liquid + boiling contents ----------------------------------------- */
-  var liq = el("path", { d: "M34 158 L186 158 L186 316 Q186 326 176 326 L44 326 Q34 326 34 316 Z",
-    fill: s1, opacity: .1 });
+  /* liquid + contents */
+  var liq = el("rect", { x: 30, y: 394, width: 142, height: 0, fill: s1, opacity: .12,
+    "clip-path": "url(#liqclip)" });
   svg.appendChild(liq);
+  var surface = el("line", { x1: 32, x2: 170, y1: 394, y2: 394, stroke: s1, "stroke-width": 1.6,
+    opacity: 0 });
+  svg.appendChild(surface);
   var gLiq = el("g", { "clip-path": "url(#liqclip)" });
   svg.appendChild(gLiq);
 
-  /* the probe, behind the particles */
-  gLiq.appendChild(el("path", { d: "M232 138 C 232 168, 176 128, 168 168 L 168 262",
-    fill: "none", stroke: strong, "stroke-width": 2.4, "stroke-linecap": "round" }));
-  gLiq.appendChild(el("circle", { cx: 168, cy: 264, r: 4.5, fill: strong }));
-
-  /* bubbles */
   var bubbles = [];
   for(i = 0; i < 16; i++){
-    var b = el("circle", { cx: 60, cy: 320, r: 2.6, fill: s1, opacity: .3 });
+    var b = el("circle", { cx: 60, cy: 390, r: 2.6, fill: s1, opacity: 0 });
     gLiq.appendChild(b); bubbles.push(b);
   }
-
-  /* the 12 units of B */
   var units = [];
   for(i = 0; i < NUNITS; i++){
-    var g = el("g", {});
+    var g = el("g", { opacity: 0 });
     var core = el("circle", { r: 11.5, fill: s4, opacity: .92 });
     var lab = el("text", { "text-anchor": "middle", fill: "#fff", "font-size": 11,
       "font-weight": 700, "font-family": "ui-monospace,monospace", "pointer-events": "none" });
@@ -1061,85 +1695,85 @@ function buildScene(){
                  hx: COLS[i % 3], hy: ROWS[Math.floor(i / 3)], ph: i * 1.37 });
   }
 
-  /* beaker glass in front --------------------------------------------- */
-  svg.appendChild(el("path", { d: "M30 112 L30 318 Q30 332 46 332 L174 332 Q190 332 190 318 L190 112",
+  /* glass in front */
+  svg.appendChild(el("path", { d: "M30 130 L30 380 Q30 394 46 394 L156 394 Q172 394 172 380 L172 130",
     fill: "none", stroke: strong, "stroke-width": 2.4, "stroke-linejoin": "round" }));
-  svg.appendChild(el("path", { d: "M24 112 L196 112", stroke: strong, "stroke-width": 2.4,
+  svg.appendChild(el("path", { d: "M24 130 L178 130", stroke: strong, "stroke-width": 2.4,
     "stroke-linecap": "round" }));
-  svg.appendChild(el("path", { d: "M34 158 L186 158", stroke: s1, "stroke-width": 1.6,
-    opacity: .55 }));
 
-  /* legend in the head space */
-  var LG = [["B", s4, 40], ["C", s1, 92], ["D", s2, 140]];
+  var LG = [["B", s4, 40], ["C", s1, 88], ["D", s2, 130]];
   for(i = 0; i < LG.length; i++){
-    svg.appendChild(el("circle", { cx: LG[i][2], cy: 136, r: 5.6, fill: LG[i][1] }));
-    var lt = el("text", { x: LG[i][2] + 10, y: 140, fill: sec, "font-size": 10.5,
+    svg.appendChild(el("circle", { cx: LG[i][2], cy: 152, r: 5.4, fill: LG[i][1], opacity: .95 }));
+    var lt = el("text", { x: LG[i][2] + 9, y: 156, fill: sec, "font-size": 10.5,
       "font-family": "ui-monospace,monospace" });
     lt.textContent = LG[i][0]; svg.appendChild(lt);
   }
-  var sl = el("text", { x: 34, y: 106, fill: muted, "font-size": 9.5,
+  var sl = el("text", { x: 30, y: 122, fill: muted, "font-size": 9,
     "font-family": "ui-monospace,monospace" });
-  sl.textContent = "SOLUTION OF B IN S"; svg.appendChild(sl);
+  sl.textContent = "SOLVENT S"; svg.appendChild(sl);
 
-  /* the thermometer ---------------------------------------------------- */
-  svg.appendChild(el("rect", { x: 212, y: 52, width: 140, height: 84, rx: 11,
-    fill: surf1, stroke: strong, "stroke-width": 1.4 }));
-  var tl = el("text", { x: 224, y: 70, fill: muted, "font-size": 8.5,
-    "font-family": "ui-monospace,monospace" });
-  tl.textContent = "THERMOMETER"; svg.appendChild(tl);
-  var big = el("text", { x: 282, y: 104, "text-anchor": "middle", fill: ink, "font-size": 24,
-    "font-weight": 700, "font-family": "ui-monospace,monospace" });
-  big.textContent = "404.00"; svg.appendChild(big);
-  var bu = el("text", { x: 282, y: 124, "text-anchor": "middle", fill: muted, "font-size": 10,
-    "font-family": "ui-monospace,monospace" });
-  bu.textContent = "kelvin, at 1 bar"; svg.appendChild(bu);
-
+  /* the temperature scale */
   svg.appendChild(el("rect", { x: SCX.x0, y: SCX.yTop, width: SCX.x1 - SCX.x0,
     height: SCX.yBot - SCX.yTop, rx: 8, fill: surf2, stroke: line, "stroke-width": 1.2 }));
-  var bar = el("rect", { x: SCX.x0 + 2, y: scaleY(404), width: SCX.x1 - SCX.x0 - 4,
-    height: SCX.yBot - 2 - scaleY(404), rx: 6, fill: s1, opacity: .8 });
+  var gapband = el("rect", { x: SCX.x0 - 4, y: 0, width: SCX.x1 - SCX.x0 + 8, height: 0,
+    fill: s2, opacity: 0, rx: 3 });
+  svg.appendChild(gapband);
+  var bar = el("rect", { x: SCX.x0 + 2, y: SCX.yBot - 2, width: SCX.x1 - SCX.x0 - 4, height: 0,
+    rx: 6, fill: s1, opacity: .85 });
   svg.appendChild(bar);
 
-  function mark(t, col, txt, weight){
-    svg.appendChild(el("line", { x1: SCX.x0 - 6, x2: SCX.x1 + 4, y1: scaleY(t), y2: scaleY(t),
-      stroke: col, "stroke-width": 1.6, "stroke-dasharray": "5 3" }));
-    var m = el("text", { x: SCX.x1 + 10, y: scaleY(t) + 3.6, fill: col, "font-size": 9.5,
-      "font-weight": weight, "font-family": "ui-monospace,monospace" });
-    m.textContent = txt; svg.appendChild(m);
-  }
-  mark(TB0, muted, "400 K  pure S", 400);
-  mark(TARGET, s2, "408 K  measured", 700);
-
+  var marks = el("g", {}); svg.appendChild(marks);
   var ptr = el("path", { d: "M0 0", fill: s1 });
   svg.appendChild(ptr);
-  var pv = el("text", { x: SCX.x0 - 12, y: 0, "text-anchor": "end", fill: s1, "font-size": 10,
-    "font-weight": 700, "font-family": "ui-monospace,monospace" });
-  svg.appendChild(pv);
+  var gaplab = el("text", { x: SCX.x1 + 8, y: 0, fill: s2, "font-size": 9.5, "font-weight": 700,
+    "font-family": "ui-monospace,monospace", opacity: 0 });
+  svg.appendChild(gaplab);
 
-  var lock = el("text", { x: 282, y: 366, "text-anchor": "middle", fill: good, "font-size": 11,
-    "font-weight": 700, "font-family": "ui-monospace,monospace", opacity: 0 });
-  lock.textContent = "✓ METER LOCKED"; svg.appendChild(lock);
-
-  SC = { units: units, bubbles: bubbles, big: big, bar: bar, ptr: ptr, pv: pv,
-         glow: glow, lock: lock, liq: liq };
+  SC = { units: units, bubbles: bubbles, big: big, bar: bar, ptr: ptr, glow: glow, lock: lock,
+         liq: liq, surface: surface, marks: marks, gapband: gapband, gaplab: gaplab,
+         muted: muted, s2: s2, good: good, s1: s1 };
+  drawMarks();
 }
 
-/* the drawn temperature lags the true one, so the meter visibly settles */
-var Tshown = 404;
+function drawMarks(){
+  if(!SC) return;
+  var m = SC.marks;
+  while(m.firstChild) m.removeChild(m.firstChild);
+  if(!ST.D) return;
+  function mark(t, col, txt, weight){
+    var y = scaleY(t);
+    m.appendChild(el("line", { x1: SCX.x0 - 6, x2: SCX.x1 + 4, y1: y, y2: y, stroke: col,
+      "stroke-width": 1.6, "stroke-dasharray": "5 3" }));
+    var a = el("text", { x: SCX.x1 + 8, y: y - 2, fill: col, "font-size": 9.5,
+      "font-weight": weight, "font-family": "ui-monospace,monospace" });
+    a.textContent = t.toFixed(2) + " K"; m.appendChild(a);
+    var b = el("text", { x: SCX.x1 + 8, y: y + 9, fill: col, "font-size": 8.5,
+      "font-family": "ui-monospace,monospace", opacity: .85 });
+    b.textContent = txt; m.appendChild(b);
+  }
+  mark(ST.D.tb0, SC.muted, "pure S", 400);
+  mark(ST.D.tbsol, SC.s2, "you measured", 700);
+}
 
 function drawScene(dt){
   if(!SC) return;
-  var a = ST.alpha100 / 100, i, j;
-  var Ttrue = tbOf(a, ST.Ms);
-  Tshown += (Ttrue - Tshown) * Math.min(1, dt * 5.5);
-  if(Math.abs(Ttrue - Tshown) < 0.004) Tshown = Ttrue;
+  var A = ST.a, D = ST.D, R = ST.R, i, j;
+  var t = ST.clock, nFull, frac;
+  var alpha = A.alpha;
+  nFull = Math.floor(alpha * NUNITS + 1e-9);
+  frac = alpha * NUNITS - nFull;
 
-  var t = ST.clock;
-  var nFull = Math.floor(a * NUNITS + 1e-9);
-  var frac = a * NUNITS - nFull;
+  /* liquid */
+  var top = LIQ.yBot - (LIQ.yBot - LIQ.yTop) * A.level;
+  SC.liq.setAttribute("y", top);
+  SC.liq.setAttribute("height", Math.max(0, 394 - top));
+  SC.surface.setAttribute("y1", top); SC.surface.setAttribute("y2", top);
+  SC.surface.setAttribute("opacity", A.level > 0.02 ? 0.6 : 0);
+  SC.glow.setAttribute("opacity", A.boil * (0.42 + 0.16 * Math.sin(t * 3.1)));
 
   for(i = 0; i < NUNITS; i++){
     var u = SC.units[i];
+    u.g.setAttribute("opacity", A.added);
     var dx = 4.2 * Math.sin(t * 0.7 + u.ph), dy = 3.4 * Math.cos(t * 0.53 + u.ph * 1.7);
     var cx = u.hx + dx, cy = u.hy + dy;
     var s = i < nFull ? 1 : (i === nFull ? frac : 0);
@@ -1160,229 +1794,71 @@ function drawScene(dt){
 
   for(i = 0; i < SC.bubbles.length; i++){
     var ph = i * 0.618, sp = 26 + 12 * ((i * 7) % 5);
-    var y = LIQ.y1 - 4 - ((t * sp + ph * 130) % 170);
-    var x = LIQ.x0 + 12 + ((i * 53) % 128) + 3 * Math.sin(t * 2 + ph * 6);
-    var frac2 = (LIQ.y1 - y) / 170;
+    var y = LIQ.yBot - 4 - ((t * sp + ph * 130) % 200);
+    var x = LIQ.x0 + 12 + ((i * 53) % 116) + 3 * Math.sin(t * 2 + ph * 6);
+    var fr = (LIQ.yBot - y) / 200;
     SC.bubbles[i].setAttribute("cx", x);
     SC.bubbles[i].setAttribute("cy", y);
-    SC.bubbles[i].setAttribute("r", 1.9 + 2.2 * frac2);
-    SC.bubbles[i].setAttribute("opacity", 0.42 * (1 - frac2 * 0.85));
+    SC.bubbles[i].setAttribute("r", 1.9 + 2.2 * fr);
+    SC.bubbles[i].setAttribute("opacity", A.boil * 0.42 * (1 - fr * 0.85));
   }
-  SC.glow.setAttribute("opacity", 0.4 + 0.16 * Math.sin(t * 3.1));
 
-  $("pcount").textContent = (NUNITS * iOf(a)).toFixed(1) + " particles";
-  SC.big.textContent = Tshown.toFixed(2);
-  var y2 = scaleY(Tshown);
+  if(!D){ SC.big.textContent = "—"; SC.bar.setAttribute("height", 0);
+          SC.ptr.setAttribute("d", "M0 0"); SC.gapband.setAttribute("opacity", 0);
+          SC.gaplab.setAttribute("opacity", 0); SC.lock.setAttribute("opacity", 0);
+          $("pcount").textContent = "empty"; return; }
+
+  var matched = ST.phase === "done";
+  SC.big.textContent = A.T.toFixed(2);
+  SC.big.setAttribute("fill", css(matched ? "--good" : "--text-primary"));
+  var y2 = scaleY(A.T);
   SC.bar.setAttribute("y", y2);
   SC.bar.setAttribute("height", Math.max(0, SCX.yBot - 2 - y2));
-  SC.bar.setAttribute("fill", css(ST.matched ? "--good" : "--s1"));
+  SC.bar.setAttribute("fill", css(matched ? "--good" : "--s1"));
   SC.ptr.setAttribute("d", "M" + (SCX.x0 - 8) + " " + y2 + " l -7 -5 l 0 10 z");
-  SC.ptr.setAttribute("fill", css(ST.matched ? "--good" : "--s1"));
-  SC.pv.setAttribute("y", y2 + 3.6);
-  SC.pv.setAttribute("fill", css(ST.matched ? "--good" : "--s1"));
-  SC.pv.textContent = Tshown.toFixed(1);
-  SC.big.setAttribute("fill", css(ST.matched ? "--good" : "--text-primary"));
-  SC.lock.setAttribute("opacity", ST.matched ? 1 : 0);
+  SC.ptr.setAttribute("fill", css(matched ? "--good" : "--s1"));
+  SC.lock.setAttribute("opacity", matched ? 1 : 0);
+
+  /* the unexplained gap */
+  if(A.gap > 0 && R){
+    var yA = scaleY(R.tbNo), yB = scaleY(D.tbsol);
+    var lo2 = Math.min(yA, yB), h = Math.abs(yA - yB) * A.gap;
+    SC.gapband.setAttribute("y", yA > yB ? yA - h : yA);
+    SC.gapband.setAttribute("height", h);
+    SC.gapband.setAttribute("opacity", 0.3 * A.gap);
+    SC.gaplab.setAttribute("y", (yA + yB) / 2 + 3);
+    SC.gaplab.setAttribute("opacity", ST.stage === 3 ? A.gap : 0);
+    SC.gaplab.textContent = "+" + (D.tbsol - R.tbNo).toFixed(2) + " K ?";
+  } else {
+    SC.gapband.setAttribute("opacity", 0);
+    SC.gaplab.setAttribute("opacity", 0);
+  }
+
+  var iNow = 1 + (R.nu - 1) * alpha;
+  $("pcount").textContent = A.added < 0.5 ? "pure solvent"
+    : (NUNITS * iNow).toFixed(1) + " particles";
 }
 
 /* =====================================================================
-   gauges, chain, chart
+   gate
    ===================================================================== */
-function gaugeDefs(){
-  var a = ST.alpha100 / 100, Ms = ST.Ms;
-  var Kb = kbOf(Ms), m = molalOf(Ms), i = iOf(a), dT = dTOf(a, Ms);
-  return [
-    { k: "particles now", v: (NUNITS * i).toFixed(1), u: "was " + NUNITS, c: "--s4" },
-    { k: "van 't Hoff i", v: i.toFixed(3), u: "= 1 + 3α", c: "--s4" },
-    { k: "K<sub>b</sub>", v: Kb.toFixed(1), u: "K kg mol⁻¹", c: "" },
-    { k: "molality m", v: m.toFixed(5), u: "mol kg⁻¹", c: "" },
-    { k: "K<sub>b</sub> × m", v: (Kb * m).toFixed(3), u: "K, always", c: "--good" },
-    { k: "ΔT<sub>b</sub>", v: dT.toFixed(2), u: "K, the rise", c: "--s1" },
-    { k: "boiling point", v: (TB0 + dT).toFixed(2), u: "K", c: ST.matched ? "--good" : "--s2" }
-  ];
-}
-var lastG = null;
-function drawGauges(){
-  var d = gaugeDefs(), out = "", i;
-  for(i = 0; i < d.length; i++){
-    out += '<div class="ro"><div class="k">' + d[i].k + '</div>'
-        + '<div class="v"' + (d[i].c ? ' style="color:var(' + d[i].c + ')"' : "") + '>'
-        + d[i].v + '</div><div class="u">' + d[i].u + '</div>'
-        + '<div class="delta" id="dl' + i + '"></div></div>';
-  }
-  $("gauges").innerHTML = out;
-  if(lastG){
-    for(i = 0; i < d.length; i++){
-      var a = parseFloat(d[i].v), b = parseFloat(lastG[i]);
-      if(isFinite(a) && isFinite(b) && Math.abs(a - b) > 1e-9){
-        var e = $("dl" + i);
-        e.textContent = (a > b ? "▲" : "▼") + Math.abs(a - b).toFixed(
-          Math.abs(a - b) < 0.01 ? 4 : 2);
-        e.className = "delta " + (a > b ? "up" : "down") + " show";
-        (function(el2){ setTimeout(function(){ el2.classList.remove("show"); }, 60); })(e);
-      }
-    }
-  }
-  lastG = d.map(function(x){ return x.v; });
-}
-
-function drawChain(){
-  var a = ST.alpha100 / 100, Ms = ST.Ms;
-  var Kb = kbOf(Ms), m = molalOf(Ms), i = iOf(a), dT = dTOf(a, Ms);
-  $("chain").innerHTML =
-    '<span class="t">1 &middot; the constant, built from the solvent itself</span>'
-    + 'K<sub>b</sub> = R T<sub>b</sub>&deg;<sup>2</sup> M<sub>S</sub> / ΔH<sub>vap</sub> = '
-    + '400<sup>2</sup> &times; <span class="chg">' + Ms.toFixed(1) + '</span>/1000 ÷ 10 = <b>'
-    + Kb.toFixed(1) + '</b>'
-    + '<br><span class="t">2 &middot; 0.25 % of B, as a molality</span>'
-    + 'm = 0.25 ÷ (10 &times; <span class="chg">' + Ms.toFixed(1)
-    + '</span>) ÷ 0.100 kg = <b>' + m.toFixed(5) + '</b>'
-    + '<br><span class="t">3 &middot; the product the solvent cannot change</span>'
-    + 'K<sub>b</sub> m = <span class="res">' + (Kb * m).toFixed(3) + ' K</span>'
-    + '<br><span class="t">4 &middot; what the thermometer must read</span>'
-    + 'ΔT<sub>b</sub> = i K<sub>b</sub> m = <b>' + i.toFixed(3) + '</b> &times; '
-    + (Kb * m).toFixed(3) + ' = <b>' + dT.toFixed(2) + '</b> K &nbsp;→&nbsp; T<sub>b</sub> = '
-    + '<span class="res">' + (TB0 + dT).toFixed(2) + ' K</span>';
-}
-
-function drawChart(){
-  var pts = [], k, a;
-  for(k = 0; k <= 100; k += 2){
-    a = k / 100;
-    pts.push([k, tbOf(a, ST.Ms)]);
-  }
-  var cur = ST.alpha100, curT = tbOf(cur / 100, ST.Ms);
-  var curves = [
-    { pts: [[0, TARGET], [100, TARGET]], col: "--s2", w: 1.8, dash: "6 4" },
-    { pts: pts, col: "--s1", w: 2.4 }
-  ];
-  if(ST.matched)
-    curves.push({ pts: [[100 * ALPHA_ANS, 402], [100 * ALPHA_ANS, TARGET]], col: "--good",
-      w: 1.8, dash: "5 4" });
-  plot($("chart"), {
-    xMin: 0, xMax: 100, yMin: 402, yMax: 418, ml: 58, mr: 46,
-    xLabel: "mole % of B dissociated", yLabel: "boiling point / K",
-    curves: curves,
-    points: [{ x: cur, y: curT, col: "--s4", r: 5.4,
-      label: ST.matched ? "33.33 %" : (cur < 4 ? "" : cur.toFixed(1) + " %") }]
-  });
-}
-
-/* =====================================================================
-   status, record, logs, gate
-   ===================================================================== */
-function setStatus(cls, ic, html){
-  var s = $("status");
-  s.className = "status" + (cls ? " " + cls : "");
-  $("statusic").textContent = ic;
-  $("statustx").innerHTML = html;
-}
-
-function drawStatus(){
-  var a = ST.alpha100 / 100, T = tbOf(a, ST.Ms), gap = TARGET - T;
-  if(ST.matched){
-    setStatus("ok", "✓",
-      "<b>408.00 K</b> — the thermometer matches the question. Two particles now exist for "
-      + "every one dissolved, so <b>i = 2</b> and <b>1 + 3α = 2</b>. The answer box and the "
-      + "derivation are open.");
-    return;
-  }
-  if(ST.alpha100 === 0){
-    setStatus("", "1",
-      "None of the B has broken up yet, and the solution already boils <b>4 K</b> above pure S. "
-      + "The question says it boils <b>8 K</b> above. Turn the first dial and watch where the "
-      + "other 4 K comes from.");
-    return;
-  }
-  if(Math.abs(gap) < 0.6){
-    setStatus("near", "≈",
-      "Very close — the meter reads <b>" + T.toFixed(2) + " K</b>, "
-      + Math.abs(gap).toFixed(2) + " K "
-      + (gap > 0 ? "low" : "high")
-      + ". Nudge the dial with the − and + buttons, or type a value.");
-    return;
-  }
-  setStatus("", "2",
-    "The meter reads <b>" + T.toFixed(2) + " K</b>. That is <b>" + Math.abs(gap).toFixed(2)
-    + " K " + (gap > 0 ? "below" : "above") + "</b> the 408 K in the question, so "
-    + (gap > 0 ? "more" : "less") + " of the B has to be broken up.");
-}
-
-function drawRecord(){
-  var a = ST.alpha100 / 100, Ms = ST.Ms, Kb = kbOf(Ms), m = molalOf(Ms);
-  var open = ST.matched || revealed;
-  var rows = [
-    ["K<sub>b</sub> of the solvent", Kb.toFixed(1) + " K kg mol⁻¹",
-     "= 16 M<sub>S</sub>, built from 400 K and ΔH<sub>vap</sub> = 10R", false],
-    ["molality of B", m.toFixed(5) + " mol kg⁻¹",
-     "= 0.25 / M<sub>S</sub>, from 0.25 % and M<sub>B</sub> = 10 M<sub>S</sub>", false],
-    ["K<sub>b</sub> × m", (Kb * m).toFixed(3) + " K",
-     "the same for every solvent you tried", false],
-    ["ΔT<sub>b</sub> measured", (TARGET - TB0).toFixed(2) + " K",
-     "408 K on the thermometer minus 400 K for pure S", false],
-    ["van 't Hoff factor", open ? "2.000" : null, "= ΔT<sub>b</sub> / (K<sub>b</sub> m) = 8 / 4", false],
-    ["mole % of B dissociated", open ? "33.33 %" : null,
-     "1 + 3α = 2, so α = 1/3", true]
-  ];
-  var out = "", i;
-  for(i = 0; i < rows.length; i++){
-    var r = rows[i];
-    out += '<div class="rec"><div class="k">' + r[0] + '</div><div class="v'
-        + (r[1] === null ? " pend" : (r[3] ? " fin" : "")) + '">'
-        + (r[1] === null ? "— not yet measured" : r[1]) + '</div>'
-        + '<div class="n">' + r[2] + '</div></div>';
-  }
-  $("record").innerHTML = out;
-}
-
-function drawTrials(){
-  if(!trials.length){ $("trials").innerHTML = ""; $("trialempty").hidden = false; return; }
-  $("trialempty").hidden = true;
-  var out = "<thead><tr><th>#</th><th>mole % broken up</th><th>i</th><th>ΔT<sub>b</sub> / K</th>"
-    + "<th>T<sub>b</sub> / K</th><th>vs 408 K</th></tr></thead><tbody>", i;
-  for(i = 0; i < trials.length; i++){
-    var t = trials[i], hit = Math.abs(t.T - TARGET) <= TOL;
-    out += "<tr" + (hit ? " class='win'" : "") + "><td class='num'>" + (i + 1)
-        + "</td><td class='num'>" + t.a.toFixed(2) + "</td><td class='num'>" + t.i.toFixed(3)
-        + "</td><td class='num'>" + t.dT.toFixed(2) + "</td><td class='num'>" + t.T.toFixed(2)
-        + "</td><td>" + (hit ? "<span class='yes'>match</span>"
-        : "<span class='no'>" + (t.T > TARGET ? "+" : "−")
-          + Math.abs(t.T - TARGET).toFixed(2) + "</span>") + "</td></tr>";
-  }
-  $("trials").innerHTML = out + "</tbody>";
-}
-
-function drawMsTable(){
-  var out = "<thead><tr><th>M<sub>S</sub> / g mol⁻¹</th><th>K<sub>b</sub></th>"
-    + "<th>m</th><th>K<sub>b</sub> &times; m</th></tr></thead><tbody>", i;
-  if(!msSeen.length) out += "<tr><td colspan='4' style='color:var(--text-muted)'>"
-    + "move the second dial</td></tr>";
-  for(i = 0; i < msSeen.length; i++){
-    var Ms = msSeen[i], Kb = kbOf(Ms), m = molalOf(Ms);
-    out += "<tr><td class='num'>" + Ms.toFixed(1) + "</td><td class='num'>" + Kb.toFixed(1)
-        + "</td><td class='num'>" + m.toFixed(5) + "</td><td class='num'><b style='color:var(--good)'>"
-        + (Kb * m).toFixed(3) + "</b></td></tr>";
-  }
-  $("mstable").innerHTML = out + "</tbody>";
-}
-
 function syncGate(){
-  var open = ST.matched || revealed;
+  var open = (ST.phase === "done" && ST.R && ST.R.ok) || revealed;
   $("solgate").hidden = open;
   $("solbody").hidden = !open;
   var ab = $("answerbox");
   if(open){
     ab.classList.remove("locked");
-    $("ansval").textContent = ANSWER.text;
-    $("anssub").innerHTML = ANSWER.sub;
+    $("ansval").textContent = "33.33";
+    $("anssub").innerHTML = "mole % of B dissociated &middot; i = 2 &middot; &alpha; = 1/3";
     $("revealnow").hidden = true;
-    $("clsans").textContent = ANSWER.text + " %";
+    $("clsans").textContent = "33.33 %";
     if(!$("solbody").classList.contains("reveal")) $("solbody").classList.add("reveal");
-    $("solintro").innerHTML = ST.matched
-      ? "<b>The thermometer matched 408.00 K on your bench.</b> Here is the same run written out "
-        + "as it would be on paper."
-      : "Revealed early — go back to the bench and match the thermometer to see these "
-        + "numbers come out of your own measurement.";
+    $("solintro").innerHTML = (ST.phase === "done")
+      ? "<b>Your run finished.</b> Here is the same experiment written out as it would be on paper, "
+        + "with the paper’s own numbers."
+      : "Revealed early — go back to the bench, enter the data and run it to watch these "
+        + "numbers come out of the experiment.";
   } else {
     ab.classList.add("locked");
     $("ansval").textContent = "Run the experiment";
@@ -1393,112 +1869,42 @@ function syncGate(){
 }
 
 /* =====================================================================
-   the run
+   wiring
    ===================================================================== */
-function recompute(){
-  var T = tbOf(ST.alpha100 / 100, ST.Ms);
-  if(!ST.matched && !ST.snapping && Math.abs(T - TARGET) <= TOL) startSnap();
-  drawGauges(); drawChain(); drawChart(); drawStatus(); drawRecord();
-  if(ST.alpha100 > 0 && !firstBreak){
-    firstBreak = true;
-    note("The moment any B breaks up the particle count rises, and the boiling point rises with "
-       + "it. Nothing else on the bench moved — only the <b>number</b> of particles.");
+function wireForm(){
+  var i;
+  function bind(k){
+    var e = $("in_" + k);
+    if(!e) return;
+    e.addEventListener("input", syncForm);
+    e.addEventListener("keydown", function(ev){
+      if(ev.key === "Enter" && !$("runbtn").disabled) startRun();
+    });
   }
+  for(i = 0; i < FIELDS.length; i++) bind(FIELDS[i].k);
+  bind("pc"); bind("pd");
+  $("runbtn").addEventListener("click", startRun);
 }
 
-function startSnap(){
-  ST.snapping = 1;
-  var from = ST.alpha100, to = 100 * ALPHA_ANS, t0 = 0;
-  function step(ts){
-    if(!t0) t0 = ts;
-    var p = Math.min(1, (ts - t0) / 420);
-    ST.alpha100 = from + (to - from) * (p < .5 ? 2 * p * p : 1 - Math.pow(-2 * p + 2, 2) / 2);
-    if(ctlAlpha) ctlAlpha.show();
-    drawGauges(); drawChain(); drawChart();
-    if(p < 1){ requestAnimationFrame(step); return; }
-    ST.alpha100 = to; ST.snapping = 0; ST.matched = true;
-    if(document.activeElement === $("alphain")) $("alphain").blur();
-    if(ctlAlpha) ctlAlpha.show();
-    celebrate();
-  }
-  requestAnimationFrame(step);
+function toSetup(){
+  ST.phase = "setup"; ST.stage = -1; ST.playing = false; ST.R = null; ST.D = null;
+  ST.a = { level: 0, added: 0, T: 0, alpha: 0, boil: 0, gap: 0 };
+  WORK = []; workShown = 0;
+  buildScene();
+  renderSwap(); drawGauges(); renderWork(); drawChart(); drawRecord(); drawMsGauges();
 }
 
-function celebrate(){
-  if(celebrated) return;
-  celebrated = true;
-  syncGate();
-  drawGauges(); drawChain(); drawChart(); drawStatus(); drawRecord();
-  $("scalenote").innerHTML = "<b>4 of the 12</b> units broke up: 8 whole B plus 16 fragments — "
-    + "<b>24 particles</b> in the flask where there were 12. That doubling is the i = 2.";
-  note("<b>Matched.</b> The thermometer reads 408.00 K when <b>33.33 %</b> of the B has "
-     + "dissociated: i = 2, and 1 + 3α = 2 gives α = 1/3.");
-  var ins = document.createElement("div");
-  ins.className = "insight";
-  ins.innerHTML = "<b>What you just measured.</b> Doubling the boiling point rise took exactly a "
-    + "doubling of the particle count, and one B has to break into four particles to do it with "
-    + "only a third of the B gone. That is the whole question: "
-    + "<b>ΔT<sub>b</sub> = 8 K → i = 2 → 1 + 3α = 2 → α = 33.33 %</b>.";
-  $("notebook").parentNode.appendChild(ins);
-}
-
-function recordMs(raw){
-  var v = Math.round((raw === undefined ? ST.Ms : raw) * 10) / 10, i;
-  for(i = 0; i < msSeen.length; i++) if(Math.abs(msSeen[i] - v) < 0.05) return;
-  msSeen.push(v);
-  if(msSeen.length > 9) msSeen.shift();
-  drawMsTable();
-  if(msSeen.length >= 3){
-    var lo = Math.min.apply(null, msSeen), hi = Math.max.apply(null, msSeen);
-    if(hi - lo > 25)
-      note("Tried solvents from <b>" + lo.toFixed(1) + "</b> to <b>" + hi.toFixed(1)
-         + " g mol⁻¹</b>. K<sub>b</sub> changed by a factor of "
-         + (hi / lo).toFixed(1) + ", the molality by the same factor the other way, and "
-         + "<b>K<sub>b</sub> &times; m stayed at 4.000 K</b> — which is why the question "
-         + "never tells you what the solvent is.");
-  }
-}
-
-/* =====================================================================
-   boot
-   ===================================================================== */
 function redrawAll(){
-  buildScene(); drawGauges(); drawChain(); drawChart(); drawStatus(); drawRecord();
-  drawTrials(); drawMsTable();
+  buildScene(); drawGauges(); renderWork(); drawChart(); drawRecord(); drawRuns();
+  drawMsGauges();
+  if(ST.phase !== "setup") renderSwap();
 }
 
 (function init(){
-  buildScene();
-  ctlAlpha = makeControl({ slider: "alphasl", input: "alphain", hint: "alphahint",
-    valEl: "alphaval", key: "alpha100", lo: 0, hi: 100, step: 0.25, dp: 2, unit: "%",
-    onset: recompute });
   ctlMs = makeControl({ slider: "mssl", input: "msin", hint: "mshint", valEl: "msval",
     key: "Ms", lo: 10, hi: 250, step: 5, dp: 1, unit: "g mol⁻¹",
-    onset: function(){
-      recompute();
-      if(msTimer) clearTimeout(msTimer);
-      msTimer = (function(v){ return setTimeout(function(){ recordMs(v); }, 500); })(ST.Ms);
-    } });
+    onset: drawMsGauges });
 
-  $("logbtn").addEventListener("click", function(){
-    var a = ST.alpha100, T = tbOf(a / 100, ST.Ms);
-    trials.push({ a: a, i: iOf(a / 100), dT: T - TB0, T: T, Ms: ST.Ms });
-    if(trials.length > 12) trials.shift();
-    drawTrials();
-    $("acthint").innerHTML = "Logged — <b>" + trials.length + "</b> reading"
-      + (trials.length === 1 ? "" : "s") + " in section 03.";
-    note("Logged: <b>" + a.toFixed(2) + " %</b> dissociated gives i = <b>" + iOf(a / 100).toFixed(3)
-       + "</b>, a rise of <b>" + (T - TB0).toFixed(2) + " K</b> and a boiling point of <b>"
-       + T.toFixed(2) + " K</b>.");
-  });
-
-  $("resetbtn").addEventListener("click", function(){
-    ST.alpha100 = 0; ST.Ms = 40;
-    ctlAlpha.show(); ctlMs.show();
-    lastG = null;
-    recompute();
-    $("acthint").textContent = "Bench reset. The logs below are kept.";
-  });
 
   function doReveal(){ revealed = true; syncGate(); drawRecord(); }
   $("revealnow").addEventListener("click", doReveal);
@@ -1511,16 +1917,18 @@ function redrawAll(){
     redrawAll();
   });
 
+  ST.clock = 0;
+  buildScene();
   syncGate();
-  recompute();
-  recordMs();
-  drawTrials(); drawMsTable();
+  renderSwap(); drawGauges(); renderWork(); drawChart(); drawRecord(); drawRuns();
+  drawMsGauges();
 
   var last = 0;
   function loop(ts){
     var dt = last ? Math.min(0.05, (ts - last) / 1000) : 0.016;
     last = ts;
     ST.clock += dt;
+    tickRun(dt);
     drawScene(dt);
     requestAnimationFrame(loop);
   }

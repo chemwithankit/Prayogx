@@ -129,39 +129,82 @@ reading is used, so the distinction is worth stating rather than hiding.
 - **Answer key cross-check.** A published worked solution for this paper follows the same route —
   Kb = 16 M_S, Kb·m = 4, i = 2, i = 1 + 3α — and reports the same 33.33. IIT Roorkee's official key
   was not retrievable at the time of writing.
-- **Headless-browser run:** 80 assertions driving the finished page end to end — both dials across
-  their full range, the particle scene splitting exactly 6 of 12 units at 50 % and catching one
-  mid-split at a fractional setting, the seven gauges, the live equation chain, the chart, the
-  thermometer, Kb·m holding at 4.000 across a full sweep of M_S, the answer appearing nowhere before
-  the match, the meter locking at 408.00 K, the trial and solvent logs, theme toggle, clean console,
-  zero horizontal overflow at 390 px and 360 px, and the whole bench measuring 662 px so it fits in
-  one window.
+- **Headless-browser run:** 93 assertions driving the whole flow — the empty instrument panel with
+  the answer nowhere on it, inline validation of unreadable and out-of-range entries, the Run button
+  arming only on complete data, each of the six steps in turn (the flask filling and reaching the
+  entered boiling point, B appearing as twelve units, the undissociated boil landing on 404 K, the
+  shortfall band, units splitting mid-run, the final count of 24), pause and resume genuinely
+  freezing and restarting the clock, the answer absent until the last step, the result panel and the
+  gate, the model checked to be general rather than hard-coded to the paper, refusals for a
+  measurement below the undissociated value and above the full-dissociation ceiling, one C and one D
+  reproducing the 100 % distractor, the solvent sweep holding Kb·m at 4.000, theme toggle, clean
+  console, zero horizontal overflow at 390 px and 360 px, and the whole bench under 700 px so it
+  fits in one window.
 
 **Status: verified — 2026-09-09.**
 
 ---
 
-## What the simulation lets you do
+## What the simulation does
 
-The whole experiment is **one screen**: a beaker of solvent S boiling on a hotplate with a digital
-thermometer in it, seven live gauges, the equation chain, a chart, and two dials underneath. Nothing
-about the run requires scrolling.
+The page is an experiment you set up and run, not a calculation you read. It has three phases, all
+on one screen.
 
-- **Break up the B.** The first dial is the unknown itself — the mole percent of B that has
-  dissociated. Twelve drawn units of B sit in the flask; as the dial turns, each one *visibly comes
-  apart* into two blue C and two orange D, with the unit at the fractional boundary caught
-  mid-split, so the transformation is always on screen rather than a before-and-after swap.
-- **Watch the count and the temperature move together.** The bay caption counts the particles
-  (12 → 24 at the answer), the gauges show i, and the thermometer bar climbs towards the dashed
-  408 K line that the question quotes. The status line reports the gap in kelvin and which way to
-  go, without ever naming the answer.
-- **Discover why the solvent is not given.** The second dial is the molar mass of S — a quantity the
-  question never supplies. Turning it multiplies Kb and divides the molality by the same factor, and
-  the gauge for Kb × m stays at 4.000 K while the thermometer does not move at all. Every solvent
-  tried is logged in a small table, and the notebook says so in words once three have been tried.
-- **Lock the meter.** When the thermometer reaches 408.00 K the instrument snaps to the exact
-  reading, the flask shows 4 of the 12 units broken up — 8 whole B plus 16 fragments — and the
-  answer box, the record of the run and the full derivation all unlock together.
-- Alongside: a log of readings you choose to keep, four cards on the wrong answers this question
-  actually produces (100, 404 K, 102, and hunting for a molar mass that is not there), a record of
-  the run that fills in quantity by quantity, and the step-by-step solution with a verification log.
+### 1 — Enter the data
+
+The instrument panel has one box for every quantity the question gives you, and nothing else:
+
+| box | what the question calls it |
+| --- | --- |
+| Boiling point of pure S | the standard boiling point of the solvent, 400 K |
+| Enthalpy of vaporisation of S | quoted as a multiple of R — enter 10 |
+| Molar mass of B ÷ that of S | “10 times the molar mass of S” |
+| Concentration of B | 0.25 % (m/m), i.e. grams of B per 100 g of solvent |
+| Boiling point of the solution | the one measurement, 408 K |
+| What one B breaks into | B ⇌ **2** C + **2** D |
+
+There is deliberately **no box for the molar mass of the solvent**, because the experiment does not
+need one — which is exactly why the question never gives it. Every entry is checked as it is typed
+and the reason is shown in place; **Run experiment** stays disabled until all seven boxes hold
+usable values.
+
+### 2 — Run the experiment
+
+Pressing the button starts a six-step run, each step narrated with the student's own numbers:
+
+1. **Boil S.** The flask fills, the hotplate glows, bubbles start, and the thermometer climbs to
+   the boiling point of the pure solvent that was entered. That is the baseline.
+2. **Add B.** Twelve drawn units of B drop into the liquid, and the molality appears in the working.
+3. **Boil again.** With nothing dissociated, i = 1, and the flask reaches only 404 K.
+4. **Compare.** The shortfall against the entered measurement is drawn as an orange band on the
+   temperature scale, labelled `+4.00 K ?` — the kelvin nobody has accounted for.
+5. **Dissociate.** B is allowed to break apart. Each unit visibly comes apart into two blue C and
+   two orange D, the particle count climbs, and the thermometer rises with it — until it reaches
+   the measurement that was entered, and stops there.
+6. **Count.** Twelve dissolved, twenty-four present. That ratio is the van't Hoff factor.
+
+Six gauges fill in only as the run establishes them; the mole percent stays blank until the last
+step. The working writes itself one line at a time as the step that earns it is carried out. The
+chart, drawn from the entered data, has the measurement dashed across it and a marker that travels
+along the curve during step 5. Pause, resume, replay and 0.5× / 1× / 2× are available throughout,
+and **change the data** returns to the panel with the entries kept.
+
+### 3 — Read the result
+
+The answer appears as the outcome of the run, with a plain account of how the bench got there,
+quoting the student's own numbers: the pure solvent boiled at 400.00 K, dissolving B raised it to
+404.00 K, the flask actually boiled at 408.00 K, so there are 2.000× as many particles as were
+dissolved; one B leaves 4 particles, so 1 + 3α = 2.000 and α = 33.33 %.
+
+### It is a model, not a script
+
+Nothing is hard-coded to the paper. Enter different data and the bench reaches a different answer.
+Enter data that cannot be reconciled and it stops at the comparison step and says why — a boiling
+point below the undissociated value ("a non-volatile solute can only raise a boiling point"), or
+above the ceiling that complete dissociation could reach, with that ceiling stated. Entering one C
+and one D reproduces the commonest wrong reading, 100 %, as a run rather than as a warning.
+
+Alongside: a panel that sweeps the solvent's molar mass across its whole range and shows K<sub>b</sub>
+rising, the molality falling and their product never moving; a log of every run made, refusals
+included; a notebook that writes itself; four cards on the wrong answers this question really
+produces; a record of the run; and the step-by-step solution, gated until a run finishes.
