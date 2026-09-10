@@ -383,6 +383,16 @@ table.faces td.m{text-align:right}
 #gauges .ro .u{font-size:10px}
 @media(min-width:1000px){#gauges{grid-template-columns:repeat(6,minmax(0,1fr))}}
 .dim{opacity:.45}
+@keyframes popblink{
+  0%{transform:scale(1)} 12%{transform:scale(1.16)} 24%{transform:scale(1)}
+  38%{opacity:.2} 50%{opacity:1} 64%{opacity:.2} 76%{opacity:1}
+  88%{transform:scale(1.07)} 100%{transform:scale(1);opacity:1}}
+.blink{animation:popblink 2s ease-in-out 1;display:inline-block;will-change:transform,opacity}
+@keyframes ringpulse{
+  0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--good) 55%,transparent)}
+  70%{box-shadow:0 0 0 14px transparent} 100%{box-shadow:0 0 0 0 transparent}}
+.celebrate{animation:ringpulse 1.5s ease-out 2}
+@media(prefers-reduced-motion:reduce){.blink,.celebrate{animation:none}}
 
 .trapgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(250px,100%),1fr));gap:11px}
 .trap{border:1px solid var(--line);border-left:3px solid var(--bad);border-radius:9px;
@@ -477,17 +487,20 @@ details.fold[open]>summary::before{content:"\25BE"}
         <tbody>
           <tr><td class="l">Donor atoms of complex A, inside the brackets</td>
             <td class="num">4 N, 2 Cl</td>
-            <td class="l">which label goes on each of the six vertices</td></tr>
+            <td class="l">which label goes on each of the six numbered positions</td></tr>
           <tr><td class="l">Isomer of complex A</td><td class="num">cis</td>
-            <td class="l">the two chlorides are 90&deg; apart, i.e. on an edge</td></tr>
+            <td class="l">the two chlorides are 90&deg; apart, i.e. on an edge &mdash; the bench
+            seats them at <b>1</b> and <b>5</b></td></tr>
           <tr><td class="l">Donor atoms of complex B</td><td class="num">3 N, 3 Cl</td>
             <td class="l">a neutral complex &mdash; no counter-ion to discount</td></tr>
           <tr><td class="l">Isomer of complex B</td><td class="num">mer</td>
-            <td class="l">one chloride pair is trans, the third is cis to both</td></tr>
+            <td class="l">one chloride pair is trans, the third is cis to both &mdash; positions
+            <b>1</b>, <b>5</b> and <b>6</b></td></tr>
           <tr class="win"><td class="l">The pattern to count</td><td class="num">1 N + 2 Cl</td>
             <td class="l">what the inspector looks for at the corners of each face</td></tr>
           <tr><td class="l">The solid</td><td class="num">octahedron</td>
-            <td class="l">6 vertices, 12 edges, 8 triangular faces</td></tr>
+            <td class="l">6 positions, 12 edges, 8 triangular faces &mdash; 1&ndash;4 round the
+            square plane, 5 and 6 axial, opposite pairs 1&ndash;3, 2&ndash;4, 5&ndash;6</td></tr>
         </tbody>
       </table>
     </div>
@@ -497,9 +510,9 @@ details.fold[open]>summary::before{content:"\25BE"}
 
 <section id="bench">
   <h2><span class="n">02</span>The bench</h2>
-  <p class="lede">Type the composition of each coordination sphere into the panel, press
-    <b>Run experiment</b>, and watch the model get built, loaded and turned face by face. The
-    tally at the end is the answer.</p>
+  <p class="lede">Type in each coordination sphere, press <b>Run experiment</b>, and watch the
+    model get built, loaded and turned face by face. Sites are numbered <b>1&ndash;4</b> round the
+    square plane and <b>5, 6</b> axial; the tally at the end is the answer.</p>
 
   <div class="deck">
     <div class="phasebar">
@@ -513,7 +526,7 @@ details.fold[open]>summary::before{content:"\25BE"}
     <div class="deckmain">
       <div class="bay">
         <div class="cap"><span>The model</span><b id="modtag">no cage built</b></div>
-        <svg class="scene" id="scene" viewBox="0 0 300 344" role="img"
+        <svg class="scene" id="scene" viewBox="0 0 300 362" role="img"
           aria-label="A rotating wire model of an octahedron. Blue N and orange Cl donor atoms sit
           at its six vertices, and each of its eight triangular faces is turned towards the viewer
           and inspected in turn."></svg>
@@ -593,8 +606,9 @@ details.fold[open]>summary::before{content:"\25BE"}
     </div>
     <div class="trap">
       <div class="h"><span class="n">4</span> &mdash; reading cis as trans</div>
-      <p>Switch complex A to <b>trans</b> and it contributes 0, not 2. Two trans chlorides are
-        opposite vertices, they share no edge, and no face of an octahedron can hold both.</p>
+      <p>Switch complex A to <b>trans</b> and it contributes 0, not 2. Two trans chlorides sit on
+        opposite sites &mdash; 5 and 6, say &mdash; they share no edge, and every face takes only
+        one site from each opposite pair, so no face can hold both.</p>
     </div>
     <div class="trap">
       <div class="h"><span class="n">8</span> &mdash; counting the wrong pattern</div>
@@ -630,8 +644,16 @@ details.fold[open]>summary::before{content:"\25BE"}
           <b>8 triangular faces</b>, and every face takes exactly one vertex from each of the three
           opposite pairs &mdash; which is why there are 2 &times; 2 &times; 2 = 8 of them.</p>
         <div class="eq">V &minus; E + F = 6 &minus; 12 + 8 = 2 &nbsp;&nbsp;(Euler)</div>
-        <p>Two vertices are <i>cis</i> if they are 90&deg; apart, and they then share an edge; they
-          are <i>trans</i> if they are opposite, and then no face contains both.</p>
+        <p>Number the sites the usual way: <b>1, 2, 3, 4</b> going round the square plane and
+          <b>5, 6</b> for the two axial sites. Then the three <i>opposite</i> (trans) pairs are
+          <b>1&ndash;3</b>, <b>2&ndash;4</b> and <b>5&ndash;6</b>, and every other pair is
+          <i>cis</i>.</p>
+        <div class="eq"><b>cis</b> = 90&deg; apart, so the two share an edge<br>
+          <b>trans</b> = 180&deg; apart, opposite ends of one axis, so no face holds both<br>
+          <b>fac</b> (facial) = three donors all mutually cis, capping one triangular face,
+            e.g. 1, 2, 5<br>
+          <b>mer</b> (meridional) = one pair trans and the third cis to both, so all three lie
+            along a meridian, e.g. 1, 5, 6</div>
       </li>
       <li>
         <h4>Fill the vertices of the first complex &mdash; and count the ligands correctly</h4>
@@ -644,9 +666,11 @@ details.fold[open]>summary::before{content:"\25BE"}
       </li>
       <li>
         <h4>The cis complex: one Cl&ndash;Cl edge, two faces</h4>
-        <p><i>cis</i> puts the two chlorides 90&deg; apart, so they share exactly one edge. Every
-          edge of an octahedron is shared by exactly <b>two</b> faces, and the third corner of each
-          of those two faces must be one of the four nitrogens.</p>
+        <p><i>cis</i> puts the two chlorides 90&deg; apart &mdash; say at <b>1</b> (square plane)
+          and <b>5</b> (axial), which are 90&deg; apart because every plane site is 90&deg; from
+          every axial one. They therefore share exactly one edge. Every edge of an octahedron is
+          shared by exactly <b>two</b> faces, and the third corner of each of those two faces must
+          be one of the four nitrogens.</p>
         <div class="eq">faces with 1 N and 2 Cl in complex A = <span class="hl">2</span></div>
         <p>Checked face by face on the bench: the other six faces carry either one chloride or
           none.</p>
@@ -654,13 +678,14 @@ details.fold[open]>summary::before{content:"\25BE"}
       <li>
         <h4>The mer complex: a trans pair does the work</h4>
         <p>In mer-[Co(NH<sub>3</sub>)<sub>3</sub>Cl<sub>3</sub>] one pair of chlorides is
-          <i>trans</i> and the third is cis to both. Because the two opposite vertices are
-          <i>both</i> chloride, every one of the eight faces already carries one chloride from that
-          pair.</p>
+          <i>trans</i> and the third is cis to both &mdash; say <b>5</b> and <b>6</b> (the axial
+          pair, opposite each other) plus <b>1</b> in the plane, which is 90&deg; from both. Because
+          the two opposite sites are <i>both</i> chloride, every one of the eight faces already
+          carries one chloride from that pair.</p>
         <div class="eq">the 4 faces through the third Cl pick up a second one
           &rarr; <span class="hl">4 faces</span> with 1 N and 2 Cl</div>
-        <p>The remaining four faces run through the nitrogen opposite it, so they carry 2 N and
-          1 Cl.</p>
+        <p>The remaining four faces run through position <b>3</b>, the nitrogen opposite it, so
+          they carry 2 N and 1 Cl.</p>
       </li>
       <li>
         <h4>Add the two</h4>
@@ -669,8 +694,8 @@ details.fold[open]>summary::before{content:"\25BE"}
       <li>
         <h4>Why the particular vertices did not matter</h4>
         <p>All 12 cis placements of two chlorides give 2, and all 12 mer placements of three give
-          4 &mdash; the octahedron is symmetric enough that only the isomer label matters. Section
-          03 shows the exhaustive check.</p>
+          4 &mdash; the octahedron is symmetric enough that only the isomer label matters, never
+          which numbered sites were used. Section 03 shows the exhaustive check.</p>
       </li>
     </ol>
 
@@ -717,11 +742,14 @@ details.fold[open]>summary::before{content:"\25BE"}
   <div class="lab">
     <div class="panel">
       <h3>What you need to know</h3>
-      <div class="eq">octahedron: 6 vertices &middot; 12 edges &middot; 8 triangular faces</div>
-      <div class="eq">every face = one vertex from each opposite pair &rarr; 2&sup3; = 8</div>
-      <div class="eq">cis = 90&deg; apart, share an edge &nbsp;&middot;&nbsp; trans = opposite,
-        share no face</div>
-      <div class="eq">fac = three mutually cis &nbsp;&middot;&nbsp; mer = one pair trans</div>
+      <div class="eq">octahedron: 6 positions &middot; 12 edges &middot; 8 triangular faces</div>
+      <div class="eq">numbering: <b>1 2 3 4</b> square plane &middot; <b>5 6</b> axial<br>
+        opposite (trans) pairs: <b>1&ndash;3</b>, <b>2&ndash;4</b>, <b>5&ndash;6</b></div>
+      <div class="eq">every face = one site from each opposite pair &rarr; 2&sup3; = 8</div>
+      <div class="eq"><b>cis</b> = 90&deg; apart, share an edge (e.g. 1 and 5)<br>
+        <b>trans</b> = 180&deg; apart, share no face (e.g. 5 and 6)</div>
+      <div class="eq"><b>fac</b> = three mutually cis, capping one face (e.g. 1, 2, 5)<br>
+        <b>mer</b> = one pair trans, third cis to both (e.g. 1, 5, 6)</div>
       <div class="eq">every edge is shared by exactly two faces</div>
       <div class="hint" style="margin-top:8px">Only what is inside the square brackets is in the
         coordination sphere.</div>
@@ -1003,7 +1031,11 @@ function wireCommon(redraw){
    read the tally.  Everything is computed from what the student types.
    ===================================================================== */
 
-var VNAME = ["+x", "-x", "+y", "-y", "+z", "-z"];
+/* Positions are numbered the way an octahedral complex is normally numbered:
+   1, 2, 3, 4 go round the square plane and 5, 6 are the two axial sites, so the
+   trans (opposite) pairs are 1-3, 2-4 and 5-6.                                  */
+var VNAME = ["1", "3", "2", "4", "5", "6"];
+var VAXIS = ["+x", "-x", "+y", "-y", "+z", "-z"];
 var VVEC  = [[1,0,0], [-1,0,0], [0,1,0], [0,-1,0], [0,0,1], [0,0,-1]];
 var OPP   = [1, 0, 3, 2, 5, 4];
 var FACES = (function(){
@@ -1189,6 +1221,16 @@ function syncForm(){
     B: "a neutral complex — nothing outside the brackets",
     F: "a triangle has three corners, so these two must add to 3"
   };
+  for(i = 0; i < 2; i++){
+    var key = i ? "B" : "A";
+    var nN = r.D[i ? "bn" : "an"], nCl = r.D[i ? "bcl" : "acl"];
+    if(nN !== undefined && nCl !== undefined && nN + nCl === 6 && ST.iso[key]
+       && isoKind(nN, nCl) !== "none"){
+      var w = isoWhere(nN, nCl, ST.iso[key]);
+      hints[key] = isoDef(ST.iso[key]) + ", so the bench seats the " + w.what
+        + " at <b>" + w.where + "</b> — " + w.why + ".";
+    }
+  }
   for(i = 0; i < ids.length; i++){
     var h = $("fh_" + ids[i]);
     if(h){ h.classList.remove("bad"); h.innerHTML = hints[ids[i]]; }
@@ -1291,8 +1333,14 @@ function startRun(){
 
 function vlist(lab, what){
   var out = [], i;
-  for(i = 0; i < 6; i++) if(lab[i] === what) out.push(VNAME[i]);
+  for(i = 0; i < 6; i++) if(lab[i] === what) out.push(+VNAME[i]);
+  out.sort(function(a, b){ return a - b; });
   return out.join(", ");
+}
+function fnames(f){
+  var out = f.map(function(v){ return +VNAME[v]; });
+  out.sort(function(a, b){ return a - b; });
+  return out.join(" ");
 }
 
 function buildWork(D, R){
@@ -1303,14 +1351,14 @@ function buildWork(D, R){
   w.push({ st: 1, h: "complex A on the vertices",
     e: "A: <b>" + D.an + "</b> N + <b>" + D.acl + "</b> Cl = 6 donor atoms"
      + (R.kindA === "none" ? "" : ", " + D.aiso)
-     + " &nbsp;→&nbsp; Cl on <b>" + (vlist(R.labA, "Cl") || "none") + "</b>" });
+     + " &nbsp;→&nbsp; Cl on positions <b>" + (vlist(R.labA, "Cl") || "none") + "</b>" });
   w.push({ st: 2, key: 1, h: "faces of A matching the pattern",
     e: "faces with " + D.fn + " N and " + D.fcl + " Cl in A = <span class='res2'>"
      + R.A + "</span> of 8" });
   w.push({ st: 3, h: "complex B on the vertices",
     e: "B: <b>" + D.bn + "</b> N + <b>" + D.bcl + "</b> Cl = 6 donor atoms"
      + (R.kindB === "none" ? "" : ", " + D.biso)
-     + " &nbsp;→&nbsp; Cl on <b>" + (vlist(R.labB, "Cl") || "none") + "</b>" });
+     + " &nbsp;→&nbsp; Cl on positions <b>" + (vlist(R.labB, "Cl") || "none") + "</b>" });
   w.push({ st: 4, key: 1, h: "faces of B matching the pattern",
     e: "faces with " + D.fn + " N and " + D.fcl + " Cl in B = <span class='res2'>"
      + R.B + "</span> of 8" });
@@ -1395,6 +1443,7 @@ function finishRun(){
   ST.a.fi = -1; ST.view = "B";
   renderWork(); renderSwap(); drawGauges(); drawLedger(); drawRecord(); drawTally();
   drawSym(); syncGate();
+  celebrateAnswer();
   runs.push({ an: D.an, acl: D.acl, aiso: D.aiso, bn: D.bn, bcl: D.bcl, biso: D.biso,
               fn: D.fn, fcl: D.fcl, A: R.A, B: R.B, total: R.total });
   if(runs.length > 10) runs.shift();
@@ -1413,6 +1462,22 @@ function finishRun(){
       + "tally of " + R.A + " and " + R.B + ".";
     $("notebook").parentNode.appendChild(ins);
   }
+}
+
+function blink(id, cls){
+  var e = typeof id === "string" ? $(id) : id;
+  if(!e) return;
+  var c = cls || "blink";
+  e.classList.remove(c);
+  void e.offsetWidth;                       /* restart the animation */
+  e.classList.add(c);
+  setTimeout(function(){ e.classList.remove(c); }, c === "blink" ? 2300 : 3200);
+}
+
+function celebrateAnswer(){
+  blink("bigans"); blink("ansval"); blink("tv"); blink("gtotal");
+  var big = document.querySelector(".res .big");
+  if(big) blink(big, "celebrate");
 }
 
 function edgeCount(lab){
@@ -1451,8 +1516,8 @@ function renderSwap(){
     + (vlist(R.labA, "Cl") || "no vertex") + '</b>. Of its eight faces, <b>' + R.A
     + '</b> had ' + D.fn + ' N and ' + D.fcl + ' Cl at the corners. Rebuilt as complex B — <b>'
     + D.bn + ' N</b>, <b>' + D.bcl + ' Cl</b>'
-    + (R.kindB === "none" ? "" : ', ' + D.biso) + ', chlorides on <b>'
-    + (vlist(R.labB, "Cl") || "no vertex") + '</b> — <b>' + R.B
+    + (R.kindB === "none" ? "" : ', ' + D.biso) + ', chlorides on positions <b>'
+    + (vlist(R.labB, "Cl") || "none") + '</b> — <b>' + R.B
     + '</b> of its eight faces matched. The inspector checked all sixteen faces and found <b>'
     + R.A + ' + ' + R.B + ' = ' + R.total + '</b>.</div></div>';
   $("pbslot").innerHTML = PBHTML();
@@ -1526,37 +1591,66 @@ function narrate(){
     + 'Six vertices, twelve edges, <b>eight</b> triangular faces. Every face takes one vertex from '
     + 'each opposite pair — that is where the eight comes from, and it is the same for both '
     + 'complexes.';
-  if(s.key === "loadA") return '<span class="lead">Seating complex A.</span>'
-    + '<b>' + D.an + '</b> N and <b>' + D.acl + '</b> Cl'
-    + (R.kindA === "none" ? '' : ', in the <b>' + D.aiso + '</b> arrangement')
-    + '. The chlorides go on <b>' + (vlist(R.labA, "Cl") || "no vertex") + '</b>'
-    + (R.kindA === "none" ? '' : ' — ' + isoNote(D.aiso)) + '.';
+  if(s.key === "loadA"){
+    var wA = R.kindA === "none" ? null : isoWhere(D.an, D.acl, D.aiso);
+    return '<span class="lead">Seating complex A.</span>'
+      + '<b>' + D.an + '</b> N and <b>' + D.acl + '</b> Cl on positions <b>1–6</b>'
+      + (R.kindA === "none" ? '' : ', in the <b>' + D.aiso + '</b> arrangement')
+      + '. Chlorides on <b>' + (vlist(R.labA, "Cl") || "no position") + '</b>'
+      + (wA ? ' — ' + isoDef(D.aiso) + ', and ' + wA.why : '') + '.';
+  }
   if(s.key === "checkA" || s.key === "checkB"){
     var w = s.key === "checkA" ? "A" : "B";
     var fi = Math.max(0, A.fi), f = FACES[fi], lab = A.lab || R.labA;
     var q = faceCounts(lab, f);
     return '<span class="lead">Inspecting complex ' + w + ', face ' + (fi + 1) + ' of 8.</span>'
-      + 'The model turns that face towards you: corners <b>' + f.map(function(v){ return VNAME[v]; })
-        .join(" ") + '</b> carrying <b>' + f.map(function(v){ return lab[v]; }).join(" ")
+      + 'The model turns that face towards you: corners <b>' + fnames(f) + '</b> carrying <b>' + f.map(function(v){ return lab[v]; }).join(" ")
       + '</b> — ' + q.n + ' N and ' + q.cl + ' Cl. '
       + (faceHit(lab, f, D.fn, D.fcl) ? 'That is the pattern being counted.'
                                       : 'Not the pattern being counted.');
   }
-  if(s.key === "loadB") return '<span class="lead">Rebuilding as complex B.</span>'
-    + 'The ligands lift off and come back as <b>' + D.bn + '</b> N and <b>' + D.bcl + '</b> Cl'
-    + (R.kindB === "none" ? '' : ', <b>' + D.biso + '</b>')
-    + '. Same cage, same eight faces — only the labels on the vertices change.';
+  if(s.key === "loadB"){
+    var wB = R.kindB === "none" ? null : isoWhere(D.bn, D.bcl, D.biso);
+    return '<span class="lead">Rebuilding as complex B.</span>'
+      + 'The ligands lift off and come back as <b>' + D.bn + '</b> N and <b>' + D.bcl + '</b> Cl'
+      + (R.kindB === "none" ? '' : ', <b>' + D.biso + '</b>')
+      + ', chlorides on <b>' + (vlist(R.labB, "Cl") || "no position") + '</b>'
+      + (wB ? ' — ' + isoDef(D.biso) : '')
+      + '. Same cage, same eight faces, same numbering — only what sits on each position changes.';
+  }
   return '<span class="lead">Adding the two tallies.</span>'
     + 'Complex A gave <b>' + R.A + '</b> matching faces and complex B gave <b>' + R.B
     + '</b>. Sixteen faces inspected in all.';
 }
 
-function isoNote(iso){
-  if(iso === "cis") return "cis means 90&deg; apart, so they share an edge";
-  if(iso === "trans") return "trans means opposite, so no face holds both";
-  if(iso === "fac") return "fac means all three mutually cis, so they form one whole face";
-  return "mer means one pair is trans and the third is cis to both";
+function isoDef(iso){
+  if(iso === "cis")
+    return "<b>cis</b> = the two sit 90&deg; apart, so they share an edge";
+  if(iso === "trans")
+    return "<b>trans</b> = the two sit opposite each other, 180&deg; apart, so no face holds both";
+  if(iso === "fac")
+    return "<b>fac</b> (facial) = all three are mutually 90&deg; apart, so they cap one triangular face";
+  if(iso === "mer")
+    return "<b>mer</b> (meridional) = one pair is trans (180&deg;) and the third is cis to both, "
+         + "so the three lie along one meridian";
+  return "";
 }
+function isoWhere(nN, nCl, iso){
+  var lab = place(nN, nCl, iso), minorIsCl = nCl <= nN;
+  var what = minorIsCl ? "Cl" : "N";
+  var where = vlist(lab, what);
+  var why;
+  if(iso === "cis") why = "1 is in the square plane and 5 is axial, and any plane-plus-axial pair "
+    + "is 90&deg; apart";
+  else if(iso === "trans") why = "5 and 6 are the two axial sites, which are the opposite ends of "
+    + "one axis";
+  else if(iso === "fac") why = "5 is axial and 1, 2 are neighbours in the square plane, so all "
+    + "three are 90&deg; from one another";
+  else why = "5 and 6 are opposite each other and 1 is 90&deg; from both, which is exactly what "
+    + "meridional means";
+  return { where: where, what: what, why: why };
+}
+function isoNote(iso){ return isoDef(iso); }
 
 function setPhase(n){
   var i;
@@ -1610,7 +1704,7 @@ function gaugeDefs(){
       c: ST.stage >= 2 ? "--s3" : "" },
     { k: "matches in B", v: ST.stage >= 4 ? String(L.b) : "—", u: "of 8 faces",
       c: ST.stage >= 4 ? "--s3" : "" },
-    { k: "total matching faces", v: ST.stage >= 2 ? String(L.total) : "—", u: "the answer",
+    { k: "total matching faces", id: "gtotal", v: ST.stage >= 2 ? String(L.total) : "—", u: "the answer",
       c: ST.phase === "done" ? "--good" : (ST.stage >= 2 ? "--s3" : "") }
   ];
 }
@@ -1618,7 +1712,8 @@ function drawGauges(){
   var d = gaugeDefs(), out = "", i;
   for(i = 0; i < d.length; i++)
     out += '<div class="ro' + (d[i].v === "—" ? " dim" : "") + '"><div class="k">' + d[i].k
-        + '</div><div class="v"' + (d[i].c ? ' style="color:var(' + d[i].c + ')"' : "") + '>'
+        + '</div><div class="v"' + (d[i].id ? ' id="' + d[i].id + '"' : "")
+        + (d[i].c ? ' style="color:var(' + d[i].c + ')"' : "") + '>'
         + d[i].v + '</div><div class="u">' + d[i].u + '</div></div>';
   $("gauges").innerHTML = out;
 }
@@ -1663,7 +1758,7 @@ function drawLedger(){
     var hit = seen && faceHit(lab, f, D.fn, D.fcl);
     var cls = !seen ? "pending" : (hit ? "hit" : "");
     if(A.fi === i) cls += " now";
-    var corners = f.map(function(v){ return VNAME[v]; }).join(" ");
+    var corners = fnames(f);
     var atoms = seen ? f.map(function(v){
       return '<span class="' + (lab[v] === "Cl" ? "cllab" : "nlab") + '">' + lab[v] + '</span>';
     }).join(" ") : "· · ·";
@@ -1748,12 +1843,12 @@ function drawRecord(){
              "one vertex from each opposite pair", 0)
          + cell("complex A", st >= 1 ? D.an + " N + " + D.acl + " Cl"
              + (R.kindA === "none" ? "" : ", " + D.aiso) : null,
-             "Cl on " + (st >= 1 ? (vlist(R.labA, "Cl") || "no vertex") : "…"), 0)
+             "Cl on positions " + (st >= 1 ? (vlist(R.labA, "Cl") || "none") : "…"), 0)
          + cell("matches in A", st >= 3 || ST.phase === "done" ? String(R.A) : null,
              "faces with " + D.fn + " N and " + D.fcl + " Cl", 0)
          + cell("complex B", st >= 3 ? D.bn + " N + " + D.bcl + " Cl"
              + (R.kindB === "none" ? "" : ", " + D.biso) : null,
-             "Cl on " + (st >= 3 ? (vlist(R.labB, "Cl") || "no vertex") : "…"), 0)
+             "Cl on positions " + (st >= 3 ? (vlist(R.labB, "Cl") || "none") : "…"), 0)
          + cell("matches in B", ST.phase === "done" ? String(R.B) : null,
              "faces with " + D.fn + " N and " + D.fcl + " Cl", 0)
          + cell("total", open ? String(R.total) : null, R.A + " + " + R.B, 1);
@@ -1787,11 +1882,15 @@ function drawSym(){
   var nN = isA ? D.an : D.bn, nCl = isA ? D.acl : D.bcl, iso = isA ? D.aiso : D.biso;
   var kind = isoKind(nN, nCl);
   var list = allPlacements(nN, nCl, iso, D.fn, D.fcl);
-  var out = "<thead><tr><th>placement of the minority ligand</th><th>class</th>"
+  var out = "<thead><tr><th>positions of the minority ligand</th><th>class</th>"
     + "<th>matching faces</th></tr></thead><tbody>", i, same = true;
   for(i = 0; i < list.length; i++){
     if(list[i].n !== list[0].n) same = false;
-    var names = list[i].sel.map(function(v){ return VNAME[v]; }).join(", ") || "—";
+    var names = (function(sel){
+      var q = sel.map(function(v){ return +VNAME[v]; });
+      q.sort(function(a, b){ return a - b; });
+      return q.join(", ");
+    })(list[i].sel) || "—";
     out += "<tr" + (i === 0 ? " class='win'" : "") + "><td class='num'>" + names
         + "</td><td class='num'>" + (kind === "none" ? "n/a" : iso) + "</td><td class='num'><b>"
         + list[i].n + "</b></td></tr>";
@@ -1848,9 +1947,17 @@ function buildScene(){
     gVert.appendChild(g);
     verts.push({ g: g, ring: ring, ball: ball, txt: txt, ax: ax });
   }
-  var cap = el("text", { x: 150, y: 330, "text-anchor": "middle", fill: muted, "font-size": 10,
+  var cap = el("text", { x: 150, y: 328, "text-anchor": "middle", fill: muted, "font-size": 10,
     "font-family": "ui-monospace,monospace" });
   svg.appendChild(cap);
+  var key1 = el("text", { x: 150, y: 346, "text-anchor": "middle", fill: muted, "font-size": 8.5,
+    "font-family": "ui-monospace,monospace" });
+  key1.textContent = "1 2 3 4 = square plane   ·   5 6 = axial";
+  svg.appendChild(key1);
+  var key2 = el("text", { x: 150, y: 357, "text-anchor": "middle", fill: muted, "font-size": 8.5,
+    "font-family": "ui-monospace,monospace" });
+  key2.textContent = "opposite (trans) pairs:  1-3   2-4   5-6";
+  svg.appendChild(key2);
   SC = { svg: svg, faceP: faceP, edges: edges, verts: verts, gVert: gVert, cap: cap };
 }
 
@@ -1919,14 +2026,15 @@ function drawScene(dt){
     v.txt.setAttribute("opacity", showBall > 0.7 ? 1 : 0);
     var onFace = A.fi >= 0 && FACES[A.fi].indexOf(vi) >= 0;
     v.ax.setAttribute("x", pt.x); v.ax.setAttribute("y", pt.y + 26);
-    v.ax.setAttribute("opacity",
-      (A.built > 0.6 && (A.load < 0.5 || onFace)) ? (D ? 0.9 : 0.45) : 0);
-    v.ax.setAttribute("fill", css(onFace ? "--text-secondary" : "--text-muted"));
+    v.ax.setAttribute("opacity", A.built > 0.6 ? (D ? (onFace ? 1 : 0.55) : 0.45) : 0);
+    v.ax.setAttribute("font-size", onFace ? 11 : 9.5);
+    v.ax.setAttribute("font-weight", onFace ? 700 : 400);
+    v.ax.setAttribute("fill", css(onFace ? "--text-primary" : "--text-muted"));
   }
 
   SC.cap.textContent = !D ? "an octahedron: 6 vertices, 8 faces"
     : (A.fi >= 0
-       ? "face " + (A.fi + 1) + " of 8 — " + FACES[A.fi].map(function(v){ return VNAME[v]; }).join(" ")
+       ? "face " + (A.fi + 1) + " of 8 — positions " + fnames(FACES[A.fi])
        : (A.load > 0.6 ? "complex " + A.which : "empty cage"));
 
   var nN = 0, nCl = 0;

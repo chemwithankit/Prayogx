@@ -18,14 +18,30 @@ faces in both the complexes having one N atom and two Cl atoms at their corners 
 
 ## Solution
 
-### 1. The solid first
+### 1. The solid first, with its sites numbered
 
-Six donor atoms sit at the vertices of an octahedron: **6 vertices, 12 edges, 8 triangular faces**.
-Every face takes exactly one vertex from each of the three opposite pairs, which is why there are
+Six donor atoms sit at the vertices of an octahedron: **6 sites, 12 edges, 8 triangular faces**.
+Every face takes exactly one site from each of the three opposite pairs, which is why there are
 2 × 2 × 2 = 8 of them, and Euler's formula checks out: 6 − 12 + 8 = 2.
 
-Two vertices are **cis** if they are 90° apart, and they then share an edge; they are **trans** if
-they are opposite, and then *no* face contains both. Every edge lies in exactly two faces.
+Number the sites the way an octahedral complex normally is numbered:
+
+```
+1, 2, 3, 4   round the square plane
+5, 6         the two axial sites
+opposite (trans) pairs:  1-3   2-4   5-6
+```
+
+Every pair that is *not* one of those three is **cis**. So:
+
+| term | meaning | example sites |
+| --- | --- | --- |
+| **cis** | 90° apart, sharing an edge | 1 and 5 (one in the plane, one axial) |
+| **trans** | 180° apart, opposite ends of one axis, sharing no face | 5 and 6 |
+| **fac** (facial) | three donors all mutually cis, capping one triangular face | 1, 2, 5 |
+| **mer** (meridional) | one pair trans and the third cis to both, so all three on one meridian | 1, 5, 6 |
+
+Every edge lies in exactly two faces — the fact the whole count turns on.
 
 ### 2. Read the coordination sphere off the formula
 
@@ -40,28 +56,30 @@ octahedron has; that impossibility is itself the check that the brackets were re
 
 ### 3. The cis complex — one Cl–Cl edge, two faces
 
-*cis* puts the two chlorides 90° apart, so they share exactly one edge. That edge lies in two faces,
-and the third corner of each must be one of the four nitrogens.
+*cis* puts the two chlorides 90° apart — say at **1** (square plane) and **5** (axial), which are
+90° apart because every plane site is 90° from every axial one. They therefore share exactly one
+edge, that edge lies in two faces, and the third corner of each must be one of the four nitrogens.
 
 ```
 faces with 1 N and 2 Cl in cis-[Co(NH3)4Cl2]+  =  2
 ```
 
-Enumerated with Cl on +z and +x, the eight faces split 2 with no chloride, 4 with one, 2 with two —
-and none with three.
+Enumerated with Cl on **1** and **5**, the eight faces split 2 with no chloride, 4 with one, 2 with
+two — and none with three.
 
 ### 4. The mer complex — a trans pair does the work
 
-In *mer* one pair of chlorides is trans and the third is cis to both. Because two **opposite**
-vertices are both chloride, every one of the eight faces already carries one chloride from that
-pair. The four faces that also run through the third chloride therefore carry two.
+In *mer* one pair of chlorides is trans and the third is cis to both — say **5** and **6** (the
+axial pair, opposite each other) plus **1** in the plane, 90° from both. Because two **opposite**
+sites are both chloride, every one of the eight faces already carries one chloride from that pair.
+The four faces that also run through the third chloride therefore carry two.
 
 ```
 faces with 1 N and 2 Cl in mer-[Co(NH3)3Cl3]  =  4
 ```
 
-The other four run through the nitrogen opposite it and carry 2 N + 1 Cl. Census: 0 / 4 / 4 / 0
-across 0, 1, 2 and 3 chlorides — eight faces, all accounted for.
+The other four run through position **3**, the nitrogen opposite it, and carry 2 N + 1 Cl. Census:
+0 / 4 / 4 / 0 across 0, 1, 2 and 3 chlorides — eight faces, all accounted for.
 
 ### 5. Add them
 
@@ -100,14 +118,17 @@ Marking: +4 for 6, 0 otherwise. No negative marking.
 - **Answer key cross-check.** A published worked solution for this paper argues from the same Cl–Cl
   edges and reports the same 6. IIT Roorkee's official key was not retrievable at the time of
   writing.
-- **Headless-browser run:** 112 assertions driving the whole flow — the geometry the page is built
-  on (8 faces, 12 edges, Euler, and all four isomer counts), the exhaustive placement check, the
-  empty instrument panel with the answer nowhere on it, the refusal of seven donor atoms and of a
-  face pattern that does not add to three, the isomer control adapting to the numbers typed, each of
-  the six run steps in turn, pause and resume genuinely freezing the clock, the model turning to the
-  face under inspection, the ledger and chips filling live, the result and the gate, browsing either
-  complex afterwards, all three traps reproduced as runs, theme toggle, clean console and zero
-  horizontal overflow at 390 px and 360 px.
+- **Headless-browser run:** 133 assertions driving the whole flow — the geometry the page is built
+  on (8 faces, 12 edges, Euler, all four isomer counts, the 1-to-6 site numbering and its trans
+  pairs 1-3, 2-4, 5-6, and the sites each isomer seats), the exhaustive placement check, the empty
+  instrument panel with the answer nowhere on it, the refusal of seven donor atoms and of a face
+  pattern that does not add to three, the isomer control adapting to the numbers typed and defining
+  what it was given, each of the six run steps in turn, pause and resume genuinely freezing the
+  clock, the model turning to the face under inspection with the position numbers printed on it, the
+  ledger and chips filling live in position numbers, the answer blinking on arrival and the blink
+  stopping rather than looping, the result and the gate, browsing either complex afterwards, all
+  three traps reproduced as runs, theme toggle, clean console and zero horizontal overflow at
+  390 px and 360 px.
 
 **Status: verified — 2026-09-10.**
 
@@ -125,9 +146,9 @@ The instrument panel has one box for every quantity the question gives, and noth
 | --- | --- |
 | Complex A — NH₃ ligands | the 4 inside the brackets of cis-[Co(NH₃)₄Cl₂]Cl |
 | Complex A — Cl ligands | the 2 inside the brackets, not the 3 written in the formula |
-| Complex A — isomer | the prefix: **cis** |
+| Complex A — isomer | the prefix: **cis** — the panel then defines it and says it seats the Cl at **1** and **5**, and why |
 | Complex B — NH₃ ligands, Cl ligands | 3 and 3 |
-| Complex B — isomer | the prefix: **mer** |
+| Complex B — isomer | the prefix: **mer** — defined as one trans pair plus a third cis to both, seated at **1**, **5** and **6** |
 | N atoms / Cl atoms at a face's corners | the pattern to count: **1 N and 2 Cl** |
 
 The isomer buttons relabel themselves from the numbers typed — two of one ligand offers
@@ -140,13 +161,14 @@ not add to three, each with the reason shown against the field.
 
 Six narrated steps, each in the student's own numbers:
 
-1. **Build.** The wire cage draws itself in — 6 vertices, 12 edges, 8 triangular faces, with the
-   reason there are eight stated.
-2. **Load A.** The ligands fly in and land on the vertices in the arrangement the isomer demands,
-   and the Cl–Cl edges light up.
+1. **Build.** The wire cage draws itself in — 6 sites, 12 edges, 8 triangular faces, with the
+   reason there are eight stated. Each site carries its number, and the key underneath spells out
+   1–4 = square plane, 5–6 = axial, trans pairs 1-3, 2-4, 5-6.
+2. **Load A.** The ligands fly in and land on the numbered sites the isomer demands — the
+   narration says which sites and why — and the Cl–Cl edges light up.
 3. **Check A.** The model **turns to face each of the eight triangles in turn**, the face is shaded
-   on the model, its three corners are read out, and the ledger, the chips under the model and the
-   live tally all fill in as the inspector goes.
+   on the model, its three corners are read out by number, and the ledger, the chips under the model
+   and the live tally all fill in as the inspector goes.
 4. **Rebuild B.** The ligands lift off and come back as the second complex — same cage, same eight
    faces, different labels.
 5. **Check B.** The same eight-face sweep.
@@ -158,9 +180,12 @@ replay and 0.5× / 1× / 2× throughout, plus **change the data** to go back wit
 
 ### 3 — Read the result
 
-The answer appears as the outcome of the inspection, with an account of how it got there. Afterwards
-either complex can be reloaded onto the model, and clicking any row of the ledger turns the model to
-that face so it can be checked by eye.
+The answer appears as the outcome of the inspection and **blinks** — in the result box, the header,
+the live tally and the total gauge, with a ring pulsing round the result — so the moment it is
+produced is unmissable. The animation runs twice and stops rather than looping, and is suppressed
+for readers who ask for reduced motion. Alongside it is an account of how the run got there.
+Afterwards either complex can be reloaded onto the model, and clicking any row of the ledger turns
+the model to that face so it can be checked by eye.
 
 ### It is a model, not a script
 
