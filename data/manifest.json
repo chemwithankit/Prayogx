@@ -4,16 +4,16 @@
     "name": "PrayogX",
     "description": "PrayogX: interactive 2D scientific simulations built from selected JEE Advanced Physics and Chemistry questions.",
     "generator": "Cowork autonomous simulation agent",
-    "updatedAt": "2026-09-09",
+    "updatedAt": "2026-09-10",
     "tracker": {
       "type": "Google Sheet",
       "title": "PrayogX — Simulation Progress Tracker",
-      "id": "1ltbdP1DXQG5bPMbrzhKjZgNECNHTC8GY2Mk1Pl_GqbQ",
-      "url": "https://docs.google.com/spreadsheets/d/1ltbdP1DXQG5bPMbrzhKjZgNECNHTC8GY2Mk1Pl_GqbQ/edit",
+      "id": "1J6b_zkW_Sa0tDF9qVx_-p560bvufrxUXhWKTN6kafFM",
+      "url": "https://docs.google.com/spreadsheets/d/1J6b_zkW_Sa0tDF9qVx_-p560bvufrxUXhWKTN6kafFM/edit",
       "localSource": "data/tracker.csv",
       "note": "data/tracker.csv is the local source of truth. The Drive connector cannot append rows to an existing sheet, so the sheet is recreated from the CSV on each update and its URL changes; always take the URL from here. When uploading, replace the '; ' list separators with ' · ' first - Drive's CSV importer picks whichever of comma or semicolon is more frequent, and semicolons otherwise win and collapse every row into one cell.",
-      "syncedAt": "2026-09-09",
-      "rows": 12
+      "syncedAt": "2026-09-10",
+      "rows": 13
     },
     "fullName": "PrayogX — JEE Advanced Interactive Simulation Library",
     "tagline": "Interactive JEE Advanced Physics and Chemistry simulations"
@@ -34,12 +34,12 @@
     "idPolicy": "Simulation IDs are permanent. A redo or fix edits the existing folder in place and bumps `updatedAt` / `revision`; it never mints a new ID."
   },
   "counts": {
-    "total": 12,
+    "total": 13,
     "byYear": {
-      "2026": 12
+      "2026": 13
     },
     "bySubject": {
-      "Chemistry": 12
+      "Chemistry": 13
     },
     "byChapter": {
       "Electrochemistry": 1,
@@ -52,7 +52,8 @@
       "Amines and Diazonium Salts": 1,
       "Atomic Structure": 1,
       "Surface Chemistry": 1,
-      "Solutions and Colligative Properties": 1
+      "Solutions and Colligative Properties": 1,
+      "Coordination Compounds": 1
     }
   },
   "simulations": [
@@ -1621,6 +1622,157 @@
       },
       "createdAt": "2026-09-09",
       "updatedAt": "2026-09-09"
+    },
+    {
+      "id": "ADV-2026-P2-CHE-Q13",
+      "slug": "adv-2026-p2-che-q13",
+      "revision": 1,
+      "path": "simulations/2026/paper-2/chemistry/adv-2026-p2-che-q13/index.html",
+      "folder": "simulations/2026/paper-2/chemistry/adv-2026-p2-che-q13/",
+      "title": "Triangular faces of cis and mer octahedral complexes carrying one N and two Cl",
+      "shortTitle": "The octahedron inspection bench",
+      "summary": "Type the composition of each coordination sphere into the panel, press Run experiment, and watch a model octahedron get built, loaded with N and Cl donors and turned to face each of its eight triangles in turn while an inspector tallies the ones matching the pattern - the answer is the tally at the end, not a printed count.",
+      "exam": "JEE Advanced",
+      "year": 2026,
+      "paper": "Paper 2",
+      "paperNumber": 2,
+      "subject": "Chemistry",
+      "branch": "Inorganic Chemistry / Coordination Compounds",
+      "questionNumber": 13,
+      "section": "Section 3",
+      "questionType": "Numerical value",
+      "marking": {
+        "full": 4,
+        "partial": 0,
+        "zero": 0,
+        "negative": 0
+      },
+      "chapter": "Coordination Compounds",
+      "topic": "Geometrical isomerism in octahedral complexes",
+      "subtopics": [
+        "Coordination sphere versus counter-ion",
+        "Geometry of the octahedron: vertices, edges and faces",
+        "cis and trans isomers of an MA4B2 complex",
+        "fac and mer isomers of an MA3B3 complex",
+        "Counting faces by their corner composition",
+        "Edges shared between faces"
+      ],
+      "concepts": [
+        "Only what is inside the square brackets is bonded to the metal - the chloride written outside is the counter-ion and never reaches a vertex",
+        "An octahedron has 6 vertices, 12 edges and 8 triangular faces, and every face takes exactly one vertex from each opposite pair",
+        "cis means 90 degrees apart, so two cis donors share an edge; trans means opposite, so no face contains both",
+        "fac means three mutually cis donors, which form one whole face; mer means one pair is trans and the third is cis to both",
+        "Every edge of an octahedron lies in exactly two faces, so a Cl-Cl edge contributes two faces carrying two chlorides",
+        "A count like this depends only on the isomer label, not on which particular vertices are drawn"
+      ],
+      "formulas": [
+        "octahedron: V = 6, E = 12, F = 8",
+        "Euler: V - E + F = 2",
+        "faces = 2 x 2 x 2 = 8, one vertex from each opposite pair",
+        "each edge is shared by exactly 2 faces",
+        "cis-MA4B2: 1 B-B edge -> 2 faces with 1 A and 2 B",
+        "mer-MA3B3: 2 B-B edges -> 4 faces with 1 A and 2 B",
+        "fac-MA3B3: 3 B-B edges but one all-B face -> 3 faces with 1 A and 2 B"
+      ],
+      "tags": [
+        "coordination compounds",
+        "octahedral complex",
+        "geometrical isomerism",
+        "cis isomer",
+        "trans isomer",
+        "fac isomer",
+        "mer isomer",
+        "facial",
+        "meridional",
+        "coordination sphere",
+        "counter ion",
+        "ionisation",
+        "cobalt complex",
+        "ammine complex",
+        "chlorido ligand",
+        "octahedron geometry",
+        "triangular faces",
+        "vertices edges faces",
+        "euler formula",
+        "counting problem",
+        "numerical value",
+        "jee advanced 2026",
+        "paper 2",
+        "chemistry q13",
+        "data entry",
+        "run the experiment"
+      ],
+      "difficulty": "Moderate",
+      "estimatedMinutes": 7,
+      "answer": "6",
+      "answerValue": "6",
+      "derivedQuantities": {
+        "vertices": 6,
+        "edges": 12,
+        "triangular_faces": 8,
+        "euler_check": 2,
+        "complex_A_donors": "4 N + 2 Cl",
+        "complex_A_isomer": "cis",
+        "complex_A_ClCl_edges": 1,
+        "complex_A_matching_faces": 2,
+        "complex_B_donors": "3 N + 3 Cl",
+        "complex_B_isomer": "mer",
+        "complex_B_ClCl_edges": 2,
+        "complex_B_matching_faces": 4,
+        "total": 6,
+        "cis_face_census_0_1_2_3_Cl": "2 / 4 / 2 / 0",
+        "mer_face_census_0_1_2_3_Cl": "0 / 4 / 4 / 0",
+        "cis_placements_all_giving_2": 12,
+        "trans_placements_all_giving_0": 3,
+        "mer_placements_all_giving_4": 12,
+        "fac_placements_all_giving_3": 8,
+        "trap_fac_instead_of_mer": 5,
+        "trap_trans_instead_of_cis": 4,
+        "trap_counting_2N_1Cl": 8,
+        "trap_ionic_Cl_as_ligand": "7 donor atoms, impossible"
+      },
+      "verification": {
+        "status": "verified",
+        "methods": [
+          "Derived from first principles before any published solution was consulted: the eight faces, both isomer geometries and both counts were enumerated independently",
+          "The faces enumerated two ways: taking one vertex from each opposite pair gives 8, and brute force over all C(6,3) = 20 triples with the opposite-pair triples discarded gives the same 8. Euler's formula, 6 - 12 + 8 = 2, agrees",
+          "Exhaustive over placements rather than one drawing: all 15 ways of seating two chlorides were classified (12 cis, 3 trans) and every cis placement gives exactly 2 matching faces, every trans placement 0; all 20 ways of seating three were classified (8 fac, 12 mer) and every mer placement gives exactly 4, every fac placement 3. The answer therefore cannot depend on which vertices are drawn, and the page reproduces that table live",
+          "The face census closes: cis splits its eight faces 2/4/2/0 across 0, 1, 2 and 3 chlorides and mer splits them 0/4/4/0, both summing to 8, so no face is double-counted or missed",
+          "Structural cross-check by a different argument: a face carrying two chlorides is exactly a Cl-Cl edge, and every edge lies in two faces - cis has one such edge giving 2, mer has two giving 4",
+          "The distractors reproduced deliberately: fac instead of mer gives 2 + 3 = 5; trans instead of cis gives 0 + 4 = 4; counting 2 N + 1 Cl instead gives 4 + 4 = 8; putting the ionic chloride on a vertex needs seven vertices and is impossible. None is 6",
+          "Answer cross-checked afterwards against a published worked solution for this paper, which argues from the same Cl-Cl edges and reports the same 6. IIT Roorkee's official key was not retrievable at the time of writing",
+          "Headless-browser run of the finished page: 112 assertions driving the whole flow - the geometry the page is built on, the exhaustive placement check, the empty instrument panel with the answer nowhere on it, the refusal of seven donor atoms and of a face pattern that does not add to three, the isomer control adapting to the numbers typed, each of the six run steps in turn, pause and resume genuinely freezing and restarting the clock, the model turning to the face under inspection, the ledger and chips filling live, the result panel and the gate, browsing either complex afterwards and clicking a ledger row to re-inspect a face, all three traps reproduced as runs, theme toggle, clean console, zero horizontal overflow at 390 px and 360 px, and a bench that fits in one window"
+        ],
+        "verifiedOn": "2026-09-10",
+        "note": "IIT Roorkee's official key was not retrievable; the published solution used for cross-checking is a coaching-institute solution that argues from the same Cl-Cl edges and agrees on both intermediate counts, not only on the final number."
+      },
+      "interactivity": [
+        "Enter the data, run the experiment, watch it produce the answer: an instrument panel you fill in, a six-step inspection you watch, and a tally read off the finished run",
+        "One input for every quantity the question gives: the N and Cl donor counts of each coordination sphere, the isomer of each, and the composition of the face being looked for",
+        "The isomer control relabels itself from the numbers typed - two of one ligand offers cis / trans, three offers fac / mer, anything else says there is only one arrangement - and nothing is pre-selected, so the isomer is data the student supplies",
+        "The bench refuses what it cannot build and says why: seven donor atoms will not fit on six vertices, which is exactly the counter-ion trap the question sets, and a face pattern that does not add to three is rejected against the field",
+        "A ghost octahedron idles on the bench before the run, so the apparatus is visibly waiting for data",
+        "Step 1 draws the cage in edge by edge and states why there are eight faces",
+        "Step 2 flies the ligands in to the vertices the isomer demands, and the Cl-Cl edges light up in orange as they land",
+        "Step 3 turns the model so each of the eight triangular faces points at the viewer in turn, shades the face under inspection, and reads its three corners out - the inspection is a physical action, not a table",
+        "Step 4 lifts the ligands off and lands the second complex on the same cage, so it is visibly the same eight faces with different labels",
+        "A live tally under the model counts the matching faces as they are found, with eight chips ticking off face by face",
+        "A face ledger fills in row by row with each face's corners, what sits on them in colour, and whether it matched",
+        "Six live gauges that fill in only as the run establishes them, with the total staying blank until the inspection starts",
+        "The working writes itself one line per step and the box scrolls itself to the newest line",
+        "Playback controls: pause, resume, replay and 0.5x / 1x / 2x speed, plus a change-the-data button that returns to the panel with the entries kept",
+        "After the run either complex can be reloaded onto the model, and clicking any ledger row turns the model to that face so it can be checked by eye",
+        "An exhaustive symmetry panel that lists every placement of the same isomer class - all 12 cis, all 12 mer - with the count each gives, proving that the vertices the bench chose could not have mattered",
+        "All three distractors are reachable as runs rather than warnings: fac gives 5, trans gives 4, and asking for 2 N + 1 Cl gives 8",
+        "A log of every run made, a lab notebook that writes itself, a record of the run that fills in quantity by quantity, and the derivation gated until an inspection finishes",
+        "Step-by-step solution with an independent verification log"
+      ],
+      "source": {
+        "file": "papers/adv_2026_paper_2.pdf",
+        "page": 28
+      },
+      "createdAt": "2026-09-10",
+      "updatedAt": "2026-09-10"
     }
   ]
 }

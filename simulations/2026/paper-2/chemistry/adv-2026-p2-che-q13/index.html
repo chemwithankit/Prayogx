@@ -1,0 +1,2053 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Triangular faces of cis and mer octahedral complexes — JEE Advanced 2026 Paper 2 Q.13 | PrayogX</title>
+<meta name="description" content="Type the composition of each coordination sphere from JEE Advanced 2026 Paper 2 Chemistry Q.13 into the bench, press Run experiment, and watch a model octahedron get built, loaded with N and Cl donors and turned face by face while an inspector tallies the faces carrying one N and two Cl.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232a78d6'/%3E%3Cpath d='M12.5 6.5h7M13.6 6.5v7.2L7.9 24.1a1.5 1.5 0 0 0 1.3 2.3h13.6a1.5 1.5 0 0 0 1.3-2.3l-5.7-10.4V6.5' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M10.6 20.6h10.8' stroke='white' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E">
+<meta name="sim-id" content="ADV-2026-P2-CHE-Q13">
+<style>
+:root{
+  color-scheme: light;
+  --surface-0:#f4f4f1; --surface-1:#fcfcfb; --surface-2:#ececea;
+  --line:#d9d9d4; --line-strong:#bcbcb5;
+  --text-primary:#0b0b0b; --text-secondary:#52514e; --text-muted:#77766f;
+  --s1:#2a78d6; --s2:#eb6834; --s3:#1baf7a; --s4:#4a3aa7;
+  --good:#00743f; --bad:#c0392b; --accent:#2a78d6;
+  --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+  --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --serif:ui-serif,Georgia,"Times New Roman",serif;
+  --radius:10px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  color-scheme: dark;
+  --surface-0:#111110; --surface-1:#1a1a19; --surface-2:#232322;
+  --line:#34342f; --line-strong:#4a4a44;
+  --text-primary:#ffffff; --text-secondary:#c3c2b7; --text-muted:#95948b;
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#9085e9;
+  --good:#3fae7a; --bad:#e66767; --accent:#3987e5;
+}}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --surface-0:#111110; --surface-1:#1a1a19; --surface-2:#232322;
+  --line:#34342f; --line-strong:#4a4a44;
+  --text-primary:#ffffff; --text-secondary:#c3c2b7; --text-muted:#95948b;
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#9085e9;
+  --good:#3fae7a; --bad:#e66767; --accent:#3987e5;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--surface-0);color:var(--text-primary);font-family:var(--sans);
+  font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px 80px}
+
+header.top{border-bottom:1px solid var(--line);background:var(--surface-1)}
+.top-inner{max-width:1120px;margin:0 auto;padding:22px 20px 18px;position:relative;
+  display:flex;flex-wrap:wrap;gap:16px;align-items:flex-start;justify-content:space-between}
+.simid{font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--text-muted)}
+h1{font-size:23px;line-height:1.25;margin:6px 0 10px;font-weight:640;max-width:640px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-size:11.5px;padding:3px 9px;border:1px solid var(--line-strong);border-radius:999px;
+  color:var(--text-secondary);background:var(--surface-2);white-space:nowrap}
+.chip.k{border-color:var(--accent);color:var(--accent);background:transparent}
+.answerbox{border:1px solid var(--line-strong);border-radius:var(--radius);background:var(--surface-2);
+  padding:12px 16px;min-width:210px}
+.answerbox .lbl{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted)}
+.answerbox .val{font-family:var(--mono);font-size:25px;font-weight:600;color:var(--good);line-height:1.22}
+.answerbox .sub{font-size:12px;color:var(--text-secondary)}
+.answerbox.locked .val{color:var(--text-muted);font-size:17px;letter-spacing:.04em}
+.answerbox .rv{margin-top:6px;font-size:11px;background:none;border:none;padding:0;color:var(--accent);
+  cursor:pointer;text-decoration:underline;font-family:var(--sans)}
+.themebtn{position:absolute;top:14px;right:16px;border:1px solid var(--line-strong);background:var(--surface-2);
+  color:var(--text-secondary);border-radius:8px;padding:4px 9px;font-size:12px;cursor:pointer}
+.brandbar{display:flex;align-items:center;gap:8px;margin-bottom:9px;text-decoration:none}
+.brandbar .pxmark{width:21px;height:21px;flex:none;display:block}
+.brandbar .wm{font-size:13px;font-weight:800;letter-spacing:.17em;color:var(--text-secondary);line-height:1}
+.brandbar .wm i{font-style:normal;color:var(--accent)}
+
+nav.jump{position:sticky;top:0;z-index:20;background:var(--surface-0);border-bottom:1px solid var(--line);
+  padding:8px 0;margin-bottom:26px}
+nav.jump ul{max-width:1120px;margin:0 auto;padding:0 20px;list-style:none;display:flex;gap:4px;overflow-x:auto}
+nav.jump a{display:block;padding:5px 11px;border-radius:7px;font-size:13px;text-decoration:none;
+  color:var(--text-secondary);white-space:nowrap}
+nav.jump a:hover{background:var(--surface-2);color:var(--text-primary)}
+
+section{margin:0 0 42px;scroll-margin-top:56px}
+h2{font-size:17px;font-weight:640;margin:0 0 4px;display:flex;align-items:baseline;gap:9px}
+h2 .n{font-family:var(--mono);font-size:12px;color:var(--text-muted);font-weight:400}
+.lede{color:var(--text-secondary);font-size:13.5px;margin:0 0 16px;max-width:76ch}
+.card,.panel{background:var(--surface-1);border:1px solid var(--line);border-radius:var(--radius);padding:18px}
+.panel h3{margin:0 0 12px;font-size:13px;letter-spacing:.05em;text-transform:uppercase;
+  color:var(--text-muted);font-weight:600}
+.lab{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:16px;align-items:start}
+.lab>*{min-width:0}
+@media(max-width:900px){.lab{grid-template-columns:1fr !important}}
+canvas{display:block;width:100%;height:auto;border-radius:8px;background:var(--surface-2)}
+
+.qtext{font-family:var(--serif);font-size:16px;line-height:1.7}
+.opts{list-style:none;padding:0;margin:16px 0 0;display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr));gap:10px}
+.opts li{border:1px solid var(--line);border-radius:10px;padding:10px;background:var(--surface-1);
+  display:flex;flex-direction:column;gap:6px}
+.opts li .hd{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--text-muted);font-family:var(--mono)}
+.opts li .mark{margin-left:auto;font-family:var(--sans);font-size:11.5px;font-weight:600}
+.opts li .nm{font-size:11.5px;color:var(--text-secondary)}
+.opts li.correct{border-color:var(--good);background:color-mix(in srgb,var(--good) 11%,transparent)}
+.opts li.correct .mark{color:var(--good)}
+.opts li.wrong{border-color:var(--bad)}
+.opts li.wrong .mark{color:var(--bad)}
+svg.optthumb{display:block;width:100%;height:auto;background:var(--surface-2);border-radius:7px}
+
+.ctrl{margin:14px 0}
+.ctrl label{display:flex;flex-wrap:wrap;gap:4px;justify-content:space-between;align-items:baseline;
+  font-size:13px;margin-bottom:5px}
+.ctrl label span{min-width:0}
+.ctrl label .v{font-family:var(--mono);font-size:13px;color:var(--text-primary)}
+input[type=range]{width:100%;min-width:0;accent-color:var(--accent)}
+.numrow{display:flex;gap:6px;align-items:center;margin-top:6px}
+.numrow input.numin{flex:1;min-width:0;padding:7px 9px;border-radius:7px;border:1px solid var(--line-strong);
+  background:var(--surface-0);color:var(--text-primary);font-family:var(--mono);font-size:13px}
+.numrow input.numin:focus{outline:2px solid var(--accent);outline-offset:-1px}
+.numrow input.numin.bad{border-color:var(--bad);background:color-mix(in srgb,var(--bad) 9%,transparent)}
+.numrow button.step{flex:none;width:40px;height:34px;border-radius:8px;border:1px solid var(--line-strong);
+  background:var(--surface-2);color:var(--text-primary);font-size:18px;line-height:1;cursor:pointer;
+  font-family:var(--mono);touch-action:manipulation}
+.numrow button.step:hover{border-color:var(--accent);color:var(--accent)}
+.numrow .unit{flex:none;font-size:12px;color:var(--text-muted);min-width:52px}
+.hint{font-size:11.5px;color:var(--text-muted);margin-top:4px;min-height:1.15em}
+.hint.bad{color:var(--bad);font-weight:600}
+.segbtns{display:flex;gap:6px;flex-wrap:wrap}
+.segbtns button{flex:1;min-width:84px;padding:8px 6px;border-radius:8px;border:1px solid var(--line-strong);
+  background:var(--surface-2);color:var(--text-secondary);font-size:13px;cursor:pointer;font-family:var(--sans)}
+.segbtns button[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:650}
+button.act{padding:8px 14px;border-radius:8px;border:1px solid var(--line-strong);background:var(--surface-2);
+  color:var(--text-primary);font-size:13px;cursor:pointer;font-family:var(--sans)}
+button.act:hover{border-color:var(--accent);color:var(--accent)}
+button.act.primary{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+button.act:disabled{opacity:.42;cursor:not-allowed}
+.btnrow{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+
+.playback{display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin-top:12px;
+  padding:9px 10px;border:1px solid var(--line);border-radius:9px;background:var(--surface-2)}
+.playback .lb{font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-muted);margin-right:2px}
+.playback button{padding:6px 12px;border-radius:7px;border:1px solid var(--line-strong);
+  background:var(--surface-1);color:var(--text-secondary);font-size:12.5px;cursor:pointer;font-family:var(--mono)}
+.playback button[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:700}
+.playback button:hover{border-color:var(--accent)}
+
+.readouts{display:grid;grid-template-columns:repeat(auto-fit,minmax(118px,1fr));gap:8px}
+.ro{border:1px solid var(--line);border-radius:8px;padding:8px 10px;background:var(--surface-2);position:relative}
+.ro .k{font-size:11px;letter-spacing:.03em;font-weight:600;color:var(--text-muted);white-space:nowrap}
+.ro .v{font-family:var(--mono);font-size:16px;font-weight:600;line-height:1.35}
+.ro .u{font-size:10.5px;color:var(--text-muted)}
+.delta{position:absolute;top:5px;right:7px;font-family:var(--mono);font-size:10.5px;font-weight:700;
+  padding:1px 5px;border-radius:5px;opacity:0;transition:opacity .55s ease-out;pointer-events:none}
+.delta.up{color:var(--good);background:color-mix(in srgb,var(--good) 16%,transparent)}
+.delta.down{color:var(--s2);background:color-mix(in srgb,var(--s2) 16%,transparent)}
+.delta.show{opacity:1;transition:opacity .1s}
+
+.eqlive{font-family:var(--serif);font-size:15px;background:var(--surface-2);border:1px solid var(--line);
+  border-radius:8px;padding:11px 13px;margin-top:12px;line-height:2.1}
+.eqlive .t{font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-muted);
+  font-family:var(--sans);display:block;margin-bottom:2px}
+.eqlive b{font-family:var(--mono);font-weight:700}
+.eqlive .chg{background:color-mix(in srgb,var(--accent) 26%,transparent);border-radius:4px;padding:0 3px}
+.eqlive .res{color:var(--good);font-weight:700;font-family:var(--mono)}
+
+.chartwrap{position:relative;background:var(--surface-1);border:1px solid var(--line);
+  border-radius:var(--radius);padding:16px}
+svg.chart{display:block;width:100%;height:auto;overflow:visible}
+.tip{position:absolute;pointer-events:none;background:var(--surface-1);border:1px solid var(--line-strong);
+  border-radius:8px;padding:8px 11px;font-size:12px;box-shadow:0 4px 14px rgba(0,0,0,.13);opacity:0;
+  transition:opacity .1s;z-index:5;min-width:150px}
+.tip .t{font-family:var(--mono);font-size:11px;color:var(--text-muted);margin-bottom:4px}
+.tip .r{display:flex;align-items:center;gap:7px;white-space:nowrap}
+.tip .sw{width:9px;height:9px;border-radius:2px;flex:none}
+.tip .rv{margin-left:auto;font-family:var(--mono);font-weight:600}
+.legend{display:flex;flex-wrap:wrap;gap:14px;margin-top:10px;font-size:12.5px;color:var(--text-secondary)}
+.legend span{display:flex;align-items:center;gap:6px}
+.legend i{width:14px;height:3px;border-radius:2px;display:block}
+.legend i.dot{width:9px;height:9px;border-radius:50%}
+
+.predict{border:1px solid var(--accent);border-radius:9px;padding:12px 14px;margin-top:14px;
+  background:color-mix(in srgb,var(--accent) 7%,transparent)}
+.predict .q{font-size:13px;font-weight:600;margin-bottom:8px}
+.predict .row{display:flex;gap:6px;flex-wrap:wrap}
+.predict button{flex:1;min-width:96px;padding:8px;border-radius:8px;border:1px solid var(--line-strong);
+  background:var(--surface-1);color:var(--text-primary);font-size:13px;cursor:pointer}
+.predict button[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+.predict .fb{font-size:12.5px;margin-top:9px;min-height:1.2em}
+.predict .fb.ok{color:var(--good);font-weight:600}
+.predict .fb.no{color:var(--bad);font-weight:600}
+
+table.data{border-collapse:collapse;font-size:12.5px;width:100%}
+table.data th,table.data td{border:1px solid var(--line-strong);padding:6px 9px;text-align:center}
+table.data th{background:var(--surface-2);font-weight:600;font-size:11.5px;color:var(--text-secondary)}
+table.data td.l{text-align:left}
+table.data td.num{font-family:var(--mono)}
+tr.win td{background:color-mix(in srgb,var(--good) 12%,transparent);font-weight:600}
+.scrollx{overflow-x:auto}
+.yes{color:var(--good);font-weight:700} .no{color:var(--bad);font-weight:700}
+.empty{color:var(--text-muted);font-size:12.5px;padding:10px 0}
+
+.nb{display:grid;gap:7px}
+.nb .obs{font-size:12.5px;padding:8px 11px;border-radius:8px;background:var(--surface-2);
+  border-left:3px solid var(--s1);color:var(--text-secondary);animation:nbin .35s ease-out}
+.nb .obs b{color:var(--text-primary);font-family:var(--mono)}
+@keyframes nbin{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+.insight{border:1px solid var(--good);border-radius:9px;padding:12px 14px;margin-top:12px;
+  background:color-mix(in srgb,var(--good) 10%,transparent);font-size:13.5px;animation:nbin .4s ease-out}
+.insight b{color:var(--good)}
+
+.verdict{border-radius:9px;padding:11px 14px;font-size:13.5px;margin-top:12px;border:1px solid var(--line-strong);
+  background:var(--surface-2)}
+.verdict.ok{border-color:var(--good);background:color-mix(in srgb,var(--good) 10%,transparent)}
+.verdict.no{border-color:var(--bad);background:color-mix(in srgb,var(--bad) 9%,transparent)}
+.verdict b{font-size:14px}
+
+.gate{border:1px dashed var(--line-strong);border-radius:var(--radius);padding:24px 20px;text-align:center;
+  background:var(--surface-1)}
+.gate h4{margin:0 0 6px;font-size:15px}
+.gate p{margin:0 0 12px;font-size:13px;color:var(--text-secondary)}
+.gate .cnt{font-family:var(--mono);color:var(--accent);font-weight:700}
+.reveal{animation:nbin .45s ease-out}
+
+ol.steps{list-style:none;counter-reset:s;padding:0;margin:0;display:grid;gap:10px}
+ol.steps li{min-width:0;counter-increment:s;border:1px solid var(--line);border-radius:var(--radius);
+  background:var(--surface-1);padding:14px 16px 14px 52px;position:relative}
+ol.steps li::before{content:counter(s);position:absolute;left:15px;top:14px;width:23px;height:23px;
+  border-radius:50%;background:var(--accent);color:#fff;font-size:12px;font-weight:700;
+  display:grid;place-items:center;font-family:var(--mono)}
+ol.steps h4{margin:0 0 6px;font-size:14px;font-weight:640}
+ol.steps p{margin:0 0 6px;font-size:13.5px;color:var(--text-secondary)}
+.eq{min-width:0;font-family:var(--serif);font-size:15px;background:var(--surface-2);border-radius:7px;
+  padding:9px 13px;margin:8px 0;overflow-x:auto}
+.eq .hl{color:var(--good);font-weight:700}
+sub{font-size:.72em} sup{font-size:.72em}
+.verify{border:1px solid var(--good);border-radius:var(--radius);
+  background:color-mix(in srgb,var(--good) 8%,transparent);padding:14px 16px;font-size:13.5px}
+.verify h4{margin:0 0 6px;font-size:13.5px;color:var(--good)}
+.verify ul{margin:6px 0 0;padding-left:18px;color:var(--text-secondary)}
+.meta-tbl{width:100%;border-collapse:collapse;font-size:13.5px}
+.meta-tbl td{padding:6px 0;border-bottom:1px solid var(--line);vertical-align:top}
+.meta-tbl td:first-child{color:var(--text-muted);width:160px;font-size:12.5px;padding-right:14px}
+footer{border-top:1px solid var(--line);margin-top:40px;padding-top:16px;font-size:12px;color:var(--text-muted)}
+
+/* ---- the one-screen deck ------------------------------------------- */
+.deck{border:1px solid var(--line);border-radius:var(--radius);background:var(--surface-1);padding:14px}
+.phasebar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;padding-bottom:11px;
+  border-bottom:1px solid var(--line);margin-bottom:12px}
+.phasebar .ph{font-size:11.5px;padding:4px 11px;border-radius:999px;border:1px solid var(--line-strong);
+  background:var(--surface-2);color:var(--text-muted);white-space:nowrap;display:flex;gap:6px;
+  align-items:center}
+.phasebar .ph .n{font-family:var(--mono);font-size:10px;opacity:.8}
+.phasebar .ph.now{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:650}
+.phasebar .ph.done{border-color:var(--good);color:var(--good);
+  background:color-mix(in srgb,var(--good) 12%,transparent);font-weight:600}
+.phasebar .sp{flex:1}
+.phasebar .tag{font-size:11px;color:var(--text-muted);font-family:var(--mono)}
+
+.deckmain{display:grid;grid-template-columns:300px minmax(0,1fr);gap:14px;align-items:start}
+@media(max-width:900px){.deckmain{grid-template-columns:1fr !important}}
+.bay{border:1px solid var(--line);border-radius:9px;background:var(--surface-2);padding:9px 10px 7px}
+.bay .cap{font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-muted);
+  margin-bottom:4px;display:flex;justify-content:space-between;gap:8px;align-items:baseline}
+.bay .cap b{font-family:var(--mono);font-size:11px;color:var(--text-secondary);letter-spacing:0;
+  text-transform:none}
+svg.scene{display:block;width:100%;height:auto}
+@media(max-width:900px){svg.scene{width:auto;max-width:100%;max-height:330px;margin:0 auto}}
+
+/* ---- the live tally -------------------------------------------------- */
+.tally{margin-top:7px;border-top:1px solid var(--line);padding-top:7px}
+.tally .hd{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.tally .hd .k{font-size:10px;letter-spacing:.07em;text-transform:uppercase;color:var(--text-muted)}
+.tally .hd .v{font-family:var(--mono);font-size:19px;font-weight:700;color:var(--text-muted);
+  line-height:1.15}
+.tally .hd .v.on{color:var(--s3)}
+.tally .hd .v.fin{color:var(--good)}
+.tally .chips{display:grid;grid-template-columns:repeat(8,1fr);gap:3px;margin-top:5px}
+.tally .chips b{display:block;height:19px;border-radius:5px;border:1px solid var(--line-strong);
+  background:var(--surface-1);color:var(--text-muted);font-family:var(--mono);font-size:11px;
+  font-weight:700;line-height:17px;text-align:center;transition:.18s}
+.tally .chips b.hit{border-color:var(--good);background:color-mix(in srgb,var(--good) 18%,transparent);
+  color:var(--good)}
+.tally .chips b.miss{border-color:var(--line-strong);color:var(--text-muted);opacity:.55}
+.tally .chips b.now{border-color:var(--accent);box-shadow:0 0 0 2px color-mix(in srgb,var(--accent) 28%,transparent)}
+.tally .sub{font-size:10.5px;color:var(--text-muted);margin-top:4px;line-height:1.3;min-height:2.6em}
+.tally .sub b{color:var(--text-primary);font-family:var(--mono)}
+
+.rightcol{display:grid;gap:11px}
+.swap{min-height:176px;border:1px solid var(--line);border-radius:9px;background:var(--surface-2);
+  padding:11px 13px}
+.swap h3{margin:0 0 9px;font-size:12px;letter-spacing:.05em;text-transform:uppercase;
+  color:var(--text-muted);font-weight:600;display:flex;justify-content:space-between;gap:10px;
+  align-items:baseline}
+.swap h3 em{font-style:normal;font-size:11px;text-transform:none;letter-spacing:0;
+  color:var(--text-muted);font-weight:400}
+
+/* ---- the data-entry form -------------------------------------------- */
+.form{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(210px,100%),1fr));gap:10px 12px}
+.form>*{min-width:0}
+.cx{border:1px solid var(--line);border-radius:8px;background:var(--surface-1);padding:9px 10px}
+.cx .t{font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--accent);
+  font-weight:700;margin-bottom:6px}
+.cx .r{display:flex;gap:7px;align-items:center;margin-bottom:5px}
+.cx .r label{flex:1;min-width:0;font-size:11.5px;line-height:1.25}
+.cx input{flex:none;width:54px;padding:5px 7px;border-radius:6px;border:1px solid var(--line-strong);
+  background:var(--surface-0);color:var(--text-primary);font-family:var(--mono);font-size:13.5px;
+  text-align:center}
+.cx input:focus{outline:2px solid var(--accent);outline-offset:-1px}
+.cx input.bad{border-color:var(--bad);background:color-mix(in srgb,var(--bad) 9%,transparent)}
+.cx input.ok{border-color:var(--good)}
+.cx .iso{display:flex;gap:5px;margin-top:2px}
+.cx .iso button{flex:1;padding:5px 4px;border-radius:6px;border:1px solid var(--line-strong);
+  background:var(--surface-2);color:var(--text-secondary);font-size:12px;cursor:pointer;
+  font-family:var(--sans)}
+.cx .iso button[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:#fff;
+  font-weight:650}
+.cx .iso button:disabled{opacity:.4;cursor:not-allowed}
+.cx .fh{font-size:10.5px;color:var(--text-muted);margin-top:4px;line-height:1.3;min-height:2.4em}
+.cx .fh.bad{color:var(--bad);font-weight:600}
+
+.runrow{display:flex;gap:11px;align-items:center;flex-wrap:wrap;margin-top:10px;padding-top:9px;
+  border-top:1px solid var(--line)}
+button.run{flex:none;padding:10px 24px;border-radius:10px;border:none;background:var(--accent);
+  color:#fff;font-size:15px;font-weight:700;cursor:pointer;font-family:var(--sans);
+  box-shadow:0 3px 12px color-mix(in srgb,var(--accent) 34%,transparent);transition:.18s}
+button.run:hover:not(:disabled){filter:brightness(1.08)}
+button.run:disabled{opacity:.45;cursor:not-allowed;box-shadow:none}
+.runrow .msg{flex:1 1 190px;min-width:0;font-size:12px;color:var(--text-secondary)}
+.runrow .msg b{color:var(--text-primary)}
+
+/* ---- the running narration ------------------------------------------ */
+.rail{display:flex;gap:0;flex-wrap:wrap;margin-bottom:10px}
+.rail .s{flex:1 1 62px;min-width:0;padding:6px 5px;font-size:10.5px;text-align:center;
+  background:var(--surface-1);border:1px solid var(--line);border-right:none;
+  color:var(--text-muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rail .s:first-child{border-radius:8px 0 0 8px}
+.rail .s:last-child{border-right:1px solid var(--line);border-radius:0 8px 8px 0}
+.rail .s.done{background:color-mix(in srgb,var(--good) 13%,transparent);border-color:var(--good);
+  color:var(--good);font-weight:640}
+.rail .s.now{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:700}
+.narr{font-size:13px;line-height:1.5;min-height:56px}
+.narr b{font-family:var(--mono)}
+.narr .lead{font-weight:650;font-size:13.5px;display:block;margin-bottom:2px}
+
+/* ---- the result ------------------------------------------------------ */
+.res{display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap}
+.res .big{flex:none;border:1px solid var(--good);border-radius:10px;padding:10px 18px;
+  background:color-mix(in srgb,var(--good) 11%,transparent);text-align:center}
+.res .big .v{font-family:var(--mono);font-size:34px;font-weight:700;color:var(--good);line-height:1.1}
+.res .big .k{font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-muted)}
+.res .why{flex:1 1 230px;min-width:0;font-size:12.5px;line-height:1.55;color:var(--text-secondary)}
+.res .why b{color:var(--text-primary);font-family:var(--mono)}
+
+/* ---- working + ledger ------------------------------------------------ */
+.work{border:1px solid var(--line);border-radius:9px;background:var(--surface-2);padding:10px}
+.work .t{font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-muted);
+  margin-bottom:7px;display:flex;justify-content:space-between;gap:8px;align-items:baseline}
+#work{max-height:196px;overflow-y:auto}
+.ec{font-family:var(--serif);font-size:12px;background:var(--surface-1);border:1px solid var(--line);
+  border-left:3px solid var(--s1);border-radius:6px;padding:4px 8px;margin-bottom:4px;
+  animation:nbin .32s ease-out;line-height:1.45}
+.ec b{font-family:var(--mono);font-weight:700}
+.ec .res2{color:var(--good);font-family:var(--mono);font-weight:700}
+.ec.key{border-left-color:var(--good)}
+.work .pend{font-size:11.5px;color:var(--text-muted);padding:5px 2px}
+
+.ledger{border:1px solid var(--line);border-radius:9px;background:var(--surface-2);padding:10px}
+.ledger .t{font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-muted);
+  margin-bottom:6px;display:flex;justify-content:space-between;gap:8px;align-items:baseline}
+.ledger .t b{font-family:var(--mono);font-size:11px;letter-spacing:0;text-transform:none;
+  color:var(--text-secondary);display:flex;gap:4px}
+.viewbtn{font-family:var(--sans);font-size:10.5px;padding:2px 7px;border-radius:5px;
+  border:1px solid var(--line-strong);background:var(--surface-1);color:var(--text-secondary);
+  cursor:pointer;font-weight:400;letter-spacing:0}
+.viewbtn.on{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:650}
+table.faces{width:100%;border-collapse:collapse;font-size:11.5px;font-family:var(--mono)}
+table.faces th{font-size:10px;color:var(--text-muted);font-weight:600;padding:2px 4px;
+  text-align:left;font-family:var(--sans);letter-spacing:.03em}
+table.faces td{padding:2px 4px;border-top:1px solid var(--line)}
+table.faces tr.pending td{color:var(--text-muted);opacity:.5}
+table.faces tr.now td{background:color-mix(in srgb,var(--accent) 12%,transparent)}
+table.faces tr.hit td{background:color-mix(in srgb,var(--good) 12%,transparent);font-weight:700}
+table.faces td.m{text-align:right}
+.nlab{color:var(--s1);font-weight:700}
+.cllab{color:var(--s2);font-weight:700}
+
+.playback{margin-top:10px;padding:7px 8px}
+.playback button{padding:5px 10px;font-size:12px}
+#gauges .ro{padding:6px 8px}
+#gauges .ro .k{font-size:10.5px;white-space:normal;line-height:1.25}
+#gauges .ro .v{font-size:15px}
+#gauges .ro .u{font-size:10px}
+@media(min-width:1000px){#gauges{grid-template-columns:repeat(6,minmax(0,1fr))}}
+.dim{opacity:.45}
+
+.trapgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(250px,100%),1fr));gap:11px}
+.trap{border:1px solid var(--line);border-left:3px solid var(--bad);border-radius:9px;
+  background:var(--surface-1);padding:11px 13px}
+.trap .h{font-size:12.5px;font-weight:650;margin-bottom:4px}
+.trap .n{font-family:var(--mono);font-size:12px;color:var(--bad);font-weight:700}
+.trap p{margin:4px 0 0;font-size:12.5px;color:var(--text-secondary)}
+
+.record{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(206px,100%),1fr));gap:10px}
+.rec{border:1px solid var(--line);border-radius:9px;background:var(--surface-1);padding:11px 13px}
+.rec .k{font-size:11px;letter-spacing:.04em;color:var(--text-muted);font-weight:600}
+.rec .v{font-family:var(--mono);font-size:17px;font-weight:650;margin-top:2px}
+.rec .v.pend{color:var(--text-muted);font-size:14px}
+.rec .v.fin{color:var(--good)}
+.rec .n{font-size:11.5px;color:var(--text-secondary);margin-top:3px}
+
+details.fold{margin-top:12px;border-top:1px solid var(--line);padding-top:10px}
+details.fold>summary{cursor:pointer;font-size:12.5px;color:var(--accent);list-style:none;
+  display:flex;align-items:center;gap:6px}
+details.fold>summary::-webkit-details-marker{display:none}
+details.fold>summary::before{content:"\25B8";font-family:var(--mono);font-size:11px}
+details.fold[open]>summary::before{content:"\25BE"}
+
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-inner">
+    <div>
+      <div class="brandbar"><svg class="pxmark" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><rect width="32" height="32" rx="8" fill="var(--accent)"/><path d="M12.5 6.5h7M13.6 6.5v7.2L7.9 24.1a1.5 1.5 0 0 0 1.3 2.3h13.6a1.5 1.5 0 0 0 1.3-2.3l-5.7-10.4V6.5" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.6 20.6h10.8" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg><span class="wm">PRAYOG<i>X</i></span></div>
+      <div class="simid">ADV-2026-P2-CHE-Q13</div>
+      <h1>Counting the faces of two octahedra, one corner at a time</h1>
+      <div class="chips">
+        <span class="chip">JEE Advanced 2026</span>
+        <span class="chip">Paper 2 · Q.13</span>
+        <span class="chip">Chemistry</span>
+        <span class="chip">Coordination compounds</span>
+        <span class="chip">Numerical value</span>
+        <span class="chip">+4 / 0</span>
+        <span class="chip k">Enter the data · run it</span>
+      </div>
+    </div>
+    <div class="answerbox locked" id="answerbox">
+      <div class="lbl">Answer</div>
+      <div class="val" id="ansval">Run the experiment</div>
+      <div class="sub" id="anssub">Enter the data and run the experiment.</div>
+      <button class="rv" id="revealnow" type="button">Reveal anyway</button>
+    </div>
+    <button class="themebtn" id="themebtn" type="button">◐ theme</button>
+  </div>
+</header>
+
+<nav class="jump">
+  <ul>
+    <li><a href="#question">Question</a></li>
+    <li><a href="#bench">The bench</a></li>
+    <li><a href="#symmetry">Does it matter?</a></li>
+    <li><a href="#traps">Where it goes wrong</a></li>
+    <li><a href="#result">Record</a></li>
+    <li><a href="#solution">Solution</a></li>
+    <li><a href="#concepts">Concepts</a></li>
+  </ul>
+</nav>
+
+<div class="wrap">
+
+
+<section id="question">
+  <h2><span class="n">01</span>The question <span style="font-size:12px;color:var(--text-muted);
+    font-weight:400">&mdash; verbatim</span></h2>
+  <p class="lede">Section 3, numerical value &mdash; +4 for the correct value, 0 otherwise. Read it,
+    then type what it gives you into the bench below.</p>
+  <div class="card">
+    <div class="qtext">
+      <p style="margin-top:0">Consider that the coordinating atoms of the ligands in
+      <b>cis-[Co(NH<sub>3</sub>)<sub>4</sub>Cl<sub>2</sub>]Cl</b> and
+      <b>mer-[Co(NH<sub>3</sub>)<sub>3</sub>Cl<sub>3</sub>]</b> octahedral complexes are at the
+      vertices of an octahedron. The sum of total number of the triangular faces in both the
+      complexes having <b>one N atom and two Cl atoms</b> at their corners is ______.</p>
+    </div>
+    <div class="eq" style="margin-top:14px"><b>Read the brackets carefully.</b> Only what is inside
+      the square brackets is bonded to the cobalt and reaches a vertex. In
+      [Co(NH<sub>3</sub>)<sub>4</sub>Cl<sub>2</sub>]Cl the third chloride sits outside them as the
+      counter-ion, so the coordination sphere holds four N and two Cl, not three Cl. The bench
+      below will refuse the run if you give it seven ligands.</div>
+    <details class="fold"><summary>What each part of the question is for</summary>
+    <div class="scrollx" style="margin-top:10px">
+      <table class="data">
+        <thead><tr><th class="l">What you are given</th><th>Value</th>
+          <th class="l">What it is for</th></tr></thead>
+        <tbody>
+          <tr><td class="l">Donor atoms of complex A, inside the brackets</td>
+            <td class="num">4 N, 2 Cl</td>
+            <td class="l">which label goes on each of the six vertices</td></tr>
+          <tr><td class="l">Isomer of complex A</td><td class="num">cis</td>
+            <td class="l">the two chlorides are 90&deg; apart, i.e. on an edge</td></tr>
+          <tr><td class="l">Donor atoms of complex B</td><td class="num">3 N, 3 Cl</td>
+            <td class="l">a neutral complex &mdash; no counter-ion to discount</td></tr>
+          <tr><td class="l">Isomer of complex B</td><td class="num">mer</td>
+            <td class="l">one chloride pair is trans, the third is cis to both</td></tr>
+          <tr class="win"><td class="l">The pattern to count</td><td class="num">1 N + 2 Cl</td>
+            <td class="l">what the inspector looks for at the corners of each face</td></tr>
+          <tr><td class="l">The solid</td><td class="num">octahedron</td>
+            <td class="l">6 vertices, 12 edges, 8 triangular faces</td></tr>
+        </tbody>
+      </table>
+    </div>
+    </details>
+  </div>
+</section>
+
+<section id="bench">
+  <h2><span class="n">02</span>The bench</h2>
+  <p class="lede">Type the composition of each coordination sphere into the panel, press
+    <b>Run experiment</b>, and watch the model get built, loaded and turned face by face. The
+    tally at the end is the answer.</p>
+
+  <div class="deck">
+    <div class="phasebar">
+      <span class="ph now" id="ph0"><span class="n">1</span>Enter the data</span>
+      <span class="ph" id="ph1"><span class="n">2</span>Run the experiment</span>
+      <span class="ph" id="ph2"><span class="n">3</span>Read the result</span>
+      <span class="sp"></span>
+      <span class="tag" id="phtag">waiting for your data</span>
+    </div>
+
+    <div class="deckmain">
+      <div class="bay">
+        <div class="cap"><span>The model</span><b id="modtag">no cage built</b></div>
+        <svg class="scene" id="scene" viewBox="0 0 300 344" role="img"
+          aria-label="A rotating wire model of an octahedron. Blue N and orange Cl donor atoms sit
+          at its six vertices, and each of its eight triangular faces is turned towards the viewer
+          and inspected in turn."></svg>
+        <div class="tally">
+          <div class="hd"><span class="k">Matching faces found, live</span>
+            <span class="v" id="tv">&mdash;</span></div>
+          <div class="chips" id="chips"></div>
+          <div class="sub" id="tsub">nothing built yet</div>
+        </div>
+      </div>
+
+      <div class="rightcol">
+        <div class="swap" id="swap"></div>
+        <div class="readouts" id="gauges"></div>
+        <div class="duo" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(292px,100%),1fr));gap:11px;align-items:start">
+          <div class="work">
+            <div class="t"><span>The working, written as it is earned</span></div>
+            <div id="work"></div>
+          </div>
+          <div class="ledger">
+            <div class="t"><span>Face ledger</span><b id="ledgertag">&mdash;</b></div>
+            <div id="ledger"></div>
+          </div>
+        </div>
+        <div id="pbslot"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="symmetry">
+  <h2><span class="n">03</span>Does it matter which vertices you pick?</h2>
+  <p class="lede">The bench had to choose particular vertices for the chlorides. This panel checks,
+    by exhaustion, that the choice cannot change the count &mdash; and keeps a log of your runs.</p>
+  <div class="lab">
+    <div class="panel">
+      <h3>Every placement of the same isomer</h3>
+      <div class="segbtns" id="symsel" style="margin-bottom:11px">
+        <button type="button" data-w="A" aria-pressed="true">Complex A</button>
+        <button type="button" data-w="B">Complex B</button>
+      </div>
+      <div class="scrollx" style="max-height:230px;overflow-y:auto">
+        <table class="data" id="symtable"></table>
+      </div>
+      <div class="hint" id="symnote" style="margin-top:9px">Run the bench and this fills in.</div>
+    </div>
+    <div class="panel">
+      <h3>Runs you have made</h3>
+      <div class="scrollx"><table class="data" id="runs"></table></div>
+      <div class="empty" id="runsempty">No runs yet &mdash; enter the data above and press
+        <b>Run experiment</b>.</div>
+      <div style="margin-top:14px">
+        <h3>Lab notebook</h3>
+        <div class="nb" id="notebook"></div>
+        <div class="empty" id="nbempty">The notebook writes itself as the bench settles things.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="traps">
+  <h2><span class="n">04</span>Where it goes wrong</h2>
+  <p class="lede">Four answers this question produces every year. Each is a single wrong move, and
+    the bench above will reproduce all of them if you enter the data that way.</p>
+  <div class="trapgrid">
+    <div class="trap">
+      <div class="h"><span class="n">refused</span> &mdash; the counter-ion on a vertex</div>
+      <p>[Co(NH<sub>3</sub>)<sub>4</sub>Cl<sub>2</sub>]<b>Cl</b> has three chlorides written in it,
+        but only two are ligands. Enter 4 N and 3 Cl and the bench refuses: seven donor atoms
+        cannot sit on six vertices. That refusal is the check the question is really testing.</p>
+    </div>
+    <div class="trap">
+      <div class="h"><span class="n">5</span> &mdash; reading mer as fac</div>
+      <p>Switch complex B to <b>fac</b> and the run gives 3 instead of 4, so the total comes out
+        5. In the facial isomer all three chlorides are mutually cis and one whole face is
+        <i>all</i> chloride, which is not the pattern asked for.</p>
+    </div>
+    <div class="trap">
+      <div class="h"><span class="n">4</span> &mdash; reading cis as trans</div>
+      <p>Switch complex A to <b>trans</b> and it contributes 0, not 2. Two trans chlorides are
+        opposite vertices, they share no edge, and no face of an octahedron can hold both.</p>
+    </div>
+    <div class="trap">
+      <div class="h"><span class="n">8</span> &mdash; counting the wrong pattern</div>
+      <p>Ask the inspector for <b>2 N and 1 Cl</b> instead and it returns 4 + 4 = 8. The question
+        is specific about which way round the corners go, and the two counts are genuinely
+        different numbers.</p>
+    </div>
+  </div>
+</section>
+
+<section id="result">
+  <h2><span class="n">05</span>The record of the run</h2>
+  <p class="lede">Filled in from your own run, quantity by quantity, as each one is established.</p>
+  <div class="record" id="record"></div>
+</section>
+
+<section id="solution">
+  <h2><span class="n">06</span>Step-by-step solution</h2>
+  <p class="lede" id="solintro">Complete a run on the bench and the derivation opens by itself.</p>
+
+  <div class="gate" id="solgate">
+    <h4>The solution is still locked</h4>
+    <p>Enter the composition of both complexes and let the inspection finish &mdash; the derivation
+      and the answer box unlock the moment all sixteen faces have been checked.</p>
+    <button class="act" id="revealsol" type="button">Show me the solution anyway</button>
+  </div>
+
+  <div id="solbody" hidden>
+    <ol class="steps">
+      <li>
+        <h4>Get the solid right first</h4>
+        <p>Six donor atoms sit at the vertices of an octahedron. It has 6 vertices, 12 edges and
+          <b>8 triangular faces</b>, and every face takes exactly one vertex from each of the three
+          opposite pairs &mdash; which is why there are 2 &times; 2 &times; 2 = 8 of them.</p>
+        <div class="eq">V &minus; E + F = 6 &minus; 12 + 8 = 2 &nbsp;&nbsp;(Euler)</div>
+        <p>Two vertices are <i>cis</i> if they are 90&deg; apart, and they then share an edge; they
+          are <i>trans</i> if they are opposite, and then no face contains both.</p>
+      </li>
+      <li>
+        <h4>Fill the vertices of the first complex &mdash; and count the ligands correctly</h4>
+        <p>In cis-[Co(NH<sub>3</sub>)<sub>4</sub>Cl<sub>2</sub>]Cl only the contents of the brackets
+          are bonded to cobalt. The third chloride is the counter-ion.</p>
+        <div class="eq">coordination sphere = <span class="hl">4 N + 2 Cl</span> = 6 donor atoms
+          &nbsp;&nbsp;&#10003;</div>
+        <p>Taking 4 N + 3 Cl would need seven vertices, which no octahedron has &mdash; a useful
+          self-check that the brackets were read properly.</p>
+      </li>
+      <li>
+        <h4>The cis complex: one Cl&ndash;Cl edge, two faces</h4>
+        <p><i>cis</i> puts the two chlorides 90&deg; apart, so they share exactly one edge. Every
+          edge of an octahedron is shared by exactly <b>two</b> faces, and the third corner of each
+          of those two faces must be one of the four nitrogens.</p>
+        <div class="eq">faces with 1 N and 2 Cl in complex A = <span class="hl">2</span></div>
+        <p>Checked face by face on the bench: the other six faces carry either one chloride or
+          none.</p>
+      </li>
+      <li>
+        <h4>The mer complex: a trans pair does the work</h4>
+        <p>In mer-[Co(NH<sub>3</sub>)<sub>3</sub>Cl<sub>3</sub>] one pair of chlorides is
+          <i>trans</i> and the third is cis to both. Because the two opposite vertices are
+          <i>both</i> chloride, every one of the eight faces already carries one chloride from that
+          pair.</p>
+        <div class="eq">the 4 faces through the third Cl pick up a second one
+          &rarr; <span class="hl">4 faces</span> with 1 N and 2 Cl</div>
+        <p>The remaining four faces run through the nitrogen opposite it, so they carry 2 N and
+          1 Cl.</p>
+      </li>
+      <li>
+        <h4>Add the two</h4>
+        <div class="eq">2 + 4 = <span class="hl">6</span></div>
+      </li>
+      <li>
+        <h4>Why the particular vertices did not matter</h4>
+        <p>All 12 cis placements of two chlorides give 2, and all 12 mer placements of three give
+          4 &mdash; the octahedron is symmetric enough that only the isomer label matters. Section
+          03 shows the exhaustive check.</p>
+      </li>
+    </ol>
+
+    <div class="verify" style="margin-top:16px">
+      <h4>Independent verification</h4>
+      <ul>
+        <li><b>Derived before anything was looked up.</b> The eight faces, both isomer geometries
+          and both counts were enumerated from first principles, and only then compared with a
+          published solution.</li>
+        <li><b>The faces enumerated two ways.</b> Taking one vertex from each opposite pair gives
+          8 faces; brute force over all C(6,3) = 20 triples and discarding those containing an
+          opposite pair gives the same 8. Euler&rsquo;s formula, 6 &minus; 12 + 8 = 2, agrees.</li>
+        <li><b>Exhaustive over placements, not one drawing.</b> All 15 ways of putting two
+          chlorides on six vertices were classified &mdash; 12 cis, 3 trans &mdash; and
+          <i>every</i> cis placement gives exactly 2 matching faces, every trans placement 0. All
+          20 ways of putting three were classified &mdash; 8 fac, 12 mer &mdash; and every mer
+          placement gives exactly 4, every fac placement 3. So the answer cannot depend on which
+          vertices were drawn.</li>
+        <li><b>The census closes.</b> For the cis complex the eight faces split 2 / 4 / 2 / 0 across
+          0, 1, 2 and 3 chlorides; for the mer complex 0 / 4 / 4 / 0. Both sum to 8, so no face is
+          double-counted or missed.</li>
+        <li><b>Structural cross-check.</b> A face with two chlorides is exactly a Cl&ndash;Cl edge,
+          and every edge lies in two faces: cis has one such edge, giving 2; mer has two, giving 4.
+          This reproduces the enumeration by a different argument.</li>
+        <li><b>The distractors reproduced deliberately.</b> fac instead of mer gives 2 + 3 = 5;
+          trans instead of cis gives 0 + 4 = 4; counting 2 N + 1 Cl instead gives 4 + 4 = 8;
+          putting the ionic chloride on a vertex needs seven vertices and is impossible. None of
+          them is 6.</li>
+        <li><b>Answer key cross-check.</b> A published worked solution for this paper argues from
+          the same Cl&ndash;Cl edges and reports the same 6. IIT Roorkee&rsquo;s official key was
+          not retrievable at the time of writing.</li>
+        <li><b>Headless-browser run</b> of this page, driving the form with the paper&rsquo;s data
+          and with deliberately wrong data, asserting that seven ligands are refused, that the
+          answer is nowhere on the page until the inspection finishes, that all sixteen faces are
+          checked and tallied live, and that the page never scrolls sideways at 390 px.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="concepts">
+  <h2><span class="n">07</span>Concepts and classification</h2>
+  <p class="lede">What the question is made of, and where it sits in the syllabus.</p>
+  <div class="lab">
+    <div class="panel">
+      <h3>What you need to know</h3>
+      <div class="eq">octahedron: 6 vertices &middot; 12 edges &middot; 8 triangular faces</div>
+      <div class="eq">every face = one vertex from each opposite pair &rarr; 2&sup3; = 8</div>
+      <div class="eq">cis = 90&deg; apart, share an edge &nbsp;&middot;&nbsp; trans = opposite,
+        share no face</div>
+      <div class="eq">fac = three mutually cis &nbsp;&middot;&nbsp; mer = one pair trans</div>
+      <div class="eq">every edge is shared by exactly two faces</div>
+      <div class="hint" style="margin-top:8px">Only what is inside the square brackets is in the
+        coordination sphere.</div>
+    </div>
+    <div class="panel">
+      <h3>Classification</h3>
+      <table class="meta-tbl">
+        <tr><td>Exam</td><td>JEE (Advanced) 2026, Paper 2</td></tr>
+        <tr><td>Question</td><td>Q.13, Section 3 &mdash; numerical value</td></tr>
+        <tr><td>Marking</td><td>+4 for the correct value, 0 otherwise, no negative marking</td></tr>
+        <tr><td>Subject</td><td>Inorganic Chemistry</td></tr>
+        <tr><td>Chapter</td><td>Coordination Compounds</td></tr>
+        <tr><td>Topic</td><td>Geometrical isomerism in octahedral complexes</td></tr>
+        <tr><td>Also needs</td><td>The geometry of the octahedron; reading a coordination sphere
+          off a formula</td></tr>
+        <tr><td>Difficulty</td><td>Moderate &mdash; no arithmetic, but three chances to misread</td></tr>
+        <tr><td>Answer</td><td><b id="clsans">&mdash; run the experiment</b></td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<footer>
+  ADV-2026-P2-CHE-Q13 · PrayogX · JEE Advanced Interactive Simulation Library · question text reproduced
+  from the official JEE (Advanced) 2026 Paper 2 for educational use.
+</footer>
+</div>
+
+<script>
+
+var NS="http://www.w3.org/2000/svg";
+function css(v){ return getComputedStyle(document.documentElement).getPropertyValue(v).trim(); }
+function el(n,a){ var e=document.createElementNS(NS,n); for(var k in a) e.setAttribute(k,a[k]); return e; }
+function $(id){ return document.getElementById(id); }
+function clamp(v,a,b){ return v<a?a:(v>b?b:v); }
+function esc(s){ return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+
+/* ---- predictions + verdict matrix ------------------------------------- */
+var PORDER=["A","B","C","D"], pIdx=0, predictions={}, tested={}, revealed=false;
+
+function renderPredict(){
+  var kk=PORDER[pIdx], def=OPT[kk];
+  $("pq").innerHTML = "Statement ("+kk+") — "+def.shortq;
+  var bs=$("predict").querySelectorAll(".row button");
+  for(var i=0;i<bs.length;i++) bs[i].setAttribute("aria-pressed", predictions[kk]===bs[i].dataset.p?"true":"false");
+  var fb=$("pfb");
+  if(!predictions[kk]){ fb.className="fb"; fb.textContent="Commit to an answer, then go and test it on the bench above."; }
+  else if(!tested[kk]){ fb.className="fb"; fb.innerHTML="Logged. Now test ("+kk+") on the bench and see."; }
+  else {
+    var right = predictions[kk]===def.verdict;
+    fb.className="fb "+(right?"ok":"no");
+    fb.innerHTML=(right?"✓ Your prediction matches your measurement. ":"✗ Your measurement disagrees. ")+def.why;
+  }
+  $("pprev").disabled = pIdx===0; $("pnext").disabled = pIdx===PORDER.length-1;
+}
+function drawMatrix(){
+  var rows=PORDER.map(function(kk){
+    var def=OPT[kk], seen=!!tested[kk], pr=predictions[kk];
+    var vcell = seen ? (def.verdict==="yes" ? "<span class='yes'>✓ correct</span>"
+                                            : "<span class='no'>✗ not correct</span>")
+                     : "<span style='color:var(--text-muted)'>not tested yet</span>";
+    var ok = seen && pr && pr===def.verdict;
+    return "<tr"+(seen&&def.verdict==="yes"?" class='win'":"")+"><td><b>("+kk+")</b></td>"+
+      "<td class='l'>"+def.label+"</td><td>"+(pr?(pr==="yes"?"correct":"not correct"):"—")+"</td>"+
+      "<td>"+vcell+"</td><td>"+(seen&&pr?(ok?"<span class='yes'>match</span>":"<span class='no'>mismatch</span>"):"—")+"</td></tr>";
+  }).join("");
+  $("matrix").innerHTML="<thead><tr><th>Option</th><th class='l'>Statement</th><th>Your prediction</th>"+
+    "<th>What you measured</th><th></th></tr></thead><tbody>"+rows+"</tbody>";
+}
+function nTested(){ var n=0; for(var k in tested) if(tested[k]) n++; return n; }
+
+/* ---- the gate ---------------------------------------------------------- */
+function gateOpen(){ return nTested()>=4 || revealed; }
+function updateGate(){
+  if($("gtested")) $("gtested").textContent = nTested();
+  var open=gateOpen();
+  $("solgate").hidden = open;
+  $("solbody").hidden = !open;
+  var ab=$("answerbox");
+  if(open){
+    ab.classList.remove("locked");
+    $("ansval").textContent=ANSWER.text;
+    $("anssub").innerHTML=ANSWER.sub;
+    $("revealnow").hidden=true;
+    if($("clsans")) $("clsans").textContent=ANSWER.text;
+    if(!$("solbody").classList.contains("reveal")) $("solbody").classList.add("reveal");
+    if($("solintro")) $("solintro").innerHTML = revealed && nTested()<4
+      ? "Revealed early — go back and test the statements to see these conclusions come from your own measurements."
+      : "<b>You tested all four statements on the bench.</b> "+ANSWER.intro;
+  } else {
+    ab.classList.add("locked");
+    $("ansval").textContent="Run the experiment";
+    $("anssub").textContent=LOCKED_SUB;
+    $("revealnow").hidden=false;
+    if($("clsans")) $("clsans").textContent="— run the experiment";
+  }
+  markOptions();
+}
+function markOptions(){
+  if(!gateOpen()) return;
+  document.querySelectorAll("#opts li").forEach(function(li){
+    var kk=li.dataset.k, right=OPT[kk].verdict==="yes";
+    li.classList.remove("correct","wrong");
+    li.classList.add(right?"correct":"wrong");
+    li.querySelector(".mark").textContent = right?"correct":"not correct";
+  });
+}
+function markTested(kk){ if(!tested[kk]){ tested[kk]=true; updateGate(); drawMatrix(); renderPredict(); } }
+
+/* ---- notebook ---------------------------------------------------------- */
+var obsLog=[];
+function note(text){
+  if(obsLog.indexOf(text)>=0) return;
+  obsLog.push(text);
+  $("notebook").innerHTML = obsLog.map(function(o){ return '<div class="obs">'+o+"</div>"; }).join("");
+  $("nbempty").hidden = true;
+}
+
+/* ---- numeric control: slider + typed box + steppers -------------------- */
+function parseNum(str){
+  if(str===null||str===undefined) return null;
+  var s=String(str).trim().toLowerCase();
+  if(!s) return null;
+  s=s.replace(/π/g,"(pi)").replace(/pi/g,"(pi)").replace(/\(\(pi\)\)/g,"(pi)");
+  s=s.replace(/×10\^?/g,"e").replace(/x10\^?/g,"e").replace(/\s+/g,"");
+  if(!/^[0-9+\-*/().epi]+$/.test(s)) return null;
+  s=s.replace(/\(pi\)/g,"P_I");
+  if(/[a-z]/.test(s.replace(/P_I/g,"").replace(/e/g,""))) return null;
+  s=s.replace(/P_I/g,"("+Math.PI+")");
+  var v;
+  try { v=Function('"use strict";return ('+s+');')(); } catch(err){ return null; }
+  if(typeof v!=="number"||!isFinite(v)) return null;
+  return v;
+}
+function makeControl(cfg){
+  var sl=$(cfg.slider), inp=$(cfg.input), hint=$(cfg.hint), baseHint=hint?hint.innerHTML:"";
+  function toSlider(v){ return cfg.log ? Math.round(1000*Math.log(v/cfg.lo)/Math.log(cfg.hi/cfg.lo))
+                                       : Math.round((v-cfg.lo)/(cfg.hi-cfg.lo)*1000); }
+  function fromSlider(p){ return cfg.log ? cfg.lo*Math.pow(cfg.hi/cfg.lo,p/1000)
+                                         : cfg.lo+(cfg.hi-cfg.lo)*p/1000; }
+  sl.min=0; sl.max=1000;
+  function show(v){
+    sl.value=toSlider(v);
+    if(document.activeElement!==inp) inp.value=v.toFixed(cfg.dp);
+    inp.classList.remove("bad");
+    if(hint){ hint.classList.remove("bad"); hint.innerHTML=baseHint; }
+    if(cfg.valEl) $(cfg.valEl).textContent=v.toFixed(cfg.dp)+" "+cfg.unit;
+  }
+  function set(v){ v=clamp(v,cfg.lo,cfg.hi); ST[cfg.key]=v; show(v); if(cfg.onset) cfg.onset(); }
+  sl.addEventListener("input",function(){ set(fromSlider(+sl.value)); });
+  inp.addEventListener("input",function(){
+    var v=parseNum(inp.value);
+    if(v===null){ inp.classList.add("bad");
+      if(hint){ hint.classList.add("bad"); hint.textContent="That is not a number I can read — try 0.5, 1/2 or 5e-1."; }
+      return; }
+    if(v<cfg.lo||v>cfg.hi){ inp.classList.add("bad");
+      if(hint){ hint.classList.add("bad");
+        hint.textContent="Out of the range this apparatus can hold ("+cfg.lo+" to "+cfg.hi+" "+cfg.unit+")."; }
+      return; }
+    inp.classList.remove("bad");
+    if(hint){ hint.classList.remove("bad"); hint.innerHTML=baseHint; }
+    ST[cfg.key]=v; sl.value=toSlider(v);
+    if(cfg.valEl) $(cfg.valEl).textContent=v.toFixed(cfg.dp)+" "+cfg.unit;
+    if(cfg.onset) cfg.onset();
+  });
+  inp.addEventListener("blur",function(){ show(ST[cfg.key]); });
+  document.querySelectorAll('.step[data-for="'+cfg.slider+'"]').forEach(function(b){
+    b.addEventListener("click",function(){ set(ST[cfg.key]+(+b.dataset.dir)*cfg.step); });
+  });
+  show(ST[cfg.key]);
+  return { show:function(){ show(ST[cfg.key]); } };
+}
+
+/* ---- generic plotter --------------------------------------------------- */
+function niceAxis(a,b,want){
+  if(!(b>a)) b=a+1;
+  var raw=(b-a)/(want||5), ex=Math.floor(Math.log(raw)/Math.LN10), f=raw/Math.pow(10,ex);
+  var m=f<=1?1:(f<=2?2:(f<=2.5?2.5:(f<=5?5:10))), st=m*Math.pow(10,ex);
+  var lo=Math.floor(a/st+1e-9)*st, hi=Math.ceil(b/st-1e-9)*st;
+  if(hi-lo<st) hi=lo+st;
+  return {lo:lo,hi:hi,step:st,n:Math.max(1,Math.round((hi-lo)/st))};
+}
+function tickDp(step){
+  for(var d=0;d<=6;d++){ var s=step*Math.pow(10,d); if(Math.abs(s-Math.round(s))<1e-9) return d; }
+  return 6;
+}
+function plot(svg,cfg){
+  while(svg.firstChild) svg.removeChild(svg.firstChild);
+  var vb=svg.getAttribute("viewBox").split(/\s+/).map(Number), W=vb[2], H=vb[3];
+  var M={l:cfg.ml||70,r:cfg.mr||52,t:22,b:48};
+  var AX_=niceAxis(cfg.xMin,cfg.xMax,5), AY_=niceAxis(cfg.yMin,cfg.yMax,5);
+  var xa=AX_.lo, xb=AX_.hi, ya=AY_.lo, yb=AY_.hi;
+  function X(v){ return M.l+(v-xa)/(xb-xa)*(W-M.l-M.r); }
+  function Y(v){ return H-M.b-(v-ya)/(yb-ya)*(H-M.t-M.b); }
+  var grid=css("--line"), muted=css("--text-muted"), strong=css("--line-strong"), ink=css("--text-secondary");
+  var i, xdp=tickDp(AX_.step), ydp=tickDp(AY_.step);
+  for(i=0;i<=AX_.n;i++){
+    var xv=xa+AX_.step*i;
+    svg.appendChild(el("line",{x1:X(xv),x2:X(xv),y1:M.t,y2:H-M.b,stroke:grid,"stroke-width":1}));
+    var tx=el("text",{x:X(xv),y:H-M.b+18,"text-anchor":"middle",fill:muted,"font-size":10.5,
+      "font-family":"ui-monospace,monospace"});
+    tx.textContent=cfg.xFmt?cfg.xFmt(xv):xv.toFixed(xdp); svg.appendChild(tx);
+  }
+  for(i=0;i<=AY_.n;i++){
+    var yv=ya+AY_.step*i;
+    svg.appendChild(el("line",{x1:M.l,x2:W-M.r,y1:Y(yv),y2:Y(yv),stroke:grid,"stroke-width":1}));
+    var ty=el("text",{x:M.l-9,y:Y(yv)+3.5,"text-anchor":"end",fill:muted,"font-size":10.5,
+      "font-family":"ui-monospace,monospace"});
+    ty.textContent=cfg.yFmt?cfg.yFmt(yv):yv.toFixed(ydp); svg.appendChild(ty);
+  }
+  if(ya<0&&yb>0)
+    svg.appendChild(el("line",{x1:M.l,x2:W-M.r,y1:Y(0),y2:Y(0),stroke:strong,"stroke-width":1.5}));
+  svg.appendChild(el("line",{x1:M.l,x2:M.l,y1:M.t,y2:H-M.b,stroke:strong,"stroke-width":1.5}));
+  svg.appendChild(el("line",{x1:M.l,x2:W-M.r,y1:H-M.b,y2:H-M.b,stroke:strong,"stroke-width":1.5}));
+  var usedLbl=[];
+  (cfg.curves||[]).forEach(function(c){
+    if(!c.pts||c.pts.length<2) return;
+    var d=c.pts.map(function(p,ix){ return (ix?"L":"M")+X(p[0]).toFixed(1)+" "+Y(p[1]).toFixed(1); }).join(" ");
+    svg.appendChild(el("path",{d:d,fill:"none",stroke:css(c.col),"stroke-width":c.w||2.4,
+      "stroke-linecap":"round","stroke-linejoin":"round","stroke-dasharray":c.dash||"none",
+      opacity:c.op===undefined?1:c.op}));
+    if(c.label){
+      var last=c.pts[c.pts.length-1], ly=clamp(Y(last[1])+4,M.t+8,H-M.b);
+      for(var q=0;q<usedLbl.length;q++){ if(Math.abs(usedLbl[q]-ly)<13){ ly=usedLbl[q]+13; q=-1; } }
+      ly=clamp(ly,M.t+8,H-M.b-2); usedLbl.push(ly);
+      var lb=el("text",{x:clamp(X(last[0])+8,M.l,W-4),y:ly,fill:css(c.col),"font-size":11.5,
+        "font-weight":700,"text-anchor":X(last[0])>W-M.r-40?"end":"start"});
+      lb.textContent=c.label; svg.appendChild(lb);
+    }
+  });
+  (cfg.bars||[]).forEach(function(b){
+    var x0=X(b.x0), x1=X(b.x1), y0=Y(Math.max(ya,0)), y1=Y(b.y);
+    svg.appendChild(el("rect",{x:Math.min(x0,x1),y:Math.min(y0,y1),width:Math.abs(x1-x0),
+      height:Math.abs(y1-y0),fill:css(b.col),opacity:b.op===undefined?.85:b.op,rx:3}));
+    if(b.label){
+      var t=el("text",{x:(x0+x1)/2,y:Math.min(y0,y1)-6,"text-anchor":"middle",fill:css(b.col),
+        "font-size":11.5,"font-weight":700}); t.textContent=b.label; svg.appendChild(t);
+    }
+  });
+  (cfg.points||[]).forEach(function(p){
+    if(p.x<xa||p.x>xb||p.y<ya||p.y>yb) return;
+    svg.appendChild(el("circle",{cx:X(p.x),cy:Y(p.y),r:p.r||4.6,fill:p.fill||css("--surface-1"),
+      stroke:css(p.col),"stroke-width":2}));
+    if(p.label){
+      var t=el("text",{x:X(p.x),y:Y(p.y)-10,"text-anchor":"middle",fill:css(p.col),
+        "font-size":11,"font-weight":700}); t.textContent=p.label; svg.appendChild(t);
+    }
+  });
+  var axl=el("text",{x:(M.l+W-M.r)/2,y:H-8,"text-anchor":"middle",fill:ink,"font-size":12.5});
+  axl.textContent=cfg.xLabel; svg.appendChild(axl);
+  var ayl=el("text",{x:15,y:(M.t+H-M.b)/2,"text-anchor":"middle",fill:ink,"font-size":12.5,
+    transform:"rotate(-90 15 "+((M.t+H-M.b)/2)+")"});
+  ayl.textContent=cfg.yLabel; svg.appendChild(ayl);
+  svg._map={X:X,Y:Y,xa:xa,xb:xb,M:M,W:W};
+}
+
+/* ---- shared wiring ----------------------------------------------------- */
+function wireCommon(redraw){
+  $("predict").addEventListener("click",function(e){
+    var b=e.target.closest(".row button"); if(!b) return;
+    predictions[PORDER[pIdx]]=b.dataset.p; renderPredict(); drawMatrix();
+  });
+  $("pprev").addEventListener("click",function(){ if(pIdx>0){ pIdx--; renderPredict(); } });
+  $("pnext").addEventListener("click",function(){ if(pIdx<PORDER.length-1){ pIdx++; renderPredict(); } });
+  function doReveal(){ revealed=true; updateGate(); }
+  $("revealnow").addEventListener("click",doReveal);
+  $("revealsol").addEventListener("click",doReveal);
+  $("themebtn").addEventListener("click",function(){
+    var r=document.documentElement;
+    var dark=r.getAttribute("data-theme")==="dark" ||
+      (!r.getAttribute("data-theme")&&matchMedia("(prefers-color-scheme: dark)").matches);
+    r.setAttribute("data-theme",dark?"light":"dark");
+    if(redraw) redraw();
+  });
+}
+
+/* =====================================================================
+   ADV-2026-P2-CHE-Q13  -  enter the composition, run the inspection,
+   read the tally.  Everything is computed from what the student types.
+   ===================================================================== */
+
+var VNAME = ["+x", "-x", "+y", "-y", "+z", "-z"];
+var VVEC  = [[1,0,0], [-1,0,0], [0,1,0], [0,-1,0], [0,0,1], [0,0,-1]];
+var OPP   = [1, 0, 3, 2, 5, 4];
+var FACES = (function(){
+  var out = [], a, b, c;
+  for(a = 0; a < 2; a++) for(b = 2; b < 4; b++) for(c = 4; c < 6; c++) out.push([a, b, c]);
+  return out;
+})();
+var EDGES = (function(){
+  var out = [], i, j;
+  for(i = 0; i < 6; i++) for(j = i + 1; j < 6; j++) if(OPP[i] !== j) out.push([i, j]);
+  return out;
+})();
+
+/* ---- the model ------------------------------------------------------- */
+function isoKind(nN, nCl){
+  var m = Math.min(nN, nCl);
+  if(m === 2) return "cistrans";
+  if(m === 3) return "facmer";
+  return "none";
+}
+function isoWords(kind){
+  return kind === "cistrans" ? ["cis", "trans"] : (kind === "facmer" ? ["fac", "mer"] : ["", ""]);
+}
+/* the canonical placement for a given composition and isomer */
+function place(nN, nCl, iso){
+  var minorIsCl = nCl <= nN, m = Math.min(nN, nCl), idx, i, lab = [];
+  if(m === 0) idx = [];
+  else if(m === 1) idx = [4];
+  else if(m === 2) idx = (iso === "trans") ? [4, 5] : [4, 0];
+  else idx = (iso === "fac") ? [4, 2, 0] : [4, 5, 0];
+  for(i = 0; i < 6; i++) lab.push(minorIsCl ? "N" : "Cl");
+  for(i = 0; i < idx.length; i++) lab[idx[i]] = minorIsCl ? "Cl" : "N";
+  return lab;
+}
+function faceCounts(lab, f){
+  var n = 0, c = 0, i;
+  for(i = 0; i < 3; i++){ if(lab[f[i]] === "Cl") c++; else n++; }
+  return { n: n, cl: c };
+}
+function faceHit(lab, f, wantN, wantCl){
+  var q = faceCounts(lab, f);
+  return q.n === wantN && q.cl === wantCl;
+}
+function countMatches(lab, wantN, wantCl){
+  var k = 0, i;
+  for(i = 0; i < 8; i++) if(faceHit(lab, FACES[i], wantN, wantCl)) k++;
+  return k;
+}
+/* classify an arbitrary placement, so section 03 can be exhaustive */
+function classOf(sel){
+  var t = 0, i, j;
+  for(i = 0; i < sel.length; i++) for(j = i + 1; j < sel.length; j++)
+    if(OPP[sel[i]] === sel[j]) t++;
+  if(sel.length === 2) return t ? "trans" : "cis";
+  if(sel.length === 3) return t ? "mer" : "fac";
+  return "only one arrangement";
+}
+function allPlacements(nN, nCl, iso, wantN, wantCl){
+  /* every way of seating the minority ligand of the same isomer class */
+  var minorIsCl = nCl <= nN, m = Math.min(nN, nCl), out = [], i, j, k, sel, lab, q;
+  function build(sel){
+    var lab = [], t;
+    for(t = 0; t < 6; t++) lab.push(minorIsCl ? "N" : "Cl");
+    for(t = 0; t < sel.length; t++) lab[sel[t]] = minorIsCl ? "Cl" : "N";
+    return lab;
+  }
+  if(m === 2){
+    for(i = 0; i < 6; i++) for(j = i + 1; j < 6; j++){
+      sel = [i, j];
+      if(classOf(sel) !== iso) continue;
+      out.push({ sel: sel, n: countMatches(build(sel), wantN, wantCl) });
+    }
+  } else if(m === 3){
+    for(i = 0; i < 6; i++) for(j = i + 1; j < 6; j++) for(k = j + 1; k < 6; k++){
+      sel = [i, j, k];
+      if(classOf(sel) !== iso) continue;
+      out.push({ sel: sel, n: countMatches(build(sel), wantN, wantCl) });
+    }
+  } else {
+    for(i = 0; i < 6; i++){
+      sel = m === 1 ? [i] : [];
+      out.push({ sel: sel, n: countMatches(build(sel), wantN, wantCl) });
+      if(m === 0) break;
+    }
+  }
+  return out;
+}
+
+var LOCKED_SUB = "Enter the data and run the experiment.";
+
+/* ---- central state --------------------------------------------------- */
+var ST = {
+  phase: "setup",
+  D: null, R: null,
+  stage: -1, t: 0, playing: false, speed: 1, clock: 0,
+  iso: { A: null, B: null },
+  a: { built: 1, load: 0, which: "A", lab: null, fi: -1, checked: [], yaw: 0.9, pitch: 0.45,
+       tyaw: 0.9, tpitch: 0.45 },
+  view: "A"
+};
+var runs = [], workShown = 0, WORK = [], SC = null, celebrated = false, symWhich = "A";
+var gaugeAcc = 0;
+
+/* =====================================================================
+   the data-entry form
+   ===================================================================== */
+var entry = {};
+var NUMS = [
+  { k: "an",  lo: 0, hi: 6, lab: "NH<sub>3</sub> (N donors)" },
+  { k: "acl", lo: 0, hi: 6, lab: "Cl (chlorido ligands)" },
+  { k: "bn",  lo: 0, hi: 6, lab: "NH<sub>3</sub> (N donors)" },
+  { k: "bcl", lo: 0, hi: 6, lab: "Cl (chlorido ligands)" },
+  { k: "fn",  lo: 0, hi: 3, lab: "N atoms per face" },
+  { k: "fcl", lo: 0, hi: 3, lab: "Cl atoms per face" }
+];
+
+function formHTML(){
+  function box(k, lab){
+    return '<div class="r"><label for="in_' + k + '">' + lab + '</label>'
+      + '<input id="in_' + k + '" inputmode="numeric" placeholder="?" value="'
+      + (entry[k] === undefined ? "" : esc(entry[k])) + '"></div>';
+  }
+  return '<h3><span>Instrument panel — enter what the question gives you</span>'
+    + '<em>all of it is in section 01</em></h3><div class="form">'
+    + '<div class="cx"><div class="t">Complex A</div>'
+    + box("an", "NH<sub>3</sub> ligands") + box("acl", "Cl ligands")
+    + '<div class="iso" id="isoA"><button type="button" data-w="A" data-v="0"></button>'
+    + '<button type="button" data-w="A" data-v="1"></button></div>'
+    + '<div class="fh" id="fh_A">count only what is inside the square brackets</div></div>'
+    + '<div class="cx"><div class="t">Complex B</div>'
+    + box("bn", "NH<sub>3</sub> ligands") + box("bcl", "Cl ligands")
+    + '<div class="iso" id="isoB"><button type="button" data-w="B" data-v="0"></button>'
+    + '<button type="button" data-w="B" data-v="1"></button></div>'
+    + '<div class="fh" id="fh_B">a neutral complex — nothing outside the brackets</div></div>'
+    + '<div class="cx"><div class="t">What to look for</div>'
+    + box("fn", "N atoms at a face&rsquo;s corners") + box("fcl", "Cl atoms at a face&rsquo;s corners")
+    + '<div class="fh" id="fh_F">a triangle has three corners, so these two must add to 3</div></div>'
+    + '</div><div class="runrow">'
+    + '<button class="run" id="runbtn" type="button" disabled>&#9654;&nbsp; Run experiment</button>'
+    + '<div class="msg" id="runmsg">Fill in all six boxes to arm the bench.</div></div>';
+}
+
+function readForm(){
+  var D = {}, filled = 0, bad = false, i;
+  for(i = 0; i < NUMS.length; i++){
+    var f = NUMS[i], e = $("in_" + f.k);
+    if(!e) return { ok: false, filled: 0, total: NUMS.length, D: D };
+    var raw = e.value;
+    entry[f.k] = raw;
+    if(!raw || !raw.trim()){ e.classList.remove("bad", "ok"); continue; }
+    filled++;
+    var v = parseNum(raw);
+    if(v === null || Math.abs(v - Math.round(v)) > 1e-9 || v < f.lo || v > f.hi){
+      e.classList.add("bad"); e.classList.remove("ok"); bad = true; continue;
+    }
+    e.classList.remove("bad"); e.classList.add("ok");
+    D[f.k] = Math.round(v);
+  }
+  D.aiso = ST.iso.A || ""; D.biso = ST.iso.B || "";
+  return { ok: !bad && filled === NUMS.length, filled: filled, total: NUMS.length, D: D };
+}
+
+function validate(D){
+  /* returns the first complaint, or null */
+  if(D.an + D.acl !== 6)
+    return { where: "A", msg: "An octahedron has six vertices. You have given " + (D.an + D.acl)
+      + " donor atoms — check which chloride is inside the brackets." };
+  if(D.bn + D.bcl !== 6)
+    return { where: "B", msg: "An octahedron has six vertices. You have given " + (D.bn + D.bcl)
+      + " donor atoms for complex B." };
+  if(D.fn + D.fcl !== 3)
+    return { where: "F", msg: "A triangular face has three corners, so these must add to 3, "
+      + "not " + (D.fn + D.fcl) + "." };
+  return null;
+}
+
+function syncForm(){
+  if(ST.phase !== "setup") return;
+  var r = readForm(), btn = $("runbtn"), msg = $("runmsg");
+  if(!btn) return;
+  var i, ids = ["A", "B", "F"], hints = {
+    A: "count only what is inside the square brackets",
+    B: "a neutral complex — nothing outside the brackets",
+    F: "a triangle has three corners, so these two must add to 3"
+  };
+  for(i = 0; i < ids.length; i++){
+    var h = $("fh_" + ids[i]);
+    if(h){ h.classList.remove("bad"); h.innerHTML = hints[ids[i]]; }
+  }
+  syncIso(r.D);
+  if(!r.ok){
+    btn.disabled = true;
+    msg.innerHTML = "<b>" + r.filled + " of " + r.total + "</b> boxes filled. Read the question in "
+      + "section 01 and enter the composition of each coordination sphere.";
+    return;
+  }
+  var bad = validate(r.D);
+  if(bad){
+    btn.disabled = true;
+    var h2 = $("fh_" + bad.where);
+    if(h2){ h2.classList.add("bad"); h2.textContent = bad.msg; }
+    msg.innerHTML = "<b>The bench cannot build that.</b> " + esc(bad.msg);
+    return;
+  }
+  var needA = isoKind(r.D.an, r.D.acl) !== "none" && !ST.iso.A;
+  var needB = isoKind(r.D.bn, r.D.bcl) !== "none" && !ST.iso.B;
+  if(needA || needB){
+    btn.disabled = true;
+    var w = needA ? "A" : "B";
+    var hw = $("fh_" + w);
+    if(hw){ hw.classList.add("bad");
+      hw.textContent = "Which isomer is it? The prefix in front of the formula tells you."; }
+    msg.innerHTML = "<b>Almost.</b> Pick the isomer for complex " + w
+      + " — the prefix in front of its formula in the question says which.";
+    return;
+  }
+  btn.disabled = false;
+  var ka = isoKind(r.D.an, r.D.acl), kb = isoKind(r.D.bn, r.D.bcl);
+  msg.innerHTML = "<b>Armed.</b> The bench will build an octahedron, seat "
+    + r.D.an + " N and " + r.D.acl + " Cl on it"
+    + (ka === "none" ? "" : " in the " + ST.iso.A + " arrangement")
+    + ", inspect all eight faces, then rebuild it with " + r.D.bn + " N and " + r.D.bcl + " Cl"
+    + (kb === "none" ? "" : " in the " + ST.iso.B + " arrangement") + " and inspect those.";
+}
+
+function syncIso(D){
+  var w, i;
+  for(w = 0; w < 2; w++){
+    var key = w ? "B" : "A";
+    var nN = D[w ? "bn" : "an"], nCl = D[w ? "bcl" : "acl"];
+    var kind = (nN === undefined || nCl === undefined) ? "none" : isoKind(nN, nCl);
+    var words = isoWords(kind);
+    var box = $("iso" + key);
+    if(!box) continue;
+    var bs = box.querySelectorAll("button");
+    for(i = 0; i < 2; i++){
+      bs[i].textContent = kind === "none" ? (i ? "" : "only one arrangement") : words[i];
+      bs[i].disabled = kind === "none";
+      bs[i].hidden = kind === "none" && i === 1;
+      bs[i].setAttribute("aria-pressed", (kind !== "none" && ST.iso[key] === words[i])
+        ? "true" : "false");
+    }
+    if(kind === "none") ST.iso[key] = "";
+    else if(words.indexOf(ST.iso[key]) < 0) ST.iso[key] = null;
+  }
+}
+
+/* =====================================================================
+   the run
+   ===================================================================== */
+var STAGES = [
+  { key: "cage",   rail: "Build",     dur: 2.4 },
+  { key: "loadA",  rail: "Load A",    dur: 2.8 },
+  { key: "checkA", rail: "Check A",   dur: 6.4 },
+  { key: "loadB",  rail: "Rebuild B", dur: 2.8 },
+  { key: "checkB", rail: "Check B",   dur: 6.4 },
+  { key: "sum",    rail: "Add up",    dur: 2.2 }
+];
+
+function solve(D){
+  var labA = place(D.an, D.acl, D.aiso), labB = place(D.bn, D.bcl, D.biso);
+  return {
+    labA: labA, labB: labB,
+    A: countMatches(labA, D.fn, D.fcl),
+    B: countMatches(labB, D.fn, D.fcl),
+    kindA: isoKind(D.an, D.acl), kindB: isoKind(D.bn, D.bcl),
+    total: countMatches(labA, D.fn, D.fcl) + countMatches(labB, D.fn, D.fcl)
+  };
+}
+
+function startRun(){
+  var r = readForm();
+  if(!r.ok || validate(r.D)) return;
+  ST.D = r.D;
+  ST.R = solve(r.D);
+  ST.phase = "running"; ST.stage = 0; ST.t = 0; ST.playing = true;
+  ST.a = { built: 0, load: 0, which: "A", lab: null, fi: -1, checked: [],
+           yaw: ST.a.yaw, pitch: ST.a.pitch, tyaw: ST.a.tyaw, tpitch: ST.a.tpitch };
+  ST.view = "A";
+  workShown = 0; WORK = buildWork(ST.D, ST.R); celebrated = false;
+  revealWork();
+  buildScene();
+  renderSwap(); drawGauges(); renderWork(); drawLedger(); drawRecord(); drawTally(); drawSym();
+}
+
+function vlist(lab, what){
+  var out = [], i;
+  for(i = 0; i < 6; i++) if(lab[i] === what) out.push(VNAME[i]);
+  return out.join(", ");
+}
+
+function buildWork(D, R){
+  var w = [];
+  w.push({ st: 0, h: "the solid",
+    e: "an octahedron has <b>6</b> vertices, <b>12</b> edges and <b>8</b> triangular faces — "
+     + "each face takes one vertex from each opposite pair, so 2&sup3; = 8" });
+  w.push({ st: 1, h: "complex A on the vertices",
+    e: "A: <b>" + D.an + "</b> N + <b>" + D.acl + "</b> Cl = 6 donor atoms"
+     + (R.kindA === "none" ? "" : ", " + D.aiso)
+     + " &nbsp;→&nbsp; Cl on <b>" + (vlist(R.labA, "Cl") || "none") + "</b>" });
+  w.push({ st: 2, key: 1, h: "faces of A matching the pattern",
+    e: "faces with " + D.fn + " N and " + D.fcl + " Cl in A = <span class='res2'>"
+     + R.A + "</span> of 8" });
+  w.push({ st: 3, h: "complex B on the vertices",
+    e: "B: <b>" + D.bn + "</b> N + <b>" + D.bcl + "</b> Cl = 6 donor atoms"
+     + (R.kindB === "none" ? "" : ", " + D.biso)
+     + " &nbsp;→&nbsp; Cl on <b>" + (vlist(R.labB, "Cl") || "none") + "</b>" });
+  w.push({ st: 4, key: 1, h: "faces of B matching the pattern",
+    e: "faces with " + D.fn + " N and " + D.fcl + " Cl in B = <span class='res2'>"
+     + R.B + "</span> of 8" });
+  w.push({ st: 5, key: 1, h: "the sum",
+    e: "<b>" + R.A + "</b> + <b>" + R.B + "</b> = <span class='res2'>" + R.total + "</span>" });
+  return w;
+}
+
+function lastStage(){ return 5; }
+
+function tickRun(dt){
+  if(ST.phase !== "running" || !ST.playing) return;
+  ST.t += dt * ST.speed;
+  var s = STAGES[ST.stage];
+  if(ST.t >= s.dur){
+    ST.t = 0;
+    if(ST.stage >= lastStage()){
+      ST.playing = false; ST.phase = "done"; finishRun(); return;
+    }
+    ST.stage++;
+    revealWork(); renderSwap(); drawGauges(); drawLedger();
+  }
+  applyStage();
+}
+
+function faceNormalView(f){
+  /* yaw and pitch that bring this face's outward normal towards the viewer */
+  var sx = f[0] === 0 ? 1 : -1, sy = f[1] === 2 ? 1 : -1, sz = f[2] === 4 ? 1 : -1;
+  var r = Math.sqrt(sx * sx + sz * sz);
+  return { yaw: Math.atan2(-sx, sz), pitch: Math.atan2(sy, r) };
+}
+
+function applyStage(){
+  var D = ST.D, R = ST.R, s = STAGES[ST.stage], p = clamp(ST.t / s.dur, 0, 1), A = ST.a;
+  function ease(x){ return x < 0.5 ? 2 * x * x : 1 - Math.pow(-2 * x + 2, 2) / 2; }
+  if(s.key === "cage"){
+    A.built = ease(clamp(p / 0.75, 0, 1)); A.load = 0; A.lab = null; A.fi = -1;
+    A.tyaw = 0.9 + p * 1.2; A.tpitch = 0.45;
+  } else if(s.key === "loadA"){
+    A.built = 1; A.which = "A"; A.lab = R.labA; A.load = ease(clamp(p / 0.7, 0, 1));
+    A.fi = -1; A.checked = [];
+    A.tyaw = 2.1 + p * 0.9; A.tpitch = 0.45;
+  } else if(s.key === "checkA" || s.key === "checkB"){
+    A.built = 1; A.load = 1;
+    A.which = s.key === "checkA" ? "A" : "B";
+    A.lab = s.key === "checkA" ? R.labA : R.labB;
+    var slot = Math.min(7, Math.floor(p * 8));
+    if(slot !== A.fi){
+      A.fi = slot;
+      var v = faceNormalView(FACES[slot]);
+      A.tyaw = v.yaw; A.tpitch = v.pitch;
+      refreshNarr();
+    }
+    var inSlot = p * 8 - slot;
+    var want = inSlot > 0.55 ? slot + 1 : slot;
+    if(A.checked.length !== want){
+      A.checked = [];
+      for(var i = 0; i < want; i++) A.checked.push(i);
+      drawLedger(); drawGauges(); drawTally();
+    }
+  } else if(s.key === "loadB"){
+    A.built = 1; A.fi = -1;
+    if(p < 0.45){ A.which = "A"; A.lab = R.labA; A.load = 1 - ease(p / 0.45); }
+    else { A.which = "B"; A.lab = R.labB; A.load = ease((p - 0.45) / 0.55); A.checked = []; }
+    A.tyaw = 0.9; A.tpitch = 0.45;
+  } else {
+    A.built = 1; A.load = 1; A.lab = R.labB; A.fi = -1;
+    A.tyaw = 0.9 + p * 0.8; A.tpitch = 0.45;
+  }
+}
+
+function revealWork(){
+  var n = 0, i;
+  for(i = 0; i < WORK.length; i++) if(WORK[i].st <= ST.stage) n++;
+  if(n !== workShown){ workShown = n; renderWork(); }
+}
+
+function finishRun(){
+  var D = ST.D, R = ST.R;
+  workShown = WORK.length;
+  ST.a.checked = [0,1,2,3,4,5,6,7];
+  ST.a.fi = -1; ST.view = "B";
+  renderWork(); renderSwap(); drawGauges(); drawLedger(); drawRecord(); drawTally();
+  drawSym(); syncGate();
+  runs.push({ an: D.an, acl: D.acl, aiso: D.aiso, bn: D.bn, bcl: D.bcl, biso: D.biso,
+              fn: D.fn, fcl: D.fcl, A: R.A, B: R.B, total: R.total });
+  if(runs.length > 10) runs.shift();
+  drawRuns();
+  note("Inspected both octahedra for faces with <b>" + D.fn + " N and " + D.fcl + " Cl</b>: "
+     + "complex A gave <b>" + R.A + "</b>, complex B gave <b>" + R.B + "</b>, total <b>"
+     + R.total + "</b>.");
+  if(!celebrated){
+    celebrated = true;
+    var ins = document.createElement("div");
+    ins.className = "insight";
+    ins.innerHTML = "<b>What the inspection showed.</b> A face carrying two chlorides is exactly a "
+      + "Cl&ndash;Cl edge, and every edge of an octahedron lies in two faces. Complex A has <b>"
+      + edgeCount(R.labA) + "</b> Cl&ndash;Cl edge" + (edgeCount(R.labA) === 1 ? "" : "s")
+      + " and complex B has <b>" + edgeCount(R.labB) + "</b> — which is the geometry behind the "
+      + "tally of " + R.A + " and " + R.B + ".";
+    $("notebook").parentNode.appendChild(ins);
+  }
+}
+
+function edgeCount(lab){
+  var k = 0, i;
+  for(i = 0; i < EDGES.length; i++)
+    if(lab[EDGES[i][0]] === "Cl" && lab[EDGES[i][1]] === "Cl") k++;
+  return k;
+}
+
+/* =====================================================================
+   the swapping panel
+   ===================================================================== */
+function renderSwap(){
+  var el2 = $("swap"), D = ST.D, R = ST.R;
+  if(ST.phase === "setup"){
+    el2.innerHTML = formHTML();
+    wireForm(); setPhase(0); syncForm();
+    $("pbslot").innerHTML = "";
+    return;
+  }
+  if(ST.phase === "running"){
+    setPhase(1);
+    el2.innerHTML = '<h3><span>The experiment is running</span><em>step ' + (ST.stage + 1)
+      + ' of 6</em></h3>' + railHTML() + '<div class="narr">' + narrate() + '</div>';
+    $("pbslot").innerHTML = PBHTML();
+    wirePlayback();
+    return;
+  }
+  setPhase(2);
+  el2.innerHTML = '<h3><span>Result of your run</span><em>faces with ' + D.fn + ' N and '
+    + D.fcl + ' Cl</em></h3>'
+    + '<div class="res"><div class="big"><div class="k">answer</div>'
+    + '<div class="v" id="bigans">' + R.total + '</div></div>'
+    + '<div class="why">Complex A carried <b>' + D.an + ' N</b> and <b>' + D.acl + ' Cl</b>'
+    + (R.kindA === "none" ? "" : ', ' + D.aiso) + ', with the chlorides on <b>'
+    + (vlist(R.labA, "Cl") || "no vertex") + '</b>. Of its eight faces, <b>' + R.A
+    + '</b> had ' + D.fn + ' N and ' + D.fcl + ' Cl at the corners. Rebuilt as complex B — <b>'
+    + D.bn + ' N</b>, <b>' + D.bcl + ' Cl</b>'
+    + (R.kindB === "none" ? "" : ', ' + D.biso) + ', chlorides on <b>'
+    + (vlist(R.labB, "Cl") || "no vertex") + '</b> — <b>' + R.B
+    + '</b> of its eight faces matched. The inspector checked all sixteen faces and found <b>'
+    + R.A + ' + ' + R.B + ' = ' + R.total + '</b>.</div></div>';
+  $("pbslot").innerHTML = PBHTML();
+  wirePlayback();
+}
+
+function PBHTML(){
+  return '<div class="playback" id="pbbar">'
+    + '<span class="lb">run</span>'
+    + '<button type="button" id="pbpause">▏▏ pause</button>'
+    + '<button type="button" id="pbreplay">↻ replay</button>'
+    + '<span class="lb" style="margin-left:6px">speed</span>'
+    + '<button type="button" id="sp05" data-s="0.5">0.5×</button>'
+    + '<button type="button" id="sp1" data-s="1">1×</button>'
+    + '<button type="button" id="sp2" data-s="2">2×</button>'
+    + '<button class="act" type="button" id="pbedit" style="margin-left:auto">'
+    + '← change the data</button></div>';
+}
+
+function wirePlayback(){
+  var ids = ["sp05", "sp1", "sp2"], i, pause = $("pbpause");
+  if(!pause) return;
+  pause.innerHTML = (ST.phase === "running" && !ST.playing) ? "▶ resume" : "▏▏ pause";
+  pause.disabled = ST.phase !== "running";
+  pause.addEventListener("click", function(){
+    if(ST.phase !== "running") return;
+    ST.playing = !ST.playing;
+    pause.innerHTML = ST.playing ? "▏▏ pause" : "▶ resume";
+  });
+  $("pbreplay").addEventListener("click", function(){
+    if(!ST.D) return;
+    ST.phase = "running"; ST.stage = 0; ST.t = 0; ST.playing = true;
+    ST.a.built = 0; ST.a.load = 0; ST.a.lab = null; ST.a.fi = -1; ST.a.checked = [];
+    workShown = 0; revealWork();
+    renderSwap(); drawGauges(); renderWork(); drawLedger(); drawRecord(); drawTally();
+  });
+  for(i = 0; i < ids.length; i++)
+    (function(id){
+      var b = $(id);
+      b.setAttribute("aria-pressed", (+b.dataset.s === ST.speed) ? "true" : "false");
+      b.addEventListener("click", function(){
+        ST.speed = +b.dataset.s;
+        for(var j = 0; j < ids.length; j++)
+          $(ids[j]).setAttribute("aria-pressed", ids[j] === id ? "true" : "false");
+      });
+    })(ids[i]);
+  $("pbedit").addEventListener("click", toSetup);
+}
+
+function refreshNarr(){
+  if(ST.phase !== "running") return;
+  var n = document.querySelector(".narr");
+  if(n) n.innerHTML = narrate();
+  var r = document.querySelector(".rail");
+  if(r) r.outerHTML = railHTML();
+  var em = document.querySelector(".swap h3 em");
+  if(em) em.textContent = "step " + (ST.stage + 1) + " of 6";
+}
+
+function railHTML(){
+  var out = '<div class="rail">', i;
+  for(i = 0; i < 6; i++)
+    out += '<span class="s' + (i < ST.stage ? " done" : (i === ST.stage ? " now" : "")) + '">'
+        + STAGES[i].rail + '</span>';
+  return out + '</div>';
+}
+
+function narrate(){
+  var D = ST.D, R = ST.R, s = STAGES[ST.stage], A = ST.a;
+  if(s.key === "cage") return '<span class="lead">Building the cage.</span>'
+    + 'Six vertices, twelve edges, <b>eight</b> triangular faces. Every face takes one vertex from '
+    + 'each opposite pair — that is where the eight comes from, and it is the same for both '
+    + 'complexes.';
+  if(s.key === "loadA") return '<span class="lead">Seating complex A.</span>'
+    + '<b>' + D.an + '</b> N and <b>' + D.acl + '</b> Cl'
+    + (R.kindA === "none" ? '' : ', in the <b>' + D.aiso + '</b> arrangement')
+    + '. The chlorides go on <b>' + (vlist(R.labA, "Cl") || "no vertex") + '</b>'
+    + (R.kindA === "none" ? '' : ' — ' + isoNote(D.aiso)) + '.';
+  if(s.key === "checkA" || s.key === "checkB"){
+    var w = s.key === "checkA" ? "A" : "B";
+    var fi = Math.max(0, A.fi), f = FACES[fi], lab = A.lab || R.labA;
+    var q = faceCounts(lab, f);
+    return '<span class="lead">Inspecting complex ' + w + ', face ' + (fi + 1) + ' of 8.</span>'
+      + 'The model turns that face towards you: corners <b>' + f.map(function(v){ return VNAME[v]; })
+        .join(" ") + '</b> carrying <b>' + f.map(function(v){ return lab[v]; }).join(" ")
+      + '</b> — ' + q.n + ' N and ' + q.cl + ' Cl. '
+      + (faceHit(lab, f, D.fn, D.fcl) ? 'That is the pattern being counted.'
+                                      : 'Not the pattern being counted.');
+  }
+  if(s.key === "loadB") return '<span class="lead">Rebuilding as complex B.</span>'
+    + 'The ligands lift off and come back as <b>' + D.bn + '</b> N and <b>' + D.bcl + '</b> Cl'
+    + (R.kindB === "none" ? '' : ', <b>' + D.biso + '</b>')
+    + '. Same cage, same eight faces — only the labels on the vertices change.';
+  return '<span class="lead">Adding the two tallies.</span>'
+    + 'Complex A gave <b>' + R.A + '</b> matching faces and complex B gave <b>' + R.B
+    + '</b>. Sixteen faces inspected in all.';
+}
+
+function isoNote(iso){
+  if(iso === "cis") return "cis means 90&deg; apart, so they share an edge";
+  if(iso === "trans") return "trans means opposite, so no face holds both";
+  if(iso === "fac") return "fac means all three mutually cis, so they form one whole face";
+  return "mer means one pair is trans and the third is cis to both";
+}
+
+function setPhase(n){
+  var i;
+  for(i = 0; i < 3; i++)
+    $("ph" + i).className = "ph" + (i === n ? " now" : (i < n ? " done" : ""));
+  $("phtag").textContent = n === 0 ? "waiting for your data"
+    : (n === 1 ? "inspection in progress" : "run complete");
+}
+
+/* =====================================================================
+   gauges, working, ledger, tally, record
+   ===================================================================== */
+function liveCounts(){
+  var A = ST.a, R = ST.R, D = ST.D, a = 0, b = 0, checked = 0, i;
+  if(!R) return { a: 0, b: 0, checked: 0, total: 0 };
+  if(ST.phase === "done") return { a: R.A, b: R.B, checked: 16, total: R.total };
+  if(ST.stage >= 4){
+    a = R.A;
+    for(i = 0; i < A.checked.length; i++)
+      if(faceHit(R.labB, FACES[A.checked[i]], D.fn, D.fcl)) b++;
+    checked = 8 + (ST.stage === 4 ? A.checked.length : 8);
+  } else if(ST.stage === 3){
+    a = R.A; checked = 8;
+  } else if(ST.stage === 2){
+    for(i = 0; i < A.checked.length; i++)
+      if(faceHit(R.labA, FACES[A.checked[i]], D.fn, D.fcl)) a++;
+    checked = A.checked.length;
+  }
+  return { a: a, b: b, checked: checked, total: a + b };
+}
+
+function gaugeDefs(){
+  var D = ST.D, A = ST.a, L = liveCounts();
+  if(!D) return [
+    { k: "vertices filled", v: "—", u: "of 6", c: "" },
+    { k: "faces on the solid", v: "—", u: "triangles", c: "" },
+    { k: "faces inspected", v: "—", u: "of 16", c: "" },
+    { k: "matches in A", v: "—", u: "of 8 faces", c: "" },
+    { k: "matches in B", v: "—", u: "of 8 faces", c: "" },
+    { k: "total matching faces", v: "—", u: "the answer", c: "" }
+  ];
+  var filled = Math.round(6 * A.load * (A.lab ? 1 : 0));
+  return [
+    { k: "vertices filled", v: A.built > 0.99 ? String(filled) : "—", u: "of 6",
+      c: filled === 6 ? "--s4" : "" },
+    { k: "faces on the solid", v: A.built > 0.5 ? "8" : "—", u: "triangles",
+      c: A.built > 0.5 ? "--s4" : "" },
+    { k: "faces inspected", v: ST.stage >= 2 ? String(L.checked) : "—", u: "of 16",
+      c: ST.stage >= 2 ? "--s1" : "" },
+    { k: "matches in A", v: ST.stage >= 2 ? String(L.a) : "—", u: "of 8 faces",
+      c: ST.stage >= 2 ? "--s3" : "" },
+    { k: "matches in B", v: ST.stage >= 4 ? String(L.b) : "—", u: "of 8 faces",
+      c: ST.stage >= 4 ? "--s3" : "" },
+    { k: "total matching faces", v: ST.stage >= 2 ? String(L.total) : "—", u: "the answer",
+      c: ST.phase === "done" ? "--good" : (ST.stage >= 2 ? "--s3" : "") }
+  ];
+}
+function drawGauges(){
+  var d = gaugeDefs(), out = "", i;
+  for(i = 0; i < d.length; i++)
+    out += '<div class="ro' + (d[i].v === "—" ? " dim" : "") + '"><div class="k">' + d[i].k
+        + '</div><div class="v"' + (d[i].c ? ' style="color:var(' + d[i].c + ')"' : "") + '>'
+        + d[i].v + '</div><div class="u">' + d[i].u + '</div></div>';
+  $("gauges").innerHTML = out;
+}
+
+function renderWork(){
+  var out = "", i;
+  for(i = 0; i < workShown; i++)
+    out += '<div class="ec' + (WORK[i].key ? " key" : "") + '">' + WORK[i].e + '</div>';
+  var left = WORK.length - workShown;
+  if(!WORK.length)
+    out = '<div class="pend">Enter the data and run the experiment — each line of working '
+        + 'appears as the step that earns it is carried out.</div>';
+  else if(left > 0)
+    out += '<div class="pend">' + left + ' more line' + (left === 1 ? "" : "s")
+        + ' as the run proceeds…</div>';
+  var box = $("work");
+  box.innerHTML = out;
+  box.scrollTop = box.scrollHeight;
+}
+
+function drawLedger(){
+  var D = ST.D, R = ST.R, A = ST.a;
+  if(!D){
+    $("ledgertag").textContent = "—";
+    $("ledger").innerHTML = '<div class="work"><div class="pend" style="padding:0">The eight '
+      + 'faces are listed here and ticked off as the inspector reaches them.</div></div>';
+    return;
+  }
+  var done = ST.phase === "done";
+  var which = done ? ST.view : A.which;
+  var lab = done ? (which === "A" ? R.labA : R.labB) : (A.lab || R.labA);
+  if(done){ A.lab = lab; A.which = which; }
+  $("ledgertag").innerHTML = done
+    ? '<button class="viewbtn' + (which === "A" ? " on" : "") + '" type="button" data-v="A">'
+      + 'complex A</button><button class="viewbtn' + (which === "B" ? " on" : "")
+      + '" type="button" data-v="B">complex B</button>'
+    : "complex " + which;
+  var out = '<table class="faces"><thead><tr><th>#</th><th>corners</th><th>at the corners</th>'
+    + '<th style="text-align:right">match</th></tr></thead><tbody>', i;
+  for(i = 0; i < 8; i++){
+    var f = FACES[i], seen = A.checked.indexOf(i) >= 0;
+    var hit = seen && faceHit(lab, f, D.fn, D.fcl);
+    var cls = !seen ? "pending" : (hit ? "hit" : "");
+    if(A.fi === i) cls += " now";
+    var corners = f.map(function(v){ return VNAME[v]; }).join(" ");
+    var atoms = seen ? f.map(function(v){
+      return '<span class="' + (lab[v] === "Cl" ? "cllab" : "nlab") + '">' + lab[v] + '</span>';
+    }).join(" ") : "· · ·";
+    out += '<tr class="' + cls + '"><td>' + (i + 1) + '</td><td>' + corners + '</td><td>'
+        + atoms + '</td><td class="m">' + (seen ? (hit ? "✓" : "·") : "") + '</td></tr>';
+  }
+  $("ledger").innerHTML = out + "</tbody></table>";
+  if(done){
+    $("ledgertag").onclick = function(ev){
+      var b = ev.target.closest(".viewbtn");
+      if(!b) return;
+      ST.view = b.dataset.v; ST.a.fi = -1;
+      drawLedger(); drawTally();
+    };
+    var trs = $("ledger").querySelectorAll("tbody tr");
+    for(var q = 0; q < trs.length; q++)
+      (function(ix){
+        trs[ix].style.cursor = "pointer";
+        trs[ix].onclick = function(){
+          ST.a.fi = (ST.a.fi === ix) ? -1 : ix;
+          if(ST.a.fi >= 0){
+            var vv = faceNormalView(FACES[ix]);
+            ST.a.tyaw = vv.yaw; ST.a.tpitch = vv.pitch;
+          }
+          drawLedger(); drawTally();
+        };
+      })(q);
+  }
+}
+
+function drawTally(){
+  var D = ST.D, R = ST.R, A = ST.a, L = liveCounts();
+  var tv = $("tv"), chips = $("chips"), sub = $("tsub");
+  if(!D){
+    tv.textContent = "—"; tv.className = "v";
+    var blank = "", q;
+    for(q = 0; q < 8; q++) blank += '<b title="face ' + (q + 1) + '"></b>';
+    chips.innerHTML = blank;
+    sub.textContent = "eight faces per complex — they tick off as the inspector reaches them";
+    return;
+  }
+  var done = ST.phase === "done";
+  tv.textContent = ST.stage >= 2 ? String(L.total) : "—";
+  tv.className = "v " + (done ? "fin" : (ST.stage >= 2 ? "on" : ""));
+  var lab = A.lab || R.labA, out = "", i;
+  for(i = 0; i < 8; i++){
+    var seen = A.checked.indexOf(i) >= 0;
+    var hit = seen && faceHit(lab, FACES[i], D.fn, D.fcl);
+    var cls = seen ? (hit ? "hit" : "miss") : "";
+    if(A.fi === i) cls += " now";
+    out += '<b class="' + cls + '" title="face ' + (i + 1) + '">'
+        + (seen ? (hit ? "✓" : "·") : "") + '</b>';
+  }
+  chips.innerHTML = out;
+  if(done)
+    sub.innerHTML = "all sixteen faces inspected: <b>" + R.A + "</b> in complex A, <b>" + R.B
+      + "</b> in complex B";
+  else if(ST.stage >= 2 && (ST.stage === 2 || ST.stage === 4))
+    sub.innerHTML = "complex " + A.which + ": <b>" + A.checked.length + "</b> of 8 faces checked, "
+      + "<b>" + (A.which === "A" ? L.a : L.b) + "</b> matching so far";
+  else if(ST.stage === 3)
+    sub.innerHTML = "complex A finished with <b>" + R.A + "</b>; rebuilding for complex B";
+  else
+    sub.textContent = "the inspector has not started yet";
+}
+
+function drawRecord(){
+  var D = ST.D, R = ST.R, open = (ST.phase === "done") || revealed, st = ST.stage;
+  function cell(k, v, n, fin){
+    return '<div class="rec"><div class="k">' + k + '</div><div class="v'
+      + (v === null ? " pend" : (fin ? " fin" : "")) + '">'
+      + (v === null ? "— not yet" : v) + '</div><div class="n">' + n + '</div></div>';
+  }
+  var rows;
+  if(!D){
+    rows = cell("triangular faces", null, "counted on the model", 0)
+         + cell("matches in complex A", null, "found by inspecting all 8", 0)
+         + cell("matches in complex B", null, "found by inspecting all 8", 0)
+         + cell("total", null, "what the run is for", 1);
+  } else {
+    rows = cell("triangular faces", st >= 0 ? "8 each" : null,
+             "one vertex from each opposite pair", 0)
+         + cell("complex A", st >= 1 ? D.an + " N + " + D.acl + " Cl"
+             + (R.kindA === "none" ? "" : ", " + D.aiso) : null,
+             "Cl on " + (st >= 1 ? (vlist(R.labA, "Cl") || "no vertex") : "…"), 0)
+         + cell("matches in A", st >= 3 || ST.phase === "done" ? String(R.A) : null,
+             "faces with " + D.fn + " N and " + D.fcl + " Cl", 0)
+         + cell("complex B", st >= 3 ? D.bn + " N + " + D.bcl + " Cl"
+             + (R.kindB === "none" ? "" : ", " + D.biso) : null,
+             "Cl on " + (st >= 3 ? (vlist(R.labB, "Cl") || "no vertex") : "…"), 0)
+         + cell("matches in B", ST.phase === "done" ? String(R.B) : null,
+             "faces with " + D.fn + " N and " + D.fcl + " Cl", 0)
+         + cell("total", open ? String(R.total) : null, R.A + " + " + R.B, 1);
+  }
+  $("record").innerHTML = rows;
+}
+
+function drawRuns(){
+  if(!runs.length){ $("runs").innerHTML = ""; $("runsempty").hidden = false; return; }
+  $("runsempty").hidden = true;
+  var out = "<thead><tr><th>#</th><th>complex A</th><th>complex B</th><th>pattern</th>"
+    + "<th>A</th><th>B</th><th>total</th></tr></thead><tbody>", i;
+  for(i = 0; i < runs.length; i++){
+    var r = runs[i];
+    out += "<tr><td class='num'>" + (i + 1) + "</td><td class='num'>" + r.an + "N " + r.acl + "Cl "
+        + r.aiso + "</td><td class='num'>" + r.bn + "N " + r.bcl + "Cl " + r.biso
+        + "</td><td class='num'>" + r.fn + "N " + r.fcl + "Cl</td><td class='num'>" + r.A
+        + "</td><td class='num'>" + r.B + "</td><td class='num'><b>" + r.total + "</b></td></tr>";
+  }
+  $("runs").innerHTML = out + "</tbody>";
+}
+
+function drawSym(){
+  var D = ST.D, R = ST.R;
+  if(!D){
+    $("symtable").innerHTML = "";
+    $("symnote").textContent = "Run the bench and this fills in.";
+    return;
+  }
+  var isA = symWhich === "A";
+  var nN = isA ? D.an : D.bn, nCl = isA ? D.acl : D.bcl, iso = isA ? D.aiso : D.biso;
+  var kind = isoKind(nN, nCl);
+  var list = allPlacements(nN, nCl, iso, D.fn, D.fcl);
+  var out = "<thead><tr><th>placement of the minority ligand</th><th>class</th>"
+    + "<th>matching faces</th></tr></thead><tbody>", i, same = true;
+  for(i = 0; i < list.length; i++){
+    if(list[i].n !== list[0].n) same = false;
+    var names = list[i].sel.map(function(v){ return VNAME[v]; }).join(", ") || "—";
+    out += "<tr" + (i === 0 ? " class='win'" : "") + "><td class='num'>" + names
+        + "</td><td class='num'>" + (kind === "none" ? "n/a" : iso) + "</td><td class='num'><b>"
+        + list[i].n + "</b></td></tr>";
+  }
+  $("symtable").innerHTML = out + "</tbody>";
+  $("symnote").innerHTML = same
+    ? "All <b>" + list.length + "</b> placements of complex " + symWhich + " give the same answer, <b>"
+      + list[0].n + "</b>. The bench picked the first one, and the octahedron is symmetric enough "
+      + "that the choice could not have mattered."
+    : "These placements do <b>not</b> all agree — worth a closer look.";
+}
+
+/* =====================================================================
+   the model
+   ===================================================================== */
+var CX = 150, CY = 168, SCALE = 96;
+
+function project(v, yaw, pitch){
+  var x1 = v[0] * Math.cos(yaw) + v[2] * Math.sin(yaw);
+  var z1 = -v[0] * Math.sin(yaw) + v[2] * Math.cos(yaw);
+  var y1 = v[1];
+  var y2 = y1 * Math.cos(pitch) - z1 * Math.sin(pitch);
+  var z2 = y1 * Math.sin(pitch) + z1 * Math.cos(pitch);
+  return { x: CX + x1 * SCALE, y: CY - y2 * SCALE, z: z2 };
+}
+
+function buildScene(){
+  var svg = $("scene"), i;
+  while(svg.firstChild) svg.removeChild(svg.firstChild);
+  var strong = css("--line-strong"), muted = css("--text-muted");
+  var gFace = el("g", {}); svg.appendChild(gFace);
+  var gEdge = el("g", {}); svg.appendChild(gEdge);
+  var gVert = el("g", {}); svg.appendChild(gVert);
+  var faceP = el("polygon", { fill: css("--accent"), opacity: 0, stroke: css("--accent"),
+    "stroke-width": 2, "stroke-linejoin": "round" });
+  gFace.appendChild(faceP);
+  var edges = [];
+  for(i = 0; i < EDGES.length; i++){
+    var e = el("line", { stroke: strong, "stroke-width": 1.6, "stroke-linecap": "round" });
+    gEdge.appendChild(e); edges.push(e);
+  }
+  var verts = [];
+  for(i = 0; i < 6; i++){
+    var g = el("g", {});
+    var ring = el("circle", { r: 13, fill: "none", stroke: strong, "stroke-width": 1.4,
+      "stroke-dasharray": "3 3" });
+    var ball = el("circle", { r: 13, fill: css("--s1"), opacity: 0 });
+    var txt = el("text", { "text-anchor": "middle", fill: "#fff", "font-size": 10,
+      "font-weight": 700, "font-family": "ui-monospace,monospace", opacity: 0 });
+    var ax = el("text", { "text-anchor": "middle", fill: muted, "font-size": 8.5,
+      "font-family": "ui-monospace,monospace" });
+    ax.textContent = VNAME[i];
+    g.appendChild(ring); g.appendChild(ball); g.appendChild(txt); g.appendChild(ax);
+    gVert.appendChild(g);
+    verts.push({ g: g, ring: ring, ball: ball, txt: txt, ax: ax });
+  }
+  var cap = el("text", { x: 150, y: 330, "text-anchor": "middle", fill: muted, "font-size": 10,
+    "font-family": "ui-monospace,monospace" });
+  svg.appendChild(cap);
+  SC = { svg: svg, faceP: faceP, edges: edges, verts: verts, gVert: gVert, cap: cap };
+}
+
+function drawScene(dt){
+  if(!SC) return;
+  var A = ST.a, R = ST.R, D = ST.D, i;
+  /* idle spin before anything is built */
+  if(!D){ A.tyaw = 0.9 + ST.clock * 0.28; A.tpitch = 0.42; }
+  var k = Math.min(1, dt * 6.5);
+  A.yaw += (A.tyaw - A.yaw) * k;
+  A.pitch += (A.tpitch - A.pitch) * k;
+
+  var P = [], p;
+  for(i = 0; i < 6; i++) P.push(project(VVEC[i], A.yaw, A.pitch));
+
+  /* edges */
+  for(i = 0; i < SC.edges.length; i++){
+    var e = EDGES[i], a = P[e[0]], b = P[e[1]];
+    var near = (a.z + b.z) / 2;
+    var lab = A.lab;
+    var clcl = lab && A.load > 0.6 && lab[e[0]] === "Cl" && lab[e[1]] === "Cl";
+    var vis = clamp((A.built - i / EDGES.length * 0.85) * 3, 0, 1);
+    SC.edges[i].setAttribute("x1", a.x); SC.edges[i].setAttribute("y1", a.y);
+    SC.edges[i].setAttribute("x2", a.x + (b.x - a.x) * vis);
+    SC.edges[i].setAttribute("y2", a.y + (b.y - a.y) * vis);
+    SC.edges[i].setAttribute("stroke", clcl ? css("--s2") : css("--line-strong"));
+    SC.edges[i].setAttribute("stroke-width", clcl ? 3 : 1.6);
+    SC.edges[i].setAttribute("opacity",
+      (near > 0 ? 1 : 0.32) * (A.built > 0.02 ? 1 : 0) * (D ? 1 : 0.42));
+  }
+
+  /* the face under inspection */
+  if(A.fi >= 0 && (ST.phase === "running" || ST.phase === "done")){
+    var f = FACES[A.fi], hit = A.lab && faceHit(A.lab, f, D.fn, D.fcl);
+    SC.faceP.setAttribute("points", f.map(function(v){
+      return P[v].x.toFixed(1) + "," + P[v].y.toFixed(1); }).join(" "));
+    SC.faceP.setAttribute("fill", css(hit ? "--good" : "--accent"));
+    SC.faceP.setAttribute("stroke", css(hit ? "--good" : "--accent"));
+    SC.faceP.setAttribute("opacity", 0.22);
+    SC.faceP.setAttribute("stroke-opacity", 0.95);
+  } else {
+    SC.faceP.setAttribute("opacity", 0);
+    SC.faceP.setAttribute("stroke-opacity", 0);
+  }
+
+  /* vertices, far ones first */
+  var order = [0, 1, 2, 3, 4, 5].sort(function(u, v){ return P[u].z - P[v].z; });
+  for(i = 0; i < 6; i++) SC.gVert.appendChild(SC.verts[order[i]].g);
+  for(i = 0; i < 6; i++){
+    var vi = i, v = SC.verts[vi], pt = P[vi];
+    var depth = 0.78 + 0.22 * (pt.z / Math.sqrt(3));
+    var stagger = clamp((A.load - vi * 0.06) * 1.6, 0, 1);
+    var out = 1 + 1.25 * (1 - stagger);
+    var pos = project([VVEC[vi][0] * out, VVEC[vi][1] * out, VVEC[vi][2] * out], A.yaw, A.pitch);
+    var showBall = A.lab ? stagger : 0;
+    v.ring.setAttribute("cx", pt.x); v.ring.setAttribute("cy", pt.y);
+    v.ring.setAttribute("r", 12 * depth);
+    v.ring.setAttribute("opacity",
+      clamp(A.built * 1.2 - showBall, 0, 1) * 0.85 * (D ? 1 : 0.5));
+    v.ball.setAttribute("cx", pos.x); v.ball.setAttribute("cy", pos.y);
+    v.ball.setAttribute("r", 13 * depth);
+    v.ball.setAttribute("fill", css(A.lab && A.lab[vi] === "Cl" ? "--s2" : "--s1"));
+    v.ball.setAttribute("opacity", showBall);
+    v.txt.setAttribute("x", pos.x); v.txt.setAttribute("y", pos.y + 3.6);
+    v.txt.textContent = A.lab ? A.lab[vi] : "";
+    v.txt.setAttribute("opacity", showBall > 0.7 ? 1 : 0);
+    var onFace = A.fi >= 0 && FACES[A.fi].indexOf(vi) >= 0;
+    v.ax.setAttribute("x", pt.x); v.ax.setAttribute("y", pt.y + 26);
+    v.ax.setAttribute("opacity",
+      (A.built > 0.6 && (A.load < 0.5 || onFace)) ? (D ? 0.9 : 0.45) : 0);
+    v.ax.setAttribute("fill", css(onFace ? "--text-secondary" : "--text-muted"));
+  }
+
+  SC.cap.textContent = !D ? "an octahedron: 6 vertices, 8 faces"
+    : (A.fi >= 0
+       ? "face " + (A.fi + 1) + " of 8 — " + FACES[A.fi].map(function(v){ return VNAME[v]; }).join(" ")
+       : (A.load > 0.6 ? "complex " + A.which : "empty cage"));
+
+  var nN = 0, nCl = 0;
+  if(A.lab) for(i = 0; i < 6; i++){ if(A.lab[i] === "Cl") nCl++; else nN++; }
+  $("modtag").textContent = !D ? "no cage built"
+    : (A.load < 0.5 || !A.lab ? "empty cage"
+       : "complex " + A.which + ": " + nN + " N, " + nCl + " Cl");
+}
+
+/* =====================================================================
+   gate + wiring
+   ===================================================================== */
+function syncGate(){
+  var open = (ST.phase === "done") || revealed;
+  $("solgate").hidden = open;
+  $("solbody").hidden = !open;
+  var ab = $("answerbox");
+  if(open){
+    ab.classList.remove("locked");
+    $("ansval").textContent = "6";
+    $("anssub").innerHTML = "matching triangular faces &middot; 2 from cis + 4 from mer";
+    $("revealnow").hidden = true;
+    $("clsans").textContent = "6";
+    if(!$("solbody").classList.contains("reveal")) $("solbody").classList.add("reveal");
+    $("solintro").innerHTML = (ST.phase === "done")
+      ? "<b>Your inspection finished.</b> Here is the same argument written out as it would be on "
+        + "paper, with the paper’s own complexes."
+      : "Revealed early — go back to the bench, enter the data and run it to watch the tally come "
+        + "out of the inspection.";
+  } else {
+    ab.classList.add("locked");
+    $("ansval").textContent = "Run the experiment";
+    $("anssub").textContent = LOCKED_SUB;
+    $("revealnow").hidden = false;
+    $("clsans").textContent = "— run the experiment";
+  }
+}
+
+function wireForm(){
+  var i;
+  for(i = 0; i < NUMS.length; i++)
+    (function(k){
+      var e = $("in_" + k);
+      if(!e) return;
+      e.addEventListener("input", syncForm);
+      e.addEventListener("keydown", function(ev){
+        if(ev.key === "Enter" && !$("runbtn").disabled) startRun();
+      });
+    })(NUMS[i].k);
+  ["A", "B"].forEach(function(w){
+    var box = $("iso" + w);
+    if(!box) return;
+    box.addEventListener("click", function(ev){
+      var b = ev.target.closest("button");
+      if(!b || b.disabled) return;
+      ST.iso[w] = b.textContent;
+      syncForm();
+    });
+  });
+  $("runbtn").addEventListener("click", startRun);
+}
+
+function toSetup(){
+  ST.phase = "setup"; ST.stage = -1; ST.playing = false; ST.R = null; ST.D = null;
+  ST.a = { built: 1, load: 0, which: "A", lab: null, fi: -1, checked: [],
+           yaw: ST.a.yaw, pitch: ST.a.pitch, tyaw: ST.a.yaw, tpitch: ST.a.pitch };
+  ST.view = "A";
+  WORK = []; workShown = 0;
+  buildScene();
+  renderSwap(); drawGauges(); renderWork(); drawLedger(); drawRecord(); drawTally(); drawSym();
+}
+
+function redrawAll(){
+  buildScene(); drawGauges(); renderWork(); drawLedger(); drawRecord(); drawTally();
+  drawRuns(); drawSym();
+  if(ST.phase !== "setup") renderSwap();
+}
+
+(function init(){
+  $("symsel").addEventListener("click", function(ev){
+    var b = ev.target.closest("button");
+    if(!b) return;
+    symWhich = b.dataset.w;
+    $("symsel").querySelectorAll("button").forEach(function(o){
+      o.setAttribute("aria-pressed", o === b ? "true" : "false");
+    });
+    drawSym();
+  });
+
+  function doReveal(){ revealed = true; syncGate(); drawRecord(); }
+  $("revealnow").addEventListener("click", doReveal);
+  $("revealsol").addEventListener("click", doReveal);
+  $("themebtn").addEventListener("click", function(){
+    var r = document.documentElement;
+    var dark = r.getAttribute("data-theme") === "dark" ||
+      (!r.getAttribute("data-theme") && matchMedia("(prefers-color-scheme: dark)").matches);
+    r.setAttribute("data-theme", dark ? "light" : "dark");
+    redrawAll();
+  });
+
+  buildScene();
+  syncGate();
+  renderSwap(); drawGauges(); renderWork(); drawLedger(); drawRecord(); drawTally();
+  drawRuns(); drawSym();
+
+  var last = 0;
+  function loop(ts){
+    var dt = last ? Math.min(0.05, (ts - last) / 1000) : 0.016;
+    last = ts;
+    ST.clock += dt;
+    tickRun(dt);
+    drawScene(dt);
+    if(ST.phase === "running"){
+      gaugeAcc += dt;
+      if(gaugeAcc > 0.1){ gaugeAcc = 0; drawGauges(); }
+    }
+    requestAnimationFrame(loop);
+  }
+  requestAnimationFrame(loop);
+})();
+
+</script>
+</body>
+</html>
