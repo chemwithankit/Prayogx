@@ -1,0 +1,1984 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mass of a condensation copolymer — JEE Advanced 2026 Paper 2 Q.14 | PrayogX</title>
+<meta name="description" content="Charge the reactor with the amounts from JEE Advanced 2026 Paper 2 Chemistry Q.14, then watch CH3I become glycine one reagent at a time, caprolactam's ring open to 6-aminohexanoic acid, and the two polymerise while the water is counted off — the mass of Z is revealed only at the end.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232a78d6'/%3E%3Cpath d='M12.5 6.5h7M13.6 6.5v7.2L7.9 24.1a1.5 1.5 0 0 0 1.3 2.3h13.6a1.5 1.5 0 0 0 1.3-2.3l-5.7-10.4V6.5' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M10.6 20.6h10.8' stroke='white' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E">
+<meta name="sim-id" content="ADV-2026-P2-CHE-Q14">
+<style>
+:root{
+  color-scheme: light;
+  --surface-0:#f4f4f1; --surface-1:#fcfcfb; --surface-2:#ececea;
+  --line:#d9d9d4; --line-strong:#bcbcb5;
+  --text-primary:#0b0b0b; --text-secondary:#52514e; --text-muted:#77766f;
+  --s1:#2a78d6; --s2:#eb6834; --s3:#1baf7a; --s4:#4a3aa7;
+  --good:#00743f; --bad:#c0392b; --accent:#2a78d6;
+  --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+  --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --serif:ui-serif,Georgia,"Times New Roman",serif;
+  --radius:10px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  color-scheme: dark;
+  --surface-0:#111110; --surface-1:#1a1a19; --surface-2:#232322;
+  --line:#34342f; --line-strong:#4a4a44;
+  --text-primary:#ffffff; --text-secondary:#c3c2b7; --text-muted:#95948b;
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#9085e9;
+  --good:#3fae7a; --bad:#e66767; --accent:#3987e5;
+}}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --surface-0:#111110; --surface-1:#1a1a19; --surface-2:#232322;
+  --line:#34342f; --line-strong:#4a4a44;
+  --text-primary:#ffffff; --text-secondary:#c3c2b7; --text-muted:#95948b;
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#9085e9;
+  --good:#3fae7a; --bad:#e66767; --accent:#3987e5;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--surface-0);color:var(--text-primary);font-family:var(--sans);
+  font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px 80px}
+
+header.top{border-bottom:1px solid var(--line);background:var(--surface-1)}
+.top-inner{max-width:1120px;margin:0 auto;padding:22px 20px 18px;position:relative;
+  display:flex;flex-wrap:wrap;gap:16px;align-items:flex-start;justify-content:space-between}
+.simid{font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--text-muted)}
+h1{font-size:23px;line-height:1.25;margin:6px 0 10px;font-weight:640;max-width:640px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-size:11.5px;padding:3px 9px;border:1px solid var(--line-strong);border-radius:999px;
+  color:var(--text-secondary);background:var(--surface-2);white-space:nowrap}
+.chip.k{border-color:var(--accent);color:var(--accent);background:transparent}
+.answerbox{border:1px solid var(--line-strong);border-radius:var(--radius);background:var(--surface-2);
+  padding:12px 16px;min-width:210px}
+.answerbox .lbl{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted)}
+.answerbox .val{font-family:var(--mono);font-size:25px;font-weight:600;color:var(--good);line-height:1.22}
+.answerbox .sub{font-size:12px;color:var(--text-secondary)}
+.answerbox.locked .val{color:var(--text-muted);font-size:17px;letter-spacing:.04em}
+.answerbox .rv{margin-top:6px;font-size:11px;background:none;border:none;padding:0;color:var(--accent);
+  cursor:pointer;text-decoration:underline;font-family:var(--sans)}
+.themebtn{position:absolute;top:14px;right:16px;border:1px solid var(--line-strong);background:var(--surface-2);
+  color:var(--text-secondary);border-radius:8px;padding:4px 9px;font-size:12px;cursor:pointer}
+.brandbar{display:flex;align-items:center;gap:8px;margin-bottom:9px;text-decoration:none}
+.brandbar .pxmark{width:21px;height:21px;flex:none;display:block}
+.brandbar .wm{font-size:13px;font-weight:800;letter-spacing:.17em;color:var(--text-secondary);line-height:1}
+.brandbar .wm i{font-style:normal;color:var(--accent)}
+
+nav.jump{position:sticky;top:0;z-index:20;background:var(--surface-0);border-bottom:1px solid var(--line);
+  padding:8px 0;margin-bottom:26px}
+nav.jump ul{max-width:1120px;margin:0 auto;padding:0 20px;list-style:none;display:flex;gap:4px;overflow-x:auto}
+nav.jump a{display:block;padding:5px 11px;border-radius:7px;font-size:13px;text-decoration:none;
+  color:var(--text-secondary);white-space:nowrap}
+nav.jump a:hover{background:var(--surface-2);color:var(--text-primary)}
+
+section{margin:0 0 42px;scroll-margin-top:56px}
+h2{font-size:17px;font-weight:640;margin:0 0 4px;display:flex;align-items:baseline;gap:9px}
+h2 .n{font-family:var(--mono);font-size:12px;color:var(--text-muted);font-weight:400}
+.lede{color:var(--text-secondary);font-size:13.5px;margin:0 0 16px;max-width:76ch}
+.card,.panel{background:var(--surface-1);border:1px solid var(--line);border-radius:var(--radius);padding:18px}
+.panel h3{margin:0 0 12px;font-size:13px;letter-spacing:.05em;text-transform:uppercase;
+  color:var(--text-muted);font-weight:600}
+.lab{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:16px;align-items:start}
+.lab>*{min-width:0}
+@media(max-width:900px){.lab{grid-template-columns:1fr !important}}
+canvas{display:block;width:100%;height:auto;border-radius:8px;background:var(--surface-2)}
+
+.qtext{font-family:var(--serif);font-size:16px;line-height:1.7}
+.opts{list-style:none;padding:0;margin:16px 0 0;display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr));gap:10px}
+.opts li{border:1px solid var(--line);border-radius:10px;padding:10px;background:var(--surface-1);
+  display:flex;flex-direction:column;gap:6px}
+.opts li .hd{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--text-muted);font-family:var(--mono)}
+.opts li .mark{margin-left:auto;font-family:var(--sans);font-size:11.5px;font-weight:600}
+.opts li .nm{font-size:11.5px;color:var(--text-secondary)}
+.opts li.correct{border-color:var(--good);background:color-mix(in srgb,var(--good) 11%,transparent)}
+.opts li.correct .mark{color:var(--good)}
+.opts li.wrong{border-color:var(--bad)}
+.opts li.wrong .mark{color:var(--bad)}
+svg.optthumb{display:block;width:100%;height:auto;background:var(--surface-2);border-radius:7px}
+
+.ctrl{margin:14px 0}
+.ctrl label{display:flex;flex-wrap:wrap;gap:4px;justify-content:space-between;align-items:baseline;
+  font-size:13px;margin-bottom:5px}
+.ctrl label span{min-width:0}
+.ctrl label .v{font-family:var(--mono);font-size:13px;color:var(--text-primary)}
+input[type=range]{width:100%;min-width:0;accent-color:var(--accent)}
+.numrow{display:flex;gap:6px;align-items:center;margin-top:6px}
+.numrow input.numin{flex:1;min-width:0;padding:7px 9px;border-radius:7px;border:1px solid var(--line-strong);
+  background:var(--surface-0);color:var(--text-primary);font-family:var(--mono);font-size:13px}
+.numrow input.numin:focus{outline:2px solid var(--accent);outline-offset:-1px}
+.numrow input.numin.bad{border-color:var(--bad);background:color-mix(in srgb,var(--bad) 9%,transparent)}
+.numrow button.step{flex:none;width:40px;height:34px;border-radius:8px;border:1px solid var(--line-strong);
+  background:var(--surface-2);color:var(--text-primary);font-size:18px;line-height:1;cursor:pointer;
+  font-family:var(--mono);touch-action:manipulation}
+.numrow button.step:hover{border-color:var(--accent);color:var(--accent)}
+.numrow .unit{flex:none;font-size:12px;color:var(--text-muted);min-width:52px}
+.hint{font-size:11.5px;color:var(--text-muted);margin-top:4px;min-height:1.15em}
+.hint.bad{color:var(--bad);font-weight:600}
+.segbtns{display:flex;gap:6px;flex-wrap:wrap}
+.segbtns button{flex:1;min-width:84px;padding:8px 6px;border-radius:8px;border:1px solid var(--line-strong);
+  background:var(--surface-2);color:var(--text-secondary);font-size:13px;cursor:pointer;font-family:var(--sans)}
+.segbtns button[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:650}
+button.act{padding:8px 14px;border-radius:8px;border:1px solid var(--line-strong);background:var(--surface-2);
+  color:var(--text-primary);font-size:13px;cursor:pointer;font-family:var(--sans)}
+button.act:hover{border-color:var(--accent);color:var(--accent)}
+button.act.primary{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+button.act:disabled{opacity:.42;cursor:not-allowed}
+.btnrow{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+
+.playback{display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin-top:12px;
+  padding:9px 10px;border:1px solid var(--line);border-radius:9px;background:var(--surface-2)}
+.playback .lb{font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-muted);margin-right:2px}
+.playback button{padding:6px 12px;border-radius:7px;border:1px solid var(--line-strong);
+  background:var(--surface-1);color:var(--text-secondary);font-size:12.5px;cursor:pointer;font-family:var(--mono)}
+.playback button[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:700}
+.playback button:hover{border-color:var(--accent)}
+
+.readouts{display:grid;grid-template-columns:repeat(auto-fit,minmax(118px,1fr));gap:8px}
+.ro{border:1px solid var(--line);border-radius:8px;padding:8px 10px;background:var(--surface-2);position:relative}
+.ro .k{font-size:11px;letter-spacing:.03em;font-weight:600;color:var(--text-muted);white-space:nowrap}
+.ro .v{font-family:var(--mono);font-size:16px;font-weight:600;line-height:1.35}
+.ro .u{font-size:10.5px;color:var(--text-muted)}
+.delta{position:absolute;top:5px;right:7px;font-family:var(--mono);font-size:10.5px;font-weight:700;
+  padding:1px 5px;border-radius:5px;opacity:0;transition:opacity .55s ease-out;pointer-events:none}
+.delta.up{color:var(--good);background:color-mix(in srgb,var(--good) 16%,transparent)}
+.delta.down{color:var(--s2);background:color-mix(in srgb,var(--s2) 16%,transparent)}
+.delta.show{opacity:1;transition:opacity .1s}
+
+.eqlive{font-family:var(--serif);font-size:15px;background:var(--surface-2);border:1px solid var(--line);
+  border-radius:8px;padding:11px 13px;margin-top:12px;line-height:2.1}
+.eqlive .t{font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-muted);
+  font-family:var(--sans);display:block;margin-bottom:2px}
+.eqlive b{font-family:var(--mono);font-weight:700}
+.eqlive .chg{background:color-mix(in srgb,var(--accent) 26%,transparent);border-radius:4px;padding:0 3px}
+.eqlive .res{color:var(--good);font-weight:700;font-family:var(--mono)}
+
+.chartwrap{position:relative;background:var(--surface-1);border:1px solid var(--line);
+  border-radius:var(--radius);padding:16px}
+svg.chart{display:block;width:100%;height:auto;overflow:visible}
+.tip{position:absolute;pointer-events:none;background:var(--surface-1);border:1px solid var(--line-strong);
+  border-radius:8px;padding:8px 11px;font-size:12px;box-shadow:0 4px 14px rgba(0,0,0,.13);opacity:0;
+  transition:opacity .1s;z-index:5;min-width:150px}
+.tip .t{font-family:var(--mono);font-size:11px;color:var(--text-muted);margin-bottom:4px}
+.tip .r{display:flex;align-items:center;gap:7px;white-space:nowrap}
+.tip .sw{width:9px;height:9px;border-radius:2px;flex:none}
+.tip .rv{margin-left:auto;font-family:var(--mono);font-weight:600}
+.legend{display:flex;flex-wrap:wrap;gap:14px;margin-top:10px;font-size:12.5px;color:var(--text-secondary)}
+.legend span{display:flex;align-items:center;gap:6px}
+.legend i{width:14px;height:3px;border-radius:2px;display:block}
+.legend i.dot{width:9px;height:9px;border-radius:50%}
+
+.predict{border:1px solid var(--accent);border-radius:9px;padding:12px 14px;margin-top:14px;
+  background:color-mix(in srgb,var(--accent) 7%,transparent)}
+.predict .q{font-size:13px;font-weight:600;margin-bottom:8px}
+.predict .row{display:flex;gap:6px;flex-wrap:wrap}
+.predict button{flex:1;min-width:96px;padding:8px;border-radius:8px;border:1px solid var(--line-strong);
+  background:var(--surface-1);color:var(--text-primary);font-size:13px;cursor:pointer}
+.predict button[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+.predict .fb{font-size:12.5px;margin-top:9px;min-height:1.2em}
+.predict .fb.ok{color:var(--good);font-weight:600}
+.predict .fb.no{color:var(--bad);font-weight:600}
+
+table.data{border-collapse:collapse;font-size:12.5px;width:100%}
+table.data th,table.data td{border:1px solid var(--line-strong);padding:6px 9px;text-align:center}
+table.data th{background:var(--surface-2);font-weight:600;font-size:11.5px;color:var(--text-secondary)}
+table.data td.l{text-align:left}
+table.data td.num{font-family:var(--mono)}
+tr.win td{background:color-mix(in srgb,var(--good) 12%,transparent);font-weight:600}
+.scrollx{overflow-x:auto}
+.yes{color:var(--good);font-weight:700} .no{color:var(--bad);font-weight:700}
+.empty{color:var(--text-muted);font-size:12.5px;padding:10px 0}
+
+.nb{display:grid;gap:7px}
+.nb .obs{font-size:12.5px;padding:8px 11px;border-radius:8px;background:var(--surface-2);
+  border-left:3px solid var(--s1);color:var(--text-secondary);animation:nbin .35s ease-out}
+.nb .obs b{color:var(--text-primary);font-family:var(--mono)}
+@keyframes nbin{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+.insight{border:1px solid var(--good);border-radius:9px;padding:12px 14px;margin-top:12px;
+  background:color-mix(in srgb,var(--good) 10%,transparent);font-size:13.5px;animation:nbin .4s ease-out}
+.insight b{color:var(--good)}
+
+.verdict{border-radius:9px;padding:11px 14px;font-size:13.5px;margin-top:12px;border:1px solid var(--line-strong);
+  background:var(--surface-2)}
+.verdict.ok{border-color:var(--good);background:color-mix(in srgb,var(--good) 10%,transparent)}
+.verdict.no{border-color:var(--bad);background:color-mix(in srgb,var(--bad) 9%,transparent)}
+.verdict b{font-size:14px}
+
+.gate{border:1px dashed var(--line-strong);border-radius:var(--radius);padding:24px 20px;text-align:center;
+  background:var(--surface-1)}
+.gate h4{margin:0 0 6px;font-size:15px}
+.gate p{margin:0 0 12px;font-size:13px;color:var(--text-secondary)}
+.gate .cnt{font-family:var(--mono);color:var(--accent);font-weight:700}
+.reveal{animation:nbin .45s ease-out}
+
+ol.steps{list-style:none;counter-reset:s;padding:0;margin:0;display:grid;gap:10px}
+ol.steps li{min-width:0;counter-increment:s;border:1px solid var(--line);border-radius:var(--radius);
+  background:var(--surface-1);padding:14px 16px 14px 52px;position:relative}
+ol.steps li::before{content:counter(s);position:absolute;left:15px;top:14px;width:23px;height:23px;
+  border-radius:50%;background:var(--accent);color:#fff;font-size:12px;font-weight:700;
+  display:grid;place-items:center;font-family:var(--mono)}
+ol.steps h4{margin:0 0 6px;font-size:14px;font-weight:640}
+ol.steps p{margin:0 0 6px;font-size:13.5px;color:var(--text-secondary)}
+.eq{min-width:0;font-family:var(--serif);font-size:15px;background:var(--surface-2);border-radius:7px;
+  padding:9px 13px;margin:8px 0;overflow-x:auto}
+.eq .hl{color:var(--good);font-weight:700}
+sub{font-size:.72em} sup{font-size:.72em}
+.verify{border:1px solid var(--good);border-radius:var(--radius);
+  background:color-mix(in srgb,var(--good) 8%,transparent);padding:14px 16px;font-size:13.5px}
+.verify h4{margin:0 0 6px;font-size:13.5px;color:var(--good)}
+.verify ul{margin:6px 0 0;padding-left:18px;color:var(--text-secondary)}
+.meta-tbl{width:100%;border-collapse:collapse;font-size:13.5px}
+.meta-tbl td{padding:6px 0;border-bottom:1px solid var(--line);vertical-align:top}
+.meta-tbl td:first-child{color:var(--text-muted);width:160px;font-size:12.5px;padding-right:14px}
+footer{border-top:1px solid var(--line);margin-top:40px;padding-top:16px;font-size:12px;color:var(--text-muted)}
+
+/* ---- the theatre ----------------------------------------------------- */
+.deck{border:1px solid var(--line);border-radius:var(--radius);padding:14px;
+  background:linear-gradient(180deg,var(--surface-1),color-mix(in srgb,var(--surface-2) 55%,var(--surface-1)));
+  box-shadow:0 1px 2px rgba(0,0,0,.04),0 10px 26px -18px rgba(0,0,0,.35)}
+.phasebar{display:flex;gap:6px;align-items:center;flex-wrap:wrap;padding-bottom:11px;
+  border-bottom:1px solid var(--line);margin-bottom:12px}
+.phasebar .ph{font-size:11.5px;padding:4px 11px;border-radius:999px;border:1px solid var(--line-strong);
+  background:var(--surface-1);color:var(--text-muted);white-space:nowrap;display:flex;gap:6px;
+  align-items:center;transition:.25s}
+.phasebar .ph .n{font-family:var(--mono);font-size:10px;opacity:.8}
+.phasebar .ph.now{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:650;
+  box-shadow:0 3px 10px -3px color-mix(in srgb,var(--accent) 60%,transparent)}
+.phasebar .ph.done{border-color:var(--good);color:var(--good);
+  background:color-mix(in srgb,var(--good) 12%,transparent);font-weight:600}
+.phasebar .sp{flex:1}
+.phasebar .tag{font-size:11px;color:var(--text-muted);font-family:var(--mono)}
+
+.stage{position:relative;min-height:430px;border:1px solid var(--line);border-radius:11px;
+  background:
+    radial-gradient(120% 90% at 50% 0%,color-mix(in srgb,var(--accent) 5%,transparent),transparent 70%),
+    var(--surface-1);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.5);padding:14px;overflow:hidden}
+.stage.mid{display:flex;flex-direction:column;justify-content:center}
+.stage h3{margin:0 0 3px;font-size:13px;letter-spacing:.05em;text-transform:uppercase;
+  color:var(--text-muted);font-weight:600}
+.stage .sub{font-size:12.5px;color:var(--text-secondary);margin:0 0 10px;min-height:1.3em}
+.stage .sub b{font-family:var(--mono);color:var(--text-primary)}
+svg.thea{display:block;width:100%;height:auto}
+
+/* ---- screen 1: the vessels ------------------------------------------- */
+.vessels{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(210px,100%),1fr));gap:12px}
+.vessels>*{min-width:0}
+.vsl{border:1px solid var(--line);border-radius:12px;padding:11px 12px 12px;
+  background:linear-gradient(180deg,var(--surface-1),var(--surface-2));
+  box-shadow:0 1px 0 rgba(255,255,255,.6) inset,0 8px 18px -14px rgba(0,0,0,.5);
+  display:flex;flex-direction:column;gap:7px}
+.vsl .t{font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;font-weight:700}
+.vsl .t.x{color:var(--s1)} .vsl .t.y{color:var(--s2)} .vsl .t.z{color:var(--good)}
+.vsl .nm{font-size:12.5px;color:var(--text-secondary);min-height:2.4em;line-height:1.3}
+.vsl svg{display:block;width:100%;height:76px}
+.vsl .row{display:flex;gap:7px;align-items:center}
+.vsl input{flex:1;min-width:0;padding:7px 9px;border-radius:8px;border:1px solid var(--line-strong);
+  background:var(--surface-0);color:var(--text-primary);font-family:var(--mono);font-size:15px;
+  text-align:center;font-weight:600}
+.vsl input:focus{outline:2px solid var(--accent);outline-offset:-1px}
+.vsl input.bad{border-color:var(--bad);background:color-mix(in srgb,var(--bad) 9%,transparent)}
+.vsl input.ok{border-color:var(--good)}
+.vsl .u{flex:none;font-size:12px;color:var(--text-muted)}
+.vsl .fh{font-size:10.5px;color:var(--text-muted);line-height:1.3;min-height:2.5em}
+.vsl .fh.bad{color:var(--bad);font-weight:600}
+
+.masses{margin-top:12px;border:1px solid var(--line);border-radius:10px;background:var(--surface-2);
+  padding:9px 11px}
+.masses .t{font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--text-muted);
+  margin-bottom:7px}
+.masses .g{display:flex;gap:8px;flex-wrap:wrap}
+.masses .am{display:flex;align-items:center;gap:5px;background:var(--surface-1);
+  border:1px solid var(--line-strong);border-radius:8px;padding:3px 5px 3px 9px}
+.masses .am b{font-family:var(--serif);font-size:14px;font-weight:700}
+.masses .am input{width:52px;padding:4px 5px;border-radius:6px;border:1px solid var(--line);
+  background:var(--surface-0);color:var(--text-primary);font-family:var(--mono);font-size:12.5px;
+  text-align:center}
+.masses .am.off{opacity:.55}
+.masses .am.off b{color:var(--text-muted)}
+.masses .note{font-size:10.5px;color:var(--text-muted);margin-top:6px}
+
+/* ---- the action bar --------------------------------------------------- */
+.actbar{display:flex;gap:11px;align-items:center;flex-wrap:wrap;margin-top:12px}
+button.go{flex:none;padding:12px 26px;border-radius:11px;border:none;background:var(--accent);
+  color:#fff;font-size:15px;font-weight:700;cursor:pointer;font-family:var(--sans);
+  box-shadow:0 4px 16px -6px color-mix(in srgb,var(--accent) 75%,transparent);transition:.18s}
+button.go:hover:not(:disabled){filter:brightness(1.08);transform:translateY(-1px)}
+button.go:disabled{opacity:.42;cursor:not-allowed;box-shadow:none}
+button.go.rev{background:var(--good);animation:revpulse 1.8s ease-out infinite}
+@keyframes revpulse{
+  0%{box-shadow:0 4px 18px -5px color-mix(in srgb,var(--good) 80%,transparent),
+     0 0 0 0 color-mix(in srgb,var(--good) 55%,transparent)}
+  70%{box-shadow:0 4px 18px -5px color-mix(in srgb,var(--good) 80%,transparent),
+     0 0 0 16px transparent}
+  100%{box-shadow:0 4px 18px -5px color-mix(in srgb,var(--good) 80%,transparent),
+     0 0 0 0 transparent}}
+.actbar .msg{flex:1 1 200px;min-width:0;font-size:12px;color:var(--text-secondary)}
+.actbar .msg b{color:var(--text-primary)}
+button.ghost{flex:none;padding:8px 14px;border-radius:9px;border:1px solid var(--line-strong);
+  background:var(--surface-1);color:var(--text-secondary);font-size:12.5px;cursor:pointer;
+  font-family:var(--sans)}
+button.ghost:hover{border-color:var(--accent);color:var(--accent)}
+
+/* ---- counters --------------------------------------------------------- */
+.counts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(126px,100%),1fr));gap:8px;
+  margin-top:10px}
+.cnt{border:1px solid var(--line);border-radius:9px;background:var(--surface-2);padding:7px 9px}
+.cnt .k{font-size:10px;letter-spacing:.05em;text-transform:uppercase;color:var(--text-muted);
+  font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cnt .v{font-family:var(--mono);font-size:19px;font-weight:700;line-height:1.2}
+.cnt.dim .v{color:var(--text-muted)}
+
+/* ---- the calculation --------------------------------------------------- */
+.calc{display:grid;gap:7px;max-width:620px;margin:6px auto 0}
+.cl{display:flex;align-items:baseline;gap:10px;padding:8px 13px;border-radius:9px;
+  border:1px solid var(--line);background:var(--surface-2);animation:nbin .35s ease-out;
+  font-family:var(--serif);font-size:15px}
+.cl .lb{flex:1 1 auto;min-width:0;color:var(--text-secondary);font-size:13.5px;font-family:var(--sans)}
+.cl .vv{flex:none;font-family:var(--mono);font-weight:700;font-size:15.5px}
+.cl.tot{border-color:var(--line-strong);background:var(--surface-1)}
+.cl.sub2 .vv{color:var(--s2)}
+.cl.fin{border-color:var(--good);background:color-mix(in srgb,var(--good) 9%,transparent)}
+.cl.fin .vv{color:var(--good);font-size:19px}
+.cl .q{font-family:var(--mono);font-size:22px;font-weight:800;color:var(--accent)}
+
+/* ---- the reveal -------------------------------------------------------- */
+.suspense{display:grid;place-items:center;gap:14px;padding:26px 10px 10px;text-align:center}
+.suspense .q{font-size:23px;font-weight:750;letter-spacing:.01em}
+.suspense .s{font-size:13px;color:var(--text-secondary);max-width:46ch}
+.revealwrap{position:relative;display:grid;place-items:center;padding:6px 0 0}
+svg.graf{display:block;width:100%;height:auto;max-width:620px;overflow:visible}
+.tagline{text-align:center;font-size:12.5px;color:var(--text-secondary);margin-top:4px}
+.tagline b{font-family:var(--mono)}
+.tagline .xx{color:var(--s1)} .tagline .yy{color:var(--s2)}
+
+.trapgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(250px,100%),1fr));gap:11px}
+.trap{border:1px solid var(--line);border-left:3px solid var(--bad);border-radius:9px;
+  background:var(--surface-1);padding:11px 13px}
+.trap .h{font-size:12.5px;font-weight:650;margin-bottom:4px}
+.trap .n{font-family:var(--mono);font-size:12px;color:var(--bad);font-weight:700}
+.trap p{margin:4px 0 0;font-size:12.5px;color:var(--text-secondary)}
+
+.monos{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));gap:12px}
+.mono{border:1px solid var(--line);border-radius:10px;background:var(--surface-1);padding:12px 14px}
+.mono .t{font-size:11px;letter-spacing:.07em;text-transform:uppercase;font-weight:700;margin-bottom:6px}
+.mono .t.x{color:var(--s1)} .mono .t.y{color:var(--s2)}
+.mono svg{display:block;width:100%;height:auto;margin:4px 0 8px}
+.mono table{width:100%;border-collapse:collapse;font-size:12.5px}
+.mono td{padding:3px 0;border-bottom:1px solid var(--line)}
+.mono td:last-child{text-align:right;font-family:var(--mono)}
+.mono .tot td{font-weight:700;border-bottom:none}
+
+.record{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(200px,100%),1fr));gap:10px}
+.rec{border:1px solid var(--line);border-radius:9px;background:var(--surface-1);padding:11px 13px}
+.rec .k{font-size:11px;letter-spacing:.04em;color:var(--text-muted);font-weight:600}
+.rec .v{font-family:var(--mono);font-size:17px;font-weight:650;margin-top:2px}
+.rec .v.pend{color:var(--text-muted);font-size:14px}
+.rec .v.fin{color:var(--good)}
+.rec .n{font-size:11.5px;color:var(--text-secondary);margin-top:3px}
+
+details.fold{margin-top:12px;border-top:1px solid var(--line);padding-top:10px}
+details.fold>summary{cursor:pointer;font-size:12.5px;color:var(--accent);list-style:none;
+  display:flex;align-items:center;gap:6px}
+details.fold>summary::-webkit-details-marker{display:none}
+details.fold>summary::before{content:"\25B8";font-family:var(--mono);font-size:11px}
+details.fold[open]>summary::before{content:"\25BE"}
+
+@keyframes popblink{
+  0%{transform:scale(1)} 12%{transform:scale(1.16)} 24%{transform:scale(1)}
+  38%{opacity:.2} 50%{opacity:1} 64%{opacity:.2} 76%{opacity:1}
+  88%{transform:scale(1.07)} 100%{transform:scale(1);opacity:1}}
+.blink{animation:popblink 2s ease-in-out 1;display:inline-block}
+@media(prefers-reduced-motion:reduce){.blink,button.go.rev{animation:none}}
+
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-inner">
+    <div>
+      <div class="brandbar"><svg class="pxmark" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><rect width="32" height="32" rx="8" fill="var(--accent)"/><path d="M12.5 6.5h7M13.6 6.5v7.2L7.9 24.1a1.5 1.5 0 0 0 1.3 2.3h13.6a1.5 1.5 0 0 0 1.3-2.3l-5.7-10.4V6.5" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.6 20.6h10.8" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg><span class="wm">PRAYOG<i>X</i></span></div>
+      <div class="simid">ADV-2026-P2-CHE-Q14</div>
+      <h1>Building a biodegradable copolymer, one link at a time</h1>
+      <div class="chips">
+        <span class="chip">JEE Advanced 2026</span>
+        <span class="chip">Paper 2 · Q.14</span>
+        <span class="chip">Chemistry</span>
+        <span class="chip">Polymers</span>
+        <span class="chip">Numerical value</span>
+        <span class="chip">+4 / 0</span>
+        <span class="chip k">Enter the data · run it</span>
+      </div>
+    </div>
+    <div class="answerbox locked" id="answerbox">
+      <div class="lbl">Answer</div>
+      <div class="val" id="ansval">Run the experiment</div>
+      <div class="sub" id="anssub">Enter the amounts and run the reactor.</div>
+      <button class="rv" id="revealnow" type="button">Reveal anyway</button>
+    </div>
+    <button class="themebtn" id="themebtn" type="button">◐ theme</button>
+  </div>
+</header>
+
+<nav class="jump">
+  <ul>
+    <li><a href="#question">Question</a></li>
+    <li><a href="#bench">The experiment</a></li>
+    <li><a href="#monomers">The monomers</a></li>
+    <li><a href="#traps">Where it goes wrong</a></li>
+    <li><a href="#result">Record</a></li>
+    <li><a href="#solution">Solution</a></li>
+    <li><a href="#concepts">Concepts</a></li>
+  </ul>
+</nav>
+
+<div class="wrap">
+
+
+<section id="question">
+  <h2><span class="n">01</span>The question <span style="font-size:12px;color:var(--text-muted);
+    font-weight:400">&mdash; verbatim</span></h2>
+  <p class="lede">Section 3, numerical value &mdash; +4 for the correct value, 0 otherwise.</p>
+  <div class="card">
+    <div class="qtext">
+      <p style="margin-top:0">In the following reaction sequence, major products <b>X</b> and
+      <b>Y</b> are acyclic monomers.</p>
+    </div>
+    <div class="eq" style="font-size:15px;line-height:2">
+      CH<sub>3</sub>I &nbsp;
+      <span style="color:var(--text-muted);font-size:13px">&mdash;(1) KCN&nbsp;&nbsp;(2)
+      H<sub>3</sub>O<sup>+</sup>, &Delta;&nbsp;&nbsp;(3) Red P, Br<sub>2</sub>&nbsp;&nbsp;(4)
+      NH<sub>3</sub> (excess)&rarr;</span> &nbsp; <b>X</b><br>
+      Caprolactam &nbsp;
+      <span style="color:var(--text-muted);font-size:13px">&mdash;H<sub>3</sub>O<sup>+</sup>,
+      &Delta;&rarr;</span> &nbsp; <b>Y</b>
+    </div>
+    <div class="qtext">
+      <p><b>500 mol</b> of X completely reacts with <b>500 mol</b> of Y to give <b>1 mol</b> of a
+      single biodegradable <b>acyclic</b> copolymer Z as the only product. The amount of Z formed
+      in grams is ______.</p>
+      <p style="font-size:14px"><b>Given &mdash;</b> Atomic mass (in amu):
+      H : 1, C : 12, N : 14, O : 16, Br : 80</p>
+    </div>
+    <div class="eq" style="margin-top:14px"><b>Two words carry the whole question.</b>
+      <i>Acyclic</i> means the chain has two loose ends, so joining <i>n</i> units needs
+      <i>n</i> &minus; 1 links, not <i>n</i>. And <i>a single</i> copolymer means all 1000 units
+      end up in one molecule &mdash; which is what makes the count 999 rather than 1000.</div>
+    <details class="fold"><summary>What each part of the question is for</summary>
+    <div class="scrollx" style="margin-top:10px">
+      <table class="data">
+        <thead><tr><th class="l">What you are given</th><th>Value</th>
+          <th class="l">What it is for</th></tr></thead>
+        <tbody>
+          <tr><td class="l">The four-step sequence from CH<sub>3</sub>I</td><td class="num">&mdash;</td>
+            <td class="l">identifies X, and with it the molar mass 75</td></tr>
+          <tr><td class="l">Caprolactam + H<sub>3</sub>O<sup>+</sup>, &Delta;</td>
+            <td class="num">&mdash;</td>
+            <td class="l">identifies Y, and with it the molar mass 131</td></tr>
+          <tr><td class="l">Amount of X</td><td class="num">500 mol</td>
+            <td class="l">half the monomer units</td></tr>
+          <tr><td class="l">Amount of Y</td><td class="num">500 mol</td>
+            <td class="l">the other half</td></tr>
+          <tr class="win"><td class="l">Amount of polymer formed</td><td class="num">1 mol</td>
+            <td class="l">how many chains the 1000 units are shared between &mdash; this is what
+            fixes the number of links</td></tr>
+          <tr><td class="l">Atomic masses</td><td class="num">H 1, C 12, N 14, O 16</td>
+            <td class="l">build every molar mass on the page</td></tr>
+          <tr><td class="l">Atomic mass of Br</td><td class="num">80</td>
+            <td class="l">only for the bromo intermediate &mdash; no bromine survives into X, so it
+            never touches the answer</td></tr>
+        </tbody>
+      </table>
+    </div>
+    </details>
+  </div>
+</section>
+
+<section id="bench">
+  <h2><span class="n">02</span>The experiment</h2>
+  <p class="lede">Enter the amounts, then watch the chemistry happen: X is built from
+    CH<sub>3</sub>I one reagent at a time, caprolactam's ring is opened to give Y, and the two are
+    polymerised while the water is counted off. The answer comes last.</p>
+
+  <div class="deck">
+    <div class="phasebar">
+      <span class="ph now" id="ph0"><span class="n">1</span>Enter the data</span>
+      <span class="ph" id="ph1"><span class="n">2</span>Discover X</span>
+      <span class="ph" id="ph2"><span class="n">3</span>Discover Y</span>
+      <span class="ph" id="ph3"><span class="n">4</span>Polymerise</span>
+      <span class="ph" id="ph4"><span class="n">5</span>The mass</span>
+      <span class="sp"></span>
+      <span class="tag" id="phtag">waiting for your data</span>
+    </div>
+
+    <div class="stage" id="stage"></div>
+
+    <div class="actbar">
+      <button class="go" id="gobtn" type="button" disabled>&#9654;&nbsp; Start experiment</button>
+      <div class="msg" id="gomsg">Fill in the three amounts to arm the reactor.</div>
+      <button class="ghost" id="replaybtn" type="button" hidden>&#8635; Replay experiment</button>
+      <button class="ghost" id="editbtn" type="button" hidden>&#8592; Change the data</button>
+    </div>
+  </div>
+</section>
+
+<section id="monomers">
+  <h2><span class="n">03</span>The two monomers</h2>
+  <p class="lede">Filled in from your run. Every molar mass is added up from the atomic masses you
+    entered &mdash; nothing here is a remembered number.</p>
+  <div class="monos" id="monos"></div>
+</section>
+
+<section id="traps">
+  <h2><span class="n">04</span>Where it goes wrong</h2>
+  <p class="lede">Four answers this question produces every year. Each is one wrong move, and the
+    reactor above will reproduce all of them if you set it up that way.</p>
+  <div class="trapgrid">
+    <div class="trap">
+      <div class="h"><span class="n">85000</span> &mdash; losing 1000 waters</div>
+      <p>The commonest slip by far: one water per monomer instead of one per <i>link</i>. A chain of
+        1000 beads has 999 strings. Set the polymer amount to <b>0</b> chains &mdash; the reactor
+        refuses, because a chain has to exist for its ends to be loose.</p>
+    </div>
+    <div class="trap">
+      <div class="h"><span class="n">103000</span> &mdash; forgetting the water</div>
+      <p>Adding the monomer masses and stopping. Condensation polymerisation <i>ejects</i> a small
+        molecule at every link; the polymer is always lighter than the monomers that made it.</p>
+    </div>
+    <div class="trap">
+      <div class="h"><span class="n">94000</span> &mdash; using caprolactam as Y</div>
+      <p>Caprolactam is C<sub>6</sub>H<sub>11</sub>NO, M = 113. It is the <i>cyclic</i> starting
+        material, and the question says the monomers are acyclic. Hydrolysis adds a water and opens
+        the ring to give M = 131.</p>
+    </div>
+    <div class="trap">
+      <div class="h"><span class="n">stuck</span> &mdash; hunting for bromine</div>
+      <p>Br = 80 is given, so it feels needed. It is not: bromoacetic acid is an intermediate and
+        every bromine leaves at the NH<sub>3</sub> step. Not every number in a question is a number
+        you use.</p>
+    </div>
+  </div>
+</section>
+
+<section id="result">
+  <h2><span class="n">05</span>The record of the run</h2>
+  <p class="lede">Filled in from your own run, quantity by quantity, as each one is established.</p>
+  <div class="record" id="record"></div>
+</section>
+
+<section id="solution">
+  <h2><span class="n">06</span>Step-by-step solution</h2>
+  <p class="lede" id="solintro">Run the experiment and the derivation opens by itself.</p>
+
+  <div class="gate" id="solgate">
+    <h4>The solution is still locked</h4>
+    <p>Enter the amounts, run the reactor to the end and reveal the answer &mdash; the derivation
+      and the answer box unlock with it.</p>
+    <button class="act" id="revealsol" type="button">Show me the solution anyway</button>
+  </div>
+
+  <div id="solbody" hidden>
+    <ol class="steps">
+      <li>
+        <h4>Follow the carbon to find X</h4>
+        <p>Each reagent does one thing, and only one step changes the carbon count:</p>
+        <div class="eq">CH<sub>3</sub>I &nbsp;&xrarr;&nbsp;<span style="font-size:12px">KCN</span>&nbsp;
+          CH<sub>3</sub>CN &nbsp;&rarr;&nbsp;<span style="font-size:12px">H<sub>3</sub>O<sup>+</sup>,
+          &Delta;</span>&nbsp; CH<sub>3</sub>COOH &nbsp;&rarr;&nbsp;<span style="font-size:12px">red P /
+          Br<sub>2</sub></span>&nbsp; BrCH<sub>2</sub>COOH &nbsp;&rarr;&nbsp;<span
+          style="font-size:12px">NH<sub>3</sub> excess</span>&nbsp;
+          <span class="hl">H<sub>2</sub>N&ndash;CH<sub>2</sub>&ndash;COOH</span></div>
+        <p>Cyanide displaces iodide and brings a carbon with it; hydrolysis takes the nitrile all
+          the way to the acid; red P / Br<sub>2</sub> is Hell&ndash;Volhard&ndash;Zelinsky, which
+          brominates the &alpha; carbon; excess ammonia then displaces that bromide.</p>
+        <div class="eq"><b>X = glycine</b>, C<sub>2</sub>H<sub>5</sub>NO<sub>2</sub><br>
+          M = 2(12) + 5(1) + 14 + 2(16) = <span class="hl">75 g mol<sup>&minus;1</sup></span></div>
+      </li>
+      <li>
+        <h4>Open the ring to find Y</h4>
+        <p>Caprolactam is a <i>cyclic</i> amide &mdash; a seven-membered ring of N, a carbonyl
+          carbon and five CH<sub>2</sub> groups. Acidic hydrolysis cuts the C&ndash;N bond and adds
+          the elements of water across it, and the ring falls open into a straight chain.</p>
+        <div class="eq">C<sub>6</sub>H<sub>11</sub>NO + H<sub>2</sub>O &rarr;
+          H<sub>2</sub>N&ndash;(CH<sub>2</sub>)<sub>5</sub>&ndash;COOH</div>
+        <div class="eq"><b>Y = 6-aminohexanoic acid</b>, C<sub>6</sub>H<sub>13</sub>NO<sub>2</sub><br>
+          M = 6(12) + 13(1) + 14 + 2(16) = <span class="hl">131 g mol<sup>&minus;1</sup></span>
+          &nbsp;&nbsp;(113 + 18, as it must be)</div>
+      </li>
+      <li>
+        <h4>Count the links, not the units</h4>
+        <p>1000 mol of monomer units end up in 1 mol of chains, so every chain is 1000 units long.
+          A chain with two loose ends has one fewer link than it has units:</p>
+        <div class="eq">links = 1000 &minus; 1 = <span class="hl">999</span> &nbsp;&nbsp;&rarr;&nbsp;&nbsp;
+          999 mol of H<sub>2</sub>O eliminated</div>
+        <p>Every amide link is made by an &ndash;NH<sub>2</sub> and a &ndash;COOH condensing, and
+          each one ejects exactly one water. A <i>cyclic</i> polymer would have lost 1000 &mdash;
+          the word <i>acyclic</i> in the question is what makes it 999.</p>
+      </li>
+      <li>
+        <h4>Weigh what went in and take off what left</h4>
+        <div class="eq">mass in = 500 &times; 75 + 500 &times; 131 = 37&thinsp;500 + 65&thinsp;500
+          = 103&thinsp;000 g</div>
+        <div class="eq">water out = 999 &times; 18 = 17&thinsp;982 g</div>
+        <div class="eq">mass of Z = 103&thinsp;000 &minus; 17&thinsp;982
+          = <span class="hl">85&thinsp;018 g</span></div>
+      </li>
+      <li>
+        <h4>Check it atom by atom</h4>
+        <p>The same answer without any subtraction: count the atoms in 1 mol of chain.</p>
+        <div class="eq">C: 500(2) + 500(6) = 4000 &nbsp;&middot;&nbsp;
+          H: 500(5) + 500(13) &minus; 999(2) = 7002<br>
+          N: 500 + 500 = 1000 &nbsp;&middot;&nbsp;
+          O: 500(2) + 500(2) &minus; 999 = 1001</div>
+        <div class="eq">4000(12) + 7002(1) + 1000(14) + 1001(16)
+          = <span class="hl">85&thinsp;018 g</span></div>
+      </li>
+    </ol>
+
+    <div class="verify" style="margin-top:16px">
+      <h4>Independent verification</h4>
+      <ul>
+        <li><b>Derived before anything was looked up.</b> Both structures, both molar masses, the
+          link count and the arithmetic were fixed from first principles, and only then compared
+          with a published solution.</li>
+        <li><b>The carbon count tracked through the whole sequence.</b> CH<sub>3</sub>I has one
+          carbon and glycine has two; the only step that adds carbon is the cyanide displacement.
+          That alone forces X to be a two-carbon acid, independently of recognising the reagents.</li>
+        <li><b>Hydrolysis checked atom by atom,</b> not just by name:
+          C<sub>6</sub>H<sub>11</sub>NO + H<sub>2</sub>O = C<sub>6</sub>H<sub>13</sub>NO<sub>2</sub>
+          balances on every element, and 113 + 18 = 131 on the masses.</li>
+        <li><b>The answer computed twice, two different ways.</b> Subtracting the water from the
+          monomer mass gives 85&thinsp;018 g; counting the atoms in one mole of chain
+          (C<sub>4000</sub>H<sub>7002</sub>N<sub>1000</sub>O<sub>1001</sub>) and multiplying by the
+          atomic masses gives 85&thinsp;018 g to machine precision.</li>
+        <li><b>Conservation of mass checked explicitly:</b> 103&thinsp;000 g of monomer =
+          85&thinsp;018 g of polymer + 17&thinsp;982 g of water, exactly.</li>
+        <li><b>The model tested away from the paper's numbers.</b> With one unit per chain no links
+          form and no water is lost, and the mass reduces to the monomer mass &mdash; the formula
+          degrades correctly at the boundary rather than by luck.</li>
+        <li><b>The distractors reproduced deliberately:</b> 1000 waters gives 85&thinsp;000; no
+          water gives 103&thinsp;000; caprolactam in place of Y gives 94&thinsp;000. None of them
+          is 85&thinsp;018.</li>
+        <li><b>Answer key cross-check.</b> A published worked solution for this paper identifies the
+          same X and Y, uses the same 999 waters and reports the same 85&thinsp;018. IIT
+          Roorkee&rsquo;s official key was not retrievable at the time of writing.</li>
+        <li><b>Headless-browser run</b> of this page, driving the reactor from the empty panel to
+          the reveal, asserting that the answer is nowhere on the page until it is revealed, that
+          the molar masses are computed from the entered atomic masses rather than hard-coded, that
+          impossible amounts are refused, and that the page never scrolls sideways at 390 px.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="concepts">
+  <h2><span class="n">07</span>Concepts and classification</h2>
+  <p class="lede">What the question is made of, and where it sits in the syllabus.</p>
+  <div class="lab">
+    <div class="panel">
+      <h3>What you need to know</h3>
+      <div class="eq">R&ndash;X + CN<sup>&minus;</sup> &rarr; R&ndash;CN &nbsp;(one carbon longer)</div>
+      <div class="eq">R&ndash;CN &xrarr;{H<sub>3</sub>O<sup>+</sup>} R&ndash;COOH</div>
+      <div class="eq">red P / Br<sub>2</sub> = Hell&ndash;Volhard&ndash;Zelinsky:
+        &alpha;-bromination of an acid</div>
+      <div class="eq">&alpha;-bromo acid + NH<sub>3</sub> (excess) &rarr; &alpha;-amino acid</div>
+      <div class="eq">lactam + H<sub>2</sub>O &rarr; amino acid (the ring opens)</div>
+      <div class="eq">n units in one acyclic chain &rarr; <b>n &minus; 1</b> condensations</div>
+      <div class="eq">mass of polymer = &Sigma; (monomer masses) &minus; (links) &times; 18</div>
+    </div>
+    <div class="panel">
+      <h3>Classification</h3>
+      <table class="meta-tbl">
+        <tr><td>Exam</td><td>JEE (Advanced) 2026, Paper 2</td></tr>
+        <tr><td>Question</td><td>Q.14, Section 3 &mdash; numerical value</td></tr>
+        <tr><td>Marking</td><td>+4 for the correct value, 0 otherwise, no negative marking</td></tr>
+        <tr><td>Subject</td><td>Organic Chemistry</td></tr>
+        <tr><td>Chapter</td><td>Polymers</td></tr>
+        <tr><td>Topic</td><td>Condensation copolymer from a reaction sequence</td></tr>
+        <tr><td>Also needs</td><td>Nitrile route, HVZ reaction, lactam hydrolysis, mole arithmetic</td></tr>
+        <tr><td>Difficulty</td><td>Moderate&ndash;Hard &mdash; three separate places to slip</td></tr>
+        <tr><td>Answer</td><td><b id="clsans">&mdash; run the experiment</b></td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<footer>
+  ADV-2026-P2-CHE-Q14 · PrayogX · JEE Advanced Interactive Simulation Library · question text reproduced
+  from the official JEE (Advanced) 2026 Paper 2 for educational use.
+</footer>
+</div>
+
+<script>
+
+var NS="http://www.w3.org/2000/svg";
+function css(v){ return getComputedStyle(document.documentElement).getPropertyValue(v).trim(); }
+function el(n,a){ var e=document.createElementNS(NS,n); for(var k in a) e.setAttribute(k,a[k]); return e; }
+function $(id){ return document.getElementById(id); }
+function clamp(v,a,b){ return v<a?a:(v>b?b:v); }
+function esc(s){ return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+
+/* ---- predictions + verdict matrix ------------------------------------- */
+var PORDER=["A","B","C","D"], pIdx=0, predictions={}, tested={}, revealed=false;
+
+function renderPredict(){
+  var kk=PORDER[pIdx], def=OPT[kk];
+  $("pq").innerHTML = "Statement ("+kk+") — "+def.shortq;
+  var bs=$("predict").querySelectorAll(".row button");
+  for(var i=0;i<bs.length;i++) bs[i].setAttribute("aria-pressed", predictions[kk]===bs[i].dataset.p?"true":"false");
+  var fb=$("pfb");
+  if(!predictions[kk]){ fb.className="fb"; fb.textContent="Commit to an answer, then go and test it on the bench above."; }
+  else if(!tested[kk]){ fb.className="fb"; fb.innerHTML="Logged. Now test ("+kk+") on the bench and see."; }
+  else {
+    var right = predictions[kk]===def.verdict;
+    fb.className="fb "+(right?"ok":"no");
+    fb.innerHTML=(right?"✓ Your prediction matches your measurement. ":"✗ Your measurement disagrees. ")+def.why;
+  }
+  $("pprev").disabled = pIdx===0; $("pnext").disabled = pIdx===PORDER.length-1;
+}
+function drawMatrix(){
+  var rows=PORDER.map(function(kk){
+    var def=OPT[kk], seen=!!tested[kk], pr=predictions[kk];
+    var vcell = seen ? (def.verdict==="yes" ? "<span class='yes'>✓ correct</span>"
+                                            : "<span class='no'>✗ not correct</span>")
+                     : "<span style='color:var(--text-muted)'>not tested yet</span>";
+    var ok = seen && pr && pr===def.verdict;
+    return "<tr"+(seen&&def.verdict==="yes"?" class='win'":"")+"><td><b>("+kk+")</b></td>"+
+      "<td class='l'>"+def.label+"</td><td>"+(pr?(pr==="yes"?"correct":"not correct"):"—")+"</td>"+
+      "<td>"+vcell+"</td><td>"+(seen&&pr?(ok?"<span class='yes'>match</span>":"<span class='no'>mismatch</span>"):"—")+"</td></tr>";
+  }).join("");
+  $("matrix").innerHTML="<thead><tr><th>Option</th><th class='l'>Statement</th><th>Your prediction</th>"+
+    "<th>What you measured</th><th></th></tr></thead><tbody>"+rows+"</tbody>";
+}
+function nTested(){ var n=0; for(var k in tested) if(tested[k]) n++; return n; }
+
+/* ---- the gate ---------------------------------------------------------- */
+function gateOpen(){ return nTested()>=4 || revealed; }
+function updateGate(){
+  if($("gtested")) $("gtested").textContent = nTested();
+  var open=gateOpen();
+  $("solgate").hidden = open;
+  $("solbody").hidden = !open;
+  var ab=$("answerbox");
+  if(open){
+    ab.classList.remove("locked");
+    $("ansval").textContent=ANSWER.text;
+    $("anssub").innerHTML=ANSWER.sub;
+    $("revealnow").hidden=true;
+    if($("clsans")) $("clsans").textContent=ANSWER.text;
+    if(!$("solbody").classList.contains("reveal")) $("solbody").classList.add("reveal");
+    if($("solintro")) $("solintro").innerHTML = revealed && nTested()<4
+      ? "Revealed early — go back and test the statements to see these conclusions come from your own measurements."
+      : "<b>You tested all four statements on the bench.</b> "+ANSWER.intro;
+  } else {
+    ab.classList.add("locked");
+    $("ansval").textContent="Run the experiment";
+    $("anssub").textContent=LOCKED_SUB;
+    $("revealnow").hidden=false;
+    if($("clsans")) $("clsans").textContent="— run the experiment";
+  }
+  markOptions();
+}
+function markOptions(){
+  if(!gateOpen()) return;
+  document.querySelectorAll("#opts li").forEach(function(li){
+    var kk=li.dataset.k, right=OPT[kk].verdict==="yes";
+    li.classList.remove("correct","wrong");
+    li.classList.add(right?"correct":"wrong");
+    li.querySelector(".mark").textContent = right?"correct":"not correct";
+  });
+}
+function markTested(kk){ if(!tested[kk]){ tested[kk]=true; updateGate(); drawMatrix(); renderPredict(); } }
+
+/* ---- notebook ---------------------------------------------------------- */
+var obsLog=[];
+function note(text){
+  if(obsLog.indexOf(text)>=0) return;
+  obsLog.push(text);
+  $("notebook").innerHTML = obsLog.map(function(o){ return '<div class="obs">'+o+"</div>"; }).join("");
+  $("nbempty").hidden = true;
+}
+
+/* ---- numeric control: slider + typed box + steppers -------------------- */
+function parseNum(str){
+  if(str===null||str===undefined) return null;
+  var s=String(str).trim().toLowerCase();
+  if(!s) return null;
+  s=s.replace(/π/g,"(pi)").replace(/pi/g,"(pi)").replace(/\(\(pi\)\)/g,"(pi)");
+  s=s.replace(/×10\^?/g,"e").replace(/x10\^?/g,"e").replace(/\s+/g,"");
+  if(!/^[0-9+\-*/().epi]+$/.test(s)) return null;
+  s=s.replace(/\(pi\)/g,"P_I");
+  if(/[a-z]/.test(s.replace(/P_I/g,"").replace(/e/g,""))) return null;
+  s=s.replace(/P_I/g,"("+Math.PI+")");
+  var v;
+  try { v=Function('"use strict";return ('+s+');')(); } catch(err){ return null; }
+  if(typeof v!=="number"||!isFinite(v)) return null;
+  return v;
+}
+function makeControl(cfg){
+  var sl=$(cfg.slider), inp=$(cfg.input), hint=$(cfg.hint), baseHint=hint?hint.innerHTML:"";
+  function toSlider(v){ return cfg.log ? Math.round(1000*Math.log(v/cfg.lo)/Math.log(cfg.hi/cfg.lo))
+                                       : Math.round((v-cfg.lo)/(cfg.hi-cfg.lo)*1000); }
+  function fromSlider(p){ return cfg.log ? cfg.lo*Math.pow(cfg.hi/cfg.lo,p/1000)
+                                         : cfg.lo+(cfg.hi-cfg.lo)*p/1000; }
+  sl.min=0; sl.max=1000;
+  function show(v){
+    sl.value=toSlider(v);
+    if(document.activeElement!==inp) inp.value=v.toFixed(cfg.dp);
+    inp.classList.remove("bad");
+    if(hint){ hint.classList.remove("bad"); hint.innerHTML=baseHint; }
+    if(cfg.valEl) $(cfg.valEl).textContent=v.toFixed(cfg.dp)+" "+cfg.unit;
+  }
+  function set(v){ v=clamp(v,cfg.lo,cfg.hi); ST[cfg.key]=v; show(v); if(cfg.onset) cfg.onset(); }
+  sl.addEventListener("input",function(){ set(fromSlider(+sl.value)); });
+  inp.addEventListener("input",function(){
+    var v=parseNum(inp.value);
+    if(v===null){ inp.classList.add("bad");
+      if(hint){ hint.classList.add("bad"); hint.textContent="That is not a number I can read — try 0.5, 1/2 or 5e-1."; }
+      return; }
+    if(v<cfg.lo||v>cfg.hi){ inp.classList.add("bad");
+      if(hint){ hint.classList.add("bad");
+        hint.textContent="Out of the range this apparatus can hold ("+cfg.lo+" to "+cfg.hi+" "+cfg.unit+")."; }
+      return; }
+    inp.classList.remove("bad");
+    if(hint){ hint.classList.remove("bad"); hint.innerHTML=baseHint; }
+    ST[cfg.key]=v; sl.value=toSlider(v);
+    if(cfg.valEl) $(cfg.valEl).textContent=v.toFixed(cfg.dp)+" "+cfg.unit;
+    if(cfg.onset) cfg.onset();
+  });
+  inp.addEventListener("blur",function(){ show(ST[cfg.key]); });
+  document.querySelectorAll('.step[data-for="'+cfg.slider+'"]').forEach(function(b){
+    b.addEventListener("click",function(){ set(ST[cfg.key]+(+b.dataset.dir)*cfg.step); });
+  });
+  show(ST[cfg.key]);
+  return { show:function(){ show(ST[cfg.key]); } };
+}
+
+/* ---- generic plotter --------------------------------------------------- */
+function niceAxis(a,b,want){
+  if(!(b>a)) b=a+1;
+  var raw=(b-a)/(want||5), ex=Math.floor(Math.log(raw)/Math.LN10), f=raw/Math.pow(10,ex);
+  var m=f<=1?1:(f<=2?2:(f<=2.5?2.5:(f<=5?5:10))), st=m*Math.pow(10,ex);
+  var lo=Math.floor(a/st+1e-9)*st, hi=Math.ceil(b/st-1e-9)*st;
+  if(hi-lo<st) hi=lo+st;
+  return {lo:lo,hi:hi,step:st,n:Math.max(1,Math.round((hi-lo)/st))};
+}
+function tickDp(step){
+  for(var d=0;d<=6;d++){ var s=step*Math.pow(10,d); if(Math.abs(s-Math.round(s))<1e-9) return d; }
+  return 6;
+}
+function plot(svg,cfg){
+  while(svg.firstChild) svg.removeChild(svg.firstChild);
+  var vb=svg.getAttribute("viewBox").split(/\s+/).map(Number), W=vb[2], H=vb[3];
+  var M={l:cfg.ml||70,r:cfg.mr||52,t:22,b:48};
+  var AX_=niceAxis(cfg.xMin,cfg.xMax,5), AY_=niceAxis(cfg.yMin,cfg.yMax,5);
+  var xa=AX_.lo, xb=AX_.hi, ya=AY_.lo, yb=AY_.hi;
+  function X(v){ return M.l+(v-xa)/(xb-xa)*(W-M.l-M.r); }
+  function Y(v){ return H-M.b-(v-ya)/(yb-ya)*(H-M.t-M.b); }
+  var grid=css("--line"), muted=css("--text-muted"), strong=css("--line-strong"), ink=css("--text-secondary");
+  var i, xdp=tickDp(AX_.step), ydp=tickDp(AY_.step);
+  for(i=0;i<=AX_.n;i++){
+    var xv=xa+AX_.step*i;
+    svg.appendChild(el("line",{x1:X(xv),x2:X(xv),y1:M.t,y2:H-M.b,stroke:grid,"stroke-width":1}));
+    var tx=el("text",{x:X(xv),y:H-M.b+18,"text-anchor":"middle",fill:muted,"font-size":10.5,
+      "font-family":"ui-monospace,monospace"});
+    tx.textContent=cfg.xFmt?cfg.xFmt(xv):xv.toFixed(xdp); svg.appendChild(tx);
+  }
+  for(i=0;i<=AY_.n;i++){
+    var yv=ya+AY_.step*i;
+    svg.appendChild(el("line",{x1:M.l,x2:W-M.r,y1:Y(yv),y2:Y(yv),stroke:grid,"stroke-width":1}));
+    var ty=el("text",{x:M.l-9,y:Y(yv)+3.5,"text-anchor":"end",fill:muted,"font-size":10.5,
+      "font-family":"ui-monospace,monospace"});
+    ty.textContent=cfg.yFmt?cfg.yFmt(yv):yv.toFixed(ydp); svg.appendChild(ty);
+  }
+  if(ya<0&&yb>0)
+    svg.appendChild(el("line",{x1:M.l,x2:W-M.r,y1:Y(0),y2:Y(0),stroke:strong,"stroke-width":1.5}));
+  svg.appendChild(el("line",{x1:M.l,x2:M.l,y1:M.t,y2:H-M.b,stroke:strong,"stroke-width":1.5}));
+  svg.appendChild(el("line",{x1:M.l,x2:W-M.r,y1:H-M.b,y2:H-M.b,stroke:strong,"stroke-width":1.5}));
+  var usedLbl=[];
+  (cfg.curves||[]).forEach(function(c){
+    if(!c.pts||c.pts.length<2) return;
+    var d=c.pts.map(function(p,ix){ return (ix?"L":"M")+X(p[0]).toFixed(1)+" "+Y(p[1]).toFixed(1); }).join(" ");
+    svg.appendChild(el("path",{d:d,fill:"none",stroke:css(c.col),"stroke-width":c.w||2.4,
+      "stroke-linecap":"round","stroke-linejoin":"round","stroke-dasharray":c.dash||"none",
+      opacity:c.op===undefined?1:c.op}));
+    if(c.label){
+      var last=c.pts[c.pts.length-1], ly=clamp(Y(last[1])+4,M.t+8,H-M.b);
+      for(var q=0;q<usedLbl.length;q++){ if(Math.abs(usedLbl[q]-ly)<13){ ly=usedLbl[q]+13; q=-1; } }
+      ly=clamp(ly,M.t+8,H-M.b-2); usedLbl.push(ly);
+      var lb=el("text",{x:clamp(X(last[0])+8,M.l,W-4),y:ly,fill:css(c.col),"font-size":11.5,
+        "font-weight":700,"text-anchor":X(last[0])>W-M.r-40?"end":"start"});
+      lb.textContent=c.label; svg.appendChild(lb);
+    }
+  });
+  (cfg.bars||[]).forEach(function(b){
+    var x0=X(b.x0), x1=X(b.x1), y0=Y(Math.max(ya,0)), y1=Y(b.y);
+    svg.appendChild(el("rect",{x:Math.min(x0,x1),y:Math.min(y0,y1),width:Math.abs(x1-x0),
+      height:Math.abs(y1-y0),fill:css(b.col),opacity:b.op===undefined?.85:b.op,rx:3}));
+    if(b.label){
+      var t=el("text",{x:(x0+x1)/2,y:Math.min(y0,y1)-6,"text-anchor":"middle",fill:css(b.col),
+        "font-size":11.5,"font-weight":700}); t.textContent=b.label; svg.appendChild(t);
+    }
+  });
+  (cfg.points||[]).forEach(function(p){
+    if(p.x<xa||p.x>xb||p.y<ya||p.y>yb) return;
+    svg.appendChild(el("circle",{cx:X(p.x),cy:Y(p.y),r:p.r||4.6,fill:p.fill||css("--surface-1"),
+      stroke:css(p.col),"stroke-width":2}));
+    if(p.label){
+      var t=el("text",{x:X(p.x),y:Y(p.y)-10,"text-anchor":"middle",fill:css(p.col),
+        "font-size":11,"font-weight":700}); t.textContent=p.label; svg.appendChild(t);
+    }
+  });
+  var axl=el("text",{x:(M.l+W-M.r)/2,y:H-8,"text-anchor":"middle",fill:ink,"font-size":12.5});
+  axl.textContent=cfg.xLabel; svg.appendChild(axl);
+  var ayl=el("text",{x:15,y:(M.t+H-M.b)/2,"text-anchor":"middle",fill:ink,"font-size":12.5,
+    transform:"rotate(-90 15 "+((M.t+H-M.b)/2)+")"});
+  ayl.textContent=cfg.yLabel; svg.appendChild(ayl);
+  svg._map={X:X,Y:Y,xa:xa,xb:xb,M:M,W:W};
+}
+
+/* ---- shared wiring ----------------------------------------------------- */
+function wireCommon(redraw){
+  $("predict").addEventListener("click",function(e){
+    var b=e.target.closest(".row button"); if(!b) return;
+    predictions[PORDER[pIdx]]=b.dataset.p; renderPredict(); drawMatrix();
+  });
+  $("pprev").addEventListener("click",function(){ if(pIdx>0){ pIdx--; renderPredict(); } });
+  $("pnext").addEventListener("click",function(){ if(pIdx<PORDER.length-1){ pIdx++; renderPredict(); } });
+  function doReveal(){ revealed=true; updateGate(); }
+  $("revealnow").addEventListener("click",doReveal);
+  $("revealsol").addEventListener("click",doReveal);
+  $("themebtn").addEventListener("click",function(){
+    var r=document.documentElement;
+    var dark=r.getAttribute("data-theme")==="dark" ||
+      (!r.getAttribute("data-theme")&&matchMedia("(prefers-color-scheme: dark)").matches);
+    r.setAttribute("data-theme",dark?"light":"dark");
+    if(redraw) redraw();
+  });
+}
+
+/* =====================================================================
+   ADV-2026-P2-CHE-Q14  -  the polymer reactor.
+   Enter the data -> watch the chemistry -> see the numbers -> reveal.
+   Every molar mass is summed from the atomic masses the student enters.
+   ===================================================================== */
+
+/* ---- composition of everything on the page --------------------------- */
+var FORM = {
+  X:     { C:2, H:5,  N:1, O:2 },           /* glycine                     */
+  Y:     { C:6, H:13, N:1, O:2 },           /* 6-aminohexanoic acid        */
+  CAPRO: { C:6, H:11, N:1, O:1 },           /* caprolactam                 */
+  W:     { H:2, O:1 }                       /* water                       */
+};
+function mass(f, AM){
+  var m = 0, e;
+  for(e in f) m += (AM[e] || 0) * f[e];
+  return m;
+}
+function formulaHTML(f){
+  var order = ["C", "H", "N", "O"], out = "", i;
+  for(i = 0; i < order.length; i++){
+    var e = order[i];
+    if(!f[e]) continue;
+    out += e + (f[e] === 1 ? "" : "<sub>" + f[e] + "</sub>");
+  }
+  return out;
+}
+
+function solve(D){
+  var AM = D.AM;
+  var MX = mass(FORM.X, AM), MY = mass(FORM.Y, AM), MW = mass(FORM.W, AM);
+  var units = D.nX + D.nY;
+  var links = units - D.nZ;
+  var perChain = D.nZ > 0 ? units / D.nZ : 0;
+  return {
+    AM: AM, MX: MX, MY: MY, MW: MW, MC: mass(FORM.CAPRO, AM),
+    units: units, links: links, perChain: perChain,
+    massX: D.nX * MX, massY: D.nY * MY,
+    massIn: D.nX * MX + D.nY * MY,
+    massW: links * MW,
+    massZ: D.nX * MX + D.nY * MY - links * MW
+  };
+}
+
+/* ---- central state --------------------------------------------------- */
+var SCENES = ["setup", "x", "y", "poly", "calc", "reveal"];
+var ST = {
+  scene: "setup", D: null, R: null,
+  t: 0, playing: false, done: false, speed: 1, clock: 0,
+  a: { step: 0, sub: 0, ring: 0, linked: 0, water: 0, fast: 0, calcLines: 0, burst: -1 }
+};
+var entry = {}, SC = null, blinkTimers = [];
+
+/* =====================================================================
+   the molecules
+   ===================================================================== */
+var U = 62;           /* px per bond length */
+
+/* atom: [x, y, label]  ·  bond: [i, j, order] */
+var MOL = {
+  mei:   { a: [[0,0,"H₃C"], [1,0,"I"]], b: [[0,1,1]], hi: [1] },
+  nitr:  { a: [[0,0,"H₃C"], [1,0,"C"], [2,0,"N"]], b: [[0,1,1], [1,2,3]], hi: [1,2] },
+  acid:  { a: [[0,0,"H₃C"], [1,0,"C"], [1,-0.9,"O"], [2,0,"OH"]],
+           b: [[0,1,1], [1,2,2], [1,3,1]], hi: [1,2,3] },
+  brac:  { a: [[-1,0,"Br"], [0,0,"H₂C"], [1,0,"C"], [1,-0.9,"O"], [2,0,"OH"]],
+           b: [[0,1,1], [1,2,1], [2,3,2], [2,4,1]], hi: [0] },
+  gly:   { a: [[-1,0,"H₂N"], [0,0,"H₂C"], [1,0,"C"], [1,-0.9,"O"], [2,0,"OH"]],
+           b: [[0,1,1], [1,2,1], [2,3,2], [2,4,1]], hi: [0] }
+};
+
+function bbox(m){
+  var x0 = 1e9, x1 = -1e9, y0 = 1e9, y1 = -1e9, i;
+  for(i = 0; i < m.a.length; i++){
+    x0 = Math.min(x0, m.a[i][0]); x1 = Math.max(x1, m.a[i][0]);
+    y0 = Math.min(y0, m.a[i][1]); y1 = Math.max(y1, m.a[i][1]);
+  }
+  return { cx: (x0 + x1) / 2, cy: (y0 + y1) / 2, w: x1 - x0, h: y1 - y0 };
+}
+
+/* draw a molecule into g, centred on (cx, cy), returns the atom screen points */
+function drawMol(g, m, cx, cy, opt){
+  opt = opt || {};
+  var bb = bbox(m), pts = [], i;
+  var sc = opt.scale === undefined ? 1 : opt.scale;
+  for(i = 0; i < m.a.length; i++)
+    pts.push({ x: cx + (m.a[i][0] - bb.cx) * U * sc,
+               y: cy + (m.a[i][1] - bb.cy) * U * sc, t: m.a[i][2] });
+  var hi = opt.hi === undefined ? m.hi : opt.hi;
+  var col = css("--text-primary"), line = css("--line-strong"), acc = css(opt.hiCol || "--s3");
+  /* halo behind the group that changed */
+  if(opt.halo)
+    for(i = 0; i < hi.length; i++){
+      var p = pts[hi[i]];
+      var c = el("circle", { cx: p.x, cy: p.y, r: 21 * sc, fill: acc, opacity: 0.17 * opt.halo });
+      g.appendChild(c);
+    }
+  for(i = 0; i < m.b.length; i++){
+    var bd = m.b[i], p1 = pts[bd[0]], p2 = pts[bd[1]], o = bd[2];
+    var dx = p2.x - p1.x, dy = p2.y - p1.y, L = Math.sqrt(dx * dx + dy * dy) || 1;
+    var ux = dx / L, uy = dy / L, nx = -uy, ny = ux;
+    var trim = 17 * sc;
+    var k, offs = o === 1 ? [0] : (o === 2 ? [-3.6, 3.6] : [-5.6, 0, 5.6]);
+    for(k = 0; k < offs.length; k++)
+      g.appendChild(el("line", {
+        x1: p1.x + ux * trim + nx * offs[k], y1: p1.y + uy * trim + ny * offs[k],
+        x2: p2.x - ux * trim + nx * offs[k], y2: p2.y - uy * trim + ny * offs[k],
+        stroke: line, "stroke-width": 2 * sc, "stroke-linecap": "round" }));
+  }
+  for(i = 0; i < pts.length; i++){
+    if(!pts[i].t) continue;
+    var isHi = hi.indexOf(i) >= 0 && opt.halo;
+    var tx = el("text", { x: pts[i].x, y: pts[i].y + 6.5 * sc, "text-anchor": "middle",
+      fill: isHi ? acc : col, "font-size": 19 * sc, "font-weight": 700,
+      "font-family": "ui-serif,Georgia,serif" });
+    tx.textContent = pts[i].t;
+    g.appendChild(tx);
+  }
+  return pts;
+}
+
+/* ---- caprolactam: one atom set, two geometries ----------------------- */
+/* ring order: 0 N, 1 C(=O), 2..6 CH2 ; chain order: N, C6, C5, C4, C3, C2, C1 */
+var RING_R = 1.15;
+function ringPos(k){
+  var th = -Math.PI / 2 + k * 2 * Math.PI / 7;
+  return [RING_R * Math.cos(th), RING_R * Math.sin(th)];
+}
+var CHAIN_ORDER = [0, 6, 5, 4, 3, 2, 1];
+function chainPos(k){
+  var i = CHAIN_ORDER.indexOf(k);
+  return [0.9 * i - 2.7, (i % 2 ? -0.45 : 0.1)];
+}
+function lerp(a, b, t){ return a + (b - a) * t; }
+
+function drawCapro(g, cx, cy, t, sc){
+  /* t = 0 closed ring, 1 fully opened chain */
+  sc = sc === undefined ? 1.35 : sc;
+  var S = U * sc, TL = 15 * sc, FS = 16 * sc;
+  var pts = [], k, ease = t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
+  for(k = 0; k < 7; k++){
+    var r = ringPos(k), c = chainPos(k);
+    pts.push({ x: cx + lerp(r[0], c[0], ease) * S, y: cy + lerp(r[1], c[1], ease) * S });
+  }
+  var line = css("--line-strong"), col = css("--text-primary"), acc = css("--s3");
+  var oRing = [ringPos(1)[0] * 1.9, ringPos(1)[1] * 1.9];
+  var oChain = [chainPos(1)[0], chainPos(1)[1] - 0.9];
+  var O = { x: cx + lerp(oRing[0], oChain[0], ease) * S,
+            y: cy + lerp(oRing[1], oChain[1], ease) * S };
+  var bonds = [[0,1],[1,2],[2,3],[3,4],[4,5],[5,6],[6,0]];
+  for(k = 0; k < bonds.length; k++){
+    var i = bonds[k][0], j = bonds[k][1];
+    var breaking = (i === 0 && j === 1);
+    var op = breaking ? clamp(1 - t / 0.42, 0, 1) : 1;
+    if(op <= 0.01) continue;
+    seg(g, pts[i], pts[j], line, 2.6, op, i === 0 ? TL : 2, j === 0 ? TL : 2,
+        breaking ? css("--bad") : null);
+  }
+  seg(g, pts[1], O, line, 2.6, 1, 2, TL, null, 2);
+  var ohT = clamp((t - 0.45) / 0.4, 0, 1);
+  if(ohT > 0.01){
+    var OH = { x: pts[1].x + 0.95 * S, y: pts[1].y + 0.5 * S };
+    seg(g, pts[1], OH, line, 2.6, ohT, 2, TL);
+    lab(g, OH.x, OH.y, "OH", acc, FS, ohT);
+  }
+  lab(g, O.x, O.y, "O", col, FS, 1);
+  lab(g, pts[0].x, pts[0].y, t < 0.42 ? "HN" : "H\u2082N", t < 0.42 ? col : acc, FS, 1);
+  return { pts: pts, O: O };
+}
+
+function seg(g, p1, p2, stroke, w, op, t1, t2, altCol, order){
+  var dx = p2.x - p1.x, dy = p2.y - p1.y, L = Math.sqrt(dx * dx + dy * dy) || 1;
+  var ux = dx / L, uy = dy / L, nx = -uy, ny = ux;
+  if(L < t1 + t2 + 4){ t1 = 0; t2 = 0; }
+  var offs = order === 2 ? [-4, 4] : [0], k;
+  for(k = 0; k < offs.length; k++)
+    g.appendChild(el("line", {
+      x1: p1.x + ux * t1 + nx * offs[k], y1: p1.y + uy * t1 + ny * offs[k],
+      x2: p2.x - ux * t2 + nx * offs[k], y2: p2.y - uy * t2 + ny * offs[k],
+      stroke: altCol || stroke, "stroke-width": w, "stroke-linecap": "round", opacity: op }));
+}
+function lab(g, x, y, t, col, size, op){
+  var e = el("text", { x: x, y: y + size * 0.34, "text-anchor": "middle", fill: col,
+    "font-size": size, "font-weight": 700, "font-family": "ui-serif,Georgia,serif", opacity: op });
+  e.textContent = t; g.appendChild(e);
+}
+function waterAt(g, x, y, op, sc){
+  sc = sc || 1;
+  g.appendChild(el("circle", { cx: x, cy: y, r: 13 * sc, fill: css("--s3"), opacity: 0.22 * op }));
+  lab(g, x, y, "H₂O", css("--s3"), 11.5 * sc, op);
+}
+
+/* =====================================================================
+   the run
+   ===================================================================== */
+var XSTEPS = [
+  { from: "mei",  to: "nitr", rg: "KCN",
+    note: "Cyanide displaces the iodide. A carbon joins the molecule — the only step in the "
+        + "whole sequence that changes the carbon count." },
+  { from: "nitr", to: "acid", rg: "H₃O⁺, Δ",
+    note: "The nitrile is hydrolysed all the way through the amide to the carboxylic acid." },
+  { from: "acid", to: "brac", rg: "red P, Br₂",
+    note: "Hell–Volhard–Zelinsky: one hydrogen on the α carbon is replaced by "
+        + "bromine." },
+  { from: "brac", to: "gly",  rg: "NH₃ (excess)",
+    note: "Ammonia displaces the bromide. The excess is what stops it alkylating twice." }
+];
+var XRAIL = ["CH₃I", "CH₃CN", "CH₃COOH", "BrCH₂COOH", "NH₂CH₂COOH"];
+var STEP_T = 2.5, RING_T = 5.2, POLY_T = 13.0, CALC_T = 7.6;
+
+function sceneDur(){
+  if(ST.scene === "x") return XSTEPS.length * STEP_T + 0.9;
+  if(ST.scene === "y") return RING_T;
+  if(ST.scene === "poly") return POLY_T;
+  if(ST.scene === "calc") return CALC_T;
+  return 0;
+}
+
+function tick(dt){
+  if(!ST.playing) return;
+  ST.t += dt * ST.speed;
+  var d = sceneDur();
+  if(d > 0 && ST.t >= d){ ST.t = d; ST.playing = false; onSceneEnd(); }
+  applyScene();
+}
+
+function applyScene(){
+  var A = ST.a, t = ST.t;
+  if(ST.scene === "x"){
+    A.step = Math.min(XSTEPS.length, Math.floor(t / STEP_T));
+    A.sub = clamp((t - A.step * STEP_T) / STEP_T, 0, 1);
+  } else if(ST.scene === "y"){
+    A.ring = clamp((t - 0.9) / (RING_T - 2.0), 0, 1);
+  } else if(ST.scene === "poly"){
+    /* six links animated one at a time, then an accelerated counter */
+    var slow = 6, tw = 1.15;
+    if(t < slow * tw){
+      A.linked = Math.floor(t / tw) + 1;
+      A.water = A.linked - 1 + clamp((t / tw - Math.floor(t / tw)) * 1.8, 0, 1);
+      A.water = Math.min(A.linked, Math.floor(A.water));
+      A.fast = 0;
+    } else {
+      var p = clamp((t - slow * tw) / (POLY_T - slow * tw - 1.0), 0, 1);
+      var e = p < 0.5 ? 2 * p * p : 1 - Math.pow(-2 * p + 2, 2) / 2;
+      A.fast = e;
+      A.linked = Math.round(lerp(slow, ST.R.units, e));
+      A.water = Math.round(lerp(slow - 1, ST.R.links, e));
+    }
+  } else if(ST.scene === "calc"){
+    A.calcLines = Math.min(5, Math.floor(t / 1.35) + 1);
+  }
+  render();
+}
+
+function onSceneEnd(){
+  if(ST.scene === "x" || ST.scene === "y"){ render(); blink("thea"); }
+  renderBar();
+}
+
+function go(){
+  if(ST.scene === "setup"){
+    var r = readForm();
+    if(!r.ok || validate(r.D)) return;
+    ST.D = r.D; ST.R = solve(r.D);
+    advance("x");
+    return;
+  }
+  var i = SCENES.indexOf(ST.scene);
+  if(ST.scene === "calc"){ advance("reveal"); return; }
+  if(ST.scene === "reveal"){ doReveal(); return; }
+  advance(SCENES[i + 1]);
+}
+
+function advance(s){
+  ST.scene = s; ST.t = 0;
+  ST.a = { step: 0, sub: 0, ring: 0, linked: 0, water: 0, fast: 0, calcLines: 0, burst: -1 };
+  ST.playing = sceneDur() > 0;
+  calcShown = -1;
+  setPhase();
+  remount(); renderBar(); drawRecord();
+}
+
+/* =====================================================================
+   the form
+   ===================================================================== */
+var AMK = ["H", "C", "N", "O"];
+var AMDEF = { H: "1", C: "12", N: "14", O: "16" };
+
+function formHTML(){
+  function vessel(cls, tag, name, key, unit, hint, svg){
+    return '<div class="vsl"><div class="t ' + cls + '">' + tag + '</div>'
+      + svg + '<div class="nm">' + name + '</div>'
+      + '<div class="row"><input id="in_' + key + '" inputmode="decimal" placeholder="?" value="'
+      + (entry[key] === undefined ? "" : esc(entry[key])) + '" aria-label="' + tag + '">'
+      + '<span class="u">' + unit + '</span></div>'
+      + '<div class="fh" id="fh_' + key + '">' + hint + '</div></div>';
+  }
+  var out = '<h3>Reactor control panel</h3>'
+    + '<p class="sub">Charge the two monomer vessels and say how much polymer they have to end up '
+    + 'as. Nothing is identified yet — the reactor works out what X and Y are.</p>'
+    + '<div class="vessels">'
+    + vessel("x", "Vessel A · monomer X", "made from CH<sub>3</sub>I by the four-step "
+        + "sequence — the reactor will find out what it is", "nX", "mol",
+        "the amount of X the question charges", flaskSVG("--s1"))
+    + vessel("y", "Vessel B · monomer Y", "made by hydrolysing caprolactam — the reactor "
+        + "will open the ring and see", "nY", "mol",
+        "the amount of Y the question charges", flaskSVG("--s2"))
+    + vessel("z", "Product · copolymer Z", "a single acyclic chain — how many chains do "
+        + "the units have to end up in?", "nZ", "mol",
+        "this is what fixes the number of links", drumSVG())
+    + '</div>'
+    + '<div class="masses"><div class="t">Atomic masses, from the table in the question</div>'
+    + '<div class="g">';
+  var i;
+  for(i = 0; i < AMK.length; i++){
+    var e = AMK[i];
+    out += '<span class="am"><b>' + e + '</b><input id="in_am' + e + '" inputmode="decimal" value="'
+        + (entry["am" + e] === undefined ? AMDEF[e] : esc(entry["am" + e]))
+        + '" aria-label="atomic mass of ' + e + '"></span>';
+  }
+  out += '<span class="am off"><b>Br</b><input value="80" disabled aria-label="atomic mass of '
+      + 'bromine, not needed"></span></div>'
+      + '<div class="note">Every molar mass on this page is added up from these four. Bromine is '
+      + 'given in the question but greyed out here — no bromine survives into X, so it never '
+      + 'reaches the answer.</div></div>';
+  return out;
+}
+
+function flaskSVG(col){
+  return '<svg viewBox="0 0 120 76" aria-hidden="true">'
+    + '<path d="M46 10 h28 M52 10 v22 L34 60 a8 8 0 0 0 7 12 h38 a8 8 0 0 0 7-12 L68 32 V10"'
+    + ' fill="none" stroke="var(--line-strong)" stroke-width="2.6" stroke-linejoin="round"/>'
+    + '<path d="M41.5 48 L78.5 48 a8 8 0 0 1 0.5 2 L84 60 a8 8 0 0 1-7 12 H43 a8 8 0 0 1-7-12 Z"'
+    + ' fill="var(' + col + ')" opacity=".22"/>'
+    + '<circle cx="52" cy="60" r="4" fill="var(' + col + ')" opacity=".65"/>'
+    + '<circle cx="66" cy="65" r="3.2" fill="var(' + col + ')" opacity=".5"/>'
+    + '<circle cx="60" cy="54" r="3.6" fill="var(' + col + ')" opacity=".55"/></svg>';
+}
+function drumSVG(){
+  return '<svg viewBox="0 0 120 76" aria-hidden="true">'
+    + '<rect x="30" y="16" width="60" height="46" rx="10" fill="none"'
+    + ' stroke="var(--line-strong)" stroke-width="2.6"/>'
+    + '<path d="M36 40 h48" stroke="var(--good)" stroke-width="3" opacity=".5"'
+    + ' stroke-linecap="round"/>'
+    + '<circle cx="44" cy="40" r="5" fill="var(--s1)" opacity=".6"/>'
+    + '<circle cx="60" cy="40" r="5" fill="var(--s2)" opacity=".6"/>'
+    + '<circle cx="76" cy="40" r="5" fill="var(--s1)" opacity=".6"/></svg>';
+}
+
+var NUMS = [
+  { k: "nX", lo: 0.001, hi: 1e7 }, { k: "nY", lo: 0.001, hi: 1e7 },
+  { k: "nZ", lo: 0.001, hi: 1e7 }
+];
+function readForm(){
+  var D = { AM: {} }, filled = 0, bad = false, i;
+  for(i = 0; i < NUMS.length; i++){
+    var f = NUMS[i], e = $("in_" + f.k);
+    if(!e) return { ok: false, filled: 0, D: D };
+    var raw = e.value; entry[f.k] = raw;
+    if(!raw || !raw.trim()){ e.classList.remove("bad", "ok"); continue; }
+    filled++;
+    var v = parseNum(raw);
+    if(v === null || v < f.lo || v > f.hi){
+      e.classList.add("bad"); e.classList.remove("ok"); bad = true; continue;
+    }
+    e.classList.remove("bad"); e.classList.add("ok");
+    D[f.k] = v;
+  }
+  for(i = 0; i < AMK.length; i++){
+    var el2 = $("in_am" + AMK[i]);
+    if(!el2) continue;
+    entry["am" + AMK[i]] = el2.value;
+    var av = parseNum(el2.value);
+    if(av === null || av <= 0 || av > 400){ el2.classList.add("bad"); bad = true; }
+    else { el2.classList.remove("bad"); D.AM[AMK[i]] = av; }
+  }
+  return { ok: !bad && filled === NUMS.length && Object.keys(D.AM).length === AMK.length,
+           filled: filled, D: D };
+}
+
+function validate(D){
+  if(D.nZ > D.nX + D.nY)
+    return { where: "nZ", msg: "You cannot have more chains than monomer units — "
+      + D.nZ + " chains out of " + (D.nX + D.nY) + " units is impossible." };
+  if(D.nX + D.nY - D.nZ < 0)
+    return { where: "nZ", msg: "That leaves a negative number of links." };
+  return null;
+}
+
+function syncForm(){
+  if(ST.scene !== "setup") return;
+  var r = readForm(), btn = $("gobtn");
+  if(!btn) return;
+  var i, hints = { nX: "the amount of X the question charges",
+                   nY: "the amount of Y the question charges",
+                   nZ: "this is what fixes the number of links" };
+  for(i = 0; i < NUMS.length; i++){
+    var h = $("fh_" + NUMS[i].k);
+    if(h){ h.classList.remove("bad"); h.innerHTML = hints[NUMS[i].k]; }
+  }
+  if(!r.ok){
+    btn.disabled = true;
+    setMsg("<b>" + r.filled + " of 3</b> amounts entered. The atomic masses are already filled in "
+      + "from the question — change them if you like.");
+    return;
+  }
+  var bad = validate(r.D);
+  if(bad){
+    btn.disabled = true;
+    var h2 = $("fh_" + bad.where);
+    if(h2){ h2.classList.add("bad"); h2.textContent = bad.msg; }
+    setMsg("<b>The reactor cannot run that.</b> " + esc(bad.msg));
+    return;
+  }
+  btn.disabled = false;
+  var R = solve(r.D);
+  setMsg("<b>Charged.</b> " + fmt(r.D.nX) + " mol + " + fmt(r.D.nY) + " mol = <b>"
+    + fmt(R.units) + "</b> monomer units, to end up as " + fmt(r.D.nZ)
+    + " chain" + (r.D.nZ === 1 ? "" : "s") + ".");
+}
+
+function setMsg(h){ if($("gomsg")) $("gomsg").innerHTML = h; }
+
+function fmt(x){
+  if(Math.abs(x - Math.round(x)) < 1e-9) return group(Math.round(x));
+  return String(Math.round(x * 1000) / 1000);
+}
+function group(n){
+  var s = String(Math.abs(n)), out = "", i, c = 0;
+  for(i = s.length - 1; i >= 0; i--){
+    out = s.charAt(i) + out;
+    if(++c % 3 === 0 && i > 0) out = " " + out;
+  }
+  return (n < 0 ? "−" : "") + out;
+}
+
+/* =====================================================================
+   rendering, one scene at a time
+   ===================================================================== */
+function setPhase(){
+  var idx = { setup:0, x:1, y:2, poly:3, calc:4, reveal:4 }[ST.scene], i;
+  for(i = 0; i < 5; i++)
+    $("ph" + i).className = "ph" + (i === idx ? " now" : (i < idx ? " done" : ""));
+  $("phtag").textContent = ST.scene === "setup" ? "waiting for your data"
+    : (ST.scene === "reveal" ? (ST.done ? "answer revealed" : "one number left")
+                             : "experiment running");
+}
+
+var mounted = "";
+function mountKey(){
+  return ST.scene + (ST.scene === "reveal" ? (ST.done ? "-a" : "-q") : "");
+}
+function render(){
+  var k = mountKey();
+  if(mounted !== k){ mountScene(); mounted = k; }
+  paintScene();
+}
+function remount(){ mounted = ""; render(); }
+
+function mountScene(){
+  var st = $("stage");
+  st.className = "stage" + ((ST.scene === "calc" || ST.scene === "reveal") ? " mid" : "");
+  if(ST.scene === "setup"){
+    st.innerHTML = formHTML();
+    var i;
+    for(i = 0; i < NUMS.length; i++) bindInput("in_" + NUMS[i].k);
+    for(i = 0; i < AMK.length; i++) bindInput("in_am" + AMK[i]);
+    return;
+  }
+  if(ST.scene === "calc"){
+    st.innerHTML = '<h3>The mass of Z</h3><p class="sub">Everything the run established, put '
+      + 'together one line at a time.</p><div class="calc" id="calc"></div>';
+    return;
+  }
+  if(ST.scene === "reveal"){
+    if(!ST.done){
+      var R = ST.R;
+      st.innerHTML = '<div class="suspense"><div class="q">What is the mass of Z?</div>'
+        + '<div class="s">' + fmt(R.massIn) + ' g of monomer went in and ' + fmt(R.massW)
+        + ' g of water came out. The reactor has the number.</div>'
+        + '<svg viewBox="0 0 320 96" style="width:280px;height:auto" aria-hidden="true">'
+        + '<rect x="8" y="26" width="304" height="44" rx="13" fill="var(--surface-2)"'
+        + ' stroke="var(--line-strong)" stroke-width="1.5"/>'
+        + '<text x="160" y="57" text-anchor="middle" font-size="26" font-weight="800"'
+        + ' font-family="ui-monospace,monospace" fill="var(--text-muted)">? ? ? ? ?</text></svg>'
+        + '</div>';
+    } else {
+      st.innerHTML = '<div class="revealwrap"><svg class="graf" id="graf" viewBox="0 0 700 250"'
+        + ' role="img" aria-label="The mass of Z is ' + fmt(ST.R.massZ) + ' grams"></svg></div>'
+        + '<div class="tagline" id="tagline"></div>';
+      drawGraffiti();
+    }
+    return;
+  }
+  /* the three animated scenes share one skeleton */
+  var titles = { x: ["Discover X", XRAIL], y: ["Discover Y — opening the ring", null],
+                 poly: ["Polymerise — linking the monomers", null] };
+  var h = titles[ST.scene][0], rail = titles[ST.scene][1];
+  st.innerHTML = '<h3 id="th3">' + h + '</h3><p class="sub" id="tsub"></p>'
+    + (rail ? '<div id="trail"></div>' : "")
+    + '<svg class="thea" id="thea" viewBox="0 0 980 ' + (ST.scene === "poly" ? 236 : 250)
+    + '" role="img" aria-label="' + esc(h) + '"></svg><div id="below"></div>';
+}
+
+function bindInput(id){
+  var e = $(id);
+  if(!e) return;
+  e.addEventListener("input", syncForm);
+  e.addEventListener("keydown", function(ev){
+    if(ev.key === "Enter" && !$("gobtn").disabled) go();
+  });
+}
+
+function paintScene(){
+  if(ST.scene === "setup") return syncForm();
+  if(ST.scene === "calc") return paintCalc();
+  if(ST.scene === "reveal") return;
+  var svg = $("thea");
+  if(!svg) return;
+  while(svg.firstChild) svg.removeChild(svg.firstChild);
+  var g = el("g", {}); svg.appendChild(g);
+  if(ST.scene === "x") paintX(g);
+  else if(ST.scene === "y") paintY(g);
+  else paintPoly(g);
+}
+
+function railHTML(list, at){
+  var out = '<div style="display:flex;gap:0;flex-wrap:wrap;margin:0 0 10px">', i;
+  for(i = 0; i < list.length; i++){
+    var st = i < at ? "done" : (i === at ? "now" : "");
+    out += '<span style="flex:1 1 90px;min-width:0;padding:5px 6px;font-size:11px;text-align:center;'
+      + 'font-family:ui-serif,Georgia,serif;border:1px solid var(--line);border-right:none;'
+      + 'overflow:hidden;text-overflow:ellipsis;white-space:nowrap;'
+      + (st === "done" ? 'background:color-mix(in srgb,var(--good) 12%,transparent);'
+           + 'border-color:var(--good);color:var(--good);font-weight:700;'
+       : st === "now" ? 'background:var(--accent);border-color:var(--accent);color:#fff;'
+           + 'font-weight:700;'
+       : 'background:var(--surface-1);color:var(--text-muted);')
+      + (i === 0 ? 'border-radius:8px 0 0 8px;' : '')
+      + (i === list.length - 1 ? 'border-right:1px solid var(--line);border-radius:0 8px 8px 0;' : '')
+      + '">' + list[i] + '</span>';
+  }
+  return out + '</div>';
+}
+function setSub(h){ if($("tsub")) $("tsub").innerHTML = h; }
+function setBelow(h){ if($("below") && $("below").innerHTML !== h) $("below").innerHTML = h; }
+
+/* ---- screen 2 -------------------------------------------------------- */
+function paintX(g){
+  var A = ST.a, k = Math.min(A.step, XSTEPS.length - 1), st = XSTEPS[k];
+  var doneAll = A.step >= XSTEPS.length;
+  $("th3").textContent = doneAll ? "Discover X — done"
+    : "Discover X — step " + (A.step + 1) + " of 4";
+  setSub(doneAll ? "Four reagents, four changes, one product. <b>X is glycine</b>." : st.note);
+  var p0 = A.sub;
+  var rail = railHTML(XRAIL, doneAll ? 4 : (A.step + (p0 > 0.55 ? 1 : 0)));
+  if($("trail") && $("trail").innerHTML !== rail) $("trail").innerHTML = rail;
+
+  var p = A.sub, showTo = doneAll || p > 0.55;
+  void p0;
+  var m = MOL[doneAll ? "gly" : (showTo ? st.to : st.from)];
+  var halo = doneAll ? 0 : (showTo ? clamp((p - 0.55) / 0.3, 0, 1) : clamp(p / 0.35, 0, 1));
+  drawMol(g, m, 490, 132, { halo: halo, hi: m.hi, hiCol: showTo ? "--s3" : "--s2" });
+
+  if(!doneAll){
+    var fly = clamp(p / 0.5, 0, 1);
+    var x = lerp(950, 560, fly);
+    var op = p < 0.5 ? fly : clamp(1 - (p - 0.5) / 0.25, 0, 1);
+    g.appendChild(el("rect", { x: x - 78, y: 30, width: 156, height: 34, rx: 17,
+      fill: css("--surface-2"), stroke: css("--line-strong"), "stroke-width": 1.4, opacity: op }));
+    lab(g, x, 47, st.rg, css("--text-secondary"), 15, op);
+    if(p > 0.42 && p < 0.75)
+      g.appendChild(el("path", { d: "M490 72 L490 96", stroke: css("--s3"), "stroke-width": 3,
+        "stroke-linecap": "round", opacity: .85 }));
+  } else {
+    g.appendChild(el("rect", { x: 355, y: 192, width: 270, height: 44, rx: 12,
+      fill: css("--s1"), opacity: .12, stroke: css("--s1"), "stroke-width": 1.5 }));
+    lab(g, 490, 214, "X identified — GLYCINE", css("--s1"), 17, 1);
+  }
+  setBelow(doneAll ? countsHTML([
+      { k: "X is", v: "glycine", c: "--s1" },
+      { k: "formula", v: formulaHTML(FORM.X), c: "--s1" },
+      { k: "M(X)", v: fmt(ST.R.MX) + " g mol⁻¹", c: "--s1" }
+    ]) : "");
+}
+function countsHTML(list){
+  var out = '<div class="counts">', i;
+  for(i = 0; i < list.length; i++)
+    out += '<div class="cnt' + (list[i].v === "—" ? " dim" : "") + '"><div class="k">'
+        + list[i].k + '</div><div class="v"'
+        + (list[i].c ? ' style="color:var(' + list[i].c + ')"' : "") + '>' + list[i].v
+        + '</div></div>';
+  return out + '</div>';
+}
+
+/* ---- screen 3 -------------------------------------------------------- */
+function paintY(g){
+  var t = ST.a.ring, opened = t > 0.98;
+  setSub(t < 0.05
+    ? "Caprolactam is a <b>cyclic</b> amide — seven atoms in the ring, and no loose ends."
+    : (opened
+      ? "The ring is open. <b>Y is 6-aminohexanoic acid</b> — an amine at one end and an acid at "
+        + "the other, which is exactly what a polyamide needs."
+      : "Water attacks the C–N bond. Once that bond is cut the ring cannot stay closed."));
+  var geo = drawCapro(g, 452, 128, t);
+  if(t < 0.62){
+    var wt = clamp(t / 0.42, 0, 1);
+    var mid = { x: (geo.pts[0].x + geo.pts[1].x) / 2, y: (geo.pts[0].y + geo.pts[1].y) / 2 };
+    waterAt(g, lerp(210, mid.x + 6, wt), lerp(34, mid.y - 30, wt),
+            clamp(1 - (t - 0.42) / 0.2, 0, 1), 1.15);
+  }
+  if(opened){
+    g.appendChild(el("rect", { x: 330, y: 196, width: 320, height: 42, rx: 12,
+      fill: css("--s2"), opacity: .12, stroke: css("--s2"), "stroke-width": 1.5 }));
+    lab(g, 490, 217, "Ring opened — 6-AMINOHEXANOIC ACID", css("--s2"), 15, 1);
+  }
+  setBelow(opened ? countsHTML([
+      { k: "caprolactam", v: formulaHTML(FORM.CAPRO) + " · " + fmt(ST.R.MC), c: "" },
+      { k: "+ H₂O", v: "+ " + fmt(ST.R.MW), c: "--s3" },
+      { k: "Y is", v: formulaHTML(FORM.Y) + " · " + fmt(ST.R.MY), c: "--s2" }
+    ]) : "");
+}
+
+/* ---- screen 4 -------------------------------------------------------- */
+function paintPoly(g){
+  var A = ST.a, R = ST.R, D = ST.D;
+  setSub(A.fast > 0.02
+    ? "Accelerating — every new link ejects one more water."
+    : "Each –NH₂ meets a –COOH, an amide bond forms and <b>one water leaves</b>. "
+      + "That is condensation polymerisation.");
+  var s1 = css("--s1"), s2 = css("--s2"), line = css("--line-strong");
+  g.appendChild(el("rect", { x: 60, y: 58, width: 860, height: 112, rx: 16,
+    fill: css("--surface-2"), stroke: css("--line"), "stroke-width": 1.4 }));
+  lab(g, 118, 74, "REACTOR", css("--text-muted"), 10, 1);
+
+  var shown = Math.min(12, Math.max(1, A.linked));
+  var w = 58, gap = 12, totalW = shown * w + (shown - 1) * gap;
+  var x0 = 490 - totalW / 2, i;
+  for(i = 0; i < shown; i++){
+    var isX = i % 2 === 0, x = x0 + i * (w + gap);
+    g.appendChild(el("rect", { x: x, y: 92, width: w, height: 40, rx: 11,
+      fill: isX ? s1 : s2, opacity: .19, stroke: isX ? s1 : s2, "stroke-width": 1.6 }));
+    lab(g, x + w / 2, 112, isX ? "Gly" : "Ahx", isX ? s1 : s2, 13.5, 1);
+    if(i > 0)
+      g.appendChild(el("line", { x1: x - gap, x2: x, y1: 112, y2: 112, stroke: line,
+        "stroke-width": 3, "stroke-linecap": "round" }));
+  }
+  if(A.linked > 12){
+    lab(g, x0 - 28, 112, "…", css("--text-muted"), 24, 1);
+    lab(g, x0 + totalW + 28, 112, "…", css("--text-muted"), 24, 1);
+  }
+  var wfrac = (ST.clock / 1.15) % 1;
+  if(A.fast < 0.02 && A.linked > 1){
+    waterAt(g, x0 + (shown - 1) * (w + gap) - gap / 2, 84 - 34 * wfrac,
+            clamp(1 - wfrac, 0, 1), 1);
+  } else if(A.fast >= 0.02){
+    for(i = 0; i < 5; i++){
+      var ph = (wfrac + i * 0.2) % 1;
+      waterAt(g, 250 + i * 120, 80 - 30 * ph, clamp(1 - ph, 0, 1) * .9, .85);
+    }
+  }
+  for(i = 0; i < 4; i++){
+    var q = ((ST.clock * 0.7) + i * 0.25) % 1;
+    g.appendChild(el("circle", { cx: lerp(64, 200, q), cy: 148, r: 7, fill: s1,
+      opacity: .55 * (1 - q) }));
+    g.appendChild(el("circle", { cx: lerp(916, 780, q), cy: 148, r: 7, fill: s2,
+      opacity: .55 * (1 - q) }));
+  }
+  lab(g, 104, 200, fmt(D.nX) + " mol X", s1, 14, 1);
+  lab(g, 876, 200, fmt(D.nY) + " mol Y", s2, 14, 1);
+
+  var links = Math.max(0, A.linked - Math.min(D.nZ, A.linked));
+  setBelow(countsHTML([
+    { k: "units linked", v: fmt(A.linked), c: "--s4" },
+    { k: "links formed", v: fmt(links), c: "" },
+    { k: "H₂O released", v: fmt(A.water), c: "--s3" },
+    { k: "units per chain", v: A.fast > 0.98 ? fmt(R.perChain) : "—", c: "" }
+  ]));
+}
+
+/* ---- screen 5 -------------------------------------------------------- */
+var calcShown = -1;
+function paintCalc(){
+  var A = ST.a, R = ST.R, D = ST.D, n = A.calcLines;
+  if(n === calcShown) return;
+  calcShown = n;
+  var rows = [
+    { c: "", l: 'mass of X &nbsp;<span style="color:var(--s1)">' + fmt(D.nX) + " × "
+        + fmt(R.MX) + '</span>', v: fmt(R.massX) + " g" },
+    { c: "", l: 'mass of Y &nbsp;<span style="color:var(--s2)">' + fmt(D.nY) + " × "
+        + fmt(R.MY) + '</span>', v: fmt(R.massY) + " g" },
+    { c: "tot", l: "total monomer in", v: fmt(R.massIn) + " g" },
+    { c: "sub2", l: 'water out &nbsp;<span style="color:var(--text-muted)">' + fmt(R.links)
+        + " links × " + fmt(R.MW) + '</span>', v: "− " + fmt(R.massW) + " g" },
+    { c: "fin", l: 'mass of Z &nbsp;<span style="color:var(--text-muted)">' + fmt(R.massIn)
+        + " − " + fmt(R.massW) + '</span>', v: null }
+  ];
+  var out = "", i;
+  for(i = 0; i < n; i++){
+    var r = rows[i];
+    out += '<div class="cl ' + r.c + '"><div class="lb">' + r.l + '</div><div class="'
+        + (r.v === null ? "q" : "vv") + '">' + (r.v === null ? "?" : r.v) + '</div></div>';
+  }
+  if($("calc")) $("calc").innerHTML = out;
+}
+
+/* ---- the reveal ------------------------------------------------------ */
+function UNUSED_renderReveal(){
+  var R = ST.R;
+  if(!ST.done){
+    $("stage").innerHTML = '<div class="suspense"><div class="q">What is the mass of Z?</div>'
+      + '<div class="s">' + fmt(R.massIn) + ' g of monomer went in and ' + fmt(R.massW)
+      + ' g of water came out. The reactor has the number.</div>'
+      + '<svg viewBox="0 0 320 96" style="width:280px;height:auto" aria-hidden="true">'
+      + '<rect x="8" y="26" width="304" height="44" rx="13" fill="var(--surface-2)"'
+      + ' stroke="var(--line-strong)" stroke-width="1.5"/>'
+      + '<text x="160" y="57" text-anchor="middle" font-size="26" font-weight="800"'
+      + ' font-family="ui-monospace,monospace" fill="var(--text-muted)">? ? ? ? ?</text></svg>'
+      + '</div>';
+    return;
+  }
+}
+
+var PARTS = [];
+function drawGraffiti(){
+  var svg = $("graf");
+  if(!svg) return;
+  while(svg.firstChild) svg.removeChild(svg.firstChild);
+  var R = ST.R, good = css("--good"), s4 = css("--s4"), s1 = css("--s1"), s2 = css("--s2");
+
+  var defs = el("defs", {});
+  var f = el("filter", { id: "spray", x: "-20%", y: "-30%", width: "140%", height: "170%" });
+  f.appendChild(el("feTurbulence", { type: "fractalNoise", baseFrequency: "0.055",
+    numOctaves: "3", result: "n", seed: "7" }));
+  f.appendChild(el("feDisplacementMap", { in: "SourceGraphic", in2: "n", scale: "4.5",
+    xChannelSelector: "R", yChannelSelector: "G" }));
+  defs.appendChild(f);
+  svg.appendChild(defs);
+
+  var gP = el("g", {}); svg.appendChild(gP);      /* particles behind */
+  var gT = el("g", { filter: "url(#spray)", id: "grafT" }); svg.appendChild(gT);
+
+  var txt = fmt(R.massZ) + " g";
+  var shadow = el("text", { x: 356, y: 156, "text-anchor": "middle", fill: s4, opacity: .30,
+    "font-size": 92, "font-weight": 900, "font-family": "ui-sans-serif,system-ui,sans-serif",
+    transform: "skewX(-9)" });
+  shadow.textContent = txt; gT.appendChild(shadow);
+  var main = el("text", { x: 350, y: 150, "text-anchor": "middle", fill: good,
+    "font-size": 92, "font-weight": 900, "font-family": "ui-sans-serif,system-ui,sans-serif",
+    stroke: css("--surface-1"), "stroke-width": 2, "paint-order": "stroke",
+    transform: "skewX(-9)" });
+  main.textContent = txt; gT.appendChild(main);
+  /* drips */
+  var d, dx = [250, 352, 452];
+  for(d = 0; d < dx.length; d++){
+    gT.appendChild(el("rect", { x: dx[d], y: 152, width: 5, height: 16 + d * 9, rx: 2.5,
+      fill: good, opacity: .55 }));
+    gT.appendChild(el("circle", { cx: dx[d] + 2.5, cy: 170 + d * 9, r: 4, fill: good,
+      opacity: .55 }));
+  }
+  var cap = el("text", { x: 350, y: 208, "text-anchor": "middle", fill: css("--text-muted"),
+    "font-size": 13.5, "font-family": "ui-monospace,monospace", "letter-spacing": "0.16em" });
+  cap.textContent = "MASS OF THE COPOLYMER Z"; svg.appendChild(cap);
+  if($("tagline"))
+    $("tagline").innerHTML = 'X = <b class="xx">glycine</b>, M = ' + fmt(R.MX)
+      + ' &nbsp;|&nbsp; Y = <b class="yy">6-aminohexanoic acid</b>, M = ' + fmt(R.MY)
+      + ' &nbsp;|&nbsp; ' + fmt(R.links) + ' waters lost';
+
+  /* the burst */
+  PARTS = [];
+  var GLY = ["•", "H₂O", "•", "●", "N", "O", "•", "C"];
+  var cols = [good, s4, s1, s2, css("--s3")];
+  var i;
+  for(i = 0; i < 46; i++){
+    var ang = Math.PI * 2 * i / 46 + Math.random() * 0.3;
+    var sp = 120 + Math.random() * 200;
+    PARTS.push({ x: 350, y: 132, vx: Math.cos(ang) * sp, vy: Math.sin(ang) * sp - 40,
+      t: 0, life: 1.1 + Math.random() * 0.7, col: cols[i % cols.length],
+      g: GLY[i % GLY.length], r: 2 + Math.random() * 3.4, txt: i % 4 === 1 });
+  }
+  var gB = el("g", {}); svg.appendChild(gB);
+  SC = { burst: gB };
+  ST.a.burst = 0;
+  blink("grafT");
+}
+
+function drawBurst(dt){
+  if(!SC || !SC.burst || ST.a.burst < 0) return;
+  var g = SC.burst, i;
+  while(g.firstChild) g.removeChild(g.firstChild);
+  ST.a.burst += dt;
+  var alive = 0;
+  for(i = 0; i < PARTS.length; i++){
+    var p = PARTS[i];
+    p.t += dt;
+    if(p.t > p.life) continue;
+    alive++;
+    var x = p.x + p.vx * p.t, y = p.y + p.vy * p.t + 190 * p.t * p.t;
+    var op = clamp(1 - p.t / p.life, 0, 1);
+    if(p.txt) lab(g, x, y, p.g, p.col, 12, op * 0.9);
+    else g.appendChild(el("circle", { cx: x, cy: y, r: p.r, fill: p.col, opacity: op * 0.85 }));
+  }
+  if(!alive) ST.a.burst = -1;
+}
+
+/* =====================================================================
+   the action bar, record, gate
+   ===================================================================== */
+function renderBar(){
+  var b = $("gobtn"), rp = $("replaybtn"), ed = $("editbtn");
+  b.classList.remove("rev");
+  rp.hidden = ST.scene === "setup";
+  ed.hidden = ST.scene === "setup";
+  if(ST.scene === "setup"){ b.innerHTML = "▶&nbsp; Start experiment"; syncForm(); return; }
+  b.disabled = ST.playing;
+  if(ST.scene === "x"){
+    b.innerHTML = "Continue to Y →";
+    if(!ST.playing) setMsg("<b>X is glycine</b>, M = " + fmt(ST.R.MX)
+      + " g mol⁻¹. Now the second monomer.");
+    else setMsg("Watching the sequence…");
+  } else if(ST.scene === "y"){
+    b.innerHTML = "Continue to the reactor →";
+    if(!ST.playing) setMsg("<b>Y is 6-aminohexanoic acid</b>, M = " + fmt(ST.R.MY)
+      + " g mol⁻¹. Both monomers are acyclic, as the question says.");
+    else setMsg("Hydrolysing the lactam…");
+  } else if(ST.scene === "poly"){
+    b.innerHTML = "See the arithmetic →";
+    if(!ST.playing) setMsg("<b>" + fmt(ST.R.units) + "</b> units in <b>" + fmt(ST.D.nZ)
+      + "</b> chain" + (ST.D.nZ === 1 ? "" : "s") + " → <b>" + fmt(ST.R.links)
+      + "</b> links, and <b>" + fmt(ST.R.links) + "</b> waters gone.");
+    else setMsg("Linking…");
+  } else if(ST.scene === "calc"){
+    b.innerHTML = "Finish →";
+    if(!ST.playing) setMsg("One number is still missing.");
+    else setMsg("Adding it up…");
+  } else {
+    if(!ST.done){
+      b.disabled = false; b.classList.add("rev");
+      b.innerHTML = "✨ Reveal answer";
+      setMsg("Everything is measured. Press the button.");
+    } else {
+      b.disabled = false;
+      b.innerHTML = "↻ Run it again";
+      setMsg("<b>" + fmt(ST.R.massZ) + " g.</b> " + fmt(ST.R.massIn) + " g in, "
+        + fmt(ST.R.massW) + " g of water out.");
+    }
+  }
+}
+
+function doReveal(){
+  ST.done = true;
+  setPhase(); remount(); renderBar(); drawRecord(); drawMonos(); syncGate();
+  blink("ansval"); blink("clsans");
+}
+
+function drawRecord(){
+  var R = ST.R, D = ST.D, sc = SCENES.indexOf(ST.scene);
+  function cell(k, v, n, fin){
+    return '<div class="rec"><div class="k">' + k + '</div><div class="v'
+      + (v === null ? " pend" : (fin ? " fin" : "")) + '">'
+      + (v === null ? "— not yet" : v) + '</div><div class="n">' + n + '</div></div>';
+  }
+  var rows;
+  if(!D){
+    rows = cell("monomer X", null, "identified by the reaction sequence", 0)
+         + cell("monomer Y", null, "identified by opening the ring", 0)
+         + cell("links formed", null, "one per condensation", 0)
+         + cell("mass of Z", null, "what the run is for", 1);
+  } else {
+    rows = cell("monomer X", sc >= 1 && (ST.scene !== "x" || !ST.playing)
+             ? "glycine · " + fmt(R.MX) : null,
+             "C₂H₅NO₂, from CH₃I in four steps", 0)
+         + cell("monomer Y", sc >= 2 && (ST.scene !== "y" || !ST.playing)
+             ? "6-aminohexanoic · " + fmt(R.MY) : null,
+             "C₆H₁₃NO₂, the opened lactam", 0)
+         + cell("monomer units", sc >= 3 ? fmt(R.units) : null,
+             fmt(D.nX) + " + " + fmt(D.nY) + " mol", 0)
+         + cell("links formed", sc >= 3 && !ST.playing ? fmt(R.links) : null,
+             fmt(R.units) + " units − " + fmt(D.nZ) + " chain"
+             + (D.nZ === 1 ? "" : "s"), 0)
+         + cell("water eliminated", sc >= 4 ? fmt(R.massW) + " g" : null,
+             fmt(R.links) + " × " + fmt(R.MW), 0)
+         + cell("mass of Z", (ST.done || revealed) ? fmt(R.massZ) + " g" : null,
+             fmt(R.massIn) + " − " + fmt(R.massW), 1);
+  }
+  $("record").innerHTML = rows;
+}
+
+function drawMonos(){
+  var R = ST.R, D = ST.D;
+  if(!R || !(ST.done || revealed)){
+    $("monos").innerHTML = '<div class="mono"><div class="t">waiting</div>'
+      + '<div style="font-size:12.5px;color:var(--text-muted)">Run the experiment and both '
+      + 'monomers are drawn here, with their molar masses added up atom by atom.</div></div>';
+    return;
+  }
+  function card(cls, tag, name, cond, f, M, svg){
+    var order = ["C", "H", "N", "O"], rows = "", i;
+    for(i = 0; i < order.length; i++){
+      var e = order[i];
+      if(!f[e]) continue;
+      rows += "<tr><td>" + e + " × " + f[e] + " × " + fmt(R.AM[e]) + "</td><td>"
+           + fmt(f[e] * R.AM[e]) + "</td></tr>";
+    }
+    return '<div class="mono"><div class="t ' + cls + '">' + tag + '</div>' + svg
+      + '<div style="font-family:ui-serif,Georgia,serif;font-size:15px;margin-bottom:6px">'
+      + name + ' · ' + cond + '</div><table>' + rows
+      + '<tr class="tot"><td>M</td><td>' + fmt(M) + ' g mol⁻¹</td></tr></table></div>';
+  }
+  $("monos").innerHTML =
+      card("x", "Monomer X", "glycine", "H₂N–CH₂–COOH", FORM.X, R.MX,
+           molSVG("gly", 300, 120))
+    + card("y", "Monomer Y", "6-aminohexanoic acid",
+           "H₂N–(CH₂)₅–COOH", FORM.Y, R.MY, caproSVG());
+}
+function molSVG(key, w, h){
+  var id = "ms_" + key;
+  setTimeout(function(){
+    var s = $(id);
+    if(!s) return;
+    while(s.firstChild) s.removeChild(s.firstChild);
+    var g = el("g", {}); s.appendChild(g);
+    drawMol(g, MOL[key], w / 2, h / 2, { halo: 0, scale: 0.78 });
+  }, 0);
+  return '<svg id="' + id + '" viewBox="0 0 ' + w + ' ' + h + '" aria-hidden="true"></svg>';
+}
+function caproSVG(){
+  setTimeout(function(){
+    var s = $("ms_ahx");
+    if(!s) return;
+    while(s.firstChild) s.removeChild(s.firstChild);
+    var g = el("g", {}); s.appendChild(g);
+    drawCapro(g, 175, 64, 1, 0.6);
+  }, 0);
+  return '<svg id="ms_ahx" viewBox="0 0 350 120" aria-hidden="true"></svg>';
+}
+
+function syncGate(){
+  var open = ST.done || revealed;
+  $("solgate").hidden = open;
+  $("solbody").hidden = !open;
+  var ab = $("answerbox");
+  if(open){
+    ab.classList.remove("locked");
+    $("ansval").textContent = "85018";
+    $("anssub").innerHTML = "grams &middot; 103 000 − 17 982";
+    $("revealnow").hidden = true;
+    $("clsans").textContent = "85018 g";
+    if(!$("solbody").classList.contains("reveal")) $("solbody").classList.add("reveal");
+    $("solintro").innerHTML = ST.done
+      ? "<b>Your run finished.</b> Here is the same chemistry written out as it would be on paper."
+      : "Revealed early — go back and run the reactor to watch these numbers come out of the "
+        + "chemistry.";
+  } else {
+    ab.classList.add("locked");
+    $("ansval").textContent = "Run the experiment";
+    $("anssub").textContent = "Enter the amounts and run the reactor.";
+    $("revealnow").hidden = false;
+    $("clsans").textContent = "— run the experiment";
+  }
+}
+
+function blink(id){
+  var e = $(id);
+  if(!e) return;
+  e.classList.remove("blink");
+  void e.offsetWidth;
+  e.classList.add("blink");
+  blinkTimers.push(setTimeout(function(){ e.classList.remove("blink"); }, 2300));
+}
+
+/* =====================================================================
+   boot
+   ===================================================================== */
+function toSetup(){
+  ST.scene = "setup"; ST.t = 0; ST.playing = false; ST.done = false;
+  ST.D = null; ST.R = null; PARTS = []; ST.a.burst = -1;
+  calcShown = -1;
+  setPhase(); remount(); renderBar(); drawRecord(); drawMonos();
+}
+function replay(){
+  if(!ST.D) return;
+  ST.done = false; PARTS = []; ST.a.burst = -1;
+  advance("x");
+  drawMonos();
+}
+function redrawAll(){
+  calcShown = -1; remount(); renderBar(); drawRecord(); drawMonos();
+}
+
+(function init(){
+  $("gobtn").addEventListener("click", go);
+  $("replaybtn").addEventListener("click", replay);
+  $("editbtn").addEventListener("click", toSetup);
+  function dr(){ revealed = true; syncGate(); drawRecord(); drawMonos(); }
+  $("revealnow").addEventListener("click", dr);
+  $("revealsol").addEventListener("click", dr);
+  $("themebtn").addEventListener("click", function(){
+    var r = document.documentElement;
+    var dark = r.getAttribute("data-theme") === "dark" ||
+      (!r.getAttribute("data-theme") && matchMedia("(prefers-color-scheme: dark)").matches);
+    r.setAttribute("data-theme", dark ? "light" : "dark");
+    redrawAll();
+  });
+
+  setPhase();
+  remount(); renderBar(); drawRecord(); drawMonos(); syncGate();
+
+  var last = 0;
+  function loop(ts){
+    var dt = last ? Math.min(0.05, (ts - last) / 1000) : 0.016;
+    last = ts;
+    ST.clock += dt;
+    tick(dt);
+    if(!ST.playing && (ST.scene === "poly" || ST.scene === "x" || ST.scene === "y")) paintScene();
+    drawBurst(dt);
+    requestAnimationFrame(loop);
+  }
+  requestAnimationFrame(loop);
+})();
+
+</script>
+</body>
+</html>
