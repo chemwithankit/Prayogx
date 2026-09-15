@@ -1,0 +1,2308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Molar volume of a vapour against its liquid — JEE Advanced 2026 Paper 2 Q.15 | PrayogX</title>
+<meta name="description" content="Enter the data from JEE Advanced 2026 Paper 2 Chemistry Q.15 into a dark virtual bench, then watch it count the solvent, build the mole fraction, solve Raoult's law for the vapour pressure of pure B and fill two chambers with one mole of B each — the ratio of the molar volumes is revealed only at the end.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232a78d6'/%3E%3Cpath d='M12.5 6.5h7M13.6 6.5v7.2L7.9 24.1a1.5 1.5 0 0 0 1.3 2.3h13.6a1.5 1.5 0 0 0 1.3-2.3l-5.7-10.4V6.5' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M10.6 20.6h10.8' stroke='white' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E">
+<meta name="sim-id" content="ADV-2026-P2-CHE-Q15">
+<style>
+:root{
+  color-scheme: light;
+  --surface-0:#f4f4f1; --surface-1:#fcfcfb; --surface-2:#ececea;
+  --line:#d9d9d4; --line-strong:#bcbcb5;
+  --text-primary:#0b0b0b; --text-secondary:#52514e; --text-muted:#77766f;
+  --s1:#2a78d6; --s2:#eb6834; --s3:#1baf7a; --s4:#4a3aa7;
+  --good:#00743f; --bad:#c0392b; --accent:#2a78d6;
+  --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+  --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --serif:ui-serif,Georgia,"Times New Roman",serif;
+  --radius:10px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  color-scheme: dark;
+  --surface-0:#111110; --surface-1:#1a1a19; --surface-2:#232322;
+  --line:#34342f; --line-strong:#4a4a44;
+  --text-primary:#ffffff; --text-secondary:#c3c2b7; --text-muted:#95948b;
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#9085e9;
+  --good:#3fae7a; --bad:#e66767; --accent:#3987e5;
+}}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --surface-0:#111110; --surface-1:#1a1a19; --surface-2:#232322;
+  --line:#34342f; --line-strong:#4a4a44;
+  --text-primary:#ffffff; --text-secondary:#c3c2b7; --text-muted:#95948b;
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#9085e9;
+  --good:#3fae7a; --bad:#e66767; --accent:#3987e5;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--surface-0);color:var(--text-primary);font-family:var(--sans);
+  font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px 80px}
+
+header.top{border-bottom:1px solid var(--line);background:var(--surface-1)}
+.top-inner{max-width:1120px;margin:0 auto;padding:22px 20px 18px;position:relative;
+  display:flex;flex-wrap:wrap;gap:16px;align-items:flex-start;justify-content:space-between}
+.simid{font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--text-muted)}
+h1{font-size:23px;line-height:1.25;margin:6px 0 10px;font-weight:640;max-width:640px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-size:11.5px;padding:3px 9px;border:1px solid var(--line-strong);border-radius:999px;
+  color:var(--text-secondary);background:var(--surface-2);white-space:nowrap}
+.chip.k{border-color:var(--accent);color:var(--accent);background:transparent}
+.answerbox{border:1px solid var(--line-strong);border-radius:var(--radius);background:var(--surface-2);
+  padding:12px 16px;min-width:210px}
+.answerbox .lbl{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted)}
+.answerbox .val{font-family:var(--mono);font-size:25px;font-weight:600;color:var(--good);line-height:1.22}
+.answerbox .sub{font-size:12px;color:var(--text-secondary)}
+.answerbox.locked .val{color:var(--text-muted);font-size:17px;letter-spacing:.04em}
+.answerbox .rv{margin-top:6px;font-size:11px;background:none;border:none;padding:0;color:var(--accent);
+  cursor:pointer;text-decoration:underline;font-family:var(--sans)}
+.themebtn{position:absolute;top:14px;right:16px;border:1px solid var(--line-strong);background:var(--surface-2);
+  color:var(--text-secondary);border-radius:8px;padding:4px 9px;font-size:12px;cursor:pointer}
+.brandbar{display:flex;align-items:center;gap:8px;margin-bottom:9px;text-decoration:none}
+.brandbar .pxmark{width:21px;height:21px;flex:none;display:block}
+.brandbar .wm{font-size:13px;font-weight:800;letter-spacing:.17em;color:var(--text-secondary);line-height:1}
+.brandbar .wm i{font-style:normal;color:var(--accent)}
+
+nav.jump{position:sticky;top:0;z-index:20;background:var(--surface-0);border-bottom:1px solid var(--line);
+  padding:8px 0;margin-bottom:26px}
+nav.jump ul{max-width:1120px;margin:0 auto;padding:0 20px;list-style:none;display:flex;gap:4px;overflow-x:auto}
+nav.jump a{display:block;padding:5px 11px;border-radius:7px;font-size:13px;text-decoration:none;
+  color:var(--text-secondary);white-space:nowrap}
+nav.jump a:hover{background:var(--surface-2);color:var(--text-primary)}
+
+section{margin:0 0 42px;scroll-margin-top:56px}
+h2{font-size:17px;font-weight:640;margin:0 0 4px;display:flex;align-items:baseline;gap:9px}
+h2 .n{font-family:var(--mono);font-size:12px;color:var(--text-muted);font-weight:400}
+.lede{color:var(--text-secondary);font-size:13.5px;margin:0 0 16px;max-width:76ch}
+.card,.panel{background:var(--surface-1);border:1px solid var(--line);border-radius:var(--radius);padding:18px}
+.panel h3{margin:0 0 12px;font-size:13px;letter-spacing:.05em;text-transform:uppercase;
+  color:var(--text-muted);font-weight:600}
+.lab{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:16px;align-items:start}
+.lab>*{min-width:0}
+@media(max-width:900px){.lab{grid-template-columns:1fr !important}}
+canvas{display:block;width:100%;height:auto;border-radius:8px;background:var(--surface-2)}
+
+.qtext{font-family:var(--serif);font-size:16px;line-height:1.7}
+.opts{list-style:none;padding:0;margin:16px 0 0;display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr));gap:10px}
+.opts li{border:1px solid var(--line);border-radius:10px;padding:10px;background:var(--surface-1);
+  display:flex;flex-direction:column;gap:6px}
+.opts li .hd{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--text-muted);font-family:var(--mono)}
+.opts li .mark{margin-left:auto;font-family:var(--sans);font-size:11.5px;font-weight:600}
+.opts li .nm{font-size:11.5px;color:var(--text-secondary)}
+.opts li.correct{border-color:var(--good);background:color-mix(in srgb,var(--good) 11%,transparent)}
+.opts li.correct .mark{color:var(--good)}
+.opts li.wrong{border-color:var(--bad)}
+.opts li.wrong .mark{color:var(--bad)}
+svg.optthumb{display:block;width:100%;height:auto;background:var(--surface-2);border-radius:7px}
+
+.ctrl{margin:14px 0}
+.ctrl label{display:flex;flex-wrap:wrap;gap:4px;justify-content:space-between;align-items:baseline;
+  font-size:13px;margin-bottom:5px}
+.ctrl label span{min-width:0}
+.ctrl label .v{font-family:var(--mono);font-size:13px;color:var(--text-primary)}
+input[type=range]{width:100%;min-width:0;accent-color:var(--accent)}
+.numrow{display:flex;gap:6px;align-items:center;margin-top:6px}
+.numrow input.numin{flex:1;min-width:0;padding:7px 9px;border-radius:7px;border:1px solid var(--line-strong);
+  background:var(--surface-0);color:var(--text-primary);font-family:var(--mono);font-size:13px}
+.numrow input.numin:focus{outline:2px solid var(--accent);outline-offset:-1px}
+.numrow input.numin.bad{border-color:var(--bad);background:color-mix(in srgb,var(--bad) 9%,transparent)}
+.numrow button.step{flex:none;width:40px;height:34px;border-radius:8px;border:1px solid var(--line-strong);
+  background:var(--surface-2);color:var(--text-primary);font-size:18px;line-height:1;cursor:pointer;
+  font-family:var(--mono);touch-action:manipulation}
+.numrow button.step:hover{border-color:var(--accent);color:var(--accent)}
+.numrow .unit{flex:none;font-size:12px;color:var(--text-muted);min-width:52px}
+.hint{font-size:11.5px;color:var(--text-muted);margin-top:4px;min-height:1.15em}
+.hint.bad{color:var(--bad);font-weight:600}
+.segbtns{display:flex;gap:6px;flex-wrap:wrap}
+.segbtns button{flex:1;min-width:84px;padding:8px 6px;border-radius:8px;border:1px solid var(--line-strong);
+  background:var(--surface-2);color:var(--text-secondary);font-size:13px;cursor:pointer;font-family:var(--sans)}
+.segbtns button[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:650}
+button.act{padding:8px 14px;border-radius:8px;border:1px solid var(--line-strong);background:var(--surface-2);
+  color:var(--text-primary);font-size:13px;cursor:pointer;font-family:var(--sans)}
+button.act:hover{border-color:var(--accent);color:var(--accent)}
+button.act.primary{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+button.act:disabled{opacity:.42;cursor:not-allowed}
+.btnrow{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+
+.playback{display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin-top:12px;
+  padding:9px 10px;border:1px solid var(--line);border-radius:9px;background:var(--surface-2)}
+.playback .lb{font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-muted);margin-right:2px}
+.playback button{padding:6px 12px;border-radius:7px;border:1px solid var(--line-strong);
+  background:var(--surface-1);color:var(--text-secondary);font-size:12.5px;cursor:pointer;font-family:var(--mono)}
+.playback button[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:700}
+.playback button:hover{border-color:var(--accent)}
+
+.readouts{display:grid;grid-template-columns:repeat(auto-fit,minmax(118px,1fr));gap:8px}
+.ro{border:1px solid var(--line);border-radius:8px;padding:8px 10px;background:var(--surface-2);position:relative}
+.ro .k{font-size:11px;letter-spacing:.03em;font-weight:600;color:var(--text-muted);white-space:nowrap}
+.ro .v{font-family:var(--mono);font-size:16px;font-weight:600;line-height:1.35}
+.ro .u{font-size:10.5px;color:var(--text-muted)}
+.delta{position:absolute;top:5px;right:7px;font-family:var(--mono);font-size:10.5px;font-weight:700;
+  padding:1px 5px;border-radius:5px;opacity:0;transition:opacity .55s ease-out;pointer-events:none}
+.delta.up{color:var(--good);background:color-mix(in srgb,var(--good) 16%,transparent)}
+.delta.down{color:var(--s2);background:color-mix(in srgb,var(--s2) 16%,transparent)}
+.delta.show{opacity:1;transition:opacity .1s}
+
+.eqlive{font-family:var(--serif);font-size:15px;background:var(--surface-2);border:1px solid var(--line);
+  border-radius:8px;padding:11px 13px;margin-top:12px;line-height:2.1}
+.eqlive .t{font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-muted);
+  font-family:var(--sans);display:block;margin-bottom:2px}
+.eqlive b{font-family:var(--mono);font-weight:700}
+.eqlive .chg{background:color-mix(in srgb,var(--accent) 26%,transparent);border-radius:4px;padding:0 3px}
+.eqlive .res{color:var(--good);font-weight:700;font-family:var(--mono)}
+
+.chartwrap{position:relative;background:var(--surface-1);border:1px solid var(--line);
+  border-radius:var(--radius);padding:16px}
+svg.chart{display:block;width:100%;height:auto;overflow:visible}
+.tip{position:absolute;pointer-events:none;background:var(--surface-1);border:1px solid var(--line-strong);
+  border-radius:8px;padding:8px 11px;font-size:12px;box-shadow:0 4px 14px rgba(0,0,0,.13);opacity:0;
+  transition:opacity .1s;z-index:5;min-width:150px}
+.tip .t{font-family:var(--mono);font-size:11px;color:var(--text-muted);margin-bottom:4px}
+.tip .r{display:flex;align-items:center;gap:7px;white-space:nowrap}
+.tip .sw{width:9px;height:9px;border-radius:2px;flex:none}
+.tip .rv{margin-left:auto;font-family:var(--mono);font-weight:600}
+.legend{display:flex;flex-wrap:wrap;gap:14px;margin-top:10px;font-size:12.5px;color:var(--text-secondary)}
+.legend span{display:flex;align-items:center;gap:6px}
+.legend i{width:14px;height:3px;border-radius:2px;display:block}
+.legend i.dot{width:9px;height:9px;border-radius:50%}
+
+.predict{border:1px solid var(--accent);border-radius:9px;padding:12px 14px;margin-top:14px;
+  background:color-mix(in srgb,var(--accent) 7%,transparent)}
+.predict .q{font-size:13px;font-weight:600;margin-bottom:8px}
+.predict .row{display:flex;gap:6px;flex-wrap:wrap}
+.predict button{flex:1;min-width:96px;padding:8px;border-radius:8px;border:1px solid var(--line-strong);
+  background:var(--surface-1);color:var(--text-primary);font-size:13px;cursor:pointer}
+.predict button[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+.predict .fb{font-size:12.5px;margin-top:9px;min-height:1.2em}
+.predict .fb.ok{color:var(--good);font-weight:600}
+.predict .fb.no{color:var(--bad);font-weight:600}
+
+table.data{border-collapse:collapse;font-size:12.5px;width:100%}
+table.data th,table.data td{border:1px solid var(--line-strong);padding:6px 9px;text-align:center}
+table.data th{background:var(--surface-2);font-weight:600;font-size:11.5px;color:var(--text-secondary)}
+table.data td.l{text-align:left}
+table.data td.num{font-family:var(--mono)}
+tr.win td{background:color-mix(in srgb,var(--good) 12%,transparent);font-weight:600}
+.scrollx{overflow-x:auto}
+.yes{color:var(--good);font-weight:700} .no{color:var(--bad);font-weight:700}
+.empty{color:var(--text-muted);font-size:12.5px;padding:10px 0}
+
+.nb{display:grid;gap:7px}
+.nb .obs{font-size:12.5px;padding:8px 11px;border-radius:8px;background:var(--surface-2);
+  border-left:3px solid var(--s1);color:var(--text-secondary);animation:nbin .35s ease-out}
+.nb .obs b{color:var(--text-primary);font-family:var(--mono)}
+@keyframes nbin{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+.insight{border:1px solid var(--good);border-radius:9px;padding:12px 14px;margin-top:12px;
+  background:color-mix(in srgb,var(--good) 10%,transparent);font-size:13.5px;animation:nbin .4s ease-out}
+.insight b{color:var(--good)}
+
+.verdict{border-radius:9px;padding:11px 14px;font-size:13.5px;margin-top:12px;border:1px solid var(--line-strong);
+  background:var(--surface-2)}
+.verdict.ok{border-color:var(--good);background:color-mix(in srgb,var(--good) 10%,transparent)}
+.verdict.no{border-color:var(--bad);background:color-mix(in srgb,var(--bad) 9%,transparent)}
+.verdict b{font-size:14px}
+
+.gate{border:1px dashed var(--line-strong);border-radius:var(--radius);padding:24px 20px;text-align:center;
+  background:var(--surface-1)}
+.gate h4{margin:0 0 6px;font-size:15px}
+.gate p{margin:0 0 12px;font-size:13px;color:var(--text-secondary)}
+.gate .cnt{font-family:var(--mono);color:var(--accent);font-weight:700}
+.reveal{animation:nbin .45s ease-out}
+
+ol.steps{list-style:none;counter-reset:s;padding:0;margin:0;display:grid;gap:10px}
+ol.steps li{min-width:0;counter-increment:s;border:1px solid var(--line);border-radius:var(--radius);
+  background:var(--surface-1);padding:14px 16px 14px 52px;position:relative}
+ol.steps li::before{content:counter(s);position:absolute;left:15px;top:14px;width:23px;height:23px;
+  border-radius:50%;background:var(--accent);color:#fff;font-size:12px;font-weight:700;
+  display:grid;place-items:center;font-family:var(--mono)}
+ol.steps h4{margin:0 0 6px;font-size:14px;font-weight:640}
+ol.steps p{margin:0 0 6px;font-size:13.5px;color:var(--text-secondary)}
+.eq{min-width:0;font-family:var(--serif);font-size:15px;background:var(--surface-2);border-radius:7px;
+  padding:9px 13px;margin:8px 0;overflow-x:auto}
+.eq .hl{color:var(--good);font-weight:700}
+sub{font-size:.72em} sup{font-size:.72em}
+.verify{border:1px solid var(--good);border-radius:var(--radius);
+  background:color-mix(in srgb,var(--good) 8%,transparent);padding:14px 16px;font-size:13.5px}
+.verify h4{margin:0 0 6px;font-size:13.5px;color:var(--good)}
+.verify ul{margin:6px 0 0;padding-left:18px;color:var(--text-secondary)}
+.meta-tbl{width:100%;border-collapse:collapse;font-size:13.5px}
+.meta-tbl td{padding:6px 0;border-bottom:1px solid var(--line);vertical-align:top}
+.meta-tbl td:first-child{color:var(--text-muted);width:160px;font-size:12.5px;padding-right:14px}
+footer{border-top:1px solid var(--line);margin-top:40px;padding-top:16px;font-size:12px;color:var(--text-muted)}
+
+/* ====================================================================
+   the deck
+   ==================================================================== */
+.deck{border:1px solid var(--line);border-radius:var(--radius);padding:14px;
+  background:linear-gradient(180deg,var(--surface-1),color-mix(in srgb,var(--surface-2) 55%,var(--surface-1)));
+  box-shadow:0 1px 2px rgba(0,0,0,.04),0 10px 26px -18px rgba(0,0,0,.35)}
+.phasebar{display:flex;gap:6px;align-items:center;flex-wrap:wrap;padding-bottom:11px;
+  border-bottom:1px solid var(--line);margin-bottom:12px}
+.phasebar .ph{font-size:11.5px;padding:4px 11px;border-radius:999px;border:1px solid var(--line-strong);
+  background:var(--surface-1);color:var(--text-muted);white-space:nowrap;display:flex;gap:6px;
+  align-items:center;transition:.25s}
+.phasebar .ph .n{font-family:var(--mono);font-size:10px;opacity:.8}
+.phasebar .ph.now{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:650;
+  box-shadow:0 3px 10px -3px color-mix(in srgb,var(--accent) 60%,transparent)}
+.phasebar .ph.done{border-color:var(--good);color:var(--good);
+  background:color-mix(in srgb,var(--good) 12%,transparent);font-weight:600}
+.phasebar .sp{flex:1}
+.phasebar .tag{font-size:11px;color:var(--text-muted);font-family:var(--mono)}
+
+/* the lab floor is always dark, in either page theme - it is a chamber,
+   not a page surface, and the neon instruments need a dark ground */
+.labwrap{display:grid;grid-template-columns:minmax(0,1.62fr) minmax(0,1fr);gap:13px;align-items:start}
+.labwrap>*{min-width:0}
+@media(max-width:940px){.labwrap{grid-template-columns:1fr !important}}
+
+.lab3d{
+  --ink:#eef3ff; --ink2:#9fb0cc; --ink3:#6c7f9e;
+  --A:#54a9ff; --B:#ff9350; --V:#37d8a4; --T:#a99bff; --GD:#3ee39a; --BD:#ff6b6b;
+  --glass:rgba(255,255,255,.055); --edge:rgba(160,190,255,.22);
+  position:relative;border-radius:12px;padding:12px;overflow:hidden;
+  background:
+    radial-gradient(90% 70% at 18% 8%,rgba(84,169,255,.16),transparent 60%),
+    radial-gradient(80% 70% at 88% 92%,rgba(169,155,255,.15),transparent 62%),
+    linear-gradient(170deg,#0d1322 0%,#070a12 55%,#0a0e1a 100%);
+  border:1px solid rgba(150,180,255,.16);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.07),0 18px 40px -26px rgba(0,0,0,.9);
+  color:var(--ink);display:flex;flex-direction:column}
+.lab3d:before{content:"";position:absolute;inset:0;pointer-events:none;
+  background:repeating-linear-gradient(0deg,rgba(255,255,255,.028) 0 1px,transparent 1px 3px);
+  opacity:.5;mix-blend-mode:overlay}
+.lab3d>*{position:relative}
+.lab3d .hd{display:flex;align-items:baseline;gap:9px;flex-wrap:wrap;margin-bottom:5px}
+.lab3d .hd h3{margin:0;font-size:11.5px;letter-spacing:.11em;text-transform:uppercase;
+  color:#8fa6c9;font-weight:700}
+.lab3d .hd .st{font-size:10.5px;font-family:var(--mono);color:#6c7f9e;
+  border:1px solid rgba(160,190,255,.2);border-radius:999px;padding:1px 8px}
+.lab3d .narr{font-size:12.5px;color:#c3d2ea;margin:0 0 8px;min-height:2.6em;line-height:1.35}
+.lab3d .narr b{color:#fff;font-family:var(--mono);font-weight:650}
+.lab3d .narr .gd{color:var(--GD)}
+svg.stage{display:block;width:100%;height:auto}
+
+/* the instrument rail */
+.rail{border:1px solid var(--line);border-radius:12px;background:var(--surface-1);padding:11px 12px;
+  display:flex;flex-direction:column;gap:9px;max-height:470px;overflow:auto}
+@media(max-width:940px){.rail{max-height:none}}
+.rail h4{margin:0;font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--text-muted);font-weight:700}
+.rail .grp{border-top:1px dashed var(--line);padding-top:9px;margin-top:2px}
+.rail .grp:first-of-type{border-top:0;padding-top:0;margin-top:0}
+.fld{margin:8px 0 0}
+.fld .lb{display:flex;justify-content:space-between;align-items:baseline;gap:6px;font-size:12px;
+  margin-bottom:4px;color:var(--text-secondary)}
+.fld .lb b{font-weight:600;color:var(--text-primary)}
+.fld .lb .u{font-size:10.5px;color:var(--text-muted);font-family:var(--mono);flex:none}
+.fld .rw{display:flex;gap:5px;align-items:center}
+.fld .rw input.numin{flex:1;min-width:0;padding:6px 8px;border-radius:7px;
+  border:1px solid var(--line-strong);background:var(--surface-0);color:var(--text-primary);
+  font-family:var(--mono);font-size:13px;text-align:center;font-weight:600}
+.fld .rw input.numin:focus{outline:2px solid var(--accent);outline-offset:-1px}
+.fld .rw input.numin.bad{border-color:var(--bad);background:color-mix(in srgb,var(--bad) 10%,transparent)}
+.fld .rw button.step{flex:none;width:30px;height:30px;border-radius:7px;border:1px solid var(--line-strong);
+  background:var(--surface-2);color:var(--text-primary);font-size:16px;line-height:1;cursor:pointer;
+  font-family:var(--mono);touch-action:manipulation}
+.fld .rw button.step:hover{border-color:var(--accent);color:var(--accent)}
+.fld input[type=range]{width:100%;margin-top:4px;height:16px}
+.rail .fh{font-size:10.5px;color:var(--text-muted);margin-top:2px;line-height:1.3}
+.rail .fh.bad{color:var(--bad);font-weight:650}
+.fld.inert .lb b{color:var(--text-muted)}
+.givens{display:flex;gap:6px;flex-wrap:wrap;margin-top:4px}
+.givens span{font-size:10.5px;font-family:var(--mono);border:1px solid var(--line);border-radius:6px;
+  padding:2px 6px;color:var(--text-secondary);background:var(--surface-2)}
+
+/* live gauges shown while the run is going */
+.gauges{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(108px,100%),1fr));gap:7px}
+.gz{border:1px solid var(--line);border-radius:9px;background:var(--surface-2);padding:6px 8px;
+  position:relative;overflow:hidden}
+.gz .k{font-size:9.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--text-muted);
+  font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.gz .v{font-family:var(--mono);font-size:17px;font-weight:700;line-height:1.25}
+.gz .u{font-size:9.5px;color:var(--text-muted);font-weight:400}
+.gz.dim .v{color:var(--text-muted)}
+.gz.hot{border-color:var(--good);background:color-mix(in srgb,var(--good) 11%,transparent)}
+.gz.hot .v{color:var(--good)}
+
+/* action bar */
+.actbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:12px}
+button.go{flex:none;padding:12px 24px;border-radius:11px;border:none;background:var(--accent);
+  color:#fff;font-size:14.5px;font-weight:750;cursor:pointer;font-family:var(--sans);
+  letter-spacing:.04em;
+  box-shadow:0 4px 16px -6px color-mix(in srgb,var(--accent) 75%,transparent);transition:.18s}
+button.go:hover:not(:disabled){filter:brightness(1.09);transform:translateY(-1px)}
+button.go:disabled{opacity:.42;cursor:not-allowed;box-shadow:none;transform:none}
+button.go.rev{background:var(--good);animation:revpulse 1.8s ease-out infinite}
+@keyframes revpulse{
+  0%{box-shadow:0 4px 18px -5px color-mix(in srgb,var(--good) 80%,transparent),
+     0 0 0 0 color-mix(in srgb,var(--good) 55%,transparent)}
+  70%{box-shadow:0 4px 18px -5px color-mix(in srgb,var(--good) 80%,transparent),0 0 0 17px transparent}
+  100%{box-shadow:0 4px 18px -5px color-mix(in srgb,var(--good) 80%,transparent),0 0 0 0 transparent}}
+.actbar .msg{flex:1 1 210px;min-width:0;font-size:12px;color:var(--text-secondary);line-height:1.35}
+.actbar .msg b{color:var(--text-primary)}
+.actbar .msg .bad{color:var(--bad);font-weight:650}
+button.ghost{flex:none;padding:7px 13px;border-radius:9px;border:1px solid var(--line-strong);
+  background:var(--surface-1);color:var(--text-secondary);font-size:12.5px;cursor:pointer;
+  font-family:var(--sans)}
+button.ghost:hover:not(:disabled){border-color:var(--accent);color:var(--accent)}
+button.ghost:disabled{opacity:.4;cursor:not-allowed}
+button.ghost[aria-pressed=true]{border-color:var(--accent);color:var(--accent);
+  background:color-mix(in srgb,var(--accent) 10%,transparent)}
+.spd{display:flex;gap:4px;align-items:center}
+.spd button{padding:6px 9px;font-size:11.5px;border-radius:7px;border:1px solid var(--line-strong);
+  background:var(--surface-1);color:var(--text-secondary);cursor:pointer;font-family:var(--mono)}
+.spd button[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:#fff}
+
+/* ====================================================================
+   the reveal
+   ==================================================================== */
+.suspense{text-align:center;padding:14px 8px}
+.suspense .q{font-family:var(--serif);font-size:20px;color:#dbe6fb;margin-bottom:6px}
+.suspense .q .u{color:var(--V);font-weight:700}
+.suspense .blanks{font-family:var(--mono);font-size:44px;letter-spacing:.2em;color:#5d6f8e;
+  margin:10px 0 4px}
+.suspense .hintline{font-size:12px;color:#8fa6c9}
+.graf{display:block;width:100%;height:auto}
+.congrats{text-align:center;margin-top:4px}
+.congrats .c1{font-size:13px;letter-spacing:.24em;text-transform:uppercase;color:var(--GD);
+  font-weight:800}
+.congrats .c2{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#8fa6c9;margin-top:2px}
+
+@keyframes popblink{0%{transform:scale(1)} 12%{transform:scale(1.16)} 24%{transform:scale(1)}
+  38%{opacity:.2} 50%{opacity:1} 64%{opacity:.2} 76%{opacity:1}
+  88%{transform:scale(1.07)} 100%{transform:scale(1);opacity:1}}
+.blink{animation:popblink 2s ease-in-out 1;display:inline-block}
+@keyframes ringpulse{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--good) 55%,transparent)}
+  70%{box-shadow:0 0 0 14px transparent} 100%{box-shadow:0 0 0 0 transparent}}
+.celebrate{animation:ringpulse 1.5s ease-out 2}
+@media(prefers-reduced-motion:reduce){.blink,.celebrate,button.go.rev{animation:none}}
+
+/* ====================================================================
+   diagram / record / traps / concepts
+   ==================================================================== */
+.viewbtns{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
+.viewbtns button{padding:6px 12px;font-size:12px;border-radius:999px;border:1px solid var(--line-strong);
+  background:var(--surface-1);color:var(--text-secondary);cursor:pointer;font-family:var(--sans)}
+.viewbtns button[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:#fff;
+  font-weight:650}
+.viewbtns button:disabled{opacity:.42;cursor:not-allowed}
+.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:12px;color:var(--text-secondary);margin-top:8px}
+.legend i{display:inline-block;width:14px;height:3px;border-radius:2px;vertical-align:middle;
+  margin-right:5px}
+
+.trapgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr));gap:11px}
+.trapgrid>*{min-width:0}
+.trap{border:1px solid var(--line);border-radius:10px;background:var(--surface-2);padding:11px 12px;
+  display:flex;flex-direction:column;gap:6px}
+.trap h4{margin:0;font-size:13px;color:var(--s2)}
+.trap p{margin:0;font-size:12.5px;color:var(--text-secondary);line-height:1.45;flex:1}
+.trap .out{font-family:var(--mono);font-size:15px;font-weight:700;padding:6px 9px;border-radius:7px;
+  background:var(--surface-1);border:1px solid var(--line);color:var(--text-muted)}
+.trap .out.on{color:var(--bad);border-color:var(--bad);
+  background:color-mix(in srgb,var(--bad) 9%,transparent)}
+
+.ccards{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(238px,100%),1fr));gap:11px}
+.ccards>*{min-width:0}
+.cc{border:1px solid var(--line);border-radius:11px;padding:12px 13px;background:
+  linear-gradient(180deg,var(--surface-1),var(--surface-2));opacity:0;transform:translateY(10px)}
+.cc.in{animation:ccin .5s ease-out forwards}
+@keyframes ccin{to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.cc{opacity:1;transform:none}.cc.in{animation:none}}
+.cc .n{font-family:var(--mono);font-size:10.5px;color:var(--text-muted);letter-spacing:.08em}
+.cc h4{margin:3px 0 6px;font-size:13.5px}
+.cc p{margin:0 0 7px;font-size:12.5px;color:var(--text-secondary);line-height:1.5}
+.cc .f{font-family:var(--serif);font-size:14px;background:var(--surface-0);border-radius:7px;
+  padding:8px 10px;border:1px solid var(--line);line-height:1.75}
+.cc .f b{color:var(--good)}
+
+.trialtbl td.n,.trialtbl th.n{text-align:right;font-family:var(--mono)}
+.assume{border-left:3px solid var(--s4);padding:8px 0 8px 13px;margin:14px 0 0;font-size:13.5px;
+  color:var(--text-secondary)}
+.assume b{color:var(--text-primary)}
+
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-inner">
+    <div>
+      <div class="brandbar"><svg class="pxmark" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><rect width="32" height="32" rx="8" fill="var(--accent)"/><path d="M12.5 6.5h7M13.6 6.5v7.2L7.9 24.1a1.5 1.5 0 0 0 1.3 2.3h13.6a1.5 1.5 0 0 0 1.3-2.3l-5.7-10.4V6.5" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.6 20.6h10.8" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg><span class="wm">PRAYOG<i>X</i></span></div>
+      <div class="simid">ADV-2026-P2-CHE-Q15</div>
+      <h1>One mole of B, twice: as a vapour and as the liquid it came from</h1>
+      <div class="chips">
+        <span class="chip">JEE Advanced 2026</span>
+        <span class="chip">Paper 2 · Q.15</span>
+        <span class="chip">Chemistry</span>
+        <span class="chip">Solutions · Raoult's law</span>
+        <span class="chip">Numerical value</span>
+        <span class="chip">+2 / 0</span>
+        <span class="chip k">Enter the data · run it</span>
+      </div>
+    </div>
+    <div class="answerbox locked" id="answerbox">
+      <div class="lbl">Answer</div>
+      <div class="val" id="ansval">Run the experiment</div>
+      <div class="sub" id="anssub">Enter the data from the stem and run the bench.</div>
+      <button class="rv" id="revealnow" type="button">Reveal anyway</button>
+    </div>
+    <button class="themebtn" id="themebtn" type="button">◐ theme</button>
+  </div>
+</header>
+
+<nav class="jump">
+  <ul>
+    <li><a href="#question">Question</a></li>
+    <li><a href="#lab">The experiment</a></li>
+    <li><a href="#diagram">Pressure diagram</a></li>
+    <li><a href="#record">Record</a></li>
+    <li><a href="#traps">Where it goes wrong</a></li>
+    <li><a href="#solution">Solution</a></li>
+    <li><a href="#concepts">Concepts</a></li>
+  </ul>
+</nav>
+
+<div class="wrap">
+
+
+<section id="question">
+  <h2><span class="n">01</span>Original question <span class="vb">— verbatim</span></h2>
+  <p class="lede">JEE (Advanced) 2026, Paper 2, Chemistry, Section 4 — a question stem shared by
+     Q.15 and Q.16. This simulation answers Q.15.</p>
+  <div class="panel">
+    <h3>Question stem for question nos. 15 and 16</h3>
+    <div class="qtext">
+      <p>Two volatile liquids <b>A</b> and <b>B</b> form an ideal solution. Consider a
+         <b>5&nbsp;molal</b> solution of B in A inside a closed container having a total vapour
+         pressure of <b>100&nbsp;mm&nbsp;Hg</b> at <b>300&nbsp;K</b>. The vapour pressure of pure A
+         at 300&nbsp;K is <b>105&nbsp;mm&nbsp;Hg</b>. Assume that A and B behave as ideal gases in
+         the vapour phase.</p>
+    </div>
+    <table class="data" style="margin-top:14px">
+      <thead><tr><th>Given</th><th>Value</th></tr></thead>
+      <tbody>
+        <tr><td>The gas constant <i>R</i></td><td class="n">0.08 L atm K<sup>−1</sup> mol<sup>−1</sup></td></tr>
+        <tr><td>Molar mass of A</td><td class="n">50 g mol<sup>−1</sup></td></tr>
+        <tr><td>Molar mass of B</td><td class="n">57 g mol<sup>−1</sup></td></tr>
+        <tr><td>Density of liquid B at 300 K</td><td class="n">0.5 g/mL</td></tr>
+        <tr><td>1 atm</td><td class="n">760 mm Hg</td></tr>
+      </tbody>
+    </table>
+    <div class="qtext" style="margin-top:16px">
+      <p><b>Q.15</b>&nbsp; At 300 K, the ratio of the molar volume of pure B in vapour phase to its
+         molar volume in liquid phase is ____ .</p>
+    </div>
+    <div class="assume">
+      <b>Read the phrase carefully.</b> <i>Molar volume of pure B in the vapour phase</i> means one
+      mole of B on its own, as a gas, at 300 K and at <i>its own</i> vapour pressure
+      <i>p</i><sub>B</sub>° — not at the total pressure of the mixture and not at 1 atm. Finding
+      <i>p</i><sub>B</sub>° is what the first half of the question is for.
+    </div>
+    <div class="assume" style="border-left-color:var(--line-strong)">
+      The stem's other question, Q.16, asks for the mole fraction of B in the vapour phase. This
+      page is Q.15 only; the vapour composition is left alone so it stays a fresh question.
+    </div>
+  </div>
+</section>
+
+<section id="lab">
+  <h2><span class="n">02</span>The vapour-pressure lab</h2>
+  <p class="lede">Enter the numbers the question gives you into the instrument rail, then run the
+     experiment. The bench works out the mole fraction, boils the solution to find
+     <i>p</i><sub>B</sub>°, fills two chambers with one mole of B each — one liquid, one vapour —
+     and only then tells you the ratio.</p>
+
+  <div class="deck">
+    <div class="phasebar" id="phasebar">
+      <span class="ph" id="ph0"><span class="n">01</span>Charge</span>
+      <span class="ph" id="ph1"><span class="n">02</span>n(A)</span>
+      <span class="ph" id="ph2"><span class="n">03</span>x(B)</span>
+      <span class="ph" id="ph3"><span class="n">04</span>Raoult</span>
+      <span class="ph" id="ph4"><span class="n">05</span>Two volumes</span>
+      <span class="ph" id="ph5"><span class="n">06</span>Answer</span>
+      <span class="sp"></span>
+      <span class="tag" id="phtag">waiting for your data</span>
+    </div>
+
+    <div class="labwrap">
+      <div class="lab3d" id="lab3d">
+        <div class="hd">
+          <h3 id="scenet">Bench — closed container at 300 K</h3>
+          <span class="st" id="clock">t = 0.0 s</span>
+        </div>
+        <p class="narr" id="narr">The container is empty. Fill in the data from the question stem
+           and press <b>RUN VIRTUAL EXPERIMENT</b>.</p>
+        <div id="stagehost"></div>
+      </div>
+
+      <div class="rail" id="rail"></div>
+    </div>
+
+    <div class="actbar">
+      <button class="go" id="gobtn" type="button" disabled>▶&nbsp; RUN VIRTUAL EXPERIMENT</button>
+      <button class="ghost" id="pausebtn" type="button" disabled>Pause</button>
+      <div class="spd" id="spd" role="group" aria-label="playback speed">
+        <button type="button" data-s="0.5" aria-pressed="false">0.5×</button>
+        <button type="button" data-s="1" aria-pressed="true">1×</button>
+        <button type="button" data-s="2" aria-pressed="false">2×</button>
+      </div>
+      <button class="ghost" id="replaybtn" type="button" hidden>Replay experiment</button>
+      <button class="ghost" id="editbtn" type="button" hidden>Change the data</button>
+      <button class="ghost" id="sndbtn" type="button" aria-pressed="false"
+              title="synthesised bleeps, nothing is downloaded">♪ sound off</button>
+      <div class="msg" id="gomsg">Eight boxes, all of them printed in the question.</div>
+    </div>
+  </div>
+</section>
+
+<section id="diagram">
+  <h2><span class="n">03</span>The pressure diagram, drawn from your data</h2>
+  <p class="lede">An ideal solution has a straight-line pressure diagram: each component contributes
+     its own vapour pressure times its own mole fraction. Drag the composition and watch the total
+     move. The measured point is where your 5 molal solution sits.</p>
+  <div class="panel">
+    <div class="viewbtns" id="viewbtns" role="group" aria-label="diagram view">
+      <button type="button" data-v="raoult" aria-pressed="true">Pressure vs composition</button>
+      <button type="button" data-v="ratio" aria-pressed="false">Ratio vs p<sub>B</sub>°</button>
+      <button type="button" data-v="temp" aria-pressed="false">Ratio vs temperature</button>
+    </div>
+    <div class="chartwrap">
+      <svg class="chart" id="chart" viewBox="0 0 880 340" role="img"
+           aria-label="Pressure against the mole fraction of B for an ideal solution of A and B"></svg>
+    </div>
+    <div class="legend" id="legend"></div>
+    <div class="ctrl" id="xctrl" style="margin-top:14px">
+      <label for="xsl"><span>Explore the composition — mole fraction of B</span>
+        <span class="v" id="xval">0.200</span></label>
+      <input type="range" id="xsl" min="0" max="1000" value="200"
+             aria-label="mole fraction of B on the diagram">
+      <div class="hint" id="xhint">The run lands here from your molality; drag to see the rest of
+        the diagram. The marked point does not move.</div>
+    </div>
+    <div class="readouts" style="margin-top:12px">
+      <div class="ro"><div class="k">p<sub>A</sub> at this x</div><div class="v"><span id="rpA">—</span>
+        <span class="u">mm Hg</span></div></div>
+      <div class="ro"><div class="k">p<sub>B</sub> at this x</div><div class="v"><span id="rpB">—</span>
+        <span class="u">mm Hg</span></div></div>
+      <div class="ro"><div class="k">total at this x</div><div class="v"><span id="rpT">—</span>
+        <span class="u">mm Hg</span></div></div>
+      <div class="ro"><div class="k">molality that gives it</div><div class="v"><span id="rmol">—</span>
+        <span class="u">mol/kg</span></div></div>
+    </div>
+    <details style="margin-top:12px"><summary>The same numbers as a table</summary>
+      <div class="scrollx"><table class="data" id="dtbl"></table></div>
+    </details>
+  </div>
+</section>
+
+<section id="record">
+  <h2><span class="n">04</span>Record of the run</h2>
+  <p class="lede">Every quantity is filled in only when the experiment has established it, and every
+     completed run is logged so two sets of data can be compared side by side.</p>
+  <div class="lab">
+    <div class="panel">
+      <h3>What this run established</h3>
+      <div class="scrollx"><table class="data" id="rec"></table></div>
+      <div class="insight" id="insight" hidden></div>
+    </div>
+    <div class="panel">
+      <h3>Trial log</h3>
+      <p class="empty" id="trialempty">No runs yet. The log fills itself in as you run the
+         experiment — change a number and run it again to see what moves and what does not.</p>
+      <div class="scrollx"><table class="data trialtbl" id="trials" hidden></table></div>
+      <div class="btnrow" style="margin-top:11px">
+        <button class="ghost" id="clrtrials" type="button" disabled>Clear the log</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="traps">
+  <h2><span class="n">05</span>Where this question goes wrong</h2>
+  <p class="lede">Each card re-runs the model with one mistaken assumption and on your own numbers,
+     so the wrong answer appears as a measurement rather than as a warning. With the question's data
+     the right answer is a round number and every one of these is not.</p>
+  <div class="trapgrid" id="trapgrid"></div>
+</section>
+
+<section id="solution">
+  <h2><span class="n">06</span>Step-by-step solution</h2>
+  <p class="lede" id="solintro">Run the experiment and reveal the answer — the derivation opens with
+     it.</p>
+
+  <div class="gate" id="solgate">
+    <h4>The solution is still locked</h4>
+    <p>The bench has not produced an answer yet. Enter the data, run the experiment through to the
+       end and press <b>REVEAL ANSWER</b> — this opens by itself at the same moment.</p>
+    <button class="act" id="revealsol" type="button">Show me the solution anyway</button>
+  </div>
+
+  <div class="panel" id="solbody" hidden>
+    <ol class="steps">
+      <li>
+        <h4>Molality is per kilogram of solvent, so take 1 kg of A as the basis</h4>
+        <p>A 5 molal solution has 5 mol of B for every 1000 g of A. Nothing else about the amount
+           matters — the ratio of the two components is what the question fixes.</p>
+        <div class="eq">n(A) = 1000 g ÷ 50 g mol<sup>−1</sup> = <span class="hl">20 mol</span>
+          &nbsp;·&nbsp; n(B) = <span class="hl">5 mol</span></div>
+      </li>
+      <li>
+        <h4>Convert to mole fraction</h4>
+        <p>Raoult's law is written in mole fractions, never in molality, so this conversion is the
+           first real step of the problem.</p>
+        <div class="eq">x<sub>B</sub> = 5 / (20 + 5) = <span class="hl">0.2</span>
+          &nbsp;·&nbsp; x<sub>A</sub> = 1 − 0.2 = <span class="hl">0.8</span></div>
+        <p>In closed form, x<sub>B</sub> = m / (m + 1000/M<sub>A</sub>), which shows that the mass
+           of A you start from cancels out entirely.</p>
+      </li>
+      <li>
+        <h4>Raoult's law gives the vapour pressure of pure B</h4>
+        <p>For an ideal solution the total pressure is the sum of the two partial pressures, each of
+           them the pure-component vapour pressure scaled by that component's mole fraction. Only
+           <i>p</i><sub>B</sub>° is unknown, so the equation solves for it.</p>
+        <div class="eq">p<sub>total</sub> = p<sub>A</sub>° x<sub>A</sub> + p<sub>B</sub>° x<sub>B</sub></div>
+        <div class="eq">100 = (105)(0.8) + p<sub>B</sub>°(0.2) = 84 + 0.2 p<sub>B</sub>°</div>
+        <div class="eq">0.2 p<sub>B</sub>° = 16 &nbsp;⟹&nbsp;
+          <span class="hl">p<sub>B</sub>° = 80 mm Hg</span></div>
+        <p>A check that costs nothing: 105 × 0.8 = 84 and 80 × 0.2 = 16, and 84 + 16 = 100, the
+           pressure that was measured.</p>
+      </li>
+      <li>
+        <h4>Molar volume of B as a liquid — from its density</h4>
+        <p>One mole of liquid B weighs 57 g, and 57 g of a liquid of density 0.5 g/mL occupies
+           57/0.5 mL. Density is the only property of the liquid that enters.</p>
+        <div class="eq">V<sub>m</sub>(liquid) = M<sub>B</sub> / ρ<sub>B</sub> = 57 / 0.5
+          = 114 mL mol<sup>−1</sup> = <span class="hl">0.114 L mol<sup>−1</sup></span></div>
+      </li>
+      <li>
+        <h4>Molar volume of B as a vapour — from the ideal gas law at <i>its own</i> pressure</h4>
+        <p>Pure B as a vapour at 300 K sits at <i>p</i><sub>B</sub>° = 80 mm Hg. Convert to
+           atmospheres, because <i>R</i> is quoted in L atm K<sup>−1</sup> mol<sup>−1</sup>.</p>
+        <div class="eq">p = 80/760 atm &nbsp;·&nbsp; V<sub>m</sub>(vapour) = RT/p
+          = (0.08 × 300) × (760/80) = 24 × 9.5
+          = <span class="hl">228 L mol<sup>−1</sup></span></div>
+      </li>
+      <li>
+        <h4>The ratio</h4>
+        <p>Both volumes are per mole, so the units cancel and the answer is a pure number.</p>
+        <div class="eq">V<sub>m</sub>(vapour) / V<sub>m</sub>(liquid) = 228 / 0.114
+          = <span class="hl">2000</span></div>
+        <p>It is worth seeing why the number is so large. A mole of gas at this pressure is spread
+           over roughly two hundred litres while the same mole of liquid is about a tenth of a
+           litre: the molecules are the same, the spacing is not. In each direction the expansion is
+           only ∛2000 ≈ 12.6, which is why the two cubes on the bench are drawn at that edge ratio
+           rather than at 2000:1.</p>
+      </li>
+    </ol>
+
+    <div class="verify">
+      <h4>Independent verification</h4>
+      <ul>
+        <li><b>Derived first, checked afterwards.</b> The mole fraction, Raoult step, both molar
+          volumes and the ratio were worked out from the data alone before any published solution
+          was consulted.</li>
+        <li><b>The basis mass is irrelevant, proved rather than assumed.</b> Repeating the
+          calculation on 500 g, 1000 g, 2500 g and 137 g of A gives x<sub>B</sub> = 0.2 every time,
+          matching the closed form m/(m + 1000/M<sub>A</sub>). The simulation reproduces this live —
+          sweeping the mass of A changes n(A) and n(B) but never moves the answer.</li>
+        <li><b>Raoult back-substitution.</b> Putting <i>p</i><sub>B</sub>° = 80 back in returns
+          105(0.8) + 80(0.2) = 100 mm Hg exactly, the pressure the question states.</li>
+        <li><b>The ratio computed by two independent routes.</b> RT/p ÷ (M<sub>B</sub>/ρ<sub>B</sub>)
+          gives 2000, and the closed form R·T·(760/p<sub>B</sub>°)·ρ<sub>B</sub>·1000 ÷
+          M<sub>B</sub> gives 2000 to machine precision.</li>
+        <li><b>Scaling laws checked away from the paper's numbers.</b> Doubling T doubles the ratio,
+          doubling <i>p</i><sub>B</sub>° halves it, doubling the density of the liquid doubles it —
+          exactly as RT ρ/(M p) requires. The model therefore behaves correctly over its whole
+          range, not only at the question's values.</li>
+        <li><b>Dimensions and magnitude.</b> L mol<sup>−1</sup> over L mol<sup>−1</sup> leaves a
+          pure number. At 1 atm and 300 K the molar volume would be 24 L mol<sup>−1</sup>; at
+          80/760 atm it is 9.5 times larger, giving 228 — and a vapour near a tenth of an atmosphere
+          sitting about 10<sup>3</sup> times a liquid's volume is the expected order of magnitude.</li>
+        <li><b>Distractor audit.</b> Using p<sub>total</sub> instead of p<sub>B</sub>° gives 1600;
+          using p<sub>A</sub>° gives 1523.81; forgetting the mm Hg → atm conversion gives 2.63;
+          leaving the liquid volume in mL gives 2; reading 5 molal as x<sub>B</sub> = 5/20 gives
+          1882.35; inverting the ratio gives 5 × 10<sup>−4</sup>. None of them is 2000, and every
+          one is reproduced on the bench as a run.</li>
+        <li><b>Headless-browser run of this page.</b> The finished simulation was driven end to end
+          in Chromium and asserted to reproduce 2000 from the live model, to produce different
+          answers on different data, to refuse data that makes <i>p</i><sub>B</sub>° negative, to
+          keep the answer off the page until it is revealed, and to render without console errors or
+          horizontal overflow at 390 px and 360 px.</li>
+        <li><b>Cross-check.</b> Afterwards the answer was compared against a published worked
+          solution for this paper, which follows the same route and reports the same 2000 with the
+          same intermediate values (x<sub>B</sub> = 0.2, p<sub>B</sub>° = 80 mm Hg, 228 and
+          0.114 L mol<sup>−1</sup>). IIT Roorkee's official key was not retrievable at the time of
+          writing.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="concepts">
+  <h2><span class="n">07</span>Concepts &amp; classification</h2>
+  <p class="lede">Five ideas carry this question, and the experiment used them in this order. The
+     cards animate in when the answer is revealed — or right now, if you would rather read first.</p>
+  <div class="panel">
+    <h3>The five concepts, in the order the bench used them</h3>
+    <div class="ccards" id="ccards">
+      <div class="cc" id="cc0">
+        <div class="n">CONCEPT 01</div>
+        <h4>Molality is not mole fraction</h4>
+        <p>Molality counts moles of solute per <i>kilogram of solvent</i>; mole fraction counts them
+           against <i>all</i> the moles present. Raoult's law is written in mole fractions, so a
+           molality always has to be converted first — and the conversion needs the molar mass of
+           the solvent, which is why it is given.</p>
+        <div class="f">x<sub>B</sub> = m / (m + 1000/M<sub>A</sub>) &nbsp;⟹&nbsp; <span id="cf0">…</span></div>
+      </div>
+      <div class="cc" id="cc1">
+        <div class="n">CONCEPT 02</div>
+        <h4>Raoult's law for an ideal solution</h4>
+        <p>Each component escapes into the vapour in proportion to how much of the surface it owns.
+           The partial pressure is the pure-component vapour pressure scaled by that component's
+           mole fraction, and the total is their sum — a straight line between
+           p<sub>A</sub>° and p<sub>B</sub>°.</p>
+        <div class="f">p<sub>total</sub> = p<sub>A</sub>°x<sub>A</sub> + p<sub>B</sub>°x<sub>B</sub>
+          &nbsp;⟹&nbsp; <span id="cf1">…</span></div>
+      </div>
+      <div class="cc" id="cc2">
+        <div class="n">CONCEPT 03</div>
+        <h4>Molar volume of a liquid comes from density</h4>
+        <p>A liquid's molecules are already touching, so its volume is set by how much mass you have
+           and how tightly it packs. One mole is M grams, and M grams of a liquid of density ρ
+           occupies M/ρ — no temperature, no pressure, no gas law.</p>
+        <div class="f">V<sub>m</sub>(liq) = M<sub>B</sub>/ρ<sub>B</sub> &nbsp;⟹&nbsp;
+          <span id="cf2">…</span></div>
+      </div>
+      <div class="cc" id="cc3">
+        <div class="n">CONCEPT 04</div>
+        <h4>Molar volume of a vapour comes from the gas law — at its own pressure</h4>
+        <p>"Pure B in the vapour phase" is one mole of B alone, at 300 K, at the pressure pure B
+           actually exerts: the p<sub>B</sub>° the bench measured — not the mixture's total and not 1 atm.
+           Convert to atmospheres, because R is quoted in L atm K<sup>−1</sup> mol<sup>−1</sup>.</p>
+        <div class="f">V<sub>m</sub>(vap) = RT/p<sub>B</sub>° &nbsp;⟹&nbsp;
+          <span id="cf3">…</span></div>
+      </div>
+      <div class="cc" id="cc4">
+        <div class="n">CONCEPT 05</div>
+        <h4>Why the ratio is so large, and what it depends on</h4>
+        <p>Both volumes are per mole, so the units cancel and the answer is a pure number. It rises
+           with temperature, falls as the vapour pressure rises, and rises with the density of the
+           liquid. In each direction the expansion is only the cube root of it.</p>
+        <div class="f">V<sub>vap</sub>/V<sub>liq</sub> = RTρ<sub>B</sub>·1000 / (M<sub>B</sub>·p<sub>B</sub>°)
+          &nbsp;⟹&nbsp; <span id="cf4">…</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="lab" style="margin-top:16px">
+    <div class="panel">
+      <h3>Formulas used</h3>
+      <div class="eq">x<sub>B</sub> = n<sub>B</sub> / (n<sub>A</sub> + n<sub>B</sub>),
+        &nbsp; n<sub>A</sub> = w<sub>A</sub>/M<sub>A</sub>,
+        &nbsp; n<sub>B</sub> = m · w<sub>A</sub>/1000</div>
+      <div class="eq">p<sub>total</sub> = p<sub>A</sub>° x<sub>A</sub> + p<sub>B</sub>° x<sub>B</sub>
+        &nbsp;(Raoult, ideal solution)</div>
+      <div class="eq">V<sub>m</sub>(liquid) = M / ρ</div>
+      <div class="eq">V<sub>m</sub>(vapour) = RT / p, &nbsp; p in atm = p(mm Hg)/760</div>
+      <div class="eq">ratio = RTρ·1000 / (M · p<sub>B</sub>°)&nbsp;— dimensionless</div>
+      <p style="font-size:12.5px;color:var(--text-secondary);margin:12px 0 0">
+        Notice what is <i>not</i> in the last expression: the mass of A, the molar mass of A and the
+        molality appear only through p<sub>B</sub>°, and p<sub>A</sub>° and p<sub>total</sub> only
+        through the same quantity. Sweep the mass of A on the bench and the answer does not move.</p>
+    </div>
+    <div class="panel">
+      <h3>Classification</h3>
+      <table class="meta-tbl">
+        <tbody>
+          <tr><th>Exam</th><td>JEE Advanced 2026 · Paper 2</td></tr>
+          <tr><th>Subject</th><td>Chemistry</td></tr>
+          <tr><th>Section</th><td>Section 4 · question stem for Q.15 and Q.16</td></tr>
+          <tr><th>Question</th><td>Q.15 — numerical value</td></tr>
+          <tr><th>Marking</th><td>+2 if correct, 0 otherwise</td></tr>
+          <tr><th>Chapter</th><td>Solutions and Colligative Properties</td></tr>
+          <tr><th>Topic</th><td>Raoult's law for ideal solutions of two volatile liquids</td></tr>
+          <tr><th>Also draws on</th><td>Mole concept · Ideal gas equation · Density</td></tr>
+          <tr><th>Difficulty</th><td>Moderate</td></tr>
+          <tr><th>Answer</th><td><b id="clsans">— run the experiment</b></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<footer>
+  ADV-2026-P2-CHE-Q15 · PrayogX · JEE Advanced Interactive Simulation Library · question text reproduced
+  from the official JEE (Advanced) 2026 Paper 2 for educational use.
+</footer>
+</div>
+
+<script>
+
+var NS="http://www.w3.org/2000/svg";
+function css(v){ return getComputedStyle(document.documentElement).getPropertyValue(v).trim(); }
+function el(n,a){ var e=document.createElementNS(NS,n); for(var k in a) e.setAttribute(k,a[k]); return e; }
+function $(id){ return document.getElementById(id); }
+function clamp(v,a,b){ return v<a?a:(v>b?b:v); }
+function esc(s){ return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+
+/* ---- predictions + verdict matrix ------------------------------------- */
+var PORDER=["A","B","C","D"], pIdx=0, predictions={}, tested={}, revealed=false;
+
+function renderPredict(){
+  var kk=PORDER[pIdx], def=OPT[kk];
+  $("pq").innerHTML = "Statement ("+kk+") — "+def.shortq;
+  var bs=$("predict").querySelectorAll(".row button");
+  for(var i=0;i<bs.length;i++) bs[i].setAttribute("aria-pressed", predictions[kk]===bs[i].dataset.p?"true":"false");
+  var fb=$("pfb");
+  if(!predictions[kk]){ fb.className="fb"; fb.textContent="Commit to an answer, then go and test it on the bench above."; }
+  else if(!tested[kk]){ fb.className="fb"; fb.innerHTML="Logged. Now test ("+kk+") on the bench and see."; }
+  else {
+    var right = predictions[kk]===def.verdict;
+    fb.className="fb "+(right?"ok":"no");
+    fb.innerHTML=(right?"✓ Your prediction matches your measurement. ":"✗ Your measurement disagrees. ")+def.why;
+  }
+  $("pprev").disabled = pIdx===0; $("pnext").disabled = pIdx===PORDER.length-1;
+}
+function drawMatrix(){
+  var rows=PORDER.map(function(kk){
+    var def=OPT[kk], seen=!!tested[kk], pr=predictions[kk];
+    var vcell = seen ? (def.verdict==="yes" ? "<span class='yes'>✓ correct</span>"
+                                            : "<span class='no'>✗ not correct</span>")
+                     : "<span style='color:var(--text-muted)'>not tested yet</span>";
+    var ok = seen && pr && pr===def.verdict;
+    return "<tr"+(seen&&def.verdict==="yes"?" class='win'":"")+"><td><b>("+kk+")</b></td>"+
+      "<td class='l'>"+def.label+"</td><td>"+(pr?(pr==="yes"?"correct":"not correct"):"—")+"</td>"+
+      "<td>"+vcell+"</td><td>"+(seen&&pr?(ok?"<span class='yes'>match</span>":"<span class='no'>mismatch</span>"):"—")+"</td></tr>";
+  }).join("");
+  $("matrix").innerHTML="<thead><tr><th>Option</th><th class='l'>Statement</th><th>Your prediction</th>"+
+    "<th>What you measured</th><th></th></tr></thead><tbody>"+rows+"</tbody>";
+}
+function nTested(){ var n=0; for(var k in tested) if(tested[k]) n++; return n; }
+
+/* ---- the gate ---------------------------------------------------------- */
+function gateOpen(){ return nTested()>=4 || revealed; }
+function updateGate(){
+  if($("gtested")) $("gtested").textContent = nTested();
+  var open=gateOpen();
+  $("solgate").hidden = open;
+  $("solbody").hidden = !open;
+  var ab=$("answerbox");
+  if(open){
+    ab.classList.remove("locked");
+    $("ansval").textContent=ANSWER.text;
+    $("anssub").innerHTML=ANSWER.sub;
+    $("revealnow").hidden=true;
+    if($("clsans")) $("clsans").textContent=ANSWER.text;
+    if(!$("solbody").classList.contains("reveal")) $("solbody").classList.add("reveal");
+    if($("solintro")) $("solintro").innerHTML = revealed && nTested()<4
+      ? "Revealed early — go back and test the statements to see these conclusions come from your own measurements."
+      : "<b>You tested all four statements on the bench.</b> "+ANSWER.intro;
+  } else {
+    ab.classList.add("locked");
+    $("ansval").textContent="Run the experiment";
+    $("anssub").textContent=LOCKED_SUB;
+    $("revealnow").hidden=false;
+    if($("clsans")) $("clsans").textContent="— run the experiment";
+  }
+  markOptions();
+}
+function markOptions(){
+  if(!gateOpen()) return;
+  document.querySelectorAll("#opts li").forEach(function(li){
+    var kk=li.dataset.k, right=OPT[kk].verdict==="yes";
+    li.classList.remove("correct","wrong");
+    li.classList.add(right?"correct":"wrong");
+    li.querySelector(".mark").textContent = right?"correct":"not correct";
+  });
+}
+function markTested(kk){ if(!tested[kk]){ tested[kk]=true; updateGate(); drawMatrix(); renderPredict(); } }
+
+/* ---- notebook ---------------------------------------------------------- */
+var obsLog=[];
+function note(text){
+  if(obsLog.indexOf(text)>=0) return;
+  obsLog.push(text);
+  $("notebook").innerHTML = obsLog.map(function(o){ return '<div class="obs">'+o+"</div>"; }).join("");
+  $("nbempty").hidden = true;
+}
+
+/* ---- numeric control: slider + typed box + steppers -------------------- */
+function parseNum(str){
+  if(str===null||str===undefined) return null;
+  var s=String(str).trim().toLowerCase();
+  if(!s) return null;
+  s=s.replace(/π/g,"(pi)").replace(/pi/g,"(pi)").replace(/\(\(pi\)\)/g,"(pi)");
+  s=s.replace(/×10\^?/g,"e").replace(/x10\^?/g,"e").replace(/\s+/g,"");
+  if(!/^[0-9+\-*/().epi]+$/.test(s)) return null;
+  s=s.replace(/\(pi\)/g,"P_I");
+  if(/[a-z]/.test(s.replace(/P_I/g,"").replace(/e/g,""))) return null;
+  s=s.replace(/P_I/g,"("+Math.PI+")");
+  var v;
+  try { v=Function('"use strict";return ('+s+');')(); } catch(err){ return null; }
+  if(typeof v!=="number"||!isFinite(v)) return null;
+  return v;
+}
+function makeControl(cfg){
+  var sl=$(cfg.slider), inp=$(cfg.input), hint=$(cfg.hint), baseHint=hint?hint.innerHTML:"";
+  function toSlider(v){ return cfg.log ? Math.round(1000*Math.log(v/cfg.lo)/Math.log(cfg.hi/cfg.lo))
+                                       : Math.round((v-cfg.lo)/(cfg.hi-cfg.lo)*1000); }
+  function fromSlider(p){ return cfg.log ? cfg.lo*Math.pow(cfg.hi/cfg.lo,p/1000)
+                                         : cfg.lo+(cfg.hi-cfg.lo)*p/1000; }
+  sl.min=0; sl.max=1000;
+  function show(v){
+    sl.value=toSlider(v);
+    if(document.activeElement!==inp) inp.value=v.toFixed(cfg.dp);
+    inp.classList.remove("bad");
+    if(hint){ hint.classList.remove("bad"); hint.innerHTML=baseHint; }
+    if(cfg.valEl) $(cfg.valEl).textContent=v.toFixed(cfg.dp)+" "+cfg.unit;
+  }
+  function set(v){ v=clamp(v,cfg.lo,cfg.hi); ST[cfg.key]=v; show(v); if(cfg.onset) cfg.onset(); }
+  sl.addEventListener("input",function(){ set(fromSlider(+sl.value)); });
+  inp.addEventListener("input",function(){
+    var v=parseNum(inp.value);
+    if(v===null){ inp.classList.add("bad");
+      if(hint){ hint.classList.add("bad"); hint.textContent="That is not a number I can read — try 0.5, 1/2 or 5e-1."; }
+      return; }
+    if(v<cfg.lo||v>cfg.hi){ inp.classList.add("bad");
+      if(hint){ hint.classList.add("bad");
+        hint.textContent="Out of the range this apparatus can hold ("+cfg.lo+" to "+cfg.hi+" "+cfg.unit+")."; }
+      return; }
+    inp.classList.remove("bad");
+    if(hint){ hint.classList.remove("bad"); hint.innerHTML=baseHint; }
+    ST[cfg.key]=v; sl.value=toSlider(v);
+    if(cfg.valEl) $(cfg.valEl).textContent=v.toFixed(cfg.dp)+" "+cfg.unit;
+    if(cfg.onset) cfg.onset();
+  });
+  inp.addEventListener("blur",function(){ show(ST[cfg.key]); });
+  document.querySelectorAll('.step[data-for="'+cfg.slider+'"]').forEach(function(b){
+    b.addEventListener("click",function(){ set(ST[cfg.key]+(+b.dataset.dir)*cfg.step); });
+  });
+  show(ST[cfg.key]);
+  return { show:function(){ show(ST[cfg.key]); } };
+}
+
+/* ---- generic plotter --------------------------------------------------- */
+function niceAxis(a,b,want){
+  if(!(b>a)) b=a+1;
+  var raw=(b-a)/(want||5), ex=Math.floor(Math.log(raw)/Math.LN10), f=raw/Math.pow(10,ex);
+  var m=f<=1?1:(f<=2?2:(f<=2.5?2.5:(f<=5?5:10))), st=m*Math.pow(10,ex);
+  var lo=Math.floor(a/st+1e-9)*st, hi=Math.ceil(b/st-1e-9)*st;
+  if(hi-lo<st) hi=lo+st;
+  return {lo:lo,hi:hi,step:st,n:Math.max(1,Math.round((hi-lo)/st))};
+}
+function tickDp(step){
+  for(var d=0;d<=6;d++){ var s=step*Math.pow(10,d); if(Math.abs(s-Math.round(s))<1e-9) return d; }
+  return 6;
+}
+function plot(svg,cfg){
+  while(svg.firstChild) svg.removeChild(svg.firstChild);
+  var vb=svg.getAttribute("viewBox").split(/\s+/).map(Number), W=vb[2], H=vb[3];
+  var M={l:cfg.ml||70,r:cfg.mr||52,t:22,b:48};
+  var AX_=niceAxis(cfg.xMin,cfg.xMax,5), AY_=niceAxis(cfg.yMin,cfg.yMax,5);
+  var xa=AX_.lo, xb=AX_.hi, ya=AY_.lo, yb=AY_.hi;
+  function X(v){ return M.l+(v-xa)/(xb-xa)*(W-M.l-M.r); }
+  function Y(v){ return H-M.b-(v-ya)/(yb-ya)*(H-M.t-M.b); }
+  var grid=css("--line"), muted=css("--text-muted"), strong=css("--line-strong"), ink=css("--text-secondary");
+  var i, xdp=tickDp(AX_.step), ydp=tickDp(AY_.step);
+  for(i=0;i<=AX_.n;i++){
+    var xv=xa+AX_.step*i;
+    svg.appendChild(el("line",{x1:X(xv),x2:X(xv),y1:M.t,y2:H-M.b,stroke:grid,"stroke-width":1}));
+    var tx=el("text",{x:X(xv),y:H-M.b+18,"text-anchor":"middle",fill:muted,"font-size":10.5,
+      "font-family":"ui-monospace,monospace"});
+    tx.textContent=cfg.xFmt?cfg.xFmt(xv):xv.toFixed(xdp); svg.appendChild(tx);
+  }
+  for(i=0;i<=AY_.n;i++){
+    var yv=ya+AY_.step*i;
+    svg.appendChild(el("line",{x1:M.l,x2:W-M.r,y1:Y(yv),y2:Y(yv),stroke:grid,"stroke-width":1}));
+    var ty=el("text",{x:M.l-9,y:Y(yv)+3.5,"text-anchor":"end",fill:muted,"font-size":10.5,
+      "font-family":"ui-monospace,monospace"});
+    ty.textContent=cfg.yFmt?cfg.yFmt(yv):yv.toFixed(ydp); svg.appendChild(ty);
+  }
+  if(ya<0&&yb>0)
+    svg.appendChild(el("line",{x1:M.l,x2:W-M.r,y1:Y(0),y2:Y(0),stroke:strong,"stroke-width":1.5}));
+  svg.appendChild(el("line",{x1:M.l,x2:M.l,y1:M.t,y2:H-M.b,stroke:strong,"stroke-width":1.5}));
+  svg.appendChild(el("line",{x1:M.l,x2:W-M.r,y1:H-M.b,y2:H-M.b,stroke:strong,"stroke-width":1.5}));
+  var usedLbl=[];
+  (cfg.curves||[]).forEach(function(c){
+    if(!c.pts||c.pts.length<2) return;
+    var d=c.pts.map(function(p,ix){ return (ix?"L":"M")+X(p[0]).toFixed(1)+" "+Y(p[1]).toFixed(1); }).join(" ");
+    svg.appendChild(el("path",{d:d,fill:"none",stroke:css(c.col),"stroke-width":c.w||2.4,
+      "stroke-linecap":"round","stroke-linejoin":"round","stroke-dasharray":c.dash||"none",
+      opacity:c.op===undefined?1:c.op}));
+    if(c.label){
+      var last=c.pts[c.pts.length-1], ly=clamp(Y(last[1])+4,M.t+8,H-M.b);
+      for(var q=0;q<usedLbl.length;q++){ if(Math.abs(usedLbl[q]-ly)<13){ ly=usedLbl[q]+13; q=-1; } }
+      ly=clamp(ly,M.t+8,H-M.b-2); usedLbl.push(ly);
+      var lb=el("text",{x:clamp(X(last[0])+8,M.l,W-4),y:ly,fill:css(c.col),"font-size":11.5,
+        "font-weight":700,"text-anchor":X(last[0])>W-M.r-40?"end":"start"});
+      lb.textContent=c.label; svg.appendChild(lb);
+    }
+  });
+  (cfg.bars||[]).forEach(function(b){
+    var x0=X(b.x0), x1=X(b.x1), y0=Y(Math.max(ya,0)), y1=Y(b.y);
+    svg.appendChild(el("rect",{x:Math.min(x0,x1),y:Math.min(y0,y1),width:Math.abs(x1-x0),
+      height:Math.abs(y1-y0),fill:css(b.col),opacity:b.op===undefined?.85:b.op,rx:3}));
+    if(b.label){
+      var t=el("text",{x:(x0+x1)/2,y:Math.min(y0,y1)-6,"text-anchor":"middle",fill:css(b.col),
+        "font-size":11.5,"font-weight":700}); t.textContent=b.label; svg.appendChild(t);
+    }
+  });
+  (cfg.points||[]).forEach(function(p){
+    if(p.x<xa||p.x>xb||p.y<ya||p.y>yb) return;
+    svg.appendChild(el("circle",{cx:X(p.x),cy:Y(p.y),r:p.r||4.6,fill:p.fill||css("--surface-1"),
+      stroke:css(p.col),"stroke-width":2}));
+    if(p.label){
+      var t=el("text",{x:X(p.x),y:Y(p.y)-10,"text-anchor":"middle",fill:css(p.col),
+        "font-size":11,"font-weight":700}); t.textContent=p.label; svg.appendChild(t);
+    }
+  });
+  var axl=el("text",{x:(M.l+W-M.r)/2,y:H-8,"text-anchor":"middle",fill:ink,"font-size":12.5});
+  axl.textContent=cfg.xLabel; svg.appendChild(axl);
+  var ayl=el("text",{x:15,y:(M.t+H-M.b)/2,"text-anchor":"middle",fill:ink,"font-size":12.5,
+    transform:"rotate(-90 15 "+((M.t+H-M.b)/2)+")"});
+  ayl.textContent=cfg.yLabel; svg.appendChild(ayl);
+  svg._map={X:X,Y:Y,xa:xa,xb:xb,M:M,W:W};
+}
+
+/* ---- shared wiring ----------------------------------------------------- */
+function wireCommon(redraw){
+  $("predict").addEventListener("click",function(e){
+    var b=e.target.closest(".row button"); if(!b) return;
+    predictions[PORDER[pIdx]]=b.dataset.p; renderPredict(); drawMatrix();
+  });
+  $("pprev").addEventListener("click",function(){ if(pIdx>0){ pIdx--; renderPredict(); } });
+  $("pnext").addEventListener("click",function(){ if(pIdx<PORDER.length-1){ pIdx++; renderPredict(); } });
+  function doReveal(){ revealed=true; updateGate(); }
+  $("revealnow").addEventListener("click",doReveal);
+  $("revealsol").addEventListener("click",doReveal);
+  $("themebtn").addEventListener("click",function(){
+    var r=document.documentElement;
+    var dark=r.getAttribute("data-theme")==="dark" ||
+      (!r.getAttribute("data-theme")&&matchMedia("(prefers-color-scheme: dark)").matches);
+    r.setAttribute("data-theme",dark?"light":"dark");
+    if(redraw) redraw();
+  });
+}
+
+(function(){
+"use strict";
+
+/* =====================================================================
+   constants, central state, the model
+   ===================================================================== */
+var R_GAS = 0.08;          /* L atm / K / mol, as the question quotes it */
+var MMHG  = 760;           /* mm Hg per atm, as the question quotes it   */
+
+var FIELDS = [
+  {g:"Solution charge", k:"wA",  lab:"Mass of solvent A",        u:"g",      lo:100, hi:5000, st:50,   dp:0, def:1000,
+   fh:"molality is quoted per kilogram of A - this is the basis, and the answer does not depend on it"},
+  {k:"mol",  lab:"Molality of B in A",           u:"mol/kg", lo:0.5, hi:20,   st:0.5,  dp:2, def:5,
+   fh:"5 molal: 5 mol of B for every 1000 g of A"},
+  {g:"Pressures, measured at T", k:"pA0", lab:"Vapour pressure of pure A", u:"mm Hg", lo:20, hi:300, st:5, dp:1, def:105,
+   fh:"pure A on its own, at this temperature"},
+  {k:"pT",   lab:"Total pressure over the solution", u:"mm Hg", lo:10, hi:400, st:5, dp:1, def:100,
+   fh:"what the gauge on the closed container reads"},
+  {g:"Conditions", k:"T", lab:"Temperature", u:"K", lo:200, hi:500, st:10, dp:0, def:300,
+   fh:"the whole experiment is isothermal"},
+  {g:"Substance data", k:"MA",  lab:"Molar mass of A", u:"g/mol", lo:10, hi:200, st:1, dp:1, def:50,
+   fh:"needed only to turn the molality into a mole fraction"},
+  {k:"MB",   lab:"Molar mass of B",  u:"g/mol", lo:10,  hi:300, st:1,    dp:1, def:57,
+   fh:"one mole of B weighs this much, in both phases"},
+  {k:"rhoB", lab:"Density of liquid B", u:"g/mL", lo:0.1, hi:3, st:0.05, dp:2, def:0.5,
+   fh:"the only property of the liquid that matters here"}
+];
+
+var ST = {};
+for(var fi=0; fi<FIELDS.length; fi++) ST[FIELDS[fi].k] = FIELDS[fi].def;
+
+function solve(D){
+  var nA = D.wA / D.MA;
+  var nB = D.mol * D.wA / 1000;
+  var xB = nB / (nA + nB), xA = 1 - xB;
+  var pAp = D.pA0 * xA;              /* partial pressure contributed by A */
+  var pB0 = (D.pT - pAp) / xB;       /* Raoult, solved for the unknown    */
+  var pAtm = pB0 / MMHG;
+  var Vg = R_GAS * D.T / pAtm;       /* L / mol                           */
+  var Vl = D.MB / D.rhoB / 1000;     /* L / mol                           */
+  return { nA:nA, nB:nB, xB:xB, xA:xA, pAp:pAp, pB0:pB0, pBp:pB0*xB,
+           pAtm:pAtm, Vg:Vg, Vl:Vl, VlmL:D.MB/D.rhoB, ratio:Vg/Vl };
+}
+function copyST(){
+  var D = {}, i;
+  for(i=0;i<FIELDS.length;i++) D[FIELDS[i].k] = ST[FIELDS[i].k];
+  return D;
+}
+function complaint(D){
+  var xB = (D.mol*D.wA/1000) / (D.wA/D.MA + D.mol*D.wA/1000);
+  var pAp = D.pA0 * (1-xB);
+  if(D.pT <= pAp)
+    return "A on its own already contributes " + n1(pAp) + " mm Hg at this composition, so a total "
+         + "of " + n1(D.pT) + " would need B to have a negative vapour pressure. Raise the total "
+         + "pressure above " + n1(pAp) + " mm Hg, or lower p<sub>A</sub>&deg;.";
+  return null;
+}
+
+/* ---- number formatting ------------------------------------------------ */
+function grp(s){
+  var out="", c=0, i;
+  for(i=s.length-1;i>=0;i--){ out = s.charAt(i)+out; if(++c%3===0 && i>0) out = " "+out; }
+  return out;
+}
+function nInt(x){ return (x<0?"−":"") + grp(String(Math.abs(Math.round(x)))); }
+function n1(x){ return Math.abs(x-Math.round(x))<5e-7 ? nInt(x) : x.toFixed(1); }
+function n2(x){ return Math.abs(x-Math.round(x))<5e-7 ? nInt(x) : x.toFixed(2); }
+function n3(x){ return Math.abs(x-Math.round(x))<5e-7 ? nInt(x) : x.toFixed(3); }
+function ansTxt(r){
+  if(!isFinite(r)) return "—";
+  return Math.abs(r-Math.round(r))<5e-3 ? nInt(r) : r.toFixed(2);
+}
+
+/* =====================================================================
+   the rail - one field per quantity the question gives
+   ===================================================================== */
+function railHTML(){
+  var out = "", i;
+  for(i=0;i<FIELDS.length;i++){
+    var f = FIELDS[i];
+    if(f.g) out += (i? "</div>":"") + '<div class="grp"><h4>' + f.g + "</h4>";
+    out += '<div class="fld" id="fld_'+f.k+'">'
+        +  '<div class="lb"><span><b>'+f.lab+'</b></span><span class="u">'+f.u+'</span></div>'
+        +  '<div class="rw">'
+        +  '<button class="step" type="button" data-for="sl_'+f.k+'" data-dir="-1" '
+        +  'aria-label="decrease '+f.lab+'">−</button>'
+        +  '<input class="numin" id="in_'+f.k+'" inputmode="decimal" aria-label="'+f.lab+'">'
+        +  '<button class="step" type="button" data-for="sl_'+f.k+'" data-dir="1" '
+        +  'aria-label="increase '+f.lab+'">+</button></div>'
+        +  '<input type="range" id="sl_'+f.k+'" aria-label="'+f.lab+' slider">'
+        +  '<div class="fh" id="fh_'+f.k+'">'+f.fh+'</div></div>';
+  }
+  out += "</div>";
+  out += '<div class="grp"><h4>Fixed by the question</h4><div class="givens">'
+      +  '<span>R = 0.08 L atm K⁻¹ mol⁻¹</span><span>1 atm = 760 mm Hg</span>'
+      +  '<span>ideal solution</span><span>ideal vapour</span></div></div>';
+  return out;
+}
+function gaugeHTML(){
+  function g(id,k,u,cls){
+    return '<div class="gz '+(cls||"dim")+'" id="gz_'+id+'"><div class="k">'+k+'</div>'
+         + '<div class="v"><span id="gv_'+id+'">—</span> <span class="u">'+u+'</span></div></div>';
+  }
+  return '<div class="grp"><h4>Live instruments</h4><div class="gauges">'
+    + g("nA","n(A)","mol") + g("nB","n(B)","mol") + g("xB","x(B)","") + g("xA","x(A)","")
+    + g("pAp","p(A) partial","mm Hg") + g("pB0","p°(B) pure","mm Hg")
+    + g("Vl","Vₘ liquid","L/mol") + g("Vg","Vₘ vapour","L/mol")
+    + g("ratio","the ratio","") + '</div>'
+    + '<div class="fh" style="margin-top:7px" id="railnote">Each gauge fills in only when the run '
+    + 'has established it.</div></div>';
+}
+
+/* =====================================================================
+   scene machine
+   ===================================================================== */
+var SCENES = ["setup","a","b","raoult","vol","reveal"];
+var T_A = 5.0, T_B = 6.5, T_R = 9.0, T_V = 9.0;
+var DUR = { a:T_A, b:T_B, raoult:T_R, vol:T_V };
+var RUN = { scene:"setup", t:0, playing:false, speed:1, done:false, sound:false, D:null, S:null };
+var trials = [], mounted = "", stage = null, nodes = {};
+
+var TITLES = {
+  setup:"Bench — closed container, waiting for data",
+  a:"Step 1 — counting the solvent into the vessel",
+  b:"Step 2 — adding B by molality, building the mole fraction",
+  raoult:"Step 3 — letting it come to equilibrium: Raoult's law",
+  vol:"Step 4 — one mole of B, twice: as a liquid and as its vapour",
+  reveal:"Result — the ratio of the two molar volumes"
+};
+
+function sceneIdx(){ var i; for(i=0;i<SCENES.length;i++) if(SCENES[i]===RUN.scene) return i; return 0; }
+function setPhase(){
+  var idx = sceneIdx(), i;
+  for(i=0;i<6;i++)
+    $("ph"+i).className = "ph" + (i===idx ? " now" : (i<idx ? " done" : ""));
+  $("phtag").textContent = RUN.scene==="setup" ? "waiting for your data"
+    : (RUN.scene==="reveal" ? (RUN.done ? "answer revealed" : "one number left")
+                            : (RUN.playing ? "experiment running" : "paused"));
+  $("scenet").textContent = TITLES[RUN.scene];
+  $("clock").textContent = RUN.scene==="setup" ? "t = 0.0 s"
+    : "t = " + elapsed().toFixed(1) + " s";
+}
+function elapsed(){
+  var i, t = 0;
+  for(i=1;i<SCENES.length;i++){
+    if(SCENES[i]===RUN.scene) return t + RUN.t;
+    t += DUR[SCENES[i]] || 0;
+  }
+  return t;
+}
+function totalT(){ return T_A+T_B+T_R+T_V; }
+
+/* =====================================================================
+   the stage - one dark chamber, five scenes
+   ===================================================================== */
+var COL = { A:"#54a9ff", B:"#ff9350", V:"#37d8a4", T:"#a99bff", GD:"#3ee39a", BD:"#ff6b6b",
+            ink:"#eef3ff", ink2:"#9fb0cc", ink3:"#6c7f9e", edge:"rgba(160,190,255,.26)",
+            glass:"rgba(255,255,255,.05)" };
+var VB_W = 720, VB_H = 440;
+var VX0 = 64, VX1 = 292, VTOP = 70, VBOT = 360, VSURF = 214;
+var VCX = (VX0+VX1)/2, VRX = (VX1-VX0)/2;
+
+function mk(tag, at, parent){
+  var e = el(tag, at||{});
+  if(parent) parent.appendChild(e);
+  return e;
+}
+function tx(parent, x, y, s, at){
+  var a = {x:x, y:y, fill:COL.ink2, "font-size":12, "font-family":"ui-monospace,monospace"};
+  for(var k in (at||{})) a[k] = at[k];
+  var t = mk("text", a, parent);
+  t.textContent = s;
+  return t;
+}
+function newStage(){
+  var svg = el("svg", {viewBox:"0 0 "+VB_W+" "+VB_H, "class":"stage", role:"img",
+    "aria-label":"Virtual vapour-pressure bench: a closed container of solution with a pressure "
+      + "gauge, and two chambers holding one mole of B as a liquid and as its vapour"});
+  $("stagehost").innerHTML = "";
+  $("stagehost").appendChild(svg);
+  return svg;
+}
+function defsFor(svg){
+  var d = mk("defs", {}, svg);
+  var g1 = mk("linearGradient", {id:"gLiq", x1:"0", y1:"0", x2:"0", y2:"1"}, d);
+  mk("stop", {offset:"0", "stop-color":"#2a4a7a", "stop-opacity":".95"}, g1);
+  mk("stop", {offset:"1", "stop-color":"#16233c", "stop-opacity":".95"}, g1);
+  var g2 = mk("linearGradient", {id:"gGlass", x1:"0", y1:"0", x2:"1", y2:"0"}, d);
+  mk("stop", {offset:"0",   "stop-color":"#ffffff", "stop-opacity":".16"}, g2);
+  mk("stop", {offset:".18", "stop-color":"#ffffff", "stop-opacity":".03"}, g2);
+  mk("stop", {offset:".82", "stop-color":"#ffffff", "stop-opacity":".03"}, g2);
+  mk("stop", {offset:"1",   "stop-color":"#ffffff", "stop-opacity":".12"}, g2);
+  var f = mk("filter", {id:"soft", x:"-60%", y:"-60%", width:"220%", height:"220%"}, d);
+  mk("feGaussianBlur", {stdDeviation:"7"}, f);
+  var sp = mk("filter", {id:"spray", x:"-14%", y:"-40%", width:"128%", height:"180%"}, d);
+  mk("feTurbulence", {type:"fractalNoise", baseFrequency:"0.045 0.09", numOctaves:"3",
+                      seed:"7", result:"nz"}, sp);
+  mk("feDisplacementMap", {"in":"SourceGraphic", in2:"nz", scale:"7",
+                           xChannelSelector:"R", yChannelSelector:"G"}, sp);
+  return d;
+}
+
+/* ---- the vessel, shared by scenes a / b / raoult ---------------------- */
+function buildVessel(svg, ghost){
+  var g = mk("g", {}, svg);
+  /* glow behind the glass */
+  mk("ellipse", {cx:VCX, cy:250, rx:150, ry:170, fill:"#2b6cff", opacity: ghost?.05:.11,
+                 filter:"url(#soft)"}, g);
+  /* liquid (rect + surface ellipse) - painted later */
+  nodes.liqRect = mk("rect", {x:VX0, y:VSURF, width:VX1-VX0, height:VBOT-VSURF,
+                              fill:"url(#gLiq)", opacity: ghost?.25:1}, g);
+  nodes.liqSurf = mk("ellipse", {cx:VCX, cy:VSURF, rx:VRX, ry:13,
+                                 fill:"#3d6ea8", opacity: ghost?.3:.85}, g);
+  /* particle pools sit between the liquid and the glass */
+  nodes.pLiq = mk("g", {}, g);
+  nodes.pVap = mk("g", {}, g);
+  /* the glass body */
+  mk("path", {d:"M"+VX0+" "+VTOP+" V"+(VBOT-16)+" a16,16 0 0 0 16,16 H"+(VX1-16)
+                +" a16,16 0 0 0 16,-16 V"+VTOP,
+              fill:"url(#gGlass)", stroke:COL.edge, "stroke-width":2}, g);
+  /* lid + valve */
+  mk("ellipse", {cx:VCX, cy:VTOP, rx:VRX, ry:17, fill:"#111a2c", stroke:COL.edge,
+                 "stroke-width":2}, g);
+  mk("ellipse", {cx:VCX, cy:VTOP-3, rx:VRX-14, ry:12, fill:"none",
+                 stroke:"rgba(160,190,255,.14)", "stroke-width":1.4}, g);
+  mk("rect", {x:VCX-13, y:VTOP-26, width:26, height:16, rx:4, fill:"#16223a",
+              stroke:COL.edge, "stroke-width":1.6}, g);
+  /* specular streak */
+  mk("path", {d:"M"+(VX0+17)+" "+(VTOP+26)+" V"+(VBOT-40), stroke:"rgba(255,255,255,.22)",
+              "stroke-width":5, "stroke-linecap":"round", fill:"none"}, g);
+  /* base shadow */
+  mk("ellipse", {cx:VCX, cy:VBOT+16, rx:VRX+16, ry:9, fill:"#000", opacity:.4}, g);
+  nodes.vlabel = tx(g, VCX, VBOT+42, "", {"text-anchor":"middle", "font-size":11, fill:COL.ink3});
+  return g;
+}
+
+/* ---- particles -------------------------------------------------------- */
+var PART = {liq:[], vap:[]};
+var MAXL = 46, MAXV = 40;
+function seedParticles(){
+  var i;
+  PART.liq = []; PART.vap = [];
+  for(i=0;i<MAXL;i++)
+    PART.liq.push({x: VX0+10+Math.random()*(VX1-VX0-20), y: VSURF+16+Math.random()*(VBOT-VSURF-26),
+                   vx:(Math.random()-.5)*26, vy:(Math.random()-.5)*26, k:0, born:1});
+  for(i=0;i<MAXV;i++)
+    PART.vap.push({x: VX0+10+Math.random()*(VX1-VX0-20), y: VTOP+22+Math.random()*(VSURF-VTOP-34),
+                   vx:(Math.random()-.5)*64, vy:(Math.random()-.5)*64, k:0});
+}
+function buildPool(host, n, r){
+  var i, arr = [];
+  for(i=0;i<n;i++) arr.push(mk("circle", {cx:-20, cy:-20, r:r, fill:COL.A, opacity:0}, host));
+  return arr;
+}
+function stepParticles(dt){
+  var i, p, lo = VSURF+14, hi = VBOT-10;
+  for(i=0;i<PART.liq.length;i++){
+    p = PART.liq[i];
+    p.x += p.vx*dt; p.y += p.vy*dt;
+    if(p.x < VX0+9){ p.x = VX0+9; p.vx = -p.vx; }
+    if(p.x > VX1-9){ p.x = VX1-9; p.vx = -p.vx; }
+    if(p.y < lo){ p.y = lo; p.vy = -p.vy; }
+    if(p.y > hi){ p.y = hi; p.vy = -p.vy; }
+  }
+  var vlo = VTOP+22, vhi = VSURF-12;
+  for(i=0;i<PART.vap.length;i++){
+    p = PART.vap[i];
+    p.x += p.vx*dt; p.y += p.vy*dt;
+    if(p.x < VX0+9){ p.x = VX0+9; p.vx = -p.vx; }
+    if(p.x > VX1-9){ p.x = VX1-9; p.vx = -p.vx; }
+    if(p.y < vlo){ p.y = vlo; p.vy = -p.vy; }
+    if(p.y > vhi){ p.y = vhi; p.vy = -p.vy; }
+  }
+}
+/* how many dots to draw, and what each one is worth */
+function dotPlan(S){
+  var tot = S.nA + S.nB, per = 1;
+  if(tot > 30) per = Math.ceil(tot/30);
+  var dA = Math.max(1, Math.round(S.nA/per)), dB = Math.max(1, Math.round(S.nB/per));
+  if(dA+dB > MAXL){ var f = MAXL/(dA+dB); dA = Math.max(1,Math.floor(dA*f)); dB = Math.max(1,Math.floor(dB*f)); }
+  return {per:per, A:dA, B:dB};
+}
+
+/* ---- small drawing helpers -------------------------------------------- */
+function pol(cx, cy, r, deg){
+  var a = deg*Math.PI/180;
+  return [cx + r*Math.cos(a), cy + r*Math.sin(a)];
+}
+function isoCube(host, cx, cy, e, col, op){
+  var w = 0.8660254*e, h = 0.5*e, g = mk("g", {}, host);
+  function P(pts){ return pts.map(function(p){ return (cx+p[0]).toFixed(1)+","+(cy+p[1]).toFixed(1); }).join(" "); }
+  mk("polygon", {points:P([[0,-e],[w,-h],[0,0],[-w,-h]]), fill:col, opacity:(op||1)*.95}, g);
+  mk("polygon", {points:P([[-w,-h],[0,0],[0,e],[-w,h]]),  fill:col, opacity:(op||1)*.52}, g);
+  mk("polygon", {points:P([[w,-h],[0,0],[0,e],[w,h]]),    fill:col, opacity:(op||1)*.7}, g);
+  mk("polygon", {points:P([[0,-e],[w,-h],[w,h],[0,e],[-w,h],[-w,-h]]), fill:"none",
+                 stroke:col, "stroke-width":1.5, opacity:(op||1)}, g);
+  return g;
+}
+function card(host, x, y, w, h, title){
+  var g = mk("g", {}, host);
+  mk("rect", {x:x, y:y, width:w, height:h, rx:11, fill:"rgba(255,255,255,.045)",
+              stroke:COL.edge, "stroke-width":1.4}, g);
+  if(title) tx(g, x+14, y+20, title, {"font-size":10, fill:COL.ink3, "letter-spacing":"1.4"});
+  return g;
+}
+function eqLine(host, x, y, w){
+  var g = mk("g", {opacity:0}, host);
+  mk("rect", {x:x, y:y, width:w, height:29, rx:7, fill:"rgba(255,255,255,.05)",
+              stroke:"rgba(160,190,255,.16)", "stroke-width":1}, g);
+  var t = tx(g, x+12, y+19.5, "", {"font-size":13.5, fill:COL.ink,
+             "font-family":"ui-serif,Georgia,serif"});
+  return {g:g, t:t};
+}
+function fadeIn(o, on){ o.g.setAttribute("opacity", on ? 1 : 0); }
+
+/* =====================================================================
+   mount + paint
+   ===================================================================== */
+function mountKey(){
+  return RUN.scene + (RUN.scene==="reveal" ? (RUN.done?"-a":"-q") : "");
+}
+function render(){
+  var k = mountKey();
+  if(mounted !== k){ mountScene(); mounted = k; }
+  paintScene();
+  setPhase();
+}
+function remount(){ mounted = ""; render(); }
+
+function mountScene(){
+  nodes = {};
+  if(RUN.scene === "reveal"){ mountReveal(); return; }
+  stage = newStage();
+  defsFor(stage);
+  var sc = RUN.scene;
+
+  if(sc==="setup"){
+    buildVessel(stage, true);
+    nodes.poolL = buildPool(nodes.pLiq, 0, 6);
+    var c = card(stage, 336, 96, 370, 228, "WAITING FOR DATA");
+    tx(c, 356, 150, "mole fraction of B", {"font-size":12.5, fill:COL.ink3});
+    tx(c, 686, 150, "—", {"font-size":16, fill:COL.ink3, "text-anchor":"end"});
+    tx(c, 356, 194, "vapour pressure of pure B", {"font-size":12.5, fill:COL.ink3});
+    tx(c, 686, 194, "—", {"font-size":16, fill:COL.ink3, "text-anchor":"end"});
+    tx(c, 356, 238, "molar volume as a vapour", {"font-size":12.5, fill:COL.ink3});
+    tx(c, 686, 238, "—", {"font-size":16, fill:COL.ink3, "text-anchor":"end"});
+    tx(c, 356, 282, "molar volume as a liquid", {"font-size":12.5, fill:COL.ink3});
+    tx(c, 686, 282, "—", {"font-size":16, fill:COL.ink3, "text-anchor":"end"});
+    mk("line", {x1:356, y1:162, x2:686, y2:162, stroke:"rgba(160,190,255,.12)"}, c);
+    mk("line", {x1:356, y1:206, x2:686, y2:206, stroke:"rgba(160,190,255,.12)"}, c);
+    mk("line", {x1:356, y1:250, x2:686, y2:250, stroke:"rgba(160,190,255,.12)"}, c);
+    nodes.setupMsg = tx(stage, 521, 356, "the bench works these out", {"text-anchor":"middle",
+      "font-size":11.5, fill:COL.ink3});
+    return;
+  }
+
+  if(sc==="a" || sc==="b"){
+    buildVessel(stage, false);
+    nodes.poolL = buildPool(nodes.pLiq, MAXL, 6);
+    var big = card(stage, 336, 74, 370, 118, sc==="a" ? "MOLES OF SOLVENT A" : "MOLES OF B ADDED");
+    nodes.bigv = tx(big, 356, 150, "0", {"font-size":52, fill: sc==="a"?COL.A:COL.B,
+      "font-weight":"700", "font-family":"ui-monospace,monospace"});
+    nodes.bigu = tx(big, 356, 176, "mol", {"font-size":12.5, fill:COL.ink3});
+    nodes.bigside = tx(big, 686, 150, "", {"font-size":12, fill:COL.ink3, "text-anchor":"end"});
+    nodes.bigside2 = tx(big, 686, 170, "", {"font-size":12, fill:COL.ink3, "text-anchor":"end"});
+    if(sc==="b"){
+      nodes.barTitle = tx(stage, 336, 216, "MOLE FRACTION, BY COUNT", {"font-size":10,
+        fill:COL.ink3, "letter-spacing":"1.4"});
+      mk("rect", {x:336, y:226, width:370, height:26, rx:6, fill:"rgba(255,255,255,.05)",
+                  stroke:COL.edge, "stroke-width":1}, stage);
+      nodes.barA = mk("rect", {x:337, y:227, width:0, height:24, rx:5, fill:COL.A, opacity:.85}, stage);
+      nodes.barB = mk("rect", {x:337, y:227, width:0, height:24, rx:5, fill:COL.B, opacity:.9}, stage);
+      nodes.barLA = tx(stage, 340, 268, "", {"font-size":11.5, fill:COL.A});
+      nodes.barLB = tx(stage, 702, 268, "", {"font-size":11.5, fill:COL.B, "text-anchor":"end"});
+    }
+    nodes.eq = [];
+    var y0 = sc==="a" ? 216 : 288, i;
+    for(i=0;i<3;i++) nodes.eq.push(eqLine(stage, 336, y0+i*36, 370));
+    return;
+  }
+
+  if(sc==="raoult"){
+    buildVessel(stage, false);
+    nodes.poolL = buildPool(nodes.pLiq, MAXL, 6);
+    nodes.poolV = buildPool(nodes.pVap, MAXV, 5);
+    /* the gauge, piped off the lid */
+    mk("path", {d:"M"+(VCX+13)+" "+(VTOP-18)+" H400 a14,14 0 0 1 14,14 V96",
+                fill:"none", stroke:COL.edge, "stroke-width":3}, stage);
+    var gx = 470, gy = 128, gr = 62, i2;
+    mk("circle", {cx:gx, cy:gy, r:gr+9, fill:"#0c1424", stroke:COL.edge, "stroke-width":2}, stage);
+    mk("circle", {cx:gx, cy:gy, r:gr, fill:"#070c17", stroke:"rgba(160,190,255,.14)",
+                  "stroke-width":1}, stage);
+    for(i2=0;i2<=10;i2++){
+      var a = 150 + 24*i2, p1 = pol(gx, gy, gr-3, a), p2 = pol(gx, gy, gr-(i2%5===0?15:9), a);
+      mk("line", {x1:p1[0], y1:p1[1], x2:p2[0], y2:p2[1],
+                  stroke: i2%5===0 ? COL.ink2 : "rgba(160,190,255,.3)",
+                  "stroke-width": i2%5===0 ? 2 : 1}, stage);
+    }
+    nodes.gmax = tx(stage, gx, gy+52, "", {"text-anchor":"middle", "font-size":9.5, fill:COL.ink3});
+    nodes.needle = mk("line", {x1:gx, y1:gy, x2:gx, y2:gy-40, stroke:COL.V, "stroke-width":3,
+                               "stroke-linecap":"round"}, stage);
+    mk("circle", {cx:gx, cy:gy, r:5, fill:COL.ink2}, stage);
+    nodes.gread = tx(stage, gx, gy+34, "0", {"text-anchor":"middle", "font-size":17, fill:COL.V,
+                     "font-weight":"700"});
+    tx(stage, gx, gy+90, "TOTAL PRESSURE · mm Hg", {"text-anchor":"middle", "font-size":9.5,
+       fill:COL.ink3, "letter-spacing":"1.2"});
+    /* partial-pressure bars beside the dial */
+    nodes.ppA = mk("rect", {x:566, y:190, width:20, height:0, rx:4, fill:COL.A, opacity:.85}, stage);
+    nodes.ppB = mk("rect", {x:600, y:190, width:20, height:0, rx:4, fill:COL.B, opacity:.9}, stage);
+    mk("line", {x1:556, y1:190, x2:640, y2:190, stroke:"rgba(160,190,255,.25)"}, stage);
+    tx(stage, 576, 204, "p(A)", {"text-anchor":"middle", "font-size":10, fill:COL.A});
+    tx(stage, 610, 204, "p(B)", {"text-anchor":"middle", "font-size":10, fill:COL.B});
+    nodes.eq = [];
+    var i3;
+    for(i3=0;i3<5;i3++) nodes.eq.push(eqLine(stage, 336, 224+i3*35, 370));
+    nodes.vaplab = tx(stage, VCX, VTOP+40, "", {"text-anchor":"middle", "font-size":10.5,
+      fill:COL.ink3});
+    return;
+  }
+
+  if(sc==="vol"){
+    card(stage, 20, 40, 270, 384, "CHAMBER 1 \u00b7 ONE MOLE OF LIQUID B");
+    card(stage, 310, 40, 390, 384, "CHAMBER 2 \u00b7 ONE MOLE OF B AS VAPOUR");
+    nodes.cubeHostL = mk("g", {}, stage);
+    nodes.cubeHostR = mk("g", {}, stage);
+    nodes.scaleNote = tx(stage, 155, 356, "", {"text-anchor":"middle", "font-size":9.5,
+      fill:COL.ink3});
+    nodes.lq1 = tx(stage, 155, 378, "", {"text-anchor":"middle", "font-size":12,
+      fill:COL.ink, "font-family":"ui-serif,Georgia,serif"});
+    nodes.lq2 = tx(stage, 155, 396, "", {"text-anchor":"middle", "font-size":12,
+      fill:COL.ink, "font-family":"ui-serif,Georgia,serif"});
+    nodes.lq3 = tx(stage, 155, 417, "", {"text-anchor":"middle", "font-size":15, fill:COL.B,
+      "font-weight":"700", "font-family":"ui-monospace,monospace"});
+    nodes.gq1 = tx(stage, 505, 378, "", {"text-anchor":"middle", "font-size":12,
+      fill:COL.ink, "font-family":"ui-serif,Georgia,serif"});
+    nodes.gq2 = tx(stage, 505, 396, "", {"text-anchor":"middle", "font-size":12,
+      fill:COL.ink, "font-family":"ui-serif,Georgia,serif"});
+    nodes.gq3 = tx(stage, 505, 417, "", {"text-anchor":"middle", "font-size":15, fill:COL.V,
+      "font-weight":"700", "font-family":"ui-monospace,monospace"});
+    nodes.leader = mk("line", {x1:0, y1:0, x2:0, y2:0, stroke:"rgba(160,190,255,.35)",
+      "stroke-width":1, "stroke-dasharray":"3 3", opacity:0}, stage);
+    return;
+  }
+}
+/* ---- paint ------------------------------------------------------------ */
+function ease(t){ return t<0?0:(t>1?1:(t*t*(3-2*t))); }
+function seg(t,a,b){ return ease((t-a)/(b-a)); }
+function mapY(py, curSurf){
+  var f = (py-(VSURF+14)) / ((VBOT-10)-(VSURF+14));
+  return curSurf+13 + f*((VBOT-10)-(curSurf+13));
+}
+function paintPool(pool, arr, shownA, shownB, curSurf, vap){
+  var i, p, n = pool.length;
+  for(i=0;i<n;i++){
+    var isA = i < shownA, isB = (i >= shownA) && (i < shownA+shownB);
+    if(!isA && !isB){ pool[i].setAttribute("opacity", 0); continue; }
+    p = arr[i];
+    pool[i].setAttribute("opacity", vap ? .95 : .9);
+    pool[i].setAttribute("fill", isA ? COL.A : COL.B);
+    pool[i].setAttribute("cx", p.x.toFixed(1));
+    pool[i].setAttribute("cy", (vap ? p.y : mapY(p.y, curSurf)).toFixed(1));
+  }
+}
+function paintScene(){
+  var S = RUN.S, D = RUN.D, t = RUN.t, sc = RUN.scene;
+  if(sc==="reveal" || sc==="setup" || !S) return;
+  var dp = dotPlan(S);
+
+  if(sc==="a"){
+    var fp = ease(t/3.2), curS = VBOT - (VBOT-VSURF)*fp;
+    nodes.liqRect.setAttribute("y", curS);
+    nodes.liqRect.setAttribute("height", Math.max(0, VBOT-curS));
+    nodes.liqSurf.setAttribute("cy", curS);
+    nodes.liqSurf.setAttribute("opacity", fp>0.02 ? .85 : 0);
+    var shown = Math.round(dp.A * seg(t,0.5,3.3));
+    paintPool(nodes.poolL, PART.liq, shown, 0, curS, false);
+    var live = S.nA * seg(t,0.5,3.3);
+    nodes.bigv.textContent = n2(live);
+    nodes.bigside.textContent  = dp.per===1 ? "one dot = 1 mol" : "one dot = "+n2(dp.per)+" mol";
+    nodes.bigside2.textContent = nInt(dp.A) + " dots drawn";
+    nodes.vlabel.textContent = "closed container · " + n1(D.T) + " K";
+    fadeIn(nodes.eq[0], t>3.35); nodes.eq[0].t.textContent = "n(A) = w(A) ÷ M(A)";
+    fadeIn(nodes.eq[1], t>3.9);  nodes.eq[1].t.textContent = "= " + n1(D.wA) + " g ÷ "
+      + n1(D.MA) + " g/mol";
+    fadeIn(nodes.eq[2], t>4.4);  nodes.eq[2].t.textContent = "= " + n2(S.nA) + " mol";
+    return;
+  }
+
+  if(sc==="b"){
+    nodes.liqRect.setAttribute("y", VSURF);
+    nodes.liqRect.setAttribute("height", VBOT-VSURF);
+    nodes.liqSurf.setAttribute("cy", VSURF);
+    var shownB = Math.round(dp.B * seg(t,0.3,2.6));
+    paintPool(nodes.poolL, PART.liq, dp.A, shownB, VSURF, false);
+    var liveB = S.nB * seg(t,0.3,2.6);
+    nodes.bigv.textContent = n2(liveB);
+    nodes.bigside.textContent  = n2(D.mol) + " mol/kg × " + n2(D.wA/1000) + " kg";
+    nodes.bigside2.textContent = "with " + n2(S.nA) + " mol of A already in";
+    nodes.vlabel.textContent = nInt(dp.A) + " blue + " + nInt(dp.B) + " orange dots";
+    var bw = 368 * seg(t,3.0,4.2), wA = bw*S.xA, wB = bw*S.xB;
+    nodes.barA.setAttribute("width", Math.max(0,wA));
+    nodes.barB.setAttribute("x", 337+wA); nodes.barB.setAttribute("width", Math.max(0,wB));
+    nodes.barLA.textContent = t>4.0 ? "A · x = " + n3(S.xA) : "";
+    nodes.barLB.textContent = t>4.0 ? "B · x = " + n3(S.xB) : "";
+    fadeIn(nodes.eq[0], t>4.3); nodes.eq[0].t.textContent = "x(B) = n(B) ÷ [ n(A) + n(B) ]";
+    fadeIn(nodes.eq[1], t>5.0); nodes.eq[1].t.textContent = "= " + n2(S.nB) + " ÷ ("
+      + n2(S.nA) + " + " + n2(S.nB) + ")";
+    fadeIn(nodes.eq[2], t>5.7); nodes.eq[2].t.textContent = "= " + n3(S.xB)
+      + "   ·   x(A) = " + n3(S.xA);
+    return;
+  }
+
+  if(sc==="raoult"){
+    nodes.liqRect.setAttribute("y", VSURF);
+    nodes.liqRect.setAttribute("height", VBOT-VSURF);
+    nodes.liqSurf.setAttribute("cy", VSURF);
+    paintPool(nodes.poolL, PART.liq, dp.A, dp.B, VSURF, false);
+    var vf = seg(t,0.8,4.2), NV = 22;
+    var nvA = Math.round(NV * (S.pAp/D.pT) * vf), nvB = Math.round(NV * (S.pBp/D.pT) * vf);
+    nvA = clamp(nvA, 0, MAXV); nvB = clamp(nvB, 0, MAXV-nvA);
+    paintPool(nodes.poolV, PART.vap, nvA, nvB, VSURF, true);
+    nodes.vaplab.textContent = vf>0.1 ? "vapour space" : "";
+    var GM = Math.ceil(Math.max(D.pT, D.pA0)*1.2/50)*50, live = D.pT*seg(t,0.8,4.4);
+    var ang = 150 + 240*clamp(live/GM,0,1), pe = pol(470, 128, 46, ang);
+    nodes.needle.setAttribute("x2", pe[0].toFixed(1));
+    nodes.needle.setAttribute("y2", pe[1].toFixed(1));
+    nodes.gread.textContent = n1(live);
+    nodes.gmax.textContent = "0 — " + nInt(GM);
+    var hA = 88*(S.pAp/GM)*seg(t,1.2,4.4), hB = 88*(S.pBp/GM)*seg(t,1.2,4.4);
+    nodes.ppA.setAttribute("y", 190-hA); nodes.ppA.setAttribute("height", Math.max(0,hA));
+    nodes.ppB.setAttribute("y", 190-hB); nodes.ppB.setAttribute("height", Math.max(0,hB));
+    nodes.vlabel.textContent = "equilibrium · ideal solution";
+    var E = nodes.eq;
+    fadeIn(E[0], t>4.5); E[0].t.textContent = "p(total) = p°(A)·x(A) + p°(B)·x(B)";
+    fadeIn(E[1], t>5.4); E[1].t.textContent = n1(D.pT) + " = (" + n1(D.pA0) + ")(" + n3(S.xA)
+      + ") + p°(B)(" + n3(S.xB) + ")";
+    fadeIn(E[2], t>6.3); E[2].t.textContent = n1(D.pT) + " = " + n2(S.pAp)
+      + " + " + n3(S.xB) + "·p°(B)";
+    fadeIn(E[3], t>7.2); E[3].t.textContent = n3(S.xB) + "·p°(B) = " + n2(D.pT-S.pAp);
+    fadeIn(E[4], t>8.0);
+    E[4].t.textContent = "p°(B) = " + n2(S.pB0) + " mm Hg";
+    E[4].t.setAttribute("fill", t>8.0 ? COL.GD : COL.ink);
+    return;
+  }
+
+  if(sc==="vol"){
+    var big = 132, eG, eL, cbrt = Math.pow(S.ratio, 1/3);
+    if(S.ratio >= 1){ eG = big; eL = Math.max(3.2, big/cbrt); }
+    else { eL = big; eG = Math.max(3.2, big*cbrt); }
+    var apL = seg(t,1.1,2.1), grow = seg(t,3.0,6.2), CY = 208;
+    while(nodes.cubeHostL.firstChild) nodes.cubeHostL.removeChild(nodes.cubeHostL.firstChild);
+    while(nodes.cubeHostR.firstChild) nodes.cubeHostR.removeChild(nodes.cubeHostR.firstChild);
+    if(apL>0){
+      mk("ellipse", {cx:155, cy:CY, rx:eL*2.4+22, ry:eL*1.8+16, fill:COL.B,
+                     opacity:.2*apL, filter:"url(#soft)"}, nodes.cubeHostL);
+      isoCube(nodes.cubeHostL, 155, CY, eL*apL, COL.B, 1);
+      mk("ellipse", {cx:155, cy:CY+eL+10, rx:eL*1.1+10, ry:4.5, fill:"#000",
+                     opacity:.4*apL}, nodes.cubeHostL);
+    }
+    var eNow = eL + (eG-eL)*grow;
+    if(t>2.4){
+      mk("ellipse", {cx:505, cy:CY, rx:eNow*1.05+16, ry:eNow*0.9+12, fill:COL.V,
+                     opacity:.14, filter:"url(#soft)"}, nodes.cubeHostR);
+      isoCube(nodes.cubeHostR, 505, CY, eNow, COL.V, 1);
+    }
+    nodes.lq1.textContent = t>1.4 ? "V\u2098 = M(B) \u00f7 \u03c1(B)" : "";
+    nodes.lq2.textContent = t>1.9 ? "= " + n1(D.MB) + " \u00f7 " + n2(D.rhoB) + " = "
+      + n2(S.VlmL) + " mL/mol" : "";
+    nodes.lq3.textContent = t>2.3 ? n3(S.Vl) + " L/mol" : "";
+    nodes.gq1.textContent = t>4.4 ? "V\u2098 = R\u00b7T \u00f7 p\u00b0(B)" : "";
+    nodes.gq2.textContent = t>5.2 ? "= (0.08 \u00d7 " + n1(D.T) + ") \u00f7 (" + n2(S.pB0)
+      + "/760) atm" : "";
+    nodes.gq3.textContent = t>6.0 ? n2(S.Vg) + " L/mol" : "";
+    nodes.scaleNote.textContent = t>6.6
+      ? "drawn to scale \u2014 " + cbrt.toFixed(1) + "\u00d7 per edge"
+      : "";
+    nodes.leader.setAttribute("opacity", t>6.6 ? 1 : 0);
+    nodes.leader.setAttribute("x1", 155); nodes.leader.setAttribute("y1", CY+eL+12);
+    nodes.leader.setAttribute("x2", 155); nodes.leader.setAttribute("y2", 346);
+    return;
+  }
+}
+/* =====================================================================
+   the reveal
+   ===================================================================== */
+var burst = [];
+function mountReveal(){
+  var S = RUN.S, host = $("stagehost");
+  if(!RUN.done){
+    host.innerHTML =
+      '<div class="suspense"><div class="q">V<sub>m</sub>(vapour) ÷ V<sub>m</sub>(liquid)'
+      + ' &nbsp;=&nbsp; <span class="u">' + n2(S.Vg) + '</span> ÷ <span class="u">'
+      + n3(S.Vl) + '</span> &nbsp;=&nbsp; ?</div>'
+      + '<div class="blanks">? ? ? ?</div>'
+      + '<div class="hintline">Both volumes are per mole, so the units cancel. '
+      + 'The answer is a pure number.</div></div>';
+    return;
+  }
+  var svg = el("svg", {viewBox:"0 0 720 250", "class":"graf", role:"img",
+    "aria-label":"The answer, " + ansTxt(S.ratio) + ", sprayed across the screen"});
+  host.innerHTML = "";
+  host.appendChild(svg);
+  defsFor(svg);
+  nodes.burstHost = mk("g", {}, svg);
+  var g = mk("g", {transform:"translate(360,132) skewX(-9)"}, svg);
+  var shadow = mk("text", {x:9, y:11, "text-anchor":"middle", "font-size":96, "font-weight":"900",
+    fill:COL.T, opacity:.34, "font-family":"ui-sans-serif,system-ui,sans-serif",
+    filter:"url(#spray)"}, g);
+  shadow.textContent = ansTxt(S.ratio);
+  var main = mk("text", {id:"grafT", x:0, y:0, "text-anchor":"middle", "font-size":96,
+    "font-weight":"900", fill:COL.GD, "font-family":"ui-sans-serif,system-ui,sans-serif",
+    filter:"url(#spray)"}, g);
+  main.textContent = ansTxt(S.ratio);
+  var i, dx;
+  for(i=0;i<3;i++){
+    dx = [-92, 6, 84][i];
+    mk("path", {d:"M"+dx+" 12 v"+(22+i*13), stroke:COL.GD, "stroke-width":4,
+      "stroke-linecap":"round", opacity:.7, filter:"url(#spray)"}, g);
+    mk("circle", {cx:dx, cy:12+(22+i*13), r:4.4, fill:COL.GD, opacity:.7}, g);
+  }
+  tx(svg, 360, 196, "CONGRATULATIONS · ANSWER FOUND", {"text-anchor":"middle",
+    "font-size":13, fill:COL.GD, "letter-spacing":"4", "font-weight":"800"});
+  tx(svg, 360, 224, "p°(B) = " + n2(S.pB0) + " mm Hg   ·   Vₘ(vapour) = "
+    + n2(S.Vg) + " L/mol   ·   Vₘ(liquid) = " + n3(S.Vl) + " L/mol",
+    {"text-anchor":"middle", "font-size":11.5, fill:COL.ink3});
+  makeBurst();
+}
+function makeBurst(){
+  burst = [];
+  var i, n = 54, GL = ["⚖", "○", "△", "▫", "p°", "Vₘ", "R T"];
+  for(i=0;i<n;i++){
+    var a = Math.random()*Math.PI*2, sp = 80+Math.random()*260, conf = i%3===0;
+    var node = conf
+      ? mk("rect", {x:-4, y:-3, width:8, height:6, rx:1.5,
+          fill:[COL.GD,COL.T,COL.A,COL.B][i%4], opacity:1}, nodes.burstHost)
+      : mk("text", {x:0, y:0, "text-anchor":"middle", "font-size":11+Math.random()*8,
+          fill:[COL.GD,COL.T,COL.A,COL.V][i%4], opacity:1}, nodes.burstHost);
+    if(!conf) node.textContent = GL[i%GL.length];
+    burst.push({n:node, x:360, y:120, vx:Math.cos(a)*sp, vy:Math.sin(a)*sp-70,
+                life:0, max:1.4+Math.random()*1.0, rot:Math.random()*360,
+                vr:(Math.random()-.5)*540, conf:conf});
+  }
+}
+function stepBurst(dt){
+  var i, b, alive = 0;
+  for(i=0;i<burst.length;i++){
+    b = burst[i];
+    if(b.life > b.max){ b.n.setAttribute("opacity", 0); continue; }
+    alive++;
+    b.life += dt; b.vy += 420*dt;
+    b.x += b.vx*dt; b.y += b.vy*dt; b.rot += b.vr*dt;
+    b.n.setAttribute("opacity", Math.max(0, 1 - b.life/b.max).toFixed(2));
+    b.n.setAttribute("transform", "translate(" + b.x.toFixed(1) + "," + b.y.toFixed(1)
+      + ") rotate(" + b.rot.toFixed(0) + ")");
+  }
+  return alive;
+}
+
+/* =====================================================================
+   narration
+   ===================================================================== */
+function narrate(){
+  var S = RUN.S, D = RUN.D, t = RUN.t, s = "";
+  if(RUN.scene==="setup"){
+    s = "The container is empty. Fill in the data from the question stem and press "
+      + "<b>RUN VIRTUAL EXPERIMENT</b>.";
+  } else if(RUN.scene==="a"){
+    s = t<3.3 ? "Weighing <b>" + n1(D.wA) + " g</b> of A into the closed container. Every dot is "
+              + (dotPlan(S).per===1 ? "one mole" : n2(dotPlan(S).per) + " mol") + " of A."
+              : "That is <b>" + n2(S.nA) + " mol</b> of A — the mass divided by the molar mass. "
+              + "Molality is quoted per kilogram of solvent, so this is the basis everything else "
+              + "is measured against.";
+  } else if(RUN.scene==="b"){
+    s = t<2.7 ? "Adding B at <b>" + n2(D.mol) + " mol per kg</b> of A — the orange dots."
+      : (t<4.3 ? "Now count them against the whole population, not against A alone: that is what a "
+                 + "mole fraction is."
+               : "<b>x(B) = " + n3(S.xB) + "</b> and <b>x(A) = " + n3(S.xA) + "</b>. Raoult's law is "
+                 + "written in these, never in molality — which is exactly why the molar mass "
+                 + "of A was given to you.");
+  } else if(RUN.scene==="raoult"){
+    s = t<4.3 ? "Sealed and left to reach equilibrium at <b>" + n1(D.T) + " K</b>. Both liquids are "
+                + "volatile, so both send molecules into the vapour space; the gauge climbs to the "
+                + "measured <b>" + n1(D.pT) + " mm Hg</b>."
+      : (t<8.0 ? "A only accounts for " + n1(D.pA0) + " × " + n3(S.xA) + " = <b>" + n2(S.pAp)
+                 + " mm Hg</b> of that. The rest has to come from B, and only one unknown is left."
+               : "<span class=\"gd\">p°(B) = " + n2(S.pB0) + " mm Hg</span> — the vapour "
+                 + "pressure of <i>pure</i> B. Check it: " + n1(D.pA0) + "×" + n3(S.xA)
+                 + " + " + n2(S.pB0) + "×" + n3(S.xB) + " = " + n1(D.pT) + ".");
+  } else if(RUN.scene==="vol"){
+    s = t<3.0 ? "One mole of B as a liquid: <b>" + n1(D.MB) + " g</b> at <b>" + n2(D.rhoB)
+                + " g/mL</b> occupies " + n2(S.VlmL) + " mL. Density is all the liquid needs."
+      : (t<6.3 ? "Now the same mole as a vapour — alone, at 300 K, at <i>its own</i> pressure "
+                 + "p°(B) = <b>" + n2(S.pB0) + " mm Hg</b>, not at the mixture's total and not "
+                 + "at 1 atm. Watch it expand."
+               : "<b>" + n2(S.Vg) + " L/mol</b> against <b>" + n3(S.Vl) + " L/mol</b>. Same "
+                 + "molecules, same mole — only the spacing has changed.");
+  } else {
+    s = RUN.done
+      ? "<span class=\"gd\">" + ansTxt(S.ratio) + "</span> — the vapour occupies that many "
+        + "times the volume of the liquid, per mole. Both sides are L/mol, so the answer carries "
+        + "no units."
+      : "Everything the question asked for is measured. Divide one molar volume by the other.";
+  }
+  $("narr").innerHTML = s;
+}
+
+/* =====================================================================
+   instruments, record, trials, traps
+   ===================================================================== */
+function known(){
+  var i = sceneIdx(), t = RUN.t;
+  return {
+    nA:  i>1 || (i===1 && t>3.30),
+    nB:  i>2 || (i===2 && t>2.60),
+    xB:  i>2 || (i===2 && t>5.70),
+    pAp: i>3 || (i===3 && t>6.30),
+    pB0: i>3 || (i===3 && t>8.00),
+    Vl:  i>4 || (i===4 && t>2.30),
+    Vg:  i>4 || (i===4 && t>6.00),
+    ratio: RUN.done
+  };
+}
+function setGz(id, on, txt){
+  var v = $("gv_"+id), b = $("gz_"+id);
+  if(!v) return;
+  v.textContent = on ? txt : "—";
+  b.className = "gz" + (on ? (id==="ratio" ? " hot" : "") : " dim");
+}
+function updateGauges(){
+  var S = RUN.S, K = known();
+  if(!S){
+    var ids = ["nA","nB","xB","xA","pAp","pB0","Vl","Vg","ratio"], i;
+    for(i=0;i<ids.length;i++) setGz(ids[i], false, "");
+    return;
+  }
+  setGz("nA", K.nA, n2(S.nA));       setGz("nB", K.nB, n2(S.nB));
+  setGz("xB", K.xB, n3(S.xB));       setGz("xA", K.xB, n3(S.xA));
+  setGz("pAp", K.pAp, n2(S.pAp));    setGz("pB0", K.pB0, n2(S.pB0));
+  setGz("Vl", K.Vl, n3(S.Vl));       setGz("Vg", K.Vg, n2(S.Vg));
+  setGz("ratio", K.ratio, ansTxt(S.ratio));
+}
+var REC = [
+  ["nA",   "Moles of A in the basis",                  function(S,D){ return n2(S.nA)+" mol"; }],
+  ["nB",   "Moles of B in the basis",                  function(S,D){ return n2(S.nB)+" mol"; }],
+  ["xB",   "Mole fraction of B, x(B)",                 function(S,D){ return n3(S.xB); }],
+  ["xB",   "Mole fraction of A, x(A)",                 function(S,D){ return n3(S.xA); }],
+  ["pAp",  "Partial pressure of A, p°(A)·x(A)", function(S,D){ return n2(S.pAp)+" mm Hg"; }],
+  ["pB0",  "Vapour pressure of pure B, p°(B)",    function(S,D){ return n2(S.pB0)+" mm Hg"; }],
+  ["pB0",  "p°(B) in atmospheres",                function(S,D){ return n3(S.pAtm)+" atm"; }],
+  ["Vl",   "Molar volume of liquid B",                 function(S,D){ return n2(S.VlmL)+" mL/mol = "+n3(S.Vl)+" L/mol"; }],
+  ["Vg",   "Molar volume of B vapour",                 function(S,D){ return n2(S.Vg)+" L/mol"; }],
+  ["ratio","Ratio, vapour ÷ liquid",              function(S,D){ return ansTxt(S.ratio); }]
+];
+function drawRecord(){
+  var S = RUN.S, K = known(), rows = "", i;
+  for(i=0;i<REC.length;i++){
+    var r = REC[i], on = S && K[r[0]];
+    rows += "<tr><td>" + r[1] + "</td><td class='n'>"
+      + (on ? "<b>" + r[2](S, RUN.D) + "</b>" : "<span style='color:var(--text-muted)'>—</span>")
+      + "</td></tr>";
+  }
+  $("rec").innerHTML = "<thead><tr><th>Quantity</th><th class='n'>Established by the run</th></tr>"
+    + "</thead><tbody>" + rows + "</tbody>";
+  var ins = $("insight");
+  if(trials.length >= 2){
+    var same = true, j;
+    for(j=1;j<trials.length;j++)
+      if(Math.abs(trials[j].ratio - trials[0].ratio) > 1e-9) same = false;
+    ins.hidden = false;
+    ins.innerHTML = same
+      ? "<b>Two runs, the same answer.</b> Everything you changed cancelled out of the ratio — "
+        + "the mass of A is the usual culprit, because molality already fixes the composition."
+      : "<b>The answer moved.</b> Compare the rows: the ratio is R·T·ρ × 1000 "
+        + "÷ (M(B) · p°(B)), so only temperature, the density and molar mass of B, "
+        + "and whatever changed p°(B) can shift it.";
+  } else ins.hidden = true;
+}
+function pushTrial(){
+  var S = RUN.S, D = RUN.D;
+  trials.push({wA:D.wA, mol:D.mol, pA0:D.pA0, pT:D.pT, T:D.T, MA:D.MA, MB:D.MB, rhoB:D.rhoB,
+               xB:S.xB, pB0:S.pB0, Vg:S.Vg, Vl:S.Vl, ratio:S.ratio});
+  drawTrials();
+}
+function drawTrials(){
+  if(!trials.length){ $("trials").hidden = true; $("trialempty").hidden = false;
+                      $("clrtrials").disabled = true; return; }
+  $("trials").hidden = false; $("trialempty").hidden = true; $("clrtrials").disabled = false;
+  var rows = "", i;
+  for(i=0;i<trials.length;i++){
+    var t = trials[i];
+    rows += "<tr" + (i===trials.length-1 ? " class='win'" : "") + "><td class='n'>" + (i+1)
+      + "</td><td class='n'>" + n2(t.mol) + "</td><td class='n'>" + n1(t.pA0)
+      + "</td><td class='n'>" + n1(t.pT) + "</td><td class='n'>" + n1(t.T)
+      + "</td><td class='n'>" + n3(t.xB) + "</td><td class='n'>" + n2(t.pB0)
+      + "</td><td class='n'>" + n2(t.Vg) + "</td><td class='n'>" + n3(t.Vl)
+      + "</td><td class='n'><b>" + ansTxt(t.ratio) + "</b></td></tr>";
+  }
+  $("trials").innerHTML = "<thead><tr><th class='n'>#</th><th class='n'>m</th>"
+    + "<th class='n'>p°(A)</th><th class='n'>p(tot)</th><th class='n'>T</th>"
+    + "<th class='n'>x(B)</th><th class='n'>p°(B)</th><th class='n'>Vₘ vap</th>"
+    + "<th class='n'>Vₘ liq</th><th class='n'>ratio</th></tr></thead><tbody>"
+    + rows + "</tbody>";
+}
+
+var TRAPS = [
+  {k:"ptot", h:"Using the total pressure in the gas law",
+   p:"The container reads 100 mm Hg, so it is tempting to put that into RT/p. But the question asks "
+    +"for <i>pure</i> B as a vapour, and pure B on its own exerts p°(B), not the mixture's total.",
+   f:function(D,S){ return (R_GAS*D.T*MMHG/D.pT)/S.Vl; }},
+  {k:"pa0", h:"Using the vapour pressure of pure A",
+   p:"Both pressures are printed in the stem and only one of them belongs to B. p°(A) is what "
+    +"you use to find p°(B), not what you put in the gas law.",
+   f:function(D,S){ return (R_GAS*D.T*MMHG/D.pA0)/S.Vl; }},
+  {k:"atm", h:"Forgetting to convert mm Hg into atm",
+   p:"R is quoted as 0.08 L atm K⁻¹ mol⁻¹, so the pressure has to be in "
+    +"atmospheres. The stem hands you 1 atm = 760 mm Hg precisely because this step is needed.",
+   f:function(D,S){ return (R_GAS*D.T/S.pB0)/S.Vl; }},
+  {k:"ml", h:"Leaving the liquid volume in millilitres",
+   p:"M/ρ comes out in mL/mol while RT/p comes out in L/mol. Divide one by the other without "
+    +"matching the units and the answer is out by a factor of a thousand.",
+   f:function(D,S){ return S.Vg/S.VlmL; }},
+  {k:"molx", h:"Reading 5 molal as x(B) = 5/20",
+   p:"Molality counts against the solvent alone; mole fraction counts against everything present. "
+    +"The denominator is n(A) + n(B) = 25, not n(A) = 20.",
+   f:function(D,S){ var xb = S.nB/S.nA, pb = (D.pT - D.pA0*(1-xb))/xb;
+                    return (R_GAS*D.T*MMHG/pb)/S.Vl; }},
+  {k:"inv", h:"Dividing the other way round",
+   p:"The question says vapour <i>to</i> liquid. A vapour is far bigger than the liquid it came "
+    +"from, so an answer below 1 is a sign the fraction is upside down.",
+   f:function(D,S){ return S.Vl/S.Vg; }}
+];
+function drawTraps(){
+  var h = "", i;
+  for(i=0;i<TRAPS.length;i++)
+    h += '<div class="trap"><h4>' + TRAPS[i].h + "</h4><p>" + TRAPS[i].p + "</p>"
+      +  '<div class="out" id="tr_' + TRAPS[i].k + '">run it to see what it gives</div>'
+      +  '<button class="ghost" type="button" data-trap="' + i + '">Run this mistake</button></div>';
+  $("trapgrid").innerHTML = h;
+}
+function runTrap(i){
+  var D = copyST();
+  if(complaint(D)) return;
+  var S = solve(D), v = TRAPS[i].f(D, S), o = $("tr_"+TRAPS[i].k);
+  o.className = "out on";
+  o.innerHTML = "gives <b>" + (isFinite(v) ? (Math.abs(v)<0.01 ? v.toExponential(2) : ansTxt(v))
+    : "—") + "</b>" + (hasRun() ? " — not " + ansTxt(S.ratio) : "");
+}
+
+/* =====================================================================
+   section 03 - the pressure diagram
+   ===================================================================== */
+var view = "raoult", exX = 0.2, earlyReveal = false;
+function hasRun(){ return trials.length > 0 || RUN.done || earlyReveal; }
+
+function drawChart(){
+  var D = copyST(), bad = complaint(D), S = solve(D), svg = $("chart"), open = hasRun();
+  if(!open && view !== "raoult") view = "raoult";
+  var curves = [], points = [], i, leg = "";
+
+  if(view === "raoult"){
+    var yTop = Math.max(D.pA0, open && isFinite(S.pB0) ? S.pB0 : 0, D.pT) * 1.1;
+    curves.push({pts:[[0, D.pA0],[1, 0]], col:"--s1", dash:"7 5", w:2, label:"p(A)"});
+    if(open && !bad){
+      curves.push({pts:[[1, S.pB0],[0, 0]], col:"--s2", dash:"7 5", w:2, label:"p(B)"});
+      curves.push({pts:[[0, D.pA0],[1, S.pB0]], col:"--s4", w:2.6, label:"total"});
+    }
+    curves.push({pts:[[0, D.pT],[1, D.pT]], col:"--text-muted", dash:"3 5", w:1.4, op:.8,
+                 label:"measured"});
+    if(open && trials.length > 1){
+      var pv = trials[trials.length-2];
+      curves.push({pts:[[1, pv.pB0],[0, pv.pA0]], col:"--s4", w:2, op:.3, dash:"2 4"});
+    }
+    points.push({x:S.xB, y:D.pT, col:"--good", r:6, label:"your solution"});
+    if(open && !bad)
+      points.push({x:exX, y:D.pA0*(1-exX) + S.pB0*exX, col:"--s4", r:4.6});
+    plot(svg, {xMin:0, xMax:1, yMin:0, yMax:yTop, xLabel:"mole fraction of B, x(B)",
+      yLabel:"pressure  (mm Hg)", curves:curves, points:points,
+      xFmt:function(v){ return v.toFixed(1); }, yFmt:function(v){ return v.toFixed(0); }});
+    leg = '<span><i style="background:var(--s1)"></i>p(A) = p°(A)·x(A)</span>'
+        + (open ? '<span><i style="background:var(--s2)"></i>p(B) = p°(B)·x(B)</span>'
+                + '<span><i style="background:var(--s4)"></i>total pressure</span>' : "")
+        + '<span><i style="background:var(--text-muted)"></i>your measured total</span>'
+        + (open ? "" : " <span style=\"color:var(--s2)\">Run the experiment and the rest of the "
+                     + "diagram fills itself in — p°(B) is what the bench measures.</span>");
+  } else if(view === "ratio"){
+    var p0 = Math.max(4, S.pB0), lo = Math.max(2, p0*0.2), hi = p0*3, pts = [];
+    for(i=0;i<=80;i++){
+      var pp = lo + (hi-lo)*i/80;
+      pts.push([pp, (R_GAS*D.T*MMHG/pp)/S.Vl]);
+    }
+    curves.push({pts:pts, col:"--s3", w:2.6, label:"ratio"});
+    points.push({x:S.pB0, y:S.ratio, col:"--good", r:6, label:open?ansTxt(S.ratio):"your run"});
+    plot(svg, {xMin:lo, xMax:hi, yMin:0, yMax:Math.max.apply(null, pts.map(function(p){return p[1];}))*1.08,
+      xLabel:"vapour pressure of pure B, p°(B)  (mm Hg)",
+      yLabel:"Vₘ(vapour) ÷ Vₘ(liquid)", curves:curves, points:points,
+      yFmt:function(v){ return v>=1000 ? (v/1000).toFixed(1)+"k" : v.toFixed(0); }});
+    leg = '<span><i style="background:var(--s3)"></i>ratio ∝ 1/p°(B) — the lower the '
+        + 'vapour pressure, the more room a mole of vapour takes</span>';
+  } else {
+    var ptsT = [];
+    for(i=0;i<=60;i++){
+      var TT = 200 + 300*i/60;
+      ptsT.push([TT, (R_GAS*TT*MMHG/S.pB0)/S.Vl]);
+    }
+    curves.push({pts:ptsT, col:"--s3", w:2.6, label:"ratio"});
+    points.push({x:D.T, y:S.ratio, col:"--good", r:6, label:open?ansTxt(S.ratio):"your run"});
+    plot(svg, {xMin:200, xMax:500, yMin:0, yMax:ptsT[ptsT.length-1][1]*1.08,
+      xLabel:"temperature  (K), at this p°(B)", yLabel:"Vₘ(vapour) ÷ Vₘ(liquid)",
+      curves:curves, points:points,
+      yFmt:function(v){ return v>=1000 ? (v/1000).toFixed(1)+"k" : v.toFixed(0); }});
+    leg = '<span><i style="background:var(--s3)"></i>ratio ∝ T — a straight line through '
+        + 'the origin, because the liquid volume does not depend on temperature here</span>';
+  }
+  $("legend").innerHTML = leg;
+  $("xctrl").hidden = view !== "raoult";
+  var vb = $("viewbtns").querySelectorAll("button"), q;
+  for(q=0;q<vb.length;q++){
+    var lock = !open && vb[q].dataset.v !== "raoult";
+    vb[q].disabled = lock;
+    vb[q].title = lock ? "These two plot the answer itself — run the experiment first." : "";
+  }
+  drawDataTable(D, S, open && !bad);
+  updateExplore();
+}
+function drawDataTable(D, S, open){
+  var rows = "", i;
+  for(i=0;i<=10;i++){
+    var x = i/10, pa = D.pA0*(1-x), pb = open ? S.pB0*x : null;
+    rows += "<tr" + (Math.abs(x-S.xB)<0.051 ? " class='win'" : "") + "><td class='n'>" + x.toFixed(1)
+      + "</td><td class='n'>" + pa.toFixed(1) + "</td><td class='n'>"
+      + (open ? pb.toFixed(1) : "—") + "</td><td class='n'>"
+      + (open ? (pa+pb).toFixed(1) : "—") + "</td></tr>";
+  }
+  $("dtbl").innerHTML = "<thead><tr><th class='n'>x(B)</th><th class='n'>p(A)</th>"
+    + "<th class='n'>p(B)</th><th class='n'>total</th></tr></thead><tbody>" + rows + "</tbody>";
+}
+function updateExplore(){
+  var D = copyST(), S = solve(D), open = hasRun() && !complaint(D);
+  var pa = D.pA0*(1-exX), pb = open ? S.pB0*exX : null;
+  $("xval").textContent = exX.toFixed(3);
+  $("rpA").textContent = pa.toFixed(1);
+  $("rpB").textContent = open ? pb.toFixed(1) : "—";
+  $("rpT").textContent = open ? (pa+pb).toFixed(1) : "—";
+  $("rmol").textContent = exX >= 0.999 ? "∞"
+    : (exX/(1-exX) * 1000/D.MA).toFixed(2);
+}
+
+/* =====================================================================
+   gate, answer box, celebration
+   ===================================================================== */
+function blink(id){
+  var e = $(id); if(!e) return;
+  e.classList.remove("blink"); void e.offsetWidth; e.classList.add("blink");
+  setTimeout(function(){ e.classList.remove("blink"); }, 2300);
+}
+function celebrate(){
+  var ab = $("answerbox");
+  ab.classList.remove("celebrate"); void ab.offsetWidth; ab.classList.add("celebrate");
+  setTimeout(function(){ ab.classList.remove("celebrate"); }, 3200);
+  blink("ansval"); blink("grafT"); blink("gv_ratio");
+}
+function refreshGate(){
+  var open = RUN.done || earlyReveal, S = RUN.S || solve(copyST());
+  $("solgate").hidden = open;
+  $("solbody").hidden = !open;
+  var ab = $("answerbox");
+  if(open){
+    ab.classList.remove("locked");
+    $("ansval").textContent = ansTxt(S.ratio);
+    $("anssub").innerHTML = "Vₘ(vapour) " + n2(S.Vg) + " ÷ Vₘ(liquid) " + n3(S.Vl)
+      + " L mol⁻¹ · dimensionless";
+    $("revealnow").hidden = true;
+    $("clsans").textContent = ansTxt(S.ratio);
+    fillConcepts(S);
+    $("solintro").innerHTML = RUN.done
+      ? "<b>The bench produced this answer from the data you entered.</b> Every line below is the "
+        + "same calculation, written out."
+      : "Revealed early — run the experiment to watch each of these steps actually happen.";
+    ccIn();
+  } else {
+    ab.classList.add("locked");
+    $("ansval").textContent = "Run the experiment";
+    $("anssub").textContent = "Enter the data from the stem and run the bench.";
+    $("revealnow").hidden = false;
+    $("clsans").textContent = "— run the experiment";
+  }
+}
+function fillConcepts(S){
+  var D = RUN.D || copyST();
+  function set(id, h){ var e = $(id); if(e) e.innerHTML = h; }
+  set("cf0", n2(S.nB) + " / (" + n2(S.nB) + " + " + n2(S.nA) + ") = <b>" + n3(S.xB) + "</b>");
+  set("cf1", "p<sub>B</sub>&deg; = <b>" + n2(S.pB0) + " mm Hg</b>");
+  set("cf2", n1(D.MB) + "/" + n2(D.rhoB) + " = " + n2(S.VlmL) + " mL/mol = <b>" + n3(S.Vl)
+           + " L/mol</b>");
+  set("cf3", "(0.08&times;" + n1(D.T) + ")(760/" + n2(S.pB0) + ") = <b>" + n2(S.Vg) + " L/mol</b>");
+  set("cf4", "<b>" + ansTxt(S.ratio) + "</b> &nbsp;(&#8731;" + ansTxt(S.ratio) + " &asymp; "
+           + Math.pow(S.ratio, 1/3).toFixed(1) + " per edge)");
+}
+function ccIn(){
+  var i;
+  for(i=0;i<5;i++) (function(k){
+    setTimeout(function(){ var c = $("cc"+k); if(c) c.classList.add("in"); }, 90*k);
+  })(i);
+}
+
+/* =====================================================================
+   sound - synthesised on the fly, nothing is fetched
+   ===================================================================== */
+var actx = null;
+function beep(f, dur, type, vol){
+  if(!RUN.sound) return;
+  try{
+    if(!actx){
+      var AC = window.AudioContext || window.webkitAudioContext;
+      if(!AC) return;
+      actx = new AC();
+    }
+    var o = actx.createOscillator(), g = actx.createGain();
+    o.type = type || "sine"; o.frequency.value = f;
+    g.gain.setValueAtTime(0.0001, actx.currentTime);
+    g.gain.exponentialRampToValueAtTime(vol||0.07, actx.currentTime+0.012);
+    g.gain.exponentialRampToValueAtTime(0.0001, actx.currentTime+(dur||0.12));
+    o.connect(g); g.connect(actx.destination);
+    o.start(); o.stop(actx.currentTime+(dur||0.12)+0.02);
+  }catch(e){}
+}
+function fanfare(){
+  var n = [523.25, 659.25, 783.99, 1046.5], i;
+  for(i=0;i<n.length;i++) (function(k){
+    setTimeout(function(){ beep(n[k], 0.26, "triangle", 0.085); }, k*110);
+  })(i);
+}
+
+/* =====================================================================
+   run control
+   ===================================================================== */
+function updateButtons(){
+  var sc = RUN.scene, go = $("gobtn"), bad = complaint(copyST());
+  if(sc === "setup"){
+    go.hidden = false; go.className = "go"; go.innerHTML = "▶&nbsp; RUN VIRTUAL EXPERIMENT";
+    go.disabled = !!bad;
+    $("pausebtn").disabled = true; $("pausebtn").textContent = "Pause";
+    $("replaybtn").hidden = !trials.length; $("editbtn").hidden = true;
+  } else if(sc === "reveal" && !RUN.done){
+    go.hidden = false; go.className = "go rev"; go.innerHTML = "★&nbsp; REVEAL ANSWER";
+    go.disabled = false;
+    $("pausebtn").disabled = true; $("replaybtn").hidden = false; $("editbtn").hidden = false;
+  } else if(sc === "reveal"){
+    go.hidden = true;
+    $("pausebtn").disabled = true; $("replaybtn").hidden = false; $("editbtn").hidden = false;
+  } else {
+    go.hidden = true;
+    $("pausebtn").disabled = false;
+    $("pausebtn").textContent = RUN.playing ? "Pause" : "Resume";
+    $("replaybtn").hidden = false; $("editbtn").hidden = false;
+  }
+}
+function updateMsg(){
+  var D = copyST(), bad = complaint(D), S = solve(D);
+  if(bad){
+    $("gomsg").innerHTML = "<span class='bad'>The bench cannot run that.</span> " + bad;
+  } else if(RUN.scene === "setup"){
+    $("gomsg").innerHTML = "<b>" + n2(D.mol) + " molal</b> B in <b>" + n1(D.wA)
+      + " g</b> of A at <b>" + n1(D.T) + " K</b> \u2014 that is " + n2(S.nA) + " mol of A and "
+      + n2(S.nB) + " mol of B. Press run and the bench takes it from there.";
+  } else if(RUN.done){
+    $("gomsg").innerHTML = "<b>Run logged.</b> Change a number and run it again to see what moves "
+      + "and what does not \u2014 the mass of A is the one to try first.";
+  } else if(RUN.scene === "reveal"){
+    $("gomsg").innerHTML = "Everything is measured. Press <b>REVEAL ANSWER</b> to see the ratio.";
+  } else {
+    $("gomsg").innerHTML = "Change any box while it runs \u2014 every instrument follows it.";
+  }
+}
+function syncForm(){
+  var D = copyST(), bad = complaint(D), S = solve(D);
+  var fh = $("fh_pT");
+  fh.classList.remove("bad");
+  fh.innerHTML = "what the gauge on the closed container reads";
+  if(bad){ fh.classList.add("bad"); fh.innerHTML = bad; }
+  if(RUN.scene !== "setup" && !RUN.done && !bad){ RUN.D = D; RUN.S = S; }
+  if(bad && RUN.playing){ RUN.playing = false; }
+  updateMsg(); updateButtons(); updateGauges(); drawRecord(); drawChart();
+}
+function startRun(){
+  var D = copyST();
+  if(complaint(D)) return;
+  RUN.D = D; RUN.S = solve(D); RUN.scene = "a"; RUN.t = 0;
+  RUN.playing = true; RUN.done = false;
+  seedParticles(); remount(); updateButtons();
+  beep(330, 0.16, "triangle");
+}
+function advance(){
+  var i = sceneIdx();
+  if(i >= SCENES.length-1) return;
+  RUN.scene = SCENES[i+1]; RUN.t = 0;
+  if(RUN.scene === "reveal"){ RUN.playing = false; beep(392, 0.2, "triangle"); }
+  else beep(262 + i*70, 0.13, "sine");
+  remount(); updateButtons();
+}
+function doReveal(){
+  if(RUN.scene !== "reveal"){ earlyReveal = true; refreshGate(); drawChart(); return; }
+  RUN.done = true;
+  pushTrial();
+  remount();
+  refreshGate(); updateGauges(); drawRecord(); drawChart(); updateButtons();
+  celebrate(); fanfare();
+}
+function backToSetup(){
+  RUN.scene = "setup"; RUN.t = 0; RUN.playing = false; RUN.done = false;
+  remount(); syncForm();
+}
+
+/* =====================================================================
+   the clock
+   ===================================================================== */
+var last = 0, slow = 0;
+function loop(ts){
+  var dt = last ? (ts - last)/1000 : 0;
+  last = ts;
+  if(dt > 0.06) dt = 0.06;
+  if(RUN.playing && RUN.scene !== "setup" && RUN.scene !== "reveal"){
+    var d = dt * RUN.speed;
+    RUN.t += d;
+    stepParticles(d);
+    paintScene();
+    var dur = DUR[RUN.scene];
+    if(dur && RUN.t >= dur){ RUN.t = dur; paintScene(); advance(); }
+  }
+  if(RUN.scene === "reveal" && RUN.done) stepBurst(dt);
+  slow += dt;
+  if(slow > 0.12){
+    slow = 0;
+    setPhase(); narrate(); updateMsg();
+    if(RUN.playing || RUN.scene === "reveal"){ updateGauges(); drawRecord(); }
+  }
+  requestAnimationFrame(loop);
+}
+
+/* =====================================================================
+   wiring
+   ===================================================================== */
+function build(){
+  $("rail").innerHTML = gaugeHTML() + railHTML();
+  drawTraps();
+  var i;
+  for(i=0;i<FIELDS.length;i++){
+    var f = FIELDS[i];
+    makeControl({slider:"sl_"+f.k, input:"in_"+f.k, hint:"fh_"+f.k, key:f.k,
+                 lo:f.lo, hi:f.hi, step:f.st, dp:f.dp, unit:f.u, onset:syncForm});
+  }
+  $("gobtn").addEventListener("click", function(){
+    if(RUN.scene === "setup") startRun(); else doReveal();
+  });
+  $("pausebtn").addEventListener("click", function(){
+    RUN.playing = !RUN.playing; updateButtons(); setPhase();
+  });
+  $("replaybtn").addEventListener("click", function(){ startRun(); });
+  $("editbtn").addEventListener("click", backToSetup);
+  $("sndbtn").addEventListener("click", function(){
+    RUN.sound = !RUN.sound;
+    this.setAttribute("aria-pressed", RUN.sound ? "true" : "false");
+    this.textContent = RUN.sound ? "♪ sound on" : "♪ sound off";
+    if(RUN.sound) beep(440, 0.1, "sine");
+  });
+  $("spd").addEventListener("click", function(e){
+    var b = e.target.closest("button"); if(!b) return;
+    RUN.speed = +b.dataset.s;
+    var bs = this.querySelectorAll("button"), j;
+    for(j=0;j<bs.length;j++) bs[j].setAttribute("aria-pressed", bs[j]===b ? "true" : "false");
+  });
+  $("viewbtns").addEventListener("click", function(e){
+    var b = e.target.closest("button"); if(!b) return;
+    if(b.disabled) return;
+    view = b.dataset.v;
+    var bs = this.querySelectorAll("button"), j;
+    for(j=0;j<bs.length;j++) bs[j].setAttribute("aria-pressed", bs[j]===b ? "true" : "false");
+    drawChart();
+  });
+  $("xsl").addEventListener("input", function(){ exX = (+this.value)/1000; drawChart(); });
+  $("trapgrid").addEventListener("click", function(e){
+    var b = e.target.closest("button[data-trap]"); if(!b) return;
+    runTrap(+b.dataset.trap);
+  });
+  $("clrtrials").addEventListener("click", function(){ trials = []; drawTrials(); drawRecord(); });
+  $("revealnow").addEventListener("click", function(){ earlyReveal = true; refreshGate(); drawChart(); });
+  $("revealsol").addEventListener("click", function(){ earlyReveal = true; refreshGate(); drawChart(); });
+  $("themebtn").addEventListener("click", function(){
+    var r = document.documentElement;
+    var dark = r.getAttribute("data-theme") === "dark" ||
+      (!r.getAttribute("data-theme") && matchMedia("(prefers-color-scheme: dark)").matches);
+    r.setAttribute("data-theme", dark ? "light" : "dark");
+    drawChart();
+  });
+  seedParticles();
+  remount();
+  syncForm();
+  refreshGate();
+  drawTrials();
+  requestAnimationFrame(loop);
+}
+if(document.readyState === "loading") document.addEventListener("DOMContentLoaded", build);
+else build();
+
+/* expose for the headless test harness */
+window.ST = ST; window.RUN = RUN; window.solve = solve; window.SCENES = SCENES;
+window.startRun = startRun; window.advance = advance; window.doReveal = doReveal;
+window.trialsOf = function(){ return trials; };
+window.seek = function(sc, t){
+  RUN.D = copyST(); RUN.S = solve(RUN.D);
+  RUN.scene = sc; RUN.t = t; RUN.playing = false;
+  if(!PART.liq.length) seedParticles();
+  remount(); paintScene(); setPhase(); narrate(); updateGauges(); drawRecord(); updateButtons();
+};
+})();
+
+</script>
+</body>
+</html>
