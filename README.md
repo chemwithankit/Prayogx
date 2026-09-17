@@ -211,3 +211,4 @@ so the PDFs cannot leak through a future edit by accident.
 | `ADV-2026-P2-CHE-Q14` | 2026 | 2 | Chemistry | Polymers | Q.14 | 85018 |
 | `ADV-2026-P2-CHE-Q15` | 2026 | 2 | Chemistry | Solutions and Colligative Properties | Q.15 | 2000 |
 | `ADV-2026-P2-CHE-Q16` | 2026 | 2 | Chemistry | Solutions and Colligative Properties | Q.16 | 0.16 |
+| `ADV-2026-P2-CHE-Q17` | 2026 | 2 | Chemistry | Organic Chemistry - Some Basic Principles and Techniques | Q.17 | 10 |

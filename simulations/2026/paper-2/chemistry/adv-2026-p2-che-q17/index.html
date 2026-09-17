@@ -1,0 +1,2597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kjeldahl estimation on L — JEE Advanced 2026 Paper 2 Q.17 | PrayogX</title>
+<meta name="description" content="Build J, K and L from the printed reaction sequence, weigh K against the stem's 350 g/mol to confirm the structure, decide how many of L's two nitrogens Kjeldahl digestion can actually reduce, then digest, distil and titrate — the volume of 1 M sulphuric acid is revealed only at the end.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232a78d6'/%3E%3Cpath d='M12.5 6.5h7M13.6 6.5v7.2L7.9 24.1a1.5 1.5 0 0 0 1.3 2.3h13.6a1.5 1.5 0 0 0 1.3-2.3l-5.7-10.4V6.5' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M10.6 20.6h10.8' stroke='white' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E">
+<meta name="sim-id" content="ADV-2026-P2-CHE-Q17">
+<style>
+:root{
+  color-scheme: light;
+  --surface-0:#f4f4f1; --surface-1:#fcfcfb; --surface-2:#ececea;
+  --line:#d9d9d4; --line-strong:#bcbcb5;
+  --text-primary:#0b0b0b; --text-secondary:#52514e; --text-muted:#77766f;
+  --s1:#2a78d6; --s2:#eb6834; --s3:#1baf7a; --s4:#4a3aa7;
+  --good:#00743f; --bad:#c0392b; --accent:#2a78d6;
+  --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+  --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --serif:ui-serif,Georgia,"Times New Roman",serif;
+  --radius:10px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  color-scheme: dark;
+  --surface-0:#111110; --surface-1:#1a1a19; --surface-2:#232322;
+  --line:#34342f; --line-strong:#4a4a44;
+  --text-primary:#ffffff; --text-secondary:#c3c2b7; --text-muted:#95948b;
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#9085e9;
+  --good:#3fae7a; --bad:#e66767; --accent:#3987e5;
+}}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --surface-0:#111110; --surface-1:#1a1a19; --surface-2:#232322;
+  --line:#34342f; --line-strong:#4a4a44;
+  --text-primary:#ffffff; --text-secondary:#c3c2b7; --text-muted:#95948b;
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#9085e9;
+  --good:#3fae7a; --bad:#e66767; --accent:#3987e5;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--surface-0);color:var(--text-primary);font-family:var(--sans);
+  font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px 80px}
+
+header.top{border-bottom:1px solid var(--line);background:var(--surface-1)}
+.top-inner{max-width:1120px;margin:0 auto;padding:22px 20px 18px;position:relative;
+  display:flex;flex-wrap:wrap;gap:16px;align-items:flex-start;justify-content:space-between}
+.simid{font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--text-muted)}
+h1{font-size:23px;line-height:1.25;margin:6px 0 10px;font-weight:640;max-width:640px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-size:11.5px;padding:3px 9px;border:1px solid var(--line-strong);border-radius:999px;
+  color:var(--text-secondary);background:var(--surface-2);white-space:nowrap}
+.chip.k{border-color:var(--accent);color:var(--accent);background:transparent}
+.answerbox{border:1px solid var(--line-strong);border-radius:var(--radius);background:var(--surface-2);
+  padding:12px 16px;min-width:210px}
+.answerbox .lbl{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted)}
+.answerbox .val{font-family:var(--mono);font-size:25px;font-weight:600;color:var(--good);line-height:1.22}
+.answerbox .sub{font-size:12px;color:var(--text-secondary)}
+.answerbox.locked .val{color:var(--text-muted);font-size:17px;letter-spacing:.04em}
+.answerbox .rv{margin-top:6px;font-size:11px;background:none;border:none;padding:0;color:var(--accent);
+  cursor:pointer;text-decoration:underline;font-family:var(--sans)}
+.themebtn{position:absolute;top:14px;right:16px;border:1px solid var(--line-strong);background:var(--surface-2);
+  color:var(--text-secondary);border-radius:8px;padding:4px 9px;font-size:12px;cursor:pointer}
+.brandbar{display:flex;align-items:center;gap:8px;margin-bottom:9px;text-decoration:none}
+.brandbar .pxmark{width:21px;height:21px;flex:none;display:block}
+.brandbar .wm{font-size:13px;font-weight:800;letter-spacing:.17em;color:var(--text-secondary);line-height:1}
+.brandbar .wm i{font-style:normal;color:var(--accent)}
+
+nav.jump{position:sticky;top:0;z-index:20;background:var(--surface-0);border-bottom:1px solid var(--line);
+  padding:8px 0;margin-bottom:26px}
+nav.jump ul{max-width:1120px;margin:0 auto;padding:0 20px;list-style:none;display:flex;gap:4px;overflow-x:auto}
+nav.jump a{display:block;padding:5px 11px;border-radius:7px;font-size:13px;text-decoration:none;
+  color:var(--text-secondary);white-space:nowrap}
+nav.jump a:hover{background:var(--surface-2);color:var(--text-primary)}
+
+section{margin:0 0 42px;scroll-margin-top:56px}
+h2{font-size:17px;font-weight:640;margin:0 0 4px;display:flex;align-items:baseline;gap:9px}
+h2 .n{font-family:var(--mono);font-size:12px;color:var(--text-muted);font-weight:400}
+.lede{color:var(--text-secondary);font-size:13.5px;margin:0 0 16px;max-width:76ch}
+.card,.panel{background:var(--surface-1);border:1px solid var(--line);border-radius:var(--radius);padding:18px}
+.panel h3{margin:0 0 12px;font-size:13px;letter-spacing:.05em;text-transform:uppercase;
+  color:var(--text-muted);font-weight:600}
+.lab{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:16px;align-items:start}
+.lab>*{min-width:0}
+@media(max-width:900px){.lab{grid-template-columns:1fr !important}}
+canvas{display:block;width:100%;height:auto;border-radius:8px;background:var(--surface-2)}
+
+.qtext{font-family:var(--serif);font-size:16px;line-height:1.7}
+.opts{list-style:none;padding:0;margin:16px 0 0;display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr));gap:10px}
+.opts li{border:1px solid var(--line);border-radius:10px;padding:10px;background:var(--surface-1);
+  display:flex;flex-direction:column;gap:6px}
+.opts li .hd{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--text-muted);font-family:var(--mono)}
+.opts li .mark{margin-left:auto;font-family:var(--sans);font-size:11.5px;font-weight:600}
+.opts li .nm{font-size:11.5px;color:var(--text-secondary)}
+.opts li.correct{border-color:var(--good);background:color-mix(in srgb,var(--good) 11%,transparent)}
+.opts li.correct .mark{color:var(--good)}
+.opts li.wrong{border-color:var(--bad)}
+.opts li.wrong .mark{color:var(--bad)}
+svg.optthumb{display:block;width:100%;height:auto;background:var(--surface-2);border-radius:7px}
+
+.ctrl{margin:14px 0}
+.ctrl label{display:flex;flex-wrap:wrap;gap:4px;justify-content:space-between;align-items:baseline;
+  font-size:13px;margin-bottom:5px}
+.ctrl label span{min-width:0}
+.ctrl label .v{font-family:var(--mono);font-size:13px;color:var(--text-primary)}
+input[type=range]{width:100%;min-width:0;accent-color:var(--accent)}
+.numrow{display:flex;gap:6px;align-items:center;margin-top:6px}
+.numrow input.numin{flex:1;min-width:0;padding:7px 9px;border-radius:7px;border:1px solid var(--line-strong);
+  background:var(--surface-0);color:var(--text-primary);font-family:var(--mono);font-size:13px}
+.numrow input.numin:focus{outline:2px solid var(--accent);outline-offset:-1px}
+.numrow input.numin.bad{border-color:var(--bad);background:color-mix(in srgb,var(--bad) 9%,transparent)}
+.numrow button.step{flex:none;width:40px;height:34px;border-radius:8px;border:1px solid var(--line-strong);
+  background:var(--surface-2);color:var(--text-primary);font-size:18px;line-height:1;cursor:pointer;
+  font-family:var(--mono);touch-action:manipulation}
+.numrow button.step:hover{border-color:var(--accent);color:var(--accent)}
+.numrow .unit{flex:none;font-size:12px;color:var(--text-muted);min-width:52px}
+.hint{font-size:11.5px;color:var(--text-muted);margin-top:4px;min-height:1.15em}
+.hint.bad{color:var(--bad);font-weight:600}
+.segbtns{display:flex;gap:6px;flex-wrap:wrap}
+.segbtns button{flex:1;min-width:84px;padding:8px 6px;border-radius:8px;border:1px solid var(--line-strong);
+  background:var(--surface-2);color:var(--text-secondary);font-size:13px;cursor:pointer;font-family:var(--sans)}
+.segbtns button[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:650}
+button.act{padding:8px 14px;border-radius:8px;border:1px solid var(--line-strong);background:var(--surface-2);
+  color:var(--text-primary);font-size:13px;cursor:pointer;font-family:var(--sans)}
+button.act:hover{border-color:var(--accent);color:var(--accent)}
+button.act.primary{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+button.act:disabled{opacity:.42;cursor:not-allowed}
+.btnrow{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+
+.playback{display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin-top:12px;
+  padding:9px 10px;border:1px solid var(--line);border-radius:9px;background:var(--surface-2)}
+.playback .lb{font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-muted);margin-right:2px}
+.playback button{padding:6px 12px;border-radius:7px;border:1px solid var(--line-strong);
+  background:var(--surface-1);color:var(--text-secondary);font-size:12.5px;cursor:pointer;font-family:var(--mono)}
+.playback button[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:700}
+.playback button:hover{border-color:var(--accent)}
+
+.readouts{display:grid;grid-template-columns:repeat(auto-fit,minmax(118px,1fr));gap:8px}
+.ro{border:1px solid var(--line);border-radius:8px;padding:8px 10px;background:var(--surface-2);position:relative}
+.ro .k{font-size:11px;letter-spacing:.03em;font-weight:600;color:var(--text-muted);white-space:nowrap}
+.ro .v{font-family:var(--mono);font-size:16px;font-weight:600;line-height:1.35}
+.ro .u{font-size:10.5px;color:var(--text-muted)}
+.delta{position:absolute;top:5px;right:7px;font-family:var(--mono);font-size:10.5px;font-weight:700;
+  padding:1px 5px;border-radius:5px;opacity:0;transition:opacity .55s ease-out;pointer-events:none}
+.delta.up{color:var(--good);background:color-mix(in srgb,var(--good) 16%,transparent)}
+.delta.down{color:var(--s2);background:color-mix(in srgb,var(--s2) 16%,transparent)}
+.delta.show{opacity:1;transition:opacity .1s}
+
+.eqlive{font-family:var(--serif);font-size:15px;background:var(--surface-2);border:1px solid var(--line);
+  border-radius:8px;padding:11px 13px;margin-top:12px;line-height:2.1}
+.eqlive .t{font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-muted);
+  font-family:var(--sans);display:block;margin-bottom:2px}
+.eqlive b{font-family:var(--mono);font-weight:700}
+.eqlive .chg{background:color-mix(in srgb,var(--accent) 26%,transparent);border-radius:4px;padding:0 3px}
+.eqlive .res{color:var(--good);font-weight:700;font-family:var(--mono)}
+
+.chartwrap{position:relative;background:var(--surface-1);border:1px solid var(--line);
+  border-radius:var(--radius);padding:16px}
+svg.chart{display:block;width:100%;height:auto;overflow:visible}
+.tip{position:absolute;pointer-events:none;background:var(--surface-1);border:1px solid var(--line-strong);
+  border-radius:8px;padding:8px 11px;font-size:12px;box-shadow:0 4px 14px rgba(0,0,0,.13);opacity:0;
+  transition:opacity .1s;z-index:5;min-width:150px}
+.tip .t{font-family:var(--mono);font-size:11px;color:var(--text-muted);margin-bottom:4px}
+.tip .r{display:flex;align-items:center;gap:7px;white-space:nowrap}
+.tip .sw{width:9px;height:9px;border-radius:2px;flex:none}
+.tip .rv{margin-left:auto;font-family:var(--mono);font-weight:600}
+.legend{display:flex;flex-wrap:wrap;gap:14px;margin-top:10px;font-size:12.5px;color:var(--text-secondary)}
+.legend span{display:flex;align-items:center;gap:6px}
+.legend i{width:14px;height:3px;border-radius:2px;display:block}
+.legend i.dot{width:9px;height:9px;border-radius:50%}
+
+.predict{border:1px solid var(--accent);border-radius:9px;padding:12px 14px;margin-top:14px;
+  background:color-mix(in srgb,var(--accent) 7%,transparent)}
+.predict .q{font-size:13px;font-weight:600;margin-bottom:8px}
+.predict .row{display:flex;gap:6px;flex-wrap:wrap}
+.predict button{flex:1;min-width:96px;padding:8px;border-radius:8px;border:1px solid var(--line-strong);
+  background:var(--surface-1);color:var(--text-primary);font-size:13px;cursor:pointer}
+.predict button[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+.predict .fb{font-size:12.5px;margin-top:9px;min-height:1.2em}
+.predict .fb.ok{color:var(--good);font-weight:600}
+.predict .fb.no{color:var(--bad);font-weight:600}
+
+table.data{border-collapse:collapse;font-size:12.5px;width:100%}
+table.data th,table.data td{border:1px solid var(--line-strong);padding:6px 9px;text-align:center}
+table.data th{background:var(--surface-2);font-weight:600;font-size:11.5px;color:var(--text-secondary)}
+table.data td.l{text-align:left}
+table.data td.num{font-family:var(--mono)}
+tr.win td{background:color-mix(in srgb,var(--good) 12%,transparent);font-weight:600}
+.scrollx{overflow-x:auto}
+.yes{color:var(--good);font-weight:700} .no{color:var(--bad);font-weight:700}
+.empty{color:var(--text-muted);font-size:12.5px;padding:10px 0}
+
+.nb{display:grid;gap:7px}
+.nb .obs{font-size:12.5px;padding:8px 11px;border-radius:8px;background:var(--surface-2);
+  border-left:3px solid var(--s1);color:var(--text-secondary);animation:nbin .35s ease-out}
+.nb .obs b{color:var(--text-primary);font-family:var(--mono)}
+@keyframes nbin{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+.insight{border:1px solid var(--good);border-radius:9px;padding:12px 14px;margin-top:12px;
+  background:color-mix(in srgb,var(--good) 10%,transparent);font-size:13.5px;animation:nbin .4s ease-out}
+.insight b{color:var(--good)}
+
+.verdict{border-radius:9px;padding:11px 14px;font-size:13.5px;margin-top:12px;border:1px solid var(--line-strong);
+  background:var(--surface-2)}
+.verdict.ok{border-color:var(--good);background:color-mix(in srgb,var(--good) 10%,transparent)}
+.verdict.no{border-color:var(--bad);background:color-mix(in srgb,var(--bad) 9%,transparent)}
+.verdict b{font-size:14px}
+
+.gate{border:1px dashed var(--line-strong);border-radius:var(--radius);padding:24px 20px;text-align:center;
+  background:var(--surface-1)}
+.gate h4{margin:0 0 6px;font-size:15px}
+.gate p{margin:0 0 12px;font-size:13px;color:var(--text-secondary)}
+.gate .cnt{font-family:var(--mono);color:var(--accent);font-weight:700}
+.reveal{animation:nbin .45s ease-out}
+
+ol.steps{list-style:none;counter-reset:s;padding:0;margin:0;display:grid;gap:10px}
+ol.steps li{min-width:0;counter-increment:s;border:1px solid var(--line);border-radius:var(--radius);
+  background:var(--surface-1);padding:14px 16px 14px 52px;position:relative}
+ol.steps li::before{content:counter(s);position:absolute;left:15px;top:14px;width:23px;height:23px;
+  border-radius:50%;background:var(--accent);color:#fff;font-size:12px;font-weight:700;
+  display:grid;place-items:center;font-family:var(--mono)}
+ol.steps h4{margin:0 0 6px;font-size:14px;font-weight:640}
+ol.steps p{margin:0 0 6px;font-size:13.5px;color:var(--text-secondary)}
+.eq{min-width:0;font-family:var(--serif);font-size:15px;background:var(--surface-2);border-radius:7px;
+  padding:9px 13px;margin:8px 0;overflow-x:auto}
+.eq .hl{color:var(--good);font-weight:700}
+sub{font-size:.72em} sup{font-size:.72em}
+.verify{border:1px solid var(--good);border-radius:var(--radius);
+  background:color-mix(in srgb,var(--good) 8%,transparent);padding:14px 16px;font-size:13.5px}
+.verify h4{margin:0 0 6px;font-size:13.5px;color:var(--good)}
+.verify ul{margin:6px 0 0;padding-left:18px;color:var(--text-secondary)}
+.meta-tbl{width:100%;border-collapse:collapse;font-size:13.5px}
+.meta-tbl td{padding:6px 0;border-bottom:1px solid var(--line);vertical-align:top}
+.meta-tbl td:first-child{color:var(--text-muted);width:160px;font-size:12.5px;padding-right:14px}
+footer{border-top:1px solid var(--line);margin-top:40px;padding-top:16px;font-size:12px;color:var(--text-muted)}
+
+/* ====================================================================
+   the deck
+   ==================================================================== */
+.deck{border:1px solid var(--line);border-radius:var(--radius);padding:14px;
+  background:linear-gradient(180deg,var(--surface-1),color-mix(in srgb,var(--surface-2) 55%,var(--surface-1)));
+  box-shadow:0 1px 2px rgba(0,0,0,.04),0 10px 26px -18px rgba(0,0,0,.35)}
+.phasebar{display:flex;gap:6px;align-items:center;flex-wrap:wrap;padding-bottom:11px;
+  border-bottom:1px solid var(--line);margin-bottom:12px}
+.phasebar .ph{font-size:11.5px;padding:4px 11px;border-radius:999px;border:1px solid var(--line-strong);
+  background:var(--surface-1);color:var(--text-muted);white-space:nowrap;display:flex;gap:6px;
+  align-items:center;transition:.25s}
+.phasebar .ph .n{font-family:var(--mono);font-size:10px;opacity:.8}
+.phasebar .ph.now{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:650;
+  box-shadow:0 3px 10px -3px color-mix(in srgb,var(--accent) 60%,transparent)}
+.phasebar .ph.done{border-color:var(--good);color:var(--good);
+  background:color-mix(in srgb,var(--good) 12%,transparent);font-weight:600}
+.phasebar .sp{flex:1}
+.phasebar .tag{font-size:11px;color:var(--text-muted);font-family:var(--mono)}
+
+/* the lab floor is always dark, in either page theme - it is a chamber,
+   not a page surface, and the neon instruments need a dark ground */
+.labwrap{display:grid;grid-template-columns:minmax(0,1.62fr) minmax(0,1fr);gap:13px;align-items:start}
+.labwrap>*{min-width:0}
+@media(max-width:940px){.labwrap{grid-template-columns:1fr !important}}
+
+.lab3d{
+  --ink:#eef3ff; --ink2:#9fb0cc; --ink3:#6c7f9e;
+  --A:#54a9ff; --B:#ff9350; --V:#37d8a4; --T:#a99bff; --GD:#3ee39a; --BD:#ff6b6b;
+  --glass:rgba(255,255,255,.055); --edge:rgba(160,190,255,.22);
+  position:relative;border-radius:12px;padding:12px;overflow:hidden;
+  background:
+    radial-gradient(90% 70% at 18% 8%,rgba(84,169,255,.16),transparent 60%),
+    radial-gradient(80% 70% at 88% 92%,rgba(169,155,255,.15),transparent 62%),
+    linear-gradient(170deg,#0d1322 0%,#070a12 55%,#0a0e1a 100%);
+  border:1px solid rgba(150,180,255,.16);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.07),0 18px 40px -26px rgba(0,0,0,.9);
+  color:var(--ink);display:flex;flex-direction:column}
+.lab3d:before{content:"";position:absolute;inset:0;pointer-events:none;
+  background:repeating-linear-gradient(0deg,rgba(255,255,255,.028) 0 1px,transparent 1px 3px);
+  opacity:.5;mix-blend-mode:overlay}
+.lab3d>*{position:relative}
+.lab3d .hd{display:flex;align-items:baseline;gap:9px;flex-wrap:wrap;margin-bottom:5px}
+.lab3d .hd h3{margin:0;font-size:11.5px;letter-spacing:.11em;text-transform:uppercase;
+  color:#8fa6c9;font-weight:700}
+.lab3d .hd .st{font-size:10.5px;font-family:var(--mono);color:#6c7f9e;
+  border:1px solid rgba(160,190,255,.2);border-radius:999px;padding:1px 8px}
+.lab3d .narr{font-size:12.5px;color:#c3d2ea;margin:0 0 8px;min-height:2.6em;line-height:1.35}
+.lab3d .narr b{color:#fff;font-family:var(--mono);font-weight:650}
+.lab3d .narr .gd{color:var(--GD)}
+svg.stage{display:block;width:100%;height:auto}
+
+/* the instrument rail */
+.rail{border:1px solid var(--line);border-radius:12px;background:var(--surface-1);padding:11px 12px;
+  display:flex;flex-direction:column;gap:9px;max-height:470px;overflow:auto}
+@media(max-width:940px){.rail{max-height:none}}
+.rail h4{margin:0;font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--text-muted);font-weight:700}
+.rail .grp{border-top:1px dashed var(--line);padding-top:9px;margin-top:2px}
+.rail .grp:first-of-type{border-top:0;padding-top:0;margin-top:0}
+.fld{margin:8px 0 0}
+.fld .lb{display:flex;justify-content:space-between;align-items:baseline;gap:6px;font-size:12px;
+  margin-bottom:4px;color:var(--text-secondary)}
+.fld .lb b{font-weight:600;color:var(--text-primary)}
+.fld .lb .u{font-size:10.5px;color:var(--text-muted);font-family:var(--mono);flex:none}
+.fld .rw{display:flex;gap:5px;align-items:center}
+.fld .rw input.numin{flex:1;min-width:0;padding:6px 8px;border-radius:7px;
+  border:1px solid var(--line-strong);background:var(--surface-0);color:var(--text-primary);
+  font-family:var(--mono);font-size:13px;text-align:center;font-weight:600}
+.fld .rw input.numin:focus{outline:2px solid var(--accent);outline-offset:-1px}
+.fld .rw input.numin.bad{border-color:var(--bad);background:color-mix(in srgb,var(--bad) 10%,transparent)}
+.fld .rw button.step{flex:none;width:30px;height:30px;border-radius:7px;border:1px solid var(--line-strong);
+  background:var(--surface-2);color:var(--text-primary);font-size:16px;line-height:1;cursor:pointer;
+  font-family:var(--mono);touch-action:manipulation}
+.fld .rw button.step:hover{border-color:var(--accent);color:var(--accent)}
+.fld input[type=range]{width:100%;margin-top:4px;height:16px}
+.rail .fh{font-size:10.5px;color:var(--text-muted);margin-top:2px;line-height:1.3}
+.rail .fh.bad{color:var(--bad);font-weight:650}
+.fld.inert .lb b{color:var(--text-muted)}
+.givens{display:flex;gap:6px;flex-wrap:wrap;margin-top:4px}
+.givens span{font-size:10.5px;font-family:var(--mono);border:1px solid var(--line);border-radius:6px;
+  padding:2px 6px;color:var(--text-secondary);background:var(--surface-2)}
+
+/* live gauges shown while the run is going */
+.gauges{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(108px,100%),1fr));gap:7px}
+.gz{border:1px solid var(--line);border-radius:9px;background:var(--surface-2);padding:6px 8px;
+  position:relative;overflow:hidden}
+.gz .k{font-size:9.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--text-muted);
+  font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.gz .v{font-family:var(--mono);font-size:17px;font-weight:700;line-height:1.25}
+.gz .u{font-size:9.5px;color:var(--text-muted);font-weight:400}
+.gz.dim .v{color:var(--text-muted)}
+.gz.hot{border-color:var(--good);background:color-mix(in srgb,var(--good) 11%,transparent)}
+.gz.hot .v{color:var(--good)}
+
+/* action bar */
+.actbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:12px}
+button.go{flex:none;padding:12px 24px;border-radius:11px;border:none;background:var(--accent);
+  color:#fff;font-size:14.5px;font-weight:750;cursor:pointer;font-family:var(--sans);
+  letter-spacing:.04em;
+  box-shadow:0 4px 16px -6px color-mix(in srgb,var(--accent) 75%,transparent);transition:.18s}
+button.go:hover:not(:disabled){filter:brightness(1.09);transform:translateY(-1px)}
+button.go:disabled{opacity:.42;cursor:not-allowed;box-shadow:none;transform:none}
+button.go.rev{background:var(--good);animation:revpulse 1.8s ease-out infinite}
+@keyframes revpulse{
+  0%{box-shadow:0 4px 18px -5px color-mix(in srgb,var(--good) 80%,transparent),
+     0 0 0 0 color-mix(in srgb,var(--good) 55%,transparent)}
+  70%{box-shadow:0 4px 18px -5px color-mix(in srgb,var(--good) 80%,transparent),0 0 0 17px transparent}
+  100%{box-shadow:0 4px 18px -5px color-mix(in srgb,var(--good) 80%,transparent),0 0 0 0 transparent}}
+.actbar .msg{flex:1 1 210px;min-width:0;font-size:12px;color:var(--text-secondary);line-height:1.35}
+.actbar .msg b{color:var(--text-primary)}
+.actbar .msg .bad{color:var(--bad);font-weight:650}
+button.ghost{flex:none;padding:7px 13px;border-radius:9px;border:1px solid var(--line-strong);
+  background:var(--surface-1);color:var(--text-secondary);font-size:12.5px;cursor:pointer;
+  font-family:var(--sans)}
+button.ghost:hover:not(:disabled){border-color:var(--accent);color:var(--accent)}
+button.ghost:disabled{opacity:.4;cursor:not-allowed}
+button.ghost[aria-pressed=true]{border-color:var(--accent);color:var(--accent);
+  background:color-mix(in srgb,var(--accent) 10%,transparent)}
+.spd{display:flex;gap:4px;align-items:center}
+.spd button{padding:6px 9px;font-size:11.5px;border-radius:7px;border:1px solid var(--line-strong);
+  background:var(--surface-1);color:var(--text-secondary);cursor:pointer;font-family:var(--mono)}
+.spd button[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:#fff}
+
+/* ====================================================================
+   the reveal
+   ==================================================================== */
+.suspense{text-align:center;padding:14px 8px}
+.suspense .q{font-family:var(--serif);font-size:20px;color:#dbe6fb;margin-bottom:6px}
+.suspense .q .u{color:var(--V);font-weight:700}
+.suspense .blanks{font-family:var(--mono);font-size:44px;letter-spacing:.2em;color:#5d6f8e;
+  margin:10px 0 4px}
+.suspense .hintline{font-size:12px;color:#8fa6c9}
+.graf{display:block;width:100%;height:auto}
+.congrats{text-align:center;margin-top:4px}
+.congrats .c1{font-size:13px;letter-spacing:.24em;text-transform:uppercase;color:var(--GD);
+  font-weight:800}
+.congrats .c2{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#8fa6c9;margin-top:2px}
+
+@keyframes popblink{0%{transform:scale(1)} 12%{transform:scale(1.16)} 24%{transform:scale(1)}
+  38%{opacity:.2} 50%{opacity:1} 64%{opacity:.2} 76%{opacity:1}
+  88%{transform:scale(1.07)} 100%{transform:scale(1);opacity:1}}
+.blink{animation:popblink 2s ease-in-out 1;display:inline-block}
+@keyframes ringpulse{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--good) 55%,transparent)}
+  70%{box-shadow:0 0 0 14px transparent} 100%{box-shadow:0 0 0 0 transparent}}
+.celebrate{animation:ringpulse 1.5s ease-out 2}
+@media(prefers-reduced-motion:reduce){.blink,.celebrate,button.go.rev{animation:none}}
+
+/* ====================================================================
+   diagram / record / traps / concepts
+   ==================================================================== */
+.viewbtns{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
+.viewbtns button{padding:6px 12px;font-size:12px;border-radius:999px;border:1px solid var(--line-strong);
+  background:var(--surface-1);color:var(--text-secondary);cursor:pointer;font-family:var(--sans)}
+.viewbtns button[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:#fff;
+  font-weight:650}
+.viewbtns button:disabled{opacity:.42;cursor:not-allowed}
+.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:12px;color:var(--text-secondary);margin-top:8px}
+.legend i{display:inline-block;width:14px;height:3px;border-radius:2px;vertical-align:middle;
+  margin-right:5px}
+
+.trapgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr));gap:11px}
+.trapgrid>*{min-width:0}
+.trap{border:1px solid var(--line);border-radius:10px;background:var(--surface-2);padding:11px 12px;
+  display:flex;flex-direction:column;gap:6px}
+.trap h4{margin:0;font-size:13px;color:var(--s2)}
+.trap p{margin:0;font-size:12.5px;color:var(--text-secondary);line-height:1.45;flex:1}
+.trap .out{font-family:var(--mono);font-size:15px;font-weight:700;padding:6px 9px;border-radius:7px;
+  background:var(--surface-1);border:1px solid var(--line);color:var(--text-muted)}
+.trap .out.on{color:var(--bad);border-color:var(--bad);
+  background:color-mix(in srgb,var(--bad) 9%,transparent)}
+
+.ccards{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(238px,100%),1fr));gap:11px}
+.ccards>*{min-width:0}
+.cc{border:1px solid var(--line);border-radius:11px;padding:12px 13px;background:
+  linear-gradient(180deg,var(--surface-1),var(--surface-2));opacity:0;transform:translateY(10px)}
+.cc.in{animation:ccin .5s ease-out forwards}
+@keyframes ccin{to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.cc{opacity:1;transform:none}.cc.in{animation:none}}
+.cc .n{font-family:var(--mono);font-size:10.5px;color:var(--text-muted);letter-spacing:.08em}
+.cc h4{margin:3px 0 6px;font-size:13.5px}
+.cc p{margin:0 0 7px;font-size:12.5px;color:var(--text-secondary);line-height:1.5}
+.cc .f{font-family:var(--serif);font-size:14px;background:var(--surface-0);border-radius:7px;
+  padding:8px 10px;border:1px solid var(--line);line-height:1.75}
+.cc .f b{color:var(--good)}
+
+.trialtbl td.n,.trialtbl th.n{text-align:right;font-family:var(--mono)}
+.assume{border-left:3px solid var(--s4);padding:8px 0 8px 13px;margin:14px 0 0;font-size:13.5px;
+  color:var(--text-secondary)}
+.assume b{color:var(--text-primary)}
+
+/* ---- stage 04: the split screen -------------------------------------- */
+.cmp{display:grid;grid-template-columns:1fr auto 1fr;gap:10px;align-items:center;margin-top:12px}
+.cmp>*{min-width:0}
+.cmpcard{border:1px solid var(--line);border-radius:12px;padding:12px 13px;background:var(--surface-2)}
+.cmpcard.liq{border-color:color-mix(in srgb,var(--s1) 45%,var(--line))}
+.cmpcard.vap{border-color:color-mix(in srgb,var(--s3) 45%,var(--line))}
+.cmpcard .t{font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;font-weight:700}
+.cmpcard.liq .t{color:var(--s1)} .cmpcard.vap .t{color:var(--s3)}
+.cmpcard .big{font-family:var(--mono);font-size:30px;font-weight:700;line-height:1.15;margin-top:3px}
+.cmpcard .sub{font-size:11.5px;color:var(--text-muted);margin-top:2px}
+.cmpcard svg{display:block;width:100%;height:auto;margin-top:8px}
+.cmparrow{font-size:22px;color:var(--text-muted);text-align:center;padding:0 2px}
+@media(max-width:720px){.cmp{grid-template-columns:1fr}.cmparrow{transform:rotate(90deg)}}
+
+/* ---- classroom mode --------------------------------------------------- */
+body.classroom nav.jump,
+body.classroom section:not(#lab),
+body.classroom header.top .chips,
+body.classroom footer{display:none}
+body.classroom .rail{display:none}
+body.classroom .labwrap{grid-template-columns:1fr !important}
+body.classroom .lab3d .narr{font-size:19px;line-height:1.45;min-height:3.2em}
+body.classroom .lab3d .hd h3{font-size:15px}
+body.classroom .phasebar .ph{font-size:15px;padding:7px 16px}
+body.classroom .deck{padding:20px}
+body.classroom button.go{font-size:19px;padding:16px 32px}
+body.classroom .actbar .msg{font-size:15px}
+body.classroom .wrap{max-width:none;padding-left:18px;padding-right:18px}
+body.classroom h2 .vb{display:none}
+body.classroom section#lab>h2,body.classroom section#lab>.lede{display:none}
+body.classroom .lab3d{min-height:64vh}
+#nextbtn{background:var(--s4);color:#fff;border-color:var(--s4);font-weight:700}
+#nextbtn:hover:not(:disabled){filter:brightness(1.1)}
+
+/* ---- the blackout before the reveal ----------------------------------- */
+.blackout{position:absolute;inset:0;background:#000;opacity:0;pointer-events:none;
+  transition:opacity .45s ease;z-index:4;border-radius:12px}
+.blackout.on{opacity:1}
+.flashout{position:absolute;inset:0;background:radial-gradient(circle at 50% 45%,
+  rgba(255,255,255,.95),rgba(120,255,200,.5) 35%,transparent 70%);opacity:0;pointer-events:none;
+  z-index:5;border-radius:12px}
+@keyframes flashpop{0%{opacity:0}18%{opacity:1}100%{opacity:0}}
+.flashout.go{animation:flashpop .85s ease-out 1}
+@media(prefers-reduced-motion:reduce){.flashout.go{animation:none}.blackout{transition:none}}
+/* ---- molecules and the reaction scheme -------------------------------- */
+.schemewrap{overflow-x:auto;border:1px solid var(--line);border-radius:10px;
+  background:var(--surface-2);padding:10px}
+svg.scheme{display:block;min-width:1140px;width:100%;height:auto}
+.molnote{font-size:11.5px;color:var(--text-muted);margin-top:8px;line-height:1.45}
+
+/* ---- the prediction the audit stage demands --------------------------- */
+.predbox{border:1px solid var(--line-strong);border-radius:11px;background:var(--surface-1);
+  padding:12px 13px;margin-top:11px}
+.predbox h4{margin:0 0 4px;font-size:12.5px}
+.predbox p{margin:0 0 9px;font-size:12.5px;color:var(--text-secondary);line-height:1.45}
+.predbox .row{display:flex;gap:8px;flex-wrap:wrap}
+.predbox .row button{flex:1 1 150px;padding:10px 13px;border-radius:9px;
+  border:1px solid var(--line-strong);background:var(--surface-2);color:var(--text-primary);
+  font-size:13px;cursor:pointer;font-family:var(--sans)}
+.predbox .row button:hover{border-color:var(--accent)}
+.predbox .row button[aria-pressed=true]{border-color:var(--accent);
+  background:color-mix(in srgb,var(--accent) 14%,transparent);font-weight:650}
+.predbox .fb{font-size:12.5px;margin-top:9px;min-height:1.3em}
+.predbox .fb.ok{color:var(--good);font-weight:600}
+.predbox .fb.no{color:var(--s2);font-weight:600}
+
+/* ---- the nitrogen audit cards ----------------------------------------- */
+.audit{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(230px,100%),1fr));gap:11px;
+  margin-top:12px}
+.audit>*{min-width:0}
+.aud{border:1px solid var(--line);border-radius:11px;padding:11px 12px;background:var(--surface-2)}
+.aud.yes{border-color:var(--good);background:color-mix(in srgb,var(--good) 9%,transparent)}
+.aud.no{border-color:var(--bad);background:color-mix(in srgb,var(--bad) 8%,transparent)}
+.aud .t{font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;
+  color:var(--text-muted)}
+.aud.yes .t{color:var(--good)} .aud.no .t{color:var(--bad)}
+.aud .g{font-family:var(--serif);font-size:17px;margin:4px 0 5px}
+.aud p{margin:0;font-size:12px;color:var(--text-secondary);line-height:1.45}
+
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-inner">
+    <div>
+      <div class="brandbar"><svg class="pxmark" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><rect width="32" height="32" rx="8" fill="var(--accent)"/><path d="M12.5 6.5h7M13.6 6.5v7.2L7.9 24.1a1.5 1.5 0 0 0 1.3 2.3h13.6a1.5 1.5 0 0 0 1.3-2.3l-5.7-10.4V6.5" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.6 20.6h10.8" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg><span class="wm">PRAYOG<i>X</i></span></div>
+      <div class="simid">ADV-2026-P2-CHE-Q17</div>
+      <h1>Two nitrogens, one of them invisible: a Kjeldahl titration</h1>
+      <div class="chips">
+        <span class="chip">JEE Advanced 2026</span>
+        <span class="chip">Paper 2 · Q.17</span>
+        <span class="chip">Chemistry</span>
+        <span class="chip">Kjeldahl · reaction sequence</span>
+        <span class="chip">Numerical value</span>
+        <span class="chip">+2 / 0</span>
+        <span class="chip k">Build it · run it</span>
+      </div>
+    </div>
+    <div class="answerbox locked" id="answerbox">
+      <div class="lbl">Answer</div>
+      <div class="val" id="ansval">Run the experiment</div>
+      <div class="sub" id="anssub">Check the data from the stem and start the bench.</div>
+      <button class="rv" id="revealnow" type="button">Reveal anyway</button>
+    </div>
+    <button class="themebtn" id="themebtn" type="button">◐ theme</button>
+  </div>
+</header>
+
+<nav class="jump">
+  <ul>
+    <li><a href="#question">Question</a></li>
+    <li><a href="#lab">The experiment</a></li>
+    <li><a href="#audit">Nitrogen audit</a></li>
+    <li><a href="#record">Record</a></li>
+    <li><a href="#traps">Where it goes wrong</a></li>
+    <li><a href="#solution">Solution</a></li>
+    <li><a href="#concepts">What we learned</a></li>
+  </ul>
+</nav>
+
+<div class="wrap">
+
+
+<section id="question">
+  <h2><span class="n">01</span>Original question <span class="vb">— verbatim</span></h2>
+  <p class="lede">JEE (Advanced) 2026, Paper 2, Chemistry, Section 4 — a question stem shared by
+     Q.17 and Q.18. This simulation answers Q.17.</p>
+  <div class="panel">
+    <h3>Question stem for question nos. 17 and 18</h3>
+    <div class="qtext">
+      <p>Consider the following reaction sequence in which <b>J</b>, <b>K</b>, <b>L</b> and
+         <b>M</b> are the major products.</p>
+    </div>
+    <div class="schemewrap" style="margin-top:12px">
+      <svg class="scheme" id="scheme" viewBox="0 0 1220 496" role="img"
+           aria-label="The printed reaction sequence, redrawn: m-xylene is acylated with
+           chloroacetyl chloride over aluminium chloride, the chloride is exchanged for iodide with
+           sodium iodide, and sodium 3-nitrophenoxide displaces it to give J. Sodium borohydride
+           then phosphorus tribromide give K, of molar mass 350. Excess ammonia converts K to the
+           nitrogen-containing L, and sodium thiophenolate converts it to the sulphur-containing
+           M."></svg>
+    </div>
+    <p class="molnote">The scheme is redrawn here as live vector structures rather than reproduced
+       from the paper, so the exam PDF itself is never published. Every structure is the same one
+       the paper prints.</p>
+    <table class="data" style="margin-top:14px">
+      <thead><tr><th>Given — atomic mass (amu)</th><th>Value</th><th>Needed for Q.17?</th></tr></thead>
+      <tbody>
+        <tr><td>H</td><td class="n">1</td><td><b style="color:var(--good)">yes</b></td></tr>
+        <tr><td>C</td><td class="n">12</td><td><b style="color:var(--good)">yes</b></td></tr>
+        <tr><td>N</td><td class="n">14</td><td><b style="color:var(--good)">yes</b></td></tr>
+        <tr><td>O</td><td class="n">16</td><td><b style="color:var(--good)">yes</b></td></tr>
+        <tr><td>S</td><td class="n">32</td><td>no — Q.18</td></tr>
+        <tr><td>Br</td><td class="n">80</td><td>only to check the stem's M(K) = 350</td></tr>
+        <tr><td>Ba</td><td class="n">137</td><td>no — Q.18</td></tr>
+      </tbody>
+    </table>
+    <div class="qtext" style="margin-top:16px">
+      <p><b>Q.17</b>&nbsp; The volume of 1 M aqueous H<sub>2</sub>SO<sub>4</sub> required to
+         completely neutralize the ammonia evolved from 5.72 g of <b>L</b> in Kjeldahl's method of
+         nitrogen estimation is ____ mL.</p>
+    </div>
+    <div class="assume">
+      <b>Two things have to be got right, and the second is the one that catches people.</b>
+      First the structure of L, which the stem lets you confirm rather than guess: whatever you
+      propose for K has to weigh 350 g mol<sup>−1</sup>. Second, <i>which</i> of L's nitrogens
+      actually turns into ammonia — because L has two of them and Kjeldahl's digestion does not
+      touch both.
+    </div>
+    <div class="assume" style="border-left-color:var(--line-strong)">
+      Q.18, the mass of BaSO<sub>4</sub> from 3.79 g of M by the Carius method, is a separate
+      question. This page builds M as far as identifying it and then leaves it alone.
+    </div>
+  </div>
+</section>
+
+<section id="lab">
+  <h2><span class="n">02</span>The Kjeldahl bench</h2>
+  <p class="lede">The bench builds the compound first and weighs it to check itself against the
+     stem's 350 g&nbsp;mol<sup>−1</sup>, then asks you to commit to how many of L's nitrogens will
+     come off as ammonia — and only then digests, distils and titrates.</p>
+
+  <div class="deck" id="deck">
+    <div class="phasebar" id="phasebar">
+      <span class="ph" id="ph0"><span class="n">00</span>Charge</span>
+      <span class="ph" id="ph1"><span class="n">01</span>Build J</span>
+      <span class="ph" id="ph2"><span class="n">02</span>Build K · weigh it</span>
+      <span class="ph" id="ph3"><span class="n">03</span>Build L</span>
+      <span class="ph" id="ph4"><span class="n">04</span>Nitrogen audit</span>
+      <span class="ph" id="ph5"><span class="n">05</span>Digest · distil · titrate</span>
+      <span class="ph" id="ph6"><span class="n">06</span>Answer</span>
+      <span class="sp"></span>
+      <span class="tag" id="phtag">waiting for your data</span>
+    </div>
+
+    <div class="labwrap">
+      <div class="lab3d" id="lab3d">
+        <div class="hd">
+          <h3 id="scenet">Bench — waiting for the atomic masses</h3>
+          <span class="st" id="clock">t = 0.0 s</span>
+        </div>
+        <p class="narr" id="narr">Nothing has been built yet. Check the data from the stem and press
+           <b>START EXPERIMENT</b>.</p>
+        <div id="stagehost"></div>
+        <div class="blackout" id="blackout"></div>
+        <div class="flashout" id="flashout"></div>
+      </div>
+
+      <div class="rail" id="rail"></div>
+    </div>
+
+    <div class="predbox" id="predbox" hidden>
+      <h4 id="predq">L has two nitrogen atoms. How many moles of ammonia does one mole of L give
+        under Kjeldahl digestion?</h4>
+      <p>Commit before the bench resolves it. Digestion with hot concentrated
+         H<sub>2</sub>SO<sub>4</sub> converts nitrogen to ammonium sulphate — but not every kind of
+         nitrogen.</p>
+      <div class="row" id="predrow">
+        <button type="button" data-p="1" aria-pressed="false">1 mol of NH<sub>3</sub></button>
+        <button type="button" data-p="2" aria-pressed="false">2 mol of NH<sub>3</sub></button>
+      </div>
+      <div class="fb" id="predfb">Pick one and the audit runs.</div>
+    </div>
+
+    <div class="actbar">
+      <button class="go" id="gobtn" type="button" disabled>▶&nbsp; START EXPERIMENT</button>
+      <button class="ghost" id="nextbtn" type="button" hidden>NEXT STEP →</button>
+      <button class="ghost" id="pausebtn" type="button" disabled>Pause</button>
+      <div class="spd" id="spd" role="group" aria-label="playback speed">
+        <button type="button" data-s="0.5" aria-pressed="false">0.5×</button>
+        <button type="button" data-s="1" aria-pressed="true">1×</button>
+        <button type="button" data-s="2" aria-pressed="false">2×</button>
+      </div>
+      <button class="ghost" id="replaybtn" type="button" hidden>REPLAY EXPERIMENT</button>
+      <button class="ghost" id="conceptbtn" type="button" hidden>UNDERSTAND THE CONCEPT</button>
+      <button class="ghost" id="editbtn" type="button" hidden>Change the data</button>
+      <button class="ghost" id="classbtn" type="button" aria-pressed="false">CLASSROOM MODE</button>
+      <button class="ghost" id="fsbtn" type="button">Full screen</button>
+      <div class="msg" id="gomsg">The atomic masses are pre-filled from the stem; the mass of L and
+        the acid strength are the two quantities Q.17 gives.</div>
+    </div>
+  </div>
+</section>
+
+<section id="audit">
+  <h2><span class="n">03</span>The nitrogen audit, and what the titre depends on</h2>
+  <p class="lede">Kjeldahl's digestion turns nitrogen into ammonium sulphate — but only nitrogen it
+     can reduce. Nitrogen in a nitro group, an azo group or an aromatic ring survives the digestion
+     and is never counted. L happens to have one of each kind.</p>
+  <div class="panel">
+    <div class="audit" id="auditcards"></div>
+    <div class="viewbtns" id="viewbtns" role="group" aria-label="diagram view" style="margin-top:18px">
+      <button type="button" data-v="mass" aria-pressed="true">Titre against mass of L</button>
+      <button type="button" data-v="ncount" aria-pressed="false">Titre against nitrogens counted</button>
+    </div>
+    <div class="chartwrap">
+      <svg class="chart" id="chart" viewBox="0 0 880 340" role="img"
+           aria-label="Titre of 1 molar sulphuric acid against the mass of L taken"></svg>
+    </div>
+    <div class="legend" id="legend"></div>
+    <div class="ctrl" id="xctrl" style="margin-top:14px">
+      <label for="xsl"><span>Explore a different mass of L</span>
+        <span class="v" id="xval">5.72 g</span></label>
+      <input type="range" id="xsl" min="0" max="1000" value="286"
+             aria-label="mass of L on the diagram">
+      <div class="hint">Your own weighing stays marked. The line is straight through the origin,
+        which is why Kjeldahl works as a percentage-nitrogen method at any sample size.</div>
+    </div>
+    <div class="readouts" style="margin-top:12px">
+      <div class="ro"><div class="k">mass explored</div><div class="v"><span id="rm">5.72</span>
+        <span class="u">g</span></div></div>
+      <div class="ro"><div class="k">moles of L</div><div class="v"><span id="rn">—</span>
+        <span class="u">mol</span></div></div>
+      <div class="ro"><div class="k">titre needed</div><div class="v"><span id="rv">—</span>
+        <span class="u">mL</span></div></div>
+      <div class="ro"><div class="k">nitrogen by mass</div><div class="v"><span id="rp">—</span>
+        <span class="u">% N</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="record">
+  <h2><span class="n">04</span>Record of the run</h2>
+  <p class="lede">Each quantity appears only once the bench has established it, and every completed
+     run is logged.</p>
+  <div class="lab">
+    <div class="panel">
+      <h3>What this run established</h3>
+      <div class="scrollx"><table class="data" id="rec"></table></div>
+      <div class="insight" id="insight" hidden></div>
+    </div>
+    <div class="panel">
+      <h3>Trial log</h3>
+      <p class="empty" id="trialempty">No runs yet. Change the mass or the acid strength and run it
+         again — the titre follows both, and the structure of L never changes.</p>
+      <div class="scrollx"><table class="data trialtbl" id="trials" hidden></table></div>
+      <div class="btnrow" style="margin-top:11px">
+        <button class="ghost" id="clrtrials" type="button" disabled>Clear the log</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="traps">
+  <h2><span class="n">05</span>Where this question goes wrong</h2>
+  <p class="lede">Each card re-runs the bench with one mistaken assumption, on your own numbers.</p>
+  <div class="trapgrid" id="trapgrid"></div>
+</section>
+
+<section id="solution">
+  <h2><span class="n">06</span>Step-by-step solution</h2>
+  <p class="lede" id="solintro">Run the experiment and reveal the answer — the derivation opens
+     with it.</p>
+
+  <div class="gate" id="solgate">
+    <h4>The solution is still locked</h4>
+    <p>The bench has not produced a titre yet. Run the experiment through to the end and press
+       <b>REVEAL ANSWER</b> — this opens by itself at the same moment.</p>
+    <button class="act" id="revealsol" type="button">Show me the solution anyway</button>
+  </div>
+
+  <div class="panel" id="solbody" hidden>
+    <ol class="steps">
+      <li>
+        <h4>Step 1 — the only step that changes the carbon skeleton: Friedel–Crafts acylation</h4>
+        <p>Chloroacetyl chloride with anhydrous AlCl<sub>3</sub> acylates <i>m</i>-xylene. Both
+           methyls are <i>o,p</i>-directing, so the position that is ortho to one and para to the
+           other is the one that reacts; the position between them is too hindered and the position
+           meta to both is not activated. The product is a 2,4-dimethylphenacyl chloride.</p>
+        <div class="eq">m-C<sub>6</sub>H<sub>4</sub>(CH<sub>3</sub>)<sub>2</sub> + ClCH<sub>2</sub>COCl
+          → Ar–CO–CH<sub>2</sub>Cl &nbsp;(Ar = 2,4-dimethylphenyl)</div>
+      </li>
+      <li>
+        <h4>Step 2 — Finkelstein exchange, then the phenoxide displaces the iodide</h4>
+        <p>NaI with heat swaps chloride for iodide, which is the better leaving group for the step
+           that follows. Sodium 3-nitrophenoxide then attacks the α-carbon in a plain
+           S<sub>N</sub>2 — an alkyl halide next to a carbonyl is unusually reactive towards
+           substitution.</p>
+        <div class="eq">Ar–CO–CH<sub>2</sub>Cl &nbsp;<span class="hl">NaI</span>&nbsp;
+          Ar–CO–CH<sub>2</sub>I &nbsp;<span class="hl">NaO–C<sub>6</sub>H<sub>4</sub>–NO<sub>2</sub></span>&nbsp;
+          <b>J</b> = Ar–CO–CH<sub>2</sub>–O–C<sub>6</sub>H<sub>4</sub>–NO<sub>2</sub></div>
+        <div class="eq">J = C<sub>16</sub>H<sub>15</sub>NO<sub>4</sub>,
+          M = 192 + 15 + 14 + 64 = <span class="hl">285 g mol<sup>−1</sup></span></div>
+      </li>
+      <li>
+        <h4>Step 3 — reduce, then brominate: and the stem hands you the check</h4>
+        <p>NaBH<sub>4</sub> reduces the ketone to a secondary alcohol and leaves the nitro group and
+           the ether alone. PBr<sub>3</sub> then replaces the hydroxyl with bromine.</p>
+        <div class="eq">J →<sub>NaBH<sub>4</sub></sub> Ar–CH(OH)–CH<sub>2</sub>–O–Ar′
+          (C<sub>16</sub>H<sub>17</sub>NO<sub>4</sub>, 287)
+          →<sub>PBr<sub>3</sub></sub> <b>K</b> = Ar–CHBr–CH<sub>2</sub>–O–Ar′</div>
+        <div class="eq">K = C<sub>16</sub>H<sub>16</sub>BrNO<sub>3</sub> :
+          192 + 16 + 80 + 14 + 48 = <span class="hl">350 g mol<sup>−1</sup></span> — exactly the
+          molar mass the stem states, so the structure is confirmed rather than assumed</div>
+      </li>
+      <li>
+        <h4>Step 4 — excess ammonia gives the amine, L</h4>
+        <p>Ammonia displaces the bromide at the secondary benzylic carbon. The excess is what keeps
+           it a primary amine instead of alkylating twice.</p>
+        <div class="eq"><b>L</b> = Ar–CH(NH<sub>2</sub>)–CH<sub>2</sub>–O–C<sub>6</sub>H<sub>4</sub>–NO<sub>2</sub>
+          = C<sub>16</sub>H<sub>18</sub>N<sub>2</sub>O<sub>3</sub>,
+          M = 192 + 18 + 28 + 48 = <span class="hl">286 g mol<sup>−1</sup></span></div>
+        <div class="eq">n(L) = 5.72 / 286 = <span class="hl">0.02 mol</span></div>
+      </li>
+      <li>
+        <h4>Step 5 — the audit: L has two nitrogens and Kjeldahl counts one</h4>
+        <p>Digestion with hot concentrated sulphuric acid converts nitrogen to ammonium sulphate,
+           which is then made alkaline and distilled as ammonia. It only works on nitrogen that can
+           be reduced to the −3 state under those conditions. Nitrogen in a <b>nitro</b> group — and
+           equally in an azo group or an aromatic ring — is not converted, so it never appears as
+           ammonia and is never estimated. L's amine nitrogen is counted; its nitro nitrogen is
+           not.</p>
+        <div class="eq">n(NH<sub>3</sub>) = n(L) × 1 = <span class="hl">0.02 mol</span>
+          &nbsp;(not 0.04)</div>
+      </li>
+      <li>
+        <h4>Step 6 — the titration: sulphuric acid is dibasic</h4>
+        <p>Two moles of ammonia are neutralised by one mole of H<sub>2</sub>SO<sub>4</sub>, because
+           each sulphuric acid molecule supplies two protons.</p>
+        <div class="eq">2 NH<sub>3</sub> + H<sub>2</sub>SO<sub>4</sub> → (NH<sub>4</sub>)<sub>2</sub>SO<sub>4</sub></div>
+        <div class="eq">n(H<sub>2</sub>SO<sub>4</sub>) = 0.02 / 2 = 0.01 mol
+          &nbsp;⟹&nbsp; V = 0.01 / 1 = 0.01 L
+          = <span class="hl">10 mL</span></div>
+      </li>
+      <li>
+        <h4>What the two mistakes cost</h4>
+        <p>Counting both nitrogens gives 20 mL. Forgetting that sulphuric acid is dibasic also gives
+           20 mL. Making both mistakes gives 40 mL — and, neatly, the two errors do not cancel, they
+           compound. Only 10 mL comes from getting both right.</p>
+        <div class="eq">%N estimated = 1.4 × M<sub>acid</sub> × V<sub>mL</sub> × basicity ÷ mass
+          = 1.4 × 1 × 10 × 2 / 5.72 = <span class="hl">4.90 % N</span>
+          — against 9.79 % nitrogen actually in the molecule</div>
+      </li>
+    </ol>
+
+    <div class="verify">
+      <h4>Independent verification</h4>
+      <ul>
+        <li><b>Derived first, checked afterwards.</b> Every structure was built from the printed
+          reagents alone — acylation, Finkelstein, S<sub>N</sub>2, hydride reduction, bromination,
+          ammonolysis — before any published solution was consulted.</li>
+        <li><b>The stem's own checksum.</b> The independently constructed K,
+          C<sub>16</sub>H<sub>16</sub>BrNO<sub>3</sub>, comes to 350 g mol<sup>−1</sup> on the
+          stem's atomic masses, which is exactly the figure the stem supplies. A wrong skeleton
+          would not land on it, so this is a real structural confirmation and the simulation
+          enforces it live.</li>
+        <li><b>Two more round numbers fall out.</b> 5.72 g of L is 0.0200 mol exactly on
+          M = 286, and — cross-checking the sibling question — 3.79 g of M
+          (C<sub>22</sub>H<sub>21</sub>NO<sub>3</sub>S, 379) is 0.0100 mol exactly, giving
+          2.33 g of BaSO<sub>4</sub>. Three independent masses in the stem all resolve to clean
+          amounts on these structures.</li>
+        <li><b>The Kjeldahl limitation, stated in the syllabus and load-bearing here.</b> Nitrogen
+          in nitro and azo groups and in rings is not converted to ammonium sulphate under Kjeldahl
+          digestion. L was built with exactly one amine nitrogen and one nitro nitrogen, which is
+          why the question carries the nitrophenoxide all the way through — and it is the single
+          decision that separates 10 mL from 20 mL.</li>
+        <li><b>Stoichiometry checked both ways.</b> 2 NH<sub>3</sub> + H<sub>2</sub>SO<sub>4</sub>
+          balances on N, H, S and O; equivalently the n-factor of ammonia is 1 and of sulphuric acid
+          is 2, and equivalents match: 0.02 × 1 = 0.01 × 2.</li>
+        <li><b>Dimensions and scaling.</b> mol ÷ (mol L<sup>−1</sup>) = L, then ×1000 = mL. The
+          titre is linear in the mass taken and inversely proportional to the acid strength: 11.44 g
+          needs 20 mL, and 2 M acid needs 5 mL. The simulation reproduces both.</li>
+        <li><b>Distractor audit.</b> Counting both nitrogens gives 20 mL; treating
+          H<sub>2</sub>SO<sub>4</sub> as monobasic gives 20 mL; doing both gives 40 mL; using
+          M(K) = 350 in place of M(L) gives 8.17 mL; using M(J) = 285 gives 10.04 mL — close enough
+          to 10 to be mistaken for it, which is why the reduction and bromination have to be
+          tracked properly. None of them is 10 mL by the right route.</li>
+        <li><b>Independent numeric script</b> (<code>verify17.py</code>, exact fractions): 23 of 23
+          checks pass, with every molar mass assembled atom by atom rather than recalled.</li>
+        <li><b>Headless-browser run of this page.</b> The finished simulation was driven end to end
+          in Chromium and asserted to reproduce 10 mL from the live model, to rebuild all four
+          molar masses from the entered atomic masses, to flag it when the entered masses no longer
+          reproduce the stem's 350, to keep the answer off the page until it is revealed, and to
+          render with no console errors and no horizontal overflow at 390 px and 360 px.</li>
+        <li><b>Cross-check.</b> Afterwards the answer was compared against a published worked
+          solution for this paper, which identifies L with M = 286, states that one mole of L
+          releases one mole of NH<sub>3</sub> under Kjeldahl's method, uses n-factors of 1 for
+          ammonia and 2 for sulphuric acid, and reports the same 10 mL. IIT Roorkee's official key
+          was not retrievable at the time of writing.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="concepts">
+  <h2><span class="n">07</span>What did we learn?</h2>
+  <p class="lede">Four ideas carry this question. The cards fill their numbers in when the answer is
+     revealed.</p>
+  <div class="panel">
+    <h3>The four concepts this question turns on</h3>
+    <div class="ccards" id="ccards">
+      <div class="cc" id="cc0">
+        <div class="n">CARD 01</div>
+        <h4>A stated molar mass is a gift, not decoration</h4>
+        <p>When a stem tells you a molar mass mid-sequence it is handing you a checksum. Build the
+           structure your own way, add the atoms up, and if it matches you are on the right
+           skeleton; if it does not, something earlier is wrong. Guessing is not required.</p>
+        <div class="f">K = C<sub>16</sub>H<sub>16</sub>BrNO<sub>3</sub> &nbsp;⟹&nbsp;
+          <span id="cf0">…</span></div>
+      </div>
+      <div class="cc" id="cc1">
+        <div class="n">CARD 02</div>
+        <h4>Kjeldahl does not see every nitrogen</h4>
+        <p>Digestion reduces nitrogen to ammonium sulphate, so it only counts nitrogen it can
+           reduce. Nitrogen in a <b>nitro</b> group, an <b>azo</b> group, or an <b>aromatic
+           ring</b> comes through untouched and is never estimated. Put such a group in a molecule
+           and the method under-reports on purpose.</p>
+        <div class="f">L has 2 N, Kjeldahl counts 1 &nbsp;⟹&nbsp; <span id="cf1">…</span></div>
+      </div>
+      <div class="cc" id="cc2">
+        <div class="n">CARD 03</div>
+        <h4>Sulphuric acid is dibasic</h4>
+        <p>Every H<sub>2</sub>SO<sub>4</sub> molecule neutralises two ammonia molecules, so the
+           moles of acid are half the moles of ammonia. In equivalents: n-factor 1 for
+           NH<sub>3</sub>, 2 for H<sub>2</sub>SO<sub>4</sub>, and equivalents must match.</p>
+        <div class="f">2 NH<sub>3</sub> + H<sub>2</sub>SO<sub>4</sub> →
+          (NH<sub>4</sub>)<sub>2</sub>SO<sub>4</sub> &nbsp;⟹&nbsp; <span id="cf2">…</span></div>
+      </div>
+      <div class="cc" id="cc3">
+        <div class="n">CARD 04</div>
+        <h4>The whole chain, in one line</h4>
+        <p>Mass to moles, moles to countable nitrogen, nitrogen to ammonia, ammonia to acid, acid to
+           volume. Each arrow is one fact, and the only one that is not arithmetic is the second.</p>
+        <div class="f">V = (w/M<sub>L</sub>) × n<sub>N,counted</sub> ÷ 2 ÷ c × 1000
+          &nbsp;⟹&nbsp; <span id="cf3">…</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="lab" style="margin-top:16px">
+    <div class="panel">
+      <h3>Formulas used</h3>
+      <div class="eq">M(compound) = Σ (atomic mass × count) — every mass on this page is summed,
+        not remembered</div>
+      <div class="eq">n(L) = w(L) / M(L)</div>
+      <div class="eq">n(NH<sub>3</sub>) = n(L) × (nitrogens Kjeldahl can reduce)</div>
+      <div class="eq">2 NH<sub>3</sub> + H<sub>2</sub>SO<sub>4</sub> →
+        (NH<sub>4</sub>)<sub>2</sub>SO<sub>4</sub>, so n(acid) = n(NH<sub>3</sub>)/2</div>
+      <div class="eq">V = n(acid) / c, in litres; ×1000 for mL</div>
+      <div class="eq">%N = 1.4 × c × V(mL) × basicity ÷ w &nbsp;(the standard Kjeldahl form)</div>
+      <p style="font-size:12.5px;color:var(--text-secondary);margin:12px 0 0">
+        The 1.4 is 14 g mol<sup>−1</sup> × 100 ÷ 1000 — it is the molar mass of nitrogen hiding
+        inside a percentage, not a magic constant.</p>
+    </div>
+    <div class="panel">
+      <h3>Classification</h3>
+      <table class="meta-tbl">
+        <tbody>
+          <tr><th>Exam</th><td>JEE Advanced 2026 · Paper 2</td></tr>
+          <tr><th>Subject</th><td>Chemistry</td></tr>
+          <tr><th>Section</th><td>Section 4 · question stem for Q.17 and Q.18</td></tr>
+          <tr><th>Question</th><td>Q.17 — numerical value</td></tr>
+          <tr><th>Marking</th><td>+2 if correct, 0 otherwise</td></tr>
+          <tr><th>Chapter</th><td>Organic Chemistry — Some Basic Principles and Techniques</td></tr>
+          <tr><th>Topic</th><td>Kjeldahl estimation of nitrogen, on a compound built by a reaction sequence</td></tr>
+          <tr><th>Also draws on</th><td>Friedel–Crafts acylation · Finkelstein reaction · S<sub>N</sub>2 · Hydride reduction · Mole concept · Acid–base titration</td></tr>
+          <tr><th>Difficulty</th><td>Hard</td></tr>
+          <tr><th>Answer</th><td><b id="clsans">— run the experiment</b></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<footer>
+  ADV-2026-P2-CHE-Q17 · PrayogX · JEE Advanced Interactive Simulation Library · question text reproduced
+  from the official JEE (Advanced) 2026 Paper 2 for educational use.
+</footer>
+</div>
+
+<script>
+
+var NS="http://www.w3.org/2000/svg";
+function css(v){ return getComputedStyle(document.documentElement).getPropertyValue(v).trim(); }
+function el(n,a){ var e=document.createElementNS(NS,n); for(var k in a) e.setAttribute(k,a[k]); return e; }
+function $(id){ return document.getElementById(id); }
+function clamp(v,a,b){ return v<a?a:(v>b?b:v); }
+function esc(s){ return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+
+/* ---- predictions + verdict matrix ------------------------------------- */
+var PORDER=["A","B","C","D"], pIdx=0, predictions={}, tested={}, revealed=false;
+
+function renderPredict(){
+  var kk=PORDER[pIdx], def=OPT[kk];
+  $("pq").innerHTML = "Statement ("+kk+") — "+def.shortq;
+  var bs=$("predict").querySelectorAll(".row button");
+  for(var i=0;i<bs.length;i++) bs[i].setAttribute("aria-pressed", predictions[kk]===bs[i].dataset.p?"true":"false");
+  var fb=$("pfb");
+  if(!predictions[kk]){ fb.className="fb"; fb.textContent="Commit to an answer, then go and test it on the bench above."; }
+  else if(!tested[kk]){ fb.className="fb"; fb.innerHTML="Logged. Now test ("+kk+") on the bench and see."; }
+  else {
+    var right = predictions[kk]===def.verdict;
+    fb.className="fb "+(right?"ok":"no");
+    fb.innerHTML=(right?"✓ Your prediction matches your measurement. ":"✗ Your measurement disagrees. ")+def.why;
+  }
+  $("pprev").disabled = pIdx===0; $("pnext").disabled = pIdx===PORDER.length-1;
+}
+function drawMatrix(){
+  var rows=PORDER.map(function(kk){
+    var def=OPT[kk], seen=!!tested[kk], pr=predictions[kk];
+    var vcell = seen ? (def.verdict==="yes" ? "<span class='yes'>✓ correct</span>"
+                                            : "<span class='no'>✗ not correct</span>")
+                     : "<span style='color:var(--text-muted)'>not tested yet</span>";
+    var ok = seen && pr && pr===def.verdict;
+    return "<tr"+(seen&&def.verdict==="yes"?" class='win'":"")+"><td><b>("+kk+")</b></td>"+
+      "<td class='l'>"+def.label+"</td><td>"+(pr?(pr==="yes"?"correct":"not correct"):"—")+"</td>"+
+      "<td>"+vcell+"</td><td>"+(seen&&pr?(ok?"<span class='yes'>match</span>":"<span class='no'>mismatch</span>"):"—")+"</td></tr>";
+  }).join("");
+  $("matrix").innerHTML="<thead><tr><th>Option</th><th class='l'>Statement</th><th>Your prediction</th>"+
+    "<th>What you measured</th><th></th></tr></thead><tbody>"+rows+"</tbody>";
+}
+function nTested(){ var n=0; for(var k in tested) if(tested[k]) n++; return n; }
+
+/* ---- the gate ---------------------------------------------------------- */
+function gateOpen(){ return nTested()>=4 || revealed; }
+function updateGate(){
+  if($("gtested")) $("gtested").textContent = nTested();
+  var open=gateOpen();
+  $("solgate").hidden = open;
+  $("solbody").hidden = !open;
+  var ab=$("answerbox");
+  if(open){
+    ab.classList.remove("locked");
+    $("ansval").textContent=ANSWER.text;
+    $("anssub").innerHTML=ANSWER.sub;
+    $("revealnow").hidden=true;
+    if($("clsans")) $("clsans").textContent=ANSWER.text;
+    if(!$("solbody").classList.contains("reveal")) $("solbody").classList.add("reveal");
+    if($("solintro")) $("solintro").innerHTML = revealed && nTested()<4
+      ? "Revealed early — go back and test the statements to see these conclusions come from your own measurements."
+      : "<b>You tested all four statements on the bench.</b> "+ANSWER.intro;
+  } else {
+    ab.classList.add("locked");
+    $("ansval").textContent="Run the experiment";
+    $("anssub").textContent=LOCKED_SUB;
+    $("revealnow").hidden=false;
+    if($("clsans")) $("clsans").textContent="— run the experiment";
+  }
+  markOptions();
+}
+function markOptions(){
+  if(!gateOpen()) return;
+  document.querySelectorAll("#opts li").forEach(function(li){
+    var kk=li.dataset.k, right=OPT[kk].verdict==="yes";
+    li.classList.remove("correct","wrong");
+    li.classList.add(right?"correct":"wrong");
+    li.querySelector(".mark").textContent = right?"correct":"not correct";
+  });
+}
+function markTested(kk){ if(!tested[kk]){ tested[kk]=true; updateGate(); drawMatrix(); renderPredict(); } }
+
+/* ---- notebook ---------------------------------------------------------- */
+var obsLog=[];
+function note(text){
+  if(obsLog.indexOf(text)>=0) return;
+  obsLog.push(text);
+  $("notebook").innerHTML = obsLog.map(function(o){ return '<div class="obs">'+o+"</div>"; }).join("");
+  $("nbempty").hidden = true;
+}
+
+/* ---- numeric control: slider + typed box + steppers -------------------- */
+function parseNum(str){
+  if(str===null||str===undefined) return null;
+  var s=String(str).trim().toLowerCase();
+  if(!s) return null;
+  s=s.replace(/π/g,"(pi)").replace(/pi/g,"(pi)").replace(/\(\(pi\)\)/g,"(pi)");
+  s=s.replace(/×10\^?/g,"e").replace(/x10\^?/g,"e").replace(/\s+/g,"");
+  if(!/^[0-9+\-*/().epi]+$/.test(s)) return null;
+  s=s.replace(/\(pi\)/g,"P_I");
+  if(/[a-z]/.test(s.replace(/P_I/g,"").replace(/e/g,""))) return null;
+  s=s.replace(/P_I/g,"("+Math.PI+")");
+  var v;
+  try { v=Function('"use strict";return ('+s+');')(); } catch(err){ return null; }
+  if(typeof v!=="number"||!isFinite(v)) return null;
+  return v;
+}
+function makeControl(cfg){
+  var sl=$(cfg.slider), inp=$(cfg.input), hint=$(cfg.hint), baseHint=hint?hint.innerHTML:"";
+  function toSlider(v){ return cfg.log ? Math.round(1000*Math.log(v/cfg.lo)/Math.log(cfg.hi/cfg.lo))
+                                       : Math.round((v-cfg.lo)/(cfg.hi-cfg.lo)*1000); }
+  function fromSlider(p){ return cfg.log ? cfg.lo*Math.pow(cfg.hi/cfg.lo,p/1000)
+                                         : cfg.lo+(cfg.hi-cfg.lo)*p/1000; }
+  sl.min=0; sl.max=1000;
+  function show(v){
+    sl.value=toSlider(v);
+    if(document.activeElement!==inp) inp.value=v.toFixed(cfg.dp);
+    inp.classList.remove("bad");
+    if(hint){ hint.classList.remove("bad"); hint.innerHTML=baseHint; }
+    if(cfg.valEl) $(cfg.valEl).textContent=v.toFixed(cfg.dp)+" "+cfg.unit;
+  }
+  function set(v){ v=clamp(v,cfg.lo,cfg.hi); ST[cfg.key]=v; show(v); if(cfg.onset) cfg.onset(); }
+  sl.addEventListener("input",function(){ set(fromSlider(+sl.value)); });
+  inp.addEventListener("input",function(){
+    var v=parseNum(inp.value);
+    if(v===null){ inp.classList.add("bad");
+      if(hint){ hint.classList.add("bad"); hint.textContent="That is not a number I can read — try 0.5, 1/2 or 5e-1."; }
+      return; }
+    if(v<cfg.lo||v>cfg.hi){ inp.classList.add("bad");
+      if(hint){ hint.classList.add("bad");
+        hint.textContent="Out of the range this apparatus can hold ("+cfg.lo+" to "+cfg.hi+" "+cfg.unit+")."; }
+      return; }
+    inp.classList.remove("bad");
+    if(hint){ hint.classList.remove("bad"); hint.innerHTML=baseHint; }
+    ST[cfg.key]=v; sl.value=toSlider(v);
+    if(cfg.valEl) $(cfg.valEl).textContent=v.toFixed(cfg.dp)+" "+cfg.unit;
+    if(cfg.onset) cfg.onset();
+  });
+  inp.addEventListener("blur",function(){ show(ST[cfg.key]); });
+  document.querySelectorAll('.step[data-for="'+cfg.slider+'"]').forEach(function(b){
+    b.addEventListener("click",function(){ set(ST[cfg.key]+(+b.dataset.dir)*cfg.step); });
+  });
+  show(ST[cfg.key]);
+  return { show:function(){ show(ST[cfg.key]); } };
+}
+
+/* ---- generic plotter --------------------------------------------------- */
+function niceAxis(a,b,want){
+  if(!(b>a)) b=a+1;
+  var raw=(b-a)/(want||5), ex=Math.floor(Math.log(raw)/Math.LN10), f=raw/Math.pow(10,ex);
+  var m=f<=1?1:(f<=2?2:(f<=2.5?2.5:(f<=5?5:10))), st=m*Math.pow(10,ex);
+  var lo=Math.floor(a/st+1e-9)*st, hi=Math.ceil(b/st-1e-9)*st;
+  if(hi-lo<st) hi=lo+st;
+  return {lo:lo,hi:hi,step:st,n:Math.max(1,Math.round((hi-lo)/st))};
+}
+function tickDp(step){
+  for(var d=0;d<=6;d++){ var s=step*Math.pow(10,d); if(Math.abs(s-Math.round(s))<1e-9) return d; }
+  return 6;
+}
+function plot(svg,cfg){
+  while(svg.firstChild) svg.removeChild(svg.firstChild);
+  var vb=svg.getAttribute("viewBox").split(/\s+/).map(Number), W=vb[2], H=vb[3];
+  var M={l:cfg.ml||70,r:cfg.mr||52,t:22,b:48};
+  var AX_=niceAxis(cfg.xMin,cfg.xMax,5), AY_=niceAxis(cfg.yMin,cfg.yMax,5);
+  var xa=AX_.lo, xb=AX_.hi, ya=AY_.lo, yb=AY_.hi;
+  function X(v){ return M.l+(v-xa)/(xb-xa)*(W-M.l-M.r); }
+  function Y(v){ return H-M.b-(v-ya)/(yb-ya)*(H-M.t-M.b); }
+  var grid=css("--line"), muted=css("--text-muted"), strong=css("--line-strong"), ink=css("--text-secondary");
+  var i, xdp=tickDp(AX_.step), ydp=tickDp(AY_.step);
+  for(i=0;i<=AX_.n;i++){
+    var xv=xa+AX_.step*i;
+    svg.appendChild(el("line",{x1:X(xv),x2:X(xv),y1:M.t,y2:H-M.b,stroke:grid,"stroke-width":1}));
+    var tx=el("text",{x:X(xv),y:H-M.b+18,"text-anchor":"middle",fill:muted,"font-size":10.5,
+      "font-family":"ui-monospace,monospace"});
+    tx.textContent=cfg.xFmt?cfg.xFmt(xv):xv.toFixed(xdp); svg.appendChild(tx);
+  }
+  for(i=0;i<=AY_.n;i++){
+    var yv=ya+AY_.step*i;
+    svg.appendChild(el("line",{x1:M.l,x2:W-M.r,y1:Y(yv),y2:Y(yv),stroke:grid,"stroke-width":1}));
+    var ty=el("text",{x:M.l-9,y:Y(yv)+3.5,"text-anchor":"end",fill:muted,"font-size":10.5,
+      "font-family":"ui-monospace,monospace"});
+    ty.textContent=cfg.yFmt?cfg.yFmt(yv):yv.toFixed(ydp); svg.appendChild(ty);
+  }
+  if(ya<0&&yb>0)
+    svg.appendChild(el("line",{x1:M.l,x2:W-M.r,y1:Y(0),y2:Y(0),stroke:strong,"stroke-width":1.5}));
+  svg.appendChild(el("line",{x1:M.l,x2:M.l,y1:M.t,y2:H-M.b,stroke:strong,"stroke-width":1.5}));
+  svg.appendChild(el("line",{x1:M.l,x2:W-M.r,y1:H-M.b,y2:H-M.b,stroke:strong,"stroke-width":1.5}));
+  var usedLbl=[];
+  (cfg.curves||[]).forEach(function(c){
+    if(!c.pts||c.pts.length<2) return;
+    var d=c.pts.map(function(p,ix){ return (ix?"L":"M")+X(p[0]).toFixed(1)+" "+Y(p[1]).toFixed(1); }).join(" ");
+    svg.appendChild(el("path",{d:d,fill:"none",stroke:css(c.col),"stroke-width":c.w||2.4,
+      "stroke-linecap":"round","stroke-linejoin":"round","stroke-dasharray":c.dash||"none",
+      opacity:c.op===undefined?1:c.op}));
+    if(c.label){
+      var last=c.pts[c.pts.length-1], ly=clamp(Y(last[1])+4,M.t+8,H-M.b);
+      for(var q=0;q<usedLbl.length;q++){ if(Math.abs(usedLbl[q]-ly)<13){ ly=usedLbl[q]+13; q=-1; } }
+      ly=clamp(ly,M.t+8,H-M.b-2); usedLbl.push(ly);
+      var lb=el("text",{x:clamp(X(last[0])+8,M.l,W-4),y:ly,fill:css(c.col),"font-size":11.5,
+        "font-weight":700,"text-anchor":X(last[0])>W-M.r-40?"end":"start"});
+      lb.textContent=c.label; svg.appendChild(lb);
+    }
+  });
+  (cfg.bars||[]).forEach(function(b){
+    var x0=X(b.x0), x1=X(b.x1), y0=Y(Math.max(ya,0)), y1=Y(b.y);
+    svg.appendChild(el("rect",{x:Math.min(x0,x1),y:Math.min(y0,y1),width:Math.abs(x1-x0),
+      height:Math.abs(y1-y0),fill:css(b.col),opacity:b.op===undefined?.85:b.op,rx:3}));
+    if(b.label){
+      var t=el("text",{x:(x0+x1)/2,y:Math.min(y0,y1)-6,"text-anchor":"middle",fill:css(b.col),
+        "font-size":11.5,"font-weight":700}); t.textContent=b.label; svg.appendChild(t);
+    }
+  });
+  (cfg.points||[]).forEach(function(p){
+    if(p.x<xa||p.x>xb||p.y<ya||p.y>yb) return;
+    svg.appendChild(el("circle",{cx:X(p.x),cy:Y(p.y),r:p.r||4.6,fill:p.fill||css("--surface-1"),
+      stroke:css(p.col),"stroke-width":2}));
+    if(p.label){
+      var t=el("text",{x:X(p.x),y:Y(p.y)-10,"text-anchor":"middle",fill:css(p.col),
+        "font-size":11,"font-weight":700}); t.textContent=p.label; svg.appendChild(t);
+    }
+  });
+  var axl=el("text",{x:(M.l+W-M.r)/2,y:H-8,"text-anchor":"middle",fill:ink,"font-size":12.5});
+  axl.textContent=cfg.xLabel; svg.appendChild(axl);
+  var ayl=el("text",{x:15,y:(M.t+H-M.b)/2,"text-anchor":"middle",fill:ink,"font-size":12.5,
+    transform:"rotate(-90 15 "+((M.t+H-M.b)/2)+")"});
+  ayl.textContent=cfg.yLabel; svg.appendChild(ayl);
+  svg._map={X:X,Y:Y,xa:xa,xb:xb,M:M,W:W};
+}
+
+/* ---- shared wiring ----------------------------------------------------- */
+function wireCommon(redraw){
+  $("predict").addEventListener("click",function(e){
+    var b=e.target.closest(".row button"); if(!b) return;
+    predictions[PORDER[pIdx]]=b.dataset.p; renderPredict(); drawMatrix();
+  });
+  $("pprev").addEventListener("click",function(){ if(pIdx>0){ pIdx--; renderPredict(); } });
+  $("pnext").addEventListener("click",function(){ if(pIdx<PORDER.length-1){ pIdx++; renderPredict(); } });
+  function doReveal(){ revealed=true; updateGate(); }
+  $("revealnow").addEventListener("click",doReveal);
+  $("revealsol").addEventListener("click",doReveal);
+  $("themebtn").addEventListener("click",function(){
+    var r=document.documentElement;
+    var dark=r.getAttribute("data-theme")==="dark" ||
+      (!r.getAttribute("data-theme")&&matchMedia("(prefers-color-scheme: dark)").matches);
+    r.setAttribute("data-theme",dark?"light":"dark");
+    if(redraw) redraw();
+  });
+}
+
+(function(){
+"use strict";
+
+/* =====================================================================
+   state and the model - every molar mass is summed from the atomic masses
+   ===================================================================== */
+var FIELDS = [
+  {g:"What Q.17 gives you", k:"wL", lab:"Mass of L weighed out", u:"g",
+   lo:0.1, hi:100, st:0.5, dp:2, def:5.72,
+   fh:"the sample digested in the Kjeldahl flask"},
+  {k:"conc", lab:"Strength of the H₂SO₄", u:"mol/L", lo:0.05, hi:5, st:0.25, dp:2, def:1,
+   fh:"the acid the ammonia is distilled into"},
+  {g:"Atomic masses, from the stem", k:"H", lab:"H", u:"amu", lo:0.5, hi:4, st:1, dp:1, def:1,
+   fh:"every molar mass on this page is added up from these"},
+  {k:"C", lab:"C", u:"amu", lo:6, hi:20, st:1, dp:1, def:12, fh:"&nbsp;"},
+  {k:"N", lab:"N", u:"amu", lo:7, hi:20, st:1, dp:1, def:14, fh:"&nbsp;"},
+  {k:"O", lab:"O", u:"amu", lo:8, hi:24, st:1, dp:1, def:16, fh:"&nbsp;"},
+  {k:"Br", lab:"Br", u:"amu", lo:40, hi:120, st:1, dp:1, def:80,
+   fh:"needed only to check the stem's M(K) = 350"},
+  {g:"Given, but for Q.18", k:"S", lab:"S", u:"amu", lo:16, hi:48, st:1, dp:1, def:32, use:false,
+   fh:"the sulphur compound M belongs to Q.18"},
+  {k:"Ba", lab:"Ba", u:"amu", lo:80, hi:200, st:1, dp:1, def:137, use:false,
+   fh:"barium sulphate is weighed in Q.18, not here"}
+];
+var ST = {};
+for(var fi=0; fi<FIELDS.length; fi++) ST[FIELDS[fi].k] = FIELDS[fi].def;
+
+/* the structures, as formulas built from the scheme */
+var FORM = {
+  XYL: {C:8,  H:10},                      /* m-xylene                        */
+  J:   {C:16, H:15, N:1, O:4},            /* Ar-CO-CH2-O-C6H4-NO2            */
+  ALC: {C:16, H:17, N:1, O:4},            /* after NaBH4                     */
+  K:   {C:16, H:16, N:1, O:3, Br:1},      /* after PBr3 - the stem says 350  */
+  L:   {C:16, H:18, N:2, O:3},            /* after NH3                       */
+  M:   {C:22, H:21, N:1, O:3, S:1},       /* after PhSNa - Q.18's compound   */
+  BASO4:{Ba:1, S:1, O:4}
+};
+var K_STATED = 350;            /* the checksum the stem hands over */
+var N_TOTAL = 2;               /* nitrogens in L                   */
+var N_KJELDAHL = 1;            /* only the amine one digests       */
+var ACID_BASICITY = 2;         /* H2SO4 is dibasic                 */
+
+function mass(f, D){
+  var m = 0, e;
+  for(e in f) m += (D[e] || 0) * f[e];
+  return m;
+}
+function solve(D){
+  var MJ = mass(FORM.J, D), MK = mass(FORM.K, D), ML = mass(FORM.L, D);
+  var MM = mass(FORM.M, D), MALC = mass(FORM.ALC, D);
+  var nL = D.wL / ML;
+  var nNH3 = nL * N_KJELDAHL;
+  var nAcid = nNH3 / ACID_BASICITY;
+  var V = nAcid / D.conc * 1000;
+  var pctN = ML > 0 ? (N_TOTAL * D.N) / ML * 100 : 0;
+  var pctEst = ML > 0 ? (N_KJELDAHL * D.N) / ML * 100 : 0;
+  return { MJ:MJ, MALC:MALC, MK:MK, ML:ML, MM:MM, nL:nL, nNH3:nNH3, nAcid:nAcid, V:V,
+           pctN:pctN, pctEst:pctEst, kOK: Math.abs(MK - K_STATED) < 1e-9,
+           nBaSO4: D.wL, MBaSO4: mass(FORM.BASO4, D) };
+}
+function copyST(){ var D={},i; for(i=0;i<FIELDS.length;i++) D[FIELDS[i].k]=ST[FIELDS[i].k]; return D; }
+function complaint(D){
+  if(!(D.wL > 0)) return "Weigh out a positive mass of L.";
+  if(!(D.conc > 0)) return "The acid needs a positive concentration.";
+  return null;
+}
+/* not a refusal - a note, because the stem's 350 is a checksum on the masses */
+function kNote(D){
+  var S = solve(D);
+  if(S.kOK) return null;
+  return "On these atomic masses K comes to " + n2(S.MK) + " g/mol, but the stem states 350. "
+       + "Put the masses back and the structure checks out again.";
+}
+
+/* ---- formatting ------------------------------------------------------- */
+function grp(s){
+  if(s.length<5) return s;
+  var o="",c=0,i; for(i=s.length-1;i>=0;i--){ o=s.charAt(i)+o; if(++c%3===0&&i>0) o=" "+o; }
+  return o;
+}
+function nInt(x){ return (x<0?"−":"")+grp(String(Math.abs(Math.round(x)))); }
+function n1(x){ return Math.abs(x-Math.round(x))<5e-7 ? nInt(x) : x.toFixed(1); }
+function n2(x){ return Math.abs(x-Math.round(x))<5e-7 ? nInt(x) : x.toFixed(2); }
+function n3(x){ return Math.abs(x-Math.round(x))<5e-7 ? nInt(x) : x.toFixed(3); }
+function n4(x){ return Math.abs(x-Math.round(x))<5e-9 ? nInt(x) : x.toFixed(4).replace(/0+$/,"").replace(/\.$/,""); }
+function ansTxt(v){ return isFinite(v) ? (Math.abs(v-Math.round(v))<5e-3 ? nInt(v) : v.toFixed(2)) : "—"; }
+function fmtForm(f){
+  var order=["C","H","Br","N","O","S","Ba"], out="", i;
+  for(i=0;i<order.length;i++){
+    var e=order[i]; if(!f[e]) continue;
+    out += e + (f[e]>1 ? "<sub>"+f[e]+"</sub>" : "");
+  }
+  return out;
+}
+function formPlain(f){
+  var order=["C","H","Br","N","O","S","Ba"], out="", i;
+  for(i=0;i<order.length;i++){ var e=order[i]; if(!f[e]) continue; out += e + (f[e]>1?f[e]:""); }
+  return out;
+}
+
+/* =====================================================================
+   the rail
+   ===================================================================== */
+function railHTML(){
+  var out="", i;
+  for(i=0;i<FIELDS.length;i++){
+    var f=FIELDS[i];
+    if(f.g) out += (i?"</div>":"") + '<div class="grp"><h4>'+f.g+"</h4>";
+    out += '<div class="fld'+(f.use===false?" inert":"")+'" id="fld_'+f.k+'">'
+        +  '<div class="lb"><span><b>'+f.lab+'</b></span><span class="u">'+f.u+'</span></div>'
+        +  '<div class="rw"><button class="step" type="button" data-for="sl_'+f.k+'" data-dir="-1" '
+        +  'aria-label="decrease '+f.lab+'">−</button>'
+        +  '<input class="numin" id="in_'+f.k+'" inputmode="decimal" aria-label="'+f.lab+'">'
+        +  '<button class="step" type="button" data-for="sl_'+f.k+'" data-dir="1" '
+        +  'aria-label="increase '+f.lab+'">+</button></div>'
+        +  '<input type="range" id="sl_'+f.k+'" aria-label="'+f.lab+' slider">'
+        +  '<div class="fh" id="fh_'+f.k+'">'+f.fh+'</div></div>';
+  }
+  out += "</div>";
+  return out;
+}
+function gaugeHTML(){
+  function g(id,k,u){ return '<div class="gz dim" id="gz_'+id+'"><div class="k">'+k+'</div>'
+    + '<div class="v"><span id="gv_'+id+'">—</span> <span class="u">'+u+'</span></div></div>'; }
+  return '<div class="grp"><h4>Live instruments</h4><div class="gauges">'
+    + g("MJ","M(J)","g/mol") + g("MK","M(K)","g/mol") + g("ML","M(L)","g/mol")
+    + g("nL","n(L)","mol") + g("nN","N counted","per L") + g("nNH3","n(NH₃)","mol")
+    + g("nAcid","n(H₂SO₄)","mol") + g("V","titre","mL")
+    + '</div><div class="fh" style="margin-top:7px" id="knote">Each gauge fills in only when the '
+    + 'bench has established it.</div></div>';
+}
+
+/* =====================================================================
+   scene machine
+   ===================================================================== */
+var SCENES = ["setup","j","k","l","audit","kjel","reveal"];
+var DUR = { j:11.0, k:9.2, l:5.5, audit:6.0, kjel:12.0 };
+var RUN = { scene:"setup", t:0, playing:false, speed:1, done:false, D:null, S:null };
+var trials=[], mounted="", stage=null, nodes={}, earlyReveal=false, classroom=false;
+var predicted = null, predSeen = false;
+
+var TITLES = {
+  setup:"Bench — waiting for the atomic masses",
+  j:"Stage 01 — building J from m-xylene",
+  k:"Stage 02 — reduce, brominate, and weigh: K must come to 350",
+  l:"Stage 03 — excess ammonia gives L",
+  audit:"Stage 04 — the nitrogen audit",
+  kjel:"Stage 05 — digest, distil, titrate",
+  reveal:"Stage 06 — the titre of 1 M sulphuric acid"
+};
+var BEATS = [["j",3.4],["j",7.0],["j",10.8],["k",4.0],["k",8.6],["l",5.2],
+             ["audit",5.6],["kjel",4.5],["kjel",8.5],["kjel",11.8],["reveal",0]];
+
+function sceneIdx(){ var i; for(i=0;i<SCENES.length;i++) if(SCENES[i]===RUN.scene) return i; return 0; }
+function elapsed(){ var i,t=0; for(i=1;i<SCENES.length;i++){ if(SCENES[i]===RUN.scene) return t+RUN.t;
+  t+=DUR[SCENES[i]]||0; } return t; }
+function setPhase(){
+  var idx=sceneIdx(), i;
+  for(i=0;i<7;i++) $("ph"+i).className="ph"+(i===idx?" now":(i<idx?" done":""));
+  $("phtag").textContent = RUN.scene==="setup" ? "waiting for your data"
+    : (RUN.scene==="reveal" ? (RUN.done?"answer revealed":"one number left")
+       : (RUN.scene==="audit" && !predicted ? "waiting for your prediction"
+          : (RUN.playing?"experiment running":"paused")));
+  $("scenet").textContent=TITLES[RUN.scene];
+  $("clock").textContent = RUN.scene==="setup" ? "t = 0.0 s" : "t = "+elapsed().toFixed(1)+" s";
+}
+
+/* =====================================================================
+   the molecule renderer - benzene rings and a short chain, drawn properly
+   ===================================================================== */
+var COL = { A:"#54a9ff", B:"#ff9350", V:"#37d8a4", T:"#a99bff", GD:"#3ee39a", BD:"#ff6b6b",
+            ink:"#eef3ff", ink2:"#9fb0cc", ink3:"#6c7f9e", edge:"rgba(160,190,255,.26)",
+            bond:"#cfdcf2" };
+var VB_W=720, VB_H=440;
+
+function mk(tag,at,parent){ var e=el(tag,at||{}); if(parent) parent.appendChild(e); return e; }
+function tx(parent,x,y,s,at){
+  var a={x:x,y:y,fill:COL.ink2,"font-size":12,"font-family":"ui-monospace,monospace"};
+  for(var k in (at||{})) a[k]=at[k];
+  var t=mk("text",a,parent); t.textContent=s; return t;
+}
+function P(ang,cx,cy,r){ var a=ang*Math.PI/180; return [cx+r*Math.cos(a), cy+r*Math.sin(a)]; }
+function bond(host,x1,y1,x2,y2,o){
+  o=o||{};
+  var dx=x2-x1, dy=y2-y1, L=Math.sqrt(dx*dx+dy*dy);
+  var t1=o.t1||0, t2=o.t2||0;
+  if(L < t1+t2+6){ t1=0; t2=0; }
+  var ux=dx/L, uy=dy/L;
+  var ax=x1+ux*t1, ay=y1+uy*t1, bx=x2-ux*t2, by=y2-uy*t2;
+  if(o.order===2){
+    var nx=-uy*2.6, ny=ux*2.6;
+    mk("line",{x1:ax+nx,y1:ay+ny,x2:bx+nx,y2:by+ny,stroke:o.col||COL.bond,
+      "stroke-width":o.w||2,"stroke-linecap":"round",opacity:o.op===undefined?1:o.op},host);
+    mk("line",{x1:ax-nx,y1:ay-ny,x2:bx-nx,y2:by-ny,stroke:o.col||COL.bond,
+      "stroke-width":o.w||2,"stroke-linecap":"round",opacity:o.op===undefined?1:o.op},host);
+  } else {
+    mk("line",{x1:ax,y1:ay,x2:bx,y2:by,stroke:o.col||COL.bond,"stroke-width":o.w||2,
+      "stroke-linecap":"round",opacity:o.op===undefined?1:o.op},host);
+  }
+}
+var LABEL_BG = "#0a0f1c";
+function atomLabel(host,x,y,s,col,size){
+  var g=mk("g",{},host);
+  var w=s.length*(size||13)*0.62+6;
+  mk("rect",{x:x-w/2,y:y-(size||13)*0.72,width:w,height:(size||13)*1.44,fill:LABEL_BG,
+             opacity:.95,rx:3},g);
+  var t=tx(g,x,y+(size||13)*0.36,s,{"text-anchor":"middle","font-size":size||13,
+    fill:col||COL.ink,"font-family":"ui-sans-serif,system-ui,sans-serif","font-weight":"600"});
+  return g;
+}
+function halo(host,x,y,r,col){
+  mk("circle",{cx:x,cy:y,r:r,fill:col,opacity:.16},host);
+  mk("circle",{cx:x,cy:y,r:r,fill:"none",stroke:col,"stroke-width":1.6,opacity:.75},host);
+}
+/* a benzene ring: flat-topped hexagon, vertex 0 pointing right */
+function benzene(host,cx,cy,r,subs,op){
+  var g=mk("g",{},host), i;
+  for(i=0;i<6;i++){
+    var a=P(i*60,cx,cy,r), b=P(((i+1)%6)*60,cx,cy,r);
+    bond(g,a[0],a[1],b[0],b[1],{op:op});
+  }
+  /* three inner lines for the aromatic bonds */
+  for(i=0;i<6;i+=2){
+    var a2=P(i*60,cx,cy,r*0.72), b2=P(((i+1)%6)*60,cx,cy,r*0.72);
+    bond(g,a2[0],a2[1],b2[0],b2[1],{op:(op===undefined?1:op)*0.75,w:1.7});
+  }
+  (subs||[]).forEach(function(s){
+    var v=P(s.ang,cx,cy,r), o=P(s.ang,cx,cy,r+(s.len||26));
+    bond(g,v[0],v[1],o[0],o[1],{t1:2,t2:s.label?11:0,op:op});
+    if(s.label) atomLabel(g,o[0],o[1],s.label,s.col,s.size);
+    if(s.halo) halo(g,o[0],o[1],16,s.col||COL.B);
+  });
+  return g;
+}
+/* the whole molecule: dimethylphenyl - CH(alpha) - CH2 - terminal
+   alpha: null | "=O" | "OH" | "Br" | "NH2"     term: "Cl" | "I" | "OAr" | null */
+function drawMolecule(host, spec){
+  var g=mk("g",{transform:spec.transform||""},host);
+  var R=34, cx1=96, cy=228;
+  benzene(g,cx1,cy,R,[{ang:60,label:"CH₃",len:24,size:12},
+                      {ang:180,label:"CH₃",len:24,size:12}],1);
+  if(!spec.alpha && !spec.term) return g;         /* m-xylene alone */
+  var att=P(0,cx1,cy,R);
+  var Ca=[att[0]+46, cy+24], Cb=[Ca[0]+44, cy-2];
+  bond(g,att[0],att[1],Ca[0],Ca[1],{t1:2});
+  /* the alpha substituent, drawn upwards */
+  var sub=[Ca[0], Ca[1]-46];
+  if(spec.alpha==="=O"){
+    bond(g,Ca[0],Ca[1],sub[0],sub[1],{order:2,t2:11});
+    atomLabel(g,sub[0],sub[1],"O",COL.BD);
+  } else if(spec.alpha){
+    bond(g,Ca[0],Ca[1],sub[0],sub[1],{t2:13});
+    atomLabel(g,sub[0],sub[1], spec.alpha==="NH2" ? "NH₂" : spec.alpha,
+      spec.alpha==="NH2" ? COL.V : (spec.alpha==="Br" ? COL.B : COL.BD));
+  }
+  if(spec.hiAlpha) halo(g,sub[0],sub[1],19,spec.hiAlpha);
+  bond(g,Ca[0],Ca[1],Cb[0],Cb[1],{});
+  tx(g,Cb[0]-2,Cb[1]-9,"CH₂",{"font-size":10.5,fill:COL.ink3,"text-anchor":"middle"});
+  var T=[Cb[0]+44, Cb[1]+26];
+  if(spec.term==="Cl" || spec.term==="I"){
+    bond(g,Cb[0],Cb[1],T[0],T[1],{t2:11});
+    atomLabel(g,T[0],T[1],spec.term,COL.T);
+    if(spec.hiTerm) halo(g,T[0],T[1],18,spec.hiTerm);
+  } else if(spec.term==="OAr"){
+    bond(g,Cb[0],Cb[1],T[0],T[1],{t2:11});
+    atomLabel(g,T[0],T[1],"O",COL.BD);
+    var cx2=T[0]+44+R, att2=P(180,cx2,T[1],R);
+    bond(g,T[0],T[1],att2[0],att2[1],{t1:11,t2:2});
+    benzene(g,cx2,T[1],R,[{ang:300,label:"NO₂",len:26,size:12,col:COL.A,
+      halo:!!spec.hiNitro}],1);
+    if(spec.hiTerm) halo(g,T[0],T[1],18,spec.hiTerm);
+  }
+  return g;
+}
+
+/* the printed scheme, redrawn for section 01 */
+function placed(host, wantX, wantY, sc){
+  /* drawMolecule works in a local frame with the first ring centred at (96,228) */
+  return mk("g",{transform:"translate("+(wantX-96*sc).toFixed(1)+","+(wantY-228*sc).toFixed(1)
+    +") scale("+sc+")"},host);
+}
+function drawScheme(){
+  var svg=$("scheme"); if(!svg) return;
+  while(svg.firstChild) svg.removeChild(svg.firstChild);
+  var ink=css("--text-primary"), sec=css("--text-secondary"), mut=css("--text-muted");
+  var s1=css("--s1"), s2=css("--s2"), s3=css("--s3"), s4=css("--s4"), good=css("--good");
+  /* draw molecules in page colours, then put the lab palette back */
+  var save={bond:COL.bond, ink:COL.ink, ink2:COL.ink2, ink3:COL.ink3, bg:LABEL_BG};
+  COL.bond=ink; COL.ink=ink; COL.ink2=sec; COL.ink3=mut; LABEL_BG=css("--surface-2");
+
+  function lab(x,y,t,o){
+    var a={x:x,y:y,fill:sec,"font-size":12.5,
+      "font-family":"ui-sans-serif,system-ui,sans-serif"};
+    for(var k in (o||{})) a[k]=o[k];
+    var e=mk("text",a,svg); e.textContent=t; return e;
+  }
+  function arrow(x1,y,x2){
+    mk("line",{x1:x1,y1:y,x2:x2-8,y2:y,stroke:ink,"stroke-width":1.8},svg);
+    mk("path",{d:"M"+(x2-9)+" "+(y-4.5)+" L"+x2+" "+y+" L"+(x2-9)+" "+(y+4.5),fill:"none",
+      stroke:ink,"stroke-width":1.8,"stroke-linejoin":"round"},svg);
+  }
+  /* ---------- the flow, across the top ---------- */
+  var FY=150;
+  drawMolecule(placed(svg,74,FY,0.5),{});
+  lab(74,FY+58,"m-xylene",{"font-size":11.5,fill:mut,"text-anchor":"middle"});
+
+  lab(140,FY-90,"1.  ClCH₂COCl, anhyd. AlCl₃",{"font-size":12});
+  lab(140,FY-72,"2.  NaI, heat",{"font-size":12});
+  lab(140,FY-54,"3.  NaO–C₆H₄–NO₂  (meta)",{"font-size":12});
+  lab(140,FY-38,"      sodium 3-nitrophenoxide",{"font-size":10.5,fill:mut});
+  arrow(136,FY,336);
+
+  lab(350,FY+7,"J",{"font-size":22,"font-weight":"700",fill:s1});
+  lab(350,FY+30,"C₁₆H₁₅NO₄ · 285 g/mol",{"font-size":10.5,fill:mut});
+
+  lab(410,FY-34,"1.  NaBH₄",{"font-size":12});
+  lab(410,FY-16,"2.  PBr₃",{"font-size":12});
+  arrow(404,FY,566);
+
+  lab(580,FY+7,"K",{"font-size":22,"font-weight":"700",fill:s4});
+  lab(580,FY+30,"molar mass 350 g/mol",{"font-size":10.5,fill:mut});
+  lab(580,FY+47,"← the stem's own checksum",{"font-size":10.5,fill:good});
+
+  /* the two branches, clear of K's captions */
+  mk("path",{d:"M744 "+(FY-12)+" V62 H872",fill:"none",stroke:ink,"stroke-width":1.8},svg);
+  mk("path",{d:"M864 57.5 L872 62 L864 66.5",fill:"none",stroke:ink,"stroke-width":1.8,
+    "stroke-linejoin":"round"},svg);
+  lab(756,52,"NH₃ (excess)",{"font-size":12});
+  lab(886,58,"L",{"font-size":22,"font-weight":"700",fill:s3});
+  lab(908,58,"— nitrogen containing",{"font-size":12,fill:ink});
+  lab(908,76,"the compound Q.17 weighs out",{"font-size":10.5,fill:mut});
+
+  mk("path",{d:"M744 "+(FY+12)+" V232 H872",fill:"none",stroke:ink,"stroke-width":1.8},svg);
+  mk("path",{d:"M864 227.5 L872 232 L864 236.5",fill:"none",stroke:ink,"stroke-width":1.8,
+    "stroke-linejoin":"round"},svg);
+  lab(756,222,"PhSNa",{"font-size":12});
+  lab(886,228,"M",{"font-size":22,"font-weight":"700",fill:s2});
+  lab(912,228,"— sulphur containing",{"font-size":12,fill:ink});
+  lab(912,246,"Q.18's compound",{"font-size":10.5,fill:mut});
+
+  /* ---------- the structures, underneath ---------- */
+  mk("line",{x1:16,y1:276,x2:1204,y2:276,stroke:css("--line")},svg);
+  lab(16,298,"THE STRUCTURES THE SEQUENCE GIVES",{"font-size":10,fill:mut,
+    "letter-spacing":"1.3"});
+  var SY=382, SC=0.52;
+  drawMolecule(placed(svg,86,SY,SC),  {alpha:"=O",  term:"OAr"});
+  drawMolecule(placed(svg,476,SY,SC), {alpha:"Br",  term:"OAr"});
+  drawMolecule(placed(svg,866,SY,SC), {alpha:"NH2", term:"OAr"});
+  lab(196,470,"J · 285",{"font-size":12.5,"font-weight":"700",fill:s1,"text-anchor":"middle"});
+  lab(586,470,"K · 350",{"font-size":12.5,"font-weight":"700",fill:s4,"text-anchor":"middle"});
+  lab(976,470,"L · 286 · two N",{"font-size":12.5,"font-weight":"700",fill:s3,
+    "text-anchor":"middle"});
+
+  COL.bond=save.bond; COL.ink=save.ink; COL.ink2=save.ink2; COL.ink3=save.ink3;
+  LABEL_BG=save.bg;
+}
+
+
+/* =====================================================================
+   the stage
+   ===================================================================== */
+function newStage(){
+  var svg=el("svg",{viewBox:"0 0 "+VB_W+" "+VB_H,"class":"stage",role:"img",
+    "aria-label":"Virtual bench: the reaction sequence is built molecule by molecule, weighed "
+      + "against the stem's stated molar mass, and then digested, distilled and titrated by "
+      + "Kjeldahl's method"});
+  $("stagehost").innerHTML=""; $("stagehost").appendChild(svg); return svg;
+}
+function defsFor(svg){
+  var d=mk("defs",{},svg);
+  var f=mk("filter",{id:"soft",x:"-60%",y:"-60%",width:"220%",height:"220%"},d);
+  mk("feGaussianBlur",{stdDeviation:"7"},f);
+  var sp=mk("filter",{id:"spray",x:"-14%",y:"-40%",width:"128%",height:"180%"},d);
+  mk("feTurbulence",{type:"fractalNoise",baseFrequency:"0.045 0.09",numOctaves:"3",seed:"11",
+    result:"nz"},sp);
+  mk("feDisplacementMap",{"in":"SourceGraphic",in2:"nz",scale:"6",
+    xChannelSelector:"R",yChannelSelector:"G"},sp);
+  var gl=mk("linearGradient",{id:"gAcid",x1:"0",y1:"0",x2:"0",y2:"1"},d);
+  mk("stop",{offset:"0","stop-color":"#3e7fd0","stop-opacity":".9"},gl);
+  mk("stop",{offset:"1","stop-color":"#1b2f52","stop-opacity":".95"},gl);
+  return d;
+}
+function card(host,x,y,w,h,title){
+  var g=mk("g",{},host);
+  mk("rect",{x:x,y:y,width:w,height:h,rx:11,fill:"rgba(255,255,255,.045)",stroke:COL.edge,
+    "stroke-width":1.4},g);
+  if(title) tx(g,x+14,y+20,title,{"font-size":10,fill:COL.ink3,"letter-spacing":"1.4"});
+  return g;
+}
+function eqLine(host,x,y,w){
+  var g=mk("g",{opacity:0},host);
+  mk("rect",{x:x,y:y,width:w,height:27,rx:7,fill:"rgba(255,255,255,.05)",
+    stroke:"rgba(160,190,255,.16)","stroke-width":1},g);
+  var t=tx(g,x+12,y+18.5,"",{"font-size":13,fill:COL.ink,"font-family":"ui-serif,Georgia,serif"});
+  return {g:g,t:t};
+}
+function fadeIn(o,on){ o.g.setAttribute("opacity",on?1:0); }
+function ease(t){ return t<0?0:(t>1?1:(t*t*(3-2*t))); }
+function seg(t,a,b){ return ease((t-a)/(b-a)); }
+
+/* the three reagent chips on the J stage */
+function chips(host,x,y,items){
+  var g=mk("g",{},host), i, out=[];
+  for(i=0;i<items.length;i++){
+    var cy=y+i*34;
+    var r=mk("rect",{x:x,y:cy,width:352,height:28,rx:8,fill:"rgba(255,255,255,.04)",
+      stroke:"rgba(160,190,255,.16)","stroke-width":1},g);
+    var t=tx(g,x+12,cy+18.5,items[i],{"font-size":12,fill:COL.ink3,
+      "font-family":"ui-sans-serif,system-ui,sans-serif"});
+    out.push({r:r,t:t});
+  }
+  return out;
+}
+function litChip(c,on,col){
+  c.r.setAttribute("stroke",on?(col||COL.GD):"rgba(160,190,255,.16)");
+  c.r.setAttribute("fill",on?"rgba(62,227,154,.10)":"rgba(255,255,255,.04)");
+  c.t.setAttribute("fill",on?COL.ink:COL.ink3);
+}
+
+function mountKey(){ return RUN.scene + (RUN.scene==="reveal" ? (RUN.done?"-a":"-q") : ""); }
+function render(){ var k=mountKey(); if(mounted!==k){ mountScene(); mounted=k; } paintScene(); setPhase(); }
+function remount(){ mounted=""; render(); }
+
+function mountScene(){
+  nodes={};
+  if(RUN.scene==="reveal"){ mountReveal(); return; }
+  stage=newStage(); defsFor(stage);
+  var sc=RUN.scene;
+
+  if(sc==="setup"){
+    var g=mk("g",{transform:"translate(70,-40) scale(0.9)",opacity:.32},stage);
+    drawMolecule(g,{});
+    var c=card(stage,368,74,332,286,"WAITING FOR DATA");
+    var rows=[["J","—"],["K  (stem: 350)","—"],["L","—"],
+              ["n(L)","—"],["N counted by Kjeldahl","—"],["titre","—"]];
+    var i;
+    for(i=0;i<rows.length;i++){
+      tx(c,388,116+i*42,rows[i][0],{"font-size":12,fill:COL.ink3});
+      tx(c,680,116+i*42,rows[i][1],{"font-size":15,fill:COL.ink3,"text-anchor":"end"});
+      if(i<rows.length-1)
+        mk("line",{x1:388,y1:128+i*42,x2:680,y2:128+i*42,stroke:"rgba(160,190,255,.12)"},c);
+    }
+    tx(stage,200,392,"m-xylene, waiting to be acylated",{"text-anchor":"middle","font-size":11.5,
+      fill:COL.ink3});
+    return;
+  }
+
+  if(sc==="j"){
+    nodes.molHost=mk("g",{},stage);
+    nodes.chips=chips(stage,20,36,[
+      "1.  ClCH₂COCl, anhyd. AlCl₃  —  Friedel–Crafts acylation",
+      "2.  NaI, heat  —  Finkelstein exchange",
+      "3.  NaO–C₆H₄–NO₂  —  Sₙ₂ at the α-carbon"]);
+    nodes.eq=[]; var i;
+    for(i=0;i<3;i++) nodes.eq.push(eqLine(stage,392,258+i*33,308));
+    nodes.stepname=tx(stage,20,158,"",{"font-size":12.5,fill:COL.GD,"font-weight":"600",
+      "font-family":"ui-sans-serif,system-ui,sans-serif"});
+    nodes.formula=tx(stage,20,392,"",{"font-size":14,fill:COL.ink,
+      "font-family":"ui-monospace,monospace"});
+    nodes.massline=tx(stage,20,414,"",{"font-size":12,fill:COL.ink3,
+      "font-family":"ui-monospace,monospace"});
+    return;
+  }
+
+  if(sc==="k"){
+    nodes.molHost=mk("g",{},stage);
+    nodes.chips=chips(stage,20,36,[
+      "1.  NaBH₄  —  reduces the ketone only",
+      "2.  PBr₃  —  OH becomes Br"]);
+    /* the balance that checks the structure */
+    var b=card(stage,392,126,308,150,"WEIGH THE PRODUCT");
+    nodes.balv=tx(b,548,196,"—",{"text-anchor":"middle","font-size":40,fill:COL.A,
+      "font-weight":"700","font-family":"ui-monospace,monospace"});
+    nodes.balu=tx(b,548,220,"g / mol",{"text-anchor":"middle","font-size":12,fill:COL.ink3});
+    nodes.balchk=tx(b,548,252,"",{"text-anchor":"middle","font-size":12.5,"font-weight":"700",
+      "font-family":"ui-sans-serif,system-ui,sans-serif"});
+    nodes.eq=[]; var j;
+    for(j=0;j<2;j++) nodes.eq.push(eqLine(stage,392,290+j*33,308));
+    nodes.formula=tx(stage,20,392,"",{"font-size":14,fill:COL.ink,
+      "font-family":"ui-monospace,monospace"});
+    nodes.massline=tx(stage,20,414,"",{"font-size":12,fill:COL.ink3,
+      "font-family":"ui-monospace,monospace"});
+    return;
+  }
+
+  if(sc==="l"){
+    nodes.molHost=mk("g",{},stage);
+    nodes.chips=chips(stage,20,36,["NH₃ (excess)  —  Sₙ₂, and the excess keeps "
+      + "it a primary amine"]);
+    nodes.eq=[]; var q;
+    for(q=0;q<3;q++) nodes.eq.push(eqLine(stage,392,150+q*33,308));
+    nodes.formula=tx(stage,20,392,"",{"font-size":14,fill:COL.ink,
+      "font-family":"ui-monospace,monospace"});
+    nodes.massline=tx(stage,20,414,"",{"font-size":12,fill:COL.ink3,
+      "font-family":"ui-monospace,monospace"});
+    nodes.ntag=tx(stage,392,272,"",{"font-size":12.5,fill:COL.B,"font-weight":"600",
+      "font-family":"ui-sans-serif,system-ui,sans-serif"});
+    return;
+  }
+
+  if(sc==="audit"){
+    nodes.molHost=mk("g",{},stage);
+    /* two verdict panels */
+    nodes.p1=card(stage,392,60,308,124,"NITROGEN 1 · THE AMINE");
+    nodes.p1t=tx(nodes.p1,406,102,"",{"font-size":15,fill:COL.ink,
+      "font-family":"ui-serif,Georgia,serif"});
+    nodes.p1v=tx(nodes.p1,406,130,"",{"font-size":13,"font-weight":"700",
+      "font-family":"ui-sans-serif,system-ui,sans-serif"});
+    nodes.p1w=tx(nodes.p1,406,156,"",{"font-size":11,fill:COL.ink3});
+    nodes.p2=card(stage,392,196,308,124,"NITROGEN 2 · THE NITRO GROUP");
+    nodes.p2t=tx(nodes.p2,406,238,"",{"font-size":15,fill:COL.ink,
+      "font-family":"ui-serif,Georgia,serif"});
+    nodes.p2v=tx(nodes.p2,406,266,"",{"font-size":13,"font-weight":"700",
+      "font-family":"ui-sans-serif,system-ui,sans-serif"});
+    nodes.p2w=tx(nodes.p2,406,292,"",{"font-size":11,fill:COL.ink3});
+    nodes.tally=eqLine(stage,392,336,308);
+    nodes.formula=tx(stage,20,392,"",{"font-size":14,fill:COL.ink,
+      "font-family":"ui-monospace,monospace"});
+    nodes.massline=tx(stage,20,414,"",{"font-size":12,fill:COL.ink3,
+      "font-family":"ui-monospace,monospace"});
+    return;
+  }
+
+  if(sc==="kjel"){ mountKjeldahl(); return; }
+}
+
+/* ---- the Kjeldahl apparatus ------------------------------------------- */
+function mountKjeldahl(){
+  var s=stage;
+  /* 1: digestion flask */
+  var d=card(s,14,54,216,300,"1 · DIGEST");
+  tx(d,122,98,"conc. H₂SO₄, K₂SO₄ / CuSO₄, heat",
+    {"text-anchor":"middle","font-size":10,fill:COL.ink3});
+  mk("path",{d:"M96 112 v46 L66 232 a34 34 0 0 0 30 50 h56 a34 34 0 0 0 30-50 L152 158 v-46",
+    fill:"rgba(255,255,255,.05)",stroke:COL.edge,"stroke-width":2},d);
+  mk("path",{d:"M92 108 h64",stroke:COL.edge,"stroke-width":2.4},d);
+  nodes.digLiq=mk("path",{d:"M70 226 L178 226 a34 34 0 0 1-26 56 H96 a34 34 0 0 1-26-56 Z",
+    fill:"url(#gAcid)",opacity:.95},d);
+  nodes.flame=mk("g",{},d);
+  nodes.digDots=mk("g",{},d);
+  nodes.digTag=tx(d,122,318,"",{"text-anchor":"middle","font-size":11.5,fill:COL.ink2});
+  nodes.digEq=tx(d,122,338,"",{"text-anchor":"middle","font-size":11,fill:COL.GD});
+
+  /* 2: distillation into the receiver */
+  var q=card(s,244,54,216,300,"2 · MAKE ALKALINE, DISTIL");
+  tx(q,352,98,"excess NaOH  →  NH₃ (g)",{"text-anchor":"middle","font-size":10,
+    fill:COL.ink3});
+  mk("path",{d:"M300 110 v40 L280 196 a26 26 0 0 0 22 40 h44 a26 26 0 0 0 22-40 L348 150 v-40",
+    fill:"rgba(255,255,255,.05)",stroke:COL.edge,"stroke-width":2},q);
+  mk("path",{d:"M348 130 H406 a10 10 0 0 1 10 10 V236",fill:"none",stroke:COL.edge,
+    "stroke-width":2.4},q);
+  nodes.nh3=mk("g",{},q);
+  /* receiving beaker of standard acid */
+  mk("path",{d:"M392 250 v66 a10 10 0 0 0 10 10 h28 a10 10 0 0 0 10-10 V250",
+    fill:"rgba(255,255,255,.05)",stroke:COL.edge,"stroke-width":2},q);
+  nodes.recLiq=mk("rect",{x:393,y:286,width:56,height:39,fill:"url(#gAcid)",opacity:.9},q);
+  tx(q,420,344,"1 M H₂SO₄",{"text-anchor":"middle","font-size":10.5,fill:COL.ink3});
+  nodes.disTag=tx(q,290,300,"",{"font-size":11.5,fill:COL.ink2});
+
+  /* 3: the titration read-off */
+  var t=card(s,474,54,232,300,"3 · NEUTRALISE");
+  nodes.tEq=[]; var i;
+  for(i=0;i<4;i++) nodes.tEq.push(eqLine(t,488,88+i*34,204));
+  nodes.burette=mk("rect",{x:596,y:238,width:26,height:96,rx:5,fill:"rgba(255,255,255,.05)",
+    stroke:COL.edge,"stroke-width":1.6},t);
+  nodes.burFill=mk("rect",{x:597,y:239,width:24,height:0,rx:4,fill:COL.V,opacity:.85},t);
+  nodes.burLbl=tx(t,586,250,"",{"text-anchor":"end","font-size":13,fill:COL.V,"font-weight":"700",
+    "font-family":"ui-monospace,monospace"});
+  tx(t,609,348,"titre",{"text-anchor":"middle","font-size":10,fill:COL.ink3});
+  nodes.kTag=tx(t,488,332,"",{"font-size":10.5,fill:COL.ink3});
+}
+function paintKjeldahl(){
+  var S=RUN.S, D=RUN.D, t=RUN.t;
+  /* digestion: flame on, nitrogen dots turn into ammonium */
+  var burn=seg(t,0.4,3.6);
+  while(nodes.flame.firstChild) nodes.flame.removeChild(nodes.flame.firstChild);
+  if(burn>0.02){
+    var k, n=5;
+    for(k=0;k<n;k++){
+      var fx=96+k*14, h=10+8*Math.abs(Math.sin(t*6+k));
+      mk("path",{d:"M"+fx+" 300 q4 -"+h+" 8 0 Z",fill:COL.B,opacity:.55*burn},nodes.flame);
+    }
+  }
+  nodes.digLiq.setAttribute("opacity", 0.95 - 0.25*burn);
+  while(nodes.digDots.firstChild) nodes.digDots.removeChild(nodes.digDots.firstChild);
+  var shown=Math.round(8*burn), i2;
+  for(i2=0;i2<shown;i2++){
+    var ang=i2*0.8+t*1.1, rx=96+28+26*Math.cos(ang), ry=250+16*Math.sin(ang*1.3);
+    mk("circle",{cx:rx,cy:ry,r:5,fill:COL.V,opacity:.9},nodes.digDots);
+  }
+  nodes.digTag.textContent = t<1.0 ? "digesting the sample"
+    : (t<3.6 ? "amine N → NH₄⁺" : "nitro N unchanged · not estimated");
+  nodes.digEq.textContent = t>3.0 ? "N (amine) → (NH₄)₂SO₄" : "";
+
+  /* distillation: ammonia travels over into the acid */
+  var dis=seg(t,4.0,7.6);
+  while(nodes.nh3.firstChild) nodes.nh3.removeChild(nodes.nh3.firstChild);
+  if(dis>0.02){
+    var j2, m=7;
+    for(j2=0;j2<m;j2++){
+      var p=((t*0.42+j2/m)%1);
+      var px, py;
+      if(p<0.34){ px=324+(p/0.34)*(406-324); py=150-((p/0.34)*30); }
+      else if(p<0.62){ px=416; py=120+((p-0.34)/0.28)*116; }
+      else { px=416+((p-0.62)/0.38)*6; py=236+((p-0.62)/0.38)*62; }
+      mk("circle",{cx:px,cy:py,r:4.4,fill:COL.GD,opacity:.85*dis},nodes.nh3);
+    }
+  }
+  nodes.recLiq.setAttribute("height", 39 + 6*dis);
+  nodes.recLiq.setAttribute("y", 286 - 6*dis);
+  nodes.disTag.textContent = dis>0.1 ? nInt(Math.round(S.nNH3*1000*dis))+" mmol NH₃ over" : "";
+
+  /* titration arithmetic */
+  var E=nodes.tEq;
+  fadeIn(E[0], t>7.8); E[0].t.textContent = "n(L) = "+n2(D.wL)+" ÷ "+n2(S.ML)
+    + " = "+n4(S.nL)+" mol";
+  fadeIn(E[1], t>8.6); E[1].t.textContent = "n(NH₃) = "+n4(S.nL)+" × 1 = "
+    + n4(S.nNH3)+" mol";
+  fadeIn(E[2], t>9.6); E[2].t.textContent = "2 NH₃ + H₂SO₄ → (NH₄)₂SO₄";
+  fadeIn(E[3], t>10.6); E[3].t.textContent = "n(acid) = "+n4(S.nNH3)+" ÷ 2 = "+n4(S.nAcid)
+    + " mol";
+  var fill=seg(t,11.0,11.9);
+  nodes.burFill.setAttribute("height", 94*fill);
+  nodes.burLbl.textContent = t>11.2 ? "? mL" : "";
+  nodes.kTag.textContent = t>11.4 ? "÷ the acid strength" : "";
+}
+
+/* ---- paint ------------------------------------------------------------ */
+function paintScene(){
+  var S=RUN.S, D=RUN.D, t=RUN.t, sc=RUN.scene;
+  if(sc==="reveal"||sc==="setup"||!S) return;
+
+  if(sc==="kjel"){ paintKjeldahl(); return; }
+
+  /* the molecule stages share one layout */
+  var spec={}, i;
+  if(sc==="j"){
+    if(t<3.4)      spec={};
+    else if(t<7.0) spec={alpha:"=O", term:"Cl", hiAlpha:COL.GD, hiTerm:COL.T};
+    else if(t<10.4)spec={alpha:"=O", term:"I",  hiTerm:COL.T};
+    else           spec={alpha:"=O", term:"OAr", hiTerm:COL.BD};
+  } else if(sc==="k"){
+    if(t<4.0)      spec={alpha:"=O", term:"OAr"};
+    else if(t<7.4) spec={alpha:"OH", term:"OAr", hiAlpha:COL.BD};
+    else           spec={alpha:"Br", term:"OAr", hiAlpha:COL.B};
+  } else if(sc==="l"){
+    spec = t<2.6 ? {alpha:"Br", term:"OAr"} : {alpha:"NH2", term:"OAr", hiAlpha:COL.V};
+  } else {
+    spec = {alpha:"NH2", term:"OAr", hiAlpha:COL.V, hiNitro:true};
+  }
+  spec.transform = "translate(-8,-46) scale(0.94)";
+  while(nodes.molHost.firstChild) nodes.molHost.removeChild(nodes.molHost.firstChild);
+  drawMolecule(nodes.molHost, spec);
+
+  if(sc==="j"){
+    litChip(nodes.chips[0], t>1.0); litChip(nodes.chips[1], t>4.4);
+    litChip(nodes.chips[2], t>7.8);
+    nodes.stepname.textContent = t<3.4 ? "acylating the ring…"
+      : (t<7.0 ? "acylated — the ketone is in place"
+         : (t<10.4 ? "chloride swapped for iodide" : "phenoxide has displaced the iodide"));
+    var f = t<3.4 ? FORM.XYL : (t<10.4 ? null : FORM.J);
+    nodes.formula.innerHTML = "";
+    nodes.formula.textContent = t<3.4 ? "m-xylene · C8H10 · "+n1(mass(FORM.XYL,D))+" g/mol"
+      : (t<10.4 ? "intermediate on the way to J" : "J · "+formPlain(FORM.J)+" · "
+                  + n1(S.MJ)+" g/mol");
+    nodes.massline.textContent = t>10.4
+      ? "16 C + 15 H + 1 N + 4 O  =  "+n1(16*D.C)+" + "+n1(15*D.H)+" + "+n1(D.N)+" + "+n1(4*D.O)
+        + "  =  "+n1(S.MJ)
+      : "";
+    fadeIn(nodes.eq[0], t>2.2); nodes.eq[0].t.textContent =
+      "both CH₃ are o,p-directing → acyl lands para to one";
+    fadeIn(nodes.eq[1], t>5.4); nodes.eq[1].t.textContent =
+      "NaI: Cl → I, a better leaving group";
+    fadeIn(nodes.eq[2], t>8.6); nodes.eq[2].t.textContent =
+      "ArO⁻ attacks the α-carbon → J";
+    return;
+  }
+
+  if(sc==="k"){
+    litChip(nodes.chips[0], t>1.4); litChip(nodes.chips[1], t>5.0);
+    nodes.formula.textContent = t<4.0 ? "starting from J · "+n1(S.MJ)+" g/mol"
+      : (t<7.4 ? "alcohol · "+formPlain(FORM.ALC)+" · "+n1(S.MALC)+" g/mol"
+               : "K · "+formPlain(FORM.K)+" · "+n1(S.MK)+" g/mol");
+    nodes.massline.textContent = t>7.4
+      ? "16 C + 16 H + 1 Br + 1 N + 3 O  =  "+n1(16*D.C)+" + "+n1(16*D.H)+" + "+n1(D.Br)+" + "
+        + n1(D.N)+" + "+n1(3*D.O)+"  =  "+n1(S.MK)
+      : "";
+    nodes.balv.textContent = t>7.6 ? n1(S.MK) : (t>4.2 ? n1(S.MALC) : "—");
+    nodes.balv.setAttribute("fill", t>7.6 ? (S.kOK?COL.GD:COL.BD) : COL.A);
+    nodes.balchk.textContent = t>7.9
+      ? (S.kOK ? "✓  matches the stem's 350 — structure confirmed"
+               : "✗  the stem says 350, not "+n1(S.MK))
+      : "";
+    nodes.balchk.setAttribute("fill", S.kOK?COL.GD:COL.BD);
+    fadeIn(nodes.eq[0], t>2.6); nodes.eq[0].t.textContent =
+      "NaBH₄ reduces C=O only — NO₂ untouched";
+    fadeIn(nodes.eq[1], t>6.0); nodes.eq[1].t.textContent = "PBr₃: OH → Br";
+    return;
+  }
+
+  if(sc==="l"){
+    litChip(nodes.chips[0], t>0.8);
+    nodes.formula.textContent = t<2.6 ? "starting from K · "+n1(S.MK)+" g/mol"
+      : "L · "+formPlain(FORM.L)+" · "+n1(S.ML)+" g/mol";
+    nodes.massline.textContent = t>3.0
+      ? "16 C + 18 H + 2 N + 3 O  =  "+n1(16*D.C)+" + "+n1(18*D.H)+" + "+n1(2*D.N)+" + "
+        + n1(3*D.O)+"  =  "+n1(S.ML)
+      : "";
+    fadeIn(nodes.eq[0], t>1.4); nodes.eq[0].t.textContent =
+      "NH₃ displaces Br⁻ at the benzylic carbon";
+    fadeIn(nodes.eq[1], t>2.8); nodes.eq[1].t.textContent =
+      "L = Ar–CH(NH₂)–CH₂–O–Ar′";
+    fadeIn(nodes.eq[2], t>3.9); nodes.eq[2].t.textContent =
+      "n(L) = "+n2(D.wL)+" ÷ "+n1(S.ML)+" = "+n4(S.nL)+" mol";
+    nodes.ntag.textContent = t>4.6 ? "⚠  L now contains TWO nitrogen atoms" : "";
+    return;
+  }
+
+  if(sc==="audit"){
+    var shown = predicted !== null;
+    nodes.p1t.textContent = t>0.6 ? "–CH(NH₂)–   primary amine" : "";
+    nodes.p2t.textContent = t>1.2 ? "–C₆H₄–NO₂   nitro group" : "";
+    nodes.p1v.textContent = (shown && t>2.6) ? "✓  digests to NH₄⁺" : "";
+    nodes.p1v.setAttribute("fill", COL.GD);
+    nodes.p1w.textContent = (shown && t>2.6) ? "reducible nitrogen — Kjeldahl counts it" : "";
+    nodes.p2v.textContent = (shown && t>3.6) ? "✗  survives the digestion" : "";
+    nodes.p2v.setAttribute("fill", COL.BD);
+    nodes.p2w.textContent = (shown && t>3.6)
+      ? "nitro, azo and ring N are never estimated" : "";
+    nodes.p1.setAttribute("opacity", 1); nodes.p2.setAttribute("opacity", 1);
+    fadeIn(nodes.tally, shown && t>4.6);
+    nodes.tally.t.textContent = "1 mol of L → 1 mol of NH₃, not 2";
+    nodes.tally.t.setAttribute("fill", COL.GD);
+    nodes.formula.textContent = "L · "+formPlain(FORM.L)+" · "+n1(S.ML)+" g/mol";
+    nodes.massline.textContent = "2 N in the molecule · "
+      + (shown && t>4.6 ? "1 estimated" : "? estimated");
+    return;
+  }
+}
+
+/* =====================================================================
+   the reveal
+   ===================================================================== */
+var burst=[];
+function mountReveal(){
+  var S=RUN.S, host=$("stagehost");
+  if(!RUN.done){
+    host.innerHTML =
+      '<div class="suspense"><div class="q">V &nbsp;=&nbsp; n(H<sub>2</sub>SO<sub>4</sub>) ÷ c'
+      + ' &nbsp;=&nbsp; <span class="u">'+n4(S.nAcid)+'</span> ÷ <span class="u">'
+      + n2(RUN.D.conc)+'</span> &nbsp;=&nbsp; ? mL</div>'
+      + '<div class="blanks">? ?</div>'
+      + '<div class="hintline">One mole of L gave one mole of ammonia, and sulphuric acid is '
+      + 'dibasic.</div></div>';
+    return;
+  }
+  var svg=el("svg",{viewBox:"0 0 720 250","class":"graf",role:"img",
+    "aria-label":"The answer, "+ansTxt(S.V)+" millilitres, sprayed across the screen"});
+  host.innerHTML=""; host.appendChild(svg); defsFor(svg);
+  nodes.burstHost=mk("g",{},svg);
+  var g=mk("g",{transform:"translate(360,132) skewX(-9)"},svg);
+  var sh=mk("text",{x:9,y:11,"text-anchor":"middle","font-size":92,"font-weight":"900",
+    fill:COL.T,opacity:.34,"font-family":"ui-sans-serif,system-ui,sans-serif",
+    filter:"url(#spray)"},g);
+  sh.textContent=ansTxt(S.V)+" mL";
+  var main=mk("text",{id:"grafT",x:0,y:0,"text-anchor":"middle","font-size":92,"font-weight":"900",
+    fill:COL.GD,"font-family":"ui-sans-serif,system-ui,sans-serif",filter:"url(#spray)"},g);
+  main.textContent=ansTxt(S.V)+" mL";
+  var i,dx;
+  for(i=0;i<3;i++){
+    dx=[-96,0,92][i];
+    mk("path",{d:"M"+dx+" 14 v"+(20+i*12),stroke:COL.GD,"stroke-width":4,"stroke-linecap":"round",
+      opacity:.7,filter:"url(#spray)"},g);
+    mk("circle",{cx:dx,cy:14+(20+i*12),r:4.2,fill:COL.GD,opacity:.7},g);
+  }
+  tx(svg,360,196,"🎉  CONGRATULATIONS  ·  ANSWER FOUND  🎉",
+    {"text-anchor":"middle","font-size":13,fill:COL.GD,"letter-spacing":"3","font-weight":"800"});
+  tx(svg,360,222,"of 1 M H₂SO₄   ·   L = C₁₆H₁₈N₂O₃, "
+    + n1(S.ML)+" g/mol   ·   "+n4(S.nNH3)+" mol of NH₃ from two N, one counted",
+    {"text-anchor":"middle","font-size":11,fill:COL.ink3});
+  makeBurst();
+}
+function makeBurst(){
+  burst=[];
+  var i,n=58,GL=["NH₃","N","○","△","H⁺","▫"];
+  for(i=0;i<n;i++){
+    var a=Math.random()*Math.PI*2, sp=90+Math.random()*270, conf=i%3===0;
+    var node=conf
+      ? mk("rect",{x:-4,y:-3,width:8,height:6,rx:1.5,
+          fill:[COL.GD,COL.T,COL.A,COL.B][i%4],opacity:1},nodes.burstHost)
+      : mk("text",{x:0,y:0,"text-anchor":"middle","font-size":11+Math.random()*7,
+          fill:[COL.GD,COL.T,COL.A,COL.V][i%4],opacity:1},nodes.burstHost);
+    if(!conf) node.textContent=GL[i%GL.length];
+    burst.push({n:node,x:360,y:120,vx:Math.cos(a)*sp,vy:Math.sin(a)*sp-70,life:0,
+      max:1.4+Math.random(),rot:Math.random()*360,vr:(Math.random()-.5)*540});
+  }
+}
+function stepBurst(dt){
+  var i,b;
+  for(i=0;i<burst.length;i++){
+    b=burst[i];
+    if(b.life>b.max){ b.n.setAttribute("opacity",0); continue; }
+    b.life+=dt; b.vy+=420*dt; b.x+=b.vx*dt; b.y+=b.vy*dt; b.rot+=b.vr*dt;
+    b.n.setAttribute("opacity",Math.max(0,1-b.life/b.max).toFixed(2));
+    b.n.setAttribute("transform","translate("+b.x.toFixed(1)+","+b.y.toFixed(1)+") rotate("
+      +b.rot.toFixed(0)+")");
+  }
+}
+
+/* =====================================================================
+   narration
+   ===================================================================== */
+function narrate(){
+  var S=RUN.S, D=RUN.D, t=RUN.t, s="";
+  if(RUN.scene==="setup"){
+    s="Nothing has been built yet. Check the data from the stem and press "
+     + "<b>START EXPERIMENT</b>.";
+  } else if(RUN.scene==="j"){
+    s = t<3.4 ? "Chloroacetyl chloride over anhydrous AlCl₃. Both methyls push electrons into "
+                + "the ring, so the acyl group lands where it is ortho to one and <i>para</i> to "
+                + "the other — not between them, and not meta to both."
+      : (t<7.0 ? "Acylated. The α-carbon now sits next to a carbonyl, which makes it unusually "
+                 + "willing to undergo substitution — that is what the next two steps exploit."
+         : (t<10.4 ? "NaI swaps the chloride for an iodide, a better leaving group."
+                   : "Sodium 3-nitrophenoxide displaces it. <b>J</b> is "
+                     + "Ar–CO–CH₂–O–C₆H₄–NO₂, "
+                     + "<b>"+n1(S.MJ)+" g/mol</b>."));
+  } else if(RUN.scene==="k"){
+    s = t<4.0 ? "NaBH₄ is a mild hydride donor: it reduces the ketone to a secondary alcohol "
+                + "and leaves the nitro group and the ether completely alone."
+      : (t<7.6 ? "PBr₃ now replaces that hydroxyl with bromine."
+               : (S.kOK
+                  ? "<b>"+n1(S.MK)+" g/mol</b> — <span class=\"gd\">exactly the molar mass "
+                    + "the stem states for K</span>. The structure is not a guess any more; the "
+                    + "question just confirmed it for us."
+                  : "This comes to <b>"+n1(S.MK)+" g/mol</b>, but the stem says 350. Check the "
+                    + "atomic masses in the rail."));
+  } else if(RUN.scene==="l"){
+    s = t<2.6 ? "Excess ammonia, attacking the benzylic bromide. The excess matters: it keeps the "
+                + "product a primary amine instead of alkylating a second time."
+      : "<b>L</b> = Ar–CH(NH₂)–CH₂–O–C₆H₄–NO₂, "
+        + "<b>"+n1(S.ML)+" g/mol</b>, and "+n2(D.wL)+" g of it is <b>"+n4(S.nL)+" mol</b>. Now "
+        + "look at it carefully — there are two nitrogens in there.";
+  } else if(RUN.scene==="audit"){
+    s = predicted===null
+      ? "Two nitrogen atoms: one in the amine, one in the nitro group. Kjeldahl digestion reduces "
+        + "nitrogen to ammonium sulphate — but it cannot reduce every kind. <b>Commit to a "
+        + "number below before the bench resolves it.</b>"
+      : (t<3.6 ? "The amine nitrogen digests: hot concentrated sulphuric acid reduces it all the "
+                 + "way to ammonium."
+         : (t<4.6 ? "The nitro nitrogen does not. Nitro, azo and ring nitrogen come through the "
+                    + "digestion unchanged and never appear as ammonia — that is the stated "
+                    + "limitation of the method."
+                  : "So <span class=\"gd\">one</span> mole of NH₃ per mole of L, not two. "
+                    + "That single decision is the difference between two answers."));
+  } else if(RUN.scene==="kjel"){
+    s = t<3.8 ? "Digesting "+n2(D.wL)+" g of L with hot concentrated H₂SO₄. The amine "
+                + "nitrogen ends up as ammonium sulphate."
+      : (t<7.8 ? "Made alkaline with excess NaOH and distilled — <b>"+n4(S.nNH3)+" mol</b> of "
+                 + "ammonia comes over into the standard acid."
+               : "Now the stoichiometry. Sulphuric acid is <b>dibasic</b>, so two ammonia molecules "
+                 + "are neutralised by one H₂SO₄: <b>"+n4(S.nAcid)+" mol</b> of acid.");
+  } else {
+    s = RUN.done
+      ? "<span class=\"gd\">"+ansTxt(S.V)+" mL</span> of "+n2(D.conc)+" M H₂SO₄. Count "
+        + "both nitrogens and you would say "+ansTxt(S.V*2)+"; forget that the acid is dibasic and "
+        + "you would also say "+ansTxt(S.V*2)+". Only getting both right lands here."
+      : "Everything is measured. One division left.";
+  }
+  $("narr").innerHTML=s;
+}
+
+/* =====================================================================
+   instruments, record, trials, traps, audit cards
+   ===================================================================== */
+function known(){
+  var i=sceneIdx(), t=RUN.t;
+  return {
+    MJ: i>1 || (i===1 && t>10.4),
+    MK: i>2 || (i===2 && t>7.6),
+    ML: i>3 || (i===3 && t>3.0),
+    nL: i>3 || (i===3 && t>3.9),
+    nN: (i===4 && predicted!==null && t>4.6) || i>4,
+    nNH3: i>5 || (i===5 && t>8.6),
+    nAcid: i>5 || (i===5 && t>10.6),
+    V: RUN.done
+  };
+}
+function setGz(id,on,txt){
+  var v=$("gv_"+id), b=$("gz_"+id); if(!v) return;
+  v.textContent = on ? txt : "—";
+  b.className = "gz" + (on ? ((id==="V")?" hot":"") : " dim");
+}
+function updateGauges(){
+  var S=RUN.S, K=known(), ids=["MJ","MK","ML","nL","nN","nNH3","nAcid","V"], i;
+  var kn0=$("knote"), D0=copyST(), note0=kNote(D0);
+  kn0.className = "fh" + (note0?" bad":"");
+  kn0.innerHTML = note0 ? note0
+    : "Each gauge fills in only when the bench has established it. M(K) checks against the "
+      + "stem's 350.";
+  if(!S){ for(i=0;i<ids.length;i++) setGz(ids[i],false,""); return; }
+  setGz("MJ",K.MJ,n1(S.MJ));   setGz("MK",K.MK,n1(S.MK));  setGz("ML",K.ML,n1(S.ML));
+  setGz("nL",K.nL,n4(S.nL));   setGz("nN",K.nN,"1 of 2");
+  setGz("nNH3",K.nNH3,n4(S.nNH3)); setGz("nAcid",K.nAcid,n4(S.nAcid));
+  setGz("V",K.V,ansTxt(S.V));
+}
+var REC=[
+  ["MJ","M(J), summed from the atomic masses",  function(S,D){ return n1(S.MJ)+" g/mol"; }],
+  ["MK","M(K) — the stem states 350",      function(S,D){ return n1(S.MK)+" g/mol"
+      + (S.kOK?"  ✓":"  ✗"); }],
+  ["ML","M(L)",                                 function(S,D){ return n1(S.ML)+" g/mol"; }],
+  ["nL","Moles of L weighed out",               function(S,D){ return n4(S.nL)+" mol"; }],
+  ["nN","Nitrogens in L, and how many digest",  function(S,D){ return "2 present, 1 estimated"; }],
+  ["nNH3","Moles of ammonia evolved",           function(S,D){ return n4(S.nNH3)+" mol"; }],
+  ["nAcid","Moles of H₂SO₄ needed",   function(S,D){ return n4(S.nAcid)+" mol"; }],
+  ["V","Titre",                                 function(S,D){ return ansTxt(S.V)+" mL"; }],
+  ["V","Nitrogen estimated, by mass",           function(S,D){ return n2(S.pctEst)+" % N"; }],
+  ["V","Nitrogen actually in the molecule",     function(S,D){ return n2(S.pctN)+" % N"; }]
+];
+function drawRecord(){
+  var S=RUN.S, K=known(), rows="", i;
+  for(i=0;i<REC.length;i++){
+    var r=REC[i], on=S&&K[r[0]];
+    rows += "<tr><td>"+r[1]+"</td><td class='n'>"
+      + (on ? "<b>"+r[2](S,RUN.D)+"</b>" : "<span style='color:var(--text-muted)'>—</span>")
+      + "</td></tr>";
+  }
+  $("rec").innerHTML="<thead><tr><th>Quantity</th><th class='n'>Established by the run</th></tr>"
+    + "</thead><tbody>"+rows+"</tbody>";
+  var ins=$("insight");
+  if(trials.length>=2){
+    var same=true,j;
+    for(j=1;j<trials.length;j++) if(Math.abs(trials[j].V-trials[0].V)>1e-9) same=false;
+    ins.hidden=false;
+    ins.innerHTML = same
+      ? "<b>Two runs, the same titre.</b> Whatever you changed did not touch the chain from mass "
+        + "to volume."
+      : "<b>The titre moved.</b> V = (w/M<sub>L</sub>) ÷ 2 ÷ c × 1000, so only the "
+        + "mass weighed out, the acid strength and the atomic masses can shift it — the "
+        + "structure of L never changes.";
+  } else ins.hidden=true;
+}
+function pushTrial(){
+  var S=RUN.S,D=RUN.D;
+  trials.push({wL:D.wL, conc:D.conc, ML:S.ML, MK:S.MK, nL:S.nL, nNH3:S.nNH3, nAcid:S.nAcid,
+               V:S.V, pred:predicted});
+  drawTrials();
+}
+function drawTrials(){
+  if(!trials.length){ $("trials").hidden=true; $("trialempty").hidden=false;
+                      $("clrtrials").disabled=true; return; }
+  $("trials").hidden=false; $("trialempty").hidden=true; $("clrtrials").disabled=false;
+  var rows="",i;
+  for(i=0;i<trials.length;i++){
+    var t=trials[i];
+    rows += "<tr"+(i===trials.length-1?" class='win'":"")+"><td class='n'>"+(i+1)
+      + "</td><td class='n'>"+n2(t.wL)+"</td><td class='n'>"+n2(t.conc)
+      + "</td><td class='n'>"+n1(t.ML)+"</td><td class='n'>"+n4(t.nL)
+      + "</td><td class='n'>"+n4(t.nNH3)+"</td><td class='n'>"+n4(t.nAcid)
+      + "</td><td class='n'><b>"+ansTxt(t.V)+"</b></td></tr>";
+  }
+  $("trials").innerHTML="<thead><tr><th class='n'>#</th><th class='n'>w(L)</th>"
+    + "<th class='n'>c</th><th class='n'>M(L)</th><th class='n'>n(L)</th>"
+    + "<th class='n'>n(NH₃)</th><th class='n'>n(acid)</th><th class='n'>V / mL</th>"
+    + "</tr></thead><tbody>"+rows+"</tbody>";
+}
+function drawAuditCards(){
+  var D=copyST(), S=solve(D), open=hasRun();
+  $("auditcards").innerHTML =
+    '<div class="aud yes"><div class="t">Counted · nitrogen 1</div>'
+    + '<div class="g">–CH(NH<sub>2</sub>)–</div>'
+    + '<p>A primary amine. Hot concentrated H<sub>2</sub>SO<sub>4</sub> reduces it to '
+    + 'ammonium, which is then distilled off as ammonia and titrated.</p></div>'
+    + '<div class="aud no"><div class="t">Not counted · nitrogen 2</div>'
+    + '<div class="g">–C<sub>6</sub>H<sub>4</sub>–NO<sub>2</sub></div>'
+    + '<p>A nitro group. It is not reduced under Kjeldahl conditions, so it never becomes '
+    + 'ammonia. The same is true of azo nitrogen and of nitrogen inside an aromatic ring, '
+    + 'pyridine being the standard example.</p></div>'
+    + '<div class="aud"><div class="t">What the method reports</div>'
+    + '<div class="g">' + (open ? n2(S.pctEst)+" % N" : "? % N") + '</div>'
+    + '<p>Against ' + (open ? "<b>"+n2(S.pctN)+" %</b>" : "the") + ' nitrogen actually present '
+    + 'by mass. Kjeldahl under-reports this compound by exactly half, and it does so by design '
+    + 'rather than by error.</p></div>';
+}
+
+var TRAPS=[
+  {k:"bothn", h:"Counting both nitrogens",
+   p:"L really does contain two nitrogen atoms, so 2 × n(L) looks like the obvious moles of "
+    +"ammonia. The nitro nitrogen never leaves as ammonia, so it is not titrated.",
+   f:function(D,S){ return S.nL*2/ACID_BASICITY/D.conc*1000; }},
+  {k:"mono", h:"Treating H₂SO₄ as monobasic",
+   p:"One ammonia per acid molecule would be right for HCl. Sulphuric acid supplies two protons, "
+    +"so it neutralises two ammonias — half the moles, half the volume.",
+   f:function(D,S){ return S.nNH3/D.conc*1000; }},
+  {k:"both", h:"Both mistakes at once",
+   p:"They do not cancel. Counting two nitrogens doubles the answer and dropping the dibasic "
+    +"factor doubles it again.",
+   f:function(D,S){ return S.nL*2/D.conc*1000; }},
+  {k:"usek", h:"Using M(K) = 350 instead of M(L)",
+   p:"350 is the one molar mass the stem prints, which makes it tempting. It belongs to K, the "
+    +"bromide — L is the amine that replaced the bromine, and it is lighter.",
+   f:function(D,S){ return (D.wL/S.MK)/ACID_BASICITY/D.conc*1000; }},
+  {k:"usej", h:"Stopping at J and using 285",
+   p:"This is the dangerous one: 285 gives a titre within a whisker of the right answer, so it "
+    +"looks correct. The reduction and the bromination have to be tracked properly.",
+   f:function(D,S){ return (D.wL/S.MJ)/ACID_BASICITY/D.conc*1000; }},
+  {k:"litre", h:"Answering in litres",
+   p:"The question asks for millilitres. The moles of acid divided by its molarity give litres, "
+    +"and the factor of a thousand is easy to leave out under time pressure.",
+   f:function(D,S){ return S.nAcid/D.conc; }}
+];
+function drawTraps(){
+  var h="",i;
+  for(i=0;i<TRAPS.length;i++)
+    h += '<div class="trap"><h4>'+TRAPS[i].h+"</h4><p>"+TRAPS[i].p+"</p>"
+      +  '<div class="out" id="tr_'+TRAPS[i].k+'">run it to see what it gives</div>'
+      +  '<button class="ghost" type="button" data-trap="'+i+'">Run this mistake</button></div>';
+  $("trapgrid").innerHTML=h;
+}
+function runTrap(i){
+  var D=copyST(); if(complaint(D)) return;
+  var S=solve(D), v=TRAPS[i].f(D,S), o=$("tr_"+TRAPS[i].k);
+  o.className="out on";
+  o.innerHTML="gives <b>"+(isFinite(v)?n2(v):"—")+"</b>"
+    + (hasRun()?" — not "+ansTxt(S.V):"");
+}
+
+/* =====================================================================
+   section 03 - the charts
+   ===================================================================== */
+var view="mass", exM=5.72;
+function hasRun(){ return trials.length>0 || RUN.done || earlyReveal; }
+function vAt(D,w){
+  var S=solve(D);
+  return (w/S.ML)*N_KJELDAHL/ACID_BASICITY/D.conc*1000;
+}
+function drawChart(){
+  var D=copyST(), bad=complaint(D), S=solve(D), svg=$("chart"), open=hasRun()&&!bad;
+  if(!open && view!=="mass") view="mass";
+  var curves=[], points=[], bars=[], i, leg="";
+
+  if(view==="mass"){
+    var hi=Math.max(12, D.wL*2), pts=[];
+    if(open){
+      for(i=0;i<=60;i++){ var w=hi*i/60; pts.push([w, vAt(D,w)]); }
+      curves.push({pts:pts, col:"--s3", w:2.8, label:"titre"});
+      points.push({x:D.wL, y:S.V, col:"--good", r:6.5, label:"your weighing"});
+    }
+    plot(svg,{xMin:0,xMax:hi,yMin:0,yMax:open?Math.max.apply(null,pts.map(function(p){return p[1];}))*1.1:10,
+      xLabel:"mass of L weighed out  (g)", yLabel:"titre of the acid  (mL)",
+      curves:curves, points:points,
+      xFmt:function(v){return v.toFixed(0);}, yFmt:function(v){return v.toFixed(0);}});
+    leg = open
+      ? '<span><i style="background:var(--s3)"></i>straight through the origin — which is why '
+        + 'Kjeldahl reports a percentage that does not depend on how much you weigh out</span>'
+      : ' <span style="color:var(--s2)">Run the experiment and the line appears — it needs '
+        + 'M(L), which the bench builds.</span>';
+  } else {
+    var one=S.V, two=S.V*2;
+    bars.push({x0:0.18,x1:0.82,y:one,col:"--good",label:"1 N counted · "+ansTxt(one)+" mL"});
+    bars.push({x0:1.18,x1:1.82,y:two,col:"--bad",label:"2 N counted · "+ansTxt(two)+" mL"});
+    plot(svg,{xMin:0,xMax:2,yMin:0,yMax:two*1.25,
+      xLabel:"how many of L's two nitrogens are taken to become ammonia",
+      yLabel:"titre  (mL)", bars:bars, curves:[], points:[],
+      xFmt:function(v){ return v===0.5?"correct":(v===1.5?"the trap":""); },
+      yFmt:function(v){return v.toFixed(0);}});
+    leg = '<span>The whole question is this gap. Kjeldahl cannot reduce nitro nitrogen, so only '
+        + 'the amine is estimated and the titre is the left-hand bar.</span>';
+  }
+  $("legend").innerHTML=leg;
+  var vb=$("viewbtns").querySelectorAll("button"), q;
+  for(q=0;q<vb.length;q++){
+    var lock = !open && vb[q].dataset.v!=="mass";
+    vb[q].disabled=lock;
+    vb[q].title = lock ? "This one plots the answer — run the experiment first." : "";
+  }
+  $("xctrl").hidden = view!=="mass";
+  updateExplore();
+  drawAuditCards();
+}
+function updateExplore(){
+  var D=copyST(), S=solve(D), open=hasRun()&&!complaint(D);
+  $("xval").textContent=exM.toFixed(2)+" g";
+  $("rm").textContent=exM.toFixed(2);
+  if(!open){ $("rn").textContent="—"; $("rv").textContent="—";
+             $("rp").textContent="—"; return; }
+  $("rn").textContent=n4(exM/S.ML);
+  $("rv").textContent=ansTxt(vAt(D,exM));
+  $("rp").textContent=n2(S.pctEst);
+}
+
+/* =====================================================================
+   gate, celebration, concepts
+   ===================================================================== */
+function blink(id){
+  var e=$(id); if(!e) return;
+  e.classList.remove("blink"); void e.offsetWidth; e.classList.add("blink");
+  setTimeout(function(){ e.classList.remove("blink"); },2300);
+}
+function refreshGate(){
+  var open=RUN.done||earlyReveal, S=RUN.S||solve(copyST()), D=RUN.D||copyST();
+  $("solgate").hidden=open; $("solbody").hidden=!open;
+  var ab=$("answerbox");
+  if(open){
+    ab.classList.remove("locked");
+    $("ansval").textContent=ansTxt(S.V)+" mL";
+    $("anssub").innerHTML="n(L) "+n4(S.nL)+" × 1 N ÷ 2 ÷ "+n2(D.conc)
+      + " M · L = "+n1(S.ML)+" g/mol";
+    $("revealnow").hidden=true;
+    $("clsans").textContent=ansTxt(S.V)+" mL";
+    $("solintro").innerHTML = RUN.done
+      ? "<b>The bench produced this from the data you entered.</b> Every line below is the same "
+        + "calculation, written out."
+      : "Revealed early — run the experiment to watch each of these steps actually happen.";
+    fillConcepts(S,D);
+    ccIn();
+  } else {
+    ab.classList.add("locked");
+    $("ansval").textContent="Run the experiment";
+    $("anssub").textContent="Check the data from the stem and start the bench.";
+    $("revealnow").hidden=false;
+    $("clsans").textContent="— run the experiment";
+  }
+  drawChart();
+}
+function fillConcepts(S,D){
+  function set(id,h){ var e=$(id); if(e) e.innerHTML=h; }
+  set("cf0", n1(S.MK)+" g/mol" + (S.kOK ? " <b>= the stated 350 ✓</b>"
+                                        : " <b>≠ 350 ✗</b>"));
+  set("cf1", "n(NH<sub>3</sub>) = <b>"+n4(S.nNH3)+" mol</b>, not "+n4(S.nL*2));
+  set("cf2", "n(acid) = "+n4(S.nNH3)+"/2 = <b>"+n4(S.nAcid)+" mol</b>");
+  set("cf3", "("+n2(D.wL)+"/"+n1(S.ML)+") × 1 ÷ 2 ÷ "+n2(D.conc)+" × 1000 = <b>"
+           + ansTxt(S.V)+" mL</b>");
+}
+function ccIn(){
+  var i;
+  for(i=0;i<4;i++)(function(k){
+    setTimeout(function(){ var c=$("cc"+k); if(c) c.classList.add("in"); },90*k);
+  })(i);
+}
+
+/* =====================================================================
+   run control
+   ===================================================================== */
+function updateButtons(){
+  var sc=RUN.scene, go=$("gobtn"), bad=complaint(copyST());
+  if(sc==="setup"){
+    go.hidden=false; go.className="go"; go.innerHTML="▶&nbsp; START EXPERIMENT";
+    go.disabled=!!bad;
+    $("pausebtn").disabled=true; $("pausebtn").textContent="Pause";
+    $("replaybtn").hidden=!trials.length; $("editbtn").hidden=true;
+    $("conceptbtn").hidden=!hasRun();
+  } else if(sc==="reveal" && !RUN.done){
+    go.hidden=false; go.className="go rev"; go.innerHTML="★&nbsp; REVEAL ANSWER";
+    go.disabled=false;
+    $("pausebtn").disabled=true; $("replaybtn").hidden=false; $("editbtn").hidden=false;
+    $("conceptbtn").hidden=!hasRun();
+  } else if(sc==="reveal"){
+    go.hidden=true;
+    $("pausebtn").disabled=true; $("replaybtn").hidden=false; $("editbtn").hidden=false;
+    $("conceptbtn").hidden=false;
+  } else {
+    go.hidden=true;
+    $("pausebtn").disabled = (sc==="audit" && predicted===null);
+    $("pausebtn").textContent=RUN.playing?"Pause":"Resume";
+    $("replaybtn").hidden=false; $("editbtn").hidden=false;
+    $("conceptbtn").hidden=!hasRun();
+  }
+  $("predbox").hidden = !(sc==="audit" && !RUN.done);
+  $("nextbtn").hidden = !classroom || RUN.done;
+}
+function updateMsg(){
+  var D=copyST(), bad=complaint(D), S=solve(D), note=kNote(D);
+  if(bad) $("gomsg").innerHTML="<span class='bad'>The bench cannot run that.</span> "+bad;
+  else if(RUN.scene==="setup")
+    $("gomsg").innerHTML="<b>"+n2(D.wL)+" g</b> of L into the digestion flask, titrated against <b>"
+      + n2(D.conc)+" M</b> H₂SO₄."
+      + (note ? " <span class='bad'>"+note+"</span>" : " Press start.");
+  else if(RUN.done)
+    $("gomsg").innerHTML="<b>Run logged.</b> Change the mass or the acid strength and run it again "
+      + "— or open <b>UNDERSTAND THE CONCEPT</b>.";
+  else if(RUN.scene==="audit" && predicted===null)
+    $("gomsg").innerHTML="<b>Commit to a number</b> in the panel above — the audit waits for "
+      + "you.";
+  else if(RUN.scene==="reveal")
+    $("gomsg").innerHTML="Both halves are done. Press <b>REVEAL ANSWER</b>.";
+  else
+    $("gomsg").innerHTML="Change any box while it runs — every instrument follows it.";
+}
+function syncForm(){
+  var D=copyST(), bad=complaint(D), S=solve(D);
+  if(RUN.scene!=="setup" && !RUN.done && !bad){ RUN.D=D; RUN.S=S; }
+  if(bad && RUN.playing) RUN.playing=false;
+  updateMsg(); updateButtons(); updateGauges(); drawRecord(); drawChart();
+}
+function startRun(){
+  var D=copyST(); if(complaint(D)) return;
+  RUN.D=D; RUN.S=solve(D); RUN.scene="j"; RUN.t=0;
+  RUN.playing=!classroom; RUN.done=false;
+  predicted=null; predSeen=false;
+  $("predfb").className="fb"; $("predfb").textContent="Pick one and the audit runs.";
+  var bs=$("predrow").querySelectorAll("button"), i;
+  for(i=0;i<bs.length;i++) bs[i].setAttribute("aria-pressed","false");
+  $("blackout").classList.remove("on");
+  remount(); updateButtons(); updateMsg();
+}
+function advance(){
+  var i=sceneIdx(); if(i>=SCENES.length-1) return;
+  RUN.scene=SCENES[i+1]; RUN.t=0;
+  if(RUN.scene==="reveal") RUN.playing=false;
+  remount(); updateButtons(); updateMsg();
+}
+function nextBeat(){
+  if(RUN.scene==="setup"){ startRun(); RUN.playing=false; RUN.scene="j"; RUN.t=BEATS[0][1];
+                           remount(); updateButtons(); return; }
+  if(RUN.scene==="reveal"){ if(!RUN.done) doReveal(); return; }
+  if(RUN.scene==="audit" && predicted===null) return;   /* the prediction gate holds */
+  var here=elapsed(), i, tgt=null;
+  for(i=0;i<BEATS.length;i++){
+    var sc=BEATS[i][0], tt=BEATS[i][1], acc=0, j;
+    for(j=1;j<SCENES.length;j++){ if(SCENES[j]===sc) break; acc+=DUR[SCENES[j]]||0; }
+    if(acc+tt > here+0.02){ tgt=BEATS[i]; break; }
+  }
+  if(!tgt){ if(!RUN.done) doReveal(); return; }
+  RUN.playing=false; RUN.scene=tgt[0]; RUN.t=tgt[1];
+  if(RUN.scene==="reveal"){ remount(); doReveal(); return; }
+  remount(); updateButtons(); updateMsg();
+}
+function doReveal(){
+  if(RUN.scene!=="reveal"){ earlyReveal=true; refreshGate(); return; }
+  $("blackout").classList.add("on");
+  setTimeout(function(){
+    RUN.done=true; pushTrial(); remount();
+    $("blackout").classList.remove("on");
+    var f=$("flashout"); f.classList.remove("go"); void f.offsetWidth; f.classList.add("go");
+    refreshGate(); updateGauges(); drawRecord(); updateButtons(); updateMsg();
+    var ab=$("answerbox");
+    ab.classList.remove("celebrate"); void ab.offsetWidth; ab.classList.add("celebrate");
+    setTimeout(function(){ ab.classList.remove("celebrate"); },3200);
+    blink("ansval"); blink("grafT"); blink("gv_V");
+  }, 950);
+}
+function backToSetup(){
+  RUN.scene="setup"; RUN.t=0; RUN.playing=false; RUN.done=false;
+  $("blackout").classList.remove("on");
+  remount(); syncForm();
+}
+function setPrediction(p){
+  predicted=p; predSeen=true;
+  var bs=$("predrow").querySelectorAll("button"), i;
+  for(i=0;i<bs.length;i++) bs[i].setAttribute("aria-pressed", bs[i].dataset.p===p?"true":"false");
+  var fb=$("predfb"), right = (p === String(N_KJELDAHL));
+  fb.className = "fb " + (right?"ok":"no");
+  fb.innerHTML = right
+    ? "✓ Committed — and the audit is about to agree with you. Only the amine nitrogen "
+      + "digests; the nitro nitrogen comes through untouched."
+    : "✗ Committed — watch the audit. L really has two nitrogens, but Kjeldahl cannot "
+      + "reduce the one in the nitro group, so only one becomes ammonia.";
+  if(!classroom) RUN.playing=true;
+  updateButtons(); updateMsg();
+}
+
+/* =====================================================================
+   the clock
+   ===================================================================== */
+var last=0, slow=0;
+function loop(ts){
+  var dt=last?(ts-last)/1000:0; last=ts;
+  if(dt>0.06) dt=0.06;
+  var held = (RUN.scene==="audit" && predicted===null && RUN.t>=2.3);
+  if(held) RUN.t = 2.3;
+  if(RUN.playing && RUN.scene!=="setup" && RUN.scene!=="reveal" && !held){
+    RUN.t += dt*RUN.speed;
+    paintScene();
+    var dur=DUR[RUN.scene];
+    if(dur && RUN.t>=dur){ RUN.t=dur; paintScene(); advance(); }
+  } else if(RUN.scene!=="setup" && RUN.scene!=="reveal"){
+    paintScene();
+  }
+  if(RUN.scene==="reveal" && RUN.done) stepBurst(dt);
+  slow+=dt;
+  if(slow>0.12){
+    slow=0; setPhase(); narrate(); updateMsg();
+    if(RUN.playing||RUN.scene==="reveal"||RUN.scene==="audit"){ updateGauges(); drawRecord(); }
+  }
+  requestAnimationFrame(loop);
+}
+
+/* =====================================================================
+   wiring
+   ===================================================================== */
+function build(){
+  $("rail").innerHTML = gaugeHTML() + railHTML();
+  drawTraps();
+  var i;
+  for(i=0;i<FIELDS.length;i++){
+    var f=FIELDS[i];
+    makeControl({slider:"sl_"+f.k,input:"in_"+f.k,hint:"fh_"+f.k,key:f.k,
+                 lo:f.lo,hi:f.hi,step:f.st,dp:f.dp,unit:f.u,onset:syncForm});
+  }
+  $("gobtn").addEventListener("click",function(){
+    if(RUN.scene==="setup") startRun(); else doReveal();
+  });
+  $("nextbtn").addEventListener("click",nextBeat);
+  $("pausebtn").addEventListener("click",function(){
+    RUN.playing=!RUN.playing; updateButtons(); setPhase();
+  });
+  $("replaybtn").addEventListener("click",function(){ startRun(); });
+  $("editbtn").addEventListener("click",backToSetup);
+  $("predrow").addEventListener("click",function(e){
+    var b=e.target.closest("button"); if(!b) return;
+    setPrediction(b.dataset.p);
+  });
+  $("conceptbtn").addEventListener("click",function(){
+    if(classroom) toggleClassroom();
+    var c=$("concepts"); if(c) c.scrollIntoView({behavior:"smooth",block:"start"});
+    ccIn();
+  });
+  $("classbtn").addEventListener("click",toggleClassroom);
+  $("fsbtn").addEventListener("click",function(){
+    var d=$("deck");
+    try{
+      if(document.fullscreenElement) document.exitFullscreen();
+      else if(d.requestFullscreen) d.requestFullscreen();
+    }catch(e){}
+  });
+  $("spd").addEventListener("click",function(e){
+    var b=e.target.closest("button"); if(!b) return;
+    RUN.speed=+b.dataset.s;
+    var bs=this.querySelectorAll("button"),j;
+    for(j=0;j<bs.length;j++) bs[j].setAttribute("aria-pressed",bs[j]===b?"true":"false");
+  });
+  $("viewbtns").addEventListener("click",function(e){
+    var b=e.target.closest("button"); if(!b||b.disabled) return;
+    view=b.dataset.v;
+    var bs=this.querySelectorAll("button"),j;
+    for(j=0;j<bs.length;j++) bs[j].setAttribute("aria-pressed",bs[j]===b?"true":"false");
+    drawChart();
+  });
+  $("xsl").addEventListener("input",function(){ exM=(+this.value)/1000*20; drawChart(); });
+  $("trapgrid").addEventListener("click",function(e){
+    var b=e.target.closest("button[data-trap]"); if(!b) return;
+    runTrap(+b.dataset.trap);
+  });
+  $("clrtrials").addEventListener("click",function(){ trials=[]; drawTrials(); drawRecord(); });
+  $("revealnow").addEventListener("click",function(){ earlyReveal=true; refreshGate(); });
+  $("revealsol").addEventListener("click",function(){ earlyReveal=true; refreshGate(); });
+  $("themebtn").addEventListener("click",function(){
+    var r=document.documentElement;
+    var dark=r.getAttribute("data-theme")==="dark" ||
+      (!r.getAttribute("data-theme")&&matchMedia("(prefers-color-scheme: dark)").matches);
+    r.setAttribute("data-theme",dark?"light":"dark");
+    drawScheme(); drawChart();
+  });
+  drawScheme();
+  remount(); syncForm(); refreshGate(); drawTrials();
+  requestAnimationFrame(loop);
+}
+function toggleClassroom(){
+  classroom=!classroom;
+  document.body.classList.toggle("classroom",classroom);
+  $("classbtn").setAttribute("aria-pressed",classroom?"true":"false");
+  $("classbtn").textContent = classroom ? "EXIT CLASSROOM MODE" : "CLASSROOM MODE";
+  if(classroom){ RUN.playing=false;
+    try{ $("deck").scrollIntoView({behavior:"smooth",block:"start"}); }catch(e){} }
+  updateButtons(); drawChart();
+}
+if(document.readyState==="loading") document.addEventListener("DOMContentLoaded",build);
+else build();
+
+/* exposed for the headless test harness */
+window.ST=ST; window.RUN=RUN; window.solve=solve; window.SCENES=SCENES; window.FORM=FORM;
+window.startRun=startRun; window.doReveal=doReveal; window.nextBeat=nextBeat;
+window.setPrediction=setPrediction;
+window.trialsOf=function(){ return trials; };
+window.seek=function(sc,t,pred){
+  RUN.D=copyST(); RUN.S=solve(RUN.D);
+  RUN.scene=sc; RUN.t=t; RUN.playing=false;
+  if(pred!==undefined && pred!==null){
+    predicted=pred;
+    var bs=$("predrow").querySelectorAll("button"), z;
+    for(z=0;z<bs.length;z++) bs[z].setAttribute("aria-pressed",bs[z].dataset.p===pred?"true":"false");
+    var fb=$("predfb"), right=(pred===String(N_KJELDAHL));
+    fb.className="fb "+(right?"ok":"no");
+    fb.innerHTML = right ? "\u2713 Committed." : "\u2717 Committed \u2014 watch the audit.";
+  }
+  remount(); paintScene(); setPhase(); narrate(); updateGauges(); drawRecord(); updateButtons();
+};
+})();
+
+</script>
+</body>
+</html>
