@@ -15,6 +15,10 @@ This script derives the payload the clients actually download:
                            the visitor actually types in the search box
     content/sims/<ID>.json the full record for one simulation, fetched only when
                            its detail page is opened
+    s/<ID>/index.html      a real, crawlable page per simulation, so each one
+                           has its own indexable URL with its own title and
+                           description instead of hiding behind a #fragment
+    sitemap.xml            every simulation URL, for search engines
 
 Why: a manifest entry averages ~8.4 KB because it carries the verification log,
 the interactivity list and the concept prose. At 1000 simulations that is 8.4 MB
@@ -78,6 +82,138 @@ def card(sim):
     for k, d in DEFAULTS.items():
         out.setdefault(k, d)
     return out
+
+
+SITE_URL = "https://chemwithankit.github.io/Prayogx"
+
+
+def esc(t):
+    return (str(t).replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+            .replace('"', "&quot;"))
+
+
+def stub_pages(published):
+    """One static page per simulation.
+
+    The catalogue is a hash-routed single page, which means Google sees exactly
+    one URL for the whole library. These pages give every simulation an address
+    of its own with its own title, description and structured data - and they
+    are useful pages in their own right rather than a redirect, so landing on
+    one from a search result is not a dead end.
+    """
+    made = 0
+    for sim in published:
+        sid = sim["id"]
+        d = os.path.join(ROOT, "s", sid)
+        os.makedirs(d, exist_ok=True)
+        title = sim.get("title", sid)
+        summary = sim.get("summary", "")
+        desc = (summary[:300] + ("\u2026" if len(summary) > 300 else "")) or title
+        url = "%s/s/%s/" % (SITE_URL, sid)
+        sim_url = "../../" + sim.get("path", "")
+        rev = sim.get("revision", 1)
+        ld = {
+            "@context": "https://schema.org",
+            "@type": "LearningResource",
+            "name": title,
+            "description": desc,
+            "url": url,
+            "educationalLevel": sim.get("difficulty", ""),
+            "learningResourceType": "Interactive simulation",
+            "about": [sim.get("subject"), sim.get("chapter"), sim.get("topic")],
+            "keywords": ", ".join(sim.get("tags", [])[:20]),
+            "inLanguage": "en",
+            "isAccessibleForFree": sim.get("access", "free") == "free",
+            "dateModified": sim.get("updatedAt", ""),
+            "version": rev,
+            "provider": {"@type": "Organization", "name": "PrayogX"},
+        }
+
+        def li(items, n=12):
+            items = [x for x in (items or [])][:n]
+            if not items:
+                return ""
+            return "<ul>" + "".join("<li>%s</li>" % esc(x) for x in items) + "</ul>"
+
+        html = """<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>%(title)s | %(exam)s %(year)s %(paper)s Q.%(qno)s | PrayogX</title>
+<meta name="description" content="%(desc)s">
+<link rel="canonical" href="%(url)s">
+<link rel="stylesheet" href="../../site/site.css">
+<meta name="theme-color" content="#2a78d6">
+<meta property="og:type" content="article">
+<meta property="og:title" content="%(title)s">
+<meta property="og:description" content="%(desc)s">
+<meta property="og:url" content="%(url)s">
+<link rel="apple-touch-icon" href="../../site/icons/icon-192.png">
+<script type="application/ld+json">%(ld)s</script>
+<style>
+ .stub{max-width:780px;margin:0 auto;padding:26px 20px 60px}
+ .stub h1{font-size:25px;line-height:1.25;margin:10px 0 12px}
+ .stub .crumb{font-size:12.5px;color:var(--text-muted)}
+ .stub .crumb a{color:inherit}
+ .stub .chips{display:flex;flex-wrap:wrap;gap:7px;margin:0 0 16px}
+ .stub .chip{font-size:11.5px;border:1px solid var(--line);border-radius:999px;
+   padding:4px 10px;color:var(--text-secondary)}
+ .stub .lede{font-size:15px;line-height:1.65;color:var(--text-secondary)}
+ .stub .go{display:inline-block;background:var(--accent);color:#fff;text-decoration:none;
+   border-radius:10px;padding:14px 22px;font-weight:700;margin:18px 0 6px;min-height:44px}
+ .stub h2{font-size:13px;text-transform:uppercase;letter-spacing:1.3px;
+   color:var(--text-muted);margin:26px 0 8px}
+ .stub ul{margin:0;padding-left:20px;line-height:1.65;color:var(--text-secondary);font-size:14px}
+</style>
+</head>
+<body>
+<main class="stub">
+  <p class="crumb"><a href="../../">PrayogX</a> &rsaquo; %(subject)s &rsaquo; %(chapter)s</p>
+  <h1>%(title)s</h1>
+  <div class="chips">
+    <span class="chip">%(exam)s %(year)s</span>
+    <span class="chip">%(paper)s &middot; Question %(qno)s</span>
+    <span class="chip">%(subject)s</span>
+    <span class="chip">%(topic)s</span>
+    <span class="chip">%(difficulty)s</span>
+  </div>
+  <p class="lede">%(summary)s</p>
+  <a class="go" href="%(sim)s?v=%(rev)s">Open the interactive simulation</a>
+  %(sub)s
+  %(con)s
+  <h2>Simulation ID</h2>
+  <ul><li>%(id)s &middot; revision %(rev)s</li></ul>
+  <p style="margin-top:26px"><a href="../../#/sim/%(id)s">See this simulation in the library &rarr;</a></p>
+</main>
+</body>
+</html>
+""" % {
+            "title": esc(title), "desc": esc(desc), "url": esc(url),
+            "exam": esc(sim.get("exam", "JEE Advanced")), "year": esc(sim.get("year", "")),
+            "paper": esc(sim.get("paper", "")), "qno": esc(sim.get("questionNumber", "")),
+            "subject": esc(sim.get("subject", "")), "chapter": esc(sim.get("chapter", "")),
+            "topic": esc(sim.get("topic", "")), "difficulty": esc(sim.get("difficulty", "")),
+            "summary": esc(summary), "sim": esc(sim_url), "rev": esc(rev), "id": esc(sid),
+            "ld": json.dumps(ld, ensure_ascii=False),
+            "sub": ("<h2>Sub-topics covered</h2>" + li(sim.get("subtopics"))) if sim.get("subtopics") else "",
+            "con": ("<h2>What it teaches</h2>" + li(sim.get("concepts"), 8)) if sim.get("concepts") else "",
+        }
+        with open(os.path.join(d, "index.html"), "w", encoding="utf-8") as fh:
+            fh.write(html)
+        made += 1
+
+    urls = ["%s/" % SITE_URL] + ["%s/s/%s/" % (SITE_URL, s["id"]) for s in published]
+    lastmod = max([s.get("updatedAt", "") for s in published] or [""])
+    body = "".join(
+        "<url><loc>%s</loc>%s</url>" % (esc(u), "<lastmod>%s</lastmod>" % esc(lastmod) if lastmod else "")
+        for u in urls)
+    with open(os.path.join(ROOT, "sitemap.xml"), "w", encoding="utf-8") as fh:
+        fh.write('<?xml version="1.0" encoding="UTF-8"?>\n'
+                 '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">%s</urlset>\n' % body)
+    with open(os.path.join(ROOT, "robots.txt"), "w", encoding="utf-8") as fh:
+        fh.write("User-agent: *\nAllow: /\nDisallow: /papers/\nSitemap: %s/sitemap.xml\n" % SITE_URL)
+    return made
 
 
 def sha_of(path):
@@ -204,6 +340,19 @@ def main():
     if stale:
         print("  NOTE: stale detail file(s) left in content/sims: %s" % ", ".join(stale))
 
+    pages = stub_pages(published)
+
+    # Stamp the service worker with the feed version. The worker's cache names
+    # carry it, so publishing new content retires the old shell and feed caches
+    # instead of leaving a visitor on a stale app forever.
+    sw_path = os.path.join(ROOT, "sw.js")
+    if os.path.isfile(sw_path):
+        with open(sw_path, encoding="utf-8") as fh:
+            sw = fh.read()
+        stamped = re.sub(r'var VERSION = "[^"]*";', 'var VERSION = "%s";' % version, sw, count=1)
+        if stamped != sw:
+            with open(sw_path, "w", encoding="utf-8") as fh:
+                fh.write(stamped)
     blessed, held = update_lock(published)
 
     man_b = os.path.getsize(MANIFEST)
@@ -218,6 +367,7 @@ def main():
     print("  sims/*.json    %6d B   across %d files, fetched on demand" % (det_b, len(cards)))
     print("  manifest.json  %6d B   (%d B per simulation, authoring only)"
           % (man_b, man_b // n))
+    print("  s/<ID>/        %6d crawlable page(s) + sitemap.xml + robots.txt" % pages)
     print("  startup cost   %.0f%% of the manifest" % (100.0 * idx_b / man_b))
     print("  projected at 1000 simulations: index %.1f MB, manifest %.1f MB"
           % (idx_b / n * 1000 / 1e6, man_b / n * 1000 / 1e6))

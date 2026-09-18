@@ -258,3 +258,19 @@ main{padding:22px 0 64px}
   .ctarow{flex-wrap:wrap;gap:9px}
   .cta{flex:1 1 100%;text-align:center}
 }
+
+/* Update prompt and offline banner — deliberately unobtrusive, and it never
+   swaps the page under someone mid-experiment. */
+.updatebar{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);z-index:60;
+  display:flex;align-items:center;gap:12px;max-width:calc(100vw - 32px);
+  background:var(--surface-1);border:1px solid var(--line-strong);border-radius:11px;
+  padding:11px 13px;box-shadow:0 12px 30px -12px rgba(0,0,0,.42);font-size:13px}
+.updatebar button{border:1px solid var(--accent);background:var(--accent);color:#fff;
+  border-radius:8px;padding:8px 13px;font:inherit;font-size:12.5px;font-weight:700;cursor:pointer}
+.offlinebar{position:fixed;left:0;right:0;top:0;z-index:70;text-align:center;
+  background:#8a5a00;color:#fff;font-size:12.5px;padding:6px 10px}
+:root[data-theme=dark] .offlinebar{background:#7a5e1a}
+@supports (padding: max(0px)) {
+  .updatebar{bottom:max(18px, env(safe-area-inset-bottom))}
+  .offlinebar{padding-top:max(6px, env(safe-area-inset-top))}
+}

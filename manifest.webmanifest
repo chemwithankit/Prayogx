@@ -1,0 +1,50 @@
+{
+  "name": "PrayogX \u2014 JEE Advanced Interactive Simulations",
+  "short_name": "PrayogX",
+  "description": "Interactive JEE Advanced Physics and Chemistry simulations. Enter the data, run the experiment, discover the answer.",
+  "id": "/",
+  "start_url": ".",
+  "scope": ".",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#f4f4f1",
+  "theme_color": "#2a78d6",
+  "categories": [
+    "education",
+    "science"
+  ],
+  "lang": "en",
+  "icons": [
+    {
+      "src": "site/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "site/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "site/icons/maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "site/icons/mark.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Favourites",
+      "url": "./#/?fav=1"
+    },
+    {
+      "name": "Chemistry",
+      "url": "./#/?s=Chemistry"
+    }
+  ]
+}

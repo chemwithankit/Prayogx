@@ -487,6 +487,21 @@
     if (r.view === "sim") renderSim(r.id); else renderList(r.f || {});
   }
 
+  /* --------------------------------------------------------------- offline
+     Say so, once, at the top - and say what still works, because most of it
+     does: the shell and every simulation already opened on this device. */
+  function offlineBar() {
+    var bar = document.querySelector(".offlinebar");
+    if (navigator.onLine) { if (bar) bar.parentNode.removeChild(bar); return; }
+    if (bar) return;
+    bar = document.createElement("div");
+    bar.className = "offlinebar";
+    bar.textContent = "Offline — simulations you have already opened still work.";
+    document.body.appendChild(bar);
+  }
+  window.addEventListener("online", offlineBar);
+  window.addEventListener("offline", offlineBar);
+
   /* ------------------------------------------------------------ bootstrap */
   document.getElementById("themebtn").addEventListener("click", function () {
     var root = document.documentElement;
@@ -515,6 +530,7 @@
       (payload.version ? " · feed " + esc(String(payload.version).slice(0, 8)) : "") +
       (LIB.updatedAt ? " · updated " + esc(LIB.updatedAt) : "");
     window.addEventListener("hashchange", function () { shownCount = PAGE; render(); });
+    offlineBar();
     render();
   }
 

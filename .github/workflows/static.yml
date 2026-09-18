@@ -52,12 +52,12 @@ jobs:
           python3 tools/sync_manifest.py
           python3 tools/build_content.py
           python3 tools/check_library.py
-          if ! git diff --quiet -- data/ content/; then
+          if ! git diff --quiet -- data/ content/ s/ sitemap.xml robots.txt sw.js; then
             echo "::error::the committed manifest, feed or revision lock is stale."
             echo "Run ./publish.sh (or tools/sync_manifest.py + tools/build_content.py)"
             echo "and commit the result. Refusing to deploy content that does not match"
             echo "what is in the repository."
-            git --no-pager diff --stat -- data/ content/
+            git --no-pager diff --stat -- data/ content/ s/ sitemap.xml robots.txt sw.js
             exit 1
           fi
 

@@ -159,6 +159,25 @@ def main():
                         fail("stale detail record content/sims/%s - it is no longer "
                              "published; delete it" % fn)
 
+    # ------------------------------------- crawlable pages and the worker
+            for sim in published:
+                stub = os.path.join(ROOT, "s", str(sim.get("id")), "index.html")
+                if not os.path.isfile(stub):
+                    fail("%s: no crawlable page at s/%s/index.html - "
+                         "run tools/build_content.py" % (sim.get("id"), sim.get("id")))
+            if not os.path.isfile(os.path.join(ROOT, "sitemap.xml")):
+                fail("sitemap.xml is missing - run tools/build_content.py")
+            sw_path = os.path.join(ROOT, "sw.js")
+            if os.path.isfile(sw_path):
+                with open(sw_path, encoding="utf-8") as fh:
+                    m = re.search(r'var VERSION = "([^"]*)";', fh.read())
+                if not m:
+                    fail("sw.js has no VERSION to stamp")
+                elif m.group(1) != cat.get("version"):
+                    fail("sw.js VERSION %r does not match the feed version %r - the old "
+                         "shell cache would never be retired. Run tools/build_content.py"
+                         % (m.group(1), cat.get("version")))
+
     # ------------------------------------------------- revision discipline
     if not os.path.isfile(LOCK_PATH):
         notes.append("data/revisions.json not found - run tools/build_content.py to create it")
