@@ -262,3 +262,41 @@ At 1000 simulations: feed index ~1.1 MB (shardable by subject or year if it ever
 detail records fetched one at a time, grid rendered incrementally, simulations fetched on demand.
 No component holds the whole library in memory except the index, and the index is deliberately the
 smallest record that can draw a card.
+
+---
+
+## Built in v1 — measured, not asserted
+
+Branch `platform/v1`, five commits. Every step left `tools/check_library.py` green.
+
+| Claim | How it was measured | Result |
+|---|---|---|
+| Startup cost no longer scales with the prose | synthetic 1000-simulation library built from the real 17 | **1.26 MB transferred, 608 ms to first paint**, 24 cards in the DOM (was 8.4 MB) |
+| Filtering stays usable at 1000 | chapter filter on the synthetic library | 424 ms |
+| Full-text search stays usable at 1000 | search on the synthetic library | 1422 ms, blob fetched only on the first keystroke |
+| Detail prose is paid for on demand | request log on the catalogue | zero `content/sims/*` requests until a detail page opens |
+| A revised simulation cannot ship invisibly | edited Q01 without bumping `revision` | library check refused it |
+| An opened simulation works offline | service worker cache + request abort | opens; a never-opened one shows the offline page, not a browser error |
+| Each simulation is indexable | generated `s/<ID>/index.html` | own title, description, canonical URL, JSON-LD, 2881 chars of real content |
+| The app duplicates nothing | request log of the shell | requests only its own four files; catalogue and simulations come from the feed |
+| The app works with the host unreachable | killed the content server | library opens from its stored copy, stored simulation still runs |
+
+Test suites: `webcheck` 21, `pwacheck` 18, `appcheck` 20, `scalecheck` 12 — 71 assertions.
+
+### Deliberate deviations from the brief
+
+1. **IDs were not changed** to `CHEM-2026-014`. The brief used that as an example;
+   the existing `ADV-2026-P2-CHE-Q17` encodes exam, year, paper and subject, and the
+   brief's own rule is to preserve IDs absent an architectural reason.
+2. **`data/manifest.json` was not replaced.** It stays the authoring source of truth
+   with an unchanged schema; the client feed is derived from it. Splitting the file
+   the authors edit would have been change for its own sake.
+3. **CapacitorHttp is enabled** rather than relying on the content host's CORS
+   headers, which could not be verified from the build environment.
+
+### Not built yet, by design
+
+Student and teacher accounts, progress sync, analytics, payments, Hindi, Physics
+content. The seams exist — `access` in the schema and the UI, user state behind a
+namespaced store an account layer can adopt, a feed a CDN can front — but none of it
+is implemented, because V1 should stay small.
