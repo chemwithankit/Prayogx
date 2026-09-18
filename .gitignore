@@ -17,6 +17,10 @@ __pycache__/
 _scratch/
 _to_delete/
 
+# stray browser downloads of a simulation page (index-1.html, index (1).html …)
+index-[0-9]*.html
+index*(*).html
+
 # source exam PDFs - kept locally, never committed or published
 papers/
 
