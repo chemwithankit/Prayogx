@@ -6,6 +6,9 @@
 #   tools/            maintenance scripts
 #   templates/        the authoring shell for new simulations
 #   data/tracker.csv  internal progress tracker
+#
+# content/ IS published: it is the feed the website, the PWA and the mobile apps
+# read. It is generated from data/manifest.json, never edited by hand.
 #   README.md, publish.sh
 #
 # The exclude list is deliberately a *deny* list, not an allow list, so a new
@@ -43,6 +46,20 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Validate the library before building anything
+        run: |
+          python3 tools/sync_manifest.py
+          python3 tools/build_content.py
+          python3 tools/check_library.py
+          if ! git diff --quiet -- data/ content/; then
+            echo "::error::the committed manifest, feed or revision lock is stale."
+            echo "Run ./publish.sh (or tools/sync_manifest.py + tools/build_content.py)"
+            echo "and commit the result. Refusing to deploy content that does not match"
+            echo "what is in the repository."
+            git --no-pager diff --stat -- data/ content/
+            exit 1
+          fi
 
       - name: Assemble the site
         run: |

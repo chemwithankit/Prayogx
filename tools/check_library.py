@@ -11,11 +11,16 @@ Checks, for every entry in data/manifest.json:
   * data/manifest.js is in sync with data/manifest.json
   * `counts` matches the actual simulations
   * every simulation folder on disk appears in the manifest (nothing orphaned)
+  * the published content feed under content/ is present and current
+  * every published simulation has a detail record, with no stale ones left over
+  * no shipped simulation was edited without bumping its `revision`
+  * `access` and `status` hold values the UI knows how to render
 
 Run:  python3 tools/check_library.py
 Exit code 0 = clean, 1 = problems found.
 It only reads; it never modifies anything.
 """
+import hashlib
 import json
 import os
 import re
@@ -24,7 +29,12 @@ import sys
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 JSON_PATH = os.path.join(ROOT, "data", "manifest.json")
 JS_PATH = os.path.join(ROOT, "data", "manifest.js")
+LOCK_PATH = os.path.join(ROOT, "data", "revisions.json")
+CONTENT = os.path.join(ROOT, "content")
 SIM_ROOT = os.path.join(ROOT, "simulations")
+
+ACCESS_VALUES = ("free", "premium", "pro")
+STATUS_VALUES = ("human_verified", "draft", "deprecated")
 
 REQUIRED = ["id", "path", "folder", "title", "year", "paper", "subject",
             "questionNumber", "chapter", "topic", "tags"]
@@ -110,6 +120,79 @@ def main():
             if mirrored is not None and mirrored != manifest:
                 fail("data/manifest.js is out of sync with manifest.json — run tools/sync_manifest.py")
 
+    # ---------------------------------------------------------------- feed
+    published = [s for s in sims if s.get("status", "human_verified") != "draft"]
+    if not os.path.isdir(CONTENT):
+        fail("content/ is missing - run tools/build_content.py")
+    else:
+        idx_file = os.path.join(CONTENT, "index.json")
+        cat_file = os.path.join(CONTENT, "catalog.json")
+        if not os.path.isfile(idx_file) or not os.path.isfile(cat_file):
+            fail("content/index.json or content/catalog.json is missing - "
+                 "run tools/build_content.py")
+        else:
+            with open(idx_file, encoding="utf-8") as fh:
+                idx = json.load(fh)
+            with open(cat_file, encoding="utf-8") as fh:
+                cat = json.load(fh)
+            feed_ids = set(c.get("id") for c in idx.get("simulations", []))
+            man_ids = set(s.get("id") for s in published)
+            for missing in sorted(man_ids - feed_ids):
+                fail("%s: published but absent from content/index.json - "
+                     "run tools/build_content.py" % missing)
+            for extra in sorted(feed_ids - man_ids):
+                fail("%s: in content/index.json but not published in the manifest" % extra)
+            if cat.get("version") != idx.get("version"):
+                fail("content/catalog.json and content/index.json disagree on the feed "
+                     "version - run tools/build_content.py")
+            if cat.get("counts", {}).get("total") != len(published):
+                fail("content/catalog.json counts are stale - run tools/build_content.py")
+            for sim in published:
+                det = os.path.join(CONTENT, "sims", str(sim.get("id")) + ".json")
+                if not os.path.isfile(det):
+                    fail("%s: no detail record at content/sims/%s.json"
+                         % (sim.get("id"), sim.get("id")))
+            simdir = os.path.join(CONTENT, "sims")
+            if os.path.isdir(simdir):
+                for fn in sorted(os.listdir(simdir)):
+                    if fn.endswith(".json") and fn[:-5] not in man_ids:
+                        fail("stale detail record content/sims/%s - it is no longer "
+                             "published; delete it" % fn)
+
+    # ------------------------------------------------- revision discipline
+    if not os.path.isfile(LOCK_PATH):
+        notes.append("data/revisions.json not found - run tools/build_content.py to create it")
+    else:
+        with open(LOCK_PATH, encoding="utf-8") as fh:
+            lock = json.load(fh)
+        for sim in published:
+            sid, rel = sim.get("id"), sim.get("path", "")
+            abs_path = os.path.join(ROOT, rel)
+            if not rel or not os.path.isfile(abs_path):
+                continue
+            rec = lock.get(sid)
+            if not rec:
+                notes.append("%s: not in the revision lock yet" % sid)
+                continue
+            h = hashlib.sha256()
+            with open(abs_path, "rb") as fh:
+                for chunk in iter(lambda: fh.read(65536), b""):
+                    h.update(chunk)
+            if rec.get("revision") == sim.get("revision", 1) and rec.get("sha256") != h.hexdigest():
+                fail("%s: index.html changed but `revision` is still %s - every cache "
+                     "(browser, service worker, app) is keyed on it, so nobody would see "
+                     "the change. Bump the revision in meta.json and the manifest."
+                     % (sid, sim.get("revision", 1)))
+
+    # ------------------------------------------------------- access / status
+    for sim in sims:
+        a = sim.get("access", "free")
+        if a not in ACCESS_VALUES:
+            fail("%s: access %r is not one of %s" % (sim.get("id"), a, ACCESS_VALUES))
+        st = sim.get("status", "human_verified")
+        if st not in STATUS_VALUES:
+            fail("%s: status %r is not one of %s" % (sim.get("id"), st, STATUS_VALUES))
+
     # orphaned simulation folders
     def norm(p):
         return os.path.normpath(p.replace("/", os.sep)).rstrip(os.sep)
@@ -130,7 +213,8 @@ def main():
         for problem in problems:
             print("  ✗ %s" % problem)
         return 1
-    print("  ✓ all paths resolve, ids unique, metadata consistent, counts and manifest.js in sync")
+    print("  ✓ all paths resolve, ids unique, metadata consistent, counts and manifest.js "
+          "in sync,\n    content feed current, revisions disciplined")
     return 0
 
 
