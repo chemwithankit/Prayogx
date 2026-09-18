@@ -1,7 +1,7 @@
 {
   "id": "ADV-2026-P2-CHE-Q17",
   "slug": "adv-2026-p2-che-q17",
-  "revision": 1,
+  "revision": 2,
   "path": "simulations/2026/paper-2/chemistry/adv-2026-p2-che-q17/index.html",
   "folder": "simulations/2026/paper-2/chemistry/adv-2026-p2-che-q17/",
   "title": "Volume of 1 M H2SO4 needed for the ammonia from a Kjeldahl estimation",
@@ -16,7 +16,12 @@
   "questionNumber": 17,
   "section": "Section 4",
   "questionType": "Numerical value",
-  "marking": { "full": 2, "partial": 0, "zero": 0, "negative": 0 },
+  "marking": {
+    "full": 2,
+    "partial": 0,
+    "zero": 0,
+    "negative": 0
+  },
   "chapter": "Organic Chemistry - Some Basic Principles and Techniques",
   "topic": "Kjeldahl estimation of nitrogen, on a compound built by a reaction sequence",
   "subtopics": [
@@ -97,7 +102,7 @@
     "classroom mode"
   ],
   "difficulty": "Hard",
-  "estimatedMinutes": 8,
+  "estimatedMinutes": 11,
   "answer": "10",
   "answerValue": "10",
   "answerUnit": "mL",
@@ -154,35 +159,43 @@
       "Independent numeric script with every formula assembled atom by atom (verify17.py): 23 of 23 checks pass and the answer is 10 mL",
       "Headless-browser run of the finished page: 113 assertions driving the whole flow - the structures and the checksum, the model's behaviour away from the paper's numbers, the reaction scheme confirmed to be live SVG rather than an image with all three reagent steps named, the empty rail with the answer nowhere on it, the checksum note appearing and clearing, rejection of unreadable input, each of the five stages in turn with its reasoning and its arithmetic written in the student's own numbers, the prediction gate confirmed to hold the clock at t = 2.3 s and to accept a wrong commitment rather than blocking it, a fourteen-frame leak sweep confirming the answer appears on no stage before the reveal, the blackout then flash then graffiti reveal with its particle burst, the header blinking once and stopping, the nitrogen-audit cards, both chart views, the explorer confirmed to double the titre at 11.44 g, three runs on different data, all six traps, classroom mode with NEXT STEP walking the beats one press at a time and the gate holding it too, replay clearing the earlier prediction, speed, theme toggle, a deck that fits in one window at 621 px, unique ids, accessible labels, a clean console and zero horizontal overflow at 390 px and 360 px",
       "A separate reduced-motion run confirmed the blink, the reveal flash and the card animations are all suppressed while the content and the answer remain complete",
-      "Answer cross-checked afterwards against a published worked solution for this paper, which reports the same M(L) = 286, states explicitly that one mole of L releases one mole of ammonia because the nitro nitrogen is not estimated, and gives the same answer, 10 mL. IIT Roorkee's official key was not retrievable at the time of writing"
+      "Answer cross-checked afterwards against a published worked solution for this paper, which reports the same M(L) = 286, states explicitly that one mole of L releases one mole of ammonia because the nitro nitrogen is not estimated, and gives the same answer, 10 mL. IIT Roorkee's official key was not retrievable at the time of writing",
+      "Revision 2 re-verified headlessly: 142 assertions, up from 113. The new coverage is the opening m-xylene scene with its formula summed from the rail, the eight-bottle reagent shelf and its explanations, all six prediction gates confirmed to hold the clock at their own stage and to accept a wrong commitment, the branching stage confirmed to identify neither product before a route is chosen and to answer the sulphur route honestly, the IUPAC names on J, K and L, the ammonia collection meter measured from the SVG, the burette confirmed to withhold its reading until the reveal, an eighteen-frame leak sweep across the longer scene list, and a classroom walk in which all six gates were confirmed to hold NEXT STEP until answered. A separate reduced-motion run passes, and the deck still fits one window at its tallest state."
     ],
-    "verifiedOn": "2026-09-17",
-    "note": "Q.17 and Q.18 share one question stem in Section 4. This simulation answers Q.17; the page builds M as far as identifying it and then leaves Q.18's Carius calculation alone, so the two halves do not give each other away. Section 4 is marked +2 for the correct value and 0 otherwise. The reaction scheme is redrawn as live vector structures rather than reproduced from the exam PDF, so the paper itself is never published."
+    "verifiedOn": "2026-09-18",
+    "note": "Q.17 and Q.18 share one question stem in Section 4. This simulation answers Q.17; the page builds M as far as identifying it and then leaves Q.18's Carius calculation alone, so the two halves do not give each other away. Section 4 is marked +2 for the correct value and 0 otherwise. The reaction scheme is redrawn as live vector structures rather than reproduced from the exam PDF, so the paper itself is never published. Revision 2 rebuilt the page against a second, much longer specification for the same question: it adds the m-xylene opening scene, the reagent shelf, a branching stage at K with both products drawn, five further prediction gates, IUPAC name badges, the ammonia collection meter and the burette delivery. The chemistry, the answer and the simulation ID are unchanged."
   },
   "interactivity": [
-    "Build the compound, commit to a prediction, then run the analysis: the bench takes the printed sequence apart in five stages and produces the titre at the end - about forty-four seconds end to end",
-    "The experiment happens inside a dark laboratory chamber that stays dark in either page theme, with glass, depth and glow, while the page around it follows the light or dark theme like every other simulation in the library",
+    "Build the compound, commit at every turn, then run the analysis: the bench takes the printed sequence apart in six stages and produces the titre at the end - about a minute end to end, longer with a class",
+    "The experiment happens inside a dark laboratory chamber that stays dark in either page theme, while the page around it follows the light or dark theme like every other simulation in the library",
+    "It opens on m-xylene itself, named as the starting material, with C8H10 and 8 C + 10 H = 106 g/mol summed from the atomic masses in the rail - nothing is asserted that the page has not just computed",
+    "A reagent shelf of eight bottles sits under the bench: ClCH2COCl, AlCl3, NaI, the nitrophenoxide, NaBH4, PBr3, ammonia and PhSNa. The bottle in use lights up as the synthesis runs, and tapping any of them says what it is for and why it was chosen",
+    "SIX prediction gates, one per stage, and each one stops the clock until the student commits: what the ring does to chloroacetyl chloride, what NaBH4 reduces when a ketone and a nitro group are both present, which of the two routes out of K this question needs, what excess ammonia gives with a benzylic bromide, how many of L's two nitrogens Kjeldahl can see, and how many moles of acid neutralise the ammonia",
+    "A wrong commitment is accepted and marked, never blocked - the point is to have an opinion on record before the bench settles it, and no option text carries the answer",
     "The printed reaction scheme is redrawn on the page as live vector structures - four benzene rings, real bonds, every reagent named - so the exam PDF is never published and the structures can be read at any zoom",
     "Nine inputs with a typed box, a slider and a pair of large steppers each: the mass of L, the strength of the acid and the seven atomic masses, so every molar mass on the page is recomputed from what is entered rather than hard-coded",
     "Eight live instruments that stay blank until the run establishes them - M(J), M(K), M(L), n(L), the nitrogen count, the ammonia, the acid and finally the titre, which stays blank until the very end",
-    "Nothing is precomputed: the bench runs on whatever is entered and reaches a different titre for different data",
-    "Stage 01 builds J and explains where the acyl group lands and why the iodide is made before the phenoxide step, then assembles M(J) = 285 atom by atom from the entered masses in front of the student",
-    "Stage 02 is the checksum: NaBH4 is shown reducing the ketone while the nitro group is left alone, PBr3 puts the bromine in, and then K is weighed on a live balance against the stem's stated 350 - the sum written out term by term. If the entered atomic masses no longer reproduce 350 the rail says so, but the experiment still runs, because the checksum is evidence and not a gate",
-    "Stage 03 builds L with excess ammonia, states in one line that L now contains TWO nitrogen atoms, and works out 5.72 / 286 = 0.02 mol",
-    "Stage 04 stops the experiment and will not continue: both nitrogens are circled on the molecule and the student has to commit to how many moles of ammonia come off per mole of L. The clock holds at that instant until a choice is made, a wrong choice is accepted and marked rather than blocked, and only then does the audit resolve the amine nitrogen as counted and the nitro nitrogen as surviving the digestion",
-    "Stage 05 runs the method itself in three cards: the digestion flask over a flame with ammonium building up, the distillation carrying the ammonia over into the standard acid, and the titration arithmetic with the burette reading withheld",
+    "Stage 01 builds J and explains where the acyl group lands and why the iodide is made before the phenoxide step, then assembles M(J) = 285 atom by atom from the entered masses. J is named in full underneath",
+    "Stage 02 is the checksum: NaBH4 reduces the ketone while the nitro group is left alone, PBr3 puts the bromine in, and K is weighed on a live balance against the stem's stated 350 with the sum written out term by term. If the entered atomic masses no longer reproduce 350 the rail says so, but the experiment still runs, because the checksum is evidence and not a gate",
+    "Stage 03 is a branching synthesis tree: K sits at the left with two glowing routes leaving it - excess ammonia to L, the nitrogen compound, and PhSNa to M, the sulphur compound. Both are drawn, named and weighed once a route is taken, and choosing the sulphur route is answered honestly rather than refused: that is Q.18's compound, so the bench says so and follows L",
+    "Stage 04 builds L, states in one line that it now contains TWO nitrogen atoms, and works out 5.72 / 286 = 0.02 mol",
+    "Stage 05 stops the experiment: both nitrogens are circled on the molecule and the student has to commit to how many moles of ammonia come off per mole of L before the audit resolves the amine nitrogen as counted and the nitro nitrogen as surviving the digestion",
+    "Stage 06 runs the method in three cards: the digestion flask over a flame with ammonium building up, the distillation carrying the ammonia into the standard acid past a collection meter that fills to 0.02 mol, and the titration arithmetic with the burette delivering while its reading stays withheld",
+    "The burette reading is withheld until the answer is revealed, and only then does returning to stage 06 show it stopping at the titre it actually took - the standing rule that the answer stays hidden until the experiment concludes outranks showing the delivery early",
     "The reveal darkens the laboratory for about a second, then flashes, sprays the answer across the chamber in graffiti lettering with a burst of confetti and chemical glyphs, blinks the header answer box once and unlocks the derivation",
     "A permanent nitrogen audit below the bench sets what the method reports against what the molecule actually contains - 4.90 per cent against 9.79 per cent - so the under-reporting is a number rather than a claim",
-    "A titre-against-mass line drawn from the entered data with a slider to explore any sample mass, reporting the moles, the titre and both nitrogen percentages at that point",
-    "A second view contrasting one nitrogen estimated against two counted, which stays locked until the run has resolved the audit",
-    "A record of the run that fills in quantity by quantity, and a trial log of every completed run - with an insight card naming what can and cannot move the answer",
+    "A titre-against-mass line drawn from the entered data with a slider to explore any sample mass, and a second view contrasting one nitrogen estimated against two counted",
+    "A record of the run that fills in quantity by quantity, a trial log of every completed run, and an insight card naming what can and cannot move the answer",
     "Six cards on the mistakes this question really produces, each re-running the model with one wrong assumption on the student's own numbers: 20, 20, 40, 8.17, 10.04 and 0.01 - including the 285 near-miss that no plausibility check can catch",
-    "CLASSROOM MODE for a projector: the rail and the surrounding sections are hidden, the stage and the narration scale up, and a NEXT STEP button walks the class through J, the 350 checksum, L, the nitrogen audit, the digestion and the titration one press at a time with the clock paused in between - and the prediction gate holds NEXT STEP too, so the class has to answer before the teacher can move on",
-    "A full-screen button for the bench, playback controls - pause, resume, replay, 0.5x / 1x / 2x - and a change-the-data button that returns to the rail with the entries kept; replay also clears the earlier prediction so the gate is live again",
+    "CLASSROOM MODE for a projector: the rail, the shelf and the surrounding sections are hidden, the stage and the narration scale up, and NEXT STEP walks the class through the whole sequence one press at a time - and every one of the six gates holds NEXT STEP too, so the class has to answer before the teacher can move on",
+    "A full-screen button for the bench, playback controls - pause, resume, replay, 0.5x / 1x / 2x - and a change-the-data button that returns to the rail with the entries kept; replay clears every prediction so all six gates are live again",
     "Step-by-step solution with an independent verification log, gated until the answer is revealed",
     "Four concept cards - the reaction sequence, the 350 checksum, which nitrogens Kjeldahl can see, and the dibasic acid - that animate in when the answer lands and fill their numbers in only then"
   ],
-  "source": { "file": "papers/adv_2026_paper_2.pdf", "page": 29 },
+  "source": {
+    "file": "papers/adv_2026_paper_2.pdf",
+    "page": 29
+  },
   "createdAt": "2026-09-17",
-  "updatedAt": "2026-09-17"
+  "updatedAt": "2026-09-18"
 }

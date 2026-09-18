@@ -207,12 +207,32 @@ the question is built on it.
 | Broken checksum handled as a note, not a refusal | entering C = 13 makes M(K) = 366 and the bench says so, while still running — because the checksum is the student's evidence, not a gate |
 | Distractor audit (6 mistakes) | 20, 20, 40, 8.17, 10.04, 0.01 — none is 10 by a correct route, and the 10.04 near-miss is called out explicitly on the page |
 | Independent numeric script, formulas assembled atom by atom (`verify17.py`) | 23 / 23 checks pass, answer 10 mL |
-| Headless-browser run of the finished page (`t17.js`) | 113 / 113 assertions pass, live model returns 10 mL, zero console errors, no overflow at 390 px or 360 px, deck fits one window at 621 px |
-| Answer hidden until revealed | 14-frame leak sweep across every stage — the answer appears nowhere |
-| The prediction gate | the audit holds the clock at t = 2.3 s until the student commits to one nitrogen or two, and accepts a wrong commitment rather than blocking it |
-| Classroom mode and NEXT STEP | walks J → K (350) → L (286) → the nitrogen audit → digestion and titration → the answer, one beat per press, run paused between, and the gate holds NEXT STEP too |
+| Headless-browser run of the finished page (`t17.js`) | **142 / 142** assertions pass, live model returns 10 mL, zero console errors, no overflow at 390 px or 360 px |
+| Answer hidden until revealed | 18-frame leak sweep across every stage — the answer appears nowhere |
+| The six prediction gates | each holds the clock at its own stage until the student commits — the ring's reaction, what NaBH₄ reduces, which route out of K, what excess ammonia gives, how many nitrogens Kjeldahl sees, and how much acid the ammonia needs. A wrong commitment is marked, never blocked, and no option text carries the answer |
+| The branching stage | neither product is identified on the stage before a route is chosen; choosing PhSNa is answered honestly — that is Q.18's compound, so the bench says so and follows L |
+| Classroom mode and NEXT STEP | walks every stage one press at a time, and all six gates were confirmed to hold NEXT STEP until the class answers |
 | Reduced-motion run | blink, flash and card animations suppressed; content and answer still complete |
 | Cross-check against a published worked solution for this paper | same route, same M(L) = 286, same "1 mole of L releases 1 mole of NH₃", same answer 10 mL |
 | IIT Roorkee official key | not retrievable at the time of writing |
 
-**Status: verified — 2026-09-17.**
+### Revision 2 — 2026-09-18
+
+Rebuilt against a second, longer specification for the same question. The chemistry, the answer
+and the simulation ID are unchanged; what changed is how much of the reasoning the student has to
+supply.
+
+| Added | Why |
+|---|---|
+| An opening scene on m-xylene, named as the starting material, with C₈H₁₀ and 8 C + 10 H = 106 summed from the rail | the sequence should start from something, not from a blank bench |
+| A reagent shelf of eight bottles, the one in use lit, each explaining itself on tap | the reagent named in the narration is now also a thing on screen |
+| Five further prediction gates, one per stage, on top of the nitrogen audit | the student commits before every turn in the sequence, not only at the crux |
+| A branching stage at K: excess NH₃ → L and PhSNa → M, both drawn, named and weighed | the stem prints two branches; the page now makes the student choose, and answers the sulphur route honestly rather than refusing it |
+| IUPAC names on J, K and L | the structures were drawn but unnamed |
+| An ammonia collection meter that fills to 0.02 mol, and a burette that delivers | the ammonia and the titration were arithmetic; now they are instruments |
+
+The burette's **reading** stays withheld until the reveal even though the delivery is animated, because
+the standing rule — the answer is hidden until the experiment concludes — outranks showing the
+number early. Returning to stage 06 after the reveal shows it stopped at the titre it took.
+
+**Status: verified — 2026-09-18 (revision 2).**
