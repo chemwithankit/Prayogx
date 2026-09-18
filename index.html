@@ -37,9 +37,9 @@
   </div>
 </footer>
 
-<!-- Fallback data source: works when the site is opened straight from disk (file://),
-     where fetch() of a local JSON file is blocked. Over http:// the JSON is read directly. -->
-<script src="data/manifest.js?v=49793be4"></script>
+<!-- data/manifest.js is the file:// fallback and is now loaded on demand by
+     site.js, not here: it carries the full catalogue (~10 KB per simulation)
+     and a visitor served over http never needs a byte of it. -->
 <script src="site/site.js?v=49793be4"></script>
 </body>
 </html>
