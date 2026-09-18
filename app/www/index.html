@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1">
+<title>PrayogX</title>
+<meta name="color-scheme" content="light dark">
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+
+<!-- The simulation viewer. A simulation is a self-contained single HTML file,
+     so it renders from a string with srcdoc and therefore works offline once
+     it has been opened. Nothing about it is re-implemented for mobile. -->
+<div class="viewer" id="viewer" hidden>
+  <div class="vbar">
+    <button class="vback" id="vback" type="button" aria-label="Back to the library">‹ Library</button>
+    <span class="vtitle" id="vtitle"></span>
+    <button class="vfav" id="vfav" type="button" aria-label="Save"></button>
+  </div>
+  <iframe id="frame" title="Simulation" allow="fullscreen"></iframe>
+</div>
+
+<header class="topbar" id="topbar">
+  <div class="tbrow">
+    <h1 id="screenTitle">Library</h1>
+    <button class="icon" id="themebtn" type="button" aria-label="Switch theme">◐</button>
+  </div>
+  <div class="searchwrap" id="searchwrap">
+    <input type="search" id="q" placeholder="Search simulations…" aria-label="Search simulations"
+           autocomplete="off" autocorrect="off" autocapitalize="none" enterkeyhint="search">
+    <button class="filterbtn" id="filterbtn" type="button" aria-label="Filters">Filters</button>
+  </div>
+  <div class="chiprow" id="chiprow"></div>
+</header>
+
+<main id="screen" class="screen">
+  <p class="boot" id="boot">Loading the library…</p>
+</main>
+
+<nav class="tabs" id="tabs" role="tablist">
+  <button role="tab" data-tab="library" class="on" type="button"><span>▦</span>Library</button>
+  <button role="tab" data-tab="favorites" type="button"><span>★</span>Saved</button>
+  <button role="tab" data-tab="recent" type="button"><span>◔</span>Recent</button>
+  <button role="tab" data-tab="offline" type="button"><span>⤓</span>Offline</button>
+</nav>
+
+<div class="sheet" id="sheet" hidden>
+  <div class="sheetbg" id="sheetbg"></div>
+  <div class="sheetbody">
+    <div class="grab"></div>
+    <h2>Filter</h2>
+    <div id="sheetfields"></div>
+    <div class="sheetact">
+      <button class="btn ghost" id="clearf" type="button">Clear all</button>
+      <button class="btn solid" id="applyf" type="button">Show results</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast" hidden></div>
+
+<script src="config.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

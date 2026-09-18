@@ -1,0 +1,33 @@
+{
+  "appId": "com.prayogx.app",
+  "appName": "PrayogX",
+  "webDir": "www",
+  "android": {
+    "allowMixedContent": false
+  },
+  "ios": {
+    "contentInset": "always",
+    "limitsNavigationsToAppBoundDomains": false
+  },
+  "server": {
+    "androidScheme": "https",
+    "iosScheme": "https"
+  },
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 600,
+      "backgroundColor": "#0d1524",
+      "showSpinner": false,
+      "androidSplashResourceName": "splash",
+      "splashFullScreen": false,
+      "splashImmersive": false
+    },
+    "StatusBar": {
+      "style": "DARK",
+      "backgroundColor": "#0d1524"
+    },
+    "CapacitorHttp": {
+      "enabled": true
+    }
+  }
+}

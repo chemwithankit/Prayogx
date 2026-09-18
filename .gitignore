@@ -26,3 +26,17 @@ papers/
 
 # staged CI workflow awaiting manual install (see README)
 *.proposed.yml
+
+# mobile shell: dependencies and native build output are generated, never committed
+app/node_modules/
+app/android/.gradle/
+app/android/build/
+app/android/app/build/
+app/android/local.properties
+app/android/app/release/
+app/ios/App/Pods/
+app/ios/App/build/
+app/ios/App/App/public/
+app/www/dist/
+*.keystore
+*.jks

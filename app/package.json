@@ -1,0 +1,23 @@
+{
+  "name": "prayogx-app",
+  "version": "1.0.0",
+  "private": true,
+  "description": "PrayogX mobile shell - Android and iOS. Contains no simulation content: the catalogue and the simulations are fetched from the same published feed the website uses.",
+  "scripts": {
+    "sync": "cap sync",
+    "android": "cap open android",
+    "ios": "cap open ios"
+  },
+  "dependencies": {
+    "@capacitor/android": "^6.2.0",
+    "@capacitor/app": "^6.0.2",
+    "@capacitor/core": "^6.2.0",
+    "@capacitor/ios": "^6.2.0",
+    "@capacitor/preferences": "^6.0.3",
+    "@capacitor/splash-screen": "^6.0.3",
+    "@capacitor/status-bar": "^6.0.2"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^6.2.0"
+  }
+}

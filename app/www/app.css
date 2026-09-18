@@ -1,0 +1,181 @@
+/* ==========================================================================
+   PrayogX mobile shell
+
+   Mobile-first, not a shrunken website: a bottom tab bar, a full-bleed
+   simulation viewer with its own bar, sheets instead of dropdowns, 44 px
+   targets and safe-area insets everywhere. The palette is the website's, so
+   the two do not look like different products.
+   ========================================================================== */
+:root{
+  color-scheme: light;
+  --bg:#f4f4f1; --surface:#fcfcfb; --surface-2:#ececea;
+  --line:#dcdcd7; --line-strong:#bebeb7;
+  --text:#0b0b0b; --text-2:#52514e; --muted:#77766f;
+  --accent:#2a78d6; --good:#00743f; --gold:#e8a317;
+  --chem:#eb6834; --phys:#4a3aa7;
+  --bar:#ffffff;
+  --safe-t: env(safe-area-inset-top, 0px);
+  --safe-b: env(safe-area-inset-bottom, 0px);
+  --tabh: 58px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme=light]){
+    color-scheme: dark;
+    --bg:#0d1118; --surface:#151b25; --surface-2:#1d2533;
+    --line:#26303f; --line-strong:#3a475a;
+    --text:#eef3ff; --text-2:#b9c6da; --muted:#8395ad;
+    --accent:#4d94e8; --good:#3fae7a; --bar:#121822;
+  }
+}
+:root[data-theme=dark]{
+  color-scheme: dark;
+  --bg:#0d1118; --surface:#151b25; --surface-2:#1d2533;
+  --line:#26303f; --line-strong:#3a475a;
+  --text:#eef3ff; --text-2:#b9c6da; --muted:#8395ad;
+  --accent:#4d94e8; --good:#3fae7a; --bar:#121822;
+}
+
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;height:100%}
+body{
+  background:var(--bg); color:var(--text);
+  font:15px/1.5 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  overscroll-behavior-y:none;
+}
+button{font:inherit;color:inherit}
+
+/* ------------------------------------------------------------- top bar */
+.topbar{
+  position:sticky; top:0; z-index:20; background:var(--bar);
+  padding:calc(var(--safe-t) + 10px) 14px 8px;
+  border-bottom:1px solid var(--line);
+}
+.tbrow{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.tbrow h1{font-size:21px;margin:0;letter-spacing:-.2px}
+.icon{width:40px;height:40px;border:1px solid var(--line);border-radius:11px;
+  background:var(--surface);cursor:pointer;font-size:15px}
+.searchwrap{display:flex;gap:8px;margin-top:10px}
+.searchwrap input{
+  flex:1; min-width:0; min-height:44px; padding:0 13px;
+  border:1px solid var(--line); border-radius:12px;
+  background:var(--surface); color:var(--text); font-size:16px; /* 16px: iOS will not zoom */
+}
+.searchwrap input:focus{outline:2px solid var(--accent);outline-offset:-1px}
+.filterbtn{min-height:44px;padding:0 15px;border:1px solid var(--line);border-radius:12px;
+  background:var(--surface);font-size:14px;font-weight:600;cursor:pointer}
+.filterbtn.on{border-color:var(--accent);color:var(--accent)}
+.chiprow{display:flex;gap:7px;overflow-x:auto;margin-top:9px;padding-bottom:2px}
+.chiprow:empty{display:none}
+.chiprow button{flex:0 0 auto;border:1px solid var(--accent);color:var(--accent);
+  background:transparent;border-radius:999px;padding:6px 12px;font-size:12.5px;cursor:pointer}
+
+/* --------------------------------------------------------------- list */
+.screen{padding:12px 14px calc(var(--tabh) + var(--safe-b) + 18px)}
+.boot,.empty{color:var(--muted);text-align:center;padding:38px 10px}
+.empty h3{color:var(--text);margin:0 0 6px;font-size:16px}
+.countline{color:var(--muted);font-size:12.5px;margin:2px 0 12px}
+
+.simcard{
+  display:block; text-decoration:none; color:inherit; position:relative;
+  background:var(--surface); border:1px solid var(--line);
+  border-left:4px solid var(--c,var(--accent));
+  border-radius:14px; padding:13px 46px 13px 14px; margin-bottom:10px;
+}
+.simcard:active{background:var(--surface-2)}
+.simcard .kicker{font-size:10.5px;letter-spacing:1.1px;text-transform:uppercase;color:var(--muted)}
+.simcard h3{margin:4px 0 6px;font-size:15.5px;line-height:1.35;font-weight:650}
+.simcard .meta{font-size:12.5px;color:var(--text-2)}
+.simcard .row2{display:flex;gap:7px;flex-wrap:wrap;margin-top:9px}
+.simcard .pill{font-size:11px;border:1px solid var(--line);border-radius:999px;
+  padding:3px 9px;color:var(--muted)}
+.simcard .pill.dl{border-color:var(--good);color:var(--good)}
+.simcard .pill.prem{border-color:var(--gold);color:var(--gold)}
+.star{position:absolute;top:8px;right:8px;width:38px;height:38px;border:0;background:transparent;
+  color:var(--muted);font-size:19px;cursor:pointer;border-radius:10px}
+.star.on{color:var(--gold)}
+
+.more{display:block;width:100%;min-height:48px;margin:6px 0 4px;border:1px solid var(--line);
+  border-radius:12px;background:var(--surface);font-size:14px;font-weight:600;cursor:pointer}
+
+/* ------------------------------------------------------------- detail */
+.detail h2{font-size:19px;line-height:1.3;margin:4px 0 10px}
+.detail .sum{color:var(--text-2);font-size:14.5px;line-height:1.6}
+.detail .facts{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;margin:14px 0;
+  font-size:13.5px}
+.detail .facts dt{color:var(--muted)}
+.detail .facts dd{margin:0}
+.detail h3{font-size:11.5px;letter-spacing:1.3px;text-transform:uppercase;color:var(--muted);
+  margin:20px 0 7px}
+.detail ul{margin:0;padding-left:19px;color:var(--text-2);font-size:13.5px;line-height:1.6}
+.openbar{position:sticky;bottom:calc(var(--tabh) + var(--safe-b));display:flex;gap:9px;
+  padding:10px 0 2px;background:linear-gradient(to top,var(--bg) 70%,transparent)}
+.btn{min-height:50px;border-radius:13px;border:1px solid var(--line);background:var(--surface);
+  font-size:15px;font-weight:700;cursor:pointer;padding:0 18px}
+.btn.solid{background:var(--accent);border-color:var(--accent);color:#fff;flex:1}
+.btn.ghost{color:var(--text-2)}
+.btn.on{border-color:var(--gold);color:var(--gold)}
+.back{background:none;border:0;color:var(--accent);font-size:14.5px;padding:6px 0;cursor:pointer}
+
+/* ------------------------------------------------------------- viewer */
+.viewer{position:fixed;inset:0;z-index:60;background:var(--bg);display:flex;flex-direction:column}
+/* A class that sets `display` beats the user-agent [hidden] rule, so an
+   element left "hidden" would still swallow every tap on the screen behind it.
+   These three lines are load-bearing. */
+.viewer[hidden],.sheet[hidden],.toast[hidden]{display:none}
+.vbar{display:flex;align-items:center;gap:10px;background:var(--bar);
+  padding:calc(var(--safe-t) + 8px) 10px 8px;border-bottom:1px solid var(--line)}
+.vback{background:none;border:0;color:var(--accent);font-size:15px;font-weight:600;
+  min-height:40px;padding:0 4px;cursor:pointer}
+.vtitle{flex:1;min-width:0;font-size:13px;color:var(--muted);
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.vfav{background:none;border:0;font-size:19px;color:var(--muted);min-width:40px;min-height:40px;
+  cursor:pointer}
+.vfav.on{color:var(--gold)}
+#frame{flex:1;width:100%;border:0;background:var(--bg);padding-bottom:var(--safe-b)}
+
+/* --------------------------------------------------------------- tabs */
+.tabs{position:fixed;left:0;right:0;bottom:0;z-index:30;display:grid;
+  grid-template-columns:repeat(4,1fr);background:var(--bar);
+  border-top:1px solid var(--line);padding-bottom:var(--safe-b)}
+.tabs button{height:var(--tabh);border:0;background:none;color:var(--muted);font-size:11px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;
+  cursor:pointer}
+.tabs button span{font-size:17px;line-height:1}
+.tabs button.on{color:var(--accent)}
+
+/* -------------------------------------------------------------- sheet */
+.sheet{position:fixed;inset:0;z-index:50}
+.sheetbg{position:absolute;inset:0;background:rgba(0,0,0,.42)}
+.sheetbody{position:absolute;left:0;right:0;bottom:0;background:var(--surface);
+  border-radius:18px 18px 0 0;padding:8px 16px calc(16px + var(--safe-b));
+  max-height:82vh;overflow:auto}
+.grab{width:38px;height:4px;border-radius:2px;background:var(--line-strong);margin:0 auto 10px}
+.sheetbody h2{font-size:17px;margin:0 0 12px}
+.fgroup{margin-bottom:16px}
+.fgroup h4{font-size:11.5px;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);
+  margin:0 0 8px}
+.fopts{display:flex;flex-wrap:wrap;gap:8px}
+.fopts button{min-height:40px;padding:0 13px;border:1px solid var(--line);border-radius:11px;
+  background:var(--bg);font-size:13.5px;cursor:pointer}
+.fopts button.on{border-color:var(--accent);color:var(--accent);background:var(--surface-2)}
+.sheetact{display:flex;gap:10px;margin-top:4px}
+.sheetact .btn{flex:1}
+
+/* -------------------------------------------------------------- toast */
+.toast{position:fixed;left:14px;right:14px;bottom:calc(var(--tabh) + var(--safe-b) + 14px);
+  z-index:70;background:var(--surface);border:1px solid var(--line-strong);border-radius:13px;
+  padding:12px 14px;font-size:13.5px;box-shadow:0 14px 34px -14px rgba(0,0,0,.5);
+  display:flex;align-items:center;gap:12px}
+.toast button{border:1px solid var(--accent);background:var(--accent);color:#fff;border-radius:9px;
+  min-height:38px;padding:0 13px;font-size:13px;font-weight:700;cursor:pointer}
+
+@media (prefers-reduced-motion: no-preference){
+  .sheetbody{animation:up .22s ease-out}
+  @keyframes up{from{transform:translateY(14px);opacity:.6}to{transform:none;opacity:1}}
+}
+/* A tablet or a classroom panel gets the space it deserves. */
+@media (min-width:700px){
+  .screen{max-width:860px;margin:0 auto;padding-left:22px;padding-right:22px}
+  .topbar{padding-left:22px;padding-right:22px}
+  .simcard{padding:16px 52px 16px 17px}
+}
