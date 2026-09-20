@@ -4,6 +4,31 @@
 selected JEE Advanced Physics and Chemistry questions. Everything here is plain HTML/CSS/JS — no build step, no dependencies, no network calls.
 Double-click any file to open it.
 
+## Production
+
+The library is one canonical source that feeds four clients:
+
+```
+data/manifest.json ─► tools/build_content.py ─► content/ ─► Website · PWA · iOS · Android
+```
+
+**Adding or revising a simulation never requires an app release.** Edit
+`data/manifest.json`, run `./publish.sh`, and every client picks it up. A *revised*
+simulation must have its `revision` incremented — `check_library.py` refuses the push
+otherwise, because every cache in the chain is keyed on that number.
+
+Exact commands for web deploy, `npx cap sync`, `npx cap add ios/android`, opening Xcode
+and Android Studio, the iOS archive and the signed Android AAB are in
+**[docs/DEPLOYMENT.md](docs/DEPLOYMENT.md)**. The architecture and its measured numbers
+are in **[docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)**.
+
+Before any release:
+
+```bash
+python3 tools/check_library.py        # the library is coherent
+python3 tools/production_audit.py     # the single-source promise holds
+```
+
 ## Start here
 
 Open **`index.html`** at the project root — the website. Filter by year, subject, chapter or topic,
