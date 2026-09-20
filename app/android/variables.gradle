@@ -1,11 +1,15 @@
 ext {
     minSdkVersion = 22
-    // Google Play requires new apps and updates to target API 35 (Android 15).
-    // Targeting 34 is rejected at upload. If the Gradle build complains under
-    // Capacitor 6, upgrade the platform (`npm i @capacitor/android@7`) rather
-    // than lowering this back.
-    compileSdkVersion = 35
-    targetSdkVersion = 35
+    // Google Play requires new apps and updates to target API 36 (Android 16)
+    // as of 31 August 2026. Anything lower is rejected at upload, so this is a
+    // floor, not a preference. compileSdk must match: you cannot target an API
+    // you have not compiled against.
+    //
+    // API 36 needs a newer toolchain than Capacitor 6 ships with - see
+    // docs/DEPLOYMENT.md, "Android 16 toolchain", for the exact upgrade.
+    // Do not lower these back to clear a build error; upgrade the toolchain.
+    compileSdkVersion = 36
+    targetSdkVersion = 36
     androidxActivityVersion = '1.8.0'
     androidxAppCompatVersion = '1.6.1'
     androidxCoordinatorLayoutVersion = '1.2.0'

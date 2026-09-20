@@ -128,6 +128,23 @@ capcfg = json.load(open(os.path.join(ROOT, "app/capacitor.config.json"), encodin
 ok("native HTTP is enabled, so the app does not depend on the host's CORS",
    capcfg.get("plugins", {}).get("CapacitorHttp", {}).get("enabled") is True)
 ok("the Android project exists", os.path.isdir(os.path.join(ROOT, "app/android")))
+
+# Google Play has rejected anything below API 36 since 31 August 2026, and you cannot
+# target an API you have not compiled against. Guard both, so a future `npx cap sync`
+# or a "just make the build pass" edit cannot quietly drop the app below the floor.
+PLAY_MIN_TARGET_SDK = 36
+gv = os.path.join(ROOT, "app/android/variables.gradle")
+if os.path.exists(gv):
+    gtxt = open(gv, encoding="utf-8").read()
+    def gradle_int(key):
+        m = re.search(r"^\s*%s\s*=\s*(\d+)\s*$" % key, gtxt, re.M)
+        return int(m.group(1)) if m else None
+    tsdk, csdk = gradle_int("targetSdkVersion"), gradle_int("compileSdkVersion")
+    ok("the app targets at least API %d, the Google Play floor" % PLAY_MIN_TARGET_SDK,
+       tsdk is not None and tsdk >= PLAY_MIN_TARGET_SDK, "targetSdkVersion = %s" % tsdk)
+    ok("compileSdk is at least targetSdk",
+       csdk is not None and tsdk is not None and csdk >= tsdk,
+       "compileSdkVersion = %s" % csdk)
 ios = os.path.isdir(os.path.join(ROOT, "app/ios"))
 if not ios:
     notes.append("app/ios is absent — it can only be generated on macOS with `npx cap add ios`")

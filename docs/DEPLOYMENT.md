@@ -92,6 +92,61 @@ Adding or revising a **simulation** needs none of this — that is content, not 
 
 ## 3. Android — signed AAB for Play
 
+### Android 16 toolchain — read this before the first build
+
+Since **31 August 2026** Google Play rejects new apps *and updates* that target below
+**API 36 (Android 16)**. `app/android/variables.gradle` is therefore set to
+`compileSdkVersion = 36` / `targetSdkVersion = 36`. That is a Play floor, not a
+preference — do not lower it to make a build error go away.
+
+The Android project Capacitor 6 generated cannot compile against API 36 yet. What it
+has, and what API 36 needs:
+
+| Piece | In the repo now | API 36 needs |
+|---|---|---|
+| Android Gradle Plugin | 8.2.1 | **8.9.1** minimum |
+| Gradle wrapper | 8.2.1 | **8.11.1** minimum |
+| JDK | — | **17** |
+| Android Studio | — | Meerkat 2024.3.1 Patch 1 or newer |
+
+Until the toolchain is raised, `./gradlew` fails at configuration time with
+*"the Android Gradle plugin supports only Compile Sdk Versions up to 34"*. Two ways
+forward:
+
+**Option A — raise AGP and Gradle in place** (smallest change, keeps `minSdk 22`):
+
+```bash
+cd ~/Documents/"Project simulation"/app/android
+# 1. AGP: build.gradle -> classpath 'com.android.tools.build:gradle:8.9.1'
+# 2. Gradle wrapper:
+./gradlew wrapper --gradle-version 8.11.1
+# 3. Build on JDK 17 (Android Studio > Settings > Build Tools > Gradle > Gradle JDK)
+./gradlew clean assembleDebug
+```
+
+AndroidX pins in `variables.gradle` (`androidxCore 1.12.0`, `appcompat 1.6.1`) may need
+raising if the build reports a library compiled against a newer SDK.
+
+**Option B — move the platform to Capacitor 8** (what upstream ships for Android 16):
+
+```bash
+cd ~/Documents/"Project simulation"/app
+npm i @capacitor/core@8 @capacitor/android@8 @capacitor/ios@8 \
+      @capacitor/app@8 @capacitor/preferences@8 \
+      @capacitor/splash-screen@8 @capacitor/status-bar@8
+npm i -D @capacitor/cli@8
+npx cap sync android
+```
+
+Capacitor 8 ships compileSdk/targetSdk 36, AGP 8.13.0 and Gradle 8.14.3 — but it also
+raises **minSdkVersion to 24**, dropping Android 5.0/5.1 devices, and renames
+`bridge_layout_main.xml`. Decide on the minSdk before taking this route.
+
+Nothing here touches simulation content: the app shell fetches the same published feed
+either way, so a toolchain change needs no content rebuild and no revision bump.
+
+---
+
 ```bash
 cd ~/Documents/"Project simulation"/app
 npx cap sync android
