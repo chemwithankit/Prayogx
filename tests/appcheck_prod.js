@@ -18,8 +18,8 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
   const T = __dirname+'/apptest';
   fs.rmSync(T,{recursive:true,force:true});
   fs.mkdirSync(T,{recursive:true});
-  for (const f of fs.readdirSync('/home/claude/app/www'))
-    fs.copyFileSync('/home/claude/app/www/'+f, T+'/'+f);
+  for (const f of fs.readdirSync(ROOT+'/app/www'))
+    fs.copyFileSync(ROOT+'/app/www/'+f, T+'/'+f);
   fs.writeFileSync(T+'/config.js',
     fs.readFileSync(T+'/config.js','utf8')
       .replace(/origin:\s*"[^"]+"/, 'origin: "http://127.0.0.1:'+PS+'"'));

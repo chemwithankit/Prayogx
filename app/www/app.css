@@ -14,8 +14,14 @@
   --accent:#2a78d6; --good:#00743f; --gold:#e8a317;
   --chem:#eb6834; --phys:#4a3aa7;
   --bar:#ffffff;
+  /* iOS fills these in itself. On Android the WebView only reports display
+     cutouts through env(), never the status or navigation bar, so MainActivity
+     overwrites all four from the real WindowInsets. Both platforms, one set of
+     rules; nothing below needs to know which one it is running on. */
   --safe-t: env(safe-area-inset-top, 0px);
   --safe-b: env(safe-area-inset-bottom, 0px);
+  --safe-l: env(safe-area-inset-left, 0px);
+  --safe-r: env(safe-area-inset-right, 0px);
   --tabh: 58px;
 }
 @media (prefers-color-scheme: dark){
@@ -47,7 +53,7 @@ button{font:inherit;color:inherit}
 /* ------------------------------------------------------------- top bar */
 .topbar{
   position:sticky; top:0; z-index:20; background:var(--bar);
-  padding:calc(var(--safe-t) + 10px) 14px 8px;
+  padding:calc(var(--safe-t) + 10px) calc(var(--safe-r) + 14px) 8px calc(var(--safe-l) + 14px);
   border-bottom:1px solid var(--line);
 }
 .tbrow{display:flex;align-items:center;justify-content:space-between;gap:10px}
@@ -70,7 +76,8 @@ button{font:inherit;color:inherit}
   background:transparent;border-radius:999px;padding:6px 12px;font-size:12.5px;cursor:pointer}
 
 /* --------------------------------------------------------------- list */
-.screen{padding:12px 14px calc(var(--tabh) + var(--safe-b) + 18px)}
+.screen{padding:12px calc(var(--safe-r) + 14px) calc(var(--tabh) + var(--safe-b) + 18px)
+  calc(var(--safe-l) + 14px)}
 .boot,.empty{color:var(--muted);text-align:center;padding:38px 10px}
 .empty h3{color:var(--text);margin:0 0 6px;font-size:16px}
 .countline{color:var(--muted);font-size:12.5px;margin:2px 0 12px}
@@ -123,7 +130,8 @@ button{font:inherit;color:inherit}
    These three lines are load-bearing. */
 .viewer[hidden],.sheet[hidden],.toast[hidden]{display:none}
 .vbar{display:flex;align-items:center;gap:10px;background:var(--bar);
-  padding:calc(var(--safe-t) + 8px) 10px 8px;border-bottom:1px solid var(--line)}
+  padding:calc(var(--safe-t) + 8px) calc(var(--safe-r) + 10px) 8px calc(var(--safe-l) + 10px);
+  border-bottom:1px solid var(--line)}
 .vback{background:none;border:0;color:var(--accent);font-size:15px;font-weight:600;
   min-height:40px;padding:0 4px;cursor:pointer}
 .vtitle{flex:1;min-width:0;font-size:13px;color:var(--muted);
@@ -131,12 +139,14 @@ button{font:inherit;color:inherit}
 .vfav{background:none;border:0;font-size:19px;color:var(--muted);min-width:40px;min-height:40px;
   cursor:pointer}
 .vfav.on{color:var(--gold)}
-#frame{flex:1;width:100%;border:0;background:var(--bg);padding-bottom:var(--safe-b)}
+#frame{flex:1;width:100%;border:0;background:var(--bg);
+  padding:0 var(--safe-r) var(--safe-b) var(--safe-l)}
 
 /* --------------------------------------------------------------- tabs */
 .tabs{position:fixed;left:0;right:0;bottom:0;z-index:30;display:grid;
   grid-template-columns:repeat(4,1fr);background:var(--bar);
-  border-top:1px solid var(--line);padding-bottom:var(--safe-b)}
+  border-top:1px solid var(--line);
+  padding:0 var(--safe-r) var(--safe-b) var(--safe-l)}
 .tabs button{height:var(--tabh);border:0;background:none;color:var(--muted);font-size:11px;
   display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;
   cursor:pointer}
@@ -147,7 +157,8 @@ button{font:inherit;color:inherit}
 .sheet{position:fixed;inset:0;z-index:50}
 .sheetbg{position:absolute;inset:0;background:rgba(0,0,0,.42)}
 .sheetbody{position:absolute;left:0;right:0;bottom:0;background:var(--surface);
-  border-radius:18px 18px 0 0;padding:8px 16px calc(16px + var(--safe-b));
+  border-radius:18px 18px 0 0;
+  padding:8px calc(var(--safe-r) + 16px) calc(16px + var(--safe-b)) calc(var(--safe-l) + 16px);
   max-height:82vh;overflow:auto}
 .grab{width:38px;height:4px;border-radius:2px;background:var(--line-strong);margin:0 auto 10px}
 .sheetbody h2{font-size:17px;margin:0 0 12px}
@@ -162,7 +173,8 @@ button{font:inherit;color:inherit}
 .sheetact .btn{flex:1}
 
 /* -------------------------------------------------------------- toast */
-.toast{position:fixed;left:14px;right:14px;bottom:calc(var(--tabh) + var(--safe-b) + 14px);
+.toast{position:fixed;left:calc(var(--safe-l) + 14px);right:calc(var(--safe-r) + 14px);
+  bottom:calc(var(--tabh) + var(--safe-b) + 14px);
   z-index:70;background:var(--surface);border:1px solid var(--line-strong);border-radius:13px;
   padding:12px 14px;font-size:13.5px;box-shadow:0 14px 34px -14px rgba(0,0,0,.5);
   display:flex;align-items:center;gap:12px}
@@ -175,7 +187,10 @@ button{font:inherit;color:inherit}
 }
 /* A tablet or a classroom panel gets the space it deserves. */
 @media (min-width:700px){
-  .screen{max-width:860px;margin:0 auto;padding-left:22px;padding-right:22px}
-  .topbar{padding-left:22px;padding-right:22px}
+  /* These override the side padding set above, so they have to carry the side
+     insets too - a phone in landscape with a cutout lands in here. */
+  .screen{max-width:860px;margin:0 auto;
+    padding-left:calc(var(--safe-l) + 22px);padding-right:calc(var(--safe-r) + 22px)}
+  .topbar{padding-left:calc(var(--safe-l) + 22px);padding-right:calc(var(--safe-r) + 22px)}
   .simcard{padding:16px 52px 16px 17px}
 }

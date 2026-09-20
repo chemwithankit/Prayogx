@@ -182,27 +182,45 @@ cd android
 | `Java heap space` during dexing | `org.gradle.jvmargs=-Xmx1536m` is tight for AGP 8.10 | raise it in `app/android/gradle.properties` |
 | A named AndroidX library "requires a higher compileSdk" | only happens if a dependency was compiled against 37+ | raise **that one** pin in `variables.gradle`, not all of them |
 
-#### The one thing targeting 36 changes at runtime
+#### Edge-to-edge, and how the app handles it
 
-Android 16 makes **edge-to-edge mandatory** for apps that target it, and
-`windowOptOutEdgeToEdgeEnforcement` no longer works. Capacitor 6 has no insets handling
-(that arrived in Capacitor 7's `adjustMarginsForEdgeToEdge` and Capacitor 8's System Bars
-plugin), so on an Android 15/16 device the WebView will draw **underneath the status bar
-and the navigation bar**. The app builds and runs; the top and bottom of the catalogue
-will be partly covered.
+Android 16 makes **edge-to-edge compulsory** for anything targeting API 36:
+`windowOptOutEdgeToEdgeEnforcement` is dead, and the WebView fills the whole screen,
+status bar and navigation bar included. Capacitor 6 has no insets handling of its own -
+that arrived in Capacitor 7 - so without help the app header would sit under the clock
+and the tab bar under the gesture pill.
 
-This is a UI fix, not a build fix, and it has not been made. Two ways to close it without
-leaving Capacitor 6:
+The shell already knew how to keep clear of them. `app/www/app.css` reads four custom
+properties, `--safe-t`, `--safe-b`, `--safe-l` and `--safe-r`, and every surface that
+touches an edge is padded by them: the header, the search row, the viewer bar, the tab
+bar, the simulation frame, the filter sheet, the toast. On iOS those resolve to
+`env(safe-area-inset-*)` and always have. Android WebView does not report the system bars
+through `env()` - only display cutouts - so the only thing missing was the values.
 
-- **Native, ~12 lines.** In `MainActivity.onCreate`, after `super.onCreate`, attach a
-  `ViewCompat.setOnApplyWindowInsetsListener` to `android.R.id.content` and pad the root
-  view by `systemBars()` insets. This is what Capacitor 7 does internally.
-- **CSS.** Add `viewport-fit=cover` to the viewport meta in `app/www/index.html` and pad
-  the shell with `env(safe-area-inset-top/bottom)`. Simpler, but Android WebView's
-  `env()` support for system-bar insets is less dependable than for display cutouts —
-  test on a real device before trusting it.
+`MainActivity.java` supplies them: one `ViewCompat.setOnApplyWindowInsetsListener` on the
+bridge's WebView, reading `systemBars() | displayCutout()`, writing the four properties
+into the page, re-published on every page load so the first paint is never unpadded.
 
-Test on an Android 15 or 16 emulator before the first upload either way.
+What it deliberately does not do is move, pad or resize the WebView. The WebView stays
+full-bleed, so the header's own colour paints under the status bar and the tab bar's
+colour under the navigation bar, following the in-app light/dark switch for free. That is
+what edge-to-edge is meant to look like.
+
+`tests/edgetoedge.js` drives the real shell in a browser with real inset values, portrait
+and landscape, and checks that nothing is covered and everything is still clickable.
+`production_audit.py` pins the seam: the properties the native side writes must be the
+ones the CSS reads, and no rule may override a side inset with a bare pixel padding.
+
+**Still worth a look on a real device**, because neither can be checked from here:
+
+- **Status bar icon contrast.** `capacitor.config.json` pins `StatusBar.style: "DARK"`,
+  which means light icons. That was right when the bar had its own `#0d1524` background -
+  but `StatusBar.backgroundColor` is a no-op on Android 15+, so the icons now sit on the
+  header's colour, which is white in light mode. If they disappear, the fix is to let the
+  icons follow the theme rather than pinning them; leave the config alone if you do it,
+  since `style` is shared with iOS.
+- **The software keyboard.** The listener reads system bars, not the IME. Tapping search
+  with the keyboard up is worth one check.
 
 Nothing here touches simulation content: the app shell fetches the same published feed,
 so a toolchain change needs no content rebuild and no revision bump.

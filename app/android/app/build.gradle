@@ -33,6 +33,10 @@ repositories {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation "androidx.appcompat:appcompat:$androidxAppCompatVersion"
+    // MainActivity uses ViewCompat / WindowInsetsCompat / Insets directly for the
+    // Android 16 edge-to-edge handling. It arrives transitively through appcompat
+    // anyway; naming it means the build does not depend on that staying true.
+    implementation "androidx.core:core:$androidxCoreVersion"
     implementation "androidx.coordinatorlayout:coordinatorlayout:$androidxCoordinatorLayoutVersion"
     implementation "androidx.core:core-splashscreen:$coreSplashScreenVersion"
     implementation project(':capacitor-android')

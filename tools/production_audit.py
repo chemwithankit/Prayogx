@@ -197,6 +197,49 @@ ok("the Gradle wrapper is new enough for that plugin (needs >= %s)" % ".".join(m
 ok("the Gradle wrapper script is committed executable",
    os.access(os.path.join(ROOT, "app/android/gradlew"), os.X_OK),
    "app/android/gradlew")
+
+# Targeting API 36 makes edge-to-edge compulsory, so the WebView covers the status and
+# navigation bars. The shell keeps clear of them through four CSS custom properties that
+# MainActivity fills in from the real WindowInsets. The two halves are useless apart:
+# if a rename lands on one side only, nothing errors - the app just quietly goes back to
+# hiding its own header. Check they still name the same four things.
+INSET_AXES = ["--safe-t", "--safe-b", "--safe-l", "--safe-r"]
+mainact = os.path.join(ROOT, "app/android/app/src/main/java/com/prayogx/app/MainActivity.java")
+appcss = os.path.join(ROOT, "app/www/app.css")
+if os.path.exists(mainact) and os.path.exists(appcss):
+    jtxt = open(mainact, encoding="utf-8").read()
+    ctxt = open(appcss, encoding="utf-8").read()
+    written = [a for a in INSET_AXES if "setProperty('%s'" % a in jtxt]
+    read = [a for a in INSET_AXES if "var(%s)" % a in ctxt]
+    ok("the native side publishes every inset axis the shell reads",
+       written == INSET_AXES and read == INSET_AXES,
+       "MainActivity writes %d, app.css reads %d" % (len(written), len(read)))
+    # Only the surfaces that actually touch a screen edge. Each must carry both side
+    # insets, and none may set a bare pixel side padding that would win over them -
+    # the wide-screen block did exactly that and hid the search box behind a cutout.
+    EDGE_SELECTORS = [".topbar", ".tabs", ".screen", ".vbar", "#frame", ".sheetbody", ".toast"]
+    css_nc = re.sub(r"/\*.*?\*/", " ", ctxt, flags=re.S)   # comments confuse rule heads
+    blocks = re.findall(r"([^{}]+)\{([^{}]*)\}", css_nc)
+    missing, hardcoded = [], []
+    for sel in EDGE_SELECTORS:
+        own = [body for head, body in blocks
+               if any(re.search(r"(^|[\s>+~])" + re.escape(sel) + r"$", part.strip())
+                      for part in head.split(","))]
+        if not own:
+            missing.append(sel + " (no rule)")
+            continue
+        joined = " ".join(own)
+        if "--safe-l" not in joined or "--safe-r" not in joined:
+            missing.append(sel)
+        for body in own:
+            if re.search(r"padding-(?:left|right)\s*:\s*\d+px", body):
+                hardcoded.append(sel)
+    ok("every edge-touching surface carries both side insets",
+       not missing, "missing: " + ", ".join(missing))
+    ok("none of them overrides a side inset with a bare pixel padding",
+       not hardcoded, "bare: " + ", ".join(hardcoded))
+else:
+    notes.append("MainActivity.java or app.css missing - edge-to-edge pairing not checked")
 ios = os.path.isdir(os.path.join(ROOT, "app/ios"))
 if not ios:
     notes.append("app/ios is absent — it can only be generated on macOS with `npx cap add ios`")
