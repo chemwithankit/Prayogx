@@ -4,6 +4,9 @@
 # files stay in the repository but are never published:
 #   papers/           source exam PDFs - deliberately not public
 #   tools/            maintenance scripts
+#   tests/            production test suites
+#   docs/             architecture and deployment notes
+#   app/              the Capacitor shell and its Android project
 #   templates/        the authoring shell for new simulations
 #   data/tracker.csv  internal progress tracker
 #
@@ -71,6 +74,9 @@ jobs:
             --exclude='./papers' \
             --exclude='./tools' \
             --exclude='./templates' \
+            --exclude='./tests' \
+            --exclude='./docs' \
+            --exclude='./app' \
             --exclude='./data/tracker.csv' \
             --exclude='./publish.sh' \
             --exclude='./README.md' \
