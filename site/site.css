@@ -194,3 +194,83 @@ main{padding:22px 0 64px}
   .filters .searchrow{flex-direction:column}
   .btn{width:100%}
 }
+
+/* ==========================================================================
+   Platform v1 — favourites, recently opened, batched grid, access badges,
+   lazy-detail placeholders. Uses the existing tokens; adds no new palette.
+   ========================================================================== */
+.card{position:relative}
+.card .fav,.card .lock{position:absolute;top:10px;z-index:2}
+.card .fav{right:10px;width:30px;height:30px;display:grid;place-items:center;
+  border:1px solid var(--line);border-radius:8px;background:var(--surface-1);
+  color:var(--text-muted);font-size:15px;line-height:1;cursor:pointer;padding:0}
+.card .fav:hover{border-color:var(--accent);color:var(--accent)}
+.card .fav.on{color:#e8a317;border-color:#e8a317}
+.card .lock{right:48px;font-size:9.5px;letter-spacing:1.1px;font-weight:800;
+  padding:5px 7px;border-radius:6px;background:var(--surface-2);color:var(--text-secondary);
+  border:1px solid var(--line)}
+.card .lock[data-access=premium]{color:#8a5a00;border-color:#e8a317;background:#fff6e0}
+:root[data-theme=dark] .card .lock[data-access=premium]{color:#f0c35c;background:#3a2f12;
+  border-color:#7a5e1a}
+
+.searchrow .fav-filter.on{border-color:#e8a317;color:#8a5a00;background:#fff6e0}
+:root[data-theme=dark] .searchrow .fav-filter.on{color:#f0c35c;background:#3a2f12;
+  border-color:#7a5e1a}
+
+.recent{margin:18px 0 6px}
+.recent h2{font-size:12px;letter-spacing:1.4px;text-transform:uppercase;
+  color:var(--text-muted);margin:0 0 9px}
+.rrow{display:flex;gap:9px;overflow-x:auto;padding-bottom:4px;
+  scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch}
+.rchip{flex:0 0 auto;max-width:230px;scroll-snap-align:start;text-decoration:none;
+  border:1px solid var(--line);border-left:3px solid var(--c,var(--accent));
+  border-radius:9px;padding:8px 11px;background:var(--surface-1);display:block}
+.rchip:hover{border-color:var(--accent)}
+.rchip .rk{display:block;font-size:10px;letter-spacing:.6px;text-transform:uppercase;
+  color:var(--text-muted);margin-bottom:2px}
+.rchip .rt{display:block;font-size:12.5px;color:var(--text-primary);line-height:1.3;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+.morerow{display:flex;justify-content:center;margin:22px 0 4px}
+.morerow .btn span{color:var(--text-muted);font-weight:400}
+
+.favbig{border:1px solid var(--line);background:var(--surface-1);color:var(--text-secondary);
+  border-radius:9px;padding:0 15px;font:inherit;font-size:13px;font-weight:600;cursor:pointer;
+  min-height:44px}
+.favbig:hover{border-color:var(--accent);color:var(--accent)}
+.favbig.on{color:#8a5a00;border-color:#e8a317;background:#fff6e0}
+:root[data-theme=dark] .favbig.on{color:#f0c35c;background:#3a2f12;border-color:#7a5e1a}
+
+.summary.skel{background:var(--surface-2);border-radius:6px;min-height:3.2em;
+  animation:skel 1.3s ease-in-out infinite}
+@keyframes skel{0%,100%{opacity:.55}50%{opacity:.9}}
+.loadingcol{color:var(--text-muted);font-size:13px;padding:6px 0}
+
+@media (prefers-reduced-motion: reduce){
+  .summary.skel{animation:none}
+}
+
+/* Touch targets and one-hand reach on a phone. */
+@media (max-width: 640px){
+  .searchrow{flex-wrap:wrap}
+  .searchrow .btn{min-height:44px}
+  .card .fav{width:34px;height:34px}
+  .ctarow{flex-wrap:wrap;gap:9px}
+  .cta{flex:1 1 100%;text-align:center}
+}
+
+/* Update prompt and offline banner — deliberately unobtrusive, and it never
+   swaps the page under someone mid-experiment. */
+.updatebar{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);z-index:60;
+  display:flex;align-items:center;gap:12px;max-width:calc(100vw - 32px);
+  background:var(--surface-1);border:1px solid var(--line-strong);border-radius:11px;
+  padding:11px 13px;box-shadow:0 12px 30px -12px rgba(0,0,0,.42);font-size:13px}
+.updatebar button{border:1px solid var(--accent);background:var(--accent);color:#fff;
+  border-radius:8px;padding:8px 13px;font:inherit;font-size:12.5px;font-weight:700;cursor:pointer}
+.offlinebar{position:fixed;left:0;right:0;top:0;z-index:70;text-align:center;
+  background:#8a5a00;color:#fff;font-size:12.5px;padding:6px 10px}
+:root[data-theme=dark] .offlinebar{background:#7a5e1a}
+@supports (padding: max(0px)) {
+  .updatebar{bottom:max(18px, env(safe-area-inset-bottom))}
+  .offlinebar{padding-top:max(6px, env(safe-area-inset-top))}
+}

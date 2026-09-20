@@ -32,6 +32,9 @@ warn() { printf '\n\033[33m!! %s\033[0m\n' "$*"; }
 say "Syncing the manifest"
 python3 tools/sync_manifest.py
 
+say "Building the content feed"
+python3 tools/build_content.py
+
 say "Checking the library"
 if ! python3 tools/check_library.py; then
   warn "Library check failed. Fix the problems above before publishing —"
