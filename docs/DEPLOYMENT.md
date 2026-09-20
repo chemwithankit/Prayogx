@@ -92,58 +92,120 @@ Adding or revising a **simulation** needs none of this — that is content, not 
 
 ## 3. Android — signed AAB for Play
 
-### Android 16 toolchain — read this before the first build
+### Android 16 toolchain — what is already done, and what you must do once
 
-Since **31 August 2026** Google Play rejects new apps *and updates* that target below
-**API 36 (Android 16)**. `app/android/variables.gradle` is therefore set to
-`compileSdkVersion = 36` / `targetSdkVersion = 36`. That is a Play floor, not a
-preference — do not lower it to make a build error go away.
+Since **31 August 2026** Google Play rejects new apps *and updates* below **API 36
+(Android 16)**. The project therefore sets `compileSdkVersion = 36` and
+`targetSdkVersion = 36` in `app/android/variables.gradle`. That is a Play floor, not a
+preference — never lower it to clear a build error.
 
-The Android project Capacitor 6 generated cannot compile against API 36 yet. What it
-has, and what API 36 needs:
+Capacitor 6 generated this project against AGP 8.2.1, which caps `compileSdk` at 34.
+The toolchain has been raised to the smallest combination that supports API 36, keeping
+**Capacitor 6** and **minSdkVersion 22**:
 
-| Piece | In the repo now | API 36 needs |
-|---|---|---|
-| Android Gradle Plugin | 8.2.1 | **8.9.1** minimum |
-| Gradle wrapper | 8.2.1 | **8.11.1** minimum |
-| JDK | — | **17** |
-| Android Studio | — | Meerkat 2024.3.1 Patch 1 or newer |
+| Piece | Was | Now | Why this one |
+|---|---|---|---|
+| Android Gradle plugin | 8.2.1 | **8.10.0** | 8.9.1 is the first AGP that compiles API 36; 8.10 is the last line that still runs on Gradle 8.11.1 |
+| Gradle wrapper | 8.2.1 | **8.11.1** | AGP 8.10's minimum. AGP 8.11+ would force Gradle 8.13 |
+| JDK | — | **17** (21 also fine) | every AGP 8.x requires 17 or newer |
+| compileSdk / targetSdk | 35 / 35 | **36 / 36** | the Play floor |
+| minSdkVersion | 22 | **22** | unchanged; nothing above required raising it |
+| Capacitor | 6.2.x | **6.2.x** | unchanged |
+| AndroidX pins | — | unchanged | a library compiled against an *older* SDK than yours is fine; only the reverse errors |
 
-Until the toolchain is raised, `./gradlew` fails at configuration time with
-*"the Android Gradle plugin supports only Compile Sdk Versions up to 34"*. Two ways
-forward:
+`production_audit.py` now enforces all of this, so a later `cap sync` or a
+"just-make-it-build" edit cannot quietly drop the project below the floor.
 
-**Option A — raise AGP and Gradle in place** (smallest change, keeps `minSdk 22`):
+**One note on `node_modules`.** Every Capacitor 6 module still declares
+`classpath 'com.android.tools.build:gradle:8.2.1'` in its own `buildscript` block. Leave
+them alone. Gradle's buildscript classloaders delegate parent-first, so the root pin
+above is the AGP every subproject actually applies — which is why Capacitor's own upgrade
+guidance only ever mentions the root file.
 
-```bash
-cd ~/Documents/"Project simulation"/app/android
-# 1. AGP: build.gradle -> classpath 'com.android.tools.build:gradle:8.9.1'
-# 2. Gradle wrapper:
-./gradlew wrapper --gradle-version 8.11.1
-# 3. Build on JDK 17 (Android Studio > Settings > Build Tools > Gradle > Gradle JDK)
-./gradlew clean assembleDebug
-```
+`android/capacitor-cordova-android-plugins/` is gitignored — Capacitor's own template
+does that, because `cap sync` recreates it. Its copy of the pin was raised here too, but
+treat that as cosmetic: on a fresh clone it comes back at whatever Capacitor shipped, and
+`production_audit.py` reports the mismatch as a note rather than a failure for exactly
+that reason. **`android/build.gradle` is the pin that matters and the only one under
+version control.**
 
-AndroidX pins in `variables.gradle` (`androidxCore 1.12.0`, `appcompat 1.6.1`) may need
-raising if the build reports a library compiled against a newer SDK.
+#### What you must do once, on this Mac
 
-**Option B — move the platform to Capacitor 8** (what upstream ships for Android 16):
+These are machine settings, not repository changes, so they are not committed:
+
+1. **Point Gradle at JDK 17 or newer.** Android Studio ▸ Settings ▸ Build, Execution,
+   Deployment ▸ Build Tools ▸ Gradle ▸ **Gradle JDK**. The JetBrains Runtime bundled
+   with recent Android Studio is already 17+. Check what a terminal build would use:
+
+   ```bash
+   java -version        # must report 17 or higher, or set JAVA_HOME
+   ```
+
+2. **Install the API 36 platform.** Android Studio ▸ Settings ▸ Languages & Frameworks ▸
+   Android SDK ▸ **SDK Platforms** ▸ *Android 16.0 (API 36)*, and under **SDK Tools**
+   ▸ *Android SDK Build-Tools 36*. Or:
+
+   ```bash
+   sdkmanager "platforms;android-36" "build-tools;36.0.0"
+   ```
+
+3. **Android Studio Meerkat 2024.3.1 Patch 1 or newer** — older versions will not open
+   an AGP 8.10 project.
+
+4. **Regenerate the wrapper scripts** (optional but tidy — only the distribution URL was
+   edited by hand, which is enough to run, but this refreshes `gradlew` and the jar):
+
+   ```bash
+   cd ~/Documents/"Project simulation"/app/android
+   ./gradlew wrapper --gradle-version 8.11.1 --distribution-type all
+   ```
+
+Then the first real build, which is also the first check that any of this works:
 
 ```bash
 cd ~/Documents/"Project simulation"/app
-npm i @capacitor/core@8 @capacitor/android@8 @capacitor/ios@8 \
-      @capacitor/app@8 @capacitor/preferences@8 \
-      @capacitor/splash-screen@8 @capacitor/status-bar@8
-npm i -D @capacitor/cli@8
+npm install                      # node_modules is not in the repo
 npx cap sync android
+cd android
+./gradlew --version              # confirm Gradle 8.11.1 on JDK 17+
+./gradlew clean assembleDebug
 ```
 
-Capacitor 8 ships compileSdk/targetSdk 36, AGP 8.13.0 and Gradle 8.14.3 — but it also
-raises **minSdkVersion to 24**, dropping Android 5.0/5.1 devices, and renames
-`bridge_layout_main.xml`. Decide on the minSdk before taking this route.
+#### If it fails
 
-Nothing here touches simulation content: the app shell fetches the same published feed
-either way, so a toolchain change needs no content rebuild and no revision bump.
+| Symptom | Cause | Fix |
+|---|---|---|
+| `Android Gradle plugin requires Java 17 to run. You are currently using Java 11.` | Gradle JDK setting | step 1 above |
+| `Failed to find Platform SDK with path: platforms;android-36` | platform not installed | step 2 above |
+| `Minimum supported Gradle version is 8.11.1` | wrapper not picked up | delete `~/.gradle/caches/`, re-run |
+| `Could not resolve com.android.tools.build:gradle:8.10.0` | offline / proxy | you need network to `maven.google.com` |
+| `Java heap space` during dexing | `org.gradle.jvmargs=-Xmx1536m` is tight for AGP 8.10 | raise it in `app/android/gradle.properties` |
+| A named AndroidX library "requires a higher compileSdk" | only happens if a dependency was compiled against 37+ | raise **that one** pin in `variables.gradle`, not all of them |
+
+#### The one thing targeting 36 changes at runtime
+
+Android 16 makes **edge-to-edge mandatory** for apps that target it, and
+`windowOptOutEdgeToEdgeEnforcement` no longer works. Capacitor 6 has no insets handling
+(that arrived in Capacitor 7's `adjustMarginsForEdgeToEdge` and Capacitor 8's System Bars
+plugin), so on an Android 15/16 device the WebView will draw **underneath the status bar
+and the navigation bar**. The app builds and runs; the top and bottom of the catalogue
+will be partly covered.
+
+This is a UI fix, not a build fix, and it has not been made. Two ways to close it without
+leaving Capacitor 6:
+
+- **Native, ~12 lines.** In `MainActivity.onCreate`, after `super.onCreate`, attach a
+  `ViewCompat.setOnApplyWindowInsetsListener` to `android.R.id.content` and pad the root
+  view by `systemBars()` insets. This is what Capacitor 7 does internally.
+- **CSS.** Add `viewport-fit=cover` to the viewport meta in `app/www/index.html` and pad
+  the shell with `env(safe-area-inset-top/bottom)`. Simpler, but Android WebView's
+  `env()` support for system-bar insets is less dependable than for display cutouts —
+  test on a real device before trusting it.
+
+Test on an Android 15 or 16 emulator before the first upload either way.
+
+Nothing here touches simulation content: the app shell fetches the same published feed,
+so a toolchain change needs no content rebuild and no revision bump.
 
 ---
 

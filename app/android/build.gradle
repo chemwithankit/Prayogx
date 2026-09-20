@@ -7,7 +7,13 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:8.2.1'
+        // AGP 8.10.0 is the floor that can compile against API 36; anything
+        // below 8.9.1 refuses. It requires Gradle 8.11.1 (see the wrapper) and
+        // JDK 17. This is the root pin - Gradle's buildscript classloaders
+        // delegate parent-first, so this version is the one every subproject
+        // actually applies, including the Capacitor modules under node_modules
+        // that still declare 8.2.1 in their own buildscript blocks.
+        classpath 'com.android.tools.build:gradle:8.10.0'
         classpath 'com.google.gms:google-services:4.4.0'
 
         // NOTE: Do not place your application dependencies here; they belong
