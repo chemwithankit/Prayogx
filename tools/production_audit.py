@@ -260,6 +260,24 @@ if not ios:
 # ---------------------------------------------------- 8. cache keys move on change
 sw = open(os.path.join(ROOT, "sw.js"), encoding="utf-8").read()
 m = re.search(r'var VERSION = "([^"]*)";', sw)
+# Shell and feed caches must move when the site is deployed; the simulations cache
+# must NOT. Its entries are already keyed by a URL carrying ?v=<revision>, so naming it
+# after the feed version only meant that adding a simulation renamed it and the activate
+# sweep deleted it - taking every simulation a student had saved offline with it.
+def _cache_expr(name):
+    m = re.search(r"^var\s+%s\s*=\s*([^;]+);" % name, sw, re.M)
+    return m.group(1).strip() if m else None
+
+sims_expr, shell_expr, feed_expr = _cache_expr("SIMS"), _cache_expr("SHELL"), _cache_expr("FEED")
+ok("the simulations cache name is stable, not feed-versioned",
+   sims_expr is not None and "VERSION" not in sims_expr, "SIMS = %s" % sims_expr)
+ok("the activate sweep exempts it",
+   re.search(r"if\s*\(\s*k\s*===\s*SIMS\s*\)\s*return\s*;", sw) is not None)
+ok("shell and feed caches are still version-keyed, so a deploy still replaces them",
+   shell_expr is not None and "VERSION" in shell_expr and
+   feed_expr is not None and "VERSION" in feed_expr,
+   "SHELL = %s, FEED = %s" % (shell_expr, feed_expr))
+
 ok("the service worker is stamped with the current feed version",
    m and m.group(1) == cat["version"], (m.group(1) if m else "none") + " vs " + cat["version"])
 ok("simulation URLs are revision-keyed in the site",

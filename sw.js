@@ -20,7 +20,17 @@
 var VERSION = "33505a9321bd";
 var SHELL = "prayogx-shell-" + VERSION;
 var FEED  = "prayogx-feed-"  + VERSION;
-var SIMS  = "prayogx-sims-"  + VERSION;
+
+/* The simulations cache is deliberately NOT named after the feed version.
+   Shell and feed must be replaced when the site is deployed, so they carry it.
+   Simulations must not: each entry is already keyed by a URL carrying
+   ?v=<revision>, so a revised simulation is a different entry and a superseded
+   one is simply never requested again. Naming this cache after the feed version
+   meant that adding a simulation renamed it, and the activate sweep below then
+   deleted it - throwing away every simulation a student had saved for offline
+   use, every time the library grew. The name below changes only if the shape of
+   what is stored changes. */
+var SIMS  = "prayogx-sims-v1";
 var SIM_CAP = 40;                       /* simulations kept offline */
 
 var SHELL_URLS = [
@@ -42,13 +52,47 @@ self.addEventListener("install", function (e) {
   );
 });
 
+/* Before the stable name, this cache was called prayogx-sims-<feed version>.
+   A returning visitor still has one under the old name, and the sweep below
+   would delete it - so carry what is in it across first. This is a one-off for
+   the upgrade; after it there are no version-named simulation caches left. */
+function adoptLegacySims(keys) {
+  var legacy = keys.filter(function (k) {
+    return k.indexOf("prayogx-sims-") === 0 && k !== SIMS;
+  });
+  if (!legacy.length) return Promise.resolve();
+  return caches.open(SIMS).then(function (dest) {
+    return Promise.all(legacy.map(function (name) {
+      return caches.open(name).then(function (src) {
+        return src.keys().then(function (reqs) {
+          return Promise.all(reqs.map(function (req) {
+            return dest.match(req).then(function (already) {
+              if (already) return;
+              return src.match(req).then(function (res) {
+                if (res) return dest.put(req, res);
+              });
+            });
+          }));
+        });
+      });
+    }));
+  }).then(function () { return trim(SIMS, SIM_CAP); });
+}
+
 self.addEventListener("activate", function (e) {
   e.waitUntil(
     caches.keys().then(function (keys) {
-      return Promise.all(keys.map(function (k) {
-        // drop caches from an older worker version
-        if (k.indexOf("prayogx-") === 0 && k.indexOf(VERSION) < 0) return caches.delete(k);
-      }));
+      return adoptLegacySims(keys).then(function () {
+        return Promise.all(keys.map(function (k) {
+          if (k.indexOf("prayogx-") !== 0) return;      // not ours
+          if (k === SIMS) return;                       // stable: never swept
+          // everything else is version-keyed, plus any old version-named
+          // simulations cache now emptied into SIMS above
+          if (k.indexOf("prayogx-sims-") === 0 || k.indexOf(VERSION) < 0) {
+            return caches.delete(k);
+          }
+        }));
+      });
     }).then(function () { return self.clients.claim(); })
   );
 });

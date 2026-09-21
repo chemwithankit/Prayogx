@@ -14,6 +14,7 @@ const META=R+'/simulations/2026/paper-2/chemistry/adv-2026-p2-che-q16/meta.json'
 (async () => {
   const orig = fs.readFileSync(SIM,'utf8');
   const origMeta = fs.readFileSync(META,'utf8');
+  let probeAdded = false;          // set once the N1 case publishes a new simulation
   const restore = () => {
     fs.writeFileSync(SIM, orig); fs.writeFileSync(META, origMeta);
     const m = JSON.parse(fs.readFileSync(R+'/data/manifest.json','utf8'));
@@ -23,7 +24,14 @@ const META=R+'/simulations/2026/paper-2/chemistry/adv-2026-p2-che-q16/meta.json'
     const lock = JSON.parse(fs.readFileSync(lp,'utf8'));
     delete lock['ADV-2026-P2-CHE-Q16'];
     fs.writeFileSync(lp, JSON.stringify(lock,null,2)+'\n');
-    execSync('python3 tools/sync_manifest.py && python3 tools/build_content.py',{cwd:R,stdio:'pipe'});
+    if (probeAdded) {
+      // removesim.py deletes the probe and re-runs sync, build and check itself
+      probeAdded = false;
+      execSync('python3 '+__dirname+'/removesim.py',
+               {cwd:R, env:{...process.env, PRAYOGX_ROOT:R}, stdio:'pipe'});
+    } else {
+      execSync('python3 tools/sync_manifest.py && python3 tools/build_content.py',{cwd:R,stdio:'pipe'});
+    }
   };
   try {
   const site = spawn('python3',[__dirname+'/corsserve.py','8950',R],{stdio:'ignore'});
@@ -109,10 +117,17 @@ const META=R+'/simulations/2026/paper-2/chemistry/adv-2026-p2-che-q16/meta.json'
     const c=await caches.open(k);return (await c.keys()).map(r=>r.url.split('?').pop());});
   ok('both revisions are distinct cache entries, so nothing was overwritten in place',
      c2.indexOf('v=2')>=0, c2.join(','));
-  const oldKeys = await p.evaluate(async()=>{const ks=await caches.keys();
+  const allKeys = await p.evaluate(async()=>{const ks=await caches.keys();
     return ks.filter(x=>x.indexOf('prayogx-')===0);});
+  // Shell and feed are version-named and must be replaced. The simulations cache
+  // is deliberately not, so it is excluded here rather than expected to move.
+  const versioned = allKeys.filter(k => k.indexOf('prayogx-shell-')===0 ||
+                                        k.indexOf('prayogx-feed-')===0);
   ok('old shell and feed caches were retired by the new worker version',
-     oldKeys.length>0 && oldKeys.every(k=>k.endsWith(swV())), oldKeys.join(', '));
+     versioned.length>0 && versioned.every(k=>k.endsWith(swV())), versioned.join(', '));
+  ok('...while the simulations cache stayed put through the version change',
+     allKeys.some(k => k.indexOf('prayogx-sims-')===0 && k.indexOf(swV())<0),
+     allKeys.join(', '));
 
   // --------------------------------------------------------------- the app
   console.log('\n=== the installed app, already holding revision 1 ===');
@@ -136,8 +151,78 @@ const META=R+'/simulations/2026/paper-2/chemistry/adv-2026-p2-che-q16/meta.json'
   const q15lock = lockOf('ADV-2026-P2-CHE-Q15');
   ok('an unchanged simulation keeps its revision and hash', q15lock.revision===1);
 
+  /* ------------------------------------------------------------------ N1
+     Growing the library must not cost a student the simulations they already
+     saved. The feed version moves on every addition; the shell and feed caches
+     are named after it and must be replaced, but the simulations cache must
+     not be, or each new simulation wipes the offline library. */
+  console.log('\n=== a new simulation is published while the visitor has one saved ===');
+  const simsCaches = () => p.evaluate(async () => {
+    const names = (await caches.keys()).filter(k => k.indexOf('prayogx-sims-') === 0);
+    const out = [];
+    for (const nm of names) {
+      const c = await caches.open(nm);
+      out.push({ name: nm, urls: (await c.keys()).map(r => r.url.replace(/^https?:\/\/[^/]+\//, '')) });
+    }
+    return out;
+  });
+
+  const before = await simsCaches();
+  const beforeUrls = before.reduce((a, c) => a.concat(c.urls), []);
+  ok('the visitor has simulations saved for offline use',
+     beforeUrls.length > 0, before.map(c => c.name + ' (' + c.urls.length + ')').join(' | '));
+  ok('the cache holding them is not named after the feed version',
+     before.length > 0 && before.every(c => c.name.indexOf(feedV()) < 0),
+     before.map(c => c.name).join(','));
+
+  const feedBeforeAdd = feedV();
+  probeAdded = true;
+  execSync('python3 ' + __dirname + '/addsim.py',
+           { cwd: R, env: { ...process.env, PRAYOGX_ROOT: R }, stdio: 'pipe' });
+  ok('adding a simulation through the real pipeline moves the feed version',
+     feedV() !== feedBeforeAdd, feedBeforeAdd.slice(0,8) + ' -> ' + feedV().slice(0,8));
+  ok('and the service worker is restamped with it', swV() === feedV());
+
+  await p.goto(S,{waitUntil:'networkidle'}); await sleep(2200);
+  await p.reload({waitUntil:'networkidle'}); await sleep(2200);
+  const swState = await p.evaluate(async () => {
+    const r = await navigator.serviceWorker.getRegistration();
+    return r && r.active ? 'active' : 'none';
+  });
+  ok('the new service worker installed and activated', swState === 'active', swState);
+  const shellNames = await p.evaluate(async () =>
+    (await caches.keys()).filter(k => k.indexOf('prayogx-shell-') === 0));
+  ok('the shell cache WAS replaced by the new version, as it must be',
+     shellNames.length === 1 && shellNames[0].indexOf(swV()) >= 0, shellNames.join(','));
+
+  const after = await simsCaches();
+  const afterUrls = after.reduce((a, c) => a.concat(c.urls), []);
+  const lost = beforeUrls.filter(u => afterUrls.indexOf(u) < 0);
+  ok('the simulations saved for offline use SURVIVED the addition',
+     lost.length === 0 && afterUrls.length >= beforeUrls.length,
+     beforeUrls.length + ' saved -> ' + afterUrls.length + ' kept' +
+     (lost.length ? ', LOST: ' + lost.join(',') : '') +
+     (after.length ? '  [' + after.map(c => c.name).join(',') + ']' : '  [NO SIMS CACHE AT ALL]'));
+
+  const stillWhole = await p.evaluate(async () => {
+    const names = (await caches.keys()).filter(k => k.indexOf('prayogx-sims-') === 0);
+    for (const nm of names) {
+      const c = await caches.open(nm);
+      for (const req of await c.keys()) {
+        if (req.url.indexOf('q16') >= 0) {
+          const res = await c.match(req);
+          if (res) return (await res.text()).length;
+        }
+      }
+    }
+    return 0;
+  });
+  ok('...and a saved simulation still has its whole body, not just its key',
+     stillWhole > 5000, stillWhole + ' bytes');
+
   restore();
-  ok('the tree restores cleanly to revision 1', feedV()===feedBefore, feedV().slice(0,8));
+  ok('the tree restores cleanly to revision 1 with the probe removed',
+     feedV()===feedBefore, feedV().slice(0,8));
 
   console.log('\n'+(n-bad)+' / '+n+' passed');
   await b.close(); site.kill(); app.kill();
