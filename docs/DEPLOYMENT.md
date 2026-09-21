@@ -160,6 +160,11 @@ These are machine settings, not repository changes, so they are not committed:
    ./gradlew wrapper --gradle-version 8.11.1 --distribution-type all
    ```
 
+   Careful: this rewrites `gradle-wrapper.properties` from scratch and resets
+   `networkTimeout` to the 10 s default, which is not long enough to start the
+   download on a slow link. Put `networkTimeout=120000` back afterwards -
+   `production_audit.py` will tell you if you forget.
+
 Then the first real build, which is also the first check that any of this works:
 
 ```bash
@@ -179,6 +184,7 @@ cd android
 | `Failed to find Platform SDK with path: platforms;android-36` | platform not installed | step 2 above |
 | `Minimum supported Gradle version is 8.11.1` | wrapper not picked up | delete `~/.gradle/caches/`, re-run |
 | `Could not resolve com.android.tools.build:gradle:8.10.0` | offline / proxy | you need network to `maven.google.com` |
+| `SocketTimeoutException: Connect timed out` while downloading `gradle-8.11.1-all.zip` | the wrapper's connect timeout | already raised to 120 s in `gradle-wrapper.properties`. If it still times out while `curl -I https://services.gradle.org` returns 200, the JVM is taking a different route than curl: try `export GRADLE_OPTS="-Djava.net.preferIPv4Stack=true"`, and if you are behind a proxy give Java its own `systemProp.https.proxyHost` / `proxyPort` in `~/.gradle/gradle.properties` |
 | `Java heap space` during dexing | `org.gradle.jvmargs=-Xmx1536m` is tight for AGP 8.10 | raise it in `app/android/gradle.properties` |
 | A named AndroidX library "requires a higher compileSdk" | only happens if a dependency was compiled against 37+ | raise **that one** pin in `variables.gradle`, not all of them |
 

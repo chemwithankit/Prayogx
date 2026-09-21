@@ -194,6 +194,19 @@ if os.path.exists(wrap):
 ok("the Gradle wrapper is new enough for that plugin (needs >= %s)" % ".".join(map(str, MIN_GRADLE)),
    gradle is not None and _ver(gradle) >= MIN_GRADLE, "Gradle %s" % gradle)
 
+# The wrapper's default connect timeout is 10s, which is not enough to start a ~200 MB
+# download on a slow or proxied link - it fails before the first byte. Raised to 120s.
+# `./gradlew wrapper --gradle-version X` rewrites this file from scratch and would put
+# the default back, so it is worth a check rather than a comment.
+WRAPPER_TIMEOUT_MS = 120000
+timeout = None
+if os.path.exists(wrap):
+    m = re.search(r"^networkTimeout\s*=\s*(\d+)\s*$",
+                  open(wrap, encoding="utf-8").read(), re.M)
+    timeout = int(m.group(1)) if m else None
+ok("the Gradle wrapper has room to start its download (needs >= %d ms)" % WRAPPER_TIMEOUT_MS,
+   timeout is not None and timeout >= WRAPPER_TIMEOUT_MS, "networkTimeout = %s" % timeout)
+
 ok("the Gradle wrapper script is committed executable",
    os.access(os.path.join(ROOT, "app/android/gradlew"), os.X_OK),
    "app/android/gradlew")
