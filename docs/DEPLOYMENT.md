@@ -184,9 +184,56 @@ cd android
 | `Failed to find Platform SDK with path: platforms;android-36` | platform not installed | step 2 above |
 | `Minimum supported Gradle version is 8.11.1` | wrapper not picked up | delete `~/.gradle/caches/`, re-run |
 | `Could not resolve com.android.tools.build:gradle:8.10.0` | offline / proxy | you need network to `maven.google.com` |
-| `SocketTimeoutException: Connect timed out` while downloading `gradle-8.11.1-all.zip` | the wrapper's connect timeout | already raised to 120 s in `gradle-wrapper.properties`. If it still times out while `curl -I https://services.gradle.org` returns 200, the JVM is taking a different route than curl: try `export GRADLE_OPTS="-Djava.net.preferIPv4Stack=true"`, and if you are behind a proxy give Java its own `systemProp.https.proxyHost` / `proxyPort` in `~/.gradle/gradle.properties` |
+| `SocketTimeoutException` / `ConnectException` while downloading `gradle-8.11.1-all.zip` | the wrapper's connect timeout, or the download host | the timeout is already 120 s in `gradle-wrapper.properties`. If it still fails, see the next section - `curl -I https://services.gradle.org` returning 200 does not mean the download will work |
 | `Java heap space` during dexing | `org.gradle.jvmargs=-Xmx1536m` is tight for AGP 8.10 | raise it in `app/android/gradle.properties` |
 | A named AndroidX library "requires a higher compileSdk" | only happens if a dependency was compiled against 37+ | raise **that one** pin in `variables.gradle`, not all of them |
+
+#### If the distribution download will not go through
+
+`services.gradle.org` does not serve the zip itself - it answers with a redirect, and the
+download comes from another host. So `curl -I https://services.gradle.org` returning 200
+proves nothing: the first hop is fine and the second one is what fails. A stack trace with
+`HttpURLConnection.followRedirect0` in it above the `ConnectException` is saying exactly
+that. Find out where it is being sent:
+
+```bash
+curl -sSIL https://services.gradle.org/distributions/gradle-8.11.1-all.zip \
+  | grep -iE '^HTTP|^location'
+```
+
+If curl follows it to the end, curl can fetch what Java cannot, and you can hand the
+wrapper the file directly. **Prime the wrapper cache.** Gradle looks for the zip in a
+directory named after a Base36 MD5 of the distribution URL, so the path is not guessable -
+for the URL this project pins it is:
+
+```bash
+DIST=~/.gradle/wrapper/dists/gradle-8.11.1-all/2qik7nd48slq1ooc2496ixf4i
+mkdir -p "$DIST"
+curl -L -o "$DIST/gradle-8.11.1-all.zip" \
+  https://services.gradle.org/distributions/gradle-8.11.1-all.zip
+
+# worth checking before you run 200 MB of downloaded code
+curl -sL https://services.gradle.org/distributions/gradle-8.11.1-all.zip.sha256
+shasum -a 256 "$DIST/gradle-8.11.1-all.zip"
+
+cd ~/Documents/"Project simulation"/app/android && ./gradlew --version
+```
+
+The wrapper finds the zip, unpacks it and never touches the network. Verified against this
+project's own `gradle-wrapper.jar` in a sandbox with no route to `gradle.org` at all: it
+printed no `Downloading` line and made no connection.
+
+That hash is derived from the URL string, so **if `distributionUrl` ever changes, the
+directory name changes with it** and the cache has to be primed again under the new name.
+
+If curl cannot follow the redirect either, the block is in your network or DNS rather than
+in Java, and no wrapper setting will fix it - use a different connection, or fetch the zip
+elsewhere and copy it into the path above.
+
+Android Studio is a separate escape route: it downloads distributions through its own HTTP
+stack and proxy settings, and **Settings ▸ Build Tools ▸ Gradle ▸ Use Gradle from:
+Specified location** bypasses the wrapper download entirely if you already have 8.11.1
+unpacked somewhere.
 
 #### Edge-to-edge, and how the app handles it
 
