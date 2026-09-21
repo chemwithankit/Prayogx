@@ -39,6 +39,8 @@ const ok = (l, c, x) => { n++; if (!c) bad++;
      /addWebViewListener/.test(java) && /onPageLoaded/.test(java));
   ok('it does not move or resize the WebView',
      !/setLayoutParams|setPadding|MarginLayoutParams/.test(java));
+  ok('it survives a document that does not exist yet',
+     /var d\s*=\s*document\.documentElement;\s*if\s*\(!d\)\s*return;/.test(java));
   ok('it passes the insets on rather than consuming them',
      /return windowInsets;/.test(java) && !/CONSUMED/.test(java));
   ok('iOS is untouched: the properties still default to env(safe-area-inset-*)',
@@ -65,12 +67,12 @@ const ok = (l, c, x) => { n++; if (!c) bad++;
   const A = 'http://127.0.0.1:' + PA + '/';
 
   /* Exactly the statement MainActivity.publishInsets() builds. */
-  const publishInsets = (t, bm, l, r) => `(function(s){
+  const publishInsets = (t, bm, l, r) => `(function(){var d=document.documentElement; if(!d) return; var s=d.style;
       s.setProperty('--safe-t','${t.toFixed(2)}px');
       s.setProperty('--safe-b','${bm.toFixed(2)}px');
       s.setProperty('--safe-l','${l.toFixed(2)}px');
       s.setProperty('--safe-r','${r.toFixed(2)}px');
-    })(document.documentElement.style);`;
+    })();`;
 
   /* Is the point (x,y) actually the given element, or something inside it? */
   const HITS = `(sel, x, y) => {
@@ -218,5 +220,6 @@ const ok = (l, c, x) => { n++; if (!c) bad++;
 
   console.log('\n' + (n - bad) + ' / ' + n + ' passed');
   await b.close(); try { site.kill(); } catch (e) {} app.kill();
+  fs.rmSync(T, { recursive: true, force: true });
   process.exit(bad ? 1 : 0);
 })();

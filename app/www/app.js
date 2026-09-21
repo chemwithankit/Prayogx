@@ -146,14 +146,14 @@
       render();
     }
     return fetch(url(CFG.feed.catalog), { cache: "no-store" })
-      .then(function (r) { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
+      .then(function (r) { if (!r.ok) throw httpError(r, CFG.feed.catalog); return r.json(); })
       .then(function (cat) {
         var known = get("catalog", null);
         CATALOG = cat;
         set("catalog", cat);
         if (known && known.version === cat.version && SIMS.length) return null;  // nothing moved
         return fetch(url(CFG.feed.index)).then(function (r) {
-          if (!r.ok) throw new Error("HTTP " + r.status);
+          if (!r.ok) throw httpError(r, CFG.feed.index);
           return r.json();
         }).then(function (idx) {
           var first = !SIMS.length;
@@ -164,15 +164,33 @@
           return true;
         });
       })
-      .catch(function () {
-        if (!SIMS.length) {
-          el("screen").innerHTML = '<div class="empty"><h3>No connection</h3>' +
+      .catch(function (e) {
+        var reached = !!(e && e.status);   // the server answered; it just did not have it
+        if (SIMS.length) {
+          toast(reached
+            ? "Could not check for updates — the site answered HTTP " + e.status
+            : "Offline — showing the library as it was last seen");
+          return;
+        }
+        el("screen").innerHTML = reached
+          ? '<div class="empty"><h3>The library is not published yet</h3><p>' +
+            esc(ORIGIN) + " is reachable, but it answered <b>HTTP " + e.status +
+            "</b> for <code>" + esc(e.path || CFG.feed.catalog) + "</code>. " +
+            "Deploy the site, then reopen the app.</p></div>"
+          : '<div class="empty"><h3>No connection</h3>' +
             "<p>The library has not been downloaded on this device yet. " +
             "Connect once and it will be kept for offline use.</p></div>";
-        } else {
-          toast("Offline — showing the library as it was last seen");
-        }
       });
+  }
+
+  /* A reachable server that answers 404 is not "no connection", and saying so
+     sends you hunting through Android networking instead of looking at what is
+     deployed. Carry the status so the message can tell the difference. */
+  function httpError(r, path) {
+    var e = new Error("HTTP " + r.status + " for " + path);
+    e.status = r.status;
+    e.path = path;   // named, not read back from r.url: in the app CapacitorHttp
+    return e;        // proxies GETs and r.url is the interceptor, not the feed
   }
 
   function ensureSearch() {

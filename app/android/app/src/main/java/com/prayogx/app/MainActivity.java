@@ -73,13 +73,17 @@ public class MainActivity extends BridgeActivity {
         if (webView == null) return;
 
         final float density = getResources().getDisplayMetrics().density;
+        // The first layout pass can beat the document into existence, and then
+        // documentElement is null - which showed up in logcat as an uncaught
+        // TypeError on every launch. Harmless, because onPageLoaded publishes
+        // again, but noise in the log is how real errors get missed.
         final String js =
-            "(function(s){" +
+            "(function(){var d=document.documentElement; if(!d) return; var s=d.style;" +
             "s.setProperty('--safe-t','" + cssPx(insets.top, density) + "');" +
             "s.setProperty('--safe-b','" + cssPx(insets.bottom, density) + "');" +
             "s.setProperty('--safe-l','" + cssPx(insets.left, density) + "');" +
             "s.setProperty('--safe-r','" + cssPx(insets.right, density) + "');" +
-            "})(document.documentElement.style);";
+            "})();";
 
         webView.post(() -> webView.evaluateJavascript(js, null));
     }

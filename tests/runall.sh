@@ -37,6 +37,7 @@ run "single-source propagation"            $HERE/propagation.js
 run "revision + stale cache"               $HERE/stalecache.js
 run "Capacitor app shell"                  $HERE/appcheck_prod.js
 run "Android 16 edge-to-edge"              $HERE/edgetoedge.js
+run "feed failure messages"                $HERE/feederror.js
 run "catalogue at 1000 simulations"        scalecheck.js
 
 echo

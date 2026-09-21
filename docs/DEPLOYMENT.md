@@ -70,6 +70,15 @@ npx cap sync
 `app/www/config.js` holds the one line that points the apps at the content host. Change it
 only if you move the site.
 
+> **The app has no content of its own, so it cannot work before section 1 has run.**
+> It fetches `content/catalog.json` from the published site, exactly as the website does.
+> Until that file is live, a freshly installed app has nothing to show - which is the whole
+> point of the design, and also the thing most likely to look like a bug. It is not an
+> Android problem and no amount of rebuilding will change it: **deploy first, then install**.
+> If the catalogue is missing the app now says so precisely - *"The library is not published
+> yet"*, with the origin it asked, the HTTP status it got back and the path - rather than
+> blaming the connection.
+
 ### Add the platforms
 
 ```bash
