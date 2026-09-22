@@ -119,6 +119,39 @@
   }
   var BASE_TITLE = document.title;
 
+  /* ------------------------------------------------------- schema latch
+     The feed is live but an installed client is frozen at whatever parser it
+     shipped with. content/catalog.json carries the format it was published in;
+     this is the format this copy knows how to read. Same constant, same rule,
+     same message in app/www/app.js - and therefore in iOS later.
+
+     MAJOR only: 1.0.0 -> 1.4.2 adds fields a client may ignore, so it must keep
+     working. A major bump means the shape changed, and guessing at a shape you
+     do not know is worse than saying so.
+
+     A feed with no schemaVersion at all is treated as compatible: it is an
+     older or hand-made feed, never a newer one, and refusing it would invent a
+     failure that does not exist today. */
+  var SUPPORTED_SCHEMA_MAJOR = 1;
+
+  function schemaMajor(v) {
+    var m = /^\s*(\d+)(?:[.\s]|$)/.exec(String(v == null ? "" : v));
+    return m ? parseInt(m[1], 10) : null;
+  }
+  function schemaCompatible(v) {
+    var major = schemaMajor(v);
+    return major === null || major === SUPPORTED_SCHEMA_MAJOR;
+  }
+  function schemaRefuse(saw) {
+    app.innerHTML = '<div class="error" id="schemagate">' +
+      "<h3>This version of PrayogX is not compatible with the current library. " +
+      "Please update the app.</h3>" +
+      "<p>The library is published in format <code>" + esc(String(saw)) +
+      "</code>. This copy of the site reads format <code>" +
+      SUPPORTED_SCHEMA_MAJOR + ".x</code>. Reloading the page will pick up the " +
+      "new version once it has been deployed.</p></div>";
+  }
+
   function filterHash(f) {
     var parts = [];
     ["q", "y", "s", "c", "t", "fav"].forEach(function (k) {
@@ -641,6 +674,12 @@
   } catch (e) {}
 
   function boot(payload, source, mode) {
+    // data/manifest.json carries schemaVersion too, so the fallback paths are
+    // latched by the same rule without a second request.
+    if (!schemaCompatible(payload && payload.schemaVersion)) {
+      schemaRefuse(payload.schemaVersion);
+      return;
+    }
     MODE = mode;
     LIB = payload.library || {};
     SIMS = (payload.simulations || []).filter(function (s) { return s && s.id && s.path; });
@@ -699,12 +738,23 @@
       .catch(function (e) { lastResort(why + " / " + String(e)); });
   }
   if (window.fetch && location.protocol !== "file:") {
+    /* content/index.json carries no schemaVersion - catalog.json does, and it is
+       1.4 KB. Both are requested at once so the latch costs no round trip, and
+       the feed is only interpreted once the latch has cleared it. */
+    var latch = fetch("content/catalog.json", { cache: "no-store" })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .catch(function () { return null; });
     fetch("content/index.json")
       .then(function (r) { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
       .then(function (j) {
-        if (done) return;
-        if (!j || !j.simulations || !j.simulations.length) throw new Error("empty feed");
-        done = true; boot(j, "content/index.json", "feed");
+        return latch.then(function (cat) {
+          if (done) return;
+          if (cat && !schemaCompatible(cat.schemaVersion)) {
+            done = true; schemaRefuse(cat.schemaVersion); return;
+          }
+          if (!j || !j.simulations || !j.simulations.length) throw new Error("empty feed");
+          done = true; boot(j, "content/index.json", "feed");
+        });
       })
       .catch(function (e) { tryManifest(String(e)); });
   } else {

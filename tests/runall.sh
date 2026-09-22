@@ -39,6 +39,7 @@ run "Capacitor app shell"                  "$HERE/appcheck_prod.js"
 run "Android 16 edge-to-edge"              "$HERE/edgetoedge.js"
 run "feed failure messages"                "$HERE/feederror.js"
 run "global navigation"                    "$HERE/navigation.js"
+run "feed schema latch"                    "$HERE/schemagate.js"
 run "catalogue at 1000 simulations"        scalecheck.js
 
 echo

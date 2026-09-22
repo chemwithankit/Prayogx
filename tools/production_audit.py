@@ -292,6 +292,25 @@ ok("the shell carries a simulation runner with a way back",
 # and tapping a section tab walks out of the simulation. 122 anchors across the
 # library depend on the frame handling them instead.
 app_js = open(os.path.join(app_www, "app.js"), encoding="utf-8").read()
+# The feed is live; an installed client is frozen at the parser it shipped with. Each
+# client declares the schema major it can read and refuses anything else rather than
+# guessing at a shape it does not know. The two must agree, or one platform would accept
+# a feed the other rejects.
+def _schema_major(src):
+    m = re.search(r"var\s+SUPPORTED_SCHEMA_MAJOR\s*=\s*(\d+)\s*;", src)
+    return int(m.group(1)) if m else None
+
+site_major = _schema_major(site_js)
+app_major = _schema_major(app_js)
+ok("both clients declare the feed schema major they can read",
+   site_major is not None and app_major is not None,
+   "site %s, app %s" % (site_major, app_major))
+ok("and they agree, so Web and Android accept exactly the same feeds",
+   site_major == app_major, "%s == %s" % (site_major, app_major))
+ok("the published feed is a major both of them read",
+   site_major is not None and str(cat.get("schemaVersion", "")).split(".")[0] == str(site_major),
+   "catalog.json schemaVersion %s" % cat.get("schemaVersion"))
+
 ok("the app handles a simulation's own in-page anchors inside the frame",
    "attachAnchorShim" in app_js and 'href.charAt(0) !== "#"' in app_js)
 

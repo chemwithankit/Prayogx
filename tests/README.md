@@ -1,6 +1,6 @@
 # Production test suites
 
-Eight suites that check the things the library check cannot: that the **single-source
+Nine suites that check the things the library check cannot: that the **single-source
 promise** actually holds end to end, across the website, the PWA and the Capacitor app.
 
 They take their repository root from `PRAYOGX_ROOT`, defaulting to the repository they
@@ -11,7 +11,7 @@ live in, and each one restores whatever it changes.
 | Suite | Needs | What it proves |
 |---|---|---|
 | `../tools/check_library.py` | python3 | the library is coherent |
-| `../tools/production_audit.py` | python3 | 41 single-source checks: IDs, revisions, hashes, feed agreement, no duplicated content, cache keying, deploy hygiene |
+| `../tools/production_audit.py` | python3 | 45 single-source checks: IDs, revisions, hashes, feed agreement, no duplicated content, cache keying, deploy hygiene |
 | `prodcheck.js` | node + Playwright | catalogue, search, filters, detail pages, direct URLs, deep links, back navigation, mobile layout, PWA, offline, broken assets |
 | `propagation.js` | node + Playwright | adds ONE simulation to the canonical source and proves the website, PWA, crawlable pages and the app all pick it up with no code change — then removes it |
 | `stalecache.js` | node + Playwright | a revision bump moves the feed version, the worker version and the lock hash; the browser and the app both stop serving the old copy; an unbumped edit is refused |
@@ -19,6 +19,7 @@ live in, and each one restores whatever it changes.
 | `edgetoedge.js` | node + Playwright | Android 16 edge-to-edge: with real system-bar insets applied, the header, tab bar, cards, search, filter and the simulation frame all stay clear of the status and navigation bars, in portrait and landscape - and with no insets the layout is byte-for-byte what it was |
 | `feederror.js` | node + Playwright | that a published site answering 404 is reported as *not published yet* - naming the origin, the status and the feed path - and not as "No connection"; that an unreachable host still is; and that neither throws away a library already stored on the device |
 | `navigation.js` | node + Playwright | the shared simulation runner: Library to a simulation and back by button and by Back, one history entry per open, the bar still reachable 4,000 px into a long simulation, the Top control, direct file URLs and deep links, the simulation's own controls untouched, mobile layout, and Android's back order in the app shell |
+| `schemagate.js` | node + Playwright | the feed schema latch: a 1.0.0 feed loads, a 1.4.2 feed loads, a 2.0.0 feed is refused with no library rendered on either platform, a feed with no schemaVersion is not treated as hostile, the manifest fallback is latched by the same rule, a refusal survives the feed going unreachable, and it clears itself once the build understands the format |
 
 The two Python tools run anywhere, including this Mac. The browser suites need Playwright
 and a Chromium build, which live in the Cowork container — they are not installed here.

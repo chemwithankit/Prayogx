@@ -137,8 +137,61 @@
     if (!actionLabel) toastT = setTimeout(function () { t.hidden = true; }, 3200);
   }
 
+  /* ------------------------------------------------------------ schema latch
+     The feed is live; this app is frozen at whatever parser it shipped with.
+     content/catalog.json carries the format it was published in, and this is
+     the format this build knows how to read. The same constant, the same rule
+     and the same message live in site/site.js, so the website, this app and a
+     future iOS build - which runs this very file - all agree.
+
+     MAJOR only: 1.0.0 -> 1.4.2 adds fields an older client can ignore, so it
+     must keep working. A major bump means the shape changed, and guessing at a
+     shape you do not know is worse than saying so.
+
+     A feed with no schemaVersion is treated as compatible: it is an older or
+     hand-made feed, never a newer one. */
+  var SUPPORTED_SCHEMA_MAJOR = 1;
+  var SCHEMA_BAD = null;             /* the major we saw, once we have refused */
+
+  function schemaMajor(v) {
+    var m = /^\s*(\d+)(?:[.\s]|$)/.exec(String(v == null ? "" : v));
+    return m ? parseInt(m[1], 10) : null;
+  }
+  function schemaCompatible(v) {
+    var major = schemaMajor(v);
+    return major === null || major === SUPPORTED_SCHEMA_MAJOR;
+  }
+  /* Remembered, so a device that has already seen an incompatible feed does not
+     quietly fall back to rendering its stale copy next time it opens offline. */
+  function refuseSchema(saw) {
+    SCHEMA_BAD = String(saw);
+    set("schemaBad", SCHEMA_BAD);
+    SIMS = [];
+    if (!el("viewer").hidden) closeSim(true);
+    if (!el("sheet").hidden) closeSheet();
+    el("boot") && el("boot").remove();
+    el("searchwrap").style.display = "none";
+    el("chiprow").style.display = "none";
+    el("screen").innerHTML = '<div class="empty" id="schemagate">' +
+      "<h3>This version of PrayogX is not compatible with the current library. " +
+      "Please update the app.</h3>" +
+      "<p>The library is published in format <b>" + esc(SCHEMA_BAD) +
+      "</b>. This app reads format <b>" + SUPPORTED_SCHEMA_MAJOR + ".x</b>. " +
+      "Update PrayogX from the Play Store and it will load again.</p></div>";
+  }
+
   /* ---------------------------------------------------------------- feed */
   function loadFeed() {
+    /* A remembered refusal must not outlive the update that resolves it: an app
+       built for the newer format has to be able to start, offline, on a device
+       that refused the feed before the update. */
+    var remembered = SCHEMA_BAD || get("schemaBad", null);
+    if (remembered && !schemaCompatible(remembered)) {
+      refuseSchema(remembered);
+      return Promise.resolve();
+    }
+    if (remembered) { SCHEMA_BAD = null; set("schemaBad", null); }
+
     var cached = get("index", null);
     if (cached && cached.simulations) {
       SIMS = cached.simulations;
@@ -148,6 +201,11 @@
     return fetch(url(CFG.feed.catalog), { cache: "no-store" })
       .then(function (r) { if (!r.ok) throw httpError(r, CFG.feed.catalog); return r.json(); })
       .then(function (cat) {
+        // Before anything is read out of it: is this a shape this build knows?
+        if (!schemaCompatible(cat && cat.schemaVersion)) {
+          refuseSchema(cat && cat.schemaVersion);
+          return null;                       // and nothing incompatible is stored
+        }
         var known = get("catalog", null);
         CATALOG = cat;
         set("catalog", cat);
@@ -359,6 +417,7 @@
   }
 
   function render() {
+    if (SCHEMA_BAD) return;          // refused: the gate stays on screen
     el("boot") && el("boot").remove();
     var searching = MODE === "library" || MODE === "favorites" || MODE === "recent";
     el("searchwrap").style.display = searching ? "" : "none";
