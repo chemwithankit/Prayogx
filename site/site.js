@@ -82,10 +82,17 @@
   /* --------------------------------------------------------------- routing */
   /* #/                       → catalogue (filters live in the hash query)
      #/?y=2026&s=Chemistry…   → catalogue with filters applied (bookmarkable)
-     #/sim/<SIMULATION-ID>    → detail page for one simulation (bookmarkable) */
+     #/sim/<SIMULATION-ID>    → detail page for one simulation (bookmarkable)
+     #/run/<SIMULATION-ID>    → the simulation itself, framed, with a bar on top
+
+     Each is one history entry, so Back walks back the way the visitor came.
+     The simulation's own file URL keeps working untouched - it is what the
+     frame loads, what the service worker caches and what the sitemap lists. */
   function parseHash() {
     var h = location.hash.replace(/^#/, "");
     if (!h || h === "/") return { view: "list", f: {} };
+    var r = h.match(/^\/run\/([^/?]+)/);
+    if (r) return { view: "run", id: decodeURIComponent(r[1]) };
     var m = h.match(/^\/sim\/([^/?]+)/);
     if (m) return { view: "sim", id: decodeURIComponent(m[1]) };
     var q = h.indexOf("?");
@@ -105,6 +112,12 @@
   function simHref(sim) {
     return esc(sim.path) + (sim.revision ? "?v=" + encodeURIComponent(sim.revision) : "");
   }
+  /* Where "open" points. The file above is still what actually loads; this is
+     the shell route that wraps it in a bar the visitor can leave from. */
+  function runHref(sim) {
+    return "#/run/" + encodeURIComponent(sim.id);
+  }
+  var BASE_TITLE = document.title;
 
   function filterHash(f) {
     var parts = [];
@@ -269,7 +282,7 @@
         "</dl>" +
         '<div class="tags">' + tags + "</div>" +
         '<div class="foot">' +
-          '<a class="open" href="' + simHref(s) + '">OPEN SIMULATION</a>' +
+          '<a class="open" href="' + runHref(s) + '">OPEN SIMULATION</a>' +
           '<span class="simid">' + esc(s.id) + "</span>" +
         "</div>" +
       "</article>";
@@ -445,7 +458,7 @@
         (s.summary ? '<p class="summary">' + esc(s.summary) + "</p>"
                    : (pending ? '<p class="summary skel">&nbsp;</p>' : "")) +
         '<div class="ctarow">' +
-          '<a class="cta" href="' + simHref(s) + '">OPEN SIMULATION</a>' +
+          '<a class="cta" href="' + runHref(s) + '">OPEN SIMULATION</a>' +
           '<button type="button" class="favbig' + (isFav(s.id) ? " on" : "") + '" data-fav="' +
             esc(s.id) + '" aria-pressed="' + (isFav(s.id) ? "true" : "false") + '">' +
             (isFav(s.id) ? "★ Saved" : "☆ Save") + "</button>" +
@@ -482,8 +495,120 @@
   }
 
   /* -------------------------------------------------------------- render */
+  /* ---------------------------------------------------------- the runner
+     The simulation is framed, never rewritten: seventeen self-contained files
+     stay seventeen self-contained files, and so would seventeen hundred. The
+     bar lives above the frame, so it cannot scroll away no matter how long the
+     simulation is, and the simulation's own internal tabs never meet it.
+
+     The frame is rebuilt from scratch on every open, with its src set BEFORE it
+     is inserted. Assigning .src to an iframe already in the document pushes a
+     session history entry - which is exactly how a framed viewer ends up
+     needing two Backs to leave one simulation. */
+  var RUN = { id: null, win: null, onScroll: null };
+  var RUN_TOP_AFTER = 600;        /* px scrolled before "Top" is worth offering */
+
+  function runEls() {
+    return {
+      root:  document.getElementById("runner"),
+      back:  document.getElementById("rback"),
+      title: document.getElementById("rtitle"),
+      fav:   document.getElementById("rfav"),
+      stage: document.getElementById("rstage"),
+      top:   document.getElementById("rtop")
+    };
+  }
+
+  function paintRunFav(btn, id) {
+    var on = isFav(id);
+    btn.className = "rfav" + (on ? " on" : "");
+    btn.textContent = on ? "\u2605" : "\u2606";
+    btn.setAttribute("aria-pressed", on ? "true" : "false");
+    btn.setAttribute("aria-label", (on ? "Remove from" : "Add to") + " favourites");
+  }
+
+  function openRunner(id) {
+    var e = runEls();
+    if (!e.root || !SIMS.length) return;      // feed still arriving; render runs again
+    var card = null, i;
+    for (i = 0; i < SIMS.length; i++) if (SIMS[i].id === id) { card = SIMS[i]; break; }
+    if (!card) { closeRunner(); renderSim(id); return; }
+    if (RUN.id === id && !e.root.hidden) return;   // already running it: do not reload
+
+    detachRunScroll();
+    noteVisit(id);
+    RUN.id = id;
+
+    e.title.textContent = card.shortTitle || card.title;
+    e.title.setAttribute("title", card.title);
+    e.back.setAttribute("href", filterHash({}));
+    paintRunFav(e.fav, id);
+    e.fav.onclick = function () { toggleFav(id); paintRunFav(e.fav, id); };
+
+    var frame = document.createElement("iframe");
+    frame.setAttribute("title", card.title);
+    frame.setAttribute("allow", "fullscreen");
+    frame.setAttribute("allowfullscreen", "");
+    frame.addEventListener("load", function () { attachRunScroll(frame); });
+    frame.src = simHref(card);                 // set before insertion: no history entry
+    e.stage.innerHTML = "";
+    e.stage.appendChild(frame);
+
+    e.top.hidden = true;
+    e.top.onclick = function () {
+      if (!RUN.win) return;
+      var still = window.matchMedia &&
+                  window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      try { RUN.win.scrollTo({ top: 0, behavior: still ? "auto" : "smooth" }); }
+      catch (err) { RUN.win.scrollTo(0, 0); }
+    };
+
+    e.root.hidden = false;
+    document.body.classList.add("running");
+    document.title = (card.shortTitle || card.title) + " \u00b7 PrayogX";
+  }
+
+  /* The simulation is served from this origin, so its scroll position is
+     readable. If it ever were not, the Top button simply never appears. */
+  function attachRunScroll(frame) {
+    var e = runEls(), win;
+    try { win = frame.contentWindow; } catch (err) { return; }
+    if (!win) return;
+    RUN.onScroll = function () {
+      var doc = win.document.documentElement || {};
+      var y = win.pageYOffset || doc.scrollTop || 0;
+      e.top.hidden = y < RUN_TOP_AFTER;
+    };
+    try {
+      win.addEventListener("scroll", RUN.onScroll, { passive: true });
+      RUN.win = win;
+      RUN.onScroll();
+    } catch (err) { RUN.win = null; RUN.onScroll = null; }
+  }
+
+  function detachRunScroll() {
+    if (RUN.win && RUN.onScroll) {
+      try { RUN.win.removeEventListener("scroll", RUN.onScroll); } catch (err) {}
+    }
+    RUN.win = null; RUN.onScroll = null;
+  }
+
+  function closeRunner() {
+    var e = runEls();
+    if (!e.root || e.root.hidden) return;
+    detachRunScroll();
+    e.stage.innerHTML = "";        // drops the frame, and the simulation with it
+    e.top.hidden = true;
+    e.root.hidden = true;
+    RUN.id = null;
+    document.body.classList.remove("running");
+    document.title = BASE_TITLE;
+  }
+
   function render() {
     var r = parseHash();
+    if (r.view === "run") { openRunner(r.id); return; }
+    closeRunner();
     if (r.view === "sim") renderSim(r.id); else renderList(r.f || {});
   }
 

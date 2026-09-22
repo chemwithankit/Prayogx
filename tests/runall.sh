@@ -10,16 +10,16 @@ line(){ printf '%-46s %s\n' "$1" "$2"; }
 
 echo "=== chemistry verifiers (exact arithmetic, no browser) ==="
 for f in verify15.py verify16.py verify17.py; do
-  out=$(python3 $f 2>&1 | tail -1)
+  out=$(python3 "$f" 2>&1 | tail -1)
   if echo "$out" | grep -q "0 failed"; then line "$f" "$out"; pass=$((pass+1));
   else line "$f" "FAILED: $out"; fail=$((fail+1)); fi
 done
 
 echo
 echo "=== library and production validation ==="
-for f in "python3 $ROOT/tools/check_library.py" "python3 $ROOT/tools/production_audit.py"; do
-  if out=$($f 2>&1); then line "$(basename ${f##* })" "$(echo "$out" | tail -1)"; pass=$((pass+1));
-  else line "$(basename ${f##* })" "FAILED"; echo "$out" | tail -5; fail=$((fail+1)); fi
+for f in check_library.py production_audit.py; do
+  if out=$(python3 "$ROOT/tools/$f" 2>&1); then line "$f" "$(echo "$out" | tail -1)"; pass=$((pass+1));
+  else line "$f" "FAILED"; echo "$out" | tail -5; fail=$((fail+1)); fi
 done
 
 echo
@@ -32,12 +32,13 @@ run(){ # name, script
   else line "$1" "FAILED  $out"; fail=$((fail+1)); fi
 }
 run "Q17 simulation (t17.js)"              t17.js
-run "production suite (prodcheck)"         $HERE/prodcheck.js
-run "single-source propagation"            $HERE/propagation.js
-run "revision + stale cache"               $HERE/stalecache.js
-run "Capacitor app shell"                  $HERE/appcheck_prod.js
-run "Android 16 edge-to-edge"              $HERE/edgetoedge.js
-run "feed failure messages"                $HERE/feederror.js
+run "production suite (prodcheck)"         "$HERE/prodcheck.js"
+run "single-source propagation"            "$HERE/propagation.js"
+run "revision + stale cache"               "$HERE/stalecache.js"
+run "Capacitor app shell"                  "$HERE/appcheck_prod.js"
+run "Android 16 edge-to-edge"              "$HERE/edgetoedge.js"
+run "feed failure messages"                "$HERE/feederror.js"
+run "global navigation"                    "$HERE/navigation.js"
 run "catalogue at 1000 simulations"        scalecheck.js
 
 echo

@@ -1,4 +1,7 @@
 const ROOT = process.env.PRAYOGX_ROOT || require('path').resolve(__dirname, '..');
+/* A path interpolated into a shell string has to be quoted, or the shell
+   splits it - and this project lives in "Project simulation". */
+const q = p => "'" + String(p).replace(/'/g, "'\\''") + "'";
 /* Does ONE addition to the canonical source reach every client? */
 const { chromium } = require(process.env.PLAYWRIGHT || '/home/claude/build/node_modules/playwright');
 const { spawn, execSync } = require('child_process');
@@ -43,7 +46,7 @@ const ok=(l,c,x)=>{n++;if(!c)bad++;console.log((c?'PASS  ':'FAIL  ')+l+(x!==unde
 
   // ------------------------------------------------------------ THE ADDITION
   console.log('\n=== ADD ONE SIMULATION TO THE CANONICAL SOURCE ===');
-  console.log(execSync('python3 '+__dirname+'/addsim.py',{encoding:'utf8'}).trim());
+  console.log(execSync('python3 '+q(__dirname+'/addsim.py'),{encoding:'utf8'}).trim());
   const v2 = feedVersion();
   ok('the feed version moved', v1!==v2, v1+' -> '+v2);
   ok('the service worker was restamped to match', swVersion()===v2, swVersion());
@@ -62,7 +65,14 @@ const ok=(l,c,x)=>{n++;if(!c)bad++;console.log((c?'PASS  ':'FAIL  ')+l+(x!==unde
   const found = await w2.evaluate(()=>[...document.querySelectorAll('article.card h3')].map(h=>h.textContent));
   ok('...and search finds it', found.length===1 && /Propagation probe/.test(found[0]), found.join('|'));
   const href = await w2.evaluate(()=>document.querySelector('article.card a.open').getAttribute('href'));
-  ok('...with a revision-tagged link', /adv-2026-p2-phy-q99\/index\.html\?v=1$/.test(href), href);
+  ok('...with a link into the shell runner', /^#\/run\/ADV-2026-P2-PHY-Q99$/.test(href), href);
+  // The revision now rides on the frame the runner loads, one hop further in.
+  await w2.click('article.card a.open'); await sleep(1500);
+  const framed = await w2.evaluate(()=>{const f=document.querySelector('#rstage iframe');
+    return f?f.getAttribute('src'):null;});
+  ok('...and the frame it opens is revision-tagged',
+     /adv-2026-p2-phy-q99\/index\.html\?v=1$/.test(framed||''), framed);
+  await w2.goBack(); await sleep(800);
   await w2.click('article.card h3 a'); await sleep(900);
   const det = await w2.evaluate(()=>document.body.innerText);
   ok('...and a working detail page', /Propagation probe/.test(det) && /Single-source delivery/.test(det));
@@ -120,7 +130,7 @@ const ok=(l,c,x)=>{n++;if(!c)bad++;console.log((c?'PASS  ':'FAIL  ')+l+(x!==unde
   // The suite must be idempotent: remove the probe and prove the canonical
   // source returns to exactly the state it was in.
   console.log('\n=== REMOVE THE PROBE ===');
-  console.log(execSync('python3 '+__dirname+'/removesim.py',{encoding:'utf8'}).trim());
+  console.log(execSync('python3 '+q(__dirname+'/removesim.py'),{encoding:'utf8'}).trim());
   ok('the feed returns to its previous version, byte for byte', feedVersion()===v1,
      feedVersion()+' (was '+v1+')');
   ok('the service worker is restamped back', swVersion()===v1);

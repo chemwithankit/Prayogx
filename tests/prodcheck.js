@@ -63,7 +63,12 @@ const ok=(l,c,x)=>{n++;if(!c)bad++;console.log((c?'PASS  ':'FAIL  ')+l+(x!==unde
     lists:document.querySelectorAll('.cols ul.plain').length,
     id:(document.querySelector('.idline')||{}).textContent||''}));
   ok('detail renders with prose from the detail record', /Kjeldahl/.test(d.h1) && d.lists>=3, d.lists+' lists');
-  ok('its OPEN link carries revision 2', /\?v=2$/.test(d.cta||''), d.cta);
+  ok('its OPEN link goes through the shell runner', /^#\/run\/ADV-2026-P2-CHE-Q17$/.test(d.cta||''), d.cta);
+  await p.click('a.cta'); await sleep(1600);
+  const framed = await p.evaluate(()=>{const f=document.querySelector('#rstage iframe');
+    return f?f.getAttribute('src'):null;});
+  ok('and the frame it opens still carries revision 2', /\?v=2$/.test(framed||''), framed);
+  await p.goBack(); await sleep(800);
   ok('the simulation ID is shown', /ADV-2026-P2-CHE-Q17/.test(d.id));
   ok('the answer does not leak', !/\b10 mL\b/.test(await p.evaluate(()=>document.body.innerText)));
 

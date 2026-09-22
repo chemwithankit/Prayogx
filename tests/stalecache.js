@@ -1,4 +1,7 @@
 const ROOT = process.env.PRAYOGX_ROOT || require('path').resolve(__dirname, '..');
+/* A path interpolated into a shell string has to be quoted, or the shell
+   splits it - and this project lives in "Project simulation". */
+const q = p => "'" + String(p).replace(/'/g, "'\\''") + "'";
 /* Item 8: unchanged simulations stay cached, changed ones invalidate, nobody
    is served stale content after a revision, and revisions stay traceable. */
 const { chromium } = require(process.env.PLAYWRIGHT || '/home/claude/build/node_modules/playwright');
@@ -27,7 +30,7 @@ const META=R+'/simulations/2026/paper-2/chemistry/adv-2026-p2-che-q16/meta.json'
     if (probeAdded) {
       // removesim.py deletes the probe and re-runs sync, build and check itself
       probeAdded = false;
-      execSync('python3 '+__dirname+'/removesim.py',
+      execSync('python3 '+q(__dirname+'/removesim.py'),
                {cwd:R, env:{...process.env, PRAYOGX_ROOT:R}, stdio:'pipe'});
     } else {
       execSync('python3 tools/sync_manifest.py && python3 tools/build_content.py',{cwd:R,stdio:'pipe'});
@@ -107,9 +110,16 @@ const META=R+'/simulations/2026/paper-2/chemistry/adv-2026-p2-che-q16/meta.json'
   await p.goto(S,{waitUntil:'networkidle'}); await sleep(900);
   await p.reload({waitUntil:'networkidle'}); await sleep(900);
   const link = await p.evaluate(()=>{
-    const a=[...document.querySelectorAll('article.card a.open')].find(x=>x.href.indexOf('q16')>=0);
+    const a=[...document.querySelectorAll('article.card a.open')]
+      .find(x=>x.getAttribute('href').indexOf('Q16')>=0);
     return a? a.getAttribute('href') : null; });
-  ok('the catalogue now links revision 2', /\?v=2$/.test(link||''), link);
+  ok('the catalogue links Q16 through the shell runner',
+     /^#\/run\/ADV-2026-P2-CHE-Q16$/.test(link||''), link);
+  // The runner is where the revision is applied now, so that is where to look.
+  await p.goto(S+link,{waitUntil:'networkidle'}); await sleep(1500);
+  const framed2 = await p.evaluate(()=>{const f=document.querySelector('#rstage iframe');
+    return f?f.getAttribute('src'):null;});
+  ok('and the frame it opens now carries revision 2', /\?v=2$/.test(framed2||''), framed2);
   await p.goto(S+Q16+'?v=2',{waitUntil:'networkidle'}); await sleep(500);
   const served = await p.evaluate(()=>document.documentElement.outerHTML.indexOf('REVISION-TWO-MARKER')>=0);
   ok('and the visitor is served the NEW content, not the cached old one', served);
@@ -177,7 +187,7 @@ const META=R+'/simulations/2026/paper-2/chemistry/adv-2026-p2-che-q16/meta.json'
 
   const feedBeforeAdd = feedV();
   probeAdded = true;
-  execSync('python3 ' + __dirname + '/addsim.py',
+  execSync('python3 ' + q(__dirname + '/addsim.py'),
            { cwd: R, env: { ...process.env, PRAYOGX_ROOT: R }, stdio: 'pipe' });
   ok('adding a simulation through the real pipeline moves the feed version',
      feedV() !== feedBeforeAdd, feedBeforeAdd.slice(0,8) + ' -> ' + feedV().slice(0,8));

@@ -179,12 +179,13 @@ def stub_pages(published):
     <span class="chip">%(difficulty)s</span>
   </div>
   <p class="lede">%(summary)s</p>
-  <a class="go" href="%(sim)s?v=%(rev)s">Open the interactive simulation</a>
+  <a class="go" href="../../#/run/%(id)s">Open the interactive simulation</a>
   %(sub)s
   %(con)s
   <h2>Simulation ID</h2>
   <ul><li>%(id)s &middot; revision %(rev)s</li></ul>
-  <p style="margin-top:26px"><a href="../../#/sim/%(id)s">See this simulation in the library &rarr;</a></p>
+  <p style="margin-top:26px"><a href="../../#/sim/%(id)s">See this simulation in the library &rarr;</a>
+    &nbsp;&middot;&nbsp; <a href="%(sim)s?v=%(rev)s">open the simulation file on its own</a></p>
 </main>
 </body>
 </html>

@@ -141,6 +141,15 @@ button{font:inherit;color:inherit}
 .vfav.on{color:var(--gold)}
 #frame{flex:1;width:100%;border:0;background:var(--bg);
   padding:0 var(--safe-r) var(--safe-b) var(--safe-l)}
+/* One control, one corner, and only after a real scroll - not a raft of
+   floating buttons parked on top of the experiment. */
+.vtop{position:absolute;z-index:2;
+  right:calc(var(--safe-r) + 14px);bottom:calc(var(--safe-b) + 14px);
+  min-height:40px;padding:0 14px;border-radius:999px;
+  border:1px solid var(--line-strong);background:var(--surface);
+  color:var(--text-2);font-size:13px;font-weight:600;cursor:pointer;
+  box-shadow:0 6px 18px -8px rgba(0,0,0,.5);opacity:.94}
+.vtop[hidden]{display:none}
 
 /* --------------------------------------------------------------- tabs */
 .tabs{position:fixed;left:0;right:0;bottom:0;z-index:30;display:grid;

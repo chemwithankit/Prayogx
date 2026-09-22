@@ -280,6 +280,19 @@ ok("shell and feed caches are still version-keyed, so a deploy still replaces th
 
 ok("the service worker is stamped with the current feed version",
    m and m.group(1) == cat["version"], (m.group(1) if m else "none") + " vs " + cat["version"])
+# Navigation lives in the shell, once, so a simulation never carries any. If the
+# runner route or its frame went missing, every simulation would open as a bare file
+# again with no way back - and nothing else here would notice.
+site_js = open(os.path.join(ROOT, "site/site.js"), encoding="utf-8").read()
+index_html = open(os.path.join(ROOT, "index.html"), encoding="utf-8").read()
+ok("the shell carries a simulation runner with a way back",
+   'id="runner"' in index_html and 'id="rback"' in index_html and '"#/run/"' in site_js)
+ok("no simulation carries navigation markup of its own",
+   not any(re.search(r'rback|vback|#/run/', open(os.path.join(d, f), encoding="utf-8",
+                                                  errors="ignore").read())
+           for d, _, fs_ in os.walk(os.path.join(ROOT, "simulations"))
+           for f in fs_ if f == "index.html"))
+
 ok("simulation URLs are revision-keyed in the site",
    'sim.revision' in open(os.path.join(ROOT, "site/site.js"), encoding="utf-8").read())
 ok("the app keys its stored copy on revision",

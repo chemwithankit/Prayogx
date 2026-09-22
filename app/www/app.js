@@ -383,6 +383,7 @@
       el("vfav").textContent = on ? "★" : "☆";
     };
     v.hidden = false;
+    el("vtop").hidden = true;
     f.srcdoc = '<!doctype html><meta charset="utf-8"><body style="font:15px system-ui;' +
       'padding:26px;color:#777">Loading the simulation…</body>';
     noteRecent(card.id);
@@ -409,10 +410,53 @@
         });
     });
   }
-  function closeSim() {
+  /* Two ways out of a simulation, and they are not the same journey.
+       toLibrary === true   the bar says "Library", so it goes to the Library
+       toLibrary === false  hardware Back: one step back the way you came,
+                            which is the detail screen if you arrived through it
+     Neither ever leaves the app from inside a simulation. */
+  function closeSim(toLibrary) {
+    detachTopWatch();
     el("viewer").hidden = true;
     el("frame").srcdoc = "";
+    el("vtop").hidden = true;
+    if (toLibrary) {
+      MODE = "library";
+      VIEW = null;
+      [].forEach.call(el("tabs").querySelectorAll("button"), function (x) {
+        x.className = x.getAttribute("data-tab") === "library" ? "on" : "";
+      });
+    }
     render();
+  }
+
+  /* ------------------------------------------------------------ long pages
+     The simulation scrolls inside its own frame, so the bar above it never
+     moves - but the top of a long experiment can be a long way up. One button,
+     one corner, and only once there is something to scroll back from. */
+  var TOPW = { win: null, fn: null };
+  var TOP_AFTER = 600;
+
+  function attachTopWatch() {
+    detachTopWatch();
+    var f = el("frame"), win;
+    try { win = f.contentWindow; } catch (e) { return; }
+    if (!win) return;
+    var fn = function () {
+      var doc = win.document.documentElement || {};
+      el("vtop").hidden = (win.pageYOffset || doc.scrollTop || 0) < TOP_AFTER;
+    };
+    try {
+      win.addEventListener("scroll", fn, { passive: true });
+      TOPW.win = win; TOPW.fn = fn;
+      fn();
+    } catch (e) { TOPW.win = null; TOPW.fn = null; }
+  }
+  function detachTopWatch() {
+    if (TOPW.win && TOPW.fn) {
+      try { TOPW.win.removeEventListener("scroll", TOPW.fn); } catch (e) {}
+    }
+    TOPW.win = null; TOPW.fn = null;
   }
 
   /* ---------------------------------------------------------------- sheet */
@@ -490,7 +534,17 @@
   el("sheetbg").addEventListener("click", closeSheet);
   el("clearf").addEventListener("click", function () { FILTERS = {}; openSheet(); });
   el("applyf").addEventListener("click", function () { closeSheet(); SHOWN = PAGE; render(); });
-  el("vback").addEventListener("click", closeSim);
+  /* srcdoc fires load like any other document, so this covers both the stored
+     copy and a freshly fetched one without openSim having to know which. */
+  el("frame").addEventListener("load", function () { attachTopWatch(); });
+  el("vback").addEventListener("click", function () { closeSim(true); });
+  el("vtop").addEventListener("click", function () {
+    if (!TOPW.win) return;
+    var still = window.matchMedia &&
+                window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    try { TOPW.win.scrollTo({ top: 0, behavior: still ? "auto" : "smooth" }); }
+    catch (e) { TOPW.win.scrollTo(0, 0); }
+  });
   el("themebtn").addEventListener("click", function () {
     var r = document.documentElement;
     var dark = r.getAttribute("data-theme") === "dark" ||
@@ -504,7 +558,7 @@
   /* Android hardware back, and the iOS swipe that maps to it: close the
      viewer, then a sheet, then the detail screen, and only then leave. */
   function goBack() {
-    if (!el("viewer").hidden) { closeSim(); return true; }
+    if (!el("viewer").hidden) { closeSim(false); return true; }
     if (!el("sheet").hidden) { closeSheet(); return true; }
     if (MODE.indexOf("detail:") === 0) { MODE = VIEW || "library"; render(); return true; }
     if (MODE !== "library") {

@@ -274,3 +274,75 @@ main{padding:22px 0 64px}
   .updatebar{bottom:max(18px, env(safe-area-inset-bottom))}
   .offlinebar{padding-top:max(6px, env(safe-area-inset-top))}
 }
+
+/* ==========================================================================
+   The simulation runner
+
+   A simulation is a self-contained file. Rather than rewriting seventeen of
+   them - or seventeen hundred - to carry a navigation bar, the shell frames
+   one and puts the bar above it. The frame scrolls; the bar does not, so
+   "Library" is reachable from any depth of a long simulation without a single
+   line of navigation code inside the simulation itself.
+   ========================================================================== */
+.runner{
+  position:fixed; inset:0; z-index:80; display:flex; flex-direction:column;
+  background:var(--surface-0);
+}
+/* A class that sets `display` beats the user-agent [hidden] rule, so a runner
+   left "hidden" would still swallow every click on the page behind it. */
+.runner[hidden]{display:none}
+body.running{overflow:hidden}
+
+.rbar{
+  display:flex; align-items:center; gap:12px; flex:0 0 auto;
+  background:var(--surface-1); border-bottom:1px solid var(--line);
+  padding:calc(env(safe-area-inset-top, 0px) + 8px)
+          calc(env(safe-area-inset-right, 0px) + 12px) 8px
+          calc(env(safe-area-inset-left, 0px) + 12px);
+}
+.rback{
+  display:inline-flex; align-items:center; gap:5px; flex:0 0 auto;
+  min-height:44px; padding:0 10px 0 6px; border-radius:9px;
+  color:var(--accent); font:600 14.5px/1 var(--sans); text-decoration:none;
+  white-space:nowrap;
+}
+.rback:hover{background:var(--surface-2)}
+.rtitle{
+  flex:1 1 auto; min-width:0; font:500 13.5px/1.3 var(--sans);
+  color:var(--text-secondary);
+  overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
+}
+.rfav{
+  flex:0 0 auto; min-width:44px; min-height:44px; border:0; border-radius:9px;
+  background:none; color:var(--text-muted); font-size:19px; cursor:pointer;
+}
+.rfav:hover{background:var(--surface-2)}
+.rfav.on{color:#e8a317}
+
+.rstage{flex:1 1 auto; min-height:0; display:flex}
+.rstage iframe{
+  flex:1 1 auto; width:100%; height:100%; border:0; background:var(--surface-0);
+  padding-bottom:env(safe-area-inset-bottom, 0px);
+}
+
+/* Appears only after a real scroll, and only on the simulations long enough to
+   need it. One control, in one corner - not a floating cluster sitting on top
+   of the experiment. */
+.rtop{
+  position:absolute; z-index:2;
+  right:calc(env(safe-area-inset-right, 0px) + 14px);
+  bottom:calc(env(safe-area-inset-bottom, 0px) + 14px);
+  min-height:40px; padding:0 14px; border-radius:999px;
+  border:1px solid var(--line-strong); background:var(--surface-1);
+  color:var(--text-secondary); font:600 13px/1 var(--sans); cursor:pointer;
+  box-shadow:0 6px 18px -8px rgba(0,0,0,.45);
+  opacity:.94;
+}
+.rtop:hover{background:var(--surface-2); color:var(--text-primary); opacity:1}
+.rtop[hidden]{display:none}
+
+/* Desktop: the same bar, just calmer. */
+@media (min-width:760px){
+  .rbar{padding-left:20px; padding-right:20px; gap:16px}
+  .rtitle{font-size:14.5px}
+}
