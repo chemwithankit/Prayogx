@@ -15,6 +15,14 @@ buildscript {
         // that still declare 8.2.1 in their own buildscript blocks.
         classpath 'com.android.tools.build:gradle:8.10.0'
         classpath 'com.google.gms:google-services:4.4.0'
+        // Kotlin enters the project only through @capacitor-community/admob,
+        // which pins 1.9.10 in its own buildscript - too old for AGP 8.10.0.
+        // This is the root pin that actually applies, for the same
+        // parent-first reason as the AGP line above. It cannot read
+        // $kotlin_version from variables.gradle: Gradle evaluates buildscript
+        // blocks before the rest of the file, so the number is written out
+        // here and must be kept in step with kotlin_version there.
+        classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:2.2.0'
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files

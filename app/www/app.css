@@ -23,6 +23,11 @@
   --safe-l: env(safe-area-inset-left, 0px);
   --safe-r: env(safe-area-inset-right, 0px);
   --tabh: 58px;
+  /* The AdMob banner is a native view floating over the WebView - nothing
+     resizes the web layer - so ads.js reports its height here and every
+     bottom edge below lifts by it. 0px everywhere the banner is not on
+     screen, which is the website, the browser, and the simulation viewer. */
+  --adh: 0px;
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme=light]){
@@ -76,7 +81,8 @@ button{font:inherit;color:inherit}
   background:transparent;border-radius:999px;padding:6px 12px;font-size:12.5px;cursor:pointer}
 
 /* --------------------------------------------------------------- list */
-.screen{padding:12px calc(var(--safe-r) + 14px) calc(var(--tabh) + var(--safe-b) + 18px)
+.screen{padding:12px calc(var(--safe-r) + 14px)
+  calc(var(--tabh) + var(--safe-b) + var(--adh) + 18px)
   calc(var(--safe-l) + 14px)}
 .boot,.empty{color:var(--muted);text-align:center;padding:38px 10px}
 .empty h3{color:var(--text);margin:0 0 6px;font-size:16px}
@@ -114,7 +120,7 @@ button{font:inherit;color:inherit}
 .detail h3{font-size:11.5px;letter-spacing:1.3px;text-transform:uppercase;color:var(--muted);
   margin:20px 0 7px}
 .detail ul{margin:0;padding-left:19px;color:var(--text-2);font-size:13.5px;line-height:1.6}
-.openbar{position:sticky;bottom:calc(var(--tabh) + var(--safe-b));display:flex;gap:9px;
+.openbar{position:sticky;bottom:calc(var(--tabh) + var(--safe-b) + var(--adh));display:flex;gap:9px;
   padding:10px 0 2px;background:linear-gradient(to top,var(--bg) 70%,transparent)}
 .btn{min-height:50px;border-radius:13px;border:1px solid var(--line);background:var(--surface);
   font-size:15px;font-weight:700;cursor:pointer;padding:0 18px}
@@ -152,7 +158,7 @@ button{font:inherit;color:inherit}
 .vtop[hidden]{display:none}
 
 /* --------------------------------------------------------------- tabs */
-.tabs{position:fixed;left:0;right:0;bottom:0;z-index:30;display:grid;
+.tabs{position:fixed;left:0;right:0;bottom:var(--adh);z-index:30;display:grid;
   grid-template-columns:repeat(4,1fr);background:var(--bar);
   border-top:1px solid var(--line);
   padding:0 var(--safe-r) var(--safe-b) var(--safe-l)}
@@ -183,7 +189,7 @@ button{font:inherit;color:inherit}
 
 /* -------------------------------------------------------------- toast */
 .toast{position:fixed;left:calc(var(--safe-l) + 14px);right:calc(var(--safe-r) + 14px);
-  bottom:calc(var(--tabh) + var(--safe-b) + 14px);
+  bottom:calc(var(--tabh) + var(--safe-b) + var(--adh) + 14px);
   z-index:70;background:var(--surface);border:1px solid var(--line-strong);border-radius:13px;
   padding:12px 14px;font-size:13.5px;box-shadow:0 14px 34px -14px rgba(0,0,0,.5);
   display:flex;align-items:center;gap:12px}

@@ -4,4 +4,8 @@
     <string name="title_activity_main">PrayogX</string>
     <string name="package_name">com.prayogx.app</string>
     <string name="custom_url_scheme">com.prayogx.app</string>
+    <!-- AdMob app ID (not an ad unit ID). The Google Mobile Ads SDK crashes
+         the app at launch if the meta-data in AndroidManifest.xml that points
+         here is missing. -->
+    <string name="admob_app_id">ca-app-pub-3980851000523907~9663733959</string>
 </resources>

@@ -110,8 +110,11 @@ if os.path.isdir(app_www):
                     dupes.append(os.path.relpath(p, ROOT))
 ok("the mobile bundle contains no simulation copy", not dupes, ", ".join(dupes))
 app_files = sorted(os.listdir(app_www)) if os.path.isdir(app_www) else []
+# ads.js joined this list with the AdMob banner. The list is deliberately an
+# allowlist and not a size check: the point is that no simulation, catalogue or
+# copy of the website can ever appear here unnoticed.
 ok("the mobile bundle is a shell, not a site copy",
-   set(app_files) <= {"index.html", "app.js", "app.css", "config.js"},
+   set(app_files) <= {"index.html", "app.js", "app.css", "config.js", "ads.js"},
    ", ".join(app_files))
 ok("no catalogue is bundled with the app",
    not os.path.exists(os.path.join(app_www, "content")) and
@@ -324,6 +327,73 @@ ok("simulation URLs are revision-keyed in the site",
    'sim.revision' in open(os.path.join(ROOT, "site/site.js"), encoding="utf-8").read())
 ok("the app keys its stored copy on revision",
    'rec.revision === wanted' in open(os.path.join(app_www, "app.js"), encoding="utf-8").read())
+
+# ------------------------------------------------------------------ AdMob
+# One anchored adaptive banner, Android only, library screen only. These three
+# checks hold whether the feature is in or out: with the plugin removed they
+# flip to asserting that nothing was left behind.
+pkg = json.load(open(os.path.join(ROOT, "app/package.json"), encoding="utf-8"))
+ads_on = "@capacitor-community/admob" in pkg.get("dependencies", {})
+manifest_xml = open(os.path.join(ROOT, "app/android/app/src/main/AndroidManifest.xml"),
+                    encoding="utf-8").read()
+strings_xml = open(os.path.join(ROOT, "app/android/app/src/main/res/values/strings.xml"),
+                   encoding="utf-8").read()
+ads_js_path = os.path.join(app_www, "ads.js")
+ads_js = open(ads_js_path, encoding="utf-8").read() if os.path.exists(ads_js_path) else ""
+
+# 1. The Google Mobile Ads SDK throws at APPLICATION START if this meta-data is
+#    missing or points at nothing - long before any ad is requested. It is the
+#    one AdMob mistake that ships a crash rather than a missing banner.
+if ads_on:
+    declared = re.search(r'com\.google\.android\.gms\.ads\.APPLICATION_ID"\s*\n?\s*'
+                         r'android:value="@string/(\w+)"', manifest_xml)
+    app_id = None
+    if declared:
+        m = re.search(r'<string name="%s">([^<]+)</string>' % declared.group(1), strings_xml)
+        app_id = m.group(1) if m else None
+    ok("the AdMob app ID is declared where the SDK looks for it at launch",
+       app_id is not None and "~" in app_id,
+       "manifest meta-data -> %s" % (app_id or "MISSING"))
+else:
+    ok("no AdMob app ID is left behind now that the plugin is gone",
+       "com.google.android.gms.ads" not in manifest_xml and "admob" not in strings_xml.lower())
+
+# 2. play-services-ads 24.x requires minSdk 23 and would drop every Android 5.1
+#    device. Kotlin enters the project only with this plugin, which pins 1.9.10
+#    in its own buildscript - too old for AGP 8.10 - so the root classpath has
+#    to name a newer one, and the two declarations have to agree.
+if ads_on:
+    ads_sdk = re.search(r"playServicesAdsVersion\s*=\s*'([0-9.]+)'", gtxt)
+    kt_var = re.search(r"kotlin_version\s*=\s*'([0-9.]+)'", gtxt)
+    kt_root = re.search(r"kotlin-gradle-plugin:([0-9.]+)",
+                        open(os.path.join(ROOT, ROOT_AGP_FILE), encoding="utf-8").read())
+    msdk = gradle_int("minSdkVersion")
+    ok("the ads SDK and Kotlin pins are explicit and keep minSdk %s valid" % msdk,
+       bool(ads_sdk) and _ver(ads_sdk.group(1)) < (24, 0, 0) and
+       bool(kt_var) and bool(kt_root) and kt_var.group(1) == kt_root.group(1),
+       "play-services-ads %s, Kotlin %s (root %s)"
+       % (ads_sdk and ads_sdk.group(1), kt_var and kt_var.group(1), kt_root and kt_root.group(1)))
+else:
+    ok("no ads toolchain pins are left behind now that the plugin is gone",
+       "playServicesAds" not in gtxt and "kotlin_version" not in gtxt)
+
+# 3. The banner is a native view floating over the WebView: it does not know
+#    what is on screen underneath it. The only thing keeping it off a
+#    simulation is the app asking for it to go, and the only thing keeping it
+#    off the website is the website never loading it.
+site_index = open(os.path.join(ROOT, "index.html"), encoding="utf-8").read()
+site_js_txt = open(os.path.join(ROOT, "site/site.js"), encoding="utf-8").read()
+web_is_clean = ("ads.js" not in site_index and
+                not re.search(r"AdMob|adsbygoogle", site_index + site_js_txt, re.I))
+if ads_on:
+    ok("the banner is taken down for the viewer and never reaches the website",
+       "PrayogXAds.hide()" in app_js and "PrayogXAds.show()" in app_js and
+       ads_js and "BOTTOM_CENTER" in ads_js and web_is_clean,
+       "app.js hide/show present: %s, website clean: %s"
+       % ("PrayogXAds.hide()" in app_js, web_is_clean))
+else:
+    ok("no ad hooks are left behind now that the plugin is gone",
+       "PrayogXAds" not in app_js and not os.path.exists(ads_js_path) and web_is_clean)
 
 # ------------------------------------------------ deployment hygiene
 ok("papers/ is gitignored", "papers/" in open(os.path.join(ROOT, ".gitignore"), encoding="utf-8").read())

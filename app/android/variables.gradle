@@ -21,4 +21,20 @@ ext {
     androidxJunitVersion = '1.1.5'
     androidxEspressoCoreVersion = '3.5.1'
     cordovaAndroidVersion = '10.1.1'
+
+    // --- AdMob: @capacitor-community/admob 6.2.0 --------------------------
+    // The plugin reads these from here; naming them makes the versions
+    // explicit instead of inheriting whatever its own defaults happen to be.
+    //
+    // play-services-ads 23.0.0 raised the Google Mobile Ads floor to API 21,
+    // so minSdkVersion 22 above is unaffected. Do NOT move to 24.x: that
+    // requires minSdk 23 and would drop every Android 5.1 device.
+    playServicesAdsVersion = '23.0.0'
+    androidxCoreKTXVersion = '1.13.0'
+    //
+    // This plugin is the only Kotlin in the project and declares 1.9.10 in
+    // its own buildscript, which predates AGP 8.10.0. Buildscript
+    // classloaders delegate parent-first, so the root build.gradle classpath
+    // decides - keep that line and this one at the same version.
+    kotlin_version = '2.2.0'
 }

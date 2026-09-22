@@ -17,7 +17,24 @@ window.PRAYOGX = {
     detail: "content/sims/{id}.json"
   },
   /* How many opened simulations to keep on the device. */
-  offlineCap: 30
+  offlineCap: 30,
+
+  /* ----------------------------------------------------------------- ads
+     One anchored adaptive banner, Android only, library screen only. It is
+     hidden for as long as a simulation is open.
+
+     enabled:false switches the whole feature off - no native change needed.
+
+     testing:true serves Google's official test banner and registers the
+     device as a test device. The production unit below is never requested
+     until this is explicitly false. Do not flip it just to see "a real ad":
+     tapping your own live ads is what gets an AdMob account suspended. */
+  ads: {
+    enabled: true,
+    testing: true,
+    bannerId: "ca-app-pub-3980851000523907/6881959261",
+    testBannerId: "ca-app-pub-3940256099942544/9214589741"
+  }
 };
 
 /* NOTE ON CORS

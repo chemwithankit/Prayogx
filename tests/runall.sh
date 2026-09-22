@@ -40,6 +40,7 @@ run "Android 16 edge-to-edge"              "$HERE/edgetoedge.js"
 run "feed failure messages"                "$HERE/feederror.js"
 run "global navigation"                    "$HERE/navigation.js"
 run "feed schema latch"                    "$HERE/schemagate.js"
+run "AdMob banner placement"               "$HERE/adsgate.js"
 run "catalogue at 1000 simulations"        scalecheck.js
 
 echo

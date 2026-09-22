@@ -172,6 +172,9 @@
     el("boot") && el("boot").remove();
     el("searchwrap").style.display = "none";
     el("chiprow").style.display = "none";
+    /* after closeSim above, which would have brought the banner back: the
+       gate is not the library, and nothing is browsable behind it. */
+    if (window.PrayogXAds) window.PrayogXAds.hide();
     el("screen").innerHTML = '<div class="empty" id="schemagate">' +
       "<h3>This version of PrayogX is not compatible with the current library. " +
       "Please update the app.</h3>" +
@@ -432,6 +435,10 @@
      a string. That is what makes an opened simulation work offline without
      the app shipping a single line of it. */
   function openSim(card) {
+    /* The banner is a native view floating over the WebView, so it would come
+       down on the simulation's own controls. It goes away before the viewer
+       opens and comes back in closeSim. */
+    if (window.PrayogXAds) window.PrayogXAds.hide();
     var v = el("viewer"), f = el("frame");
     el("vtitle").textContent = card.shortTitle || card.title;
     el("vfav").className = "vfav" + (isFav(card.id) ? " on" : "");
@@ -479,6 +486,7 @@
     el("viewer").hidden = true;
     el("frame").srcdoc = "";
     el("vtop").hidden = true;
+    if (window.PrayogXAds) window.PrayogXAds.show();
     if (toLibrary) {
       MODE = "library";
       VIEW = null;
@@ -686,6 +694,7 @@
   window.addEventListener("online", function () { loadFeed(); });
 
   loadFeed();
+  if (window.PrayogXAds) window.PrayogXAds.start();
   window.__prayogx = { goBack: goBack, state: function () {
     return { mode: MODE, sims: SIMS.length, filters: FILTERS, catalog: CATALOG && CATALOG.version };
   } };

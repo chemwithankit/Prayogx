@@ -24,6 +24,12 @@
 
         </activity>
 
+        <!-- Required by the Google Mobile Ads SDK. Without it the app throws
+             on startup, before any ad is ever requested. -->
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="@string/admob_app_id" />
+
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="${applicationId}.fileprovider"
