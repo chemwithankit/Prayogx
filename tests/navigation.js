@@ -280,6 +280,39 @@ const freePort = () => new Promise(res => { const sv = net.createServer();
   await ap.click('#vtop'); await sleep(1100);
   ok('which returns the simulation to the top',
      (await ap.evaluate(() => document.getElementById('frame').contentWindow.pageYOffset)) < 5);
+  /* srcdoc has no URL of its own, so a section tab inside a simulation used to
+     resolve against the SHELL and replace the simulation with the Library. */
+  console.log('\n=== the app: a section tab inside the simulation ===');
+  const pre = await ap.evaluate(() => {
+    const f = document.getElementById('frame'), d = f.contentDocument;
+    const a = [...d.querySelectorAll('a[href^="#"]')].filter(x => x.offsetParent !== null)[0];
+    return { srcdoc: f.hasAttribute('srcdoc'), url: d.URL, title: d.title,
+             href: a ? a.getAttribute('href') : null,
+             resolvesTo: a ? a.href : null };
+  });
+  ok('the app renders the simulation with srcdoc, which has no URL of its own',
+     pre.srcdoc && pre.url === 'about:srcdoc', pre.url);
+  ok('so a section tab still RESOLVES to the shell - that part is the platform',
+     (pre.resolvesTo || '').indexOf('about:srcdoc') < 0, pre.href + ' -> ' + pre.resolvesTo);
+  await ap.evaluate(() => {
+    const d = document.getElementById('frame').contentDocument;
+    [...d.querySelectorAll('a[href^="#"]')].filter(x => x.offsetParent !== null)[0].click();
+  });
+  await sleep(1400);
+  const post = await ap.evaluate(() => {
+    const f = document.getElementById('frame'), d = f.contentDocument;
+    return { url: d.URL, title: d.title, scrolled: Math.round(f.contentWindow.pageYOffset),
+             viewer: !document.getElementById('viewer').hidden,
+             mode: window.__prayogx.state().mode };
+  });
+  ok('...but tapping it does NOT leave the simulation',
+     post.url === 'about:srcdoc' && post.title === pre.title,
+     JSON.stringify(post.title.slice(0, 34)) + ' at ' + post.url);
+  ok('...it scrolls to the section, which is what the tab is for',
+     post.scrolled > 100, 'scrolled to ' + post.scrolled + 'px (was 0)');
+  ok('...and the app itself never moved',
+     post.viewer === true && /^detail:/.test(post.mode), 'viewer open, mode ' + post.mode);
+
   await ap.click('#vback'); await sleep(700);
   ok('← Library in the app goes to the Library, as it says',
      (await ap.evaluate(() => window.__prayogx.state().mode)) === 'library');

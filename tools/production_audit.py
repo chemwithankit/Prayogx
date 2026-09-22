@@ -287,6 +287,14 @@ site_js = open(os.path.join(ROOT, "site/site.js"), encoding="utf-8").read()
 index_html = open(os.path.join(ROOT, "index.html"), encoding="utf-8").read()
 ok("the shell carries a simulation runner with a way back",
    'id="runner"' in index_html and 'id="rback"' in index_html and '"#/run/"' in site_js)
+# The app renders a simulation with srcdoc, and an srcdoc document inherits the
+# shell's base URL - so a simulation's own <a href="#section"> resolves to the shell
+# and tapping a section tab walks out of the simulation. 122 anchors across the
+# library depend on the frame handling them instead.
+app_js = open(os.path.join(app_www, "app.js"), encoding="utf-8").read()
+ok("the app handles a simulation's own in-page anchors inside the frame",
+   "attachAnchorShim" in app_js and 'href.charAt(0) !== "#"' in app_js)
+
 ok("no simulation carries navigation markup of its own",
    not any(re.search(r'rback|vback|#/run/', open(os.path.join(d, f), encoding="utf-8",
                                                   errors="ignore").read())

@@ -452,6 +452,45 @@
       fn();
     } catch (e) { TOPW.win = null; TOPW.fn = null; }
   }
+  /* ------------------------------------------------- anchors in the frame
+     A simulation is rendered with srcdoc, and an srcdoc document has no URL of
+     its own - it inherits the shell's. So <a href="#extrap"> inside a
+     simulation resolves to https://localhost/#extrap, the app shell, and
+     tapping a section tab replaced the simulation with the Library inside the
+     viewer. The website never had this: its frame has a real src, so the same
+     anchor resolves against the simulation's own URL.
+
+     A same-page anchor can therefore never navigate usefully in here, so every
+     one of them is handled in the frame instead: find the target, scroll to it.
+     No simulation is touched, and this covers every anchor in every simulation
+     added later - 122 of them today. */
+  function attachAnchorShim() {
+    var f = el("frame"), d;
+    try { d = f.contentDocument; } catch (e) { return; }
+    if (!d || !d.body) return;
+    d.addEventListener("click", function (e) {
+      if (e.defaultPrevented || e.button) return;     // the simulation dealt with it
+      var a = e.target;
+      while (a && a !== d.body && a.nodeName !== "A") a = a.parentNode;
+      if (!a || a.nodeName !== "A") return;
+      var tgt = a.getAttribute && a.getAttribute("target");
+      if (tgt && tgt !== "_self") return;
+      var href = (a.getAttribute && a.getAttribute("href")) || "";
+      if (href.charAt(0) !== "#") return;
+      // Whatever happens next, it must not be a navigation: the only place
+      // this anchor can go is out of the simulation.
+      e.preventDefault();
+      var id = href.slice(1), to = null;
+      if (id) to = d.getElementById(id) || (d.getElementsByName(id) || [])[0] || null;
+      var still = window.matchMedia &&
+                  window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      var how = { behavior: still ? "auto" : "smooth", block: "start" };
+      if (to && to.scrollIntoView) { to.scrollIntoView(how); return; }
+      try { f.contentWindow.scrollTo({ top: 0, behavior: how.behavior }); }
+      catch (err) { f.contentWindow.scrollTo(0, 0); }
+    });
+  }
+
   function detachTopWatch() {
     if (TOPW.win && TOPW.fn) {
       try { TOPW.win.removeEventListener("scroll", TOPW.fn); } catch (e) {}
@@ -536,7 +575,10 @@
   el("applyf").addEventListener("click", function () { closeSheet(); SHOWN = PAGE; render(); });
   /* srcdoc fires load like any other document, so this covers both the stored
      copy and a freshly fetched one without openSim having to know which. */
-  el("frame").addEventListener("load", function () { attachTopWatch(); });
+  el("frame").addEventListener("load", function () {
+    attachTopWatch();
+    attachAnchorShim();
+  });
   el("vback").addEventListener("click", function () { closeSim(true); });
   el("vtop").addEventListener("click", function () {
     if (!TOPW.win) return;
