@@ -9,10 +9,10 @@ pass=0; fail=0
 line(){ printf '%-46s %s\n' "$1" "$2"; }
 
 echo "=== chemistry verifiers (exact arithmetic, no browser) ==="
-for f in verify15.py verify16.py verify17.py; do
-  out=$(python3 "$f" 2>&1 | tail -1)
-  if echo "$out" | grep -q "0 failed"; then line "$f" "$out"; pass=$((pass+1));
-  else line "$f" "FAILED: $out"; fail=$((fail+1)); fi
+for f in verify15.py verify16.py verify17.py "$HERE/verify_p1q02.py"; do
+  out=$(python3 "$f" 2>&1 | tail -1); nm=$(basename "$f")
+  if echo "$out" | grep -q "0 failed"; then line "$nm" "$out"; pass=$((pass+1));
+  else line "$nm" "FAILED: $out"; fail=$((fail+1)); fi
 done
 
 echo
@@ -32,6 +32,7 @@ run(){ # name, script
   else line "$1" "FAILED  $out"; fail=$((fail+1)); fi
 }
 run "Q17 simulation (t17.js)"              t17.js
+run "P1 Q2 reversible reaction chamber"    "$HERE/sim_p1q02.js"
 run "production suite (prodcheck)"         "$HERE/prodcheck.js"
 run "single-source propagation"            "$HERE/propagation.js"
 run "revision + stale cache"               "$HERE/stalecache.js"

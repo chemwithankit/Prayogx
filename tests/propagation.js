@@ -1,4 +1,6 @@
 const ROOT = process.env.PRAYOGX_ROOT || require('path').resolve(__dirname, '..');
+/* the library size comes from the canonical source, so adding a simulation never breaks this suite */
+const NSIMS = JSON.parse(require('fs').readFileSync(ROOT + '/data/manifest.json', 'utf8')).simulations.length;
 /* A path interpolated into a shell string has to be quoted, or the shell
    splits it - and this project lives in "Project simulation". */
 const q = p => "'" + String(p).replace(/'/g, "'\\''") + "'";
@@ -29,17 +31,17 @@ const ok=(l,c,x)=>{n++;if(!c)bad++;console.log((c?'PASS  ':'FAIL  ')+l+(x!==unde
   const swVersion   = () => (/var VERSION = "([^"]*)";/.exec(fs.readFileSync(ROOT+'/sw.js','utf8'))||[])[1];
 
   // ---------------------------------------------------------------- BEFORE
-  console.log('\n=== BEFORE: 17 simulations in the canonical source ===');
+  console.log('\n=== BEFORE: ' + NSIMS + ' simulations in the canonical source ===');
   const v1 = feedVersion();
   const c1 = await b.newContext({viewport:{width:1280,height:900}});
   const w1 = await c1.newPage();
   await w1.goto(S,{waitUntil:'networkidle'});
   const before = await w1.evaluate(()=>document.querySelectorAll('article.card').length);
-  ok('website shows 17', before===17, before);
+  ok('website shows ' + NSIMS, before===NSIMS, before);
   const a1 = await (await b.newContext({viewport:{width:390,height:844}})).newPage();
   await a1.goto(A,{waitUntil:'networkidle'}); await sleep(1200);
   const appBefore = await a1.evaluate(()=>window.__prayogx.state().sims);
-  ok('app shows 17', appBefore===17, appBefore);
+  ok('app shows ' + NSIMS, appBefore===NSIMS, appBefore);
   ok('probe is absent from the crawlable pages',
      !fs.existsSync(ROOT+'/s/ADV-2026-P2-PHY-Q99/index.html'));
   await c1.close();
@@ -60,7 +62,7 @@ const ok=(l,c,x)=>{n++;if(!c)bad++;console.log((c?'PASS  ':'FAIL  ')+l+(x!==unde
   w2.on('response',r=>{ if(r.status()>=400) errs.push(r.status()+' '+r.url()); });
   await w2.goto(S,{waitUntil:'networkidle'});
   const after = await w2.evaluate(()=>document.querySelectorAll('article.card').length);
-  ok('WEBSITE picks it up with no code change', after===18, after);
+  ok('WEBSITE picks it up with no code change', after===NSIMS + 1, after);
   await w2.fill('#q','propagation'); await sleep(1000);
   const found = await w2.evaluate(()=>[...document.querySelectorAll('article.card h3')].map(h=>h.textContent));
   ok('...and search finds it', found.length===1 && /Propagation probe/.test(found[0]), found.join('|'));
@@ -102,7 +104,7 @@ const ok=(l,c,x)=>{n++;if(!c)bad++;console.log((c?'PASS  ':'FAIL  ')+l+(x!==unde
   const aerr=[]; a2.on('pageerror',e=>aerr.push(e.message));
   await a2.goto(A,{waitUntil:'networkidle'}); await sleep(1400);
   const appAfter = await a2.evaluate(()=>window.__prayogx.state().sims);
-  ok('CAPACITOR APP picks it up with no rebuild', appAfter===18, appAfter);
+  ok('CAPACITOR APP picks it up with no rebuild', appAfter===NSIMS + 1, appAfter);
   ok('...and the app saw the new feed version',
      (await a2.evaluate(()=>window.__prayogx.state().catalog))===v2);
   await a2.fill('#q','propagation'); await sleep(1100);

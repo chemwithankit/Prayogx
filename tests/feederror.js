@@ -1,4 +1,6 @@
 const ROOT = process.env.PRAYOGX_ROOT || require('path').resolve(__dirname, '..');
+/* the library size comes from the canonical source, so adding a simulation never breaks this suite */
+const NSIMS = JSON.parse(require('fs').readFileSync(ROOT + '/data/manifest.json', 'utf8')).simulations.length;
 const { chromium } = require(process.env.PLAYWRIGHT || '/home/claude/build/node_modules/playwright');
 const { spawn } = require('child_process');
 const fs = require('fs'), net = require('net');
@@ -61,13 +63,13 @@ const ok = (l, c, x) => { n++; if (!c) bad++;
   // 1. a real feed, so the device has a stored library to protect
   pointAt(GOOD);
   await p.goto(A, { waitUntil: 'networkidle' }); await sleep(1100);
-  ok('the fixture feed loads normally', (await cards()) === 17, (await cards()) + ' cards');
+  ok('the fixture feed loads normally', (await cards()) === NSIMS, (await cards()) + ' cards');
 
   // 2. the site starts answering 404 while a library is already stored
   pointAt(WRONG_PATH);
   await p.goto(A, { waitUntil: 'networkidle' }); await sleep(1400);
   const keptCards = await cards(), keptToast = await toast();
-  ok('a 404 does not throw away the library already on the device', keptCards === 17, keptCards + ' cards');
+  ok('a 404 does not throw away the library already on the device', keptCards === NSIMS, keptCards + ' cards');
   ok('and it says the site answered, not that the device is offline',
      /404/.test(keptToast) && !/Offline/i.test(keptToast), JSON.stringify(keptToast));
 

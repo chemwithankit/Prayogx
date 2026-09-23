@@ -1,4 +1,6 @@
 const ROOT = process.env.PRAYOGX_ROOT || require('path').resolve(__dirname, '..');
+/* the library size comes from the canonical source, so adding a simulation never breaks this suite */
+const NSIMS = JSON.parse(require('fs').readFileSync(ROOT + '/data/manifest.json', 'utf8')).simulations.length;
 /* The production tree, exercised the way a user and a crawler would. */
 const { chromium } = require(process.env.PLAYWRIGHT || '/home/claude/build/node_modules/playwright');
 const { spawn } = require('child_process');
@@ -30,7 +32,7 @@ const ok=(l,c,x)=>{n++;if(!c)bad++;console.log((c?'PASS  ':'FAIL  ')+l+(x!==unde
     total:document.querySelector('.count.total .n').textContent,
     subjects:[...document.querySelectorAll('.count.subj .k')].map(x=>x.textContent),
     foot:document.getElementById('foot-src').textContent}));
-  ok('17 cards render from the feed', cat.cards===17 && cat.total==='17', cat.cards+'/'+cat.total);
+  ok(NSIMS+' cards render from the feed', cat.cards===NSIMS && cat.total===String(NSIMS), cat.cards+'/'+cat.total);
   ok('it reads content/index.json', /content\/index\.json/.test(cat.foot), cat.foot.trim().slice(0,52));
 
   // ------------------------------------------------------------------ search
@@ -46,13 +48,13 @@ const ok=(l,c,x)=>{n++;if(!c)bad++;console.log((c?'PASS  ':'FAIL  ')+l+(x!==unde
   // ----------------------------------------------------------------- filters
   console.log('\n--- filters ---');
   await p.selectOption('#fs','Chemistry'); await sleep(500);
-  ok('subject filter', (await p.evaluate(()=>document.querySelectorAll('article.card').length))===17);
+  ok('subject filter', (await p.evaluate(()=>document.querySelectorAll('article.card').length))===NSIMS);
   await p.selectOption('#fc','Solutions and Colligative Properties'); await sleep(500);
   ok('chapter filter narrows', (await p.evaluate(()=>document.querySelectorAll('article.card').length))===3);
   const topics = await p.evaluate(()=>[...document.querySelectorAll('#ft option')].length);
   ok('topic options narrow to the chapter', topics>=2 && topics<=5, topics+' options');
   await p.click('#reset'); await sleep(500);
-  ok('reset restores everything', (await p.evaluate(()=>document.querySelectorAll('article.card').length))===17);
+  ok('reset restores everything', (await p.evaluate(()=>document.querySelectorAll('article.card').length))===NSIMS);
 
   // -------------------------------------------------------------- detail page
   console.log('\n--- simulation detail pages ---');
@@ -99,12 +101,12 @@ const ok=(l,c,x)=>{n++;if(!c)bad++;console.log((c?'PASS  ':'FAIL  ')+l+(x!==unde
   const onDetail = await p.evaluate(()=>!!document.querySelector('.detail'));
   await p.goBack(); await sleep(700);
   const backList = await p.evaluate(()=>document.querySelectorAll('article.card').length);
-  ok('browser back returns from a detail page to the catalogue', onDetail && backList===17, backList);
+  ok('browser back returns from a detail page to the catalogue', onDetail && backList===NSIMS, backList);
   await p.goForward(); await sleep(600);
   ok('forward returns to the detail page', await p.evaluate(()=>!!document.querySelector('.detail')));
   await p.click('a.back'); await sleep(700);   // we are on the detail page after goForward
   ok('the in-page back link also returns to the catalogue',
-     (await p.evaluate(()=>document.querySelectorAll('article.card').length))===17);
+     (await p.evaluate(()=>document.querySelectorAll('article.card').length))===NSIMS);
 
   // --------------------------------------------------------------- mobile
   console.log('\n--- mobile layout ---');
@@ -145,7 +147,7 @@ const ok=(l,c,x)=>{n++;if(!c)bad++;console.log((c?'PASS  ':'FAIL  ')+l+(x!==unde
   await ctx.setOffline(true); await sleep(400);
   await p.goto(S,{waitUntil:'domcontentloaded'}).catch(()=>{}); await sleep(1100);
   ok('the catalogue still renders when the browser reports offline',
-     (await p.evaluate(()=>document.querySelectorAll('article.card').length))===17,
+     (await p.evaluate(()=>document.querySelectorAll('article.card').length))===NSIMS,
      await p.evaluate(()=>document.querySelectorAll('article.card').length));
   ok('and the offline banner appears', await p.evaluate(()=>!!document.querySelector('.offlinebar')));
   await ctx.setOffline(false);

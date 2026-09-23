@@ -6,6 +6,8 @@
    most: hideBanner() REJECTS when no banner was ever shown. If the app layer
    does not swallow that, this suite sees an unhandled rejection. */
 const ROOT = process.env.PRAYOGX_ROOT || require('path').resolve(__dirname, '..');
+/* the library size comes from the canonical source, so adding a simulation never breaks this suite */
+const NSIMS = JSON.parse(require('fs').readFileSync(ROOT + '/data/manifest.json', 'utf8')).simulations.length;
 const { chromium } = require(process.env.PLAYWRIGHT || '/home/claude/build/node_modules/playwright');
 const { spawn } = require('child_process');
 const fs = require('fs');
@@ -195,7 +197,7 @@ const STUB = () => {
      (await p2.evaluate(() => getComputedStyle(document.querySelector('.tabs')).bottom)) === '0px' &&
      (await p2.evaluate(() => getComputedStyle(document.documentElement).getPropertyValue('--adh').trim())) === '0px');
   ok('the library still loads with ads off',
-     (await p2.evaluate(() => window.__prayogx.state().sims)) === 17);
+     (await p2.evaluate(() => window.__prayogx.state().sims)) === NSIMS);
 
   /* ------------------------------------- plain browser, no Capacitor at all */
   const bare = await b.newContext({ viewport: { width: 390, height: 844 } });
@@ -205,7 +207,7 @@ const STUB = () => {
   await sleep(900);
   ok('with no Capacitor present the shell runs untouched and error-free',
      (await p3.evaluate(() => getComputedStyle(document.querySelector('.tabs')).bottom)) === '0px' &&
-     (await p3.evaluate(() => window.__prayogx.state().sims)) === 17 &&
+     (await p3.evaluate(() => window.__prayogx.state().sims)) === NSIMS &&
      !errs.some(e => e.indexOf('BARE') === 0), errs.filter(e => e.indexOf('BARE') === 0)[0] || '');
 
   /* -------------------------------------------------------- source rules */
@@ -224,7 +226,7 @@ const STUB = () => {
     a.concat(e.isDirectory() ? walk(d + '/' + e.name) : [d + '/' + e.name]), []);
   const simFiles = walk(ROOT + '/simulations').filter(f => /\.html$/.test(f));
   const simsWithAds = simFiles.filter(f => /AdMob|adsbygoogle|PrayogXAds|--adh/i.test(fs.readFileSync(f, 'utf8')));
-  ok('and no simulation was touched', simFiles.length >= 17 && simsWithAds.length === 0,
+  ok('and no simulation was touched', simFiles.length >= NSIMS && simsWithAds.length === 0,
      simFiles.length + ' simulation files scanned' + (simsWithAds.length ? ', HIT: ' + simsWithAds[0] : ''));
 
   ok('console clean throughout', errs.length === 0, errs.slice(0, 2).join(' | '));

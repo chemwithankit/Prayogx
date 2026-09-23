@@ -1,4 +1,6 @@
 const ROOT = process.env.PRAYOGX_ROOT || require('path').resolve(__dirname, '..');
+/* the library size comes from the canonical source, so adding a simulation never breaks this suite */
+const NSIMS = JSON.parse(require('fs').readFileSync(ROOT + '/data/manifest.json', 'utf8')).simulations.length;
 const { chromium } = require(process.env.PLAYWRIGHT || '/home/claude/build/node_modules/playwright');
 const { spawn } = require('child_process');
 const fs = require('fs'), net = require('net'), path = require('path');
@@ -122,16 +124,16 @@ const freePort = () => new Promise(res => { const sv = net.createServer();
   /* ------------------------------------------------------------- WEB */
   console.log('\n=== the website ===');
   let r = await web('current', '1.0.0');
-  ok('the current 1.0.0 feed loads normally', r.st.cards === 17 && !r.st.gate, r.st.cards + ' cards');
+  ok('the current 1.0.0 feed loads normally', r.st.cards === NSIMS && !r.st.gate, r.st.cards + ' cards');
   r = await web('minor', '1.4.2');
-  ok('a 1.4.2 feed - newer minor and patch - still loads', r.st.cards === 17 && !r.st.gate, r.st.cards + ' cards');
+  ok('a 1.4.2 feed - newer minor and patch - still loads', r.st.cards === NSIMS && !r.st.gate, r.st.cards + ' cards');
   r = await web('major', '2.0.0');
   ok('a 2.0.0 feed is refused, and nothing is rendered', r.st.gate && r.st.cards === 0, r.st.cards + ' cards');
   ok('and the student is told what to do', /not compatible[\s\S]*update the app/i.test(r.st.text),
      JSON.stringify(r.st.text.split('\n')[0].slice(0, 70)));
   ok('no exception was thrown getting there', r.errs.length === 0, r.errs.slice(0, 1).join(''));
   r = await web('absent', null);
-  ok('a feed with no schemaVersion is not treated as hostile', r.st.cards === 17 && !r.st.gate, r.st.cards + ' cards');
+  ok('a feed with no schemaVersion is not treated as hostile', r.st.cards === NSIMS && !r.st.gate, r.st.cards + ' cards');
 
   console.log('\n=== the website, falling back to the manifest ===');
   setSchema('1.0.0');
@@ -141,16 +143,16 @@ const freePort = () => new Promise(res => { const sv = net.createServer();
   ok('the manifest fallback is latched by the same rule', r.st.gate && r.st.cards === 0, r.st.cards + ' cards');
   setManifestSchema('1.0.0');
   r = await web('manifest-ok', '1.0.0');
-  ok('and a compatible manifest fallback still boots', r.st.cards === 17 && !r.st.gate, r.st.cards + ' cards');
+  ok('and a compatible manifest fallback still boots', r.st.cards === NSIMS && !r.st.gate, r.st.cards + ' cards');
   fs.renameSync(T + '/content.off', T + '/content');
 
   /* --------------------------------------------------------- ANDROID */
   console.log('\n=== the Android app shell ===');
   let a = await android('current', '1.0.0');
-  ok('the current 1.0.0 feed loads normally', a.st.cards === 17 && !a.st.gate, a.st.cards + ' cards');
+  ok('the current 1.0.0 feed loads normally', a.st.cards === NSIMS && !a.st.gate, a.st.cards + ' cards');
   await a.ctx.close();
   a = await android('minor', '1.4.2');
-  ok('a 1.4.2 feed still loads', a.st.cards === 17 && !a.st.gate, a.st.cards + ' cards');
+  ok('a 1.4.2 feed still loads', a.st.cards === NSIMS && !a.st.gate, a.st.cards + ' cards');
   await a.ctx.close();
 
   a = await android('major', '2.0.0', null, '1.0.0');   // stocked first, then the feed breaks
@@ -180,7 +182,7 @@ const freePort = () => new Promise(res => { const sv = net.createServer();
   setSchema('1.0.0');
   a = await android('recovered', '1.0.0', '1.4.0');   // a remembered value THIS build understands
   ok('a refusal does not outlive the build that resolves it',
-     a.st.cards === 17 && !a.st.gate, a.st.cards + ' cards');
+     a.st.cards === NSIMS && !a.st.gate, a.st.cards + ' cards');
   ok('and the stale flag is cleared', a.st.remembered === null || a.st.remembered === 'null', a.st.remembered);
   await a.ctx.close();
 

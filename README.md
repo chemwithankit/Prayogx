@@ -220,6 +220,7 @@ so the PDFs cannot leak through a future edit by accident.
 
 | ID | Year | Paper | Subject | Chapter | Question | Answer |
 |---|---|---|---|---|---|---|
+| `ADV-2026-P1-CHE-Q02` | 2026 | 1 | Chemistry | Chemical Kinetics | Q.2 | (C) |
 | `ADV-2026-P2-CHE-Q01` | 2026 | 2 | Chemistry | Electrochemistry | Q.1 | (C) 5 |
 | `ADV-2026-P2-CHE-Q02` | 2026 | 2 | Chemistry | Chemical Bonding and Molecular Structure | Q.2 | (B) |
 | `ADV-2026-P2-CHE-Q03` | 2026 | 2 | Chemistry | Aldehydes, Ketones and Carboxylic Acids | Q.3 | (A) |

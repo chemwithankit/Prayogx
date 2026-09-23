@@ -1,4 +1,6 @@
 const ROOT = process.env.PRAYOGX_ROOT || require('path').resolve(__dirname, '..');
+/* the library size comes from the canonical source, so adding a simulation never breaks this suite */
+const NSIMS = JSON.parse(require('fs').readFileSync(ROOT + '/data/manifest.json', 'utf8')).simulations.length;
 const { chromium } = require(process.env.PLAYWRIGHT || '/home/claude/build/node_modules/playwright');
 const { spawn } = require('child_process');
 const sleep = ms => new Promise(r => setTimeout(r, ms));
@@ -46,13 +48,13 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
      reqs.some(u=>u.indexOf(':'+PS+'/content/catalog.json')>=0) &&
      reqs.some(u=>u.indexOf(':'+PS+'/content/index.json')>=0));
   const st = await p.evaluate(()=>window.__prayogx.state());
-  ok('the library loads over the network', st.sims===17, st.sims+' simulations, feed '+st.catalog);
+  ok('the library loads over the network', st.sims===NSIMS, st.sims+' simulations, feed '+st.catalog);
   const ui = await p.evaluate(()=>({
     cards:document.querySelectorAll('.simcard').length,
     tabs:document.querySelectorAll('.tabs button').length,
     title:document.getElementById('screenTitle').textContent
   }));
-  ok('it renders a native-style list with a bottom tab bar', ui.cards===17 && ui.tabs===4, ui.cards+' cards');
+  ok('it renders a native-style list with a bottom tab bar', ui.cards===NSIMS && ui.tabs===4, ui.cards+' cards');
   const ov = await p.evaluate(()=>document.documentElement.scrollWidth-document.documentElement.clientWidth);
   ok('no horizontal overflow at 390 px', ov<=0, ov);
   const tap = await p.evaluate(()=>{
@@ -75,7 +77,7 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
      filtered.cards===1 && filtered.chips===1, filtered.cards+' card');
   await p.click('#chiprow button'); await sleep(250);
   ok('removing the chip restores the list',
-     (await p.evaluate(()=>document.querySelectorAll('.simcard').length))===17);
+     (await p.evaluate(()=>document.querySelectorAll('.simcard').length))===NSIMS);
 
   // search
   await p.fill('#q','kjeldahl'); await sleep(800);
@@ -131,7 +133,7 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
     cards:document.querySelectorAll('.simcard').length,
     sims:window.__prayogx.state().sims}));
   ok('with the site unreachable the library still opens from its stored copy',
-     offl.cards===17, offl.cards+' cards');
+     offl.cards===NSIMS, offl.cards+' cards');
   await p.click('.tabs button[data-tab="offline"]'); await sleep(700);
   const offtab = await p.evaluate(()=>document.getElementById('screen').innerText);
   ok('the Offline tab lists what is stored on the device',
