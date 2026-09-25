@@ -1,0 +1,1615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Two-step isothermal compression, minimum work — JEE Advanced 2026 Paper 1 Q.1 | PrayogX</title>
+<meta name="description" content="Compress 0.5 mol of an ideal gas from 2 bar to 8 bar at 600 K in two irreversible steps. The experiment loads a piston, measures the work each time, tries every intermediate pressure P, and finds the one that needs the least work — then reveals the answer.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232a78d6'/%3E%3Cpath d='M12.5 6.5h7M13.6 6.5v7.2L7.9 24.1a1.5 1.5 0 0 0 1.3 2.3h13.6a1.5 1.5 0 0 0 1.3-2.3l-5.7-10.4V6.5' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M10.6 20.6h10.8' stroke='white' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E">
+<meta name="sim-id" content="ADV-2026-P1-CHE-Q01">
+<style>
+:root{
+  color-scheme: light;
+  --surface-0:#f4f4f1; --surface-1:#fcfcfb; --surface-2:#ececea;
+  --line:#d9d9d4; --line-strong:#bcbcb5;
+  --text-primary:#0b0b0b; --text-secondary:#52514e; --text-muted:#77766f;
+  --s1:#2a78d6; --s2:#eb6834; --s3:#1baf7a; --s4:#4a3aa7;
+  --good:#00743f; --bad:#c0392b; --accent:#2a78d6;
+  --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+  --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --serif:ui-serif,Georgia,"Times New Roman",serif;
+  --radius:10px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  color-scheme: dark;
+  --surface-0:#111110; --surface-1:#1a1a19; --surface-2:#232322;
+  --line:#34342f; --line-strong:#4a4a44;
+  --text-primary:#ffffff; --text-secondary:#c3c2b7; --text-muted:#95948b;
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#9085e9;
+  --good:#3fae7a; --bad:#e66767; --accent:#3987e5;
+}}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --surface-0:#111110; --surface-1:#1a1a19; --surface-2:#232322;
+  --line:#34342f; --line-strong:#4a4a44;
+  --text-primary:#ffffff; --text-secondary:#c3c2b7; --text-muted:#95948b;
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#9085e9;
+  --good:#3fae7a; --bad:#e66767; --accent:#3987e5;
+}
+*{box-sizing:border-box}
+[hidden]{display:none !important}
+body{margin:0;background:var(--surface-0);color:var(--text-primary);font-family:var(--sans);
+  font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px 80px}
+
+/* ---------- header ---------- */
+header.top{border-bottom:1px solid var(--line);background:var(--surface-1)}
+.top-inner{max-width:1180px;margin:0 auto;padding:22px 20px 18px;position:relative;
+  display:flex;flex-wrap:wrap;gap:16px;align-items:flex-start;justify-content:space-between}
+.simid{font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--text-muted)}
+h1{font-size:23px;line-height:1.25;margin:6px 0 10px;font-weight:640;max-width:660px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-size:11.5px;padding:3px 9px;border:1px solid var(--line-strong);border-radius:999px;
+  color:var(--text-secondary);background:var(--surface-2);white-space:nowrap}
+.chip.k{border-color:var(--accent);color:var(--accent);background:transparent}
+.answerbox{border:1px solid var(--line-strong);border-radius:var(--radius);background:var(--surface-2);
+  padding:12px 16px;min-width:220px}
+.answerbox .lbl{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted)}
+.answerbox .val{font-family:var(--mono);font-size:25px;font-weight:600;color:var(--good);line-height:1.22}
+.answerbox .sub{font-size:12px;color:var(--text-secondary)}
+.answerbox.locked .val{color:var(--text-muted);font-size:17px;letter-spacing:.04em}
+.answerbox .rv{margin-top:6px;font-size:11px;background:none;border:none;padding:0;color:var(--accent);
+  cursor:pointer;text-decoration:underline;font-family:var(--sans)}
+.themebtn{position:absolute;top:14px;right:16px;border:1px solid var(--line-strong);background:var(--surface-2);
+  color:var(--text-secondary);border-radius:8px;padding:4px 9px;font-size:12px;cursor:pointer}
+.brandbar{display:flex;align-items:center;gap:8px;margin-bottom:9px}
+.brandbar .pxmark{width:21px;height:21px;flex:none;display:block}
+.brandbar .wm{font-size:13px;font-weight:800;letter-spacing:.17em;color:var(--text-secondary);line-height:1}
+.brandbar .wm i{font-style:normal;color:var(--accent)}
+
+nav.jump{position:sticky;top:0;z-index:20;background:var(--surface-0);border-bottom:1px solid var(--line);
+  padding:8px 0;margin-bottom:26px}
+nav.jump ul{max-width:1180px;margin:0 auto;padding:0 20px;list-style:none;display:flex;gap:4px;overflow-x:auto}
+nav.jump a{display:block;padding:5px 11px;border-radius:7px;font-size:13px;text-decoration:none;
+  color:var(--text-secondary);white-space:nowrap}
+nav.jump a:hover{background:var(--surface-2);color:var(--text-primary)}
+
+section{margin:0 0 42px;scroll-margin-top:56px}
+h2{font-size:17px;font-weight:640;margin:0 0 4px;display:flex;align-items:baseline;gap:9px;flex-wrap:wrap}
+h2 .n{font-family:var(--mono);font-size:12px;color:var(--text-muted);font-weight:400}
+h2 .vb{font-size:12px;color:var(--text-muted);font-weight:400}
+h2.big{font-size:20px;letter-spacing:.02em}
+.lede{color:var(--text-secondary);font-size:13.5px;margin:0 0 16px;max-width:78ch}
+.panel{background:var(--surface-1);border:1px solid var(--line);border-radius:var(--radius);padding:18px}
+.panel h3{margin:0 0 12px;font-size:13px;letter-spacing:.05em;text-transform:uppercase;color:var(--text-muted);font-weight:600}
+.qtext{font-family:var(--serif);font-size:16px;line-height:1.7}
+.opts{list-style:none;padding:0;margin:14px 0 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(150px,100%),1fr));gap:9px}
+.opts li{border:1px solid var(--line);border-radius:10px;padding:9px 12px;background:var(--surface-1);
+  display:flex;align-items:baseline;gap:10px;font-family:var(--serif);font-size:16px}
+.opts li .k{font-family:var(--mono);font-size:12.5px;color:var(--text-muted)}
+.opts li .mark{margin-left:auto;font-family:var(--sans);font-size:11.5px;font-weight:600}
+.opts li.correct{border-color:var(--good);background:color-mix(in srgb,var(--good) 11%,transparent)}
+.opts li.correct .mark{color:var(--good)}
+.opts li.wrong{border-color:var(--bad)} .opts li.wrong .mark{color:var(--bad)}
+.assume{border-left:3px solid var(--s4);padding:8px 0 8px 13px;margin:14px 0 0;font-size:13.5px;color:var(--text-secondary)}
+.assume b{color:var(--text-primary)}
+
+/* ---------- the dashboard ---------- */
+.deck{border:1px solid var(--line);border-radius:var(--radius);padding:14px;
+  background:linear-gradient(180deg,var(--surface-1),color-mix(in srgb,var(--surface-2) 55%,var(--surface-1)));
+  box-shadow:0 1px 2px rgba(0,0,0,.04),0 10px 26px -18px rgba(0,0,0,.35)}
+.statusbar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding-bottom:11px;border-bottom:1px solid var(--line);margin-bottom:12px}
+.xstat{display:flex;align-items:center;gap:8px;font-size:12.5px;font-weight:700;letter-spacing:.03em;
+  padding:5px 12px;border-radius:999px;border:1px solid var(--line-strong);background:var(--surface-1);color:var(--text-secondary)}
+.xstat .dot{width:9px;height:9px;border-radius:50%;background:var(--text-muted)}
+.xstat.run .dot{background:var(--accent);animation:pulse 1.2s ease-in-out infinite}
+.xstat.ana .dot{background:var(--s4);animation:pulse 1.2s ease-in-out infinite}
+.xstat.done{border-color:var(--good);color:var(--good);background:color-mix(in srgb,var(--good) 10%,transparent)}
+.xstat.done .dot{background:var(--good)}
+@keyframes pulse{50%{opacity:.25}}
+.stages{display:flex;gap:5px;flex-wrap:wrap}
+.stages span{font-size:11px;padding:3px 9px;border-radius:999px;border:1px solid var(--line);color:var(--text-muted);white-space:nowrap}
+.stages span.now{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:650}
+.stages span.done{border-color:var(--good);color:var(--good)}
+.statusbar .sp{flex:1}
+.guide{font-size:12px;color:var(--text-muted)}
+
+.grid1{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:13px;align-items:start}
+.grid2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:13px;margin-top:13px}
+.grid1>*,.grid2>*{min-width:0}
+@media(max-width:960px){.grid1,.grid2{grid-template-columns:1fr !important}}
+
+/* the always-dark chamber */
+.lab3d{position:relative;border-radius:12px;padding:12px;overflow:hidden;
+  background:radial-gradient(90% 70% at 18% 8%,rgba(84,169,255,.16),transparent 60%),
+    radial-gradient(80% 70% at 88% 92%,rgba(255,147,80,.12),transparent 62%),
+    linear-gradient(170deg,#0d1322 0%,#070a12 55%,#0a0e1a 100%);
+  border:1px solid rgba(150,180,255,.16);box-shadow:inset 0 1px 0 rgba(255,255,255,.07),0 18px 40px -26px rgba(0,0,0,.9);
+  color:#eef3ff}
+.lab3d:before{content:"";position:absolute;inset:0;pointer-events:none;
+  background:repeating-linear-gradient(0deg,rgba(255,255,255,.028) 0 1px,transparent 1px 3px);opacity:.5;mix-blend-mode:overlay}
+.lab3d>*{position:relative}
+.lab3d .hd{display:flex;align-items:baseline;gap:9px;flex-wrap:wrap;margin-bottom:5px}
+.lab3d .hd h3{margin:0;font-size:11.5px;letter-spacing:.11em;text-transform:uppercase;color:#8fa6c9;font-weight:700}
+.lab3d .hd .st{font-size:10.5px;font-family:var(--mono);color:#9fb0cc;border:1px solid rgba(160,190,255,.2);border-radius:999px;padding:1px 8px}
+.lab3d .narr{font-size:12.5px;color:#c3d2ea;margin:0 0 8px;min-height:2.8em;line-height:1.42}
+.lab3d .narr b{color:#fff;font-family:var(--mono);font-weight:650}
+.lab3d .narr .a{color:#6fb6ff;font-weight:700} .lab3d .narr .o{color:#ffa56a;font-weight:700}
+.lab3d .narr .gd{color:#3ee39a;font-weight:700}
+.vwrap{position:relative;perspective:1000px}
+canvas#vessel{display:block;width:100%;height:auto;border-radius:10px;transform:rotateX(2.5deg);transform-origin:50% 100%}
+@media(max-width:560px){.vwrap{overflow:hidden}canvas#vessel{width:128%;max-width:none;margin-left:-14%}}
+@media(prefers-reduced-motion:reduce){canvas#vessel{transform:none}}
+.done-banner{position:absolute;left:50%;top:14px;transform:translateX(-50%) scale(.92);opacity:0;pointer-events:none;
+  background:rgba(10,30,24,.8);border:1px solid rgba(62,227,154,.6);color:#dfffee;border-radius:12px;padding:8px 18px;
+  font-weight:800;letter-spacing:.1em;font-size:14px;box-shadow:0 0 28px -6px rgba(62,227,154,.7);transition:.45s;white-space:nowrap}
+.done-banner.on{opacity:1;transform:translateX(-50%) scale(1)}
+.revealhost{position:absolute;inset:0;display:none;align-items:center;justify-content:center;z-index:6}
+.revealhost.on{display:flex}
+svg.graf{display:block;width:100%;height:auto}
+.blackout{position:absolute;inset:0;background:#000;opacity:0;pointer-events:none;transition:opacity .45s;z-index:4;border-radius:12px}
+.blackout.on{opacity:.86}
+.flashout{position:absolute;inset:0;background:radial-gradient(circle at 50% 45%,rgba(255,255,255,.95),rgba(120,255,200,.5) 35%,transparent 70%);
+  opacity:0;pointer-events:none;z-index:5;border-radius:12px}
+@keyframes flashpop{0%{opacity:0}18%{opacity:1}100%{opacity:0}}
+.flashout.go{animation:flashpop .85s ease-out 1}
+@media(prefers-reduced-motion:reduce){.flashout.go{animation:none}.blackout{transition:none}}
+.dim canvas#vessel{filter:brightness(.4) saturate(.8)}
+@media(prefers-reduced-motion:no-preference){.zoom{animation:zoomin 1.1s ease-out 1}}
+@keyframes zoomin{0%{transform:scale(1)}40%{transform:scale(1.035)}100%{transform:scale(1)}}
+
+/* the rail: inputs + live data */
+.rail{border:1px solid var(--line);border-radius:12px;padding:11px 12px;
+  background:color-mix(in srgb,var(--surface-1) 82%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  box-shadow:inset 0 1px 0 color-mix(in srgb,#fff 40%,transparent),0 8px 24px -18px rgba(0,0,0,.4);
+  display:flex;flex-direction:column;gap:9px}
+.rail h4{margin:0;font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--text-muted);font-weight:700}
+.rail .grp{border-top:1px dashed var(--line);padding-top:9px}
+.status{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:750;letter-spacing:.04em;border-radius:8px;padding:6px 9px;
+  border:1px solid var(--good);color:var(--good);background:color-mix(in srgb,var(--good) 10%,transparent)}
+.status.custom{border-color:var(--s4);color:var(--s4);background:color-mix(in srgb,var(--s4) 10%,transparent)}
+.fld{margin:7px 0 0}
+.fld .lb{display:flex;justify-content:space-between;align-items:baseline;gap:6px;font-size:12px;margin-bottom:4px;color:var(--text-secondary)}
+.fld .lb b{font-weight:600;color:var(--text-primary);font-family:var(--serif);font-size:13.5px}
+.fld .lb .u{font-size:10.5px;color:var(--text-muted);font-family:var(--mono);flex:none}
+.fld .rw{display:flex;gap:5px;align-items:center}
+.fld .rw input{flex:1;min-width:0;padding:6px 8px;border-radius:7px;border:1px solid var(--line-strong);background:var(--surface-0);
+  color:var(--text-primary);font-family:var(--mono);font-size:13.5px;text-align:center;font-weight:600}
+.fld .rw input:focus{outline:2px solid var(--accent);outline-offset:-1px}
+.fld .rw input.bad{border-color:var(--bad);background:color-mix(in srgb,var(--bad) 10%,transparent)}
+.fld .rw input:disabled{opacity:.55}
+.fld .rw button{flex:none;width:34px;height:34px;border-radius:7px;border:1px solid var(--line-strong);background:var(--surface-2);
+  color:var(--text-primary);font-size:16px;line-height:1;cursor:pointer;font-family:var(--mono);touch-action:manipulation}
+.fld .rw button.rs{font-size:13px}
+.fld .rw button:hover:not(:disabled){border-color:var(--accent);color:var(--accent)}
+.fld .rw button:disabled{opacity:.4;cursor:not-allowed}
+.fld .fh{font-size:10.5px;color:var(--text-muted);margin-top:2px;line-height:1.35;min-height:1.35em}
+.fld .fh.bad{color:var(--bad);font-weight:650}
+.railnote{font-size:11px;color:var(--text-muted);line-height:1.45;margin:0}
+button.resetq{width:100%;padding:8px 10px;border-radius:9px;border:1px solid var(--line-strong);background:var(--surface-2);
+  color:var(--text-primary);font-size:12.5px;font-weight:650;cursor:pointer;font-family:var(--sans)}
+button.resetq:hover{border-color:var(--accent);color:var(--accent)}
+.gauges{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(104px,100%),1fr));gap:6px}
+.gz{border:1px solid var(--line);border-radius:9px;background:var(--surface-2);padding:5px 8px;overflow:hidden}
+.gz .k{font-size:9.5px;letter-spacing:.04em;text-transform:uppercase;color:var(--text-muted);font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.gz .v{font-family:var(--mono);font-size:16px;font-weight:700;line-height:1.25;white-space:nowrap}
+.gz .u{font-size:9.5px;color:var(--text-muted);font-weight:400}
+.gz.a .v{color:var(--s1)} .gz.o .v{color:var(--s2)}
+.gz.hot{border-color:var(--good);background:color-mix(in srgb,var(--good) 11%,transparent)} .gz.hot .v{color:var(--good)}
+
+/* graphs */
+.graphcard{border:1px solid var(--line);border-radius:12px;background:var(--surface-1);padding:12px 14px}
+.graphcard h4{margin:0 0 4px;font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--text-muted);font-weight:700}
+.graphcard .gsub{font-size:11.5px;color:var(--text-muted);margin:0 0 4px}
+.chartwrap{position:relative}
+svg.chart{display:block;width:100%;height:auto;overflow:visible}
+.tip{position:absolute;pointer-events:none;background:var(--surface-1);border:1px solid var(--line-strong);border-radius:8px;padding:7px 10px;
+  font-size:12px;box-shadow:0 4px 14px rgba(0,0,0,.13);opacity:0;transition:opacity .1s;z-index:5;min-width:140px}
+.tip .t{font-family:var(--mono);font-size:11px;color:var(--text-muted);margin-bottom:3px}
+.tip .r{display:flex;gap:7px;white-space:nowrap} .tip .rv{margin-left:auto;font-family:var(--mono);font-weight:600}
+details.tbl{margin-top:6px;font-size:12.5px} details.tbl summary{cursor:pointer;color:var(--text-secondary)}
+
+/* calculation panel */
+.calc{margin-top:13px;border:1px solid var(--line);border-radius:12px;padding:12px 14px;
+  background:linear-gradient(180deg,var(--surface-1),var(--surface-2))}
+.calc .bt{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--text-muted);font-weight:700;margin-bottom:6px}
+.calc ol{list-style:none;margin:0;padding:0;display:grid;gap:5px}
+.calc li{display:grid;grid-template-columns:auto minmax(0,1fr);gap:10px;align-items:baseline;animation:cin .45s ease-out}
+@keyframes cin{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.calc li{animation:none}}
+.calc li .s{font-family:var(--mono);font-size:10.5px;color:#fff;background:var(--accent);border-radius:999px;padding:1px 7px;font-weight:700}
+.calc li .m{font-family:var(--serif);font-size:16px;line-height:1.55;min-width:0;overflow-x:auto}
+.calc li .m .w{display:block;font-family:var(--sans);font-size:11.5px;color:var(--text-muted)}
+.calc li .m .hl{color:var(--good);font-weight:700}
+.calc li .m .ar{color:var(--s1);font-weight:700} .calc li .m .or{color:var(--s2);font-weight:700}
+.calc .empty{font-size:12.5px;color:var(--text-muted);margin:0}
+table.data{border-collapse:collapse;font-size:12.5px;width:100%}
+table.data th,table.data td{border:1px solid var(--line-strong);padding:5px 8px;text-align:center}
+table.data th{background:var(--surface-2);font-weight:600;font-size:11.5px;color:var(--text-secondary)}
+table.data td.n{font-family:var(--mono)}
+tr.win td{background:color-mix(in srgb,var(--good) 12%,transparent);font-weight:700}
+.scrollx{overflow-x:auto}
+
+/* action bar */
+.actbar{display:flex;gap:9px;align-items:center;flex-wrap:wrap;margin-top:12px}
+button.go{flex:none;padding:13px 24px;border-radius:11px;border:none;background:var(--accent);color:#fff;font-size:15px;font-weight:780;
+  cursor:pointer;font-family:var(--sans);letter-spacing:.04em;box-shadow:0 4px 16px -6px color-mix(in srgb,var(--accent) 75%,transparent);transition:.18s}
+button.go:hover:not(:disabled){filter:brightness(1.09);transform:translateY(-1px)}
+button.go:disabled{opacity:.42;cursor:not-allowed;box-shadow:none;transform:none}
+button.go.custom{background:var(--s4)}
+button.ghost{flex:none;padding:8px 13px;border-radius:9px;border:1px solid var(--line-strong);background:var(--surface-1);color:var(--text-secondary);
+  font-size:12.5px;cursor:pointer;font-family:var(--sans);min-height:36px}
+button.ghost:hover:not(:disabled){border-color:var(--accent);color:var(--accent)}
+button.ghost:disabled{opacity:.4;cursor:not-allowed}
+button.ghost[aria-pressed=true]{border-color:var(--accent);color:var(--accent);background:color-mix(in srgb,var(--accent) 10%,transparent)}
+.spd{display:flex;gap:4px}
+.spd button{padding:7px 10px;font-size:11.5px;border-radius:7px;border:1px solid var(--line-strong);background:var(--surface-1);color:var(--text-secondary);cursor:pointer;font-family:var(--mono)}
+.spd button[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:#fff}
+.actbar .msg{flex:1 1 220px;min-width:0;font-size:12px;color:var(--text-secondary);line-height:1.4}
+.actbar .msg b{color:var(--text-primary)}
+
+@keyframes popblink{0%{transform:scale(1)} 12%{transform:scale(1.16)} 24%{transform:scale(1)}
+  38%{opacity:.2} 50%{opacity:1} 64%{opacity:.2} 76%{opacity:1} 88%{transform:scale(1.07)} 100%{transform:scale(1);opacity:1}}
+.blink{animation:popblink 2s ease-in-out 1;display:inline-block}
+@keyframes ringpulse{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--good) 55%,transparent)} 70%{box-shadow:0 0 0 14px transparent} 100%{box-shadow:0 0 0 0 transparent}}
+.celebrate{animation:ringpulse 1.5s ease-out 2}
+@media(prefers-reduced-motion:reduce){.blink,.celebrate,.zoom{animation:none}}
+
+/* solution + help */
+.gate{border:1px dashed var(--line-strong);border-radius:var(--radius);padding:24px 20px;text-align:center;background:var(--surface-1)}
+.gate h4{margin:0 0 6px;font-size:15px} .gate p{margin:0 0 12px;font-size:13px;color:var(--text-secondary)}
+ol.steps{list-style:none;counter-reset:s;padding:0;margin:0;display:grid;gap:10px}
+ol.steps li{min-width:0;counter-increment:s;border:1px solid var(--line);border-radius:var(--radius);background:var(--surface-1);
+  padding:14px 16px 14px 52px;position:relative}
+ol.steps li::before{content:counter(s);position:absolute;left:15px;top:14px;width:23px;height:23px;border-radius:50%;background:var(--accent);
+  color:#fff;font-size:12px;font-weight:700;display:grid;place-items:center;font-family:var(--mono)}
+ol.steps h4{margin:0 0 6px;font-size:14px;font-weight:640}
+ol.steps p{margin:0 0 6px;font-size:13.5px;color:var(--text-secondary)}
+.eq{min-width:0;font-family:var(--serif);font-size:15.5px;background:var(--surface-2);border-radius:7px;padding:9px 13px;margin:8px 0;overflow-x:auto}
+.eq .hl{color:var(--good);font-weight:700}
+.obsnote{border-left:3px solid var(--s1);padding:6px 0 6px 12px;margin:8px 0;font-size:13px;color:var(--text-secondary)}
+.obsnote b{color:var(--text-primary)}
+sub{font-size:.72em} sup{font-size:.72em}
+.verify{border:1px solid var(--good);border-radius:var(--radius);margin-top:12px;background:color-mix(in srgb,var(--good) 8%,transparent);padding:14px 16px;font-size:13.5px}
+.verify h4{margin:0 0 6px;font-size:13.5px;color:var(--good)}
+.verify ul{margin:6px 0 0;padding-left:18px;color:var(--text-secondary)} .verify li{margin-bottom:4px}
+.howto{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(250px,100%),1fr));gap:11px}
+.howto>div{border:1px solid var(--line);border-radius:11px;padding:12px 14px;background:linear-gradient(180deg,var(--surface-1),var(--surface-2))}
+.howto .n{font-family:var(--mono);font-size:10.5px;color:var(--accent);letter-spacing:.1em;font-weight:700}
+.howto h4{margin:3px 0 6px;font-size:14px}
+.howto p{margin:0;font-size:13px;color:var(--text-secondary);line-height:1.5}
+.howto p b{color:var(--text-primary)}
+.meta-tbl{width:100%;border-collapse:collapse;font-size:13.5px}
+.meta-tbl th,.meta-tbl td{padding:6px 0;border-bottom:1px solid var(--line);vertical-align:top;text-align:left}
+.meta-tbl th{color:var(--text-muted);width:150px;font-size:12.5px;padding-right:14px;font-weight:500}
+footer{border-top:1px solid var(--line);margin-top:40px;padding-top:16px;font-size:12px;color:var(--text-muted)}
+
+/* classroom mode */
+body.classroom nav.jump,body.classroom section:not(#lab),body.classroom header.top .chips,body.classroom footer,
+body.classroom .rail .inputs,body.classroom .spd,body.classroom details.tbl,body.classroom #lab>.lede{display:none !important}
+body.classroom .wrap{max-width:none;padding-left:18px;padding-right:18px}
+body.classroom .lab3d .narr{font-size:20px;line-height:1.45;color:#e8f0ff}
+body.classroom .lab3d .hd h3{font-size:15px}
+body.classroom .gz .v{font-size:24px} body.classroom .gz .k{font-size:12px}
+body.classroom .calc li .m{font-size:25px} body.classroom .calc li .m .w{font-size:15px}
+body.classroom .xstat{font-size:16px} body.classroom .stages span{font-size:14px}
+body.classroom button.go{font-size:19px;padding:16px 30px}
+body.classroom .graphcard h4{font-size:13px}
+body.classroom .actbar .msg{font-size:15px}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-inner">
+    <div>
+      <div class="brandbar"><svg class="pxmark" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><rect width="32" height="32" rx="8" fill="var(--accent)"/><path d="M12.5 6.5h7M13.6 6.5v7.2L7.9 24.1a1.5 1.5 0 0 0 1.3 2.3h13.6a1.5 1.5 0 0 0 1.3-2.3l-5.7-10.4V6.5" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.6 20.6h10.8" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg><span class="wm">PRAYOG<i>X</i></span></div>
+      <div class="simid">ADV-2026-P1-CHE-Q01</div>
+      <h1>Two pushes on a piston: the cheapest way to squeeze a gas from 2 bar to 8 bar</h1>
+      <div class="chips">
+        <span class="chip">JEE Advanced 2026</span>
+        <span class="chip">Paper 1 · Q.1</span>
+        <span class="chip">Chemistry</span>
+        <span class="chip">Thermodynamics · work of compression</span>
+        <span class="chip">Single correct</span>
+        <span class="chip">+3 / 0 / −1</span>
+        <span class="chip k">Press start · watch it happen</span>
+      </div>
+    </div>
+    <div class="answerbox locked" id="answerbox">
+      <div class="lbl">Answer</div>
+      <div class="val" id="ansval">Run the experiment</div>
+      <div class="sub" id="anssub">The answer appears when the experiment finishes.</div>
+      <button class="rv" id="revealnow" type="button">Reveal anyway</button>
+    </div>
+    <button class="themebtn" id="themebtn" type="button">◐ theme</button>
+  </div>
+</header>
+
+<nav class="jump">
+  <ul>
+    <li><a href="#question">Question</a></li>
+    <li><a href="#lab">Interactive experiment</a></li>
+    <li><a href="#solution">Detailed solution</a></li>
+    <li><a href="#howto">How to use this simulation</a></li>
+  </ul>
+</nav>
+
+<div class="wrap">
+
+<section id="question">
+  <h2><span class="n">Q</span>The question <span class="vb">— verbatim</span></h2>
+  <p class="lede">JEE (Advanced) 2026, Paper 1, Chemistry, Section 1 — single correct option,
+     +3 for the correct option, 0 if unanswered, −1 otherwise.</p>
+  <div class="panel">
+    <div class="qtext">
+      <p><b>Q.1</b>&nbsp; An ideal gas (0.5 mol), initially at 2 bar pressure, is compressed at a
+         constant temperature of 600 K in two steps: first, against a constant external pressure of
+         <i>P</i> bar (2 &lt; <i>P</i> &lt; 8), and then against constant external pressure of 8 bar. At
+         each step, the compression is stopped only when the pressure of the gas becomes equal to the
+         external pressure. The total work done on the gas in these steps is <i>W</i>. Considering all
+         possible values of <i>P</i> (2 &lt; <i>P</i> &lt; 8) and taking the gas constant as <i>R</i> (in
+         J K<sup>−1</sup> mol<sup>−1</sup>), the minimum value of |<i>W</i>| (in J) is</p>
+    </div>
+    <ul class="opts" id="opts">
+      <li data-k="A"><span class="k">(A)</span>207<i>R</i><span class="mark"></span></li>
+      <li data-k="B"><span class="k">(B)</span>600<i>R</i><span class="mark"></span></li>
+      <li data-k="C"><span class="k">(C)</span>630<i>R</i><span class="mark"></span></li>
+      <li data-k="D"><span class="k">(D)</span>900<i>R</i><span class="mark"></span></li>
+    </ul>
+    <div class="assume"><b>What is being asked.</b> <i>P</i> is not given — it is free. Every choice of
+      <i>P</i> between 2 and 8 bar gives a different total work, and the question wants the smallest.
+      So the experiment below does what a chemist would: it tries the compression at many values of
+      <i>P</i>, measures the work each time, and finds the cheapest.</div>
+  </div>
+</section>
+
+<section id="lab">
+  <h2 class="big"><span class="n">01</span>Interactive experiment</h2>
+  <p class="lede">A gas-tight cylinder sits in a thermostat bath at the question's temperature. Weights on
+     the piston set the external pressure. Press <b>START</b> — the experiment loads the piston in two
+     steps, measures the work, repeats it for different first-step pressures, and finds the minimum.</p>
+
+  <div class="deck" id="deck">
+    <div class="statusbar">
+      <span class="xstat" id="xstat"><span class="dot"></span><span id="xstattxt">Ready</span></span>
+      <div class="stages" id="stages">
+        <span data-s="prep">Prepare</span><span data-s="trial">Compress</span><span data-s="sweep">Try every P</span>
+        <span data-s="analyse">Find minimum</span><span data-s="best">Best run</span><span data-s="calc">Calculate</span><span data-s="answer">Answer</span>
+      </div>
+      <span class="sp"></span>
+      <span class="guide" id="guide">Set your values or use the question defaults.</span>
+    </div>
+
+    <div class="grid1">
+      <div class="lab3d" id="lab3d">
+        <div class="hd">
+          <h3 id="scenet">Cylinder in a thermostat bath</h3>
+          <span class="st" id="trialtag">no trial yet</span>
+        </div>
+        <p class="narr" id="narr" aria-live="polite">0.5 mol of gas at 2 bar and 600 K. The question's
+           values are already loaded — press <b>START EXPERIMENT</b>.</p>
+        <div class="vwrap">
+          <canvas id="vessel" width="1040" height="620" role="img"
+                  aria-label="A glass cylinder with a weighted piston standing in a thermostat bath, gas molecules bouncing inside, a pressure gauge and a thermometer beside it"></canvas>
+          <div class="done-banner" id="donebanner">✓ EXPERIMENT COMPLETE</div>
+          <div class="revealhost" id="revealhost"></div>
+        </div>
+        <div class="blackout" id="blackout"></div>
+        <div class="flashout" id="flashout"></div>
+      </div>
+
+      <div class="rail" id="rail">
+        <div class="status" id="status">✓ USING QUESTION VALUES</div>
+        <div class="inputs">
+          <h4>Optional — change anything, or nothing</h4>
+          <div id="fields"></div>
+          <p class="railnote" style="margin-top:8px">The first-step pressure <i>P</i> is not an input: the
+             experiment tries every <i>P</i> between P<sub>1</sub> and P<sub>2</sub> itself.</p>
+          <button class="resetq" id="resetq" type="button" style="margin-top:8px">↺ RESET TO QUESTION VALUES</button>
+        </div>
+        <div class="grp">
+          <h4>Live data</h4>
+          <div class="gauges" style="margin-top:6px">
+            <div class="gz a"><div class="k">gas pressure</div><div class="v"><span id="g_pg">2.00</span> <span class="u">bar</span></div></div>
+            <div class="gz o"><div class="k">external pressure</div><div class="v"><span id="g_pe">2.00</span> <span class="u">bar</span></div></div>
+            <div class="gz"><div class="k">volume</div><div class="v"><span id="g_v">12.47</span> <span class="u">L</span></div></div>
+            <div class="gz"><div class="k">temperature</div><div class="v"><span id="g_t">600</span> <span class="u">K</span></div></div>
+            <div class="gz"><div class="k">work on gas</div><div class="v"><span id="g_w">0</span> <span class="u">J</span></div></div>
+            <div class="gz"><div class="k">… in units of R</div><div class="v"><span id="g_wr">0</span><span class="u"> R</span></div></div>
+            <div class="gz"><div class="k">heat to bath</div><div class="v"><span id="g_q">0</span> <span class="u">J</span></div></div>
+            <div class="gz"><div class="k">piston hits / s</div><div class="v" id="g_hits">—</div></div>
+            <div class="gz" id="gz_best"><div class="k">least work so far</div><div class="v"><span id="g_best">—</span></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid2">
+      <div class="graphcard">
+        <h4>Indicator diagram — pressure against volume</h4>
+        <p class="gsub">Work on the gas = P<sub>ext</sub> × volume swept = the shaded area.</p>
+        <div class="chartwrap"><svg class="chart" id="pv" viewBox="0 0 560 330" role="img"
+          aria-label="Pressure against volume: the isotherm of the gas, and the external pressure of each step as a shaded rectangle whose area is the work"></svg></div>
+      </div>
+      <div class="graphcard">
+        <h4>Total work against the first-step pressure P</h4>
+        <p class="gsub">One point per run. The lowest point is the answer to the question.</p>
+        <div class="chartwrap" id="wpwrap"><svg class="chart" id="wp" viewBox="0 0 560 330" role="img"
+          aria-label="Total work in units of R against the first-step pressure P, one point per experiment, with the single-step and reversible limits"></svg>
+          <div class="tip" id="tip"></div></div>
+      </div>
+    </div>
+
+    <div class="calc" id="calc">
+      <div class="bt"><span>Calculation — written as the experiment produces the numbers</span><span id="calcstat"></span></div>
+      <p class="empty" id="calcempty">Nothing measured yet.</p>
+      <ol id="calclist"></ol>
+      <details class="tbl" id="logbox"><summary>Log of every run (<span id="logn">0</span>)</summary>
+        <div class="scrollx"><table class="data" id="log"></table></div></details>
+    </div>
+
+    <div class="actbar">
+      <button class="go" id="gobtn" type="button">▶&nbsp; START EXPERIMENT</button>
+      <button class="ghost" id="pausebtn" type="button" disabled>Pause</button>
+      <button class="ghost" id="replaybtn" type="button" hidden>▶ REPLAY EXPERIMENT</button>
+      <button class="ghost" id="resetbtn" type="button">↺ RESET</button>
+      <div class="spd" id="spd" role="group" aria-label="playback speed">
+        <button type="button" data-s="1" aria-pressed="true">1×</button>
+        <button type="button" data-s="2" aria-pressed="false">2×</button>
+      </div>
+      <button class="ghost" id="classbtn" type="button" aria-pressed="false">CLASSROOM MODE</button>
+      <div class="msg" id="gomsg">Nothing needs to be typed. Press <b>START EXPERIMENT</b>.</div>
+    </div>
+  </div>
+</section>
+
+<section id="solution">
+  <h2 class="big"><span class="n">02</span>Detailed solution</h2>
+  <p class="lede" id="solintro">Run the experiment — the solution opens with the answer.</p>
+  <div class="gate" id="solgate">
+    <h4>The solution is still locked</h4>
+    <p>The experiment has not finished yet. Press START and let it run to the end — or use
+       <i>Reveal anyway</i> in the header if you are revising.</p>
+    <button class="ghost" id="gotolab" type="button">Go to the experiment ↑</button>
+  </div>
+  <div id="solbody" hidden>
+    <ol class="steps">
+      <li><h4>Given</h4>
+        <div class="eq">n = 0.5 mol, &nbsp; T = 600 K (constant), &nbsp; P<sub>1</sub> = 2 bar → P<sub>2</sub> = 8 bar,
+          &nbsp; first step against P (2 &lt; P &lt; 8), second against 8 bar.</div>
+        <p>Find the smallest |W| over all P, as a multiple of R.</p></li>
+      <li><h4>Concept — work against a constant external pressure</h4>
+        <p>When a piston is pushed by a <b>constant</b> external pressure, the work done on the gas is that
+           pressure times the volume swept, whatever the gas does inside:</p>
+        <div class="eq">w<sub>on gas</sub> = −P<sub>ext</sub> ΔV = P<sub>ext</sub>(V<sub>initial</sub> − V<sub>final</sub>)</div>
+        <p>Each step stops when the gas pressure equals P<sub>ext</sub>; the bath returns the gas to 600 K, so
+           the end volume of each step is on the isotherm, V = nRT/P.</p>
+        <div class="obsnote">In the experiment this was the <b>shaded rectangle</b> on the indicator
+           diagram: the height is the load on the piston, the width is how far it went down.</div></li>
+      <li><h4>Step 1 and step 2</h4>
+        <div class="eq">w<sub>1</sub> = P(nRT/P<sub>1</sub> − nRT/P) = nRT(P/P<sub>1</sub> − 1)</div>
+        <div class="eq">w<sub>2</sub> = P<sub>2</sub>(nRT/P − nRT/P<sub>2</sub>) = nRT(P<sub>2</sub>/P − 1)</div>
+        <div class="eq">W(P) = w<sub>1</sub> + w<sub>2</sub> = nRT(P/P<sub>1</sub> + P<sub>2</sub>/P − 2)
+          = 300R(P/2 + 8/P − 2)</div>
+        <div class="obsnote">A small P makes step 1 cheap but leaves a long, heavy step 2; a large P does
+           the opposite. That is why the <b>W–P graph</b> in the experiment came out U-shaped.</div></li>
+      <li><h4>Find the minimum</h4>
+        <div class="eq">dW/dP = nRT(1/P<sub>1</sub> − P<sub>2</sub>/P²) = 0 &nbsp;⇒&nbsp;
+          <span class="hl">P = √(P<sub>1</sub>P<sub>2</sub>) = √(2 × 8) = 4 bar</span></div>
+        <p>The second derivative 2nRT P<sub>2</sub>/P³ is positive, so it is a minimum. At P = 4 bar both steps
+           cost the same, nRT(2 − 1) = 300R each — the experiment's best run showed two equal rectangles.</p></li>
+      <li><h4>Minimum work</h4>
+        <div class="eq">W<sub>min</sub> = 2nRT(√(P<sub>2</sub>/P<sub>1</sub>) − 1) = 2 × 0.5 × 600 × (√4 − 1) R
+          = <span class="hl">600R J</span> &nbsp;(≈ 4988.7 J with R = 8.314)</div>
+        <p>The work is done <i>on</i> the gas, so it is positive; |W| = 600R. Because the gas is ideal and
+           isothermal, ΔU = 0 and the same 600R J leaves as heat to the bath.</p>
+        <div class="eq">Answer: <span class="hl" id="solans">—</span></div></li>
+      <li><h4>Why the other options are wrong</h4>
+        <p><b>(A) 207R</b> is nRT ln 2 — only half the reversible work nRT ln 4 = 415.9R. No process at all,
+           with any number of steps, can compress the gas with less than the reversible work, so 207R is
+           impossible. <b>(C) 630R</b> is a real two-step run, but at P = 3.2 or 5 bar — not the minimum.
+           <b>(D) 900R</b> is the limit P → 2 or P → 8, i.e. a single step straight against 8 bar.</p>
+        <div class="eq">415.9R (reversible) &nbsp;&lt;&nbsp; 600R (best two-step) &nbsp;&lt;&nbsp; 900R (one step)</div></li>
+    </ol>
+    <div class="verify">
+      <h4>Independent verification</h4>
+      <ul>
+        <li><b>Symbolic.</b> A computer-algebra system built W(P) from w = −P<sub>ext</sub>ΔV, found the single
+            stationary point P = √(P<sub>1</sub>P<sub>2</sub>), confirmed d²W/dP² &gt; 0 there, and gave W<sub>min</sub> = 600R.</li>
+        <li><b>Brute force.</b> A 60 000-point scan of P, using volumes in litres and bar (1 bar L = 100 J) and
+            no formula for W, found the minimum at 4.000 bar and 600.000R = 4988.7 J.</li>
+        <li><b>Exact.</b> In fractions, step 1 = 300R and step 2 = 300R at P = 4 bar — equal, as the
+            symmetry of W in ln P requires.</li>
+        <li><b>Bounds.</b> The reversible work nRT ln 4 = 415.9R lies below 600R and the one-step work 900R
+            above it; more equal-ratio steps (1, 2, 4, 100) give 900, 600, 497, 419R, closing in on 415.9R.</li>
+        <li><b>Distractor audit.</b> 207R is below the reversible limit; 630R solves W(P) at P = 3.2 or 5 bar;
+            900R is the one-step limit. Only 600R is the minimum.</li>
+        <li><b>This page.</b> The experiment measures each run as P<sub>ext</sub> × volume swept, finds the lowest
+            run and refines around it; the option letter is chosen at run time by matching the measured minimum
+            against the printed options — it is not written into the page.</li>
+        <li><b>Answer key.</b> Checked afterwards against the official final key printed with the paper: Q1 → (B).</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="howto">
+  <h2 class="big"><span class="n">03</span>How to use this simulation</h2>
+  <p class="lede">For a student opening it for the first time. The whole experiment runs by itself after one press.</p>
+  <div class="howto">
+    <div><div class="n">STEP 1</div><h4>Read the question</h4>
+      <p>A gas is squeezed from 2 bar to 8 bar in two pushes. The first push can be any pressure P between
+         them. Which P needs the least work, and how much work is that?</p></div>
+    <div><div class="n">STEP 2</div><h4>Check the values</h4>
+      <p>The question's values — <b>0.5 mol</b>, <b>600 K</b>, <b>2 bar</b>, <b>8 bar</b> — are already
+         filled in. <b>You do not need to enter anything.</b></p></div>
+    <div><div class="n">STEP 3</div><h4>Optional: change a value</h4>
+      <p>Change any one value, or several. The rest stay at the question's values. An empty box means
+         "use the question value". The badge switches to <b>⚙ USING CUSTOM VALUES</b>; <b>↺ RESET TO
+         QUESTION VALUES</b> puts everything back.</p></div>
+    <div><div class="n">STEP 4</div><h4>Start</h4>
+      <p>Press <b>▶ START EXPERIMENT</b>. There is nothing else to click — the experiment runs from
+         beginning to end on its own (about 45 seconds; <b>2×</b> makes it faster).</p></div>
+    <div><div class="n">STEP 5</div><h4>Watch</h4>
+      <p>A weight lands on the piston, the gas is squeezed, molecules crowd together and hit the piston
+         more often, heat flows out into the bath, and the work shows up as a shaded area on the
+         indicator diagram. Then the experiment repeats this for many values of P and plots the total
+         work for each — watch the lowest point appear.</p></div>
+    <div><div class="n">STEP 6</div><h4>Answer reveal</h4>
+      <p>When the experiment finishes it says <b>✓ EXPERIMENT COMPLETE</b> and reveals the answer. The
+         header answer box unlocks at the same time.</p></div>
+    <div><div class="n">STEP 7</div><h4>Understand</h4>
+      <p>Scroll to <b>Detailed solution</b>. Each step points back to what you saw in the experiment.</p></div>
+    <div><div class="n">STEP 8</div><h4>Experiment again</h4>
+      <p>Press <b>▶ REPLAY EXPERIMENT</b>, or change a value — try 0.25 bar more at the start, or 16 bar at
+         the end — and press <b>⚙ RUN WITH CUSTOM VALUES</b>. Watch where the best P lands each time — there is a pattern.
+         <b>CLASSROOM MODE</b> enlarges everything for a projector.</p></div>
+  </div>
+  <div class="panel" style="margin-top:14px">
+    <h3>Classification</h3>
+    <table class="meta-tbl"><tbody>
+      <tr><th>Exam</th><td>JEE Advanced 2026, Paper 1, Chemistry, Section 1, Q.1</td></tr>
+      <tr><th>Chapter</th><td>Thermodynamics</td></tr>
+      <tr><th>Topic</th><td>Work in isothermal compression of an ideal gas — irreversible, multi-step</td></tr>
+      <tr><th>Difficulty</th><td>Moderate</td></tr>
+      <tr><th>Answer</th><td><b id="clsans">— run the experiment</b></td></tr>
+    </tbody></table>
+  </div>
+</section>
+
+<footer>
+  ADV-2026-P1-CHE-Q01 · PrayogX · JEE Advanced Interactive Simulation Library · question text reproduced
+  from the official JEE (Advanced) 2026 Paper 1 for educational use.
+</footer>
+</div>
+
+<script>
+(function(){
+"use strict";
+
+/* =====================================================================
+   helpers
+   ===================================================================== */
+var NS = "http://www.w3.org/2000/svg";
+function $(id){ return document.getElementById(id); }
+function css(v){ return getComputedStyle(document.documentElement).getPropertyValue(v).trim(); }
+function mk(n, a, parent){
+  var e = document.createElementNS(NS, n), k;
+  if (a) for (k in a) if (Object.prototype.hasOwnProperty.call(a, k)) e.setAttribute(k, a[k]);
+  if (parent) parent.appendChild(e);
+  return e;
+}
+function tx(parent, x, y, s, a){ var o = a || {}; o.x = x; o.y = y; var t = mk("text", o, parent); t.textContent = s; return t; }
+function clamp(v, a, b){ return v < a ? a : (v > b ? b : v); }
+function ease(t){ t = clamp(t, 0, 1); return t * t * (3 - 2 * t); }
+function nice(x, dp){
+  if (!isFinite(x)) return "—";
+  if (Math.abs(x - Math.round(x)) < 1e-9) return String(Math.round(x));
+  return x.toFixed(dp === undefined ? 3 : dp).replace(/0+$/, "").replace(/\.$/, "");
+}
+function f1(x){ return isFinite(x) ? x.toFixed(1) : "—"; }
+function f2(x){ return isFinite(x) ? x.toFixed(2) : "—"; }
+function f3(x){ return isFinite(x) ? x.toFixed(3) : "—"; }
+function grp(x){ return String(Math.round(x)).replace(/\B(?=(\d{3})+(?!\d))/g, ","); }
+var REDUCED = !!(window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches);
+
+/* =====================================================================
+   question data - exactly what the stem states
+   Nothing below stores which option is correct: see matchOption().
+   ===================================================================== */
+var Q = { n: 0.5, T: 600, P1: 2, P2: 8 };
+var OPTIONS = { A: 207, B: 600, C: 630, D: 900 };     /* printed, in units of R (J) */
+var OPT_KEYS = ["A", "B", "C", "D"];
+var RJ = 8.314462618;       /* J K^-1 mol^-1 - only to print joules; the answer is in units of R */
+var RL = 0.0831446;         /* L bar K^-1 mol^-1: volumes in litres, pressures in bar */
+
+/* =====================================================================
+   inputs - every one optional, every one falls back to the question
+   ===================================================================== */
+var FIELDS = [
+  { k: "n",  lab: "n &nbsp;amount of gas",           u: "mol", lo: 0.05, hi: 5,    ladder: [0.05,0.1,0.2,0.25,0.5,0.75,1,1.5,2,3,4,5],
+    note: "Every work term is proportional to n." },
+  { k: "T",  lab: "T &nbsp;bath temperature",        u: "K",   lo: 100,  hi: 2000, ladder: [100,200,273,298,300,400,500,600,700,800,1000,1200,1500,2000],
+    note: "Held constant by the thermostat." },
+  { k: "P1", lab: "P<sub>1</sub> &nbsp;initial pressure",   u: "bar", lo: 0.5, hi: 20,  ladder: [0.5,1,1.5,2,2.5,3,4,5,6,8,10,15,20],
+    note: "The gas starts here." },
+  { k: "P2", lab: "P<sub>2</sub> &nbsp;final external pressure", u: "bar", lo: 1, hi: 100, ladder: [1,2,3,4,5,6,8,10,12,16,20,25,32,40,50,64,80,100],
+    note: "The second, last load." }
+];
+var ST = { n: Q.n, T: Q.T, P1: Q.P1, P2: Q.P2 };        /* the effective values */
+
+function parseNum(str){
+  var s = String(str).trim().replace(/\s+/g, "").replace(/−/g, "-").replace(/×10\^?/g, "e");
+  if (s === "") return { empty: true };
+  var m = /^(-?\d*\.?\d+(?:e[-+]?\d+)?)\/(\d*\.?\d+(?:e[-+]?\d+)?)$/i.exec(s);
+  if (m){ var a = parseFloat(m[1]), b = parseFloat(m[2]); return b ? { v: a / b } : { bad: true }; }
+  if (!/^-?\d*\.?\d+(?:e[-+]?\d+)?$/i.test(s)) return { bad: true };
+  return { v: parseFloat(s) };
+}
+function fieldOf(k){ var i; for (i = 0; i < FIELDS.length; i++) if (FIELDS[i].k === k) return FIELDS[i]; return null; }
+function fieldsHTML(){
+  var h = "", i, F;
+  for (i = 0; i < FIELDS.length; i++){
+    F = FIELDS[i];
+    h += '<div class="fld" id="fld_' + F.k + '"><div class="lb"><span><b>' + F.lab + '</b></span><span class="u">' + F.u + '</span></div>'
+      + '<div class="rw"><button type="button" class="dn" data-k="' + F.k + '" aria-label="decrease ' + F.k + '">−</button>'
+      + '<input id="in_' + F.k + '" type="text" inputmode="decimal" autocomplete="off" aria-label="' + F.k + '" value="' + Q[F.k] + '">'
+      + '<button type="button" class="up" data-k="' + F.k + '" aria-label="increase ' + F.k + '">+</button>'
+      + '<button type="button" class="rs" data-k="' + F.k + '" aria-label="question value for ' + F.k + '" title="question value">↺</button></div>'
+      + '<div class="fh" id="fh_' + F.k + '">question value · ' + F.note + '</div></div>';
+  }
+  return h;
+}
+/* one box: a valid custom value is used; anything else falls back to the question */
+function readField(k){
+  var F = fieldOf(k), box = $("in_" + k), fh = $("fh_" + k), r = parseNum(box.value), v = Q[k], msg, bad = false;
+  if (r.empty) msg = "empty — using the question value " + Q[k] + " " + F.u;
+  else if (r.bad || !isFinite(r.v) || r.v <= 0){ bad = true; msg = "Please enter a valid positive value. The question value " + Q[k] + " is used meanwhile."; }
+  else if (r.v < F.lo || r.v > F.hi){ bad = true; msg = "Please enter a value between " + F.lo + " and " + F.hi + " " + F.u + ". The question value is used meanwhile."; }
+  else { v = r.v; msg = Math.abs(v - Q[k]) < 1e-12 ? "question value · " + F.note : "custom · question value " + Q[k] + " " + F.u; }
+  box.classList.toggle("bad", bad); fh.classList.toggle("bad", bad);
+  fh.innerHTML = msg; ST[k] = v;
+  return !bad;
+}
+/* the pair must describe a compression, and a picture that fits */
+function crossCheck(){
+  if (ST.P2 > ST.P1 * 1.05 && ST.P2 / ST.P1 <= 50) return;
+  var which = Math.abs(ST.P2 - Q.P2) > 1e-12 ? "P2" : "P1";
+  var fh = $("fh_" + which), box = $("in_" + which);
+  box.classList.add("bad"); fh.classList.add("bad");
+  fh.innerHTML = ST.P2 <= ST.P1 * 1.05
+    ? "For a compression P<sub>2</sub> must be above P<sub>1</sub>. Using the question values for both meanwhile."
+    : "Keep P<sub>2</sub>/P<sub>1</sub> at 50 or less. Using the question values for both meanwhile.";
+  ST.P1 = Q.P1; ST.P2 = Q.P2;
+}
+function readAll(){ var i; for (i = 0; i < FIELDS.length; i++) readField(FIELDS[i].k); crossCheck(); }
+function isCustom(D){ var k; D = D || ST; for (k in Q) if (Math.abs(D[k] - Q[k]) > 1e-12) return true; return false; }
+function copyST(){ return { n: ST.n, T: ST.T, P1: ST.P1, P2: ST.P2 }; }
+function sameD(a, b){ var k; for (k in Q) if (Math.abs(a[k] - b[k]) > 1e-12) return false; return true; }
+function setField(k, v){ $("in_" + k).value = nice(v, 4); readAll(); }
+function stepField(k, dir){
+  var L = fieldOf(k).ladder, v = ST[k], i, nv = v;
+  if (dir > 0){ for (i = 0; i < L.length; i++) if (L[i] > v + 1e-12){ nv = L[i]; break; } }
+  else { for (i = L.length - 1; i >= 0; i--) if (L[i] < v - 1e-12){ nv = L[i]; break; } }
+  setField(k, nv);
+}
+
+/* =====================================================================
+   calculation engine - the physics, from w = -P_ext dV
+   Volumes in L, pressures in bar; a work in bar L divided by R_L is a
+   work in units of R (J when R is in J K^-1 mol^-1), which is how the
+   question asks for it.
+   ===================================================================== */
+function model(D){
+  var V = function(p){ return D.n * RL * D.T / p; };
+  var M = {
+    D: D, V: V, V1: V(D.P1), V2: V(D.P2),
+    /* the experiment measures work as P_ext x volume swept - no formula for W */
+    measureR: function(P){
+      var w1 = P * (V(D.P1) - V(P)), w2 = D.P2 * (V(P) - V(D.P2));
+      return { w1: w1 / RL, w2: w2 / RL, W: (w1 + w2) / RL, w1L: w1, w2L: w2 };
+    },
+    WrevR: D.n * D.T * Math.log(D.P2 / D.P1),         /* reversible isothermal - the lower bound */
+    WoneR: D.n * D.T * (D.P2 / D.P1 - 1),              /* one step against P2 - the upper limit */
+    Popt: Math.sqrt(D.P1 * D.P2)                       /* analytic, used only to CHECK the search */
+  };
+  /* the first-step pressures the experiment tries: evenly spaced in ln P */
+  M.grid = [];
+  var k; for (k = 1; k <= 7; k++) M.grid.push(D.P1 * Math.pow(D.P2 / D.P1, k / 8));
+  return M;
+}
+/* golden-section search on the measured work - how the experiment finds the minimum */
+function searchMin(M){
+  var a = M.D.P1, b = M.D.P2, g = (Math.sqrt(5) - 1) / 2, c = b - g * (b - a), d = a + g * (b - a), i, probes = [];
+  var fc = M.measureR(c).W, fd = M.measureR(d).W;
+  for (i = 0; i < 60; i++){
+    probes.push(fc < fd ? { P: c, W: fc } : { P: d, W: fd });
+    if (fc < fd){ b = d; d = c; fd = fc; c = b - g * (b - a); fc = M.measureR(c).W; }
+    else { a = c; c = d; fc = fd; d = a + g * (b - a); fd = M.measureR(d).W; }
+  }
+  var P = (a + b) / 2;
+  return { P: P, W: M.measureR(P).W, probes: probes };
+}
+/* which printed option is this value? computed, never stored */
+function matchOption(WR){
+  var out = [], i;
+  for (i = 0; i < OPT_KEYS.length; i++) if (Math.abs(OPTIONS[OPT_KEYS[i]] - WR) <= 0.005 * WR) out.push(OPT_KEYS[i]);
+  return out;
+}
+var QM = model({ n: Q.n, T: Q.T, P1: Q.P1, P2: Q.P2 });
+var QMIN = searchMin(QM);
+var QANS = matchOption(QMIN.W);
+var ANS = QANS.length === 1 ? QANS[0] : "?";
+
+/* =====================================================================
+   experiment engine - one automatic timeline, built when START is pressed
+   ===================================================================== */
+var SLOW = [["load1", 0.9], ["s1", 3.2], ["h1", 0.8], ["load2", 0.7], ["s2", 3.2], ["h2", 1.1], ["reset", 0.8]];
+var FAST = [["load1", 0.16], ["s1", 0.55], ["h1", 0.12], ["load2", 0.14], ["s2", 0.55], ["h2", 0.3], ["reset", 0.3]];
+var DEMO = 5;
+var ORD = { load1: 0, s1: 1, h1: 2, load2: 3, s2: 4, h2: 5, reset: 6 };
+function phaseDur(ph){ var i, t = 0; for (i = 0; i < ph.length; i++) t += ph[i][1]; return t; }
+var RUN = { state: "setup", paused: false, speed: 1, segs: [], si: 0, u: 0, D: copyST(), M: null,
+  trials: [], found: null, done: false, revealed: false, logged: {}, calc: {}, probeShown: 0, classroom: false };
+RUN.M = model(RUN.D);
+var earlyReveal = false;
+
+function buildTimeline(M){
+  /* the first run is slow and at a P far enough from both ends that both steps are easy to see;
+     the rest sweep upward from P1 to P2 */
+  var s = [{ kind: "prep", dur: 3.2 }], k, order = [DEMO];
+  for (k = 0; k < M.grid.length; k++) if (k !== DEMO) order.push(k);
+  for (k = 0; k < order.length; k++)
+    s.push({ kind: "trial", P: M.grid[order[k]], idx: k, slow: k === 0, ph: k === 0 ? SLOW : FAST, dur: phaseDur(k === 0 ? SLOW : FAST) });
+  s.push({ kind: "analyse", dur: 5.2 });
+  s.push({ kind: "best", P: null, slow: true, ph: SLOW, dur: phaseDur(SLOW) });
+  s.push({ kind: "calc", dur: 3.6 });
+  s.push({ kind: "done", dur: 1.7 });
+  return s;
+}
+function seg(){ return RUN.segs[RUN.si] || null; }
+/* where a trial is: phase name, progress, and the physical state it implies */
+function trialState(sg, u, M){
+  var P = sg.P, VP = M.V(P), acc = 0, i, name = "reset", f = 1;
+  for (i = 0; i < sg.ph.length; i++){
+    if (u < acc + sg.ph[i][1]){ name = sg.ph[i][0]; f = (u - acc) / sg.ph[i][1]; break; }
+    acc += sg.ph[i][1];
+  }
+  var st = { name: name, f: f, P: P, VP: VP, Pext: M.D.P1, V: M.V1, wL: 0, drop1: 0, drop2: -1, fade: 1, rate: 0 };
+  var w1 = P * (M.V1 - VP);
+  if (name === "load1"){ st.drop1 = 1 - ease(f); st.Pext = M.D.P1; }
+  else if (name === "s1"){ st.Pext = P; st.V = M.V1 + (VP - M.V1) * ease(f); st.wL = P * (M.V1 - st.V); st.rate = Math.sin(Math.PI * f); }
+  else if (name === "h1"){ st.Pext = P; st.V = VP; st.wL = w1; }
+  else if (name === "load2"){ st.Pext = P; st.V = VP; st.wL = w1; st.drop2 = 1 - ease(f); }
+  else if (name === "s2"){ st.Pext = M.D.P2; st.drop2 = 0; st.V = VP + (M.V2 - VP) * ease(f); st.wL = w1 + M.D.P2 * (VP - st.V); st.rate = Math.sin(Math.PI * f); }
+  else if (name === "h2"){ st.Pext = M.D.P2; st.drop2 = 0; st.V = M.V2; st.wL = w1 + M.D.P2 * (VP - M.V2); }
+  else { st.Pext = M.D.P2; st.drop2 = 0; st.wL = w1 + M.D.P2 * (VP - M.V2); st.fade = 1 - ease(f); st.V = M.V2 + (M.V1 - M.V2) * ease(f); }
+  return st;
+}
+var NOW = null;      /* the one physical state everything reads from, each frame */
+function currentState(){
+  var sg = seg(), M = RUN.M;
+  if (RUN.done){
+    var bt = null, i; for (i = 0; i < RUN.trials.length; i++) if (RUN.trials[i].best) bt = RUN.trials[i];
+    if (bt) return { name: "rest", P: bt.P, Pext: M.D.P2, V: M.V2, wL: bt.W * RL, drop1: 0, drop2: 0, fade: 1, rate: 0 };
+  }
+  if (RUN.state === "setup" || !sg) return { name: "idle", P: null, Pext: M.D.P1, V: M.V1, wL: 0, drop1: -1, drop2: -1, fade: 1, rate: 0 };
+  if (sg.kind === "trial" || sg.kind === "best") return trialState(sg, RUN.u, M);
+  var last = RUN.trials.length ? RUN.trials[RUN.trials.length - 1] : null;
+  if (sg.kind === "prep") return { name: "prep", P: null, Pext: M.D.P1, V: M.V1, wL: 0, drop1: -1, drop2: -1, fade: 1, rate: 0 };
+  /* after the last run the piston stays down at P2 with the full load on */
+  return { name: "rest", P: last ? last.P : null, Pext: M.D.P2, V: M.V2, wL: last ? last.W * RL : 0, drop1: 0, drop2: 0, fade: 1, rate: 0, keep: true };
+}
+
+/* things that happen once, at a moment in the timeline */
+function onPhase(sg, st){
+  var M = RUN.M, key;
+  if (sg.kind !== "trial" && sg.kind !== "best") return;
+  key = sg.kind + sg.idx;
+  var o = ORD[st.name];
+  if (o >= 2 && sg.slow) addCalc(sg.kind === "best" ? "bestw1" : "w1");
+  if (o >= 5 && !RUN.logged[key]){
+    RUN.logged[key] = true;
+    var m = M.measureR(sg.P);
+    RUN.trials.push({ n: RUN.trials.length + 1, P: sg.P, VP: M.V(sg.P), w1: m.w1, w2: m.w2, W: m.W, best: sg.kind === "best" });
+    if (sg.slow && sg.kind === "trial") addCalc("w2");
+    if (sg.kind === "best") addCalc("equal");
+    drawLog(); drawWP();
+  }
+}
+function onSegEnd(sg){
+  if (sg.kind === "prep") addCalc("vol");
+  if (sg.kind === "trial" && sg.idx === RUN.M.grid.length - 1) addCalc("sweep");
+  if (sg.kind === "analyse"){ RUN.probeShown = 4; addCalc("probe"); addCalc("min"); addCalc("law"); drawWP(); drawLog(); }
+  if (sg.kind === "calc"){ addCalc("wmin"); addCalc("bounds"); }
+}
+function onSegStart(sg){
+  if (sg.kind === "analyse"){ RUN.found = searchMin(RUN.M); RUN.probeShown = 0; }
+  if (sg.kind === "best"){ sg.P = RUN.found.P; sg.idx = 99; }
+  if (sg.kind === "done"){ $("donebanner").classList.add("on"); }
+}
+function stepTimeline(sdt){
+  var sg = seg(); if (!sg) return;
+  RUN.u += sdt;
+  if (sg.kind === "analyse"){
+    var want = Math.min(4, Math.floor(RUN.u / 0.9));
+    if (want > RUN.probeShown){ RUN.probeShown = want; if (want >= 2) addCalc("probe"); drawWP(); }
+  }
+  while (sg && RUN.u >= sg.dur){
+    RUN.u -= sg.dur;
+    if (sg.kind === "trial" || sg.kind === "best"){ onPhase(sg, trialState(sg, sg.dur - 1e-6, RUN.M)); }
+    onSegEnd(sg);
+    RUN.si++;
+    sg = seg();
+    if (!sg){ finish(); return; }
+    onSegStart(sg);
+  }
+}
+function startRun(D){
+  readAll();
+  RUN.D = D || copyST(); RUN.M = model(RUN.D);
+  RUN.segs = buildTimeline(RUN.M); RUN.si = 0; RUN.u = 0;
+  RUN.state = "running"; RUN.paused = false; RUN.done = false; RUN.revealed = false;
+  RUN.trials = []; RUN.found = null; RUN.logged = {}; RUN.calc = {}; RUN.probeShown = 0;
+  $("calclist").innerHTML = ""; $("calcempty").hidden = false;
+  $("donebanner").classList.remove("on");
+  $("revealhost").classList.remove("on"); $("revealhost").innerHTML = "";
+  $("lab3d").classList.remove("dim"); $("blackout").classList.remove("on");
+  burst = [];
+  initParticles();
+  drawLog(); mountPV(); drawWP(); refreshUI();
+}
+function resetRun(){
+  RUN.state = "setup"; RUN.paused = false; RUN.done = false; RUN.revealed = false;
+  RUN.segs = []; RUN.si = 0; RUN.u = 0; RUN.trials = []; RUN.found = null; RUN.logged = {}; RUN.calc = {};
+  readAll(); RUN.D = copyST(); RUN.M = model(RUN.D);
+  $("calclist").innerHTML = ""; $("calcempty").hidden = false;
+  $("donebanner").classList.remove("on");
+  $("revealhost").classList.remove("on"); $("revealhost").innerHTML = "";
+  $("lab3d").classList.remove("dim"); $("blackout").classList.remove("on");
+  burst = [];
+  initParticles(); drawLog(); mountPV(); drawWP(); refreshUI();
+}
+function resetAll(){
+  var i; for (i = 0; i < FIELDS.length; i++) $("in_" + FIELDS[i].k).value = Q[FIELDS[i].k];
+  readAll(); earlyReveal = false; resetRun(); refreshGate();
+}
+function finish(){
+  RUN.si = RUN.segs.length; RUN.state = "done"; RUN.done = true;
+  addCalc("match");
+  refreshUI();
+  doReveal();
+}
+
+/* =====================================================================
+   calculation panel - lines appear only when the run has produced them
+   ===================================================================== */
+function trialOne(){ var i; for (i = 0; i < RUN.trials.length; i++) if (!RUN.trials[i].best) return RUN.trials[i]; return null; }
+function calcHTML(key){
+  var M = RUN.M, D = M.D, t = trialOne(), F = RUN.found, bestT = null, i, h;
+  for (i = 0; i < RUN.trials.length; i++) if (RUN.trials[i].best) bestT = RUN.trials[i];
+  var nRT = "nRT = " + nice(D.n) + " × R × " + nice(D.T) + " = " + nice(D.n * D.T) + "R";
+  switch (key){
+    case "vol":
+      return ["START", "V<sub>1</sub> = nRT/P<sub>1</sub> = " + nice(D.n) + " × 0.08314 × " + nice(D.T) + " / " + nice(D.P1) + " = <b>" + f3(M.V1)
+        + " L</b>, &nbsp; V<sub>2</sub> = nRT/P<sub>2</sub> = <b>" + f3(M.V2) + " L</b>"
+        + "<span class=w>measured with the piston resting at P<sub>1</sub>, and where every run has to end: on the " + nice(D.T) + " K isotherm at P<sub>2</sub></span>"];
+    case "w1":
+      h = t || { P: M.grid[DEMO], VP: M.V(M.grid[DEMO]), w1: M.measureR(M.grid[DEMO]).w1 };
+      return ["RUN 1", "<span class=ar>w<sub>1</sub></span> = P(V<sub>1</sub> − V<sub>P</sub>) = " + f2(h.P) + " × (" + f3(M.V1) + " − " + f3(h.VP) + ") = "
+        + f3(h.w1 * RL) + " bar L = <b class=ar>" + f1(h.w1) + "R</b><span class=w>step 1: the load P pushed the piston down until the gas reached P</span>"];
+    case "w2":
+      return ["RUN 1", "<span class=or>w<sub>2</sub></span> = P<sub>2</sub>(V<sub>P</sub> − V<sub>2</sub>) = " + nice(D.P2) + " × (" + f3(t.VP) + " − " + f3(M.V2) + ") = <b class=or>"
+        + f1(t.w2) + "R</b> &nbsp;⇒&nbsp; W = " + f1(t.w1) + "R + " + f1(t.w2) + "R = <b>" + f1(t.W) + "R</b> = " + grp(t.W * RJ) + " J"
+        + "<span class=w>step 2: the extra load to P<sub>2</sub>; the total is the work for this one choice of P</span>"];
+    case "sweep":
+      var lo = 1e9, hi = -1, lp = 0;
+      for (i = 0; i < RUN.trials.length; i++){ if (RUN.trials[i].W < lo){ lo = RUN.trials[i].W; lp = RUN.trials[i].P; } if (RUN.trials[i].W > hi) hi = RUN.trials[i].W; }
+      return ["SWEEP", RUN.trials.length + " runs from P = " + f2(M.grid[0]) + " to " + f2(M.grid[M.grid.length - 1]) + " bar: W from <b>" + f1(hi) + "R</b> down to <b>" + f1(lo)
+        + "R</b> (at P = " + f2(lp) + " bar) and back up<span class=w>small P leaves a heavy second step, large P a heavy first step — the cheapest run is in between</span>"];
+    case "probe":
+      var pr = F.probes, a = pr[0], b2 = pr[3];
+      return ["PROBE", "Runs close to the lowest point: P = " + f3(a.P) + " bar → " + f1(a.W) + "R, &nbsp;P = " + f3(b2.P) + " bar → " + f1(b2.W) + "R …"
+        + "<span class=w>the search keeps narrowing the gap around the cheapest P</span>"];
+    case "min":
+      return ["RESULT", "Minimum found at <b>P = " + f3(F.P) + " bar</b>, W = <b>" + f3(F.W) + "R</b><span class=w>60 rounds of narrowing; every nearby P costs more</span>"];
+    case "law":
+      return ["WHY", "Every run obeys W = nRT(P/P<sub>1</sub> + P<sub>2</sub>/P − 2); dW/dP = nRT(1/P<sub>1</sub> − P<sub>2</sub>/P²) = 0 at "
+        + "<b>P = √(P<sub>1</sub>P<sub>2</sub>) = √(" + nice(D.P1) + " × " + nice(D.P2) + ") = " + f3(M.Popt) + " bar</b>"
+        + "<span class=w>the formula agrees with the search to " + (Math.abs(F.P - M.Popt) < 1e-4 ? "four decimal places" : Math.abs(F.P - M.Popt).toExponential(1) + " bar") + "</span>"];
+    case "bestw1":
+      return ["BEST", "At P = " + f3(RUN.found.P) + " bar: <span class=ar>w<sub>1</sub></span> = " + f1(M.measureR(RUN.found.P).w1) + "R"
+        + "<span class=w>the best run, slowly, with the reversible limit shaded for comparison</span>"];
+    case "equal":
+      return ["BEST", "<span class=ar>w<sub>1</sub></span> = <span class=or>w<sub>2</sub></span> = nRT(√(P<sub>2</sub>/P<sub>1</sub>) − 1) = " + nice(D.n * D.T) + " × ("
+        + f3(Math.sqrt(D.P2 / D.P1)) + " − 1) R = <b>" + f1(bestT ? bestT.w1 : 0) + "R each</b><span class=w>at the minimum the two steps cost exactly the same</span>"];
+    case "wmin":
+      return ["ANSWER", "|W|<sub>min</sub> = 2nRT(√(P<sub>2</sub>/P<sub>1</sub>) − 1) = 2 × " + nice(D.n) + " × " + nice(D.T) + " × (" + f3(Math.sqrt(D.P2 / D.P1)) + " − 1) R = "
+        + "<span class=hl>" + nice(Math.round(RUN.found.W * 100) / 100, 2) + "R J</span> ≈ " + grp(RUN.found.W * RJ) + " J"
+        + "<span class=w>" + nRT + " — and the work is done ON the gas, so it is positive</span>"];
+    case "bounds":
+      return ["CHECK", "reversible " + f1(M.WrevR) + "R &nbsp;&lt;&nbsp; best two-step " + f1(RUN.found.W) + "R &nbsp;&lt;&nbsp; one step " + f1(M.WoneR) + "R"
+        + "<span class=w>no process can beat the reversible work; two steps land between the limits</span>"];
+    case "match":
+      var mo = matchOption(RUN.found.W);
+      return ["MATCH", mo.length ? "Measured minimum " + nice(Math.round(RUN.found.W), 0) + "R = printed option <span class=hl>(" + mo[0] + ")</span>"
+        : "Measured minimum " + f1(RUN.found.W) + "R — your custom values give a number that is not one of the printed options"];
+  }
+  return null;
+}
+function addCalc(key){
+  if (RUN.calc[key]) return;
+  var c = calcHTML(key); if (!c) return;
+  RUN.calc[key] = true;
+  $("calcempty").hidden = true;
+  var li = document.createElement("li");
+  li.setAttribute("data-key", key);
+  li.innerHTML = '<span class="s">' + c[0] + '</span><span class="m">' + c[1] + "</span>";
+  $("calclist").appendChild(li);
+}
+function drawLog(){
+  var h = "<thead><tr><th>#</th><th>first-step P / bar</th><th>V after step 1 / L</th><th>w<sub>1</sub> / R</th><th>w<sub>2</sub> / R</th><th>W / R</th><th>W / J</th></tr></thead><tbody>", i, t, lo = -1;
+  for (i = 0; i < RUN.trials.length; i++) if (lo < 0 || RUN.trials[i].W < RUN.trials[lo].W) lo = i;
+  for (i = 0; i < RUN.trials.length; i++){
+    t = RUN.trials[i];
+    h += "<tr" + (RUN.found && i === lo ? ' class="win"' : "") + "><td class=n>" + t.n + (t.best ? " ★" : "") + "</td><td class=n>" + f3(t.P) + "</td><td class=n>" + f3(t.VP)
+      + "</td><td class=n>" + f1(t.w1) + "</td><td class=n>" + f1(t.w2) + "</td><td class=n>" + f1(t.W) + "</td><td class=n>" + grp(t.W * RJ) + "</td></tr>";
+  }
+  $("log").innerHTML = h + "</tbody>";
+  $("logn").textContent = RUN.trials.length;
+}
+
+/* =====================================================================
+   animation engine - the cylinder, the piston, the bath, the molecules
+   The gas column height is proportional to the volume, so the picture
+   is to scale; molecules move at a speed set by T and never faster when
+   compressed - the thermostat keeps T fixed. They hit the piston more
+   often only because the same molecules are packed into less space.
+   ===================================================================== */
+var CV = { cx: 400, r: 128, e: 28, bot: 560, top: 60, Hmax: 360 };
+var parts = [], hits = [], hitRate = 0, hitAcc = 0, hitT = 0, burst = [], sprite = null, heatPh = 0;
+function makeSprite(){
+  var c = document.createElement("canvas"); c.width = c.height = 48;
+  var g = c.getContext("2d");
+  var gl = g.createRadialGradient(24, 24, 3, 24, 24, 23);
+  gl.addColorStop(0, "rgba(84,169,255,.6)"); gl.addColorStop(1, "rgba(84,169,255,0)");
+  g.fillStyle = gl; g.fillRect(0, 0, 48, 48);
+  var b = g.createRadialGradient(20, 19, 1, 24, 24, 10);
+  b.addColorStop(0, "#ffffff"); b.addColorStop(.4, "#9fd0ff"); b.addColorStop(1, "#2c6cc0");
+  g.fillStyle = b; g.beginPath(); g.arc(24, 24, 9, 0, Math.PI * 2); g.fill();
+  return c;
+}
+function initParticles(){
+  parts = []; hits = [];
+  var i, a, r;
+  for (i = 0; i < 64; i++){
+    a = Math.random() * Math.PI * 2; r = Math.sqrt(Math.random()) * 0.9;
+    parts.push({ x: Math.cos(a) * r, z: Math.sin(a) * r, y: Math.random(),
+      vx: (Math.random() - .5), vz: (Math.random() - .5), vy: (Math.random() - .5) * 1.6 });
+  }
+}
+function heightOf(V){ return CV.Hmax * V / RUN.M.V1; }
+function moveParticles(dt, hPx){
+  var i, p, sp = 1.25 * Math.sqrt(RUN.M.D.T / 600) * (REDUCED ? 0.4 : 1), rr, hitsNow = 0;
+  var hN = Math.max(0.05, hPx / CV.Hmax);            /* column height as a fraction of full */
+  for (i = 0; i < parts.length; i++){
+    p = parts[i];
+    p.x += p.vx * dt * sp * 0.7; p.z += p.vz * dt * sp * 0.7;
+    p.y += p.vy * dt * sp / hN;                        /* same speed in pixels, so it crosses a short column faster */
+    rr = Math.sqrt(p.x * p.x + p.z * p.z);
+    if (rr > 0.9){ p.x *= 0.9 / rr; p.z *= 0.9 / rr; p.vx = -p.vx; p.vz = -p.vz; }
+    if (p.y > 1){ p.y = 1 - (p.y - 1); p.vy = -Math.abs(p.vy); hitsNow++; if (hits.length < 40) hits.push({ x: p.x, z: p.z, t: 0 }); }
+    if (p.y < 0){ p.y = -p.y; p.vy = Math.abs(p.vy); }
+    if (p.y > 1) p.y = 1;
+  }
+  for (i = hits.length - 1; i >= 0; i--){ hits[i].t += dt; if (hits[i].t > 0.35) hits.splice(i, 1); }
+  hitAcc += hitsNow; hitT += dt;
+  if (hitT > 0.5){ hitRate = hitRate ? 0.6 * hitRate + 0.4 * hitAcc / hitT : hitAcc / hitT; hitAcc = 0; hitT = 0; }
+}
+function ell(g, cx, cy, rx, ry, a0, a1, ccw){ g.ellipse(cx, cy, rx, ry, 0, a0, a1, !!ccw); }
+function box3d(g, cx, yTop, w, h, col, edge, label, alpha){
+  if (h <= 0.5) return;
+  var e = CV.e * 0.8;
+  g.globalAlpha = alpha;
+  var fr = g.createLinearGradient(cx - w / 2, 0, cx + w / 2, 0);
+  fr.addColorStop(0, col[0]); fr.addColorStop(0.5, col[1]); fr.addColorStop(1, col[0]);
+  g.fillStyle = fr;
+  g.beginPath(); g.moveTo(cx - w / 2, yTop); g.lineTo(cx - w / 2, yTop + h); ell(g, cx, yTop + h, w / 2, e, Math.PI, 0, true);
+  g.lineTo(cx + w / 2, yTop); ell(g, cx, yTop, w / 2, e, 0, Math.PI, false); g.closePath(); g.fill();
+  g.fillStyle = col[2]; g.beginPath(); ell(g, cx, yTop, w / 2, e, 0, Math.PI * 2); g.fill();
+  g.strokeStyle = edge; g.lineWidth = 2; g.beginPath(); ell(g, cx, yTop, w / 2, e, 0, Math.PI * 2); g.stroke();
+  if (label && h > 14){
+    g.fillStyle = "rgba(255,255,255,.92)"; g.font = "700 " + Math.min(17, h - 2) + "px ui-monospace,monospace";
+    g.textAlign = "center"; g.fillText(label, cx, yTop + e + h / 2 + 3); g.textAlign = "left";
+  }
+  g.globalAlpha = 1;
+}
+function drawVessel(st){
+  var c = $("vessel"), g = c.getContext("2d"), V = CV, M = RUN.M, i;
+  g.clearRect(0, 0, c.width, c.height);
+  var cx = V.cx, r = V.r, e = V.e, bot = V.bot;
+  var h = heightOf(st.V), yp = bot - h;          /* underside of the piston */
+
+  /* bench and shadow */
+  var sh = g.createRadialGradient(cx + 60, bot + 38, 10, cx + 60, bot + 38, 360);
+  sh.addColorStop(0, "rgba(0,0,0,.55)"); sh.addColorStop(1, "rgba(0,0,0,0)");
+  g.fillStyle = sh; g.beginPath(); ell(g, cx + 60, bot + 38, 360, 34, 0, Math.PI * 2); g.fill();
+
+  /* thermostat bath - a glass tank of warm water, drawn behind the cylinder */
+  var bx0 = cx - 230, bx1 = cx + 230, by0 = 330, be = 36;
+  var bw = g.createLinearGradient(0, by0, 0, bot + be);
+  bw.addColorStop(0, "rgba(255,140,70,.16)"); bw.addColorStop(1, "rgba(255,110,50,.26)");
+  g.fillStyle = bw;
+  g.beginPath(); g.moveTo(bx0, by0); g.lineTo(bx0, bot + 8); ell(g, cx, bot + 8, 230, be, Math.PI, 0, true);
+  g.lineTo(bx1, by0); ell(g, cx, by0, 230, be, 0, Math.PI, true); g.closePath(); g.fill();
+  g.strokeStyle = "rgba(255,190,150,.35)"; g.lineWidth = 2;
+  g.beginPath(); ell(g, cx, by0, 230, be, 0, Math.PI * 2); g.stroke();
+
+  /* heat leaving the gas into the bath while it is being compressed: q = -w */
+  heatPh += 0.05;
+  if (st.rate > 0.02){
+    var k, a0 = st.rate * 0.85;
+    for (k = 0; k < 8; k++){
+      var side = k < 4 ? -1 : 1, yy = bot - 30 - (k % 4) * 42, x0 = cx + side * (r + 6);
+      g.strokeStyle = "rgba(255,160,90," + a0.toFixed(2) + ")"; g.lineWidth = 2.5; g.beginPath();
+      var s;
+      for (s = 0; s <= 20; s++){
+        var xx = x0 + side * s * 4.2, yv = yy + Math.sin(s * 0.9 - heatPh * 6) * 4;
+        if (s === 0) g.moveTo(xx, yv); else g.lineTo(xx, yv);
+      }
+      g.stroke();
+      g.fillStyle = "rgba(255,160,90," + a0.toFixed(2) + ")"; g.beginPath();
+      g.moveTo(x0 + side * 90, yy - 6); g.lineTo(x0 + side * 100, yy); g.lineTo(x0 + side * 90, yy + 6); g.fill();
+    }
+  }
+  /* back wall of the cylinder */
+  var bk = g.createLinearGradient(cx - r, 0, cx + r, 0);
+  bk.addColorStop(0, "rgba(160,200,255,.12)"); bk.addColorStop(.5, "rgba(160,200,255,.03)"); bk.addColorStop(1, "rgba(160,200,255,.10)");
+  g.fillStyle = bk; g.fillRect(cx - r, V.top, 2 * r, bot - V.top);
+
+  /* the gas: tinted column, denser tint when compressed */
+  var dens = clamp(M.V1 / st.V, 1, 12);
+  var gg = g.createLinearGradient(0, yp, 0, bot);
+  gg.addColorStop(0, "rgba(80,160,255," + (0.07 + 0.025 * dens).toFixed(3) + ")");
+  gg.addColorStop(1, "rgba(80,160,255," + (0.12 + 0.03 * dens).toFixed(3) + ")");
+  g.fillStyle = gg; g.beginPath(); g.moveTo(cx - r + 3, yp); g.lineTo(cx - r + 3, bot); ell(g, cx, bot, r - 3, e - 2, Math.PI, 0, true);
+  g.lineTo(cx + r - 3, yp); ell(g, cx, yp, r - 3, e - 2, 0, Math.PI, false); g.closePath(); g.fill();
+
+  /* molecules, back to front */
+  var list = [], p, d, px, py;
+  for (i = 0; i < parts.length; i++){
+    p = parts[i]; d = p.z;
+    px = cx + p.x * (r - 16); py = bot - 10 - p.y * Math.max(4, h - 22) + d * (e - 6) * 0.8;
+    list.push({ d: d, x: px, y: py });
+  }
+  list.sort(function(a, b){ return a.d - b.d; });
+  for (i = 0; i < list.length; i++){
+    var sz = 26 * (1 + 0.25 * list[i].d);
+    g.globalAlpha = 0.55 + 0.45 * (list[i].d + 1) / 2;
+    g.drawImage(sprite, list[i].x - sz / 2, list[i].y - sz / 2, sz, sz);
+  }
+  g.globalAlpha = 1;
+  /* hits on the underside of the piston */
+  for (i = 0; i < hits.length; i++){
+    var hk = hits[i].t / 0.35;
+    g.strokeStyle = "rgba(160,215,255," + (1 - hk).toFixed(2) + ")"; g.lineWidth = 2;
+    g.beginPath(); g.arc(cx + hits[i].x * (r - 16), yp + 4 + hits[i].z * (e - 6) * 0.8, 3 + 10 * hk, Math.PI, 0); g.stroke();
+  }
+
+  /* piston - a steel disc */
+  var pt = 18;
+  box3d(g, cx, yp - pt, 2 * r - 4, pt, ["#5d6a80", "#c8d3e6", "#8d9ab2"], "rgba(220,230,250,.6)", "", 1);
+
+  /* the load: base (P1), the step-1 addition (to P), the step-2 addition (to P2) */
+  var kb = Math.min(13, 150 / M.D.P2), yStack = yp - pt, w = 2 * r * 0.72, hb = kb * M.D.P1;
+  box3d(g, cx, yStack - hb, w, hb, ["#3a4150", "#6f7a8f", "#566074"], "rgba(200,210,230,.5)", nice(M.D.P1, 2) + " bar", 1);
+  yStack -= hb;
+  if (st.P !== null && st.drop1 >= 0){
+    var h1 = kb * (st.P - M.D.P1), off1 = -st.drop1 * 130;
+    box3d(g, cx, yStack - h1 + off1, w * 0.94, h1, ["#1f4f8f", "#4f9bf0", "#3577c8"], "rgba(150,200,255,.7)", "+" + nice(st.P - M.D.P1, 2), (1 - st.drop1 * 0.6) * st.fade);
+    yStack -= h1;
+    if (st.drop2 >= 0){
+      var h2 = kb * (M.D.P2 - st.P), off2 = -st.drop2 * 130;
+      box3d(g, cx, yStack - h2 + off2, w * 0.88, h2, ["#8a3c12", "#f08a4a", "#c96a2f"], "rgba(255,190,150,.7)", "+" + nice(M.D.P2 - st.P, 2), (1 - st.drop2 * 0.6) * st.fade);
+    }
+  }
+  /* front glass of the cylinder */
+  g.strokeStyle = "rgba(190,215,255,.45)"; g.lineWidth = 2.5;
+  g.beginPath(); ell(g, cx, V.top, r, e, 0, Math.PI * 2); g.stroke();
+  g.beginPath(); g.moveTo(cx - r, V.top); g.lineTo(cx - r, bot); g.moveTo(cx + r, V.top); g.lineTo(cx + r, bot); g.stroke();
+  g.beginPath(); ell(g, cx, bot, r, e, 0, Math.PI, false); g.stroke();
+  var hl = g.createLinearGradient(cx - r + 10, 0, cx - r + 50, 0);
+  hl.addColorStop(0, "rgba(255,255,255,.14)"); hl.addColorStop(1, "rgba(255,255,255,0)");
+  g.fillStyle = hl; g.fillRect(cx - r + 10, V.top + 20, 40, bot - V.top - 30);
+  /* volume scale on the glass, litres */
+  g.font = "600 13px ui-monospace,monospace"; g.fillStyle = "rgba(190,215,255,.55)"; g.strokeStyle = "rgba(190,215,255,.35)"; g.lineWidth = 1.5;
+  var stp = M.V1 > 20 ? 5 : (M.V1 > 8 ? 2 : 1), vv;
+  for (vv = stp; vv <= M.V1 + 1e-9; vv += stp){
+    var yy2 = bot - heightOf(vv);
+    g.beginPath(); g.moveTo(cx + r - 22, yy2 + e * 0.5); g.lineTo(cx + r - 4, yy2 + e * 0.45); g.stroke();
+    g.fillText(nice(vv) + " L", cx + r - 70, yy2 + e * 0.5 + 4);
+  }
+  /* bath water surface in front */
+  g.fillStyle = "rgba(255,150,90,.10)"; g.fillRect(bx0, by0, 460, bot - by0);
+  g.strokeStyle = "rgba(255,190,150,.35)"; g.lineWidth = 2;
+  g.beginPath(); g.moveTo(bx0, by0); g.lineTo(bx0, bot + 8); ell(g, cx, bot + 8, 230, be, Math.PI, 0, true); g.lineTo(bx1, by0); g.stroke();
+  g.fillStyle = "rgba(255,200,170,.6)"; g.font = "700 14px ui-sans-serif,system-ui,sans-serif";
+  g.fillText("THERMOSTAT BATH · " + nice(M.D.T) + " K", bx0 + 14, bot - 6);
+
+  drawGauge(g, 830, 150, 100, st);
+  drawThermo(g, 830, 350, 560);
+}
+function drawGauge(g, cx, cy, R, st){
+  var M = RUN.M, pmax = niceMax(M.D.P2 * 1.2), gasP = M.D.n * RL * M.D.T / st.V;
+  var a0 = Math.PI * 0.75, a1 = Math.PI * 2.25, ang = function(p){ return a0 + (a1 - a0) * clamp(p / pmax, 0, 1); }, i;
+  var bg = g.createRadialGradient(cx - 20, cy - 25, 10, cx, cy, R);
+  bg.addColorStop(0, "#26324a"); bg.addColorStop(1, "#0b111d");
+  g.fillStyle = bg; g.beginPath(); g.arc(cx, cy, R, 0, Math.PI * 2); g.fill();
+  g.strokeStyle = "rgba(190,215,255,.5)"; g.lineWidth = 3; g.stroke();
+  g.lineWidth = 2; g.font = "600 13px ui-monospace,monospace"; g.textAlign = "center";
+  for (i = 0; i <= 5; i++){
+    var p = pmax * i / 5, a = ang(p);
+    g.strokeStyle = "rgba(190,215,255,.6)"; g.beginPath();
+    g.moveTo(cx + Math.cos(a) * (R - 6), cy + Math.sin(a) * (R - 6)); g.lineTo(cx + Math.cos(a) * (R - 16), cy + Math.sin(a) * (R - 16)); g.stroke();
+    g.fillStyle = "rgba(200,220,255,.75)"; g.fillText(nice(p, 1), cx + Math.cos(a) * (R - 30), cy + Math.sin(a) * (R - 30) + 4);
+  }
+  /* the external pressure as an orange mark, the gas pressure as the needle */
+  var ae = ang(st.Pext);
+  g.strokeStyle = "#ff9350"; g.lineWidth = 5; g.beginPath(); g.arc(cx, cy, R - 4, ae - 0.05, ae + 0.05); g.stroke();
+  var an = ang(gasP);
+  g.strokeStyle = "#6fb6ff"; g.lineWidth = 4; g.lineCap = "round";
+  g.beginPath(); g.moveTo(cx, cy); g.lineTo(cx + Math.cos(an) * (R - 20), cy + Math.sin(an) * (R - 20)); g.stroke(); g.lineCap = "butt";
+  g.fillStyle = "#dfe8ff"; g.beginPath(); g.arc(cx, cy, 6, 0, Math.PI * 2); g.fill();
+  g.font = "600 11px ui-sans-serif,system-ui"; g.fillStyle = "rgba(200,215,245,.7)";
+  g.fillText("bar", cx, cy - 26);
+  g.font = "700 17px ui-monospace,monospace"; g.fillStyle = "#9fd0ff"; g.fillText("gas " + f2(gasP) + " bar", cx, cy + R + 24);
+  g.font = "700 14px ui-monospace,monospace"; g.fillStyle = "#ffae7a"; g.fillText("▮ external " + f2(st.Pext) + " bar", cx, cy + R + 44);
+  g.textAlign = "left";
+}
+function drawThermo(g, cx, y0, y1){
+  var T = RUN.M.D.T, f = clamp(T / 2000, 0.05, 1);
+  g.fillStyle = "rgba(255,255,255,.08)"; g.strokeStyle = "rgba(200,220,255,.45)"; g.lineWidth = 2;
+  g.beginPath(); g.moveTo(cx - 9, y0); g.lineTo(cx - 9, y1 - 14); g.arc(cx, y1, 17, Math.PI * 1.25, Math.PI * 1.75, true); g.lineTo(cx + 9, y0); g.arc(cx, y0, 9, 0, Math.PI, true); g.fill(); g.stroke();
+  g.fillStyle = "#ff6b50";
+  g.beginPath(); g.arc(cx, y1, 12, 0, Math.PI * 2); g.fill();
+  var top = y1 - 12 - (y1 - y0 - 20) * f;
+  g.fillRect(cx - 4, top, 8, y1 - top);
+  g.font = "700 15px ui-monospace,monospace"; g.fillStyle = "#ffb49a"; g.textAlign = "left";
+  g.fillText(nice(T) + " K", cx + 24, top + 5);
+  g.font = "600 11px ui-sans-serif,system-ui"; g.fillStyle = "rgba(200,215,245,.7)";
+  g.fillText("constant", cx + 24, top + 22);
+}
+function niceMax(v){ var p = Math.pow(10, Math.floor(Math.log(v) / Math.LN10)), m = v / p, L = [1, 1.2, 1.5, 2, 2.5, 3, 4, 5, 6, 8, 10], i;
+  for (i = 0; i < L.length; i++) if (m <= L[i] + 1e-9) return L[i] * p; return 10 * p; }
+function niceStep(span, want){ var raw = span / want, p = Math.pow(10, Math.floor(Math.log(raw) / Math.LN10)), f = raw / p;
+  return (f < 1.5 ? 1 : f < 3.5 ? 2 : f < 7.5 ? 5 : 10) * p; }
+
+/* =====================================================================
+   graph engine - both graphs drawn from the same state as the cylinder
+   ===================================================================== */
+var PV = null;
+function mountPV(){
+  var svg = $("pv"), M = RUN.M; svg.innerHTML = "";
+  var W = 560, H = 330, l = 52, r = 14, t = 16, b = 42;
+  var xm = niceMax(M.V1 * 1.05), ym = niceMax(M.D.P2 * 1.1);
+  var X = function(v){ return l + v / xm * (W - l - r); }, Y = function(p){ return H - b - p / ym * (H - t - b); };
+  var g = mk("g", {}, svg), i, v;
+  for (i = 0; i <= 5; i++){
+    v = ym * i / 5;
+    mk("line", { x1: l, x2: W - r, y1: Y(v), y2: Y(v), stroke: css("--line"), "stroke-width": 1 }, g);
+    tx(g, l - 7, Y(v) + 4, nice(v, 2), { "text-anchor": "end", "font-size": 11, fill: css("--text-muted"), "font-family": "ui-monospace,monospace" });
+    v = xm * i / 5;
+    tx(g, X(v), H - b + 17, nice(v, 2), { "text-anchor": "middle", "font-size": 11, fill: css("--text-muted"), "font-family": "ui-monospace,monospace" });
+  }
+  mk("line", { x1: l, x2: W - r, y1: Y(0), y2: Y(0), stroke: css("--line-strong"), "stroke-width": 1.5 }, g);
+  mk("line", { x1: l, x2: l, y1: Y(0), y2: Y(ym), stroke: css("--line-strong"), "stroke-width": 1.5 }, g);
+  tx(g, (l + W - r) / 2, H - 5, "volume V / L", { "text-anchor": "middle", "font-size": 12, fill: css("--text-secondary") });
+  tx(g, 13, (t + H - b) / 2, "pressure / bar", { "text-anchor": "middle", "font-size": 12, fill: css("--text-secondary"), transform: "rotate(-90 13 " + ((t + H - b) / 2) + ")" });
+  var ghosts = mk("g", {}, svg);
+  var rev = mk("path", { fill: css("--s3"), "fill-opacity": 0.16, stroke: "none", opacity: 0 }, svg);
+  var revT = tx(svg, 0, 0, "", { "font-size": 11, "font-weight": 700, fill: css("--s3"), opacity: 0 });
+  var r1 = mk("rect", { fill: css("--s1"), "fill-opacity": 0.26, stroke: css("--s1"), "stroke-width": 2 }, svg);
+  var r2 = mk("rect", { fill: css("--s2"), "fill-opacity": 0.26, stroke: css("--s2"), "stroke-width": 2 }, svg);
+  var t1 = tx(svg, 0, 0, "", { "text-anchor": "middle", "font-size": 12, "font-weight": 700, fill: css("--s1") });
+  var t2 = tx(svg, 0, 0, "", { "text-anchor": "middle", "font-size": 12, "font-weight": 700, fill: css("--s2") });
+  /* the isotherm P V = nRT */
+  var d = "", n = 120;
+  for (i = 0; i <= n; i++){ v = M.V2 * 0.8 + (xm - M.V2 * 0.8) * i / n; d += (i ? "L" : "M") + X(v).toFixed(1) + " " + Y(Math.min(ym, M.D.n * RL * M.D.T / v)).toFixed(1); }
+  mk("path", { d: d, fill: "none", stroke: css("--text-muted"), "stroke-width": 1.6, "stroke-dasharray": "5 4" }, svg);
+  tx(svg, X(xm * 0.97), Y(M.D.n * RL * M.D.T / (xm * 0.97)) - 9, "isotherm PV = nRT", { "text-anchor": "end", "font-size": 11, fill: css("--text-muted") });
+  var dot = mk("circle", { r: 6, fill: css("--s1"), stroke: css("--surface-1"), "stroke-width": 2 }, svg);
+  PV = { X: X, Y: Y, rev: rev, revT: revT, r1: r1, r2: r2, t1: t1, t2: t2, dot: dot, ghosts: ghosts, nGhost: -1 };
+}
+function updatePV(st){
+  if (!PV) return;
+  var M = RUN.M, X = PV.X, Y = PV.Y;
+  var active = st.P !== null && st.name !== "prep" && st.name !== "idle";
+  var V1 = M.V1, VP = active ? M.V(st.P) : V1;
+  var endV1 = (st.name === "s1") ? st.V : VP;
+  var show1 = active && (st.name !== "load1");
+  var show2 = active && (st.name === "s2" || st.name === "h2" || st.name === "reset" || st.name === "rest");
+  var endV2 = st.name === "s2" ? st.V : M.V2;
+  function rect(el, va, vb, p, on){
+    if (!on || vb <= va){ el.setAttribute("width", 0); el.setAttribute("height", 0); return; }
+    el.setAttribute("x", X(va)); el.setAttribute("y", Y(p)); el.setAttribute("width", X(vb) - X(va)); el.setAttribute("height", Y(0) - Y(p));
+  }
+  var fade = st.name === "reset" ? st.fade : 1;
+  PV.r1.setAttribute("opacity", fade); PV.r2.setAttribute("opacity", fade);
+  rect(PV.r1, endV1, V1, st.P, show1);
+  rect(PV.r2, endV2, VP, M.D.P2, show2);
+  var m = active ? M.measureR(st.P) : null;
+  PV.t1.textContent = show1 && (st.name !== "s1") ? "w₁ = " + f1(m.w1) + "R" : "";
+  PV.t1.setAttribute("x", X((VP + V1) / 2)); PV.t1.setAttribute("y", Y(st.P || 0) + 16);
+  PV.t2.textContent = show2 && st.name !== "s2" ? "w₂ = " + f1(m.w2) + "R" : "";
+  PV.t2.setAttribute("x", X((M.V2 + VP) / 2)); PV.t2.setAttribute("y", Math.min(Y(M.D.P2) + 16, Y(0) - 26));
+  var gasP = M.D.n * RL * M.D.T / st.V;
+  PV.dot.setAttribute("cx", X(st.V)); PV.dot.setAttribute("cy", Y(gasP));
+  /* earlier runs stay as faint outlines */
+  var n = RUN.trials.length;
+  if (PV.nGhost !== n){
+    PV.nGhost = n; PV.ghosts.innerHTML = "";
+    var i, T;
+    for (i = 0; i < n; i++){
+      T = RUN.trials[i];
+      var d = "M" + X(M.V1) + " " + Y(0) + "V" + Y(T.P) + "H" + X(T.VP) + "V" + Y(M.D.P2) + "H" + X(M.V2) + "V" + Y(0);
+      mk("path", { d: d, fill: "none", stroke: css("--text-muted"), "stroke-width": 1, opacity: 0.35 }, PV.ghosts);
+    }
+  }
+  /* the best run shows the reversible limit beside it */
+  var sg = seg(), showRev = sg && (sg.kind === "best" || sg.kind === "calc" || sg.kind === "done") || RUN.done;
+  if (showRev){
+    var d2 = "M" + X(M.V2) + " " + Y(0), k, v;
+    for (k = 0; k <= 60; k++){ v = M.V2 + (M.V1 - M.V2) * k / 60; d2 += "L" + X(v).toFixed(1) + " " + Y(M.D.n * RL * M.D.T / v).toFixed(1); }
+    d2 += "L" + X(M.V1) + " " + Y(0) + "Z";
+    PV.rev.setAttribute("d", d2); PV.rev.setAttribute("opacity", 1);
+    PV.revT.textContent = "reversible: " + f1(M.WrevR) + "R";
+    PV.revT.setAttribute("x", X(M.V1) - 4); PV.revT.setAttribute("y", Y(0) - 8); PV.revT.setAttribute("text-anchor", "end"); PV.revT.setAttribute("opacity", 1);
+  } else { PV.rev.setAttribute("opacity", 0); PV.revT.setAttribute("opacity", 0); }
+}
+var WPG = null;
+function drawWP(){
+  var svg = $("wp"), M = RUN.M; svg.innerHTML = "";
+  var W = 560, H = 330, l = 58, r = 16, t = 16, b = 42;
+  var tstep = niceStep(M.WoneR * 1.06 - M.WrevR * 0.9, 5);
+  var ylo = Math.floor(M.WrevR * 0.9 / tstep) * tstep, yhi = Math.ceil(M.WoneR * 1.04 / tstep) * tstep;
+  var X = function(p){ return l + (p - M.D.P1) / (M.D.P2 - M.D.P1) * (W - l - r); };
+  var Y = function(w){ return H - b - (w - ylo) / (yhi - ylo) * (H - t - b); };
+  var g = mk("g", {}, svg), i, v;
+  for (v = ylo; v <= yhi + 1e-9; v += tstep){
+    mk("line", { x1: l, x2: W - r, y1: Y(v), y2: Y(v), stroke: css("--line"), "stroke-width": 1 }, g);
+    tx(g, l - 7, Y(v) + 4, nice(v, 2) + "R", { "text-anchor": "end", "font-size": 11, fill: css("--text-muted"), "font-family": "ui-monospace,monospace" });
+  }
+  for (i = 0; i <= 5; i++){
+    v = M.D.P1 + (M.D.P2 - M.D.P1) * i / 5;
+    tx(g, X(v), H - b + 17, nice(v, 2), { "text-anchor": "middle", "font-size": 11, fill: css("--text-muted"), "font-family": "ui-monospace,monospace" });
+  }
+  mk("line", { x1: l, x2: W - r, y1: Y(ylo), y2: Y(ylo), stroke: css("--line-strong"), "stroke-width": 1.5 }, g);
+  mk("line", { x1: l, x2: l, y1: Y(ylo), y2: Y(yhi), stroke: css("--line-strong"), "stroke-width": 1.5 }, g);
+  tx(g, (l + W - r) / 2, H - 5, "first-step pressure P / bar", { "text-anchor": "middle", "font-size": 12, fill: css("--text-secondary") });
+  tx(g, 13, (t + H - b) / 2, "total work W", { "text-anchor": "middle", "font-size": 12, fill: css("--text-secondary"), transform: "rotate(-90 13 " + ((t + H - b) / 2) + ")" });
+  /* the two limits, dashed */
+  mk("line", { x1: l, x2: W - r, y1: Y(M.WoneR), y2: Y(M.WoneR), stroke: css("--s2"), "stroke-width": 1.2, "stroke-dasharray": "5 4", opacity: 0.8 }, g);
+  tx(g, W - r - 4, Y(M.WoneR) - 6, "one step straight to " + nice(M.D.P2) + " bar: " + f1(M.WoneR) + "R", { "text-anchor": "end", "font-size": 10.5, fill: css("--s2") });
+  mk("line", { x1: l, x2: W - r, y1: Y(M.WrevR), y2: Y(M.WrevR), stroke: css("--s3"), "stroke-width": 1.2, "stroke-dasharray": "5 4", opacity: 0.9 }, g);
+  tx(g, W - r - 4, Y(M.WrevR) + 14, "reversible limit: " + f1(M.WrevR) + "R", { "text-anchor": "end", "font-size": 10.5, fill: css("--s3") });
+  /* the curve, once the analysis has run: every W(P) the model allows */
+  var analysed = RUN.found && (RUN.probeShown >= 1 || (seg() && seg().kind !== "analyse") || RUN.done);
+  if (analysed){
+    var d = "", n = 120, p;
+    for (i = 0; i <= n; i++){ p = M.D.P1 + (M.D.P2 - M.D.P1) * i / n; d += (i ? "L" : "M") + X(p).toFixed(1) + " " + Y(M.measureR(p).W).toFixed(1); }
+    var cv = mk("path", { d: d, fill: "none", stroke: css("--s4"), "stroke-width": 2 }, svg);
+    if (seg() && seg().kind === "analyse" && !REDUCED){ cv.setAttribute("stroke-dasharray", "1400"); cv.setAttribute("stroke-dashoffset", "1400"); cv.style.transition = "stroke-dashoffset 1.6s ease-out"; setTimeout(function(){ cv.setAttribute("stroke-dashoffset", "0"); }, 30); }
+    var pr = RUN.found.probes, k;
+    for (k = 0; k < Math.min(pr.length, RUN.probeShown * 4); k++)
+      mk("circle", { cx: X(pr[k].P), cy: Y(pr[k].W), r: 4, fill: "none", stroke: css("--s4"), "stroke-width": 1.5 }, svg);
+  }
+  var T, lo = -1;
+  for (i = 0; i < RUN.trials.length; i++) if (lo < 0 || RUN.trials[i].W < RUN.trials[lo].W) lo = i;
+  for (i = 0; i < RUN.trials.length; i++){
+    T = RUN.trials[i];
+    mk("circle", { cx: X(T.P), cy: Y(T.W), r: T.best ? 8 : 6, fill: T.best ? css("--good") : css("--s1"), stroke: css("--surface-1"), "stroke-width": 2 }, svg);
+  }
+  if (RUN.found && analysed){
+    var F = RUN.found;
+    mk("line", { x1: X(F.P), x2: X(F.P), y1: Y(F.W), y2: Y(ylo), stroke: css("--good"), "stroke-width": 1.2, "stroke-dasharray": "3 3" }, svg);
+    var lab = "minimum " + f1(F.W) + "R at P = " + f2(F.P) + " bar";
+    tx(svg, clamp(X(F.P), l + 110, W - r - 110), Y(F.W) + 32, lab, { "text-anchor": "middle", "font-size": 12, "font-weight": 700, fill: css("--good") });
+  }
+  WPG = { X: X, Y: Y };
+}
+function onWPHover(ev){
+  if (!WPG) return;
+  var svg = $("wp"), bb = svg.getBoundingClientRect(), sx = (ev.clientX - bb.left) / bb.width * 560, sy = (ev.clientY - bb.top) / bb.height * 330;
+  var best = null, bd = 1e9, i, T, dd;
+  for (i = 0; i < RUN.trials.length; i++){ T = RUN.trials[i]; dd = Math.pow(WPG.X(T.P) - sx, 2) + Math.pow(WPG.Y(T.W) - sy, 2); if (dd < bd){ bd = dd; best = T; } }
+  var tip = $("tip");
+  if (!best || bd > 900){ tip.style.opacity = 0; return; }
+  tip.innerHTML = '<div class="t">run ' + best.n + (best.best ? " · best" : "") + '</div><div class="r">first step P<span class="rv">' + f3(best.P) + ' bar</span></div>'
+    + '<div class="r">w₁ + w₂<span class="rv">' + f1(best.w1) + " + " + f1(best.w2) + '</span></div><div class="r">W<span class="rv">' + f1(best.W) + "R</span></div>";
+  var w = $("wpwrap").getBoundingClientRect(), px = ev.clientX - w.left, py = ev.clientY - w.top;
+  tip.style.left = (px > w.width - 170 ? px - 165 : px + 12) + "px"; tip.style.top = Math.max(0, py - 60) + "px"; tip.style.opacity = 1;
+}
+
+/* =====================================================================
+   status, guidance, narration, live data
+   ===================================================================== */
+function stageKey(){
+  var sg = seg();
+  if (RUN.state === "setup") return null;
+  if (RUN.done) return "answer";
+  if (!sg) return null;
+  if (sg.kind === "trial") return sg.idx === 0 ? "trial" : "sweep";
+  return sg.kind === "done" ? "calc" : sg.kind;
+}
+var STAGE_ORDER = ["prep", "trial", "sweep", "analyse", "best", "calc", "answer"];
+function refreshStatus(){
+  var k = stageKey(), x = $("xstat"), txt, cls = "xstat", g;
+  if (RUN.state === "setup"){ txt = "Ready"; g = isCustom() ? "Custom values set — press RUN WITH CUSTOM VALUES." : "Set your values or use the question defaults. Press START EXPERIMENT to begin."; }
+  else if (RUN.done){ txt = "✓ Experiment complete"; cls += " done"; g = "Result obtained."; }
+  else if (k === "prep"){ txt = "Preparing experiment"; cls += " run"; g = "Preparing the cylinder…"; }
+  else if (k === "analyse"){ txt = "Analysing data"; cls += " ana"; g = "Analysing experimental data…"; }
+  else if (k === "calc"){ txt = "Calculation complete"; cls += " ana"; g = "Calculating the result…"; }
+  else { txt = "Experiment running"; cls += " run"; g = "Experiment running…"; }
+  if (RUN.paused){ txt = "Paused"; cls = "xstat"; g = "Paused — press Resume."; }
+  x.className = cls; $("xstattxt").textContent = txt; $("guide").textContent = g;
+  var ki = STAGE_ORDER.indexOf(k), sp = document.querySelectorAll("#stages span"), i;
+  for (i = 0; i < sp.length; i++){
+    var j = STAGE_ORDER.indexOf(sp[i].getAttribute("data-s"));
+    sp[i].className = k === null ? "" : (j < ki || RUN.done ? "done" : (j === ki ? "now" : ""));
+  }
+}
+function narrate(st){
+  var sg = seg(), M = RUN.M, D = M.D, h, m;
+  var gasP = D.n * RL * D.T / st.V;
+  if (RUN.state === "setup"){
+    h = nice(D.n) + " mol of gas at <b>" + nice(D.P1) + " bar</b> and <b>" + nice(D.T) + " K</b>, " + f2(M.V1) + " L. "
+      + (isCustom() ? "Your values are loaded — press <b>RUN WITH CUSTOM VALUES</b>." : "The question's values are already loaded — press <b>START EXPERIMENT</b>.");
+  } else if (RUN.done){
+    h = "<span class=gd>Experiment complete.</span> Cheapest first step: <b>P = " + f2(RUN.found.P) + " bar</b>, total work <b>" + f1(RUN.found.W) + "R</b>.";
+  } else if (!sg){ h = ""; }
+  else if (sg.kind === "prep"){
+    h = "The piston rests on a <b>" + nice(D.P1) + " bar</b> load. The bath holds the gas at <b>" + nice(D.T) + " K</b>, so the molecules keep the same speed all through the experiment.";
+  } else if (sg.kind === "trial" || sg.kind === "best"){
+    var tag = sg.kind === "best" ? "Best run" : "Run " + (sg.idx + 1) + " of " + M.grid.length;
+    m = M.measureR(sg.P);
+    switch (st.name){
+      case "load1": h = tag + ": a weight lands — the external pressure jumps to <span class=a>P = " + f2(sg.P) + " bar</span>, more than the gas's " + f2(gasP) + " bar, so the piston is pushed down."; break;
+      case "s1": h = "Step 1: the piston falls against a constant <span class=a>" + f2(sg.P) + " bar</span>. Squeezed molecules hit it more often, so the gas pressure climbs — <b>" + f2(gasP) + " bar</b> — and heat flows out to the bath."; break;
+      case "h1": h = "The gas has reached " + f2(sg.P) + " bar, equal to the load — the piston stops. Work in step 1 = load × volume swept = <span class=a>" + f1(m.w1) + "R</span>."; break;
+      case "load2": h = "Step 2: the rest of the load goes on, up to <span class=o>" + nice(D.P2) + " bar</span>."; break;
+      case "s2": h = "The piston falls again against <span class=o>" + nice(D.P2) + " bar</span>; gas pressure " + f2(gasP) + " bar and rising."; break;
+      case "h2": h = "Stopped at " + nice(D.P2) + " bar. Step 2 = <span class=o>" + f1(m.w2) + "R</span>, total <b>W = " + f1(m.W) + "R</b> for P = " + f2(sg.P) + " bar."; break;
+      default: h = sg.kind === "best" ? "Both steps of the best run cost the same." : "Fresh gas at " + nice(D.P1) + " bar for the next run — a different first-step P.";
+    }
+    if (sg.kind === "trial" && !sg.slow) h = tag + ": first step at <span class=a>P = " + f2(sg.P) + " bar</span> → W = <b>" + f1(m.W) + "R</b>";
+    if (sg.kind === "best" && st.name === "load1") h = "Best run, slowly: first step at <span class=a>P = " + f3(sg.P) + " bar</span>. The green area on the indicator diagram is the reversible limit — nothing can do better.";
+  } else if (sg.kind === "analyse"){
+    h = "Analysing: the lowest of the " + RUN.trials.length + " runs is the start. Now runs just either side of it — each one costs more, so this is the bottom of the curve.";
+  } else if (sg.kind === "calc" || sg.kind === "done"){
+    h = "Writing up: the minimum is at P = √(P₁P₂), where both steps do the same work.";
+  }
+  $("narr").innerHTML = h;
+  var tt = sg && (sg.kind === "trial" || sg.kind === "best") ? (sg.kind === "best" ? "best run · P = " + f3(sg.P) + " bar" : "run " + (sg.idx + 1) + " / " + M.grid.length + " · P = " + f2(sg.P) + " bar")
+    : (RUN.trials.length ? RUN.trials.length + " runs logged" : "no trial yet");
+  $("trialtag").textContent = tt;
+  $("scenet").textContent = RUN.done ? "Experiment complete" : (sg && sg.kind === "analyse" ? "Finding the minimum" : "Cylinder in a thermostat bath");
+}
+function updateReadouts(st){
+  var M = RUN.M, D = M.D, gasP = D.n * RL * D.T / st.V, wR = st.wL / RL;
+  $("g_pg").textContent = f2(gasP); $("g_pe").textContent = f2(st.Pext);
+  $("g_v").textContent = f2(st.V); $("g_t").textContent = nice(D.T);
+  $("g_w").textContent = grp(wR * RJ); $("g_wr").textContent = f1(wR); $("g_q").textContent = wR > 0.05 ? "−" + grp(wR * RJ) : "0";
+  $("g_hits").textContent = hitRate ? Math.round(hitRate) + "" : "—";
+  var lo = null, i; for (i = 0; i < RUN.trials.length; i++) if (!lo || RUN.trials[i].W < lo.W) lo = RUN.trials[i];
+  $("g_best").innerHTML = lo ? f1(lo.W) + '<span class="u">R · P ' + f2(lo.P) + "</span>" : "—";
+  $("gz_best").classList.toggle("hot", RUN.done);
+}
+function refreshUI(){
+  var go = $("gobtn"), run = RUN.state === "running", custom = isCustom();
+  go.hidden = false; go.disabled = run; go.classList.toggle("custom", custom && !run);
+  if (run) go.innerHTML = "● RUNNING…";
+  else if (RUN.state === "done"){ go.innerHTML = "⚙&nbsp; RUN WITH CUSTOM VALUES"; go.hidden = sameD(RUN.D, copyST()); }
+  else go.innerHTML = custom ? "⚙&nbsp; RUN WITH CUSTOM VALUES" : "▶&nbsp; START EXPERIMENT";
+  $("pausebtn").disabled = !run; $("pausebtn").textContent = RUN.paused ? "Resume" : "Pause";
+  $("replaybtn").hidden = RUN.state !== "done";
+  var s = $("status");
+  s.className = "status" + (custom ? " custom" : "");
+  s.textContent = custom ? "⚙ USING CUSTOM VALUES" : "✓ USING QUESTION VALUES";
+  var q = document.querySelectorAll("#fields input, #fields button, #resetq"), i;
+  for (i = 0; i < q.length; i++) q[i].disabled = run;
+  var m;
+  if (run) m = "The experiment runs by itself — nothing to click. <b>Pause</b> any time.";
+  else if (RUN.state === "done") m = "Press <b>REPLAY</b> to watch it again, or change a value and run a custom experiment.";
+  else m = custom ? "Your values will be used; anything you left alone stays at the question's value." : "Nothing needs to be typed. Press <b>START EXPERIMENT</b>.";
+  $("gomsg").innerHTML = m;
+  refreshStatus();
+}
+
+/* =====================================================================
+   the answer reveal
+   ===================================================================== */
+function blink(id){
+  var e = $(id); if (!e) return;
+  e.classList.remove("blink"); void e.offsetWidth; e.classList.add("blink");
+  setTimeout(function(){ e.classList.remove("blink"); }, 2300);
+}
+function doReveal(){
+  if (!RUN.done){ earlyReveal = true; refreshGate(); return; }
+  var lab = $("lab3d");
+  lab.classList.add("dim"); $("blackout").classList.add("on");
+  setTimeout(function(){
+    $("blackout").classList.remove("on"); $("donebanner").classList.remove("on");
+    if (!REDUCED){ var f = $("flashout"); f.classList.remove("go"); void f.offsetWidth; f.classList.add("go");
+      lab.classList.remove("zoom"); void lab.offsetWidth; lab.classList.add("zoom"); }
+    RUN.revealed = true;
+    mountReveal(); refreshGate();
+    var ab = $("answerbox");
+    ab.classList.remove("celebrate"); void ab.offsetWidth; ab.classList.add("celebrate");
+    setTimeout(function(){ ab.classList.remove("celebrate"); }, 3200);
+    blink("ansval"); blink("grafT"); blink("g_best");
+    setTimeout(function(){ lab.classList.remove("dim"); }, 5200);
+  }, 950);
+}
+function mountReveal(){
+  var host = $("revealhost"), F = RUN.found, mo = matchOption(F.W), Wr = Math.round(F.W * 10) / 10;
+  host.innerHTML = ""; host.classList.add("on");
+  var main = mo.length ? "OPTION (" + mo[0] + ")" : nice(Wr, 1) + "R J";
+  var sub = "|W|min = " + nice(Wr, 1) + "R J  ·  first step at P = " + nice(Math.round(F.P * 1000) / 1000, 3) + " bar";
+  var svg = mk("svg", { viewBox: "0 0 720 340", "class": "graf", role: "img", "aria-label": "Congratulations. Answer found: " + main + ". " + sub }, host);
+  var d = mk("defs", {}, svg), sp = mk("filter", { id: "spray", x: "-14%", y: "-40%", width: "128%", height: "180%" }, d);
+  mk("feTurbulence", { type: "fractalNoise", baseFrequency: "0.045 0.09", numOctaves: "3", seed: "7", result: "nz" }, sp);
+  mk("feDisplacementMap", { "in": "SourceGraphic", in2: "nz", scale: "6", xChannelSelector: "R", yChannelSelector: "G" }, sp);
+  var bh = mk("g", {}, svg);
+  tx(svg, 360, 44, "🎉  CONGRATULATIONS!  🎉", { "text-anchor": "middle", "font-size": 21, "font-weight": 900, fill: "#3ee39a", "letter-spacing": "3" });
+  tx(svg, 360, 68, "ANSWER FOUND", { "text-anchor": "middle", "font-size": 12.5, "font-weight": 800, fill: "#9fb0cc", "letter-spacing": "5" });
+  mk("rect", { x: 170, y: 86, width: 380, height: 150, rx: 16, fill: "rgba(8,20,16,.72)", stroke: "#3ee39a", "stroke-width": 2 }, svg);
+  tx(svg, 360, 110, "ANSWER", { "text-anchor": "middle", "font-size": 12, "font-weight": 800, fill: "#9ff0c9", "letter-spacing": "6" });
+  var g = mk("g", { transform: "translate(360,188) skewX(-9)" }, svg);
+  tx(g, 7, 9, main, { "text-anchor": "middle", "font-size": mo.length ? 60 : 50, "font-weight": 900, fill: "#a99bff", opacity: 0.34, "font-family": "ui-sans-serif,system-ui,sans-serif", filter: "url(#spray)" });
+  tx(g, 0, 0, main, { id: "grafT", "text-anchor": "middle", "font-size": mo.length ? 60 : 50, "font-weight": 900, fill: "#3ee39a", "font-family": "ui-sans-serif,system-ui,sans-serif", filter: "url(#spray)" });
+  tx(svg, 360, 270, sub, { "text-anchor": "middle", "font-size": 16, "font-weight": 800, fill: "#eef3ff", "font-family": "ui-monospace,monospace" });
+  tx(svg, 360, 296, isCustom(RUN.D) ? "your custom values · the question's own values give option (" + ANS + ")" : "w₁ = w₂ at P = √(P₁P₂) — the two steps share the work equally",
+    { "text-anchor": "middle", "font-size": 12, fill: "#9fb0cc" });
+  if (!REDUCED) makeBurst(bh);
+}
+function makeBurst(host){
+  burst = [];
+  var i, n = 70, GL = ["P", "V", "W", "R", "●", "◆", "√", "bar"], a, sp2, conf, node, cols = ["#3ee39a", "#a99bff", "#54a9ff", "#ff9350"];
+  for (i = 0; i < n; i++){
+    a = Math.random() * Math.PI * 2; sp2 = 90 + Math.random() * 290; conf = i % 3 === 0;
+    node = conf ? mk("rect", { x: -4, y: -3, width: 8, height: 6, rx: 1.5, fill: cols[i % 4] }, host)
+                : tx(host, 0, 0, GL[i % GL.length], { "text-anchor": "middle", "font-size": 11 + Math.random() * 8, fill: cols[i % 4], "font-weight": 800 });
+    burst.push({ n: node, x: 360, y: 170, vx: Math.cos(a) * sp2, vy: Math.sin(a) * sp2 - 70, life: 0, max: 1.4 + Math.random(), rot: Math.random() * 360, vr: (Math.random() - 0.5) * 540 });
+  }
+}
+function stepBurst(dt){
+  var i, b;
+  for (i = 0; i < burst.length; i++){
+    b = burst[i];
+    if (b.life > b.max){ b.n.setAttribute("opacity", 0); continue; }
+    b.life += dt; b.vy += 420 * dt; b.x += b.vx * dt; b.y += b.vy * dt; b.rot += b.vr * dt;
+    b.n.setAttribute("opacity", Math.max(0, 1 - b.life / b.max).toFixed(2));
+    b.n.setAttribute("transform", "translate(" + b.x.toFixed(1) + "," + b.y.toFixed(1) + ") rotate(" + b.rot.toFixed(0) + ")");
+  }
+}
+/* the header answer and the solution: locked until the run ends, or "Reveal anyway" */
+function refreshGate(){
+  var open = RUN.revealed || earlyReveal, ab = $("answerbox"), i, li, k;
+  $("solgate").hidden = open; $("solbody").hidden = !open;
+  if (open){
+    ab.classList.remove("locked");
+    $("ansval").textContent = "(" + ANS + ")";
+    $("anssub").innerHTML = "|W|<sub>min</sub> = " + nice(Math.round(QMIN.W)) + "R J, at P = √(" + nice(Q.P1) + "×" + nice(Q.P2) + ") = " + nice(Math.round(QMIN.P * 1000) / 1000) + " bar";
+    $("revealnow").hidden = true;
+    $("solans").textContent = "(" + ANS + ") " + nice(Math.round(QMIN.W)) + "R";
+    $("clsans").textContent = "(" + ANS + ") " + nice(Math.round(QMIN.W)) + "R";
+    $("solintro").innerHTML = RUN.revealed ? "<b>The experiment found this.</b> Here is the same result, derived on paper — each step points back to what you watched."
+      : "Revealed early — run the experiment to watch each of these steps happen.";
+  } else {
+    ab.classList.add("locked");
+    $("ansval").textContent = "Run the experiment";
+    $("anssub").textContent = "The answer appears when the experiment finishes.";
+    $("revealnow").hidden = false;
+    $("solans").textContent = "—"; $("clsans").textContent = "— run the experiment";
+    $("solintro").textContent = "Run the experiment — the solution opens with the answer.";
+  }
+  var lis = document.querySelectorAll("#opts li");
+  for (i = 0; i < lis.length; i++){
+    li = lis[i]; k = li.getAttribute("data-k");
+    li.classList.remove("correct", "wrong"); li.querySelector(".mark").textContent = "";
+    if (open){ li.classList.add(k === ANS ? "correct" : "wrong"); li.querySelector(".mark").textContent = k === ANS ? "correct" : "not correct"; }
+  }
+}
+
+/* =====================================================================
+   the loop - one virtual clock, so Pause and speed govern everything
+   ===================================================================== */
+var last = 0, slow = 0;
+function loop(ts){
+  var dt = last ? (ts - last) / 1000 : 0; last = ts;
+  if (dt > 0.06) dt = 0.06;
+  var running = RUN.state === "running" && !RUN.paused;
+  if (running) stepTimeline(dt * RUN.speed);
+  var st = currentState(), sg = seg();
+  if (running && sg && (sg.kind === "trial" || sg.kind === "best")) onPhase(sg, st);
+  NOW = st;
+  if (!RUN.paused) moveParticles(dt * (RUN.state === "running" ? RUN.speed : 1), heightOf(st.V));
+  drawVessel(st);
+  updatePV(st);
+  if (burst.length) stepBurst(dt);
+  slow += dt;
+  if (slow > 0.08){ slow = 0; updateReadouts(st); narrate(st); refreshStatus(); }
+  requestAnimationFrame(loop);
+}
+
+/* =====================================================================
+   wiring
+   ===================================================================== */
+function afterEdit(){ readAll(); if (RUN.state === "setup"){ RUN.D = copyST(); RUN.M = model(RUN.D); initParticles(); mountPV(); drawWP(); } refreshUI(); }
+function toggleClassroom(){
+  RUN.classroom = !RUN.classroom;
+  document.body.classList.toggle("classroom", RUN.classroom);
+  $("classbtn").setAttribute("aria-pressed", RUN.classroom ? "true" : "false");
+  $("classbtn").textContent = RUN.classroom ? "EXIT CLASSROOM MODE" : "CLASSROOM MODE";
+  if (RUN.classroom) try { $("deck").scrollIntoView({ behavior: REDUCED ? "auto" : "smooth", block: "start" }); } catch (e) {}
+}
+function build(){
+  sprite = makeSprite();
+  $("fields").innerHTML = fieldsHTML();
+  var i;
+  for (i = 0; i < FIELDS.length; i++) (function(F){
+    var box = $("in_" + F.k);
+    box.addEventListener("input", function(){ readAll(); refreshUI(); });
+    box.addEventListener("change", afterEdit);
+    box.addEventListener("keydown", function(e){ if (e.key === "Enter"){ box.blur(); afterEdit(); } });
+  })(FIELDS[i]);
+  $("fields").addEventListener("click", function(ev){
+    var b = ev.target.closest ? ev.target.closest("button") : null; if (!b || b.disabled) return;
+    var k = b.getAttribute("data-k");
+    if (b.classList.contains("up")) stepField(k, 1);
+    else if (b.classList.contains("dn")) stepField(k, -1);
+    else if (b.classList.contains("rs")) setField(k, Q[k]);
+    afterEdit();
+  });
+  $("resetq").addEventListener("click", resetAll);
+  $("gobtn").addEventListener("click", function(){ if (RUN.state !== "running") startRun(); });
+  $("pausebtn").addEventListener("click", function(){ RUN.paused = !RUN.paused; refreshUI(); });
+  $("replaybtn").addEventListener("click", function(){ startRun(RUN.D); });
+  $("resetbtn").addEventListener("click", resetRun);
+  $("classbtn").addEventListener("click", toggleClassroom);
+  $("revealnow").addEventListener("click", function(){ earlyReveal = true; refreshGate(); });
+  $("gotolab").addEventListener("click", function(){ $("lab").scrollIntoView({ behavior: REDUCED ? "auto" : "smooth" }); });
+  var sb = document.querySelectorAll("#spd button");
+  for (i = 0; i < sb.length; i++) sb[i].addEventListener("click", function(){
+    RUN.speed = parseFloat(this.getAttribute("data-s"));
+    for (var j = 0; j < sb.length; j++) sb[j].setAttribute("aria-pressed", sb[j] === this ? "true" : "false");
+  });
+  $("wp").addEventListener("pointermove", onWPHover);
+  $("wp").addEventListener("pointerleave", function(){ $("tip").style.opacity = 0; });
+  $("themebtn").addEventListener("click", function(){
+    var r = document.documentElement;
+    var dark = r.getAttribute("data-theme") === "dark" || (!r.getAttribute("data-theme") && matchMedia("(prefers-color-scheme: dark)").matches);
+    r.setAttribute("data-theme", dark ? "light" : "dark");
+    mountPV(); drawWP();
+  });
+  try { matchMedia("(prefers-color-scheme: dark)").addEventListener("change", function(){ mountPV(); drawWP(); }); } catch (e) {}
+  readAll(); initParticles(); mountPV(); drawWP(); drawLog(); refreshGate(); refreshUI();
+  requestAnimationFrame(loop);
+}
+if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", build); else build();
+
+/* exposed for the headless test harness */
+window.PX = {
+  Q: Q, OPTIONS: OPTIONS, ST: ST, RUN: RUN, model: model, searchMin: searchMin, matchOption: matchOption,
+  answer: function(){ return ANS; }, qmin: function(){ return QMIN; },
+  start: function(){ startRun(); }, replay: function(){ startRun(RUN.D); }, reset: resetRun, resetAll: resetAll,
+  pause: function(){ RUN.paused = !RUN.paused; refreshUI(); }, speed: function(s){ RUN.speed = s; },
+  typeField: function(k, s){ $("in_" + k).value = s; afterEdit(); },
+  stage: stageKey, trials: function(){ return RUN.trials; }, found: function(){ return RUN.found; },
+  calcKeys: function(){ return Object.keys(RUN.calc); }, now: function(){ return NOW; }, hitRate: function(){ return hitRate; }
+};
+})();
+</script>
+</body>
+</html>

@@ -442,6 +442,24 @@
               "simulations": []
             }
           }
+        },
+        "Thermodynamics": {
+          "topics": {
+            "Work in isothermal compression of an ideal gas - irreversible, multi-step": {
+              "subtopics": [
+                "Work done on a gas against a constant external pressure, w = -Pext dV",
+                "Irreversible isothermal compression in steps",
+                "Isothermal ideal gas: V = nRT/P at each stopping point",
+                "Optimising the intermediate pressure: P = sqrt(P1 P2)",
+                "Reversible work as the lower bound, one-step work as the upper",
+                "Indicator (P-V) diagrams and work as area",
+                "First law for an isothermal ideal gas: dU = 0, q = -w"
+              ],
+              "simulations": [
+                "ADV-2026-P1-CHE-Q01"
+              ]
+            }
+          }
         }
       }
     }

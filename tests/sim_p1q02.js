@@ -348,8 +348,10 @@ const ok = (l, c, x) => { n++; if (!c) bad++; console.log((c ? 'PASS  ' : 'FAIL 
   await a.fill('#q', 'reversible'); await sleep(700);
   ok('app search finds it', (await a.evaluate(() => document.getElementById('screen').innerText)).includes('P1') || (await a.evaluate(() => document.querySelectorAll('.simcard').length)) >= 1);
   const cardTxt = await a.evaluate(() => [...document.querySelectorAll('.simcard')].map(c => c.innerText).join(' | '));
-  ok('its card is the new simulation', /reversible|R ⇌ P|settle/i.test(cardTxt), cardTxt.replace(/\s+/g, ' ').slice(0, 80));
-  await a.click('.simcard'); await sleep(600);
+  /* search can match more than one simulation as the library grows: open this one by its own title */
+  const at = await a.evaluate(t => [...document.querySelectorAll('.simcard')].findIndex(c => c.innerText.indexOf(t[0]) >= 0 || c.innerText.indexOf(t[1]) >= 0), [e.title, e.shortTitle]);
+  ok('app search finds its card', at >= 0, cardTxt.replace(/\s+/g, ' ').slice(0, 80));
+  await a.locator('.simcard').nth(Math.max(0, at)).click(); await sleep(600);
   await a.click('#openbtn'); await sleep(2200);
   const inFrame = await a.evaluate(() => { const f = document.getElementById('frame'); const d = f.contentDocument; return d ? { id: (d.querySelector('meta[name=sim-id]') || {}).content, ans: typeof d.defaultView.PX } : null; });
   ok('the app opens it in the viewer, straight from the feed', inFrame && inFrame.id === ID && inFrame.ans === 'object', JSON.stringify(inFrame));

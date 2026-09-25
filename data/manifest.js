@@ -7,12 +7,12 @@ window.SIM_MANIFEST = {
     "name": "PrayogX",
     "description": "PrayogX: interactive 2D scientific simulations built from selected JEE Advanced Physics and Chemistry questions.",
     "generator": "Cowork autonomous simulation agent",
-    "updatedAt": "2026-09-23",
+    "updatedAt": "2026-09-25",
     "tracker": {
       "type": "Google Sheet",
       "title": "PrayogX — Simulation Progress Tracker",
-      "id": "1-si13JbZ_RvJs97vkKLMLkI40usayAHb_tP_3lVyMYQ",
-      "url": "https://docs.google.com/spreadsheets/d/1-si13JbZ_RvJs97vkKLMLkI40usayAHb_tP_3lVyMYQ/edit",
+      "id": "1GXWBM7KqtMyP-6yjVQONMwGU7mRBTwvhPSJ1FqseQRQ",
+      "url": "https://docs.google.com/spreadsheets/d/1GXWBM7KqtMyP-6yjVQONMwGU7mRBTwvhPSJ1FqseQRQ/edit",
       "localSource": "data/tracker.csv",
       "note": "data/tracker.csv is the local source of truth and carries every column, including the long Subtopics, Concepts, Verification Methods, Interactive Features, Tags and Notes prose. From 2026-09-17 the Google Sheet holds the 19 scannable columns only (through Source PDF), because the full CSV passed 90 kB and the Drive connector has no append or cell-write tool - every update means recreating the sheet from scratch and re-sending the whole file, and the prose columns are read in meta.json and question.md anyway. The sheet URL changes on every update; always take it from here. Before uploading, swap the '; ' list separators for ' · ' - Drive's CSV importer picks whichever of comma or semicolon is more frequent, and semicolons otherwise win and collapse every row into a single cell.",
       "syncedAt": "2026-09-17",
@@ -39,14 +39,15 @@ window.SIM_MANIFEST = {
     "idPolicy": "Simulation IDs are permanent. A redo or fix edits the existing folder in place and bumps `updatedAt` / `revision`; it never mints a new ID."
   },
   "counts": {
-    "total": 18,
+    "total": 19,
     "byYear": {
-      "2026": 18
+      "2026": 19
     },
     "bySubject": {
-      "Chemistry": 18
+      "Chemistry": 19
     },
     "byChapter": {
+      "Thermodynamics": 1,
       "Chemical Kinetics": 2,
       "Electrochemistry": 1,
       "Chemical Bonding and Molecular Structure": 1,
@@ -64,6 +65,160 @@ window.SIM_MANIFEST = {
     }
   },
   "simulations": [
+    {
+      "id": "ADV-2026-P1-CHE-Q01",
+      "slug": "adv-2026-p1-che-q01",
+      "revision": 1,
+      "path": "simulations/2026/paper-1/chemistry/adv-2026-p1-che-q01/index.html",
+      "folder": "simulations/2026/paper-1/chemistry/adv-2026-p1-che-q01/",
+      "title": "Minimum work for a two-step isothermal compression of an ideal gas from 2 bar to 8 bar",
+      "shortTitle": "The two-step compression bench",
+      "summary": "A gas-tight cylinder of 0.5 mol of ideal gas stands in a 600 K thermostat bath. Press start and the bench does the rest: weights land on the piston in two steps, the gas is squeezed, the work appears as a shaded area on the indicator diagram, and the experiment repeats this for many first-step pressures, plots the total work against P, finds the lowest point and reveals the answer. No prediction stage - input, run, watch, result.",
+      "exam": "JEE Advanced",
+      "year": 2026,
+      "paper": "Paper 1",
+      "paperNumber": 1,
+      "subject": "Chemistry",
+      "branch": "Physical Chemistry / Thermodynamics",
+      "questionNumber": 1,
+      "section": "Section 1",
+      "questionType": "Single correct MCQ",
+      "marking": {
+        "full": 3,
+        "zero": 0,
+        "negative": -1
+      },
+      "chapter": "Thermodynamics",
+      "topic": "Work in isothermal compression of an ideal gas - irreversible, multi-step",
+      "subtopics": [
+        "Work done on a gas against a constant external pressure, w = -Pext dV",
+        "Irreversible isothermal compression in steps",
+        "Isothermal ideal gas: V = nRT/P at each stopping point",
+        "Optimising the intermediate pressure: P = sqrt(P1 P2)",
+        "Reversible work as the lower bound, one-step work as the upper",
+        "Indicator (P-V) diagrams and work as area",
+        "First law for an isothermal ideal gas: dU = 0, q = -w"
+      ],
+      "concepts": [
+        "Against a constant external pressure the work done on the gas is Pext times the volume swept, whatever the gas does inside the cylinder; on a P-V diagram it is the rectangle under the external-pressure line",
+        "Each step stops when the gas pressure equals the external pressure, and the bath holds the temperature, so each step ends on the isotherm at V = nRT/P",
+        "W(P) = nRT(P/P1 + P2/P - 2): a small first-step P makes step 1 cheap but step 2 heavy, a large P the reverse, so the total has a minimum in between",
+        "dW/dP = 0 at P = sqrt(P1 P2) - the geometric mean - and there the two steps do exactly equal work, nRT(sqrt(P2/P1) - 1) each",
+        "W is symmetric in ln P about ln sqrt(P1 P2), which is why a sweep of P evenly spaced in ln P brackets the minimum at its centre",
+        "W_min = 2nRT(sqrt(P2/P1) - 1) = 2 x 0.5 x 600 x (2 - 1) R = 600R J",
+        "The reversible isothermal work nRT ln(P2/P1) = 415.9R is a lower bound that no finite number of steps can reach; more equal-ratio steps approach it (1, 2, 4, 100 steps: 900, 600, 497, 419R)",
+        "For an isothermal ideal gas dU = 0, so all the work done on the gas leaves as heat to the bath"
+      ],
+      "formulas": [
+        "w_on = -Pext (V_final - V_initial)",
+        "V = nRT/P",
+        "W(P) = nRT(P/P1 + P2/P - 2)",
+        "dW/dP = nRT(1/P1 - P2/P^2) = 0 -> P = sqrt(P1 P2)",
+        "W_min = 2nRT(sqrt(P2/P1) - 1)",
+        "W_rev = nRT ln(P2/P1),  W_one-step = nRT(P2/P1 - 1)"
+      ],
+      "tags": [
+        "thermodynamics",
+        "first law",
+        "work",
+        "pressure-volume work",
+        "irreversible process",
+        "isothermal process",
+        "isothermal compression",
+        "ideal gas",
+        "constant external pressure",
+        "multi-step compression",
+        "two-step compression",
+        "intermediate pressure",
+        "geometric mean",
+        "minimum work",
+        "optimisation",
+        "indicator diagram",
+        "p-v diagram",
+        "reversible work",
+        "nrt ln",
+        "heat",
+        "thermostat",
+        "single correct",
+        "jee advanced 2026",
+        "paper 1",
+        "chemistry q1",
+        "section 1",
+        "virtual laboratory",
+        "classroom mode"
+      ],
+      "difficulty": "Moderate",
+      "estimatedMinutes": 6,
+      "answer": "(B)",
+      "answerValue": "600R",
+      "answerUnit": "J",
+      "derivedQuantities": {
+        "n_mol": 0.5,
+        "T_K": 600,
+        "P1_bar": 2,
+        "P2_bar": 8,
+        "V1_L": 12.472,
+        "V2_L": 3.118,
+        "optimal_P_bar": 4,
+        "V_at_optimal_P_L": 6.236,
+        "w1_at_optimum_R": 300,
+        "w2_at_optimum_R": 300,
+        "W_min_R": 600,
+        "W_min_J": 4988.7,
+        "W_reversible_R": 415.9,
+        "W_one_step_R": 900,
+        "option_A_207R": "nRT ln 2 - below the reversible limit, impossible",
+        "option_C_630R": "two-step run at P = 3.2 or 5 bar",
+        "option_D_900R": "one step, the P -> 2 or P -> 8 limit",
+        "optimal_steps_1_2_4_100_R": [
+          900,
+          600,
+          497.1,
+          418.8
+        ]
+      },
+      "verification": {
+        "status": "verified",
+        "methods": [
+          "Solved independently before any key was consulted: w = -Pext dV for each step, V = nRT/P at each stopping point, W(P) minimised by calculus",
+          "Symbolic: sympy built W(P) = nRT(P/P1 + P2/P - 2) from w = -Pext dV, found the single stationary point P = sqrt(P1 P2), confirmed d2W/dP2 > 0, and gave W_min = 600R",
+          "Brute force with no formula for W: a 60 000-point scan of P using volumes in litres and bar (1 bar L = 100 J) found the minimum at 4.000 bar and 600.000R = 4988.7 J",
+          "Exact fractions at the optimum: step 1 = 300R, step 2 = 300R, total 600R; W is symmetric in ln P about ln sqrt(P1 P2)",
+          "Bounds: reversible nRT ln 4 = 415.9R < 600R < one step 900R; equal-ratio steps 1, 2, 4, 100 give 900, 600, 497.1, 418.8R, closing in on the reversible work",
+          "Distractor audit: 207R = nRT ln 2 lies below the reversible limit and no real P gives it; 630R solves W(P) at P = 3.2 or 5 bar; 900R is the one-step limit at P -> 2 or 8",
+          "Independent numeric script tests/verify_p1q01.py: 26 of 26 checks pass and the answer is (B)",
+          "The page measures each run as Pext x volume swept, finds the minimum by a 60-round golden-section search on those measurements (4.000000 bar, 600.000000R), checks it against sqrt(P1 P2), and picks the option letter at run time by matching the measured minimum to the printed options",
+          "Headless-browser suite tests/sim_p1q01.js drives the whole page: optional inputs with empty, invalid, negative, reversed and out-of-range values, the automatic run from one START to the reveal, the piston state and live work, every calculation line in order, the reveal and its blink, replay, pause, reset, a custom run (P2 = 18 bar -> 6 bar, 1200R), classroom mode, 390 and 360 px, reduced motion, the feed entries, and the real app shell opening it with the banner hidden",
+          "Answer cross-checked afterwards against the official final key printed with the Paper 1 PDF: Q1 -> (B)"
+        ],
+        "verifiedOn": "2026-09-25",
+        "note": "Built to the streamlined specification given for this question: no prediction stage, one START, an automatic run, then a detailed solution and a how-to-use section. The first-step pressure P is not an input - the experiment sweeps it. Default values are the question's; every input is optional and falls back to them."
+      },
+      "interactivity": [
+        "A glass cylinder with a steel piston standing in a 600 K thermostat bath, drawn in perspective with the gas column to scale with the volume",
+        "Weights land on the piston: a grey base load at P1, a blue step-1 load up to P, an orange step-2 load up to P2 - the same colours as the two work rectangles on the indicator diagram",
+        "64 molecules move at a speed set by T and never faster; squeezed into less space they hit the piston more often, which is counted live as piston hits per second",
+        "Heat flows visibly out of the cylinder into the bath while the piston moves, and the live data shows it as q = -w",
+        "A pressure gauge with the gas pressure as the needle and the external pressure as a mark, and a thermometer that stays at T",
+        "Every input optional and pre-filled: n, T, P1 and P2, each with a typed box, - and + steppers and a per-field reset; empty or invalid entries fall back to the question with an inline note; USING QUESTION VALUES / USING CUSTOM VALUES badge; RESET TO QUESTION VALUES",
+        "One START runs the whole experiment automatically: prepare, a slow first run, a sweep of seven first-step pressures, a golden-section search for the minimum, the best run slowly, the write-up, EXPERIMENT COMPLETE and the reveal",
+        "A live indicator diagram: the isotherm, each step's work as a shaded rectangle growing with the piston, earlier runs as outlines, and the reversible work shaded beside the best run",
+        "A live graph of total work against P, one point per run, with the one-step and reversible limits, the search probes, the fitted curve and the minimum marked",
+        "A calculation panel that writes each step as the experiment produces the number, from the start volumes to |W|min = 600R J and the matching option",
+        "A log of every run with P, V, w1, w2 and W in R and in joules",
+        "Status indicator (preparing, running, analysing, calculation complete, experiment complete) and a stage strip",
+        "The reveal dims the laboratory, flashes, sprays OPTION (B) inside an ANSWER frame with CONGRATULATIONS, ANSWER FOUND, confetti and glyphs, and blinks the header answer once",
+        "Custom values run the same experiment and reveal the measured minimum as a number when it is not a printed option",
+        "Pause, 1x / 2x, replay, reset, and a classroom mode that hides the inputs and enlarges the experiment, graphs and equations",
+        "A detailed solution that points back to what the experiment showed, a distractor audit, a verification block, and an eight-step how-to-use section"
+      ],
+      "source": {
+        "file": "papers/Jee_Adv_2026_paper1_solutions_final.pdf",
+        "page": 26
+      },
+      "createdAt": "2026-09-25",
+      "updatedAt": "2026-09-25"
+    },
     {
       "id": "ADV-2026-P1-CHE-Q02",
       "slug": "adv-2026-p1-che-q02",
