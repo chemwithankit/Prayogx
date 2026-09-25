@@ -1,0 +1,1631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dipole moments of BF₃, NH₄⁺, NF₃ and NH₃ — JEE Advanced 2026 Paper 1 Q.3 | PrayogX</title>
+<meta name="description" content="Build BF3, NH4+, NF3 and NH3 in 3D, draw every bond dipole and lone-pair moment, add them tip to tail, then put each species in an electric field and measure the torque on it. The experiment ranks the four dipole moments and reveals the answer.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232a78d6'/%3E%3Cpath d='M12.5 6.5h7M13.6 6.5v7.2L7.9 24.1a1.5 1.5 0 0 0 1.3 2.3h13.6a1.5 1.5 0 0 0 1.3-2.3l-5.7-10.4V6.5' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M10.6 20.6h10.8' stroke='white' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E">
+<meta name="sim-id" content="ADV-2026-P1-CHE-Q03">
+<style>
+:root{
+  color-scheme: light;
+  --surface-0:#f4f4f1; --surface-1:#fcfcfb; --surface-2:#ececea;
+  --line:#d9d9d4; --line-strong:#bcbcb5;
+  --text-primary:#0b0b0b; --text-secondary:#52514e; --text-muted:#77766f;
+  --s1:#2a78d6; --s2:#eb6834; --s3:#1baf7a; --s4:#4a3aa7;
+  --good:#00743f; --bad:#c0392b; --accent:#2a78d6;
+  --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+  --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --serif:ui-serif,Georgia,"Times New Roman",serif;
+  --radius:10px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  color-scheme: dark;
+  --surface-0:#111110; --surface-1:#1a1a19; --surface-2:#232322;
+  --line:#34342f; --line-strong:#4a4a44;
+  --text-primary:#ffffff; --text-secondary:#c3c2b7; --text-muted:#95948b;
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#9085e9;
+  --good:#3fae7a; --bad:#e66767; --accent:#3987e5;
+}}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --surface-0:#111110; --surface-1:#1a1a19; --surface-2:#232322;
+  --line:#34342f; --line-strong:#4a4a44;
+  --text-primary:#ffffff; --text-secondary:#c3c2b7; --text-muted:#95948b;
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#9085e9;
+  --good:#3fae7a; --bad:#e66767; --accent:#3987e5;
+}
+*{box-sizing:border-box}
+[hidden]{display:none !important}
+body{margin:0;background:var(--surface-0);color:var(--text-primary);font-family:var(--sans);
+  font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px 80px}
+
+/* ---------- header ---------- */
+header.top{border-bottom:1px solid var(--line);background:var(--surface-1)}
+.top-inner{max-width:1180px;margin:0 auto;padding:22px 20px 18px;position:relative;
+  display:flex;flex-wrap:wrap;gap:16px;align-items:flex-start;justify-content:space-between}
+.simid{font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--text-muted)}
+h1{font-size:23px;line-height:1.25;margin:6px 0 10px;font-weight:640;max-width:660px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-size:11.5px;padding:3px 9px;border:1px solid var(--line-strong);border-radius:999px;
+  color:var(--text-secondary);background:var(--surface-2);white-space:nowrap}
+.chip.k{border-color:var(--accent);color:var(--accent);background:transparent}
+.answerbox{border:1px solid var(--line-strong);border-radius:var(--radius);background:var(--surface-2);
+  padding:12px 16px;min-width:220px}
+.answerbox .lbl{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted)}
+.answerbox .val{font-family:var(--mono);font-size:25px;font-weight:600;color:var(--good);line-height:1.22}
+.answerbox .sub{font-size:12px;color:var(--text-secondary)}
+.answerbox.locked .val{color:var(--text-muted);font-size:17px;letter-spacing:.04em}
+.answerbox .rv{margin-top:6px;font-size:11px;background:none;border:none;padding:0;color:var(--accent);
+  cursor:pointer;text-decoration:underline;font-family:var(--sans)}
+.themebtn{position:absolute;top:14px;right:16px;border:1px solid var(--line-strong);background:var(--surface-2);
+  color:var(--text-secondary);border-radius:8px;padding:4px 9px;font-size:12px;cursor:pointer}
+.brandbar{display:flex;align-items:center;gap:8px;margin-bottom:9px}
+.brandbar .pxmark{width:21px;height:21px;flex:none;display:block}
+.brandbar .wm{font-size:13px;font-weight:800;letter-spacing:.17em;color:var(--text-secondary);line-height:1}
+.brandbar .wm i{font-style:normal;color:var(--accent)}
+
+nav.jump{position:sticky;top:0;z-index:20;background:var(--surface-0);border-bottom:1px solid var(--line);
+  padding:8px 0;margin-bottom:26px}
+nav.jump ul{max-width:1180px;margin:0 auto;padding:0 20px;list-style:none;display:flex;gap:4px;overflow-x:auto}
+nav.jump a{display:block;padding:5px 11px;border-radius:7px;font-size:13px;text-decoration:none;
+  color:var(--text-secondary);white-space:nowrap}
+nav.jump a:hover{background:var(--surface-2);color:var(--text-primary)}
+
+section{margin:0 0 42px;scroll-margin-top:56px}
+h2{font-size:17px;font-weight:640;margin:0 0 4px;display:flex;align-items:baseline;gap:9px;flex-wrap:wrap}
+h2 .n{font-family:var(--mono);font-size:12px;color:var(--text-muted);font-weight:400}
+h2 .vb{font-size:12px;color:var(--text-muted);font-weight:400}
+h2.big{font-size:20px;letter-spacing:.02em}
+.lede{color:var(--text-secondary);font-size:13.5px;margin:0 0 16px;max-width:78ch}
+.panel{background:var(--surface-1);border:1px solid var(--line);border-radius:var(--radius);padding:18px}
+.panel h3{margin:0 0 12px;font-size:13px;letter-spacing:.05em;text-transform:uppercase;color:var(--text-muted);font-weight:600}
+.qtext{font-family:var(--serif);font-size:16px;line-height:1.7}
+.opts{list-style:none;padding:0;margin:14px 0 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(150px,100%),1fr));gap:9px}
+.opts li{border:1px solid var(--line);border-radius:10px;padding:9px 12px;background:var(--surface-1);
+  display:flex;align-items:baseline;gap:10px;font-family:var(--serif);font-size:16px}
+.opts li .k{font-family:var(--mono);font-size:12.5px;color:var(--text-muted)}
+.opts li .mark{margin-left:auto;font-family:var(--sans);font-size:11.5px;font-weight:600}
+.opts li.correct{border-color:var(--good);background:color-mix(in srgb,var(--good) 11%,transparent)}
+.opts li.correct .mark{color:var(--good)}
+.opts li.wrong{border-color:var(--bad)} .opts li.wrong .mark{color:var(--bad)}
+.assume{border-left:3px solid var(--s4);padding:8px 0 8px 13px;margin:14px 0 0;font-size:13.5px;color:var(--text-secondary)}
+.assume b{color:var(--text-primary)}
+
+/* ---------- the dashboard ---------- */
+.deck{border:1px solid var(--line);border-radius:var(--radius);padding:14px;
+  background:linear-gradient(180deg,var(--surface-1),color-mix(in srgb,var(--surface-2) 55%,var(--surface-1)));
+  box-shadow:0 1px 2px rgba(0,0,0,.04),0 10px 26px -18px rgba(0,0,0,.35)}
+.statusbar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding-bottom:11px;border-bottom:1px solid var(--line);margin-bottom:12px}
+.xstat{display:flex;align-items:center;gap:8px;font-size:12.5px;font-weight:700;letter-spacing:.03em;
+  padding:5px 12px;border-radius:999px;border:1px solid var(--line-strong);background:var(--surface-1);color:var(--text-secondary)}
+.xstat .dot{width:9px;height:9px;border-radius:50%;background:var(--text-muted)}
+.xstat.run .dot{background:var(--accent);animation:pulse 1.2s ease-in-out infinite}
+.xstat.ana .dot{background:var(--s4);animation:pulse 1.2s ease-in-out infinite}
+.xstat.done{border-color:var(--good);color:var(--good);background:color-mix(in srgb,var(--good) 10%,transparent)}
+.xstat.done .dot{background:var(--good)}
+@keyframes pulse{50%{opacity:.25}}
+.stages{display:flex;gap:5px;flex-wrap:wrap}
+.stages span{font-size:11px;padding:3px 9px;border-radius:999px;border:1px solid var(--line);color:var(--text-muted);white-space:nowrap}
+.stages span.now{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:650}
+.stages span.done{border-color:var(--good);color:var(--good)}
+.statusbar .sp{flex:1}
+.guide{font-size:12px;color:var(--text-muted)}
+
+.grid1{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:13px;align-items:start}
+.grid2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:13px;margin-top:13px}
+.grid1>*,.grid2>*{min-width:0}
+@media(max-width:960px){.grid1,.grid2{grid-template-columns:1fr !important}}
+
+/* the always-dark chamber */
+.lab3d{position:relative;border-radius:12px;padding:12px;overflow:hidden;
+  background:radial-gradient(90% 70% at 18% 8%,rgba(84,169,255,.16),transparent 60%),
+    radial-gradient(80% 70% at 88% 92%,rgba(255,147,80,.12),transparent 62%),
+    linear-gradient(170deg,#0d1322 0%,#070a12 55%,#0a0e1a 100%);
+  border:1px solid rgba(150,180,255,.16);box-shadow:inset 0 1px 0 rgba(255,255,255,.07),0 18px 40px -26px rgba(0,0,0,.9);
+  color:#eef3ff}
+.lab3d:before{content:"";position:absolute;inset:0;pointer-events:none;
+  background:repeating-linear-gradient(0deg,rgba(255,255,255,.028) 0 1px,transparent 1px 3px);opacity:.5;mix-blend-mode:overlay}
+.lab3d>*{position:relative}
+.lab3d .hd{display:flex;align-items:baseline;gap:9px;flex-wrap:wrap;margin-bottom:5px}
+.lab3d .hd h3{margin:0;font-size:11.5px;letter-spacing:.11em;text-transform:uppercase;color:#8fa6c9;font-weight:700}
+.lab3d .hd .st{font-size:10.5px;font-family:var(--mono);color:#9fb0cc;border:1px solid rgba(160,190,255,.2);border-radius:999px;padding:1px 8px}
+.lab3d .narr{font-size:12.5px;color:#c3d2ea;margin:0 0 8px;min-height:2.8em;line-height:1.42}
+.lab3d .narr b{color:#fff;font-family:var(--mono);font-weight:650}
+.lab3d .narr .a{color:#6fb6ff;font-weight:700} .lab3d .narr .o{color:#ffa56a;font-weight:700}
+.lab3d .narr .gd{color:#3ee39a;font-weight:700}
+.vwrap{position:relative;perspective:1000px}
+canvas#bench{display:block;width:100%;height:auto;border-radius:10px;transform:rotateX(2.5deg);transform-origin:50% 100%}
+@media(max-width:560px){.vwrap{overflow:hidden}canvas#bench{width:128%;max-width:none;margin-left:-14%}}
+@media(prefers-reduced-motion:reduce){canvas#bench{transform:none}}
+.done-banner{position:absolute;left:50%;top:14px;transform:translateX(-50%) scale(.92);opacity:0;pointer-events:none;
+  background:rgba(10,30,24,.8);border:1px solid rgba(62,227,154,.6);color:#dfffee;border-radius:12px;padding:8px 18px;
+  font-weight:800;letter-spacing:.1em;font-size:14px;box-shadow:0 0 28px -6px rgba(62,227,154,.7);transition:.45s;white-space:nowrap}
+.done-banner.on{opacity:1;transform:translateX(-50%) scale(1)}
+.revealhost{position:absolute;inset:0;display:none;align-items:center;justify-content:center;z-index:6}
+.revealhost.on{display:flex}
+svg.graf{display:block;width:100%;height:auto}
+.blackout{position:absolute;inset:0;background:#000;opacity:0;pointer-events:none;transition:opacity .45s;z-index:4;border-radius:12px}
+.blackout.on{opacity:.86}
+.flashout{position:absolute;inset:0;background:radial-gradient(circle at 50% 45%,rgba(255,255,255,.95),rgba(120,255,200,.5) 35%,transparent 70%);
+  opacity:0;pointer-events:none;z-index:5;border-radius:12px}
+@keyframes flashpop{0%{opacity:0}18%{opacity:1}100%{opacity:0}}
+.flashout.go{animation:flashpop .85s ease-out 1}
+@media(prefers-reduced-motion:reduce){.flashout.go{animation:none}.blackout{transition:none}}
+.dim canvas#bench{filter:brightness(.4) saturate(.8)}
+@media(prefers-reduced-motion:no-preference){.zoom{animation:zoomin 1.1s ease-out 1}}
+@keyframes zoomin{0%{transform:scale(1)}40%{transform:scale(1.035)}100%{transform:scale(1)}}
+
+/* the rail: inputs + live data */
+.rail{border:1px solid var(--line);border-radius:12px;padding:11px 12px;
+  background:color-mix(in srgb,var(--surface-1) 82%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  box-shadow:inset 0 1px 0 color-mix(in srgb,#fff 40%,transparent),0 8px 24px -18px rgba(0,0,0,.4);
+  display:flex;flex-direction:column;gap:9px}
+.rail h4{margin:0;font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--text-muted);font-weight:700}
+.rail .grp{border-top:1px dashed var(--line);padding-top:9px}
+.status{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:750;letter-spacing:.04em;border-radius:8px;padding:6px 9px;
+  border:1px solid var(--good);color:var(--good);background:color-mix(in srgb,var(--good) 10%,transparent)}
+.status.custom{border-color:var(--s4);color:var(--s4);background:color-mix(in srgb,var(--s4) 10%,transparent)}
+.fld{margin:7px 0 0}
+.fld .lb{display:flex;justify-content:space-between;align-items:baseline;gap:6px;font-size:12px;margin-bottom:4px;color:var(--text-secondary)}
+.fld .lb b{font-weight:600;color:var(--text-primary);font-family:var(--serif);font-size:13.5px}
+.fld .lb .u{font-size:10.5px;color:var(--text-muted);font-family:var(--mono);flex:none}
+.fld .rw{display:flex;gap:5px;align-items:center}
+.fld .rw input{flex:1;min-width:0;padding:6px 8px;border-radius:7px;border:1px solid var(--line-strong);background:var(--surface-0);
+  color:var(--text-primary);font-family:var(--mono);font-size:13.5px;text-align:center;font-weight:600}
+.fld .rw input:focus{outline:2px solid var(--accent);outline-offset:-1px}
+.fld .rw input.bad{border-color:var(--bad);background:color-mix(in srgb,var(--bad) 10%,transparent)}
+.fld .rw input:disabled{opacity:.55}
+.fld .rw button{flex:none;width:34px;height:34px;border-radius:7px;border:1px solid var(--line-strong);background:var(--surface-2);
+  color:var(--text-primary);font-size:16px;line-height:1;cursor:pointer;font-family:var(--mono);touch-action:manipulation}
+.fld .rw button.rs{font-size:13px}
+.fld .rw button:hover:not(:disabled){border-color:var(--accent);color:var(--accent)}
+.fld .rw button:disabled{opacity:.4;cursor:not-allowed}
+.fld .fh{font-size:10.5px;color:var(--text-muted);margin-top:2px;line-height:1.35;min-height:1.35em}
+.fld .fh.bad{color:var(--bad);font-weight:650}
+.railnote{font-size:11px;color:var(--text-muted);line-height:1.45;margin:0}
+button.resetq{width:100%;padding:8px 10px;border-radius:9px;border:1px solid var(--line-strong);background:var(--surface-2);
+  color:var(--text-primary);font-size:12.5px;font-weight:650;cursor:pointer;font-family:var(--sans)}
+button.resetq:hover{border-color:var(--accent);color:var(--accent)}
+.gauges{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(104px,100%),1fr));gap:6px}
+.gz{border:1px solid var(--line);border-radius:9px;background:var(--surface-2);padding:5px 8px;overflow:hidden}
+.gz .k{font-size:9.5px;letter-spacing:.04em;text-transform:uppercase;color:var(--text-muted);font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.gz .v{font-family:var(--mono);font-size:16px;font-weight:700;line-height:1.25;white-space:nowrap}
+.gz .u{font-size:9.5px;color:var(--text-muted);font-weight:400}
+.gz.a .v{color:var(--s1)} .gz.o .v{color:var(--s2)}
+.gz.hot{border-color:var(--good);background:color-mix(in srgb,var(--good) 11%,transparent)} .gz.hot .v{color:var(--good)}
+
+/* graphs */
+.graphcard{border:1px solid var(--line);border-radius:12px;background:var(--surface-1);padding:12px 14px}
+.graphcard h4{margin:0 0 4px;font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--text-muted);font-weight:700}
+.graphcard .gsub{font-size:11.5px;color:var(--text-muted);margin:0 0 4px}
+.chartwrap{position:relative}
+svg.chart{display:block;width:100%;height:auto;overflow:visible}
+.tip{position:absolute;pointer-events:none;background:var(--surface-1);border:1px solid var(--line-strong);border-radius:8px;padding:7px 10px;
+  font-size:12px;box-shadow:0 4px 14px rgba(0,0,0,.13);opacity:0;transition:opacity .1s;z-index:5;min-width:140px}
+.tip .t{font-family:var(--mono);font-size:11px;color:var(--text-muted);margin-bottom:3px}
+.tip .r{display:flex;gap:7px;white-space:nowrap} .tip .rv{margin-left:auto;font-family:var(--mono);font-weight:600}
+details.tbl{margin-top:6px;font-size:12.5px} details.tbl summary{cursor:pointer;color:var(--text-secondary)}
+
+/* calculation panel */
+.calc{margin-top:13px;border:1px solid var(--line);border-radius:12px;padding:12px 14px;
+  background:linear-gradient(180deg,var(--surface-1),var(--surface-2))}
+.calc .bt{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--text-muted);font-weight:700;margin-bottom:6px}
+.calc ol{list-style:none;margin:0;padding:0;display:grid;gap:5px}
+.calc li{display:grid;grid-template-columns:auto minmax(0,1fr);gap:10px;align-items:baseline;animation:cin .45s ease-out}
+@keyframes cin{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.calc li{animation:none}}
+.calc li .s{font-family:var(--mono);font-size:10.5px;color:#fff;background:var(--accent);border-radius:999px;padding:1px 7px;font-weight:700}
+.calc li .m{font-family:var(--serif);font-size:16px;line-height:1.55;min-width:0;overflow-x:auto}
+.calc li .m .w{display:block;font-family:var(--sans);font-size:11.5px;color:var(--text-muted)}
+.calc li .m .hl{color:var(--good);font-weight:700}
+.calc li .m .ar{color:var(--s1);font-weight:700} .calc li .m .or{color:var(--s2);font-weight:700}
+.calc .empty{font-size:12.5px;color:var(--text-muted);margin:0}
+table.data{border-collapse:collapse;font-size:12.5px;width:100%}
+table.data th,table.data td{border:1px solid var(--line-strong);padding:5px 8px;text-align:center}
+table.data th{background:var(--surface-2);font-weight:600;font-size:11.5px;color:var(--text-secondary)}
+table.data td.n{font-family:var(--mono)}
+tr.win td{background:color-mix(in srgb,var(--good) 12%,transparent);font-weight:700}
+.scrollx{overflow-x:auto}
+
+/* action bar */
+.actbar{display:flex;gap:9px;align-items:center;flex-wrap:wrap;margin-top:12px}
+button.go{flex:none;padding:13px 24px;border-radius:11px;border:none;background:var(--accent);color:#fff;font-size:15px;font-weight:780;
+  cursor:pointer;font-family:var(--sans);letter-spacing:.04em;box-shadow:0 4px 16px -6px color-mix(in srgb,var(--accent) 75%,transparent);transition:.18s}
+button.go:hover:not(:disabled){filter:brightness(1.09);transform:translateY(-1px)}
+button.go:disabled{opacity:.42;cursor:not-allowed;box-shadow:none;transform:none}
+button.go.custom{background:var(--s4)}
+button.ghost{flex:none;padding:8px 13px;border-radius:9px;border:1px solid var(--line-strong);background:var(--surface-1);color:var(--text-secondary);
+  font-size:12.5px;cursor:pointer;font-family:var(--sans);min-height:36px}
+button.ghost:hover:not(:disabled){border-color:var(--accent);color:var(--accent)}
+button.ghost:disabled{opacity:.4;cursor:not-allowed}
+button.ghost[aria-pressed=true]{border-color:var(--accent);color:var(--accent);background:color-mix(in srgb,var(--accent) 10%,transparent)}
+.spd{display:flex;gap:4px}
+.spd button{padding:7px 10px;font-size:11.5px;border-radius:7px;border:1px solid var(--line-strong);background:var(--surface-1);color:var(--text-secondary);cursor:pointer;font-family:var(--mono)}
+.spd button[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:#fff}
+.actbar .msg{flex:1 1 220px;min-width:0;font-size:12px;color:var(--text-secondary);line-height:1.4}
+.actbar .msg b{color:var(--text-primary)}
+
+@keyframes popblink{0%{transform:scale(1)} 12%{transform:scale(1.16)} 24%{transform:scale(1)}
+  38%{opacity:.2} 50%{opacity:1} 64%{opacity:.2} 76%{opacity:1} 88%{transform:scale(1.07)} 100%{transform:scale(1);opacity:1}}
+.blink{animation:popblink 2s ease-in-out 1;display:inline-block}
+@keyframes ringpulse{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--good) 55%,transparent)} 70%{box-shadow:0 0 0 14px transparent} 100%{box-shadow:0 0 0 0 transparent}}
+.celebrate{animation:ringpulse 1.5s ease-out 2}
+@media(prefers-reduced-motion:reduce){.blink,.celebrate,.zoom{animation:none}}
+
+/* solution + help */
+.gate{border:1px dashed var(--line-strong);border-radius:var(--radius);padding:24px 20px;text-align:center;background:var(--surface-1)}
+.gate h4{margin:0 0 6px;font-size:15px} .gate p{margin:0 0 12px;font-size:13px;color:var(--text-secondary)}
+ol.steps{list-style:none;counter-reset:s;padding:0;margin:0;display:grid;gap:10px}
+ol.steps li{min-width:0;counter-increment:s;border:1px solid var(--line);border-radius:var(--radius);background:var(--surface-1);
+  padding:14px 16px 14px 52px;position:relative}
+ol.steps li::before{content:counter(s);position:absolute;left:15px;top:14px;width:23px;height:23px;border-radius:50%;background:var(--accent);
+  color:#fff;font-size:12px;font-weight:700;display:grid;place-items:center;font-family:var(--mono)}
+ol.steps h4{margin:0 0 6px;font-size:14px;font-weight:640}
+ol.steps p{margin:0 0 6px;font-size:13.5px;color:var(--text-secondary)}
+.eq{min-width:0;font-family:var(--serif);font-size:15.5px;background:var(--surface-2);border-radius:7px;padding:9px 13px;margin:8px 0;overflow-x:auto}
+.eq .hl{color:var(--good);font-weight:700}
+.obsnote{border-left:3px solid var(--s1);padding:6px 0 6px 12px;margin:8px 0;font-size:13px;color:var(--text-secondary)}
+.obsnote b{color:var(--text-primary)}
+sub{font-size:.72em} sup{font-size:.72em}
+.verify{border:1px solid var(--good);border-radius:var(--radius);margin-top:12px;background:color-mix(in srgb,var(--good) 8%,transparent);padding:14px 16px;font-size:13.5px}
+.verify h4{margin:0 0 6px;font-size:13.5px;color:var(--good)}
+.verify ul{margin:6px 0 0;padding-left:18px;color:var(--text-secondary)} .verify li{margin-bottom:4px}
+.howto{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(250px,100%),1fr));gap:11px}
+.howto>div{border:1px solid var(--line);border-radius:11px;padding:12px 14px;background:linear-gradient(180deg,var(--surface-1),var(--surface-2))}
+.howto .n{font-family:var(--mono);font-size:10.5px;color:var(--accent);letter-spacing:.1em;font-weight:700}
+.howto h4{margin:3px 0 6px;font-size:14px}
+.howto p{margin:0;font-size:13px;color:var(--text-secondary);line-height:1.5}
+.howto p b{color:var(--text-primary)}
+.meta-tbl{width:100%;border-collapse:collapse;font-size:13.5px}
+.meta-tbl th,.meta-tbl td{padding:6px 0;border-bottom:1px solid var(--line);vertical-align:top;text-align:left}
+.meta-tbl th{color:var(--text-muted);width:150px;font-size:12.5px;padding-right:14px;font-weight:500}
+footer{border-top:1px solid var(--line);margin-top:40px;padding-top:16px;font-size:12px;color:var(--text-muted)}
+
+/* classroom mode */
+body.classroom nav.jump,body.classroom section:not(#lab),body.classroom header.top .chips,body.classroom footer,
+body.classroom .rail .inputs,body.classroom .spd,body.classroom details.tbl,body.classroom #lab>.lede{display:none !important}
+body.classroom .wrap{max-width:none;padding-left:18px;padding-right:18px}
+body.classroom .lab3d .narr{font-size:20px;line-height:1.45;color:#e8f0ff}
+body.classroom .lab3d .hd h3{font-size:15px}
+body.classroom .gz .v{font-size:24px} body.classroom .gz .k{font-size:12px}
+body.classroom .calc li .m{font-size:25px} body.classroom .calc li .m .w{font-size:15px}
+body.classroom .xstat{font-size:16px} body.classroom .stages span{font-size:14px}
+body.classroom button.go{font-size:19px;padding:16px 30px}
+body.classroom .graphcard h4{font-size:13px}
+body.classroom .actbar .msg{font-size:15px}
+
+/* Q03 additions */
+.fgrid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0 8px}
+.fgrid>*{min-width:0}
+.fld .rw input{width:100%}
+.fgrid .fld.full{grid-column:1/-1}
+.fld.half .rw button.rs{display:none}
+.fld.half .fh{font-size:10px}
+.chem{font-family:var(--serif);white-space:nowrap}
+#opts{grid-template-columns:repeat(auto-fit,minmax(min(250px,100%),1fr))}
+#opts li{flex-wrap:wrap}
+@media(max-width:560px){.vwrap{overflow:visible}canvas#bench{width:100%;margin-left:0}}
+.rankline{font-family:var(--serif);font-size:17px;font-weight:700}
+.legend{display:flex;flex-wrap:wrap;gap:4px 12px;font-size:11.5px;color:var(--text-secondary);margin:2px 0 4px}
+.legend i{display:inline-block;width:14px;height:3px;border-radius:2px;vertical-align:middle;margin-right:5px}
+.shapes{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(170px,100%),1fr));gap:9px;margin:8px 0}
+.shapes>div{border:1px solid var(--line);border-radius:9px;padding:9px 11px;background:var(--surface-1);font-size:13px;color:var(--text-secondary)}
+.shapes b{color:var(--text-primary);font-family:var(--serif);font-size:15px}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-inner">
+    <div>
+      <div class="brandbar"><svg class="pxmark" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><rect width="32" height="32" rx="8" fill="var(--accent)"/><path d="M12.5 6.5h7M13.6 6.5v7.2L7.9 24.1a1.5 1.5 0 0 0 1.3 2.3h13.6a1.5 1.5 0 0 0 1.3-2.3l-5.7-10.4V6.5" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.6 20.6h10.8" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg><span class="wm">PRAYOG<i>X</i></span></div>
+      <div class="simid">ADV-2026-P1-CHE-Q03</div>
+      <h1>Four species in an electric field: which ones feel a twist, and how hard?</h1>
+      <div class="chips">
+        <span class="chip">JEE Advanced 2026</span>
+        <span class="chip">Paper 1 · Q.3</span>
+        <span class="chip">Chemistry</span>
+        <span class="chip">Chemical bonding · dipole moment</span>
+        <span class="chip">Single correct</span>
+        <span class="chip">+3 / 0 / −1</span>
+        <span class="chip k">Press start · watch it happen</span>
+      </div>
+    </div>
+    <div class="answerbox locked" id="answerbox">
+      <div class="lbl">Answer</div>
+      <div class="val" id="ansval">Run the experiment</div>
+      <div class="sub" id="anssub">The answer appears when the experiment finishes.</div>
+      <button class="rv" id="revealnow" type="button">Reveal anyway</button>
+    </div>
+    <button class="themebtn" id="themebtn" type="button">◐ theme</button>
+  </div>
+</header>
+
+<nav class="jump">
+  <ul>
+    <li><a href="#question">Question</a></li>
+    <li><a href="#lab">Interactive experiment</a></li>
+    <li><a href="#solution">Detailed solution</a></li>
+    <li><a href="#howto">How to use this simulation</a></li>
+  </ul>
+</nav>
+
+<div class="wrap">
+
+<section id="question">
+  <h2><span class="n">Q</span>The question <span class="vb">— verbatim</span></h2>
+  <p class="lede">JEE (Advanced) 2026, Paper 1, Chemistry, Section 1 — single correct option,
+     +3 for the correct option, 0 if unanswered, −1 otherwise.</p>
+  <div class="panel">
+    <div class="qtext">
+      <p><b>Q.3</b>&nbsp; The correct order of dipole moments for the given species is</p>
+    </div>
+    <ul class="opts" id="opts">
+      <li data-k="A"><span class="k">(A)</span><span class="chem">BF<sub>3</sub> = NH<sub>4</sub><sup>+</sup> &lt; NF<sub>3</sub> &lt; NH<sub>3</sub></span><span class="mark"></span></li>
+      <li data-k="B"><span class="k">(B)</span><span class="chem">BF<sub>3</sub> &lt; NH<sub>4</sub><sup>+</sup> &lt; NF<sub>3</sub> &lt; NH<sub>3</sub></span><span class="mark"></span></li>
+      <li data-k="C"><span class="k">(C)</span><span class="chem">NH<sub>4</sub><sup>+</sup> &lt; BF<sub>3</sub> &lt; NH<sub>3</sub> &lt; NF<sub>3</sub></span><span class="mark"></span></li>
+      <li data-k="D"><span class="k">(D)</span><span class="chem">BF<sub>3</sub> &lt; NH<sub>4</sub><sup>+</sup> &lt; NH<sub>3</sub> &lt; NF<sub>3</sub></span><span class="mark"></span></li>
+    </ul>
+    <div class="assume"><b>What is being asked.</b> A <b>dipole moment</b> μ measures how unevenly charge is spread
+      in a molecule: charge × separation, in debye (1 D = 3.336 × 10<sup>−30</sup> C m). Every polar bond has a
+      small dipole of its own, and a lone pair adds one more. The molecule's dipole moment is the <b>vector
+      sum</b> of all of them — so the shape decides whether they add up or cancel. The experiment below builds
+      each species, adds its dipoles, and then measures the result the way a physicist would: by the twist
+      (torque) an electric field puts on it.</div>
+  </div>
+</section>
+
+<section id="lab">
+  <h2 class="big"><span class="n">01</span>Interactive experiment</h2>
+  <p class="lede">A sample holder sits between two charged plates. Press <b>START</b> — the experiment builds
+     each of the four species, draws every bond dipole and lone-pair moment, adds them tip to tail, switches on
+     the field and measures the torque. Then it ranks the four and finds the matching option.</p>
+
+  <div class="deck" id="deck">
+    <div class="statusbar">
+      <span class="xstat" id="xstat"><span class="dot"></span><span id="xstattxt">Ready</span></span>
+      <div class="stages" id="stages">
+        <span data-s="prep">Prepare</span><span data-s="build">Build</span><span data-s="dipoles">Bond dipoles</span>
+        <span data-s="add">Add vectors</span><span data-s="field">Field on</span><span data-s="analyse">Rank</span><span data-s="calc">Calculate</span><span data-s="answer">Answer</span>
+      </div>
+      <span class="sp"></span>
+      <span class="guide" id="guide">Set your values or use the question defaults.</span>
+    </div>
+
+    <div class="grid1">
+      <div class="lab3d" id="lab3d">
+        <div class="hd">
+          <h3 id="scenet">Dipole bench — sample between charged plates</h3>
+          <span class="st" id="trialtag">no species yet</span>
+        </div>
+        <p class="narr" id="narr" aria-live="polite">Four species wait in the sample tray. The standard data are
+           already loaded — press <b>START EXPERIMENT</b>.</p>
+        <div class="vwrap">
+          <canvas id="bench" width="1040" height="620" role="img"
+                  aria-label="A molecule drawn in 3D between a positive and a negative plate, with its bond dipoles, lone-pair moment and resultant drawn as arrows, a torque meter on the left and a sample tray below"></canvas>
+          <div class="done-banner" id="donebanner">✓ EXPERIMENT COMPLETE</div>
+          <div class="revealhost" id="revealhost"></div>
+        </div>
+        <div class="blackout" id="blackout"></div>
+        <div class="flashout" id="flashout"></div>
+      </div>
+
+      <div class="rail" id="rail">
+        <div class="status" id="status">✓ USING QUESTION VALUES</div>
+        <div class="inputs">
+          <h4>Optional — change anything, or nothing</h4>
+          <p class="railnote" style="margin-top:4px">The question prints no numbers; these are the standard data it
+             relies on — Pauling electronegativities, the lone-pair moment of N and the VSEPR bond angles.</p>
+          <div class="fgrid" id="fields"></div>
+          <p class="railnote" style="margin-top:8px">Bond moment = 1 D × (difference in electronegativity), pointing
+             to the more electronegative atom.</p>
+          <button class="resetq" id="resetq" type="button" style="margin-top:8px">↺ RESET TO QUESTION VALUES</button>
+        </div>
+        <div class="grp">
+          <h4>Live data</h4>
+          <div class="gauges" style="margin-top:6px">
+            <div class="gz"><div class="k">species</div><div class="v" id="g_sp">—</div></div>
+            <div class="gz"><div class="k">shape</div><div class="v" id="g_shape" style="font-size:12.5px;white-space:normal;line-height:1.2">—</div></div>
+            <div class="gz a"><div class="k">each bond moment</div><div class="v"><span id="g_mb">—</span> <span class="u">D</span></div></div>
+            <div class="gz o"><div class="k">lone-pair moment</div><div class="v"><span id="g_lp">—</span> <span class="u">D</span></div></div>
+            <div class="gz"><div class="k">sum of bonds</div><div class="v"><span id="g_sb">—</span> <span class="u">D</span></div></div>
+            <div class="gz"><div class="k">resultant μ</div><div class="v"><span id="g_mu">—</span> <span class="u">D</span></div></div>
+            <div class="gz"><div class="k">field E</div><div class="v"><span id="g_e">off</span></div></div>
+            <div class="gz"><div class="k">angle to field θ</div><div class="v"><span id="g_th">—</span></div></div>
+            <div class="gz" id="gz_tq"><div class="k">torque τ</div><div class="v"><span id="g_tq">—</span></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid2">
+      <div class="graphcard">
+        <h4>Measured dipole moment of each species</h4>
+        <p class="gsub">μ = τ<sub>max</sub> / E, read from the torque meter. After the last one the bars line up in order.</p>
+        <div class="chartwrap"><svg class="chart" id="bars" viewBox="0 0 560 330" role="img"
+          aria-label="Bar chart of the measured dipole moment of BF3, NH4+, NF3 and NH3 in debye"></svg></div>
+      </div>
+      <div class="graphcard">
+        <h4>Torque against angle to the field</h4>
+        <p class="gsub">τ = μE sin θ — one curve per species. A flat line means no dipole: nothing to twist.</p>
+        <div class="chartwrap" id="tqwrap"><svg class="chart" id="tq" viewBox="0 0 560 330" role="img"
+          aria-label="Torque in units of 10^-22 N m against the angle between the dipole and the field, one curve per species"></svg>
+          <div class="tip" id="tip"></div></div>
+      </div>
+    </div>
+
+    <div class="calc" id="calc">
+      <div class="bt"><span>Calculation — written as the experiment produces the numbers</span><span id="calcstat"></span></div>
+      <p class="empty" id="calcempty">Nothing measured yet.</p>
+      <ol id="calclist"></ol>
+      <details class="tbl" id="logbox"><summary>Measurement log (<span id="logn">0</span>)</summary>
+        <div class="scrollx"><table class="data" id="log"></table></div></details>
+    </div>
+
+    <div class="actbar">
+      <button class="go" id="gobtn" type="button">▶&nbsp; START EXPERIMENT</button>
+      <button class="ghost" id="pausebtn" type="button" disabled>Pause</button>
+      <button class="ghost" id="replaybtn" type="button" hidden>▶ REPLAY EXPERIMENT</button>
+      <button class="ghost" id="resetbtn" type="button">↺ RESET</button>
+      <div class="spd" id="spd" role="group" aria-label="playback speed">
+        <button type="button" data-s="1" aria-pressed="true">1×</button>
+        <button type="button" data-s="2" aria-pressed="false">2×</button>
+      </div>
+      <button class="ghost" id="classbtn" type="button" aria-pressed="false">CLASSROOM MODE</button>
+      <div class="msg" id="gomsg">Nothing needs to be typed. Press <b>START EXPERIMENT</b>.</div>
+    </div>
+  </div>
+</section>
+
+<section id="solution">
+  <h2 class="big"><span class="n">02</span>Detailed solution</h2>
+  <p class="lede" id="solintro">Run the experiment — the solution opens with the answer.</p>
+  <div class="gate" id="solgate">
+    <h4>The solution is still locked</h4>
+    <p>The experiment has not finished yet. Press START and let it run to the end — or use
+       <i>Reveal anyway</i> in the header if you are revising.</p>
+    <button class="ghost" id="gotolab" type="button">Go to the experiment ↑</button>
+  </div>
+  <div id="solbody" hidden>
+    <ol class="steps">
+      <li><h4>Concept — dipole moment is a vector sum</h4>
+        <p>A <b>bond dipole</b> appears when two bonded atoms differ in electronegativity: the more
+           electronegative atom takes a slightly larger share of the bonding pair (δ−) and leaves the other δ+.
+           Chemists draw it as an arrow ↦ from δ+ to δ−. A <b>lone pair</b> on the central atom also sits on
+           one side of it, so it carries a moment of its own, pointing out into the lone pair.</p>
+        <div class="eq">μ<sub>molecule</sub> = | Σ μ<sub>bonds</sub> + μ<sub>lone pairs</sub> | &nbsp;&nbsp;(vectors — direction matters)</div>
+        <div class="obsnote">In the experiment these were the <b>blue bond arrows</b>, the <b>orange lone-pair arrow</b>
+           and the <b>green resultant</b> formed when they were laid tip to tail.</div></li>
+      <li><h4>Shapes from VSEPR</h4>
+        <div class="shapes">
+          <div><b>BF<sub>3</sub></b><br>B: 3 bond pairs, 0 lone pairs → trigonal planar, 120°</div>
+          <div><b>NH<sub>4</sub><sup>+</sup></b><br>N<sup>+</sup>: 4 bond pairs, 0 lone pairs → tetrahedral, 109.5°</div>
+          <div><b>NF<sub>3</sub></b><br>N: 3 bond pairs, 1 lone pair → trigonal pyramidal, ≈102°</div>
+          <div><b>NH<sub>3</sub></b><br>N: 3 bond pairs, 1 lone pair → trigonal pyramidal, ≈107°</div>
+        </div></li>
+      <li><h4>BF<sub>3</sub> and NH<sub>4</sub><sup>+</sup> — perfect cancellation</h4>
+        <p>Each B–F bond is strongly polar (χ: F 3.98, B 2.04), but three equal vectors at 120° in a plane add to
+           zero: the tip-to-tail chain closes into a triangle. Four equal vectors to the corners of a tetrahedron
+           close in the same way. Neither has a lone pair on the central atom to spoil the symmetry.</p>
+        <div class="eq">μ(BF<sub>3</sub>) = 0 &nbsp;&nbsp; μ(NH<sub>4</sub><sup>+</sup>) = 0 &nbsp;&nbsp;⇒&nbsp;&nbsp; <span class="hl">BF<sub>3</sub> = NH<sub>4</sub><sup>+</sup></span></div>
+        <p>NH<sub>4</sub><sup>+</sup> is an ion, but its charge is spread symmetrically round N, so about its own
+           centre it has no dipole. In the field it would drift as a whole (the holder kept it in place) but it
+           felt <b>no twist</b> — the torque meter read zero, exactly as for BF<sub>3</sub>.</p></li>
+      <li><h4>NH<sub>3</sub> and NF<sub>3</sub> — same shape, opposite story</h4>
+        <p>In a pyramid the sideways parts of the three bond moments cancel and only their components along the
+           axis survive: 3μ<sub>b</sub> cos β, where β is the angle between a bond and the axis.</p>
+        <div class="eq">NH<sub>3</sub>: N is more electronegative than H → bond arrows point <b>toward N</b>, the same way as the lone pair → they <span class="hl">add</span></div>
+        <div class="eq">NF<sub>3</sub>: F is more electronegative than N → bond arrows point <b>toward F</b>, away from the lone pair → they <span class="hl">oppose</span></div>
+        <div class="eq">μ(NH<sub>3</sub>) = 3μ<sub>N–H</sub> cos β + μ<sub>lp</sub> &nbsp;&nbsp;&gt;&nbsp;&nbsp; μ(NF<sub>3</sub>) = | μ<sub>lp</sub> − 3μ<sub>N–F</sub> cos β |</div>
+        <p id="solmodel">With the page's data: μ(NH<sub>3</sub>) ≈ 1.94 D and μ(NF<sub>3</sub>) ≈ 0.24 D.</p>
+        <div class="obsnote">This is why the torque meter jumped for NH<sub>3</sub> but barely moved for NF<sub>3</sub>,
+           even though the N–F bond is the more polar of the two.</div></li>
+      <li><h4>Order and answer</h4>
+        <div class="eq">measured: BF<sub>3</sub> 0, NH<sub>4</sub><sup>+</sup> 0, NF<sub>3</sub> 0.23 D (0.80 × 10<sup>−30</sup> C m),
+           NH<sub>3</sub> 1.47 D (4.90 × 10<sup>−30</sup> C m)</div>
+        <div class="eq"><span class="hl">BF<sub>3</sub> = NH<sub>4</sub><sup>+</sup> &lt; NF<sub>3</sub> &lt; NH<sub>3</sub></span></div>
+        <div class="eq">Answer: <span class="hl" id="solans">—</span></div></li>
+      <li><h4>Why the other options are wrong</h4>
+        <p><b>(B)</b> and <b>(D)</b> put BF<sub>3</sub> below NH<sub>4</sub><sup>+</sup>, and <b>(C)</b> puts
+           NH<sub>4</sub><sup>+</sup> below BF<sub>3</sub>. Both are exactly zero by symmetry, so any strict
+           order between them is wrong. <b>(C)</b> and <b>(D)</b> also put NF<sub>3</sub> above NH<sub>3</sub> —
+           the trap of comparing only bond polarities (N–F 0.94 &gt; N–H 0.84) and forgetting the lone pair.
+           Set the lone-pair moment to 0 in the experiment and you will see NF<sub>3</sub> overtake NH<sub>3</sub>.</p></li>
+    </ol>
+    <div class="verify">
+      <h4>Independent verification</h4>
+      <ul>
+        <li><b>Symbolic.</b> A computer-algebra system summed the bond vectors for each VSEPR shape with the bond
+            moment left as a symbol: BF<sub>3</sub> and NH<sub>4</sub><sup>+</sup> give exactly zero for any value,
+            and the pyramid gives 3m cos β + L (NH<sub>3</sub>-type) and L − 3m cos β (NF<sub>3</sub>-type).</li>
+        <li><b>Model.</b> With Pauling electronegativities, 1 D per unit difference and a 1.0 D lone pair: NH<sub>3</sub>
+            1.94 D, NF<sub>3</sub> 0.24 D.</li>
+        <li><b>Robustness.</b> NF<sub>3</sub> &lt; NH<sub>3</sub> holds for any lone-pair moment above 0.15 D and for every
+            bond-angle pair tried (NH<sub>3</sub> 100–110°, NF<sub>3</sub> 98–106°). With no lone pair it flips — option (D)'s trap.</li>
+        <li><b>Measured.</b> Gas-phase values BF<sub>3</sub> 0, NH<sub>4</sub><sup>+</sup> 0, NF<sub>3</sub> 0.23 D,
+            NH<sub>3</sub> 1.47 D give the same order.</li>
+        <li><b>Quantum chemistry.</b> A B3LYP/aug-cc-pVDZ calculation at the experimental geometries gives
+            BF<sub>3</sub> 0.000, NH<sub>4</sub><sup>+</sup> 0.000, NF<sub>3</sub> 0.197, NH<sub>3</sub> 1.522 D — and puts the
+            negative end of NF<sub>3</sub> on the fluorine side, as the vector model says.</li>
+        <li><b>This page.</b> The experiment computes each resultant from the vectors, reads it back from the torque
+            meter, ranks the four and matches the order against the printed options at run time — the answer is
+            not written into the page.</li>
+        <li><b>Answer key.</b> Checked afterwards against the official final key printed with the paper: Q3 → (A).</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="howto">
+  <h2 class="big"><span class="n">03</span>How to use this simulation</h2>
+  <p class="lede">For a student opening it for the first time. The whole experiment runs by itself after one press.</p>
+  <div class="howto">
+    <div><div class="n">STEP 1</div><h4>Read the question</h4>
+      <p>Four species — BF<sub>3</sub>, NH<sub>4</sub><sup>+</sup>, NF<sub>3</sub>, NH<sub>3</sub>. Which has the
+         biggest dipole moment, which the smallest, and are any equal?</p></div>
+    <div><div class="n">STEP 2</div><h4>Check the values</h4>
+      <p>The standard data — <b>electronegativities</b>, the <b>lone-pair moment</b> of N and the <b>bond angles</b> —
+         are already filled in. <b>You do not need to enter anything.</b></p></div>
+    <div><div class="n">STEP 3</div><h4>Optional: change a value</h4>
+      <p>Change any one value, or several. An empty box means "use the standard value". The badge switches to
+         <b>⚙ USING CUSTOM VALUES</b>; <b>↺ RESET TO QUESTION VALUES</b> puts everything back.</p></div>
+    <div><div class="n">STEP 4</div><h4>Start</h4>
+      <p>Press <b>▶ START EXPERIMENT</b>. There is nothing else to click — the experiment runs from beginning to
+         end on its own (under a minute; <b>2×</b> makes it faster).</p></div>
+    <div><div class="n">STEP 5</div><h4>Watch</h4>
+      <p>Each species is built in 3D. Its bond dipoles appear as blue arrows and its lone pair as an orange one.
+         The arrows slide tip to tail and the green resultant appears — or the chain closes and there is none.
+         Then the plates are charged and the torque meter shows how hard the field twists it.</p></div>
+    <div><div class="n">STEP 6</div><h4>Answer reveal</h4>
+      <p>After the four measurements the bars line up in order, the experiment says <b>✓ EXPERIMENT COMPLETE</b> and
+         reveals the answer. The header answer box unlocks at the same time.</p></div>
+    <div><div class="n">STEP 7</div><h4>Understand</h4>
+      <p>Scroll to <b>Detailed solution</b>. Each step points back to what you saw in the experiment.</p></div>
+    <div><div class="n">STEP 8</div><h4>Experiment again</h4>
+      <p>Press <b>▶ REPLAY EXPERIMENT</b>, or change a value — set the <b>lone-pair moment to 0</b>, or make
+         χ(B) almost equal to χ(F) — and press <b>⚙ RUN WITH CUSTOM VALUES</b>. Which species never move, whatever
+         you do? <b>CLASSROOM MODE</b> enlarges everything for a projector.</p></div>
+  </div>
+  <div class="panel" style="margin-top:14px">
+    <h3>Classification</h3>
+    <table class="meta-tbl"><tbody>
+      <tr><th>Exam</th><td>JEE Advanced 2026, Paper 1, Chemistry, Section 1, Q.3</td></tr>
+      <tr><th>Chapter</th><td>Chemical Bonding and Molecular Structure</td></tr>
+      <tr><th>Topic</th><td>Dipole moment — vector sum of bond and lone-pair moments</td></tr>
+      <tr><th>Difficulty</th><td>Easy-Moderate</td></tr>
+      <tr><th>Answer</th><td><b id="clsans">— run the experiment</b></td></tr>
+    </tbody></table>
+  </div>
+</section>
+
+<footer>
+  ADV-2026-P1-CHE-Q03 · PrayogX · JEE Advanced Interactive Simulation Library · question text reproduced
+  from the official JEE (Advanced) 2026 Paper 1 for educational use.
+</footer>
+</div>
+
+<script>
+(function(){
+"use strict";
+
+/* =====================================================================
+   helpers
+   ===================================================================== */
+var NS = "http://www.w3.org/2000/svg";
+function $(id){ return document.getElementById(id); }
+function css(v){ return getComputedStyle(document.documentElement).getPropertyValue(v).trim(); }
+function mk(n, a, parent){
+  var e = document.createElementNS(NS, n), k;
+  if (a) for (k in a) if (Object.prototype.hasOwnProperty.call(a, k)) e.setAttribute(k, a[k]);
+  if (parent) parent.appendChild(e);
+  return e;
+}
+function tx(parent, x, y, s, a){ var o = a || {}; o.x = x; o.y = y; var t = mk("text", o, parent); t.textContent = s; return t; }
+function clamp(v, a, b){ return v < a ? a : (v > b ? b : v); }
+function ease(t){ t = clamp(t, 0, 1); return t * t * (3 - 2 * t); }
+function nice(x, dp){
+  if (!isFinite(x)) return "—";
+  if (Math.abs(x - Math.round(x)) < 1e-9) return String(Math.round(x));
+  return x.toFixed(dp === undefined ? 3 : dp).replace(/0+$/, "").replace(/\.$/, "");
+}
+function f2(x){ return isFinite(x) ? x.toFixed(2) : "—"; }
+function f3(x){ return isFinite(x) ? x.toFixed(3) : "—"; }
+var REDUCED = !!(window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches);
+
+/* small vector kit */
+function V3(x, y, z){ return [x, y, z]; }
+function vadd(a, b){ return [a[0] + b[0], a[1] + b[1], a[2] + b[2]]; }
+function vsc(a, s){ return [a[0] * s, a[1] * s, a[2] * s]; }
+function vlen(a){ return Math.sqrt(a[0] * a[0] + a[1] * a[1] + a[2] * a[2]); }
+function vdot(a, b){ return a[0] * b[0] + a[1] * b[1] + a[2] * b[2]; }
+
+/* =====================================================================
+   question data. The stem prints only the four species and the four
+   orders; the numbers below are the standard data the question relies on.
+   Nothing here stores which option is correct: see matchOption().
+   ===================================================================== */
+var Q = { xH: 2.20, xB: 2.04, xN: 3.04, xF: 3.98, L: 1.0, aH: 107, aF: 102 };
+var KAPPA = 1.0;               /* debye per unit of Pauling electronegativity difference */
+var D2CM = 3.33564e-30;        /* 1 debye in C m */
+var EFIELD = 1.0e8;            /* V/m between the plates */
+var SPECIES = [
+  { k: "BF3", t: "BF₃",  h: "BF<sub>3</sub>", c: "B", l: "F", geo: "trig", lp: false, charge: 0,
+    shape: "trigonal planar", vsepr: "B: 3 bond pairs, 0 lone pairs", ang: "120°" },
+  { k: "NH4", t: "NH₄⁺", h: "NH<sub>4</sub><sup>+</sup>", c: "N", l: "H", geo: "tet", lp: false, charge: 1,
+    shape: "tetrahedral", vsepr: "N⁺: 4 bond pairs, 0 lone pairs", ang: "109.5°" },
+  { k: "NF3", t: "NF₃",  h: "NF<sub>3</sub>", c: "N", l: "F", geo: "pyr", angKey: "aF", lp: true, charge: 0,
+    shape: "trigonal pyramidal", vsepr: "N: 3 bond pairs, 1 lone pair" },
+  { k: "NH3", t: "NH₃",  h: "NH<sub>3</sub>", c: "N", l: "H", geo: "pyr", angKey: "aH", lp: true, charge: 0,
+    shape: "trigonal pyramidal", vsepr: "N: 3 bond pairs, 1 lone pair" }
+];
+var SP_KEYS = ["BF3", "NH4", "NF3", "NH3"];
+function spOf(k){ var i; for (i = 0; i < SPECIES.length; i++) if (SPECIES[i].k === k) return SPECIES[i]; return null; }
+/* the printed options, as groups in ascending order; "=" joins a group */
+var OPTIONS = {
+  A: [["BF3", "NH4"], ["NF3"], ["NH3"]],
+  B: [["BF3"], ["NH4"], ["NF3"], ["NH3"]],
+  C: [["NH4"], ["BF3"], ["NH3"], ["NF3"]],
+  D: [["BF3"], ["NH4"], ["NH3"], ["NF3"]]
+};
+var OPT_KEYS = ["A", "B", "C", "D"];
+
+/* =====================================================================
+   inputs - every one optional, every one falls back to the standard value
+   ===================================================================== */
+var FIELDS = [
+  { k: "xH", lab: "χ(H)", u: "Pauling", lo: 0.7, hi: 4, half: true, ladder: [0.9,1.2,1.5,1.8,2.0,2.2,2.4,2.6,2.8,3.0,3.3,3.6,4.0], note: "H" },
+  { k: "xB", lab: "χ(B)", u: "Pauling", lo: 0.7, hi: 4, half: true, ladder: [0.9,1.2,1.5,1.8,2.04,2.2,2.5,2.8,3.0,3.3,3.6,3.98], note: "B" },
+  { k: "xN", lab: "χ(N)", u: "Pauling", lo: 0.7, hi: 4, half: true, ladder: [1.5,2.0,2.2,2.5,2.8,3.04,3.2,3.5,3.8,4.0], note: "N" },
+  { k: "xF", lab: "χ(F)", u: "Pauling", lo: 0.7, hi: 4, half: true, ladder: [2.0,2.5,3.0,3.04,3.3,3.5,3.8,3.98], note: "F" },
+  { k: "L",  lab: "lone-pair moment on N", u: "D", lo: 0, hi: 3, zeroOK: true, ladder: [0,0.1,0.2,0.3,0.5,0.75,1,1.25,1.5,2,2.5,3],
+    note: "points from N out into the lone pair" },
+  { k: "aH", lab: "H–N–H angle in NH<sub>3</sub>", u: "°", lo: 90, hi: 119.5, ladder: [90,95,100,104.5,106.7,107,109.5,112,115,119.5],
+    note: "VSEPR: a lone pair squeezes 109.5° to about 107°" },
+  { k: "aF", lab: "F–N–F angle in NF<sub>3</sub>", u: "°", lo: 90, hi: 119.5, ladder: [90,95,100,102,102.2,105,107,109.5,112,115,119.5],
+    note: "smaller than NH₃: bonding pairs pulled out toward F" }
+];
+var ST = {}; (function(){ var k; for (k in Q) ST[k] = Q[k]; })();
+
+function parseNum(str){
+  var s = String(str).trim().replace(/\s+/g, "").replace(/−/g, "-").replace(/×10\^?/g, "e");
+  if (s === "") return { empty: true };
+  if (!/^-?\d*\.?\d+(?:e[-+]?\d+)?$/i.test(s)) return { bad: true };
+  return { v: parseFloat(s) };
+}
+function fieldOf(k){ var i; for (i = 0; i < FIELDS.length; i++) if (FIELDS[i].k === k) return FIELDS[i]; return null; }
+function fieldsHTML(){
+  var h = "", i, F;
+  for (i = 0; i < FIELDS.length; i++){
+    F = FIELDS[i];
+    h += '<div class="fld ' + (F.half ? "half" : "full") + '" id="fld_' + F.k + '"><div class="lb"><span><b>' + F.lab + '</b></span><span class="u">' + F.u + '</span></div>'
+      + '<div class="rw"><button type="button" class="dn" data-k="' + F.k + '" aria-label="decrease ' + F.k + '">−</button>'
+      + '<input id="in_' + F.k + '" type="text" inputmode="decimal" autocomplete="off" aria-label="' + F.k + '" value="' + Q[F.k] + '">'
+      + '<button type="button" class="up" data-k="' + F.k + '" aria-label="increase ' + F.k + '">+</button>'
+      + '<button type="button" class="rs" data-k="' + F.k + '" aria-label="standard value for ' + F.k + '" title="standard value">↺</button></div>'
+      + '<div class="fh" id="fh_' + F.k + '">' + (F.half ? "standard" : "standard · " + F.note) + '</div></div>';
+  }
+  return h;
+}
+/* one box: a valid custom value is used; anything else falls back to the standard value */
+function readField(k){
+  var F = fieldOf(k), box = $("in_" + k), fh = $("fh_" + k), r = parseNum(box.value), v = Q[k], msg, bad = false;
+  if (r.empty) msg = F.half ? "empty → " + Q[k] : "empty — using the standard value " + Q[k] + " " + F.u;
+  else if (r.bad || !isFinite(r.v) || r.v < 0 || (r.v === 0 && !F.zeroOK)){ bad = true; msg = "Please enter a valid positive value." + (F.half ? "" : " The standard value " + Q[k] + " is used meanwhile."); }
+  else if (r.v < F.lo || r.v > F.hi){ bad = true; msg = "Please enter a value between " + F.lo + " and " + F.hi + (F.half ? "." : " " + F.u + ". The standard value is used meanwhile."); }
+  else { v = r.v; msg = Math.abs(v - Q[k]) < 1e-12 ? (F.half ? "standard" : "standard · " + F.note) : (F.half ? "custom · std " + Q[k] : "custom · standard value " + Q[k] + " " + F.u); }
+  box.classList.toggle("bad", bad); fh.classList.toggle("bad", bad);
+  fh.innerHTML = msg; ST[k] = v;
+  return !bad;
+}
+function readAll(){ var i; for (i = 0; i < FIELDS.length; i++) readField(FIELDS[i].k); }
+function isCustom(D){ var k; D = D || ST; for (k in Q) if (Math.abs(D[k] - Q[k]) > 1e-12) return true; return false; }
+function copyST(){ var o = {}, k; for (k in Q) o[k] = ST[k]; return o; }
+function sameD(a, b){ var k; for (k in Q) if (Math.abs(a[k] - b[k]) > 1e-12) return false; return true; }
+function setField(k, v){ $("in_" + k).value = nice(v, 4); readAll(); }
+function stepField(k, dir){
+  var L = fieldOf(k).ladder, v = ST[k], i, nv = v;
+  if (dir > 0){ for (i = 0; i < L.length; i++) if (L[i] > v + 1e-12){ nv = L[i]; break; } }
+  else { for (i = L.length - 1; i >= 0; i--) if (L[i] < v - 1e-12){ nv = L[i]; break; } }
+  setField(k, nv);
+}
+
+/* =====================================================================
+   the scientific model - geometry from VSEPR, one moment per bond,
+   one per lone pair, and a plain vector sum. Body frame: z is the
+   molecule's main axis, the lone pair (if any) sits on +z.
+   ===================================================================== */
+function cosBeta(aDeg){ return Math.sqrt((1 + 2 * Math.cos(aDeg * Math.PI / 180)) / 3); }
+function geometry(sp, D){
+  var u = [], k, cb, sb, ct = -1 / 3, st = Math.sqrt(8 / 9);
+  if (sp.geo === "trig") for (k = 0; k < 3; k++) u.push(V3(Math.cos(2 * Math.PI * k / 3 + 0.35), Math.sin(2 * Math.PI * k / 3 + 0.35), 0));
+  else if (sp.geo === "tet"){
+    u.push(V3(0, 0, 1));
+    for (k = 0; k < 3; k++) u.push(V3(st * Math.cos(2 * Math.PI * k / 3 + 0.35), st * Math.sin(2 * Math.PI * k / 3 + 0.35), ct));
+  } else {
+    cb = cosBeta(D[sp.angKey]); sb = Math.sqrt(1 - cb * cb);
+    for (k = 0; k < 3; k++) u.push(V3(sb * Math.cos(2 * Math.PI * k / 3 + 0.35), sb * Math.sin(2 * Math.PI * k / 3 + 0.35), -cb));
+  }
+  return u;
+}
+function chi(D, el){ return el === "H" ? D.xH : el === "B" ? D.xB : el === "N" ? D.xN : D.xF; }
+function speciesModel(sp, D){
+  var u = geometry(sp, D), i;
+  /* signed bond moment: positive = points from the centre out to the ligand (ligand is delta-minus) */
+  var m = KAPPA * (chi(D, sp.l) - chi(D, sp.c));
+  var bonds = [], sumB = V3(0, 0, 0);
+  for (i = 0; i < u.length; i++){ var v = vsc(u[i], m); bonds.push({ u: u[i], v: v }); sumB = vadd(sumB, v); }
+  var lp = sp.lp ? V3(0, 0, D.L) : null;
+  var sum = lp ? vadd(sumB, lp) : sumB;
+  /* a sum smaller than rounding noise is a sum of exactly zero */
+  var clean = function(a){ return [Math.abs(a[0]) < 1e-9 ? 0 : a[0], Math.abs(a[1]) < 1e-9 ? 0 : a[1], Math.abs(a[2]) < 1e-9 ? 0 : a[2]]; };
+  sumB = clean(sumB); sum = clean(sum);
+  var mu = vlen(sum);
+  var chain = [], acc = V3(0, 0, 0);            /* tip-to-tail: each arrow starts where the last ended */
+  for (i = 0; i < bonds.length; i++){ chain.push({ from: acc, v: bonds[i].v, kind: "b" }); acc = vadd(acc, bonds[i].v); }
+  if (lp){ chain.push({ from: acc, v: lp, kind: "lp" }); acc = vadd(acc, lp); }
+  return {
+    sp: sp, u: u, m: m, mb: Math.abs(m), bonds: bonds, lp: lp, sumB: sumB, sumBz: sumB[2], sum: sum, mu: mu, chain: chain,
+    cosb: sp.geo === "pyr" ? cosBeta(D[sp.angKey]) : null, angle: sp.geo === "pyr" ? D[sp.angKey] : null,
+    tau22: mu * D2CM * EFIELD / 1e-22,                 /* peak torque at 90 deg, in 10^-22 N m */
+    dir: mu > 0 ? vsc(sum, 1 / mu) : V3(0, 0, 1)       /* the chemists' arrow: toward the negative end */
+  };
+}
+function model(D){
+  var M = { D: D, s: {}, list: [] }, i;
+  for (i = 0; i < SPECIES.length; i++){ var s = speciesModel(SPECIES[i], D); M.s[SPECIES[i].k] = s; M.list.push(s); }
+  return M;
+}
+/* order the measured values; equal within 0.005 D share a group */
+function rankGroups(mus){
+  var ks = SP_KEYS.slice().sort(function(a, b){ return mus[a] - mus[b] || SP_KEYS.indexOf(a) - SP_KEYS.indexOf(b); });
+  var out = [[ks[0]]], i;
+  for (i = 1; i < ks.length; i++){
+    if (Math.abs(mus[ks[i]] - mus[out[out.length - 1][0]]) < 0.005) out[out.length - 1].push(ks[i]);
+    else out.push([ks[i]]);
+  }
+  for (i = 0; i < out.length; i++) out[i].sort(function(a, b){ return SP_KEYS.indexOf(a) - SP_KEYS.indexOf(b); });
+  return out;
+}
+function sameGroups(a, b){
+  if (a.length !== b.length) return false;
+  var i, j;
+  for (i = 0; i < a.length; i++){
+    if (a[i].length !== b[i].length) return false;
+    var x = a[i].slice().sort(), y = b[i].slice().sort();
+    for (j = 0; j < x.length; j++) if (x[j] !== y[j]) return false;
+  }
+  return true;
+}
+/* which printed option is this order? computed, never stored */
+function matchOption(groups){
+  var out = [], i;
+  for (i = 0; i < OPT_KEYS.length; i++) if (sameGroups(groups, OPTIONS[OPT_KEYS[i]])) out.push(OPT_KEYS[i]);
+  return out;
+}
+function rankText(groups, html){
+  var p = [], i, j, g;
+  for (i = 0; i < groups.length; i++){
+    g = [];
+    for (j = 0; j < groups[i].length; j++) g.push(html ? spOf(groups[i][j]).h : spOf(groups[i][j]).t);
+    p.push(g.join(" = "));
+  }
+  return p.join(html ? " &lt; " : " < ");
+}
+function musOf(M){ var o = {}, i; for (i = 0; i < M.list.length; i++) o[M.list[i].sp.k] = M.list[i].mu; return o; }
+var QM = model(copyST());
+var QGROUPS = rankGroups(musOf(QM));
+var QANS = matchOption(QGROUPS);
+var ANS = QANS.length === 1 ? QANS[0] : "?";
+
+/* =====================================================================
+   experiment engine - one automatic timeline, built when START is pressed
+   ===================================================================== */
+var PH = [["intro", 1.1], ["bonds", 2.2], ["lp", 1.2], ["sum", 2.6], ["field", 3.2], ["record", 0.7]];
+var ORD = { intro: 0, bonds: 1, lp: 2, sum: 3, field: 4, record: 5 };
+var FIELD_RAMP = 0.35;          /* seconds for the plates to charge */
+function phaseDur(ph){ var i, t = 0; for (i = 0; i < ph.length; i++) t += ph[i][1]; return t; }
+var RUN = { state: "setup", paused: false, speed: 1, segs: [], si: 0, u: 0, D: copyST(), M: null,
+  meas: {}, order: [], groups: null, sortT: 0, done: false, revealed: false, logged: {}, calc: {}, classroom: false };
+RUN.M = model(RUN.D);
+var earlyReveal = false;
+
+function buildTimeline(){
+  var s = [{ kind: "prep", dur: 2.5 }], i;
+  for (i = 0; i < SP_KEYS.length; i++) s.push({ kind: "sp", key: SP_KEYS[i], idx: i, ph: PH, dur: phaseDur(PH) });
+  s.push({ kind: "analyse", dur: 4.5 });
+  s.push({ kind: "calc", dur: 3.2 });
+  s.push({ kind: "done", dur: 1.6 });
+  return s;
+}
+function seg(){ return RUN.segs[RUN.si] || null; }
+
+/* the swing in the field: angle between the dipole (physicists' p, from - to +) and E.
+   Released at 90 deg to the field, it turns to line up and settles (damped by collisions). */
+function swing(S, t){
+  var th0 = S.dir[2] >= 0 ? -90 : 90;                  /* p is opposite to the chemists' arrow */
+  if (S.mu === 0) return { th: th0, th0: th0, tau: 0 };
+  var tt = Math.max(0, t - FIELD_RAMP);
+  var w = clamp(2 * Math.PI * 0.8 * Math.sqrt(S.mu), 2.2, 9), g = 1.4;
+  var th = th0 * Math.exp(-g * tt) * Math.cos(w * tt);
+  var on = clamp(t / FIELD_RAMP, 0, 1);
+  return { th: th, th0: th0, tau: on * S.tau22 * Math.sin(Math.abs(th) * Math.PI / 180) };
+}
+/* where a species run is: phase name, progress, and what that implies */
+function spState(sg, u){
+  var acc = 0, i, name = "record", f = 1;
+  for (i = 0; i < sg.ph.length; i++){
+    if (u < acc + sg.ph[i][1]){ name = sg.ph[i][0]; f = (u - acc) / sg.ph[i][1]; break; }
+    acc += sg.ph[i][1];
+  }
+  var S = RUN.M.s[sg.key], st = { name: name, f: f, key: sg.key, S: S, E: 0, th: null, tau: 0, psi: 0 };
+  if (name === "field" || name === "record"){
+    var t = name === "field" ? f * sg.ph[4][1] : sg.ph[4][1] + f * sg.ph[5][1];
+    var sw = swing(S, t);
+    st.th = sw.th; st.tau = sw.tau; st.psi = sw.th - sw.th0;
+    st.E = clamp(t / FIELD_RAMP, 0, 1);
+  }
+  return st;
+}
+var NOW = null;      /* the one state everything reads from, each frame */
+function currentState(){
+  var sg = seg();
+  if (RUN.done || (sg && (sg.kind === "analyse" || sg.kind === "calc" || sg.kind === "done"))){
+    var S = RUN.M.s.NH3;
+    return { name: "rest", f: 1, key: "NH3", S: S, E: 1, th: 0, tau: 0, psi: -swing(S, 0).th0 };
+  }
+  if (RUN.state === "setup" || !sg || sg.kind === "prep") return { name: sg && sg.kind === "prep" ? "prep" : "idle", f: sg ? RUN.u / sg.dur : 0, key: null, S: null, E: 0, th: null, tau: 0, psi: 0 };
+  return spState(sg, RUN.u);
+}
+
+/* things that happen once, at a moment in the timeline */
+function onPhase(sg, st){
+  if (sg.kind !== "sp") return;
+  var o = ORD[st.name], S = RUN.M.s[sg.key];
+  if (o >= 4) addCalc(sg.key);
+  if (o >= 5 && !RUN.logged[sg.key]){
+    RUN.logged[sg.key] = true;
+    /* the meter's peak reading, at release (90 deg), turned back into a dipole moment */
+    var tauMax = swing(S, FIELD_RAMP).tau;
+    RUN.meas[sg.key] = { tau22: tauMax, mu: tauMax * 1e-22 / (EFIELD * D2CM), S: S };
+    RUN.order.push(sg.key);
+    if (RUN.meas[sg.key].mu > 0 && !RUN.calc.tau) addCalc("tau");
+    drawLog(); drawBars(); drawTQ();
+  }
+}
+function onSegEnd(sg){
+  if (sg.kind === "prep") addCalc("rule");
+  if (sg.kind === "analyse"){ RUN.sortT = 1; addCalc("rank"); addCalc("lit"); drawBars(); }
+}
+function onSegStart(sg){
+  if (sg.kind === "analyse"){ var o = {}, k; for (k in RUN.meas) o[k] = RUN.meas[k].mu; RUN.groups = rankGroups(o); RUN.sortT = 0; }
+  if (sg.kind === "done"){ $("donebanner").classList.add("on"); }
+}
+function stepTimeline(sdt){
+  var sg = seg(); if (!sg) return;
+  RUN.u += sdt;
+  if (sg.kind === "analyse"){ RUN.sortT = clamp((RUN.u - 0.6) / 2.4, 0, 1); drawBars(); }
+  while (sg && RUN.u >= sg.dur){
+    RUN.u -= sg.dur;
+    if (sg.kind === "sp") onPhase(sg, spState(sg, sg.dur - 1e-6));
+    onSegEnd(sg);
+    RUN.si++;
+    sg = seg();
+    if (!sg){ finish(); return; }
+    onSegStart(sg);
+  }
+}
+function clearRunUI(){
+  $("calclist").innerHTML = ""; $("calcempty").hidden = false;
+  $("donebanner").classList.remove("on");
+  $("revealhost").classList.remove("on"); $("revealhost").innerHTML = "";
+  $("lab3d").classList.remove("dim"); $("blackout").classList.remove("on");
+  burst = [];
+}
+function startRun(D){
+  readAll();
+  RUN.D = D || copyST(); RUN.M = model(RUN.D);
+  RUN.segs = buildTimeline(); RUN.si = 0; RUN.u = 0;
+  RUN.state = "running"; RUN.paused = false; RUN.done = false; RUN.revealed = false;
+  RUN.meas = {}; RUN.order = []; RUN.groups = null; RUN.sortT = 0; RUN.logged = {}; RUN.calc = {};
+  clearRunUI();
+  drawLog(); drawBars(); drawTQ(); refreshUI();
+}
+function resetRun(){
+  RUN.state = "setup"; RUN.paused = false; RUN.done = false; RUN.revealed = false;
+  RUN.segs = []; RUN.si = 0; RUN.u = 0; RUN.meas = {}; RUN.order = []; RUN.groups = null; RUN.sortT = 0; RUN.logged = {}; RUN.calc = {};
+  readAll(); RUN.D = copyST(); RUN.M = model(RUN.D);
+  clearRunUI();
+  drawLog(); drawBars(); drawTQ(); refreshUI();
+}
+function resetAll(){
+  var i; for (i = 0; i < FIELDS.length; i++) $("in_" + FIELDS[i].k).value = Q[FIELDS[i].k];
+  readAll(); earlyReveal = false; resetRun(); refreshGate();
+}
+function finish(){
+  RUN.si = RUN.segs.length; RUN.state = "done"; RUN.done = true;
+  if (!RUN.groups){ var o = {}, k; for (k in RUN.meas) o[k] = RUN.meas[k].mu; RUN.groups = rankGroups(o); }
+  RUN.sortT = 1;
+  addCalc("match");
+  drawBars(); refreshUI();
+  doReveal();
+}
+function runMatch(){ return RUN.groups ? matchOption(RUN.groups) : []; }
+
+/* =====================================================================
+   calculation panel - lines appear only when the run has produced them
+   ===================================================================== */
+function dirWord(S){ return S.m > 0 ? "toward " + S.sp.l : "toward " + S.sp.c; }
+function calcHTML(key){
+  var M = RUN.M, D = M.D, S, h;
+  switch (key){
+    case "rule":
+      return ["START", "Bond moment μ<sub>b</sub> = κ(χ<sub>more</sub> − χ<sub>less</sub>), κ = 1 D: &nbsp;B–F <b>" + f2(M.s.BF3.mb) + " D</b>, &nbsp;N–H <b>" + f2(M.s.NH4.mb)
+        + " D</b>, &nbsp;N–F <b>" + f2(M.s.NF3.mb) + " D</b>; &nbsp;lone pair on N <b>" + f2(D.L) + " D</b>"
+        + "<span class=w>each arrow points to the more electronegative atom (its δ− end); the lone-pair arrow points from N out into the pair</span>"];
+    case "BF3":
+      S = M.s.BF3;
+      return ["BF₃", "Three <span class=ar>" + f2(S.mb) + " D</span> moments at 120° in one plane: Σ = " + f2(S.mb) + "(û<sub>1</sub> + û<sub>2</sub> + û<sub>3</sub>) = 0 &nbsp;⇒&nbsp; <b>μ = " + f3(S.mu) + " D</b>"
+        + "<span class=w>the tip-to-tail chain closed into a triangle — no lone pair on B to break the symmetry</span>"];
+    case "NH4":
+      S = M.s.NH4;
+      return ["NH₄⁺", "Four <span class=ar>" + f2(S.mb) + " D</span> moments to the corners of a tetrahedron: Σ = 0 &nbsp;⇒&nbsp; <b>μ = " + f3(S.mu) + " D</b>"
+        + "<span class=w>the chain closed again; the +1 charge is spread evenly round N, so there is no twist about its centre</span>"];
+    case "NF3": case "NH3":
+      S = M.s[key];
+      var bz = S.sumBz, same = bz * D.L > 0 || D.L === 0;
+      h = S.sp.h + ": cos β = √((1 + 2 cos " + nice(S.angle, 1) + "°)/3) = " + f3(S.cosb) + "; &nbsp;bonds <span class=ar>3 × " + f2(S.mb) + " × " + f3(S.cosb) + " = " + f3(Math.abs(bz))
+        + " D</span> " + dirWord(S) + "; &nbsp;lone pair <span class=or>" + f2(D.L) + " D</span> " + (D.L === 0 ? "(switched off)" : same ? "the same way" : "the opposite way")
+        + " &nbsp;⇒&nbsp; <b>μ = " + (same ? f3(Math.abs(bz)) + " + " + f2(D.L) : "|" + f2(D.L) + " − " + f3(Math.abs(bz)) + "|") + " = " + f3(S.mu) + " D</b>";
+      return [S.sp.t, h + "<span class=w>" + (same ? "bonds and lone pair reinforce" : "bonds and lone pair oppose — they nearly cancel") + "; the sideways parts of the three bonds cancel</span>"];
+    case "tau":
+      var k = null, i; for (i = 0; i < RUN.order.length; i++) if (RUN.meas[RUN.order[i]].mu > 0){ k = RUN.order[i]; break; }
+      var m = RUN.meas[k];
+      return ["METER", "τ<sub>max</sub> = μE = " + f3(m.S.mu) + " × 3.336×10<sup>−30</sup> × 1.0×10<sup>8</sup> = <b>" + f3(m.tau22) + " × 10<sup>−22</sup> N m</b> &nbsp;⇒&nbsp; μ = τ<sub>max</sub>/E = <b>" + f3(m.mu) + " D</b>"
+        + "<span class=w>" + m.S.sp.t + ": the reading at release, at 90° to the field, agrees with the vector sum</span>"];
+    case "rank":
+      var vals = [], g, j;
+      for (g = 0; g < RUN.groups.length; g++){ var vv = []; for (j = 0; j < RUN.groups[g].length; j++) vv.push(f2(RUN.meas[RUN.groups[g][j]].mu)); vals.push(vv.join(" = ")); }
+      return ["RANK", "<span class=rankline>" + rankText(RUN.groups, true) + "</span> &nbsp;(" + vals.join(" &lt; ") + " D)"
+        + "<span class=w>the four torque readings, lowest first; equal readings share an “=”</span>"];
+    case "lit":
+      return ["CHECK", "Real molecules, measured: BF<sub>3</sub> 0, NH<sub>4</sub><sup>+</sup> 0, NF<sub>3</sub> 0.23 D, NH<sub>3</sub> 1.47 D — "
+        + (sameGroups(RUN.groups, rankGroups({ BF3: 0, NH4: 0, NF3: 0.234, NH3: 1.47 })) ? "the same order" : "a different order from your custom model")
+        + "<span class=w>this simple model over-estimates NH<sub>3</sub>, but the order is what the question asks for</span>"];
+    case "match":
+      var mo = runMatch();
+      return ["MATCH", mo.length ? "Order " + rankText(RUN.groups, true) + " = printed option <span class=hl>(" + mo[0] + ")</span>"
+        : "Order " + rankText(RUN.groups, true) + " — your custom values give an order that is not one of the printed options"];
+  }
+  return null;
+}
+function addCalc(key){
+  if (RUN.calc[key]) return;
+  var c = calcHTML(key); if (!c) return;
+  RUN.calc[key] = true;
+  $("calcempty").hidden = true;
+  var li = document.createElement("li");
+  li.setAttribute("data-key", key);
+  li.innerHTML = '<span class="s">' + c[0] + '</span><span class="m">' + c[1] + "</span>";
+  $("calclist").appendChild(li);
+}
+function drawLog(){
+  var h = "<thead><tr><th>species</th><th>shape</th><th>bond moment / D</th><th>lone pair / D</th><th>Σ bonds along axis / D</th><th>μ vector sum / D</th><th>τ<sub>max</sub> / 10<sup>−22</sup> N m</th><th>μ = τ/E / D</th></tr></thead><tbody>", i, k, m;
+  for (i = 0; i < RUN.order.length; i++){
+    k = RUN.order[i]; m = RUN.meas[k];
+    h += "<tr><td>" + m.S.sp.h + "</td><td>" + m.S.sp.shape + "</td><td class=n>" + f2(m.S.mb) + "</td><td class=n>" + (m.S.lp ? f2(RUN.D.L) : "none")
+      + "</td><td class=n>" + f3(m.S.sumBz) + "</td><td class=n>" + f3(m.S.mu) + "</td><td class=n>" + f3(m.tau22) + "</td><td class=n>" + f3(m.mu) + "</td></tr>";
+  }
+  $("log").innerHTML = h + "</tbody>";
+  $("logn").textContent = RUN.order.length;
+}
+
+/* =====================================================================
+   the bench - canvas drawing (always dark, like a lab chamber)
+   ===================================================================== */
+var CV = { cx: 520, cy: 292, BL: 118, DS: 95 };       /* bond length px, px per debye */
+var EL = { B: { r: 26, c: "#ffb3a7", e: "#b8665b" }, N: { r: 25, c: "#6d86ff", e: "#2b3fb0" },
+           F: { r: 22, c: "#a6ea78", e: "#4f9a2c" }, H: { r: 15, c: "#f4f6fb", e: "#8d96a8" } };
+var TILT = { trig: 0.98, tet: 0.30, pyr: 0.26 };
+var COL = { bond: "#54a9ff", lp: "#ff9350", res: "#3ee39a", dim: "rgba(160,190,255,.35)" };
+var spin = 0.6, burst = [], dashT = 0;
+
+function proj(p, O){
+  var x0 = p[0], y0 = p[2], z0 = -p[1];
+  var cs = Math.cos(O.s), sn = Math.sin(O.s);
+  var x1 = x0 * cs + z0 * sn, z1 = -x0 * sn + z0 * cs, y1 = y0;
+  var ct = Math.cos(O.t), stt = Math.sin(O.t);
+  var y2 = y1 * ct - z1 * stt, z2 = y1 * stt + z1 * ct;
+  var cp = Math.cos(O.psi), sp = Math.sin(O.psi);
+  var X = x1 * cp - y2 * sp, Y = x1 * sp + y2 * cp;
+  return { x: O.cx + X, y: O.cy - Y, z: z2 };
+}
+function sphere(g, x, y, r, el, a){
+  var E = EL[el], gr = g.createRadialGradient(x - r * 0.35, y - r * 0.4, r * 0.15, x, y, r);
+  gr.addColorStop(0, "#ffffff"); gr.addColorStop(0.25, E.c); gr.addColorStop(1, E.e);
+  g.globalAlpha = a; g.fillStyle = gr; g.beginPath(); g.arc(x, y, r, 0, Math.PI * 2); g.fill();
+  g.fillStyle = el === "H" ? "#28303f" : "#0b1020"; g.font = "700 " + Math.round(r * 0.78) + "px ui-sans-serif,system-ui,sans-serif";
+  g.textAlign = "center"; g.textBaseline = "middle"; g.fillText(el, x, y + 1);
+  g.globalAlpha = 1;
+}
+function arrow2(g, a, b, col, w, alpha, cross){
+  var dx = b.x - a.x, dy = b.y - a.y, L = Math.sqrt(dx * dx + dy * dy);
+  if (L < 2) return;
+  var ux = dx / L, uy = dy / L, hl = Math.min(16 + w, L * 0.45), hw = hl * 0.55;
+  g.globalAlpha = alpha; g.strokeStyle = col; g.fillStyle = col; g.lineWidth = w; g.lineCap = "round";
+  g.beginPath(); g.moveTo(a.x, a.y); g.lineTo(b.x - ux * hl * 0.8, b.y - uy * hl * 0.8); g.stroke();
+  g.beginPath(); g.moveTo(b.x, b.y); g.lineTo(b.x - ux * hl - uy * hw, b.y - uy * hl + ux * hw);
+  g.lineTo(b.x - ux * hl + uy * hw, b.y - uy * hl - ux * hw); g.closePath(); g.fill();
+  if (cross){   /* the chemists' crossed tail marks the delta-plus end */
+    var cx = a.x + ux * Math.min(10, L * 0.2), cy = a.y + uy * Math.min(10, L * 0.2);
+    g.beginPath(); g.moveTo(cx - uy * 7, cy + ux * 7); g.lineTo(cx + uy * 7, cy - ux * 7); g.stroke();
+  }
+  g.globalAlpha = 1;
+}
+function lerp3(a, b, t){ return [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t, a[2] + (b[2] - a[2]) * t]; }
+function label(g, s, x, y, col, size, align, weight){
+  g.fillStyle = col; g.font = (weight || 600) + " " + (size || 14) + "px ui-sans-serif,system-ui,sans-serif";
+  g.textAlign = align || "center"; g.textBaseline = "middle"; g.fillText(s, x, y);
+}
+
+function drawBench(st){
+  var c = $("bench"), g = c.getContext("2d"), W = c.width, H = c.height;
+  g.clearRect(0, 0, W, H);
+  var bg = g.createLinearGradient(0, 0, 0, H); bg.addColorStop(0, "#0b1120"); bg.addColorStop(1, "#070a12");
+  g.fillStyle = bg; g.fillRect(0, 0, W, H);
+  drawPlates(g, st.E);
+  drawMeter(g, st);
+  drawCard(g, st);
+  drawTray(g, st);
+  if (st.S) drawMolecule(g, st);
+  else {
+    g.strokeStyle = "rgba(160,190,255,.35)"; g.setLineDash([6, 6]); g.lineWidth = 2;
+    g.beginPath(); g.arc(CV.cx, CV.cy, 70, 0, Math.PI * 2); g.stroke(); g.setLineDash([]);
+    label(g, st.name === "prep" ? "loading the sample tray…" : "sample holder — empty", CV.cx, CV.cy, "#9fb0cc", 15);
+  }
+}
+function drawPlates(g, E){
+  var x1 = 196, x2 = 828, y0 = 70, y1 = 486, i;
+  g.fillStyle = "rgba(255,110,110," + (0.25 + 0.6 * E) + ")"; g.fillRect(x1, y0, 16, y1 - y0);
+  g.fillStyle = "rgba(90,150,255," + (0.25 + 0.6 * E) + ")"; g.fillRect(x2, y0, 16, y1 - y0);
+  if (E > 0){
+    g.shadowColor = "rgba(255,110,110,.8)"; g.shadowBlur = 18 * E; g.fillStyle = "rgba(255,130,130," + E + ")"; g.fillRect(x1 + 12, y0, 3, y1 - y0);
+    g.shadowColor = "rgba(90,150,255,.8)"; g.fillStyle = "rgba(120,170,255," + E + ")"; g.fillRect(x2, y0, 3, y1 - y0); g.shadowBlur = 0;
+    for (i = 0; i < 6; i++){
+      var y = 104 + i * 72;
+      g.strokeStyle = "rgba(255,220,160," + (0.28 * E) + ")"; g.lineWidth = 1.5; g.setLineDash([10, 12]); g.lineDashOffset = -dashT * 40;
+      g.beginPath(); g.moveTo(222, y); g.lineTo(818, y); g.stroke(); g.setLineDash([]);
+      g.fillStyle = "rgba(255,220,160," + (0.45 * E) + ")";
+      g.beginPath(); g.moveTo(818, y); g.lineTo(806, y - 5); g.lineTo(806, y + 5); g.closePath(); g.fill();
+    }
+    label(g, "E = 1.0 × 10⁸ V m⁻¹  →", CV.cx, 52, "rgba(255,220,160," + E + ")", 15, "center", 700);
+  } else label(g, "field off", CV.cx, 52, "#6f7f9c", 14);
+  for (i = 0; i < 7; i++){
+    label(g, "+", x1 + 8, y0 + 26 + i * 58, E > 0 ? "#fff" : "#caa", 16, "center", 800);
+    label(g, "−", x2 + 8, y0 + 26 + i * 58, E > 0 ? "#fff" : "#aac", 16, "center", 800);
+  }
+}
+function tauScale(){ var mx = 0, i; for (i = 0; i < RUN.M.list.length; i++) mx = Math.max(mx, RUN.M.list[i].tau22); return niceMax(Math.max(mx, 1)); }
+function drawMeter(g, st){
+  var cx = 98, cy = 168, R = 60, mx = tauScale(), a0 = Math.PI * 0.75, a1 = Math.PI * 2.25, i;
+  label(g, "TORQUE METER", cx, 82, "#8fa6c9", 12, "center", 800);
+  g.fillStyle = "#0f1729"; g.strokeStyle = "rgba(160,190,255,.35)"; g.lineWidth = 2;
+  g.beginPath(); g.arc(cx, cy, R + 8, 0, Math.PI * 2); g.fill(); g.stroke();
+  g.strokeStyle = "#2b3a58"; g.lineWidth = 8; g.beginPath(); g.arc(cx, cy, R - 6, a0, a1); g.stroke();
+  for (i = 0; i <= 4; i++){
+    var a = a0 + (a1 - a0) * i / 4;
+    g.strokeStyle = "#8fa6c9"; g.lineWidth = 2; g.beginPath();
+    g.moveTo(cx + Math.cos(a) * (R - 14), cy + Math.sin(a) * (R - 14)); g.lineTo(cx + Math.cos(a) * (R - 2), cy + Math.sin(a) * (R - 2)); g.stroke();
+  }
+  var fr = clamp(Math.abs(st.tau) / mx, 0, 1), an = a0 + (a1 - a0) * fr;
+  g.strokeStyle = COL.res; g.lineWidth = 8; g.beginPath(); g.arc(cx, cy, R - 6, a0, an); g.stroke();
+  g.strokeStyle = "#ffffff"; g.lineWidth = 3; g.beginPath(); g.moveTo(cx, cy); g.lineTo(cx + Math.cos(an) * (R - 10), cy + Math.sin(an) * (R - 10)); g.stroke();
+  g.fillStyle = "#fff"; g.beginPath(); g.arc(cx, cy, 5, 0, Math.PI * 2); g.fill();
+  label(g, "0", cx - 38, cy + 50, "#8fa6c9", 11); label(g, nice(mx), cx + 38, cy + 50, "#8fa6c9", 11);
+  label(g, f3(Math.abs(st.tau)), cx, cy + 96, "#ffffff", 22, "center", 800);
+  label(g, "× 10⁻²² N m", cx, cy + 118, "#9fb0cc", 12);
+  if (st.th !== null && st.S){
+    label(g, "θ = " + Math.round(Math.abs(st.th)) + "°", cx, cy + 146, "#ffd79a", 15, "center", 700);
+    if (st.name === "record" || (st.name === "field" && st.S.mu === 0 && st.E >= 1))
+      label(g, "μ = τmax/E = " + f3(RUN.meas[st.key] ? RUN.meas[st.key].mu : st.S.mu) + " D", cx, cy + 172, COL.res, 13, "center", 800);
+  }
+}
+function drawCard(g, st){
+  var x = 862, y = 78, S = st.S;
+  g.fillStyle = "rgba(20,30,52,.85)"; g.strokeStyle = "rgba(160,190,255,.25)"; g.lineWidth = 1.5;
+  g.beginPath(); g.roundRect ? g.roundRect(x, y, 168, 246, 12) : g.rect(x, y, 168, 246); g.fill(); g.stroke();
+  if (!S){ label(g, "SPECIES", x + 84, y + 24, "#8fa6c9", 12, "center", 800); label(g, "—", x + 84, y + 80, "#9fb0cc", 30); return; }
+  var sp = S.sp;
+  label(g, "SPECIES " + (SP_KEYS.indexOf(sp.k) + 1) + " / 4", x + 84, y + 22, "#8fa6c9", 11, "center", 800);
+  label(g, sp.t, x + 84, y + 64, "#ffffff", 36, "center", 800);
+  label(g, sp.shape, x + 84, y + 104, "#cfe0ff", 14, "center", 700);
+  label(g, sp.vsepr.split(": ")[0] + ":", x + 84, y + 130, "#9fb0cc", 12);
+  label(g, sp.vsepr.split(": ")[1], x + 84, y + 148, "#9fb0cc", 12);
+  label(g, "bond angle " + (sp.geo === "pyr" ? nice(S.angle, 1) + "°" : sp.ang), x + 84, y + 172, "#9fb0cc", 12);
+  label(g, sp.lp ? "lone pair: yes" : "lone pair: none", x + 84, y + 196, sp.lp ? COL.lp : "#9fb0cc", 13, "center", 700);
+  if (sp.charge) label(g, "charge +1 — held in place", x + 84, y + 220, "#ffb4b4", 11.5, "center", 700);
+  else label(g, "neutral", x + 84, y + 220, "#9fb0cc", 12);
+}
+function drawTray(g, st){
+  var i, x0 = 222, w = 144, y = 512;
+  label(g, "SAMPLE TRAY", 120, 540, "#8fa6c9", 12, "center", 800);
+  for (i = 0; i < SPECIES.length; i++){
+    var sp = SPECIES[i], x = x0 + i * (w + 6), cur = st.key === sp.k && !RUN.done, m = RUN.meas[sp.k];
+    g.fillStyle = cur ? "rgba(84,169,255,.22)" : "rgba(20,30,52,.8)"; g.strokeStyle = cur ? "#54a9ff" : "rgba(160,190,255,.22)"; g.lineWidth = cur ? 2 : 1;
+    g.beginPath(); g.roundRect ? g.roundRect(x, y, w, 84, 10) : g.rect(x, y, w, 84); g.fill(); g.stroke();
+    label(g, sp.t, x + w / 2, y + 26, "#ffffff", 22, "center", 800);
+    label(g, m ? "μ = " + f3(m.mu) + " D" : (cur ? "measuring…" : "waiting"), x + w / 2, y + 60, m ? COL.res : "#8fa6c9", 14, "center", m ? 800 : 500);
+  }
+}
+function drawMolecule(g, st){
+  var S = st.S, sp = S.sp, O = { cx: CV.cx, cy: CV.cy, s: spin, t: TILT[sp.geo], psi: st.psi * Math.PI / 180 };
+  var o = ORD[st.name] === undefined ? 5 : ORD[st.name], f = st.f, BL = CV.BL, DS = CV.DS, i;
+  var grow = o === 0 ? ease(f / 0.8) : 1;
+  /* while the arrows are added the atoms fade back, so the vector chain can be read */
+  var fade = o === 3 ? 1 - 0.8 * ease(f / 0.3) : 1;
+  var cen = proj([0, 0, 0], O), items = [];
+  /* sticks and ligand atoms, depth-sorted with the central atom */
+  for (i = 0; i < S.u.length; i++){
+    var pl = proj(vsc(S.u[i], BL * grow), O);
+    items.push({ z: pl.z / 2, draw: (function(p){ return function(){ g.strokeStyle = "#8793ad"; g.lineWidth = 7; g.globalAlpha = grow * fade; g.beginPath(); g.moveTo(cen.x, cen.y); g.lineTo(p.x, p.y); g.stroke(); g.globalAlpha = 1; }; })(pl) });
+    items.push({ z: pl.z, draw: (function(p){ return function(){ sphere(g, p.x, p.y, EL[sp.l].r * (1 + p.z / 900) * grow, sp.l, fade); }; })(pl) });
+  }
+  items.push({ z: 0, draw: function(){ sphere(g, cen.x, cen.y, EL[sp.c].r * grow, sp.c, fade); } });
+  /* the lone pair lobe */
+  if (sp.lp && o >= 2){
+    var lg = o === 2 ? ease(f / 0.6) : 1, lc = proj([0, 0, BL * 0.58], O), lt = proj([0, 0, BL * 0.95], O);
+    items.push({ z: lc.z, draw: function(){
+      var ang = Math.atan2(lt.y - cen.y, lt.x - cen.x);
+      g.save(); g.translate(lc.x, lc.y); g.rotate(ang); g.globalAlpha = 0.45 * lg * fade;
+      var gr = g.createRadialGradient(0, 0, 4, 0, 0, 46); gr.addColorStop(0, "rgba(255,170,110,.9)"); gr.addColorStop(1, "rgba(255,120,60,0)");
+      g.fillStyle = gr; g.beginPath(); g.ellipse(0, 0, 46 * lg, 28 * lg, 0, 0, Math.PI * 2); g.fill();
+      g.globalAlpha = lg * fade; g.fillStyle = "#ffe0c8"; g.beginPath(); g.arc(6, -8, 4, 0, Math.PI * 2); g.arc(6, 8, 4, 0, Math.PI * 2); g.fill();
+      g.restore(); g.globalAlpha = 1;
+    } });
+  }
+  items.sort(function(a, b){ return a.z - b.z; });
+  for (i = 0; i < items.length; i++) items[i].draw();
+
+  /* delta labels */
+  if (o >= 1 && o !== 3 && S.m !== 0){
+    var cenNeg = S.m < 0;
+    label(g, cenNeg ? "δ−" : "δ+", cen.x + 30, cen.y - 30, cenNeg ? "#ffb08a" : "#9fd0ff", 15, "center", 800);
+    for (i = 0; i < S.u.length; i++){
+      var q = proj(vsc(S.u[i], BL * 1.28), O);
+      label(g, cenNeg ? "δ+" : "δ−", q.x, q.y, cenNeg ? "#9fd0ff" : "#ffb08a", 14, "center", 800);
+    }
+  }
+  /* bond-dipole arrows, lone-pair arrow, tip-to-tail chain, resultant */
+  var nb = S.bonds.length, field = o >= 4, chainT = o === 3 ? ease(clamp(f / 0.68, 0, 1)) : (o > 3 ? 1 : 0);
+  for (i = 0; i < nb; i++){
+    var b = S.bonds[i], vpx = vsc(b.v, DS), mid = vsc(S.u[i], BL / 2);
+    var t0 = vsc(vadd(mid, vsc(vpx, -0.5)), 1), t1 = S.chain[i].from.map(function(x){ return x * DS; });
+    var appear = o === 1 ? clamp(f * nb * 1.15 - i, 0, 1) : (o > 1 ? 1 : 0);
+    if (appear <= 0) continue;
+    var tail = field ? t0 : lerp3(t0, t1, clamp(chainT * 1.25 - i * 0.08, 0, 1));
+    var head = vadd(tail, vsc(vpx, o === 1 ? ease(appear) : 1));
+    arrow2(g, proj(tail, O), proj(head, O), COL.bond, 4, field ? 0.25 : 1, true);
+  }
+  if (S.lp && o >= 2){
+    var lpx = vsc(S.lp, DS), lpA = o === 2 ? ease(clamp((f - 0.3) / 0.6, 0, 1)) : 1;
+    var lt0 = [0, 0, 0], lt1 = S.chain[nb].from.map(function(x){ return x * DS; });
+    var ltail = field ? lt0 : lerp3(lt0, lt1, clamp(chainT * 1.25 - nb * 0.08, 0, 1));
+    if (lpA > 0 && S.lp[2] > 0) arrow2(g, proj(ltail, O), proj(vadd(ltail, vsc(lpx, lpA)), O), COL.lp, 5, field ? 0.3 : 1, false);
+  }
+  if (o === 2 && !sp.lp) label(g, sp.c === "B" ? "no lone pair on B" : "no lone pair — N⁺ uses all four pairs to bond", CV.cx, CV.cy + 150, "#ffcf9e", 15, "center", 700);
+  var resT = o === 3 ? ease(clamp((f - 0.7) / 0.28, 0, 1)) : (o > 3 ? 1 : 0);
+  if (resT > 0){
+    if (S.mu > 0){
+      var tip = vsc(S.sum, DS * resT), a = proj([0, 0, 0], O), bb = proj(tip, O);
+      g.shadowColor = COL.res; g.shadowBlur = 14; arrow2(g, a, bb, COL.res, 8, 1, true); g.shadowBlur = 0;
+      label(g, "resultant μ = " + f2(S.mu * resT) + " D", CV.cx, 92, COL.res, 18, "center", 800);
+    } else {
+      var pulse = 1 + 0.08 * Math.sin(dashT * 6);
+      g.strokeStyle = COL.res; g.lineWidth = 3; g.globalAlpha = resT;
+      g.beginPath(); g.arc(cen.x, cen.y, 44 * pulse, 0, Math.PI * 2); g.stroke(); g.globalAlpha = 1;
+      if (!field) label(g, "Σ = 0 — the chain closes", CV.cx, CV.cy + 150, COL.res, 16, "center", 800);
+    }
+  }
+  if (field){
+    if (S.mu > 0){
+      label(g, "δ− end turns toward the + plate", CV.cx, 466, "#ffd79a", 14, "center", 700);
+    } else label(g, sp.charge ? "no twist — symmetric charge, torque 0 (the holder stops the drift)" : "no twist — torque 0", CV.cx, 466, "#ffd79a", 14, "center", 700);
+  }
+}
+
+/* =====================================================================
+   graphs - generated from what the run measured
+   ===================================================================== */
+function niceMax(v){ var p = Math.pow(10, Math.floor(Math.log(v) / Math.LN10)), m = v / p, L = [1, 1.2, 1.5, 2, 2.5, 3, 4, 5, 6, 8, 10], i;
+  for (i = 0; i < L.length; i++) if (m <= L[i] + 1e-9) return L[i] * p; return 10 * p; }
+function niceStep(span, want){ var raw = span / want, p = Math.pow(10, Math.floor(Math.log(raw) / Math.LN10)), f = raw / p;
+  return (f <= 1 ? 1 : f <= 2 ? 2 : f <= 2.5 ? 2.5 : f <= 5 ? 5 : 10) * p; }
+var SPCOL = { BF3: "--s4", NH4: "--s3", NF3: "--s2", NH3: "--s1" };
+function axes(svg, X0, X1, Y0, Y1, ymax, ylab, xticks){
+  var tc = css("--text-muted"), lc = css("--line"), st = niceStep(ymax, 4), v;
+  for (v = 0; v <= ymax + 1e-9; v += st){
+    var y = Y1 - (Y1 - Y0) * v / ymax;
+    mk("line", { x1: X0, x2: X1, y1: y, y2: y, stroke: lc, "stroke-width": 1 }, svg);
+    tx(svg, X0 - 6, y + 4, nice(v, 2), { "text-anchor": "end", "font-size": 11, fill: tc, "font-family": "ui-monospace,monospace" });
+  }
+  tx(svg, 14, (Y0 + Y1) / 2, ylab, { "text-anchor": "middle", "font-size": 11, fill: tc, transform: "rotate(-90 14 " + (Y0 + Y1) / 2 + ")" });
+  mk("line", { x1: X0, x2: X1, y1: Y1, y2: Y1, stroke: css("--line-strong"), "stroke-width": 1.2 }, svg);
+}
+function drawBars(){
+  var svg = $("bars"); while (svg.firstChild) svg.removeChild(svg.firstChild);
+  var X0 = 56, X1 = 546, Y0 = 26, Y1 = 280, tp = css("--text-primary"), tc = css("--text-muted");
+  var mx = 2, k, i; for (k in RUN.meas) mx = Math.max(mx, RUN.meas[k].mu);
+  var showLit = !!RUN.calc.lit, lit = { BF3: 0, NH4: 0, NF3: 0.234, NH3: 1.47 };
+  var ymax = niceMax(mx * 1.12);
+  axes(svg, X0, X1, Y0, Y1, ymax, "dipole moment μ / D");
+  var slot = (X1 - X0) / 4, flat = [];
+  if (RUN.groups) for (i = 0; i < RUN.groups.length; i++) flat = flat.concat(RUN.groups[i]);
+  var T = ease(RUN.sortT), xs = {};
+  for (i = 0; i < SP_KEYS.length; i++){
+    k = SP_KEYS[i];
+    var j = flat.length ? flat.indexOf(k) : i; if (j < 0) j = i;
+    var pos = i + (j - i) * T, cx = X0 + slot * (pos + 0.5); xs[k] = cx;
+    var m = RUN.meas[k], col = css(SPCOL[k]);
+    tx(svg, cx, Y1 + 20, spOf(k).t, { "text-anchor": "middle", "font-size": 14, "font-weight": 700, fill: tp, "font-family": "ui-serif,Georgia,serif" });
+    if (!m){ tx(svg, cx, Y1 - 8, "—", { "text-anchor": "middle", "font-size": 12, fill: tc }); continue; }
+    var h = (Y1 - Y0) * m.mu / ymax;
+    mk("rect", { x: cx - 32, y: Y1 - h, width: 64, height: Math.max(h, 0.0001), rx: 4, fill: col, opacity: 0.88 }, svg);
+    if (m.mu === 0) mk("line", { x1: cx - 32, x2: cx + 32, y1: Y1 - 1.5, y2: Y1 - 1.5, stroke: col, "stroke-width": 3 }, svg);
+    tx(svg, cx, Y1 - h - 7, f3(m.mu), { "text-anchor": "middle", "font-size": 12.5, "font-weight": 700, fill: tp, "font-family": "ui-monospace,monospace" });
+    if (showLit){
+      var ly = Y1 - (Y1 - Y0) * lit[k] / ymax;
+      mk("line", { x1: cx - 40, x2: cx + 40, y1: ly, y2: ly, stroke: tp, "stroke-width": 2, "stroke-dasharray": "5 3" }, svg);
+    }
+  }
+  if (RUN.groups && RUN.sortT >= 1){
+    for (i = 0; i + 1 < flat.length; i++){
+      var sameG = false, gi; for (gi = 0; gi < RUN.groups.length; gi++) if (RUN.groups[gi].indexOf(flat[i]) >= 0 && RUN.groups[gi].indexOf(flat[i + 1]) >= 0) sameG = true;
+      tx(svg, (xs[flat[i]] + xs[flat[i + 1]]) / 2, Y1 - 22, sameG ? "=" : "<", { "text-anchor": "middle", "font-size": 24, "font-weight": 900, fill: css("--good") }, svg);
+    }
+  }
+  tx(svg, X0, Y1 + 42, showLit ? "bars: this experiment   - - -  measured values for the real molecules" : "bars: μ = τmax / E from the torque meter",
+    { "font-size": 11, fill: tc });
+}
+var TQ = null;
+function drawTQ(){
+  var svg = $("tq"); while (svg.firstChild) svg.removeChild(svg.firstChild);
+  var X0 = 56, X1 = 546, Y0 = 26, Y1 = 280, tc = css("--text-muted"), ymax = tauScale(), k, i, th;
+  axes(svg, X0, X1, Y0, Y1, ymax, "torque τ / 10⁻²² N m");
+  for (th = 0; th <= 90; th += 15){
+    var x = X0 + (X1 - X0) * th / 90;
+    tx(svg, x, Y1 + 18, th + "°", { "text-anchor": "middle", "font-size": 11, fill: tc, "font-family": "ui-monospace,monospace" });
+  }
+  tx(svg, (X0 + X1) / 2, Y1 + 38, "angle between dipole and field θ", { "text-anchor": "middle", "font-size": 11, fill: tc });
+  TQ = { X0: X0, X1: X1, Y0: Y0, Y1: Y1, ymax: ymax, cur: null, dot: null, keyNow: null };
+  var ly = Y0 + 4;
+  for (i = 0; i < SP_KEYS.length; i++){
+    k = SP_KEYS[i]; if (!RUN.meas[k]) continue;
+    curve(svg, RUN.meas[k].S.tau22, css(SPCOL[k]), false);
+    var tauEnd = RUN.meas[k].S.tau22, yl = Y1 - (Y1 - Y0) * tauEnd / ymax;
+    tx(svg, X1 - 4, Math.min(yl - 6, Y1 - 6 - (tauEnd === 0 ? 14 * (k === "NH4" ? 1 : 0) : 0)), spOf(k).t, { "text-anchor": "end", "font-size": 12.5, "font-weight": 700, fill: css(SPCOL[k]), "font-family": "ui-serif,Georgia,serif" });
+    ly += 16;
+  }
+  TQ.cur = mk("path", { d: "", fill: "none", stroke: css("--text-secondary"), "stroke-width": 2, "stroke-dasharray": "5 4" }, svg);
+  TQ.dot = mk("circle", { cx: -20, cy: -20, r: 6.5, fill: css("--good"), stroke: css("--surface-1"), "stroke-width": 2 }, svg);
+}
+function curvePath(tmax){
+  var d = "", th, T = TQ;
+  for (th = 0; th <= 90.001; th += 3){
+    var x = T.X0 + (T.X1 - T.X0) * th / 90, y = T.Y1 - (T.Y1 - T.Y0) * tmax * Math.sin(th * Math.PI / 180) / T.ymax;
+    d += (th === 0 ? "M" : "L") + x.toFixed(1) + " " + y.toFixed(1);
+  }
+  return d;
+}
+function curve(svg, tmax, col){ mk("path", { d: curvePath(tmax), fill: "none", stroke: col, "stroke-width": 2.6 }, svg); }
+function updTQ(st){
+  if (!TQ) return;
+  var live = st.S && (st.name === "field" || st.name === "record");
+  if (!live){ TQ.dot.setAttribute("cx", -20); TQ.cur.setAttribute("d", ""); return; }
+  if (!RUN.meas[st.key]) TQ.cur.setAttribute("d", curvePath(st.S.tau22 * st.E));
+  var x = TQ.X0 + (TQ.X1 - TQ.X0) * clamp(Math.abs(st.th), 0, 90) / 90, y = TQ.Y1 - (TQ.Y1 - TQ.Y0) * Math.abs(st.tau) / TQ.ymax;
+  TQ.dot.setAttribute("cx", x.toFixed(1)); TQ.dot.setAttribute("cy", y.toFixed(1));
+}
+
+/* =====================================================================
+   status, guidance, narration, live data
+   ===================================================================== */
+var STAGE_ORDER = ["prep", "build", "dipoles", "add", "field", "analyse", "calc", "answer"];
+var PH_STAGE = { intro: "build", bonds: "dipoles", lp: "dipoles", sum: "add", field: "field", record: "field" };
+function stageKey(){
+  var sg = seg();
+  if (RUN.state === "setup") return null;
+  if (RUN.done) return "answer";
+  if (!sg) return null;
+  if (sg.kind === "sp") return PH_STAGE[spState(sg, RUN.u).name];
+  return sg.kind === "done" ? "calc" : sg.kind;
+}
+function refreshStatus(){
+  var k = stageKey(), x = $("xstat"), txt, cls = "xstat", g;
+  if (RUN.state === "setup"){ txt = "Ready"; g = isCustom() ? "Custom values set — press RUN WITH CUSTOM VALUES." : "Set your values or use the question defaults. Press START EXPERIMENT to begin."; }
+  else if (RUN.done){ txt = "✓ Experiment complete"; cls += " done"; g = "Result obtained."; }
+  else if (k === "prep"){ txt = "Preparing experiment"; cls += " run"; g = "Preparing the sample tray…"; }
+  else if (k === "analyse"){ txt = "Analysing data"; cls += " ana"; g = "Analysing experimental data…"; }
+  else if (k === "calc"){ txt = "Calculation complete"; cls += " ana"; g = "Calculating the result…"; }
+  else { txt = "Experiment running"; cls += " run"; g = "Experiment running…"; }
+  if (RUN.paused){ txt = "Paused"; cls = "xstat"; g = "Paused — press Resume."; }
+  x.className = cls; $("xstattxt").textContent = txt; $("guide").textContent = g;
+  var ki = STAGE_ORDER.indexOf(k), sp = document.querySelectorAll("#stages span"), i;
+  for (i = 0; i < sp.length; i++){
+    var j = STAGE_ORDER.indexOf(sp[i].getAttribute("data-s"));
+    sp[i].className = k === null ? "" : (j < ki || RUN.done ? "done" : (j === ki ? "now" : ""));
+  }
+}
+function narrate(st){
+  var sg = seg(), D = RUN.M.D, h = "", S = st.S;
+  if (RUN.state === "setup"){
+    h = "Four species wait in the sample tray: BF₃, NH₄⁺, NF₃, NH₃. " + (isCustom() ? "Your values are loaded — press <b>RUN WITH CUSTOM VALUES</b>." : "The standard data are already loaded — press <b>START EXPERIMENT</b>.");
+  } else if (RUN.done){
+    h = "<span class=gd>Experiment complete.</span> Order of dipole moments: <b>" + rankText(RUN.groups) + "</b>.";
+  } else if (!sg){ h = ""; }
+  else if (sg.kind === "prep"){
+    h = "Loading the tray. A <b>dipole moment</b> is charge × separation; a molecule that has one feels a <b>twist</b> in an electric field, one that has none does not. That twist is what we will measure.";
+  } else if (sg.kind === "sp"){
+    var sp = S.sp, lig = sp.l, cen = sp.c, xl = chi(D, lig), xc = chi(D, cen), pos = SP_KEYS.indexOf(sp.k) + 1;
+    switch (st.name){
+      case "intro":
+        h = "Species " + pos + " of 4: <b>" + sp.t + "</b>. VSEPR — " + sp.vsepr + " → <b>" + sp.shape + "</b>" + (sp.geo === "pyr" ? ", bond angle " + nice(S.angle, 1) + "°." : ", " + sp.ang + ".");
+        break;
+      case "bonds":
+        h = S.m === 0 ? "χ(" + lig + ") = χ(" + cen + "): the bonds are not polar at all — no bond dipoles."
+          : "<b>Bond dipoles.</b> " + (S.m > 0 ? lig : cen) + " (χ " + f2(Math.max(xl, xc)) + ") is more electronegative than " + (S.m > 0 ? cen : lig) + " (χ " + f2(Math.min(xl, xc))
+            + "), so it takes more of each bonding pair (δ−). The <span class=a>blue arrows ↦</span> point to the δ− end: <b>" + f2(S.mb) + " D</b> each.";
+        break;
+      case "lp":
+        h = sp.lp ? (D.L > 0 ? "<b>Lone pair.</b> The non-bonding pair on N puts extra negative charge on one side of it — a moment of its own, <span class=o>" + f2(D.L) + " D</span>, pointing from N out into the pair."
+                             : "Lone-pair moment set to 0 in your custom values — only the bonds count.")
+          : (cen === "B" ? "<b>No lone pair.</b> B has only three electron pairs, all bonding." : "<b>No lone pair.</b> N⁺ uses all four of its pairs to bond to H.");
+        break;
+      case "sum":
+        if (st.f < 0.7) h = "<b>Adding the vectors, tip to tail:</b> each arrow is moved so it starts where the last one ended. Where the chain finishes is the total.";
+        else if (S.mu === 0) h = "<span class=gd>The chain closes on itself</span> — every arrow is cancelled by the others. Resultant μ = 0: the symmetry of the " + sp.shape + " shape does it.";
+        else if (sp.geo === "pyr") h = "The sideways parts cancel; along the axis the bonds give " + f2(Math.abs(S.sumBz)) + " D and the lone pair " + f2(D.L) + " D, "
+          + (S.sumBz * D.L > 0 ? "<span class=gd>pointing the same way — they add</span>" : "<span class=o>pointing opposite ways — they nearly cancel</span>") + ". Resultant <b>μ = " + f2(S.mu) + " D</b>.";
+        else h = "Resultant <b>μ = " + f2(S.mu) + " D</b>.";
+        break;
+      case "field":
+        if (st.E < 1) h = "Charging the plates: E = 1.0 × 10⁸ V m⁻¹. The sample starts at 90° to the field.";
+        else if (S.mu > 0) h = "The field pulls δ+ one way and δ− the other: a <b>torque τ = μE sin θ</b>. " + sp.t + " swings round until its δ− end faces the + plate. Peak reading <b>" + f3(S.tau22) + " × 10⁻²² N m</b>.";
+        else h = sp.charge ? "The +1 ion is pulled toward the − plate as a whole (the holder keeps it still), but its charge is symmetric round N: <b>no twist, torque 0</b>."
+                           : "Nothing moves. No dipole, so the field has nothing to twist: <b>torque 0</b>.";
+        break;
+      default:
+        h = "Recorded: μ = τ<sub>max</sub>/E = <b>" + f3(RUN.meas[sp.k] ? RUN.meas[sp.k].mu : S.mu) + " D</b> for " + sp.t + ".";
+    }
+  } else if (sg.kind === "analyse"){
+    h = "<b>Ranking the four readings</b>, lowest first. Two read exactly zero — they are equal, so they share an “=”.";
+  } else {
+    h = "Writing up: symmetric shapes cancel completely; in NF₃ the lone pair fights the bonds, in NH₃ it adds to them.";
+  }
+  $("narr").innerHTML = h;
+  $("trialtag").textContent = S && st.name !== "rest" ? S.sp.t + " · " + (SP_KEYS.indexOf(S.sp.k) + 1) + " / 4" : (RUN.order.length ? RUN.order.length + " of 4 measured" : "no species yet");
+  $("scenet").textContent = RUN.done ? "Experiment complete" : (sg && sg.kind === "analyse" ? "Ranking the measurements" : "Dipole bench — sample between charged plates");
+}
+function updateReadouts(st){
+  var S = st.S, show = S && st.name !== "rest";
+  $("g_sp").textContent = show ? S.sp.t : "—";
+  $("g_shape").textContent = show ? S.sp.shape : "—";
+  var o = show ? ORD[st.name] : -1;
+  $("g_mb").textContent = o >= 1 ? f2(S.mb) : "—";
+  $("g_lp").textContent = o >= 2 ? (S.sp.lp ? f2(RUN.M.D.L) : "none") : "—";
+  $("g_sb").textContent = o >= 3 ? f3(vlen(S.sumB)) : "—";
+  $("g_mu").textContent = o >= 3 && (st.name !== "sum" || st.f >= 0.7) ? f3(S.mu) : "—";
+  $("g_e").innerHTML = st.E > 0 && show ? "1.0×10<sup>8</sup> <span class=u>V/m</span>" : "off";
+  $("g_th").textContent = show && st.th !== null ? Math.round(Math.abs(st.th)) + "°" : "—";
+  $("g_tq").innerHTML = show && st.th !== null ? f3(Math.abs(st.tau)) + ' <span class="u">×10⁻²² N m</span>' : "—";
+  $("gz_tq").classList.toggle("hot", RUN.done);
+}
+function refreshUI(){
+  var go = $("gobtn"), run = RUN.state === "running", custom = isCustom();
+  go.hidden = false; go.disabled = run; go.classList.toggle("custom", custom && !run);
+  if (run) go.innerHTML = "● RUNNING…";
+  else if (RUN.state === "done"){ go.innerHTML = "⚙&nbsp; RUN WITH CUSTOM VALUES"; go.hidden = sameD(RUN.D, copyST()); }
+  else go.innerHTML = custom ? "⚙&nbsp; RUN WITH CUSTOM VALUES" : "▶&nbsp; START EXPERIMENT";
+  $("pausebtn").disabled = !run; $("pausebtn").textContent = RUN.paused ? "Resume" : "Pause";
+  $("replaybtn").hidden = RUN.state !== "done";
+  var s = $("status");
+  s.className = "status" + (custom ? " custom" : "");
+  s.textContent = custom ? "⚙ USING CUSTOM VALUES" : "✓ USING QUESTION VALUES";
+  var q = document.querySelectorAll("#fields input, #fields button, #resetq"), i;
+  for (i = 0; i < q.length; i++) q[i].disabled = run;
+  var m;
+  if (run) m = "The experiment runs by itself — nothing to click. <b>Pause</b> any time.";
+  else if (RUN.state === "done") m = "Press <b>REPLAY</b> to watch it again, or change a value and run a custom experiment.";
+  else m = custom ? "Your values will be used; anything you left alone stays at the standard value." : "Nothing needs to be typed. Press <b>START EXPERIMENT</b>.";
+  $("gomsg").innerHTML = m;
+  refreshStatus();
+}
+
+/* =====================================================================
+   the answer reveal
+   ===================================================================== */
+function blink(id){
+  var e = $(id); if (!e) return;
+  e.classList.remove("blink"); void e.offsetWidth; e.classList.add("blink");
+  setTimeout(function(){ e.classList.remove("blink"); }, 2300);
+}
+function doReveal(){
+  if (!RUN.done){ earlyReveal = true; refreshGate(); return; }
+  var lab = $("lab3d");
+  lab.classList.add("dim"); $("blackout").classList.add("on");
+  setTimeout(function(){
+    $("blackout").classList.remove("on"); $("donebanner").classList.remove("on");
+    if (!REDUCED){ var f = $("flashout"); f.classList.remove("go"); void f.offsetWidth; f.classList.add("go");
+      lab.classList.remove("zoom"); void lab.offsetWidth; lab.classList.add("zoom"); }
+    RUN.revealed = true;
+    mountReveal(); refreshGate();
+    var ab = $("answerbox");
+    ab.classList.remove("celebrate"); void ab.offsetWidth; ab.classList.add("celebrate");
+    setTimeout(function(){ ab.classList.remove("celebrate"); }, 3200);
+    blink("ansval"); blink("grafT"); blink("g_tq");
+    setTimeout(function(){ lab.classList.remove("dim"); }, 5200);
+  }, 950);
+}
+function mountReveal(){
+  var host = $("revealhost"), mo = runMatch(), order = rankText(RUN.groups);
+  host.innerHTML = ""; host.classList.add("on");
+  var main = mo.length ? "OPTION (" + mo[0] + ")" : "NO OPTION MATCHES";
+  var svg = mk("svg", { viewBox: "0 0 720 340", "class": "graf", role: "img", "aria-label": "Congratulations. Answer found: " + main + ". " + order }, host);
+  var d = mk("defs", {}, svg), sp = mk("filter", { id: "spray", x: "-14%", y: "-40%", width: "128%", height: "180%" }, d);
+  mk("feTurbulence", { type: "fractalNoise", baseFrequency: "0.045 0.09", numOctaves: "3", seed: "7", result: "nz" }, sp);
+  mk("feDisplacementMap", { "in": "SourceGraphic", in2: "nz", scale: "6", xChannelSelector: "R", yChannelSelector: "G" }, sp);
+  var bh = mk("g", {}, svg);
+  tx(svg, 360, 44, "🎉  CONGRATULATIONS!  🎉", { "text-anchor": "middle", "font-size": 21, "font-weight": 900, fill: "#3ee39a", "letter-spacing": "3" });
+  tx(svg, 360, 68, "ANSWER FOUND", { "text-anchor": "middle", "font-size": 12.5, "font-weight": 800, fill: "#9fb0cc", "letter-spacing": "5" });
+  mk("rect", { x: 150, y: 86, width: 420, height: 150, rx: 16, fill: "rgba(8,20,16,.72)", stroke: "#3ee39a", "stroke-width": 2 }, svg);
+  tx(svg, 360, 110, "ANSWER", { "text-anchor": "middle", "font-size": 12, "font-weight": 800, fill: "#9ff0c9", "letter-spacing": "6" });
+  var g = mk("g", { transform: "translate(360,188) skewX(-9)" }, svg), fs = mo.length ? 60 : 38;
+  tx(g, 7, 9, main, { "text-anchor": "middle", "font-size": fs, "font-weight": 900, fill: "#a99bff", opacity: 0.34, "font-family": "ui-sans-serif,system-ui,sans-serif", filter: "url(#spray)" });
+  tx(g, 0, 0, main, { id: "grafT", "text-anchor": "middle", "font-size": fs, "font-weight": 900, fill: "#3ee39a", "font-family": "ui-sans-serif,system-ui,sans-serif", filter: "url(#spray)" });
+  tx(svg, 360, 272, order, { "text-anchor": "middle", "font-size": 22, "font-weight": 800, fill: "#eef3ff", "font-family": "ui-serif,Georgia,serif" });
+  tx(svg, 360, 300, isCustom(RUN.D) ? "your custom values · the standard data give option (" + ANS + ")" : "symmetric shapes cancel · the lone pair opposes the bonds in NF₃ and adds to them in NH₃",
+    { "text-anchor": "middle", "font-size": 12, fill: "#9fb0cc" });
+  if (!REDUCED) makeBurst(bh);
+}
+function makeBurst(host){
+  burst = [];
+  var i, n = 70, GL = ["μ", "δ+", "δ−", "↦", "●", "◆", "D", "E"], a, sp2, conf, node, cols = ["#3ee39a", "#a99bff", "#54a9ff", "#ff9350"];
+  for (i = 0; i < n; i++){
+    a = Math.random() * Math.PI * 2; sp2 = 90 + Math.random() * 290; conf = i % 3 === 0;
+    node = conf ? mk("rect", { x: -4, y: -3, width: 8, height: 6, rx: 1.5, fill: cols[i % 4] }, host)
+                : tx(host, 0, 0, GL[i % GL.length], { "text-anchor": "middle", "font-size": 11 + Math.random() * 8, fill: cols[i % 4], "font-weight": 800 });
+    burst.push({ n: node, x: 360, y: 170, vx: Math.cos(a) * sp2, vy: Math.sin(a) * sp2 - 70, life: 0, max: 1.4 + Math.random(), rot: Math.random() * 360, vr: (Math.random() - 0.5) * 540 });
+  }
+}
+function stepBurst(dt){
+  var i, b;
+  for (i = 0; i < burst.length; i++){
+    b = burst[i];
+    if (b.life > b.max){ b.n.setAttribute("opacity", 0); continue; }
+    b.life += dt; b.vy += 420 * dt; b.x += b.vx * dt; b.y += b.vy * dt; b.rot += b.vr * dt;
+    b.n.setAttribute("opacity", Math.max(0, 1 - b.life / b.max).toFixed(2));
+    b.n.setAttribute("transform", "translate(" + b.x.toFixed(1) + "," + b.y.toFixed(1) + ") rotate(" + b.rot.toFixed(0) + ")");
+  }
+}
+/* the header answer and the solution: locked until the run ends, or "Reveal anyway" */
+function refreshGate(){
+  var open = RUN.revealed || earlyReveal, ab = $("answerbox"), i, li, k;
+  $("solgate").hidden = open; $("solbody").hidden = !open;
+  var qtxt = rankText(QGROUPS);
+  if (open){
+    ab.classList.remove("locked");
+    $("ansval").textContent = "(" + ANS + ")";
+    $("anssub").textContent = qtxt;
+    $("revealnow").hidden = true;
+    $("solans").textContent = "(" + ANS + ") " + qtxt;
+    $("clsans").textContent = "(" + ANS + ") " + qtxt;
+    $("solmodel").innerHTML = "With the page's data: μ(NH<sub>3</sub>) = 3 × " + f2(QM.s.NH3.mb) + " × " + f3(QM.s.NH3.cosb) + " + " + f2(Q.L) + " = <b>" + f3(QM.s.NH3.mu)
+      + " D</b> and μ(NF<sub>3</sub>) = |" + f2(Q.L) + " − 3 × " + f2(QM.s.NF3.mb) + " × " + f3(QM.s.NF3.cosb) + "| = <b>" + f3(QM.s.NF3.mu) + " D</b>.";
+    $("solintro").innerHTML = RUN.revealed ? "<b>The experiment found this.</b> Here is the same result, reasoned on paper — each step points back to what you watched."
+      : "Revealed early — run the experiment to watch each of these steps happen.";
+  } else {
+    ab.classList.add("locked");
+    $("ansval").textContent = "Run the experiment";
+    $("anssub").textContent = "The answer appears when the experiment finishes.";
+    $("revealnow").hidden = false;
+    $("solans").textContent = "—"; $("clsans").textContent = "— run the experiment";
+    $("solintro").textContent = "Run the experiment — the solution opens with the answer.";
+  }
+  var lis = document.querySelectorAll("#opts li");
+  for (i = 0; i < lis.length; i++){
+    li = lis[i]; k = li.getAttribute("data-k");
+    li.classList.remove("correct", "wrong"); li.querySelector(".mark").textContent = "";
+    if (open){ li.classList.add(k === ANS ? "correct" : "wrong"); li.querySelector(".mark").textContent = k === ANS ? "correct" : "not correct"; }
+  }
+}
+
+/* =====================================================================
+   the loop - one virtual clock, so Pause and speed govern everything
+   ===================================================================== */
+var last = 0, slow = 0;
+function loop(ts){
+  var dt = last ? (ts - last) / 1000 : 0; last = ts;
+  if (dt > 0.06) dt = 0.06;
+  var running = RUN.state === "running" && !RUN.paused;
+  if (running) stepTimeline(dt * RUN.speed);
+  var st = currentState(), sg = seg();
+  if (running && sg && sg.kind === "sp") onPhase(sg, st);
+  NOW = st;
+  if (!RUN.paused && !REDUCED) spin += dt * 0.45 * (running ? RUN.speed : 1);
+  if (!RUN.paused) dashT += dt;
+  drawBench(st);
+  updTQ(st);
+  if (burst.length) stepBurst(dt);
+  slow += dt;
+  if (slow > 0.08){ slow = 0; updateReadouts(st); narrate(st); refreshStatus(); }
+  requestAnimationFrame(loop);
+}
+
+/* =====================================================================
+   wiring
+   ===================================================================== */
+function afterEdit(){ readAll(); if (RUN.state === "setup"){ RUN.D = copyST(); RUN.M = model(RUN.D); drawBars(); drawTQ(); } refreshUI(); }
+function toggleClassroom(){
+  RUN.classroom = !RUN.classroom;
+  document.body.classList.toggle("classroom", RUN.classroom);
+  $("classbtn").setAttribute("aria-pressed", RUN.classroom ? "true" : "false");
+  $("classbtn").textContent = RUN.classroom ? "EXIT CLASSROOM MODE" : "CLASSROOM MODE";
+  if (RUN.classroom) try { $("deck").scrollIntoView({ behavior: REDUCED ? "auto" : "smooth", block: "start" }); } catch (e) {}
+}
+function build(){
+  $("fields").innerHTML = fieldsHTML();
+  var i;
+  for (i = 0; i < FIELDS.length; i++) (function(F){
+    var box = $("in_" + F.k);
+    box.addEventListener("input", function(){ readAll(); refreshUI(); });
+    box.addEventListener("change", afterEdit);
+    box.addEventListener("keydown", function(e){ if (e.key === "Enter"){ box.blur(); afterEdit(); } });
+  })(FIELDS[i]);
+  $("fields").addEventListener("click", function(ev){
+    var b = ev.target.closest ? ev.target.closest("button") : null; if (!b || b.disabled) return;
+    var k = b.getAttribute("data-k");
+    if (b.classList.contains("up")) stepField(k, 1);
+    else if (b.classList.contains("dn")) stepField(k, -1);
+    else if (b.classList.contains("rs")) setField(k, Q[k]);
+    afterEdit();
+  });
+  $("resetq").addEventListener("click", resetAll);
+  $("gobtn").addEventListener("click", function(){ if (RUN.state !== "running") startRun(); });
+  $("pausebtn").addEventListener("click", function(){ RUN.paused = !RUN.paused; refreshUI(); });
+  $("replaybtn").addEventListener("click", function(){ startRun(RUN.D); });
+  $("resetbtn").addEventListener("click", resetRun);
+  $("classbtn").addEventListener("click", toggleClassroom);
+  $("revealnow").addEventListener("click", function(){ earlyReveal = true; refreshGate(); });
+  $("gotolab").addEventListener("click", function(){ $("lab").scrollIntoView({ behavior: REDUCED ? "auto" : "smooth" }); });
+  var sb = document.querySelectorAll("#spd button");
+  for (i = 0; i < sb.length; i++) sb[i].addEventListener("click", function(){
+    RUN.speed = parseFloat(this.getAttribute("data-s"));
+    for (var j = 0; j < sb.length; j++) sb[j].setAttribute("aria-pressed", sb[j] === this ? "true" : "false");
+  });
+  $("themebtn").addEventListener("click", function(){
+    var r = document.documentElement;
+    var dark = r.getAttribute("data-theme") === "dark" || (!r.getAttribute("data-theme") && matchMedia("(prefers-color-scheme: dark)").matches);
+    r.setAttribute("data-theme", dark ? "light" : "dark");
+    drawBars(); drawTQ();
+  });
+  try { matchMedia("(prefers-color-scheme: dark)").addEventListener("change", function(){ drawBars(); drawTQ(); }); } catch (e) {}
+  readAll(); drawBars(); drawTQ(); drawLog(); refreshGate(); refreshUI();
+  requestAnimationFrame(loop);
+}
+if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", build); else build();
+
+/* exposed for the headless test harness */
+window.PX = {
+  Q: Q, OPTIONS: OPTIONS, ST: ST, RUN: RUN, model: model, rankGroups: rankGroups, matchOption: matchOption, rankText: rankText,
+  answer: function(){ return ANS; }, qgroups: function(){ return QGROUPS; }, qmodel: function(){ return QM; },
+  start: function(){ startRun(); }, replay: function(){ startRun(RUN.D); }, reset: resetRun, resetAll: resetAll,
+  pause: function(){ RUN.paused = !RUN.paused; refreshUI(); }, speed: function(s){ RUN.speed = s; },
+  typeField: function(k, s){ $("in_" + k).value = s; afterEdit(); },
+  stage: stageKey, meas: function(){ return RUN.meas; }, groups: function(){ return RUN.groups; }, match: runMatch,
+  calcKeys: function(){ return Object.keys(RUN.calc); }, now: function(){ return NOW; }
+};
+})();
+</script>
+</body>
+</html>
