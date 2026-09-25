@@ -40,3 +40,7 @@ app/ios/App/App/public/
 app/www/dist/
 *.keystore
 *.jks
+
+# Claude session outputs (audit PDFs, screenshots) - kept locally, never committed.
+# A PDF in the repo trips the deploy guard and blocks every GitHub Pages release.
+Claude outputs/
