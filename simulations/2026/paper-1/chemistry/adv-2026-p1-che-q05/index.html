@@ -1,0 +1,1493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>2s and 2p orbital energies of H and Li — JEE Advanced 2026 Paper 1 Q.5 | PrayogX</title>
+<meta name="description" content="Solve the Schrödinger equation for the 2s and 2p electron of hydrogen and of lithium, watch where each electron spends its time relative to the 1s core, put all four energies on one ladder and test every option. The experiment finds which statements about the orbital energies are true and reveals the answer.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232a78d6'/%3E%3Cpath d='M12.5 6.5h7M13.6 6.5v7.2L7.9 24.1a1.5 1.5 0 0 0 1.3 2.3h13.6a1.5 1.5 0 0 0 1.3-2.3l-5.7-10.4V6.5' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M10.6 20.6h10.8' stroke='white' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E">
+<meta name="sim-id" content="ADV-2026-P1-CHE-Q05">
+<style>
+:root{
+  color-scheme: light;
+  --surface-0:#f4f4f1; --surface-1:#fcfcfb; --surface-2:#ececea;
+  --line:#d9d9d4; --line-strong:#bcbcb5;
+  --text-primary:#0b0b0b; --text-secondary:#52514e; --text-muted:#77766f;
+  --s1:#2a78d6; --s2:#eb6834; --s3:#1baf7a; --s4:#4a3aa7;
+  --good:#00743f; --bad:#c0392b; --accent:#2a78d6;
+  --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+  --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --serif:ui-serif,Georgia,"Times New Roman",serif;
+  --radius:10px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  color-scheme: dark;
+  --surface-0:#111110; --surface-1:#1a1a19; --surface-2:#232322;
+  --line:#34342f; --line-strong:#4a4a44;
+  --text-primary:#ffffff; --text-secondary:#c3c2b7; --text-muted:#95948b;
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#9085e9;
+  --good:#3fae7a; --bad:#e66767; --accent:#3987e5;
+}}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --surface-0:#111110; --surface-1:#1a1a19; --surface-2:#232322;
+  --line:#34342f; --line-strong:#4a4a44;
+  --text-primary:#ffffff; --text-secondary:#c3c2b7; --text-muted:#95948b;
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#9085e9;
+  --good:#3fae7a; --bad:#e66767; --accent:#3987e5;
+}
+*{box-sizing:border-box}
+[hidden]{display:none !important}
+body{margin:0;background:var(--surface-0);color:var(--text-primary);font-family:var(--sans);
+  font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px 80px}
+
+/* ---------- header ---------- */
+header.top{border-bottom:1px solid var(--line);background:var(--surface-1)}
+.top-inner{max-width:1180px;margin:0 auto;padding:22px 20px 18px;position:relative;
+  display:flex;flex-wrap:wrap;gap:16px;align-items:flex-start;justify-content:space-between}
+.simid{font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--text-muted)}
+h1{font-size:23px;line-height:1.25;margin:6px 0 10px;font-weight:640;max-width:660px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-size:11.5px;padding:3px 9px;border:1px solid var(--line-strong);border-radius:999px;
+  color:var(--text-secondary);background:var(--surface-2);white-space:nowrap}
+.chip.k{border-color:var(--accent);color:var(--accent);background:transparent}
+.answerbox{border:1px solid var(--line-strong);border-radius:var(--radius);background:var(--surface-2);
+  padding:12px 16px;min-width:220px}
+.answerbox .lbl{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted)}
+.answerbox .val{font-family:var(--mono);font-size:25px;font-weight:600;color:var(--good);line-height:1.22}
+.answerbox .sub{font-size:12px;color:var(--text-secondary)}
+.answerbox.locked .val{color:var(--text-muted);font-size:17px;letter-spacing:.04em}
+.answerbox .rv{margin-top:6px;font-size:11px;background:none;border:none;padding:0;color:var(--accent);
+  cursor:pointer;text-decoration:underline;font-family:var(--sans)}
+.themebtn{position:absolute;top:14px;right:16px;border:1px solid var(--line-strong);background:var(--surface-2);
+  color:var(--text-secondary);border-radius:8px;padding:4px 9px;font-size:12px;cursor:pointer}
+.brandbar{display:flex;align-items:center;gap:8px;margin-bottom:9px}
+.brandbar .pxmark{width:21px;height:21px;flex:none;display:block}
+.brandbar .wm{font-size:13px;font-weight:800;letter-spacing:.17em;color:var(--text-secondary);line-height:1}
+.brandbar .wm i{font-style:normal;color:var(--accent)}
+
+nav.jump{position:sticky;top:0;z-index:20;background:var(--surface-0);border-bottom:1px solid var(--line);
+  padding:8px 0;margin-bottom:26px}
+nav.jump ul{max-width:1180px;margin:0 auto;padding:0 20px;list-style:none;display:flex;gap:4px;overflow-x:auto}
+nav.jump a{display:block;padding:5px 11px;border-radius:7px;font-size:13px;text-decoration:none;
+  color:var(--text-secondary);white-space:nowrap}
+nav.jump a:hover{background:var(--surface-2);color:var(--text-primary)}
+
+section{margin:0 0 42px;scroll-margin-top:56px}
+h2{font-size:17px;font-weight:640;margin:0 0 4px;display:flex;align-items:baseline;gap:9px;flex-wrap:wrap}
+h2 .n{font-family:var(--mono);font-size:12px;color:var(--text-muted);font-weight:400}
+h2 .vb{font-size:12px;color:var(--text-muted);font-weight:400}
+h2.big{font-size:20px;letter-spacing:.02em}
+.lede{color:var(--text-secondary);font-size:13.5px;margin:0 0 16px;max-width:78ch}
+.panel{background:var(--surface-1);border:1px solid var(--line);border-radius:var(--radius);padding:18px}
+.panel h3{margin:0 0 12px;font-size:13px;letter-spacing:.05em;text-transform:uppercase;color:var(--text-muted);font-weight:600}
+.qtext{font-family:var(--serif);font-size:16px;line-height:1.7}
+.opts{list-style:none;padding:0;margin:14px 0 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(150px,100%),1fr));gap:9px}
+.opts li{border:1px solid var(--line);border-radius:10px;padding:9px 12px;background:var(--surface-1);
+  display:flex;align-items:baseline;gap:10px;font-family:var(--serif);font-size:16px}
+.opts li .k{font-family:var(--mono);font-size:12.5px;color:var(--text-muted)}
+.opts li .mark{margin-left:auto;font-family:var(--sans);font-size:11.5px;font-weight:600}
+.opts li.correct{border-color:var(--good);background:color-mix(in srgb,var(--good) 11%,transparent)}
+.opts li.correct .mark{color:var(--good)}
+.opts li.wrong{border-color:var(--bad)} .opts li.wrong .mark{color:var(--bad)}
+.assume{border-left:3px solid var(--s4);padding:8px 0 8px 13px;margin:14px 0 0;font-size:13.5px;color:var(--text-secondary)}
+.assume b{color:var(--text-primary)}
+
+/* ---------- the dashboard ---------- */
+.deck{border:1px solid var(--line);border-radius:var(--radius);padding:14px;
+  background:linear-gradient(180deg,var(--surface-1),color-mix(in srgb,var(--surface-2) 55%,var(--surface-1)));
+  box-shadow:0 1px 2px rgba(0,0,0,.04),0 10px 26px -18px rgba(0,0,0,.35)}
+.statusbar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding-bottom:11px;border-bottom:1px solid var(--line);margin-bottom:12px}
+.xstat{display:flex;align-items:center;gap:8px;font-size:12.5px;font-weight:700;letter-spacing:.03em;
+  padding:5px 12px;border-radius:999px;border:1px solid var(--line-strong);background:var(--surface-1);color:var(--text-secondary)}
+.xstat .dot{width:9px;height:9px;border-radius:50%;background:var(--text-muted)}
+.xstat.run .dot{background:var(--accent);animation:pulse 1.2s ease-in-out infinite}
+.xstat.ana .dot{background:var(--s4);animation:pulse 1.2s ease-in-out infinite}
+.xstat.done{border-color:var(--good);color:var(--good);background:color-mix(in srgb,var(--good) 10%,transparent)}
+.xstat.done .dot{background:var(--good)}
+@keyframes pulse{50%{opacity:.25}}
+.stages{display:flex;gap:5px;flex-wrap:wrap}
+.stages span{font-size:11px;padding:3px 9px;border-radius:999px;border:1px solid var(--line);color:var(--text-muted);white-space:nowrap}
+.stages span.now{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:650}
+.stages span.done{border-color:var(--good);color:var(--good)}
+.statusbar .sp{flex:1}
+.guide{font-size:12px;color:var(--text-muted)}
+
+.grid1{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:13px;align-items:start}
+.grid2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:13px;margin-top:13px}
+.grid1>*,.grid2>*{min-width:0}
+@media(max-width:960px){.grid1,.grid2{grid-template-columns:1fr !important}}
+
+/* the always-dark chamber */
+.lab3d{position:relative;border-radius:12px;padding:12px;overflow:hidden;
+  background:radial-gradient(90% 70% at 18% 8%,rgba(84,169,255,.16),transparent 60%),
+    radial-gradient(80% 70% at 88% 92%,rgba(255,147,80,.12),transparent 62%),
+    linear-gradient(170deg,#0d1322 0%,#070a12 55%,#0a0e1a 100%);
+  border:1px solid rgba(150,180,255,.16);box-shadow:inset 0 1px 0 rgba(255,255,255,.07),0 18px 40px -26px rgba(0,0,0,.9);
+  color:#eef3ff}
+.lab3d:before{content:"";position:absolute;inset:0;pointer-events:none;
+  background:repeating-linear-gradient(0deg,rgba(255,255,255,.028) 0 1px,transparent 1px 3px);opacity:.5;mix-blend-mode:overlay}
+.lab3d>*{position:relative}
+.lab3d .hd{display:flex;align-items:baseline;gap:9px;flex-wrap:wrap;margin-bottom:5px}
+.lab3d .hd h3{margin:0;font-size:11.5px;letter-spacing:.11em;text-transform:uppercase;color:#8fa6c9;font-weight:700}
+.lab3d .hd .st{font-size:10.5px;font-family:var(--mono);color:#9fb0cc;border:1px solid rgba(160,190,255,.2);border-radius:999px;padding:1px 8px}
+.lab3d .narr{font-size:12.5px;color:#c3d2ea;margin:0 0 8px;min-height:2.8em;line-height:1.42}
+.lab3d .narr b{color:#fff;font-family:var(--mono);font-weight:650}
+.lab3d .narr .a{color:#6fb6ff;font-weight:700} .lab3d .narr .o{color:#ffa56a;font-weight:700}
+.lab3d .narr .gd{color:#3ee39a;font-weight:700}
+.vwrap{position:relative;perspective:1000px}
+canvas#atom{display:block;width:100%;height:auto;border-radius:10px;transform:rotateX(2.5deg);transform-origin:50% 100%}
+@media(max-width:560px){.vwrap{overflow:hidden}canvas#atom{width:128%;max-width:none;margin-left:-14%}}
+@media(prefers-reduced-motion:reduce){canvas#atom{transform:none}}
+.done-banner{position:absolute;left:50%;top:14px;transform:translateX(-50%) scale(.92);opacity:0;pointer-events:none;
+  background:rgba(10,30,24,.8);border:1px solid rgba(62,227,154,.6);color:#dfffee;border-radius:12px;padding:8px 18px;
+  font-weight:800;letter-spacing:.1em;font-size:14px;box-shadow:0 0 28px -6px rgba(62,227,154,.7);transition:.45s;white-space:nowrap}
+.done-banner.on{opacity:1;transform:translateX(-50%) scale(1)}
+.revealhost{position:absolute;inset:0;display:none;align-items:center;justify-content:center;z-index:6}
+.revealhost.on{display:flex}
+svg.graf{display:block;width:100%;height:auto}
+.blackout{position:absolute;inset:0;background:#000;opacity:0;pointer-events:none;transition:opacity .45s;z-index:4;border-radius:12px}
+.blackout.on{opacity:.86}
+.flashout{position:absolute;inset:0;background:radial-gradient(circle at 50% 45%,rgba(255,255,255,.95),rgba(120,255,200,.5) 35%,transparent 70%);
+  opacity:0;pointer-events:none;z-index:5;border-radius:12px}
+@keyframes flashpop{0%{opacity:0}18%{opacity:1}100%{opacity:0}}
+.flashout.go{animation:flashpop .85s ease-out 1}
+@media(prefers-reduced-motion:reduce){.flashout.go{animation:none}.blackout{transition:none}}
+.dim canvas#atom{filter:brightness(.4) saturate(.8)}
+@media(prefers-reduced-motion:no-preference){.zoom{animation:zoomin 1.1s ease-out 1}}
+@keyframes zoomin{0%{transform:scale(1)}40%{transform:scale(1.035)}100%{transform:scale(1)}}
+
+/* the rail: inputs + live data */
+.rail{border:1px solid var(--line);border-radius:12px;padding:11px 12px;
+  background:color-mix(in srgb,var(--surface-1) 82%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  box-shadow:inset 0 1px 0 color-mix(in srgb,#fff 40%,transparent),0 8px 24px -18px rgba(0,0,0,.4);
+  display:flex;flex-direction:column;gap:9px}
+.rail h4{margin:0;font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--text-muted);font-weight:700}
+.rail .grp{border-top:1px dashed var(--line);padding-top:9px}
+.status{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:750;letter-spacing:.04em;border-radius:8px;padding:6px 9px;
+  border:1px solid var(--good);color:var(--good);background:color-mix(in srgb,var(--good) 10%,transparent)}
+.status.custom{border-color:var(--s4);color:var(--s4);background:color-mix(in srgb,var(--s4) 10%,transparent)}
+.fld{margin:7px 0 0}
+.fld .lb{display:flex;justify-content:space-between;align-items:baseline;gap:6px;font-size:12px;margin-bottom:4px;color:var(--text-secondary)}
+.fld .lb b{font-weight:600;color:var(--text-primary);font-family:var(--serif);font-size:13.5px}
+.fld .lb .u{font-size:10.5px;color:var(--text-muted);font-family:var(--mono);flex:none}
+.fld .rw{display:flex;gap:5px;align-items:center}
+.fld .rw input{flex:1;min-width:0;padding:6px 8px;border-radius:7px;border:1px solid var(--line-strong);background:var(--surface-0);
+  color:var(--text-primary);font-family:var(--mono);font-size:13.5px;text-align:center;font-weight:600}
+.fld .rw input:focus{outline:2px solid var(--accent);outline-offset:-1px}
+.fld .rw input.bad{border-color:var(--bad);background:color-mix(in srgb,var(--bad) 10%,transparent)}
+.fld .rw input:disabled{opacity:.55}
+.fld .rw button{flex:none;width:34px;height:34px;border-radius:7px;border:1px solid var(--line-strong);background:var(--surface-2);
+  color:var(--text-primary);font-size:16px;line-height:1;cursor:pointer;font-family:var(--mono);touch-action:manipulation}
+.fld .rw button.rs{font-size:13px}
+.fld .rw button:hover:not(:disabled){border-color:var(--accent);color:var(--accent)}
+.fld .rw button:disabled{opacity:.4;cursor:not-allowed}
+.fld .fh{font-size:10.5px;color:var(--text-muted);margin-top:2px;line-height:1.35;min-height:1.35em}
+.fld .fh.bad{color:var(--bad);font-weight:650}
+.railnote{font-size:11px;color:var(--text-muted);line-height:1.45;margin:0}
+button.resetq{width:100%;padding:8px 10px;border-radius:9px;border:1px solid var(--line-strong);background:var(--surface-2);
+  color:var(--text-primary);font-size:12.5px;font-weight:650;cursor:pointer;font-family:var(--sans)}
+button.resetq:hover{border-color:var(--accent);color:var(--accent)}
+.gauges{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(104px,100%),1fr));gap:6px}
+.gz{border:1px solid var(--line);border-radius:9px;background:var(--surface-2);padding:5px 8px;overflow:hidden}
+.gz .k{font-size:9.5px;letter-spacing:.04em;text-transform:uppercase;color:var(--text-muted);font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.gz .v{font-family:var(--mono);font-size:16px;font-weight:700;line-height:1.25;white-space:nowrap}
+.gz .u{font-size:9.5px;color:var(--text-muted);font-weight:400}
+.gz.a .v{color:var(--s1)} .gz.o .v{color:var(--s2)}
+.gz.hot{border-color:var(--good);background:color-mix(in srgb,var(--good) 11%,transparent)} .gz.hot .v{color:var(--good)}
+
+/* graphs */
+.graphcard{border:1px solid var(--line);border-radius:12px;background:var(--surface-1);padding:12px 14px}
+.graphcard h4{margin:0 0 4px;font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--text-muted);font-weight:700}
+.graphcard .gsub{font-size:11.5px;color:var(--text-muted);margin:0 0 4px}
+.chartwrap{position:relative}
+svg.chart{display:block;width:100%;height:auto;overflow:visible}
+.tip{position:absolute;pointer-events:none;background:var(--surface-1);border:1px solid var(--line-strong);border-radius:8px;padding:7px 10px;
+  font-size:12px;box-shadow:0 4px 14px rgba(0,0,0,.13);opacity:0;transition:opacity .1s;z-index:5;min-width:140px}
+.tip .t{font-family:var(--mono);font-size:11px;color:var(--text-muted);margin-bottom:3px}
+.tip .r{display:flex;gap:7px;white-space:nowrap} .tip .rv{margin-left:auto;font-family:var(--mono);font-weight:600}
+details.tbl{margin-top:6px;font-size:12.5px} details.tbl summary{cursor:pointer;color:var(--text-secondary)}
+
+/* calculation panel */
+.calc{margin-top:13px;border:1px solid var(--line);border-radius:12px;padding:12px 14px;
+  background:linear-gradient(180deg,var(--surface-1),var(--surface-2))}
+.calc .bt{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--text-muted);font-weight:700;margin-bottom:6px}
+.calc ol{list-style:none;margin:0;padding:0;display:grid;gap:5px}
+.calc li{display:grid;grid-template-columns:auto minmax(0,1fr);gap:10px;align-items:baseline;animation:cin .45s ease-out}
+@keyframes cin{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.calc li{animation:none}}
+.calc li .s{font-family:var(--mono);font-size:10.5px;color:#fff;background:var(--accent);border-radius:999px;padding:1px 7px;font-weight:700}
+.calc li .m{font-family:var(--serif);font-size:16px;line-height:1.55;min-width:0;overflow-x:auto}
+.calc li .m .w{display:block;font-family:var(--sans);font-size:11.5px;color:var(--text-muted)}
+.calc li .m .hl{color:var(--good);font-weight:700}
+.calc li .m .ar{color:var(--s1);font-weight:700} .calc li .m .or{color:var(--s2);font-weight:700}
+.calc .empty{font-size:12.5px;color:var(--text-muted);margin:0}
+table.data{border-collapse:collapse;font-size:12.5px;width:100%}
+table.data th,table.data td{border:1px solid var(--line-strong);padding:5px 8px;text-align:center}
+table.data th{background:var(--surface-2);font-weight:600;font-size:11.5px;color:var(--text-secondary)}
+table.data td.n{font-family:var(--mono)}
+tr.win td{background:color-mix(in srgb,var(--good) 12%,transparent);font-weight:700}
+.scrollx{overflow-x:auto}
+
+/* action bar */
+.actbar{display:flex;gap:9px;align-items:center;flex-wrap:wrap;margin-top:12px}
+button.go{flex:none;padding:13px 24px;border-radius:11px;border:none;background:var(--accent);color:#fff;font-size:15px;font-weight:780;
+  cursor:pointer;font-family:var(--sans);letter-spacing:.04em;box-shadow:0 4px 16px -6px color-mix(in srgb,var(--accent) 75%,transparent);transition:.18s}
+button.go:hover:not(:disabled){filter:brightness(1.09);transform:translateY(-1px)}
+button.go:disabled{opacity:.42;cursor:not-allowed;box-shadow:none;transform:none}
+button.go.custom{background:var(--s4)}
+button.ghost{flex:none;padding:8px 13px;border-radius:9px;border:1px solid var(--line-strong);background:var(--surface-1);color:var(--text-secondary);
+  font-size:12.5px;cursor:pointer;font-family:var(--sans);min-height:36px}
+button.ghost:hover:not(:disabled){border-color:var(--accent);color:var(--accent)}
+button.ghost:disabled{opacity:.4;cursor:not-allowed}
+button.ghost[aria-pressed=true]{border-color:var(--accent);color:var(--accent);background:color-mix(in srgb,var(--accent) 10%,transparent)}
+.spd{display:flex;gap:4px}
+.spd button{padding:7px 10px;font-size:11.5px;border-radius:7px;border:1px solid var(--line-strong);background:var(--surface-1);color:var(--text-secondary);cursor:pointer;font-family:var(--mono)}
+.spd button[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:#fff}
+.actbar .msg{flex:1 1 220px;min-width:0;font-size:12px;color:var(--text-secondary);line-height:1.4}
+.actbar .msg b{color:var(--text-primary)}
+
+@keyframes popblink{0%{transform:scale(1)} 12%{transform:scale(1.16)} 24%{transform:scale(1)}
+  38%{opacity:.2} 50%{opacity:1} 64%{opacity:.2} 76%{opacity:1} 88%{transform:scale(1.07)} 100%{transform:scale(1);opacity:1}}
+.blink{animation:popblink 2s ease-in-out 1;display:inline-block}
+@keyframes ringpulse{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--good) 55%,transparent)} 70%{box-shadow:0 0 0 14px transparent} 100%{box-shadow:0 0 0 0 transparent}}
+.celebrate{animation:ringpulse 1.5s ease-out 2}
+@media(prefers-reduced-motion:reduce){.blink,.celebrate,.zoom{animation:none}}
+
+/* solution + help */
+.gate{border:1px dashed var(--line-strong);border-radius:var(--radius);padding:24px 20px;text-align:center;background:var(--surface-1)}
+.gate h4{margin:0 0 6px;font-size:15px} .gate p{margin:0 0 12px;font-size:13px;color:var(--text-secondary)}
+ol.steps{list-style:none;counter-reset:s;padding:0;margin:0;display:grid;gap:10px}
+ol.steps li{min-width:0;counter-increment:s;border:1px solid var(--line);border-radius:var(--radius);background:var(--surface-1);
+  padding:14px 16px 14px 52px;position:relative}
+ol.steps li::before{content:counter(s);position:absolute;left:15px;top:14px;width:23px;height:23px;border-radius:50%;background:var(--accent);
+  color:#fff;font-size:12px;font-weight:700;display:grid;place-items:center;font-family:var(--mono)}
+ol.steps h4{margin:0 0 6px;font-size:14px;font-weight:640}
+ol.steps p{margin:0 0 6px;font-size:13.5px;color:var(--text-secondary)}
+.eq{min-width:0;font-family:var(--serif);font-size:15.5px;background:var(--surface-2);border-radius:7px;padding:9px 13px;margin:8px 0;overflow-x:auto}
+.eq .hl{color:var(--good);font-weight:700}
+.obsnote{border-left:3px solid var(--s1);padding:6px 0 6px 12px;margin:8px 0;font-size:13px;color:var(--text-secondary)}
+.obsnote b{color:var(--text-primary)}
+sub{font-size:.72em} sup{font-size:.72em}
+.verify{border:1px solid var(--good);border-radius:var(--radius);margin-top:12px;background:color-mix(in srgb,var(--good) 8%,transparent);padding:14px 16px;font-size:13.5px}
+.verify h4{margin:0 0 6px;font-size:13.5px;color:var(--good)}
+.verify ul{margin:6px 0 0;padding-left:18px;color:var(--text-secondary)} .verify li{margin-bottom:4px}
+.howto{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(250px,100%),1fr));gap:11px}
+.howto>div{border:1px solid var(--line);border-radius:11px;padding:12px 14px;background:linear-gradient(180deg,var(--surface-1),var(--surface-2))}
+.howto .n{font-family:var(--mono);font-size:10.5px;color:var(--accent);letter-spacing:.1em;font-weight:700}
+.howto h4{margin:3px 0 6px;font-size:14px}
+.howto p{margin:0;font-size:13px;color:var(--text-secondary);line-height:1.5}
+.howto p b{color:var(--text-primary)}
+.meta-tbl{width:100%;border-collapse:collapse;font-size:13.5px}
+.meta-tbl th,.meta-tbl td{padding:6px 0;border-bottom:1px solid var(--line);vertical-align:top;text-align:left}
+.meta-tbl th{color:var(--text-muted);width:150px;font-size:12.5px;padding-right:14px;font-weight:500}
+footer{border-top:1px solid var(--line);margin-top:40px;padding-top:16px;font-size:12px;color:var(--text-muted)}
+
+/* classroom mode */
+body.classroom nav.jump,body.classroom section:not(#lab),body.classroom header.top .chips,body.classroom footer,
+body.classroom .rail .inputs,body.classroom .spd,body.classroom details.tbl,body.classroom #lab>.lede{display:none !important}
+body.classroom .wrap{max-width:none;padding-left:18px;padding-right:18px}
+body.classroom .lab3d .narr{font-size:20px;line-height:1.45;color:#e8f0ff}
+body.classroom .lab3d .hd h3{font-size:15px}
+body.classroom .gz .v{font-size:24px} body.classroom .gz .k{font-size:12px}
+body.classroom .calc li .m{font-size:25px} body.classroom .calc li .m .w{font-size:15px}
+body.classroom .xstat{font-size:16px} body.classroom .stages span{font-size:14px}
+body.classroom button.go{font-size:19px;padding:16px 30px}
+body.classroom .graphcard h4{font-size:13px}
+body.classroom .actbar .msg{font-size:15px}
+
+/* Q03 additions */
+.fgrid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0 8px}
+.fgrid>*{min-width:0}
+.fld .rw input{width:100%}
+.fgrid .fld.full{grid-column:1/-1}
+.fld.half .rw button.rs{display:none}
+.fld.half .fh{font-size:10px}
+.chem{font-family:var(--serif);white-space:nowrap}
+#opts{grid-template-columns:repeat(auto-fit,minmax(min(250px,100%),1fr))}
+#opts li{flex-wrap:wrap}
+@media(max-width:560px){.vwrap{overflow:visible}canvas#atom{width:100%;margin-left:0}}
+.rankline{font-family:var(--serif);font-size:17px;font-weight:700}
+.legend{display:flex;flex-wrap:wrap;gap:4px 12px;font-size:11.5px;color:var(--text-secondary);margin:2px 0 4px}
+.legend i{display:inline-block;width:14px;height:3px;border-radius:2px;vertical-align:middle;margin-right:5px}
+.shapes{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(170px,100%),1fr));gap:9px;margin:8px 0}
+.shapes>div{border:1px solid var(--line);border-radius:9px;padding:9px 11px;background:var(--surface-1);font-size:13px;color:var(--text-secondary)}
+.shapes b{color:var(--text-primary);font-family:var(--serif);font-size:15px}
+
+/* Q05 additions */
+.optv{display:inline-block;min-width:54px;text-align:center;padding:1px 8px;border-radius:999px;font-size:11.5px;font-weight:750;border:1px solid var(--line-strong);color:var(--text-muted)}
+.optv.t{border-color:var(--good);color:var(--good)} .optv.f{border-color:var(--bad);color:var(--bad)}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-inner">
+    <div>
+      <div class="brandbar"><svg class="pxmark" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><rect width="32" height="32" rx="8" fill="var(--accent)"/><path d="M12.5 6.5h7M13.6 6.5v7.2L7.9 24.1a1.5 1.5 0 0 0 1.3 2.3h13.6a1.5 1.5 0 0 0 1.3-2.3l-5.7-10.4V6.5" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.6 20.6h10.8" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg><span class="wm">PRAYOG<i>X</i></span></div>
+      <div class="simid">ADV-2026-P1-CHE-Q05</div>
+      <h1>Two atoms, four orbitals: which 2s and 2p energies are equal, and which are not?</h1>
+      <div class="chips">
+        <span class="chip">JEE Advanced 2026</span>
+        <span class="chip">Paper 1 · Q.5</span>
+        <span class="chip">Chemistry</span>
+        <span class="chip">Atomic structure · orbital energies</span>
+        <span class="chip">One or more correct</span>
+        <span class="chip">+4 / partial / 0 / −1</span>
+        <span class="chip k">Press start · watch it happen</span>
+      </div>
+    </div>
+    <div class="answerbox locked" id="answerbox">
+      <div class="lbl">Answer</div>
+      <div class="val" id="ansval">Run the experiment</div>
+      <div class="sub" id="anssub">The answer appears when the experiment finishes.</div>
+      <button class="rv" id="revealnow" type="button">Reveal anyway</button>
+    </div>
+    <button class="themebtn" id="themebtn" type="button">◐ theme</button>
+  </div>
+</header>
+
+<nav class="jump">
+  <ul>
+    <li><a href="#question">Question</a></li>
+    <li><a href="#lab">Interactive experiment</a></li>
+    <li><a href="#solution">Detailed solution</a></li>
+    <li><a href="#howto">How to use this simulation</a></li>
+  </ul>
+</nav>
+
+<div class="wrap">
+
+<section id="question">
+  <h2><span class="n">Q</span>The question <span class="vb">— verbatim</span></h2>
+  <p class="lede">JEE (Advanced) 2026, Paper 1, Chemistry, Section 2 — one or more options correct: +4 only if all the correct options are chosen, partial marks +3 / +2 / +1 for a correct subset, 0 if unanswered, −1 otherwise.</p>
+  <div class="panel">
+    <div class="qtext">
+      <p><b>Q.5</b>&nbsp; The 2s and the 2p orbital energies of hydrogen atom are <i>E</i><sub>2s</sub>(H) and
+         <i>E</i><sub>2p</sub>(H), respectively. The 2s and the 2p orbital energies of lithium atom are
+         <i>E</i><sub>2s</sub>(Li) and <i>E</i><sub>2p</sub>(Li), respectively. The correct option(s) about the orbital
+         energies is(are)</p>
+    </div>
+    <ul class="opts" id="opts">
+      <li data-k="A"><span class="k">(A)</span><span class="chem"><i>E</i><sub>2s</sub>(Li) &lt; <i>E</i><sub>2p</sub>(Li)</span><span class="mark"></span></li>
+      <li data-k="B"><span class="k">(B)</span><span class="chem"><i>E</i><sub>2s</sub>(H) = <i>E</i><sub>2p</sub>(H)</span><span class="mark"></span></li>
+      <li data-k="C"><span class="k">(C)</span><span class="chem"><i>E</i><sub>2p</sub>(H) &lt; <i>E</i><sub>2s</sub>(Li)</span><span class="mark"></span></li>
+      <li data-k="D"><span class="k">(D)</span><span class="chem"><i>E</i><sub>2s</sub>(H) &gt; <i>E</i><sub>2s</sub>(Li)</span><span class="mark"></span></li>
+    </ul>
+    <div class="assume"><b>What is being asked.</b> An <b>orbital energy</b> is the energy of an electron in that orbital
+      — negative, because the electron is bound; more negative means more tightly held. In hydrogen the electron is alone
+      with a +1 nucleus. In lithium the 2s or 2p electron shares the atom with two <b>1s core electrons</b> that partly
+      <b>shield</b> the +3 nucleus. How much shielding an electron feels depends on how often it gets <b>inside</b> the
+      core — its <b>penetration</b>. The experiment solves for all four energies, measures the penetration of each orbital
+      and then tests every option.</div>
+  </div>
+</section>
+
+<section id="lab">
+  <h2 class="big"><span class="n">01</span>Interactive experiment</h2>
+  <p class="lede">An atom chamber and an energy ladder. Press <b>START</b> — for each of the four orbitals the experiment
+     solves the Schrödinger equation for the electron in the field of the nucleus and the 1s core, shows where the
+     electron spends its time, places its energy on the ladder, and finally tests options (A)–(D) against the ladder.</p>
+
+  <div class="deck" id="deck">
+    <div class="statusbar">
+      <span class="xstat" id="xstat"><span class="dot"></span><span id="xstattxt">Ready</span></span>
+      <div class="stages" id="stages">
+        <span data-s="prep">Prepare</span><span data-s="solve">Solve</span><span data-s="cloud">Electron cloud</span>
+        <span data-s="ladder">Energy ladder</span><span data-s="test">Test options</span><span data-s="calc">Calculate</span><span data-s="answer">Answer</span>
+      </div>
+      <span class="sp"></span>
+      <span class="guide" id="guide">Set your values or use the question defaults.</span>
+    </div>
+
+    <div class="grid1">
+      <div class="lab3d" id="lab3d">
+        <div class="hd">
+          <h3 id="scenet">Atom chamber and energy ladder</h3>
+          <span class="st" id="trialtag">no orbital yet</span>
+        </div>
+        <p class="narr" id="narr" aria-live="polite">A hydrogen atom and a lithium atom wait in the chamber. The question's
+           values are already loaded — press <b>START EXPERIMENT</b>.</p>
+        <div class="vwrap">
+          <canvas id="atom" width="1040" height="620" role="img"
+                  aria-label="Left: an atom with its nucleus, the lithium 1s core cloud and the electron cloud of the current orbital, dots inside the core highlighted. Right: an energy ladder with the 2s and 2p levels of hydrogen and lithium."></canvas>
+          <div class="done-banner" id="donebanner">✓ EXPERIMENT COMPLETE</div>
+          <div class="revealhost" id="revealhost"></div>
+        </div>
+        <div class="blackout" id="blackout"></div>
+        <div class="flashout" id="flashout"></div>
+      </div>
+
+      <div class="rail" id="rail">
+        <div class="status" id="status">✓ USING QUESTION VALUES</div>
+        <div class="inputs">
+          <h4>Optional — change anything, or nothing</h4>
+          <p class="railnote" style="margin-top:4px">Hydrogen is fixed: Z = 1, no core. For the second atom the question means
+             lithium — Z = 3 with a filled 1s² core. Try other values to see what the core does.</p>
+          <div id="fields"></div>
+          <button class="resetq" id="resetq" type="button" style="margin-top:8px">↺ RESET TO QUESTION VALUES</button>
+        </div>
+        <div class="grp">
+          <h4>Live data</h4>
+          <div class="gauges" style="margin-top:6px">
+            <div class="gz"><div class="k">orbital</div><div class="v" id="g_orb">—</div></div>
+            <div class="gz"><div class="k">nucleus / core</div><div class="v" id="g_zc" style="font-size:13px">—</div></div>
+            <div class="gz a"><div class="k">energy E</div><div class="v"><span id="g_e">—</span> <span class="u">eV</span></div></div>
+            <div class="gz"><div class="k">solver step</div><div class="v" id="g_step">—</div></div>
+            <div class="gz o"><div class="k">time inside core</div><div class="v"><span id="g_in">—</span> <span class="u">%</span></div></div>
+            <div class="gz"><div class="k">extra pull (penetration)</div><div class="v"><span id="g_pen">—</span> <span class="u">eV</span></div></div>
+            <div class="gz"><div class="k">Z<sub>eff</sub> = n√(E/E<sub>H</sub>)</div><div class="v" id="g_zeff">—</div></div>
+            <div class="gz"><div class="k">testing</div><div class="v" id="g_test" style="font-size:13px">—</div></div>
+            <div class="gz" id="gz_v"><div class="k">true options</div><div class="v" id="g_v" style="font-size:14px">—</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid2">
+      <div class="graphcard">
+        <h4>Where the electron is — radial probability P(r)</h4>
+        <p class="gsub">Shaded: the lithium 1s core. The inner bump of Li 2s reaches inside it; Li 2p barely does.</p>
+        <div class="chartwrap"><svg class="chart" id="rad" viewBox="0 0 560 330" role="img"
+          aria-label="Radial probability distribution against distance from the nucleus in bohr for each orbital solved, with the lithium 1s core density shaded"></svg></div>
+      </div>
+      <div class="graphcard">
+        <h4>Effective nuclear charge of each orbital</h4>
+        <p class="gsub">Z<sub>eff</sub> from the solved energy, E = −13.6 Z<sub>eff</sub>²/n² eV. Higher Z<sub>eff</sub> = lower energy.</p>
+        <div class="chartwrap"><svg class="chart" id="zbar" viewBox="0 0 560 330" role="img"
+          aria-label="Bar chart of effective nuclear charge for hydrogen 2s, hydrogen 2p, lithium 2s and lithium 2p"></svg></div>
+      </div>
+    </div>
+
+    <div class="calc" id="calc">
+      <div class="bt"><span>Calculation — written as the experiment produces the numbers</span><span id="calcstat"></span></div>
+      <p class="empty" id="calcempty">Nothing measured yet.</p>
+      <ol id="calclist"></ol>
+      <details class="tbl" id="logbox"><summary>Orbital log (<span id="logn">0</span>)</summary>
+        <div class="scrollx"><table class="data" id="log"></table></div></details>
+    </div>
+
+    <div class="actbar">
+      <button class="go" id="gobtn" type="button">▶&nbsp; START EXPERIMENT</button>
+      <button class="ghost" id="pausebtn" type="button" disabled>Pause</button>
+      <button class="ghost" id="replaybtn" type="button" hidden>▶ REPLAY EXPERIMENT</button>
+      <button class="ghost" id="resetbtn" type="button">↺ RESET</button>
+      <div class="spd" id="spd" role="group" aria-label="playback speed">
+        <button type="button" data-s="1" aria-pressed="true">1×</button>
+        <button type="button" data-s="2" aria-pressed="false">2×</button>
+      </div>
+      <button class="ghost" id="classbtn" type="button" aria-pressed="false">CLASSROOM MODE</button>
+      <div class="msg" id="gomsg">Nothing needs to be typed. Press <b>START EXPERIMENT</b>.</div>
+    </div>
+  </div>
+</section>
+
+<section id="solution">
+  <h2 class="big"><span class="n">02</span>Detailed solution</h2>
+  <p class="lede" id="solintro">Run the experiment — the solution opens with the answer.</p>
+  <div class="gate" id="solgate">
+    <h4>The solution is still locked</h4>
+    <p>The experiment has not finished yet. Press START and let it run to the end — or use
+       <i>Reveal anyway</i> in the header if you are revising.</p>
+    <button class="ghost" id="gotolab" type="button">Go to the experiment ↑</button>
+  </div>
+  <div id="solbody" hidden>
+    <ol class="steps">
+      <li><h4>Hydrogen — energy depends only on n</h4>
+        <p>Hydrogen has one electron and nothing to shield it, so its energy is fixed by the principal quantum number alone:</p>
+        <div class="eq">E<sub>n</sub> = −13.6 / n² eV &nbsp;⇒&nbsp; E<sub>2s</sub>(H) = E<sub>2p</sub>(H) = −13.6/4 = <span class="hl">−3.40 eV</span></div>
+        <p>The 2s and 2p orbitals of hydrogen are <b>degenerate</b>. <b>(B) is correct.</b></p>
+        <div class="obsnote">In the experiment the solver landed on exactly the same energy for H 2s and H 2p, and both had
+           Z<sub>eff</sub> = 1.00.</div></li>
+      <li><h4>Lithium — energy depends on n and l (penetration)</h4>
+        <p>In lithium the outer electron moves in the field of the +3 nucleus <i>and</i> the two 1s electrons. Outside the
+           core it feels about +1; inside the core it feels up to +3. The 2s orbital has a small inner lobe that
+           <b>penetrates</b> the core; the 2p orbital, with its angular node at the nucleus, stays mostly outside.</p>
+        <div class="eq">2s spends more time inside the core &nbsp;⇒&nbsp; higher Z<sub>eff</sub> &nbsp;⇒&nbsp; lower energy: &nbsp;<span class="hl">E<sub>2s</sub>(Li) &lt; E<sub>2p</sub>(Li)</span></div>
+        <p><b>(A) is correct.</b></p>
+        <div class="obsnote">On the bench: the orange dots (electron found inside the core) were far more frequent for Li 2s
+           than for Li 2p, and the P(r) graph showed the 2s inner bump sitting in the shaded core.</div></li>
+      <li><h4>Hydrogen against lithium</h4>
+        <p>The orbital energy follows E ≈ −13.6 Z<sub>eff</sub>²/n² eV. For H, Z<sub>eff</sub> = 1. For the 2s electron of
+           Li, the nuclear charge is 3 and the 1s² core does not shield it completely, so Z<sub>eff</sub> &gt; 1 (about 1.26
+           from the measured energy; about 1.3 by Slater-type estimates).</p>
+        <div class="eq">Z<sub>eff</sub>(Li, 2s) &gt; Z<sub>eff</sub>(H, 2s) &nbsp;⇒&nbsp; E<sub>2s</sub>(Li) &lt; E<sub>2s</sub>(H) &nbsp;⇒&nbsp; <span class="hl">E<sub>2s</sub>(H) &gt; E<sub>2s</sub>(Li)</span></div>
+        <p><b>(D) is correct.</b> And since E<sub>2p</sub>(H) = E<sub>2s</sub>(H), also E<sub>2p</sub>(H) &gt; E<sub>2s</sub>(Li) —
+           the reverse of what (C) says. <b>(C) is wrong.</b></p></li>
+      <li><h4>Numbers</h4>
+        <div class="eq" id="solnums">—</div>
+        <p>Measured (spectroscopy): H 2s = 2p = −3.40 eV; Li 2s = −5.39 eV (minus the ionisation energy); Li 2p = −3.54 eV
+           (the 2s → 2p red line of lithium, 671 nm, is 1.85 eV). The simple core model misses exchange with the core, so it
+           under-binds Li 2s a little — but every inequality in the options comes out the same.</p>
+        <div class="eq">E<sub>2s</sub>(Li) &lt; E<sub>2p</sub>(Li) &lt; E<sub>2s</sub>(H) = E<sub>2p</sub>(H)</div>
+        <div class="eq">Answer: <span class="hl" id="solans">—</span></div></li>
+    </ol>
+    <div class="verify">
+      <h4>Independent verification</h4>
+      <ul>
+        <li><b>Numerical Schrödinger equation.</b> The radial equation was solved by Numerov shooting on a logarithmic grid,
+            separately from the page: H 2s = H 2p = −3.401 eV (the exact −13.6/4); Li 2s = −4.76 eV, Li 2p = −3.43 eV in the
+            field of the nucleus plus a 1s² core (Slater exponent Z − 5/16).</li>
+        <li><b>Spectroscopic data.</b> H n = 2 levels −3.40 eV; Li ionisation energy 5.39 eV; Li resonance line 670.8 nm
+            (1.85 eV) → Li 2p −3.54 eV. Same order; (A), (B), (D) true, (C) false.</li>
+        <li><b>Slater's rules.</b> Li 2s: σ = 2 × 0.85 = 1.70, Z<sub>eff</sub> = 1.30 → E ≈ −13.6 × 1.30²/4 = −5.75 eV &lt; −3.40 eV.</li>
+        <li><b>Robustness.</b> With the core removed (Z = 3, no 1s electrons) the 2s and 2p become degenerate again and (A)
+            turns false; for Be⁺, B²⁺ … the same three options stay true.</li>
+        <li><b>Solution websites.</b> MathonGo's published solution (their Q37) gives (A), (B), (D) with the same reasoning
+            — degeneracy in H, penetration in Li, Z<sub>eff</sub>(Li, 2s) ≈ 1.3 &gt; 1.</li>
+        <li><b>This page.</b> The energies come from the page's own solver and the true options are found by comparing them
+            at run time; the answer is not written into the page.</li>
+        <li><b>Answer key.</b> Checked afterwards against the official final key printed with the paper: Q5 → (A), (B), (D).</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="howto">
+  <h2 class="big"><span class="n">03</span>How to use this simulation</h2>
+  <p class="lede">For a student opening it for the first time. The whole experiment runs by itself after one press.</p>
+  <div class="howto">
+    <div><div class="n">STEP 1</div><h4>Read the question</h4>
+      <p>Four energies — 2s and 2p of hydrogen, 2s and 2p of lithium. Which of the four statements about them are true?
+         More than one can be.</p></div>
+    <div><div class="n">STEP 2</div><h4>Check the values</h4>
+      <p>The question's atoms are loaded: hydrogen (Z = 1) and lithium (<b>Z = 3</b>, <b>two 1s core electrons</b>).
+         <b>You do not need to enter anything.</b></p></div>
+    <div><div class="n">STEP 3</div><h4>Optional: change a value</h4>
+      <p>Change the second atom's nuclear charge or the number of core electrons. An empty box means "use the question
+         value". The badge switches to <b>⚙ USING CUSTOM VALUES</b>; <b>↺ RESET TO QUESTION VALUES</b> puts everything back.</p></div>
+    <div><div class="n">STEP 4</div><h4>Start</h4>
+      <p>Press <b>▶ START EXPERIMENT</b>. There is nothing else to click — the experiment runs from beginning to end on its
+         own (about 40 seconds; <b>2×</b> makes it faster).</p></div>
+    <div><div class="n">STEP 5</div><h4>Watch</h4>
+      <p>For each orbital the solver homes in on the energy, the electron cloud appears — orange dots are the moments the
+         electron is inside the 1s core — and the energy drops onto the ladder. Then each option is tested against the
+         ladder: ✓ or ✗.</p></div>
+    <div><div class="n">STEP 6</div><h4>Answer reveal</h4>
+      <p>When the experiment finishes it says <b>✓ EXPERIMENT COMPLETE</b> and reveals the correct options. The header answer
+         box unlocks at the same time.</p></div>
+    <div><div class="n">STEP 7</div><h4>Understand</h4>
+      <p>Scroll to <b>Detailed solution</b>. Each step points back to what you saw in the experiment.</p></div>
+    <div><div class="n">STEP 8</div><h4>Experiment again</h4>
+      <p>Press <b>▶ REPLAY EXPERIMENT</b>, or set the core electrons to <b>0</b> and press <b>⚙ RUN WITH CUSTOM VALUES</b> —
+         what happens to the gap between 2s and 2p? <b>CLASSROOM MODE</b> enlarges everything for a projector.</p></div>
+  </div>
+  <div class="panel" style="margin-top:14px">
+    <h3>Classification</h3>
+    <table class="meta-tbl"><tbody>
+      <tr><th>Exam</th><td>JEE Advanced 2026, Paper 1, Chemistry, Section 2, Q.5</td></tr>
+      <tr><th>Chapter</th><td>Atomic Structure</td></tr>
+      <tr><th>Topic</th><td>Orbital energies - degeneracy in hydrogen, penetration and shielding in lithium</td></tr>
+      <tr><th>Difficulty</th><td>Easy-Moderate</td></tr>
+      <tr><th>Answer</th><td><b id="clsans">— run the experiment</b></td></tr>
+    </tbody></table>
+  </div>
+</section>
+
+<footer>
+  ADV-2026-P1-CHE-Q05 · PrayogX · JEE Advanced Interactive Simulation Library · question text reproduced
+  from the official JEE (Advanced) 2026 Paper 1 for educational use.
+</footer>
+</div>
+
+<script>
+(function(){
+"use strict";
+
+/* =====================================================================
+   helpers
+   ===================================================================== */
+var NS = "http://www.w3.org/2000/svg";
+function $(id){ return document.getElementById(id); }
+function css(v){ return getComputedStyle(document.documentElement).getPropertyValue(v).trim(); }
+function mk(n, a, parent){
+  var e = document.createElementNS(NS, n), k;
+  if (a) for (k in a) if (Object.prototype.hasOwnProperty.call(a, k)) e.setAttribute(k, a[k]);
+  if (parent) parent.appendChild(e);
+  return e;
+}
+function tx(parent, x, y, s, a){ var o = a || {}; o.x = x; o.y = y; var t = mk("text", o, parent); t.textContent = s; return t; }
+function clamp(v, a, b){ return v < a ? a : (v > b ? b : v); }
+function ease(t){ t = clamp(t, 0, 1); return t * t * (3 - 2 * t); }
+function nice(x, dp){
+  if (!isFinite(x)) return "—";
+  if (Math.abs(x - Math.round(x)) < 1e-9) return String(Math.round(x));
+  return x.toFixed(dp === undefined ? 3 : dp).replace(/0+$/, "").replace(/\.$/, "");
+}
+function f1(x){ return isFinite(x) ? x.toFixed(1) : "—"; }
+function f2(x){ return isFinite(x) ? x.toFixed(2) : "—"; }
+function f3(x){ return isFinite(x) ? x.toFixed(3) : "—"; }
+var REDUCED = !!(window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches);
+/* a small seeded random generator, so every run draws the same cloud */
+function rng(seed){ var s = seed >>> 0; return function(){ s = (s * 1664525 + 1013904223) >>> 0; return s / 4294967296; }; }
+
+/* =====================================================================
+   question data - hydrogen is fixed (Z = 1, no core); the second atom is
+   lithium: Z = 3 with a filled 1s^2 core. Nothing below stores which
+   options are correct: see truthOf().
+   ===================================================================== */
+var Q = { Z: 3, nc: 2 };
+var HA = 27.211386;            /* eV per hartree */
+var TOL = 0.005;               /* eV: closer than this counts as equal */
+var RC = 1.0;                  /* bohr: the lithium core radius used to count "inside the core" (holds ~90% of 1s^2) */
+var ORBS = [
+  { k: "H2s", atom: "H", l: 0, nodes: 1, n: 2, lab: "H 2s", t: "E₂ₛ(H)" },
+  { k: "H2p", atom: "H", l: 1, nodes: 0, n: 2, lab: "H 2p", t: "E₂ₚ(H)" },
+  { k: "Li2s", atom: "Li", l: 0, nodes: 1, n: 2, lab: "Li 2s", t: "E₂ₛ(Li)" },
+  { k: "Li2p", atom: "Li", l: 1, nodes: 0, n: 2, lab: "Li 2p", t: "E₂ₚ(Li)" }
+];
+var ORB_KEYS = ["H2s", "H2p", "Li2s", "Li2p"];
+function orbOf(k){ var i; for (i = 0; i < ORBS.length; i++) if (ORBS[i].k === k) return ORBS[i]; return null; }
+/* the four printed statements, as comparisons the page evaluates on its own energies */
+var STATEMENTS = {
+  A: { a: "Li2s", op: "<", b: "Li2p", h: "E<sub>2s</sub>(Li) &lt; E<sub>2p</sub>(Li)", t: "E₂ₛ(Li) < E₂ₚ(Li)" },
+  B: { a: "H2s", op: "=", b: "H2p", h: "E<sub>2s</sub>(H) = E<sub>2p</sub>(H)", t: "E₂ₛ(H) = E₂ₚ(H)" },
+  C: { a: "H2p", op: "<", b: "Li2s", h: "E<sub>2p</sub>(H) &lt; E<sub>2s</sub>(Li)", t: "E₂ₚ(H) < E₂ₛ(Li)" },
+  D: { a: "H2s", op: ">", b: "Li2s", h: "E<sub>2s</sub>(H) &gt; E<sub>2s</sub>(Li)", t: "E₂ₛ(H) > E₂ₛ(Li)" }
+};
+var OPT_KEYS = ["A", "B", "C", "D"];
+
+/* =====================================================================
+   inputs - every one optional, every one falls back to the question
+   ===================================================================== */
+var FIELDS = [
+  { k: "Z", lab: "Z &nbsp;nuclear charge of the second atom", u: "", lo: 2, hi: 10, int: true, ladder: [2, 3, 4, 5, 6, 8, 10],
+    note: "3 = lithium" },
+  { k: "nc", lab: "electrons in its 1s core", u: "", lo: 0, hi: 2, int: true, zeroOK: true, ladder: [0, 1, 2],
+    note: "2 = the filled 1s² core of Li" }
+];
+var ST = { Z: Q.Z, nc: Q.nc };
+function parseNum(str){
+  var s = String(str).trim().replace(/\s+/g, "").replace(/−/g, "-");
+  if (s === "") return { empty: true };
+  if (!/^-?\d*\.?\d+(?:e[-+]?\d+)?$/i.test(s)) return { bad: true };
+  return { v: parseFloat(s) };
+}
+function fieldOf(k){ var i; for (i = 0; i < FIELDS.length; i++) if (FIELDS[i].k === k) return FIELDS[i]; return null; }
+function fieldsHTML(){
+  var h = "", i, F;
+  for (i = 0; i < FIELDS.length; i++){
+    F = FIELDS[i];
+    h += '<div class="fld" id="fld_' + F.k + '"><div class="lb"><span><b>' + F.lab + '</b></span><span class="u">' + F.u + '</span></div>'
+      + '<div class="rw"><button type="button" class="dn" data-k="' + F.k + '" aria-label="decrease ' + F.k + '">−</button>'
+      + '<input id="in_' + F.k + '" type="text" inputmode="numeric" autocomplete="off" aria-label="' + F.k + '" value="' + Q[F.k] + '">'
+      + '<button type="button" class="up" data-k="' + F.k + '" aria-label="increase ' + F.k + '">+</button>'
+      + '<button type="button" class="rs" data-k="' + F.k + '" aria-label="question value for ' + F.k + '" title="question value">↺</button></div>'
+      + '<div class="fh" id="fh_' + F.k + '">question value · ' + F.note + '</div></div>';
+  }
+  return h;
+}
+function readField(k){
+  var F = fieldOf(k), box = $("in_" + k), fh = $("fh_" + k), r = parseNum(box.value), v = Q[k], msg, bad = false;
+  if (r.empty) msg = "empty — using the question value " + Q[k];
+  else if (r.bad || !isFinite(r.v) || r.v < 0 || (r.v === 0 && !F.zeroOK)){ bad = true; msg = "Please enter a valid positive value. The question value " + Q[k] + " is used meanwhile."; }
+  else if (F.int && Math.abs(r.v - Math.round(r.v)) > 1e-9){ bad = true; msg = "Please enter a whole number. The question value " + Q[k] + " is used meanwhile."; }
+  else if (r.v < F.lo || r.v > F.hi){ bad = true; msg = "Please enter a value between " + F.lo + " and " + F.hi + ". The question value is used meanwhile."; }
+  else { v = Math.round(r.v); msg = v === Q[k] ? "question value · " + F.note : "custom · question value " + Q[k]; }
+  box.classList.toggle("bad", bad); fh.classList.toggle("bad", bad);
+  fh.innerHTML = msg; ST[k] = v;
+  return !bad;
+}
+/* the nucleus must out-number the core, or the outer electron is not bound */
+function crossCheck(){
+  if (ST.nc <= ST.Z - 1) return;
+  var fh = $("fh_nc"), box = $("in_nc");
+  box.classList.add("bad"); fh.classList.add("bad");
+  fh.innerHTML = "The nucleus needs more protons than core electrons (Z ≥ core + 1). Using the question values meanwhile.";
+  ST.Z = Q.Z; ST.nc = Q.nc;
+}
+function readAll(){ var i; for (i = 0; i < FIELDS.length; i++) readField(FIELDS[i].k); crossCheck(); }
+function isCustom(D){ D = D || ST; return D.Z !== Q.Z || D.nc !== Q.nc; }
+function copyST(){ return { Z: ST.Z, nc: ST.nc }; }
+function sameD(a, b){ return a.Z === b.Z && a.nc === b.nc; }
+function setField(k, v){ $("in_" + k).value = v; readAll(); }
+function stepField(k, dir){
+  var L = fieldOf(k).ladder, v = ST[k], i, nv = v;
+  if (dir > 0){ for (i = 0; i < L.length; i++) if (L[i] > v){ nv = L[i]; break; } }
+  else { for (i = L.length - 1; i >= 0; i--) if (L[i] < v){ nv = L[i]; break; } }
+  setField(k, nv);
+}
+
+/* =====================================================================
+   the scientific model: the radial Schroedinger equation, solved
+      -1/2 u'' + [ V(r) + l(l+1)/(2 r^2) ] u = E u       (atomic units)
+   V(r) = -Z/r + the electrostatic field of nc electrons in a 1s orbital
+   exp(-zeta r), zeta = Z - 5/16 for a filled core (Slater). Hydrogen:
+   Z = 1, nc = 0. Solved by Numerov shooting on a logarithmic grid with
+   node counting and bisection - no formula for the answer.
+   ===================================================================== */
+var GRID = (function(){
+  var N = 3000, x0 = Math.log(1e-6), x1 = Math.log(60), h = (x1 - x0) / (N - 1), r = [], i;
+  for (i = 0; i < N; i++) r.push(Math.exp(x0 + i * h));
+  return { N: N, h: h, r: r };
+})();
+function coreZeta(Z, nc){ return nc === 2 ? Z - 5 / 16 : Z; }
+function Vpot(r, Z, nc, zeta){ return -Z / r + nc * (1 / r - (zeta + 1 / r) * Math.exp(-2 * zeta * r)); }
+function Zenc(r, Z, nc, zeta){ return Z - nc * (1 - (1 + 2 * zeta * r + 2 * zeta * zeta * r * r) * Math.exp(-2 * zeta * r)); }
+function shoot(E, g0, l){
+  var N = GRID.N, h = GRID.h, r = GRID.r, y = new Float64Array(N), f = new Float64Array(N), i, cnt = 0;
+  for (i = 0; i < N; i++) f[i] = 1 - h * h * (2 * r[i] * r[i] * (g0[i] - E) + (l + 0.5) * (l + 0.5)) / 12;
+  y[0] = Math.pow(r[0], l + 0.5); y[1] = Math.pow(r[1], l + 0.5);
+  for (i = 1; i < N - 1; i++){
+    y[i + 1] = ((12 - 10 * f[i]) * y[i] - f[i - 1] * y[i - 1]) / f[i + 1];
+    if (y[i + 1] * y[i] < 0) cnt++;
+    if (Math.abs(y[i + 1]) > 1e30){ var j; for (j = 0; j <= i + 1; j++) y[j] /= 1e30; }
+  }
+  return { nodes: cnt, tail: y[N - 1], y: y };
+}
+function solveOrbital(Z, nc, l, nodes){
+  var zeta = coreZeta(Z, nc), g0 = new Float64Array(GRID.N), i, r = GRID.r;
+  for (i = 0; i < GRID.N; i++) g0[i] = Vpot(r[i], Z, nc, zeta);
+  var lo = -Z * Z, hi = -1e-5, trials = [], E, s, it;
+  for (it = 0; it < 70; it++){
+    E = (lo + hi) / 2; s = shoot(E, g0, l);
+    trials.push(E);
+    if (s.nodes > nodes) hi = E;
+    else if (s.nodes < nodes) lo = E;
+    else if (s.tail * (nodes % 2 ? -1 : 1) > 0) lo = E; else hi = E;
+  }
+  E = (lo + hi) / 2; s = shoot(E, g0, l);
+  /* u = sqrt(r) y; cut the tail where it starts to diverge beyond the classical turning point */
+  var u = new Float64Array(GRID.N), iturn = 0, imin, best = Infinity;
+  for (i = 0; i < GRID.N; i++){ u[i] = Math.sqrt(r[i]) * s.y[i]; if (g0[i] + l * (l + 1) / (2 * r[i] * r[i]) < E) iturn = i; }
+  imin = GRID.N - 1;
+  for (i = iturn; i < GRID.N; i++){ var a = Math.abs(u[i]); if (a < best){ best = a; imin = i; } }
+  for (i = imin; i < GRID.N; i++) u[i] = 0;
+  var norm = 0; for (i = 0; i < GRID.N; i++) norm += u[i] * u[i] * r[i] * GRID.h;
+  var P = new Float64Array(GRID.N), inside = 0, zf = 0, pen = 0;
+  for (i = 0; i < GRID.N; i++){
+    P[i] = u[i] * u[i] / norm;
+    var w = P[i] * r[i] * GRID.h;
+    if (r[i] < RC) inside += w;
+    zf += w * Zenc(r[i], Z, nc, zeta);
+    pen += w * (g0[i] + 1 / r[i]);      /* pull beyond a fully shielded +1 charge */
+  }
+  return { E: E, eV: E * HA, trials: trials, P: P, inside: inside, zfelt: zf, pen: pen * HA, zeff: 2 * Math.sqrt(-2 * E), zeta: zeta };
+}
+/* radial probability density at r (per bohr), interpolated */
+function Pat(sol, rr){
+  var r = GRID.r, lo = 0, hi = GRID.N - 1;
+  if (rr <= r[0]) return 0; if (rr >= r[hi]) return 0;
+  while (hi - lo > 1){ var m = (lo + hi) >> 1; if (r[m] > rr) hi = m; else lo = m; }
+  var t = (rr - r[lo]) / (r[hi] - r[lo]);
+  return sol.P[lo] + (sol.P[hi] - sol.P[lo]) * t;
+}
+function model(D){
+  var M = { D: D, s: {}, zeta: coreZeta(D.Z, D.nc) }, i;
+  for (i = 0; i < ORBS.length; i++){
+    var o = ORBS[i], Z = o.atom === "H" ? 1 : D.Z, nc = o.atom === "H" ? 0 : D.nc;
+    M.s[o.k] = solveOrbital(Z, nc, o.l, o.nodes);
+    M.s[o.k].Z = Z; M.s[o.k].nc = nc;
+  }
+  return M;
+}
+function holds(st, E){
+  var a = E[st.a], b = E[st.b];
+  if (st.op === "=") return Math.abs(a - b) <= TOL;
+  if (st.op === "<") return a < b - TOL;
+  return a > b + TOL;
+}
+function truthOf(E){ var out = [], i; for (i = 0; i < OPT_KEYS.length; i++) if (holds(STATEMENTS[OPT_KEYS[i]], E)) out.push(OPT_KEYS[i]); return out; }
+function energies(M){ var o = {}, k; for (k in M.s) o[k] = M.s[k].eV; return o; }
+function optText(L){ return L.length ? L.map(function(k){ return "(" + k + ")"; }).join(", ") : "none"; }
+/* the four energies in order, lowest first, with "=" for equal ones */
+function ladderText(E, html){
+  var ks = ORB_KEYS.slice().sort(function(a, b){ return E[a] - E[b]; }), out = "", i;
+  for (i = 0; i < ks.length; i++){
+    if (i) out += Math.abs(E[ks[i]] - E[ks[i - 1]]) <= TOL ? " = " : (html ? " &lt; " : " < ");
+    out += orbOf(ks[i]).t;
+  }
+  return out;
+}
+var QM = model(copyST());
+var QE = energies(QM);
+var QTRUE = truthOf(QE);
+var ANS = optText(QTRUE);
+
+/* =====================================================================
+   experiment engine - one automatic timeline, built when START is pressed
+   ===================================================================== */
+var PH = [["setup", 1.1], ["solve", 2.6], ["cloud", 2.8], ["place", 1.0]];
+var ORD = { setup: 0, solve: 1, cloud: 2, place: 3 };
+var TPH = [["A", 1.2], ["B", 1.2], ["C", 1.2], ["D", 1.2], ["sum", 0.8]];
+function phaseDur(ph){ var i, t = 0; for (i = 0; i < ph.length; i++) t += ph[i][1]; return t; }
+var RUN = { state: "setup", paused: false, speed: 1, segs: [], si: 0, u: 0, D: copyST(), M: null,
+  meas: {}, order: [], tested: {}, truth: null, done: false, revealed: false, logged: {}, calc: {}, classroom: false };
+RUN.M = model(RUN.D);
+var earlyReveal = false;
+
+function buildTimeline(){
+  var s = [{ kind: "prep", dur: 2.4 }], i;
+  for (i = 0; i < ORB_KEYS.length; i++) s.push({ kind: "orb", key: ORB_KEYS[i], idx: i, ph: PH, dur: phaseDur(PH) });
+  s.push({ kind: "test", ph: TPH, dur: phaseDur(TPH) });
+  s.push({ kind: "calc", dur: 3.0 });
+  s.push({ kind: "done", dur: 1.6 });
+  return s;
+}
+function seg(){ return RUN.segs[RUN.si] || null; }
+function phaseOf(ph, u){
+  var acc = 0, i;
+  for (i = 0; i < ph.length; i++){ if (u < acc + ph[i][1]) return { name: ph[i][0], f: (u - acc) / ph[i][1] }; acc += ph[i][1]; }
+  return { name: ph[ph.length - 1][0], f: 1 };
+}
+var NOW = null;
+function currentState(){
+  var sg = seg();
+  if (RUN.done) return { name: "rest", f: 1, key: null, sg: null };
+  if (RUN.state === "setup" || !sg) return { name: "idle", f: 0, key: null, sg: null };
+  if (sg.kind === "orb"){ var p = phaseOf(sg.ph, RUN.u); return { name: p.name, f: p.f, key: sg.key, sg: sg }; }
+  if (sg.kind === "test"){ var q = phaseOf(sg.ph, RUN.u); return { name: "test", opt: q.name, f: q.f, key: null, sg: sg }; }
+  return { name: sg.kind, f: RUN.u / sg.dur, key: null, sg: sg };
+}
+/* the solver's bisection, as shown: which trial energy is on screen now */
+function trialAt(S, f){ var n = 14, k = Math.min(n - 1, Math.floor(ease(f) * n)); return { k: k, n: n, E: f >= 0.97 ? S.E : S.trials[k] }; }
+
+/* things that happen once, at a moment in the timeline */
+function onPhase(sg, st){
+  if (sg.kind === "orb"){
+    var o = ORD[st.name];
+    if (o >= 3 && !RUN.logged[sg.key]){
+      RUN.logged[sg.key] = true;
+      RUN.meas[sg.key] = RUN.M.s[sg.key]; RUN.order.push(sg.key);
+      addCalc(sg.key);
+      if (sg.key === "H2p") addCalc("deg");
+      if (sg.key === "Li2p") addCalc("pen");
+      drawRad(); drawZbar(); drawLog();
+    }
+  }
+  if (sg.kind === "test" && st.opt){
+    var i, done = OPT_KEYS.indexOf(st.opt); if (st.opt === "sum") done = 4;
+    for (i = 0; i < done; i++) if (!RUN.tested[OPT_KEYS[i]]){ RUN.tested[OPT_KEYS[i]] = true; addCalc("opt" + OPT_KEYS[i]); }
+  }
+}
+function onSegEnd(sg){
+  if (sg.kind === "prep") addCalc("rule");
+  if (sg.kind === "test"){ var i; for (i = 0; i < 4; i++) if (!RUN.tested[OPT_KEYS[i]]){ RUN.tested[OPT_KEYS[i]] = true; addCalc("opt" + OPT_KEYS[i]); } }
+}
+function onSegStart(sg){
+  if (sg.kind === "test"){ RUN.truth = truthOf(energies(RUN.M)); addCalc("lit"); }
+  if (sg.kind === "done"){ $("donebanner").classList.add("on"); }
+}
+function stepTimeline(sdt){
+  var sg = seg(); if (!sg) return;
+  RUN.u += sdt;
+  while (sg && RUN.u >= sg.dur){
+    RUN.u -= sg.dur;
+    if (sg.kind === "orb"){ var p = phaseOf(sg.ph, sg.dur - 1e-6); onPhase(sg, { name: p.name, f: 1 }); }
+    onSegEnd(sg);
+    RUN.si++;
+    sg = seg();
+    if (!sg){ finish(); return; }
+    onSegStart(sg);
+  }
+}
+function clearRunUI(){
+  $("calclist").innerHTML = ""; $("calcempty").hidden = false;
+  $("donebanner").classList.remove("on");
+  $("revealhost").classList.remove("on"); $("revealhost").innerHTML = "";
+  $("lab3d").classList.remove("dim"); $("blackout").classList.remove("on");
+  burst = [];
+}
+function freshRun(){
+  RUN.si = 0; RUN.u = 0; RUN.paused = false; RUN.done = false; RUN.revealed = false;
+  RUN.meas = {}; RUN.order = []; RUN.tested = {}; RUN.truth = null; RUN.logged = {}; RUN.calc = {};
+}
+function startRun(D){
+  readAll();
+  RUN.D = D || copyST(); RUN.M = model(RUN.D); CLOUD = {};
+  RUN.segs = buildTimeline(); freshRun(); RUN.state = "running";
+  clearRunUI(); drawLog(); drawRad(); drawZbar(); refreshUI();
+}
+function resetRun(){
+  RUN.state = "setup"; RUN.segs = []; freshRun();
+  readAll(); RUN.D = copyST(); RUN.M = model(RUN.D); CLOUD = {};
+  clearRunUI(); drawLog(); drawRad(); drawZbar(); refreshUI();
+}
+function resetAll(){
+  var i; for (i = 0; i < FIELDS.length; i++) $("in_" + FIELDS[i].k).value = Q[FIELDS[i].k];
+  readAll(); earlyReveal = false; resetRun(); refreshGate();
+}
+function finish(){
+  RUN.si = RUN.segs.length; RUN.state = "done"; RUN.done = true;
+  if (!RUN.truth) RUN.truth = truthOf(energies(RUN.M));
+  addCalc("match");
+  refreshUI();
+  doReveal();
+}
+
+/* =====================================================================
+   calculation panel - lines appear only when the run has produced them
+   ===================================================================== */
+function atomName(D){ return D.Z === 3 && D.nc === 2 ? "Li" : "Z = " + D.Z + ", " + D.nc + " core e⁻"; }
+function calcHTML(key){
+  var M = RUN.M, D = M.D, S, o;
+  switch (key){
+    case "rule":
+      return ["START", "−½u″ + [V(r) + l(l+1)/2r²] u = E u, &nbsp; V(r) = −Z/r + (field of the 1s core) &nbsp;·&nbsp; then E = −13.6 Z<sub>eff</sub>²/n² eV defines Z<sub>eff</sub>"
+        + "<span class=w>solved numerically for each orbital — the energy is whatever makes the wavefunction die away far from the nucleus with the right number of nodes</span>"];
+    case "H2s": case "H2p": case "Li2s": case "Li2p":
+      S = M.s[key]; o = orbOf(key);
+      return [o.lab.toUpperCase(), "<b>" + o.lab + "</b>: Z = " + S.Z + (S.nc ? ", 1s core of " + S.nc + " (ζ = " + f3(S.zeta) + ")" : ", no core") + " &nbsp;⇒&nbsp; <span class=ar>E = " + f3(S.eV) + " eV</span>, &nbsp;Z<sub>eff</sub> = " + f3(S.zeff)
+        + (S.nc ? ", &nbsp;inside the core " + f1(S.inside * 100) + "% of the time, extra pull " + f2(S.pen) + " eV" : "")
+        + "<span class=w>" + (o.l === 0 ? "s: one radial node, and a small inner lobe near the nucleus" : "p: no radial node, and an angular node through the nucleus") + "</span>"];
+    case "deg":
+      return ["H", "E<sub>2s</sub>(H) = " + f3(M.s.H2s.eV) + " eV = E<sub>2p</sub>(H) = " + f3(M.s.H2p.eV) + " eV &nbsp;⇒&nbsp; <span class=hl>degenerate</span> — −13.6/2² = −3.40 eV"
+        + "<span class=w>one electron, nothing to shield it: the energy depends on n only</span>"];
+    case "pen":
+      var a = M.s.Li2s, b = M.s.Li2p;
+      return ["WHY", atomName(D) + " 2s is inside the core " + f1(a.inside * 100) + "% of the time vs " + f1(b.inside * 100) + "% for 2p; there it feels up to +" + D.Z
+        + " → extra pull " + f2(a.pen) + " eV vs " + f2(b.pen) + " eV &nbsp;⇒&nbsp; <b>E<sub>2s</sub> is " + f2(b.eV - a.eV) + " eV below E<sub>2p</sub></b>"
+        + "<span class=w>penetration: the 2s electron gets past the shielding core, the 2p electron hardly does</span>"];
+    case "lit":
+      return ["CHECK", "Spectroscopy: H 2s = 2p = −3.40 eV; Li 2s = −5.39 eV (ionisation energy); Li 2p = −3.54 eV (671 nm line, 1.85 eV above 2s)"
+        + "<span class=w>the model misses exchange with the core and under-binds Li 2s, but every comparison in the options comes out the same</span>"];
+    case "optA": case "optB": case "optC": case "optD":
+      var k = key.slice(3), st = STATEMENTS[k], E = energies(M), ok = holds(st, E);
+      return ["(" + k + ")", st.h + ": &nbsp;" + f3(E[st.a]) + " " + (st.op === "=" ? "vs" : st.op === "<" ? "vs" : "vs") + " " + f3(E[st.b]) + " eV &nbsp;⇒&nbsp; "
+        + (ok ? "<span class=hl>TRUE</span>" : "<b style=\"color:var(--bad)\">FALSE</b>")
+        + "<span class=w>" + (st.op === "=" ? "equal within " + TOL + " eV" : "difference " + f3(E[st.b] - E[st.a]) + " eV") + "</span>"];
+    case "match":
+      return ["MATCH", "True statements: <span class=hl>" + optText(RUN.truth) + "</span> &nbsp;·&nbsp; " + ladderText(energies(M), true)];
+  }
+  return null;
+}
+function addCalc(key){
+  if (RUN.calc[key]) return;
+  var c = calcHTML(key); if (!c) return;
+  RUN.calc[key] = true;
+  $("calcempty").hidden = true;
+  var li = document.createElement("li");
+  li.setAttribute("data-key", key);
+  li.innerHTML = '<span class="s">' + c[0] + '</span><span class="m">' + c[1] + "</span>";
+  $("calclist").appendChild(li);
+}
+function drawLog(){
+  var h = "<thead><tr><th>orbital</th><th>Z</th><th>core e⁻</th><th>E / eV</th><th>Z<sub>eff</sub></th><th>inside core</th><th>extra pull / eV</th></tr></thead><tbody>", i, k, S;
+  for (i = 0; i < RUN.order.length; i++){
+    k = RUN.order[i]; S = RUN.meas[k];
+    h += "<tr><td>" + orbOf(k).lab + "</td><td class=n>" + S.Z + "</td><td class=n>" + S.nc + "</td><td class=n>" + f3(S.eV) + "</td><td class=n>" + f3(S.zeff)
+      + "</td><td class=n>" + (S.nc ? f1(S.inside * 100) + "%" : "—") + "</td><td class=n>" + (S.nc ? f2(S.pen) : "0") + "</td></tr>";
+  }
+  $("log").innerHTML = h + "</tbody>";
+  $("logn").textContent = RUN.order.length;
+}
+
+/* =====================================================================
+   the chamber - canvas drawing (always dark, like a lab chamber)
+   ===================================================================== */
+var AC = { cx: 330, cy: 318 };
+var COLK = { H2s: "#54a9ff", H2p: "#a99bff", Li2s: "#3ee39a", Li2p: "#ff9350" };
+var burst = [], clock = 0, CLOUD = {}, CURVES = {};
+function Smap(r){ return 68 * Math.log(1 + r / 0.45); }
+function label(g, s, x, y, col, size, align, weight){
+  g.fillStyle = col; g.font = (weight || 600) + " " + (size || 14) + "px ui-sans-serif,system-ui,sans-serif";
+  g.textAlign = align || "center"; g.textBaseline = "middle"; g.fillText(s, x, y);
+}
+/* electron positions drawn from the solved |psi|^2 - radial from P(r), angular from the orbital's shape */
+function cloudFor(key){
+  if (CLOUD[key]) return CLOUD[key];
+  var S = RUN.M.s[key], o = orbOf(key), R = rng(97 + ORB_KEYS.indexOf(key) * 31), cdf = [], acc = 0, i, pts = [], N = 1400;
+  for (i = 0; i < GRID.N; i++){ acc += S.P[i] * GRID.r[i] * GRID.h; cdf.push(acc); }
+  for (i = 0; i < N; i++){
+    var u = R() * acc, lo = 0, hi = GRID.N - 1;
+    while (hi - lo > 1){ var m = (lo + hi) >> 1; if (cdf[m] < u) lo = m; else hi = m; }
+    var r = GRID.r[hi], c, ph = R() * Math.PI * 2;
+    if (o.l === 0) c = 2 * R() - 1; else { var w = Math.pow(R(), 1 / 3); c = R() < 0.5 ? -w : w; }
+    var sn = Math.sqrt(1 - c * c), rs = Smap(r);
+    pts.push({ x: rs * sn * Math.cos(ph), y: -rs * c, r: r, inside: S.nc > 0 && r < RC });
+  }
+  CLOUD[key] = pts;
+  return pts;
+}
+/* the wavefunction for one trial energy of the solver, for the shooting picture */
+function curveFor(key, k){
+  CURVES[key] = CURVES[key] || {};
+  if (CURVES[key][k]) return CURVES[key][k];
+  var S = RUN.M.s[key], o = orbOf(key), zeta = coreZeta(S.Z, S.nc), g0 = new Float64Array(GRID.N), i, r = GRID.r;
+  for (i = 0; i < GRID.N; i++) g0[i] = Vpot(r[i], S.Z, S.nc, zeta);
+  var E = k < 0 ? S.E : S.trials[k], sh = shoot(E, g0, o.l), out = [], mx = 0, j;
+  for (j = 0; j <= 140; j++){
+    var rr = 0.45 * (Math.exp(j / 140 * Math.log(1 + 16 / 0.45)) - 1), lo2 = 0, hi2 = GRID.N - 1;
+    while (hi2 - lo2 > 1){ var m = (lo2 + hi2) >> 1; if (r[m] > rr) hi2 = m; else lo2 = m; }
+    var v = Math.sqrt(r[lo2]) * sh.y[lo2]; out.push([j / 140, v]);
+    if (rr < 9 && Math.abs(v) > mx) mx = Math.abs(v);
+  }
+  for (j = 0; j < out.length; j++) out[j][1] = clamp(out[j][1] / (mx || 1), -2.2, 2.2);
+  CURVES[key][k] = out;
+  return out;
+}
+function drawAtom(g, st){
+  var key = st.key, o = key ? orbOf(key) : null, S = key ? RUN.M.s[key] : null, D = RUN.M.D;
+  var isLi = o ? o.atom === "Li" : false, Z = o ? S.Z : 1, nc = o ? S.nc : 0, cx = AC.cx, cy = AC.cy;
+  if (!o && (st.name === "test" || st.name === "calc" || st.name === "done" || st.name === "rest")){ drawCompare(g); return; }
+  label(g, o ? (isLi ? (D.Z === 3 && D.nc === 2 ? "LITHIUM" : "ATOM Z = " + D.Z) + " · " + o.lab.split(" ")[1] : "HYDROGEN · " + o.lab.split(" ")[1]) : "ATOM CHAMBER", cx, 40, "#8fa6c9", 20, "center", 800);
+  /* the 1s core */
+  if (isLi && nc > 0){
+    var gr = g.createRadialGradient(cx, cy, 2, cx, cy, Smap(RC) + 12);
+    gr.addColorStop(0, "rgba(255,200,120,.55)"); gr.addColorStop(0.7, "rgba(255,160,80,.22)"); gr.addColorStop(1, "rgba(255,140,60,0)");
+    g.fillStyle = gr; g.beginPath(); g.arc(cx, cy, Smap(RC) + 12, 0, Math.PI * 2); g.fill();
+    g.strokeStyle = "rgba(255,190,120,.6)"; g.setLineDash([5, 5]); g.lineWidth = 1.5;
+    g.beginPath(); g.arc(cx, cy, Smap(RC), 0, Math.PI * 2); g.stroke(); g.setLineDash([]);
+    label(g, "1s" + (nc === 2 ? "²" : "¹") + " core", cx + Smap(RC) * 0.72, cy - Smap(RC) * 0.78, "#ffd7a0", 15, "left", 800);
+  }
+  if (st.name === "solve"){
+    drawShoot(g, st, S, o);
+  } else if (o && (st.name === "cloud" || st.name === "place")){
+    var pts = cloudFor(key), n = st.name === "cloud" ? Math.floor(pts.length * ease(st.f / 0.8)) : pts.length, i;
+    for (i = 0; i < n; i++){
+      var p = pts[i];
+      if (p.inside){ g.fillStyle = "#ffb347"; g.globalAlpha = 0.95; g.beginPath(); g.arc(cx + p.x, cy + p.y, 3.4, 0, 7); g.fill(); }
+      else { g.fillStyle = COLK[key]; g.globalAlpha = 0.42; g.fillRect(cx + p.x - 1.3, cy + p.y - 1.3, 2.6, 2.6); }
+    }
+    g.globalAlpha = 1;
+    if (isLi && nc > 0){
+      var inn = 0; for (i = 0; i < n; i++) if (pts[i].inside) inn++;
+      label(g, "orange = electron found inside the core: " + inn + " of " + n, cx, 590, "#ffcf9e", 17, "center", 700);
+    } else if (n) label(g, "no core in hydrogen — nothing to get inside", cx, 590, "#9fb0cc", 17, "center", 700);
+  } else if (!o){
+    label(g, st.name === "prep" ? "loading hydrogen and lithium…" : "press START", cx, cy + 150, "#9fb0cc", 19, "center", 700);
+  }
+  if (st.name === "solve") return;
+  /* nucleus */
+  g.fillStyle = "#ff6b6b"; g.shadowColor = "#ff6b6b"; g.shadowBlur = 14; g.beginPath(); g.arc(cx, cy, 9, 0, 7); g.fill(); g.shadowBlur = 0;
+  label(g, "+" + Z, cx + 16, cy + 16, "#ffd0d0", 16, "left", 800);
+  label(g, "radial scale compressed (logarithmic)", cx, 612, "#6f7f9c", 13, "center", 600);
+}
+function drawCompare(g){
+  var ks = ["Li2s", "Li2p"], i, j, D = RUN.M.D;
+  label(g, (D.Z === 3 && D.nc === 2 ? "LITHIUM" : "Z = " + D.Z) + " · 2s against 2p", AC.cx, 40, "#8fa6c9", 20, "center", 800);
+  for (i = 0; i < 2; i++){
+    var cx = AC.cx + (i ? 150 : -150), cy = AC.cy, pts = cloudFor(ks[i]), sc = 0.55, inn = 0, S = RUN.M.s[ks[i]];
+    if (S.nc > 0){
+      var gr = g.createRadialGradient(cx, cy, 2, cx, cy, Smap(RC) * sc + 8);
+      gr.addColorStop(0, "rgba(255,200,120,.55)"); gr.addColorStop(1, "rgba(255,140,60,0)");
+      g.fillStyle = gr; g.beginPath(); g.arc(cx, cy, Smap(RC) * sc + 8, 0, 7); g.fill();
+    }
+    for (j = 0; j < pts.length; j++){
+      var p = pts[j];
+      if (p.inside){ inn++; g.fillStyle = "#ffb347"; g.globalAlpha = 0.95; g.beginPath(); g.arc(cx + p.x * sc, cy + p.y * sc, 2.6, 0, 7); g.fill(); }
+      else { g.fillStyle = COLK[ks[i]]; g.globalAlpha = 0.4; g.fillRect(cx + p.x * sc - 1, cy + p.y * sc - 1, 2, 2); }
+    }
+    g.globalAlpha = 1;
+    g.fillStyle = "#ff6b6b"; g.beginPath(); g.arc(cx, cy, 6, 0, 7); g.fill();
+    label(g, orbOf(ks[i]).lab, cx, cy - 175, COLK[ks[i]], 22, "center", 900);
+    label(g, S.nc ? inn + " of " + pts.length + " inside the core" : "no core", cx, cy + 170, "#ffcf9e", 16, "center", 700);
+    label(g, "E = " + f2(S.eV) + " eV", cx, cy + 196, "#e6eeff", 17, "center", 800);
+  }
+}
+function drawShoot(g, st, S, o){
+  var x0 = 70, x1 = 610, y0 = AC.cy, amp = 105, tr = trialAt(S, st.f), cv = curveFor(o.k, st.f >= 0.97 ? -1 : tr.k), i;
+  g.strokeStyle = "rgba(160,190,255,.35)"; g.lineWidth = 1; g.beginPath(); g.moveTo(x0, y0); g.lineTo(x1, y0); g.stroke();
+  g.strokeStyle = COLK[o.k]; g.lineWidth = 3.2; g.beginPath();
+  for (i = 0; i < cv.length; i++){ var x = x0 + (x1 - x0) * cv[i][0], y = y0 - amp * cv[i][1]; if (i) g.lineTo(x, y); else g.moveTo(x, y); }
+  g.stroke();
+  var tail = cv[cv.length - 1][1], ok = st.f >= 0.97;
+  label(g, "the Schrödinger equation, shot outward from the nucleus", (x0 + x1) / 2, 92, "#cfe0ff", 17, "center", 700);
+  label(g, "trial " + (ok ? "✓ found" : (tr.k + 1) + " of " + tr.n) + ":  E = " + f3(tr.E * HA) + " eV", (x0 + x1) / 2, 122, ok ? "#3ee39a" : "#ffd79a", 20, "center", 800);
+  label(g, ok ? "the wave dies away far out — an allowed energy" : (Math.abs(tail) < 0.2 ? "almost…" : tail > 0 ? "tail flies up — adjust E" : "tail dives down — adjust E"), (x0 + x1) / 2, 530, ok ? "#3ee39a" : "#ffcf9e", 17, "center", 700);
+  label(g, "nucleus", x0, y0 + 22, "#9fb0cc", 13, "center", 600); label(g, "far away", x1, y0 + 22, "#9fb0cc", 13, "center", 600);
+}
+/* the energy ladder */
+function ladderRange(){
+  var E = energies(RUN.M), lo = Infinity, hi = -Infinity, k;
+  for (k in E){ lo = Math.min(lo, E[k]); hi = Math.max(hi, E[k]); }
+  var pad = Math.max(0.5, (hi - lo) * 0.18);
+  return { lo: lo - pad, hi: hi + pad * 0.7 };
+}
+var LAD = { x0: 690, x1: 1030, y0: 96, y1: 548, col: { H2s: [742, 784], H2p: [796, 838], Li2s: [900, 942], Li2p: [954, 996] } };
+function ey(E, R){ return LAD.y0 + (LAD.y1 - LAD.y0) * (R.hi - E) / (R.hi - R.lo); }
+function drawLadder(g, st){
+  var R = ladderRange(), E = energies(RUN.M), k, i;
+  g.fillStyle = "rgba(20,30,52,.7)"; g.strokeStyle = "rgba(160,190,255,.22)"; g.lineWidth = 1.2;
+  g.beginPath(); g.roundRect ? g.roundRect(LAD.x0 - 6, 60, LAD.x1 - LAD.x0 + 4, 540, 12) : g.rect(LAD.x0 - 6, 60, LAD.x1 - LAD.x0 + 4, 540); g.fill(); g.stroke();
+  label(g, "ENERGY LADDER", (LAD.x0 + LAD.x1) / 2, 78, "#8fa6c9", 15, "center", 800);
+  var stp = niceStep(R.hi - R.lo, 5), v;
+  for (v = Math.ceil(R.lo / stp) * stp; v <= R.hi + 1e-9; v += stp){
+    var y = ey(v, R);
+    g.strokeStyle = "rgba(160,190,255,.12)"; g.beginPath(); g.moveTo(LAD.x0 + 34, y); g.lineTo(LAD.x1 - 8, y); g.stroke();
+    label(g, nice(v, 2), LAD.x0 + 30, y, "#8fa6c9", 13, "right", 600);
+  }
+  label(g, "eV", LAD.x0 + 16, 578, "#8fa6c9", 13, "center", 700);
+  label(g, "H", (LAD.col.H2s[0] + LAD.col.H2p[1]) / 2, 578, "#cfe0ff", 18, "center", 800);
+  label(g, RUN.M.D.Z === 3 && RUN.M.D.nc === 2 ? "Li" : "Z=" + RUN.M.D.Z, (LAD.col.Li2s[0] + LAD.col.Li2p[1]) / 2, 578, "#cfe0ff", 18, "center", 800);
+  for (i = 0; i < ORB_KEYS.length; i++){
+    k = ORB_KEYS[i]; var c = LAD.col[k], shown = RUN.meas[k] || (st.key === k && st.name === "place");
+    if (!shown) continue;
+    var yy = ey(E[k], R);
+    if (st.key === k && st.name === "place") yy = ey(E[k], R) - (1 - ease(st.f)) * 40;
+    g.strokeStyle = COLK[k]; g.lineWidth = 5; g.lineCap = "round"; g.beginPath(); g.moveTo(c[0], yy); g.lineTo(c[1], yy); g.stroke();
+    label(g, orbOf(k).lab.split(" ")[1], (c[0] + c[1]) / 2, yy - 13, COLK[k], 15, "center", 800);
+    label(g, f2(E[k]), (c[0] + c[1]) / 2, yy + 14, "#e6eeff", 13, "center", 700);
+  }
+  /* the solver's current guess */
+  if (st.name === "solve" && st.key){
+    var tr = trialAt(RUN.M.s[st.key], st.f), ty = clamp(ey(tr.E * HA, R), LAD.y0, LAD.y1), cc = LAD.col[st.key];
+    g.strokeStyle = "#ffd79a"; g.setLineDash([6, 5]); g.lineWidth = 2; g.beginPath(); g.moveTo(cc[0] - 10, ty); g.lineTo(cc[1] + 10, ty); g.stroke(); g.setLineDash([]);
+  }
+  /* testing an option */
+  if (st.name === "test" && st.opt && STATEMENTS[st.opt]){
+    var s = STATEMENTS[st.opt], ya = ey(E[s.a], R), yb = ey(E[s.b], R), xa = (LAD.col[s.a][0] + LAD.col[s.a][1]) / 2, xb = (LAD.col[s.b][0] + LAD.col[s.b][1]) / 2, ok = holds(s, E);
+    g.strokeStyle = "#ffe08a"; g.lineWidth = 3;
+    g.beginPath(); g.arc(xa, ya, 26, 0, 7); g.stroke(); g.beginPath(); g.arc(xb, yb, 26, 0, 7); g.stroke();
+    g.setLineDash([4, 4]); g.beginPath(); g.moveTo(xa, ya); g.lineTo(xb, yb); g.stroke(); g.setLineDash([]);
+    if (st.f > 0.35){
+      g.fillStyle = "rgba(8,14,26,.9)"; g.fillRect(LAD.x0, 104, LAD.x1 - LAD.x0 - 8, 58);
+      label(g, "(" + st.opt + ")  " + s.t, (LAD.x0 + LAD.x1) / 2, 122, "#ffffff", 17, "center", 800);
+      label(g, ok ? "TRUE ✓" : "FALSE ✗", (LAD.x0 + LAD.x1) / 2, 148, ok ? "#3ee39a" : "#ff6b6b", 20, "center", 900);
+    }
+  }
+}
+function drawChamber(st){
+  var c = $("atom"), g = c.getContext("2d"), W = c.width, H = c.height;
+  g.clearRect(0, 0, W, H);
+  var bg = g.createLinearGradient(0, 0, 0, H); bg.addColorStop(0, "#0b1120"); bg.addColorStop(1, "#070a12");
+  g.fillStyle = bg; g.fillRect(0, 0, W, H);
+  drawAtom(g, st);
+  drawLadder(g, st);
+}
+
+/* =====================================================================
+   graphs - generated from the solved orbitals
+   ===================================================================== */
+function niceMax(v){ var p = Math.pow(10, Math.floor(Math.log(v) / Math.LN10)), m = v / p, L = [1, 1.2, 1.5, 2, 2.5, 3, 4, 5, 6, 8, 10], i;
+  for (i = 0; i < L.length; i++) if (m <= L[i] + 1e-9) return L[i] * p; return 10 * p; }
+function niceStep(span, want){ var raw = span / want, p = Math.pow(10, Math.floor(Math.log(raw) / Math.LN10)), f = raw / p;
+  return (f <= 1 ? 1 : f <= 2 ? 2 : f <= 2.5 ? 2.5 : f <= 5 ? 5 : 10) * p; }
+function axes(svg, X0, X1, Y0, Y1, ymax, ylab){
+  var tc = css("--text-muted"), lc = css("--line"), st = niceStep(ymax, 4), v;
+  for (v = 0; v <= ymax + 1e-9; v += st){
+    var y = Y1 - (Y1 - Y0) * v / ymax;
+    mk("line", { x1: X0, x2: X1, y1: y, y2: y, stroke: lc, "stroke-width": 1 }, svg);
+    tx(svg, X0 - 6, y + 4, nice(v, 2), { "text-anchor": "end", "font-size": 11, fill: tc, "font-family": "ui-monospace,monospace" });
+  }
+  tx(svg, 14, (Y0 + Y1) / 2, ylab, { "text-anchor": "middle", "font-size": 11, fill: tc, transform: "rotate(-90 14 " + (Y0 + Y1) / 2 + ")" });
+  mk("line", { x1: X0, x2: X1, y1: Y1, y2: Y1, stroke: css("--line-strong"), "stroke-width": 1.2 }, svg);
+}
+var RMAX = 15;
+function drawRad(){
+  var svg = $("rad"); while (svg.firstChild) svg.removeChild(svg.firstChild);
+  var X0 = 56, X1 = 546, Y0 = 22, Y1 = 270, tc = css("--text-muted"), i, k, rr, mx = 0.2;
+  for (k in RUN.meas) for (rr = 0.02; rr < RMAX; rr += 0.05) mx = Math.max(mx, Pat(RUN.meas[k], rr));
+  var ymax = niceMax(mx * 1.1), X = function(r){ return X0 + (X1 - X0) * r / RMAX; }, Yf = function(p){ return Y1 - (Y1 - Y0) * Math.min(p, ymax) / ymax; };
+  axes(svg, X0, X1, Y0, Y1, ymax, "P(r) / per bohr");
+  for (i = 0; i <= RMAX; i += 3) tx(svg, X(i), Y1 + 17, String(i), { "text-anchor": "middle", "font-size": 11, fill: tc, "font-family": "ui-monospace,monospace" });
+  tx(svg, (X0 + X1) / 2, Y1 + 36, "distance from the nucleus r / bohr (1 bohr = 52.9 pm)", { "text-anchor": "middle", "font-size": 11, fill: tc });
+  var D = RUN.M.D;
+  if (D.nc > 0){
+    var z = RUN.M.zeta, d = "M" + X(0) + " " + Y1, cm = 0, r2;
+    for (r2 = 0; r2 <= 3; r2 += 0.02) cm = Math.max(cm, 4 * z * z * z * r2 * r2 * Math.exp(-2 * z * r2));
+    for (r2 = 0; r2 <= 3; r2 += 0.02) d += "L" + X(r2).toFixed(1) + " " + (Y1 - (Y1 - Y0) * 0.9 * (4 * z * z * z * r2 * r2 * Math.exp(-2 * z * r2)) / cm).toFixed(1);
+    d += "L" + X(3) + " " + Y1 + "Z";
+    mk("path", { d: d, fill: "#ff9f43", opacity: 0.16, stroke: "none" }, svg);
+    tx(svg, X(0.55), Y0 + 12, "1s core (scaled)", { "font-size": 11, fill: css("--s2"), "font-weight": 700 });
+  }
+  var cols = { H2s: "--s1", H2p: "--s4", Li2s: "--s3", Li2p: "--s2" }, n = 0;
+  for (i = 0; i < ORB_KEYS.length; i++){
+    k = ORB_KEYS[i]; if (!RUN.meas[k]) continue;
+    var S = RUN.meas[k], dd = "", pk = 0, pr = 0;
+    for (rr = 0.01; rr <= RMAX; rr += 0.05){ var p = Pat(S, rr); dd += (dd ? "L" : "M") + X(rr).toFixed(1) + " " + Yf(p).toFixed(1); if (p > pk){ pk = p; pr = rr; } }
+    mk("path", { d: dd, fill: "none", stroke: css(cols[k]), "stroke-width": k.indexOf("H") === 0 ? 2 : 2.8, "stroke-dasharray": k === "H2p" ? "6 4" : "none" }, svg);
+    tx(svg, X(pr) + 6, Yf(pk) - 6 - 12 * (n % 2), orbOf(k).lab, { "font-size": 12, "font-weight": 700, fill: css(cols[k]) });
+    n++;
+  }
+}
+function drawZbar(){
+  var svg = $("zbar"); while (svg.firstChild) svg.removeChild(svg.firstChild);
+  var X0 = 56, X1 = 546, Y0 = 22, Y1 = 262, tc = css("--text-muted"), tp = css("--text-primary"), i, mx = 1.2, k;
+  for (k in RUN.meas) mx = Math.max(mx, RUN.meas[k].zeff);
+  var ymax = niceMax(mx * 1.12);
+  axes(svg, X0, X1, Y0, Y1, ymax, "Z_eff");
+  var slot = (X1 - X0) / 4, cols = { H2s: "--s1", H2p: "--s4", Li2s: "--s3", Li2p: "--s2" };
+  var y1 = Y1 - (Y1 - Y0) / ymax;
+  mk("line", { x1: X0, x2: X1, y1: y1, y2: y1, stroke: tc, "stroke-dasharray": "5 4" }, svg);
+  tx(svg, X1 - 4, y1 - 6, "Z_eff = 1: fully shielded", { "text-anchor": "end", "font-size": 11, fill: tc });
+  for (i = 0; i < 4; i++){
+    k = ORB_KEYS[i]; var cx = X0 + slot * (i + 0.5), S = RUN.meas[k];
+    tx(svg, cx, Y1 + 18, orbOf(k).lab, { "text-anchor": "middle", "font-size": 12.5, "font-weight": 700, fill: tp });
+    if (!S){ tx(svg, cx, Y1 - 8, "—", { "text-anchor": "middle", "font-size": 12, fill: tc }); continue; }
+    var h = (Y1 - Y0) * S.zeff / ymax;
+    mk("rect", { x: cx - 30, y: Y1 - h, width: 60, height: h, rx: 4, fill: css(cols[k]), opacity: 0.88 }, svg);
+    tx(svg, cx, Y1 - h - 7, f3(S.zeff), { "text-anchor": "middle", "font-size": 12.5, "font-weight": 700, fill: tp, "font-family": "ui-monospace,monospace" });
+    tx(svg, cx, Y1 + 33, f2(S.eV) + " eV", { "text-anchor": "middle", "font-size": 11, fill: tc, "font-family": "ui-monospace,monospace" });
+  }
+}
+
+/* =====================================================================
+   status, guidance, narration, live data
+   ===================================================================== */
+var STAGE_ORDER = ["prep", "solve", "cloud", "ladder", "test", "calc", "answer"];
+var PH_STAGE = { setup: "solve", solve: "solve", cloud: "cloud", place: "ladder" };
+function stageKey(){
+  var sg = seg();
+  if (RUN.state === "setup") return null;
+  if (RUN.done) return "answer";
+  if (!sg) return null;
+  if (sg.kind === "orb") return PH_STAGE[phaseOf(sg.ph, RUN.u).name];
+  return sg.kind === "done" ? "calc" : sg.kind;
+}
+function refreshStatus(){
+  var k = stageKey(), x = $("xstat"), txt, cls = "xstat", g;
+  if (RUN.state === "setup"){ txt = "Ready"; g = isCustom() ? "Custom values set — press RUN WITH CUSTOM VALUES." : "Set your values or use the question defaults. Press START EXPERIMENT to begin."; }
+  else if (RUN.done){ txt = "✓ Experiment complete"; cls += " done"; g = "Result obtained."; }
+  else if (k === "prep"){ txt = "Preparing experiment"; cls += " run"; g = "Preparing the atoms…"; }
+  else if (k === "test"){ txt = "Analysing data"; cls += " ana"; g = "Analysing experimental data…"; }
+  else if (k === "calc"){ txt = "Calculation complete"; cls += " ana"; g = "Calculating the result…"; }
+  else { txt = "Experiment running"; cls += " run"; g = "Experiment running…"; }
+  if (RUN.paused){ txt = "Paused"; cls = "xstat"; g = "Paused — press Resume."; }
+  x.className = cls; $("xstattxt").textContent = txt; $("guide").textContent = g;
+  var ki = STAGE_ORDER.indexOf(k), sp = document.querySelectorAll("#stages span"), i;
+  for (i = 0; i < sp.length; i++){
+    var j = STAGE_ORDER.indexOf(sp[i].getAttribute("data-s"));
+    sp[i].className = k === null ? "" : (j < ki || RUN.done ? "done" : (j === ki ? "now" : ""));
+  }
+}
+function narrate(st){
+  var sg = seg(), h = "", D = RUN.M.D, o = st.key ? orbOf(st.key) : null, S = st.key ? RUN.M.s[st.key] : null;
+  if (RUN.state === "setup"){
+    h = "A hydrogen atom (Z = 1) and a lithium atom (Z = 3, 1s² core) wait in the chamber. " + (isCustom() ? "Your values are loaded — press <b>RUN WITH CUSTOM VALUES</b>." : "The question's values are already loaded — press <b>START EXPERIMENT</b>.");
+  } else if (RUN.done){
+    h = "<span class=gd>Experiment complete.</span> True: <b>" + optText(RUN.truth) + "</b> &nbsp;·&nbsp; " + ladderText(energies(RUN.M), true) + ".";
+  } else if (!sg){ h = ""; }
+  else if (sg.kind === "prep"){
+    h = "An <b>orbital energy</b> is the energy of one electron in that orbital — the more negative, the more tightly it is held. We will <b>solve</b> for four of them, not look them up.";
+  } else if (sg.kind === "orb"){
+    var atom = o.atom === "H" ? "hydrogen" : (D.Z === 3 && D.nc === 2 ? "lithium" : "the Z = " + D.Z + " atom");
+    switch (st.name){
+      case "setup": h = "<b>" + o.lab + "</b>: one electron in a " + (o.l ? "2p" : "2s") + " orbital of " + atom + (S.nc ? ", with the two 1s electrons forming a core round the +" + S.Z + " nucleus." : " — just a +1 nucleus, nothing else."); break;
+      case "solve": h = "<b>Solving.</b> Only certain energies give a wave that dies away far from the nucleus. The solver tries an energy, sees whether the tail flies up or dives down, and halves the gap — " + (st.f > 0.96 ? "found: <b>E = " + f3(S.eV) + " eV</b>." : "homing in…"); break;
+      case "cloud": h = S.nc ? "<b>Where is the electron?</b> Each dot is one place it could be found. <span class=o>Orange</span> dots are inside the 1s core, where the nucleus is <b>not</b> shielded — " + (o.l ? "the 2p electron almost never gets there." : "the 2s electron gets in there regularly: that is <b>penetration</b>.")
+                              : "<b>Where is the electron?</b> In hydrogen there is no core to hide behind — the electron always feels exactly +1, whatever its shape."; break;
+      default: h = o.lab + " goes on the ladder at <b>" + f3(S.eV) + " eV</b> (Z<sub>eff</sub> = " + f3(S.zeff) + ").";
+    }
+  } else if (sg.kind === "test"){
+    var s = st.opt && STATEMENTS[st.opt];
+    h = s ? "<b>Testing (" + st.opt + ")</b> " + s.h + " against the ladder: " + (holds(s, energies(RUN.M)) ? "<span class=gd>true</span>." : "<span class=o>false</span>.") : "Collecting the true statements…";
+  } else {
+    h = "Writing up: hydrogen's 2s and 2p are degenerate; lithium's 2s penetrates the core and drops below its 2p and below hydrogen's n = 2 level.";
+  }
+  $("narr").innerHTML = h;
+  $("trialtag").textContent = o && st.name !== "rest" ? o.lab + " · " + (ORB_KEYS.indexOf(o.k) + 1) + " of 4" : (RUN.done ? "4 of 4 solved" : RUN.order.length ? RUN.order.length + " of 4 solved" : "no orbital yet");
+  $("scenet").textContent = RUN.done ? "Experiment complete" : (sg && sg.kind === "test" ? "Testing the options" : "Atom chamber and energy ladder");
+}
+function updateReadouts(st){
+  var o = st.key ? orbOf(st.key) : null, S = o ? RUN.M.s[o.k] : null, ph = st.name;
+  $("g_orb").textContent = o ? o.lab : "—";
+  $("g_zc").textContent = o ? "+" + S.Z + " / " + (S.nc ? S.nc + " e⁻" : "none") : "—";
+  var solved = o && (ph !== "setup" && (ph !== "solve" || st.f >= 0.97));
+  $("g_e").textContent = solved ? f3(S.eV) : (o && ph === "solve" ? f3(trialAt(S, st.f).E * HA) : "—");
+  $("g_step").textContent = o && ph === "solve" ? (st.f >= 0.97 ? "converged" : (trialAt(S, st.f).k + 1) + " / 14") : (solved ? "converged" : "—");
+  var cl = o && (ph === "cloud" || ph === "place");
+  $("g_in").textContent = cl && S.nc ? f1(S.inside * 100) : (cl ? "—" : "—");
+  $("g_pen").textContent = cl ? (S.nc ? f2(S.pen) : "0") : "—";
+  $("g_zeff").textContent = solved ? f3(S.zeff) : "—";
+  $("g_test").textContent = st.name === "test" && st.opt && STATEMENTS[st.opt] ? "(" + st.opt + ")" : "—";
+  var tl = []; for (var i = 0; i < OPT_KEYS.length; i++) if (RUN.tested[OPT_KEYS[i]] && holds(STATEMENTS[OPT_KEYS[i]], energies(RUN.M))) tl.push(OPT_KEYS[i]);
+  $("g_v").textContent = RUN.done ? optText(RUN.truth) : (tl.length ? optText(tl) : "—");
+  $("gz_v").classList.toggle("hot", RUN.done);
+}
+function refreshUI(){
+  var go = $("gobtn"), run = RUN.state === "running", custom = isCustom();
+  go.hidden = false; go.disabled = run; go.classList.toggle("custom", custom && !run);
+  if (run) go.innerHTML = "● RUNNING…";
+  else if (RUN.state === "done"){ go.innerHTML = "⚙&nbsp; RUN WITH CUSTOM VALUES"; go.hidden = sameD(RUN.D, copyST()); }
+  else go.innerHTML = custom ? "⚙&nbsp; RUN WITH CUSTOM VALUES" : "▶&nbsp; START EXPERIMENT";
+  $("pausebtn").disabled = !run; $("pausebtn").textContent = RUN.paused ? "Resume" : "Pause";
+  $("replaybtn").hidden = RUN.state !== "done";
+  var s = $("status");
+  s.className = "status" + (custom ? " custom" : "");
+  s.textContent = custom ? "⚙ USING CUSTOM VALUES" : "✓ USING QUESTION VALUES";
+  var q = document.querySelectorAll("#fields input, #fields button, #resetq"), i;
+  for (i = 0; i < q.length; i++) q[i].disabled = run;
+  var m;
+  if (run) m = "The experiment runs by itself — nothing to click. <b>Pause</b> any time.";
+  else if (RUN.state === "done") m = "Press <b>REPLAY</b> to watch it again, or change a value and run a custom experiment.";
+  else m = custom ? "Your values will be used; anything you left alone stays at the question's value." : "Nothing needs to be typed. Press <b>START EXPERIMENT</b>.";
+  $("gomsg").innerHTML = m;
+  refreshStatus();
+}
+
+/* =====================================================================
+   the answer reveal
+   ===================================================================== */
+function blink(id){
+  var e = $(id); if (!e) return;
+  e.classList.remove("blink"); void e.offsetWidth; e.classList.add("blink");
+  setTimeout(function(){ e.classList.remove("blink"); }, 2300);
+}
+function doReveal(){
+  if (!RUN.done){ earlyReveal = true; refreshGate(); return; }
+  var lab = $("lab3d");
+  lab.classList.add("dim"); $("blackout").classList.add("on");
+  setTimeout(function(){
+    $("blackout").classList.remove("on"); $("donebanner").classList.remove("on");
+    if (!REDUCED){ var f = $("flashout"); f.classList.remove("go"); void f.offsetWidth; f.classList.add("go");
+      lab.classList.remove("zoom"); void lab.offsetWidth; lab.classList.add("zoom"); }
+    RUN.revealed = true;
+    mountReveal(); refreshGate();
+    var ab = $("answerbox");
+    ab.classList.remove("celebrate"); void ab.offsetWidth; ab.classList.add("celebrate");
+    setTimeout(function(){ ab.classList.remove("celebrate"); }, 3200);
+    blink("ansval"); blink("grafT"); blink("g_v");
+    setTimeout(function(){ lab.classList.remove("dim"); }, 5200);
+  }, 950);
+}
+function mountReveal(){
+  var host = $("revealhost"), mo = RUN.truth, order = ladderText(energies(RUN.M), false);
+  host.innerHTML = ""; host.classList.add("on");
+  var main = mo.length ? (mo.length > 1 ? "OPTIONS " : "OPTION ") + optText(mo) : "NO OPTION TRUE";
+  var svg = mk("svg", { viewBox: "0 0 720 340", "class": "graf", role: "img", "aria-label": "Congratulations. Answer found: " + main + ". " + order }, host);
+  var d = mk("defs", {}, svg), sp = mk("filter", { id: "spray", x: "-14%", y: "-40%", width: "128%", height: "180%" }, d);
+  mk("feTurbulence", { type: "fractalNoise", baseFrequency: "0.045 0.09", numOctaves: "3", seed: "7", result: "nz" }, sp);
+  mk("feDisplacementMap", { "in": "SourceGraphic", in2: "nz", scale: "6", xChannelSelector: "R", yChannelSelector: "G" }, sp);
+  var bh = mk("g", {}, svg);
+  tx(svg, 360, 44, "🎉  CONGRATULATIONS!  🎉", { "text-anchor": "middle", "font-size": 21, "font-weight": 900, fill: "#3ee39a", "letter-spacing": "3" });
+  tx(svg, 360, 68, "ANSWER FOUND", { "text-anchor": "middle", "font-size": 12.5, "font-weight": 800, fill: "#9fb0cc", "letter-spacing": "5" });
+  mk("rect", { x: 150, y: 86, width: 420, height: 150, rx: 16, fill: "rgba(8,20,16,.72)", stroke: "#3ee39a", "stroke-width": 2 }, svg);
+  tx(svg, 360, 110, "ANSWER", { "text-anchor": "middle", "font-size": 12, "font-weight": 800, fill: "#9ff0c9", "letter-spacing": "6" });
+  var g = mk("g", { transform: "translate(360,188) skewX(-9)" }, svg), fs = main.length > 16 ? 42 : 56;
+  tx(g, 7, 9, main, { "text-anchor": "middle", "font-size": fs, "font-weight": 900, fill: "#a99bff", opacity: 0.34, "font-family": "ui-sans-serif,system-ui,sans-serif", filter: "url(#spray)" });
+  tx(g, 0, 0, main, { id: "grafT", "text-anchor": "middle", "font-size": fs, "font-weight": 900, fill: "#3ee39a", "font-family": "ui-sans-serif,system-ui,sans-serif", filter: "url(#spray)" });
+  tx(svg, 360, 272, order, { "text-anchor": "middle", "font-size": 19, "font-weight": 800, fill: "#eef3ff" });
+  tx(svg, 360, 300, isCustom(RUN.D) ? "your custom atom · the question's lithium gives " + ANS : "hydrogen: 2s = 2p · lithium: 2s penetrates the 1s core and drops below 2p",
+    { "text-anchor": "middle", "font-size": 12, fill: "#9fb0cc" });
+  if (!REDUCED) makeBurst(bh);
+}
+function makeBurst(host){
+  burst = [];
+  var i, n = 70, GL = ["2s", "2p", "n", "l", "●", "◆", "eV", "Z"], a, sp2, conf, node, cols = ["#3ee39a", "#a99bff", "#54a9ff", "#ff9350"];
+  for (i = 0; i < n; i++){
+    a = Math.random() * Math.PI * 2; sp2 = 90 + Math.random() * 290; conf = i % 3 === 0;
+    node = conf ? mk("rect", { x: -4, y: -3, width: 8, height: 6, rx: 1.5, fill: cols[i % 4] }, host)
+                : tx(host, 0, 0, GL[i % GL.length], { "text-anchor": "middle", "font-size": 11 + Math.random() * 8, fill: cols[i % 4], "font-weight": 800 });
+    burst.push({ n: node, x: 360, y: 170, vx: Math.cos(a) * sp2, vy: Math.sin(a) * sp2 - 70, life: 0, max: 1.4 + Math.random(), rot: Math.random() * 360, vr: (Math.random() - 0.5) * 540 });
+  }
+}
+function stepBurst(dt){
+  var i, b;
+  for (i = 0; i < burst.length; i++){
+    b = burst[i];
+    if (b.life > b.max){ b.n.setAttribute("opacity", 0); continue; }
+    b.life += dt; b.vy += 420 * dt; b.x += b.vx * dt; b.y += b.vy * dt; b.rot += b.vr * dt;
+    b.n.setAttribute("opacity", Math.max(0, 1 - b.life / b.max).toFixed(2));
+    b.n.setAttribute("transform", "translate(" + b.x.toFixed(1) + "," + b.y.toFixed(1) + ") rotate(" + b.rot.toFixed(0) + ")");
+  }
+}
+/* the header answer and the solution: locked until the run ends, or "Reveal anyway" */
+function refreshGate(){
+  var open = RUN.revealed || earlyReveal, ab = $("answerbox"), i, li, k;
+  $("solgate").hidden = open; $("solbody").hidden = !open;
+  var qtxt = ladderText(QE, false);
+  if (open){
+    ab.classList.remove("locked");
+    $("ansval").textContent = ANS;
+    $("anssub").textContent = qtxt;
+    $("revealnow").hidden = true;
+    $("solans").textContent = ANS;
+    $("clsans").textContent = ANS + " — " + qtxt;
+    $("solnums").innerHTML = "This page's solver: E<sub>2s</sub>(H) = " + f3(QE.H2s) + ", E<sub>2p</sub>(H) = " + f3(QE.H2p) + ", E<sub>2s</sub>(Li) = " + f3(QE.Li2s) + ", E<sub>2p</sub>(Li) = " + f3(QE.Li2p) + " eV";
+    $("solintro").innerHTML = RUN.revealed ? "<b>The experiment found this.</b> Here is the same result, reasoned on paper — each step points back to what you watched."
+      : "Revealed early — run the experiment to watch each of these steps happen.";
+  } else {
+    ab.classList.add("locked");
+    $("ansval").textContent = "Run the experiment";
+    $("anssub").textContent = "The answer appears when the experiment finishes.";
+    $("revealnow").hidden = false;
+    $("solans").textContent = "—"; $("clsans").textContent = "— run the experiment";
+    $("solintro").textContent = "Run the experiment — the solution opens with the answer.";
+  }
+  var lis = document.querySelectorAll("#opts li");
+  for (i = 0; i < lis.length; i++){
+    li = lis[i]; k = li.getAttribute("data-k");
+    li.classList.remove("correct", "wrong"); li.querySelector(".mark").textContent = "";
+    if (open){ var tru = QTRUE.indexOf(k) >= 0; li.classList.add(tru ? "correct" : "wrong"); li.querySelector(".mark").textContent = tru ? "correct" : "not correct"; }
+  }
+}
+
+/* =====================================================================
+   the loop - one virtual clock, so Pause and speed govern everything
+   ===================================================================== */
+var last = 0, slow = 0;
+function loop(ts){
+  var dt = last ? (ts - last) / 1000 : 0; last = ts;
+  if (dt > 0.06) dt = 0.06;
+  var running = RUN.state === "running" && !RUN.paused;
+  if (running) stepTimeline(dt * RUN.speed);
+  var st = currentState(), sg = seg();
+  if (running && sg && (sg.kind === "orb" || sg.kind === "test")) onPhase(sg, st);
+  NOW = st;
+  if (!RUN.paused) clock += dt;
+  drawChamber(st);
+  if (burst.length) stepBurst(dt);
+  slow += dt;
+  if (slow > 0.08){ slow = 0; updateReadouts(st); narrate(st); refreshStatus(); }
+  requestAnimationFrame(loop);
+}
+
+/* =====================================================================
+   wiring
+   ===================================================================== */
+function afterEdit(){ readAll(); if (RUN.state === "setup" && !sameD(RUN.D, copyST())){ RUN.D = copyST(); RUN.M = model(RUN.D); CLOUD = {}; CURVES = {}; drawRad(); drawZbar(); } refreshUI(); }
+function toggleClassroom(){
+  RUN.classroom = !RUN.classroom;
+  document.body.classList.toggle("classroom", RUN.classroom);
+  $("classbtn").setAttribute("aria-pressed", RUN.classroom ? "true" : "false");
+  $("classbtn").textContent = RUN.classroom ? "EXIT CLASSROOM MODE" : "CLASSROOM MODE";
+  if (RUN.classroom) try { $("deck").scrollIntoView({ behavior: REDUCED ? "auto" : "smooth", block: "start" }); } catch (e) {}
+}
+function build(){
+  $("fields").innerHTML = fieldsHTML();
+  var i;
+  for (i = 0; i < FIELDS.length; i++) (function(F){
+    var box = $("in_" + F.k);
+    box.addEventListener("input", function(){ readAll(); refreshUI(); });
+    box.addEventListener("change", afterEdit);
+    box.addEventListener("keydown", function(e){ if (e.key === "Enter"){ box.blur(); afterEdit(); } });
+  })(FIELDS[i]);
+  $("fields").addEventListener("click", function(ev){
+    var b = ev.target.closest ? ev.target.closest("button") : null; if (!b || b.disabled) return;
+    var k = b.getAttribute("data-k");
+    if (b.classList.contains("up")) stepField(k, 1);
+    else if (b.classList.contains("dn")) stepField(k, -1);
+    else if (b.classList.contains("rs")) setField(k, Q[k]);
+    afterEdit();
+  });
+  $("resetq").addEventListener("click", resetAll);
+  $("gobtn").addEventListener("click", function(){ if (RUN.state !== "running") startRun(); });
+  $("pausebtn").addEventListener("click", function(){ RUN.paused = !RUN.paused; refreshUI(); });
+  $("replaybtn").addEventListener("click", function(){ startRun(RUN.D); });
+  $("resetbtn").addEventListener("click", resetRun);
+  $("classbtn").addEventListener("click", toggleClassroom);
+  $("revealnow").addEventListener("click", function(){ earlyReveal = true; refreshGate(); });
+  $("gotolab").addEventListener("click", function(){ $("lab").scrollIntoView({ behavior: REDUCED ? "auto" : "smooth" }); });
+  var sb = document.querySelectorAll("#spd button");
+  for (i = 0; i < sb.length; i++) sb[i].addEventListener("click", function(){
+    RUN.speed = parseFloat(this.getAttribute("data-s"));
+    for (var j = 0; j < sb.length; j++) sb[j].setAttribute("aria-pressed", sb[j] === this ? "true" : "false");
+  });
+  $("themebtn").addEventListener("click", function(){
+    var r = document.documentElement;
+    var dark = r.getAttribute("data-theme") === "dark" || (!r.getAttribute("data-theme") && matchMedia("(prefers-color-scheme: dark)").matches);
+    r.setAttribute("data-theme", dark ? "light" : "dark");
+    drawRad(); drawZbar();
+  });
+  try { matchMedia("(prefers-color-scheme: dark)").addEventListener("change", function(){ drawRad(); drawZbar(); }); } catch (e) {}
+  readAll(); drawRad(); drawZbar(); drawLog(); refreshGate(); refreshUI();
+  requestAnimationFrame(loop);
+}
+if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", build); else build();
+
+/* exposed for the headless test harness */
+window.PX = {
+  Q: Q, ST: ST, RUN: RUN, model: model, solveOrbital: solveOrbital, truthOf: truthOf, energies: energies, holds: holds, STATEMENTS: STATEMENTS,
+  answer: function(){ return ANS; }, qtrue: function(){ return QTRUE; }, qe: function(){ return QE; }, qmodel: function(){ return QM; },
+  start: function(){ startRun(); }, replay: function(){ startRun(RUN.D); }, reset: resetRun, resetAll: resetAll,
+  pause: function(){ RUN.paused = !RUN.paused; refreshUI(); }, speed: function(s){ RUN.speed = s; },
+  typeField: function(k, s){ $("in_" + k).value = s; afterEdit(); },
+  stage: stageKey, meas: function(){ return RUN.meas; }, truth: function(){ return RUN.truth; },
+  calcKeys: function(){ return Object.keys(RUN.calc); }, now: function(){ var n = NOW; return n ? { name: n.name, f: n.f, key: n.key, opt: n.opt } : null; }
+};
+})();
+</script>
+</body>
+</html>
