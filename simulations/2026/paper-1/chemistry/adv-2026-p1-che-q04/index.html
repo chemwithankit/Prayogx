@@ -1,0 +1,1674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Spiro-lactones from LiBH₄ and BH₃: identical or diastereomers? — JEE Advanced 2026 Paper 1 Q.4 | PrayogX</title>
+<meta name="description" content="Reduce the ester with LiBH4 or the acid with BH3, let acid close each hydroxy compound to a spiro delta-lactone, then overlay the products in 3D and try the mirror image. The experiment decides whether P and Q, and R and S, are identical, enantiomers or diastereomers, and reveals the answer.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232a78d6'/%3E%3Cpath d='M12.5 6.5h7M13.6 6.5v7.2L7.9 24.1a1.5 1.5 0 0 0 1.3 2.3h13.6a1.5 1.5 0 0 0 1.3-2.3l-5.7-10.4V6.5' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M10.6 20.6h10.8' stroke='white' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E">
+<meta name="sim-id" content="ADV-2026-P1-CHE-Q04">
+<style>
+:root{
+  color-scheme: light;
+  --surface-0:#f4f4f1; --surface-1:#fcfcfb; --surface-2:#ececea;
+  --line:#d9d9d4; --line-strong:#bcbcb5;
+  --text-primary:#0b0b0b; --text-secondary:#52514e; --text-muted:#77766f;
+  --s1:#2a78d6; --s2:#eb6834; --s3:#1baf7a; --s4:#4a3aa7;
+  --good:#00743f; --bad:#c0392b; --accent:#2a78d6;
+  --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+  --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --serif:ui-serif,Georgia,"Times New Roman",serif;
+  --radius:10px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  color-scheme: dark;
+  --surface-0:#111110; --surface-1:#1a1a19; --surface-2:#232322;
+  --line:#34342f; --line-strong:#4a4a44;
+  --text-primary:#ffffff; --text-secondary:#c3c2b7; --text-muted:#95948b;
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#9085e9;
+  --good:#3fae7a; --bad:#e66767; --accent:#3987e5;
+}}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --surface-0:#111110; --surface-1:#1a1a19; --surface-2:#232322;
+  --line:#34342f; --line-strong:#4a4a44;
+  --text-primary:#ffffff; --text-secondary:#c3c2b7; --text-muted:#95948b;
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#9085e9;
+  --good:#3fae7a; --bad:#e66767; --accent:#3987e5;
+}
+*{box-sizing:border-box}
+[hidden]{display:none !important}
+body{margin:0;background:var(--surface-0);color:var(--text-primary);font-family:var(--sans);
+  font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px 80px}
+
+/* ---------- header ---------- */
+header.top{border-bottom:1px solid var(--line);background:var(--surface-1)}
+.top-inner{max-width:1180px;margin:0 auto;padding:22px 20px 18px;position:relative;
+  display:flex;flex-wrap:wrap;gap:16px;align-items:flex-start;justify-content:space-between}
+.simid{font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--text-muted)}
+h1{font-size:23px;line-height:1.25;margin:6px 0 10px;font-weight:640;max-width:660px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-size:11.5px;padding:3px 9px;border:1px solid var(--line-strong);border-radius:999px;
+  color:var(--text-secondary);background:var(--surface-2);white-space:nowrap}
+.chip.k{border-color:var(--accent);color:var(--accent);background:transparent}
+.answerbox{border:1px solid var(--line-strong);border-radius:var(--radius);background:var(--surface-2);
+  padding:12px 16px;min-width:220px}
+.answerbox .lbl{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted)}
+.answerbox .val{font-family:var(--mono);font-size:25px;font-weight:600;color:var(--good);line-height:1.22}
+.answerbox .sub{font-size:12px;color:var(--text-secondary)}
+.answerbox.locked .val{color:var(--text-muted);font-size:17px;letter-spacing:.04em}
+.answerbox .rv{margin-top:6px;font-size:11px;background:none;border:none;padding:0;color:var(--accent);
+  cursor:pointer;text-decoration:underline;font-family:var(--sans)}
+.themebtn{position:absolute;top:14px;right:16px;border:1px solid var(--line-strong);background:var(--surface-2);
+  color:var(--text-secondary);border-radius:8px;padding:4px 9px;font-size:12px;cursor:pointer}
+.brandbar{display:flex;align-items:center;gap:8px;margin-bottom:9px}
+.brandbar .pxmark{width:21px;height:21px;flex:none;display:block}
+.brandbar .wm{font-size:13px;font-weight:800;letter-spacing:.17em;color:var(--text-secondary);line-height:1}
+.brandbar .wm i{font-style:normal;color:var(--accent)}
+
+nav.jump{position:sticky;top:0;z-index:20;background:var(--surface-0);border-bottom:1px solid var(--line);
+  padding:8px 0;margin-bottom:26px}
+nav.jump ul{max-width:1180px;margin:0 auto;padding:0 20px;list-style:none;display:flex;gap:4px;overflow-x:auto}
+nav.jump a{display:block;padding:5px 11px;border-radius:7px;font-size:13px;text-decoration:none;
+  color:var(--text-secondary);white-space:nowrap}
+nav.jump a:hover{background:var(--surface-2);color:var(--text-primary)}
+
+section{margin:0 0 42px;scroll-margin-top:56px}
+h2{font-size:17px;font-weight:640;margin:0 0 4px;display:flex;align-items:baseline;gap:9px;flex-wrap:wrap}
+h2 .n{font-family:var(--mono);font-size:12px;color:var(--text-muted);font-weight:400}
+h2 .vb{font-size:12px;color:var(--text-muted);font-weight:400}
+h2.big{font-size:20px;letter-spacing:.02em}
+.lede{color:var(--text-secondary);font-size:13.5px;margin:0 0 16px;max-width:78ch}
+.panel{background:var(--surface-1);border:1px solid var(--line);border-radius:var(--radius);padding:18px}
+.panel h3{margin:0 0 12px;font-size:13px;letter-spacing:.05em;text-transform:uppercase;color:var(--text-muted);font-weight:600}
+.qtext{font-family:var(--serif);font-size:16px;line-height:1.7}
+.opts{list-style:none;padding:0;margin:14px 0 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(150px,100%),1fr));gap:9px}
+.opts li{border:1px solid var(--line);border-radius:10px;padding:9px 12px;background:var(--surface-1);
+  display:flex;align-items:baseline;gap:10px;font-family:var(--serif);font-size:16px}
+.opts li .k{font-family:var(--mono);font-size:12.5px;color:var(--text-muted)}
+.opts li .mark{margin-left:auto;font-family:var(--sans);font-size:11.5px;font-weight:600}
+.opts li.correct{border-color:var(--good);background:color-mix(in srgb,var(--good) 11%,transparent)}
+.opts li.correct .mark{color:var(--good)}
+.opts li.wrong{border-color:var(--bad)} .opts li.wrong .mark{color:var(--bad)}
+.assume{border-left:3px solid var(--s4);padding:8px 0 8px 13px;margin:14px 0 0;font-size:13.5px;color:var(--text-secondary)}
+.assume b{color:var(--text-primary)}
+
+/* ---------- the dashboard ---------- */
+.deck{border:1px solid var(--line);border-radius:var(--radius);padding:14px;
+  background:linear-gradient(180deg,var(--surface-1),color-mix(in srgb,var(--surface-2) 55%,var(--surface-1)));
+  box-shadow:0 1px 2px rgba(0,0,0,.04),0 10px 26px -18px rgba(0,0,0,.35)}
+.statusbar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding-bottom:11px;border-bottom:1px solid var(--line);margin-bottom:12px}
+.xstat{display:flex;align-items:center;gap:8px;font-size:12.5px;font-weight:700;letter-spacing:.03em;
+  padding:5px 12px;border-radius:999px;border:1px solid var(--line-strong);background:var(--surface-1);color:var(--text-secondary)}
+.xstat .dot{width:9px;height:9px;border-radius:50%;background:var(--text-muted)}
+.xstat.run .dot{background:var(--accent);animation:pulse 1.2s ease-in-out infinite}
+.xstat.ana .dot{background:var(--s4);animation:pulse 1.2s ease-in-out infinite}
+.xstat.done{border-color:var(--good);color:var(--good);background:color-mix(in srgb,var(--good) 10%,transparent)}
+.xstat.done .dot{background:var(--good)}
+@keyframes pulse{50%{opacity:.25}}
+.stages{display:flex;gap:5px;flex-wrap:wrap}
+.stages span{font-size:11px;padding:3px 9px;border-radius:999px;border:1px solid var(--line);color:var(--text-muted);white-space:nowrap}
+.stages span.now{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:650}
+.stages span.done{border-color:var(--good);color:var(--good)}
+.statusbar .sp{flex:1}
+.guide{font-size:12px;color:var(--text-muted)}
+
+.grid1{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:13px;align-items:start}
+.grid2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:13px;margin-top:13px}
+.grid1>*,.grid2>*{min-width:0}
+@media(max-width:960px){.grid1,.grid2{grid-template-columns:1fr !important}}
+
+/* the always-dark chamber */
+.lab3d{position:relative;border-radius:12px;padding:12px;overflow:hidden;
+  background:radial-gradient(90% 70% at 18% 8%,rgba(84,169,255,.16),transparent 60%),
+    radial-gradient(80% 70% at 88% 92%,rgba(255,147,80,.12),transparent 62%),
+    linear-gradient(170deg,#0d1322 0%,#070a12 55%,#0a0e1a 100%);
+  border:1px solid rgba(150,180,255,.16);box-shadow:inset 0 1px 0 rgba(255,255,255,.07),0 18px 40px -26px rgba(0,0,0,.9);
+  color:#eef3ff}
+.lab3d:before{content:"";position:absolute;inset:0;pointer-events:none;
+  background:repeating-linear-gradient(0deg,rgba(255,255,255,.028) 0 1px,transparent 1px 3px);opacity:.5;mix-blend-mode:overlay}
+.lab3d>*{position:relative}
+.lab3d .hd{display:flex;align-items:baseline;gap:9px;flex-wrap:wrap;margin-bottom:5px}
+.lab3d .hd h3{margin:0;font-size:11.5px;letter-spacing:.11em;text-transform:uppercase;color:#8fa6c9;font-weight:700}
+.lab3d .hd .st{font-size:10.5px;font-family:var(--mono);color:#9fb0cc;border:1px solid rgba(160,190,255,.2);border-radius:999px;padding:1px 8px}
+.lab3d .narr{font-size:12.5px;color:#c3d2ea;margin:0 0 8px;min-height:2.8em;line-height:1.42}
+.lab3d .narr b{color:#fff;font-family:var(--mono);font-weight:650}
+.lab3d .narr .a{color:#6fb6ff;font-weight:700} .lab3d .narr .o{color:#ffa56a;font-weight:700}
+.lab3d .narr .gd{color:#3ee39a;font-weight:700}
+.vwrap{position:relative;perspective:1000px}
+canvas#flask{display:block;width:100%;height:auto;border-radius:10px;transform:rotateX(2.5deg);transform-origin:50% 100%}
+@media(max-width:560px){.vwrap{overflow:hidden}canvas#flask{width:128%;max-width:none;margin-left:-14%}}
+@media(prefers-reduced-motion:reduce){canvas#flask{transform:none}}
+.done-banner{position:absolute;left:50%;top:14px;transform:translateX(-50%) scale(.92);opacity:0;pointer-events:none;
+  background:rgba(10,30,24,.8);border:1px solid rgba(62,227,154,.6);color:#dfffee;border-radius:12px;padding:8px 18px;
+  font-weight:800;letter-spacing:.1em;font-size:14px;box-shadow:0 0 28px -6px rgba(62,227,154,.7);transition:.45s;white-space:nowrap}
+.done-banner.on{opacity:1;transform:translateX(-50%) scale(1)}
+.revealhost{position:absolute;inset:0;display:none;align-items:center;justify-content:center;z-index:6}
+.revealhost.on{display:flex}
+svg.graf{display:block;width:100%;height:auto}
+.blackout{position:absolute;inset:0;background:#000;opacity:0;pointer-events:none;transition:opacity .45s;z-index:4;border-radius:12px}
+.blackout.on{opacity:.86}
+.flashout{position:absolute;inset:0;background:radial-gradient(circle at 50% 45%,rgba(255,255,255,.95),rgba(120,255,200,.5) 35%,transparent 70%);
+  opacity:0;pointer-events:none;z-index:5;border-radius:12px}
+@keyframes flashpop{0%{opacity:0}18%{opacity:1}100%{opacity:0}}
+.flashout.go{animation:flashpop .85s ease-out 1}
+@media(prefers-reduced-motion:reduce){.flashout.go{animation:none}.blackout{transition:none}}
+.dim canvas#flask{filter:brightness(.4) saturate(.8)}
+@media(prefers-reduced-motion:no-preference){.zoom{animation:zoomin 1.1s ease-out 1}}
+@keyframes zoomin{0%{transform:scale(1)}40%{transform:scale(1.035)}100%{transform:scale(1)}}
+
+/* the rail: inputs + live data */
+.rail{border:1px solid var(--line);border-radius:12px;padding:11px 12px;
+  background:color-mix(in srgb,var(--surface-1) 82%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  box-shadow:inset 0 1px 0 color-mix(in srgb,#fff 40%,transparent),0 8px 24px -18px rgba(0,0,0,.4);
+  display:flex;flex-direction:column;gap:9px}
+.rail h4{margin:0;font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--text-muted);font-weight:700}
+.rail .grp{border-top:1px dashed var(--line);padding-top:9px}
+.status{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:750;letter-spacing:.04em;border-radius:8px;padding:6px 9px;
+  border:1px solid var(--good);color:var(--good);background:color-mix(in srgb,var(--good) 10%,transparent)}
+.status.custom{border-color:var(--s4);color:var(--s4);background:color-mix(in srgb,var(--s4) 10%,transparent)}
+.fld{margin:7px 0 0}
+.fld .lb{display:flex;justify-content:space-between;align-items:baseline;gap:6px;font-size:12px;margin-bottom:4px;color:var(--text-secondary)}
+.fld .lb b{font-weight:600;color:var(--text-primary);font-family:var(--serif);font-size:13.5px}
+.fld .lb .u{font-size:10.5px;color:var(--text-muted);font-family:var(--mono);flex:none}
+.fld .rw{display:flex;gap:5px;align-items:center}
+.fld .rw input{flex:1;min-width:0;padding:6px 8px;border-radius:7px;border:1px solid var(--line-strong);background:var(--surface-0);
+  color:var(--text-primary);font-family:var(--mono);font-size:13.5px;text-align:center;font-weight:600}
+.fld .rw input:focus{outline:2px solid var(--accent);outline-offset:-1px}
+.fld .rw input.bad{border-color:var(--bad);background:color-mix(in srgb,var(--bad) 10%,transparent)}
+.fld .rw input:disabled{opacity:.55}
+.fld .rw button{flex:none;width:34px;height:34px;border-radius:7px;border:1px solid var(--line-strong);background:var(--surface-2);
+  color:var(--text-primary);font-size:16px;line-height:1;cursor:pointer;font-family:var(--mono);touch-action:manipulation}
+.fld .rw button.rs{font-size:13px}
+.fld .rw button:hover:not(:disabled){border-color:var(--accent);color:var(--accent)}
+.fld .rw button:disabled{opacity:.4;cursor:not-allowed}
+.fld .fh{font-size:10.5px;color:var(--text-muted);margin-top:2px;line-height:1.35;min-height:1.35em}
+.fld .fh.bad{color:var(--bad);font-weight:650}
+.railnote{font-size:11px;color:var(--text-muted);line-height:1.45;margin:0}
+button.resetq{width:100%;padding:8px 10px;border-radius:9px;border:1px solid var(--line-strong);background:var(--surface-2);
+  color:var(--text-primary);font-size:12.5px;font-weight:650;cursor:pointer;font-family:var(--sans)}
+button.resetq:hover{border-color:var(--accent);color:var(--accent)}
+.gauges{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(104px,100%),1fr));gap:6px}
+.gz{border:1px solid var(--line);border-radius:9px;background:var(--surface-2);padding:5px 8px;overflow:hidden}
+.gz .k{font-size:9.5px;letter-spacing:.04em;text-transform:uppercase;color:var(--text-muted);font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.gz .v{font-family:var(--mono);font-size:16px;font-weight:700;line-height:1.25;white-space:nowrap}
+.gz .u{font-size:9.5px;color:var(--text-muted);font-weight:400}
+.gz.a .v{color:var(--s1)} .gz.o .v{color:var(--s2)}
+.gz.hot{border-color:var(--good);background:color-mix(in srgb,var(--good) 11%,transparent)} .gz.hot .v{color:var(--good)}
+
+/* graphs */
+.graphcard{border:1px solid var(--line);border-radius:12px;background:var(--surface-1);padding:12px 14px}
+.graphcard h4{margin:0 0 4px;font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--text-muted);font-weight:700}
+.graphcard .gsub{font-size:11.5px;color:var(--text-muted);margin:0 0 4px}
+.chartwrap{position:relative}
+svg.chart{display:block;width:100%;height:auto;overflow:visible}
+.tip{position:absolute;pointer-events:none;background:var(--surface-1);border:1px solid var(--line-strong);border-radius:8px;padding:7px 10px;
+  font-size:12px;box-shadow:0 4px 14px rgba(0,0,0,.13);opacity:0;transition:opacity .1s;z-index:5;min-width:140px}
+.tip .t{font-family:var(--mono);font-size:11px;color:var(--text-muted);margin-bottom:3px}
+.tip .r{display:flex;gap:7px;white-space:nowrap} .tip .rv{margin-left:auto;font-family:var(--mono);font-weight:600}
+details.tbl{margin-top:6px;font-size:12.5px} details.tbl summary{cursor:pointer;color:var(--text-secondary)}
+
+/* calculation panel */
+.calc{margin-top:13px;border:1px solid var(--line);border-radius:12px;padding:12px 14px;
+  background:linear-gradient(180deg,var(--surface-1),var(--surface-2))}
+.calc .bt{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--text-muted);font-weight:700;margin-bottom:6px}
+.calc ol{list-style:none;margin:0;padding:0;display:grid;gap:5px}
+.calc li{display:grid;grid-template-columns:auto minmax(0,1fr);gap:10px;align-items:baseline;animation:cin .45s ease-out}
+@keyframes cin{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.calc li{animation:none}}
+.calc li .s{font-family:var(--mono);font-size:10.5px;color:#fff;background:var(--accent);border-radius:999px;padding:1px 7px;font-weight:700}
+.calc li .m{font-family:var(--serif);font-size:16px;line-height:1.55;min-width:0;overflow-x:auto}
+.calc li .m .w{display:block;font-family:var(--sans);font-size:11.5px;color:var(--text-muted)}
+.calc li .m .hl{color:var(--good);font-weight:700}
+.calc li .m .ar{color:var(--s1);font-weight:700} .calc li .m .or{color:var(--s2);font-weight:700}
+.calc .empty{font-size:12.5px;color:var(--text-muted);margin:0}
+table.data{border-collapse:collapse;font-size:12.5px;width:100%}
+table.data th,table.data td{border:1px solid var(--line-strong);padding:5px 8px;text-align:center}
+table.data th{background:var(--surface-2);font-weight:600;font-size:11.5px;color:var(--text-secondary)}
+table.data td.n{font-family:var(--mono)}
+tr.win td{background:color-mix(in srgb,var(--good) 12%,transparent);font-weight:700}
+.scrollx{overflow-x:auto}
+
+/* action bar */
+.actbar{display:flex;gap:9px;align-items:center;flex-wrap:wrap;margin-top:12px}
+button.go{flex:none;padding:13px 24px;border-radius:11px;border:none;background:var(--accent);color:#fff;font-size:15px;font-weight:780;
+  cursor:pointer;font-family:var(--sans);letter-spacing:.04em;box-shadow:0 4px 16px -6px color-mix(in srgb,var(--accent) 75%,transparent);transition:.18s}
+button.go:hover:not(:disabled){filter:brightness(1.09);transform:translateY(-1px)}
+button.go:disabled{opacity:.42;cursor:not-allowed;box-shadow:none;transform:none}
+button.go.custom{background:var(--s4)}
+button.ghost{flex:none;padding:8px 13px;border-radius:9px;border:1px solid var(--line-strong);background:var(--surface-1);color:var(--text-secondary);
+  font-size:12.5px;cursor:pointer;font-family:var(--sans);min-height:36px}
+button.ghost:hover:not(:disabled){border-color:var(--accent);color:var(--accent)}
+button.ghost:disabled{opacity:.4;cursor:not-allowed}
+button.ghost[aria-pressed=true]{border-color:var(--accent);color:var(--accent);background:color-mix(in srgb,var(--accent) 10%,transparent)}
+.spd{display:flex;gap:4px}
+.spd button{padding:7px 10px;font-size:11.5px;border-radius:7px;border:1px solid var(--line-strong);background:var(--surface-1);color:var(--text-secondary);cursor:pointer;font-family:var(--mono)}
+.spd button[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:#fff}
+.actbar .msg{flex:1 1 220px;min-width:0;font-size:12px;color:var(--text-secondary);line-height:1.4}
+.actbar .msg b{color:var(--text-primary)}
+
+@keyframes popblink{0%{transform:scale(1)} 12%{transform:scale(1.16)} 24%{transform:scale(1)}
+  38%{opacity:.2} 50%{opacity:1} 64%{opacity:.2} 76%{opacity:1} 88%{transform:scale(1.07)} 100%{transform:scale(1);opacity:1}}
+.blink{animation:popblink 2s ease-in-out 1;display:inline-block}
+@keyframes ringpulse{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--good) 55%,transparent)} 70%{box-shadow:0 0 0 14px transparent} 100%{box-shadow:0 0 0 0 transparent}}
+.celebrate{animation:ringpulse 1.5s ease-out 2}
+@media(prefers-reduced-motion:reduce){.blink,.celebrate,.zoom{animation:none}}
+
+/* solution + help */
+.gate{border:1px dashed var(--line-strong);border-radius:var(--radius);padding:24px 20px;text-align:center;background:var(--surface-1)}
+.gate h4{margin:0 0 6px;font-size:15px} .gate p{margin:0 0 12px;font-size:13px;color:var(--text-secondary)}
+ol.steps{list-style:none;counter-reset:s;padding:0;margin:0;display:grid;gap:10px}
+ol.steps li{min-width:0;counter-increment:s;border:1px solid var(--line);border-radius:var(--radius);background:var(--surface-1);
+  padding:14px 16px 14px 52px;position:relative}
+ol.steps li::before{content:counter(s);position:absolute;left:15px;top:14px;width:23px;height:23px;border-radius:50%;background:var(--accent);
+  color:#fff;font-size:12px;font-weight:700;display:grid;place-items:center;font-family:var(--mono)}
+ol.steps h4{margin:0 0 6px;font-size:14px;font-weight:640}
+ol.steps p{margin:0 0 6px;font-size:13.5px;color:var(--text-secondary)}
+.eq{min-width:0;font-family:var(--serif);font-size:15.5px;background:var(--surface-2);border-radius:7px;padding:9px 13px;margin:8px 0;overflow-x:auto}
+.eq .hl{color:var(--good);font-weight:700}
+.obsnote{border-left:3px solid var(--s1);padding:6px 0 6px 12px;margin:8px 0;font-size:13px;color:var(--text-secondary)}
+.obsnote b{color:var(--text-primary)}
+sub{font-size:.72em} sup{font-size:.72em}
+.verify{border:1px solid var(--good);border-radius:var(--radius);margin-top:12px;background:color-mix(in srgb,var(--good) 8%,transparent);padding:14px 16px;font-size:13.5px}
+.verify h4{margin:0 0 6px;font-size:13.5px;color:var(--good)}
+.verify ul{margin:6px 0 0;padding-left:18px;color:var(--text-secondary)} .verify li{margin-bottom:4px}
+.howto{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(250px,100%),1fr));gap:11px}
+.howto>div{border:1px solid var(--line);border-radius:11px;padding:12px 14px;background:linear-gradient(180deg,var(--surface-1),var(--surface-2))}
+.howto .n{font-family:var(--mono);font-size:10.5px;color:var(--accent);letter-spacing:.1em;font-weight:700}
+.howto h4{margin:3px 0 6px;font-size:14px}
+.howto p{margin:0;font-size:13px;color:var(--text-secondary);line-height:1.5}
+.howto p b{color:var(--text-primary)}
+.meta-tbl{width:100%;border-collapse:collapse;font-size:13.5px}
+.meta-tbl th,.meta-tbl td{padding:6px 0;border-bottom:1px solid var(--line);vertical-align:top;text-align:left}
+.meta-tbl th{color:var(--text-muted);width:150px;font-size:12.5px;padding-right:14px;font-weight:500}
+footer{border-top:1px solid var(--line);margin-top:40px;padding-top:16px;font-size:12px;color:var(--text-muted)}
+
+/* classroom mode */
+body.classroom nav.jump,body.classroom section:not(#lab),body.classroom header.top .chips,body.classroom footer,
+body.classroom .rail .inputs,body.classroom .spd,body.classroom details.tbl,body.classroom #lab>.lede{display:none !important}
+body.classroom .wrap{max-width:none;padding-left:18px;padding-right:18px}
+body.classroom .lab3d .narr{font-size:20px;line-height:1.45;color:#e8f0ff}
+body.classroom .lab3d .hd h3{font-size:15px}
+body.classroom .gz .v{font-size:24px} body.classroom .gz .k{font-size:12px}
+body.classroom .calc li .m{font-size:25px} body.classroom .calc li .m .w{font-size:15px}
+body.classroom .xstat{font-size:16px} body.classroom .stages span{font-size:14px}
+body.classroom button.go{font-size:19px;padding:16px 30px}
+body.classroom .graphcard h4{font-size:13px}
+body.classroom .actbar .msg{font-size:15px}
+
+/* Q03 additions */
+.fgrid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0 8px}
+.fgrid>*{min-width:0}
+.fld .rw input{width:100%}
+.fgrid .fld.full{grid-column:1/-1}
+.fld.half .rw button.rs{display:none}
+.fld.half .fh{font-size:10px}
+.chem{font-family:var(--serif);white-space:nowrap}
+#opts{grid-template-columns:1fr}
+#opts li{flex-wrap:wrap}
+@media(max-width:560px){.vwrap{overflow:visible}canvas#flask{width:100%;margin-left:0}}
+.rankline{font-family:var(--serif);font-size:17px;font-weight:700}
+.legend{display:flex;flex-wrap:wrap;gap:4px 12px;font-size:11.5px;color:var(--text-secondary);margin:2px 0 4px}
+.legend i{display:inline-block;width:14px;height:3px;border-radius:2px;vertical-align:middle;margin-right:5px}
+.shapes{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(170px,100%),1fr));gap:9px;margin:8px 0}
+.shapes>div{border:1px solid var(--line);border-radius:9px;padding:9px 11px;background:var(--surface-1);font-size:13px;color:var(--text-secondary)}
+.shapes b{color:var(--text-primary);font-family:var(--serif);font-size:15px}
+
+/* Q04 additions */
+.scheme{display:block;width:100%;max-width:860px;height:auto;margin:10px auto 4px}
+.scheme text{font-family:ui-sans-serif,system-ui,Helvetica,Arial,sans-serif;fill:var(--text-primary)}
+.scheme .bd{stroke:var(--text-primary);stroke-width:2.2;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.scheme .wd{fill:var(--text-primary)}
+.sel{width:100%;padding:7px 8px;border-radius:7px;border:1px solid var(--line-strong);background:var(--surface-0);color:var(--text-primary);font-size:13px;font-family:var(--sans)}
+.sel:disabled{opacity:.55}
+.verdict{display:inline-block;padding:1px 8px;border-radius:999px;font-weight:750;font-size:12px;border:1px solid var(--good);color:var(--good)}
+.vs{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(230px,100%),1fr));gap:9px;margin:8px 0}
+.vs>div{border:1px solid var(--line);border-radius:9px;padding:9px 11px;background:var(--surface-1);font-size:13px;color:var(--text-secondary)}
+.vs b{color:var(--text-primary)}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-inner">
+    <div>
+      <div class="brandbar"><svg class="pxmark" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><rect width="32" height="32" rx="8" fill="var(--accent)"/><path d="M12.5 6.5h7M13.6 6.5v7.2L7.9 24.1a1.5 1.5 0 0 0 1.3 2.3h13.6a1.5 1.5 0 0 0 1.3-2.3l-5.7-10.4V6.5" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.6 20.6h10.8" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg><span class="wm">PRAYOG<i>X</i></span></div>
+      <div class="simid">ADV-2026-P1-CHE-Q04</div>
+      <h1>Two reagents, one half-ester: do the lactones they make superimpose?</h1>
+      <div class="chips">
+        <span class="chip">JEE Advanced 2026</span>
+        <span class="chip">Paper 1 · Q.4</span>
+        <span class="chip">Chemistry</span>
+        <span class="chip">Stereochemistry · chemoselective reduction</span>
+        <span class="chip">Single correct</span>
+        <span class="chip">+3 / 0 / −1</span>
+        <span class="chip k">Press start · watch it happen</span>
+      </div>
+    </div>
+    <div class="answerbox locked" id="answerbox">
+      <div class="lbl">Answer</div>
+      <div class="val" id="ansval">Run the experiment</div>
+      <div class="sub" id="anssub">The answer appears when the experiment finishes.</div>
+      <button class="rv" id="revealnow" type="button">Reveal anyway</button>
+    </div>
+    <button class="themebtn" id="themebtn" type="button">◐ theme</button>
+  </div>
+</header>
+
+<nav class="jump">
+  <ul>
+    <li><a href="#question">Question</a></li>
+    <li><a href="#lab">Interactive experiment</a></li>
+    <li><a href="#solution">Detailed solution</a></li>
+    <li><a href="#howto">How to use this simulation</a></li>
+  </ul>
+</nav>
+
+<div class="wrap">
+
+<section id="question">
+  <h2><span class="n">Q</span>The question <span class="vb">— verbatim</span></h2>
+  <p class="lede">JEE (Advanced) 2026, Paper 1, Chemistry, Section 1 — single correct option,
+     +3 for the correct option, 0 if unanswered, −1 otherwise.</p>
+  <div class="panel">
+    <div class="qtext">
+      <p><b>Q.4</b>&nbsp; Considering LiBH<sub>4</sub> reduces an ester group to the corresponding alcohol and does not
+         reduce a carboxylic acid group, the correct statement about the major products <b>P</b>, <b>Q</b>, <b>R</b> and <b>S</b> is</p>
+    </div>
+<svg class="scheme" viewBox="200 0 540 430" role="img" aria-label="Reaction scheme: the top cyclobutane (CH3 wedge on the carbon next to the quaternary carbon, which carries a wedged CH2CO2Et and a hashed CH2CO2H) gives P with LiBH4 then H+ and Q with BH3 then H+; the bottom cyclobutane (CH3 wedge on the carbon opposite the quaternary carbon, same two arms) gives R with LiBH4 then H+ and S with BH3 then H+">
+<line class="bd" x1="447.5" y1="41.0" x2="411.8" y2="74.6"/>
+<line class="bd" x1="411.8" y1="74.6" x2="447.5" y2="110.3"/>
+<line class="bd" x1="447.5" y1="110.3" x2="483.2" y2="74.6"/>
+<line class="bd" x1="483.2" y1="74.6" x2="447.5" y2="41.0"/>
+<polygon class="wd" points="483.2,74.6 514.7,77.6 514.7,71.6"/>
+<text x="535.7" y="79.6" font-size="15" text-anchor="middle" font-weight="400">CH<tspan dy="4" font-size="11">3</tspan></text>
+<polygon class="wd" points="447.5,110.3 403.9,135.1 407.1,140.1"/>
+<line class="bd" x1="405.5" y1="137.6" x2="404.7" y2="175.4"/>
+<text x="393.5" y="191.4" font-size="15" text-anchor="middle" font-weight="400">EtO<tspan dy="4" font-size="11">2</tspan><tspan dy="-4">C</tspan></text>
+<line class="bd" style="stroke-width:1.6" x1="454.8" y1="114.2" x2="454.2" y2="115.1"/>
+<line class="bd" style="stroke-width:1.6" x1="462.1" y1="118.0" x2="460.9" y2="119.9"/>
+<line class="bd" style="stroke-width:1.6" x1="469.4" y1="121.9" x2="467.6" y2="124.7"/>
+<line class="bd" style="stroke-width:1.6" x1="476.7" y1="125.7" x2="474.3" y2="129.5"/>
+<line class="bd" style="stroke-width:1.6" x1="484.0" y1="129.6" x2="481.0" y2="134.3"/>
+<line class="bd" style="stroke-width:1.6" x1="491.3" y1="133.5" x2="487.7" y2="139.1"/>
+<line class="bd" x1="491.6" y1="137.6" x2="491.6" y2="175.4"/>
+<text x="501.6" y="191.4" font-size="15" text-anchor="middle" font-weight="400">CO<tspan dy="4" font-size="11">2</tspan><tspan dy="-4">H</tspan></text>
+<line class="bd" x1="380.0" y1="120.0" x2="265.0" y2="120.0"/>
+<polygon class="wd" points="265.0,120.0 276.0,115.5 276.0,124.5"/>
+<text x="322.5" y="86.0" font-size="14" text-anchor="middle" font-weight="400">1. LiBH<tspan dy="4" font-size="10">4</tspan></text>
+<text x="322.5" y="106.0" font-size="14" text-anchor="middle" font-weight="400">2. H<tspan dy="-6" font-size="10">+</tspan></text>
+<line class="bd" x1="560.0" y1="120.0" x2="675.0" y2="120.0"/>
+<polygon class="wd" points="675.0,120.0 664.0,115.5 664.0,124.5"/>
+<text x="617.5" y="86.0" font-size="14" text-anchor="middle" font-weight="400">1. BH<tspan dy="4" font-size="10">3</tspan></text>
+<text x="617.5" y="106.0" font-size="14" text-anchor="middle" font-weight="400">2. H<tspan dy="-6" font-size="10">+</tspan></text>
+<text x="235.0" y="127.0" font-size="24" text-anchor="middle" font-weight="800">P</text>
+<text x="705.0" y="127.0" font-size="24" text-anchor="middle" font-weight="800">Q</text>
+<line class="bd" x1="448.8" y1="264.8" x2="413.9" y2="301.3"/>
+<line class="bd" x1="413.9" y1="301.3" x2="448.8" y2="336.2"/>
+<line class="bd" x1="448.8" y1="336.2" x2="484.0" y2="301.3"/>
+<line class="bd" x1="484.0" y1="301.3" x2="448.8" y2="264.8"/>
+<polygon class="wd" points="448.8,264.8 451.8,229.9 445.8,229.9"/>
+<text x="458.0" y="224.4" font-size="15" text-anchor="middle" font-weight="400">CH<tspan dy="4" font-size="11">3</tspan></text>
+<polygon class="wd" points="448.8,336.2 403.9,360.9 407.1,366.0"/>
+<line class="bd" x1="405.5" y1="363.5" x2="404.7" y2="401.3"/>
+<text x="393.5" y="417.3" font-size="15" text-anchor="middle" font-weight="400">EtO<tspan dy="4" font-size="11">2</tspan><tspan dy="-4">C</tspan></text>
+<line class="bd" style="stroke-width:1.6" x1="455.9" y1="340.0" x2="455.3" y2="341.0"/>
+<line class="bd" style="stroke-width:1.6" x1="463.0" y1="343.9" x2="461.8" y2="345.8"/>
+<line class="bd" style="stroke-width:1.6" x1="470.1" y1="347.8" x2="468.3" y2="350.6"/>
+<line class="bd" style="stroke-width:1.6" x1="477.2" y1="351.6" x2="474.8" y2="355.4"/>
+<line class="bd" style="stroke-width:1.6" x1="484.3" y1="355.5" x2="481.3" y2="360.2"/>
+<line class="bd" style="stroke-width:1.6" x1="491.4" y1="359.3" x2="487.8" y2="365.0"/>
+<line class="bd" x1="491.6" y1="363.5" x2="491.6" y2="401.3"/>
+<text x="501.6" y="417.3" font-size="15" text-anchor="middle" font-weight="400">CO<tspan dy="4" font-size="11">2</tspan><tspan dy="-4">H</tspan></text>
+<line class="bd" x1="380.0" y1="345.0" x2="265.0" y2="345.0"/>
+<polygon class="wd" points="265.0,345.0 276.0,340.5 276.0,349.5"/>
+<text x="322.5" y="311.0" font-size="14" text-anchor="middle" font-weight="400">1. LiBH<tspan dy="4" font-size="10">4</tspan></text>
+<text x="322.5" y="331.0" font-size="14" text-anchor="middle" font-weight="400">2. H<tspan dy="-6" font-size="10">+</tspan></text>
+<line class="bd" x1="560.0" y1="345.0" x2="675.0" y2="345.0"/>
+<polygon class="wd" points="675.0,345.0 664.0,340.5 664.0,349.5"/>
+<text x="617.5" y="311.0" font-size="14" text-anchor="middle" font-weight="400">1. BH<tspan dy="4" font-size="10">3</tspan></text>
+<text x="617.5" y="331.0" font-size="14" text-anchor="middle" font-weight="400">2. H<tspan dy="-6" font-size="10">+</tspan></text>
+<text x="235.0" y="352.0" font-size="24" text-anchor="middle" font-weight="800">R</text>
+<text x="705.0" y="352.0" font-size="24" text-anchor="middle" font-weight="800">S</text>
+</svg>
+
+    <ul class="opts" id="opts">
+      <li data-k="A"><span class="k">(A)</span><span><b>P</b> &amp; <b>Q</b> are identical, and <b>R</b> &amp; <b>S</b> are diastereomers.</span><span class="mark"></span></li>
+      <li data-k="B"><span class="k">(B)</span><span><b>P</b> &amp; <b>Q</b> are diastereomers, and <b>R</b> &amp; <b>S</b> are identical.</span><span class="mark"></span></li>
+      <li data-k="C"><span class="k">(C)</span><span><b>P</b> &amp; <b>Q</b> are diastereomers, and <b>R</b> &amp; <b>S</b> are diastereomers.</span><span class="mark"></span></li>
+      <li data-k="D"><span class="k">(D)</span><span><b>P</b> &amp; <b>Q</b> are identical, and <b>R</b> &amp; <b>S</b> are identical.</span><span class="mark"></span></li>
+    </ul>
+    <div class="assume"><b>What is being asked.</b> Each substrate carries two different arms on the same ring carbon — an
+      <b>ester</b> arm (wedge, toward you) and an <b>acid</b> arm (hash, away from you). LiBH<sub>4</sub> reduces only the
+      ester; BH<sub>3</sub> reduces only the acid. Either way the new CH<sub>2</sub>OH finds the other arm's C=O, and the
+      acid workup (H<sup>+</sup>) closes a six-membered <b>lactone</b> (a cyclic ester). The two reagents close that ring
+      in opposite directions. <b>Identical</b> means the two products can be turned to lie exactly on top of each other;
+      <b>enantiomers</b> are non-superimposable mirror images; <b>diastereomers</b> are stereoisomers that are neither.
+      The experiment makes all four lactones and tests exactly that.</div>
+  </div>
+</section>
+
+<section id="lab">
+  <h2 class="big"><span class="n">01</span>Interactive experiment</h2>
+  <p class="lede">A reaction flask and an overlay bench. Press <b>START</b> — for each substrate the experiment runs
+     LiBH<sub>4</sub> then H<sup>+</sup>, and BH<sub>3</sub> then H<sup>+</sup>, builds both lactones in 3D, lays one on top
+     of the other in the best possible orientation, then tries the mirror image. Then it names each pair and finds the
+     matching option.</p>
+
+  <div class="deck" id="deck">
+    <div class="statusbar">
+      <span class="xstat" id="xstat"><span class="dot"></span><span id="xstattxt">Ready</span></span>
+      <div class="stages" id="stages">
+        <span data-s="prep">Prepare</span><span data-s="reduce">Reduce</span><span data-s="lactone">Lactonise</span>
+        <span data-s="overlay">Overlay</span><span data-s="mirror">Mirror test</span><span data-s="analyse">Classify</span><span data-s="calc">Calculate</span><span data-s="answer">Answer</span>
+      </div>
+      <span class="sp"></span>
+      <span class="guide" id="guide">Set your values or use the question defaults.</span>
+    </div>
+
+    <div class="grid1">
+      <div class="lab3d" id="lab3d">
+        <div class="hd">
+          <h3 id="scenet">Reaction flask and overlay bench</h3>
+          <span class="st" id="trialtag">no substrate yet</span>
+        </div>
+        <p class="narr" id="narr" aria-live="polite">Two substrates wait on the bench. The question's structures are
+           already loaded — press <b>START EXPERIMENT</b>.</p>
+        <div class="vwrap">
+          <canvas id="flask" width="1040" height="620" role="img"
+                  aria-label="3D ball-and-stick models of the cyclobutane substrates and their spiro lactones, drawn as they are reduced, close to lactones and are laid on top of each other to test whether they superimpose"></canvas>
+          <div class="done-banner" id="donebanner">✓ EXPERIMENT COMPLETE</div>
+          <div class="revealhost" id="revealhost"></div>
+        </div>
+        <div class="blackout" id="blackout"></div>
+        <div class="flashout" id="flashout"></div>
+      </div>
+
+      <div class="rail" id="rail">
+        <div class="status" id="status">✓ USING QUESTION VALUES</div>
+        <div class="inputs">
+          <h4>Optional — change anything, or nothing</h4>
+          <p class="railnote" style="margin-top:4px">Pre-set to the structures printed in the question. Move the CH<sub>3</sub>
+             — or take it away — and see what changes.</p>
+          <div id="fields"></div>
+          <p class="railnote" style="margin-top:8px">The ester arm is always the wedge and the acid arm the hash, as printed.</p>
+          <button class="resetq" id="resetq" type="button" style="margin-top:8px">↺ RESET TO QUESTION VALUES</button>
+        </div>
+        <div class="grp">
+          <h4>Live data</h4>
+          <div class="gauges" style="margin-top:6px">
+            <div class="gz"><div class="k">pair</div><div class="v" id="g_pair">—</div></div>
+            <div class="gz"><div class="k">reagent</div><div class="v" id="g_reag">—</div></div>
+            <div class="gz a"><div class="k">ring O on</div><div class="v" id="g_ox" style="font-size:13px">—</div></div>
+            <div class="gz o"><div class="k">C=O on</div><div class="v" id="g_co" style="font-size:13px">—</div></div>
+            <div class="gz"><div class="k">CH₃ on</div><div class="v" id="g_me" style="font-size:13px">—</div></div>
+            <div class="gz"><div class="k">atoms mismatched</div><div class="v" id="g_bad">—</div></div>
+            <div class="gz"><div class="k">overlay RMSD</div><div class="v"><span id="g_rms">—</span> <span class="u">Å</span></div></div>
+            <div class="gz"><div class="k">mirror RMSD</div><div class="v"><span id="g_mrms">—</span> <span class="u">Å</span></div></div>
+            <div class="gz" id="gz_v"><div class="k">verdict</div><div class="v" id="g_v" style="font-size:13px">—</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid2">
+      <div class="graphcard">
+        <h4>Overlay test — best RMSD for each comparison</h4>
+        <p class="gsub">0 Å = the two lie exactly on top of each other. Controls check the test itself.</p>
+        <div class="chartwrap"><svg class="chart" id="bars" viewBox="0 0 560 330" role="img"
+          aria-label="Bar chart of the root-mean-square distance between matching atoms after the best rotation, for P on Q, P on the mirror image of Q, R on S, R on the mirror image of S, and two controls"></svg></div>
+      </div>
+      <div class="graphcard">
+        <h4>RMSD while one product is turned onto the other</h4>
+        <p class="gsub">The rotation is found by least squares; the curve shows the mismatch shrinking as it is applied.</p>
+        <div class="chartwrap" id="tqwrap"><svg class="chart" id="rot" viewBox="0 0 560 330" role="img"
+          aria-label="Root-mean-square distance in angstrom against the fraction of the best rotation applied, one curve per overlay test"></svg></div>
+      </div>
+    </div>
+
+    <div class="calc" id="calc">
+      <div class="bt"><span>Calculation — written as the experiment produces the numbers</span><span id="calcstat"></span></div>
+      <p class="empty" id="calcempty">Nothing measured yet.</p>
+      <ol id="calclist"></ol>
+      <details class="tbl" id="logbox"><summary>Overlay log (<span id="logn">0</span>)</summary>
+        <div class="scrollx"><table class="data" id="log"></table></div></details>
+    </div>
+
+    <div class="actbar">
+      <button class="go" id="gobtn" type="button">▶&nbsp; START EXPERIMENT</button>
+      <button class="ghost" id="pausebtn" type="button" disabled>Pause</button>
+      <button class="ghost" id="replaybtn" type="button" hidden>▶ REPLAY EXPERIMENT</button>
+      <button class="ghost" id="resetbtn" type="button">↺ RESET</button>
+      <div class="spd" id="spd" role="group" aria-label="playback speed">
+        <button type="button" data-s="1" aria-pressed="true">1×</button>
+        <button type="button" data-s="2" aria-pressed="false">2×</button>
+      </div>
+      <button class="ghost" id="classbtn" type="button" aria-pressed="false">CLASSROOM MODE</button>
+      <div class="msg" id="gomsg">Nothing needs to be typed. Press <b>START EXPERIMENT</b>.</div>
+    </div>
+  </div>
+</section>
+
+<section id="solution">
+  <h2 class="big"><span class="n">02</span>Detailed solution</h2>
+  <p class="lede" id="solintro">Run the experiment — the solution opens with the answer.</p>
+  <div class="gate" id="solgate">
+    <h4>The solution is still locked</h4>
+    <p>The experiment has not finished yet. Press START and let it run to the end — or use
+       <i>Reveal anyway</i> in the header if you are revising.</p>
+    <button class="ghost" id="gotolab" type="button">Go to the experiment ↑</button>
+  </div>
+  <div id="solbody" hidden>
+    <ol class="steps">
+      <li><h4>What each reagent touches</h4>
+        <p><b>LiBH<sub>4</sub></b> reduces the ester (given in the question) and leaves the acid alone.
+           <b>BH<sub>3</sub></b> is the classic reagent for the opposite job: it reduces a carboxylic acid quickly and an
+           ester only slowly. So the two routes reduce <b>different arms</b> of the same molecule.</p>
+        <div class="eq">LiBH<sub>4</sub>: &nbsp;C1–CH<sub>2</sub>CO<sub>2</sub>Et (wedge) → C1–CH<sub>2</sub>CH<sub>2</sub>OH, &nbsp;&nbsp;C1–CH<sub>2</sub>CO<sub>2</sub>H (hash) unchanged</div>
+        <div class="eq">BH<sub>3</sub>: &nbsp;C1–CH<sub>2</sub>CO<sub>2</sub>H (hash) → C1–CH<sub>2</sub>CH<sub>2</sub>OH, &nbsp;&nbsp;C1–CH<sub>2</sub>CO<sub>2</sub>Et (wedge) unchanged</div>
+        <div class="obsnote">In the experiment the hydride went to the <b>ester</b> carbon in the LiBH<sub>4</sub> flask and to
+           the <b>acid</b> carbon in the BH<sub>3</sub> flask.</div></li>
+      <li><h4>H<sup>+</sup> closes a δ-lactone</h4>
+        <p>In each product a CH<sub>2</sub>CH<sub>2</sub>OH and a CH<sub>2</sub>C(=O)X sit on the same carbon. Counting
+           O–CH<sub>2</sub>–CH<sub>2</sub>–C1–CH<sub>2</sub>–C(=O) gives a six-membered ring, so acid catalyses ring closure
+           (loss of H<sub>2</sub>O from the hydroxy acid, or of EtOH from the hydroxy ester) to a spiro δ-lactone. All four
+           products have the same formula, C<sub>9</sub>H<sub>14</sub>O<sub>2</sub>, and the same connectivity in each pair.</p>
+        <div class="obsnote">Without the ring closure P and Q would not even have the same formula (an acid versus an ethyl
+           ester) — the lactone is what makes the comparison in the options possible.</div></li>
+      <li><h4>The ring closes in opposite directions</h4>
+        <div class="vs">
+          <div><b>P and R</b> (LiBH<sub>4</sub>): the <b>ring O</b> comes from the wedge arm, the <b>C=O</b> from the hash arm.</div>
+          <div><b>Q and S</b> (BH<sub>3</sub>): the <b>ring O</b> comes from the hash arm, the <b>C=O</b> from the wedge arm.</div>
+        </div>
+        <p>In the lactone the spiro carbon C1 carries two different ring branches (–CH<sub>2</sub>–C(=O)– and
+           –CH<sub>2</sub>–CH<sub>2</sub>–O–), so swapping which face each branch is on inverts C1. The CH<sub>3</sub>
+           carbon is untouched by either reagent.</p></li>
+      <li><h4>Top pair: P and Q</h4>
+        <p>C1 and the CH<sub>3</sub> carbon next to it are both stereocentres. One is inverted, the other is not:
+           <b>P and Q are diastereomers</b> — both chiral, not mirror images. (CIP: the CH<sub>3</sub> carbon is <i>R</i> in both; the spiro carbon is <i>R</i> in P and
+           <i>S</i> in Q — one descriptor changes, not both.)</p>
+        <div class="obsnote">On the bench: P on Q left mismatched atoms, and the mirror image of Q did not fit either.</div></li>
+      <li><h4>Bottom pair: R and S</h4>
+        <p>With the CH<sub>3</sub> directly across the ring, a mirror plane runs through C1, the CH<sub>3</sub> carbon and
+           the lactone ring, so R and S are each <b>achiral</b>. They differ in whether the C=O branch sits on the same face as
+           the CH<sub>3</sub> (cis) or the opposite face (trans): <b>R and S are cis/trans diastereomers</b>.</p>
+        <div class="obsnote">On the bench: R on S did not fit; the mirror image of S is S itself, so the mirror test gave the
+           same mismatch — and the control showed R fits its own mirror image exactly.</div>
+        <div class="eq">Answer: <span class="hl" id="solans">—</span></div></li>
+      <li><h4>Why the other options are wrong</h4>
+        <p><b>(A)</b>, <b>(B)</b> and <b>(D)</b> each call a pair "identical". That would need the two routes to give the
+           same lactone, which happens only if C1 is not a stereocentre in the product — for example with no CH<sub>3</sub> on
+           the ring at all. Remove the CH<sub>3</sub> from a substrate in the experiment and that pair does come out identical.
+           Neither pair can be enantiomers: only C1 is inverted, never the CH<sub>3</sub> carbon.</p></li>
+    </ol>
+    <div class="verify">
+      <h4>Independent verification</h4>
+      <ul>
+        <li><b>From the drawing.</b> The two substrates were entered into RDKit with 2D coordinates copied from the printed
+            structures and their wedge and hash bonds; RDKit assigned the stereocentres itself.</li>
+        <li><b>Reactions.</b> Ester-only and acid-only reductions and the lactonisation were run as reaction templates that never
+            touch a bond to a stereocentre. P ≠ Q and neither is the mirror image of the other; R ≠ S and each is its own mirror
+            image — two diastereomer pairs.</li>
+        <li><b>CIP.</b> CH<sub>3</sub> carbon <i>R</i> in both P and Q; spiro carbon <i>R</i> in P, <i>S</i> in Q — one centre inverted. R (<i>r</i>, <i>r</i>) and S (<i>s</i>, <i>s</i>): pseudo-asymmetric centres, cis/trans.</li>
+        <li><b>Enumeration.</b> The top lactone has four stereoisomers; P and Q come from different enantiomer pairs. The
+            bottom one has two, cis and trans — exactly R and S.</li>
+        <li><b>3D.</b> Twenty force-field conformers of each, aligned over every symmetry-equivalent atom mapping: P on a fresh
+            copy of P 0.000 Å, P on Q 1.27 Å, P on the mirror image of Q 0.41 Å, R on S 0.30 Å.</li>
+        <li><b>Control.</b> With no CH<sub>3</sub>, both routes give the same lactone.</li>
+        <li><b>This page.</b> The overlay bench finds the best rotation by least squares (Horn's quaternion method) and names
+            each pair from the RMSDs; the option letter is matched at run time and is not written into the page.</li>
+        <li><b>Answer key.</b> Checked afterwards against the official final key printed with the paper: Q4 → (C).</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="howto">
+  <h2 class="big"><span class="n">03</span>How to use this simulation</h2>
+  <p class="lede">For a student opening it for the first time. The whole experiment runs by itself after one press.</p>
+  <div class="howto">
+    <div><div class="n">STEP 1</div><h4>Read the question</h4>
+      <p>One substrate, two reagents. LiBH<sub>4</sub> gives P (or R); BH<sub>3</sub> gives Q (or S). Are the two products the
+         same molecule, mirror images, or something else?</p></div>
+    <div><div class="n">STEP 2</div><h4>Check the values</h4>
+      <p>The printed structures — CH<sub>3</sub> <b>next to</b> the quaternary carbon on top, <b>across</b> the ring below,
+         both on a wedge — are already set. <b>You do not need to change anything.</b></p></div>
+    <div><div class="n">STEP 3</div><h4>Optional: change a value</h4>
+      <p>Move either CH<sub>3</sub>, flip it to a hash, or remove it. The badge switches to <b>⚙ USING CUSTOM VALUES</b>;
+         <b>↺ RESET TO QUESTION VALUES</b> puts everything back.</p></div>
+    <div><div class="n">STEP 4</div><h4>Start</h4>
+      <p>Press <b>▶ START EXPERIMENT</b>. There is nothing else to click — the experiment runs from beginning to end on its
+         own (under a minute; <b>2×</b> makes it faster).</p></div>
+    <div><div class="n">STEP 5</div><h4>Watch</h4>
+      <p>Hydride hits one arm, the new OH swings round and closes the lactone, and the leaving group drifts away. Then the
+         two products are laid on top of each other: green rings mark atoms that fit, red rings atoms that do not. Then the
+         second one is reflected and tried again.</p></div>
+    <div><div class="n">STEP 6</div><h4>Answer reveal</h4>
+      <p>After both pairs are classified the experiment says <b>✓ EXPERIMENT COMPLETE</b> and reveals the answer. The header
+         answer box unlocks at the same time.</p></div>
+    <div><div class="n">STEP 7</div><h4>Understand</h4>
+      <p>Scroll to <b>Detailed solution</b>. Each step points back to what you saw in the experiment.</p></div>
+    <div><div class="n">STEP 8</div><h4>Experiment again</h4>
+      <p>Press <b>▶ REPLAY EXPERIMENT</b>, or set the top CH<sub>3</sub> to <b>none</b> and press <b>⚙ RUN WITH CUSTOM
+         VALUES</b> — which option would be right then? <b>CLASSROOM MODE</b> enlarges everything for a projector.</p></div>
+  </div>
+  <div class="panel" style="margin-top:14px">
+    <h3>Classification</h3>
+    <table class="meta-tbl"><tbody>
+      <tr><th>Exam</th><td>JEE Advanced 2026, Paper 1, Chemistry, Section 1, Q.4</td></tr>
+      <tr><th>Chapter</th><td>Organic Chemistry - Some Basic Principles and Techniques</td></tr>
+      <tr><th>Topic</th><td>Stereoisomerism — diastereomers from chemoselective reduction and lactonisation</td></tr>
+      <tr><th>Difficulty</th><td>Moderate-Hard</td></tr>
+      <tr><th>Answer</th><td><b id="clsans">— run the experiment</b></td></tr>
+    </tbody></table>
+  </div>
+</section>
+
+<footer>
+  ADV-2026-P1-CHE-Q04 · PrayogX · JEE Advanced Interactive Simulation Library · question text and structures reproduced
+  from the official JEE (Advanced) 2026 Paper 1 for educational use.
+</footer>
+</div>
+
+<script>
+(function(){
+"use strict";
+
+/* =====================================================================
+   helpers
+   ===================================================================== */
+var NS = "http://www.w3.org/2000/svg";
+function $(id){ return document.getElementById(id); }
+function css(v){ return getComputedStyle(document.documentElement).getPropertyValue(v).trim(); }
+function mk(n, a, parent){
+  var e = document.createElementNS(NS, n), k;
+  if (a) for (k in a) if (Object.prototype.hasOwnProperty.call(a, k)) e.setAttribute(k, a[k]);
+  if (parent) parent.appendChild(e);
+  return e;
+}
+function tx(parent, x, y, s, a){ var o = a || {}; o.x = x; o.y = y; var t = mk("text", o, parent); t.textContent = s; return t; }
+function clamp(v, a, b){ return v < a ? a : (v > b ? b : v); }
+function ease(t){ t = clamp(t, 0, 1); return t * t * (3 - 2 * t); }
+function nice(x, dp){
+  if (!isFinite(x)) return "—";
+  if (Math.abs(x - Math.round(x)) < 1e-9) return String(Math.round(x));
+  return x.toFixed(dp === undefined ? 3 : dp).replace(/0+$/, "").replace(/\.$/, "");
+}
+function f2(x){ return isFinite(x) ? x.toFixed(2) : "—"; }
+function f3(x){ return isFinite(x) ? x.toFixed(3) : "—"; }
+var REDUCED = !!(window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches);
+function vadd(a, b){ return [a[0] + b[0], a[1] + b[1], a[2] + b[2]]; }
+function vsub(a, b){ return [a[0] - b[0], a[1] - b[1], a[2] - b[2]]; }
+function vsc(a, s){ return [a[0] * s, a[1] * s, a[2] * s]; }
+function vlen(a){ return Math.sqrt(a[0] * a[0] + a[1] * a[1] + a[2] * a[2]); }
+function lerp3(a, b, t){ return [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t, a[2] + (b[2] - a[2]) * t]; }
+
+/* =====================================================================
+   question data - the two printed substrates. Ester arm = wedge (toward the
+   viewer), acid arm = hash, as drawn; only the CH3 is described here.
+   Nothing below stores which option is correct: see matchOption().
+   ===================================================================== */
+var Q = { tSite: "adj", tFace: "w", bSite: "opp", bFace: "w" };
+var PAIRS = [
+  { k: "top", a: "P", b: "Q", site: "tSite", face: "tFace", label: "top substrate" },
+  { k: "bot", a: "R", b: "S", site: "bSite", face: "bFace", label: "bottom substrate" }
+];
+var REL = ["identical", "enantiomers", "diastereomers"];
+var OPTIONS = {
+  A: ["identical", "diastereomers"],
+  B: ["diastereomers", "identical"],
+  C: ["diastereomers", "diastereomers"],
+  D: ["identical", "identical"]
+};
+var OPT_KEYS = ["A", "B", "C", "D"];
+
+/* =====================================================================
+   inputs - every one optional, every one falls back to the printed structure
+   ===================================================================== */
+var SITE_OPTS = [["adj", "next to C1"], ["opp", "across the ring"], ["none", "no CH₃"]];
+var FACE_OPTS = [["w", "wedge (toward you)"], ["h", "hash (away)"]];
+var FIELDS = [
+  { k: "tSite", lab: "Top substrate — CH<sub>3</sub> position", opts: SITE_OPTS },
+  { k: "tFace", lab: "Top substrate — CH<sub>3</sub> face", opts: FACE_OPTS },
+  { k: "bSite", lab: "Bottom substrate — CH<sub>3</sub> position", opts: SITE_OPTS },
+  { k: "bFace", lab: "Bottom substrate — CH<sub>3</sub> face", opts: FACE_OPTS }
+];
+var ST = { tSite: Q.tSite, tFace: Q.tFace, bSite: Q.bSite, bFace: Q.bFace };
+function optLabel(F, v){ var i; for (i = 0; i < F.opts.length; i++) if (F.opts[i][0] === v) return F.opts[i][1]; return v; }
+function fieldsHTML(){
+  var h = "", i, j, F;
+  for (i = 0; i < FIELDS.length; i++){
+    F = FIELDS[i];
+    h += '<div class="fld" id="fld_' + F.k + '"><div class="lb"><span><b>' + F.lab + '</b></span></div><div class="rw"><select class="sel" id="in_' + F.k + '" aria-label="' + F.k + '">';
+    for (j = 0; j < F.opts.length; j++) h += '<option value="' + F.opts[j][0] + '"' + (F.opts[j][0] === Q[F.k] ? " selected" : "") + ">" + F.opts[j][1] + (F.opts[j][0] === Q[F.k] ? " — as printed" : "") + "</option>";
+    h += '</select><button type="button" class="rs" data-k="' + F.k + '" aria-label="printed value for ' + F.k + '" title="as printed">↺</button></div>'
+      + '<div class="fh" id="fh_' + F.k + '">as printed</div></div>';
+  }
+  return h;
+}
+function readField(k){
+  var F = null, i; for (i = 0; i < FIELDS.length; i++) if (FIELDS[i].k === k) F = FIELDS[i];
+  var v = $("in_" + k).value, okv = false;
+  for (i = 0; i < F.opts.length; i++) if (F.opts[i][0] === v) okv = true;
+  if (!okv) v = Q[k];
+  ST[k] = v;
+  $("fh_" + k).textContent = v === Q[k] ? "as printed" : "custom · printed: " + optLabel(F, Q[k]);
+}
+function readAll(){ var i; for (i = 0; i < FIELDS.length; i++) readField(FIELDS[i].k); }
+function isCustom(D){ var k; D = D || ST; for (k in Q) if (D[k] !== Q[k]) return true; return false; }
+function copyST(){ var o = {}, k; for (k in Q) o[k] = ST[k]; return o; }
+function sameD(a, b){ var k; for (k in Q) if (a[k] !== b[k]) return false; return true; }
+function setField(k, v){ $("in_" + k).value = v; readAll(); }
+
+/* =====================================================================
+   the scientific model
+   Geometry: the cyclobutane is a square in the z = 0 plane with the spiro
+   carbon C1 at the origin; the lactone ring stands in the x = 0 plane,
+   perpendicular to it, as at any spiro centre. +z is toward the viewer:
+   the WEDGE arm (ester) goes to +z, the HASH arm (acid) to -z.
+   ===================================================================== */
+var HD = 1.1;
+var RING = { C1: [0, 0, 0], C2: [HD, HD, 0], C3: [0, 2 * HD, 0], C4: [-HD, HD, 0] };
+var RCEN = [0, HD, 0];
+var ARM = { F: [0, -0.9, 1.25], F2: [0, -2.4, 1.25], B: [0, -0.9, -1.25], B2: [0, -2.4, -1.25] };
+var OX = [0, -3.15, 0];
+var EXO = { F: [0, -3.01, 2.28], B: [0, -3.01, -2.28] };
+var ROLES = ["C1", "C2", "C3", "C4", "aC", "cC", "Oc", "Oo", "oC", "bC", "Me"];
+function mePos(site, face){
+  if (site === "none") return null;
+  var at = site === "adj" ? "C2" : "C3", r = vsub(RING[at], RCEN), L = vlen(r);
+  return { on: at, p: vadd(vadd(RING[at], vsc(r, 0.75 / L)), [0, 0, face === "w" ? 1.15 : -1.15]) };
+}
+/* the lactone. coFront: is the C=O branch the one that came from the wedge (front) arm? */
+function lactone(site, face, coFront){
+  var co = coFront ? "F" : "B", oo = coFront ? "B" : "F", P = {}, me = mePos(site, face);
+  P.C1 = RING.C1; P.C2 = RING.C2; P.C3 = RING.C3; P.C4 = RING.C4;
+  P.aC = ARM[co]; P.cC = ARM[co + "2"]; P.Oc = EXO[co]; P.Oo = OX; P.oC = ARM[oo + "2"]; P.bC = ARM[oo];
+  if (me) P.Me = me.p;
+  return { P: P, site: site, face: face, coFront: coFront, meOn: me ? me.on : null, arm: { co: co, oo: oo } };
+}
+function mirrorMol(M){
+  var o = { P: {}, site: M.site, face: M.face, coFront: M.coFront, meOn: M.meOn, arm: M.arm, mirrored: !M.mirrored }, k;
+  for (k in M.P) o.P[k] = [M.P[k][0], M.P[k][1], -M.P[k][2]];
+  return o;
+}
+function rolesOf(M){ var r = [], i; for (i = 0; i < ROLES.length; i++) if (M.P[ROLES[i]]) r.push(ROLES[i]); return r; }
+
+/* ---- Horn's quaternion method: the proper rotation that best lays B on A ---- */
+function jacobi4(A){
+  var a = [], v = [], i, j, k, p, q;
+  for (i = 0; i < 4; i++){ a.push(A[i].slice()); v.push([0, 0, 0, 0]); v[i][i] = 1; }
+  for (k = 0; k < 60; k++){
+    var off = 0; for (i = 0; i < 4; i++) for (j = i + 1; j < 4; j++) off += a[i][j] * a[i][j];
+    if (off < 1e-22) break;
+    for (p = 0; p < 3; p++) for (q = p + 1; q < 4; q++){
+      if (Math.abs(a[p][q]) < 1e-300) continue;
+      var th = (a[q][q] - a[p][p]) / (2 * a[p][q]), t = (th >= 0 ? 1 : -1) / (Math.abs(th) + Math.sqrt(th * th + 1));
+      var c = 1 / Math.sqrt(t * t + 1), s = t * c, r;
+      for (r = 0; r < 4; r++){ var arp = a[r][p], arq = a[r][q]; a[r][p] = c * arp - s * arq; a[r][q] = s * arp + c * arq; }
+      for (r = 0; r < 4; r++){ var apr = a[p][r], aqr = a[q][r]; a[p][r] = c * apr - s * aqr; a[q][r] = s * apr + c * aqr; }
+      for (r = 0; r < 4; r++){ var vrp = v[r][p], vrq = v[r][q]; v[r][p] = c * vrp - s * vrq; v[r][q] = s * vrp + c * vrq; }
+    }
+  }
+  var best = 0; for (i = 1; i < 4; i++) if (a[i][i] > a[best][best]) best = i;
+  return { val: a[best][best], vec: [v[0][best], v[1][best], v[2][best], v[3][best]] };
+}
+function centroid(X){ var c = [0, 0, 0], i; for (i = 0; i < X.length; i++) c = vadd(c, X[i]); return vsc(c, 1 / X.length); }
+function qrot(q, p){
+  var w = q[0], x = q[1], y = q[2], z = q[3];
+  var m = [[w*w+x*x-y*y-z*z, 2*(x*y-w*z), 2*(x*z+w*y)], [2*(x*y+w*z), w*w-x*x+y*y-z*z, 2*(y*z-w*x)], [2*(x*z-w*y), 2*(y*z+w*x), w*w-x*x-y*y+z*z]];
+  return [m[0][0]*p[0]+m[0][1]*p[1]+m[0][2]*p[2], m[1][0]*p[0]+m[1][1]*p[1]+m[1][2]*p[2], m[2][0]*p[0]+m[2][1]*p[1]+m[2][2]*p[2]];
+}
+function align(A, B){
+  var ca = centroid(A), cb = centroid(B), S = [[0,0,0],[0,0,0],[0,0,0]], G = 0, i, r, c;
+  for (i = 0; i < A.length; i++){
+    var a = vsub(A[i], ca), b = vsub(B[i], cb);
+    for (r = 0; r < 3; r++) for (c = 0; c < 3; c++) S[r][c] += b[r] * a[c];
+    G += a[0]*a[0] + a[1]*a[1] + a[2]*a[2] + b[0]*b[0] + b[1]*b[1] + b[2]*b[2];
+  }
+  var Sxx = S[0][0], Sxy = S[0][1], Sxz = S[0][2], Syx = S[1][0], Syy = S[1][1], Syz = S[1][2], Szx = S[2][0], Szy = S[2][1], Szz = S[2][2];
+  var N = [[Sxx+Syy+Szz, Syz-Szy, Szx-Sxz, Sxy-Syx], [Syz-Szy, Sxx-Syy-Szz, Sxy+Syx, Szx+Sxz],
+           [Szx-Sxz, Sxy+Syx, -Sxx+Syy-Szz, Syz+Szy], [Sxy-Syx, Szx+Sxz, Syz+Szy, -Sxx-Syy+Szz]];
+  var e = jacobi4(N), qn = vlen([e.vec[1], e.vec[2], e.vec[3]]), q = e.vec, L = Math.sqrt(q[0]*q[0]+qn*qn);
+  q = [q[0] / L, q[1] / L, q[2] / L, q[3] / L];
+  if (q[0] < 0) q = [-q[0], -q[1], -q[2], -q[3]];
+  var d = [], s2 = 0;
+  for (i = 0; i < A.length; i++){ var bb = vadd(qrot(q, vsub(B[i], cb)), ca), dd = vlen(vsub(bb, A[i])); d.push(dd); s2 += dd * dd; }
+  return { rms: Math.sqrt(s2 / A.length), q: q, ca: ca, cb: cb, d: d };
+}
+/* graph automorphisms that must be tried: C2 and C4 are equivalent unless the CH3 sits on C2 */
+function mappings(M){
+  var base = rolesOf(M), out = [base];
+  if (M.meOn !== "C2"){ out.push(base.map(function(r){ return r === "C2" ? "C4" : r === "C4" ? "C2" : r; })); }
+  return out;
+}
+var TOL = 1e-4;          /* angstrom: below this two structures coincide */
+function overlay(M1, M2){
+  var R1 = rolesOf(M1), maps = mappings(M2), best = null, i, j;
+  for (i = 0; i < maps.length; i++){
+    var A = [], B = [];
+    for (j = 0; j < R1.length; j++){ A.push(M1.P[R1[j]]); B.push(M2.P[maps[i][j]]); }
+    var r = align(A, B); r.roles = R1; r.map = maps[i];
+    if (!best || r.rms < best.rms) best = r;
+  }
+  return best;
+}
+function relation(M1, M2){
+  var o = overlay(M1, M2), m = overlay(M1, mirrorMol(M2));
+  return { rel: o.rms < TOL ? "identical" : (m.rms < TOL ? "enantiomers" : "diastereomers"), o: o, m: m,
+           chiral1: overlay(M1, mirrorMol(M1)).rms > TOL, chiral2: overlay(M2, mirrorMol(M2)).rms > TOL };
+}
+function model(D){
+  var M = { D: D, pairs: [] }, i;
+  for (i = 0; i < PAIRS.length; i++){
+    var pr = PAIRS[i], s = D[pr.site], f = D[pr.face];
+    var a = lactone(s, f, false), b = lactone(s, f, true);      /* LiBH4 -> ring O from the wedge arm; BH3 -> from the hash arm */
+    M.pairs.push({ def: pr, site: s, face: f, a: a, b: b, R: relation(a, b) });
+  }
+  return M;
+}
+function matchOption(rels){
+  var out = [], i;
+  for (i = 0; i < OPT_KEYS.length; i++) if (OPTIONS[OPT_KEYS[i]][0] === rels[0] && OPTIONS[OPT_KEYS[i]][1] === rels[1]) out.push(OPT_KEYS[i]);
+  return out;
+}
+var QM = model(copyST());
+var QRELS = [QM.pairs[0].R.rel, QM.pairs[1].R.rel];
+var QANS = matchOption(QRELS);
+var ANS = QANS.length === 1 ? QANS[0] : "?";
+
+/* =====================================================================
+   experiment engine - one automatic timeline, built when START is pressed
+   ===================================================================== */
+var PH = [["load", 1.5], ["red1", 2.4], ["lac1", 2.4], ["red2", 2.4], ["lac2", 2.4], ["overlay", 3.4], ["mirror", 3.2], ["verdict", 1.4]];
+var ORD = { load: 0, red1: 1, lac1: 2, red2: 3, lac2: 4, overlay: 5, mirror: 6, verdict: 7 };
+function phaseDur(ph){ var i, t = 0; for (i = 0; i < ph.length; i++) t += ph[i][1]; return t; }
+var RUN = { state: "setup", paused: false, speed: 1, segs: [], si: 0, u: 0, D: copyST(), M: null,
+  res: {}, curves: {}, done: false, revealed: false, logged: {}, calc: {}, classroom: false, rels: null, ctrl: null };
+RUN.M = model(RUN.D);
+var earlyReveal = false;
+
+function buildTimeline(){
+  var s = [{ kind: "prep", dur: 2.3 }], i;
+  for (i = 0; i < PAIRS.length; i++) s.push({ kind: "pair", idx: i, ph: PH, dur: phaseDur(PH) });
+  s.push({ kind: "analyse", dur: 3.6 });
+  s.push({ kind: "calc", dur: 3.0 });
+  s.push({ kind: "done", dur: 1.6 });
+  return s;
+}
+function seg(){ return RUN.segs[RUN.si] || null; }
+function pairState(sg, u){
+  var acc = 0, i, name = "verdict", f = 1;
+  for (i = 0; i < sg.ph.length; i++){
+    if (u < acc + sg.ph[i][1]){ name = sg.ph[i][0]; f = (u - acc) / sg.ph[i][1]; break; }
+    acc += sg.ph[i][1];
+  }
+  return { name: name, f: f, idx: sg.idx, pr: RUN.M.pairs[sg.idx] };
+}
+var NOW = null;
+function currentState(){
+  var sg = seg();
+  if (RUN.state === "setup" || !sg) return { name: "idle", f: 0, idx: -1, pr: null };
+  if (sg.kind === "prep") return { name: "prep", f: RUN.u / sg.dur, idx: -1, pr: null };
+  if (sg.kind === "pair") return pairState(sg, RUN.u);
+  return { name: "summary", f: 1, idx: -1, pr: null };
+}
+/* the overlay as a function of how much of the best rotation has been applied */
+function slerpQ(q, t){
+  var ang = 2 * Math.acos(clamp(q[0], -1, 1));
+  if (ang < 1e-9) return [1, 0, 0, 0];
+  var s = Math.sin(ang / 2), ax = [q[1] / s, q[2] / s, q[3] / s], h = ang * t / 2;
+  return [Math.cos(h), ax[0] * Math.sin(h), ax[1] * Math.sin(h), ax[2] * Math.sin(h)];
+}
+function rmsAt(o, A, B, t){
+  var q = slerpQ(o.q, t), s2 = 0, i;
+  for (i = 0; i < A.length; i++){ var bb = vadd(qrot(q, vsub(B[i], o.cb)), o.ca); var d = vlen(vsub(bb, A[i])); s2 += d * d; }
+  return Math.sqrt(s2 / A.length);
+}
+function testPoints(M1, M2, o){
+  var A = [], B = [], i;
+  for (i = 0; i < o.roles.length; i++){ A.push(M1.P[o.roles[i]]); B.push(M2.P[o.map[i]]); }
+  return { A: A, B: B };
+}
+function curveFor(M1, M2, o){
+  var tp = testPoints(M1, M2, o), c = [], k;
+  for (k = 0; k <= 40; k++) c.push([k / 40, rmsAt(o, tp.A, tp.B, k / 40)]);
+  return c;
+}
+
+/* things that happen once, at a moment in the timeline */
+function onPhase(sg, st){
+  if (sg.kind !== "pair") return;
+  var o = ORD[st.name], pr = RUN.M.pairs[sg.idx], nm = pr.def, key = nm.k;
+  if (o >= 2) addCalc("red" + key);
+  if (o >= 3) addCalc(nm.a);
+  if (o >= 5) addCalc(nm.b);
+  if (o >= 6 && !RUN.logged[key + "o"]){
+    RUN.logged[key + "o"] = true;
+    RUN.res[nm.a + nm.b] = { rms: pr.R.o.rms, label: nm.a + " on " + nm.b, bad: pr.R.o.d.filter(function(d){ return d > 0.25; }).length, n: pr.R.o.d.length };
+    RUN.curves[nm.a + nm.b] = curveFor(pr.a, pr.b, pr.R.o);
+    addCalc(key + "o"); drawBars(); drawRot(); drawLog();
+  }
+  if (o >= 7 && !RUN.logged[key + "m"]){
+    RUN.logged[key + "m"] = true;
+    RUN.res[nm.a + "m" + nm.b] = { rms: pr.R.m.rms, label: nm.a + " on mirror " + nm.b, bad: pr.R.m.d.filter(function(d){ return d > 0.25; }).length, n: pr.R.m.d.length };
+    RUN.curves[nm.a + "m" + nm.b] = curveFor(pr.a, mirrorMol(pr.b), pr.R.m);
+    addCalc(key + "m"); drawBars(); drawRot(); drawLog();
+  }
+}
+function onSegEnd(sg){
+  if (sg.kind === "prep") addCalc("rules");
+  if (sg.kind === "analyse"){ addCalc("ctrl"); addCalc("rels"); drawBars(); }
+}
+function onSegStart(sg){
+  if (sg.kind === "analyse"){
+    var p0 = RUN.M.pairs[0], p1 = RUN.M.pairs[1];
+    RUN.ctrl = { self: overlay(p0.a, p0.a).rms, selfLabel: p0.def.a + " on a copy of " + p0.def.a,
+                 mir: overlay(p1.a, mirrorMol(p1.a)).rms, mirLabel: p1.def.a + " on mirror " + p1.def.a };
+    RUN.res.ctrl1 = { rms: RUN.ctrl.self, label: RUN.ctrl.selfLabel, ctrl: true };
+    RUN.res.ctrl2 = { rms: RUN.ctrl.mir, label: RUN.ctrl.mirLabel, ctrl: true };
+    RUN.rels = [p0.R.rel, p1.R.rel];
+    drawBars();
+  }
+  if (sg.kind === "done"){ $("donebanner").classList.add("on"); }
+}
+function stepTimeline(sdt){
+  var sg = seg(); if (!sg) return;
+  RUN.u += sdt;
+  while (sg && RUN.u >= sg.dur){
+    RUN.u -= sg.dur;
+    if (sg.kind === "pair") onPhase(sg, pairState(sg, sg.dur - 1e-6));
+    onSegEnd(sg);
+    RUN.si++;
+    sg = seg();
+    if (!sg){ finish(); return; }
+    onSegStart(sg);
+  }
+}
+function clearRunUI(){
+  $("calclist").innerHTML = ""; $("calcempty").hidden = false;
+  $("donebanner").classList.remove("on");
+  $("revealhost").classList.remove("on"); $("revealhost").innerHTML = "";
+  $("lab3d").classList.remove("dim"); $("blackout").classList.remove("on");
+  burst = [];
+}
+function freshRun(){
+  RUN.si = 0; RUN.u = 0; RUN.paused = false; RUN.done = false; RUN.revealed = false;
+  RUN.res = {}; RUN.curves = {}; RUN.logged = {}; RUN.calc = {}; RUN.rels = null; RUN.ctrl = null;
+}
+function startRun(D){
+  readAll();
+  RUN.D = D || copyST(); RUN.M = model(RUN.D);
+  RUN.segs = buildTimeline(); freshRun(); RUN.state = "running";
+  clearRunUI(); drawLog(); drawBars(); drawRot(); refreshUI();
+}
+function resetRun(){
+  RUN.state = "setup"; RUN.segs = []; freshRun();
+  readAll(); RUN.D = copyST(); RUN.M = model(RUN.D);
+  clearRunUI(); drawLog(); drawBars(); drawRot(); refreshUI();
+}
+function resetAll(){
+  var i; for (i = 0; i < FIELDS.length; i++) $("in_" + FIELDS[i].k).value = Q[FIELDS[i].k];
+  readAll(); earlyReveal = false; resetRun(); refreshGate();
+}
+function finish(){
+  RUN.si = RUN.segs.length; RUN.state = "done"; RUN.done = true;
+  if (!RUN.rels) RUN.rels = [RUN.M.pairs[0].R.rel, RUN.M.pairs[1].R.rel];
+  addCalc("match");
+  drawBars(); refreshUI();
+  doReveal();
+}
+function runMatch(){ return RUN.rels ? matchOption(RUN.rels) : []; }
+
+/* =====================================================================
+   calculation panel - lines appear only when the run has produced them
+   ===================================================================== */
+function siteWords(pr){ return pr.site === "none" ? "no CH₃" : "CH₃ " + (pr.site === "adj" ? "next to C1" : "across the ring") + ", " + (pr.face === "w" ? "wedge" : "hash"); }
+function faceOf(z){ return z > 0.01 ? "front (wedge side)" : z < -0.01 ? "back (hash side)" : "in the plane"; }
+function calcHTML(key){
+  var M = RUN.M, p0 = M.pairs[0], p1 = M.pairs[1], pr;
+  switch (key){
+    case "rules":
+      return ["START", "LiBH<sub>4</sub>: CO<sub>2</sub>Et → CH<sub>2</sub>OH, CO<sub>2</sub>H untouched; &nbsp;BH<sub>3</sub>: CO<sub>2</sub>H → CH<sub>2</sub>OH, CO<sub>2</sub>Et untouched; &nbsp;H<sup>+</sup>: HO–CH<sub>2</sub>CH<sub>2</sub>–C1–CH<sub>2</sub>–C(=O)X → six-membered lactone"
+        + "<span class=w>O–C–C–C1–C–C(=O): the ring counts six, so it closes (−H<sub>2</sub>O from an acid, −EtOH from an ester)</span>"];
+    case "redtop": case "redbot":
+      pr = key === "redtop" ? p0 : p1;
+      return [pr.def.a, "LiBH<sub>4</sub> reduced the <span class=ar>wedge (ester)</span> arm; H<sup>+</sup> closed its OH onto the <span class=or>hash (acid)</span> C=O"
+        + "<span class=w>" + pr.def.label + " — " + siteWords(pr) + "</span>"];
+    case "P": case "R":
+      pr = key === "P" ? p0 : p1;
+      return [key, "<b>" + key + "</b>: ring O on the " + faceOf(pr.a.P.bC[2]) + ", C=O branch on the " + faceOf(pr.a.P.aC[2]) + (pr.a.P.Me ? ", CH<sub>3</sub> " + faceOf(pr.a.P.Me[2]) : "")
+        + "<span class=w>spiro δ-lactone C<sub>9</sub>H<sub>14</sub>O<sub>2</sub>" + (pr.site === "none" ? "" : "") + "</span>"];
+    case "Q": case "S":
+      pr = key === "Q" ? p0 : p1;
+      return [key, "<b>" + key + "</b>: BH<sub>3</sub> reduced the hash (acid) arm instead → ring O on the " + faceOf(pr.b.P.bC[2]) + ", C=O branch on the " + faceOf(pr.b.P.aC[2])
+        + (pr.b.P.Me ? ", CH<sub>3</sub> " + faceOf(pr.b.P.Me[2]) : "") + "<span class=w>same atoms, same bonds — the ring closed the other way round</span>"];
+    case "topo": case "boto":
+      pr = key === "topo" ? p0 : p1;
+      var o = pr.R.o, bad = o.d.filter(function(d){ return d > 0.25; }).length;
+      return ["OVERLAY", pr.def.a + " on " + pr.def.b + ": best rotation leaves RMSD = <b>" + f3(o.rms) + " Å</b>, " + bad + " of " + o.d.length + " atoms off by more than 0.25 Å"
+        + " &nbsp;⇒&nbsp; " + (o.rms < TOL ? "<span class=hl>superimposable — identical</span>" : "<b>not superimposable</b>")
+        + "<span class=w>least-squares fit over every atom, trying each equivalent numbering of the ring</span>"];
+    case "topm": case "botm":
+      pr = key === "topm" ? p0 : p1;
+      var m = pr.R.m;
+      return ["MIRROR", pr.def.a + " on the mirror image of " + pr.def.b + ": RMSD = <b>" + f3(m.rms) + " Å</b> &nbsp;⇒&nbsp; "
+        + (pr.R.rel === "identical" ? "(already identical)" : pr.R.rel === "enantiomers" ? "<span class=hl>mirror images — enantiomers</span>" : "not mirror images either → <span class=hl>diastereomers</span>")
+        + "<span class=w>" + pr.def.a + " is " + (pr.R.chiral1 ? "chiral" : "achiral (it fits its own mirror image)") + ", " + pr.def.b + " is " + (pr.R.chiral2 ? "chiral" : "achiral") + "</span>"];
+    case "ctrl":
+      return ["CONTROL", RUN.ctrl.selfLabel + ": " + f3(RUN.ctrl.self) + " Å; &nbsp;" + RUN.ctrl.mirLabel + ": " + f3(RUN.ctrl.mir) + " Å"
+        + "<span class=w>the bench does report 0 when two structures really are the same — the test works</span>"];
+    case "rels":
+      return ["RESULT", "<b>" + p0.def.a + " &amp; " + p0.def.b + " are " + p0.R.rel + "</b>, &nbsp;<b>" + p1.def.a + " &amp; " + p1.def.b + " are " + p1.R.rel + "</b>"
+        + "<span class=w>only the spiro carbon changes between each pair; the CH<sub>3</sub> carbon does not</span>"];
+    case "match":
+      var mo = runMatch();
+      return ["MATCH", mo.length ? "(" + RUN.rels[0] + ", " + RUN.rels[1] + ") = printed option <span class=hl>(" + mo[0] + ")</span>"
+        : "(" + RUN.rels[0] + ", " + RUN.rels[1] + ") — your custom structures give a combination that is not one of the printed options"];
+  }
+  return null;
+}
+function addCalc(key){
+  if (RUN.calc[key]) return;
+  var c = calcHTML(key); if (!c) return;
+  RUN.calc[key] = true;
+  $("calcempty").hidden = true;
+  var li = document.createElement("li");
+  li.setAttribute("data-key", key);
+  li.innerHTML = '<span class="s">' + c[0] + '</span><span class="m">' + c[1] + "</span>";
+  $("calclist").appendChild(li);
+}
+function drawLog(){
+  var h = "<thead><tr><th>comparison</th><th>atoms compared</th><th>atoms off &gt; 0.25 Å</th><th>best RMSD / Å</th><th>superimposable?</th></tr></thead><tbody>", k, r, n = 0;
+  for (k in RUN.res){
+    r = RUN.res[k]; if (r.ctrl) continue; n++;
+    h += "<tr><td>" + r.label + "</td><td class=n>" + r.n + "</td><td class=n>" + r.bad + "</td><td class=n>" + f3(r.rms) + "</td><td>" + (r.rms < TOL ? "yes" : "no") + "</td></tr>";
+  }
+  $("log").innerHTML = h + "</tbody>";
+  $("logn").textContent = n;
+}
+
+/* =====================================================================
+   the bench - canvas drawing (always dark, like a lab chamber)
+   ===================================================================== */
+var PX_A = 56;                                  /* px per angstrom */
+var PANEL = { L: [270, 285], R: [770, 285], C: [520, 285] };
+var COL = { C: "#b8c2d3", O: "#ff6b6b", F: "#54a9ff", B: "#ff9350", Me: "#4ade80", good: "#3ee39a", bad: "#ff5c5c" };
+var burst = [], clock = 0;
+
+/* ---------- open-chain and intermediate geometry (drawing only) ---------- */
+var OPEN = {
+  FcO: [0, -2.3, 2.45], FxO: [0, -3.55, 1.6], Fe1: [0, -3.95, 2.8], Fe2: [0, -4.5, 4.1],
+  BcO: [0, -2.3, -2.45], BxO: [0, -3.55, -1.6]
+};
+var HYD = { F: [0, -3.55, 1.6], B: [0, -3.55, -1.6] };
+var LEAVE = [0, -1.6, 0];         /* direction leaving groups drift */
+/* atoms and bonds of one flask at one moment. route "Li" reduces the wedge arm F, "Bh" the hash arm B.
+   stage: "sub" | "red" | "lac" | "prod";  f = progress in that stage */
+function flask(pr, route, stage, f){
+  var A = {}, bonds = [], X = route === "Li" ? "F" : "B", Y = X === "F" ? "B" : "F";
+  function at(k, el, p, tag, a){ A[k] = { k: k, el: el, p: p, tag: tag, a: a === undefined ? 1 : a }; }
+  function bd(a, b, o, al){ bonds.push([a, b, o || 1, al === undefined ? 1 : al]); }
+  var k;
+  for (k in RING) at(k, "C", RING[k], "ring");
+  var me = mePos(pr.site, pr.face);
+  if (me){ at("Me", "C", me.p, "Me"); bd(me.on, "Me"); }
+  bd("C1", "C2"); bd("C2", "C3"); bd("C3", "C4"); bd("C4", "C1");
+  at("F1", "C", ARM.F, "F"); at("F2", "C", ARM.F2, "F"); at("B1", "C", ARM.B, "B"); at("B2", "C", ARM.B2, "B");
+  bd("C1", "F1"); bd("F1", "F2"); bd("C1", "B1"); bd("B1", "B2");
+  var red = stage === "red" ? ease(f) : (stage === "sub" ? 0 : 1);
+  var lac = stage === "lac" ? ease(f) : (stage === "prod" ? 1 : 0);
+  var drift = function(p, t){ return vadd(p, vsc(vadd(LEAVE, [0, 0, (p[2] > 0 ? 1.6 : -1.6)]), t * 1.6)); };
+  /* the arm that gets reduced */
+  var xc = X + "cO", xx = X + "xO", xcPos = lerp3(OPEN[xc], HYD[X], red);
+  if (lac > 0) xcPos = lerp3(HYD[X], OX, lac);
+  at(xc, "O", xcPos, X);
+  bd(X + "2", xc, red < 0.5 ? 2 : 1);
+  if (red < 1){
+    at(xx, "O", drift(OPEN[xx], red), X, 1 - red); bd(X + "2", xx, 1, 1 - red);
+    if (X === "F"){ at("Fe1", "C", drift(OPEN.Fe1, red), "F", 1 - red); at("Fe2", "C", drift(OPEN.Fe2, red), "F", 1 - red); bd("FxO", "Fe1", 1, 1 - red); bd("Fe1", "Fe2", 1, 1 - red); }
+  }
+  /* the arm that stays until the ring closes onto it */
+  var yc = Y + "cO", yx = Y + "xO";
+  at(yc, "O", lerp3(OPEN[yc], EXO[Y], lac), Y); bd(Y + "2", yc, 2);
+  if (lac < 1){
+    at(yx, "O", drift(OPEN[yx], lac), Y, 1 - lac); bd(Y + "2", yx, 1, 1 - lac);
+    if (Y === "F"){ at("Fe1", "C", drift(OPEN.Fe1, lac), "F", 1 - lac); at("Fe2", "C", drift(OPEN.Fe2, lac), "F", 1 - lac); bd("FxO", "Fe1", 1, 1 - lac); bd("Fe1", "Fe2", 1, 1 - lac); }
+  }
+  if (lac > 0) bd(xc, Y + "2", 1, clamp((lac - 0.45) / 0.4, 0, 1));
+  return { A: A, bonds: bonds, X: X, Y: Y };
+}
+/* a finished lactone (model roles) as drawable atoms, optionally transformed */
+function lactoneDraw(M, tf, tag){
+  var A = {}, bonds = [], k, map = { C1: "ring", C2: "ring", C3: "ring", C4: "ring", Me: "Me" };
+  var armOf = function(role){ if (role === "aC" || role === "cC" || role === "Oc") return M.arm.co; if (role === "bC" || role === "oC" || role === "Oo") return M.arm.oo; return map[role]; };
+  for (k in M.P) A[k] = { k: k, el: (k === "Oc" || k === "Oo") ? "O" : "C", p: tf ? tf(M.P[k]) : M.P[k], tag: tag || armOf(k), a: 1 };
+  var B = [["C1","C2"],["C2","C3"],["C3","C4"],["C4","C1"],["C1","aC"],["aC","cC"],["cC","Oc",2],["cC","Oo"],["Oo","oC"],["oC","bC"],["bC","C1"]];
+  for (k = 0; k < B.length; k++) bonds.push([B[k][0], B[k][1], B[k][2] || 1, 1]);
+  if (M.P.Me) bonds.push([M.meOn, "Me", 1, 1]);
+  return { A: A, bonds: bonds };
+}
+function viewAngles(still){
+  var yaw = -0.62, pit = 0.3;
+  if (!still && !REDUCED) yaw += 0.22 * Math.sin(clock * 0.55);
+  return { yaw: yaw, pit: pit };
+}
+var CENTRE = centroid([RING.C1, RING.C2, RING.C3, RING.C4, ARM.F, ARM.F2, ARM.B, ARM.B2, OX]);
+function proj(p, cx, cy, V){
+  var q = vsub(p, CENTRE), cy2 = Math.cos(V.yaw), sy = Math.sin(V.yaw);
+  var x1 = q[0] * cy2 + q[2] * sy, z1 = -q[0] * sy + q[2] * cy2;
+  var cp = Math.cos(V.pit), sp = Math.sin(V.pit);
+  var y2 = q[1] * cp - z1 * sp, z2 = q[1] * sp + z1 * cp;
+  return { x: cx + x1 * PX_A, y: cy - y2 * PX_A, z: z2 };
+}
+function atomCol(a){ return a.tag === "Me" ? COL.Me : a.el === "O" ? COL.O : COL.C; }
+function drawMol(g, S, cx, cy, V, opt){
+  opt = opt || {};
+  var items = [], k, i, P = {};
+  for (k in S.A) P[k] = proj(S.A[k].p, cx, cy, V);
+  for (i = 0; i < S.bonds.length; i++){
+    var b = S.bonds[i]; if (!S.A[b[0]] || !S.A[b[1]] || b[3] <= 0.02) continue;
+    items.push({ z: (P[b[0]].z + P[b[1]].z) / 2 - 0.01, b: b });
+  }
+  for (k in S.A) if (S.A[k].a > 0.02) items.push({ z: P[k].z, k: k });
+  items.sort(function(a, b){ return a.z - b.z; });
+  var ga = opt.alpha === undefined ? 1 : opt.alpha;
+  for (i = 0; i < items.length; i++){
+    var it = items[i];
+    if (it.b){
+      var p1 = P[it.b[0]], p2 = P[it.b[1]], al = it.b[3] * Math.min(S.A[it.b[0]].a, S.A[it.b[1]].a) * ga;
+      g.globalAlpha = al; g.strokeStyle = opt.ghost ? "#c7b4ff" : "#8591a8"; g.lineWidth = 5; g.lineCap = "round";
+      if (it.b[2] === 2){
+        var dx = p2.x - p1.x, dy = p2.y - p1.y, L = Math.sqrt(dx * dx + dy * dy) || 1, nx = -dy / L * 3.6, ny = dx / L * 3.6;
+        g.lineWidth = 3.4; g.beginPath(); g.moveTo(p1.x + nx, p1.y + ny); g.lineTo(p2.x + nx, p2.y + ny); g.moveTo(p1.x - nx, p1.y - ny); g.lineTo(p2.x - nx, p2.y - ny); g.stroke();
+      } else { g.beginPath(); g.moveTo(p1.x, p1.y); g.lineTo(p2.x, p2.y); g.stroke(); }
+    } else {
+      var a = S.A[it.k], p = P[it.k], r = (a.el === "O" ? 15 : 14) * (1 + p.z / 25);
+      g.globalAlpha = a.a * ga;
+      var gr = g.createRadialGradient(p.x - r * 0.35, p.y - r * 0.4, r * 0.15, p.x, p.y, r);
+      gr.addColorStop(0, "#ffffff"); gr.addColorStop(0.3, opt.ghost ? "#c7b4ff" : atomCol(a)); gr.addColorStop(1, opt.ghost ? "#5b4a9e" : (a.el === "O" ? "#8a1f1f" : a.tag === "Me" ? "#187a3f" : "#4b5566"));
+      g.fillStyle = gr; g.beginPath(); g.arc(p.x, p.y, r, 0, Math.PI * 2); g.fill();
+      if (!opt.ghost && (a.tag === "F" || a.tag === "B")){ g.strokeStyle = COL[a.tag]; g.lineWidth = 2.6; g.beginPath(); g.arc(p.x, p.y, r + 2.5, 0, Math.PI * 2); g.stroke(); }
+      if (a.el === "O"){ g.fillStyle = "#fff"; g.font = "700 14px ui-sans-serif,system-ui,sans-serif"; g.textAlign = "center"; g.textBaseline = "middle"; g.fillText("O", p.x, p.y + 1); }
+      g.globalAlpha = 1;
+    }
+  }
+  g.globalAlpha = 1;
+  return P;
+}
+function label(g, s, x, y, col, size, align, weight){
+  g.fillStyle = col; g.font = (weight || 600) + " " + (size || 14) + "px ui-sans-serif,system-ui,sans-serif";
+  g.textAlign = align || "center"; g.textBaseline = "middle"; g.fillText(s, x, y);
+}
+function reagent(g, x, lines, on){
+  g.globalAlpha = on; label(g, lines[0], x, 74, "#ffd79a", 24, "center", 800); if (lines[1]) label(g, lines[1], x, 102, "#ffd79a", 18, "center", 700); g.globalAlpha = 1;
+}
+function hydrides(g, from, to, f){
+  var i; if (f <= 0 || f >= 1) return;
+  for (i = 0; i < 4; i++){
+    var t = clamp(f * 1.6 - i * 0.18, 0, 1); if (t <= 0 || t >= 1) continue;
+    var x = from[0] + (to.x - from[0]) * t, y = from[1] + (to.y - from[1]) * t - Math.sin(t * Math.PI) * 30;
+    label(g, "H⁻", x, y, "#9fd0ff", 20, "center", 800);
+  }
+}
+function legend(g){
+  var y = 596, items = [[COL.F, "from the ester arm (wedge)"], [COL.B, "from the acid arm (hash)"], [COL.Me, "CH₃"], [COL.O, "O"]], x = 26, i;
+  for (i = 0; i < items.length; i++){
+    g.fillStyle = items[i][0]; g.beginPath(); g.arc(x, y, 8, 0, 7); g.fill();
+    label(g, items[i][1], x + 14, y, "#cfe0ff", 17, "left", 600);
+    g.font = "600 17px ui-sans-serif,system-ui,sans-serif"; x += 14 + g.measureText(items[i][1]).width + 30;
+  }
+}
+function xform(o, t, mirrorS){
+  var q = slerpQ(o.q, t);
+  return function(p){ var pp = [p[0], p[1], p[2] * (mirrorS === undefined ? 1 : mirrorS)]; return vadd(qrot(q, vsub(pp, o.cb)), o.ca); };
+}
+function drawBench(st){
+  var c = $("flask"), g = c.getContext("2d"), W = c.width, H = c.height;
+  g.clearRect(0, 0, W, H);
+  var bg = g.createLinearGradient(0, 0, 0, H); bg.addColorStop(0, "#0b1120"); bg.addColorStop(1, "#070a12");
+  g.fillStyle = bg; g.fillRect(0, 0, W, H);
+  legend(g);
+  var pr = st.pr, V = viewAngles(st.name === "overlay" || st.name === "mirror" || st.name === "verdict"), o = ORD[st.name];
+  if (!pr){
+    if (st.name === "summary" || RUN.done){ drawSummary(g); return; }
+    label(g, st.name === "prep" ? "setting up the flasks…" : "two substrates on the bench — press START", W / 2, H / 2 - 10, "#9fb0cc", 22);
+    return;
+  }
+  var nm = pr.def, sub = function(route, stage, f){ return flask(pr, route, stage, f); };
+  label(g, (nm.k === "top" ? "TOP" : "BOTTOM") + " SUBSTRATE · " + siteWords(pr), W / 2, 30, "#8fa6c9", 18, "center", 800);
+  if (o === 0){
+    drawMol(g, sub("Li", "sub", 0), PANEL.C[0], PANEL.C[1], V);
+    label(g, "wedge arm: CH₂CO₂Et (blue)   ·   hash arm: CH₂CO₂H (orange)", W / 2, 548, "#cfe0ff", 19, "center", 700);
+    return;
+  }
+  /* left flask: LiBH4 then H+ */
+  if (o >= 1 && o <= 4){
+    var lst = o === 1 ? sub("Li", "red", st.f) : o === 2 ? sub("Li", "lac", st.f) : sub("Li", "prod", 1);
+    var PL = drawMol(g, lst, PANEL.L[0], PANEL.L[1], V);
+    reagent(g, PANEL.L[0], o === 1 ? ["1. LiBH₄", "reduces the ester"] : ["2. H⁺", o === 2 ? "closes the lactone" : ""], o <= 2 ? 1 : 0.35);
+    if (o === 1) hydrides(g, [PANEL.L[0], 110], PL.F2, st.f);
+    if (o === 1 && st.f > 0.3) label(g, "EtO⁻ leaves (as EtOH)", PANEL.L[0], 520, "#ffcf9e", 18, "center", 700);
+    if (o === 2 && st.f > 0.3) label(g, "H₂O leaves", PANEL.L[0], 520, "#ffcf9e", 18, "center", 700);
+    if (o >= 3 || (o === 2 && st.f > 0.9)) label(g, nm.a, PANEL.L[0], 552, "#ffffff", 34, "center", 900);
+  }
+  /* right flask: BH3 then H+ */
+  if (o >= 3 && o <= 4){
+    var rst = o === 3 ? sub("Bh", "red", st.f) : sub("Bh", "lac", st.f);
+    var PR = drawMol(g, rst, PANEL.R[0], PANEL.R[1], V);
+    reagent(g, PANEL.R[0], o === 3 ? ["1. BH₃", "reduces the acid"] : ["2. H⁺", "closes the lactone"], 1);
+    if (o === 3) hydrides(g, [PANEL.R[0], 110], PR.B2, st.f);
+    if (o === 3 && st.f > 0.3) label(g, "C=O and OH → CH₂OH", PANEL.R[0], 520, "#ffcf9e", 18, "center", 700);
+    if (o === 4 && st.f > 0.3) label(g, "EtOH leaves", PANEL.R[0], 520, "#ffcf9e", 18, "center", 700);
+    if (o === 4 && st.f > 0.9) label(g, nm.b, PANEL.R[0], 552, "#ffffff", 34, "center", 900);
+  }
+  if (o === 5) drawOverlay(g, pr, st.f, V, false);
+  if (o === 6) drawOverlay(g, pr, st.f, V, true);
+  if (o === 7){
+    drawOverlay(g, pr, 1, V, true);
+    var rel = pr.R.rel;
+    g.fillStyle = "rgba(8,20,16,.85)"; g.strokeStyle = COL.good; g.lineWidth = 2;
+    g.beginPath(); g.roundRect ? g.roundRect(W / 2 - 250, 470, 500, 60, 12) : g.rect(W / 2 - 250, 470, 500, 60); g.fill(); g.stroke();
+    label(g, nm.a + " & " + nm.b + " are " + rel.toUpperCase(), W / 2, 500, COL.good, 28, "center", 900);
+  }
+}
+/* P solid; Q brought over, turned by the best rotation, then reflected and tried again */
+function drawOverlay(g, pr, f, V, mirror){
+  var nm = pr.def, W = 1040, o = mirror ? pr.R.m : pr.R.o, Qm = mirror ? mirrorMol(pr.b) : pr.b;
+  drawMol(g, lactoneDraw(pr.a), PANEL.C[0], PANEL.C[1], V);
+  label(g, nm.a, PANEL.C[0] - 190, 552, "#ffffff", 34, "center", 900);
+  var t, slide, s = 1, cx, cy, k;
+  if (!mirror){ slide = ease(f / 0.3); t = ease((f - 0.3) / 0.55); }
+  else { s = 1 - 2 * ease((f - 0.08) / 0.27); slide = ease((f - 0.4) / 0.15); t = ease((f - 0.55) / 0.3); }
+  cx = PANEL.R[0] + (PANEL.C[0] - PANEL.R[0]) * slide; cy = PANEL.R[1];
+  var ghost = { P: {}, arm: pr.b.arm, meOn: pr.b.meOn };
+  for (k in pr.b.P){ var p = pr.b.P[k]; ghost.P[k] = [p[0], p[1], p[2] * s]; }
+  if (mirror && f > 0.04 && f < 0.4){
+    var mp = proj([0, 0.5, 0], PANEL.R[0], PANEL.R[1], V);
+    g.fillStyle = "rgba(170,200,255,.10)"; g.strokeStyle = "rgba(170,200,255,.55)"; g.lineWidth = 1.5;
+    g.fillRect(mp.x - 150, 130, 300, 340); g.strokeRect(mp.x - 150, 130, 300, 340);
+    label(g, "reflect through the cyclobutane plane", mp.x, 118, "#cfe0ff", 17, "center", 800);
+  }
+  var usePos = xform(o, t, 1);
+  drawMol(g, lactoneDraw(ghost, usePos, null), cx, cy, V, { ghost: true, alpha: 0.72 });
+  label(g, (mirror ? "mirror " : "") + nm.b, cx + 170, 552, "#c7b4ff", 30, "center", 900);
+  /* the fit, atom by atom, once the rotation has been applied */
+  if (t >= 1){
+    var i;
+    for (i = 0; i < o.roles.length; i++){
+      var pa = proj(pr.a.P[o.roles[i]], PANEL.C[0], PANEL.C[1], V), okA = o.d[i] < 0.25;
+      g.strokeStyle = okA ? COL.good : COL.bad; g.lineWidth = 3; g.beginPath(); g.arc(pa.x, pa.y, okA ? 17 : 20, 0, Math.PI * 2); g.stroke();
+    }
+    label(g, "best RMSD", 150, 200, "#9fb0cc", 18, "center", 800); label(g, f3(o.rms) + " Å", 150, 232, o.rms < TOL ? COL.good : COL.bad, 30, "center", 900);
+    label(g, o.d.filter(function(d){ return d > 0.25; }).length + " of " + o.d.length + " atoms off", 150, 266, "#ffb4b4", 17, "center", 700);
+  }
+}
+function drawSummary(g){
+  var W = 1040, V = viewAngles(true), i;
+  for (i = 0; i < 2; i++){
+    var pr = RUN.M.pairs[i], cx = i === 0 ? 285 : 755;
+    drawMol(g, lactoneDraw(pr.a), cx - 115, 270, V);
+    drawMol(g, lactoneDraw(pr.b), cx + 115, 270, V);
+    label(g, pr.def.a, cx - 115, 500, "#fff", 30, "center", 900); label(g, pr.def.b, cx + 115, 500, "#fff", 30, "center", 900);
+    label(g, pr.R.rel.toUpperCase(), cx, 546, COL.good, 24, "center", 900);
+  }
+  label(g, RUN.done ? "both pairs classified" : "classifying both pairs…", W / 2, 40, "#9fb0cc", 19, "center", 700);
+}
+
+/* =====================================================================
+   graphs - generated from what the run measured
+   ===================================================================== */
+function niceMax(v){ var p = Math.pow(10, Math.floor(Math.log(v) / Math.LN10)), m = v / p, L = [1, 1.2, 1.5, 2, 2.5, 3, 4, 5, 6, 8, 10], i;
+  for (i = 0; i < L.length; i++) if (m <= L[i] + 1e-9) return L[i] * p; return 10 * p; }
+function niceStep(span, want){ var raw = span / want, p = Math.pow(10, Math.floor(Math.log(raw) / Math.LN10)), f = raw / p;
+  return (f <= 1 ? 1 : f <= 2 ? 2 : f <= 2.5 ? 2.5 : f <= 5 ? 5 : 10) * p; }
+function axes(svg, X0, X1, Y0, Y1, ymax, ylab){
+  var tc = css("--text-muted"), lc = css("--line"), st = niceStep(ymax, 4), v;
+  for (v = 0; v <= ymax + 1e-9; v += st){
+    var y = Y1 - (Y1 - Y0) * v / ymax;
+    mk("line", { x1: X0, x2: X1, y1: y, y2: y, stroke: lc, "stroke-width": 1 }, svg);
+    tx(svg, X0 - 6, y + 4, nice(v, 2), { "text-anchor": "end", "font-size": 11, fill: tc, "font-family": "ui-monospace,monospace" });
+  }
+  tx(svg, 14, (Y0 + Y1) / 2, ylab, { "text-anchor": "middle", "font-size": 11, fill: tc, transform: "rotate(-90 14 " + (Y0 + Y1) / 2 + ")" });
+  mk("line", { x1: X0, x2: X1, y1: Y1, y2: Y1, stroke: css("--line-strong"), "stroke-width": 1.2 }, svg);
+}
+var BAR_ORDER = ["PQ", "PmQ", "RS", "RmS", "ctrl1", "ctrl2"];
+function barKeys(){ var p0 = RUN.M.pairs[0].def, p1 = RUN.M.pairs[1].def; return [p0.a + p0.b, p0.a + "m" + p0.b, p1.a + p1.b, p1.a + "m" + p1.b, "ctrl1", "ctrl2"]; }
+function drawBars(){
+  var svg = $("bars"); while (svg.firstChild) svg.removeChild(svg.firstChild);
+  var X0 = 56, X1 = 546, Y0 = 26, Y1 = 262, tp = css("--text-primary"), tc = css("--text-muted"), keys = barKeys(), i, mx = 1;
+  for (i = 0; i < keys.length; i++) if (RUN.res[keys[i]]) mx = Math.max(mx, RUN.res[keys[i]].rms);
+  var ymax = niceMax(mx * 1.15);
+  axes(svg, X0, X1, Y0, Y1, ymax, "best RMSD / Å");
+  var slot = (X1 - X0) / keys.length;
+  var names = [["P on Q", ""], ["P on", "mirror Q"], ["R on S", ""], ["R on", "mirror S"], ["control:", "P on P"], ["control:", "R on mirror R"]];
+  for (i = 0; i < keys.length; i++){
+    var r = RUN.res[keys[i]], cx = X0 + slot * (i + 0.5), ctrl = keys[i].indexOf("ctrl") === 0;
+    tx(svg, cx, Y1 + 17, names[i][0], { "text-anchor": "middle", "font-size": 11.5, "font-weight": 700, fill: ctrl ? tc : tp });
+    if (names[i][1]) tx(svg, cx, Y1 + 31, names[i][1], { "text-anchor": "middle", "font-size": 11, fill: ctrl ? tc : tp });
+    if (!r){ tx(svg, cx, Y1 - 8, "—", { "text-anchor": "middle", "font-size": 12, fill: tc }); continue; }
+    var h = (Y1 - Y0) * r.rms / ymax, col = ctrl ? css("--text-muted") : css(i < 2 ? "--s1" : "--s2");
+    mk("rect", { x: cx - 26, y: Y1 - h, width: 52, height: Math.max(h, 0.0001), rx: 4, fill: col, opacity: 0.88 }, svg);
+    if (r.rms < TOL) mk("line", { x1: cx - 26, x2: cx + 26, y1: Y1 - 1.5, y2: Y1 - 1.5, stroke: css("--good"), "stroke-width": 3 }, svg);
+    tx(svg, cx, Y1 - h - 7, f2(r.rms), { "text-anchor": "middle", "font-size": 12.5, "font-weight": 700, fill: r.rms < TOL ? css("--good") : tp, "font-family": "ui-monospace,monospace" });
+  }
+  tx(svg, X0, Y1 + 56, "0 Å = superimposable (identical); anything above 0 = a different arrangement in space", { "font-size": 11, fill: tc });
+}
+var ROT = null;
+function drawRot(){
+  var svg = $("rot"); while (svg.firstChild) svg.removeChild(svg.firstChild);
+  var X0 = 56, X1 = 546, Y0 = 26, Y1 = 270, tc = css("--text-muted"), k, mx = 1, i;
+  for (k in RUN.curves) for (i = 0; i < RUN.curves[k].length; i++) mx = Math.max(mx, RUN.curves[k][i][1]);
+  var ymax = niceMax(mx * 1.1);
+  axes(svg, X0, X1, Y0, Y1, ymax, "RMSD / Å");
+  for (i = 0; i <= 4; i++) tx(svg, X0 + (X1 - X0) * i / 4, Y1 + 18, (i * 25) + "%", { "text-anchor": "middle", "font-size": 11, fill: tc, "font-family": "ui-monospace,monospace" });
+  tx(svg, (X0 + X1) / 2, Y1 + 38, "fraction of the best rotation applied", { "text-anchor": "middle", "font-size": 11, fill: tc });
+  ROT = { X0: X0, X1: X1, Y0: Y0, Y1: Y1, ymax: ymax };
+  var cols = ["--s1", "--s4", "--s2", "--s3"], n = 0, keys = barKeys().slice(0, 4);
+  for (i = 0; i < keys.length; i++){
+    var cv = RUN.curves[keys[i]]; if (!cv) continue;
+    var d = "", j;
+    for (j = 0; j < cv.length; j++){ var x = X0 + (X1 - X0) * cv[j][0], y = Y1 - (Y1 - Y0) * cv[j][1] / ymax; d += (j ? "L" : "M") + x.toFixed(1) + " " + y.toFixed(1); }
+    mk("path", { d: d, fill: "none", stroke: css(cols[i]), "stroke-width": 2.6 }, svg);
+    var last = cv[cv.length - 1];
+    tx(svg, X1 - 4, Y1 - (Y1 - Y0) * last[1] / ymax - 7 - 12 * (n % 2), ["P on Q", "P on mirror Q", "R on S", "R on mirror S"][i], { "text-anchor": "end", "font-size": 11.5, "font-weight": 700, fill: css(cols[i]) });
+    n++;
+  }
+  ROT.dot = mk("circle", { cx: -20, cy: -20, r: 6.5, fill: css("--good"), stroke: css("--surface-1"), "stroke-width": 2 }, svg);
+}
+function liveOverlay(st){
+  if (!st.pr || (st.name !== "overlay" && st.name !== "mirror")) return null;
+  var pr = st.pr, mirror = st.name === "mirror", o = mirror ? pr.R.m : pr.R.o, f = st.f;
+  var t = !mirror ? ease((f - 0.3) / 0.55) : (f < 0.55 ? -1 : ease((f - 0.55) / 0.3));
+  if (t < 0 || (!mirror && f < 0.3)) return { t: 0, rms: null, o: o };
+  var tp = testPoints(pr.a, mirror ? mirrorMol(pr.b) : pr.b, o);
+  return { t: t, rms: rmsAt(o, tp.A, tp.B, t), o: o };
+}
+function updRot(st){
+  if (!ROT || !ROT.dot) return;
+  var L = liveOverlay(st);
+  if (!L || L.rms === null){ ROT.dot.setAttribute("cx", -20); return; }
+  ROT.dot.setAttribute("cx", (ROT.X0 + (ROT.X1 - ROT.X0) * L.t).toFixed(1));
+  ROT.dot.setAttribute("cy", (ROT.Y1 - (ROT.Y1 - ROT.Y0) * Math.min(L.rms, ROT.ymax) / ROT.ymax).toFixed(1));
+}
+
+/* =====================================================================
+   status, guidance, narration, live data
+   ===================================================================== */
+var STAGE_ORDER = ["prep", "reduce", "lactone", "overlay", "mirror", "analyse", "calc", "answer"];
+var PH_STAGE = { load: "reduce", red1: "reduce", lac1: "lactone", red2: "reduce", lac2: "lactone", overlay: "overlay", mirror: "mirror", verdict: "mirror" };
+function stageKey(){
+  var sg = seg();
+  if (RUN.state === "setup") return null;
+  if (RUN.done) return "answer";
+  if (!sg) return null;
+  if (sg.kind === "pair") return PH_STAGE[pairState(sg, RUN.u).name];
+  return sg.kind === "done" ? "calc" : sg.kind;
+}
+function refreshStatus(){
+  var k = stageKey(), x = $("xstat"), txt, cls = "xstat", g;
+  if (RUN.state === "setup"){ txt = "Ready"; g = isCustom() ? "Custom values set — press RUN WITH CUSTOM VALUES." : "Set your values or use the question defaults. Press START EXPERIMENT to begin."; }
+  else if (RUN.done){ txt = "✓ Experiment complete"; cls += " done"; g = "Result obtained."; }
+  else if (k === "prep"){ txt = "Preparing experiment"; cls += " run"; g = "Preparing the flasks…"; }
+  else if (k === "analyse"){ txt = "Analysing data"; cls += " ana"; g = "Analysing experimental data…"; }
+  else if (k === "calc"){ txt = "Calculation complete"; cls += " ana"; g = "Calculating the result…"; }
+  else { txt = "Experiment running"; cls += " run"; g = "Experiment running…"; }
+  if (RUN.paused){ txt = "Paused"; cls = "xstat"; g = "Paused — press Resume."; }
+  x.className = cls; $("xstattxt").textContent = txt; $("guide").textContent = g;
+  var ki = STAGE_ORDER.indexOf(k), sp = document.querySelectorAll("#stages span"), i;
+  for (i = 0; i < sp.length; i++){
+    var j = STAGE_ORDER.indexOf(sp[i].getAttribute("data-s"));
+    sp[i].className = k === null ? "" : (j < ki || RUN.done ? "done" : (j === ki ? "now" : ""));
+  }
+}
+function narrate(st){
+  var sg = seg(), h = "", pr = st.pr;
+  if (RUN.state === "setup"){
+    h = "Two substrates on the bench, each with an ester arm (wedge) and an acid arm (hash) on the same carbon. " + (isCustom() ? "Your structures are loaded — press <b>RUN WITH CUSTOM VALUES</b>." : "The printed structures are loaded — press <b>START EXPERIMENT</b>.");
+  } else if (RUN.done){
+    h = "<span class=gd>Experiment complete.</span> " + PAIRS[0].a + " &amp; " + PAIRS[0].b + ": <b>" + RUN.rels[0] + "</b>; " + PAIRS[1].a + " &amp; " + PAIRS[1].b + ": <b>" + RUN.rels[1] + "</b>.";
+  } else if (!sg){ h = ""; }
+  else if (sg.kind === "prep"){
+    h = "Setting up two flasks per substrate: one with <b>LiBH₄</b> (reduces esters, not acids), one with <b>BH₃</b> (reduces acids, not esters). Both are finished with <b>H⁺</b>.";
+  } else if (sg.kind === "pair"){
+    var a = pr.def.a, b = pr.def.b;
+    switch (st.name){
+      case "load": h = "The " + pr.def.label + ": " + siteWords(pr) + ". Blue ring = the ester arm (wedge, toward you); orange = the acid arm (hash, away from you)."; break;
+      case "red1": h = "<b>LiBH₄</b> delivers hydride to the <span class=a>ester</span> carbon only: –CO₂Et becomes –CH₂OH and ethoxide leaves. The acid arm is untouched."; break;
+      case "lac1": h = "<b>H⁺</b>: the new OH (blue) reaches round to the acid C=O (orange). Counting O–C–C–C1–C–C=O gives a six-membered ring, so it closes — a <b>lactone</b> (cyclic ester), losing H₂O. This is <b>" + a + "</b>."; break;
+      case "red2": h = "Second flask, same substrate: <b>BH₃</b> reduces the <span class=o>acid</span> arm to –CH₂OH and leaves the ester alone — the opposite arm."; break;
+      case "lac2": h = "<b>H⁺</b>: now the OH is on the hash arm and it closes onto the ester C=O, losing EtOH. Same atoms, same ring — but closed the other way round. This is <b>" + b + "</b>."; break;
+      case "overlay": h = "<b>Are " + a + " and " + b + " the same molecule?</b> Only if one can be turned to lie exactly on the other. The bench finds the best possible rotation (least squares) and checks every atom." + (st.f > 0.86 ? " Red rings = atoms that do not fit." : ""); break;
+      case "mirror": h = "<b>Mirror test.</b> " + b + " is reflected and tried again. If its mirror image fits " + a + ", they are <b>enantiomers</b>. If neither fits, they are <b>diastereomers</b>."; break;
+      default: h = "<b>" + a + " &amp; " + b + " are " + pr.R.rel + "</b>: " + (pr.R.rel === "identical" ? "they superimpose." : pr.R.rel === "enantiomers" ? "mirror images that do not superimpose." : "stereoisomers that are neither identical nor mirror images — only the spiro carbon changed, not the CH₃ carbon.");
+    }
+  } else if (sg.kind === "analyse"){
+    h = "<b>Controls:</b> P on a copy of itself gives 0 Å, and R on its own mirror image also gives 0 Å — R is achiral. The bench can tell identical from different.";
+  } else {
+    h = "Writing up: the two reagents close the lactone in opposite directions; with a second stereo-element (the CH₃) that gives diastereomers.";
+  }
+  $("narr").innerHTML = h;
+  $("trialtag").textContent = pr ? pr.def.a + " / " + pr.def.b + " · " + (st.idx + 1) + " of 2" : (RUN.done ? "2 of 2 classified" : "no substrate yet");
+  $("scenet").textContent = RUN.done ? "Experiment complete" : (st.name === "overlay" || st.name === "mirror" || st.name === "verdict" ? "Overlay bench" : "Reaction flasks");
+}
+function faceShort(z){ return z > 0.01 ? "wedge side" : z < -0.01 ? "hash side" : "—"; }
+function updateReadouts(st){
+  var pr = st.pr, o = pr ? ORD[st.name] : -1, M = null;
+  $("g_pair").textContent = pr ? pr.def.a + " / " + pr.def.b : "—";
+  $("g_reag").textContent = o === 1 ? "LiBH₄" : o === 3 ? "BH₃" : (o === 2 || o === 4) ? "H⁺" : "—";
+  if (o >= 1 && o <= 2) M = pr.a; else if (o >= 3 && o <= 4) M = pr.b; else if (o >= 5) M = pr.b;
+  var ready = M && (o === 2 || o === 4 ? st.f > 0.5 : o >= 3);
+  if (o === 3) M = pr.a;
+  $("g_ox").textContent = ready ? faceShort(M.P.bC[2]) : "—";
+  $("g_co").textContent = ready ? faceShort(M.P.aC[2]) : "—";
+  $("g_me").textContent = pr ? (pr.site === "none" ? "none" : pr.face === "w" ? "wedge side" : "hash side") : "—";
+  var L = liveOverlay(st);
+  $("g_rms").textContent = L && L.rms !== null && st.name === "overlay" ? f3(L.rms) : (pr && o >= 6 ? f3(pr.R.o.rms) : "—");
+  $("g_mrms").textContent = L && L.rms !== null && st.name === "mirror" ? f3(L.rms) : (pr && o >= 7 ? f3(pr.R.m.rms) : "—");
+  var od = pr && (o >= 6 || (o === 5 && st.f > 0.86)) ? pr.R.o : null;
+  if (pr && (o >= 7 || (o === 6 && st.f > 0.86))) od = pr.R.m;
+  $("g_bad").textContent = od ? od.d.filter(function(d){ return d > 0.25; }).length + " of " + od.d.length : "—";
+  $("g_v").textContent = pr && o >= 7 ? pr.R.rel : (RUN.done ? RUN.rels.join(" · ") : "—");
+  $("gz_v").classList.toggle("hot", RUN.done || (pr && o >= 7));
+}
+function refreshUI(){
+  var go = $("gobtn"), run = RUN.state === "running", custom = isCustom();
+  go.hidden = false; go.disabled = run; go.classList.toggle("custom", custom && !run);
+  if (run) go.innerHTML = "● RUNNING…";
+  else if (RUN.state === "done"){ go.innerHTML = "⚙&nbsp; RUN WITH CUSTOM VALUES"; go.hidden = sameD(RUN.D, copyST()); }
+  else go.innerHTML = custom ? "⚙&nbsp; RUN WITH CUSTOM VALUES" : "▶&nbsp; START EXPERIMENT";
+  $("pausebtn").disabled = !run; $("pausebtn").textContent = RUN.paused ? "Resume" : "Pause";
+  $("replaybtn").hidden = RUN.state !== "done";
+  var s = $("status");
+  s.className = "status" + (custom ? " custom" : "");
+  s.textContent = custom ? "⚙ USING CUSTOM VALUES" : "✓ USING QUESTION VALUES";
+  var q = document.querySelectorAll("#fields select, #fields button, #resetq"), i;
+  for (i = 0; i < q.length; i++) q[i].disabled = run;
+  var m;
+  if (run) m = "The experiment runs by itself — nothing to click. <b>Pause</b> any time.";
+  else if (RUN.state === "done") m = "Press <b>REPLAY</b> to watch it again, or change a structure and run a custom experiment.";
+  else m = custom ? "Your structures will be used; anything you left alone stays as printed." : "Nothing needs to be typed. Press <b>START EXPERIMENT</b>.";
+  $("gomsg").innerHTML = m;
+  refreshStatus();
+}
+
+/* =====================================================================
+   the answer reveal
+   ===================================================================== */
+function blink(id){
+  var e = $(id); if (!e) return;
+  e.classList.remove("blink"); void e.offsetWidth; e.classList.add("blink");
+  setTimeout(function(){ e.classList.remove("blink"); }, 2300);
+}
+function doReveal(){
+  if (!RUN.done){ earlyReveal = true; refreshGate(); return; }
+  var lab = $("lab3d");
+  lab.classList.add("dim"); $("blackout").classList.add("on");
+  setTimeout(function(){
+    $("blackout").classList.remove("on"); $("donebanner").classList.remove("on");
+    if (!REDUCED){ var f = $("flashout"); f.classList.remove("go"); void f.offsetWidth; f.classList.add("go");
+      lab.classList.remove("zoom"); void lab.offsetWidth; lab.classList.add("zoom"); }
+    RUN.revealed = true;
+    mountReveal(); refreshGate();
+    var ab = $("answerbox");
+    ab.classList.remove("celebrate"); void ab.offsetWidth; ab.classList.add("celebrate");
+    setTimeout(function(){ ab.classList.remove("celebrate"); }, 3200);
+    blink("ansval"); blink("grafT"); blink("g_v");
+    setTimeout(function(){ lab.classList.remove("dim"); }, 5200);
+  }, 950);
+}
+function mountReveal(){
+  var host = $("revealhost"), mo = runMatch(), order = relText(RUN.rels);
+  host.innerHTML = ""; host.classList.add("on");
+  var main = mo.length ? "OPTION (" + mo[0] + ")" : "NO OPTION MATCHES";
+  var svg = mk("svg", { viewBox: "0 0 720 340", "class": "graf", role: "img", "aria-label": "Congratulations. Answer found: " + main + ". " + order }, host);
+  var d = mk("defs", {}, svg), sp = mk("filter", { id: "spray", x: "-14%", y: "-40%", width: "128%", height: "180%" }, d);
+  mk("feTurbulence", { type: "fractalNoise", baseFrequency: "0.045 0.09", numOctaves: "3", seed: "7", result: "nz" }, sp);
+  mk("feDisplacementMap", { "in": "SourceGraphic", in2: "nz", scale: "6", xChannelSelector: "R", yChannelSelector: "G" }, sp);
+  var bh = mk("g", {}, svg);
+  tx(svg, 360, 44, "🎉  CONGRATULATIONS!  🎉", { "text-anchor": "middle", "font-size": 21, "font-weight": 900, fill: "#3ee39a", "letter-spacing": "3" });
+  tx(svg, 360, 68, "ANSWER FOUND", { "text-anchor": "middle", "font-size": 12.5, "font-weight": 800, fill: "#9fb0cc", "letter-spacing": "5" });
+  mk("rect", { x: 150, y: 86, width: 420, height: 150, rx: 16, fill: "rgba(8,20,16,.72)", stroke: "#3ee39a", "stroke-width": 2 }, svg);
+  tx(svg, 360, 110, "ANSWER", { "text-anchor": "middle", "font-size": 12, "font-weight": 800, fill: "#9ff0c9", "letter-spacing": "6" });
+  var g = mk("g", { transform: "translate(360,188) skewX(-9)" }, svg), fs = mo.length ? 60 : 38;
+  tx(g, 7, 9, main, { "text-anchor": "middle", "font-size": fs, "font-weight": 900, fill: "#a99bff", opacity: 0.34, "font-family": "ui-sans-serif,system-ui,sans-serif", filter: "url(#spray)" });
+  tx(g, 0, 0, main, { id: "grafT", "text-anchor": "middle", "font-size": fs, "font-weight": 900, fill: "#3ee39a", "font-family": "ui-sans-serif,system-ui,sans-serif", filter: "url(#spray)" });
+  tx(svg, 360, 272, order, { "text-anchor": "middle", "font-size": 19, "font-weight": 800, fill: "#eef3ff" });
+  tx(svg, 360, 300, isCustom(RUN.D) ? "your custom structures · the printed ones give option (" + ANS + ")" : "the two reagents close the lactone in opposite directions — only the spiro carbon inverts",
+    { "text-anchor": "middle", "font-size": 12, fill: "#9fb0cc" });
+  if (!REDUCED) makeBurst(bh);
+}
+function makeBurst(host){
+  burst = [];
+  var i, n = 70, GL = ["P", "Q", "R", "S", "O", "C=O", "●", "◆"], a, sp2, conf, node, cols = ["#3ee39a", "#a99bff", "#54a9ff", "#ff9350"];
+  for (i = 0; i < n; i++){
+    a = Math.random() * Math.PI * 2; sp2 = 90 + Math.random() * 290; conf = i % 3 === 0;
+    node = conf ? mk("rect", { x: -4, y: -3, width: 8, height: 6, rx: 1.5, fill: cols[i % 4] }, host)
+                : tx(host, 0, 0, GL[i % GL.length], { "text-anchor": "middle", "font-size": 11 + Math.random() * 8, fill: cols[i % 4], "font-weight": 800 });
+    burst.push({ n: node, x: 360, y: 170, vx: Math.cos(a) * sp2, vy: Math.sin(a) * sp2 - 70, life: 0, max: 1.4 + Math.random(), rot: Math.random() * 360, vr: (Math.random() - 0.5) * 540 });
+  }
+}
+function stepBurst(dt){
+  var i, b;
+  for (i = 0; i < burst.length; i++){
+    b = burst[i];
+    if (b.life > b.max){ b.n.setAttribute("opacity", 0); continue; }
+    b.life += dt; b.vy += 420 * dt; b.x += b.vx * dt; b.y += b.vy * dt; b.rot += b.vr * dt;
+    b.n.setAttribute("opacity", Math.max(0, 1 - b.life / b.max).toFixed(2));
+    b.n.setAttribute("transform", "translate(" + b.x.toFixed(1) + "," + b.y.toFixed(1) + ") rotate(" + b.rot.toFixed(0) + ")");
+  }
+}
+function relText(r){ return PAIRS[0].a + " & " + PAIRS[0].b + ": " + r[0] + " · " + PAIRS[1].a + " & " + PAIRS[1].b + ": " + r[1]; }
+/* the header answer and the solution: locked until the run ends, or "Reveal anyway" */
+function refreshGate(){
+  var open = RUN.revealed || earlyReveal, ab = $("answerbox"), i, li, k;
+  $("solgate").hidden = open; $("solbody").hidden = !open;
+  var qtxt = relText(QRELS);
+  if (open){
+    ab.classList.remove("locked");
+    $("ansval").textContent = "(" + ANS + ")";
+    $("anssub").textContent = qtxt;
+    $("revealnow").hidden = true;
+    $("solans").textContent = "(" + ANS + ") " + qtxt;
+    $("clsans").textContent = "(" + ANS + ") " + qtxt;
+    $("solintro").innerHTML = RUN.revealed ? "<b>The experiment found this.</b> Here is the same result, reasoned on paper — each step points back to what you watched."
+      : "Revealed early — run the experiment to watch each of these steps happen.";
+  } else {
+    ab.classList.add("locked");
+    $("ansval").textContent = "Run the experiment";
+    $("anssub").textContent = "The answer appears when the experiment finishes.";
+    $("revealnow").hidden = false;
+    $("solans").textContent = "—"; $("clsans").textContent = "— run the experiment";
+    $("solintro").textContent = "Run the experiment — the solution opens with the answer.";
+  }
+  var lis = document.querySelectorAll("#opts li");
+  for (i = 0; i < lis.length; i++){
+    li = lis[i]; k = li.getAttribute("data-k");
+    li.classList.remove("correct", "wrong"); li.querySelector(".mark").textContent = "";
+    if (open){ li.classList.add(k === ANS ? "correct" : "wrong"); li.querySelector(".mark").textContent = k === ANS ? "correct" : "not correct"; }
+  }
+}
+
+/* =====================================================================
+   the loop - one virtual clock, so Pause and speed govern everything
+   ===================================================================== */
+var last = 0, slow = 0;
+function loop(ts){
+  var dt = last ? (ts - last) / 1000 : 0; last = ts;
+  if (dt > 0.06) dt = 0.06;
+  var running = RUN.state === "running" && !RUN.paused;
+  if (running) stepTimeline(dt * RUN.speed);
+  var st = currentState(), sg = seg();
+  if (running && sg && sg.kind === "sp") onPhase(sg, st);
+  NOW = st;
+  if (!RUN.paused) clock += dt;
+  drawBench(st);
+  updRot(st);
+  if (burst.length) stepBurst(dt);
+  slow += dt;
+  if (slow > 0.08){ slow = 0; updateReadouts(st); narrate(st); refreshStatus(); }
+  requestAnimationFrame(loop);
+}
+
+/* =====================================================================
+   wiring
+   ===================================================================== */
+function afterEdit(){ readAll(); if (RUN.state === "setup"){ RUN.D = copyST(); RUN.M = model(RUN.D); drawBars(); drawRot(); } refreshUI(); }
+function toggleClassroom(){
+  RUN.classroom = !RUN.classroom;
+  document.body.classList.toggle("classroom", RUN.classroom);
+  $("classbtn").setAttribute("aria-pressed", RUN.classroom ? "true" : "false");
+  $("classbtn").textContent = RUN.classroom ? "EXIT CLASSROOM MODE" : "CLASSROOM MODE";
+  if (RUN.classroom) try { $("deck").scrollIntoView({ behavior: REDUCED ? "auto" : "smooth", block: "start" }); } catch (e) {}
+}
+function build(){
+  $("fields").innerHTML = fieldsHTML();
+  var i;
+  for (i = 0; i < FIELDS.length; i++) $("in_" + FIELDS[i].k).addEventListener("change", afterEdit);
+  $("fields").addEventListener("click", function(ev){
+    var b = ev.target.closest ? ev.target.closest("button") : null; if (!b || b.disabled) return;
+    var k = b.getAttribute("data-k");
+    if (b.classList.contains("rs")) setField(k, Q[k]);
+    afterEdit();
+  });
+  $("resetq").addEventListener("click", resetAll);
+  $("gobtn").addEventListener("click", function(){ if (RUN.state !== "running") startRun(); });
+  $("pausebtn").addEventListener("click", function(){ RUN.paused = !RUN.paused; refreshUI(); });
+  $("replaybtn").addEventListener("click", function(){ startRun(RUN.D); });
+  $("resetbtn").addEventListener("click", resetRun);
+  $("classbtn").addEventListener("click", toggleClassroom);
+  $("revealnow").addEventListener("click", function(){ earlyReveal = true; refreshGate(); });
+  $("gotolab").addEventListener("click", function(){ $("lab").scrollIntoView({ behavior: REDUCED ? "auto" : "smooth" }); });
+  var sb = document.querySelectorAll("#spd button");
+  for (i = 0; i < sb.length; i++) sb[i].addEventListener("click", function(){
+    RUN.speed = parseFloat(this.getAttribute("data-s"));
+    for (var j = 0; j < sb.length; j++) sb[j].setAttribute("aria-pressed", sb[j] === this ? "true" : "false");
+  });
+  $("themebtn").addEventListener("click", function(){
+    var r = document.documentElement;
+    var dark = r.getAttribute("data-theme") === "dark" || (!r.getAttribute("data-theme") && matchMedia("(prefers-color-scheme: dark)").matches);
+    r.setAttribute("data-theme", dark ? "light" : "dark");
+    drawBars(); drawRot();
+  });
+  try { matchMedia("(prefers-color-scheme: dark)").addEventListener("change", function(){ drawBars(); drawRot(); }); } catch (e) {}
+  readAll(); drawBars(); drawRot(); drawLog(); refreshGate(); refreshUI();
+  requestAnimationFrame(loop);
+}
+if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", build); else build();
+
+/* exposed for the headless test harness */
+window.PX = {
+  Q: Q, OPTIONS: OPTIONS, ST: ST, RUN: RUN, model: model, lactone: lactone, mirrorMol: mirrorMol, overlay: overlay, relation: relation,
+  matchOption: matchOption, align: align,
+  answer: function(){ return ANS; }, qrels: function(){ return QRELS; }, qmodel: function(){ return QM; },
+  start: function(){ startRun(); }, replay: function(){ startRun(RUN.D); }, reset: resetRun, resetAll: resetAll,
+  pause: function(){ RUN.paused = !RUN.paused; refreshUI(); }, speed: function(s){ RUN.speed = s; },
+  setField: function(k, v){ setField(k, v); afterEdit(); },
+  stage: stageKey, res: function(){ return RUN.res; }, rels: function(){ return RUN.rels; }, match: runMatch,
+  calcKeys: function(){ return Object.keys(RUN.calc); }, now: function(){ var n = NOW; return n ? { name: n.name, f: n.f, idx: n.idx } : null; }
+};
+})();
+</script>
+</body>
+</html>

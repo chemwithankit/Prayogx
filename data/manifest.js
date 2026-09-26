@@ -11,8 +11,8 @@ window.SIM_MANIFEST = {
     "tracker": {
       "type": "Google Sheet",
       "title": "PrayogX — Simulation Progress Tracker",
-      "id": "16K0HYLnRzB_NVjjEDf6x_0ZpeZajPrybeKX4boUXj7M",
-      "url": "https://docs.google.com/spreadsheets/d/16K0HYLnRzB_NVjjEDf6x_0ZpeZajPrybeKX4boUXj7M/edit",
+      "id": "1pHzB-JScXca_Qx-omgo-FlFKdMBu6HcfrsiekdEGDk4",
+      "url": "https://docs.google.com/spreadsheets/d/1pHzB-JScXca_Qx-omgo-FlFKdMBu6HcfrsiekdEGDk4/edit",
       "localSource": "data/tracker.csv",
       "note": "data/tracker.csv is the local source of truth and carries every column, including the long Subtopics, Concepts, Verification Methods, Interactive Features, Tags and Notes prose. From 2026-09-17 the Google Sheet holds the 19 scannable columns only (through Source PDF), because the full CSV passed 90 kB and the Drive connector has no append or cell-write tool - every update means recreating the sheet from scratch and re-sending the whole file, and the prose columns are read in meta.json and question.md anyway. The sheet URL changes on every update; always take it from here. Before uploading, swap the '; ' list separators for ' · ' - Drive's CSV importer picks whichever of comma or semicolon is more frequent, and semicolons otherwise win and collapse every row into a single cell.",
       "syncedAt": "2026-09-17",
@@ -39,17 +39,18 @@ window.SIM_MANIFEST = {
     "idPolicy": "Simulation IDs are permanent. A redo or fix edits the existing folder in place and bumps `updatedAt` / `revision`; it never mints a new ID."
   },
   "counts": {
-    "total": 20,
+    "total": 21,
     "byYear": {
-      "2026": 20
+      "2026": 21
     },
     "bySubject": {
-      "Chemistry": 20
+      "Chemistry": 21
     },
     "byChapter": {
       "Thermodynamics": 1,
       "Chemical Kinetics": 2,
       "Chemical Bonding and Molecular Structure": 2,
+      "Organic Chemistry - Some Basic Principles and Techniques": 2,
       "Electrochemistry": 1,
       "Aldehydes, Ketones and Carboxylic Acids": 1,
       "Biomolecules": 2,
@@ -60,8 +61,7 @@ window.SIM_MANIFEST = {
       "Surface Chemistry": 1,
       "Solutions and Colligative Properties": 3,
       "Coordination Compounds": 1,
-      "Polymers": 1,
-      "Organic Chemistry - Some Basic Principles and Techniques": 1
+      "Polymers": 1
     }
   },
   "simulations": [
@@ -525,6 +525,162 @@ window.SIM_MANIFEST = {
         "Status indicator (preparing, running, analysing, calculation complete, experiment complete) and a stage strip",
         "The reveal dims the laboratory, flashes, sprays OPTION (A) inside an ANSWER frame with CONGRATULATIONS, ANSWER FOUND and the order, and blinks the header answer once",
         "Custom values run the same experiment; switching the lone pair off lets NF3 overtake NH3 and the reveal says no printed option matches",
+        "Pause, 1x / 2x, replay, reset, and a classroom mode that hides the inputs and enlarges the experiment, graphs and equations",
+        "A detailed solution that points back to what the experiment showed, a distractor audit, a verification block, and an eight-step how-to-use section"
+      ],
+      "source": {
+        "file": "papers/Jee_Adv_2026_paper1_solutions_final.pdf",
+        "page": 27
+      },
+      "createdAt": "2026-09-25",
+      "updatedAt": "2026-09-25"
+    },
+    {
+      "id": "ADV-2026-P1-CHE-Q04",
+      "slug": "adv-2026-p1-che-q04",
+      "revision": 1,
+      "path": "simulations/2026/paper-1/chemistry/adv-2026-p1-che-q04/index.html",
+      "folder": "simulations/2026/paper-1/chemistry/adv-2026-p1-che-q04/",
+      "title": "Spiro lactones from LiBH4 and BH3 reductions of cyclobutane half-esters: identical, enantiomers or diastereomers",
+      "shortTitle": "The lactone flasks and overlay bench",
+      "summary": "Two cyclobutane half-esters, each with an ester arm (wedge) and an acid arm (hash) on the same carbon. Press start and the bench does the rest: LiBH4 reduces the ester arm, BH3 the acid arm, and H+ closes each hydroxy compound to a spiro delta-lactone - the ring closes in opposite directions. The two products are then laid on top of each other by a least-squares fit, the mirror image is tried, and each pair is named identical, enantiomers or diastereomers before the answer is revealed. No prediction stage - input, run, watch, result.",
+      "exam": "JEE Advanced",
+      "year": 2026,
+      "paper": "Paper 1",
+      "paperNumber": 1,
+      "subject": "Chemistry",
+      "branch": "Organic Chemistry / Stereochemistry",
+      "questionNumber": 4,
+      "section": "Section 1",
+      "questionType": "Single correct MCQ",
+      "marking": {
+        "full": 3,
+        "zero": 0,
+        "negative": -1
+      },
+      "chapter": "Organic Chemistry - Some Basic Principles and Techniques",
+      "topic": "Stereoisomerism - diastereomers from chemoselective reduction and lactonisation",
+      "subtopics": [
+        "Chemoselective reduction: LiBH4 reduces esters, BH3 reduces carboxylic acids",
+        "Acid-catalysed lactonisation of hydroxy acids and hydroxy esters (delta-lactones)",
+        "Spiro compounds and stereocentres created by ring closure",
+        "Identical, enantiomers and diastereomers: superimposition and mirror tests",
+        "Cis/trans isomerism in 1,3-disubstituted cyclobutanes; pseudo-asymmetric centres",
+        "Chirality and mirror planes"
+      ],
+      "concepts": [
+        "LiBH4 reduces an ester to a primary alcohol but not a carboxylic acid (given); BH3 does the opposite - it reduces the acid quickly and the ester only slowly - so the two routes reduce different arms",
+        "Each product has CH2CH2OH and CH2C(=O)X on the same ring carbon; O-C-C-C1-C-C(=O) is a six-membered ring, so H+ closes a spiro delta-lactone (losing H2O from the hydroxy acid, EtOH from the hydroxy ester)",
+        "The two reagents close the lactone in opposite directions: with LiBH4 the ring O comes from the wedge arm and the C=O from the hash arm; with BH3 the reverse",
+        "In the lactone the spiro carbon carries two different ring branches (-CH2-C(=O)- and -CH2-CH2-O-), so swapping their faces inverts it",
+        "Top pair: the spiro carbon and the adjacent CH3 carbon are both stereocentres; only the spiro carbon is inverted, so P and Q are diastereomers (both chiral, not mirror images)",
+        "Bottom pair: with the CH3 across the ring a mirror plane runs through C1, C3 and the lactone, so R and S are achiral cis/trans (pseudo-asymmetric r/s) diastereomers",
+        "Two structures are identical only if a rotation superimposes them; enantiomers if the mirror image superimposes; otherwise stereoisomers of the same constitution are diastereomers",
+        "Without the CH3 the spiro carbon is not a stereocentre and both routes give the same lactone"
+      ],
+      "formulas": [
+        "R-CO2Et --LiBH4--> R-CH2OH (R-CO2H unchanged)",
+        "R-CO2H --BH3--> R-CH2OH (R-CO2Et unchanged)",
+        "HO-CH2CH2-C1-CH2-CO2H / CO2Et --H+--> spiro delta-lactone + H2O / EtOH",
+        "identical: min over rotations of RMSD = 0; enantiomers: min RMSD to the mirror image = 0"
+      ],
+      "tags": [
+        "stereochemistry",
+        "stereoisomerism",
+        "diastereomers",
+        "enantiomers",
+        "identical",
+        "superimposable",
+        "mirror image",
+        "chirality",
+        "achiral",
+        "mirror plane",
+        "cis trans",
+        "pseudo-asymmetric",
+        "spiro compound",
+        "lactone",
+        "delta-lactone",
+        "lactonisation",
+        "chemoselective reduction",
+        "libh4",
+        "lithium borohydride",
+        "bh3",
+        "borane",
+        "ester reduction",
+        "carboxylic acid reduction",
+        "cyclobutane",
+        "cip",
+        "rmsd",
+        "single correct",
+        "jee advanced 2026",
+        "paper 1",
+        "chemistry q4",
+        "section 1",
+        "virtual laboratory",
+        "classroom mode"
+      ],
+      "difficulty": "Moderate-Hard",
+      "estimatedMinutes": 6,
+      "answer": "(C)",
+      "answerValue": "P & Q diastereomers, R & S diastereomers",
+      "answerUnit": "",
+      "derivedQuantities": {
+        "products_formula": "C9H14O2",
+        "lactone_ring_size": 6,
+        "P_smiles": "C[C@@H]1CC[C@]12CCOC(=O)C2",
+        "Q_smiles": "C[C@@H]1CC[C@@]12CCOC(=O)C2",
+        "R_smiles": "C[C@H]1C[C@@]2(CCOC(=O)C2)C1",
+        "S_smiles": "C[C@H]1C[C@]2(CCOC(=O)C2)C1",
+        "CIP_P": "CH3 carbon R, spiro carbon R",
+        "CIP_Q": "CH3 carbon R, spiro carbon S",
+        "CIP_R": "r, r (pseudo-asymmetric)",
+        "CIP_S": "s, s (pseudo-asymmetric)",
+        "stereoisomers_top_constitution": 4,
+        "stereoisomers_bottom_constitution": 2,
+        "rdkit_best_rms_P_on_Q_A": 1.27,
+        "rdkit_best_rms_P_on_mirror_Q_A": 0.41,
+        "rdkit_best_rms_R_on_S_A": 0.3,
+        "page_rms_P_on_Q_A": 1.51,
+        "page_rms_P_on_mirror_Q_A": 0.571,
+        "page_rms_R_on_S_A": 0.578,
+        "option_A": "needs P = Q - true only with no CH3 on the top substrate",
+        "option_B": "needs R = S - true only with no CH3 on the bottom substrate",
+        "option_D": "needs both pairs identical"
+      },
+      "verification": {
+        "status": "verified",
+        "methods": [
+          "Solved independently before any key was consulted: chemoselective reduction of opposite arms, delta-lactonisation, then comparison of the stereocentres",
+          "RDKit read both substrates from 2D coordinates copied from the printed structures with their wedge and hash bonds and assigned the stereocentres itself",
+          "The reductions and the lactonisation were run as reaction templates that never touch a stereocentre bond; canonical isomeric SMILES show P != Q, Q != mirror(P), R != S, and R and S are each their own mirror image",
+          "CIP (new RDKit labeller): the CH3 carbon is R in both P and Q, the spiro carbon R in P and S in Q; R (r, r) and S (s, s)",
+          "Enumeration: the top lactone constitution has 4 stereoisomers and P, Q come from different enantiomer pairs; the bottom one has 2 (cis, trans) - exactly R and S",
+          "3D: 20 MMFF conformers each, best RMSD over all symmetry-equivalent mappings: P on a fresh P 0.000 A, P on Q 1.27 A, P on mirror Q 0.41 A, R on S 0.30 A (stable across random seeds)",
+          "Control: with no CH3 both routes give the same lactone",
+          "Independent script tests/verify_p1q04.py: 27 of 27 checks pass and the answer is (C)",
+          "The page builds each lactone in 3D, finds the best proper rotation by Horn's quaternion least-squares method over every symmetry-equivalent numbering, tries the mirror image, names each pair from the RMSDs and matches the pair of relations to the printed options at run time",
+          "Headless-browser suite tests/sim_p1q04.js drives the whole page: the scheme, the optional structure choices and their resets, the automatic run from one START to the reveal, the live RMSD falling as Q is turned, all six overlay results including the controls, every calculation line in order, the reveal and its blink, replay, pause, reset, a custom run with no top CH3 (option A), classroom mode, 390 and 360 px, reduced motion, the feed entries, and the real app shell opening it",
+          "Answer cross-checked afterwards against the official final key printed with the Paper 1 PDF: Q4 -> (C)"
+        ],
+        "verifiedOn": "2026-09-25",
+        "note": "Built to the streamlined specification: no prediction stage, one START, an automatic run, then a detailed solution and a how-to-use section. The question prints structures, not numbers, so the optional inputs are structural: the position (adjacent, opposite, none) and face of each CH3, pre-set to the printed structures. The ester arm is always the wedge and the acid arm the hash, as printed. The page's 3D models are idealised (square cyclobutane, planar lactone), which is enough for the superimposition test; the RDKit conformer search in the verifier uses real force-field geometries."
+      },
+      "interactivity": [
+        "The printed reaction scheme redrawn as SVG with its wedge and hash bonds",
+        "Ball-and-stick 3D models on a dark bench: blue rings mark atoms from the ester (wedge) arm, orange from the acid (hash) arm, green the CH3",
+        "LiBH4 flask: hydride flies to the ester carbon only, ethoxide leaves, then H+ swings the new OH onto the acid C=O and water leaves - P forms",
+        "BH3 flask: hydride goes to the acid carbon instead, then H+ closes the OH onto the ester and ethanol leaves - Q forms, the ring closed the other way round",
+        "Overlay bench: Q slides onto P and is turned by the least-squares rotation while the live RMSD falls; green and red rings mark atoms that fit or do not",
+        "Mirror test: Q is reflected through the cyclobutane plane, brought back and fitted again",
+        "Optional structure choices: the position (next to C1, across the ring, none) and face (wedge, hash) of each CH3, pre-set to the printed structures, with per-field resets, a USING QUESTION VALUES / USING CUSTOM VALUES badge and RESET TO QUESTION VALUES",
+        "One START runs everything automatically: prepare, both substrates (reduce, lactonise, reduce, lactonise, overlay, mirror, verdict), controls, classification, write-up, EXPERIMENT COMPLETE and the reveal",
+        "A bar chart of the best RMSD for P on Q, P on mirror Q, R on S, R on mirror S and two controls that read 0",
+        "A graph of RMSD against the fraction of the best rotation applied, one curve per overlay",
+        "A calculation panel that writes the reagent rules, where the ring O and C=O end up in each product, each overlay and mirror result, the controls, the two relations and the matching option",
+        "An overlay log with atoms compared, atoms off and RMSD",
+        "Status indicator (preparing, running, analysing, calculation complete, experiment complete) and a stage strip",
+        "The reveal dims the laboratory, flashes, sprays OPTION (C) inside an ANSWER frame with CONGRATULATIONS, ANSWER FOUND and both verdicts, and blinks the header answer once",
+        "Custom runs: removing a CH3 makes that pair identical and the reveal names the option that would then be right",
         "Pause, 1x / 2x, replay, reset, and a classroom mode that hides the inputs and enlarges the experiment, graphs and equations",
         "A detailed solution that points back to what the experiment showed, a distractor audit, a verification block, and an eight-step how-to-use section"
       ],
