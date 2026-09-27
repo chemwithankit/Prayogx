@@ -11,12 +11,12 @@ window.SIM_MANIFEST = {
     "tracker": {
       "type": "Google Sheet",
       "title": "PrayogX — Simulation Progress Tracker",
-      "id": "19vfNi0r2yfSYlPx7CCjbEJrwtWD5V8lwFlFnkJa3sNM",
-      "url": "https://docs.google.com/spreadsheets/d/19vfNi0r2yfSYlPx7CCjbEJrwtWD5V8lwFlFnkJa3sNM/edit",
+      "id": "1LBFyvTiPVQ-x3oESck2o8nZzqem83yfEjkrpKIy8daY",
+      "url": "https://docs.google.com/spreadsheets/d/1LBFyvTiPVQ-x3oESck2o8nZzqem83yfEjkrpKIy8daY/edit",
       "localSource": "data/tracker.csv",
       "note": "data/tracker.csv is the local source of truth and carries every column, including the long Subtopics, Concepts, Verification Methods, Interactive Features, Tags and Notes prose. From 2026-09-17 the Google Sheet holds the 19 scannable columns only (through Source PDF), because the full CSV passed 90 kB and the Drive connector has no append or cell-write tool - every update means recreating the sheet from scratch and re-sending the whole file, and the prose columns are read in meta.json and question.md anyway. The sheet URL changes on every update; always take it from here. Before uploading, swap the '; ' list separators for ' · ' - Drive's CSV importer picks whichever of comma or semicolon is more frequent, and semicolons otherwise win and collapse every row into a single cell.",
       "syncedAt": "2026-09-27",
-      "rows": 26,
+      "rows": 27,
       "view": "summary",
       "columns": 25
     },
@@ -39,12 +39,12 @@ window.SIM_MANIFEST = {
     "idPolicy": "Simulation IDs are permanent. A redo or fix edits the existing folder in place and bumps `updatedAt` / `revision`; it never mints a new ID."
   },
   "counts": {
-    "total": 26,
+    "total": 27,
     "byYear": {
-      "2026": 26
+      "2026": 27
     },
     "bySubject": {
-      "Chemistry": 26
+      "Chemistry": 27
     },
     "byChapter": {
       "Thermodynamics": 1,
@@ -55,6 +55,7 @@ window.SIM_MANIFEST = {
       "The p-Block Elements (Group 17)": 1,
       "Aldehydes, Ketones and Carboxylic Acids": 2,
       "States of Matter: Gases and Liquids": 1,
+      "Coordination Compounds": 2,
       "Electrochemistry": 1,
       "Biomolecules": 2,
       "The p-Block Elements (Group 18)": 1,
@@ -62,7 +63,6 @@ window.SIM_MANIFEST = {
       "Amines and Diazonium Salts": 1,
       "Surface Chemistry": 1,
       "Solutions and Colligative Properties": 3,
-      "Coordination Compounds": 1,
       "Polymers": 1
     }
   },
@@ -1449,6 +1449,154 @@ window.SIM_MANIFEST = {
         "One START runs all nine stages automatically; SHOW EQUATION, SHOW OBSERVATION and SHOW WHY? overlays; a reasoning log and a scan table",
         "The reveal dims the lab, flashes and sprays m1/m2 = 9.80 with ANSWER FOUND, CONGRATULATIONS, graffiti and confetti, and blinks the header answer once",
         "Pressure explorer: sliders for m1/m2, k and p with live cylinders and a SOLVE button using (pk - 1)/(k - p)",
+        "Pause, 1x / 2x, replay, reset, and a classroom mode",
+        "A detailed solution that points back to the experiment, a verification block, and an eight-step how-to-use section"
+      ],
+      "source": {
+        "file": "papers/Jee_Adv_2026_paper1_solutions_final.pdf",
+        "page": 31
+      },
+      "createdAt": "2026-09-27",
+      "updatedAt": "2026-09-27"
+    },
+    {
+      "id": "ADV-2026-P1-CHE-Q10",
+      "slug": "adv-2026-p1-che-q10",
+      "revision": 1,
+      "path": "simulations/2026/paper-1/chemistry/adv-2026-p1-che-q10/index.html",
+      "folder": "simulations/2026/paper-1/chemistry/adv-2026-p1-che-q10/",
+      "title": "All the isomers of the square planar complex K[M(NCS)(NO2)(gly)]: linkage, geometrical and optical",
+      "shortTitle": "Isomer assembly lab",
+      "summary": "A square-planar metal ion with glycinate, thiocyanate and nitrite. Press start and the lab does the rest: it reads the formula (K+ outside, M(II), four donor atoms), shows each ambidentate ligand bound through each of its ends, lists the 2 x 2 = 4 linkage sets, shows that the glycinate chelate can only span a cis edge, builds all 64 seatings of the donor atoms on the four corners one by one, folds them with the 8 rotations of a square into distinct isomers, holds every isomer up to a mirror, and audits two common wrong answers before revealing the count. No prediction stage - input, run, watch, result.",
+      "exam": "JEE Advanced",
+      "year": 2026,
+      "paper": "Paper 1",
+      "paperNumber": 1,
+      "subject": "Chemistry",
+      "branch": "Inorganic Chemistry / Coordination Compounds",
+      "questionNumber": 10,
+      "section": "Section 3",
+      "questionType": "Numerical value",
+      "marking": {
+        "full": 4,
+        "partial": 0,
+        "zero": 0,
+        "negative": 0
+      },
+      "chapter": "Coordination Compounds",
+      "topic": "Isomerism in coordination compounds - linkage, geometrical and optical isomers of a square planar complex",
+      "subtopics": [
+        "Ambidentate ligands and linkage isomerism",
+        "Unsymmetrical bidentate (AB) chelating ligands",
+        "Geometrical isomerism of square planar [M(AB)cd]",
+        "Optical isomerism and mirror planes",
+        "Counting isomers by symmetry"
+      ],
+      "concepts": [
+        "K+ is a counter-ion; the complex anion [M(NCS)(NO2)(gly)]- has M(II) and four donor atoms: coordination number 4, square planar",
+        "NCS- binds through N (thiocyanato-N) or S (thiocyanato-S); NO2- through N (nitro) or O (nitrito): 2 x 2 = 4 linkage sets",
+        "Glycinate is an unsymmetrical N,O chelate that can only span two cis corners",
+        "Square planar [M(AB)cd] has 2 geometrical isomers: c trans to A or c trans to B",
+        "A square planar complex lies in its own mirror plane, so it has no optical isomers: total 4 x 2 = 8"
+      ],
+      "formulas": [
+        "x + 3(-1) = -1 so M is +2",
+        "linkage sets = 2 x 2 = 4",
+        "[M(AB)cd]: 2 geometrical isomers",
+        "total = 4 x 2 = 8",
+        "Burnside: (1/8) x 64 = 8"
+      ],
+      "tags": [
+        "coordination compounds",
+        "isomerism",
+        "linkage isomerism",
+        "geometrical isomerism",
+        "optical isomerism",
+        "ambidentate ligand",
+        "thiocyanate",
+        "thiocyanato",
+        "nitrite",
+        "nitro",
+        "nitrito",
+        "glycinate",
+        "gly",
+        "chelate",
+        "unsymmetrical bidentate",
+        "square planar",
+        "cis trans",
+        "mirror image",
+        "chirality",
+        "symmetry",
+        "counting isomers",
+        "numerical value",
+        "jee advanced 2026",
+        "paper 1",
+        "chemistry q10",
+        "section 3",
+        "virtual laboratory",
+        "classroom mode"
+      ],
+      "difficulty": "Moderate",
+      "estimatedMinutes": 4,
+      "answer": "8",
+      "answerValue": "8",
+      "answerUnit": "",
+      "derivedQuantities": {
+        "metal_oxidation_state": 2,
+        "coordination_number": 4,
+        "linkage_sets": 4,
+        "geometric_isomers_per_set": 2,
+        "optical_isomers": 0,
+        "total_isomers": 8,
+        "raw_seatings": 64,
+        "square_rotations": 8,
+        "seatings_per_isomer": 8,
+        "burnside_count": 8,
+        "cis_corner_distance_A": 2.83,
+        "trans_corner_distance_A": 4.0,
+        "glycinate_bite_A_model": 2.65,
+        "custom_tetrahedral": "8 (4 enantiomer pairs)",
+        "custom_acac": 4,
+        "custom_Cl_for_NCS": 4,
+        "custom_two_halides": 2,
+        "trap_add_instead_of_multiply": 6,
+        "trap_double_for_optical": 16,
+        "trap_ignore_linkage": 2,
+        "trap_gly_symmetric": 4,
+        "trap_trans_spanning_chelate": 12
+      },
+      "verification": {
+        "status": "verified",
+        "methods": [
+          "Solved independently before any key was consulted: 2 x 2 linkage sets x 2 geometrical isomers, no optical isomers = 8",
+          "Brute force in Python: all 64 seatings folded with the 8 symmetry permutations of a square give 8 isomers, 2 per linkage set, differing in what is trans to the glycinate N",
+          "Burnside's lemma: (1/8) x 64 fixed seatings = 8; only the identity fixes a seating",
+          "3-D coordinates: the proper rotations mapping the donor sites onto themselves were found numerically (8 for the square, 12 for a tetrahedron) and every square-planar isomer's reflected coordinates superimpose on the original",
+          "Custom conditions: tetrahedral gives 8 as 4 enantiomer pairs; acac gives 4; Cl- for NCS- gives 4; two halides give 2",
+          "Traps audited: 4 + 2 = 6; doubling for optical isomers gives 16; ignoring linkage gives 2; symmetrical glycinate gives 4; a trans-spanning chelate would give 12",
+          "Independent script tests/verify_p1q10.py: 26 of 26 checks pass",
+          "Solution websites: MathonGo's published solution (their Q42) gives 8",
+          "The page counts the isomers at run time with its own enumeration and symmetry group; no answer value is written into the script",
+          "Headless-browser suite tests/sim_p1q10.js drives the whole page: the enumeration and its custom branches, the optional ligands and their warnings, the automatic nine-stage run from one START, the answer-panel messages, the seating-by-seating build, folding and mirror test, the audit and badges, the two charts, the reveal and its blink, the isomer explorer, replay, pause, reset, tetrahedral and acac custom runs, classroom mode, 390 and 360 px, reduced motion, the feed entries, and the real app shell opening it",
+          "Answer cross-checked afterwards against the official final key printed with the Paper 1 PDF: Q10 -> 8"
+        ],
+        "verifiedOn": "2026-09-27",
+        "note": "Built with the prayogx-next-question skill. Not a reaction question, so the organic two-level mechanism view does not apply. M-L = 2.00 A and a glycinate bite of 2.65 A are model values used only to show why the chelate spans a cis edge."
+      },
+      "interactivity": [
+        "Mission brief with linkage sets = ?, geometric per set = ? and total isomers = ? tiles that fill in as the lab finds them",
+        "Molecules drawn atom by atom from each seating: donor atoms highlighted, NCS/SCN and NO2/ONO bound through each end, the glycinate chelate ring",
+        "A formula stage (counter-ion, charge balance, coordination number) and a 2 x 2 linkage grid",
+        "A chelate stage contrasting the cis edge (2.83 A) with the trans span (4.00 A)",
+        "A live build of all 64 seatings, each named NEW or 'same as isomer #k, turned 90 / flipped over', with a growing gallery and a log row per seating",
+        "A folding stage where one linkage set's 16 seatings slide into 2 piles, and a mirror test that turns the mirror image over onto the original",
+        "A discovery curve (distinct isomers vs seatings examined) and seatings-per-isomer bars, both computed from the enumeration",
+        "A result audit of the linkage count, the geometric count and two common wrong answers",
+        "A persistent answer panel with stage messages and a progress bar, and six badges",
+        "Optional ligands and geometry: tetrahedral, acac, Cl-, Br-, with honest warnings",
+        "One START runs all nine stages automatically; SHOW EQUATION, SHOW OBSERVATION and SHOW WHY? overlays; a reasoning log and an evidence table",
+        "The reveal dims the lab, flashes and sprays 8 ISOMERS with ANSWER FOUND, CONGRATULATIONS, graffiti and confetti, and blinks the header answer once",
+        "Isomer explorer: turn, flip over, swap ligands, change donor atoms, mirror test, a count of the distinct isomers the student has made, and SHOW ALL ISOMERS",
         "Pause, 1x / 2x, replay, reset, and a classroom mode",
         "A detailed solution that points back to the experiment, a verification block, and an eight-step how-to-use section"
       ],

@@ -9,7 +9,7 @@ pass=0; fail=0
 line(){ printf '%-46s %s\n' "$1" "$2"; }
 
 echo "=== chemistry verifiers (exact arithmetic, no browser) ==="
-for f in verify15.py verify16.py verify17.py "$HERE/verify_p1q01.py" "$HERE/verify_p1q02.py" "$HERE/verify_p1q03.py" "$HERE/verify_p1q04.py" "$HERE/verify_p1q05.py" "$HERE/verify_p1q06.py" "$HERE/verify_p1q07.py" "$HERE/verify_p1q08.py" "$HERE/verify_p1q09.py"; do
+for f in verify15.py verify16.py verify17.py "$HERE/verify_p1q01.py" "$HERE/verify_p1q02.py" "$HERE/verify_p1q03.py" "$HERE/verify_p1q04.py" "$HERE/verify_p1q05.py" "$HERE/verify_p1q06.py" "$HERE/verify_p1q07.py" "$HERE/verify_p1q08.py" "$HERE/verify_p1q09.py" "$HERE/verify_p1q10.py"; do
   out=$(python3 "$f" 2>&1 | tail -1); nm=$(basename "$f")
   if echo "$out" | grep -q "0 failed"; then line "$nm" "$out"; pass=$((pass+1));
   else line "$nm" "FAILED: $out"; fail=$((fail+1)); fi
@@ -41,6 +41,7 @@ run "P1 Q6 chemical identity lab"         "$HERE/sim_p1q06.js"
 run "P1 Q7 electron-transfer lab"         "$HERE/sim_p1q07.js"
 run "P1 Q8 synthesis pathway lab"          "$HERE/sim_p1q08.js"
 run "P1 Q9 twin-cylinder pressure lab"     "$HERE/sim_p1q09.js"
+run "P1 Q10 isomer assembly lab"          "$HERE/sim_p1q10.js"
 run "production suite (prodcheck)"         "$HERE/prodcheck.js"
 run "single-source propagation"            "$HERE/propagation.js"
 run "revision + stale cache"               "$HERE/stalecache.js"
