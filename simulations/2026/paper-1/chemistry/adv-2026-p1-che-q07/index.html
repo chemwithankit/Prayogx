@@ -1,0 +1,1780 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bartlett's Electron-Transfer Lab — O₂⁺[PtF₆]⁻ — JEE Advanced 2026 Paper 1 Q.7 | PrayogX</title>
+<meta name="description" content="A virtual chemistry lab: let O2 meet PtF6 vapour, watch one electron jump to form the ionic solid O2+[PtF6]-, fill the MO diagram of O2+ and find its bond order, count the 5d electrons of Pt(V), audit where every fluorine atom ends up, and let the lab decide which statements are correct.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232a78d6'/%3E%3Cpath d='M12.5 6.5h7M13.6 6.5v7.2L7.9 24.1a1.5 1.5 0 0 0 1.3 2.3h13.6a1.5 1.5 0 0 0 1.3-2.3l-5.7-10.4V6.5' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M10.6 20.6h10.8' stroke='white' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E">
+<meta name="sim-id" content="ADV-2026-P1-CHE-Q07">
+<style>
+:root{
+  color-scheme: light;
+  --surface-0:#f4f4f1; --surface-1:#fcfcfb; --surface-2:#ececea;
+  --line:#d9d9d4; --line-strong:#bcbcb5;
+  --text-primary:#0b0b0b; --text-secondary:#52514e; --text-muted:#77766f;
+  --s1:#2a78d6; --s2:#eb6834; --s3:#1baf7a; --s4:#4a3aa7;
+  --good:#00743f; --bad:#c0392b; --accent:#2a78d6;
+  --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+  --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --serif:ui-serif,Georgia,"Times New Roman",serif;
+  --radius:10px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  color-scheme: dark;
+  --surface-0:#111110; --surface-1:#1a1a19; --surface-2:#232322;
+  --line:#34342f; --line-strong:#4a4a44;
+  --text-primary:#ffffff; --text-secondary:#c3c2b7; --text-muted:#95948b;
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#9085e9;
+  --good:#3fae7a; --bad:#e66767; --accent:#3987e5;
+}}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --surface-0:#111110; --surface-1:#1a1a19; --surface-2:#232322;
+  --line:#34342f; --line-strong:#4a4a44;
+  --text-primary:#ffffff; --text-secondary:#c3c2b7; --text-muted:#95948b;
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#9085e9;
+  --good:#3fae7a; --bad:#e66767; --accent:#3987e5;
+}
+*{box-sizing:border-box}
+[hidden]{display:none !important}
+body{margin:0;background:var(--surface-0);color:var(--text-primary);font-family:var(--sans);
+  font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px 80px}
+
+/* ---------- header ---------- */
+header.top{border-bottom:1px solid var(--line);background:var(--surface-1)}
+.top-inner{max-width:1180px;margin:0 auto;padding:22px 20px 18px;position:relative;
+  display:flex;flex-wrap:wrap;gap:16px;align-items:flex-start;justify-content:space-between}
+.simid{font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--text-muted)}
+h1{font-size:23px;line-height:1.25;margin:6px 0 10px;font-weight:640;max-width:660px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-size:11.5px;padding:3px 9px;border:1px solid var(--line-strong);border-radius:999px;
+  color:var(--text-secondary);background:var(--surface-2);white-space:nowrap}
+.chip.k{border-color:var(--accent);color:var(--accent);background:transparent}
+.answerbox{border:1px solid var(--line-strong);border-radius:var(--radius);background:var(--surface-2);
+  padding:12px 16px;min-width:220px}
+.answerbox .lbl{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted)}
+.answerbox .val{font-family:var(--mono);font-size:25px;font-weight:600;color:var(--good);line-height:1.22}
+.answerbox .sub{font-size:12px;color:var(--text-secondary)}
+.answerbox.locked .val{color:var(--text-muted);font-size:17px;letter-spacing:.04em}
+.answerbox .rv{margin-top:6px;font-size:11px;background:none;border:none;padding:0;color:var(--accent);
+  cursor:pointer;text-decoration:underline;font-family:var(--sans)}
+.themebtn{position:absolute;top:14px;right:16px;border:1px solid var(--line-strong);background:var(--surface-2);
+  color:var(--text-secondary);border-radius:8px;padding:4px 9px;font-size:12px;cursor:pointer}
+.brandbar{display:flex;align-items:center;gap:8px;margin-bottom:9px}
+.brandbar .pxmark{width:21px;height:21px;flex:none;display:block}
+.brandbar .wm{font-size:13px;font-weight:800;letter-spacing:.17em;color:var(--text-secondary);line-height:1}
+.brandbar .wm i{font-style:normal;color:var(--accent)}
+
+nav.jump{position:sticky;top:0;z-index:20;background:var(--surface-0);border-bottom:1px solid var(--line);
+  padding:8px 0;margin-bottom:26px}
+nav.jump ul{max-width:1180px;margin:0 auto;padding:0 20px;list-style:none;display:flex;gap:4px;overflow-x:auto}
+nav.jump a{display:block;padding:5px 11px;border-radius:7px;font-size:13px;text-decoration:none;
+  color:var(--text-secondary);white-space:nowrap}
+nav.jump a:hover{background:var(--surface-2);color:var(--text-primary)}
+
+section{margin:0 0 42px;scroll-margin-top:56px}
+h2{font-size:17px;font-weight:640;margin:0 0 4px;display:flex;align-items:baseline;gap:9px;flex-wrap:wrap}
+h2 .n{font-family:var(--mono);font-size:12px;color:var(--text-muted);font-weight:400}
+h2 .vb{font-size:12px;color:var(--text-muted);font-weight:400}
+h2.big{font-size:20px;letter-spacing:.02em}
+.lede{color:var(--text-secondary);font-size:13.5px;margin:0 0 16px;max-width:78ch}
+.panel{background:var(--surface-1);border:1px solid var(--line);border-radius:var(--radius);padding:18px}
+.panel h3{margin:0 0 12px;font-size:13px;letter-spacing:.05em;text-transform:uppercase;color:var(--text-muted);font-weight:600}
+.qtext{font-family:var(--serif);font-size:16px;line-height:1.7}
+.opts{list-style:none;padding:0;margin:14px 0 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(150px,100%),1fr));gap:9px}
+.opts li{border:1px solid var(--line);border-radius:10px;padding:9px 12px;background:var(--surface-1);
+  display:flex;align-items:baseline;gap:10px;font-family:var(--serif);font-size:16px}
+.opts li .k{font-family:var(--mono);font-size:12.5px;color:var(--text-muted)}
+.opts li .mark{margin-left:auto;font-family:var(--sans);font-size:11.5px;font-weight:600}
+.opts li.correct{border-color:var(--good);background:color-mix(in srgb,var(--good) 11%,transparent)}
+.opts li.correct .mark{color:var(--good)}
+.opts li.wrong{border-color:var(--bad)} .opts li.wrong .mark{color:var(--bad)}
+.assume{border-left:3px solid var(--s4);padding:8px 0 8px 13px;margin:14px 0 0;font-size:13.5px;color:var(--text-secondary)}
+.assume b{color:var(--text-primary)}
+
+/* ---------- the dashboard ---------- */
+.deck{border:1px solid var(--line);border-radius:var(--radius);padding:14px;
+  background:linear-gradient(180deg,var(--surface-1),color-mix(in srgb,var(--surface-2) 55%,var(--surface-1)));
+  box-shadow:0 1px 2px rgba(0,0,0,.04),0 10px 26px -18px rgba(0,0,0,.35)}
+.statusbar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding-bottom:11px;border-bottom:1px solid var(--line);margin-bottom:12px}
+.xstat{display:flex;align-items:center;gap:8px;font-size:12.5px;font-weight:700;letter-spacing:.03em;
+  padding:5px 12px;border-radius:999px;border:1px solid var(--line-strong);background:var(--surface-1);color:var(--text-secondary)}
+.xstat .dot{width:9px;height:9px;border-radius:50%;background:var(--text-muted)}
+.xstat.run .dot{background:var(--accent);animation:pulse 1.2s ease-in-out infinite}
+.xstat.ana .dot{background:var(--s4);animation:pulse 1.2s ease-in-out infinite}
+.xstat.done{border-color:var(--good);color:var(--good);background:color-mix(in srgb,var(--good) 10%,transparent)}
+.xstat.done .dot{background:var(--good)}
+@keyframes pulse{50%{opacity:.25}}
+.stages{display:flex;gap:5px;flex-wrap:wrap}
+.stages span{font-size:11px;padding:3px 9px;border-radius:999px;border:1px solid var(--line);color:var(--text-muted);white-space:nowrap}
+.stages span.now{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:650}
+.stages span.done{border-color:var(--good);color:var(--good)}
+.statusbar .sp{flex:1}
+.guide{font-size:12px;color:var(--text-muted)}
+
+.grid1{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:13px;align-items:start}
+.grid2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:13px;margin-top:13px}
+.grid1>*,.grid2>*{min-width:0}
+@media(max-width:960px){.grid1,.grid2{grid-template-columns:1fr !important}}
+
+/* the always-dark chamber */
+.lab3d{position:relative;border-radius:12px;padding:12px;overflow:hidden;
+  background:radial-gradient(90% 70% at 18% 8%,rgba(84,169,255,.16),transparent 60%),
+    radial-gradient(80% 70% at 88% 92%,rgba(255,147,80,.12),transparent 62%),
+    linear-gradient(170deg,#0d1322 0%,#070a12 55%,#0a0e1a 100%);
+  border:1px solid rgba(150,180,255,.16);box-shadow:inset 0 1px 0 rgba(255,255,255,.07),0 18px 40px -26px rgba(0,0,0,.9);
+  color:#eef3ff}
+.lab3d:before{content:"";position:absolute;inset:0;pointer-events:none;
+  background:repeating-linear-gradient(0deg,rgba(255,255,255,.028) 0 1px,transparent 1px 3px);opacity:.5;mix-blend-mode:overlay}
+.lab3d>*{position:relative}
+.lab3d .hd{display:flex;align-items:baseline;gap:9px;flex-wrap:wrap;margin-bottom:5px}
+.lab3d .hd h3{margin:0;font-size:11.5px;letter-spacing:.11em;text-transform:uppercase;color:#8fa6c9;font-weight:700}
+.lab3d .hd .st{font-size:10.5px;font-family:var(--mono);color:#9fb0cc;border:1px solid rgba(160,190,255,.2);border-radius:999px;padding:1px 8px}
+.lab3d .narr{font-size:12.5px;color:#c3d2ea;margin:0 0 8px;min-height:2.8em;line-height:1.42}
+.lab3d .narr b{color:#fff;font-family:var(--mono);font-weight:650}
+.lab3d .narr .a{color:#6fb6ff;font-weight:700} .lab3d .narr .o{color:#ffa56a;font-weight:700}
+.lab3d .narr .gd{color:#3ee39a;font-weight:700}
+.vwrap{position:relative;perspective:1000px}
+canvas#labcv{display:block;width:100%;height:auto;border-radius:10px;transform:rotateX(2.5deg);transform-origin:50% 100%}
+@media(max-width:560px){.vwrap{overflow:hidden}canvas#labcv{width:128%;max-width:none;margin-left:-14%}}
+@media(prefers-reduced-motion:reduce){canvas#labcv{transform:none}}
+.done-banner{position:absolute;left:50%;top:14px;transform:translateX(-50%) scale(.92);opacity:0;pointer-events:none;
+  background:rgba(10,30,24,.8);border:1px solid rgba(62,227,154,.6);color:#dfffee;border-radius:12px;padding:8px 18px;
+  font-weight:800;letter-spacing:.1em;font-size:14px;box-shadow:0 0 28px -6px rgba(62,227,154,.7);transition:.45s;white-space:nowrap}
+.done-banner.on{opacity:1;transform:translateX(-50%) scale(1)}
+.revealhost{position:absolute;inset:0;display:none;align-items:center;justify-content:center;z-index:6}
+.revealhost.on{display:flex}
+svg.graf{display:block;width:100%;height:auto}
+.blackout{position:absolute;inset:0;background:#000;opacity:0;pointer-events:none;transition:opacity .45s;z-index:4;border-radius:12px}
+.blackout.on{opacity:.86}
+.flashout{position:absolute;inset:0;background:radial-gradient(circle at 50% 45%,rgba(255,255,255,.95),rgba(120,255,200,.5) 35%,transparent 70%);
+  opacity:0;pointer-events:none;z-index:5;border-radius:12px}
+@keyframes flashpop{0%{opacity:0}18%{opacity:1}100%{opacity:0}}
+.flashout.go{animation:flashpop .85s ease-out 1}
+@media(prefers-reduced-motion:reduce){.flashout.go{animation:none}.blackout{transition:none}}
+.dim canvas#labcv{filter:brightness(.4) saturate(.8)}
+@media(prefers-reduced-motion:no-preference){.zoom{animation:zoomin 1.1s ease-out 1}}
+@keyframes zoomin{0%{transform:scale(1)}40%{transform:scale(1.035)}100%{transform:scale(1)}}
+
+/* the rail: inputs + live data */
+.rail{border:1px solid var(--line);border-radius:12px;padding:11px 12px;
+  background:color-mix(in srgb,var(--surface-1) 82%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  box-shadow:inset 0 1px 0 color-mix(in srgb,#fff 40%,transparent),0 8px 24px -18px rgba(0,0,0,.4);
+  display:flex;flex-direction:column;gap:9px}
+.rail h4{margin:0;font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--text-muted);font-weight:700}
+.rail .grp{border-top:1px dashed var(--line);padding-top:9px}
+.status{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:750;letter-spacing:.04em;border-radius:8px;padding:6px 9px;
+  border:1px solid var(--good);color:var(--good);background:color-mix(in srgb,var(--good) 10%,transparent)}
+.status.custom{border-color:var(--s4);color:var(--s4);background:color-mix(in srgb,var(--s4) 10%,transparent)}
+.fld{margin:7px 0 0}
+.fld .lb{display:flex;justify-content:space-between;align-items:baseline;gap:6px;font-size:12px;margin-bottom:4px;color:var(--text-secondary)}
+.fld .lb b{font-weight:600;color:var(--text-primary);font-family:var(--serif);font-size:13.5px}
+.fld .lb .u{font-size:10.5px;color:var(--text-muted);font-family:var(--mono);flex:none}
+.fld .rw{display:flex;gap:5px;align-items:center}
+.fld .rw input{flex:1;min-width:0;padding:6px 8px;border-radius:7px;border:1px solid var(--line-strong);background:var(--surface-0);
+  color:var(--text-primary);font-family:var(--mono);font-size:13.5px;text-align:center;font-weight:600}
+.fld .rw input:focus{outline:2px solid var(--accent);outline-offset:-1px}
+.fld .rw input.bad{border-color:var(--bad);background:color-mix(in srgb,var(--bad) 10%,transparent)}
+.fld .rw input:disabled{opacity:.55}
+.fld .rw button{flex:none;width:34px;height:34px;border-radius:7px;border:1px solid var(--line-strong);background:var(--surface-2);
+  color:var(--text-primary);font-size:16px;line-height:1;cursor:pointer;font-family:var(--mono);touch-action:manipulation}
+.fld .rw button.rs{font-size:13px}
+.fld .rw button:hover:not(:disabled){border-color:var(--accent);color:var(--accent)}
+.fld .rw button:disabled{opacity:.4;cursor:not-allowed}
+.fld .fh{font-size:10.5px;color:var(--text-muted);margin-top:2px;line-height:1.35;min-height:1.35em}
+.fld .fh.bad{color:var(--bad);font-weight:650}
+.railnote{font-size:11px;color:var(--text-muted);line-height:1.45;margin:0}
+button.resetq{width:100%;padding:8px 10px;border-radius:9px;border:1px solid var(--line-strong);background:var(--surface-2);
+  color:var(--text-primary);font-size:12.5px;font-weight:650;cursor:pointer;font-family:var(--sans)}
+button.resetq:hover{border-color:var(--accent);color:var(--accent)}
+.gauges{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(104px,100%),1fr));gap:6px}
+.gz{border:1px solid var(--line);border-radius:9px;background:var(--surface-2);padding:5px 8px;overflow:hidden}
+.gz .k{font-size:9.5px;letter-spacing:.04em;text-transform:uppercase;color:var(--text-muted);font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.gz .v{font-family:var(--mono);font-size:16px;font-weight:700;line-height:1.25;white-space:nowrap}
+.gz .u{font-size:9.5px;color:var(--text-muted);font-weight:400}
+.gz.a .v{color:var(--s1)} .gz.o .v{color:var(--s2)}
+.gz.hot{border-color:var(--good);background:color-mix(in srgb,var(--good) 11%,transparent)} .gz.hot .v{color:var(--good)}
+
+/* graphs */
+.graphcard{border:1px solid var(--line);border-radius:12px;background:var(--surface-1);padding:12px 14px}
+.graphcard h4{margin:0 0 4px;font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--text-muted);font-weight:700}
+.graphcard .gsub{font-size:11.5px;color:var(--text-muted);margin:0 0 4px}
+.chartwrap{position:relative}
+svg.chart{display:block;width:100%;height:auto;overflow:visible}
+.tip{position:absolute;pointer-events:none;background:var(--surface-1);border:1px solid var(--line-strong);border-radius:8px;padding:7px 10px;
+  font-size:12px;box-shadow:0 4px 14px rgba(0,0,0,.13);opacity:0;transition:opacity .1s;z-index:5;min-width:140px}
+.tip .t{font-family:var(--mono);font-size:11px;color:var(--text-muted);margin-bottom:3px}
+.tip .r{display:flex;gap:7px;white-space:nowrap} .tip .rv{margin-left:auto;font-family:var(--mono);font-weight:600}
+details.tbl{margin-top:6px;font-size:12.5px} details.tbl summary{cursor:pointer;color:var(--text-secondary)}
+
+/* calculation panel */
+.calc{margin-top:13px;border:1px solid var(--line);border-radius:12px;padding:12px 14px;
+  background:linear-gradient(180deg,var(--surface-1),var(--surface-2))}
+.calc .bt{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--text-muted);font-weight:700;margin-bottom:6px}
+.calc ol{list-style:none;margin:0;padding:0;display:grid;gap:5px}
+.calc li{display:grid;grid-template-columns:auto minmax(0,1fr);gap:10px;align-items:baseline;animation:cin .45s ease-out}
+@keyframes cin{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.calc li{animation:none}}
+.calc li .s{font-family:var(--mono);font-size:10.5px;color:#fff;background:var(--accent);border-radius:999px;padding:1px 7px;font-weight:700}
+.calc li .m{font-family:var(--serif);font-size:16px;line-height:1.55;min-width:0;overflow-x:auto}
+.calc li .m .w{display:block;font-family:var(--sans);font-size:11.5px;color:var(--text-muted)}
+.calc li .m .hl{color:var(--good);font-weight:700}
+.calc li .m .ar{color:var(--s1);font-weight:700} .calc li .m .or{color:var(--s2);font-weight:700}
+.calc .empty{font-size:12.5px;color:var(--text-muted);margin:0}
+table.data{border-collapse:collapse;font-size:12.5px;width:100%}
+table.data th,table.data td{border:1px solid var(--line-strong);padding:5px 8px;text-align:center}
+table.data th{background:var(--surface-2);font-weight:600;font-size:11.5px;color:var(--text-secondary)}
+table.data td.n{font-family:var(--mono)}
+tr.win td{background:color-mix(in srgb,var(--good) 12%,transparent);font-weight:700}
+.scrollx{overflow-x:auto}
+
+/* action bar */
+.actbar{display:flex;gap:9px;align-items:center;flex-wrap:wrap;margin-top:12px}
+button.go{flex:none;padding:13px 24px;border-radius:11px;border:none;background:var(--accent);color:#fff;font-size:15px;font-weight:780;
+  cursor:pointer;font-family:var(--sans);letter-spacing:.04em;box-shadow:0 4px 16px -6px color-mix(in srgb,var(--accent) 75%,transparent);transition:.18s}
+button.go:hover:not(:disabled){filter:brightness(1.09);transform:translateY(-1px)}
+button.go:disabled{opacity:.42;cursor:not-allowed;box-shadow:none;transform:none}
+button.go.custom{background:var(--s4)}
+button.ghost{flex:none;padding:8px 13px;border-radius:9px;border:1px solid var(--line-strong);background:var(--surface-1);color:var(--text-secondary);
+  font-size:12.5px;cursor:pointer;font-family:var(--sans);min-height:36px}
+button.ghost:hover:not(:disabled){border-color:var(--accent);color:var(--accent)}
+button.ghost:disabled{opacity:.4;cursor:not-allowed}
+button.ghost[aria-pressed=true]{border-color:var(--accent);color:var(--accent);background:color-mix(in srgb,var(--accent) 10%,transparent)}
+.spd{display:flex;gap:4px}
+.spd button{padding:7px 10px;font-size:11.5px;border-radius:7px;border:1px solid var(--line-strong);background:var(--surface-1);color:var(--text-secondary);cursor:pointer;font-family:var(--mono)}
+.spd button[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:#fff}
+.actbar .msg{flex:1 1 220px;min-width:0;font-size:12px;color:var(--text-secondary);line-height:1.4}
+.actbar .msg b{color:var(--text-primary)}
+
+@keyframes popblink{0%{transform:scale(1)} 12%{transform:scale(1.16)} 24%{transform:scale(1)}
+  38%{opacity:.2} 50%{opacity:1} 64%{opacity:.2} 76%{opacity:1} 88%{transform:scale(1.07)} 100%{transform:scale(1);opacity:1}}
+.blink{animation:popblink 2s ease-in-out 1;display:inline-block}
+@keyframes ringpulse{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--good) 55%,transparent)} 70%{box-shadow:0 0 0 14px transparent} 100%{box-shadow:0 0 0 0 transparent}}
+.celebrate{animation:ringpulse 1.5s ease-out 2}
+@media(prefers-reduced-motion:reduce){.blink,.celebrate,.zoom{animation:none}}
+
+/* solution + help */
+.gate{border:1px dashed var(--line-strong);border-radius:var(--radius);padding:24px 20px;text-align:center;background:var(--surface-1)}
+.gate h4{margin:0 0 6px;font-size:15px} .gate p{margin:0 0 12px;font-size:13px;color:var(--text-secondary)}
+ol.steps{list-style:none;counter-reset:s;padding:0;margin:0;display:grid;gap:10px}
+ol.steps li{min-width:0;counter-increment:s;border:1px solid var(--line);border-radius:var(--radius);background:var(--surface-1);
+  padding:14px 16px 14px 52px;position:relative}
+ol.steps li::before{content:counter(s);position:absolute;left:15px;top:14px;width:23px;height:23px;border-radius:50%;background:var(--accent);
+  color:#fff;font-size:12px;font-weight:700;display:grid;place-items:center;font-family:var(--mono)}
+ol.steps h4{margin:0 0 6px;font-size:14px;font-weight:640}
+ol.steps p{margin:0 0 6px;font-size:13.5px;color:var(--text-secondary)}
+.eq{min-width:0;font-family:var(--serif);font-size:15.5px;background:var(--surface-2);border-radius:7px;padding:9px 13px;margin:8px 0;overflow-x:auto}
+.eq .hl{color:var(--good);font-weight:700}
+.obsnote{border-left:3px solid var(--s1);padding:6px 0 6px 12px;margin:8px 0;font-size:13px;color:var(--text-secondary)}
+.obsnote b{color:var(--text-primary)}
+sub{font-size:.72em} sup{font-size:.72em}
+.verify{border:1px solid var(--good);border-radius:var(--radius);margin-top:12px;background:color-mix(in srgb,var(--good) 8%,transparent);padding:14px 16px;font-size:13.5px}
+.verify h4{margin:0 0 6px;font-size:13.5px;color:var(--good)}
+.verify ul{margin:6px 0 0;padding-left:18px;color:var(--text-secondary)} .verify li{margin-bottom:4px}
+.howto{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(250px,100%),1fr));gap:11px}
+.howto>div{border:1px solid var(--line);border-radius:11px;padding:12px 14px;background:linear-gradient(180deg,var(--surface-1),var(--surface-2))}
+.howto .n{font-family:var(--mono);font-size:10.5px;color:var(--accent);letter-spacing:.1em;font-weight:700}
+.howto h4{margin:3px 0 6px;font-size:14px}
+.howto p{margin:0;font-size:13px;color:var(--text-secondary);line-height:1.5}
+.howto p b{color:var(--text-primary)}
+.meta-tbl{width:100%;border-collapse:collapse;font-size:13.5px}
+.meta-tbl th,.meta-tbl td{padding:6px 0;border-bottom:1px solid var(--line);vertical-align:top;text-align:left}
+.meta-tbl th{color:var(--text-muted);width:150px;font-size:12.5px;padding-right:14px;font-weight:500}
+footer{border-top:1px solid var(--line);margin-top:40px;padding-top:16px;font-size:12px;color:var(--text-muted)}
+
+/* classroom mode */
+body.classroom nav.jump,body.classroom section:not(#lab),body.classroom header.top .chips,body.classroom footer,
+body.classroom .rail .inputs,body.classroom .spd,body.classroom details.tbl,body.classroom #lab>.lede{display:none !important}
+body.classroom .wrap{max-width:none;padding-left:18px;padding-right:18px}
+body.classroom .lab3d .narr{font-size:20px;line-height:1.45;color:#e8f0ff}
+body.classroom .lab3d .hd h3{font-size:15px}
+body.classroom .gz .v{font-size:24px} body.classroom .gz .k{font-size:12px}
+body.classroom .calc li .m{font-size:25px} body.classroom .calc li .m .w{font-size:15px}
+body.classroom .xstat{font-size:16px} body.classroom .stages span{font-size:14px}
+body.classroom button.go{font-size:19px;padding:16px 30px}
+body.classroom .graphcard h4{font-size:13px}
+body.classroom .actbar .msg{font-size:15px}
+
+/* Q03 additions */
+.fgrid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0 8px}
+.fgrid>*{min-width:0}
+.fld .rw input{width:100%}
+.fgrid .fld.full{grid-column:1/-1}
+.fld.half .rw button.rs{display:none}
+.fld.half .fh{font-size:10px}
+.chem{font-family:var(--serif);white-space:nowrap}
+#opts{grid-template-columns:repeat(auto-fit,minmax(min(250px,100%),1fr))}
+#opts li{flex-wrap:wrap}
+@media(max-width:560px){.vwrap{overflow:visible}canvas#labcv{width:100%;margin-left:0}}
+.rankline{font-family:var(--serif);font-size:17px;font-weight:700}
+.legend{display:flex;flex-wrap:wrap;gap:4px 12px;font-size:11.5px;color:var(--text-secondary);margin:2px 0 4px}
+.legend i{display:inline-block;width:14px;height:3px;border-radius:2px;vertical-align:middle;margin-right:5px}
+.shapes{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(170px,100%),1fr));gap:9px;margin:8px 0}
+.shapes>div{border:1px solid var(--line);border-radius:9px;padding:9px 11px;background:var(--surface-1);font-size:13px;color:var(--text-secondary)}
+.shapes b{color:var(--text-primary);font-family:var(--serif);font-size:15px}
+
+/* Q06/Q07 additions */
+svg.scheme{display:block;width:100%;max-width:660px;height:auto;margin:6px 0 10px}
+.unk{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:12px 0 4px}
+.unk>div{border:1px dashed var(--line-strong);border-radius:11px;padding:9px 10px;text-align:center;background:var(--surface-2);transition:.4s}
+.unk .k{font-size:10.5px;letter-spacing:.1em;color:var(--text-muted);font-weight:800}
+.unk .v{font-family:var(--serif);font-size:24px;font-weight:700;line-height:1.25}
+.unk>div.found{border-style:solid;border-color:var(--good);background:color-mix(in srgb,var(--good) 10%,transparent)}
+.unk>div.found .v{color:var(--good)}
+.unk>div.warn{border-style:solid;border-color:var(--bad)}
+.apbar{height:6px;border-radius:99px;background:var(--line);overflow:hidden;margin-top:6px}
+.apbar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--good));transition:width .3s}
+.answerbox.work .val{color:var(--accent);font-size:15px;letter-spacing:.02em}
+.board{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(230px,100%),1fr));gap:10px;margin-top:13px}
+.ocard{border:1px solid var(--line);border-radius:12px;padding:11px 13px;background:linear-gradient(180deg,var(--surface-1),var(--surface-2));transition:.4s}
+.ocard .h{display:flex;gap:8px;align-items:baseline}
+.ocard .h b{font-family:var(--mono);color:var(--text-muted)}
+.ocard .claim{font-family:var(--serif);font-size:15px}
+.ocard .ev{font-size:12.5px;color:var(--text-secondary);margin:6px 0 0;min-height:2.6em}
+.ocard .vd{margin-top:7px;font-weight:800;font-size:13px;letter-spacing:.04em;color:var(--text-muted)}
+.ocard.now{border-color:var(--accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 22%,transparent)}
+.ocard.yes{border-color:var(--good)} .ocard.yes .vd{color:var(--good)}
+.ocard.no{border-color:var(--bad)} .ocard.no .vd{color:var(--bad)}
+.ocard.na .vd{color:var(--s4)}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.badge{display:flex;align-items:center;gap:7px;border:1px solid var(--line);border-radius:999px;padding:5px 12px 5px 7px;font-size:12.5px;color:var(--text-muted);background:var(--surface-1);opacity:.55;transition:.5s}
+.badge .ic{font-size:17px;filter:grayscale(1)}
+.badge.on{opacity:1;color:var(--text-primary);border-color:var(--good);background:color-mix(in srgb,var(--good) 9%,var(--surface-1))}
+.badge.on .ic{filter:none}
+@keyframes badgepop{0%{transform:scale(1)}35%{transform:scale(1.14)}100%{transform:scale(1)}}
+.badge.pop{animation:badgepop .7s ease-out 1}
+@media(prefers-reduced-motion:reduce){.badge.pop{animation:none}}
+.tools{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.tools button{padding:6px 11px;border-radius:8px;border:1px solid var(--line-strong);background:var(--surface-1);color:var(--text-secondary);font-size:12px;cursor:pointer;font-family:var(--sans);min-height:34px}
+.tools button[aria-pressed=true]{border-color:var(--accent);color:var(--accent);background:color-mix(in srgb,var(--accent) 10%,transparent)}
+.tools button:focus-visible,.explorer button:focus-visible,button:focus-visible,select:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.explorer{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:13px;align-items:start}
+@media(max-width:860px){.explorer{grid-template-columns:1fr}}
+.xview{position:relative;border-radius:12px;overflow:hidden;background:linear-gradient(170deg,#0d1322,#070a12);border:1px solid rgba(150,180,255,.16)}
+canvas#mol{display:block;width:100%;height:auto;touch-action:none;cursor:grab}
+.xpick{display:flex;flex-wrap:wrap;gap:6px}
+.xpick button{padding:7px 14px;border-radius:9px;border:1px solid var(--line-strong);background:var(--surface-1);color:var(--text-primary);font-family:var(--serif);font-size:15px;cursor:pointer;min-height:36px}
+.xpick button[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:#fff}
+.xinfo table{width:100%;border-collapse:collapse;font-size:13px;margin-top:8px}
+.xinfo th{text-align:left;color:var(--text-muted);font-weight:500;padding:5px 8px 5px 0;width:44%;border-bottom:1px solid var(--line)}
+.xinfo td{padding:5px 0;border-bottom:1px solid var(--line);font-weight:600}
+.cards4{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr));gap:10px}
+.cards4>div{border:1px solid var(--line);border-radius:12px;padding:13px 15px;background:linear-gradient(180deg,var(--surface-1),var(--surface-2))}
+.cards4 h4{margin:0 0 6px;font-size:14px} .cards4 p{margin:0 0 6px;font-size:13px;color:var(--text-secondary)}
+.cards4 .eq{font-size:14px}
+.warnbox{border:1px solid var(--bad);border-radius:9px;padding:8px 10px;font-size:12px;color:var(--bad);background:color-mix(in srgb,var(--bad) 8%,transparent);margin-top:8px}
+.selrow{margin:7px 0 0} .selrow label{display:block;font-size:12px;color:var(--text-secondary);margin-bottom:3px}
+select.sel{display:block;width:100%;min-width:0;min-height:40px;padding:8px 10px;font:inherit;font-size:14px;color:var(--text-primary);background:var(--surface-1);border:1px solid var(--line-strong);border-radius:8px}
+select.sel:disabled{opacity:.6}
+
+.optv{display:inline-block;min-width:54px;text-align:center;padding:1px 8px;border-radius:999px;font-size:11.5px;font-weight:750;border:1px solid var(--line-strong);color:var(--text-muted)}
+.optv.t{border-color:var(--good);color:var(--good)} .optv.f{border-color:var(--bad);color:var(--bad)}
+.unk.two{grid-template-columns:repeat(3,minmax(0,1fr))}
+.mobox{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:14px;align-items:start}
+@media(max-width:820px){.mobox{grid-template-columns:1fr}}
+.mobox>div{min-width:0} .mobox canvas{display:block;width:100%;height:auto;border-radius:10px}
+.chg{display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin-top:8px}
+.chg .q{font:800 15px var(--mono);min-width:90px;text-align:center}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-inner">
+    <div>
+      <div class="brandbar"><svg class="pxmark" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><rect width="32" height="32" rx="8" fill="var(--accent)"/><path d="M12.5 6.5h7M13.6 6.5v7.2L7.9 24.1a1.5 1.5 0 0 0 1.3 2.3h13.6a1.5 1.5 0 0 0 1.3-2.3l-5.7-10.4V6.5" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.6 20.6h10.8" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg><span class="wm">PRAYOG<i>X</i></span></div>
+      <div class="simid">ADV-2026-P1-CHE-Q07</div>
+      <h1>Bartlett's Electron-Transfer Lab — what forms when O<sub>2</sub> meets PtF<sub>6</sub>?</h1>
+      <div class="chips">
+        <span class="chip">JEE Advanced 2026</span>
+        <span class="chip">Paper 1 · Q.7</span>
+        <span class="chip">Chemistry</span>
+        <span class="chip">Bonding · MO theory · d-block</span>
+        <span class="chip">One or more correct</span>
+        <span class="chip">+4 / partial / 0 / −1</span>
+        <span class="chip k">Press start · watch it happen</span>
+      </div>
+    </div>
+    <div class="answerbox locked" id="answerbox" aria-live="polite">
+      <div class="lbl">Answer</div>
+      <div class="val" id="ansval">Investigating X⁺ and Y⁻…</div>
+      <div class="sub" id="anssub">The answer appears when the investigation finishes.</div>
+      <div class="apbar" aria-hidden="true"><i id="apbar"></i></div>
+      <button class="rv" id="revealnow" type="button">Reveal anyway</button>
+    </div>
+    <button class="themebtn" id="themebtn" type="button">◐ theme</button>
+  </div>
+</header>
+
+<nav class="jump">
+  <ul>
+    <li><a href="#question">Mission brief</a></li>
+    <li><a href="#lab">Interactive experiment</a></li>
+    <li><a href="#explorer">Electron explorer</a></li>
+    <li><a href="#solution">Detailed solution</a></li>
+    <li><a href="#howto">How to use this simulation</a></li>
+  </ul>
+</nav>
+
+<div class="wrap">
+
+<section id="question">
+  <h2><span class="n">Q</span>Mission brief <span class="vb">— the question, verbatim</span></h2>
+  <p class="lede">JEE (Advanced) 2026, Paper 1, Chemistry, Section 2 — one or more options correct: +4 only if all the correct
+     options are chosen, partial marks +3 / +2 / +1 for a correct subset, 0 if unanswered, −1 otherwise.</p>
+  <div class="panel">
+    <div class="qtext">
+      <p><b>Q.7</b>&nbsp; Reaction of PtF<sub>6</sub> with oxygen (O<sub>2</sub>) gas results in the formation of an ionic compound, X<sup>+</sup>Y<sup>–</sup>.
+         Correct statement(s) is(are)</p>
+    </div>
+    <ul class="opts" id="opts">
+      <li data-k="A"><span class="k">(A)</span><span>The bond order of X<sup>+</sup> is 1.5.</span><span class="mark"></span></li>
+      <li data-k="B"><span class="k">(B)</span><span>Valence <i>d</i>-orbitals of the metal ion in X<sup>+</sup>Y<sup>–</sup> has 5 electrons.</span><span class="mark"></span></li>
+      <li data-k="C"><span class="k">(C)</span><span>PtF<sub>6</sub> acts as an oxidant in this reaction.</span><span class="mark"></span></li>
+      <li data-k="D"><span class="k">(D)</span><span>PtF<sub>6</sub> acts as a fluorinating agent in this reaction.</span><span class="mark"></span></li>
+    </ul>
+    <div class="unk" id="unk" aria-live="polite">
+      <div id="u_X"><div class="k">CATION X⁺</div><div class="v">?</div></div>
+      <div id="u_Y"><div class="k">ANION Y⁻</div><div class="v">?</div></div>
+      <div id="u_P"><div class="k">Pt OXIDATION STATE</div><div class="v">?</div></div>
+    </div>
+    <div class="assume"><b>The mystery.</b> In 1962 Neil Bartlett let oxygen gas meet the deep-red vapour of PtF<sub>6</sub> and got an
+      orange-red <b>ionic</b> solid. Which ions are in it — and what does that say about the bond order of the cation, the
+      d-electrons of platinum, and the role PtF<sub>6</sub> played? The lab below follows every electron and every fluorine atom.</div>
+  </div>
+</section>
+
+<section id="lab">
+  <h2 class="big"><span class="n">01</span>Interactive experiment</h2>
+  <p class="lede">Four stations and an analysis board. Press <b>START EXPERIMENT</b> — the whole investigation runs by itself:
+     mix → electron jump → oxidation states → MO diagram → bond order → platinum's d-electrons → fluorine audit → verdict on each option.</p>
+
+  <div class="deck" id="deck">
+    <div class="statusbar">
+      <span class="xstat" id="xstat"><span class="dot"></span><span id="xstattxt">Ready</span></span>
+      <div class="stages" id="stages">
+        <span data-s="mix">01 Mix</span><span data-s="xfer">02 Electron jump</span><span data-s="redox">03 Redox</span>
+        <span data-s="mo">04 MO diagram</span><span data-s="bo">05 Bond order</span><span data-s="pt">06 Pt electrons</span>
+        <span data-s="dorb">07 d-orbitals</span><span data-s="faud">08 Fluorine audit</span><span data-s="test">09 Test options</span><span data-s="answer">10 Final answer</span>
+      </div>
+      <span class="sp"></span>
+      <span class="guide" id="guide">Set your values or use the question defaults.</span>
+    </div>
+
+    <div class="grid1">
+      <div class="lab3d" id="lab3d">
+        <div class="hd">
+          <h3 id="scenet">Electron-transfer lab</h3>
+          <span class="st" id="trialtag">station 1 of 4</span>
+        </div>
+        <p class="narr" id="narr" aria-live="polite">One gas, one hexafluoride, one ionic solid. The question's conditions are loaded —
+           press <b>START EXPERIMENT</b>.</p>
+        <div class="vwrap">
+          <canvas id="labcv" width="1040" height="620" role="img"
+                  aria-label="The virtual laboratory: the reaction bulb, the electron transfer, oxidation states, the molecular-orbital diagram of the cation, platinum's d-orbitals, the fluorine audit and the option analysis for the current stage"></canvas>
+          <div class="done-banner" id="donebanner">✓ EXPERIMENT COMPLETE</div>
+          <div class="revealhost" id="revealhost"></div>
+        </div>
+        <div class="blackout" id="blackout"></div>
+        <div class="flashout" id="flashout"></div>
+      </div>
+
+      <div class="rail" id="rail">
+        <div class="status" id="status">✓ QUESTION VALUES LOADED</div>
+        <div class="inputs">
+          <h4>Customize experiment — optional</h4>
+          <div id="fields"></div>
+          <div class="warnbox" id="condwarn" hidden></div>
+          <button class="resetq" id="resetq" type="button" style="margin-top:8px">↺ RESTORE QUESTION CONDITIONS</button>
+        </div>
+        <div class="grp">
+          <h4>Instrument panel</h4>
+          <div class="gauges" style="margin-top:6px">
+            <div class="gz"><div class="k">station</div><div class="v" id="g_st" style="font-size:13px">—</div></div>
+            <div class="gz"><div class="k">reaction status</div><div class="v" id="g_rs" style="font-size:13px">—</div></div>
+            <div class="gz o"><div class="k">electrons moved</div><div class="v" id="g_e" style="font-size:14px">—</div></div>
+            <div class="gz"><div class="k">IE of the gas</div><div class="v" id="g_ie" style="font-size:13px">—</div></div>
+            <div class="gz a"><div class="k">progress</div><div class="v"><span id="g_pr">0</span> <span class="u">%</span></div></div>
+            <div class="gz"><div class="k">product</div><div class="v" id="g_prod" style="font-size:13px">—</div></div>
+            <div class="gz"><div class="k">bond order of X⁺</div><div class="v" id="g_bo" style="font-size:14px">—</div></div>
+            <div class="gz"><div class="k">Pt d-electrons</div><div class="v" id="g_d" style="font-size:14px">—</div></div>
+            <div class="gz"><div class="k">F on Pt / F on O</div><div class="v" id="g_f" style="font-size:14px">—</div></div>
+            <div class="gz" id="gz_v"><div class="k">supported options</div><div class="v" id="g_v" style="font-size:14px">—</div></div>
+          </div>
+          <p class="railnote" style="margin-top:6px">Ionisation energies are measured values (NIST). The ~12.2 eV limit for PtF<sub>6</sub> is
+             Bartlett's empirical observation: O<sub>2</sub> (12.07 eV) and Xe (12.13 eV) react, N<sub>2</sub> (15.58 eV) does not.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="tools" role="group" aria-label="optional views">
+      <button type="button" id="t_eq" aria-pressed="false">SHOW EQUATION</button>
+      <button type="button" id="t_obs" aria-pressed="false">SHOW OBSERVATION</button>
+      <button type="button" id="t_why" aria-pressed="false">SHOW WHY?</button>
+      <button type="button" id="t_cmp">COMPARE O₂ vs O₂⁺</button>
+      <button type="button" id="t_rot">OPEN ELECTRON EXPLORER</button>
+    </div>
+
+    <h4 style="margin:14px 0 0;font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--text-muted)">Option analysis lab</h4>
+    <div class="board" id="board">
+      <div class="ocard" id="oc_A"><div class="h"><b>(A)</b><span class="claim">The bond order of X⁺ is 1.5.</span></div><p class="ev" id="ev_A">not yet examined</p><div class="vd" id="vd_A">UNEVALUATED</div></div>
+      <div class="ocard" id="oc_B"><div class="h"><b>(B)</b><span class="claim">Valence d-orbitals of the metal ion in X⁺Y⁻ has 5 electrons.</span></div><p class="ev" id="ev_B">not yet examined</p><div class="vd" id="vd_B">UNEVALUATED</div></div>
+      <div class="ocard" id="oc_C"><div class="h"><b>(C)</b><span class="claim">PtF₆ acts as an oxidant in this reaction.</span></div><p class="ev" id="ev_C">not yet examined</p><div class="vd" id="vd_C">UNEVALUATED</div></div>
+      <div class="ocard" id="oc_D"><div class="h"><b>(D)</b><span class="claim">PtF₆ acts as a fluorinating agent in this reaction.</span></div><p class="ev" id="ev_D">not yet examined</p><div class="vd" id="vd_D">UNEVALUATED</div></div>
+    </div>
+
+    <div class="badges" id="badges" aria-label="achievements">
+      <div class="badge" id="b_det"><span class="ic">🔬</span>Electron Detective</div>
+      <div class="badge" id="b_red"><span class="ic">⚡</span>Redox Analyst</div>
+      <div class="badge" id="b_mo"><span class="ic">🧮</span>MO Master</div>
+      <div class="badge" id="b_d"><span class="ic">🧬</span>d-Orbital Expert</div>
+      <div class="badge" id="b_f"><span class="ic">🔍</span>Fluorine Auditor</div>
+      <div class="badge" id="b_mas"><span class="ic">🏆</span>Chemistry Master</div>
+    </div>
+
+    <div class="calc" id="calc">
+      <div class="bt"><span>Reasoning log — input → action → change → observation → conclusion</span><span id="calcstat"></span></div>
+      <p class="empty" id="calcempty">Nothing investigated yet.</p>
+      <ol id="calclist"></ol>
+      <details class="tbl" id="logbox"><summary>Evidence table (<span id="logn">0</span>)</summary>
+        <div class="scrollx"><table class="data" id="log"></table></div></details>
+    </div>
+
+    <div class="actbar">
+      <button class="go" id="gobtn" type="button">▶&nbsp; START EXPERIMENT</button>
+      <button class="ghost" id="pausebtn" type="button" disabled>Pause</button>
+      <button class="ghost" id="replaybtn" type="button" hidden>▶ REPLAY EXPERIMENT</button>
+      <button class="ghost" id="resetbtn" type="button">↺ RESET</button>
+      <div class="spd" id="spd" role="group" aria-label="playback speed">
+        <button type="button" data-s="1" aria-pressed="true">1×</button>
+        <button type="button" data-s="2" aria-pressed="false">2×</button>
+      </div>
+      <button class="ghost" id="classbtn" type="button" aria-pressed="false">CLASSROOM MODE</button>
+      <div class="msg" id="gomsg">Nothing needs to be chosen. Press <b>START EXPERIMENT</b>.</div>
+    </div>
+  </div>
+</section>
+
+<section id="explorer">
+  <h2 class="big"><span class="n">02</span>Electron explorer</h2>
+  <p class="lede">Build any second-row diatomic and fill its molecular orbitals yourself. Pick a molecule, then add or remove electrons —
+     the diagram, bond order and magnetism update at once. Below it, strip electrons from platinum and watch its 5d count.</p>
+  <div class="mobox">
+    <div>
+      <div class="xpick" role="group" aria-label="choose a molecule">
+        <button type="button" data-m="O2" aria-pressed="true">O₂</button>
+        <button type="button" data-m="N2" aria-pressed="false">N₂</button>
+        <button type="button" data-m="NO" aria-pressed="false">NO</button>
+      </div>
+      <div class="chg" role="group" aria-label="charge">
+        <button type="button" class="ghost" id="x_minus" aria-label="remove one electron">− remove e⁻</button>
+        <span class="q" id="x_species">O₂</span>
+        <button type="button" class="ghost" id="x_plus" aria-label="add one electron">+ add e⁻</button>
+        <button type="button" class="ghost" id="x_cmp" aria-pressed="false">compare with neutral</button>
+      </div>
+      <div class="xview" style="margin-top:8px"><canvas id="mol" width="720" height="460" tabindex="0" role="img" aria-label="Molecular-orbital energy diagram of the chosen species with its electrons, bonding and antibonding counts and bond order"></canvas></div>
+    </div>
+    <div>
+      <div class="panel xinfo" id="xinfo"></div>
+      <div class="panel xinfo" style="margin-top:10px">
+        <h3>Platinum's d-electrons</h3>
+        <div class="chg" role="group" aria-label="platinum oxidation state">
+          <button type="button" class="ghost" id="p_minus" aria-label="lower oxidation state">−</button>
+          <span class="q" id="p_ox">Pt(+5)</span>
+          <button type="button" class="ghost" id="p_plus" aria-label="raise oxidation state">+</button>
+        </div>
+        <canvas id="dcv" width="440" height="200" role="img" aria-label="Octahedral d-orbital splitting of platinum at the chosen oxidation state, with its electrons in t2g and eg"></canvas>
+        <p id="pinfo" style="font-size:13px;color:var(--text-secondary);margin:6px 0 0"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="solution">
+  <h2 class="big"><span class="n">03</span>Detailed solution</h2>
+  <p class="lede" id="solintro">Run the experiment — the solution opens with the answer.</p>
+  <div class="gate" id="solgate">
+    <h4>The solution is still locked</h4>
+    <p>The experiment has not finished yet. Press START and let it run to the end — or use
+       <i>Reveal anyway</i> in the header if you are revising.</p>
+    <button class="ghost" id="gotolab" type="button">Go to the experiment ↑</button>
+  </div>
+  <div id="solbody" hidden>
+    <h3 style="font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-muted);margin:0 0 10px">Understand the concept</h3>
+    <div class="cards4">
+      <div><h4>What are X⁺ and Y⁻?</h4><p>PtF<sub>6</sub> has one of the highest electron affinities known (≈ 7 eV). It pulls one electron straight off O<sub>2</sub>.</p>
+        <div class="eq">O<sub>2</sub> + PtF<sub>6</sub> → O<sub>2</sub><sup>+</sup>[PtF<sub>6</sub>]<sup>−</sup></div></div>
+      <div><h4>Bond order of X⁺</h4><p>O<sub>2</sub><sup>+</sup> has 15 electrons; the one removed came from an antibonding π* orbital, so the bond gets stronger.</p>
+        <div class="eq">(10 − 5)/2 = 2.5</div></div>
+      <div><h4>d-electrons of Pt</h4><p>In [PtF<sub>6</sub>]<sup>−</sup> platinum is +5. Pt is 5d<sup>9</sup>6s<sup>1</sup>; take away 5 electrons (6s first).</p>
+        <div class="eq">Pt<sup>5+</sup>: [Xe]4f<sup>14</sup> 5d<sup>5</sup></div></div>
+      <div><h4>Oxidant or fluorinating agent?</h4><p>Only an electron moves: Pt +6 → +5 (reduced), O<sub>2</sub> → O<sub>2</sub><sup>+</sup> (oxidised). All six F stay on Pt — nothing is fluorinated.</p></div>
+    </div>
+    <ol class="steps" style="margin-top:14px">
+      <li><h4>Step 1 — Identify X⁺ and Y⁻</h4>
+        <div class="eq">O<sub>2</sub>(g) + PtF<sub>6</sub>(g) → O<sub>2</sub><sup>+</sup>[PtF<sub>6</sub>]<sup>−</sup>(s)</div>
+        <p>The first ionisation energy of O<sub>2</sub> (12.07 eV) is low enough for PtF<sub>6</sub> to take one electron. <b>X<sup>+</sup> = O<sub>2</sub><sup>+</sup>
+           (dioxygenyl), Y<sup>−</sup> = [PtF<sub>6</sub>]<sup>−</sup> (hexafluoridoplatinate(V)).</b></p>
+        <div class="obsnote">On the bench: the red PtF<sub>6</sub> vapour and colourless O<sub>2</sub> met and an orange-red crystalline solid appeared as one electron jumped per pair.</div></li>
+      <li><h4>Step 2 — Bond order of X⁺ (option A)</h4>
+        <div class="eq">O<sub>2</sub><sup>+</sup> (15 e⁻): σ1s² σ*1s² σ2s² σ*2s² σ2p<sub>z</sub>² π2p<sub>x</sub>² π2p<sub>y</sub>² π*2p<sub>x</sub>¹</div>
+        <p>Bonding electrons N<sub>b</sub> = 10, antibonding N<sub>a</sub> = 5, bond order = (10 − 5)/2 = <b>2.5</b> — not 1.5. (1.5 is the bond order of the
+           superoxide ion O<sub>2</sub><sup>−</sup>, a common trap.) The bond also shortens, 121 → 112 pm. <b>(A) ✗</b></p></li>
+      <li><h4>Step 3 — d-electrons of the metal ion (option B)</h4>
+        <p>In [PtF<sub>6</sub>]<sup>−</sup>: x + 6(−1) = −1, so <b>Pt is +5</b>. Pt (Z = 78) is [Xe]4f<sup>14</sup>5d<sup>9</sup>6s<sup>1</sup>; removing 6s<sup>1</sup> and
+           four 5d electrons leaves <b>5d<sup>5</sup></b> (octahedral, low spin t<sub>2g</sub><sup>5</sup>). <b>(B) ✓</b></p></li>
+      <li><h4>Step 4 — Oxidant or fluorinating agent? (options C, D)</h4>
+        <p>Pt goes from +6 in PtF<sub>6</sub> to +5 in [PtF<sub>6</sub>]<sup>−</sup>: PtF<sub>6</sub> gains an electron, it is reduced, so it is the
+           <b>oxidant</b>. <b>(C) ✓</b></p>
+        <p>A fluorinating agent hands F atoms to the other reactant (e.g. U + 3ClF<sub>3</sub> → UF<sub>6</sub> + 3ClF). Here all six F atoms stay on Pt and no
+           O–F bond forms. <b>(D) ✗</b></p>
+        <div class="eq">Answer: <span class="hl" id="solans">—</span></div></li>
+    </ol>
+    <div class="verify">
+      <h4>Independent verification</h4>
+      <ul>
+        <li><b>MO counting.</b> The page fills the MO diagram by the aufbau principle and Hund's rule for every species it shows: O<sub>2</sub> 2.0,
+            O<sub>2</sub><sup>+</sup> 2.5, O<sub>2</sub><sup>−</sup> 1.5, O<sub>2</sub><sup>2−</sup> 1.0, N<sub>2</sub> 3.0 — the textbook values — and the measured bond lengths fall in the same order.</li>
+        <li><b>Oxidation states.</b> Charge balance on [PtF<sub>6</sub>]<sup>−</sup> and PtF<sub>6</sub>; one electron gained by Pt equals one electron lost by O<sub>2</sub>.</li>
+        <li><b>Electron configuration.</b> Pt [Xe]4f<sup>14</sup>5d<sup>9</sup>6s<sup>1</sup> (measured ground state); ions lose 6s before 5d.</li>
+        <li><b>Solution websites.</b> MathonGo's published solution (their Q39) gives (B), (C) with the same reasoning.</li>
+        <li><b>This page.</b> Each option is decided from the numbers the lab computes; the answer letters are not written into the page.</li>
+        <li><b>Answer key.</b> Checked afterwards against the official final key printed with the paper: Q7 → (B), (C).</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="howto">
+  <h2 class="big"><span class="n">04</span>How to use this simulation</h2>
+  <p class="lede">For a student opening it for the first time. The whole investigation runs by itself after one press.</p>
+  <div class="howto">
+    <div><div class="n">STEP 1</div><h4>Read the mission brief</h4>
+      <p>O<sub>2</sub> and PtF<sub>6</sub> give an ionic compound X<sup>+</sup>Y<sup>−</sup>. Which of the four statements are correct? More than one can be.</p></div>
+    <div><div class="n">STEP 2</div><h4>Check the conditions</h4>
+      <p>The question's reagents are loaded — <b>O<sub>2</sub></b> and <b>PtF<sub>6</sub></b>. <b>You do not need to change anything.</b></p></div>
+    <div><div class="n">STEP 3</div><h4>Optional: customize</h4>
+      <p>Swap the gas for NO or N<sub>2</sub>, or replace PtF<sub>6</sub> with F<sub>2</sub>. The lab tells you honestly when the question's pathway no longer
+         applies. <b>↺ RESTORE QUESTION CONDITIONS</b> puts everything back.</p></div>
+    <div><div class="n">STEP 4</div><h4>Start</h4>
+      <p>Press <b>▶ START EXPERIMENT</b>. There is nothing else to click (about a minute; <b>2×</b> makes it faster).</p></div>
+    <div><div class="n">STEP 5</div><h4>Watch</h4>
+      <p>An electron jumps from O<sub>2</sub> to PtF<sub>6</sub>, oxidation numbers change, the MO diagram fills and loses one π* electron,
+         platinum's d-orbitals fill, and every fluorine atom is counted.</p></div>
+    <div><div class="n">STEP 6</div><h4>Answer reveal</h4>
+      <p>When all four statements are decided the lab says <b>✓ EXPERIMENT COMPLETE</b> and reveals the answer. Badges unlock on the way.</p></div>
+    <div><div class="n">STEP 7</div><h4>Explore and understand</h4>
+      <p>In the <b>Electron explorer</b> add or remove electrons from O<sub>2</sub>, N<sub>2</sub> or NO and watch the bond order change; step platinum
+         through its oxidation states. Then read the <b>Detailed solution</b>.</p></div>
+    <div><div class="n">STEP 8</div><h4>Experiment again</h4>
+      <p>Press <b>▶ REPLAY EXPERIMENT</b>, or change a condition and press <b>⚙ RUN WITH CUSTOM VALUES</b>. <b>CLASSROOM MODE</b>
+         enlarges everything for a projector.</p></div>
+  </div>
+  <div class="panel" style="margin-top:14px">
+    <h3>Classification</h3>
+    <table class="meta-tbl"><tbody>
+      <tr><th>Exam</th><td>JEE Advanced 2026, Paper 1, Chemistry, Section 2, Q.7</td></tr>
+      <tr><th>Chapter</th><td>Chemical Bonding and Molecular Structure</td></tr>
+      <tr><th>Topic</th><td>Molecular orbital theory</td></tr>
+      <tr><th>Difficulty</th><td>Easy-Moderate</td></tr>
+      <tr><th>Answer</th><td><b id="clsans">— run the experiment</b></td></tr>
+    </tbody></table>
+  </div>
+</section>
+
+<footer>
+  ADV-2026-P1-CHE-Q07 · PrayogX · JEE Advanced Interactive Simulation Library · question text reproduced
+  from the official JEE (Advanced) 2026 Paper 1 for educational use. PtF<sub>6</sub> is an extremely aggressive, toxic oxidiser —
+  this is a virtual laboratory only.
+</footer>
+</div>
+<script>
+(function(){
+"use strict";
+
+/* =====================================================================
+   helpers
+   ===================================================================== */
+var NS = "http://www.w3.org/2000/svg";
+function $(id){ return document.getElementById(id); }
+function css(v){ return getComputedStyle(document.documentElement).getPropertyValue(v).trim(); }
+function mk(n, a, parent){
+  var e = document.createElementNS(NS, n), k;
+  if (a) for (k in a) if (Object.prototype.hasOwnProperty.call(a, k)) e.setAttribute(k, a[k]);
+  if (parent) parent.appendChild(e);
+  return e;
+}
+function tx(parent, x, y, s, a){ var o = a || {}; o.x = x; o.y = y; var t = mk("text", o, parent); t.textContent = s; return t; }
+function clamp(v, a, b){ return v < a ? a : (v > b ? b : v); }
+function ease(t){ t = clamp(t, 0, 1); return t * t * (3 - 2 * t); }
+function lerp(a, b, t){ return a + (b - a) * t; }
+var REDUCED = !!(window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches);
+function rng(seed){ var s = seed >>> 0; return function(){ s = (s * 1664525 + 1013904223) >>> 0; return s / 4294967296; }; }
+
+/* =====================================================================
+   question data - the printed reaction and the four statements.
+   Nothing below stores which statements are correct: the lab works out
+   X+ and Y-, their electron counts, and decides each statement from them.
+   ===================================================================== */
+var Q = { gas: "O2", ox: "PtF6" };
+var FIELDS = [
+  { k: "gas", lab: "Gas passed over PtF₆", opts: [["O2", "O₂ (oxygen)"], ["NO", "NO (nitric oxide)"], ["N2", "N₂ (nitrogen)"]] },
+  { k: "ox", lab: "Hexafluoride in the bulb", opts: [["PtF6", "PtF₆ (platinum hexafluoride)"], ["F2", "F₂ gas instead (comparison)"]] }
+];
+var ST = {}; (function(){ var k; for (k in Q) ST[k] = Q[k]; })();
+function fieldsHTML(){
+  var h = "", i, j, F;
+  for (i = 0; i < FIELDS.length; i++){
+    F = FIELDS[i];
+    h += '<div class="selrow" id="fld_' + F.k + '"><label for="in_' + F.k + '">' + F.lab + '</label><select class="sel" id="in_' + F.k + '">';
+    for (j = 0; j < F.opts.length; j++) h += '<option value="' + F.opts[j][0] + '"' + (F.opts[j][0] === Q[F.k] ? " selected" : "") + ">" + F.opts[j][1] + (F.opts[j][0] === Q[F.k] ? " — question" : "") + "</option>";
+    h += "</select></div>";
+  }
+  return h;
+}
+function conditionWarnings(D){
+  var w = [];
+  if (D.gas !== "O2") w.push("⚠ The question passes <b>O₂</b> over PtF₆ — with " + nm(D.gas) + " the ionic compound X⁺Y⁻ is not the question's compound.");
+  if (D.ox !== "PtF6") w.push("⚠ The question uses <b>PtF₆</b> — without it there is no metal ion and no electron transfer to a metal fluoride.");
+  return w;
+}
+function readAll(){
+  var i, F, v, okv, j;
+  for (i = 0; i < FIELDS.length; i++){
+    F = FIELDS[i]; v = $("in_" + F.k).value; okv = false;
+    for (j = 0; j < F.opts.length; j++) if (F.opts[j][0] === v) okv = true;
+    ST[F.k] = okv ? v : Q[F.k];
+  }
+  var w = conditionWarnings(ST), box = $("condwarn");
+  box.hidden = !w.length; box.innerHTML = w.join("<br>");
+}
+function isCustom(D){ var k; D = D || ST; for (k in Q) if (D[k] !== Q[k]) return true; return false; }
+function copyST(){ var o = {}, k; for (k in Q) o[k] = ST[k]; return o; }
+function sameD(a, b){ var k; for (k in Q) if (a[k] !== b[k]) return false; return true; }
+
+var DISPLAY = { O2: "O₂", "O2+": "O₂⁺", "O2-": "O₂⁻", "O2 2-": "O₂²⁻", "O2 2+": "O₂²⁺", NO: "NO", "NO+": "NO⁺", "NO-": "NO⁻", N2: "N₂", "N2+": "N₂⁺", "N2-": "N₂⁻",
+  PtF6: "PtF₆", "PtF6-": "[PtF₆]⁻", F2: "F₂", O2F2: "O₂F₂", Xe: "Xe" };
+function nm(f){ return DISPLAY[f] || f; }
+
+/* =====================================================================
+   the chemistry engine
+   ===================================================================== */
+/* first ionisation energies (eV, NIST) and the electron-affinity side of PtF6 */
+var GAS = {
+  O2: { Z: [8, 8], IE: 12.07, name: "dioxygen" },
+  NO: { Z: [7, 8], IE: 9.26, name: "nitric oxide" },
+  N2: { Z: [7, 7], IE: 15.58, name: "dinitrogen" }
+};
+var PTF6_LIMIT = 12.2;     /* PtF6 takes an electron from species with IE up to ~12.2 eV: O2 (12.07) and Xe (12.13) react, N2 does not */
+var PTF6_EA = 7.0;         /* eV, one of the largest electron affinities known */
+/* measured bond lengths, pm */
+var BOND = { O2: 121, "O2+": 112, "O2-": 133, "O2 2-": 149, "O2 2+": 112, NO: 115, "NO+": 106, "NO-": 126, N2: 110, "N2+": 112, "N2-": 119 };
+
+/* molecular orbitals of a second-row homonuclear or near-homonuclear diatomic.
+   Order: sigma2p below pi2p when the molecule has more than 14 electrons (O2, F2 and their ions), above it otherwise. */
+function moLevels(nTot){
+  var L = [["σ1s", 1, 2, "b"], ["σ*1s", 2, 2, "a"], ["σ2s", 3, 2, "b"], ["σ*2s", 4, 2, "a"]];
+  if (nTot > 14) L.push(["σ2pz", 5, 2, "b"], ["π2px", 6, 2, "b", "π2p"], ["π2py", 6, 2, "b", "π2p"]);
+  else L.push(["π2px", 5, 2, "b", "π2p"], ["π2py", 5, 2, "b", "π2p"], ["σ2pz", 6, 2, "b"]);
+  L.push(["π*2px", 7, 2, "a", "π*2p"], ["π*2py", 7, 2, "a", "π*2p"], ["σ*2pz", 8, 2, "a"]);
+  return L.map(function(x){ return { n: x[0], rank: x[1], cap: x[2], kind: x[3], set: x[4] || null, e: 0 }; });
+}
+/* aufbau + Hund: fill each energy rank; degenerate orbitals are singly occupied first */
+function fillMO(nTot){
+  var L = moLevels(nTot), left = nTot, r, i, grp;
+  for (r = 1; r <= 8 && left > 0; r++){
+    grp = L.filter(function(o){ return o.rank === r; });
+    for (i = 0; i < grp.length && left > 0; i++){ grp[i].e = 1; left--; }
+    for (i = 0; i < grp.length && left > 0; i++){ grp[i].e = 2; left--; }
+  }
+  var nb = 0, na = 0, un = 0;
+  L.forEach(function(o){ if (o.kind === "b") nb += o.e; else na += o.e; if (o.e === 1) un++; });
+  return { levels: L, nb: nb, na: na, bo: (nb - na) / 2, unpaired: un, n: nTot };
+}
+function speciesKey(base, charge){
+  if (!charge) return base;
+  var a = Math.abs(charge), s = charge > 0 ? "+" : "-";
+  return a === 1 ? base + s : base + " " + a + s;
+}
+function electronsOf(base, charge){ var z = GAS[base] ? GAS[base].Z : [8, 8]; return z[0] + z[1] - charge; }
+
+/* platinum: Z = 78, [Xe] 4f14 5d9 6s1 - the 6s electron leaves first, then 5d */
+var PT = { Z: 78, core: "[Xe] 4f¹⁴", d: 9, s: 1 };
+function ptIon(ox){
+  var d = PT.d, s = PT.s, k;
+  for (k = 0; k < ox; k++){ if (s > 0) s--; else d--; }
+  /* octahedral, 5d: large splitting, low spin - t2g fills first */
+  var t2g = Math.min(6, d), eg = d - t2g, unp = (t2g <= 3 ? t2g : 6 - t2g) + (eg <= 2 ? eg : 4 - eg);
+  return { ox: ox, d: d, s: s, t2g: t2g, eg: eg, unpaired: unp, config: PT.core + " 5d" + sup(d) + (s ? " 6s" + sup(s) : "") };
+}
+function sup(n){ var m = "⁰¹²³⁴⁵⁶⁷⁸⁹"; return String(n).split("").map(function(c){ return m.charAt(+c); }).join(""); }
+
+/* the reaction itself */
+function react(D){
+  var G = GAS[D.gas];
+  if (D.ox === "F2"){
+    return { ok: false, ionic: false, X: null, Y: null, eq: D.gas === "O2" ? "O₂ + F₂ → (no reaction at room temperature; O₂F₂ needs an electric discharge at ~90 K)" : nm(D.gas) + " + F₂ → no ionic product",
+      obs: "no coloured solid", why: "F₂ has no metal to accept an electron as a stable anion — no X⁺Y⁻ salt forms. When O₂F₂ is made (in a discharge) F atoms DO bond to O: that is fluorination, not electron transfer." };
+  }
+  if (G.IE > PTF6_LIMIT){
+    return { ok: false, ionic: false, X: null, Y: null, eq: nm(D.gas) + " + PtF₆ → no reaction", obs: "the red PtF₆ vapour stays unchanged",
+      why: "IE(" + nm(D.gas) + ") = " + G.IE.toFixed(2) + " eV is above the ~" + PTF6_LIMIT + " eV that PtF₆ can remove — no electron transfer." };
+  }
+  var X = speciesKey(D.gas, 1);
+  return { ok: true, ionic: true, X: X, Y: "PtF6-", eq: nm(D.gas) + " + PtF₆ → " + nm(X) + "[PtF₆]⁻",
+    obs: D.gas === "O2" ? "orange-red crystalline solid forms" : "pale yellow solid forms",
+    why: "IE(" + nm(D.gas) + ") = " + G.IE.toFixed(2) + " eV ≤ ~" + PTF6_LIMIT + " eV: PtF₆ (electron affinity ≈ " + PTF6_EA + " eV) pulls one electron off " + nm(D.gas) + "." };
+}
+/* where the six fluorines are, before and after */
+function fluorineAudit(r){
+  if (!r.ionic) return null;
+  return { onPtBefore: 6, onPtAfter: 6, onGasAfter: 0, bondsToGas: 0 };
+}
+/* the four statements, decided from what the lab worked out */
+function evaluate(r, D){
+  var out = {}, mo, pt, a;
+  if (!r.ionic){
+    ["A", "B", "C", "D"].forEach(function(k){ out[k] = { v: null, ev: "No ionic compound X⁺Y⁻ formed under these conditions." }; });
+    return out;
+  }
+  mo = fillMO(electronsOf(D.gas, 1));
+  out.A = { v: mo.bo === 1.5, ev: nm(r.X) + ": " + mo.n + " electrons, " + mo.nb + " bonding − " + mo.na + " antibonding → bond order (" + mo.nb + " − " + mo.na + ")/2 = " + fmtBO(mo.bo) + (mo.bo === 1.5 ? "." : ", not 1.5 (1.5 belongs to superoxide O₂⁻).") };
+  pt = ptIon(5);
+  out.B = { v: pt.d === 5, ev: "[PtF₆]⁻: Pt is +5 (6 F⁻ = −6, overall −1). Pt " + PT.core + " 5d⁹ 6s¹ loses 6s¹ and four 5d → 5d" + sup(pt.d) + ": " + pt.d + " valence d-electrons (t₂g" + sup(pt.t2g) + ")." };
+  out.C = { v: true, ev: "Pt +6 → +5: PtF₆ gains one electron (reduced) while " + nm(D.gas) + " loses one (oxidised) — PtF₆ is the oxidant." };
+  a = fluorineAudit(r);
+  out.D = { v: a.onGasAfter > 0, ev: "F atoms on Pt: " + a.onPtBefore + " before, " + a.onPtAfter + " after; F atoms bonded to " + (D.gas === "O2" ? "O" : "the gas") + ": " + a.onGasAfter + ". No fluorine is transferred — PtF₆ is not acting as a fluorinating agent." };
+  return out;
+}
+function fmtBO(b){ return (Math.round(b * 10) / 10).toFixed(1); }
+function run(D){
+  var r = react(D), ev = evaluate(r, D), truth = [], k;
+  for (k in ev) if (ev[k].v === true) truth.push(k);
+  truth.sort();
+  var gasMO = fillMO(electronsOf(D.gas, 0)), xMO = r.ionic ? fillMO(electronsOf(D.gas, 1)) : null;
+  return { D: D, r: r, ids: { X: r.X, Y: r.Y }, ev: ev, truth: truth, complete: r.ionic && D.gas === "O2" && D.ox === "PtF6",
+    gasMO: gasMO, xMO: xMO, pt6: ptIon(6), pt5: ptIon(5), audit: fluorineAudit(r) };
+}
+function optText(L){ return L.length ? L.map(function(k){ return "(" + k + ")"; }).join(", ") : "none"; }
+var QRUN = run(copyST());
+var QTRUE = QRUN.truth;
+var ANS = optText(QTRUE);
+
+/* =====================================================================
+   experiment engine - one automatic timeline, built when START is pressed
+   ===================================================================== */
+var SEGS = [["mix", 6.4], ["xfer", 7.0], ["redox", 6.6], ["mo", 7.4], ["bo", 7.0], ["pt", 6.6], ["dorb", 6.6], ["faud", 7.0], ["test", 6.4], ["answer", 4.2]];
+var STAGE_MSG = { mix: "Mixing O₂ with PtF₆…", xfer: "Identifying X⁺ and Y⁻…", redox: "Tracking electrons…", mo: "Building the MO diagram of X⁺…",
+  bo: "Calculating bond order…", pt: "Counting Pt d-electrons…", dorb: "Filling the d-orbitals…", faud: "Auditing fluorine atoms…",
+  test: "Testing statements A–D…", answer: "Calculating final result…" };
+var BADGES = ["det", "red", "mo", "d", "f", "mas"];
+var RUN = { state: "setup", paused: false, speed: 1, segs: [], si: 0, u: 0, D: copyST(), R: null, done: false, revealed: false,
+  calc: {}, found: {}, cards: {}, badges: {}, classroom: false, rows: [] };
+RUN.R = run(RUN.D);
+var earlyReveal = false;
+var TOTAL = (function(){ var t = 0, i; for (i = 0; i < SEGS.length; i++) t += SEGS[i][1]; return t; })();
+function buildTimeline(){ var s = [], i; for (i = 0; i < SEGS.length; i++) s.push({ kind: SEGS[i][0], dur: SEGS[i][1] }); return s; }
+function seg(){ return RUN.segs[RUN.si] || null; }
+function elapsed(){ var t = 0, i; for (i = 0; i < RUN.si && i < RUN.segs.length; i++) t += RUN.segs[i].dur; return t + (seg() ? RUN.u : 0); }
+var NOW = null;
+function currentState(){
+  var sg = seg();
+  if (RUN.done) return { name: "rest", f: 1 };
+  if (RUN.state === "setup" || !sg) return { name: "idle", f: 0 };
+  return { name: sg.kind, f: clamp(RUN.u / sg.dur, 0, 1) };
+}
+
+/* ---- the case file: tiles, option cards, badges ---- */
+function setTile(k, text, ok){
+  var t = $("u_" + k); if (!t) return;
+  t.classList.toggle("found", ok === true); t.classList.toggle("warn", ok === false);
+  t.querySelector(".v").textContent = text;
+}
+function setCard(k){
+  var e = RUN.R.ev[k], c = $("oc_" + k);
+  RUN.cards[k] = e;
+  c.classList.remove("now", "yes", "no", "na");
+  c.classList.add(e.v === true ? "yes" : e.v === false ? "no" : "na");
+  $("ev_" + k).textContent = e.ev;
+  $("vd_" + k).textContent = e.v === true ? "✓ SUPPORTED" : e.v === false ? "✗ NOT SUPPORTED" : "— NOT APPLICABLE";
+}
+function focusCard(k){ var i; for (i = 0; i < 4; i++) $("oc_" + "ABCD"[i]).classList.toggle("now", "ABCD"[i] === k); }
+function clearBoard(){
+  var i, k;
+  for (i = 0; i < 4; i++){ k = "ABCD"[i]; var c = $("oc_" + k); c.className = "ocard"; $("ev_" + k).textContent = "not yet examined"; $("vd_" + k).textContent = "UNEVALUATED"; }
+  ["X", "Y", "P"].forEach(function(k){ var t = $("u_" + k); t.className = ""; t.querySelector(".v").textContent = "?"; });
+  BADGES.forEach(function(b){ $("b_" + b).classList.remove("on", "pop"); });
+}
+function badge(b){
+  if (RUN.badges[b]) return; RUN.badges[b] = true;
+  var e = $("b_" + b); e.classList.add("on"); e.classList.remove("pop"); void e.offsetWidth; e.classList.add("pop");
+}
+
+/* things that happen once, at a moment in the timeline */
+function onProgress(sg, f){
+  var R = RUN.R, ion = R.r.ionic, once = function(key, fn){ if (!RUN.calc["@" + key]){ RUN.calc["@" + key] = true; fn(); } };
+  switch (sg.kind){
+    case "redox": if (f > 0.8) once("C", function(){ setCard("C"); addCalc("c"); if (ion) badge("red"); }); break;
+    case "bo": if (f > 0.8) once("A", function(){ setCard("A"); addCalc("a"); if (ion) badge("mo"); }); break;
+    case "dorb": if (f > 0.8) once("B", function(){ setCard("B"); addCalc("b"); if (ion) badge("d"); }); break;
+    case "faud": if (f > 0.82) once("D", function(){ setCard("D"); addCalc("d"); if (ion) badge("f"); }); break;
+    case "test": var k = "ABCD"[Math.min(3, Math.floor(f * 4.4))]; focusCard(f < 0.95 ? k : null); break;
+  }
+}
+function onSegEnd(sg){
+  var R = RUN.R, ion = R.r.ionic;
+  if (sg.kind === "mix") addCalc("r");
+  if (sg.kind === "xfer"){
+    RUN.found.X = R.ids.X; RUN.found.Y = R.ids.Y;
+    setTile("X", ion ? nm(R.ids.X) : "none formed", ion ? R.complete : false);
+    setTile("Y", ion ? nm(R.ids.Y) : "none formed", ion ? R.complete : false);
+    addCalc("x"); logRow("X"); logRow("Y"); if (ion) badge("det");
+  }
+  if (sg.kind === "redox"){ onProgress(sg, 1); if (ion) setTile("P", "+6 → +5", R.complete); else setTile("P", "unchanged", false); }
+  if (sg.kind === "mo") addCalc("mo");
+  if (sg.kind === "bo" || sg.kind === "dorb" || sg.kind === "faud") onProgress(sg, 1);
+  if (sg.kind === "pt") addCalc("pt");
+  if (sg.kind === "test"){ focusCard(null); addCalc("board"); }
+}
+function onSegStart(sg){ if (sg.kind === "answer") $("donebanner").classList.add("on"); }
+function stepTimeline(sdt){
+  var sg = seg(); if (!sg) return;
+  RUN.u += sdt;
+  onProgress(sg, clamp(RUN.u / sg.dur, 0, 1));
+  while (sg && RUN.u >= sg.dur){
+    RUN.u -= sg.dur;
+    onSegEnd(sg);
+    RUN.si++;
+    sg = seg();
+    if (!sg){ finish(); return; }
+    onSegStart(sg);
+  }
+}
+function clearRunUI(){
+  $("calclist").innerHTML = ""; $("calcempty").hidden = false;
+  $("donebanner").classList.remove("on");
+  $("revealhost").classList.remove("on"); $("revealhost").innerHTML = "";
+  $("lab3d").classList.remove("dim"); $("blackout").classList.remove("on");
+  burst = []; clearBoard();
+}
+function freshRun(){ RUN.si = 0; RUN.u = 0; RUN.paused = false; RUN.done = false; RUN.revealed = false; RUN.calc = {}; RUN.found = {}; RUN.cards = {}; RUN.badges = {}; RUN.rows = []; }
+function startRun(D){
+  readAll();
+  RUN.D = D || copyST(); RUN.R = run(RUN.D);
+  RUN.segs = buildTimeline(); freshRun(); RUN.state = "running";
+  clearRunUI(); drawLog(); refreshUI(); refreshAnswerBox();
+}
+function resetRun(){
+  RUN.state = "setup"; RUN.segs = []; freshRun();
+  readAll(); RUN.D = copyST(); RUN.R = run(RUN.D);
+  clearRunUI(); drawLog(); refreshUI(); refreshAnswerBox();
+}
+function resetAll(){
+  var i; for (i = 0; i < FIELDS.length; i++) $("in_" + FIELDS[i].k).value = Q[FIELDS[i].k];
+  readAll(); earlyReveal = false; resetRun(); refreshGate();
+}
+function finish(){
+  RUN.si = RUN.segs.length; RUN.state = "done"; RUN.done = true;
+  addCalc("match"); if (RUN.R.complete) badge("mas");
+  refreshUI(); refreshAnswerBox();
+  doReveal();
+}
+
+/* =====================================================================
+   reasoning log - one causal chain per step, written as it happens
+   ===================================================================== */
+function chain(a){ return a.join(' <span style="color:var(--text-muted)">→</span> '); }
+function moLine(m){
+  return m.levels.filter(function(o){ return o.e; }).map(function(o){ return o.n + (o.e === 2 ? "²" : "¹"); }).join(" ");
+}
+function calcHTML(key){
+  var R = RUN.R, D = R.D, ev = R.ev, r = R.r, G = GAS[D.gas];
+  switch (key){
+    case "r":
+      return ["REACTION", chain([nm(D.gas) + " + " + nm(D.ox), D.ox === "F2" ? "no metal to take the electron" : "IE(" + nm(D.gas) + ") = " + G.IE.toFixed(2) + " eV vs PtF₆ limit ≈ " + PTF6_LIMIT + " eV",
+        r.ionic ? "one electron transferred" : "no electron transfer", "<b>" + r.obs + "</b>"]) + "<span class=w>" + r.why + "</span>"];
+    case "x":
+      if (!r.ionic) return ["X⁺, Y⁻", "No ionic compound forms, so X⁺ and Y⁻ cannot be identified <span class=w>the question's reaction needs O₂ and PtF₆</span>"];
+      return ["X⁺, Y⁻", r.eq + " &nbsp;⇒&nbsp; <span class=hl>X⁺ = " + nm(r.X) + ", Y⁻ = [PtF₆]⁻</span><span class=w>the gas loses one electron; the hexafluoride keeps all six F and gains the electron</span>"];
+    case "c": return ["(C)", ev.C.ev + " &nbsp;⇒&nbsp; " + verdictHTML(ev.C.v)];
+    case "mo":
+      if (!R.xMO) return ["MO", "No cation formed — nothing to fill."];
+      return ["MO", nm(D.gas) + " (" + R.gasMO.n + " e⁻) → " + nm(r.X) + " (" + R.xMO.n + " e⁻): " + moLine(R.xMO) + "<span class=w>the electron lost comes from the highest occupied orbital" + (D.gas === "O2" ? " — antibonding π*2p" : "") + "</span>"];
+    case "a": return ["(A)", ev.A.ev + " &nbsp;⇒&nbsp; " + verdictHTML(ev.A.v)];
+    case "pt":
+      return ["Pt", "Pt (Z 78): " + PT.core + " 5d⁹ 6s¹ &nbsp;·&nbsp; PtF₆: Pt +6 → 5d" + sup(R.pt6.d) + " &nbsp;·&nbsp; [PtF₆]⁻: Pt +5 → <b>5d" + sup(R.pt5.d) + "</b><span class=w>oxidation state from charge balance: x + 6(−1) = −1 ⇒ x = +5; ions lose 6s before 5d</span>"];
+    case "b": return ["(B)", ev.B.ev + " &nbsp;⇒&nbsp; " + verdictHTML(ev.B.v)];
+    case "d": return ["(D)", ev.D.ev + " &nbsp;⇒&nbsp; " + verdictHTML(ev.D.v) + "<span class=w>a fluorinating agent transfers F atoms, e.g. U + 3ClF₃ → UF₆ + 3ClF; here only an electron moves</span>"];
+    case "board":
+      return ["BOARD", "(A) " + verdictHTML(ev.A.v) + " &nbsp; (B) " + verdictHTML(ev.B.v) + " &nbsp; (C) " + verdictHTML(ev.C.v) + " &nbsp; (D) " + verdictHTML(ev.D.v)];
+    case "match":
+      return ["ANSWER", R.complete ? "Supported statements: <span class=hl>" + optText(R.truth) + "</span> &nbsp;·&nbsp; X⁺ = O₂⁺ (bond order " + fmtBO(R.xMO.bo) + "), Y⁻ = [PtF₆]⁻ (Pt⁵⁺, 5d⁵)"
+        : "The question's reaction does not happen under your conditions" + (r.ionic ? " (X⁺ = " + nm(r.X) + " instead of O₂⁺)" : "") + " — restore them to answer the question."];
+  }
+  return null;
+}
+function verdictHTML(v){ return v === true ? "<span class=hl>✓ SUPPORTED</span>" : v === false ? '<b style="color:var(--bad)">✗ NOT SUPPORTED</b>' : "<b>— not applicable</b>"; }
+function addCalc(key){
+  if (RUN.calc[key]) return;
+  var c = calcHTML(key); if (!c) return;
+  RUN.calc[key] = true;
+  $("calcempty").hidden = true;
+  var li = document.createElement("li");
+  li.setAttribute("data-key", key);
+  li.innerHTML = '<span class="s">' + c[0] + '</span><span class="m">' + c[1] + "</span>";
+  $("calclist").appendChild(li);
+}
+function calcKeys(){ return Object.keys(RUN.calc).filter(function(k){ return k.charAt(0) !== "@"; }); }
+function logRow(k){
+  var R = RUN.R, r = R.r;
+  if (k === "X") RUN.rows.push(["X⁺", r.ionic ? nm(r.X) : "—", r.ionic ? String(R.xMO.n) : "—", r.ionic ? fmtBO(R.xMO.bo) : "—", r.ionic ? R.xMO.unpaired + " unpaired" : "—"]);
+  else RUN.rows.push(["Y⁻", r.ionic ? "[PtF₆]⁻" : "—", r.ionic ? "Pt +5" : "—", r.ionic ? "5d" + sup(R.pt5.d) + " (t₂g" + sup(R.pt5.t2g) + ")" : "—", r.ionic ? R.pt5.unpaired + " unpaired" : "—"]);
+  drawLog();
+}
+function drawLog(){
+  var h = "<thead><tr><th>ion</th><th>identity</th><th>electrons / ox. state</th><th>bond order / d-count</th><th>magnetism</th></tr></thead><tbody>", i, r;
+  for (i = 0; i < RUN.rows.length; i++){ r = RUN.rows[i]; h += "<tr><td><b>" + r[0] + "</b></td><td class=n>" + r[1] + "</td><td>" + r[2] + "</td><td>" + r[3] + "</td><td>" + r[4] + "</td></tr>"; }
+  $("log").innerHTML = h + "</tbody>";
+  $("logn").textContent = RUN.rows.length;
+}
+/* =====================================================================
+   molecules in 3D - shaded spheres
+   ===================================================================== */
+var ELS = { O: { c: "#ff7b7b", e: "#8a1f1f", r: 15 }, N: { c: "#6d86ff", e: "#2b3fb0", r: 15 }, F: { c: "#f4e78a", e: "#9a8a1c", r: 13 },
+  Pt: { c: "#e4e7f0", e: "#5d6478", r: 21 }, U: { c: "#a8b8ff", e: "#3a4a9a", r: 20 }, Cl: { c: "#74e36a", e: "#1f7a1c", r: 16 } };
+function molGeom(m){
+  var A = [], k;
+  if (m === "O2") A = [["O", [-0.62, 0, 0]], ["O", [0.62, 0, 0]]];
+  else if (m === "O2+") A = [["O", [-0.56, 0, 0]], ["O", [0.56, 0, 0]]];
+  else if (m === "N2") A = [["N", [-0.55, 0, 0]], ["N", [0.55, 0, 0]]];
+  else if (m === "NO" || m === "NO+") A = [["N", [-0.56, 0, 0]], ["O", [0.56, 0, 0]]];
+  else if (m === "F2") A = [["F", [-0.72, 0, 0]], ["F", [0.72, 0, 0]]];
+  else if (m === "PtF6" || m === "PtF6-" || m === "UF6"){
+    var c = m === "UF6" ? "U" : "Pt", L = 1.3;
+    A = [[c, [0, 0, 0]], ["F", [L, 0, 0]], ["F", [-L, 0, 0]], ["F", [0, L, 0]], ["F", [0, -L, 0]], ["F", [0, 0, L]], ["F", [0, 0, -L]]];
+  }
+  else if (m === "ClF3"){ A = [["Cl", [0, 0, 0]], ["F", [0.06, 1.3, 0]], ["F", [0.06, -1.3, 0]], ["F", [1.2, 0, 0]]]; }
+  return { atoms: A, lp: [], guide: null };
+}
+function rot3(p, yaw, pit){
+  var cy = Math.cos(yaw), sy = Math.sin(yaw), x = p[0] * cy + p[2] * sy, z = -p[0] * sy + p[2] * cy;
+  var cp = Math.cos(pit), sp = Math.sin(pit), y = p[1] * cp - z * sp, z2 = p[1] * sp + z * cp;
+  return [x, y, z2];
+}
+function sphere(g, x, y, r, el, a){
+  var E = ELS[el] || ELS.Cl, gr = g.createRadialGradient(x - r * 0.35, y - r * 0.4, r * 0.15, x, y, r);
+  gr.addColorStop(0, "#ffffff"); gr.addColorStop(0.28, E.c); gr.addColorStop(1, E.e);
+  g.globalAlpha = a === undefined ? 1 : a; g.fillStyle = gr; g.beginPath(); g.arc(x, y, r, 0, Math.PI * 2); g.fill(); g.globalAlpha = 1;
+}
+function label(g, s, x, y, col, size, align, weight){
+  g.fillStyle = col; g.font = (weight || 600) + " " + (size || 14) + "px ui-sans-serif,system-ui,sans-serif";
+  g.textAlign = align || "center"; g.textBaseline = "middle"; g.fillText(s, x, y);
+}
+/* draw a molecule at (cx, cy), scale sc px per unit. opt: yaw, pit, lp, labels, guide, alpha, glow, lpScale */
+function drawMolecule(g, m, cx, cy, sc, opt){
+  opt = opt || {};
+  var G = molGeom(m), items = [], i, yaw = opt.yaw || 0, pit = opt.pit === undefined ? 0.35 : opt.pit, al = opt.alpha === undefined ? 1 : opt.alpha;
+  var P = G.atoms.map(function(a){ var q = rot3(a[1], yaw, pit); return { el: a[0], x: cx + q[0] * sc, y: cy - q[1] * sc, z: q[2] }; });
+  if (opt.guide && G.guide){
+    g.save(); g.globalAlpha = 0.5 * al; g.strokeStyle = "#9fd0ff"; g.setLineDash([6, 5]); g.lineWidth = 1.5;
+    if (G.guide.type === "pyr"){
+      var b = G.guide.pts.map(function(p){ var q = rot3(p, yaw, pit); return [cx + q[0] * sc, cy - q[1] * sc]; });
+      g.fillStyle = "rgba(120,180,255,.10)"; g.beginPath(); g.moveTo(b[0][0], b[0][1]); g.lineTo(b[1][0], b[1][1]); g.lineTo(b[2][0], b[2][1]); g.closePath(); g.fill(); g.stroke();
+    } else if (G.guide.type === "tbp"){
+      var v = [[0, 1.45, 0], [0, -1.45, 0], [1.45, 0, 0], [Math.cos(2.094) * 1.45, 0, Math.sin(2.094) * 1.45], [Math.cos(4.189) * 1.45, 0, Math.sin(4.189) * 1.45]].map(function(p){ var q = rot3(p, yaw, pit); return [cx + q[0] * sc, cy - q[1] * sc]; });
+      var e = [[0, 2], [0, 3], [0, 4], [1, 2], [1, 3], [1, 4], [2, 3], [3, 4], [4, 2]];
+      for (i = 0; i < e.length; i++){ g.beginPath(); g.moveTo(v[e[i][0]][0], v[e[i][0]][1]); g.lineTo(v[e[i][1]][0], v[e[i][1]][1]); g.stroke(); }
+    }
+    g.restore();
+  }
+  for (i = 1; i < P.length; i++) if (G.atoms.length > 2 || i === 1) items.push({ z: (P[0].z + P[i].z) / 2 - 0.01, b: [0, i] });
+  for (i = 0; i < P.length; i++) items.push({ z: P[i].z, a: i });
+  if (opt.lp !== false) for (i = 0; i < G.lp.length; i++){ var d = rot3(G.lp[i], yaw, pit); items.push({ z: d[2] * 0.9, lp: d }); }
+  items.sort(function(a, b){ return a.z - b.z; });
+  for (i = 0; i < items.length; i++){
+    var it = items[i];
+    if (it.b){ var p1 = P[it.b[0]], p2 = P[it.b[1]]; g.globalAlpha = al; g.strokeStyle = "#8a96ad"; g.lineWidth = Math.max(3, sc * 0.09); g.lineCap = "round";
+      g.beginPath(); g.moveTo(p1.x, p1.y); g.lineTo(p2.x, p2.y); g.stroke(); g.globalAlpha = 1; }
+    else if (it.lp){
+      var ls = (opt.lpScale === undefined ? 1 : opt.lpScale), lx = cx + it.lp[0] * sc * 0.72, ly = cy - it.lp[1] * sc * 0.72, ang = Math.atan2(-it.lp[1], it.lp[0]);
+      g.save(); g.translate(lx, ly); g.rotate(ang); g.globalAlpha = 0.5 * al * clamp(ls, 0.25, 1.4);
+      var gr = g.createRadialGradient(0, 0, 2, 0, 0, sc * 0.5 * ls); gr.addColorStop(0, "rgba(255,190,120,.95)"); gr.addColorStop(1, "rgba(255,140,60,0)");
+      g.fillStyle = gr; g.beginPath(); g.ellipse(0, 0, sc * 0.5 * ls, sc * 0.3 * ls, 0, 0, Math.PI * 2); g.fill();
+      g.globalAlpha = al; g.fillStyle = "#ffe0c8"; g.beginPath(); g.arc(3, -5, 3.2, 0, 7); g.arc(3, 5, 3.2, 0, 7); g.fill(); g.restore();
+    } else {
+      var A = P[it.a], rr = (ELS[A.el] || ELS.Cl).r * (sc / 60) * (1 + A.z / 12);
+      if (opt.glow){ g.shadowColor = (ELS[A.el] || ELS.Cl).c; g.shadowBlur = 16; }
+      sphere(g, A.x, A.y, rr, A.el, al); g.shadowBlur = 0;
+      if (opt.labels !== false){ g.globalAlpha = al; label(g, A.el, A.x, A.y + 1, A.el === "H" || A.el === "F" ? "#23303f" : "#081018", Math.max(10, rr * 0.9), "center", 800); g.globalAlpha = 1; }
+    }
+  }
+  return P;
+}
+
+/* =====================================================================
+   the laboratory canvas - one scene per stage
+   ===================================================================== */
+var burst = [], clock = 0, SHOW = { eq: false, obs: false, why: false };
+var CLGAS = "rgba(200,224,74,", AMBER = "rgba(255,196,80,";
+function glassRect(g, x, y, w, h, r){
+  g.fillStyle = "rgba(150,190,255,.07)"; g.strokeStyle = "rgba(190,215,255,.45)"; g.lineWidth = 2;
+  g.beginPath(); g.roundRect ? g.roundRect(x, y, w, h, r || 12) : g.rect(x, y, w, h); g.fill(); g.stroke();
+  g.strokeStyle = "rgba(255,255,255,.18)"; g.lineWidth = 3; g.beginPath(); g.moveTo(x + 10, y + 14); g.lineTo(x + 10, y + h - 14); g.stroke();
+}
+function hood(g){
+  var W = 1040, H = 620;
+  var bg = g.createLinearGradient(0, 0, 0, H); bg.addColorStop(0, "#0b1120"); bg.addColorStop(1, "#070a12");
+  g.fillStyle = bg; g.fillRect(0, 0, W, H);
+  g.strokeStyle = "rgba(160,190,255,.12)"; g.lineWidth = 10; g.strokeRect(14, 14, W - 28, H - 28);
+  g.fillStyle = "rgba(160,190,255,.06)"; g.fillRect(14, H - 70, W - 28, 56);
+}
+function stamp(g, x, y, text, ok, a){
+  g.save(); g.translate(x, y); g.rotate(-0.08); g.globalAlpha = a;
+  g.strokeStyle = ok ? "#3ee39a" : ok === false ? "#ff6b6b" : "#b8a8ff"; g.lineWidth = 4;
+  g.font = "900 26px ui-sans-serif,system-ui,sans-serif"; var w = g.measureText(text).width + 34;
+  g.fillStyle = "rgba(8,14,26,.85)"; g.fillRect(-w / 2, -26, w, 52); g.strokeRect(-w / 2, -26, w, 52);
+  label(g, text, 0, 1, ok ? "#3ee39a" : ok === false ? "#ff6b6b" : "#cfc4ff", 26, "center", 900); g.restore();
+}
+function sceneTitle(g, a, b){ label(g, a, 520, 44, "#8fa6c9", 16, "center", 800); if (b) label(g, b, 520, 70, "#e6eeff", 21, "center", 800); }
+
+function observationBox(g, t, on){
+  g.fillStyle = "rgba(10,20,36,.88)"; g.strokeStyle = on ? "#c8e04a" : "rgba(160,190,255,.3)"; g.lineWidth = 2;
+  g.fillRect(800, 250, 210, 110); g.strokeRect(800, 250, 210, 110);
+  label(g, "OBSERVATION", 905, 272, "#8fa6c9", 13, "center", 800);
+  wrap(g, t, 905, 302, 190, 16, "#ffffff", 16);
+}
+function wrap(g, t, x, y, w, lh, col, size){
+  g.font = "700 " + size + "px ui-sans-serif,system-ui,sans-serif"; var words = t.split(" "), line = "", yy = y, i;
+  for (i = 0; i < words.length; i++){ var tt = line + words[i] + " "; if (g.measureText(tt).width > w && line){ label(g, line.trim(), x, yy, col, size, "center", 700); line = words[i] + " "; yy += lh + 4; } else line = tt; }
+  label(g, line.trim(), x, yy, col, size, "center", 700);
+}
+
+/* =====================================================================
+   molecular-orbital diagram - drawn from fillMO(), never from a picture
+   ===================================================================== */
+/* the order electrons go in: rank by rank, singly first (Hund), then paired */
+function moOrder(levels){
+  var out = [], r, i, grp, idx;
+  for (r = 1; r <= 8; r++){
+    idx = []; for (i = 0; i < levels.length; i++) if (levels[i].rank === r) idx.push(i);
+    for (i = 0; i < idx.length; i++) out.push({ oi: idx[i], spin: 1 });
+    for (i = 0; i < idx.length; i++) out.push({ oi: idx[i], spin: -1 });
+  }
+  return out;
+}
+/* o: { shown: electrons drawn, gone: highlight the last electron as leaving (0..1), title, alpha, compact } */
+function drawMO(g, mo, X, Y, W, H, o){
+  o = o || {};
+  var L = mo.levels, ord = moOrder(L), shown = o.shown === undefined ? mo.n : o.shown, i, al = o.alpha === undefined ? 1 : o.alpha;
+  var bw = o.compact ? 34 : 44, bh = o.compact ? 20 : 24, fs = o.compact ? 11 : 13;
+  var pos = L.map(function(lv){
+    var y = Y + H - (lv.rank - 0.5) * (H / 8.3), same = L.filter(function(q){ return q.rank === lv.rank; }), k = same.indexOf(lv);
+    var x = X + W / 2 - (same.length * (bw + 8) - 8) / 2 + k * (bw + 8);
+    return { x: x, y: y };
+  });
+  g.globalAlpha = al;
+  for (i = 0; i < L.length; i++){
+    var p = pos[i], anti = L[i].kind === "a";
+    g.fillStyle = anti ? "rgba(255,120,120,.08)" : "rgba(120,200,255,.08)"; g.strokeStyle = anti ? "rgba(255,140,140,.75)" : "rgba(140,210,255,.75)"; g.lineWidth = 1.6;
+    g.fillRect(p.x, p.y - bh / 2, bw, bh); g.strokeRect(p.x, p.y - bh / 2, bw, bh);
+    var first = L.filter(function(q){ return q.rank === L[i].rank; })[0] === L[i];
+    if (first){
+      label(g, L[i].set || L[i].n, X + W / 2 - (L.filter(function(q){ return q.rank === L[i].rank; }).length * (bw + 8)) / 2 - 12, p.y, anti ? "#ffb4b4" : "#a8dcff", fs, "right", 700);
+    }
+  }
+  var e = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+  for (i = 0; i < Math.min(shown, ord.length); i++){
+    var q = ord[i], pp = pos[q.oi], leaving = o.gone !== undefined && i === mo.n - 1, dy = 0, ea = 1;
+    if (leaving){ dy = -o.gone * 120; ea = 1 - o.gone * 0.6; }
+    var xx = pp.x + bw / 2 + (q.spin > 0 ? -7 : 7), yy = pp.y + dy;
+    g.globalAlpha = al * ea;
+    label(g, q.spin > 0 ? "↑" : "↓", xx, yy, leaving ? "#ff9350" : "#ffffff", o.compact ? 15 : 19, "center", 900);
+    if (leaving && o.gone > 0.05) label(g, "e⁻ removed", xx + 50, yy, "#ff9350", 13, "left", 800);
+    g.globalAlpha = al;
+  }
+  g.globalAlpha = 1;
+  return pos;
+}
+
+/* octahedral d-orbitals: eg over t2g, filled low-spin */
+function drawDsplit(g, X, Y, W, d, o){
+  o = o || {};
+  var t2g = Math.min(6, d), eg = d - t2g, bw = o.bw || 50, bh = 26, i, gap = 10;
+  var yT = Y + (o.h || 150) - 30, yE = Y + 30;
+  function boxes(n, y, filled, col){
+    var x0 = X + W / 2 - (n * (bw + gap) - gap) / 2, k;
+    for (k = 0; k < n; k++){
+      var x = x0 + k * (bw + gap);
+      g.fillStyle = "rgba(160,190,255,.08)"; g.strokeStyle = col; g.lineWidth = 1.8; g.fillRect(x, y - bh / 2, bw, bh); g.strokeRect(x, y - bh / 2, bw, bh);
+      var up = filled > k ? 1 : 0, dn = filled > n + k ? 1 : 0;
+      if (up) label(g, "↑", x + bw / 2 - (dn ? 8 : 0), y, "#ffffff", 20, "center", 900);
+      if (dn) label(g, "↓", x + bw / 2 + 8, y, "#ffffff", 20, "center", 900);
+    }
+  }
+  boxes(2, yE, eg, "rgba(255,196,80,.8)"); boxes(3, yT, t2g, "rgba(120,220,170,.85)");
+  label(g, "eg", X + 18, yE, "#ffd79a", 15, "left", 800); label(g, "t₂g", X + 18, yT, "#9ff0c9", 15, "left", 800);
+  g.strokeStyle = "rgba(160,190,255,.35)"; g.setLineDash([4, 4]); g.beginPath(); g.moveTo(X + 60, yE + 16); g.lineTo(X + 60, yT - 16); g.stroke(); g.setLineDash([]);
+  label(g, "Δo", X + 74, (yE + yT) / 2, "#9fb0cc", 13, "left", 700);
+}
+
+/* =====================================================================
+   the laboratory canvas - one scene per stage
+   ===================================================================== */
+var RED = "rgba(200,40,50,", ORANGE = "#ff9350";
+/* 01 - mix */
+function sceneMix(g, f){
+  var R = RUN.R, D = RUN.D, ion = R.r.ionic, i;
+  sceneTitle(g, "STATION 1 · THE REACTION BULB", nm(D.gas) + " + " + nm(D.ox) + " at room temperature");
+  var cx = 400, cy = 330, rr = 165;
+  g.fillStyle = "rgba(150,190,255,.06)"; g.strokeStyle = "rgba(190,215,255,.5)"; g.lineWidth = 2.5;
+  g.beginPath(); g.arc(cx, cy, rr, 0, Math.PI * 2); g.fill(); g.stroke();
+  g.strokeRect(cx + rr - 20, cy + 68, 330, 24);
+  label(g, nm(D.gas) + " in", cx + rr + 280, cy + 110, "#cfe0ff", 14, "center", 800);
+  g.save(); g.beginPath(); g.arc(cx, cy, rr - 3, 0, Math.PI * 2); g.clip();
+  var rnd = rng(11), n = 34, vap = D.ox === "PtF6";
+  for (i = 0; i < n; i++){
+    var px = cx - rr + rnd() * 2 * rr, py = cy - rr + rnd() * 2 * rr * 0.8, ph = rnd() * 6;
+    px += Math.sin(clock * 0.8 + ph) * 8; py += Math.cos(clock * 0.7 + ph) * 8;
+    var used = ion && f > 0.45 && i < n * ease((f - 0.45) / 0.45);
+    if (used) continue;
+    g.fillStyle = vap ? RED + "0.75)" : "rgba(240,235,150,.45)"; g.beginPath(); g.arc(px, py, vap ? 6 : 4, 0, 7); g.fill();
+  }
+  /* gas molecules coming in */
+  var m = Math.floor(ease(f / 0.6) * 18);
+  for (i = 0; i < m; i++){
+    var t = ((clock * 0.3 + i / 18) % 1), gx = cx + rr + 300 - t * 520, inside = gx < cx + rr - 20, gy = inside ? cy + 80 - (cx + rr - 20 - gx) * 0.35 + Math.sin(i * 1.7 + clock) * 60 : cy + 80;
+    if (gx < cx - rr + 20) continue;
+    g.fillStyle = D.gas === "N2" ? "#8fa6ff" : "#ff9b9b"; g.beginPath(); g.arc(gx - 5, gy, 4.5, 0, 7); g.arc(gx + 5, gy, 4.5, 0, 7); g.fill();
+  }
+  /* sparks where an electron jumps, then the orange-red solid */
+  if (ion && f > 0.45){
+    var sp = rng(Math.floor(clock * 6));
+    for (i = 0; i < 6; i++){ var sx = cx - 120 + sp() * 240, sy = cy - 110 + sp() * 200; g.strokeStyle = "rgba(120,200,255,.9)"; g.lineWidth = 2; g.beginPath(); g.moveTo(sx, sy); g.lineTo(sx + 10, sy - 6); g.lineTo(sx + 4, sy + 4); g.lineTo(sx + 14, sy); g.stroke(); }
+    var h = 70 * ease((f - 0.45) / 0.5);
+    var gr = g.createLinearGradient(0, cy + rr - h, 0, cy + rr); gr.addColorStop(0, "#ffae5a"); gr.addColorStop(1, "#d8551f");
+    g.fillStyle = gr; g.fillRect(cx - rr, cy + rr - h, 2 * rr, h);
+    var cr = rng(3); for (i = 0; i < 40; i++){ var qx = cx - rr + cr() * 2 * rr, qy = cy + rr - cr() * h; g.fillStyle = "rgba(255,230,190,.5)"; g.fillRect(qx, qy, 3, 3); }
+  }
+  g.restore();
+  label(g, vap ? "PtF₆ vapour (deep red)" : "F₂ (pale yellow)", cx, cy - rr - 18, vap ? "#ff8b8b" : "#f0eb9a", 15, "center", 800);
+  if (ion && f > 0.6) label(g, D.gas === "O2" ? "orange-red solid: " + nm(R.r.X) + "[PtF₆]⁻" : nm(R.r.X) + "[PtF₆]⁻", cx, cy + rr + 26, ORANGE, 16, "center", 900);
+  observationBox(g, ion ? (f > 0.5 ? R.r.obs : "gas flowing in…") : (f > 0.4 ? R.r.obs : "gas flowing in…"), f > 0.5);
+}
+/* 02 - the electron jump */
+function sceneXfer(g, f){
+  var R = RUN.R, D = RUN.D, ion = R.r.ionic, G = GAS[D.gas];
+  sceneTitle(g, "STATION 1 · WHO TAKES THE ELECTRON?", "ionisation energy of the gas vs the pull of PtF₆");
+  var gx = 250, px = 790, y = 250, moved = ion ? ease((f - 0.3) / 0.35) : 0;
+  drawMolecule(g, D.gas, gx, y, 75, { yaw: 0.2 + clock * 0.3, pit: 0.3 });
+  if (D.ox === "PtF6") drawMolecule(g, "PtF6", px, y, 62, { yaw: 0.6 + clock * 0.25, pit: 0.35 });
+  else drawMolecule(g, "F2", px, y, 70, { yaw: clock * 0.3, pit: 0.3 });
+  label(g, ion && moved > 0.95 ? nm(R.r.X) : nm(D.gas), gx, y + 110, ion && moved > 0.95 ? ORANGE : "#e6eeff", 24, "center", 900);
+  label(g, ion && moved > 0.95 ? "[PtF₆]⁻" : nm(D.ox), px, y + 110, ion && moved > 0.95 ? "#9fd0ff" : "#e6eeff", 24, "center", 900);
+  /* the electron */
+  if (f > 0.25){
+    var t = ion ? moved : (f < 0.55 ? ease((f - 0.25) / 0.3) * 0.5 : 0.5 - ease((f - 0.55) / 0.3) * 0.5);
+    var ex = gx + (px - gx) * t, ey = y - 40 - Math.sin(Math.PI * t) * 120;
+    g.shadowColor = "#6fc3ff"; g.shadowBlur = 20; g.fillStyle = "#9fdcff"; g.beginPath(); g.arc(ex, ey, 11, 0, 7); g.fill(); g.shadowBlur = 0;
+    label(g, "e⁻", ex, ey, "#06203a", 12, "center", 900);
+    if (!ion && f > 0.55) label(g, "pulled back — IE too high", (gx + px) / 2, 120, "#ff9b9b", 16, "center", 800);
+  }
+  /* IE scale */
+  var X0 = 170, X1 = 870, sy = 500, lo = 8, hi = 16, xs = function(v){ return X0 + (X1 - X0) * (v - lo) / (hi - lo); };
+  g.strokeStyle = "rgba(160,190,255,.5)"; g.lineWidth = 2; g.beginPath(); g.moveTo(X0, sy); g.lineTo(X1, sy); g.stroke();
+  for (var v = lo; v <= hi; v += 2){ g.beginPath(); g.moveTo(xs(v), sy - 5); g.lineTo(xs(v), sy + 5); g.stroke(); label(g, v + " eV", xs(v), sy + 20, "#8fa6c9", 12, "center", 600); }
+  g.fillStyle = "rgba(62,227,154,.12)"; g.fillRect(X0, sy - 26, xs(PTF6_LIMIT) - X0, 52);
+  g.strokeStyle = "#3ee39a"; g.setLineDash([6, 5]); g.beginPath(); g.moveTo(xs(PTF6_LIMIT), sy - 34); g.lineTo(xs(PTF6_LIMIT), sy + 30); g.stroke(); g.setLineDash([]);
+  label(g, "PtF₆ can remove an electron here", (X0 + xs(PTF6_LIMIT)) / 2, sy - 44, "#9ff0c9", 13, "center", 800);
+  var marks = [["NO", 9.26], ["O₂", 12.07], ["Xe", 12.13], ["N₂", 15.58]], k;
+  for (k = 0; k < marks.length; k++){ var cur = nm(D.gas) === marks[k][0]; g.fillStyle = cur ? "#ffd166" : "#9fb0cc"; g.beginPath(); g.arc(xs(marks[k][1]), sy, cur ? 8 : 5, 0, 7); g.fill();
+    label(g, marks[k][0] + " " + marks[k][1], xs(marks[k][1]) + (marks[k][0] === "Xe" ? 38 : marks[k][0] === "O₂" ? -34 : 0), sy + (marks[k][0] === "NO" || marks[k][0] === "N₂" ? -16 : 40), cur ? "#ffd166" : "#9fb0cc", 13, "center", 800); }
+  if (f > 0.8) stamp(g, 520, 395, ion ? "X⁺ = " + nm(R.r.X) + "   ·   Y⁻ = [PtF₆]⁻" : "NO ELECTRON TRANSFER", ion ? true : false, clamp((f - 0.8) / 0.1, 0, 1));
+}
+/* 03 - oxidation states */
+function sceneRedox(g, f){
+  var R = RUN.R, D = RUN.D, ion = R.r.ionic;
+  sceneTitle(g, "STATION 2 · REDOX BOOKKEEPING", "follow the oxidation numbers");
+  if (!ion){ label(g, "No electron moved — every oxidation number stays the same.", 520, 300, "#ff9b9b", 20, "center", 800); return; }
+  var a = ease(f / 0.5);
+  function col(x, title, before, after, verb, colr){
+    g.fillStyle = "rgba(20,30,52,.9)"; g.strokeStyle = colr; g.lineWidth = 2; g.fillRect(x, 120, 400, 300); g.strokeRect(x, 120, 400, 300);
+    label(g, title, x + 200, 150, "#e6eeff", 20, "center", 900);
+    label(g, before[0], x + 90, 220, "#ffffff", 22, "center", 800); label(g, before[1], x + 90, 256, "#9fb0cc", 16, "center", 700);
+    g.globalAlpha = a; label(g, "→", x + 200, 230, colr, 34, "center", 900);
+    label(g, after[0], x + 310, 220, colr, 22, "center", 900); label(g, after[1], x + 310, 256, colr, 16, "center", 800); g.globalAlpha = 1;
+    if (f > 0.4){ g.globalAlpha = ease((f - 0.4) / 0.2); label(g, verb, x + 200, 330, colr, 22, "center", 900); g.globalAlpha = 1; }
+  }
+  var avg = D.gas === "O2" ? ["O: 0", "O: +½"] : D.gas === "NO" ? ["N: +2", "N: +3"] : ["", ""];
+  col(70, nm(D.gas) + "  →  " + nm(R.r.X), [avg[0], nm(D.gas)], [avg[1], nm(R.r.X) + (D.gas === "O2" ? " (average)" : "")], "loses 1 e⁻ · OXIDISED", ORANGE);
+  col(570, "PtF₆  →  [PtF₆]⁻", ["Pt: +6", "PtF₆"], ["Pt: +5", "[PtF₆]⁻"], "gains 1 e⁻ · REDUCED", "#9fd0ff");
+  if (f > 0.6){ g.globalAlpha = ease((f - 0.6) / 0.2); label(g, "the species that is reduced is the OXIDANT  ⇒  PtF₆ is the oxidant", 520, 470, "#ffffff", 19, "center", 900); g.globalAlpha = 1; }
+  if (f > 0.8) stamp(g, 520, 525, "(C) ✓ SUPPORTED", true, clamp((f - 0.8) / 0.1, 0, 1));
+}
+/* 04 - the MO diagram of the gas, then one electron leaves */
+function sceneMO(g, f){
+  var R = RUN.R, D = RUN.D, ion = R.r.ionic, M = R.gasMO;
+  sceneTitle(g, "STATION 3 · MOLECULAR ORBITALS", "fill " + nm(D.gas) + " (" + M.n + " e⁻), then remove the electron PtF₆ took");
+  var shown = Math.min(M.n, Math.floor(ease(f / 0.6) * M.n + 0.0001));
+  var gone = ion && f > 0.66 ? ease((f - 0.66) / 0.24) : undefined;
+  drawMO(g, M, 200, 100, 520, 440, { shown: shown, gone: gone });
+  var nb = 0, na = 0, ord = moOrder(M.levels), i;
+  for (i = 0; i < shown; i++) if (M.levels[ord[i].oi].kind === "b") nb++; else na++;
+  if (gone !== undefined && gone > 0.9){ na -= M.levels[ord[M.n - 1].oi].kind === "a" ? 1 : 0; nb -= M.levels[ord[M.n - 1].oi].kind === "b" ? 1 : 0; }
+  g.fillStyle = "rgba(20,30,52,.9)"; g.fillRect(760, 170, 230, 250); g.strokeStyle = "rgba(160,190,255,.3)"; g.strokeRect(760, 170, 230, 250);
+  label(g, "COUNT", 875, 195, "#8fa6c9", 13, "center", 800);
+  label(g, "electrons  " + (gone !== undefined && gone > 0.9 ? M.n - 1 : shown), 875, 240, "#ffffff", 19, "center", 800);
+  label(g, "bonding  " + nb, 875, 290, "#a8dcff", 19, "center", 800);
+  label(g, "antibonding  " + na, 875, 330, "#ffb4b4", 19, "center", 800);
+  if (gone !== undefined && gone > 0.9) label(g, "now " + nm(R.r.X), 875, 380, ORANGE, 20, "center", 900);
+  label(g, "blue = bonding · red = antibonding", 460, 575, "#8fa6c9", 13, "center", 700);
+}
+/* 05 - bond order */
+function sceneBO(g, f){
+  var R = RUN.R, D = RUN.D, ion = R.r.ionic;
+  sceneTitle(g, "STATION 3 · BOND ORDER", "bond order = (bonding − antibonding) / 2");
+  if (!ion){ label(g, "No cation formed — no bond order to test.", 520, 300, "#ff9b9b", 20, "center", 800); return; }
+  var X = R.xMO, a = ease(f / 0.4);
+  label(g, "(" + X.nb + " − " + X.na + ") / 2  =", 290, 170, "#e6eeff", 30, "center", 900);
+  g.globalAlpha = a; label(g, fmtBO(X.bo), 470, 170, ORANGE, 46, "center", 900); g.globalAlpha = 1;
+  label(g, "bond order of " + nm(R.r.X), 290, 214, "#9fb0cc", 15, "center", 700);
+  /* the ladder of the gas and its ions */
+  var ch = [-2, -1, 0, 1], i, y0 = 290;
+  label(g, "the " + nm(D.gas) + " family — add or remove electrons", 520, 262, "#8fa6c9", 14, "center", 800);
+  for (i = 0; i < ch.length; i++){
+    var key = speciesKey(D.gas, ch[i]), m = fillMO(electronsOf(D.gas, ch[i])), y = y0 + i * 52, on = ch[i] === 1, show = f > 0.35 + i * 0.1;
+    if (!show) continue;
+    var w = 120 * m.bo;
+    g.fillStyle = on ? "rgba(255,147,80,.9)" : "rgba(120,160,230,.55)"; g.fillRect(330, y, w, 34);
+    label(g, nm(key), 300, y + 17, on ? ORANGE : "#e6eeff", 18, "right", 900);
+    label(g, "BO " + fmtBO(m.bo), 340 + w, y + 17, "#ffffff", 16, "left", 800);
+    if (BOND[key]) label(g, BOND[key] + " pm", 460 + w, y + 17, "#9fb0cc", 14, "left", 700);
+    if (m.bo === 1.5) label(g, "← the claimed 1.5 belongs here", 560 + w, y + 17, "#ffd79a", 14, "left", 800);
+  }
+  label(g, "higher bond order → shorter, stronger bond", 520, 520, "#9fb0cc", 14, "center", 700);
+  if (f > 0.8) stamp(g, 840, 170, "(A) ✗ NOT SUPPORTED", false, clamp((f - 0.8) / 0.1, 0, 1));
+}
+/* 06 - platinum's electrons */
+function scenePt(g, f){
+  var R = RUN.R, ion = R.r.ionic;
+  sceneTitle(g, "STATION 4 · PLATINUM'S ELECTRONS", "Pt (Z = 78): [Xe] 4f¹⁴ 5d⁹ 6s¹");
+  if (!ion && RUN.D.ox !== "PtF6"){ label(g, "No platinum in this run.", 520, 300, "#ff9b9b", 20, "center", 800); return; }
+  var strip = Math.min(6, Math.floor(ease(f / 0.55) * 6 + 0.0001)), back = ion && f > 0.62 ? ease((f - 0.62) / 0.2) : 0;
+  var s = strip >= 1 ? 0 : 1, d = 9 - Math.max(0, strip - 1) + (back > 0.95 ? 1 : 0);
+  /* 5d boxes and the 6s box */
+  var bx = 250, by = 250, i, bw = 60;
+  label(g, "5d", bx - 40, by, "#a8dcff", 20, "center", 900);
+  var dd = [0, 0, 0, 0, 0], k;
+  for (k = 0; k < d; k++) dd[k % 5]++;
+  for (i = 0; i < 5; i++){
+    var x = bx + i * (bw + 10);
+    g.fillStyle = "rgba(160,190,255,.08)"; g.strokeStyle = "rgba(140,210,255,.75)"; g.lineWidth = 1.8; g.fillRect(x, by - 22, bw, 44); g.strokeRect(x, by - 22, bw, 44);
+    if (dd[i] >= 1) label(g, "↑", x + bw / 2 - (dd[i] > 1 ? 10 : 0), by, "#ffffff", 24, "center", 900);
+    if (dd[i] >= 2) label(g, "↓", x + bw / 2 + 10, by, "#ffffff", 24, "center", 900);
+  }
+  var sx = bx + 5 * (bw + 10) + 50;
+  label(g, "6s", sx + bw / 2, by - 40, "#a8dcff", 18, "center", 900);
+  g.strokeRect(sx, by - 22, bw, 44); if (s) label(g, "↑", sx + bw / 2, by, "#ffffff", 24, "center", 900);
+  label(g, "electrons removed: " + strip + (back > 0.95 ? "  ·  +1 returned" : ""), 520, 330, "#ff9350", 18, "center", 800);
+  label(g, "6s leaves first, then 5d", 520, 360, "#9fb0cc", 14, "center", 700);
+  label(g, strip < 6 ? "stripping to Pt(+6) — the metal in PtF₆" : back > 0.95 ? "Pt(+5) in [PtF₆]⁻ : [Xe] 4f¹⁴ 5d⁵" : "Pt(+6) in PtF₆ : [Xe] 4f¹⁴ 5d⁴", 520, 410, back > 0.95 ? ORANGE : "#e6eeff", 22, "center", 900);
+  if (back > 0 && back < 0.95){ var ex = 900 - back * 330, ey = 170 + back * 60; g.shadowColor = "#6fc3ff"; g.shadowBlur = 18; g.fillStyle = "#9fdcff"; g.beginPath(); g.arc(ex, ey, 11, 0, 7); g.fill(); g.shadowBlur = 0; label(g, "e⁻ from " + nm(RUN.D.gas), ex + 20, ey - 20, "#9fdcff", 13, "left", 800); }
+  if (f > 0.7) label(g, "charge balance in [PtF₆]⁻:  x + 6(−1) = −1   ⇒   x = +5", 520, 480, "#ffffff", 18, "center", 800);
+}
+/* 07 - the d-orbitals of Pt(V) in an octahedron */
+function sceneDorb(g, f){
+  var R = RUN.R, ion = R.r.ionic;
+  sceneTitle(g, "STATION 4 · d-ORBITALS OF THE METAL ION", "[PtF₆]⁻ is octahedral");
+  if (!ion){ label(g, "No [PtF₆]⁻ formed — no metal ion to examine.", 520, 300, "#ff9b9b", 20, "center", 800); return; }
+  drawMolecule(g, "PtF6-", 260, 320, 85, { yaw: clock * 0.4, pit: 0.35 });
+  label(g, "[PtF₆]⁻", 260, 470, "#9fd0ff", 22, "center", 900);
+  var fill = Math.min(R.pt5.d, Math.floor(ease(f / 0.6) * R.pt5.d + 0.0001));
+  drawDsplit(g, 520, 150, 440, fill, { h: 230, bw: 62 });
+  label(g, "valence d-electrons: " + fill, 740, 440, fill === R.pt5.d ? ORANGE : "#ffffff", 24, "center", 900);
+  label(g, "5d is a large-splitting shell → low spin, t₂g fills first", 740, 480, "#9fb0cc", 14, "center", 700);
+  if (f > 0.8) stamp(g, 740, 540, R.pt5.d === 5 ? "(B) ✓ SUPPORTED" : "(B) ✗", R.pt5.d === 5, clamp((f - 0.8) / 0.1, 0, 1));
+}
+/* 08 - fluorine audit */
+function sceneFaud(g, f){
+  var R = RUN.R, D = RUN.D, ion = R.r.ionic;
+  sceneTitle(g, "STATION 4 · FLUORINE AUDIT", "does any F atom move to the gas?");
+  if (!ion){ label(g, "No reaction — nothing to audit.", 520, 300, "#ff9b9b", 20, "center", 800); return; }
+  var scan = ease(f / 0.55), a = R.audit;
+  function panel(x, t, after){
+    g.fillStyle = "rgba(20,30,52,.9)"; g.strokeStyle = "rgba(160,190,255,.3)"; g.lineWidth = 1.5; g.fillRect(x, 110, 290, 300); g.strokeRect(x, 110, 290, 300);
+    label(g, t, x + 145, 135, "#8fa6c9", 14, "center", 800);
+    drawMolecule(g, after ? "PtF6-" : "PtF6", x + 95, 260, 50, { yaw: 0.7, pit: 0.35 });
+    drawMolecule(g, after && D.gas === "O2" ? "O2+" : D.gas, x + 225, 260, 50, { yaw: 0.3, pit: 0.3 });
+    label(g, after ? "[PtF₆]⁻" : "PtF₆", x + 95, 350, "#e6eeff", 16, "center", 800); label(g, after ? nm(R.r.X) : nm(D.gas), x + 225, 350, "#e6eeff", 16, "center", 800);
+  }
+  panel(60, "BEFORE", false); panel(380, "AFTER", true);
+  var sx = 60 + scan * 610; g.strokeStyle = "rgba(62,227,154,.7)"; g.lineWidth = 3; g.beginPath(); g.moveTo(sx, 115); g.lineTo(sx, 405); g.stroke();
+  if (f > 0.35){
+    g.globalAlpha = ease((f - 0.35) / 0.2);
+    label(g, "F on Pt: " + a.onPtBefore + " → " + a.onPtAfter, 365, 450, "#ffffff", 20, "center", 900);
+    label(g, "F bonded to " + (D.gas === "O2" ? "O" : "the gas") + ": 0 → " + a.onGasAfter + "   ·   only one electron moved", 365, 482, "#ffffff", 17, "center", 800);
+    g.globalAlpha = 1;
+  }
+  /* what a real fluorinating agent looks like */
+  g.fillStyle = "rgba(20,30,52,.9)"; g.strokeStyle = "rgba(255,196,80,.5)"; g.fillRect(700, 110, 300, 300); g.strokeRect(700, 110, 300, 300);
+  label(g, "FOR CONTRAST · A FLUORINATING AGENT", 850, 135, "#ffd79a", 12, "center", 800);
+  drawMolecule(g, "ClF3", 790, 250, 42, { yaw: 0.4, pit: 0.2 });
+  drawMolecule(g, "UF6", 915, 250, 36, { yaw: clock * 0.4, pit: 0.35 });
+  label(g, "U + 3ClF₃ → UF₆ + 3ClF", 850, 350, "#ffffff", 15, "center", 800);
+  label(g, "F atoms move to U", 850, 378, "#ffd79a", 14, "center", 700);
+  if (f > 0.82) stamp(g, 520, 540, "(D) ✗ NOT SUPPORTED", false, clamp((f - 0.82) / 0.1, 0, 1));
+}
+/* 09 - option board, 10 - answer calculation */
+var CLAIMS = { A: "The bond order of X⁺ is 1.5.", B: "Valence d-orbitals of the metal ion has 5 electrons.", C: "PtF₆ acts as an oxidant in this reaction.", D: "PtF₆ acts as a fluorinating agent." };
+function sceneTest(g, f){
+  var R = RUN.R, k, i;
+  sceneTitle(g, "OPTION ANALYSIS LAB", "claim → evidence → verdict");
+  for (i = 0; i < 4; i++){
+    k = "ABCD"[i]; var x = 60 + (i % 2) * 470, y = 110 + Math.floor(i / 2) * 220, e = R.ev[k], on = f * 4.4 > i;
+    g.fillStyle = "rgba(20,30,52,.9)"; g.strokeStyle = on ? (e.v ? "#3ee39a" : e.v === false ? "#ff6b6b" : "#b8a8ff") : "rgba(160,190,255,.25)"; g.lineWidth = on ? 3 : 1.5;
+    g.fillRect(x, y, 450, 190); g.strokeRect(x, y, 450, 190);
+    label(g, "(" + k + ")", x + 30, y + 30, "#8fa6c9", 18, "center", 900);
+    label(g, CLAIMS[k], x + 55, y + 30, "#ffffff", 15, "left", 700);
+    if (on){ wrap(g, e.ev, x + 225, y + 72, 410, 14, "#cfe0ff", 12); label(g, e.v ? "✓ SUPPORTED" : e.v === false ? "✗ NOT SUPPORTED" : "— NOT APPLICABLE", x + 225, y + 165, e.v ? "#3ee39a" : e.v === false ? "#ff6b6b" : "#cfc4ff", 22, "center", 900); }
+  }
+}
+function sceneAnswer(g, f){
+  sceneTitle(g, "ANALYSIS COMPLETE", f < 0.3 ? "all four statements examined" : "CALCULATING FINAL ANSWER…");
+  var p = ease(f / 0.9), R = RUN.R;
+  g.fillStyle = "rgba(20,30,52,.9)"; g.fillRect(220, 280, 600, 40); g.strokeStyle = "rgba(160,190,255,.4)"; g.strokeRect(220, 280, 600, 40);
+  var gr = g.createLinearGradient(220, 0, 820, 0); gr.addColorStop(0, "#3987e5"); gr.addColorStop(1, "#3ee39a"); g.fillStyle = gr; g.fillRect(224, 284, 592 * p, 32);
+  label(g, Math.round(p * 100) + "%", 520, 360, "#ffffff", 30, "center", 900);
+  label(g, R.r.ionic ? "X⁺ = " + nm(R.r.X) + "    Y⁻ = [PtF₆]⁻    Pt +5, 5d⁵" : "no ionic compound", 520, 430, "#e6eeff", 22, "center", 900);
+}
+function sceneIdle(g){
+  sceneTitle(g, "BARTLETT'S ELECTRON-TRANSFER LAB", "what is X⁺Y⁻ ?");
+  label(g, "O₂ (g)   +   PtF₆ (g)   ⟶   X⁺ Y⁻ (s)", 520, 180, "#ffffff", 32, "center", 900);
+  label(g, "an ionic compound forms at room temperature", 520, 222, "#9fb0cc", 16, "center", 700);
+  var k = [["X⁺", "?"], ["Y⁻", "?"], ["Pt", "ox. state ?"]], i;
+  for (i = 0; i < 3; i++){ var cx = 330 + i * 190; g.strokeStyle = "rgba(160,190,255,.5)"; g.setLineDash([6, 5]); g.strokeRect(cx - 75, 300, 150, 110); g.setLineDash([]);
+    label(g, "UNKNOWN", cx, 325, "#8fa6c9", 13, "center", 800); label(g, k[i][0] + " = " + k[i][1], cx, 370, "#ffffff", i === 2 ? 20 : 30, "center", 900); }
+  label(g, "press START EXPERIMENT", 520, 480, "#9fb0cc", 17, "center", 700);
+}
+function sceneRest(g){
+  var R = RUN.R, quiet = RUN.revealed && $("revealhost").classList.contains("on");
+  if (!quiet) sceneTitle(g, "CASE CLOSED", R.complete ? "supported: " + optText(R.truth) : "question pathway changed");
+  if (R.r.ionic){
+    drawMolecule(g, RUN.D.gas === "O2" ? "O2+" : RUN.D.gas, 330, 300, 80, { yaw: clock * 0.5, pit: 0.3, alpha: quiet ? 0.35 : 1, labels: !quiet });
+    drawMolecule(g, "PtF6-", 700, 300, 75, { yaw: clock * 0.4 + 1, pit: 0.35, alpha: quiet ? 0.35 : 1, labels: !quiet });
+    if (!quiet){ label(g, "X⁺ = " + nm(R.r.X) + " · BO " + fmtBO(R.xMO.bo), 330, 470, "#3ee39a", 24, "center", 900); label(g, "Y⁻ = [PtF₆]⁻ · Pt 5d⁵", 700, 470, "#3ee39a", 24, "center", 900); }
+  } else if (!quiet) label(g, "no ionic compound formed", 520, 320, "#ff9b9b", 24, "center", 900);
+}
+var SCENES = { mix: sceneMix, xfer: sceneXfer, redox: sceneRedox, mo: sceneMO, bo: sceneBO, pt: scenePt, dorb: sceneDorb, faud: sceneFaud, test: sceneTest, answer: sceneAnswer };
+function eqFor(){ var R = RUN.R; return R.r.eq; }
+function whyFor(name){
+  if (name === "mix" || name === "xfer") return "IE(O₂) 12.07 eV is low enough → PtF₆ (EA ≈ 7 eV) takes one electron → O₂⁺ + [PtF₆]⁻";
+  if (name === "redox") return "Pt +6 → +5: PtF₆ gains an electron → it is reduced → it is the oxidant";
+  if (name === "mo" || name === "bo") return "the electron leaves an antibonding π* orbital → bonding 10, antibonding 5 → BO 2.5";
+  if (name === "pt" || name === "dorb") return "Pt 5d⁹6s¹ − 5 electrons (6s first) → Pt⁵⁺ 5d⁵ (t₂g⁵)";
+  if (name === "faud") return "all six F stay on Pt; no O–F bond forms → not a fluorination";
+  return "each statement is decided from the numbers the lab computed";
+}
+function drawLab(st){
+  var c = $("labcv"), g = c.getContext("2d");
+  g.clearRect(0, 0, c.width, c.height);
+  hood(g);
+  if (st.name === "idle") sceneIdle(g);
+  else if (st.name === "rest") sceneRest(g);
+  else if (SCENES[st.name]) SCENES[st.name](g, st.f);
+  if (st.name !== "idle"){
+    if (SHOW.eq){ g.fillStyle = "rgba(8,14,26,.9)"; g.fillRect(40, 560, 960, 40); label(g, eqFor(st.name), 520, 580, "#ffffff", 17, "center", 800); }
+    if (SHOW.why){ g.fillStyle = "rgba(8,14,26,.9)"; g.fillRect(40, 92, 960, 34); label(g, "WHY?  " + whyFor(st.name), 520, 109, "#ffd79a", 14, "center", 700); }
+    if (SHOW.obs){ g.fillStyle = "rgba(8,14,26,.9)"; g.fillRect(40, 30, 340, 40); label(g, RUN.R.r.obs, 210, 50, "#ffc48a", 13, "center", 700); }
+  }
+}
+
+/* =====================================================================
+   status, narration, instrument panel, answer panel
+   ===================================================================== */
+var STAGE_ORDER = ["mix", "xfer", "redox", "mo", "bo", "pt", "dorb", "faud", "test", "answer"];
+function stageKey(){ var sg = seg(); if (RUN.state === "setup") return null; if (RUN.done) return "answer"; return sg ? sg.kind : null; }
+function refreshStatus(){
+  var k = stageKey(), x = $("xstat"), txt, cls = "xstat", g;
+  if (RUN.state === "setup"){ txt = "Ready"; g = isCustom() ? "Custom conditions set — press RUN WITH CUSTOM VALUES." : "Set your values or use the question defaults. Press START EXPERIMENT to begin."; }
+  else if (RUN.done){ txt = "✓ Experiment complete"; cls += " done"; g = "Result obtained."; }
+  else if (k === "mix" && RUN.u < 1.5){ txt = "Preparing experiment"; cls += " run"; g = "Preparing the apparatus…"; }
+  else if (k === "test"){ txt = "Analysing data"; cls += " ana"; g = "Analysing experimental evidence…"; }
+  else if (k === "answer"){ txt = "Calculation complete"; cls += " ana"; g = "Calculating the result…"; }
+  else { txt = "Experiment running"; cls += " run"; g = "Experiment running…"; }
+  if (RUN.paused){ txt = "Paused"; cls = "xstat"; g = "Paused — press Play."; }
+  x.className = cls; $("xstattxt").textContent = txt; $("guide").textContent = g;
+  var ki = STAGE_ORDER.indexOf(k), sp = document.querySelectorAll("#stages span"), i;
+  for (i = 0; i < sp.length; i++){ var j = STAGE_ORDER.indexOf(sp[i].getAttribute("data-s")); sp[i].className = k === null ? "" : (j < ki || RUN.done ? "done" : (j === ki ? "now" : "")); }
+}
+function refreshAnswerBox(){
+  var ab = $("answerbox"), open = RUN.revealed || earlyReveal;
+  $("apbar").style.width = (RUN.state === "setup" ? 0 : RUN.done ? 100 : Math.round(100 * elapsed() / TOTAL)) + "%";
+  if (open) return;
+  ab.classList.add("locked"); ab.classList.toggle("work", RUN.state === "running");
+  var k = stageKey();
+  $("ansval").textContent = RUN.state === "setup" ? "Investigating X⁺ and Y⁻…" : (RUN.done ? "Revealing…" : STAGE_MSG[k] || "…");
+  $("anssub").textContent = RUN.state === "setup" ? "The answer appears when the investigation finishes." : Math.round(100 * elapsed() / TOTAL) + "% of the investigation done";
+}
+function narrate(st){
+  var h = "", R = RUN.R, D = RUN.D, f = st.f, ion = R.r.ionic;
+  if (RUN.state === "setup") h = "One gas, one hexafluoride, one ionic solid. " + (isCustom() ? "Custom conditions are loaded — press <b>RUN WITH CUSTOM VALUES</b>." : "The question's conditions are loaded — press <b>START EXPERIMENT</b>.");
+  else if (RUN.done) h = R.complete ? "<span class=gd>Case closed.</span> X⁺ = O₂⁺ (bond order 2.5), Y⁻ = [PtF₆]⁻ (Pt⁵⁺, 5d⁵), PtF₆ was the oxidant, not a fluorinating agent — supported statements <b>" + optText(R.truth) + "</b>."
+    : "<span class=o>The question's reaction does not happen under these conditions.</span> Restore them to answer the question.";
+  else switch (st.name){
+    case "mix": h = f < 0.35 ? "<b>Input:</b> " + nm(D.gas) + " gas flows into a bulb of " + (D.ox === "PtF6" ? "deep-red PtF₆ vapour" : "F₂") + " at room temperature." : (ion ? "<b>Action:</b> wherever the two meet, an electron jumps — an orange-red crystalline solid settles out." : R.r.why); break;
+    case "xfer": h = f < 0.3 ? "<b>Why does it happen?</b> PtF₆ grabs electrons fiercely (electron affinity ≈ 7 eV). It can strip one from any species whose ionisation energy is below about 12.2 eV." : (ion ? "IE(" + nm(D.gas) + ") = " + GAS[D.gas].IE.toFixed(2) + " eV is inside that window — <b>one electron moves</b>: X⁺ = " + nm(R.r.X) + ", Y⁻ = [PtF₆]⁻." : "The electron is pulled back — " + R.r.why); break;
+    case "redox": h = "<b>Oxidation numbers:</b> Pt goes from +6 to +5 — PtF₆ has <b>gained</b> an electron, so it is reduced. A reduced species is the <b>oxidant</b>. <b>(C)</b> is checked."; break;
+    case "mo": h = f < 0.62 ? "<b>Molecular orbitals of " + nm(D.gas) + ":</b> " + R.gasMO.n + " electrons fill the levels from the bottom, one at a time, singly first in the degenerate π* pair (Hund)." : "The electron PtF₆ took is the <b>highest</b> one — it leaves an <b>antibonding</b> π* orbital."; break;
+    case "bo": h = "<b>Bond order</b> = (bonding − antibonding)/2 = (" + (R.xMO ? R.xMO.nb + " − " + R.xMO.na : "—") + ")/2 = <b>" + (R.xMO ? fmtBO(R.xMO.bo) : "—") + "</b>. Losing an antibonding electron makes the bond <b>stronger</b>; 1.5 would be superoxide O₂⁻. <b>(A)</b> fails."; break;
+    case "pt": h = "<b>Platinum:</b> [Xe]4f¹⁴5d⁹6s¹. Strip electrons — 6s goes first, then 5d. PtF₆ is Pt(+6), 5d⁴; the electron from " + nm(D.gas) + " makes it Pt(+5), <b>5d⁵</b>."; break;
+    case "dorb": h = "<b>d-orbitals of the metal ion:</b> in the octahedral [PtF₆]⁻ the five 5d electrons all sit in t₂g — <b>5 valence d-electrons</b>. <b>(B)</b> is checked."; break;
+    case "faud": h = "<b>Fluorine audit:</b> six F on Pt before, six after, none on oxygen. A fluorinating agent would hand F atoms over (like ClF₃ to uranium). Here only an electron moved. <b>(D)</b> fails."; break;
+    case "test": h = "<b>Option analysis:</b> each claim is checked against the evidence the lab collected — claim → evidence → verdict."; break;
+    case "answer": h = "<b>Analysis complete.</b> Combining the four verdicts…"; break;
+  }
+  $("narr").innerHTML = h;
+  var stn = { mix: 1, xfer: 1, redox: 2, mo: 3, bo: 3, pt: 4, dorb: 4, faud: 4 };
+  $("trialtag").textContent = stn[st.name] ? "station " + stn[st.name] + " of 4" : (RUN.done ? "case closed" : st.name === "idle" ? "station 1 of 4" : "analysis");
+  $("scenet").textContent = RUN.done ? "Experiment complete" : "Electron-transfer lab";
+}
+function updateReadouts(st){
+  var R = RUN.R, n = st.name, f = st.f, D = RUN.D, ion = R.r.ionic, idx = STAGE_ORDER.indexOf(n), past = function(s){ return RUN.done || (idx >= 0 && idx > STAGE_ORDER.indexOf(s)); };
+  var station = { mix: "1 · reaction bulb", xfer: "1 · electron transfer", redox: "2 · redox", mo: "3 · MO diagram", bo: "3 · bond order", pt: "4 · Pt electrons", dorb: "4 · d-orbitals", faud: "4 · fluorine audit", test: "analysis board", answer: "analysis board" };
+  $("g_st").textContent = station[n] || "—";
+  $("g_rs").textContent = n === "idle" ? "standby" : RUN.done ? "complete" : ion ? (n === "mix" && f < 0.45 ? "mixing" : "ionic solid formed") : "no reaction";
+  $("g_e").textContent = n === "idle" ? "—" : ion && (past("xfer") || (n === "xfer" && f > 0.65)) ? "1 per pair" : (n === "mix" || n === "xfer" ? "0" : ion ? "1 per pair" : "0");
+  $("g_ie").textContent = n === "idle" ? "—" : GAS[D.gas].IE.toFixed(2) + " eV";
+  $("g_pr").textContent = RUN.done ? 100 : Math.round(100 * elapsed() / TOTAL);
+  $("g_prod").textContent = ion && (past("mix") || (n === "mix" && f > 0.6)) ? nm(R.r.X) + "[PtF₆]⁻" : (n === "idle" ? "—" : ion ? "forming…" : "none");
+  $("g_bo").textContent = ion && (past("bo") || (n === "bo" && f > 0.3)) ? fmtBO(R.xMO.bo) : "—";
+  $("g_d").textContent = ion && (past("dorb") || (n === "dorb" && f > 0.6)) ? "5d" + sup(R.pt5.d) : "—";
+  $("g_f").textContent = ion && (past("faud") || (n === "faud" && f > 0.4)) ? R.audit.onPtAfter + " / " + R.audit.onGasAfter : "—";
+  var sup2 = []; ["A", "B", "C", "D"].forEach(function(k){ if (RUN.cards[k] && RUN.cards[k].v === true) sup2.push(k); });
+  $("g_v").textContent = sup2.length ? optText(sup2) : "—";
+  $("gz_v").classList.toggle("hot", RUN.done && RUN.R.complete);
+}
+function refreshUI(){
+  var go = $("gobtn"), runn = RUN.state === "running", custom = isCustom();
+  go.hidden = false; go.disabled = runn; go.classList.toggle("custom", custom && !runn);
+  if (runn) go.innerHTML = "● RUNNING…";
+  else if (RUN.state === "done"){ go.innerHTML = "⚙&nbsp; RUN WITH CUSTOM VALUES"; go.hidden = sameD(RUN.D, copyST()); }
+  else go.innerHTML = custom ? "⚙&nbsp; RUN WITH CUSTOM VALUES" : "▶&nbsp; START EXPERIMENT";
+  $("pausebtn").disabled = !runn; $("pausebtn").textContent = RUN.paused ? "Play" : "Pause";
+  $("replaybtn").hidden = RUN.state !== "done";
+  var s = $("status"); s.className = "status" + (custom ? " custom" : "");
+  s.textContent = custom ? "⚙ USING CUSTOM VALUES" : "✓ QUESTION VALUES LOADED";
+  var q = document.querySelectorAll("#fields select, #resetq"), i; for (i = 0; i < q.length; i++) q[i].disabled = runn;
+  $("gomsg").innerHTML = runn ? "The investigation runs by itself — nothing to click. <b>Pause</b> any time." : RUN.state === "done" ? "Press <b>REPLAY</b> to watch it again, or change a condition and run a custom experiment." : (custom ? "Your conditions will be used; the lab will say if the question's pathway no longer applies." : "Nothing needs to be chosen. Press <b>START EXPERIMENT</b>.");
+  refreshStatus();
+}
+
+/* =====================================================================
+   electron explorer - MO diagrams you build, and platinum's d-count
+   ===================================================================== */
+var XP = { m: "O2", q: 0, cmp: false, pox: 5 };
+function xSpecies(){ return speciesKey(XP.m, XP.q); }
+function drawExplorer(){
+  var c = $("mol"), g = c.getContext("2d"), mo = fillMO(electronsOf(XP.m, XP.q));
+  g.clearRect(0, 0, c.width, c.height);
+  var bg = g.createLinearGradient(0, 0, 0, c.height); bg.addColorStop(0, "#0b1120"); bg.addColorStop(1, "#070a12"); g.fillStyle = bg; g.fillRect(0, 0, c.width, c.height);
+  if (XP.cmp && XP.q !== 0){
+    var m0 = fillMO(electronsOf(XP.m, 0));
+    drawMO(g, m0, 30, 40, 320, 380, { compact: true }); drawMO(g, mo, 370, 40, 320, 380, { compact: true });
+    label(g, nm(XP.m) + " · BO " + fmtBO(m0.bo), 190, 440, "#e6eeff", 16, "center", 900);
+    label(g, nm(xSpecies()) + " · BO " + fmtBO(mo.bo), 530, 440, "#ff9350", 16, "center", 900);
+  } else {
+    drawMO(g, mo, 110, 20, 500, 400, {});
+    label(g, nm(xSpecies()) + "  ·  " + mo.n + " e⁻  ·  bond order " + fmtBO(mo.bo), 360, 440, "#e6eeff", 17, "center", 900);
+  }
+  var d = $("dcv"), h = d.getContext("2d"), P = ptIon(XP.pox);
+  h.clearRect(0, 0, d.width, d.height); h.fillStyle = "#0b1120"; h.fillRect(0, 0, d.width, d.height);
+  drawDsplit(h, 0, 10, 440, P.d, { h: 170, bw: 52 });
+}
+function showInfo(){
+  var mo = fillMO(electronsOf(XP.m, XP.q)), key = xSpecies();
+  $("x_species").textContent = nm(key);
+  $("xinfo").innerHTML = "<h3>" + nm(key) + "</h3><table><tr><th>Electrons</th><td>" + mo.n + "</td></tr><tr><th>Bonding / antibonding</th><td>" + mo.nb + " / " + mo.na
+    + "</td></tr><tr><th>Bond order</th><td><b>" + fmtBO(mo.bo) + "</b></td></tr><tr><th>Unpaired electrons</th><td>" + mo.unpaired + " (" + (mo.unpaired ? "paramagnetic" : "diamagnetic") + ")</td></tr><tr><th>Bond length (measured)</th><td>"
+    + (BOND[key] ? BOND[key] + " pm" : "—") + "</td></tr></table><p style='font-size:13px;color:var(--text-secondary);margin-top:8px'>" + (mo.bo === 1.5 ? "Bond order 1.5 — this is the value option (A) claims for X⁺." : key === "O2+" ? "This is X⁺ in the question: bond order 2.5." : "Remove or add electrons to walk through the family.") + "</p>";
+  var P = ptIon(XP.pox);
+  $("p_ox").textContent = "Pt(" + (XP.pox > 0 ? "+" : "") + XP.pox + ")";
+  $("pinfo").innerHTML = P.config + " &nbsp;·&nbsp; <b>" + P.d + " d-electrons</b> (t₂g" + sup(P.t2g) + (P.eg ? " e<sub>g</sub>" + sup(P.eg) : "") + ", " + P.unpaired + " unpaired)" + (XP.pox === 5 ? " — the metal ion in [PtF₆]⁻" : XP.pox === 6 ? " — the metal in PtF₆" : "");
+}
+function pickMol(m, q, cmp){
+  XP.m = m; XP.q = q || 0; XP.cmp = !!cmp;
+  var b = document.querySelectorAll(".xpick button"), i; for (i = 0; i < b.length; i++) b[i].setAttribute("aria-pressed", b[i].getAttribute("data-m") === m ? "true" : "false");
+  $("x_cmp").setAttribute("aria-pressed", XP.cmp ? "true" : "false");
+  showInfo();
+}
+function wireExplorer(){
+  var b = document.querySelectorAll(".xpick button"), i;
+  for (i = 0; i < b.length; i++) b[i].addEventListener("click", function(){ pickMol(this.getAttribute("data-m"), 0, XP.cmp); });
+  $("x_minus").addEventListener("click", function(){ if (XP.q < 2){ XP.q++; showInfo(); } });
+  $("x_plus").addEventListener("click", function(){ if (XP.q > -2){ XP.q--; showInfo(); } });
+  $("x_cmp").addEventListener("click", function(){ XP.cmp = !XP.cmp; this.setAttribute("aria-pressed", XP.cmp ? "true" : "false"); });
+  $("p_minus").addEventListener("click", function(){ if (XP.pox > 0){ XP.pox--; showInfo(); } });
+  $("p_plus").addEventListener("click", function(){ if (XP.pox < 6){ XP.pox++; showInfo(); } });
+  $("mol").addEventListener("keydown", function(e){ if (e.key === "ArrowUp" || e.key === "+"){ $("x_plus").click(); e.preventDefault(); } else if (e.key === "ArrowDown" || e.key === "-"){ $("x_minus").click(); e.preventDefault(); } });
+  pickMol("O2", 1, false);
+}
+
+/* =====================================================================
+   the answer reveal - EUREKA
+   ===================================================================== */
+function blink(id){ var e = $(id); if (!e) return; e.classList.remove("blink"); void e.offsetWidth; e.classList.add("blink"); setTimeout(function(){ e.classList.remove("blink"); }, 2300); }
+function doReveal(){
+  if (!RUN.done){ earlyReveal = true; refreshGate(); return; }
+  var lab = $("lab3d");
+  lab.classList.add("dim"); $("blackout").classList.add("on");
+  setTimeout(function(){
+    $("blackout").classList.remove("on"); $("donebanner").classList.remove("on");
+    if (!REDUCED){ var f = $("flashout"); f.classList.remove("go"); void f.offsetWidth; f.classList.add("go"); lab.classList.remove("zoom"); void lab.offsetWidth; lab.classList.add("zoom"); }
+    RUN.revealed = true;
+    mountReveal(); refreshGate();
+    var ab = $("answerbox"); ab.classList.remove("celebrate"); void ab.offsetWidth; ab.classList.add("celebrate");
+    setTimeout(function(){ ab.classList.remove("celebrate"); }, 3200);
+    blink("ansval"); blink("grafT"); blink("g_v");
+    setTimeout(function(){ lab.classList.remove("dim"); }, 5200);
+  }, 950);
+}
+function mountReveal(){
+  var host = $("revealhost"), R = RUN.R, ok = R.complete, ion = R.r.ionic;
+  host.innerHTML = ""; host.classList.add("on");
+  var main = ok ? optText(R.truth) : (ion ? "CUSTOM RUN" : "NO REACTION");
+  var svg = mk("svg", { viewBox: "0 0 720 380", "class": "graf", role: "img", "aria-label": (ok ? "Congratulations. Answer found: correct options " : "") + main }, host);
+  var d = mk("defs", {}, svg), sp = mk("filter", { id: "spray", x: "-14%", y: "-40%", width: "128%", height: "180%" }, d);
+  mk("feTurbulence", { type: "fractalNoise", baseFrequency: "0.045 0.09", numOctaves: "3", seed: "7", result: "nz" }, sp);
+  mk("feDisplacementMap", { "in": "SourceGraphic", in2: "nz", scale: "6", xChannelSelector: "R", yChannelSelector: "G" }, sp);
+  var bh = mk("g", {}, svg);
+  if (ok){
+    var gr = [["CHEMISTRY MASTER!", 118, 26, -6, "#ff9350"], ["EUREKA!", 628, 30, 8, "#a99bff"], ["CORRECT!", 84, 190, -12, "#3ee39a"], ["X⁺ = O₂⁺", 110, 348, -6, "#ffae5a"], ["BO = 2.5", 360, 364, 3, "#ffc450"], ["Pt⁵⁺ 5d⁵", 610, 348, 7, "#9fd0ff"]], i;
+    for (i = 0; i < gr.length; i++) tx(svg, gr[i][1], gr[i][2], gr[i][0], { "text-anchor": "middle", "font-size": 22, "font-weight": 900, fill: gr[i][4], opacity: 0.85, transform: "rotate(" + gr[i][3] + " " + gr[i][1] + " " + gr[i][2] + ")", filter: "url(#spray)", "font-family": "ui-rounded,'Comic Sans MS','Marker Felt',cursive" });
+  }
+  tx(svg, 360, 58, ok ? "🎉  ANSWER FOUND!  🎉" : ion ? "NOT THE QUESTION'S REACTION" : "THE QUESTION'S REACTION DOES NOT HAPPEN", { "text-anchor": "middle", "font-size": ok ? 22 : 17, "font-weight": 900, fill: ok ? "#3ee39a" : "#ffb4b4", "letter-spacing": "2" });
+  tx(svg, 360, 86, ok ? "CONGRATULATIONS!" : "restore the question conditions", { "text-anchor": "middle", "font-size": 13, "font-weight": 800, fill: "#9fb0cc", "letter-spacing": "5" });
+  mk("rect", { x: 170, y: 104, width: 380, height: 150, rx: 16, fill: "rgba(8,20,16,.72)", stroke: ok ? "#3ee39a" : "#ff6b6b", "stroke-width": 2 }, svg);
+  tx(svg, 360, 128, ok ? "CORRECT OPTIONS" : "PATHWAY CHANGED", { "text-anchor": "middle", "font-size": 12, "font-weight": 800, fill: "#9ff0c9", "letter-spacing": "6" });
+  var gg = mk("g", { transform: "translate(360,206) skewX(-9)" }, svg), fs = ok ? 60 : 40;
+  tx(gg, 7, 9, main, { "text-anchor": "middle", "font-size": fs, "font-weight": 900, fill: "#a99bff", opacity: 0.34, filter: "url(#spray)" });
+  tx(gg, 0, 0, main, { id: "grafT", "text-anchor": "middle", "font-size": fs, "font-weight": 900, fill: ok ? "#3ee39a" : "#ffb4b4", filter: "url(#spray)" });
+  tx(svg, 360, 284, ok ? "You followed the electron and cracked X⁺Y⁻." : ion ? "With " + nm(RUN.D.gas) + " the salt is " + nm(R.r.X) + "[PtF₆]⁻ (bond order " + fmtBO(R.xMO.bo) + ") — not the question's O₂⁺." : "No ionic compound X⁺Y⁻ forms under your conditions.", { "text-anchor": "middle", "font-size": 15, "font-weight": 700, fill: "#eef3ff" });
+  tx(svg, 360, 306, ion ? "X⁺ = " + nm(R.r.X) + "  ·  Y⁻ = [PtF₆]⁻  ·  Pt +5, 5d⁵" : R.r.eq, { "text-anchor": "middle", "font-size": 14, fill: "#9fb0cc" });
+  if (!REDUCED && ok) makeBurst(bh);
+}
+function makeBurst(host){
+  burst = [];
+  var i, n = 90, GL = ["e⁻", "O₂⁺", "Pt", "F", "✦", "●", "◆", "✓"], a, sp2, conf, node, cols = ["#3ee39a", "#a99bff", "#54a9ff", "#ff9350", "#c8e04a"];
+  for (i = 0; i < n; i++){
+    a = Math.random() * Math.PI * 2; sp2 = 90 + Math.random() * 300; conf = i % 3 === 0;
+    node = conf ? mk("rect", { x: -4, y: -3, width: 8, height: 6, rx: 1.5, fill: cols[i % 5] }, host) : tx(host, 0, 0, GL[i % GL.length], { "text-anchor": "middle", "font-size": 11 + Math.random() * 8, fill: cols[i % 5], "font-weight": 800 });
+    burst.push({ n: node, x: 360, y: 190, vx: Math.cos(a) * sp2, vy: Math.sin(a) * sp2 - 70, life: 0, max: 1.6 + Math.random() * 1.2, rot: Math.random() * 360, vr: (Math.random() - 0.5) * 540 });
+  }
+}
+function stepBurst(dt){
+  var i, b;
+  for (i = 0; i < burst.length; i++){
+    b = burst[i]; if (b.life > b.max){ b.n.setAttribute("opacity", 0); continue; }
+    b.life += dt; b.vy += 420 * dt; b.x += b.vx * dt; b.y += b.vy * dt; b.rot += b.vr * dt;
+    b.n.setAttribute("opacity", Math.max(0, 1 - b.life / b.max).toFixed(2));
+    b.n.setAttribute("transform", "translate(" + b.x.toFixed(1) + "," + b.y.toFixed(1) + ") rotate(" + b.rot.toFixed(0) + ")");
+  }
+}
+function refreshGate(){
+  var open = RUN.revealed || earlyReveal, ab = $("answerbox"), i, li, k;
+  $("solgate").hidden = open; $("solbody").hidden = !open;
+  if (open){
+    ab.classList.remove("locked", "work");
+    $("ansval").textContent = ANS;
+    $("anssub").textContent = "X⁺ = O₂⁺ · Y⁻ = [PtF₆]⁻";
+    $("apbar").style.width = "100%";
+    $("revealnow").hidden = true;
+    $("solans").textContent = ANS; $("clsans").textContent = ANS + " — X⁺ = O₂⁺ (bond order 2.5), Y⁻ = [PtF₆]⁻ (Pt⁵⁺, 5d⁵)";
+    $("solintro").innerHTML = RUN.revealed ? "<b>The lab found this.</b> Here is the same reasoning on paper — each step points back to what you watched." : "Revealed early — run the experiment to watch each of these steps happen.";
+  } else {
+    $("revealnow").hidden = false; $("solans").textContent = "—"; $("clsans").textContent = "— run the experiment";
+    $("solintro").textContent = "Run the experiment — the solution opens with the answer.";
+    refreshAnswerBox();
+  }
+  var lis = document.querySelectorAll("#opts li");
+  for (i = 0; i < lis.length; i++){
+    li = lis[i]; k = li.getAttribute("data-k"); li.classList.remove("correct", "wrong"); li.querySelector(".mark").textContent = "";
+    if (open){ var tru = QTRUE.indexOf(k) >= 0; li.classList.add(tru ? "correct" : "wrong"); li.querySelector(".mark").textContent = tru ? "correct" : "not correct"; }
+  }
+}
+
+/* =====================================================================
+   the loop - one virtual clock, so Pause and speed govern everything
+   ===================================================================== */
+var last = 0, slow = 0;
+function loop(ts){
+  var dt = last ? (ts - last) / 1000 : 0; last = ts;
+  if (dt > 0.06) dt = 0.06;
+  var running = RUN.state === "running" && !RUN.paused;
+  if (running) stepTimeline(dt * RUN.speed);
+  if (!RUN.paused) clock += dt * (running ? RUN.speed : 1) * (REDUCED ? 0.3 : 1);
+  var st = currentState(); NOW = st;
+  drawLab(st);
+  drawExplorer();
+  if (burst.length) stepBurst(dt);
+  slow += dt;
+  if (slow > 0.08){ slow = 0; updateReadouts(st); narrate(st); refreshStatus(); if (!RUN.revealed && !earlyReveal) refreshAnswerBox(); }
+  requestAnimationFrame(loop);
+}
+
+/* =====================================================================
+   wiring
+   ===================================================================== */
+function afterEdit(){ readAll(); if (RUN.state === "setup"){ RUN.D = copyST(); RUN.R = run(RUN.D); } refreshUI(); }
+function toggleClassroom(){
+  RUN.classroom = !RUN.classroom;
+  document.body.classList.toggle("classroom", RUN.classroom);
+  $("classbtn").setAttribute("aria-pressed", RUN.classroom ? "true" : "false");
+  $("classbtn").textContent = RUN.classroom ? "EXIT CLASSROOM MODE" : "CLASSROOM MODE";
+  if (RUN.classroom) try { $("deck").scrollIntoView({ behavior: REDUCED ? "auto" : "smooth", block: "start" }); } catch (e) {}
+}
+function build(){
+  $("fields").innerHTML = fieldsHTML();
+  var i;
+  for (i = 0; i < FIELDS.length; i++) $("in_" + FIELDS[i].k).addEventListener("change", afterEdit);
+  $("resetq").addEventListener("click", resetAll);
+  $("gobtn").addEventListener("click", function(){ if (RUN.state !== "running") startRun(); });
+  $("pausebtn").addEventListener("click", function(){ RUN.paused = !RUN.paused; refreshUI(); });
+  $("replaybtn").addEventListener("click", function(){ startRun(RUN.D); });
+  $("resetbtn").addEventListener("click", resetAll);
+  $("classbtn").addEventListener("click", toggleClassroom);
+  $("revealnow").addEventListener("click", function(){ earlyReveal = true; refreshGate(); });
+  $("gotolab").addEventListener("click", function(){ $("lab").scrollIntoView({ behavior: REDUCED ? "auto" : "smooth" }); });
+  var tg = function(id, key){ $(id).addEventListener("click", function(){ SHOW[key] = !SHOW[key]; this.setAttribute("aria-pressed", SHOW[key] ? "true" : "false"); }); };
+  tg("t_eq", "eq"); tg("t_obs", "obs"); tg("t_why", "why");
+  $("t_cmp").addEventListener("click", function(){ pickMol("O2", 1, true); $("explorer").scrollIntoView({ behavior: REDUCED ? "auto" : "smooth" }); });
+  $("t_rot").addEventListener("click", function(){ $("explorer").scrollIntoView({ behavior: REDUCED ? "auto" : "smooth" }); $("mol").focus(); });
+  var sb = document.querySelectorAll("#spd button");
+  for (i = 0; i < sb.length; i++) sb[i].addEventListener("click", function(){
+    RUN.speed = parseFloat(this.getAttribute("data-s"));
+    for (var j = 0; j < sb.length; j++) sb[j].setAttribute("aria-pressed", sb[j] === this ? "true" : "false");
+  });
+  $("themebtn").addEventListener("click", function(){
+    var r = document.documentElement, dark = r.getAttribute("data-theme") === "dark" || (!r.getAttribute("data-theme") && matchMedia("(prefers-color-scheme: dark)").matches);
+    r.setAttribute("data-theme", dark ? "light" : "dark");
+  });
+  wireExplorer();
+  readAll(); drawLog(); refreshGate(); refreshUI(); refreshAnswerBox();
+  requestAnimationFrame(loop);
+}
+if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", build); else build();
+
+/* exposed for the headless test harness */
+window.PX = {
+  Q: Q, ST: ST, RUN: RUN, run: run, evaluate: evaluate, fillMO: fillMO, electronsOf: electronsOf, ptIon: ptIon, react: react,
+  answer: function(){ return ANS; }, qtrue: function(){ return QTRUE; }, qrun: function(){ return QRUN; },
+  start: function(){ startRun(); }, replay: function(){ startRun(RUN.D); }, reset: resetAll,
+  pause: function(){ RUN.paused = !RUN.paused; refreshUI(); }, speed: function(s){ RUN.speed = s; },
+  setField: function(k, v){ $("in_" + k).value = v; afterEdit(); },
+  stage: stageKey, cards: function(){ return RUN.cards; }, found: function(){ return RUN.found; }, badges: function(){ return RUN.badges; },
+  calcKeys: calcKeys, now: function(){ return NOW; }, explorer: XP, pickMol: pickMol
+};
+})();
+</script>
+</body>
+</html>

@@ -36,7 +36,7 @@ const ok=(l,c,x)=>{n++;if(!c)bad++;console.log((c?'PASS  ':'FAIL  ')+l+(x!==unde
   const c1 = await b.newContext({viewport:{width:1280,height:900}});
   const w1 = await c1.newPage();
   await w1.goto(S,{waitUntil:'networkidle'});
-  const before = await w1.evaluate(()=>document.querySelectorAll('article.card').length);
+  const before = await w1.evaluate(()=>{ const n=document.querySelectorAll('article.card').length, m=(document.body.innerText.match(/\((\d+) left\)/)||[0,0])[1]; return n + (+m); });
   ok('website shows ' + NSIMS, before===NSIMS, before);
   const a1 = await (await b.newContext({viewport:{width:390,height:844}})).newPage();
   await a1.goto(A,{waitUntil:'networkidle'}); await sleep(1200);
@@ -61,7 +61,8 @@ const ok=(l,c,x)=>{n++;if(!c)bad++;console.log((c?'PASS  ':'FAIL  ')+l+(x!==unde
   w2.on('console',m=>{if(m.type()==='error')errs.push(m.text());});
   w2.on('response',r=>{ if(r.status()>=400) errs.push(r.status()+' '+r.url()); });
   await w2.goto(S,{waitUntil:'networkidle'});
-  const after = await w2.evaluate(()=>document.querySelectorAll('article.card').length);
+  /* the grid draws 24 cards per batch; the rest wait behind "Show N more (M left)" */
+  const after = await w2.evaluate(()=>{ const n=document.querySelectorAll('article.card').length, m=(document.body.innerText.match(/\((\d+) left\)/)||[0,0])[1]; return n + (+m); });
   ok('WEBSITE picks it up with no code change', after===NSIMS + 1, after);
   await w2.fill('#q','propagation'); await sleep(1000);
   const found = await w2.evaluate(()=>[...document.querySelectorAll('article.card h3')].map(h=>h.textContent));
