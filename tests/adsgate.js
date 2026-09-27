@@ -220,8 +220,11 @@ const STUB = () => {
   ok('and stores nothing on the device', !/localStorage|indexedDB|Preferences/.test(src));
   const siteIdx = fs.readFileSync(ROOT + '/index.html', 'utf8');
   const siteJs  = fs.readFileSync(ROOT + '/site/site.js', 'utf8');
-  ok('the website carries no ads: nothing was added to site/',
-     siteIdx.indexOf('ads.js') < 0 && !/AdMob|adsbygoogle/i.test(siteJs + siteIdx));
+  /* the only thing from Google ads the website may carry is the AdSense verification loader in <head> */
+  const ADSENSE = '<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3980851000523907"\n     crossorigin="anonymous"></script>';
+  ok('the website carries no AdMob and no ad units - only the one AdSense loader in <head>',
+     siteIdx.indexOf('ads.js') < 0 && !/AdMob|adsbygoogle/i.test(siteJs + siteIdx.replace(ADSENSE, ''))
+     && siteIdx.split('</head>')[0].indexOf(ADSENSE) >= 0 && siteIdx.split('adsbygoogle.js').length === 2);
   const walk = d => fs.readdirSync(d, { withFileTypes: true }).reduce((a, e) =>
     a.concat(e.isDirectory() ? walk(d + '/' + e.name) : [d + '/' + e.name]), []);
   const simFiles = walk(ROOT + '/simulations').filter(f => /\.html$/.test(f));

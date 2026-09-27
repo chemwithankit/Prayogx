@@ -383,8 +383,15 @@ else:
 #    off the website is the website never loading it.
 site_index = open(os.path.join(ROOT, "index.html"), encoding="utf-8").read()
 site_js_txt = open(os.path.join(ROOT, "site/site.js"), encoding="utf-8").read()
+# The website may carry exactly one thing from Google ads: the AdSense site-verification
+# loader in index.html's <head> (publisher ca-pub-3980851000523907). Nothing from the
+# app's AdMob banner, no ad units, and nothing in site.js.
+ADSENSE_LOADER = ('<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js'
+                  '?client=ca-pub-3980851000523907"\n     crossorigin="anonymous"></script>')
+site_head = site_index.split("</head>")[0]
+site_index_wo_loader = site_index.replace(ADSENSE_LOADER, "", 1)
 web_is_clean = ("ads.js" not in site_index and
-                not re.search(r"AdMob|adsbygoogle", site_index + site_js_txt, re.I))
+                not re.search(r"AdMob|adsbygoogle", site_index_wo_loader + site_js_txt, re.I))
 if ads_on:
     ok("the banner is taken down for the viewer and never reaches the website",
        "PrayogXAds.hide()" in app_js and "PrayogXAds.show()" in app_js and
@@ -394,6 +401,12 @@ if ads_on:
 else:
     ok("no ad hooks are left behind now that the plugin is gone",
        "PrayogXAds" not in app_js and not os.path.exists(ads_js_path) and web_is_clean)
+
+ok("the website carries exactly one AdSense loader, in <head>, with the right publisher ID",
+   site_index.count("adsbygoogle.js") == 1 and ADSENSE_LOADER in site_head and
+   site_index.count("ca-pub-") == 1 and "ca-pub-3980851000523907" in site_index and
+   "<ins class=\"adsbygoogle\"" not in site_index,
+   "loaders: %d" % site_index.count("adsbygoogle.js"))
 
 # ------------------------------------------------ deployment hygiene
 ok("papers/ is gitignored", "papers/" in open(os.path.join(ROOT, ".gitignore"), encoding="utf-8").read())
