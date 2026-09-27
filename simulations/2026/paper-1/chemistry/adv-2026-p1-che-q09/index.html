@@ -1,0 +1,1480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Twin-Cylinder Pressure Lab — He/Ar mixtures, m₁/m₂ — JEE Advanced 2026 Paper 1 Q.9 | PrayogX</title>
+<meta name="description" content="A virtual gas lab: two piston cylinders hold He and Ar with their masses swapped. Convert every mass to moles, apply PV = nRT at equal volume and temperature, and let the lab solve for the mass ratio m1/m2 that makes the first pressure five times the second.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232a78d6'/%3E%3Cpath d='M12.5 6.5h7M13.6 6.5v7.2L7.9 24.1a1.5 1.5 0 0 0 1.3 2.3h13.6a1.5 1.5 0 0 0 1.3-2.3l-5.7-10.4V6.5' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M10.6 20.6h10.8' stroke='white' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E">
+<meta name="sim-id" content="ADV-2026-P1-CHE-Q09">
+<style>
+:root{
+  color-scheme: light;
+  --surface-0:#f4f4f1; --surface-1:#fcfcfb; --surface-2:#ececea;
+  --line:#d9d9d4; --line-strong:#bcbcb5;
+  --text-primary:#0b0b0b; --text-secondary:#52514e; --text-muted:#77766f;
+  --s1:#2a78d6; --s2:#eb6834; --s3:#1baf7a; --s4:#4a3aa7;
+  --good:#00743f; --bad:#c0392b; --accent:#2a78d6;
+  --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+  --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --serif:ui-serif,Georgia,"Times New Roman",serif;
+  --radius:10px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  color-scheme: dark;
+  --surface-0:#111110; --surface-1:#1a1a19; --surface-2:#232322;
+  --line:#34342f; --line-strong:#4a4a44;
+  --text-primary:#ffffff; --text-secondary:#c3c2b7; --text-muted:#95948b;
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#9085e9;
+  --good:#3fae7a; --bad:#e66767; --accent:#3987e5;
+}}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --surface-0:#111110; --surface-1:#1a1a19; --surface-2:#232322;
+  --line:#34342f; --line-strong:#4a4a44;
+  --text-primary:#ffffff; --text-secondary:#c3c2b7; --text-muted:#95948b;
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#9085e9;
+  --good:#3fae7a; --bad:#e66767; --accent:#3987e5;
+}
+*{box-sizing:border-box}
+[hidden]{display:none !important}
+body{margin:0;background:var(--surface-0);color:var(--text-primary);font-family:var(--sans);
+  font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px 80px}
+
+/* ---------- header ---------- */
+header.top{border-bottom:1px solid var(--line);background:var(--surface-1)}
+.top-inner{max-width:1180px;margin:0 auto;padding:22px 20px 18px;position:relative;
+  display:flex;flex-wrap:wrap;gap:16px;align-items:flex-start;justify-content:space-between}
+.simid{font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--text-muted)}
+h1{font-size:23px;line-height:1.25;margin:6px 0 10px;font-weight:640;max-width:660px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-size:11.5px;padding:3px 9px;border:1px solid var(--line-strong);border-radius:999px;
+  color:var(--text-secondary);background:var(--surface-2);white-space:nowrap}
+.chip.k{border-color:var(--accent);color:var(--accent);background:transparent}
+.answerbox{border:1px solid var(--line-strong);border-radius:var(--radius);background:var(--surface-2);
+  padding:12px 16px;min-width:220px}
+.answerbox .lbl{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted)}
+.answerbox .val{font-family:var(--mono);font-size:25px;font-weight:600;color:var(--good);line-height:1.22}
+.answerbox .sub{font-size:12px;color:var(--text-secondary)}
+.answerbox.locked .val{color:var(--text-muted);font-size:17px;letter-spacing:.04em}
+.answerbox .rv{margin-top:6px;font-size:11px;background:none;border:none;padding:0;color:var(--accent);
+  cursor:pointer;text-decoration:underline;font-family:var(--sans)}
+.themebtn{position:absolute;top:14px;right:16px;border:1px solid var(--line-strong);background:var(--surface-2);
+  color:var(--text-secondary);border-radius:8px;padding:4px 9px;font-size:12px;cursor:pointer}
+.brandbar{display:flex;align-items:center;gap:8px;margin-bottom:9px}
+.brandbar .pxmark{width:21px;height:21px;flex:none;display:block}
+.brandbar .wm{font-size:13px;font-weight:800;letter-spacing:.17em;color:var(--text-secondary);line-height:1}
+.brandbar .wm i{font-style:normal;color:var(--accent)}
+
+nav.jump{position:sticky;top:0;z-index:20;background:var(--surface-0);border-bottom:1px solid var(--line);
+  padding:8px 0;margin-bottom:26px}
+nav.jump ul{max-width:1180px;margin:0 auto;padding:0 20px;list-style:none;display:flex;gap:4px;overflow-x:auto}
+nav.jump a{display:block;padding:5px 11px;border-radius:7px;font-size:13px;text-decoration:none;
+  color:var(--text-secondary);white-space:nowrap}
+nav.jump a:hover{background:var(--surface-2);color:var(--text-primary)}
+
+section{margin:0 0 42px;scroll-margin-top:56px}
+h2{font-size:17px;font-weight:640;margin:0 0 4px;display:flex;align-items:baseline;gap:9px;flex-wrap:wrap}
+h2 .n{font-family:var(--mono);font-size:12px;color:var(--text-muted);font-weight:400}
+h2 .vb{font-size:12px;color:var(--text-muted);font-weight:400}
+h2.big{font-size:20px;letter-spacing:.02em}
+.lede{color:var(--text-secondary);font-size:13.5px;margin:0 0 16px;max-width:78ch}
+.panel{background:var(--surface-1);border:1px solid var(--line);border-radius:var(--radius);padding:18px}
+.panel h3{margin:0 0 12px;font-size:13px;letter-spacing:.05em;text-transform:uppercase;color:var(--text-muted);font-weight:600}
+.qtext{font-family:var(--serif);font-size:16px;line-height:1.7}
+.opts{list-style:none;padding:0;margin:14px 0 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(150px,100%),1fr));gap:9px}
+.opts li{border:1px solid var(--line);border-radius:10px;padding:9px 12px;background:var(--surface-1);
+  display:flex;align-items:baseline;gap:10px;font-family:var(--serif);font-size:16px}
+.opts li .k{font-family:var(--mono);font-size:12.5px;color:var(--text-muted)}
+.opts li .mark{margin-left:auto;font-family:var(--sans);font-size:11.5px;font-weight:600}
+.opts li.correct{border-color:var(--good);background:color-mix(in srgb,var(--good) 11%,transparent)}
+.opts li.correct .mark{color:var(--good)}
+.opts li.wrong{border-color:var(--bad)} .opts li.wrong .mark{color:var(--bad)}
+.assume{border-left:3px solid var(--s4);padding:8px 0 8px 13px;margin:14px 0 0;font-size:13.5px;color:var(--text-secondary)}
+.assume b{color:var(--text-primary)}
+
+/* ---------- the dashboard ---------- */
+.deck{border:1px solid var(--line);border-radius:var(--radius);padding:14px;
+  background:linear-gradient(180deg,var(--surface-1),color-mix(in srgb,var(--surface-2) 55%,var(--surface-1)));
+  box-shadow:0 1px 2px rgba(0,0,0,.04),0 10px 26px -18px rgba(0,0,0,.35)}
+.statusbar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding-bottom:11px;border-bottom:1px solid var(--line);margin-bottom:12px}
+.xstat{display:flex;align-items:center;gap:8px;font-size:12.5px;font-weight:700;letter-spacing:.03em;
+  padding:5px 12px;border-radius:999px;border:1px solid var(--line-strong);background:var(--surface-1);color:var(--text-secondary)}
+.xstat .dot{width:9px;height:9px;border-radius:50%;background:var(--text-muted)}
+.xstat.run .dot{background:var(--accent);animation:pulse 1.2s ease-in-out infinite}
+.xstat.ana .dot{background:var(--s4);animation:pulse 1.2s ease-in-out infinite}
+.xstat.done{border-color:var(--good);color:var(--good);background:color-mix(in srgb,var(--good) 10%,transparent)}
+.xstat.done .dot{background:var(--good)}
+@keyframes pulse{50%{opacity:.25}}
+.stages{display:flex;gap:5px;flex-wrap:wrap}
+.stages span{font-size:11px;padding:3px 9px;border-radius:999px;border:1px solid var(--line);color:var(--text-muted);white-space:nowrap}
+.stages span.now{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:650}
+.stages span.done{border-color:var(--good);color:var(--good)}
+.statusbar .sp{flex:1}
+.guide{font-size:12px;color:var(--text-muted)}
+
+.grid1{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:13px;align-items:start}
+.grid2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:13px;margin-top:13px}
+.grid1>*,.grid2>*{min-width:0}
+@media(max-width:960px){.grid1,.grid2{grid-template-columns:1fr !important}}
+
+/* the always-dark chamber */
+.lab3d{position:relative;border-radius:12px;padding:12px;overflow:hidden;
+  background:radial-gradient(90% 70% at 18% 8%,rgba(84,169,255,.16),transparent 60%),
+    radial-gradient(80% 70% at 88% 92%,rgba(255,147,80,.12),transparent 62%),
+    linear-gradient(170deg,#0d1322 0%,#070a12 55%,#0a0e1a 100%);
+  border:1px solid rgba(150,180,255,.16);box-shadow:inset 0 1px 0 rgba(255,255,255,.07),0 18px 40px -26px rgba(0,0,0,.9);
+  color:#eef3ff}
+.lab3d:before{content:"";position:absolute;inset:0;pointer-events:none;
+  background:repeating-linear-gradient(0deg,rgba(255,255,255,.028) 0 1px,transparent 1px 3px);opacity:.5;mix-blend-mode:overlay}
+.lab3d>*{position:relative}
+.lab3d .hd{display:flex;align-items:baseline;gap:9px;flex-wrap:wrap;margin-bottom:5px}
+.lab3d .hd h3{margin:0;font-size:11.5px;letter-spacing:.11em;text-transform:uppercase;color:#8fa6c9;font-weight:700}
+.lab3d .hd .st{font-size:10.5px;font-family:var(--mono);color:#9fb0cc;border:1px solid rgba(160,190,255,.2);border-radius:999px;padding:1px 8px}
+.lab3d .narr{font-size:12.5px;color:#c3d2ea;margin:0 0 8px;min-height:2.8em;line-height:1.42}
+.lab3d .narr b{color:#fff;font-family:var(--mono);font-weight:650}
+.lab3d .narr .a{color:#6fb6ff;font-weight:700} .lab3d .narr .o{color:#ffa56a;font-weight:700}
+.lab3d .narr .gd{color:#3ee39a;font-weight:700}
+.vwrap{position:relative;perspective:1000px}
+canvas#labcv{display:block;width:100%;height:auto;border-radius:10px;transform:rotateX(2.5deg);transform-origin:50% 100%}
+@media(max-width:560px){.vwrap{overflow:hidden}canvas#labcv{width:128%;max-width:none;margin-left:-14%}}
+@media(prefers-reduced-motion:reduce){canvas#labcv{transform:none}}
+.done-banner{position:absolute;left:50%;top:14px;transform:translateX(-50%) scale(.92);opacity:0;pointer-events:none;
+  background:rgba(10,30,24,.8);border:1px solid rgba(62,227,154,.6);color:#dfffee;border-radius:12px;padding:8px 18px;
+  font-weight:800;letter-spacing:.1em;font-size:14px;box-shadow:0 0 28px -6px rgba(62,227,154,.7);transition:.45s;white-space:nowrap}
+.done-banner.on{opacity:1;transform:translateX(-50%) scale(1)}
+.revealhost{position:absolute;inset:0;display:none;align-items:center;justify-content:center;z-index:6}
+.revealhost.on{display:flex}
+svg.graf{display:block;width:100%;height:auto}
+.blackout{position:absolute;inset:0;background:#000;opacity:0;pointer-events:none;transition:opacity .45s;z-index:4;border-radius:12px}
+.blackout.on{opacity:.86}
+.flashout{position:absolute;inset:0;background:radial-gradient(circle at 50% 45%,rgba(255,255,255,.95),rgba(120,255,200,.5) 35%,transparent 70%);
+  opacity:0;pointer-events:none;z-index:5;border-radius:12px}
+@keyframes flashpop{0%{opacity:0}18%{opacity:1}100%{opacity:0}}
+.flashout.go{animation:flashpop .85s ease-out 1}
+@media(prefers-reduced-motion:reduce){.flashout.go{animation:none}.blackout{transition:none}}
+.dim canvas#labcv{filter:brightness(.4) saturate(.8)}
+@media(prefers-reduced-motion:no-preference){.zoom{animation:zoomin 1.1s ease-out 1}}
+@keyframes zoomin{0%{transform:scale(1)}40%{transform:scale(1.035)}100%{transform:scale(1)}}
+
+/* the rail: inputs + live data */
+.rail{border:1px solid var(--line);border-radius:12px;padding:11px 12px;
+  background:color-mix(in srgb,var(--surface-1) 82%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  box-shadow:inset 0 1px 0 color-mix(in srgb,#fff 40%,transparent),0 8px 24px -18px rgba(0,0,0,.4);
+  display:flex;flex-direction:column;gap:9px}
+.rail h4{margin:0;font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--text-muted);font-weight:700}
+.rail .grp{border-top:1px dashed var(--line);padding-top:9px}
+.status{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:750;letter-spacing:.04em;border-radius:8px;padding:6px 9px;
+  border:1px solid var(--good);color:var(--good);background:color-mix(in srgb,var(--good) 10%,transparent)}
+.status.custom{border-color:var(--s4);color:var(--s4);background:color-mix(in srgb,var(--s4) 10%,transparent)}
+.fld{margin:7px 0 0}
+.fld .lb{display:flex;justify-content:space-between;align-items:baseline;gap:6px;font-size:12px;margin-bottom:4px;color:var(--text-secondary)}
+.fld .lb b{font-weight:600;color:var(--text-primary);font-family:var(--serif);font-size:13.5px}
+.fld .lb .u{font-size:10.5px;color:var(--text-muted);font-family:var(--mono);flex:none}
+.fld .rw{display:flex;gap:5px;align-items:center}
+.fld .rw input{flex:1;min-width:0;padding:6px 8px;border-radius:7px;border:1px solid var(--line-strong);background:var(--surface-0);
+  color:var(--text-primary);font-family:var(--mono);font-size:13.5px;text-align:center;font-weight:600}
+.fld .rw input:focus{outline:2px solid var(--accent);outline-offset:-1px}
+.fld .rw input.bad{border-color:var(--bad);background:color-mix(in srgb,var(--bad) 10%,transparent)}
+.fld .rw input:disabled{opacity:.55}
+.fld .rw button{flex:none;width:34px;height:34px;border-radius:7px;border:1px solid var(--line-strong);background:var(--surface-2);
+  color:var(--text-primary);font-size:16px;line-height:1;cursor:pointer;font-family:var(--mono);touch-action:manipulation}
+.fld .rw button.rs{font-size:13px}
+.fld .rw button:hover:not(:disabled){border-color:var(--accent);color:var(--accent)}
+.fld .rw button:disabled{opacity:.4;cursor:not-allowed}
+.fld .fh{font-size:10.5px;color:var(--text-muted);margin-top:2px;line-height:1.35;min-height:1.35em}
+.fld .fh.bad{color:var(--bad);font-weight:650}
+.railnote{font-size:11px;color:var(--text-muted);line-height:1.45;margin:0}
+button.resetq{width:100%;padding:8px 10px;border-radius:9px;border:1px solid var(--line-strong);background:var(--surface-2);
+  color:var(--text-primary);font-size:12.5px;font-weight:650;cursor:pointer;font-family:var(--sans)}
+button.resetq:hover{border-color:var(--accent);color:var(--accent)}
+.gauges{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(104px,100%),1fr));gap:6px}
+.gz{border:1px solid var(--line);border-radius:9px;background:var(--surface-2);padding:5px 8px;overflow:hidden}
+.gz .k{font-size:9.5px;letter-spacing:.04em;text-transform:uppercase;color:var(--text-muted);font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.gz .v{font-family:var(--mono);font-size:16px;font-weight:700;line-height:1.25;white-space:nowrap}
+.gz .u{font-size:9.5px;color:var(--text-muted);font-weight:400}
+.gz.a .v{color:var(--s1)} .gz.o .v{color:var(--s2)}
+.gz.hot{border-color:var(--good);background:color-mix(in srgb,var(--good) 11%,transparent)} .gz.hot .v{color:var(--good)}
+
+/* graphs */
+.graphcard{border:1px solid var(--line);border-radius:12px;background:var(--surface-1);padding:12px 14px}
+.graphcard h4{margin:0 0 4px;font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--text-muted);font-weight:700}
+.graphcard .gsub{font-size:11.5px;color:var(--text-muted);margin:0 0 4px}
+.chartwrap{position:relative}
+svg.chart{display:block;width:100%;height:auto;overflow:visible}
+.tip{position:absolute;pointer-events:none;background:var(--surface-1);border:1px solid var(--line-strong);border-radius:8px;padding:7px 10px;
+  font-size:12px;box-shadow:0 4px 14px rgba(0,0,0,.13);opacity:0;transition:opacity .1s;z-index:5;min-width:140px}
+.tip .t{font-family:var(--mono);font-size:11px;color:var(--text-muted);margin-bottom:3px}
+.tip .r{display:flex;gap:7px;white-space:nowrap} .tip .rv{margin-left:auto;font-family:var(--mono);font-weight:600}
+details.tbl{margin-top:6px;font-size:12.5px} details.tbl summary{cursor:pointer;color:var(--text-secondary)}
+
+/* calculation panel */
+.calc{margin-top:13px;border:1px solid var(--line);border-radius:12px;padding:12px 14px;
+  background:linear-gradient(180deg,var(--surface-1),var(--surface-2))}
+.calc .bt{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--text-muted);font-weight:700;margin-bottom:6px}
+.calc ol{list-style:none;margin:0;padding:0;display:grid;gap:5px}
+.calc li{display:grid;grid-template-columns:auto minmax(0,1fr);gap:10px;align-items:baseline;animation:cin .45s ease-out}
+@keyframes cin{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.calc li{animation:none}}
+.calc li .s{font-family:var(--mono);font-size:10.5px;color:#fff;background:var(--accent);border-radius:999px;padding:1px 7px;font-weight:700}
+.calc li .m{font-family:var(--serif);font-size:16px;line-height:1.55;min-width:0;overflow-x:auto}
+.calc li .m .w{display:block;font-family:var(--sans);font-size:11.5px;color:var(--text-muted)}
+.calc li .m .hl{color:var(--good);font-weight:700}
+.calc li .m .ar{color:var(--s1);font-weight:700} .calc li .m .or{color:var(--s2);font-weight:700}
+.calc .empty{font-size:12.5px;color:var(--text-muted);margin:0}
+table.data{border-collapse:collapse;font-size:12.5px;width:100%}
+table.data th,table.data td{border:1px solid var(--line-strong);padding:5px 8px;text-align:center}
+table.data th{background:var(--surface-2);font-weight:600;font-size:11.5px;color:var(--text-secondary)}
+table.data td.n{font-family:var(--mono)}
+tr.win td{background:color-mix(in srgb,var(--good) 12%,transparent);font-weight:700}
+.scrollx{overflow-x:auto}
+
+/* action bar */
+.actbar{display:flex;gap:9px;align-items:center;flex-wrap:wrap;margin-top:12px}
+button.go{flex:none;padding:13px 24px;border-radius:11px;border:none;background:var(--accent);color:#fff;font-size:15px;font-weight:780;
+  cursor:pointer;font-family:var(--sans);letter-spacing:.04em;box-shadow:0 4px 16px -6px color-mix(in srgb,var(--accent) 75%,transparent);transition:.18s}
+button.go:hover:not(:disabled){filter:brightness(1.09);transform:translateY(-1px)}
+button.go:disabled{opacity:.42;cursor:not-allowed;box-shadow:none;transform:none}
+button.go.custom{background:var(--s4)}
+button.ghost{flex:none;padding:8px 13px;border-radius:9px;border:1px solid var(--line-strong);background:var(--surface-1);color:var(--text-secondary);
+  font-size:12.5px;cursor:pointer;font-family:var(--sans);min-height:36px}
+button.ghost:hover:not(:disabled){border-color:var(--accent);color:var(--accent)}
+button.ghost:disabled{opacity:.4;cursor:not-allowed}
+button.ghost[aria-pressed=true]{border-color:var(--accent);color:var(--accent);background:color-mix(in srgb,var(--accent) 10%,transparent)}
+.spd{display:flex;gap:4px}
+.spd button{padding:7px 10px;font-size:11.5px;border-radius:7px;border:1px solid var(--line-strong);background:var(--surface-1);color:var(--text-secondary);cursor:pointer;font-family:var(--mono)}
+.spd button[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:#fff}
+.actbar .msg{flex:1 1 220px;min-width:0;font-size:12px;color:var(--text-secondary);line-height:1.4}
+.actbar .msg b{color:var(--text-primary)}
+
+@keyframes popblink{0%{transform:scale(1)} 12%{transform:scale(1.16)} 24%{transform:scale(1)}
+  38%{opacity:.2} 50%{opacity:1} 64%{opacity:.2} 76%{opacity:1} 88%{transform:scale(1.07)} 100%{transform:scale(1);opacity:1}}
+.blink{animation:popblink 2s ease-in-out 1;display:inline-block}
+@keyframes ringpulse{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--good) 55%,transparent)} 70%{box-shadow:0 0 0 14px transparent} 100%{box-shadow:0 0 0 0 transparent}}
+.celebrate{animation:ringpulse 1.5s ease-out 2}
+@media(prefers-reduced-motion:reduce){.blink,.celebrate,.zoom{animation:none}}
+
+/* solution + help */
+.gate{border:1px dashed var(--line-strong);border-radius:var(--radius);padding:24px 20px;text-align:center;background:var(--surface-1)}
+.gate h4{margin:0 0 6px;font-size:15px} .gate p{margin:0 0 12px;font-size:13px;color:var(--text-secondary)}
+ol.steps{list-style:none;counter-reset:s;padding:0;margin:0;display:grid;gap:10px}
+ol.steps li{min-width:0;counter-increment:s;border:1px solid var(--line);border-radius:var(--radius);background:var(--surface-1);
+  padding:14px 16px 14px 52px;position:relative}
+ol.steps li::before{content:counter(s);position:absolute;left:15px;top:14px;width:23px;height:23px;border-radius:50%;background:var(--accent);
+  color:#fff;font-size:12px;font-weight:700;display:grid;place-items:center;font-family:var(--mono)}
+ol.steps h4{margin:0 0 6px;font-size:14px;font-weight:640}
+ol.steps p{margin:0 0 6px;font-size:13.5px;color:var(--text-secondary)}
+.eq{min-width:0;font-family:var(--serif);font-size:15.5px;background:var(--surface-2);border-radius:7px;padding:9px 13px;margin:8px 0;overflow-x:auto}
+.eq .hl{color:var(--good);font-weight:700}
+.obsnote{border-left:3px solid var(--s1);padding:6px 0 6px 12px;margin:8px 0;font-size:13px;color:var(--text-secondary)}
+.obsnote b{color:var(--text-primary)}
+sub{font-size:.72em} sup{font-size:.72em}
+.verify{border:1px solid var(--good);border-radius:var(--radius);margin-top:12px;background:color-mix(in srgb,var(--good) 8%,transparent);padding:14px 16px;font-size:13.5px}
+.verify h4{margin:0 0 6px;font-size:13.5px;color:var(--good)}
+.verify ul{margin:6px 0 0;padding-left:18px;color:var(--text-secondary)} .verify li{margin-bottom:4px}
+.howto{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(250px,100%),1fr));gap:11px}
+.howto>div{border:1px solid var(--line);border-radius:11px;padding:12px 14px;background:linear-gradient(180deg,var(--surface-1),var(--surface-2))}
+.howto .n{font-family:var(--mono);font-size:10.5px;color:var(--accent);letter-spacing:.1em;font-weight:700}
+.howto h4{margin:3px 0 6px;font-size:14px}
+.howto p{margin:0;font-size:13px;color:var(--text-secondary);line-height:1.5}
+.howto p b{color:var(--text-primary)}
+.meta-tbl{width:100%;border-collapse:collapse;font-size:13.5px}
+.meta-tbl th,.meta-tbl td{padding:6px 0;border-bottom:1px solid var(--line);vertical-align:top;text-align:left}
+.meta-tbl th{color:var(--text-muted);width:150px;font-size:12.5px;padding-right:14px;font-weight:500}
+footer{border-top:1px solid var(--line);margin-top:40px;padding-top:16px;font-size:12px;color:var(--text-muted)}
+
+/* classroom mode */
+body.classroom nav.jump,body.classroom section:not(#lab),body.classroom header.top .chips,body.classroom footer,
+body.classroom .rail .inputs,body.classroom .spd,body.classroom details.tbl,body.classroom #lab>.lede{display:none !important}
+body.classroom .wrap{max-width:none;padding-left:18px;padding-right:18px}
+body.classroom .lab3d .narr{font-size:20px;line-height:1.45;color:#e8f0ff}
+body.classroom .lab3d .hd h3{font-size:15px}
+body.classroom .gz .v{font-size:24px} body.classroom .gz .k{font-size:12px}
+body.classroom .calc li .m{font-size:25px} body.classroom .calc li .m .w{font-size:15px}
+body.classroom .xstat{font-size:16px} body.classroom .stages span{font-size:14px}
+body.classroom button.go{font-size:19px;padding:16px 30px}
+body.classroom .graphcard h4{font-size:13px}
+body.classroom .actbar .msg{font-size:15px}
+
+/* Q03 additions */
+.fgrid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0 8px}
+.fgrid>*{min-width:0}
+.fld .rw input{width:100%}
+.fgrid .fld.full{grid-column:1/-1}
+.fld.half .rw button.rs{display:none}
+.fld.half .fh{font-size:10px}
+.chem{font-family:var(--serif);white-space:nowrap}
+#opts{grid-template-columns:repeat(auto-fit,minmax(min(250px,100%),1fr))}
+#opts li{flex-wrap:wrap}
+@media(max-width:560px){.vwrap{overflow:visible}canvas#labcv{width:100%;margin-left:0}}
+.rankline{font-family:var(--serif);font-size:17px;font-weight:700}
+.legend{display:flex;flex-wrap:wrap;gap:4px 12px;font-size:11.5px;color:var(--text-secondary);margin:2px 0 4px}
+.legend i{display:inline-block;width:14px;height:3px;border-radius:2px;vertical-align:middle;margin-right:5px}
+.shapes{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(170px,100%),1fr));gap:9px;margin:8px 0}
+.shapes>div{border:1px solid var(--line);border-radius:9px;padding:9px 11px;background:var(--surface-1);font-size:13px;color:var(--text-secondary)}
+.shapes b{color:var(--text-primary);font-family:var(--serif);font-size:15px}
+
+/* Q06/Q07 additions */
+svg.scheme{display:block;width:100%;max-width:660px;height:auto;margin:6px 0 10px}
+.unk{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:12px 0 4px}
+.unk>div{border:1px dashed var(--line-strong);border-radius:11px;padding:9px 10px;text-align:center;background:var(--surface-2);transition:.4s}
+.unk .k{font-size:10.5px;letter-spacing:.1em;color:var(--text-muted);font-weight:800}
+.unk .v{font-family:var(--serif);font-size:24px;font-weight:700;line-height:1.25}
+.unk>div.found{border-style:solid;border-color:var(--good);background:color-mix(in srgb,var(--good) 10%,transparent)}
+.unk>div.found .v{color:var(--good)}
+.unk>div.warn{border-style:solid;border-color:var(--bad)}
+.apbar{height:6px;border-radius:99px;background:var(--line);overflow:hidden;margin-top:6px}
+.apbar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--good));transition:width .3s}
+.answerbox.work .val{color:var(--accent);font-size:15px;letter-spacing:.02em}
+.board{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(230px,100%),1fr));gap:10px;margin-top:13px}
+.ocard{border:1px solid var(--line);border-radius:12px;padding:11px 13px;background:linear-gradient(180deg,var(--surface-1),var(--surface-2));transition:.4s}
+.ocard .h{display:flex;gap:8px;align-items:baseline}
+.ocard .h b{font-family:var(--mono);color:var(--text-muted)}
+.ocard .claim{font-family:var(--serif);font-size:15px}
+.ocard .ev{font-size:12.5px;color:var(--text-secondary);margin:6px 0 0;min-height:2.6em}
+.ocard .vd{margin-top:7px;font-weight:800;font-size:13px;letter-spacing:.04em;color:var(--text-muted)}
+.ocard.now{border-color:var(--accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 22%,transparent)}
+.ocard.yes{border-color:var(--good)} .ocard.yes .vd{color:var(--good)}
+.ocard.no{border-color:var(--bad)} .ocard.no .vd{color:var(--bad)}
+.ocard.na .vd{color:var(--s4)}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.badge{display:flex;align-items:center;gap:7px;border:1px solid var(--line);border-radius:999px;padding:5px 12px 5px 7px;font-size:12.5px;color:var(--text-muted);background:var(--surface-1);opacity:.55;transition:.5s}
+.badge .ic{font-size:17px;filter:grayscale(1)}
+.badge.on{opacity:1;color:var(--text-primary);border-color:var(--good);background:color-mix(in srgb,var(--good) 9%,var(--surface-1))}
+.badge.on .ic{filter:none}
+@keyframes badgepop{0%{transform:scale(1)}35%{transform:scale(1.14)}100%{transform:scale(1)}}
+.badge.pop{animation:badgepop .7s ease-out 1}
+@media(prefers-reduced-motion:reduce){.badge.pop{animation:none}}
+.tools{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.tools button{padding:6px 11px;border-radius:8px;border:1px solid var(--line-strong);background:var(--surface-1);color:var(--text-secondary);font-size:12px;cursor:pointer;font-family:var(--sans);min-height:34px}
+.tools button[aria-pressed=true]{border-color:var(--accent);color:var(--accent);background:color-mix(in srgb,var(--accent) 10%,transparent)}
+.tools button:focus-visible,.explorer button:focus-visible,button:focus-visible,select:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.explorer{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:13px;align-items:start}
+@media(max-width:860px){.explorer{grid-template-columns:1fr}}
+.xview{position:relative;border-radius:12px;overflow:hidden;background:linear-gradient(170deg,#0d1322,#070a12);border:1px solid rgba(150,180,255,.16)}
+canvas#mol{display:block;width:100%;height:auto;touch-action:none;cursor:grab}
+.xpick{display:flex;flex-wrap:wrap;gap:6px}
+.xpick button{padding:7px 14px;border-radius:9px;border:1px solid var(--line-strong);background:var(--surface-1);color:var(--text-primary);font-family:var(--serif);font-size:15px;cursor:pointer;min-height:36px}
+.xpick button[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:#fff}
+.xinfo table{width:100%;border-collapse:collapse;font-size:13px;margin-top:8px}
+.xinfo th{text-align:left;color:var(--text-muted);font-weight:500;padding:5px 8px 5px 0;width:44%;border-bottom:1px solid var(--line)}
+.xinfo td{padding:5px 0;border-bottom:1px solid var(--line);font-weight:600}
+.cards4{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr));gap:10px}
+.cards4>div{border:1px solid var(--line);border-radius:12px;padding:13px 15px;background:linear-gradient(180deg,var(--surface-1),var(--surface-2))}
+.cards4 h4{margin:0 0 6px;font-size:14px} .cards4 p{margin:0 0 6px;font-size:13px;color:var(--text-secondary)}
+.cards4 .eq{font-size:14px}
+.warnbox{border:1px solid var(--bad);border-radius:9px;padding:8px 10px;font-size:12px;color:var(--bad);background:color-mix(in srgb,var(--bad) 8%,transparent);margin-top:8px}
+.selrow{margin:7px 0 0} .selrow label{display:block;font-size:12px;color:var(--text-secondary);margin-bottom:3px}
+select.sel{display:block;width:100%;min-width:0;min-height:40px;padding:8px 10px;font:inherit;font-size:14px;color:var(--text-primary);background:var(--surface-1);border:1px solid var(--line-strong);border-radius:8px}
+select.sel:disabled{opacity:.6}
+
+.optv{display:inline-block;min-width:54px;text-align:center;padding:1px 8px;border-radius:999px;font-size:11.5px;font-weight:750;border:1px solid var(--line-strong);color:var(--text-muted)}
+.optv.t{border-color:var(--good);color:var(--good)} .optv.f{border-color:var(--bad);color:var(--bad)}
+.unk.two{grid-template-columns:repeat(3,minmax(0,1fr))}
+.mobox{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:14px;align-items:start}
+@media(max-width:820px){.mobox{grid-template-columns:1fr}}
+.mobox>div{min-width:0} .mobox canvas{display:block;width:100%;height:auto;border-radius:10px}
+.chg{display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin-top:8px}
+.chg .q{font:800 15px var(--mono);min-width:90px;text-align:center}
+.unk.four{grid-template-columns:repeat(4,minmax(0,1fr))}
+@media(max-width:560px){.unk.four{grid-template-columns:repeat(2,minmax(0,1fr))}}
+canvas#schemecv{display:block;width:100%;max-width:760px;height:auto;border-radius:10px}
+.revealhost{overflow:hidden} .revealhost svg.graf{overflow:hidden}
+.unk.four>div{min-width:0} .unk.four .v{font-size:17px;overflow-wrap:anywhere}
+.chkrow{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.unk.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-inner">
+    <div>
+      <div class="brandbar"><svg class="pxmark" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><rect width="32" height="32" rx="8" fill="var(--accent)"/><path d="M12.5 6.5h7M13.6 6.5v7.2L7.9 24.1a1.5 1.5 0 0 0 1.3 2.3h13.6a1.5 1.5 0 0 0 1.3-2.3l-5.7-10.4V6.5" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.6 20.6h10.8" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg><span class="wm">PRAYOG<i>X</i></span></div>
+      <div class="simid">ADV-2026-P1-CHE-Q09</div>
+      <h1>Twin-Cylinder Pressure Lab — how heavy must m₁ be?</h1>
+      <div class="chips">
+        <span class="chip">JEE Advanced 2026</span>
+        <span class="chip">Paper 1 · Q.9</span>
+        <span class="chip">Chemistry</span>
+        <span class="chip">Gaseous state · ideal gas law · mixtures</span>
+        <span class="chip">Numerical value</span>
+        <span class="chip">+4 / 0</span>
+        <span class="chip k">Press start · watch it happen</span>
+      </div>
+    </div>
+    <div class="answerbox locked" id="answerbox" aria-live="polite">
+      <div class="lbl">Answer</div>
+      <div class="val" id="ansval">Investigating m₁/m₂…</div>
+      <div class="sub" id="anssub">The answer appears when the investigation finishes.</div>
+      <div class="apbar" aria-hidden="true"><i id="apbar"></i></div>
+      <button class="rv" id="revealnow" type="button">Reveal anyway</button>
+    </div>
+    <button class="themebtn" id="themebtn" type="button">◐ theme</button>
+  </div>
+</header>
+
+<nav class="jump">
+  <ul>
+    <li><a href="#question">Mission brief</a></li>
+    <li><a href="#lab">Interactive experiment</a></li>
+    <li><a href="#explorer">Pressure explorer</a></li>
+    <li><a href="#solution">Detailed solution</a></li>
+    <li><a href="#howto">How to use this simulation</a></li>
+  </ul>
+</nav>
+
+<div class="wrap">
+
+<section id="question">
+  <h2><span class="n">Q</span>Mission brief <span class="vb">— the question, verbatim</span></h2>
+  <p class="lede">JEE (Advanced) 2026, Paper 1, Chemistry, Section 3 — the answer is a numerical value, truncated or rounded to two
+     decimal places: +4 if only the correct value is entered, 0 in all other cases.</p>
+  <div class="panel">
+    <div class="qtext">
+      <p><b>Q.9</b>&nbsp; Two cylinders, both fitted with frictionless pistons, are filled with mixtures of He and Ar gases. In the first
+        cylinder, the masses of He and Ar are <i>m</i><sub>1</sub> and <i>m</i><sub>2</sub>, respectively. In the second cylinder, the masses of He and Ar are
+        <i>m</i><sub>2</sub> and <i>m</i><sub>1</sub>, respectively. The molar mass of Ar is 10 times the molar mass of He. The external pressure applied by the
+        piston on the first cylinder needs to be 5 times that on the second cylinder so that the volume of the gas mixtures in both the cylinders
+        are equal at the same temperature. Assuming He and Ar behave like ideal gases, the value of (<i>m</i><sub>1</sub>/<i>m</i><sub>2</sub>) is ____.</p>
+    </div>
+    <div class="unk three" id="unk" aria-live="polite">
+      <div id="u_A"><div class="k">MOLES, CYLINDER 1</div><div class="v">?</div></div>
+      <div id="u_B"><div class="k">MOLES, CYLINDER 2</div><div class="v">?</div></div>
+      <div id="u_R"><div class="k">m₁ / m₂</div><div class="v">?</div></div>
+    </div>
+    <div class="assume"><b>The mystery.</b> Both cylinders hold the same two masses, only swapped between the gases. Yet the first needs five
+      times the piston pressure to hold the same volume. A gram of He is ten times as many molecules as a gram of Ar — so how much bigger
+      than <i>m</i><sub>2</sub> must <i>m</i><sub>1</sub> be? The lab counts the molecules, pushes on the pistons and solves for the ratio.</div>
+  </div>
+</section>
+
+<section id="lab">
+  <h2 class="big"><span class="n">01</span>Interactive experiment</h2>
+  <p class="lede">Two cylinders, two gases, one unknown ratio. Press <b>START EXPERIMENT</b> — the whole investigation runs by itself:
+     load the masses → count the moles → apply PV = nRT → scan the ratio → lock the pistons → check → change the temperature → audit the traps → answer.</p>
+
+  <div class="deck" id="deck">
+    <div class="statusbar">
+      <span class="xstat" id="xstat"><span class="dot"></span><span id="xstattxt">Ready</span></span>
+      <div class="stages" id="stages">
+        <span data-s="load">01 Load</span><span data-s="moles">02 Mass → moles</span><span data-s="gas">03 PV = nRT</span>
+        <span data-s="scan">04 Scan the ratio</span><span data-s="lock">05 Lock the pistons</span><span data-s="check">06 Back-check</span>
+        <span data-s="temp">07 Temperature test</span><span data-s="test">08 Audit</span><span data-s="answer">09 Final answer</span>
+      </div>
+      <span class="sp"></span>
+      <span class="guide" id="guide">Set your values or use the question defaults.</span>
+    </div>
+
+    <div class="grid1">
+      <div class="lab3d" id="lab3d">
+        <div class="hd">
+          <h3 id="scenet">Twin-cylinder pressure lab</h3>
+          <span class="st" id="trialtag">step 1 of 7</span>
+        </div>
+        <p class="narr" id="narr" aria-live="polite">Two cylinders, swapped masses, one unknown ratio. The question's values are loaded —
+           press <b>START EXPERIMENT</b>.</p>
+        <div class="vwrap">
+          <canvas id="labcv" width="1040" height="620" role="img"
+                  aria-label="The virtual laboratory: two piston cylinders with He and Ar molecules, pressure gauges, the mole count, the ratio scan and the answer for the current stage"></canvas>
+          <div class="done-banner" id="donebanner">✓ EXPERIMENT COMPLETE</div>
+          <div class="revealhost" id="revealhost"></div>
+        </div>
+        <div class="blackout" id="blackout"></div>
+        <div class="flashout" id="flashout"></div>
+      </div>
+
+      <div class="rail" id="rail">
+        <div class="status" id="status">✓ QUESTION VALUES LOADED</div>
+        <div class="inputs">
+          <h4>Customize experiment — optional</h4>
+          <div id="fields"></div>
+          <div class="warnbox" id="condwarn" hidden></div>
+          <button class="resetq" id="resetq" type="button" style="margin-top:8px">↺ RESTORE QUESTION CONDITIONS</button>
+        </div>
+        <div class="grp">
+          <h4>Instrument panel</h4>
+          <div class="gauges" style="margin-top:6px">
+            <div class="gz"><div class="k">step</div><div class="v" id="g_st" style="font-size:13px">—</div></div>
+            <div class="gz o"><div class="k">temperature</div><div class="v" id="g_T" style="font-size:14px">—</div></div>
+            <div class="gz a"><div class="k">progress</div><div class="v"><span id="g_pr">0</span> <span class="u">%</span></div></div>
+            <div class="gz"><div class="k">trial m₁/m₂</div><div class="v" id="g_r" style="font-size:15px">—</div></div>
+            <div class="gz"><div class="k">n₁ (units m₂/10M)</div><div class="v" id="g_n1" style="font-size:14px">—</div></div>
+            <div class="gz"><div class="k">n₂ (units m₂/10M)</div><div class="v" id="g_n2" style="font-size:14px">—</div></div>
+            <div class="gz"><div class="k">P₁ / P₂</div><div class="v" id="g_p" style="font-size:15px">—</div></div>
+            <div class="gz"><div class="k">volumes</div><div class="v" id="g_vol" style="font-size:12.5px;white-space:normal;line-height:1.2">—</div></div>
+            <div class="gz" id="gz_v"><div class="k">m₁ / m₂</div><div class="v" id="g_v" style="font-size:15px">—</div></div>
+          </div>
+          <p class="railnote" style="margin-top:6px">Moles are shown in units of m₂/(10 M<sub>He</sub>), so the numbers stay simple: a mass m₂ of He counts 10, the same mass of Ar counts 1.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="tools" role="group" aria-label="optional views">
+      <button type="button" id="t_eq" aria-pressed="false">SHOW EQUATION</button>
+      <button type="button" id="t_obs" aria-pressed="false">SHOW OBSERVATION</button>
+      <button type="button" id="t_why" aria-pressed="false">SHOW WHY?</button>
+      <button type="button" id="t_cmp">SHOW THE GENERAL FORMULA</button>
+      <button type="button" id="t_rot">OPEN PRESSURE EXPLORER</button>
+    </div>
+
+    <div class="grid2">
+      <div class="graphcard"><h4>P₁ / P₂ against the trial ratio m₁/m₂</h4><p class="gsub">computed from n₁/n₂ at equal V and T — the lab looks for where the curve meets 5</p>
+        <div class="chartwrap"><svg class="chart" id="curve" viewBox="0 0 520 300" role="img" aria-label="Graph of the pressure ratio P1 over P2 against the trial mass ratio m1 over m2, with the target line at 5 and the solution marked"></svg></div></div>
+      <div class="graphcard"><h4>Moles in each cylinder</h4><p class="gsub">He and Ar moles, stacked, at the current trial ratio</p>
+        <div class="chartwrap"><svg class="chart" id="bars" viewBox="0 0 520 300" role="img" aria-label="Stacked bar chart of helium and argon moles in cylinder 1 and cylinder 2 at the current trial ratio"></svg></div></div>
+    </div>
+
+    <h4 style="margin:14px 0 0;font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--text-muted)">Result audit — the answer and the traps</h4>
+    <div class="board" id="board">
+      <div class="ocard" id="oc_A"><div class="h"><b>①</b><span class="claim">At equal V and T, P ∝ n (ideal gases).</span></div><p class="ev" id="ev_A">not yet examined</p><div class="vd" id="vd_A">UNEVALUATED</div></div>
+      <div class="ocard" id="oc_B"><div class="h"><b>②</b><span class="claim">m₁/m₂ = the value the lab solved for.</span></div><p class="ev" id="ev_B">not yet examined</p><div class="vd" id="vd_B">UNEVALUATED</div></div>
+      <div class="ocard" id="oc_C"><div class="h"><b>③</b><span class="claim">Trap: m₁/m₂ = 5 (pressure ratio taken as the mass ratio).</span></div><p class="ev" id="ev_C">not yet examined</p><div class="vd" id="vd_C">UNEVALUATED</div></div>
+      <div class="ocard" id="oc_D"><div class="h"><b>④</b><span class="claim">Trap: m₁/m₂ = 0.10 (P₂ = 5P₁ — the ratio read backwards).</span></div><p class="ev" id="ev_D">not yet examined</p><div class="vd" id="vd_D">UNEVALUATED</div></div>
+    </div>
+
+    <div class="badges" id="badges" aria-label="achievements">
+      <div class="badge" id="b_mol"><span class="ic">⚖️</span>Mole Counter</div>
+      <div class="badge" id="b_gas"><span class="ic">🎈</span>Ideal-Gas Pro</div>
+      <div class="badge" id="b_sol"><span class="ic">🎯</span>Ratio Solver</div>
+      <div class="badge" id="b_chk"><span class="ic">✅</span>Back-Checker</div>
+      <div class="badge" id="b_trap"><span class="ic">🪤</span>Trap Spotter</div>
+      <div class="badge" id="b_mas"><span class="ic">🏆</span>Chemistry Master</div>
+    </div>
+
+    <div class="calc" id="calc">
+      <div class="bt"><span>Reasoning log — input → action → change → observation → conclusion</span><span id="calcstat"></span></div>
+      <p class="empty" id="calcempty">Nothing investigated yet.</p>
+      <ol id="calclist"></ol>
+      <details class="tbl" id="logbox"><summary>Evidence table (<span id="logn">0</span>)</summary>
+        <div class="scrollx"><table class="data" id="log"></table></div></details>
+    </div>
+
+    <div class="actbar">
+      <button class="go" id="gobtn" type="button">▶&nbsp; START EXPERIMENT</button>
+      <button class="ghost" id="pausebtn" type="button" disabled>Pause</button>
+      <button class="ghost" id="replaybtn" type="button" hidden>▶ REPLAY EXPERIMENT</button>
+      <button class="ghost" id="resetbtn" type="button">↺ RESET</button>
+      <div class="spd" id="spd" role="group" aria-label="playback speed">
+        <button type="button" data-s="1" aria-pressed="true">1×</button>
+        <button type="button" data-s="2" aria-pressed="false">2×</button>
+      </div>
+      <button class="ghost" id="classbtn" type="button" aria-pressed="false">CLASSROOM MODE</button>
+      <div class="msg" id="gomsg">Nothing needs to be chosen. Press <b>START EXPERIMENT</b>.</div>
+    </div>
+  </div>
+</section>
+
+<section id="explorer">
+  <h2 class="big"><span class="n">02</span>Pressure explorer</h2>
+  <p class="lede">Change any number and watch the balance move: the mass ratio, the molar-mass ratio and the pressure ratio the piston must hold.
+     The general answer is m₁/m₂ = (p·k − 1)/(k − p), where k = M<sub>Ar</sub>/M<sub>He</sub> and p = P₁/P₂ — it exists only when 1/k &lt; p &lt; k.</p>
+  <div class="mobox">
+    <div>
+      <div class="xview"><canvas id="mol" width="720" height="420" tabindex="0" role="img" aria-label="The two cylinders at the chosen values, with their molecules, pistons and pressure gauges"></canvas></div>
+      <div class="selrow"><label for="x_r">trial m₁/m₂ = <b id="x_rv">1.00</b></label><input type="range" id="x_r" min="0.1" max="20" step="0.01" value="1" style="width:100%"></div>
+      <div class="selrow"><label for="x_k">k = M<sub>Ar</sub>/M<sub>He</sub> = <b id="x_kv">10</b></label><input type="range" id="x_k" min="1.5" max="20" step="0.01" value="10" style="width:100%"></div>
+      <div class="selrow"><label for="x_p">p = P₁/P₂ needed = <b id="x_pv">5</b></label><input type="range" id="x_p" min="1" max="20" step="0.1" value="5" style="width:100%"></div>
+      <div class="chkrow"><button type="button" class="ghost" id="x_solve">SOLVE FOR m₁/m₂</button><button type="button" class="ghost" id="x_reset">↺ question values</button></div>
+    </div>
+    <div><div class="panel xinfo" id="xinfo"></div></div>
+  </div>
+</section>
+
+<section id="solution">
+  <h2 class="big"><span class="n">03</span>Detailed solution</h2>
+  <p class="lede" id="solintro">Run the experiment — the solution opens with the answer.</p>
+  <div class="gate" id="solgate">
+    <h4>The solution is still locked</h4>
+    <p>The experiment has not finished yet. Press START and let it run to the end — or use
+       <i>Reveal anyway</i> in the header if you are revising.</p>
+    <button class="ghost" id="gotolab" type="button">Go to the experiment ↑</button>
+  </div>
+  <div id="solbody" hidden>
+    <h3 style="font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-muted);margin:0 0 10px">Understand the concept</h3>
+    <div class="cards4">
+      <div><h4>Mass is not moles</h4><p>Let M<sub>He</sub> = M, so M<sub>Ar</sub> = 10M. A gram of He is ten times as many moles as a gram of Ar.</p>
+        <div class="eq">n = m / M</div></div>
+      <div><h4>Same V, same T</h4><p>For ideal gases PV = nRT. With V and T equal in both cylinders, the pressure is simply proportional to the total moles.</p>
+        <div class="eq">P₁/P₂ = n₁/n₂</div></div>
+      <div><h4>Set up the equation</h4><p>n₁ = m₁/M + m₂/10M and n₂ = m₂/M + m₁/10M. Put n₁ = 5 n₂.</p>
+        <div class="eq">10m₁ + m₂ = 5(10m₂ + m₁)</div></div>
+      <div><h4>Solve</h4><p>5m₁ = 49m₂, so m₁/m₂ = 49/5.</p>
+        <div class="eq">m₁/m₂ = 49/5</div></div>
+    </div>
+    <ol class="steps" style="margin-top:14px">
+      <li><h4>Step 1 — Count the moles</h4>
+        <div class="eq">n₁ = m₁/M + m₂/(10M) = (10m₁ + m₂)/(10M) ;&nbsp; n₂ = m₂/M + m₁/(10M) = (10m₂ + m₁)/(10M)</div>
+        <div class="obsnote">On the bench: every mass m₂ of He appeared as ten small molecules, the same mass of Ar as one large molecule.</div></li>
+      <li><h4>Step 2 — Apply the ideal gas law</h4>
+        <div class="eq">P₁V = n₁RT, P₂V = n₂RT ⇒ P₁/P₂ = n₁/n₂ = 5</div>
+        <p>R, T and V cancel — the temperature does not matter as long as it is the same for both.</p></li>
+      <li><h4>Step 3 — Solve</h4>
+        <div class="eq">(10m₁ + m₂) = 5(10m₂ + m₁) ⇒ 10m₁ − 5m₁ = 50m₂ − m₂ ⇒ 5m₁ = 49m₂</div>
+        <div class="eq">Answer: m₁/m₂ = <span class="hl" id="solans">—</span></div></li>
+      <li><h4>Step 4 — Check and traps</h4>
+        <p>n₁/n₂ = (98 + 1)/(10 + 9.8) = 99/19.8 = 5 ✓. Reading the pressure ratio backwards (P₂ = 5P₁) gives 1/9.8 = 0.10; equating masses
+           instead of moles gives no solution at all; taking the pressure ratio itself as the answer gives 5 — all wrong.</p></li>
+    </ol>
+    <div class="verify">
+      <h4>Independent verification</h4>
+      <ul>
+        <li><b>Exact algebra.</b> sympy solves (10r + 1) = 5(10 + r) to r = 49/5 = 9.80, and the general form r = (pk − 1)/(k − p).</li>
+        <li><b>Numerics.</b> A bisection on P₁/P₂(r) − 5, run independently, converges to 9.8000; the page's own scan does the same.</li>
+        <li><b>Robustness.</b> R, T and V cancel; the real molar masses (4.003 and 39.95 g/mol, k = 9.98) would give 9.82.</li>
+        <li><b>Solution websites.</b> MathonGo's published solution (their Q41) gives 9.8.</li>
+        <li><b>This page.</b> The answer is computed at run time from the question's numbers; it is not written into the page.</li>
+        <li><b>Answer key.</b> Checked afterwards against the official final key printed with the paper: Q9 → 9.80.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="howto">
+  <h2 class="big"><span class="n">04</span>How to use this simulation</h2>
+  <p class="lede">For a student opening it for the first time. The whole investigation runs by itself after one press.</p>
+  <div class="howto">
+    <div><div class="n">STEP 1</div><h4>Read the mission brief</h4>
+      <p>Two cylinders hold He and Ar with their masses swapped. Find m₁/m₂ so that the first needs 5 times the pressure at the same volume.</p></div>
+    <div><div class="n">STEP 2</div><h4>Check the values</h4>
+      <p>The question's values are loaded — <b>M<sub>Ar</sub> = 10 M<sub>He</sub></b>, <b>P₁ = 5 P₂</b>. <b>You do not need to change anything.</b></p></div>
+    <div><div class="n">STEP 3</div><h4>Optional: customize</h4>
+      <p>Try the real molar masses, another pressure ratio or another temperature. The lab tells you honestly when a change takes you off
+         the question — or when no ratio can work. <b>↺ RESTORE QUESTION CONDITIONS</b> puts everything back.</p></div>
+    <div><div class="n">STEP 4</div><h4>Start</h4>
+      <p>Press <b>▶ START EXPERIMENT</b>. There is nothing else to click (about a minute; <b>2×</b> makes it faster).</p></div>
+    <div><div class="n">STEP 5</div><h4>Watch</h4>
+      <p>Masses turn into molecules, the molecules push on the pistons, the lab scans the ratio until P₁/P₂ reaches 5, locks the pistons
+         level and checks the result.</p></div>
+    <div><div class="n">STEP 6</div><h4>Answer reveal</h4>
+      <p>When the audit is complete the lab says <b>✓ EXPERIMENT COMPLETE</b> and reveals m₁/m₂. Badges unlock on the way.</p></div>
+    <div><div class="n">STEP 7</div><h4>Explore and understand</h4>
+      <p>In the <b>Pressure explorer</b> drag the three sliders and press <b>SOLVE</b>. Then read the <b>Detailed solution</b>.</p></div>
+    <div><div class="n">STEP 8</div><h4>Experiment again</h4>
+      <p>Press <b>▶ REPLAY EXPERIMENT</b>, or change a value and press <b>⚙ RUN WITH CUSTOM VALUES</b>. <b>CLASSROOM MODE</b>
+         enlarges everything for a projector.</p></div>
+  </div>
+  <div class="panel" style="margin-top:14px">
+    <h3>Classification</h3>
+    <table class="meta-tbl"><tbody>
+      <tr><th>Exam</th><td>JEE Advanced 2026, Paper 1, Chemistry, Section 3, Q.9</td></tr>
+      <tr><th>Chapter</th><td>States of Matter: Gases and Liquids</td></tr>
+      <tr><th>Topic</th><td>Ideal gas equation - pressure, moles and gas mixtures at equal volume and temperature</td></tr>
+      <tr><th>Difficulty</th><td>Easy</td></tr>
+      <tr><th>Answer</th><td><b id="clsans">— run the experiment</b></td></tr>
+    </tbody></table>
+  </div>
+</section>
+
+<footer>
+  ADV-2026-P1-CHE-Q09 · PrayogX · JEE Advanced Interactive Simulation Library · question text reproduced
+  from the official JEE (Advanced) 2026 Paper 1 for educational use. This is a virtual laboratory only.
+</footer>
+</div>
+<script>
+(function(){
+"use strict";
+
+/* =====================================================================
+   helpers
+   ===================================================================== */
+var NS = "http://www.w3.org/2000/svg";
+function $(id){ return document.getElementById(id); }
+function css(v){ return getComputedStyle(document.documentElement).getPropertyValue(v).trim(); }
+function mk(n, a, parent){
+  var e = document.createElementNS(NS, n), k;
+  if (a) for (k in a) if (Object.prototype.hasOwnProperty.call(a, k)) e.setAttribute(k, a[k]);
+  if (parent) parent.appendChild(e);
+  return e;
+}
+function tx(parent, x, y, s, a){ var o = a || {}; o.x = x; o.y = y; var t = mk("text", o, parent); t.textContent = s; return t; }
+function clamp(v, a, b){ return v < a ? a : (v > b ? b : v); }
+function ease(t){ t = clamp(t, 0, 1); return t * t * (3 - 2 * t); }
+function lerp(a, b, t){ return a + (b - a) * t; }
+var REDUCED = !!(window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches);
+function rng(seed){ var s = seed >>> 0; return function(){ s = (s * 1664525 + 1013904223) >>> 0; return s / 4294967296; }; }
+
+/* =====================================================================
+   question data - the printed numbers. Nothing below stores the answer:
+   the lab counts moles, applies PV = nRT and solves for m1/m2.
+   ===================================================================== */
+var Q = { k: "10", p: "5", T: "300" };
+var FIELDS = [
+  { k: "k", lab: "Molar mass of Ar ÷ molar mass of He", opts: [["10", "10 (the question)"], ["9.98", "9.98 (real: 39.95 / 4.003)"], ["5", "5"]] },
+  { k: "p", lab: "Pressure on cylinder 1 ÷ cylinder 2", opts: [["5", "5 (the question)"], ["2", "2"], ["10", "10"], ["0.2", "0.2 (cylinder 2 pressed harder)"]] },
+  { k: "T", lab: "Temperature of both cylinders", opts: [["300", "300 K"], ["600", "600 K"], ["200", "200 K"]] }
+];
+var ST = {}; (function(){ var k; for (k in Q) ST[k] = Q[k]; })();
+function fieldsHTML(){
+  var h = "", i, j, F;
+  for (i = 0; i < FIELDS.length; i++){
+    F = FIELDS[i];
+    h += '<div class="selrow" id="fld_' + F.k + '"><label for="in_' + F.k + '">' + F.lab + '</label><select class="sel" id="in_' + F.k + '">';
+    for (j = 0; j < F.opts.length; j++) h += '<option value="' + F.opts[j][0] + '"' + (F.opts[j][0] === Q[F.k] ? " selected" : "") + ">" + F.opts[j][1] + (F.opts[j][0] === Q[F.k] && F.k === "T" ? " — any equal T" : "") + "</option>";
+    h += "</select></div>";
+  }
+  return h;
+}
+function conditionWarnings(D){
+  var w = [], k = +D.k, p = +D.p;
+  if (D.k !== Q.k) w.push("⚠ The question fixes M<sub>Ar</sub> = <b>10</b> M<sub>He</sub> — with k = " + D.k + " the answer is not the question's.");
+  if (D.p !== Q.p) w.push("⚠ The question needs P₁ = <b>5</b> P₂ — a different pressure ratio is a different problem.");
+  if (!(p > 1 / k && p < k)) w.push("⚠ With p = " + D.p + " and k = " + D.k + " no positive mass ratio can work: n₁/n₂ always stays between 1/k and k.");
+  if (D.T !== Q.T) w.push("ℹ The temperature is the same for both cylinders, so it cancels — the ratio will not change.");
+  return w;
+}
+function readAll(){
+  var i, F, v, okv, j;
+  for (i = 0; i < FIELDS.length; i++){
+    F = FIELDS[i]; v = $("in_" + F.k).value; okv = false;
+    for (j = 0; j < F.opts.length; j++) if (F.opts[j][0] === v) okv = true;
+    ST[F.k] = okv ? v : Q[F.k];
+  }
+  var w = conditionWarnings(ST), box = $("condwarn");
+  box.hidden = !w.length; box.innerHTML = w.join("<br>");
+}
+function isCustom(D){ var k; D = D || ST; for (k in Q) if (D[k] !== Q[k]) return true; return false; }
+function copyST(){ var o = {}, k; for (k in Q) o[k] = ST[k]; return o; }
+function sameD(a, b){ var k; for (k in Q) if (a[k] !== b[k]) return false; return true; }
+
+/* =====================================================================
+   the physics - ideal gases in two cylinders
+   ===================================================================== */
+var R_GAS = 0.082057;        /* L atm / (mol K) */
+/* moles in units of m2 / (k M_He): cylinder 1 holds m1 of He and m2 of Ar, cylinder 2 the reverse */
+function moles(r, k){ return { he1: k * r, ar1: 1, he2: k, ar2: r, n1: k * r + 1, n2: k + r }; }
+function pRatio(r, k){ var n = moles(r, k); return n.n1 / n.n2; }
+/* the exact solution of (k r + 1) = p (k + r) */
+function exact(k, p){ return (k - p) === 0 ? NaN : (p * k - 1) / (k - p); }
+/* a bisection the lab runs live - it never uses the formula above */
+function bisect(k, p){
+  var lo = 1e-6, hi = 1e6, steps = [], i, mid, f = function(r){ return pRatio(r, k) - p; };
+  if (!(p > 1 / k && p < k)) return { ok: false, steps: steps, r: NaN };
+  for (i = 0; i < 60; i++){
+    mid = Math.sqrt(lo * hi);                           /* geometric bisection: r spans decades */
+    steps.push({ r: mid, pr: pRatio(mid, k) });
+    if (f(mid) > 0) hi = mid; else lo = mid;
+    if (hi / lo < 1 + 1e-12) break;
+  }
+  return { ok: true, steps: steps, r: Math.sqrt(lo * hi) };
+}
+function fmt2(x){ return (Math.round(x * 100) / 100).toFixed(2); }
+function run(D){
+  var k = +D.k, p = +D.p, T = +D.T, b = bisect(k, p), rx = exact(k, p), ok = b.ok;
+  var r = ok ? b.r : NaN, n = ok ? moles(r, k) : null;
+  /* for the gauges only: one mole-unit = 0.01 mol and V = 10 L (V, R and T cancel in the ratio) */
+  var V = 10, P1 = ok ? 0.01 * n.n1 * R_GAS * T / V : NaN, P2 = ok ? 0.01 * n.n2 * R_GAS * T / V : NaN;
+  var audit = {
+    A: { v: true, ev: "PV = nRT with the same V and T in both cylinders: P₁/P₂ = n₁/n₂ — R, T and V cancel." },
+    B: ok ? { v: Math.abs(pRatio(r, k) - p) < 1e-9, ev: "(k·r + 1)/(k + r) = p ⇒ r = (p·k − 1)/(k − p) = (" + p + "·" + k + " − 1)/(" + k + " − " + p + ") = " + fmt2(rx) + "; the scan converged to " + r.toFixed(4) + " and n₁/n₂ = " + pRatio(r, k).toFixed(4) + "." }
+          : { v: null, ev: "No positive m₁/m₂ gives P₁/P₂ = " + p + " when k = " + k + " — the pressure ratio can only lie between 1/k and k." },
+    C: { v: Math.abs(pRatio(p, k) - p) < 1e-9, ev: "With m₁/m₂ = " + p + ": n₁/n₂ = (" + k + "·" + p + " + 1)/(" + k + " + " + p + ") = " + pRatio(p, k).toFixed(3) + ", not " + p + " — the masses must first be turned into moles." },
+    D: ok ? { v: Math.abs(pRatio(1 / r, k) - p) < 1e-9, ev: "With m₁/m₂ = " + (1 / r).toFixed(3) + ": n₁/n₂ = " + pRatio(1 / r, k).toFixed(3) + " — that is P₂ = " + p + "P₁, the cylinders swapped." }
+          : { v: null, ev: "No solution to invert." }
+  };
+  return { D: D, k: k, p: p, T: T, ok: ok, r: r, exact: rx, scan: b.steps, n: n, V: V, P1: P1, P2: P2, audit: audit,
+    complete: ok && D.k === Q.k && D.p === Q.p, answer: ok ? fmt2(r) : "no solution" };
+}
+var QRUN = run(copyST());
+var ANS = QRUN.answer;
+
+/* =====================================================================
+   experiment engine - one automatic timeline, built when START is pressed
+   ===================================================================== */
+var SEGS = [["load", 6.0], ["moles", 7.0], ["gas", 6.4], ["scan", 8.4], ["lock", 6.0], ["check", 6.0], ["temp", 6.4], ["test", 6.4], ["answer", 4.2]];
+var STAGE_MSG = { load: "Loading the cylinders…", moles: "Converting masses to moles…", gas: "Applying PV = nRT…", scan: "Scanning m₁/m₂…",
+  lock: "Locking the pistons…", check: "Back-checking the result…", temp: "Testing the temperature…", test: "Auditing the traps…", answer: "Calculating final result…" };
+var BADGES = ["mol", "gas", "sol", "chk", "trap", "mas"];
+var RUN = { state: "setup", paused: false, speed: 1, segs: [], si: 0, u: 0, D: copyST(), R: null, done: false, revealed: false,
+  calc: {}, found: {}, cards: {}, badges: {}, classroom: false, rows: [], trial: null };
+RUN.R = run(RUN.D);
+var earlyReveal = false;
+var TOTAL = (function(){ var t = 0, i; for (i = 0; i < SEGS.length; i++) t += SEGS[i][1]; return t; })();
+function buildTimeline(){ var s = [], i; for (i = 0; i < SEGS.length; i++) s.push({ kind: SEGS[i][0], dur: SEGS[i][1] }); return s; }
+function seg(){ return RUN.segs[RUN.si] || null; }
+function elapsed(){ var t = 0, i; for (i = 0; i < RUN.si && i < RUN.segs.length; i++) t += RUN.segs[i].dur; return t + (seg() ? RUN.u : 0); }
+var NOW = null;
+function currentState(){
+  var sg = seg();
+  if (RUN.done) return { name: "rest", f: 1 };
+  if (RUN.state === "setup" || !sg) return { name: "idle", f: 0 };
+  return { name: sg.kind, f: clamp(RUN.u / sg.dur, 0, 1) };
+}
+/* the trial ratio shown at any moment: 1 until the scan, then the scan's current step, then the solution */
+function trialAt(name, f){
+  var R = RUN.R;
+  if (!R.ok) return 1;
+  if (name === "idle" || name === "load" || name === "moles" || name === "gas") return 1;
+  if (name === "scan") return R.scan[scanIndex(f)].r;
+  return R.r;
+}
+function scanIndex(f){ var n = Math.min(RUN.R.scan.length, 24); return Math.min(n - 1, Math.floor(clamp(f / 0.9, 0, 1) * (n - 1))); }
+
+/* ---- the case file ---- */
+function setTile(k, text, ok){
+  var t = $("u_" + k); if (!t) return;
+  t.classList.toggle("found", ok === true); t.classList.toggle("warn", ok === false);
+  t.querySelector(".v").textContent = text;
+}
+function setCard(k){
+  var e = RUN.R.audit[k], c = $("oc_" + k);
+  RUN.cards[k] = e;
+  c.classList.remove("now", "yes", "no", "na");
+  c.classList.add(e.v === true ? "yes" : e.v === false ? "no" : "na");
+  $("ev_" + k).textContent = e.ev;
+  $("vd_" + k).textContent = e.v === true ? "✓ HOLDS" : e.v === false ? "✗ FAILS" : "— NOT APPLICABLE";
+}
+function focusCard(k){ var i; for (i = 0; i < 4; i++) $("oc_" + "ABCD"[i]).classList.toggle("now", "ABCD"[i] === k); }
+function clearBoard(){
+  var i, k;
+  for (i = 0; i < 4; i++){ k = "ABCD"[i]; var c = $("oc_" + k); c.className = "ocard"; $("ev_" + k).textContent = "not yet examined"; $("vd_" + k).textContent = "UNEVALUATED"; }
+  ["A", "B", "R"].forEach(function(k){ var t = $("u_" + k); t.className = ""; t.querySelector(".v").textContent = "?"; });
+  BADGES.forEach(function(b){ $("b_" + b).classList.remove("on", "pop"); });
+}
+function badge(b){
+  if (RUN.badges[b]) return; RUN.badges[b] = true;
+  var e = $("b_" + b); e.classList.add("on"); e.classList.remove("pop"); void e.offsetWidth; e.classList.add("pop");
+}
+
+/* things that happen once, at a moment in the timeline */
+function onProgress(sg, f){
+  var R = RUN.R, once = function(key, fn){ if (!RUN.calc["@" + key]){ RUN.calc["@" + key] = true; fn(); } };
+  switch (sg.kind){
+    case "gas": if (f > 0.8) once("A", function(){ setCard("A"); addCalc("gas"); badge("gas"); }); break;
+    case "scan": RUN.trial = trialAt("scan", f); if (R.ok){ var i = scanIndex(f); while (RUN.rows.length <= i) logRow(RUN.rows.length); } break;
+    case "check": if (f > 0.8) once("chk", function(){ addCalc("check"); if (R.ok) badge("chk"); }); break;
+    case "test":
+      if (f > 0.3) once("C", function(){ setCard("C"); addCalc("c"); });
+      if (f > 0.62) once("D", function(){ setCard("D"); addCalc("d"); if (R.ok) badge("trap"); });
+      focusCard(f < 0.3 ? null : f < 0.62 ? "C" : f < 0.95 ? "D" : null); break;
+  }
+}
+function onSegEnd(sg){
+  var R = RUN.R;
+  if (sg.kind === "load") addCalc("load");
+  if (sg.kind === "moles"){ addCalc("moles"); setTile("A", R.k + "·(m₁/m₂) + 1", true); setTile("B", R.k + " + (m₁/m₂)", true); badge("mol"); }
+  if (sg.kind === "gas") onProgress(sg, 1);
+  if (sg.kind === "scan") addCalc("scan");
+  if (sg.kind === "lock"){
+    setCard("B"); addCalc("lock");
+    if (R.ok){ setTile("R", fmt2(R.r), R.complete); setTile("A", fmt2(R.n.n1), R.complete); setTile("B", fmt2(R.n.n2), R.complete); badge("sol"); }
+    else setTile("R", "no solution", false);
+  }
+  if (sg.kind === "check") onProgress(sg, 1);
+  if (sg.kind === "temp") addCalc("temp");
+  if (sg.kind === "test"){ onProgress(sg, 1); focusCard(null); }
+}
+function onSegStart(sg){ if (sg.kind === "answer") $("donebanner").classList.add("on"); }
+function stepTimeline(sdt){
+  var sg = seg(); if (!sg) return;
+  RUN.u += sdt;
+  onProgress(sg, clamp(RUN.u / sg.dur, 0, 1));
+  while (sg && RUN.u >= sg.dur){
+    RUN.u -= sg.dur;
+    onSegEnd(sg);
+    RUN.si++;
+    sg = seg();
+    if (!sg){ finish(); return; }
+    onSegStart(sg);
+  }
+}
+function clearRunUI(){
+  $("calclist").innerHTML = ""; $("calcempty").hidden = false;
+  $("donebanner").classList.remove("on");
+  $("revealhost").classList.remove("on"); $("revealhost").innerHTML = "";
+  $("lab3d").classList.remove("dim"); $("blackout").classList.remove("on");
+  burst = []; clearBoard();
+}
+function freshRun(){ RUN.si = 0; RUN.u = 0; RUN.paused = false; RUN.done = false; RUN.revealed = false; RUN.calc = {}; RUN.found = {}; RUN.cards = {}; RUN.badges = {}; RUN.rows = []; RUN.trial = null; }
+function startRun(D){
+  readAll();
+  RUN.D = D || copyST(); RUN.R = run(RUN.D);
+  RUN.segs = buildTimeline(); freshRun(); RUN.state = "running";
+  clearRunUI(); drawLog(); refreshUI(); refreshAnswerBox();
+}
+function resetRun(){
+  RUN.state = "setup"; RUN.segs = []; freshRun();
+  readAll(); RUN.D = copyST(); RUN.R = run(RUN.D);
+  clearRunUI(); drawLog(); refreshUI(); refreshAnswerBox();
+}
+function resetAll(){
+  var i; for (i = 0; i < FIELDS.length; i++) $("in_" + FIELDS[i].k).value = Q[FIELDS[i].k];
+  readAll(); earlyReveal = false; resetRun(); refreshGate();
+}
+function finish(){
+  RUN.si = RUN.segs.length; RUN.state = "done"; RUN.done = true;
+  addCalc("match"); if (RUN.R.complete) badge("mas");
+  refreshUI(); refreshAnswerBox();
+  doReveal();
+}
+
+/* =====================================================================
+   reasoning log - one causal chain per step, written as it happens
+   ===================================================================== */
+function chain(a){ return a.join(' <span style="color:var(--text-muted)">→</span> '); }
+function calcHTML(key){
+  var R = RUN.R, k = R.k, p = R.p;
+  switch (key){
+    case "load": return ["LOAD", chain(["cylinder 1: m₁ of He + m₂ of Ar", "cylinder 2: m₂ of He + m₁ of Ar", "same V, same T"]) + "<span class=w>the masses are the same pair, only swapped between the two gases</span>"];
+    case "moles": return ["MOLES", "n = m/M, M<sub>He</sub> = M, M<sub>Ar</sub> = " + k + "M ⇒ n₁ = m₁/M + m₂/" + k + "M = (" + k + "m₁ + m₂)/" + k + "M ;&nbsp; n₂ = (" + k + "m₂ + m₁)/" + k + "M<span class=w>a gram of He is " + k + " times as many moles as a gram of Ar</span>"];
+    case "gas": return ["①", R.audit.A.ev + " &nbsp;⇒&nbsp; " + verdictHTML(true)];
+    case "scan": return ["SCAN", R.ok ? chain(["trial m₁/m₂ = 1 → P₁/P₂ = " + pRatio(1, k).toFixed(3), "too low: raise m₁", R.scan.length + " halvings", "<b>P₁/P₂ = " + pRatio(R.r, k).toFixed(4) + " at m₁/m₂ = " + R.r.toFixed(4) + "</b>"]) : "The scan never reaches P₁/P₂ = " + p + ": the ratio is trapped between " + (1 / k).toFixed(3) + " and " + k + "."];
+    case "lock": return ["②", R.audit.B.ev + " &nbsp;⇒&nbsp; " + verdictHTML(R.audit.B.v)];
+    case "check": return ["CHECK", R.ok ? "n₁/n₂ = (" + k + "×" + fmt2(R.r) + " + 1)/(" + k + " + " + fmt2(R.r) + ") = " + fmt2(R.n.n1) + "/" + fmt2(R.n.n2) + " = <span class=hl>" + (R.n.n1 / R.n.n2).toFixed(4) + "</span> = " + p + " ✓" : "nothing to check"];
+    case "temp": return ["T TEST", "At " + R.T + " K: P₁ = " + (isNaN(R.P1) ? "—" : R.P1.toFixed(3)) + " atm, P₂ = " + (isNaN(R.P2) ? "—" : R.P2.toFixed(3)) + " atm; at 2T both double — the ratio stays " + (R.ok ? (R.P1 / R.P2).toFixed(4) : "—") + "<span class=w>T appears on both sides of P₁/P₂ = n₁RT/n₂RT and cancels</span>"];
+    case "c": return ["③", R.audit.C.ev + " &nbsp;⇒&nbsp; " + verdictHTML(R.audit.C.v)];
+    case "d": return ["④", R.audit.D.ev + " &nbsp;⇒&nbsp; " + verdictHTML(R.audit.D.v)];
+    case "match":
+      return ["ANSWER", R.complete ? "m₁/m₂ = <span class=hl>" + R.answer + "</span> &nbsp;·&nbsp; n₁ : n₂ = " + fmt2(R.n.n1) + " : " + fmt2(R.n.n2) + " = " + p + " : 1"
+        : (R.ok ? "Your values give m₁/m₂ = " + R.answer + " — not the question's numbers; restore them to answer the question." : "No positive m₁/m₂ exists for your values — restore the question's numbers.")];
+  }
+  return null;
+}
+function verdictHTML(v){ return v === true ? "<span class=hl>✓ HOLDS</span>" : v === false ? '<b style="color:var(--bad)">✗ FAILS</b>' : "<b>— not applicable</b>"; }
+function addCalc(key){
+  if (RUN.calc[key]) return;
+  var c = calcHTML(key); if (!c) return;
+  RUN.calc[key] = true;
+  $("calcempty").hidden = true;
+  var li = document.createElement("li");
+  li.setAttribute("data-key", key);
+  li.innerHTML = '<span class="s">' + c[0] + '</span><span class="m">' + c[1] + "</span>";
+  $("calclist").appendChild(li);
+}
+function calcKeys(){ return Object.keys(RUN.calc).filter(function(k){ return k.charAt(0) !== "@"; }); }
+function logRow(i){
+  var s = RUN.R.scan[i], k = RUN.R.k, n = moles(s.r, k);
+  RUN.rows.push([String(i + 1), s.r.toPrecision(5), n.n1.toPrecision(5), n.n2.toPrecision(5), s.pr.toFixed(4), s.pr > RUN.R.p ? "too high" : "too low"]);
+  drawLog();
+}
+function drawLog(){
+  var h = "<thead><tr><th>step</th><th>trial m₁/m₂</th><th>n₁</th><th>n₂</th><th>P₁/P₂</th><th>vs target</th></tr></thead><tbody>", i, r;
+  for (i = 0; i < RUN.rows.length; i++){ r = RUN.rows[i]; h += "<tr><td>" + r[0] + "</td><td class=n>" + r[1] + "</td><td class=n>" + r[2] + "</td><td class=n>" + r[3] + "</td><td class=n>" + r[4] + "</td><td>" + r[5] + "</td></tr>"; }
+  $("log").innerHTML = h + "</tbody>";
+  $("logn").textContent = RUN.rows.length;
+}
+function label(g, s, x, y, col, size, align, weight){
+  g.fillStyle = col; g.font = (weight || 600) + " " + (size || 14) + "px ui-sans-serif,system-ui,sans-serif";
+  g.textAlign = align || "center"; g.textBaseline = "middle"; g.fillText(s, x, y);
+}
+
+var burst = [], clock = 0, SHOW = { eq: false, obs: false, why: false };
+var CLGAS = "rgba(200,224,74,", AMBER = "rgba(255,196,80,";
+function glassRect(g, x, y, w, h, r){
+  g.fillStyle = "rgba(150,190,255,.07)"; g.strokeStyle = "rgba(190,215,255,.45)"; g.lineWidth = 2;
+  g.beginPath(); g.roundRect ? g.roundRect(x, y, w, h, r || 12) : g.rect(x, y, w, h); g.fill(); g.stroke();
+  g.strokeStyle = "rgba(255,255,255,.18)"; g.lineWidth = 3; g.beginPath(); g.moveTo(x + 10, y + 14); g.lineTo(x + 10, y + h - 14); g.stroke();
+}
+function hood(g){
+  var W = 1040, H = 620;
+  var bg = g.createLinearGradient(0, 0, 0, H); bg.addColorStop(0, "#0b1120"); bg.addColorStop(1, "#070a12");
+  g.fillStyle = bg; g.fillRect(0, 0, W, H);
+  g.strokeStyle = "rgba(160,190,255,.12)"; g.lineWidth = 10; g.strokeRect(14, 14, W - 28, H - 28);
+  g.fillStyle = "rgba(160,190,255,.06)"; g.fillRect(14, H - 70, W - 28, 56);
+}
+function stamp(g, x, y, text, ok, a){
+  g.save(); g.translate(x, y); g.rotate(-0.08); g.globalAlpha = a;
+  g.strokeStyle = ok ? "#3ee39a" : ok === false ? "#ff6b6b" : "#b8a8ff"; g.lineWidth = 4;
+  g.font = "900 26px ui-sans-serif,system-ui,sans-serif"; var w = g.measureText(text).width + 34;
+  g.fillStyle = "rgba(8,14,26,.85)"; g.fillRect(-w / 2, -26, w, 52); g.strokeRect(-w / 2, -26, w, 52);
+  label(g, text, 0, 1, ok ? "#3ee39a" : ok === false ? "#ff6b6b" : "#cfc4ff", 26, "center", 900); g.restore();
+}
+function sceneTitle(g, a, b){ label(g, a, 520, 44, "#8fa6c9", 16, "center", 800); if (b) label(g, b, 520, 70, "#e6eeff", 21, "center", 800); }
+function observationBox(g, t, on){
+  g.fillStyle = "rgba(10,20,36,.88)"; g.strokeStyle = on ? "#c8e04a" : "rgba(160,190,255,.3)"; g.lineWidth = 2;
+  g.fillRect(800, 250, 210, 110); g.strokeRect(800, 250, 210, 110);
+  label(g, "OBSERVATION", 905, 272, "#8fa6c9", 13, "center", 800);
+  wrap(g, t, 905, 302, 190, 16, "#ffffff", 16);
+}
+function wrap(g, t, x, y, w, lh, col, size){
+  g.font = "700 " + size + "px ui-sans-serif,system-ui,sans-serif"; var words = t.split(" "), line = "", yy = y, i;
+  for (i = 0; i < words.length; i++){ var tt = line + words[i] + " "; if (g.measureText(tt).width > w && line){ label(g, line.trim(), x, yy, col, size, "center", 700); line = words[i] + " "; yy += lh + 4; } else line = tt; }
+  label(g, line.trim(), x, yy, col, size, "center", 700);
+}
+
+
+/* =====================================================================
+   the cylinders - one dot per mole-unit (He small, Ar large)
+   ===================================================================== */
+var HE = "#7fc8ff", AR = "#ffae5a", GREEN = "#3ee39a", RED = "#ff6b6b", GOLD = "#ffd79a";
+function dotScale(a, b){ var m = Math.max(a.he1 + a.ar1, b ? b.he2 + b.ar2 : 0, a.he2 + a.ar2); return m > 120 ? 120 / m : 1; }
+/* x, y top-left of the barrel; w, h size; he/ar mole-units; T for jiggle; sc dot scale */
+function drawCyl(g, x, y, w, h, he, ar, T, sc, seed, o){
+  o = o || {};
+  var i, rn = rng(seed), nHe = Math.round(he * sc), nAr = Math.round(ar * sc), sp = Math.sqrt(T / 300);
+  g.fillStyle = "rgba(150,190,255,.06)"; g.strokeStyle = o.glow ? GREEN : "rgba(190,215,255,.55)"; g.lineWidth = o.glow ? 3.5 : 2.5;
+  g.beginPath(); g.moveTo(x, y); g.lineTo(x, y + h); g.lineTo(x + w, y + h); g.lineTo(x + w, y); g.stroke();
+  g.fillStyle = "rgba(150,190,255,.05)"; g.fillRect(x + 2, y + 16, w - 4, h - 18);
+  /* piston */
+  g.fillStyle = "#8a96ad"; g.fillRect(x + 3, y, w - 6, 14); g.fillRect(x + w / 2 - 6, y - 40, 12, 40);
+  if (o.P !== undefined){
+    var len = Math.min(56, 8 + 10 * o.P);
+    g.strokeStyle = o.pcol || GOLD; g.fillStyle = o.pcol || GOLD; g.lineWidth = 5;
+    g.beginPath(); g.moveTo(x + w / 2, y - 44 - len); g.lineTo(x + w / 2, y - 50); g.stroke();
+    g.beginPath(); g.moveTo(x + w / 2, y - 42); g.lineTo(x + w / 2 - 10, y - 56); g.lineTo(x + w / 2 + 10, y - 56); g.closePath(); g.fill();
+  }
+  for (i = 0; i < nHe + nAr; i++){
+    var isAr = i >= nHe, bx = x + 12 + rn() * (w - 24), by = y + 26 + rn() * (h - 36), ph = rn() * 6.28, v = (isAr ? 0.32 : 1) * sp * 7;
+    bx += Math.sin(clock * v * 0.9 + ph) * (isAr ? 4 : 9); by += Math.cos(clock * v * 0.8 + ph * 1.3) * (isAr ? 4 : 9);
+    bx = clamp(bx, x + 8, x + w - 8); by = clamp(by, y + 22, y + h - 8);
+    g.fillStyle = isAr ? AR : HE; g.beginPath(); g.arc(bx, by, isAr ? 8 : 3.4, 0, 7); g.fill();
+  }
+  if (o.label) label(g, o.label, x + w / 2, y + h + 22, "#e6eeff", 16, "center", 900);
+}
+function gauge(g, cx, cy, val, max, txt, col){
+  g.strokeStyle = "rgba(160,190,255,.35)"; g.lineWidth = 8; g.beginPath(); g.arc(cx, cy, 34, Math.PI * 0.8, Math.PI * 2.2); g.stroke();
+  var a = Math.PI * 0.8 + Math.PI * 1.4 * clamp(val / max, 0, 1);
+  g.strokeStyle = col || GOLD; g.beginPath(); g.arc(cx, cy, 34, Math.PI * 0.8, a); g.stroke();
+  g.strokeStyle = "#ffffff"; g.lineWidth = 2.5; g.beginPath(); g.moveTo(cx, cy); g.lineTo(cx + 26 * Math.cos(a), cy + 26 * Math.sin(a)); g.stroke();
+  label(g, txt, cx, cy + 50, "#ffffff", 14, "center", 800);
+}
+/* the two cylinders side by side at trial ratio r */
+function bench(g, r, o){
+  o = o || {};
+  var R = RUN.R, k = R.k, n = moles(r, k), sc = dotScale(n), T = o.T || R.T, pr = n.n1 / n.n2;
+  var yT = 190, H = 240, W = 250;
+  drawCyl(g, 120, yT, W, H, n.he1, n.ar1, T, sc, 11, { label: "cylinder 1  ·  He m₁, Ar m₂", P: o.showP ? pr : undefined, glow: o.glow });
+  drawCyl(g, 540, yT, W, H, n.he2, n.ar2, T, sc, 23, { label: "cylinder 2  ·  He m₂, Ar m₁", P: o.showP ? 1 : undefined, glow: o.glow });
+  if (o.showP){ gauge(g, 440, 280, pr, Math.max(10, k), "P₁/P₂ = " + pr.toFixed(3), Math.abs(pr - R.p) < 1e-6 ? GREEN : GOLD); label(g, "target " + R.p, 440, 350, GOLD, 13, "center", 800); }
+  return n;
+}
+function legend(g){
+  g.fillStyle = HE; g.beginPath(); g.arc(840, 120, 4, 0, 7); g.fill(); label(g, "He (1 dot = m₂/10M)", 852, 120, "#cfe0ff", 12, "left", 700);
+  g.fillStyle = AR; g.beginPath(); g.arc(840, 142, 7, 0, 7); g.fill(); label(g, "Ar (1 dot = m₂/10M)", 852, 142, "#cfe0ff", 12, "left", 700);
+}
+
+/* =====================================================================
+   the two charts - drawn from the model, never from pictures
+   ===================================================================== */
+function svgClear(id){ var s = $(id); while (s.firstChild) s.removeChild(s.firstChild); return s; }
+function drawCurve(rTrial, nScan){
+  var s = svgClear("curve"), R = RUN.R, k = R.k, p = R.p, X0 = 56, X1 = 500, Y0 = 262, Y1 = 20, lo = -2, hi = 3, ymax = Math.max(k, p) * 1.1;
+  var xs = function(r){ return X0 + (X1 - X0) * (Math.log(r) / Math.LN10 - lo) / (hi - lo); }, ys = function(v){ return Y0 - (Y0 - Y1) * v / ymax; };
+  var tc = css("--text-muted") || "#888", lc = css("--line-strong") || "#999", i;
+  mk("line", { x1: X0, y1: Y0, x2: X1, y2: Y0, stroke: lc }, s); mk("line", { x1: X0, y1: Y0, x2: X0, y2: Y1, stroke: lc }, s);
+  for (i = lo; i <= hi; i++){ mk("line", { x1: xs(Math.pow(10, i)), y1: Y0, x2: xs(Math.pow(10, i)), y2: Y0 + 5, stroke: lc }, s); tx(s, xs(Math.pow(10, i)), Y0 + 18, String(Math.pow(10, i)), { "text-anchor": "middle", "font-size": 11, fill: tc }); }
+  for (i = 0; i <= ymax; i += Math.max(1, Math.round(ymax / 5))){ tx(s, X0 - 8, ys(i) + 4, String(i), { "text-anchor": "end", "font-size": 11, fill: tc }); }
+  tx(s, (X0 + X1) / 2, 296, "trial m₁/m₂ (log scale)", { "text-anchor": "middle", "font-size": 11.5, fill: tc });
+  tx(s, 14, (Y0 + Y1) / 2, "P₁/P₂", { "text-anchor": "middle", "font-size": 11.5, fill: tc, transform: "rotate(-90 14 " + (Y0 + Y1) / 2 + ")" });
+  var d = "", r; for (i = 0; i <= 200; i++){ r = Math.pow(10, lo + (hi - lo) * i / 200); d += (i ? "L" : "M") + xs(r).toFixed(1) + " " + ys(pRatio(r, k)).toFixed(1); }
+  mk("path", { d: d, fill: "none", stroke: css("--s1") || "#3987e5", "stroke-width": 2.5 }, s);
+  mk("line", { x1: X0, y1: ys(p), x2: X1, y2: ys(p), stroke: css("--s2") || "#eb6834", "stroke-dasharray": "5 4", "stroke-width": 1.5 }, s);
+  tx(s, X1 - 4, ys(p) - 6, "target " + p, { "text-anchor": "end", "font-size": 11, fill: css("--s2") || "#eb6834" });
+  if (nScan && R.ok) for (i = 0; i < Math.min(nScan, R.scan.length); i++){ var pt = R.scan[i]; if (pt.r > Math.pow(10, lo) && pt.r < Math.pow(10, hi)) mk("circle", { cx: xs(pt.r), cy: ys(pt.pr), r: 3, fill: css("--s4") || "#4a3aa7" }, s); }
+  if (rTrial && rTrial > Math.pow(10, lo) && rTrial < Math.pow(10, hi)) mk("circle", { cx: xs(rTrial), cy: ys(pRatio(rTrial, k)), r: 6, fill: "none", stroke: css("--s3") || "#1baf7a", "stroke-width": 2.5 }, s);
+}
+function drawBars(rTrial){
+  var s = svgClear("bars"), k = RUN.R.k, n = moles(rTrial || 1, k), tc = css("--text-muted") || "#888", lc = css("--line-strong") || "#999";
+  var max = Math.max(n.n1, n.n2) * 1.1, Y0 = 262, Y1 = 30, ys = function(v){ return (Y0 - Y1) * v / max; };
+  mk("line", { x1: 60, y1: Y0, x2: 500, y2: Y0, stroke: lc }, s);
+  [[150, n.he1, n.ar1, "cylinder 1"], [370, n.he2, n.ar2, "cylinder 2"]].forEach(function(b){
+    var hHe = ys(b[1]), hAr = ys(b[2]);
+    mk("rect", { x: b[0] - 50, y: Y0 - hHe, width: 100, height: hHe, fill: css("--s1") || "#3987e5" }, s);
+    mk("rect", { x: b[0] - 50, y: Y0 - hHe - hAr, width: 100, height: hAr, fill: css("--s2") || "#eb6834" }, s);
+    tx(s, b[0], Y0 + 18, b[3], { "text-anchor": "middle", "font-size": 12, fill: tc });
+    tx(s, b[0], Y0 - hHe - hAr - 8, "n = " + (b[1] + b[2]).toPrecision(4), { "text-anchor": "middle", "font-size": 12, fill: tc, "font-weight": 700 });
+  });
+  tx(s, 470, 40, "He", { "font-size": 12, fill: css("--s1") || "#3987e5", "font-weight": 700 }); tx(s, 470, 58, "Ar", { "font-size": 12, fill: css("--s2") || "#eb6834", "font-weight": 700 });
+  tx(s, 280, 296, "moles in units of m₂/(10 M_He) at m₁/m₂ = " + (rTrial || 1).toPrecision(4), { "text-anchor": "middle", "font-size": 11.5, fill: tc });
+}
+
+/* =====================================================================
+   the laboratory canvas - one scene per stage
+   ===================================================================== */
+function sceneLoad(g, f){
+  sceneTitle(g, "STEP 1 · LOAD THE CYLINDERS", "the same two masses, swapped between the gases");
+  var a = ease(f / 0.6), i;
+  var boxes = [[150, "He", "m₁", HE], [290, "Ar", "m₂", AR], [570, "He", "m₂", HE], [710, "Ar", "m₁", AR]];
+  for (i = 0; i < 4; i++){ var b = boxes[i], y = 130 + 200 * ease((f - i * 0.1) / 0.5);
+    g.fillStyle = b[3]; g.globalAlpha = 0.85; g.fillRect(b[0] - 50, y, 100, 60); g.globalAlpha = 1;
+    label(g, b[1] + " · " + b[2], b[0], y + 30, "#0b1120", 20, "center", 900); }
+  g.strokeStyle = "rgba(190,215,255,.55)"; g.lineWidth = 2.5;
+  [[120, 250], [540, 250]].forEach(function(c){ g.beginPath(); g.moveTo(c[0] - 10, 170); g.lineTo(c[0] - 10, 460); g.lineTo(c[0] + c[1] + 10 + 30, 460); g.lineTo(c[0] + c[1] + 40, 170); g.stroke(); });
+  label(g, "cylinder 1", 285, 490, "#e6eeff", 16, "center", 900); label(g, "cylinder 2", 705, 490, "#e6eeff", 16, "center", 900);
+  if (f > 0.6) label(g, "same volume  ·  same temperature  ·  P₁ must be " + RUN.R.p + " × P₂", 520, 530, GOLD, 17, "center", 800);
+}
+function sceneMoles(g, f){
+  var R = RUN.R, k = R.k;
+  sceneTitle(g, "STEP 2 · MASS → MOLES", "n = m / M,  M(Ar) = " + k + " × M(He)");
+  bench(g, 1, {});
+  legend(g);
+  label(g, "illustration: if m₁ were equal to m₂", 520, 96, "#9fb0cc", 13, "center", 700);
+  var n = moles(1, k);
+  if (f > 0.35) label(g, "n₁ = " + k + "·m₁/m₂ + 1 → " + n.n1.toFixed(0), 245, 125, HE, 16, "center", 900);
+  if (f > 0.35) label(g, "n₂ = " + k + " + m₁/m₂ → " + n.n2.toFixed(0), 665, 125, HE, 16, "center", 900);
+  if (f > 0.65) label(g, "equal masses → equal moles → equal pressures. The question needs " + R.p + " : 1, so m₁ must be bigger.", 520, 540, GOLD, 15, "center", 800);
+}
+function sceneGas(g, f){
+  var R = RUN.R;
+  sceneTitle(g, "STEP 3 · PV = nRT", "same V, same T  ⇒  P₁ / P₂ = n₁ / n₂");
+  bench(g, 1, { showP: f > 0.3 });
+  g.fillStyle = "rgba(20,30,52,.9)"; g.fillRect(300, 480, 440, 70); g.strokeStyle = "rgba(160,190,255,.35)"; g.strokeRect(300, 480, 440, 70);
+  label(g, "P₁V = n₁RT  ;  P₂V = n₂RT", 520, 502, "#ffffff", 17, "center", 800);
+  label(g, "⇒  P₁/P₂ = n₁/n₂   (R, T, V cancel)", 520, 530, GREEN, 17, "center", 900);
+  if (f > 0.8) stamp(g, 520, 120, "① ✓ HOLDS", true, clamp((f - 0.8) / 0.1, 0, 1));
+}
+function sceneScan(g, f){
+  var R = RUN.R;
+  sceneTitle(g, "STEP 4 · SCAN THE RATIO", R.ok ? "raise or lower m₁/m₂ until P₁/P₂ = " + R.p : "no ratio can reach P₁/P₂ = " + R.p);
+  var r = trialAt("scan", f), n = bench(g, r, { showP: true });
+  g.fillStyle = "rgba(20,30,52,.92)"; g.fillRect(330, 480, 380, 72); g.strokeStyle = "rgba(160,190,255,.35)"; g.strokeRect(330, 480, 380, 72);
+  label(g, "trial m₁/m₂ = " + r.toPrecision(5), 520, 502, "#ffffff", 18, "center", 900);
+  var pr = n.n1 / n.n2;
+  label(g, "P₁/P₂ = " + pr.toFixed(4) + (Math.abs(pr - R.p) < 1e-3 ? "  ✓ on target" : pr > R.p ? "  → too high, lower m₁" : "  → too low, raise m₁"), 520, 530, Math.abs(pr - R.p) < 1e-4 ? GREEN : GOLD, 15, "center", 800);
+}
+function sceneLock(g, f){
+  var R = RUN.R;
+  sceneTitle(g, "STEP 5 · LOCK THE PISTONS", R.ok ? "both volumes equal at P₁ = " + R.p + " P₂" : "the pistons cannot be balanced");
+  bench(g, R.ok ? R.r : 1, { showP: true, glow: R.ok && f > 0.3 });
+  if (R.ok && f > 0.3) label(g, "V₁ = V₂  ✓", 440, 200, GREEN, 18, "center", 900);
+  if (f > 0.5){ g.fillStyle = "rgba(20,30,52,.92)"; g.fillRect(330, 480, 380, 72); g.strokeStyle = R.ok ? GREEN : RED; g.strokeRect(330, 480, 380, 72);
+    label(g, R.ok ? "m₁ / m₂ = " + R.r.toFixed(4) : "no solution", 520, 505, R.ok ? GREEN : RED, 24, "center", 900);
+    label(g, R.ok ? "exact: (p·k − 1)/(k − p) = " + fmt2(R.exact) : "p must lie between 1/k and k", 520, 535, "#cfe0ff", 14, "center", 700); }
+  if (f > 0.82) stamp(g, 860, 120, R.ok ? "② ✓ HOLDS" : "② —", R.ok ? true : null, clamp((f - 0.82) / 0.1, 0, 1));
+}
+function sceneCheck(g, f){
+  var R = RUN.R;
+  sceneTitle(g, "STEP 6 · BACK-CHECK", "put the answer back into the moles");
+  if (!R.ok){ label(g, "nothing to check", 520, 300, RED, 20, "center", 800); return; }
+  var k = R.k, r = R.r, a = ease(f / 0.7);
+  label(g, "n₁ = " + k + " × " + fmt2(r) + " + 1 = " + fmt2(R.n.n1), 520, 190, HE, 24, "center", 900);
+  label(g, "n₂ = " + k + " + " + fmt2(r) + " = " + fmt2(R.n.n2), 520, 250, HE, 24, "center", 900);
+  g.globalAlpha = a; label(g, "n₁ / n₂ = " + fmt2(R.n.n1) + " / " + fmt2(R.n.n2) + " = " + (R.n.n1 / R.n.n2).toFixed(4), 520, 330, "#ffffff", 28, "center", 900); g.globalAlpha = 1;
+  if (f > 0.7) label(g, "= P₁ / P₂ = " + R.p + "  ✓", 520, 390, GREEN, 28, "center", 900);
+}
+function sceneTemp(g, f){
+  var R = RUN.R, T = R.T * (1 + ease((f - 0.2) / 0.5));
+  sceneTitle(g, "STEP 7 · DOES TEMPERATURE MATTER?", "heat both cylinders from " + R.T + " K to " + 2 * R.T + " K");
+  bench(g, R.ok ? R.r : 1, { showP: true, T: T });
+  var P1 = R.ok ? 0.01 * R.n.n1 * R_GAS * T / R.V : NaN, P2 = R.ok ? 0.01 * R.n.n2 * R_GAS * T / R.V : NaN;
+  g.fillStyle = "rgba(20,30,52,.92)"; g.fillRect(300, 480, 440, 72); g.strokeStyle = "rgba(160,190,255,.35)"; g.strokeRect(300, 480, 440, 72);
+  label(g, "T = " + Math.round(T) + " K   P₁ = " + (isNaN(P1) ? "—" : P1.toFixed(3)) + " atm   P₂ = " + (isNaN(P2) ? "—" : P2.toFixed(3)) + " atm", 520, 502, "#ffffff", 15, "center", 800);
+  label(g, "P₁/P₂ = " + (isNaN(P1) ? "—" : (P1 / P2).toFixed(4)) + " — unchanged: T cancels", 520, 530, GREEN, 16, "center", 900);
+}
+var CLAIMS = { A: "At equal V and T, P ∝ n.", B: "m₁/m₂ = the solved value.", C: "Trap: m₁/m₂ = p (the pressure ratio).", D: "Trap: the inverse ratio (P₂ = pP₁)." };
+function sceneTest(g, f){
+  var R = RUN.R, k, i;
+  sceneTitle(g, "RESULT AUDIT", "claim → evidence → verdict");
+  for (i = 0; i < 4; i++){
+    k = "ABCD"[i]; var x = 60 + (i % 2) * 470, y = 110 + Math.floor(i / 2) * 220, e = R.audit[k], on = i < 2 || (i === 2 && f > 0.3) || (i === 3 && f > 0.62);
+    g.fillStyle = "rgba(20,30,52,.9)"; g.strokeStyle = on ? (e.v ? GREEN : e.v === false ? RED : "#b8a8ff") : "rgba(160,190,255,.25)"; g.lineWidth = on ? 3 : 1.5;
+    g.fillRect(x, y, 450, 190); g.strokeRect(x, y, 450, 190);
+    label(g, "①②③④".charAt(i), x + 30, y + 30, "#8fa6c9", 20, "center", 900);
+    label(g, CLAIMS[k], x + 55, y + 30, "#ffffff", 15, "left", 700);
+    if (on){ wrap(g, e.ev, x + 225, y + 80, 410, 13, "#cfe0ff", 12); label(g, e.v ? "✓ HOLDS" : e.v === false ? "✗ FAILS" : "— N/A", x + 225, y + 165, e.v ? GREEN : e.v === false ? RED : "#cfc4ff", 22, "center", 900); }
+  }
+}
+function sceneAnswer(g, f){
+  sceneTitle(g, "ANALYSIS COMPLETE", f < 0.3 ? "moles counted, pistons balanced, traps audited" : "CALCULATING FINAL ANSWER…");
+  var p = ease(f / 0.9);
+  g.fillStyle = "rgba(20,30,52,.9)"; g.fillRect(220, 280, 600, 40); g.strokeStyle = "rgba(160,190,255,.4)"; g.strokeRect(220, 280, 600, 40);
+  var gr = g.createLinearGradient(220, 0, 820, 0); gr.addColorStop(0, "#3987e5"); gr.addColorStop(1, GREEN); g.fillStyle = gr; g.fillRect(224, 284, 592 * p, 32);
+  label(g, Math.round(p * 100) + "%", 520, 360, "#ffffff", 30, "center", 900);
+}
+function sceneIdle(g){
+  sceneTitle(g, "TWIN-CYLINDER PRESSURE LAB", "how heavy must m₁ be?");
+  label(g, "cylinder 1:  He m₁  +  Ar m₂", 520, 180, "#ffffff", 24, "center", 900);
+  label(g, "cylinder 2:  He m₂  +  Ar m₁", 520, 225, "#ffffff", 24, "center", 900);
+  label(g, "M(Ar) = 10 M(He)   ·   equal V and T   ·   P₁ = 5 P₂", 520, 285, GOLD, 18, "center", 800);
+  g.strokeStyle = "rgba(160,190,255,.5)"; g.setLineDash([6, 5]); g.strokeRect(410, 330, 220, 110); g.setLineDash([]);
+  label(g, "UNKNOWN", 520, 355, "#8fa6c9", 13, "center", 800); label(g, "m₁ / m₂ = ?", 520, 400, "#ffffff", 30, "center", 900);
+  label(g, "press START EXPERIMENT", 520, 500, "#9fb0cc", 17, "center", 700);
+}
+function sceneRest(g){
+  var R = RUN.R, quiet = RUN.revealed && $("revealhost").classList.contains("on");
+  if (!quiet) sceneTitle(g, "CASE CLOSED", R.complete ? "m₁/m₂ = " + R.answer : "question pathway changed");
+  g.globalAlpha = quiet ? 0.3 : 1; bench(g, R.ok ? R.r : 1, { showP: !quiet, glow: R.ok }); g.globalAlpha = 1;
+}
+var SCENES = { load: sceneLoad, moles: sceneMoles, gas: sceneGas, scan: sceneScan, lock: sceneLock, check: sceneCheck, temp: sceneTemp, test: sceneTest, answer: sceneAnswer };
+function eqFor(name){
+  var R = RUN.R, k = R.k, p = R.p;
+  return { load: "cylinder 1: He m₁ + Ar m₂ ; cylinder 2: He m₂ + Ar m₁", moles: "n₁ = (" + k + "m₁ + m₂)/" + k + "M ; n₂ = (" + k + "m₂ + m₁)/" + k + "M", gas: "P₁/P₂ = n₁/n₂", scan: "(" + k + "r + 1) = " + p + "(" + k + " + r)",
+    lock: R.ok ? (k - p) + "r = " + (p * k - 1) + "  ⇒  r = " + fmt2(R.exact) : "no positive r", check: R.ok ? fmt2(R.n.n1) + " / " + fmt2(R.n.n2) + " = " + (R.n.n1 / R.n.n2).toFixed(3) : "—", temp: "P₁/P₂ = n₁RT / n₂RT" }[name] || "m₁/m₂ = (pk − 1)/(k − p)";
+}
+function whyFor(name){
+  return { load: "the same two masses sit in both cylinders — only the gases they belong to are swapped", moles: "He is 10 times lighter per mole, so a gram of He is 10 times as many molecules",
+    gas: "at the same V and T, pressure counts molecules — not their mass", scan: "more He in cylinder 1 means more moles there, and a higher P₁/P₂",
+    lock: "the ratio where the moles are exactly 5 : 1", check: "put the answer back: the moles come out 5 : 1", temp: "T multiplies both pressures by the same factor" }[name] || "the answer comes from counting moles";
+}
+function drawLab(st){
+  var c = $("labcv"), g = c.getContext("2d");
+  g.clearRect(0, 0, c.width, c.height);
+  hood(g);
+  if (st.name === "idle") sceneIdle(g);
+  else if (st.name === "rest") sceneRest(g);
+  else if (SCENES[st.name]) SCENES[st.name](g, st.f);
+  if (st.name !== "idle"){
+    if (SHOW.eq){ g.fillStyle = "rgba(8,14,26,.9)"; g.fillRect(40, 560, 960, 40); label(g, eqFor(st.name), 520, 580, "#ffffff", 16, "center", 800); }
+    if (SHOW.why){ g.fillStyle = "rgba(8,14,26,.9)"; g.fillRect(40, 92, 960, 34); label(g, "WHY?  " + whyFor(st.name), 520, 109, GOLD, 14, "center", 700); }
+    if (SHOW.obs){ g.fillStyle = "rgba(8,14,26,.9)"; g.fillRect(40, 30, 340, 40); label(g, "small blue = He · large orange = Ar", 210, 50, "#ffc48a", 13, "center", 700); }
+  }
+}
+
+/* =====================================================================
+   status, narration, instrument panel, answer panel
+   ===================================================================== */
+var STAGE_ORDER = ["load", "moles", "gas", "scan", "lock", "check", "temp", "test", "answer"];
+function stageKey(){ var sg = seg(); if (RUN.state === "setup") return null; if (RUN.done) return "answer"; return sg ? sg.kind : null; }
+function refreshStatus(){
+  var k = stageKey(), x = $("xstat"), txt, cls = "xstat", g;
+  if (RUN.state === "setup"){ txt = "Ready"; g = isCustom() ? "Custom conditions set — press RUN WITH CUSTOM VALUES." : "Set your values or use the question defaults. Press START EXPERIMENT to begin."; }
+  else if (RUN.done){ txt = "✓ Experiment complete"; cls += " done"; g = "Result obtained."; }
+  else if (k === "load" && RUN.u < 1.5){ txt = "Preparing experiment"; cls += " run"; g = "Preparing the apparatus…"; }
+  else if (k === "test"){ txt = "Analysing data"; cls += " ana"; g = "Analysing experimental evidence…"; }
+  else if (k === "answer"){ txt = "Calculation complete"; cls += " ana"; g = "Calculating the result…"; }
+  else { txt = "Experiment running"; cls += " run"; g = "Experiment running…"; }
+  if (RUN.paused){ txt = "Paused"; cls = "xstat"; g = "Paused — press Play."; }
+  x.className = cls; $("xstattxt").textContent = txt; $("guide").textContent = g;
+  var ki = STAGE_ORDER.indexOf(k), sp = document.querySelectorAll("#stages span"), i;
+  for (i = 0; i < sp.length; i++){ var j = STAGE_ORDER.indexOf(sp[i].getAttribute("data-s")); sp[i].className = k === null ? "" : (j < ki || RUN.done ? "done" : (j === ki ? "now" : "")); }
+}
+function refreshAnswerBox(){
+  var ab = $("answerbox"), open = RUN.revealed || earlyReveal;
+  $("apbar").style.width = (RUN.state === "setup" ? 0 : RUN.done ? 100 : Math.round(100 * elapsed() / TOTAL)) + "%";
+  if (open) return;
+  ab.classList.add("locked"); ab.classList.toggle("work", RUN.state === "running");
+  var k = stageKey();
+  $("ansval").textContent = RUN.state === "setup" ? "Investigating m₁/m₂…" : (RUN.done ? "Revealing…" : STAGE_MSG[k] || "…");
+  $("anssub").textContent = RUN.state === "setup" ? "The answer appears when the investigation finishes." : Math.round(100 * elapsed() / TOTAL) + "% of the investigation done";
+}
+function narrate(st){
+  var h = "", R = RUN.R, f = st.f, k = R.k, p = R.p;
+  if (RUN.state === "setup") h = "Two cylinders, swapped masses, one unknown ratio. " + (isCustom() ? "Custom values are loaded — press <b>RUN WITH CUSTOM VALUES</b>." : "The question's values are loaded — press <b>START EXPERIMENT</b>.");
+  else if (RUN.done) h = R.complete ? "<span class=gd>Case closed.</span> With M(Ar) = " + k + " M(He) and P₁ = " + p + " P₂, the masses must be in the ratio <b>m₁/m₂ = " + R.answer + "</b>."
+    : (R.ok ? "<span class=o>Your values give m₁/m₂ = " + R.answer + "</span> — not the question's numbers. Restore them to answer the question." : "<span class=o>No positive ratio works for your values.</span> Restore the question's numbers.");
+  else switch (st.name){
+    case "load": h = "<b>Input:</b> cylinder 1 gets <b>m₁ of He</b> and <b>m₂ of Ar</b>; cylinder 2 gets the same two masses the other way round. Both are held at the same volume and temperature."; break;
+    case "moles": h = f < 0.5 ? "<b>Mass is not moles.</b> Ar is " + k + " times heavier per mole, so a mass m₂ of He holds " + k + " times as many molecules as the same mass of Ar." : "In units of m₂/(" + k + "M): <b>n₁ = " + k + "·(m₁/m₂) + 1</b> and <b>n₂ = " + k + " + (m₁/m₂)</b>. If m₁ = m₂ both are " + (k + 1) + " — equal."; break;
+    case "gas": h = "<b>PV = nRT.</b> Same V and T in both cylinders, so the pressure the piston must apply is proportional to the moles inside: <b>P₁/P₂ = n₁/n₂</b>."; break;
+    case "scan": var r = trialAt("scan", f), pr = pRatio(r, k); h = R.ok ? "<b>Scanning:</b> trial m₁/m₂ = " + r.toPrecision(4) + " gives P₁/P₂ = " + pr.toFixed(3) + (Math.abs(pr - p) < 1e-3 ? " — on target." : pr > p ? " — too high, lower m₁." : " — too low, raise m₁.") + " Each step halves the gap." : "<b>No ratio works:</b> n₁/n₂ can only lie between 1/" + k + " and " + k + ", so " + p + " is out of reach."; break;
+    case "lock": h = R.ok ? "<b>Pistons locked level.</b> At m₁/m₂ = " + R.r.toFixed(4) + " cylinder 1 holds exactly " + p + " times the moles of cylinder 2 — the formula (p·k − 1)/(k − p) agrees: " + fmt2(R.exact) + "." : "The pistons cannot be balanced at these values."; break;
+    case "check": h = R.ok ? "<b>Back-check:</b> n₁ = " + fmt2(R.n.n1) + ", n₂ = " + fmt2(R.n.n2) + ", n₁/n₂ = " + (R.n.n1 / R.n.n2).toFixed(4) + " = " + p + " ✓." : "Nothing to check."; break;
+    case "temp": h = "<b>Temperature test:</b> heating both cylinders doubles both pressures — the ratio stays put. T cancels, which is why the question never gives it."; break;
+    case "test": h = "<b>Result audit:</b> the lab tries the two common wrong answers — the pressure ratio itself, and the ratio read backwards — and shows why each fails."; break;
+    case "answer": h = "<b>Analysis complete.</b> Rounding to two decimal places…"; break;
+  }
+  $("narr").innerHTML = h;
+  var stp = { load: 1, moles: 2, gas: 3, scan: 4, lock: 5, check: 6, temp: 7 };
+  $("trialtag").textContent = stp[st.name] ? "step " + stp[st.name] + " of 7" : (RUN.done ? "case closed" : st.name === "idle" ? "step 1 of 7" : "audit");
+  $("scenet").textContent = RUN.done ? "Experiment complete" : "Twin-cylinder pressure lab";
+}
+function updateReadouts(st){
+  var R = RUN.R, n = st.name, f = st.f, k = R.k;
+  var step = { load: "1 · load", moles: "2 · mass → moles", gas: "3 · PV = nRT", scan: "4 · scan", lock: "5 · lock", check: "6 · back-check", temp: "7 · temperature", test: "audit", answer: "audit" };
+  $("g_st").textContent = step[n] || (RUN.done ? "complete" : "—");
+  var T = n === "temp" ? R.T * (1 + ease((f - 0.2) / 0.5)) : R.T;
+  $("g_T").textContent = n === "idle" ? "—" : Math.round(T) + " K";
+  $("g_pr").textContent = RUN.done ? 100 : Math.round(100 * elapsed() / TOTAL);
+  var r = n === "idle" || n === "load" ? null : (RUN.done ? (R.ok ? R.r : null) : trialAt(n, f));
+  if (n === "test" || n === "answer") r = R.ok ? R.r : null;
+  $("g_r").textContent = r ? r.toPrecision(5) : "—";
+  var m = r ? moles(r, k) : null;
+  $("g_n1").textContent = m ? m.n1.toPrecision(5) : "—";
+  $("g_n2").textContent = m ? m.n2.toPrecision(5) : "—";
+  $("g_p").textContent = m ? (m.n1 / m.n2).toFixed(4) : "—";
+  $("g_vol").textContent = n === "idle" ? "—" : (n === "lock" || n === "check" || n === "temp" || n === "test" || n === "answer" || RUN.done) && R.ok ? "V₁ = V₂ ✓ locked" : "V₁ = V₂ (held)";
+  $("g_v").textContent = RUN.done || n === "check" || n === "temp" || n === "test" || n === "answer" ? (R.ok ? R.answer : "none") : "—";
+  $("gz_v").classList.toggle("hot", RUN.done && R.complete);
+  var ns = n === "scan" ? scanIndex(f) + 1 : (STAGE_ORDER.indexOf(n) > 3 || RUN.done ? R.scan.length : 0);
+  drawCurve(r || (n === "idle" ? null : 1), ns);
+  drawBars(r || 1);
+}
+function refreshUI(){
+  var go = $("gobtn"), runn = RUN.state === "running", custom = isCustom();
+  go.hidden = false; go.disabled = runn; go.classList.toggle("custom", custom && !runn);
+  if (runn) go.innerHTML = "● RUNNING…";
+  else if (RUN.state === "done"){ go.innerHTML = "⚙&nbsp; RUN WITH CUSTOM VALUES"; go.hidden = sameD(RUN.D, copyST()); }
+  else go.innerHTML = custom ? "⚙&nbsp; RUN WITH CUSTOM VALUES" : "▶&nbsp; START EXPERIMENT";
+  $("pausebtn").disabled = !runn; $("pausebtn").textContent = RUN.paused ? "Play" : "Pause";
+  $("replaybtn").hidden = RUN.state !== "done";
+  var s = $("status"); s.className = "status" + (custom ? " custom" : "");
+  s.textContent = custom ? "⚙ USING CUSTOM VALUES" : "✓ QUESTION VALUES LOADED";
+  var q = document.querySelectorAll("#fields select, #resetq"), i; for (i = 0; i < q.length; i++) q[i].disabled = runn;
+  $("gomsg").innerHTML = runn ? "The investigation runs by itself — nothing to click. <b>Pause</b> any time." : RUN.state === "done" ? "Press <b>REPLAY</b> to watch it again, or change a condition and run a custom experiment." : (custom ? "Your conditions will be used; the lab will say if the question's pathway no longer applies." : "Nothing needs to be chosen. Press <b>START EXPERIMENT</b>.");
+  refreshStatus();
+}
+
+/* =====================================================================
+   pressure explorer - three sliders and a solve button
+   ===================================================================== */
+var XP = { r: 1, k: +Q.k, p: +Q.p, solved: false };
+function drawExplorer(){
+  var c = $("mol"), g = c.getContext("2d"), n = moles(XP.r, XP.k), sc = dotScale(n), pr = n.n1 / n.n2;
+  var bg = g.createLinearGradient(0, 0, 0, c.height); bg.addColorStop(0, "#0b1120"); bg.addColorStop(1, "#070a12"); g.fillStyle = bg; g.fillRect(0, 0, c.width, c.height);
+  drawCyl(g, 70, 130, 220, 230, n.he1, n.ar1, 300, sc, 11, { label: "cylinder 1", P: pr, glow: Math.abs(pr - XP.p) < 0.005 });
+  drawCyl(g, 430, 130, 220, 230, n.he2, n.ar2, 300, sc, 23, { label: "cylinder 2", P: 1, glow: Math.abs(pr - XP.p) < 0.005 });
+  label(g, "P₁/P₂ = " + pr.toFixed(3) + "   (needed " + XP.p + ")", 360, 30, Math.abs(pr - XP.p) < 0.005 ? "#3ee39a" : "#ffd79a", 18, "center", 900);
+}
+function showInfo(){
+  var n = moles(XP.r, XP.k), pr = n.n1 / n.n2, ok = XP.p > 1 / XP.k && XP.p < XP.k, sol = exact(XP.k, XP.p);
+  $("x_rv").textContent = XP.r.toFixed(2); $("x_kv").textContent = XP.k.toFixed(2).replace(/\.00$/, ""); $("x_pv").textContent = XP.p.toFixed(1).replace(/\.0$/, "");
+  $("xinfo").innerHTML = "<h3>At these values</h3><table><tr><th>n₁ (units m₂/kM)</th><td>" + n.n1.toPrecision(5) + "</td></tr><tr><th>n₂</th><td>" + n.n2.toPrecision(5) + "</td></tr><tr><th>P₁/P₂ = n₁/n₂</th><td><b>" + pr.toFixed(4) + "</b></td></tr>"
+    + "<tr><th>Needed</th><td>" + XP.p + "</td></tr><tr><th>Solution m₁/m₂</th><td>" + (!ok ? "none — p must lie between 1/k and k" : XP.solved ? "<b>" + fmt2(sol) + "</b> = (p·k − 1)/(k − p)" : "press SOLVE") + "</td></tr></table>"
+    + "<p style='font-size:13px;color:var(--text-secondary);margin-top:8px'>" + (Math.abs(XP.k - +Q.k) < 1e-9 && Math.abs(XP.p - +Q.p) < 1e-9 ? "These are the question's numbers — press SOLVE to find the ratio." : "Press ↺ to return to the question's numbers.") + "</p>";
+}
+function wireExplorer(){
+  var set = function(id, key){ $(id).addEventListener("input", function(){ XP[key] = parseFloat(this.value); if (key !== "r") XP.solved = false; showInfo(); }); };
+  set("x_r", "r"); set("x_k", "k"); set("x_p", "p");
+  $("x_solve").addEventListener("click", function(){ var s = exact(XP.k, XP.p); XP.solved = true; if (XP.p > 1 / XP.k && XP.p < XP.k){ XP.r = clamp(s, 0.1, 20); $("x_r").value = XP.r; } showInfo(); });
+  $("x_reset").addEventListener("click", function(){ XP.r = 1; XP.solved = false; XP.k = +Q.k; XP.p = +Q.p; $("x_r").value = 1; $("x_k").value = XP.k; $("x_p").value = XP.p; showInfo(); });
+  $("mol").addEventListener("keydown", function(e){ if (e.key === "ArrowRight"){ XP.r = clamp(XP.r + 0.1, 0.1, 20); } else if (e.key === "ArrowLeft"){ XP.r = clamp(XP.r - 0.1, 0.1, 20); } else return; $("x_r").value = XP.r; showInfo(); e.preventDefault(); });
+  showInfo();
+}
+function pickMol(){}
+
+/* =====================================================================
+   the answer reveal - EUREKA
+   ===================================================================== */
+function blink(id){ var e = $(id); if (!e) return; e.classList.remove("blink"); void e.offsetWidth; e.classList.add("blink"); setTimeout(function(){ e.classList.remove("blink"); }, 2300); }
+function doReveal(){
+  if (!RUN.done){ earlyReveal = true; refreshGate(); return; }
+  var lab = $("lab3d");
+  lab.classList.add("dim"); $("blackout").classList.add("on");
+  setTimeout(function(){
+    $("blackout").classList.remove("on"); $("donebanner").classList.remove("on");
+    if (!REDUCED){ var f = $("flashout"); f.classList.remove("go"); void f.offsetWidth; f.classList.add("go"); lab.classList.remove("zoom"); void lab.offsetWidth; lab.classList.add("zoom"); }
+    RUN.revealed = true;
+    mountReveal(); refreshGate();
+    var ab = $("answerbox"); ab.classList.remove("celebrate"); void ab.offsetWidth; ab.classList.add("celebrate");
+    setTimeout(function(){ ab.classList.remove("celebrate"); }, 3200);
+    blink("ansval"); blink("grafT"); blink("g_v");
+    setTimeout(function(){ lab.classList.remove("dim"); }, 5200);
+  }, 950);
+}
+function mountReveal(){
+  var host = $("revealhost"), R = RUN.R, ok = R.complete, ion = R.ok;
+  host.innerHTML = ""; host.classList.add("on");
+  var main = ok ? "m₁/m₂ = " + R.answer : "PATHWAY CHANGED";
+  var svg = mk("svg", { viewBox: "0 0 720 380", "class": "graf", role: "img", "aria-label": (ok ? "Congratulations. Answer found: correct options " : "") + main }, host);
+  var d = mk("defs", {}, svg), sp = mk("filter", { id: "spray", x: "-14%", y: "-40%", width: "128%", height: "180%" }, d);
+  mk("feTurbulence", { type: "fractalNoise", baseFrequency: "0.045 0.09", numOctaves: "3", seed: "7", result: "nz" }, sp);
+  mk("feDisplacementMap", { "in": "SourceGraphic", in2: "nz", scale: "6", xChannelSelector: "R", yChannelSelector: "G" }, sp);
+  var bh = mk("g", {}, svg);
+  if (ok){
+    var gr = [["CHEMISTRY MASTER!", 118, 26, -6, "#ff9350"], ["EUREKA!", 628, 30, 8, "#a99bff"], ["CORRECT!", 84, 190, -12, "#3ee39a"], ["P ∝ n", 118, 348, -6, "#7fc8ff"], [(R.k - R.p) + "m₁ = " + (R.p * R.k - 1) + "m₂", 360, 364, 3, "#ffae5a"], [fmt2(R.n.n1) + " : " + fmt2(R.n.n2) + " = " + R.p + " : 1", 606, 348, 7, "#c8e04a"]], i;
+    for (i = 0; i < gr.length; i++) tx(svg, gr[i][1], gr[i][2], gr[i][0], { "text-anchor": "middle", "font-size": 22, "font-weight": 900, fill: gr[i][4], opacity: 0.85, transform: "rotate(" + gr[i][3] + " " + gr[i][1] + " " + gr[i][2] + ")", filter: "url(#spray)", "font-family": "ui-rounded,'Comic Sans MS','Marker Felt',cursive" });
+  }
+  tx(svg, 360, 58, ok ? "🎉  ANSWER FOUND!  🎉" : "THE QUESTION'S PATHWAY DOES NOT APPLY", { "text-anchor": "middle", "font-size": ok ? 22 : 17, "font-weight": 900, fill: ok ? "#3ee39a" : "#ffb4b4", "letter-spacing": "2" });
+  tx(svg, 360, 86, ok ? "CONGRATULATIONS!" : "restore the question conditions", { "text-anchor": "middle", "font-size": 13, "font-weight": 800, fill: "#9fb0cc", "letter-spacing": "5" });
+  mk("rect", { x: 170, y: 104, width: 380, height: 150, rx: 16, fill: "rgba(8,20,16,.72)", stroke: ok ? "#3ee39a" : "#ff6b6b", "stroke-width": 2 }, svg);
+  tx(svg, 360, 128, ok ? "THE ANSWER" : "CUSTOM RUN", { "text-anchor": "middle", "font-size": 12, "font-weight": 800, fill: "#9ff0c9", "letter-spacing": "6" });
+  var gg = mk("g", { transform: "translate(360,206) skewX(-9)" }, svg), fs = ok ? 50 : 40;
+  tx(gg, 7, 9, main, { "text-anchor": "middle", "font-size": fs, "font-weight": 900, fill: "#a99bff", opacity: 0.34, filter: "url(#spray)" });
+  tx(gg, 0, 0, main, { id: "grafT", "text-anchor": "middle", "font-size": fs, "font-weight": 900, fill: ok ? "#3ee39a" : "#ffb4b4", filter: "url(#spray)" });
+  tx(svg, 360, 284, ok ? "You balanced the pistons by counting molecules." : ion ? "Your values give m₁/m₂ = " + R.answer + " — not the question's numbers." : "No positive m₁/m₂ works for your values.", { "text-anchor": "middle", "font-size": 15, "font-weight": 700, fill: "#eef3ff" });
+  tx(svg, 360, 306, "k = " + R.k + "  ·  p = " + R.p + (ion ? "  ·  n₁ : n₂ = " + fmt2(R.n.n1) + " : " + fmt2(R.n.n2) : ""), { "text-anchor": "middle", "font-size": 14, fill: "#9fb0cc" });
+  if (!REDUCED && ok) makeBurst(bh);
+}
+function makeBurst(host){
+  burst = [];
+  var i, n = 90, GL = ["He", "Ar", "n", "P", "✦", "●", "◆", "✓"], a, sp2, conf, node, cols = ["#3ee39a", "#a99bff", "#54a9ff", "#ff9350", "#c8e04a"];
+  for (i = 0; i < n; i++){
+    a = Math.random() * Math.PI * 2; sp2 = 90 + Math.random() * 300; conf = i % 3 === 0;
+    node = conf ? mk("rect", { x: -4, y: -3, width: 8, height: 6, rx: 1.5, fill: cols[i % 5] }, host) : tx(host, 0, 0, GL[i % GL.length], { "text-anchor": "middle", "font-size": 11 + Math.random() * 8, fill: cols[i % 5], "font-weight": 800 });
+    burst.push({ n: node, x: 360, y: 190, vx: Math.cos(a) * sp2, vy: Math.sin(a) * sp2 - 70, life: 0, max: 1.6 + Math.random() * 1.2, rot: Math.random() * 360, vr: (Math.random() - 0.5) * 540 });
+  }
+}
+function stepBurst(dt){
+  var i, b;
+  for (i = 0; i < burst.length; i++){
+    b = burst[i]; if (b.life > b.max){ b.n.setAttribute("opacity", 0); continue; }
+    b.life += dt; b.vy += 420 * dt; b.x += b.vx * dt; b.y += b.vy * dt; b.rot += b.vr * dt;
+    b.n.setAttribute("opacity", Math.max(0, 1 - b.life / b.max).toFixed(2));
+    b.n.setAttribute("transform", "translate(" + b.x.toFixed(1) + "," + b.y.toFixed(1) + ") rotate(" + b.rot.toFixed(0) + ")");
+  }
+}
+function refreshGate(){
+  var open = RUN.revealed || earlyReveal, ab = $("answerbox"), i, li, k;
+  $("solgate").hidden = open; $("solbody").hidden = !open;
+  if (open){
+    ab.classList.remove("locked", "work");
+    $("ansval").textContent = ANS;
+    $("anssub").textContent = "m₁/m₂ = " + (QRUN.p * QRUN.k - 1) + "/" + (QRUN.k - QRUN.p);
+    $("apbar").style.width = "100%";
+    $("revealnow").hidden = true;
+    $("solans").textContent = ANS; $("clsans").textContent = ANS + "  (m₁/m₂ = " + (QRUN.p * QRUN.k - 1) + "/" + (QRUN.k - QRUN.p) + ")";
+    $("solintro").innerHTML = RUN.revealed ? "<b>The lab found this.</b> Here is the same reasoning on paper — each step points back to what you watched." : "Revealed early — run the experiment to watch each of these steps happen.";
+  } else {
+    $("revealnow").hidden = false; $("solans").textContent = "—"; $("clsans").textContent = "— run the experiment";
+    $("solintro").textContent = "Run the experiment — the solution opens with the answer.";
+    refreshAnswerBox();
+  }
+
+}
+
+/* =====================================================================
+   the loop - one virtual clock, so Pause and speed govern everything
+   ===================================================================== */
+var last = 0, slow = 0;
+function loop(ts){
+  var dt = last ? (ts - last) / 1000 : 0; last = ts;
+  if (dt > 0.06) dt = 0.06;
+  var running = RUN.state === "running" && !RUN.paused;
+  if (running) stepTimeline(dt * RUN.speed);
+  if (!RUN.paused) clock += dt * (running ? RUN.speed : 1) * (REDUCED ? 0.3 : 1);
+  var st = currentState(); NOW = st;
+  drawLab(st);
+  drawExplorer();
+  if (burst.length) stepBurst(dt);
+  slow += dt;
+  if (slow > 0.08){ slow = 0; updateReadouts(st); narrate(st); refreshStatus(); if (!RUN.revealed && !earlyReveal) refreshAnswerBox(); }
+  requestAnimationFrame(loop);
+}
+
+/* =====================================================================
+   wiring
+   ===================================================================== */
+function afterEdit(){ readAll(); if (RUN.state === "setup"){ RUN.D = copyST(); RUN.R = run(RUN.D); } refreshUI(); }
+function toggleClassroom(){
+  RUN.classroom = !RUN.classroom;
+  document.body.classList.toggle("classroom", RUN.classroom);
+  $("classbtn").setAttribute("aria-pressed", RUN.classroom ? "true" : "false");
+  $("classbtn").textContent = RUN.classroom ? "EXIT CLASSROOM MODE" : "CLASSROOM MODE";
+  if (RUN.classroom) try { $("deck").scrollIntoView({ behavior: REDUCED ? "auto" : "smooth", block: "start" }); } catch (e) {}
+}
+function build(){
+  $("fields").innerHTML = fieldsHTML();
+  var i;
+  for (i = 0; i < FIELDS.length; i++) $("in_" + FIELDS[i].k).addEventListener("change", afterEdit);
+  $("resetq").addEventListener("click", resetAll);
+  $("gobtn").addEventListener("click", function(){ if (RUN.state !== "running") startRun(); });
+  $("pausebtn").addEventListener("click", function(){ RUN.paused = !RUN.paused; refreshUI(); });
+  $("replaybtn").addEventListener("click", function(){ startRun(RUN.D); });
+  $("resetbtn").addEventListener("click", resetAll);
+  $("classbtn").addEventListener("click", toggleClassroom);
+  $("revealnow").addEventListener("click", function(){ earlyReveal = true; refreshGate(); });
+  $("gotolab").addEventListener("click", function(){ $("lab").scrollIntoView({ behavior: REDUCED ? "auto" : "smooth" }); });
+  var tg = function(id, key){ $(id).addEventListener("click", function(){ SHOW[key] = !SHOW[key]; this.setAttribute("aria-pressed", SHOW[key] ? "true" : "false"); }); };
+  tg("t_eq", "eq"); tg("t_obs", "obs"); tg("t_why", "why");
+  $("t_cmp").addEventListener("click", function(){ $("explorer").scrollIntoView({ behavior: REDUCED ? "auto" : "smooth" }); $("xinfo").classList.add("blink"); setTimeout(function(){ $("xinfo").classList.remove("blink"); }, 2300); });
+  $("t_rot").addEventListener("click", function(){ $("explorer").scrollIntoView({ behavior: REDUCED ? "auto" : "smooth" }); $("mol").focus(); });
+  var sb = document.querySelectorAll("#spd button");
+  for (i = 0; i < sb.length; i++) sb[i].addEventListener("click", function(){
+    RUN.speed = parseFloat(this.getAttribute("data-s"));
+    for (var j = 0; j < sb.length; j++) sb[j].setAttribute("aria-pressed", sb[j] === this ? "true" : "false");
+  });
+  $("themebtn").addEventListener("click", function(){
+    var r = document.documentElement, dark = r.getAttribute("data-theme") === "dark" || (!r.getAttribute("data-theme") && matchMedia("(prefers-color-scheme: dark)").matches);
+    r.setAttribute("data-theme", dark ? "light" : "dark");
+  });
+  wireExplorer();
+  readAll(); drawLog(); refreshGate(); refreshUI(); refreshAnswerBox();
+  requestAnimationFrame(loop);
+}
+if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", build); else build();
+
+/* exposed for the headless test harness */
+window.PX = {
+  Q: Q, ST: ST, RUN: RUN, run: run, moles: moles, pRatio: pRatio, exact: exact, bisect: bisect,
+  answer: function(){ return ANS; }, qrun: function(){ return QRUN; },
+  start: function(){ startRun(); }, replay: function(){ startRun(RUN.D); }, reset: resetAll,
+  pause: function(){ RUN.paused = !RUN.paused; refreshUI(); }, speed: function(s){ RUN.speed = s; },
+  setField: function(k, v){ $("in_" + k).value = v; afterEdit(); },
+  stage: stageKey, cards: function(){ return RUN.cards; }, badges: function(){ return RUN.badges; }, trial: function(){ return RUN.trial; },
+  calcKeys: calcKeys, now: function(){ return NOW; }, explorer: XP, pickMol: pickMol
+};
+})();
+</script>
+</body>
+</html>

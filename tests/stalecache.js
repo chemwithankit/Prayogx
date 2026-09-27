@@ -109,6 +109,8 @@ const META=R+'/simulations/2026/paper-2/chemistry/adv-2026-p2-che-q16/meta.json'
   console.log('\n=== the same visitor, same browser, returns ===');
   await p.goto(S,{waitUntil:'networkidle'}); await sleep(900);
   await p.reload({waitUntil:'networkidle'}); await sleep(900);
+  /* the grid draws 24 cards per batch; expand it so every card is in the DOM */
+  for (let i=0; i<20 && await p.$('#more'); i++) { await p.click('#more'); await sleep(300); }
   const link = await p.evaluate(()=>{
     const a=[...document.querySelectorAll('article.card a.open')]
       .find(x=>x.getAttribute('href').indexOf('Q16')>=0);
