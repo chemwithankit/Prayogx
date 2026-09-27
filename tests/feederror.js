@@ -1,3 +1,4 @@
+/* the website and the app draw 24 cards per batch; a card count adds the "(M left)" behind Show more */
 const ROOT = process.env.PRAYOGX_ROOT || require('path').resolve(__dirname, '..');
 /* the library size comes from the canonical source, so adding a simulation never breaks this suite */
 const NSIMS = JSON.parse(require('fs').readFileSync(ROOT + '/data/manifest.json', 'utf8')).simulations.length;
@@ -58,7 +59,7 @@ const ok = (l, c, x) => { n++; if (!c) bad++;
   const screen = () => p.evaluate(() => document.getElementById('screen').innerText);
   const toast = () => p.evaluate(() => { const t = document.getElementById('toast');
                                          return t.hidden ? '' : t.innerText; });
-  const cards = () => p.evaluate(() => document.querySelectorAll('.simcard').length);
+  const cards = () => p.evaluate(() => (document.querySelectorAll('.simcard').length + (+((document.body.innerText.match(/\((\d+) left\)/) || [0, 0])[1]))));
 
   // 1. a real feed, so the device has a stored library to protect
   pointAt(GOOD);

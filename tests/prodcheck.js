@@ -1,3 +1,4 @@
+/* the website and the app draw 24 cards per batch; a card count adds the "(M left)" behind Show more */
 const ROOT = process.env.PRAYOGX_ROOT || require('path').resolve(__dirname, '..');
 /* the library size comes from the canonical source, so adding a simulation never breaks this suite */
 const NSIMS = JSON.parse(require('fs').readFileSync(ROOT + '/data/manifest.json', 'utf8')).simulations.length;
@@ -28,7 +29,7 @@ const ok=(l,c,x)=>{n++;if(!c)bad++;console.log((c?'PASS  ':'FAIL  ')+l+(x!==unde
   console.log('\n--- catalogue ---');
   await p.goto(S,{waitUntil:'networkidle'});
   const cat = await p.evaluate(()=>({
-    cards:document.querySelectorAll('article.card').length,
+    cards:(document.querySelectorAll('article.card').length + (+((document.body.innerText.match(/\((\d+) left\)/) || [0, 0])[1]))),
     total:document.querySelector('.count.total .n').textContent,
     subjects:[...document.querySelectorAll('.count.subj .k')].map(x=>x.textContent),
     foot:document.getElementById('foot-src').textContent}));
@@ -38,9 +39,9 @@ const ok=(l,c,x)=>{n++;if(!c)bad++;console.log((c?'PASS  ':'FAIL  ')+l+(x!==unde
   // ------------------------------------------------------------------ search
   console.log('\n--- search ---');
   await p.fill('#q','kjeldahl'); await sleep(900);
-  ok('title-level search works', (await p.evaluate(()=>document.querySelectorAll('article.card').length))===1);
+  ok('title-level search works', (await p.evaluate(()=>(document.querySelectorAll('article.card').length + (+((document.body.innerText.match(/\((\d+) left\)/) || [0, 0])[1])))))===1);
   await p.fill('#q','finkelstein'); await sleep(700);
-  ok('prose-level search works (lazy blob)', (await p.evaluate(()=>document.querySelectorAll('article.card').length))>=1);
+  ok('prose-level search works (lazy blob)', (await p.evaluate(()=>(document.querySelectorAll('article.card').length + (+((document.body.innerText.match(/\((\d+) left\)/) || [0, 0])[1])))))>=1);
   await p.fill('#q','zzzznotathing'); await sleep(600);
   ok('a miss shows the empty state', await p.evaluate(()=>!!document.querySelector('.empty')));
   await p.fill('#q',''); await sleep(500);
@@ -48,13 +49,13 @@ const ok=(l,c,x)=>{n++;if(!c)bad++;console.log((c?'PASS  ':'FAIL  ')+l+(x!==unde
   // ----------------------------------------------------------------- filters
   console.log('\n--- filters ---');
   await p.selectOption('#fs','Chemistry'); await sleep(500);
-  ok('subject filter', (await p.evaluate(()=>document.querySelectorAll('article.card').length))===NSIMS);
+  ok('subject filter', (await p.evaluate(()=>(document.querySelectorAll('article.card').length + (+((document.body.innerText.match(/\((\d+) left\)/) || [0, 0])[1])))))===NSIMS);
   await p.selectOption('#fc','Solutions and Colligative Properties'); await sleep(500);
-  ok('chapter filter narrows', (await p.evaluate(()=>document.querySelectorAll('article.card').length))===3);
+  ok('chapter filter narrows', (await p.evaluate(()=>(document.querySelectorAll('article.card').length + (+((document.body.innerText.match(/\((\d+) left\)/) || [0, 0])[1])))))===3);
   const topics = await p.evaluate(()=>[...document.querySelectorAll('#ft option')].length);
   ok('topic options narrow to the chapter', topics>=2 && topics<=5, topics+' options');
   await p.click('#reset'); await sleep(500);
-  ok('reset restores everything', (await p.evaluate(()=>document.querySelectorAll('article.card').length))===NSIMS);
+  ok('reset restores everything', (await p.evaluate(()=>(document.querySelectorAll('article.card').length + (+((document.body.innerText.match(/\((\d+) left\)/) || [0, 0])[1])))))===NSIMS);
 
   // -------------------------------------------------------------- detail page
   console.log('\n--- simulation detail pages ---');
@@ -83,7 +84,7 @@ const ok=(l,c,x)=>{n++;if(!c)bad++;console.log((c?'PASS  ':'FAIL  ')+l+(x!==unde
      /Freundlich/i.test(await fresh.evaluate(()=>(document.querySelector('.detail h1')||{}).textContent||'')));
   await fresh.goto(S+'#/?s=Chemistry&c=Polymers',{waitUntil:'networkidle'}); await sleep(800);
   ok('a filtered deep link restores its filters',
-     (await fresh.evaluate(()=>document.querySelectorAll('article.card').length))===1);
+     (await fresh.evaluate(()=>(document.querySelectorAll('article.card').length + (+((document.body.innerText.match(/\((\d+) left\)/) || [0, 0])[1])))))===1);
   await fresh.goto(S+'s/ADV-2026-P2-CHE-Q14/',{waitUntil:'domcontentloaded'}); await sleep(400);
   const stub = await fresh.evaluate(()=>({t:document.title,
     go:(document.querySelector('a.go')||{}).getAttribute('href'),
@@ -100,13 +101,13 @@ const ok=(l,c,x)=>{n++;if(!c)bad++;console.log((c?'PASS  ':'FAIL  ')+l+(x!==unde
   await p.click('article.card h3 a'); await sleep(700);
   const onDetail = await p.evaluate(()=>!!document.querySelector('.detail'));
   await p.goBack(); await sleep(700);
-  const backList = await p.evaluate(()=>document.querySelectorAll('article.card').length);
+  const backList = await p.evaluate(()=>(document.querySelectorAll('article.card').length + (+((document.body.innerText.match(/\((\d+) left\)/) || [0, 0])[1]))));
   ok('browser back returns from a detail page to the catalogue', onDetail && backList===NSIMS, backList);
   await p.goForward(); await sleep(600);
   ok('forward returns to the detail page', await p.evaluate(()=>!!document.querySelector('.detail')));
   await p.click('a.back'); await sleep(700);   // we are on the detail page after goForward
   ok('the in-page back link also returns to the catalogue',
-     (await p.evaluate(()=>document.querySelectorAll('article.card').length))===NSIMS);
+     (await p.evaluate(()=>(document.querySelectorAll('article.card').length + (+((document.body.innerText.match(/\((\d+) left\)/) || [0, 0])[1])))))===NSIMS);
 
   // --------------------------------------------------------------- mobile
   console.log('\n--- mobile layout ---');
@@ -147,8 +148,8 @@ const ok=(l,c,x)=>{n++;if(!c)bad++;console.log((c?'PASS  ':'FAIL  ')+l+(x!==unde
   await ctx.setOffline(true); await sleep(400);
   await p.goto(S,{waitUntil:'domcontentloaded'}).catch(()=>{}); await sleep(1100);
   ok('the catalogue still renders when the browser reports offline',
-     (await p.evaluate(()=>document.querySelectorAll('article.card').length))===NSIMS,
-     await p.evaluate(()=>document.querySelectorAll('article.card').length));
+     (await p.evaluate(()=>(document.querySelectorAll('article.card').length + (+((document.body.innerText.match(/\((\d+) left\)/) || [0, 0])[1])))))===NSIMS,
+     await p.evaluate(()=>(document.querySelectorAll('article.card').length + (+((document.body.innerText.match(/\((\d+) left\)/) || [0, 0])[1])))));
   ok('and the offline banner appears', await p.evaluate(()=>!!document.querySelector('.offlinebar')));
   await ctx.setOffline(false);
 

@@ -1,3 +1,4 @@
+/* the website and the app draw 24 cards per batch; a card count adds the "(M left)" behind Show more */
 const ROOT = process.env.PRAYOGX_ROOT || require('path').resolve(__dirname, '..');
 /* the library size comes from the canonical source, so adding a simulation never breaks this suite */
 const NSIMS = JSON.parse(require('fs').readFileSync(ROOT + '/data/manifest.json', 'utf8')).simulations.length;
@@ -91,7 +92,7 @@ const freePort = () => new Promise(res => { const sv = net.createServer();
     const errs = []; p.on('pageerror', e => errs.push(e.message));
     await p.goto(S, { waitUntil: 'networkidle' }); await sleep(1100);
     const st = await p.evaluate(() => ({
-      cards: document.querySelectorAll('article.card').length,
+      cards: (document.querySelectorAll('article.card').length + (+((document.body.innerText.match(/\((\d+) left\)/) || [0, 0])[1]))),
       gate: !!document.getElementById('schemagate'),
       text: (document.getElementById('app') || document.body).innerText.slice(0, 180)
     }));
@@ -112,7 +113,7 @@ const freePort = () => new Promise(res => { const sv = net.createServer();
     if (pre) { await p.goto(A, { waitUntil: 'networkidle' }); await sleep(1500); setSchema(schema); }
     await p.goto(A, { waitUntil: 'networkidle' }); await sleep(1600);
     const st = await p.evaluate(() => ({
-      cards: document.querySelectorAll('.simcard').length,
+      cards: (document.querySelectorAll('.simcard').length + (+((document.body.innerText.match(/\((\d+) left\)/) || [0, 0])[1]))),
       gate: !!document.getElementById('schemagate'),
       searchHidden: document.getElementById('searchwrap').style.display === 'none',
       remembered: (function () { try { return localStorage.getItem('prayogx:v1:schemaBad'); } catch (e) { return 'n/a'; } })(),
@@ -170,7 +171,7 @@ const freePort = () => new Promise(res => { const sv = net.createServer();
   await a.ctx.route(u => u.port === String(PS), route => route.abort());
   await a.page.goto(A, { waitUntil: 'domcontentloaded' }); await sleep(1600);
   const offline = await a.page.evaluate(() => ({
-    cards: document.querySelectorAll('.simcard').length,
+    cards: (document.querySelectorAll('.simcard').length + (+((document.body.innerText.match(/\((\d+) left\)/) || [0, 0])[1]))),
     gate: !!document.getElementById('schemagate'),
     stored: !!JSON.parse(localStorage.getItem('prayogx:v1:index') || 'null') }));
   ok('it has a stored library to fall back on', offline.stored);

@@ -1,3 +1,4 @@
+/* the website and the app draw 24 cards per batch; a card count adds the "(M left)" behind Show more */
 const ROOT = process.env.PRAYOGX_ROOT || require('path').resolve(__dirname, '..');
 /* the library size comes from the canonical source, so adding a simulation never breaks this suite */
 const NSIMS = JSON.parse(require('fs').readFileSync(ROOT + '/data/manifest.json', 'utf8')).simulations.length;
@@ -50,7 +51,7 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
   const st = await p.evaluate(()=>window.__prayogx.state());
   ok('the library loads over the network', st.sims===NSIMS, st.sims+' simulations, feed '+st.catalog);
   const ui = await p.evaluate(()=>({
-    cards:document.querySelectorAll('.simcard').length,
+    cards:(document.querySelectorAll('.simcard').length + (+((document.body.innerText.match(/\((\d+) left\)/) || [0, 0])[1]))),
     tabs:document.querySelectorAll('.tabs button').length,
     title:document.getElementById('screenTitle').textContent
   }));
@@ -71,18 +72,18 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
   await p.click('[data-f="chapter"][data-v="Polymers"]'); await sleep(150);
   await p.click('#applyf'); await sleep(300);
   const filtered = await p.evaluate(()=>({
-    cards:document.querySelectorAll('.simcard').length,
+    cards:(document.querySelectorAll('.simcard').length + (+((document.body.innerText.match(/\((\d+) left\)/) || [0, 0])[1]))),
     chips:document.querySelectorAll('#chiprow button').length}));
   ok('a chapter filter applies and shows a removable chip',
      filtered.cards===1 && filtered.chips===1, filtered.cards+' card');
   await p.click('#chiprow button'); await sleep(250);
   ok('removing the chip restores the list',
-     (await p.evaluate(()=>document.querySelectorAll('.simcard').length))===NSIMS);
+     (await p.evaluate(()=>(document.querySelectorAll('.simcard').length + (+((document.body.innerText.match(/\((\d+) left\)/) || [0, 0])[1])))))===NSIMS);
 
   // search
   await p.fill('#q','kjeldahl'); await sleep(800);
   ok('search works against the same feed',
-     (await p.evaluate(()=>document.querySelectorAll('.simcard').length))===1);
+     (await p.evaluate(()=>(document.querySelectorAll('.simcard').length + (+((document.body.innerText.match(/\((\d+) left\)/) || [0, 0])[1])))))===1);
   await p.fill('#q',''); await sleep(400);
 
   // detail + open. The fixture only carries the last four simulation files, so
@@ -130,7 +131,7 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
   site.kill(); await sleep(600);
   await p.goto(A,{waitUntil:'domcontentloaded'}); await sleep(1200);
   const offl = await p.evaluate(()=>({
-    cards:document.querySelectorAll('.simcard').length,
+    cards:(document.querySelectorAll('.simcard').length + (+((document.body.innerText.match(/\((\d+) left\)/) || [0, 0])[1]))),
     sims:window.__prayogx.state().sims}));
   ok('with the site unreachable the library still opens from its stored copy',
      offl.cards===NSIMS, offl.cards+' cards');
