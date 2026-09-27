@@ -1,0 +1,1731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chemical Identity Lab — X, Y and Z (Cl₂, NCl₃, ClF₃) — JEE Advanced 2026 Paper 1 Q.6 | PrayogX</title>
+<meta name="description" content="A virtual chemistry lab: generate a greenish-yellow gas from MnO2 and conc. HCl, react it with ammonia and with fluorine at 573 K, build each product in 3D, test its shape, basicity and uses, and let the lab decide which statements about X, Y and Z are correct.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232a78d6'/%3E%3Cpath d='M12.5 6.5h7M13.6 6.5v7.2L7.9 24.1a1.5 1.5 0 0 0 1.3 2.3h13.6a1.5 1.5 0 0 0 1.3-2.3l-5.7-10.4V6.5' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M10.6 20.6h10.8' stroke='white' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E">
+<meta name="sim-id" content="ADV-2026-P1-CHE-Q06">
+<style>
+:root{
+  color-scheme: light;
+  --surface-0:#f4f4f1; --surface-1:#fcfcfb; --surface-2:#ececea;
+  --line:#d9d9d4; --line-strong:#bcbcb5;
+  --text-primary:#0b0b0b; --text-secondary:#52514e; --text-muted:#77766f;
+  --s1:#2a78d6; --s2:#eb6834; --s3:#1baf7a; --s4:#4a3aa7;
+  --good:#00743f; --bad:#c0392b; --accent:#2a78d6;
+  --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+  --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --serif:ui-serif,Georgia,"Times New Roman",serif;
+  --radius:10px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  color-scheme: dark;
+  --surface-0:#111110; --surface-1:#1a1a19; --surface-2:#232322;
+  --line:#34342f; --line-strong:#4a4a44;
+  --text-primary:#ffffff; --text-secondary:#c3c2b7; --text-muted:#95948b;
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#9085e9;
+  --good:#3fae7a; --bad:#e66767; --accent:#3987e5;
+}}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --surface-0:#111110; --surface-1:#1a1a19; --surface-2:#232322;
+  --line:#34342f; --line-strong:#4a4a44;
+  --text-primary:#ffffff; --text-secondary:#c3c2b7; --text-muted:#95948b;
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#9085e9;
+  --good:#3fae7a; --bad:#e66767; --accent:#3987e5;
+}
+*{box-sizing:border-box}
+[hidden]{display:none !important}
+body{margin:0;background:var(--surface-0);color:var(--text-primary);font-family:var(--sans);
+  font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px 80px}
+
+/* ---------- header ---------- */
+header.top{border-bottom:1px solid var(--line);background:var(--surface-1)}
+.top-inner{max-width:1180px;margin:0 auto;padding:22px 20px 18px;position:relative;
+  display:flex;flex-wrap:wrap;gap:16px;align-items:flex-start;justify-content:space-between}
+.simid{font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--text-muted)}
+h1{font-size:23px;line-height:1.25;margin:6px 0 10px;font-weight:640;max-width:660px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-size:11.5px;padding:3px 9px;border:1px solid var(--line-strong);border-radius:999px;
+  color:var(--text-secondary);background:var(--surface-2);white-space:nowrap}
+.chip.k{border-color:var(--accent);color:var(--accent);background:transparent}
+.answerbox{border:1px solid var(--line-strong);border-radius:var(--radius);background:var(--surface-2);
+  padding:12px 16px;min-width:220px}
+.answerbox .lbl{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted)}
+.answerbox .val{font-family:var(--mono);font-size:25px;font-weight:600;color:var(--good);line-height:1.22}
+.answerbox .sub{font-size:12px;color:var(--text-secondary)}
+.answerbox.locked .val{color:var(--text-muted);font-size:17px;letter-spacing:.04em}
+.answerbox .rv{margin-top:6px;font-size:11px;background:none;border:none;padding:0;color:var(--accent);
+  cursor:pointer;text-decoration:underline;font-family:var(--sans)}
+.themebtn{position:absolute;top:14px;right:16px;border:1px solid var(--line-strong);background:var(--surface-2);
+  color:var(--text-secondary);border-radius:8px;padding:4px 9px;font-size:12px;cursor:pointer}
+.brandbar{display:flex;align-items:center;gap:8px;margin-bottom:9px}
+.brandbar .pxmark{width:21px;height:21px;flex:none;display:block}
+.brandbar .wm{font-size:13px;font-weight:800;letter-spacing:.17em;color:var(--text-secondary);line-height:1}
+.brandbar .wm i{font-style:normal;color:var(--accent)}
+
+nav.jump{position:sticky;top:0;z-index:20;background:var(--surface-0);border-bottom:1px solid var(--line);
+  padding:8px 0;margin-bottom:26px}
+nav.jump ul{max-width:1180px;margin:0 auto;padding:0 20px;list-style:none;display:flex;gap:4px;overflow-x:auto}
+nav.jump a{display:block;padding:5px 11px;border-radius:7px;font-size:13px;text-decoration:none;
+  color:var(--text-secondary);white-space:nowrap}
+nav.jump a:hover{background:var(--surface-2);color:var(--text-primary)}
+
+section{margin:0 0 42px;scroll-margin-top:56px}
+h2{font-size:17px;font-weight:640;margin:0 0 4px;display:flex;align-items:baseline;gap:9px;flex-wrap:wrap}
+h2 .n{font-family:var(--mono);font-size:12px;color:var(--text-muted);font-weight:400}
+h2 .vb{font-size:12px;color:var(--text-muted);font-weight:400}
+h2.big{font-size:20px;letter-spacing:.02em}
+.lede{color:var(--text-secondary);font-size:13.5px;margin:0 0 16px;max-width:78ch}
+.panel{background:var(--surface-1);border:1px solid var(--line);border-radius:var(--radius);padding:18px}
+.panel h3{margin:0 0 12px;font-size:13px;letter-spacing:.05em;text-transform:uppercase;color:var(--text-muted);font-weight:600}
+.qtext{font-family:var(--serif);font-size:16px;line-height:1.7}
+.opts{list-style:none;padding:0;margin:14px 0 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(150px,100%),1fr));gap:9px}
+.opts li{border:1px solid var(--line);border-radius:10px;padding:9px 12px;background:var(--surface-1);
+  display:flex;align-items:baseline;gap:10px;font-family:var(--serif);font-size:16px}
+.opts li .k{font-family:var(--mono);font-size:12.5px;color:var(--text-muted)}
+.opts li .mark{margin-left:auto;font-family:var(--sans);font-size:11.5px;font-weight:600}
+.opts li.correct{border-color:var(--good);background:color-mix(in srgb,var(--good) 11%,transparent)}
+.opts li.correct .mark{color:var(--good)}
+.opts li.wrong{border-color:var(--bad)} .opts li.wrong .mark{color:var(--bad)}
+.assume{border-left:3px solid var(--s4);padding:8px 0 8px 13px;margin:14px 0 0;font-size:13.5px;color:var(--text-secondary)}
+.assume b{color:var(--text-primary)}
+
+/* ---------- the dashboard ---------- */
+.deck{border:1px solid var(--line);border-radius:var(--radius);padding:14px;
+  background:linear-gradient(180deg,var(--surface-1),color-mix(in srgb,var(--surface-2) 55%,var(--surface-1)));
+  box-shadow:0 1px 2px rgba(0,0,0,.04),0 10px 26px -18px rgba(0,0,0,.35)}
+.statusbar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding-bottom:11px;border-bottom:1px solid var(--line);margin-bottom:12px}
+.xstat{display:flex;align-items:center;gap:8px;font-size:12.5px;font-weight:700;letter-spacing:.03em;
+  padding:5px 12px;border-radius:999px;border:1px solid var(--line-strong);background:var(--surface-1);color:var(--text-secondary)}
+.xstat .dot{width:9px;height:9px;border-radius:50%;background:var(--text-muted)}
+.xstat.run .dot{background:var(--accent);animation:pulse 1.2s ease-in-out infinite}
+.xstat.ana .dot{background:var(--s4);animation:pulse 1.2s ease-in-out infinite}
+.xstat.done{border-color:var(--good);color:var(--good);background:color-mix(in srgb,var(--good) 10%,transparent)}
+.xstat.done .dot{background:var(--good)}
+@keyframes pulse{50%{opacity:.25}}
+.stages{display:flex;gap:5px;flex-wrap:wrap}
+.stages span{font-size:11px;padding:3px 9px;border-radius:999px;border:1px solid var(--line);color:var(--text-muted);white-space:nowrap}
+.stages span.now{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:650}
+.stages span.done{border-color:var(--good);color:var(--good)}
+.statusbar .sp{flex:1}
+.guide{font-size:12px;color:var(--text-muted)}
+
+.grid1{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:13px;align-items:start}
+.grid2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:13px;margin-top:13px}
+.grid1>*,.grid2>*{min-width:0}
+@media(max-width:960px){.grid1,.grid2{grid-template-columns:1fr !important}}
+
+/* the always-dark chamber */
+.lab3d{position:relative;border-radius:12px;padding:12px;overflow:hidden;
+  background:radial-gradient(90% 70% at 18% 8%,rgba(84,169,255,.16),transparent 60%),
+    radial-gradient(80% 70% at 88% 92%,rgba(255,147,80,.12),transparent 62%),
+    linear-gradient(170deg,#0d1322 0%,#070a12 55%,#0a0e1a 100%);
+  border:1px solid rgba(150,180,255,.16);box-shadow:inset 0 1px 0 rgba(255,255,255,.07),0 18px 40px -26px rgba(0,0,0,.9);
+  color:#eef3ff}
+.lab3d:before{content:"";position:absolute;inset:0;pointer-events:none;
+  background:repeating-linear-gradient(0deg,rgba(255,255,255,.028) 0 1px,transparent 1px 3px);opacity:.5;mix-blend-mode:overlay}
+.lab3d>*{position:relative}
+.lab3d .hd{display:flex;align-items:baseline;gap:9px;flex-wrap:wrap;margin-bottom:5px}
+.lab3d .hd h3{margin:0;font-size:11.5px;letter-spacing:.11em;text-transform:uppercase;color:#8fa6c9;font-weight:700}
+.lab3d .hd .st{font-size:10.5px;font-family:var(--mono);color:#9fb0cc;border:1px solid rgba(160,190,255,.2);border-radius:999px;padding:1px 8px}
+.lab3d .narr{font-size:12.5px;color:#c3d2ea;margin:0 0 8px;min-height:2.8em;line-height:1.42}
+.lab3d .narr b{color:#fff;font-family:var(--mono);font-weight:650}
+.lab3d .narr .a{color:#6fb6ff;font-weight:700} .lab3d .narr .o{color:#ffa56a;font-weight:700}
+.lab3d .narr .gd{color:#3ee39a;font-weight:700}
+.vwrap{position:relative;perspective:1000px}
+canvas#labcv{display:block;width:100%;height:auto;border-radius:10px;transform:rotateX(2.5deg);transform-origin:50% 100%}
+@media(max-width:560px){.vwrap{overflow:hidden}canvas#labcv{width:128%;max-width:none;margin-left:-14%}}
+@media(prefers-reduced-motion:reduce){canvas#labcv{transform:none}}
+.done-banner{position:absolute;left:50%;top:14px;transform:translateX(-50%) scale(.92);opacity:0;pointer-events:none;
+  background:rgba(10,30,24,.8);border:1px solid rgba(62,227,154,.6);color:#dfffee;border-radius:12px;padding:8px 18px;
+  font-weight:800;letter-spacing:.1em;font-size:14px;box-shadow:0 0 28px -6px rgba(62,227,154,.7);transition:.45s;white-space:nowrap}
+.done-banner.on{opacity:1;transform:translateX(-50%) scale(1)}
+.revealhost{position:absolute;inset:0;display:none;align-items:center;justify-content:center;z-index:6}
+.revealhost.on{display:flex}
+svg.graf{display:block;width:100%;height:auto}
+.blackout{position:absolute;inset:0;background:#000;opacity:0;pointer-events:none;transition:opacity .45s;z-index:4;border-radius:12px}
+.blackout.on{opacity:.86}
+.flashout{position:absolute;inset:0;background:radial-gradient(circle at 50% 45%,rgba(255,255,255,.95),rgba(120,255,200,.5) 35%,transparent 70%);
+  opacity:0;pointer-events:none;z-index:5;border-radius:12px}
+@keyframes flashpop{0%{opacity:0}18%{opacity:1}100%{opacity:0}}
+.flashout.go{animation:flashpop .85s ease-out 1}
+@media(prefers-reduced-motion:reduce){.flashout.go{animation:none}.blackout{transition:none}}
+.dim canvas#labcv{filter:brightness(.4) saturate(.8)}
+@media(prefers-reduced-motion:no-preference){.zoom{animation:zoomin 1.1s ease-out 1}}
+@keyframes zoomin{0%{transform:scale(1)}40%{transform:scale(1.035)}100%{transform:scale(1)}}
+
+/* the rail: inputs + live data */
+.rail{border:1px solid var(--line);border-radius:12px;padding:11px 12px;
+  background:color-mix(in srgb,var(--surface-1) 82%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  box-shadow:inset 0 1px 0 color-mix(in srgb,#fff 40%,transparent),0 8px 24px -18px rgba(0,0,0,.4);
+  display:flex;flex-direction:column;gap:9px}
+.rail h4{margin:0;font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--text-muted);font-weight:700}
+.rail .grp{border-top:1px dashed var(--line);padding-top:9px}
+.status{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:750;letter-spacing:.04em;border-radius:8px;padding:6px 9px;
+  border:1px solid var(--good);color:var(--good);background:color-mix(in srgb,var(--good) 10%,transparent)}
+.status.custom{border-color:var(--s4);color:var(--s4);background:color-mix(in srgb,var(--s4) 10%,transparent)}
+.fld{margin:7px 0 0}
+.fld .lb{display:flex;justify-content:space-between;align-items:baseline;gap:6px;font-size:12px;margin-bottom:4px;color:var(--text-secondary)}
+.fld .lb b{font-weight:600;color:var(--text-primary);font-family:var(--serif);font-size:13.5px}
+.fld .lb .u{font-size:10.5px;color:var(--text-muted);font-family:var(--mono);flex:none}
+.fld .rw{display:flex;gap:5px;align-items:center}
+.fld .rw input{flex:1;min-width:0;padding:6px 8px;border-radius:7px;border:1px solid var(--line-strong);background:var(--surface-0);
+  color:var(--text-primary);font-family:var(--mono);font-size:13.5px;text-align:center;font-weight:600}
+.fld .rw input:focus{outline:2px solid var(--accent);outline-offset:-1px}
+.fld .rw input.bad{border-color:var(--bad);background:color-mix(in srgb,var(--bad) 10%,transparent)}
+.fld .rw input:disabled{opacity:.55}
+.fld .rw button{flex:none;width:34px;height:34px;border-radius:7px;border:1px solid var(--line-strong);background:var(--surface-2);
+  color:var(--text-primary);font-size:16px;line-height:1;cursor:pointer;font-family:var(--mono);touch-action:manipulation}
+.fld .rw button.rs{font-size:13px}
+.fld .rw button:hover:not(:disabled){border-color:var(--accent);color:var(--accent)}
+.fld .rw button:disabled{opacity:.4;cursor:not-allowed}
+.fld .fh{font-size:10.5px;color:var(--text-muted);margin-top:2px;line-height:1.35;min-height:1.35em}
+.fld .fh.bad{color:var(--bad);font-weight:650}
+.railnote{font-size:11px;color:var(--text-muted);line-height:1.45;margin:0}
+button.resetq{width:100%;padding:8px 10px;border-radius:9px;border:1px solid var(--line-strong);background:var(--surface-2);
+  color:var(--text-primary);font-size:12.5px;font-weight:650;cursor:pointer;font-family:var(--sans)}
+button.resetq:hover{border-color:var(--accent);color:var(--accent)}
+.gauges{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(104px,100%),1fr));gap:6px}
+.gz{border:1px solid var(--line);border-radius:9px;background:var(--surface-2);padding:5px 8px;overflow:hidden}
+.gz .k{font-size:9.5px;letter-spacing:.04em;text-transform:uppercase;color:var(--text-muted);font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.gz .v{font-family:var(--mono);font-size:16px;font-weight:700;line-height:1.25;white-space:nowrap}
+.gz .u{font-size:9.5px;color:var(--text-muted);font-weight:400}
+.gz.a .v{color:var(--s1)} .gz.o .v{color:var(--s2)}
+.gz.hot{border-color:var(--good);background:color-mix(in srgb,var(--good) 11%,transparent)} .gz.hot .v{color:var(--good)}
+
+/* graphs */
+.graphcard{border:1px solid var(--line);border-radius:12px;background:var(--surface-1);padding:12px 14px}
+.graphcard h4{margin:0 0 4px;font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--text-muted);font-weight:700}
+.graphcard .gsub{font-size:11.5px;color:var(--text-muted);margin:0 0 4px}
+.chartwrap{position:relative}
+svg.chart{display:block;width:100%;height:auto;overflow:visible}
+.tip{position:absolute;pointer-events:none;background:var(--surface-1);border:1px solid var(--line-strong);border-radius:8px;padding:7px 10px;
+  font-size:12px;box-shadow:0 4px 14px rgba(0,0,0,.13);opacity:0;transition:opacity .1s;z-index:5;min-width:140px}
+.tip .t{font-family:var(--mono);font-size:11px;color:var(--text-muted);margin-bottom:3px}
+.tip .r{display:flex;gap:7px;white-space:nowrap} .tip .rv{margin-left:auto;font-family:var(--mono);font-weight:600}
+details.tbl{margin-top:6px;font-size:12.5px} details.tbl summary{cursor:pointer;color:var(--text-secondary)}
+
+/* calculation panel */
+.calc{margin-top:13px;border:1px solid var(--line);border-radius:12px;padding:12px 14px;
+  background:linear-gradient(180deg,var(--surface-1),var(--surface-2))}
+.calc .bt{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--text-muted);font-weight:700;margin-bottom:6px}
+.calc ol{list-style:none;margin:0;padding:0;display:grid;gap:5px}
+.calc li{display:grid;grid-template-columns:auto minmax(0,1fr);gap:10px;align-items:baseline;animation:cin .45s ease-out}
+@keyframes cin{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.calc li{animation:none}}
+.calc li .s{font-family:var(--mono);font-size:10.5px;color:#fff;background:var(--accent);border-radius:999px;padding:1px 7px;font-weight:700}
+.calc li .m{font-family:var(--serif);font-size:16px;line-height:1.55;min-width:0;overflow-x:auto}
+.calc li .m .w{display:block;font-family:var(--sans);font-size:11.5px;color:var(--text-muted)}
+.calc li .m .hl{color:var(--good);font-weight:700}
+.calc li .m .ar{color:var(--s1);font-weight:700} .calc li .m .or{color:var(--s2);font-weight:700}
+.calc .empty{font-size:12.5px;color:var(--text-muted);margin:0}
+table.data{border-collapse:collapse;font-size:12.5px;width:100%}
+table.data th,table.data td{border:1px solid var(--line-strong);padding:5px 8px;text-align:center}
+table.data th{background:var(--surface-2);font-weight:600;font-size:11.5px;color:var(--text-secondary)}
+table.data td.n{font-family:var(--mono)}
+tr.win td{background:color-mix(in srgb,var(--good) 12%,transparent);font-weight:700}
+.scrollx{overflow-x:auto}
+
+/* action bar */
+.actbar{display:flex;gap:9px;align-items:center;flex-wrap:wrap;margin-top:12px}
+button.go{flex:none;padding:13px 24px;border-radius:11px;border:none;background:var(--accent);color:#fff;font-size:15px;font-weight:780;
+  cursor:pointer;font-family:var(--sans);letter-spacing:.04em;box-shadow:0 4px 16px -6px color-mix(in srgb,var(--accent) 75%,transparent);transition:.18s}
+button.go:hover:not(:disabled){filter:brightness(1.09);transform:translateY(-1px)}
+button.go:disabled{opacity:.42;cursor:not-allowed;box-shadow:none;transform:none}
+button.go.custom{background:var(--s4)}
+button.ghost{flex:none;padding:8px 13px;border-radius:9px;border:1px solid var(--line-strong);background:var(--surface-1);color:var(--text-secondary);
+  font-size:12.5px;cursor:pointer;font-family:var(--sans);min-height:36px}
+button.ghost:hover:not(:disabled){border-color:var(--accent);color:var(--accent)}
+button.ghost:disabled{opacity:.4;cursor:not-allowed}
+button.ghost[aria-pressed=true]{border-color:var(--accent);color:var(--accent);background:color-mix(in srgb,var(--accent) 10%,transparent)}
+.spd{display:flex;gap:4px}
+.spd button{padding:7px 10px;font-size:11.5px;border-radius:7px;border:1px solid var(--line-strong);background:var(--surface-1);color:var(--text-secondary);cursor:pointer;font-family:var(--mono)}
+.spd button[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:#fff}
+.actbar .msg{flex:1 1 220px;min-width:0;font-size:12px;color:var(--text-secondary);line-height:1.4}
+.actbar .msg b{color:var(--text-primary)}
+
+@keyframes popblink{0%{transform:scale(1)} 12%{transform:scale(1.16)} 24%{transform:scale(1)}
+  38%{opacity:.2} 50%{opacity:1} 64%{opacity:.2} 76%{opacity:1} 88%{transform:scale(1.07)} 100%{transform:scale(1);opacity:1}}
+.blink{animation:popblink 2s ease-in-out 1;display:inline-block}
+@keyframes ringpulse{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--good) 55%,transparent)} 70%{box-shadow:0 0 0 14px transparent} 100%{box-shadow:0 0 0 0 transparent}}
+.celebrate{animation:ringpulse 1.5s ease-out 2}
+@media(prefers-reduced-motion:reduce){.blink,.celebrate,.zoom{animation:none}}
+
+/* solution + help */
+.gate{border:1px dashed var(--line-strong);border-radius:var(--radius);padding:24px 20px;text-align:center;background:var(--surface-1)}
+.gate h4{margin:0 0 6px;font-size:15px} .gate p{margin:0 0 12px;font-size:13px;color:var(--text-secondary)}
+ol.steps{list-style:none;counter-reset:s;padding:0;margin:0;display:grid;gap:10px}
+ol.steps li{min-width:0;counter-increment:s;border:1px solid var(--line);border-radius:var(--radius);background:var(--surface-1);
+  padding:14px 16px 14px 52px;position:relative}
+ol.steps li::before{content:counter(s);position:absolute;left:15px;top:14px;width:23px;height:23px;border-radius:50%;background:var(--accent);
+  color:#fff;font-size:12px;font-weight:700;display:grid;place-items:center;font-family:var(--mono)}
+ol.steps h4{margin:0 0 6px;font-size:14px;font-weight:640}
+ol.steps p{margin:0 0 6px;font-size:13.5px;color:var(--text-secondary)}
+.eq{min-width:0;font-family:var(--serif);font-size:15.5px;background:var(--surface-2);border-radius:7px;padding:9px 13px;margin:8px 0;overflow-x:auto}
+.eq .hl{color:var(--good);font-weight:700}
+.obsnote{border-left:3px solid var(--s1);padding:6px 0 6px 12px;margin:8px 0;font-size:13px;color:var(--text-secondary)}
+.obsnote b{color:var(--text-primary)}
+sub{font-size:.72em} sup{font-size:.72em}
+.verify{border:1px solid var(--good);border-radius:var(--radius);margin-top:12px;background:color-mix(in srgb,var(--good) 8%,transparent);padding:14px 16px;font-size:13.5px}
+.verify h4{margin:0 0 6px;font-size:13.5px;color:var(--good)}
+.verify ul{margin:6px 0 0;padding-left:18px;color:var(--text-secondary)} .verify li{margin-bottom:4px}
+.howto{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(250px,100%),1fr));gap:11px}
+.howto>div{border:1px solid var(--line);border-radius:11px;padding:12px 14px;background:linear-gradient(180deg,var(--surface-1),var(--surface-2))}
+.howto .n{font-family:var(--mono);font-size:10.5px;color:var(--accent);letter-spacing:.1em;font-weight:700}
+.howto h4{margin:3px 0 6px;font-size:14px}
+.howto p{margin:0;font-size:13px;color:var(--text-secondary);line-height:1.5}
+.howto p b{color:var(--text-primary)}
+.meta-tbl{width:100%;border-collapse:collapse;font-size:13.5px}
+.meta-tbl th,.meta-tbl td{padding:6px 0;border-bottom:1px solid var(--line);vertical-align:top;text-align:left}
+.meta-tbl th{color:var(--text-muted);width:150px;font-size:12.5px;padding-right:14px;font-weight:500}
+footer{border-top:1px solid var(--line);margin-top:40px;padding-top:16px;font-size:12px;color:var(--text-muted)}
+
+/* classroom mode */
+body.classroom nav.jump,body.classroom section:not(#lab),body.classroom header.top .chips,body.classroom footer,
+body.classroom .rail .inputs,body.classroom .spd,body.classroom details.tbl,body.classroom #lab>.lede{display:none !important}
+body.classroom .wrap{max-width:none;padding-left:18px;padding-right:18px}
+body.classroom .lab3d .narr{font-size:20px;line-height:1.45;color:#e8f0ff}
+body.classroom .lab3d .hd h3{font-size:15px}
+body.classroom .gz .v{font-size:24px} body.classroom .gz .k{font-size:12px}
+body.classroom .calc li .m{font-size:25px} body.classroom .calc li .m .w{font-size:15px}
+body.classroom .xstat{font-size:16px} body.classroom .stages span{font-size:14px}
+body.classroom button.go{font-size:19px;padding:16px 30px}
+body.classroom .graphcard h4{font-size:13px}
+body.classroom .actbar .msg{font-size:15px}
+
+/* Q03 additions */
+.fgrid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0 8px}
+.fgrid>*{min-width:0}
+.fld .rw input{width:100%}
+.fgrid .fld.full{grid-column:1/-1}
+.fld.half .rw button.rs{display:none}
+.fld.half .fh{font-size:10px}
+.chem{font-family:var(--serif);white-space:nowrap}
+#opts{grid-template-columns:repeat(auto-fit,minmax(min(250px,100%),1fr))}
+#opts li{flex-wrap:wrap}
+@media(max-width:560px){.vwrap{overflow:visible}canvas#labcv{width:100%;margin-left:0}}
+.rankline{font-family:var(--serif);font-size:17px;font-weight:700}
+.legend{display:flex;flex-wrap:wrap;gap:4px 12px;font-size:11.5px;color:var(--text-secondary);margin:2px 0 4px}
+.legend i{display:inline-block;width:14px;height:3px;border-radius:2px;vertical-align:middle;margin-right:5px}
+.shapes{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(170px,100%),1fr));gap:9px;margin:8px 0}
+.shapes>div{border:1px solid var(--line);border-radius:9px;padding:9px 11px;background:var(--surface-1);font-size:13px;color:var(--text-secondary)}
+.shapes b{color:var(--text-primary);font-family:var(--serif);font-size:15px}
+
+/* Q06 additions */
+svg.scheme{display:block;width:100%;max-width:660px;height:auto;margin:6px 0 10px}
+.unk{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:12px 0 4px}
+.unk>div{border:1px dashed var(--line-strong);border-radius:11px;padding:9px 10px;text-align:center;background:var(--surface-2);transition:.4s}
+.unk .k{font-size:10.5px;letter-spacing:.1em;color:var(--text-muted);font-weight:800}
+.unk .v{font-family:var(--serif);font-size:24px;font-weight:700;line-height:1.25}
+.unk>div.found{border-style:solid;border-color:var(--good);background:color-mix(in srgb,var(--good) 10%,transparent)}
+.unk>div.found .v{color:var(--good)}
+.unk>div.warn{border-style:solid;border-color:var(--bad)}
+.apbar{height:6px;border-radius:99px;background:var(--line);overflow:hidden;margin-top:6px}
+.apbar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--good));transition:width .3s}
+.answerbox.work .val{color:var(--accent);font-size:15px;letter-spacing:.02em}
+.board{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(230px,100%),1fr));gap:10px;margin-top:13px}
+.ocard{border:1px solid var(--line);border-radius:12px;padding:11px 13px;background:linear-gradient(180deg,var(--surface-1),var(--surface-2));transition:.4s}
+.ocard .h{display:flex;gap:8px;align-items:baseline}
+.ocard .h b{font-family:var(--mono);color:var(--text-muted)}
+.ocard .claim{font-family:var(--serif);font-size:15px}
+.ocard .ev{font-size:12.5px;color:var(--text-secondary);margin:6px 0 0;min-height:2.6em}
+.ocard .vd{margin-top:7px;font-weight:800;font-size:13px;letter-spacing:.04em;color:var(--text-muted)}
+.ocard.now{border-color:var(--accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 22%,transparent)}
+.ocard.yes{border-color:var(--good)} .ocard.yes .vd{color:var(--good)}
+.ocard.no{border-color:var(--bad)} .ocard.no .vd{color:var(--bad)}
+.ocard.na .vd{color:var(--s4)}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.badge{display:flex;align-items:center;gap:7px;border:1px solid var(--line);border-radius:999px;padding:5px 12px 5px 7px;font-size:12.5px;color:var(--text-muted);background:var(--surface-1);opacity:.55;transition:.5s}
+.badge .ic{font-size:17px;filter:grayscale(1)}
+.badge.on{opacity:1;color:var(--text-primary);border-color:var(--good);background:color-mix(in srgb,var(--good) 9%,var(--surface-1))}
+.badge.on .ic{filter:none}
+@keyframes badgepop{0%{transform:scale(1)}35%{transform:scale(1.14)}100%{transform:scale(1)}}
+.badge.pop{animation:badgepop .7s ease-out 1}
+@media(prefers-reduced-motion:reduce){.badge.pop{animation:none}}
+.tools{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.tools button{padding:6px 11px;border-radius:8px;border:1px solid var(--line-strong);background:var(--surface-1);color:var(--text-secondary);font-size:12px;cursor:pointer;font-family:var(--sans);min-height:34px}
+.tools button[aria-pressed=true]{border-color:var(--accent);color:var(--accent);background:color-mix(in srgb,var(--accent) 10%,transparent)}
+.tools button:focus-visible,.explorer button:focus-visible,button:focus-visible,select:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.explorer{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:13px;align-items:start}
+@media(max-width:860px){.explorer{grid-template-columns:1fr}}
+.xview{position:relative;border-radius:12px;overflow:hidden;background:linear-gradient(170deg,#0d1322,#070a12);border:1px solid rgba(150,180,255,.16)}
+canvas#mol{display:block;width:100%;height:auto;touch-action:none;cursor:grab}
+.xpick{display:flex;flex-wrap:wrap;gap:6px}
+.xpick button{padding:7px 14px;border-radius:9px;border:1px solid var(--line-strong);background:var(--surface-1);color:var(--text-primary);font-family:var(--serif);font-size:15px;cursor:pointer;min-height:36px}
+.xpick button[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:#fff}
+.xinfo table{width:100%;border-collapse:collapse;font-size:13px;margin-top:8px}
+.xinfo th{text-align:left;color:var(--text-muted);font-weight:500;padding:5px 8px 5px 0;width:44%;border-bottom:1px solid var(--line)}
+.xinfo td{padding:5px 0;border-bottom:1px solid var(--line);font-weight:600}
+.cards4{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr));gap:10px}
+.cards4>div{border:1px solid var(--line);border-radius:12px;padding:13px 15px;background:linear-gradient(180deg,var(--surface-1),var(--surface-2))}
+.cards4 h4{margin:0 0 6px;font-size:14px} .cards4 p{margin:0 0 6px;font-size:13px;color:var(--text-secondary)}
+.cards4 .eq{font-size:14px}
+.warnbox{border:1px solid var(--bad);border-radius:9px;padding:8px 10px;font-size:12px;color:var(--bad);background:color-mix(in srgb,var(--bad) 8%,transparent);margin-top:8px}
+.selrow{margin:7px 0 0} .selrow label{display:block;font-size:12px;color:var(--text-secondary);margin-bottom:3px}
+select.sel{display:block;width:100%;min-width:0;min-height:40px;padding:8px 10px;font:inherit;font-size:14px;color:var(--text-primary);background:var(--surface-1);border:1px solid var(--line-strong);border-radius:8px}
+select.sel:disabled{opacity:.6}
+
+.optv{display:inline-block;min-width:54px;text-align:center;padding:1px 8px;border-radius:999px;font-size:11.5px;font-weight:750;border:1px solid var(--line-strong);color:var(--text-muted)}
+.optv.t{border-color:var(--good);color:var(--good)} .optv.f{border-color:var(--bad);color:var(--bad)}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-inner">
+    <div>
+      <div class="brandbar"><svg class="pxmark" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><rect width="32" height="32" rx="8" fill="var(--accent)"/><path d="M12.5 6.5h7M13.6 6.5v7.2L7.9 24.1a1.5 1.5 0 0 0 1.3 2.3h13.6a1.5 1.5 0 0 0 1.3-2.3l-5.7-10.4V6.5" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.6 20.6h10.8" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg><span class="wm">PRAYOG<i>X</i></span></div>
+      <div class="simid">ADV-2026-P1-CHE-Q06</div>
+      <h1>Chemical Identity Lab — identify X, Y and Z from experimental evidence</h1>
+      <div class="chips">
+        <span class="chip">JEE Advanced 2026</span>
+        <span class="chip">Paper 1 · Q.6</span>
+        <span class="chip">Chemistry</span>
+        <span class="chip">p-Block · halogens and interhalogens</span>
+        <span class="chip">One or more correct</span>
+        <span class="chip">+4 / partial / 0 / −1</span>
+        <span class="chip k">Press start · watch it happen</span>
+      </div>
+    </div>
+    <div class="answerbox locked" id="answerbox" aria-live="polite">
+      <div class="lbl">Answer</div>
+      <div class="val" id="ansval">Investigating X, Y and Z…</div>
+      <div class="sub" id="anssub">The answer appears when the investigation finishes.</div>
+      <div class="apbar" aria-hidden="true"><i id="apbar"></i></div>
+      <button class="rv" id="revealnow" type="button">Reveal anyway</button>
+    </div>
+    <button class="themebtn" id="themebtn" type="button">◐ theme</button>
+  </div>
+</header>
+
+<nav class="jump">
+  <ul>
+    <li><a href="#question">Mission brief</a></li>
+    <li><a href="#lab">Interactive experiment</a></li>
+    <li><a href="#explorer">Molecular explorer</a></li>
+    <li><a href="#solution">Detailed solution</a></li>
+    <li><a href="#howto">How to use this simulation</a></li>
+  </ul>
+</nav>
+
+<div class="wrap">
+
+<section id="question">
+  <h2><span class="n">Q</span>Mission brief <span class="vb">— the question, verbatim</span></h2>
+  <p class="lede">JEE (Advanced) 2026, Paper 1, Chemistry, Section 2 — one or more options correct: +4 only if all the correct
+     options are chosen, partial marks +3 / +2 / +1 for a correct subset, 0 if unanswered, −1 otherwise.</p>
+  <div class="panel">
+    <div class="qtext">
+      <p><b>Q.6</b>&nbsp; Correct statement(s) about the compounds <b>X</b>, <b>Y</b> and <b>Z</b> is(are)</p>
+    </div>
+    <svg class="scheme" id="scheme" viewBox="0 0 760 230" role="img" aria-label="Reaction 1: MnO2 plus conc. HCl gives MnCl2 plus X (greenish yellow gas) plus H2O. Reaction 2: NH3 plus X (excess) gives Y plus HCl. Reaction 3: X plus F2 (excess) at 573 K gives Z.">
+      <g font-family="ui-serif,Georgia,serif" font-size="21" fill="currentColor">
+        <text x="20" y="44">MnO<tspan dy="6" font-size="14">2</tspan><tspan dy="-6"> + Conc. HCl</tspan></text>
+        <line x1="235" y1="38" x2="325" y2="38" stroke="currentColor" stroke-width="2"/><polygon points="325,38 313,33 313,43" fill="currentColor"/>
+        <text x="345" y="44">MnCl<tspan dy="6" font-size="14">2</tspan><tspan dy="-6"> +</tspan></text>
+        <text x="468" y="44" font-weight="800">X</text>
+        <text x="520" y="44">+ H<tspan dy="6" font-size="14">2</tspan><tspan dy="-6">O</tspan></text>
+        <text x="410" y="72" font-size="16">(greenish yellow gas)</text>
+        <text x="95" y="126">NH<tspan dy="6" font-size="14">3</tspan><tspan dy="-6"> + </tspan><tspan font-weight="800">X</tspan></text>
+        <text x="148" y="152" font-size="16">(excess)</text>
+        <line x1="235" y1="120" x2="325" y2="120" stroke="currentColor" stroke-width="2"/><polygon points="325,120 313,115 313,125" fill="currentColor"/>
+        <text x="345" y="126"><tspan font-weight="800">Y</tspan> + HCl</text>
+        <text x="110" y="202"><tspan font-weight="800">X</tspan> + F<tspan dy="6" font-size="14">2</tspan></text>
+        <text x="148" y="226" font-size="16">(excess)</text>
+        <text x="253" y="184" font-size="17">573 K</text>
+        <line x1="235" y1="196" x2="325" y2="196" stroke="currentColor" stroke-width="2"/><polygon points="325,196 313,191 313,201" fill="currentColor"/>
+        <text x="345" y="202" font-weight="800">Z</text>
+      </g>
+    </svg>
+    <ul class="opts" id="opts">
+      <li data-k="A"><span class="k">(A)</span><span><b>X</b> is used for sterilizing drinking water.</span><span class="mark"></span></li>
+      <li data-k="B"><span class="k">(B)</span><span><b>Y</b> has a planar structure.</span><span class="mark"></span></li>
+      <li data-k="C"><span class="k">(C)</span><span><b>Z</b> is used in the enrichment of <sup>235</sup>U.</span><span class="mark"></span></li>
+      <li data-k="D"><span class="k">(D)</span><span><b>Y</b> is a stronger Lewis base than ammonia.</span><span class="mark"></span></li>
+    </ul>
+    <div class="unk" id="unk" aria-live="polite">
+      <div id="u_X"><div class="k">UNKNOWN X</div><div class="v">?</div></div>
+      <div id="u_Y"><div class="k">UNKNOWN Y</div><div class="v">?</div></div>
+      <div id="u_Z"><div class="k">UNKNOWN Z</div><div class="v">?</div></div>
+    </div>
+    <div class="assume"><b>The mystery.</b> Three unknown compounds are hidden in a chain of reactions. Only one clue is an
+      observation — X is a <b>greenish-yellow gas</b>. X is then a reagent in the other two reactions. The lab below runs each
+      reaction, identifies each product from the evidence, builds it in 3D and then tests every statement against what it found.</div>
+  </div>
+</section>
+
+<section id="lab">
+  <h2 class="big"><span class="n">01</span>Interactive experiment</h2>
+  <p class="lede">Three laboratory stations and an analysis board. Press <b>START EXPERIMENT</b> — the whole investigation runs by
+     itself: clue → reaction → observation → identification → structure → property → verdict on each option.</p>
+
+  <div class="deck" id="deck">
+    <div class="statusbar">
+      <span class="xstat" id="xstat"><span class="dot"></span><span id="xstattxt">Ready</span></span>
+      <div class="stages" id="stages">
+        <span data-s="genX">01 Generate X</span><span data-s="obsX">02 Observe X</span><span data-s="idX">03 Identify X</span>
+        <span data-s="formY">04 Form Y</span><span data-s="anaY">05 Analyse Y</span><span data-s="formZ">06 Form Z</span>
+        <span data-s="anaZ">07 Analyse Z</span><span data-s="test">08 Test options</span><span data-s="answer">09 Final answer</span>
+      </div>
+      <span class="sp"></span>
+      <span class="guide" id="guide">Set your values or use the question defaults.</span>
+    </div>
+
+    <div class="grid1">
+      <div class="lab3d" id="lab3d">
+        <div class="hd">
+          <h3 id="scenet">Chemical identity lab</h3>
+          <span class="st" id="trialtag">station 1 of 3</span>
+        </div>
+        <p class="narr" id="narr" aria-live="polite">Three unknowns, three reactions. The question's conditions are loaded —
+           press <b>START EXPERIMENT</b>.</p>
+        <div class="vwrap">
+          <canvas id="labcv" width="1040" height="620" role="img"
+                  aria-label="The virtual laboratory: reaction apparatus, gas colours, molecular models, a temperature gauge and the option analysis for the current stage"></canvas>
+          <div class="done-banner" id="donebanner">✓ EXPERIMENT COMPLETE</div>
+          <div class="revealhost" id="revealhost"></div>
+        </div>
+        <div class="blackout" id="blackout"></div>
+        <div class="flashout" id="flashout"></div>
+      </div>
+
+      <div class="rail" id="rail">
+        <div class="status" id="status">✓ QUESTION VALUES LOADED</div>
+        <div class="inputs">
+          <h4>Customize experiment — optional</h4>
+          <div id="fields"></div>
+          <div class="warnbox" id="condwarn" hidden></div>
+          <button class="resetq" id="resetq" type="button" style="margin-top:8px">↺ RESTORE QUESTION CONDITIONS</button>
+        </div>
+        <div class="grp">
+          <h4>Instrument panel</h4>
+          <div class="gauges" style="margin-top:6px">
+            <div class="gz"><div class="k">station</div><div class="v" id="g_st" style="font-size:13px">—</div></div>
+            <div class="gz"><div class="k">reaction status</div><div class="v" id="g_rs" style="font-size:13px">—</div></div>
+            <div class="gz o"><div class="k">temperature</div><div class="v" id="g_T" style="font-size:14px">—</div></div>
+            <div class="gz"><div class="k">gas flow</div><div class="v" id="g_gf" style="font-size:13px">—</div></div>
+            <div class="gz a"><div class="k">progress</div><div class="v"><span id="g_pr">0</span> <span class="u">%</span></div></div>
+            <div class="gz"><div class="k">colour observed</div><div class="v" id="g_col" style="font-size:13px">—</div></div>
+            <div class="gz"><div class="k">product</div><div class="v" id="g_prod" style="font-size:14px">—</div></div>
+            <div class="gz"><div class="k">shape</div><div class="v" id="g_shape" style="font-size:12.5px;white-space:normal;line-height:1.2">—</div></div>
+            <div class="gz" id="gz_v"><div class="k">supported options</div><div class="v" id="g_v" style="font-size:14px">—</div></div>
+          </div>
+          <p class="railnote" style="margin-top:6px">Temperature, flow and progress are visualisation values — the question gives only 573 K.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="tools" role="group" aria-label="optional views">
+      <button type="button" id="t_eq" aria-pressed="false">SHOW EQUATION</button>
+      <button type="button" id="t_obs" aria-pressed="false">SHOW OBSERVATION</button>
+      <button type="button" id="t_why" aria-pressed="false">SHOW WHY?</button>
+      <button type="button" id="t_cmp">COMPARE NH₃ vs NCl₃</button>
+      <button type="button" id="t_rot">ROTATE MOLECULE</button>
+    </div>
+
+    <h4 style="margin:14px 0 0;font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--text-muted)">Option analysis lab</h4>
+    <div class="board" id="board">
+      <div class="ocard" id="oc_A"><div class="h"><b>(A)</b><span class="claim">X is used for sterilizing drinking water.</span></div><p class="ev" id="ev_A">not yet examined</p><div class="vd" id="vd_A">UNEVALUATED</div></div>
+      <div class="ocard" id="oc_B"><div class="h"><b>(B)</b><span class="claim">Y has a planar structure.</span></div><p class="ev" id="ev_B">not yet examined</p><div class="vd" id="vd_B">UNEVALUATED</div></div>
+      <div class="ocard" id="oc_C"><div class="h"><b>(C)</b><span class="claim">Z is used in the enrichment of <sup>235</sup>U.</span></div><p class="ev" id="ev_C">not yet examined</p><div class="vd" id="vd_C">UNEVALUATED</div></div>
+      <div class="ocard" id="oc_D"><div class="h"><b>(D)</b><span class="claim">Y is a stronger Lewis base than ammonia.</span></div><p class="ev" id="ev_D">not yet examined</p><div class="vd" id="vd_D">UNEVALUATED</div></div>
+    </div>
+
+    <div class="badges" id="badges" aria-label="achievements">
+      <div class="badge" id="b_det"><span class="ic">🔬</span>Reaction Detective</div>
+      <div class="badge" id="b_geo"><span class="ic">🧬</span>Molecular Geometry Expert</div>
+      <div class="badge" id="b_hot"><span class="ic">🔥</span>High-Temperature Chemistry</div>
+      <div class="badge" id="b_lew"><span class="ic">🧠</span>Lewis Base Investigator</div>
+      <div class="badge" id="b_mas"><span class="ic">🏆</span>Chemistry Master</div>
+    </div>
+
+    <div class="calc" id="calc">
+      <div class="bt"><span>Reasoning log — input → action → change → observation → conclusion</span><span id="calcstat"></span></div>
+      <p class="empty" id="calcempty">Nothing investigated yet.</p>
+      <ol id="calclist"></ol>
+      <details class="tbl" id="logbox"><summary>Evidence table (<span id="logn">0</span>)</summary>
+        <div class="scrollx"><table class="data" id="log"></table></div></details>
+    </div>
+
+    <div class="actbar">
+      <button class="go" id="gobtn" type="button">▶&nbsp; START EXPERIMENT</button>
+      <button class="ghost" id="pausebtn" type="button" disabled>Pause</button>
+      <button class="ghost" id="replaybtn" type="button" hidden>▶ REPLAY EXPERIMENT</button>
+      <button class="ghost" id="resetbtn" type="button">↺ RESET</button>
+      <div class="spd" id="spd" role="group" aria-label="playback speed">
+        <button type="button" data-s="1" aria-pressed="true">1×</button>
+        <button type="button" data-s="2" aria-pressed="false">2×</button>
+      </div>
+      <button class="ghost" id="classbtn" type="button" aria-pressed="false">CLASSROOM MODE</button>
+      <div class="msg" id="gomsg">Nothing needs to be chosen. Press <b>START EXPERIMENT</b>.</div>
+    </div>
+  </div>
+</section>
+
+<section id="explorer">
+  <h2 class="big"><span class="n">02</span>Molecular explorer</h2>
+  <p class="lede">Pick a molecule. Drag to rotate, use the slider or the mouse wheel to zoom, arrow keys also rotate.</p>
+  <div class="explorer">
+    <div>
+      <div class="xpick" role="group" aria-label="choose a molecule">
+        <button type="button" data-m="Cl2" aria-pressed="false">Cl₂</button>
+        <button type="button" data-m="NCl3" aria-pressed="true">NCl₃</button>
+        <button type="button" data-m="ClF3" aria-pressed="false">ClF₃</button>
+        <button type="button" data-m="NH3" aria-pressed="false">NH₃</button>
+      </div>
+      <div class="xview" style="margin-top:8px"><canvas id="mol" width="720" height="460" tabindex="0" role="img" aria-label="Rotatable 3D model of the selected molecule with its lone pairs and geometry guide"></canvas></div>
+      <div class="tools" role="group" aria-label="explorer options">
+        <button type="button" id="x_lab" aria-pressed="true">Labels</button>
+        <button type="button" id="x_lp" aria-pressed="true">Lone pairs</button>
+        <button type="button" id="x_geo" aria-pressed="true">Geometry guide</button>
+        <button type="button" id="x_spin" aria-pressed="true">Auto-rotate</button>
+        <button type="button" id="x_reset">Reset view</button>
+        <label style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text-secondary)">zoom <input type="range" id="x_zoom" min="60" max="160" value="100" aria-label="zoom"></label>
+      </div>
+    </div>
+    <div class="panel xinfo" id="xinfo"></div>
+  </div>
+</section>
+
+<section id="solution">
+  <h2 class="big"><span class="n">03</span>Detailed solution</h2>
+  <p class="lede" id="solintro">Run the experiment — the solution opens with the answer.</p>
+  <div class="gate" id="solgate">
+    <h4>The solution is still locked</h4>
+    <p>The experiment has not finished yet. Press START and let it run to the end — or use
+       <i>Reveal anyway</i> in the header if you are revising.</p>
+    <button class="ghost" id="gotolab" type="button">Go to the experiment ↑</button>
+  </div>
+  <div id="solbody" hidden>
+    <h3 style="font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-muted);margin:0 0 10px">Understand the concept</h3>
+    <div class="cards4">
+      <div><h4>How was X identified?</h4><p>MnO<sub>2</sub> oxidises chloride from concentrated HCl. The only greenish-yellow gas that can form is chlorine.</p>
+        <div class="eq">Mn: +4 → +2 &nbsp;·&nbsp; Cl: −1 → 0 &nbsp;⇒&nbsp; X = Cl<sub>2</sub></div></div>
+      <div><h4>How was Y identified?</h4><p>With chlorine in excess, all three N–H hydrogens of NH<sub>3</sub> are replaced by Cl, one after another.</p>
+        <div class="eq">NH<sub>3</sub> → NH<sub>2</sub>Cl → NHCl<sub>2</sub> → NCl<sub>3</sub></div></div>
+      <div><h4>How was Z identified?</h4><p>Chlorine with excess fluorine at 573 K gives the interhalogen ClF<sub>3</sub> (equal volumes at a lower temperature give ClF).</p>
+        <div class="eq">Cl<sub>2</sub> + 3F<sub>2</sub> → 2ClF<sub>3</sub></div></div>
+      <div><h4>How were the options evaluated?</h4><p>(A) Cl<sub>2</sub> disinfects water ✓ · (B) NCl<sub>3</sub> is pyramidal ✗ · (C) ClF<sub>3</sub> makes UF<sub>6</sub> for <sup>235</sup>U enrichment ✓ · (D) NCl<sub>3</sub> is a weaker base than NH<sub>3</sub> ✗</p></div>
+    </div>
+    <ol class="steps" style="margin-top:14px">
+      <li><h4>Step 1 — Identify X</h4>
+        <div class="eq">MnO<sub>2</sub> + 4HCl(conc.) → MnCl<sub>2</sub> + Cl<sub>2</sub> + 2H<sub>2</sub>O</div>
+        <p>MnO<sub>2</sub> (Mn +4) is reduced to Mn<sup>2+</sup>; chloride (−1) is oxidised to Cl<sub>2</sub> (0). Chlorine is the
+           greenish-yellow gas. <b>X = Cl<sub>2</sub>.</b></p>
+        <div class="obsnote">On the bench: the greenish-yellow gas filled the gas jar and matched only chlorine on the colour chart.</div></li>
+      <li><h4>Step 2 — Identify Y</h4>
+        <div class="eq">NH<sub>3</sub> + 3Cl<sub>2</sub> (excess) → NCl<sub>3</sub> + 3HCl</div>
+        <p><b>Y = NCl<sub>3</sub>.</b> Nitrogen has 3 bond pairs and 1 lone pair: electron geometry tetrahedral, molecular geometry
+           <b>trigonal pyramidal</b> — N sits above the plane of the three Cl atoms. Not planar.</p>
+        <p>(With excess NH<sub>3</sub> instead, the products are N<sub>2</sub> and NH<sub>4</sub>Cl: 8NH<sub>3</sub> + 3Cl<sub>2</sub> → N<sub>2</sub> + 6NH<sub>4</sub>Cl — which is why the question says "excess".)</p></li>
+      <li><h4>Step 3 — Identify Z</h4>
+        <div class="eq">Cl<sub>2</sub> + 3F<sub>2</sub> (excess) —573 K→ 2ClF<sub>3</sub></div>
+        <p><b>Z = ClF<sub>3</sub>.</b> Chlorine has 3 bond pairs and 2 lone pairs: trigonal-bipyramidal electron geometry with both
+           lone pairs equatorial, so the molecule is <b>T-shaped</b>.</p></li>
+      <li><h4>Step 4 — Evaluate the options</h4>
+        <p><b>(A) ✓</b> Cl<sub>2</sub> is widely used as a disinfectant for drinking water.</p>
+        <p><b>(B) ✗</b> NCl<sub>3</sub> is trigonal pyramidal, not planar.</p>
+        <p><b>(C) ✓</b> ClF<sub>3</sub> is a powerful fluorinating agent used to make volatile UF<sub>6</sub> — the form in which uranium is
+           handled for <sup>235</sup>U enrichment: U + 3ClF<sub>3</sub> → UF<sub>6</sub> + 3ClF.</p>
+        <p><b>(D) ✗</b> The electronegative Cl atoms pull electron density away from nitrogen (−I effect), so its lone pair is less
+           available: NCl<sub>3</sub> is a <i>weaker</i> Lewis base than NH<sub>3</sub>.</p>
+        <div class="eq">Answer: <span class="hl" id="solans">—</span></div></li>
+    </ol>
+    <div class="verify">
+      <h4>Independent verification</h4>
+      <ul>
+        <li><b>Balancing.</b> Each equation was balanced by solving its element-conservation equations, and every electron
+            transfer checked by oxidation numbers.</li>
+        <li><b>VSEPR.</b> Steric numbers from valence electrons: N in NCl<sub>3</sub> 3 + 1 = 4 (pyramidal, non-planar); Cl in ClF<sub>3</sub>
+            3 + 2 = 5 (T-shaped). The page's 3D model puts N about 0.65 Å above the Cl<sub>3</sub> plane.</li>
+        <li><b>Textbook data.</b> NCERT (p-block elements): chlorine is used for sterilising drinking water; ClF<sub>3</sub> is used in
+            the production of UF<sub>6</sub> for the enrichment of <sup>235</sup>U; NCl<sub>3</sub> forms from NH<sub>3</sub> and excess Cl<sub>2</sub>.</li>
+        <li><b>Solution websites.</b> MathonGo's published solution (their Q38) gives (A), (C) with the same identification.</li>
+        <li><b>This page.</b> Each option is decided from the properties the lab found for the identified compound; the answer
+            letters are not written into the page.</li>
+        <li><b>Answer key.</b> Checked afterwards against the official final key printed with the paper: Q6 → (A), (C).</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="howto">
+  <h2 class="big"><span class="n">04</span>How to use this simulation</h2>
+  <p class="lede">For a student opening it for the first time. The whole investigation runs by itself after one press.</p>
+  <div class="howto">
+    <div><div class="n">STEP 1</div><h4>Read the mission brief</h4>
+      <p>Three reactions hide three compounds X, Y and Z. Which of the four statements about them are correct? More than one can be.</p></div>
+    <div><div class="n">STEP 2</div><h4>Check the conditions</h4>
+      <p>The question's conditions are loaded — <b>conc. HCl</b>, <b>excess Cl<sub>2</sub></b>, <b>excess F<sub>2</sub></b>, <b>573 K</b>.
+         <b>You do not need to change anything.</b></p></div>
+    <div><div class="n">STEP 3</div><h4>Optional: customize</h4>
+      <p>Change a condition — dilute HCl, excess NH<sub>3</sub>, equal volumes of F<sub>2</sub>. The lab tells you honestly when the
+         question's pathway no longer applies. <b>↺ RESTORE QUESTION CONDITIONS</b> puts everything back.</p></div>
+    <div><div class="n">STEP 4</div><h4>Start</h4>
+      <p>Press <b>▶ START EXPERIMENT</b>. There is nothing else to click (about a minute; <b>2×</b> makes it faster).</p></div>
+    <div><div class="n">STEP 5</div><h4>Watch</h4>
+      <p>Gas bubbles off and fills the jar, molecules collide and swap atoms, the temperature climbs to 573 K, each product is
+         built in 3D, and each statement is tested on the analysis board.</p></div>
+    <div><div class="n">STEP 6</div><h4>Answer reveal</h4>
+      <p>When all four statements are decided the lab says <b>✓ EXPERIMENT COMPLETE</b> and reveals the answer. Badges unlock on the way.</p></div>
+    <div><div class="n">STEP 7</div><h4>Explore and understand</h4>
+      <p>Rotate Cl<sub>2</sub>, NCl<sub>3</sub>, ClF<sub>3</sub> and NH<sub>3</sub> in the <b>Molecular explorer</b>, then read the
+         <b>Detailed solution</b>.</p></div>
+    <div><div class="n">STEP 8</div><h4>Experiment again</h4>
+      <p>Press <b>▶ REPLAY EXPERIMENT</b>, or change a condition and press <b>⚙ RUN WITH CUSTOM VALUES</b>. <b>CLASSROOM MODE</b>
+         enlarges everything for a projector.</p></div>
+  </div>
+  <div class="panel" style="margin-top:14px">
+    <h3>Classification</h3>
+    <table class="meta-tbl"><tbody>
+      <tr><th>Exam</th><td>JEE Advanced 2026, Paper 1, Chemistry, Section 2, Q.6</td></tr>
+      <tr><th>Chapter</th><td>The p-Block Elements (Group 17)</td></tr>
+      <tr><th>Topic</th><td>Chlorine, nitrogen trichloride and interhalogens - preparation, structure and uses</td></tr>
+      <tr><th>Difficulty</th><td>Easy-Moderate</td></tr>
+      <tr><th>Answer</th><td><b id="clsans">— run the experiment</b></td></tr>
+    </tbody></table>
+  </div>
+</section>
+
+<footer>
+  ADV-2026-P1-CHE-Q06 · PrayogX · JEE Advanced Interactive Simulation Library · question text reproduced
+  from the official JEE (Advanced) 2026 Paper 1 for educational use. Chlorine, fluorine, NCl<sub>3</sub> and ClF<sub>3</sub> are
+  hazardous — this is a virtual laboratory only.
+</footer>
+</div>
+
+<script>
+(function(){
+"use strict";
+
+/* =====================================================================
+   helpers
+   ===================================================================== */
+var NS = "http://www.w3.org/2000/svg";
+function $(id){ return document.getElementById(id); }
+function css(v){ return getComputedStyle(document.documentElement).getPropertyValue(v).trim(); }
+function mk(n, a, parent){
+  var e = document.createElementNS(NS, n), k;
+  if (a) for (k in a) if (Object.prototype.hasOwnProperty.call(a, k)) e.setAttribute(k, a[k]);
+  if (parent) parent.appendChild(e);
+  return e;
+}
+function tx(parent, x, y, s, a){ var o = a || {}; o.x = x; o.y = y; var t = mk("text", o, parent); t.textContent = s; return t; }
+function clamp(v, a, b){ return v < a ? a : (v > b ? b : v); }
+function ease(t){ t = clamp(t, 0, 1); return t * t * (3 - 2 * t); }
+function lerp(a, b, t){ return a + (b - a) * t; }
+var REDUCED = !!(window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches);
+function rng(seed){ var s = seed >>> 0; return function(){ s = (s * 1664525 + 1013904223) >>> 0; return s / 4294967296; }; }
+
+/* =====================================================================
+   question data - the three printed reaction skeletons and the four
+   statements. Nothing below stores which statements are correct: the lab
+   identifies X, Y, Z and decides each statement from their properties.
+   ===================================================================== */
+var Q = { ox: "MnO2", hcl: "conc", r2: "xsCl2", r3f: "xsF2", r3T: "573" };
+var FIELDS = [
+  { k: "ox", lab: "Reaction 1 — oxidant", opts: [["MnO2", "MnO₂"], ["KMnO4", "KMnO₄"]] },
+  { k: "hcl", lab: "Reaction 1 — hydrochloric acid", opts: [["conc", "concentrated"], ["dil", "dilute"]] },
+  { k: "r2", lab: "Reaction 2 — NH₃ : Cl₂", opts: [["xsCl2", "excess Cl₂"], ["xsNH3", "excess NH₃"]] },
+  { k: "r3f", lab: "Reaction 3 — Cl₂ : F₂", opts: [["xsF2", "excess F₂"], ["eq", "equal volumes (1 : 1)"]] },
+  { k: "r3T", lab: "Reaction 3 — temperature", opts: [["573", "573 K"], ["473", "473 K"], ["298", "298 K (room temperature)"]] }
+];
+var ST = {}; (function(){ var k; for (k in Q) ST[k] = Q[k]; })();
+function fieldOf(k){ var i; for (i = 0; i < FIELDS.length; i++) if (FIELDS[i].k === k) return FIELDS[i]; return null; }
+function optLabel(F, v){ var i; for (i = 0; i < F.opts.length; i++) if (F.opts[i][0] === v) return F.opts[i][1]; return v; }
+function fieldsHTML(){
+  var h = "", i, j, F;
+  for (i = 0; i < FIELDS.length; i++){
+    F = FIELDS[i];
+    h += '<div class="selrow" id="fld_' + F.k + '"><label for="in_' + F.k + '">' + F.lab + '</label><select class="sel" id="in_' + F.k + '">';
+    for (j = 0; j < F.opts.length; j++) h += '<option value="' + F.opts[j][0] + '"' + (F.opts[j][0] === Q[F.k] ? " selected" : "") + ">" + F.opts[j][1] + (F.opts[j][0] === Q[F.k] ? " — question" : "") + "</option>";
+    h += "</select></div>";
+  }
+  return h;
+}
+function readAll(){
+  var i, F, v, okv, j;
+  for (i = 0; i < FIELDS.length; i++){
+    F = FIELDS[i]; v = $("in_" + F.k).value; okv = false;
+    for (j = 0; j < F.opts.length; j++) if (F.opts[j][0] === v) okv = true;
+    ST[F.k] = okv ? v : Q[F.k];
+  }
+  var w = conditionWarnings(ST), box = $("condwarn");
+  box.hidden = !w.length; box.innerHTML = w.join("<br>");
+}
+function isCustom(D){ var k; D = D || ST; for (k in Q) if (D[k] !== Q[k]) return true; return false; }
+function copyST(){ var o = {}, k; for (k in Q) o[k] = ST[k]; return o; }
+function sameD(a, b){ var k; for (k in Q) if (a[k] !== b[k]) return false; return true; }
+
+/* =====================================================================
+   the chemistry engine
+   ===================================================================== */
+/* formulas as atom counts */
+function F_(s){ var o = {}, re = /([A-Z][a-z]?)(\d*)/g, m; while ((m = re.exec(s))){ if (!m[1]) break; o[m[1]] = (o[m[1]] || 0) + (m[2] ? parseInt(m[2], 10) : 1); } return o; }
+function addF(a, b, k){ var o = {}, e; for (e in a) o[e] = (o[e] || 0) + a[e]; for (e in b) o[e] = (o[e] || 0) + k * b[e]; return o; }
+function fStr(o){ var s = "", e, order = ["K", "Mn", "N", "Cl", "F", "H", "O"], i;
+  for (i = 0; i < order.length; i++){ e = order[i]; if (o[e]) s += e + (o[e] > 1 ? o[e] : ""); } return s; }
+/* Reaction 1, the printed skeleton  MnO2 + a HCl -> MnCl2 + X + b H2O : what must X be?
+   Search small coefficients; X must hold no O, H or Mn (it is a gas made from what is left). */
+function solveX1(){
+  var a, b, found = [];
+  for (a = 1; a <= 8; a++) for (b = 0; b <= 4; b++){
+    var r = addF(addF(addF(F_("MnO2"), F_("HCl"), a), F_("MnCl2"), -1), F_("H2O"), -b), ok = true, e;
+    for (e in r) if (r[e] < 0) ok = false;
+    if (!ok || r.O || r.H || r.Mn || !r.Cl) continue;
+    found.push({ a: a, b: b, X: fStr(r) });
+  }
+  return found;
+}
+/* the greenish-yellow gas among everything that could leave this flask */
+var GASES = [
+  { f: "O2", col: "colourless", rgb: "rgba(220,230,255,.25)" }, { f: "H2", col: "colourless", rgb: "rgba(220,230,255,.25)" },
+  { f: "HCl", col: "colourless (fumes)", rgb: "rgba(220,230,255,.3)" }, { f: "Cl2", col: "greenish-yellow", rgb: "#c8e04a" },
+  { f: "ClO2", col: "yellow (needs a far stronger oxidant)", rgb: "#e8c040" }, { f: "H2O", col: "colourless", rgb: "rgba(220,230,255,.2)" }
+];
+var DISPLAY = { Cl2: "Cl₂", NCl3: "NCl₃", ClF3: "ClF₃", ClF: "ClF", N2: "N₂", NH3: "NH₃", NH2Cl: "NH₂Cl", NHCl2: "NHCl₂", HCl: "HCl", F2: "F₂", UF6: "UF₆", O2: "O₂", H2: "H₂", ClO2: "ClO₂", H2O: "H₂O" };
+function nm(f){ return DISPLAY[f] || f; }
+function reaction1(D){
+  if (D.hcl === "dil" && D.ox === "MnO2") return { ok: false, X: null, eq: "MnO₂ + dilute HCl → (no Cl₂ worth speaking of)", obs: "no greenish-yellow gas",
+    why: "MnO₂ oxidises chloride only from concentrated HCl — in dilute acid the reaction is too weak to give chlorine." };
+  var eq = D.ox === "MnO2" ? "MnO₂ + 4HCl → MnCl₂ + Cl₂ + 2H₂O" : "2KMnO₄ + 16HCl → 2KCl + 2MnCl₂ + 5Cl₂ + 8H₂O";
+  return { ok: true, X: "Cl2", eq: eq, obs: "greenish-yellow gas evolved", col: "greenish-yellow",
+    why: (D.ox === "MnO2" ? "Mn +4 → +2 gains 2e⁻" : "Mn +7 → +2 gains 5e⁻") + "; 2Cl⁻ → Cl₂ loses 2e⁻. The oxidant turns chloride into chlorine." };
+}
+function reaction2(D, X){
+  if (X !== "Cl2") return { ok: false, Y: null, eq: "—", why: "Without X there is nothing to react with ammonia." };
+  if (D.r2 === "xsNH3") return { ok: false, Y: "N2", eq: "8NH₃ + 3Cl₂ → N₂ + 6NH₄Cl", side: "NH₄Cl",
+    why: "With ammonia in excess, chlorine oxidises it to N₂ and the HCl is trapped as NH₄Cl — not the printed Y + HCl." };
+  return { ok: true, Y: "NCl3", eq: "NH₃ + 3Cl₂ → NCl₃ + 3HCl", steps: ["NH3", "NH2Cl", "NHCl2", "NCl3"],
+    why: "Excess chlorine replaces all three N–H hydrogens, one at a time; each swap releases HCl." };
+}
+function reaction3(D, X){
+  if (X !== "Cl2") return { ok: false, Z: null, eq: "—", why: "Without X there is nothing to fluorinate." };
+  if (D.r3T === "298") return { ok: false, Z: null, eq: "Cl₂ + F₂ at 298 K → (too slow)", why: "At room temperature chlorine and fluorine barely react; the question heats them to 573 K." };
+  if (D.r3f === "eq") return { ok: false, Z: "ClF", eq: "Cl₂ + F₂ → 2ClF", why: "Equal volumes give chlorine monofluoride (at about 437 K) — fluorine must be in excess for ClF₃." };
+  if (D.r3T === "473") return { ok: false, Z: "ClF", eq: "Cl₂ + F₂ → 2ClF (ClF₃ needs ≈573 K)", why: "At 473 K the reaction stops mostly at ClF; the question's 573 K is what carries it on to ClF₃." };
+  return { ok: true, Z: "ClF3", eq: "Cl₂ + 3F₂ → 2ClF₃", why: "With fluorine in excess at 573 K each Cl takes three F atoms." };
+}
+function conditionWarnings(D){
+  var w = [], r1 = reaction1(D), r2 = reaction2(D, r1.X), r3 = reaction3(D, r1.X);
+  if (!r1.ok) w.push("⚠ Condition changed — Reaction 1 gives no X, so the question's pathway no longer applies.");
+  else if (D.ox !== Q.ox) w.push("ℹ KMnO₄ also oxidises HCl to Cl₂ — X is unchanged.");
+  if (r1.ok && !r2.ok) w.push("⚠ Changing the reagent ratio changes Reaction 2: the question specifies excess Cl₂.");
+  if (r1.ok && !r3.ok) w.push("⚠ Reaction 3 changes: the question specifies excess F₂ at 573 K.");
+  return w;
+}
+/* VSEPR from valence electrons: central atom with single-bonded ligands */
+var VALENCE = { N: 5, Cl: 7 };
+var GEOM = { "2-0": "linear", "3-0": "trigonal planar", "3-1": "bent", "4-0": "tetrahedral", "4-1": "trigonal pyramidal", "4-2": "bent",
+  "5-0": "trigonal bipyramidal", "5-1": "see-saw", "5-2": "T-shaped", "5-3": "linear", "6-0": "octahedral", "6-2": "square planar" };
+var EGEOM = { 2: "linear", 3: "trigonal planar", 4: "tetrahedral", 5: "trigonal bipyramidal", 6: "octahedral" };
+var PLANAR = { "linear": true, "trigonal planar": true, "bent": true, "T-shaped": true, "square planar": true };
+var MOLS = {
+  Cl2: { centre: null, lig: [], note: "diatomic" }, N2: { centre: null, lig: [], note: "diatomic" },
+  NH3: { centre: "N", lig: ["H", "H", "H"] }, NCl3: { centre: "N", lig: ["Cl", "Cl", "Cl"] },
+  ClF3: { centre: "Cl", lig: ["F", "F", "F"] }, ClF: { centre: null, lig: [], note: "diatomic" }
+};
+function vsepr(f){
+  var m = MOLS[f]; if (!m) return null;
+  if (!m.centre) return { sn: 0, bp: 1, lp: 0, geo: "linear", egeo: "linear", planar: true, diatomic: true };
+  var bp = m.lig.length, lp = (VALENCE[m.centre] - bp) / 2, sn = bp + lp, geo = GEOM[sn + "-" + lp];
+  return { sn: sn, bp: bp, lp: lp, geo: geo, egeo: EGEOM[sn], planar: !!PLANAR[geo] };
+}
+/* Lewis basicity of an NX3 nitrogen: substituents more electronegative than N pull density from its lone pair (-I) */
+var CHI = { H: 2.20, N: 3.04, Cl: 3.16, F: 3.98 };
+function lonePairPull(f){
+  var m = MOLS[f]; if (!m || m.centre !== "N") return null;
+  var s = 0, i; for (i = 0; i < m.lig.length; i++) s += CHI[m.lig[i]] - CHI.N;
+  return s;          /* > 0: electron density pulled away from N; < 0: pushed toward N */
+}
+/* what each substance is used for - textbook uses (NCERT, p-block elements) */
+var USES = {
+  Cl2: ["sterilising / disinfecting drinking water", "bleaching wood pulp and cotton", "making PVC, CCl₄ and insecticides"],
+  ClF3: ["powerful fluorinating agent", "making UF₆ for the enrichment of ²³⁵U"],
+  ClF: ["fluorinating agent"], NCl3: ["none in routine use — a shock-sensitive explosive oil"], N2: ["inert atmosphere", "making NH₃"]
+};
+function uses(f, kw){ var u = USES[f] || [], i; for (i = 0; i < u.length; i++) if (u[i].indexOf(kw) >= 0) return u[i]; return null; }
+/* the four statements, decided from what the lab identified */
+function evaluate(ids){
+  var X = ids.X, Y = ids.Y, Z = ids.Z, out = {}, v, lp;
+  out.A = !X ? { v: null, ev: "X was not formed." } : (uses(X, "drinking water") ? { v: true, ev: nm(X) + " — used for " + uses(X, "drinking water") + "." } : { v: false, ev: nm(X) + " is not used for that." });
+  if (!Y) out.B = { v: null, ev: "Y was not formed." };
+  else if (!ids.pathOK2) out.B = { v: null, ev: "Pathway changed — Y is " + nm(Y) + ", not the question's Y." };
+  else { v = vsepr(Y); out.B = { v: v.planar, ev: nm(Y) + ": " + v.bp + " bond pairs + " + v.lp + " lone pair" + (v.lp === 1 ? "" : "s") + " → " + v.geo + (v.planar ? " (planar)." : " — N sits above the Cl₃ plane, not planar.") }; }
+  out.C = !Z ? { v: null, ev: "Z was not formed." } : (!ids.pathOK3 ? { v: null, ev: "Pathway changed — Z is " + nm(Z) + ", not the question's Z." }
+    : (uses(Z, "²³⁵U") ? { v: true, ev: nm(Z) + " — " + uses(Z, "²³⁵U") + ": U + 3ClF₃ → UF₆ + 3ClF." } : { v: false, ev: nm(Z) + " has no such use." }));
+  if (!Y) out.D = { v: null, ev: "Y was not formed." };
+  else if (!ids.pathOK2) out.D = { v: null, ev: "Pathway changed — Y is " + nm(Y) + "." };
+  else { lp = lonePairPull(Y); var lpNH3 = lonePairPull("NH3");
+    out.D = { v: lp < lpNH3, ev: "Cl (χ 3.16) pulls density from N (χ 3.04); H (χ 2.20) pushes it on — the lone pair of " + nm(Y) + " is " + (lp < lpNH3 ? "more" : "less") + " available than in NH₃, so " + nm(Y) + " is the " + (lp < lpNH3 ? "stronger" : "weaker") + " base." }; }
+  return out;
+}
+function run(D){
+  var r1 = reaction1(D), r2 = reaction2(D, r1.X), r3 = reaction3(D, r1.X);
+  var ids = { X: r1.X, Y: r2.Y, Z: r3.Z, pathOK1: r1.ok, pathOK2: r1.ok && r2.ok, pathOK3: r1.ok && r3.ok };
+  var ev = evaluate(ids), truth = [], k, complete = ids.pathOK1 && ids.pathOK2 && ids.pathOK3;
+  for (k in ev) if (ev[k].v === true) truth.push(k);
+  truth.sort();
+  return { D: D, r1: r1, r2: r2, r3: r3, ids: ids, ev: ev, truth: truth, complete: complete, x1: solveX1() };
+}
+function optText(L){ return L.length ? L.map(function(k){ return "(" + k + ")"; }).join(", ") : "none"; }
+var QRUN = run(copyST());
+var QTRUE = QRUN.truth;
+var ANS = optText(QTRUE);
+
+/* =====================================================================
+   experiment engine - one automatic timeline, built when START is pressed
+   ===================================================================== */
+var SEGS = [["genX", 7.0], ["obsX", 6.0], ["idX", 7.4], ["formY", 7.0], ["anaY", 8.0], ["formZ", 7.0], ["anaZ", 8.0], ["test", 6.4], ["answer", 4.2]];
+var STAGE_MSG = { genX: "Analyzing Reaction 1…", obsX: "Identifying X…", idX: "Identifying X…", formY: "Analyzing Reaction 2…", anaY: "Identifying Y…",
+  formZ: "Analyzing Reaction 3…", anaZ: "Identifying Z…", test: "Testing statements A–D…", answer: "Calculating final result…" };
+var RUN = { state: "setup", paused: false, speed: 1, segs: [], si: 0, u: 0, D: copyST(), R: null, done: false, revealed: false,
+  calc: {}, found: {}, cards: {}, badges: {}, classroom: false, rows: [] };
+RUN.R = run(RUN.D);
+var earlyReveal = false;
+var TOTAL = (function(){ var t = 0, i; for (i = 0; i < SEGS.length; i++) t += SEGS[i][1]; return t; })();
+function buildTimeline(){ var s = [], i; for (i = 0; i < SEGS.length; i++) s.push({ kind: SEGS[i][0], dur: SEGS[i][1] }); return s; }
+function seg(){ return RUN.segs[RUN.si] || null; }
+function elapsed(){ var t = 0, i; for (i = 0; i < RUN.si && i < RUN.segs.length; i++) t += RUN.segs[i].dur; return t + (seg() ? RUN.u : 0); }
+var NOW = null;
+function currentState(){
+  var sg = seg();
+  if (RUN.done) return { name: "rest", f: 1 };
+  if (RUN.state === "setup" || !sg) return { name: "idle", f: 0 };
+  return { name: sg.kind, f: clamp(RUN.u / sg.dur, 0, 1) };
+}
+
+/* ---- the case file: unknown tiles, option cards, badges ---- */
+function setTile(k, f, ok){
+  var t = $("u_" + k); if (!t) return;
+  t.classList.toggle("found", !!f && ok); t.classList.toggle("warn", !!f && !ok);
+  t.querySelector(".v").textContent = f ? nm(f) : (f === null && RUN.found[k] === null ? "not formed" : "?");
+}
+function setCard(k){
+  var e = RUN.R.ev[k], c = $("oc_" + k);
+  RUN.cards[k] = e;
+  c.classList.remove("now", "yes", "no", "na");
+  c.classList.add(e.v === true ? "yes" : e.v === false ? "no" : "na");
+  $("ev_" + k).textContent = e.ev;
+  $("vd_" + k).textContent = e.v === true ? "✓ SUPPORTED" : e.v === false ? "✗ NOT SUPPORTED" : "— NOT APPLICABLE";
+}
+function focusCard(k){ var i; for (i = 0; i < 4; i++) $("oc_" + "ABCD"[i]).classList.toggle("now", "ABCD"[i] === k); }
+function clearBoard(){
+  var i, k;
+  for (i = 0; i < 4; i++){ k = "ABCD"[i]; var c = $("oc_" + k); c.className = "ocard"; $("ev_" + k).textContent = "not yet examined"; $("vd_" + k).textContent = "UNEVALUATED"; }
+  ["X", "Y", "Z"].forEach(function(k){ var t = $("u_" + k); t.className = ""; t.querySelector(".v").textContent = "?"; });
+  ["det", "geo", "hot", "lew", "mas"].forEach(function(b){ $("b_" + b).classList.remove("on", "pop"); });
+}
+function badge(b){
+  if (RUN.badges[b]) return; RUN.badges[b] = true;
+  var e = $("b_" + b); e.classList.add("on"); e.classList.remove("pop"); void e.offsetWidth; e.classList.add("pop");
+}
+
+/* things that happen once, at a moment in the timeline */
+function onProgress(sg, f){
+  var R = RUN.R, once = function(key, fn){ if (!RUN.calc["@" + key]){ RUN.calc["@" + key] = true; fn(); } };
+  switch (sg.kind){
+    case "idX":
+      if (f > 0.82) once("A", function(){ setCard("A"); addCalc("a"); });
+      break;
+    case "anaY":
+      if (f > 0.45) once("B", function(){ setCard("B"); addCalc("b"); if (R.ids.pathOK2) badge("geo"); });
+      if (f > 0.9) once("D", function(){ setCard("D"); addCalc("d"); if (R.ids.pathOK2) badge("lew"); });
+      break;
+    case "anaZ":
+      if (f > 0.82) once("C", function(){ setCard("C"); addCalc("c"); });
+      break;
+    case "test":
+      var k = "ABCD"[Math.min(3, Math.floor(f * 4.4))]; focusCard(f < 0.95 ? k : null);
+      break;
+  }
+}
+function onSegEnd(sg){
+  var R = RUN.R;
+  if (sg.kind === "genX") addCalc("r1");
+  if (sg.kind === "obsX"){ RUN.found.X = R.ids.X; setTile("X", R.ids.X, R.ids.pathOK1); addCalc("x"); logRow("X"); }
+  if (sg.kind === "idX"){ onProgress(sg, 1); if (R.ids.pathOK1) badge("det"); }
+  if (sg.kind === "formY"){ RUN.found.Y = R.ids.Y; setTile("Y", R.ids.Y, R.ids.pathOK2); addCalc("r2"); logRow("Y"); }
+  if (sg.kind === "anaY") onProgress(sg, 1);
+  if (sg.kind === "formZ"){ RUN.found.Z = R.ids.Z; setTile("Z", R.ids.Z, R.ids.pathOK3); addCalc("r3"); logRow("Z"); if (R.ids.pathOK3) badge("hot"); }
+  if (sg.kind === "anaZ") onProgress(sg, 1);
+  if (sg.kind === "test"){ focusCard(null); addCalc("board"); }
+}
+function onSegStart(sg){ if (sg.kind === "answer") $("donebanner").classList.add("on"); }
+function stepTimeline(sdt){
+  var sg = seg(); if (!sg) return;
+  RUN.u += sdt;
+  onProgress(sg, clamp(RUN.u / sg.dur, 0, 1));
+  while (sg && RUN.u >= sg.dur){
+    RUN.u -= sg.dur;
+    onSegEnd(sg);
+    RUN.si++;
+    sg = seg();
+    if (!sg){ finish(); return; }
+    onSegStart(sg);
+  }
+}
+function clearRunUI(){
+  $("calclist").innerHTML = ""; $("calcempty").hidden = false;
+  $("donebanner").classList.remove("on");
+  $("revealhost").classList.remove("on"); $("revealhost").innerHTML = "";
+  $("lab3d").classList.remove("dim"); $("blackout").classList.remove("on");
+  burst = []; clearBoard();
+}
+function freshRun(){ RUN.si = 0; RUN.u = 0; RUN.paused = false; RUN.done = false; RUN.revealed = false; RUN.calc = {}; RUN.found = {}; RUN.cards = {}; RUN.badges = {}; RUN.rows = []; }
+function startRun(D){
+  readAll();
+  RUN.D = D || copyST(); RUN.R = run(RUN.D);
+  RUN.segs = buildTimeline(); freshRun(); RUN.state = "running";
+  clearRunUI(); drawLog(); refreshUI(); refreshAnswerBox();
+}
+function resetRun(){
+  RUN.state = "setup"; RUN.segs = []; freshRun();
+  readAll(); RUN.D = copyST(); RUN.R = run(RUN.D);
+  clearRunUI(); drawLog(); refreshUI(); refreshAnswerBox();
+}
+function resetAll(){
+  var i; for (i = 0; i < FIELDS.length; i++) $("in_" + FIELDS[i].k).value = Q[FIELDS[i].k];
+  readAll(); earlyReveal = false; resetRun(); refreshGate();
+}
+function finish(){
+  RUN.si = RUN.segs.length; RUN.state = "done"; RUN.done = true;
+  addCalc("match"); if (RUN.R.complete) badge("mas");
+  refreshUI(); refreshAnswerBox();
+  doReveal();
+}
+
+/* =====================================================================
+   reasoning log - one causal chain per step, written as it happens
+   ===================================================================== */
+function chain(a){ return a.join(' <span style="color:var(--text-muted)">→</span> '); }
+function calcHTML(key){
+  var R = RUN.R, D = R.D, ev = R.ev, v;
+  switch (key){
+    case "r1":
+      return ["REACTION 1", chain([(D.ox === "MnO2" ? "MnO₂" : "KMnO₄") + " + " + (D.hcl === "conc" ? "conc." : "dilute") + " HCl", R.r1.ok ? "redox" : "almost no reaction",
+        R.r1.ok ? "Cl⁻ oxidised" : "no chlorine", "<b>" + R.r1.obs + "</b>"]) + "<span class=w>" + R.r1.why + "</span>"];
+    case "x":
+      if (!R.r1.ok) return ["X", "No gas, so X cannot be identified <span class=w>the question's pathway needs concentrated HCl</span>"];
+      return ["X", "Atom balance MnO₂ + " + R.x1[0].a + "HCl → MnCl₂ + <b>X</b> + " + R.x1[0].b + "H₂O leaves X = <b>" + nm(R.x1[0].X) + "</b>; colour chart: only Cl₂ is greenish-yellow &nbsp;⇒&nbsp; <span class=hl>X = Cl₂</span>"
+        + "<span class=w>two independent routes — conservation of atoms and the observed colour — agree</span>"];
+    case "a": return ["(A)", "X = " + (R.ids.X ? nm(R.ids.X) : "—") + ": " + ev.A.ev + " &nbsp;⇒&nbsp; " + verdictHTML(ev.A.v)];
+    case "r2":
+      return ["REACTION 2", chain(["NH₃ + " + (D.r2 === "xsCl2" ? "excess Cl₂" : "Cl₂ (NH₃ in excess)"), R.r2.Y === "NCl3" ? "3 H replaced by Cl" : "oxidation of NH₃",
+        R.r2.eq, "<b>Y = " + (R.r2.Y ? nm(R.r2.Y) : "—") + "</b>"]) + "<span class=w>" + R.r2.why + "</span>"];
+    case "b": v = R.ids.Y ? vsepr(R.ids.Y) : null;
+      return ["(B)", (v && R.ids.pathOK2 ? "VSEPR: steric number " + v.sn + " → electron geometry " + v.egeo + ", molecular geometry <b>" + v.geo + "</b>. " : "") + ev.B.ev + " &nbsp;⇒&nbsp; " + verdictHTML(ev.B.v)];
+    case "d": return ["(D)", ev.D.ev + " &nbsp;⇒&nbsp; " + verdictHTML(ev.D.v) + "<span class=w>−I effect: electronegative substituents withdraw electron density from the donor atom</span>"];
+    case "r3":
+      return ["REACTION 3", chain(["Cl₂ + " + (D.r3f === "xsF2" ? "excess F₂" : "F₂ (1 : 1)"), "heated to " + D.r3T + " K", R.r3.eq, "<b>Z = " + (R.r3.Z ? nm(R.r3.Z) : "—") + "</b>"]) + "<span class=w>" + R.r3.why + "</span>"];
+    case "c": v = R.ids.Z === "ClF3" ? vsepr("ClF3") : null;
+      return ["(C)", (v ? "ClF₃: " + v.bp + " bond pairs + " + v.lp + " lone pairs → " + v.egeo + " electron geometry, lone pairs equatorial → <b>T-shaped</b>. " : "") + ev.C.ev + " &nbsp;⇒&nbsp; " + verdictHTML(ev.C.v)];
+    case "board":
+      return ["BOARD", "(A) " + verdictHTML(ev.A.v) + " &nbsp; (B) " + verdictHTML(ev.B.v) + " &nbsp; (C) " + verdictHTML(ev.C.v) + " &nbsp; (D) " + verdictHTML(ev.D.v)];
+    case "match":
+      return ["ANSWER", R.complete ? "Supported statements: <span class=hl>" + optText(R.truth) + "</span> &nbsp;·&nbsp; X = " + nm(R.ids.X) + ", Y = " + nm(R.ids.Y) + ", Z = " + nm(R.ids.Z)
+        : "The question's reaction pathway no longer applies under your conditions — restore them to answer the question."];
+  }
+  return null;
+}
+function verdictHTML(v){ return v === true ? "<span class=hl>✓ SUPPORTED</span>" : v === false ? '<b style="color:var(--bad)">✗ NOT SUPPORTED</b>' : "<b>— not applicable</b>"; }
+function addCalc(key){
+  if (RUN.calc[key]) return;
+  var c = calcHTML(key); if (!c) return;
+  RUN.calc[key] = true;
+  $("calcempty").hidden = true;
+  var li = document.createElement("li");
+  li.setAttribute("data-key", key);
+  li.innerHTML = '<span class="s">' + c[0] + '</span><span class="m">' + c[1] + "</span>";
+  $("calclist").appendChild(li);
+}
+function calcKeys(){ return Object.keys(RUN.calc).filter(function(k){ return k.charAt(0) !== "@"; }); }
+function logRow(k){
+  var R = RUN.R, f = R.ids[k], v = f ? vsepr(f) : null;
+  var src = k === "X" ? R.r1.eq : k === "Y" ? R.r2.eq : R.r3.eq;
+  var evd = k === "X" ? (R.r1.ok ? "greenish-yellow gas; atom balance" : "no gas") : k === "Y" ? (R.r2.ok ? "all 3 N–H replaced; HCl released" : R.r2.why) : (R.r3.ok ? "excess F₂, 573 K" : R.r3.why);
+  RUN.rows.push([k, src, evd, f ? nm(f) : "—", v ? v.geo : "—"]);
+  drawLog();
+}
+function drawLog(){
+  var h = "<thead><tr><th>unknown</th><th>reaction</th><th>evidence</th><th>identity</th><th>shape</th></tr></thead><tbody>", i, r;
+  for (i = 0; i < RUN.rows.length; i++){ r = RUN.rows[i]; h += "<tr><td><b>" + r[0] + "</b></td><td>" + r[1] + "</td><td>" + r[2] + "</td><td class=n>" + r[3] + "</td><td>" + r[4] + "</td></tr>"; }
+  $("log").innerHTML = h + "</tbody>";
+  $("logn").textContent = RUN.rows.length;
+}
+
+/* =====================================================================
+   molecules in 3D - geometry from VSEPR, drawn as shaded spheres
+   ===================================================================== */
+var ELS = { Cl: { c: "#74e36a", e: "#1f7a1c", r: 17 }, F: { c: "#f4e78a", e: "#9a8a1c", r: 14 }, N: { c: "#6d86ff", e: "#2b3fb0", r: 16 },
+  H: { c: "#f4f6fb", e: "#8d96a8", r: 10 }, U: { c: "#a8b8ff", e: "#3a4a9a", r: 20 }, O: { c: "#ff6b6b", e: "#8a1f1f", r: 14 }, Mn: { c: "#c79bff", e: "#5a2a9a", r: 16 } };
+function pyramid(L, ang){ var cb = Math.sqrt((1 + 2 * Math.cos(ang * Math.PI / 180)) / 3), sb = Math.sqrt(1 - cb * cb), out = [], k;
+  for (k = 0; k < 3; k++){ var p = 2 * Math.PI * k / 3 + 0.4; out.push([L * sb * Math.cos(p), -L * cb, L * sb * Math.sin(p)]); } return out; }
+function molGeom(m){
+  var A = [], LP = [], G = null, i, p;
+  if (m === "Cl2"){ A = [["Cl", [-1.0, 0, 0]], ["Cl", [1.0, 0, 0]]]; }
+  else if (m === "F2"){ A = [["F", [-0.72, 0, 0]], ["F", [0.72, 0, 0]]]; }
+  else if (m === "HCl"){ A = [["H", [-0.64, 0, 0]], ["Cl", [0.64, 0, 0]]]; }
+  else if (m === "ClF"){ A = [["Cl", [-0.82, 0, 0]], ["F", [0.82, 0, 0]]]; }
+  else if (m === "N2"){ A = [["N", [-0.55, 0, 0]], ["N", [0.55, 0, 0]]]; }
+  else if (m === "NH3" || m === "NCl3" || m === "NH2Cl" || m === "NHCl2"){
+    var L = m === "NH3" ? 1.0 : 1.45, ang = m === "NH3" ? 106.7 : 107.1, lig = m === "NH3" ? ["H", "H", "H"] : m === "NH2Cl" ? ["Cl", "H", "H"] : m === "NHCl2" ? ["Cl", "Cl", "H"] : ["Cl", "Cl", "Cl"];
+    p = pyramid(L, ang); A.push(["N", [0, 0, 0]]);
+    for (i = 0; i < 3; i++) A.push([lig[i], lig[i] === "H" ? [p[i][0] * 0.72, p[i][1] * 0.72, p[i][2] * 0.72] : p[i]]);
+    LP = [[0, 1, 0]]; G = { type: "pyr", pts: p };
+  }
+  else if (m === "ClF3"){
+    var L3 = 1.3, t = 2.5 * Math.PI / 180;                         /* axial F bent 2.5 deg toward the equatorial F (F-Cl-F 87.5) */
+    A = [["Cl", [0, 0, 0]], ["F", [L3 * Math.sin(t), L3 * Math.cos(t), 0]], ["F", [L3 * Math.sin(t), -L3 * Math.cos(t), 0]], ["F", [L3 * 0.93, 0, 0]]];
+    LP = [[Math.cos(2 * Math.PI / 3), 0, Math.sin(2 * Math.PI / 3)], [Math.cos(4 * Math.PI / 3), 0, Math.sin(4 * Math.PI / 3)]];
+    G = { type: "tbp" };
+  }
+  else if (m === "UF6"){ A = [["U", [0, 0, 0]], ["F", [1.3, 0, 0]], ["F", [-1.3, 0, 0]], ["F", [0, 1.3, 0]], ["F", [0, -1.3, 0]], ["F", [0, 0, 1.3]], ["F", [0, 0, -1.3]]]; }
+  return { atoms: A, lp: LP, guide: G };
+}
+function rot3(p, yaw, pit){
+  var cy = Math.cos(yaw), sy = Math.sin(yaw), x = p[0] * cy + p[2] * sy, z = -p[0] * sy + p[2] * cy;
+  var cp = Math.cos(pit), sp = Math.sin(pit), y = p[1] * cp - z * sp, z2 = p[1] * sp + z * cp;
+  return [x, y, z2];
+}
+function sphere(g, x, y, r, el, a){
+  var E = ELS[el] || ELS.Cl, gr = g.createRadialGradient(x - r * 0.35, y - r * 0.4, r * 0.15, x, y, r);
+  gr.addColorStop(0, "#ffffff"); gr.addColorStop(0.28, E.c); gr.addColorStop(1, E.e);
+  g.globalAlpha = a === undefined ? 1 : a; g.fillStyle = gr; g.beginPath(); g.arc(x, y, r, 0, Math.PI * 2); g.fill(); g.globalAlpha = 1;
+}
+function label(g, s, x, y, col, size, align, weight){
+  g.fillStyle = col; g.font = (weight || 600) + " " + (size || 14) + "px ui-sans-serif,system-ui,sans-serif";
+  g.textAlign = align || "center"; g.textBaseline = "middle"; g.fillText(s, x, y);
+}
+/* draw a molecule at (cx, cy), scale sc px per unit. opt: yaw, pit, lp, labels, guide, alpha, glow, lpScale */
+function drawMolecule(g, m, cx, cy, sc, opt){
+  opt = opt || {};
+  var G = molGeom(m), items = [], i, yaw = opt.yaw || 0, pit = opt.pit === undefined ? 0.35 : opt.pit, al = opt.alpha === undefined ? 1 : opt.alpha;
+  var P = G.atoms.map(function(a){ var q = rot3(a[1], yaw, pit); return { el: a[0], x: cx + q[0] * sc, y: cy - q[1] * sc, z: q[2] }; });
+  if (opt.guide && G.guide){
+    g.save(); g.globalAlpha = 0.5 * al; g.strokeStyle = "#9fd0ff"; g.setLineDash([6, 5]); g.lineWidth = 1.5;
+    if (G.guide.type === "pyr"){
+      var b = G.guide.pts.map(function(p){ var q = rot3(p, yaw, pit); return [cx + q[0] * sc, cy - q[1] * sc]; });
+      g.fillStyle = "rgba(120,180,255,.10)"; g.beginPath(); g.moveTo(b[0][0], b[0][1]); g.lineTo(b[1][0], b[1][1]); g.lineTo(b[2][0], b[2][1]); g.closePath(); g.fill(); g.stroke();
+    } else if (G.guide.type === "tbp"){
+      var v = [[0, 1.45, 0], [0, -1.45, 0], [1.45, 0, 0], [Math.cos(2.094) * 1.45, 0, Math.sin(2.094) * 1.45], [Math.cos(4.189) * 1.45, 0, Math.sin(4.189) * 1.45]].map(function(p){ var q = rot3(p, yaw, pit); return [cx + q[0] * sc, cy - q[1] * sc]; });
+      var e = [[0, 2], [0, 3], [0, 4], [1, 2], [1, 3], [1, 4], [2, 3], [3, 4], [4, 2]];
+      for (i = 0; i < e.length; i++){ g.beginPath(); g.moveTo(v[e[i][0]][0], v[e[i][0]][1]); g.lineTo(v[e[i][1]][0], v[e[i][1]][1]); g.stroke(); }
+    }
+    g.restore();
+  }
+  for (i = 1; i < P.length; i++) if (G.atoms.length > 2 || i === 1) items.push({ z: (P[0].z + P[i].z) / 2 - 0.01, b: [0, i] });
+  for (i = 0; i < P.length; i++) items.push({ z: P[i].z, a: i });
+  if (opt.lp !== false) for (i = 0; i < G.lp.length; i++){ var d = rot3(G.lp[i], yaw, pit); items.push({ z: d[2] * 0.9, lp: d }); }
+  items.sort(function(a, b){ return a.z - b.z; });
+  for (i = 0; i < items.length; i++){
+    var it = items[i];
+    if (it.b){ var p1 = P[it.b[0]], p2 = P[it.b[1]]; g.globalAlpha = al; g.strokeStyle = "#8a96ad"; g.lineWidth = Math.max(3, sc * 0.09); g.lineCap = "round";
+      g.beginPath(); g.moveTo(p1.x, p1.y); g.lineTo(p2.x, p2.y); g.stroke(); g.globalAlpha = 1; }
+    else if (it.lp){
+      var ls = (opt.lpScale === undefined ? 1 : opt.lpScale), lx = cx + it.lp[0] * sc * 0.72, ly = cy - it.lp[1] * sc * 0.72, ang = Math.atan2(-it.lp[1], it.lp[0]);
+      g.save(); g.translate(lx, ly); g.rotate(ang); g.globalAlpha = 0.5 * al * clamp(ls, 0.25, 1.4);
+      var gr = g.createRadialGradient(0, 0, 2, 0, 0, sc * 0.5 * ls); gr.addColorStop(0, "rgba(255,190,120,.95)"); gr.addColorStop(1, "rgba(255,140,60,0)");
+      g.fillStyle = gr; g.beginPath(); g.ellipse(0, 0, sc * 0.5 * ls, sc * 0.3 * ls, 0, 0, Math.PI * 2); g.fill();
+      g.globalAlpha = al; g.fillStyle = "#ffe0c8"; g.beginPath(); g.arc(3, -5, 3.2, 0, 7); g.arc(3, 5, 3.2, 0, 7); g.fill(); g.restore();
+    } else {
+      var A = P[it.a], rr = (ELS[A.el] || ELS.Cl).r * (sc / 60) * (1 + A.z / 12);
+      if (opt.glow){ g.shadowColor = (ELS[A.el] || ELS.Cl).c; g.shadowBlur = 16; }
+      sphere(g, A.x, A.y, rr, A.el, al); g.shadowBlur = 0;
+      if (opt.labels !== false){ g.globalAlpha = al; label(g, A.el, A.x, A.y + 1, A.el === "H" || A.el === "F" ? "#23303f" : "#081018", Math.max(10, rr * 0.9), "center", 800); g.globalAlpha = 1; }
+    }
+  }
+  return P;
+}
+
+/* =====================================================================
+   the laboratory canvas - one scene per stage
+   ===================================================================== */
+var burst = [], clock = 0, SHOW = { eq: false, obs: false, why: false };
+var CLGAS = "rgba(200,224,74,", AMBER = "rgba(255,196,80,";
+function glassRect(g, x, y, w, h, r){
+  g.fillStyle = "rgba(150,190,255,.07)"; g.strokeStyle = "rgba(190,215,255,.45)"; g.lineWidth = 2;
+  g.beginPath(); g.roundRect ? g.roundRect(x, y, w, h, r || 12) : g.rect(x, y, w, h); g.fill(); g.stroke();
+  g.strokeStyle = "rgba(255,255,255,.18)"; g.lineWidth = 3; g.beginPath(); g.moveTo(x + 10, y + 14); g.lineTo(x + 10, y + h - 14); g.stroke();
+}
+function hood(g){
+  var W = 1040, H = 620;
+  var bg = g.createLinearGradient(0, 0, 0, H); bg.addColorStop(0, "#0b1120"); bg.addColorStop(1, "#070a12");
+  g.fillStyle = bg; g.fillRect(0, 0, W, H);
+  g.strokeStyle = "rgba(160,190,255,.12)"; g.lineWidth = 10; g.strokeRect(14, 14, W - 28, H - 28);
+  g.fillStyle = "rgba(160,190,255,.06)"; g.fillRect(14, H - 70, W - 28, 56);
+}
+function stamp(g, x, y, text, ok, a){
+  g.save(); g.translate(x, y); g.rotate(-0.08); g.globalAlpha = a;
+  g.strokeStyle = ok ? "#3ee39a" : ok === false ? "#ff6b6b" : "#b8a8ff"; g.lineWidth = 4;
+  g.font = "900 26px ui-sans-serif,system-ui,sans-serif"; var w = g.measureText(text).width + 34;
+  g.fillStyle = "rgba(8,14,26,.85)"; g.fillRect(-w / 2, -26, w, 52); g.strokeRect(-w / 2, -26, w, 52);
+  label(g, text, 0, 1, ok ? "#3ee39a" : ok === false ? "#ff6b6b" : "#cfc4ff", 26, "center", 900); g.restore();
+}
+function sceneTitle(g, a, b){ label(g, a, 520, 44, "#8fa6c9", 16, "center", 800); if (b) label(g, b, 520, 70, "#e6eeff", 21, "center", 800); }
+
+/* 01 - generate X */
+function sceneGenX(g, f){
+  var R = RUN.R, ok = R.r1.ok;
+  sceneTitle(g, "STATION 1 · REACTION 1", (RUN.D.ox === "MnO2" ? "MnO₂" : "KMnO₄") + " + " + (RUN.D.hcl === "conc" ? "conc." : "dilute") + " HCl");
+  var pour = ease(f / 0.25), lvl = ease(f / 0.3);
+  /* reagent bottle, tilting */
+  g.save(); g.translate(150, 250); g.rotate(-0.9 * Math.sin(Math.PI * Math.min(1, f / 0.3)));
+  glassRect(g, -40, -90, 80, 120, 10); g.fillStyle = "rgba(255,240,200,.18)"; g.fillRect(-36, -40, 72, 66);
+  label(g, RUN.D.hcl === "conc" ? "Conc. HCl" : "dil. HCl", 0, -64, "#e6eeff", 14, "center", 800); g.restore();
+  if (f < 0.3 && f > 0.03){ g.strokeStyle = "rgba(255,240,200,.5)"; g.lineWidth = 4; g.beginPath(); g.moveTo(205, 200); g.quadraticCurveTo(240, 230, 265, 330); g.stroke(); }
+  /* flask */
+  var fx = 300, fy = 400;
+  g.fillStyle = "rgba(150,190,255,.07)"; g.strokeStyle = "rgba(190,215,255,.5)"; g.lineWidth = 2.5;
+  g.beginPath(); g.arc(fx, fy, 80, 0, Math.PI * 2); g.fill(); g.stroke(); g.strokeRect(fx - 16, fy - 150, 32, 76);
+  g.save(); g.beginPath(); g.arc(fx, fy, 78, 0, Math.PI * 2); g.clip();
+  g.fillStyle = "rgba(255,235,190,.2)"; g.fillRect(fx - 80, fy + 70 - 90 * lvl, 160, 200);
+  g.fillStyle = RUN.D.ox === "MnO2" ? "#2a2522" : "#5a1a6a"; g.beginPath(); g.ellipse(fx, fy + 60, 55, 16, 0, 0, Math.PI * 2); g.fill();
+  if (ok && f > 0.25){ var i, R2 = rng(5); for (i = 0; i < 18; i++){ var bx = fx - 50 + R2() * 100, by = fy + 60 - ((clock * 60 + R2() * 200) % 120); g.strokeStyle = "rgba(220,240,160,.6)"; g.lineWidth = 1.5; g.beginPath(); g.arc(bx, by, 3 + R2() * 3, 0, 7); g.stroke(); } }
+  if (ok && f > 0.3){ g.fillStyle = CLGAS + (0.35 * ease((f - 0.3) / 0.3)) + ")"; g.fillRect(fx - 80, fy - 80, 160, 60); }
+  g.restore();
+  label(g, RUN.D.ox === "MnO2" ? "MnO₂ (s)" : "KMnO₄ (s)", fx, fy + 105, "#cfe0ff", 14, "center", 700);
+  /* burner */
+  if (f > 0.2){ var fl = 1 + 0.1 * Math.sin(clock * 20); g.fillStyle = "rgba(90,160,255,.8)"; g.beginPath(); g.ellipse(fx, fy + 120, 10 * fl, 22 * fl, 0, 0, 7); g.fill(); label(g, "gentle heat", fx + 60, fy + 128, "#9fb0cc", 12, "left", 600); }
+  /* delivery tube and gas jar */
+  g.strokeStyle = "rgba(190,215,255,.55)"; g.lineWidth = 7; g.lineJoin = "round";
+  g.beginPath(); g.moveTo(fx, fy - 150); g.lineTo(fx, fy - 185); g.lineTo(700, fy - 185); g.lineTo(700, fy + 60); g.stroke();
+  glassRect(g, 640, fy - 110, 120, 200, 10);
+  var fill = ok ? ease((f - 0.5) / 0.5) : 0;
+  if (fill > 0){ g.fillStyle = CLGAS + (0.55 * fill) + ")"; g.fillRect(644, fy + 86 - 192 * fill, 112, 192 * fill); }
+  if (ok && f > 0.42){ var j; for (j = 0; j < 14; j++){ var t = ((clock * 0.45 + j / 14) % 1), px, py, L1 = 35, L2 = 400, L3 = 245, s = t * (L1 + L2 + L3);
+      if (s < L1){ px = fx; py = fy - 150 - s; } else if (s < L1 + L2){ px = fx + (s - L1); py = fy - 185; } else { px = 700; py = fy - 185 + (s - L1 - L2); }
+      g.fillStyle = CLGAS + "0.95)"; g.beginPath(); g.arc(px, py, 4.5, 0, 7); g.fill(); } }
+  label(g, "gas jar", 700, fy + 110, "#cfe0ff", 14, "center", 700);
+  if (f > 0.75) label(g, ok ? "greenish-yellow gas collects — it is heavier than air" : "no gas — the jar stays empty", 700, fy - 140, ok ? "#e0f07a" : "#ff9b9b", 15, "center", 800);
+  observationBox(g, ok ? (f > 0.5 ? "Greenish-yellow gas evolved" : "Reacting…") : (f > 0.4 ? "No greenish-yellow gas" : "Adding acid…"), f > 0.5);
+}
+function observationBox(g, t, on){
+  g.fillStyle = "rgba(10,20,36,.88)"; g.strokeStyle = on ? "#c8e04a" : "rgba(160,190,255,.3)"; g.lineWidth = 2;
+  g.fillRect(800, 250, 210, 90); g.strokeRect(800, 250, 210, 90);
+  label(g, "OBSERVATION", 905, 272, "#8fa6c9", 13, "center", 800);
+  wrap(g, t, 905, 302, 190, 16, "#ffffff", 16);
+}
+function wrap(g, t, x, y, w, lh, col, size){
+  g.font = "700 " + size + "px ui-sans-serif,system-ui,sans-serif"; var words = t.split(" "), line = "", yy = y, i;
+  for (i = 0; i < words.length; i++){ var tt = line + words[i] + " "; if (g.measureText(tt).width > w && line){ label(g, line.trim(), x, yy, col, size, "center", 700); line = words[i] + " "; yy += lh + 4; } else line = tt; }
+  label(g, line.trim(), x, yy, col, size, "center", 700);
+}
+/* 02 - observe X: colour chart and atom balance */
+function sceneObsX(g, f){
+  var R = RUN.R;
+  sceneTitle(g, "STATION 1 · WHAT IS THE GAS?", "two independent tests");
+  label(g, "TEST 1 — COLOUR", 270, 112, "#cfe0ff", 15, "center", 800);
+  var n = GASES.length, i, scan = f * 1.6 * n;
+  for (i = 0; i < n; i++){
+    var x = 80 + (i % 3) * 130, y = 150 + Math.floor(i / 3) * 150, G = GASES[i];
+    glassRect(g, x, y, 100, 100, 10); g.fillStyle = G.rgb; g.fillRect(x + 4, y + 30, 92, 66);
+    label(g, nm(G.f), x + 50, y + 18, "#ffffff", 16, "center", 800);
+    label(g, G.col.split(" (")[0], x + 50, y + 116, "#9fb0cc", 12, "center", 600);
+    if (scan > i + 0.6 && R.r1.ok){ var hit = G.f === "Cl2"; label(g, hit ? "✓" : "✗", x + 86, y + 44, hit ? "#3ee39a" : "#ff6b6b", 28, "center", 900); }
+  }
+  label(g, R.r1.ok ? "observed: greenish-yellow" : "observed: nothing", 270, 470, R.r1.ok ? "#e0f07a" : "#ff9b9b", 17, "center", 800);
+  label(g, "TEST 2 — ATOM BALANCE", 760, 112, "#cfe0ff", 15, "center", 800);
+  var b = R.x1[0], rows = [["", "Mn", "O", "H", "Cl"], ["MnO₂ + " + b.a + "HCl", "1", "2", String(b.a), String(b.a)], ["MnCl₂ + " + b.b + "H₂O", "1", String(b.b), String(2 * b.b), "2"], ["left for X", "0", "0", "0", String(b.a - 2)]];
+  var shown = Math.min(rows.length, Math.floor(f * 6) + 1), r, c;
+  for (r = 0; r < shown; r++) for (c = 0; c < 5; c++) label(g, rows[r][c], c ? 700 + c * 55 : 640, 160 + r * 42, r === 3 ? "#3ee39a" : r ? "#e6eeff" : "#8fa6c9", c ? 17 : 14, "center", r === 3 ? 900 : 700);
+  if (f > 0.7) label(g, "X contains only 2 Cl  ⇒  X = Cl₂", 760, 360, "#3ee39a", 19, "center", 900);
+  if (f > 0.85) label(g, R.r1.ok ? "Both tests agree." : "…but no gas was produced under these conditions.", 760, 400, R.r1.ok ? "#cfe0ff" : "#ff9b9b", 15, "center", 700);
+}
+/* 03 - identify X, then the water-treatment demonstration */
+function sceneIdX(g, f){
+  var R = RUN.R;
+  if (!R.r1.ok){ sceneTitle(g, "STATION 1 · IDENTIFY X", "X was not formed"); stamp(g, 520, 330, "PATHWAY CHANGED", null, 1); return; }
+  if (f < 0.45){
+    sceneTitle(g, "STATION 1 · IDENTIFY X", "X = Cl₂  (chlorine)");
+    drawMolecule(g, "Cl2", 330, 320, 110, { yaw: clock * 0.6, pit: 0.2, glow: true });
+    label(g, "Mn: +4 → +2   (gains 2e⁻)", 760, 260, "#c79bff", 18, "center", 800);
+    label(g, "2Cl⁻ → Cl₂   (loses 2e⁻)", 760, 300, "#74e36a", 18, "center", 800);
+    label(g, R.r1.eq, 760, 360, "#ffffff", 17, "center", 800);
+    label(g, "greenish-yellow gas + oxidation of Cl⁻ → chlorine", 760, 410, "#cfe0ff", 14, "center", 600);
+    return;
+  }
+  var t = (f - 0.45) / 0.55;
+  sceneTitle(g, "PROPERTY OF X · WATER TREATMENT", "does chlorine sterilise drinking water?");
+  glassRect(g, 250, 150, 540, 300, 18);
+  var clear = ease(t / 0.8);
+  g.fillStyle = "rgba(" + Math.round(120 - 60 * clear) + "," + Math.round(140 + 40 * clear) + "," + Math.round(120 + 110 * clear) + ",.35)"; g.fillRect(254, 200, 532, 246);
+  var R3 = rng(11), i, alive = 0;
+  for (i = 0; i < 40; i++){
+    var x = 270 + R3() * 500, y = 215 + R3() * 220, die = R3();
+    var a = clamp(1 - (clear - die * 0.9) * 3, 0, 1); if (a > 0.05) alive++;
+    g.globalAlpha = a; g.fillStyle = "#b86bff"; g.beginPath(); g.ellipse(x + Math.sin(clock * 2 + i) * 4, y, 7, 4, i, 0, 7); g.fill(); g.globalAlpha = 1;
+  }
+  if (t > 0.05){ var j; for (j = 0; j < 8; j++){ var yy = 180 + ((clock * 50 + j * 30) % 250); g.fillStyle = CLGAS + "0.8)"; g.beginPath(); g.arc(520 + Math.sin(j) * 8, yy, 4, 0, 7); g.fill(); } }
+  label(g, "controlled chlorine dosing (tiny amounts)", 520, 172, "#e0f07a", 14, "center", 700);
+  label(g, "microbes remaining: " + alive + " / 40", 520, 480, "#e6eeff", 16, "center", 800);
+  label(g, "Chlorine is widely used as a disinfectant for drinking water", 520, 515, "#cfe0ff", 15, "center", 700);
+  if (f > 0.82) stamp(g, 880, 190, "(A) ✓ SUPPORTED", true, clamp((f - 0.82) / 0.1, 0, 1));
+}
+/* 04 - form Y: NH3 + excess Cl2 */
+function sceneFormY(g, f){
+  var R = RUN.R;
+  sceneTitle(g, "STATION 2 · REACTION 2", "NH₃ + " + (RUN.D.r2 === "xsCl2" ? "EXCESS Cl₂" : "Cl₂ (NH₃ in excess)"));
+  glassRect(g, 220, 110, 600, 400, 22);
+  if (!R.r1.ok){ label(g, "no X to react", 520, 310, "#ff9b9b", 20, "center", 800); return; }
+  var R4 = rng(21), i;
+  var nCl = RUN.D.r2 === "xsCl2" ? 12 : 4, nNH = RUN.D.r2 === "xsCl2" ? 3 : 10;
+  for (i = 0; i < nCl; i++) drawMolecule(g, "Cl2", 260 + ((R4() * 520 + clock * 20 * (i % 2 ? 1 : -1)) % 520 + 520) % 520, 140 + R4() * 340, 26, { yaw: clock + i, lp: false, labels: false, alpha: 0.8 });
+  if (RUN.D.r2 === "xsNH3"){
+    for (i = 0; i < nNH; i++) drawMolecule(g, "NH3", 260 + R4() * 520, 140 + R4() * 340, 30, { yaw: clock + i, lp: false, labels: false, alpha: 0.8 });
+    if (f > 0.5){ g.fillStyle = "rgba(240,240,250," + (0.4 * ease((f - 0.5) / 0.4)) + ")"; g.fillRect(224, 114, 592, 392); label(g, "white smoke of NH₄Cl · N₂ released", 520, 470, "#ffffff", 16, "center", 800); }
+    label(g, "8NH₃ + 3Cl₂ → N₂ + 6NH₄Cl", 520, 540, "#ffffff", 18, "center", 800);
+    return;
+  }
+  var stage = Math.min(3, Math.floor(f * 4.2)), names = ["NH3", "NH2Cl", "NHCl2", "NCl3"];
+  g.fillStyle = AMBER + (0.12 * stage / 3) + ")"; g.fillRect(224, 114, 592, 392);
+  drawMolecule(g, names[stage], 520, 320, 90, { yaw: clock * 0.5, pit: 0.35, glow: stage === 3 });
+  for (i = 1; i <= stage; i++){ var tt = clamp((f * 4.2 - i) , 0, 1); drawMolecule(g, "HCl", 520 + 150 + tt * 90, 200 + i * 60 - tt * 40, 28, { yaw: 0.3, lp: false, alpha: 1 - tt * 0.3 }); }
+  label(g, ["NH₃", "NH₂Cl", "NHCl₂", "NCl₃"].slice(0, stage + 1).join("  →  "), 520, 470, stage === 3 ? "#ffc450" : "#e6eeff", 20, "center", 900);
+  label(g, "each Cl₂ swaps one H for Cl and releases HCl", 520, 540, "#cfe0ff", 15, "center", 700);
+  if (f > 0.85) label(g, "NH₃ + 3Cl₂ → NCl₃ + 3HCl   ·   Y = NCl₃", 520, 578, "#3ee39a", 18, "center", 900);
+}
+/* 05 - analyse Y: shape and basicity */
+function sceneAnaY(g, f){
+  var R = RUN.R;
+  if (!R.ids.pathOK2){ sceneTitle(g, "STATION 2 · ANALYSE Y", R.ids.Y ? "Y = " + nm(R.ids.Y) + " — not the question's Y" : "Y was not formed"); stamp(g, 520, 330, "PATHWAY CHANGED", null, 1); return; }
+  if (f < 0.5){
+    sceneTitle(g, "STATION 2 · SHAPE OF Y", "NCl₃ — is it planar?");
+    drawMolecule(g, "NCl3", 300, 330, 120, { yaw: clock * 0.7, pit: 0.3, guide: true, glow: true });
+    label(g, "3 bond pairs + 1 lone pair = 4 electron pairs", 300, 520, "#cfe0ff", 15, "center", 700);
+    /* side view: plane of the three Cl and the height of N above it */
+    var cb = Math.sqrt((1 + 2 * Math.cos(107.1 * Math.PI / 180)) / 3), h = 1.76 * cb;
+    label(g, "SIDE VIEW", 760, 150, "#8fa6c9", 14, "center", 800);
+    g.strokeStyle = "rgba(120,180,255,.7)"; g.setLineDash([8, 6]); g.lineWidth = 2; g.beginPath(); g.moveTo(610, 380); g.lineTo(910, 380); g.stroke(); g.setLineDash([]);
+    sphere(g, 650, 380, 18, "Cl"); sphere(g, 760, 380, 18, "Cl"); sphere(g, 870, 380, 18, "Cl");
+    sphere(g, 760, 380 - h * 150, 17, "N");
+    g.strokeStyle = "#ffd79a"; g.lineWidth = 2; g.beginPath(); g.moveTo(790, 380); g.lineTo(790, 380 - h * 150); g.stroke();
+    label(g, "N is " + h.toFixed(2) + " Å above the Cl₃ plane", 760, 430, "#ffd79a", 16, "center", 800);
+    label(g, "tetrahedral electron pairs → TRIGONAL PYRAMIDAL", 760, 470, "#ffffff", 15, "center", 800);
+    if (f > 0.42) stamp(g, 760, 230, "PLANAR?  ✗ NO", false, clamp((f - 0.42) / 0.06, 0, 1));
+    return;
+  }
+  sceneTitle(g, "STATION 2 · LEWIS BASICITY", "NH₃ vs NCl₃ — whose lone pair is more available?");
+  var t = ease((f - 0.5) / 0.3);
+  drawMolecule(g, "NH3", 300, 320, 110, { yaw: 0.5, pit: 0.3, lpScale: 1.25 });
+  drawMolecule(g, "NCl3", 740, 320, 110, { yaw: 0.5, pit: 0.3, lpScale: 1.25 - 0.8 * t });
+  label(g, "NH₃", 300, 460, "#ffffff", 22, "center", 900); label(g, "NCl₃", 740, 460, "#ffffff", 22, "center", 900);
+  label(g, "H (χ 2.20) pushes density onto N", 300, 495, "#9fd0ff", 14, "center", 700);
+  label(g, "Cl (χ 3.16) pulls density away (−I)", 740, 495, "#ffb4b4", 14, "center", 700);
+  var i; for (i = 0; i < 3; i++){ var a = -Math.PI / 2 + i * 2.1 + 0.6; g.strokeStyle = "rgba(255,120,120," + t + ")"; g.lineWidth = 3; g.beginPath(); g.moveTo(740 + Math.cos(a) * 40, 330 - Math.sin(a) * 25); g.lineTo(740 + Math.cos(a) * 85, 330 - Math.sin(a) * 60); g.stroke(); }
+  label(g, "electron donation ability (qualitative)", 520, 535, "#8fa6c9", 13, "center", 700);
+  g.fillStyle = "#3987e5"; g.fillRect(220, 550, 160, 14); g.fillStyle = "#ff6b6b"; g.fillRect(660, 550, 160 - 110 * t, 14);
+  if (f > 0.88) stamp(g, 520, 200, "(D) ✗ NOT SUPPORTED", false, clamp((f - 0.88) / 0.06, 0, 1));
+}
+/* 06 - form Z: Cl2 + excess F2 at 573 K */
+function sceneFormZ(g, f){
+  var R = RUN.R, D = RUN.D, target = parseInt(D.r3T, 10), T = Math.round(298 + (target - 298) * ease(f / 0.4));
+  sceneTitle(g, "STATION 3 · REACTION 3", "Cl₂ + " + (D.r3f === "xsF2" ? "EXCESS F₂" : "F₂ (1 : 1)") + " at " + D.r3T + " K");
+  glassRect(g, 250, 110, 560, 400, 22);
+  var heat = (T - 298) / (573 - 298);
+  g.fillStyle = "rgba(255,120,40," + (0.12 * heat) + ")"; g.fillRect(254, 114, 552, 392);
+  /* thermometer */
+  g.fillStyle = "rgba(20,30,52,.9)"; g.fillRect(860, 150, 120, 300); g.strokeStyle = "rgba(160,190,255,.3)"; g.strokeRect(860, 150, 120, 300);
+  g.fillStyle = "#ff6b3d"; var hh = 220 * clamp((T - 250) / 400, 0, 1); g.fillRect(912, 420 - hh, 16, hh); g.beginPath(); g.arc(920, 425, 16, 0, 7); g.fill();
+  label(g, T + " K", 920, 172, "#ffd0a0", 20, "center", 900); label(g, "target " + D.r3T + " K", 920, 470, "#9fb0cc", 12, "center", 600);
+  if (!R.r1.ok){ label(g, "no X to react", 530, 310, "#ff9b9b", 20, "center", 800); return; }
+  var R5 = rng(31), i, form = R.r3.Z ? ease((f - 0.55) / 0.4) : 0, nF = D.r3f === "xsF2" ? 12 : 5;
+  for (i = 0; i < nF; i++){ var inx = ease((f - 0.3 - i * 0.012) / 0.2); if (inx <= 0) continue;
+    drawMolecule(g, "F2", 270 + (R5() * 510 + clock * 40 * heat) % 510, 140 + R5() * 330, 24, { yaw: clock + i, lp: false, labels: false, alpha: inx * (1 - form) }); }
+  for (i = 0; i < 4; i++) drawMolecule(g, "Cl2", 290 + R5() * 480, 150 + R5() * 320, 28, { yaw: clock * 1.3 + i, lp: false, labels: false, alpha: 1 - form });
+  if (form > 0){ var prod = R.r3.Z; for (i = 0; i < 6; i++) drawMolecule(g, prod, 320 + (i % 3) * 190, 220 + Math.floor(i / 3) * 170, 40, { yaw: clock + i, pit: 0.3, lp: false, alpha: form, glow: true }); }
+  if (f > 0.9) label(g, R.r3.Z ? R.r3.eq + "   ·   Z = " + nm(R.r3.Z) : "no significant reaction", 530, 545, R.r3.ok ? "#3ee39a" : "#ff9b9b", 18, "center", 900);
+}
+/* 07 - analyse Z: shape and the UF6 connection */
+function sceneAnaZ(g, f){
+  var R = RUN.R;
+  if (!R.ids.pathOK3){ sceneTitle(g, "STATION 3 · ANALYSE Z", R.ids.Z ? "Z = " + nm(R.ids.Z) + " — not the question's Z" : "Z was not formed"); stamp(g, 520, 330, "PATHWAY CHANGED", null, 1); return; }
+  if (f < 0.5){
+    sceneTitle(g, "STATION 3 · SHAPE OF Z", "ClF₃ — T-shaped");
+    drawMolecule(g, "ClF3", 320, 330, 120, { yaw: 0.6 + clock * 0.5, pit: 0.3, guide: true, glow: true });
+    label(g, "3 bond pairs + 2 lone pairs = 5 → trigonal bipyramid", 760, 250, "#cfe0ff", 15, "center", 700);
+    label(g, "lone pairs take two EQUATORIAL corners —", 760, 300, "#ffd79a", 15, "center", 800);
+    label(g, "they get 120° of room there instead of 90°", 760, 325, "#ffd79a", 15, "center", 800);
+    label(g, "atoms left: 2 axial F + 1 equatorial F", 760, 370, "#ffffff", 15, "center", 700);
+    label(g, "⇒ T-SHAPED   (F–Cl–F ≈ 87.5°)", 760, 415, "#3ee39a", 20, "center", 900);
+    return;
+  }
+  var t = (f - 0.5) / 0.5, steps = ["U (metal)", "+ 3ClF₃ fluorinates", "UF₆ — volatile", "²³⁵UF₆ / ²³⁸UF₆ separated", "enriched ²³⁵U"], i;
+  sceneTitle(g, "PROPERTY OF Z · THE ²³⁵U CONNECTION", "concept only — no process details");
+  for (i = 0; i < steps.length; i++){
+    var on = t * 6 > i, x = 110 + i * 205;
+    g.globalAlpha = on ? 1 : 0.25; g.fillStyle = "rgba(20,30,52,.9)"; g.strokeStyle = i === 1 ? "#f4e78a" : "#9fb3ff"; g.lineWidth = 2;
+    g.fillRect(x - 90, 200, 180, 90); g.strokeRect(x - 90, 200, 180, 90);
+    wrap(g, steps[i], x, 232, 160, 16, "#ffffff", 15); g.globalAlpha = 1;
+    if (i < steps.length - 1 && on){ g.fillStyle = "#9fb3ff"; g.beginPath(); g.moveTo(x + 112, 245); g.lineTo(x + 96, 237); g.lineTo(x + 96, 253); g.closePath(); g.fill(); }
+  }
+  if (t > 0.3) drawMolecule(g, "UF6", 520, 400, 60, { yaw: clock * 0.6, pit: 0.35, lp: false });
+  label(g, "U + 3ClF₃ → UF₆ + 3ClF", 520, 500, "#ffffff", 20, "center", 900);
+  label(g, "UF₆ is the volatile uranium compound used in isotope enrichment", 520, 535, "#cfe0ff", 15, "center", 700);
+  if (f > 0.82) stamp(g, 880, 130, "(C) ✓ SUPPORTED", true, clamp((f - 0.82) / 0.1, 0, 1));
+}
+/* 08 - option board, 09 - answer calculation */
+function sceneTest(g, f){
+  var R = RUN.R, k, i;
+  sceneTitle(g, "OPTION ANALYSIS LAB", "claim → evidence → verdict");
+  for (i = 0; i < 4; i++){
+    k = "ABCD"[i]; var x = 60 + (i % 2) * 470, y = 110 + Math.floor(i / 2) * 220, e = R.ev[k], on = f * 4.4 > i;
+    g.fillStyle = "rgba(20,30,52,.9)"; g.strokeStyle = on ? (e.v ? "#3ee39a" : e.v === false ? "#ff6b6b" : "#b8a8ff") : "rgba(160,190,255,.25)"; g.lineWidth = on ? 3 : 1.5;
+    g.fillRect(x, y, 450, 190); g.strokeRect(x, y, 450, 190);
+    var claims = { A: "X is used for sterilizing drinking water.", B: "Y has a planar structure.", C: "Z is used in the enrichment of ²³⁵U.", D: "Y is a stronger Lewis base than ammonia." };
+    label(g, "(" + k + ")", x + 30, y + 30, "#8fa6c9", 18, "center", 900);
+    label(g, claims[k], x + 55, y + 30, "#ffffff", 16, "left", 700);
+    if (on){ wrap(g, e.ev, x + 225, y + 80, 410, 15, "#cfe0ff", 13); label(g, e.v ? "✓ SUPPORTED" : e.v === false ? "✗ NOT SUPPORTED" : "— NOT APPLICABLE", x + 225, y + 160, e.v ? "#3ee39a" : e.v === false ? "#ff6b6b" : "#cfc4ff", 22, "center", 900); }
+  }
+}
+function sceneAnswer(g, f){
+  sceneTitle(g, "ANALYSIS COMPLETE", f < 0.3 ? "all four statements examined" : "CALCULATING FINAL ANSWER…");
+  var p = ease(f / 0.9);
+  g.fillStyle = "rgba(20,30,52,.9)"; g.fillRect(220, 280, 600, 40); g.strokeStyle = "rgba(160,190,255,.4)"; g.strokeRect(220, 280, 600, 40);
+  var gr = g.createLinearGradient(220, 0, 820, 0); gr.addColorStop(0, "#3987e5"); gr.addColorStop(1, "#3ee39a"); g.fillStyle = gr; g.fillRect(224, 284, 592 * p, 32);
+  label(g, Math.round(p * 100) + "%", 520, 360, "#ffffff", 30, "center", 900);
+  var ids = RUN.R.ids;
+  label(g, "X = " + (ids.X ? nm(ids.X) : "—") + "    Y = " + (ids.Y ? nm(ids.Y) : "—") + "    Z = " + (ids.Z ? nm(ids.Z) : "—"), 520, 430, "#e6eeff", 22, "center", 900);
+}
+function sceneIdle(g){
+  sceneTitle(g, "CHEMICAL IDENTITY LAB", "Identify X, Y and Z from experimental evidence");
+  var clues = [["REACTION 1", "MnO₂ + conc. HCl →", "MnCl₂ + X + H₂O", "X: greenish-yellow gas"], ["REACTION 2", "NH₃ + X (excess) →", "Y + HCl", ""], ["REACTION 3", "X + F₂ (excess)", "—573 K→ Z", ""]], i;
+  for (i = 0; i < 3; i++){
+    var x = 70 + i * 310; g.fillStyle = "rgba(20,30,52,.9)"; g.strokeStyle = "rgba(160,190,255,.3)"; g.lineWidth = 1.5; g.fillRect(x, 130, 280, 170); g.strokeRect(x, 130, 280, 170);
+    label(g, clues[i][0], x + 140, 158, "#8fa6c9", 14, "center", 800); label(g, clues[i][1], x + 140, 205, "#ffffff", 18, "center", 800);
+    label(g, clues[i][2], x + 140, 238, "#ffffff", 18, "center", 800); if (clues[i][3]) label(g, clues[i][3], x + 140, 275, "#e0f07a", 14, "center", 700);
+  }
+  var k = ["X", "Y", "Z"];
+  for (i = 0; i < 3; i++){ var cx = 330 + i * 190; g.strokeStyle = "rgba(160,190,255,.5)"; g.setLineDash([6, 5]); g.strokeRect(cx - 70, 360, 140, 110); g.setLineDash([]);
+    label(g, "UNKNOWN", cx, 385, "#8fa6c9", 13, "center", 800); label(g, k[i] + " = ?", cx, 430, "#ffffff", 30, "center", 900); }
+  label(g, "press START EXPERIMENT", 520, 530, "#9fb0cc", 17, "center", 700);
+}
+function sceneRest(g){
+  var ids = RUN.R.ids, i, ks = ["X", "Y", "Z"];
+  var quiet = RUN.revealed && $("revealhost").classList.contains("on");
+  if (!quiet) sceneTitle(g, "CASE CLOSED", RUN.R.complete ? "supported: " + optText(RUN.R.truth) : "question pathway changed");
+  for (i = 0; i < 3; i++){ var f = ids[ks[i]], cx = 200 + i * 320;
+    if (f) drawMolecule(g, f, cx, 300, 80, { yaw: clock * 0.5 + i, pit: 0.3, alpha: quiet ? 0.35 : 1, labels: !quiet });
+    if (!quiet) label(g, ks[i] + " = " + (f ? nm(f) : "—"), cx, 470, "#3ee39a", 26, "center", 900); }
+}
+var SCENES = { genX: sceneGenX, obsX: sceneObsX, idX: sceneIdX, formY: sceneFormY, anaY: sceneAnaY, formZ: sceneFormZ, anaZ: sceneAnaZ, test: sceneTest, answer: sceneAnswer };
+function eqFor(name){
+  var R = RUN.R;
+  if (name === "genX" || name === "obsX" || name === "idX") return R.r1.eq;
+  if (name === "formY" || name === "anaY") return R.r2.eq;
+  if (name === "formZ" || name === "anaZ") return R.r3.eq;
+  return "X = " + (R.ids.X ? nm(R.ids.X) : "—") + " · Y = " + (R.ids.Y ? nm(R.ids.Y) : "—") + " · Z = " + (R.ids.Z ? nm(R.ids.Z) : "—");
+}
+function whyFor(name){
+  var R = RUN.R;
+  if (name === "genX" || name === "obsX" || name === "idX") return "MnO₂ + conc. HCl → redox → Cl₂ forms → greenish-yellow gas → X = Cl₂";
+  if (name === "formY" || name === "anaY") return "NH₃ + excess Cl₂ → H replaced by Cl → NCl₃ + HCl → 3 bp + 1 lp → pyramidal";
+  if (name === "formZ" || name === "anaZ") return "Cl₂ + excess F₂, 573 K → ClF₃ → 3 bp + 2 lp → T-shaped → fluorinates U to UF₆";
+  return "each statement is decided from the identified compound's structure and uses";
+}
+function drawLab(st){
+  var c = $("labcv"), g = c.getContext("2d");
+  g.clearRect(0, 0, c.width, c.height);
+  hood(g);
+  if (st.name === "idle") sceneIdle(g);
+  else if (st.name === "rest") sceneRest(g);
+  else if (SCENES[st.name]) SCENES[st.name](g, st.f);
+  if (st.name !== "idle"){
+    if (SHOW.eq){ g.fillStyle = "rgba(8,14,26,.9)"; g.fillRect(40, 560, 960, 40); label(g, eqFor(st.name), 520, 580, "#ffffff", 17, "center", 800); }
+    if (SHOW.why){ g.fillStyle = "rgba(8,14,26,.9)"; g.fillRect(40, 92, 960, 34); label(g, "WHY?  " + whyFor(st.name), 520, 109, "#ffd79a", 14, "center", 700); }
+    if (SHOW.obs){ var o = RUN.R.r1.ok ? "Reaction 1: greenish-yellow gas" : "Reaction 1: no gas"; g.fillStyle = "rgba(8,14,26,.9)"; g.fillRect(40, 30, 300, 40); label(g, o, 190, 50, "#e0f07a", 14, "center", 700); }
+  }
+}
+
+/* =====================================================================
+   status, narration, instrument panel, answer panel
+   ===================================================================== */
+var STAGE_ORDER = ["genX", "obsX", "idX", "formY", "anaY", "formZ", "anaZ", "test", "answer"];
+function stageKey(){ var sg = seg(); if (RUN.state === "setup") return null; if (RUN.done) return "answer"; return sg ? sg.kind : null; }
+function refreshStatus(){
+  var k = stageKey(), x = $("xstat"), txt, cls = "xstat", g;
+  if (RUN.state === "setup"){ txt = "Ready"; g = isCustom() ? "Custom conditions set — press RUN WITH CUSTOM VALUES." : "Set your values or use the question defaults. Press START EXPERIMENT to begin."; }
+  else if (RUN.done){ txt = "✓ Experiment complete"; cls += " done"; g = "Result obtained."; }
+  else if (k === "genX" && RUN.u < 1.5){ txt = "Preparing experiment"; cls += " run"; g = "Preparing the apparatus…"; }
+  else if (k === "test"){ txt = "Analysing data"; cls += " ana"; g = "Analysing experimental evidence…"; }
+  else if (k === "answer"){ txt = "Calculation complete"; cls += " ana"; g = "Calculating the result…"; }
+  else { txt = "Experiment running"; cls += " run"; g = "Experiment running…"; }
+  if (RUN.paused){ txt = "Paused"; cls = "xstat"; g = "Paused — press Play."; }
+  x.className = cls; $("xstattxt").textContent = txt; $("guide").textContent = g;
+  var ki = STAGE_ORDER.indexOf(k), sp = document.querySelectorAll("#stages span"), i;
+  for (i = 0; i < sp.length; i++){ var j = STAGE_ORDER.indexOf(sp[i].getAttribute("data-s")); sp[i].className = k === null ? "" : (j < ki || RUN.done ? "done" : (j === ki ? "now" : "")); }
+}
+function refreshAnswerBox(){
+  var ab = $("answerbox"), open = RUN.revealed || earlyReveal;
+  $("apbar").style.width = (RUN.state === "setup" ? 0 : RUN.done ? 100 : Math.round(100 * elapsed() / TOTAL)) + "%";
+  if (open) return;
+  ab.classList.add("locked"); ab.classList.toggle("work", RUN.state === "running");
+  var k = stageKey();
+  $("ansval").textContent = RUN.state === "setup" ? "Investigating X, Y and Z…" : (RUN.done ? "Revealing…" : STAGE_MSG[k] || "…");
+  $("anssub").textContent = RUN.state === "setup" ? "The answer appears when the investigation finishes." : Math.round(100 * elapsed() / TOTAL) + "% of the investigation done";
+}
+function narrate(st){
+  var sg = seg(), h = "", R = RUN.R, f = st.f;
+  if (RUN.state === "setup") h = "Three unknowns, three reactions. " + (isCustom() ? "Custom conditions are loaded — press <b>RUN WITH CUSTOM VALUES</b>." : "The question's conditions are loaded — press <b>START EXPERIMENT</b>.");
+  else if (RUN.done) h = R.complete ? "<span class=gd>Case closed.</span> X = Cl₂, Y = NCl₃, Z = ClF₃ — supported statements <b>" + optText(R.truth) + "</b>." : "<span class=o>The question's pathway does not apply under these conditions.</span> Restore them to answer the question.";
+  else switch (st.name){
+    case "genX": h = f < 0.3 ? "<b>Input:</b> " + (RUN.D.hcl === "conc" ? "concentrated" : "dilute") + " HCl is poured onto " + (RUN.D.ox === "MnO2" ? "MnO₂" : "KMnO₄") + "." : (R.r1.ok ? "<b>Action:</b> a redox reaction — the oxidant takes electrons from chloride. A gas bubbles off, runs through the delivery tube and fills the jar." : "Almost nothing happens — dilute HCl is not oxidised by MnO₂."); break;
+    case "obsX": h = "<b>What is the gas?</b> Test 1: its colour — only chlorine is greenish-yellow. Test 2: count atoms — after MnCl₂ and water are accounted for, only two Cl atoms are left for X."; break;
+    case "idX": h = f < 0.45 ? "<b>Conclusion: X = Cl₂.</b> Mn goes from +4 to +2; chloride goes from −1 to 0." : "<b>Property of X:</b> a tiny, controlled dose of chlorine kills microbes in water — that is how drinking water is sterilised. <b>(A)</b> is checked."; break;
+    case "formY": h = RUN.D.r2 === "xsCl2" ? "<b>Excess chlorine</b> meets ammonia. Each collision swaps one N–H for N–Cl and releases HCl: NH₃ → NH₂Cl → NHCl₂ → <b>NCl₃</b>." : "With <b>ammonia in excess</b> the chemistry changes: chlorine oxidises NH₃ to N₂ and the HCl becomes NH₄Cl smoke."; break;
+    case "anaY": h = f < 0.5 ? "<b>Shape of Y:</b> N has 3 bond pairs and 1 lone pair — four pairs point to the corners of a tetrahedron, so the atoms form a <b>pyramid</b>, not a flat triangle. <b>(B)</b> fails." : "<b>Basicity:</b> the chlorines pull electron density away from nitrogen, so its lone pair is less available than in NH₃ — NCl₃ is the <b>weaker</b> Lewis base. <b>(D)</b> fails."; break;
+    case "formZ": h = f < 0.4 ? "<b>Heating</b> the chamber to " + RUN.D.r3T + " K…" : (R.r3.Z === "ClF3" ? "Fluorine in <b>excess</b> floods in; each Cl atom picks up three F atoms: <b>Cl₂ + 3F₂ → 2ClF₃</b>." : R.r3.why); break;
+    case "anaZ": h = f < 0.5 ? "<b>Shape of Z:</b> Cl has 3 bond pairs and 2 lone pairs — a trigonal bipyramid with both lone pairs equatorial, leaving a <b>T-shape</b>." : "<b>Property of Z:</b> ClF₃ fluorinates uranium to volatile <b>UF₆</b>, the form in which uranium is enriched in ²³⁵U. <b>(C)</b> is checked."; break;
+    case "test": h = "<b>Option analysis:</b> each claim is checked against the evidence the lab collected — claim → evidence → verdict."; break;
+    case "answer": h = "<b>Analysis complete.</b> Combining the four verdicts…"; break;
+  }
+  $("narr").innerHTML = h;
+  var stn = { genX: 1, obsX: 1, idX: 1, formY: 2, anaY: 2, formZ: 3, anaZ: 3 };
+  $("trialtag").textContent = stn[st.name] ? "station " + stn[st.name] + " of 3" : (RUN.done ? "case closed" : st.name === "idle" ? "station 1 of 3" : "analysis");
+  $("scenet").textContent = RUN.done ? "Experiment complete" : "Chemical identity lab";
+}
+function updateReadouts(st){
+  var R = RUN.R, n = st.name, f = st.f, D = RUN.D;
+  var station = { genX: "1 · Cl₂ generator", obsX: "1 · gas analysis", idX: "1 · identity of X", formY: "2 · NH₃ + Cl₂", anaY: "2 · structure of Y", formZ: "3 · fluorination", anaZ: "3 · structure of Z", test: "analysis board", answer: "analysis board" };
+  $("g_st").textContent = station[n] || "—";
+  $("g_rs").textContent = n === "idle" ? "standby" : RUN.done ? "complete" : (n === "genX" && !R.r1.ok) || (n === "formY" && !R.r2.ok) || (n === "formZ" && !R.r3.ok) ? "off-pathway" : "reacting / analysing";
+  $("g_T").textContent = n === "formZ" ? Math.round(298 + (parseInt(D.r3T, 10) - 298) * ease(f / 0.4)) + " K" : n === "genX" ? "warm (vis.)" : (n === "idle" ? "—" : "ambient");
+  $("g_gf").textContent = n === "genX" ? (R.r1.ok && f > 0.42 ? "flowing" : "—") : n === "formY" ? "NH₃ + Cl₂" : n === "formZ" ? (f > 0.3 ? "F₂ " + (D.r3f === "xsF2" ? "EXCESS" : "1 : 1") : "Cl₂") : "—";
+  var prog = { genX: 1, formY: 1, formZ: 1 }; $("g_pr").textContent = prog[n] ? Math.round(100 * ease(n === "formZ" ? (f - 0.4) / 0.6 : f)) : (RUN.done ? 100 : 0);
+  $("g_col").textContent = n === "genX" || n === "obsX" || n === "idX" ? (R.r1.ok && (n !== "genX" || f > 0.5) ? "greenish-yellow" : "—") : n === "formY" || n === "anaY" ? (R.r2.Y === "NCl3" ? "yellow (NCl₃)" : "white smoke") : n === "formZ" || n === "anaZ" ? "colourless" : "—";
+  var prod = n === "genX" || n === "obsX" ? "X = ?" : n === "idX" ? "X = " + (R.ids.X ? nm(R.ids.X) : "—") : n === "formY" ? (f > 0.85 ? "Y = " + (R.ids.Y ? nm(R.ids.Y) : "—") : "Y = ?") : n === "anaY" ? "Y = " + (R.ids.Y ? nm(R.ids.Y) : "—") : n === "formZ" ? (f > 0.9 ? "Z = " + (R.ids.Z ? nm(R.ids.Z) : "—") : "Z = ?") : n === "anaZ" ? "Z = " + (R.ids.Z ? nm(R.ids.Z) : "—") : "—";
+  $("g_prod").textContent = prod;
+  var shp = n === "idX" ? "linear (diatomic)" : n === "anaY" && R.ids.Y ? vsepr(R.ids.Y).geo : n === "anaZ" && R.ids.Z ? vsepr(R.ids.Z).geo : "—";
+  $("g_shape").textContent = shp;
+  var sup = []; ["A", "B", "C", "D"].forEach(function(k){ if (RUN.cards[k] && RUN.cards[k].v === true) sup.push(k); });
+  $("g_v").textContent = sup.length ? optText(sup) : "—";
+  $("gz_v").classList.toggle("hot", RUN.done && RUN.R.complete);
+}
+function refreshUI(){
+  var go = $("gobtn"), run = RUN.state === "running", custom = isCustom();
+  go.hidden = false; go.disabled = run; go.classList.toggle("custom", custom && !run);
+  if (run) go.innerHTML = "● RUNNING…";
+  else if (RUN.state === "done"){ go.innerHTML = "⚙&nbsp; RUN WITH CUSTOM VALUES"; go.hidden = sameD(RUN.D, copyST()); }
+  else go.innerHTML = custom ? "⚙&nbsp; RUN WITH CUSTOM VALUES" : "▶&nbsp; START EXPERIMENT";
+  $("pausebtn").disabled = !run; $("pausebtn").textContent = RUN.paused ? "Play" : "Pause";
+  $("replaybtn").hidden = RUN.state !== "done";
+  var s = $("status"); s.className = "status" + (custom ? " custom" : "");
+  s.textContent = custom ? "⚙ USING CUSTOM VALUES" : "✓ QUESTION VALUES LOADED";
+  var q = document.querySelectorAll("#fields select, #resetq"), i; for (i = 0; i < q.length; i++) q[i].disabled = run;
+  $("gomsg").innerHTML = run ? "The investigation runs by itself — nothing to click. <b>Pause</b> any time." : RUN.state === "done" ? "Press <b>REPLAY</b> to watch it again, or change a condition and run a custom experiment." : (custom ? "Your conditions will be used; the lab will say if the question's pathway no longer applies." : "Nothing needs to be chosen. Press <b>START EXPERIMENT</b>.");
+  refreshStatus();
+}
+
+/* =====================================================================
+   molecular explorer
+   ===================================================================== */
+var XP = { m: "NCl3", yaw: 0.6, pit: 0.35, zoom: 1, labels: true, lp: true, geo: true, spin: true, drag: null, cmp: false };
+var XINFO = {
+  Cl2: { f: "Cl₂", geo: "linear (diatomic)", eg: "—", ang: "—", lp: "3 on each Cl", key: "greenish-yellow gas; disinfects drinking water", dens: "one shared pair; the molecule is non-polar" },
+  NCl3: { f: "NCl₃", geo: "trigonal pyramidal", eg: "tetrahedral", ang: "Cl–N–Cl ≈ 107°", lp: "1 on N", key: "not planar; weaker Lewis base than NH₃", dens: "electronegative Cl atoms pull density from N (−I), shrinking the donor lone pair" },
+  ClF3: { f: "ClF₃", geo: "T-shaped", eg: "trigonal bipyramidal", ang: "F–Cl–F ≈ 87.5°", lp: "2 on Cl (equatorial)", key: "powerful fluorinating agent; makes UF₆ for ²³⁵U enrichment", dens: "lone pairs sit equatorial where they have 120° of room" },
+  NH3: { f: "NH₃", geo: "trigonal pyramidal", eg: "tetrahedral", ang: "H–N–H ≈ 107°", lp: "1 on N", key: "a good Lewis base", dens: "H atoms (less electronegative) leave the lone pair rich and available" }
+};
+function drawExplorer(dt){
+  var c = $("mol"), g = c.getContext("2d");
+  if (XP.spin && !XP.drag && !REDUCED) XP.yaw += dt * 0.5;
+  g.clearRect(0, 0, c.width, c.height);
+  var sc = 120 * XP.zoom;
+  if (XP.cmp){
+    drawMolecule(g, "NH3", 190, 240, sc * 0.8, { yaw: XP.yaw, pit: XP.pit, labels: XP.labels, lp: XP.lp, guide: XP.geo, lpScale: 1.25 });
+    drawMolecule(g, "NCl3", 530, 240, sc * 0.8, { yaw: XP.yaw, pit: XP.pit, labels: XP.labels, lp: XP.lp, guide: XP.geo, lpScale: 0.55 });
+    label(g, "NH₃ — lone pair rich", 190, 420, "#9fd0ff", 16, "center", 800); label(g, "NCl₃ — lone pair depleted (−I)", 530, 420, "#ffb4b4", 16, "center", 800);
+    return;
+  }
+  drawMolecule(g, XP.m, 360, 235, sc, { yaw: XP.yaw, pit: XP.pit, labels: XP.labels, lp: XP.lp, guide: XP.geo });
+  label(g, XINFO[XP.m].f + " · " + XINFO[XP.m].geo, 360, 432, "#e6eeff", 17, "center", 800);
+}
+function showInfo(){
+  var I = XINFO[XP.m];
+  $("xinfo").innerHTML = XP.cmp ? "<h3>NH₃ vs NCl₃</h3><p style='font-size:13.5px;color:var(--text-secondary)'>Both are trigonal pyramidal with one lone pair on N. In NH₃ the H atoms (χ 2.20) are less electronegative than N (χ 3.04), so the lone pair is rich. In NCl₃ each Cl (χ 3.16) pulls electron density away from N — the lone pair is less available, so <b>NCl₃ is the weaker Lewis base</b>. The lobe sizes are qualitative.</p>"
+    : "<h3>" + I.f + "</h3><table><tr><th>Molecular geometry</th><td>" + I.geo + "</td></tr><tr><th>Electron geometry</th><td>" + I.eg + "</td></tr><tr><th>Bond angle</th><td>" + I.ang + "</td></tr><tr><th>Lone pairs (central atom)</th><td>" + I.lp + "</td></tr><tr><th>Key property</th><td>" + I.key + "</td></tr></table><p style='font-size:13px;color:var(--text-secondary);margin-top:8px'>" + I.dens + "</p>";
+}
+function pickMol(m, cmp){
+  XP.m = m; XP.cmp = !!cmp;
+  var b = document.querySelectorAll(".xpick button"), i; for (i = 0; i < b.length; i++) b[i].setAttribute("aria-pressed", !cmp && b[i].getAttribute("data-m") === m ? "true" : "false");
+  showInfo();
+}
+function wireExplorer(){
+  var c = $("mol"), b = document.querySelectorAll(".xpick button"), i;
+  for (i = 0; i < b.length; i++) b[i].addEventListener("click", function(){ pickMol(this.getAttribute("data-m"), false); });
+  c.addEventListener("pointerdown", function(e){ XP.drag = { x: e.clientX, y: e.clientY }; try { c.setPointerCapture(e.pointerId); } catch (er) {} });
+  c.addEventListener("pointermove", function(e){ if (!XP.drag) return; XP.yaw += (e.clientX - XP.drag.x) * 0.012; XP.pit = clamp(XP.pit + (e.clientY - XP.drag.y) * 0.012, -1.4, 1.4); XP.drag = { x: e.clientX, y: e.clientY }; });
+  c.addEventListener("pointerup", function(){ XP.drag = null; });
+  c.addEventListener("pointercancel", function(){ XP.drag = null; });
+  c.addEventListener("wheel", function(e){ e.preventDefault(); XP.zoom = clamp(XP.zoom * (e.deltaY < 0 ? 1.08 : 0.93), 0.6, 1.6); $("x_zoom").value = Math.round(XP.zoom * 100); }, { passive: false });
+  c.addEventListener("keydown", function(e){ var k = e.key; if (k === "ArrowLeft") XP.yaw -= 0.15; else if (k === "ArrowRight") XP.yaw += 0.15; else if (k === "ArrowUp") XP.pit -= 0.15; else if (k === "ArrowDown") XP.pit += 0.15; else return; e.preventDefault(); });
+  $("x_zoom").addEventListener("input", function(){ XP.zoom = parseInt(this.value, 10) / 100; });
+  var tog = function(id, key){ $(id).addEventListener("click", function(){ XP[key] = !XP[key]; this.setAttribute("aria-pressed", XP[key] ? "true" : "false"); }); };
+  tog("x_lab", "labels"); tog("x_lp", "lp"); tog("x_geo", "geo"); tog("x_spin", "spin");
+  $("x_reset").addEventListener("click", function(){ XP.yaw = 0.6; XP.pit = 0.35; XP.zoom = 1; $("x_zoom").value = 100; });
+  pickMol("NCl3", false);
+}
+
+/* =====================================================================
+   the answer reveal - EUREKA
+   ===================================================================== */
+function blink(id){ var e = $(id); if (!e) return; e.classList.remove("blink"); void e.offsetWidth; e.classList.add("blink"); setTimeout(function(){ e.classList.remove("blink"); }, 2300); }
+function doReveal(){
+  if (!RUN.done){ earlyReveal = true; refreshGate(); return; }
+  var lab = $("lab3d");
+  lab.classList.add("dim"); $("blackout").classList.add("on");
+  setTimeout(function(){
+    $("blackout").classList.remove("on"); $("donebanner").classList.remove("on");
+    if (!REDUCED){ var f = $("flashout"); f.classList.remove("go"); void f.offsetWidth; f.classList.add("go"); lab.classList.remove("zoom"); void lab.offsetWidth; lab.classList.add("zoom"); }
+    RUN.revealed = true;
+    mountReveal(); refreshGate();
+    var ab = $("answerbox"); ab.classList.remove("celebrate"); void ab.offsetWidth; ab.classList.add("celebrate");
+    setTimeout(function(){ ab.classList.remove("celebrate"); }, 3200);
+    blink("ansval"); blink("grafT"); blink("g_v");
+    setTimeout(function(){ lab.classList.remove("dim"); }, 5200);
+  }, 950);
+}
+function mountReveal(){
+  var host = $("revealhost"), R = RUN.R, ok = R.complete;
+  host.innerHTML = ""; host.classList.add("on");
+  var main = ok ? optText(R.truth) : "PATHWAY CHANGED";
+  var svg = mk("svg", { viewBox: "0 0 720 380", "class": "graf", role: "img", "aria-label": (ok ? "Congratulations. Answer found: correct options " : "") + main }, host);
+  var d = mk("defs", {}, svg), sp = mk("filter", { id: "spray", x: "-14%", y: "-40%", width: "128%", height: "180%" }, d);
+  mk("feTurbulence", { type: "fractalNoise", baseFrequency: "0.045 0.09", numOctaves: "3", seed: "7", result: "nz" }, sp);
+  mk("feDisplacementMap", { "in": "SourceGraphic", in2: "nz", scale: "6", xChannelSelector: "R", yChannelSelector: "G" }, sp);
+  var bh = mk("g", {}, svg);
+  if (ok){
+    var gr = [["CHEMISTRY MASTER!", 118, 26, -6, "#ff9350"], ["EUREKA!", 628, 30, 8, "#a99bff"], ["CORRECT!", 84, 190, -12, "#3ee39a"], ["X = Cl₂", 110, 348, -6, "#c8e04a"], ["Y = NCl₃", 360, 362, 3, "#ffc450"], ["Z = ClF₃", 610, 348, 7, "#f4e78a"]], i;
+    for (i = 0; i < gr.length; i++) tx(svg, gr[i][1], gr[i][2], gr[i][0], { "text-anchor": "middle", "font-size": 22, "font-weight": 900, fill: gr[i][4], opacity: 0.85, transform: "rotate(" + gr[i][3] + " " + gr[i][1] + " " + gr[i][2] + ")", filter: "url(#spray)", "font-family": "ui-rounded,'Comic Sans MS','Marker Felt',cursive" });
+  }
+  tx(svg, 360, 58, ok ? "🎉  ANSWER FOUND!  🎉" : "THE QUESTION'S PATHWAY DOES NOT APPLY", { "text-anchor": "middle", "font-size": ok ? 22 : 17, "font-weight": 900, fill: ok ? "#3ee39a" : "#ffb4b4", "letter-spacing": "2" });
+  tx(svg, 360, 86, ok ? "CONGRATULATIONS!" : "restore the question conditions", { "text-anchor": "middle", "font-size": 13, "font-weight": 800, fill: "#9fb0cc", "letter-spacing": "5" });
+  mk("rect", { x: 170, y: 104, width: 380, height: 150, rx: 16, fill: "rgba(8,20,16,.72)", stroke: ok ? "#3ee39a" : "#ff6b6b", "stroke-width": 2 }, svg);
+  tx(svg, 360, 128, ok ? "CORRECT OPTIONS" : "NO ANSWER", { "text-anchor": "middle", "font-size": 12, "font-weight": 800, fill: "#9ff0c9", "letter-spacing": "6" });
+  var gg = mk("g", { transform: "translate(360,206) skewX(-9)" }, svg), fs = ok ? 60 : 36;
+  tx(gg, 7, 9, main, { "text-anchor": "middle", "font-size": fs, "font-weight": 900, fill: "#a99bff", opacity: 0.34, filter: "url(#spray)" });
+  tx(gg, 0, 0, main, { id: "grafT", "text-anchor": "middle", "font-size": fs, "font-weight": 900, fill: ok ? "#3ee39a" : "#ffb4b4", filter: "url(#spray)" });
+  tx(svg, 360, 284, ok ? "You successfully identified all three compounds." : "Under your conditions X, Y or Z is not the question's compound.", { "text-anchor": "middle", "font-size": 15, "font-weight": 700, fill: "#eef3ff" });
+  tx(svg, 360, 306, "X = " + (R.ids.X ? nm(R.ids.X) : "—") + "  ·  Y = " + (R.ids.Y ? nm(R.ids.Y) : "—") + "  ·  Z = " + (R.ids.Z ? nm(R.ids.Z) : "—") + (isCustom(RUN.D) && ok ? "  (KMnO₄ route — same answer)" : ""), { "text-anchor": "middle", "font-size": 14, fill: "#9fb0cc" });
+  if (!REDUCED && ok) makeBurst(bh);
+}
+function makeBurst(host){
+  burst = [];
+  var i, n = 90, GL = ["Cl", "N", "F", "✦", "●", "◆", "Cl₂", "✓"], a, sp2, conf, node, cols = ["#3ee39a", "#a99bff", "#54a9ff", "#ff9350", "#c8e04a"];
+  for (i = 0; i < n; i++){
+    a = Math.random() * Math.PI * 2; sp2 = 90 + Math.random() * 300; conf = i % 3 === 0;
+    node = conf ? mk("rect", { x: -4, y: -3, width: 8, height: 6, rx: 1.5, fill: cols[i % 5] }, host) : tx(host, 0, 0, GL[i % GL.length], { "text-anchor": "middle", "font-size": 11 + Math.random() * 8, fill: cols[i % 5], "font-weight": 800 });
+    burst.push({ n: node, x: 360, y: 190, vx: Math.cos(a) * sp2, vy: Math.sin(a) * sp2 - 70, life: 0, max: 1.6 + Math.random() * 1.2, rot: Math.random() * 360, vr: (Math.random() - 0.5) * 540 });
+  }
+}
+function stepBurst(dt){
+  var i, b;
+  for (i = 0; i < burst.length; i++){
+    b = burst[i]; if (b.life > b.max){ b.n.setAttribute("opacity", 0); continue; }
+    b.life += dt; b.vy += 420 * dt; b.x += b.vx * dt; b.y += b.vy * dt; b.rot += b.vr * dt;
+    b.n.setAttribute("opacity", Math.max(0, 1 - b.life / b.max).toFixed(2));
+    b.n.setAttribute("transform", "translate(" + b.x.toFixed(1) + "," + b.y.toFixed(1) + ") rotate(" + b.rot.toFixed(0) + ")");
+  }
+}
+function refreshGate(){
+  var open = RUN.revealed || earlyReveal, ab = $("answerbox"), i, li, k;
+  $("solgate").hidden = open; $("solbody").hidden = !open;
+  if (open){
+    ab.classList.remove("locked", "work");
+    $("ansval").textContent = ANS;
+    $("anssub").textContent = "X = Cl₂ · Y = NCl₃ · Z = ClF₃";
+    $("apbar").style.width = "100%";
+    $("revealnow").hidden = true;
+    $("solans").textContent = ANS; $("clsans").textContent = ANS + " — X = Cl₂, Y = NCl₃, Z = ClF₃";
+    $("solintro").innerHTML = RUN.revealed ? "<b>The lab found this.</b> Here is the same reasoning on paper — each step points back to what you watched." : "Revealed early — run the experiment to watch each of these steps happen.";
+  } else {
+    $("revealnow").hidden = false; $("solans").textContent = "—"; $("clsans").textContent = "— run the experiment";
+    $("solintro").textContent = "Run the experiment — the solution opens with the answer.";
+    refreshAnswerBox();
+  }
+  var lis = document.querySelectorAll("#opts li");
+  for (i = 0; i < lis.length; i++){
+    li = lis[i]; k = li.getAttribute("data-k"); li.classList.remove("correct", "wrong"); li.querySelector(".mark").textContent = "";
+    if (open){ var tru = QTRUE.indexOf(k) >= 0; li.classList.add(tru ? "correct" : "wrong"); li.querySelector(".mark").textContent = tru ? "correct" : "not correct"; }
+  }
+}
+
+/* =====================================================================
+   the loop - one virtual clock, so Pause and speed govern everything
+   ===================================================================== */
+var last = 0, slow = 0;
+function loop(ts){
+  var dt = last ? (ts - last) / 1000 : 0; last = ts;
+  if (dt > 0.06) dt = 0.06;
+  var running = RUN.state === "running" && !RUN.paused;
+  if (running) stepTimeline(dt * RUN.speed);
+  if (!RUN.paused) clock += dt * (running ? RUN.speed : 1) * (REDUCED ? 0.3 : 1);
+  var st = currentState(); NOW = st;
+  drawLab(st);
+  drawExplorer(dt);
+  if (burst.length) stepBurst(dt);
+  slow += dt;
+  if (slow > 0.08){ slow = 0; updateReadouts(st); narrate(st); refreshStatus(); if (!RUN.revealed && !earlyReveal) refreshAnswerBox(); }
+  requestAnimationFrame(loop);
+}
+
+/* =====================================================================
+   wiring
+   ===================================================================== */
+function afterEdit(){ readAll(); if (RUN.state === "setup"){ RUN.D = copyST(); RUN.R = run(RUN.D); } refreshUI(); }
+function toggleClassroom(){
+  RUN.classroom = !RUN.classroom;
+  document.body.classList.toggle("classroom", RUN.classroom);
+  $("classbtn").setAttribute("aria-pressed", RUN.classroom ? "true" : "false");
+  $("classbtn").textContent = RUN.classroom ? "EXIT CLASSROOM MODE" : "CLASSROOM MODE";
+  if (RUN.classroom) try { $("deck").scrollIntoView({ behavior: REDUCED ? "auto" : "smooth", block: "start" }); } catch (e) {}
+}
+function build(){
+  $("fields").innerHTML = fieldsHTML();
+  var i;
+  for (i = 0; i < FIELDS.length; i++) $("in_" + FIELDS[i].k).addEventListener("change", afterEdit);
+  $("resetq").addEventListener("click", resetAll);
+  $("gobtn").addEventListener("click", function(){ if (RUN.state !== "running") startRun(); });
+  $("pausebtn").addEventListener("click", function(){ RUN.paused = !RUN.paused; refreshUI(); });
+  $("replaybtn").addEventListener("click", function(){ startRun(RUN.D); });
+  $("resetbtn").addEventListener("click", resetAll);
+  $("classbtn").addEventListener("click", toggleClassroom);
+  $("revealnow").addEventListener("click", function(){ earlyReveal = true; refreshGate(); });
+  $("gotolab").addEventListener("click", function(){ $("lab").scrollIntoView({ behavior: REDUCED ? "auto" : "smooth" }); });
+  var tg = function(id, key){ $(id).addEventListener("click", function(){ SHOW[key] = !SHOW[key]; this.setAttribute("aria-pressed", SHOW[key] ? "true" : "false"); }); };
+  tg("t_eq", "eq"); tg("t_obs", "obs"); tg("t_why", "why");
+  $("t_cmp").addEventListener("click", function(){ pickMol("NCl3", true); showInfo(); $("explorer").scrollIntoView({ behavior: REDUCED ? "auto" : "smooth" }); });
+  $("t_rot").addEventListener("click", function(){ pickMol(RUN.R.ids.Z && stageKey() === "anaZ" ? "ClF3" : "NCl3", false); $("explorer").scrollIntoView({ behavior: REDUCED ? "auto" : "smooth" }); $("mol").focus(); });
+  var sb = document.querySelectorAll("#spd button");
+  for (i = 0; i < sb.length; i++) sb[i].addEventListener("click", function(){
+    RUN.speed = parseFloat(this.getAttribute("data-s"));
+    for (var j = 0; j < sb.length; j++) sb[j].setAttribute("aria-pressed", sb[j] === this ? "true" : "false");
+  });
+  $("themebtn").addEventListener("click", function(){
+    var r = document.documentElement, dark = r.getAttribute("data-theme") === "dark" || (!r.getAttribute("data-theme") && matchMedia("(prefers-color-scheme: dark)").matches);
+    r.setAttribute("data-theme", dark ? "light" : "dark");
+  });
+  wireExplorer();
+  readAll(); drawLog(); refreshGate(); refreshUI(); refreshAnswerBox();
+  requestAnimationFrame(loop);
+}
+if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", build); else build();
+
+/* exposed for the headless test harness */
+window.PX = {
+  Q: Q, ST: ST, RUN: RUN, run: run, vsepr: vsepr, evaluate: evaluate, solveX1: solveX1, lonePairPull: lonePairPull, uses: uses,
+  answer: function(){ return ANS; }, qtrue: function(){ return QTRUE; }, qrun: function(){ return QRUN; },
+  start: function(){ startRun(); }, replay: function(){ startRun(RUN.D); }, reset: resetAll,
+  pause: function(){ RUN.paused = !RUN.paused; refreshUI(); }, speed: function(s){ RUN.speed = s; },
+  setField: function(k, v){ $("in_" + k).value = v; afterEdit(); },
+  stage: stageKey, cards: function(){ return RUN.cards; }, found: function(){ return RUN.found; }, badges: function(){ return RUN.badges; },
+  calcKeys: calcKeys, now: function(){ return NOW; }, explorer: XP, pickMol: pickMol
+};
+})();
+</script>
+</body>
+</html>

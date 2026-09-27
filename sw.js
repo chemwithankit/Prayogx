@@ -17,7 +17,7 @@
    The whole library is NEVER pre-cached. A simulation is stored because
    someone opened it.
    ========================================================================== */
-var VERSION = "65c28b2e94c3";
+var VERSION = "7f9aea866f78";
 var SHELL = "prayogx-shell-" + VERSION;
 var FEED  = "prayogx-feed-"  + VERSION;
 
