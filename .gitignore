@@ -44,3 +44,11 @@ app/www/dist/
 # Claude session outputs (audit PDFs, screenshots) - kept locally, never committed.
 # A PDF in the repo trips the deploy guard and blocks every GitHub Pages release.
 Claude outputs/
+
+# local test toolchain (see tests/README.md) - installed per machine, never committed
+tests/node_modules/
+tests/.venv/
+# app-shell copies some browser suites leave in tests/ between runs
+tests/adstest*/
+tests/apptest*/
+tests/appwww*/

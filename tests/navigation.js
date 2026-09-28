@@ -1,5 +1,5 @@
 const ROOT = process.env.PRAYOGX_ROOT || require('path').resolve(__dirname, '..');
-const { chromium } = require(process.env.PLAYWRIGHT || '/home/claude/build/node_modules/playwright');
+const { chromium, launch } = require('./_browser');
 const { spawn } = require('child_process');
 const fs = require('fs'), net = require('net'), path = require('path');
 const sleep = ms => new Promise(r => setTimeout(r, ms));
@@ -47,7 +47,7 @@ const freePort = () => new Promise(res => { const sv = net.createServer();
 
   const S = 'http://127.0.0.1:' + PS + '/';
   const A = 'http://127.0.0.1:' + PA + '/';
-  const b = await chromium.launch({ executablePath: '/opt/pw-browsers/chromium-1194/chrome-linux/chrome' });
+  const b = await launch();
 
   const runState = p => p.evaluate(() => {
     const r = document.getElementById('runner');

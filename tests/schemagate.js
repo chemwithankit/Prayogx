@@ -2,7 +2,7 @@
 const ROOT = process.env.PRAYOGX_ROOT || require('path').resolve(__dirname, '..');
 /* the library size comes from the canonical source, so adding a simulation never breaks this suite */
 const NSIMS = JSON.parse(require('fs').readFileSync(ROOT + '/data/manifest.json', 'utf8')).simulations.length;
-const { chromium } = require(process.env.PLAYWRIGHT || '/home/claude/build/node_modules/playwright');
+const { chromium, launch } = require('./_browser');
 const { spawn } = require('child_process');
 const fs = require('fs'), net = require('net'), path = require('path');
 const sleep = ms => new Promise(r => setTimeout(r, ms));
@@ -83,7 +83,7 @@ const freePort = () => new Promise(res => { const sv = net.createServer();
     fs.writeFileSync(p, JSON.stringify(m));
   };
 
-  const b = await chromium.launch({ executablePath: '/opt/pw-browsers/chromium-1194/chrome-linux/chrome' });
+  const b = await launch();
 
   async function web(label, schema, expect) {
     setSchema(schema);

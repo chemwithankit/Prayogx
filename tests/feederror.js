@@ -2,7 +2,7 @@
 const ROOT = process.env.PRAYOGX_ROOT || require('path').resolve(__dirname, '..');
 /* the library size comes from the canonical source, so adding a simulation never breaks this suite */
 const NSIMS = JSON.parse(require('fs').readFileSync(ROOT + '/data/manifest.json', 'utf8')).simulations.length;
-const { chromium } = require(process.env.PLAYWRIGHT || '/home/claude/build/node_modules/playwright');
+const { chromium, launch } = require('./_browser');
 const { spawn } = require('child_process');
 const fs = require('fs'), net = require('net');
 const sleep = ms => new Promise(r => setTimeout(r, ms));
@@ -50,7 +50,7 @@ const ok = (l, c, x) => { n++; if (!c) bad++;
   const UNREACHABLE = 'http://127.0.0.1:' + PDEAD;                     // refuses
   const A = 'http://127.0.0.1:' + PA + '/';
 
-  const b = await chromium.launch({ executablePath: '/opt/pw-browsers/chromium-1194/chrome-linux/chrome' });
+  const b = await launch();
   const ctx = await b.newContext({ viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true });
   const p = await ctx.newPage();
   const errs = [];

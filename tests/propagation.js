@@ -5,7 +5,7 @@ const NSIMS = JSON.parse(require('fs').readFileSync(ROOT + '/data/manifest.json'
    splits it - and this project lives in "Project simulation". */
 const q = p => "'" + String(p).replace(/'/g, "'\\''") + "'";
 /* Does ONE addition to the canonical source reach every client? */
-const { chromium } = require(process.env.PLAYWRIGHT || '/home/claude/build/node_modules/playwright');
+const { chromium, launch } = require('./_browser');
 const { spawn, execSync } = require('child_process');
 const fs = require('fs');
 const sleep = ms => new Promise(r => setTimeout(r, ms));
@@ -25,7 +25,7 @@ const ok=(l,c,x)=>{n++;if(!c)bad++;console.log((c?'PASS  ':'FAIL  ')+l+(x!==unde
   const app = spawn('python3',['-m','http.server','8941','--bind','127.0.0.1'],{cwd:T,stdio:'ignore'});
   await sleep(1100);
   const S='http://127.0.0.1:8940/', A='http://127.0.0.1:8941/';
-  const b = await chromium.launch({ executablePath:'/opt/pw-browsers/chromium-1194/chrome-linux/chrome' });
+  const b = await launch();
 
   const feedVersion = () => JSON.parse(fs.readFileSync(ROOT+'/content/catalog.json','utf8')).version;
   const swVersion   = () => (/var VERSION = "([^"]*)";/.exec(fs.readFileSync(ROOT+'/sw.js','utf8'))||[])[1];

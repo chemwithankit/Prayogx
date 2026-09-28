@@ -3,7 +3,7 @@ const ROOT = process.env.PRAYOGX_ROOT || require('path').resolve(__dirname, '..'
 /* the library size comes from the canonical source, so adding a simulation never breaks this suite */
 const NSIMS = JSON.parse(require('fs').readFileSync(ROOT + '/data/manifest.json', 'utf8')).simulations.length;
 /* The production tree, exercised the way a user and a crawler would. */
-const { chromium } = require(process.env.PLAYWRIGHT || '/home/claude/build/node_modules/playwright');
+const { chromium, launch } = require('./_browser');
 const { spawn } = require('child_process');
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 let n=0,bad=0; const errs=[], misses=[];
@@ -18,7 +18,7 @@ const ok=(l,c,x)=>{n++;if(!c)bad++;console.log((c?'PASS  ':'FAIL  ')+l+(x!==unde
   await sleep(1000);
   const S='http://127.0.0.1:'+PORT+'/';
   console.log('serving the production tree on port '+PORT);
-  const b = await chromium.launch({ executablePath:'/opt/pw-browsers/chromium-1194/chrome-linux/chrome' });
+  const b = await launch();
   const ctx = await b.newContext({viewport:{width:1280,height:950}});
   const p = await ctx.newPage();
   p.on('pageerror',e=>errs.push('PAGEERROR '+e.message));

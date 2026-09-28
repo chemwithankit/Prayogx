@@ -8,7 +8,7 @@
 
    Run:  node tests/sim_p1q14.js                                            */
 const ROOT = process.env.PRAYOGX_ROOT || require('path').resolve(__dirname, '..');
-const { chromium } = require(process.env.PLAYWRIGHT || '/home/claude/build/node_modules/playwright');
+const { chromium, launch } = require('./_browser');
 const { spawn } = require('child_process');
 const fs = require('fs');
 const crypto = require('crypto');
@@ -40,7 +40,7 @@ const ok = (l, c, x) => { n++; if (!c) bad++; console.log((c ? 'PASS  ' : 'FAIL 
   ok('the detailed solution counts all eight species, draws the shapes and tests every option',
      (src.match(/<tr><td>(SOCl₂|XeOF₄|ClF₃|ClF₅|XeF₅⁺|SO₃²⁻|XeF₃⁺|SF₄)<\/td>/g) || []).length === 8 && /SF₄ — see-saw/.test(src) && /ClF₃ — T-shaped/.test(src) && /rejected/.test(src));
 
-  const b = await chromium.launch({ executablePath: '/opt/pw-browsers/chromium-1194/chrome-linux/chrome' });
+  const b = await launch();
   const ctx = await b.newContext({ viewport: { width: 1280, height: 900 } });
   const p = await ctx.newPage();
   const errs = [], reqs = [];

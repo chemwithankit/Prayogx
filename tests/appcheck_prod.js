@@ -2,7 +2,7 @@
 const ROOT = process.env.PRAYOGX_ROOT || require('path').resolve(__dirname, '..');
 /* the library size comes from the canonical source, so adding a simulation never breaks this suite */
 const NSIMS = JSON.parse(require('fs').readFileSync(ROOT + '/data/manifest.json', 'utf8')).simulations.length;
-const { chromium } = require(process.env.PLAYWRIGHT || '/home/claude/build/node_modules/playwright');
+const { chromium, launch } = require('./_browser');
 const { spawn } = require('child_process');
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 (async () => {
@@ -29,7 +29,7 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
   const app  = spawn('python3',['-m','http.server',String(PA),'--bind','127.0.0.1'],
                      {cwd:T,stdio:'ignore'});
   await sleep(1000);
-  const b = await chromium.launch({ executablePath:'/opt/pw-browsers/chromium-1194/chrome-linux/chrome' });
+  const b = await launch();
   const errs=[]; let n=0,bad=0;
   const ok=(l,c,x)=>{n++;if(!c)bad++;console.log((c?'PASS  ':'FAIL  ')+l+(x!==undefined?'   '+x:''));};
   const ctx = await b.newContext({viewport:{width:390,height:844},deviceScaleFactor:2,

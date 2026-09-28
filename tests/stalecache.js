@@ -4,7 +4,7 @@ const ROOT = process.env.PRAYOGX_ROOT || require('path').resolve(__dirname, '..'
 const q = p => "'" + String(p).replace(/'/g, "'\\''") + "'";
 /* Item 8: unchanged simulations stay cached, changed ones invalidate, nobody
    is served stale content after a revision, and revisions stay traceable. */
-const { chromium } = require(process.env.PLAYWRIGHT || '/home/claude/build/node_modules/playwright');
+const { chromium, launch } = require('./_browser');
 const { spawn, execSync } = require('child_process');
 const fs = require('fs');
 const sleep = ms => new Promise(r => setTimeout(r, ms));
@@ -47,7 +47,7 @@ const META=R+'/simulations/2026/paper-2/chemistry/adv-2026-p2-che-q16/meta.json'
   await sleep(1100);
   const S='http://127.0.0.1:8950/', A='http://127.0.0.1:8951/';
   const Q16='simulations/2026/paper-2/chemistry/adv-2026-p2-che-q16/index.html';
-  const b = await chromium.launch({ executablePath:'/opt/pw-browsers/chromium-1194/chrome-linux/chrome' });
+  const b = await launch();
   const feedV = () => JSON.parse(fs.readFileSync(R+'/content/catalog.json','utf8')).version;
   const swV = () => (/var VERSION = "([^"]*)";/.exec(fs.readFileSync(R+'/sw.js','utf8'))||[])[1];
   const lockOf = id => JSON.parse(fs.readFileSync(R+'/data/revisions.json','utf8'))[id];

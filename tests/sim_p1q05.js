@@ -8,7 +8,7 @@
 
    Run:  node tests/sim_p1q05.js                                            */
 const ROOT = process.env.PRAYOGX_ROOT || require('path').resolve(__dirname, '..');
-const { chromium } = require(process.env.PLAYWRIGHT || '/home/claude/build/node_modules/playwright');
+const { chromium, launch } = require('./_browser');
 const { spawn } = require('child_process');
 const fs = require('fs');
 const crypto = require('crypto');
@@ -38,7 +38,7 @@ const ok = (l, c, x) => { n++; if (!c) bad++; console.log((c ? 'PASS  ' : 'FAIL 
   ok('three sections: interactive experiment, detailed solution, how to use',
      /Interactive experiment/.test(src) && /Detailed solution/.test(src) && /How to use this simulation/.test(src));
 
-  const b = await chromium.launch({ executablePath: '/opt/pw-browsers/chromium-1194/chrome-linux/chrome' });
+  const b = await launch();
   const ctx = await b.newContext({ viewport: { width: 1280, height: 900 } });
   const p = await ctx.newPage();
   const errs = [], reqs = [];

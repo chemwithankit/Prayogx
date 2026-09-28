@@ -1,10 +1,16 @@
 # Test portability — can the suite run on the maintainer's Mac?
 
+> **Status (2026-09-28): steps 1–4 of the proposal in §9 are implemented.** On this Mac,
+> `bash tests/runall.sh` now runs **41 of 46** entries (40 pass; `sim_p1q10.js` fails intermittently from a test race, §10). The remaining 5 are MISSING: files
+> that existed only in the Cowork container. See §10 for what changed, the results, and
+> what is still blocked. Sections 1–8 are the original audit, kept as the record of the
+> "before" state.
+
 Audit date: 2026-09-28, against `main` after commit `45ec2a0`.
 Machine audited: macOS (Darwin 24.6), Python 3.9.6 (`/usr/bin/python3`, Xcode CLT),
 Node v24.21.0, npm 11.19.0. No Homebrew, no Google Chrome, no Playwright browsers cache.
 
-**Short answer: no.** The test suite was written inside the Claude Cowork Linux container
+**Short answer (before the fix): no.** The test suite was written inside the Claude Cowork Linux container
 and still assumes that container's filesystem. Only 3 of the 46 entries in
 `tests/runall.sh` (18 verifiers + 2 library checks + 26 browser suites) run on this Mac today.
 
@@ -119,7 +125,7 @@ would be published. Both suites respect `PRAYOGX_ROOT`, so they can be pointed a
 Paper 2 Q01–Q14 have never had a dedicated test file. Each of their `question.md` files
 has a verification log, but nothing in the repository re-runs it.
 
-## 8. What runs on this Mac today
+## 8. What ran on this Mac before the fix
 
 | Entry in `runall.sh` | Result here | Blocker |
 |---|---|---|
@@ -196,3 +202,73 @@ workflow (no browser needed), so a broken verifier is caught on every push.
 Steps 1–4 are mechanical, change no simulation, no generated content and nothing that is
 deployed, and can be verified by running `tests/runall.sh` on this Mac. The expected end
 state is every existing suite passing, with P2 still reported as uncovered.
+
+---
+
+## 10. Implemented (steps 1–4)
+
+| Step | Change |
+|---|---|
+| 1. Shared launcher | New `tests/_browser.js`. All 24 browser suites changed exactly two lines: the Playwright `require` and `chromium.launch(...)`. No assertion changed. Resolution order: `$PLAYWRIGHT` → `tests/node_modules` → Cowork `/home/claude/build`. Browser: `$PRAYOGX_CHROMIUM` → Cowork `/opt/pw-browsers/chromium-1194` → Playwright's download. |
+| 2. Pinned toolchain | `tests/package.json` + `package-lock.json` pin `playwright` **1.56.1**, the release whose browser is Chromium build 1194 (141.0.7390.37), the same build the container used. `tests/requirements.txt` pins sympy 1.14.0, numpy 2.0.2, scipy 1.13.1, rdkit 2025.9.2. `tests/node_modules/` and `tests/.venv/` are git-ignored. |
+| 3. Portable `runall.sh` | `timeout` → `gtimeout` → `perl` alarm fallback. `tests/.venv/bin` goes first on `PATH`. Absent suites are reported **MISSING** and counted separately. Exit codes: 0 all passed, 1 any failed, 2 only missing. |
+| 4. No writes to the real tree | `propagation.js` and `stalecache.js` each run against a fresh `rsync` copy of the working tree (`$TMPDIR/prayogx-tests.*`, removed on exit), via `PRAYOGX_ROOT`. |
+
+Deviations from the §9 wording:
+
+- **The `/home/claude/build` default in `runall.sh` stays.** It was already guarded
+  (`cd "$BUILD" 2>/dev/null || cd "$ROOT"`), and it is what lets Cowork still find its
+  container-only suites.
+- **The five dead references were not removed.** They are reported MISSING instead, for the
+  same Cowork-compatibility reason.
+- `/tmp/q03/` screenshots in `sim_p1q03.js` / `sim_p1q04.js` were left alone: they work on
+  macOS and weren't part of steps 1–4.
+
+### A fragility found while doing this
+
+The first full run failed `stalecache.js` with 25/28: after a revision bump, the browser
+and app still saw revision 1. The cause was the test setup, not the product.
+
+- The first scratch copy used `rsync -a`, which preserves mtimes.
+- The suite serves files with `python3 -m http.server`, which sends `Last-Modified` and no
+  `Cache-Control`.
+- Chromium then caches heuristically for about 10% of a file's age. Days-old mtimes made the
+  revision-1 feed look "fresh" for hours.
+
+With fresh mtimes (`rsync -rlp`), the same suite passes 28/28. `runall.sh` now copies that
+way. **Running `stalecache.js` directly on a tree whose generated files are old can fail the
+same way.** Use `runall.sh`, or `touch` the tree first. The production host sends its own
+`Cache-Control`, so this concerns only the local test server.
+
+### Results on this Mac (2026-09-28)
+
+Final `bash tests/runall.sh`: **40 passed, 1 failed, 5 missing** (exit 1), in about 23 min.
+
+| Group | Result |
+|---|---|
+| verify_p1q01 … q15 | 15/15 pass (26, 34, 28, 27, 18, 35, 25, 24, 20, 26, 25, 26, 31, 30, 27 checks, 0 failed) |
+| check_library.py, production_audit.py | pass (49/49) |
+| sim_p1q01 … q15 | 14 pass; **sim_p1q10 intermittent**: 100/101 in this run, 101/101 in the previous full run, 3 of 4 isolated reruns 101/101 |
+| prodcheck 36/36, propagation 23/23, stalecache 28/28, appcheck_prod 20/20, edgetoedge 41/41, feederror 10/10, navigation 47/47, schemagate 25/25, adsgate 34/34 | pass |
+| verify15-17.py, t17.js, scalecheck.js | MISSING |
+
+**Known intermittent failure: `sim_p1q10.js`, "the distinct count only ever rises, from 2 to 8".**
+The suite polls `#g_n1` every ~110 ms and keeps every sample whose stage is `build`. For
+the first instant of that stage, before a seating has been examined, the page deliberately
+shows `—` (`ne ? String(...found) : "—"`). `+"—"` is `NaN`, and `NaN >= x` is false, so the
+check fails whenever a poll lands in that window. This is a race in the test, not a
+simulation defect. It surfaces more often on this Mac than it did in the container. The
+fix is one line in the test (drop `—` samples before the monotonic check). It is **not
+applied**, pending approval, because it changes an existing assertion.
+
+### Still blocked
+
+| Entry | Why |
+|---|---|
+| `verify15.py`, `verify16.py`, `verify17.py` | not in the repository; existed only in `/home/claude/build` |
+| `t17.js` | same |
+| `scalecheck.js` | same |
+| anything for Paper 2 Q01–Q14 | never written (step 5, not started) |
+| the native half of `edgetoedge.js` | needs an Android emulator; unchanged from before |
+| `sim_p1q10.js` (intermittent) | test race described above; one-line fix awaiting approval |
+| `pyscf` cross-checks in verify_p1q03/05/06/07 | optional, not installed; the verifiers use recorded values |

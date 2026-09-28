@@ -11,7 +11,7 @@ live in, and each one restores whatever it changes.
 | Suite | Needs | What it proves |
 |---|---|---|
 | `../tools/check_library.py` | python3 | the library is coherent |
-| `../tools/production_audit.py` | python3 | 45 single-source checks: IDs, revisions, hashes, feed agreement, no duplicated content, cache keying, deploy hygiene |
+| `../tools/production_audit.py` | python3 | 49 single-source checks: IDs, revisions, hashes, feed agreement, no duplicated content, cache keying, deploy hygiene |
 | `prodcheck.js` | node + Playwright | catalogue, search, filters, detail pages, direct URLs, deep links, back navigation, mobile layout, PWA, offline, broken assets |
 | `propagation.js` | node + Playwright | adds ONE simulation to the canonical source and proves the website, PWA, crawlable pages and the app all pick it up with no code change — then removes it |
 | `stalecache.js` | node + Playwright | a revision bump moves the feed version, the worker version and the lock hash; the browser and the app both stop serving the old copy; an unbumped edit is refused |
@@ -53,21 +53,72 @@ live in, and each one restores whatever it changes.
 | `gen_q15.py` | python3 + RDKit | build-time generator for Q15: the List-I and List-II graphs and RDKit drawing coordinates for every mechanistic state (the page computes the chemistry itself) |
 | `sim_p1q15.js` | node + Playwright | the ozonolysis-aldol ring lab end to end: self-contained, ES5, no product or answer in the script; the arrow-pushing engine for all four alkenes (valid intermediates, conserved charge, products equal to what the arrows make), enolate choice and graph matching, and its controls; the answer above the experiment and the dock below it; one START runs all thirteen stages; flask and molecules in step; gauges, tiles, option board, badges and charts; the reveal and blink; the mechanism explorer; replay, pause, reset; a custom run; classroom mode; 390 and 360 px; reduced motion; the feed entries; and the real app shell opening it |
 
-The two Python tools run anywhere, including this Mac. The browser suites need Playwright
-and a Chromium build, which live in the Cowork container — they are not installed here.
+## Setting up on a Mac (one time)
+
+Everything installs inside the repository (git-ignored) except Playwright's Chromium,
+which goes to Playwright's per-user cache `~/Library/Caches/ms-playwright`. No sudo, and
+nothing system-wide.
+
+```bash
+cd ~/Documents/"Project simulation"
+
+# Node: Playwright 1.56.1 - the release that ships Chromium build 1194, the build
+# these suites were written against
+npm ci --prefix tests
+npx --prefix tests playwright install chromium
+
+# Python: sympy, numpy, scipy, RDKit in a project-local venv
+python3 -m venv tests/.venv
+tests/.venv/bin/pip install -r tests/requirements.txt
+```
 
 ## Running them
 
 ```bash
-# the two that run anywhere
+# the two that need nothing installed
 python3 tools/check_library.py
 python3 tools/production_audit.py
 
-# all of them, where Playwright is available
+# everything
 bash tests/runall.sh
+
+# one suite
+tests/.venv/bin/python tests/verify_p1q04.py
+node tests/sim_p1q04.js
 ```
 
-`runall.sh` reports a pass/fail line per suite and exits non-zero if any fails.
+`runall.sh` prints one line per suite and a summary line: `passed / failed / missing`.
+It exits 0 when everything passed, 1 when anything FAILED, and 2 when nothing failed but
+a referenced suite is MISSING. Five references are MISSING outside the Cowork container:
+`verify15-17.py`, `t17.js` and `scalecheck.js` lived only in `/home/claude/build` and are
+not in the repository (see `docs/TESTING_PORTABILITY.md`).
+
+How the same files run in both places:
+
+- **Playwright and Chromium** come from `tests/_browser.js`. It uses `$PLAYWRIGHT` first,
+  then `tests/node_modules`, then the Cowork `/home/claude/build`. For the browser it uses
+  `$PRAYOGX_CHROMIUM` first, then the Cowork `/opt/pw-browsers/chromium-1194`, then
+  Playwright's own download. Both routes land on Chromium 141.0.7390.37.
+- **`python3`**: `runall.sh` puts `tests/.venv/bin` first on `PATH` when the venv exists,
+  so the verifiers and every helper a browser suite spawns get the same interpreter.
+- **`timeout`**: GNU `timeout` if present, then `gtimeout`, then a `perl` fallback. macOS
+  ships neither `timeout` nor `gtimeout`.
+- **`PRAYOGX_BUILD`** (default `/home/claude/build`): `runall.sh` `cd`s there if it exists,
+  so the container-only suites still resolve in Cowork. Elsewhere it runs from the
+  repository root.
+
+Some browser suites leave copies of the app shell in `tests/adstest*/`, `tests/apptest*/`
+and `tests/appwww*/` after a run. They are git-ignored so `publish.sh` never commits them,
+and they are safe to delete.
+
+`propagation.js` and `stalecache.js` add a probe simulation and bump a real simulation's
+revision. `runall.sh` runs each against a fresh throwaway copy of the working tree (made
+with `rsync`, removed on exit), so the repository is never modified. Run directly with
+`node`, they still work on the real tree and restore it in `finally`; prefer `runall.sh`.
+
+**Known intermittent failure:** `sim_p1q10.js` sometimes reports 100/101 ("the distinct
+count only ever rises"). That's a polling race in the test, not a simulation defect; see
+`docs/TESTING_PORTABILITY.md` §10.
 
 ## What `edgetoedge.js` can and cannot prove
 

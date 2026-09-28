@@ -1,5 +1,5 @@
 const ROOT = process.env.PRAYOGX_ROOT || require('path').resolve(__dirname, '..');
-const { chromium } = require(process.env.PLAYWRIGHT || '/home/claude/build/node_modules/playwright');
+const { chromium, launch } = require('./_browser');
 const { spawn } = require('child_process');
 const fs = require('fs'), net = require('net');
 const sleep = ms => new Promise(r => setTimeout(r, ms));
@@ -63,7 +63,7 @@ const ok = (l, c, x) => { n++; if (!c) bad++;
                     { cwd: T, stdio: 'ignore' });
   await sleep(1000);
 
-  const b = await chromium.launch({ executablePath: '/opt/pw-browsers/chromium-1194/chrome-linux/chrome' });
+  const b = await launch();
   const A = 'http://127.0.0.1:' + PA + '/';
 
   /* Exactly the statement MainActivity.publishInsets() builds. */
