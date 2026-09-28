@@ -9,7 +9,7 @@
    ========================================================================== */
 window.PRAYOGX = {
   /* Change this one line to point the app at a different deployment. */
-  origin: "https://chemwithankit.github.io/Prayogx",
+  origin: "https://prayogx.co.in",
   feed: {
     catalog: "content/catalog.json",
     index: "content/index.json",
