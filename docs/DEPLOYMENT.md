@@ -45,7 +45,12 @@ git checkout main
 
 Then watch the deploy: <https://github.com/chemwithankit/Prayogx/actions>
 
-Production URL: <https://chemwithankit.github.io/Prayogx/>
+Production URL: <https://prayogx.co.in/>
+
+The custom domain is configured in GitHub → Settings → Pages (there is no CNAME
+file in the repository). The old project URL `https://chemwithankit.github.io/Prayogx/`
+still works, but only as a 301 redirect to the custom domain — do not use it in
+canonical tags, the sitemap or the app config.
 
 **One-time settings check** — GitHub → repo → Settings → Pages → Source must be
 **GitHub Actions** (not "Deploy from a branch").
@@ -53,8 +58,8 @@ Production URL: <https://chemwithankit.github.io/Prayogx/>
 Verify after a deploy:
 
 ```bash
-curl -sI https://chemwithankit.github.io/Prayogx/content/catalog.json | head -1
-curl -s  https://chemwithankit.github.io/Prayogx/content/catalog.json | head -c 200
+curl -sI https://prayogx.co.in/content/catalog.json | head -1
+curl -s  https://prayogx.co.in/content/catalog.json | head -c 200
 ```
 
 ---
