@@ -231,6 +231,10 @@ so the PDFs cannot leak through a future edit by accident.
 | `ADV-2026-P1-CHE-Q09` | 2026 | 1 | Chemistry | States of Matter: Gases and Liquids | Q.9 | 9.80 |
 | `ADV-2026-P1-CHE-Q10` | 2026 | 1 | Chemistry | Coordination Compounds | Q.10 | 8 |
 | `ADV-2026-P1-CHE-Q11` | 2026 | 1 | Chemistry | Aldehydes, Ketones and Carboxylic Acids | Q.11 | 4 |
+| `ADV-2026-P1-CHE-Q12` | 2026 | 1 | Chemistry | Hydrocarbons | Q.12 | 6 |
+| `ADV-2026-P1-CHE-Q13` | 2026 | 1 | Chemistry | Thermodynamics | Q.13 | C |
+| `ADV-2026-P1-CHE-Q14` | 2026 | 1 | Chemistry | Chemical Bonding and Molecular Structure | Q.14 | A |
+| `ADV-2026-P1-CHE-Q15` | 2026 | 1 | Chemistry | Aldehydes, Ketones and Carboxylic Acids | Q.15 | C |
 | `ADV-2026-P2-CHE-Q01` | 2026 | 2 | Chemistry | Electrochemistry | Q.1 | (C) 5 |
 | `ADV-2026-P2-CHE-Q02` | 2026 | 2 | Chemistry | Chemical Bonding and Molecular Structure | Q.2 | (B) |
 | `ADV-2026-P2-CHE-Q03` | 2026 | 2 | Chemistry | Aldehydes, Ketones and Carboxylic Acids | Q.3 | (A) |

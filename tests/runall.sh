@@ -9,7 +9,7 @@ pass=0; fail=0
 line(){ printf '%-46s %s\n' "$1" "$2"; }
 
 echo "=== chemistry verifiers (exact arithmetic, no browser) ==="
-for f in verify15.py verify16.py verify17.py "$HERE/verify_p1q01.py" "$HERE/verify_p1q02.py" "$HERE/verify_p1q03.py" "$HERE/verify_p1q04.py" "$HERE/verify_p1q05.py" "$HERE/verify_p1q06.py" "$HERE/verify_p1q07.py" "$HERE/verify_p1q08.py" "$HERE/verify_p1q09.py" "$HERE/verify_p1q10.py" "$HERE/verify_p1q11.py"; do
+for f in verify15.py verify16.py verify17.py "$HERE/verify_p1q01.py" "$HERE/verify_p1q02.py" "$HERE/verify_p1q03.py" "$HERE/verify_p1q04.py" "$HERE/verify_p1q05.py" "$HERE/verify_p1q06.py" "$HERE/verify_p1q07.py" "$HERE/verify_p1q08.py" "$HERE/verify_p1q09.py" "$HERE/verify_p1q10.py" "$HERE/verify_p1q11.py" "$HERE/verify_p1q12.py" "$HERE/verify_p1q13.py" "$HERE/verify_p1q14.py" "$HERE/verify_p1q15.py"; do
   out=$(python3 "$f" 2>&1 | tail -1); nm=$(basename "$f")
   if echo "$out" | grep -q "0 failed"; then line "$nm" "$out"; pass=$((pass+1));
   else line "$nm" "FAILED: $out"; fail=$((fail+1)); fi
@@ -43,6 +43,10 @@ run "P1 Q8 synthesis pathway lab"          "$HERE/sim_p1q08.js"
 run "P1 Q9 twin-cylinder pressure lab"     "$HERE/sim_p1q09.js"
 run "P1 Q10 isomer assembly lab"          "$HERE/sim_p1q10.js"
 run "P1 Q11 two-flask carbonyl lab"       "$HERE/sim_p1q11.js"
+run "P1 Q12 straight-line carbon lab"     "$HERE/sim_p1q12.js"
+run "P1 Q13 thermo-signs lab"             "$HERE/sim_p1q13.js"
+run "P1 Q14 VSEPR shape lab"              "$HERE/sim_p1q14.js"
+run "P1 Q15 ozonolysis-aldol ring lab"    "$HERE/sim_p1q15.js"
 run "production suite (prodcheck)"         "$HERE/prodcheck.js"
 run "single-source propagation"            "$HERE/propagation.js"
 run "revision + stale cache"               "$HERE/stalecache.js"

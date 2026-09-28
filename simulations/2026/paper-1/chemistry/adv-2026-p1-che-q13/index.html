@@ -1,0 +1,1988 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Thermo-Signs Lab — signs of ΔH and ΔS for four processes — JEE Advanced 2026 Paper 1 Q.13 | PrayogX</title>
+<meta name="description" content="A virtual thermochemistry lab: an adsorption calorimeter and the Sackur–Tetrode entropy for physisorption, two bomb calorimeters and a Hess cycle for diamond to graphite and for propene to cyclopropane, and a DSC scan of a protein unfolding. Sign meters read ΔH and ΔS, each process lands on a ΔH–ΔS sign plane, List-II is matched and options A–D are tested. JEE Advanced 2026 Paper 1 Chemistry Q.13.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232a78d6'/%3E%3Cpath d='M12.5 6.5h7M13.6 6.5v7.2L7.9 24.1a1.5 1.5 0 0 0 1.3 2.3h13.6a1.5 1.5 0 0 0 1.3-2.3l-5.7-10.4V6.5' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M10.6 20.6h10.8' stroke='white' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E">
+<meta name="sim-id" content="ADV-2026-P1-CHE-Q13">
+<style>
+:root{
+  color-scheme: light;
+  --surface-0:#f4f4f1; --surface-1:#fcfcfb; --surface-2:#ececea;
+  --line:#d9d9d4; --line-strong:#bcbcb5;
+  --text-primary:#0b0b0b; --text-secondary:#52514e; --text-muted:#77766f;
+  --s1:#2a78d6; --s2:#eb6834; --s3:#1baf7a; --s4:#4a3aa7;
+  --good:#00743f; --bad:#c0392b; --accent:#2a78d6;
+  --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+  --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --serif:ui-serif,Georgia,"Times New Roman",serif;
+  --radius:10px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  color-scheme: dark;
+  --surface-0:#111110; --surface-1:#1a1a19; --surface-2:#232322;
+  --line:#34342f; --line-strong:#4a4a44;
+  --text-primary:#ffffff; --text-secondary:#c3c2b7; --text-muted:#95948b;
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#9085e9;
+  --good:#3fae7a; --bad:#e66767; --accent:#3987e5;
+}}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --surface-0:#111110; --surface-1:#1a1a19; --surface-2:#232322;
+  --line:#34342f; --line-strong:#4a4a44;
+  --text-primary:#ffffff; --text-secondary:#c3c2b7; --text-muted:#95948b;
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#9085e9;
+  --good:#3fae7a; --bad:#e66767; --accent:#3987e5;
+}
+*{box-sizing:border-box}
+[hidden]{display:none !important}
+body{margin:0;background:var(--surface-0);color:var(--text-primary);font-family:var(--sans);
+  font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px 80px}
+
+/* ---------- header ---------- */
+header.top{border-bottom:1px solid var(--line);background:var(--surface-1)}
+.top-inner{max-width:1180px;margin:0 auto;padding:22px 20px 18px;position:relative;
+  display:flex;flex-wrap:wrap;gap:16px;align-items:flex-start;justify-content:space-between}
+.simid{font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--text-muted)}
+h1{font-size:23px;line-height:1.25;margin:6px 0 10px;font-weight:640;max-width:660px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-size:11.5px;padding:3px 9px;border:1px solid var(--line-strong);border-radius:999px;
+  color:var(--text-secondary);background:var(--surface-2);white-space:nowrap}
+.chip.k{border-color:var(--accent);color:var(--accent);background:transparent}
+.answerbox{border:1px solid var(--line-strong);border-radius:var(--radius);background:var(--surface-2);
+  padding:12px 16px;min-width:220px}
+.answerbox .lbl{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted)}
+.answerbox .val{font-family:var(--mono);font-size:25px;font-weight:600;color:var(--good);line-height:1.22}
+.answerbox .sub{font-size:12px;color:var(--text-secondary)}
+.answerbox.locked .val{color:var(--text-muted);font-size:17px;letter-spacing:.04em}
+.answerbox .rv{margin-top:6px;font-size:11px;background:none;border:none;padding:0;color:var(--accent);
+  cursor:pointer;text-decoration:underline;font-family:var(--sans)}
+.themebtn{position:absolute;top:14px;right:16px;border:1px solid var(--line-strong);background:var(--surface-2);
+  color:var(--text-secondary);border-radius:8px;padding:4px 9px;font-size:12px;cursor:pointer}
+.brandbar{display:flex;align-items:center;gap:8px;margin-bottom:9px}
+.brandbar .pxmark{width:21px;height:21px;flex:none;display:block}
+.brandbar .wm{font-size:13px;font-weight:800;letter-spacing:.17em;color:var(--text-secondary);line-height:1}
+.brandbar .wm i{font-style:normal;color:var(--accent)}
+
+nav.jump{position:sticky;top:0;z-index:20;background:var(--surface-0);border-bottom:1px solid var(--line);
+  padding:8px 0;margin-bottom:26px}
+nav.jump ul{max-width:1180px;margin:0 auto;padding:0 20px;list-style:none;display:flex;gap:4px;overflow-x:auto}
+nav.jump a{display:block;padding:5px 11px;border-radius:7px;font-size:13px;text-decoration:none;
+  color:var(--text-secondary);white-space:nowrap}
+nav.jump a:hover{background:var(--surface-2);color:var(--text-primary)}
+
+section{margin:0 0 42px;scroll-margin-top:56px}
+h2{font-size:17px;font-weight:640;margin:0 0 4px;display:flex;align-items:baseline;gap:9px;flex-wrap:wrap}
+h2 .n{font-family:var(--mono);font-size:12px;color:var(--text-muted);font-weight:400}
+h2 .vb{font-size:12px;color:var(--text-muted);font-weight:400}
+h2.big{font-size:20px;letter-spacing:.02em}
+.lede{color:var(--text-secondary);font-size:13.5px;margin:0 0 16px;max-width:78ch}
+.panel{background:var(--surface-1);border:1px solid var(--line);border-radius:var(--radius);padding:18px}
+.panel h3{margin:0 0 12px;font-size:13px;letter-spacing:.05em;text-transform:uppercase;color:var(--text-muted);font-weight:600}
+.qtext{font-family:var(--serif);font-size:16px;line-height:1.7}
+.opts{list-style:none;padding:0;margin:14px 0 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(150px,100%),1fr));gap:9px}
+.opts li{border:1px solid var(--line);border-radius:10px;padding:9px 12px;background:var(--surface-1);
+  display:flex;align-items:baseline;gap:10px;font-family:var(--serif);font-size:16px}
+.opts li .k{font-family:var(--mono);font-size:12.5px;color:var(--text-muted)}
+.opts li .mark{margin-left:auto;font-family:var(--sans);font-size:11.5px;font-weight:600}
+.opts li.correct{border-color:var(--good);background:color-mix(in srgb,var(--good) 11%,transparent)}
+.opts li.correct .mark{color:var(--good)}
+.opts li.wrong{border-color:var(--bad)} .opts li.wrong .mark{color:var(--bad)}
+.assume{border-left:3px solid var(--s4);padding:8px 0 8px 13px;margin:14px 0 0;font-size:13.5px;color:var(--text-secondary)}
+.assume b{color:var(--text-primary)}
+
+/* ---------- the dashboard ---------- */
+.deck{border:1px solid var(--line);border-radius:var(--radius);padding:14px;
+  background:linear-gradient(180deg,var(--surface-1),color-mix(in srgb,var(--surface-2) 55%,var(--surface-1)));
+  box-shadow:0 1px 2px rgba(0,0,0,.04),0 10px 26px -18px rgba(0,0,0,.35)}
+.statusbar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding-bottom:11px;border-bottom:1px solid var(--line);margin-bottom:12px}
+.xstat{display:flex;align-items:center;gap:8px;font-size:12.5px;font-weight:700;letter-spacing:.03em;
+  padding:5px 12px;border-radius:999px;border:1px solid var(--line-strong);background:var(--surface-1);color:var(--text-secondary)}
+.xstat .dot{width:9px;height:9px;border-radius:50%;background:var(--text-muted)}
+.xstat.run .dot{background:var(--accent);animation:pulse 1.2s ease-in-out infinite}
+.xstat.ana .dot{background:var(--s4);animation:pulse 1.2s ease-in-out infinite}
+.xstat.done{border-color:var(--good);color:var(--good);background:color-mix(in srgb,var(--good) 10%,transparent)}
+.xstat.done .dot{background:var(--good)}
+@keyframes pulse{50%{opacity:.25}}
+.stages{display:flex;gap:5px;flex-wrap:wrap}
+.stages span{font-size:11px;padding:3px 9px;border-radius:999px;border:1px solid var(--line);color:var(--text-muted);white-space:nowrap}
+.stages span.now{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:650}
+.stages span.done{border-color:var(--good);color:var(--good)}
+.statusbar .sp{flex:1}
+.guide{font-size:12px;color:var(--text-muted)}
+
+.grid1{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:13px;align-items:start}
+.grid2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:13px;margin-top:13px}
+.grid1>*,.grid2>*{min-width:0}
+@media(max-width:960px){.grid1,.grid2{grid-template-columns:1fr !important}}
+
+/* the always-dark chamber */
+.lab3d{position:relative;border-radius:12px;padding:12px;overflow:hidden;
+  background:radial-gradient(90% 70% at 18% 8%,rgba(84,169,255,.16),transparent 60%),
+    radial-gradient(80% 70% at 88% 92%,rgba(255,147,80,.12),transparent 62%),
+    linear-gradient(170deg,#0d1322 0%,#070a12 55%,#0a0e1a 100%);
+  border:1px solid rgba(150,180,255,.16);box-shadow:inset 0 1px 0 rgba(255,255,255,.07),0 18px 40px -26px rgba(0,0,0,.9);
+  color:#eef3ff}
+.lab3d:before{content:"";position:absolute;inset:0;pointer-events:none;
+  background:repeating-linear-gradient(0deg,rgba(255,255,255,.028) 0 1px,transparent 1px 3px);opacity:.5;mix-blend-mode:overlay}
+.lab3d>*{position:relative}
+.lab3d .hd{display:flex;align-items:baseline;gap:9px;flex-wrap:wrap;margin-bottom:5px}
+.lab3d .hd h3{margin:0;font-size:11.5px;letter-spacing:.11em;text-transform:uppercase;color:#8fa6c9;font-weight:700}
+.lab3d .hd .st{font-size:10.5px;font-family:var(--mono);color:#9fb0cc;border:1px solid rgba(160,190,255,.2);border-radius:999px;padding:1px 8px}
+.lab3d .narr{font-size:12.5px;color:#c3d2ea;margin:0 0 8px;min-height:2.8em;line-height:1.42}
+.lab3d .narr b{color:#fff;font-family:var(--mono);font-weight:650}
+.lab3d .narr .a{color:#6fb6ff;font-weight:700} .lab3d .narr .o{color:#ffa56a;font-weight:700}
+.lab3d .narr .gd{color:#3ee39a;font-weight:700}
+.vwrap{position:relative;perspective:1000px}
+canvas#labcv{display:block;width:100%;height:auto;border-radius:10px;transform:rotateX(2.5deg);transform-origin:50% 100%}
+@media(max-width:560px){.vwrap{overflow:hidden}canvas#labcv{width:128%;max-width:none;margin-left:-14%}}
+@media(prefers-reduced-motion:reduce){canvas#labcv{transform:none}}
+.done-banner{position:absolute;left:50%;top:14px;transform:translateX(-50%) scale(.92);opacity:0;pointer-events:none;
+  background:rgba(10,30,24,.8);border:1px solid rgba(62,227,154,.6);color:#dfffee;border-radius:12px;padding:8px 18px;
+  font-weight:800;letter-spacing:.1em;font-size:14px;box-shadow:0 0 28px -6px rgba(62,227,154,.7);transition:.45s;white-space:nowrap}
+.done-banner.on{opacity:1;transform:translateX(-50%) scale(1)}
+.revealhost{position:absolute;inset:0;display:none;align-items:center;justify-content:center;z-index:6}
+.revealhost.on{display:flex}
+svg.graf{display:block;width:100%;height:auto}
+.blackout{position:absolute;inset:0;background:#000;opacity:0;pointer-events:none;transition:opacity .45s;z-index:4;border-radius:12px}
+.blackout.on{opacity:.86}
+.flashout{position:absolute;inset:0;background:radial-gradient(circle at 50% 45%,rgba(255,255,255,.95),rgba(120,255,200,.5) 35%,transparent 70%);
+  opacity:0;pointer-events:none;z-index:5;border-radius:12px}
+@keyframes flashpop{0%{opacity:0}18%{opacity:1}100%{opacity:0}}
+.flashout.go{animation:flashpop .85s ease-out 1}
+@media(prefers-reduced-motion:reduce){.flashout.go{animation:none}.blackout{transition:none}}
+.dim canvas#labcv{filter:brightness(.4) saturate(.8)}
+@media(prefers-reduced-motion:no-preference){.zoom{animation:zoomin 1.1s ease-out 1}}
+@keyframes zoomin{0%{transform:scale(1)}40%{transform:scale(1.035)}100%{transform:scale(1)}}
+
+/* the rail: inputs + live data */
+.rail{border:1px solid var(--line);border-radius:12px;padding:11px 12px;
+  background:color-mix(in srgb,var(--surface-1) 82%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  box-shadow:inset 0 1px 0 color-mix(in srgb,#fff 40%,transparent),0 8px 24px -18px rgba(0,0,0,.4);
+  display:flex;flex-direction:column;gap:9px}
+.rail h4{margin:0;font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--text-muted);font-weight:700}
+.rail .grp{border-top:1px dashed var(--line);padding-top:9px}
+.status{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:750;letter-spacing:.04em;border-radius:8px;padding:6px 9px;
+  border:1px solid var(--good);color:var(--good);background:color-mix(in srgb,var(--good) 10%,transparent)}
+.status.custom{border-color:var(--s4);color:var(--s4);background:color-mix(in srgb,var(--s4) 10%,transparent)}
+.fld{margin:7px 0 0}
+.fld .lb{display:flex;justify-content:space-between;align-items:baseline;gap:6px;font-size:12px;margin-bottom:4px;color:var(--text-secondary)}
+.fld .lb b{font-weight:600;color:var(--text-primary);font-family:var(--serif);font-size:13.5px}
+.fld .lb .u{font-size:10.5px;color:var(--text-muted);font-family:var(--mono);flex:none}
+.fld .rw{display:flex;gap:5px;align-items:center}
+.fld .rw input{flex:1;min-width:0;padding:6px 8px;border-radius:7px;border:1px solid var(--line-strong);background:var(--surface-0);
+  color:var(--text-primary);font-family:var(--mono);font-size:13.5px;text-align:center;font-weight:600}
+.fld .rw input:focus{outline:2px solid var(--accent);outline-offset:-1px}
+.fld .rw input.bad{border-color:var(--bad);background:color-mix(in srgb,var(--bad) 10%,transparent)}
+.fld .rw input:disabled{opacity:.55}
+.fld .rw button{flex:none;width:34px;height:34px;border-radius:7px;border:1px solid var(--line-strong);background:var(--surface-2);
+  color:var(--text-primary);font-size:16px;line-height:1;cursor:pointer;font-family:var(--mono);touch-action:manipulation}
+.fld .rw button.rs{font-size:13px}
+.fld .rw button:hover:not(:disabled){border-color:var(--accent);color:var(--accent)}
+.fld .rw button:disabled{opacity:.4;cursor:not-allowed}
+.fld .fh{font-size:10.5px;color:var(--text-muted);margin-top:2px;line-height:1.35;min-height:1.35em}
+.fld .fh.bad{color:var(--bad);font-weight:650}
+.railnote{font-size:11px;color:var(--text-muted);line-height:1.45;margin:0}
+button.resetq{width:100%;padding:8px 10px;border-radius:9px;border:1px solid var(--line-strong);background:var(--surface-2);
+  color:var(--text-primary);font-size:12.5px;font-weight:650;cursor:pointer;font-family:var(--sans)}
+button.resetq:hover{border-color:var(--accent);color:var(--accent)}
+.gauges{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(104px,100%),1fr));gap:6px}
+.gz{border:1px solid var(--line);border-radius:9px;background:var(--surface-2);padding:5px 8px;overflow:hidden}
+.gz .k{font-size:9.5px;letter-spacing:.04em;text-transform:uppercase;color:var(--text-muted);font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.gz .v{font-family:var(--mono);font-size:16px;font-weight:700;line-height:1.25;white-space:nowrap}
+.gz .u{font-size:9.5px;color:var(--text-muted);font-weight:400}
+.gz.a .v{color:var(--s1)} .gz.o .v{color:var(--s2)}
+.gz.hot{border-color:var(--good);background:color-mix(in srgb,var(--good) 11%,transparent)} .gz.hot .v{color:var(--good)}
+
+/* graphs */
+.graphcard{border:1px solid var(--line);border-radius:12px;background:var(--surface-1);padding:12px 14px}
+.graphcard h4{margin:0 0 4px;font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--text-muted);font-weight:700}
+.graphcard .gsub{font-size:11.5px;color:var(--text-muted);margin:0 0 4px}
+.chartwrap{position:relative}
+svg.chart{display:block;width:100%;height:auto;overflow:visible}
+.tip{position:absolute;pointer-events:none;background:var(--surface-1);border:1px solid var(--line-strong);border-radius:8px;padding:7px 10px;
+  font-size:12px;box-shadow:0 4px 14px rgba(0,0,0,.13);opacity:0;transition:opacity .1s;z-index:5;min-width:140px}
+.tip .t{font-family:var(--mono);font-size:11px;color:var(--text-muted);margin-bottom:3px}
+.tip .r{display:flex;gap:7px;white-space:nowrap} .tip .rv{margin-left:auto;font-family:var(--mono);font-weight:600}
+details.tbl{margin-top:6px;font-size:12.5px} details.tbl summary{cursor:pointer;color:var(--text-secondary)}
+
+/* calculation panel */
+.calc{margin-top:13px;border:1px solid var(--line);border-radius:12px;padding:12px 14px;
+  background:linear-gradient(180deg,var(--surface-1),var(--surface-2))}
+.calc .bt{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--text-muted);font-weight:700;margin-bottom:6px}
+.calc ol{list-style:none;margin:0;padding:0;display:grid;gap:5px}
+.calc li{display:grid;grid-template-columns:auto minmax(0,1fr);gap:10px;align-items:baseline;animation:cin .45s ease-out}
+@keyframes cin{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.calc li{animation:none}}
+.calc li .s{font-family:var(--mono);font-size:10.5px;color:#fff;background:var(--accent);border-radius:999px;padding:1px 7px;font-weight:700}
+.calc li .m{font-family:var(--serif);font-size:16px;line-height:1.55;min-width:0;overflow-x:auto}
+.calc li .m .w{display:block;font-family:var(--sans);font-size:11.5px;color:var(--text-muted)}
+.calc li .m .hl{color:var(--good);font-weight:700}
+.calc li .m .ar{color:var(--s1);font-weight:700} .calc li .m .or{color:var(--s2);font-weight:700}
+.calc .empty{font-size:12.5px;color:var(--text-muted);margin:0}
+table.data{border-collapse:collapse;font-size:12.5px;width:100%}
+table.data th,table.data td{border:1px solid var(--line-strong);padding:5px 8px;text-align:center}
+table.data th{background:var(--surface-2);font-weight:600;font-size:11.5px;color:var(--text-secondary)}
+table.data td.n{font-family:var(--mono)}
+tr.win td{background:color-mix(in srgb,var(--good) 12%,transparent);font-weight:700}
+.scrollx{overflow-x:auto}
+
+/* action bar */
+.actbar{display:flex;gap:9px;align-items:center;flex-wrap:wrap;margin-top:12px}
+button.go{flex:none;padding:13px 24px;border-radius:11px;border:none;background:var(--accent);color:#fff;font-size:15px;font-weight:780;
+  cursor:pointer;font-family:var(--sans);letter-spacing:.04em;box-shadow:0 4px 16px -6px color-mix(in srgb,var(--accent) 75%,transparent);transition:.18s}
+button.go:hover:not(:disabled){filter:brightness(1.09);transform:translateY(-1px)}
+button.go:disabled{opacity:.42;cursor:not-allowed;box-shadow:none;transform:none}
+button.go.custom{background:var(--s4)}
+button.ghost{flex:none;padding:8px 13px;border-radius:9px;border:1px solid var(--line-strong);background:var(--surface-1);color:var(--text-secondary);
+  font-size:12.5px;cursor:pointer;font-family:var(--sans);min-height:36px}
+button.ghost:hover:not(:disabled){border-color:var(--accent);color:var(--accent)}
+button.ghost:disabled{opacity:.4;cursor:not-allowed}
+button.ghost[aria-pressed=true]{border-color:var(--accent);color:var(--accent);background:color-mix(in srgb,var(--accent) 10%,transparent)}
+.spd{display:flex;gap:4px}
+.spd button{padding:7px 10px;font-size:11.5px;border-radius:7px;border:1px solid var(--line-strong);background:var(--surface-1);color:var(--text-secondary);cursor:pointer;font-family:var(--mono)}
+.spd button[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:#fff}
+.actbar .msg{flex:1 1 220px;min-width:0;font-size:12px;color:var(--text-secondary);line-height:1.4}
+.actbar .msg b{color:var(--text-primary)}
+
+@keyframes popblink{0%{transform:scale(1)} 12%{transform:scale(1.16)} 24%{transform:scale(1)}
+  38%{opacity:.2} 50%{opacity:1} 64%{opacity:.2} 76%{opacity:1} 88%{transform:scale(1.07)} 100%{transform:scale(1);opacity:1}}
+.blink{animation:popblink 2s ease-in-out 1;display:inline-block}
+@keyframes ringpulse{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--good) 55%,transparent)} 70%{box-shadow:0 0 0 14px transparent} 100%{box-shadow:0 0 0 0 transparent}}
+.celebrate{animation:ringpulse 1.5s ease-out 2}
+@media(prefers-reduced-motion:reduce){.blink,.celebrate,.zoom{animation:none}}
+
+/* solution + help */
+.gate{border:1px dashed var(--line-strong);border-radius:var(--radius);padding:24px 20px;text-align:center;background:var(--surface-1)}
+.gate h4{margin:0 0 6px;font-size:15px} .gate p{margin:0 0 12px;font-size:13px;color:var(--text-secondary)}
+ol.steps{list-style:none;counter-reset:s;padding:0;margin:0;display:grid;gap:10px}
+ol.steps li{min-width:0;counter-increment:s;border:1px solid var(--line);border-radius:var(--radius);background:var(--surface-1);
+  padding:14px 16px 14px 52px;position:relative}
+ol.steps li::before{content:counter(s);position:absolute;left:15px;top:14px;width:23px;height:23px;border-radius:50%;background:var(--accent);
+  color:#fff;font-size:12px;font-weight:700;display:grid;place-items:center;font-family:var(--mono)}
+ol.steps h4{margin:0 0 6px;font-size:14px;font-weight:640}
+ol.steps p{margin:0 0 6px;font-size:13.5px;color:var(--text-secondary)}
+.eq{min-width:0;font-family:var(--serif);font-size:15.5px;background:var(--surface-2);border-radius:7px;padding:9px 13px;margin:8px 0;overflow-x:auto}
+.eq .hl{color:var(--good);font-weight:700}
+.obsnote{border-left:3px solid var(--s1);padding:6px 0 6px 12px;margin:8px 0;font-size:13px;color:var(--text-secondary)}
+.obsnote b{color:var(--text-primary)}
+sub{font-size:.72em} sup{font-size:.72em}
+.verify{border:1px solid var(--good);border-radius:var(--radius);margin-top:12px;background:color-mix(in srgb,var(--good) 8%,transparent);padding:14px 16px;font-size:13.5px}
+.verify h4{margin:0 0 6px;font-size:13.5px;color:var(--good)}
+.verify ul{margin:6px 0 0;padding-left:18px;color:var(--text-secondary)} .verify li{margin-bottom:4px}
+.howto{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(250px,100%),1fr));gap:11px}
+.howto>div{border:1px solid var(--line);border-radius:11px;padding:12px 14px;background:linear-gradient(180deg,var(--surface-1),var(--surface-2))}
+.howto .n{font-family:var(--mono);font-size:10.5px;color:var(--accent);letter-spacing:.1em;font-weight:700}
+.howto h4{margin:3px 0 6px;font-size:14px}
+.howto p{margin:0;font-size:13px;color:var(--text-secondary);line-height:1.5}
+.howto p b{color:var(--text-primary)}
+.meta-tbl{width:100%;border-collapse:collapse;font-size:13.5px}
+.meta-tbl th,.meta-tbl td{padding:6px 0;border-bottom:1px solid var(--line);vertical-align:top;text-align:left}
+.meta-tbl th{color:var(--text-muted);width:150px;font-size:12.5px;padding-right:14px;font-weight:500}
+footer{border-top:1px solid var(--line);margin-top:40px;padding-top:16px;font-size:12px;color:var(--text-muted)}
+
+/* classroom mode */
+body.classroom nav.jump,body.classroom section:not(#lab),body.classroom header.top .chips,body.classroom footer,
+body.classroom .rail .inputs,body.classroom .spd,body.classroom details.tbl,body.classroom #lab>.lede{display:none !important}
+body.classroom .wrap{max-width:none;padding-left:18px;padding-right:18px}
+body.classroom .lab3d .narr{font-size:20px;line-height:1.45;color:#e8f0ff}
+body.classroom .lab3d .hd h3{font-size:15px}
+body.classroom .gz .v{font-size:24px} body.classroom .gz .k{font-size:12px}
+body.classroom .calc li .m{font-size:25px} body.classroom .calc li .m .w{font-size:15px}
+body.classroom .xstat{font-size:16px} body.classroom .stages span{font-size:14px}
+body.classroom button.go{font-size:19px;padding:16px 30px}
+body.classroom .graphcard h4{font-size:13px}
+body.classroom .actbar .msg{font-size:15px}
+
+/* Q03 additions */
+.fgrid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0 8px}
+.fgrid>*{min-width:0}
+.fld .rw input{width:100%}
+.fgrid .fld.full{grid-column:1/-1}
+.fld.half .rw button.rs{display:none}
+.fld.half .fh{font-size:10px}
+.chem{font-family:var(--serif);white-space:nowrap}
+#opts{grid-template-columns:repeat(auto-fit,minmax(min(250px,100%),1fr))}
+#opts li{flex-wrap:wrap}
+@media(max-width:560px){.vwrap{overflow:visible}canvas#labcv{width:100%;margin-left:0}}
+.rankline{font-family:var(--serif);font-size:17px;font-weight:700}
+.legend{display:flex;flex-wrap:wrap;gap:4px 12px;font-size:11.5px;color:var(--text-secondary);margin:2px 0 4px}
+.legend i{display:inline-block;width:14px;height:3px;border-radius:2px;vertical-align:middle;margin-right:5px}
+.shapes{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(170px,100%),1fr));gap:9px;margin:8px 0}
+.shapes>div{border:1px solid var(--line);border-radius:9px;padding:9px 11px;background:var(--surface-1);font-size:13px;color:var(--text-secondary)}
+.shapes b{color:var(--text-primary);font-family:var(--serif);font-size:15px}
+
+/* Q06/Q07 additions */
+svg.scheme{display:block;width:100%;max-width:660px;height:auto;margin:6px 0 10px}
+.unk{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:12px 0 4px}
+.unk>div{border:1px dashed var(--line-strong);border-radius:11px;padding:9px 10px;text-align:center;background:var(--surface-2);transition:.4s}
+.unk .k{font-size:10.5px;letter-spacing:.1em;color:var(--text-muted);font-weight:800}
+.unk .v{font-family:var(--serif);font-size:24px;font-weight:700;line-height:1.25}
+.unk>div.found{border-style:solid;border-color:var(--good);background:color-mix(in srgb,var(--good) 10%,transparent)}
+.unk>div.found .v{color:var(--good)}
+.unk>div.warn{border-style:solid;border-color:var(--bad)}
+.apbar{height:6px;border-radius:99px;background:var(--line);overflow:hidden;margin-top:6px}
+.apbar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--good));transition:width .3s}
+.answerbox.work .val{color:var(--accent);font-size:15px;letter-spacing:.02em}
+.board{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(230px,100%),1fr));gap:10px;margin-top:13px}
+.ocard{border:1px solid var(--line);border-radius:12px;padding:11px 13px;background:linear-gradient(180deg,var(--surface-1),var(--surface-2));transition:.4s}
+.ocard .h{display:flex;gap:8px;align-items:baseline}
+.ocard .h b{font-family:var(--mono);color:var(--text-muted)}
+.ocard .claim{font-family:var(--serif);font-size:15px}
+.ocard .ev{font-size:12.5px;color:var(--text-secondary);margin:6px 0 0;min-height:2.6em}
+.ocard .vd{margin-top:7px;font-weight:800;font-size:13px;letter-spacing:.04em;color:var(--text-muted)}
+.ocard.now{border-color:var(--accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 22%,transparent)}
+.ocard.yes{border-color:var(--good)} .ocard.yes .vd{color:var(--good)}
+.ocard.no{border-color:var(--bad)} .ocard.no .vd{color:var(--bad)}
+.ocard.na .vd{color:var(--s4)}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.badge{display:flex;align-items:center;gap:7px;border:1px solid var(--line);border-radius:999px;padding:5px 12px 5px 7px;font-size:12.5px;color:var(--text-muted);background:var(--surface-1);opacity:.55;transition:.5s}
+.badge .ic{font-size:17px;filter:grayscale(1)}
+.badge.on{opacity:1;color:var(--text-primary);border-color:var(--good);background:color-mix(in srgb,var(--good) 9%,var(--surface-1))}
+.badge.on .ic{filter:none}
+@keyframes badgepop{0%{transform:scale(1)}35%{transform:scale(1.14)}100%{transform:scale(1)}}
+.badge.pop{animation:badgepop .7s ease-out 1}
+@media(prefers-reduced-motion:reduce){.badge.pop{animation:none}}
+.tools{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.tools button{padding:6px 11px;border-radius:8px;border:1px solid var(--line-strong);background:var(--surface-1);color:var(--text-secondary);font-size:12px;cursor:pointer;font-family:var(--sans);min-height:34px}
+.tools button[aria-pressed=true]{border-color:var(--accent);color:var(--accent);background:color-mix(in srgb,var(--accent) 10%,transparent)}
+.tools button:focus-visible,.explorer button:focus-visible,button:focus-visible,select:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.explorer{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:13px;align-items:start}
+@media(max-width:860px){.explorer{grid-template-columns:1fr}}
+.xview{position:relative;border-radius:12px;overflow:hidden;background:linear-gradient(170deg,#0d1322,#070a12);border:1px solid rgba(150,180,255,.16)}
+canvas#mol{display:block;width:100%;height:auto;touch-action:none;cursor:grab}
+.xpick{display:flex;flex-wrap:wrap;gap:6px}
+.xpick button{padding:7px 14px;border-radius:9px;border:1px solid var(--line-strong);background:var(--surface-1);color:var(--text-primary);font-family:var(--serif);font-size:15px;cursor:pointer;min-height:36px}
+.xpick button[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:#fff}
+.xinfo table{width:100%;border-collapse:collapse;font-size:13px;margin-top:8px}
+.xinfo th{text-align:left;color:var(--text-muted);font-weight:500;padding:5px 8px 5px 0;width:44%;border-bottom:1px solid var(--line)}
+.xinfo td{padding:5px 0;border-bottom:1px solid var(--line);font-weight:600}
+.cards4{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr));gap:10px}
+.cards4>div{border:1px solid var(--line);border-radius:12px;padding:13px 15px;background:linear-gradient(180deg,var(--surface-1),var(--surface-2))}
+.cards4 h4{margin:0 0 6px;font-size:14px} .cards4 p{margin:0 0 6px;font-size:13px;color:var(--text-secondary)}
+.cards4 .eq{font-size:14px}
+.warnbox{border:1px solid var(--bad);border-radius:9px;padding:8px 10px;font-size:12px;color:var(--bad);background:color-mix(in srgb,var(--bad) 8%,transparent);margin-top:8px}
+.selrow{margin:7px 0 0} .selrow label{display:block;font-size:12px;color:var(--text-secondary);margin-bottom:3px}
+select.sel{display:block;width:100%;min-width:0;min-height:40px;padding:8px 10px;font:inherit;font-size:14px;color:var(--text-primary);background:var(--surface-1);border:1px solid var(--line-strong);border-radius:8px}
+select.sel:disabled{opacity:.6}
+
+.optv{display:inline-block;min-width:54px;text-align:center;padding:1px 8px;border-radius:999px;font-size:11.5px;font-weight:750;border:1px solid var(--line-strong);color:var(--text-muted)}
+.optv.t{border-color:var(--good);color:var(--good)} .optv.f{border-color:var(--bad);color:var(--bad)}
+.unk.two{grid-template-columns:repeat(3,minmax(0,1fr))}
+.mobox{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:14px;align-items:start}
+@media(max-width:820px){.mobox{grid-template-columns:1fr}}
+.mobox>div{min-width:0} .mobox canvas{display:block;width:100%;height:auto;border-radius:10px}
+.chg{display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin-top:8px}
+.chg .q{font:800 15px var(--mono);min-width:90px;text-align:center}
+.unk.four{grid-template-columns:repeat(4,minmax(0,1fr))}
+@media(max-width:560px){.unk.four{grid-template-columns:repeat(2,minmax(0,1fr))}}
+canvas#schemecv{display:block;width:100%;max-width:760px;height:auto;border-radius:10px}
+.revealhost{overflow:hidden} .revealhost svg.graf{overflow:hidden}
+.unk.four>div{min-width:0} .unk.four .v{font-size:17px;overflow-wrap:anywhere}
+.chkrow{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.unk.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+
+/* ---- layout v2: answer above the experiment, control dock below it ---- */
+.ansstrip{display:flex;align-items:center;gap:10px 16px;flex-wrap:wrap;margin:0 0 12px;padding:12px 16px;border-radius:14px;position:relative;overflow:hidden;
+  background:linear-gradient(115deg,color-mix(in srgb,var(--good) 20%,var(--surface-2)) 0%,var(--surface-2) 60%);
+  border:1.5px solid color-mix(in srgb,var(--good) 55%,transparent);box-shadow:0 14px 34px -24px var(--good)}
+.ansstrip:after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(100deg,transparent 30%,rgba(255,255,255,.14) 45%,transparent 60%);
+  transform:translateX(-120%);animation:stripsheen 5.5s ease-in-out infinite}
+@keyframes stripsheen{0%,70%{transform:translateX(-120%)}100%{transform:translateX(120%)}}
+.ansstrip .k{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--text-muted);font-weight:800}
+.ansstrip .v{font-family:var(--mono);font-size:27px;font-weight:760;color:var(--good);line-height:1.1}
+.ansstrip .s{flex:1 1 220px;min-width:0;font-size:12.5px;color:var(--text-secondary);line-height:1.4}
+.ansstrip .pbar{flex:1 1 100%;height:4px;border-radius:4px;background:var(--line);overflow:hidden}
+.ansstrip .pbar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--good));transition:width .25s}
+.dock{margin-top:12px;padding:12px 12px 10px;border-radius:14px;border:1px solid color-mix(in srgb,var(--accent) 35%,var(--line));
+  background:linear-gradient(180deg,color-mix(in srgb,var(--accent) 7%,var(--surface-2)),var(--surface-1));box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 14px 30px -24px #000}
+.dock .actbar{margin-top:0}
+.dock .tools{margin:10px 0 0;padding-top:10px;border-top:1px dashed var(--line)}
+button.go{background:linear-gradient(135deg,var(--accent),color-mix(in srgb,var(--accent) 45%,#9b5cff));position:relative}
+button.go:not(:disabled):not(.custom){animation:gopulse 2.6s ease-in-out infinite}
+@keyframes gopulse{0%,100%{box-shadow:0 0 0 0 color-mix(in srgb,var(--accent) 45%,transparent)}50%{box-shadow:0 0 0 9px color-mix(in srgb,var(--accent) 0%,transparent)}}
+@media(prefers-reduced-motion:reduce){.ansstrip:after,button.go{animation:none !important}}
+.sol-fig{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:4px 8px;margin:10px 0;padding:10px;border:1px solid var(--line);border-radius:12px;background:var(--surface-1);color:var(--text-primary);overflow-x:auto}
+.sol-fig svg.mech{max-width:100%;height:auto}
+.sol-fig .cap{flex:1 1 100%;text-align:center;font-size:12px;color:var(--text-secondary)}
+.sol-fig .plus{font-size:20px;font-weight:700;color:var(--text-secondary)}
+svg.rxarrow{flex:none}
+.calcblock{font-family:var(--mono);font-size:13px;line-height:1.7;background:var(--surface-1);border:1px solid var(--line);border-radius:10px;padding:10px 14px;margin:8px 0;overflow-x:auto}
+.calcblock .hl{color:var(--good);font-weight:700}
+table.soltab{border-collapse:collapse;width:100%;font-size:13px;margin:8px 0}
+table.soltab th,table.soltab td{border:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+table.soltab th{background:var(--surface-2);font-weight:700}
+
+.selrow input[type=range]{width:100%;box-sizing:border-box;margin:6px 0 0}.selrow .sel{max-width:100%;min-width:0}#solbody .eq,#solbody .calcblock{overflow-wrap:anywhere}#solbody .sol-fig svg{max-width:100%;height:auto}#solbody li{min-width:0}
+.unk.five{grid-template-columns:repeat(5,minmax(0,1fr))}@media (max-width:560px){.unk.five{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.soplane{display:block;margin:6px auto;max-width:100%;height:auto}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-inner">
+    <div>
+      <div class="brandbar"><svg class="pxmark" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><rect width="32" height="32" rx="8" fill="var(--accent)"/><path d="M12.5 6.5h7M13.6 6.5v7.2L7.9 24.1a1.5 1.5 0 0 0 1.3 2.3h13.6a1.5 1.5 0 0 0 1.3-2.3l-5.7-10.4V6.5" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.6 20.6h10.8" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg><span class="wm">PRAYOG<i>X</i></span></div>
+      <div class="simid">ADV-2026-P1-CHE-Q13</div>
+      <h1>Thermo-Signs Lab — which way does heat flow, and does disorder rise?</h1>
+      <div class="chips">
+        <span class="chip">JEE Advanced 2026</span>
+        <span class="chip">Paper 1 · Q.13</span>
+        <span class="chip">Chemistry</span>
+        <span class="chip">Thermodynamics · ΔH · ΔS · ΔG</span>
+        <span class="chip">Matching list · single option</span>
+        <span class="chip">+4 / 0 / −1</span>
+        <span class="chip k">Press start · watch it happen</span>
+      </div>
+    </div>
+    <div class="answerbox locked" id="answerbox" aria-live="polite">
+      <div class="lbl">Answer</div>
+      <div class="val" id="ansval">—</div>
+      <div class="sub" id="anssub">The answer appears when the investigation finishes.</div>
+      <div class="apbar" aria-hidden="true"><i id="apbar"></i></div>
+      <button class="rv" id="revealnow" type="button">Reveal anyway</button>
+    </div>
+    <button class="themebtn" id="themebtn" type="button">◐ theme</button>
+  </div>
+</header>
+
+<nav class="jump">
+  <ul>
+    <li><a href="#question">Mission brief</a></li>
+    <li><a href="#lab">Interactive experiment</a></li>
+    <li><a href="#explorer">ΔG–T explorer</a></li>
+    <li><a href="#solution">Detailed solution</a></li>
+    <li><a href="#howto">How to use this simulation</a></li>
+  </ul>
+</nav>
+
+<div class="wrap">
+
+<section id="question">
+  <h2><span class="n">Q</span>Mission brief <span class="vb">— the question, verbatim</span></h2>
+  <p class="lede">JEE (Advanced) 2026, Paper 1, Chemistry, Section 4 — matching list set, one correct option: +4 if it is chosen, 0 if unanswered,
+     −1 otherwise.</p>
+  <div class="panel">
+    <div class="qtext">
+      <p><b>Q.13</b>&nbsp; List-I contains various physical/chemical processes, and List-II contains combinations of changes in enthalpy (ΔH)
+        and entropy (ΔS). Match each entry in List-I to the appropriate entry in List-II, and choose the correct option.</p>
+      <div style="overflow-x:auto"><table class="soltab"><thead><tr><th>List-I</th><th>List-II</th></tr></thead><tbody>
+        <tr><td>(P) Physisorption</td><td>(1) ΔH &gt; 0 and ΔS &gt; 0</td></tr>
+        <tr><td>(Q) Diamond ⟶ Graphite</td><td>(2) ΔH &lt; 0 and ΔS &lt; 0</td></tr>
+        <tr><td>(R) Denaturation of protein</td><td>(3) ΔH &lt; 0 and ΔS = 0</td></tr>
+        <tr><td>(S) Propene ⟶ Cyclopropane</td><td>(4) ΔH &gt; 0 and ΔS &lt; 0</td></tr>
+        <tr><td></td><td>(5) ΔH &lt; 0 and ΔS &gt; 0</td></tr>
+      </tbody></table></div>
+      <ol class="opts" type="A" style="margin:8px 0 0;padding-left:26px">
+        <li><b>(A)</b>&nbsp; P → 2; Q → 3; R → 5; S → 4</li>
+        <li><b>(B)</b>&nbsp; P → 4; Q → 3; R → 5; S → 1</li>
+        <li><b>(C)</b>&nbsp; P → 2; Q → 5; R → 1; S → 4</li>
+        <li><b>(D)</b>&nbsp; P → 2; Q → 5; R → 1; S → 3</li>
+      </ol>
+    </div>
+    <div class="unk five" id="unk" aria-live="polite">
+      <div id="u_P"><div class="k">P →</div><div class="v">?</div></div>
+      <div id="u_Q"><div class="k">Q →</div><div class="v">?</div></div>
+      <div id="u_R"><div class="k">R →</div><div class="v">?</div></div>
+      <div id="u_S"><div class="k">S →</div><div class="v">?</div></div>
+      <div id="u_O"><div class="k">OPTION</div><div class="v">?</div></div>
+    </div>
+    <div class="assume"><b>The mystery.</b> Four very different processes — gas sticking to charcoal, one form of carbon turning into another, a
+      protein coming apart, a chain closing into a ring. For each one the lab measures the heat that flows and works out how the disorder changes,
+      reads off the two signs and finds the List-II entry. Only one printed option can match all four.</div>
+  </div>
+</section>
+
+<section id="lab">
+  <h2 class="big"><span class="n">01</span>Interactive experiment</h2>
+  <p class="lede">Four measurements, one bench — the apparatus on the left, the ΔH and ΔS meters on the right, in step. Press <b>START EXPERIMENT</b>:
+     set up → measure P, Q, R, S → the sign plane → test options A–D → answer.</p>
+
+  <div class="deck" id="deck">
+    <div class="statusbar">
+      <span class="xstat" id="xstat"><span class="dot"></span><span id="xstattxt">Ready</span></span>
+      <div class="stages" id="stages">
+        <span data-s="load">01 Setup</span><span data-s="p">02 P</span><span data-s="q">03 Q</span><span data-s="r">04 R</span>
+        <span data-s="s">05 S</span><span data-s="plane">06 Sign plane</span><span data-s="test">07 Options</span><span data-s="answer">08 Final answer</span>
+      </div>
+      <span class="sp"></span>
+      <span class="guide" id="guide">Set your values or use the question defaults.</span>
+    </div>
+
+    <div class="ansstrip" id="ansstrip" aria-live="polite"><span class="k">Answer</span><span class="v" id="ansstripv">—</span><span class="s" id="ansstrips">—</span><span class="pbar" aria-hidden="true"><i id="ansstripbar"></i></span></div>
+
+    <div class="grid1">
+      <div class="lab3d" id="lab3d">
+        <div class="hd">
+          <h3 id="scenet">Thermo-signs lab</h3>
+          <span class="st" id="trialtag">step 1 of 7</span>
+        </div>
+        <p class="narr" id="narr" aria-live="polite">Four processes, two signs each. The question's processes are loaded — press <b>START EXPERIMENT</b>.</p>
+        <div class="vwrap">
+          <canvas id="labcv" width="1040" height="620" role="img"
+                  aria-label="The virtual laboratory: on the left the apparatus for each process - nitrogen molecules sticking to charcoal, a diamond lattice opening into graphite sheets, a protein unfolding in a DSC cell, propene closing into cyclopropane; on the right the enthalpy and entropy sign meters, a Hess ladder or thermogram, then all four processes on a sign plane and the options tested"></canvas>
+          <div class="done-banner" id="donebanner">✓ EXPERIMENT COMPLETE</div>
+          <div class="revealhost" id="revealhost"></div>
+        </div>
+        <div class="blackout" id="blackout"></div>
+        <div class="flashout" id="flashout"></div>
+      </div>
+
+      <div class="rail" id="rail">
+        <div class="status" id="status">✓ QUESTION VALUES LOADED</div>
+        <div class="inputs">
+          <h4>Customize experiment — optional</h4>
+          <div id="fields"></div>
+          <div class="warnbox" id="condwarn" hidden></div>
+          <button class="resetq" id="resetq" type="button" style="margin-top:8px">↺ RESTORE QUESTION CONDITIONS</button>
+        </div>
+        <div class="grp">
+          <h4>Instrument panel</h4>
+          <div class="gauges" style="margin-top:6px">
+            <div class="gz"><div class="k">step</div><div class="v" id="g_st" style="font-size:13px">—</div></div>
+            <div class="gz o"><div class="k">temperature</div><div class="v" id="g_T" style="font-size:14px">—</div></div>
+            <div class="gz a"><div class="k">progress</div><div class="v"><span id="g_pr">0</span> <span class="u">%</span></div></div>
+            <div class="gz"><div class="k">ΔH</div><div class="v" id="g_dh" style="font-size:13px">—</div></div>
+            <div class="gz"><div class="k">ΔS</div><div class="v" id="g_ds" style="font-size:13px">—</div></div>
+            <div class="gz"><div class="k">ΔG at that T</div><div class="v" id="g_dg" style="font-size:13px">—</div></div>
+            <div class="gz"><div class="k">signs</div><div class="v" id="g_sg" style="font-size:12px;white-space:normal;line-height:1.2">—</div></div>
+            <div class="gz"><div class="k">List-II</div><div class="v" id="g_l2" style="font-size:15px">—</div></div>
+            <div class="gz" id="gz_v"><div class="k">option</div><div class="v" id="g_v" style="font-size:15px">—</div></div>
+          </div>
+          <p class="railnote" style="margin-top:6px">Orange waves: heat flowing out of the system (ΔH &lt; 0). Blue waves: heat flowing in (ΔH &gt; 0). The needles swing left for a negative value and right for a positive one; the number is printed under each.</p>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="dock" id="dock" role="group" aria-label="experiment controls">
+      <div class="actbar">
+      <button class="go" id="gobtn" type="button">▶&nbsp; START EXPERIMENT</button>
+      <button class="ghost" id="pausebtn" type="button" disabled>Pause</button>
+      <button class="ghost" id="replaybtn" type="button" hidden>▶ REPLAY EXPERIMENT</button>
+      <button class="ghost" id="resetbtn" type="button">↺ RESET</button>
+      <div class="spd" id="spd" role="group" aria-label="playback speed">
+        <button type="button" data-s="1" aria-pressed="true">1×</button>
+        <button type="button" data-s="2" aria-pressed="false">2×</button>
+      </div>
+      <button class="ghost" id="classbtn" type="button" aria-pressed="false">CLASSROOM MODE</button>
+      <div class="msg" id="gomsg">Nothing needs to be chosen. Press <b>START EXPERIMENT</b>.</div>
+    </div>
+    <div class="tools" role="group" aria-label="optional views">
+      <button type="button" id="t_eq" aria-pressed="false">SHOW EQUATION</button>
+      <button type="button" id="t_obs" aria-pressed="false">SHOW OBSERVATION</button>
+      <button type="button" id="t_why" aria-pressed="false">SHOW WHY?</button>
+      <button type="button" id="t_cmp" aria-pressed="false">SLOW MOTION 0.5×</button>
+      <button type="button" id="t_rot">OPEN ΔG–T EXPLORER</button>
+    </div>
+    </div>
+
+    <div class="grid2">
+      <div class="graphcard"><h4>ΔG against temperature, for each measured process</h4><p class="gsub">ΔG / |ΔH| = 1 − T·ΔS/ΔH; below zero the process is spontaneous</p>
+        <div class="chartwrap"><svg class="chart" id="curve" viewBox="0 0 520 300" role="img" aria-label="Line chart of Gibbs energy change divided by the size of the enthalpy change against temperature, one line per measured process"></svg></div></div>
+      <div class="graphcard"><h4>ΔH and ΔS of each process</h4><p class="gsub">the measured values, on a log scale so that 1.9 and 1440 both show</p>
+        <div class="chartwrap"><svg class="chart" id="bars" viewBox="0 0 520 300" role="img" aria-label="Bar chart of the measured enthalpy and entropy changes of processes P, Q, R and S on a symmetric log scale"></svg></div></div>
+    </div>
+
+    <h4 style="margin:14px 0 0;font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--text-muted)">Option analysis — claim → evidence → verdict</h4>
+    <div class="board" id="board">
+      <div class="ocard" id="oc_A"><div class="h"><b>(A)</b><span class="claim">P → 2; Q → 3; R → 5; S → 4</span></div><p class="ev" id="ev_A">not yet examined</p><div class="vd" id="vd_A">UNEVALUATED</div></div>
+      <div class="ocard" id="oc_B"><div class="h"><b>(B)</b><span class="claim">P → 4; Q → 3; R → 5; S → 1</span></div><p class="ev" id="ev_B">not yet examined</p><div class="vd" id="vd_B">UNEVALUATED</div></div>
+      <div class="ocard" id="oc_C"><div class="h"><b>(C)</b><span class="claim">P → 2; Q → 5; R → 1; S → 4</span></div><p class="ev" id="ev_C">not yet examined</p><div class="vd" id="vd_C">UNEVALUATED</div></div>
+      <div class="ocard" id="oc_D"><div class="h"><b>(D)</b><span class="claim">P → 2; Q → 5; R → 1; S → 3</span></div><p class="ev" id="ev_D">not yet examined</p><div class="vd" id="vd_D">UNEVALUATED</div></div>
+    </div>
+
+    <div class="badges" id="badges" aria-label="achievements">
+      <div class="badge" id="b_heat"><span class="ic">🔥</span>Calorimetrist</div>
+      <div class="badge" id="b_hess"><span class="ic">💎</span>Hess Master</div>
+      <div class="badge" id="b_dsc"><span class="ic">🧬</span>DSC Pro</div>
+      <div class="badge" id="b_ent"><span class="ic">🎲</span>Entropy Hunter</div>
+      <div class="badge" id="b_plane"><span class="ic">🧭</span>Sign Navigator</div>
+      <div class="badge" id="b_mas"><span class="ic">🏆</span>Chemistry Master</div>
+    </div>
+
+    <div class="calc" id="calc">
+      <div class="bt"><span>Reasoning log — input → action → change → observation → conclusion</span><span id="calcstat"></span></div>
+      <p class="empty" id="calcempty">Nothing investigated yet.</p>
+      <ol id="calclist"></ol>
+      <details class="tbl" id="logbox"><summary>Evidence table (<span id="logn">0</span>)</summary>
+        <div class="scrollx"><table class="data" id="log"></table></div></details>
+    </div>
+
+  </div>
+</section>
+
+<section id="explorer">
+  <h2 class="big"><span class="n">02</span>ΔG–T explorer</h2>
+  <p class="lede">Pick a process and slide the temperature. The point on the sign plane never moves — ΔH and ΔS keep their signs — but ΔG = ΔH − TΔS
+     can change sign, and with it whether the process goes by itself.</p>
+  <div class="mobox">
+    <div>
+      <div class="xview"><canvas id="mol" width="720" height="420" tabindex="0" role="img" aria-label="Left: the chosen process on the enthalpy-entropy sign plane. Right: its Gibbs energy change against temperature with a marker at the chosen temperature"></canvas></div>
+      <div class="selrow"><label for="x_proc">Process</label><select class="sel" id="x_proc"><option value="0">P · physisorption</option><option value="1">Q · diamond → graphite</option><option value="2">R · denaturation of protein</option><option value="3">S · propene → cyclopropane</option></select></div>
+      <div class="selrow"><label for="x_dir">Direction</label><select class="sel" id="x_dir"><option value="fwd">as in the question</option><option value="rev">reverse</option></select></div>
+      <div class="selrow"><label for="x_T">Temperature: <b id="x_Tv">298 K</b></label><input type="range" id="x_T" min="20" max="1500" step="1" value="298" style="width:100%"></div>
+      <div class="chkrow"><button type="button" class="ghost" id="x_play" aria-pressed="false">▶ SWEEP T</button><button type="button" class="ghost" id="x_reset">↺ reset</button></div>
+    </div>
+    <div><div class="panel xinfo" id="xinfo"></div></div>
+  </div>
+</section>
+
+<section id="solution">
+  <h2 class="big"><span class="n">03</span>Detailed solution</h2>
+  <p class="lede" id="solintro">The complete worked solution — every structure, step and calculation.</p>
+  <div class="gate" id="solgate" hidden>
+    <h4>The solution is still locked</h4>
+    <p>The experiment has not finished yet. Press START and let it run to the end — or use
+       <i>Reveal anyway</i> in the header if you are revising.</p>
+    <button class="ghost" id="gotolab" type="button">Go to the experiment ↑</button>
+  </div>
+  <div id="solbody">
+    <h3 style="font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-muted);margin:0 0 10px">Understand the concept</h3>
+    <div class="cards4">
+      <div><h4>ΔH: which way heat flows</h4><p>At constant pressure ΔH is the heat taken in. Heat out (bonds or attractions formed): ΔH &lt; 0. Heat in (bonds broken, strain built): ΔH &gt; 0.</p>
+        <div class="eq">q<sub>p</sub> = ΔH</div></div>
+      <div><h4>ΔS: how many ways</h4><p>Entropy counts the arrangements and motions available. Freedom gained (gas formed, chain unfolded, rotor freed): ΔS &gt; 0; freedom lost: ΔS &lt; 0.</p>
+        <div class="eq">S = k<sub>B</sub> ln W</div></div>
+      <div><h4>Signs are fixed; ΔG is not</h4><p>ΔH and ΔS hardly change with temperature, so their signs place a process in one List-II entry. ΔG decides spontaneity at a given T.</p>
+        <div class="eq">ΔG = ΔH − TΔS</div></div>
+      <div><h4>Reading an option</h4><p>An option is correct only if all four of its entries match. One wrong entry rejects it.</p>
+        <div class="eq">P → 2, Q → 5, R → 1, S → 4</div></div>
+    </div>
+    <ol class="steps" style="margin-top:14px">
+      <li><h4>(P) Physisorption — ΔH &lt; 0, ΔS &lt; 0 → (2)</h4>
+        <p>Gas molecules are held on the surface by van der Waals forces: an attraction forms, so heat is released (typical enthalpy of physisorption
+           −20 to −40 kJ/mol or less; ≈ −15 kJ/mol for N₂ on charcoal). A molecule that flew freely in three dimensions is now confined to the surface.</p>
+        <div class="calcblock">S<sub>trans</sub>(3-D gas, N₂, 77 K, 1 bar) = R[ln((2πmkT/h²)<sup>3/2</sup> kT/p) + 5/2] = 122.3 J/K·mol<br>
+          S<sub>trans</sub>(2-D film, 0.162 nm² per molecule) = R[ln((2πmkT/h²)·a) + 2] = 56.1 J/K·mol<br>
+          ΔS ≈ 56.1 − 122.3 = −66.2 J/K·mol &nbsp;⇒&nbsp; ΔH &lt; 0 and ΔS &lt; 0 &nbsp;⇒&nbsp; <b>(2)</b></div>
+        <p>Consistent with ΔG = ΔH − TΔS: physisorption is favourable at low temperature and falls off as T rises — exactly what is observed.</p></li>
+      <li><h4>(Q) Diamond ⟶ Graphite — ΔH &lt; 0, ΔS &gt; 0 → (5)</h4>
+        <div class="calcblock">Hess's law: ΔH = ΔcH°(diamond) − ΔcH°(graphite) = (−395.4) − (−393.5) = −1.9 kJ/mol<br>
+          ΔS = S°(graphite) − S°(diamond) = 5.74 − 2.38 = +3.36 J/K·mol<br>
+          ΔG°(298 K) = −1.9 − 298 × 0.00336 = −2.9 kJ/mol &nbsp;⇒&nbsp; ΔH &lt; 0 and ΔS &gt; 0 &nbsp;⇒&nbsp; <b>(5)</b></div>
+        <p>Graphite is the standard state of carbon (ΔfH° = 0); diamond lies 1.9 kJ/mol above it. Graphite's weakly held layers vibrate in more low-energy
+           ways than diamond's rigid 3-D network, so its entropy is higher. The change is spontaneous but immeasurably slow. <b>Trap:</b> ΔS = 0 (option A/B's "3") —
+           the two solids have measurably different entropies.</p></li>
+      <li><h4>(R) Denaturation of protein — ΔH &gt; 0, ΔS &gt; 0 → (1)</h4>
+        <p>Unfolding breaks many hydrogen bonds and other non-covalent contacts: heat is absorbed (a DSC scan shows an endothermic peak; its area is ΔH,
+           several hundred kJ/mol for a small protein). The unfolded chain can adopt an enormous number of conformations: ΔS &gt; 0.</p>
+        <div class="calcblock">two-state model: at T<sub>m</sub>, ΔG = 0 ⇒ ΔS = ΔH / T<sub>m</sub><br>
+          e.g. ΔH ≈ +500 kJ/mol, T<sub>m</sub> ≈ 347 K ⇒ ΔS ≈ +500 000 / 347 = +1441 J/K·mol<br>
+          ΔH &gt; 0 and ΔS &gt; 0 &nbsp;⇒&nbsp; <b>(1)</b> — entropy-driven: it happens above T<sub>m</sub>, where TΔS &gt; ΔH</div></li>
+      <li><h4>(S) Propene ⟶ Cyclopropane — ΔH &gt; 0, ΔS &lt; 0 → (4)</h4>
+        <div class="sol-fig"><svg class="mech" role="img" aria-label="propene, CH2=CH-CH3" version='1.1' baseProfile='full'
+              xmlns='http://www.w3.org/2000/svg'
+                      
+                      xmlns:xlink='http://www.w3.org/1999/xlink'
+                  xml:space='preserve'
+width='200px' height='120px' viewBox='0 0 200 120'>
+<!-- END OF HEADER -->
+<path class='bond-0 atom-0 atom-1' d='M 24.0,43.8 L 100.2,87.4' style='fill:none;fill-rule:evenodd;stroke:currentColor;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<path class='bond-0 atom-0 atom-1' d='M 30.5,32.4 L 100.1,72.2' style='fill:none;fill-rule:evenodd;stroke:currentColor;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<path class='bond-1 atom-1 atom-2' d='M 100.2,87.4 L 176.0,43.3' style='fill:none;fill-rule:evenodd;stroke:currentColor;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<path d='M 96.4,85.2 L 100.2,87.4 L 104.0,85.2' style='fill:none;stroke:currentColor;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-opacity:1;' />
+<defs><marker id="mah1" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#e0409f"/></marker></defs></svg>
+<svg class="rxarrow" viewBox="0 0 110 44" width="110" height="44" role="img" aria-label="reaction arrow ring closure"><line x1="4" y1="22" x2="104" y2="22" stroke="currentColor" stroke-width="2"/><path d="M108,22 l-9,-5 v10 z" fill="currentColor"/><text x="55" y="15" font-size="11" text-anchor="middle" fill="currentColor" font-family="ui-sans-serif,system-ui,sans-serif">ring closure</text><text x="55" y="37" font-size="10.5" text-anchor="middle" fill="currentColor" opacity=".8" font-family="ui-sans-serif,system-ui,sans-serif">ΔH = +33.3 kJ/mol</text></svg><svg class="mech" role="img" aria-label="cyclopropane, a three-membered ring" version='1.1' baseProfile='full'
+              xmlns='http://www.w3.org/2000/svg'
+                      
+                      xmlns:xlink='http://www.w3.org/1999/xlink'
+                  xml:space='preserve'
+width='160px' height='120px' viewBox='0 0 160 120'>
+<!-- END OF HEADER -->
+<path class='bond-0 atom-0 atom-1' d='M 40.2,60.2 L 119.2,105.4' style='fill:none;fill-rule:evenodd;stroke:currentColor;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<path class='bond-1 atom-1 atom-2' d='M 119.2,105.4 L 118.9,14.4' style='fill:none;fill-rule:evenodd;stroke:currentColor;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<path class='bond-2 atom-2 atom-0' d='M 118.9,14.4 L 40.2,60.2' style='fill:none;fill-rule:evenodd;stroke:currentColor;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<path d='M 44.2,62.4 L 40.2,60.2 L 44.1,57.9' style='fill:none;stroke:currentColor;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-opacity:1;' />
+<path d='M 115.2,103.1 L 119.2,105.4 L 119.2,100.8' style='fill:none;stroke:currentColor;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-opacity:1;' />
+<path d='M 118.9,18.9 L 118.9,14.4 L 114.9,16.7' style='fill:none;stroke:currentColor;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-opacity:1;' />
+<defs><marker id="mah2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#e0409f"/></marker></defs></svg>
+<div class="cap">Propene (one C=C, free CH₃ rotation) and cyclopropane (three C–C bonds at 60°, no free rotor).</div></div>
+        <div class="calcblock">Hess's law: ΔH = ΔcH°(propene) − ΔcH°(cyclopropane) = (−2058.0) − (−2091.3) = +33.3 kJ/mol<br>
+          (the same from formation enthalpies: ΔfH°(cyclopropane, g) − ΔfH°(propene, g) = 53.3 − 20.0 = +33.3 kJ/mol)<br>
+          ΔS = S°(cyclopropane) − S°(propene) = 237.5 − 267.0 = −29.5 J/K·mol<br>
+          ΔG°(298 K) = 33.3 + 298 × 0.0295 = +42.1 kJ/mol &nbsp;⇒&nbsp; ΔH &gt; 0 and ΔS &lt; 0 &nbsp;⇒&nbsp; <b>(4)</b></div>
+        <p>The ring is strained (60° angles instead of 109.5°), so it lies higher in energy; closing it turns a flexible chain with a freely rotating CH₃ into a rigid ring,
+           so ΔS &lt; 0. With ΔH &gt; 0 and ΔS &lt; 0, ΔG &gt; 0 at every temperature. <b>Trap:</b> "(3) ΔH &lt; 0, ΔS = 0" (option D) — wrong on both counts.</p></li>
+      <li><h4>Step 5 — The sign plane and the options</h4>
+        <div class="sol-fig"><svg class="soplane" viewBox="0 0 520 300" width="520" height="300" role="img" aria-label="Sign plane: DeltaH up, DeltaS across; P in (2), Q in (5), R in (1), S in (4); (3) is the negative half of the vertical axis"><rect x="260" y="40" width="200" height="110" fill="rgba(235,104,52,.10)"/><text x="380" y="59" font-size="12" font-weight="700" text-anchor="middle" fill="currentColor">(1) ΔH>0, ΔS>0</text><rect x="60" y="40" width="200" height="110" fill="rgba(184,134,11,.10)"/><text x="140" y="59" font-size="12" font-weight="700" text-anchor="middle" fill="currentColor">(4) ΔH>0, ΔS<0</text><rect x="60" y="150" width="200" height="110" fill="rgba(57,135,229,.10)"/><text x="140" y="240" font-size="12" font-weight="700" text-anchor="middle" fill="currentColor">(2) ΔH<0, ΔS<0</text><rect x="260" y="150" width="200" height="110" fill="rgba(27,175,122,.10)"/><text x="380" y="240" font-size="12" font-weight="700" text-anchor="middle" fill="currentColor">(5) ΔH<0, ΔS>0</text><line x1="60" y1="150" x2="460" y2="150" stroke="currentColor"/><line x1="260" y1="40" x2="260" y2="260" stroke="currentColor"/><line x1="260" y1="153" x2="260" y2="260" stroke="#b8860b" stroke-width="5" opacity=".7"/><text x="266" y="254" font-size="11" fill="currentColor">(3) ΔH&lt;0, ΔS=0</text><text x="460" y="144" font-size="11" text-anchor="end" fill="currentColor">ΔS →</text><text x="266" y="52" font-size="11" fill="currentColor">ΔH ↑</text><circle cx="88.7" cy="236.8" r="11" fill="#3987e5"/><text x="88.7" y="240.8" font-size="12" font-weight="800" text-anchor="middle" fill="#fff">P</text><circle cx="302.0" cy="175.7" r="11" fill="#1baf7a"/><text x="302.0" y="179.7" font-size="12" font-weight="800" text-anchor="middle" fill="#fff">Q</text><circle cx="432.0" cy="55.4" r="11" fill="#eb6834"/><text x="432.0" y="59.4" font-size="12" font-weight="800" text-anchor="middle" fill="#fff">R</text><circle cx="102.7" cy="55.8" r="11" fill="#b8860b"/><text x="102.7" y="59.8" font-size="12" font-weight="800" text-anchor="middle" fill="#fff">S</text></svg><div class="cap">Each process placed by the signs of its measured ΔH and ΔS (distances compressed; only the quadrant matters).</div></div>
+        <div style="overflow-x:auto;max-width:100%"><table class="soltab"><thead><tr><th>Option</th><th>P</th><th>Q</th><th>R</th><th>S</th><th>Verdict</th></tr></thead><tbody>
+          <tr><td>(A)</td><td>2 ✓</td><td>3 ✗</td><td>5 ✗</td><td>4 ✓</td><td>rejected</td></tr>
+          <tr><td>(B)</td><td>4 ✗</td><td>3 ✗</td><td>5 ✗</td><td>1 ✗</td><td>rejected</td></tr>
+          <tr><td>(C)</td><td>2 ✓</td><td>5 ✓</td><td>1 ✓</td><td>4 ✓</td><td><b>correct</b></td></tr>
+          <tr><td>(D)</td><td>2 ✓</td><td>5 ✓</td><td>1 ✓</td><td>3 ✗</td><td>rejected</td></tr>
+        </tbody></table></div>
+        <div class="calcblock">P → 2, Q → 5, R → 1, S → 4 &nbsp;⇒&nbsp; correct option = <span class="hl" id="solans">—</span></div></li>
+    </ol>
+    <div class="verify">
+      <h4>Independent verification</h4>
+      <ul>
+        <li><b>Standard data.</b> ΔcH° and S° values from standard tables; the propene → cyclopropane ΔH agrees from combustion and from formation enthalpies (+33.3 kJ/mol both ways).</li>
+        <li><b>Statistical mechanics.</b> The Sackur–Tetrode 3-D and 2-D translational entropies of N₂ give ΔS &lt; 0 for physisorption at every temperature and coverage tested.</li>
+        <li><b>DSC model.</b> A two-state unfolding scan integrated numerically returns the input ΔH; ΔS = ΔH/T<sub>m</sub> &gt; 0.</li>
+        <li><b>Controls.</b> Reversing Q, R or S flips both signs and leaves no printed option matching; chemisorption keeps (2).</li>
+        <li><b>Solution websites.</b> MathonGo's published solution (their Q45) gives (C).</li>
+        <li><b>This page.</b> Every ΔH and ΔS is computed at run time from the data and models; the signs, the List-II entries and the option are then read off — nothing is written in.</li>
+        <li><b>Answer key.</b> Checked afterwards against the official final key printed with the paper: Q13 → C.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="howto">
+  <h2 class="big"><span class="n">04</span>How to use this simulation</h2>
+  <p class="lede">For a student opening it for the first time. The whole investigation runs by itself after one press.</p>
+  <div class="howto">
+    <div><div class="n">STEP 1</div><h4>Read the mission brief</h4>
+      <p>Four processes in List-I, five sign combinations in List-II, four options. Which option matches all four?</p></div>
+    <div><div class="n">STEP 2</div><h4>Check the values</h4>
+      <p>The question's processes are loaded. <b>You do not need to change anything.</b> The answer is shown above the experiment.</p></div>
+    <div><div class="n">STEP 3</div><h4>Optional: customize</h4>
+      <p>Swap physisorption for chemisorption, or run Q, R or S backwards. The lab says honestly when you have left the question.
+         <b>↺ RESTORE QUESTION CONDITIONS</b> puts everything back.</p></div>
+    <div><div class="n">STEP 4</div><h4>Start</h4>
+      <p>Press <b>▶ START EXPERIMENT</b> under the experiment screen. Nothing else to click (about a minute; <b>SLOW MOTION</b> or <b>2×</b> changes the pace).</p></div>
+    <div><div class="n">STEP 5</div><h4>Watch each measurement</h4>
+      <p>Left: the apparatus — gas sticking, a lattice opening, a protein unfolding in a DSC, a chain closing into a ring. Right: the ΔH and ΔS needles,
+         the Hess ladder or the thermogram, and the List-II entry.</p></div>
+    <div><div class="n">STEP 6</div><h4>The sign plane and the options</h4>
+      <p>All four processes fly onto a ΔH–ΔS plane; each option is then tested entry by entry. Badges unlock on the way.</p></div>
+    <div><div class="n">STEP 7</div><h4>Explore</h4>
+      <p>In the <b>ΔG–T explorer</b> sweep the temperature and see when each process becomes spontaneous. Then read the <b>Detailed solution</b>.</p></div>
+    <div><div class="n">STEP 8</div><h4>Experiment again</h4>
+      <p>Press <b>▶ REPLAY EXPERIMENT</b>, or change a process and press <b>⚙ RUN WITH CUSTOM VALUES</b>. <b>CLASSROOM MODE</b>
+         enlarges everything for a projector.</p></div>
+  </div>
+  <div class="panel" style="margin-top:14px">
+    <h3>Classification</h3>
+    <table class="meta-tbl"><tbody>
+      <tr><th>Exam</th><td>JEE Advanced 2026, Paper 1, Chemistry, Section 4, Q.13</td></tr>
+      <tr><th>Chapter</th><td>Thermodynamics</td></tr>
+      <tr><th>Topic</th><td>Signs of enthalpy and entropy change - adsorption, allotropes, protein denaturation and ring strain</td></tr>
+      <tr><th>Difficulty</th><td>Moderate</td></tr>
+      <tr><th>Answer</th><td><b id="clsans">— run the experiment</b></td></tr>
+    </tbody></table>
+  </div>
+</section>
+
+<footer>
+  ADV-2026-P1-CHE-Q13 · PrayogX · JEE Advanced Interactive Simulation Library · question text reproduced
+  from the official JEE (Advanced) 2026 Paper 1 for educational use. This is a virtual laboratory only.
+</footer>
+</div>
+<script>
+(function(){
+"use strict";
+
+/* =====================================================================
+   helpers
+   ===================================================================== */
+var NS = "http://www.w3.org/2000/svg";
+function $(id){ return document.getElementById(id); }
+function css(v){ return getComputedStyle(document.documentElement).getPropertyValue(v).trim(); }
+function mk(n, a, parent){
+  var e = document.createElementNS(NS, n), k;
+  if (a) for (k in a) if (Object.prototype.hasOwnProperty.call(a, k)) e.setAttribute(k, a[k]);
+  if (parent) parent.appendChild(e);
+  return e;
+}
+function tx(parent, x, y, s, a){ var o = a || {}; o.x = x; o.y = y; var t = mk("text", o, parent); t.textContent = s; return t; }
+function clamp(v, a, b){ return v < a ? a : (v > b ? b : v); }
+function ease(t){ t = clamp(t, 0, 1); return t * t * (3 - 2 * t); }
+function lerp(a, b, t){ return a + (b - a) * t; }
+var REDUCED = !!(window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches);
+function rng(seed){ var s = seed >>> 0; return function(){ s = (s * 1664525 + 1013904223) >>> 0; return s / 4294967296; }; }
+
+/* =====================================================================
+   question data - the four processes and List-II as printed. Nothing below
+   stores a sign or the answer: every ΔH and ΔS is measured from data or a
+   physical model, the signs are read off, List-II is matched and the option
+   that fits all four is found.
+   ===================================================================== */
+var Q = { p: "phys", q: "fwd", r: "den", s: "fwd" };
+var FIELDS = [
+  { k: "p", lab: "Process P", opts: [["phys", "Physisorption of N₂ on charcoal (the question)"], ["chem", "Chemisorption of H₂ on nickel"]] },
+  { k: "q", lab: "Process Q", opts: [["fwd", "Diamond ⟶ Graphite (the question)"], ["rev", "Graphite ⟶ Diamond"]] },
+  { k: "r", lab: "Process R", opts: [["den", "Denaturation of a protein (the question)"], ["ren", "Refolding of the protein"]] },
+  { k: "s", lab: "Process S", opts: [["fwd", "Propene ⟶ Cyclopropane (the question)"], ["rev", "Cyclopropane ⟶ Propene"]] }
+];
+var ST = {}; (function(){ var k; for (k in Q) ST[k] = Q[k]; })();
+function fieldsHTML(){
+  var h = "", i, j, F;
+  for (i = 0; i < FIELDS.length; i++){
+    F = FIELDS[i];
+    h += '<div class="selrow" id="fld_' + F.k + '"><label for="in_' + F.k + '">' + F.lab + '</label><select class="sel" id="in_' + F.k + '">';
+    for (j = 0; j < F.opts.length; j++) h += '<option value="' + F.opts[j][0] + '"' + (F.opts[j][0] === Q[F.k] ? " selected" : "") + ">" + F.opts[j][1] + "</option>";
+    h += "</select></div>";
+  }
+  return h;
+}
+function conditionWarnings(D){
+  var w = [];
+  if (D.p !== Q.p) w.push("⚠ The question's P is <b>physisorption</b>. Chemisorption is also exothermic with ΔS &lt; 0, but it is a different process.");
+  if (D.q !== Q.q) w.push("⚠ The question's Q is <b>diamond ⟶ graphite</b>. The reverse flips both signs.");
+  if (D.r !== Q.r) w.push("⚠ The question's R is <b>denaturation</b>. Refolding flips both signs.");
+  if (D.s !== Q.s) w.push("⚠ The question's S is <b>propene ⟶ cyclopropane</b>. The reverse flips both signs.");
+  return w;
+}
+function readAll(){
+  var i, F, v, okv, j;
+  for (i = 0; i < FIELDS.length; i++){
+    F = FIELDS[i]; v = $("in_" + F.k).value; okv = false;
+    for (j = 0; j < F.opts.length; j++) if (F.opts[j][0] === v) okv = true;
+    ST[F.k] = okv ? v : Q[F.k];
+  }
+  var w = conditionWarnings(ST), box = $("condwarn");
+  box.hidden = !w.length; box.innerHTML = w.join("<br>");
+}
+function isCustom(D){ var k; D = D || ST; for (k in Q) if (D[k] !== Q[k]) return true; return false; }
+function copyST(){ var o = {}, k; for (k in Q) o[k] = ST[k]; return o; }
+function sameD(a, b){ var k; for (k in Q) if (a[k] !== b[k]) return false; return true; }
+
+/* =====================================================================
+   physical constants and the measurements
+   ===================================================================== */
+var KB = 1.380649e-23, HP = 6.62607015e-34, NA = 6.02214076e23, RG = 8.314462618;
+/* translational entropy of an ideal gas (Sackur-Tetrode) and of a mobile 2-D film, J K⁻¹ mol⁻¹ */
+function s3D(M, T, P){ var m = M / 1000 / NA, L = 2 * Math.PI * m * KB * T / (HP * HP); return RG * (Math.log(Math.pow(L, 1.5) * KB * T / P) + 2.5); }
+function s2D(M, T, a){ var m = M / 1000 / NA, L = 2 * Math.PI * m * KB * T / (HP * HP); return RG * (Math.log(L * a) + 2); }
+/* combustion enthalpies (kJ/mol, 298 K) and third-law entropies (J/K·mol, 298 K) - standard tables */
+var DATA = {
+  cH: { diamond: -395.4, graphite: -393.5, propene: -2058.0, cyclopropane: -2091.3 },
+  S: { diamond: 2.377, graphite: 5.740, propene: 267.0, cyclopropane: 237.5 },
+  n2: { M: 28.014, qst: 15.0, area: 0.162e-18, T: 77 },            /* N2 on activated charcoal at 77 K: isosteric heat ≈ 15 kJ/mol; cross-section 0.162 nm² */
+  h2: { M: 2.016, q: 96.0, T: 298 },                               /* H2 dissociatively chemisorbed on Ni: ≈ 96 kJ/mol; atoms held at sites */
+  prot: { dH: 500, Tm: 347.0 }                                     /* a lysozyme-like two-state protein: calorimetric ΔH ≈ 500 kJ/mol, Tm ≈ 74 °C */
+};
+/* a DSC scan of the two-state protein: excess heat capacity, and its area (= ΔH) found by integration */
+function unfoldedFrac(T, dH, Tm){ var K = Math.exp(-dH * 1000 / RG * (1 / T - 1 / Tm)); return K / (1 + K); }
+function dscCp(T, dH, Tm){ var f = unfoldedFrac(T, dH, Tm); return dH * 1000 * dH * 1000 / (RG * T * T) * f * (1 - f) / 1000; }   /* kJ K⁻¹ mol⁻¹ */
+function dscScan(dH, Tm){
+  var T0 = 300, T1 = 400, n = 400, i, area = 0, pts = [], peak = 0, Tp = T0;
+  for (i = 0; i <= n; i++){ var T = T0 + (T1 - T0) * i / n, c = dscCp(T, dH, Tm); pts.push([T, c]); if (c > peak){ peak = c; Tp = T; } if (i) area += (c + pts[i - 1][1]) / 2 * (T1 - T0) / n; }
+  return { pts: pts, area: area, peak: peak, Tp: Tp };
+}
+function measure(key, D){
+  var o = { key: key };
+  if (key === "P"){
+    if (D.p === "phys"){ var n = DATA.n2, S3 = s3D(n.M, n.T, 1e5), S2 = s2D(n.M, n.T, n.area);
+      o.name = "Physisorption"; o.full = "N₂ on activated charcoal at 77 K"; o.T = n.T; o.dH = -n.qst; o.dS = S2 - S3; o.S3 = S3; o.S2 = S2;
+      o.how = "adsorption calorimetry: heat given out as N₂ sticks (≈ " + n.qst + " kJ/mol); entropy: 3-D gas → 2-D film (Sackur–Tetrode)"; }
+    else { var hh = DATA.h2, S3h = s3D(hh.M, hh.T, 1e5);
+      o.name = "Chemisorption"; o.full = "H₂ on nickel at 298 K"; o.T = hh.T; o.dH = -hh.q; o.dS = -S3h; o.S3 = S3h; o.S2 = 0;
+      o.how = "heat of chemisorption ≈ " + hh.q + " kJ/mol; the H atoms are held at sites, so the gas's translational entropy is lost"; }
+  } else if (key === "Q"){
+    var c = DATA.cH, s = DATA.S;
+    o.dH = c.diamond - c.graphite; o.dS = s.graphite - s.diamond; o.T = 298;
+    o.name = "Diamond ⟶ Graphite"; o.full = "C(diamond) → C(graphite), 298 K";
+    o.how = "Hess's law from bomb calorimetry: ΔcH(diamond) − ΔcH(graphite); ΔS from third-law entropies";
+    if (D.q === "rev"){ o.dH = -o.dH; o.dS = -o.dS; o.name = "Graphite ⟶ Diamond"; o.full = "C(graphite) → C(diamond), 298 K"; }
+  } else if (key === "R"){
+    var p = DATA.prot, sc = dscScan(p.dH, p.Tm);
+    o.scan = sc; o.dH = sc.area; o.Tm = sc.Tp; o.dS = o.dH * 1000 / o.Tm; o.T = o.Tm;
+    o.name = "Denaturation"; o.full = "folded protein → unfolded chain (DSC scan 300–400 K)";
+    o.how = "differential scanning calorimetry: ΔH = area under the heat-absorption peak; at Tm, ΔG = 0 so ΔS = ΔH/Tm";
+    if (D.r === "ren"){ o.dH = -o.dH; o.dS = -o.dS; o.name = "Refolding"; o.full = "unfolded chain → folded protein"; }
+  } else {
+    var c2 = DATA.cH, s2 = DATA.S;
+    o.dH = c2.propene - c2.cyclopropane; o.dS = s2.cyclopropane - s2.propene; o.T = 298;
+    o.name = "Propene ⟶ Cyclopropane"; o.full = "CH₂=CH–CH₃ → (CH₂)₃ ring, gas, 298 K";
+    o.how = "Hess's law from bomb calorimetry: ΔcH(propene) − ΔcH(cyclopropane); ΔS from third-law entropies";
+    if (D.s === "rev"){ o.dH = -o.dH; o.dS = -o.dS; o.name = "Cyclopropane ⟶ Propene"; o.full = "(CH₂)₃ ring → CH₂=CH–CH₃"; }
+  }
+  o.dG = o.dH - o.T * o.dS / 1000;
+  o.sH = sgn(o.dH, 0.05); o.sS = sgn(o.dS, 0.5);
+  o.l2 = listII(o.sH, o.sS);
+  return o;
+}
+function sgn(x, tol){ return x > tol ? 1 : x < -tol ? -1 : 0; }
+/* List-II exactly as printed: [sign of ΔH, sign of ΔS] */
+var LIST2 = { 1: [1, 1], 2: [-1, -1], 3: [-1, 0], 4: [1, -1], 5: [-1, 1] };
+var LIST2_TXT = { 1: "ΔH > 0 and ΔS > 0", 2: "ΔH < 0 and ΔS < 0", 3: "ΔH < 0 and ΔS = 0", 4: "ΔH > 0 and ΔS < 0", 5: "ΔH < 0 and ΔS > 0" };
+function listII(h, s){ var k; for (k in LIST2) if (LIST2[k][0] === h && LIST2[k][1] === s) return +k; return 0; }
+function signTxt(v){ return v > 0 ? "> 0" : v < 0 ? "< 0" : "= 0"; }
+/* the four options as printed */
+var OPTS = { A: [2, 3, 5, 4], B: [4, 3, 5, 1], C: [2, 5, 1, 4], D: [2, 5, 1, 3] };
+var KEYS = ["P", "Q", "R", "S"];
+
+function run(D){
+  var procs = KEYS.map(function(k){ return measure(k, D); }), map = procs.map(function(p){ return p.l2; }), audit = {}, hits = [], L;
+  for (L in OPTS){
+    var bad = [], i;
+    for (i = 0; i < 4; i++) if (OPTS[L][i] !== map[i]) bad.push(KEYS[i] + " → " + OPTS[L][i] + " (measured: " + (map[i] ? LIST2_TXT[map[i]] : "no entry") + ")");
+    audit[L] = { v: !bad.length, ev: bad.length ? "Fails: " + bad.join("; ") + "." : "All four agree with the measurements: " + KEYS.map(function(k, j){ return k + " → " + map[j]; }).join(", ") + "." };
+    if (!bad.length) hits.push(L);
+  }
+  var answer = hits.length === 1 ? hits[0] : "none";
+  return { D: D, procs: procs, map: map, audit: audit, hits: hits, answer: answer, complete: !isCustom(D) && hits.length === 1 };
+}
+var QRUN = run(copyST());
+var ANS = QRUN.answer;
+var ANSNOTE = QRUN.map.map(function(v, i){ return KEYS[i] + " → " + v; }).join(" · ");
+
+/* =====================================================================
+   experiment engine - one automatic timeline, built when START is pressed
+   ===================================================================== */
+var SEGS = [["load", 5.6], ["p", 8.4], ["q", 8.0], ["r", 8.8], ["s", 8.2], ["plane", 7.6], ["test", 7.6], ["answer", 4.6]];
+var STAGE_MSG = { load: "Setting up four calorimeters…", p: "Measuring P: physisorption…", q: "Measuring Q: diamond → graphite…", r: "Measuring R: DSC scan of the protein…",
+  s: "Measuring S: propene → cyclopropane…", plane: "Placing all four on the sign plane…", test: "Testing options A–D…", answer: "Calculating final result…" };
+var ORDER = ["load", "p", "q", "r", "s", "plane", "test", "answer"];
+var PROC_OF = { p: 0, q: 1, r: 2, s: 3 };
+var BADGES = ["heat", "ent", "dsc", "hess", "plane", "mas"];
+var RUN = { state: "setup", paused: false, speed: 1, segs: [], si: 0, u: 0, D: copyST(), R: null, done: false, revealed: false,
+  calc: {}, found: {}, cards: {}, badges: {}, classroom: false, rows: [], trial: null };
+RUN.R = run(RUN.D);
+var earlyReveal = false;
+var TOTAL = (function(){ var t = 0, i; for (i = 0; i < SEGS.length; i++) t += SEGS[i][1]; return t; })();
+function buildTimeline(){ var s = [], i; for (i = 0; i < SEGS.length; i++) s.push({ kind: SEGS[i][0], dur: SEGS[i][1] }); return s; }
+function seg(){ return RUN.segs[RUN.si] || null; }
+function elapsed(){ var t = 0, i; for (i = 0; i < RUN.si && i < RUN.segs.length; i++) t += RUN.segs[i].dur; return t + (seg() ? RUN.u : 0); }
+var NOW = null;
+function currentState(){
+  var sg = seg();
+  if (RUN.done) return { name: "rest", f: 1 };
+  if (RUN.state === "setup" || !sg) return { name: "idle", f: 0 };
+  return { name: sg.kind, f: clamp(RUN.u / sg.dur, 0, 1) };
+}
+/* inside a process stage the heat is read at f = 0.45 and the entropy at f = 0.7 */
+var PH = { dH: 0.45, dS: 0.7, pt: 0.86 };
+/* how far the measurement of process i has got at this moment: 0 none, 1 ΔH read, 2 ΔS read, 3 placed */
+function progressOf(i, name, f){
+  if (RUN.done || name === "rest") return 3;
+  var at = ORDER.indexOf(name), mine = ORDER.indexOf("pqrs".charAt(i));
+  if (at > mine) return 3; if (at < mine || name === "idle") return 0;
+  return f >= PH.pt ? 3 : f >= PH.dS ? 2 : f >= PH.dH ? 1 : 0;
+}
+
+/* ---- the case file ---- */
+var TILES = ["P", "Q", "R", "S", "O"];
+function setTile(k, text, ok){
+  var t = $("u_" + k); if (!t) return;
+  t.classList.toggle("found", ok === true); t.classList.toggle("warn", ok === false);
+  t.querySelector(".v").textContent = text;
+}
+function setCard(k){
+  var e = RUN.R.audit[k], c = $("oc_" + k);
+  RUN.cards[k] = e;
+  c.classList.remove("now", "yes", "no", "na");
+  c.classList.add(e.v === true ? "yes" : e.v === false ? "no" : "na");
+  $("ev_" + k).textContent = e.ev;
+  $("vd_" + k).textContent = e.v === true ? "✓ MATCHES" : "✗ FAILS";
+}
+function focusCard(k){ var i; for (i = 0; i < 4; i++) $("oc_" + "ABCD"[i]).classList.toggle("now", "ABCD"[i] === k); }
+function clearBoard(){
+  var i, k;
+  for (i = 0; i < 4; i++){ k = "ABCD"[i]; var c = $("oc_" + k); c.className = "ocard"; $("ev_" + k).textContent = "not yet examined"; $("vd_" + k).textContent = "UNEVALUATED"; }
+  TILES.forEach(function(k){ var t = $("u_" + k); t.className = ""; t.querySelector(".v").textContent = "?"; });
+  BADGES.forEach(function(b){ $("b_" + b).classList.remove("on", "pop"); });
+}
+function badge(b){
+  if (RUN.badges[b]) return; RUN.badges[b] = true;
+  var e = $("b_" + b); e.classList.add("on"); e.classList.remove("pop"); void e.offsetWidth; e.classList.add("pop");
+}
+
+/* things that happen once, at a moment in the timeline */
+function onProgress(sg, f){
+  var once = function(key, fn){ if (!RUN.calc["@" + key]){ RUN.calc["@" + key] = true; fn(); } };
+  var i = PROC_OF[sg.kind];
+  if (i !== undefined && f >= PH.pt) once("row" + i, function(){ logRow(i); var p = RUN.R.procs[i]; setTile(KEYS[i], p.l2 ? "→ " + p.l2 : "—", !isCustom(RUN.R.D) && p.l2 === QRUN.map[i]); });
+  if (sg.kind === "test"){
+    var L = "ABCD", j;
+    for (j = 0; j < 4; j++) if (f > 0.12 + j * 0.2) once("card" + j, (function(k){ return function(){ setCard(k); addCalc("o" + k); }; })(L[j]));
+    var cur = Math.floor((f - 0.12) / 0.2);
+    focusCard(cur >= 0 && cur < 4 ? L[cur] : null);
+  }
+}
+function onSegEnd(sg){
+  var R = RUN.R, k = sg.kind;
+  onProgress(sg, 1);
+  addCalc(k === "test" ? null : k);
+  if (k === "p") badge("heat");
+  if (k === "q") badge("hess");
+  if (k === "r") badge("dsc");
+  if (k === "s") badge("ent");
+  if (k === "plane") badge("plane");
+  if (k === "test"){ focusCard(null); setTile("O", R.answer === "none" ? "none" : "(" + R.answer + ")", R.complete); }
+}
+function onSegStart(sg){ if (sg.kind === "answer") $("donebanner").classList.add("on"); }
+function stepTimeline(sdt){
+  var sg = seg(); if (!sg) return;
+  RUN.u += sdt;
+  onProgress(sg, clamp(RUN.u / sg.dur, 0, 1));
+  while (sg && RUN.u >= sg.dur){
+    RUN.u -= sg.dur;
+    onSegEnd(sg);
+    RUN.si++;
+    sg = seg();
+    if (!sg){ finish(); return; }
+    onSegStart(sg);
+  }
+}
+function clearRunUI(){
+  $("calclist").innerHTML = ""; $("calcempty").hidden = false;
+  $("donebanner").classList.remove("on");
+  $("revealhost").classList.remove("on"); $("revealhost").innerHTML = "";
+  $("lab3d").classList.remove("dim"); $("blackout").classList.remove("on");
+  burst = []; FX = []; FXONCE = {}; clearBoard();
+}
+function freshRun(){ RUN.si = 0; RUN.u = 0; RUN.paused = false; RUN.done = false; RUN.revealed = false; RUN.calc = {}; RUN.found = {}; RUN.cards = {}; RUN.badges = {}; RUN.rows = []; RUN.trial = null; }
+function startRun(D){
+  readAll();
+  RUN.D = D || copyST(); RUN.R = run(RUN.D);
+  RUN.segs = buildTimeline(); freshRun(); RUN.state = "running";
+  clearRunUI(); drawLog(); refreshUI(); refreshAnswerBox();
+}
+function resetRun(){
+  RUN.state = "setup"; RUN.segs = []; freshRun();
+  readAll(); RUN.D = copyST(); RUN.R = run(RUN.D);
+  clearRunUI(); drawLog(); refreshUI(); refreshAnswerBox();
+}
+function resetAll(){
+  var i; for (i = 0; i < FIELDS.length; i++) $("in_" + FIELDS[i].k).value = Q[FIELDS[i].k];
+  readAll(); earlyReveal = false; resetRun(); refreshGate();
+}
+function finish(){
+  RUN.si = RUN.segs.length; RUN.state = "done"; RUN.done = true;
+  addCalc("match"); if (RUN.R.complete) badge("mas");
+  refreshUI(); refreshAnswerBox();
+  doReveal();
+}
+
+/* =====================================================================
+   reasoning log - one causal chain per measurement, written as it happens
+   ===================================================================== */
+function chain(a){ return a.join(' <span style="color:var(--text-muted)">→</span> '); }
+function kJ(x){ return (x > 0 ? "+" : x < 0 ? "−" : "") + Math.abs(x).toFixed(Math.abs(x) < 10 ? 2 : 1) + " kJ/mol"; }
+function JK(x){ return (x > 0 ? "+" : x < 0 ? "−" : "") + Math.abs(x).toFixed(Math.abs(x) < 10 ? 2 : 1) + " J/K·mol"; }
+function calcHTML(key){
+  var R = RUN.R, p, i;
+  if (PROC_OF[key] !== undefined){ i = PROC_OF[key]; p = R.procs[i];
+    return [KEYS[i], chain([p.full, p.how, "ΔH = " + kJ(p.dH) + ", ΔS = " + JK(p.dS), "<b>ΔH " + signTxt(p.sH) + ", ΔS " + signTxt(p.sS) + "</b> ⇒ List-II (" + (p.l2 || "none") + ")"])]; }
+  switch (key){
+    case "load": return ["LOAD", chain(["four processes", "four measurements of heat and disorder", "signs of ΔH and ΔS", "List-II entries", "the one option that fits all four"])];
+    case "plane": return ["PLANE", "Sign plane: " + R.procs.map(function(q, j){ return KEYS[j] + " in (" + (q.l2 || "–") + ")"; }).join(" · ") + ' <span class=w>no process sits on the ΔS = 0 line, so (3) is unused</span>'];
+    case "oA": case "oB": case "oC": case "oD": var L = key.charAt(1); return ["(" + L + ")", "P → " + OPTS[L].join(", ").replace(/^(\d), (\d), (\d), (\d)$/, "$1; Q → $2; R → $3; S → $4") + " &nbsp;⇒&nbsp; " + (R.audit[L].v ? "<span class=hl>✓ MATCHES</span>" : '<b style="color:var(--bad)">✗ FAILS</b>')];
+    case "match":
+      return ["ANSWER", R.complete ? "the only option matching all four measurements: <span class=hl>(" + R.answer + ")</span> — " + ANSNOTE
+        : "Your processes give " + R.map.map(function(v, j){ return KEYS[j] + " → " + (v || "–"); }).join(", ") + " — " + (R.hits.length ? "option (" + R.hits.join(", ") + ") fits, but these are not the question's processes." : "no printed option fits.")];
+  }
+  return null;
+}
+function addCalc(key){
+  if (!key || RUN.calc[key]) return;
+  var c = calcHTML(key); if (!c) return;
+  RUN.calc[key] = true;
+  $("calcempty").hidden = true;
+  var li = document.createElement("li");
+  li.setAttribute("data-key", key);
+  li.innerHTML = '<span class="s">' + c[0] + '</span><span class="m">' + c[1] + "</span>";
+  $("calclist").appendChild(li);
+}
+function calcKeys(){ var o = [], li = $("calclist").children, i; for (i = 0; i < li.length; i++) o.push(li[i].getAttribute("data-key")); return o; }
+function logRow(i){
+  var p = RUN.R.procs[i];
+  RUN.rows.push([KEYS[i], p.name, p.how.split(":")[0], kJ(p.dH), JK(p.dS), "ΔH " + signTxt(p.sH) + ", ΔS " + signTxt(p.sS), p.l2 ? "(" + p.l2 + ")" : "none"]);
+  drawLog();
+}
+function drawLog(){
+  var h = "<thead><tr><th>#</th><th>process</th><th>measured by</th><th>ΔH</th><th>ΔS</th><th>signs</th><th>List-II</th></tr></thead><tbody>", i, r;
+  for (i = 0; i < RUN.rows.length; i++){ r = RUN.rows[i]; h += "<tr><td>" + r.join("</td><td>") + "</td></tr>"; }
+  $("log").innerHTML = h + "</tbody>";
+  $("logn").textContent = RUN.rows.length;
+}
+function label(g, s, x, y, col, size, align, weight){
+  g.fillStyle = col; g.font = (weight || 600) + " " + (size || 14) + "px ui-sans-serif,system-ui,sans-serif";
+  g.textAlign = align || "center"; g.textBaseline = "middle"; g.fillText(s, x, y);
+}
+var burst = [], clock = 0, SHOW = { eq: false, obs: false, why: false };
+function hood(g, W, H){
+  W = W || 1040; H = H || 620;
+  var bg = g.createLinearGradient(0, 0, 0, H); bg.addColorStop(0, "#0b1120"); bg.addColorStop(1, "#070a12");
+  g.fillStyle = bg; g.fillRect(0, 0, W, H);
+  /* a slow-moving aurora and a field of drifting motes - the motion-graphics backdrop */
+  var ax = W * (0.5 + 0.35 * Math.sin(clock * 0.13)), ay = H * (0.35 + 0.15 * Math.cos(clock * 0.17)), au = g.createRadialGradient(ax, ay, 10, ax, ay, W * 0.55);
+  au.addColorStop(0, "rgba(90,70,200,.16)"); au.addColorStop(0.5, "rgba(30,120,200,.07)"); au.addColorStop(1, "rgba(0,0,0,0)"); g.fillStyle = au; g.fillRect(0, 0, W, H);
+  g.strokeStyle = "rgba(120,160,255,.045)"; g.lineWidth = 1; var gx, sh = (clock * 6) % 40;
+  for (gx = -40 + sh; gx < W; gx += 40){ g.beginPath(); g.moveTo(gx, 0); g.lineTo(gx, H); g.stroke(); }
+  for (gx = -40 + sh; gx < H; gx += 40){ g.beginPath(); g.moveTo(0, gx); g.lineTo(W, gx); g.stroke(); }
+  var r = rng(77), i;
+  for (i = 0; i < 46; i++){ var mx = (r() * W + clock * (4 + r() * 10)) % W, my = (r() * H - clock * (3 + r() * 8) + H * 10) % H, tw = 0.35 + 0.35 * Math.sin(clock * (1 + r() * 2) + i);
+    g.fillStyle = "rgba(170,200,255," + (0.12 + 0.2 * tw).toFixed(3) + ")"; g.beginPath(); g.arc(mx, my, 0.8 + r() * 1.6, 0, 7); g.fill(); }
+  var vg = g.createRadialGradient(W / 2, H / 2, H * 0.35, W / 2, H / 2, W * 0.75); vg.addColorStop(0, "rgba(0,0,0,0)"); vg.addColorStop(1, "rgba(0,0,0,.45)"); g.fillStyle = vg; g.fillRect(0, 0, W, H);
+  g.strokeStyle = "rgba(160,190,255,.12)"; g.lineWidth = 10; g.strokeRect(14, 14, W - 28, H - 28);
+}
+/* ---- particles: sparks when bonds snap, rings when they form, motes of released gas ---- */
+var FX = [], FXONCE = {}, VS = { milk: 0, blue: 0 };
+function fxOnce(key, fn){ if (!key || FXONCE[key]) return; FXONCE[key] = 1; fn(); }
+function fxSpark(x, y, col, n, spd){ if (REDUCED) return; var i; for (i = 0; i < n; i++){ var a = Math.random() * 6.283, v = (0.3 + Math.random()) * (spd || 160); FX.push({ x: x, y: y, vx: Math.cos(a) * v, vy: Math.sin(a) * v, life: 0, max: 0.45 + Math.random() * 0.45, col: col, r: 1.2 + Math.random() * 2.2 }); } }
+function fxRing(x, y, col, R){ if (REDUCED) return; FX.push({ ring: 1, x: x, y: y, life: 0, max: 0.8, col: col, R: R || 40 }); }
+function fxStep(dt){ var i, f; for (i = FX.length - 1; i >= 0; i--){ f = FX[i]; f.life += dt; if (f.life > f.max){ FX.splice(i, 1); continue; } if (!f.ring){ f.x += f.vx * dt; f.y += f.vy * dt; f.vx *= 0.92; f.vy = f.vy * 0.92 + 40 * dt; } } }
+function fxDraw(g){
+  if (!FX.length) return;
+  var i, f, a; g.save(); g.globalCompositeOperation = "lighter";
+  for (i = 0; i < FX.length; i++){ f = FX[i]; a = 1 - f.life / f.max;
+    if (f.ring){ g.strokeStyle = f.col; g.globalAlpha = a * 0.9; g.lineWidth = 3 * a + 0.5; g.beginPath(); g.arc(f.x, f.y, 6 + f.R * ease(f.life / f.max), 0, 7); g.stroke(); }
+    else { g.globalAlpha = a; g.fillStyle = f.col; g.beginPath(); g.arc(f.x, f.y, f.r * (0.6 + a), 0, 7); g.fill(); } }
+  g.restore();
+}
+/* a kinetic title card that sweeps in at the start of every stage */
+function titleCard(g, big, small, f, col){
+  if (REDUCED || f > 0.2) return;
+  var a = f < 0.05 ? f / 0.05 : 1 - (f - 0.05) / 0.15, x = 520 + (1 - ease(f / 0.08)) * -260 + (f > 0.12 ? (f - 0.12) * 900 : 0);
+  g.save(); g.globalAlpha = clamp(a, 0, 1) * 0.92;
+  var band = g.createLinearGradient(0, 250, 0, 370); band.addColorStop(0, "rgba(8,12,24,0)"); band.addColorStop(0.5, "rgba(8,12,24,.88)"); band.addColorStop(1, "rgba(8,12,24,0)"); g.fillStyle = band; g.fillRect(0, 240, 1040, 140);
+  label(g, big, x, 300, col || "#ffffff", 46, "center", 900);
+  label(g, small, x + 30, 342, GOLD, 16, "center", 800);
+  var sx = lerp(-200, 1240, ease(f / 0.2)), sw = g.createLinearGradient(sx - 120, 0, sx + 120, 0); sw.addColorStop(0, "rgba(255,255,255,0)"); sw.addColorStop(0.5, "rgba(255,255,255,.35)"); sw.addColorStop(1, "rgba(255,255,255,0)");
+  g.globalCompositeOperation = "lighter"; g.fillStyle = sw; g.fillRect(sx - 120, 262, 240, 96);
+  g.restore();
+}
+function stamp(g, x, y, text, ok, a){
+  g.save(); g.translate(x, y); g.rotate(-0.08); g.globalAlpha = a;
+  g.strokeStyle = ok ? "#3ee39a" : ok === false ? "#ff6b6b" : "#b8a8ff"; g.lineWidth = 4;
+  g.font = "900 24px ui-sans-serif,system-ui,sans-serif"; var w = g.measureText(text).width + 30;
+  g.fillStyle = "rgba(8,14,26,.88)"; g.fillRect(-w / 2, -24, w, 48); g.strokeRect(-w / 2, -24, w, 48);
+  label(g, text, 0, 1, ok ? "#3ee39a" : ok === false ? "#ff6b6b" : "#cfc4ff", 24, "center", 900); g.restore();
+}
+function sceneTitle(g, a, b){ label(g, a, 520, 38, "#8fa6c9", 15, "center", 800); if (b) label(g, b, 520, 62, "#e6eeff", 19, "center", 800); }
+function wrap(g, t, x, y, w, lh, col, size, align){
+  g.font = "700 " + size + "px ui-sans-serif,system-ui,sans-serif"; var words = t.split(" "), line = "", yy = y, i;
+  for (i = 0; i < words.length; i++){ var tt = line + words[i] + " "; if (g.measureText(tt).width > w && line){ label(g, line.trim(), x, yy, col, size, align || "center", 700); line = words[i] + " "; yy += lh + 4; } else line = tt; }
+  label(g, line.trim(), x, yy, col, size, align || "center", 700); return yy;
+}
+function panel(g, x, y, w, h, col){ g.fillStyle = "rgba(16,26,46,.93)"; g.fillRect(x, y, w, h); g.strokeStyle = col || "rgba(160,190,255,.35)"; g.lineWidth = 2; g.strokeRect(x, y, w, h); }
+var GREEN = "#3ee39a", RED = "#ff6b6b", GOLD = "#ffd79a", ARROW = "#ff7ad9", BLUE = "#7fc8ff";
+var COL = { C: "#a7b0c2", O: "#ff6b6b", H: "#eef3ff", N: "#7fa9ff", Br: "#e0935a", Na: "#c7a6ff", Zn: "#b9c4d8", S: "#ffd84a" };
+var TINT = { C: "rgba(70,82,110,.9)", O: "rgba(150,40,55,.9)", H: "rgba(120,130,160,.8)", N: "rgba(40,70,160,.9)", Br: "rgba(140,70,30,.9)", Na: "rgba(100,70,170,.9)", Zn: "rgba(90,100,125,.9)", S: "rgba(150,130,20,.9)" };
+var LTXT = { C: "#eef3ff", O: "#ffe3e6", H: "#ffffff", N: "#e3ecff", Br: "#ffe9d8", Na: "#f1e8ff", Zn: "#eef2fa", S: "#fff8d8" };
+
+/* =====================================================================
+   the molecular level - atoms, bonds, charges and curved arrows
+   ===================================================================== */
+function bboxOf(list){
+  var x0 = 1e9, y0 = 1e9, x1 = -1e9, y1 = -1e9, i, j, m;
+  for (i = 0; i < list.length; i++){ m = list[i]; for (j = 0; j < m.a.length; j++){ if (m.a[j].tag === "cat" || m.a[j].tag === "reag") continue; x0 = Math.min(x0, m.a[j].x); x1 = Math.max(x1, m.a[j].x); y0 = Math.min(y0, m.a[j].y); y1 = Math.max(y1, m.a[j].y); } }
+  return [x0, y0, x1, y1];
+}
+/* one fixed frame for a set of molecule states, so molecules never jump while they react */
+function frameForList(list, x, y, w, h, maxsc){
+  var b = bboxOf(list), sc = Math.min((w - 60) / (b[2] - b[0] || 1), (h - 60) / (b[3] - b[1] || 1), maxsc || 88);
+  return { sc: sc, ox: x + w / 2 - sc * (b[0] + b[2]) / 2, oy: y + h / 2 - sc * (b[1] + b[3]) / 2 };
+}
+function P(fr, a){ return [fr.ox + a.x * fr.sc, fr.oy + a.y * fr.sc]; }
+function atomLabel(a){ return a.h ? a.el + "H" + (a.h > 1 ? sub(a.h) : "") : a.el; }
+function lineBond(g, p, q, order, col, w, fr, alphaExtra, extraCol){
+  var d = [q[0] - p[0], q[1] - p[1]], L = Math.sqrt(d[0] * d[0] + d[1] * d[1]) || 1, n = [-d[1] / L, d[0] / L], off = fr.sc * 0.07, k;
+  var offs = order === 1 ? [0] : order === 2 ? [-off, off] : [-off * 1.6, 0, off * 1.6];
+  g.lineWidth = w; g.strokeStyle = col;
+  for (k = 0; k < offs.length; k++){ g.beginPath(); g.moveTo(p[0] + n[0] * offs[k], p[1] + n[1] * offs[k]); g.lineTo(q[0] + n[0] * offs[k], q[1] + n[1] * offs[k]); g.stroke(); }
+}
+/* the molecule at t between two states A and B (t = 0: A, 1: B). opt.hiCO: glow every C=O of the organic molecule */
+function drawMol(g, fr, A, B, t, opt){
+  opt = opt || {};
+  var i, k, keys = {}, p, n = A.a.length, pos = [], te = ease(t), S = t < 0.5 ? A : B, hide = {};
+  var FA = fragments(A), mf = mainFrag(A), fi;
+  for (fi = 0; fi < FA.length; fi++){ var fr0 = FA[fi], isCat = A.a[fr0[0]].tag === "cat"; if ((isCat && opt.noCat) || (!isCat && fr0 !== mf && nC(A, fr0) <= 1 && opt.hideGone === true)) for (i = 0; i < fr0.length; i++) hide[fr0[i]] = 1; }
+  var jig = REDUCED ? 0 : (opt.jig || 0);
+  for (i = 0; i < n; i++) pos.push([fr.ox + lerp(A.a[i].x, B.a[i].x, te) * fr.sc + jig * Math.sin(clock * 7.3 + i * 1.7), fr.oy + lerp(A.a[i].y, B.a[i].y, te) * fr.sc + jig * Math.cos(clock * 6.1 + i * 2.3)]);
+  for (k in A.b) keys[k] = 1; for (k in B.b) keys[k] = 1;
+  var lw = clamp(fr.sc * 0.05, 1.6, 3.4);
+  if (opt.hiCO){ var f = mainFrag(S), cb = coBonds(S, f); for (i = 0; i < cb.length; i++){ var a1 = pos[cb[i][0]], b1 = pos[cb[i][1]]; g.strokeStyle = "rgba(62,227,154," + (0.28 + (REDUCED ? 0 : 0.14 * Math.sin(clock * 4 + i))).toFixed(3) + ")"; g.lineWidth = fr.sc * 0.42; g.lineCap = "round"; g.beginPath(); g.moveTo(a1[0], a1[1]); g.lineTo(b1[0], b1[1]); g.stroke(); g.lineCap = "butt"; label(g, String(i + 1), (a1[0] + b1[0]) / 2 + fr.sc * 0.32, (a1[1] + b1[1]) / 2 - fr.sc * 0.2, GREEN, 13, "center", 900); } }
+  for (k in keys){
+    p = k.split("-"); var a = +p[0], b = +p[1], oa = bo(A, a, b), ob = bo(B, a, b), P1 = pos[a], P2 = pos[b], st = A.st[k];
+    if (hide[a] || hide[b]) continue;
+    var dim = A.a[a].tag === "cat" || A.a[b].tag === "cat" ? 0.7 : 1;
+    g.globalAlpha = dim;
+    if (st && oa === 1 && ob === 1){
+      var fromP = pos[st.from], toP = st.from === a ? P2 : P1, d = [toP[0] - fromP[0], toP[1] - fromP[1]], L = Math.sqrt(d[0] * d[0] + d[1] * d[1]) || 1, nn = [-d[1] / L, d[0] / L], w = fr.sc * 0.12;
+      if (st.t === "w"){ g.fillStyle = "rgba(230,238,255,.9)"; g.beginPath(); g.moveTo(fromP[0], fromP[1]); g.lineTo(toP[0] + nn[0] * w, toP[1] + nn[1] * w); g.lineTo(toP[0] - nn[0] * w, toP[1] - nn[1] * w); g.closePath(); g.fill(); }
+      else { var q; g.strokeStyle = "rgba(230,238,255,.9)"; g.lineWidth = 1.6; for (q = 1; q <= 6; q++){ var tq = q / 7, c = [fromP[0] + d[0] * tq, fromP[1] + d[1] * tq], hh = w * tq; g.beginPath(); g.moveTo(c[0] - nn[0] * hh, c[1] - nn[1] * hh); g.lineTo(c[0] + nn[0] * hh, c[1] + nn[1] * hh); g.stroke(); } }
+      g.globalAlpha = 1; continue;
+    }
+    var base = Math.min(oa, ob);
+    if (base > 0) lineBond(g, P1, P2, base, "rgba(220,230,245,.92)", lw, fr);
+    if (oa > ob && t < 1){ g.globalAlpha = dim * (1 - te) * (REDUCED ? 1 : 0.7 + 0.3 * Math.sin(clock * 38)); g.setLineDash([]); g.shadowColor = RED; g.shadowBlur = REDUCED ? 0 : 12;
+      if (oa - ob === 1 && ob === 0){ g.strokeStyle = RED; g.lineWidth = lw * 1.4; g.setLineDash([4, 4]); g.beginPath(); g.moveTo(P1[0], P1[1]); g.lineTo(P2[0], P2[1]); g.stroke(); g.setLineDash([]); }
+      else { var dd = [P2[0] - P1[0], P2[1] - P1[1]], LL = Math.sqrt(dd[0] * dd[0] + dd[1] * dd[1]) || 1, n2 = [-dd[1] / LL * fr.sc * 0.14, dd[0] / LL * fr.sc * 0.14]; g.strokeStyle = RED; g.lineWidth = lw * 1.2; g.beginPath(); g.moveTo(P1[0] + n2[0], P1[1] + n2[1]); g.lineTo(P2[0] + n2[0], P2[1] + n2[1]); g.stroke(); }
+    }
+    g.shadowBlur = 0;
+    if (ob > oa && t > 0){ g.globalAlpha = dim * te; g.shadowColor = GREEN; g.shadowBlur = REDUCED || t > 0.999 ? 0 : 16;
+      if (oa === 0){ g.strokeStyle = GREEN; g.lineWidth = lw * 1.3; if (t < 0.999) g.setLineDash([5, 4]); g.beginPath(); g.moveTo(P1[0], P1[1]); g.lineTo(P2[0], P2[1]); g.stroke(); g.setLineDash([]); }
+      else { var d3 = [P2[0] - P1[0], P2[1] - P1[1]], L3 = Math.sqrt(d3[0] * d3[0] + d3[1] * d3[1]) || 1, n3 = [-d3[1] / L3 * fr.sc * 0.14, d3[0] / L3 * fr.sc * 0.14]; g.strokeStyle = t > 0.999 ? "rgba(220,230,245,.92)" : GREEN; g.lineWidth = lw * 1.2; g.beginPath(); g.moveTo(P1[0] + n3[0], P1[1] + n3[1]); g.lineTo(P2[0] + n3[0], P2[1] + n3[1]); g.stroke(); }
+    }
+    g.globalAlpha = 1; g.shadowBlur = 0;
+  }
+  var r0 = clamp(fr.sc * 0.2, 7, 15);
+  for (i = 0; i < n; i++){
+    if (hide[i]) continue;
+    var at = S.a[i], pp = pos[i], lab = atomLabel(at), r = at.el === "H" ? r0 * 0.7 : r0, cat = at.tag === "cat";
+    g.globalAlpha = cat ? 0.75 : 1;
+    g.font = "900 " + Math.round(r * 1.1) + "px ui-sans-serif,system-ui,sans-serif";
+    var wlab = Math.max(r * 2, g.measureText(lab).width + 8);
+    var hot = opt.hot && opt.hot[i];
+    if (hot && !REDUCED){ g.shadowColor = hot; g.shadowBlur = 14 + 6 * Math.sin(clock * 6); }
+    var sg = g.createRadialGradient(pp[0] - r * 0.4, pp[1] - r * 0.5, r * 0.15, pp[0], pp[1], wlab * 0.75); sg.addColorStop(0, "rgba(255,255,255,.35)"); sg.addColorStop(0.4, TINT[at.el]); sg.addColorStop(1, "#0a0f1c");
+    g.fillStyle = sg; g.beginPath(); if (g.roundRect) g.roundRect(pp[0] - wlab / 2, pp[1] - r, wlab, 2 * r, r); else g.rect(pp[0] - wlab / 2, pp[1] - r, wlab, 2 * r); g.fill();
+    g.shadowBlur = 0; g.strokeStyle = hot || COL[at.el]; g.lineWidth = hot ? 2.4 : 1.6; g.stroke();
+    g.shadowColor = "rgba(0,0,0,.9)"; g.shadowBlur = 3; label(g, lab, pp[0], pp[1] + 0.5, LTXT[at.el], Math.round(r * 1.1), "center", 900); g.shadowBlur = 0;
+    var q = charge(S, i);
+    if (q){ g.fillStyle = q > 0 ? "#4a8cff" : "#ff4d6d"; g.beginPath(); g.arc(pp[0] + wlab / 2, pp[1] - r * 0.9, r * 0.55, 0, 7); g.fill(); label(g, q > 0 ? "+" : "−", pp[0] + wlab / 2, pp[1] - r * 0.9, "#fff", Math.round(r * 0.9), "center", 900); }
+    if (opt.lp && opt.lp.indexOf(i) >= 0){ var o = opt.lpDir && opt.lpDir[i] ? opt.lpDir[i] : [0, -1]; g.fillStyle = GOLD; var cx = pp[0] + o[0] * r * 1.6, cy = pp[1] + o[1] * r * 1.6; g.beginPath(); g.arc(cx - o[1] * 4, cy + o[0] * 4, 2.6, 0, 7); g.arc(cx + o[1] * 4, cy - o[0] * 4, 2.6, 0, 7); g.fill(); }
+    g.globalAlpha = 1;
+  }
+  return pos;
+}
+/* one curved arrow: from a bond middle or a lone pair, to a bond middle (existing or new) or an atom */
+function arrowEnds(fr, A, ar){
+  var pa = function(i){ return P(fr, A.a[i]); }, mid = function(i, j){ var a = pa(i), b = pa(j); return [(a[0] + b[0]) / 2, (a[1] + b[1]) / 2]; };
+  var s, e;
+  if (ar.from[0] === "b") s = mid(ar.from[1], ar.from[2]); else s = pa(ar.from[1]);
+  if (ar.to[0] === "b"){ e = mid(ar.to[1], ar.to[2]); if (ar.from[0] === "a" && ar.to[1] === ar.from[1]) e = [lerp(pa(ar.to[1])[0], pa(ar.to[2])[0], 0.6), lerp(pa(ar.to[1])[1], pa(ar.to[2])[1], 0.6)]; }
+  else e = pa(ar.to[1]);
+  if (ar.from[0] === "a"){ var dd = [e[0] - s[0], e[1] - s[1]], L = Math.sqrt(dd[0] * dd[0] + dd[1] * dd[1]) || 1; s = [s[0] + dd[0] / L * 14, s[1] + dd[1] / L * 14]; }
+  if (ar.to[0] === "a"){ var d2 = [s[0] - e[0], s[1] - e[1]], L2 = Math.sqrt(d2[0] * d2[0] + d2[1] * d2[1]) || 1; e = [e[0] + d2[0] / L2 * 16 + d2[1] / L2 * 10, e[1] + d2[1] / L2 * 16 - d2[0] / L2 * 10]; }
+  return [s, e];
+}
+function drawArrow(g, fr, A, ar, p, centre){
+  if (p <= 0) return;
+  var se = arrowEnds(fr, A, ar), s = se[0], e = se[1], d = [e[0] - s[0], e[1] - s[1]], L = Math.sqrt(d[0] * d[0] + d[1] * d[1]) || 1, n = [-d[1] / L, d[0] / L];
+  var m = [(s[0] + e[0]) / 2, (s[1] + e[1]) / 2], side = (m[0] - centre[0]) * n[0] + (m[1] - centre[1]) * n[1] >= 0 ? 1 : -1, bulge = Math.max(22, L * 0.45) * side;
+  var c = [m[0] + n[0] * bulge, m[1] + n[1] * bulge], i, N = 24, last = s, prev = s;
+  var bz = function(t){ return [(1 - t) * (1 - t) * s[0] + 2 * (1 - t) * t * c[0] + t * t * e[0], (1 - t) * (1 - t) * s[1] + 2 * (1 - t) * t * c[1] + t * t * e[1]]; };
+  g.save(); if (!REDUCED){ g.shadowColor = ARROW; g.shadowBlur = 12; }
+  g.strokeStyle = ARROW; g.lineWidth = 3.2; g.lineCap = "round"; g.beginPath(); g.moveTo(s[0], s[1]);
+  for (i = 1; i <= N * p; i++){ var pt = bz(i / N); prev = last; last = pt; g.lineTo(pt[0], pt[1]); }
+  g.stroke(); g.restore();
+  /* the electron pair itself: two bright dots racing along the arrow while it draws, then flowing round it */
+  if (!REDUCED){ var hp = p < 1 ? p : (clock * 0.7 + (ar.from[1] % 5) * 0.21) % 1, hd = bz(hp), tg = bz(Math.max(0, hp - 0.02)), dx = hd[0] - tg[0], dy = hd[1] - tg[1], dl = Math.sqrt(dx * dx + dy * dy) || 1, k;
+    g.save(); g.globalCompositeOperation = "lighter";
+    for (k = 1; k <= 6; k++){ var tp = bz(Math.max(0, hp - k * 0.025)); g.fillStyle = "rgba(255,150,230," + (0.35 - k * 0.05).toFixed(2) + ")"; g.beginPath(); g.arc(tp[0], tp[1], 3.4 - k * 0.35, 0, 7); g.fill(); }
+    g.fillStyle = "#fff"; g.shadowColor = "#ffd0f4"; g.shadowBlur = 10;
+    g.beginPath(); g.arc(hd[0] - dy / dl * 3.2, hd[1] + dx / dl * 3.2, 2.6, 0, 7); g.arc(hd[0] + dy / dl * 3.2, hd[1] - dx / dl * 3.2, 2.6, 0, 7); g.fill(); g.restore(); }
+  if (p >= 1){ var ang = Math.atan2(last[1] - prev[1], last[0] - prev[0]); if (!REDUCED){ g.shadowColor = ARROW; g.shadowBlur = 10; } g.fillStyle = ARROW; g.beginPath(); g.moveTo(last[0], last[1]); g.lineTo(last[0] - 13 * Math.cos(ang - 0.42), last[1] - 13 * Math.sin(ang - 0.42)); g.lineTo(last[0] - 13 * Math.cos(ang + 0.42), last[1] - 13 * Math.sin(ang + 0.42)); g.closePath(); g.fill(); g.shadowBlur = 0; }
+}
+/* the mechanism panel for one step at local progress u */
+function stepAtoms(s){ var o = {}, i, A; for (i = 0; i < s.arrows.length; i++){ A = s.arrows[i]; o[A.from[1]] = 1; if (A.from[0] === "b") o[A.from[2]] = 1; o[A.to[1]] = 1; if (A.to[0] === "b") o[A.to[2]] = 1; } return o; }
+function spotlight(g, fr, s, box, a){
+  if (a <= 0) return;
+  var at = stepAtoms(s), sx = 0, sy = 0, n = 0, k; for (k in at){ var q = P(fr, s.A.a[+k]); sx += q[0]; sy += q[1]; n++; }
+  var cx = sx / n, cy = sy / n, gr = g.createRadialGradient(cx, cy, fr.sc * 1.2, cx, cy, fr.sc * 4.2);
+  gr.addColorStop(0, "rgba(4,6,14,0)"); gr.addColorStop(1, "rgba(4,6,14," + (0.5 * a).toFixed(3) + ")");
+  g.save(); g.beginPath(); g.rect(box[0], box[1] + 12, box[2], box[3] - 12); g.clip(); g.fillStyle = gr; g.fillRect(box[0], box[1], box[2], box[3]); g.restore();
+}
+function drawStep(g, fr, s, u, box, key, jig){
+  var i, centre = [box[0] + box[2] / 2, box[1] + box[3] / 2], nc = s.kind === "decarb", at = stepAtoms(s), hot = {}, k;
+  for (k in at) hot[k] = ARROW;
+  if (u < PH.pre){ drawMol(g, fr, s.P, s.A, u / PH.pre, { noCat: nc, jig: jig }); return "setting up"; }
+  if (u < PH.arrows){
+    var lp = [], dirs = {}, q = (u - PH.pre) / (PH.arrows - PH.pre);
+    for (i = 0; i < s.arrows.length; i++) if (s.arrows[i].from[0] === "a"){ var ai = s.arrows[i].from[1]; lp.push(ai); var tgt = s.arrows[i].to[0] === "b" ? (s.arrows[i].to[1] === ai ? s.arrows[i].to[2] : s.arrows[i].to[1]) : ai; dirs[ai] = unit(s.A.a[tgt].x - s.A.a[ai].x, s.A.a[tgt].y - s.A.a[ai].y); }
+    spotlight(g, fr, s, box, ease(q / 0.3));
+    drawMol(g, fr, s.A, s.A, 0, { lp: lp, lpDir: dirs, noCat: nc, hot: hot });
+    for (i = 0; i < s.arrows.length; i++) drawArrow(g, fr, s.A, s.arrows[i], clamp((q - i * 0.22) / 0.5, 0, 1), centre);
+    return "electrons move";
+  }
+  if (u < PH.bonds){
+    var t = (u - PH.arrows) / (PH.bonds - PH.arrows);
+    spotlight(g, fr, s, box, 1 - ease(t));
+    var pos = drawMol(g, fr, s.A, s.B, t, { noCat: nc, hot: t < 0.6 ? hot : null });
+    if (key){ var bk, keysAB = {}; for (bk in s.A.b) keysAB[bk] = 1; for (bk in s.B.b) keysAB[bk] = 1;
+      for (bk in keysAB){ var pr = bk.split("-"), a1 = +pr[0], b1 = +pr[1], oa = bo(s.A, a1, b1), ob = bo(s.B, a1, b1), mx = (pos[a1][0] + pos[b1][0]) / 2, my = (pos[a1][1] + pos[b1][1]) / 2;
+        if (ob < oa && t > 0.08) fxOnce(key + "x" + bk, (function(mx, my){ return function(){ fxSpark(mx, my, "#ffb36b", 16, 170); fxSpark(mx, my, RED, 8, 110); }; })(mx, my));
+        if (ob > oa && t > 0.9) fxOnce(key + "f" + bk, (function(mx, my){ return function(){ fxRing(mx, my, GREEN, 34); fxSpark(mx, my, GREEN, 10, 90); }; })(mx, my)); } }
+    g.globalAlpha = 1 - t; for (i = 0; i < s.arrows.length; i++) drawArrow(g, fr, s.A, s.arrows[i], 1, centre); g.globalAlpha = 1;
+    return "bonds break and form";
+  }
+  drawMol(g, fr, s.B, s.B, 1, { noCat: nc, jig: jig });
+  return "result of this step";
+}
+
+function flask(g, cx, cy, r, fill, heat, t){
+  if (heat){ var gl = g.createRadialGradient(cx, cy + r + 18, 4, cx, cy + r + 18, r * 1.3); gl.addColorStop(0, "rgba(255,110,60,.55)"); gl.addColorStop(1, "rgba(255,110,60,0)"); g.fillStyle = gl; g.fillRect(cx - r * 1.4, cy, r * 2.8, r * 2); }
+  g.fillStyle = "#2a3040"; g.fillRect(cx - r * 1.2, cy + r + 10, r * 2.4, 16);
+  var pulse = REDUCED ? 0.5 : 0.5 + 0.5 * Math.sin(clock * 3);
+  g.fillStyle = heat ? "rgb(255," + Math.round(90 + 50 * pulse) + ",50)" : "#3a4458"; if (heat && !REDUCED){ g.shadowColor = "#ff5a2a"; g.shadowBlur = 16 + 10 * pulse; } g.fillRect(cx - r * 0.9, cy + r + 6, r * 1.8, 5); g.shadowBlur = 0;
+  if (heat && !REDUCED){ var w, yy; g.lineWidth = 1.4; for (w = 0; w < 4; w++){ var ph = (clock * 0.55 + w * 0.25) % 1; g.strokeStyle = "rgba(255,170,120," + (0.22 * (1 - ph)).toFixed(3) + ")"; g.beginPath();
+      for (yy = 0; yy <= 40; yy += 4){ var xx = cx - r * 1.05 - 6 + Math.sin(yy * 0.3 + clock * 5 + w) * 3 + w * 2; if (yy) g.lineTo(xx, cy + r - ph * 60 - yy * 0.4); else g.moveTo(xx, cy + r - ph * 60); } g.stroke(); } }
+  label(g, heat ? "HOT PLATE · ON" : "HOT PLATE · OFF", cx, cy + r + 18, heat ? "#ffd0c0" : "#9fb0cc", 10, "center", 800);
+  g.save(); g.beginPath(); g.arc(cx, cy, r - 3, 0, 7); g.clip(); g.fillStyle = fill; g.fillRect(cx - r, cy + r * 0.05 + Math.sin(clock * 2) * 1.5, 2 * r, r); g.restore();
+  g.strokeStyle = "rgba(190,215,255,.7)"; g.lineWidth = 2.5;
+  g.beginPath(); g.arc(cx, cy, r, -0.38 * Math.PI, 1.38 * Math.PI); g.stroke();
+  g.beginPath(); g.moveTo(cx - r * 0.37, cy - r * 0.93); g.lineTo(cx - r * 0.37, cy - r * 1.75); g.moveTo(cx + r * 0.37, cy - r * 0.93); g.lineTo(cx + r * 0.37, cy - r * 1.75); g.stroke();
+}
+function thermo(g, x, y, T){
+  g.strokeStyle = "rgba(190,215,255,.7)"; g.lineWidth = 2; g.strokeRect(x - 5, y, 10, 110); g.beginPath(); g.arc(x, y + 118, 10, 0, 7); g.stroke();
+  var h = clamp((T - 0) / 200, 0, 1) * 100; g.fillStyle = "#ff5b5b"; g.fillRect(x - 3, y + 108 - h, 6, h + 4); g.beginPath(); g.arc(x, y + 118, 8, 0, 7); g.fill();
+  label(g, Math.round(T) + " °C", x - 8, y - 12, "#ffd0c0", 14, "left", 900);
+}
+function bubbles(g, x0, x1, ytop, ybot, n, seed, speed){
+  var r = rng(seed), i;
+  for (i = 0; i < n; i++){ var bx = x0 + r() * (x1 - x0), ph = r(), fr0 = (clock * speed * (0.6 + r()) + ph) % 1, yy = ybot - fr0 * (ybot - ytop), rad = (2.2 + r() * 2.5) * (0.7 + fr0 * 0.6), xb = bx + Math.sin(clock * 3 + i) * 2;
+    g.strokeStyle = "rgba(220,240,255,.85)"; g.lineWidth = 1.5; g.beginPath(); g.arc(xb, yy, rad, 0, 7); g.stroke();
+    g.fillStyle = "rgba(255,255,255,.7)"; g.beginPath(); g.arc(xb - rad * 0.35, yy - rad * 0.35, rad * 0.28, 0, 7); g.fill();
+    if (fr0 > 0.9 && !REDUCED){ g.strokeStyle = "rgba(220,240,255," + ((1 - fr0) * 6).toFixed(2) + ")"; g.beginPath(); g.arc(xb, ytop, rad + (fr0 - 0.9) * 60, Math.PI, 0); g.stroke(); } }
+}
+function divider(g){ g.strokeStyle = "rgba(160,190,255,.25)"; g.lineWidth = 1.5; g.setLineDash([6, 6]); g.beginPath(); g.moveTo(336, 84); g.lineTo(336, 590); g.stroke(); g.setLineDash([]);
+  label(g, "IN THE FLASK", 170, 96, "#8fa6c9", 12, "center", 800); label(g, "BETWEEN THE ATOMS", 685, 96, "#8fa6c9", 12, "center", 800); }
+function captionBox(g, title, why, phase, col){
+  panel(g, 345, 488, 680, 100, col || "rgba(160,190,255,.35)");
+  label(g, title, 359, 507, "#ffffff", 14.5, "left", 900);
+  if (phase){ g.font = "900 11px ui-sans-serif,system-ui,sans-serif"; var pw = g.measureText(phase.toUpperCase()).width + 16; g.fillStyle = "rgba(255,122,217,.18)"; g.fillRect(1025 - pw, 468, pw, 18); label(g, phase.toUpperCase(), 1025 - pw / 2, 477, ARROW, 11, "center", 900); }
+  wrap(g, why, 359, 530, 650, 12, "#cfe0ff", 12.5, "left");
+}
+function chip(g, x, y, col, a, s){ g.save(); g.globalAlpha = a; g.translate(x, y); g.scale(s || 1, s || 1); if (!REDUCED){ g.shadowColor = col; g.shadowBlur = 16; }
+  g.fillStyle = "rgba(10,20,34,.95)"; g.strokeStyle = col; g.lineWidth = 2.5; g.beginPath(); if (g.roundRect) g.roundRect(-34, -18, 68, 36, 18); else g.rect(-34, -18, 68, 36); g.fill(); g.stroke(); g.shadowBlur = 0; label(g, "C=O", 0, 1, col, 17, "center", 900); g.restore(); }
+
+/* =====================================================================
+   the thermo-signs lab: four calorimeters, two meters, one sign plane
+   ===================================================================== */
+var MBOX = [540, 84, 470, 396];
+var HOT = "#ff9a4a", COLD = "#6fb6ff", PCOL = ["#7fc8ff", "#c8e04a", "#ff8ab8", "#ffae5a"];
+function comp(x, x0){ return (x > 0 ? 1 : x < 0 ? -1 : 0) * (1 - Math.exp(-Math.abs(x) / x0)); }
+function fmtH(x){ return (x > 0 ? "+" : x < 0 ? "−" : "") + Math.abs(x).toFixed(Math.abs(x) < 10 ? 2 : 1) + " kJ/mol"; }
+function fmtS(x){ return (x > 0 ? "+" : x < 0 ? "−" : "") + Math.abs(x).toFixed(Math.abs(x) < 10 ? 2 : 1) + " J/K·mol"; }
+function rrect(g, x, y, w, h, r){ g.beginPath(); if (g.roundRect) g.roundRect(x, y, w, h, r); else g.rect(x, y, w, h); }
+function glass(g, x, y, w, h){ var gr = g.createLinearGradient(x, 0, x + w, 0); gr.addColorStop(0, "rgba(170,210,255,.10)"); gr.addColorStop(0.5, "rgba(170,210,255,.03)"); gr.addColorStop(1, "rgba(170,210,255,.12)");
+  g.fillStyle = gr; rrect(g, x, y, w, h, 14); g.fill(); g.strokeStyle = "rgba(190,215,255,.6)"; g.lineWidth = 2.5; g.stroke(); }
+/* a heat arrow: out of the system (exothermic, orange) or into it (endothermic, blue) */
+function heatArrow(g, x, y, dx, dy, a, out){
+  if (a <= 0.01) return;
+  var col = out ? HOT : COLD, L = Math.sqrt(dx * dx + dy * dy), ux = dx / L, uy = dy / L, ph = REDUCED ? 0.5 : (clock * 1.3) % 1, i;
+  g.save(); g.globalAlpha = a; g.strokeStyle = col; g.lineWidth = 4; g.lineCap = "round"; if (!REDUCED){ g.shadowColor = col; g.shadowBlur = 12; }
+  g.beginPath(); for (i = 0; i <= 24; i++){ var t = i / 24, w = Math.sin((t * 3 - ph) * Math.PI * 2) * 5; var px = x + dx * t - uy * w, py = y + dy * t + ux * w; if (i) g.lineTo(px, py); else g.moveTo(px, py); } g.stroke();
+  g.fillStyle = col; g.beginPath(); g.moveTo(x + dx + ux * 10, y + dy + uy * 10); g.lineTo(x + dx - uy * 8, y + dy + ux * 8); g.lineTo(x + dx + uy * 8, y + dy - ux * 8); g.closePath(); g.fill();
+  g.restore();
+}
+/* a sign meter: needle swings left for negative, right for positive (compressed scale; the number is printed) */
+function dial(g, cx, cy, r, val, x0, title, txt, a, col){
+  g.save();
+  g.lineWidth = 16; g.lineCap = "butt";
+  g.strokeStyle = "rgba(111,182,255,.28)"; g.beginPath(); g.arc(cx, cy, r, Math.PI, Math.PI * 1.5); g.stroke();
+  g.strokeStyle = "rgba(255,120,110,.28)"; g.beginPath(); g.arc(cx, cy, r, Math.PI * 1.5, Math.PI * 2); g.stroke();
+  g.lineWidth = 2; g.strokeStyle = "rgba(200,215,240,.5)"; g.beginPath(); g.moveTo(cx, cy - r - 12); g.lineTo(cx, cy - r + 12); g.stroke();
+  label(g, "< 0", cx - r - 4, cy + 14, "#9fcfff", 13, "center", 900); label(g, "> 0", cx + r + 4, cy + 14, "#ffb1a8", 13, "center", 900); label(g, "0", cx, cy - r - 22, "#9fb0cc", 12, "center", 800);
+  label(g, title, cx, cy + 36, "#e6eeff", 16, "center", 900);
+  var ang = -Math.PI / 2 + comp(val, x0) * 1.35 * ease(a) + (REDUCED || a < 1 ? 0 : 0.02 * Math.sin(clock * 9));
+  g.strokeStyle = a > 0 ? (col || "#ffffff") : "rgba(200,215,240,.4)"; g.lineWidth = 4; g.lineCap = "round"; if (!REDUCED && a > 0){ g.shadowColor = col || "#fff"; g.shadowBlur = 14; }
+  g.beginPath(); g.moveTo(cx, cy); g.lineTo(cx + Math.cos(ang) * (r - 6), cy + Math.sin(ang) * (r - 6)); g.stroke(); g.shadowBlur = 0;
+  g.fillStyle = "#dfe8ff"; g.beginPath(); g.arc(cx, cy, 6, 0, 7); g.fill();
+  if (a >= 1) label(g, txt, cx, cy + 60, val > 0 ? "#ffb1a8" : val < 0 ? "#9fcfff" : "#ffffff", 17, "center", 900);
+  else label(g, a > 0 ? "measuring…" : "—", cx, cy + 60, "#8b98ad", 14, "center", 700);
+  g.restore();
+}
+/* the right-hand half of every measurement stage */
+function meters(g, i, f){
+  var p = RUN.R.procs[i], aH = clamp((f - 0.2) / (PH.dH - 0.2), 0, 1), aS = clamp((f - PH.dH) / (PH.dS - PH.dH), 0, 1);
+  panel(g, 540, 92, 470, 190, "rgba(160,190,255,.3)");
+  dial(g, 655, 190, 70, p.dH, 6, "ΔH", fmtH(p.dH), aH, p.dH < 0 ? HOT : COLD);
+  dial(g, 895, 190, 70, p.dS, 12, "ΔS", fmtS(p.dS), aS, PCOL[i]);
+  if (aH >= 1) fxOnce("dH" + i, function(){ fxRing(655, 190, p.dH < 0 ? HOT : COLD, 60); fxSpark(655, 190, p.dH < 0 ? HOT : COLD, 16, 150); });
+  if (aS >= 1) fxOnce("dS" + i, function(){ fxRing(895, 190, PCOL[i], 60); fxSpark(895, 190, PCOL[i], 16, 150); });
+  if (f >= PH.pt){ var a = clamp((f - PH.pt) / 0.08, 0, 1);
+    g.save(); g.globalAlpha = a; panel(g, 560, 428, 430, 44, PCOL[i]);
+    label(g, "ΔH " + signTxt(p.sH) + " · ΔS " + signTxt(p.sS) + "   ⇒   List-II (" + (p.l2 || "–") + ")", 775, 450, "#ffffff", 17, "center", 900); g.restore();
+    fxOnce("l2" + i, function(){ fxRing(775, 450, PCOL[i], 120); fxSpark(775, 450, PCOL[i], 22, 200); }); }
+}
+function caption(g, title, why, col){
+  panel(g, 30, 486, 980, 104, col || "rgba(160,190,255,.35)");
+  label(g, title, 46, 506, "#ffffff", 15, "left", 900);
+  wrap(g, why, 46, 530, 948, 12, "#cfe0ff", 13, "left");
+}
+function sparkleHeat(g, x, y, out, key, n){ var i; for (i = 0; i < n; i++){ var ph = ((REDUCED ? 0.3 : clock * 0.9) + i / n) % 1, xx = x + (i - n / 2) * 18, yy = out ? y - ph * 60 : y - 60 + ph * 60;
+  g.fillStyle = (out ? "rgba(255,154,74," : "rgba(111,182,255,") + (0.8 * (1 - Math.abs(ph - 0.5) * 2)).toFixed(2) + ")"; g.beginPath(); g.arc(xx, yy, 3, 0, 7); g.fill(); } }
+function thermoS(g, x, y, T, lo, hi, lab){
+  g.strokeStyle = "rgba(190,215,255,.7)"; g.lineWidth = 2; g.strokeRect(x - 5, y, 10, 110); g.beginPath(); g.arc(x, y + 118, 10, 0, 7); g.stroke();
+  var h = clamp((T - lo) / (hi - lo), 0, 1) * 100; g.fillStyle = "#ff7a6a"; g.fillRect(x - 3, y + 108 - h, 6, h + 4); g.beginPath(); g.arc(x, y + 118, 8, 0, 7); g.fill();
+  label(g, lab, x, y - 12, "#ffd0c8", 13, "center", 900);
+}
+
+/* ---------- P: N2 sticking to charcoal ---------- */
+function n2(g, x, y, ang, a, col){ var dx = Math.cos(ang) * 6, dy = Math.sin(ang) * 6; g.globalAlpha = a; g.fillStyle = col || "#7fa9ff";
+  g.beginPath(); g.arc(x - dx, y - dy, 5.5, 0, 7); g.fill(); g.beginPath(); g.arc(x + dx, y + dy, 5.5, 0, 7); g.fill(); g.fillStyle = "rgba(255,255,255,.55)"; g.beginPath(); g.arc(x - dx - 1.5, y - dy - 1.5, 1.8, 0, 7); g.fill(); g.globalAlpha = 1; }
+function sceneP(g, f){
+  var p = RUN.R.procs[0], chem = RUN.R.D.p === "chem", N = 26, i, r = rng(3);
+  glass(g, 50, 110, 450, 350);
+  var sl = g.createLinearGradient(0, 400, 0, 452); sl.addColorStop(0, chem ? "#8a93a6" : "#2a2f3a"); sl.addColorStop(1, chem ? "#555d6e" : "#12151c");
+  g.fillStyle = sl; g.fillRect(58, 402, 434, 50);
+  for (i = 0; i < 26; i++){ g.fillStyle = chem ? "rgba(255,255,255,.18)" : "rgba(0,0,0,.6)"; g.beginPath(); g.arc(66 + i * 16.6, 420 + (i % 3) * 9, 3 + (i % 2), 0, 7); g.fill(); }
+  label(g, chem ? "nickel surface" : "activated charcoal (porous)", 275, 470, "#cfd6e4", 12, "center", 800);
+  label(g, chem ? "H₂ gas, 298 K" : "N₂ gas · liquid-N₂ bath, 77 K", 275, 128, "#9fcfff", 13, "center", 800);
+  var ads = 0;
+  for (i = 0; i < N; i++){
+    var t0 = 0.08 + 0.52 * (i / N), a = ease(clamp((f - t0) / 0.07, 0, 1)), sx = 72 + ((i * 37) % 410), sy = 396;
+    var gx = 90 + (r() * 370 + clock * (40 + r() * 60) * (i % 2 ? 1 : -1)) % 370, gy = 150 + (r() * 220 + clock * (30 + r() * 50)) % 220;
+    gx = 90 + Math.abs(((gx - 90) % 740 + 740) % 740 - 370); gy = 150 + Math.abs(((gy - 150) % 440 + 440) % 440 - 220);
+    if (REDUCED){ gx = 90 + r() * 370; gy = 150 + r() * 220; }
+    var skate = chem ? 0 : Math.sin(clock * 1.2 + i) * 6;
+    n2(g, lerp(gx, sx + skate, a), lerp(gy, sy, a), lerp(clock * 3 + i, 0, a), 1, chem ? "#eef3ff" : "#7fa9ff");
+    if (a >= 1){ ads++; fxOnce("ads" + i, function(){ fxRing(sx, sy, HOT, 18); }); }
+  }
+  heatArrow(g, 460, 330, 70, -30, f > 0.15 && f < 0.75 ? 1 : f >= 0.75 ? 0.4 : 0, true);
+  label(g, "adsorbed: " + ads + " / " + N, 120, 150, "#ffffff", 13, "left", 900);
+  meters(g, 0, f);
+  if (f > PH.dS){ var a2 = clamp((f - PH.dS) / 0.08, 0, 1), b3 = 170 * p.S3 / 160, b2 = 170 * p.S2 / 160; g.save(); g.globalAlpha = a2;
+    panel(g, 560, 300, 430, 116, "rgba(160,190,255,.3)");
+    label(g, "translational entropy (" + p.T + " K)", 775, 316, "#9fb0cc", 12, "center", 800);
+    g.fillStyle = "rgba(127,200,255,.85)"; g.fillRect(700, 332, b3 * ease(a2), 22); label(g, "3-D gas", 690, 343, "#cfe0ff", 13, "right", 800); label(g, p.S3.toFixed(1), 706 + b3, 343, "#ffffff", 13, "left", 900);
+    g.fillStyle = "rgba(200,224,74,.85)"; g.fillRect(700, 366, b2 * ease(a2), 22); label(g, chem ? "atoms at sites" : "2-D film", 690, 377, "#cfe0ff", 13, "right", 800); label(g, p.S2.toFixed(1), 706 + b2, 377, "#ffffff", 13, "left", 900);
+    label(g, "ΔS = " + p.S2.toFixed(1) + " − " + p.S3.toFixed(1) + " = " + fmtS(p.dS), 775, 404, GOLD, 13, "center", 900); g.restore(); }
+  caption(g, "P · " + p.name + " — " + p.full, chem ? "Chemisorption forms real bonds: a lot of heat is released (ΔH < 0) and the gas molecules lose their freedom to fly (ΔS < 0)."
+    : "Each N₂ that sticks gives out heat (orange rings): ΔH < 0. A molecule flying in 3-D has far more ways to be than one skating in a 2-D film, so the entropy falls: ΔS < 0. The calculation is the Sackur–Tetrode entropy of the gas and of the film.");
+  titleCard(g, "P · " + p.name.toUpperCase(), "does heat flow out? does disorder fall?", f, "#7fc8ff");
+}
+
+/* ---------- Q: diamond to graphite ---------- */
+function sceneQ(g, f){
+  var p = RUN.R.procs[1], rev = RUN.R.D.q === "rev", t = ease(clamp((f - 0.1) / 0.5, 0, 1)), L, j;
+  if (rev) t = 1 - t;
+  glass(g, 50, 110, 450, 350);
+  var gap = lerp(58, 92, t), amp = lerp(13, 0, t), P = [];
+  for (L = 0; L < 4; L++){ P[L] = []; for (j = 0; j < 10; j++) P[L][j] = [95 + j * 40, 160 + L * gap + (j % 2 ? amp : -amp) * (L % 2 ? -1 : 1) + (REDUCED ? 0 : Math.sin(clock * 2 + L + j) * lerp(0.6, 2.2, t))]; }
+  for (L = 0; L < 4; L++) for (j = 0; j < 10; j++){
+    if (j < 9){ g.strokeStyle = "rgba(210,225,245,.85)"; g.lineWidth = 2.6; g.beginPath(); g.moveTo(P[L][j][0], P[L][j][1]); g.lineTo(P[L][j + 1][0], P[L][j + 1][1]); g.stroke();
+      if (t > 0.5 && (j + L) % 2 === 0){ g.strokeStyle = "rgba(200,224,74," + (0.6 * (t - 0.5) * 2).toFixed(2) + ")"; g.beginPath(); g.moveTo(P[L][j][0], P[L][j][1] - 5); g.lineTo(P[L][j + 1][0], P[L][j + 1][1] - 5); g.stroke(); } }
+    if (L < 3 && (j + L) % 2 === 0){ g.strokeStyle = "rgba(210,225,245," + (0.85 * (1 - t)).toFixed(2) + ")"; g.lineWidth = 2.6; g.beginPath(); g.moveTo(P[L][j][0], P[L][j][1]); g.lineTo(P[L + 1][j][0], P[L + 1][j][1]); g.stroke();
+      if (t > 0.3){ g.setLineDash([3, 5]); g.strokeStyle = "rgba(160,190,255," + (0.35 * t).toFixed(2) + ")"; g.lineWidth = 1.2; g.beginPath(); g.moveTo(P[L][j][0], P[L][j][1]); g.lineTo(P[L + 1][j][0], P[L + 1][j][1]); g.stroke(); g.setLineDash([]); } }
+  }
+  for (L = 0; L < 4; L++) for (j = 0; j < 10; j++){ var sg = g.createRadialGradient(P[L][j][0] - 2, P[L][j][1] - 2, 1, P[L][j][0], P[L][j][1], 8); sg.addColorStop(0, "#ffffff"); sg.addColorStop(0.5, t > 0.5 ? "#8a93a6" : "#cfe6ff"); sg.addColorStop(1, "#1a2233");
+    g.fillStyle = sg; g.beginPath(); g.arc(P[L][j][0], P[L][j][1], 7, 0, 7); g.fill(); }
+  label(g, t < 0.5 ? "C (diamond): sp³ network, bonds between the layers" : "C (graphite): flat sp² sheets, 3.35 Å apart, held loosely", 275, 128, t < 0.5 ? "#cfe6ff" : "#c8e04a", 13, "center", 800);
+  if (!REDUCED && f > 0.15 && f < 0.7) sparkleHeat(g, 275, 450, p.dH < 0, "q", 8);
+  meters(g, 1, f);
+  hessLadder(g, 560, 296, 430, 124, rev ? "C(graphite)" : "C(diamond)", rev ? "C(graphite)" : "C(diamond)", "diamond", "graphite", "CO₂(g)", f, rev);
+  caption(g, "Q · " + p.name + " — Hess's law from two combustions", "Burning diamond gives out 395.4 kJ/mol, graphite 393.5 kJ/mol: diamond sits 1.9 kJ/mol higher, so the change to graphite releases heat (ΔH < 0). Graphite's loosely held sheets can vibrate in many more low-energy ways, so its entropy is higher (5.74 vs 2.38 J/K·mol): ΔS > 0. ΔG < 0 — yet diamonds last, because the change is immeasurably slow.");
+  titleCard(g, "Q · " + (rev ? "GRAPHITE → DIAMOND" : "DIAMOND → GRAPHITE"), "two bomb calorimeters and a Hess cycle", f, "#c8e04a");
+}
+/* a Hess ladder: two starting levels, one set of combustion products, the gap exaggerated and said so */
+function hessLadder(g, x, y, w, h, a, _b, hiKey, loKey, prodTxt, f, rev){
+  var c = DATA.cH, a1 = clamp((f - 0.2) / 0.25, 0, 1);
+  if (a1 <= 0) return;
+  /* rev = the reactant is the lower level; ΔH = ΔcH(reactant) − ΔcH(product) */
+  var nm = function(k){ return k === "diamond" ? "C(diamond)" : k === "graphite" ? "C(graphite)" : k; };
+  var re = rev ? loKey : hiKey, pr = rev ? hiKey : loKey, dH = c[re] - c[pr];
+  g.save(); g.globalAlpha = a1; panel(g, x, y, w, h, "rgba(160,190,255,.3)");
+  var yHi = y + 30, yLo = y + 52, yP = y + 82, h0 = x + 110, h1 = x + 190, l0 = x + 220, l1 = x + 300;
+  g.strokeStyle = "#ffffff"; g.lineWidth = 3;
+  g.beginPath(); g.moveTo(h0, yHi); g.lineTo(h1, yHi); g.moveTo(l0, yLo); g.lineTo(l1, yLo); g.moveTo(h0, yP); g.lineTo(l1, yP); g.stroke();
+  label(g, nm(hiKey), h0 - 6, yHi, "#ffffff", 12, "right", 800); label(g, nm(loKey), l1 + 6, yLo, "#ffffff", 12, "left", 800);
+  label(g, prodTxt, (h0 + l1) / 2, yP + 10, "#9fb0cc", 11, "center", 800);
+  g.strokeStyle = HOT; g.lineWidth = 2; g.beginPath(); g.moveTo(h0 + 30, yHi + 4); g.lineTo(h0 + 30, yP - 4); g.moveTo(l0 + 30, yLo + 4); g.lineTo(l0 + 30, yP - 4); g.stroke();
+  label(g, c[hiKey].toFixed(1), h0 + 36, (yHi + yP) / 2 + 4, HOT, 11.5, "left", 900); label(g, c[loKey].toFixed(1), l0 + 36, (yLo + yP) / 2 + 4, HOT, 11.5, "left", 900);
+  g.strokeStyle = GOLD; g.lineWidth = 2; g.setLineDash([4, 4]); g.beginPath(); g.moveTo(h1, yHi); g.lineTo(l1, yHi); g.stroke(); g.setLineDash([]);
+  label(g, "gap " + Math.abs(c[hiKey] - c[loKey]).toFixed(1) + " kJ/mol (not to scale)", (h1 + l1) / 2, yHi - 11, GOLD, 11, "center", 900);
+  label(g, "ΔH = ΔcH(" + re + ") − ΔcH(" + pr + ") = " + fmtH(dH), x + w / 2, y + h - 10, GOLD, 12, "center", 900);
+  g.restore();
+}
+
+/* ---------- R: a protein unfolding in a DSC ---------- */
+function sceneR(g, f){
+  var p = RUN.R.procs[2], ren = RUN.R.D.r === "ren", Tt = 300 + 100 * clamp((f - 0.05) / 0.6, 0, 1), T = ren ? 700 - Tt : Tt, u = unfoldedFrac(T, DATA.prot.dH, DATA.prot.Tm), i;
+  glass(g, 50, 110, 450, 350);
+  /* the DSC: sample and reference pans on a heated block */
+  var bg = g.createLinearGradient(0, 380, 0, 440); bg.addColorStop(0, "rgba(255,120,60," + (0.25 + 0.5 * (Tt - 300) / 100).toFixed(2) + ")"); bg.addColorStop(1, "rgba(80,30,20,.6)");
+  g.fillStyle = bg; g.fillRect(70, 400, 410, 40);
+  g.strokeStyle = "rgba(220,230,245,.8)"; g.lineWidth = 2; g.strokeRect(100, 360, 150, 40); g.strokeRect(300, 360, 150, 40);
+  label(g, "sample (protein)", 175, 418, "#ffffff", 12, "center", 800); label(g, "reference (buffer)", 375, 418, "#ffffff", 12, "center", 800);
+  /* the chain: a helix that loosens into a random coil */
+  g.save(); g.beginPath(); g.rect(60, 140, 430, 210); g.clip();
+  g.strokeStyle = u > 0.5 ? "#ffb4d8" : "#ff8ab8"; g.lineWidth = 4; g.lineCap = "round"; if (!REDUCED){ g.shadowColor = "#ff8ab8"; g.shadowBlur = 10; }
+  var rr = rng(9), wig = [], n = 140; for (i = 0; i <= n; i++) wig.push((rr() - 0.5) * 2);
+  g.beginPath();
+  for (i = 0; i <= n; i++){ var s = i / n, hx = 110 + s * 330 + Math.cos(s * 38) * 16 * (1 - u), hy = 245 + Math.sin(s * 38) * 34 * (1 - u);
+    var cx = 110 + s * 330, cy = 245 + (Math.sin(s * 7.3) * 55 + Math.sin(s * 17.9 + 1) * 22 + wig[i] * 5 + (REDUCED ? 0 : Math.sin(clock * 2 + s * 9) * 4)) * u;
+    var X = lerp(hx, cx, u), Y = lerp(hy, cy, u); if (i) g.lineTo(X, Y); else g.moveTo(X, Y); }
+  g.stroke(); g.restore();
+  label(g, u < 0.5 ? "folded: many H-bonds, ordered" : "unfolded: H-bonds broken, chain free to wander", 275, 128, "#ffc4e8", 13, "center", 800);
+  thermoS(g, 470, 150, T, 300, 400, Math.round(T) + " K");
+  var cp = dscCp(T, DATA.prot.dH, DATA.prot.Tm), peak = p.scan ? p.scan.peak : 1;
+  heatArrow(g, 175, 470, 0, -60, ren ? 0 : clamp(cp / peak * 1.2, 0, 1), false);
+  if (ren) heatArrow(g, 175, 350, -70, 60, clamp(cp / peak * 1.2, 0, 1), true);
+  meters(g, 2, f);
+  /* the thermogram, drawn as the temperature sweeps */
+  var a1 = clamp((f - 0.05) / 0.1, 0, 1);
+  if (a1 > 0){ g.save(); g.globalAlpha = a1; panel(g, 560, 296, 430, 124, "rgba(160,190,255,.3)");
+    var X0 = 600, X1 = 970, Y0 = 404, Y1 = 312, pts = p.scan.pts, k;
+    g.strokeStyle = "rgba(200,215,240,.5)"; g.lineWidth = 1; g.beginPath(); g.moveTo(X0, Y1); g.lineTo(X0, Y0); g.lineTo(X1, Y0); g.stroke();
+    label(g, "excess heat capacity vs T (DSC)", 780, 304 + 2, "#9fb0cc", 11, "center", 800); label(g, "300 K", X0, Y0 + 10, "#9fb0cc", 10, "center", 700); label(g, "400 K", X1, Y0 + 10, "#9fb0cc", 10, "center", 700);
+    g.beginPath(); g.moveTo(X0, Y0);
+    for (k = 0; k < pts.length; k++){ var PT = ren ? 700 - pts[k][0] : pts[k][0]; if ((ren ? PT < T : PT > T)) break; var xx = X0 + (pts[k][0] - 300) / 100 * (X1 - X0); if (ren) xx = X0 + (PT - 300) / 100 * (X1 - X0); g.lineTo(xx, Y0 - pts[k][1] / peak * (Y0 - Y1 - 6)); }
+    var lx = X0 + (T - 300) / 100 * (X1 - X0); g.lineTo(lx, Y0); g.closePath(); g.fillStyle = "rgba(111,182,255,.28)"; g.fill(); g.strokeStyle = COLD; g.lineWidth = 2.5; g.stroke();
+    if (f > PH.dH){ var tmx = X0 + (p.Tm - 300) / 100 * (X1 - X0); g.setLineDash([4, 4]); g.strokeStyle = GOLD; g.beginPath(); g.moveTo(tmx, Y1); g.lineTo(tmx, Y0); g.stroke(); g.setLineDash([]);
+      label(g, "Tm = " + p.Tm.toFixed(0) + " K", tmx + 6, Y1 + 8, GOLD, 11.5, "left", 900); label(g, "area = |ΔH| = " + Math.abs(p.dH).toFixed(0) + " kJ/mol", 985, 340, "#cfe0ff", 11, "right", 800);
+      if (f > PH.dS) label(g, "ΔS = ΔH/Tm = " + fmtS(p.dS), 985, 358, GOLD, 11, "right", 900); }
+    g.restore(); }
+  caption(g, "R · " + p.name + " — differential scanning calorimetry", ren ? "Refolding is the reverse: heat is released as the H-bonds re-form (ΔH < 0) and the chain is locked into one shape (ΔS < 0)."
+    : "As the protein is heated, it absorbs heat to break its hydrogen bonds (ΔH > 0 — the blue peak; its area is ΔH). The unfolded chain can take a huge number of shapes, so its entropy rises (ΔS > 0). At Tm the two states are balanced (ΔG = 0), so ΔS = ΔH/Tm.");
+  titleCard(g, "R · " + (ren ? "REFOLDING" : "DENATURATION"), "heat the protein, watch the heat it drinks", f, "#ff8ab8");
+}
+
+/* ---------- S: propene closing into cyclopropane ---------- */
+function sceneS(g, f){
+  var p = RUN.R.procs[3], rev = RUN.R.D.s === "rev", t = ease(clamp((f - 0.1) / 0.45, 0, 1)), i;
+  if (rev) t = 1 - t;
+  glass(g, 50, 110, 450, 350);
+  var A = [[lerp(150, 190, t), lerp(330, 350, t)], [lerp(250, 275, t), lerp(250, 205, t)], [lerp(350, 360, t), lerp(330, 350, t)]];
+  if (!REDUCED){ for (i = 0; i < 3; i++){ A[i][0] += Math.sin(clock * 3 + i) * 1.5; A[i][1] += Math.cos(clock * 2.6 + i) * 1.5; } }
+  var bnd = function(a, b, o, al){ var dx = b[0] - a[0], dy = b[1] - a[1], L = Math.sqrt(dx * dx + dy * dy), nx = -dy / L * 6, ny = dx / L * 6, k;
+    g.strokeStyle = "rgba(220,230,245," + al.toFixed(2) + ")"; g.lineWidth = 4; for (k = 0; k < o; k++){ var s = o === 1 ? 0 : k ? 0.5 : -0.5; g.beginPath(); g.moveTo(a[0] + nx * s, a[1] + ny * s); g.lineTo(b[0] + nx * s, b[1] + ny * s); g.stroke(); } };
+  bnd(A[0], A[1], t < 0.5 ? 2 : 1, 1); bnd(A[1], A[2], 1, 1);
+  if (t > 0.02){ g.save(); if (!REDUCED){ g.shadowColor = GREEN; g.shadowBlur = 14 * t; } bnd(A[0], A[2], 1, t); g.restore(); }
+  var labs = [t < 0.5 ? "CH₂" : "CH₂", t < 0.5 ? "CH" : "CH₂", t < 0.5 ? "CH₃" : "CH₂"];
+  for (i = 0; i < 3; i++){ var sg = g.createRadialGradient(A[i][0] - 6, A[i][1] - 6, 2, A[i][0], A[i][1], 26); sg.addColorStop(0, "rgba(255,255,255,.4)"); sg.addColorStop(0.45, "rgba(70,82,110,.95)"); sg.addColorStop(1, "#0a0f1c");
+    g.fillStyle = sg; g.beginPath(); g.arc(A[i][0], A[i][1], 24, 0, 7); g.fill(); g.strokeStyle = "rgba(190,205,230,.7)"; g.lineWidth = 1.5; g.stroke(); label(g, labs[i], A[i][0], A[i][1] + 1, "#eef3ff", 14, "center", 900); }
+  /* the CH3 rotor spins freely in propene and is frozen in the ring */
+  if (t < 0.9){ var ra = 1 - t / 0.9, an = REDUCED ? 0.5 : clock * 5; g.save(); g.globalAlpha = ra; g.strokeStyle = "#ffae5a"; g.lineWidth = 2.5; g.beginPath(); g.arc(A[2][0], A[2][1], 36, an, an + 4.2); g.stroke();
+    g.fillStyle = "#ffae5a"; g.beginPath(); g.arc(A[2][0] + Math.cos(an + 4.2) * 36, A[2][1] + Math.sin(an + 4.2) * 36, 4, 0, 7); g.fill(); label(g, "free CH₃ rotation", A[2][0] + 40, A[2][1] - 44, "#ffae5a", 12, "left", 800); g.restore(); }
+  if (t > 0.8){ label(g, "60°", A[1][0], A[1][1] + 42, GOLD, 16, "center", 900); label(g, "ring strain: 60° instead of 109.5°", 275, 420, GOLD, 13, "center", 800); }
+  label(g, t < 0.5 ? "propene: CH₂=CH–CH₃" : "cyclopropane: (CH₂)₃", 275, 128, "#ffd2a6", 14, "center", 900);
+  if (f > 0.15 && f < 0.7) heatArrow(g, 470, 180, -60, 40, 0.9, p.dH < 0);
+  meters(g, 3, f);
+  hessLadder(g, 560, 296, 430, 124, "", "", "cyclopropane", "propene", "3 CO₂ + 3 H₂O", f, !rev);
+  caption(g, "S · " + p.name + " — Hess's law and the entropy of a ring", rev ? "Opening the strained ring releases 33 kJ/mol (ΔH < 0) and frees the CH₃ rotor (ΔS > 0)."
+    : "Cyclopropane burns with 33 kJ/mol more heat than propene: the strained 60° ring stores that energy, so making it absorbs heat (ΔH > 0). Closing the ring freezes the free rotation of the CH₃ group and stiffens the molecule: fewer ways to move, ΔS < 0. ΔG > 0 at every temperature.");
+  titleCard(g, "S · " + (rev ? "RING OPENING" : "RING CLOSING"), "a strained ring and a frozen rotor", f, "#ffae5a");
+}
+
+/* ---------- the sign plane ---------- */
+var PLANE = { cx: 520, cy: 290, w: 380, h: 175 };
+function planeXY(p){ return [PLANE.cx + comp(p.dS, 12) * PLANE.w * 0.86, PLANE.cy - comp(p.dH, 6) * PLANE.h * 0.86]; }
+function drawPlane(g, a){
+  var c = PLANE, L2 = [[1, 1, "(1) ΔH > 0, ΔS > 0", "rgba(255,120,110,.10)"], [-1, 1, "(4) ΔH > 0, ΔS < 0", "rgba(255,174,90,.10)"], [-1, -1, "(2) ΔH < 0, ΔS < 0", "rgba(111,182,255,.10)"], [1, -1, "(5) ΔH < 0, ΔS > 0", "rgba(62,227,154,.10)"]], i;
+  g.save(); g.globalAlpha = a;
+  for (i = 0; i < 4; i++){ var q = L2[i]; g.fillStyle = q[3]; g.fillRect(q[0] > 0 ? c.cx : c.cx - c.w, q[1] > 0 ? c.cy - c.h : c.cy, c.w, c.h);
+    label(g, q[2], c.cx + q[0] * c.w * 0.62, c.cy - q[1] * c.h * 0.84, "#cfe0ff", 14, "center", 900); }
+  g.strokeStyle = "rgba(220,230,245,.7)"; g.lineWidth = 2; g.beginPath(); g.moveTo(c.cx - c.w, c.cy); g.lineTo(c.cx + c.w, c.cy); g.moveTo(c.cx, c.cy - c.h); g.lineTo(c.cx, c.cy + c.h); g.stroke();
+  g.strokeStyle = "rgba(255,215,154,.8)"; g.lineWidth = 6; g.beginPath(); g.moveTo(c.cx, c.cy + 4); g.lineTo(c.cx, c.cy + c.h); g.stroke();
+  label(g, "(3) ΔH < 0, ΔS = 0", c.cx + 10, c.cy + c.h - 12, GOLD, 12, "left", 900);
+  label(g, "ΔS →", c.cx + c.w - 6, c.cy - 12, "#9fb0cc", 13, "right", 900); label(g, "ΔH ↑", c.cx + 10, c.cy - c.h + 12, "#9fb0cc", 13, "left", 900);
+  g.restore();
+}
+function point(g, x, y, i, s){ var col = PCOL[i]; g.save(); if (!REDUCED){ g.shadowColor = col; g.shadowBlur = 18; } g.fillStyle = col; g.beginPath(); g.arc(x, y, 15 * (s || 1), 0, 7); g.fill(); g.shadowBlur = 0;
+  label(g, KEYS[i], x, y + 1, "#0b1120", 15, "center", 900); g.restore(); }
+function scenePlane(g, f){
+  var R = RUN.R, i;
+  sceneTitle(g, "STEP 6 · THE SIGN PLANE", "each process lands in the List-II region its signs point to");
+  drawPlane(g, ease(clamp(f / 0.12, 0, 1)));
+  for (i = 0; i < 4; i++){ var p = R.procs[i], t = ease(clamp((f - 0.12 - i * 0.14) / 0.16, 0, 1)), to = planeXY(p), from = [110 + i * 270, 560];
+    if (t <= 0) continue;
+    var x = lerp(from[0], to[0], t), y = lerp(from[1], to[1], t) - Math.sin(t * Math.PI) * 80; point(g, x, y, i, 1 + 0.4 * (1 - t));
+    if (t >= 1){ fxOnce("pl" + i, function(){ fxRing(to[0], to[1], PCOL[i], 40); fxSpark(to[0], to[1], PCOL[i], 16, 150); }); label(g, "→ (" + (p.l2 || "–") + ")", to[0] + 22, to[1] - 18, PCOL[i], 14, "left", 900); } }
+  if (f > 0.78){ panel(g, 230, 500, 580, 60, GOLD); label(g, R.map.map(function(v, j){ return KEYS[j] + " → " + (v || "–"); }).join("    "), 520, 530, "#ffffff", 22, "center", 900); }
+  titleCard(g, "THE SIGN PLANE", "ΔH up, ΔS across", f, GOLD);
+}
+function sceneTest(g, f){
+  var R = RUN.R, L = "ABCD", i, j;
+  sceneTitle(g, "STEP 7 · TEST OPTIONS A–D", "every option must match all four measurements");
+  for (i = 0; i < 4; i++){
+    var k = L[i], x = 40 + (i % 2) * 490, y = 92 + Math.floor(i / 2) * 250, e = R.audit[k], on = f > 0.12 + i * 0.2, now = on && f < 0.32 + i * 0.2;
+    g.fillStyle = "rgba(20,30,52,.92)"; g.strokeStyle = on ? (e.v ? GREEN : RED) : "rgba(160,190,255,.25)"; g.lineWidth = now ? 4 : on ? 3 : 1.5;
+    g.fillRect(x, y, 470, 230); g.strokeRect(x, y, 470, 230);
+    label(g, "(" + k + ")", x + 34, y + 32, "#ffffff", 24, "center", 900);
+    for (j = 0; j < 4; j++){ var ok = OPTS[k][j] === R.map[j], yy = y + 76 + j * 34, show = on || f > 0.12 + i * 0.2 - 0.1 + j * 0.02;
+      label(g, KEYS[j] + " → " + OPTS[k][j], x + 80, yy, "#e6eeff", 17, "left", 800);
+      label(g, LIST2_TXT[OPTS[k][j]], x + 160, yy, "#9fb0cc", 13, "left", 700);
+      if (on){ label(g, ok ? "✓" : "✗", x + 420, yy, ok ? GREEN : RED, 22, "center", 900); if (!ok) { g.strokeStyle = "rgba(255,107,107,.7)"; g.lineWidth = 2; g.beginPath(); g.moveTo(x + 76, yy); g.lineTo(x + 400, yy); g.stroke(); } } }
+    if (on){ stamp(g, x + 330, y + 34, e.v ? "✓ MATCHES" : "✗ FAILS", e.v, 1); fxOnce("tst" + i, function(){ fxRing(x + 330, y + 34, e.v ? GREEN : RED, 60); if (e.v) fxSpark(x + 330, y + 34, GREEN, 30, 220); }); }
+  }
+}
+function sceneAnswer(g, f){
+  var R = RUN.R, i;
+  sceneTitle(g, "ANALYSIS COMPLETE", "the one option that fits every measurement");
+  drawPlane(g, 0.35);
+  for (i = 0; i < 4; i++){ var to = planeXY(R.procs[i]); point(g, to[0], to[1], i, 1); }
+  for (i = 0; i < 4; i++){ var d = ease(clamp((f - 0.1 - i * 0.08) / 0.3, 0, 1)), to2 = planeXY(R.procs[i]), tx2 = 520 + (i - 1.5) * 150;
+    g.save(); g.globalAlpha = d; panel(g, tx2 - 62, lerp(to2[1], 432, d) - 20, 124, 40, PCOL[i]); label(g, KEYS[i] + " → " + (R.map[i] || "–"), tx2, lerp(to2[1], 432, d), PCOL[i], 18, "center", 900); g.restore(); }
+  if (f > 0.62){ g.save(); if (!REDUCED){ g.shadowColor = GREEN; g.shadowBlur = 26; } label(g, R.answer === "none" ? "NO OPTION FITS" : "OPTION (" + R.answer + ")", 520, 530, GREEN, 46 + (REDUCED ? 0 : 3 * Math.sin(clock * 5)), "center", 900); g.restore();
+    fxOnce("ansC", function(){ fxRing(520, 530, GREEN, 140); fxSpark(520, 530, GREEN, 36, 240); fxSpark(520, 530, GOLD, 20, 180); }); }
+}
+/* station icons for the overview */
+function icon(g, k, x, y, a){
+  g.save(); g.globalAlpha = a; g.translate(x, y); var i;
+  if (k === 0){ g.fillStyle = "#2a2f3a"; g.fillRect(-46, 18, 92, 22); for (i = 0; i < 6; i++) n2(g, -36 + i * 15, -20 + (i % 2) * 22, i, 1, "#7fa9ff"); }
+  else if (k === 1){ g.fillStyle = "#cfe6ff"; g.beginPath(); g.moveTo(-26, -8); g.lineTo(-12, -30); g.lineTo(12, -30); g.lineTo(26, -8); g.lineTo(0, 30); g.closePath(); g.fill(); g.strokeStyle = "#8fb6e8"; g.lineWidth = 2; g.stroke(); }
+  else if (k === 2){ g.strokeStyle = "#ff8ab8"; g.lineWidth = 4; g.beginPath(); for (i = 0; i <= 40; i++){ var s = i / 40; g.lineTo(-44 + s * 88 + Math.cos(s * 30) * 8, Math.sin(s * 30) * 16); } g.stroke(); }
+  else { g.strokeStyle = "#ffd2a6"; g.lineWidth = 4; g.beginPath(); g.moveTo(-26, 20); g.lineTo(0, -24); g.lineTo(26, 20); g.closePath(); g.stroke(); g.fillStyle = "#ffae5a"; [[-26, 20], [0, -24], [26, 20]].forEach(function(q){ g.beginPath(); g.arc(q[0], q[1], 7, 0, 7); g.fill(); }); }
+  g.restore();
+}
+var PNAMES = ["P · Physisorption", "Q · Diamond → Graphite", "R · Denaturation of protein", "S · Propene → Cyclopropane"];
+function sceneIdle(g){
+  var i;
+  sceneTitle(g, "THERMO-SIGNS LAB", "for each process: which way does heat flow, and does disorder rise or fall?");
+  for (i = 0; i < 4; i++){ var x = 140 + i * 253; panel(g, x - 110, 120, 220, 250, "rgba(160,190,255,.35)"); icon(g, i, x, 210, 1);
+    label(g, PNAMES[i], x, 300, PCOL[i], 14, "center", 900); label(g, "ΔH ?   ΔS ?", x, 336, "#9fb0cc", 16, "center", 900); }
+  panel(g, 190, 420, 660, 90, "rgba(160,190,255,.5)");
+  label(g, "measure ΔH and ΔS  →  signs  →  List-II  →  option", 520, 450, "#ffffff", 18, "center", 900);
+  label(g, "press START EXPERIMENT", 520, 484, "#9fb0cc", 15, "center", 700);
+}
+function sceneLoad(g, f){
+  var i;
+  sceneTitle(g, "STEP 1 · FOUR CALORIMETERS", "adsorption calorimeter · two bomb calorimeters · DSC · Hess cycle");
+  for (i = 0; i < 4; i++){ var a = ease(clamp((f - 0.1 - i * 0.12) / 0.2, 0, 1)), x = 140 + i * 253, y = lerp(420, 210, a);
+    panel(g, x - 110, 120, 220, 250, a >= 1 ? PCOL[i] : "rgba(160,190,255,.25)"); icon(g, i, x, y, a);
+    label(g, PNAMES[i], x, 300, PCOL[i], 14, "center", 900);
+    label(g, ["adsorption heat + entropy model", "ΔcH of both forms + S°", "heat flow while heating (DSC)", "ΔcH of both + S°"][i], x, 336, "#cfe0ff", 12, "center", 700);
+    if (a >= 1) fxOnce("ld" + i, function(){ fxRing(x, 210, PCOL[i], 50); }); }
+  caption(g, "Two numbers per process", "ΔH is the heat taken in at constant pressure: negative when heat flows OUT (exothermic), positive when it flows IN. ΔS measures how many ways the particles can be arranged and move: it rises when they gain freedom and falls when they lose it.");
+  titleCard(g, "FOUR PROCESSES", "two signs each", f, GOLD);
+}
+function sceneRest(g){
+  var R = RUN.R, quiet = RUN.revealed && $("revealhost").classList.contains("on"), i;
+  if (!quiet) sceneTitle(g, "CASE CLOSED", R.complete ? "option (" + R.answer + "): " + ANSNOTE : "question processes changed");
+  g.globalAlpha = quiet ? 0.3 : 1; drawPlane(g, 1);
+  for (i = 0; i < 4; i++){ var to = planeXY(R.procs[i]); point(g, to[0], to[1] + (REDUCED ? 0 : Math.sin(clock * 2 + i) * 3), i, 1); label(g, "→ (" + (R.procs[i].l2 || "–") + ")", to[0] + 22, to[1] - 18, PCOL[i], 14, "left", 900); }
+  g.globalAlpha = 1;
+}
+function eqFor(name){
+  var R = RUN.R, i = PROC_OF[name];
+  if (i !== undefined){ var p = R.procs[i]; return p.name + ":  ΔH = " + fmtH(p.dH) + ",  ΔS = " + fmtS(p.dS) + ",  ΔG(" + Math.round(p.T) + " K) = " + fmtH(p.dG); }
+  return { load: "ΔG = ΔH − TΔS", plane: "List-II:  (1) +,+   (2) −,−   (3) −,0   (4) +,−   (5) −,+" }[name] || "P → 2 · Q → 5 · R → 1 · S → 4 is the only complete match";
+}
+function whyFor(name){
+  return { load: "the signs, not the sizes, decide the List-II entry", p: "sticking releases heat; 3-D → 2-D motion loses entropy", q: "diamond is the higher-energy, more rigid form",
+    r: "breaking H-bonds costs heat; an unfolded chain has countless shapes", s: "the ring is strained, and closing it freezes a rotor", plane: "the quadrant is fixed by the two signs" }[name] || "one wrong entry is enough to reject an option";
+}
+function drawLab(st){
+  var c = $("labcv"), g = c.getContext("2d");
+  g.clearRect(0, 0, c.width, c.height);
+  hood(g);
+  if (st.name === "idle") sceneIdle(g);
+  else if (st.name === "rest") sceneRest(g);
+  else if (st.name === "load") sceneLoad(g, st.f);
+  else if (st.name === "p"){ sceneTitle(g, "STEP 2 · MEASURE P", ""); sceneP(g, st.f); }
+  else if (st.name === "q"){ sceneTitle(g, "STEP 3 · MEASURE Q", ""); sceneQ(g, st.f); }
+  else if (st.name === "r"){ sceneTitle(g, "STEP 4 · MEASURE R", ""); sceneR(g, st.f); }
+  else if (st.name === "s"){ sceneTitle(g, "STEP 5 · MEASURE S", ""); sceneS(g, st.f); }
+  else if (st.name === "plane") scenePlane(g, st.f);
+  else if (st.name === "test") sceneTest(g, st.f);
+  else if (st.name === "answer") sceneAnswer(g, st.f);
+  fxDraw(g);
+  if (!REDUCED && RUN.state === "running" && RUN.u < 0.45 && st.name !== "load"){ var wx = lerp(-300, 1340, RUN.u / 0.45), wg = g.createLinearGradient(wx - 160, 0, wx + 160, 0);
+    wg.addColorStop(0, "rgba(140,180,255,0)"); wg.addColorStop(0.5, "rgba(170,200,255,.16)"); wg.addColorStop(1, "rgba(140,180,255,0)"); g.save(); g.globalCompositeOperation = "lighter"; g.fillStyle = wg; g.transform(1, 0, -0.35, 1, 0, 0); g.fillRect(wx - 160, 0, 320, 620); g.restore(); }
+  if (st.name !== "idle"){
+    if (SHOW.eq){ g.fillStyle = "rgba(8,14,26,.94)"; g.fillRect(40, 440, 960, 40); label(g, eqFor(st.name), 520, 460, "#ffffff", 16, "center", 800); }
+    if (SHOW.why){ g.fillStyle = "rgba(8,14,26,.94)"; g.fillRect(40, 72, 960, 30); label(g, "WHY?  " + whyFor(st.name), 520, 87, GOLD, 14, "center", 700); }
+    if (SHOW.obs){ g.fillStyle = "rgba(8,14,26,.94)"; g.fillRect(40, 18, 640, 30); label(g, "orange waves: heat flowing out (ΔH < 0) · blue: heat flowing in (ΔH > 0) · needles: sign meters", 360, 33, "#ffc4e8", 12.5, "center", 700); }
+  }
+}
+
+/* =====================================================================
+   charts, drawn from the measurements
+   ===================================================================== */
+function svgClear(id){ var s = $(id); while (s.firstChild) s.removeChild(s.firstChild); return s; }
+function drawCharts(st){
+  var R = RUN.R, i, k, n = RUN.done ? 4 : 0;
+  for (i = 0; i < 4; i++) if (progressOf(i, st.name, st.f) >= 3) n = Math.max(n, i + 1);
+  var tc = css("--text-muted") || "#888", lc = css("--line-strong") || "#999", cols = [css("--s1") || "#3987e5", css("--s3") || "#1baf7a", css("--s2") || "#eb6834", css("--s4") || "#4a3aa7"];
+  var s = svgClear("curve"), X0 = 56, X1 = 500, Y0 = 250, Y1 = 24, ym = function(v){ return Y0 - (clamp(v, -2, 2) + 2) / 4 * (Y0 - Y1); };
+  mk("line", { x1: X0, y1: Y0, x2: X1, y2: Y0, stroke: lc }, s); mk("line", { x1: X0, y1: Y0, x2: X0, y2: Y1, stroke: lc }, s);
+  [-2, -1, 0, 1, 2].forEach(function(v){ tx(s, X0 - 8, ym(v) + 4, String(v), { "text-anchor": "end", "font-size": 11, fill: tc }); mk("line", { x1: X0, y1: ym(v), x2: X1, y2: ym(v), stroke: lc, "stroke-dasharray": v ? "3 4" : "", opacity: v ? 0.35 : 0.9 }, s); });
+  [0, 250, 500, 750, 1000].forEach(function(T){ tx(s, X0 + T / 1000 * (X1 - X0), Y0 + 16, T + " K", { "text-anchor": "middle", "font-size": 10.5, fill: tc }); });
+  tx(s, X0 + 6, ym(-1.7), "spontaneous (ΔG < 0)", { "font-size": 10.5, fill: tc });
+  tx(s, (X0 + X1) / 2, 290, "temperature", { "text-anchor": "middle", "font-size": 11.5, fill: tc });
+  for (i = 0; i < n; i++){ var p = R.procs[i], d = "";
+    for (k = 0; k <= 50; k++){ var T = 1000 * k / 50, v = (p.dH - T * p.dS / 1000) / Math.abs(p.dH); d += (k ? "L" : "M") + (X0 + T / 1000 * (X1 - X0)).toFixed(1) + " " + ym(v).toFixed(1); }
+    mk("path", { d: d, fill: "none", stroke: cols[i], "stroke-width": 2.5 }, s);
+    tx(s, X0 + 250 + i * 60, 14, "— " + KEYS[i], { "font-size": 12, "font-weight": 800, fill: cols[i] }); }
+  var s2 = svgClear("bars"), lg = function(v){ return (v > 0 ? 1 : v < 0 ? -1 : 0) * Math.log(1 + Math.abs(v)) / Math.log(10); }, yb = function(v){ return 137 - lg(v) / 3.4 * 110; };
+  mk("line", { x1: X0, y1: 137, x2: X1, y2: 137, stroke: lc }, s2); mk("line", { x1: X0, y1: 24, x2: X0, y2: 250, stroke: lc }, s2);
+  [-1000, -100, -10, 0, 10, 100, 1000].forEach(function(v){ tx(s2, X0 - 8, yb(v) + 4, String(v), { "text-anchor": "end", "font-size": 10, fill: tc }); });
+  tx(s2, (X0 + X1) / 2, 290, "blue: ΔH (kJ/mol) · orange: ΔS (J/K·mol) · log scale", { "text-anchor": "middle", "font-size": 11.5, fill: tc });
+  for (i = 0; i < 4; i++){ var bx = X0 + 20 + i * 110, q = R.procs[i]; tx(s2, bx + 34, 272, KEYS[i], { "text-anchor": "middle", "font-size": 13, "font-weight": 800, fill: tc });
+    if (i >= n) continue;
+    var h1 = yb(q.dH), h2 = yb(q.dS);
+    mk("rect", { x: bx, y: Math.min(137, h1), width: 30, height: Math.max(2, Math.abs(137 - h1)), fill: cols[0] }, s2);
+    mk("rect", { x: bx + 36, y: Math.min(137, h2), width: 30, height: Math.max(2, Math.abs(137 - h2)), fill: cols[2] }, s2);
+    tx(s2, bx + 15, q.dH > 0 ? h1 - 4 : h1 + 12, (q.dH > 0 ? "+" : "") + q.dH.toFixed(q.dH > -10 && q.dH < 10 ? 1 : 0), { "text-anchor": "middle", "font-size": 9.5, fill: tc });
+    tx(s2, bx + 51, q.dS > 0 ? h2 - 4 : h2 + 12, (q.dS > 0 ? "+" : "") + q.dS.toFixed(q.dS > -10 && q.dS < 10 ? 1 : 0), { "text-anchor": "middle", "font-size": 9.5, fill: tc }); }
+}
+
+/* =====================================================================
+   status, narration, instrument panel, answer panel
+   ===================================================================== */
+var STAGE_ORDER = ORDER;
+function stageKey(){ var sg = seg(); if (RUN.state === "setup") return null; if (RUN.done) return "answer"; return sg ? sg.kind : null; }
+function refreshStatus(){
+  var k = stageKey(), x = $("xstat"), txt, cls = "xstat", g;
+  if (RUN.state === "setup"){ txt = "Ready"; g = isCustom() ? "Custom conditions set — press RUN WITH CUSTOM VALUES." : "Set your values or use the question defaults. Press START EXPERIMENT to begin."; }
+  else if (RUN.done){ txt = "✓ Experiment complete"; cls += " done"; g = "Result obtained."; }
+  else if (k === "load" && RUN.u < 1.5){ txt = "Preparing experiment"; cls += " run"; g = "Preparing the apparatus…"; }
+  else if (k === "test"){ txt = "Analysing data"; cls += " ana"; g = "Analysing experimental evidence…"; }
+  else if (k === "answer"){ txt = "Calculation complete"; cls += " ana"; g = "Calculating the result…"; }
+  else { txt = "Experiment running"; cls += " run"; g = "Experiment running…"; }
+  if (RUN.paused){ txt = "Paused"; cls = "xstat"; g = "Paused — press Play."; }
+  x.className = cls; $("xstattxt").textContent = txt; $("guide").textContent = g;
+  var ki = STAGE_ORDER.indexOf(k), sp = document.querySelectorAll("#stages span"), i;
+  for (i = 0; i < sp.length; i++){ var j = STAGE_ORDER.indexOf(sp[i].getAttribute("data-s")); sp[i].className = k === null ? "" : (j < ki || RUN.done ? "done" : (j === ki ? "now" : "")); }
+}
+function refreshAnswerBox(){
+  var pct = RUN.state === "setup" ? 0 : RUN.done ? 100 : Math.round(100 * elapsed() / TOTAL), k = stageKey(), ab = $("answerbox");
+  $("apbar").style.width = pct + "%"; $("ansstripbar").style.width = pct + "%";
+  ab.classList.remove("locked"); ab.classList.toggle("work", RUN.state === "running");
+  $("ansval").textContent = ANS; $("ansstripv").textContent = ANS;
+  var sub = RUN.state === "setup" ? ANSNOTE + " — press START EXPERIMENT to watch why." : RUN.done ? "✓ Confirmed by the experiment — " + ANSNOTE + "." : "● " + (STAGE_MSG[k] || "…") + "  " + pct + "%";
+  $("anssub").textContent = sub; $("ansstrips").textContent = sub;
+}
+function refreshUI(){
+  var go = $("gobtn"), runn = RUN.state === "running", custom = isCustom();
+  go.hidden = false; go.disabled = runn; go.classList.toggle("custom", custom && !runn);
+  if (runn) go.innerHTML = "● RUNNING…";
+  else if (RUN.state === "done"){ go.innerHTML = "⚙&nbsp; RUN WITH CUSTOM VALUES"; go.hidden = sameD(RUN.D, copyST()); }
+  else go.innerHTML = custom ? "⚙&nbsp; RUN WITH CUSTOM VALUES" : "▶&nbsp; START EXPERIMENT";
+  $("pausebtn").disabled = !runn; $("pausebtn").textContent = RUN.paused ? "Play" : "Pause";
+  $("replaybtn").hidden = RUN.state !== "done";
+  var s = $("status"); s.className = "status" + (custom ? " custom" : "");
+  s.textContent = custom ? "⚙ USING CUSTOM VALUES" : "✓ QUESTION VALUES LOADED";
+  var q = document.querySelectorAll("#fields select, #resetq"), i; for (i = 0; i < q.length; i++) q[i].disabled = runn;
+  $("gomsg").innerHTML = runn ? "The investigation runs by itself — nothing to click. <b>Pause</b> any time." : RUN.state === "done" ? "Press <b>REPLAY</b> to watch it again, or change a condition and run a custom experiment." : (custom ? "Your conditions will be used; the lab will say if the question's pathway no longer applies." : "Nothing needs to be chosen. Press <b>START EXPERIMENT</b>.");
+  refreshStatus();
+}
+
+
+function narrate(st){
+  var h = "", R = RUN.R, f = st.f, i = PROC_OF[st.name], p;
+  if (RUN.state === "setup") h = "Four processes, two signs each. " + (isCustom() ? "Custom processes are loaded — press <b>RUN WITH CUSTOM VALUES</b>." : "The question's processes are loaded — press <b>START EXPERIMENT</b>.");
+  else if (RUN.done) h = R.complete ? "<span class=gd>Case closed.</span> " + ANSNOTE + " — only option <b>(" + R.answer + ")</b> matches all four."
+    : "<span class=o>Your processes give " + R.map.map(function(v, j){ return KEYS[j] + " → " + (v || "–"); }).join(", ") + "</span> — " + (R.hits.length ? "option (" + R.hits.join(",") + "), but not the question's processes." : "no printed option fits.");
+  else if (st.name === "load") h = "<b>Setup:</b> each process gets the instrument that can measure its heat and its entropy change.";
+  else if (i !== undefined){ p = R.procs[i];
+    h = "<b>" + KEYS[i] + " · " + p.name + ":</b> " + (f < PH.dH ? p.how + "…" : f < PH.dS ? "ΔH = " + fmtH(p.dH) + " — heat flows " + (p.dH < 0 ? "<b>out</b> (exothermic)." : "<b>in</b> (endothermic).")
+      : "ΔH = " + fmtH(p.dH) + ", ΔS = " + fmtS(p.dS) + " ⇒ " + (p.l2 ? "List-II (" + p.l2 + ")." : "no List-II entry.")); }
+  else if (st.name === "plane") h = "<b>Sign plane:</b> ΔH up the page, ΔS across. Each quadrant is one List-II entry; the lower half of the vertical axis is (3).";
+  else if (st.name === "test") h = "<b>Options:</b> an option is right only if all four of its entries match what was measured.";
+  else if (st.name === "answer") h = "<b>Analysis complete.</b> One option survives…";
+  $("narr").innerHTML = h;
+  var stp = { load: 1, p: 2, q: 3, r: 4, s: 5, plane: 6, test: 7 };
+  $("trialtag").textContent = stp[st.name] ? "step " + stp[st.name] + " of 7" : (RUN.done ? "case closed" : st.name === "idle" ? "step 1 of 7" : "answer");
+  $("scenet").textContent = RUN.done ? "Experiment complete" : "Thermo-signs lab";
+}
+function updateReadouts(st){
+  var R = RUN.R, n = st.name, f = st.f, i = PROC_OF[n], p = i !== undefined ? R.procs[i] : null, pr = i !== undefined ? progressOf(i, n, f) : 0;
+  var step = { load: "1 · setup", p: "2 · P", q: "3 · Q", r: "4 · R", s: "5 · S", plane: "6 · sign plane", test: "7 · options", answer: "answer" };
+  $("g_st").textContent = step[n] || (RUN.done ? "complete" : "—");
+  $("g_T").textContent = p ? (n === "r" ? Math.round(300 + 100 * clamp((f - 0.05) / 0.6, 0, 1)) : Math.round(p.T)) + " K" : "—";
+  $("g_pr").textContent = RUN.done ? 100 : Math.round(100 * elapsed() / TOTAL);
+  $("g_dh").textContent = p && pr >= 1 ? fmtH(p.dH) : "—";
+  $("g_ds").textContent = p && pr >= 2 ? fmtS(p.dS) : "—";
+  $("g_dg").textContent = p && pr >= 2 ? fmtH(p.dG) : "—";
+  $("g_sg").textContent = p && pr >= 2 ? "ΔH " + signTxt(p.sH) + ", ΔS " + signTxt(p.sS) : "—";
+  $("g_l2").textContent = p && pr >= 3 ? "(" + (p.l2 || "–") + ")" : "—";
+  $("g_v").textContent = RUN.done || n === "answer" ? (R.answer === "none" ? "none" : "(" + R.answer + ")") : "—";
+  $("gz_v").classList.toggle("hot", RUN.done && R.complete);
+  drawCharts(st);
+}
+
+/* =====================================================================
+   ΔG–T explorer - any process, any temperature
+   ===================================================================== */
+var XP = { proc: 0, dir: "fwd", T: 298, auto: false };
+function xpProc(){
+  var p = measure(KEYS[XP.proc], Q), o = {}, k;
+  for (k in p) o[k] = p[k];
+  if (XP.dir === "rev"){ o.dH = -p.dH; o.dS = -p.dS; o.name = "reverse of " + p.name; o.sH = sgn(o.dH, 0.05); o.sS = sgn(o.dS, 0.5); o.l2 = listII(o.sH, o.sS); o.dG = o.dH - o.T * o.dS / 1000; }
+  return o;
+}
+var XR = null;
+function drawExplorer(){
+  var c = $("mol"), g = c.getContext("2d"), p = XR || (XR = xpProc()), W = c.width, H = c.height;
+  hood(g, W, H);
+  if (XP.auto && !REDUCED){ XP.T += 3; if (XP.T > 1500) XP.T = 20; syncT(); }
+  /* the sign plane on the left */
+  var cx = 170, cy = 200, w = 140, h = 130, x = cx + comp(p.dS, 12) * w * 0.86, y = cy - comp(p.dH, 6) * h * 0.86, dG = p.dH - XP.T * p.dS / 1000;
+  g.fillStyle = "rgba(255,120,110,.1)"; g.fillRect(cx, cy - h, w, h); g.fillStyle = "rgba(111,182,255,.1)"; g.fillRect(cx - w, cy, w, h);
+  g.fillStyle = "rgba(255,174,90,.1)"; g.fillRect(cx - w, cy - h, w, h); g.fillStyle = "rgba(62,227,154,.1)"; g.fillRect(cx, cy, w, h);
+  g.strokeStyle = "rgba(220,230,245,.7)"; g.lineWidth = 2; g.beginPath(); g.moveTo(cx - w, cy); g.lineTo(cx + w, cy); g.moveTo(cx, cy - h); g.lineTo(cx, cy + h); g.stroke();
+  label(g, "(1)", cx + w * 0.6, cy - h * 0.8, "#cfe0ff", 14, "center", 900); label(g, "(4)", cx - w * 0.6, cy - h * 0.8, "#cfe0ff", 14, "center", 900);
+  label(g, "(2)", cx - w * 0.6, cy + h * 0.8, "#cfe0ff", 14, "center", 900); label(g, "(5)", cx + w * 0.6, cy + h * 0.8, "#cfe0ff", 14, "center", 900);
+  label(g, "ΔS →", cx + w, cy - 12, "#9fb0cc", 12, "right", 800); label(g, "ΔH ↑", cx + 8, cy - h + 10, "#9fb0cc", 12, "left", 800);
+  point(g, x, y, XP.proc, 1);
+  label(g, p.name, cx, 30, PCOL[XP.proc], 16, "center", 900);
+  /* ΔG against T on the right */
+  var X0 = 380, X1 = 700, Y0 = 60, Y1 = 340, i, gmin = Math.min(p.dH, p.dH - 1500 * p.dS / 1000), gmax = Math.max(p.dH, p.dH - 1500 * p.dS / 1000), span = Math.max(1, gmax - gmin);
+  gmin -= span * 0.1; gmax += span * 0.1; if (gmin > 0) gmin = -span * 0.1; if (gmax < 0) gmax = span * 0.1;
+  var yv = function(v){ return Y1 - (v - gmin) / (gmax - gmin) * (Y1 - Y0); }, xv = function(T){ return X0 + T / 1500 * (X1 - X0); };
+  g.fillStyle = "rgba(62,227,154,.08)"; g.fillRect(X0, yv(0), X1 - X0, Y1 - yv(0));
+  g.strokeStyle = "rgba(220,230,245,.6)"; g.lineWidth = 1.5; g.beginPath(); g.moveTo(X0, Y0); g.lineTo(X0, Y1); g.lineTo(X1, Y1); g.stroke();
+  g.beginPath(); g.moveTo(X0, yv(0)); g.lineTo(X1, yv(0)); g.setLineDash([4, 4]); g.stroke(); g.setLineDash([]);
+  label(g, "ΔG = 0", X1 - 4, yv(0) - 10, "#9fb0cc", 11, "right", 800); label(g, "ΔG < 0: spontaneous", X0 + 6, Y1 - 12, GREEN, 11, "left", 800); label(g, "T (K) →", X1, Y1 + 16, "#9fb0cc", 11, "right", 800);
+  g.strokeStyle = PCOL[XP.proc]; g.lineWidth = 3; g.beginPath(); g.moveTo(xv(0), yv(p.dH)); g.lineTo(xv(1500), yv(p.dH - 1500 * p.dS / 1000)); g.stroke();
+  var mx = xv(XP.T), my = yv(dG); g.save(); if (!REDUCED){ g.shadowColor = dG < 0 ? GREEN : RED; g.shadowBlur = 16; } g.fillStyle = dG < 0 ? GREEN : RED; g.beginPath(); g.arc(mx, my, 8, 0, 7); g.fill(); g.restore();
+  label(g, "ΔG = " + fmtH(dG), mx + (mx > 600 ? -12 : 12), my - 16, dG < 0 ? GREEN : RED, 14, mx > 600 ? "right" : "left", 900);
+  if (p.dS !== 0 && p.dH / p.dS * 1000 > 0 && p.dH / p.dS * 1000 < 1500){ var Tc = p.dH / p.dS * 1000; g.strokeStyle = GOLD; g.setLineDash([3, 4]); g.beginPath(); g.moveTo(xv(Tc), Y0); g.lineTo(xv(Tc), Y1); g.stroke(); g.setLineDash([]); label(g, "T = ΔH/ΔS = " + Math.round(Tc) + " K", xv(Tc) + 4, Y0 + 8, GOLD, 11, "left", 900); }
+  label(g, "T = " + Math.round(XP.T) + " K", 360, H - 26, "#ffffff", 15, "center", 900);
+}
+function syncT(){ $("x_T").value = Math.round(XP.T); $("x_Tv").textContent = Math.round(XP.T) + " K"; showInfo(); }
+function showInfo(){
+  var p = XR || (XR = xpProc()), dG = p.dH - XP.T * p.dS / 1000, K = Math.exp(-dG * 1000 / (RG * XP.T)), Tc = p.dS ? p.dH / p.dS * 1000 : null;
+  var verdict = p.dH < 0 && p.dS > 0 ? "spontaneous at every temperature" : p.dH > 0 && p.dS < 0 ? "never spontaneous" : p.dH < 0 ? "spontaneous below " + Math.round(Tc) + " K" : "spontaneous above " + Math.round(Tc) + " K";
+  $("xinfo").innerHTML = "<h3>" + KEYS[XP.proc] + " · " + p.name + "</h3><table><tr><th>ΔH</th><td>" + fmtH(p.dH) + "</td></tr><tr><th>ΔS</th><td>" + fmtS(p.dS) + "</td></tr>"
+    + "<tr><th>List-II</th><td><b>(" + (p.l2 || "–") + ")</b> " + (p.l2 ? LIST2_TXT[p.l2] : "") + "</td></tr><tr><th>ΔG at " + Math.round(XP.T) + " K</th><td><b>" + fmtH(dG) + "</b></td></tr>"
+    + "<tr><th>K = e<sup>−ΔG/RT</sup></th><td>" + (K > 1e6 || K < 1e-6 ? K.toExponential(2) : K.toPrecision(3)) + "</td></tr><tr><th>Verdict</th><td>" + verdict + "</td></tr></table>"
+    + "<p style='font-size:13px;color:var(--text-secondary);margin-top:8px'>The signs of ΔH and ΔS never change with temperature — only ΔG does.</p>";
+}
+function wireExplorer(){
+  var re = function(){ XR = xpProc(); showInfo(); };
+  $("x_proc").addEventListener("change", function(){ XP.proc = +this.value; re(); });
+  $("x_dir").addEventListener("change", function(){ XP.dir = this.value; re(); });
+  $("x_T").addEventListener("input", function(){ XP.auto = false; XP.T = parseFloat(this.value); $("x_play").setAttribute("aria-pressed", "false"); $("x_Tv").textContent = Math.round(XP.T) + " K"; showInfo(); });
+  $("x_play").addEventListener("click", function(){ XP.auto = !XP.auto; this.setAttribute("aria-pressed", XP.auto ? "true" : "false"); });
+  $("x_reset").addEventListener("click", function(){ XP.proc = 0; XP.dir = "fwd"; XP.T = 298; XP.auto = false; $("x_proc").value = "0"; $("x_dir").value = "fwd"; $("x_play").setAttribute("aria-pressed", "false"); syncT(); re(); });
+  $("mol").addEventListener("keydown", function(e){ if (e.key === "ArrowRight") XP.T = Math.min(1500, XP.T + 25); else if (e.key === "ArrowLeft") XP.T = Math.max(20, XP.T - 25); else return; XP.auto = false; syncT(); e.preventDefault(); });
+  setInterval(function(){ if (XP.auto) showInfo(); }, 400);
+  showInfo();
+}
+var BURST_GLYPHS = ["ΔH", "ΔS", "ΔG", "+", "−", "✦", "●", "✓"];
+function revealMain(R){ return "OPTION (" + R.answer + ")"; }
+function revealGraffiti(R){ return [["ΔG = ΔH − TΔS", 130, 348, -6, "#7fc8ff"], [ANSNOTE, 360, 364, 2, "#ffae5a"], ["Hess ✓ DSC ✓", 604, 348, 7, "#c8e04a"]]; }
+function revealLine1(R){ return "Four processes measured — only one option matches them all."; }
+function revealCustom(R){ return "Your processes give " + R.map.map(function(v, j){ return KEYS[j] + " → " + (v || "–"); }).join(", ") + " — not the question's."; }
+function revealLine2(R){ return R.procs.map(function(p, j){ return KEYS[j] + ": ΔH " + signTxt(p.sH) + ", ΔS " + signTxt(p.sS); }).join(" · "); }
+
+
+/* =====================================================================
+   the answer reveal - EUREKA
+   ===================================================================== */
+function blink(id){ var e = $(id); if (!e) return; e.classList.remove("blink"); void e.offsetWidth; e.classList.add("blink"); setTimeout(function(){ e.classList.remove("blink"); }, 2300); }
+function doReveal(){
+  if (!RUN.done){ earlyReveal = true; refreshGate(); return; }
+  var lab = $("lab3d");
+  lab.classList.add("dim"); $("blackout").classList.add("on");
+  setTimeout(function(){
+    $("blackout").classList.remove("on"); $("donebanner").classList.remove("on");
+    if (!REDUCED){ var f = $("flashout"); f.classList.remove("go"); void f.offsetWidth; f.classList.add("go"); lab.classList.remove("zoom"); void lab.offsetWidth; lab.classList.add("zoom"); }
+    RUN.revealed = true;
+    mountReveal(); refreshGate();
+    var ab = $("answerbox"); ab.classList.remove("celebrate"); void ab.offsetWidth; ab.classList.add("celebrate");
+    setTimeout(function(){ ab.classList.remove("celebrate"); }, 3200);
+    blink("ansval"); blink("grafT"); blink("g_v");
+    setTimeout(function(){ lab.classList.remove("dim"); }, 5200);
+  }, 950);
+}
+function mountReveal(){
+  var host = $("revealhost"), R = RUN.R, ok = R.complete;
+  host.innerHTML = ""; host.classList.add("on");
+  var main = ok ? revealMain(R) : "PATHWAY CHANGED";
+  var svg = mk("svg", { viewBox: "0 0 720 380", "class": "graf", role: "img", "aria-label": (ok ? "Congratulations. Answer found: " : "") + main }, host);
+  var d = mk("defs", {}, svg), sp = mk("filter", { id: "spray", x: "-14%", y: "-40%", width: "128%", height: "180%" }, d);
+  mk("feTurbulence", { type: "fractalNoise", baseFrequency: "0.045 0.09", numOctaves: "3", seed: "7", result: "nz" }, sp);
+  mk("feDisplacementMap", { "in": "SourceGraphic", in2: "nz", scale: "6", xChannelSelector: "R", yChannelSelector: "G" }, sp);
+  var bh = mk("g", {}, svg);
+  if (ok){
+    var gr = [["CHEMISTRY MASTER!", 118, 26, -6, "#ff9350"], ["EUREKA!", 628, 30, 8, "#a99bff"], ["CORRECT!", 84, 190, -12, "#3ee39a"]].concat(revealGraffiti(R)), i;
+    for (i = 0; i < gr.length; i++) tx(svg, gr[i][1], gr[i][2], gr[i][0], { "text-anchor": "middle", "font-size": 22, "font-weight": 900, fill: gr[i][4], opacity: 0.85, transform: "rotate(" + gr[i][3] + " " + gr[i][1] + " " + gr[i][2] + ")", filter: "url(#spray)", "font-family": "ui-rounded,'Comic Sans MS','Marker Felt',cursive" });
+  }
+  tx(svg, 360, 58, ok ? "🎉  ANSWER FOUND!  🎉" : "THE QUESTION'S PATHWAY DOES NOT APPLY", { "text-anchor": "middle", "font-size": ok ? 22 : 17, "font-weight": 900, fill: ok ? "#3ee39a" : "#ffb4b4", "letter-spacing": "2" });
+  tx(svg, 360, 86, ok ? "CONGRATULATIONS!" : "restore the question conditions", { "text-anchor": "middle", "font-size": 13, "font-weight": 800, fill: "#9fb0cc", "letter-spacing": "5" });
+  mk("rect", { x: 150, y: 104, width: 420, height: 150, rx: 16, fill: "rgba(8,20,16,.72)", stroke: ok ? "#3ee39a" : "#ff6b6b", "stroke-width": 2 }, svg);
+  tx(svg, 360, 128, ok ? "THE ANSWER" : "CUSTOM RUN", { "text-anchor": "middle", "font-size": 12, "font-weight": 800, fill: "#9ff0c9", "letter-spacing": "6" });
+  var gg = mk("g", { transform: "translate(360,206) skewX(-9)" }, svg), fs = main.length > 12 ? 38 : 50;
+  tx(gg, 7, 9, main, { "text-anchor": "middle", "font-size": fs, "font-weight": 900, fill: "#a99bff", opacity: 0.34, filter: "url(#spray)" });
+  tx(gg, 0, 0, main, { id: "grafT", "text-anchor": "middle", "font-size": fs, "font-weight": 900, fill: ok ? "#3ee39a" : "#ffb4b4", filter: "url(#spray)" });
+  tx(svg, 360, 284, ok ? revealLine1(R) : revealCustom(R), { "text-anchor": "middle", "font-size": 15, "font-weight": 700, fill: "#eef3ff" });
+  tx(svg, 360, 306, revealLine2(R), { "text-anchor": "middle", "font-size": 14, fill: "#9fb0cc" });
+  if (!REDUCED && ok) makeBurst(bh);
+}
+function makeBurst(host){
+  burst = [];
+  var i, n = 90, GL = BURST_GLYPHS, a, sp2, conf, node, cols = ["#3ee39a", "#a99bff", "#54a9ff", "#ff9350", "#c8e04a"];
+  for (i = 0; i < n; i++){
+    a = Math.random() * Math.PI * 2; sp2 = 90 + Math.random() * 300; conf = i % 3 === 0;
+    node = conf ? mk("rect", { x: -4, y: -3, width: 8, height: 6, rx: 1.5, fill: cols[i % 5] }, host) : tx(host, 0, 0, GL[i % GL.length], { "text-anchor": "middle", "font-size": 11 + Math.random() * 8, fill: cols[i % 5], "font-weight": 800 });
+    burst.push({ n: node, x: 360, y: 190, vx: Math.cos(a) * sp2, vy: Math.sin(a) * sp2 - 70, life: 0, max: 1.6 + Math.random() * 1.2, rot: Math.random() * 360, vr: (Math.random() - 0.5) * 540 });
+  }
+}
+function stepBurst(dt){
+  var i, b;
+  for (i = 0; i < burst.length; i++){
+    b = burst[i]; if (b.life > b.max){ b.n.setAttribute("opacity", 0); continue; }
+    b.life += dt; b.vy += 420 * dt; b.x += b.vx * dt; b.y += b.vy * dt; b.rot += b.vr * dt;
+    b.n.setAttribute("opacity", Math.max(0, 1 - b.life / b.max).toFixed(2));
+    b.n.setAttribute("transform", "translate(" + b.x.toFixed(1) + "," + b.y.toFixed(1) + ") rotate(" + b.rot.toFixed(0) + ")");
+  }
+}
+function refreshGate(){
+  $("solgate").hidden = true; $("solbody").hidden = false; $("revealnow").hidden = true;
+  $("solans").textContent = ANS; $("clsans").textContent = ANS + "  (" + ANSNOTE + ")";
+  refreshAnswerBox();
+}
+
+/* =====================================================================
+   the loop - one virtual clock, so Pause and speed govern everything
+   ===================================================================== */
+var last = 0, slow = 0;
+function loop(ts){
+  var dt = last ? (ts - last) / 1000 : 0; last = ts;
+  if (dt > 0.06) dt = 0.06;
+  var running = RUN.state === "running" && !RUN.paused;
+  if (running) stepTimeline(dt * RUN.speed);
+  if (!RUN.paused) clock += dt * (running ? RUN.speed : 1) * (REDUCED ? 0.3 : 1);
+  var st = currentState(); NOW = st;
+  if (!RUN.paused) fxStep(dt * (running ? RUN.speed : 1));
+  drawLab(st);
+  drawExplorer();
+  if (burst.length) stepBurst(dt);
+  slow += dt;
+  if (slow > 0.08){ slow = 0; updateReadouts(st); narrate(st); refreshStatus(); refreshAnswerBox(); }
+  requestAnimationFrame(loop);
+}
+
+/* =====================================================================
+   wiring
+   ===================================================================== */
+function afterEdit(){ readAll(); if (RUN.state === "setup"){ RUN.D = copyST(); RUN.R = run(RUN.D); } refreshUI(); }
+function toggleClassroom(){
+  RUN.classroom = !RUN.classroom;
+  document.body.classList.toggle("classroom", RUN.classroom);
+  $("classbtn").setAttribute("aria-pressed", RUN.classroom ? "true" : "false");
+  $("classbtn").textContent = RUN.classroom ? "EXIT CLASSROOM MODE" : "CLASSROOM MODE";
+  if (RUN.classroom) try { $("deck").scrollIntoView({ behavior: REDUCED ? "auto" : "smooth", block: "start" }); } catch (e) {}
+}
+function build(){
+  $("fields").innerHTML = fieldsHTML();
+  var i;
+  for (i = 0; i < FIELDS.length; i++) $("in_" + FIELDS[i].k).addEventListener("change", afterEdit);
+  $("resetq").addEventListener("click", resetAll);
+  $("gobtn").addEventListener("click", function(){ if (RUN.state !== "running") startRun(); });
+  $("pausebtn").addEventListener("click", function(){ RUN.paused = !RUN.paused; refreshUI(); });
+  $("replaybtn").addEventListener("click", function(){ startRun(RUN.D); });
+  $("resetbtn").addEventListener("click", resetAll);
+  $("classbtn").addEventListener("click", toggleClassroom);
+  $("revealnow").addEventListener("click", function(){ earlyReveal = true; refreshGate(); });
+  $("gotolab").addEventListener("click", function(){ $("lab").scrollIntoView({ behavior: REDUCED ? "auto" : "smooth" }); });
+  var tg = function(id, key){ $(id).addEventListener("click", function(){ SHOW[key] = !SHOW[key]; this.setAttribute("aria-pressed", SHOW[key] ? "true" : "false"); }); };
+  tg("t_eq", "eq"); tg("t_obs", "obs"); tg("t_why", "why");
+  $("t_cmp").addEventListener("click", function(){ RUN.speed = RUN.speed === 0.5 ? 1 : 0.5; this.setAttribute("aria-pressed", RUN.speed === 0.5 ? "true" : "false"); var sb = document.querySelectorAll("#spd button"), j; for (j = 0; j < sb.length; j++) sb[j].setAttribute("aria-pressed", "false"); });
+  $("t_rot").addEventListener("click", function(){ $("explorer").scrollIntoView({ behavior: REDUCED ? "auto" : "smooth" }); $("mol").focus(); });
+  var sb = document.querySelectorAll("#spd button");
+  for (i = 0; i < sb.length; i++) sb[i].addEventListener("click", function(){
+    RUN.speed = parseFloat(this.getAttribute("data-s"));
+    for (var j = 0; j < sb.length; j++) sb[j].setAttribute("aria-pressed", sb[j] === this ? "true" : "false");
+  });
+  $("themebtn").addEventListener("click", function(){
+    var r = document.documentElement, dark = r.getAttribute("data-theme") === "dark" || (!r.getAttribute("data-theme") && matchMedia("(prefers-color-scheme: dark)").matches);
+    r.setAttribute("data-theme", dark ? "light" : "dark");
+  });
+  wireExplorer();
+  readAll(); drawLog(); refreshGate(); refreshUI(); refreshAnswerBox();
+  requestAnimationFrame(loop);
+}
+if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", build); else build();
+
+/* exposed for the headless test harness */
+window.PX = {
+  Q: Q, ST: ST, RUN: RUN, run: run, measure: measure, s3D: s3D, s2D: s2D, dscScan: dscScan, listII: listII, OPTS: OPTS, LIST2: LIST2, DATA: DATA,
+  answer: function(){ return ANS; }, qrun: function(){ return QRUN; },
+  start: function(){ startRun(); }, replay: function(){ startRun(RUN.D); }, reset: resetAll,
+  pause: function(){ RUN.paused = !RUN.paused; refreshUI(); }, speed: function(s){ RUN.speed = s; },
+  setField: function(k, v){ $("in_" + k).value = v; afterEdit(); },
+  stage: stageKey, cards: function(){ return RUN.cards; }, badges: function(){ return RUN.badges; }, trial: function(){ return RUN.trial; },
+  calcKeys: calcKeys, now: function(){ return NOW; }, explorer: XP, xrun: function(){ return XR; }
+};
+
+})();
+</script>
+</body>
+</html>

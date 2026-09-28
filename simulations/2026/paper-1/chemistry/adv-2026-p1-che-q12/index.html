@@ -1,0 +1,2522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Straight-Line Carbon Lab — buta-1,3-diyne, NaNH₂ and crotyl bromide — JEE Advanced 2026 Paper 1 Q.12 | PrayogX</title>
+<meta name="description" content="A two-level virtual organic lab: in liquid ammonia, sodium amide pulls both terminal protons off buta-1,3-diyne while curved arrows show each deprotonation; the acetylide dianion then attacks trans-crotyl bromide twice by SN2 backside attack as NaBr precipitates. A 3-D model built from hybridisation angles fires a laser through the carbons that lie on one straight line - count them.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232a78d6'/%3E%3Cpath d='M12.5 6.5h7M13.6 6.5v7.2L7.9 24.1a1.5 1.5 0 0 0 1.3 2.3h13.6a1.5 1.5 0 0 0 1.3-2.3l-5.7-10.4V6.5' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M10.6 20.6h10.8' stroke='white' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E">
+<meta name="sim-id" content="ADV-2026-P1-CHE-Q12">
+<style>
+:root{
+  color-scheme: light;
+  --surface-0:#f4f4f1; --surface-1:#fcfcfb; --surface-2:#ececea;
+  --line:#d9d9d4; --line-strong:#bcbcb5;
+  --text-primary:#0b0b0b; --text-secondary:#52514e; --text-muted:#77766f;
+  --s1:#2a78d6; --s2:#eb6834; --s3:#1baf7a; --s4:#4a3aa7;
+  --good:#00743f; --bad:#c0392b; --accent:#2a78d6;
+  --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+  --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --serif:ui-serif,Georgia,"Times New Roman",serif;
+  --radius:10px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  color-scheme: dark;
+  --surface-0:#111110; --surface-1:#1a1a19; --surface-2:#232322;
+  --line:#34342f; --line-strong:#4a4a44;
+  --text-primary:#ffffff; --text-secondary:#c3c2b7; --text-muted:#95948b;
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#9085e9;
+  --good:#3fae7a; --bad:#e66767; --accent:#3987e5;
+}}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --surface-0:#111110; --surface-1:#1a1a19; --surface-2:#232322;
+  --line:#34342f; --line-strong:#4a4a44;
+  --text-primary:#ffffff; --text-secondary:#c3c2b7; --text-muted:#95948b;
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#9085e9;
+  --good:#3fae7a; --bad:#e66767; --accent:#3987e5;
+}
+*{box-sizing:border-box}
+[hidden]{display:none !important}
+body{margin:0;background:var(--surface-0);color:var(--text-primary);font-family:var(--sans);
+  font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px 80px}
+
+/* ---------- header ---------- */
+header.top{border-bottom:1px solid var(--line);background:var(--surface-1)}
+.top-inner{max-width:1180px;margin:0 auto;padding:22px 20px 18px;position:relative;
+  display:flex;flex-wrap:wrap;gap:16px;align-items:flex-start;justify-content:space-between}
+.simid{font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--text-muted)}
+h1{font-size:23px;line-height:1.25;margin:6px 0 10px;font-weight:640;max-width:660px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-size:11.5px;padding:3px 9px;border:1px solid var(--line-strong);border-radius:999px;
+  color:var(--text-secondary);background:var(--surface-2);white-space:nowrap}
+.chip.k{border-color:var(--accent);color:var(--accent);background:transparent}
+.answerbox{border:1px solid var(--line-strong);border-radius:var(--radius);background:var(--surface-2);
+  padding:12px 16px;min-width:220px}
+.answerbox .lbl{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted)}
+.answerbox .val{font-family:var(--mono);font-size:25px;font-weight:600;color:var(--good);line-height:1.22}
+.answerbox .sub{font-size:12px;color:var(--text-secondary)}
+.answerbox.locked .val{color:var(--text-muted);font-size:17px;letter-spacing:.04em}
+.answerbox .rv{margin-top:6px;font-size:11px;background:none;border:none;padding:0;color:var(--accent);
+  cursor:pointer;text-decoration:underline;font-family:var(--sans)}
+.themebtn{position:absolute;top:14px;right:16px;border:1px solid var(--line-strong);background:var(--surface-2);
+  color:var(--text-secondary);border-radius:8px;padding:4px 9px;font-size:12px;cursor:pointer}
+.brandbar{display:flex;align-items:center;gap:8px;margin-bottom:9px}
+.brandbar .pxmark{width:21px;height:21px;flex:none;display:block}
+.brandbar .wm{font-size:13px;font-weight:800;letter-spacing:.17em;color:var(--text-secondary);line-height:1}
+.brandbar .wm i{font-style:normal;color:var(--accent)}
+
+nav.jump{position:sticky;top:0;z-index:20;background:var(--surface-0);border-bottom:1px solid var(--line);
+  padding:8px 0;margin-bottom:26px}
+nav.jump ul{max-width:1180px;margin:0 auto;padding:0 20px;list-style:none;display:flex;gap:4px;overflow-x:auto}
+nav.jump a{display:block;padding:5px 11px;border-radius:7px;font-size:13px;text-decoration:none;
+  color:var(--text-secondary);white-space:nowrap}
+nav.jump a:hover{background:var(--surface-2);color:var(--text-primary)}
+
+section{margin:0 0 42px;scroll-margin-top:56px}
+h2{font-size:17px;font-weight:640;margin:0 0 4px;display:flex;align-items:baseline;gap:9px;flex-wrap:wrap}
+h2 .n{font-family:var(--mono);font-size:12px;color:var(--text-muted);font-weight:400}
+h2 .vb{font-size:12px;color:var(--text-muted);font-weight:400}
+h2.big{font-size:20px;letter-spacing:.02em}
+.lede{color:var(--text-secondary);font-size:13.5px;margin:0 0 16px;max-width:78ch}
+.panel{background:var(--surface-1);border:1px solid var(--line);border-radius:var(--radius);padding:18px}
+.panel h3{margin:0 0 12px;font-size:13px;letter-spacing:.05em;text-transform:uppercase;color:var(--text-muted);font-weight:600}
+.qtext{font-family:var(--serif);font-size:16px;line-height:1.7}
+.opts{list-style:none;padding:0;margin:14px 0 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(150px,100%),1fr));gap:9px}
+.opts li{border:1px solid var(--line);border-radius:10px;padding:9px 12px;background:var(--surface-1);
+  display:flex;align-items:baseline;gap:10px;font-family:var(--serif);font-size:16px}
+.opts li .k{font-family:var(--mono);font-size:12.5px;color:var(--text-muted)}
+.opts li .mark{margin-left:auto;font-family:var(--sans);font-size:11.5px;font-weight:600}
+.opts li.correct{border-color:var(--good);background:color-mix(in srgb,var(--good) 11%,transparent)}
+.opts li.correct .mark{color:var(--good)}
+.opts li.wrong{border-color:var(--bad)} .opts li.wrong .mark{color:var(--bad)}
+.assume{border-left:3px solid var(--s4);padding:8px 0 8px 13px;margin:14px 0 0;font-size:13.5px;color:var(--text-secondary)}
+.assume b{color:var(--text-primary)}
+
+/* ---------- the dashboard ---------- */
+.deck{border:1px solid var(--line);border-radius:var(--radius);padding:14px;
+  background:linear-gradient(180deg,var(--surface-1),color-mix(in srgb,var(--surface-2) 55%,var(--surface-1)));
+  box-shadow:0 1px 2px rgba(0,0,0,.04),0 10px 26px -18px rgba(0,0,0,.35)}
+.statusbar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding-bottom:11px;border-bottom:1px solid var(--line);margin-bottom:12px}
+.xstat{display:flex;align-items:center;gap:8px;font-size:12.5px;font-weight:700;letter-spacing:.03em;
+  padding:5px 12px;border-radius:999px;border:1px solid var(--line-strong);background:var(--surface-1);color:var(--text-secondary)}
+.xstat .dot{width:9px;height:9px;border-radius:50%;background:var(--text-muted)}
+.xstat.run .dot{background:var(--accent);animation:pulse 1.2s ease-in-out infinite}
+.xstat.ana .dot{background:var(--s4);animation:pulse 1.2s ease-in-out infinite}
+.xstat.done{border-color:var(--good);color:var(--good);background:color-mix(in srgb,var(--good) 10%,transparent)}
+.xstat.done .dot{background:var(--good)}
+@keyframes pulse{50%{opacity:.25}}
+.stages{display:flex;gap:5px;flex-wrap:wrap}
+.stages span{font-size:11px;padding:3px 9px;border-radius:999px;border:1px solid var(--line);color:var(--text-muted);white-space:nowrap}
+.stages span.now{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:650}
+.stages span.done{border-color:var(--good);color:var(--good)}
+.statusbar .sp{flex:1}
+.guide{font-size:12px;color:var(--text-muted)}
+
+.grid1{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:13px;align-items:start}
+.grid2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:13px;margin-top:13px}
+.grid1>*,.grid2>*{min-width:0}
+@media(max-width:960px){.grid1,.grid2{grid-template-columns:1fr !important}}
+
+/* the always-dark chamber */
+.lab3d{position:relative;border-radius:12px;padding:12px;overflow:hidden;
+  background:radial-gradient(90% 70% at 18% 8%,rgba(84,169,255,.16),transparent 60%),
+    radial-gradient(80% 70% at 88% 92%,rgba(255,147,80,.12),transparent 62%),
+    linear-gradient(170deg,#0d1322 0%,#070a12 55%,#0a0e1a 100%);
+  border:1px solid rgba(150,180,255,.16);box-shadow:inset 0 1px 0 rgba(255,255,255,.07),0 18px 40px -26px rgba(0,0,0,.9);
+  color:#eef3ff}
+.lab3d:before{content:"";position:absolute;inset:0;pointer-events:none;
+  background:repeating-linear-gradient(0deg,rgba(255,255,255,.028) 0 1px,transparent 1px 3px);opacity:.5;mix-blend-mode:overlay}
+.lab3d>*{position:relative}
+.lab3d .hd{display:flex;align-items:baseline;gap:9px;flex-wrap:wrap;margin-bottom:5px}
+.lab3d .hd h3{margin:0;font-size:11.5px;letter-spacing:.11em;text-transform:uppercase;color:#8fa6c9;font-weight:700}
+.lab3d .hd .st{font-size:10.5px;font-family:var(--mono);color:#9fb0cc;border:1px solid rgba(160,190,255,.2);border-radius:999px;padding:1px 8px}
+.lab3d .narr{font-size:12.5px;color:#c3d2ea;margin:0 0 8px;min-height:2.8em;line-height:1.42}
+.lab3d .narr b{color:#fff;font-family:var(--mono);font-weight:650}
+.lab3d .narr .a{color:#6fb6ff;font-weight:700} .lab3d .narr .o{color:#ffa56a;font-weight:700}
+.lab3d .narr .gd{color:#3ee39a;font-weight:700}
+.vwrap{position:relative;perspective:1000px}
+canvas#labcv{display:block;width:100%;height:auto;border-radius:10px;transform:rotateX(2.5deg);transform-origin:50% 100%}
+@media(max-width:560px){.vwrap{overflow:hidden}canvas#labcv{width:128%;max-width:none;margin-left:-14%}}
+@media(prefers-reduced-motion:reduce){canvas#labcv{transform:none}}
+.done-banner{position:absolute;left:50%;top:14px;transform:translateX(-50%) scale(.92);opacity:0;pointer-events:none;
+  background:rgba(10,30,24,.8);border:1px solid rgba(62,227,154,.6);color:#dfffee;border-radius:12px;padding:8px 18px;
+  font-weight:800;letter-spacing:.1em;font-size:14px;box-shadow:0 0 28px -6px rgba(62,227,154,.7);transition:.45s;white-space:nowrap}
+.done-banner.on{opacity:1;transform:translateX(-50%) scale(1)}
+.revealhost{position:absolute;inset:0;display:none;align-items:center;justify-content:center;z-index:6}
+.revealhost.on{display:flex}
+svg.graf{display:block;width:100%;height:auto}
+.blackout{position:absolute;inset:0;background:#000;opacity:0;pointer-events:none;transition:opacity .45s;z-index:4;border-radius:12px}
+.blackout.on{opacity:.86}
+.flashout{position:absolute;inset:0;background:radial-gradient(circle at 50% 45%,rgba(255,255,255,.95),rgba(120,255,200,.5) 35%,transparent 70%);
+  opacity:0;pointer-events:none;z-index:5;border-radius:12px}
+@keyframes flashpop{0%{opacity:0}18%{opacity:1}100%{opacity:0}}
+.flashout.go{animation:flashpop .85s ease-out 1}
+@media(prefers-reduced-motion:reduce){.flashout.go{animation:none}.blackout{transition:none}}
+.dim canvas#labcv{filter:brightness(.4) saturate(.8)}
+@media(prefers-reduced-motion:no-preference){.zoom{animation:zoomin 1.1s ease-out 1}}
+@keyframes zoomin{0%{transform:scale(1)}40%{transform:scale(1.035)}100%{transform:scale(1)}}
+
+/* the rail: inputs + live data */
+.rail{border:1px solid var(--line);border-radius:12px;padding:11px 12px;
+  background:color-mix(in srgb,var(--surface-1) 82%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  box-shadow:inset 0 1px 0 color-mix(in srgb,#fff 40%,transparent),0 8px 24px -18px rgba(0,0,0,.4);
+  display:flex;flex-direction:column;gap:9px}
+.rail h4{margin:0;font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--text-muted);font-weight:700}
+.rail .grp{border-top:1px dashed var(--line);padding-top:9px}
+.status{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:750;letter-spacing:.04em;border-radius:8px;padding:6px 9px;
+  border:1px solid var(--good);color:var(--good);background:color-mix(in srgb,var(--good) 10%,transparent)}
+.status.custom{border-color:var(--s4);color:var(--s4);background:color-mix(in srgb,var(--s4) 10%,transparent)}
+.fld{margin:7px 0 0}
+.fld .lb{display:flex;justify-content:space-between;align-items:baseline;gap:6px;font-size:12px;margin-bottom:4px;color:var(--text-secondary)}
+.fld .lb b{font-weight:600;color:var(--text-primary);font-family:var(--serif);font-size:13.5px}
+.fld .lb .u{font-size:10.5px;color:var(--text-muted);font-family:var(--mono);flex:none}
+.fld .rw{display:flex;gap:5px;align-items:center}
+.fld .rw input{flex:1;min-width:0;padding:6px 8px;border-radius:7px;border:1px solid var(--line-strong);background:var(--surface-0);
+  color:var(--text-primary);font-family:var(--mono);font-size:13.5px;text-align:center;font-weight:600}
+.fld .rw input:focus{outline:2px solid var(--accent);outline-offset:-1px}
+.fld .rw input.bad{border-color:var(--bad);background:color-mix(in srgb,var(--bad) 10%,transparent)}
+.fld .rw input:disabled{opacity:.55}
+.fld .rw button{flex:none;width:34px;height:34px;border-radius:7px;border:1px solid var(--line-strong);background:var(--surface-2);
+  color:var(--text-primary);font-size:16px;line-height:1;cursor:pointer;font-family:var(--mono);touch-action:manipulation}
+.fld .rw button.rs{font-size:13px}
+.fld .rw button:hover:not(:disabled){border-color:var(--accent);color:var(--accent)}
+.fld .rw button:disabled{opacity:.4;cursor:not-allowed}
+.fld .fh{font-size:10.5px;color:var(--text-muted);margin-top:2px;line-height:1.35;min-height:1.35em}
+.fld .fh.bad{color:var(--bad);font-weight:650}
+.railnote{font-size:11px;color:var(--text-muted);line-height:1.45;margin:0}
+button.resetq{width:100%;padding:8px 10px;border-radius:9px;border:1px solid var(--line-strong);background:var(--surface-2);
+  color:var(--text-primary);font-size:12.5px;font-weight:650;cursor:pointer;font-family:var(--sans)}
+button.resetq:hover{border-color:var(--accent);color:var(--accent)}
+.gauges{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(104px,100%),1fr));gap:6px}
+.gz{border:1px solid var(--line);border-radius:9px;background:var(--surface-2);padding:5px 8px;overflow:hidden}
+.gz .k{font-size:9.5px;letter-spacing:.04em;text-transform:uppercase;color:var(--text-muted);font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.gz .v{font-family:var(--mono);font-size:16px;font-weight:700;line-height:1.25;white-space:nowrap}
+.gz .u{font-size:9.5px;color:var(--text-muted);font-weight:400}
+.gz.a .v{color:var(--s1)} .gz.o .v{color:var(--s2)}
+.gz.hot{border-color:var(--good);background:color-mix(in srgb,var(--good) 11%,transparent)} .gz.hot .v{color:var(--good)}
+
+/* graphs */
+.graphcard{border:1px solid var(--line);border-radius:12px;background:var(--surface-1);padding:12px 14px}
+.graphcard h4{margin:0 0 4px;font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--text-muted);font-weight:700}
+.graphcard .gsub{font-size:11.5px;color:var(--text-muted);margin:0 0 4px}
+.chartwrap{position:relative}
+svg.chart{display:block;width:100%;height:auto;overflow:visible}
+.tip{position:absolute;pointer-events:none;background:var(--surface-1);border:1px solid var(--line-strong);border-radius:8px;padding:7px 10px;
+  font-size:12px;box-shadow:0 4px 14px rgba(0,0,0,.13);opacity:0;transition:opacity .1s;z-index:5;min-width:140px}
+.tip .t{font-family:var(--mono);font-size:11px;color:var(--text-muted);margin-bottom:3px}
+.tip .r{display:flex;gap:7px;white-space:nowrap} .tip .rv{margin-left:auto;font-family:var(--mono);font-weight:600}
+details.tbl{margin-top:6px;font-size:12.5px} details.tbl summary{cursor:pointer;color:var(--text-secondary)}
+
+/* calculation panel */
+.calc{margin-top:13px;border:1px solid var(--line);border-radius:12px;padding:12px 14px;
+  background:linear-gradient(180deg,var(--surface-1),var(--surface-2))}
+.calc .bt{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--text-muted);font-weight:700;margin-bottom:6px}
+.calc ol{list-style:none;margin:0;padding:0;display:grid;gap:5px}
+.calc li{display:grid;grid-template-columns:auto minmax(0,1fr);gap:10px;align-items:baseline;animation:cin .45s ease-out}
+@keyframes cin{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.calc li{animation:none}}
+.calc li .s{font-family:var(--mono);font-size:10.5px;color:#fff;background:var(--accent);border-radius:999px;padding:1px 7px;font-weight:700}
+.calc li .m{font-family:var(--serif);font-size:16px;line-height:1.55;min-width:0;overflow-x:auto}
+.calc li .m .w{display:block;font-family:var(--sans);font-size:11.5px;color:var(--text-muted)}
+.calc li .m .hl{color:var(--good);font-weight:700}
+.calc li .m .ar{color:var(--s1);font-weight:700} .calc li .m .or{color:var(--s2);font-weight:700}
+.calc .empty{font-size:12.5px;color:var(--text-muted);margin:0}
+table.data{border-collapse:collapse;font-size:12.5px;width:100%}
+table.data th,table.data td{border:1px solid var(--line-strong);padding:5px 8px;text-align:center}
+table.data th{background:var(--surface-2);font-weight:600;font-size:11.5px;color:var(--text-secondary)}
+table.data td.n{font-family:var(--mono)}
+tr.win td{background:color-mix(in srgb,var(--good) 12%,transparent);font-weight:700}
+.scrollx{overflow-x:auto}
+
+/* action bar */
+.actbar{display:flex;gap:9px;align-items:center;flex-wrap:wrap;margin-top:12px}
+button.go{flex:none;padding:13px 24px;border-radius:11px;border:none;background:var(--accent);color:#fff;font-size:15px;font-weight:780;
+  cursor:pointer;font-family:var(--sans);letter-spacing:.04em;box-shadow:0 4px 16px -6px color-mix(in srgb,var(--accent) 75%,transparent);transition:.18s}
+button.go:hover:not(:disabled){filter:brightness(1.09);transform:translateY(-1px)}
+button.go:disabled{opacity:.42;cursor:not-allowed;box-shadow:none;transform:none}
+button.go.custom{background:var(--s4)}
+button.ghost{flex:none;padding:8px 13px;border-radius:9px;border:1px solid var(--line-strong);background:var(--surface-1);color:var(--text-secondary);
+  font-size:12.5px;cursor:pointer;font-family:var(--sans);min-height:36px}
+button.ghost:hover:not(:disabled){border-color:var(--accent);color:var(--accent)}
+button.ghost:disabled{opacity:.4;cursor:not-allowed}
+button.ghost[aria-pressed=true]{border-color:var(--accent);color:var(--accent);background:color-mix(in srgb,var(--accent) 10%,transparent)}
+.spd{display:flex;gap:4px}
+.spd button{padding:7px 10px;font-size:11.5px;border-radius:7px;border:1px solid var(--line-strong);background:var(--surface-1);color:var(--text-secondary);cursor:pointer;font-family:var(--mono)}
+.spd button[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:#fff}
+.actbar .msg{flex:1 1 220px;min-width:0;font-size:12px;color:var(--text-secondary);line-height:1.4}
+.actbar .msg b{color:var(--text-primary)}
+
+@keyframes popblink{0%{transform:scale(1)} 12%{transform:scale(1.16)} 24%{transform:scale(1)}
+  38%{opacity:.2} 50%{opacity:1} 64%{opacity:.2} 76%{opacity:1} 88%{transform:scale(1.07)} 100%{transform:scale(1);opacity:1}}
+.blink{animation:popblink 2s ease-in-out 1;display:inline-block}
+@keyframes ringpulse{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--good) 55%,transparent)} 70%{box-shadow:0 0 0 14px transparent} 100%{box-shadow:0 0 0 0 transparent}}
+.celebrate{animation:ringpulse 1.5s ease-out 2}
+@media(prefers-reduced-motion:reduce){.blink,.celebrate,.zoom{animation:none}}
+
+/* solution + help */
+.gate{border:1px dashed var(--line-strong);border-radius:var(--radius);padding:24px 20px;text-align:center;background:var(--surface-1)}
+.gate h4{margin:0 0 6px;font-size:15px} .gate p{margin:0 0 12px;font-size:13px;color:var(--text-secondary)}
+ol.steps{list-style:none;counter-reset:s;padding:0;margin:0;display:grid;gap:10px}
+ol.steps li{min-width:0;counter-increment:s;border:1px solid var(--line);border-radius:var(--radius);background:var(--surface-1);
+  padding:14px 16px 14px 52px;position:relative}
+ol.steps li::before{content:counter(s);position:absolute;left:15px;top:14px;width:23px;height:23px;border-radius:50%;background:var(--accent);
+  color:#fff;font-size:12px;font-weight:700;display:grid;place-items:center;font-family:var(--mono)}
+ol.steps h4{margin:0 0 6px;font-size:14px;font-weight:640}
+ol.steps p{margin:0 0 6px;font-size:13.5px;color:var(--text-secondary)}
+.eq{min-width:0;font-family:var(--serif);font-size:15.5px;background:var(--surface-2);border-radius:7px;padding:9px 13px;margin:8px 0;overflow-x:auto}
+.eq .hl{color:var(--good);font-weight:700}
+.obsnote{border-left:3px solid var(--s1);padding:6px 0 6px 12px;margin:8px 0;font-size:13px;color:var(--text-secondary)}
+.obsnote b{color:var(--text-primary)}
+sub{font-size:.72em} sup{font-size:.72em}
+.verify{border:1px solid var(--good);border-radius:var(--radius);margin-top:12px;background:color-mix(in srgb,var(--good) 8%,transparent);padding:14px 16px;font-size:13.5px}
+.verify h4{margin:0 0 6px;font-size:13.5px;color:var(--good)}
+.verify ul{margin:6px 0 0;padding-left:18px;color:var(--text-secondary)} .verify li{margin-bottom:4px}
+.howto{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(250px,100%),1fr));gap:11px}
+.howto>div{border:1px solid var(--line);border-radius:11px;padding:12px 14px;background:linear-gradient(180deg,var(--surface-1),var(--surface-2))}
+.howto .n{font-family:var(--mono);font-size:10.5px;color:var(--accent);letter-spacing:.1em;font-weight:700}
+.howto h4{margin:3px 0 6px;font-size:14px}
+.howto p{margin:0;font-size:13px;color:var(--text-secondary);line-height:1.5}
+.howto p b{color:var(--text-primary)}
+.meta-tbl{width:100%;border-collapse:collapse;font-size:13.5px}
+.meta-tbl th,.meta-tbl td{padding:6px 0;border-bottom:1px solid var(--line);vertical-align:top;text-align:left}
+.meta-tbl th{color:var(--text-muted);width:150px;font-size:12.5px;padding-right:14px;font-weight:500}
+footer{border-top:1px solid var(--line);margin-top:40px;padding-top:16px;font-size:12px;color:var(--text-muted)}
+
+/* classroom mode */
+body.classroom nav.jump,body.classroom section:not(#lab),body.classroom header.top .chips,body.classroom footer,
+body.classroom .rail .inputs,body.classroom .spd,body.classroom details.tbl,body.classroom #lab>.lede{display:none !important}
+body.classroom .wrap{max-width:none;padding-left:18px;padding-right:18px}
+body.classroom .lab3d .narr{font-size:20px;line-height:1.45;color:#e8f0ff}
+body.classroom .lab3d .hd h3{font-size:15px}
+body.classroom .gz .v{font-size:24px} body.classroom .gz .k{font-size:12px}
+body.classroom .calc li .m{font-size:25px} body.classroom .calc li .m .w{font-size:15px}
+body.classroom .xstat{font-size:16px} body.classroom .stages span{font-size:14px}
+body.classroom button.go{font-size:19px;padding:16px 30px}
+body.classroom .graphcard h4{font-size:13px}
+body.classroom .actbar .msg{font-size:15px}
+
+/* Q03 additions */
+.fgrid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0 8px}
+.fgrid>*{min-width:0}
+.fld .rw input{width:100%}
+.fgrid .fld.full{grid-column:1/-1}
+.fld.half .rw button.rs{display:none}
+.fld.half .fh{font-size:10px}
+.chem{font-family:var(--serif);white-space:nowrap}
+#opts{grid-template-columns:repeat(auto-fit,minmax(min(250px,100%),1fr))}
+#opts li{flex-wrap:wrap}
+@media(max-width:560px){.vwrap{overflow:visible}canvas#labcv{width:100%;margin-left:0}}
+.rankline{font-family:var(--serif);font-size:17px;font-weight:700}
+.legend{display:flex;flex-wrap:wrap;gap:4px 12px;font-size:11.5px;color:var(--text-secondary);margin:2px 0 4px}
+.legend i{display:inline-block;width:14px;height:3px;border-radius:2px;vertical-align:middle;margin-right:5px}
+.shapes{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(170px,100%),1fr));gap:9px;margin:8px 0}
+.shapes>div{border:1px solid var(--line);border-radius:9px;padding:9px 11px;background:var(--surface-1);font-size:13px;color:var(--text-secondary)}
+.shapes b{color:var(--text-primary);font-family:var(--serif);font-size:15px}
+
+/* Q06/Q07 additions */
+svg.scheme{display:block;width:100%;max-width:660px;height:auto;margin:6px 0 10px}
+.unk{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:12px 0 4px}
+.unk>div{border:1px dashed var(--line-strong);border-radius:11px;padding:9px 10px;text-align:center;background:var(--surface-2);transition:.4s}
+.unk .k{font-size:10.5px;letter-spacing:.1em;color:var(--text-muted);font-weight:800}
+.unk .v{font-family:var(--serif);font-size:24px;font-weight:700;line-height:1.25}
+.unk>div.found{border-style:solid;border-color:var(--good);background:color-mix(in srgb,var(--good) 10%,transparent)}
+.unk>div.found .v{color:var(--good)}
+.unk>div.warn{border-style:solid;border-color:var(--bad)}
+.apbar{height:6px;border-radius:99px;background:var(--line);overflow:hidden;margin-top:6px}
+.apbar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--good));transition:width .3s}
+.answerbox.work .val{color:var(--accent);font-size:15px;letter-spacing:.02em}
+.board{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(230px,100%),1fr));gap:10px;margin-top:13px}
+.ocard{border:1px solid var(--line);border-radius:12px;padding:11px 13px;background:linear-gradient(180deg,var(--surface-1),var(--surface-2));transition:.4s}
+.ocard .h{display:flex;gap:8px;align-items:baseline}
+.ocard .h b{font-family:var(--mono);color:var(--text-muted)}
+.ocard .claim{font-family:var(--serif);font-size:15px}
+.ocard .ev{font-size:12.5px;color:var(--text-secondary);margin:6px 0 0;min-height:2.6em}
+.ocard .vd{margin-top:7px;font-weight:800;font-size:13px;letter-spacing:.04em;color:var(--text-muted)}
+.ocard.now{border-color:var(--accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 22%,transparent)}
+.ocard.yes{border-color:var(--good)} .ocard.yes .vd{color:var(--good)}
+.ocard.no{border-color:var(--bad)} .ocard.no .vd{color:var(--bad)}
+.ocard.na .vd{color:var(--s4)}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.badge{display:flex;align-items:center;gap:7px;border:1px solid var(--line);border-radius:999px;padding:5px 12px 5px 7px;font-size:12.5px;color:var(--text-muted);background:var(--surface-1);opacity:.55;transition:.5s}
+.badge .ic{font-size:17px;filter:grayscale(1)}
+.badge.on{opacity:1;color:var(--text-primary);border-color:var(--good);background:color-mix(in srgb,var(--good) 9%,var(--surface-1))}
+.badge.on .ic{filter:none}
+@keyframes badgepop{0%{transform:scale(1)}35%{transform:scale(1.14)}100%{transform:scale(1)}}
+.badge.pop{animation:badgepop .7s ease-out 1}
+@media(prefers-reduced-motion:reduce){.badge.pop{animation:none}}
+.tools{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.tools button{padding:6px 11px;border-radius:8px;border:1px solid var(--line-strong);background:var(--surface-1);color:var(--text-secondary);font-size:12px;cursor:pointer;font-family:var(--sans);min-height:34px}
+.tools button[aria-pressed=true]{border-color:var(--accent);color:var(--accent);background:color-mix(in srgb,var(--accent) 10%,transparent)}
+.tools button:focus-visible,.explorer button:focus-visible,button:focus-visible,select:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.explorer{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:13px;align-items:start}
+@media(max-width:860px){.explorer{grid-template-columns:1fr}}
+.xview{position:relative;border-radius:12px;overflow:hidden;background:linear-gradient(170deg,#0d1322,#070a12);border:1px solid rgba(150,180,255,.16)}
+canvas#mol{display:block;width:100%;height:auto;touch-action:none;cursor:grab}
+.xpick{display:flex;flex-wrap:wrap;gap:6px}
+.xpick button{padding:7px 14px;border-radius:9px;border:1px solid var(--line-strong);background:var(--surface-1);color:var(--text-primary);font-family:var(--serif);font-size:15px;cursor:pointer;min-height:36px}
+.xpick button[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:#fff}
+.xinfo table{width:100%;border-collapse:collapse;font-size:13px;margin-top:8px}
+.xinfo th{text-align:left;color:var(--text-muted);font-weight:500;padding:5px 8px 5px 0;width:44%;border-bottom:1px solid var(--line)}
+.xinfo td{padding:5px 0;border-bottom:1px solid var(--line);font-weight:600}
+.cards4{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr));gap:10px}
+.cards4>div{border:1px solid var(--line);border-radius:12px;padding:13px 15px;background:linear-gradient(180deg,var(--surface-1),var(--surface-2))}
+.cards4 h4{margin:0 0 6px;font-size:14px} .cards4 p{margin:0 0 6px;font-size:13px;color:var(--text-secondary)}
+.cards4 .eq{font-size:14px}
+.warnbox{border:1px solid var(--bad);border-radius:9px;padding:8px 10px;font-size:12px;color:var(--bad);background:color-mix(in srgb,var(--bad) 8%,transparent);margin-top:8px}
+.selrow{margin:7px 0 0} .selrow label{display:block;font-size:12px;color:var(--text-secondary);margin-bottom:3px}
+select.sel{display:block;width:100%;min-width:0;min-height:40px;padding:8px 10px;font:inherit;font-size:14px;color:var(--text-primary);background:var(--surface-1);border:1px solid var(--line-strong);border-radius:8px}
+select.sel:disabled{opacity:.6}
+
+.optv{display:inline-block;min-width:54px;text-align:center;padding:1px 8px;border-radius:999px;font-size:11.5px;font-weight:750;border:1px solid var(--line-strong);color:var(--text-muted)}
+.optv.t{border-color:var(--good);color:var(--good)} .optv.f{border-color:var(--bad);color:var(--bad)}
+.unk.two{grid-template-columns:repeat(3,minmax(0,1fr))}
+.mobox{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:14px;align-items:start}
+@media(max-width:820px){.mobox{grid-template-columns:1fr}}
+.mobox>div{min-width:0} .mobox canvas{display:block;width:100%;height:auto;border-radius:10px}
+.chg{display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin-top:8px}
+.chg .q{font:800 15px var(--mono);min-width:90px;text-align:center}
+.unk.four{grid-template-columns:repeat(4,minmax(0,1fr))}
+@media(max-width:560px){.unk.four{grid-template-columns:repeat(2,minmax(0,1fr))}}
+canvas#schemecv{display:block;width:100%;max-width:760px;height:auto;border-radius:10px}
+.revealhost{overflow:hidden} .revealhost svg.graf{overflow:hidden}
+.unk.four>div{min-width:0} .unk.four .v{font-size:17px;overflow-wrap:anywhere}
+.chkrow{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.unk.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+
+/* ---- layout v2: answer above the experiment, control dock below it ---- */
+.ansstrip{display:flex;align-items:center;gap:10px 16px;flex-wrap:wrap;margin:0 0 12px;padding:12px 16px;border-radius:14px;position:relative;overflow:hidden;
+  background:linear-gradient(115deg,color-mix(in srgb,var(--good) 20%,var(--surface-2)) 0%,var(--surface-2) 60%);
+  border:1.5px solid color-mix(in srgb,var(--good) 55%,transparent);box-shadow:0 14px 34px -24px var(--good)}
+.ansstrip:after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(100deg,transparent 30%,rgba(255,255,255,.14) 45%,transparent 60%);
+  transform:translateX(-120%);animation:stripsheen 5.5s ease-in-out infinite}
+@keyframes stripsheen{0%,70%{transform:translateX(-120%)}100%{transform:translateX(120%)}}
+.ansstrip .k{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--text-muted);font-weight:800}
+.ansstrip .v{font-family:var(--mono);font-size:27px;font-weight:760;color:var(--good);line-height:1.1}
+.ansstrip .s{flex:1 1 220px;min-width:0;font-size:12.5px;color:var(--text-secondary);line-height:1.4}
+.ansstrip .pbar{flex:1 1 100%;height:4px;border-radius:4px;background:var(--line);overflow:hidden}
+.ansstrip .pbar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--good));transition:width .25s}
+.dock{margin-top:12px;padding:12px 12px 10px;border-radius:14px;border:1px solid color-mix(in srgb,var(--accent) 35%,var(--line));
+  background:linear-gradient(180deg,color-mix(in srgb,var(--accent) 7%,var(--surface-2)),var(--surface-1));box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 14px 30px -24px #000}
+.dock .actbar{margin-top:0}
+.dock .tools{margin:10px 0 0;padding-top:10px;border-top:1px dashed var(--line)}
+button.go{background:linear-gradient(135deg,var(--accent),color-mix(in srgb,var(--accent) 45%,#9b5cff));position:relative}
+button.go:not(:disabled):not(.custom){animation:gopulse 2.6s ease-in-out infinite}
+@keyframes gopulse{0%,100%{box-shadow:0 0 0 0 color-mix(in srgb,var(--accent) 45%,transparent)}50%{box-shadow:0 0 0 9px color-mix(in srgb,var(--accent) 0%,transparent)}}
+@media(prefers-reduced-motion:reduce){.ansstrip:after,button.go{animation:none !important}}
+.sol-fig{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:4px 8px;margin:10px 0;padding:10px;border:1px solid var(--line);border-radius:12px;background:var(--surface-1);color:var(--text-primary);overflow-x:auto}
+.sol-fig svg.mech{max-width:100%;height:auto}
+.sol-fig .cap{flex:1 1 100%;text-align:center;font-size:12px;color:var(--text-secondary)}
+.sol-fig .plus{font-size:20px;font-weight:700;color:var(--text-secondary)}
+svg.rxarrow{flex:none}
+.calcblock{font-family:var(--mono);font-size:13px;line-height:1.7;background:var(--surface-1);border:1px solid var(--line);border-radius:10px;padding:10px 14px;margin:8px 0;overflow-x:auto}
+.calcblock .hl{color:var(--good);font-weight:700}
+table.soltab{border-collapse:collapse;width:100%;font-size:13px;margin:8px 0}
+table.soltab th,table.soltab td{border:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+table.soltab th{background:var(--surface-2);font-weight:700}
+
+.selrow input[type=range]{width:100%;box-sizing:border-box;margin:6px 0 0}.selrow .sel{max-width:100%;min-width:0}#solbody .eq,#solbody .calcblock{overflow-wrap:anywhere}#solbody .sol-fig svg{max-width:100%;height:auto}#solbody li{min-width:0}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-inner">
+    <div>
+      <div class="brandbar"><svg class="pxmark" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><rect width="32" height="32" rx="8" fill="var(--accent)"/><path d="M12.5 6.5h7M13.6 6.5v7.2L7.9 24.1a1.5 1.5 0 0 0 1.3 2.3h13.6a1.5 1.5 0 0 0 1.3-2.3l-5.7-10.4V6.5" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.6 20.6h10.8" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg><span class="wm">PRAYOG<i>X</i></span></div>
+      <div class="simid">ADV-2026-P1-CHE-Q12</div>
+      <h1>Straight-Line Carbon Lab — how many carbons of X lie on one line?</h1>
+      <div class="chips">
+        <span class="chip">JEE Advanced 2026</span>
+        <span class="chip">Paper 1 · Q.12</span>
+        <span class="chip">Chemistry</span>
+        <span class="chip">Alkynes · acetylides · SN2 · hybridisation</span>
+        <span class="chip">Numerical value</span>
+        <span class="chip">+4 / 0</span>
+        <span class="chip k">Press start · watch it happen</span>
+      </div>
+    </div>
+    <div class="answerbox locked" id="answerbox" aria-live="polite">
+      <div class="lbl">Answer</div>
+      <div class="val" id="ansval">—</div>
+      <div class="sub" id="anssub">The answer appears when the investigation finishes.</div>
+      <div class="apbar" aria-hidden="true"><i id="apbar"></i></div>
+      <button class="rv" id="revealnow" type="button">Reveal anyway</button>
+    </div>
+    <button class="themebtn" id="themebtn" type="button">◐ theme</button>
+  </div>
+</header>
+
+<nav class="jump">
+  <ul>
+    <li><a href="#question">Mission brief</a></li>
+    <li><a href="#lab">Interactive experiment</a></li>
+    <li><a href="#explorer">3-D line explorer</a></li>
+    <li><a href="#solution">Detailed solution</a></li>
+    <li><a href="#howto">How to use this simulation</a></li>
+  </ul>
+</nav>
+
+<div class="wrap">
+
+<section id="question">
+  <h2><span class="n">Q</span>Mission brief <span class="vb">— the question, verbatim</span></h2>
+  <p class="lede">JEE (Advanced) 2026, Paper 1, Chemistry, Section 3 — the answer is a numerical value: +4 if only the correct value
+     is entered, 0 in all other cases.</p>
+  <div class="panel">
+    <div class="qtext">
+      <p><b>Q.12</b>&nbsp; Treatment of buta-1,3-diyne with NaNH<sub>2</sub> (2 equivalents), followed by reaction with excess of
+        <i>trans</i>-CH<sub>3</sub>-CH=CH-CH<sub>2</sub>-Br gives <b>X</b> as the major product. The maximum number of carbon atoms
+        that are collinear (in a straight line) in <b>X</b> is ____.</p>
+    </div>
+    <div class="unk three" id="unk" aria-live="polite">
+      <div id="u_A"><div class="k">X</div><div class="v">?</div></div>
+      <div id="u_B"><div class="k">sp CARBONS</div><div class="v">?</div></div>
+      <div id="u_R"><div class="k">COLLINEAR C</div><div class="v">?</div></div>
+    </div>
+    <div class="assume"><b>The mystery.</b> A rod-like diyne with an acidic hydrogen at each end, a strong base and an allylic bromide. Which bonds
+      break, which form — and in the finished molecule, how far does the straight part reach? The lab watches both ends react, then spins X
+      about its own axis: the carbons that never move are the ones on the line.</div>
+  </div>
+</section>
+
+<section id="lab">
+  <h2 class="big"><span class="n">01</span>Interactive experiment</h2>
+  <p class="lede">One flask, watched at two levels at once — the flask on the left, the atoms on the right, in step. Press <b>START EXPERIMENT</b>:
+     charge the flask → deprotonate each end → two SN2 attacks → hybridisation → the laser test → audit → answer.</p>
+
+  <div class="deck" id="deck">
+    <div class="statusbar">
+      <span class="xstat" id="xstat"><span class="dot"></span><span id="xstattxt">Ready</span></span>
+      <div class="stages" id="stages">
+        <span data-s="load">01 Charge</span><span data-s="d1">02 −H⁺</span><span data-s="d2">03 −H⁺ again</span>
+        <span data-s="s1">04 SN2</span><span data-s="s2">05 SN2 again: X</span><span data-s="hyb">06 sp / sp² / sp³</span>
+        <span data-s="line">07 Laser test</span><span data-s="test">08 Audit</span><span data-s="answer">09 Final answer</span>
+      </div>
+      <span class="sp"></span>
+      <span class="guide" id="guide">Set your values or use the question defaults.</span>
+    </div>
+
+    <div class="ansstrip" id="ansstrip" aria-live="polite"><span class="k">Answer</span><span class="v" id="ansstripv">—</span><span class="s" id="ansstrips">—</span><span class="pbar" aria-hidden="true"><i id="ansstripbar"></i></span></div>
+
+    <div class="grid1">
+      <div class="lab3d" id="lab3d">
+        <div class="hd">
+          <h3 id="scenet">Straight-line carbon lab</h3>
+          <span class="st" id="trialtag">step 1 of 7</span>
+        </div>
+        <p class="narr" id="narr" aria-live="polite">Two acidic ends, two equivalents of base, an excess of bromide. The question's reagents are loaded —
+           press <b>START EXPERIMENT</b>.</p>
+        <div class="vwrap">
+          <canvas id="labcv" width="1040" height="620" role="img"
+                  aria-label="The virtual laboratory at two levels: on the left the flask of liquid ammonia in a cold bath with sodium amide, the diyne inlet, the dropping funnel and the NaBr precipitate; on the right the molecules with curved arrows for every electron pair, then the real shape of X spun about its straight axis"></canvas>
+          <div class="done-banner" id="donebanner">✓ EXPERIMENT COMPLETE</div>
+          <div class="revealhost" id="revealhost"></div>
+        </div>
+        <div class="blackout" id="blackout"></div>
+        <div class="flashout" id="flashout"></div>
+      </div>
+
+      <div class="rail" id="rail">
+        <div class="status" id="status">✓ QUESTION VALUES LOADED</div>
+        <div class="inputs">
+          <h4>Customize experiment — optional</h4>
+          <div id="fields"></div>
+          <div class="warnbox" id="condwarn" hidden></div>
+          <button class="resetq" id="resetq" type="button" style="margin-top:8px">↺ RESTORE QUESTION CONDITIONS</button>
+        </div>
+        <div class="grp">
+          <h4>Instrument panel</h4>
+          <div class="gauges" style="margin-top:6px">
+            <div class="gz"><div class="k">step</div><div class="v" id="g_st" style="font-size:13px">—</div></div>
+            <div class="gz o"><div class="k">temperature</div><div class="v" id="g_T" style="font-size:14px">—</div></div>
+            <div class="gz a"><div class="k">progress</div><div class="v"><span id="g_pr">0</span> <span class="u">%</span></div></div>
+            <div class="gz"><div class="k">NaNH₂ left</div><div class="v" id="g_r" style="font-size:15px">—</div></div>
+            <div class="gz"><div class="k">C⁻ ends</div><div class="v" id="g_n1" style="font-size:15px">—</div></div>
+            <div class="gz"><div class="k">NaBr formed</div><div class="v" id="g_n2" style="font-size:15px">—</div></div>
+            <div class="gz"><div class="k">arrows now</div><div class="v" id="g_p" style="font-size:15px">—</div></div>
+            <div class="gz"><div class="k">sp · sp² · sp³</div><div class="v" id="g_vol" style="font-size:12px;white-space:normal;line-height:1.2">—</div></div>
+            <div class="gz" id="gz_v"><div class="k">in one line</div><div class="v" id="g_v" style="font-size:15px">—</div></div>
+          </div>
+          <p class="railnote" style="margin-top:6px">Pink curved arrows move one electron pair each; red dashes are bonds breaking, green are bonds forming. The shape is built from the ideal angles sp 180°, sp² 120°, sp³ 109.5°.</p>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="dock" id="dock" role="group" aria-label="experiment controls">
+      <div class="actbar">
+      <button class="go" id="gobtn" type="button">▶&nbsp; START EXPERIMENT</button>
+      <button class="ghost" id="pausebtn" type="button" disabled>Pause</button>
+      <button class="ghost" id="replaybtn" type="button" hidden>▶ REPLAY EXPERIMENT</button>
+      <button class="ghost" id="resetbtn" type="button">↺ RESET</button>
+      <div class="spd" id="spd" role="group" aria-label="playback speed">
+        <button type="button" data-s="1" aria-pressed="true">1×</button>
+        <button type="button" data-s="2" aria-pressed="false">2×</button>
+      </div>
+      <button class="ghost" id="classbtn" type="button" aria-pressed="false">CLASSROOM MODE</button>
+      <div class="msg" id="gomsg">Nothing needs to be chosen. Press <b>START EXPERIMENT</b>.</div>
+    </div>
+    <div class="tools" role="group" aria-label="optional views">
+      <button type="button" id="t_eq" aria-pressed="false">SHOW EQUATION</button>
+      <button type="button" id="t_obs" aria-pressed="false">SHOW OBSERVATION</button>
+      <button type="button" id="t_why" aria-pressed="false">SHOW WHY?</button>
+      <button type="button" id="t_cmp" aria-pressed="false">SLOW MOTION 0.5×</button>
+      <button type="button" id="t_rot">OPEN 3-D LINE EXPLORER</button>
+    </div>
+    </div>
+
+    <div class="grid2">
+      <div class="graphcard"><h4>Bond angle at each carbon of the chain</h4><p class="gsub">from the hybridisation: sp 180°, sp² 120°, sp³ 109.5°</p>
+        <div class="chartwrap"><svg class="chart" id="curve" viewBox="0 0 520 300" role="img" aria-label="Bar chart of the bond angle at each internal carbon of X along the chain"></svg></div></div>
+      <div class="graphcard"><h4>Distance of each carbon from the straight line</h4><p class="gsub">measured on the model — the carbons at 0 Å are the collinear ones</p>
+        <div class="chartwrap"><svg class="chart" id="bars" viewBox="0 0 520 300" role="img" aria-label="Bar chart of the distance of each carbon of X from its longest straight line"></svg></div></div>
+    </div>
+
+    <h4 style="margin:14px 0 0;font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--text-muted)">Result audit — X, the count and the traps</h4>
+    <div class="board" id="board">
+      <div class="ocard" id="oc_A"><div class="h"><b>①</b><span class="claim">X: both ends alkylated by SN2 (C₁₂H₁₄).</span></div><p class="ev" id="ev_A">not yet examined</p><div class="vd" id="vd_A">UNEVALUATED</div></div>
+      <div class="ocard" id="oc_B"><div class="h"><b>②</b><span class="claim">The sp carbons and their two neighbours: 6 in a line.</span></div><p class="ev" id="ev_B">not yet examined</p><div class="vd" id="vd_B">UNEVALUATED</div></div>
+      <div class="ocard" id="oc_C"><div class="h"><b>③</b><span class="claim">Trap: only the 4 sp carbons are collinear.</span></div><p class="ev" id="ev_C">not yet examined</p><div class="vd" id="vd_C">UNEVALUATED</div></div>
+      <div class="ocard" id="oc_D"><div class="h"><b>④</b><span class="claim">Trap: the line runs on through the CH₂ to 8.</span></div><p class="ev" id="ev_D">not yet examined</p><div class="vd" id="vd_D">UNEVALUATED</div></div>
+    </div>
+
+    <div class="badges" id="badges" aria-label="achievements">
+      <div class="badge" id="b_base"><span class="ic">🧪</span>Base Master</div>
+      <div class="badge" id="b_nuc"><span class="ic">🏹</span>Arrow Pusher</div>
+      <div class="badge" id="b_sn2"><span class="ic">☂️</span>Walden Flipper</div>
+      <div class="badge" id="b_hyb"><span class="ic">📐</span>Angle Reader</div>
+      <div class="badge" id="b_trap"><span class="ic">🪤</span>Trap Spotter</div>
+      <div class="badge" id="b_mas"><span class="ic">🏆</span>Chemistry Master</div>
+    </div>
+
+    <div class="calc" id="calc">
+      <div class="bt"><span>Reasoning log — input → action → change → observation → conclusion</span><span id="calcstat"></span></div>
+      <p class="empty" id="calcempty">Nothing investigated yet.</p>
+      <ol id="calclist"></ol>
+      <details class="tbl" id="logbox"><summary>Evidence table (<span id="logn">0</span>)</summary>
+        <div class="scrollx"><table class="data" id="log"></table></div></details>
+    </div>
+
+  </div>
+</section>
+
+<section id="explorer">
+  <h2 class="big"><span class="n">02</span>3-D line explorer</h2>
+  <p class="lede">Build a molecule from the same kind of reaction and spin it about its longest straight line. Atoms on the line never move;
+     everything else swings round it. Change the alkyne, the amount of base or the bromide and see how the line grows or shrinks.</p>
+  <div class="mobox">
+    <div>
+      <div class="xview"><canvas id="mol" width="720" height="420" tabindex="0" role="img" aria-label="The carbon chain of the chosen product built from ideal hybridisation angles, spinning about its straight line"></canvas></div>
+      <div class="selrow"><label for="x_chain">Alkyne</label><select class="sel" id="x_chain"><option value="diyne">buta-1,3-diyne (the question)</option><option value="triyne">hexa-1,3,5-triyne</option><option value="ethyne">ethyne</option></select></div>
+      <div class="selrow"><label for="x_base">NaNH₂</label><select class="sel" id="x_base"><option value="2">2 equivalents (the question)</option><option value="1">1 equivalent</option></select></div>
+      <div class="selrow"><label for="x_rx">Bromide</label><select class="sel" id="x_rx"><option value="crotyl">trans-crotyl bromide (the question)</option><option value="allyl">allyl bromide</option><option value="propargyl">propargyl bromide</option></select></div>
+      <div class="selrow"><label for="x_phi">Spin about the line: <b id="x_phiv">34°</b></label><input type="range" id="x_phi" min="0" max="360" step="1" value="34" style="width:100%"></div>
+      <div class="chkrow"><button type="button" class="ghost" id="x_spin" aria-pressed="true">⟳ AUTO-SPIN</button><button type="button" class="ghost" id="x_laser" aria-pressed="true">LASER LINE</button><button type="button" class="ghost" id="x_reset">↺ question molecule</button></div>
+    </div>
+    <div><div class="panel xinfo" id="xinfo"></div></div>
+  </div>
+</section>
+
+<section id="solution">
+  <h2 class="big"><span class="n">03</span>Detailed solution</h2>
+  <p class="lede" id="solintro">The complete worked solution — every structure, step and calculation.</p>
+  <div class="gate" id="solgate" hidden>
+    <h4>The solution is still locked</h4>
+    <p>The experiment has not finished yet. Press START and let it run to the end — or use
+       <i>Reveal anyway</i> in the header if you are revising.</p>
+    <button class="ghost" id="gotolab" type="button">Go to the experiment ↑</button>
+  </div>
+  <div id="solbody">
+    <h3 style="font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-muted);margin:0 0 10px">Understand the concept</h3>
+    <div class="cards4">
+      <div><h4>Terminal alkynes are acids</h4><p>An sp C–H (50 % s-character) has pKa ≈ 25; NH₃ has pKa ≈ 38, so NH₂⁻ removes it completely.</p>
+        <div class="eq">RC≡C–H + NH₂⁻ → RC≡C⁻ + NH₃</div></div>
+      <div><h4>Acetylides are nucleophiles</h4><p>The carbanion attacks a primary alkyl halide by SN2 — backside attack, one step, inversion at the CH₂.</p>
+        <div class="eq">RC≡C⁻ + R'CH₂Br → RC≡C–CH₂R' + Br⁻</div></div>
+      <div><h4>sp carbons are linear</h4><p>An sp carbon holds its two σ-bonded neighbours at 180°. A chain of sp carbons is straight — and so are the two atoms at its ends.</p>
+        <div class="eq">X–C≡C–C≡C–Y : all 6 on one axis</div></div>
+      <div><h4>The line stops at sp³</h4><p>The CH₂ is sp³ (109.5°): its next bond leaves the axis. The alkene beyond is sp² (120°).</p>
+        <div class="eq">answer = 4 sp C + 2 CH₂ = 6</div></div>
+    </div>
+    <ol class="steps" style="margin-top:14px">
+      <li><h4>Step 1 — Double deprotonation (2 equivalents of NaNH₂)</h4>
+        <div class="sol-fig"><svg class="mech" role="img" aria-label="Both terminal alkyne protons removed by amide ions: curved arrows from each NH2- lone pair to H and from each C-H bond to carbon" version='1.1' baseProfile='full'
+              xmlns='http://www.w3.org/2000/svg'
+                      
+                      xmlns:xlink='http://www.w3.org/1999/xlink'
+                  xml:space='preserve'
+width='560px' height='150px' viewBox='0 0 560 150'>
+<!-- END OF HEADER -->
+<path class='bond-0 atom-1 atom-2' d='M 156.7,68.9 L 188.8,68.9' style='fill:none;fill-rule:evenodd;stroke:currentColor;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<path class='bond-1 atom-2 atom-3' d='M 188.8,68.9 L 236.3,68.9' style='fill:none;fill-rule:evenodd;stroke:currentColor;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<path class='bond-1 atom-2 atom-3' d='M 188.8,62.0 L 236.3,62.0' style='fill:none;fill-rule:evenodd;stroke:currentColor;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<path class='bond-1 atom-2 atom-3' d='M 188.8,75.8 L 236.3,75.8' style='fill:none;fill-rule:evenodd;stroke:currentColor;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<path class='bond-2 atom-3 atom-4' d='M 236.3,68.9 L 283.9,68.9' style='fill:none;fill-rule:evenodd;stroke:currentColor;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<path class='bond-3 atom-4 atom-5' d='M 283.9,68.9 L 331.4,68.9' style='fill:none;fill-rule:evenodd;stroke:currentColor;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<path class='bond-3 atom-4 atom-5' d='M 283.9,62.0 L 331.4,62.0' style='fill:none;fill-rule:evenodd;stroke:currentColor;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<path class='bond-3 atom-4 atom-5' d='M 283.9,75.8 L 331.4,75.8' style='fill:none;fill-rule:evenodd;stroke:currentColor;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<path class='bond-4 atom-5 atom-6' d='M 331.4,68.9 L 363.5,68.9' style='fill:none;fill-rule:evenodd;stroke:currentColor;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<path d='M 187.2,68.9 L 188.8,68.9 L 191.2,68.9' style='fill:none;stroke:currentColor;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-opacity:1;' />
+<path d='M 234.0,68.9 L 236.3,68.9 L 238.7,68.9' style='fill:none;stroke:currentColor;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-opacity:1;' />
+<path d='M 281.5,68.9 L 283.9,68.9 L 286.2,68.9' style='fill:none;stroke:currentColor;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-opacity:1;' />
+<path d='M 329.0,68.9 L 331.4,68.9 L 333.0,68.9' style='fill:none;stroke:currentColor;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-opacity:1;' />
+<path class='atom-0' d='M 71.1 56.6
+L 79.1 69.6
+Q 79.9 70.9, 81.2 73.2
+Q 82.4 75.5, 82.5 75.7
+L 82.5 56.6
+L 85.8 56.6
+L 85.8 81.1
+L 82.4 81.1
+L 73.8 66.9
+Q 72.8 65.3, 71.7 63.4
+Q 70.7 61.5, 70.4 60.9
+L 70.4 81.1
+L 67.2 81.1
+L 67.2 56.6
+L 71.1 56.6
+' fill='#3366E5'/>
+<path class='atom-0' d='M 90.3 56.6
+L 93.6 56.6
+L 93.6 67.0
+L 106.1 67.0
+L 106.1 56.6
+L 109.5 56.6
+L 109.5 81.1
+L 106.1 81.1
+L 106.1 69.8
+L 93.6 69.8
+L 93.6 81.1
+L 90.3 81.1
+L 90.3 56.6
+' fill='#3366E5'/>
+<path class='atom-0' d='M 114.1 80.3
+Q 114.7 78.7, 116.1 77.9
+Q 117.5 77.0, 119.5 77.0
+Q 121.9 77.0, 123.3 78.3
+Q 124.7 79.7, 124.7 82.0
+Q 124.7 84.4, 122.9 86.6
+Q 121.1 88.9, 117.5 91.5
+L 124.9 91.5
+L 124.9 93.4
+L 114.1 93.4
+L 114.1 91.8
+Q 117.1 89.7, 118.9 88.1
+Q 120.7 86.5, 121.5 85.1
+Q 122.4 83.6, 122.4 82.1
+Q 122.4 80.6, 121.6 79.7
+Q 120.8 78.8, 119.5 78.8
+Q 118.2 78.8, 117.3 79.4
+Q 116.5 79.9, 115.8 81.1
+L 114.1 80.3
+' fill='#3366E5'/>
+<path class='atom-0' d='M 115.3 60.7
+L 123.7 60.7
+L 123.7 62.5
+L 115.3 62.5
+L 115.3 60.7
+' fill='#3366E5'/>
+<path class='atom-1' d='M 136.0 56.6
+L 139.4 56.6
+L 139.4 67.0
+L 151.9 67.0
+L 151.9 56.6
+L 155.2 56.6
+L 155.2 81.1
+L 151.9 81.1
+L 151.9 69.8
+L 139.4 69.8
+L 139.4 81.1
+L 136.0 81.1
+L 136.0 56.6
+' fill='currentColor'/>
+<path class='atom-6' d='M 365.0 56.6
+L 368.4 56.6
+L 368.4 67.0
+L 380.9 67.0
+L 380.9 56.6
+L 384.2 56.6
+L 384.2 81.1
+L 380.9 81.1
+L 380.9 69.8
+L 368.4 69.8
+L 368.4 81.1
+L 365.0 81.1
+L 365.0 56.6
+' fill='currentColor'/>
+<path class='atom-7' d='M 438.3 56.6
+L 446.3 69.6
+Q 447.1 70.9, 448.4 73.2
+Q 449.7 75.5, 449.8 75.7
+L 449.8 56.6
+L 453.0 56.6
+L 453.0 81.1
+L 449.7 81.1
+L 441.1 66.9
+Q 440.1 65.3, 439.0 63.4
+Q 437.9 61.5, 437.6 60.9
+L 437.6 81.1
+L 434.5 81.1
+L 434.5 56.6
+L 438.3 56.6
+' fill='#3366E5'/>
+<path class='atom-7' d='M 457.6 56.6
+L 460.9 56.6
+L 460.9 67.0
+L 473.4 67.0
+L 473.4 56.6
+L 476.7 56.6
+L 476.7 81.1
+L 473.4 81.1
+L 473.4 69.8
+L 460.9 69.8
+L 460.9 81.1
+L 457.6 81.1
+L 457.6 56.6
+' fill='#3366E5'/>
+<path class='atom-7' d='M 481.4 80.3
+Q 482.0 78.7, 483.4 77.9
+Q 484.8 77.0, 486.7 77.0
+Q 489.2 77.0, 490.6 78.3
+Q 491.9 79.7, 491.9 82.0
+Q 491.9 84.4, 490.1 86.6
+Q 488.4 88.9, 484.7 91.5
+L 492.2 91.5
+L 492.2 93.4
+L 481.3 93.4
+L 481.3 91.8
+Q 484.3 89.7, 486.1 88.1
+Q 487.9 86.5, 488.8 85.1
+Q 489.6 83.6, 489.6 82.1
+Q 489.6 80.6, 488.9 79.7
+Q 488.1 78.8, 486.7 78.8
+Q 485.4 78.8, 484.6 79.4
+Q 483.7 79.9, 483.1 81.1
+L 481.4 80.3
+' fill='#3366E5'/>
+<path class='atom-7' d='M 482.6 60.7
+L 490.9 60.7
+L 490.9 62.5
+L 482.6 62.5
+L 482.6 60.7
+' fill='#3366E5'/>
+<defs><marker id="mah1" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#e0409f"/></marker></defs><path d="M85.5,68.9 Q98.3,79.6 111.0,68.9" fill="none" stroke="#e0409f" stroke-width="2.2" marker-end="url(#mah1)"/><path d="M167.2,68.9 Q172.5,73.3 177.8,68.9" fill="none" stroke="#e0409f" stroke-width="2.2" marker-end="url(#mah1)"/><path d="M434.7,68.9 Q422.0,79.6 409.2,68.9" fill="none" stroke="#e0409f" stroke-width="2.2" marker-end="url(#mah1)"/><path d="M353.0,68.9 Q347.7,73.3 342.4,68.9" fill="none" stroke="#e0409f" stroke-width="2.2" marker-end="url(#mah1)"/><circle cx="79.7" cy="55.9" r="2.1" fill="#c98a00"/><circle cx="73.3" cy="55.9" r="2.1" fill="#c98a00"/><circle cx="446.9" cy="55.9" r="2.1" fill="#c98a00"/><circle cx="440.5" cy="55.9" r="2.1" fill="#c98a00"/></svg>
+<div class="cap">Each NH₂⁻ lone pair (gold dots) takes a terminal proton; the C–H bond pair stays on carbon. Both ends react because 2 equivalents are used.</div></div>
+        <div class="sol-fig"><svg class="mech" role="img" aria-label="The acetylide dianion of buta-1,3-diyne and two molecules of ammonia" version='1.1' baseProfile='full'
+              xmlns='http://www.w3.org/2000/svg'
+                      
+                      xmlns:xlink='http://www.w3.org/1999/xlink'
+                  xml:space='preserve'
+width='520px' height='120px' viewBox='0 0 520 120'>
+<!-- END OF HEADER -->
+<path class='bond-0 atom-0 atom-1' d='M 183.7,53.9 L 219.5,53.9' style='fill:none;fill-rule:evenodd;stroke:currentColor;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<path class='bond-0 atom-0 atom-1' d='M 183.7,46.9 L 219.5,46.9' style='fill:none;fill-rule:evenodd;stroke:currentColor;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<path class='bond-0 atom-0 atom-1' d='M 183.7,60.8 L 219.5,60.8' style='fill:none;fill-rule:evenodd;stroke:currentColor;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<path class='bond-1 atom-1 atom-2' d='M 219.5,53.9 L 266.0,53.9' style='fill:none;fill-rule:evenodd;stroke:currentColor;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<path class='bond-2 atom-2 atom-3' d='M 266.0,53.9 L 301.7,53.9' style='fill:none;fill-rule:evenodd;stroke:currentColor;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<path class='bond-2 atom-2 atom-3' d='M 266.0,46.9 L 301.7,46.9' style='fill:none;fill-rule:evenodd;stroke:currentColor;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<path class='bond-2 atom-2 atom-3' d='M 266.0,60.8 L 301.7,60.8' style='fill:none;fill-rule:evenodd;stroke:currentColor;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<path d='M 217.7,53.9 L 219.5,53.9 L 221.8,53.9' style='fill:none;stroke:currentColor;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-opacity:1;' />
+<path d='M 263.7,53.9 L 266.0,53.9 L 267.8,53.9' style='fill:none;stroke:currentColor;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-opacity:1;' />
+<path class='atom-0' d='M 163.7 54.0
+Q 163.7 48.0, 166.5 44.9
+Q 169.3 41.8, 174.6 41.8
+Q 179.6 41.8, 182.2 45.2
+L 180.0 47.1
+Q 178.0 44.5, 174.6 44.5
+Q 171.0 44.5, 169.1 47.0
+Q 167.2 49.4, 167.2 54.0
+Q 167.2 58.7, 169.1 61.1
+Q 171.1 63.6, 175.0 63.6
+Q 177.6 63.6, 180.7 62.0
+L 181.7 64.5
+Q 180.4 65.3, 178.5 65.8
+Q 176.6 66.3, 174.5 66.3
+Q 169.3 66.3, 166.5 63.1
+Q 163.7 59.9, 163.7 54.0
+' fill='currentColor'/>
+<path class='atom-0' d='M 185.1 45.7
+L 193.3 45.7
+L 193.3 47.5
+L 185.1 47.5
+L 185.1 45.7
+' fill='currentColor'/>
+<path class='atom-3' d='M 303.3 54.0
+Q 303.3 48.0, 306.0 44.9
+Q 308.8 41.8, 314.1 41.8
+Q 319.1 41.8, 321.7 45.2
+L 319.5 47.1
+Q 317.6 44.5, 314.1 44.5
+Q 310.5 44.5, 308.6 47.0
+Q 306.7 49.4, 306.7 54.0
+Q 306.7 58.7, 308.7 61.1
+Q 310.7 63.6, 314.5 63.6
+Q 317.2 63.6, 320.2 62.0
+L 321.2 64.5
+Q 319.9 65.3, 318.0 65.8
+Q 316.1 66.3, 314.0 66.3
+Q 308.8 66.3, 306.0 63.1
+Q 303.3 59.9, 303.3 54.0
+' fill='currentColor'/>
+<path class='atom-3' d='M 324.6 45.7
+L 332.8 45.7
+L 332.8 47.5
+L 324.6 47.5
+L 324.6 45.7
+' fill='currentColor'/>
+<path class='atom-4' d='M 66.2 41.9
+L 74.0 54.6
+Q 74.8 55.8, 76.1 58.1
+Q 77.3 60.4, 77.4 60.5
+L 77.4 41.9
+L 80.6 41.9
+L 80.6 65.8
+L 77.3 65.8
+L 68.9 52.0
+Q 67.9 50.4, 66.8 48.5
+Q 65.8 46.6, 65.5 46.1
+L 65.5 65.8
+L 62.4 65.8
+L 62.4 41.9
+L 66.2 41.9
+' fill='#3366E5'/>
+<path class='atom-4' d='M 85.1 41.9
+L 88.4 41.9
+L 88.4 52.1
+L 100.6 52.1
+L 100.6 41.9
+L 103.9 41.9
+L 103.9 65.8
+L 100.6 65.8
+L 100.6 54.8
+L 88.4 54.8
+L 88.4 65.8
+L 85.1 65.8
+L 85.1 41.9
+' fill='#3366E5'/>
+<path class='atom-4' d='M 116.1 69.5
+Q 117.7 69.9, 118.4 70.9
+Q 119.1 71.9, 119.1 73.5
+Q 119.1 74.8, 118.5 75.9
+Q 117.8 76.9, 116.6 77.5
+Q 115.4 78.0, 113.7 78.0
+Q 112.0 78.0, 110.8 77.5
+Q 109.5 76.9, 108.5 75.7
+L 109.8 74.4
+Q 110.8 75.4, 111.6 75.9
+Q 112.4 76.3, 113.7 76.3
+Q 115.2 76.3, 116.0 75.5
+Q 116.9 74.7, 116.9 73.5
+Q 116.9 71.9, 116.0 71.1
+Q 115.1 70.4, 113.2 70.4
+L 112.0 70.4
+L 112.0 68.8
+L 113.0 68.8
+Q 114.7 68.8, 115.7 68.0
+Q 116.6 67.3, 116.6 65.9
+Q 116.6 64.8, 115.8 64.2
+Q 115.1 63.6, 113.8 63.6
+Q 112.4 63.6, 111.6 64.1
+Q 110.8 64.6, 110.2 65.7
+L 108.7 64.9
+Q 109.2 63.6, 110.6 62.7
+Q 111.9 61.8, 113.8 61.8
+Q 116.1 61.8, 117.4 62.9
+Q 118.8 64.0, 118.8 65.9
+Q 118.8 67.1, 118.1 68.1
+Q 117.4 69.0, 116.1 69.5
+' fill='#3366E5'/>
+<path class='atom-5' d='M 404.4 41.9
+L 412.3 54.6
+Q 413.1 55.8, 414.3 58.1
+Q 415.6 60.4, 415.6 60.5
+L 415.6 41.9
+L 418.8 41.9
+L 418.8 65.8
+L 415.5 65.8
+L 407.1 52.0
+Q 406.1 50.4, 405.1 48.5
+Q 404.1 46.6, 403.8 46.1
+L 403.8 65.8
+L 400.7 65.8
+L 400.7 41.9
+L 404.4 41.9
+' fill='#3366E5'/>
+<path class='atom-5' d='M 423.4 41.9
+L 426.6 41.9
+L 426.6 52.1
+L 438.9 52.1
+L 438.9 41.9
+L 442.1 41.9
+L 442.1 65.8
+L 438.9 65.8
+L 438.9 54.8
+L 426.6 54.8
+L 426.6 65.8
+L 423.4 65.8
+L 423.4 41.9
+' fill='#3366E5'/>
+<path class='atom-5' d='M 454.4 69.5
+Q 455.9 69.9, 456.6 70.9
+Q 457.4 71.9, 457.4 73.5
+Q 457.4 74.8, 456.7 75.9
+Q 456.1 76.9, 454.8 77.5
+Q 453.6 78.0, 452.0 78.0
+Q 450.3 78.0, 449.0 77.5
+Q 447.8 76.9, 446.8 75.7
+L 448.0 74.4
+Q 449.0 75.4, 449.9 75.9
+Q 450.7 76.3, 452.0 76.3
+Q 453.4 76.3, 454.3 75.5
+Q 455.2 74.7, 455.2 73.5
+Q 455.2 71.9, 454.3 71.1
+Q 453.4 70.4, 451.4 70.4
+L 450.3 70.4
+L 450.3 68.8
+L 451.3 68.8
+Q 453.0 68.8, 453.9 68.0
+Q 454.8 67.3, 454.8 65.9
+Q 454.8 64.8, 454.1 64.2
+Q 453.3 63.6, 452.0 63.6
+Q 450.7 63.6, 449.9 64.1
+Q 449.1 64.6, 448.4 65.7
+L 446.9 64.9
+Q 447.5 63.6, 448.8 62.7
+Q 450.1 61.8, 452.0 61.8
+Q 454.3 61.8, 455.7 62.9
+Q 457.1 64.0, 457.1 65.9
+Q 457.1 67.1, 456.4 68.1
+Q 455.7 69.0, 454.4 69.5
+' fill='#3366E5'/>
+<defs><marker id="mah2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#e0409f"/></marker></defs><circle cx="160.0" cy="50.7" r="2.1" fill="#c98a00"/><circle cx="160.0" cy="57.1" r="2.1" fill="#c98a00"/><circle cx="325.5" cy="57.1" r="2.1" fill="#c98a00"/><circle cx="325.5" cy="50.7" r="2.1" fill="#c98a00"/></svg>
+<div class="cap">The acetylide dianion ⁻C≡C–C≡C⁻ (2 Na⁺ counter-ions) and two molecules of NH₃ (pKa 38 ≫ 25, so the equilibrium lies fully to the right).</div></div>
+        <div class="obsnote">On the bench: the grey NaNH₂ was used up as the diyne was bubbled in; the proton went to NH₃ (the solvent).</div></li>
+      <li><h4>Step 2 — SN2 alkylation at both ends (excess crotyl bromide)</h4>
+        <div class="sol-fig"><svg class="mech" role="img" aria-label="SN2: the acetylide carbon attacks the CH2 of trans-crotyl bromide from the back and bromide leaves" version='1.1' baseProfile='full'
+              xmlns='http://www.w3.org/2000/svg'
+                      
+                      xmlns:xlink='http://www.w3.org/1999/xlink'
+                  xml:space='preserve'
+width='560px' height='190px' viewBox='0 0 560 190'>
+<!-- END OF HEADER -->
+<path class='bond-0 atom-0 atom-1' d='M 260.9,130.7 L 225.5,130.7' style='fill:none;fill-rule:evenodd;stroke:currentColor;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<path class='bond-0 atom-0 atom-1' d='M 260.9,138.9 L 225.5,138.9' style='fill:none;fill-rule:evenodd;stroke:currentColor;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<path class='bond-0 atom-0 atom-1' d='M 260.9,122.5 L 225.5,122.5' style='fill:none;fill-rule:evenodd;stroke:currentColor;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<path class='bond-1 atom-1 atom-2' d='M 225.5,130.7 L 173.1,130.7' style='fill:none;fill-rule:evenodd;stroke:currentColor;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<path class='bond-2 atom-2 atom-3' d='M 173.1,130.7 L 125.4,130.7' style='fill:none;fill-rule:evenodd;stroke:currentColor;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<path class='bond-2 atom-2 atom-3' d='M 173.1,138.9 L 125.4,138.9' style='fill:none;fill-rule:evenodd;stroke:currentColor;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<path class='bond-2 atom-2 atom-3' d='M 173.1,122.5 L 125.4,122.5' style='fill:none;fill-rule:evenodd;stroke:currentColor;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<path class='bond-3 atom-3 atom-4' d='M 125.4,130.7 L 90.1,130.7' style='fill:none;fill-rule:evenodd;stroke:currentColor;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<path class='bond-4 atom-5 atom-6' d='M 457.6,130.7 L 415.4,130.7' style='fill:none;fill-rule:evenodd;stroke:#9E511E;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<path class='bond-4 atom-5 atom-6' d='M 415.4,130.7 L 373.2,130.7' style='fill:none;fill-rule:evenodd;stroke:currentColor;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<path class='bond-5 atom-6 atom-7' d='M 373.2,130.7 L 349.4,87.8' style='fill:none;fill-rule:evenodd;stroke:currentColor;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<path class='bond-6 atom-7 atom-8' d='M 349.4,87.8 L 301.8,87.8' style='fill:none;fill-rule:evenodd;stroke:currentColor;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<path class='bond-6 atom-7 atom-8' d='M 344.6,96.0 L 301.8,96.0' style='fill:none;fill-rule:evenodd;stroke:currentColor;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<path class='bond-7 atom-8 atom-9' d='M 301.8,87.8 L 277.9,44.9' style='fill:none;fill-rule:evenodd;stroke:currentColor;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<path d='M 227.3,130.7 L 225.5,130.7 L 222.9,130.7' style='fill:none;stroke:currentColor;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-opacity:1;' />
+<path d='M 175.7,130.7 L 173.1,130.7 L 170.7,130.7' style='fill:none;stroke:currentColor;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-opacity:1;' />
+<path d='M 127.8,130.7 L 125.4,130.7 L 123.7,130.7' style='fill:none;stroke:currentColor;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-opacity:1;' />
+<path d='M 375.3,130.7 L 373.2,130.7 L 372.0,128.6' style='fill:none;stroke:currentColor;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-opacity:1;' />
+<path d='M 350.6,89.9 L 349.4,87.8 L 347.0,87.8' style='fill:none;stroke:currentColor;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-opacity:1;' />
+<path d='M 304.1,87.8 L 301.8,87.8 L 300.6,85.7' style='fill:none;stroke:currentColor;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-opacity:1;' />
+<path class='atom-0' d='M 262.7 130.8
+Q 262.7 124.1, 265.9 120.6
+Q 269.0 117.0, 275.0 117.0
+Q 280.6 117.0, 283.6 121.0
+L 281.0 123.0
+Q 278.9 120.2, 275.0 120.2
+Q 270.9 120.2, 268.8 122.9
+Q 266.6 125.6, 266.6 130.8
+Q 266.6 136.1, 268.8 138.9
+Q 271.1 141.6, 275.4 141.6
+Q 278.4 141.6, 281.9 139.8
+L 283.0 142.7
+Q 281.5 143.6, 279.4 144.2
+Q 277.3 144.7, 274.9 144.7
+Q 269.0 144.7, 265.9 141.1
+Q 262.7 137.5, 262.7 130.8
+' fill='currentColor'/>
+<path class='atom-0' d='M 286.8 121.5
+L 296.1 121.5
+L 296.1 123.5
+L 286.8 123.5
+L 286.8 121.5
+' fill='currentColor'/>
+<path class='atom-4' d='M 67.2 117.2
+L 70.9 117.2
+L 70.9 128.7
+L 84.7 128.7
+L 84.7 117.2
+L 88.3 117.2
+L 88.3 144.2
+L 84.7 144.2
+L 84.7 131.7
+L 70.9 131.7
+L 70.9 144.2
+L 67.2 144.2
+L 67.2 117.2
+' fill='currentColor'/>
+<path class='atom-5' d='M 472.5 130.0
+Q 475.1 130.7, 476.4 132.3
+Q 477.7 133.9, 477.7 136.2
+Q 477.7 140.0, 475.3 142.1
+Q 473.0 144.2, 468.5 144.2
+L 459.4 144.2
+L 459.4 117.2
+L 467.3 117.2
+Q 472.0 117.2, 474.3 119.1
+Q 476.6 120.9, 476.6 124.4
+Q 476.6 128.4, 472.5 130.0
+M 463.0 120.2
+L 463.0 128.7
+L 467.3 128.7
+Q 470.0 128.7, 471.4 127.6
+Q 472.8 126.5, 472.8 124.4
+Q 472.8 120.2, 467.3 120.2
+L 463.0 120.2
+M 468.5 141.1
+Q 471.1 141.1, 472.5 139.9
+Q 473.9 138.6, 473.9 136.2
+Q 473.9 134.0, 472.3 132.9
+Q 470.8 131.8, 467.9 131.8
+L 463.0 131.8
+L 463.0 141.1
+L 468.5 141.1
+' fill='#9E511E'/>
+<path class='atom-5' d='M 483.9 124.6
+L 484.3 127.3
+Q 486.3 124.3, 489.7 124.3
+Q 490.8 124.3, 492.2 124.6
+L 491.6 127.8
+Q 490.0 127.5, 489.1 127.5
+Q 487.5 127.5, 486.4 128.1
+Q 485.4 128.7, 484.5 130.2
+L 484.5 144.2
+L 481.0 144.2
+L 481.0 124.6
+L 483.9 124.6
+' fill='#9E511E'/>
+<defs><marker id="mah3" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#e0409f"/></marker></defs><path d="M282.2,130.7 Q302.7,113.5 323.2,130.7" fill="none" stroke="#e0409f" stroke-width="2.2" marker-end="url(#mah3)"/><path d="M420.9,130.7 Q439.2,115.3 457.6,130.7" fill="none" stroke="#e0409f" stroke-width="2.2" marker-end="url(#mah3)"/><circle cx="286.2" cy="133.9" r="2.1" fill="#c98a00"/><circle cx="286.2" cy="127.5" r="2.1" fill="#c98a00"/></svg>
+<div class="cap">SN2: the acetylide carbon attacks the CH₂ from the side opposite to Br (backside attack); the C–Br bond pair leaves with Br⁻. Transition state [C···CH₂···Br]⁻, trigonal-bipyramidal carbon; the CH₂ group inverts like an umbrella.</div></div>
+        <p>The same happens at the other end. Crotyl bromide is primary and allylic — ideal for SN2; with excess bromide both acetylide ends are alkylated.
+           The C=C keeps its <i>trans</i> geometry because no bond to it is touched.</p>
+        <div class="obsnote">On the bench: bromide dripped in and white NaBr settled as Br⁻ met Na⁺.</div></li>
+      <li><h4>Step 3 — The product X</h4>
+        <div class="sol-fig"><svg class="mech" role="img" aria-label="Product X with the six collinear carbons CH2-C#C-C#C-CH2 highlighted" version='1.1' baseProfile='full'
+              xmlns='http://www.w3.org/2000/svg'
+                      
+                      xmlns:xlink='http://www.w3.org/1999/xlink'
+                  xml:space='preserve'
+width='600px' height='170px' viewBox='0 0 600 170'>
+<!-- END OF HEADER -->
+<path class='bond-3 atom-3 atom-4' d='M 386.9,27.1 L 393.6,38.7 L 358.0,59.1 L 350.2,48.2 Z' style='fill:#FF72B2;fill-rule:evenodd;fill-opacity:1;stroke:#FF72B2;stroke-width:0.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-opacity:1;' />
+<path class='bond-4 atom-4 atom-5' d='M 350.2,48.2 L 358.0,59.1 L 321.9,79.9 L 314.1,69.1 Z' style='fill:#FF72B2;fill-rule:evenodd;fill-opacity:1;stroke:#FF72B2;stroke-width:0.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-opacity:1;' />
+<path class='bond-5 atom-5 atom-6' d='M 314.1,69.1 L 321.9,79.9 L 285.9,100.7 L 278.1,89.9 Z' style='fill:#FF72B2;fill-rule:evenodd;fill-opacity:1;stroke:#FF72B2;stroke-width:0.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-opacity:1;' />
+<path class='bond-6 atom-6 atom-7' d='M 278.1,89.9 L 285.9,100.7 L 249.8,121.6 L 242.0,110.7 Z' style='fill:#FF72B2;fill-rule:evenodd;fill-opacity:1;stroke:#FF72B2;stroke-width:0.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-opacity:1;' />
+<path class='bond-7 atom-7 atom-8' d='M 242.0,110.7 L 249.8,121.6 L 213.1,142.7 L 206.4,131.1 Z' style='fill:#FF72B2;fill-rule:evenodd;fill-opacity:1;stroke:#FF72B2;stroke-width:0.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-opacity:1;' />
+<ellipse cx='390.2' cy='32.9' rx='12.5' ry='12.5' class='atom-3'  style='fill:#FF72B2;fill-rule:evenodd;stroke:#FF72B2;stroke-width:1.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<ellipse cx='354.1' cy='53.7' rx='12.5' ry='12.5' class='atom-4'  style='fill:#FF72B2;fill-rule:evenodd;stroke:#FF72B2;stroke-width:1.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<ellipse cx='318.0' cy='74.5' rx='12.5' ry='12.5' class='atom-5'  style='fill:#FF72B2;fill-rule:evenodd;stroke:#FF72B2;stroke-width:1.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<ellipse cx='282.0' cy='95.3' rx='12.5' ry='12.5' class='atom-6'  style='fill:#FF72B2;fill-rule:evenodd;stroke:#FF72B2;stroke-width:1.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<ellipse cx='245.9' cy='116.1' rx='12.5' ry='12.5' class='atom-7'  style='fill:#FF72B2;fill-rule:evenodd;stroke:#FF72B2;stroke-width:1.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<ellipse cx='209.8' cy='136.9' rx='12.5' ry='12.5' class='atom-8'  style='fill:#FF72B2;fill-rule:evenodd;stroke:#FF72B2;stroke-width:1.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<path class='bond-0 atom-0 atom-1' d='M 498.5,53.8 L 462.4,33.0' style='fill:none;fill-rule:evenodd;stroke:currentColor;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<path class='bond-1 atom-1 atom-2' d='M 462.4,33.0 L 426.3,53.8' style='fill:none;fill-rule:evenodd;stroke:currentColor;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<path class='bond-1 atom-1 atom-2' d='M 462.4,40.2 L 429.4,59.2' style='fill:none;fill-rule:evenodd;stroke:currentColor;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<path class='bond-2 atom-2 atom-3' d='M 426.3,53.8 L 390.2,32.9' style='fill:none;fill-rule:evenodd;stroke:currentColor;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<path class='bond-3 atom-3 atom-4' d='M 390.2,32.9 L 354.1,53.7' style='fill:none;fill-rule:evenodd;stroke:currentColor;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<path class='bond-4 atom-4 atom-5' d='M 354.1,53.7 L 318.0,74.5' style='fill:none;fill-rule:evenodd;stroke:currentColor;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<path class='bond-4 atom-4 atom-5' d='M 357.3,59.1 L 321.2,79.9' style='fill:none;fill-rule:evenodd;stroke:currentColor;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<path class='bond-4 atom-4 atom-5' d='M 351.0,48.3 L 314.9,69.1' style='fill:none;fill-rule:evenodd;stroke:currentColor;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<path class='bond-5 atom-5 atom-6' d='M 318.0,74.5 L 282.0,95.3' style='fill:none;fill-rule:evenodd;stroke:currentColor;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<path class='bond-6 atom-6 atom-7' d='M 282.0,95.3 L 245.9,116.1' style='fill:none;fill-rule:evenodd;stroke:currentColor;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<path class='bond-6 atom-6 atom-7' d='M 285.1,100.7 L 249.0,121.5' style='fill:none;fill-rule:evenodd;stroke:currentColor;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<path class='bond-6 atom-6 atom-7' d='M 278.8,89.9 L 242.7,110.7' style='fill:none;fill-rule:evenodd;stroke:currentColor;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<path class='bond-7 atom-7 atom-8' d='M 245.9,116.1 L 209.8,136.9' style='fill:none;fill-rule:evenodd;stroke:currentColor;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<path class='bond-8 atom-8 atom-9' d='M 209.8,136.9 L 173.7,116.0' style='fill:none;fill-rule:evenodd;stroke:currentColor;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<path class='bond-9 atom-9 atom-10' d='M 173.7,116.0 L 137.6,136.8' style='fill:none;fill-rule:evenodd;stroke:currentColor;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<path class='bond-9 atom-9 atom-10' d='M 173.7,123.3 L 140.7,142.3' style='fill:none;fill-rule:evenodd;stroke:currentColor;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<path class='bond-10 atom-10 atom-11' d='M 137.6,136.8 L 101.5,116.0' style='fill:none;fill-rule:evenodd;stroke:currentColor;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<path d='M 464.2,34.0 L 462.4,33.0 L 460.6,34.0' style='fill:none;stroke:currentColor;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-opacity:1;' />
+<path d='M 428.1,52.7 L 426.3,53.8 L 424.5,52.7' style='fill:none;stroke:currentColor;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-opacity:1;' />
+<path d='M 392.0,33.9 L 390.2,32.9 L 388.4,33.9' style='fill:none;stroke:currentColor;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-opacity:1;' />
+<path d='M 355.9,52.7 L 354.1,53.7 L 352.3,54.7' style='fill:none;stroke:currentColor;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-opacity:1;' />
+<path d='M 319.9,73.5 L 318.0,74.5 L 316.2,75.5' style='fill:none;stroke:currentColor;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-opacity:1;' />
+<path d='M 283.8,94.3 L 282.0,95.3 L 280.1,96.3' style='fill:none;stroke:currentColor;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-opacity:1;' />
+<path d='M 247.7,115.1 L 245.9,116.1 L 244.1,117.1' style='fill:none;stroke:currentColor;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-opacity:1;' />
+<path d='M 211.6,135.9 L 209.8,136.9 L 208.0,135.9' style='fill:none;stroke:currentColor;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-opacity:1;' />
+<path d='M 175.5,117.1 L 173.7,116.0 L 171.9,117.1' style='fill:none;stroke:currentColor;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-opacity:1;' />
+<path d='M 139.4,135.8 L 137.6,136.8 L 135.8,135.8' style='fill:none;stroke:currentColor;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-opacity:1;' />
+<defs><marker id="mah4" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#e0409f"/></marker></defs></svg>
+<div class="cap">X = (2E,10E)-dodeca-2,10-diene-5,7-diyne, CH₃CH=CHCH₂–C≡C–C≡C–CH₂CH=CHCH₃ (C₁₂H₁₄). Highlighted: the six carbons on one straight line.</div></div>
+        <div class="eq">⁻C≡C–C≡C⁻ + 2 CH₃CH=CHCH₂Br → CH₃CH=CHCH₂–C≡C–C≡C–CH₂CH=CHCH₃ + 2 Br⁻</div></li>
+      <li><h4>Step 4 — Hybridisation of every chain carbon</h4>
+        <div style="overflow-x:auto;max-width:100%"><table class="soltab"><thead><tr><th>Carbon (from one end)</th><th>Group</th><th>Hybridisation</th><th>Angle at this carbon</th><th>On the line?</th></tr></thead><tbody>
+          <tr><td>C1</td><td>CH₃</td><td>sp³</td><td>—</td><td>no</td></tr>
+          <tr><td>C2, C3</td><td>CH=CH</td><td>sp²</td><td>120°</td><td>no</td></tr>
+          <tr><td>C4</td><td>CH₂</td><td>sp³</td><td>109.5°</td><td><b>yes</b> — bonded to an sp carbon along its axis</td></tr>
+          <tr><td>C5–C8</td><td>–C≡C–C≡C–</td><td>sp</td><td>180°</td><td><b>yes</b></td></tr>
+          <tr><td>C9</td><td>CH₂</td><td>sp³</td><td>109.5°</td><td><b>yes</b></td></tr>
+          <tr><td>C10, C11</td><td>CH=CH</td><td>sp²</td><td>120°</td><td>no — the chain turns by 70.5° at C9</td></tr>
+          <tr><td>C12</td><td>CH₃</td><td>sp³</td><td>—</td><td>no</td></tr>
+        </tbody></table></div></li>
+      <li><h4>Step 5 — Count</h4>
+        <div class="calcblock">C4 – C5 ≡ C6 – C7 ≡ C8 – C9 : angles at C5, C6, C7, C8 = 180° ⇒ all six on one axis<br>
+          at C4 and C9 (sp³) the next bond turns off the axis by 180° − 109.5° = 70.5°<br>
+          maximum collinear carbons = 4 (sp) + 2 (the CH₂ on each end) = <span class="hl" id="solans">—</span></div>
+        <p>Traps: counting only the sp carbons gives 4; letting the line run on past the CH₂ gives 8 or more; the <i>trans</i> C=C is not linear (120°).</p></li>
+    </ol>
+    <div class="verify">
+      <h4>Independent verification</h4>
+      <ul>
+        <li><b>RDKit templates.</b> Deprotonation and SN2 templates applied to buta-1,3-diyne and <i>trans</i>-crotyl bromide give X = C₁₂H₁₄ with the <i>E,E</i> geometry kept.</li>
+        <li><b>3-D geometry.</b> X embedded and optimised with MMFF: the largest set of carbons within 0.1 Å of one straight line is 6.</li>
+        <li><b>Controls.</b> Hexatriyne gives 8, ethyne 4, one equivalent of base 5, allyl or propargyl bromide 6 — the same rule every time.</li>
+        <li><b>Solution websites.</b> MathonGo's published solution (their Q44) gives 6.</li>
+        <li><b>This page.</b> The arrows are pushed on the molecule graph; hybridisation is read from bond orders; the count is made twice (by rule and on the geometric model) at run time.</li>
+        <li><b>Answer key.</b> Checked afterwards against the official final key printed with the paper: Q12 → 6.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="howto">
+  <h2 class="big"><span class="n">04</span>How to use this simulation</h2>
+  <p class="lede">For a student opening it for the first time. The whole investigation runs by itself after one press.</p>
+  <div class="howto">
+    <div><div class="n">STEP 1</div><h4>Read the mission brief</h4>
+      <p>A diyne, two equivalents of NaNH₂ and excess crotyl bromide give X. How many carbons of X are in one straight line?</p></div>
+    <div><div class="n">STEP 2</div><h4>Check the values</h4>
+      <p>The question's reagents are loaded. <b>You do not need to change anything.</b> The answer is shown above the experiment.</p></div>
+    <div><div class="n">STEP 3</div><h4>Optional: customize</h4>
+      <p>Try a triyne or ethyne, one equivalent of base, or another bromide. The lab says honestly when you have left the question.
+         <b>↺ RESTORE QUESTION CONDITIONS</b> puts everything back.</p></div>
+    <div><div class="n">STEP 4</div><h4>Start</h4>
+      <p>Press <b>▶ START EXPERIMENT</b> under the experiment screen. Nothing else to click (about a minute; <b>SLOW MOTION</b> or <b>2×</b> changes the pace).</p></div>
+    <div><div class="n">STEP 5</div><h4>Watch both levels</h4>
+      <p>Left: the ammonia flask — grey NaNH₂ used up, bromide dripping, NaBr settling. Right, at the same moment: curved arrows, bonds breaking
+         and forming, the carbanions and the SN2 umbrella flip.</p></div>
+    <div><div class="n">STEP 6</div><h4>The laser test</h4>
+      <p>X relaxes into its real angles and spins about its straight axis; the carbons that stay still are counted. Badges unlock on the way.</p></div>
+    <div><div class="n">STEP 7</div><h4>Explore</h4>
+      <p>In the <b>3-D line explorer</b> build other products and spin them. Then read the <b>Detailed solution</b>.</p></div>
+    <div><div class="n">STEP 8</div><h4>Experiment again</h4>
+      <p>Press <b>▶ REPLAY EXPERIMENT</b>, or change a reagent and press <b>⚙ RUN WITH CUSTOM VALUES</b>. <b>CLASSROOM MODE</b>
+         enlarges everything for a projector.</p></div>
+  </div>
+  <div class="panel" style="margin-top:14px">
+    <h3>Classification</h3>
+    <table class="meta-tbl"><tbody>
+      <tr><th>Exam</th><td>JEE Advanced 2026, Paper 1, Chemistry, Section 3, Q.12</td></tr>
+      <tr><th>Chapter</th><td>Hydrocarbons</td></tr>
+      <tr><th>Topic</th><td>Alkynes - acidity of terminal alkynes, acetylide SN2 alkylation and linear sp geometry</td></tr>
+      <tr><th>Difficulty</th><td>Easy-Moderate</td></tr>
+      <tr><th>Answer</th><td><b id="clsans">— run the experiment</b></td></tr>
+    </tbody></table>
+  </div>
+</section>
+
+<footer>
+  ADV-2026-P1-CHE-Q12 · PrayogX · JEE Advanced Interactive Simulation Library · question text reproduced
+  from the official JEE (Advanced) 2026 Paper 1 for educational use. This is a virtual laboratory only.
+</footer>
+</div>
+<script>
+(function(){
+"use strict";
+
+/* =====================================================================
+   helpers
+   ===================================================================== */
+var NS = "http://www.w3.org/2000/svg";
+function $(id){ return document.getElementById(id); }
+function css(v){ return getComputedStyle(document.documentElement).getPropertyValue(v).trim(); }
+function mk(n, a, parent){
+  var e = document.createElementNS(NS, n), k;
+  if (a) for (k in a) if (Object.prototype.hasOwnProperty.call(a, k)) e.setAttribute(k, a[k]);
+  if (parent) parent.appendChild(e);
+  return e;
+}
+function tx(parent, x, y, s, a){ var o = a || {}; o.x = x; o.y = y; var t = mk("text", o, parent); t.textContent = s; return t; }
+function clamp(v, a, b){ return v < a ? a : (v > b ? b : v); }
+function ease(t){ t = clamp(t, 0, 1); return t * t * (3 - 2 * t); }
+function lerp(a, b, t){ return a + (b - a) * t; }
+var REDUCED = !!(window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches);
+function rng(seed){ var s = seed >>> 0; return function(){ s = (s * 1664525 + 1013904223) >>> 0; return s / 4294967296; }; }
+
+
+/* =====================================================================
+   question data - the reagents as printed. Nothing below stores X or the
+   answer: the lab pushes the electrons, then builds the molecule's shape
+   from hybridisation angles and counts the carbons on one straight line.
+   ===================================================================== */
+var Q = { chain: "diyne", base: "2", rx: "crotyl" };
+var FIELDS = [
+  { k: "chain", lab: "Starting alkyne", opts: [["diyne", "buta-1,3-diyne, HC≡C–C≡CH (the question)"], ["triyne", "hexa-1,3,5-triyne, HC≡C–C≡C–C≡CH"], ["ethyne", "ethyne, HC≡CH"]] },
+  { k: "base", lab: "Sodium amide", opts: [["2", "2 equivalents NaNH₂ (the question)"], ["1", "1 equivalent NaNH₂"]] },
+  { k: "rx", lab: "Alkyl halide (excess)", opts: [["crotyl", "trans-CH₃–CH=CH–CH₂–Br (the question)"], ["allyl", "CH₂=CH–CH₂–Br (allyl bromide)"], ["propargyl", "HC≡C–CH₂–Br (propargyl bromide)"]] }
+];
+var ST = {}; (function(){ var k; for (k in Q) ST[k] = Q[k]; })();
+function fieldsHTML(){
+  var h = "", i, j, F;
+  for (i = 0; i < FIELDS.length; i++){
+    F = FIELDS[i];
+    h += '<div class="selrow" id="fld_' + F.k + '"><label for="in_' + F.k + '">' + F.lab + '</label><select class="sel" id="in_' + F.k + '">';
+    for (j = 0; j < F.opts.length; j++) h += '<option value="' + F.opts[j][0] + '"' + (F.opts[j][0] === Q[F.k] ? " selected" : "") + ">" + F.opts[j][1] + "</option>";
+    h += "</select></div>";
+  }
+  return h;
+}
+function conditionWarnings(D){
+  var w = [];
+  if (D.chain !== Q.chain) w.push("⚠ The question starts from <b>buta-1,3-diyne</b>. A different alkyne gives a different X.");
+  if (D.base !== Q.base) w.push("⚠ The question uses <b>2 equivalents</b> of NaNH₂ — with one, only one end is deprotonated and alkylated.");
+  if (D.rx !== Q.rx) w.push("⚠ The question's halide is <b>trans-crotyl bromide</b>. Another primary bromide still reacts by SN2, but X changes.");
+  return w;
+}
+function readAll(){
+  var i, F, v, okv, j;
+  for (i = 0; i < FIELDS.length; i++){
+    F = FIELDS[i]; v = $("in_" + F.k).value; okv = false;
+    for (j = 0; j < F.opts.length; j++) if (F.opts[j][0] === v) okv = true;
+    ST[F.k] = okv ? v : Q[F.k];
+  }
+  var w = conditionWarnings(ST), box = $("condwarn");
+  box.hidden = !w.length; box.innerHTML = w.join("<br>");
+}
+function isCustom(D){ var k; D = D || ST; for (k in Q) if (D[k] !== Q[k]) return true; return false; }
+function copyST(){ var o = {}, k; for (k in Q) o[k] = ST[k]; return o; }
+function sameD(a, b){ var k; for (k in Q) if (a[k] !== b[k]) return false; return true; }
+
+/* =====================================================================
+   molecules as graphs: atoms (element, implicit H, position) and bond
+   orders. A curved arrow moves one electron pair: out of a bond or a lone
+   pair, into a bond. Charges are worked out from the bonds, never typed.
+   ===================================================================== */
+var VAL = { C: 4, N: 3, O: 2, H: 1, Br: 1, Cl: 1, F: 1, S: 2 };
+function Mol(){ return { a: [], b: {}, st: {} }; }
+function addA(m, el, x, y, h, tag){ m.a.push({ el: el, x: x, y: y, h: h || 0, tag: tag || "" }); return m.a.length - 1; }
+function key(i, j){ return i < j ? i + "-" + j : j + "-" + i; }
+function bo(m, i, j){ return m.b[key(i, j)] || 0; }
+function setBo(m, i, j, o){ if (o <= 0) delete m.b[key(i, j)]; else m.b[key(i, j)] = o; }
+function bond(m, i, j, o){ setBo(m, i, j, o); }
+function nbrs(m, i){ var o = [], k, p; for (k in m.b) if (Object.prototype.hasOwnProperty.call(m.b, k)){ p = k.split("-"); if (+p[0] === i) o.push([+p[1], m.b[k]]); else if (+p[1] === i) o.push([+p[0], m.b[k]]); } return o; }
+function vsum(m, i){ var s = 0, n = nbrs(m, i), k; for (k = 0; k < n.length; k++) s += n[k][1]; return s; }
+/* formal charge from bonds: C, N, O, halogens by their usual valence; a bare H is H+; Na is always Na+; Zn is Zn2+ minus its bonds */
+function charge(m, i){
+  var a = m.a[i], v = vsum(m, i) + a.h;
+  if (a.el === "Na") return 1;
+  if (a.el === "Zn") return v;
+  if (a.el === "H") return v === 0 ? 1 : v - 1;
+  if (a.el === "C") return v - 4;
+  if (a.el === "N") return v - 3;
+  if (a.el === "O" || a.el === "S") return v - 2;
+  if (a.el === "Br" || a.el === "Cl" || a.el === "F") return v - 1;
+  return 0;
+}
+function totalCharge(m){ var s = 0, i; for (i = 0; i < m.a.length; i++) s += charge(m, i); return s; }
+function clone(m){
+  var c = Mol(), i, k;
+  for (i = 0; i < m.a.length; i++){ var a = m.a[i], o = {}; for (k in a) if (Object.prototype.hasOwnProperty.call(a, k)) o[k] = a[k]; c.a.push(o); }
+  for (k in m.b) c.b[k] = m.b[k]; for (k in m.st) c.st[k] = m.st[k];
+  for (k in m) if (Object.prototype.hasOwnProperty.call(m, k) && k !== "a" && k !== "b" && k !== "st") c[k] = m[k];
+  return c;
+}
+/* the electron-pushing step: every arrow takes a pair from its tail and puts it into its head */
+function push(m, arrows){
+  var c = clone(m), i, A;
+  for (i = 0; i < arrows.length; i++){
+    A = arrows[i];
+    if (A.from[0] === "b") setBo(c, A.from[1], A.from[2], bo(c, A.from[1], A.from[2]) - 1);
+    if (A.to[0] === "b") setBo(c, A.to[1], A.to[2], bo(c, A.to[1], A.to[2]) + 1);
+  }
+  return c;
+}
+/* chemical sense after every step: charges within -1..+1 on C, N, O, halogens; H one bond (or a free H+); carbon never five bonds */
+function valid(m){
+  var i, a, q;
+  for (i = 0; i < m.a.length; i++){
+    a = m.a[i]; q = charge(m, i);
+    if (a.el === "Na" && vsum(m, i)) return false;
+    if ((a.el === "C" || a.el === "N" || a.el === "O" || a.el === "Br") && (q < -1 || q > 1)) return false;
+    if (a.el === "C" && vsum(m, i) + a.h > 4) return false;
+    if (a.el === "H" && vsum(m, i) > 1) return false;
+  }
+  return true;
+}
+function fragments(m){
+  var seen = {}, out = [], i;
+  for (i = 0; i < m.a.length; i++){
+    if (seen[i]) continue;
+    var f = [], st = [i]; seen[i] = true;
+    while (st.length){ var x = st.pop(), n = nbrs(m, x), k; f.push(x); for (k = 0; k < n.length; k++) if (!seen[n[k][0]]){ seen[n[k][0]] = true; st.push(n[k][0]); } }
+    out.push(f);
+  }
+  return out;
+}
+function nC(m, f){ var n = 0, i; for (i = 0; i < f.length; i++) if (m.a[f[i]].el === "C") n++; return n; }
+/* the major organic product: the fragment with the most carbon atoms (gases, salts and catalysts are not it) */
+function mainFrag(m){ var F = fragments(m), best = null, i; for (i = 0; i < F.length; i++) if (m.a[F[i][0]].tag !== "cat" && m.a[F[i][0]].tag !== "reag" && (!best || nC(m, F[i]) > nC(m, best))) best = F[i]; return best; }
+function coBonds(m, f){
+  var inF = {}, i, k, p, out = [];
+  for (i = 0; i < f.length; i++) inF[f[i]] = true;
+  for (k in m.b) if (Object.prototype.hasOwnProperty.call(m.b, k) && m.b[k] === 2){
+    p = k.split("-"); var x = +p[0], y = +p[1];
+    if (inF[x] && inF[y] && ((m.a[x].el === "C" && m.a[y].el === "O") || (m.a[x].el === "O" && m.a[y].el === "C"))) out.push([x, y]);
+  }
+  return out;
+}
+function sub(n){ var d = "₀₁₂₃₄₅₆₇₈₉", s = String(n), o = "", i; if (n === 1) return ""; for (i = 0; i < s.length; i++) o += d.charAt(+s.charAt(i)); return o; }
+function formula(m, f){
+  var c = {}, i, a, order = ["C", "H", "N", "O", "Br", "Na"], o = "";
+  for (i = 0; i < f.length; i++){ a = m.a[f[i]]; c[a.el] = (c[a.el] || 0) + 1; if (a.h) c.H = (c.H || 0) + a.h; }
+  for (i = 0; i < order.length; i++) if (c[order[i]]) o += order[i] + sub(c[order[i]]);
+  return o;
+}
+function unit(x, y){ var l = Math.sqrt(x * x + y * y) || 1; return [x / l, y / l]; }
+function place(m, i, x, y){ m.a[i].x = x; m.a[i].y = y; }
+function shift(m, list, dx, dy){ var i; for (i = 0; i < list.length; i++){ m.a[list[i]].x += dx; m.a[list[i]].y += dy; } }
+/* one mechanistic step: move reagents into place (pre), push the arrows, then let atoms settle (post) */
+function step(kind, title, why, P, pre, arrows, post){
+  var A = clone(P); if (pre) pre(A);
+  var B = push(A, arrows); if (post) post(B, A);
+  return { kind: kind, title: title, why: why, P: P, A: A, B: B, arrows: arrows, ok: valid(B) && totalCharge(B) === totalCharge(A) };
+}
+
+
+/* =====================================================================
+   the flask contents as one graph: the polyyne, the amide ions, Na+ and
+   the alkyl bromides (off stage until they are added)
+   ===================================================================== */
+var NSP = { diyne: 4, triyne: 6, ethyne: 2 };
+var CHAIN_TXT = { diyne: "HC≡C–C≡CH", triyne: "HC≡C–C≡C–C≡CH", ethyne: "HC≡CH" };
+function buildHalide(m, kind, sgn){
+  var o = {}, off = sgn * 30;
+  o.c0 = addA(m, "C", off, 0, 2, "reag");
+  if (kind === "crotyl"){ o.c1 = addA(m, "C", off, 0, 1, "reag"); o.c2 = addA(m, "C", off, 0, 1, "reag"); o.c3 = addA(m, "C", off, 0, 3, "reag"); bond(m, o.c0, o.c1, 1); bond(m, o.c1, o.c2, 2); bond(m, o.c2, o.c3, 1); o.chain = [o.c1, o.c2, o.c3]; o.shape = "zig"; }
+  else if (kind === "allyl"){ o.c1 = addA(m, "C", off, 0, 1, "reag"); o.c2 = addA(m, "C", off, 0, 2, "reag"); bond(m, o.c0, o.c1, 1); bond(m, o.c1, o.c2, 2); o.chain = [o.c1, o.c2]; o.shape = "zig"; }
+  else { o.c1 = addA(m, "C", off, 0, 0, "reag"); o.c2 = addA(m, "C", off, 0, 1, "reag"); bond(m, o.c0, o.c1, 1); bond(m, o.c1, o.c2, 3); o.chain = [o.c1, o.c2]; o.shape = "lin"; }
+  o.br = addA(m, "Br", off, 0, 0, "reag"); bond(m, o.c0, o.br, 1);
+  return o;
+}
+function buildMol(D){
+  var m = Mol(), n = NSP[D.chain], i, C = [], eq = +D.base;
+  for (i = 0; i < n; i++) C.push(addA(m, "C", (i - (n - 1) / 2), 0, 0));
+  for (i = 0; i < n - 1; i++) bond(m, C[i], C[i + 1], i % 2 === 0 ? 3 : 1);
+  var hL = addA(m, "H", C[0] === undefined ? 0 : m.a[C[0]].x - 1, 0), hR = addA(m, "H", m.a[C[n - 1]].x + 1, 0);
+  bond(m, C[0], hL, 1); bond(m, C[n - 1], hR, 1);
+  m.C = C; m.ends = [{ c: C[0], h: hL, sgn: -1, v: 1, name: "L" }, { c: C[n - 1], h: hR, sgn: 1, v: -1, name: "R" }];
+  for (i = 0; i < 2; i++){
+    var e = m.ends[i];
+    if (i < eq){ e.n = addA(m, "N", e.sgn * 30, 0.4, 2, "reag"); e.na = addA(m, "Na", e.sgn * 30, 1.4, 0, "reag"); }
+    e.rx = buildHalide(m, D.rx, e.sgn);
+  }
+  return m;
+}
+/* where an atom list sits relative to an end: s = direction out of the chain, v = up/down side */
+function placeChain(M, rx, cx, cy, sgn, v, dirx){
+  var i, px = cx, py = cy, lin = rx.shape === "lin";
+  for (i = 0; i < rx.chain.length; i++){
+    if (lin){ px += dirx * 0.5; py += v * 0.87; }
+    else if (i % 2 === 0){ px += dirx * 0.5; py += v * 0.87; }
+    else { px += dirx * 1.0; }
+    place(M, rx.chain[i], px, py);
+  }
+}
+function plan(D, m0){
+  var steps = [], m = m0, i, e, eq = +D.base;
+  for (i = 0; i < eq; i++){
+    e = m.ends[i];
+    steps.push((function(e){ var s = step("dep" + e.name, "Deprotonation — NH₂⁻ pulls off the terminal H⁺",
+      "The amide ion's lone pair takes the acidic sp C–H proton (pKa ≈ 25 vs 38 for NH₃); the C–H bond pair stays on carbon: an acetylide carbanion.",
+      m, function(A){ var xe = A.a[e.c].x; place(A, e.n, xe + e.sgn * 2.05, 0); place(A, e.na, xe + e.sgn * 2.6, -e.v * 1.1); place(A, e.h, xe + e.sgn * 1.0, 0); },
+      [{ from: ["a", e.n], to: ["b", e.n, e.h] }, { from: ["b", e.h, e.c], to: ["a", e.c] }],
+      function(B, A){ var xe = A.a[e.c].x; place(B, e.n, xe + e.sgn * 2.9, e.v * 1.5); place(B, e.h, xe + e.sgn * 2.25, e.v * 1.05); place(B, e.na, xe + e.sgn * 0.9, -e.v * 1.15); }); s.tag = "dep" + e.name; return s; })(e));
+    m = steps[steps.length - 1].B;
+  }
+  for (i = 0; i < eq; i++){
+    e = m.ends[i];
+    steps.push((function(e){ var rx = e.rx, s = step("sn2" + e.name, "SN2 — the acetylide attacks CH₂ from the back, Br⁻ leaves",
+      "The carbanion's lone pair attacks the CH₂ carbon from the side opposite the C–Br bond; as the new C–C bond forms the C–Br bond breaks, the three groups on CH₂ flip like an umbrella (Walden inversion) and Br⁻ leaves to meet Na⁺.",
+      m, function(A){
+        var xe = A.a[e.c].x, cx = xe + e.sgn * 1.45;
+        place(A, rx.c0, cx, 0); place(A, rx.br, cx + e.sgn * 1.15, 0);
+        placeChain(A, rx, cx, 0, e.sgn, e.v, -e.sgn);
+        place(A, e.n, xe + e.sgn * 5.5, e.v * 2.6); place(A, e.h, xe + e.sgn * 4.9, e.v * 2.2);
+      },
+      [{ from: ["a", e.c], to: ["b", e.c, rx.c0] }, { from: ["b", rx.c0, rx.br], to: ["a", rx.br] }],
+      function(B, A){
+        var xe = A.a[e.c].x, cx = xe + e.sgn * 1.0;
+        place(B, rx.c0, cx, 0); placeChain(B, rx, cx, 0, e.sgn, e.v, e.sgn);
+        place(B, rx.br, cx + e.sgn * 0.3, -e.v * 2.2); place(B, e.na, cx + e.sgn * 1.1, -e.v * 2.2);
+      }); s.tag = "sn2" + e.name; return s; })(e));
+    m = steps[steps.length - 1].B;
+  }
+  return steps;
+}
+
+/* =====================================================================
+   the shape: hybridisation from bond orders, a model from ideal angles,
+   and the longest straight line of carbons - two independent ways
+   ===================================================================== */
+function hyb(m, i){ var n = nbrs(m, i), pi = 0, k; for (k = 0; k < n.length; k++) pi += n[k][1] - 1; return pi >= 2 ? "sp" : pi === 1 ? "sp2" : "sp3"; }
+var ANGLE = { sp: 180, sp2: 120, sp3: 109.5 };
+function cnbrs(m, i, f){ var n = nbrs(m, i), o = [], k; for (k = 0; k < n.length; k++) if (m.a[n[k][0]].el === "C" && (!f || f[n[k][0]])) o.push(n[k][0]); return o; }
+/* the carbon backbone as a path (every molecule here is an unbranched chain) */
+function backbone(m, f){
+  var inF = {}, i, start = null;
+  for (i = 0; i < f.length; i++) inF[f[i]] = true;
+  for (i = 0; i < f.length; i++) if (m.a[f[i]].el === "C" && cnbrs(m, f[i], inF).length <= 1){ start = f[i]; break; }
+  var path = [start], prev = -1, cur = start, guard = 0;
+  while (guard++ < 60){ var nx = cnbrs(m, cur, inF).filter(function(x){ return x !== prev; }); if (!nx.length) break; prev = cur; cur = nx[0]; path.push(cur); }
+  return path;
+}
+/* rule: a run of sp carbons is straight, and so are the two atoms bonded to its ends */
+function lineByRule(m, path){
+  var best = [path[0], path[1]], i = 0;
+  while (i < path.length){
+    if (hyb(m, path[i]) !== "sp"){ i++; continue; }
+    var j = i; while (j + 1 < path.length && hyb(m, path[j + 1]) === "sp") j++;
+    var seg = path.slice(Math.max(0, i - 1), Math.min(path.length, j + 2));
+    if (seg.length > best.length) best = seg;
+    i = j + 1;
+  }
+  return best;
+}
+function blen(m, a, b){ var o = bo(m, a, b); return o === 3 ? 1.20 : o === 2 ? 1.34 : (hyb(m, a) === "sp" && hyb(m, b) === "sp" ? 1.37 : (hyb(m, a) === "sp" || hyb(m, b) === "sp") ? 1.46 : 1.51); }
+/* geometry: walk the chain turning by (180 - bond angle) at every carbon, alternating sides (all-trans zigzag) */
+function model(m, path){
+  var P = [[0, 0]], dir = 0, side = 1, i, out = [];
+  for (i = 1; i < path.length; i++){
+    if (i >= 2){ var th = ANGLE[hyb(m, path[i - 1])]; if (th < 179.9){ dir += side * (180 - th) * Math.PI / 180; side = -side; } }
+    var L = blen(m, path[i - 1], path[i]);
+    P.push([P[i - 1][0] + L * Math.cos(dir), P[i - 1][1] + L * Math.sin(dir)]);
+  }
+  for (i = 0; i < path.length; i++) out.push({ i: path[i], x: P[i][0], y: P[i][1], hyb: hyb(m, path[i]), ang: i && i < path.length - 1 ? ANGLE[hyb(m, path[i])] : null });
+  return out;
+}
+function lineByGeometry(G){
+  var best = null, i, j, k;
+  for (i = 0; i < G.length; i++) for (j = i + 1; j < G.length; j++){
+    var dx = G[j].x - G[i].x, dy = G[j].y - G[i].y, L = Math.sqrt(dx * dx + dy * dy), on = [];
+    for (k = 0; k < G.length; k++){ var d = Math.abs((G[k].x - G[i].x) * dy - (G[k].y - G[i].y) * dx) / L; if (d < 0.02) on.push(k); }
+    if (!best || on.length > best.on.length) best = { on: on, a: i, b: j };
+  }
+  var dist = G.map(function(g){ var dx = G[best.b].x - G[best.a].x, dy = G[best.b].y - G[best.a].y, L = Math.sqrt(dx * dx + dy * dy); return Math.abs((g.x - G[best.a].x) * dy - (g.y - G[best.a].y) * dx) / L; });
+  return { on: best.on, dist: dist };
+}
+
+/* =====================================================================
+   the whole experiment
+   ===================================================================== */
+function run(D){
+  var m0 = buildMol(D), steps = plan(D, m0), X = steps.length ? steps[steps.length - 1].B : m0, f = mainFrag(X), i;
+  var path = backbone(X, f), G = model(X, path), rule = lineByRule(X, path), geo = lineByGeometry(G);
+  var nC_line = rule.length, nsp = 0, nAlk = 0, ok = true;
+  for (i = 0; i < path.length; i++) if (hyb(X, path[i]) === "sp") nsp++;
+  for (i = 0; i < steps.length; i++){ ok = ok && steps[i].ok; if (steps[i].kind.indexOf("sn2") === 0) nAlk++; }
+  var agree = geo.on.length === nC_line;
+  var audit = {
+    A: { v: nAlk === 2, ev: nAlk === 2 ? "Both acetylide ends attacked a CH₂–Br by SN2: X = " + formula(X, f) + ", a " + path.length + "-carbon chain with " + nsp + " sp carbons in the middle." : "Only " + nAlk + " end was alkylated — X = " + formula(X, f) + "." },
+    B: { v: nC_line === 6, ev: "Every sp carbon holds its two neighbours at 180°: the run of " + nsp + " sp carbons plus the two carbons bonded to its ends gives " + nC_line + " carbons on one line; the geometric model finds " + geo.on.length + " atoms on its best straight line." },
+    C: { v: nC_line === nsp, ev: "The line does not stop at the sp carbons: each end sp carbon is bonded to its neighbour at 180°, so the CH₂ carbons sit on the same axis — " + nC_line + ", not " + nsp + "." },
+    D: { v: nC_line === 8, ev: "The CH₂ is sp³: its next bond turns off the axis by 180° − 109.5° = 70.5°, and the trans C=C beyond it is sp² (120°). The model puts those carbons " + (G.length > 2 ? Math.max.apply(null, geo.dist).toFixed(2) : "0") + " Å off the line — " + nC_line + " in line, not 8." }
+  };
+  return { D: D, m0: m0, steps: steps, X: X, f: f, path: path, G: G, rule: rule, geo: geo, agree: agree, nsp: nsp, nAlk: nAlk, count: nC_line, allOK: ok,
+    fx: formula(X, f), audit: audit, complete: !isCustom(D) && ok && agree, answer: String(nC_line) };
+}
+var QRUN = run(copyST());
+var ANS = QRUN.answer;
+var ANSNOTE = "carbon atoms on one straight line in X";
+
+/* =====================================================================
+   experiment engine - one automatic timeline, built when START is pressed
+   ===================================================================== */
+var SEGS = [["load", 6.0], ["d1", 6.8], ["d2", 6.2], ["s1", 7.8], ["s2", 7.2], ["hyb", 6.8], ["line", 8.2], ["test", 6.4], ["answer", 4.6]];
+var STAGE_MSG = { load: "Charging the flask…", d1: "Deprotonating the first end…", d2: "Deprotonating the second end…", s1: "First SN2 attack…", s2: "Second SN2 attack…",
+  hyb: "Assigning hybridisation…", line: "Firing the laser along the axis…", test: "Auditing the traps…", answer: "Counting collinear carbons…" };
+var ORDER = ["load", "d1", "d2", "s1", "s2", "hyb", "line", "test", "answer"];
+var STAGE_TAG = { d1: "depL", d2: "depR", s1: "sn2L", s2: "sn2R" };
+var BADGES = ["base", "nuc", "sn2", "hyb", "trap", "mas"];
+var RUN = { state: "setup", paused: false, speed: 1, segs: [], si: 0, u: 0, D: copyST(), R: null, done: false, revealed: false,
+  calc: {}, found: {}, cards: {}, badges: {}, classroom: false, rows: [], trial: null };
+RUN.R = run(RUN.D);
+var earlyReveal = false;
+var TOTAL = (function(){ var t = 0, i; for (i = 0; i < SEGS.length; i++) t += SEGS[i][1]; return t; })();
+function buildTimeline(){ var s = [], i; for (i = 0; i < SEGS.length; i++) s.push({ kind: SEGS[i][0], dur: SEGS[i][1] }); return s; }
+function seg(){ return RUN.segs[RUN.si] || null; }
+function elapsed(){ var t = 0, i; for (i = 0; i < RUN.si && i < RUN.segs.length; i++) t += RUN.segs[i].dur; return t + (seg() ? RUN.u : 0); }
+var NOW = null;
+function currentState(){
+  var sg = seg();
+  if (RUN.done) return { name: "rest", f: 1 };
+  if (RUN.state === "setup" || !sg) return { name: "idle", f: 0 };
+  return { name: sg.kind, f: clamp(RUN.u / sg.dur, 0, 1) };
+}
+var PH = { pre: 0.14, arrows: 0.5, bonds: 0.82 };
+function stepByTag(tag){ var s = RUN.R.steps, i; for (i = 0; i < s.length; i++) if (s[i].tag === tag) return { s: s[i], i: i }; return null; }
+/* which mechanistic step is on screen, and how far through it */
+function mechAt(name, f){
+  var tag = STAGE_TAG[name]; if (!tag) return null;
+  var h = stepByTag(tag);
+  if (h) return { step: h.s, u: f, n: h.i, tag: tag };
+  var st = RUN.R.steps, idx = ORDER.indexOf(name), last = RUN.R.m0, i;
+  for (i = 0; i < st.length; i++){ var at = null, k; for (k in STAGE_TAG) if (STAGE_TAG[k] === st[i].tag) at = k; if (ORDER.indexOf(at) < idx) last = st[i].B; }
+  return { step: null, u: f, mol: last, n: -1, tag: tag };
+}
+/* how many steps of a kind are finished at this moment - the flask follows the molecules */
+function doneCount(prefix, name, f){
+  var st = RUN.R.steps, n = 0, i, idx = RUN.done || name === "rest" ? 99 : ORDER.indexOf(name);
+  for (i = 0; i < st.length; i++){
+    if (st[i].tag.indexOf(prefix) !== 0) continue;
+    var at = null, k; for (k in STAGE_TAG) if (STAGE_TAG[k] === st[i].tag) at = k;
+    var si = ORDER.indexOf(at);
+    if (si < idx || (si === idx && f > PH.bonds)) n++;
+  }
+  return n;
+}
+
+/* ---- the case file ---- */
+function setTile(k, text, ok){
+  var t = $("u_" + k); if (!t) return;
+  t.classList.toggle("found", ok === true); t.classList.toggle("warn", ok === false);
+  t.querySelector(".v").textContent = text;
+}
+function setCard(k){
+  var e = RUN.R.audit[k], c = $("oc_" + k);
+  RUN.cards[k] = e;
+  c.classList.remove("now", "yes", "no", "na");
+  c.classList.add(e.v === true ? "yes" : e.v === false ? "no" : "na");
+  $("ev_" + k).textContent = e.ev;
+  $("vd_" + k).textContent = e.v === true ? "✓ HOLDS" : e.v === false ? "✗ FAILS" : "— NOT APPLICABLE";
+}
+function focusCard(k){ var i; for (i = 0; i < 4; i++) $("oc_" + "ABCD"[i]).classList.toggle("now", "ABCD"[i] === k); }
+function clearBoard(){
+  var i, k;
+  for (i = 0; i < 4; i++){ k = "ABCD"[i]; var c = $("oc_" + k); c.className = "ocard"; $("ev_" + k).textContent = "not yet examined"; $("vd_" + k).textContent = "UNEVALUATED"; }
+  ["A", "B", "R"].forEach(function(k){ var t = $("u_" + k); t.className = ""; t.querySelector(".v").textContent = "?"; });
+  BADGES.forEach(function(b){ $("b_" + b).classList.remove("on", "pop"); });
+}
+function badge(b){
+  if (RUN.badges[b]) return; RUN.badges[b] = true;
+  var e = $("b_" + b); e.classList.add("on"); e.classList.remove("pop"); void e.offsetWidth; e.classList.add("pop");
+}
+
+/* things that happen once, at a moment in the timeline */
+function onProgress(sg, f){
+  var once = function(key, fn){ if (!RUN.calc["@" + key]){ RUN.calc["@" + key] = true; fn(); } };
+  var mm = mechAt(sg.kind, f);
+  if (mm && mm.step && f > PH.bonds) once("row" + mm.tag, function(){ logRow(mm.step); });
+  if (sg.kind === "test"){
+    if (f > 0.3) once("C", function(){ setCard("C"); addCalc("c"); });
+    if (f > 0.62) once("D", function(){ setCard("D"); addCalc("d"); badge("trap"); });
+    focusCard(f < 0.3 ? null : f < 0.62 ? "C" : f < 0.95 ? "D" : null);
+  }
+}
+function onSegEnd(sg){
+  var R = RUN.R, k = sg.kind;
+  onProgress(sg, 1);
+  if (k === "load" || k === "d1" || k === "d2" || k === "s1") addCalc(k);
+  if (k === "d2" && doneCount("dep", "d2", 1) === 2) badge("base");
+  if (k === "s1" && stepByTag("sn2L")) badge("nuc");
+  if (k === "s2"){ addCalc("s2"); setCard("A"); setTile("A", R.fx, R.nAlk === 2 && !isCustom(R.D)); if (R.nAlk === 2) badge("sn2"); }
+  if (k === "hyb"){ addCalc("hyb"); setTile("B", R.nsp + " sp C", !isCustom(R.D)); badge("hyb"); }
+  if (k === "line"){ addCalc("line"); setCard("B"); setTile("R", R.answer, R.complete); }
+  if (k === "test") focusCard(null);
+}
+function onSegStart(sg){ if (sg.kind === "answer") $("donebanner").classList.add("on"); }
+function stepTimeline(sdt){
+  var sg = seg(); if (!sg) return;
+  RUN.u += sdt;
+  onProgress(sg, clamp(RUN.u / sg.dur, 0, 1));
+  while (sg && RUN.u >= sg.dur){
+    RUN.u -= sg.dur;
+    onSegEnd(sg);
+    RUN.si++;
+    sg = seg();
+    if (!sg){ finish(); return; }
+    onSegStart(sg);
+  }
+}
+function clearRunUI(){
+  $("calclist").innerHTML = ""; $("calcempty").hidden = false;
+  $("donebanner").classList.remove("on");
+  $("revealhost").classList.remove("on"); $("revealhost").innerHTML = "";
+  $("lab3d").classList.remove("dim"); $("blackout").classList.remove("on");
+  burst = []; FX = []; FXONCE = {}; clearBoard();
+}
+function freshRun(){ RUN.si = 0; RUN.u = 0; RUN.paused = false; RUN.done = false; RUN.revealed = false; RUN.calc = {}; RUN.found = {}; RUN.cards = {}; RUN.badges = {}; RUN.rows = []; RUN.trial = null; }
+function startRun(D){
+  readAll();
+  RUN.D = D || copyST(); RUN.R = run(RUN.D);
+  RUN.segs = buildTimeline(); freshRun(); RUN.state = "running";
+  clearRunUI(); drawLog(); refreshUI(); refreshAnswerBox();
+}
+function resetRun(){
+  RUN.state = "setup"; RUN.segs = []; freshRun();
+  readAll(); RUN.D = copyST(); RUN.R = run(RUN.D);
+  clearRunUI(); drawLog(); refreshUI(); refreshAnswerBox();
+}
+function resetAll(){
+  var i; for (i = 0; i < FIELDS.length; i++) $("in_" + FIELDS[i].k).value = Q[FIELDS[i].k];
+  readAll(); earlyReveal = false; resetRun(); refreshGate();
+}
+function finish(){
+  RUN.si = RUN.segs.length; RUN.state = "done"; RUN.done = true;
+  addCalc("match"); if (RUN.R.complete) badge("mas");
+  refreshUI(); refreshAnswerBox();
+  doReveal();
+}
+
+/* =====================================================================
+   reasoning log - one causal chain per step, written as it happens
+   ===================================================================== */
+function chain(a){ return a.join(' <span style="color:var(--text-muted)">→</span> '); }
+function bname(m, i, j, o){ return (m.a[i].el === "C" && m.a[i].h ? "CH" + (m.a[i].h > 1 ? sub(m.a[i].h) : "") : m.a[i].el) + (o === 2 ? "=" : o === 3 ? "≡" : "–") + m.a[j].el; }
+function bondDiff(s){
+  var br = [], fm = [], k, keys = {}, p;
+  for (k in s.A.b) keys[k] = 1; for (k in s.B.b) keys[k] = 1;
+  for (k in keys){
+    p = k.split("-"); var i = +p[0], j = +p[1], a = bo(s.A, i, j), b = bo(s.B, i, j);
+    if (b < a) br.push((b === 0 ? "" : "π of ") + bname(s.A, i, j, a));
+    if (b > a) fm.push((a === 0 ? "" : "π in ") + bname(s.B, i, j, b));
+  }
+  return { br: br, fm: fm };
+}
+function chargesText(m){ var o = [], i, q; for (i = 0; i < m.a.length; i++){ q = charge(m, i); if (q && m.a[i].el !== "Na" && (vsum(m, i) || m.a[i].el !== "Br" || true)) o.push(m.a[i].el + (q > 0 ? "⁺" : "⁻")); } return o.length ? o.join(", ") : "none"; }
+function hybText(R){ return R.G.map(function(g, k){ return "C" + (k + 1) + " " + g.hyb; }).join(" · "); }
+function calcHTML(key){
+  var R = RUN.R, mm, d, h;
+  switch (key){
+    case "load": return ["LOAD", chain([CHAIN_TXT[R.D.chain] + " in liquid NH₃ at −33 °C", R.D.base + " eq NaNH₂", { crotyl: "trans-CH₃CH=CHCH₂Br", allyl: "CH₂=CHCH₂Br", propargyl: "HC≡CCH₂Br" }[R.D.rx] + " in excess"])];
+    case "d1": case "d2": h = stepByTag(key === "d1" ? "depL" : "depR");
+      if (!h) return ["BASE", "No NaNH₂ left for this end: it keeps its C–H."]; d = bondDiff(h.s);
+      return ["BASE", chain(["NH₂⁻ lone pair → H", "broken: " + d.br.join(", "), "formed: " + d.fm.join(", "), "<b>acetylide C⁻</b> (sp C–H is acidic, pKa ≈ 25)"])];
+    case "s1": case "s2": h = stepByTag(key === "s1" ? "sn2L" : "sn2R");
+      if (!h) return ["SN2", "No acetylide at this end — no substitution."]; d = bondDiff(h.s);
+      return ["SN2", chain(["C⁻ lone pair → CH₂ (backside)", "broken: " + d.br.join(", "), "formed: " + d.fm.join(", "), "Br⁻ + Na⁺ → NaBr ↓"]) + (key === "s2" ? " &nbsp;⇒&nbsp; X = " + R.fx : "")];
+    case "hyb": return ["SHAPE", hybText(R) + "<span class=w>sp = 180°, sp² = 120°, sp³ = 109.5°</span>"];
+    case "line": return ["②", R.audit.B.ev + " &nbsp;⇒&nbsp; " + verdictHTML(R.audit.B.v)];
+    case "c": return ["③", R.audit.C.ev + " &nbsp;⇒&nbsp; " + verdictHTML(R.audit.C.v)];
+    case "d": return ["④", R.audit.D.ev + " &nbsp;⇒&nbsp; " + verdictHTML(R.audit.D.v)];
+    case "match":
+      return ["ANSWER", R.complete ? "collinear carbons in X = <span class=hl>" + R.answer + "</span> (CH₂–C≡C–C≡C–CH₂)"
+        : "Your reagents give " + R.answer + " collinear carbons in " + R.fx + " — not the question's X; restore them to answer the question."];
+  }
+  return null;
+}
+function verdictHTML(v){ return v === true ? "<span class=hl>✓ HOLDS</span>" : v === false ? '<b style="color:var(--bad)">✗ FAILS</b>' : "<b>— not applicable</b>"; }
+function addCalc(key){
+  if (RUN.calc[key]) return;
+  var c = calcHTML(key); if (!c) return;
+  RUN.calc[key] = true;
+  $("calcempty").hidden = true;
+  var li = document.createElement("li");
+  li.setAttribute("data-key", key);
+  li.innerHTML = '<span class="s">' + c[0] + '</span><span class="m">' + c[1] + "</span>";
+  $("calclist").appendChild(li);
+}
+function calcKeys(){ return Object.keys(RUN.calc).filter(function(k){ return k.charAt(0) !== "@"; }); }
+function logRow(s){
+  var d = bondDiff(s);
+  RUN.rows.push([String(RUN.rows.length + 1), s.title.split(" — ")[0], d.br.join(", ") || "—", d.fm.join(", ") || "—", chargesText(s.B), s.ok ? "✓" : "✗"]);
+  drawLog();
+}
+function drawLog(){
+  var h = "<thead><tr><th>#</th><th>step</th><th>bonds broken</th><th>bonds formed</th><th>charges after</th><th>valence / charge check</th></tr></thead><tbody>", i, r;
+  for (i = 0; i < RUN.rows.length; i++){ r = RUN.rows[i]; h += "<tr><td>" + r[0] + "</td><td>" + r[1] + "</td><td>" + r[2] + "</td><td>" + r[3] + "</td><td>" + r[4] + "</td><td>" + r[5] + "</td></tr>"; }
+  $("log").innerHTML = h + "</tbody>";
+  $("logn").textContent = RUN.rows.length;
+}
+function label(g, s, x, y, col, size, align, weight){
+  g.fillStyle = col; g.font = (weight || 600) + " " + (size || 14) + "px ui-sans-serif,system-ui,sans-serif";
+  g.textAlign = align || "center"; g.textBaseline = "middle"; g.fillText(s, x, y);
+}
+var burst = [], clock = 0, SHOW = { eq: false, obs: false, why: false };
+function hood(g, W, H){
+  W = W || 1040; H = H || 620;
+  var bg = g.createLinearGradient(0, 0, 0, H); bg.addColorStop(0, "#0b1120"); bg.addColorStop(1, "#070a12");
+  g.fillStyle = bg; g.fillRect(0, 0, W, H);
+  /* a slow-moving aurora and a field of drifting motes - the motion-graphics backdrop */
+  var ax = W * (0.5 + 0.35 * Math.sin(clock * 0.13)), ay = H * (0.35 + 0.15 * Math.cos(clock * 0.17)), au = g.createRadialGradient(ax, ay, 10, ax, ay, W * 0.55);
+  au.addColorStop(0, "rgba(90,70,200,.16)"); au.addColorStop(0.5, "rgba(30,120,200,.07)"); au.addColorStop(1, "rgba(0,0,0,0)"); g.fillStyle = au; g.fillRect(0, 0, W, H);
+  g.strokeStyle = "rgba(120,160,255,.045)"; g.lineWidth = 1; var gx, sh = (clock * 6) % 40;
+  for (gx = -40 + sh; gx < W; gx += 40){ g.beginPath(); g.moveTo(gx, 0); g.lineTo(gx, H); g.stroke(); }
+  for (gx = -40 + sh; gx < H; gx += 40){ g.beginPath(); g.moveTo(0, gx); g.lineTo(W, gx); g.stroke(); }
+  var r = rng(77), i;
+  for (i = 0; i < 46; i++){ var mx = (r() * W + clock * (4 + r() * 10)) % W, my = (r() * H - clock * (3 + r() * 8) + H * 10) % H, tw = 0.35 + 0.35 * Math.sin(clock * (1 + r() * 2) + i);
+    g.fillStyle = "rgba(170,200,255," + (0.12 + 0.2 * tw).toFixed(3) + ")"; g.beginPath(); g.arc(mx, my, 0.8 + r() * 1.6, 0, 7); g.fill(); }
+  var vg = g.createRadialGradient(W / 2, H / 2, H * 0.35, W / 2, H / 2, W * 0.75); vg.addColorStop(0, "rgba(0,0,0,0)"); vg.addColorStop(1, "rgba(0,0,0,.45)"); g.fillStyle = vg; g.fillRect(0, 0, W, H);
+  g.strokeStyle = "rgba(160,190,255,.12)"; g.lineWidth = 10; g.strokeRect(14, 14, W - 28, H - 28);
+}
+/* ---- particles: sparks when bonds snap, rings when they form, motes of released gas ---- */
+var FX = [], FXONCE = {}, VS = { milk: 0, blue: 0 };
+function fxOnce(key, fn){ if (!key || FXONCE[key]) return; FXONCE[key] = 1; fn(); }
+function fxSpark(x, y, col, n, spd){ if (REDUCED) return; var i; for (i = 0; i < n; i++){ var a = Math.random() * 6.283, v = (0.3 + Math.random()) * (spd || 160); FX.push({ x: x, y: y, vx: Math.cos(a) * v, vy: Math.sin(a) * v, life: 0, max: 0.45 + Math.random() * 0.45, col: col, r: 1.2 + Math.random() * 2.2 }); } }
+function fxRing(x, y, col, R){ if (REDUCED) return; FX.push({ ring: 1, x: x, y: y, life: 0, max: 0.8, col: col, R: R || 40 }); }
+function fxStep(dt){ var i, f; for (i = FX.length - 1; i >= 0; i--){ f = FX[i]; f.life += dt; if (f.life > f.max){ FX.splice(i, 1); continue; } if (!f.ring){ f.x += f.vx * dt; f.y += f.vy * dt; f.vx *= 0.92; f.vy = f.vy * 0.92 + 40 * dt; } } }
+function fxDraw(g){
+  if (!FX.length) return;
+  var i, f, a; g.save(); g.globalCompositeOperation = "lighter";
+  for (i = 0; i < FX.length; i++){ f = FX[i]; a = 1 - f.life / f.max;
+    if (f.ring){ g.strokeStyle = f.col; g.globalAlpha = a * 0.9; g.lineWidth = 3 * a + 0.5; g.beginPath(); g.arc(f.x, f.y, 6 + f.R * ease(f.life / f.max), 0, 7); g.stroke(); }
+    else { g.globalAlpha = a; g.fillStyle = f.col; g.beginPath(); g.arc(f.x, f.y, f.r * (0.6 + a), 0, 7); g.fill(); } }
+  g.restore();
+}
+/* a kinetic title card that sweeps in at the start of every stage */
+function titleCard(g, big, small, f, col){
+  if (REDUCED || f > 0.2) return;
+  var a = f < 0.05 ? f / 0.05 : 1 - (f - 0.05) / 0.15, x = 520 + (1 - ease(f / 0.08)) * -260 + (f > 0.12 ? (f - 0.12) * 900 : 0);
+  g.save(); g.globalAlpha = clamp(a, 0, 1) * 0.92;
+  var band = g.createLinearGradient(0, 250, 0, 370); band.addColorStop(0, "rgba(8,12,24,0)"); band.addColorStop(0.5, "rgba(8,12,24,.88)"); band.addColorStop(1, "rgba(8,12,24,0)"); g.fillStyle = band; g.fillRect(0, 240, 1040, 140);
+  label(g, big, x, 300, col || "#ffffff", 46, "center", 900);
+  label(g, small, x + 30, 342, GOLD, 16, "center", 800);
+  var sx = lerp(-200, 1240, ease(f / 0.2)), sw = g.createLinearGradient(sx - 120, 0, sx + 120, 0); sw.addColorStop(0, "rgba(255,255,255,0)"); sw.addColorStop(0.5, "rgba(255,255,255,.35)"); sw.addColorStop(1, "rgba(255,255,255,0)");
+  g.globalCompositeOperation = "lighter"; g.fillStyle = sw; g.fillRect(sx - 120, 262, 240, 96);
+  g.restore();
+}
+function stamp(g, x, y, text, ok, a){
+  g.save(); g.translate(x, y); g.rotate(-0.08); g.globalAlpha = a;
+  g.strokeStyle = ok ? "#3ee39a" : ok === false ? "#ff6b6b" : "#b8a8ff"; g.lineWidth = 4;
+  g.font = "900 24px ui-sans-serif,system-ui,sans-serif"; var w = g.measureText(text).width + 30;
+  g.fillStyle = "rgba(8,14,26,.88)"; g.fillRect(-w / 2, -24, w, 48); g.strokeRect(-w / 2, -24, w, 48);
+  label(g, text, 0, 1, ok ? "#3ee39a" : ok === false ? "#ff6b6b" : "#cfc4ff", 24, "center", 900); g.restore();
+}
+function sceneTitle(g, a, b){ label(g, a, 520, 38, "#8fa6c9", 15, "center", 800); if (b) label(g, b, 520, 62, "#e6eeff", 19, "center", 800); }
+function wrap(g, t, x, y, w, lh, col, size, align){
+  g.font = "700 " + size + "px ui-sans-serif,system-ui,sans-serif"; var words = t.split(" "), line = "", yy = y, i;
+  for (i = 0; i < words.length; i++){ var tt = line + words[i] + " "; if (g.measureText(tt).width > w && line){ label(g, line.trim(), x, yy, col, size, align || "center", 700); line = words[i] + " "; yy += lh + 4; } else line = tt; }
+  label(g, line.trim(), x, yy, col, size, align || "center", 700); return yy;
+}
+function panel(g, x, y, w, h, col){ g.fillStyle = "rgba(16,26,46,.93)"; g.fillRect(x, y, w, h); g.strokeStyle = col || "rgba(160,190,255,.35)"; g.lineWidth = 2; g.strokeRect(x, y, w, h); }
+var GREEN = "#3ee39a", RED = "#ff6b6b", GOLD = "#ffd79a", ARROW = "#ff7ad9", BLUE = "#7fc8ff";
+var COL = { C: "#a7b0c2", O: "#ff6b6b", H: "#eef3ff", N: "#7fa9ff", Br: "#e0935a", Na: "#c7a6ff", Zn: "#b9c4d8", S: "#ffd84a" };
+var TINT = { C: "rgba(70,82,110,.9)", O: "rgba(150,40,55,.9)", H: "rgba(120,130,160,.8)", N: "rgba(40,70,160,.9)", Br: "rgba(140,70,30,.9)", Na: "rgba(100,70,170,.9)", Zn: "rgba(90,100,125,.9)", S: "rgba(150,130,20,.9)" };
+var LTXT = { C: "#eef3ff", O: "#ffe3e6", H: "#ffffff", N: "#e3ecff", Br: "#ffe9d8", Na: "#f1e8ff", Zn: "#eef2fa", S: "#fff8d8" };
+
+/* =====================================================================
+   the molecular level - atoms, bonds, charges and curved arrows
+   ===================================================================== */
+function bboxOf(list){
+  var x0 = 1e9, y0 = 1e9, x1 = -1e9, y1 = -1e9, i, j, m;
+  for (i = 0; i < list.length; i++){ m = list[i]; for (j = 0; j < m.a.length; j++){ if (m.a[j].tag === "cat" || m.a[j].tag === "reag") continue; x0 = Math.min(x0, m.a[j].x); x1 = Math.max(x1, m.a[j].x); y0 = Math.min(y0, m.a[j].y); y1 = Math.max(y1, m.a[j].y); } }
+  return [x0, y0, x1, y1];
+}
+/* one fixed frame for a set of molecule states, so molecules never jump while they react */
+function frameForList(list, x, y, w, h, maxsc){
+  var b = bboxOf(list), sc = Math.min((w - 60) / (b[2] - b[0] || 1), (h - 60) / (b[3] - b[1] || 1), maxsc || 88);
+  return { sc: sc, ox: x + w / 2 - sc * (b[0] + b[2]) / 2, oy: y + h / 2 - sc * (b[1] + b[3]) / 2 };
+}
+function P(fr, a){ return [fr.ox + a.x * fr.sc, fr.oy + a.y * fr.sc]; }
+function atomLabel(a){ return a.h ? a.el + "H" + (a.h > 1 ? sub(a.h) : "") : a.el; }
+function lineBond(g, p, q, order, col, w, fr, alphaExtra, extraCol){
+  var d = [q[0] - p[0], q[1] - p[1]], L = Math.sqrt(d[0] * d[0] + d[1] * d[1]) || 1, n = [-d[1] / L, d[0] / L], off = fr.sc * 0.07, k;
+  var offs = order === 1 ? [0] : order === 2 ? [-off, off] : [-off * 1.6, 0, off * 1.6];
+  g.lineWidth = w; g.strokeStyle = col;
+  for (k = 0; k < offs.length; k++){ g.beginPath(); g.moveTo(p[0] + n[0] * offs[k], p[1] + n[1] * offs[k]); g.lineTo(q[0] + n[0] * offs[k], q[1] + n[1] * offs[k]); g.stroke(); }
+}
+/* the molecule at t between two states A and B (t = 0: A, 1: B). opt.hiCO: glow every C=O of the organic molecule */
+function drawMol(g, fr, A, B, t, opt){
+  opt = opt || {};
+  var i, k, keys = {}, p, n = A.a.length, pos = [], te = ease(t), S = t < 0.5 ? A : B, hide = {};
+  var FA = fragments(A), mf = mainFrag(A), fi;
+  for (fi = 0; fi < FA.length; fi++){ var fr0 = FA[fi], isCat = A.a[fr0[0]].tag === "cat"; if ((isCat && opt.noCat) || (!isCat && fr0 !== mf && nC(A, fr0) <= 1 && opt.hideGone === true)) for (i = 0; i < fr0.length; i++) hide[fr0[i]] = 1; }
+  var jig = REDUCED ? 0 : (opt.jig || 0);
+  for (i = 0; i < n; i++) pos.push([fr.ox + lerp(A.a[i].x, B.a[i].x, te) * fr.sc + jig * Math.sin(clock * 7.3 + i * 1.7), fr.oy + lerp(A.a[i].y, B.a[i].y, te) * fr.sc + jig * Math.cos(clock * 6.1 + i * 2.3)]);
+  for (k in A.b) keys[k] = 1; for (k in B.b) keys[k] = 1;
+  var lw = clamp(fr.sc * 0.05, 1.6, 3.4);
+  if (opt.hiCO){ var f = mainFrag(S), cb = coBonds(S, f); for (i = 0; i < cb.length; i++){ var a1 = pos[cb[i][0]], b1 = pos[cb[i][1]]; g.strokeStyle = "rgba(62,227,154," + (0.28 + (REDUCED ? 0 : 0.14 * Math.sin(clock * 4 + i))).toFixed(3) + ")"; g.lineWidth = fr.sc * 0.42; g.lineCap = "round"; g.beginPath(); g.moveTo(a1[0], a1[1]); g.lineTo(b1[0], b1[1]); g.stroke(); g.lineCap = "butt"; label(g, String(i + 1), (a1[0] + b1[0]) / 2 + fr.sc * 0.32, (a1[1] + b1[1]) / 2 - fr.sc * 0.2, GREEN, 13, "center", 900); } }
+  for (k in keys){
+    p = k.split("-"); var a = +p[0], b = +p[1], oa = bo(A, a, b), ob = bo(B, a, b), P1 = pos[a], P2 = pos[b], st = A.st[k];
+    if (hide[a] || hide[b]) continue;
+    var dim = A.a[a].tag === "cat" || A.a[b].tag === "cat" ? 0.7 : 1;
+    g.globalAlpha = dim;
+    if (st && oa === 1 && ob === 1){
+      var fromP = pos[st.from], toP = st.from === a ? P2 : P1, d = [toP[0] - fromP[0], toP[1] - fromP[1]], L = Math.sqrt(d[0] * d[0] + d[1] * d[1]) || 1, nn = [-d[1] / L, d[0] / L], w = fr.sc * 0.12;
+      if (st.t === "w"){ g.fillStyle = "rgba(230,238,255,.9)"; g.beginPath(); g.moveTo(fromP[0], fromP[1]); g.lineTo(toP[0] + nn[0] * w, toP[1] + nn[1] * w); g.lineTo(toP[0] - nn[0] * w, toP[1] - nn[1] * w); g.closePath(); g.fill(); }
+      else { var q; g.strokeStyle = "rgba(230,238,255,.9)"; g.lineWidth = 1.6; for (q = 1; q <= 6; q++){ var tq = q / 7, c = [fromP[0] + d[0] * tq, fromP[1] + d[1] * tq], hh = w * tq; g.beginPath(); g.moveTo(c[0] - nn[0] * hh, c[1] - nn[1] * hh); g.lineTo(c[0] + nn[0] * hh, c[1] + nn[1] * hh); g.stroke(); } }
+      g.globalAlpha = 1; continue;
+    }
+    var base = Math.min(oa, ob);
+    if (base > 0) lineBond(g, P1, P2, base, "rgba(220,230,245,.92)", lw, fr);
+    if (oa > ob && t < 1){ g.globalAlpha = dim * (1 - te) * (REDUCED ? 1 : 0.7 + 0.3 * Math.sin(clock * 38)); g.setLineDash([]); g.shadowColor = RED; g.shadowBlur = REDUCED ? 0 : 12;
+      if (oa - ob === 1 && ob === 0){ g.strokeStyle = RED; g.lineWidth = lw * 1.4; g.setLineDash([4, 4]); g.beginPath(); g.moveTo(P1[0], P1[1]); g.lineTo(P2[0], P2[1]); g.stroke(); g.setLineDash([]); }
+      else { var dd = [P2[0] - P1[0], P2[1] - P1[1]], LL = Math.sqrt(dd[0] * dd[0] + dd[1] * dd[1]) || 1, n2 = [-dd[1] / LL * fr.sc * 0.14, dd[0] / LL * fr.sc * 0.14]; g.strokeStyle = RED; g.lineWidth = lw * 1.2; g.beginPath(); g.moveTo(P1[0] + n2[0], P1[1] + n2[1]); g.lineTo(P2[0] + n2[0], P2[1] + n2[1]); g.stroke(); }
+    }
+    g.shadowBlur = 0;
+    if (ob > oa && t > 0){ g.globalAlpha = dim * te; g.shadowColor = GREEN; g.shadowBlur = REDUCED || t > 0.999 ? 0 : 16;
+      if (oa === 0){ g.strokeStyle = GREEN; g.lineWidth = lw * 1.3; if (t < 0.999) g.setLineDash([5, 4]); g.beginPath(); g.moveTo(P1[0], P1[1]); g.lineTo(P2[0], P2[1]); g.stroke(); g.setLineDash([]); }
+      else { var d3 = [P2[0] - P1[0], P2[1] - P1[1]], L3 = Math.sqrt(d3[0] * d3[0] + d3[1] * d3[1]) || 1, n3 = [-d3[1] / L3 * fr.sc * 0.14, d3[0] / L3 * fr.sc * 0.14]; g.strokeStyle = t > 0.999 ? "rgba(220,230,245,.92)" : GREEN; g.lineWidth = lw * 1.2; g.beginPath(); g.moveTo(P1[0] + n3[0], P1[1] + n3[1]); g.lineTo(P2[0] + n3[0], P2[1] + n3[1]); g.stroke(); }
+    }
+    g.globalAlpha = 1; g.shadowBlur = 0;
+  }
+  var r0 = clamp(fr.sc * 0.2, 7, 15);
+  for (i = 0; i < n; i++){
+    if (hide[i]) continue;
+    var at = S.a[i], pp = pos[i], lab = atomLabel(at), r = at.el === "H" ? r0 * 0.7 : r0, cat = at.tag === "cat";
+    g.globalAlpha = cat ? 0.75 : 1;
+    g.font = "900 " + Math.round(r * 1.1) + "px ui-sans-serif,system-ui,sans-serif";
+    var wlab = Math.max(r * 2, g.measureText(lab).width + 8);
+    var hot = opt.hot && opt.hot[i];
+    if (hot && !REDUCED){ g.shadowColor = hot; g.shadowBlur = 14 + 6 * Math.sin(clock * 6); }
+    var sg = g.createRadialGradient(pp[0] - r * 0.4, pp[1] - r * 0.5, r * 0.15, pp[0], pp[1], wlab * 0.75); sg.addColorStop(0, "rgba(255,255,255,.35)"); sg.addColorStop(0.4, TINT[at.el]); sg.addColorStop(1, "#0a0f1c");
+    g.fillStyle = sg; g.beginPath(); if (g.roundRect) g.roundRect(pp[0] - wlab / 2, pp[1] - r, wlab, 2 * r, r); else g.rect(pp[0] - wlab / 2, pp[1] - r, wlab, 2 * r); g.fill();
+    g.shadowBlur = 0; g.strokeStyle = hot || COL[at.el]; g.lineWidth = hot ? 2.4 : 1.6; g.stroke();
+    g.shadowColor = "rgba(0,0,0,.9)"; g.shadowBlur = 3; label(g, lab, pp[0], pp[1] + 0.5, LTXT[at.el], Math.round(r * 1.1), "center", 900); g.shadowBlur = 0;
+    var q = charge(S, i);
+    if (q){ g.fillStyle = q > 0 ? "#4a8cff" : "#ff4d6d"; g.beginPath(); g.arc(pp[0] + wlab / 2, pp[1] - r * 0.9, r * 0.55, 0, 7); g.fill(); label(g, q > 0 ? "+" : "−", pp[0] + wlab / 2, pp[1] - r * 0.9, "#fff", Math.round(r * 0.9), "center", 900); }
+    if (opt.lp && opt.lp.indexOf(i) >= 0){ var o = opt.lpDir && opt.lpDir[i] ? opt.lpDir[i] : [0, -1]; g.fillStyle = GOLD; var cx = pp[0] + o[0] * r * 1.6, cy = pp[1] + o[1] * r * 1.6; g.beginPath(); g.arc(cx - o[1] * 4, cy + o[0] * 4, 2.6, 0, 7); g.arc(cx + o[1] * 4, cy - o[0] * 4, 2.6, 0, 7); g.fill(); }
+    g.globalAlpha = 1;
+  }
+  return pos;
+}
+/* one curved arrow: from a bond middle or a lone pair, to a bond middle (existing or new) or an atom */
+function arrowEnds(fr, A, ar){
+  var pa = function(i){ return P(fr, A.a[i]); }, mid = function(i, j){ var a = pa(i), b = pa(j); return [(a[0] + b[0]) / 2, (a[1] + b[1]) / 2]; };
+  var s, e;
+  if (ar.from[0] === "b") s = mid(ar.from[1], ar.from[2]); else s = pa(ar.from[1]);
+  if (ar.to[0] === "b"){ e = mid(ar.to[1], ar.to[2]); if (ar.from[0] === "a" && ar.to[1] === ar.from[1]) e = [lerp(pa(ar.to[1])[0], pa(ar.to[2])[0], 0.6), lerp(pa(ar.to[1])[1], pa(ar.to[2])[1], 0.6)]; }
+  else e = pa(ar.to[1]);
+  if (ar.from[0] === "a"){ var dd = [e[0] - s[0], e[1] - s[1]], L = Math.sqrt(dd[0] * dd[0] + dd[1] * dd[1]) || 1; s = [s[0] + dd[0] / L * 14, s[1] + dd[1] / L * 14]; }
+  if (ar.to[0] === "a"){ var d2 = [s[0] - e[0], s[1] - e[1]], L2 = Math.sqrt(d2[0] * d2[0] + d2[1] * d2[1]) || 1; e = [e[0] + d2[0] / L2 * 16 + d2[1] / L2 * 10, e[1] + d2[1] / L2 * 16 - d2[0] / L2 * 10]; }
+  return [s, e];
+}
+function drawArrow(g, fr, A, ar, p, centre){
+  if (p <= 0) return;
+  var se = arrowEnds(fr, A, ar), s = se[0], e = se[1], d = [e[0] - s[0], e[1] - s[1]], L = Math.sqrt(d[0] * d[0] + d[1] * d[1]) || 1, n = [-d[1] / L, d[0] / L];
+  var m = [(s[0] + e[0]) / 2, (s[1] + e[1]) / 2], side = (m[0] - centre[0]) * n[0] + (m[1] - centre[1]) * n[1] >= 0 ? 1 : -1, bulge = Math.max(22, L * 0.45) * side;
+  var c = [m[0] + n[0] * bulge, m[1] + n[1] * bulge], i, N = 24, last = s, prev = s;
+  var bz = function(t){ return [(1 - t) * (1 - t) * s[0] + 2 * (1 - t) * t * c[0] + t * t * e[0], (1 - t) * (1 - t) * s[1] + 2 * (1 - t) * t * c[1] + t * t * e[1]]; };
+  g.save(); if (!REDUCED){ g.shadowColor = ARROW; g.shadowBlur = 12; }
+  g.strokeStyle = ARROW; g.lineWidth = 3.2; g.lineCap = "round"; g.beginPath(); g.moveTo(s[0], s[1]);
+  for (i = 1; i <= N * p; i++){ var pt = bz(i / N); prev = last; last = pt; g.lineTo(pt[0], pt[1]); }
+  g.stroke(); g.restore();
+  /* the electron pair itself: two bright dots racing along the arrow while it draws, then flowing round it */
+  if (!REDUCED){ var hp = p < 1 ? p : (clock * 0.7 + (ar.from[1] % 5) * 0.21) % 1, hd = bz(hp), tg = bz(Math.max(0, hp - 0.02)), dx = hd[0] - tg[0], dy = hd[1] - tg[1], dl = Math.sqrt(dx * dx + dy * dy) || 1, k;
+    g.save(); g.globalCompositeOperation = "lighter";
+    for (k = 1; k <= 6; k++){ var tp = bz(Math.max(0, hp - k * 0.025)); g.fillStyle = "rgba(255,150,230," + (0.35 - k * 0.05).toFixed(2) + ")"; g.beginPath(); g.arc(tp[0], tp[1], 3.4 - k * 0.35, 0, 7); g.fill(); }
+    g.fillStyle = "#fff"; g.shadowColor = "#ffd0f4"; g.shadowBlur = 10;
+    g.beginPath(); g.arc(hd[0] - dy / dl * 3.2, hd[1] + dx / dl * 3.2, 2.6, 0, 7); g.arc(hd[0] + dy / dl * 3.2, hd[1] - dx / dl * 3.2, 2.6, 0, 7); g.fill(); g.restore(); }
+  if (p >= 1){ var ang = Math.atan2(last[1] - prev[1], last[0] - prev[0]); if (!REDUCED){ g.shadowColor = ARROW; g.shadowBlur = 10; } g.fillStyle = ARROW; g.beginPath(); g.moveTo(last[0], last[1]); g.lineTo(last[0] - 13 * Math.cos(ang - 0.42), last[1] - 13 * Math.sin(ang - 0.42)); g.lineTo(last[0] - 13 * Math.cos(ang + 0.42), last[1] - 13 * Math.sin(ang + 0.42)); g.closePath(); g.fill(); g.shadowBlur = 0; }
+}
+/* the mechanism panel for one step at local progress u */
+function stepAtoms(s){ var o = {}, i, A; for (i = 0; i < s.arrows.length; i++){ A = s.arrows[i]; o[A.from[1]] = 1; if (A.from[0] === "b") o[A.from[2]] = 1; o[A.to[1]] = 1; if (A.to[0] === "b") o[A.to[2]] = 1; } return o; }
+function spotlight(g, fr, s, box, a){
+  if (a <= 0) return;
+  var at = stepAtoms(s), sx = 0, sy = 0, n = 0, k; for (k in at){ var q = P(fr, s.A.a[+k]); sx += q[0]; sy += q[1]; n++; }
+  var cx = sx / n, cy = sy / n, gr = g.createRadialGradient(cx, cy, fr.sc * 1.2, cx, cy, fr.sc * 4.2);
+  gr.addColorStop(0, "rgba(4,6,14,0)"); gr.addColorStop(1, "rgba(4,6,14," + (0.5 * a).toFixed(3) + ")");
+  g.save(); g.beginPath(); g.rect(box[0], box[1] + 12, box[2], box[3] - 12); g.clip(); g.fillStyle = gr; g.fillRect(box[0], box[1], box[2], box[3]); g.restore();
+}
+function drawStep(g, fr, s, u, box, key, jig){
+  var i, centre = [box[0] + box[2] / 2, box[1] + box[3] / 2], nc = s.kind === "decarb", at = stepAtoms(s), hot = {}, k;
+  for (k in at) hot[k] = ARROW;
+  if (u < PH.pre){ drawMol(g, fr, s.P, s.A, u / PH.pre, { noCat: nc, jig: jig }); return "setting up"; }
+  if (u < PH.arrows){
+    var lp = [], dirs = {}, q = (u - PH.pre) / (PH.arrows - PH.pre);
+    for (i = 0; i < s.arrows.length; i++) if (s.arrows[i].from[0] === "a"){ var ai = s.arrows[i].from[1]; lp.push(ai); var tgt = s.arrows[i].to[0] === "b" ? (s.arrows[i].to[1] === ai ? s.arrows[i].to[2] : s.arrows[i].to[1]) : ai; dirs[ai] = unit(s.A.a[tgt].x - s.A.a[ai].x, s.A.a[tgt].y - s.A.a[ai].y); }
+    spotlight(g, fr, s, box, ease(q / 0.3));
+    drawMol(g, fr, s.A, s.A, 0, { lp: lp, lpDir: dirs, noCat: nc, hot: hot });
+    for (i = 0; i < s.arrows.length; i++) drawArrow(g, fr, s.A, s.arrows[i], clamp((q - i * 0.22) / 0.5, 0, 1), centre);
+    return "electrons move";
+  }
+  if (u < PH.bonds){
+    var t = (u - PH.arrows) / (PH.bonds - PH.arrows);
+    spotlight(g, fr, s, box, 1 - ease(t));
+    var pos = drawMol(g, fr, s.A, s.B, t, { noCat: nc, hot: t < 0.6 ? hot : null });
+    if (key){ var bk, keysAB = {}; for (bk in s.A.b) keysAB[bk] = 1; for (bk in s.B.b) keysAB[bk] = 1;
+      for (bk in keysAB){ var pr = bk.split("-"), a1 = +pr[0], b1 = +pr[1], oa = bo(s.A, a1, b1), ob = bo(s.B, a1, b1), mx = (pos[a1][0] + pos[b1][0]) / 2, my = (pos[a1][1] + pos[b1][1]) / 2;
+        if (ob < oa && t > 0.08) fxOnce(key + "x" + bk, (function(mx, my){ return function(){ fxSpark(mx, my, "#ffb36b", 16, 170); fxSpark(mx, my, RED, 8, 110); }; })(mx, my));
+        if (ob > oa && t > 0.9) fxOnce(key + "f" + bk, (function(mx, my){ return function(){ fxRing(mx, my, GREEN, 34); fxSpark(mx, my, GREEN, 10, 90); }; })(mx, my)); } }
+    g.globalAlpha = 1 - t; for (i = 0; i < s.arrows.length; i++) drawArrow(g, fr, s.A, s.arrows[i], 1, centre); g.globalAlpha = 1;
+    return "bonds break and form";
+  }
+  drawMol(g, fr, s.B, s.B, 1, { noCat: nc, jig: jig });
+  return "result of this step";
+}
+
+function flask(g, cx, cy, r, fill, heat, t){
+  if (heat){ var gl = g.createRadialGradient(cx, cy + r + 18, 4, cx, cy + r + 18, r * 1.3); gl.addColorStop(0, "rgba(255,110,60,.55)"); gl.addColorStop(1, "rgba(255,110,60,0)"); g.fillStyle = gl; g.fillRect(cx - r * 1.4, cy, r * 2.8, r * 2); }
+  g.fillStyle = "#2a3040"; g.fillRect(cx - r * 1.2, cy + r + 10, r * 2.4, 16);
+  var pulse = REDUCED ? 0.5 : 0.5 + 0.5 * Math.sin(clock * 3);
+  g.fillStyle = heat ? "rgb(255," + Math.round(90 + 50 * pulse) + ",50)" : "#3a4458"; if (heat && !REDUCED){ g.shadowColor = "#ff5a2a"; g.shadowBlur = 16 + 10 * pulse; } g.fillRect(cx - r * 0.9, cy + r + 6, r * 1.8, 5); g.shadowBlur = 0;
+  if (heat && !REDUCED){ var w, yy; g.lineWidth = 1.4; for (w = 0; w < 4; w++){ var ph = (clock * 0.55 + w * 0.25) % 1; g.strokeStyle = "rgba(255,170,120," + (0.22 * (1 - ph)).toFixed(3) + ")"; g.beginPath();
+      for (yy = 0; yy <= 40; yy += 4){ var xx = cx - r * 1.05 - 6 + Math.sin(yy * 0.3 + clock * 5 + w) * 3 + w * 2; if (yy) g.lineTo(xx, cy + r - ph * 60 - yy * 0.4); else g.moveTo(xx, cy + r - ph * 60); } g.stroke(); } }
+  label(g, heat ? "HOT PLATE · ON" : "HOT PLATE · OFF", cx, cy + r + 18, heat ? "#ffd0c0" : "#9fb0cc", 10, "center", 800);
+  g.save(); g.beginPath(); g.arc(cx, cy, r - 3, 0, 7); g.clip(); g.fillStyle = fill; g.fillRect(cx - r, cy + r * 0.05 + Math.sin(clock * 2) * 1.5, 2 * r, r); g.restore();
+  g.strokeStyle = "rgba(190,215,255,.7)"; g.lineWidth = 2.5;
+  g.beginPath(); g.arc(cx, cy, r, -0.38 * Math.PI, 1.38 * Math.PI); g.stroke();
+  g.beginPath(); g.moveTo(cx - r * 0.37, cy - r * 0.93); g.lineTo(cx - r * 0.37, cy - r * 1.75); g.moveTo(cx + r * 0.37, cy - r * 0.93); g.lineTo(cx + r * 0.37, cy - r * 1.75); g.stroke();
+}
+function thermo(g, x, y, T){
+  g.strokeStyle = "rgba(190,215,255,.7)"; g.lineWidth = 2; g.strokeRect(x - 5, y, 10, 110); g.beginPath(); g.arc(x, y + 118, 10, 0, 7); g.stroke();
+  var h = clamp((T - 0) / 200, 0, 1) * 100; g.fillStyle = "#ff5b5b"; g.fillRect(x - 3, y + 108 - h, 6, h + 4); g.beginPath(); g.arc(x, y + 118, 8, 0, 7); g.fill();
+  label(g, Math.round(T) + " °C", x - 8, y - 12, "#ffd0c0", 14, "left", 900);
+}
+function bubbles(g, x0, x1, ytop, ybot, n, seed, speed){
+  var r = rng(seed), i;
+  for (i = 0; i < n; i++){ var bx = x0 + r() * (x1 - x0), ph = r(), fr0 = (clock * speed * (0.6 + r()) + ph) % 1, yy = ybot - fr0 * (ybot - ytop), rad = (2.2 + r() * 2.5) * (0.7 + fr0 * 0.6), xb = bx + Math.sin(clock * 3 + i) * 2;
+    g.strokeStyle = "rgba(220,240,255,.85)"; g.lineWidth = 1.5; g.beginPath(); g.arc(xb, yy, rad, 0, 7); g.stroke();
+    g.fillStyle = "rgba(255,255,255,.7)"; g.beginPath(); g.arc(xb - rad * 0.35, yy - rad * 0.35, rad * 0.28, 0, 7); g.fill();
+    if (fr0 > 0.9 && !REDUCED){ g.strokeStyle = "rgba(220,240,255," + ((1 - fr0) * 6).toFixed(2) + ")"; g.beginPath(); g.arc(xb, ytop, rad + (fr0 - 0.9) * 60, Math.PI, 0); g.stroke(); } }
+}
+function divider(g){ g.strokeStyle = "rgba(160,190,255,.25)"; g.lineWidth = 1.5; g.setLineDash([6, 6]); g.beginPath(); g.moveTo(336, 84); g.lineTo(336, 590); g.stroke(); g.setLineDash([]);
+  label(g, "IN THE FLASK", 170, 96, "#8fa6c9", 12, "center", 800); label(g, "BETWEEN THE ATOMS", 685, 96, "#8fa6c9", 12, "center", 800); }
+function captionBox(g, title, why, phase, col){
+  panel(g, 345, 488, 680, 100, col || "rgba(160,190,255,.35)");
+  label(g, title, 359, 507, "#ffffff", 14.5, "left", 900);
+  if (phase){ g.font = "900 11px ui-sans-serif,system-ui,sans-serif"; var pw = g.measureText(phase.toUpperCase()).width + 16; g.fillStyle = "rgba(255,122,217,.18)"; g.fillRect(1025 - pw, 468, pw, 18); label(g, phase.toUpperCase(), 1025 - pw / 2, 477, ARROW, 11, "center", 900); }
+  wrap(g, why, 359, 530, 650, 12, "#cfe0ff", 12.5, "left");
+}
+function chip(g, x, y, col, a, s){ g.save(); g.globalAlpha = a; g.translate(x, y); g.scale(s || 1, s || 1); if (!REDUCED){ g.shadowColor = col; g.shadowBlur = 16; }
+  g.fillStyle = "rgba(10,20,34,.95)"; g.strokeStyle = col; g.lineWidth = 2.5; g.beginPath(); if (g.roundRect) g.roundRect(-34, -18, 68, 36, 18); else g.rect(-34, -18, 68, 36); g.fill(); g.stroke(); g.shadowBlur = 0; label(g, "C=O", 0, 1, col, 17, "center", 900); g.restore(); }
+
+/* =====================================================================
+   the macroscopic level - liquid ammonia, sodium amide, the dropping funnel, NaBr
+   ===================================================================== */
+var MBOX = [345, 84, 680, 396];
+var ICE = "#bfe3ff";
+function coldBath(g, cx, cy, r){
+  g.fillStyle = "rgba(170,210,255,.12)"; g.strokeStyle = "rgba(190,215,255,.55)"; g.lineWidth = 2;
+  g.beginPath(); g.moveTo(cx - r * 1.45, cy - r * 0.2); g.lineTo(cx - r * 1.35, cy + r * 1.25); g.lineTo(cx + r * 1.35, cy + r * 1.25); g.lineTo(cx + r * 1.45, cy - r * 0.2); g.closePath(); g.fill(); g.stroke();
+  var i, rr = rng(5);
+  for (i = 0; i < 9; i++){ var bx = cx - r * 1.2 + rr() * r * 2.4, by = cy + r * 0.7 + rr() * r * 0.45; g.fillStyle = "rgba(235,245,255,.55)"; g.fillRect(bx, by, 10 + rr() * 8, 7 + rr() * 5); }
+  if (!REDUCED){ for (i = 0; i < 5; i++){ var ph = (clock * 0.25 + i / 5) % 1; g.strokeStyle = "rgba(230,240,255," + (0.22 * (1 - ph)).toFixed(3) + ")"; g.lineWidth = 6; g.lineCap = "round"; g.beginPath();
+    var x0 = cx - r * 1.3 + i * r * 0.62; g.moveTo(x0, cy - r * 0.2 - ph * 30); g.quadraticCurveTo(x0 + 8 * Math.sin(clock + i), cy - r * 0.2 - ph * 30 - 12, x0 + 4, cy - r * 0.2 - ph * 30 - 22); g.stroke(); } g.lineCap = "butt"; }
+  label(g, "dry ice / acetone", cx, cy + r * 1.42, "#9fb0cc", 11, "center", 800);
+}
+function vesselQ12(g, x, y, s){
+  var cx = x + 150, cy = y + 250, r = 70, i;
+  coldBath(g, cx, cy, r);
+  /* liquid ammonia */
+  g.save(); g.beginPath(); g.arc(cx, cy, r - 3, 0, 7); g.clip();
+  g.fillStyle = "rgba(200,220,255,.22)"; g.fillRect(cx - r, cy - r * 0.15 + Math.sin(clock * 2) * 1.5, 2 * r, 2 * r);
+  /* grey NaNH2 particles, one cloud per equivalent still unused */
+  var rr = rng(11), nNa = Math.round(22 * s.nanh2);
+  for (i = 0; i < nNa; i++){ var a = clock * (0.5 + rr() * 0.6) + rr() * 6.28, rad = 10 + rr() * (r - 22); g.fillStyle = "rgba(150,155,170,.9)"; g.beginPath(); g.arc(cx + Math.cos(a) * rad * 0.9, cy + 18 + Math.sin(a * 1.2) * rad * 0.45, 1.6 + rr() * 1.8, 0, 7); g.fill(); }
+  /* white NaBr settling on the bottom */
+  var nb = s.nabr, pile = nb * 11;
+  if (pile > 0){ var gr = g.createLinearGradient(0, cy + r - pile, 0, cy + r); gr.addColorStop(0, "rgba(255,255,255,.55)"); gr.addColorStop(1, "rgba(235,240,250,.95)"); g.fillStyle = gr; g.beginPath(); g.ellipse ? g.ellipse(cx, cy + r - 2, r * 0.8, pile, 0, Math.PI, 0) : g.rect(cx - r * 0.8, cy + r - pile, r * 1.6, pile); g.fill(); }
+  if (s.snActive && !REDUCED){ for (i = 0; i < 14; i++){ var ph = (clock * 0.6 + i / 14) % 1; g.fillStyle = "rgba(255,255,255," + (0.9 - ph * 0.5).toFixed(2) + ")"; g.beginPath(); g.arc(cx - 30 + (i * 37) % 60, cy - 5 + ph * (r - 10), 1.8, 0, 7); g.fill(); } }
+  g.restore();
+  g.strokeStyle = "rgba(190,215,255,.75)"; g.lineWidth = 2.5; g.beginPath(); g.arc(cx, cy, r, -0.36 * Math.PI, 1.36 * Math.PI); g.stroke();
+  /* three necks: gas inlet (left), condenser (middle), dropping funnel (right) */
+  g.beginPath(); g.moveTo(cx - 12, cy - r * 0.95); g.lineTo(cx - 12, cy - r * 1.65); g.moveTo(cx + 12, cy - r * 0.95); g.lineTo(cx + 12, cy - r * 1.65); g.stroke();
+  g.fillStyle = "rgba(200,225,255,.12)"; g.fillRect(cx - 16, cy - r * 2.55, 32, r * 0.9); g.strokeRect(cx - 16, cy - r * 2.55, 32, r * 0.9);
+  label(g, "cold finger", cx, cy - r * 2.55 - 9, "#9fb0cc", 10, "center", 800);
+  g.beginPath(); g.moveTo(cx - r * 0.72, cy - r * 0.62); g.lineTo(cx - r * 1.05, cy - r * 1.35); g.lineTo(cx - r * 1.05, cy - r * 1.9); g.stroke();
+  g.beginPath(); g.moveTo(cx - r * 0.72, cy - r * 0.62); g.lineTo(cx - r * 0.35, cy + r * 0.35); g.stroke();
+  label(g, CHAIN_TXT[RUN.R ? RUN.R.D.chain : "diyne"], cx - r * 1.05, cy - r * 2.3, "#cfe0ff", 11, "center", 800); label(g, "(gas) in", cx - r * 1.05, cy - r * 2.3 + 14, "#cfe0ff", 10, "center", 700);
+  if (s.bubbling && !REDUCED) bubbles(g, cx - r * 0.5, cx - r * 0.15, cy - 5, cy + r * 0.45, 9, 3, 1.5);
+  /* dropping funnel */
+  var fx = cx + r * 0.95, fy = cy - r * 1.9;
+  g.beginPath(); g.moveTo(cx + r * 0.72, cy - r * 0.62); g.lineTo(fx, cy - r * 1.2); g.stroke();
+  g.beginPath(); g.moveTo(fx - 22, fy - 40); g.lineTo(fx + 22, fy - 40); g.lineTo(fx + 6, fy + 10); g.lineTo(fx + 3, fy + 28); g.lineTo(fx - 3, fy + 28); g.lineTo(fx - 6, fy + 10); g.closePath(); g.stroke();
+  var lvl = 1 - s.nabr * 0.3; g.fillStyle = "rgba(255,225,140,.45)"; g.beginPath(); g.moveTo(fx - 22 + (1 - lvl) * 14, fy - 40 + (1 - lvl) * 40); g.lineTo(fx + 22 - (1 - lvl) * 14, fy - 40 + (1 - lvl) * 40); g.lineTo(fx + 6, fy + 10); g.lineTo(fx - 6, fy + 10); g.closePath(); g.fill();
+  label(g, s.rxName, fx - 12, fy - 52, "#ffe2a6", 11, "left", 800);
+  if (s.snActive && !REDUCED){ for (i = 0; i < 3; i++){ var dp = (clock * 1.1 + i / 3) % 1, dxp = lerp(fx, cx + r * 0.3, dp), dyp = lerp(fy + 30, cy + 5, dp * dp); g.fillStyle = "rgba(255,225,140,.95)"; g.beginPath(); g.arc(dxp, dyp, 3, 0, 7); g.fill(); } }
+  thermo(g, x + 22, cy - 92, -33 + 0 * s.t);
+  label(g, "liquid NH₃ · −33 °C", cx, cy + r + 40, "#e6eeff", 13, "center", 900);
+  label(g, "NaNH₂ left: " + (s.nanh2 * 2).toFixed(0) + " eq", x + 22, cy + r + 62, s.nanh2 > 0 ? "#cfd6e4" : "#8b98ad", 12, "left", 800);
+  label(g, "NaBr ↓: " + s.nabr, x + 290, cy + r + 62, s.nabr ? "#ffffff" : "#8b98ad", 12, "right", 800);
+}
+/* the thermometer in the library reads 0..200 °C; this one reads -80..40 */
+function thermo(g, x, y, T){
+  g.strokeStyle = "rgba(190,215,255,.7)"; g.lineWidth = 2; g.strokeRect(x - 5, y, 10, 110); g.beginPath(); g.arc(x, y + 118, 10, 0, 7); g.stroke();
+  var h = clamp((T + 80) / 120, 0, 1) * 100; g.fillStyle = "#6fb6ff"; g.fillRect(x - 3, y + 108 - h, 6, h + 4); g.beginPath(); g.arc(x, y + 118, 8, 0, 7); g.fill();
+  label(g, Math.round(T) + " °C", x - 8, y - 12, ICE, 14, "left", 900);
+}
+
+/* =====================================================================
+   the molecular panel
+   ===================================================================== */
+/* the camera frames the atoms that are on stage in the given molecules (reagents waiting off stage are ignored) */
+function frameOf(ms, cap){
+  var x0 = 1e9, x1 = -1e9, y0 = 1e9, y1 = -1e9, i, k;
+  for (k = 0; k < ms.length; k++) for (i = 0; i < ms[k].a.length; i++){ var a = ms[k].a[i]; if (!a || Math.abs(a.x) > 20) continue;
+    x0 = Math.min(x0, a.x); x1 = Math.max(x1, a.x); y0 = Math.min(y0, a.y); y1 = Math.max(y1, a.y); }
+  x0 -= 1.3; x1 += 1.3; y0 -= 1.2; y1 += 1.2;
+  var sc = Math.min((MBOX[2] - 40) / (x1 - x0), (MBOX[3] - 120) / (y1 - y0), cap || 74);
+  return { sc: sc, ox: MBOX[0] + MBOX[2] / 2 - sc * (x0 + x1) / 2, oy: MBOX[1] + 4 + (MBOX[3] - 70) / 2 - sc * (y0 + y1) / 2 };
+}
+function lerpFr(a, b, t){ return { sc: lerp(a.sc, b.sc, t), ox: lerp(a.ox, b.ox, t), oy: lerp(a.oy, b.oy, t) }; }
+function stepFr(s){ return frameOf([s.A, s.B]); }
+function loadFr(){ return frameOf([shelf(RUN.R.m0)]); }
+function q12Frame(){ var st = RUN.R.steps; return st.length ? stepFr(st[st.length - 1]) : loadFr(); }
+function clipBox(g){ g.save(); g.beginPath(); g.rect(MBOX[0], MBOX[1] + 14, MBOX[2], MBOX[3] - 14); g.clip(); }
+/* a copy of the starting flask graph with the reagents lined up on a shelf so they can be seen */
+function shelf(m){
+  var c = clone(m), e, i, k = 0;
+  for (i = 0; i < 2; i++){ e = c.ends[i];
+    if (e.n !== undefined){ place(c, e.n, -4 + i * 8, 2.4); place(c, e.na, -4 + i * 8 + 0.9, 2.4); }
+    var rx = e.rx, bx = -4.6 + i * 7.4, by = -2.4; place(c, rx.br, bx - 1, by); place(c, rx.c0, bx, by); placeChain(c, rx, bx, by, 1, 1, 1);
+  }
+  return c;
+}
+var MTITLE = { d1: ["H⁺ OFF!", "NH₂⁻ grabs the first sp C–H proton"], d2: ["H⁺ OFF AGAIN", "the second end becomes a carbanion"], s1: ["BACKSIDE ATTACK!", "SN2 on the first crotyl bromide"], s2: ["SN2 × 2", "the second arm is attached"] };
+function mechScene(g, name, f){
+  var R = RUN.R, mm = mechAt(name, f), s = mm.step, phase = "", fr;
+  if (s){ var k = R.steps.indexOf(s); fr = lerpFr(k > 0 ? stepFr(R.steps[k - 1]) : loadFr(), stepFr(s), ease(clamp(mm.u / PH.pre, 0, 1))); }
+  else fr = q12Frame();
+  var head = { d1: "STEP 2 · DEPROTONATION (1)", d2: "STEP 3 · DEPROTONATION (2)", s1: "STEP 4 · SN2 ALKYLATION (1)", s2: "STEP 5 · SN2 ALKYLATION (2)" }[name];
+  sceneTitle(g, head, s ? s.title.split(" — ")[1] : "no reaction at this end");
+  divider(g);
+  clipBox(g);
+  if (s) phase = drawStep(g, fr, s, mm.u, MBOX, name + mm.tag, 0.7);
+  else drawMol(g, fr, mm.mol, mm.mol, 0, {});
+  g.restore();
+  var dep = name.charAt(0) === "d", act = s && mm.u > PH.arrows && mm.u < PH.bonds + 0.12;
+  vesselQ12(g, 10, 110, { nanh2: (+R.D.base - doneCount("dep", name, f)) / 2, nabr: doneCount("sn2", name, f), bubbling: dep && act, snActive: !dep && act, rxName: { crotyl: "CH₃CH=CHCH₂Br", allyl: "CH₂=CHCH₂Br", propargyl: "HC≡CCH₂Br" }[R.D.rx], t: f });
+  /* the link between the two levels: the proton goes to NH3, the bromide to the NaBr pile */
+  if (s && !REDUCED && mm.u > PH.arrows + 0.06 && mm.u < PH.bonds + 0.14){
+    var gi = dep ? s.arrows[0].to[2] : s.arrows[1].to[1], tb = clamp((mm.u - PH.arrows) / (PH.bonds - PH.arrows), 0, 1);
+    var src = [fr.ox + lerp(s.A.a[gi].x, s.B.a[gi].x, ease(tb)) * fr.sc, fr.oy + lerp(s.A.a[gi].y, s.B.a[gi].y, ease(tb)) * fr.sc];
+    var dst = dep ? [160, 340] : [160, 420], ctl = [(src[0] + dst[0]) / 2, Math.min(src[1], dst[1]) - 160];
+    var q0 = clamp((mm.u - PH.arrows - 0.06) / (PH.bonds + 0.14 - PH.arrows - 0.06), 0, 1), orb = function(t){ return [(1 - t) * (1 - t) * src[0] + 2 * (1 - t) * t * ctl[0] + t * t * dst[0], (1 - t) * (1 - t) * src[1] + 2 * (1 - t) * t * ctl[1] + t * t * dst[1]]; };
+    var oc = dep ? "190,220,255" : "255,236,200", j2; g.save(); g.globalCompositeOperation = "lighter";
+    for (j2 = 12; j2 >= 0; j2--){ var op = orb(Math.max(0, ease(q0) - j2 * 0.018)); g.fillStyle = "rgba(" + oc + "," + (j2 ? 0.5 - j2 * 0.035 : 1).toFixed(2) + ")"; g.beginPath(); g.arc(op[0], op[1], j2 ? 5 - j2 * 0.3 : 7, 0, 7); g.fill(); }
+    var oh = orb(ease(q0)); g.restore(); label(g, dep ? "H⁺ → NH₃" : "Br⁻ → NaBr ↓", oh[0] + 14, oh[1] - 12, "rgb(" + oc + ")", 13, "left", 900);
+    if (q0 > 0.97) fxOnce("orb" + name, function(){ fxRing(dst[0], dst[1], "rgb(" + oc + ")", 30); fxSpark(dst[0], dst[1], "rgb(" + oc + ")", 12, 80); });
+  }
+  if (s) captionBox(g, s.title, s.why, phase, s.ok ? null : RED);
+  else captionBox(g, "No reaction at this end", +R.D.base < 2 ? "Only one equivalent of NaNH₂: the second terminal C–H is never deprotonated, so it cannot attack the bromide." : "Nothing to do here.", "", RED);
+  if (MTITLE[name]) titleCard(g, MTITLE[name][0], MTITLE[name][1], f, name.charAt(0) === "d" ? "#bfe3ff" : "#ffd79a");
+}
+function sceneLoad(g, f){
+  var R = RUN.R, fr = loadFr();
+  sceneTitle(g, "STEP 1 · CHARGE THE FLASK", "liquid ammonia, NaNH₂, the diyne and the bromide");
+  divider(g);
+  vesselQ12(g, 10, 110, { nanh2: +R.D.base / 2, nabr: 0, bubbling: f > 0.3, snActive: false, rxName: { crotyl: "CH₃CH=CHCH₂Br", allyl: "CH₂=CHCH₂Br", propargyl: "HC≡CCH₂Br" }[R.D.rx], t: f });
+  clipBox(g); var sh = shelf(R.m0); drawMol(g, fr, sh, sh, 0, { hot: f > 0.4 ? (function(){ var o = {}; o[R.m0.ends[0].h] = GOLD; o[R.m0.ends[1].h] = GOLD; return o; })() : null }); g.restore();
+  if (f > 0.4) label(g, "the two sp C–H hydrogens are acidic (pKa ≈ 25)", MBOX[0] + MBOX[2] / 2, fr.oy + 0.95 * fr.sc, GOLD, 13, "center", 800);
+  captionBox(g, "Reagents on the bench", "Buta-1,3-diyne has an acidic hydrogen at each end. NaNH₂ (" + R.D.base + " eq) will remove them; the bromide is added in excess afterwards. Everything happens in liquid ammonia at −33 °C.", "", null);
+  titleCard(g, "LIQUID AMMONIA · −33 °C", "two ends, two protons, two arms", f, ICE);
+}
+/* the real shape: every chain carbon at its hybridisation angle */
+function modelToScreen(G, box, on){
+  var x0 = 1e9, x1 = -1e9, y0 = 1e9, y1 = -1e9, i, P = [], Q = [], c = 1, sn = 0;
+  if (on && on.length > 1){ var a = G[on[0]], b = G[on[on.length - 1]], th = Math.atan2(b.y - a.y, b.x - a.x); c = Math.cos(-th); sn = Math.sin(-th); }
+  for (i = 0; i < G.length; i++) Q.push([G[i].x * c - G[i].y * sn, G[i].x * sn + G[i].y * c]);
+  for (i = 0; i < Q.length; i++){ x0 = Math.min(x0, Q[i][0]); x1 = Math.max(x1, Q[i][0]); y0 = Math.min(y0, Q[i][1]); y1 = Math.max(y1, Q[i][1]); }
+  var sc = Math.min((box[2] - 90) / (x1 - x0 || 1), (box[3] - 110) / Math.max(3.2, y1 - y0), 66), cx = (x0 + x1) / 2, cy = on ? (on.length ? Q[on[0]][1] : 0) : (y0 + y1) / 2;
+  for (i = 0; i < Q.length; i++) P.push([box[0] + box[2] / 2 + (Q[i][0] - cx) * sc, box[1] + box[3] / 2 + (Q[i][1] - cy) * sc, 0]);
+  return { P: P, sc: sc };
+}
+/* rotate every atom about the straight line: atoms ON the line do not move - that is what collinear means */
+function spinAboutLine(P, a, b, phi){
+  var d = [P[b][0] - P[a][0], P[b][1] - P[a][1], 0], L = Math.sqrt(d[0] * d[0] + d[1] * d[1]) || 1, u = [d[0] / L, d[1] / L, 0], o = [], i, c = Math.cos(phi), s = Math.sin(phi);
+  for (i = 0; i < P.length; i++){
+    var v = [P[i][0] - P[a][0], P[i][1] - P[a][1], P[i][2]], dot = v[0] * u[0] + v[1] * u[1], cr = [u[1] * v[2], -u[0] * v[2], u[0] * v[1] - u[1] * v[0]];
+    var r = [v[0] * c + cr[0] * s + u[0] * dot * (1 - c), v[1] * c + cr[1] * s + u[1] * dot * (1 - c), v[2] * c + cr[2] * s];
+    o.push([P[a][0] + r[0], P[a][1] + r[1] - r[2] * 0.18, r[2]]);
+  }
+  return o;
+}
+function drawModel(g, R, S, opt){
+  var G = R.G, i, onL = {}, hl = opt.line;
+  for (i = 0; i < R.geo.on.length; i++) onL[R.geo.on[i]] = 1;
+  if (hl){ var a = S[R.geo.on[0]], b = S[R.geo.on[R.geo.on.length - 1]], d = [b[0] - a[0], b[1] - a[1]], L = Math.sqrt(d[0] * d[0] + d[1] * d[1]) || 1, ext = 70 + 30 * hl;
+    g.save(); g.globalAlpha = hl; if (!REDUCED){ g.shadowColor = "#ff4d8d"; g.shadowBlur = 18; } g.strokeStyle = "rgba(255,80,140,.9)"; g.lineWidth = 3;
+    g.beginPath(); g.moveTo(a[0] - d[0] / L * ext, a[1] - d[1] / L * ext); g.lineTo(b[0] + d[0] / L * ext, b[1] + d[1] / L * ext); g.stroke(); g.restore(); }
+  var order = G.map(function(_, k){ return k; }).sort(function(p, q){ return S[p][2] - S[q][2]; });
+  for (i = 1; i < G.length; i++){ var o = bo(R.X, G[i - 1].i, G[i].i), p1 = S[i - 1], p2 = S[i];
+    g.strokeStyle = "rgba(220,230,245,.9)"; g.lineWidth = 3; var dx = p2[0] - p1[0], dy = p2[1] - p1[1], L2 = Math.sqrt(dx * dx + dy * dy) || 1, n = [-dy / L2 * 5.5, dx / L2 * 5.5], ks = o === 1 ? [0] : o === 2 ? [-0.6, 0.6] : [-1, 0, 1], k;
+    for (k = 0; k < ks.length; k++){ g.beginPath(); g.moveTo(p1[0] + n[0] * ks[k], p1[1] + n[1] * ks[k]); g.lineTo(p2[0] + n[0] * ks[k], p2[1] + n[1] * ks[k]); g.stroke(); } }
+  for (i = 0; i < order.length; i++){ var j = order[i], p = S[j], rr = Math.max(8, 15 + p[2] * 0.02), on = onL[j] && hl > 0.5;
+    var sg = g.createRadialGradient(p[0] - 4, p[1] - 5, 2, p[0], p[1], rr * 1.2); sg.addColorStop(0, "rgba(255,255,255,.4)"); sg.addColorStop(0.45, on ? "rgba(200,40,110,.95)" : "rgba(70,82,110,.95)"); sg.addColorStop(1, "#0a0f1c");
+    if (on && !REDUCED){ g.shadowColor = "#ff4d8d"; g.shadowBlur = 14; }
+    g.fillStyle = sg; g.beginPath(); g.arc(p[0], p[1], rr, 0, 7); g.fill(); g.shadowBlur = 0;
+    g.strokeStyle = on ? "#ff8ab8" : "rgba(190,205,230,.7)"; g.lineWidth = 1.5; g.stroke();
+    if (opt.hybT !== undefined && j <= opt.hybT){ var hb = G[j].hyb, hc = hb === "sp" ? "#ff8ab8" : hb === "sp2" ? "#7fc8ff" : "#ffd79a";
+      /* the hybridisation sits outside the bond angle, the angle value inside it, so neighbours never collide */
+      var nb = [j > 0 ? S[j - 1] : null, j < G.length - 1 ? S[j + 1] : null], bx = 0, by = 0, nn = 0, q2;
+      for (q2 = 0; q2 < 2; q2++) if (nb[q2]){ var ddx = nb[q2][0] - p[0], ddy = nb[q2][1] - p[1], dl = Math.sqrt(ddx * ddx + ddy * ddy) || 1; bx += ddx / dl; by += ddy / dl; nn++; }
+      var bl = Math.sqrt(bx * bx + by * by), ux = 0, uy = -1;
+      if (bl > 0.25){ ux = -bx / bl; uy = -by / bl; }
+      label(g, hb === "sp2" ? "sp²" : hb === "sp3" ? "sp³" : "sp", p[0] + ux * (rr + 13), p[1] + uy * (rr + 13), hc, 14, "center", 900);
+      if (G[j].ang && opt.angles) label(g, G[j].ang + "°", p[0] - ux * (rr + 16), p[1] - uy * (rr + 16), "#9fb0cc", 12, "center", 800); }
+    if (opt.count && on){ var idx = R.geo.on.indexOf(j); if (idx < opt.count){ g.fillStyle = "#fff"; label(g, String(idx + 1), p[0], p[1] + 1, "#fff", 14, "center", 900); } }
+  }
+}
+function sceneHyb(g, f){
+  var R = RUN.R, box = [MBOX[0] - 330, MBOX[1] + 10, 1010, 380], M = modelToScreen(R.G, box, R.geo.on), fr = q12Frame(), i;
+  sceneTitle(g, "STEP 6 · WHAT SHAPE IS X?", "each carbon takes the angle its hybridisation dictates");
+  var t = ease(f / 0.3), S = [];
+  for (i = 0; i < R.G.length; i++){ var a = R.X.a[R.G[i].i], from = [fr.ox + a.x * fr.sc, fr.oy + a.y * fr.sc]; S.push([lerp(from[0], M.P[i][0], t), lerp(from[1], M.P[i][1], t), 0]); }
+  drawModel(g, R, S, { hybT: Math.floor(clamp((f - 0.3) / 0.55, 0, 1) * R.G.length) - 1 + (f >= 0.85 ? 99 : 0), angles: f > 0.55 });
+  panel(g, 170, 500, 700, 70, "rgba(160,190,255,.35)");
+  label(g, "sp carbon: 2 σ bonds at 180° — the atoms on BOTH sides lie on its axis", 520, 522, "#ff8ab8", 14, "center", 800);
+  label(g, "sp²: 120° · sp³: 109.5° — the chain turns there", 520, 550, "#cfe0ff", 13, "center", 700);
+  titleCard(g, "sp · sp² · sp³", "the geometry comes from the hybridisation", f, "#ff8ab8");
+}
+function sceneLine(g, f){
+  var R = RUN.R, box = [MBOX[0] - 330, MBOX[1] + 10, 1010, 380], M = modelToScreen(R.G, box, R.geo.on), on = R.geo.on;
+  sceneTitle(g, "STEP 7 · THE LASER TEST", "spin the molecule about the line — atoms on the line do not move");
+  var phi = REDUCED ? 0.9 : ease(clamp((f - 0.15) / 0.7, 0, 1)) * Math.PI * 2 + (f > 0.85 ? (f - 0.85) * 4 : 0);
+  var S = spinAboutLine(M.P, on[0], on[on.length - 1], phi);
+  drawModel(g, R, S, { line: ease(f / 0.15), count: Math.floor(clamp((f - 0.35) / 0.4, 0, 1) * (on.length + 1)), hybT: 99 });
+  if (f > 0.35){ var n = Math.min(on.length, Math.floor(clamp((f - 0.35) / 0.4, 0, 1) * (on.length + 1))); panel(g, 330, 505, 380, 62, "#ff8ab8"); label(g, "carbons on the line: " + n, 520, 536, "#ff8ab8", 24, "center", 900);
+    if (n === on.length) fxOnce("laser", function(){ fxRing(520, 536, "#ff8ab8", 70); fxSpark(520, 536, "#ff8ab8", 26, 200); }); }
+  titleCard(g, "THE LASER TEST", "which carbons never leave the axis?", f, "#ff8ab8");
+}
+var CLAIMS = { A: "X = both ends alkylated (C₁₂H₁₄).", B: "sp carbons + their neighbours: 6 in line.", C: "Trap: only the 4 sp carbons (4).", D: "Trap: the line runs on to 8." };
+function sceneTest(g, f){
+  var R = RUN.R, k, i;
+  sceneTitle(g, "RESULT AUDIT", "claim → evidence → verdict");
+  for (i = 0; i < 4; i++){
+    k = "ABCD"[i]; var x = 60 + (i % 2) * 470, y = 100 + Math.floor(i / 2) * 230, e = R.audit[k], on = i < 2 || (i === 2 && f > 0.3) || (i === 3 && f > 0.62);
+    g.fillStyle = "rgba(20,30,52,.9)"; g.strokeStyle = on ? (e.v ? GREEN : e.v === false ? RED : "#b8a8ff") : "rgba(160,190,255,.25)"; g.lineWidth = on ? 3 : 1.5;
+    g.fillRect(x, y, 450, 200); g.strokeRect(x, y, 450, 200);
+    label(g, "①②③④".charAt(i), x + 30, y + 30, "#8fa6c9", 20, "center", 900);
+    label(g, CLAIMS[k], x + 55, y + 30, "#ffffff", 15, "left", 700);
+    if (on){ wrap(g, e.ev, x + 225, y + 66, 410, 12, "#cfe0ff", 11.5); label(g, e.v ? "✓ HOLDS" : e.v === false ? "✗ FAILS" : "— N/A", x + 225, y + 178, e.v ? GREEN : e.v === false ? RED : "#cfc4ff", 22, "center", 900); }
+  }
+}
+function sceneAnswer(g, f){
+  var R = RUN.R, box = [MBOX[0] - 330, MBOX[1] + 10, 1010, 300], M = modelToScreen(R.G, box, R.geo.on), on = R.geo.on, i;
+  sceneTitle(g, "ANALYSIS COMPLETE", "counting the carbons on the laser");
+  var S = spinAboutLine(M.P, on[0], on[on.length - 1], REDUCED ? 0 : clock * 0.8);
+  drawModel(g, R, S, { line: 1, count: on.length, hybT: 99 });
+  for (i = 0; i < on.length; i++){ var p = S[on[i]], d = clamp((f - 0.15 - i * 0.06) / 0.3, 0, 1), de = ease(d), tx2 = 520 + (i - (on.length - 1) / 2) * 54;
+    chip(g, lerp(p[0], tx2, de), lerp(p[1], 470, de) - Math.sin(de * Math.PI) * 60, "#ff8ab8", 0.9, 0.55 + 0.35 * de);
+    if (d >= 1) fxOnce("ch" + i, function(){ fxRing(tx2, 470, "#ff8ab8", 22); }); }
+  if (f > 0.72){ g.save(); if (!REDUCED){ g.shadowColor = GREEN; g.shadowBlur = 24; } label(g, "= " + R.answer + " collinear carbons", 520, 540, GREEN, 36 + (REDUCED ? 0 : 3 * Math.sin(clock * 5)), "center", 900); g.restore();
+    fxOnce("eq", function(){ fxRing(520, 540, GREEN, 110); fxSpark(520, 540, GREEN, 30, 220); fxSpark(520, 540, "#ff8ab8", 20, 160); }); }
+}
+function sceneIdle(g){
+  var R = RUN.R, fr = q12Frame();
+  sceneTitle(g, "STRAIGHT-LINE CARBON LAB", "how many carbons of X lie on one straight line?");
+  divider(g);
+  vesselQ12(g, 10, 110, { nanh2: +R.D.base / 2, nabr: 0, bubbling: false, snActive: false, rxName: "CH₃CH=CHCH₂Br", t: 0 });
+  clipBox(g); var sh = shelf(R.m0); drawMol(g, fr, sh, sh, 0, {}); g.restore();
+  panel(g, 345, 500, 680, 80, "rgba(160,190,255,.5)");
+  label(g, "HC≡C–C≡CH  →  2 NaNH₂  →  excess crotyl bromide  →  X", 685, 528, "#ffffff", 17, "center", 900);
+  label(g, "press START EXPERIMENT", 685, 560, "#9fb0cc", 15, "center", 700);
+}
+function sceneRest(g){
+  var R = RUN.R, quiet = RUN.revealed && $("revealhost").classList.contains("on"), box = [MBOX[0] - 330, MBOX[1] + 10, 1010, 380], M = modelToScreen(R.G, box, R.geo.on), on = R.geo.on;
+  if (!quiet) sceneTitle(g, "CASE CLOSED", R.complete ? R.answer + " carbons on one line: CH₂–C≡C–C≡C–CH₂" : "question pathway changed");
+  g.globalAlpha = quiet ? 0.3 : 1;
+  drawModel(g, R, spinAboutLine(M.P, on[0], on[on.length - 1], REDUCED ? 0.6 : clock * 0.6), { line: 1, count: on.length, hybT: 99 });
+  g.globalAlpha = 1;
+}
+function eqFor(name){
+  var R = RUN.R;
+  return { load: "HC≡C–C≡CH + 2 NaNH₂ (liq. NH₃)", d1: "HC≡C–C≡CH + NH₂⁻ → ⁻C≡C–C≡CH + NH₃", d2: "⁻C≡C–C≡CH + NH₂⁻ → ⁻C≡C–C≡C⁻ + NH₃",
+    s1: "R–C≡C⁻ + BrCH₂R' → R–C≡C–CH₂R' + Br⁻ (SN2)", s2: "X = " + R.fx, hyb: "sp 180° · sp² 120° · sp³ 109.5°", line: "CH₂–C≡C–C≡C–CH₂ : " + R.count + " C in line" }[name] || "collinear carbons = sp run + its two neighbours";
+}
+function whyFor(name){
+  return { load: "an sp C–H is far more acidic than NH₃, so NH₂⁻ removes it completely", d1: "50% s-character holds the carbanion's pair close to carbon — a stable base",
+    d2: "two equivalents of base: both ends", s1: "a primary, allylic CH₂–Br is ideal for SN2; the acetylide is a strong nucleophile", s2: "excess bromide alkylates both ends",
+    hyb: "hybridisation sets the bond angles", line: "rotation about an axis leaves the points on it fixed" }[name] || "the count comes from the shape, and the shape from the hybridisation";
+}
+function drawLab(st){
+  var c = $("labcv"), g = c.getContext("2d");
+  g.clearRect(0, 0, c.width, c.height);
+  hood(g);
+  if (st.name === "idle") sceneIdle(g);
+  else if (st.name === "rest") sceneRest(g);
+  else if (st.name === "load") sceneLoad(g, st.f);
+  else if (STAGE_TAG[st.name]) mechScene(g, st.name, st.f);
+  else if (st.name === "hyb") sceneHyb(g, st.f);
+  else if (st.name === "line") sceneLine(g, st.f);
+  else if (st.name === "test") sceneTest(g, st.f);
+  else if (st.name === "answer") sceneAnswer(g, st.f);
+  fxDraw(g);
+  if (!REDUCED && RUN.state === "running" && RUN.u < 0.45 && st.name !== "load"){ var wx = lerp(-300, 1340, RUN.u / 0.45), wg = g.createLinearGradient(wx - 160, 0, wx + 160, 0);
+    wg.addColorStop(0, "rgba(140,180,255,0)"); wg.addColorStop(0.5, "rgba(170,200,255,.16)"); wg.addColorStop(1, "rgba(140,180,255,0)"); g.save(); g.globalCompositeOperation = "lighter"; g.fillStyle = wg; g.transform(1, 0, -0.35, 1, 0, 0); g.fillRect(wx - 160, 0, 320, 620); g.restore(); }
+  if (st.name !== "idle"){
+    if (SHOW.eq){ g.fillStyle = "rgba(8,14,26,.94)"; g.fillRect(40, 440, 960, 40); label(g, eqFor(st.name), 520, 460, "#ffffff", 16, "center", 800); }
+    if (SHOW.why){ g.fillStyle = "rgba(8,14,26,.94)"; g.fillRect(40, 72, 960, 30); label(g, "WHY?  " + whyFor(st.name), 520, 87, GOLD, 14, "center", 700); }
+    if (SHOW.obs){ g.fillStyle = "rgba(8,14,26,.94)"; g.fillRect(40, 18, 560, 30); label(g, "pink arrows: electron pairs · red: bonds breaking · green: forming · pink laser: the straight line", 320, 33, "#ffc4e8", 12.5, "center", 700); }
+  }
+}
+
+/* =====================================================================
+   the two charts - read from the geometric model
+   ===================================================================== */
+function svgClear(id){ var s = $(id); while (s.firstChild) s.removeChild(s.firstChild); return s; }
+function drawCharts(st){
+  var R = RUN.R, show = RUN.done || ORDER.indexOf(st.name) >= ORDER.indexOf("hyb"), show2 = RUN.done || ORDER.indexOf(st.name) >= ORDER.indexOf("line");
+  var tc = css("--text-muted") || "#888", lc = css("--line-strong") || "#999", G = R.G, n = G.length, i;
+  var s = svgClear("curve"), X0 = 56, X1 = 500, Y0 = 250, Y1 = 24, bw = (X1 - X0) / n;
+  mk("line", { x1: X0, y1: Y0, x2: X1, y2: Y0, stroke: lc }, s); mk("line", { x1: X0, y1: Y0, x2: X0, y2: Y1, stroke: lc }, s);
+  [0, 90, 180].forEach(function(v){ var y = Y0 - (Y0 - Y1) * v / 190; tx(s, X0 - 8, y + 4, v + "°", { "text-anchor": "end", "font-size": 11, fill: tc }); mk("line", { x1: X0, y1: y, x2: X1, y2: y, stroke: lc, "stroke-dasharray": "3 4", opacity: 0.4 }, s); });
+  tx(s, (X0 + X1) / 2, 284, "carbon along the chain", { "text-anchor": "middle", "font-size": 11.5, fill: tc });
+  if (show) for (i = 0; i < n; i++){ var a = G[i].ang, x = X0 + bw * (i + 0.5); tx(s, x, Y0 + 15, String(i + 1), { "text-anchor": "middle", "font-size": 10.5, fill: tc });
+    if (a){ var h = (Y0 - Y1) * a / 190; mk("rect", { x: x - bw * 0.35, y: Y0 - h, width: bw * 0.7, height: h, fill: a > 179 ? (css("--s2") || "#eb6834") : (css("--s1") || "#3987e5") }, s); tx(s, x, Y0 - h - 5, String(a), { "text-anchor": "middle", "font-size": 9.5, fill: tc }); } }
+  var s2 = svgClear("bars"), mx = 3.5;
+  mk("line", { x1: X0, y1: Y0, x2: X1, y2: Y0, stroke: lc }, s2); mk("line", { x1: X0, y1: Y0, x2: X0, y2: Y1, stroke: lc }, s2);
+  [0, 1, 2, 3].forEach(function(v){ var y = Y0 - (Y0 - Y1) * v / mx; tx(s2, X0 - 8, y + 4, v + " Å", { "text-anchor": "end", "font-size": 11, fill: tc }); });
+  tx(s2, (X0 + X1) / 2, 284, "carbon along the chain (on the line = 0 Å)", { "text-anchor": "middle", "font-size": 11.5, fill: tc });
+  if (show2) for (i = 0; i < n; i++){ var dd = R.geo.dist[i], x2 = X0 + bw * (i + 0.5), h2 = Math.max(2, (Y0 - Y1) * dd / mx), onl = dd < 0.02;
+    mk("rect", { x: x2 - bw * 0.35, y: Y0 - h2, width: bw * 0.7, height: h2, fill: onl ? (css("--s3") || "#1baf7a") : (css("--s4") || "#4a3aa7") }, s2); tx(s2, x2, Y0 + 15, String(i + 1), { "text-anchor": "middle", "font-size": 10.5, fill: tc }); }
+}
+
+/* =====================================================================
+   status, narration, instrument panel, answer panel
+   ===================================================================== */
+var STAGE_ORDER = ORDER;
+function stageKey(){ var sg = seg(); if (RUN.state === "setup") return null; if (RUN.done) return "answer"; return sg ? sg.kind : null; }
+function refreshStatus(){
+  var k = stageKey(), x = $("xstat"), txt, cls = "xstat", g;
+  if (RUN.state === "setup"){ txt = "Ready"; g = isCustom() ? "Custom conditions set — press RUN WITH CUSTOM VALUES." : "Set your values or use the question defaults. Press START EXPERIMENT to begin."; }
+  else if (RUN.done){ txt = "✓ Experiment complete"; cls += " done"; g = "Result obtained."; }
+  else if (k === "load" && RUN.u < 1.5){ txt = "Preparing experiment"; cls += " run"; g = "Preparing the apparatus…"; }
+  else if (k === "test"){ txt = "Analysing data"; cls += " ana"; g = "Analysing experimental evidence…"; }
+  else if (k === "answer"){ txt = "Calculation complete"; cls += " ana"; g = "Calculating the result…"; }
+  else { txt = "Experiment running"; cls += " run"; g = "Experiment running…"; }
+  if (RUN.paused){ txt = "Paused"; cls = "xstat"; g = "Paused — press Play."; }
+  x.className = cls; $("xstattxt").textContent = txt; $("guide").textContent = g;
+  var ki = STAGE_ORDER.indexOf(k), sp = document.querySelectorAll("#stages span"), i;
+  for (i = 0; i < sp.length; i++){ var j = STAGE_ORDER.indexOf(sp[i].getAttribute("data-s")); sp[i].className = k === null ? "" : (j < ki || RUN.done ? "done" : (j === ki ? "now" : "")); }
+}
+function refreshAnswerBox(){
+  var pct = RUN.state === "setup" ? 0 : RUN.done ? 100 : Math.round(100 * elapsed() / TOTAL), k = stageKey(), ab = $("answerbox");
+  $("apbar").style.width = pct + "%"; $("ansstripbar").style.width = pct + "%";
+  ab.classList.remove("locked"); ab.classList.toggle("work", RUN.state === "running");
+  $("ansval").textContent = ANS; $("ansstripv").textContent = ANS;
+  var sub = RUN.state === "setup" ? ANSNOTE + " — press START EXPERIMENT to watch why." : RUN.done ? "✓ Confirmed by the experiment — " + ANSNOTE + "." : "● " + (STAGE_MSG[k] || "…") + "  " + pct + "%";
+  $("anssub").textContent = sub; $("ansstrips").textContent = sub;
+}
+function refreshUI(){
+  var go = $("gobtn"), runn = RUN.state === "running", custom = isCustom();
+  go.hidden = false; go.disabled = runn; go.classList.toggle("custom", custom && !runn);
+  if (runn) go.innerHTML = "● RUNNING…";
+  else if (RUN.state === "done"){ go.innerHTML = "⚙&nbsp; RUN WITH CUSTOM VALUES"; go.hidden = sameD(RUN.D, copyST()); }
+  else go.innerHTML = custom ? "⚙&nbsp; RUN WITH CUSTOM VALUES" : "▶&nbsp; START EXPERIMENT";
+  $("pausebtn").disabled = !runn; $("pausebtn").textContent = RUN.paused ? "Play" : "Pause";
+  $("replaybtn").hidden = RUN.state !== "done";
+  var s = $("status"); s.className = "status" + (custom ? " custom" : "");
+  s.textContent = custom ? "⚙ USING CUSTOM VALUES" : "✓ QUESTION VALUES LOADED";
+  var q = document.querySelectorAll("#fields select, #resetq"), i; for (i = 0; i < q.length; i++) q[i].disabled = runn;
+  $("gomsg").innerHTML = runn ? "The investigation runs by itself — nothing to click. <b>Pause</b> any time." : RUN.state === "done" ? "Press <b>REPLAY</b> to watch it again, or change a condition and run a custom experiment." : (custom ? "Your conditions will be used; the lab will say if the question's pathway no longer applies." : "Nothing needs to be chosen. Press <b>START EXPERIMENT</b>.");
+  refreshStatus();
+}
+
+
+function narrate(st){
+  var h = "", R = RUN.R, f = st.f, mm, s;
+  if (RUN.state === "setup") h = "Two acidic ends, two equivalents of base, an excess of bromide. " + (isCustom() ? "Custom reagents are loaded — press <b>RUN WITH CUSTOM VALUES</b>." : "The question's reagents are loaded — press <b>START EXPERIMENT</b>.");
+  else if (RUN.done) h = R.complete ? "<span class=gd>Case closed.</span> X = " + R.fx + "; CH₂–C≡C–C≡C–CH₂ lie on one straight line: <b>" + R.answer + " carbons</b>."
+    : "<span class=o>Your reagents give " + R.answer + " collinear carbons in " + R.fx + "</span> — not the question's X. Restore the question's reagents.";
+  else if (st.name === "load") h = "<b>Input:</b> " + CHAIN_TXT[R.D.chain] + " dissolved in liquid ammonia at −33 °C with " + R.D.base + " eq of NaNH₂; the bromide waits in the dropping funnel.";
+  else if (STAGE_TAG[st.name]){ mm = mechAt(st.name, f); s = mm.step;
+    h = s ? "<b>" + s.title.split(" — ")[0] + ":</b> " + s.why + (s.kind.indexOf("dep") === 0 ? " <i>In the flask: grey NaNH₂ is used up.</i>" : " <i>In the flask: bromide drips in and white NaBr settles.</i>") : "<b>Nothing happens at this end:</b> there was not enough NaNH₂ to deprotonate it."; }
+  else if (st.name === "hyb") h = "<b>Shape:</b> the molecule relaxes to its real angles — sp carbons 180°, sp² 120°, sp³ 109.5°. " + hybText(R) + ".";
+  else if (st.name === "line") h = "<b>Laser test:</b> spin X about the straight line. Atoms on the line stay put; every other atom swings round it. " + R.count + " carbons never move.";
+  else if (st.name === "test") h = "<b>Result audit:</b> the lab checks X, the count and two common wrong counts — only the sp carbons (4), and running the line on past the CH₂ (8).";
+  else if (st.name === "answer") h = "<b>Analysis complete.</b> Counting the carbons on the laser…";
+  $("narr").innerHTML = h;
+  var stp = { load: 1, d1: 2, d2: 3, s1: 4, s2: 5, hyb: 6, line: 7 };
+  $("trialtag").textContent = stp[st.name] ? "step " + stp[st.name] + " of 7" : (RUN.done ? "case closed" : st.name === "idle" ? "step 1 of 7" : "audit");
+  $("scenet").textContent = RUN.done ? "Experiment complete" : "Straight-line carbon lab";
+}
+function updateReadouts(st){
+  var R = RUN.R, n = st.name, f = st.f, i = RUN.done ? 99 : ORDER.indexOf(n);
+  var step = { load: "1 · charge", d1: "2 · deprotonation", d2: "3 · deprotonation", s1: "4 · SN2", s2: "5 · SN2", hyb: "6 · shape", line: "7 · laser", test: "audit", answer: "audit" };
+  $("g_st").textContent = step[n] || (RUN.done ? "complete" : "—");
+  $("g_T").textContent = n === "idle" ? "—" : "−33 °C";
+  $("g_pr").textContent = RUN.done ? 100 : Math.round(100 * elapsed() / TOTAL);
+  var dep = n === "idle" ? 0 : doneCount("dep", n, f), sn = n === "idle" ? 0 : doneCount("sn2", n, f);
+  $("g_r").textContent = n === "idle" ? "—" : (+R.D.base - dep) + " eq";
+  $("g_n1").textContent = n === "idle" ? "—" : String(dep - sn);
+  $("g_n2").textContent = n === "idle" ? "—" : String(sn);
+  var mm = mechAt(n, f);
+  $("g_p").textContent = mm && mm.step ? String(mm.step.arrows.length) : "—";
+  $("g_vol").textContent = i >= ORDER.indexOf("hyb") ? R.nsp + " sp · " + R.G.filter(function(g){ return g.hyb === "sp2"; }).length + " sp² · " + R.G.filter(function(g){ return g.hyb === "sp3"; }).length + " sp³" : "—";
+  $("g_v").textContent = i > ORDER.indexOf("line") || (n === "line" && f > 0.75) ? R.answer : "—";
+  $("gz_v").classList.toggle("hot", RUN.done && R.complete);
+  drawCharts(st);
+}
+
+/* =====================================================================
+   3-D line explorer - build any variant, spin it about its line
+   ===================================================================== */
+var XP = { chain: "diyne", base: "2", rx: "crotyl", phi: 0.6, auto: true, laser: true };
+function xpRun(){ return run({ chain: XP.chain, base: XP.base, rx: XP.rx }); }
+var XR = null;
+function drawExplorer(){
+  var c = $("mol"), g = c.getContext("2d"), R = XR || (XR = xpRun()), on = R.geo.on;
+  hood(g, c.width, c.height);
+  if (XP.auto && !REDUCED) XP.phi += 0.012;
+  var M = modelToScreen(R.G, [10, 40, c.width - 20, c.height - 80], on), S = spinAboutLine(M.P, on[0], on[on.length - 1], XP.phi);
+  drawModel(g, R, S, { line: XP.laser ? 1 : 0, count: XP.laser ? on.length : 0, hybT: 99 });
+  label(g, R.fx + " · " + R.count + " carbons on one line", c.width / 2, c.height - 22, "#ff8ab8", 16, "center", 900);
+}
+function showInfo(){
+  var R = XR || (XR = xpRun());
+  $("x_phiv").textContent = Math.round(((XP.phi * 180 / Math.PI) % 360 + 360) % 360) + "°";
+  $("xinfo").innerHTML = "<h3>This molecule</h3><table><tr><th>Formula</th><td>" + R.fx + "</td></tr><tr><th>Chain carbons</th><td>" + R.path.length + "</td></tr>"
+    + "<tr><th>Hybridisation, end to end</th><td style='font-size:12px'>" + R.G.map(function(g){ return g.hyb === "sp2" ? "sp²" : g.hyb === "sp3" ? "sp³" : "sp"; }).join(" · ") + "</td></tr>"
+    + "<tr><th>sp carbons</th><td>" + R.nsp + "</td></tr><tr><th>Carbons on one straight line</th><td><b>" + R.count + "</b> (the geometric model agrees: " + R.geo.on.length + ")</td></tr></table>"
+    + "<p style='font-size:13px;color:var(--text-secondary);margin-top:8px'>Spin it: the atoms on the pink line never move. That is the whole test for collinear.</p>";
+}
+function wireExplorer(){
+  var re = function(){ XR = xpRun(); showInfo(); };
+  $("x_chain").addEventListener("change", function(){ XP.chain = this.value; re(); });
+  $("x_base").addEventListener("change", function(){ XP.base = this.value; re(); });
+  $("x_rx").addEventListener("change", function(){ XP.rx = this.value; re(); });
+  $("x_phi").addEventListener("input", function(){ XP.auto = false; XP.phi = parseFloat(this.value) * Math.PI / 180; $("x_spin").setAttribute("aria-pressed", "false"); showInfo(); });
+  $("x_spin").addEventListener("click", function(){ XP.auto = !XP.auto; this.setAttribute("aria-pressed", XP.auto ? "true" : "false"); });
+  $("x_laser").addEventListener("click", function(){ XP.laser = !XP.laser; this.setAttribute("aria-pressed", XP.laser ? "true" : "false"); });
+  $("x_reset").addEventListener("click", function(){ XP.chain = "diyne"; XP.base = "2"; XP.rx = "crotyl"; $("x_chain").value = "diyne"; $("x_base").value = "2"; $("x_rx").value = "crotyl"; XP.auto = true; XP.laser = true; $("x_spin").setAttribute("aria-pressed", "true"); $("x_laser").setAttribute("aria-pressed", "true"); re(); });
+  $("mol").addEventListener("keydown", function(e){ if (e.key === "ArrowRight") XP.phi += 0.2; else if (e.key === "ArrowLeft") XP.phi -= 0.2; else return; XP.auto = false; showInfo(); e.preventDefault(); });
+  setInterval(function(){ if (XP.auto) showInfo(); }, 400);
+  showInfo();
+}
+function pickMol(){}
+var BURST_GLYPHS = ["C", "≡", "sp", "180°", "✦", "●", "◆", "✓"];
+function revealMain(R){ return R.answer + " IN A LINE"; }
+function revealGraffiti(R){ return [["sp = 180°", 118, 348, -6, "#7fc8ff"], ["CH₂–C≡C–C≡C–CH₂", 360, 364, 3, "#ffae5a"], ["SN2 × 2", 606, 348, 7, "#c8e04a"]]; }
+function revealLine1(R){ return "You spun X about its axis and six carbons stood still."; }
+function revealCustom(R){ return "Your reagents give " + R.count + " collinear carbons in " + R.fx + " — not the question's X."; }
+function revealLine2(R){ return "X = " + R.fx + " · " + R.nsp + " sp carbons + 2 neighbours on the axis"; }
+
+
+/* =====================================================================
+   the answer reveal - EUREKA
+   ===================================================================== */
+function blink(id){ var e = $(id); if (!e) return; e.classList.remove("blink"); void e.offsetWidth; e.classList.add("blink"); setTimeout(function(){ e.classList.remove("blink"); }, 2300); }
+function doReveal(){
+  if (!RUN.done){ earlyReveal = true; refreshGate(); return; }
+  var lab = $("lab3d");
+  lab.classList.add("dim"); $("blackout").classList.add("on");
+  setTimeout(function(){
+    $("blackout").classList.remove("on"); $("donebanner").classList.remove("on");
+    if (!REDUCED){ var f = $("flashout"); f.classList.remove("go"); void f.offsetWidth; f.classList.add("go"); lab.classList.remove("zoom"); void lab.offsetWidth; lab.classList.add("zoom"); }
+    RUN.revealed = true;
+    mountReveal(); refreshGate();
+    var ab = $("answerbox"); ab.classList.remove("celebrate"); void ab.offsetWidth; ab.classList.add("celebrate");
+    setTimeout(function(){ ab.classList.remove("celebrate"); }, 3200);
+    blink("ansval"); blink("grafT"); blink("g_v");
+    setTimeout(function(){ lab.classList.remove("dim"); }, 5200);
+  }, 950);
+}
+function mountReveal(){
+  var host = $("revealhost"), R = RUN.R, ok = R.complete;
+  host.innerHTML = ""; host.classList.add("on");
+  var main = ok ? revealMain(R) : "PATHWAY CHANGED";
+  var svg = mk("svg", { viewBox: "0 0 720 380", "class": "graf", role: "img", "aria-label": (ok ? "Congratulations. Answer found: " : "") + main }, host);
+  var d = mk("defs", {}, svg), sp = mk("filter", { id: "spray", x: "-14%", y: "-40%", width: "128%", height: "180%" }, d);
+  mk("feTurbulence", { type: "fractalNoise", baseFrequency: "0.045 0.09", numOctaves: "3", seed: "7", result: "nz" }, sp);
+  mk("feDisplacementMap", { "in": "SourceGraphic", in2: "nz", scale: "6", xChannelSelector: "R", yChannelSelector: "G" }, sp);
+  var bh = mk("g", {}, svg);
+  if (ok){
+    var gr = [["CHEMISTRY MASTER!", 118, 26, -6, "#ff9350"], ["EUREKA!", 628, 30, 8, "#a99bff"], ["CORRECT!", 84, 190, -12, "#3ee39a"]].concat(revealGraffiti(R)), i;
+    for (i = 0; i < gr.length; i++) tx(svg, gr[i][1], gr[i][2], gr[i][0], { "text-anchor": "middle", "font-size": 22, "font-weight": 900, fill: gr[i][4], opacity: 0.85, transform: "rotate(" + gr[i][3] + " " + gr[i][1] + " " + gr[i][2] + ")", filter: "url(#spray)", "font-family": "ui-rounded,'Comic Sans MS','Marker Felt',cursive" });
+  }
+  tx(svg, 360, 58, ok ? "🎉  ANSWER FOUND!  🎉" : "THE QUESTION'S PATHWAY DOES NOT APPLY", { "text-anchor": "middle", "font-size": ok ? 22 : 17, "font-weight": 900, fill: ok ? "#3ee39a" : "#ffb4b4", "letter-spacing": "2" });
+  tx(svg, 360, 86, ok ? "CONGRATULATIONS!" : "restore the question conditions", { "text-anchor": "middle", "font-size": 13, "font-weight": 800, fill: "#9fb0cc", "letter-spacing": "5" });
+  mk("rect", { x: 150, y: 104, width: 420, height: 150, rx: 16, fill: "rgba(8,20,16,.72)", stroke: ok ? "#3ee39a" : "#ff6b6b", "stroke-width": 2 }, svg);
+  tx(svg, 360, 128, ok ? "THE ANSWER" : "CUSTOM RUN", { "text-anchor": "middle", "font-size": 12, "font-weight": 800, fill: "#9ff0c9", "letter-spacing": "6" });
+  var gg = mk("g", { transform: "translate(360,206) skewX(-9)" }, svg), fs = main.length > 12 ? 38 : 50;
+  tx(gg, 7, 9, main, { "text-anchor": "middle", "font-size": fs, "font-weight": 900, fill: "#a99bff", opacity: 0.34, filter: "url(#spray)" });
+  tx(gg, 0, 0, main, { id: "grafT", "text-anchor": "middle", "font-size": fs, "font-weight": 900, fill: ok ? "#3ee39a" : "#ffb4b4", filter: "url(#spray)" });
+  tx(svg, 360, 284, ok ? revealLine1(R) : revealCustom(R), { "text-anchor": "middle", "font-size": 15, "font-weight": 700, fill: "#eef3ff" });
+  tx(svg, 360, 306, revealLine2(R), { "text-anchor": "middle", "font-size": 14, fill: "#9fb0cc" });
+  if (!REDUCED && ok) makeBurst(bh);
+}
+function makeBurst(host){
+  burst = [];
+  var i, n = 90, GL = BURST_GLYPHS, a, sp2, conf, node, cols = ["#3ee39a", "#a99bff", "#54a9ff", "#ff9350", "#c8e04a"];
+  for (i = 0; i < n; i++){
+    a = Math.random() * Math.PI * 2; sp2 = 90 + Math.random() * 300; conf = i % 3 === 0;
+    node = conf ? mk("rect", { x: -4, y: -3, width: 8, height: 6, rx: 1.5, fill: cols[i % 5] }, host) : tx(host, 0, 0, GL[i % GL.length], { "text-anchor": "middle", "font-size": 11 + Math.random() * 8, fill: cols[i % 5], "font-weight": 800 });
+    burst.push({ n: node, x: 360, y: 190, vx: Math.cos(a) * sp2, vy: Math.sin(a) * sp2 - 70, life: 0, max: 1.6 + Math.random() * 1.2, rot: Math.random() * 360, vr: (Math.random() - 0.5) * 540 });
+  }
+}
+function stepBurst(dt){
+  var i, b;
+  for (i = 0; i < burst.length; i++){
+    b = burst[i]; if (b.life > b.max){ b.n.setAttribute("opacity", 0); continue; }
+    b.life += dt; b.vy += 420 * dt; b.x += b.vx * dt; b.y += b.vy * dt; b.rot += b.vr * dt;
+    b.n.setAttribute("opacity", Math.max(0, 1 - b.life / b.max).toFixed(2));
+    b.n.setAttribute("transform", "translate(" + b.x.toFixed(1) + "," + b.y.toFixed(1) + ") rotate(" + b.rot.toFixed(0) + ")");
+  }
+}
+function refreshGate(){
+  $("solgate").hidden = true; $("solbody").hidden = false; $("revealnow").hidden = true;
+  $("solans").textContent = ANS; $("clsans").textContent = ANS + "  (" + ANSNOTE + ")";
+  refreshAnswerBox();
+}
+
+/* =====================================================================
+   the loop - one virtual clock, so Pause and speed govern everything
+   ===================================================================== */
+var last = 0, slow = 0;
+function loop(ts){
+  var dt = last ? (ts - last) / 1000 : 0; last = ts;
+  if (dt > 0.06) dt = 0.06;
+  var running = RUN.state === "running" && !RUN.paused;
+  if (running) stepTimeline(dt * RUN.speed);
+  if (!RUN.paused) clock += dt * (running ? RUN.speed : 1) * (REDUCED ? 0.3 : 1);
+  var st = currentState(); NOW = st;
+  if (!RUN.paused) fxStep(dt * (running ? RUN.speed : 1));
+  drawLab(st);
+  drawExplorer();
+  if (burst.length) stepBurst(dt);
+  slow += dt;
+  if (slow > 0.08){ slow = 0; updateReadouts(st); narrate(st); refreshStatus(); refreshAnswerBox(); }
+  requestAnimationFrame(loop);
+}
+
+/* =====================================================================
+   wiring
+   ===================================================================== */
+function afterEdit(){ readAll(); if (RUN.state === "setup"){ RUN.D = copyST(); RUN.R = run(RUN.D); } refreshUI(); }
+function toggleClassroom(){
+  RUN.classroom = !RUN.classroom;
+  document.body.classList.toggle("classroom", RUN.classroom);
+  $("classbtn").setAttribute("aria-pressed", RUN.classroom ? "true" : "false");
+  $("classbtn").textContent = RUN.classroom ? "EXIT CLASSROOM MODE" : "CLASSROOM MODE";
+  if (RUN.classroom) try { $("deck").scrollIntoView({ behavior: REDUCED ? "auto" : "smooth", block: "start" }); } catch (e) {}
+}
+function build(){
+  $("fields").innerHTML = fieldsHTML();
+  var i;
+  for (i = 0; i < FIELDS.length; i++) $("in_" + FIELDS[i].k).addEventListener("change", afterEdit);
+  $("resetq").addEventListener("click", resetAll);
+  $("gobtn").addEventListener("click", function(){ if (RUN.state !== "running") startRun(); });
+  $("pausebtn").addEventListener("click", function(){ RUN.paused = !RUN.paused; refreshUI(); });
+  $("replaybtn").addEventListener("click", function(){ startRun(RUN.D); });
+  $("resetbtn").addEventListener("click", resetAll);
+  $("classbtn").addEventListener("click", toggleClassroom);
+  $("revealnow").addEventListener("click", function(){ earlyReveal = true; refreshGate(); });
+  $("gotolab").addEventListener("click", function(){ $("lab").scrollIntoView({ behavior: REDUCED ? "auto" : "smooth" }); });
+  var tg = function(id, key){ $(id).addEventListener("click", function(){ SHOW[key] = !SHOW[key]; this.setAttribute("aria-pressed", SHOW[key] ? "true" : "false"); }); };
+  tg("t_eq", "eq"); tg("t_obs", "obs"); tg("t_why", "why");
+  $("t_cmp").addEventListener("click", function(){ RUN.speed = RUN.speed === 0.5 ? 1 : 0.5; this.setAttribute("aria-pressed", RUN.speed === 0.5 ? "true" : "false"); var sb = document.querySelectorAll("#spd button"), j; for (j = 0; j < sb.length; j++) sb[j].setAttribute("aria-pressed", "false"); });
+  $("t_rot").addEventListener("click", function(){ $("explorer").scrollIntoView({ behavior: REDUCED ? "auto" : "smooth" }); $("mol").focus(); });
+  var sb = document.querySelectorAll("#spd button");
+  for (i = 0; i < sb.length; i++) sb[i].addEventListener("click", function(){
+    RUN.speed = parseFloat(this.getAttribute("data-s"));
+    for (var j = 0; j < sb.length; j++) sb[j].setAttribute("aria-pressed", sb[j] === this ? "true" : "false");
+  });
+  $("themebtn").addEventListener("click", function(){
+    var r = document.documentElement, dark = r.getAttribute("data-theme") === "dark" || (!r.getAttribute("data-theme") && matchMedia("(prefers-color-scheme: dark)").matches);
+    r.setAttribute("data-theme", dark ? "light" : "dark");
+  });
+  wireExplorer();
+  readAll(); drawLog(); refreshGate(); refreshUI(); refreshAnswerBox();
+  requestAnimationFrame(loop);
+}
+if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", build); else build();
+
+/* exposed for the headless test harness */
+window.PX = {
+  Q: Q, ST: ST, RUN: RUN, run: run, push: push, valid: valid, charge: charge, hyb: hyb, backbone: backbone, lineByRule: lineByRule, lineByGeometry: lineByGeometry, model: model, mechAt: mechAt,
+  answer: function(){ return ANS; }, qrun: function(){ return QRUN; },
+  start: function(){ startRun(); }, replay: function(){ startRun(RUN.D); }, reset: resetAll,
+  pause: function(){ RUN.paused = !RUN.paused; refreshUI(); }, speed: function(s){ RUN.speed = s; },
+  setField: function(k, v){ $("in_" + k).value = v; afterEdit(); },
+  stage: stageKey, cards: function(){ return RUN.cards; }, badges: function(){ return RUN.badges; }, trial: function(){ return RUN.trial; },
+  calcKeys: calcKeys, now: function(){ return NOW; }, explorer: XP, xrun: function(){ return XR; }, pickMol: pickMol
+};
+
+})();
+</script>
+</body>
+</html>
