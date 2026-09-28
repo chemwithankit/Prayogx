@@ -84,7 +84,9 @@ def card(sim):
     return out
 
 
-SITE_URL = "https://chemwithankit.github.io/Prayogx"
+# The canonical origin. chemwithankit.github.io/Prayogx still resolves, but only as a
+# 301 to this domain, so canonical tags and the sitemap must name this one directly.
+SITE_URL = "https://prayogx.co.in"
 
 
 def esc(t):
