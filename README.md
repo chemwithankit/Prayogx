@@ -87,12 +87,16 @@ tools/
 
 tests/                      verifiers and headless-browser suites (see "Testing" below)
 templates/
-    simulation-template.html  starter shell for a new simulation
+    simulation-template.html  the older (G1-era) shell — design tokens and brand mark; new
+                              pages start from a layout-v2 page instead (see below)
+CLAUDE.md                   working instructions for Claude Code
+.claude/skills/             project skills: new simulation, chemistry, validate, register,
+                            review existing, design-system reference
 app/                        Capacitor 6 mobile shell (no simulation content — see app/README.md)
     www/                    the shell: index.html, app.js, app.css, ads.js, config.js
     android/                the Android Studio project (package com.prayogx.app)
-docs/                       ARCHITECTURE.md, DEPLOYMENT.md, TESTING_PORTABILITY.md,
-                            ANDROID_RELEASE_READINESS.md
+docs/                       SIMULATION_STANDARDS.md, DECISIONS.md, ARCHITECTURE.md,
+                            DEPLOYMENT.md, TESTING_PORTABILITY.md, ANDROID_RELEASE_READINESS.md
 publish.sh                  sync, build, check, commit and push (one command)
 .github/workflows/static.yml  GitHub Pages deploy workflow — do not delete
 
@@ -118,15 +122,20 @@ creates a duplicate folder.
 **Every simulation is self-contained** — one HTML file, openable from disk, a USB stick or any
 static host without changes.
 
-**Every simulation ships the same seven sections:** the verbatim question, an interactive
-experiment, a live chart, a concept builder, the calculation panel, a step-by-step solution with
-an independent verification log, and a classification table.
+**The 32 pages span four historical generations** (seven-section pages, pages with a prediction
+stage and a locked answer, compact lab pages, and the current layout v2). Each is preserved as it
+is — see [docs/SIMULATION_STANDARDS.md](docs/SIMULATION_STANDARDS.md) §3. Every page carries the
+verbatim question, an interactive experiment and a worked solution with an independent
+verification log.
 
 ## The house style
 
-Every simulation follows the same seven-section shape using the same validated four-colour series
-palette and the same self-contained single-file build. `templates/simulation-template.html`
-carries the whole shell plus a build checklist; start there.
+New simulations follow **layout v2**, with Paper 1 Q12–Q15 as the reference: the answer visible
+above the experiment, the controls in a dock below it, and the detailed solution always open.
+They progressively target an immersive virtual-lab experience. All pages share the validated
+four-colour series palette and the self-contained single-file build. The full standard is
+[docs/SIMULATION_STANDARDS.md](docs/SIMULATION_STANDARDS.md); decisions are in
+[docs/DECISIONS.md](docs/DECISIONS.md).
 
 The rule behind the template: each simulation has **one conceptual pivot** made tangible by an
 interaction, and the page **computes the official answer from the live model** rather than
@@ -134,8 +143,9 @@ quoting it.
 
 ## Adding a simulation
 
-1. Copy `templates/simulation-template.html` and build
-   `simulations/<year>/paper-<n>/<subject>/<id>/index.html`, `meta.json` and `question.md`.
+1. Start from the closest layout-v2 page (P1 Q12–Q15) and build
+   `simulations/<year>/paper-<n>/<subject>/<id>/index.html`, `meta.json` and `question.md`
+   (with Claude Code: the `prayogx-new-simulation` skill).
 2. Append the `meta.json` object to `simulations[]` in `data/manifest.json`.
 3. Run `python3 tools/sync_manifest.py` — re-sorts, recomputes `counts`, regenerates `data/manifest.js`.
 4. Run `python3 tools/build_content.py` — regenerates `content/`, `s/`, `sitemap.xml`,
@@ -239,21 +249,19 @@ A guard step fails the deploy if `papers/` or any `.pdf` reaches the deploy dire
 
 ## Testing
 
-What runs on this Mac today, with the stock `python3`:
+The whole suite runs locally on macOS after a one-time setup (project-local `tests/.venv` and
+Playwright 1.56.1 in `tests/`; see `tests/README.md`):
 
 ```bash
 python3 tools/check_library.py
 python3 tools/production_audit.py
-python3 tests/verify_p1q13.py
+bash tests/runall.sh
 ```
 
-The rest of `tests/` — 14 more Python verifiers (need sympy / numpy / scipy / RDKit) and 24
-Playwright browser suites — was written inside the Claude Cowork Linux container and still
-hard-codes its paths (`/home/claude/build`, a Linux Chromium binary). `tests/runall.sh` also
-references five files that are not in the repository and uses GNU `timeout`. Paper 2 has no
-dedicated test files. The full inventory and a proposal for running the suite on macOS are in
-**[docs/TESTING_PORTABILITY.md](docs/TESTING_PORTABILITY.md)**. `tests/README.md` describes
-what each suite checks.
+`runall.sh` runs 15 Paper 1 verifiers, the two library tools and 24 browser suites. Five
+entries are reported MISSING: container-era files that were never in the repository. Paper 2
+has no dedicated test files yet, and `sim_p1q10.js` has a known intermittent test race. Details
+and results are in **[docs/TESTING_PORTABILITY.md](docs/TESTING_PORTABILITY.md)**.
 
 CI runs only the sync/build/check steps and the stale-content gate — no test suite.
 
