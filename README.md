@@ -91,7 +91,8 @@ templates/
 app/                        Capacitor 6 mobile shell (no simulation content — see app/README.md)
     www/                    the shell: index.html, app.js, app.css, ads.js, config.js
     android/                the Android Studio project (package com.prayogx.app)
-docs/                       ARCHITECTURE.md, DEPLOYMENT.md, TESTING_PORTABILITY.md
+docs/                       ARCHITECTURE.md, DEPLOYMENT.md, TESTING_PORTABILITY.md,
+                            ANDROID_RELEASE_READINESS.md
 publish.sh                  sync, build, check, commit and push (one command)
 .github/workflows/static.yml  GitHub Pages deploy workflow — do not delete
 
@@ -267,7 +268,9 @@ website from `https://prayogx.co.in` — it bundles no simulations and no catalo
 
 After any change to `app/www/`, run `npx cap sync` in `app/` so the Android project picks it up
 (the copied assets in `app/android/app/src/main/assets/public/` are generated and git-ignored).
-See `app/README.md` and [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md).
+See `app/README.md` and [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md). What still blocks a Play
+release (consent, live ads, app-ads.txt, versionCode, signing) is tracked in
+**[docs/ANDROID_RELEASE_READINESS.md](docs/ANDROID_RELEASE_READINESS.md)**.
 
 ## Contents
 
