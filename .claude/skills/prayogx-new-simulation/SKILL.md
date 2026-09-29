@@ -27,8 +27,9 @@ code.
    *section's* question number. MathonGo Paper 1 numbers are combined (Maths 1–16, Physics
    17–32, Chemistry 33–48), so MathonGo Q48 = Chemistry Q.16.
 2. **Verify the source.** Question papers are in `papers/` (private, git-ignored; never copy
-   them anywhere tracked). Read PDF pages with the Read tool (`pages:`), which needs Poppler's `pdftoppm` on this machine
-   (an environment prerequisite: `brew install poppler`, never part of the repository); `pdftotext` is not
+   them anywhere tracked). Render the page first - `python3 tools/auto_sim.py render papers/<file>.pdf --pages N` (pypdfium2 in
+   `tests/.venv`, no system package) - then Read the PNG it prints, and cross-check the `.txt` text layer
+   beside it; the Read tool's own `pages:` needs Poppler, which is not installed. `pdftotext` is not
    installed on this Mac. Structures and schemes are images, so look at them. Transcribe
    **verbatim**: numbers, units, conditions, options. Record exam, year, paper, section,
    question type, marking and source page. Report anything unclear; never invent.

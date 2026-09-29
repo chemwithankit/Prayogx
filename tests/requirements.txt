@@ -5,6 +5,8 @@
 sympy==1.14.0     # verify_p1q01 02 03 05 06 07 09
 numpy==2.0.2      # verify_p1q05 10 11 12 14, gen_q15
 scipy==1.13.1     # verify_p1q14
-rdkit==2025.9.2   # verify_p1q04 08 11 12 15, gen_q15
+rdkit==2025.9.2   # verify_p1q04 08 11 12 15, gen_q15 (also brings Pillow, used to save rendered pages)
+pypdfium2==5.13.0 # tools/auto_sim.py render: papers/*.pdf pages -> PNG + text for the source stages
+                  # (self-contained PDFium wheel: no Homebrew / Poppler / system package needed)
 # Optional, not installed: pyscf. verify_p1q03/05/06/07 import it inside try:
 # and fall back to recorded values when it is absent.

@@ -65,7 +65,7 @@ Claude turns the owner's request into a spec (JSON), shows the plan, and runs it
 | E. mixed batch | items exactly in the supplied order |
 | F. "find the simulation-worthy concepts in this chapter" | read the source, list candidates with a one-line reason each and the existing pages they overlap (`nearDuplicates`), and **ask the owner to confirm the list**: the owner chooses every item (CLAUDE.md) |
 
-A source is a local path (`papers/…`, optionally `#page=N`), a folder, or a URL. Local PDFs stay in
+A source is a local path (`papers/…`, optionally `#page=N`), a folder, or a URL. PDF pages are read by rendering them (`auto_sim.py render`, §11) and looking at the image; the page count is checked at planning. Local PDFs stay in
 `papers/` (git-ignored); the planner refuses a PDF that git would commit. URLs are fetched at
 `source_accessible` with WebFetch and recorded exactly. Visual-inspiration sites are for ideas only;
 no design, asset or code is copied.
@@ -201,7 +201,7 @@ confirmed is redone. Deployment is re-checked on the live site before any new co
 ## 9. Decided, and still open
 
 Decided 2026-09-29: `script_verified` (§1); concept IDs, folders and fields (§3); Physics on the
-interim §5 gates; mathematics blocked in production; Poppler as an environment prerequisite (§11).
+interim §5 gates; mathematics blocked in production; PDF pages rendered with `pypdfium2` in the project venv, no system package (§11).
 
 | Open | Blocks |
 |---|---|
@@ -223,7 +223,7 @@ a blocked or failed item is never reported as a success. Status language follows
 
 | Needed for | Prerequisite | Checked by |
 |---|---|---|
-| reading `papers/*.pdf` pages (source stages) | Poppler's `pdftoppm` (`brew install poppler`) for the Read tool | `auto_sim.py preflight` |
+| reading `papers/*.pdf` pages (source stages) | `pypdfium2` in `tests/.venv` (`tests/requirements.txt`; no system package). `python3 tools/auto_sim.py render <pdf> --pages N` writes `.tmp/auto-simulation/pages/<pdf>/pNNN.png` + `.txt` (git-ignored); Claude reads the PNG with the Read tool and cross-checks the text layer. Poppler's `pdftoppm` is accepted if present, never required | `auto_sim.py preflight` |
 | verifiers | `tests/.venv` (sympy, numpy, scipy, RDKit) | `preflight` |
 | page suites, live smoke | `tests/node_modules` Playwright 1.56.1 + Chromium 1194 | `preflight` |
 | push | GitHub credentials on this Mac (`./publish.sh`) | the push itself |

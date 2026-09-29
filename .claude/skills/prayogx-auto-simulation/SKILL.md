@@ -31,7 +31,9 @@ reference process**, not a template: never clone its chemistry, layout or appara
 1. Turn the request into a spec (`docs/AUTO_SIMULATION_PIPELINE.md` §2) in the scratchpad.
 2. `python3 tools/auto_sim.py plan <spec>` → the batch directory. Show the owner the plan table:
    IDs, duplicates skipped, blockers, warnings, files per item.
-3. Dry run: `python3 tools/auto_sim.py simulate <batch>`, then do the read-only stages for real
+3. Source pages: `python3 tools/auto_sim.py render <pdf> --pages N`, then Read the PNG (the text layer
+   in the `.txt` beside it is a cross-check; structures and diagrams are only in the image).
+4. Dry run: `python3 tools/auto_sim.py simulate <batch>`, then do the read-only stages for real
    (sources, verbatim question, key, independent solve, cross-check, learning objective, design
    brief), recording each with `advance`. Finish with `python3 tools/auto_sim.py guard <batch>`
    (must print "dry run changed nothing").

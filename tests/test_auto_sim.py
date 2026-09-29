@@ -88,6 +88,36 @@ try:
         chk("the Paper 1 PDF has 35 pages (Q16 is on the last)", A.pdf_pages(os.path.join(ROOT, PAPER1)) == 35)
         chk("a page inside the PDF is accepted", A.check_source(PAPER1 + "#page=35")["ok"] is True)
         chk("a page past the end of the PDF is a source blocker", A.check_source(PAPER1 + "#page=36")["ok"] is False)
+        rdir = os.path.join(TMP, "pages")
+        if A._pdfium() is None:
+            # system python3 without pypdfium2: the CLI hands off to tests/.venv; test that path
+            rc = subprocess.run([sys.executable, os.path.join(ROOT, "tools", "auto_sim.py"), "render", PAPER1, "--pages", "35",
+                                 "--out", rdir], capture_output=True, text=True, cwd=ROOT)
+            chk("render CLI hands off to tests/.venv (this interpreter has no pypdfium2)",
+                rc.returncode == 0 and os.path.exists(os.path.join(rdir, "p035.png")), rc.stdout + rc.stderr)
+            chk("render in-process without pypdfium2 is refused with the install hint",
+                "tests/.venv" in (raises(A.render_pages, PAPER1, [35], rdir) or ""))
+            r = {"png": os.path.join(rdir, "p035.png"), "txt": os.path.join(rdir, "p035.txt"), "width": 1191, "height": 1684}
+        else:
+            r = A.render_pages(PAPER1, [35], rdir)[0]
+            chk("render: a page outside the PDF is refused", raises(A.render_pages, PAPER1, [36], rdir) is not None)
+            chk("render: a missing PDF is refused", raises(A.render_pages, "papers/nope.pdf", [1], rdir) is not None)
+            sys_py = os.path.join(sys.base_prefix, "bin", "python3")
+            if os.path.exists(sys_py) and sys.base_prefix != sys.prefix:
+                rc = subprocess.run([sys_py, os.path.join(ROOT, "tools", "auto_sim.py"), "render", PAPER1, "--pages", "34-35",
+                                     "--out", os.path.join(TMP, "cli")], capture_output=True, text=True, cwd=ROOT)
+                chk("render CLI from the system python3 hands off to tests/.venv and renders pages 34-35",
+                    rc.returncode == 0 and os.path.exists(os.path.join(TMP, "cli", "p034.png")) and os.path.exists(os.path.join(TMP, "cli", "p035.png")),
+                    rc.stdout + rc.stderr)
+        chk("render: page 35 -> PNG at 2x (1191 x 1684 px)", os.path.exists(r["png"]) and os.path.getsize(r["png"]) > 50000
+            and (r["width"], r["height"]) == (1191, 1684) and open(r["png"], "rb").read(8) == b"\x89PNG\r\n\x1a\n", r)
+        txt = open(r["txt"], encoding="utf-8").read() if os.path.exists(r["txt"]) else ""
+        chk("render: the text layer is readable and is Q16 (stem, four options, key B)",
+            "Q.16 Match the major products" in txt and all("(%s) P" % o in txt for o in "ABCD") and "Answer Q16: B" in txt, txt[:120])
+        chk("render: the page says it is the last Chemistry page (10/10) - there is no P1 Chemistry Q17", "10/10" in txt)
+    chk("rendered pages default to .tmp/auto-simulation/pages/, which git ignores",
+        A.PAGES_DIR.startswith(A.STATE_ROOT) and subprocess.run(["git", "check-ignore", "-q", os.path.relpath(A.PAGES_DIR, ROOT) + "/x.png"],
+                                                                 cwd=ROOT).returncode == 0)
 
     # ------------------------------------------------------------ plan
     b1 = batch([q(16, sol=PAPER1), q(17, sol=PAPER1), q(1, "Physics"),
@@ -256,9 +286,9 @@ try:
     g = {x["gate"]: x for x in A.preflight()}
     chk("preflight: script_verified is available, so the publish-status gate passes",
         g["publish status for unreviewed pages"]["ok"] and A.AUTO_STATUS == "script_verified", g["publish status for unreviewed pages"])
-    import shutil as _sh
-    chk("preflight: the PDF page reader gate reflects whether pdftoppm is installed",
-        g["PDF page reader (poppler pdftoppm) for exam papers"]["ok"] == bool(_sh.which("pdftoppm")))
+    rname, rdetail = A.pdf_reader()
+    chk("preflight: the PDF page reader gate passes with pypdfium2 from the project venv",
+        g["PDF page reader for exam papers (pypdfium2 or pdftoppm)"]["ok"] and rname == "pypdfium2", rdetail)
     chk("preflight: deploy exclusions and ignores are checked",
         g["deploy exclusions intact"]["ok"] and g["papers/ is git-ignored"]["ok"] and g[".tmp/ (batch state) is git-ignored"]["ok"])
 

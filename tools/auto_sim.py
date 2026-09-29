@@ -20,6 +20,7 @@ It never builds, commits, pushes or deploys anything itself.
   python3 tools/auto_sim.py report BATCH                   the batch table and summary
   python3 tools/auto_sim.py trace ID [--run] [--online]    the whole pipeline, as evidenced for ID
   python3 tools/auto_sim.py smoke ID [--base URL]          live HTTP smoke test (read-only)
+  python3 tools/auto_sim.py render PDF --pages 35          source page -> PNG + text in .tmp/ (pypdfium2)
 
 Exit codes: 0 ok, 1 a check failed, 2 unusable input or an unsafe state.
 """
@@ -167,8 +168,49 @@ def check_source(src):
     return {"kind": kind, "ref": ref, "pages": pages, "ok": True, "note": note}
 
 
+VENV_PY = os.path.join(ROOT, "tests", ".venv", "bin", "python3")
+PAGES_DIR = os.path.join(STATE_ROOT, "pages")      # rendered source pages: git-ignored, never deployed
+
+
+def _pdfium():
+    try:
+        import pypdfium2
+        return pypdfium2
+    except ImportError:
+        return None
+
+
+def pdf_reader():
+    """-> (name, detail) of the PDF page renderer available to the source stages, or (None, why).
+    pypdfium2 in the project venv (tests/requirements.txt) is the portable default; Poppler's
+    pdftoppm is accepted if a machine happens to have it."""
+    lib = _pdfium()
+    if lib:
+        return "pypdfium2", "pypdfium2 %s (PDFium %s) in this interpreter" % (lib.PYPDFIUM_INFO, lib.PDFIUM_INFO)
+    if os.path.exists(VENV_PY):
+        r = subprocess.run([VENV_PY, "-c", "import pypdfium2 as p; print(p.PYPDFIUM_INFO, p.PDFIUM_INFO)"],
+                           capture_output=True, text=True)
+        if r.returncode == 0:
+            v = r.stdout.split()
+            return "pypdfium2", "pypdfium2 %s (PDFium %s) in tests/.venv" % (v[0], v[1])
+    import shutil
+    if shutil.which("pdftoppm"):
+        return "pdftoppm", shutil.which("pdftoppm")
+    return None, "no renderer: install the project venv (tests/.venv/bin/pip install -r tests/requirements.txt)"
+
+
 def pdf_pages(path):
-    """Page count from the PDF's page tree (no PDF library needed); 0 if it cannot be read."""
+    """Page count: PDFium when available, else the PDF's page tree; 0 if it cannot be read."""
+    lib = _pdfium()
+    if lib:
+        try:
+            doc = lib.PdfDocument(path)
+            try:
+                return len(doc)
+            finally:
+                doc.close()
+        except Exception:                             # noqa: BLE001 - fall back to the page tree
+            pass
     try:
         with open(path, "rb") as fh:
             data = fh.read()
@@ -176,6 +218,50 @@ def pdf_pages(path):
         return 0
     counts = [int(x) for x in re.findall(rb"/Type\s*/Pages\b[^>]*?/Count\s+(\d+)", data)]
     return max(counts) if counts else len(re.findall(rb"/Type\s*/Page(?![a-zA-Z])", data))
+
+
+def render_pages(pdf, pages, out_dir=None, scale=2.0):
+    """Render 1-based `pages` of `pdf` to PNG (and the page's text layer to .txt) for the source
+    stages: Claude reads the PNG with the Read tool and cross-checks the text. Needs pypdfium2
+    (tests/.venv). Output goes to .tmp/auto-simulation/pages/<pdf-stem>/ unless out_dir is given.
+    -> list of {page, png, txt, width, height, chars}."""
+    lib = _pdfium()
+    if lib is None:
+        raise Unsafe("pypdfium2 is not importable here - run with tests/.venv/bin/python3 "
+                     "(or install: tests/.venv/bin/pip install -r tests/requirements.txt)")
+    path = pdf if os.path.isabs(pdf) else os.path.join(ROOT, pdf)
+    if not os.path.isfile(path):
+        raise Unsafe("no such PDF: %s" % pdf)
+    stem = re.sub(r"[^A-Za-z0-9._-]+", "_", os.path.splitext(os.path.basename(path))[0])
+    out_dir = out_dir or os.path.join(PAGES_DIR, stem)
+    os.makedirs(out_dir, exist_ok=True)
+    doc = lib.PdfDocument(path)
+    out = []
+    try:
+        n = len(doc)
+        for pg in pages:
+            if not 1 <= pg <= n:
+                raise Unsafe("page %d is outside %s (%d pages)" % (pg, os.path.basename(path), n))
+            page = doc[pg - 1]
+            try:
+                img = page.render(scale=scale).to_pil()
+                png = os.path.join(out_dir, "p%03d.png" % pg)
+                img.save(png)
+                tp = page.get_textpage()
+                try:
+                    text = tp.get_text_range()
+                finally:
+                    tp.close()
+                txt = os.path.join(out_dir, "p%03d.txt" % pg)
+                with open(txt, "w", encoding="utf-8") as fh:
+                    fh.write(text)
+                out.append({"page": pg, "png": png, "txt": txt, "width": img.width, "height": img.height,
+                            "chars": len(text.strip())})
+            finally:
+                page.close()
+    finally:
+        doc.close()
+    return out
 
 
 # ------------------------------------------------------------------ planning
@@ -377,9 +463,8 @@ def preflight(online=False):
     gate("deploy exclusions intact", not miss, "missing: %s" % ", ".join(miss) if miss else "papers, tools, tests, docs, CLAUDE.md, .claude, app, tracker.csv")
     gate(".tmp/ (batch state) is git-ignored", sh("git", "check-ignore", "-q", ".tmp/x").returncode == 0, ".tmp/")
     gate("papers/ is git-ignored", sh("git", "check-ignore", "-q", "papers/x.pdf").returncode == 0, "papers/")
-    import shutil
-    gate("PDF page reader (poppler pdftoppm) for exam papers", shutil.which("pdftoppm"),
-         shutil.which("pdftoppm") or "missing - the Read tool cannot render papers/*.pdf pages; install with `brew install poppler`")
+    name, detail = pdf_reader()
+    gate("PDF page reader for exam papers (pypdfium2 or pdftoppm)", name, detail)
     py = os.path.join(ROOT, "tests", ".venv", "bin", "python3")
     gate("science toolchain (tests/.venv)", os.path.exists(py), py if os.path.exists(py) else "missing - see tests/README.md")
     gate("browser toolchain (tests/node_modules/playwright)",
@@ -713,6 +798,8 @@ def main(argv=None):
     p.add_argument("--kind", required=True); p.add_argument("--detail", required=True)
     p = sub.add_parser("trace"); p.add_argument("id"); p.add_argument("--run", action="store_true"); p.add_argument("--online", action="store_true")
     p = sub.add_parser("smoke"); p.add_argument("id"); p.add_argument("--base", default=LIVE)
+    p = sub.add_parser("render"); p.add_argument("pdf"); p.add_argument("--pages", required=True, help="e.g. 35 or 34-35 or 1,3")
+    p.add_argument("--out"); p.add_argument("--scale", type=float, default=2.0)
     a = ap.parse_args(argv)
     try:
         if a.cmd == "plan":
@@ -767,6 +854,18 @@ def main(argv=None):
                 print("  %-4s %-34s %s" % ("ok" if r["ok"] else "--", r["stage"], r["evidence"]))
             print("feed status %s · owner review recorded %s" % (t["feedStatus"], t["ownerReview"]))
             return 0 if all(r["ok"] for r in t["stages"]) else 1
+        elif a.cmd == "render":
+            # the venv's python3 is a symlink to the system interpreter, so compare prefixes, not paths
+            if _pdfium() is None and os.path.exists(VENV_PY) and \
+                    os.path.realpath(sys.prefix) != os.path.realpath(os.path.join(ROOT, "tests", ".venv")):
+                os.execv(VENV_PY, [VENV_PY, os.path.abspath(__file__)] + (argv if argv is not None else sys.argv[1:]))
+            want = []
+            for part in a.pages.split(","):
+                lo, _, hi = part.strip().partition("-")
+                want += list(range(int(lo), int(hi or lo) + 1))
+            for r in render_pages(a.pdf, want, a.out, a.scale):
+                print("  page %d  %s  %dx%d px  text %d chars (%s)" % (r["page"], os.path.relpath(r["png"], ROOT), r["width"], r["height"],
+                                                                         r["chars"], os.path.relpath(r["txt"], ROOT)))
         elif a.cmd == "smoke":
             res = smoke(a.id, a.base)
             for r in res:
