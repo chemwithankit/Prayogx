@@ -43,8 +43,9 @@ In P, Q and R the oxime O is drawn on the ring's side of C=N (Z); in S the O-ace
 
 ## Solution
 
-1. **Geometry decides reach.** C=N does not rotate; only the C1–C7 single bond turns. In the Z oximes (P, Q, R) the oxime O can swing to
-   2.1 Å of C2, the carbon carrying Br (C + O contact 3.22 Å); in the E isomer (S) it is never nearer than 4.2 Å.
+1. **Geometry decides reach.** C=N does not rotate; only the C1–C7 single bond turns. In the Z oximes (P, Q, R) the oxime O can swing
+   within contact of C2, the carbon carrying Br (below the 3.22 Å C + O contact in a rigid-rotation model, meaning the
+   atoms can meet); in the E isomer (S) it is never nearer than 4.2 Å.
 2. **P (aqueous NaOH):** OH⁻ removes the oxime O–H; the oximate O⁻ attacks C2 (intramolecular SNAr — the para-NO₂ takes the Meisenheimer
    charge); Br⁻ leaves → 5-nitro-1,2-benzisoxazole. C3 carries H, so OH⁻ removes it as the N–O bond breaks (Kemp elimination) →
    2-cyano-4-nitrophenoxide (yellow); work-up → 2-hydroxy-5-nitrobenzonitrile **(1)**.
@@ -61,7 +62,7 @@ In P, Q and R the oxime O is drawn on the ring's side of C=N (Z); in S the O-ace
 |---|---|
 | Independent derivation before any key | P1 Q2 R4 S5 → B |
 | RDKit structure edits (SNAr, Kemp, acetylation, anti E2, hydrolysis) | products = List-II (1), (2), (4), (5) by isomeric canonical SMILES |
-| Geometry (ETKDG + MMFF, rigid torsion scan) | Z O reaches C2: 2.44–2.54 Å; E never below 4.25 Å (contact 3.22 Å) |
+| Geometry (ETKDG + MMFF, rigid torsion scan) | rigid torsion scan: Z O comes within the 3.22 Å contact of C2; E never below 4.25 Å |
 | Activation (RDKit resonance enumeration) | para-NO₂ carries the Meisenheimer charge; meta control cannot |
 | Arrow-pushing ledger (independent of the page) | every intermediate valid, charge conserved |
 | Controls | E aldoxime + NaOH: no reaction · meta-NO₂: no cyclisation · Z O-acetyl ketoxime → (4) · Beckmann of E ketoxime → (3), of Z → N-methyl amide |

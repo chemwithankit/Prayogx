@@ -128,7 +128,8 @@ const ok = (l, c, x) => { n++; if (!c) bad++; console.log((c ? 'PASS  ' : 'FAIL 
   }
   ok('with no further clicks it runs all ten stages', ['load', 'reach', 'P', 'Q', 'R', 'S', 'assay', 'match', 'test', 'answer'].every(x => seen.has(x)), [...seen].join(','));
   ok('the answer strip steps through every message', ['Loading four flasks', 'Scanning the reach', 'Running flask P', 'Running flask Q', 'Running flask R', 'Running flask S', 'Analysing the products', 'Matching products', 'Testing options', 'Calculating final result'].every(m => [...msgs].some(x => x.indexOf(m) >= 0)));
-  ok('the O···C–Br gauge reads below contact during the reach scan', live.some(s => s.now && s.now.name === 'reach' && parseFloat(s.d) < 3.22));
+  ok('the O···C–Br gauge reads below contact during the reach scan', live.some(s => s.now && s.now.name === 'reach' && s.d === '< 3.22'));
+  ok('no progress percentage inside a live region while it runs', live.every(s => !/%/.test(s.msg)));
   ok('the arrow gauge counts the pairs: 4 in P\'s SNAr, 3 in Q\'s E2', live.some(s => s.now && s.now.name === 'P' && /^4 · 2\/5$/.test(s.ar)) && live.some(s => s.now && s.now.name === 'Q' && /^3 · 4\/4$/.test(s.ar)));
   ok('charge and octets are checked on every step', live.filter(s => s.now && ['P', 'Q', 'R', 'S'].indexOf(s.now.name) >= 0 && s.q !== '—').every(s => s.okk === '✓ all' && /^(-?\d|\+\d) → (-?\d|\+\d)$/.test(s.q)));
   ok('A₃₈₀ rises only in flask P (the nitrophenoxide) and falls at the work-up', live.some(s => s.now && s.now.name === 'P' && parseFloat(s.a) > 1.2) && live.filter(s => s.now && ['Q', 'R', 'S'].indexOf(s.now.name) >= 0).every(s => parseFloat(s.a) < 0.2));
@@ -203,6 +204,9 @@ const ok = (l, c, x) => { n++; if (!c) bad++; console.log((c ? 'PASS  ' : 'FAIL 
   ok('every id is unique', await E(() => { const a = [...document.querySelectorAll('[id]')].map(e => e.id); return a.length === new Set(a).size; }));
   ok('every canvas and chart has an accessible label', await E(() => [...document.querySelectorAll('canvas, svg.chart')].every(e => (e.getAttribute('aria-label') || '').length > 10)));
   ok('every structure drawing has a label', await E(() => [...document.querySelectorAll('#question svg[role=img], #solution svg[role=img]')].every(e => (e.getAttribute('aria-label') || '').length > 8)));
+  const xm = await E(async () => { const el = document.getElementById('xinfo'); let n = 0; const mo = new MutationObserver(() => n++); mo.observe(el, { childList: true, subtree: true, characterData: true }); await new Promise(r => setTimeout(r, 2000)); mo.disconnect(); return n; });
+  ok('the explorer panel (a live region) is not rewritten while nothing changes', xm === 0, xm + ' mutations in 2 s');
+  ok('names under the structures are marked as PrayogX-added, not part of the question', await E(() => { const n = [...document.querySelectorAll('#question .qrow .nm')]; return n.length === 9 && n.every(e => /^PrayogX-added name: /.test(e.textContent)); }));
   ok('the phone caption is not shown on the desktop', await E(() => getComputedStyle(document.getElementById('capm')).display === 'none'));
   ok('the how-to section has all eight steps', await E(() => document.querySelectorAll('#howto .howto > div').length) === 8);
   ok('console clean on the desktop run', errs.length === 0, errs.slice(0, 2).join(' | '));

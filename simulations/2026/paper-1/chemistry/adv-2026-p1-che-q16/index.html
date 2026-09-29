@@ -433,7 +433,7 @@ table.soltab th{background:var(--surface-2);font-weight:700}
 .qrow .cond{font-family:var(--sans);font-size:12.5px;line-height:1.35;color:var(--text-secondary);display:flex;flex-direction:column;align-items:center;flex:none;min-width:118px;white-space:nowrap;text-align:center}
 .qrow .cond .rar{display:block;width:100%;min-width:90px;height:2px;background:currentColor;position:relative;margin-top:3px}
 .qrow .cond .rar:after{content:"";position:absolute;right:-1px;top:-4px;border:5px solid transparent;border-left:8px solid currentColor;border-right:0}
-.qrow .nm{grid-column:2;font-size:11.5px;color:var(--text-muted);font-family:var(--sans)}
+.qrow .nm{grid-column:2;font-size:11.5px;color:var(--text-muted);font-family:var(--sans);font-style:italic}
 .qrow.hit{border-color:var(--good);background:color-mix(in srgb,var(--good) 8%,var(--surface-1))}
 #opts li b{font-family:var(--mono)}
 .bench{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 8px}
@@ -515,7 +515,7 @@ table.soltab th{background:var(--surface-2);font-weight:700}
 <section id="question">
   <h2><span class="n">Q</span>Mission brief <span class="vb">— the question, verbatim</span></h2>
   <p class="lede">JEE (Advanced) 2026, Paper 1, Chemistry, Section 4 — matching list set, one correct option: +4 if it is chosen, 0 if unanswered,
-     −1 otherwise. The structures below are drawn from the lab's own molecule graphs, laid out as printed.</p>
+     −1 otherwise. The structures below are drawn from the lab's own molecule graphs, laid out as printed; the compound names under them are added by PrayogX and are not part of the question.</p>
   <div class="panel">
     <div class="qtext">
       <p><b>Q.16</b>&nbsp; Match the major products obtained in the reactions given in <b>List-I</b> with the corresponding structures in <b>List-II</b> and choose the correct option.</p>
@@ -632,7 +632,7 @@ table.soltab th{background:var(--surface-2);font-weight:700}
     </div>
 
     <div class="grid2">
-      <div class="graphcard"><h4>Can the oxime oxygen reach the C–Br carbon?</h4><p class="gsub">O···C2 distance as the side chain turns about the ring–C bond; the dashed line is C + O van der Waals contact (3.22 Å)</p>
+      <div class="graphcard"><h4>Can the oxime oxygen reach the C–Br carbon?</h4><p class="gsub">O···C2 distance as the side chain turns about the ring–C bond; the dashed line is C + O van der Waals contact (3.22 Å); rigid-rotation model — a dip below it means the atoms can meet, not a real distance</p>
         <div class="legend" id="leg1"></div>
         <div class="chartwrap"><svg class="chart" id="curve" viewBox="0 0 520 300" role="img" aria-label="Line chart of the distance between the oxime oxygen and the carbon carrying bromine against the torsion angle, for the Z oximes of P, Q and R and the E oxime of S, with the contact distance marked"></svg></div></div>
       <div class="graphcard"><h4>Yellow in the flask — A₃₈₀ while each flask reacts</h4><p class="gsub">only a phenoxide with a para-nitro group absorbs strongly at 380 nm; representative values, time compressed</p>
@@ -720,7 +720,7 @@ table.soltab th{background:var(--surface-2);font-weight:700}
       <h4>Independent verification</h4>
       <ul>
         <li><b>Solved first.</b> The four products and option (B) were derived before the answer key was opened.</li>
-        <li><b>Geometry.</b> A separate script builds each oxime with RDKit, relaxes it with the MMFF force field and turns the side chain: the Z oxime O comes to 2.4–2.5 Å of C2, the E oxime O never closer than 4.2 Å (C + O contact 3.22 Å). This page's own model gives 2.1 Å and 4.2 Å.</li>
+        <li><b>Geometry.</b> A separate script builds each oxime with RDKit, relaxes it with the MMFF force field and turns the side chain rigidly: the Z oxime O comes inside C + O contact of C2 (below 3.22 Å), the E oxime O never closer than 4.2 Å. In a rigid scan a value below contact only means the two atoms can meet — the real molecule relaxes rather than overlapping. This page's own rigid model agrees.</li>
         <li><b>Activation.</b> RDKit's resonance enumeration of the Meisenheimer complex puts the negative charge on the nitro oxygens only when NO₂ is para (or ortho) to the attacked carbon; a meta-nitro control cannot.</li>
         <li><b>Structures.</b> Every transformation re-done as RDKit structure edits and sanitised; the products match List-II (1), (2), (4), (5) by canonical SMILES, including the C=N geometry of (5).</li>
         <li><b>Arrows.</b> An arrow-pushing ledger written separately from this page: valence and total charge after every step.</li>
@@ -1372,7 +1372,7 @@ function calcHTML(key){
   switch (key){
     case "load": return ["LOAD", chain(["one ring: C1 oxime, C2–Br, NO₂ on C5 (para to Br)", "four sets of conditions", "four products", "List-II", "option"])];
     case "reach": var z = ENGINE.reach("ald", true), e = ENGINE.reach("ket", false);
-      return ["REACH", "turning the C1–C7 bond: Z oxime O comes to <b>" + z.d.toFixed(2) + " Å</b> of C2 (contact 3.22 Å) — reaches; E oxime O never nearer than <b>" + e.d.toFixed(2) + " Å</b> — cannot" + ' <span class=w>the C=N bond cannot turn, so Z stays Z and E stays E</span>'];
+      return ["REACH", "turning the C1–C7 bond: Z oxime O comes <b>within contact</b> of C2 (< 3.22 Å) — reaches; E oxime O never nearer than <b>" + e.d.toFixed(2) + " Å</b> — cannot" + ' <span class=w>rigid-rotation model; the C=N bond cannot turn, so Z stays Z and E stays E</span>'];
     case "P": case "Q": case "R": case "S": return [key, flaskChain(key)];
     case "assay": return ["BENCH", KEYS.map(function(k){ var f = R.res[k].flags; return k + ": " + (f.br ? "AgBr ↓" : "no Br⁻") + ", " + (f.nitrile ? "C≡N 2230 cm⁻¹" : "no C≡N") + (f.phenoxide ? ", yellow A₃₈₀" : ""); }).join(" · ")];
     case "match": return ["LIST-II", KEYS.map(function(k){ var v = R.map[k]; return k + " → " + (v ? "(" + v + ")" : "none"); }).join(" · ") + ' <span class=w>each product compared with the five structures atom by atom (graph hash, C=N geometry included)</span>'];
@@ -1793,7 +1793,7 @@ function drawOxime3D(g, kind, syn, tau, yaw, cx, cy, s, opt){
   /* the O...C2 distance */
   var o = S.O9; g.save(); g.strokeStyle = ok ? GREEN : RED; g.lineWidth = 2; g.setLineDash([6, 5]); g.beginPath(); g.moveTo(o[0], o[1]); g.lineTo(c2[0], c2[1]); g.stroke(); g.setLineDash([]); g.restore();
   var mx = (o[0] + c2[0]) / 2, my = (o[1] + c2[1]) / 2;
-  panel(g, mx - 38, my - 14, 76, 26, ok ? "rgba(62,227,154,.7)" : "rgba(255,107,107,.6)"); label(g, d.toFixed(2) + " Å", mx, my - 1, ok ? GREEN : RED, 13, "center", 900);
+  panel(g, mx - 38, my - 14, 76, 26, ok ? "rgba(62,227,154,.7)" : "rgba(255,107,107,.6)"); label(g, ok ? "in contact" : d.toFixed(1) + " Å", mx, my - 1, ok ? GREEN : RED, 13, "center", 900);
   if (ok && opt.fx) fxOnce(opt.fx, function(){ fxRing(c2[0], c2[1], GREEN, 50); fxSpark(o[0], o[1], GREEN, 16, 120); });
   return { d: d, ok: ok };
 }
@@ -1863,9 +1863,9 @@ function sceneReach(g, f){
   var a = drawOxime3D(g, "ald", zs, tau, yaw, 250, 320, 52, { fx: "reachZ" }), b = drawOxime3D(g, "ket", es, tau, yaw, 760, 320, 52, { fx: es ? "reachE" : "" });
   label(g, "torsion C2–C1–C7=N  " + Math.round(tau) + "°", 520, 548, "#9fb0cc", 13, "center", 800);
   var zr = ENGINE.reach("ald", zs), er = ENGINE.reach("ket", es);
-  if (f > 0.55) stamp(g, 271, 500, zr.ok ? "REACHES · " + zr.d.toFixed(2) + " Å" : "NEVER REACHES", zr.ok, clamp((f - 0.55) * 5, 0, 1), 17);
-  if (f > 0.75) stamp(g, 769, 500, er.ok ? "REACHES · " + er.d.toFixed(2) + " Å" : "NEVER < " + er.d.toFixed(1) + " Å", er.ok, clamp((f - 0.75) * 5, 0, 1), 17);
-  label(g, "dashed circle: C + O van der Waals contact, 3.22 Å", 520, 580, "#8fa6c9", 12, "center", 700);
+  if (f > 0.55) stamp(g, 271, 500, zr.ok ? "REACHES CONTACT · < 3.22 Å" : "NEVER REACHES", zr.ok, clamp((f - 0.55) * 5, 0, 1), 17);
+  if (f > 0.75) stamp(g, 769, 500, er.ok ? "REACHES CONTACT · < 3.22 Å" : "NEVER < " + er.d.toFixed(1) + " Å", er.ok, clamp((f - 0.75) * 5, 0, 1), 17);
+  label(g, "dashed circle: C + O van der Waals contact, 3.22 Å · distances from a rigid-rotation model", 520, 580, "#8fa6c9", 12, "center", 700);
   titleCard(g, "REACH SCAN", "turn the only bond that can turn", f);
   return { dZ: a.d, dE: b.d };
 }
@@ -2027,7 +2027,7 @@ function drawCharts(st){
     if (pts.length > 1 && upTo >= 9999){ mk("polyline", { points: pts.join(" "), fill: "none", stroke: se[2], "stroke-width": 2 }, s); }
     else if (pts.length > 1){ mk("polyline", { points: pts.join(" "), fill: "none", stroke: se[2], "stroke-width": 2 }, s); }
     var mn = ENGINE.reach("ald", se[0]);
-    if (upTo >= 9999){ mk("circle", { cx: xa(mn.tau), cy: ya(mn.d), r: 5, fill: se[2], stroke: css("--surface-1") || "#fff", "stroke-width": 2 }, s); tx(s, xa(mn.tau) + (mn.tau > 300 ? -8 : 8), ya(mn.d) + (se[0] ? 16 : -10), (se[0] ? "Z: " : "E: ") + mn.d.toFixed(2) + " Å", { "text-anchor": mn.tau > 300 ? "end" : "start", "font-size": 11.5, "font-weight": 700, fill: se[2] }); }
+    if (upTo >= 9999){ mk("circle", { cx: xa(mn.tau), cy: ya(mn.d), r: 5, fill: se[2], stroke: css("--surface-1") || "#fff", "stroke-width": 2 }, s); tx(s, xa(mn.tau) + (mn.tau > 300 ? -8 : 8), ya(mn.d) + (se[0] ? 16 : -10), (se[0] ? "Z: " : "E: ") + (mn.ok ? "within contact" : "never below " + mn.d.toFixed(1) + " Å"), { "text-anchor": mn.tau > 300 ? "end" : "start", "font-size": 11.5, "font-weight": 700, fill: se[2] }); }
   });
   tx(s, (X0 + X1) / 2, 290, "torsion C2–C1–C7=N (the only bond that turns)", { "text-anchor": "middle", "font-size": 11.5, fill: tc });
   $("leg1").innerHTML = series.map(function(se){ return '<span><i style="background:' + se[2] + '"></i>' + se[1] + "</span>"; }).join("") + '<span><i style="background:' + tc + '"></i>contact distance</span>';
@@ -2070,8 +2070,8 @@ function refreshAnswerBox(){
   $("apbar").style.width = pct + "%"; $("ansstripbar").style.width = pct + "%";
   ab.classList.remove("locked"); ab.classList.toggle("work", RUN.state === "running");
   $("ansval").textContent = ANS; $("ansstripv").textContent = ANS;
-  var sub = RUN.state === "setup" ? ANSNOTE + " — press START EXPERIMENT to watch why." : RUN.done ? (RUN.R.complete ? "✓ Confirmed by the experiment — " + ANSNOTE + "." : "The question's answer — your custom run gives " + KEYS.map(function(kk){ return kk + " → " + (RUN.R.map[kk] || "–"); }).join(", ") + ".") : "● " + (STAGE_MSG[k] || "…") + "  " + pct + "%";
-  $("anssub").textContent = sub; $("ansstrips").textContent = sub;
+  var sub = RUN.state === "setup" ? ANSNOTE + " — press START EXPERIMENT to watch why." : RUN.done ? (RUN.R.complete ? "✓ Confirmed by the experiment — " + ANSNOTE + "." : "The question's answer — your custom run gives " + KEYS.map(function(kk){ return kk + " → " + (RUN.R.map[kk] || "–"); }).join(", ") + ".") : "● " + (STAGE_MSG[k] || "…");   /* no percentage in a live region: the bars show progress */
+  if ($("anssub").textContent !== sub){ $("anssub").textContent = sub; $("ansstrips").textContent = sub; }
 }
 function refreshUI(){
   var go = $("gobtn"), runn = RUN.state === "running", custom = isCustom();
@@ -2104,7 +2104,7 @@ function narrate(st){
   else if (st.name === "match") h = "<b>List-II:</b> each product is compared with the five structures atom by atom — (5) differs from R's substrate only in its C=N geometry.";
   else if (st.name === "test") h = "<b>Options:</b> an option is right only if all four of its entries match.";
   else if (st.name === "answer") h = "<b>Analysis complete.</b> One option survives…";
-  $("narr").innerHTML = h;
+  if ($("narr").getAttribute("data-h") !== h){ $("narr").setAttribute("data-h", h); $("narr").innerHTML = h; }
   var cm = $("capm"), ch = LASTCAP ? '<b><span class="ph">' + LASTCAP.p + "</span>" + LASTCAP.t + "</b>" + LASTCAP.w : "";
   if (cm.getAttribute("data-h") !== ch){ cm.setAttribute("data-h", ch); cm.innerHTML = ch; cm.hidden = !ch; }
   var stp = { load: 1, reach: 2, P: 3, Q: 4, R: 5, S: 6, assay: 7, match: 8, test: 9 };
@@ -2118,7 +2118,7 @@ function updateReadouts(st){
   $("g_fl").textContent = R.res[n] ? n : "—";
   $("g_pr").textContent = RUN.done ? 100 : Math.round(100 * elapsed() / totalT());
   var dval = n === "reach" && LAST.dZ !== null ? LAST.dZ : R.res[n] && R.res[n].flags.reach ? R.res[n].flags.reach.d : null;
-  $("g_d").textContent = dval === null ? "—" : dval.toFixed(2);
+  $("g_d").textContent = dval === null ? "—" : dval < ENGINE.CONTACT ? "< 3.22" : dval.toFixed(2);
   $("gz_d").classList.toggle("hot", dval !== null && dval < ENGINE.CONTACT);
   $("g_ar").textContent = s ? s.arrows.length + " · " + (LAST.ph.i + 1) + "/" + R.res[n].steps.length : "—";
   $("g_q").textContent = s ? (s.charge > 0 ? "+" : "") + s.charge + " → " + (s.charge > 0 ? "+" : "") + s.charge : "—";
@@ -2168,14 +2168,14 @@ var SVGUID = 0;
 function buildQuestion(){
   var h1 = "", h2 = "", k, n, conds = { P: "aqueous NaOH", Q: "1. (CH<sub>3</sub>CO)<sub>2</sub>O<br>2. Na<sub>2</sub>CO<sub>3</sub>", R: "aqueous NaOH", S: "aqueous<br>Na<sub>2</sub>CO<sub>3</sub>" };
   var names = { P: "2-bromo-5-nitrobenzaldehyde oxime (Z)", Q: "2-bromo-5-nitrobenzaldehyde oxime (Z)", R: "2′-bromo-5′-nitroacetophenone oxime (Z)", S: "2′-bromo-5′-nitroacetophenone O-acetyloxime (E)" };
-  for (k in LIST1){ var sub = ENGINE.scaffold(LIST1[k].sub); h1 += '<div class="qrow"><span class="lb">(' + k + ')</span><div class="fig">' + molSVG(sub, layout2d(sub, null), { sc: 30, label: "List-I " + k + ": " + names[k] }) + '<span class="cond"><span>' + conds[k] + '</span><span class="rar"></span></span></div><span class="nm">' + names[k] + "</span></div>"; }
-  for (n in LIST2){ var m = ENGINE.scaffold(LIST2[n]); h2 += '<div class="qrow" id="l2_' + n + '"><span class="lb">(' + n + ')</span><div class="fig">' + molSVG(m, layout2d(m, null), { sc: 30, label: "List-II " + n + ": " + LIST2[n].name }) + '</div><span class="nm">' + LIST2[n].name + "</span></div>"; }
+  for (k in LIST1){ var sub = ENGINE.scaffold(LIST1[k].sub); h1 += '<div class="qrow"><span class="lb">(' + k + ')</span><div class="fig">' + molSVG(sub, layout2d(sub, null), { sc: 30, label: "List-I " + k + ": " + names[k] }) + '<span class="cond"><span>' + conds[k] + '</span><span class="rar"></span></span></div><span class="nm">PrayogX-added name: ' + names[k] + "</span></div>"; }
+  for (n in LIST2){ var m = ENGINE.scaffold(LIST2[n]); h2 += '<div class="qrow" id="l2_' + n + '"><span class="lb">(' + n + ')</span><div class="fig">' + molSVG(m, layout2d(m, null), { sc: 30, label: "List-II " + n + ": " + LIST2[n].name }) + '</div><span class="nm">PrayogX-added name: ' + LIST2[n].name + "</span></div>"; }
   $("qlist1").innerHTML = h1; $("qlist2").innerHTML = h2;
 }
 function buildSolution(){
   var R = QRUN, html = "", heads = { P: "P — aqueous NaOH: intramolecular SNAr, then the Kemp elimination", Q: "Q — acetylate first, then Na₂CO₃: anti elimination to the nitrile", R: "R — aqueous NaOH: intramolecular SNAr, and the ring survives", S: "S — aqueous Na₂CO₃ on the E O-acetyl ketoxime: only the ester is cleaved" };
   var lead = {
-    P: "Hydroxide removes the oxime O–H. In P the oxime O is <b>syn to the ring (Z)</b>, so turning the C1–C7 bond brings the O⁻ to 2.1 Å of C2 (contact 3.22 Å). C2 carries Br and the NO₂ is <b>para</b> to it, so an intramolecular SNAr closes 5-nitro-1,2-benzisoxazole. That ring still has an <b>H on C3</b>: hydroxide removes it as the weak N–O bond breaks (the Kemp elimination) — 2-cyano-4-nitrophenoxide, yellow in the flask; acid work-up gives the phenol.",
+    P: "Hydroxide removes the oxime O–H. In P the oxime O is <b>syn to the ring (Z)</b>, so turning the C1–C7 bond brings the O⁻ within contact of C2 (below the 3.22 Å C + O contact in a rigid-rotation model). C2 carries Br and the NO₂ is <b>para</b> to it, so an intramolecular SNAr closes 5-nitro-1,2-benzisoxazole. That ring still has an <b>H on C3</b>: hydroxide removes it as the weak N–O bond breaks (the Kemp elimination) — 2-cyano-4-nitrophenoxide, yellow in the flask; acid work-up gives the phenol.",
     Q: "Acetic anhydride converts the free O–H into an O-acetyl group, so there is no oximate to attack C2. In this Z isomer the C7–H is <b>anti</b> to the N–OAc bond; carbonate removes it, C≡N forms and acetate leaves in one step (anti E2 — the classical dehydration of aldoximes). The C–Br bond is never involved.",
     R: "Exactly as in P up to the ring closure: the Z oximate reaches C2 and displaces Br by SNAr. But C3 now carries <b>CH₃, not H</b>. The Kemp elimination needs that C3–H, so the 3-methyl-5-nitro-1,2-benzisoxazole survives the base.",
     S: "The O-acetyl group points <b>away</b> from the ring (E), and C7 carries CH₃, so there is no C–H to eliminate. Aqueous carbonate (hydroxide) attacks the acetyl C=O and expels the oximate — only the O–C(acyl) bond breaks, so the C=N keeps its E geometry. The E oximate can never reach C2 (never closer than 4.2 Å), so no SNAr: the E ketoxime is isolated."
@@ -2198,7 +2198,7 @@ function buildSolution(){
   html += '<li><h4>Match and choose</h4><div class="calcblock">P → (1) 2-hydroxy-5-nitrobenzonitrile &nbsp;·&nbsp; Q → (2) 2-bromo-5-nitrobenzonitrile<br>R → (4) 3-methyl-5-nitro-1,2-benzisoxazole &nbsp;·&nbsp; S → (5) the E ketoxime<br>P → 1, Q → 2, R → 4, S → 5 &nbsp;⇒&nbsp; correct option = <span class="hl" id="solans">—</span></div>' +
     '<div style="overflow-x:auto;max-width:100%"><table class="soltab"><thead><tr><th>Option</th><th>P</th><th>Q</th><th>R</th><th>S</th><th>Verdict</th></tr></thead><tbody>' +
     "ABCD".split("").map(function(o){ return "<tr><td>(" + o + ")</td>" + OPTS[o].map(function(v, i){ return "<td>" + v + (v === R.map[KEYS[i]] ? " ✓" : " ✗") + "</td>"; }).join("") + "<td>" + (R.audit[o].v ? "<b>correct</b>" : "rejected") + "</td></tr>"; }).join("") +
-    "</tbody></table></div><p><b>Traps.</b> (A) and (D) swap P and Q: forgetting that acetylation removes the nucleophile (Q) while free oximate cyclises (P). (A) also sends R to the oxime (5) — as if the Z oxime could not reach C–Br — and S to the benzisoxazole (4) — as if an E oxime could. (C) and (D) put R → (3): that amide is a <b>Beckmann</b> product, which needs acid and the aryl group anti to the leaving O — not aqueous NaOH, and not this Z oxime. (C) and (A) also put S → (4), which would need the O to face C2.</p></li>";
+    "</tbody></table></div><p><b>Traps.</b> (A) and (D) swap P and Q: forgetting that acetylation removes the nucleophile (Q) while free oximate cyclises (P). (A) also sends R to (5), which needs two errors at once: R would have to stay unreacted (as if its Z oximate could not reach C–Br), and its oxime would have to switch from Z to the E geometry of (5) — which a C=N bond cannot do. (A) also sends S to the benzisoxazole (4), as if an E oxime could reach C2. (C) and (D) put R → (3): that amide is a <b>Beckmann</b> product, which needs acid and the aryl group anti to the leaving O — not aqueous NaOH, and not this Z oxime. (C) and (A) also put S → (4), which would need the O to face C2.</p></li>";
   $("solsteps").innerHTML = html;
 }
 
@@ -2224,14 +2224,17 @@ function drawExplorer(){
   label(g, "drag to turn the view · slider turns the C1–C7 bond", 360, 400, "#8fa6c9", 11.5, "center", 700);
   XP.d = o.d; XP.ok = o.ok;
 }
+var XINFO = "";
 function showInfo(){
   var x = XR || xpRun(), r = x.r, rc = x.reach;
   var canAttack = XP.os === "H" && XP.rg !== "acid" && XP.rg.indexOf("Ac2O") < 0;
-  $("xinfo").innerHTML = '<div class="big ' + (rc.ok ? "ok" : "no") + '">' + (rc.ok ? "O can reach C–Br" : "O can never reach C–Br") + "</div>" +
-    '<div class="xstate"><span class="pill ' + (XP.ok ? "ok" : "no") + '">now: ' + (XP.d ? XP.d.toFixed(2) : "—") + " Å</span><span class=\"pill " + (rc.ok ? "ok" : "no") + '">closest: ' + rc.d.toFixed(2) + " Å at " + rc.tau + '°</span><span class="pill ok">NO₂ para to Br: activated</span></div>' +
+  var html = '<div class="big ' + (rc.ok ? "ok" : "no") + '">' + (rc.ok ? "O can reach C–Br" : "O can never reach C–Br") + "</div>" +
+    '<div class="xstate"><span class="pill ' + (XP.ok ? "ok" : "no") + '">now: ' + (XP.d ? (XP.ok ? "in contact" : XP.d.toFixed(2) + " Å") : "—") + "</span><span class=\"pill " + (rc.ok ? "ok" : "no") + '">closest: ' + (rc.ok ? "within contact (< 3.22 Å)" : rc.d.toFixed(2) + " Å") + " at " + rc.tau + '°</span><span class="pill ok">NO₂ para to Br: activated</span></div>' +
+    '<p class="railnote" style="margin:6px 0 0">Distances come from a rigid-rotation model: a value below the 3.22 Å contact means the two atoms can meet, not a real distance - the molecule relaxes rather than overlapping.</p>' +
     "<table><tbody><tr><th>C=N geometry</th><td>" + (XP.geo === "Z" ? "Z — O syn to the ring" : "E — O anti to the ring") + "</td></tr><tr><th>C7 carries</th><td>" + (XP.kind === "ald" ? "H — a Kemp elimination is possible after ring closure" : "CH₃ — no H on C3 of the benzisoxazole") + "</td></tr>" +
     "<tr><th>Nucleophilic O⁻?</th><td>" + (XP.os === "Ac" ? "no — acetylated" : canAttack ? "yes, in base" : "no") + "</td></tr><tr><th>What the flask does</th><td>" + r.log.join(" → ") + "</td></tr>" +
     "<tr><th>Major product</th><td>" + r.name + (r.hit ? " — <b>List-II (" + r.hit + ")</b>" : " — not in List-II") + "</td></tr><tr><th>Elementary steps</th><td>" + r.steps.length + " · every intermediate valid: " + (r.valid ? "yes" : "no") + "</td></tr></tbody></table>";
+  if (html !== XINFO){ XINFO = html; $("xinfo").innerHTML = html; }   /* a live region: rewrite only when something changed */
 }
 function wireExplorer(){
   var seg2 = function(id, key){ var bs = document.querySelectorAll("#" + id + " button"), i; for (i = 0; i < bs.length; i++) bs[i].addEventListener("click", function(){ XP[key] = this.getAttribute("data-v"); for (var j = 0; j < bs.length; j++) bs[j].setAttribute("aria-pressed", bs[j] === this ? "true" : "false"); xpRun(); showInfo(); }); };

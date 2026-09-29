@@ -45,7 +45,7 @@
     "ArCH=N-OH + OH- -> 1,2-benzisoxazole + Br- -> (OH-) 2-NC-C6H3(NO2)-O- -> (H3O+) phenol",
     "ArCH=N-OAc + CO3(2-) -> Ar-C#N + AcO- + HCO3-",
     "ArC(CH3)=N-OAc (E) + OH- -> ArC(CH3)=N-OH (E) + AcO-",
-    "d(O...C2) < 3.22 A (C + O van der Waals contact): Z 2.10 A, E 4.17 A in the page's model",
+    "d(O...C2) < 3.22 A (C + O van der Waals contact) - Z oxime: comes within contact in a rigid-rotation model (so the atoms can meet); E oxime: never nearer than 4.2 A",
     "P -> 1, Q -> 2, R -> 4, S -> 5"
   ],
   "tags": [
@@ -80,8 +80,8 @@
     "Q": "O-acetylation, then anti E2 with Na2CO3 -> 2-bromo-5-nitrobenzonitrile, List-II (2)",
     "R": "Z ketoxime + NaOH: intramolecular SNAr -> 3-methyl-5-nitro-1,2-benzisoxazole (no H-3, no Kemp), List-II (4)",
     "S": "E O-acetyl ketoxime + Na2CO3(aq): ester hydrolysis only -> E ketoxime, List-II (5)",
-    "reach_Z_A": 2.1,
-    "reach_E_A": 4.17,
+    "reach_Z": "within contact (< 3.22 A) in a rigid-rotation model",
+    "reach_E_min_A": 4.17,
     "contact_A": 3.22,
     "mechanism_steps": "P 5, Q 4, R 3, S 3",
     "curved_arrows_P": "2,4,4,3,2"
@@ -91,7 +91,7 @@
     "methods": [
       "Solved independently before any key was consulted: P1, Q2, R4, S5 - option B",
       "RDKit structure edits for every transformation (SNAr ring closure, Kemp elimination, O-acetylation, anti E2, ester hydrolysis, Beckmann control), each product sanitised and matched to List-II by isomeric canonical SMILES",
-      "Geometry: ETKDG + MMFF conformers with a rigid torsion scan - Z oxime O reaches C2 (2.44-2.54 A), E never (>= 4.25 A) against the 3.22 A C + O contact; C=N stereo from CIP labels and 3-D dihedrals",
+      "Geometry: ETKDG + MMFF conformers with a rigid torsion scan - the Z oxime O comes within the 3.22 A C + O contact of C2, the E oxime O never nearer than 4.25 A; C=N stereo from CIP labels and 3-D dihedrals",
       "Activation: RDKit resonance enumeration of the Meisenheimer complex - charge reaches the nitro oxygens only for para/ortho NO2; meta control cannot",
       "Arrow-pushing ledger written separately from the page: valence and total charge after every step",
       "Distractor audit of all four options and controls (E aldoxime, meta-NO2, Z O-acetyl ketoxime, Beckmann of E and Z ketoximes) in tests/verify_p1q16.py",
@@ -101,7 +101,7 @@
       "Published solution (MathonGo): not consulted - access for Claude Code is an open decision (docs/DECISIONS.md)"
     ],
     "verifiedOn": "2026-09-28",
-    "note": "Verified by independent derivation, scripts and the official key; not yet reviewed by the owner. Absorbances (A380, epsilon about 1.6e4 M-1 cm-1 for 2-cyano-4-nitrophenoxide) and flask time scales are representative. The page's reach model is a rigid planar geometry (C-C 1.39, C1-C7 1.48, C=N 1.28, N-O 1.40 A)."
+    "note": "Verified by independent derivation, scripts and the official key; not yet reviewed by the owner. Absorbances (A380, epsilon about 1.6e4 M-1 cm-1 for 2-cyano-4-nitrophenoxide) and flask time scales are representative. The page's reach model is a rigid-rotation, planar geometry (a value below contact means the atoms can meet, not a real distance) (C-C 1.39, C1-C7 1.48, C=N 1.28, N-O 1.40 A)."
   },
   "interactivity": [
     "Mission brief with the question verbatim, all four List-I reactions and five List-II structures drawn from the lab's molecule graphs, the options, and P, Q, R, S and option tiles",
