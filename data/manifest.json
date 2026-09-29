@@ -14,7 +14,7 @@
       "localSource": "data/tracker.csv",
       "note": "data/tracker.csv is the local source of truth and carries all 25 columns. The Google Sheet is permanent - this id, sheetId and url never change - and holds the 19 scannable columns in the order of tools/tracker_sheet.py SHEET_COLUMNS (the six prose columns live in meta.json and question.md). It is synchronised in place by upsert on Simulation ID through the Google Sheets connector: tools/tracker_sheet.py plans the writes, prechecks them and verifies the result; the tab is found by sheetId, so renaming it is harmless. rows and syncedAt are written only after a verified sync, so a CSV with more rows than 'rows' means the Sheet is behind (tools/tracker_sheet.py status). Nothing ever creates, trashes or replaces the Sheet.",
       "syncedAt": "2026-09-29",
-      "rows": 33,
+      "rows": 34,
       "view": "summary",
       "columns": 25
     },

@@ -246,9 +246,12 @@ try:
     shutil.copy(os.path.join(ROOT, "data", "manifest.json"), same)
     t = json.load(open(same, encoding="utf-8"))["library"]["tracker"]
     csv_n = os.path.join(TMP, "tracker_n.csv")
+    with open(os.path.join(ROOT, "data", "tracker.csv"), encoding="utf-8", newline="") as fh:
+        repo_rows = list(csv.reader(fh))
     with open(csv_n, "w", encoding="utf-8", newline="") as fh:
-        csv.writer(fh, lineterminator="\n").writerows(list(csv.reader(open(CSV, encoding="utf-8", newline="")))[:t["rows"] + 1])
-    ts.record(after16 if t["rows"] == 33 else VALUES, csv_n, same, today=t["syncedAt"])
+        csv.writer(fh, lineterminator="\n").writerows(repo_rows[:t["rows"] + 1])
+    mirror = {"range": "Untitled!A1:S1000", "values": [ts.SHEET_COLUMNS] + ts.expected_rows(csv_n)}   # a Sheet that holds exactly those rows
+    ts.record(mirror, csv_n, same, today=t["syncedAt"])
     chk("record: writes the manifest in the repo's own JSON format (byte-identical round trip)",
         open(same, "rb").read() == open(os.path.join(ROOT, "data", "manifest.json"), "rb").read())
 
