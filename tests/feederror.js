@@ -1,7 +1,7 @@
 /* the website and the app draw 24 cards per batch; a card count adds the "(M left)" behind Show more */
 const ROOT = process.env.PRAYOGX_ROOT || require('path').resolve(__dirname, '..');
 /* the library size comes from the canonical source, so adding a simulation never breaks this suite */
-const NSIMS = JSON.parse(require('fs').readFileSync(ROOT + '/data/manifest.json', 'utf8')).simulations.length;
+const NSIMS = JSON.parse(require('fs').readFileSync(ROOT + '/data/manifest.json', 'utf8')).simulations.filter(s => s.status !== 'draft').length;   /* drafts are not published */
 const { chromium, launch } = require('./_browser');
 const { spawn } = require('child_process');
 const fs = require('fs'), net = require('net');

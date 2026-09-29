@@ -1,6 +1,6 @@
 const ROOT = process.env.PRAYOGX_ROOT || require('path').resolve(__dirname, '..');
 /* the library size comes from the canonical source, so adding a simulation never breaks this suite */
-const NSIMS = JSON.parse(require('fs').readFileSync(ROOT + '/data/manifest.json', 'utf8')).simulations.length;
+const NSIMS = JSON.parse(require('fs').readFileSync(ROOT + '/data/manifest.json', 'utf8')).simulations.filter(s => s.status !== 'draft').length;   /* drafts are not published */
 /* A path interpolated into a shell string has to be quoted, or the shell
    splits it - and this project lives in "Project simulation". */
 const q = p => "'" + String(p).replace(/'/g, "'\\''") + "'";

@@ -41,6 +41,11 @@ def sha(path):
 
 man = json.load(open(os.path.join(ROOT, "data/manifest.json"), encoding="utf-8"))
 sims = man["simulations"]
+# A simulation with status "draft" is built but not published: build_content.py leaves it out of the
+# feed, the crawlable pages, the sitemap and the revision lock, and check_library.py does the same.
+# The feed checks below therefore run over the published set; folder and count checks run over all.
+published = [s for s in sims if s.get("status", "human_verified") != "draft"]
+drafts = [s for s in sims if s.get("status") == "draft"]
 lock = json.load(open(os.path.join(ROOT, "data/revisions.json"), encoding="utf-8"))
 idx = json.load(open(os.path.join(ROOT, "content/index.json"), encoding="utf-8"))
 cat = json.load(open(os.path.join(ROOT, "content/catalog.json"), encoding="utf-8"))
@@ -65,10 +70,10 @@ ok("every ID matches the permanent convention", not bad_id, ", ".join(bad_id))
 ok("every ID is unique", len(set(s["id"] for s in sims)) == len(sims))
 no_rev = [s["id"] for s in sims if not isinstance(s.get("revision"), int) or s["revision"] < 1]
 ok("every simulation carries an integer revision", not no_rev, ", ".join(no_rev))
-unlocked = [s["id"] for s in sims if s["id"] not in lock]
-ok("every simulation has a recorded content hash", not unlocked, ", ".join(unlocked))
+unlocked = [s["id"] for s in published if s["id"] not in lock]
+ok("every published simulation has a recorded content hash", not unlocked, ", ".join(unlocked))
 drift = []
-for s in sims:
+for s in published:
     rec = lock.get(s["id"])
     if not rec:
         continue
@@ -82,20 +87,27 @@ ok("every recorded hash matches the file on disk and its revision",
 
 # ------------------------------------------------- 4. the feed carries the same
 feed = {c["id"]: c for c in idx["simulations"]}
-ok("the feed lists exactly the manifest's simulations",
-   set(feed) == set(s["id"] for s in sims),
-   "feed %d, manifest %d" % (len(feed), len(sims)))
-rev_mismatch = [s["id"] for s in sims if feed.get(s["id"], {}).get("revision") != s["revision"]]
+ok("the feed lists exactly the manifest's published simulations",
+   set(feed) == set(s["id"] for s in published),
+   "feed %d, published %d" % (len(feed), len(published)))
+rev_mismatch = [s["id"] for s in published if feed.get(s["id"], {}).get("revision") != s["revision"]]
 ok("the feed carries each simulation's current revision", not rev_mismatch,
    ", ".join(rev_mismatch))
 ok("catalog.json revision map agrees with the index",
    cat["revisions"] == {c["id"]: c["revision"] for c in idx["simulations"]})
-missing_detail = [s["id"] for s in sims
+missing_detail = [s["id"] for s in published
                   if not os.path.isfile(os.path.join(ROOT, "content/sims", s["id"] + ".json"))]
-ok("every simulation has a detail record", not missing_detail, ", ".join(missing_detail))
-missing_page = [s["id"] for s in sims
+ok("every published simulation has a detail record", not missing_detail, ", ".join(missing_detail))
+missing_page = [s["id"] for s in published
                 if not os.path.isfile(os.path.join(ROOT, "s", s["id"], "index.html"))]
-ok("every simulation has a crawlable page", not missing_page, ", ".join(missing_page))
+ok("every published simulation has a crawlable page", not missing_page, ", ".join(missing_page))
+sitemap = open(os.path.join(ROOT, "sitemap.xml"), encoding="utf-8").read()
+leaked = [s["id"] for s in drafts
+          if s["id"] in feed or s["id"] in lock or "/s/%s/" % s["id"] in sitemap
+          or os.path.exists(os.path.join(ROOT, "content/sims", s["id"] + ".json"))
+          or os.path.exists(os.path.join(ROOT, "s", s["id"]))]
+ok("drafts stay off every public surface: feed, detail record, crawlable page, sitemap, lock",
+   not leaked, ", ".join(leaked))
 
 # ------------------------------------------- 5. no duplicated simulation content
 app_www = os.path.join(ROOT, "app/www")

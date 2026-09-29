@@ -13,8 +13,9 @@ Repository: `github.com/chemwithankit/Prayogx`, branch `main`. Android package:
 - The student-facing "upload a question → AI generates a simulation" platform is
   **deferred**. Don't build toward it: no backend, accounts, credits or AI-generation
   infrastructure unless the owner asks.
-- Current library: **32 Chemistry simulations**, JEE Advanced 2026 Paper 1 Q1–Q15 and Paper 2
-  Q1–Q17. Next intended build: **Paper 1 Chemistry Q16**, only when the owner says go.
+- Current library: **33 Chemistry simulations**, JEE Advanced 2026 Paper 1 Q1–Q16 and Paper 2
+  Q1–Q17. P1 Q16 (built 2026-09-28) is the first page under the immersive standard; it carries
+  `status: "draft"` (unpublished) until the owner reviews it. There is no next build until the owner names one.
 
 ## Owner control
 

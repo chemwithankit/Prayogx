@@ -267,7 +267,7 @@ const ok = (l, c, x) => { n++; if (!c) bad++; console.log((c ? 'PASS  ' : 'FAIL 
   });
   const a = await actx.newPage(); const ae = []; a.on('pageerror', x => ae.push(x.message));
   await a.goto('http://127.0.0.1:' + PA + '/', { waitUntil: 'networkidle' }); await sleep(1200);
-  ok('the app finds the whole library in the feed', await a.evaluate(() => window.__prayogx.state().sims) === man.simulations.length, man.simulations.length);
+  ok('the app finds the whole library in the feed', await a.evaluate(() => window.__prayogx.state().sims) === man.simulations.filter(s => s.status !== 'draft').length, man.simulations.length);
   await a.fill('#q', 'dipole moment'); await sleep(700);
   const cardTxt = await a.evaluate(() => [...document.querySelectorAll('.simcard')].map(c => c.innerText).join(' | '));
   /* search can match more than one simulation as the library grows: open this one by its own title */

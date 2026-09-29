@@ -682,7 +682,7 @@
     }
     MODE = mode;
     LIB = payload.library || {};
-    SIMS = (payload.simulations || []).filter(function (s) { return s && s.id && s.path; });
+    SIMS = (payload.simulations || []).filter(function (s) { return s && s.id && s.path && s.status !== "draft"; });   // drafts are never shown, even from the manifest fallback
     if (mode === "manifest") {
       // Every record is already complete, so no detail request is ever needed.
       SIMS.forEach(function (s) { DETAIL[s.id] = s; });

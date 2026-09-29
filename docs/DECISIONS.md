@@ -51,10 +51,15 @@ Newer entries supersede older ones. The detailed standard is in
   **retired**. Development now happens directly in this repository with Claude Code. The
   finished `index.html` files are the only source of simulation code.
 
-## Next intended build
+## Builds
 
-**JEE Advanced 2026 · Paper 1 · Chemistry · Q16** (`ADV-2026-P1-CHE-Q16`), named by the
-owner on 2026-09-28. **Not started.** Build only when the owner says so.
+- **JEE Advanced 2026 · Paper 1 · Chemistry · Q16** (`ADV-2026-P1-CHE-Q16`): named by the owner on
+  2026-09-28 and built the same day, the first page under the immersive standard (a pseudo-3-D reach
+  scan, a two-level flask and mechanism bench, and explicit concept and takeaways). It is script-verified
+  and **awaits the owner's review**. It carries `status: "draft"` in `meta.json` and the manifest, so the
+  build keeps it out of the feed, crawlable pages, sitemap and revision lock. Publishing it after review
+  means removing that field and regenerating (the owner's decision, 2026-09-29).
+- **Next build:** none named. The owner chooses.
 
 ## Open: needs the owner's decision
 

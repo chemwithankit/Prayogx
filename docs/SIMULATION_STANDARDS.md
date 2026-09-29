@@ -86,7 +86,7 @@ not retrofitted to a newer standard unless the owner asks for a specific page.
 | G1 | P2 Q01–Q04 | seven sections | visible | open | no | no |
 | G2 | P2 Q05–Q17, P1 Q02 | seven sections + prediction | locked until the run ends | gated | yes | P2 no · P1 Q02 yes |
 | G3 | P1 Q01, Q03–Q11 | compact lab (question · experiment · [explorer] · solution · how to use) | locked | gated | no | yes |
-| G4 | **P1 Q12–Q15** | **layout v2 — current reference** | visible above the experiment | always open | no | yes |
+| G4 | **P1 Q12–Q16** | **layout v2 — current reference** | visible above the experiment | always open | no | yes |
 
 Consequences:
 
@@ -94,6 +94,10 @@ Consequences:
   unasked.
 - Paper 2 pages have no `window.PX`. Their tests (none exist yet) cannot reuse the Paper 1
   suite pattern without adding hooks, and adding hooks is a page change (revision bump).
+- P1 Q16 is layout v2 plus the first elements of the immersive direction (§6): a pseudo-3-D reach
+  scan with depth sorting, a draggable 3-D explorer, and explicit Concept explanation and Key takeaways
+  sections. Its chemistry engine sits between `/*ENGINE-BEGIN*/` and `/*ENGINE-END*/`, so the verifier
+  can run the page's own engine in Node. That is a pattern worth reusing.
 - `templates/simulation-template.html` is the **G1-era** shell (seven sections). It remains
   useful for the design tokens and the brand mark, but **it is not the layout for new pages.**
   Start new pages from a G4 page.
@@ -269,6 +273,12 @@ Two different fields exist today, and they must not be confused:
 | `ai_generated` | built by Claude; not yet independently verified |
 | `script_verified` | independent verifier + page suite pass; answer matches the official key |
 | `human_verified` | the owner (or a named reviewer) has reviewed the page and signed it off |
+
+**New pages before review:** a new simulation that has passed its scripts but not the owner's review is
+registered with `"status": "draft"`. The build keeps it off every public surface (the feed, crawlable
+pages, the sitemap, the revision lock); `production_audit.py` checks that. Removing the field publishes it.
+The simulation file itself is still deployed at its path, because `simulations/` is published, but nothing
+links to it.
 
 **Migration rule:** don't relabel existing simulations silently. Changing the feed default,
 or setting a per-page `status`, is an owner decision (see DECISIONS.md). A changed default

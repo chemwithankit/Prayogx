@@ -15,8 +15,9 @@ They do make network calls:
 
 The simulations themselves carry no ads.
 
-Current library: **32 simulations**, all Chemistry, JEE Advanced 2026 — Paper 1 Q1–Q15 and
-Paper 2 Q1–Q17.
+Current library: **33 simulations**, all Chemistry, JEE Advanced 2026 — Paper 1 Q1–Q16 and
+Paper 2 Q1–Q17. **32 are published.** P1 Q16 has `status: "draft"` in its `meta.json` until the owner reviews it,
+so the build leaves it out of the feed, the crawlable pages and the sitemap.
 
 ## Production
 
@@ -299,6 +300,7 @@ release (consent, live ads, app-ads.txt, versionCode, signing) is tracked in
 | `ADV-2026-P1-CHE-Q13` | 2026 | 1 | Chemistry | Thermodynamics | Q.13 | C |
 | `ADV-2026-P1-CHE-Q14` | 2026 | 1 | Chemistry | Chemical Bonding and Molecular Structure | Q.14 | A |
 | `ADV-2026-P1-CHE-Q15` | 2026 | 1 | Chemistry | Aldehydes, Ketones and Carboxylic Acids | Q.15 | C |
+| `ADV-2026-P1-CHE-Q16` | 2026 | 1 | Chemistry | Aldehydes, Ketones and Carboxylic Acids | Q.16 | B |
 | `ADV-2026-P2-CHE-Q01` | 2026 | 2 | Chemistry | Electrochemistry | Q.1 | (C) 5 |
 | `ADV-2026-P2-CHE-Q02` | 2026 | 2 | Chemistry | Chemical Bonding and Molecular Structure | Q.2 | (B) |
 | `ADV-2026-P2-CHE-Q03` | 2026 | 2 | Chemistry | Aldehydes, Ketones and Carboxylic Acids | Q.3 | (A) |

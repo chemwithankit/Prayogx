@@ -113,7 +113,7 @@ const META=R+'/simulations/2026/paper-2/chemistry/adv-2026-p2-che-q16/meta.json'
   for (let i=0; i<20 && await p.$('#more'); i++) { await p.click('#more'); await sleep(300); }
   const link = await p.evaluate(()=>{
     const a=[...document.querySelectorAll('article.card a.open')]
-      .find(x=>x.getAttribute('href').indexOf('Q16')>=0);
+      .find(x=>x.getAttribute('href').indexOf('ADV-2026-P2-CHE-Q16')>=0);   /* full ID: the library also has P1 Q16 */
     return a? a.getAttribute('href') : null; });
   ok('the catalogue links Q16 through the shell runner',
      /^#\/run\/ADV-2026-P2-CHE-Q16$/.test(link||''), link);
@@ -221,7 +221,7 @@ const META=R+'/simulations/2026/paper-2/chemistry/adv-2026-p2-che-q16/meta.json'
     for (const nm of names) {
       const c = await caches.open(nm);
       for (const req of await c.keys()) {
-        if (req.url.indexOf('q16') >= 0) {
+        if (req.url.indexOf('adv-2026-p2-che-q16') >= 0) {
           const res = await c.match(req);
           if (res) return (await res.text()).length;
         }
