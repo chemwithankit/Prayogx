@@ -65,11 +65,42 @@ Never hand-edit the generated outputs.
 
 ## 5. Tracker sheet
 
-`data/tracker.csv` is the source of truth. The Google Sheet (URL in `data/manifest.json` →
-`library.tracker`) holds 19 scannable columns and is recreated from the CSV. How Claude Code
-reaches Google Drive is an **open decision** (`docs/DECISIONS.md`). Until it's decided,
-update the CSV and tell the owner the Sheet needs regenerating. Never claim the Sheet was
-updated when it wasn't.
+`data/tracker.csv` is the source of truth. The Google Sheet (`data/manifest.json` →
+`library.tracker`: `id`, `sheetId`, `url`) holds 19 scannable columns and is **permanent**:
+it is updated in place by upsert on Simulation ID, and its ID and URL never change.
+
+**Never** create a replacement Sheet, recreate it through the Drive connector, trash, clear,
+rename, reorder or delete anything in it, or use `append_values`. The only write is
+`update_values` to the exact ranges a verified plan names. Writing to the Sheet is an
+outward-facing action: run it only when the owner has asked for the sync.
+
+Steps (Google Sheets connector + `tools/tracker_sheet.py`; save each connector response
+verbatim as JSON in the scratchpad, never in the repository):
+
+1. `get_spreadsheet` (spreadsheetId = `library.tracker.id`, fields `spreadsheetId`,
+   `sheets.properties`) → `spreadsheet.json`. `get_values` `<tab>!A1:S` → `values.json`. The
+   tab is the one whose `sheetId` equals `library.tracker.sheetId`; its title may change.
+2. `python3 tools/tracker_sheet.py plan --spreadsheet spreadsheet.json --values values.json --out plan.json`
+   Show the owner the plan: unchanged / updates (with the differing cells) / new rows, each
+   with its exact range, and 0 deletions. Exit 2 (bad header, duplicate or blank IDs, tab or
+   spreadsheet not found) → **stop**, report, write nothing.
+3. Immediately before writing: `get_values` again → `values_now.json`, then
+   `python3 tools/tracker_sheet.py precheck --plan plan.json --values values_now.json`.
+   Exit 2 → the Sheet changed since the plan: stop and re-plan.
+4. One `update_values` per planned row: the plan's `range` and its `values`, nothing else.
+5. `get_values` again → `values_after.json`, then
+   `python3 tools/tracker_sheet.py verify --values values_after.json`.
+6. Only if verify exits 0: `python3 tools/tracker_sheet.py record --values values_after.json`
+   (sets `rows` and `syncedAt` in `library.tracker`), then regenerate
+   (`sync_manifest.py` → `build_content.py` → checks) because the manifest changed.
+
+Reporting: say exactly which ranges were written and what verify said. If any write failed
+or verify exits 1, report **"Sheet sync incomplete"** with the listed problems, do not
+record, and leave the Sheet as it is: re-running steps 1–6 is safe, because the plan only
+writes what still differs. If the connector is unavailable or the owner hasn't asked for the
+sync, finish registration and report **"Sheet sync pending"**; `python3
+tools/tracker_sheet.py status` (exit 3) says the same. Never claim the Sheet was updated
+unless verify passed.
 
 ## 6. Publishing
 

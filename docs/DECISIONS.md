@@ -37,6 +37,7 @@ Newer entries supersede older ones. The detailed standard is in
 | 09-27 | Organic reaction questions show the complete two-level mechanism (vessel ↔ molecules, in sync). |
 | 09-28 | For new pages: the answer is visible above the experiment, START and all controls sit below the screen, the detailed solution is complete and always open, and animation quality is premium and meaningful. |
 | 09-28 | Canonical origin is `https://prayogx.co.in`; `chemwithankit.github.io/Prayogx` is only a legacy 301 redirect. |
+| 09-29 | The Google Sheet tracker is permanent (same ID and URL) and is synced **in place** by upsert on Simulation ID through the Google Sheets connector, as part of registration: `tools/tracker_sheet.py` plans, prechecks and verifies; writes are `update_values` to planned ranges only; no recreate, no deletion, no `append_values`. The tab is found by `sheetId`; numbers compare numerically. A failed or skipped sync is reported as incomplete / pending, never as done. |
 
 ## Superseded
 
@@ -46,6 +47,8 @@ Newer entries supersede older ones. The detailed standard is in
 - Prediction stage as part of the doctrine (08-27, G2) → dropped in practice (P1 Q01, Q03
   onward) → **optional, non-blocking** (09-28).
 - Seven-section page → layout v2 for new pages. Older pages keep their generation.
+- Tracker Sheet recreated from the CSV on every update (a new URL each time, via the Drive
+  connector) → **permanent Sheet, upsert in place** through the Sheets connector (09-29).
 - An external "master prompt" written per question → Claude writes the design brief itself.
 - The Cowork build environment (container, device bridge, per-question packages, build kit):
   **retired**. Development now happens directly in this repository with Claude Code. The
@@ -66,7 +69,6 @@ Newer entries supersede older ones. The detailed standard is in
 |---|---|---|
 | Feed `status` default | keep `human_verified` · change the default to `script_verified` · set per page as reviewed | `build_content.py` `DEFAULTS` publishes `human_verified` for all 32 in `content/`; nothing records a human review (SIMULATION_STANDARDS.md §9) |
 | Layout-v2 template | replace `templates/simulation-template.html` · add a v2 template beside it · document "copy the latest G4 page" only | the template is the G1-era shell |
-| Google Sheet tracker | CSV only (owner regenerates the Sheet) · try the Google Drive connector · drop the Sheet | the Sheet was recreated through a Cowork connector; Claude Code access is unverified |
 | Published solution (MathonGo) access | Drive connector · owner supplies the text · official key + independent solving only | only 11 of 32 `verification.methods` cite MathonGo |
 | Paper 2 tests | black-box Playwright (no page change) · add `window.PX` hooks (17 page edits + revision bumps) | Paper 2 pages have no `window.PX` |
 | Deploying `CLAUDE.md` and `.claude/` | add both to the deny list in `.github/workflows/static.yml` · accept that they are public | the deploy uses a deny list; neither is excluded, so the next push publishes them at prayogx.co.in |

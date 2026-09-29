@@ -96,6 +96,7 @@ standard: [docs/SIMULATION_STANDARDS.md](docs/SIMULATION_STANDARDS.md).
 | Chemistry doctrine (organic, physical, inorganic) | `.claude/skills/prayogx-chemistry/` |
 | Validate before calling it done | `.claude/skills/prayogx-validate/` |
 | Register in the library | `.claude/skills/prayogx-register/` |
+| Sync the Google Sheet tracker (in place, never recreate) | `.claude/skills/prayogx-register/` §5, `tools/tracker_sheet.py` |
 | Fix or review an existing page | `.claude/skills/prayogx-review-existing/` |
 | Tokens, components, animation CSS | `.claude/skills/prayogx-design-system/reference.md` |
 | Standards, generations, immersive direction | `docs/SIMULATION_STANDARDS.md` |

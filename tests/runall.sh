@@ -59,6 +59,16 @@ for f in verify15.py verify16.py verify17.py "$HERE/verify_p1q01.py" "$HERE/veri
 done
 
 echo
+echo "=== tracker Sheet sync (saved snapshot, no network) ==="
+f="$HERE/test_tracker_sheet.py"
+if [ ! -f "$f" ]; then line "test_tracker_sheet.py" "MISSING (not in this tree)"; missing=$((missing+1));
+else
+  out=$(python3 "$f" 2>&1 | tail -1)
+  if echo "$out" | grep -q " 0 failed"; then line "test_tracker_sheet.py" "$out"; pass=$((pass+1));
+  else line "test_tracker_sheet.py" "FAILED: $out"; fail=$((fail+1)); fi
+fi
+
+echo
 echo "=== library and production validation ==="
 for f in check_library.py production_audit.py; do
   if out=$(python3 "$ROOT/tools/$f" 2>&1); then line "$f" "$(echo "$out" | tail -1)"; pass=$((pass+1));

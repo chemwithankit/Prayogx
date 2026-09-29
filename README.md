@@ -153,7 +153,7 @@ quoting it.
 5. Run `python3 tools/check_library.py` — fails loudly on a broken path, a duplicate id, a
    metadata mismatch, an orphaned folder, a stale feed or an unbumped revision.
 6. Add any new chapter/topic names to `data/taxonomy.json`.
-7. Append the row to `data/tracker.csv` and re-upload it to the progress tracker.
+7. Append the row to `data/tracker.csv` and sync the progress tracker (see below).
 8. `./publish.sh "Add <SIM-ID>"` — runs steps 3–5 again, commits and **pushes, which deploys**.
 
 The deploy workflow re-runs steps 3–5 and **refuses to deploy** if the committed `data/`,
@@ -166,11 +166,18 @@ cards are all derived from the feed at page load.
 ## Progress tracker
 
 `data/tracker.csv` is the local source of truth; the Google Sheet is written from it, so edit
-the CSV rather than the sheet. The Drive connector cannot append to an existing sheet, so each
-update recreates it and **the URL changes**. The current URL always lives in
-`data/manifest.json` under `library.tracker.url` — as of 2026-09-28 (sync of that date):
-[PrayogX — Simulation Progress Tracker](https://docs.google.com/spreadsheets/d/13NOBOR5PyyaJNi-7AztrqwbgFVRM48fSpS3lr-sgvAU/edit).
-Since 2026-09-17 the sheet holds only the 19 scannable columns; the CSV keeps all 25.
+the CSV rather than the sheet. The Sheet is **permanent** — its ID and URL never change:
+[PrayogX — Simulation Progress Tracker](https://docs.google.com/spreadsheets/d/13NOBOR5PyyaJNi-7AztrqwbgFVRM48fSpS3lr-sgvAU/edit)
+(`data/manifest.json` → `library.tracker`). It holds the 19 scannable columns; the CSV keeps
+all 25.
+
+Since 2026-09-29 the Sheet is updated **in place**, by upsert on Simulation ID, through the
+Google Sheets connector: `tools/tracker_sheet.py` plans the exact rows to write (unchanged /
+update in place / new row, never a deletion), prechecks the Sheet just before writing, and
+verifies every row afterwards; only a verified sync is recorded in `library.tracker`
+(`rows`, `syncedAt`). The procedure is in `.claude/skills/prayogx-register/SKILL.md` §5.
+`python3 tools/tracker_sheet.py status` reports a pending sync. The script does no network
+I/O and holds no credentials.
 
 ## The website
 
