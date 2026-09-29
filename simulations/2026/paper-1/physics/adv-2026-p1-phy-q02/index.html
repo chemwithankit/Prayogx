@@ -1,0 +1,1717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Flux-Exclusion Resonance Lab — a shorted coil inside an LC circuit — JEE Advanced 2026 Paper 1 Q.2 | PrayogX</title>
+<meta name="description" content="A glowing LC resonance bench: a long solenoid with a shorted inner coil of half its area and half its length. Close the switch and the inner coil's current pushes the magnetic field out of its core, a quarter of the volume, so the effective inductance falls to 3L/4 and the resonance rises to 2/√(3LC) - watched on an oscilloscope and a frequency sweep.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232a78d6'/%3E%3Cpath d='M12.5 6.5h7M13.6 6.5v7.2L7.9 24.1a1.5 1.5 0 0 0 1.3 2.3h13.6a1.5 1.5 0 0 0 1.3-2.3l-5.7-10.4V6.5' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M10.6 20.6h10.8' stroke='white' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E">
+<meta name="sim-id" content="ADV-2026-P1-PHY-Q02">
+<style>
+:root{
+  color-scheme: light;
+  --surface-0:#f4f4f1; --surface-1:#fcfcfb; --surface-2:#ececea;
+  --line:#d9d9d4; --line-strong:#bcbcb5;
+  --text-primary:#0b0b0b; --text-secondary:#52514e; --text-muted:#77766f;
+  --s1:#2a78d6; --s2:#eb6834; --s3:#1baf7a; --s4:#4a3aa7;
+  --good:#00743f; --bad:#c0392b; --accent:#2a78d6;
+  --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+  --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --serif:ui-serif,Georgia,"Times New Roman",serif;
+  --radius:10px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  color-scheme: dark;
+  --surface-0:#111110; --surface-1:#1a1a19; --surface-2:#232322;
+  --line:#34342f; --line-strong:#4a4a44;
+  --text-primary:#ffffff; --text-secondary:#c3c2b7; --text-muted:#95948b;
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#9085e9;
+  --good:#3fae7a; --bad:#e66767; --accent:#3987e5;
+}}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --surface-0:#111110; --surface-1:#1a1a19; --surface-2:#232322;
+  --line:#34342f; --line-strong:#4a4a44;
+  --text-primary:#ffffff; --text-secondary:#c3c2b7; --text-muted:#95948b;
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#9085e9;
+  --good:#3fae7a; --bad:#e66767; --accent:#3987e5;
+}
+*{box-sizing:border-box}
+[hidden]{display:none !important}
+body{margin:0;background:var(--surface-0);color:var(--text-primary);font-family:var(--sans);
+  font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px 80px}
+
+/* ---------- header ---------- */
+header.top{border-bottom:1px solid var(--line);background:var(--surface-1)}
+.top-inner{max-width:1180px;margin:0 auto;padding:22px 20px 18px;position:relative;
+  display:flex;flex-wrap:wrap;gap:16px;align-items:flex-start;justify-content:space-between}
+.simid{font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--text-muted)}
+h1{font-size:23px;line-height:1.25;margin:6px 0 10px;font-weight:640;max-width:660px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-size:11.5px;padding:3px 9px;border:1px solid var(--line-strong);border-radius:999px;
+  color:var(--text-secondary);background:var(--surface-2);white-space:nowrap}
+.chip.k{border-color:var(--accent);color:var(--accent);background:transparent}
+.answerbox{border:1px solid var(--line-strong);border-radius:var(--radius);background:var(--surface-2);
+  padding:12px 16px;min-width:220px}
+.answerbox .lbl{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted)}
+.answerbox .val{font-family:var(--mono);font-size:25px;font-weight:600;color:var(--good);line-height:1.22}
+.answerbox .sub{font-size:12px;color:var(--text-secondary)}
+.answerbox.locked .val{color:var(--text-muted);font-size:17px;letter-spacing:.04em}
+.answerbox .rv{margin-top:6px;font-size:11px;background:none;border:none;padding:0;color:var(--accent);
+  cursor:pointer;text-decoration:underline;font-family:var(--sans)}
+.themebtn{position:absolute;top:14px;right:16px;border:1px solid var(--line-strong);background:var(--surface-2);
+  color:var(--text-secondary);border-radius:8px;padding:4px 9px;font-size:12px;cursor:pointer}
+.brandbar{display:flex;align-items:center;gap:8px;margin-bottom:9px}
+.brandbar .pxmark{width:21px;height:21px;flex:none;display:block}
+.brandbar .wm{font-size:13px;font-weight:800;letter-spacing:.17em;color:var(--text-secondary);line-height:1}
+.brandbar .wm i{font-style:normal;color:var(--accent)}
+
+nav.jump{position:sticky;top:0;z-index:20;background:var(--surface-0);border-bottom:1px solid var(--line);
+  padding:8px 0;margin-bottom:26px}
+nav.jump ul{max-width:1180px;margin:0 auto;padding:0 20px;list-style:none;display:flex;gap:4px;overflow-x:auto}
+nav.jump a{display:block;padding:5px 11px;border-radius:7px;font-size:13px;text-decoration:none;
+  color:var(--text-secondary);white-space:nowrap}
+nav.jump a:hover{background:var(--surface-2);color:var(--text-primary)}
+
+section{margin:0 0 42px;scroll-margin-top:56px}
+h2{font-size:17px;font-weight:640;margin:0 0 4px;display:flex;align-items:baseline;gap:9px;flex-wrap:wrap}
+h2 .n{font-family:var(--mono);font-size:12px;color:var(--text-muted);font-weight:400}
+h2 .vb{font-size:12px;color:var(--text-muted);font-weight:400}
+h2.big{font-size:20px;letter-spacing:.02em}
+.lede{color:var(--text-secondary);font-size:13.5px;margin:0 0 16px;max-width:78ch}
+.panel{background:var(--surface-1);border:1px solid var(--line);border-radius:var(--radius);padding:18px}
+.panel h3{margin:0 0 12px;font-size:13px;letter-spacing:.05em;text-transform:uppercase;color:var(--text-muted);font-weight:600}
+.qtext{font-family:var(--serif);font-size:16px;line-height:1.7}
+.opts{list-style:none;padding:0;margin:14px 0 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(150px,100%),1fr));gap:9px}
+.opts li{border:1px solid var(--line);border-radius:10px;padding:9px 12px;background:var(--surface-1);
+  display:flex;align-items:baseline;gap:10px;font-family:var(--serif);font-size:16px}
+.opts li .k{font-family:var(--mono);font-size:12.5px;color:var(--text-muted)}
+.opts li .mark{margin-left:auto;font-family:var(--sans);font-size:11.5px;font-weight:600}
+.opts li.correct{border-color:var(--good);background:color-mix(in srgb,var(--good) 11%,transparent)}
+.opts li.correct .mark{color:var(--good)}
+.opts li.wrong{border-color:var(--bad)} .opts li.wrong .mark{color:var(--bad)}
+.assume{border-left:3px solid var(--s4);padding:8px 0 8px 13px;margin:14px 0 0;font-size:13.5px;color:var(--text-secondary)}
+.assume b{color:var(--text-primary)}
+
+/* ---------- the dashboard ---------- */
+.deck{border:1px solid var(--line);border-radius:var(--radius);padding:14px;
+  background:linear-gradient(180deg,var(--surface-1),color-mix(in srgb,var(--surface-2) 55%,var(--surface-1)));
+  box-shadow:0 1px 2px rgba(0,0,0,.04),0 10px 26px -18px rgba(0,0,0,.35)}
+.statusbar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding-bottom:11px;border-bottom:1px solid var(--line);margin-bottom:12px}
+.xstat{display:flex;align-items:center;gap:8px;font-size:12.5px;font-weight:700;letter-spacing:.03em;
+  padding:5px 12px;border-radius:999px;border:1px solid var(--line-strong);background:var(--surface-1);color:var(--text-secondary)}
+.xstat .dot{width:9px;height:9px;border-radius:50%;background:var(--text-muted)}
+.xstat.run .dot{background:var(--accent);animation:pulse 1.2s ease-in-out infinite}
+.xstat.ana .dot{background:var(--s4);animation:pulse 1.2s ease-in-out infinite}
+.xstat.done{border-color:var(--good);color:var(--good);background:color-mix(in srgb,var(--good) 10%,transparent)}
+.xstat.done .dot{background:var(--good)}
+@keyframes pulse{50%{opacity:.25}}
+.stages{display:flex;gap:5px;flex-wrap:wrap}
+.stages span{font-size:11px;padding:3px 9px;border-radius:999px;border:1px solid var(--line);color:var(--text-muted);white-space:nowrap}
+.stages span.now{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:650}
+.stages span.done{border-color:var(--good);color:var(--good)}
+.statusbar .sp{flex:1}
+.guide{font-size:12px;color:var(--text-muted)}
+
+.grid1{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:13px;align-items:start}
+.grid2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:13px;margin-top:13px}
+.grid1>*,.grid2>*{min-width:0}
+@media(max-width:960px){.grid1,.grid2{grid-template-columns:1fr !important}}
+
+/* the always-dark chamber */
+.lab3d{position:relative;border-radius:12px;padding:12px;overflow:hidden;
+  background:radial-gradient(90% 70% at 18% 8%,rgba(84,169,255,.16),transparent 60%),
+    radial-gradient(80% 70% at 88% 92%,rgba(255,147,80,.12),transparent 62%),
+    linear-gradient(170deg,#0d1322 0%,#070a12 55%,#0a0e1a 100%);
+  border:1px solid rgba(150,180,255,.16);box-shadow:inset 0 1px 0 rgba(255,255,255,.07),0 18px 40px -26px rgba(0,0,0,.9);
+  color:#eef3ff}
+.lab3d:before{content:"";position:absolute;inset:0;pointer-events:none;
+  background:repeating-linear-gradient(0deg,rgba(255,255,255,.028) 0 1px,transparent 1px 3px);opacity:.5;mix-blend-mode:overlay}
+.lab3d>*{position:relative}
+.lab3d .hd{display:flex;align-items:baseline;gap:9px;flex-wrap:wrap;margin-bottom:5px}
+.lab3d .hd h3{margin:0;font-size:11.5px;letter-spacing:.11em;text-transform:uppercase;color:#8fa6c9;font-weight:700}
+.lab3d .hd .st{font-size:10.5px;font-family:var(--mono);color:#9fb0cc;border:1px solid rgba(160,190,255,.2);border-radius:999px;padding:1px 8px}
+.lab3d .narr{font-size:12.5px;color:#c3d2ea;margin:0 0 8px;min-height:2.8em;line-height:1.42}
+.lab3d .narr b{color:#fff;font-family:var(--mono);font-weight:650}
+.lab3d .narr .a{color:#6fb6ff;font-weight:700} .lab3d .narr .o{color:#ffa56a;font-weight:700}
+.lab3d .narr .gd{color:#3ee39a;font-weight:700}
+.vwrap{position:relative;perspective:1000px}
+canvas#labcv{display:block;width:100%;height:auto;border-radius:10px;transform:rotateX(2.5deg);transform-origin:50% 100%}
+@media(max-width:560px){.vwrap{overflow:hidden}canvas#labcv{width:128%;max-width:none;margin-left:-14%}}
+@media(prefers-reduced-motion:reduce){canvas#labcv{transform:none}}
+.done-banner{position:absolute;left:50%;top:14px;transform:translateX(-50%) scale(.92);opacity:0;pointer-events:none;
+  background:rgba(10,30,24,.8);border:1px solid rgba(62,227,154,.6);color:#dfffee;border-radius:12px;padding:8px 18px;
+  font-weight:800;letter-spacing:.1em;font-size:14px;box-shadow:0 0 28px -6px rgba(62,227,154,.7);transition:.45s;white-space:nowrap}
+.done-banner.on{opacity:1;transform:translateX(-50%) scale(1)}
+.revealhost{position:absolute;inset:0;display:none;align-items:center;justify-content:center;z-index:6}
+.revealhost.on{display:flex}
+svg.graf{display:block;width:100%;height:auto}
+.blackout{position:absolute;inset:0;background:#000;opacity:0;pointer-events:none;transition:opacity .45s;z-index:4;border-radius:12px}
+.blackout.on{opacity:.86}
+.flashout{position:absolute;inset:0;background:radial-gradient(circle at 50% 45%,rgba(255,255,255,.95),rgba(120,255,200,.5) 35%,transparent 70%);
+  opacity:0;pointer-events:none;z-index:5;border-radius:12px}
+@keyframes flashpop{0%{opacity:0}18%{opacity:1}100%{opacity:0}}
+.flashout.go{animation:flashpop .85s ease-out 1}
+@media(prefers-reduced-motion:reduce){.flashout.go{animation:none}.blackout{transition:none}}
+.dim canvas#labcv{filter:brightness(.4) saturate(.8)}
+@media(prefers-reduced-motion:no-preference){.zoom{animation:zoomin 1.1s ease-out 1}}
+@keyframes zoomin{0%{transform:scale(1)}40%{transform:scale(1.035)}100%{transform:scale(1)}}
+
+/* the rail: inputs + live data */
+.rail{border:1px solid var(--line);border-radius:12px;padding:11px 12px;
+  background:color-mix(in srgb,var(--surface-1) 82%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  box-shadow:inset 0 1px 0 color-mix(in srgb,#fff 40%,transparent),0 8px 24px -18px rgba(0,0,0,.4);
+  display:flex;flex-direction:column;gap:9px}
+.rail h4{margin:0;font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--text-muted);font-weight:700}
+.rail .grp{border-top:1px dashed var(--line);padding-top:9px}
+.status{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:750;letter-spacing:.04em;border-radius:8px;padding:6px 9px;
+  border:1px solid var(--good);color:var(--good);background:color-mix(in srgb,var(--good) 10%,transparent)}
+.status.custom{border-color:var(--s4);color:var(--s4);background:color-mix(in srgb,var(--s4) 10%,transparent)}
+.fld{margin:7px 0 0}
+.fld .lb{display:flex;justify-content:space-between;align-items:baseline;gap:6px;font-size:12px;margin-bottom:4px;color:var(--text-secondary)}
+.fld .lb b{font-weight:600;color:var(--text-primary);font-family:var(--serif);font-size:13.5px}
+.fld .lb .u{font-size:10.5px;color:var(--text-muted);font-family:var(--mono);flex:none}
+.fld .rw{display:flex;gap:5px;align-items:center}
+.fld .rw input{flex:1;min-width:0;padding:6px 8px;border-radius:7px;border:1px solid var(--line-strong);background:var(--surface-0);
+  color:var(--text-primary);font-family:var(--mono);font-size:13.5px;text-align:center;font-weight:600}
+.fld .rw input:focus{outline:2px solid var(--accent);outline-offset:-1px}
+.fld .rw input.bad{border-color:var(--bad);background:color-mix(in srgb,var(--bad) 10%,transparent)}
+.fld .rw input:disabled{opacity:.55}
+.fld .rw button{flex:none;width:34px;height:34px;border-radius:7px;border:1px solid var(--line-strong);background:var(--surface-2);
+  color:var(--text-primary);font-size:16px;line-height:1;cursor:pointer;font-family:var(--mono);touch-action:manipulation}
+.fld .rw button.rs{font-size:13px}
+.fld .rw button:hover:not(:disabled){border-color:var(--accent);color:var(--accent)}
+.fld .rw button:disabled{opacity:.4;cursor:not-allowed}
+.fld .fh{font-size:10.5px;color:var(--text-muted);margin-top:2px;line-height:1.35;min-height:1.35em}
+.fld .fh.bad{color:var(--bad);font-weight:650}
+.railnote{font-size:11px;color:var(--text-muted);line-height:1.45;margin:0}
+button.resetq{width:100%;padding:8px 10px;border-radius:9px;border:1px solid var(--line-strong);background:var(--surface-2);
+  color:var(--text-primary);font-size:12.5px;font-weight:650;cursor:pointer;font-family:var(--sans)}
+button.resetq:hover{border-color:var(--accent);color:var(--accent)}
+.gauges{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(104px,100%),1fr));gap:6px}
+.gz{border:1px solid var(--line);border-radius:9px;background:var(--surface-2);padding:5px 8px;overflow:hidden}
+.gz .k{font-size:9.5px;letter-spacing:.04em;text-transform:uppercase;color:var(--text-muted);font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.gz .v{font-family:var(--mono);font-size:16px;font-weight:700;line-height:1.25;white-space:nowrap}
+.gz .u{font-size:9.5px;color:var(--text-muted);font-weight:400}
+.gz.a .v{color:var(--s1)} .gz.o .v{color:var(--s2)}
+.gz.hot{border-color:var(--good);background:color-mix(in srgb,var(--good) 11%,transparent)} .gz.hot .v{color:var(--good)}
+
+/* graphs */
+.graphcard{border:1px solid var(--line);border-radius:12px;background:var(--surface-1);padding:12px 14px}
+.graphcard h4{margin:0 0 4px;font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--text-muted);font-weight:700}
+.graphcard .gsub{font-size:11.5px;color:var(--text-muted);margin:0 0 4px}
+.chartwrap{position:relative}
+svg.chart{display:block;width:100%;height:auto;overflow:visible}
+.tip{position:absolute;pointer-events:none;background:var(--surface-1);border:1px solid var(--line-strong);border-radius:8px;padding:7px 10px;
+  font-size:12px;box-shadow:0 4px 14px rgba(0,0,0,.13);opacity:0;transition:opacity .1s;z-index:5;min-width:140px}
+.tip .t{font-family:var(--mono);font-size:11px;color:var(--text-muted);margin-bottom:3px}
+.tip .r{display:flex;gap:7px;white-space:nowrap} .tip .rv{margin-left:auto;font-family:var(--mono);font-weight:600}
+details.tbl{margin-top:6px;font-size:12.5px} details.tbl summary{cursor:pointer;color:var(--text-secondary)}
+
+/* calculation panel */
+.calc{margin-top:13px;border:1px solid var(--line);border-radius:12px;padding:12px 14px;
+  background:linear-gradient(180deg,var(--surface-1),var(--surface-2))}
+.calc .bt{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--text-muted);font-weight:700;margin-bottom:6px}
+.calc ol{list-style:none;margin:0;padding:0;display:grid;gap:5px}
+.calc li{display:grid;grid-template-columns:auto minmax(0,1fr);gap:10px;align-items:baseline;animation:cin .45s ease-out}
+@keyframes cin{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.calc li{animation:none}}
+.calc li .s{font-family:var(--mono);font-size:10.5px;color:#fff;background:var(--accent);border-radius:999px;padding:1px 7px;font-weight:700}
+.calc li .m{font-family:var(--serif);font-size:16px;line-height:1.55;min-width:0;overflow-x:auto}
+.calc li .m .w{display:block;font-family:var(--sans);font-size:11.5px;color:var(--text-muted)}
+.calc li .m .hl{color:var(--good);font-weight:700}
+.calc li .m .ar{color:var(--s1);font-weight:700} .calc li .m .or{color:var(--s2);font-weight:700}
+.calc .empty{font-size:12.5px;color:var(--text-muted);margin:0}
+table.data{border-collapse:collapse;font-size:12.5px;width:100%}
+table.data th,table.data td{border:1px solid var(--line-strong);padding:5px 8px;text-align:center}
+table.data th{background:var(--surface-2);font-weight:600;font-size:11.5px;color:var(--text-secondary)}
+table.data td.n{font-family:var(--mono)}
+tr.win td{background:color-mix(in srgb,var(--good) 12%,transparent);font-weight:700}
+.scrollx{overflow-x:auto}
+
+/* action bar */
+.actbar{display:flex;gap:9px;align-items:center;flex-wrap:wrap;margin-top:12px}
+button.go{flex:none;padding:13px 24px;border-radius:11px;border:none;background:var(--accent);color:#fff;font-size:15px;font-weight:780;
+  cursor:pointer;font-family:var(--sans);letter-spacing:.04em;box-shadow:0 4px 16px -6px color-mix(in srgb,var(--accent) 75%,transparent);transition:.18s}
+button.go:hover:not(:disabled){filter:brightness(1.09);transform:translateY(-1px)}
+button.go:disabled{opacity:.42;cursor:not-allowed;box-shadow:none;transform:none}
+button.go.custom{background:var(--s4)}
+button.ghost{flex:none;padding:8px 13px;border-radius:9px;border:1px solid var(--line-strong);background:var(--surface-1);color:var(--text-secondary);
+  font-size:12.5px;cursor:pointer;font-family:var(--sans);min-height:36px}
+button.ghost:hover:not(:disabled){border-color:var(--accent);color:var(--accent)}
+button.ghost:disabled{opacity:.4;cursor:not-allowed}
+button.ghost[aria-pressed=true]{border-color:var(--accent);color:var(--accent);background:color-mix(in srgb,var(--accent) 10%,transparent)}
+.spd{display:flex;gap:4px}
+.spd button{padding:7px 10px;font-size:11.5px;border-radius:7px;border:1px solid var(--line-strong);background:var(--surface-1);color:var(--text-secondary);cursor:pointer;font-family:var(--mono)}
+.spd button[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:#fff}
+.actbar .msg{flex:1 1 220px;min-width:0;font-size:12px;color:var(--text-secondary);line-height:1.4}
+.actbar .msg b{color:var(--text-primary)}
+
+@keyframes popblink{0%{transform:scale(1)} 12%{transform:scale(1.16)} 24%{transform:scale(1)}
+  38%{opacity:.2} 50%{opacity:1} 64%{opacity:.2} 76%{opacity:1} 88%{transform:scale(1.07)} 100%{transform:scale(1);opacity:1}}
+.blink{animation:popblink 2s ease-in-out 1;display:inline-block}
+@keyframes ringpulse{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--good) 55%,transparent)} 70%{box-shadow:0 0 0 14px transparent} 100%{box-shadow:0 0 0 0 transparent}}
+.celebrate{animation:ringpulse 1.5s ease-out 2}
+@media(prefers-reduced-motion:reduce){.blink,.celebrate,.zoom{animation:none}}
+
+/* solution + help */
+.gate{border:1px dashed var(--line-strong);border-radius:var(--radius);padding:24px 20px;text-align:center;background:var(--surface-1)}
+.gate h4{margin:0 0 6px;font-size:15px} .gate p{margin:0 0 12px;font-size:13px;color:var(--text-secondary)}
+ol.steps{list-style:none;counter-reset:s;padding:0;margin:0;display:grid;gap:10px}
+ol.steps li{min-width:0;counter-increment:s;border:1px solid var(--line);border-radius:var(--radius);background:var(--surface-1);
+  padding:14px 16px 14px 52px;position:relative}
+ol.steps li::before{content:counter(s);position:absolute;left:15px;top:14px;width:23px;height:23px;border-radius:50%;background:var(--accent);
+  color:#fff;font-size:12px;font-weight:700;display:grid;place-items:center;font-family:var(--mono)}
+ol.steps h4{margin:0 0 6px;font-size:14px;font-weight:640}
+ol.steps p{margin:0 0 6px;font-size:13.5px;color:var(--text-secondary)}
+.eq{min-width:0;font-family:var(--serif);font-size:15.5px;background:var(--surface-2);border-radius:7px;padding:9px 13px;margin:8px 0;overflow-x:auto}
+.eq .hl{color:var(--good);font-weight:700}
+.obsnote{border-left:3px solid var(--s1);padding:6px 0 6px 12px;margin:8px 0;font-size:13px;color:var(--text-secondary)}
+.obsnote b{color:var(--text-primary)}
+sub{font-size:.72em} sup{font-size:.72em}
+.verify{border:1px solid var(--good);border-radius:var(--radius);margin-top:12px;background:color-mix(in srgb,var(--good) 8%,transparent);padding:14px 16px;font-size:13.5px}
+.verify h4{margin:0 0 6px;font-size:13.5px;color:var(--good)}
+.verify ul{margin:6px 0 0;padding-left:18px;color:var(--text-secondary)} .verify li{margin-bottom:4px}
+.howto{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(250px,100%),1fr));gap:11px}
+.howto>div{border:1px solid var(--line);border-radius:11px;padding:12px 14px;background:linear-gradient(180deg,var(--surface-1),var(--surface-2))}
+.howto .n{font-family:var(--mono);font-size:10.5px;color:var(--accent);letter-spacing:.1em;font-weight:700}
+.howto h4{margin:3px 0 6px;font-size:14px}
+.howto p{margin:0;font-size:13px;color:var(--text-secondary);line-height:1.5}
+.howto p b{color:var(--text-primary)}
+.meta-tbl{width:100%;border-collapse:collapse;font-size:13.5px}
+.meta-tbl th,.meta-tbl td{padding:6px 0;border-bottom:1px solid var(--line);vertical-align:top;text-align:left}
+.meta-tbl th{color:var(--text-muted);width:150px;font-size:12.5px;padding-right:14px;font-weight:500}
+footer{border-top:1px solid var(--line);margin-top:40px;padding-top:16px;font-size:12px;color:var(--text-muted)}
+
+/* classroom mode */
+body.classroom nav.jump,body.classroom section:not(#lab),body.classroom header.top .chips,body.classroom footer,
+body.classroom .rail .inputs,body.classroom .spd,body.classroom details.tbl,body.classroom #lab>.lede{display:none !important}
+body.classroom .wrap{max-width:none;padding-left:18px;padding-right:18px}
+body.classroom .lab3d .narr{font-size:20px;line-height:1.45;color:#e8f0ff}
+body.classroom .lab3d .hd h3{font-size:15px}
+body.classroom .gz .v{font-size:24px} body.classroom .gz .k{font-size:12px}
+body.classroom .calc li .m{font-size:25px} body.classroom .calc li .m .w{font-size:15px}
+body.classroom .xstat{font-size:16px} body.classroom .stages span{font-size:14px}
+body.classroom button.go{font-size:19px;padding:16px 30px}
+body.classroom .graphcard h4{font-size:13px}
+body.classroom .actbar .msg{font-size:15px}
+
+/* Q03 additions */
+.fgrid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0 8px}
+.fgrid>*{min-width:0}
+.fld .rw input{width:100%}
+.fgrid .fld.full{grid-column:1/-1}
+.fld.half .rw button.rs{display:none}
+.fld.half .fh{font-size:10px}
+.chem{font-family:var(--serif);white-space:nowrap}
+#opts{grid-template-columns:repeat(auto-fit,minmax(min(250px,100%),1fr))}
+#opts li{flex-wrap:wrap}
+@media(max-width:560px){.vwrap{overflow:visible}canvas#labcv{width:100%;margin-left:0}}
+.rankline{font-family:var(--serif);font-size:17px;font-weight:700}
+.legend{display:flex;flex-wrap:wrap;gap:4px 12px;font-size:11.5px;color:var(--text-secondary);margin:2px 0 4px}
+.legend i{display:inline-block;width:14px;height:3px;border-radius:2px;vertical-align:middle;margin-right:5px}
+.shapes{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(170px,100%),1fr));gap:9px;margin:8px 0}
+.shapes>div{border:1px solid var(--line);border-radius:9px;padding:9px 11px;background:var(--surface-1);font-size:13px;color:var(--text-secondary)}
+.shapes b{color:var(--text-primary);font-family:var(--serif);font-size:15px}
+
+/* Q06/Q07 additions */
+svg.scheme{display:block;width:100%;max-width:660px;height:auto;margin:6px 0 10px}
+.unk{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:12px 0 4px}
+.unk>div{border:1px dashed var(--line-strong);border-radius:11px;padding:9px 10px;text-align:center;background:var(--surface-2);transition:.4s}
+.unk .k{font-size:10.5px;letter-spacing:.1em;color:var(--text-muted);font-weight:800}
+.unk .v{font-family:var(--serif);font-size:24px;font-weight:700;line-height:1.25}
+.unk>div.found{border-style:solid;border-color:var(--good);background:color-mix(in srgb,var(--good) 10%,transparent)}
+.unk>div.found .v{color:var(--good)}
+.unk>div.warn{border-style:solid;border-color:var(--bad)}
+.apbar{height:6px;border-radius:99px;background:var(--line);overflow:hidden;margin-top:6px}
+.apbar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--good));transition:width .3s}
+.answerbox.work .val{color:var(--accent);font-size:15px;letter-spacing:.02em}
+.board{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(230px,100%),1fr));gap:10px;margin-top:13px}
+.ocard{border:1px solid var(--line);border-radius:12px;padding:11px 13px;background:linear-gradient(180deg,var(--surface-1),var(--surface-2));transition:.4s}
+.ocard .h{display:flex;gap:8px;align-items:baseline}
+.ocard .h b{font-family:var(--mono);color:var(--text-muted)}
+.ocard .claim{font-family:var(--serif);font-size:15px}
+.ocard .ev{font-size:12.5px;color:var(--text-secondary);margin:6px 0 0;min-height:2.6em}
+.ocard .vd{margin-top:7px;font-weight:800;font-size:13px;letter-spacing:.04em;color:var(--text-muted)}
+.ocard.now{border-color:var(--accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 22%,transparent)}
+.ocard.yes{border-color:var(--good)} .ocard.yes .vd{color:var(--good)}
+.ocard.no{border-color:var(--bad)} .ocard.no .vd{color:var(--bad)}
+.ocard.na .vd{color:var(--s4)}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.badge{display:flex;align-items:center;gap:7px;border:1px solid var(--line);border-radius:999px;padding:5px 12px 5px 7px;font-size:12.5px;color:var(--text-muted);background:var(--surface-1);opacity:.55;transition:.5s}
+.badge .ic{font-size:17px;filter:grayscale(1)}
+.badge.on{opacity:1;color:var(--text-primary);border-color:var(--good);background:color-mix(in srgb,var(--good) 9%,var(--surface-1))}
+.badge.on .ic{filter:none}
+@keyframes badgepop{0%{transform:scale(1)}35%{transform:scale(1.14)}100%{transform:scale(1)}}
+.badge.pop{animation:badgepop .7s ease-out 1}
+@media(prefers-reduced-motion:reduce){.badge.pop{animation:none}}
+.tools{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.tools button{padding:6px 11px;border-radius:8px;border:1px solid var(--line-strong);background:var(--surface-1);color:var(--text-secondary);font-size:12px;cursor:pointer;font-family:var(--sans);min-height:34px}
+.tools button[aria-pressed=true]{border-color:var(--accent);color:var(--accent);background:color-mix(in srgb,var(--accent) 10%,transparent)}
+.tools button:focus-visible,.explorer button:focus-visible,button:focus-visible,select:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.explorer{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:13px;align-items:start}
+@media(max-width:860px){.explorer{grid-template-columns:1fr}}
+.xview{position:relative;border-radius:12px;overflow:hidden;background:linear-gradient(170deg,#0d1322,#070a12);border:1px solid rgba(150,180,255,.16)}
+canvas#mol{display:block;width:100%;height:auto;touch-action:none;cursor:grab}
+.xpick{display:flex;flex-wrap:wrap;gap:6px}
+.xpick button{padding:7px 14px;border-radius:9px;border:1px solid var(--line-strong);background:var(--surface-1);color:var(--text-primary);font-family:var(--serif);font-size:15px;cursor:pointer;min-height:36px}
+.xpick button[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:#fff}
+.xinfo table{width:100%;border-collapse:collapse;font-size:13px;margin-top:8px}
+.xinfo th{text-align:left;color:var(--text-muted);font-weight:500;padding:5px 8px 5px 0;width:44%;border-bottom:1px solid var(--line)}
+.xinfo td{padding:5px 0;border-bottom:1px solid var(--line);font-weight:600}
+.cards4{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr));gap:10px}
+.cards4>div{border:1px solid var(--line);border-radius:12px;padding:13px 15px;background:linear-gradient(180deg,var(--surface-1),var(--surface-2))}
+.cards4 h4{margin:0 0 6px;font-size:14px} .cards4 p{margin:0 0 6px;font-size:13px;color:var(--text-secondary)}
+.cards4 .eq{font-size:14px}
+.warnbox{border:1px solid var(--bad);border-radius:9px;padding:8px 10px;font-size:12px;color:var(--bad);background:color-mix(in srgb,var(--bad) 8%,transparent);margin-top:8px}
+.selrow{margin:7px 0 0} .selrow label{display:block;font-size:12px;color:var(--text-secondary);margin-bottom:3px}
+select.sel{display:block;width:100%;min-width:0;min-height:40px;padding:8px 10px;font:inherit;font-size:14px;color:var(--text-primary);background:var(--surface-1);border:1px solid var(--line-strong);border-radius:8px}
+select.sel:disabled{opacity:.6}
+
+.optv{display:inline-block;min-width:54px;text-align:center;padding:1px 8px;border-radius:999px;font-size:11.5px;font-weight:750;border:1px solid var(--line-strong);color:var(--text-muted)}
+.optv.t{border-color:var(--good);color:var(--good)} .optv.f{border-color:var(--bad);color:var(--bad)}
+.unk.two{grid-template-columns:repeat(3,minmax(0,1fr))}
+.mobox{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:14px;align-items:start}
+@media(max-width:820px){.mobox{grid-template-columns:1fr}}
+.mobox>div{min-width:0} .mobox canvas{display:block;width:100%;height:auto;border-radius:10px}
+.chg{display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin-top:8px}
+.chg .q{font:800 15px var(--mono);min-width:90px;text-align:center}
+.unk.four{grid-template-columns:repeat(4,minmax(0,1fr))}
+@media(max-width:560px){.unk.four{grid-template-columns:repeat(2,minmax(0,1fr))}}
+canvas#schemecv{display:block;width:100%;max-width:760px;height:auto;border-radius:10px}
+.revealhost{overflow:hidden} .revealhost svg.graf{overflow:hidden}
+.unk.four>div{min-width:0} .unk.four .v{font-size:17px;overflow-wrap:anywhere}
+.chkrow{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.unk.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+
+/* ---- layout v2: answer above the experiment, control dock below it ---- */
+.ansstrip{display:flex;align-items:center;gap:10px 16px;flex-wrap:wrap;margin:0 0 12px;padding:12px 16px;border-radius:14px;position:relative;overflow:hidden;
+  background:linear-gradient(115deg,color-mix(in srgb,var(--good) 20%,var(--surface-2)) 0%,var(--surface-2) 60%);
+  border:1.5px solid color-mix(in srgb,var(--good) 55%,transparent);box-shadow:0 14px 34px -24px var(--good)}
+.ansstrip:after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(100deg,transparent 30%,rgba(255,255,255,.14) 45%,transparent 60%);
+  transform:translateX(-120%);animation:stripsheen 5.5s ease-in-out infinite}
+@keyframes stripsheen{0%,70%{transform:translateX(-120%)}100%{transform:translateX(120%)}}
+.ansstrip .k{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--text-muted);font-weight:800}
+.ansstrip .v{font-family:var(--mono);font-size:27px;font-weight:760;color:var(--good);line-height:1.1}
+.ansstrip .s{flex:1 1 220px;min-width:0;font-size:12.5px;color:var(--text-secondary);line-height:1.4}
+.ansstrip .pbar{flex:1 1 100%;height:4px;border-radius:4px;background:var(--line);overflow:hidden}
+.ansstrip .pbar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--good));transition:width .25s}
+.dock{margin-top:12px;padding:12px 12px 10px;border-radius:14px;border:1px solid color-mix(in srgb,var(--accent) 35%,var(--line));
+  background:linear-gradient(180deg,color-mix(in srgb,var(--accent) 7%,var(--surface-2)),var(--surface-1));box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 14px 30px -24px #000}
+.dock .actbar{margin-top:0}
+.dock .tools{margin:10px 0 0;padding-top:10px;border-top:1px dashed var(--line)}
+button.go{background:linear-gradient(135deg,var(--accent),color-mix(in srgb,var(--accent) 45%,#9b5cff));position:relative}
+button.go:not(:disabled):not(.custom){animation:gopulse 2.6s ease-in-out infinite}
+@keyframes gopulse{0%,100%{box-shadow:0 0 0 0 color-mix(in srgb,var(--accent) 45%,transparent)}50%{box-shadow:0 0 0 9px color-mix(in srgb,var(--accent) 0%,transparent)}}
+@media(prefers-reduced-motion:reduce){.ansstrip:after,button.go{animation:none !important}}
+.sol-fig{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:4px 8px;margin:10px 0;padding:10px;border:1px solid var(--line);border-radius:12px;background:var(--surface-1);color:var(--text-primary);overflow-x:auto}
+.sol-fig svg.mech{max-width:100%;height:auto}
+.sol-fig .cap{flex:1 1 100%;text-align:center;font-size:12px;color:var(--text-secondary)}
+.sol-fig .plus{font-size:20px;font-weight:700;color:var(--text-secondary)}
+svg.rxarrow{flex:none}
+.calcblock{font-family:var(--mono);font-size:13px;line-height:1.7;background:var(--surface-1);border:1px solid var(--line);border-radius:10px;padding:10px 14px;margin:8px 0;overflow-x:auto}
+.calcblock .hl{color:var(--good);font-weight:700}
+table.soltab{border-collapse:collapse;width:100%;font-size:13px;margin:8px 0}
+table.soltab th,table.soltab td{border:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+table.soltab th{background:var(--surface-2);font-weight:700}
+
+.selrow input[type=range]{width:100%;box-sizing:border-box;margin:6px 0 0}.selrow .sel{max-width:100%;min-width:0}#solbody .eq,#solbody .calcblock{overflow-wrap:anywhere}#solbody .sol-fig svg{max-width:100%;height:auto}#solbody li{min-width:0}
+
+/* ---- P1 PHY Q02 additions ---- */
+.qfig{display:flex;justify-content:center;margin:10px 0 4px;color:var(--text-primary)}
+.qfig svg{display:block;width:100%;max-width:360px;height:auto}
+#opts{grid-template-columns:repeat(auto-fit,minmax(min(170px,100%),1fr))}
+#opts li{flex-wrap:wrap}
+.capm{display:none;margin:8px 2px 0;font-size:13.5px;line-height:1.45;color:#dbe6fa}
+@media(max-width:640px){.capm{display:block}}
+ul.takeaways{margin:0 0 6px;padding-left:20px;display:grid;gap:6px;font-size:14px;color:var(--text-secondary)}
+ul.takeaways b{color:var(--text-primary)}
+canvas#cc{display:block;width:100%;height:auto;touch-action:none}
+.fld .rw input{width:100%;min-height:34px}
+/* a richer finish: the title glows, the lab frame gets a copper-and-field edge light */
+h1.glowtitle{background:linear-gradient(92deg,var(--text-primary) 0%,var(--text-primary) 45%,color-mix(in srgb,var(--accent) 80%,#3ee39a) 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent}
+.lab3d{box-shadow:inset 0 1px 0 rgba(255,255,255,.07),0 0 0 1px rgba(255,157,77,.18),0 22px 50px -24px rgba(60,140,255,.55)}
+.lab3d:after{content:"";position:absolute;inset:-1px;border-radius:12px;pointer-events:none;
+  background:linear-gradient(120deg,rgba(255,157,77,.25),transparent 30%,transparent 70%,rgba(62,227,154,.22));
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;mask-composite:exclude;padding:1px}
+.unk .v{font-size:19px}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-inner">
+    <div>
+      <div class="brandbar"><svg class="pxmark" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><rect width="32" height="32" rx="8" fill="var(--accent)"/><path d="M12.5 6.5h7M13.6 6.5v7.2L7.9 24.1a1.5 1.5 0 0 0 1.3 2.3h13.6a1.5 1.5 0 0 0 1.3-2.3l-5.7-10.4V6.5" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.6 20.6h10.8" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg><span class="wm">PRAYOG<i>X</i></span></div>
+      <div class="simid">ADV-2026-P1-PHY-Q02</div>
+      <h1 class="glowtitle">Flux-Exclusion Resonance Lab — what does a shorted coil do to an LC circuit?</h1>
+      <div class="chips">
+        <span class="chip">JEE Advanced 2026</span>
+        <span class="chip">Paper 1 · Q.2</span>
+        <span class="chip">Physics</span>
+        <span class="chip">Self and mutual inductance · LC resonance</span>
+        <span class="chip">Single correct option</span>
+        <span class="chip">+3 / 0 / −1</span>
+        <span class="chip k">Press start · watch the field leave</span>
+      </div>
+    </div>
+    <div class="answerbox locked" id="answerbox" aria-live="polite">
+      <div class="lbl">Answer</div>
+      <div class="val" id="ansval">—</div>
+      <div class="sub" id="anssub">The answer appears when the investigation finishes.</div>
+      <div class="apbar" aria-hidden="true"><i id="apbar"></i></div>
+      <button class="rv" id="revealnow" type="button">Reveal anyway</button>
+    </div>
+    <button class="themebtn" id="themebtn" type="button">◐ theme</button>
+  </div>
+</header>
+
+<nav class="jump">
+  <ul>
+    <li><a href="#question">Mission brief</a></li>
+    <li><a href="#lab">Interactive experiment</a></li>
+    <li><a href="#explorer">Coupled-coil explorer</a></li>
+    <li><a href="#solution">Detailed solution</a></li>
+    <li><a href="#howto">How to use this simulation</a></li>
+  </ul>
+</nav>
+
+<div class="wrap">
+
+<section id="question">
+  <h2><span class="n">Q</span>Mission brief <span class="vb">— the question, verbatim</span></h2>
+  <p class="lede">JEE (Advanced) 2026, Paper 1, Physics, Section 1 — four options, only one correct: +3 if only the correct option is chosen,
+     0 if unanswered, −1 in all other cases.</p>
+  <div class="panel">
+    <div class="qtext">
+      <p><b>Q.2</b>&nbsp; Consider a circuit consisting of a capacitor of capacitance <i>C</i> and a coil with <i>N</i> turns per unit length, cross sectional area <i>S</i> and length <i>d</i>, where <i>d</i><sup>2</sup> ≫ <i>S</i>. There is another coil of length <i>d</i>/2, cross sectional area <i>S</i>/2 and 2<i>N</i> turns per unit length completely inside the larger coil, as shown in the figure. The ends of this smaller coil are connected with each other by an insulated conducting wire. The self-inductance of the larger coil is <i>L</i>. Neglecting edge effects and all the Ohmic resistances, the resonant frequency of the circuit is:</p>
+    </div>
+    <div class="qfig">
+      <svg viewBox="0 0 360 250" role="img" aria-label="The question's figure: a long coil of length d, a shorter coil of length d over 2 inside it whose two ends are joined by a wire loop on the left, and on the right the outer coil in series with a capacitor C and an AC source">
+        <defs><marker id="qfa" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="currentColor"/></marker></defs>
+        <g fill="none" stroke="currentColor" stroke-width="1.4">
+          <path d="M 120 18 L 120 20" />
+          <path id="helix" d="M 128 24 C 160 24 160 44 128 44 C 96 44 96 64 128 64 C 160 64 160 84 128 84 C 96 84 96 104 128 104 C 160 104 160 124 128 124 C 96 124 96 144 128 144 C 160 144 160 164 128 164 C 96 164 96 184 128 184 C 160 184 160 204 128 204 C 96 204 96 224 128 224"/>
+          <path d="M 128 24 L 128 14 L 250 14 L 250 100"/><path d="M 238 100 L 262 100"/><path d="M 238 110 L 262 110"/><path d="M 250 110 L 250 170"/>
+          <circle cx="250" cy="186" r="16"/><path d="M 242 186 q 4 -8 8 0 q 4 8 8 0"/><path d="M 250 202 L 250 236 L 128 236 L 128 224"/>
+          <rect x="112" y="72" width="32" height="96" rx="6" stroke-dasharray="4 3"/>
+          <path d="M 112 84 L 70 84 L 70 156 L 112 156"/>
+          <line x1="84" y1="84" x2="84" y2="156" marker-start="url(#qfa)" marker-end="url(#qfa)" stroke-width="1"/>
+          <line x1="176" y1="24" x2="176" y2="224" marker-start="url(#qfa)" marker-end="url(#qfa)" stroke-width="1"/>
+        </g>
+        <g fill="currentColor" font-family="Georgia,serif" font-style="italic" font-size="13">
+          <text x="88" y="124">d/2</text><text x="182" y="128">d</text><text x="268" y="110">C</text>
+        </g>
+      </svg>
+    </div>
+    <ul class="opts" id="opts">
+      <li data-o="A"><span class="k">(A)</span>4/√(15 LC)<span class="mark"></span></li>
+      <li data-o="B"><span class="k">(B)</span>6/√(5 LC)<span class="mark"></span></li>
+      <li data-o="C"><span class="k">(C)</span>2/√(3 LC)<span class="mark"></span></li>
+      <li data-o="D"><span class="k">(D)</span>√(2/(3 LC))<span class="mark"></span></li>
+    </ul>
+    <div class="unk three" id="unk" aria-live="polite">
+      <div id="u_A"><div class="k">L₂ · M</div><div class="v">?</div></div>
+      <div id="u_B"><div class="k">L<sub>eff</sub></div><div class="v">?</div></div>
+      <div id="u_R"><div class="k">ω√(LC)</div><div class="v">?</div></div>
+    </div>
+    <div class="assume"><b>The mystery.</b> A dead-short coil sits quietly inside the big coil — it is not even connected to the circuit.
+      Can it change the resonant frequency? The lab switches it in, watches what its current does to the magnetic field, and times the
+      oscillation.</div>
+  </div>
+</section>
+
+<section id="lab">
+  <h2 class="big"><span class="n">01</span>Interactive experiment</h2>
+  <p class="lede">A flux-exclusion resonance bench: a glass long solenoid wound in copper, the silver inner coil with its shorting switch, the
+     capacitor and the AC source, a phosphor oscilloscope and a frequency sweep. Press <b>START EXPERIMENT</b>: the circuit → the coil's field →
+     the inner coil → mutual inductance → close the short → the field leaves the core → L<sub>eff</sub> → oscillation → resonance sweep → audit.</p>
+
+  <div class="deck" id="deck">
+    <div class="statusbar">
+      <span class="xstat" id="xstat"><span class="dot"></span><span id="xstattxt">Ready</span></span>
+      <div class="stages" id="stages">
+        <span data-s="load">01 Circuit</span><span data-s="field">02 Coil field</span><span data-s="inner">03 Inner coil</span>
+        <span data-s="mutual">04 Mutual M</span><span data-s="short">05 Short it</span><span data-s="leff">06 L<sub>eff</sub></span>
+        <span data-s="osc">07 Oscillate</span><span data-s="sweep">08 Resonance</span><span data-s="test">09 Audit</span><span data-s="answer">10 Final answer</span>
+      </div>
+      <span class="sp"></span>
+      <span class="guide" id="guide">Set your values or use the question defaults.</span>
+    </div>
+
+    <div class="ansstrip" id="ansstrip" aria-live="polite"><span class="k">Answer</span><span class="v" id="ansstripv">—</span><span class="s" id="ansstrips">—</span><span class="pbar" aria-hidden="true"><i id="ansstripbar"></i></span></div>
+
+    <div class="grid1">
+      <div class="lab3d" id="lab3d">
+        <div class="hd">
+          <h3 id="scenet">Flux-exclusion resonance bench</h3>
+          <span class="st" id="trialtag">step 1 of 8</span>
+        </div>
+        <p class="narr" id="narr" aria-live="polite">A capacitor, an AC source and a long coil with a second coil hidden inside it. The question's values are loaded — press <b>START EXPERIMENT</b>.</p>
+        <div class="vwrap">
+          <canvas id="labcv" width="1040" height="620" role="img"
+                  aria-label="The virtual bench: a glass long solenoid wound with copper wire, the silver inner coil inside its middle with a knife switch that shorts its ends, the capacitor plates and the AC source, magnetic-field particles streaming along the axis, current dots in the wires, an oscilloscope showing the charge on the capacitor and an energy panel"></canvas>
+          <div class="done-banner" id="donebanner">✓ EXPERIMENT COMPLETE</div>
+          <div class="revealhost" id="revealhost"></div>
+        </div>
+        <p class="capm" id="capm" aria-live="polite"></p>
+        <div class="blackout" id="blackout"></div>
+        <div class="flashout" id="flashout"></div>
+      </div>
+
+      <div class="rail" id="rail">
+        <div class="status" id="status">✓ QUESTION VALUES LOADED</div>
+        <div class="inputs">
+          <h4>Customize experiment — optional</h4>
+          <div id="fields"></div>
+          <div class="warnbox" id="condwarn" hidden></div>
+          <button class="resetq" id="resetq" type="button" style="margin-top:8px">↺ RESTORE QUESTION CONDITIONS</button>
+        </div>
+        <div class="grp">
+          <h4>Instrument panel</h4>
+          <div class="gauges" style="margin-top:6px">
+            <div class="gz a"><div class="k">I₁ outer coil</div><div class="v" id="g_i1" style="font-size:15px">—</div></div>
+            <div class="gz o"><div class="k">I₂ inner coil</div><div class="v" id="g_i2" style="font-size:15px">—</div></div>
+            <div class="gz"><div class="k">B outside core</div><div class="v" id="g_bo" style="font-size:15px">—</div></div>
+            <div class="gz"><div class="k">B inside core</div><div class="v" id="g_bi" style="font-size:15px">—</div></div>
+            <div class="gz"><div class="k">L<sub>eff</sub> / L</div><div class="v" id="g_leff" style="font-size:15px">—</div></div>
+            <div class="gz"><div class="k">ω√(LC)</div><div class="v" id="g_w" style="font-size:15px">—</div></div>
+            <div class="gz"><div class="k">energy E · B</div><div class="v" id="g_ue" style="font-size:12px;white-space:normal;line-height:1.2">—</div></div>
+            <div class="gz"><div class="k">progress</div><div class="v"><span id="g_pr">0</span> <span class="u">%</span></div></div>
+            <div class="gz" id="gz_v"><div class="k">option</div><div class="v" id="g_v" style="font-size:15px">—</div></div>
+          </div>
+          <p class="railnote" style="margin-top:6px">B is shown as a fraction of μ₀NI₁; currents as a fraction of the peak I₁. Time is in units of √(LC)
+            and frequency in units of 1/√(LC), so every number here is a pure number.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="dock" id="dock" role="group" aria-label="experiment controls">
+      <div class="actbar">
+        <button class="go" id="gobtn" type="button">▶&nbsp; START EXPERIMENT</button>
+        <button class="ghost" id="pausebtn" type="button" disabled>Pause</button>
+        <button class="ghost" id="replaybtn" type="button" hidden>▶ REPLAY EXPERIMENT</button>
+        <button class="ghost" id="resetbtn" type="button">↺ RESET</button>
+        <div class="spd" id="spd" role="group" aria-label="playback speed">
+          <button type="button" data-s="1" aria-pressed="true">1×</button>
+          <button type="button" data-s="2" aria-pressed="false">2×</button>
+        </div>
+        <button class="ghost" id="classbtn" type="button" aria-pressed="false">CLASSROOM MODE</button>
+        <div class="msg" id="gomsg">Nothing needs to be chosen. Press <b>START EXPERIMENT</b>.</div>
+      </div>
+      <div class="tools" role="group" aria-label="optional views">
+        <button type="button" id="t_eq" aria-pressed="false">SHOW EQUATION</button>
+        <button type="button" id="t_fld" aria-pressed="true">FIELD PARTICLES</button>
+        <button type="button" id="t_why" aria-pressed="false">SHOW WHY?</button>
+        <button type="button" id="t_cmp" aria-pressed="false">SLOW MOTION 0.5×</button>
+        <button type="button" id="t_rot">OPEN COUPLED-COIL EXPLORER</button>
+      </div>
+    </div>
+
+    <div class="grid2">
+      <div class="graphcard"><h4>Charge on the capacitor</h4><p class="gsub">against t/√(LC) — inner coil shorted (green) and open (grey)</p>
+        <div class="chartwrap"><svg class="chart" id="curve" viewBox="0 0 520 300" role="img" aria-label="Line chart of the capacitor charge against time for the shorted and the open inner coil, the shorted one oscillating faster"></svg></div></div>
+      <div class="graphcard"><h4>Resonance sweep</h4><p class="gsub">response against drive frequency ω√(LC), with the four options marked</p>
+        <div class="chartwrap"><svg class="chart" id="reso" viewBox="0 0 520 300" role="img" aria-label="Resonance curve of the circuit's response against drive frequency, peaking at two over root three, with vertical lines at the four options"></svg></div></div>
+    </div>
+
+    <h4 style="margin:14px 0 0;font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--text-muted)">Result audit — the four options</h4>
+    <div class="board" id="board">
+      <div class="ocard" id="oc_A"><div class="h"><b>(A)</b><span class="claim">4/√(15 LC)</span></div><p class="ev" id="ev_A">not yet examined</p><div class="vd" id="vd_A">UNEVALUATED</div></div>
+      <div class="ocard" id="oc_B"><div class="h"><b>(B)</b><span class="claim">6/√(5 LC)</span></div><p class="ev" id="ev_B">not yet examined</p><div class="vd" id="vd_B">UNEVALUATED</div></div>
+      <div class="ocard" id="oc_C"><div class="h"><b>(C)</b><span class="claim">2/√(3 LC)</span></div><p class="ev" id="ev_C">not yet examined</p><div class="vd" id="vd_C">UNEVALUATED</div></div>
+      <div class="ocard" id="oc_D"><div class="h"><b>(D)</b><span class="claim">√(2/(3 LC))</span></div><p class="ev" id="ev_D">not yet examined</p><div class="vd" id="vd_D">UNEVALUATED</div></div>
+    </div>
+
+    <div class="badges" id="badges" aria-label="achievements">
+      <div class="badge" id="b_sol"><span class="ic">🧲</span>Solenoid Sage</div>
+      <div class="badge" id="b_mut"><span class="ic">🔗</span>Mutual Master</div>
+      <div class="badge" id="b_flux"><span class="ic">🛡️</span>Flux Guardian</div>
+      <div class="badge" id="b_leff"><span class="ic">⚡</span>Inductance Hunter</div>
+      <div class="badge" id="b_trap"><span class="ic">🪤</span>Trap Spotter</div>
+      <div class="badge" id="b_mas"><span class="ic">🏆</span>Physics Master</div>
+    </div>
+
+    <div class="calc" id="calc">
+      <div class="bt"><span>Reasoning log — input → action → change → observation → conclusion</span><span id="calcstat"></span></div>
+      <p class="empty" id="calcempty">Nothing investigated yet.</p>
+      <ol id="calclist"></ol>
+      <details class="tbl" id="logbox"><summary>Evidence table (<span id="logn">0</span>)</summary>
+        <div class="scrollx"><table class="data" id="log"></table></div></details>
+    </div>
+
+  </div>
+</section>
+
+<section id="explorer">
+  <h2 class="big"><span class="n">02</span>Coupled-coil explorer</h2>
+  <p class="lede">Change the inner coil — its area, its length, its turns — and short it or open it. Watch where the field is allowed to
+     live. The effective inductance is the fraction of the volume the field still fills: L<sub>eff</sub> = L(1 − a·ℓ). The turns do not matter.</p>
+  <div class="mobox">
+    <div>
+      <div class="xview"><canvas id="cc" width="720" height="420" tabindex="0" role="img" aria-label="A side section of the long solenoid with the inner coil drawn at its chosen area and length, the magnetic field shaded where it exists, and the inner core dark when the coil is shorted"></canvas></div>
+      <div class="selrow"><label for="x_a">Area fraction a = S₂/S: <b id="x_av">0.50</b></label><input type="range" id="x_a" min="0.05" max="1" step="0.05" value="0.5"></div>
+      <div class="selrow"><label for="x_l">Length fraction ℓ = d₂/d: <b id="x_lv">0.50</b></label><input type="range" id="x_l" min="0.05" max="1" step="0.05" value="0.5"></div>
+      <div class="selrow"><label for="x_m">Turns ratio m = n₂/N: <b id="x_mv">2</b></label><input type="range" id="x_m" min="0.5" max="5" step="0.5" value="2"></div>
+      <div class="chkrow"><button type="button" class="ghost" id="x_mode" aria-pressed="true">⚡ SHORTED</button><button type="button" class="ghost" id="x_q">the question's coil</button><button type="button" class="ghost" id="x_reset">↺ reset</button></div>
+    </div>
+    <div><div class="panel xinfo" id="xinfo"></div></div>
+  </div>
+</section>
+
+<section id="solution">
+  <h2 class="big"><span class="n">03</span>Detailed solution</h2>
+  <p class="lede" id="solintro">The complete worked solution — the inductances, the shorted coil, the effective inductance and the frequency.</p>
+  <div class="gate" id="solgate" hidden>
+    <h4>The solution is still locked</h4>
+    <p>The experiment has not finished yet. Press START and let it run to the end — or use <i>Reveal anyway</i> in the header.</p>
+    <button class="ghost" id="gotolab" type="button">Go to the experiment ↑</button>
+  </div>
+  <div id="solbody">
+    <h3 style="font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-muted);margin:0 0 10px">Understand the concept</h3>
+    <div class="cards4">
+      <div><h4>Inductance of a long solenoid</h4><p>Inside a long solenoid B = μ₀nI, uniform. The flux linkage is (n l)(B A), so L = μ₀n²A l.</p>
+        <div class="eq">L = μ₀ N² S d</div></div>
+      <div><h4>Mutual inductance</h4><p>The outer coil's field μ₀NI₁ threads each of the inner coil's 2N·(d/2) turns over the inner area S/2.</p>
+        <div class="eq">M = μ₀ N (2N)(S/2)(d/2) = L/2</div></div>
+      <div><h4>A shorted coil guards its flux</h4><p>With no resistance its total EMF must be zero, so its flux linkage cannot change: a current appears that cancels the field inside it.</p>
+        <div class="eq">L₂ dI₂/dt + M dI₁/dt = 0</div></div>
+      <div><h4>Less field, less inductance</h4><p>The field is pushed out of a quarter of the volume, so the energy stored for a given current — and L — drops by a quarter.</p>
+        <div class="eq">L<sub>eff</sub> = L − M²/L₂ = 3L/4</div></div>
+    </div>
+
+    <ol class="steps" style="margin-top:14px">
+      <li><h4>Step 1 — Self-inductances</h4>
+        <div class="eq">L₁ = μ₀N²S d = L &nbsp;&nbsp;·&nbsp;&nbsp; L₂ = μ₀(2N)²(S/2)(d/2) = μ₀N²S d = <span class="hl">L</span></div>
+        <p>The inner coil has twice the turns per length on half the length — the same N d turns — on half the area.</p></li>
+      <li><h4>Step 2 — Mutual inductance</h4>
+        <div class="sol-fig"><svg class="mech" viewBox="0 0 420 170" width="420" role="img" aria-label="Side section of the two coils: the long outer coil with its uniform field, and the inner coil of half the area and half the length in its middle">
+          <defs><marker id="sfb1" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2a78d6"/></marker></defs>
+          <rect x="20" y="30" width="380" height="110" rx="10" fill="none" stroke="#b87333" stroke-width="3"/>
+          <rect x="115" y="61" width="190" height="48" rx="6" fill="none" stroke="#8a95a8" stroke-width="3" stroke-dasharray="6 3"/>
+          <g stroke="#2a78d6" stroke-width="1.6"><line x1="30" y1="45" x2="390" y2="45" marker-end="url(#sfb1)"/><line x1="30" y1="125" x2="390" y2="125" marker-end="url(#sfb1)"/><line x1="30" y1="85" x2="110" y2="85" marker-end="url(#sfb1)"/><line x1="310" y1="85" x2="390" y2="85" marker-end="url(#sfb1)"/></g>
+          <g font-family="Georgia,serif" font-size="12.5" fill="currentColor">
+            <text x="210" y="22" text-anchor="middle">outer coil: N per length, area S, length d</text>
+            <text x="210" y="160" text-anchor="middle">inner coil: 2N per length, area S/2, length d/2</text>
+            <text x="210" y="90" text-anchor="middle" fill="#2a78d6">B₁ = μ₀NI₁ threads it</text>
+          </g>
+        </svg><div class="cap">Flux linkage of the inner coil from I₁: (2N · d/2) turns × μ₀NI₁ × S/2 = (L/2)·I₁.</div></div>
+        <div class="eq">M = μ₀ · N · 2N · (S/2) · (d/2) = ½ μ₀N²S d = <span class="hl">L/2</span></div></li>
+      <li><h4>Step 3 — The shorted coil</h4>
+        <div class="sol-fig"><svg class="mech" viewBox="0 0 420 170" width="420" role="img" aria-label="With the inner coil shorted, its induced current cancels the field inside it: the field lines run only outside the inner coil, and its core is empty">
+          <defs><marker id="sfb2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2a78d6"/></marker></defs>
+          <rect x="20" y="30" width="380" height="110" rx="10" fill="none" stroke="#b87333" stroke-width="3"/>
+          <rect x="115" y="61" width="190" height="48" rx="6" fill="#111827" stroke="#8a95a8" stroke-width="3"/>
+          <g stroke="#2a78d6" stroke-width="1.6"><line x1="30" y1="45" x2="390" y2="45" marker-end="url(#sfb2)"/><line x1="30" y1="125" x2="390" y2="125" marker-end="url(#sfb2)"/><line x1="30" y1="85" x2="108" y2="85"/><line x1="312" y1="85" x2="390" y2="85" marker-end="url(#sfb2)"/></g>
+          <g font-family="Georgia,serif" font-size="12.5" fill="currentColor">
+            <text x="210" y="90" text-anchor="middle" fill="#e6edf7">B = 0 here</text>
+            <text x="210" y="160" text-anchor="middle">I₂ = −(M/L₂) I₁ = −I₁/2 : μ₀(N I₁ + 2N I₂) = 0</text>
+            <text x="210" y="22" text-anchor="middle">the field keeps 3/4 of the volume</text>
+          </g>
+        </svg><div class="cap">Zero resistance means zero EMF round the inner coil, so its flux linkage stays at zero: its current makes the field inside it vanish.</div></div>
+        <div class="eq">L₂ dI₂/dt + M dI₁/dt = 0 &nbsp;⇒&nbsp; I₂ = −(M/L₂) I₁ = <span class="hl">−I₁/2</span></div></li>
+      <li><h4>Step 4 — Effective inductance</h4>
+        <div class="eq">V = L₁ dI₁/dt + M dI₂/dt = (L₁ − M²/L₂) dI₁/dt &nbsp;⇒&nbsp; L<sub>eff</sub> = L − (L/2)²/L = <span class="hl">3L/4</span></div>
+        <p>Energy check: for the same I₁ the field fills 1 − (S/2)(d/2)/(S d) = 3/4 of the volume, so ½L<sub>eff</sub>I₁² = ¾ · ½LI₁².</p></li>
+      <li><h4>Step 5 — Resonant frequency</h4>
+        <div class="sol-fig"><svg class="mech" viewBox="0 0 420 180" width="420" role="img" aria-label="Resonance curve peaking at omega root LC equal to two over root three, higher than the open-coil resonance at one">
+          <path d="M 30 150 L 400 150" stroke="currentColor"/><path d="M 30 150 L 30 20" stroke="currentColor"/>
+          <path d="M 30 146 C 150 140 190 120 214 60 C 222 30 228 30 236 60 C 260 120 300 140 400 146" fill="none" stroke="#1baf7a" stroke-width="3"/>
+          <path d="M 30 146 C 130 140 160 120 178 70 C 184 50 190 50 196 70 C 216 120 290 140 400 147" fill="none" stroke="#8a95a8" stroke-width="2" stroke-dasharray="5 4"/>
+          <g font-family="Georgia,serif" font-size="12" fill="currentColor"><text x="232" y="26" fill="#1baf7a">shorted: 2/√3 ≈ 1.155</text><text x="120" y="44" fill="#8a95a8">open: 1</text><text x="370" y="168">ω√(LC)</text></g>
+        </svg><div class="cap">The short lowers the inductance, so the resonance moves up by 2/√3.</div></div>
+        <div class="calcblock">ω = 1/√(L<sub>eff</sub>C) = 1/√(3LC/4) = 2/√(3LC) &nbsp;→&nbsp; option <span class="hl" id="solans">—</span></div>
+        <table class="soltab"><thead><tr><th>Option</th><th>ω√(LC)</th><th>L<sub>eff</sub> it implies</th><th>What went wrong</th></tr></thead><tbody>
+          <tr><td>(A) 4/√(15 LC)</td><td>1.033</td><td>15L/16</td><td>removes only 1/16 of the volume — the area and length fractions squared</td></tr>
+          <tr><td>(B) 6/√(5 LC)</td><td>2.683</td><td>5L/36</td><td>no flux argument gives it</td></tr>
+          <tr><td><b>(C) 2/√(3 LC)</b></td><td><b>1.155</b></td><td><b>3L/4</b></td><td><b>correct</b></td></tr>
+          <tr><td>(D) √(2/(3 LC))</td><td>0.816</td><td>3L/2 = L + M</td><td>takes the induced current as aiding the flux (Lenz's law reversed)</td></tr>
+        </tbody></table>
+        <p>Traps: the inner coil is not in the circuit, yet it matters; its extra turns do not matter (L<sub>eff</sub> = L(1 − a·ℓ) for any turns); "resonant frequency" here is the angular frequency ω.</p></li>
+    </ol>
+
+    <h3 style="font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-muted);margin:18px 0 10px">Key takeaways</h3>
+    <ul class="takeaways">
+      <li>Long solenoid: L = μ₀n²A l; for two coaxial coils M = μ₀ n₁ n₂ (common area)(common length).</li>
+      <li>A <b>closed, resistance-free</b> loop keeps its flux linkage fixed: L₂İ₂ + Mİ₁ = 0.</li>
+      <li>A shorted coil coupled to a circuit <b>lowers</b> its inductance: L<sub>eff</sub> = L₁ − M²/L₂ = L₁(1 − k²).</li>
+      <li>For coaxial solenoids k² is the fraction of the outer coil's volume the inner coil fills — here 1/4 — whatever its turns.</li>
+      <li>Less inductance, higher resonance: ω = 1/√(L<sub>eff</sub>C).</li>
+    </ul>
+
+    <div class="verify">
+      <h4>Independent verification</h4>
+      <ul>
+        <li><b>Symbolic.</b> sympy builds L₁, L₂ and M from μ₀n²Al and μ₀n₁n₂Al, imposes zero EMF on the shorted coil and gets L<sub>eff</sub> = 3L/4, ω = 2/√(3LC); only option C equals it.</li>
+        <li><b>Circuit integration.</b> The two coupled coil equations integrated with scipy (no L<sub>eff</sub> used): the measured period gives ω√(LC) = 1.154701, I₂ = −I₁/2 throughout, energy conserved.</li>
+        <li><b>Field energy.</b> Flux conservation fixes I₂; Ampère's law gives B = 0 inside the inner coil and μ₀NI₁ elsewhere; the energy integral gives L<sub>eff</sub> = 3L/4.</li>
+        <li><b>Controls.</b> Open inner coil: ω√(LC) = 1. Other turns, areas and lengths: always 1/√(1 − a·ℓ).</li>
+        <li><b>Solution website.</b> MathonGo's published solution (their Q18 = Physics Q.2) gives (C) by the same steps.</li>
+        <li><b>This page.</b> The bench computes L₂, M and L<sub>eff</sub> from the geometry, integrates the circuit, and works the field energy; the answer is the option that matches.</li>
+        <li><b>Answer key.</b> Checked against the official key printed with the paper: Q.2 → C.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="howto">
+  <h2 class="big"><span class="n">04</span>How to use this simulation</h2>
+  <p class="lede">For a student opening it for the first time. The whole investigation runs by itself after one press.</p>
+  <div class="howto">
+    <div><div class="n">STEP 1</div><h4>Read the mission brief</h4>
+      <p>An LC circuit whose coil hides a second, shorted coil. What is the resonant frequency?</p></div>
+    <div><div class="n">STEP 2</div><h4>Check the values</h4>
+      <p>The question's coil is loaded. <b>You do not need to change anything.</b> The answer is shown above the experiment.</p></div>
+    <div><div class="n">STEP 3</div><h4>Optional: customize</h4>
+      <p>Change the inner coil's turns, area or length, or leave it open. The lab says honestly when you have left the question.
+         <b>↺ RESTORE QUESTION CONDITIONS</b> puts everything back.</p></div>
+    <div><div class="n">STEP 4</div><h4>Start</h4>
+      <p>Press <b>▶ START EXPERIMENT</b> under the experiment screen. Nothing else to click (about a minute; <b>SLOW MOTION</b> or <b>2×</b> changes the pace).</p></div>
+    <div><div class="n">STEP 5</div><h4>Watch the field</h4>
+      <p>Blue particles are the magnetic field along the axis. When the switch closes, the inner coil's current (orange) drives them out of its core.</p></div>
+    <div><div class="n">STEP 6</div><h4>Read the scope</h4>
+      <p>The oscilloscope compares the charge on C with the coil open (grey) and shorted (green): the shorted circuit rings faster. The sweep finds the resonance.</p></div>
+    <div><div class="n">STEP 7</div><h4>Explore</h4>
+      <p>In the <b>Coupled-coil explorer</b> change the inner coil and watch L<sub>eff</sub>. Then read the <b>Detailed solution</b>.</p></div>
+    <div><div class="n">STEP 8</div><h4>Experiment again</h4>
+      <p>Press <b>▶ REPLAY EXPERIMENT</b>, or change a value and press <b>⚙ RUN WITH CUSTOM VALUES</b>. <b>CLASSROOM MODE</b>
+         enlarges everything for a projector.</p></div>
+  </div>
+  <div class="panel" style="margin-top:14px">
+    <h3>Classification</h3>
+    <table class="meta-tbl"><tbody>
+      <tr><th>Exam</th><td>JEE Advanced 2026, Paper 1, Physics, Section 1, Q.2</td></tr>
+      <tr><th>Chapter</th><td>Electromagnetic Induction</td></tr>
+      <tr><th>Topic</th><td>Self and mutual inductance of coaxial solenoids - a shorted coil lowers the effective inductance and raises the LC resonance</td></tr>
+      <tr><th>Difficulty</th><td>Moderate</td></tr>
+      <tr><th>Verification</th><td>script-verified (automated pipeline, no human review)</td></tr>
+      <tr><th>Answer</th><td><b id="clsans">— run the experiment</b></td></tr>
+    </tbody></table>
+  </div>
+</section>
+
+<footer>
+  ADV-2026-P1-PHY-Q02 · PrayogX · JEE Advanced Interactive Simulation Library · question text reproduced
+  from the official JEE (Advanced) 2026 Paper 1 for educational use. This is a virtual laboratory only.
+</footer>
+</div>
+
+<script>
+(function(){
+"use strict";
+
+/* =====================================================================
+   helpers
+   ===================================================================== */
+var NS = "http://www.w3.org/2000/svg";
+function $(id){ return document.getElementById(id); }
+function mk(n, a, parent){
+  var e = document.createElementNS(NS, n), k;
+  if (a) for (k in a) if (Object.prototype.hasOwnProperty.call(a, k)) e.setAttribute(k, a[k]);
+  if (parent) parent.appendChild(e);
+  return e;
+}
+function tx(parent, x, y, s, a){ var o = a || {}; o.x = x; o.y = y; var t = mk("text", o, parent); t.textContent = s; return t; }
+function clamp(v, a, b){ return v < a ? a : (v > b ? b : v); }
+function ease(t){ t = clamp(t, 0, 1); return t * t * (3 - 2 * t); }
+function lerp(a, b, t){ return a + (b - a) * t; }
+var REDUCED = !!(window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches);
+
+/* =====================================================================
+   the physics engine - pure and extractable (tests/verify_p1phyq02.py runs it in Node).
+   Nothing here stores the answer: the bench builds L2 and M from the coils' geometry,
+   imposes zero EMF on the shorted coil, integrates the circuit and weighs the field
+   energy; the answer is the printed option whose frequency equals the one it found.
+   ===================================================================== */
+/* ENGINE-BEGIN */
+var ENGINE = (function(){
+  /* the question: inner coil with 2N turns per length (m = 2), area S/2 (a = 1/2), length d/2 (l = 1/2), ends shorted */
+  var Q = { m: 2, a: 0.5, l: 0.5, mode: "short" };
+  /* the options exactly as printed, as omega sqrt(LC): num/sqrt(rad), or sqrt(p/q) */
+  var OPTS = [{ key: "A", kind: "frac", num: 4, rad: 15 }, { key: "B", kind: "frac", num: 6, rad: 5 },
+              { key: "C", kind: "frac", num: 2, rad: 3 }, { key: "D", kind: "root", p: 2, q: 3 }];
+  function optVal(o){ return o.kind === "frac" ? o.num / Math.sqrt(o.rad) : Math.sqrt(o.p / o.q); }
+  function isQ(D){ return D.m === Q.m && D.a === Q.a && D.l === Q.l && D.mode === Q.mode; }
+  /* units: mu0 = N = S = d = 1, so the outer coil's L = mu0 N^2 S d = 1 and C = 1: time in sqrt(LC), omega in 1/sqrt(LC) */
+  function inductances(D){
+    var L1 = 1;                                    /* mu0 n^2 A l of the outer coil */
+    var L2 = D.m * D.m * D.a * D.l;                /* mu0 (m N)^2 (a S)(l d) */
+    var M = 1 * D.m * D.a * D.l;                   /* outer field mu0 N I1 through the inner coil's (m N)(l d) turns of area a S */
+    return { L1: L1, L2: L2, M: M };
+  }
+  /* route 1: zero EMF round the shorted coil, L2 dI2/dt + M dI1/dt = 0, so the outer coil sees L1 - M^2/L2 */
+  function effective(D, I){ return D.mode === "short" ? I.L1 - I.M * I.M / I.L2 : I.L1; }
+  /* route 2: the coupled circuit integrated (RK4): L1 i1' + M i2' = -q, M i1' + L2 i2' = 0 (shorted) or i2 = 0 (open) */
+  function deriv(D, I, y){
+    var q = y[0], det = I.L1 * I.L2 - I.M * I.M;
+    if (D.mode !== "short") return [y[1], -q / I.L1, 0];
+    return [y[1], -q * I.L2 / det, q * I.M / det];
+  }
+  function integrate(D, I, T, h, every){
+    var y = [1, 0, 0], t = 0, i, k1, k2, k3, k4, add, s = [], ups = [], prev = 1;
+    add = function(a, b, c){ return [a[0] + c * b[0], a[1] + c * b[1], a[2] + c * b[2]]; };
+    for (i = 0; t < T; i++){
+      if (every && i % every === 0) s.push([t, y[0], y[1], y[2]]);
+      k1 = deriv(D, I, y); k2 = deriv(D, I, add(y, k1, h / 2)); k3 = deriv(D, I, add(y, k2, h / 2)); k4 = deriv(D, I, add(y, k3, h));
+      var ny = [y[0] + h / 6 * (k1[0] + 2 * k2[0] + 2 * k3[0] + k4[0]), y[1] + h / 6 * (k1[1] + 2 * k2[1] + 2 * k3[1] + k4[1]), y[2] + h / 6 * (k1[2] + 2 * k2[2] + 2 * k3[2] + k4[2])];
+      if (y[0] < 0 && ny[0] >= 0) ups.push(t + h * (-y[0]) / (ny[0] - y[0]));
+      prev = y[0]; y = ny; t += h;
+    }
+    var w = ups.length > 1 ? 2 * Math.PI * (ups.length - 1) / (ups[ups.length - 1] - ups[0]) : null;
+    return { w: w, series: s };
+  }
+  /* route 3: field energy. With I1 = 1: flux conservation of the shorted coil fixes I2 (its linkage (m l)(a) B_in stays 0);
+     Ampere: B = mu0 N I1 outside the inner coil (its own field is confined inside it), B_in = mu0 N I1 + mu0 m N I2 inside.
+     L = 2U / I1^2 with U = integral of B^2 / 2 mu0 over the volumes (outer volume S d = 1). */
+  function fieldRoute(D){
+    var I2 = D.mode === "short" ? -1 / D.m : 0;   /* solves m l a (1 + m I2) = 0 */
+    var Bin = 1 + D.m * I2, Bout = 1, vin = D.a * D.l;
+    return { I2: I2, Bin: Bin, Bout: Bout, Leff: Bout * Bout * (1 - vin) + Bin * Bin * vin };
+  }
+  function response(w, Leff, R){ var x = w * Leff - 1 / w; return 1 / Math.sqrt(R * R + x * x); }
+  function run(D){
+    var I = inductances(D), Leff = effective(D, I), w = 1 / Math.sqrt(Leff), F = fieldRoute(D);
+    var num = integrate(D, I, 40, 0.004, 0), sh = integrate(D, I, 24, 0.01, 5), op = integrate({ m: D.m, a: D.a, l: D.l, mode: "open" }, I, 24, 0.01, 5);
+    var k2 = I.M * I.M / (I.L1 * I.L2), vin = D.a * D.l;
+    var options = OPTS.map(function(o){
+      var v = optVal(o), imp = 1 / (v * v), okv = Math.abs(v - w) < 1e-9, why;
+      if (okv) why = "exactly the bench's frequency";
+      else if (Math.abs(imp - (1 + I.M)) < 1e-9) why = "L + M: the induced current taken as aiding the flux (Lenz's law reversed)";
+      else if (Math.abs(imp - (1 - vin * vin)) < 1e-9) why = "removes only (a·ℓ)² = " + (vin * vin).toFixed(4) + " of the volume — the fractions squared";
+      else if (Math.abs(imp - 1) < 1e-9) why = "ignores the shorted coil";
+      else why = "no flux argument gives this inductance";
+      return { key: o.key, val: v, implied: imp, ok: okv, ev: "ω√(LC) = " + v.toFixed(4) + " ⇒ L_eff = " + imp.toFixed(4) + " L: " + why + "." };
+    });
+    var hits = options.filter(function(o){ return o.ok; }), q = isQ(D);
+    var agree = num.w !== null && Math.abs(num.w - w) < 2e-4 && Math.abs(F.Leff - Leff) < 1e-12;
+    var R = { D: { m: D.m, a: D.a, l: D.l, mode: D.mode }, L1: I.L1, L2: I.L2, M: I.M, k2: k2, Leff: Leff, w: w, w0: 1, wNum: num.w,
+      I2ratio: D.mode === "short" ? -I.M / I.L2 : 0, Bin: F.Bin, Bout: F.Bout, LeffField: F.Leff, volOut: 1 - vin,
+      seriesShort: sh.series, seriesOpen: op.series, options: options, agree: agree, isQuestion: q };
+    R.answer = hits.length === 1 && q ? hits[0].key : "ω√(LC) = " + w.toFixed(4);
+    R.complete = q && hits.length === 1 && agree;
+    return R;
+  }
+  return { Q: Q, OPTS: OPTS, run: run, inductances: inductances, effective: effective, integrate: integrate, fieldRoute: fieldRoute, response: response, optVal: optVal };
+})();
+/* ENGINE-END */
+
+/* =====================================================================
+   question data and the optional conditions
+   ===================================================================== */
+var Q = ENGINE.Q;
+var FIELDS = [
+  { k: "m", lab: "Inner coil turns per length", type: "num", min: 0.5, max: 5, step: 0.5, unit: "× N", hint: "the question: 2N" },
+  { k: "a", lab: "Inner coil area", type: "num", min: 0.05, max: 1, step: 0.05, unit: "× S", hint: "the question: S/2" },
+  { k: "l", lab: "Inner coil length", type: "num", min: 0.05, max: 1, step: 0.05, unit: "× d", hint: "the question: d/2" },
+  { k: "mode", lab: "Inner coil ends", type: "sel", opts: [["short", "joined by a wire — shorted (the question)"], ["open", "left open"]] }
+];
+var ST = {}; (function(){ var k; for (k in Q) ST[k] = Q[k]; })();
+function fieldsHTML(){
+  var h = "", i, j, F;
+  for (i = 0; i < FIELDS.length; i++){
+    F = FIELDS[i];
+    if (F.type === "num"){
+      h += '<div class="fld" id="fld_' + F.k + '"><div class="lb"><label for="in_' + F.k + '"><b>' + F.lab + '</b></label><span class="u">' + F.unit + '</span></div>' +
+        '<div class="rw"><button type="button" class="dn" data-k="' + F.k + '" aria-label="decrease ' + F.lab + '">−</button><input id="in_' + F.k + '" inputmode="decimal" value="' + Q[F.k] + '">' +
+        '<button type="button" class="up" data-k="' + F.k + '" aria-label="increase ' + F.lab + '">+</button></div><div class="fh" id="fh_' + F.k + '">' + F.hint + '</div></div>';
+    } else {
+      h += '<div class="selrow" id="fld_' + F.k + '"><label for="in_' + F.k + '">' + F.lab + '</label><select class="sel" id="in_' + F.k + '">';
+      for (j = 0; j < F.opts.length; j++) h += '<option value="' + F.opts[j][0] + '"' + (F.opts[j][0] === Q[F.k] ? " selected" : "") + ">" + F.opts[j][1] + "</option>";
+      h += "</select></div>";
+    }
+  }
+  return h;
+}
+function fieldOf(k){ var i; for (i = 0; i < FIELDS.length; i++) if (FIELDS[i].k === k) return FIELDS[i]; return null; }
+/* robust parsing: empty, invalid, negative, zero or out-of-range values fall back to the question's value with a message */
+function parseField(F, raw){
+  var s = String(raw).replace(/,/g, ".").replace(/\s+/g, ""), v;
+  if (/^\d+\/\d+$/.test(s)){ var pq = s.split("/"); v = +pq[0] / +pq[1]; s = String(v); }
+  v = parseFloat(s);
+  if (s === "") return { v: Q[F.k], msg: "empty — using the question's " + Q[F.k] };
+  if (!/^[+-]?(\d+\.?\d*|\.\d+)$/.test(s) || !isFinite(v)) return { v: Q[F.k], msg: "not a number — using " + Q[F.k] };
+  if (v <= 0) return { v: Q[F.k], msg: "must be positive — using " + Q[F.k] };
+  if (v < F.min || v > F.max) return { v: Math.min(F.max, Math.max(F.min, v)), msg: "kept to " + F.min + "–" + F.max + (F.k !== "m" ? " (it must fit inside the outer coil)" : "") };
+  return { v: Math.round(v * 1000) / 1000, msg: null };
+}
+function conditionWarnings(D){
+  var w = [];
+  if (D.m !== Q.m) w.push("⚠ The question's inner coil has <b>2N turns per unit length</b>. (Watch: with the ends shorted, the turns do not change L<sub>eff</sub>.)");
+  if (D.a !== Q.a) w.push("⚠ The question's inner coil has area <b>S/2</b>. A different area changes how much of the field volume it can empty.");
+  if (D.l !== Q.l) w.push("⚠ The question's inner coil has length <b>d/2</b>. A different length changes how much of the field volume it can empty.");
+  if (D.mode !== Q.mode) w.push("⚠ In the question the inner coil's ends are <b>joined by a wire</b>. Left open, no current flows in it and it has no effect.");
+  return w;
+}
+function readAll(){
+  var i, F, p;
+  for (i = 0; i < FIELDS.length; i++){
+    F = FIELDS[i];
+    if (F.type === "num"){
+      p = parseField(F, $("in_" + F.k).value); ST[F.k] = p.v;
+      $("in_" + F.k).classList.toggle("bad", !!p.msg); $("fh_" + F.k).classList.toggle("bad", !!p.msg);
+      $("fh_" + F.k).textContent = p.msg || F.hint;
+    } else {
+      var v = $("in_" + F.k).value, okv = false, j;
+      for (j = 0; j < F.opts.length; j++) if (F.opts[j][0] === v) okv = true;
+      ST[F.k] = okv ? v : Q[F.k];
+    }
+  }
+  var w = conditionWarnings(ST), box = $("condwarn");
+  box.hidden = !w.length; box.innerHTML = w.join("<br>");
+}
+function isCustom(D){ var k; D = D || ST; for (k in Q) if (D[k] !== Q[k]) return true; return false; }
+function copyST(){ var o = {}, k; for (k in Q) o[k] = ST[k]; return o; }
+function sameD(a, b){ var k; for (k in Q) if (a[k] !== b[k]) return false; return true; }
+function run(D){ return ENGINE.run(D); }
+
+var QRUN = run(copyST());
+var ANS = QRUN.answer;
+var ANSNOTE = "ω = 2/√(3LC): L_eff = 3L/4, ω√(LC) = " + QRUN.w.toFixed(4);
+
+/* =====================================================================
+   experiment engine - one automatic timeline, one virtual clock
+   ===================================================================== */
+var SEGS = [["load", 6.2], ["field", 6.8], ["inner", 6.6], ["mutual", 6.8], ["short", 8.2], ["leff", 7.0], ["osc", 8.6], ["sweep", 8.2], ["test", 6.6], ["answer", 4.4]];
+var STAGE_MSG = { load: "Wiring the circuit…", field: "Driving current through the coil…", inner: "Measuring the inner coil…", mutual: "Linking the two coils…",
+  short: "Closing the shorting switch…", leff: "Weighing the field…", osc: "Timing the oscillation…", sweep: "Sweeping the drive frequency…", test: "Auditing the options…", answer: "Reading the resonance…" };
+var ORDER = ["load", "field", "inner", "mutual", "short", "leff", "osc", "sweep", "test", "answer"];
+var BADGES = ["sol", "mut", "flux", "leff", "trap", "mas"];
+var RUN = { state: "setup", paused: false, speed: 1, segs: [], si: 0, u: 0, D: copyST(), R: null, done: false, revealed: false,
+  calc: {}, cards: {}, badges: {}, classroom: false, rows: [], closed: false, ph: 0, scope: [], sweepW: null };
+RUN.R = run(RUN.D);
+var earlyReveal = false;
+var TOTAL = (function(){ var t = 0, i; for (i = 0; i < SEGS.length; i++) t += SEGS[i][1]; return t; })();
+function buildTimeline(){ var s = [], i; for (i = 0; i < SEGS.length; i++) s.push({ kind: SEGS[i][0], dur: SEGS[i][1] }); return s; }
+function seg(){ return RUN.segs[RUN.si] || null; }
+function elapsed(){ var t = 0, i; for (i = 0; i < RUN.si && i < RUN.segs.length; i++) t += RUN.segs[i].dur; return t + (seg() ? RUN.u : 0); }
+var NOW = null;
+function currentState(){
+  var sg = seg();
+  if (RUN.done) return { name: "rest", f: 1 };
+  if (RUN.state === "setup" || !sg) return { name: "idle", f: 0 };
+  return { name: sg.kind, f: clamp(RUN.u / sg.dur, 0, 1) };
+}
+function stageAt(n){ return RUN.done ? 99 : ORDER.indexOf(n); }
+/* the circuit's live state. Before the short closes it rings at omega0 = 1; the switch closes at an instant when I1 = 0
+   (so the inner coil starts with zero flux linkage) and from then on it rings at omega = 1/sqrt(L_eff). */
+function live(){
+  var R = RUN.R, shortOn = R.D.mode === "short" && RUN.closed, w = shortOn ? R.w : 1;
+  var I1 = RUN.state === "setup" ? 0 : Math.sin(RUN.ph), q = RUN.state === "setup" ? 1 : Math.cos(RUN.ph);
+  var I2 = shortOn ? R.I2ratio * I1 : 0;
+  var Bout = I1, Bin = shortOn ? R.Bin * I1 : I1;
+  var Leff = shortOn ? R.Leff : 1;
+  /* energy share at this instant: U_E = q^2/2C, U_B = Leff I^2/2 with I scaled so the total is fixed */
+  return { I1: I1, I2: I2, q: q, Bout: Bout, Bin: Bin, w: w, Leff: Leff, shortOn: shortOn, UE: q * q, UB: I1 * I1 };
+}
+
+/* ---- the case file ---- */
+function setTile(k, text, ok){
+  var t = $("u_" + k); if (!t) return;
+  t.classList.toggle("found", ok === true); t.classList.toggle("warn", ok === false);
+  t.querySelector(".v").textContent = text;
+}
+function setCard(k){
+  var o = null, i; for (i = 0; i < RUN.R.options.length; i++) if (RUN.R.options[i].key === k) o = RUN.R.options[i];
+  var c = $("oc_" + k); RUN.cards[k] = { v: o.ok, ev: o.ev };
+  c.classList.remove("now", "yes", "no", "na"); c.classList.add(o.ok ? "yes" : "no");
+  $("ev_" + k).textContent = o.ev; $("vd_" + k).textContent = o.ok ? "✓ MATCHES THE BENCH" : "✗ DOES NOT MATCH";
+  var li = document.querySelector('#opts li[data-o="' + k + '"]');
+  if (li){ li.classList.toggle("correct", o.ok && RUN.R.complete); li.classList.toggle("wrong", !o.ok); li.querySelector(".mark").textContent = o.ok ? (RUN.R.complete ? "✓ correct" : "✓ matches") : "✗"; }
+}
+function focusCard(k){ var i; for (i = 0; i < 4; i++) $("oc_" + "ABCD"[i]).classList.toggle("now", "ABCD"[i] === k); }
+function clearBoard(){
+  var i, k;
+  for (i = 0; i < 4; i++){ k = "ABCD"[i]; $("oc_" + k).className = "ocard"; $("ev_" + k).textContent = "not yet examined"; $("vd_" + k).textContent = "UNEVALUATED"; }
+  var lis = document.querySelectorAll("#opts li"); for (i = 0; i < lis.length; i++){ lis[i].classList.remove("correct", "wrong"); lis[i].querySelector(".mark").textContent = ""; }
+  ["A", "B", "R"].forEach(function(k){ var t = $("u_" + k); t.className = ""; t.querySelector(".v").textContent = "?"; });
+  BADGES.forEach(function(b){ $("b_" + b).classList.remove("on", "pop"); });
+}
+function badge(b){
+  if (RUN.badges[b]) return; RUN.badges[b] = true;
+  var e = $("b_" + b); e.classList.add("on"); e.classList.remove("pop"); void e.offsetWidth; e.classList.add("pop");
+}
+function frac(v){ var d, n; for (d = 1; d <= 64; d++){ n = Math.round(v * d); if (Math.abs(n / d - v) < 1e-9) return d === 1 ? String(n) : n + "/" + d; } return v.toFixed(4); }
+
+function onProgress(sg, f){
+  var once = function(key, fn){ if (!RUN.calc["@" + key]){ RUN.calc["@" + key] = true; fn(); } };
+  if (sg.kind === "test"){
+    if (f > 0.12) once("A", function(){ setCard("A"); addCalc("a"); });
+    if (f > 0.34) once("B", function(){ setCard("B"); addCalc("b"); });
+    if (f > 0.56) once("C", function(){ setCard("C"); addCalc("c"); });
+    if (f > 0.78) once("D", function(){ setCard("D"); addCalc("d"); if (RUN.R.options.filter(function(o){ return !o.ok; }).length === 3) badge("trap"); });
+    focusCard(f < 0.12 ? null : f < 0.34 ? "A" : f < 0.56 ? "B" : f < 0.78 ? "C" : f < 0.97 ? "D" : null);
+  }
+}
+function onSegEnd(sg){
+  var R = RUN.R, k = sg.kind, K1 = R.D;
+  onProgress(sg, 1);
+  if (k === "load"){ addCalc("load"); logRow("load"); }
+  if (k === "field"){ addCalc("field"); badge("sol"); }
+  if (k === "inner"){ addCalc("inner"); }
+  if (k === "mutual"){ addCalc("mutual"); setTile("A", "L₂ = " + fsym(R.L2, "L") + " · M = " + fsym(R.M, "L"), !isCustom(R.D)); badge("mut"); logRow("mutual"); }
+  if (k === "short"){ addCalc("short"); if (R.D.mode === "short") badge("flux"); logRow("short"); }
+  if (k === "leff"){ addCalc("leff"); setTile("B", fsym(R.Leff, "L"), !isCustom(R.D)); badge("leff"); }
+  if (k === "osc"){ addCalc("osc"); logRow("osc"); }
+  if (k === "sweep"){ addCalc("sweep"); setTile("R", R.w.toFixed(4), R.complete); }
+  if (k === "test") focusCard(null);
+}
+function onSegStart(sg){ if (sg.kind === "answer") $("donebanner").classList.add("on"); }
+function stepTimeline(sdt){
+  var sg = seg(); if (!sg) return;
+  RUN.u += sdt;
+  onProgress(sg, clamp(RUN.u / sg.dur, 0, 1));
+  while (sg && RUN.u >= sg.dur){
+    RUN.u -= sg.dur;
+    onSegEnd(sg);
+    RUN.si++;
+    sg = seg();
+    if (!sg){ finish(); return; }
+    onSegStart(sg);
+  }
+}
+/* the circuit's own clock: phase advances at the circuit's omega (shown slowed down: one unit of sqrt(LC) = 0.35 s at 1x);
+   the short closes at the first zero of I1 after the switch is thrown */
+var VIS = 1 / 0.35;
+function stepCircuit(dt){
+  var st = currentState(), R = RUN.R, n = st.name, i = stageAt(n);
+  var w = (R.D.mode === "short" && RUN.closed) ? R.w : 1, old = RUN.ph;
+  RUN.ph += w * VIS * dt;
+  if (!RUN.closed && R.D.mode === "short" && (i > ORDER.indexOf("short") || (n === "short" && st.f > 0.3))){
+    if (Math.floor(RUN.ph / Math.PI) !== Math.floor(old / Math.PI)){ RUN.ph = Math.ceil(old / Math.PI) * Math.PI; RUN.closed = true; }
+  }
+  if (!RUN.done && (n === "osc" || n === "short" || n === "leff")){ RUN.scope.push([RUN.ph, Math.cos(RUN.ph), RUN.closed]); if (RUN.scope.length > 420) RUN.scope.shift(); }
+  if (n === "sweep") RUN.sweepW = lerp(0.55, 1.9, ease(st.f));
+}
+function clearRunUI(){
+  $("calclist").innerHTML = ""; $("calcempty").hidden = false;
+  $("donebanner").classList.remove("on");
+  $("revealhost").classList.remove("on"); $("revealhost").innerHTML = "";
+  $("lab3d").classList.remove("dim"); $("blackout").classList.remove("on");
+  burst = []; clearBoard();
+}
+function freshRun(){ RUN.si = 0; RUN.u = 0; RUN.paused = false; RUN.done = false; RUN.revealed = false; RUN.calc = {}; RUN.cards = {}; RUN.badges = {}; RUN.rows = []; RUN.closed = false; RUN.ph = 0; RUN.scope = []; RUN.sweepW = null; }
+function startRun(D){
+  readAll();
+  RUN.D = D || copyST(); RUN.R = run(RUN.D);
+  RUN.segs = buildTimeline(); freshRun(); RUN.state = "running";
+  clearRunUI(); drawLog(); refreshUI(); refreshAnswerBox();
+}
+function resetRun(){
+  RUN.state = "setup"; RUN.segs = []; freshRun();
+  readAll(); RUN.D = copyST(); RUN.R = run(RUN.D);
+  clearRunUI(); drawLog(); refreshUI(); refreshAnswerBox();
+}
+function resetAll(){
+  var i; for (i = 0; i < FIELDS.length; i++) $("in_" + FIELDS[i].k).value = Q[FIELDS[i].k];
+  readAll(); earlyReveal = false; resetRun(); refreshGate();
+}
+function finish(){
+  RUN.si = RUN.segs.length; RUN.state = "done"; RUN.done = true;
+  addCalc("match"); if (RUN.R.complete) badge("mas");
+  refreshUI(); refreshAnswerBox();
+  doReveal();
+}
+
+/* =====================================================================
+   reasoning log
+   ===================================================================== */
+function chain(a){ return a.join(' <span style="color:var(--text-muted)">→</span> '); }
+function calcHTML(key){
+  var R = RUN.R, D = R.D, o;
+  switch (key){
+    case "load": return ["CIRCUIT", chain(["C in series with the outer coil (L = μ₀N²Sd)", "inner coil inside it, ends " + (D.mode === "short" ? "to be shorted" : "open"), "ω₀√(LC) = 1 with the inner coil open"])];
+    case "field": return ["SOLENOID", chain(["B = μ₀NI₁ inside, uniform (d² ≫ S)", "flux linkage (N d)(B S)", "<b>L = μ₀N²S d</b>"])];
+    case "inner": return ["INNER COIL", chain([fsym(D.m, "N") + " per length × " + fsym(D.l, "d") + " = " + fsym(D.m * D.l, "Nd") + " turns", "area " + fsym(D.a, "S"), "<b>L₂ = μ₀(" + fsym(D.m, "N") + ")²(" + fsym(D.a, "S") + ")(" + fsym(D.l, "d") + ") = " + fsym(R.L2, "L") + "</b>"])];
+    case "mutual": return ["MUTUAL", chain(["B₁ = μ₀NI₁ through the inner coil", "linkage (" + fsym(D.m * D.l, "Nd") + ")(μ₀NI₁)(" + fsym(D.a, "S") + ")", "<b>M = " + fsym(R.M, "L") + "</b>", "k² = M²/(L₁L₂) = " + frac(R.k2)])];
+    case "short": return ["SHORT", D.mode === "short" ? chain(["R = 0: zero EMF round the inner coil", "L₂İ₂ + Mİ₁ = 0", "<b>I₂ = −(M/L₂) I₁ = " + (R.I2ratio < 0 ? "−" : "") + fsym(Math.abs(R.I2ratio), "I₁") + "</b>", "B inside it = " + frac(R.Bin) + " · μ₀NI₁"])
+      : "The ends are open: no current can flow in the inner coil, so it changes nothing."];
+    case "leff": return ["L_eff", chain(["V = L₁İ₁ + Mİ₂ = (L₁ − M²/L₂) İ₁", "field fills " + frac(R.volOut) + " of the volume", "<b>L_eff = " + fsym(R.Leff, "L") + "</b>", "energy route: " + fsym(R.LeffField, "L") + (Math.abs(R.LeffField - R.Leff) < 1e-12 ? " ✓" : " ✗")])];
+    case "osc": return ["RING", chain(["charge on C oscillates", "ω√(LC) = 1/√(L_eff/L) = <b>" + R.w.toFixed(4) + "</b>", "integrated circuit: " + (R.wNum === null ? "—" : R.wNum.toFixed(4)) + (R.agree ? " ✓ agrees" : " ✗")])];
+    case "sweep": return ["RESONANCE", chain(["drive swept 0.55 → 1.9", "response peaks at ω√(LC) = <b>" + R.w.toFixed(4) + "</b>", "ω = 1/√(" + frac(R.Leff) + " LC)"])];
+    case "a": case "b": case "c": case "d": o = R.options["abcd".indexOf(key)];
+      return ["(" + o.key + ")", o.ev + " &nbsp;⇒&nbsp; " + (o.ok ? "<span class=hl>✓ MATCHES</span>" : '<b style="color:var(--bad)">✗ DOES NOT MATCH</b>')];
+    case "match":
+      return ["ANSWER", R.complete ? "L_eff = 3L/4 ⇒ ω = <span class=hl>2/√(3LC)</span> — option <span class=hl>" + R.answer + "</span>"
+        : "Your conditions give " + R.answer + " — not the question's set-up; restore it to answer the question."];
+  }
+  return null;
+}
+function addCalc(key){
+  if (RUN.calc[key]) return;
+  var c = calcHTML(key); if (!c) return;
+  RUN.calc[key] = true;
+  $("calcempty").hidden = true;
+  var li = document.createElement("li");
+  li.setAttribute("data-key", key);
+  li.innerHTML = '<span class="s">' + c[0] + '</span><span class="m">' + c[1] + "</span>";
+  $("calclist").appendChild(li);
+}
+function calcKeys(){ return Object.keys(RUN.calc).filter(function(k){ return k.charAt(0) !== "@"; }); }
+function logRow(stage){
+  var R = RUN.R, after = stage === "short" || stage === "osc", sh = R.D.mode === "short" && after;
+  RUN.rows.push([{ load: "circuit", mutual: "coupled", short: "short closed", osc: "ringing" }[stage], sh ? "closed" : (R.D.mode === "short" ? "open (not yet)" : "open"),
+    sh ? frac(R.I2ratio) : "0", sh ? frac(R.Bin) : "1", sh ? frac(R.Leff) : "1", sh ? R.w.toFixed(4) : "1.0000"]);
+  drawLog();
+}
+function drawLog(){
+  var h = "<thead><tr><th>stage</th><th>switch</th><th>I₂/I₁</th><th>B inside / B outside</th><th>L_eff / L</th><th>ω√(LC)</th></tr></thead><tbody>", i, r;
+  for (i = 0; i < RUN.rows.length; i++){ r = RUN.rows[i]; h += "<tr><td>" + r[0] + "</td><td>" + r[1] + "</td><td class=n>" + r[2] + "</td><td class=n>" + r[3] + "</td><td class=n>" + r[4] + "</td><td class=n>" + r[5] + "</td></tr>"; }
+  $("log").innerHTML = h + "</tbody>";
+  $("logn").textContent = RUN.rows.length;
+}
+
+/* =====================================================================
+   drawing - the bench
+   ===================================================================== */
+var burst = [], clock = 0, SHOW = { eq: false, fld: true, why: false };
+var BLUE = "#6fb8ff", CU = "#ff9d4d", SILVER = "#cfd8e6", GREEN = "#3ee39a", GOLD = "#ffd79a", PINK = "#ff8ab8", RED = "#ff6b6b";
+function label(g, s, x, y, col, size, align, weight){
+  g.fillStyle = col; g.font = (weight || 600) + " " + (size || 14) + "px ui-sans-serif,system-ui,sans-serif";
+  g.textAlign = align || "center"; g.textBaseline = "middle"; g.fillText(s, x, y);
+}
+function pill(g, s, x, y, col, size){
+  g.font = "800 " + (size || 12) + "px ui-sans-serif,system-ui,sans-serif";
+  var w = g.measureText(s).width + 14, h = (size || 12) + 10;
+  g.fillStyle = "rgba(8,14,28,.88)"; g.strokeStyle = col; g.lineWidth = 1;
+  g.beginPath(); if (g.roundRect) g.roundRect(x - w / 2, y - h / 2, w, h, h / 2); else g.rect(x - w / 2, y - h / 2, w, h); g.fill(); g.stroke();
+  label(g, s, x, y + 0.5, col, size || 12, "center", 800);
+}
+function panelBox(g, x, y, w, h, col){
+  var gr = g.createLinearGradient(x, y, x, y + h); gr.addColorStop(0, "rgba(18,28,52,.94)"); gr.addColorStop(1, "rgba(8,14,28,.94)");
+  g.fillStyle = gr; g.beginPath(); if (g.roundRect) g.roundRect(x, y, w, h, 12); else g.rect(x, y, w, h); g.fill();
+  g.strokeStyle = col || "rgba(160,190,255,.28)"; g.lineWidth = 1.2; g.stroke();
+}
+function hood(g, W, H){
+  var gr = g.createLinearGradient(0, 0, 0, H);
+  gr.addColorStop(0, "#0c1326"); gr.addColorStop(1, "#05070f");
+  g.fillStyle = gr; g.fillRect(0, 0, W, H);
+  var rg = g.createRadialGradient(W * 0.28, H * 0.42, 10, W * 0.28, H * 0.42, W * 0.55);
+  rg.addColorStop(0, "rgba(80,140,255,.16)"); rg.addColorStop(1, "rgba(0,0,0,0)");
+  g.fillStyle = rg; g.fillRect(0, 0, W, H);
+  var rg2 = g.createRadialGradient(W * 0.8, H * 0.1, 10, W * 0.8, H * 0.1, W * 0.4);
+  rg2.addColorStop(0, "rgba(62,227,154,.08)"); rg2.addColorStop(1, "rgba(0,0,0,0)");
+  g.fillStyle = rg2; g.fillRect(0, 0, W, H);
+}
+function arrowLine(g, x0, y0, x1, y1, col, w){
+  var a = Math.atan2(y1 - y0, x1 - x0);
+  g.strokeStyle = col; g.fillStyle = col; g.lineWidth = w; g.beginPath(); g.moveTo(x0, y0); g.lineTo(x1 - 7 * Math.cos(a), y1 - 7 * Math.sin(a)); g.stroke();
+  g.beginPath(); g.moveTo(x1, y1); g.lineTo(x1 - 11 * Math.cos(a - 0.4), y1 - 11 * Math.sin(a - 0.4)); g.lineTo(x1 - 11 * Math.cos(a + 0.4), y1 - 11 * Math.sin(a + 0.4)); g.closePath(); g.fill();
+}
+/* geometry of the bench */
+var SX0 = 78, SX1 = 468, CY = 262, RY = 92, TURNS = 18, CX = 540;
+function innerGeo(){ var D = RUN.R.D, len = D.l * (SX1 - SX0), xm = (SX0 + SX1) / 2; return { x0: xm - len / 2, x1: xm + len / 2, r: RY * Math.sqrt(D.a) * 0.96, n: Math.max(2, Math.round(D.m * D.l * TURNS)) }; }
+/* "S/2", "2N", "d/2": a fraction written the way the question writes it */
+function fsym(v, sym){ var d, n; for (d = 1; d <= 64; d++){ n = Math.round(v * d); if (Math.abs(n / d - v) < 1e-9) return (n === 1 ? sym : n + sym) + (d === 1 ? "" : "/" + d); } return v.toFixed(3) + sym; }
+/* a sprite for glowing field particles */
+var SPR = null;
+function sprite(){
+  if (SPR) return SPR;
+  SPR = document.createElement("canvas"); SPR.width = SPR.height = 24;
+  var g = SPR.getContext("2d"), rg = g.createRadialGradient(12, 12, 0, 12, 12, 12);
+  rg.addColorStop(0, "rgba(220,240,255,1)"); rg.addColorStop(0.3, "rgba(110,184,255,.8)"); rg.addColorStop(1, "rgba(60,120,255,0)");
+  g.fillStyle = rg; g.fillRect(0, 0, 24, 24); return SPR;
+}
+var PARTS = (function(){ var p = [], i, s = 7; var r = function(){ s = (s * 1664525 + 1013904223) >>> 0; return s / 4294967296; }; for (i = 0; i < 190; i++) p.push({ u: r(), v: r() * 2 - 1, z: r() }); return p; })();
+function stepParticles(dt, L){
+  var i, p, gi = innerGeo(), sp = 0.18 * dt;
+  for (i = 0; i < PARTS.length; i++){
+    p = PARTS[i];
+    var x = SX0 + p.u * (SX1 - SX0), inCore = L.shortOn && x > gi.x0 && x < gi.x1 && Math.abs(p.v) * RY < gi.r;
+    p.u += (inCore ? 0 : L.Bout) * sp;
+    if (p.u > 1) p.u -= 1; if (p.u < 0) p.u += 1;
+  }
+}
+function drawParticles(g, L){
+  if (!SHOW.fld) return;
+  var i, p, gi = innerGeo(), s = sprite(), a = Math.min(1, Math.abs(L.Bout) * 1.1 + 0.08);
+  g.save(); g.globalCompositeOperation = "lighter";
+  for (i = 0; i < PARTS.length; i++){
+    p = PARTS[i];
+    var x = SX0 + p.u * (SX1 - SX0), y = CY + p.v * RY * 0.9;
+    if (L.shortOn && x > gi.x0 && x < gi.x1 && Math.abs(p.v) * RY < gi.r) continue;   /* the core holds no field */
+    g.globalAlpha = a * (0.45 + 0.55 * p.z);
+    g.drawImage(s, x - 7, y - 7, 14, 14);
+  }
+  g.restore();
+}
+function turnArc(g, x, ry, back, col, w){
+  g.strokeStyle = col; g.lineWidth = w; g.beginPath();
+  g.ellipse(x, CY, 8, ry, 0, back ? Math.PI / 2 : -Math.PI / 2, back ? Math.PI * 1.5 : Math.PI / 2); g.stroke();
+}
+function drawSolenoid(g, L, st){
+  var i, x, gi = innerGeo(), n = st.name, idx = stageAt(n);
+  /* glass tube */
+  var gl = g.createLinearGradient(0, CY - RY, 0, CY + RY);
+  gl.addColorStop(0, "rgba(160,200,255,.20)"); gl.addColorStop(0.5, "rgba(120,160,230,.05)"); gl.addColorStop(1, "rgba(160,200,255,.16)");
+  g.fillStyle = gl; g.fillRect(SX0, CY - RY, SX1 - SX0, 2 * RY);
+  g.strokeStyle = "rgba(190,215,255,.35)"; g.lineWidth = 1.2; g.beginPath(); g.ellipse(SX0, CY, 20, RY, 0, 0, Math.PI * 2); g.stroke(); g.beginPath(); g.ellipse(SX1, CY, 20, RY, 0, 0, Math.PI * 2); g.stroke();
+  /* back halves of the outer turns */
+  for (i = 0; i < TURNS; i++){ x = SX0 + (i + 0.5) * (SX1 - SX0) / TURNS; turnArc(g, x, RY, true, "rgba(184,115,51,.45)", 3); }
+  /* the core highlighted */
+  if (idx >= ORDER.indexOf("inner")){
+    g.fillStyle = L.shortOn ? "rgba(3,6,14,.85)" : "rgba(200,215,235,.07)";
+    g.beginPath(); if (g.roundRect) g.roundRect(gi.x0, CY - gi.r, gi.x1 - gi.x0, 2 * gi.r, 10); else g.rect(gi.x0, CY - gi.r, gi.x1 - gi.x0, 2 * gi.r); g.fill();
+  }
+  drawParticles(g, L);
+  /* the inner coil */
+  var glowI = L.shortOn ? Math.min(1, Math.abs(L.I2) * 2) : 0;
+  for (i = 0; i < gi.n; i++){ x = gi.x0 + (i + 0.5) * (gi.x1 - gi.x0) / gi.n; turnArc(g, x, gi.r, true, "rgba(207,216,230,.35)", 2); }
+  g.save(); g.shadowColor = glowI > 0.05 ? "#ffb070" : "#dfe8ff"; g.shadowBlur = 8 + 10 * glowI;
+  for (i = 0; i < gi.n; i++){ x = gi.x0 + (i + 0.5) * (gi.x1 - gi.x0) / gi.n; turnArc(g, x, gi.r, false, glowI > 0.05 ? "rgba(255," + Math.round(215 - 80 * glowI) + ",140,1)" : "#eef3fb", 2.6); }
+  g.restore();
+  /* front halves of the outer turns: copper with a highlight, brighter with current */
+  var hot = Math.min(1, Math.abs(L.I1));
+  for (i = 0; i < TURNS; i++){
+    x = SX0 + (i + 0.5) * (SX1 - SX0) / TURNS;
+    turnArc(g, x, RY, false, "rgba(90,45,15,.55)", 4);
+    turnArc(g, x, RY, false, "rgba(255," + Math.round(150 + 60 * hot) + "," + Math.round(70 + 60 * hot) + ",.72)", 2.2);
+  }
+  if (L.shortOn && SHOW.fld) pill(g, "B = 0 in the core", (gi.x0 + gi.x1) / 2, CY, "#e8f0ff", 13);
+  /* shorting leads and knife switch, left of the coil */
+  var sx = 40, yT = CY - gi.r, yB = CY + gi.r, on = RUN.closed || RUN.R.D.mode === "short" && RUN.state === "done";
+  g.strokeStyle = SILVER; g.lineWidth = 2.2; g.beginPath(); g.moveTo(gi.x0, yT); g.lineTo(sx, yT); g.moveTo(gi.x0, yB); g.lineTo(sx, yB); g.stroke();
+  var ang = on ? 0 : (RUN.R.D.mode === "short" && n === "short" ? lerp(0.62, 0, ease(clamp((st.f - 0.15) / 0.2, 0, 1))) : 0.62);
+  if (RUN.R.D.mode !== "short") ang = 0.62;
+  g.strokeStyle = on ? GREEN : "#e0e6f0"; g.lineWidth = 4; g.beginPath(); g.moveTo(sx, yB); g.lineTo(sx - Math.sin(ang) * (yB - yT), yB - Math.cos(ang) * (yB - yT)); g.stroke();
+  g.fillStyle = "#e0e6f0"; g.beginPath(); g.arc(sx, yB, 4, 0, Math.PI * 2); g.fill(); g.beginPath(); g.arc(sx, yT, 4, 0, Math.PI * 2); g.fill();
+  pill(g, on ? "SHORTED" : "OPEN", sx + 2, yB + 24, on ? GREEN : "#c3d2ea", 11);
+  /* dimension labels */
+  if (idx >= ORDER.indexOf("inner") || n === "idle" || n === "load"){ label(g, "d", (SX0 + SX1) / 2, CY + RY + 20, "#8fa6c9", 13, "center", 800); }
+  if (idx >= ORDER.indexOf("inner")) pill(g, "inner coil: " + fsym(RUN.R.D.m, "N") + " · " + fsym(RUN.R.D.a, "S") + " · " + fsym(RUN.R.D.l, "d"), (gi.x0 + gi.x1) / 2, CY - RY - 18, SILVER, 11);
+}
+/* the outer circuit: coil -> capacitor -> AC source -> back */
+var WIRE = [[SX1, CY - RY], [SX1, 110], [CX, 110], [CX, 200], null, [CX, 218], [CX, 338], null, [CX, 382], [CX, 540], [SX0, 540], [SX0, CY + RY]];
+function drawCircuit(g, L, st){
+  var i, a, b;
+  g.strokeStyle = "rgba(255,190,120,.85)"; g.lineWidth = 2.5; g.lineCap = "round";
+  for (i = 0; i < WIRE.length - 1; i++){ a = WIRE[i]; b = WIRE[i + 1]; if (!a || !b) continue; g.beginPath(); g.moveTo(a[0], a[1]); g.lineTo(b[0], b[1]); g.stroke(); }
+  /* current dots moving with I1 */
+  var segs = [], tot = 0;
+  for (i = 0; i < WIRE.length - 1; i++){ a = WIRE[i]; b = WIRE[i + 1]; if (!a || !b) continue; var l = Math.hypot(b[0] - a[0], b[1] - a[1]); segs.push([a, b, l]); tot += l; }
+  var off = ((RUN.ph * 22) % 28 + 28) % 28, dot = 28, s, k;
+  if (RUN.state !== "setup"){
+    g.fillStyle = "#fff3c4";
+    for (k = off; k < tot; k += dot){
+      var rem = k;
+      for (s = 0; s < segs.length; s++){ if (rem <= segs[s][2]){ var p = segs[s]; g.globalAlpha = 0.35 + 0.65 * Math.min(1, Math.abs(L.I1)); g.beginPath(); g.arc(p[0][0] + (p[1][0] - p[0][0]) * rem / p[2], p[0][1] + (p[1][1] - p[0][1]) * rem / p[2], 2.6, 0, Math.PI * 2); g.fill(); break; } rem -= segs[s][2]; }
+    }
+    g.globalAlpha = 1;
+  }
+  /* capacitor: plates lit by charge, field lines between them */
+  var q = L.q, pw = 30;
+  g.fillStyle = q >= 0 ? "rgba(255,107,107," + (0.35 + 0.65 * Math.abs(q)) + ")" : "rgba(111,184,255," + (0.35 + 0.65 * Math.abs(q)) + ")"; g.fillRect(CX - pw, 196, 2 * pw, 5);
+  g.fillStyle = q >= 0 ? "rgba(111,184,255," + (0.35 + 0.65 * Math.abs(q)) + ")" : "rgba(255,107,107," + (0.35 + 0.65 * Math.abs(q)) + ")"; g.fillRect(CX - pw, 217, 2 * pw, 5);
+  g.strokeStyle = "rgba(255,230,160," + (0.6 * Math.abs(q)).toFixed(2) + ")"; g.lineWidth = 1;
+  for (i = -2; i <= 2; i++){ g.beginPath(); g.moveTo(CX + i * 11, 202); g.lineTo(CX + i * 11, 216); g.stroke(); }
+  label(g, "C", CX + 46, 209, GOLD, 15, "center", 900);
+  /* AC source */
+  var drive = st.name === "sweep";
+  g.fillStyle = drive ? "rgba(62,227,154,.18)" : "rgba(20,30,50,.9)"; g.beginPath(); g.arc(CX, 360, 22, 0, Math.PI * 2); g.fill();
+  g.strokeStyle = drive ? GREEN : "#c3d2ea"; g.lineWidth = 2; g.stroke();
+  g.beginPath(); for (i = 0; i <= 20; i++){ var xx = CX - 12 + i * 1.2, yy = 360 - 7 * Math.sin(i / 20 * Math.PI * 2 + (drive ? clock * 6 : 0)); if (!i) g.moveTo(xx, yy); else g.lineTo(xx, yy); } g.stroke();
+  label(g, drive && RUN.sweepW ? "drive " + RUN.sweepW.toFixed(2) : "AC", CX + (drive ? 58 : 40), 360, drive ? GREEN : "#c3d2ea", 12, "center", 800);
+}
+/* right-hand instruments: scope, energy / field volume, stage card */
+function drawScope(g, L, st){
+  var x = 604, y = 18, w = 424, h = 262, i, R = RUN.R;
+  panelBox(g, x, y, w, h, "rgba(62,227,154,.35)");
+  label(g, st.name === "sweep" || stageAt(st.name) > ORDER.indexOf("sweep") ? "RESONANCE SWEEP" : "OSCILLOSCOPE · charge on C", x + 14, y + 16, "#9ff0c9", 11, "left", 800);
+  var gx = x + 14, gy = y + 30, gw = w - 28, gh = h - 50;
+  g.strokeStyle = "rgba(62,227,154,.12)"; g.lineWidth = 1;
+  for (i = 0; i <= 10; i++){ g.beginPath(); g.moveTo(gx + gw * i / 10, gy); g.lineTo(gx + gw * i / 10, gy + gh); g.stroke(); }
+  for (i = 0; i <= 6; i++){ g.beginPath(); g.moveTo(gx, gy + gh * i / 6); g.lineTo(gx + gw, gy + gh * i / 6); g.stroke(); }
+  if (st.name === "sweep" || stageAt(st.name) > ORDER.indexOf("sweep")){
+    var wmax = 1.9, wmin = 0.55, cur = st.name === "sweep" ? RUN.sweepW || wmin : wmax, peak = ENGINE.response(R.w, R.Leff, 0.08);
+    var X = function(v){ return gx + gw * (v - wmin) / (wmax - wmin); }, Y = function(r){ return gy + gh - gh * 0.92 * r / peak; };
+    g.strokeStyle = "rgba(160,170,190,.55)"; g.setLineDash([5, 4]); g.lineWidth = 1.5; g.beginPath();
+    for (i = 0; i <= 200; i++){ var v = wmin + (wmax - wmin) * i / 200, r0 = Math.min(peak, ENGINE.response(v, 1, 0.08)); if (!i) g.moveTo(X(v), Y(r0)); else g.lineTo(X(v), Y(r0)); } g.stroke(); g.setLineDash([]);
+    g.save(); g.shadowColor = GREEN; g.shadowBlur = 12; g.strokeStyle = GREEN; g.lineWidth = 2.6; g.beginPath();
+    for (i = 0; i <= 200; i++){ var v2 = wmin + (cur - wmin) * i / 200, r = ENGINE.response(v2, R.Leff, 0.08); if (!i) g.moveTo(X(v2), Y(r)); else g.lineTo(X(v2), Y(r)); } g.stroke(); g.restore();
+    if (cur >= R.w){ g.strokeStyle = GOLD; g.setLineDash([3, 3]); g.beginPath(); g.moveTo(X(R.w), gy); g.lineTo(X(R.w), gy + gh); g.stroke(); g.setLineDash([]); pill(g, "peak ω√(LC) = " + R.w.toFixed(4), Math.min(X(R.w) + 70, gx + gw - 80), gy + 16, GOLD, 12); }
+    label(g, "open coil (ω√(LC) = 1)", X(1) - 4, gy + gh - 12, "#a0aabb", 10.5, "right", 700);
+    label(g, "ω√(LC) →", gx + gw - 4, gy + gh + 11, "#8fa6c9", 10.5, "right", 700);
+    label(g, "representative damping — the question has none", gx + 4, gy + gh + 11, "#8fa6c9", 10.5, "left", 700);
+    return;
+  }
+  var sc = RUN.scope, n = sc.length;
+  if (n > 1){
+    var ph0 = sc[0][0], span = Math.max(sc[n - 1][0] - ph0, 1e-6), X2 = function(p){ return gx + gw * (p - ph0) / Math.max(span, 14); };
+    if (stageAt(st.name) >= ORDER.indexOf("osc")){
+      g.strokeStyle = "rgba(160,170,190,.6)"; g.setLineDash([5, 4]); g.lineWidth = 1.6; g.beginPath();
+      for (i = 0; i < n; i++){ var pp = sc[i][0], pOpen = ph0 + (pp - ph0) / R.w; if (!i) g.moveTo(X2(pp), gy + gh / 2 - gh * 0.42 * Math.cos(pOpen)); else g.lineTo(X2(pp), gy + gh / 2 - gh * 0.42 * Math.cos(pOpen)); }
+      g.stroke(); g.setLineDash([]);
+    }
+    g.save(); g.shadowColor = GREEN; g.shadowBlur = 14; g.lineWidth = 2.6;
+    for (i = 1; i < n; i++){ g.strokeStyle = sc[i][2] ? GREEN : "#b8c4d8"; g.beginPath(); g.moveTo(X2(sc[i - 1][0]), gy + gh / 2 - gh * 0.42 * sc[i - 1][1]); g.lineTo(X2(sc[i][0]), gy + gh / 2 - gh * 0.42 * sc[i][1]); g.stroke(); }
+    g.restore();
+  } else label(g, "trace appears when the coil starts ringing", gx + gw / 2, gy + gh / 2, "#8fa6c9", 12, "center", 700);
+  label(g, "green: shorted · grey dashed: the same circuit with the coil open", gx + 4, gy + gh + 11, "#8fa6c9", 10.5, "left", 700);
+}
+function drawEnergy(g, L, st){
+  var x = 604, y = 296, w = 424, h = 150, R = RUN.R, idx = stageAt(st.name);
+  panelBox(g, x, y, w, h);
+  label(g, "ENERGY AND FIELD VOLUME", x + 14, y + 16, "#8fa6c9", 11, "left", 800);
+  var tot = L.UE + L.UB || 1, bw = 190;
+  label(g, "U_E (capacitor)", x + 14, y + 44, "#ffb4b4", 12, "left", 800); g.fillStyle = "rgba(255,107,107,.18)"; g.fillRect(x + 130, y + 36, bw, 14); g.fillStyle = RED; g.fillRect(x + 130, y + 36, bw * L.UE / tot, 14);
+  label(g, "U_B (coil field)", x + 14, y + 70, "#b8dcff", 12, "left", 800); g.fillStyle = "rgba(111,184,255,.18)"; g.fillRect(x + 130, y + 62, bw, 14); g.fillStyle = BLUE; g.fillRect(x + 130, y + 62, bw * L.UB / tot, 14);
+  /* the coil's volume: how much of it holds field */
+  var vx = x + 14, vy = y + 94, vw = 280, vh = 40, a = R.D.a, l = R.D.l, show = idx >= ORDER.indexOf("leff") && L.shortOn;
+  g.fillStyle = "rgba(111,184,255,.55)"; g.fillRect(vx, vy, vw, vh);
+  if (idx >= ORDER.indexOf("inner")){
+    var iw = vw * l, ih = vh * a;
+    g.fillStyle = show ? "#03060e" : "rgba(207,216,230,.25)"; g.fillRect(vx + (vw - iw) / 2, vy + (vh - ih) / 2, iw, ih);
+    g.strokeStyle = SILVER; g.lineWidth = 1; g.strokeRect(vx + (vw - iw) / 2, vy + (vh - ih) / 2, iw, ih);
+  }
+  label(g, show ? "field fills " + Math.round(100 * R.volOut) + " %" : "field fills 100 %", x + 360, y + 104, show ? GREEN : "#c3d2ea", 13, "center", 900);
+  label(g, "L_eff = " + frac(L.shortOn && idx >= ORDER.indexOf("leff") ? R.Leff : 1) + " L", x + 360, y + 128, GOLD, 13, "center", 900);
+}
+var CARD = {
+  idle: ["READY", "an LC circuit with a coil inside the coil"], load: ["THE CIRCUIT", "inner coil open: ω₀ = 1/√(LC)"],
+  field: ["SOLENOID FIELD", "B = μ₀NI₁  ⇒  L = μ₀N²Sd"], inner: ["THE INNER COIL", "L₂ = μ₀(2N)²(S/2)(d/2) = L"],
+  mutual: ["MUTUAL INDUCTANCE", "M = μ₀N·2N·(S/2)(d/2) = L/2"], short: ["SHORT IT", "zero EMF: I₂ = −(M/L₂)I₁ = −I₁/2"],
+  leff: ["THE FIELD LEAVES THE CORE", "L_eff = L − M²/L₂ = 3L/4"], osc: ["RINGING FASTER", "ω = 1/√(L_eff C)"],
+  sweep: ["RESONANCE", "the peak sits at ω√(LC) = 2/√3"], test: ["AUDIT", "which option gives this frequency?"],
+  answer: ["ANSWER", "ω = 2/√(3LC)"], rest: ["CASE CLOSED", "ω = 2/√(3LC) — option (C)"]
+};
+function drawCard(g, st){
+  var x = 604, y = 462, w = 424, h = 140, c = CARD[st.name] || CARD.idle, R = RUN.R;
+  panelBox(g, x, y, w, h, "rgba(255,215,154,.45)");
+  if (!R.complete && (st.name === "rest" || st.name === "answer")) c = ["YOUR CONDITIONS", "ω√(LC) = " + R.w.toFixed(4) + " — not the question's coil"];
+  label(g, c[0], x + w / 2, y + 40, GOLD, 22, "center", 900);
+  label(g, c[1], x + w / 2, y + 80, "#e8f0ff", 16, "center", 700);
+  var stp = { load: 1, field: 2, inner: 3, mutual: 4, short: 5, leff: 6, osc: 7, sweep: 8 }[st.name];
+  if (stp) label(g, "stage " + stp + " of 8", x + w / 2, y + 114, "#8fa6c9", 12, "center", 800);
+}
+function drawLab(st){
+  var c = $("labcv"), g = c.getContext("2d"), W = c.width, H = c.height, L = live();
+  hood(g, W, H);
+  drawCircuit(g, L, st);
+  drawSolenoid(g, L, st);
+  drawScope(g, L, st);
+  drawEnergy(g, L, st);
+  drawCard(g, st);
+  if (SHOW.eq){ panelBox(g, 18, 560, 560, 48, "rgba(255,215,154,.6)"); label(g, "L₂İ₂ + Mİ₁ = 0  ⇒  L_eff = L − M²/L₂ = 3L/4  ⇒  ω = 2/√(3LC)", 298, 584, GOLD, 14, "center", 800); }
+  else if (SHOW.why){ panelBox(g, 18, 560, 560, 48); label(g, "Why? A resistance-free loop cannot change its flux: its current cancels the field inside it,", 298, 574, "#e8f0ff", 12, "center", 700); label(g, "so the coil stores less energy per current — a smaller L and a higher frequency.", 298, 594, "#e8f0ff", 12, "center", 700); }
+}
+
+/* =====================================================================
+   charts - drawn from the model
+   ===================================================================== */
+function drawCharts(st){
+  var R = RUN.R, svg = $("curve"), idx = stageAt(st.name), show = RUN.state !== "setup" && idx >= ORDER.indexOf("osc");
+  var key = String(show) + R.D.m + R.D.a + R.D.l + R.D.mode;
+  if (svg.getAttribute("data-k") !== key){
+    svg.setAttribute("data-k", key); svg.innerHTML = "";
+    var X0 = 50, X1 = 505, Y0 = 262, Y1 = 22, T = 24, ax = "var(--text-muted)", i;
+    var X = function(t){ return X0 + (X1 - X0) * t / T; }, Y = function(q){ return (Y0 + Y1) / 2 - (Y0 - Y1) / 2 * q * 0.92; };
+    mk("line", { x1: X0, y1: Y((1)), x2: X0, y2: Y(-1), stroke: ax }, svg); mk("line", { x1: X0, y1: Y(0), x2: X1, y2: Y(0), stroke: ax }, svg);
+    for (i = 0; i <= 4; i++) tx(svg, X(T * i / 4), Y0 + 18, (T * i / 4).toFixed(0), { "text-anchor": "middle", "font-size": 10, fill: ax });
+    tx(svg, (X0 + X1) / 2, 296, "t / √(LC)", { "text-anchor": "middle", "font-size": 11, fill: ax });
+    tx(svg, X0 - 6, Y(1) + 4, "+Q₀", { "text-anchor": "end", "font-size": 10, fill: ax }); tx(svg, X0 - 6, Y(-1) + 4, "−Q₀", { "text-anchor": "end", "font-size": 10, fill: ax });
+    if (!show){ tx(svg, (X0 + X1) / 2, 140, "drawn when the circuit rings", { "text-anchor": "middle", "font-size": 12, fill: ax }); }
+    else {
+      var path = function(sr, col, w, dash){ var d = "", j; for (j = 0; j < sr.length; j++) d += (j ? "L" : "M") + X(sr[j][0]).toFixed(1) + " " + Y(sr[j][1]).toFixed(1); mk("path", { d: d, fill: "none", stroke: col, "stroke-width": w, "stroke-dasharray": dash || "none" }, svg); };
+      path(R.seriesOpen, "var(--text-muted)", 1.8, "5 4");
+      path(R.seriesShort, "var(--good)", 2.6);
+      tx(svg, X1, Y1 + 8, "period " + (2 * Math.PI / R.w).toFixed(3) + " vs " + (2 * Math.PI).toFixed(3) + " √(LC)", { "text-anchor": "end", "font-size": 10.5, fill: "var(--good)", "font-weight": 700 });
+    }
+  }
+  drawReso(st);
+}
+function drawReso(st){
+  var R = RUN.R, svg = $("reso"), idx = stageAt(st.name), show = RUN.state !== "setup" && idx >= ORDER.indexOf("sweep"), opts = idx >= ORDER.indexOf("test") || RUN.done;
+  var key = String(show) + String(opts) + R.D.m + R.D.a + R.D.l + R.D.mode;
+  if (svg.getAttribute("data-k") === key) return; svg.setAttribute("data-k", key); svg.innerHTML = "";
+  var X0 = 50, X1 = 505, Y0 = 262, Y1 = 22, wmin = 0.5, wmax = 2.9, ax = "var(--text-muted)", i, peak = ENGINE.response(R.w, R.Leff, 0.08);
+  var X = function(w){ return X0 + (X1 - X0) * (w - wmin) / (wmax - wmin); }, Y = function(r){ return Y0 - (Y0 - Y1) * 0.92 * Math.min(r, peak) / peak; };
+  mk("line", { x1: X0, y1: Y0, x2: X1, y2: Y0, stroke: ax }, svg); mk("line", { x1: X0, y1: Y0, x2: X0, y2: Y1, stroke: ax }, svg);
+  for (i = 1; i <= 5; i++) tx(svg, X(i * 0.5), Y0 + 16, (i * 0.5).toFixed(1), { "text-anchor": "middle", "font-size": 10, fill: ax });
+  tx(svg, (X0 + X1) / 2, 296, "ω√(LC)", { "text-anchor": "middle", "font-size": 11, fill: ax });
+  if (!show){ tx(svg, (X0 + X1) / 2, 140, "drawn by the frequency sweep", { "text-anchor": "middle", "font-size": 12, fill: ax }); return; }
+  var curve = function(Le, col, w, dash){ var d = "", j, v; for (j = 0; j <= 300; j++){ v = wmin + (wmax - wmin) * j / 300; d += (j ? "L" : "M") + X(v).toFixed(1) + " " + Y(ENGINE.response(v, Le, 0.08)).toFixed(1); } mk("path", { d: d, fill: "none", stroke: col, "stroke-width": w, "stroke-dasharray": dash || "none" }, svg); };
+  curve(1, "var(--text-muted)", 1.6, "5 4"); curve(R.Leff, "var(--good)", 2.6);
+  mk("line", { x1: X(R.w), x2: X(R.w), y1: Y0, y2: Y1, stroke: "var(--s4)", "stroke-width": 1.5, "stroke-dasharray": "3 3" }, svg);
+  tx(svg, X(R.w) + 5, Y1 + 12, "peak " + R.w.toFixed(4), { "font-size": 10.5, fill: "var(--s4)", "font-weight": 700 });
+  if (opts) for (i = 0; i < R.options.length; i++){
+    var o = R.options[i], xo = X(Math.min(o.val, wmax - 0.02));
+    mk("line", { x1: xo, x2: xo, y1: Y0, y2: Y0 - 30 - 10 * i, stroke: o.ok ? "var(--good)" : "var(--bad)", "stroke-width": 2 }, svg);
+    tx(svg, xo, Y0 - 36 - 10 * i, "(" + o.key + ")", { "text-anchor": "middle", "font-size": 10.5, fill: o.ok ? "var(--good)" : "var(--bad)", "font-weight": 800 });
+  }
+}
+
+/* =====================================================================
+   status, narration, instrument panel, answer panel
+   ===================================================================== */
+function stageKey(){ var sg = seg(); if (RUN.state === "setup") return null; if (RUN.done) return "answer"; return sg ? sg.kind : null; }
+function refreshStatus(){
+  var k = stageKey(), x = $("xstat"), txt, cls = "xstat", g;
+  if (RUN.state === "setup"){ txt = "Ready"; g = isCustom() ? "Custom conditions set — press RUN WITH CUSTOM VALUES." : "Set your values or use the question defaults. Press START EXPERIMENT to begin."; }
+  else if (RUN.done){ txt = "✓ Experiment complete"; cls += " done"; g = "Result obtained."; }
+  else if (k === "load" && RUN.u < 1.5){ txt = "Preparing experiment"; cls += " run"; g = "Preparing the apparatus…"; }
+  else if (k === "test"){ txt = "Analysing data"; cls += " ana"; g = "Analysing experimental evidence…"; }
+  else if (k === "answer"){ txt = "Calculation complete"; cls += " ana"; g = "Calculating the result…"; }
+  else { txt = "Experiment running"; cls += " run"; g = "Experiment running…"; }
+  if (RUN.paused){ txt = "Paused"; cls = "xstat"; g = "Paused — press Play."; }
+  x.className = cls; $("xstattxt").textContent = txt; $("guide").textContent = g;
+  var ki = ORDER.indexOf(k), sp = document.querySelectorAll("#stages span"), i;
+  for (i = 0; i < sp.length; i++){ var j = ORDER.indexOf(sp[i].getAttribute("data-s")); sp[i].className = k === null ? "" : (j < ki || RUN.done ? "done" : (j === ki ? "now" : "")); }
+}
+function refreshAnswerBox(){
+  var pct = RUN.state === "setup" ? 0 : RUN.done ? 100 : Math.round(100 * elapsed() / TOTAL), k = stageKey(), ab = $("answerbox");
+  $("apbar").style.width = pct + "%"; $("ansstripbar").style.width = pct + "%";
+  ab.classList.remove("locked"); ab.classList.toggle("work", RUN.state === "running");
+  $("ansval").textContent = "(" + ANS + ")"; $("ansstripv").textContent = "(" + ANS + ")";
+  var sub = RUN.state === "setup" ? ANSNOTE + " — press START EXPERIMENT to watch why." : RUN.done ? "✓ Confirmed by the experiment — " + ANSNOTE + "." : "● " + (STAGE_MSG[k] || "…") + "  " + pct + "%";
+  $("anssub").textContent = sub; $("ansstrips").textContent = sub;
+}
+function refreshUI(){
+  var go = $("gobtn"), runn = RUN.state === "running", custom = isCustom();
+  go.hidden = false; go.disabled = runn; go.classList.toggle("custom", custom && !runn);
+  if (runn) go.innerHTML = "● RUNNING…";
+  else if (RUN.state === "done"){ go.innerHTML = "⚙&nbsp; RUN WITH CUSTOM VALUES"; go.hidden = sameD(RUN.D, copyST()); }
+  else go.innerHTML = custom ? "⚙&nbsp; RUN WITH CUSTOM VALUES" : "▶&nbsp; START EXPERIMENT";
+  $("pausebtn").disabled = !runn; $("pausebtn").textContent = RUN.paused ? "Play" : "Pause";
+  $("replaybtn").hidden = RUN.state !== "done";
+  var s = $("status"); s.className = "status" + (custom ? " custom" : "");
+  s.textContent = custom ? "⚙ USING CUSTOM VALUES" : "✓ QUESTION VALUES LOADED";
+  var q = document.querySelectorAll("#fields input, #fields select, #fields button, #resetq"), i; for (i = 0; i < q.length; i++) q[i].disabled = runn;
+  $("gomsg").innerHTML = runn ? "The investigation runs by itself — nothing to click. <b>Pause</b> any time." : RUN.state === "done" ? "Press <b>REPLAY</b> to watch it again, or change a condition and run a custom experiment." : (custom ? "Your conditions will be used; the lab will say if the question's set-up no longer applies." : "Nothing needs to be chosen. Press <b>START EXPERIMENT</b>.");
+  refreshStatus();
+}
+function narrate(st){
+  var h = "", R = RUN.R, D = R.D, n = st.name;
+  if (RUN.state === "setup") h = "A capacitor, an AC source and a long coil with a second coil hidden inside it. " + (isCustom() ? "Custom values are loaded — press <b>RUN WITH CUSTOM VALUES</b>." : "The question's values are loaded — press <b>START EXPERIMENT</b>.");
+  else if (RUN.done) h = R.complete ? "<span class=gd>Case closed.</span> The shorted coil empties a quarter of the field volume: L<sub>eff</sub> = 3L/4, so <b>ω = 2/√(3LC)</b> — option <b>" + R.answer + "</b>."
+    : "<span class=o>Your conditions give " + R.answer + "</span> — not the question's set-up. Restore it to answer the question.";
+  else if (n === "load") h = "<b>The circuit:</b> the capacitor C in series with the long coil (self-inductance L) and an AC source. With the inner coil's ends open, it rings at <b>ω₀ = 1/√(LC)</b>.";
+  else if (n === "field") h = "<b>The coil's field:</b> current I₁ makes a uniform field B = μ₀NI₁ along the axis (blue particles). Each of the N d turns links B·S, so <b>L = μ₀N²S d</b>.";
+  else if (n === "inner") h = "<b>The inner coil:</b> " + fsym(D.m, "N") + " turns per length over a length " + fsym(D.l, "d") + " — " + fsym(D.m * D.l, "Nd") + " turns in all — on area " + fsym(D.a, "S") + ". Its self-inductance <b>L₂ = " + fsym(R.L2, "L") + "</b>.";
+  else if (n === "mutual") h = "<b>Mutual inductance:</b> the outer field threads the inner coil's turns over its area: <b>M = " + fsym(R.M, "L") + "</b>.";
+  else if (n === "short") h = D.mode === "short" ? "<b>Short it:</b> the switch closes (at an instant when I₁ = 0). With no resistance its EMF must stay zero, so it drives <b>I₂ = " + (R.I2ratio < 0 ? "−" : "") + fsym(Math.abs(R.I2ratio), "I₁") + "</b> — and the field inside it drops to <b>zero</b>." : "<b>The ends stay open:</b> no current can flow in the inner coil, so the field inside it is untouched.";
+  else if (n === "leff") h = "<b>Weigh the field:</b> for the same I₁ the field now fills " + Math.round(100 * R.volOut) + " % of the coil, so the stored energy and the inductance drop: <b>L<sub>eff</sub> = L − M²/L₂ = " + fsym(R.Leff, "L") + "</b>.";
+  else if (n === "osc") h = "<b>Ringing:</b> the charge on C oscillates at ω = 1/√(L<sub>eff</sub>C): <b>ω√(LC) = " + R.w.toFixed(4) + "</b> (grey: the same circuit with the coil open).";
+  else if (n === "sweep") h = "<b>Resonance sweep:</b> the AC source is swept in frequency; the response peaks at <b>ω√(LC) = " + R.w.toFixed(4) + "</b>" + (R.complete ? " = 2/√3." : ".");
+  else if (n === "test") h = "<b>Audit:</b> each option is turned back into the inductance it implies — which one is 3L/4?";
+  else if (n === "answer") h = "<b>Analysis complete.</b> Reading the resonance…";
+  $("narr").innerHTML = h;
+  var cap = { load: "Stage 1 of 8 — the circuit, ω₀ = 1/√(LC)", field: "Stage 2 of 8 — the coil's field: L = μ₀N²Sd", inner: "Stage 3 of 8 — the inner coil: L₂ = L", mutual: "Stage 4 of 8 — mutual inductance M = L/2",
+    short: "Stage 5 of 8 — short it: I₂ = −I₁/2, B = 0 in the core", leff: "Stage 6 of 8 — L_eff = 3L/4", osc: "Stage 7 of 8 — the circuit rings faster", sweep: "Stage 8 of 8 — resonance at ω√(LC) = 2/√3" };
+  $("capm").textContent = cap[n] ? cap[n] + ". " + $("narr").textContent : "";
+  var stp = { load: 1, field: 2, inner: 3, mutual: 4, short: 5, leff: 6, osc: 7, sweep: 8 };
+  $("trialtag").textContent = stp[n] ? "step " + stp[n] + " of 8" : (RUN.done ? "case closed" : n === "idle" ? "step 1 of 8" : "audit");
+  $("scenet").textContent = RUN.done ? "Experiment complete" : "Flux-exclusion resonance bench";
+}
+function sg2(v){ return (v >= 0 ? "+" : "−") + Math.abs(v).toFixed(2); }
+function updateReadouts(st){
+  var R = RUN.R, n = st.name, idle = n === "idle", L = live(), i = stageAt(n);
+  $("g_i1").textContent = idle ? "—" : sg2(L.I1);
+  $("g_i2").textContent = idle ? "—" : sg2(L.I2);
+  $("g_bo").textContent = idle ? "—" : sg2(L.Bout);
+  $("g_bi").textContent = idle ? "—" : sg2(L.Bin);
+  $("g_leff").textContent = idle ? "—" : (i >= ORDER.indexOf("leff") ? L.Leff.toFixed(3) : "1.000");
+  $("g_w").textContent = idle ? "—" : L.w.toFixed(4);
+  $("g_ue").textContent = idle ? "—" : Math.round(100 * L.UE / (L.UE + L.UB || 1)) + "% · " + Math.round(100 * L.UB / (L.UE + L.UB || 1)) + "%";
+  $("g_pr").textContent = RUN.done ? 100 : Math.round(100 * elapsed() / TOTAL);
+  $("g_v").textContent = i > ORDER.indexOf("test") || (n === "test" && st.f > 0.97) ? (R.complete ? "(" + R.answer + ")" : "none") : "—";
+  $("gz_v").classList.toggle("hot", RUN.done && R.complete);
+  drawCharts(st);
+}
+
+/* =====================================================================
+   coupled-coil explorer
+   ===================================================================== */
+var XP = { a: 0.5, l: 0.5, m: 2, mode: "short" };
+function xpRun(){ return ENGINE.run({ m: XP.m, a: XP.a, l: XP.l, mode: XP.mode }); }
+var XR = null;
+function drawExplorer(){
+  var c = $("cc"), g = c.getContext("2d"), W = c.width, H = c.height, R = XR || (XR = xpRun());
+  hood(g, W, H);
+  var x0 = 60, x1 = 660, yc = 200, h = 150, iw = (x1 - x0) * XP.l, ih = h * Math.sqrt(XP.a), i;
+  g.fillStyle = "rgba(111,184,255,.22)"; g.fillRect(x0, yc - h, x1 - x0, 2 * h);
+  g.strokeStyle = CU; g.lineWidth = 4; g.strokeRect(x0, yc - h, x1 - x0, 2 * h);
+  var shorted = XP.mode === "short";
+  g.fillStyle = shorted ? "#03060e" : "rgba(207,216,230,.18)"; g.fillRect((x0 + x1) / 2 - iw / 2, yc - ih, iw, 2 * ih);
+  g.strokeStyle = SILVER; g.lineWidth = 3; g.setLineDash([8, 4]); g.strokeRect((x0 + x1) / 2 - iw / 2, yc - ih, iw, 2 * ih); g.setLineDash([]);
+  for (i = 0; i < 9; i++){
+    var y = yc - h + (i + 0.5) * 2 * h / 9, inside = Math.abs(y - yc) < ih;
+    if (inside && shorted){ arrowLine(g, x0 + 10, y, (x0 + x1) / 2 - iw / 2 - 6, y, "rgba(111,184,255,.8)", 1.6); arrowLine(g, (x0 + x1) / 2 + iw / 2 + 6, y, x1 - 10, y, "rgba(111,184,255,.8)", 1.6); }
+    else arrowLine(g, x0 + 10, y, x1 - 10, y, "rgba(111,184,255,.8)", 1.6);
+  }
+  if (shorted) label(g, "B = 0", (x0 + x1) / 2, yc, "#e8f0ff", 18, "center", 900);
+  label(g, "field fills " + Math.round(100 * (shorted ? 1 - XP.a * XP.l : 1)) + " % of the coil  ·  L_eff = " + R.Leff.toFixed(4) + " L  ·  ω√(LC) = " + R.w.toFixed(4), W / 2, H - 22, GOLD, 15, "center", 800);
+}
+function showInfo(){
+  var R = XR || (XR = xpRun());
+  $("x_av").textContent = XP.a.toFixed(2); $("x_lv").textContent = XP.l.toFixed(2); $("x_mv").textContent = String(XP.m);
+  $("x_mode").textContent = XP.mode === "short" ? "⚡ SHORTED" : "○ OPEN"; $("x_mode").setAttribute("aria-pressed", XP.mode === "short" ? "true" : "false");
+  $("xinfo").innerHTML = "<h3>This inner coil</h3><table><tr><th>L₂ = m²·a·ℓ · L</th><td>" + R.L2.toFixed(4) + " L</td></tr><tr><th>M = m·a·ℓ · L</th><td>" + R.M.toFixed(4) + " L</td></tr>"
+    + "<tr><th>k² = M²/(L L₂)</th><td>" + R.k2.toFixed(4) + " (= a·ℓ)</td></tr><tr><th>Effective inductance</th><td><b>" + R.Leff.toFixed(4) + " L</b></td></tr>"
+    + "<tr><th>Resonance ω√(LC)</th><td><b>" + R.w.toFixed(4) + "</b></td></tr></table>"
+    + "<p style='font-size:13px;color:var(--text-secondary);margin-top:8px'>Change m: L₂ and M change, but L<sub>eff</sub> = L(1 − a·ℓ) does not — only the volume the core takes from the field matters.</p>";
+}
+function wireExplorer(){
+  var re = function(){ XR = xpRun(); showInfo(); };
+  $("x_a").addEventListener("input", function(){ XP.a = Math.round(parseFloat(this.value) * 100) / 100; re(); });
+  $("x_l").addEventListener("input", function(){ XP.l = Math.round(parseFloat(this.value) * 100) / 100; re(); });
+  $("x_m").addEventListener("input", function(){ XP.m = parseFloat(this.value); re(); });
+  $("x_mode").addEventListener("click", function(){ XP.mode = XP.mode === "short" ? "open" : "short"; re(); });
+  var q = function(){ XP.a = 0.5; XP.l = 0.5; XP.m = 2; XP.mode = "short"; $("x_a").value = 0.5; $("x_l").value = 0.5; $("x_m").value = 2; re(); };
+  $("x_q").addEventListener("click", q); $("x_reset").addEventListener("click", q);
+  $("cc").addEventListener("keydown", function(e){ if (e.key === "ArrowRight") XP.l = Math.min(1, Math.round((XP.l + 0.05) * 100) / 100); else if (e.key === "ArrowLeft") XP.l = Math.max(0.05, Math.round((XP.l - 0.05) * 100) / 100); else if (e.key === "ArrowUp") XP.a = Math.min(1, Math.round((XP.a + 0.05) * 100) / 100); else if (e.key === "ArrowDown") XP.a = Math.max(0.05, Math.round((XP.a - 0.05) * 100) / 100); else return; $("x_a").value = XP.a; $("x_l").value = XP.l; re(); e.preventDefault(); });
+  showInfo();
+}
+
+/* =====================================================================
+   the answer reveal
+   ===================================================================== */
+function blink(id){ var e = $(id); if (!e) return; e.classList.remove("blink"); void e.offsetWidth; e.classList.add("blink"); setTimeout(function(){ e.classList.remove("blink"); }, 2300); }
+function doReveal(){
+  if (!RUN.done){ earlyReveal = true; refreshGate(); return; }
+  var lab = $("lab3d");
+  lab.classList.add("dim"); $("blackout").classList.add("on");
+  setTimeout(function(){
+    $("blackout").classList.remove("on"); $("donebanner").classList.remove("on");
+    if (!REDUCED){ var f = $("flashout"); f.classList.remove("go"); void f.offsetWidth; f.classList.add("go"); lab.classList.remove("zoom"); void lab.offsetWidth; lab.classList.add("zoom"); }
+    RUN.revealed = true;
+    mountReveal(); refreshGate();
+    var ab = $("answerbox"); ab.classList.remove("celebrate"); void ab.offsetWidth; ab.classList.add("celebrate");
+    setTimeout(function(){ ab.classList.remove("celebrate"); }, 3200);
+    blink("ansval"); blink("grafT"); blink("g_v");
+    setTimeout(function(){ lab.classList.remove("dim"); }, 5200);
+  }, 950);
+}
+function mountReveal(){
+  var host = $("revealhost"), R = RUN.R, ok = R.complete;
+  host.innerHTML = ""; host.classList.add("on");
+  var main = ok ? "OPTION (" + R.answer + ")" : "SET-UP CHANGED";
+  var svg = mk("svg", { viewBox: "0 0 720 380", "class": "graf", role: "img", "aria-label": (ok ? "Congratulations. Answer found: " : "") + main }, host);
+  var d = mk("defs", {}, svg), sp = mk("filter", { id: "spray", x: "-14%", y: "-40%", width: "128%", height: "180%" }, d);
+  mk("feTurbulence", { type: "fractalNoise", baseFrequency: "0.045 0.09", numOctaves: "3", seed: "7", result: "nz" }, sp);
+  mk("feDisplacementMap", { "in": "SourceGraphic", in2: "nz", scale: "6", xChannelSelector: "R", yChannelSelector: "G" }, sp);
+  var bh = mk("g", {}, svg);
+  if (ok){
+    var gr = [["PHYSICS MASTER!", 118, 26, -6, "#ff9350"], ["EUREKA!", 628, 30, 8, "#a99bff"], ["CORRECT!", 84, 190, -12, "#3ee39a"],
+      ["L_eff = 3L/4", 118, 348, -6, "#7fc8ff"], ["I₂ = −I₁/2", 360, 364, 3, "#ffae5a"], ["B = 0 inside", 606, 348, 7, "#c8e04a"]], i;
+    for (i = 0; i < gr.length; i++) tx(svg, gr[i][1], gr[i][2], gr[i][0], { "text-anchor": "middle", "font-size": 22, "font-weight": 900, fill: gr[i][4], opacity: 0.85, transform: "rotate(" + gr[i][3] + " " + gr[i][1] + " " + gr[i][2] + ")", filter: "url(#spray)", "font-family": "ui-rounded,'Comic Sans MS','Marker Felt',cursive" });
+  }
+  tx(svg, 360, 58, ok ? "🎉  ANSWER FOUND!  🎉" : "THE QUESTION'S SET-UP DOES NOT APPLY", { "text-anchor": "middle", "font-size": ok ? 22 : 17, "font-weight": 900, fill: ok ? "#3ee39a" : "#ffb4b4", "letter-spacing": "2" });
+  tx(svg, 360, 86, ok ? "CONGRATULATIONS!" : "restore the question conditions", { "text-anchor": "middle", "font-size": 13, "font-weight": 800, fill: "#9fb0cc", "letter-spacing": "5" });
+  mk("rect", { x: 150, y: 104, width: 420, height: 150, rx: 16, fill: "rgba(8,20,16,.72)", stroke: ok ? "#3ee39a" : "#ff6b6b", "stroke-width": 2 }, svg);
+  tx(svg, 360, 128, ok ? "THE ANSWER" : "CUSTOM RUN", { "text-anchor": "middle", "font-size": 12, "font-weight": 800, fill: "#9ff0c9", "letter-spacing": "6" });
+  var gg = mk("g", { transform: "translate(360,206) skewX(-9)" }, svg), fs = main.length > 12 ? 40 : 50;
+  tx(gg, 7, 9, main, { "text-anchor": "middle", "font-size": fs, "font-weight": 900, fill: "#a99bff", opacity: 0.34, filter: "url(#spray)" });
+  tx(gg, 0, 0, main, { id: "grafT", "text-anchor": "middle", "font-size": fs, "font-weight": 900, fill: ok ? "#3ee39a" : "#ffb4b4", filter: "url(#spray)" });
+  tx(svg, 360, 284, ok ? "The shorted coil pushed the field out of a quarter of the volume." : "Your conditions give " + R.answer + " — not the question's set-up.", { "text-anchor": "middle", "font-size": 15, "font-weight": 700, fill: "#eef3ff" });
+  tx(svg, 360, 306, ok ? "ω = 1/√(L_eff C) = 2/√(3LC) ≈ " + R.w.toFixed(4) + "/√(LC)" : "L_eff = " + R.Leff.toFixed(4) + " L", { "text-anchor": "middle", "font-size": 14, fill: "#9fb0cc" });
+  if (!REDUCED && ok) makeBurst(bh);
+}
+function makeBurst(host){
+  burst = [];
+  var i, n = 90, GL = ["L", "M", "ω", "B", "✦", "●", "◆", "✓"], a, sp2, conf, node, cols = ["#3ee39a", "#a99bff", "#54a9ff", "#ff9350", "#c8e04a"];
+  for (i = 0; i < n; i++){
+    a = Math.random() * Math.PI * 2; sp2 = 90 + Math.random() * 300; conf = i % 3 === 0;
+    node = conf ? mk("rect", { x: -4, y: -3, width: 8, height: 6, rx: 1.5, fill: cols[i % 5] }, host) : tx(host, 0, 0, GL[i % GL.length], { "text-anchor": "middle", "font-size": 11 + Math.random() * 8, fill: cols[i % 5], "font-weight": 800 });
+    burst.push({ n: node, x: 360, y: 190, vx: Math.cos(a) * sp2, vy: Math.sin(a) * sp2 - 70, life: 0, max: 1.6 + Math.random() * 1.2, rot: Math.random() * 360, vr: (Math.random() - 0.5) * 540 });
+  }
+}
+function stepBurst(dt){
+  var i, b;
+  for (i = 0; i < burst.length; i++){
+    b = burst[i]; if (b.life > b.max){ b.n.setAttribute("opacity", 0); continue; }
+    b.life += dt; b.vy += 420 * dt; b.x += b.vx * dt; b.y += b.vy * dt; b.rot += b.vr * dt;
+    b.n.setAttribute("opacity", Math.max(0, 1 - b.life / b.max).toFixed(2));
+    b.n.setAttribute("transform", "translate(" + b.x.toFixed(1) + "," + b.y.toFixed(1) + ") rotate(" + b.rot.toFixed(0) + ")");
+  }
+}
+function refreshGate(){
+  $("solgate").hidden = true; $("solbody").hidden = false; $("revealnow").hidden = true;
+  $("solans").textContent = "(" + ANS + ")"; $("clsans").textContent = "(" + ANS + ")  " + ANSNOTE;
+  refreshAnswerBox();
+}
+
+/* =====================================================================
+   the loop - one virtual clock, so Pause and speed govern everything
+   ===================================================================== */
+var last = 0, slow = 0;
+function loop(ts){
+  var dt = last ? (ts - last) / 1000 : 0; last = ts;
+  if (dt > 0.06) dt = 0.06;
+  var running = RUN.state === "running" && !RUN.paused;
+  if (running){ stepTimeline(dt * RUN.speed); stepCircuit(dt * RUN.speed * (REDUCED ? 0.4 : 1)); }
+  if (!RUN.paused) clock += dt * (running ? RUN.speed : 1) * (REDUCED ? 0.3 : 1);
+  var st = currentState(); NOW = st;
+  if (running && !REDUCED) stepParticles(dt * RUN.speed, live());
+  drawLab(st);
+  drawExplorer();
+  if (burst.length) stepBurst(dt);
+  slow += dt;
+  if (slow > 0.08){ slow = 0; updateReadouts(st); narrate(st); refreshStatus(); refreshAnswerBox(); }
+  requestAnimationFrame(loop);
+}
+
+/* =====================================================================
+   wiring
+   ===================================================================== */
+function afterEdit(){ readAll(); if (RUN.state === "setup"){ RUN.D = copyST(); RUN.R = run(RUN.D); } refreshUI(); }
+function toggleClassroom(){
+  RUN.classroom = !RUN.classroom;
+  document.body.classList.toggle("classroom", RUN.classroom);
+  $("classbtn").setAttribute("aria-pressed", RUN.classroom ? "true" : "false");
+  $("classbtn").textContent = RUN.classroom ? "EXIT CLASSROOM MODE" : "CLASSROOM MODE";
+  if (RUN.classroom) try { $("deck").scrollIntoView({ behavior: REDUCED ? "auto" : "smooth", block: "start" }); } catch (e) {}
+}
+function build(){
+  $("fields").innerHTML = fieldsHTML();
+  var i, F;
+  for (i = 0; i < FIELDS.length; i++){ F = FIELDS[i]; $("in_" + F.k).addEventListener("change", afterEdit); }
+  var steppers = document.querySelectorAll("#fields .rw button");
+  for (i = 0; i < steppers.length; i++) steppers[i].addEventListener("click", function(){
+    var k = this.getAttribute("data-k"), Fd = fieldOf(k), inp = $("in_" + k), v = parseField(Fd, inp.value).v;
+    v = clamp(v + (this.className === "up" ? Fd.step : -Fd.step), Fd.min, Fd.max); inp.value = String(Math.round(v * 1000) / 1000); afterEdit();
+  });
+  $("resetq").addEventListener("click", resetAll);
+  $("gobtn").addEventListener("click", function(){ if (RUN.state !== "running") startRun(); });
+  $("pausebtn").addEventListener("click", function(){ RUN.paused = !RUN.paused; refreshUI(); });
+  $("replaybtn").addEventListener("click", function(){ startRun(RUN.D); });
+  $("resetbtn").addEventListener("click", resetAll);
+  $("classbtn").addEventListener("click", toggleClassroom);
+  $("revealnow").addEventListener("click", function(){ earlyReveal = true; refreshGate(); });
+  $("gotolab").addEventListener("click", function(){ $("lab").scrollIntoView({ behavior: REDUCED ? "auto" : "smooth" }); });
+  var tg = function(id, key){ $(id).addEventListener("click", function(){ SHOW[key] = !SHOW[key]; this.setAttribute("aria-pressed", SHOW[key] ? "true" : "false"); }); };
+  tg("t_eq", "eq"); tg("t_fld", "fld"); tg("t_why", "why");
+  $("t_cmp").addEventListener("click", function(){ RUN.speed = RUN.speed === 0.5 ? 1 : 0.5; this.setAttribute("aria-pressed", RUN.speed === 0.5 ? "true" : "false"); var sb = document.querySelectorAll("#spd button"), j; for (j = 0; j < sb.length; j++) sb[j].setAttribute("aria-pressed", "false"); });
+  $("t_rot").addEventListener("click", function(){ $("explorer").scrollIntoView({ behavior: REDUCED ? "auto" : "smooth" }); $("cc").focus(); });
+  var sb = document.querySelectorAll("#spd button");
+  for (i = 0; i < sb.length; i++) sb[i].addEventListener("click", function(){
+    RUN.speed = parseFloat(this.getAttribute("data-s"));
+    for (var j = 0; j < sb.length; j++) sb[j].setAttribute("aria-pressed", sb[j] === this ? "true" : "false");
+  });
+  $("themebtn").addEventListener("click", function(){
+    var r = document.documentElement, dark = r.getAttribute("data-theme") === "dark" || (!r.getAttribute("data-theme") && matchMedia("(prefers-color-scheme: dark)").matches);
+    r.setAttribute("data-theme", dark ? "light" : "dark");
+  });
+  wireExplorer();
+  readAll(); drawLog(); refreshGate(); refreshUI(); refreshAnswerBox();
+  requestAnimationFrame(loop);
+}
+if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", build); else build();
+
+/* exposed for the headless test harness */
+window.PX = {
+  Q: Q, ST: ST, RUN: RUN, run: run, ENGINE: ENGINE, live: live,
+  answer: function(){ return ANS; }, qrun: function(){ return QRUN; },
+  start: function(){ startRun(); }, replay: function(){ startRun(RUN.D); }, reset: resetAll,
+  pause: function(){ RUN.paused = !RUN.paused; refreshUI(); }, speed: function(s){ RUN.speed = s; },
+  setField: function(k, v){ $("in_" + k).value = v; afterEdit(); },
+  stage: stageKey, cards: function(){ return RUN.cards; }, badges: function(){ return RUN.badges; },
+  calcKeys: calcKeys, now: function(){ return NOW; }, explorer: XP, xrun: function(){ return XR || xpRun(); }
+};
+
+})();
+</script>
+
+</body>
+</html>

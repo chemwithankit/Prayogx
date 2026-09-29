@@ -50,7 +50,7 @@ trap cleanup EXIT
 
 echo "=== chemistry verifiers (exact arithmetic, no browser) ==="
 echo "    python3 = $(command -v python3)"
-for f in verify15.py verify16.py verify17.py "$HERE/verify_p1q01.py" "$HERE/verify_p1q02.py" "$HERE/verify_p1q03.py" "$HERE/verify_p1q04.py" "$HERE/verify_p1q05.py" "$HERE/verify_p1q06.py" "$HERE/verify_p1q07.py" "$HERE/verify_p1q08.py" "$HERE/verify_p1q09.py" "$HERE/verify_p1q10.py" "$HERE/verify_p1q11.py" "$HERE/verify_p1q12.py" "$HERE/verify_p1q13.py" "$HERE/verify_p1q14.py" "$HERE/verify_p1q15.py" "$HERE/verify_p1q16.py" "$HERE/verify_p1phyq01.py"; do
+for f in verify15.py verify16.py verify17.py "$HERE/verify_p1q01.py" "$HERE/verify_p1q02.py" "$HERE/verify_p1q03.py" "$HERE/verify_p1q04.py" "$HERE/verify_p1q05.py" "$HERE/verify_p1q06.py" "$HERE/verify_p1q07.py" "$HERE/verify_p1q08.py" "$HERE/verify_p1q09.py" "$HERE/verify_p1q10.py" "$HERE/verify_p1q11.py" "$HERE/verify_p1q12.py" "$HERE/verify_p1q13.py" "$HERE/verify_p1q14.py" "$HERE/verify_p1q15.py" "$HERE/verify_p1q16.py" "$HERE/verify_p1phyq01.py" "$HERE/verify_p1phyq02.py"; do
   nm=$(basename "$f")
   if [ ! -f "$f" ]; then line "$nm" "MISSING (not in this tree)"; missing=$((missing+1)); continue; fi
   out=$(python3 "$f" 2>&1 | tail -1)
@@ -79,11 +79,12 @@ echo
 echo "=== headless browser suites ==="
 run(){ # name, script [, root]
   if [ ! -f "$2" ]; then line "$1" "MISSING ($(basename "$2") not in this tree)"; missing=$((missing+1)); return; fi
-  out=$(PRAYOGX_ROOT="${3:-$ROOT}" tmo 400 node "$2" 2>&1 | grep -E "^[0-9]+ / [0-9]+ passed" | tail -1)
-  if [ -z "$out" ]; then line "$1" "NO RESULT"; fail=$((fail+1)); return; fi
+  full=$(PRAYOGX_ROOT="${3:-$ROOT}" tmo 400 node "$2" 2>&1)
+  out=$(echo "$full" | grep -E "^[0-9]+ / [0-9]+ passed" | tail -1)
+  if [ -z "$out" ]; then line "$1" "NO RESULT"; echo "$full" | tail -3 | sed 's/^/      /'; fail=$((fail+1)); return; fi
   a=${out%% /*}; b=$(echo "$out" | awk '{print $3}')
   if [ "$a" = "$b" ]; then line "$1" "$out"; pass=$((pass+1));
-  else line "$1" "FAILED  $out"; fail=$((fail+1)); fi
+  else line "$1" "FAILED  $out"; echo "$full" | grep -E "^FAIL" | head -5 | sed 's/^/      /'; fail=$((fail+1)); fi
 }
 run "Q17 simulation (t17.js)"              t17.js
 run "P1 Q1 two-step compression bench"    "$HERE/sim_p1q01.js"
@@ -103,6 +104,7 @@ run "P1 Q14 VSEPR shape lab"              "$HERE/sim_p1q14.js"
 run "P1 Q15 ozonolysis-aldol ring lab"    "$HERE/sim_p1q15.js"
 run "P1 Q16 oxime reach lab"             "$HERE/sim_p1q16.js"
 run "P1 PHY Q1 rolling-ring bench"        "$HERE/sim_p1phyq01.js"
+run "P1 PHY Q2 flux-exclusion resonance"  "$HERE/sim_p1phyq02.js"
 run "production suite (prodcheck)"         "$HERE/prodcheck.js"
 make_scratch
 run "single-source propagation"            "$HERE/propagation.js"  "$SCRATCH"

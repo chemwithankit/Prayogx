@@ -57,6 +57,9 @@ def batch(items, mode="dry-run", cont=False):
 
 
 FP0 = A.fingerprint()
+# the lowest Paper 1 Physics question not yet in the library, so the planning checks never go stale
+_ids = {s["id"] for s in A.manifest()["simulations"]}
+UNBUILT_PHY = next(k for k in range(1, 100) if "ADV-2026-P1-PHY-Q%02d" % k not in _ids)
 try:
     # ------------------------------------------------------------ the stage list
     want = ["input_received", "source_accessible", "source_verified", "question_or_concept_verified", "solution_verified",
@@ -120,7 +123,7 @@ try:
                                                                  cwd=ROOT).returncode == 0)
 
     # ------------------------------------------------------------ plan
-    b1 = batch([q(16, sol=PAPER1), q(17, sol=PAPER1), q(2, "Physics"),
+    b1 = batch([q(16, sol=PAPER1), q(17, sol=PAPER1), q(UNBUILT_PHY, "Physics"),
                 {"type": "concept", "concept": "Nucleophilic aromatic substitution", "subject": "Chemistry", "source": "https://example.org/snar"},
                 q(18, paper=2, src="papers/does_not_exist.pdf"), q(17), q(4, "Mathematics"), {"type": "recipe"}])
     _, its = A.items_of(b1)

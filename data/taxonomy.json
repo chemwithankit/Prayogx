@@ -19,6 +19,22 @@
               ]
             }
           }
+        },
+        "Electromagnetic Induction": {
+          "topics": {
+            "Self and mutual inductance of coaxial solenoids - a shorted coil lowers the effective inductance and raises the LC resonance": {
+              "subtopics": [
+                "Self-inductance of a long solenoid, L = mu0 n^2 A l",
+                "Mutual inductance of coaxial solenoids, M = mu0 n1 n2 (common area)(common length)",
+                "A resistance-free shorted coil keeps its flux linkage fixed: L2 dI2/dt + M dI1/dt = 0",
+                "Effective inductance L_eff = L1 - M^2/L2 = L1 (1 - k^2)",
+                "LC resonance, omega = 1/sqrt(L_eff C)"
+              ],
+              "simulations": [
+                "ADV-2026-P1-PHY-Q02"
+              ]
+            }
+          }
         }
       }
     },
