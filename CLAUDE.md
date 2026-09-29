@@ -53,10 +53,11 @@ standard: [docs/SIMULATION_STANDARDS.md](docs/SIMULATION_STANDARDS.md).
 
 ## Registry and generated files
 
-- ID `ADV-<YEAR>-P<n>-<SUBJ>-Q<NN>`, with `SUBJ` one of `PHY | CHE | MAT` (enforced by
-  `tools/check_library.py`). The folder is the lowercase ID under
-  `simulations/<year>/paper-<n>/<subject>/`, holding `index.html`, `meta.json` and
-  `question.md`.
+- ID `ADV-<YEAR>-P<n>-<SUBJ>-Q<NN>`, with `SUBJ` one of `PHY | CHE | MAT`; concept simulations
+  use `CON-<SUBJ>-<SLUG>` (draft-only until the clients render concepts). Both are defined once in
+  `tools/registry_schema.py` and enforced by `tools/check_library.py`. A question's folder is the
+  lowercase ID under `simulations/<year>/paper-<n>/<subject>/`, holding `index.html`, `meta.json`
+  and `question.md`; a concept's is under `simulations/concepts/<subject>/`, with `concept.md`.
 - IDs are permanent. A change to a published page bumps `revision` + `updatedAt`.
 - `meta.json` stays byte-identical to its `data/manifest.json` entry. Write JSON only with
   Python `json`.
@@ -83,6 +84,14 @@ standard: [docs/SIMULATION_STANDARDS.md](docs/SIMULATION_STANDARDS.md).
 - Create local commits **only when the owner authorises it**. **Never push or deploy without
   explicit approval**: pushing to `main` deploys prayogx.co.in. The owner publishes with
   `./publish.sh`.
+- **The one standing authorisation.** When the owner explicitly requests **production mode** for a
+  **named list of items**, the factory may commit, push (`./publish.sh`) and deploy **those named
+  items only**, one at a time, and only after every required gate for that item has passed and
+  `tools/auto_sim.py preflight --online` passes (docs/AUTO_SIMULATION_PIPELINE.md §1). Such pages
+  are published as `script_verified`, never `human_verified`. It does **not** authorise:
+  unrequested items; blocked or failed items; anything after a scientific-verification failure or
+  a critical-test failure; force-pushes; unrelated modifications; or bypassing any audit,
+  validation or test. Everything else follows the rules above.
 - Stage specific paths, never sweep in unrelated untracked files (`_scratch/`,
   `Claude outputs/`, test leftovers). `publish.sh` runs `git add -A`, so warn about stray
   files.
@@ -96,6 +105,7 @@ standard: [docs/SIMULATION_STANDARDS.md](docs/SIMULATION_STANDARDS.md).
 | Chemistry doctrine (organic, physical, inorganic) | `.claude/skills/prayogx-chemistry/` |
 | Validate before calling it done | `.claude/skills/prayogx-validate/` |
 | Register in the library | `.claude/skills/prayogx-register/` |
+| Batches, dry runs, the autonomous pipeline | `.claude/skills/prayogx-auto-simulation/`, `docs/AUTO_SIMULATION_PIPELINE.md`, `tools/auto_sim.py` |
 | Sync the Google Sheet tracker (in place, never recreate) | `.claude/skills/prayogx-register/` §5, `tools/tracker_sheet.py` |
 | Fix or review an existing page | `.claude/skills/prayogx-review-existing/` |
 | Tokens, components, animation CSS | `.claude/skills/prayogx-design-system/reference.md` |

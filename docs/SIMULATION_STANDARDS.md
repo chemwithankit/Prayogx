@@ -266,13 +266,19 @@ Two different fields exist today, and they must not be confused:
 | `meta.json` / manifest | `verification.status` | `verified` | the page's own verifier and suite passed and the answer matched the key |
 | public feed (`content/index.json`, `content/sims/*.json`) | `status` | `human_verified` | a **default** filled in by `tools/build_content.py` (`DEFAULTS`) for every record that has no `status`. It is not a record of human review |
 
-**Intended vocabulary (long term):**
+**Registry values** (`tools/registry_schema.py` → `STATUS_VALUES`; absent = `human_verified`):
 
 | Status | Means |
 |---|---|
-| `ai_generated` | built by Claude; not yet independently verified |
-| `script_verified` | independent verifier + page suite pass; answer matches the official key |
 | `human_verified` | the owner (or a named reviewer) has reviewed the page and signed it off |
+| `script_verified` | passed the automated pipeline with **no human review**: independent scientific verifier, browser / UI / mobile suite, library checks and production audit, and after deploy the live smoke test. Every page the simulation factory publishes carries it explicitly. Never shown or described as human-verified |
+| `draft` | built, not published (below) |
+| `deprecated` | kept for old links, not promoted |
+
+`ai_generated` (built by Claude, not yet independently verified) is vocabulary only, not a
+registry value: such a page is a `draft`. There is no `ai_verified`. A `script_verified` page
+becomes `human_verified` only when the owner reviews it; removing the field (or setting
+`human_verified`) is then a metadata change recorded like any other.
 
 **New pages before review:** a new simulation that has passed its scripts but not the owner's review is
 registered with `"status": "draft"`. The build keeps it off every public surface (the feed, crawlable

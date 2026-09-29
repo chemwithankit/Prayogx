@@ -25,8 +25,14 @@ serializers rewrite floats.
   - New page: `revision: 1`, `createdAt` = `updatedAt` = today.
   - `path` is root-relative and ends in `index.html`.
   - `source.file` is a provenance string only; it is never linked.
-  - Don't add a top-level `status` or `access` unless the owner decides (see
-    `docs/DECISIONS.md` → open decisions).
+  - `status`: none for a page the owner has reviewed (the feed default is `human_verified`);
+    `"draft"` while it awaits review; **`"script_verified"` for every page the simulation
+    factory publishes without a human review** (`docs/SIMULATION_STANDARDS.md` §9). Values are
+    defined once in `tools/registry_schema.py`. Don't add `access` unless the owner decides.
+  - Concept simulations (`CON-<SUBJ>-<SLUG>`): folder `simulations/concepts/<subject>/<id-lowercase>/`,
+    `concept.md` instead of `question.md`, and the fields in `tools/registry_schema.py`
+    (`kind: "concept"`, `learningObjectives`, `source`, …). They register as `"draft"` only until
+    the website, the app and the crawlable pages render concepts.
 - `question.md`: title line, `## Question (verbatim)`, `## Classification`, `## Solution`,
   `## Verification log` (a table of checks ending in the status line), as in P1 Q15.
 

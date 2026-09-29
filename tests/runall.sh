@@ -59,14 +59,14 @@ for f in verify15.py verify16.py verify17.py "$HERE/verify_p1q01.py" "$HERE/veri
 done
 
 echo
-echo "=== tracker Sheet sync (saved snapshot, no network) ==="
-f="$HERE/test_tracker_sheet.py"
-if [ ! -f "$f" ]; then line "test_tracker_sheet.py" "MISSING (not in this tree)"; missing=$((missing+1));
-else
+echo "=== workflow tools: tracker Sheet sync, simulation factory, registry rules (no network) ==="
+for f in "$HERE/test_tracker_sheet.py" "$HERE/test_auto_sim.py" "$HERE/test_registry_schema.py"; do
+  nm=$(basename "$f")
+  if [ ! -f "$f" ]; then line "$nm" "MISSING (not in this tree)"; missing=$((missing+1)); continue; fi
   out=$(python3 "$f" 2>&1 | tail -1)
-  if echo "$out" | grep -q " 0 failed"; then line "test_tracker_sheet.py" "$out"; pass=$((pass+1));
-  else line "test_tracker_sheet.py" "FAILED: $out"; fail=$((fail+1)); fi
-fi
+  if echo "$out" | grep -q " 0 failed"; then line "$nm" "$out"; pass=$((pass+1));
+  else line "$nm" "FAILED: $out"; fail=$((fail+1)); fi
+done
 
 echo
 echo "=== library and production validation ==="

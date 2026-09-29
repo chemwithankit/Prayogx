@@ -64,8 +64,9 @@ ok("the counts agree", len(sims) == len(on_disk) == man["counts"]["total"],
    "%d manifest / %d disk / %d counts" % (len(sims), len(on_disk), man["counts"]["total"]))
 
 # ------------------------------------- 3. permanent ID + revision + content hash
-ID_RE = re.compile(r"^ADV-\d{4}-P\d+-(PHY|CHE|MAT)-Q\d{2,3}$")
-bad_id = [s["id"] for s in sims if not ID_RE.match(s["id"])]
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import registry_schema as schema  # noqa: E402
+bad_id = [s["id"] for s in sims if not schema.valid_id(s["id"])]
 ok("every ID matches the permanent convention", not bad_id, ", ".join(bad_id))
 ok("every ID is unique", len(set(s["id"] for s in sims)) == len(sims))
 no_rev = [s["id"] for s in sims if not isinstance(s.get("revision"), int) or s["revision"] < 1]

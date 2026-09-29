@@ -52,3 +52,6 @@ tests/.venv/
 tests/adstest*/
 tests/apptest*/
 tests/appwww*/
+
+# simulation-factory batch state (tools/auto_sim.py) - local only, never committed
+.tmp/

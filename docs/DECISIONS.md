@@ -37,6 +37,9 @@ Newer entries supersede older ones. The detailed standard is in
 | 09-27 | Organic reaction questions show the complete two-level mechanism (vessel ↔ molecules, in sync). |
 | 09-28 | For new pages: the answer is visible above the experiment, START and all controls sit below the screen, the detailed solution is complete and always open, and animation quality is premium and meaningful. |
 | 09-28 | Canonical origin is `https://prayogx.co.in`; `chemwithankit.github.io/Prayogx` is only a legacy 301 redirect. |
+| 09-29 | **`script_verified`** is a registry status: passed the automated pipeline (independent verifier, browser / UI / mobile suite, library and production audits, live smoke after deploy) with no human review. Factory-published pages carry it explicitly; they are never `human_verified`. Existing statuses unchanged. |
+| 09-29 | **Concept IDs** are `CON-<PHY\|CHE\|MAT>-<SLUG>` (slug: 1–8 upper-case words, ID ≤ 64 characters), folder `simulations/concepts/<subject>/<id-lowercase>/`, `concept.md` beside `meta.json`; fields and rules in `tools/registry_schema.py`. Concepts register as `draft` only until the website, the app and the crawlable pages render them. |
+| 09-29 | Simulation factory (`prayogx-auto-simulation`, `tools/auto_sim.py`): production mode only for a named item list the owner requests, narrowly scoped in `CLAUDE.md`. Physics runs on the interim gates (pipeline §5) until a physics skill exists; mathematics stays blocked until an independent mathematical verification workflow exists. Poppler (`pdftoppm`) is an environment prerequisite for reading `papers/`, never a repository dependency. |
 | 09-29 | The Google Sheet tracker is permanent (same ID and URL) and is synced **in place** by upsert on Simulation ID through the Google Sheets connector, as part of registration: `tools/tracker_sheet.py` plans, prechecks and verifies; writes are `update_values` to planned ranges only; no recreate, no deletion, no `append_values`. The tab is found by `sheetId`; numbers compare numerically. A failed or skipped sync is reported as incomplete / pending, never as done. |
 
 ## Superseded
@@ -67,7 +70,10 @@ Newer entries supersede older ones. The detailed standard is in
 
 | Topic | Options | Evidence |
 |---|---|---|
-| Feed `status` default | keep `human_verified` · change the default to `script_verified` · set per page as reviewed | `build_content.py` `DEFAULTS` publishes `human_verified` for all 32 in `content/`; nothing records a human review (SIMULATION_STANDARDS.md §9) |
+| Feed `status` default for the older pages | keep `human_verified` · set `script_verified` on pages with no recorded review · set per page as reviewed | `build_content.py` `DEFAULTS` publishes `human_verified` for every page without a `status`; only Q16 records an owner review (SIMULATION_STANDARDS.md §9). The factory no longer depends on this: its pages carry `script_verified` explicitly |
+| Concept display | render concept cards and pages in `site.js`, the app shell (a store release) and `build_content.py`'s crawlable pages | until then concepts are draft-only (`registry_schema.CONCEPT_PUBLISHABLE = False`) |
+| Physics skill; mathematics verifier | add a `prayogx-physics` skill · define an independent mathematical verification workflow | Physics runs on the interim gates; mathematics is blocked in production |
+| Other exams (NEET, JEE Main) | ID scheme | IDs are `ADV-` only; the factory refuses other exams |
 | Layout-v2 template | replace `templates/simulation-template.html` · add a v2 template beside it · document "copy the latest G4 page" only | the template is the G1-era shell |
 | Published solution (MathonGo) access | Drive connector · owner supplies the text · official key + independent solving only | only 11 of 32 `verification.methods` cite MathonGo |
 | Paper 2 tests | black-box Playwright (no page change) · add `window.PX` hooks (17 page edits + revision bumps) | Paper 2 pages have no `window.PX` |
