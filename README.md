@@ -16,8 +16,7 @@ They do make network calls:
 The simulations themselves carry no ads.
 
 Current library: **33 simulations**, all Chemistry, JEE Advanced 2026 — Paper 1 Q1–Q16 and
-Paper 2 Q1–Q17. **32 are published.** P1 Q16 has `status: "draft"` in its `meta.json` until the owner reviews it,
-so the build leaves it out of the feed, the crawlable pages and the sitemap.
+Paper 2 Q1–Q17, all published.
 
 ## Production
 

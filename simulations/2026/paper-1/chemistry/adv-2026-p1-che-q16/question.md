@@ -71,4 +71,4 @@ In P, Q and R the oxime O is drawn on the ring's side of C=N (Z); in S the O-ace
 | Solution website | MathonGo — not consulted (Claude Code access is an open decision in `docs/DECISIONS.md`) |
 | Answer key (checked afterwards) | official final key printed with the paper: Q16 → B |
 
-**Status: verified (scripts, independent derivation and the official key) — 2026-09-28. Not yet reviewed by the owner.**
+**Status: verified (scripts, independent derivation and the official key) — 2026-09-28. Reviewed and approved by the owner — 2026-09-29.**

@@ -14,8 +14,8 @@ Repository: `github.com/chemwithankit/Prayogx`, branch `main`. Android package:
   **deferred**. Don't build toward it: no backend, accounts, credits or AI-generation
   infrastructure unless the owner asks.
 - Current library: **33 Chemistry simulations**, JEE Advanced 2026 Paper 1 Q1–Q16 and Paper 2
-  Q1–Q17. P1 Q16 (built 2026-09-28) is the first page under the immersive standard; it carries
-  `status: "draft"` (unpublished) until the owner reviews it. There is no next build until the owner names one.
+  Q1–Q17. P1 Q16 (built 2026-09-28) is the first page under the immersive standard; the owner reviewed
+  and published it on 2026-09-29. There is no next build until the owner names one.
 
 ## Owner control
 
