@@ -3,7 +3,24 @@
   "note": "Chapter/topic vocabulary for the library. Extend as new simulations are added; keep names stable so filters do not fragment.",
   "subjects": {
     "Physics": {
-      "chapters": {}
+      "chapters": {
+        "System of Particles and Rotational Motion": {
+          "topics": {
+            "Rolling without slipping on a fixed circular surface - angular speed of the centre and relative angular motion": {
+              "subtopics": [
+                "Rolling without slipping: the contact point is instantaneously at rest, v = omega r",
+                "Rolling on the outside of a fixed circle: the centre moves on radius R + r",
+                "Coin-rotation paradox: a roller spins 1 + R/r times per lap",
+                "Relative angular motion of two bodies moving round a circle in opposite directions",
+                "Contact angle between two touching disks on a circle (small-angle approximation)"
+              ],
+              "simulations": [
+                "ADV-2026-P1-PHY-Q01"
+              ]
+            }
+          }
+        }
+      }
     },
     "Chemistry": {
       "chapters": {

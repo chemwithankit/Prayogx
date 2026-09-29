@@ -2,6 +2,8 @@
 const ROOT = process.env.PRAYOGX_ROOT || require('path').resolve(__dirname, '..');
 /* the library size comes from the canonical source, so adding a simulation never breaks this suite */
 const NSIMS = JSON.parse(require('fs').readFileSync(ROOT + '/data/manifest.json', 'utf8')).simulations.filter(s => s.status !== 'draft').length;   /* drafts are not published */
+/* per-subject counts: the library is no longer Chemistry-only (ADV-2026-P1-PHY-Q01) */
+const NBY = s0 => JSON.parse(require('fs').readFileSync(ROOT + '/data/manifest.json', 'utf8')).simulations.filter(s => s.status !== 'draft' && s.subject === s0).length;
 /* The production tree, exercised the way a user and a crawler would. */
 const { chromium, launch } = require('./_browser');
 const { spawn } = require('child_process');
@@ -48,8 +50,14 @@ const ok=(l,c,x)=>{n++;if(!c)bad++;console.log((c?'PASS  ':'FAIL  ')+l+(x!==unde
 
   // ----------------------------------------------------------------- filters
   console.log('\n--- filters ---');
-  await p.selectOption('#fs','Chemistry'); await sleep(500);
-  ok('subject filter', (await p.evaluate(()=>(document.querySelectorAll('article.card').length + (+((document.body.innerText.match(/\((\d+) left\)/) || [0, 0])[1])))))===NSIMS);
+  /* poll until the card count settles on the expected value (bounded), instead of a fixed sleep */
+  const cards = () => p.evaluate(()=>(document.querySelectorAll('article.card').length + (+((document.body.innerText.match(/\((\d+) left\)/) || [0, 0])[1]))));
+  const settle = async want => { let c = -1; for (let i = 0; i < 40; i++){ c = await cards(); if (c === want) return c; await sleep(150); } return c; };
+  await p.selectOption('#fs','Chemistry');
+  ok('subject filter: Chemistry shows every published Chemistry page', (await settle(NBY('Chemistry'))) === NBY('Chemistry'));
+  if (NBY('Physics')) { await p.selectOption('#fs','Physics');
+    ok('subject filter: Physics shows every published Physics page', (await settle(NBY('Physics'))) === NBY('Physics'));
+    await p.selectOption('#fs','Chemistry'); await settle(NBY('Chemistry')); }
   await p.selectOption('#fc','Solutions and Colligative Properties'); await sleep(500);
   ok('chapter filter narrows', (await p.evaluate(()=>(document.querySelectorAll('article.card').length + (+((document.body.innerText.match(/\((\d+) left\)/) || [0, 0])[1])))))===3);
   const topics = await p.evaluate(()=>[...document.querySelectorAll('#ft option')].length);

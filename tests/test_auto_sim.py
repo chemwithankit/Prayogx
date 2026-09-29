@@ -120,7 +120,7 @@ try:
                                                                  cwd=ROOT).returncode == 0)
 
     # ------------------------------------------------------------ plan
-    b1 = batch([q(16, sol=PAPER1), q(17, sol=PAPER1), q(1, "Physics"),
+    b1 = batch([q(16, sol=PAPER1), q(17, sol=PAPER1), q(2, "Physics"),
                 {"type": "concept", "concept": "Nucleophilic aromatic substitution", "subject": "Chemistry", "source": "https://example.org/snar"},
                 q(18, paper=2, src="papers/does_not_exist.pdf"), q(17), q(4, "Mathematics"), {"type": "recipe"}])
     _, its = A.items_of(b1)

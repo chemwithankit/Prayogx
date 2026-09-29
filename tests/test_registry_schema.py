@@ -118,8 +118,11 @@ try:
     chk("script_verified page stays published: feed, crawlable page, sitemap, revision lock",
         os.path.exists(os.path.join(W, "s", Q16, "index.html")) and Q16 in open(os.path.join(W, "sitemap.xml")).read()
         and Q16 in jload("data/revisions.json"))
+    explicit = {s["id"]: s["status"] for s in MAN0["simulations"] if "status" in s}
     others = [c for c in jload("content/index.json")["simulations"] if c["id"] != Q16]
-    chk("every other page keeps the human_verified default", len(others) == 32 and all(c.get("status") == "human_verified" for c in others))
+    chk("every other page keeps its own status (explicit, or the human_verified default)",
+        len(others) == len(MAN0["simulations"]) - 1 and all(c.get("status") == explicit.get(c["id"], "human_verified") for c in others),
+        [(c["id"], c.get("status")) for c in others if c.get("status") != explicit.get(c["id"], "human_verified")])
     site = open(os.path.join(W, "site", "site.js"), encoding="utf-8").read()
     app = open(os.path.join(W, "app", "www", "app.js"), encoding="utf-8").read() if os.path.exists(os.path.join(W, "app", "www", "app.js")) else ""
     chk("the website and the app filter only 'draft' - script_verified pages are listed, and neither shows a status label",

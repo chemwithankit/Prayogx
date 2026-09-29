@@ -44,7 +44,13 @@ def raises(fn, *a, **k):
 TMP = tempfile.mkdtemp(prefix="tracker-sheet-test.")
 CSV = os.path.join(TMP, "tracker.csv")
 MAN = os.path.join(TMP, "manifest.json")
-shutil.copy(os.path.join(ROOT, "data", "tracker.csv"), CSV)
+# The fixtures are the Sheet as it stood before Q16 was synced; pair them with the CSV of that moment
+# (header through ADV-2026-P1-CHE-Q16), so later additions to the library do not change what is tested.
+with open(os.path.join(ROOT, "data", "tracker.csv"), encoding="utf-8", newline="") as fh:
+    _rows = list(csv.reader(fh))
+_cut = next(i for i, r in enumerate(_rows) if r and r[0] == "ADV-2026-P1-CHE-Q16")
+with open(CSV, "w", encoding="utf-8", newline="") as fh:
+    csv.writer(fh, lineterminator="\n").writerows(_rows[:_cut + 1])
 shutil.copy(os.path.join(ROOT, "data", "manifest.json"), MAN)
 
 
@@ -254,7 +260,7 @@ try:
     plan_out = os.path.join(TMP, "plan.json")
     r = cli("plan", "--spreadsheet", sp_f, "--values", v_f, "--out", plan_out)
     chk("CLI plan: exit 0, prints the new row's range", r.returncode == 0 and "Untitled!A34:S34  " + Q16 in r.stdout, r.stdout + r.stderr)
-    chk("CLI plan --out: saved plan equals the in-process plan", json.load(open(plan_out, encoding="utf-8")) == json.loads(json.dumps(p)))
+    chk("CLI plan --out: saved plan equals the in-process plan on the same (repository) CSV", json.load(open(plan_out, encoding="utf-8")) == json.loads(json.dumps(ts.make_plan(SPREAD, VALUES))))
     json.dump(taken, open(os.path.join(TMP, "taken.json"), "w"))
     r = cli("precheck", "--plan", plan_out, "--values", os.path.join(TMP, "taken.json"))
     chk("CLI precheck on a changed Sheet: exit 2, 'nothing was written'", r.returncode == 2 and "nothing was written" in r.stderr, r.stderr)
