@@ -108,6 +108,21 @@
               ]
             }
           }
+        },
+        "Electromagnetic Waves": {
+          "topics": {
+            "A plane electromagnetic wave from its electric field - direction of travel, wave vector, angular frequency and the magnetic field": {
+              "subtopics": [
+                "Plane wave sin(k.r + wt): wavefronts k.r = const move along -k-hat (along +k-hat for -wt)",
+                "|k| = 2 pi/lambda from the spatial part; vacuum dispersion w = c|k|",
+                "Faraday's law dB/dt = -curl E fixes B: perpendicular to E and to the travel, |B| = |E|/c",
+                "Poynting vector E x B points along the direction of travel"
+              ],
+              "simulations": [
+                "ADV-2026-P1-PHY-Q08"
+              ]
+            }
+          }
         }
       }
     },

@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Plane-Wave Tracker — direction, wave vector, frequency and B of an EM wave — JEE Advanced 2026 Paper 1 Q.8 | PrayogX</title>
+<meta name="description" content="The plane wave E0 sin(3y + 4z + wt) i in the y-z plane: a tracker rides a crest and moves against k = (0, 3, 4), a ruler measures the wavelength 1.257 m so |k| = 5 per metre, w = c|k| = 1.5 x 10^9 rad/s, and Faraday's law gives B = (E0/c)(-4j + 3k)/5 sin(...). Answer (A), (C). JEE Advanced 2026 Paper 1 Physics Q.8.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232a78d6'/%3E%3Cpath d='M12.5 6.5h7M13.6 6.5v7.2L7.9 24.1a1.5 1.5 0 0 0 1.3 2.3h13.6a1.5 1.5 0 0 0 1.3-2.3l-5.7-10.4V6.5' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M10.6 20.6h10.8' stroke='white' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E">
+<meta name="sim-id" content="ADV-2026-P1-PHY-Q08">
+<style>
+:root{
+  color-scheme: light;
+  --surface-0:#f4f4f1; --surface-1:#fcfcfb; --surface-2:#ececea;
+  --line:#d9d9d4; --line-strong:#bcbcb5;
+  --text-primary:#0b0b0b; --text-secondary:#52514e; --text-muted:#77766f;
+  --s1:#2a78d6; --s2:#eb6834; --s3:#1baf7a; --s4:#4a3aa7;
+  --good:#00743f; --bad:#c0392b; --accent:#2a78d6;
+  --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+  --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --serif:ui-serif,Georgia,"Times New Roman",serif;
+  --radius:12px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  color-scheme: dark;
+  --surface-0:#111110; --surface-1:#1a1a19; --surface-2:#232322;
+  --line:#34342f; --line-strong:#4a4a44;
+  --text-primary:#ffffff; --text-secondary:#c3c2b7; --text-muted:#95948b;
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#9085e9;
+  --good:#3fae7a; --bad:#e66767; --accent:#3987e5;
+}}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --surface-0:#111110; --surface-1:#1a1a19; --surface-2:#232322;
+  --line:#34342f; --line-strong:#4a4a44;
+  --text-primary:#ffffff; --text-secondary:#c3c2b7; --text-muted:#95948b;
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#9085e9;
+  --good:#3fae7a; --bad:#e66767; --accent:#3987e5;
+}
+*{box-sizing:border-box}
+[hidden]{display:none !important}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--surface-0);color:var(--text-primary);font-family:var(--sans);font-size:16px;line-height:1.6}
+header.top{border-bottom:1px solid var(--line);background:var(--surface-1)}
+.top-inner{max-width:1240px;margin:0 auto;padding:18px 20px 14px;position:relative}
+.brandbar{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.brandbar .pxmark{width:21px;height:21px;flex:none;display:block}
+.brandbar .wm{font-size:13px;font-weight:800;letter-spacing:.17em;color:var(--text-secondary);line-height:1}
+.brandbar .wm i{font-style:normal;color:var(--accent)}
+.simid{font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--text-muted)}
+h1{font-size:21px;line-height:1.3;margin:4px 0 4px;padding-right:80px}
+.meta{font-size:14px;color:var(--text-secondary);margin:0}
+.themebtn{position:absolute;top:14px;right:16px;border:1px solid var(--line-strong);background:var(--surface-2);
+  color:var(--text-secondary);border-radius:8px;padding:4px 9px;font-size:12px;cursor:pointer}
+.wrap{max-width:1240px;margin:0 auto;padding:0 20px 40px}
+section{margin:0 0 34px}
+h2{font-size:15px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-secondary);margin:26px 0 12px}
+h2 b{color:var(--accent);margin-right:8px}
+h3{font-size:17px;margin:22px 0 8px}
+/* 01 question */
+.qcard{background:var(--surface-1);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+.qtext{font-family:var(--serif);font-size:18px;line-height:1.6;flex:1 1 460px;min-width:0}
+.qfig{flex:0 0 250px;max-width:100%}
+.qfig svg{display:block;width:100%;height:auto}
+.sq{white-space:nowrap}
+.sq .rad{border-top:1.5px solid currentColor;padding:0 2px}
+#opts{list-style:none;margin:12px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+#opts li{background:var(--surface-1);border:1.5px solid var(--line);border-radius:10px;padding:10px 12px;font-family:var(--serif);font-size:19px;display:flex;gap:10px;align-items:center;min-height:52px}
+#opts li b{font-family:var(--sans);font-size:14px;color:var(--text-muted)}
+#opts li.correct{border-color:var(--good);box-shadow:0 0 0 2px color-mix(in srgb,var(--good) 25%,transparent)}
+#opts li.correct b{color:var(--good)}
+/* 02 lab */
+#keyline{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;background:var(--surface-1);border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin:0 0 8px}
+#keyline .k{font-size:13px;font-weight:800;letter-spacing:.12em;color:var(--text-muted);text-transform:uppercase}
+#ansval{font-size:22px;font-weight:800;color:var(--good)}
+#ansexpr{font-family:var(--serif);font-size:20px}
+#anssub{font-size:14px;color:var(--text-secondary);margin-left:auto}
+#keyline.blink{animation:blink .45s ease-in-out 4}
+@keyframes blink{50%{background:color-mix(in srgb,var(--good) 22%,var(--surface-1))}}
+#narr{margin:0 2px 10px;font-size:16px;color:var(--text-secondary);min-height:2.8em}
+.stage{position:relative;border-radius:16px;overflow:hidden;background:#070a12;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+canvas#labcv{display:block;width:100%;height:auto;touch-action:manipulation}
+#controls{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:12px;padding:12px;border:1px solid var(--line);border-radius:14px;background:var(--surface-1)}
+#controls button{min-height:48px;font-size:16px;font-weight:700;border-radius:10px;border:1px solid var(--line-strong);background:var(--surface-2);color:var(--text-primary);padding:0 16px;cursor:pointer;font-family:var(--sans)}
+#controls button:focus-visible,#controls input:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+#controls .go{background:var(--accent);color:#fff;border:none;font-weight:800;letter-spacing:.04em;min-width:190px}
+#controls .seg{display:flex;align-items:center;gap:0}
+#controls .seg span{font-size:13px;font-weight:700;color:var(--text-muted);margin-right:8px;letter-spacing:.06em;text-transform:uppercase}
+#controls .seg button{border-radius:0;margin-left:-1px;padding:0 13px}
+#controls .seg button:nth-child(2){border-radius:10px 0 0 10px}
+#controls .seg button:last-child{border-radius:0 10px 10px 0}
+#controls .seg button[aria-pressed="true"]{background:var(--accent);color:#fff;border-color:var(--accent)}
+#controls .v0{display:flex;flex-wrap:wrap;align-items:center;gap:10px;flex:1 1 520px;min-width:0}
+#controls .v0 label{font-size:15px;font-weight:700;white-space:nowrap}
+#controls input[type=range]{flex:1 1 150px;min-width:110px;min-height:44px;accent-color:var(--accent);margin:0}
+#v0out{font-family:var(--mono);font-size:15px;min-width:92px}
+#warn{margin:10px 2px 0;font-size:15px;color:var(--s2);font-weight:600}
+/* 03 solution */
+.sol{background:var(--surface-1);border:1px solid var(--line);border-radius:var(--radius);padding:6px 20px 16px}
+.sol ol.steps{padding-left:22px;margin:10px 0}
+.sol ol.steps li{margin:0 0 12px}
+.eq{font-family:var(--serif);font-size:18px;background:var(--surface-2);border-radius:8px;padding:8px 12px;margin:6px 0;overflow-x:auto}
+.solfig{display:flex;gap:18px;align-items:center;flex-wrap:wrap;margin:8px 0 12px}
+.solfig svg{flex:0 0 300px;max-width:100%;height:auto}
+.solfig p{flex:1 1 300px;margin:0}
+table.opt{border-collapse:collapse;width:100%;font-size:15px;margin:8px 0}
+table.opt th,table.opt td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+table.opt th{background:var(--surface-2)}
+table.opt tr.ok td{background:color-mix(in srgb,var(--good) 10%,transparent)}
+.tscroll{overflow-x:auto}
+.concept{border-left:4px solid var(--accent);padding:2px 0 2px 14px;margin:14px 0}
+ul.take{padding-left:20px} ul.take li{margin:0 0 6px}
+#solans{font-weight:800;color:var(--good)}
+.note{font-size:14px;color:var(--text-secondary)}
+/* 04 analysis */
+svg.chart{display:block;width:100%;max-width:760px;height:auto;background:var(--surface-1);border:1px solid var(--line);border-radius:12px}
+.chart text{font-family:var(--sans);fill:var(--text-secondary)}
+.cap{font-size:14px;color:var(--text-secondary);max-width:760px}
+/* how to */
+ol.howto{padding-left:22px;margin:0} ol.howto li{margin:0 0 8px}
+footer{font-size:13px;color:var(--text-muted);border-top:1px solid var(--line);padding:16px 0 0}
+/* classroom */
+body.classroom .wrap{max-width:none;padding:0 18px 30px}
+body.classroom header.top,body.classroom section:not(#lab),body.classroom footer{display:none}
+body.classroom #narr{font-size:24px;color:var(--text-primary)}
+body.classroom #keyline #ansexpr{font-size:26px}
+@media (max-width:760px){
+  .wrap{padding:0 16px 32px}
+  .top-inner{padding:14px 16px 12px}
+  h1{font-size:18px}
+  .qtext{font-size:17px}
+  .qfig{flex-basis:100%}
+  .qfig svg{max-width:260px;margin:0 auto}
+  #opts{grid-template-columns:repeat(2,minmax(0,1fr))}
+  #anssub{margin-left:0}
+  #controls{gap:8px;padding:10px}
+  #controls .go{flex:1 1 100%}
+  #controls button{padding:0 12px}
+  #controls .v0{flex-basis:100%;flex-wrap:wrap}
+  #controls .v0 input[type=range]{flex:1 1 100%;order:3}
+  .solfig svg{flex-basis:100%}
+  .sol{padding:4px 14px 12px}
+}
+@media (prefers-reduced-motion: reduce){#keyline.blink{animation:none}}
+/* long text options */
+#opts.lopts{grid-template-columns:1fr}
+#opts.lopts li{font-family:var(--sans);font-size:17px;align-items:flex-start;line-height:1.5}
+#opts.lopts li b{padding-top:2px}
+#opts.lopts .fx{font-family:var(--serif);font-size:18px;white-space:nowrap}
+#controls .seg button{white-space:nowrap}
+@media (max-width:760px){#opts.lopts .fx{white-space:normal}#controls .seg{flex-wrap:wrap;row-gap:6px}#controls .seg span{flex:1 1 100%;margin:0 0 2px}#controls .seg button:nth-child(2){border-radius:10px 0 0 10px}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-inner">
+    <div class="brandbar"><svg class="pxmark" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><rect width="32" height="32" rx="8" fill="var(--accent)"/><path d="M12.5 6.5h7M13.6 6.5v7.2L7.9 24.1a1.5 1.5 0 0 0 1.3 2.3h13.6a1.5 1.5 0 0 0 1.3-2.3l-5.7-10.4V6.5" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.6 20.6h10.8" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg><span class="wm">PRAYOG<i>X</i></span></div>
+    <div class="simid">ADV-2026-P1-PHY-Q08</div>
+    <h1>Plane-Wave Tracker — which way does E₀ sin(3y + 4z + ωt) travel?</h1>
+    <p class="meta">JEE Advanced 2026 · Paper 1 · Physics · Q.8 · one or more correct options (+4 / partial / 0 / −1) · Electromagnetic waves</p>
+    <button class="themebtn" id="themebtn" type="button">◐ theme</button>
+  </div>
+</header>
+
+<main class="wrap">
+
+<section id="question" aria-labelledby="qh">
+  <h2 id="qh"><b>01</b>The question</h2>
+  <div class="qcard">
+    <div class="qtext">Q.8 The electric field associated with an electromagnetic wave travelling in vacuum is given by <i>E</i><sub>0</sub> sin(3<i>y</i> + 4<i>z</i> + <i>ωt</i>)<i>î</i>, where <i>ω</i> is the angular frequency. All quantities are in SI units. The correct statement(s) about this wave is/are:<br>[Given: speed of light in vacuum <i>c</i> = 3 × 10<sup>8</sup> ms<sup>−1</sup>.]</div>
+  </div>
+  <ol id="opts" class="lopts" aria-label="options">
+    <li data-o="A"><b>(A)</b><span>The wave is travelling in <span class="fx">−(1/5)(3<i>ĵ</i> + 4<i>k̂</i>)</span> direction.</span></li>
+    <li data-o="B"><b>(B)</b><span>The magnitude of the wave vector is 0.5 m<sup>−1</sup>.</span></li>
+    <li data-o="C"><b>(C)</b><span>The value of <i>ω</i> is 1.5 × 10<sup>9</sup> rad s<sup>−1</sup>.</span></li>
+    <li data-o="D"><b>(D)</b><span>The magnetic field associated with this wave is given by <span class="fx">(<i>E</i><sub>0</sub>/<i>c</i>) sin(3<i>y</i> + 4<i>z</i> + <i>ωt</i>)(4<i>ĵ</i> − 3<i>k̂</i>)</span>.</span></li>
+  </ol>
+</section>
+
+<section id="lab" aria-labelledby="lh">
+  <h2 id="lh"><b>02</b>The experiment</h2>
+  <div id="keyline" aria-live="polite">
+    <span class="k">Answer</span><span id="ansval">—</span><span id="ansexpr"></span>
+    <span id="anssub">Press START: the tracker follows a crest, measures the wavelength, and finds B from Faraday's law.</span>
+  </div>
+  <p id="narr" aria-live="polite">Ready.</p>
+  <div class="stage"><canvas id="labcv" width="1200" height="720" role="img" aria-label="Experiment: the y-z plane with the wavefronts of the plane wave 3y + 4z = constant; the electric field points along x, out of the plane; a tracker rides on one crest to measure the direction and speed of travel, a ruler measures the wavelength, and the magnetic field is found from Faraday's law and drawn in the plane"></canvas></div>
+  <div id="controls" role="group" aria-label="experiment controls">
+    <button class="go" type="button" id="gobtn">▶ START EXPERIMENT</button>
+    <button type="button" id="replaybtn">↺ Replay</button>
+    <button type="button" id="resetbtn">Reset</button>
+    <div class="seg" role="group" aria-label="fields shown"><span>Show</span><button type="button" id="fE" aria-pressed="false">E</button><button type="button" id="fB" aria-pressed="false">B</button><button type="button" id="fEB" aria-pressed="true">E and B</button></div>
+    <div class="seg" role="group" aria-label="speed"><span>Speed</span><button type="button" id="sp1" aria-pressed="true">1×</button><button type="button" id="sp2" aria-pressed="false">½×</button></div>
+    <button type="button" id="classbtn" aria-pressed="false">Classroom</button>
+  </div>
+  <p id="warn" hidden></p>
+</section>
+
+<section id="solution" aria-labelledby="sh">
+  <h2 id="sh"><b>03</b>Detailed solution</h2>
+  <div class="sol">
+    <p>Answer: <span id="solans">—</span></p>
+    <ol class="steps">
+      <li><b>Read the wave vector.</b> The phase is <b>k</b>·<b>r</b> + <i>ωt</i> with <b>k</b> = 3<i>ĵ</i> + 4<i>k̂</i>. So |<b>k</b>| = √(9 + 16) = <b>5 m⁻¹</b>, and <b>(B)</b>, which says 0.5 m⁻¹, is false. The wavelength is 2π/5 ≈ 1.257 m.</li>
+      <li><b>Direction of travel.</b> A crest keeps its phase: 3<i>y</i> + 4<i>z</i> + <i>ωt</i> = constant. As <i>t</i> grows, 3<i>y</i> + 4<i>z</i> must fall, so the wave moves against <b>k</b>, along −(3<i>ĵ</i> + 4<i>k̂</i>)/5. <b>(A)</b> is true. (With a "+<i>ωt</i>" phase, the wave travels opposite to <b>k</b>.)</li>
+      <li><b>Frequency.</b> In vacuum <i>ω</i> = <i>c</i>|<b>k</b>| = 3 × 10⁸ × 5 = <b>1.5 × 10⁹ rad/s</b>, so <b>(C)</b> is true.</li>
+      <li><b>Magnetic field (Faraday's law).</b> ∂<b>B</b>/∂<i>t</i> = −∇ × <b>E</b>, and ∇ × (<i>E<sub>x</sub></i> <i>î</i>) = (∂<i>E<sub>x</sub></i>/∂<i>z</i>) <i>ĵ</i> − (∂<i>E<sub>x</sub></i>/∂<i>y</i>) <i>k̂</i> = <i>E</i>₀ cos(…)(4<i>ĵ</i> − 3<i>k̂</i>). Integrating in time:
+        <div class="eq"><b>B</b> = (<i>E</i>₀/<i>ω</i>) sin(3<i>y</i> + 4<i>z</i> + <i>ωt</i>)(−4<i>ĵ</i> + 3<i>k̂</i>) = (<i>E</i>₀/<i>c</i>) sin(…) · (−4<i>ĵ</i> + 3<i>k̂</i>)/5.</div>
+        Option (D) has the opposite sign and is 5 times too large: its |<b>B</b>| would be 5<i>E</i>₀/<i>c</i>, not <i>E</i>₀/<i>c</i>. <b>(D)</b> is false. Check: <b>E</b> × <b>B</b> ∝ <i>î</i> × (−4<i>ĵ</i> + 3<i>k̂</i>) = −(3<i>ĵ</i> + 4<i>k̂</i>), along the direction of travel.</li>
+    </ol>
+    <h3>Understand the concept</h3>
+    <div class="concept">For a plane wave sin(<b>k</b>·<b>r</b> ± <i>ωt</i>), the wavefronts are the planes <b>k</b>·<b>r</b> = constant. With "−<i>ωt</i>" they move along <b>k</b>; with "+<i>ωt</i>" they move against it. The size |<b>k</b>| = 2π/<i>λ</i> is fixed by the spatial part alone, and in vacuum <i>ω</i> = <i>c</i>|<b>k</b>|. The magnetic field is not a free choice. Faraday's law fixes it: it is perpendicular to both <b>E</b> and the direction of travel, has size <i>E</i>/<i>c</i>, and makes <b>E</b> × <b>B</b> point the way the wave goes.</div>
+    <h3>Key takeaways</h3>
+    <ul class="take">
+      <li>sin(<b>k</b>·<b>r</b> + <i>ωt</i>) travels along −<b>k̂</b>; sin(<b>k</b>·<b>r</b> − <i>ωt</i>) travels along +<b>k̂</b>.</li>
+      <li>|<b>k</b>| = √(<i>k<sub>x</sub></i>² + <i>k<sub>y</sub></i>² + <i>k<sub>z</sub></i>²), <i>λ</i> = 2π/|<b>k</b>|, and <i>ω</i> = <i>c</i>|<b>k</b>|.</li>
+      <li><b>B</b> = (1/<i>c</i>) <b>n̂</b> × <b>E</b>, with |<b>B</b>| = |<b>E</b>|/<i>c</i>. Use a unit vector for <b>n̂</b>, and check that <b>E</b> × <b>B</b> points along <b>n̂</b>.</li>
+    </ul>
+    <p class="note">Verification: an independent derivation, a sympy route (Maxwell's equations applied to the given field), a numerical route (a crest followed through time and the curl found by finite differences), and the page's own engine, run by <code>tests/verify_p1phyq08.py</code>. The official key (A, C) and the MathonGo solution (A, C) agree. Status: script-verified by the PrayogX simulation factory; no review by a person has been recorded. The wave is shown in slow motion (the real period is 4.2 ns), and arrows are drawn to relative scale, with |<b>B</b>| shown as <i>c</i>|<b>B</b>|.</p>
+  </div>
+</section>
+
+<section id="howto" aria-labelledby="hh">
+  <h2 id="hh">How to use this simulation</h2>
+  <ol class="howto">
+    <li>Press <b>▶ START EXPERIMENT</b>. The wavefronts (3<i>y</i> + 4<i>z</i> = constant) move across the <i>y</i>–<i>z</i> plane.</li>
+    <li>Watch the tracker ride one crest. Its path gives the direction of travel, against the wave vector <b>k</b>.</li>
+    <li>The ruler then measures the wavelength (so |<b>k</b>|), then <i>ω</i> = <i>c</i>|<b>k</b>|, then <b>B</b> from Faraday's law.</li>
+    <li>Use <b>Show</b> to display <b>E</b> (out of the page, along <i>x</i>), <b>B</b> (in the plane), or both. The last stage checks options A to D.</li>
+    <li><b>Replay</b> runs it again. <b>Reset</b> clears it. <b>Classroom</b> fills the screen for a projector.</li>
+  </ol>
+</section>
+
+<footer>
+  ADV-2026-P1-PHY-Q08 · PrayogX · JEE Advanced Interactive Simulation Library · question text reproduced
+  from the official JEE (Advanced) 2026 Paper 1 for educational use. This is a virtual laboratory only.
+  The plane is drawn to scale in metres; time is slowed about 10⁹ times.
+</footer>
+</main>
+
+<script>
+(function(){
+"use strict";
+/* ENGINE-BEGIN */
+/* E = E0 sin(3y + 4z + w t) x-hat in vacuum (SI). Everything below is computed from this field. */
+var ENGINE = (function(){
+  var C = 3e8, K = [0, 3, 4];
+  function kmag(){ return Math.sqrt(K[0] * K[0] + K[1] * K[1] + K[2] * K[2]); }
+  function omega(){ return C * kmag(); }                                  /* vacuum dispersion w = c|k| */
+  function phase(r, t){ return K[0] * r[0] + K[1] * r[1] + K[2] * r[2] + omega() * t; }
+  function Ex(r, t){ return Math.sin(phase(r, t)); }                      /* in units of E0 */
+  /* follow a crest: the point on the ray through the origin along u where the phase is pi/2 at time t */
+  function crestVelocity(){
+    var dt = 1e-10, u = [0, 3 / 5, 4 / 5];                                /* search along k-hat */
+    function crest(t){ var s = (Math.PI / 2 - omega() * t) / kmag(); return [u[0] * s, u[1] * s, u[2] * s]; }
+    var a = crest(0), b = crest(dt), v = [(b[0] - a[0]) / dt, (b[1] - a[1]) / dt, (b[2] - a[2]) / dt];
+    var sp = Math.sqrt(v[0] * v[0] + v[1] * v[1] + v[2] * v[2]);
+    return { v: v, speed: sp, dir: [v[0] / sp, v[1] / sp, v[2] / sp] };
+  }
+  /* wavelength measured along the direction of travel: distance between successive crests */
+  function wavelength(){                                /* distance between two successive crests of E along the travel direction */
+    var d = crestVelocity().dir, crests = [], s, prev, cur, next, ds = 1e-3;
+    function f(q){ return Ex([d[0] * q, d[1] * q, d[2] * q], 0); }
+    for (s = ds; s < 5 && crests.length < 2; s += ds){
+      prev = f(s - ds); cur = f(s); next = f(s + ds);
+      if (cur > prev && cur >= next){                   /* refine the maximum by golden-section search */
+        var a = s - ds, b = s + ds, gr = (Math.sqrt(5) - 1) / 2, c1, c2, it;
+        for (it = 0; it < 80; it++){ c1 = b - gr * (b - a); c2 = a + gr * (b - a); if (f(c1) > f(c2)) b = c2; else a = c1; }
+        crests.push((a + b) / 2);
+      }
+    }
+    return crests.length === 2 ? crests[1] - crests[0] : null; }
+  /* curl of E by central differences at a point, at phase cos = 1 */
+  function curlE(r, t){
+    var h = 1e-6;
+    function E(p){ return [Ex(p, t), 0, 0]; }
+    function d(i, j){ var p1 = r.slice(), p2 = r.slice(); p1[j] += h; p2[j] -= h; return (E(p1)[i] - E(p2)[i]) / (2 * h); }
+    return [d(2, 1) - d(1, 2), d(0, 2) - d(2, 0), d(1, 0) - d(0, 1)];
+  }
+  /* Faraday: dB/dt = -curl E; with E ~ sin(phase), B = -(curl E at cos = 1)/w * sin(phase), in units of E0 */
+  function Bamp(){ var r0 = [0, 0, 0], t0 = -0 / omega(), cu = curlE(r0, t0); return [-cu[0] / omega(), -cu[1] / omega(), -cu[2] / omega()]; }
+  function vecEq(a, b, tol){ return Math.abs(a[0] - b[0]) <= tol && Math.abs(a[1] - b[1]) <= tol && Math.abs(a[2] - b[2]) <= tol; }
+  var OPTS = {
+    A: function(){ return vecEq(crestVelocity().dir, [0, -3 / 5, -4 / 5], 1e-6); },
+    B: function(){ return Math.abs(kmag() - 0.5) < 1e-9; },
+    C: function(){ return Math.abs(omega() - 1.5e9) < 1; },
+    D: function(){ return vecEq(Bamp(), [0, 4 / C, -3 / C], 1e-6 / C); }                /* (E0/c)(4j - 3k) */
+  };
+  var KEYS = ["A", "B", "C", "D"];
+  function run(){
+    var hits = [], i; for (i = 0; i < KEYS.length; i++) if (OPTS[KEYS[i]]()) hits.push(KEYS[i]);
+    var lab = []; for (i = 0; i < hits.length; i++) lab.push("(" + hits[i] + ")");
+    return { hits: hits, answer: hits.length ? lab.join(", ") : null, k: kmag(), w: omega(), dir: crestVelocity().dir, speed: crestVelocity().speed, lambda: wavelength(), B: Bamp() };
+  }
+  return { C: C, K: K, kmag: kmag, omega: omega, phase: phase, Ex: Ex, crestVelocity: crestVelocity, wavelength: wavelength, curlE: curlE, Bamp: Bamp, OPTS: OPTS, KEYS: KEYS, run: run };
+})();
+/* ENGINE-END */
+
+var QRUN = ENGINE.run();
+var ANS = QRUN.answer;
+
+function $(id){ return document.getElementById(id); }
+var cv = $("labcv"), g = cv.getContext("2d");
+var reduced = !!(window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches);
+var STAGES = [["travel", 4.2], ["lambda", 2.4], ["omega", 1.8], ["faraday", 2.6]], ROW_T = 0.6;
+var SLOW = 1 / 2.2e9;                                    /* real seconds -> wave seconds: one period in about 2 s */
+
+var RUN = { state: "setup", phase: "ready", speed: 1, si: 0, st: 0, tw: 0, show: "EB", done: false, confirmed: false, track: [] };
+var L = null, minPx = 999;
+
+function layout(){
+  var phone = document.documentElement.clientWidth < 700;
+  if (phone) return { phone: true, W: 720, H: 1320, ro: { x: 12, y: 12, w: 696, h: 178 }, pl: { x: 12, y: 204, w: 696, h: 640 }, S: 118,
+    panel: { x: 12, y: 858, w: 696, h: 450 }, fs: 25, big: 31 };
+  return { phone: false, W: 1200, H: 720, ro: { x: 16, y: 14, w: 1168, h: 92 }, pl: { x: 16, y: 122, w: 760, h: 584 }, S: 112,
+    panel: { x: 792, y: 122, w: 392, h: 584 }, fs: 16, big: 24 };
+}
+
+/* --------------------------------------------------------------- run */
+function finish(){
+  RUN.state = "done"; RUN.phase = "audit"; RUN.done = true;
+  RUN.measured = { dir: QRUN.dir, speed: QRUN.speed, lambda: QRUN.lambda, k: 2 * Math.PI / QRUN.lambda, w: ENGINE.C * 2 * Math.PI / QRUN.lambda, B: QRUN.B };
+  var hits = []; ENGINE.KEYS.forEach(function(k){ if (ENGINE.OPTS[k]()) hits.push("(" + k + ")"); });
+  RUN.measuredAnswer = hits.join(", ");
+  if (RUN.measuredAnswer === ANS){ RUN.confirmed = true; confirmAnswer(); }
+  narrate(); refreshButtons();
+}
+function tick(dt){
+  if (RUN.state === "running" || RUN.state === "setup" || RUN.state === "done") { if (!reduced && RUN.state !== "paused") RUN.tw += dt * RUN.speed * SLOW; }
+  if (RUN.state !== "running") return;
+  RUN.st += dt * RUN.speed;
+  if (RUN.phase === "travel"){ var c = crestPos(); RUN.track.push(c); if (RUN.track.length > 400) RUN.track.shift(); }
+  if (RUN.st >= STAGES[RUN.si][1]){
+    RUN.si++; RUN.st = 0;
+    if (RUN.si >= STAGES.length){ finish(); return; }
+    RUN.phase = STAGES[RUN.si][0]; narrate();
+  }
+}
+/* the tracked crest: on the ray through the origin along k-hat, phase = pi/2 + 2 pi m, nearest the start */
+var CREST0 = 1.6;
+function crestPos(){ var k = ENGINE.kmag(), s = CREST0 - ENGINE.omega() * RUN.trackT / k; return [0, 0.6 * s, 0.8 * s]; }
+function pickCrest(){                                   /* the crest (phase = pi/2 mod 2 pi) on the k-ray nearest s = 1.6 m */
+  var k = ENGINE.kmag(), w0 = ENGINE.omega() * RUN.tw, m = Math.round((1.6 * k + w0 - Math.PI / 2) / (2 * Math.PI));
+  CREST0 = (Math.PI / 2 + 2 * Math.PI * m - w0) / k;
+}
+function start(){
+  if (RUN.state === "running"){ RUN.state = "paused"; refreshButtons(); narrate(); return; }
+  if (RUN.state === "paused"){ RUN.state = "running"; refreshButtons(); narrate(); return; }
+  resetRun();
+  if (reduced){ finish(); return; }
+  RUN.state = "running"; RUN.phase = "travel"; RUN.si = 0; RUN.st = 0; RUN.trackT0 = RUN.tw; pickCrest(); narrate(); refreshButtons();
+}
+function resetRun(){ RUN.state = "setup"; RUN.phase = "ready"; RUN.si = 0; RUN.st = 0; RUN.done = false; RUN.measured = null; RUN.measuredAnswer = null; RUN.track = []; RUN.trackT0 = RUN.tw; }
+Object.defineProperty(RUN, "trackT", { get: function(){ return Math.max(0, RUN.tw - (RUN.trackT0 || 0)); } });
+function replay(){ RUN.state = "setup"; start(); }
+function reset(){ resetRun(); refreshButtons(); narrate(); }
+function setShow(v){ if (["E", "B", "EB"].indexOf(v) < 0) v = "EB"; RUN.show = v; $("fE").setAttribute("aria-pressed", v === "E" ? "true" : "false"); $("fB").setAttribute("aria-pressed", v === "B" ? "true" : "false"); $("fEB").setAttribute("aria-pressed", v === "EB" ? "true" : "false"); }
+
+/* ------------------------------------------------------------ words */
+function v3(v, d){ return "(" + v.map(function(x){ var y = Math.abs(x) < 5e-13 ? 0 : x; return (y >= 0 ? "" : "−") + Math.abs(y).toFixed(d); }).join(", ") + ")"; }
+function narrate(){
+  var t;
+  if (RUN.phase === "ready") t = "Ready. The wavefronts 3y + 4z = constant fill the y–z plane; E points along x, out of the page. Press START.";
+  else if (RUN.phase === "travel") t = "Tracking a crest (3y + 4z + ωt = π/2). As t grows, 3y + 4z must fall, so the crest moves against k = (0, 3, 4): along (0, −0.6, −0.8) at c.";
+  else if (RUN.phase === "lambda") t = "Ruler: successive crests are 1.257 m apart along the direction of travel. λ = 2π/|k|, so |k| = 5 m⁻¹, not 0.5.";
+  else if (RUN.phase === "omega") t = "In vacuum ω = c|k| = 3 × 10⁸ × 5 = 1.5 × 10⁹ rad/s. The period is 4.19 ns, shown here in slow motion.";
+  else if (RUN.phase === "faraday") t = "Faraday's law, ∂B/∂t = −∇ × E, gives B = (E₀/c) sin(…)(−4ĵ + 3k̂)/5. That is perpendicular to E and to the travel, and E × B points the way the wave goes.";
+  else t = "Checked: the direction is −(3ĵ + 4k̂)/5 (A); |k| = 5, not 0.5 (B false); ω = 1.5 × 10⁹ rad/s (C); B is (E₀/c)(−4ĵ + 3k̂)/5, not (E₀/c)(4ĵ − 3k̂) (D false). The answer is (A), (C).";
+  if (RUN.state === "paused") t = "Paused. " + t;
+  $("narr").textContent = t;
+}
+function confirmAnswer(){
+  var m = RUN.measured;
+  $("anssub").textContent = "Confirmed by the run: the crest moves along " + v3(m.dir, 2) + " at " + (m.speed / 1e8).toFixed(2) + " × 10⁸ m/s; λ = " + m.lambda.toFixed(3) + " m, so |k| = " + m.k.toFixed(3) + " m⁻¹ and ω = " + (m.w / 1e9).toFixed(3) + " × 10⁹ rad/s; c·B/E₀ = " + v3(m.B.map(function(x){ return x * ENGINE.C; }), 2) + ".";
+  var k = $("keyline");
+  if (!reduced){ k.classList.remove("blink"); void k.offsetWidth; k.classList.add("blink"); setTimeout(function(){ k.classList.remove("blink"); }, 2000); }
+}
+function refreshButtons(){ $("gobtn").textContent = RUN.state === "running" ? "❚❚ PAUSE" : RUN.state === "paused" ? "▶ RESUME" : RUN.state === "done" ? "▶ RUN AGAIN" : "▶ START EXPERIMENT"; }
+function refreshAnswer(){
+  $("ansval").textContent = ANS || "—";
+  $("ansexpr").textContent = ANS ? "travels along −(3ĵ + 4k̂)/5, ω = c|k| = 1.5 × 10⁹ rad/s" : "";
+  $("solans").textContent = ANS || "—";
+  var lis = document.querySelectorAll("#opts li"), i;
+  for (i = 0; i < lis.length; i++) lis[i].classList.toggle("correct", QRUN.hits.indexOf(lis[i].getAttribute("data-o")) >= 0);
+}
+
+/* ------------------------------------------------------------ drawing */
+function label(s, x, y, px, col, align, weight){
+  if (px < minPx) minPx = px;
+  g.font = (weight || "700") + " " + Math.round(px) + "px ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif";
+  g.fillStyle = col || "#e8f0ff"; g.textAlign = align || "left"; g.textBaseline = "alphabetic"; g.fillText(s, x, y);
+}
+function pill(s, x, y, px, col, align){
+  g.font = "800 " + Math.round(px) + "px ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif";
+  var w = g.measureText(s).width + 16, x0 = align === "right" ? x - w + 8 : align === "center" ? x - w / 2 : x - 8;
+  roundRect(x0, y - px - 2, w, px + 12, 8); g.fillStyle = "rgba(8,12,24,.85)"; g.fill(); label(s, x, y, px, col, align, "800");
+}
+function roundRect(x, y, w, h, r){ g.beginPath(); g.moveTo(x + r, y); g.lineTo(x + w - r, y); g.quadraticCurveTo(x + w, y, x + w, y + r); g.lineTo(x + w, y + h - r); g.quadraticCurveTo(x + w, y + h, x + w - r, y + h); g.lineTo(x + r, y + h); g.quadraticCurveTo(x, y + h, x, y + h - r); g.lineTo(x, y + r); g.quadraticCurveTo(x, y, x + r, y); g.closePath(); }
+function panel(x, y, w, h, solid){ roundRect(x, y, w, h, 14); g.fillStyle = solid ? "#0a1020" : "rgba(10,16,32,.86)"; g.fill(); g.strokeStyle = "rgba(140,180,255,.3)"; g.lineWidth = 1.5; g.stroke(); }
+function arrow(x1, y1, x2, y2, col, w, lab, lpx){
+  var dx = x2 - x1, dy = y2 - y1, len = Math.sqrt(dx * dx + dy * dy); if (len < 3) return;
+  var ux = dx / len, uy = dy / len, hw = Math.max(8, w * 2.4), hl = Math.max(11, w * 3.6);
+  g.save(); g.strokeStyle = col; g.fillStyle = col; g.lineWidth = w; g.lineCap = "round"; g.shadowColor = col; g.shadowBlur = 8;
+  g.beginPath(); g.moveTo(x1, y1); g.lineTo(x2 - ux * hl * 0.8, y2 - uy * hl * 0.8); g.stroke();
+  g.beginPath(); g.moveTo(x2, y2); g.lineTo(x2 - ux * hl - uy * hw / 2, y2 - uy * hl + ux * hw / 2); g.lineTo(x2 - ux * hl + uy * hw / 2, y2 - uy * hl - ux * hw / 2); g.closePath(); g.fill(); g.restore();
+  if (lab) label(lab, x2 + ux * 12, y2 + uy * 12 + 6, lpx, col, ux < -0.3 ? "right" : "left", "800");
+}
+
+function drawPlane(){
+  var P = L.pl, cx = P.x + P.w / 2, cy = P.y + P.h / 2 + (L.phone ? 20 : 10), S = L.S, t = RUN.tw;
+  function X(y){ return cx + y * S; } function Y(z){ return cy - z * S; }
+  roundRect(P.x, P.y, P.w, P.h, 14); g.fillStyle = "#070d1c"; g.fill();
+  g.save(); roundRect(P.x, P.y, P.w, P.h, 14); g.clip();
+  /* field shading: E_x = sin(phase) as colour (red out of page, blue into) */
+  var step = L.phone ? 12 : 10, yy, zz;
+  for (yy = P.x; yy < P.x + P.w; yy += step) for (zz = P.y; zz < P.y + P.h; zz += step){
+    var ym = (yy + step / 2 - cx) / S, zm = (cy - zz - step / 2) / S, e = ENGINE.Ex([0, ym, zm], t);
+    g.fillStyle = e > 0 ? "rgba(255,90,70," + (0.32 * e).toFixed(3) + ")" : "rgba(80,140,255," + (-0.32 * e).toFixed(3) + ")"; g.fillRect(yy, zz, step, step);
+  }
+  /* crest lines 3y + 4z + w t = pi/2 + 2 pi m */
+  var k = ENGINE.kmag(), m, ph0 = ENGINE.omega() * t;
+  for (m = -8; m <= 8; m++){
+    var cst = Math.PI / 2 + 2 * Math.PI * m - ph0;                       /* 3y + 4z = cst */
+    var s0 = cst / k, px = 0.6 * s0, pz = 0.8 * s0;                      /* foot of the line on the k-ray */
+    g.strokeStyle = "rgba(255,150,120,.75)"; g.lineWidth = 2.5; g.beginPath(); g.moveTo(X(px - 0.8 * 8), Y(pz + 0.6 * 8)); g.lineTo(X(px + 0.8 * 8), Y(pz - 0.6 * 8)); g.stroke();
+  }
+  /* axes */
+  g.strokeStyle = "rgba(220,235,255,.55)"; g.lineWidth = 2;
+  arrow(X(-2.9), Y(0), X(2.9), Y(0), "rgba(220,235,255,.8)", 2.5, "y", L.fs + 2);
+  arrow(X(0), Y(-2.3), X(0), Y(2.2), "rgba(220,235,255,.8)", 2.5, "z", L.fs + 2);
+  g.strokeStyle = "rgba(220,235,255,.8)"; g.beginPath(); g.arc(X(0), Y(0), 9, 0, Math.PI * 2); g.stroke(); g.fillStyle = "rgba(220,235,255,.9)"; g.beginPath(); g.arc(X(0), Y(0), 3, 0, Math.PI * 2); g.fill();
+  label("x out of page", X(0) + 16, Y(0) - 14, L.fs, "rgba(220,235,255,.85)", "left", "700");
+  var tk; for (tk = -2; tk <= 2; tk++){ if (!tk) continue; g.strokeStyle = "rgba(220,235,255,.8)"; g.lineWidth = 2;
+    g.beginPath(); g.moveTo(X(tk), Y(0) - 6); g.lineTo(X(tk), Y(0) + 6); g.stroke(); g.beginPath(); g.moveTo(X(0) - 6, Y(tk)); g.lineTo(X(0) + 6, Y(tk)); g.stroke(); }
+  label("1 m", X(1), Y(0) + (L.phone ? 36 : 28), L.fs, "rgba(220,235,255,.85)", "center", "700");
+  /* k and the direction of travel */
+  arrow(X(0), Y(0), X(0.6 * 1.9), Y(0.8 * 1.9), "#ffd166", 4, "k = 3ĵ + 4k̂", L.fs);
+  if (RUN.phase !== "ready") arrow(X(-0.3), Y(-0.1), X(-0.3 - 0.6 * 1.7), Y(-0.1 - 0.8 * 1.7), "#9ff0c8", 5, "travel", L.fs + 1);
+  /* E (along x: drawn as dots / crosses) and B (in the plane) at points along the ray */
+  var sArr = [-2, -1.4, -0.8, -0.2, 0.4, 1.0, 1.6], j, Bv = ENGINE.Bamp(), bu = [Bv[1] * ENGINE.C, Bv[2] * ENGINE.C];   /* c B/E0: the unit in-plane direction (-4, 3)/5 */
+  for (j = 0; j < sArr.length; j++){
+    var sy = 0.6 * sArr[j] + 1.2 * 0.8, sz = 0.8 * sArr[j] - 1.2 * 0.6, ex = ENGINE.Ex([0, sy, sz], t);
+    if (RUN.show !== "B"){ var rad = 5 + 12 * Math.abs(ex); g.strokeStyle = ex > 0 ? "#ff7a5c" : "#6fb2ff"; g.lineWidth = 3; g.beginPath(); g.arc(X(sy), Y(sz), rad, 0, Math.PI * 2); g.stroke();
+      if (ex > 0){ g.fillStyle = "#ff7a5c"; g.beginPath(); g.arc(X(sy), Y(sz), 3.5, 0, Math.PI * 2); g.fill(); } else { g.beginPath(); g.moveTo(X(sy) - rad * 0.6, Y(sz) - rad * 0.6); g.lineTo(X(sy) + rad * 0.6, Y(sz) + rad * 0.6); g.moveTo(X(sy) + rad * 0.6, Y(sz) - rad * 0.6); g.lineTo(X(sy) - rad * 0.6, Y(sz) + rad * 0.6); g.stroke(); } }
+    if (RUN.show !== "E" && (RUN.phase === "faraday" || RUN.phase === "audit")){ var L2 = 1.5 * S * ex; arrow(X(sy) - bu[0] * L2 / 2, Y(sz) + bu[1] * L2 / 2, X(sy) + bu[0] * L2 / 2, Y(sz) - bu[1] * L2 / 2, "#7fd4ff", 5, null, 0); }
+  }
+  if (RUN.show !== "B") label("E along x: ⊙ out, ⊗ in (relative size)", P.x + 18, P.y + P.h - 18, L.fs, "#ffb09a", "left", "800");
+  if (RUN.show !== "E" && (RUN.phase === "faraday" || RUN.phase === "audit")) label("B in the plane, along ±(−4ĵ + 3k̂)/5 (c|B| drawn)", P.x + 18, P.y + P.h - (L.phone ? 56 : 44), L.fs, "#9fdcff", "left", "800");
+  /* tracker */
+  if (RUN.phase !== "ready"){
+    var tr = RUN.track, q;
+    if (tr.length > 1){ g.strokeStyle = "#9ff0c8"; g.lineWidth = 3; g.setLineDash([6, 6]); g.beginPath(); g.moveTo(X(tr[0][1]), Y(tr[0][2])); for (q = 1; q < tr.length; q++) g.lineTo(X(tr[q][1]), Y(tr[q][2])); g.stroke(); g.setLineDash([]); }
+    var cp = RUN.phase === "travel" ? crestPos() : tr.length ? tr[tr.length - 1] : crestPos();
+    g.fillStyle = "#9ff0c8"; g.shadowColor = "#9ff0c8"; g.shadowBlur = 14; g.beginPath(); g.arc(X(cp[1]), Y(cp[2]), 9, 0, Math.PI * 2); g.fill(); g.shadowBlur = 0;
+    if (RUN.phase === "travel") pill("crest tracker (phase fixed)", X(cp[1]) + 14, Y(cp[2]) - 12, L.fs, "#9ff0c8");
+  }
+  /* ruler between successive crests along the travel direction */
+  if (RUN.phase === "lambda" || RUN.phase === "omega"){
+    var lam = QRUN.lambda, by = -0.2, bz = 1.4, d = QRUN.dir, ph = ENGINE.phase([0, by, bz], t) - Math.PI / 2;
+    var s1 = (ph - 2 * Math.PI * Math.floor(ph / (2 * Math.PI))) / ENGINE.kmag();          /* first crest along the travel direction */
+    var y1 = by + d[1] * s1, z1 = bz + d[2] * s1, y2 = y1 + d[1] * lam, z2 = z1 + d[2] * lam;
+    arrow(X(y1), Y(z1), X(y2), Y(z2), "#ffd166", 3, null, 0); arrow(X(y2), Y(z2), X(y1), Y(z1), "#ffd166", 3, null, 0);
+    pill("λ = " + lam.toFixed(3) + " m", X((y1 + y2) / 2) + 16, Y((z1 + z2) / 2) + 8, L.fs + 1, "#ffd166", "left");
+  }
+  label("y–z plane · ticks every 1 m · slow motion", P.x + 18, P.y + (L.phone ? 36 : 30), L.fs, "#cfe0ff", "left", "700");
+  g.restore();
+}
+function drawReadouts(){
+  var r = L.ro, ph = RUN.phase, i, x, y, idx = ["ready", "travel", "lambda", "omega", "faraday", "audit"].indexOf(ph);
+  var rows = [["Direction of travel", idx >= 1 ? v3(QRUN.dir, 1) : "—"], ["Wavelength λ", idx >= 2 ? QRUN.lambda.toFixed(3) + " m" : "—"],
+              ["|k| = 2π/λ", idx >= 2 ? (2 * Math.PI / QRUN.lambda).toFixed(3) + " m⁻¹" : "—"], ["ω = c|k|", idx >= 3 ? (ENGINE.omega() / 1e9).toFixed(2) + "×10⁹ rad/s" : "—"]];
+  panel(r.x, r.y, r.w, r.h);
+  for (i = 0; i < 4; i++){
+    if (L.phone){ x = r.x + 18 + (i % 2) * 348; y = r.y + 44 + Math.floor(i / 2) * 84; }
+    else { x = r.x + 20 + i * 290; y = r.y + 34; }
+    label(rows[i][0], x, y, L.fs - (L.phone ? 0 : 1), "#8fa6cf", "left", "700");
+    label(rows[i][1], x, y + (L.phone ? 40 : 38), L.big - (L.phone ? 3 : 0), "#ffffff", "left", "800");
+  }
+}
+function drawPanel(){
+  var P = L.panel, x = P.x + 18, y = P.y + (L.phone ? 42 : 36), ph = RUN.phase, fs = L.fs;
+  panel(P.x, P.y, P.w, P.h, true);
+  if (ph !== "audit"){
+    label("THE FIELD", x, y, fs, "#cfe0ff", "left", "800");
+    var lines = [["E = E₀ sin(3y + 4z + ωt) î", "#ffb09a"], ["k = (0, 3, 4), |k| = 5 m⁻¹", "#ffd166"], ["phase + ωt: travels along −k̂", "#9ff0c8"]];
+    if (ph === "faraday") lines.push(["∂B/∂t = −∇ × E", "#9fdcff"], ["B = (E₀/c) sin(…)(−4ĵ + 3k̂)/5", "#9fdcff"]);
+    var i; for (i = 0; i < lines.length; i++) label(lines[i][0], x, y + (L.phone ? 46 : 40) * (i + 1), fs + (L.phone ? 0 : 1), lines[i][1], "left", "800");
+    return;
+  }
+  label("CHECKING EACH OPTION", x, y, fs, "#cfe0ff", "left", "800");
+  var m = RUN.measured, rowH = (P.h - (L.phone ? 60 : 50)) / 4, k2;
+  var tx = { A: ["(A) along −(3ĵ + 4k̂)/5", "measured " + v3(m.dir, 2)], B: ["(B) |k| = 0.5 m⁻¹", "measured " + m.k.toFixed(3) + " m⁻¹"],
+             C: ["(C) ω = 1.5 × 10⁹ rad/s", "measured " + (m.w / 1e9).toFixed(3) + " × 10⁹"], D: ["(D) B ∝ (E₀/c)(4ĵ − 3k̂)", "Faraday: (E₀/c)" + v3(m.B.map(function(q){ return q * ENGINE.C; }), 1)] };
+  for (var i2 = 0; i2 < 4; i2++){
+    k2 = ENGINE.KEYS[i2]; var okk = ENGINE.OPTS[k2](), yy = y + 16 + i2 * rowH;
+    roundRect(x - 8, yy, P.w - 22, rowH - 8, 10); g.fillStyle = okk ? "rgba(40,160,100,.18)" : "rgba(220,70,70,.16)"; g.fill();
+    label(tx[k2][0] + (okk ? "  ✓" : "  ✗"), x + 2, yy + (L.phone ? 34 : 28), fs + 1, okk ? "#7dffb8" : "#ff9b9b", "left", "800");
+    label(tx[k2][1], x + 2, yy + (L.phone ? 72 : 56), fs, "#e6ecff", "left", "700");
+  }
+}
+function draw(){
+  minPx = 999;
+  L = layout();
+  if (cv.width !== L.W || cv.height !== L.H){ cv.width = L.W; cv.height = L.H; }
+  var bg = g.createLinearGradient(0, 0, 0, L.H); bg.addColorStop(0, "#0b1226"); bg.addColorStop(1, "#04060c"); g.fillStyle = bg; g.fillRect(0, 0, L.W, L.H);
+  drawReadouts(); drawPlane(); drawPanel();
+}
+
+/* ------------------------------------------------------------ controls */
+function setSpeed(k){ RUN.speed = k; $("sp1").setAttribute("aria-pressed", k === 1 ? "true" : "false"); $("sp2").setAttribute("aria-pressed", k === 0.5 ? "true" : "false"); }
+$("gobtn").addEventListener("click", start);
+$("replaybtn").addEventListener("click", replay);
+$("resetbtn").addEventListener("click", reset);
+$("sp1").addEventListener("click", function(){ setSpeed(1); });
+$("sp2").addEventListener("click", function(){ setSpeed(0.5); });
+$("fE").addEventListener("click", function(){ setShow("E"); });
+$("fB").addEventListener("click", function(){ setShow("B"); });
+$("fEB").addEventListener("click", function(){ setShow("EB"); });
+$("classbtn").addEventListener("click", function(){
+  var on = document.body.classList.toggle("classroom"); this.setAttribute("aria-pressed", on ? "true" : "false");
+  this.textContent = on ? "Exit classroom" : "Classroom";
+});
+$("themebtn").addEventListener("click", function(){
+  var r = document.documentElement, dark = r.getAttribute("data-theme") === "dark" || (!r.getAttribute("data-theme") && window.matchMedia && matchMedia("(prefers-color-scheme: dark)").matches);
+  r.setAttribute("data-theme", dark ? "light" : "dark");
+});
+
+var lastT = null;
+function loop(ts){
+  if (lastT === null) lastT = ts;
+  var dt = Math.min(0.05, Math.max(0, (ts - lastT) / 1000)); lastT = ts;
+  tick(dt); draw();
+  requestAnimationFrame(loop);
+}
+
+window.PX = {
+  ENGINE: ENGINE, QRUN: QRUN, ANS: ANS, RUN: RUN,
+  answer: function(){ return ANS; },
+  minLabelPx: function(){ draw(); return minPx; },
+  start: start, replay: replay, reset: reset, setSpeed: setSpeed, speed: function(k){ RUN.speed = k; }, setShow: setShow,
+  state: function(){ var cp = crestPos(); return { state: RUN.state, phase: RUN.phase, si: RUN.si, st: RUN.st, tw: RUN.tw, show: RUN.show, crest: cp, crestPhase: ENGINE.phase(cp, RUN.tw) - ENGINE.phase(crestPosAt0(), RUN.trackT0 || 0),
+    measured: RUN.measured || null, measuredAnswer: RUN.measuredAnswer || null, done: RUN.done, confirmed: RUN.confirmed }; }
+};
+function crestPosAt0(){ return [0, 0.6 * CREST0, 0.8 * CREST0]; }
+
+setShow("EB"); resetRun(); narrate(); refreshAnswer(); refreshButtons(); draw();
+window.addEventListener("resize", function(){ draw(); });
+requestAnimationFrame(loop);
+})();
+</script>
+</body>
+</html>
