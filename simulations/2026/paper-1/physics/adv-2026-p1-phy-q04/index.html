@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Immersed Lens Lab — the power of a lens in a liquid — JEE Advanced 2026 Paper 1 Q.4 | PrayogX</title>
+<meta name="description" content="A double convex glass lens (n = 1.5, R = 20 cm) in a tank whose liquid index n_L you change. The rays converge, pass straight when the lens vanishes at n_L = 1.5, then diverge, while a plotter draws the power: 1/f is a curve (A), n_L/f a straight line (B). JEE Advanced 2026 Paper 1 Physics Q.4, official key A or B.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232a78d6'/%3E%3Cpath d='M12.5 6.5h7M13.6 6.5v7.2L7.9 24.1a1.5 1.5 0 0 0 1.3 2.3h13.6a1.5 1.5 0 0 0 1.3-2.3l-5.7-10.4V6.5' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M10.6 20.6h10.8' stroke='white' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E">
+<meta name="sim-id" content="ADV-2026-P1-PHY-Q04">
+<style>
+:root{
+  color-scheme: light;
+  --surface-0:#f4f4f1; --surface-1:#fcfcfb; --surface-2:#ececea;
+  --line:#d9d9d4; --line-strong:#bcbcb5;
+  --text-primary:#0b0b0b; --text-secondary:#52514e; --text-muted:#77766f;
+  --s1:#2a78d6; --s2:#eb6834; --s3:#1baf7a; --s4:#4a3aa7;
+  --good:#00743f; --bad:#c0392b; --accent:#2a78d6;
+  --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+  --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --serif:ui-serif,Georgia,"Times New Roman",serif;
+  --radius:12px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  color-scheme: dark;
+  --surface-0:#111110; --surface-1:#1a1a19; --surface-2:#232322;
+  --line:#34342f; --line-strong:#4a4a44;
+  --text-primary:#ffffff; --text-secondary:#c3c2b7; --text-muted:#95948b;
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#9085e9;
+  --good:#3fae7a; --bad:#e66767; --accent:#3987e5;
+}}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --surface-0:#111110; --surface-1:#1a1a19; --surface-2:#232322;
+  --line:#34342f; --line-strong:#4a4a44;
+  --text-primary:#ffffff; --text-secondary:#c3c2b7; --text-muted:#95948b;
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#9085e9;
+  --good:#3fae7a; --bad:#e66767; --accent:#3987e5;
+}
+*{box-sizing:border-box}
+[hidden]{display:none !important}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--surface-0);color:var(--text-primary);font-family:var(--sans);font-size:16px;line-height:1.6}
+header.top{border-bottom:1px solid var(--line);background:var(--surface-1)}
+.top-inner{max-width:1240px;margin:0 auto;padding:18px 20px 14px;position:relative}
+.brandbar{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.brandbar .pxmark{width:21px;height:21px;flex:none;display:block}
+.brandbar .wm{font-size:13px;font-weight:800;letter-spacing:.17em;color:var(--text-secondary);line-height:1}
+.brandbar .wm i{font-style:normal;color:var(--accent)}
+.simid{font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--text-muted)}
+h1{font-size:21px;line-height:1.3;margin:4px 0 4px;padding-right:80px}
+.meta{font-size:14px;color:var(--text-secondary);margin:0}
+.themebtn{position:absolute;top:14px;right:16px;border:1px solid var(--line-strong);background:var(--surface-2);
+  color:var(--text-secondary);border-radius:8px;padding:4px 9px;font-size:12px;cursor:pointer}
+.wrap{max-width:1240px;margin:0 auto;padding:0 20px 40px}
+section{margin:0 0 34px}
+h2{font-size:15px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-secondary);margin:26px 0 12px}
+h2 b{color:var(--accent);margin-right:8px}
+h3{font-size:17px;margin:22px 0 8px}
+/* 01 question */
+.qcard{background:var(--surface-1);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+.qtext{font-family:var(--serif);font-size:18px;line-height:1.6;flex:1 1 460px;min-width:0}
+.qfig{flex:0 0 250px;max-width:100%}
+.qfig svg{display:block;width:100%;height:auto}
+.sq{white-space:nowrap}
+.sq .rad{border-top:1.5px solid currentColor;padding:0 2px}
+#opts{list-style:none;margin:12px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+#opts li{background:var(--surface-1);border:1.5px solid var(--line);border-radius:10px;padding:10px 12px;font-family:var(--serif);font-size:19px;display:flex;gap:10px;align-items:center;min-height:52px}
+#opts li b{font-family:var(--sans);font-size:14px;color:var(--text-muted)}
+#opts li.correct{border-color:var(--good);box-shadow:0 0 0 2px color-mix(in srgb,var(--good) 25%,transparent)}
+#opts li.correct b{color:var(--good)}
+/* 02 lab */
+#keyline{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;background:var(--surface-1);border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin:0 0 8px}
+#keyline .k{font-size:13px;font-weight:800;letter-spacing:.12em;color:var(--text-muted);text-transform:uppercase}
+#ansval{font-size:22px;font-weight:800;color:var(--good)}
+#ansexpr{font-family:var(--serif);font-size:20px}
+#anssub{font-size:14px;color:var(--text-secondary);margin-left:auto}
+#keyline.blink{animation:blink .45s ease-in-out 4}
+@keyframes blink{50%{background:color-mix(in srgb,var(--good) 22%,var(--surface-1))}}
+#narr{margin:0 2px 10px;font-size:16px;color:var(--text-secondary);min-height:2.8em}
+.stage{position:relative;border-radius:16px;overflow:hidden;background:#070a12;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+canvas#labcv{display:block;width:100%;height:auto;touch-action:manipulation}
+#controls{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:12px;padding:12px;border:1px solid var(--line);border-radius:14px;background:var(--surface-1)}
+#controls button{min-height:48px;font-size:16px;font-weight:700;border-radius:10px;border:1px solid var(--line-strong);background:var(--surface-2);color:var(--text-primary);padding:0 16px;cursor:pointer;font-family:var(--sans)}
+#controls button:focus-visible,#controls input:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+#controls .go{background:var(--accent);color:#fff;border:none;font-weight:800;letter-spacing:.04em;min-width:190px}
+#controls .seg{display:flex;align-items:center;gap:0}
+#controls .seg span{font-size:13px;font-weight:700;color:var(--text-muted);margin-right:8px;letter-spacing:.06em;text-transform:uppercase}
+#controls .seg button{border-radius:0;margin-left:-1px;padding:0 13px}
+#controls .seg button:nth-child(2){border-radius:10px 0 0 10px}
+#controls .seg button:last-child{border-radius:0 10px 10px 0}
+#controls .seg button[aria-pressed="true"]{background:var(--accent);color:#fff;border-color:var(--accent)}
+#controls .v0{display:flex;flex-wrap:wrap;align-items:center;gap:10px;flex:1 1 520px;min-width:0}
+#controls .v0 label{font-size:15px;font-weight:700;white-space:nowrap}
+#controls input[type=range]{flex:1 1 150px;min-width:110px;min-height:44px;accent-color:var(--accent);margin:0}
+#v0out{font-family:var(--mono);font-size:15px;min-width:92px}
+#warn{margin:10px 2px 0;font-size:15px;color:var(--s2);font-weight:600}
+/* 03 solution */
+.sol{background:var(--surface-1);border:1px solid var(--line);border-radius:var(--radius);padding:6px 20px 16px}
+.sol ol.steps{padding-left:22px;margin:10px 0}
+.sol ol.steps li{margin:0 0 12px}
+.eq{font-family:var(--serif);font-size:18px;background:var(--surface-2);border-radius:8px;padding:8px 12px;margin:6px 0;overflow-x:auto}
+.solfig{display:flex;gap:18px;align-items:center;flex-wrap:wrap;margin:8px 0 12px}
+.solfig svg{flex:0 0 300px;max-width:100%;height:auto}
+.solfig p{flex:1 1 300px;margin:0}
+table.opt{border-collapse:collapse;width:100%;font-size:15px;margin:8px 0}
+table.opt th,table.opt td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+table.opt th{background:var(--surface-2)}
+table.opt tr.ok td{background:color-mix(in srgb,var(--good) 10%,transparent)}
+.tscroll{overflow-x:auto}
+.concept{border-left:4px solid var(--accent);padding:2px 0 2px 14px;margin:14px 0}
+ul.take{padding-left:20px} ul.take li{margin:0 0 6px}
+#solans{font-weight:800;color:var(--good)}
+.note{font-size:14px;color:var(--text-secondary)}
+/* 04 analysis */
+svg.chart{display:block;width:100%;max-width:760px;height:auto;background:var(--surface-1);border:1px solid var(--line);border-radius:12px}
+.chart text{font-family:var(--sans);fill:var(--text-secondary)}
+.cap{font-size:14px;color:var(--text-secondary);max-width:760px}
+/* how to */
+ol.howto{padding-left:22px;margin:0} ol.howto li{margin:0 0 8px}
+footer{font-size:13px;color:var(--text-muted);border-top:1px solid var(--line);padding:16px 0 0}
+/* classroom */
+body.classroom .wrap{max-width:none;padding:0 18px 30px}
+body.classroom header.top,body.classroom section:not(#lab),body.classroom footer{display:none}
+body.classroom #narr{font-size:24px;color:var(--text-primary)}
+body.classroom #keyline #ansexpr{font-size:26px}
+@media (max-width:760px){
+  .wrap{padding:0 16px 32px}
+  .top-inner{padding:14px 16px 12px}
+  h1{font-size:18px}
+  .qtext{font-size:17px}
+  .qfig{flex-basis:100%}
+  .qfig svg{max-width:260px;margin:0 auto}
+  #opts{grid-template-columns:repeat(2,minmax(0,1fr))}
+  #anssub{margin-left:0}
+  #controls{gap:8px;padding:10px}
+  #controls .go{flex:1 1 100%}
+  #controls button{padding:0 12px}
+  #controls .v0{flex-basis:100%;flex-wrap:wrap}
+  #controls .v0 input[type=range]{flex:1 1 100%;order:3}
+  .solfig svg{flex-basis:100%}
+  .sol{padding:4px 14px 12px}
+}
+@media (prefers-reduced-motion: reduce){#keyline.blink{animation:none}}
+/* option plots */
+#opts.gopts li{flex-direction:column;align-items:stretch;gap:4px;padding:8px 10px}
+#opts.gopts li svg{display:block;width:100%;height:auto;color:var(--text-primary)}
+#opts.gopts li svg text{font-family:var(--sans);fill:var(--text-secondary)}
+#controls .seg button{white-space:nowrap}
+@media (max-width:760px){#controls .seg{flex-wrap:wrap;row-gap:6px}#controls .seg span{flex:1 1 100%;margin:0 0 2px}#controls .seg button:nth-child(2){border-radius:10px 0 0 10px}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-inner">
+    <div class="brandbar"><svg class="pxmark" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><rect width="32" height="32" rx="8" fill="var(--accent)"/><path d="M12.5 6.5h7M13.6 6.5v7.2L7.9 24.1a1.5 1.5 0 0 0 1.3 2.3h13.6a1.5 1.5 0 0 0 1.3-2.3l-5.7-10.4V6.5" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.6 20.6h10.8" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg><span class="wm">PRAYOG<i>X</i></span></div>
+    <div class="simid">ADV-2026-P1-PHY-Q04</div>
+    <h1>Immersed Lens Lab — what happens to a lens's power in a liquid?</h1>
+    <p class="meta">JEE Advanced 2026 · Paper 1 · Physics · Q.4 · single correct option (+3 / 0 / −1) · Ray optics</p>
+    <button class="themebtn" id="themebtn" type="button">◐ theme</button>
+  </div>
+</header>
+
+<main class="wrap">
+
+<section id="question" aria-labelledby="qh">
+  <h2 id="qh"><b>01</b>The question</h2>
+  <div class="qcard">
+    <div class="qtext">Q.4 A double convex lens made of glass of refractive index 1.5 and radii of curvature of the curved surfaces 20 cm each is immersed in a liquid of refractive index <i>n<sub>L</sub></i>. The correct plot showing the variation of the power, in the units of diopter (<i>D</i>), as a function of <i>n<sub>L</sub></i> is:</div>
+  </div>
+  <ol id="opts" class="gopts" aria-label="options: four plots of power against n_L, redrawn from the paper">
+    <li data-o="A"><b>(A)</b><svg id="og_A" viewBox="0 0 220 150" role="img" aria-label="Option A: a curve falling from 5 D at n_L = 1.0 through 0 at 1.5 to about −2.5 D at 2.0, bending upwards"></svg></li>
+    <li data-o="B"><b>(B)</b><svg id="og_B" viewBox="0 0 220 150" role="img" aria-label="Option B: a straight line from 5 D at n_L = 1.0 through 0 at 1.5 to −5 D at 2.0"></svg></li>
+    <li data-o="C"><b>(C)</b><svg id="og_C" viewBox="0 0 220 150" role="img" aria-label="Option C: positive and rising to plus infinity just below n_L = 1.5, then coming up from minus infinity above 1.5, on an axis from −40 to 40"></svg></li>
+    <li data-o="D"><b>(D)</b><svg id="og_D" viewBox="0 0 220 150" role="img" aria-label="Option D: negative and falling to minus infinity just below n_L = 1.5, then coming down from plus infinity above 1.5, on an axis from −40 to 40"></svg></li>
+  </ol>
+  <p class="note">The four plots are redrawn from the paper.</p>
+</section>
+
+<section id="lab" aria-labelledby="lh">
+  <h2 id="lh"><b>02</b>The experiment</h2>
+  <div id="keyline" aria-live="polite">
+    <span class="k">Answer</span><span id="ansval">—</span><span id="ansexpr"></span>
+    <span id="anssub">Press START: the run changes the liquid and draws the power as it goes.</span>
+  </div>
+  <p id="narr" aria-live="polite">Ready.</p>
+  <div class="stage"><canvas id="labcv" width="1200" height="720" role="img" aria-label="Experiment: a glass tank of liquid holding a double convex glass lens; a laser comb sends parallel rays through it; as the liquid's refractive index changes the rays converge, pass straight or diverge, and a plotter draws the lens power against the index"></canvas></div>
+  <div id="controls" role="group" aria-label="experiment controls">
+    <button class="go" type="button" id="gobtn">▶ START EXPERIMENT</button>
+    <button type="button" id="replaybtn">↺ Replay</button>
+    <button type="button" id="resetbtn">Reset</button>
+    <div class="seg" role="group" aria-label="speed"><span>Speed</span><button type="button" id="sp1" aria-pressed="true">1×</button><button type="button" id="sp2" aria-pressed="false">½×</button></div>
+    <div class="seg" role="group" aria-label="liquid"><span>Liquid</span><button type="button" id="lq_air" aria-pressed="true">Air 1.00</button><button type="button" id="lq_water" aria-pressed="false">Water 1.33</button><button type="button" id="lq_match" aria-pressed="false">1.50</button><button type="button" id="lq_dense" aria-pressed="false">2.00</button></div>
+    <div class="v0"><label for="in_n">Liquid index n<sub>L</sub></label><input type="range" id="in_n" min="1" max="2" step="0.01" value="1" aria-describedby="nout"><output id="nout" for="in_n">1.00</output></div>
+    <button type="button" id="classbtn" aria-pressed="false">Classroom</button>
+  </div>
+  <p id="warn" hidden></p>
+</section>
+
+<section id="solution" aria-labelledby="sh">
+  <h2 id="sh"><b>03</b>Detailed solution</h2>
+  <div class="sol">
+    <p>Answer: <span id="solans">—</span>. The official key accepts both. They are the same lens, with "power" defined two ways.</p>
+    <ol class="steps">
+      <li><b>Each surface refracts by the index difference.</b> A spherical surface of radius <i>R</i> between media <i>n</i>₁ → <i>n</i>₂ has power (<i>n</i>₂ − <i>n</i>₁)/<i>R</i>. For the double convex lens (<i>R</i>₁ = +20 cm, <i>R</i>₂ = −20 cm) in a liquid <i>n<sub>L</sub></i>:
+        <div class="eq">first surface: (1.5 − <i>n<sub>L</sub></i>)/(+0.20 m), &nbsp; second surface: (<i>n<sub>L</sub></i> − 1.5)/(−0.20 m), &nbsp; each = 5(1.5 − <i>n<sub>L</sub></i>) D.</div></li>
+      <li><b>Optical power (the surfaces added).</b>
+        <div class="eq"><i>n<sub>L</sub></i>/<i>f</i> = 10(1.5 − <i>n<sub>L</sub></i>) D: a <b>straight line</b> from 5 D (<i>n<sub>L</sub></i> = 1) through 0 (1.5) to −5 D (2.0) → <b>(B)</b>.</div></li>
+      <li><b>Focal length in the liquid (lens-maker's formula).</b> Divide by <i>n<sub>L</sub></i>:
+        <div class="eq">1/<i>f</i> = (1.5/<i>n<sub>L</sub></i> − 1)(1/<i>R</i>₁ − 1/<i>R</i>₂) = 10(1.5/<i>n<sub>L</sub></i> − 1) D.</div>
+        Taking the power as 1/<i>f</i> gives a <b>curve</b> (a hyperbola, bending upwards): 5 D, 0, −2.5 D at <i>n<sub>L</sub></i> = 1, 1.5, 2 → <b>(A)</b>.</li>
+      <li><b>What the experiment showed.</b> At <i>n<sub>L</sub></i> = 1.5 there is no index difference, so no refraction. The lens vanishes, <i>f</i> = ∞ and the power is 0 under both definitions. Above 1.5 the difference changes sign, and the double convex lens <i>diverges</i> the light (negative power).</li>
+      <li><b>Why (C) and (D) are wrong.</b> They shoot off to ±∞ at <i>n<sub>L</sub></i> = 1.5. The focal length does that; the power goes smoothly through zero there.</li>
+    </ol>
+    <div class="tscroll"><table class="opt" aria-label="values measured by the run">
+      <thead><tr><th><i>n<sub>L</sub></i></th><th><i>f</i> in the liquid</th><th>1/<i>f</i></th><th><i>n<sub>L</sub></i>/<i>f</i></th></tr></thead>
+      <tbody>
+        <tr><td>1.00 (air)</td><td>20 cm</td><td>5.00 D</td><td>5.00 D</td></tr>
+        <tr><td>1.33 (water)</td><td>78.2 cm</td><td>1.28 D</td><td>1.70 D</td></tr>
+        <tr><td>1.50</td><td>∞</td><td>0</td><td>0</td></tr>
+        <tr><td>2.00</td><td>−40 cm</td><td>−2.50 D</td><td>−5.00 D</td></tr>
+      </tbody>
+    </table></div>
+    <h3>Every option</h3>
+    <div class="tscroll"><table class="opt" aria-label="all four options checked">
+      <thead><tr><th>Option</th><th>Plot</th><th>Verdict</th></tr></thead>
+      <tbody>
+        <tr class="ok"><td>(A)</td><td>curve: 5 → 0 at 1.5 → −2.5 D</td><td>Power taken as 1/<i>f</i> (the lens-maker's formula in the liquid). <b>Accepted.</b></td></tr>
+        <tr class="ok"><td>(B)</td><td>straight line: 5 → 0 at 1.5 → −5 D</td><td>Power taken as <i>n<sub>L</sub></i>/<i>f</i>, the sum of the surface powers. <b>Accepted.</b></td></tr>
+        <tr><td>(C)</td><td>+∞ below 1.5, −∞ above</td><td>The power does not diverge at 1.5; it is zero there. Wrong under both definitions.</td></tr>
+        <tr><td>(D)</td><td>−∞ below 1.5, +∞ above</td><td>It diverges, and it also has the wrong sign in air, where a double convex lens converges. Wrong.</td></tr>
+      </tbody>
+    </table></div>
+    <h3>Understand the concept</h3>
+    <div class="concept">A lens bends light only because its index differs from its surroundings. Its power is set by (<i>n</i><sub>glass</sub> − <i>n</i><sub>surroundings</sub>). The same double convex lens is converging in air, invisible in a liquid of its own index, and diverging in a denser liquid. "Power" in a medium is written two ways. The optical power <i>n<sub>L</sub></i>/<i>f</i> is the sum of the surface powers and is linear in <i>n<sub>L</sub></i>. The reciprocal of the focal length, 1/<i>f</i>, is that divided by <i>n<sub>L</sub></i>. In air (<i>n<sub>L</sub></i> = 1) the two agree. This is why the official key accepts (A) or (B). MathonGo's solution uses 1/<i>f</i> and gives (A).</div>
+    <h3>Key takeaways</h3>
+    <ul class="take">
+      <li>Lens-maker's formula in a medium: 1/<i>f</i> = (<i>n</i><sub>g</sub>/<i>n<sub>L</sub></i> − 1)(1/<i>R</i>₁ − 1/<i>R</i>₂).</li>
+      <li>Power is zero, and <i>f</i> infinite, when <i>n<sub>L</sub></i> = <i>n</i><sub>g</sub>: the lens vanishes.</li>
+      <li>For <i>n<sub>L</sub></i> &gt; <i>n</i><sub>g</sub>, a convex lens diverges and a concave lens converges.</li>
+      <li>Optical power <i>n<sub>L</sub></i>/<i>f</i> is linear in <i>n<sub>L</sub></i>; 1/<i>f</i> is a hyperbola. Both fall through zero at <i>n<sub>L</sub></i> = <i>n</i><sub>g</sub>.</li>
+      <li>A plot that blows up at <i>n<sub>L</sub></i> = <i>n</i><sub>g</sub> is a focal length, not a power.</li>
+    </ul>
+    <p class="note">Verification: an independent derivation, a sympy route, an exact Snell's-law ray trace through the two spherical surfaces, and the page's own engine run by <code>tests/verify_p1phyq04.py</code>. The official key is "A or B", and MathonGo's solution gives (A) with the 1/<i>f</i> definition. Status: script-verified by the PrayogX simulation factory; no review by a person has been recorded. Liquids above about n = 1.8 are rare; the range up to 2.0 follows the question.</p>
+  </div>
+</section>
+
+<section id="howto" aria-labelledby="hh">
+  <h2 id="hh">How to use this simulation</h2>
+  <ol class="howto">
+    <li>Press <b>▶ START EXPERIMENT</b>. The liquid in the tank changes from air (1.00) to <i>n<sub>L</sub></i> = 2.00, pausing at water, 1.50 and 2.00.</li>
+    <li>Watch the laser rays: they converge, pass straight when the lens vanishes at 1.50, then diverge.</li>
+    <li>The plotter beside the tank draws both powers as the liquid changes: 1/<i>f</i> in blue (a curve) and <i>n<sub>L</sub></i>/<i>f</i> in orange (a line).</li>
+    <li>Drag <b>n<sub>L</sub></b> or tap a <b>Liquid</b> button to set one liquid, and read <i>f</i> and both powers on the scene.</li>
+    <li><b>Replay</b> runs it again. <b>Reset</b> returns to air. <b>Classroom</b> fills the screen for a projector.</li>
+  </ol>
+</section>
+
+<footer>
+  ADV-2026-P1-PHY-Q04 · PrayogX · JEE Advanced Interactive Simulation Library · question text reproduced
+  from the official JEE (Advanced) 2026 Paper 1 for educational use. This is a virtual laboratory only.
+  The bench is drawn with the vertical scale and the lens thickness exaggerated. Rays follow the thin-lens model.
+</footer>
+</main>
+
+<script>
+(function(){
+"use strict";
+/* ENGINE-BEGIN */
+/* A thin double convex lens (glass n = 1.5, R1 = +0.20 m, R2 = -0.20 m) in a liquid of index nL.
+   Powers in dioptres. Each spherical surface n1 -> n2 of radius R has power (n2 - n1)/R. */
+var ENGINE = (function(){
+  var NG = 1.5, R1 = 0.20, R2 = -0.20;
+  function surface(n1, n2, R){ return (n2 - n1) / R; }
+  /* optical power: the two surface powers added (thin lens) */
+  function optical(nL){ return surface(nL, NG, R1) + surface(NG, nL, R2); }
+  /* reciprocal of the focal length in the liquid: optical power / nL */
+  function invf(nL){ return optical(nL) / nL; }
+  function fcm(nL){ var p = invf(nL); return Math.abs(p) < 1e-12 ? Infinity : 100 / p; }
+  /* the printed plots, as read from the paper (values in D; C and D diverge at nL = 1.5) */
+  var OPTS = [
+    { key: "A", finite: true, at1: 5, zero: 1.5, at2: -2.5, straight: false },
+    { key: "B", finite: true, at1: 5, zero: 1.5, at2: -5, straight: true },
+    { key: "C", finite: false, before: 1 },
+    { key: "D", finite: false, before: -1 }
+  ];
+  /* features of a sampled plot [[nL, P], ...] with nL from 1.0 to 2.0 */
+  function features(s){
+    var i, finite = true, zero = null, a = s[0], b = s[s.length - 1], dev = 0;
+    for (i = 0; i < s.length; i++){
+      if (!isFinite(s[i][1]) || Math.abs(s[i][1]) > 1000) finite = false;
+      if (i && Math.abs(s[i][1] - s[i - 1][1]) > 5) finite = false;
+      if (i && zero === null && s[i - 1][1] > 0 && s[i][1] <= 0) zero = s[i - 1][0] + (s[i][0] - s[i - 1][0]) * s[i - 1][1] / (s[i - 1][1] - s[i][1]);
+      var lin = a[1] + (b[1] - a[1]) * (s[i][0] - a[0]) / (b[0] - a[0]);
+      if (isFinite(s[i][1])) dev = Math.max(dev, Math.abs(s[i][1] - lin));
+    }
+    return { finite: finite, at1: a[1], at2: b[1], zero: zero, straight: dev < 0.02, before: a[1] > 0 ? 1 : -1, dev: dev };
+  }
+  function matches(ft, o){
+    if (!o.finite) return !ft.finite && ft.before === o.before;
+    return ft.finite && Math.abs(ft.at1 - o.at1) <= 0.25 && ft.zero !== null && Math.abs(ft.zero - o.zero) <= 0.02
+      && Math.abs(ft.at2 - o.at2) <= 0.25 && ft.straight === o.straight;
+  }
+  function sample(fn, step){ var s = [], n; step = step || 0.01; for (n = 0; n <= 100.0001; n += step * 100) s.push([1 + n / 100, fn(1 + n / 100)]); return s; }
+  function hits(s){ var ft = features(s), h = [], i; for (i = 0; i < OPTS.length; i++) if (matches(ft, OPTS[i])) h.push(OPTS[i].key); return h; }
+  function run(){
+    var hi = hits(sample(invf)), ho = hits(sample(optical)), all = [], i;
+    for (i = 0; i < hi.length; i++) if (all.indexOf(hi[i]) < 0) all.push(hi[i]);
+    for (i = 0; i < ho.length; i++) if (all.indexOf(ho[i]) < 0) all.push(ho[i]);
+    all.sort();
+    return { invfHits: hi, opticalHits: ho, keys: all, answer: hi.length === 1 && ho.length === 1 ? all.join(" or ") : null,
+             at1: [invf(1), optical(1)], at15: [invf(1.5), optical(1.5)], at2: [invf(2), optical(2)] };
+  }
+  return { NG: NG, R1: R1, R2: R2, surface: surface, optical: optical, invf: invf, fcm: fcm, OPTS: OPTS,
+           features: features, matches: matches, sample: sample, hits: hits, run: run };
+})();
+/* ENGINE-END */
+
+var QRUN = ENGINE.run();
+var ANS = QRUN.answer;
+
+function $(id){ return document.getElementById(id); }
+var cv = $("labcv"), g = cv.getContext("2d");
+var reduced = !!(window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches);
+var RATE = 0.115;                                   /* index units per second at 1x */
+var STOPS = [1.00, 1.33, 1.50, 2.00], HOLD = 1.6;
+
+var RUN = { state: "setup", phase: "ready", speed: 1, n: 1.00, hold: 0, stop: 0, traceI: [], traceO: [], done: false, measured: null, confirmed: false };
+var L = null, minPx = 999;
+
+function layout(){
+  var phone = document.documentElement.clientWidth < 700;
+  if (phone) return { phone: true, W: 720, H: 1090,
+    ro: { x: 12, y: 12, w: 696, h: 178 },
+    tank: { x0: 78, x1: 704, y0: 252, y1: 632 }, laser: { x0: 10, x1: 70 },
+    plot: { x: 12, y: 652, w: 696, h: 426 }, fs: 25, big: 31 };
+  return { phone: false, W: 1200, H: 720,
+    ro: { x: 16, y: 14, w: 1168, h: 92 },
+    tank: { x0: 92, x1: 740, y0: 150, y1: 690 }, laser: { x0: 18, x1: 82 },
+    plot: { x: 764, y: 124, w: 420, h: 582 }, fs: 16, big: 24 };
+}
+
+/* --------------------------------------------------------------- run */
+function measure(){
+  var fi = ENGINE.features(RUN.traceI), fo = ENGINE.features(RUN.traceO), h = [], ho = [], i;
+  for (i = 0; i < ENGINE.OPTS.length; i++){ if (ENGINE.matches(fi, ENGINE.OPTS[i])) h.push(ENGINE.OPTS[i].key); if (ENGINE.matches(fo, ENGINE.OPTS[i])) ho.push(ENGINE.OPTS[i].key); }
+  RUN.measured = { invf: fi, optical: fo, invfHits: h, opticalHits: ho };
+  if (h.length === 1 && ho.length === 1 && [h[0], ho[0]].sort().join(" or ") === ANS){ RUN.confirmed = true; confirmAnswer(); }
+}
+function record(n){
+  var t = RUN.traceI, last = t[t.length - 1];
+  if (!last || n - last[0] >= 0.004 || n === 2){ t.push([n, ENGINE.invf(n)]); RUN.traceO.push([n, ENGINE.optical(n)]); }
+}
+function setN(n, fromUser){
+  n = parseFloat(n); if (!isFinite(n)) n = 1; n = Math.min(2, Math.max(1, n));
+  RUN.n = Math.round(n * 1000) / 1000;
+  $("in_n").value = String(RUN.n); $("nout").textContent = RUN.n.toFixed(2);
+  var ids = { lq_air: 1.00, lq_water: 1.33, lq_match: 1.50, lq_dense: 2.00 }, k;
+  for (k in ids) $(k).setAttribute("aria-pressed", Math.abs(ids[k] - RUN.n) < 1e-9 ? "true" : "false");
+  if (fromUser){ RUN.touched = true; if (RUN.state === "running" || RUN.state === "paused"){ RUN.state = "setup"; RUN.phase = "ready"; } refreshButtons(); }
+  narrate();
+}
+function resetRun(){ RUN.touched = false; RUN.state = "setup"; RUN.phase = "ready"; RUN.hold = 0; RUN.stop = 0; RUN.traceI = []; RUN.traceO = []; RUN.done = false; RUN.measured = null; setN(1.00, false); }
+function start(){
+  if (RUN.state === "running"){ RUN.state = "paused"; refreshButtons(); narrate(); return; }
+  if (RUN.state === "paused"){ RUN.state = "running"; refreshButtons(); narrate(); return; }
+  resetRun();
+  if (reduced){ runInstant(); return; }
+  RUN.state = "running"; RUN.phase = "hold"; RUN.hold = HOLD; RUN.stop = 0; record(1); refreshButtons(); narrate();
+}
+function runInstant(){
+  var n; RUN.traceI = []; RUN.traceO = [];
+  for (n = 0; n <= 200; n++) record(1 + n / 200);
+  RUN.stop = STOPS.length - 1; setN(2, false);
+  RUN.state = "done"; RUN.phase = "done"; RUN.done = true; measure(); narrate(); refreshButtons();
+}
+function replay(){ RUN.state = "setup"; start(); }
+function reset(){ resetRun(); refreshButtons(); narrate(); }
+function tick(dt){
+  if (RUN.state !== "running") return;
+  if (RUN.phase === "hold"){
+    RUN.hold -= dt * RUN.speed;
+    if (RUN.hold > 0) return;
+    if (RUN.stop >= STOPS.length - 1){ RUN.state = "done"; RUN.phase = "done"; RUN.done = true; measure(); narrate(); refreshButtons(); return; }
+    RUN.phase = "sweep"; narrate(); return;
+  }
+  var target = STOPS[RUN.stop + 1], n = RUN.n + RATE * dt * RUN.speed;
+  if (n >= target){ n = target; RUN.stop++; RUN.phase = "hold"; RUN.hold = HOLD; }
+  setN(n, false); record(RUN.n);
+}
+
+/* ------------------------------------------------------------ words */
+function fmtD(p){ return (Math.abs(p) < 5e-4 ? "0.00" : p.toFixed(2)) + " D"; }
+function fmtF(n){ var f = ENGINE.fcm(n); return isFinite(f) ? String(Math.round(f * 10) / 10).replace("-", "−") + " cm" : "∞"; }
+function narrate(){
+  var n = RUN.n, t;
+  var near = function(x){ return Math.abs(n - x) < 1e-9; };
+  var preset = near(1) || near(1.33) || near(1.5) || near(2);
+  if (RUN.phase === "ready" && !preset) t = "Liquid n_L = " + n.toFixed(2) + ": f = " + fmtF(n) + ", 1/f = " + fmtD(ENGINE.invf(n)) + ", n_L/f = " + fmtD(ENGINE.optical(n)) + ". Press START to sweep the liquid from 1.00 to 2.00.";
+  else if (RUN.phase === "ready" && near(1) && RUN.state === "setup" && !RUN.touched) t = "Ready. The lens sits in air (n_L = 1.00): f = 20 cm, 1/f = 5.00 D. Press START to change the liquid.";
+  else if (RUN.phase === "done") t = "Done. The blue trace (1/f) is a curve through 5, 0 and −2.50 D: plot (A). The orange trace (n_L/f) is a straight line through 5, 0 and −5.00 D: plot (B). The official key accepts A or B.";
+  else if (RUN.phase === "sweep") t = "Changing the liquid: n_L = " + n.toFixed(2) + ". The index difference 1.5 − n_L sets how strongly each surface bends the light.";
+  else if (near(1)) t = "In air (n_L = 1.00) each surface bends light by (1.5 − 1.0)/R. The rays meet at f = 20 cm: power 5 D.";
+  else if (near(1.33)) t = "Water (n_L = 1.33): the index difference drops to 0.17, so the bending weakens. f = 78.2 cm, 1/f = 1.28 D, n_L/f = 1.70 D.";
+  else if (near(1.5)) t = "n_L = 1.50: no index difference, no refraction. The lens vanishes and the rays pass straight: f = ∞, power 0.";
+  else t = "n_L = 2.00 > 1.5: the difference changes sign, and the double convex lens now diverges. f = −40 cm, 1/f = −2.50 D, n_L/f = −5.00 D.";
+  if (RUN.state === "paused") t = "Paused. " + t;
+  $("narr").textContent = t;
+}
+function confirmAnswer(){
+  var m = RUN.measured;
+  $("anssub").textContent = "Confirmed by the run: 1/f traced a curve through " + m.invf.at1.toFixed(2) + ", 0 and " + m.invf.at2.toFixed(2) + " D (A); n_L/f a straight line through " + m.optical.at1.toFixed(2) + ", 0 and " + m.optical.at2.toFixed(2) + " D (B).";
+  var k = $("keyline");
+  if (!reduced){ k.classList.remove("blink"); void k.offsetWidth; k.classList.add("blink"); setTimeout(function(){ k.classList.remove("blink"); }, 2000); }
+}
+function refreshButtons(){
+  $("gobtn").textContent = RUN.state === "running" ? "❚❚ PAUSE" : RUN.state === "paused" ? "▶ RESUME" : RUN.state === "done" ? "▶ RUN AGAIN" : "▶ START EXPERIMENT";
+}
+function refreshAnswer(){
+  $("ansval").textContent = ANS || "—";
+  $("ansexpr").textContent = ANS ? "(A) if power = 1/f · (B) if power = n_L/f" : "";
+  $("solans").textContent = ANS ? "(A) or (B)" : "—";
+  var lis = document.querySelectorAll("#opts li"), i;
+  for (i = 0; i < lis.length; i++) lis[i].classList.toggle("correct", QRUN.keys.indexOf(lis[i].getAttribute("data-o")) >= 0);
+}
+
+/* ------------------------------------------------------------ the option plots (redrawn) */
+function optionPlots(){
+  function axes(ymax, ticks){
+    var s = '<line x1="30" y1="75" x2="212" y2="75" stroke="currentColor" stroke-width="1.2"/><path d="M212 71 L219 75 L212 79Z" fill="currentColor"/>';
+    s += '<line x1="30" y1="140" x2="30" y2="8" stroke="currentColor" stroke-width="1.2"/><path d="M26 10 L30 3 L34 10Z" fill="currentColor"/>';
+    s += '<text x="24" y="20" font-size="11" text-anchor="end">' + ymax + '</text><text x="24" y="138" font-size="11" text-anchor="end">−' + ymax + '</text><text x="24" y="79" font-size="11" text-anchor="end">0</text>';
+    s += '<text x="36" y="92" font-size="11">1.0</text><text x="112" y="92" font-size="11" text-anchor="middle">1.5</text><text x="190" y="92" font-size="11" text-anchor="middle">2.0</text>';
+    return s + ticks;
+  }
+  function X(n){ return 36 + (n - 1) * 154; }
+  function path(fn, ymax, a, b){ var d = "", n, y, first = true; for (n = a; n <= b + 1e-9; n += 0.005){ y = fn(n); if (Math.abs(y) > ymax * 1.05) { first = true; continue; } d += (first ? "M" : "L") + X(n).toFixed(1) + " " + (75 - y / ymax * 62).toFixed(1) + " "; first = false; } return d; }
+  var st = ' fill="none" stroke="currentColor" stroke-width="2.2"';
+  $("og_A").innerHTML = axes(5, "") + '<path d="' + path(function(n){ return 10 * (1.5 / n - 1); }, 5, 1, 2) + '"' + st + '/>';
+  $("og_B").innerHTML = axes(5, "") + '<path d="' + path(function(n){ return 10 * (1.5 - n); }, 5, 1, 2) + '"' + st + '/>';
+  var c1 = function(n){ return 18 + 1.2 / (1.5 - n); }, c2 = function(n){ return -6 - 1.2 / (n - 1.5); };
+  $("og_C").innerHTML = axes(40, "") + '<path d="' + path(c1, 40, 1, 1.49) + '"' + st + '/><path d="' + path(c2, 40, 1.51, 2) + '"' + st + '/>';
+  $("og_D").innerHTML = axes(40, "") + '<path d="' + path(function(n){ return -c1(n); }, 40, 1, 1.49) + '"' + st + '/><path d="' + path(function(n){ return -c2(n); }, 40, 1.51, 2) + '"' + st + '/>';
+}
+
+/* ------------------------------------------------------------ drawing */
+function label(s, x, y, px, col, align, weight){
+  if (px < minPx) minPx = px;
+  g.font = (weight || "700") + " " + Math.round(px) + "px ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif";
+  g.fillStyle = col || "#e8f0ff"; g.textAlign = align || "left"; g.textBaseline = "alphabetic"; g.fillText(s, x, y);
+}
+function pill(s, x, y, px, col, align){
+  g.font = "800 " + Math.round(px) + "px ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif";
+  var w = g.measureText(s).width + 16, x0 = align === "right" ? x - w + 8 : align === "center" ? x - w / 2 : x - 8;
+  roundRect(x0, y - px - 2, w, px + 12, 8); g.fillStyle = "rgba(8,12,24,.82)"; g.fill();
+  label(s, x, y, px, col, align, "800");
+}
+function roundRect(x, y, w, h, r){ g.beginPath(); g.moveTo(x + r, y); g.lineTo(x + w - r, y); g.quadraticCurveTo(x + w, y, x + w, y + r); g.lineTo(x + w, y + h - r); g.quadraticCurveTo(x + w, y + h, x + w - r, y + h); g.lineTo(x + r, y + h); g.quadraticCurveTo(x, y + h, x, y + h - r); g.lineTo(x, y + r); g.quadraticCurveTo(x, y, x + r, y); g.closePath(); }
+function panel(x, y, w, h){ roundRect(x, y, w, h, 14); g.fillStyle = "rgba(10,16,32,.84)"; g.fill(); g.strokeStyle = "rgba(140,180,255,.3)"; g.lineWidth = 1.5; g.stroke(); }
+
+function drawBackdrop(){
+  var bg = g.createLinearGradient(0, 0, 0, L.H); bg.addColorStop(0, "#0c1428"); bg.addColorStop(1, "#05070d");
+  g.fillStyle = bg; g.fillRect(0, 0, L.W, L.H);
+}
+function drawReadouts(){
+  var n = RUN.n, r = L.ro, rows = [
+    ["Liquid index n_L", n.toFixed(2)],
+    ["Focal length f (in liquid)", fmtF(n)],
+    ["Power 1/f", fmtD(ENGINE.invf(n))],
+    ["Power n_L/f", fmtD(ENGINE.optical(n))]
+  ], cols = ["#ffffff", "#ffffff", "#5fd4ff", "#ffb35c"], i, x, y;
+  panel(r.x, r.y, r.w, r.h);
+  for (i = 0; i < 4; i++){
+    if (L.phone){ x = r.x + 18 + (i % 2) * 348; y = r.y + 44 + Math.floor(i / 2) * 84; }
+    else { x = r.x + 20 + i * 290; y = r.y + 34; }
+    label(rows[i][0], x, y, L.fs - (L.phone ? 0 : 1), "#8fa6cf", "left", "700");
+    label(rows[i][1], x, y + (L.phone ? 40 : 38), L.big + (L.phone ? 0 : 4), cols[i], "left", "800");
+  }
+}
+function drawBench(){
+  var T = L.tank, n = RUN.n, cy = (T.y0 + T.y1) / 2, HS = (T.x1 - T.x0) / 100, VS = (T.y1 - T.y0) / 2 / 5.2;
+  var xL = T.x0 + 40 * HS;                                             /* lens 40 cm from the left wall */
+  /* bench rail */
+  g.fillStyle = "#1a2334"; g.fillRect(L.laser.x0, T.y1 + 4, T.x1 - L.laser.x0 + 6, 10);
+  /* liquid: its tint deepens with the index */
+  var a = n <= 1.0001 ? 0 : 0.10 + 0.34 * (n - 1);
+  var lg = g.createLinearGradient(0, T.y0, 0, T.y1); lg.addColorStop(0, "rgba(70,150,255," + (a * 0.8).toFixed(3) + ")"); lg.addColorStop(1, "rgba(40,110,230," + a.toFixed(3) + ")");
+  g.fillStyle = lg; g.fillRect(T.x0, T.y0 + 14, T.x1 - T.x0, T.y1 - T.y0 - 14);
+  if (a > 0){ g.strokeStyle = "rgba(160,210,255,.45)"; g.lineWidth = 2; g.beginPath(); g.moveTo(T.x0, T.y0 + 14); g.lineTo(T.x1, T.y0 + 14); g.stroke(); }
+  /* the tank walls */
+  g.strokeStyle = "rgba(200,225,255,.55)"; g.lineWidth = 3; g.strokeRect(T.x0, T.y0, T.x1 - T.x0, T.y1 - T.y0);
+  g.strokeStyle = "rgba(255,255,255,.12)"; g.lineWidth = 8; g.beginPath(); g.moveTo(T.x0 + 8, T.y0 + 20); g.lineTo(T.x0 + 8, T.y1 - 20); g.stroke();
+  label(n <= 1.0001 ? "empty tank (air)" : "liquid n_L = " + n.toFixed(2), T.x0 + 14, T.y1 - 14, L.fs, "#9fc4ff", "left", "700");
+  /* optical axis */
+  g.save(); g.setLineDash([6, 8]); g.strokeStyle = "rgba(200,220,255,.25)"; g.lineWidth = 1.5; g.beginPath(); g.moveTo(L.laser.x1, cy); g.lineTo(T.x1, cy); g.stroke(); g.restore();
+  /* laser comb */
+  roundRect(L.laser.x0, cy - 5.0 * VS, L.laser.x1 - L.laser.x0, 10 * VS, 10); g.fillStyle = "#222b3b"; g.fill(); g.strokeStyle = "#5a667d"; g.lineWidth = 2; g.stroke();
+  /* rays: thin-lens model, heights -4..4 cm */
+  var p = ENGINE.invf(n) / 100, fcm = ENGINE.fcm(n), h, k;
+  g.save(); g.lineCap = "round";
+  for (k = -4; k <= 4; k++){
+    h = k;
+    var y0 = cy - h * VS, slope = -h * p;                              /* dy/dx in cm/cm after the lens */
+    var xe = T.x1, ye = cy - (h + slope * (xe - xL) / HS) * VS;
+    if (ye < T.y0 + 16 || ye > T.y1 - 4){ var yb = ye < T.y0 + 16 ? T.y0 + 16 : T.y1 - 4; xe = xL + ((cy - yb) / VS - h) / slope * HS; ye = yb; }
+    g.strokeStyle = "rgba(255,80,80,.95)"; g.shadowColor = "#ff4040"; g.shadowBlur = 10; g.lineWidth = 3;
+    g.beginPath(); g.moveTo(L.laser.x1, y0); g.lineTo(xL, y0); g.lineTo(xe, ye); g.stroke();
+    if (fcm < 0 && k !== 0){                                          /* virtual rays back to the virtual focus */
+      g.shadowBlur = 0; g.setLineDash([5, 7]); g.strokeStyle = "rgba(255,140,140,.55)"; g.lineWidth = 1.6;
+      var xv = Math.max(T.x0, xL + fcm * HS); g.beginPath(); g.moveTo(xL, y0); g.lineTo(xv, cy - (h + slope * (xv - xL) / HS) * VS); g.stroke(); g.setLineDash([]);
+    }
+  }
+  g.restore();
+  /* the lens: glass that fades as the liquid's index approaches 1.5 */
+  var vis = Math.min(1, Math.abs(ENGINE.NG - n) / 0.5), la = 0.07 + 0.83 * vis, ht = 4.6 * VS, bulge = 22;
+  g.save(); g.globalAlpha = la;
+  g.beginPath(); g.moveTo(xL, cy - ht); g.quadraticCurveTo(xL + bulge * 2, cy, xL, cy + ht); g.quadraticCurveTo(xL - bulge * 2, cy, xL, cy - ht); g.closePath();
+  var gg = g.createLinearGradient(xL - bulge, 0, xL + bulge, 0); gg.addColorStop(0, "rgba(170,230,255,.55)"); gg.addColorStop(0.5, "rgba(230,250,255,.85)"); gg.addColorStop(1, "rgba(150,210,245,.55)");
+  g.fillStyle = gg; g.fill(); g.strokeStyle = "rgba(235,250,255,.95)"; g.lineWidth = 2.5; g.stroke();
+  g.restore();
+  label(vis < 0.12 ? "lens (almost invisible)" : "glass lens n = 1.5", xL, cy - ht - 12, L.fs, vis < 0.12 ? "#ffd28a" : "#dff4ff", "center", "700");
+  /* the focus */
+  var fx = xL + fcm * HS;
+  if (!isFinite(fcm)) pill("rays pass straight: f = ∞", T.x1 - 14, cy - 18, L.fs + 1, "#ffd28a", "right");
+  else if (fcm > 0 && fx <= T.x1 - 10){ g.fillStyle = "#ffe08a"; g.shadowColor = "#ffe08a"; g.shadowBlur = 16; g.beginPath(); g.arc(fx, cy, 7, 0, Math.PI * 2); g.fill(); g.shadowBlur = 0; pill("F  (f = " + fmtF(n) + ")", fx + 12, cy + 34, L.fs, "#ffe08a", "left", "800"); }
+  else if (fcm > 0) pill("focus " + fmtF(n) + " away →", T.x1 - 14, cy - 18, L.fs + 1, "#ffe08a", "right", "800");
+  else if (fx >= T.x0 - 1){ g.strokeStyle = "#ffe08a"; g.lineWidth = 2.5; g.beginPath(); g.arc(fx, cy, 7, 0, Math.PI * 2); g.stroke(); pill("virtual F (f = " + fmtF(n) + ")", fx - 10, cy + 34, L.fs, "#ffe08a", "left", "800"); }
+  else pill("← virtual focus " + fmtF(n), T.x0 + 14, cy - 18, L.fs, "#ffe08a", "left", "800");
+  label((L.phone ? "vertical ×" : "vertical scale ×") + Math.round(VS / HS) + (L.phone ? " · lens thickened · thin-lens rays" : ", lens thickness exaggerated · thin-lens rays"), L.phone ? 12 : T.x0 + 14, T.y0 - 14, L.fs - (L.phone ? 0 : 2), "rgba(170,190,225,.8)", "left", "600");
+}
+function drawPlot(){
+  var P = L.plot, x0 = P.x + (L.phone ? 70 : 64), x1 = P.x + P.w - 22, y0 = P.y + (L.phone ? 70 : 64), y1 = P.y + P.h - (L.phone ? 56 : 50), ym = 6;
+  panel(P.x, P.y, P.w, P.h);
+  label("PLOTTER · power against n_L", P.x + 18, P.y + (L.phone ? 36 : 32), L.fs, "#cfe0ff", "left", "800");
+  function X(n){ return x0 + (n - 1) * (x1 - x0); }
+  function Y(p){ return y0 + (ym - p) / (2 * ym) * (y1 - y0); }
+  g.strokeStyle = "rgba(160,190,240,.18)"; g.lineWidth = 1;
+  var v, step = L.phone ? 3 : 2; for (v = -6; v <= 6; v += step){ g.beginPath(); g.moveTo(x0, Y(v)); g.lineTo(x1, Y(v)); g.stroke(); label(String(v), x0 - 10, Y(v) + 6, L.fs, "#8fa6cf", "right", "600"); }
+  for (v = 0; v <= 4; v++){ var nn = 1 + v * 0.25; g.beginPath(); g.moveTo(X(nn), y0); g.lineTo(X(nn), y1); g.stroke(); if (v % 2 === 0) label(nn.toFixed(1), X(nn), y1 + (L.phone ? 34 : 26), L.fs, "#8fa6cf", "center", "600"); }
+  g.strokeStyle = "rgba(220,235,255,.7)"; g.lineWidth = 2; g.beginPath(); g.moveTo(x0, Y(0)); g.lineTo(x1, Y(0)); g.stroke(); g.beginPath(); g.moveTo(x0, y0); g.lineTo(x0, y1); g.stroke();
+  label("D", x0 + 8, y0 + 4, L.fs, "#cfe0ff", "left", "800"); label("n_L", x1, y0 - 12, L.fs, "#cfe0ff", "right", "800");
+  function trace(t, col){ if (t.length < 2) return; g.save(); g.strokeStyle = col; g.lineWidth = 4; g.shadowColor = col; g.shadowBlur = 8; g.beginPath(); g.moveTo(X(t[0][0]), Y(t[0][1])); for (var i = 1; i < t.length; i++) g.lineTo(X(t[i][0]), Y(t[i][1])); g.stroke(); g.restore(); }
+  trace(RUN.traceO, "#ffb35c"); trace(RUN.traceI, "#5fd4ff");
+  /* the current liquid */
+  var n = RUN.n;
+  g.save(); g.setLineDash([4, 6]); g.strokeStyle = "rgba(255,255,255,.35)"; g.beginPath(); g.moveTo(X(n), y0); g.lineTo(X(n), y1); g.stroke(); g.restore();
+  g.fillStyle = "#ffb35c"; g.beginPath(); g.arc(X(n), Y(ENGINE.optical(n)), 7, 0, Math.PI * 2); g.fill();
+  g.fillStyle = "#5fd4ff"; g.beginPath(); g.arc(X(n), Y(ENGINE.invf(n)), 7, 0, Math.PI * 2); g.fill();
+  var ly = y1 - (L.phone ? 20 : 14);
+  label("● 1/f", x0 + 12, ly - (L.phone ? 36 : 28), L.fs, "#5fd4ff", "left", "800");
+  label("● n_L/f", x0 + 12, ly, L.fs, "#ffb35c", "left", "800");
+  if (RUN.done){
+    label("curve → (A)", X(1.66), Y(0) + (L.phone ? 32 : 26), L.fs + 1, "#5fd4ff", "left", "800");
+    label("line → (B)", X(1.6) - 8, Y(ENGINE.optical(1.6)) + (L.phone ? 44 : 34), L.fs + 1, "#ffb35c", "right", "800");
+  }
+}
+function draw(){
+  minPx = 999;
+  L = layout();
+  if (cv.width !== L.W || cv.height !== L.H){ cv.width = L.W; cv.height = L.H; }
+  drawBackdrop(); drawBench(); drawReadouts(); drawPlot();
+}
+
+/* ------------------------------------------------------------ controls */
+function setSpeed(k){ RUN.speed = k; $("sp1").setAttribute("aria-pressed", k === 1 ? "true" : "false"); $("sp2").setAttribute("aria-pressed", k === 0.5 ? "true" : "false"); }
+$("gobtn").addEventListener("click", start);
+$("replaybtn").addEventListener("click", replay);
+$("resetbtn").addEventListener("click", reset);
+$("sp1").addEventListener("click", function(){ setSpeed(1); });
+$("sp2").addEventListener("click", function(){ setSpeed(0.5); });
+$("lq_air").addEventListener("click", function(){ setN(1.00, true); });
+$("lq_water").addEventListener("click", function(){ setN(1.33, true); });
+$("lq_match").addEventListener("click", function(){ setN(1.50, true); });
+$("lq_dense").addEventListener("click", function(){ setN(2.00, true); });
+$("in_n").addEventListener("input", function(){ setN(this.value, true); });
+$("classbtn").addEventListener("click", function(){
+  var on = document.body.classList.toggle("classroom"); this.setAttribute("aria-pressed", on ? "true" : "false");
+  this.textContent = on ? "Exit classroom" : "Classroom";
+});
+$("themebtn").addEventListener("click", function(){
+  var r = document.documentElement, dark = r.getAttribute("data-theme") === "dark" || (!r.getAttribute("data-theme") && window.matchMedia && matchMedia("(prefers-color-scheme: dark)").matches);
+  r.setAttribute("data-theme", dark ? "light" : "dark");
+});
+
+var lastT = null;
+function loop(ts){
+  if (lastT === null) lastT = ts;
+  var dt = Math.min(0.05, Math.max(0, (ts - lastT) / 1000)); lastT = ts;
+  tick(dt); draw();
+  requestAnimationFrame(loop);
+}
+
+window.PX = {
+  ENGINE: ENGINE, QRUN: QRUN, ANS: ANS, RUN: RUN,
+  answer: function(){ return ANS; },
+  minLabelPx: function(){ draw(); return minPx; },
+  start: start, replay: replay, reset: reset, setSpeed: setSpeed, speed: function(k){ RUN.speed = k; },
+  setN: function(n){ setN(n, true); },
+  state: function(){ return { state: RUN.state, phase: RUN.phase, n: RUN.n, stop: RUN.stop, invf: ENGINE.invf(RUN.n), optical: ENGINE.optical(RUN.n), f: ENGINE.fcm(RUN.n), traced: RUN.traceI.length, measured: RUN.measured, done: RUN.done, confirmed: RUN.confirmed }; }
+};
+
+optionPlots(); resetRun(); refreshAnswer(); refreshButtons(); draw();
+window.addEventListener("resize", function(){ draw(); });
+requestAnimationFrame(loop);
+})();
+</script>
+</body>
+</html>
