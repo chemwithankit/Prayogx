@@ -65,12 +65,25 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
     }
     const home = await b.newPage({ viewport: { width: 1280, height: 900 } });
     await home.goto(BASE + '/?smoke=' + Date.now(), { waitUntil: 'load', timeout: 45000 });
-    let listed = false;
-    for (let i = 0; i < 40 && !listed; i++) {
-      await sleep(250);
-      listed = await home.evaluate(id => !!document.querySelector('a[href*="' + id + '"], a[href*="' + id.toLowerCase() + '"]'), ID);
+    /* The grid draws cards in batches (site.js PAGE) behind a "Show N more" button (#more), so a
+       newer item may not be in the first render. Look in the first render, then page through with
+       #more, then search (#q) by its short title. Each route needs a real link in the live UI. */
+    const linked = () => home.evaluate(id => !!document.querySelector('a[href*="' + id + '"], a[href*="' + id.toLowerCase() + '"]'), ID);
+    let listed = false, via = 'first render';
+    for (let i = 0; i < 40 && !listed; i++) { await sleep(250); listed = await linked(); }
+    for (let i = 0; i < 100 && !listed; i++) {
+      const more = await home.$('#more');
+      if (!more) break;
+      via = 'Show more x' + (i + 1);
+      await more.click();
+      for (let j = 0; j < 8 && !listed; j++) { await sleep(125); listed = await linked(); }
     }
-    ok('the library page links to the item', listed);
+    if (!listed && await home.$('#q')) {
+      via = 'search "' + (sim.shortTitle || sim.title) + '"';
+      await home.fill('#q', sim.shortTitle || sim.title);
+      for (let i = 0; i < 40 && !listed; i++) { await sleep(250); listed = await linked(); }
+    }
+    ok('the library page links to the item (' + via + ')', listed, 'no link after first render, #more and search');
     await home.close();
   } finally {
     await b.close();
