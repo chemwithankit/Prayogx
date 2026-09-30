@@ -93,6 +93,21 @@
               ]
             }
           }
+        },
+        "Thermodynamics": {
+          "topics": {
+            "A cycle of isothermal, isochoric and adiabatic processes for a monoatomic ideal gas - heat flows, temperature and pressure ratios, efficiency": {
+              "subtopics": [
+                "Isothermal process: dU = 0, Q = W = nRT ln(V2/V1), P proportional to 1/V",
+                "Isochoric process: W = 0, Q = n C_V dT",
+                "Adiabatic process: Q = 0, T V^(gamma - 1) constant; gamma = 5/3 for a monoatomic gas",
+                "Efficiency of a cycle, eta = (Q_in - Q_out)/Q_in"
+              ],
+              "simulations": [
+                "ADV-2026-P1-PHY-Q07"
+              ]
+            }
+          }
         }
       }
     },

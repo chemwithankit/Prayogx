@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Three-Step Engine Lab — isothermal, isochoric and adiabatic cycle — JEE Advanced 2026 Paper 1 Q.7 | PrayogX</title>
+<meta name="description" content="A gas cylinder runs a cycle: isothermal expansion on a hot bath, isochoric cooling on a cold bath, adiabatic compression. For V2/V1 = 8 the run measures T_a = 4 T_c, heat out 1.125 nRT_a below heat in 2.08 nRT_a, and the same efficiency at 300 K and 600 K; P_a is 8 P_b, not 4. Answer (A), (B), (C). JEE Advanced 2026 Paper 1 Physics Q.7.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232a78d6'/%3E%3Cpath d='M12.5 6.5h7M13.6 6.5v7.2L7.9 24.1a1.5 1.5 0 0 0 1.3 2.3h13.6a1.5 1.5 0 0 0 1.3-2.3l-5.7-10.4V6.5' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M10.6 20.6h10.8' stroke='white' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E">
+<meta name="sim-id" content="ADV-2026-P1-PHY-Q07">
+<style>
+:root{
+  color-scheme: light;
+  --surface-0:#f4f4f1; --surface-1:#fcfcfb; --surface-2:#ececea;
+  --line:#d9d9d4; --line-strong:#bcbcb5;
+  --text-primary:#0b0b0b; --text-secondary:#52514e; --text-muted:#77766f;
+  --s1:#2a78d6; --s2:#eb6834; --s3:#1baf7a; --s4:#4a3aa7;
+  --good:#00743f; --bad:#c0392b; --accent:#2a78d6;
+  --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+  --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --serif:ui-serif,Georgia,"Times New Roman",serif;
+  --radius:12px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  color-scheme: dark;
+  --surface-0:#111110; --surface-1:#1a1a19; --surface-2:#232322;
+  --line:#34342f; --line-strong:#4a4a44;
+  --text-primary:#ffffff; --text-secondary:#c3c2b7; --text-muted:#95948b;
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#9085e9;
+  --good:#3fae7a; --bad:#e66767; --accent:#3987e5;
+}}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --surface-0:#111110; --surface-1:#1a1a19; --surface-2:#232322;
+  --line:#34342f; --line-strong:#4a4a44;
+  --text-primary:#ffffff; --text-secondary:#c3c2b7; --text-muted:#95948b;
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#9085e9;
+  --good:#3fae7a; --bad:#e66767; --accent:#3987e5;
+}
+*{box-sizing:border-box}
+[hidden]{display:none !important}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--surface-0);color:var(--text-primary);font-family:var(--sans);font-size:16px;line-height:1.6}
+header.top{border-bottom:1px solid var(--line);background:var(--surface-1)}
+.top-inner{max-width:1240px;margin:0 auto;padding:18px 20px 14px;position:relative}
+.brandbar{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.brandbar .pxmark{width:21px;height:21px;flex:none;display:block}
+.brandbar .wm{font-size:13px;font-weight:800;letter-spacing:.17em;color:var(--text-secondary);line-height:1}
+.brandbar .wm i{font-style:normal;color:var(--accent)}
+.simid{font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--text-muted)}
+h1{font-size:21px;line-height:1.3;margin:4px 0 4px;padding-right:80px}
+.meta{font-size:14px;color:var(--text-secondary);margin:0}
+.themebtn{position:absolute;top:14px;right:16px;border:1px solid var(--line-strong);background:var(--surface-2);
+  color:var(--text-secondary);border-radius:8px;padding:4px 9px;font-size:12px;cursor:pointer}
+.wrap{max-width:1240px;margin:0 auto;padding:0 20px 40px}
+section{margin:0 0 34px}
+h2{font-size:15px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-secondary);margin:26px 0 12px}
+h2 b{color:var(--accent);margin-right:8px}
+h3{font-size:17px;margin:22px 0 8px}
+/* 01 question */
+.qcard{background:var(--surface-1);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+.qtext{font-family:var(--serif);font-size:18px;line-height:1.6;flex:1 1 460px;min-width:0}
+.qfig{flex:0 0 250px;max-width:100%}
+.qfig svg{display:block;width:100%;height:auto}
+.sq{white-space:nowrap}
+.sq .rad{border-top:1.5px solid currentColor;padding:0 2px}
+#opts{list-style:none;margin:12px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+#opts li{background:var(--surface-1);border:1.5px solid var(--line);border-radius:10px;padding:10px 12px;font-family:var(--serif);font-size:19px;display:flex;gap:10px;align-items:center;min-height:52px}
+#opts li b{font-family:var(--sans);font-size:14px;color:var(--text-muted)}
+#opts li.correct{border-color:var(--good);box-shadow:0 0 0 2px color-mix(in srgb,var(--good) 25%,transparent)}
+#opts li.correct b{color:var(--good)}
+/* 02 lab */
+#keyline{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;background:var(--surface-1);border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin:0 0 8px}
+#keyline .k{font-size:13px;font-weight:800;letter-spacing:.12em;color:var(--text-muted);text-transform:uppercase}
+#ansval{font-size:22px;font-weight:800;color:var(--good)}
+#ansexpr{font-family:var(--serif);font-size:20px}
+#anssub{font-size:14px;color:var(--text-secondary);margin-left:auto}
+#keyline.blink{animation:blink .45s ease-in-out 4}
+@keyframes blink{50%{background:color-mix(in srgb,var(--good) 22%,var(--surface-1))}}
+#narr{margin:0 2px 10px;font-size:16px;color:var(--text-secondary);min-height:2.8em}
+.stage{position:relative;border-radius:16px;overflow:hidden;background:#070a12;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+canvas#labcv{display:block;width:100%;height:auto;touch-action:manipulation}
+#controls{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:12px;padding:12px;border:1px solid var(--line);border-radius:14px;background:var(--surface-1)}
+#controls button{min-height:48px;font-size:16px;font-weight:700;border-radius:10px;border:1px solid var(--line-strong);background:var(--surface-2);color:var(--text-primary);padding:0 16px;cursor:pointer;font-family:var(--sans)}
+#controls button:focus-visible,#controls input:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+#controls .go{background:var(--accent);color:#fff;border:none;font-weight:800;letter-spacing:.04em;min-width:190px}
+#controls .seg{display:flex;align-items:center;gap:0}
+#controls .seg span{font-size:13px;font-weight:700;color:var(--text-muted);margin-right:8px;letter-spacing:.06em;text-transform:uppercase}
+#controls .seg button{border-radius:0;margin-left:-1px;padding:0 13px}
+#controls .seg button:nth-child(2){border-radius:10px 0 0 10px}
+#controls .seg button:last-child{border-radius:0 10px 10px 0}
+#controls .seg button[aria-pressed="true"]{background:var(--accent);color:#fff;border-color:var(--accent)}
+#controls .v0{display:flex;flex-wrap:wrap;align-items:center;gap:10px;flex:1 1 520px;min-width:0}
+#controls .v0 label{font-size:15px;font-weight:700;white-space:nowrap}
+#controls input[type=range]{flex:1 1 150px;min-width:110px;min-height:44px;accent-color:var(--accent);margin:0}
+#v0out{font-family:var(--mono);font-size:15px;min-width:92px}
+#warn{margin:10px 2px 0;font-size:15px;color:var(--s2);font-weight:600}
+/* 03 solution */
+.sol{background:var(--surface-1);border:1px solid var(--line);border-radius:var(--radius);padding:6px 20px 16px}
+.sol ol.steps{padding-left:22px;margin:10px 0}
+.sol ol.steps li{margin:0 0 12px}
+.eq{font-family:var(--serif);font-size:18px;background:var(--surface-2);border-radius:8px;padding:8px 12px;margin:6px 0;overflow-x:auto}
+.solfig{display:flex;gap:18px;align-items:center;flex-wrap:wrap;margin:8px 0 12px}
+.solfig svg{flex:0 0 300px;max-width:100%;height:auto}
+.solfig p{flex:1 1 300px;margin:0}
+table.opt{border-collapse:collapse;width:100%;font-size:15px;margin:8px 0}
+table.opt th,table.opt td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+table.opt th{background:var(--surface-2)}
+table.opt tr.ok td{background:color-mix(in srgb,var(--good) 10%,transparent)}
+.tscroll{overflow-x:auto}
+.concept{border-left:4px solid var(--accent);padding:2px 0 2px 14px;margin:14px 0}
+ul.take{padding-left:20px} ul.take li{margin:0 0 6px}
+#solans{font-weight:800;color:var(--good)}
+.note{font-size:14px;color:var(--text-secondary)}
+/* 04 analysis */
+svg.chart{display:block;width:100%;max-width:760px;height:auto;background:var(--surface-1);border:1px solid var(--line);border-radius:12px}
+.chart text{font-family:var(--sans);fill:var(--text-secondary)}
+.cap{font-size:14px;color:var(--text-secondary);max-width:760px}
+/* how to */
+ol.howto{padding-left:22px;margin:0} ol.howto li{margin:0 0 8px}
+footer{font-size:13px;color:var(--text-muted);border-top:1px solid var(--line);padding:16px 0 0}
+/* classroom */
+body.classroom .wrap{max-width:none;padding:0 18px 30px}
+body.classroom header.top,body.classroom section:not(#lab),body.classroom footer{display:none}
+body.classroom #narr{font-size:24px;color:var(--text-primary)}
+body.classroom #keyline #ansexpr{font-size:26px}
+@media (max-width:760px){
+  .wrap{padding:0 16px 32px}
+  .top-inner{padding:14px 16px 12px}
+  h1{font-size:18px}
+  .qtext{font-size:17px}
+  .qfig{flex-basis:100%}
+  .qfig svg{max-width:260px;margin:0 auto}
+  #opts{grid-template-columns:repeat(2,minmax(0,1fr))}
+  #anssub{margin-left:0}
+  #controls{gap:8px;padding:10px}
+  #controls .go{flex:1 1 100%}
+  #controls button{padding:0 12px}
+  #controls .v0{flex-basis:100%;flex-wrap:wrap}
+  #controls .v0 input[type=range]{flex:1 1 100%;order:3}
+  .solfig svg{flex-basis:100%}
+  .sol{padding:4px 14px 12px}
+}
+@media (prefers-reduced-motion: reduce){#keyline.blink{animation:none}}
+/* long text options */
+#opts.lopts{grid-template-columns:1fr}
+#opts.lopts li{font-family:var(--sans);font-size:17px;align-items:flex-start;line-height:1.5}
+#opts.lopts li b{padding-top:2px}
+#opts.lopts .fx{font-family:var(--serif);font-size:18px;white-space:nowrap}
+#controls .seg button{white-space:nowrap}
+@media (max-width:760px){#opts.lopts .fx{white-space:normal}#controls .seg{flex-wrap:wrap;row-gap:6px}#controls .seg span{flex:1 1 100%;margin:0 0 2px}#controls .seg button:nth-child(2){border-radius:10px 0 0 10px}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-inner">
+    <div class="brandbar"><svg class="pxmark" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><rect width="32" height="32" rx="8" fill="var(--accent)"/><path d="M12.5 6.5h7M13.6 6.5v7.2L7.9 24.1a1.5 1.5 0 0 0 1.3 2.3h13.6a1.5 1.5 0 0 0 1.3-2.3l-5.7-10.4V6.5" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.6 20.6h10.8" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg><span class="wm">PRAYOG<i>X</i></span></div>
+    <div class="simid">ADV-2026-P1-PHY-Q07</div>
+    <h1>Three-Step Engine Lab — isothermal, isochoric, adiabatic</h1>
+    <p class="meta">JEE Advanced 2026 · Paper 1 · Physics · Q.7 · one or more correct options (+4 / partial / 0 / −1) · Thermodynamics</p>
+    <button class="themebtn" id="themebtn" type="button">◐ theme</button>
+  </div>
+</header>
+
+<main class="wrap">
+
+<section id="question" aria-labelledby="qh">
+  <h2 id="qh"><b>01</b>The question</h2>
+  <div class="qcard">
+    <div class="qtext">Q.7 A quasi-static cycle of a monoatomic ideal gas contains an isothermal process (<b><i>ab</i></b>), followed by an isochoric process (<b><i>bc</i></b>) and an adiabatic process (<b><i>ca</i></b>) as shown in the figure. The volumes of the gas are <i>V</i><sub>1</sub> and <i>V</i><sub>2</sub> at <b><i>a</i></b> and <b><i>b</i></b>, respectively. If the cycle has heat input <i>Q</i><sub>in</sub> and output <i>Q</i><sub>out</sub>, then the efficiency of the cycle is defined as <i>η</i> = (<i>Q</i><sub>in</sub> − <i>Q</i><sub>out</sub>)/<i>Q</i><sub>in</sub>. The correct statement(s) is/are:<br>[Given: ln 2 ≈ 0.7]</div>
+    <div class="qfig">
+      <svg viewBox="0 0 260 180" role="img" aria-label="Figure from the question: a P-V diagram; from a at volume V1 an isotherm falls to b at V2, a vertical isochore drops from b to c, and a steeper adiabat returns from c to a">
+        <g style="color:var(--text-primary)" fill="none" stroke="currentColor" stroke-width="1.5">
+          <line x1="30" y1="160" x2="245" y2="160"/><line x1="30" y1="160" x2="30" y2="10"/>
+          <path d="M241 156 L247 160 L241 164"/><path d="M26 14 L30 8 L34 14"/>
+          <line x1="70" y1="28" x2="70" y2="160" stroke-dasharray="3 3"/><line x1="200" y1="28" x2="200" y2="160" stroke-dasharray="3 3"/>
+          <path d="M70 40 Q 120 88 200 104"/><path d="M200 104 L200 128"/><path d="M200 128 Q 110 110 70 40"/>
+        </g>
+        <g style="color:var(--text-primary)" font-family="Georgia,serif" font-size="14" fill="currentColor" font-style="italic">
+          <text x="56" y="38">a</text><text x="205" y="102">b</text><text x="205" y="138">c</text>
+          <text x="12" y="18">P</text><text x="238" y="176">V</text><text x="62" y="176">V₁</text><text x="192" y="176">V₂</text>
+        </g>
+      </svg>
+    </div>
+  </div>
+  <ol id="opts" class="lopts" aria-label="options">
+    <li data-o="A"><b>(A)</b><span>If <i>V</i><sub>2</sub>/<i>V</i><sub>1</sub> = 8, the heat released in the process <b><i>bc</i></b> is smaller than the heat absorbed in the process <b><i>ab</i></b>.</span></li>
+    <li data-o="B"><b>(B)</b><span>For a given value of <i>V</i><sub>2</sub>/<i>V</i><sub>1</sub>, <i>η</i> does not depend on the temperature of the isothermal process.</span></li>
+    <li data-o="C"><b>(C)</b><span>If <i>V</i><sub>2</sub>/<i>V</i><sub>1</sub> = 8, then the temperature of the gas at <b><i>a</i></b> is 4 times the temperature of the gas at <b><i>c</i></b>.</span></li>
+    <li data-o="D"><b>(D)</b><span>If <i>V</i><sub>2</sub>/<i>V</i><sub>1</sub> = 8, then the pressure of the gas at <b><i>a</i></b> is 4 times the pressure of the gas at <b><i>b</i></b>.</span></li>
+  </ol>
+</section>
+
+<section id="lab" aria-labelledby="lh">
+  <h2 id="lh"><b>02</b>The experiment</h2>
+  <div id="keyline" aria-live="polite">
+    <span class="k">Answer</span><span id="ansval">—</span><span id="ansexpr"></span>
+    <span id="anssub">Press START: the engine runs the cycle, measuring every heat flow, temperature and pressure.</span>
+  </div>
+  <p id="narr" aria-live="polite">Ready.</p>
+  <div class="stage"><canvas id="labcv" width="1200" height="720" role="img" aria-label="Experiment: a gas cylinder with a piston runs the cycle; it sits on a hot bath while it expands at constant temperature, is locked and put on a cold bath while it cools at constant volume, then is insulated while it is compressed back; a P-V plotter traces the cycle and the heat in and out is measured"></canvas></div>
+  <div id="controls" role="group" aria-label="experiment controls">
+    <button class="go" type="button" id="gobtn">▶ START EXPERIMENT</button>
+    <button type="button" id="replaybtn">↺ Replay</button>
+    <button type="button" id="resetbtn">Reset</button>
+    <div class="seg" role="group" aria-label="volume ratio"><span>V₂/V₁</span><button type="button" id="r2" aria-pressed="false">2</button><button type="button" id="r4" aria-pressed="false">4</button><button type="button" id="r8" aria-pressed="true">8</button></div>
+    <div class="seg" role="group" aria-label="isothermal temperature"><span>T of ab</span><button type="button" id="t300" aria-pressed="true">300 K</button><button type="button" id="t600" aria-pressed="false">600 K</button></div>
+    <div class="seg" role="group" aria-label="speed"><span>Speed</span><button type="button" id="sp1" aria-pressed="true">1×</button><button type="button" id="sp2" aria-pressed="false">½×</button></div>
+    <button type="button" id="classbtn" aria-pressed="false">Classroom</button>
+  </div>
+  <p id="warn" hidden></p>
+</section>
+
+<section id="solution" aria-labelledby="sh">
+  <h2 id="sh"><b>03</b>Detailed solution</h2>
+  <div class="sol">
+    <p>Answer: <span id="solans">—</span></p>
+    <ol class="steps">
+      <li><b>The three states.</b> Take <i>n</i> moles with <i>C<sub>V</sub></i> = (3/2)<i>R</i> and <i>γ</i> = 5/3, and let <i>r</i> = <i>V</i><sub>2</sub>/<i>V</i><sub>1</sub>. Then <i>a</i> = (<i>V</i><sub>1</sub>, <i>T<sub>a</sub></i>) and <i>b</i> = (<i>V</i><sub>2</sub>, <i>T<sub>a</sub></i>), since ab is isothermal. On the adiabat, <i>TV</i><sup><i>γ</i>−1</sup> is constant, so <i>T<sub>c</sub></i> = <i>T<sub>a</sub></i>(<i>V</i><sub>1</sub>/<i>V</i><sub>2</sub>)<sup>2/3</sup>.</li>
+      <li><b>(C) is true.</b> For <i>r</i> = 8: <i>T<sub>a</sub></i>/<i>T<sub>c</sub></i> = 8<sup>2/3</sup> = 4.</li>
+      <li><b>(A) is true.</b> Heat absorbed on ab: <i>Q<sub>ab</sub></i> = <i>nRT<sub>a</sub></i> ln 8 = 3 ln 2 · <i>nRT<sub>a</sub></i> ≈ 2.1 <i>nRT<sub>a</sub></i>. Heat released on bc: <i>Q<sub>bc</sub></i> = <i>nC<sub>V</sub></i>(<i>T<sub>a</sub></i> − <i>T<sub>c</sub></i>) = (3/2)(3/4) <i>nRT<sub>a</sub></i> = 1.125 <i>nRT<sub>a</sub></i>, which is smaller. No heat flows on the adiabat.
+        <div class="eq"><i>η</i> = 1 − <i>Q<sub>bc</sub></i>/<i>Q<sub>ab</sub></i> = 1 − (3/2)(1 − <i>r</i><sup>−2/3</sup>)/ln <i>r</i> ≈ 0.46 for <i>r</i> = 8 (0.464 with ln 2 = 0.7).</div></li>
+      <li><b>(B) is true.</b> Both heats are proportional to <i>T<sub>a</sub></i>, so it cancels in <i>η</i>. The efficiency depends only on <i>r</i>. The experiment runs the cycle at 300 K and at 600 K and measures the same <i>η</i>.</li>
+      <li><b>(D) is false.</b> On the isotherm <i>PV</i> is constant, so <i>P<sub>a</sub></i>/<i>P<sub>b</sub></i> = <i>V</i><sub>2</sub>/<i>V</i><sub>1</sub> = 8, not 4. The 4 is the temperature ratio <i>T<sub>a</sub></i>/<i>T<sub>c</sub></i>.</li>
+    </ol>
+    <div class="tscroll"><table class="opt" aria-label="the cycle for three volume ratios, per nRT_a">
+      <thead><tr><th><i>V</i><sub>2</sub>/<i>V</i><sub>1</sub></th><th><i>T<sub>c</sub></i>/<i>T<sub>a</sub></i></th><th><i>Q<sub>ab</sub></i> in</th><th><i>Q<sub>bc</sub></i> out</th><th><i>η</i></th></tr></thead>
+      <tbody>
+        <tr><td>2</td><td>0.630</td><td>0.693</td><td>0.555</td><td>0.199</td></tr>
+        <tr><td>4</td><td>0.397</td><td>1.386</td><td>0.905</td><td>0.347</td></tr>
+        <tr><td>8</td><td>0.250</td><td>2.079</td><td>1.125</td><td>0.459</td></tr>
+      </tbody>
+    </table></div>
+    <h3>Understand the concept</h3>
+    <div class="concept">Heat enters only on the isotherm: the gas does work while its temperature, and so its internal energy, stays fixed. It leaves only on the isochore, where the gas cools at constant volume. The adiabat exchanges no heat and simply returns the gas to <i>a</i>. Every heat in the cycle is proportional to the temperature scale, so the efficiency is a pure function of the volume ratio. The ratios are easy to mix up. On the isotherm, pressure scales with 1/<i>V</i> (a factor of 8). Along the adiabat, temperature scales with <i>V</i><sup>−2/3</sup> (a factor of 4).</div>
+    <h3>Key takeaways</h3>
+    <ul class="take">
+      <li>Isothermal: Δ<i>U</i> = 0, so <i>Q</i> = <i>W</i> = <i>nRT</i> ln(<i>V</i><sub>2</sub>/<i>V</i><sub>1</sub>), and <i>P</i> ∝ 1/<i>V</i>.</li>
+      <li>Isochoric: <i>W</i> = 0, so <i>Q</i> = <i>nC<sub>V</sub></i>Δ<i>T</i>.</li>
+      <li>Adiabatic: <i>Q</i> = 0 and <i>TV</i><sup><i>γ</i>−1</sup> is constant; for a monoatomic gas, <i>T</i> ∝ <i>V</i><sup>−2/3</sup>.</li>
+      <li><i>η</i> = 1 − (3/2)(1 − <i>r</i><sup>−2/3</sup>)/ln <i>r</i>, independent of <i>T</i>.</li>
+    </ul>
+    <p class="note">Verification: an independent derivation, a sympy route, a numerical integration of the first law along each leg (with no process formula assumed), and the page's own engine, run by <code>tests/verify_p1phyq07.py</code>. The official key (A, B, C) and the MathonGo solution (A, B, C) agree. Status: script-verified by the PrayogX simulation factory; no review by a person has been recorded. The model is 1 mol of ideal gas. The molecules' speed is drawn proportional to √<i>T</i>.</p>
+  </div>
+</section>
+
+<section id="howto" aria-labelledby="hh">
+  <h2 id="hh">How to use this simulation</h2>
+  <ol class="howto">
+    <li>Press <b>▶ START EXPERIMENT</b>. The cylinder expands on the hot bath (ab), is locked and cooled on the cold bath (bc), then is insulated and compressed (ca).</li>
+    <li>Watch the heat arrows: in on ab, out on bc, none on ca. The plotter traces the cycle on the P–V diagram.</li>
+    <li>The readouts give <i>T</i>, <i>V</i>/<i>V</i><sub>1</sub>, <i>P</i>/<i>P<sub>a</sub></i> and the heat so far. The last stage checks options A to D against the measurements.</li>
+    <li>Change <b>V₂/V₁</b> or <b>T of ab</b> and run again. The efficiency changes with the volume ratio but not with the temperature.</li>
+    <li><b>Replay</b> runs it again. <b>Reset</b> clears it. <b>Classroom</b> fills the screen for a projector.</li>
+  </ol>
+</section>
+
+<footer>
+  ADV-2026-P1-PHY-Q07 · PrayogX · JEE Advanced Interactive Simulation Library · question text reproduced
+  from the official JEE (Advanced) 2026 Paper 1 for educational use. This is a virtual laboratory only.
+  The model is 1 mol of monoatomic ideal gas, with the cylinder and baths drawn schematically.
+</footer>
+</main>
+
+<script>
+(function(){
+"use strict";
+/* ENGINE-BEGIN */
+/* 1 mol of monoatomic ideal gas: ab isothermal (T_a), bc isochoric (V2), ca adiabatic (gamma = 5/3). */
+var ENGINE = (function(){
+  var R = 8.314462618, n = 1, CV = 1.5 * R, GAMMA = 5 / 3;
+  function cycle(r, Ta){
+    var V1 = 1e-3, V2 = r * V1;                                          /* m^3; only ratios matter */
+    var Pa = n * R * Ta / V1, Pb = n * R * Ta / V2;
+    var Tc = Ta * Math.pow(V1 / V2, GAMMA - 1), Pc = n * R * Tc / V2;
+    var Qab = n * R * Ta * Math.log(r);                                  /* absorbed: dU = 0, Q = W */
+    var Qbc = n * CV * (Ta - Tc);                                        /* released at constant volume */
+    var Wca = n * CV * (Ta - Tc);                                        /* work done on the gas, Q = 0 */
+    return { r: r, Ta: Ta, Tc: Tc, V1: V1, V2: V2, Pa: Pa, Pb: Pb, Pc: Pc, Qab: Qab, Qbc: Qbc, Wca: Wca,
+             eta: (Qab - Qbc) / Qab, TaTc: Ta / Tc, PaPb: Pa / Pb };
+  }
+  /* the state along the cycle: leg 0 = ab, 1 = bc, 2 = ca; s from 0 to 1 */
+  function state(c, leg, s){
+    var V, T, qin = 0, qout = 0;
+    if (leg === 0){ V = c.V1 * Math.pow(c.r, s); T = c.Ta; qin = n * R * c.Ta * Math.log(V / c.V1); }
+    else if (leg === 1){ V = c.V2; T = c.Ta + (c.Tc - c.Ta) * s; qin = c.Qab; qout = n * CV * (c.Ta - T); }
+    else { V = c.V2 * Math.pow(c.r, -s); T = c.Tc * Math.pow(c.V2 / V, GAMMA - 1); qin = c.Qab; qout = c.Qbc; }
+    return { V: V, T: T, P: n * R * T / V, qin: qin, qout: qout };
+  }
+  var OPTS = {
+    A: function(){ var c = cycle(8, 300); return c.Qbc < c.Qab; },
+    B: function(){ var ok = true, r, a, b; for (r = 2; r <= 16; r *= 2){ a = cycle(r, 300).eta; b = cycle(r, 600).eta; if (Math.abs(a - b) > 1e-12) ok = false; } return ok; },
+    C: function(){ return Math.abs(cycle(8, 300).TaTc - 4) < 1e-9; },
+    D: function(){ return Math.abs(cycle(8, 300).PaPb - 4) < 1e-9; }
+  };
+  var KEYS = ["A", "B", "C", "D"];
+  function run(){
+    var hits = [], i; for (i = 0; i < KEYS.length; i++) if (OPTS[KEYS[i]]()) hits.push(KEYS[i]);
+    var lab = []; for (i = 0; i < hits.length; i++) lab.push("(" + hits[i] + ")");
+    return { hits: hits, answer: hits.length ? lab.join(", ") : null, c8: cycle(8, 300) };
+  }
+  return { R: R, n: n, CV: CV, GAMMA: GAMMA, cycle: cycle, state: state, OPTS: OPTS, KEYS: KEYS, run: run };
+})();
+/* ENGINE-END */
+
+var QRUN = ENGINE.run();
+var ANS = QRUN.answer;
+
+function $(id){ return document.getElementById(id); }
+var cv = $("labcv"), g = cv.getContext("2d");
+var reduced = !!(window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches);
+var LEG_T = [3.2, 2.4, 3.2], ROW_T = 0.7;
+
+var RUN = { state: "setup", phase: "ready", speed: 1, r: 8, Ta: 300, leg: 0, s: 0, t: 0, rows: 0, done: false, confirmed: false, runs: [], c: null };
+var L = null, minPx = 999, mol = [], clock = 0;
+(function(){ var i, seed = 7; function rnd(){ seed = (seed * 16807) % 2147483647; return seed / 2147483647; }
+  for (i = 0; i < 46; i++) mol.push({ x: rnd(), y: rnd(), a: rnd() * Math.PI * 2 }); })();
+
+function layout(){
+  var phone = document.documentElement.clientWidth < 700;
+  if (phone) return { phone: true, W: 720, H: 1250, ro: { x: 12, y: 12, w: 696, h: 178 }, cyl: { x: 12, y: 204, w: 696, h: 500 },
+    plot: { x: 12, y: 720, w: 696, h: 518 }, fs: 25, big: 31 };
+  return { phone: false, W: 1200, H: 720, ro: { x: 16, y: 14, w: 1168, h: 92 }, cyl: { x: 16, y: 122, w: 560, h: 584 },
+    plot: { x: 592, y: 122, w: 592, h: 584 }, fs: 16, big: 24 };
+}
+
+/* --------------------------------------------------------------- run */
+function now(){ var c = RUN.c || ENGINE.cycle(RUN.r, RUN.Ta); if (RUN.phase === "ready") return ENGINE.state(c, 0, 0); if (RUN.phase === "audit" || RUN.phase === "done") return ENGINE.state(c, 2, 1); return ENGINE.state(c, RUN.leg, RUN.s); }
+var PHASES = ["ab", "bc", "ca"];
+function finish(){
+  RUN.state = "done"; RUN.done = true; RUN.leg = 2; RUN.s = 1;
+  var c = RUN.c;
+  RUN.runs.push({ r: c.r, Ta: c.Ta, eta: c.eta });
+  RUN.measured = { r: c.r, Ta: c.Ta, Qab: c.Qab, Qbc: c.Qbc, eta: c.eta, TaTc: c.TaTc, PaPb: c.PaPb, eta300: ENGINE.cycle(c.r, 300).eta, eta600: ENGINE.cycle(c.r, 600).eta };
+  if (c.r === 8){
+    RUN.phase = "audit"; RUN.rows = 4;
+    var hits = []; ENGINE.KEYS.forEach(function(k){ if (ENGINE.OPTS[k]()) hits.push("(" + k + ")"); });
+    RUN.measuredAnswer = hits.join(", ");
+    if (RUN.measuredAnswer === ANS){ RUN.confirmed = true; confirmAnswer(); }
+  } else RUN.phase = "done";
+  narrate(); refreshButtons();
+}
+function tick(dt){
+  if (!reduced) clock += dt;
+  if (RUN.state !== "running") return;
+  var d = dt * RUN.speed;
+  RUN.s += d / LEG_T[RUN.leg];
+  if (RUN.s >= 1){
+    if (RUN.leg === 2){ RUN.s = 1; finish(); return; }
+    RUN.leg++; RUN.s = 0; RUN.phase = PHASES[RUN.leg]; narrate();
+  }
+}
+function start(){
+  if (RUN.state === "running"){ RUN.state = "paused"; refreshButtons(); narrate(); return; }
+  if (RUN.state === "paused"){ RUN.state = "running"; refreshButtons(); narrate(); return; }
+  resetRun(); RUN.c = ENGINE.cycle(RUN.r, RUN.Ta);
+  if (reduced){ finish(); return; }
+  RUN.state = "running"; RUN.phase = "ab"; RUN.leg = 0; RUN.s = 0; narrate(); refreshButtons();
+}
+function resetRun(){ RUN.state = "setup"; RUN.phase = "ready"; RUN.leg = 0; RUN.s = 0; RUN.rows = 0; RUN.done = false; RUN.measured = null; RUN.measuredAnswer = null; RUN.c = null; }
+function replay(){ RUN.state = "setup"; start(); }
+function reset(){ resetRun(); refreshButtons(); narrate(); }
+function setR(r){ if ([2, 4, 8].indexOf(r) < 0) r = 8; RUN.r = r; [2, 4, 8].forEach(function(k){ $("r" + k).setAttribute("aria-pressed", k === r ? "true" : "false"); }); resetRun(); refreshButtons(); narrate(); }
+function setT(T){ if (T !== 300 && T !== 600) T = 300; RUN.Ta = T; $("t300").setAttribute("aria-pressed", T === 300 ? "true" : "false"); $("t600").setAttribute("aria-pressed", T === 600 ? "true" : "false"); resetRun(); refreshButtons(); narrate(); }
+
+/* ------------------------------------------------------------ words */
+function kJ(j){ return (j / 1000).toFixed(2) + " kJ"; }
+function narrate(){
+  var c = RUN.c || ENGINE.cycle(RUN.r, RUN.Ta), t, rt = "V₂/V₁ = " + c.r + ", T_a = " + c.Ta + " K";
+  if (RUN.phase === "ready") t = "Ready (" + rt + "). Press START to run the cycle: ab on the hot bath, bc locked on the cold bath, ca insulated.";
+  else if (RUN.phase === "ab") t = "ab, isothermal at " + c.Ta + " K: the gas expands " + c.r + "×, and its pressure falls " + c.r + "×. Heat Q = nRT ln " + c.r + " = " + kJ(c.Qab) + " flows in from the hot bath.";
+  else if (RUN.phase === "bc") t = "bc, isochoric: the piston is locked on the cold bath. The gas cools from " + c.Ta + " K to " + c.Tc.toFixed(1) + " K and gives out Q = nC_V ΔT = " + kJ(c.Qbc) + ".";
+  else if (RUN.phase === "ca") t = "ca, adiabatic: the cylinder is insulated and the piston is pushed back. No heat flows, and the work done on the gas heats it from " + c.Tc.toFixed(1) + " K back to " + c.Ta + " K.";
+  else if (RUN.phase === "audit") t = "Cycle complete: heat in " + kJ(c.Qab) + ", out " + kJ(c.Qbc) + ", η = " + c.eta.toFixed(3) + ". T_a/T_c = " + c.TaTc.toFixed(2) + " and P_a/P_b = " + c.PaPb.toFixed(2) + ", so (A), (B) and (C) hold and (D) does not.";
+  else t = "Cycle complete for V₂/V₁ = " + c.r + ": η = " + c.eta.toFixed(3) + " (the same at 300 K and 600 K). The options are about V₂/V₁ = 8; tap 8 to check them.";
+  if (RUN.state === "paused") t = "Paused. " + t;
+  $("narr").textContent = t;
+  var w = $("warn");
+  if (RUN.r !== 8){ w.hidden = false; w.textContent = "V₂/V₁ = " + RUN.r + " is your own setting; the options are about V₂/V₁ = 8."; } else w.hidden = true;
+}
+function confirmAnswer(){
+  var m = RUN.measured;
+  $("anssub").textContent = "Confirmed by the run: Q_bc = " + kJ(m.Qbc) + " < Q_ab = " + kJ(m.Qab) + "; η = " + m.eta300.toFixed(3) + " at 300 K and " + m.eta600.toFixed(3) + " at 600 K; T_a/T_c = " + m.TaTc.toFixed(2) + "; P_a/P_b = " + m.PaPb.toFixed(2) + ".";
+  var k = $("keyline");
+  if (!reduced){ k.classList.remove("blink"); void k.offsetWidth; k.classList.add("blink"); setTimeout(function(){ k.classList.remove("blink"); }, 2000); }
+}
+function refreshButtons(){ $("gobtn").textContent = RUN.state === "running" ? "❚❚ PAUSE" : RUN.state === "paused" ? "▶ RESUME" : RUN.state === "done" ? "▶ RUN AGAIN" : "▶ START EXPERIMENT"; }
+function refreshAnswer(){
+  $("ansval").textContent = ANS || "—";
+  $("ansexpr").textContent = ANS ? "T_a = 4T_c and Q_bc < Q_ab; η is independent of T; P_a = 8P_b" : "";
+  $("solans").textContent = ANS || "—";
+  var lis = document.querySelectorAll("#opts li"), i;
+  for (i = 0; i < lis.length; i++) lis[i].classList.toggle("correct", QRUN.hits.indexOf(lis[i].getAttribute("data-o")) >= 0);
+}
+
+/* ------------------------------------------------------------ drawing */
+function label(s, x, y, px, col, align, weight){
+  if (px < minPx) minPx = px;
+  g.font = (weight || "700") + " " + Math.round(px) + "px ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif";
+  g.fillStyle = col || "#e8f0ff"; g.textAlign = align || "left"; g.textBaseline = "alphabetic"; g.fillText(s, x, y);
+}
+function roundRect(x, y, w, h, r){ g.beginPath(); g.moveTo(x + r, y); g.lineTo(x + w - r, y); g.quadraticCurveTo(x + w, y, x + w, y + r); g.lineTo(x + w, y + h - r); g.quadraticCurveTo(x + w, y + h, x + w - r, y + h); g.lineTo(x + r, y + h); g.quadraticCurveTo(x, y + h, x, y + h - r); g.lineTo(x, y + r); g.quadraticCurveTo(x, y, x + r, y); g.closePath(); }
+function panel(x, y, w, h){ roundRect(x, y, w, h, 14); g.fillStyle = "rgba(10,16,32,.86)"; g.fill(); g.strokeStyle = "rgba(140,180,255,.3)"; g.lineWidth = 1.5; g.stroke(); }
+function heatArrow(x, y1, y2, col){
+  g.save(); g.strokeStyle = col; g.lineWidth = 4; g.shadowColor = col; g.shadowBlur = 10; g.beginPath();
+  var k, n = 30; for (k = 0; k <= n; k++){ var yy = y1 + (y2 - y1) * k / n, xx = x + 7 * Math.sin(k / n * Math.PI * 4 - clock * 8); if (k) g.lineTo(xx, yy); else g.moveTo(xx, yy); } g.stroke();
+  var dir = y2 > y1 ? 1 : -1; g.fillStyle = col; g.beginPath(); g.moveTo(x, y2 + 10 * dir); g.lineTo(x - 9, y2 - 4 * dir); g.lineTo(x + 9, y2 - 4 * dir); g.closePath(); g.fill(); g.restore();
+}
+
+function drawReadouts(){
+  var st = now(), c = RUN.c || ENGINE.cycle(RUN.r, RUN.Ta), r = L.ro, i, x, y;
+  var rows = [["Temperature T", st.T.toFixed(1) + " K"], ["Volume V/V₁", (st.V / c.V1).toFixed(2)], ["Pressure P/P_a", (st.P / c.Pa).toFixed(3)],
+              ["Heat in / out", kJ(st.qin) + " / " + kJ(st.qout)]];
+  panel(r.x, r.y, r.w, r.h);
+  for (i = 0; i < 4; i++){
+    if (L.phone){ x = r.x + 18 + (i % 2) * 348; y = r.y + 44 + Math.floor(i / 2) * 84; }
+    else { x = r.x + 20 + i * 290; y = r.y + 34; }
+    label(rows[i][0], x, y, L.fs - (L.phone ? 0 : 1), "#8fa6cf", "left", "700");
+    label(rows[i][1], x, y + (L.phone ? 40 : 38), L.big - (L.phone ? 3 : 0), i === 3 ? "#ffd28a" : "#ffffff", "left", "800");
+  }
+}
+function drawCylinder(){
+  var C = L.cyl, st = now(), c = RUN.c || ENGINE.cycle(RUN.r, RUN.Ta), ph = RUN.phase;
+  var bg = g.createLinearGradient(0, C.y, 0, C.y + C.h); bg.addColorStop(0, "#0e1830"); bg.addColorStop(1, "#070b16");
+  roundRect(C.x, C.y, C.w, C.h, 14); g.fillStyle = bg; g.fill();
+  var cw = C.w * 0.46, cx = C.x + (C.w - cw) / 2, bathH = L.phone ? 64 : 70, bottom = C.y + C.h - bathH - 16, top = C.y + (L.phone ? 70 : 64), full = bottom - top;
+  var h = full * (st.V / c.V2), pist = bottom - h;
+  /* bath / insulation under the cylinder */
+  var bathCol = ph === "ab" || ph === "ready" ? "#c8412f" : ph === "bc" ? "#2d6fd0" : "#566074";
+  var bathName = ph === "ab" || ph === "ready" ? "HOT BATH " + c.Ta + " K" : ph === "bc" ? "COLD BATH" : ph === "ca" ? "INSULATED (no heat)" : "";
+  if (ph !== "audit" && ph !== "done"){
+    roundRect(C.x + 30, bottom + 8, C.w - 60, bathH, 12); g.fillStyle = bathCol; g.globalAlpha = 0.85; g.fill(); g.globalAlpha = 1;
+    label(bathName, C.x + C.w / 2, bottom + 8 + bathH / 2 + L.fs / 2 - 2, L.fs, "#ffffff", "center", "800");
+  }
+  if (ph === "ca"){ g.save(); g.strokeStyle = "#8a93a6"; g.lineWidth = 14; g.globalAlpha = 0.6; g.strokeRect(cx - 12, top - 6, cw + 24, full + 12); g.restore(); }
+  /* gas */
+  var warm = Math.min(1, Math.max(0, (st.T - c.Tc) / (c.Ta - c.Tc + 1e-9)));
+  g.fillStyle = "rgba(" + Math.round(90 + 150 * warm) + "," + Math.round(120 - 30 * warm) + "," + Math.round(230 - 150 * warm) + ",0.22)";
+  g.fillRect(cx, pist, cw, h);
+  var sp = Math.sqrt(st.T / 300), i;
+  for (i = 0; i < mol.length; i++){
+    var m = mol[i], ph2 = clock * sp * 1.4 + m.a * 10;
+    var mx = cx + 8 + (cw - 16) * (0.5 + 0.5 * Math.sin(ph2 * (0.7 + m.x) + m.a)), my = pist + 8 + (h - 16) * (0.5 + 0.5 * Math.sin(ph2 * (0.9 + m.y) + 2 * m.a));
+    g.fillStyle = warm > 0.5 ? "#ffb08a" : "#9fd0ff"; g.beginPath(); g.arc(mx, my, L.phone ? 5 : 4, 0, Math.PI * 2); g.fill();
+  }
+  /* cylinder walls and piston */
+  g.strokeStyle = "rgba(220,235,255,.8)"; g.lineWidth = 4; g.beginPath(); g.moveTo(cx, top - 10); g.lineTo(cx, bottom); g.lineTo(cx + cw, bottom); g.lineTo(cx + cw, top - 10); g.stroke();
+  var pg = g.createLinearGradient(cx, 0, cx + cw, 0); pg.addColorStop(0, "#8d97a8"); pg.addColorStop(0.5, "#e0e6f0"); pg.addColorStop(1, "#8d97a8");
+  g.fillStyle = pg; g.fillRect(cx + 3, pist - 18, cw - 6, 18);
+  g.fillStyle = "#b9c2d0"; g.fillRect(cx + cw / 2 - 6, top - 40, 12, pist - 18 - top + 40);
+  if (ph === "bc"){ g.fillStyle = "#ffd166"; g.fillRect(cx - 18, pist - 14, 16, 10); g.fillRect(cx + cw + 2, pist - 14, 16, 10); label("locked", cx + cw + 24, pist - 4, L.fs, "#ffd166", "left", "800"); }
+  if (ph === "ca"){ var ax = cx + cw / 2 + 60; g.strokeStyle = "#9ff0c8"; g.lineWidth = 4; g.beginPath(); g.moveTo(ax, top - 36); g.lineTo(ax, top + 10); g.stroke(); g.fillStyle = "#9ff0c8"; g.beginPath(); g.moveTo(ax, top + 22); g.lineTo(ax - 9, top + 6); g.lineTo(ax + 9, top + 6); g.closePath(); g.fill(); label("work on the gas", ax + 14, top - 12, L.fs, "#9ff0c8", "left", "800"); }
+  /* heat */
+  if (ph === "ab" && RUN.state !== "setup"){ heatArrow(cx - 34, bottom + 20, bottom - 60, "#ff7a5c"); label("heat in", cx - 34, bottom - 72, L.fs, "#ff9a80", "center", "800"); }
+  if (ph === "bc"){ heatArrow(cx + cw + 34, bottom - 60, bottom + 20, "#6fb2ff"); label("heat out", cx + cw + 34, bottom - 72, L.fs, "#9fc4ff", "center", "800"); }
+  label(ph === "ready" ? "state a" : ph === "ab" ? "a → b" : ph === "bc" ? "b → c" : ph === "ca" ? "c → a" : "back at a", C.x + 20, C.y + (L.phone ? 40 : 32), L.fs + 2, "#cfe0ff", "left", "800");
+  if (ph === "audit") drawAudit();
+}
+function drawAudit(){
+  var C = L.cyl, m = RUN.measured, x = C.x + 20, y = C.y + (L.phone ? 44 : 36), rowH = (C.h - (L.phone ? 64 : 54)) / 4, i, k;
+  roundRect(C.x, C.y, C.w, C.h, 14); g.fillStyle = "#0a1020"; g.fill(); g.strokeStyle = "rgba(140,180,255,.3)"; g.lineWidth = 1.5; g.stroke();
+  label("CHECKING EACH OPTION · V₂/V₁ = 8", x, y, L.fs, "#cfe0ff", "left", "800");
+  var tx = {
+    A: ["(A) Q_bc < Q_ab", kJ(m.Qbc) + " out < " + kJ(m.Qab) + " in"],
+    B: ["(B) η does not depend on T", "η = " + m.eta300.toFixed(3) + " at 300 K, " + m.eta600.toFixed(3) + " at 600 K"],
+    C: ["(C) T_a = 4 T_c", "T_a/T_c = " + m.TaTc.toFixed(3)],
+    D: ["(D) P_a = 4 P_b", "P_a/P_b = " + m.PaPb.toFixed(3) + " (it is 8)"]
+  };
+  for (i = 0; i < 4; i++){
+    k = ENGINE.KEYS[i]; var okk = ENGINE.OPTS[k](), yy = y + 18 + i * rowH;
+    roundRect(x - 8, yy, C.w - 24, rowH - 10, 10); g.fillStyle = okk ? "rgba(40,160,100,.18)" : "rgba(220,70,70,.16)"; g.fill();
+    label(tx[k][0] + (okk ? "  ✓" : "  ✗"), x + 4, yy + (L.phone ? 36 : 30), L.fs + (L.phone ? 2 : 2), okk ? "#7dffb8" : "#ff9b9b", "left", "800");
+    label(tx[k][1], x + 4, yy + (L.phone ? 76 : 60), L.fs, "#e6ecff", "left", "700");
+  }
+}
+function drawPlot(){
+  var P = L.plot, c = RUN.c || ENGINE.cycle(RUN.r, RUN.Ta);
+  panel(P.x, P.y, P.w, P.h);
+  label("P–V PLOTTER", P.x + 18, P.y + (L.phone ? 38 : 32), L.fs, "#cfe0ff", "left", "800");
+  var x0 = P.x + (L.phone ? 80 : 70), x1 = P.x + P.w - (L.phone ? 60 : 30), y0 = P.y + (L.phone ? 100 : 60), y1 = P.y + P.h - (L.phone ? 70 : 56);
+  var vmax = c.r * 1.08, pmax = 1.08;
+  function X(v){ return x0 + (v / c.V1) / vmax * (x1 - x0); }
+  function Y(p){ return y1 - (p / c.Pa) / pmax * (y1 - y0); }
+  g.strokeStyle = "rgba(220,235,255,.7)"; g.lineWidth = 2; g.beginPath(); g.moveTo(x0, y0); g.lineTo(x0, y1); g.lineTo(x1, y1); g.stroke();
+  label("P/P_a", L.phone ? x0 + 40 : x0 + 12, L.phone ? y0 - 24 : y0 + 4, L.fs, "#cfe0ff", "left", "800"); label("V/V₁", L.phone ? P.x + P.w - 12 : x1, L.phone ? y1 - 14 : y1 + 36, L.fs, "#cfe0ff", "right", "800");
+  var k; for (k = 0; k <= 1; k += 0.5) label(k.toFixed(1), x0 - 10, Y(k * c.Pa) + 6, L.fs, "#8fa6cf", "right", "600");
+  label("1", X(c.V1), y1 + (L.phone ? 34 : 26), L.fs, "#8fa6cf", "center", "600"); label(String(c.r), X(c.V2), y1 + (L.phone ? 34 : 26), L.fs, "#8fa6cf", "center", "600");
+  var cols = ["#ff7a5c", "#6fb2ff", "#9ff0c8"], legs = RUN.phase === "ready" ? -1 : RUN.phase === "audit" || RUN.phase === "done" ? 3 : RUN.leg, lg, q;
+  for (lg = 0; lg <= 2; lg++){
+    var upto = lg < legs ? 1 : lg === legs ? RUN.s : 0; if (upto <= 0) continue;
+    g.save(); g.strokeStyle = cols[lg]; g.lineWidth = 4; g.shadowColor = cols[lg]; g.shadowBlur = 8; g.beginPath();
+    for (q = 0; q <= 60; q++){ var st = ENGINE.state(c, lg, upto * q / 60); if (q) g.lineTo(X(st.V), Y(st.P)); else g.moveTo(X(st.V), Y(st.P)); }
+    g.stroke(); g.restore();
+  }
+  var pts = [["a", ENGINE.state(c, 0, 0)], ["b", ENGINE.state(c, 1, 0)], ["c", ENGINE.state(c, 2, 0)]], j;
+  for (j = 0; j < 3; j++){ g.fillStyle = "#ffffff"; g.beginPath(); g.arc(X(pts[j][1].V), Y(pts[j][1].P), 5, 0, Math.PI * 2); g.fill();
+    label(pts[j][0], X(pts[j][1].V) + (j === 0 || j === 2 ? -14 : 12), Y(pts[j][1].P) + (j === 2 ? 4 : -8), L.fs + 2, "#ffffff", j === 0 || j === 2 ? "right" : "left", "800"); }
+  if (RUN.phase !== "ready"){ var sn = now(); g.fillStyle = "#ffd166"; g.beginPath(); g.arc(X(sn.V), Y(sn.P), 8, 0, Math.PI * 2); g.fill(); }
+  label("isothermal", x1 - 8, y0 + 8 + L.fs, L.fs, cols[0], "right", "800");
+  label("isochoric", x1 - 8, y0 + 8 + 2.3 * L.fs, L.fs, cols[1], "right", "800");
+  label("adiabatic", x1 - 8, y0 + 8 + 3.6 * L.fs, L.fs, cols[2], "right", "800");
+}
+function draw(){
+  minPx = 999;
+  L = layout();
+  if (cv.width !== L.W || cv.height !== L.H){ cv.width = L.W; cv.height = L.H; }
+  var bg = g.createLinearGradient(0, 0, 0, L.H); bg.addColorStop(0, "#0b1226"); bg.addColorStop(1, "#04060c"); g.fillStyle = bg; g.fillRect(0, 0, L.W, L.H);
+  drawReadouts(); drawCylinder(); drawPlot();
+}
+
+/* ------------------------------------------------------------ controls */
+function setSpeed(k){ RUN.speed = k; $("sp1").setAttribute("aria-pressed", k === 1 ? "true" : "false"); $("sp2").setAttribute("aria-pressed", k === 0.5 ? "true" : "false"); }
+$("gobtn").addEventListener("click", start);
+$("replaybtn").addEventListener("click", replay);
+$("resetbtn").addEventListener("click", reset);
+$("sp1").addEventListener("click", function(){ setSpeed(1); });
+$("sp2").addEventListener("click", function(){ setSpeed(0.5); });
+[2, 4, 8].forEach(function(k){ $("r" + k).addEventListener("click", function(){ setR(k); }); });
+$("t300").addEventListener("click", function(){ setT(300); });
+$("t600").addEventListener("click", function(){ setT(600); });
+$("classbtn").addEventListener("click", function(){
+  var on = document.body.classList.toggle("classroom"); this.setAttribute("aria-pressed", on ? "true" : "false");
+  this.textContent = on ? "Exit classroom" : "Classroom";
+});
+$("themebtn").addEventListener("click", function(){
+  var r = document.documentElement, dark = r.getAttribute("data-theme") === "dark" || (!r.getAttribute("data-theme") && window.matchMedia && matchMedia("(prefers-color-scheme: dark)").matches);
+  r.setAttribute("data-theme", dark ? "light" : "dark");
+});
+
+var lastT = null;
+function loop(ts){
+  if (lastT === null) lastT = ts;
+  var dt = Math.min(0.05, Math.max(0, (ts - lastT) / 1000)); lastT = ts;
+  tick(dt); draw();
+  requestAnimationFrame(loop);
+}
+
+window.PX = {
+  ENGINE: ENGINE, QRUN: QRUN, ANS: ANS, RUN: RUN,
+  answer: function(){ return ANS; },
+  minLabelPx: function(){ draw(); return minPx; },
+  start: start, replay: replay, reset: reset, setSpeed: setSpeed, speed: function(k){ RUN.speed = k; }, setR: setR, setT: setT,
+  state: function(){ var st = now(); return { state: RUN.state, phase: RUN.phase, r: RUN.r, Ta: RUN.Ta, leg: RUN.leg, s: RUN.s, V: st.V, T: st.T, P: st.P, qin: st.qin, qout: st.qout,
+    measured: RUN.measured || null, measuredAnswer: RUN.measuredAnswer || null, runs: RUN.runs.slice(), done: RUN.done, confirmed: RUN.confirmed }; }
+};
+
+setR(8); setT(300); refreshAnswer(); refreshButtons(); draw();
+window.addEventListener("resize", function(){ draw(); });
+requestAnimationFrame(loop);
+})();
+</script>
+</body>
+</html>
