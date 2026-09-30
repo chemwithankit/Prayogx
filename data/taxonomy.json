@@ -106,6 +106,17 @@
               "simulations": [
                 "ADV-2026-P1-PHY-Q07"
               ]
+            },
+            "Carnot engines in series - each engine's rejected heat drives the next; net efficiency 1 - (1 - eta)^N": {
+              "subtopics": [
+                "Carnot engine: efficiency eta = 1 - T_cold/T_hot = W/Q_absorbed",
+                "Engines in series: Q_k = (1 - eta)^k Q0 and W = Q0 - Q_N",
+                "Net efficiency 1 - (1 - eta)^N; efficiencies do not add",
+                "Reversible engines in series equal one reversible engine between the extreme reservoirs"
+              ],
+              "simulations": [
+                "ADV-2026-P1-PHY-Q10"
+              ]
             }
           }
         },

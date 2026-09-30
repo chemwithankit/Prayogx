@@ -40,16 +40,16 @@ window.SIM_MANIFEST = {
     "idPolicy": "Simulation IDs are permanent. A redo or fix edits the existing folder in place and bumps `updatedAt` / `revision`; it never mints a new ID."
   },
   "counts": {
-    "total": 42,
+    "total": 43,
     "byYear": {
-      "2026": 42
+      "2026": 43
     },
     "bySubject": {
       "Chemistry": 33,
-      "Physics": 9
+      "Physics": 10
     },
     "byChapter": {
-      "Thermodynamics": 3,
+      "Thermodynamics": 4,
       "Chemical Kinetics": 2,
       "Chemical Bonding and Molecular Structure": 4,
       "Organic Chemistry - Some Basic Principles and Techniques": 2,
@@ -3430,6 +3430,117 @@ window.SIM_MANIFEST = {
       "source": {
         "file": "papers/Jee_Adv_2026_paper1_solutions_final.pdf",
         "page": 18
+      },
+      "status": "script_verified",
+      "createdAt": "2026-09-30",
+      "updatedAt": "2026-09-30"
+    },
+    {
+      "id": "ADV-2026-P1-PHY-Q10",
+      "slug": "adv-2026-p1-phy-q10",
+      "revision": 1,
+      "path": "simulations/2026/paper-1/physics/adv-2026-p1-phy-q10/index.html",
+      "folder": "simulations/2026/paper-1/physics/adv-2026-p1-phy-q10/",
+      "title": "Five Carnot engines in series between six reservoirs: the efficiency of each for a net efficiency of 211/243",
+      "shortTitle": "Carnot cascade lab",
+      "summary": "Five Carnot engines in series, each feeding its rejected heat to the next: heat flows down the cascade, W/Q0 = 1 - (1 - eta)^5, and the run searches for the eta that gives 211/243 - eta = 1/3 = 0.33, with the reservoirs stepping down 1215, 810, 540, 360, 240, 160 K.",
+      "exam": "JEE Advanced",
+      "year": 2026,
+      "paper": "Paper 1",
+      "paperNumber": 1,
+      "subject": "Physics",
+      "branch": "Heat and Thermodynamics",
+      "questionNumber": 10,
+      "section": "Section 3",
+      "questionType": "Numerical value",
+      "marking": {
+        "full": 4,
+        "partial": 0,
+        "zero": 0,
+        "negative": 0
+      },
+      "chapter": "Thermodynamics",
+      "topic": "Carnot engines in series - each engine's rejected heat drives the next; net efficiency 1 - (1 - eta)^N",
+      "subtopics": [
+        "Carnot engine: efficiency eta = 1 - T_cold/T_hot = W/Q_absorbed",
+        "Engines in series: Q_k = (1 - eta)^k Q0 and W = Q0 - Q_N",
+        "Net efficiency 1 - (1 - eta)^N; efficiencies do not add",
+        "Reversible engines in series equal one reversible engine between the extreme reservoirs"
+      ],
+      "concepts": [
+        "Each engine keeps a fraction eta of its heat as work and passes (1 - eta) on, so the rejected fractions multiply",
+        "W/Q0 = 1 - (1 - eta)^5 = 211/243 gives (1 - eta)^5 = 32/243 = (2/3)^5 and eta = 1/3",
+        "For Carnot engines each reservoir is 2/3 of the one above: 1215, 810, 540, 360, 240, 160 K, and 1 - 160/1215 = 211/243",
+        "The trap eta_net = 5 eta would exceed 1 for eta > 0.2"
+      ],
+      "formulas": [
+        "Q_k = (1 - eta)^k Q0",
+        "W = Q0 - Q5",
+        "eta_net = 1 - (1 - eta)^5 = 211/243",
+        "eta = 1 - (32/243)^(1/5) = 1/3"
+      ],
+      "tags": [
+        "thermodynamics",
+        "carnot engine",
+        "engines in series",
+        "heat engine",
+        "efficiency",
+        "second law",
+        "reservoirs",
+        "cascade",
+        "numerical value",
+        "physics"
+      ],
+      "difficulty": "Easy-Moderate",
+      "estimatedMinutes": 4,
+      "answer": "0.33",
+      "answerValue": "eta = 1/3 (key 0.32 to 0.34)",
+      "answerUnit": "",
+      "derivedQuantities": {
+        "eta": "1/3",
+        "Q5_over_Q0": "32/243",
+        "work_fractions": [
+          "1/3",
+          "2/9",
+          "4/27",
+          "8/81",
+          "16/243"
+        ],
+        "example_reservoirs_K": [
+          1215,
+          810,
+          540,
+          360,
+          240,
+          160
+        ],
+        "key_range": "0.32 to 0.34"
+      },
+      "verification": {
+        "status": "verified",
+        "methods": [
+          "Solved independently: Q_k = (1 - eta)^k Q0, W = Q0 - Q5, 1 - (1 - eta)^5 = 211/243 -> (1 - eta)^5 = (2/3)^5 -> eta = 1/3 = 0.33",
+          "sympy: the telescoping sum and the only root in (0, 1), eta = 1/3; exact fractions",
+          "Five explicit Carnot cycles of ideal gas between 1215, 810, 540, 360, 240, 160 K, each engine's rejected heat fed to the next: W/Q0 = 211/243, zero total entropy change",
+          "Brute force over 10^6 values of eta: 0.33333",
+          "The page engine extracted and run in Node: bisection gives 1/3, answer 0.33; the temperatures and works as here",
+          "MathonGo published solution (their Q26 = Physics Q.10): 0.33",
+          "Official key printed with the paper (checked after the independent solution): Q.10 -> 0.32 to 0.34"
+        ],
+        "verifiedOn": "2026-09-30",
+        "note": "Built and verified by the PrayogX simulation factory in production mode; script-verified (automated independent verifier, page suite, visual gates, library and production audits, live smoke test after deploy). No human review has been recorded."
+      },
+      "interactivity": [
+        "Layout v3 (G5): the question verbatim with its cascade figure redrawn; the answer line eta = 0.33 visible from load and confirmed by the run",
+        "A tall cascade of six reservoirs (temperatures from the Carnot relation) and five spinning engines; heat pipes with width proportional to the heat per cycle, and each engine's work leaving sideways",
+        "One START runs the heat flow, then searches for eta by bisection with every trial plotted on W/Q0 against eta and the target 211/243",
+        "Four readouts drawn in the scene: eta, W/Q0, the target and the heat out at the bottom",
+        "A Try-eta slider and 3, 5 or 7 engines to see 1 - (1 - eta)^N; speed 1x / 1/2x, pause, replay, reset, classroom mode, reduced motion, portrait phone scene",
+        "Detailed solution with the telescoping sum, the Carnot temperatures, the concept and key takeaways"
+      ],
+      "source": {
+        "file": "papers/Jee_Adv_2026_paper1_solutions_final.pdf",
+        "page": 19
       },
       "status": "script_verified",
       "createdAt": "2026-09-30",

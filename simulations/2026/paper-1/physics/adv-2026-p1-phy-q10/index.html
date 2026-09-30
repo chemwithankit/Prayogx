@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Carnot Cascade Lab — five Carnot engines in series — JEE Advanced 2026 Paper 1 Q.10 | PrayogX</title>
+<meta name="description" content="Five Carnot engines in series between six reservoirs, each passing its rejected heat to the next: heat flows down the cascade, W/Q0 = 1 - (1 - eta)^5, and the run searches for the eta that gives 211/243 - eta = 1/3 = 0.33. JEE Advanced 2026 Paper 1 Physics Q.10.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232a78d6'/%3E%3Cpath d='M12.5 6.5h7M13.6 6.5v7.2L7.9 24.1a1.5 1.5 0 0 0 1.3 2.3h13.6a1.5 1.5 0 0 0 1.3-2.3l-5.7-10.4V6.5' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M10.6 20.6h10.8' stroke='white' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E">
+<meta name="sim-id" content="ADV-2026-P1-PHY-Q10">
+<style>
+:root{
+  color-scheme: light;
+  --surface-0:#f4f4f1; --surface-1:#fcfcfb; --surface-2:#ececea;
+  --line:#d9d9d4; --line-strong:#bcbcb5;
+  --text-primary:#0b0b0b; --text-secondary:#52514e; --text-muted:#77766f;
+  --s1:#2a78d6; --s2:#eb6834; --s3:#1baf7a; --s4:#4a3aa7;
+  --good:#00743f; --bad:#c0392b; --accent:#2a78d6;
+  --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+  --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --serif:ui-serif,Georgia,"Times New Roman",serif;
+  --radius:12px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  color-scheme: dark;
+  --surface-0:#111110; --surface-1:#1a1a19; --surface-2:#232322;
+  --line:#34342f; --line-strong:#4a4a44;
+  --text-primary:#ffffff; --text-secondary:#c3c2b7; --text-muted:#95948b;
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#9085e9;
+  --good:#3fae7a; --bad:#e66767; --accent:#3987e5;
+}}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --surface-0:#111110; --surface-1:#1a1a19; --surface-2:#232322;
+  --line:#34342f; --line-strong:#4a4a44;
+  --text-primary:#ffffff; --text-secondary:#c3c2b7; --text-muted:#95948b;
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#9085e9;
+  --good:#3fae7a; --bad:#e66767; --accent:#3987e5;
+}
+*{box-sizing:border-box}
+[hidden]{display:none !important}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--surface-0);color:var(--text-primary);font-family:var(--sans);font-size:16px;line-height:1.6}
+header.top{border-bottom:1px solid var(--line);background:var(--surface-1)}
+.top-inner{max-width:1240px;margin:0 auto;padding:18px 20px 14px;position:relative}
+.brandbar{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.brandbar .pxmark{width:21px;height:21px;flex:none;display:block}
+.brandbar .wm{font-size:13px;font-weight:800;letter-spacing:.17em;color:var(--text-secondary);line-height:1}
+.brandbar .wm i{font-style:normal;color:var(--accent)}
+.simid{font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--text-muted)}
+h1{font-size:21px;line-height:1.3;margin:4px 0 4px;padding-right:80px}
+.meta{font-size:14px;color:var(--text-secondary);margin:0}
+.themebtn{position:absolute;top:14px;right:16px;border:1px solid var(--line-strong);background:var(--surface-2);
+  color:var(--text-secondary);border-radius:8px;padding:4px 9px;font-size:12px;cursor:pointer}
+.wrap{max-width:1240px;margin:0 auto;padding:0 20px 40px}
+section{margin:0 0 34px}
+h2{font-size:15px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-secondary);margin:26px 0 12px}
+h2 b{color:var(--accent);margin-right:8px}
+h3{font-size:17px;margin:22px 0 8px}
+/* 01 question */
+.qcard{background:var(--surface-1);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+.qtext{font-family:var(--serif);font-size:18px;line-height:1.6;flex:1 1 460px;min-width:0}
+.qfig{flex:0 0 250px;max-width:100%}
+.qfig svg{display:block;width:100%;height:auto}
+.sq{white-space:nowrap}
+.sq .rad{border-top:1.5px solid currentColor;padding:0 2px}
+#opts{list-style:none;margin:12px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+#opts li{background:var(--surface-1);border:1.5px solid var(--line);border-radius:10px;padding:10px 12px;font-family:var(--serif);font-size:19px;display:flex;gap:10px;align-items:center;min-height:52px}
+#opts li b{font-family:var(--sans);font-size:14px;color:var(--text-muted)}
+#opts li.correct{border-color:var(--good);box-shadow:0 0 0 2px color-mix(in srgb,var(--good) 25%,transparent)}
+#opts li.correct b{color:var(--good)}
+/* 02 lab */
+#keyline{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;background:var(--surface-1);border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin:0 0 8px}
+#keyline .k{font-size:13px;font-weight:800;letter-spacing:.12em;color:var(--text-muted);text-transform:uppercase}
+#ansval{font-size:22px;font-weight:800;color:var(--good)}
+#ansexpr{font-family:var(--serif);font-size:20px}
+#anssub{font-size:14px;color:var(--text-secondary);margin-left:auto}
+#keyline.blink{animation:blink .45s ease-in-out 4}
+@keyframes blink{50%{background:color-mix(in srgb,var(--good) 22%,var(--surface-1))}}
+#narr{margin:0 2px 10px;font-size:16px;color:var(--text-secondary);min-height:2.8em}
+.stage{position:relative;border-radius:16px;overflow:hidden;background:#070a12;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+canvas#labcv{display:block;width:100%;height:auto;touch-action:manipulation}
+#controls{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:12px;padding:12px;border:1px solid var(--line);border-radius:14px;background:var(--surface-1)}
+#controls button{min-height:48px;font-size:16px;font-weight:700;border-radius:10px;border:1px solid var(--line-strong);background:var(--surface-2);color:var(--text-primary);padding:0 16px;cursor:pointer;font-family:var(--sans)}
+#controls button:focus-visible,#controls input:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+#controls .go{background:var(--accent);color:#fff;border:none;font-weight:800;letter-spacing:.04em;min-width:190px}
+#controls .seg{display:flex;align-items:center;gap:0}
+#controls .seg span{font-size:13px;font-weight:700;color:var(--text-muted);margin-right:8px;letter-spacing:.06em;text-transform:uppercase}
+#controls .seg button{border-radius:0;margin-left:-1px;padding:0 13px}
+#controls .seg button:nth-child(2){border-radius:10px 0 0 10px}
+#controls .seg button:last-child{border-radius:0 10px 10px 0}
+#controls .seg button[aria-pressed="true"]{background:var(--accent);color:#fff;border-color:var(--accent)}
+#controls .v0{display:flex;flex-wrap:wrap;align-items:center;gap:10px;flex:1 1 520px;min-width:0}
+#controls .v0 label{font-size:15px;font-weight:700;white-space:nowrap}
+#controls input[type=range]{flex:1 1 150px;min-width:110px;min-height:44px;accent-color:var(--accent);margin:0}
+#v0out{font-family:var(--mono);font-size:15px;min-width:92px}
+#warn{margin:10px 2px 0;font-size:15px;color:var(--s2);font-weight:600}
+/* 03 solution */
+.sol{background:var(--surface-1);border:1px solid var(--line);border-radius:var(--radius);padding:6px 20px 16px}
+.sol ol.steps{padding-left:22px;margin:10px 0}
+.sol ol.steps li{margin:0 0 12px}
+.eq{font-family:var(--serif);font-size:18px;background:var(--surface-2);border-radius:8px;padding:8px 12px;margin:6px 0;overflow-x:auto}
+.solfig{display:flex;gap:18px;align-items:center;flex-wrap:wrap;margin:8px 0 12px}
+.solfig svg{flex:0 0 300px;max-width:100%;height:auto}
+.solfig p{flex:1 1 300px;margin:0}
+table.opt{border-collapse:collapse;width:100%;font-size:15px;margin:8px 0}
+table.opt th,table.opt td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+table.opt th{background:var(--surface-2)}
+table.opt tr.ok td{background:color-mix(in srgb,var(--good) 10%,transparent)}
+.tscroll{overflow-x:auto}
+.concept{border-left:4px solid var(--accent);padding:2px 0 2px 14px;margin:14px 0}
+ul.take{padding-left:20px} ul.take li{margin:0 0 6px}
+#solans{font-weight:800;color:var(--good)}
+.note{font-size:14px;color:var(--text-secondary)}
+/* 04 analysis */
+svg.chart{display:block;width:100%;max-width:760px;height:auto;background:var(--surface-1);border:1px solid var(--line);border-radius:12px}
+.chart text{font-family:var(--sans);fill:var(--text-secondary)}
+.cap{font-size:14px;color:var(--text-secondary);max-width:760px}
+/* how to */
+ol.howto{padding-left:22px;margin:0} ol.howto li{margin:0 0 8px}
+footer{font-size:13px;color:var(--text-muted);border-top:1px solid var(--line);padding:16px 0 0}
+/* classroom */
+body.classroom .wrap{max-width:none;padding:0 18px 30px}
+body.classroom header.top,body.classroom section:not(#lab),body.classroom footer{display:none}
+body.classroom #narr{font-size:24px;color:var(--text-primary)}
+body.classroom #keyline #ansexpr{font-size:26px}
+@media (max-width:760px){
+  .wrap{padding:0 16px 32px}
+  .top-inner{padding:14px 16px 12px}
+  h1{font-size:18px}
+  .qtext{font-size:17px}
+  .qfig{flex-basis:100%}
+  .qfig svg{max-width:260px;margin:0 auto}
+  #opts{grid-template-columns:repeat(2,minmax(0,1fr))}
+  #anssub{margin-left:0}
+  #controls{gap:8px;padding:10px}
+  #controls .go{flex:1 1 100%}
+  #controls button{padding:0 12px}
+  #controls .v0{flex-basis:100%;flex-wrap:wrap}
+  #controls .v0 input[type=range]{flex:1 1 100%;order:3}
+  .solfig svg{flex-basis:100%}
+  .sol{padding:4px 14px 12px}
+}
+@media (prefers-reduced-motion: reduce){#keyline.blink{animation:none}}
+/* long text options */
+#opts.lopts{grid-template-columns:1fr}
+#opts.lopts li{font-family:var(--sans);font-size:17px;align-items:flex-start;line-height:1.5}
+#opts.lopts li b{padding-top:2px}
+#opts.lopts .fx{font-family:var(--serif);font-size:18px;white-space:nowrap}
+#controls .seg button{white-space:nowrap}
+@media (max-width:760px){#opts.lopts .fx{white-space:normal}#controls .seg{flex-wrap:wrap;row-gap:6px}#controls .seg span{flex:1 1 100%;margin:0 0 2px}#controls .seg button:nth-child(2){border-radius:10px 0 0 10px}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-inner">
+    <div class="brandbar"><svg class="pxmark" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><rect width="32" height="32" rx="8" fill="var(--accent)"/><path d="M12.5 6.5h7M13.6 6.5v7.2L7.9 24.1a1.5 1.5 0 0 0 1.3 2.3h13.6a1.5 1.5 0 0 0 1.3-2.3l-5.7-10.4V6.5" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.6 20.6h10.8" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg><span class="wm">PRAYOG<i>X</i></span></div>
+    <div class="simid">ADV-2026-P1-PHY-Q10</div>
+    <h1>Carnot Cascade Lab — five engines in series, one net efficiency</h1>
+    <p class="meta">JEE Advanced 2026 · Paper 1 · Physics · Q.10 · numerical value (+4 / 0) · Thermodynamics</p>
+    <button class="themebtn" id="themebtn" type="button">◐ theme</button>
+  </div>
+</header>
+
+<main class="wrap">
+
+<section id="question" aria-labelledby="qh">
+  <h2 id="qh"><b>01</b>The question</h2>
+  <div class="qcard">
+    <div class="qtext">Q.10 As shown in the figure, five Carnot engines, each with efficiency <i>η</i> and same number of cycles per unit time, are operating between six heat reservoirs. The amount of heat released per cycle by one engine is completely absorbed by the next engine. Consider <i>Q</i><sub>0</sub> to be the amount of heat absorbed per cycle by the first engine and <i>W</i> as the amount of total work done by all the engines per cycle, then the net efficiency of the system is found to be <i>η</i><sub>net</sub> = <i>W</i>/<i>Q</i><sub>0</sub> = 211/243. The value of <i>η</i> is:</div>
+    <div class="qfig">
+      <svg viewBox="0 0 200 230" role="img" aria-label="Figure from the question: a vertical stack of six reservoirs with an engine between each pair; heat Q0 enters the first engine from the top reservoir, each engine gives work W1 to W5 to the side and passes heat Q1 to Q5 down to the next">
+        <g style="color:var(--text-primary)" fill="none" stroke="currentColor" stroke-width="1.4">
+          <rect x="40" y="8" width="100" height="7" fill="var(--line-strong)"/><rect x="40" y="62" width="100" height="7" fill="var(--line-strong)"/><rect x="40" y="116" width="100" height="7" fill="var(--line-strong)"/><rect x="40" y="214" width="100" height="7" fill="var(--line-strong)"/>
+          <circle cx="90" cy="38" r="10"/><circle cx="90" cy="92" r="10"/><circle cx="90" cy="186" r="10"/>
+          <line x1="90" y1="15" x2="90" y2="28"/><line x1="90" y1="48" x2="90" y2="62"/><line x1="90" y1="69" x2="90" y2="82"/><line x1="90" y1="102" x2="90" y2="116"/><line x1="90" y1="162" x2="90" y2="176"/><line x1="90" y1="196" x2="90" y2="214"/>
+          <line x1="100" y1="38" x2="126" y2="38"/><line x1="100" y1="92" x2="126" y2="92"/><line x1="100" y1="186" x2="126" y2="186"/>
+        </g>
+        <g style="color:var(--text-primary)" font-family="Georgia,serif" font-size="11" fill="currentColor" font-style="italic">
+          <text x="62" y="26">Q₀</text><text x="62" y="58">Q₁</text><text x="62" y="80">Q₁</text><text x="62" y="112">Q₂</text><text x="62" y="174">Q₄</text><text x="62" y="208">Q₅</text>
+          <text x="130" y="42">W₁</text><text x="130" y="96">W₂</text><text x="130" y="190">W₅</text>
+          <text x="86" y="140">⋮</text>
+        </g>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section id="lab" aria-labelledby="lh">
+  <h2 id="lh"><b>02</b>The experiment</h2>
+  <div id="keyline" aria-live="polite">
+    <span class="k">Answer</span><span id="ansval">—</span><span id="ansexpr"></span>
+    <span id="anssub">Press START: heat flows down the cascade, and the run tunes η until W/Q₀ = 211/243.</span>
+  </div>
+  <p id="narr" aria-live="polite">Ready.</p>
+  <div class="stage"><canvas id="labcv" width="1200" height="720" role="img" aria-label="Experiment: six heat reservoirs stacked from hot to cold with a Carnot engine between each pair; heat flows down through pipes whose width is proportional to the heat, each engine sends its work sideways; a plot beside it shows the net efficiency against the efficiency of each engine and the search for the value that gives 211/243"></canvas></div>
+  <div id="controls" role="group" aria-label="experiment controls">
+    <button class="go" type="button" id="gobtn">▶ START EXPERIMENT</button>
+    <button type="button" id="replaybtn">↺ Replay</button>
+    <button type="button" id="resetbtn">Reset</button>
+    <div class="seg" role="group" aria-label="number of engines"><span>Engines</span><button type="button" id="ne3" aria-pressed="false">3</button><button type="button" id="ne5" aria-pressed="true">5</button><button type="button" id="ne7" aria-pressed="false">7</button></div>
+    <div class="v0"><label for="in_eta">Try η</label><input type="range" id="in_eta" min="0.05" max="0.6" step="0.005" value="0.2" aria-describedby="etaout"><output id="etaout" for="in_eta">0.200</output></div>
+    <div class="seg" role="group" aria-label="speed"><span>Speed</span><button type="button" id="sp1" aria-pressed="true">1×</button><button type="button" id="sp2" aria-pressed="false">½×</button></div>
+    <button type="button" id="classbtn" aria-pressed="false">Classroom</button>
+  </div>
+  <p id="warn" hidden></p>
+</section>
+
+<section id="solution" aria-labelledby="sh">
+  <h2 id="sh"><b>03</b>Detailed solution</h2>
+  <div class="sol">
+    <p>Answer: <i>η</i> = <span id="solans">—</span> (exactly 1/3; the accepted range is 0.32 to 0.34)</p>
+    <ol class="steps">
+      <li><b>Heat passed down.</b> Each engine turns a fraction <i>η</i> of its input into work and passes (1 − <i>η</i>) of it on:
+        <div class="eq"><i>Q</i><sub>1</sub> = (1 − <i>η</i>)<i>Q</i><sub>0</sub>, &nbsp; <i>Q</i><sub>2</sub> = (1 − <i>η</i>)²<i>Q</i><sub>0</sub>, … , &nbsp; <i>Q</i><sub>5</sub> = (1 − <i>η</i>)⁵<i>Q</i><sub>0</sub>.</div></li>
+      <li><b>Total work.</b> Energy is conserved across the whole stack, so <i>W</i> = <i>Q</i><sub>0</sub> − <i>Q</i><sub>5</sub>:
+        <div class="eq"><i>η</i><sub>net</sub> = <i>W</i>/<i>Q</i><sub>0</sub> = 1 − (1 − <i>η</i>)⁵ = 211/243.</div></li>
+      <li><b>Solve.</b> (1 − <i>η</i>)⁵ = 32/243 = (2/3)⁵, so 1 − <i>η</i> = 2/3 and <i>η</i> = <b>1/3 ≈ 0.33</b>.</li>
+      <li><b>The Carnot picture.</b> A Carnot engine has <i>η</i> = 1 − <i>T</i><sub>cold</sub>/<i>T</i><sub>hot</sub>, so each step lowers the temperature by the factor 2/3. For example: 1215 K → 810 → 540 → 360 → 240 → 160 K. The whole cascade is then exactly one Carnot engine between 1215 K and 160 K: 1 − 160/1215 = 211/243.</li>
+    </ol>
+    <h3>Understand the concept</h3>
+    <div class="concept">In a series of engines, the heat each one rejects feeds the next. The efficiencies do not add; the rejected fractions multiply: 1 − <i>η</i><sub>net</sub> = (1 − <i>η</i>₁)(1 − <i>η</i>₂)…. For Carnot engines this is the statement that temperature ratios multiply, so a chain of reversible engines behaves like one reversible engine between the first and last reservoirs. A common trap is to write <i>η</i><sub>net</sub> = 5<i>η</i>. That would exceed 1 for <i>η</i> &gt; 0.2.</div>
+    <h3>Key takeaways</h3>
+    <ul class="take">
+      <li>Engines in series: 1 − <i>η</i><sub>net</sub> = Π(1 − <i>η<sub>i</sub></i>). For five equal engines, 1 − <i>η</i><sub>net</sub> = (1 − <i>η</i>)⁵.</li>
+      <li>243 = 3⁵ and 32 = 2⁵, so spotting the powers gives 1 − <i>η</i> = 2/3.</li>
+      <li>Reversible engines in series are equivalent to one reversible engine between the extreme temperatures.</li>
+    </ul>
+    <p class="note">Verification: an independent derivation, a sympy route, a cycle-by-cycle energy bookkeeping of five Carnot engines with explicit reservoir temperatures and entropy checks, and the page's own engine, run by <code>tests/verify_p1phyq10.py</code>. The official key (0.32 to 0.34) and the MathonGo solution (0.33) agree. Status: script-verified by the PrayogX simulation factory; no review by a person has been recorded. The reservoir temperatures shown are one consistent example: only their ratios matter.</p>
+  </div>
+</section>
+
+<section id="howto" aria-labelledby="hh">
+  <h2 id="hh">How to use this simulation</h2>
+  <ol class="howto">
+    <li>Press <b>▶ START EXPERIMENT</b>. Heat pours down the cascade, and each engine sends its share out as work.</li>
+    <li>Watch the pipes get thinner from top to bottom: each passes on (1 − <i>η</i>) of what it received.</li>
+    <li>The run tries values of <i>η</i> and plots <i>W</i>/<i>Q</i>₀ against <i>η</i> until it hits 211/243 = 0.868. It lands on <i>η</i> = 1/3.</li>
+    <li>Drag <b>Try η</b> to test any value, or change <b>Engines</b> to 3 or 7 to see 1 − (1 − <i>η</i>)<sup><i>N</i></sup>.</li>
+    <li><b>Replay</b> runs it again. <b>Reset</b> clears it. <b>Classroom</b> fills the screen for a projector.</li>
+  </ol>
+</section>
+
+<footer>
+  ADV-2026-P1-PHY-Q10 · PrayogX · JEE Advanced Interactive Simulation Library · question text reproduced
+  from the official JEE (Advanced) 2026 Paper 1 for educational use. This is a virtual laboratory only.
+  Pipe widths are proportional to heat per cycle; reservoir temperatures are an example with the right ratios.
+</footer>
+</main>
+
+<script>
+(function(){
+"use strict";
+/* ENGINE-BEGIN */
+/* N Carnot engines in series, each of efficiency eta; engine k absorbs Q_(k-1) and rejects Q_k to engine k+1. */
+var ENGINE = (function(){
+  var TARGET = 211 / 243, N0 = 5, T0 = 1215;
+  function heats(eta, N){ var q = [1], k; for (k = 1; k <= N; k++) q.push(q[k - 1] * (1 - eta)); return q; }   /* Q_k / Q0 */
+  function works(eta, N){ var q = heats(eta, N), w = [], k; for (k = 1; k <= N; k++) w.push(q[k - 1] - q[k]); return w; } /* W_k / Q0 */
+  function netEff(eta, N){ var w = works(eta, N), s = 0, k; for (k = 0; k < w.length; k++) s += w[k]; return s; }   /* W / Q0 */
+  function temps(eta, N){ var q = heats(eta, N), t = [], k; for (k = 0; k <= N; k++) t.push(T0 * q[k]); return t; } /* Carnot: T ratio = Q ratio */
+  /* find eta with netEff = target by bisection; the trials are kept to be shown */
+  function solve(target, N){
+    var lo = 0, hi = 1, trials = [], k, mid;
+    for (k = 0; k < 60; k++){ mid = (lo + hi) / 2; trials.push(mid); if (netEff(mid, N) < target) lo = mid; else hi = mid; }
+    return { eta: (lo + hi) / 2, trials: trials };
+  }
+  function run(){ var s = solve(TARGET, N0); return { eta: s.eta, trials: s.trials, answer: s.eta.toFixed(2), inKey: s.eta >= 0.32 && s.eta <= 0.34, temps: temps(s.eta, N0) }; }
+  return { TARGET: TARGET, N0: N0, T0: T0, heats: heats, works: works, netEff: netEff, temps: temps, solve: solve, run: run };
+})();
+/* ENGINE-END */
+
+var QRUN = ENGINE.run();
+var ANS = QRUN.answer;
+
+function $(id){ return document.getElementById(id); }
+var cv = $("labcv"), g = cv.getContext("2d");
+var reduced = !!(window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches);
+var SHOW_TRIALS = 12, TRIAL_T = 0.9, FLOW_T = 2.6;
+
+var RUN = { state: "setup", phase: "ready", speed: 1, N: 5, eta: 0.2, trials: [], ti: 0, st: 0, done: false, confirmed: false };
+var L = null, minPx = 999, clock = 0;
+
+function layout(){
+  var phone = document.documentElement.clientWidth < 700;
+  if (phone) return { phone: true, W: 720, H: 1240, ro: { x: 12, y: 12, w: 696, h: 178 }, tw: { x: 12, y: 204, w: 696, h: 600 },
+    plot: { x: 12, y: 820, w: 696, h: 408 }, fs: 25, big: 31 };
+  return { phone: false, W: 1200, H: 720, ro: { x: 16, y: 14, w: 1168, h: 92 }, tw: { x: 16, y: 122, w: 620, h: 584 },
+    plot: { x: 652, y: 122, w: 532, h: 584 }, fs: 16, big: 24 };
+}
+
+/* --------------------------------------------------------------- run */
+function curEta(){ return RUN.phase === "search" ? RUN.trials[Math.min(RUN.ti, RUN.trials.length - 1)] : RUN.eta; }
+function finish(){
+  RUN.state = "done"; RUN.phase = "done"; RUN.done = true;
+  var s = ENGINE.solve(ENGINE.TARGET, RUN.N); RUN.eta = s.eta; setSlider(s.eta);
+  RUN.measured = { N: RUN.N, eta: s.eta, net: ENGINE.netEff(s.eta, RUN.N), trials: s.trials.length, temps: ENGINE.temps(s.eta, RUN.N) };
+  if (RUN.N === ENGINE.N0 && s.eta.toFixed(2) === ANS){ RUN.confirmed = true; confirmAnswer(); }
+  narrate(); refreshButtons();
+}
+function tick(dt){
+  if (!reduced) clock += dt;
+  if (RUN.state !== "running") return;
+  var d = dt * RUN.speed; RUN.st += d;
+  if (RUN.phase === "flow"){ if (RUN.st >= FLOW_T){ RUN.phase = "search"; RUN.st = 0; RUN.ti = 0; narrate(); } return; }
+  if (RUN.phase === "search" && RUN.st >= TRIAL_T){ RUN.st = 0; RUN.ti++; if (RUN.ti >= RUN.trials.length){ finish(); return; } narrate(); }
+}
+function start(){
+  if (RUN.state === "running"){ RUN.state = "paused"; refreshButtons(); narrate(); return; }
+  if (RUN.state === "paused"){ RUN.state = "running"; refreshButtons(); narrate(); return; }
+  resetRun();
+  RUN.trials = ENGINE.solve(ENGINE.TARGET, RUN.N).trials.slice(0, SHOW_TRIALS);
+  if (reduced){ RUN.ti = RUN.trials.length - 1; finish(); return; }
+  RUN.state = "running"; RUN.phase = "flow"; RUN.st = 0; narrate(); refreshButtons();
+}
+function resetRun(){ RUN.state = "setup"; RUN.phase = "ready"; RUN.trials = []; RUN.ti = 0; RUN.st = 0; RUN.done = false; RUN.measured = null; RUN.confirmed = false; }
+function replay(){ RUN.state = "setup"; start(); }
+function reset(){ resetRun(); RUN.eta = 0.2; setSlider(0.2); refreshButtons(); narrate(); }
+function setSlider(e){ $("in_eta").value = String(e); $("etaout").textContent = e.toFixed(3); }
+function setEta(e){ e = parseFloat(e); if (!isFinite(e)) e = 0.2; e = Math.min(0.6, Math.max(0.05, e)); RUN.eta = e; setSlider(e); if (RUN.state !== "setup"){ resetRun(); refreshButtons(); } narrate(); }
+function setN(n){ if ([3, 5, 7].indexOf(n) < 0) n = 5; RUN.N = n; [3, 5, 7].forEach(function(k){ $("ne" + k).setAttribute("aria-pressed", k === n ? "true" : "false"); }); resetRun(); refreshButtons(); narrate(); }
+
+/* ------------------------------------------------------------ words */
+function f3(x){ return x.toFixed(3); }
+function narrate(){
+  var t, e = curEta(), net = ENGINE.netEff(e, RUN.N);
+  if (RUN.phase === "ready") t = "Ready. With η = " + f3(e) + " each engine keeps " + f3(e) + " of its heat as work and passes on " + f3(1 - e) + ": W/Q₀ = 1 − (1 − η)^" + RUN.N + " = " + f3(net) + ". Press START to find the η that gives 211/243.";
+  else if (RUN.phase === "flow") t = "Heat flows down the cascade: Q₀ enters at the top, and every engine sends a fraction η sideways as work and passes the rest down.";
+  else if (RUN.phase === "search") t = "Trial " + (RUN.ti + 1) + ": η = " + f3(e) + " gives W/Q₀ = " + f3(net) + (net < ENGINE.TARGET ? " (too low, so raise η)" : " (too high, so lower η)") + ". The target is 211/243 = " + f3(ENGINE.TARGET) + ".";
+  else t = "Found: η = " + RUN.measured.eta.toFixed(4) + " (= 1/3), since 1 − (2/3)^" + RUN.N + (RUN.N === 5 ? " = 1 − 32/243 = 211/243" : " = " + f3(RUN.measured.net)) + ". The reservoirs step down by 2/3 each: " + RUN.measured.temps.map(function(T){ return Math.round(T); }).join(" → ") + " K.";
+  if (RUN.state === "paused") t = "Paused. " + t;
+  $("narr").textContent = t;
+  var w = $("warn");
+  if (RUN.N !== 5){ w.hidden = false; w.textContent = RUN.N + " engines is your own setting; the question has 5. The run still finds the η that gives 211/243 for " + RUN.N + " engines."; } else w.hidden = true;
+}
+function confirmAnswer(){
+  var m = RUN.measured;
+  $("anssub").textContent = "Confirmed by the run: bisection (" + Math.min(SHOW_TRIALS, m.trials) + " steps drawn, " + m.trials + " in all) lands on η = " + m.eta.toFixed(4) + ", where W/Q₀ = " + m.net.toFixed(4) + " = 211/243.";
+  var k = $("keyline");
+  if (!reduced){ k.classList.remove("blink"); void k.offsetWidth; k.classList.add("blink"); setTimeout(function(){ k.classList.remove("blink"); }, 2000); }
+}
+function refreshButtons(){ $("gobtn").textContent = RUN.state === "running" ? "❚❚ PAUSE" : RUN.state === "paused" ? "▶ RESUME" : RUN.state === "done" ? "▶ RUN AGAIN" : "▶ START EXPERIMENT"; }
+function refreshAnswer(){ $("ansval").textContent = ANS ? "η = " + ANS : "—"; $("ansexpr").textContent = ANS ? "1 − (1 − η)⁵ = 211/243 ⇒ 1 − η = 2/3" : ""; $("solans").textContent = ANS || "—"; }
+
+/* ------------------------------------------------------------ drawing */
+function label(s, x, y, px, col, align, weight){
+  if (px < minPx) minPx = px;
+  g.font = (weight || "700") + " " + Math.round(px) + "px ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif";
+  g.fillStyle = col || "#e8f0ff"; g.textAlign = align || "left"; g.textBaseline = "alphabetic"; g.fillText(s, x, y);
+}
+function roundRect(x, y, w, h, r){ g.beginPath(); g.moveTo(x + r, y); g.lineTo(x + w - r, y); g.quadraticCurveTo(x + w, y, x + w, y + r); g.lineTo(x + w, y + h - r); g.quadraticCurveTo(x + w, y + h, x + w - r, y + h); g.lineTo(x + r, y + h); g.quadraticCurveTo(x, y + h, x, y + h - r); g.lineTo(x, y + r); g.quadraticCurveTo(x, y, x + r, y); g.closePath(); }
+function panel(x, y, w, h){ roundRect(x, y, w, h, 14); g.fillStyle = "rgba(10,16,32,.86)"; g.fill(); g.strokeStyle = "rgba(140,180,255,.3)"; g.lineWidth = 1.5; g.stroke(); }
+function heatCol(f){ var r = Math.round(90 + 165 * f), gg = Math.round(120 + 20 * f), b = Math.round(255 - 180 * f); return "rgb(" + r + "," + gg + "," + b + ")"; }
+
+function drawReadouts(){
+  var r = L.ro, e = curEta(), q = ENGINE.heats(e, RUN.N), i, x, y;
+  var rows = [["Engine efficiency η", f3(e)], ["W/Q₀ = η_net", f3(ENGINE.netEff(e, RUN.N))], ["Target 211/243", f3(ENGINE.TARGET)], ["Heat out Q" + RUN.N + "/Q₀", f3(q[RUN.N])]];
+  panel(r.x, r.y, r.w, r.h);
+  for (i = 0; i < 4; i++){
+    if (L.phone){ x = r.x + 18 + (i % 2) * 348; y = r.y + 44 + Math.floor(i / 2) * 84; }
+    else { x = r.x + 20 + i * 290; y = r.y + 34; }
+    label(rows[i][0], x, y, L.fs - (L.phone ? 0 : 1), "#8fa6cf", "left", "700");
+    label(rows[i][1], x, y + (L.phone ? 40 : 38), L.big - (L.phone ? 3 : 0), i === 1 ? "#9ff0c8" : i === 2 ? "#ffd166" : "#ffffff", "left", "800");
+  }
+}
+function drawTower(){
+  var T = L.tw, N = RUN.N, e = curEta(), q = ENGINE.heats(e, N), w = ENGINE.works(e, N), temps = ENGINE.temps(e, N);
+  roundRect(T.x, T.y, T.w, T.h, 14); g.fillStyle = "#070d1c"; g.fill();
+  var top = T.y + (L.phone ? 58 : 46), bot = T.y + T.h - 22, step = (bot - top) / N, cx = T.x + T.w * (L.phone ? 0.36 : 0.38), rw = T.w * 0.46, pipeMax = L.phone ? 60 : 54, k;
+  label("heat flows down · pipe width ∝ heat per cycle", T.x + 16, T.y + (L.phone ? 36 : 30), L.fs - (L.phone ? 0 : 2), "rgba(190,210,240,.85)", "left", "600");
+  for (k = 0; k <= N; k++){
+    var ry = top + k * step, hot = 1 - k / N;
+    roundRect(cx - rw / 2, ry - 9, rw, 18, 6); g.fillStyle = heatCol(hot); g.globalAlpha = 0.85; g.fill(); g.globalAlpha = 1;
+    label(Math.round(temps[k]) + " K", cx - rw / 2 - 10, ry + 6, L.fs, "#cfe0ff", "right", "800");
+  }
+  for (k = 0; k < N; k++){
+    var y1 = top + k * step + 9, y2 = top + (k + 1) * step - 9, ym = (y1 + y2) / 2, er = Math.min(L.phone ? 26 : 22, step * 0.28);
+    var wIn = pipeMax * q[k], wOut = pipeMax * q[k + 1];
+    g.fillStyle = heatCol(1 - k / N); g.globalAlpha = 0.8; g.fillRect(cx - wIn / 2, y1, wIn, ym - er - y1); g.fillStyle = heatCol(1 - (k + 1) / N); g.fillRect(cx - wOut / 2, ym + er, wOut, y2 - ym - er); g.globalAlpha = 1;
+    /* flowing pulses */
+    if (RUN.state === "running" || RUN.done){ var ph = (clock * 1.3 + k * 0.15) % 1; g.fillStyle = "rgba(255,255,255,.7)"; g.beginPath(); g.arc(cx, y1 + (ym - er - y1) * ph, 4, 0, Math.PI * 2); g.fill(); g.beginPath(); g.arc(cx, ym + er + (y2 - ym - er) * ph, 4, 0, Math.PI * 2); g.fill(); }
+    /* the engine */
+    g.fillStyle = "#1c2438"; g.strokeStyle = "#cfe0ff"; g.lineWidth = 3; g.beginPath(); g.arc(cx, ym, er, 0, Math.PI * 2); g.fill(); g.stroke();
+    var sp = clock * 4 * (0.3 + e); g.save(); g.translate(cx, ym); g.rotate(sp); g.strokeStyle = "#ffd166"; g.lineWidth = 3; for (var s2 = 0; s2 < 3; s2++){ g.rotate(Math.PI * 2 / 3); g.beginPath(); g.moveTo(0, 0); g.lineTo(er * 0.8, 0); g.stroke(); } g.restore();
+    /* work sideways */
+    var ww = Math.max(2, pipeMax * w[k]), ax = cx + er + 6, ex = cx + rw / 2 + (L.phone ? 20 : 30);
+    g.fillStyle = "#9ff0c8"; g.fillRect(ax, ym - ww / 2, ex - ax, ww); g.beginPath(); g.moveTo(ex + 14, ym); g.lineTo(ex, ym - ww / 2 - 8); g.lineTo(ex, ym + ww / 2 + 8); g.closePath(); g.fill();
+    if (step > (L.phone ? 60 : 50)) label("W" + (k + 1) + " = " + f3(w[k]) + " Q₀", ex + 20, ym + 6, L.fs, "#9ff0c8", "left", "800");
+  }
+  label("Q₀", cx + pipeMax / 2 + 8, top + 28, L.fs + 1, "#ffb09a", "left", "800");
+}
+function drawPlot(){
+  var P = L.plot, x0 = P.x + (L.phone ? 76 : 64), x1 = P.x + P.w - 24, y0 = P.y + (L.phone ? 70 : 60), y1 = P.y + P.h - (L.phone ? 70 : 56), emax = 0.6, N = RUN.N;
+  panel(P.x, P.y, P.w, P.h);
+  label("W/Q₀ AGAINST η (" + N + " ENGINES)", P.x + 18, P.y + (L.phone ? 38 : 32), L.fs, "#cfe0ff", "left", "800");
+  function X(e){ return x0 + e / emax * (x1 - x0); } function Y(v){ return y1 - v * (y1 - y0); }
+  g.strokeStyle = "rgba(220,235,255,.7)"; g.lineWidth = 2; g.beginPath(); g.moveTo(x0, y0); g.lineTo(x0, y1); g.lineTo(x1, y1); g.stroke();
+  var v; for (v = 0; v <= 1.0001; v += 0.5) label(v.toFixed(1), x0 - 10, Y(v) + 6, L.fs, "#8fa6cf", "right", "600");
+  for (v = 0; v <= 0.60001; v += 0.2) label(v.toFixed(1), X(v), y1 + (L.phone ? 34 : 26), L.fs, "#8fa6cf", "center", "600");
+  label("η", x1, y1 - 10, L.fs + 2, "#cfe0ff", "right", "800");
+  g.save(); g.strokeStyle = "#5fd4ff"; g.lineWidth = 3.5; g.beginPath(); var i; for (i = 0; i <= 120; i++){ var ee = emax * i / 120; if (i) g.lineTo(X(ee), Y(ENGINE.netEff(ee, N))); else g.moveTo(X(ee), Y(ENGINE.netEff(ee, N))); } g.stroke(); g.restore();
+  g.save(); g.setLineDash([6, 6]); g.strokeStyle = "#ffd166"; g.lineWidth = 2; g.beginPath(); g.moveTo(x0, Y(ENGINE.TARGET)); g.lineTo(x1, Y(ENGINE.TARGET)); g.stroke(); g.restore();
+  label("211/243", x1 - 6, Y(ENGINE.TARGET) - 10, L.fs, "#ffd166", "right", "800");
+  var shown = RUN.phase === "search" ? RUN.ti + 1 : RUN.done ? RUN.trials.length : 0;
+  for (i = 0; i < shown; i++){ var te = RUN.trials[i]; g.fillStyle = i === shown - 1 ? "#ffffff" : "rgba(255,255,255,.55)"; g.beginPath(); g.arc(X(te), Y(ENGINE.netEff(te, N)), i === shown - 1 ? 7 : 5, 0, Math.PI * 2); g.fill();
+    if (i < 4) label(String(i + 1), X(te) + 9, Y(ENGINE.netEff(te, N)) + (i % 2 ? 22 : -10), L.fs - (L.phone ? 0 : 2), "#e6ecff", "left", "700"); }
+  if (RUN.phase === "ready" || RUN.state === "setup"){ g.fillStyle = "#ff9f5a"; g.beginPath(); g.arc(X(RUN.eta), Y(ENGINE.netEff(RUN.eta, N)), 7, 0, Math.PI * 2); g.fill(); label("your η", X(RUN.eta) + 10, Y(ENGINE.netEff(RUN.eta, N)) + 22, L.fs, "#ff9f5a", "left", "800"); }
+  if (RUN.done){ var m = RUN.measured; g.strokeStyle = "#7dffb8"; g.lineWidth = 2; g.beginPath(); g.moveTo(X(m.eta), Y(m.net)); g.lineTo(X(m.eta), y1); g.stroke();
+    var bx = x0 + (x1 - x0) * 0.42, bw = x1 - bx;
+    roundRect(bx, y1 - (L.phone ? 150 : 128), bw, L.phone ? 64 : 54, 12); g.fillStyle = "rgba(40,160,100,.22)"; g.fill();
+    label("η = " + m.eta.toFixed(4) + " = 1/3", bx + 14, y1 - (L.phone ? 106 : 92), L.big - (L.phone ? 2 : 0), "#7dffb8", "left", "800"); }
+}
+function draw(){
+  minPx = 999;
+  L = layout();
+  if (cv.width !== L.W || cv.height !== L.H){ cv.width = L.W; cv.height = L.H; }
+  var bg = g.createLinearGradient(0, 0, 0, L.H); bg.addColorStop(0, "#0b1226"); bg.addColorStop(1, "#04060c"); g.fillStyle = bg; g.fillRect(0, 0, L.W, L.H);
+  drawReadouts(); drawTower(); drawPlot();
+}
+
+/* ------------------------------------------------------------ controls */
+function setSpeed(k){ RUN.speed = k; $("sp1").setAttribute("aria-pressed", k === 1 ? "true" : "false"); $("sp2").setAttribute("aria-pressed", k === 0.5 ? "true" : "false"); }
+$("gobtn").addEventListener("click", start);
+$("replaybtn").addEventListener("click", replay);
+$("resetbtn").addEventListener("click", reset);
+$("sp1").addEventListener("click", function(){ setSpeed(1); });
+$("sp2").addEventListener("click", function(){ setSpeed(0.5); });
+[3, 5, 7].forEach(function(k){ $("ne" + k).addEventListener("click", function(){ setN(k); }); });
+$("in_eta").addEventListener("input", function(){ setEta(this.value); });
+$("classbtn").addEventListener("click", function(){
+  var on = document.body.classList.toggle("classroom"); this.setAttribute("aria-pressed", on ? "true" : "false");
+  this.textContent = on ? "Exit classroom" : "Classroom";
+});
+$("themebtn").addEventListener("click", function(){
+  var r = document.documentElement, dark = r.getAttribute("data-theme") === "dark" || (!r.getAttribute("data-theme") && window.matchMedia && matchMedia("(prefers-color-scheme: dark)").matches);
+  r.setAttribute("data-theme", dark ? "light" : "dark");
+});
+
+var lastT = null;
+function loop(ts){
+  if (lastT === null) lastT = ts;
+  var dt = Math.min(0.05, Math.max(0, (ts - lastT) / 1000)); lastT = ts;
+  tick(dt); draw();
+  requestAnimationFrame(loop);
+}
+
+window.PX = {
+  ENGINE: ENGINE, QRUN: QRUN, ANS: ANS, RUN: RUN,
+  answer: function(){ return ANS; },
+  minLabelPx: function(){ draw(); return minPx; },
+  start: start, replay: replay, reset: reset, setSpeed: setSpeed, speed: function(k){ RUN.speed = k; }, setN: setN, setEta: setEta,
+  state: function(){ var e = curEta(); return { state: RUN.state, phase: RUN.phase, N: RUN.N, eta: e, net: ENGINE.netEff(e, RUN.N), ti: RUN.ti, trials: RUN.trials.length, measured: RUN.measured || null, done: RUN.done, confirmed: RUN.confirmed }; }
+};
+
+setN(5); setEta(0.2); refreshAnswer(); refreshButtons(); draw();
+window.addEventListener("resize", function(){ draw(); });
+requestAnimationFrame(loop);
+})();
+</script>
+</body>
+</html>
