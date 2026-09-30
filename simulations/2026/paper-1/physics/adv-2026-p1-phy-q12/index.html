@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Spinning Cone Magnet Lab — the axial field of a rotating charged cone — JEE Advanced 2026 Paper 1 Q.12 | PrayogX</title>
+<meta name="description" content="A hollow cone with charge Q on its curved surface spins about its axis: its surface charge forms current rings whose magnetic moments add to m = QR^2 w/4, and the exact field far up the axis is (mu0/4pi) 2m/z^3, so n = 0.5. JEE Advanced 2026 Paper 1 Physics Q.12.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232a78d6'/%3E%3Cpath d='M12.5 6.5h7M13.6 6.5v7.2L7.9 24.1a1.5 1.5 0 0 0 1.3 2.3h13.6a1.5 1.5 0 0 0 1.3-2.3l-5.7-10.4V6.5' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M10.6 20.6h10.8' stroke='white' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E">
+<meta name="sim-id" content="ADV-2026-P1-PHY-Q12">
+<style>
+:root{
+  color-scheme: light;
+  --surface-0:#f4f4f1; --surface-1:#fcfcfb; --surface-2:#ececea;
+  --line:#d9d9d4; --line-strong:#bcbcb5;
+  --text-primary:#0b0b0b; --text-secondary:#52514e; --text-muted:#77766f;
+  --s1:#2a78d6; --s2:#eb6834; --s3:#1baf7a; --s4:#4a3aa7;
+  --good:#00743f; --bad:#c0392b; --accent:#2a78d6;
+  --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+  --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --serif:ui-serif,Georgia,"Times New Roman",serif;
+  --radius:12px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  color-scheme: dark;
+  --surface-0:#111110; --surface-1:#1a1a19; --surface-2:#232322;
+  --line:#34342f; --line-strong:#4a4a44;
+  --text-primary:#ffffff; --text-secondary:#c3c2b7; --text-muted:#95948b;
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#9085e9;
+  --good:#3fae7a; --bad:#e66767; --accent:#3987e5;
+}}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --surface-0:#111110; --surface-1:#1a1a19; --surface-2:#232322;
+  --line:#34342f; --line-strong:#4a4a44;
+  --text-primary:#ffffff; --text-secondary:#c3c2b7; --text-muted:#95948b;
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#9085e9;
+  --good:#3fae7a; --bad:#e66767; --accent:#3987e5;
+}
+*{box-sizing:border-box}
+[hidden]{display:none !important}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--surface-0);color:var(--text-primary);font-family:var(--sans);font-size:16px;line-height:1.6}
+header.top{border-bottom:1px solid var(--line);background:var(--surface-1)}
+.top-inner{max-width:1240px;margin:0 auto;padding:18px 20px 14px;position:relative}
+.brandbar{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.brandbar .pxmark{width:21px;height:21px;flex:none;display:block}
+.brandbar .wm{font-size:13px;font-weight:800;letter-spacing:.17em;color:var(--text-secondary);line-height:1}
+.brandbar .wm i{font-style:normal;color:var(--accent)}
+.simid{font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--text-muted)}
+h1{font-size:21px;line-height:1.3;margin:4px 0 4px;padding-right:80px}
+.meta{font-size:14px;color:var(--text-secondary);margin:0}
+.themebtn{position:absolute;top:14px;right:16px;border:1px solid var(--line-strong);background:var(--surface-2);
+  color:var(--text-secondary);border-radius:8px;padding:4px 9px;font-size:12px;cursor:pointer}
+.wrap{max-width:1240px;margin:0 auto;padding:0 20px 40px}
+section{margin:0 0 34px}
+h2{font-size:15px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-secondary);margin:26px 0 12px}
+h2 b{color:var(--accent);margin-right:8px}
+h3{font-size:17px;margin:22px 0 8px}
+/* 01 question */
+.qcard{background:var(--surface-1);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+.qtext{font-family:var(--serif);font-size:18px;line-height:1.6;flex:1 1 460px;min-width:0}
+.qfig{flex:0 0 250px;max-width:100%}
+.qfig svg{display:block;width:100%;height:auto}
+.sq{white-space:nowrap}
+.sq .rad{border-top:1.5px solid currentColor;padding:0 2px}
+#opts{list-style:none;margin:12px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+#opts li{background:var(--surface-1);border:1.5px solid var(--line);border-radius:10px;padding:10px 12px;font-family:var(--serif);font-size:19px;display:flex;gap:10px;align-items:center;min-height:52px}
+#opts li b{font-family:var(--sans);font-size:14px;color:var(--text-muted)}
+#opts li.correct{border-color:var(--good);box-shadow:0 0 0 2px color-mix(in srgb,var(--good) 25%,transparent)}
+#opts li.correct b{color:var(--good)}
+/* 02 lab */
+#keyline{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;background:var(--surface-1);border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin:0 0 8px}
+#keyline .k{font-size:13px;font-weight:800;letter-spacing:.12em;color:var(--text-muted);text-transform:uppercase}
+#ansval{font-size:22px;font-weight:800;color:var(--good)}
+#ansexpr{font-family:var(--serif);font-size:20px}
+#anssub{font-size:14px;color:var(--text-secondary);margin-left:auto}
+#keyline.blink{animation:blink .45s ease-in-out 4}
+@keyframes blink{50%{background:color-mix(in srgb,var(--good) 22%,var(--surface-1))}}
+#narr{margin:0 2px 10px;font-size:16px;color:var(--text-secondary);min-height:2.8em}
+.stage{position:relative;border-radius:16px;overflow:hidden;background:#070a12;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+canvas#labcv{display:block;width:100%;height:auto;touch-action:manipulation}
+#controls{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:12px;padding:12px;border:1px solid var(--line);border-radius:14px;background:var(--surface-1)}
+#controls button{min-height:48px;font-size:16px;font-weight:700;border-radius:10px;border:1px solid var(--line-strong);background:var(--surface-2);color:var(--text-primary);padding:0 16px;cursor:pointer;font-family:var(--sans)}
+#controls button:focus-visible,#controls input:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+#controls .go{background:var(--accent);color:#fff;border:none;font-weight:800;letter-spacing:.04em;min-width:190px}
+#controls .seg{display:flex;align-items:center;gap:0}
+#controls .seg span{font-size:13px;font-weight:700;color:var(--text-muted);margin-right:8px;letter-spacing:.06em;text-transform:uppercase}
+#controls .seg button{border-radius:0;margin-left:-1px;padding:0 13px}
+#controls .seg button:nth-child(2){border-radius:10px 0 0 10px}
+#controls .seg button:last-child{border-radius:0 10px 10px 0}
+#controls .seg button[aria-pressed="true"]{background:var(--accent);color:#fff;border-color:var(--accent)}
+#controls .v0{display:flex;flex-wrap:wrap;align-items:center;gap:10px;flex:1 1 520px;min-width:0}
+#controls .v0 label{font-size:15px;font-weight:700;white-space:nowrap}
+#controls input[type=range]{flex:1 1 150px;min-width:110px;min-height:44px;accent-color:var(--accent);margin:0}
+#v0out{font-family:var(--mono);font-size:15px;min-width:92px}
+#warn{margin:10px 2px 0;font-size:15px;color:var(--s2);font-weight:600}
+/* 03 solution */
+.sol{background:var(--surface-1);border:1px solid var(--line);border-radius:var(--radius);padding:6px 20px 16px}
+.sol ol.steps{padding-left:22px;margin:10px 0}
+.sol ol.steps li{margin:0 0 12px}
+.eq{font-family:var(--serif);font-size:18px;background:var(--surface-2);border-radius:8px;padding:8px 12px;margin:6px 0;overflow-x:auto}
+.solfig{display:flex;gap:18px;align-items:center;flex-wrap:wrap;margin:8px 0 12px}
+.solfig svg{flex:0 0 300px;max-width:100%;height:auto}
+.solfig p{flex:1 1 300px;margin:0}
+table.opt{border-collapse:collapse;width:100%;font-size:15px;margin:8px 0}
+table.opt th,table.opt td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+table.opt th{background:var(--surface-2)}
+table.opt tr.ok td{background:color-mix(in srgb,var(--good) 10%,transparent)}
+.tscroll{overflow-x:auto}
+.concept{border-left:4px solid var(--accent);padding:2px 0 2px 14px;margin:14px 0}
+ul.take{padding-left:20px} ul.take li{margin:0 0 6px}
+#solans{font-weight:800;color:var(--good)}
+.note{font-size:14px;color:var(--text-secondary)}
+/* 04 analysis */
+svg.chart{display:block;width:100%;max-width:760px;height:auto;background:var(--surface-1);border:1px solid var(--line);border-radius:12px}
+.chart text{font-family:var(--sans);fill:var(--text-secondary)}
+.cap{font-size:14px;color:var(--text-secondary);max-width:760px}
+/* how to */
+ol.howto{padding-left:22px;margin:0} ol.howto li{margin:0 0 8px}
+footer{font-size:13px;color:var(--text-muted);border-top:1px solid var(--line);padding:16px 0 0}
+/* classroom */
+body.classroom .wrap{max-width:none;padding:0 18px 30px}
+body.classroom header.top,body.classroom section:not(#lab),body.classroom footer{display:none}
+body.classroom #narr{font-size:24px;color:var(--text-primary)}
+body.classroom #keyline #ansexpr{font-size:26px}
+@media (max-width:760px){
+  .wrap{padding:0 16px 32px}
+  .top-inner{padding:14px 16px 12px}
+  h1{font-size:18px}
+  .qtext{font-size:17px}
+  .qfig{flex-basis:100%}
+  .qfig svg{max-width:260px;margin:0 auto}
+  #opts{grid-template-columns:repeat(2,minmax(0,1fr))}
+  #anssub{margin-left:0}
+  #controls{gap:8px;padding:10px}
+  #controls .go{flex:1 1 100%}
+  #controls button{padding:0 12px}
+  #controls .v0{flex-basis:100%;flex-wrap:wrap}
+  #controls .v0 input[type=range]{flex:1 1 100%;order:3}
+  .solfig svg{flex-basis:100%}
+  .sol{padding:4px 14px 12px}
+}
+@media (prefers-reduced-motion: reduce){#keyline.blink{animation:none}}
+/* long text options */
+#opts.lopts{grid-template-columns:1fr}
+#opts.lopts li{font-family:var(--sans);font-size:17px;align-items:flex-start;line-height:1.5}
+#opts.lopts li b{padding-top:2px}
+#opts.lopts .fx{font-family:var(--serif);font-size:18px;white-space:nowrap}
+#controls .seg button{white-space:nowrap}
+@media (max-width:760px){#opts.lopts .fx{white-space:normal}#controls .seg{flex-wrap:wrap;row-gap:6px}#controls .seg span{flex:1 1 100%;margin:0 0 2px}#controls .seg button:nth-child(2){border-radius:10px 0 0 10px}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-inner">
+    <div class="brandbar"><svg class="pxmark" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><rect width="32" height="32" rx="8" fill="var(--accent)"/><path d="M12.5 6.5h7M13.6 6.5v7.2L7.9 24.1a1.5 1.5 0 0 0 1.3 2.3h13.6a1.5 1.5 0 0 0 1.3-2.3l-5.7-10.4V6.5" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.6 20.6h10.8" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg><span class="wm">PRAYOG<i>X</i></span></div>
+    <div class="simid">ADV-2026-P1-PHY-Q12</div>
+    <h1>Spinning Cone Magnet Lab — the far field of a rotating charged cone</h1>
+    <p class="meta">JEE Advanced 2026 · Paper 1 · Physics · Q.12 · numerical value (+4 / 0) · Moving charges and magnetism</p>
+    <button class="themebtn" id="themebtn" type="button">◐ theme</button>
+  </div>
+</header>
+
+<main class="wrap">
+
+<section id="question" aria-labelledby="qh">
+  <h2 id="qh"><b>01</b>The question</h2>
+  <div class="qcard">
+    <div class="qtext">Q.12 A hollow, right circular cone of base radius <i>R</i> and height <i>h</i>, with its tip at the origin is rotating about the <i>Z</i>-axis with an angular velocity <i>ω</i>, as shown in the figure. The cone carries a total charge <i>Q</i> uniformly distributed on its curved surface. The magnitude of magnetic field at a point (0,0, <i>z</i>), where <i>z</i> ≫ <i>R</i> and <i>z</i> ≫ <i>h</i>, is <span class="fx">(<i>nμ</i><sub>0</sub>/4π)(<i>QR</i>²<i>ω</i>/<i>z</i>³)</span>. The value of <i>n</i> is:</div>
+    <div class="qfig">
+      <svg viewBox="0 0 200 200" role="img" aria-label="Figure from the question: a hollow cone with its tip at the origin opening upwards along the Z axis, base radius R at height h, rotating about Z with angular velocity omega">
+        <g style="color:var(--text-primary)" fill="none" stroke="currentColor" stroke-width="1.4">
+          <line x1="90" y1="160" x2="90" y2="12"/><path d="M86 18 L90 10 L94 18"/>
+          <line x1="90" y1="160" x2="170" y2="160"/><path d="M164 156 L172 160 L164 164"/>
+          <line x1="90" y1="160" x2="46" y2="196"/>
+          <path d="M90 160 L52 58 M90 160 L128 58" />
+          <ellipse cx="90" cy="58" rx="38" ry="10" fill="var(--line)"/>
+          <path d="M52 58 L90 160 L128 58 Z" fill="var(--line-strong)" stroke="none" opacity=".55"/>
+          <line x1="140" y1="58" x2="140" y2="160" stroke-dasharray="3 3"/>
+          <path d="M80 28 A10 4 0 1 0 100 28" stroke-dasharray="2 2"/>
+        </g>
+        <g style="color:var(--text-primary)" font-family="Georgia,serif" font-size="13" fill="currentColor" font-style="italic">
+          <text x="84" y="10">Z</text><text x="174" y="164">X</text><text x="36" y="196">Y</text><text x="104" y="30">ω</text><text x="102" y="54">R</text><text x="146" y="112">h</text>
+        </g>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section id="lab" aria-labelledby="lh">
+  <h2 id="lh"><b>02</b>The experiment</h2>
+  <div id="keyline" aria-live="polite">
+    <span class="k">Answer</span><span id="ansval">—</span><span id="ansexpr"></span>
+    <span id="anssub">Press START: the cone spins, its charge makes current rings, and a probe measures B far up the axis.</span>
+  </div>
+  <p id="narr" aria-live="polite">Ready.</p>
+  <div class="stage"><canvas id="labcv" width="1200" height="720" role="img" aria-label="Experiment: a charged hollow cone spinning about the z axis; its surface charge is sliced into current rings whose magnetic moments add up; a probe moves up the axis and the field it measures, times z cubed, is plotted and settles at the dipole value"></canvas></div>
+  <div id="controls" role="group" aria-label="experiment controls">
+    <button class="go" type="button" id="gobtn">▶ START EXPERIMENT</button>
+    <button type="button" id="replaybtn">↺ Replay</button>
+    <button type="button" id="resetbtn">Reset</button>
+    <div class="seg" role="group" aria-label="cone height"><span>Height h</span><button type="button" id="h1" aria-pressed="false">h = R</button><button type="button" id="h2" aria-pressed="true">h = 2R</button><button type="button" id="h4" aria-pressed="false">h = 4R</button></div>
+    <div class="seg" role="group" aria-label="speed"><span>Speed</span><button type="button" id="sp1" aria-pressed="true">1×</button><button type="button" id="sp2" aria-pressed="false">½×</button></div>
+    <button type="button" id="classbtn" aria-pressed="false">Classroom</button>
+  </div>
+  <p id="warn" hidden></p>
+</section>
+
+<section id="solution" aria-labelledby="sh">
+  <h2 id="sh"><b>03</b>Detailed solution</h2>
+  <div class="sol">
+    <p>Answer: <i>n</i> = <span id="solans">—</span></p>
+    <ol class="steps">
+      <li><b>Slice the cone into rings.</b> At a fraction <i>u</i> of the way along the slant (0 at the tip, 1 at the rim), the ring has radius <i>r</i> = <i>uR</i>. The curved area up to <i>u</i> grows as <i>u</i>², so a ring of width d<i>u</i> holds charge d<i>q</i> = <i>Q</i> · 2<i>u</i> d<i>u</i>.</li>
+      <li><b>Each ring is a current loop.</b> Spinning at <i>ω</i>, the charge passes any point <i>ω</i>/2π times a second, so d<i>I</i> = d<i>q</i> <i>ω</i>/2π. Its magnetic moment is
+        <div class="eq">d<i>m</i> = d<i>I</i> · π<i>r</i>² = (1/2) d<i>q</i> <i>ω</i> <i>r</i>² = <i>QωR</i>² <i>u</i>³ d<i>u</i>.</div></li>
+      <li><b>Add them up.</b> <i>m</i> = <i>QωR</i>² ∫₀¹ <i>u</i>³ d<i>u</i> = <i>QR</i>²<i>ω</i>/4. The height <i>h</i> drops out.</li>
+      <li><b>Far along the axis, the cone looks like a dipole.</b> For <i>z</i> ≫ <i>R</i>, <i>h</i>, the axial field of a dipole is
+        <div class="eq"><i>B</i> = (<i>μ</i>₀/4π) · 2<i>m</i>/<i>z</i>³ = (<i>μ</i>₀/4π) · <i>QR</i>²<i>ω</i>/(2<i>z</i>³) &nbsp;⇒&nbsp; <i>n</i> = <b>0.5</b>.</div></li>
+      <li><b>What the experiment checks.</b> The probe adds up the exact on-axis field of every ring, <i>μ</i>₀ d<i>I</i> <i>r</i>²/2(<i>r</i>² + (<i>z</i> − <i>z</i><sub>ring</sub>)²)<sup>3/2</sup>, without assuming a dipole. As <i>z</i> grows, <i>Bz</i>³ settles at the value that gives <i>n</i> = 0.5, for any height of cone.</li>
+    </ol>
+    <h3>Understand the concept</h3>
+    <div class="concept">A rotating charged body is a stack of current loops. Far away, all that survives of their fields is the total magnetic moment. For a loop of radius <i>r</i> carrying charge d<i>q</i> at angular speed <i>ω</i>, the moment is d<i>q</i><i>ωr</i>²/2. The moment is not equal to the charge times the average r²: the charge sits mostly near the rim (d<i>q</i> ∝ <i>u</i>), where <i>r</i>² is largest, so the moment is weighted by ∫2<i>u</i>·<i>u</i>² = 1/2. On the axis, the far field of a dipole is (<i>μ</i>₀/4π)(2<i>m</i>/<i>z</i>³), twice its broadside value.</div>
+    <h3>Key takeaways</h3>
+    <ul class="take">
+      <li>A spinning charge d<i>q</i> on a ring of radius <i>r</i> has magnetic moment d<i>q</i> <i>ω</i> <i>r</i>²/2.</li>
+      <li>Uniform charge on a cone's curved surface: d<i>q</i> = 2<i>Q</i><i>u</i> d<i>u</i> with <i>r</i> = <i>uR</i>, which gives <i>m</i> = <i>QR</i>²<i>ω</i>/4.</li>
+      <li>On-axis dipole field: <i>B</i> = <i>μ</i>₀ 2<i>m</i>/(4π<i>z</i>³), so <i>n</i> = 0.5. The cone's height does not matter far away.</li>
+    </ul>
+    <p class="note">Verification: an independent derivation, a sympy route, a numerical route (the exact Biot–Savart field of thousands of rings, and a direct surface integral), and the page's own engine, run by <code>tests/verify_p1phyq12.py</code>. The official key (0.50) and the MathonGo solution (0.5) agree. Status: script-verified by the PrayogX simulation factory; no review by a person has been recorded. The model uses <i>Q</i> = <i>R</i> = <i>ω</i> = 1 and <i>μ</i>₀/4π = 1, and <i>n</i> is dimensionless.</p>
+  </div>
+</section>
+
+<section id="howto" aria-labelledby="hh">
+  <h2 id="hh">How to use this simulation</h2>
+  <ol class="howto">
+    <li>Press <b>▶ START EXPERIMENT</b>. The cone spins, and its surface charge circulates as current.</li>
+    <li>Watch the rings light up from tip to rim as their magnetic moments are added. The total reaches <i>QR</i>²<i>ω</i>/4.</li>
+    <li>The probe then climbs the <i>z</i>-axis. The plot shows <i>Bz</i>³, in units of (<i>μ</i>₀/4π)<i>QR</i>²<i>ω</i>, settling at 0.5.</li>
+    <li>Change <b>Height h</b>: near the cone the field changes, but far away <i>n</i> is still 0.5.</li>
+    <li><b>Replay</b> runs it again. <b>Reset</b> clears it. <b>Classroom</b> fills the screen for a projector.</li>
+  </ol>
+</section>
+
+<footer>
+  ADV-2026-P1-PHY-Q12 · PrayogX · JEE Advanced Interactive Simulation Library · question text reproduced
+  from the official JEE (Advanced) 2026 Paper 1 for educational use. This is a virtual laboratory only.
+  The cone is drawn in perspective. Rotation is slowed down; field values are in units of (μ₀/4π)QR²ω.
+</footer>
+</main>
+
+<script>
+(function(){
+"use strict";
+/* ENGINE-BEGIN */
+/* Hollow cone, tip at the origin, rim radius R at height h, spinning at w about z; total charge Q spread
+   uniformly over the curved surface. Units: Q = R = w = 1, mu0/4pi = 1. */
+var ENGINE = (function(){
+  var NR = 4000;
+  /* ring k (midpoint u of the slant fraction): radius u R, height u h, charge Q 2u du */
+  function rings(h, n){ n = n || NR; var out = [], k, u, du = 1 / n; for (k = 0; k < n; k++){ u = (k + 0.5) * du; out.push({ r: u, z: u * h, dq: 2 * u * du }); } return out; }
+  function moment(h, n){ var rs = rings(h, n), m = 0, k; for (k = 0; k < rs.length; k++) m += rs[k].dq / (2 * Math.PI) * Math.PI * rs[k].r * rs[k].r; return m; }  /* sum of dI pi r^2 */
+  /* exact on-axis Biot-Savart field of every ring: mu0 dI r^2 / (2 (r^2 + d^2)^(3/2)) = (mu0/4pi) 2 pi dI r^2/(...)^(3/2) */
+  function Baxis(z, h, n){ var rs = rings(h, n), B = 0, k, d, dI; for (k = 0; k < rs.length; k++){ d = z - rs[k].z; dI = rs[k].dq / (2 * Math.PI); B += 2 * Math.PI * dI * rs[k].r * rs[k].r / Math.pow(rs[k].r * rs[k].r + d * d, 1.5); } return B; }
+  function nAt(z, h){ return Baxis(z, h) * z * z * z; }                    /* n = B z^3 / ((mu0/4pi) Q R^2 w) */
+  function run(){ var m = moment(2), nd = 2 * m; return { m: m, nDipole: nd, nFar: nAt(2000, 2), answer: nd.toFixed(2) }; }
+  return { NR: NR, rings: rings, moment: moment, Baxis: Baxis, nAt: nAt, run: run };
+})();
+/* ENGINE-END */
+
+var QRUN = ENGINE.run();
+var ANS = QRUN.answer;
+
+function $(id){ return document.getElementById(id); }
+var cv = $("labcv"), g = cv.getContext("2d");
+var reduced = !!(window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches);
+var SPIN_T = 1.8, RING_T = 3.2, PROBE_T = 4.2, NDRAW = 14, ZMIN = 6, ZMAX = 2000;
+
+var RUN = { state: "setup", phase: "ready", speed: 1, h: 2, st: 0, rings: 0, zp: ZMIN, curve: [], done: false, confirmed: false };
+var L = null, minPx = 999, clock = 0;
+
+function layout(){
+  var phone = document.documentElement.clientWidth < 700;
+  if (phone) return { phone: true, W: 720, H: 1240, ro: { x: 12, y: 12, w: 696, h: 178 }, sc: { x: 12, y: 204, w: 696, h: 580 },
+    plot: { x: 12, y: 800, w: 696, h: 428 }, fs: 25, big: 31 };
+  return { phone: false, W: 1200, H: 720, ro: { x: 16, y: 14, w: 1168, h: 92 }, sc: { x: 16, y: 122, w: 600, h: 584 },
+    plot: { x: 632, y: 122, w: 552, h: 584 }, fs: 16, big: 24 };
+}
+
+/* --------------------------------------------------------------- run */
+function mSoFar(){ var k = Math.round(RUN.rings / NDRAW * 200), rs = ENGINE.rings(RUN.h, 200), m = 0, i; for (i = 0; i < Math.min(k, 200); i++) m += rs[i].dq * rs[i].r * rs[i].r / 2; return m; }
+function logz(f){ return ZMIN * Math.pow(ZMAX / ZMIN, f); }
+function finish(){
+  RUN.state = "done"; RUN.phase = "done"; RUN.done = true; RUN.rings = NDRAW; RUN.zp = ZMAX;
+  RUN.curve = []; var i; for (i = 0; i <= 60; i++){ var z = logz(i / 60); RUN.curve.push([z, ENGINE.nAt(z, RUN.h)]); }
+  var m = ENGINE.moment(RUN.h);
+  RUN.measured = { h: RUN.h, m: m, nFar: ENGINE.nAt(ZMAX, RUN.h), nDipole: 2 * m };
+  if (Math.abs(RUN.measured.nFar - RUN.measured.nDipole) / RUN.measured.nDipole < 0.01 && RUN.measured.nDipole.toFixed(2) === ANS){ RUN.confirmed = true; confirmAnswer(); }
+  narrate(); refreshButtons();
+}
+function tick(dt){
+  if (!reduced) clock += dt;
+  if (RUN.state !== "running") return;
+  RUN.st += dt * RUN.speed;
+  if (RUN.phase === "spin" && RUN.st >= SPIN_T){ RUN.phase = "rings"; RUN.st = 0; narrate(); }
+  else if (RUN.phase === "rings"){ RUN.rings = Math.min(NDRAW, RUN.st / RING_T * NDRAW); if (RUN.st >= RING_T){ RUN.phase = "probe"; RUN.st = 0; narrate(); } }
+  else if (RUN.phase === "probe"){ var f = Math.min(1, RUN.st / PROBE_T); RUN.zp = logz(f); var last = RUN.curve[RUN.curve.length - 1]; if (!last || RUN.zp / last[0] > 1.04) RUN.curve.push([RUN.zp, ENGINE.nAt(RUN.zp, RUN.h)]); if (f >= 1) finish(); }
+}
+function start(){
+  if (RUN.state === "running"){ RUN.state = "paused"; refreshButtons(); narrate(); return; }
+  if (RUN.state === "paused"){ RUN.state = "running"; refreshButtons(); narrate(); return; }
+  resetRun();
+  if (reduced){ finish(); return; }
+  RUN.state = "running"; RUN.phase = "spin"; narrate(); refreshButtons();
+}
+function resetRun(){ RUN.state = "setup"; RUN.phase = "ready"; RUN.st = 0; RUN.rings = 0; RUN.zp = ZMIN; RUN.curve = []; RUN.done = false; RUN.measured = null; RUN.confirmed = false; }
+function replay(){ RUN.state = "setup"; start(); }
+function reset(){ resetRun(); refreshButtons(); narrate(); }
+function setH(h){ if ([1, 2, 4].indexOf(h) < 0) h = 2; RUN.h = h; [1, 2, 4].forEach(function(k){ $("h" + k).setAttribute("aria-pressed", k === h ? "true" : "false"); }); resetRun(); refreshButtons(); narrate(); }
+
+/* ------------------------------------------------------------ words */
+function narrate(){
+  var t;
+  if (RUN.phase === "ready") t = "Ready. A hollow cone (h = " + RUN.h + "R) carries charge Q on its curved surface. Press START to spin it about z.";
+  else if (RUN.phase === "spin") t = "Spinning at ω: every bit of surface charge goes round the axis, so the cone is a stack of current loops.";
+  else if (RUN.phase === "rings") t = "Adding the rings from tip to rim: a ring at slant fraction u has r = uR, dq = 2Qu du, and moment dm = dq ω r²/2. The orange arrow and the moment readout grow as each ring is added.";
+  else if (RUN.phase === "probe") t = "The probe climbs the axis. At each height it adds the exact field of every ring; Bz³ (in units of (μ₀/4π)QR²ω) falls towards the dipole value.";
+  else t = "Far up the axis (z = " + ZMAX + "R) Bz³ = " + RUN.measured.nFar.toFixed(4) + " (μ₀/4π)QR²ω, which is 2m/z³ with m = QR²ω/4. So n = " + ANS + ", whatever the height.";
+  if (RUN.state === "paused") t = "Paused. " + t;
+  $("narr").textContent = t;
+  $("warn").hidden = true;
+}
+function confirmAnswer(){
+  var m = RUN.measured;
+  $("anssub").textContent = "Confirmed by the run: the rings' moments add to m = " + m.m.toFixed(4) + " QR²ω, and the exact field at z = " + ZMAX + "R gives Bz³ = " + m.nFar.toFixed(4) + " (μ₀/4π)QR²ω, so n = " + ANS + ".";
+  var k = $("keyline");
+  if (!reduced){ k.classList.remove("blink"); void k.offsetWidth; k.classList.add("blink"); setTimeout(function(){ k.classList.remove("blink"); }, 2000); }
+}
+function refreshButtons(){ $("gobtn").textContent = RUN.state === "running" ? "❚❚ PAUSE" : RUN.state === "paused" ? "▶ RESUME" : RUN.state === "done" ? "▶ RUN AGAIN" : "▶ START EXPERIMENT"; }
+function refreshAnswer(){ $("ansval").textContent = ANS ? "n = " + ANS : "—"; $("ansexpr").textContent = ANS ? "m = QR²ω/4, B = (μ₀/4π)2m/z³" : ""; $("solans").textContent = ANS || "—"; }
+
+/* ------------------------------------------------------------ drawing */
+function label(s, x, y, px, col, align, weight){
+  if (px < minPx) minPx = px;
+  g.font = (weight || "700") + " " + Math.round(px) + "px ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif";
+  g.fillStyle = col || "#e8f0ff"; g.textAlign = align || "left"; g.textBaseline = "alphabetic"; g.fillText(s, x, y);
+}
+function roundRect(x, y, w, h, r){ g.beginPath(); g.moveTo(x + r, y); g.lineTo(x + w - r, y); g.quadraticCurveTo(x + w, y, x + w, y + r); g.lineTo(x + w, y + h - r); g.quadraticCurveTo(x + w, y + h, x + w - r, y + h); g.lineTo(x + r, y + h); g.quadraticCurveTo(x, y + h, x, y + h - r); g.lineTo(x, y + r); g.quadraticCurveTo(x, y, x + r, y); g.closePath(); }
+function panel(x, y, w, h){ roundRect(x, y, w, h, 14); g.fillStyle = "rgba(10,16,32,.86)"; g.fill(); g.strokeStyle = "rgba(140,180,255,.3)"; g.lineWidth = 1.5; g.stroke(); }
+
+function drawReadouts(){
+  var r = L.ro, i, x, y, ph = RUN.phase;
+  var rows = [["Rings summed", Math.round(RUN.rings) + " of " + NDRAW], ["Moment m (QR²ω)", (ph === "ready" || ph === "spin" ? 0 : ph === "rings" ? mSoFar() : ENGINE.moment(RUN.h)).toFixed(3)],
+              ["Probe z", ph === "probe" || ph === "done" ? RUN.zp.toFixed(1) + " R" : "—"], ["n = Bz³/((μ₀/4π)QR²ω)", ph === "probe" || ph === "done" ? ENGINE.nAt(RUN.zp, RUN.h).toFixed(4) : "—"]];
+  panel(r.x, r.y, r.w, r.h);
+  for (i = 0; i < 4; i++){
+    if (L.phone){ x = r.x + 18 + (i % 2) * 348; y = r.y + 44 + Math.floor(i / 2) * 84; }
+    else { x = r.x + 20 + i * 290; y = r.y + 34; }
+    label(rows[i][0], x, y, L.fs - (L.phone ? 0 : 1), "#8fa6cf", "left", "700");
+    label(rows[i][1], x, y + (L.phone ? 40 : 38), L.big - (L.phone ? 3 : 0), i === 3 ? "#9ff0c8" : "#ffffff", "left", "800");
+  }
+}
+function drawScene(){
+  var S = L.sc, h = RUN.h, ph = RUN.phase;
+  roundRect(S.x, S.y, S.w, S.h, 14); g.fillStyle = "#070d1c"; g.fill();
+  var cx = S.x + S.w * 0.46, tipY = S.y + S.h - 70, scale = Math.min((S.h - 230) / (h + 0.6), S.w * 0.26), Rpx = scale * 1.0, ell = 0.28;   /* R in px; ellipse squash for perspective */
+  var rimY = tipY - h * scale;
+  /* z axis */
+  g.strokeStyle = "rgba(220,235,255,.7)"; g.lineWidth = 2.5; g.beginPath(); g.moveTo(cx, tipY + 30); g.lineTo(cx, S.y + 50); g.stroke();
+  g.fillStyle = "rgba(220,235,255,.8)"; g.beginPath(); g.moveTo(cx - 7, S.y + 60); g.lineTo(cx, S.y + 46); g.lineTo(cx + 7, S.y + 60); g.closePath(); g.fill();
+  label("z", cx + 12, S.y + 64, L.fs + 2, "#cfe0ff", "left", "800");
+  /* cone body */
+  var gr = g.createLinearGradient(cx - Rpx, 0, cx + Rpx, 0); gr.addColorStop(0, "rgba(90,130,210,.35)"); gr.addColorStop(0.5, "rgba(170,200,255,.55)"); gr.addColorStop(1, "rgba(70,100,180,.35)");
+  g.fillStyle = gr; g.beginPath(); g.moveTo(cx, tipY); g.lineTo(cx - Rpx, rimY); g.ellipse(cx, rimY, Rpx, Rpx * ell, 0, Math.PI, 0, true); g.lineTo(cx, tipY); g.closePath(); g.fill();
+  g.strokeStyle = "rgba(200,220,255,.8)"; g.lineWidth = 2; g.beginPath(); g.moveTo(cx - Rpx, rimY); g.lineTo(cx, tipY); g.lineTo(cx + Rpx, rimY); g.stroke();
+  g.beginPath(); g.ellipse(cx, rimY, Rpx, Rpx * ell, 0, 0, Math.PI * 2); g.stroke();
+  /* charges circulating on rings */
+  var k, nr = 7, spin = (RUN.state === "setup" && !RUN.done) ? 0 : clock * 1.6;
+  for (k = 1; k <= nr; k++){ var u = k / nr, r = Rpx * u, y = tipY - u * h * scale, nq = Math.max(2, Math.round(10 * u)), j;
+    for (j = 0; j < nq; j++){ var a = spin + j * 2 * Math.PI / nq, px = cx + r * Math.cos(a), py = y + r * ell * Math.sin(a), front = Math.sin(a) > 0;
+      g.fillStyle = front ? "#ffd166" : "rgba(255,209,102,.4)"; g.beginPath(); g.arc(px, py, front ? 4.5 : 3.5, 0, Math.PI * 2); g.fill(); } }
+  /* current rings being summed */
+  if (ph !== "ready" && ph !== "spin"){ var shown = Math.floor(RUN.rings);
+    for (k = 0; k < shown; k++){ var uu = (k + 0.5) / NDRAW, rr = Rpx * uu, yy = tipY - uu * h * scale, wgt = uu * uu * uu;
+      g.strokeStyle = "rgba(95,212,255," + (0.35 + 0.65 * wgt).toFixed(2) + ")"; g.lineWidth = 1.5 + 4 * wgt; g.beginPath(); g.ellipse(cx, yy, rr, rr * ell, 0, 0, Math.PI * 2); g.stroke(); } }
+  /* moment arrow */
+  if (ph === "rings" || ph === "probe" || ph === "done"){ var mm = ph === "rings" ? mSoFar() : ENGINE.moment(h), al = mm / 0.25 * (L.phone ? 150 : 140), my = rimY - 20;
+    g.strokeStyle = "#ff9f5a"; g.fillStyle = "#ff9f5a"; g.lineWidth = 6; g.beginPath(); g.moveTo(cx + 26, tipY - h * scale * 0.6); g.lineTo(cx + 26, tipY - h * scale * 0.6 - al); g.stroke();
+    g.beginPath(); g.moveTo(cx + 26, tipY - h * scale * 0.6 - al - 14); g.lineTo(cx + 18, tipY - h * scale * 0.6 - al); g.lineTo(cx + 34, tipY - h * scale * 0.6 - al); g.closePath(); g.fill();
+    var mt = "m = " + mm.toFixed(3) + " QR²ω", mly = tipY - h * scale * 0.6 - al - 4;
+    g.font = "800 " + Math.round(L.fs + 1) + "px ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif";
+    g.fillStyle = "rgba(8,14,32,.82)"; roundRect(cx + 34, mly - (L.fs + 1) * 0.95, g.measureText(mt).width + 12, (L.fs + 1) * 1.3, 6); g.fill();   /* backing: readable over the rim */
+    label(mt, cx + 40, mly, L.fs + 1, "#ffb37a", "left", "800"); }
+  /* probe */
+  if (ph === "probe" || ph === "done"){ var pf = Math.log(RUN.zp / ZMIN) / Math.log(ZMAX / ZMIN), pyy = rimY - 60 - pf * (rimY - 60 - (S.y + 80));
+    g.fillStyle = "#9ff0c8"; g.shadowColor = "#9ff0c8"; g.shadowBlur = 14; g.beginPath(); g.arc(cx, pyy, 9, 0, Math.PI * 2); g.fill(); g.shadowBlur = 0;
+    label("probe z = " + RUN.zp.toFixed(1) + "R", cx - 16, pyy + 6, L.fs + 1, "#9ff0c8", "right", "800");
+    label("(log scale above the cone)", cx - 16, pyy + (L.phone ? 38 : 30), L.fs - (L.phone ? 0 : 2), "rgba(160,240,200,.8)", "right", "600"); }
+  g.strokeStyle = "rgba(220,235,255,.85)"; g.lineWidth = 2; g.setLineDash([5, 4]); g.beginPath(); g.moveTo(cx, rimY); g.lineTo(cx - Rpx, rimY); g.stroke(); g.setLineDash([]);
+  label("R", cx - Rpx / 2, rimY - 8, L.fs + 1, "#cfe0ff", "center", "800");
+  label("h = " + h + "R", cx - Rpx - 12, (rimY + tipY) / 2, L.fs + 1, "#cfe0ff", "right", "800");
+  label("tip at the origin", cx + 14, tipY + 26, L.fs, "#cfe0ff", "left", "700");
+}
+function drawPlot(){
+  var P = L.plot, x0 = P.x + (L.phone ? 76 : 64), x1 = P.x + P.w - 24, y0 = P.y + (L.phone ? 70 : 60), y1 = P.y + P.h - (L.phone ? 70 : 56), nmax = 2.0;
+  panel(P.x, P.y, P.w, P.h);
+  label("Bz³ ON THE AXIS, UNITS (μ₀/4π)QR²ω", P.x + 18, P.y + (L.phone ? 38 : 32), L.fs, "#cfe0ff", "left", "800");
+  function X(z){ return x0 + Math.log(z / ZMIN) / Math.log(ZMAX / ZMIN) * (x1 - x0); } function Y(v){ return y1 - Math.min(v, nmax) / nmax * (y1 - y0); }
+  g.strokeStyle = "rgba(220,235,255,.7)"; g.lineWidth = 2; g.beginPath(); g.moveTo(x0, y0); g.lineTo(x0, y1); g.lineTo(x1, y1); g.stroke();
+  var v; for (v = 0; v <= 2.0001; v += 0.5) label(v.toFixed(1), x0 - 10, Y(v) + 6, L.fs, "#8fa6cf", "right", "600");
+  [6, 10, 100, 1000].forEach(function(z){ label(z + "R", X(z), y1 + (L.phone ? 34 : 26), L.fs, "#8fa6cf", "center", "600"); });
+  label("z (log)", x1, y1 - 12, L.fs, "#cfe0ff", "right", "800");
+  g.save(); g.setLineDash([6, 6]); g.strokeStyle = "#ffd166"; g.lineWidth = 2; g.beginPath(); g.moveTo(x0, Y(0.5)); g.lineTo(x1, Y(0.5)); g.stroke(); g.restore();
+  label("dipole limit 2m = 0.5", x1 - 6, Y(0.5) - 12, L.fs, "#ffd166", "right", "800");
+  var c = RUN.curve, i;
+  if (c.length > 1){ g.save(); g.strokeStyle = "#9ff0c8"; g.lineWidth = 4; g.shadowColor = "#9ff0c8"; g.shadowBlur = 8; g.beginPath(); g.moveTo(X(c[0][0]), Y(c[0][1])); for (i = 1; i < c.length; i++) g.lineTo(X(c[i][0]), Y(c[i][1])); g.stroke(); g.restore(); }
+  if (RUN.done){ var m = RUN.measured, bx = x0 + (x1 - x0) * 0.30;
+    var by = L.phone ? Y(1.5) : Y(0.5) + 40;                            /* phone: above the dipole line, clear of the z axis labels */
+    roundRect(bx, by, x1 - bx, L.phone ? 70 : 58, 12); g.fillStyle = "rgba(40,160,100,.22)"; g.fill();
+    label("Bz³ = " + m.nFar.toFixed(4) + " → n = " + ANS, bx + 14, by + (L.phone ? 46 : 38), L.big - (L.phone ? 2 : 0), "#7dffb8", "left", "800"); }
+}
+function draw(){
+  minPx = 999;
+  L = layout();
+  if (cv.width !== L.W || cv.height !== L.H){ cv.width = L.W; cv.height = L.H; }
+  var bg = g.createLinearGradient(0, 0, 0, L.H); bg.addColorStop(0, "#0b1226"); bg.addColorStop(1, "#04060c"); g.fillStyle = bg; g.fillRect(0, 0, L.W, L.H);
+  drawReadouts(); drawScene(); drawPlot();
+}
+
+/* ------------------------------------------------------------ controls */
+function setSpeed(k){ RUN.speed = k; $("sp1").setAttribute("aria-pressed", k === 1 ? "true" : "false"); $("sp2").setAttribute("aria-pressed", k === 0.5 ? "true" : "false"); }
+$("gobtn").addEventListener("click", start);
+$("replaybtn").addEventListener("click", replay);
+$("resetbtn").addEventListener("click", reset);
+$("sp1").addEventListener("click", function(){ setSpeed(1); });
+$("sp2").addEventListener("click", function(){ setSpeed(0.5); });
+[1, 2, 4].forEach(function(k){ $("h" + k).addEventListener("click", function(){ setH(k); }); });
+$("classbtn").addEventListener("click", function(){
+  var on = document.body.classList.toggle("classroom"); this.setAttribute("aria-pressed", on ? "true" : "false");
+  this.textContent = on ? "Exit classroom" : "Classroom";
+});
+$("themebtn").addEventListener("click", function(){
+  var r = document.documentElement, dark = r.getAttribute("data-theme") === "dark" || (!r.getAttribute("data-theme") && window.matchMedia && matchMedia("(prefers-color-scheme: dark)").matches);
+  r.setAttribute("data-theme", dark ? "light" : "dark");
+});
+
+var lastT = null;
+function loop(ts){
+  if (lastT === null) lastT = ts;
+  var dt = Math.min(0.05, Math.max(0, (ts - lastT) / 1000)); lastT = ts;
+  tick(dt); draw();
+  requestAnimationFrame(loop);
+}
+
+window.PX = {
+  ENGINE: ENGINE, QRUN: QRUN, ANS: ANS, RUN: RUN,
+  answer: function(){ return ANS; },
+  minLabelPx: function(){ draw(); return minPx; },
+  start: start, replay: replay, reset: reset, setSpeed: setSpeed, speed: function(k){ RUN.speed = k; }, setH: setH,
+  state: function(){ return { state: RUN.state, phase: RUN.phase, h: RUN.h, rings: RUN.rings, m: RUN.phase === "rings" ? mSoFar() : null, zp: RUN.zp, nNow: ENGINE.nAt(RUN.zp, RUN.h), curve: RUN.curve.length, measured: RUN.measured || null, done: RUN.done, confirmed: RUN.confirmed }; }
+};
+
+setH(2); refreshAnswer(); refreshButtons(); draw();
+window.addEventListener("resize", function(){ draw(); });
+requestAnimationFrame(loop);
+})();
+</script>
+</body>
+</html>

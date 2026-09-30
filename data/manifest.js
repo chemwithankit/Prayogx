@@ -40,13 +40,13 @@ window.SIM_MANIFEST = {
     "idPolicy": "Simulation IDs are permanent. A redo or fix edits the existing folder in place and bumps `updatedAt` / `revision`; it never mints a new ID."
   },
   "counts": {
-    "total": 44,
+    "total": 45,
     "byYear": {
-      "2026": 44
+      "2026": 45
     },
     "bySubject": {
       "Chemistry": 33,
-      "Physics": 11
+      "Physics": 12
     },
     "byChapter": {
       "Thermodynamics": 5,
@@ -66,6 +66,7 @@ window.SIM_MANIFEST = {
       "Motion in a Plane": 1,
       "Electromagnetic Waves": 1,
       "Oscillations": 1,
+      "Moving Charges and Magnetism": 1,
       "Electrochemistry": 1,
       "Biomolecules": 2,
       "The p-Block Elements (Group 18)": 1,
@@ -3640,6 +3641,104 @@ window.SIM_MANIFEST = {
       "source": {
         "file": "papers/Jee_Adv_2026_paper1_solutions_final.pdf",
         "page": 19
+      },
+      "status": "script_verified",
+      "createdAt": "2026-09-30",
+      "updatedAt": "2026-09-30"
+    },
+    {
+      "id": "ADV-2026-P1-PHY-Q12",
+      "slug": "adv-2026-p1-phy-q12",
+      "revision": 1,
+      "path": "simulations/2026/paper-1/physics/adv-2026-p1-phy-q12/index.html",
+      "folder": "simulations/2026/paper-1/physics/adv-2026-p1-phy-q12/",
+      "title": "Magnetic field far along the axis of a spinning charged hollow cone: the rings' moments add to QR^2 w/4",
+      "shortTitle": "Spinning cone magnet lab",
+      "summary": "A hollow cone with charge Q on its curved surface spins about its axis. Its charge forms current rings whose moments add to m = QR^2 w/4, independent of the height, and far up the axis the field is the dipole value (mu0/4pi) 2m/z^3, so n = 0.5.",
+      "exam": "JEE Advanced",
+      "year": 2026,
+      "paper": "Paper 1",
+      "paperNumber": 1,
+      "subject": "Physics",
+      "branch": "Electromagnetism / Magnetism",
+      "questionNumber": 12,
+      "section": "Section 3",
+      "questionType": "Numerical value",
+      "marking": {
+        "full": 4,
+        "partial": 0,
+        "zero": 0,
+        "negative": 0
+      },
+      "chapter": "Moving Charges and Magnetism",
+      "topic": "Magnetic moment of a spinning charged cone and its far field on the axis",
+      "subtopics": [
+        "A rotating charge as a current: dI = dq w/2pi",
+        "Magnetic moment of a current loop: m = I pi r^2",
+        "Surface charge on a cone: a ring at slant fraction u has r = uR and dq = 2Qu du",
+        "Axial field of a magnetic dipole far away: B = (mu0/4pi) 2m/z^3"
+      ],
+      "concepts": [
+        "Each ring of the spinning cone is a current loop with moment dm = dq w r^2/2",
+        "The moments add: m = Q R^2 w integral_0^1 u^3 du = Q R^2 w/4, whatever the height h",
+        "Far on the axis every current distribution looks like a dipole: B = (mu0/4pi) 2m/z^3 = (mu0/4pi) Q R^2 w/(2 z^3), n = 0.5",
+        "The axial dipole field is twice the broadside value; the charge sits mostly near the rim, so m is not Q w <r^2>/2 with a uniform weight"
+      ],
+      "formulas": [
+        "dI = dq w/2pi",
+        "dm = dI pi r^2 = dq w r^2/2",
+        "m = Q R^2 w/4",
+        "B_axis = (mu0/4pi) 2m/z^3, n = 0.5"
+      ],
+      "tags": [
+        "magnetism",
+        "rotating charge",
+        "magnetic moment",
+        "current loop",
+        "magnetic dipole",
+        "biot-savart law",
+        "cone",
+        "surface charge",
+        "axial field",
+        "numerical value",
+        "physics"
+      ],
+      "difficulty": "Moderate",
+      "estimatedMinutes": 5,
+      "answer": "0.50",
+      "answerValue": "n = 1/2: m = QR^2 w/4 and B = (mu0/4pi) 2m/z^3 (key 0.50)",
+      "answerUnit": "",
+      "derivedQuantities": {
+        "moment": "Q R^2 w/4",
+        "n": "0.5",
+        "exact_Bz3_at_2000R_h2R": "0.5012",
+        "height_dependence": "none"
+      },
+      "verification": {
+        "status": "verified",
+        "methods": [
+          "Solved independently: rings of radius uR carry dq = 2Qu du; dm = dq w r^2/2; m = Q R^2 w/4; far axial dipole field (mu0/4pi) 2m/z^3 -> n = 0.5",
+          "sympy: the surface charge density, ring moments and their integral m = Q R^2 w/4 (h drops out), and the dipole field",
+          "The exact on-axis Biot-Savart field of the spinning surface integrated numerically (scipy), no dipole approximation: B z^3 -> 0.5 (mu0/4pi) Q R^2 w as z grows, for several heights",
+          "A direct 3-D Biot-Savart sum over point charges moving on the surface (v = w x r) at a far point on the axis",
+          "The page engine extracted and run in Node: m = 0.25, n = 2m = 0.50, exact ring sum at z = 2000R within 1% of the dipole value",
+          "MathonGo published solution (their Q28 = Physics Q.12): 0.5",
+          "Official key printed with the paper (checked after the independent solution): Q.12 -> 0.50"
+        ],
+        "verifiedOn": "2026-09-30",
+        "note": "Built and verified by the PrayogX simulation factory in production mode; script-verified (automated independent verifier, page suite, visual gates, library and production audits, live smoke test after deploy). No human review has been recorded."
+      },
+      "interactivity": [
+        "Layout v3 (G5): the question verbatim with its figure redrawn; the answer line n = 0.50 visible from load and confirmed by the run",
+        "A large pseudo-3-D hollow cone spinning about z with charges riding its curved surface; current rings lit from tip to rim with the moment arrow growing as each is added",
+        "A probe carried up the axis on a log scale; the exact field of every ring gives Bz^3, plotted in the scene against the dipole limit 2m = 0.5",
+        "Four readouts in the scene: rings summed, moment m, probe height and Bz^3",
+        "Cone height h = R, 2R or 4R (the same moment and n); speed 1x / 1/2x, pause, replay, reset, classroom mode, reduced motion, portrait phone scene",
+        "Detailed solution slicing the cone into rings, the moment integral, the dipole field, the concept and key takeaways"
+      ],
+      "source": {
+        "file": "papers/Jee_Adv_2026_paper1_solutions_final.pdf",
+        "page": 20
       },
       "status": "script_verified",
       "createdAt": "2026-09-30",
