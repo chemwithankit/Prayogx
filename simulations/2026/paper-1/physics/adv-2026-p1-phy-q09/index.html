@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Buoyant Pendulum Lab — a hinged rod rocking in two liquids — JEE Advanced 2026 Paper 1 Q.9 | PrayogX</title>
+<meta name="description" content="A thin rod of density rho hinged at the bottom of a tank with liquid 6 rho up to L/2 and 2 rho above: buoyancy of each liquid and the weight give a restoring torque rho A g L^2 theta, I = rho A L^3/3, so T = (2 pi/sqrt 3) sqrt(L/g) and n = sqrt 3 = 1.73. JEE Advanced 2026 Paper 1 Physics Q.9.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232a78d6'/%3E%3Cpath d='M12.5 6.5h7M13.6 6.5v7.2L7.9 24.1a1.5 1.5 0 0 0 1.3 2.3h13.6a1.5 1.5 0 0 0 1.3-2.3l-5.7-10.4V6.5' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M10.6 20.6h10.8' stroke='white' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E">
+<meta name="sim-id" content="ADV-2026-P1-PHY-Q09">
+<style>
+:root{
+  color-scheme: light;
+  --surface-0:#f4f4f1; --surface-1:#fcfcfb; --surface-2:#ececea;
+  --line:#d9d9d4; --line-strong:#bcbcb5;
+  --text-primary:#0b0b0b; --text-secondary:#52514e; --text-muted:#77766f;
+  --s1:#2a78d6; --s2:#eb6834; --s3:#1baf7a; --s4:#4a3aa7;
+  --good:#00743f; --bad:#c0392b; --accent:#2a78d6;
+  --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+  --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --serif:ui-serif,Georgia,"Times New Roman",serif;
+  --radius:12px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  color-scheme: dark;
+  --surface-0:#111110; --surface-1:#1a1a19; --surface-2:#232322;
+  --line:#34342f; --line-strong:#4a4a44;
+  --text-primary:#ffffff; --text-secondary:#c3c2b7; --text-muted:#95948b;
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#9085e9;
+  --good:#3fae7a; --bad:#e66767; --accent:#3987e5;
+}}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --surface-0:#111110; --surface-1:#1a1a19; --surface-2:#232322;
+  --line:#34342f; --line-strong:#4a4a44;
+  --text-primary:#ffffff; --text-secondary:#c3c2b7; --text-muted:#95948b;
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#9085e9;
+  --good:#3fae7a; --bad:#e66767; --accent:#3987e5;
+}
+*{box-sizing:border-box}
+[hidden]{display:none !important}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--surface-0);color:var(--text-primary);font-family:var(--sans);font-size:16px;line-height:1.6}
+header.top{border-bottom:1px solid var(--line);background:var(--surface-1)}
+.top-inner{max-width:1240px;margin:0 auto;padding:18px 20px 14px;position:relative}
+.brandbar{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.brandbar .pxmark{width:21px;height:21px;flex:none;display:block}
+.brandbar .wm{font-size:13px;font-weight:800;letter-spacing:.17em;color:var(--text-secondary);line-height:1}
+.brandbar .wm i{font-style:normal;color:var(--accent)}
+.simid{font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--text-muted)}
+h1{font-size:21px;line-height:1.3;margin:4px 0 4px;padding-right:80px}
+.meta{font-size:14px;color:var(--text-secondary);margin:0}
+.themebtn{position:absolute;top:14px;right:16px;border:1px solid var(--line-strong);background:var(--surface-2);
+  color:var(--text-secondary);border-radius:8px;padding:4px 9px;font-size:12px;cursor:pointer}
+.wrap{max-width:1240px;margin:0 auto;padding:0 20px 40px}
+section{margin:0 0 34px}
+h2{font-size:15px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-secondary);margin:26px 0 12px}
+h2 b{color:var(--accent);margin-right:8px}
+h3{font-size:17px;margin:22px 0 8px}
+/* 01 question */
+.qcard{background:var(--surface-1);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+.qtext{font-family:var(--serif);font-size:18px;line-height:1.6;flex:1 1 460px;min-width:0}
+.qfig{flex:0 0 250px;max-width:100%}
+.qfig svg{display:block;width:100%;height:auto}
+.sq{white-space:nowrap}
+.sq .rad{border-top:1.5px solid currentColor;padding:0 2px}
+#opts{list-style:none;margin:12px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+#opts li{background:var(--surface-1);border:1.5px solid var(--line);border-radius:10px;padding:10px 12px;font-family:var(--serif);font-size:19px;display:flex;gap:10px;align-items:center;min-height:52px}
+#opts li b{font-family:var(--sans);font-size:14px;color:var(--text-muted)}
+#opts li.correct{border-color:var(--good);box-shadow:0 0 0 2px color-mix(in srgb,var(--good) 25%,transparent)}
+#opts li.correct b{color:var(--good)}
+/* 02 lab */
+#keyline{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;background:var(--surface-1);border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin:0 0 8px}
+#keyline .k{font-size:13px;font-weight:800;letter-spacing:.12em;color:var(--text-muted);text-transform:uppercase}
+#ansval{font-size:22px;font-weight:800;color:var(--good)}
+#ansexpr{font-family:var(--serif);font-size:20px}
+#anssub{font-size:14px;color:var(--text-secondary);margin-left:auto}
+#keyline.blink{animation:blink .45s ease-in-out 4}
+@keyframes blink{50%{background:color-mix(in srgb,var(--good) 22%,var(--surface-1))}}
+#narr{margin:0 2px 10px;font-size:16px;color:var(--text-secondary);min-height:2.8em}
+.stage{position:relative;border-radius:16px;overflow:hidden;background:#070a12;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+canvas#labcv{display:block;width:100%;height:auto;touch-action:manipulation}
+#controls{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:12px;padding:12px;border:1px solid var(--line);border-radius:14px;background:var(--surface-1)}
+#controls button{min-height:48px;font-size:16px;font-weight:700;border-radius:10px;border:1px solid var(--line-strong);background:var(--surface-2);color:var(--text-primary);padding:0 16px;cursor:pointer;font-family:var(--sans)}
+#controls button:focus-visible,#controls input:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+#controls .go{background:var(--accent);color:#fff;border:none;font-weight:800;letter-spacing:.04em;min-width:190px}
+#controls .seg{display:flex;align-items:center;gap:0}
+#controls .seg span{font-size:13px;font-weight:700;color:var(--text-muted);margin-right:8px;letter-spacing:.06em;text-transform:uppercase}
+#controls .seg button{border-radius:0;margin-left:-1px;padding:0 13px}
+#controls .seg button:nth-child(2){border-radius:10px 0 0 10px}
+#controls .seg button:last-child{border-radius:0 10px 10px 0}
+#controls .seg button[aria-pressed="true"]{background:var(--accent);color:#fff;border-color:var(--accent)}
+#controls .v0{display:flex;flex-wrap:wrap;align-items:center;gap:10px;flex:1 1 520px;min-width:0}
+#controls .v0 label{font-size:15px;font-weight:700;white-space:nowrap}
+#controls input[type=range]{flex:1 1 150px;min-width:110px;min-height:44px;accent-color:var(--accent);margin:0}
+#v0out{font-family:var(--mono);font-size:15px;min-width:92px}
+#warn{margin:10px 2px 0;font-size:15px;color:var(--s2);font-weight:600}
+/* 03 solution */
+.sol{background:var(--surface-1);border:1px solid var(--line);border-radius:var(--radius);padding:6px 20px 16px}
+.sol ol.steps{padding-left:22px;margin:10px 0}
+.sol ol.steps li{margin:0 0 12px}
+.eq{font-family:var(--serif);font-size:18px;background:var(--surface-2);border-radius:8px;padding:8px 12px;margin:6px 0;overflow-x:auto}
+.solfig{display:flex;gap:18px;align-items:center;flex-wrap:wrap;margin:8px 0 12px}
+.solfig svg{flex:0 0 300px;max-width:100%;height:auto}
+.solfig p{flex:1 1 300px;margin:0}
+table.opt{border-collapse:collapse;width:100%;font-size:15px;margin:8px 0}
+table.opt th,table.opt td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+table.opt th{background:var(--surface-2)}
+table.opt tr.ok td{background:color-mix(in srgb,var(--good) 10%,transparent)}
+.tscroll{overflow-x:auto}
+.concept{border-left:4px solid var(--accent);padding:2px 0 2px 14px;margin:14px 0}
+ul.take{padding-left:20px} ul.take li{margin:0 0 6px}
+#solans{font-weight:800;color:var(--good)}
+.note{font-size:14px;color:var(--text-secondary)}
+/* 04 analysis */
+svg.chart{display:block;width:100%;max-width:760px;height:auto;background:var(--surface-1);border:1px solid var(--line);border-radius:12px}
+.chart text{font-family:var(--sans);fill:var(--text-secondary)}
+.cap{font-size:14px;color:var(--text-secondary);max-width:760px}
+/* how to */
+ol.howto{padding-left:22px;margin:0} ol.howto li{margin:0 0 8px}
+footer{font-size:13px;color:var(--text-muted);border-top:1px solid var(--line);padding:16px 0 0}
+/* classroom */
+body.classroom .wrap{max-width:none;padding:0 18px 30px}
+body.classroom header.top,body.classroom section:not(#lab),body.classroom footer{display:none}
+body.classroom #narr{font-size:24px;color:var(--text-primary)}
+body.classroom #keyline #ansexpr{font-size:26px}
+@media (max-width:760px){
+  .wrap{padding:0 16px 32px}
+  .top-inner{padding:14px 16px 12px}
+  h1{font-size:18px}
+  .qtext{font-size:17px}
+  .qfig{flex-basis:100%}
+  .qfig svg{max-width:260px;margin:0 auto}
+  #opts{grid-template-columns:repeat(2,minmax(0,1fr))}
+  #anssub{margin-left:0}
+  #controls{gap:8px;padding:10px}
+  #controls .go{flex:1 1 100%}
+  #controls button{padding:0 12px}
+  #controls .v0{flex-basis:100%;flex-wrap:wrap}
+  #controls .v0 input[type=range]{flex:1 1 100%;order:3}
+  .solfig svg{flex-basis:100%}
+  .sol{padding:4px 14px 12px}
+}
+@media (prefers-reduced-motion: reduce){#keyline.blink{animation:none}}
+/* long text options */
+#opts.lopts{grid-template-columns:1fr}
+#opts.lopts li{font-family:var(--sans);font-size:17px;align-items:flex-start;line-height:1.5}
+#opts.lopts li b{padding-top:2px}
+#opts.lopts .fx{font-family:var(--serif);font-size:18px;white-space:nowrap}
+#controls .seg button{white-space:nowrap}
+@media (max-width:760px){#opts.lopts .fx{white-space:normal}#controls .seg{flex-wrap:wrap;row-gap:6px}#controls .seg span{flex:1 1 100%;margin:0 0 2px}#controls .seg button:nth-child(2){border-radius:10px 0 0 10px}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-inner">
+    <div class="brandbar"><svg class="pxmark" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><rect width="32" height="32" rx="8" fill="var(--accent)"/><path d="M12.5 6.5h7M13.6 6.5v7.2L7.9 24.1a1.5 1.5 0 0 0 1.3 2.3h13.6a1.5 1.5 0 0 0 1.3-2.3l-5.7-10.4V6.5" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.6 20.6h10.8" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg><span class="wm">PRAYOG<i>X</i></span></div>
+    <div class="simid">ADV-2026-P1-PHY-Q09</div>
+    <h1>Buoyant Pendulum Lab — a hinged rod rocking in two liquids</h1>
+    <p class="meta">JEE Advanced 2026 · Paper 1 · Physics · Q.9 · numerical value (+4 / 0) · Oscillations and fluids</p>
+    <button class="themebtn" id="themebtn" type="button">◐ theme</button>
+  </div>
+</header>
+
+<main class="wrap">
+
+<section id="question" aria-labelledby="qh">
+  <h2 id="qh"><b>01</b>The question</h2>
+  <div class="qcard">
+    <div class="qtext">Q.9 A tank contains two immiscible liquids of densities 6<i>ρ</i> and 2<i>ρ</i>. The higher density liquid is filled up to a height <i>L</i>/2 from the bottom. A thin rod of density <i>ρ</i> and length <i>L</i> is fully immersed and hinged at the bottom so that it can oscillate freely, as shown in the figure. If the rod is slightly disturbed from its equilibrium, the time period of small oscillations is <span class="fx">(2π/<i>n</i>)√(<i>L</i>/<i>g</i>)</span>, where <i>g</i> is the acceleration due to gravity. The value of <i>n</i> is:</div>
+    <div class="qfig">
+      <svg viewBox="0 0 220 190" role="img" aria-label="Figure from the question: a tank with a dense liquid filling the bottom half up to height L/2 and a lighter liquid above; a thin vertical rod of length L is hinged at the bottom centre and fully immersed">
+        <g style="color:var(--text-primary)" fill="none" stroke="currentColor" stroke-width="1.5">
+          <rect x="40" y="20" width="110" height="160" fill="var(--surface-2)"/>
+          <rect x="40" y="100" width="110" height="80" fill="var(--line-strong)" stroke="none"/>
+          <path d="M40 20 L40 180 L150 180 L150 20"/>
+          <rect x="92" y="34" width="6" height="146" fill="var(--surface-1)"/>
+          <circle cx="95" cy="180" r="3" fill="currentColor"/>
+          <path d="M88 26 Q95 20 102 26" stroke-dasharray="2 2"/>
+          <line x1="110" y1="34" x2="110" y2="180"/><path d="M106 40 L110 34 L114 40"/><path d="M106 174 L110 180 L114 174"/>
+          <line x1="162" y1="100" x2="162" y2="180"/><path d="M158 106 L162 100 L166 106"/><path d="M158 174 L162 180 L166 174"/>
+        </g>
+        <g style="color:var(--text-primary)" font-family="Georgia,serif" font-size="14" fill="currentColor" font-style="italic">
+          <text x="116" y="100">L</text><text x="170" y="145">L/2</text>
+        </g>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section id="lab" aria-labelledby="lh">
+  <h2 id="lh"><b>02</b>The experiment</h2>
+  <div id="keyline" aria-live="polite">
+    <span class="k">Answer</span><span id="ansval">—</span><span id="ansexpr"></span>
+    <span id="anssub">Press START: the rod is nudged, it rocks, and the run times its oscillations.</span>
+  </div>
+  <p id="narr" aria-live="polite">Ready.</p>
+  <div class="stage"><canvas id="labcv" width="1200" height="720" role="img" aria-label="Experiment: a glass tank with a dense liquid in the lower half and a lighter liquid above; a thin rod hinged at the bottom stands upright, is nudged and rocks about the hinge; buoyancy of each liquid and the rod's weight are drawn as arrows, and a trace of the angle against time measures the period"></canvas></div>
+  <div id="controls" role="group" aria-label="experiment controls">
+    <button class="go" type="button" id="gobtn">▶ START EXPERIMENT</button>
+    <button type="button" id="replaybtn">↺ Replay</button>
+    <button type="button" id="resetbtn">Reset</button>
+    <div class="seg" role="group" aria-label="nudge amplitude"><span>Nudge</span><button type="button" id="am3" aria-pressed="false">3°</button><button type="button" id="am6" aria-pressed="true">6°</button><button type="button" id="am12" aria-pressed="false">12°</button></div>
+    <div class="seg" role="group" aria-label="force arrows"><span>Forces</span><button type="button" id="fon" aria-pressed="true">ON</button><button type="button" id="foff" aria-pressed="false">OFF</button></div>
+    <div class="seg" role="group" aria-label="speed"><span>Speed</span><button type="button" id="sp1" aria-pressed="true">1×</button><button type="button" id="sp2" aria-pressed="false">½×</button></div>
+    <button type="button" id="classbtn" aria-pressed="false">Classroom</button>
+  </div>
+  <p id="warn" hidden></p>
+</section>
+
+<section id="solution" aria-labelledby="sh">
+  <h2 id="sh"><b>03</b>Detailed solution</h2>
+  <div class="sol">
+    <p>Answer: <i>n</i> = <span id="solans">—</span> (= √3; the accepted range is 1.70 to 1.75)</p>
+    <ol class="steps">
+      <li><b>Why it stands up.</b> The rod (density <i>ρ</i>) is lighter than both liquids, so buoyancy exceeds its weight. Tilted by <i>θ</i> about the hinge, it is pushed back upright. Take the cross-section as <i>A</i>.</li>
+      <li><b>Torques about the hinge</b> for a small tilt <i>θ</i>. Each vertical force <i>F</i> acting a distance <i>d</i> along the rod has lever arm <i>d</i> sin <i>θ</i>. The lower <i>L</i>/2 of the rod sits in the 6<i>ρ</i> liquid and the upper <i>L</i>/2 in the 2<i>ρ</i> liquid.
+        <div class="eq">buoyancy (lower): 6<i>ρ</i> · <i>A</i>(<i>L</i>/2) · <i>g</i> · (<i>L</i>/4) = (3/4)<i>ρAgL</i>² &nbsp;&nbsp; buoyancy (upper): 2<i>ρ</i> · <i>A</i>(<i>L</i>/2) · <i>g</i> · (3<i>L</i>/4) = (3/4)<i>ρAgL</i>²</div>
+        <div class="eq">weight: <i>ρAL</i> · <i>g</i> · (<i>L</i>/2) = (1/2)<i>ρAgL</i>² &nbsp;⇒&nbsp; restoring torque <i>τ</i> = (3/4 + 3/4 − 1/2) <i>ρAgL</i>² sin <i>θ</i> = <i>ρAgL</i>² <i>θ</i>.</div></li>
+      <li><b>Moment of inertia</b> about the hinge: <i>I</i> = (1/3)(<i>ρAL</i>)<i>L</i>² = <i>ρAL</i>³/3.</li>
+      <li><b>Period.</b> <i>ω</i>² = <i>τ</i>/(<i>Iθ</i>) = <i>ρAgL</i>²/(<i>ρAL</i>³/3) = 3<i>g</i>/<i>L</i>, so
+        <div class="eq"><i>T</i> = 2π√(<i>L</i>/3<i>g</i>) = (2π/√3)√(<i>L</i>/<i>g</i>) &nbsp;⇒&nbsp; <i>n</i> = √3 ≈ <b>1.73</b>.</div></li>
+      <li><b>A detail.</b> As the rod tilts, the interface stays at height <i>L</i>/2, so the length of rod in the dense liquid becomes <i>L</i>/(2 cos <i>θ</i>). That changes the torque only at order <i>θ</i>³. The small-oscillation period is unchanged, and the experiment's 12° nudge shows the tiny amplitude effect.</li>
+    </ol>
+    <h3>Understand the concept</h3>
+    <div class="concept">For a body pivoted in a fluid, weight and buoyancy both give torques about the pivot, and here buoyancy wins. The rod behaves like an upside-down pendulum held up by the liquid. Each liquid pushes on the part of the rod it surrounds, at that part's centre, so the denser lower liquid acts on a short lever arm and the lighter upper one on a long arm. Here the two buoyancy torques happen to be equal. Their sum minus the weight's torque sets the "spring constant" <i>κ</i> = <i>ρAgL</i>², and the period is 2π√(<i>I</i>/<i>κ</i>). As in the usual textbook treatment, the liquid's drag and the fluid dragged along with the rod (added mass) are neglected.</div>
+    <h3>Key takeaways</h3>
+    <ul class="take">
+      <li>Buoyancy acts at the centre of the displaced volume, part by part in layered liquids.</li>
+      <li>Torque about a hinge from a vertical force <i>F</i> at distance <i>d</i> along the rod: <i>F d</i> sin <i>θ</i>.</li>
+      <li>Small oscillations: <i>ω</i>² = (net restoring torque per radian)/<i>I</i>. Here <i>ω</i>² = 3<i>g</i>/<i>L</i> and <i>n</i> = √3.</li>
+      <li><i>I</i> of a rod about one end is <i>ML</i>²/3.</li>
+    </ul>
+    <p class="note">Verification: an independent derivation, a sympy route, a numerical integration of the full equation of motion (including the <i>L</i>/(2 cos <i>θ</i>) submerged length) with the period timed from zero crossings, and the page's own engine, run by <code>tests/verify_p1phyq09.py</code>. The official key (1.70 to 1.75) and the MathonGo solution (1.73) agree. Status: script-verified by the PrayogX simulation factory; no review by a person has been recorded. The model uses <i>L</i> = 1 m and <i>g</i> = 9.8 m/s², and <i>n</i> does not depend on either.</p>
+  </div>
+</section>
+
+<section id="howto" aria-labelledby="hh">
+  <h2 id="hh">How to use this simulation</h2>
+  <ol class="howto">
+    <li>Press <b>▶ START EXPERIMENT</b>. The upright rod is nudged by the chosen angle and released.</li>
+    <li>Watch the arrows: the two buoyancy forces (in each liquid) push the rod back, and its weight pulls it over.</li>
+    <li>The trace on the right records the angle against time. The run times several swings and computes <i>n</i> = 2π/(<i>T</i>√(<i>g</i>/<i>L</i>)).</li>
+    <li>Try <b>Nudge</b> 3°, 6° and 12°: small swings all give <i>n</i> ≈ 1.73.</li>
+    <li><b>Replay</b> runs it again. <b>Reset</b> clears it. <b>Classroom</b> fills the screen for a projector.</li>
+  </ol>
+</section>
+
+<footer>
+  ADV-2026-P1-PHY-Q09 · PrayogX · JEE Advanced Interactive Simulation Library · question text reproduced
+  from the official JEE (Advanced) 2026 Paper 1 for educational use. This is a virtual laboratory only.
+  Drawn to scale, with L = 1 m. Drag and added mass are neglected.
+</footer>
+</main>
+
+<script>
+(function(){
+"use strict";
+/* ENGINE-BEGIN */
+/* A thin rod (density rho, length L, cross-section A) hinged at the bottom of a tank: liquid 6 rho up to
+   height L/2, liquid 2 rho above. Units: L = 1, g = 1, rho = 1, A = 1 (n is dimensionless). */
+var ENGINE = (function(){
+  var RHO = 1, RL = 6, RU = 2, H = 0.5;                                   /* rod, lower and upper liquids; interface height */
+  var I = RHO * 1 / 3;                                                    /* rod about one end: M L^2 / 3 */
+  /* restoring torque at tilt th: buoyancy of each immersed part at its centre, minus the weight at L/2 */
+  function torque(th){
+    var c = Math.cos(th), s = Math.min(1, H / Math.max(c, 1e-9));          /* rod length below the interface */
+    var lower = RL * s * (s / 2), upper = RU * (1 - s) * ((s + 1) / 2), weight = RHO * 1 * 0.5;
+    return (lower + upper - weight) * Math.sin(th);
+  }
+  function kappa(){ var h = 1e-6; return (torque(h) - torque(-h)) / (2 * h); }   /* torque per radian at small tilt */
+  function nValue(){ return Math.sqrt(kappa() / I); }                       /* omega sqrt(L/g) */
+  function deriv(st){ return [st[1], -torque(st[0]) / I]; }
+  function rk4(st, h){ var a = deriv(st), b = deriv([st[0] + h / 2 * a[0], st[1] + h / 2 * a[1]]), c = deriv([st[0] + h / 2 * b[0], st[1] + h / 2 * b[1]]), d = deriv([st[0] + h * c[0], st[1] + h * c[1]]);
+    return [st[0] + h / 6 * (a[0] + 2 * b[0] + 2 * c[0] + d[0]), st[1] + h / 6 * (a[1] + 2 * b[1] + 2 * c[1] + d[1])]; }
+  /* release from amplitude th0 and time the downward zero crossings */
+  function measure(th0, cycles){
+    var st = [th0, 0], t = 0, h = 1e-4, cross = [], prev = st[0], i;
+    for (i = 0; i < 2000000 && cross.length < cycles + 1; i++){
+      var nx = rk4(st, h);
+      if (prev > 0 && nx[0] <= 0) cross.push(t + h * prev / (prev - nx[0]));
+      prev = nx[0]; st = nx; t += h;
+    }
+    var T = (cross[cross.length - 1] - cross[0]) / (cross.length - 1);
+    return { T: T, n: 2 * Math.PI / T };
+  }
+  function run(){ var n = nValue(); return { kappa: kappa(), I: I, n: n, answer: n.toFixed(2), inKey: n >= 1.70 && n <= 1.75 }; }
+  return { RHO: RHO, RL: RL, RU: RU, H: H, I: I, torque: torque, kappa: kappa, nValue: nValue, rk4: rk4, measure: measure, run: run };
+})();
+/* ENGINE-END */
+
+var QRUN = ENGINE.run();
+var ANS = QRUN.answer;
+
+function $(id){ return document.getElementById(id); }
+var cv = $("labcv"), g = cv.getContext("2d");
+var reduced = !!(window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches);
+var G = 9.8, LEN = 1, TSCALE = Math.sqrt(LEN / G);                         /* model time unit in seconds */
+var CYCLES = 3;
+
+var RUN = { state: "setup", phase: "ready", speed: 1, amp: 6, forces: true, st: [0, 0], tm: 0, trace: [], cross: [], done: false, confirmed: false };
+var L = null, minPx = 999;
+
+function layout(){
+  var phone = document.documentElement.clientWidth < 700;
+  if (phone) return { phone: true, W: 720, H: 1220, ro: { x: 12, y: 12, w: 696, h: 178 }, tank: { x: 12, y: 204, w: 696, h: 620 },
+    plot: { x: 12, y: 840, w: 696, h: 368 }, fs: 25, big: 31 };
+  return { phone: false, W: 1200, H: 720, ro: { x: 16, y: 14, w: 1168, h: 92 }, tank: { x: 16, y: 122, w: 600, h: 584 },
+    plot: { x: 632, y: 122, w: 552, h: 584 }, fs: 16, big: 24 };
+}
+
+/* --------------------------------------------------------------- run */
+function finish(){
+  RUN.state = "done"; RUN.phase = "done"; RUN.done = true;
+  var cr = RUN.cross, T = (cr[cr.length - 1] - cr[0]) / (cr.length - 1);
+  RUN.measured = { T: T, Tsec: T * TSCALE, n: 2 * Math.PI / T, amp: RUN.amp };
+  if (Math.abs(RUN.measured.n - QRUN.n) / QRUN.n < 0.01){ RUN.confirmed = true; confirmAnswer(); }         /* small swings: within 1 % of the small-oscillation value */
+  narrate(); refreshButtons();
+}
+function tick(dt){
+  if (RUN.state !== "running") return;
+  var dm = dt * RUN.speed / TSCALE / 2.2, steps = Math.max(1, Math.ceil(dm / 2e-3)), h = dm / steps, i;   /* model time, slowed 2.2x */
+  for (i = 0; i < steps; i++){
+    var prev = RUN.st[0], nx = ENGINE.rk4(RUN.st, h);
+    if (prev > 0 && nx[0] <= 0) RUN.cross.push(RUN.tm + h * prev / (prev - nx[0]));
+    RUN.st = nx; RUN.tm += h;
+    if (RUN.cross.length >= CYCLES + 1){ finish(); return; }
+  }
+  RUN.trace.push([RUN.tm, RUN.st[0]]); if (RUN.trace.length > 2000) RUN.trace.shift();
+  var ph = RUN.cross.length === 0 ? "release" : "swing"; if (ph !== RUN.phase){ RUN.phase = ph; narrate(); }
+}
+function start(){
+  if (RUN.state === "running"){ RUN.state = "paused"; refreshButtons(); narrate(); return; }
+  if (RUN.state === "paused"){ RUN.state = "running"; refreshButtons(); narrate(); return; }
+  resetRun();
+  RUN.st = [RUN.amp * Math.PI / 180, 0];
+  if (reduced){ var m = ENGINE.measure(RUN.st[0], CYCLES), k; RUN.cross = []; for (k = 0; k <= CYCLES; k++) RUN.cross.push(k * m.T); RUN.st = [0, 0]; finish(); return; }
+  RUN.state = "running"; RUN.phase = "release"; narrate(); refreshButtons();
+}
+function resetRun(){ RUN.state = "setup"; RUN.phase = "ready"; RUN.st = [0, 0]; RUN.tm = 0; RUN.trace = []; RUN.cross = []; RUN.done = false; RUN.measured = null; }
+function replay(){ RUN.state = "setup"; start(); }
+function reset(){ resetRun(); refreshButtons(); narrate(); }
+function setAmp(a){ if ([3, 6, 12].indexOf(a) < 0) a = 6; RUN.amp = a; [3, 6, 12].forEach(function(k){ $("am" + k).setAttribute("aria-pressed", k === a ? "true" : "false"); }); resetRun(); refreshButtons(); narrate(); }
+function setForces(on){ RUN.forces = on; $("fon").setAttribute("aria-pressed", on ? "true" : "false"); $("foff").setAttribute("aria-pressed", on ? "false" : "true"); }
+
+/* ------------------------------------------------------------ words */
+function narrate(){
+  var t;
+  if (RUN.phase === "ready") t = "Ready. The rod stands upright: the liquids' buoyancy (6ρ below, 2ρ above) beats its weight. Press START to nudge it by " + RUN.amp + "°.";
+  else if (RUN.phase === "release") t = "Released at " + RUN.amp + "°. Each liquid pushes up at the centre of the part of the rod it surrounds; the weight pulls down at L/2. Net restoring torque ≈ ρAgL² θ.";
+  else if (RUN.phase === "swing") t = "Rocking: swing " + RUN.cross.length + " of " + CYCLES + " timed. I = ρAL³/3, so ω² = ρAgL²/I = 3g/L.";
+  else t = "Measured: T = " + RUN.measured.Tsec.toFixed(3) + " s for L = 1 m, so n = 2π/(T√(g/L)) = " + RUN.measured.n.toFixed(3) + (RUN.amp >= 12 ? ". A 12° swing is slightly stiffer; the small-oscillation value is √3 = 1.73." : " ≈ √3 = 1.73.");
+  if (RUN.state === "paused") t = "Paused. " + t;
+  $("narr").textContent = t;
+}
+function confirmAnswer(){
+  var m = RUN.measured;
+  $("anssub").textContent = "Confirmed by the run: " + CYCLES + " swings from " + m.amp + "° give T = " + m.Tsec.toFixed(3) + " s at L = 1 m, so n = " + m.n.toFixed(3) + ".";
+  var k = $("keyline");
+  if (!reduced){ k.classList.remove("blink"); void k.offsetWidth; k.classList.add("blink"); setTimeout(function(){ k.classList.remove("blink"); }, 2000); }
+}
+function refreshButtons(){ $("gobtn").textContent = RUN.state === "running" ? "❚❚ PAUSE" : RUN.state === "paused" ? "▶ RESUME" : RUN.state === "done" ? "▶ RUN AGAIN" : "▶ START EXPERIMENT"; }
+function refreshAnswer(){
+  $("ansval").textContent = ANS ? "n = " + ANS : "—";
+  $("ansexpr").textContent = ANS ? "T = (2π/√3)√(L/g); ω² = 3g/L" : "";
+  $("solans").textContent = ANS || "—";
+}
+
+/* ------------------------------------------------------------ drawing */
+function label(s, x, y, px, col, align, weight){
+  if (px < minPx) minPx = px;
+  g.font = (weight || "700") + " " + Math.round(px) + "px ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif";
+  g.fillStyle = col || "#e8f0ff"; g.textAlign = align || "left"; g.textBaseline = "alphabetic"; g.fillText(s, x, y);
+}
+function roundRect(x, y, w, h, r){ g.beginPath(); g.moveTo(x + r, y); g.lineTo(x + w - r, y); g.quadraticCurveTo(x + w, y, x + w, y + r); g.lineTo(x + w, y + h - r); g.quadraticCurveTo(x + w, y + h, x + w - r, y + h); g.lineTo(x + r, y + h); g.quadraticCurveTo(x, y + h, x, y + h - r); g.lineTo(x, y + r); g.quadraticCurveTo(x, y, x + r, y); g.closePath(); }
+function panel(x, y, w, h){ roundRect(x, y, w, h, 14); g.fillStyle = "rgba(10,16,32,.86)"; g.fill(); g.strokeStyle = "rgba(140,180,255,.3)"; g.lineWidth = 1.5; g.stroke(); }
+function arrow(x1, y1, x2, y2, col, w, lab, lpx, side){
+  var dx = x2 - x1, dy = y2 - y1, len = Math.sqrt(dx * dx + dy * dy); if (len < 3) return;
+  var ux = dx / len, uy = dy / len, hw = Math.max(8, w * 2.4), hl = Math.max(11, w * 3.6);
+  g.save(); g.strokeStyle = col; g.fillStyle = col; g.lineWidth = w; g.lineCap = "round"; g.shadowColor = col; g.shadowBlur = 8;
+  g.beginPath(); g.moveTo(x1, y1); g.lineTo(x2 - ux * hl * 0.8, y2 - uy * hl * 0.8); g.stroke();
+  g.beginPath(); g.moveTo(x2, y2); g.lineTo(x2 - ux * hl - uy * hw / 2, y2 - uy * hl + ux * hw / 2); g.lineTo(x2 - ux * hl + uy * hw / 2, y2 - uy * hl - ux * hw / 2); g.closePath(); g.fill(); g.restore();
+  if (lab) label(lab, x2 + (side || 12), y2 + (uy < 0 ? -6 : 18), lpx, col, (side || 12) < 0 ? "right" : "left", "800");
+}
+function drawReadouts(){
+  var r = L.ro, th = RUN.st[0], i, x, y, m = RUN.measured;
+  var rows = [["Tilt θ", (th * 180 / Math.PI).toFixed(2) + "°"], ["Swings timed", RUN.cross.length > 0 ? Math.min(CYCLES, RUN.cross.length - (RUN.done ? 1 : 0)) + " of " + CYCLES : "—"],
+              ["Period T (L = 1 m)", m ? m.Tsec.toFixed(3) + " s" : "—"], ["n = 2π/(T√(g/L))", m ? m.n.toFixed(3) : "—"]];
+  panel(r.x, r.y, r.w, r.h);
+  for (i = 0; i < 4; i++){
+    if (L.phone){ x = r.x + 18 + (i % 2) * 348; y = r.y + 44 + Math.floor(i / 2) * 84; }
+    else { x = r.x + 20 + i * 290; y = r.y + 34; }
+    label(rows[i][0], x, y, L.fs - (L.phone ? 0 : 1), "#8fa6cf", "left", "700");
+    label(rows[i][1], x, y + (L.phone ? 40 : 38), L.big - (L.phone ? 3 : 0), i === 3 ? "#9ff0c8" : "#ffffff", "left", "800");
+  }
+}
+function drawTank(){
+  var T = L.tank, th = RUN.st[0];
+  roundRect(T.x, T.y, T.w, T.h, 14); g.fillStyle = "#070d1c"; g.fill();
+  var tw = T.w * 0.62, tx = T.x + (T.w - tw) / 2, bot = T.y + T.h - 40, Lpx = T.h - 150, top = bot - Lpx - 40, hx = tx + tw / 2;
+  var yI = bot - Lpx / 2;
+  /* liquids */
+  var gu = g.createLinearGradient(0, top, 0, yI); gu.addColorStop(0, "rgba(120,190,255,.20)"); gu.addColorStop(1, "rgba(120,190,255,.32)");
+  g.fillStyle = gu; g.fillRect(tx, top + 10, tw, yI - top - 10);
+  var gl = g.createLinearGradient(0, yI, 0, bot); gl.addColorStop(0, "rgba(40,110,220,.65)"); gl.addColorStop(1, "rgba(20,70,170,.8)");
+  g.fillStyle = gl; g.fillRect(tx, yI, tw, bot - yI);
+  g.strokeStyle = "rgba(200,230,255,.6)"; g.lineWidth = 2; g.beginPath(); g.moveTo(tx, yI); g.lineTo(tx + tw, yI); g.stroke();
+  g.strokeStyle = "rgba(220,235,255,.8)"; g.lineWidth = 4; g.beginPath(); g.moveTo(tx, top); g.lineTo(tx, bot); g.lineTo(tx + tw, bot); g.lineTo(tx + tw, top); g.stroke();
+  label("2ρ", tx + 14, top + (L.phone ? 50 : 40), L.fs + 2, "#cfe8ff", "left", "800");
+  label("6ρ", tx + 14, yI + (L.phone ? 44 : 34), L.fs + 2, "#ffffff", "left", "800");
+  label("L/2", tx + tw + 12, (yI + bot) / 2 + 6, L.fs, "#cfe0ff", "left", "700");
+  /* the rod */
+  var sn = Math.sin(th), cs = Math.cos(th), ex = hx + Lpx * sn, ey = bot - Lpx * cs, rw = L.phone ? 14 : 12;
+  g.save(); g.translate(hx, bot); g.rotate(th);
+  var rg = g.createLinearGradient(-rw / 2, 0, rw / 2, 0); rg.addColorStop(0, "#c89b5a"); rg.addColorStop(0.5, "#f3d39a"); rg.addColorStop(1, "#b0833f");
+  g.fillStyle = rg; g.fillRect(-rw / 2, -Lpx, rw, Lpx); g.restore();
+  g.fillStyle = "#ffd166"; g.beginPath(); g.arc(hx, bot, 8, 0, Math.PI * 2); g.fill();
+  label("hinge", hx + 14, bot + (L.phone ? 32 : 26), L.fs, "#ffd166", "left", "700");
+  label("rod ρ, length L", ex - 18, ey + (L.phone ? 34 : 26), L.fs, "#f3d39a", "right", "800");
+  /* forces: buoyancy of each part at its centre, weight at L/2 (lengths to scale: 6·1/2, 2·1/2, 1) */
+  if (RUN.forces){
+    var s = Math.min(1, 0.5 / Math.max(cs, 1e-9)), sc = L.phone ? 46 : 40;
+    var pl = [hx + Lpx * (s / 2) * sn, bot - Lpx * (s / 2) * cs], pu = [hx + Lpx * ((1 + s) / 2) * sn, bot - Lpx * ((1 + s) / 2) * cs], pw = [hx + Lpx * 0.5 * sn, bot - Lpx * 0.5 * cs];
+    arrow(pl[0] - 24, pl[1], pl[0] - 24, pl[1] - sc * 6 * s * 0.5 * 2, "#7fd4ff", 5, "buoyancy 6ρ", L.fs, -14);
+    arrow(pu[0] + 24, pu[1], pu[0] + 24, pu[1] - sc * 2 * (1 - s) * 2, "#9fdcff", 5, "buoyancy 2ρ", L.fs, 14);
+    arrow(pw[0] + 26, pw[1], pw[0] + 26, pw[1] + sc * 1 * 2, "#ff6b6b", 5, "weight", L.fs, 14);
+  }
+  /* angle */
+  if (Math.abs(th) > 0.005){ g.strokeStyle = "rgba(255,210,120,.8)"; g.lineWidth = 2; g.setLineDash([5, 5]); g.beginPath(); g.moveTo(hx, bot); g.lineTo(hx, bot - Lpx - 20); g.stroke(); g.setLineDash([]);
+    g.beginPath(); g.arc(hx, bot, Lpx * 0.9, -Math.PI / 2, -Math.PI / 2 + th, th < 0); g.stroke(); }
+  label("drawn to scale · L = 1 m · arrows to relative size", T.x + 16, T.y + (L.phone ? 36 : 30), L.fs - (L.phone ? 0 : 2), "rgba(190,210,240,.85)", "left", "600");
+}
+function drawPlot(){
+  var P = L.plot, x0 = P.x + (L.phone ? 70 : 64), x1 = P.x + P.w - 24, yc = L.phone ? P.y + P.h * 0.38 : P.y + P.h / 2 + 10, amp = RUN.amp * Math.PI / 180, yh = P.h * (L.phone ? 0.2 : 0.32);
+  panel(P.x, P.y, P.w, P.h);
+  label("TILT θ AGAINST TIME", P.x + 18, P.y + (L.phone ? 38 : 32), L.fs, "#cfe0ff", "left", "800");
+  g.strokeStyle = "rgba(220,235,255,.7)"; g.lineWidth = 2; g.beginPath(); g.moveTo(x0, yc - yh - 20); g.lineTo(x0, yc + yh + 20); g.moveTo(x0, yc); g.lineTo(x1, yc); g.stroke();
+  label("+" + RUN.amp + "°", x0 - 8, yc - yh + 6, L.fs, "#8fa6cf", "right", "600"); label("−" + RUN.amp + "°", x0 - 8, yc + yh + 6, L.fs, "#8fa6cf", "right", "600");
+  label("time", x1, yc + (L.phone ? 40 : 30), L.fs, "#8fa6cf", "right", "600");
+  var tMax = (CYCLES + 1.3) * 2 * Math.PI / Math.sqrt(3);
+  function X(t){ return x0 + t / tMax * (x1 - x0); } function Y(th){ return yc - th / amp * yh; }
+  var tr = RUN.trace, i;
+  if (tr.length > 1){ g.save(); g.strokeStyle = "#9ff0c8"; g.lineWidth = 3.5; g.shadowColor = "#9ff0c8"; g.shadowBlur = 8; g.beginPath(); g.moveTo(X(tr[0][0]), Y(tr[0][1])); for (i = 1; i < tr.length; i++) g.lineTo(X(tr[i][0]), Y(tr[i][1])); g.stroke(); g.restore(); }
+  if (RUN.done && !tr.length){ g.save(); g.strokeStyle = "#9ff0c8"; g.lineWidth = 3.5; g.beginPath(); for (i = 0; i <= 400; i++){ var tt = RUN.cross[RUN.cross.length - 1] * i / 400 + RUN.cross[0] * 0; var yy = Y(amp * Math.cos(Math.sqrt(3) * tt)); if (i) g.lineTo(X(tt), yy); else g.moveTo(X(tt), yy); } g.stroke(); g.restore(); }
+  for (i = 0; i < RUN.cross.length; i++){ var cx2 = X(RUN.cross[i]); g.strokeStyle = "#ffd166"; g.lineWidth = 2; g.beginPath(); g.moveTo(cx2, yc - 14); g.lineTo(cx2, yc + 14); g.stroke(); }
+  if (RUN.cross.length >= 2){ var a = X(RUN.cross[0]), b = X(RUN.cross[1]); g.strokeStyle = "#ffd166"; g.lineWidth = 2.5; g.beginPath(); g.moveTo(a, yc + yh + 8); g.lineTo(b, yc + yh + 8); g.stroke(); label("T", (a + b) / 2, yc + yh + (L.phone ? 40 : 32), L.fs + 2, "#ffd166", "center", "800"); }
+  if (RUN.done){ var m = RUN.measured; roundRect(P.x + 18, P.y + P.h - (L.phone ? 120 : 104), P.w - 36, L.phone ? 100 : 86, 12); g.fillStyle = "rgba(40,160,100,.2)"; g.fill();
+    label("n = 2π / (T√(g/L)) = " + m.n.toFixed(3), P.x + 34, P.y + P.h - (L.phone ? 70 : 60), L.big, "#7dffb8", "left", "800");
+    label("= √3 → answer 1.73 (key 1.70–1.75)", P.x + 34, P.y + P.h - (L.phone ? 32 : 30), L.fs, "#e6ecff", "left", "700"); }
+}
+function draw(){
+  minPx = 999;
+  L = layout();
+  if (cv.width !== L.W || cv.height !== L.H){ cv.width = L.W; cv.height = L.H; }
+  var bg = g.createLinearGradient(0, 0, 0, L.H); bg.addColorStop(0, "#0b1226"); bg.addColorStop(1, "#04060c"); g.fillStyle = bg; g.fillRect(0, 0, L.W, L.H);
+  drawReadouts(); drawTank(); drawPlot();
+}
+
+/* ------------------------------------------------------------ controls */
+function setSpeed(k){ RUN.speed = k; $("sp1").setAttribute("aria-pressed", k === 1 ? "true" : "false"); $("sp2").setAttribute("aria-pressed", k === 0.5 ? "true" : "false"); }
+$("gobtn").addEventListener("click", start);
+$("replaybtn").addEventListener("click", replay);
+$("resetbtn").addEventListener("click", reset);
+$("sp1").addEventListener("click", function(){ setSpeed(1); });
+$("sp2").addEventListener("click", function(){ setSpeed(0.5); });
+[3, 6, 12].forEach(function(k){ $("am" + k).addEventListener("click", function(){ setAmp(k); }); });
+$("fon").addEventListener("click", function(){ setForces(true); });
+$("foff").addEventListener("click", function(){ setForces(false); });
+$("classbtn").addEventListener("click", function(){
+  var on = document.body.classList.toggle("classroom"); this.setAttribute("aria-pressed", on ? "true" : "false");
+  this.textContent = on ? "Exit classroom" : "Classroom";
+});
+$("themebtn").addEventListener("click", function(){
+  var r = document.documentElement, dark = r.getAttribute("data-theme") === "dark" || (!r.getAttribute("data-theme") && window.matchMedia && matchMedia("(prefers-color-scheme: dark)").matches);
+  r.setAttribute("data-theme", dark ? "light" : "dark");
+});
+
+var lastT = null;
+function loop(ts){
+  if (lastT === null) lastT = ts;
+  var dt = Math.min(0.05, Math.max(0, (ts - lastT) / 1000)); lastT = ts;
+  tick(dt); draw();
+  requestAnimationFrame(loop);
+}
+
+window.PX = {
+  ENGINE: ENGINE, QRUN: QRUN, ANS: ANS, RUN: RUN,
+  answer: function(){ return ANS; },
+  minLabelPx: function(){ draw(); return minPx; },
+  start: start, replay: replay, reset: reset, setSpeed: setSpeed, speed: function(k){ RUN.speed = k; }, setAmp: setAmp, setForces: setForces,
+  state: function(){ return { state: RUN.state, phase: RUN.phase, amp: RUN.amp, th: RUN.st[0], om: RUN.st[1], tm: RUN.tm, crossings: RUN.cross.length, measured: RUN.measured || null, done: RUN.done, confirmed: RUN.confirmed }; }
+};
+
+setAmp(6); refreshAnswer(); refreshButtons(); draw();
+window.addEventListener("resize", function(){ draw(); });
+requestAnimationFrame(loop);
+})();
+</script>
+</body>
+</html>
