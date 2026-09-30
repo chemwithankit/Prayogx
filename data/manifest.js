@@ -40,13 +40,13 @@ window.SIM_MANIFEST = {
     "idPolicy": "Simulation IDs are permanent. A redo or fix edits the existing folder in place and bumps `updatedAt` / `revision`; it never mints a new ID."
   },
   "counts": {
-    "total": 38,
+    "total": 39,
     "byYear": {
-      "2026": 38
+      "2026": 39
     },
     "bySubject": {
       "Chemistry": 33,
-      "Physics": 5
+      "Physics": 6
     },
     "byChapter": {
       "Thermodynamics": 2,
@@ -63,6 +63,7 @@ window.SIM_MANIFEST = {
       "Electromagnetic Induction": 1,
       "Ray Optics and Optical Instruments": 1,
       "Atoms": 1,
+      "Motion in a Plane": 1,
       "Electrochemistry": 1,
       "Biomolecules": 2,
       "The p-Block Elements (Group 18)": 1,
@@ -3017,6 +3018,109 @@ window.SIM_MANIFEST = {
       "source": {
         "file": "papers/Jee_Adv_2026_paper1_solutions_final.pdf",
         "page": 15
+      },
+      "status": "script_verified",
+      "createdAt": "2026-09-30",
+      "updatedAt": "2026-09-30"
+    },
+    {
+      "id": "ADV-2026-P1-PHY-Q06",
+      "slug": "adv-2026-p1-phy-q06",
+      "revision": 1,
+      "path": "simulations/2026/paper-1/physics/adv-2026-p1-phy-q06/index.html",
+      "folder": "simulations/2026/paper-1/physics/adv-2026-p1-phy-q06/",
+      "title": "A projectile thrown so that it passes through a point 1 m high and 5 m away: its launch speed and where it reaches its highest point",
+      "shortTitle": "Through-the-ring launcher",
+      "summary": "A launcher at O throws a ball through a ring P, 1 m high and 5 m away. At 45 degrees it needs v = 5 sqrt(g)/2 and peaks at 3.125 m, before P; at 30 degrees it peaks at 3.825 m, also before P; along tan inverse 1/5 even 125 sqrt(g) passes below P - answer (A), (B).",
+      "exam": "JEE Advanced",
+      "year": 2026,
+      "paper": "Paper 1",
+      "paperNumber": 1,
+      "subject": "Physics",
+      "branch": "Mechanics / Kinematics",
+      "questionNumber": 6,
+      "section": "Section 2",
+      "questionType": "One or more correct options",
+      "marking": {
+        "full": 4,
+        "partial": 3,
+        "zero": 0,
+        "negative": -1
+      },
+      "chapter": "Motion in a Plane",
+      "topic": "Projectile through a given point - launch speed for a given angle and the position of the highest point",
+      "subtopics": [
+        "Equation of trajectory y = x tan th - g x^2/(2 v^2 cos^2 th)",
+        "Speed needed to pass a given point at a given angle",
+        "Highest point at x = v^2 sin 2th / 2g (half the level range)",
+        "Aiming along the line of sight needs infinite speed: gravity pulls every real path below it"
+      ],
+      "concepts": [
+        "Through P (5 m, 1 m): v^2 = 25 g / (2 cos^2 th (5 tan th - 1))",
+        "At 45 deg v = 5 sqrt(g)/2 and the top is at x = 25/8 = 3.125 m, before P - statements (A) and (B)",
+        "At 30 deg v^2 = 8.83 g and the top is at x = 3.825 m, still before P - statement (C) false",
+        "tan th = 1/5 is the slope of OP itself, so 5 tan th - 1 = 0 and v is unbounded; 125 sqrt(g) passes 0.83 mm below P - statement (D) false",
+        "The top lies beyond P only for shallow throws, 11.3 deg < th < 21.8 deg"
+      ],
+      "formulas": [
+        "y = x tan th - g x^2/(2 v^2 cos^2 th)",
+        "v^2 = 25 g / (2 cos^2 th (5 tan th - 1))",
+        "x_top = v^2 sin 2th / 2g = 12.5 tan th / (5 tan th - 1)",
+        "45 deg: v = 5 sqrt(g)/2, x_top = 3.125 m"
+      ],
+      "tags": [
+        "projectile motion",
+        "trajectory",
+        "motion in a plane",
+        "launch angle",
+        "maximum height",
+        "range",
+        "projectile through a point",
+        "line of sight",
+        "kinematics",
+        "one or more correct",
+        "physics"
+      ],
+      "difficulty": "Easy-Moderate",
+      "estimatedMinutes": 5,
+      "answer": "(A), (B)",
+      "answerValue": "A and B",
+      "answerUnit": "",
+      "derivedQuantities": {
+        "v45_sqrt_g": "2.500",
+        "x_top_45_m": "3.125",
+        "v30_sqrt_g": "2.972",
+        "x_top_30_m": "3.825",
+        "tan_inverse_one_fifth_v": "unbounded",
+        "miss_125_sqrt_g_mm": "0.83",
+        "top_after_P_range_deg": "11.3 to 21.8"
+      },
+      "verification": {
+        "status": "verified",
+        "methods": [
+          "Solved independently: the trajectory through (5, 1) gives v^2(th); 45 deg: v = 5 sqrt(g)/2, top 3.125 m before P (A, B true); 30 deg: top 3.825 m before P (C false); tan th = 1/5 is the line OP, v unbounded (D false) - answer A, B",
+          "sympy: v^2(th), the top from dy/dx = 0, x_top = 12.5 tan th/(5 tan th - 1); each statement decided; the top is beyond P only for tan th < 2/5",
+          "Newton's second law integrated numerically (no trajectory formula), speed found by shooting: 2.500 sqrt(g) and top 3.125 m at 45 deg; 2.972 sqrt(g) and 3.825 m at 30 deg; along tan^-1(1/5) every speed passes below P",
+          "Exact: with v = 125 sqrt(g) along tan^-1(1/5) the ball passes 26/31250 m = 0.83 mm below P",
+          "The page engine extracted and run in Node: same numbers, answer '(A), (B)'",
+          "MathonGo published solution (their Q22 = Physics Q.6): (A), (B)",
+          "Official key printed with the paper (checked after the independent solution): Q.6 -> AB"
+        ],
+        "verifiedOn": "2026-09-30",
+        "note": "Built and verified by the PrayogX simulation factory in production mode; script-verified (automated independent verifier, page suite, visual gates, library and production audits, live smoke test after deploy). No human review has been recorded."
+      },
+      "interactivity": [
+        "Layout v3 (G5): the question verbatim with its figure redrawn and the four statements; the answer line (A), (B) visible from load and confirmed by the run",
+        "A large field drawn to scale in metres: a launcher at O, a ring P on a 1 m pole 5 m away, a metre tape and the line of sight OP",
+        "One START throws at 45 deg and 30 deg at the speed each needs to pass P, flags each highest point before or after P, then tries 10, 30 and 125 sqrt(g) along tan^-1(1/5) and shows each passing below P",
+        "Four readouts drawn in the scene: the launch angle, the launch speed in sqrt(g), the x of the highest point and the height at x = 5 m",
+        "A final audit stage checks statements A to D against the measured throws",
+        "Angle presets (45, 30, tan^-1(1/5)) and an any-angle slider (16 to 70 deg) showing that a 20 deg throw peaks after P; speed 1x / 1/2x, pause, replay, reset, classroom mode, reduced motion, portrait phone scene",
+        "Detailed solution with the throw table, the concept and key takeaways"
+      ],
+      "source": {
+        "file": "papers/Jee_Adv_2026_paper1_solutions_final.pdf",
+        "page": 16
       },
       "status": "script_verified",
       "createdAt": "2026-09-30",

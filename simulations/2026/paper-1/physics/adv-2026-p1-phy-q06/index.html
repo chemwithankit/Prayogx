@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Through-the-Ring Launcher — a projectile through a point — JEE Advanced 2026 Paper 1 Q.6 | PrayogX</title>
+<meta name="description" content="A launcher at O throws a ball so that it passes through a ring P, 1 m high and 5 m away. At 45 degrees it needs v = 5 sqrt(g)/2 and peaks at 3.125 m, before P; at 30 degrees it still peaks before P; along tan inverse of 1/5 no finite speed reaches P. Answer (A), (B). JEE Advanced 2026 Paper 1 Physics Q.6.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232a78d6'/%3E%3Cpath d='M12.5 6.5h7M13.6 6.5v7.2L7.9 24.1a1.5 1.5 0 0 0 1.3 2.3h13.6a1.5 1.5 0 0 0 1.3-2.3l-5.7-10.4V6.5' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M10.6 20.6h10.8' stroke='white' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E">
+<meta name="sim-id" content="ADV-2026-P1-PHY-Q06">
+<style>
+:root{
+  color-scheme: light;
+  --surface-0:#f4f4f1; --surface-1:#fcfcfb; --surface-2:#ececea;
+  --line:#d9d9d4; --line-strong:#bcbcb5;
+  --text-primary:#0b0b0b; --text-secondary:#52514e; --text-muted:#77766f;
+  --s1:#2a78d6; --s2:#eb6834; --s3:#1baf7a; --s4:#4a3aa7;
+  --good:#00743f; --bad:#c0392b; --accent:#2a78d6;
+  --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+  --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --serif:ui-serif,Georgia,"Times New Roman",serif;
+  --radius:12px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  color-scheme: dark;
+  --surface-0:#111110; --surface-1:#1a1a19; --surface-2:#232322;
+  --line:#34342f; --line-strong:#4a4a44;
+  --text-primary:#ffffff; --text-secondary:#c3c2b7; --text-muted:#95948b;
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#9085e9;
+  --good:#3fae7a; --bad:#e66767; --accent:#3987e5;
+}}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --surface-0:#111110; --surface-1:#1a1a19; --surface-2:#232322;
+  --line:#34342f; --line-strong:#4a4a44;
+  --text-primary:#ffffff; --text-secondary:#c3c2b7; --text-muted:#95948b;
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#9085e9;
+  --good:#3fae7a; --bad:#e66767; --accent:#3987e5;
+}
+*{box-sizing:border-box}
+[hidden]{display:none !important}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--surface-0);color:var(--text-primary);font-family:var(--sans);font-size:16px;line-height:1.6}
+header.top{border-bottom:1px solid var(--line);background:var(--surface-1)}
+.top-inner{max-width:1240px;margin:0 auto;padding:18px 20px 14px;position:relative}
+.brandbar{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.brandbar .pxmark{width:21px;height:21px;flex:none;display:block}
+.brandbar .wm{font-size:13px;font-weight:800;letter-spacing:.17em;color:var(--text-secondary);line-height:1}
+.brandbar .wm i{font-style:normal;color:var(--accent)}
+.simid{font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--text-muted)}
+h1{font-size:21px;line-height:1.3;margin:4px 0 4px;padding-right:80px}
+.meta{font-size:14px;color:var(--text-secondary);margin:0}
+.themebtn{position:absolute;top:14px;right:16px;border:1px solid var(--line-strong);background:var(--surface-2);
+  color:var(--text-secondary);border-radius:8px;padding:4px 9px;font-size:12px;cursor:pointer}
+.wrap{max-width:1240px;margin:0 auto;padding:0 20px 40px}
+section{margin:0 0 34px}
+h2{font-size:15px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-secondary);margin:26px 0 12px}
+h2 b{color:var(--accent);margin-right:8px}
+h3{font-size:17px;margin:22px 0 8px}
+/* 01 question */
+.qcard{background:var(--surface-1);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+.qtext{font-family:var(--serif);font-size:18px;line-height:1.6;flex:1 1 460px;min-width:0}
+.qfig{flex:0 0 250px;max-width:100%}
+.qfig svg{display:block;width:100%;height:auto}
+.sq{white-space:nowrap}
+.sq .rad{border-top:1.5px solid currentColor;padding:0 2px}
+#opts{list-style:none;margin:12px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+#opts li{background:var(--surface-1);border:1.5px solid var(--line);border-radius:10px;padding:10px 12px;font-family:var(--serif);font-size:19px;display:flex;gap:10px;align-items:center;min-height:52px}
+#opts li b{font-family:var(--sans);font-size:14px;color:var(--text-muted)}
+#opts li.correct{border-color:var(--good);box-shadow:0 0 0 2px color-mix(in srgb,var(--good) 25%,transparent)}
+#opts li.correct b{color:var(--good)}
+/* 02 lab */
+#keyline{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;background:var(--surface-1);border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin:0 0 8px}
+#keyline .k{font-size:13px;font-weight:800;letter-spacing:.12em;color:var(--text-muted);text-transform:uppercase}
+#ansval{font-size:22px;font-weight:800;color:var(--good)}
+#ansexpr{font-family:var(--serif);font-size:20px}
+#anssub{font-size:14px;color:var(--text-secondary);margin-left:auto}
+#keyline.blink{animation:blink .45s ease-in-out 4}
+@keyframes blink{50%{background:color-mix(in srgb,var(--good) 22%,var(--surface-1))}}
+#narr{margin:0 2px 10px;font-size:16px;color:var(--text-secondary);min-height:2.8em}
+.stage{position:relative;border-radius:16px;overflow:hidden;background:#070a12;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+canvas#labcv{display:block;width:100%;height:auto;touch-action:manipulation}
+#controls{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:12px;padding:12px;border:1px solid var(--line);border-radius:14px;background:var(--surface-1)}
+#controls button{min-height:48px;font-size:16px;font-weight:700;border-radius:10px;border:1px solid var(--line-strong);background:var(--surface-2);color:var(--text-primary);padding:0 16px;cursor:pointer;font-family:var(--sans)}
+#controls button:focus-visible,#controls input:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+#controls .go{background:var(--accent);color:#fff;border:none;font-weight:800;letter-spacing:.04em;min-width:190px}
+#controls .seg{display:flex;align-items:center;gap:0}
+#controls .seg span{font-size:13px;font-weight:700;color:var(--text-muted);margin-right:8px;letter-spacing:.06em;text-transform:uppercase}
+#controls .seg button{border-radius:0;margin-left:-1px;padding:0 13px}
+#controls .seg button:nth-child(2){border-radius:10px 0 0 10px}
+#controls .seg button:last-child{border-radius:0 10px 10px 0}
+#controls .seg button[aria-pressed="true"]{background:var(--accent);color:#fff;border-color:var(--accent)}
+#controls .v0{display:flex;flex-wrap:wrap;align-items:center;gap:10px;flex:1 1 520px;min-width:0}
+#controls .v0 label{font-size:15px;font-weight:700;white-space:nowrap}
+#controls input[type=range]{flex:1 1 150px;min-width:110px;min-height:44px;accent-color:var(--accent);margin:0}
+#v0out{font-family:var(--mono);font-size:15px;min-width:92px}
+#warn{margin:10px 2px 0;font-size:15px;color:var(--s2);font-weight:600}
+/* 03 solution */
+.sol{background:var(--surface-1);border:1px solid var(--line);border-radius:var(--radius);padding:6px 20px 16px}
+.sol ol.steps{padding-left:22px;margin:10px 0}
+.sol ol.steps li{margin:0 0 12px}
+.eq{font-family:var(--serif);font-size:18px;background:var(--surface-2);border-radius:8px;padding:8px 12px;margin:6px 0;overflow-x:auto}
+.solfig{display:flex;gap:18px;align-items:center;flex-wrap:wrap;margin:8px 0 12px}
+.solfig svg{flex:0 0 300px;max-width:100%;height:auto}
+.solfig p{flex:1 1 300px;margin:0}
+table.opt{border-collapse:collapse;width:100%;font-size:15px;margin:8px 0}
+table.opt th,table.opt td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+table.opt th{background:var(--surface-2)}
+table.opt tr.ok td{background:color-mix(in srgb,var(--good) 10%,transparent)}
+.tscroll{overflow-x:auto}
+.concept{border-left:4px solid var(--accent);padding:2px 0 2px 14px;margin:14px 0}
+ul.take{padding-left:20px} ul.take li{margin:0 0 6px}
+#solans{font-weight:800;color:var(--good)}
+.note{font-size:14px;color:var(--text-secondary)}
+/* 04 analysis */
+svg.chart{display:block;width:100%;max-width:760px;height:auto;background:var(--surface-1);border:1px solid var(--line);border-radius:12px}
+.chart text{font-family:var(--sans);fill:var(--text-secondary)}
+.cap{font-size:14px;color:var(--text-secondary);max-width:760px}
+/* how to */
+ol.howto{padding-left:22px;margin:0} ol.howto li{margin:0 0 8px}
+footer{font-size:13px;color:var(--text-muted);border-top:1px solid var(--line);padding:16px 0 0}
+/* classroom */
+body.classroom .wrap{max-width:none;padding:0 18px 30px}
+body.classroom header.top,body.classroom section:not(#lab),body.classroom footer{display:none}
+body.classroom #narr{font-size:24px;color:var(--text-primary)}
+body.classroom #keyline #ansexpr{font-size:26px}
+@media (max-width:760px){
+  .wrap{padding:0 16px 32px}
+  .top-inner{padding:14px 16px 12px}
+  h1{font-size:18px}
+  .qtext{font-size:17px}
+  .qfig{flex-basis:100%}
+  .qfig svg{max-width:260px;margin:0 auto}
+  #opts{grid-template-columns:repeat(2,minmax(0,1fr))}
+  #anssub{margin-left:0}
+  #controls{gap:8px;padding:10px}
+  #controls .go{flex:1 1 100%}
+  #controls button{padding:0 12px}
+  #controls .v0{flex-basis:100%;flex-wrap:wrap}
+  #controls .v0 input[type=range]{flex:1 1 100%;order:3}
+  .solfig svg{flex-basis:100%}
+  .sol{padding:4px 14px 12px}
+}
+@media (prefers-reduced-motion: reduce){#keyline.blink{animation:none}}
+/* long text options */
+#opts.lopts{grid-template-columns:1fr}
+#opts.lopts li{font-family:var(--sans);font-size:17px;align-items:flex-start;line-height:1.5}
+#opts.lopts li b{padding-top:2px}
+#opts.lopts .fx{font-family:var(--serif);font-size:18px;white-space:nowrap}
+#controls .seg button{white-space:nowrap}
+@media (max-width:760px){#opts.lopts .fx{white-space:normal}#controls .seg{flex-wrap:wrap;row-gap:6px}#controls .seg span{flex:1 1 100%;margin:0 0 2px}#controls .seg button:nth-child(2){border-radius:10px 0 0 10px}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-inner">
+    <div class="brandbar"><svg class="pxmark" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><rect width="32" height="32" rx="8" fill="var(--accent)"/><path d="M12.5 6.5h7M13.6 6.5v7.2L7.9 24.1a1.5 1.5 0 0 0 1.3 2.3h13.6a1.5 1.5 0 0 0 1.3-2.3l-5.7-10.4V6.5" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.6 20.6h10.8" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg><span class="wm">PRAYOG<i>X</i></span></div>
+    <div class="simid">ADV-2026-P1-PHY-Q06</div>
+    <h1>Through-the-Ring Launcher — which throws pass through P?</h1>
+    <p class="meta">JEE Advanced 2026 · Paper 1 · Physics · Q.6 · one or more correct options (+4 / partial / 0 / −1) · Motion in a plane</p>
+    <button class="themebtn" id="themebtn" type="button">◐ theme</button>
+  </div>
+</header>
+
+<main class="wrap">
+
+<section id="question" aria-labelledby="qh">
+  <h2 id="qh"><b>01</b>The question</h2>
+  <div class="qcard">
+    <div class="qtext">Q.6 A particle is thrown with a speed <i>v</i> from a point <i>O</i> at an angle <i>θ</i> with the horizontal plane such that it passes through the point <i>P</i> at a height of 1 m and horizontal distance of 5 m from <i>O</i>, as shown in the figure. If acceleration due to gravity is <i>g</i> ms<sup>−2</sup>, then the correct statement(s) is/are:</div>
+    <div class="qfig">
+      <svg viewBox="0 0 260 130" role="img" aria-label="Figure from the question: a particle thrown from O at angle theta with speed v; the point P is 1 m above the ground at a horizontal distance of 5 m from O">
+        <defs><pattern id="qhatch" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="7" stroke="currentColor" stroke-width="1.6"/></pattern></defs>
+        <g style="color:var(--text-secondary)"><rect x="20" y="86" width="224" height="12" fill="url(#qhatch)"/></g>
+        <g style="color:var(--text-primary)" fill="none" stroke="currentColor" stroke-width="1.5">
+          <circle cx="24" cy="86" r="3" fill="currentColor"/>
+          <line x1="24" y1="86" x2="58" y2="54"/><path d="M52 55 L59 53 L57 60"/>
+          <path d="M44 86 A20 20 0 0 0 39 72"/>
+          <line x1="210" y1="46" x2="210" y2="86" stroke-dasharray="3 3"/><path d="M206 50 L210 44 L214 50"/><path d="M206 82 L210 88 L214 82"/>
+          <line x1="24" y1="112" x2="210" y2="112" stroke-dasharray="4 3"/><path d="M28 108 L22 112 L28 116"/><path d="M206 108 L212 112 L206 116"/>
+        </g>
+        <g style="color:var(--text-primary)" font-family="Georgia,serif" font-size="14" fill="currentColor">
+          <text x="10" y="80" font-style="italic">O</text><text x="46" y="80" font-style="italic">θ</text><text x="60" y="48" font-style="italic">v</text>
+          <text x="204" y="40" font-style="italic">P</text><text x="216" y="70">1 m</text><text x="108" y="126">5 m</text>
+        </g>
+      </svg>
+    </div>
+  </div>
+  <ol id="opts" class="lopts" aria-label="options">
+    <li data-o="A"><b>(A)</b><span>If <i>θ</i> = 45°, then <i>v</i> = <span class="fx">5√<i>g</i>/2</span> ms<sup>−1</sup>.</span></li>
+    <li data-o="B"><b>(B)</b><span>If <i>θ</i> = 45°, the particle reaches its maximum height before it reaches <i>P</i>.</span></li>
+    <li data-o="C"><b>(C)</b><span>If <i>θ</i> = 30°, the particle reaches its maximum height after reaching <i>P</i>.</span></li>
+    <li data-o="D"><b>(D)</b><span>If <i>θ</i> = tan<sup>−1</sup>(1/5), then <i>v</i> = <span class="fx">125√<i>g</i></span> ms<sup>−1</sup>.</span></li>
+  </ol>
+</section>
+
+<section id="lab" aria-labelledby="lh">
+  <h2 id="lh"><b>02</b>The experiment</h2>
+  <div id="keyline" aria-live="polite">
+    <span class="k">Answer</span><span id="ansval">—</span><span id="ansexpr"></span>
+    <span id="anssub">Press START: the launcher throws at each angle in the options and the throws are measured.</span>
+  </div>
+  <p id="narr" aria-live="polite">Ready.</p>
+  <div class="stage"><canvas id="labcv" width="1200" height="720" role="img" aria-label="Experiment: a launcher at O throws a ball at angle theta so that it passes through a ring P held 1 m above the ground, 5 m away; the path, the highest point and the speed are measured for 45 degrees, 30 degrees and tan inverse of one fifth"></canvas></div>
+  <div id="controls" role="group" aria-label="experiment controls">
+    <button class="go" type="button" id="gobtn">▶ START EXPERIMENT</button>
+    <button type="button" id="replaybtn">↺ Replay</button>
+    <button type="button" id="resetbtn">Reset</button>
+    <div class="seg" role="group" aria-label="launch angle"><span>Angle θ</span><button type="button" id="a45" aria-pressed="true">45°</button><button type="button" id="a30" aria-pressed="false">30°</button><button type="button" id="a11" aria-pressed="false">tan⁻¹(1/5)</button></div>
+    <div class="v0"><label for="in_th">Any angle</label><input type="range" id="in_th" min="16" max="70" step="0.5" value="45" aria-describedby="thout"><output id="thout" for="in_th">45°</output></div>
+    <div class="seg" role="group" aria-label="speed"><span>Speed</span><button type="button" id="sp1" aria-pressed="true">1×</button><button type="button" id="sp2" aria-pressed="false">½×</button></div>
+    <button type="button" id="classbtn" aria-pressed="false">Classroom</button>
+  </div>
+  <p id="warn" hidden></p>
+</section>
+
+<section id="solution" aria-labelledby="sh">
+  <h2 id="sh"><b>03</b>Detailed solution</h2>
+  <div class="sol">
+    <p>Answer: <span id="solans">—</span></p>
+    <ol class="steps">
+      <li><b>The path.</b> With the origin at <i>O</i>:
+        <div class="eq"><i>y</i> = <i>x</i> tan <i>θ</i> − <i>g x</i>²/(2<i>v</i>² cos²<i>θ</i>).</div>
+        Passing through <i>P</i> (5 m, 1 m) fixes the speed for each angle:
+        <div class="eq"><i>v</i>² = <i>g</i>·25 / [2 cos²<i>θ</i> (5 tan <i>θ</i> − 1)].</div></li>
+      <li><b>(A) is true.</b> At <i>θ</i> = 45°: <i>v</i>² = 25<i>g</i>/[2·½·(5 − 1)] = 25<i>g</i>/4, so <i>v</i> = 5√<i>g</i>/2 m/s.</li>
+      <li><b>(B) is true.</b> The highest point is at <i>x</i> = <i>v</i>² sin 2<i>θ</i>/(2<i>g</i>) = (25/4)/2 = 3.125 m, which is before <i>P</i> at 5 m. The ball is already coming down when it passes <i>P</i>.</li>
+      <li><b>(C) is false.</b> At <i>θ</i> = 30°: <i>v</i>² = 25<i>g</i>/[2·¾·(5/√3 − 1)] ≈ 8.83<i>g</i>. The highest point is at <i>x</i> = 8.83·(√3/2)/2 ≈ 3.82 m, still before <i>P</i>, not after it.</li>
+      <li><b>(D) is false.</b> tan <i>θ</i> = 1/5 is the slope of the straight line <i>OP</i> itself, so 5 tan <i>θ</i> − 1 = 0 and <i>v</i> → ∞. Gravity bends every real path below the line of sight. With <i>v</i> = 125√<i>g</i> the ball passes 0.83 mm below <i>P</i>, and no finite speed reaches it.</li>
+    </ol>
+    <div class="tscroll"><table class="opt" aria-label="the throws measured">
+      <thead><tr><th>Angle</th><th>Speed needed to pass P</th><th>Highest point at</th><th>Relative to P</th></tr></thead>
+      <tbody>
+        <tr><td>45°</td><td>2.500 √<i>g</i> m/s</td><td>3.125 m</td><td>before P</td></tr>
+        <tr><td>30°</td><td>2.972 √<i>g</i> m/s</td><td>3.825 m</td><td>before P</td></tr>
+        <tr><td>tan⁻¹(1/5) ≈ 11.3°</td><td>∞ (no finite speed)</td><td>—</td><td>unreachable</td></tr>
+      </tbody>
+    </table></div>
+    <h3>Understand the concept</h3>
+    <div class="concept">For a given launch angle, only one speed makes the parabola pass through a given point, and it comes from the trajectory equation. The highest point is where the vertical velocity is zero, at <i>x</i> = <i>v</i>² sin 2<i>θ</i>/2<i>g</i>. Comparing that with 5 m tells you whether the ball is still rising at <i>P</i>. Aiming straight at a point (tan <i>θ</i> = height/distance) never works: gravity pulls the ball below the line of sight at any finite speed.</div>
+    <h3>Key takeaways</h3>
+    <ul class="take">
+      <li>Trajectory: <i>y</i> = <i>x</i> tan <i>θ</i> − <i>g x</i>²/(2<i>v</i>² cos²<i>θ</i>). Put in the point to find the speed.</li>
+      <li>The highest point is at <i>x</i> = <i>v</i>² sin 2<i>θ</i>/2<i>g</i>, half the range on level ground.</li>
+      <li>The highest point here is at <i>x</i> = 12.5 tan <i>θ</i>/(5 tan <i>θ</i> − 1). It lies beyond <i>P</i> only for shallow throws, tan⁻¹(1/5) &lt; <i>θ</i> &lt; tan⁻¹(2/5) (about 11.3° to 21.8°). Try 20° with the slider.</li>
+      <li>A throw aimed along the line of sight to <i>P</i> needs infinite speed.</li>
+    </ul>
+    <p class="note">Verification: an independent derivation, a sympy route, a numerical integration of the motion (no trajectory formula), and the page's own engine, run by <code>tests/verify_p1phyq06.py</code>. The official key (A, B) and the MathonGo solution (A, B) agree. Status: script-verified by the PrayogX simulation factory; no review by a person has been recorded. The scene is drawn to scale in metres and air resistance is neglected. The 0.83 mm miss in (D) is drawn exaggerated.</p>
+  </div>
+</section>
+
+<section id="howto" aria-labelledby="hh">
+  <h2 id="hh">How to use this simulation</h2>
+  <ol class="howto">
+    <li>Press <b>▶ START EXPERIMENT</b>. The launcher throws at 45°, then 30°, then aims along tan⁻¹(1/5), each at the speed needed to pass <i>P</i>.</li>
+    <li>Watch the flag at each throw's highest point: is it before or after the ring <i>P</i>?</li>
+    <li>For tan⁻¹(1/5), watch faster and faster throws fall below <i>P</i>. The last is option (D)'s 125√<i>g</i>.</li>
+    <li>Tap an <b>Angle θ</b> button or drag <b>Any angle</b> to throw one angle yourself and read <i>v</i> and the highest point.</li>
+    <li><b>Replay</b> runs it again. <b>Reset</b> clears it. <b>Classroom</b> fills the screen for a projector.</li>
+  </ol>
+</section>
+
+<footer>
+  ADV-2026-P1-PHY-Q06 · PrayogX · JEE Advanced Interactive Simulation Library · question text reproduced
+  from the official JEE (Advanced) 2026 Paper 1 for educational use. This is a virtual laboratory only.
+  Drawn to scale in metres, with g = 9.8 m/s² for the animation. Speeds are shown in units of √g.
+</footer>
+</main>
+
+<script>
+(function(){
+"use strict";
+/* ENGINE-BEGIN */
+/* Projectile from O through P = (5 m, 1 m). Speeds in units of sqrt(g) (g cancels from every statement). */
+var ENGINE = (function(){
+  var PX_ = 5, PY = 1, RAD = Math.PI / 180;
+  /* speed needed to pass P at angle th (degrees), from y = x tan th - g x^2 / (2 v^2 cos^2 th) */
+  function vReq(th){
+    var t = Math.tan(th * RAD), c2 = Math.pow(Math.cos(th * RAD), 2), d = PX_ * t - PY;
+    return d <= 1e-12 ? Infinity : Math.sqrt(PX_ * PX_ / (2 * c2 * d));
+  }
+  /* x of the highest point: v^2 sin 2th / 2g */
+  function apexX(th){ var v = vReq(th); return isFinite(v) ? v * v * Math.sin(2 * th * RAD) / 2 : Infinity; }
+  function apexY(th){ var v = vReq(th); return isFinite(v) ? v * v * Math.pow(Math.sin(th * RAD), 2) / 2 : Infinity; }
+  /* height at x for a throw (th, v in sqrt(g)) */
+  function yAt(th, v, x){ return x * Math.tan(th * RAD) - x * x / (2 * v * v * Math.pow(Math.cos(th * RAD), 2)); }
+  var TH_D = Math.atan(1 / 5) / RAD;
+  /* the printed statements */
+  var OPTS = {
+    A: { th: 45, test: function(){ return Math.abs(vReq(45) - 5 / 2) < 1e-12; } },                  /* v = 5 sqrt(g)/2 */
+    B: { th: 45, test: function(){ return apexX(45) < PX_; } },                                      /* top before P */
+    C: { th: 30, test: function(){ return apexX(30) > PX_; } },                                      /* top after P */
+    D: { th: TH_D, test: function(){ var v = vReq(TH_D); return isFinite(v) && Math.abs(v - 125) < 1e-9; } }   /* v = 125 sqrt(g) */
+  };
+  var KEYS = ["A", "B", "C", "D"];
+  function run(){
+    var hits = [], i;
+    for (i = 0; i < KEYS.length; i++) if (OPTS[KEYS[i]].test()) hits.push(KEYS[i]);
+    var lab = []; for (i = 0; i < hits.length; i++) lab.push("(" + hits[i] + ")");
+    return { hits: hits, answer: hits.length ? lab.join(", ") : null, v45: vReq(45), apex45: apexX(45), v30: vReq(30), apex30: apexX(30), missD: PY - yAt(TH_D, 125, PX_) };
+  }
+  return { P: [PX_, PY], TH_D: TH_D, vReq: vReq, apexX: apexX, apexY: apexY, yAt: yAt, OPTS: OPTS, KEYS: KEYS, run: run };
+})();
+/* ENGINE-END */
+
+var QRUN = ENGINE.run();
+var ANS = QRUN.answer;
+
+function $(id){ return document.getElementById(id); }
+var cv = $("labcv"), g = cv.getContext("2d");
+var reduced = !!(window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches);
+var G = 9.8, XMAX = 9.4, SG = Math.sqrt(G);
+var TH_D = ENGINE.TH_D, D_TRIES = [10, 30, 125];
+/* the planned throws of one START: 45, 30, then three throws along tan^-1(1/5) */
+function plan(){ return [{ th: 45, v: ENGINE.vReq(45), tag: "45" }, { th: 30, v: ENGINE.vReq(30), tag: "30" }]
+  .concat(D_TRIES.map(function(v){ return { th: TH_D, v: v, tag: "D" + v }; })); }
+
+var RUN = { state: "setup", phase: "ready", speed: 1, mode: "all", th: 45, throws: [], i: 0, t: 0, done: false, rows: 0, confirmed: false, custom: false };
+var L = null, minPx = 999;
+
+function layout(){
+  var phone = document.documentElement.clientWidth < 700;
+  if (phone) return { phone: true, W: 720, H: 990, ro: { x: 12, y: 12, w: 696, h: 178 }, ox: 26, gy: 548, s: 72,
+    panel: { x: 12, y: 596, w: 696, h: 382 }, fs: 25, big: 31 };
+  return { phone: false, W: 1200, H: 720, ro: { x: 16, y: 14, w: 1168, h: 92 }, ox: 60, gy: 668, s: 119,
+    panel: { x: 768, y: 122, w: 416, h: 318 }, fs: 16, big: 24 };
+}
+function X(x){ return L.ox + x * L.s; }
+function Y(y){ return L.gy - y * L.s; }
+
+/* --------------------------------------------------------------- run */
+function throwEnd(tw){                                   /* time (s) when the ball leaves the frame or lands */
+  var vx = tw.v * SG * Math.cos(tw.th * Math.PI / 180), vy = tw.v * SG * Math.sin(tw.th * Math.PI / 180);
+  var tl = 2 * vy / G, tx = XMAX / vx; return Math.min(tl, tx);
+}
+function pos(tw, t){ var c = Math.cos(tw.th * Math.PI / 180), s = Math.sin(tw.th * Math.PI / 180), v = tw.v * SG; return [v * c * t, v * s * t - 0.5 * G * t * t]; }
+function current(){ return RUN.throws[Math.min(RUN.i, RUN.throws.length - 1)]; }
+function startThrows(list){ RUN.throws = list.map(function(tw){ tw.T = throwEnd(tw); tw.progress = 0; return tw; }); RUN.i = 0; RUN.t = 0; }
+function finish(){
+  RUN.state = "done"; RUN.phase = RUN.mode === "all" ? "audit" : "done"; RUN.done = true; RUN.rows = 4;
+  RUN.throws.forEach(function(tw){ tw.progress = 1; });
+  if (RUN.mode === "all"){
+    var hits = []; ENGINE.KEYS.forEach(function(k){ if (ENGINE.OPTS[k].test()) hits.push("(" + k + ")"); });
+    RUN.measuredAnswer = hits.join(", ");
+    RUN.measured = { v45: RUN.throws[0].v, apex45: ENGINE.apexX(45), v30: RUN.throws[1].v, apex30: ENGINE.apexX(30),
+      misses: RUN.throws.slice(2).map(function(tw){ return ENGINE.P[1] - ENGINE.yAt(tw.th, tw.v, ENGINE.P[0]); }) };
+    if (RUN.measuredAnswer === ANS){ RUN.confirmed = true; confirmAnswer(); }
+  }
+  narrate(); refreshButtons();
+}
+var DUR = 2.6;                                           /* real seconds per throw at 1x (slow motion) */
+function tick(dt){
+  if (RUN.state !== "running") return;
+  var tw = current(), d = dt * RUN.speed;
+  tw.progress = Math.min(1, tw.progress + d / DUR);
+  if (RUN.phase === "pause"){ RUN.t += d; if (RUN.t > 0.7){ RUN.t = 0; RUN.i++; RUN.phase = "throw"; narrate(); } return; }
+  if (tw.progress >= 1){
+    if (RUN.i >= RUN.throws.length - 1){ finish(); return; }
+    RUN.phase = "pause"; RUN.t = 0;
+  }
+}
+function start(){
+  if (RUN.state === "running"){ RUN.state = "paused"; refreshButtons(); narrate(); return; }
+  if (RUN.state === "paused"){ RUN.state = "running"; refreshButtons(); narrate(); return; }
+  resetRun();
+  RUN.mode = RUN.custom ? "one" : "all";
+  var dOnly = Math.abs(RUN.th - TH_D) < 1e-9;
+  startThrows(!RUN.custom ? plan() : dOnly ? D_TRIES.map(function(v){ return { th: TH_D, v: v, tag: "D" + v }; }) : [{ th: RUN.th, v: ENGINE.vReq(RUN.th), tag: "custom" }]);
+  if (reduced){ finish(); return; }
+  RUN.state = "running"; RUN.phase = "throw"; narrate(); refreshButtons();
+}
+function resetRun(){ RUN.state = "setup"; RUN.phase = "ready"; RUN.throws = []; RUN.i = 0; RUN.t = 0; RUN.done = false; RUN.rows = 0; RUN.measured = null; RUN.measuredAnswer = null; }
+function replay(){ RUN.state = "setup"; start(); }
+function reset(){ resetRun(); refreshButtons(); narrate(); }
+function setAngle(th, custom){
+  th = parseFloat(th); if (!isFinite(th)) th = 45;
+  if (custom) th = Math.min(70, Math.max(16, th));
+  RUN.th = th; RUN.custom = !!custom || Math.abs(th - 45) > 1e-9;
+  $("a45").setAttribute("aria-pressed", !custom && Math.abs(th - 45) < 1e-9 ? "true" : "false");
+  $("a30").setAttribute("aria-pressed", !custom && Math.abs(th - 30) < 1e-9 ? "true" : "false");
+  $("a11").setAttribute("aria-pressed", !custom && Math.abs(th - TH_D) < 1e-9 ? "true" : "false");
+  if (th >= 16 && th <= 70) $("in_th").value = String(th);
+  $("thout").textContent = fmtTh(th);
+  RUN.custom = !(Math.abs(th - 45) < 1e-9 && !custom);
+  resetRun(); refreshButtons(); narrate();
+}
+function fmtTh(th){ return Math.abs(th - TH_D) < 1e-9 ? "tan⁻¹(1/5)" : (Math.round(th * 10) / 10) + "°"; }
+
+/* ------------------------------------------------------------ words */
+function vtxt(v){ return isFinite(v) ? v.toFixed(3) + " √g m/s" : "∞"; }
+function mtxt(x){ return isFinite(x) ? x.toFixed(3) + " m" : "—"; }
+function narrate(){
+  var t, tw = RUN.throws.length ? current() : null;
+  if (RUN.phase === "ready"){
+    if (!RUN.custom) t = "Ready. Press START: the launcher throws at 45°, then 30°, then along tan⁻¹(1/5), each at the speed that should carry the ball through P.";
+    else if (!isFinite(ENGINE.vReq(RUN.th))) t = "θ = tan⁻¹(1/5) points straight at P. No finite speed reaches P from here. Press START to try.";
+    else t = "θ = " + fmtTh(RUN.th) + ": to pass P it needs v = " + vtxt(ENGINE.vReq(RUN.th)) + ". Its highest point is at x = " + mtxt(ENGINE.apexX(RUN.th)) + ", " + (ENGINE.apexX(RUN.th) < 5 ? "before" : "after") + " P. Press START.";
+  } else if (RUN.phase === "throw" || RUN.phase === "pause"){
+    if (tw.tag === "45") t = "θ = 45°, v = 5√g/2 = 2.500√g m/s: the ball tops out at x = 3.125 m, before P, and passes P on the way down.";
+    else if (tw.tag === "30") t = "θ = 30°, v = 2.972√g m/s: the top is at x = 3.825 m, still before P, not after it.";
+    else if (tw.tag === "custom") t = "θ = " + fmtTh(tw.th) + ", v = " + vtxt(tw.v) + ": the top is at x = " + mtxt(ENGINE.apexX(tw.th)) + ", " + (ENGINE.apexX(tw.th) < 5 ? "before" : "after") + " P.";
+    else t = "Aiming along the line OP (tan θ = 1/5) at v = " + tw.v + "√g: gravity still pulls it " + ((ENGINE.P[1] - ENGINE.yAt(tw.th, tw.v, 5)) * 1000).toFixed(tw.v > 50 ? 2 : 0) + " mm below P.";
+  } else if (RUN.phase === "audit") t = "Checked: (A) the 45° throw needs exactly 5√g/2; (B) its top is before P; (C) the 30° top is also before P, so (C) is false; (D) even 125√g misses P by 0.83 mm, since no finite speed works. The answer is (A), (B).";
+  else t = "Done: θ = " + fmtTh(RUN.th) + " needs v = " + vtxt(ENGINE.vReq(RUN.th)) + ". The top is at x = " + mtxt(ENGINE.apexX(RUN.th)) + ", " + (ENGINE.apexX(RUN.th) < 5 ? "before" : "after") + " P.";
+  if (RUN.state === "paused") t = "Paused. " + t;
+  $("narr").textContent = t;
+  var w = $("warn");
+  if (RUN.custom && !(Math.abs(RUN.th - 30) < 1e-9) && !(Math.abs(RUN.th - TH_D) < 1e-9)){ w.hidden = false; w.textContent = "θ = " + fmtTh(RUN.th) + " is your own angle, not one in the options. Tap 45° to run the question's experiment."; }
+  else w.hidden = true;
+}
+function confirmAnswer(){
+  $("anssub").textContent = "Confirmed by the run: the 45° throw needs 2.500√g and peaks at 3.125 m, before P; the 30° peak is at 3.825 m; 125√g along tan⁻¹(1/5) misses P by " + (RUN.measured.misses[2] * 1000).toFixed(2) + " mm.";
+  var k = $("keyline");
+  if (!reduced){ k.classList.remove("blink"); void k.offsetWidth; k.classList.add("blink"); setTimeout(function(){ k.classList.remove("blink"); }, 2000); }
+}
+function refreshButtons(){ $("gobtn").textContent = RUN.state === "running" ? "❚❚ PAUSE" : RUN.state === "paused" ? "▶ RESUME" : RUN.state === "done" ? "▶ RUN AGAIN" : "▶ START EXPERIMENT"; }
+function refreshAnswer(){
+  $("ansval").textContent = ANS || "—";
+  $("ansexpr").textContent = ANS ? "the 45° throw needs 5√g/2 and peaks before P" : "";
+  $("solans").textContent = ANS || "—";
+  var lis = document.querySelectorAll("#opts li"), i;
+  for (i = 0; i < lis.length; i++) lis[i].classList.toggle("correct", QRUN.hits.indexOf(lis[i].getAttribute("data-o")) >= 0);
+}
+
+/* ------------------------------------------------------------ drawing */
+function label(s, x, y, px, col, align, weight){
+  if (px < minPx) minPx = px;
+  g.font = (weight || "700") + " " + Math.round(px) + "px ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif";
+  g.fillStyle = col || "#e8f0ff"; g.textAlign = align || "left"; g.textBaseline = "alphabetic"; g.fillText(s, x, y);
+}
+function pill(s, x, y, px, col){
+  g.font = "800 " + Math.round(px) + "px ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif";
+  var w = g.measureText(s).width + 16; if (x + w > L.W - 8) x = L.W - 8 - w;
+  roundRect(x - 8, y - px - 2, w, px + 12, 8); g.fillStyle = "rgba(8,12,24,.85)"; g.fill();
+  label(s, x, y, px, col, "left", "800");
+}
+function roundRect(x, y, w, h, r){ g.beginPath(); g.moveTo(x + r, y); g.lineTo(x + w - r, y); g.quadraticCurveTo(x + w, y, x + w, y + r); g.lineTo(x + w, y + h - r); g.quadraticCurveTo(x + w, y + h, x + w - r, y + h); g.lineTo(x + r, y + h); g.quadraticCurveTo(x, y + h, x, y + h - r); g.lineTo(x, y + r); g.quadraticCurveTo(x, y, x + r, y); g.closePath(); }
+function panel(x, y, w, h){ roundRect(x, y, w, h, 14); g.fillStyle = "rgba(10,16,32,.86)"; g.fill(); g.strokeStyle = "rgba(140,180,255,.3)"; g.lineWidth = 1.5; g.stroke(); }
+var COL = { "45": "#5fd4ff", "30": "#ffb35c", "custom": "#9ff0c8", "D10": "#ff8f8f", "D30": "#ff6b6b", "D125": "#ff4040" };
+
+function drawField(){
+  var sky = g.createLinearGradient(0, 0, 0, L.gy); sky.addColorStop(0, "#0b1730"); sky.addColorStop(1, "#16284a");
+  g.fillStyle = sky; g.fillRect(0, 0, L.W, L.H);
+  var gr = g.createLinearGradient(0, L.gy, 0, L.H); gr.addColorStop(0, "#1f4a2c"); gr.addColorStop(1, "#0d2415");
+  g.fillStyle = gr; g.fillRect(0, L.gy, L.W, L.H - L.gy);
+  /* metre tape on the ground */
+  var m; g.strokeStyle = "rgba(230,240,255,.5)"; g.lineWidth = 2;
+  g.beginPath(); g.moveTo(X(0), L.gy + 6); g.lineTo(X(XMAX), L.gy + 6); g.stroke();
+  for (m = 0; m <= 9; m++){ g.beginPath(); g.moveTo(X(m), L.gy + 6); g.lineTo(X(m), L.gy + 16); g.stroke(); if (m > 0 && (!L.phone || m % 2 === 1)) label(m + " m", X(m), L.gy + (L.phone ? 46 : 36), L.fs - (L.phone ? 0 : 1), "#cfe0ff", "center", "700"); }
+  /* height marks */
+  for (m = 1; m <= 4; m++){ g.strokeStyle = "rgba(200,220,255,.10)"; g.lineWidth = 1; g.beginPath(); g.moveTo(X(0), Y(m)); g.lineTo(X(XMAX), Y(m)); g.stroke(); }
+  /* the pole and ring P */
+  var px = X(ENGINE.P[0]), py = Y(ENGINE.P[1]);
+  g.strokeStyle = "#8a93a6"; g.lineWidth = 6; g.beginPath(); g.moveTo(px, L.gy); g.lineTo(px, py + 18); g.stroke();
+  g.strokeStyle = "#ffd166"; g.lineWidth = 5; g.shadowColor = "#ffd166"; g.shadowBlur = 12; g.beginPath(); g.ellipse(px, py, 8, 17, 0, 0, Math.PI * 2); g.stroke(); g.shadowBlur = 0;
+  label("P (5 m, 1 m)", px + 16, L.phone ? py - 22 : py + 38, L.fs, "#ffe08a", "left", "800");
+  label("1 m", px - 14, (py + L.gy) / 2 + 6, L.fs - (L.phone ? 0 : 1), "#cfe0ff", "right", "700");
+  /* launcher at O */
+  var th = (RUN.throws.length ? current().th : RUN.th) * Math.PI / 180;
+  g.save(); g.translate(X(0), L.gy); g.rotate(-th);
+  roundRect(-6, -9, L.phone ? 50 : 62, 18, 6); g.fillStyle = "#c9d3e6"; g.fill(); g.restore();
+  g.fillStyle = "#56607a"; g.beginPath(); g.arc(X(0), L.gy, 14, Math.PI, 0); g.fill();
+  label("O", X(0), L.gy + (L.phone ? 46 : 36), L.fs, "#ffffff", "center", "800");
+  /* the line of sight O -> P */
+  g.save(); g.setLineDash([6, 8]); g.strokeStyle = "rgba(255,210,120,.35)"; g.lineWidth = 1.5; g.beginPath(); g.moveTo(X(0), L.gy); g.lineTo(X(XMAX), Y(XMAX / 5)); g.stroke(); g.restore();
+}
+function drawThrow(tw, isNow){
+  var col = COL[tw.tag] || "#fff", Tv = tw.T * tw.progress, k, p, n = 90;
+  g.save(); g.strokeStyle = col; g.lineWidth = isNow ? 4 : 3; g.globalAlpha = isNow ? 1 : 0.55; g.shadowColor = col; g.shadowBlur = isNow ? 10 : 0;
+  g.beginPath();
+  for (k = 0; k <= n; k++){ p = pos(tw, Tv * k / n); if (k) g.lineTo(X(p[0]), Y(p[1])); else g.moveTo(X(p[0]), Y(p[1])); }
+  g.stroke(); g.restore();
+  p = pos(tw, Tv);
+  if (isNow && tw.progress < 1){ g.fillStyle = "#ffffff"; g.shadowColor = col; g.shadowBlur = 16; g.beginPath(); g.arc(X(p[0]), Y(p[1]), 8, 0, Math.PI * 2); g.fill(); g.shadowBlur = 0; }
+  /* the highest point, once reached */
+  var ax = ENGINE.apexX(tw.th), ay = ENGINE.apexY(tw.th);
+  if (tw.tag.charAt(0) !== "D" && isFinite(ax) && pos(tw, Tv)[0] >= ax && ax <= XMAX){
+    g.save(); g.setLineDash([4, 5]); g.strokeStyle = col; g.lineWidth = 1.8; g.beginPath(); g.moveTo(X(ax), Y(ay)); g.lineTo(X(ax), L.gy); g.stroke(); g.restore();
+    g.fillStyle = col; g.beginPath(); g.moveTo(X(ax), Y(ay) - 4); g.lineTo(X(ax) + 18, Y(ay) - 12); g.lineTo(X(ax), Y(ay) - 20); g.closePath(); g.fill();
+    if (isNow || RUN.mode === "one") label("top at x = " + ax.toFixed(3) + " m · " + (ax < 5 ? "before P" : "after P"), X(ax) + (ax < 5 ? -8 : 8), Y(ay) - 30, L.fs, col, ax < 5 ? "right" : "left", "800");
+  }
+  if (tw.tag.charAt(0) === "D" && isNow && pos(tw, Tv)[0] >= 5){
+    var miss = ENGINE.P[1] - ENGINE.yAt(tw.th, tw.v, 5);
+    pill("v = " + tw.v + "√g: " + (miss * 1000).toFixed(tw.v > 50 ? 2 : 0) + " mm below P" + (tw.v > 50 ? " (option D)" : ""), X(5) + 18, Y(1) + (L.phone ? 60 : 48), L.fs, col);
+  }
+}
+function drawReadouts(){
+  var tw = RUN.throws.length ? current() : { th: RUN.th, v: ENGINE.vReq(RUN.th), tag: "x" }, r = L.ro, i, x, y;
+  var ax = ENGINE.apexX(tw.th), y5 = isFinite(tw.v) ? ENGINE.yAt(tw.th, tw.v, 5) : null;
+  var rows = [
+    ["Launch angle θ", fmtTh(tw.th)],
+    ["Launch speed v", vtxt(tw.v)],
+    ["Highest point at", isFinite(ax) ? ax.toFixed(3) + " m" + (tw.tag.charAt(0) === "D" ? "" : ax < 5 ? " (before P)" : " (after P)") : "—"],
+    ["Height at x = 5 m", y5 === null ? "—" : (Math.abs(y5 - 1) < 1e-9 ? "1.000 m = P" : y5.toFixed(4) + " m")]
+  ];
+  panel(r.x, r.y, r.w, r.h);
+  for (i = 0; i < 4; i++){
+    if (L.phone){ x = r.x + 18 + (i % 2) * 348; y = r.y + 44 + Math.floor(i / 2) * 84; }
+    else { x = r.x + 20 + i * 290; y = r.y + 34; }
+    label(rows[i][0], x, y, L.fs - (L.phone ? 0 : 1), "#8fa6cf", "left", "700");
+    label(rows[i][1], x, y + (L.phone ? 40 : 38), L.big - (L.phone ? 3 : 0), "#ffffff", "left", "800");
+  }
+}
+function drawAudit(){
+  if (RUN.phase !== "audit") return;
+  var P = L.panel, x = P.x + 18, y = P.y + (L.phone ? 42 : 34), rowH = (P.h - (L.phone ? 60 : 50)) / 4, i, k;
+  panel(P.x, P.y, P.w, P.h);
+  label("CHECKING EACH OPTION", x, y, L.fs, "#cfe0ff", "left", "800");
+  var text = {
+    A: ["(A) v at 45°", "needs " + RUN.measured.v45.toFixed(3) + "√g = 5√g/2"],
+    B: ["(B) top before P at 45°", "top at " + RUN.measured.apex45.toFixed(3) + " m < 5 m"],
+    C: ["(C) top after P at 30°", "top at " + RUN.measured.apex30.toFixed(3) + " m < 5 m"],
+    D: ["(D) v = 125√g along tan⁻¹(1/5)", "misses P by " + (RUN.measured.misses[2] * 1000).toFixed(2) + " mm; needs ∞"]
+  };
+  for (i = 0; i < 4; i++){
+    k = ENGINE.KEYS[i]; var okk = ENGINE.OPTS[k].test(), yy = y + 18 + i * rowH;
+    roundRect(x - 8, yy, P.w - 22, rowH - 8, 10); g.fillStyle = okk ? "rgba(40,160,100,.18)" : "rgba(220,70,70,.16)"; g.fill();
+    label(text[k][0] + (okk ? "  ✓" : "  ✗"), x + 2, yy + (L.phone ? 32 : 26), L.fs + (L.phone ? 0 : 1), okk ? "#7dffb8" : "#ff9b9b", "left", "800");
+    label(text[k][1], x + 2, yy + (L.phone ? 66 : 50), L.fs, "#e6ecff", "left", "700");
+  }
+}
+function draw(){
+  minPx = 999;
+  L = layout();
+  if (cv.width !== L.W || cv.height !== L.H){ cv.width = L.W; cv.height = L.H; }
+  drawField();
+  var i; for (i = 0; i < RUN.throws.length; i++) if (i <= RUN.i) drawThrow(RUN.throws[i], i === RUN.i);
+  drawReadouts(); drawAudit();
+  label("drawn to scale in metres · no air resistance · slow motion", L.phone ? 16 : 20, L.ro.y + L.ro.h + (L.phone ? 34 : 26), L.fs - (L.phone ? 0 : 2), "rgba(190,210,240,.8)", "left", "600");
+}
+
+/* ------------------------------------------------------------ controls */
+function setSpeed(k){ RUN.speed = k; $("sp1").setAttribute("aria-pressed", k === 1 ? "true" : "false"); $("sp2").setAttribute("aria-pressed", k === 0.5 ? "true" : "false"); }
+$("gobtn").addEventListener("click", start);
+$("replaybtn").addEventListener("click", replay);
+$("resetbtn").addEventListener("click", reset);
+$("sp1").addEventListener("click", function(){ setSpeed(1); });
+$("sp2").addEventListener("click", function(){ setSpeed(0.5); });
+$("a45").addEventListener("click", function(){ setAngle(45, false); });
+$("a30").addEventListener("click", function(){ setAngle(30, false); });
+$("a11").addEventListener("click", function(){ setAngle(TH_D, false); });
+$("in_th").addEventListener("input", function(){ setAngle(this.value, true); });
+$("classbtn").addEventListener("click", function(){
+  var on = document.body.classList.toggle("classroom"); this.setAttribute("aria-pressed", on ? "true" : "false");
+  this.textContent = on ? "Exit classroom" : "Classroom";
+});
+$("themebtn").addEventListener("click", function(){
+  var r = document.documentElement, dark = r.getAttribute("data-theme") === "dark" || (!r.getAttribute("data-theme") && window.matchMedia && matchMedia("(prefers-color-scheme: dark)").matches);
+  r.setAttribute("data-theme", dark ? "light" : "dark");
+});
+
+var lastT = null;
+function loop(ts){
+  if (lastT === null) lastT = ts;
+  var dt = Math.min(0.05, Math.max(0, (ts - lastT) / 1000)); lastT = ts;
+  tick(dt); draw();
+  requestAnimationFrame(loop);
+}
+
+window.PX = {
+  ENGINE: ENGINE, QRUN: QRUN, ANS: ANS, RUN: RUN,
+  answer: function(){ return ANS; },
+  minLabelPx: function(){ draw(); return minPx; },
+  start: start, replay: replay, reset: reset, setSpeed: setSpeed, speed: function(k){ RUN.speed = k; },
+  setAngle: function(th){ setAngle(th, true); }, preset: function(th){ setAngle(th === "D" ? TH_D : th, false); },
+  state: function(){ var tw = RUN.throws.length ? current() : null; return { state: RUN.state, phase: RUN.phase, mode: RUN.mode, custom: RUN.custom, th: RUN.th, i: RUN.i, n: RUN.throws.length,
+    now: tw ? { th: tw.th, v: tw.v, tag: tw.tag, progress: tw.progress } : null, measured: RUN.measured || null, measuredAnswer: RUN.measuredAnswer || null, done: RUN.done, confirmed: RUN.confirmed }; }
+};
+
+setAngle(45, false); refreshAnswer(); refreshButtons(); draw();
+window.addEventListener("resize", function(){ draw(); });
+requestAnimationFrame(loop);
+})();
+</script>
+</body>
+</html>
