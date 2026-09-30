@@ -50,7 +50,7 @@ trap cleanup EXIT
 
 echo "=== chemistry verifiers (exact arithmetic, no browser) ==="
 echo "    python3 = $(command -v python3)"
-for f in verify15.py verify16.py verify17.py "$HERE/verify_p1q01.py" "$HERE/verify_p1q02.py" "$HERE/verify_p1q03.py" "$HERE/verify_p1q04.py" "$HERE/verify_p1q05.py" "$HERE/verify_p1q06.py" "$HERE/verify_p1q07.py" "$HERE/verify_p1q08.py" "$HERE/verify_p1q09.py" "$HERE/verify_p1q10.py" "$HERE/verify_p1q11.py" "$HERE/verify_p1q12.py" "$HERE/verify_p1q13.py" "$HERE/verify_p1q14.py" "$HERE/verify_p1q15.py" "$HERE/verify_p1q16.py" "$HERE/verify_p1phyq01.py" "$HERE/verify_p1phyq02.py"; do
+for f in verify15.py verify16.py verify17.py "$HERE/verify_p1q01.py" "$HERE/verify_p1q02.py" "$HERE/verify_p1q03.py" "$HERE/verify_p1q04.py" "$HERE/verify_p1q05.py" "$HERE/verify_p1q06.py" "$HERE/verify_p1q07.py" "$HERE/verify_p1q08.py" "$HERE/verify_p1q09.py" "$HERE/verify_p1q10.py" "$HERE/verify_p1q11.py" "$HERE/verify_p1q12.py" "$HERE/verify_p1q13.py" "$HERE/verify_p1q14.py" "$HERE/verify_p1q15.py" "$HERE/verify_p1q16.py" "$HERE/verify_p1phyq01.py" "$HERE/verify_p1phyq02.py" "$HERE/verify_p1phyq03.py"; do
   nm=$(basename "$f")
   if [ ! -f "$f" ]; then line "$nm" "MISSING (not in this tree)"; missing=$((missing+1)); continue; fi
   out=$(python3 "$f" 2>&1 | tail -1)
@@ -105,6 +105,7 @@ run "P1 Q15 ozonolysis-aldol ring lab"    "$HERE/sim_p1q15.js"
 run "P1 Q16 oxime reach lab"             "$HERE/sim_p1q16.js"
 run "P1 PHY Q1 rolling-ring bench"        "$HERE/sim_p1phyq01.js"
 run "P1 PHY Q2 flux-exclusion resonance"  "$HERE/sim_p1phyq02.js"
+run "P1 PHY Q3 corner tip-off lab"      "$HERE/sim_p1phyq03.js"
 run "production suite (prodcheck)"         "$HERE/prodcheck.js"
 make_scratch
 run "single-source propagation"            "$HERE/propagation.js"  "$SCRATCH"

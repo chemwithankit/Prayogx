@@ -17,6 +17,18 @@
               "simulations": [
                 "ADV-2026-P1-PHY-Q01"
               ]
+            },
+            "Rolling off a vertical edge - rotation about the corner, energy with the parallel-axis inertia, and loss of contact when N = 0": {
+              "subtopics": [
+                "Rolling without slipping: the contact point is at rest, so reaching the edge gives no impulse",
+                "Moment of inertia about the corner by parallel axes: I = I_cm + mR^2 = 3/2 mR^2",
+                "Energy about a fixed pivot: 3/4 m v^2 = 3/4 m v0^2 + mgR(1 - cos theta)",
+                "Radial equation at the corner: N = mg cos theta - m v^2/R; contact lost when N = 0",
+                "Leaving at once when v0^2 >= gR"
+              ],
+              "simulations": [
+                "ADV-2026-P1-PHY-Q03"
+              ]
             }
           }
         },

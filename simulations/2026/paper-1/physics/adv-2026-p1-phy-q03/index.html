@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Corner Tip-Off Lab — a rolling cylinder leaves a vertical edge — JEE Advanced 2026 Paper 1 Q.3 | PrayogX</title>
+<meta name="description" content="A solid cylinder rolls at v0 = sqrt(gR/3) to the edge of a block, turns about the corner and flies off. Watch the corner's push fall to zero at cos(theta) = 5/7 and measure the speed there: v = sqrt(5gR/7), option B. JEE Advanced 2026 Paper 1 Physics Q.3.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232a78d6'/%3E%3Cpath d='M12.5 6.5h7M13.6 6.5v7.2L7.9 24.1a1.5 1.5 0 0 0 1.3 2.3h13.6a1.5 1.5 0 0 0 1.3-2.3l-5.7-10.4V6.5' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M10.6 20.6h10.8' stroke='white' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E">
+<meta name="sim-id" content="ADV-2026-P1-PHY-Q03">
+<style>
+:root{
+  color-scheme: light;
+  --surface-0:#f4f4f1; --surface-1:#fcfcfb; --surface-2:#ececea;
+  --line:#d9d9d4; --line-strong:#bcbcb5;
+  --text-primary:#0b0b0b; --text-secondary:#52514e; --text-muted:#77766f;
+  --s1:#2a78d6; --s2:#eb6834; --s3:#1baf7a; --s4:#4a3aa7;
+  --good:#00743f; --bad:#c0392b; --accent:#2a78d6;
+  --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+  --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --serif:ui-serif,Georgia,"Times New Roman",serif;
+  --radius:12px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  color-scheme: dark;
+  --surface-0:#111110; --surface-1:#1a1a19; --surface-2:#232322;
+  --line:#34342f; --line-strong:#4a4a44;
+  --text-primary:#ffffff; --text-secondary:#c3c2b7; --text-muted:#95948b;
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#9085e9;
+  --good:#3fae7a; --bad:#e66767; --accent:#3987e5;
+}}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --surface-0:#111110; --surface-1:#1a1a19; --surface-2:#232322;
+  --line:#34342f; --line-strong:#4a4a44;
+  --text-primary:#ffffff; --text-secondary:#c3c2b7; --text-muted:#95948b;
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#9085e9;
+  --good:#3fae7a; --bad:#e66767; --accent:#3987e5;
+}
+*{box-sizing:border-box}
+[hidden]{display:none !important}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--surface-0);color:var(--text-primary);font-family:var(--sans);font-size:16px;line-height:1.6}
+header.top{border-bottom:1px solid var(--line);background:var(--surface-1)}
+.top-inner{max-width:1240px;margin:0 auto;padding:18px 20px 14px;position:relative}
+.brandbar{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.brandbar .pxmark{width:21px;height:21px;flex:none;display:block}
+.brandbar .wm{font-size:13px;font-weight:800;letter-spacing:.17em;color:var(--text-secondary);line-height:1}
+.brandbar .wm i{font-style:normal;color:var(--accent)}
+.simid{font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--text-muted)}
+h1{font-size:21px;line-height:1.3;margin:4px 0 4px;padding-right:80px}
+.meta{font-size:14px;color:var(--text-secondary);margin:0}
+.themebtn{position:absolute;top:14px;right:16px;border:1px solid var(--line-strong);background:var(--surface-2);
+  color:var(--text-secondary);border-radius:8px;padding:4px 9px;font-size:12px;cursor:pointer}
+.wrap{max-width:1240px;margin:0 auto;padding:0 20px 40px}
+section{margin:0 0 34px}
+h2{font-size:15px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-secondary);margin:26px 0 12px}
+h2 b{color:var(--accent);margin-right:8px}
+h3{font-size:17px;margin:22px 0 8px}
+/* 01 question */
+.qcard{background:var(--surface-1);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+.qtext{font-family:var(--serif);font-size:18px;line-height:1.6;flex:1 1 460px;min-width:0}
+.qfig{flex:0 0 250px;max-width:100%}
+.qfig svg{display:block;width:100%;height:auto}
+.sq{white-space:nowrap}
+.sq .rad{border-top:1.5px solid currentColor;padding:0 2px}
+#opts{list-style:none;margin:12px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+#opts li{background:var(--surface-1);border:1.5px solid var(--line);border-radius:10px;padding:10px 12px;font-family:var(--serif);font-size:19px;display:flex;gap:10px;align-items:center;min-height:52px}
+#opts li b{font-family:var(--sans);font-size:14px;color:var(--text-muted)}
+#opts li.correct{border-color:var(--good);box-shadow:0 0 0 2px color-mix(in srgb,var(--good) 25%,transparent)}
+#opts li.correct b{color:var(--good)}
+/* 02 lab */
+#keyline{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;background:var(--surface-1);border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin:0 0 8px}
+#keyline .k{font-size:13px;font-weight:800;letter-spacing:.12em;color:var(--text-muted);text-transform:uppercase}
+#ansval{font-size:22px;font-weight:800;color:var(--good)}
+#ansexpr{font-family:var(--serif);font-size:20px}
+#anssub{font-size:14px;color:var(--text-secondary);margin-left:auto}
+#keyline.blink{animation:blink .45s ease-in-out 4}
+@keyframes blink{50%{background:color-mix(in srgb,var(--good) 22%,var(--surface-1))}}
+#narr{margin:0 2px 10px;font-size:16px;color:var(--text-secondary);min-height:2.8em}
+.stage{position:relative;border-radius:16px;overflow:hidden;background:#070a12;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+canvas#labcv{display:block;width:100%;height:auto;touch-action:manipulation}
+#controls{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:12px;padding:12px;border:1px solid var(--line);border-radius:14px;background:var(--surface-1)}
+#controls button{min-height:48px;font-size:16px;font-weight:700;border-radius:10px;border:1px solid var(--line-strong);background:var(--surface-2);color:var(--text-primary);padding:0 16px;cursor:pointer;font-family:var(--sans)}
+#controls button:focus-visible,#controls input:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+#controls .go{background:var(--accent);color:#fff;border:none;font-weight:800;letter-spacing:.04em;min-width:190px}
+#controls .seg{display:flex;align-items:center;gap:0}
+#controls .seg span{font-size:13px;font-weight:700;color:var(--text-muted);margin-right:8px;letter-spacing:.06em;text-transform:uppercase}
+#controls .seg button{border-radius:0;margin-left:-1px;padding:0 13px}
+#controls .seg button:nth-child(2){border-radius:10px 0 0 10px}
+#controls .seg button:last-child{border-radius:0 10px 10px 0}
+#controls .seg button[aria-pressed="true"]{background:var(--accent);color:#fff;border-color:var(--accent)}
+#controls .v0{display:flex;flex-wrap:wrap;align-items:center;gap:10px;flex:1 1 520px;min-width:0}
+#controls .v0 label{font-size:15px;font-weight:700;white-space:nowrap}
+#controls input[type=range]{flex:1 1 150px;min-width:110px;min-height:44px;accent-color:var(--accent);margin:0}
+#v0out{font-family:var(--mono);font-size:15px;min-width:92px}
+#warn{margin:10px 2px 0;font-size:15px;color:var(--s2);font-weight:600}
+/* 03 solution */
+.sol{background:var(--surface-1);border:1px solid var(--line);border-radius:var(--radius);padding:6px 20px 16px}
+.sol ol.steps{padding-left:22px;margin:10px 0}
+.sol ol.steps li{margin:0 0 12px}
+.eq{font-family:var(--serif);font-size:18px;background:var(--surface-2);border-radius:8px;padding:8px 12px;margin:6px 0;overflow-x:auto}
+.solfig{display:flex;gap:18px;align-items:center;flex-wrap:wrap;margin:8px 0 12px}
+.solfig svg{flex:0 0 300px;max-width:100%;height:auto}
+.solfig p{flex:1 1 300px;margin:0}
+table.opt{border-collapse:collapse;width:100%;font-size:15px;margin:8px 0}
+table.opt th,table.opt td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+table.opt th{background:var(--surface-2)}
+table.opt tr.ok td{background:color-mix(in srgb,var(--good) 10%,transparent)}
+.tscroll{overflow-x:auto}
+.concept{border-left:4px solid var(--accent);padding:2px 0 2px 14px;margin:14px 0}
+ul.take{padding-left:20px} ul.take li{margin:0 0 6px}
+#solans{font-weight:800;color:var(--good)}
+.note{font-size:14px;color:var(--text-secondary)}
+/* 04 analysis */
+svg.chart{display:block;width:100%;max-width:760px;height:auto;background:var(--surface-1);border:1px solid var(--line);border-radius:12px}
+.chart text{font-family:var(--sans);fill:var(--text-secondary)}
+.cap{font-size:14px;color:var(--text-secondary);max-width:760px}
+/* how to */
+ol.howto{padding-left:22px;margin:0} ol.howto li{margin:0 0 8px}
+footer{font-size:13px;color:var(--text-muted);border-top:1px solid var(--line);padding:16px 0 0}
+/* classroom */
+body.classroom .wrap{max-width:none;padding:0 18px 30px}
+body.classroom header.top,body.classroom section:not(#lab),body.classroom footer{display:none}
+body.classroom #narr{font-size:24px;color:var(--text-primary)}
+body.classroom #keyline #ansexpr{font-size:26px}
+@media (max-width:760px){
+  .wrap{padding:0 16px 32px}
+  .top-inner{padding:14px 16px 12px}
+  h1{font-size:18px}
+  .qtext{font-size:17px}
+  .qfig{flex-basis:100%}
+  .qfig svg{max-width:260px;margin:0 auto}
+  #opts{grid-template-columns:repeat(2,minmax(0,1fr))}
+  #anssub{margin-left:0}
+  #controls{gap:8px;padding:10px}
+  #controls .go{flex:1 1 100%}
+  #controls button{padding:0 12px}
+  #controls .v0{flex-basis:100%;flex-wrap:wrap}
+  #controls .v0 input[type=range]{flex:1 1 100%;order:3}
+  .solfig svg{flex-basis:100%}
+  .sol{padding:4px 14px 12px}
+}
+@media (prefers-reduced-motion: reduce){#keyline.blink{animation:none}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-inner">
+    <div class="brandbar"><svg class="pxmark" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><rect width="32" height="32" rx="8" fill="var(--accent)"/><path d="M12.5 6.5h7M13.6 6.5v7.2L7.9 24.1a1.5 1.5 0 0 0 1.3 2.3h13.6a1.5 1.5 0 0 0 1.3-2.3l-5.7-10.4V6.5" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.6 20.6h10.8" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg><span class="wm">PRAYOG<i>X</i></span></div>
+    <div class="simid">ADV-2026-P1-PHY-Q03</div>
+    <h1>Corner Tip-Off Lab — when does a rolling cylinder leave the edge?</h1>
+    <p class="meta">JEE Advanced 2026 · Paper 1 · Physics · Q.3 · single correct option (+3 / 0 / −1) · Rotational mechanics</p>
+    <button class="themebtn" id="themebtn" type="button">◐ theme</button>
+  </div>
+</header>
+
+<main class="wrap">
+
+<section id="question" aria-labelledby="qh">
+  <h2 id="qh"><b>01</b>The question</h2>
+  <div class="qcard">
+    <div class="qtext">Q.3 A solid cylinder of radius <i>R</i> rolls without slipping with a center of mass speed <i>v</i><sub>0</sub> = <span class="sq">√<span class="rad"><i>gR</i>/3</span></span> on a horizontal surface with a vertical edge, as shown in the figure. Here, <i>g</i> is the acceleration due to the gravity. At the moment when the cylinder loses contact with the surface due to rotation around the corner, the speed of its center of mass is:</div>
+    <div class="qfig">
+      <svg viewBox="0 0 260 150" role="img" aria-label="Figure from the question: a cylinder on the top of a hatched block, moving right with speed v0 towards the block's vertical edge">
+        <defs><pattern id="qhatch" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="7" height="7" fill="none"/><line x1="0" y1="0" x2="0" y2="7" stroke="currentColor" stroke-width="2"/></pattern></defs>
+        <rect x="8" y="78" width="200" height="66" fill="url(#qhatch)" stroke="currentColor" stroke-width="1.5" style="color:var(--text-secondary)"/>
+        <circle cx="52" cy="50" r="28" fill="var(--surface-2)" stroke="currentColor" stroke-width="1.5" style="color:var(--text-primary)"/>
+        <line x1="52" y1="50" x2="112" y2="50" stroke="currentColor" stroke-width="1.5" style="color:var(--text-primary)"/>
+        <path d="M112 46 L121 50 L112 54 Z" fill="currentColor" style="color:var(--text-primary)"/>
+        <text x="128" y="56" font-family="Georgia,serif" font-style="italic" font-size="18" fill="currentColor" style="color:var(--text-primary)">v<tspan font-size="12" dy="4">0</tspan></text>
+      </svg>
+    </div>
+  </div>
+  <ol id="opts" aria-label="options">
+    <li data-o="A"><b>(A)</b><span>0</span></li>
+    <li data-o="B"><b>(B)</b><span class="sq">√<span class="rad">5<i>gR</i>/7</span></span></li>
+    <li data-o="C"><b>(C)</b><span class="sq">√<span class="rad"><i>gR</i>/15</span></span></li>
+    <li data-o="D"><b>(D)</b><span class="sq">√<span class="rad">3<i>gR</i>/7</span></span></li>
+  </ol>
+</section>
+
+<section id="lab" aria-labelledby="lh">
+  <h2 id="lh"><b>02</b>The experiment</h2>
+  <div id="keyline" aria-live="polite">
+    <span class="k">Answer</span><span id="ansval">—</span><span id="ansexpr"></span>
+    <span id="anssub">Press START: the run measures it at the moment contact is lost.</span>
+  </div>
+  <p id="narr" aria-live="polite">Ready.</p>
+  <div class="stage"><canvas id="labcv" width="1200" height="720" role="img" aria-label="Experiment: a solid steel cylinder rolls along the top of a stone block, turns about the block's corner and leaves it; the corner's push, the speed and the angle are measured on the scene"></canvas></div>
+  <div id="controls" role="group" aria-label="experiment controls">
+    <button class="go" type="button" id="gobtn">▶ START EXPERIMENT</button>
+    <button type="button" id="replaybtn">↺ Replay</button>
+    <button type="button" id="resetbtn">Reset</button>
+    <div class="seg" role="group" aria-label="speed"><span>Speed</span><button type="button" id="sp1" aria-pressed="true">1×</button><button type="button" id="sp2" aria-pressed="false">½×</button><button type="button" id="sp4" aria-pressed="false">¼×</button></div>
+    <div class="seg" role="group" aria-label="force arrows"><span>Forces</span><button type="button" id="fon" aria-pressed="true">ON</button><button type="button" id="foff" aria-pressed="false">OFF</button></div>
+    <div class="v0"><label for="in_v0">Launch speed v₀</label><input type="range" id="in_v0" min="0.2" max="1.2" step="0.005" value="0.5774" aria-describedby="v0out"><output id="v0out" for="in_v0">√(gR/3)</output><button type="button" id="qbtn">Question value</button></div>
+    <button type="button" id="classbtn" aria-pressed="false">Classroom</button>
+  </div>
+  <p id="warn" hidden></p>
+</section>
+
+<section id="solution" aria-labelledby="sh">
+  <h2 id="sh"><b>03</b>Detailed solution</h2>
+  <div class="sol">
+    <p>Answer: <span id="solans">—</span> &nbsp;<i>v</i> = √(5<i>gR</i>/7) ≈ 0.845 √(<i>gR</i>).</p>
+    <ol class="steps">
+      <li><b>Reaching the edge — no jolt.</b> In rolling without slipping the contact point is momentarily at rest. When that point arrives at the corner, the corner simply becomes the pivot: nothing hits anything, so there is no impulse. The cylinder carries on with ω = <i>v</i>₀/<i>R</i>, now turning about the corner. (Check: angular momentum about the corner before, <i>I</i><sub>cm</sub>ω + <i>mv</i>₀<i>R</i> = (3/2)<i>mRv</i>₀, equals <i>I</i><sub>corner</sub>ω after.)</li>
+      <li><b>Turning about the corner.</b> The centre moves on a circle of radius <i>R</i> about the corner. Let θ be the angle of the line corner → centre from the vertical. The speed of the centre is <i>v</i> = <i>R</i>ω, and the moment of inertia about the corner is
+        <div class="eq"><i>I</i><sub>corner</sub> = ½<i>mR</i>² + <i>mR</i>² = (3/2)<i>mR</i>²,&nbsp;&nbsp; KE = ½<i>I</i><sub>corner</sub>ω² = ¾<i>mv</i>².</div></li>
+      <li><b>Energy.</b> Only gravity does work (the corner does not move). The centre drops by <i>R</i>(1 − cos θ):
+        <div class="eq">¾<i>mv</i>² = ¾<i>mv</i>₀² + <i>mgR</i>(1 − cos θ).</div></li>
+      <li><b>The corner's push.</b> Along the radius towards the corner, gravity's component minus the corner's push <i>N</i> provides the centripetal force:
+        <div class="eq"><i>mg</i> cos θ − <i>N</i> = <i>mv</i>²/<i>R</i> &nbsp;⇒&nbsp; <i>N</i> = <i>mg</i> cos θ − <i>mv</i>²/<i>R</i>.</div>
+        As θ grows, cos θ falls and <i>v</i> rises, so <i>N</i> falls. The experiment's N arrow shows exactly this.</li>
+      <li><b>Losing contact: N = 0.</b> Then <i>v</i>² = <i>gR</i> cos θ. Put it in the energy equation with <i>v</i>₀² = <i>gR</i>/3:
+        <div class="eq">¾<i>gR</i> cos θ = ¾·<i>gR</i>/3 + <i>gR</i> − <i>gR</i> cos θ &nbsp;⇒&nbsp; (7/4) cos θ = 5/4 &nbsp;⇒&nbsp; cos θ = 5/7 (θ ≈ 44.4°).</div>
+        <div class="eq"><i>v</i>² = <i>gR</i> cos θ = 5<i>gR</i>/7 &nbsp;⇒&nbsp; <i>v</i> = √(5<i>gR</i>/7) — option <b>(B)</b>.</div></li>
+      <li><b>Why it does not leave at once.</b> At the edge (θ = 0) the corner must supply <i>N</i> = <i>mg</i> − <i>mv</i>₀²/<i>R</i> = (2/3)<i>mg</i> &gt; 0. It stays on until θ ≈ 44.4°. In general cos θ = (3<i>v</i>₀²/<i>gR</i> + 4)/7. If <i>v</i>₀² ≥ <i>gR</i>, the cylinder leaves right at the edge with <i>v</i> = <i>v</i>₀: try it with the v₀ slider.</li>
+    </ol>
+    <div class="solfig">
+      <svg viewBox="0 0 300 220" role="img" aria-label="Free-body diagram at angle theta: the cylinder's centre is on a circle of radius R about the corner; gravity mg acts down, the corner pushes with N along the radius and friction f acts along the tangent">
+        <defs><marker id="sfa" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 Z" fill="currentColor"/></marker></defs>
+        <g style="color:var(--text-secondary)"><rect x="10" y="150" width="120" height="66" fill="var(--surface-2)" stroke="currentColor"/></g>
+        <circle cx="130" cy="150" r="4" fill="var(--s2)"/>
+        <path d="M130 150 m0 -80 a80 80 0 0 1 80 80" fill="none" stroke="var(--line-strong)" stroke-dasharray="5 5"/>
+        <circle cx="186" cy="93" r="80" fill="none" stroke="var(--text-primary)" stroke-width="1.5" opacity=".75"/>
+        <line x1="130" y1="150" x2="186" y2="93" stroke="var(--text-secondary)" stroke-dasharray="3 3"/>
+        <line x1="130" y1="150" x2="130" y2="84" stroke="var(--text-secondary)" stroke-dasharray="3 3"/>
+        <path d="M130 118 A32 32 0 0 1 152 127" fill="none" stroke="var(--text-secondary)"/>
+        <text x="136" y="112" font-size="14" font-style="italic">θ</text>
+        <g style="color:var(--s1)"><line x1="186" y1="93" x2="186" y2="160" stroke="currentColor" stroke-width="2.5" marker-end="url(#sfa)"/><text x="192" y="160" font-size="14" fill="currentColor"><tspan font-style="italic">mg</tspan></text></g>
+        <g style="color:var(--s3)"><line x1="130" y1="150" x2="163" y2="116" stroke="currentColor" stroke-width="2.5" marker-end="url(#sfa)"/><text x="160" y="136" font-size="14" fill="currentColor" font-style="italic">N</text></g>
+        <g style="color:var(--s2)"><line x1="130" y1="150" x2="108" y2="128" stroke="currentColor" stroke-width="2.5" marker-end="url(#sfa)"/><text x="98" y="124" font-size="14" fill="currentColor" font-style="italic">f</text></g>
+        <circle cx="186" cy="93" r="3.5" fill="var(--text-primary)"/>
+        <text x="194" y="88" font-size="13">centre</text>
+        <text x="88" y="170" font-size="13">corner</text>
+      </svg>
+      <p class="note">The centre moves on the dashed circle about the corner. <i>N</i> points from the corner to the centre. Friction <i>f</i> acts along the tangent and keeps the cylinder from slipping. The needed amount is <i>f</i> = (1/3)<i>mg</i> sin θ, from the torque about the centre. As <i>N</i> → 0 the ratio <i>f</i>/<i>N</i> grows without limit, so a real corner would let the cylinder slip slightly before θ = 44.4°. The question, and this experiment, take the ideal grip that it states: "rotation around the corner".</p>
+    </div>
+    <h3>Every option</h3>
+    <div class="tscroll"><table class="opt" aria-label="all four options checked">
+      <thead><tr><th>Option</th><th><i>v</i>²/<i>gR</i></th><th>What it would mean</th></tr></thead>
+      <tbody>
+        <tr><td>(A) 0</td><td>0</td><td>The cylinder would have to stop. But it starts with <i>v</i>₀² = <i>gR</i>/3, and gravity only adds energy as the centre falls. Impossible.</td></tr>
+        <tr class="ok"><td>(B) √(5<i>gR</i>/7)</td><td>5/7 ≈ 0.714</td><td>Energy about the corner with <i>N</i> = 0: cos θ = 5/7. This is what the experiment measures. <b>Correct.</b></td></tr>
+        <tr><td>(C) √(<i>gR</i>/15)</td><td>1/15 ≈ 0.067</td><td>Less than <i>v</i>₀² = <i>gR</i>/3: the cylinder would have slowed down while falling. Impossible.</td></tr>
+        <tr><td>(D) √(3<i>gR</i>/7)</td><td>3/7 ≈ 0.429</td><td>It would need cos θ = 3/7. There, energy gives <i>v</i>² = (23/21)<i>gR</i>, so <i>N</i> = <i>mg</i>(3/7 − 23/21) = −(2/3)<i>mg</i> &lt; 0: contact is already lost. It is what you get by <i>subtracting</i> the initial kinetic energy instead of adding it.</td></tr>
+      </tbody>
+    </table></div>
+    <h3>Understand the concept</h3>
+    <div class="concept">A body turning about a fixed point stays in contact only while the support pushes, <i>N</i> ≥ 0. Contact ends when the pull of gravity towards the pivot (<i>mg</i> cos θ) is no more than the centripetal force the motion needs (<i>mv</i>²/<i>R</i>). Energy decides <i>v</i>; the contact condition decides where. For a rolling body, the kinetic energy about the contact point is ½<i>I</i><sub>contact</sub>ω². That includes both the translation and the spin: ¾<i>mv</i>² for a solid cylinder, <i>mv</i>² for a ring, (7/10)<i>mv</i>² for a solid sphere.</div>
+    <h3>Key takeaways</h3>
+    <ul class="take">
+      <li>At the edge, a rolling body pivots about the corner with no impulse: its contact point is already at rest.</li>
+      <li>Use <i>I</i> about the pivot, (3/2)<i>mR</i>² for a solid cylinder, so KE = ¾<i>mv</i>².</li>
+      <li>Leaving the surface means <i>N</i> = 0, i.e. <i>v</i>² = <i>gR</i> cos θ.</li>
+      <li>Solid cylinder: cos θ = (3<i>v</i>₀²/<i>gR</i> + 4)/7. For <i>v</i>₀² = <i>gR</i>/3 this gives 5/7, so <i>v</i> = √(5<i>gR</i>/7).</li>
+      <li>If <i>v</i>₀² ≥ <i>gR</i>, it leaves at the edge itself.</li>
+    </ul>
+    <p class="note">Verification: independent derivation, a Newton–Euler integration that does not use the energy equation, and the page's own engine run by <code>tests/verify_p1phyq03.py</code>. The official key (B) and the MathonGo solution (B) agree. Status: script-verified by the PrayogX simulation factory; no review by a person has been recorded.</p>
+  </div>
+</section>
+
+<section id="analysis" aria-labelledby="ah">
+  <h2 id="ah"><b>04</b>Energy against grip</h2>
+  <svg class="chart" id="chart" viewBox="0 0 640 320" role="img" aria-label="Chart against the angle theta: the v squared over gR the cylinder has, from energy, rises; the most the corner can hold, cos theta, falls; they cross where contact is lost"></svg>
+  <p class="cap">Blue: <i>v</i>²/<i>gR</i> the cylinder has at each angle (energy). Green: the most the corner can hold, cos θ (where <i>N</i> = 0). While blue is below green, the corner pushes. Where they cross, contact is lost. Both curves come from the model and follow the v₀ slider.</p>
+</section>
+
+<section id="howto" aria-labelledby="hh">
+  <h2 id="hh">How to use this simulation</h2>
+  <ol class="howto">
+    <li>Press <b>▶ START EXPERIMENT</b>. The cylinder rolls to the edge and turns about the corner.</li>
+    <li>Watch the green <b>N</b> arrow at the corner shrink, and the readouts for <i>v</i>, <i>v</i>²/<i>gR</i> and θ.</li>
+    <li>The run freezes when contact is lost: N = 0 at θ = 44.4°, <i>v</i>² = 5<i>gR</i>/7. Then the cylinder flies off on a parabola.</li>
+    <li>Drag <b>v₀</b> to try other launch speeds, and press <b>Question value</b> to return to √(gR/3). Use <b>Speed</b> and <b>Forces</b> to slow it down or hide the arrows.</li>
+    <li><b>Replay</b> runs it again. <b>Reset</b> returns to the start. <b>Classroom</b> fills the screen for a projector.</li>
+  </ol>
+</section>
+
+<footer>
+  ADV-2026-P1-PHY-Q03 · PrayogX · JEE Advanced Interactive Simulation Library · question text reproduced
+  from the official JEE (Advanced) 2026 Paper 1 for educational use. This is a virtual laboratory only.
+  The cylinder, block and speeds are drawn to scale in units of R and √(gR). Arrow lengths show the forces in units of mg.
+</footer>
+</main>
+
+<script>
+(function(){
+"use strict";
+/* ENGINE-BEGIN */
+/* Units: R = 1, g = 1, so speeds are in sqrt(gR), time in sqrt(R/g), forces in mg.
+   theta: angle of the line corner -> centre from the vertical, while the cylinder turns about the corner. */
+var ENGINE = (function(){
+  var OPTS = [                                    /* the printed options, as v^2/(gR) */
+    { key: "A", text: "0", v2: 0 },
+    { key: "B", text: "√(5gR/7)", v2: 5 / 7 },
+    { key: "C", text: "√(gR/15)", v2: 1 / 15 },
+    { key: "D", text: "√(3gR/7)", v2: 3 / 7 }
+  ];
+  var Q = { u: 1 / 3, question: true };           /* u = v0^2/(gR): the question's v0 = sqrt(gR/3) */
+  var I_CM = 0.5, I_PIV = I_CM + 1;               /* solid cylinder, in m R^2; parallel axes to the corner */
+  /* energy about the corner: (1/2) I_PIV v^2 = (1/2) I_PIV u + (1 - cos th) */
+  function v2At(u, th){ return u + (1 - Math.cos(th)) / (0.5 * I_PIV); }
+  function normal(u, th){ return Math.cos(th) - v2At(u, th); }   /* N/mg = cos th - v^2/(gR) */
+  function friction(th){ return Math.sin(th) * I_CM / I_PIV; }   /* f/mg that stops slipping at the corner */
+  /* release: N = 0 and energy together */
+  function release(u){
+    if (!(u > 0)) u = 0;
+    if (normal(u, 0) <= 0) return { cos: 1, theta: 0, v2: u, immediate: true };
+    var k = 1 / (0.5 * I_PIV);                    /* v^2 = u + k (1 - c) = c, so c = (u + k)/(1 + k) */
+    var c = (u + k) / (1 + k);
+    return { cos: c, theta: Math.acos(c), v2: c, immediate: false };
+  }
+  /* Newton-Euler about the corner, no energy equation: I_PIV theta'' = sin theta */
+  function deriv(s){ return [s[1], Math.sin(s[0]) / I_PIV]; }
+  function rk4(s, h){
+    var a = deriv(s), b = deriv([s[0] + h / 2 * a[0], s[1] + h / 2 * a[1]]),
+        c = deriv([s[0] + h / 2 * b[0], s[1] + h / 2 * b[1]]), d = deriv([s[0] + h * c[0], s[1] + h * c[1]]);
+    return [s[0] + h / 6 * (a[0] + 2 * b[0] + 2 * c[0] + d[0]), s[1] + h / 6 * (a[1] + 2 * b[1] + 2 * c[1] + d[1])];
+  }
+  function pivotN(s){ return Math.cos(s[0]) - s[1] * s[1]; }      /* N/mg from the radial equation */
+  /* step the pivot by h; if N reaches 0 inside the step, return the exact release state */
+  function pivotStep(s, h){
+    var n = rk4(s, h);
+    if (pivotN(n) > 0) return { s: n, h: h, released: false };
+    var lo = 0, hi = h, k, m;
+    for (k = 0; k < 60; k++){ m = (lo + hi) / 2; if (pivotN(rk4(s, m)) > 0) lo = m; else hi = m; }
+    return { s: rk4(s, hi), h: hi, released: true };
+  }
+  function simulate(u, h){
+    var s = [0, Math.sqrt(Math.max(u, 0))], t = 0, i, r;
+    h = h || 0.001;
+    if (pivotN(s) <= 0) return { theta: 0, cos: 1, v2: u, t: 0, immediate: true };
+    for (i = 0; i < 1000000; i++){
+      r = pivotStep(s, h); t += r.h; s = r.s;
+      if (r.released) return { theta: s[0], cos: Math.cos(s[0]), v2: s[1] * s[1], t: t, immediate: false };
+    }
+    return null;
+  }
+  function frac(x){
+    for (var d = 1; d <= 60; d++){ var n = Math.round(x * d); if (Math.abs(n / d - x) < 1e-9) return { n: n, d: d }; }
+    return null;
+  }
+  function run(q){
+    var u = q.u, r = release(u), hits = [], i;
+    for (i = 0; i < OPTS.length; i++) if (Math.abs(OPTS[i].v2 - r.v2) < 1e-9) hits.push(OPTS[i]);
+    var R = { u: u, cos: r.cos, theta: r.theta, thetaDeg: r.theta * 180 / Math.PI, v2: r.v2, v: Math.sqrt(r.v2),
+              immediate: r.immediate, v2frac: frac(r.v2), cosfrac: frac(r.cos), n0: normal(u, 0), hits: hits };
+    R.answer = hits.length === 1 && q.question ? hits[0].key : null;
+    return R;
+  }
+  return { OPTS: OPTS, Q: Q, I_CM: I_CM, I_PIV: I_PIV, v2At: v2At, normal: normal, friction: friction,
+           release: release, deriv: deriv, rk4: rk4, pivotN: pivotN, pivotStep: pivotStep, simulate: simulate, frac: frac, run: run };
+})();
+/* ENGINE-END */
+
+var QRUN = ENGINE.run(ENGINE.Q);
+var ANS = QRUN.answer;
+var OPT = {}; (function(){ for (var i = 0; i < ENGINE.OPTS.length; i++) OPT[ENGINE.OPTS[i].key] = ENGINE.OPTS[i]; })();
+
+function $(id){ return document.getElementById(id); }
+var cv = $("labcv"), g = cv.getContext("2d");
+var reduced = !!(window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches);
+var TS = 2.0;                                      /* world time units per real second at 1x */
+var HOLD = 1.5;                                    /* real seconds the release moment is frozen */
+
+var RUN = {
+  state: "setup", phase: "ready", speed: 1, u: ENGINE.Q.u, question: true, forces: true,
+  x: 0, y: 1, phi: 0, s: null, t: 0, hold: 0, rel: null, trail: [], measured: null, done: false, v: 0, v2: 0, th: null, N: 1,
+  confirmed: false, landX: null
+};
+var L = null;                                      /* current layout (desktop / phone) */
+var minPx = 999;
+
+function layout(){
+  var phone = document.documentElement.clientWidth < 700;
+  if (phone) return { phone: true, W: 720, H: 820, S: 118, ox: 312, oy: 468, depth: 2.4, x0: -1.45, f: 1.0 };
+  return { phone: false, W: 1200, H: 720, S: 140, ox: 560, oy: 372, depth: 2.2, x0: -2.4, f: 0.62 };
+}
+function X(x){ return L.ox + x * L.S; }
+function Y(y){ return L.oy - y * L.S; }
+function fs(px){ return Math.round(px); }
+
+/* --------------------------------------------------------------- the run */
+function resetRun(){
+  RUN.state = "setup"; RUN.phase = "ready"; RUN.x = L ? L.x0 : -2.4; RUN.y = 1; RUN.phi = 0; RUN.s = null; RUN.t = 0; RUN.hold = 0;
+  RUN.rel = null; RUN.trail = []; RUN.measured = null; RUN.done = false; RUN.th = null; RUN.N = 1; RUN.landX = null;
+  RUN.v2 = RUN.u; RUN.v = Math.sqrt(RUN.u);
+}
+function v0(){ return Math.sqrt(RUN.u); }
+function enterPivot(){
+  RUN.phase = "pivot"; RUN.s = [0, v0()]; RUN.x = 0; RUN.y = 1; RUN.th = 0;
+  if (ENGINE.pivotN(RUN.s) <= 0) doRelease(0, v0());
+}
+function doRelease(th, w){
+  RUN.phase = "release"; RUN.hold = HOLD; RUN.th = th; RUN.N = 0;
+  RUN.v2 = w * w; RUN.v = w;
+  RUN.rel = { th: th, x: Math.sin(th), y: Math.cos(th), vx: w * Math.cos(th), vy: -w * Math.sin(th), w: w, t: 0 };
+  RUN.x = RUN.rel.x; RUN.y = RUN.rel.y;
+  RUN.measured = { v2: w * w, cos: Math.cos(th), thetaDeg: th * 180 / Math.PI, v: w };
+  var hit = null, i;
+  for (i = 0; i < ENGINE.OPTS.length; i++) if (Math.abs(ENGINE.OPTS[i].v2 - RUN.measured.v2) < 1e-6) hit = ENGINE.OPTS[i].key;
+  RUN.measured.option = hit;
+  if (RUN.question && hit === ANS){ RUN.confirmed = true; confirmAnswer(); }
+  narrate();
+}
+function landY(){ return -L.depth + 1; }
+function stepWorld(dt){
+  var guard = 0;
+  while (dt > 1e-12 && guard++ < 100000){
+    if (RUN.phase === "roll"){
+      var need = (0 - RUN.x) / v0();
+      if (dt < need){ RUN.x += v0() * dt; RUN.phi += v0() * dt; RUN.v = v0(); RUN.v2 = RUN.u; RUN.N = 1; return; }
+      RUN.phi += v0() * need; dt -= need; enterPivot(); narrate();
+    } else if (RUN.phase === "pivot"){
+      var h = Math.min(0.004, dt), r = ENGINE.pivotStep(RUN.s, h);
+      RUN.phi += r.s[0] - RUN.s[0]; RUN.s = r.s; dt -= r.h;
+      RUN.th = r.s[0]; RUN.x = Math.sin(RUN.th); RUN.y = Math.cos(RUN.th); RUN.v = r.s[1]; RUN.v2 = r.s[1] * r.s[1];
+      RUN.N = Math.max(0, ENGINE.pivotN(r.s));
+      if (r.released){ doRelease(r.s[0], r.s[1]); return; }
+    } else if (RUN.phase === "flight"){
+      var R0 = RUN.rel, t1 = R0.t + dt, yl = landY();
+      var yy = R0.y + R0.vy * t1 - 0.5 * t1 * t1;
+      if (yy <= yl){
+        t1 = (R0.vy + Math.sqrt(R0.vy * R0.vy + 2 * (R0.y - yl)));   /* the landing instant */
+        RUN.phi += R0.w * (t1 - R0.t); R0.t = t1;
+        RUN.x = R0.x + R0.vx * t1; RUN.y = yl; RUN.landX = RUN.x;
+        RUN.v2 = R0.vx * R0.vx + (R0.vy - t1) * (R0.vy - t1); RUN.v = Math.sqrt(RUN.v2);
+        RUN.phase = "done"; RUN.state = "done"; RUN.done = true; narrate(); refreshButtons(); return;
+      }
+      RUN.phi += R0.w * dt; R0.t = t1; RUN.x = R0.x + R0.vx * t1; RUN.y = yy;
+      RUN.v2 = R0.vx * R0.vx + (R0.vy - t1) * (R0.vy - t1); RUN.v = Math.sqrt(RUN.v2);
+      return;
+    } else return;
+  }
+}
+function tick(realDt){
+  if (RUN.state !== "running") return;
+  if (RUN.phase === "release"){
+    RUN.hold -= realDt;
+    if (RUN.hold <= 0){ RUN.phase = "flight"; narrate(); }
+    return;
+  }
+  stepWorld(realDt * TS * RUN.speed);
+  var tr = RUN.trail, last = tr[tr.length - 1];
+  if (!last || Math.abs(last[0] - RUN.x) + Math.abs(last[1] - RUN.y) > 0.02){ tr.push([RUN.x, RUN.y]); if (tr.length > 3000) tr.shift(); }
+}
+/* reduced motion: the whole run is computed at once and the release moment is shown */
+function runInstant(){
+  RUN.phase = "roll"; RUN.state = "running";
+  var tr = [], k;
+  for (k = 0; k <= 20; k++) tr.push([L.x0 * (1 - k / 20), 1]);
+  var sim = ENGINE.simulate(RUN.u, 0.001);
+  var s = [0, v0()], i;
+  if (!sim.immediate){ for (i = 0; i < 400; i++){ var r = ENGINE.pivotStep(s, sim.t / 400 * 1.0001); s = r.s; tr.push([Math.sin(s[0]), Math.cos(s[0])]); if (r.released) break; } }
+  var th = sim.theta, w = Math.sqrt(sim.v2);
+  doRelease(th, w);
+  var R0 = RUN.rel, yl = landY(), tl = R0.vy + Math.sqrt(R0.vy * R0.vy + 2 * (R0.y - yl));
+  for (k = 0; k <= 40; k++){ var t = tl * k / 40; tr.push([R0.x + R0.vx * t, R0.y + R0.vy * t - 0.5 * t * t]); }
+  RUN.trail = tr; RUN.landX = R0.x + R0.vx * tl;
+  RUN.phase = "done"; RUN.state = "done"; RUN.done = true; RUN.hold = 0;
+  RUN.x = R0.x; RUN.y = R0.y; RUN.phi = th + 0.6; RUN.v2 = R0.w * R0.w; RUN.v = R0.w; RUN.N = 0; RUN.th = th;
+  RUN.showRelease = true;
+  narrate(); refreshButtons();
+}
+function start(){
+  if (RUN.state === "running"){ RUN.state = "paused"; refreshButtons(); narrate(); return; }
+  if (RUN.state === "paused"){ RUN.state = "running"; refreshButtons(); narrate(); return; }
+  if (RUN.state === "done") resetRun();
+  RUN.showRelease = false;
+  if (reduced){ runInstant(); return; }
+  RUN.phase = "roll"; RUN.state = "running"; narrate(); refreshButtons();
+}
+function replay(){ resetRun(); RUN.showRelease = false; if (reduced){ runInstant(); return; } RUN.phase = "roll"; RUN.state = "running"; narrate(); refreshButtons(); }
+function reset(){ resetRun(); RUN.showRelease = false; narrate(); refreshButtons(); }
+
+/* ------------------------------------------------------------ words */
+function num(x, d){ return (Math.round(x * Math.pow(10, d)) / Math.pow(10, d)).toFixed(d); }
+function sqrtText(v2){
+  var f = ENGINE.frac(v2);
+  if (f && f.d > 1 && f.n > 0) return "√(" + (f.n === 1 ? "" : f.n) + "gR/" + f.d + ")";
+  if (f && f.d === 1) return f.n === 0 ? "0" : f.n === 1 ? "√(gR)" : "√(" + f.n + "gR)";
+  return num(Math.sqrt(v2), 3) + " √(gR)";
+}
+function v0Text(){ return RUN.question ? "√(gR/3)" : num(v0(), 3) + " √(gR)"; }
+function narrate(){
+  var t, rel = ENGINE.release(RUN.u);
+  if (RUN.phase === "ready") t = "Ready. The cylinder rolls at v₀ = " + v0Text() + " towards the edge. Press START.";
+  else if (RUN.phase === "roll") t = "Rolling without slipping: v = v₀ and ω = v₀/R. The point touching the block is momentarily at rest.";
+  else if (RUN.phase === "pivot") t = "At the edge the corner becomes the pivot. The centre swings on a circle of radius R, gravity speeds it up, and the corner's push N falls.";
+  else if (RUN.phase === "release") t = RUN.rel.th === 0 ? "v₀² ≥ gR: gravity cannot hold it even at the top of the corner. It leaves at once with v = v₀."
+    : "N = 0: contact lost at θ = " + num(RUN.measured.thetaDeg, 1) + "° (cos θ = " + (RUN.question ? "5/7" : num(RUN.measured.cos, 3)) + "). Here v² = gR cos θ, so v = " + sqrtText(RUN.measured.v2) + ".";
+  else if (RUN.phase === "flight") t = "Free flight: the centre follows a parabola. The spin ω stays constant, because no torque acts in the air.";
+  else t = "Measured at the moment of release: v = " + sqrtText(RUN.measured.v2) + " ≈ " + num(RUN.measured.v, 3) + " √(gR)" +
+    (RUN.question ? (RUN.measured.option ? ": option (" + RUN.measured.option + ")." : ".") : ". (Your v₀, not the question's.)");
+  if (RUN.state === "paused") t = "Paused. " + t;
+  $("narr").textContent = t;
+  var w = $("warn");
+  if (!RUN.question){
+    w.hidden = false;
+    w.textContent = rel.immediate ? "v₀² = " + num(RUN.u, 3) + " gR ≥ gR: the corner cannot hold the cylinder at all, so it leaves at the edge. This is not the question's set-up; press Question value to go back."
+      : "Custom v₀ = " + num(v0(), 3) + " √(gR): it leaves at cos θ = (3v₀²/gR + 4)/7 = " + num(rel.cos, 3) + ". This is not the question's set-up; press Question value to go back.";
+  } else w.hidden = true;
+}
+function confirmAnswer(){
+  $("anssub").textContent = "Confirmed by the run: N = 0 at cos θ = 5/7, v² = " + num(RUN.measured.v2, 4) + " gR.";
+  var k = $("keyline");
+  if (!reduced){ k.classList.remove("blink"); void k.offsetWidth; k.classList.add("blink"); setTimeout(function(){ k.classList.remove("blink"); }, 2000); }
+}
+function refreshButtons(){
+  $("gobtn").textContent = RUN.state === "running" ? "❚❚ PAUSE" : RUN.state === "paused" ? "▶ RESUME" : RUN.state === "done" ? "▶ RUN AGAIN" : "▶ START EXPERIMENT";
+}
+function refreshAnswer(){
+  $("ansval").textContent = ANS ? "(" + ANS + ")" : "—";
+  $("ansexpr").textContent = ANS ? "v = " + OPT[ANS].text : "";
+  $("solans").textContent = ANS ? "(" + ANS + ")" : "—";
+  var lis = document.querySelectorAll("#opts li"), i;
+  for (i = 0; i < lis.length; i++) lis[i].classList.toggle("correct", lis[i].getAttribute("data-o") === ANS);
+}
+
+/* ------------------------------------------------------------ drawing */
+function label(s, x, y, px, col, align, weight){
+  if (px < minPx) minPx = px;
+  g.font = (weight || "700") + " " + fs(px) + "px ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif";
+  g.fillStyle = col || "#e8f0ff"; g.textAlign = align || "left"; g.textBaseline = "alphabetic";
+  g.fillText(s, x, y);
+}
+function arrow(x1, y1, x2, y2, col, w, lab, lpx){
+  var dx = x2 - x1, dy = y2 - y1, len = Math.sqrt(dx * dx + dy * dy);
+  if (len < 2) return;
+  var ux = dx / len, uy = dy / len, hw = Math.max(8, w * 2.6), hl = Math.max(12, w * 4);
+  g.save(); g.strokeStyle = col; g.fillStyle = col; g.lineWidth = w; g.lineCap = "round";
+  g.shadowColor = col; g.shadowBlur = 10;
+  g.beginPath(); g.moveTo(x1, y1); g.lineTo(x2 - ux * hl * 0.8, y2 - uy * hl * 0.8); g.stroke();
+  g.beginPath(); g.moveTo(x2, y2); g.lineTo(x2 - ux * hl - uy * hw / 2, y2 - uy * hl + ux * hw / 2); g.lineTo(x2 - ux * hl + uy * hw / 2, y2 - uy * hl - ux * hw / 2); g.closePath(); g.fill();
+  g.restore();
+  if (lab) label(lab, x2 + ux * 10 + (Math.abs(uy) > 0.7 ? 12 : 0), y2 + uy * 10 + (Math.abs(ux) > 0.7 ? -10 : 8), lpx, col, "left", "800");
+}
+function roundRect(x, y, w, h, r){ g.beginPath(); g.moveTo(x + r, y); g.lineTo(x + w - r, y); g.quadraticCurveTo(x + w, y, x + w, y + r); g.lineTo(x + w, y + h - r); g.quadraticCurveTo(x + w, y + h, x + w - r, y + h); g.lineTo(x + r, y + h); g.quadraticCurveTo(x, y + h, x, y + h - r); g.lineTo(x, y + r); g.quadraticCurveTo(x, y, x + r, y); g.closePath(); }
+
+var DX = 0.16, DY = 0.11;                         /* the receding depth offset (fraction of R) */
+function drawBackdrop(){
+  var W = L.W, H = L.H;
+  var bg = g.createLinearGradient(0, 0, 0, H);
+  bg.addColorStop(0, "#0c1428"); bg.addColorStop(0.6, "#0a1020"); bg.addColorStop(1, "#05070d");
+  g.fillStyle = bg; g.fillRect(0, 0, W, H);
+  var sp = g.createRadialGradient(X(0.4), Y(1.6), 20, X(0.4), Y(1.2), L.S * 5);
+  sp.addColorStop(0, "rgba(90,140,255,.20)"); sp.addColorStop(1, "rgba(90,140,255,0)");
+  g.fillStyle = sp; g.fillRect(0, 0, W, H);
+  /* lower floor with perspective grid */
+  var fy = Y(-L.depth);
+  g.fillStyle = "#101828"; g.fillRect(0, fy, W, H - fy);
+  g.strokeStyle = "rgba(120,160,230,.12)"; g.lineWidth = 1;
+  for (var gx = -12; gx <= 12; gx++){ g.beginPath(); g.moveTo(X(gx * 0.8), fy); g.lineTo(X(gx * 0.8 + DX * 6), fy - DY * L.S * 1.2); g.stroke(); }
+  g.beginPath(); g.moveTo(0, fy); g.lineTo(W, fy); g.strokeStyle = "rgba(160,190,255,.35)"; g.stroke();
+}
+function drawBlock(){
+  var x0 = X(-20), xc = X(0), yt = Y(0), yb = Y(-L.depth), dx = DX * L.S, dy = DY * L.S;
+  /* top face (receding) */
+  g.beginPath(); g.moveTo(x0, yt); g.lineTo(xc, yt); g.lineTo(xc + dx, yt - dy); g.lineTo(x0 + dx, yt - dy); g.closePath();
+  var tg = g.createLinearGradient(0, yt - dy, 0, yt); tg.addColorStop(0, "#8d97a8"); tg.addColorStop(1, "#b9c2d0");
+  g.fillStyle = tg; g.fill();
+  /* side face (right, receding) */
+  g.beginPath(); g.moveTo(xc, yt); g.lineTo(xc + dx, yt - dy); g.lineTo(xc + dx, yb - dy); g.lineTo(xc, yb); g.closePath();
+  g.fillStyle = "#39414f"; g.fill();
+  /* front face: polished stone */
+  var fg = g.createLinearGradient(0, yt, 0, yb); fg.addColorStop(0, "#5d6778"); fg.addColorStop(1, "#343b48");
+  g.fillStyle = fg; g.fillRect(x0, yt, xc - x0, yb - yt);
+  g.save(); g.beginPath(); g.rect(x0, yt, xc - x0, yb - yt); g.clip();
+  g.strokeStyle = "rgba(255,255,255,.05)"; g.lineWidth = 2;
+  for (var k = -40; k < 40; k++){ g.beginPath(); g.moveTo(xc + k * 22, yt); g.lineTo(xc + k * 22 - (yb - yt), yb); g.stroke(); }
+  g.restore();
+  /* the lit pivot edge */
+  g.save(); g.shadowColor = "#ffb35c"; g.shadowBlur = 18; g.strokeStyle = "#ffcf8a"; g.lineWidth = 3;
+  g.beginPath(); g.moveTo(xc, yt); g.lineTo(xc + dx, yt - dy); g.stroke(); g.restore();
+  g.fillStyle = "#ffcf8a"; g.beginPath(); g.arc(xc, yt, 5, 0, Math.PI * 2); g.fill();
+  g.strokeStyle = "rgba(255,255,255,.35)"; g.lineWidth = 1.5; g.beginPath(); g.moveTo(xc, yt); g.lineTo(xc, yb); g.stroke();
+}
+function drawGuide(){
+  var r = L.S;
+  g.save(); g.setLineDash([7, 7]); g.strokeStyle = "rgba(160,200,255,.35)"; g.lineWidth = 2;
+  g.beginPath(); g.arc(X(0), Y(0), r, -Math.PI / 2, 0); g.stroke(); g.restore();
+  var rel = ENGINE.release(RUN.u);
+  if (!rel.immediate){
+    var ex = X(Math.sin(rel.theta)), ey = Y(Math.cos(rel.theta));
+    g.save(); g.setLineDash([4, 6]); g.strokeStyle = "rgba(255,210,120,.40)"; g.lineWidth = 1.5;
+    g.beginPath(); g.moveTo(X(0), Y(0)); g.lineTo(X(Math.sin(rel.theta) * 1.25), Y(Math.cos(rel.theta) * 1.25)); g.stroke(); g.restore();
+    g.fillStyle = "rgba(255,210,120,.55)"; g.beginPath(); g.arc(ex, ey, 5, 0, Math.PI * 2); g.fill();
+  }
+}
+function drawCylinder(x, y, phi, alpha){
+  var cx = X(x), cy = Y(y), r = L.S, dx = DX * L.S, dy = DY * L.S;
+  g.save(); g.globalAlpha = alpha;
+  /* back face and the side band */
+  g.fillStyle = "#3a4250"; g.beginPath(); g.arc(cx + dx, cy - dy, r, 0, Math.PI * 2); g.fill();
+  var ang = Math.atan2(-dy, dx), px = -Math.sin(ang), py = Math.cos(ang);
+  g.beginPath(); g.moveTo(cx + px * r, cy + py * r); g.lineTo(cx + dx + px * r, cy - dy + py * r);
+  g.lineTo(cx + dx - px * r, cy - dy - py * r); g.lineTo(cx - px * r, cy - py * r); g.closePath();
+  var bg = g.createLinearGradient(cx + px * r, cy + py * r, cx - px * r, cy - py * r);
+  bg.addColorStop(0, "#2c333f"); bg.addColorStop(0.5, "#6d7890"); bg.addColorStop(1, "#aab4c6"); g.fillStyle = bg; g.fill();
+  /* front face: brushed steel */
+  var fg = g.createRadialGradient(cx - r * 0.35, cy - r * 0.4, r * 0.1, cx, cy, r * 1.05);
+  fg.addColorStop(0, "#f2f6ff"); fg.addColorStop(0.45, "#aeb9cc"); fg.addColorStop(1, "#5b6578");
+  g.fillStyle = fg; g.beginPath(); g.arc(cx, cy, r, 0, Math.PI * 2); g.fill();
+  g.strokeStyle = "rgba(255,255,255,.55)"; g.lineWidth = 2; g.stroke();
+  /* spin marks: fixed in the body, so they show the rotation */
+  g.save(); g.translate(cx, cy); g.rotate(phi);
+  g.strokeStyle = "rgba(40,48,64,.55)"; g.lineWidth = 1.5; g.beginPath(); g.arc(0, 0, r * 0.72, 0, Math.PI * 2); g.stroke();
+  for (var k = 0; k < 3; k++){ g.rotate(Math.PI * 2 / 3); g.strokeStyle = k === 0 ? "#ff8a3d" : "rgba(60,70,92,.8)"; g.lineWidth = k === 0 ? 6 : 4; g.lineCap = "round";
+    g.beginPath(); g.moveTo(r * 0.14, 0); g.lineTo(r * 0.9, 0); g.stroke(); }
+  g.fillStyle = "#ff8a3d"; g.beginPath(); g.arc(r * 0.9, 0, 5, 0, Math.PI * 2); g.fill();
+  g.restore();
+  /* the centre of mass */
+  g.fillStyle = "#ffffff"; g.shadowColor = "#7fd4ff"; g.shadowBlur = 14; g.beginPath(); g.arc(cx, cy, 7, 0, Math.PI * 2); g.fill();
+  g.restore();
+}
+function drawTrail(){
+  var tr = RUN.trail; if (tr.length < 2) return;
+  g.save(); g.strokeStyle = "rgba(127,212,255,.8)"; g.lineWidth = 3; g.shadowColor = "#7fd4ff"; g.shadowBlur = 8;
+  g.beginPath(); g.moveTo(X(tr[0][0]), Y(tr[0][1]));
+  for (var i = 1; i < tr.length; i++) g.lineTo(X(tr[i][0]), Y(tr[i][1]));
+  g.stroke(); g.restore();
+}
+function drawForces(){
+  if (!RUN.forces || (RUN.phase === "done" && !RUN.showRelease)) return;
+  var cx = X(RUN.x), cy = Y(RUN.y), S = L.S, ap = L.phone ? 26 : 18, sc = 1.25 * S;
+  var ph = RUN.phase;
+  /* mg: always */
+  arrow(cx, cy, cx, cy + sc, "#6fb2ff", 5, "mg", ap);
+  if (ph === "roll" || ph === "ready"){
+    arrow(cx - 22, Y(0), cx - 22, Y(0) - sc * 0.999, "#4be3a0", 5, "N", ap);   /* drawn beside mg: both act on the same vertical line */
+  } else if (ph === "pivot" || (ph === "release" && RUN.rel && RUN.rel.th > 0 && RUN.N > 0)){
+    var th = RUN.th, n = RUN.N, f = ENGINE.friction(th);
+    arrow(X(0), Y(0), X(0) + Math.sin(th) * n * sc, Y(0) - Math.cos(th) * n * sc, "#4be3a0", 5, n > 0.04 ? "N" : "", ap);
+    arrow(X(0), Y(0), X(0) - Math.cos(th) * f * sc, Y(0) - Math.sin(th) * f * sc, "#ff9f5a", 4, f > 0.05 ? "f" : "", ap);
+  }
+  if (ph === "release" || (RUN.showRelease && ph === "done")){
+    label("N = 0", X(0) + 14, Y(0) + (L.phone ? 40 : 30), ap, "#4be3a0", "left", "800");
+  }
+  /* velocity of the centre */
+  if (ph !== "ready" && ph !== "done" && RUN.v > 0.01){
+    var vx, vy;
+    if (ph === "roll"){ vx = 1; vy = 0; }
+    else if (ph === "pivot"){ vx = Math.cos(RUN.th); vy = -Math.sin(RUN.th); }
+    else { var R0 = RUN.rel; vx = R0.vx; vy = R0.vy - R0.t; var m = Math.sqrt(vx * vx + vy * vy); vx /= m; vy /= m; }
+    var vl = RUN.v * S * 0.95;
+    arrow(cx, cy, cx + vx * vl, cy - vy * vl, "#ffd166", 5, "v", ap);
+  }
+}
+function drawAngle(){
+  if (RUN.th === null || RUN.th === undefined || RUN.phase === "roll" || RUN.phase === "ready") return;
+  var th = RUN.phase === "flight" || RUN.phase === "done" ? (RUN.rel ? RUN.rel.th : 0) : RUN.th;
+  if (th < 0.02) return;
+  var r = L.S * 0.55, ap = L.phone ? 26 : 18;
+  g.save(); g.strokeStyle = "rgba(255,210,120,.85)"; g.lineWidth = 2.5;
+  g.beginPath(); g.moveTo(X(0), Y(0)); g.lineTo(X(0), Y(1.15)); g.stroke();
+  g.beginPath(); g.arc(X(0), Y(0), r, -Math.PI / 2, -Math.PI / 2 + th); g.stroke(); g.restore();
+  label("θ", X(0) + Math.sin(th / 2) * (r + 16) - 4, Y(0) - Math.cos(th / 2) * (r + 16), ap + 2, "#ffd28a", "left", "800");
+}
+function drawRelease(){
+  var rr = RUN.rel; if (!rr) return;
+  var ph = RUN.phase, ap = L.phone ? 26 : 19;
+  if (ph === "flight" || ph === "done"){
+    g.save(); g.setLineDash([6, 6]); g.strokeStyle = "rgba(255,220,150,.55)"; g.lineWidth = 2;
+    g.beginPath(); g.arc(X(rr.x), Y(rr.y), L.S, 0, Math.PI * 2); g.stroke(); g.restore();
+  }
+  if (ph === "release" || ph === "flight" || ph === "done"){
+    var m = RUN.measured, w = L.phone ? 280 : 360, h = L.phone ? 142 : 112;
+    var tx = X(0) - w - (L.phone ? 16 : 40), ty = Y(0) + (L.phone ? 92 : 70);
+    g.save(); g.globalAlpha = ph === "release" ? 1 : 0.94;
+    roundRect(tx, ty, w, h, 12); g.fillStyle = "rgba(40,20,4,.88)"; g.fill(); g.strokeStyle = "#ffb35c"; g.lineWidth = 2; g.stroke();
+    g.restore();
+    label(L.phone ? "CONTACT LOST" : "CONTACT LOST · N = 0", tx + 16, ty + (L.phone ? 38 : 30), L.phone ? 25 : 17, "#ffcf8a", "left", "800");
+    label("v = " + sqrtText(m.v2), tx + 16, ty + (L.phone ? 84 : 66), L.phone ? 34 : 28, "#ffffff", "left", "800");
+    label("at θ = " + num(m.thetaDeg, 1) + "°", tx + 16, ty + (L.phone ? 124 : 98), L.phone ? 27 : 20, "#ffd28a", "left", "700");
+    if (ph === "release"){
+      var pulse = 1 + 0.25 * Math.sin(perfNow() / 90);
+      g.save(); g.strokeStyle = "rgba(255,179,92,.9)"; g.lineWidth = 3; g.beginPath(); g.arc(X(0), Y(0), 16 * pulse, 0, Math.PI * 2); g.stroke(); g.restore();
+    }
+  }
+}
+function perfNow(){ return (window.performance && performance.now) ? performance.now() : +new Date(); }
+function drawReadouts(){
+  var ph = RUN.phase, fin = ph === "done" && RUN.measured, v = fin ? RUN.measured.v : RUN.v, v2 = fin ? RUN.measured.v2 : RUN.v2;
+  var th = (ph === "roll" || ph === "ready") ? null : (ph === "flight" || ph === "done") ? (RUN.rel ? RUN.rel.th : null) : RUN.th;
+  var n = ph === "roll" || ph === "ready" ? 1 : ph === "pivot" ? RUN.N : 0;
+  var atRel = ph === "release" || fin, fr = ENGINE.frac(v2);
+  var rows = [
+    [fin ? "Speed at release" : ph === "flight" ? "Speed (in the air)" : "Speed of centre", "v = " + num(v, 3) + " √(gR)"],
+    [fin ? "v²/gR at release" : "v²/gR", num(v2, 3) + (atRel && RUN.question && fr && fr.d > 1 ? " = " + fr.n + "/" + fr.d : "")],
+    [ph === "flight" || ph === "done" ? "Angle at release" : "Angle θ", th === null ? "—" : num(th * 180 / Math.PI, 1) + "°"],
+    ["Corner's push", ph === "flight" || ph === "done" ? "N = 0 (left it)" : "N = " + num(n, 2) + " mg"]
+  ];
+  var i, x, y;
+  if (L.phone){
+    roundRect(12, 12, L.W - 24, 186, 14); g.fillStyle = "rgba(10,16,32,.86)"; g.fill(); g.strokeStyle = "rgba(140,180,255,.3)"; g.lineWidth = 1.5; g.stroke();
+    for (i = 0; i < 4; i++){ x = 30 + (i % 2) * 345; y = 52 + Math.floor(i / 2) * 88;
+      label(rows[i][0], x, y, 25, "#8fa6cf", "left", "700"); label(rows[i][1], x, y + 42, 31, "#ffffff", "left", "800"); }
+  } else {
+    var bx = L.W - 372, by = 18, bw = 354, bh = 212;
+    roundRect(bx, by, bw, bh, 14); g.fillStyle = "rgba(10,16,32,.82)"; g.fill(); g.strokeStyle = "rgba(140,180,255,.3)"; g.lineWidth = 1.5; g.stroke();
+    for (i = 0; i < 4; i++){ y = by + 36 + i * 48;
+      label(rows[i][0], bx + 18, y, 15, "#8fa6cf", "left", "700"); label(rows[i][1], bx + 18, y + 24, 22, "#ffffff", "left", "800"); }
+  }
+}
+function drawLabels(){
+  var ap = L.phone ? 26 : 16;
+  label("corner (pivot)", X(0) - 14, Y(0) + (L.phone ? 44 : 34), ap, "#ffcf8a", "right", "700");
+  if (RUN.phase === "ready" || RUN.phase === "roll")
+    label("v₀ = " + v0Text(), X(RUN.x), Y(RUN.y) - L.S - (L.phone ? 20 : 16), ap + 2, "#ffd166", "center", "800");
+  var sc = L.phone ? 25 : 14;
+  label("Drawn to scale in units of R · arrows in units of mg", 16, L.H - 14, sc, "rgba(170,190,225,.75)", "left", "600");
+}
+function draw(){
+  minPx = 999;
+  var nl = layout();
+  if (!L || nl.phone !== L.phone){ var was = L; L = nl; if (!was || RUN.phase === "ready") RUN.x = RUN.phase === "ready" ? L.x0 : RUN.x; }
+  if (cv.width !== L.W || cv.height !== L.H){ cv.width = L.W; cv.height = L.H; }
+  drawBackdrop(); drawBlock(); drawGuide(); drawTrail();
+  if (RUN.rel && (RUN.phase === "flight" || RUN.phase === "done") && !RUN.showRelease) drawCylinder(RUN.rel.x, RUN.rel.y, 0, 0.22);
+  var shown = RUN.showRelease && RUN.rel ? [RUN.rel.x, RUN.rel.y] : [RUN.x, RUN.y];
+  drawCylinder(shown[0], shown[1], RUN.phi, 1);
+  if (RUN.showRelease){ var sx = RUN.x, sy = RUN.y; RUN.x = shown[0]; RUN.y = shown[1]; drawForces(); RUN.x = sx; RUN.y = sy; }
+  else drawForces();
+  drawAngle(); drawRelease(); drawReadouts(); drawLabels();
+}
+
+/* ------------------------------------------------------------ chart */
+function drawChart(){
+  var W = 640, H = 320, l = 62, r = 20, t = 20, b = 50, pw = W - l - r, phh = H - t - b, ymax = 1.6;
+  function px(th){ return l + th / 90 * pw; }
+  function py(v){ return t + phh - Math.min(v, ymax) / ymax * phh; }
+  var s = [], i, th, u = RUN.u, e = "", e2 = "", c = "", rel = ENGINE.release(u), thr = rel.theta * 180 / Math.PI, ev;
+  for (i = 0; i <= 90; i += 0.5){ th = i * Math.PI / 180; c += (i ? "L" : "M") + px(i).toFixed(1) + " " + py(Math.cos(th)).toFixed(1) + " "; }
+  for (i = 0; i <= 90; i += 0.5){
+    th = i * Math.PI / 180; ev = ENGINE.v2At(u, th); if (ev > ymax) break;
+    if (i <= thr) e += (e ? "L" : "M") + px(i).toFixed(1) + " " + py(ev).toFixed(1) + " ";
+    else { if (!e2) e2 = "M" + px(thr).toFixed(1) + " " + py(rel.v2).toFixed(1) + " "; e2 += "L" + px(i).toFixed(1) + " " + py(ev).toFixed(1) + " "; }
+  }
+  s.push('<rect x="' + l + '" y="' + t + '" width="' + pw + '" height="' + phh + '" fill="none" stroke="var(--line)"/>');
+  for (i = 0; i <= 90; i += 15) s.push('<line x1="' + px(i) + '" y1="' + (t + phh) + '" x2="' + px(i) + '" y2="' + (t + phh + 5) + '" stroke="var(--line-strong)"/><text x="' + px(i) + '" y="' + (t + phh + 22) + '" font-size="14" text-anchor="middle">' + i + '°</text>');
+  for (i = 0; i <= 1.6001; i += 0.4) s.push('<line x1="' + l + '" y1="' + py(i) + '" x2="' + (l + pw) + '" y2="' + py(i) + '" stroke="var(--line)" stroke-dasharray="2 4"/><text x="' + (l - 8) + '" y="' + (py(i) + 5) + '" font-size="14" text-anchor="end">' + i.toFixed(1) + '</text>');
+  s.push('<text x="' + (l + pw / 2) + '" y="' + (H - 8) + '" font-size="14" text-anchor="middle">angle θ from the vertical</text>');
+  s.push('<text x="16" y="' + (t + phh / 2) + '" font-size="14" text-anchor="middle" transform="rotate(-90 16 ' + (t + phh / 2) + ')">v² / gR</text>');
+  s.push('<path d="' + c + '" fill="none" stroke="var(--s3)" stroke-width="3"/>');
+  if (e) s.push('<path d="' + e + '" fill="none" stroke="var(--s1)" stroke-width="3"/>');
+  if (e2) s.push('<path d="' + e2 + '" fill="none" stroke="var(--s1)" stroke-width="2" stroke-dasharray="6 6" opacity=".6"/>');
+  var rx = px(thr), ry = py(rel.v2), halo = ' style="paint-order:stroke;stroke:var(--surface-1);stroke-width:5px;stroke-linejoin:round"';
+  s.push('<circle cx="' + rx + '" cy="' + ry + '" r="7" fill="var(--s2)"/>');
+  s.push('<text x="' + (rx + 12) + '" y="' + (ry - 10) + '" font-size="14" font-weight="700"' + halo + '>contact lost: θ = ' + num(rel.theta * 180 / Math.PI, 1) + '°, v²/gR = ' + num(rel.v2, 3) + '</text>');
+  s.push('<text x="' + px(4) + '" y="' + (py(u) - 12) + '" font-size="14" font-weight="700" style="fill:var(--s1);paint-order:stroke;stroke:var(--surface-1);stroke-width:5px">has (energy)</text>');
+  s.push('<text x="' + px(4) + '" y="' + (py(1) - 12) + '" font-size="14" font-weight="700" style="fill:var(--s3);paint-order:stroke;stroke:var(--surface-1);stroke-width:5px">corner can hold: cos θ</text>');
+  if (RUN.phase === "pivot" && RUN.th !== null) s.push('<circle cx="' + px(RUN.th * 180 / Math.PI) + '" cy="' + py(RUN.v2) + '" r="6" fill="none" stroke="var(--text-primary)" stroke-width="2.5"/>');
+  $("chart").innerHTML = s.join("");
+}
+
+/* ------------------------------------------------------------ controls */
+function setSpeed(k){ RUN.speed = k; $("sp1").setAttribute("aria-pressed", k === 1 ? "true" : "false"); $("sp2").setAttribute("aria-pressed", k === 0.5 ? "true" : "false"); $("sp4").setAttribute("aria-pressed", k === 0.25 ? "true" : "false"); }
+function setForces(on){ RUN.forces = on; $("fon").setAttribute("aria-pressed", on ? "true" : "false"); $("foff").setAttribute("aria-pressed", on ? "false" : "true"); }
+function setV0(s, isQuestion){
+  if (isQuestion){ RUN.u = ENGINE.Q.u; RUN.question = true; $("in_v0").value = String(Math.sqrt(ENGINE.Q.u)); }
+  else {
+    s = parseFloat(s); if (!isFinite(s)) s = Math.sqrt(ENGINE.Q.u);
+    s = Math.min(1.2, Math.max(0.2, s));
+    RUN.u = s * s; RUN.question = Math.abs(RUN.u - ENGINE.Q.u) < 1e-12;
+  }
+  $("v0out").textContent = v0Text();
+  resetRun(); RUN.showRelease = false; narrate(); refreshButtons(); drawChart();
+}
+$("gobtn").addEventListener("click", start);
+$("replaybtn").addEventListener("click", replay);
+$("resetbtn").addEventListener("click", reset);
+$("sp1").addEventListener("click", function(){ setSpeed(1); });
+$("sp2").addEventListener("click", function(){ setSpeed(0.5); });
+$("sp4").addEventListener("click", function(){ setSpeed(0.25); });
+$("fon").addEventListener("click", function(){ setForces(true); });
+$("foff").addEventListener("click", function(){ setForces(false); });
+$("in_v0").addEventListener("input", function(){ setV0(this.value, false); });
+$("qbtn").addEventListener("click", function(){ setV0(null, true); });
+$("classbtn").addEventListener("click", function(){
+  var on = document.body.classList.toggle("classroom"); this.setAttribute("aria-pressed", on ? "true" : "false");
+  this.textContent = on ? "Exit classroom" : "Classroom";
+});
+$("themebtn").addEventListener("click", function(){
+  var r = document.documentElement, dark = r.getAttribute("data-theme") === "dark" || (!r.getAttribute("data-theme") && window.matchMedia && matchMedia("(prefers-color-scheme: dark)").matches);
+  r.setAttribute("data-theme", dark ? "light" : "dark");
+});
+
+var lastT = null, chartT = 0;
+function loop(ts){
+  if (lastT === null) lastT = ts;
+  var dt = Math.min(0.05, Math.max(0, (ts - lastT) / 1000)); lastT = ts;
+  tick(dt); draw();
+  chartT += dt; if (RUN.state === "running" && chartT > 0.12){ chartT = 0; drawChart(); }
+  requestAnimationFrame(loop);
+}
+
+window.PX = {
+  ENGINE: ENGINE, QRUN: QRUN, ANS: ANS, RUN: RUN,
+  minLabelPx: function(){ draw(); return minPx; },
+  layout: function(){ return L; },
+  start: start, replay: replay, reset: reset, setSpeed: setSpeed, setForces: setForces,
+  setV0: function(s){ setV0(s, false); }, question: function(){ setV0(null, true); },
+  state: function(){ return { state: RUN.state, phase: RUN.phase, x: RUN.x, y: RUN.y, th: RUN.th, v: RUN.v, v2: RUN.v2, N: RUN.N, u: RUN.u, question: RUN.question, measured: RUN.measured, done: RUN.done, confirmed: RUN.confirmed }; }
+};
+
+L = layout(); resetRun();
+setV0(null, true); refreshAnswer(); draw(); drawChart();
+window.addEventListener("resize", function(){ draw(); });
+requestAnimationFrame(loop);
+})();
+</script>
+</body>
+</html>
