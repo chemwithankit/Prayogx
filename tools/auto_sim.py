@@ -21,6 +21,7 @@ It never builds, commits, pushes or deploys anything itself.
   python3 tools/auto_sim.py trace ID [--run] [--online]    the whole pipeline, as evidenced for ID
   python3 tools/auto_sim.py smoke ID [--base URL]          live HTTP smoke test (read-only)
   python3 tools/auto_sim.py render PDF --pages 35          source page -> PNG + text in .tmp/ (pypdfium2)
+  python3 tools/auto_sim.py gates                          the layout v3 (G5) visual QA gates A-J for new pages
 
 Exit codes: 0 ok, 1 a check failed, 2 unusable input or an unsafe state.
 """
@@ -58,9 +59,9 @@ STAGES = [
     ("independent_solve_complete", "solved / derived independently before any key", "prayogx-new-simulation 3", "read"),
     ("scientific_verification_complete", "independent answer == official key (or concept equations and limits checked); conflicts stop the item", "prayogx-new-simulation 4", "read"),
     ("learning_objectives_complete", "pivot, observations, manipulations, misconception", "prayogx-new-simulation 5", "read"),
-    ("design_complete", "design brief written (experiment, rendering level, stages, interactions)", "prayogx-new-simulation 6-11", "read"),
+    ("design_complete", "design brief written, with the layout v3 decisions: main visual object, main action, primary controls (no dropdowns), essential measurements, graphs only if useful, what is removed, what the student sees first", "prayogx-new-simulation 5-11", "read"),
     ("implementation_complete", "index.html, verifier and page suite written in the item's own paths", "prayogx-new-simulation 12-16", "work"),
-    ("visual_qa_complete", "every stage and the reveal screenshotted at 1280 and 390 px and looked at", "prayogx-validate §4", "check"),
+    ("visual_qa_complete", "visual gates A-J: node tests/visual_gates.js <page> passes A C D E F I J; B G H by screenshots of every stage at 1280 and 390 px, looked at, repaired", "prayogx-validate §4", "check"),
     ("scientific_qa_complete", "tests/verify_<id>.py: N passed, 0 failed", "prayogx-validate §2", "check"),
     ("browser_qa_complete", "tests/sim_<id>.js: N / N passed, zero console errors", "prayogx-validate §3", "check"),
     ("mobile_qa_complete", "390 / 360 px no overflow, touch sizes, reduced motion", "prayogx-validate §3", "check"),
@@ -74,6 +75,20 @@ STAGES = [
 ]
 STAGE_NAMES = [s[0] for s in STAGES]
 WRITE_KINDS = ("work", "shared", "git", "remote")
+LAYOUT = "layout v3 (G5) - docs/SIMULATION_STANDARDS.md §4: question -> large experiment -> nearby controls -> solution -> [graph] -> how to use"
+# the visual QA gates every new page must pass (docs/AUTO_SIMULATION_PIPELINE.md §6); "auto" ones are measured by tests/visual_gates.js
+VISUAL_GATES = [
+    ("A", "main experiment scale", "auto", "hero canvas >= 90 % of the content width and >= 55 % of the screen height (desktop); full width and >= 45 % of the height on phones"),
+    ("B", "object legibility", "manual", "apparatus, molecules, labels and graphs readable from several feet away; atoms and bond changes visible"),
+    ("C", "control proximity", "auto", "#controls directly above or below the experiment (<= 48 px)"),
+    ("D", "no dropdowns for primary controls", "auto", "toggles, segmented buttons, number inputs or sliders - no <select> in #controls"),
+    ("E", "information density", "auto", "no raw logs, badges or dashboard rail; <= 2 charts, <= 4 readouts"),
+    ("F", "page simplicity", "auto", "question -> experiment + controls -> solution -> [analysis / explorer] -> how to use"),
+    ("G", "realism", "manual", "depth, lighting, materials, believable apparatus proportions; every component has a purpose"),
+    ("H", "scientific correctness", "manual", "the verifier and the page suite; no misleading exaggeration"),
+    ("I", "mobile readability", "auto", "no overflow at 390 / 360 px, tap targets >= 44 px, canvas labels >= 11 px on screen (PX.minLabelPx)"),
+    ("J", "classroom readability", "auto", "classroom mode widens the experiment, narration >= 22 px, canvas labels >= 13 px on a desktop screen"),
+]
 AUTO_STATUS = "script_verified"      # the status every factory-built page is registered with
 
 
@@ -301,7 +316,7 @@ def concept_matches(name, sims, limit=3):
 
 def plan_item(n, item, sims, ids):
     t = (item.get("type") or "").lower()
-    it = {"n": n, "type": t, "input": item, "blockers": [], "warnings": [], "files": [], "tests": [],
+    it = {"n": n, "type": t, "input": item, "blockers": [], "warnings": [], "files": [], "tests": [], "layout": LAYOUT,
           "sources": {}, "skills": ["prayogx-new-simulation", "prayogx-validate", "prayogx-register", "prayogx-design-system"]}
     if t == "question":
         try:
@@ -798,6 +813,7 @@ def main(argv=None):
     p.add_argument("--kind", required=True); p.add_argument("--detail", required=True)
     p = sub.add_parser("trace"); p.add_argument("id"); p.add_argument("--run", action="store_true"); p.add_argument("--online", action="store_true")
     p = sub.add_parser("smoke"); p.add_argument("id"); p.add_argument("--base", default=LIVE)
+    sub.add_parser("gates")
     p = sub.add_parser("render"); p.add_argument("pdf"); p.add_argument("--pages", required=True, help="e.g. 35 or 34-35 or 1,3")
     p.add_argument("--out"); p.add_argument("--scale", type=float, default=2.0)
     a = ap.parse_args(argv)
@@ -805,6 +821,7 @@ def main(argv=None):
         if a.cmd == "plan":
             bdir = make_batch(load(a.spec), a.state_root)
             print(bdir)
+            print("  new pages: " + LAYOUT + "; visual gates A-J (auto_sim.py gates)")
             _, items = items_of(bdir)
             for it in items:
                 print("  %03d %-8s %-22s %s" % (it["n"], it["type"], it.get("id") or it.get("concept"), it["status"]))
@@ -854,6 +871,11 @@ def main(argv=None):
                 print("  %-4s %-34s %s" % ("ok" if r["ok"] else "--", r["stage"], r["evidence"]))
             print("feed status %s · owner review recorded %s" % (t["feedStatus"], t["ownerReview"]))
             return 0 if all(r["ok"] for r in t["stages"]) else 1
+        elif a.cmd == "gates":
+            print(LAYOUT)
+            for g, name, how, what in VISUAL_GATES:
+                print("  %s  %-34s %-7s %s" % (g, name, how, what))
+            print("measured: node tests/visual_gates.js <page>; manual: screenshots and the verifier")
         elif a.cmd == "render":
             # the venv's python3 is a symlink to the system interpreter, so compare prefixes, not paths
             if _pdfium() is None and os.path.exists(VENV_PY) and \

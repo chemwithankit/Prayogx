@@ -153,11 +153,31 @@ Conflicts between the independent result and a key or source: **stop the item** 
 
 ## 6. Visual and browser gates
 
-`prayogx-validate` §3–§4 in full, plus the owner's visual direction as a *design* direction that
-never overrides science, performance or usability. After the functional build: one visual
-refinement pass (depth, spacing, lighting, hierarchy, motion, molecule readability, graph clarity,
-result emphasis, mobile, classroom mode), screenshots looked at, repaired, re-checked. Animation
-shows CAUSE → PROCESS → EFFECT; no chemically or physically impossible motion.
+Every new page is built to **layout v3 (G5)** (`SIMULATION_STANDARDS.md` §4): question → large
+immersive experiment → nearby simple controls → detailed solution → graph only if useful → how
+to use; no dashboards, raw logs or dropdowns for primary controls. `prayogx-validate` §3–§4 in
+full, plus the owner's visual direction as a *design* direction that never overrides science,
+performance or usability.
+
+| Gate | Checks | How |
+|---|---|---|
+| A | main experiment scale: ≥ 90 % of the content width, ≥ 55 % of the screen height (desktop); full width, ≥ 45 % of the height (phone) | measured |
+| B | object legibility: apparatus, molecules, labels, graphs readable from several feet away | screenshots |
+| C | control proximity: `#controls` ≤ 48 px above or below the experiment | measured |
+| D | no `<select>` among the primary controls | measured |
+| E | information density: no raw logs, badges or rail; ≤ 2 charts, ≤ 4 readouts | measured |
+| F | page simplicity: question → experiment + controls → solution → [analysis / explorer] → how to use | measured |
+| G | realism: depth, lighting, materials, proportions; no decoration | screenshots |
+| H | scientific correctness; no misleading exaggeration | verifier + suite |
+| I | mobile: no overflow at 390 / 360 px, taps ≥ 44 px, canvas labels ≥ 11 px on screen | measured |
+| J | classroom: experiment widened, narration ≥ 22 px, canvas labels ≥ 13 px on desktop | measured |
+
+Measured gates: `node tests/visual_gates.js <page>` (the list and thresholds:
+`python3 tools/auto_sim.py gates`). After the functional build: one visual refinement pass (depth,
+spacing, lighting, hierarchy, motion, molecule readability, graph clarity, result emphasis,
+mobile, classroom mode), screenshots looked at; any failing gate is repaired automatically and
+the gates and the page suite re-run. Animation shows CAUSE → PROCESS → EFFECT; no chemically or
+physically impossible motion; no decorative motion.
 
 ## 7. Registry, build and deployment
 

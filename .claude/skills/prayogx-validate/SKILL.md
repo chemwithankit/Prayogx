@@ -39,16 +39,20 @@ investigate, fix, re-run everything. Report exact counts; never claim a check th
 
 ## 3. Behaviour: `tests/sim_<pNqNN>.js`
 
-Adapt the closest Paper 1 suite (keep its head and tail, rewrite the middle). It must end
-`N / N passed` and cover:
+Adapt the closest Paper 1 suite (keep its head and tail, rewrite the middle; for a new layout v3
+page drop the G4 layout checks and test its own structure). It must end `N / N passed` and cover:
 
 - [ ] self-contained (no external URL, `fetch` or storage), ES5, unique ids, `sim-id` meta
 - [ ] no answer literal in the source; `PX.answer()` equals the key
 - [ ] optional inputs: empty, invalid, negative, zero, fractional and out-of-range values fall
       back with a message
-- [ ] answer visible above the experiment from load; dock below the screen
-- [ ] one START runs every stage with no further clicks; messages, tiles, board, charts, log
-      and calculation lines appear in order
+- [ ] answer visible from load (G4: the answer strip above the screen; layout v3: the key-result
+      line in the experiment section); controls next to the screen (G4: the dock; v3: `#controls`)
+- [ ] one START runs every stage with no further clicks; stage messages and the model's results
+      appear in order (internal state such as `PX.calcKeys()` may be tested, never rendered as a
+      log on a v3 page)
+- [ ] layout v3: every primary control changes the experiment visibly, no `<select>` in
+      `#controls`, tap targets ≥ 44 px, `PX.minLabelPx()` reported
 - [ ] instruments equal the model; for organic, flask and molecules stay in step
 - [ ] reveal, plus a blink that is present and then gone
 - [ ] explorer (drag, keys), REPLAY, Pause, RESET, speed, slow motion, restore
@@ -59,10 +63,16 @@ Adapt the closest Paper 1 suite (keep its head and tail, rewrite the middle). It
       finds, opens and returns from it
 - [ ] performance: the full run stays smooth at 390 px; no long main-thread stalls
 
-## 4. Visual inspection
+## 4. Visual inspection — the visual QA gates A–J
 
-- [ ] Screenshot every stage and the reveal at 1280 px and 390 px, and **look**: no
-      overlaps, clipped text, overflowing equations or label collisions.
+- [ ] New (layout v3) pages: `node tests/visual_gates.js <page>` — A experiment scale, C control
+      proximity, D no dropdowns, E information density, F page order, I mobile readability, J
+      classroom readability must pass (`python3 tools/auto_sim.py gates` lists the thresholds).
+- [ ] Screenshot every stage and the reveal at 1280 px and 390 px, and **look** (gates B object
+      legibility and G realism): main objects readable from several feet away, no overlaps,
+      clipped text, overflowing equations or label collisions, believable apparatus with no
+      decoration. Gate H is the verifier and the suite. Repair, then re-run the gates and the
+      suite.
 - [ ] Solution figures render (SVG `role="img"` + aria-label, correct `xmlns`).
 - [ ] Light and dark themes both readable.
 

@@ -37,6 +37,7 @@ Newer entries supersede older ones. The detailed standard is in
 | 09-27 | Organic reaction questions show the complete two-level mechanism (vessel ↔ molecules, in sync). |
 | 09-28 | For new pages: the answer is visible above the experiment, START and all controls sit below the screen, the detailed solution is complete and always open, and animation quality is premium and meaningful. |
 | 09-28 | Canonical origin is `https://prayogx.co.in`; `chemwithankit.github.io/Prayogx` is only a legacy 301 redirect. |
+| 09-30 | **Layout v3 (G5), the master visual standard**, for every new page and concept page (SIMULATION_STANDARDS.md §4): question → a large, immersive experiment as the hero → simple controls right beside it (toggles, segmented buttons, number inputs, sliders — no dropdowns) → detailed solution → a graph only if useful → how to use. No dashboards, badges, logs or evidence tables on the page (internal only). Visual QA gates A–J, measured by `tests/visual_gates.js` where measurable. Existing pages keep their generation. |
 | 09-29 | **`script_verified`** is a registry status: passed the automated pipeline (independent verifier, browser / UI / mobile suite, library and production audits, live smoke after deploy) with no human review. Factory-published pages carry it explicitly; they are never `human_verified`. Existing statuses unchanged. |
 | 09-29 | **Concept IDs** are `CON-<PHY\|CHE\|MAT>-<SLUG>` (slug: 1–8 upper-case words, ID ≤ 64 characters), folder `simulations/concepts/<subject>/<id-lowercase>/`, `concept.md` beside `meta.json`; fields and rules in `tools/registry_schema.py`. Concepts register as `draft` only until the website, the app and the crawlable pages render them. |
 | 09-29 | Simulation factory (`prayogx-auto-simulation`, `tools/auto_sim.py`): production mode only for a named item list the owner requests, narrowly scoped in `CLAUDE.md`. Physics runs on the interim gates (pipeline §5) until a physics skill exists; mathematics stays blocked until an independent mathematical verification workflow exists. Poppler (`pdftoppm`) is an environment prerequisite for reading `papers/`, never a repository dependency. |
@@ -49,7 +50,8 @@ Newer entries supersede older ones. The detailed standard is in
 - Solution gated behind the run → **always open** (09-28).
 - Prediction stage as part of the doctrine (08-27, G2) → dropped in practice (P1 Q01, Q03
   onward) → **optional, non-blocking** (09-28).
-- Seven-section page → layout v2 for new pages. Older pages keep their generation.
+- Seven-section page → layout v2 for new pages → **layout v3 (G5)** for new pages (09-30). Older pages keep their generation.
+- Rail, gauge grid, badges, reasoning log, evidence table and select menus as standard page furniture (G4) → not shown on new pages; the data stays internal for the tests (09-30).
 - Tracker Sheet recreated from the CSV on every update (a new URL each time, via the Drive
   connector) → **permanent Sheet, upsert in place** through the Sheets connector (09-29).
 - An external "master prompt" written per question → Claude writes the design brief itself.

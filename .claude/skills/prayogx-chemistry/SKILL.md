@@ -46,6 +46,9 @@ Full conventions: `docs/SIMULATION_STANDARDS.md` §7. This skill is the working 
       plus a summary table and traps.
 - [ ] Layout coordinates may be precomputed at build time (RDKit, e.g. `tests/gen_q15.py`).
       **The chemistry may not.**
+- [ ] Layout v3 (new pages): the molecules and the vessel are the hero — large enough to see atoms,
+      bonds, bond changes, intermediates and electron movement from several feet away; no tiny
+      structures beside large panels (standards §4).
 - [ ] Immersive target: rotate and zoom the molecules, select the reacting atoms and bonds,
       view them from different angles, where that aids understanding.
 

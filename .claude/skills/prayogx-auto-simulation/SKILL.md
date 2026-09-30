@@ -20,6 +20,11 @@ reference process**, not a template: never clone its chemistry, layout or appara
   BLOCKED, name the failing gates, and continue in dry-run mode, or build each item to
   `production_audit_complete` and stop for the owner's review. Never work around a gate. The
   limits of the authorisation are in `CLAUDE.md` → Git safety.
+- **New pages are built to layout v3 (G5)** — `docs/SIMULATION_STANDARDS.md` §4: the question, a
+  large immersive experiment as the hero, simple controls right beside it (no dropdowns), the
+  detailed solution, a graph only if useful, how to use; no dashboards or logs on the page. The
+  owner's visual direction refines this, never overrides science, performance or usability.
+  `python3 tools/auto_sim.py gates` lists the visual QA gates A–J every page must pass.
 - Factory pages register with `"status": "script_verified"` - never `human_verified`.
   Concepts (`CON-<SUBJ>-<SLUG>`) register as `draft` and stop before commit until the clients
   render concepts. Mathematics stays blocked. Physics uses the interim gates (pipeline §5).
@@ -48,9 +53,9 @@ stages in a dry run.
 | Stages | Follow |
 |---|---|
 | 1–7 source → independent solve → cross-check | `prayogx-new-simulation` steps 1–4, `prayogx-chemistry` for Chemistry, pipeline §5 for Physics and concepts |
-| 8–9 learning objective, design brief | `prayogx-new-simulation` 5–11 |
+| 8–9 learning objective, design brief | `prayogx-new-simulation` 5–11, recording the layout v3 decisions (main visual, main action, controls, measurements, graphs, what is removed, what is seen first) |
 | 10 implementation | `prayogx-new-simulation` 12–16 (item's own paths only) |
-| 11–14 visual, verifier, suite, mobile | `prayogx-validate` §1–§4, visual refinement pass (pipeline §6) |
+| 11–14 visual, verifier, suite, mobile | `prayogx-validate` §1–§4; visual gates A–J: `node tests/visual_gates.js <page>` + screenshots (pipeline §6); repair until clean |
 | 15–16 registry, audits | `prayogx-register` §1–§4, `prayogx-validate` §5, `bash tests/runall.sh` |
 | 17–21 production only | pipeline §7: commit by name → remote check → `./publish.sh` → live feed version → `auto_sim.py smoke <ID>` + `node tests/live_smoke.js <ID>` → Sheet sync (`prayogx-register` §5) |
 

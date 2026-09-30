@@ -73,6 +73,17 @@ try:
     chk("commit is a git stage; push, deploy and the Sheet are remote stages",
         kinds["commit_complete"] == "git" and kinds["push_complete"] == kinds["deployment_complete"] == kinds["item_complete"] == "remote")
 
+    # ------------------------------------------------------------ the layout v3 (G5) visual standard
+    chk("the factory names layout v3 (G5) for new pages", "layout v3 (G5)" in A.LAYOUT and "question -> large experiment -> nearby controls -> solution" in A.LAYOUT)
+    chk("visual gates A-J, ten of them, in order", [g[0] for g in A.VISUAL_GATES] == list("ABCDEFGHIJ"))
+    vg = open(os.path.join(ROOT, "tests", "visual_gates.js"), encoding="utf-8").read()
+    manual_js = re.search(r"const MANUAL = \{([^}]*)\}", vg).group(1)
+    chk("the factory's manual gates are exactly the checker's (B, G, H); the rest are measured",
+        sorted(g[0] for g in A.VISUAL_GATES if g[2] == "manual") == sorted(re.findall(r"\b([A-J]):", manual_js)) == ["B", "G", "H"])
+    chk("the visual QA stage runs the checker and the screenshot review", "tests/visual_gates.js" in dict((s[0], s[1]) for s in A.STAGES)["visual_qa_complete"])
+    chk("the design stage records the layout v3 decisions (no dropdowns, what is removed, what is seen first)",
+        all(w in dict((s[0], s[1]) for s in A.STAGES)["design_complete"] for w in ("main visual object", "no dropdowns", "what is removed", "sees first")))
+
     # ------------------------------------------------------------ IDs and sources
     chk("question ID and folder follow the registry scheme",
         A.question_id(q(17))[:3] == ("ADV-2026-P1-CHE-Q17", "CHE", "simulations/2026/paper-1/chemistry/adv-2026-p1-che-q17/"))
@@ -131,6 +142,7 @@ try:
     chk("plan keeps the owner's order", [it["n"] for it in its] == list(range(1, 9)))
     chk("an existing ID is skipped as a duplicate, with nothing to create",
         st[1]["status"] == "skipped-duplicate" and st[1]["files"] == [])
+    chk("every planned item carries the layout v3 standard", all("layout v3" in it["layout"] for it in its))
     chk("a new question plans its five files", st[2]["files"] == [
         "simulations/2026/paper-1/chemistry/adv-2026-p1-che-q17/index.html", "simulations/2026/paper-1/chemistry/adv-2026-p1-che-q17/meta.json",
         "simulations/2026/paper-1/chemistry/adv-2026-p1-che-q17/question.md", "tests/verify_p1q17.py", "tests/sim_p1q17.js"])
@@ -301,6 +313,8 @@ try:
     bad = os.path.join(TMP, "bad.json")
     json.dump({"items": []}, open(bad, "w"))
     chk("CLI: an unusable spec exits 2 with STOPPED", cli("plan", bad, "--state-root", TMP).returncode == 2)
+    r = cli("gates")
+    chk("CLI gates: lists layout v3 and the ten gates", r.returncode == 0 and "layout v3 (G5)" in r.stdout and all(("  %s  " % g) in r.stdout for g in "ABCDEFGHIJ"), r.stdout[:200])
     r = cli("guard", b1)
     chk("CLI guard: exit 0 after all of the above", r.returncode == 0 and "changed nothing" in r.stdout, r.stdout + r.stderr)
     src = open(os.path.join(ROOT, "tools", "auto_sim.py"), encoding="utf-8").read()

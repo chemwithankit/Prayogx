@@ -1,7 +1,7 @@
 # PrayogX simulation standards
 
-The standard every **new** PrayogX simulation is built to, and the facts about the 32 that
-already exist. Decisions and their dates are in [DECISIONS.md](DECISIONS.md). The workflows
+The standard every **new** PrayogX simulation is built to, and the facts about the 35 that
+already exist (33 Chemistry, 2 Physics). Decisions and their dates are in [DECISIONS.md](DECISIONS.md). The workflows
 that apply this standard are the project skills in `.claude/skills/`.
 
 When this document and the repository's tools disagree, **the tools win**
@@ -70,13 +70,13 @@ What PrayogX values, in priority order when they conflict:
 - RESET returns to the ready state, REPLAY reruns the same experiment, and restore resets
   custom inputs. All three work.
 - Usable on phones, tablets and desktops: no horizontal overflow at 390 and 360 px
-  (`scrollWidth − clientWidth == 0`), and tap targets ≥ 32 px (native selects
-  `min-height: 40px`).
+  (`scrollWidth − clientWidth == 0`). Tap targets ≥ 44 px on new pages (layout v3; G4 pages were
+  built to ≥ 32 px). New pages use no dropdown for primary controls (§4).
 - Zero console errors.
 - A classroom / projector mode with enlarged narration.
 - A complete detailed solution, a concept explanation and key takeaways (see §5).
 
-## 3. The 32 existing simulations: four page generations
+## 3. The existing simulations: page generations
 
 They were built over time to different rules. **They are preserved as they are.** They are
 not retrofitted to a newer standard unless the owner asks for a specific page.
@@ -86,7 +86,8 @@ not retrofitted to a newer standard unless the owner asks for a specific page.
 | G1 | P2 Q01–Q04 | seven sections | visible | open | no | no |
 | G2 | P2 Q05–Q17, P1 Q02 | seven sections + prediction | locked until the run ends | gated | yes | P2 no · P1 Q02 yes |
 | G3 | P1 Q01, Q03–Q11 | compact lab (question · experiment · [explorer] · solution · how to use) | locked | gated | no | yes |
-| G4 | **P1 Q12–Q16** | **layout v2 — current reference** | visible above the experiment | always open | no | yes |
+| G4 | P1 CHE Q12–Q16, P1 PHY Q01–Q02 | layout v2 | visible above the experiment | always open | no | yes |
+| G5 | **every new page from 2026-09-30** | **layout v3 — the master visual standard (§4)** | a compact key-result line by the experiment | always open | optional | yes |
 
 Consequences:
 
@@ -100,11 +101,92 @@ Consequences:
   can run the page's own engine in Node. That is a pattern worth reusing.
 - `templates/simulation-template.html` is the **G1-era** shell (seven sections). It remains
   useful for the design tokens and the brand mark, but **it is not the layout for new pages.**
-  Start new pages from a G4 page.
+  New pages are built to layout v3 (§4). Take tokens, helpers, the engine pattern, the reveal and
+  the test hooks from a recent G4 page (P1 PHY Q02 is the latest), but not its layout: the rail,
+  gauge grid, badges, reasoning log, evidence table and select menus stay G4-only.
 
-## 4. Current layout: layout v2 (reference: P1 Q12–Q15)
+## 4. Current layout: layout v3 (G5) — the master visual standard
 
-Copy structure, tokens and helpers from the closest G4 page. Do not reconstruct them.
+For every new page (and every future concept page) from 2026-09-30. The G1–G4 pages are not
+redesigned to it unless the owner asks for a specific page.
+
+**Philosophy.** A premium, immersive scientific experiment that is understood at a glance. The
+goal is not to fill the page with information: the experiment is the hero, and its scientific
+objects are big, clear and visually dominant. In priority order: scientific clarity; large,
+readable scientific objects; realistic apparatus; meaningful animation; intuitive controls; a
+clean hierarchy; visual depth; classroom readability; mobile usability; performance. Beauty
+must serve understanding, and scientific correctness still outranks everything (§1).
+
+```
+header      brand bar · sim ID · H1 (small)
+#question   01 THE QUESTION — verbatim, near the top, options as clear tiles (never collapsed)
+#lab        02 THE EXPERIMENT — the hero
+              compact key-result line (the answer, visible from load) + one stage caption
+              .stage > canvas#labcv — full content width; desktop ≥ 55 % of the screen height,
+                                      phone full width and ≥ 45 % of the height (portrait scene)
+              measurements drawn IN the scene, on the instruments (thermometer, meter, gauge)
+            #controls — directly below (or above) the canvas, ≤ 48 px away:
+              ▶ START · Pause · Replay · Reset · Classroom, and the experiment's own controls as
+              toggles, segmented buttons, number inputs with units, or sliders — no dropdowns
+#solution   03 DETAILED SOLUTION — step by step, tied to what the student saw; concept
+              explanation and key takeaways inside it
+#analysis   04 ONE OR TWO GRAPHS — only if they help understand or solve (optional)
+#explorer   optional, only when a separate tool teaches something the experiment cannot
+#howto      HOW TO USE — five short points: what first, which controls, what to watch, what it
+              shows, how to reset/replay
+footer
+```
+
+**Information hierarchy.** Highest: the question, the experiment, the primary controls, the key
+result. Secondary: the detailed solution, an important graph. Tertiary: how to use, supporting
+explanation. **Internal only** (kept for the tests, never shown): logs, event histories, state
+dumps, debug counters. So a new page has **no** status-chip bar, side rail, gauge grid, badges,
+reasoning log, evidence table, unknown tiles, option-audit cards or classification table. The
+option audit belongs in the solution's option table and, if useful, as one stage of the
+experiment. At most 4 compact readouts may sit by the experiment, and only real measurements
+("Temperature: 327 K"), never implementation state.
+
+**Scale and legibility.** Ask: can a student several feet away understand the main apparatus or
+molecule? If not: scale up, raise contrast, simplify the surroundings. Molecules large enough to
+see atoms, bonds, bond changes, intermediates and electron movement; apparatus large enough to see
+components, reagent movement, measurements and state changes; graphs readable without zooming.
+Canvas text is never below 13 px on a desktop screen or 11 px on a phone screen (the page reports
+its smallest canvas font through `PX.minLabelPx()`). Prefer less information in large, clear
+objects over more information in small ones.
+
+**Controls.** Every control answers "what does this change in the experiment?", sits next to the
+experiment, is ≥ 44 px tall, and the affected object visibly responds (CONTROL → EXPERIMENT →
+EFFECT). Use toggles `[ON][OFF]`, segmented buttons `[A][B][C]` for a few exclusive states,
+number inputs with units and validated bounds (`Temperature [300] K`), or sliders where continuous
+exploration teaches something. **No `<select>` for primary controls.** Remove controls that do not
+improve learning.
+
+**Responsive.** Recompose, don't shrink: on phones the scene is re-laid out for portrait (the
+canvas changes its own resolution and arrangement), controls stack under it, labels stay readable
+and nothing scrolls sideways. Classroom mode widens the experiment to the screen and enlarges the
+narration (≥ 22 px) and labels.
+
+**Per-simulation decision.** Before coding, the design brief records: the main visual object, the
+main experimental action, the primary controls, the essential measurements, whether a graph is
+needed, whether molecules or diagrams are needed, what is removed, and what the student must notice
+first. The default structure changes only when the science benefits.
+
+**Gates.** Every new page passes the visual QA gates A–J (`python3 tools/auto_sim.py gates`):
+A C D E F I J are measured by `node tests/visual_gates.js <page>`; B (object legibility), G
+(realism) and H (scientific correctness) by looking at the screenshots and by the verifier. The
+page contract the checker reads: `section#question`, `section#lab` holding `canvas#labcv` and
+`#controls`, `section#solution`, optional `section#analysis` / `section#explorer`,
+`section#howto`, and `window.PX.minLabelPx()`.
+
+**Kept from layout v2:** the answer visible from page load and confirmed by the run (it blinks once
+and stops); one START runs the whole investigation through a virtual clock (pause, speed, reduced
+motion); prediction optional and non-blocking; the `window.PX` hooks; custom values with honest
+warnings and a restore control; classroom mode.
+
+### 4.1 Layout v2 (G4) — the pages built to it
+
+P1 CHE Q12–Q16 and P1 PHY Q01–Q02 use it and keep it (§3). It is no longer the layout for new
+pages. For reference:
 
 ```
 header     brand bar · sim ID · H1 · chips · header answer box · theme toggle
@@ -159,7 +241,10 @@ existing pages.
 
 **Apparatus and environment.** Premium 3-D or pseudo-3-D where it helps: depth, perspective,
 believable glassware, liquids, surfaces, instruments, lighting and shadow where technically
-sensible. Apparatus should feel physically present.
+sensible, realistic proportions and subtle environmental cues. Apparatus should feel physically
+present and substantial. Choose only relevant apparatus: every visible component has a purpose,
+and there is no generic lab decoration. A polished 2-D or pseudo-3-D scene is preferred to heavy
+3-D when it serves learning and performance better.
 
 **Apparatus interaction**, where educationally meaningful: rotate and zoom the view, inspect
 components, turn knobs, open valves, flip switches, use electrodes, burettes and pipettes,
@@ -247,9 +332,10 @@ Question → enter the lab → inspect apparatus / molecule → interact → per
 - Electronic concepts (MO filling, d-electron counts) shown visually where they drive the
   answer.
 
-**Physics.** Conventions will be established with the first real Physics simulation. The ID
-subject code `PHY` and the folder `physics/` are already accepted by the tools; nothing else
-is fixed yet.
+**Physics** (P1 PHY Q01–Q02 so far, built to the interim gates of AUTO_SIMULATION_PIPELINE.md §5).
+Show the diagram the question implies, the governing equations with values and units, and the
+derivation; the experiment's measurements are the physical quantities (time, current, field,
+angle), drawn on the apparatus. A dedicated physics doctrine skill is still an open decision.
 
 ## 8. Visual system
 
@@ -304,7 +390,9 @@ computed answer and the written solution all agree**, and:
   errors, the feed entries, and the app shell opening it;
 - `check_library.py` exits 0, `production_audit.py` passes all checks, and the CI drift gate is
   clean;
-- every stage and the reveal have been screenshotted and **looked at** (desktop and 390 px).
+- every stage and the reveal have been screenshotted and **looked at** (desktop and 390 px);
+- new (layout v3) pages pass the visual QA gates A–J (§4): `node tests/visual_gates.js <page>` for
+  A C D E F I J, screenshots and the verifier for B G H.
 
 Environment: `tests/.venv` (sympy, numpy, scipy, RDKit), Playwright 1.56.1 / Chromium build
 1194 via `tests/_browser.js`, and `bash tests/runall.sh` (exit 0 all pass, 1 fail, 2 only

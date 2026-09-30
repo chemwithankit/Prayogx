@@ -1,9 +1,9 @@
 # PrayogX design system: reference
 
-Distilled from the G4 pages (P1 Q12–Q15), which remain the source of truth: when in doubt,
-copy from `simulations/2026/paper-1/chemistry/adv-2026-p1-che-q15/index.html`. Standards,
-generations and the immersive direction are in `docs/SIMULATION_STANDARDS.md`. No new
-design-token framework: this is the existing one.
+Tokens, typography, charts, animation and accessibility are distilled from the G4 pages, which
+remain their source of truth (copy from the latest, P1 PHY Q02, or P1 CHE Q15). **The page
+layout of new pages is layout v3 (G5), not G4** — see "Layout v3 (G5)" below and
+`docs/SIMULATION_STANDARDS.md` §4. No new design-token framework: this is the existing one.
 
 ## Brand
 
@@ -45,9 +45,47 @@ Light values sit on `:root`. Dark values are defined **twice**: under
   (`<h2><span class="n">01</span>Title</h2>`), lede ≤ 76ch.
 - Classroom mode: narration ≥ 19 px.
 
-## Layout v2 (structure)
+## Layout v3 (G5) — new pages
 
-See `docs/SIMULATION_STANDARDS.md` §4. The key ids and classes in the reference pages:
+Structure, hierarchy and rules: `docs/SIMULATION_STANDARDS.md` §4. The page contract the gate
+checker (`tests/visual_gates.js`) reads:
+
+```html
+<section id="question">  … verbatim question, option tiles …                </section>
+<section id="lab">
+  <p class="keyres">…the answer, visible from load…</p>  <p id="narr">…stage caption…</p>
+  <div class="stage"><canvas id="labcv" …></canvas></div>          <!-- the hero -->
+  <div id="controls" role="group" aria-label="experiment controls">   <!-- ≤ 48 px away -->
+    ▶ START · Pause · Replay · Reset · Classroom · the experiment's own controls
+  </div>
+</section>
+<section id="solution"> … step by step, concept, key takeaways …          </section>
+<section id="analysis"> … one or two graphs, only if useful (optional) … </section>
+<section id="howto">    … five short points …                              </section>
+```
+
+- **Hero sizing.** `.stage` spans the content width; `canvas#labcv{width:100%;height:auto}`. Pick
+  the canvas resolution per layout: desktop landscape (e.g. 1200×720, displayed ≥ 55 % of the
+  screen height at 1280×800); phones portrait (e.g. 720×900) with the scene re-laid out, not
+  shrunk. Classroom mode: `.wrap{max-width:none}`, narration ≥ 22 px.
+- **Legibility.** Draw every canvas label through one helper that records the smallest font of
+  the frame and expose it as `PX.minLabelPx()`; on screen it must be ≥ 13 px (desktop) and
+  ≥ 11 px (phone). Molecules: atoms ≥ 18 px across on screen, bond changes clearly coloured.
+- **Measurements in the scene.** Draw readings on the instruments themselves (a thermometer's
+  column and value, a meter's needle and digits). Up to 4 compact readouts may sit beside the
+  key-result line; no gauge grid.
+- **Controls** (`#controls`, one row that wraps): the primary START button; toggles
+  (`[ON][OFF]`, `aria-pressed`); segmented buttons for 2–5 exclusive states; number inputs with a
+  unit and validated bounds (bad input falls back with a visible message); sliders with value,
+  unit and range. All ≥ 44 px tall. **No `<select>`.**
+- **Not in new pages** (G4-only): `#xstat` stage-chip bar, `.rail` with gauges, `.badges`,
+  reasoning log `#calclist`, evidence table `#log`, unknown tiles, option-audit `.board` cards,
+  classification table. Their data may stay internal for the tests (`PX.calcKeys()` etc.), never
+  rendered.
+
+## Layout v2 (G4 structure)
+
+The pages built to it (P1 CHE Q12–Q16, P1 PHY Q01–Q02) keep it. The key ids and classes:
 `#xstat` status bar, `#ansstrip` answer strip, `.lab3d > canvas#labcv` (1040×620), `.rail`,
 `#dock`, `#solgate` (hidden in G4), `#solbody`.
 
@@ -56,6 +94,9 @@ items; wrap wide tables and figures in `overflow-x:auto`. An inline `grid-templa
 needs `!important` in the stacking media query.
 
 ## Components
+
+G4 components below; in new pages use only those layout v3 keeps (the key-result line, `.assume`,
+`.verify`, solution steps, the custom-input states, the reveal).
 
 - **Answer strip / header answer box:** the option letter or value in `--good`, a decisive
   line, a stage message ("Analyzing…", "Testing options A–D…", "Calculating final result…")
@@ -74,14 +115,18 @@ needs `!important` in the stacking media query.
 
 ## Controls
 
-- Primary **▶ START EXPERIMENT** in the dock; secondary Pause/Play, REPLAY, RESET, speed chips,
-  CLASSROOM, SHOW EQUATION / OBSERVATION / WHY?, slow motion, OPEN EXPLORER.
-- Tap targets ≥ 32–34 px; native `select` `min-height:40px`. Sliders show value, unit, min,
-  max and step, with large −/+ for phones. Every drag has a tap or keyboard fallback.
+- New pages: see "Layout v3 (G5)" — `#controls` right by the canvas, ≥ 44 px, no `<select>`.
+- G4 pages: primary **▶ START EXPERIMENT** in the dock; secondary Pause/Play, REPLAY, RESET,
+  speed chips, CLASSROOM, SHOW EQUATION / OBSERVATION / WHY?, slow motion, OPEN EXPLORER; tap
+  targets ≥ 32–34 px; native `select` `min-height:40px`.
+- Sliders show value, unit, min, max and step, with large −/+ for phones. Every drag has a tap
+  or keyboard fallback.
 
 ## Charts
 
-Hand-built inline SVG; no libraries.
+Hand-built inline SVG; no libraries. In new pages a chart appears only if it helps the student
+understand or solve the problem — at most two, below the solution (`#analysis`), unless one is so
+central it belongs in the experiment itself.
 
 - Recessive 1 px grid in `--line`; 1.5 px axes in `--line-strong`; 2 px series lines.
 - Markers ≥ 5 px with a 2 px `--surface-1` ring; bars `rx:4`.
@@ -140,6 +185,10 @@ reduced-motion path, and labels on any exaggeration.
 - Decorative animation or controls; fake graph data; a hard-coded answer; a distorted scale
   without a label.
 - Clutter, cartoon effects, irrelevant gamification (XP, coins, streaks).
+- Over-dashboarding (new pages): card grids, stats panels, gauge grids, badges, raw logs, event
+  histories, state dumps or debug counters shown to students; a small experiment surrounded by
+  panels; dropdowns for primary controls; controls far from the experiment; graphs added because
+  the framework can.
 - Permanently flashing elements; colour as the only signal.
 - Duplicate element ids; `white-space:nowrap` equations without `min-width:0` parents;
   annotations colliding with axes; new series colours; external fonts or CDNs.

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Layout v3 (G5) reference fixture | PrayogX tests</title>
+<meta name="sim-id" content="TEST-G5-LAYOUT">
+<!-- Test fixture, not a simulation: the smallest page that follows the layout v3 (G5) contract in
+     docs/SIMULATION_STANDARDS.md §4, so tests/visual_gates.js can prove it recognises a compliant page. -->
+<style>
+:root{--surface-0:#f4f4f1;--surface-1:#fcfcfb;--line:#d9d9d4;--text-primary:#0b0b0b;--text-secondary:#52514e;--accent:#2a78d6;--good:#00743f;
+  --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;--serif:ui-serif,Georgia,serif}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--surface-0:#111110;--surface-1:#1a1a19;--line:#34342f;--text-primary:#fff;--text-secondary:#c3c2b7}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--surface-0);color:var(--text-primary);font-family:var(--sans);font-size:16px;line-height:1.55}
+.wrap{max-width:1240px;margin:0 auto;padding:0 20px 60px}
+section{margin:0 0 36px}
+h1{font-size:22px;margin:18px 0 8px} h2{font-size:18px;margin:0 0 8px}
+.qtext{font-family:var(--serif);font-size:18px;background:var(--surface-1);border:1px solid var(--line);border-radius:12px;padding:16px}
+.stage{position:relative;border-radius:16px;overflow:hidden;background:#070a12}
+canvas#labcv{display:block;width:100%;height:auto}
+#narr{margin:10px 2px 0;font-size:16px;color:var(--text-secondary)}
+#controls{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:12px;padding:12px;border:1px solid var(--line);border-radius:14px;background:var(--surface-1)}
+#controls button,#controls input{min-height:48px;font-size:16px;border-radius:10px;border:1px solid var(--line);background:var(--surface-0);color:var(--text-primary);padding:0 16px}
+#controls .go{background:var(--accent);color:#fff;border:none;font-weight:800}
+#controls .seg{display:flex;gap:0} #controls .seg button[aria-pressed=true]{background:var(--accent);color:#fff}
+#controls input[type=number]{width:120px}
+#controls input[type=range]{width:220px;padding:0}
+svg.chart{display:block;width:100%;max-width:720px;height:auto}
+body.classroom .wrap{max-width:none;padding:0 18px} body.classroom #narr{font-size:24px}
+body.classroom section:not(#lab){display:none}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Layout v3 reference</h1>
+  <section id="question"><h2>Question</h2><div class="qtext">Q.0 A fixture question, verbatim.</div></section>
+  <section id="lab">
+    <div class="stage"><canvas id="labcv" width="1200" height="720" role="img" aria-label="Fixture experiment: a large flask drawn across most of the screen"></canvas></div>
+    <div id="controls" role="group" aria-label="experiment controls">
+      <button class="go" type="button" id="gobtn">▶ START EXPERIMENT</button>
+      <div class="seg" role="group" aria-label="heating"><button type="button" aria-pressed="true">ON</button><button type="button" aria-pressed="false">OFF</button></div>
+      <label>Temperature <input type="number" id="in_T" value="300" min="200" max="400"> K</label>
+      <input type="range" id="in_c" min="0" max="1" step="0.01" value="0.1" aria-label="concentration">
+      <button type="button" id="classbtn">CLASSROOM</button>
+    </div>
+    <p id="narr" aria-live="polite">The flask warms; the reading rises.</p>
+  </section>
+  <section id="solution"><h2>Detailed solution</h2><p>Step by step, tied to what the experiment showed.</p></section>
+  <section id="analysis"><h2>Temperature against time</h2><svg class="chart" viewBox="0 0 520 200" role="img" aria-label="Fixture chart of temperature against time"><path d="M20 180 L500 20" stroke="currentColor" fill="none"/></svg></section>
+  <section id="howto"><h2>How to use the simulation</h2><p>Press START; change the temperature; watch the flask.</p></section>
+</div>
+<script>
+(function(){
+"use strict";
+var c = document.getElementById("labcv"), g = c.getContext("2d"), minPx = 999;
+function label(s, x, y, px){ if (px < minPx) minPx = px; g.fillStyle = "#e8f0ff"; g.font = "700 " + px + "px sans-serif"; g.textAlign = "center"; g.fillText(s, x, y); }
+function draw(){
+  minPx = 999;
+  var phone = document.documentElement.clientWidth < 700;
+  var W = phone ? 720 : 1200, H = phone ? 900 : 720;
+  if (c.width !== W){ c.width = W; c.height = H; }
+  g.fillStyle = "#0c1326"; g.fillRect(0, 0, W, H);
+  g.fillStyle = "rgba(120,180,255,.35)"; g.beginPath(); g.arc(W / 2, H * 0.55, Math.min(W, H) * 0.32, 0, Math.PI * 2); g.fill();
+  label("FLASK", W / 2, H * 0.55, phone ? 36 : 28);
+  label("T = 300 K", W / 2, H * 0.12, phone ? 28 : 18);
+}
+draw(); window.addEventListener("resize", draw);
+document.getElementById("classbtn").addEventListener("click", function(){ document.body.classList.toggle("classroom"); });
+window.PX = { minLabelPx: function(){ draw(); return minPx; } };
+})();
+</script>
+</body>
+</html>

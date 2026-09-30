@@ -5,8 +5,10 @@ description: Build one new PrayogX simulation end to end, from a question the ow
 
 # Build a new PrayogX simulation
 
-Standard: `docs/SIMULATION_STANDARDS.md`. Reference pages: P1 Q12–Q15
-(`simulations/2026/paper-1/chemistry/adv-2026-p1-che-q12` … `q15`). Work in this repository
+Standard: `docs/SIMULATION_STANDARDS.md` — **new pages are built to layout v3 (G5), §4**: the
+question, then a large experiment with its controls right beside it, then the solution, an
+optional graph, and how to use. Engine, tokens and helpers come from the latest G4 pages (P1 PHY
+Q02, P1 CHE Q12–Q16); their layout does not. Work in this repository
 directly; nothing outside it is needed.
 
 **Never skip scientific verification in favour of visual work.** Steps 2–4 come before any
@@ -45,29 +47,46 @@ code.
    owner if the design is unusual or needs WebGL.
 8. **Interaction model.** Controls = the variables of the governing equations, question
    values pre-loaded, custom inputs only where meaningful (with honest off-pathway warnings
-   and a restore control). Robust input parsing with clear messages.
-9. **Visual experience.** Layout v2 (standards §4) and the immersive direction (§6).
-   Apparatus and molecules should feel present; show the vessel and molecules in sync for
-   organic chemistry.
+   and a restore control). Robust input parsing with clear messages. **Controls are toggles,
+   segmented buttons, number inputs with units, or sliders — never a dropdown — in one
+   `#controls` group directly below (or above) the canvas, ≥ 44 px tall**, and every change makes
+   the affected object visibly respond. Remove any control that teaches nothing.
+9. **Visual experience.** Layout v3 (standards §4) and the immersive direction (§6). Decide
+   first: the main visual object, the main action, what the student must notice first, and
+   what can be removed. The experiment is the hero — full content width, most of the screen,
+   objects big enough to read from several feet away, measurements drawn on the instruments.
+   No dashboard: no rail, gauge grid, badges, logs or evidence tables on the page. Show the
+   vessel and molecules in sync for organic chemistry, both large.
 10. **Rendering level.** Choose 2-D / pseudo-3-D / WebGL by the table in standards §6.
     WebGL needs owner approval.
 11. **Animation sequence.** 8–13 stages, one scene each, each proving one piece of the
     answer; CAUSE → PROCESS → EFFECT; virtual clock, so pause, speed and reduced motion
     govern everything.
-12. **Implement.** Copy the shell, tokens and helpers from the closest G4 page, then replace
-    the question-specific engine, scenes and UI. One file, ES5, unique ids, `window.PX`
-    hooks. If you merge code from several pages, check for duplicate function names and ids.
+12. **Implement.** Build the layout v3 page contract (`section#question`, `section#lab` with
+    `canvas#labcv` + `#controls`, `section#solution`, optional `#analysis`, `section#howto`);
+    take tokens, helpers, the virtual clock, the reveal and the engine pattern from the latest
+    G4 page, then write the question-specific engine and scenes. Desktop landscape and phone
+    portrait canvas layouts; every canvas label through one helper feeding `PX.minLabelPx()`.
+    One file, ES5, unique ids, `window.PX` hooks. If you merge code from several pages, check for
+    duplicate function names and ids.
 13. **Answer calculation.** `run(D)` returns everything derived; `var QRUN = run(copyST());
     var ANS = QRUN.answer;`. Custom runs must report honestly when they no longer answer the
     question. **No answer literal in the source.**
-14. **Detailed solution:** complete, exam-level, always open, with drawn structures and
-    curved-arrow mechanisms for organic chemistry, an option table, traps, and an independent
-    verification block (≥ 5 checks).
-15. **Concept explanation:** the pivot, stated plainly, with jargon defined.
-16. **Key takeaways:** 3–6 exam-useful statements.
+14. **Detailed solution:** complete, exam-level, always open, right after the experiment, and
+    tied to what the student observed. Chemistry: structures, mechanism, bonds breaking and
+    forming, curved arrows, intermediates, stereo- and regiochemistry, calculations. Physical
+    chemistry: set-up, equations, substitutions, calculations, observations, interpretation.
+    Physics: diagram, equations, derivation, values with units, reasoning, result. Plus an option
+    table, traps, and an independent verification block (≥ 5 checks).
+15. **Concept explanation:** the pivot, stated plainly, with jargon defined (inside the
+    solution section).
+16. **Key takeaways:** 3–6 exam-useful statements (inside the solution section). A graph goes
+    in `#analysis` only if it helps understand or solve; "How to use" is five short points.
 17. **Validate:** follow `prayogx-validate` (verifier + page suite).
 18. **Test mobile / browser / console:** 390 and 360 px with no overflow, zero console
-    errors, reduced motion, classroom mode. Screenshot every stage and **look**.
+    errors, reduced motion, classroom mode. Run `node tests/visual_gates.js <page>` (gates A C D
+    E F I J must pass) and screenshot every stage at 1280 and 390 px and **look** (gates B G H).
+    Repair and re-run until clean.
 19. **Metadata:** write `meta.json` and `question.md` (see `prayogx-register`).
 20. **Register:** follow `prayogx-register`.
 21. **Generated-content validation:** the four tools plus the drift gate, all green.
@@ -81,12 +100,16 @@ ID / QUESTION   ADV-…  (source: papers/<file> p.<n>)
 PIVOT           <the one idea the student must feel>
 INDEPENDENT ANSWER  <value>   OFFICIAL KEY <value>   AGREE? yes/no
 EXPERIMENT      <apparatus / molecules / process>
+MAIN VISUAL     <the one object that fills the screen>   NOTICE FIRST <what the eye must land on>
+MAIN ACTION     <what the student does / what happens>
 RENDERING       2-D | pseudo-3-D | WebGL (approval?)     WHY: <learning value>
-INTERACTIONS    <controls = equation variables; custom inputs + warnings>
+CONTROLS        <toggles / segmented / number inputs / sliders — no dropdowns; each: what it changes>
+MEASUREMENTS    <≤ 4, drawn on the instruments>
 STAGES (8–13)   1 <scene → what it proves> … n <reveal>
 ORGANIC         vessel event ↔ mechanism step, per stage
-INSTRUMENTS     <gauges>        CHARTS  <from model state>
-EXPLORER        <tool that fits the concept>
+GRAPHS          none | <one or two, and why each helps>
+EXPLORER        none | <only if it teaches what the experiment cannot>
+REMOVED         <what a G4 page would have shown that this page leaves out>
 SOLUTION        <figures / calculations>, option table, traps, ≥5 checks
 CONCEPT         <pivot in one paragraph>     TAKEAWAYS  <3–6>
 ```
@@ -96,7 +119,7 @@ CONCEPT         <pivot in one paragraph>     TAKEAWAYS  <3–6>
 ```
 COMPLETED     <ID> — <lab name>
 FILES         created / updated (paths)
-VERIFICATION  verifier N/N · page suite N/N · check_library OK · production_audit N/N · drift clean
+VERIFICATION  verifier N/N · page suite N/N · visual gates A–J (measured pass, B G H looked at) · check_library OK · production_audit N/N · drift clean
               independent answer <x> · official key <x> · published solution <x or n/a>
 ISSUES        <anything not done or not verified — say so plainly>
 REGISTRY      manifest (N simulations) · taxonomy · tracker.csv · README row · tests registered

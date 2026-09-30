@@ -13,9 +13,9 @@ Repository: `github.com/chemwithankit/Prayogx`, branch `main`. Android package:
 - The student-facing "upload a question → AI generates a simulation" platform is
   **deferred**. Don't build toward it: no backend, accounts, credits or AI-generation
   infrastructure unless the owner asks.
-- Current library: **33 Chemistry simulations**, JEE Advanced 2026 Paper 1 Q1–Q16 and Paper 2
-  Q1–Q17. P1 Q16 (built 2026-09-28) is the first page under the immersive standard; the owner reviewed
-  and published it on 2026-09-29. There is no next build until the owner names one.
+- Current library: **35 simulations** — 33 Chemistry (JEE Advanced 2026 Paper 1 Q1–Q16, Paper 2
+  Q1–Q17) and 2 Physics (Paper 1 Q1–Q2, built by the factory, `script_verified`). P1 CHE Q16 was
+  reviewed and published by the owner on 2026-09-29. There is no next build until the owner names one.
 
 ## Owner control
 
@@ -44,8 +44,12 @@ Repository: `github.com/chemwithankit/Prayogx`, branch `main`. Android package:
   errors, working reset / replay / restore, classroom mode, reduced motion.
 - Detailed solution (always open), concept explanation and key takeaways.
 
-**New simulations** follow layout v2, with **P1 Q12–Q15 as the reference**, and
-progressively target an **immersive virtual laboratory**: the student feels they are
+**New simulations** follow **layout v3 (G5), the master visual standard**
+([docs/SIMULATION_STANDARDS.md §4](docs/SIMULATION_STANDARDS.md)): the question, then a large,
+immersive experiment as the hero, simple controls right beside it (no dropdowns), the detailed
+solution, a graph only if useful, and how to use — no dashboards, badges or logs on the page. Each
+page passes the visual QA gates A–J (`python3 tools/auto_sim.py gates`, `tests/visual_gates.js`).
+They progressively target an **immersive virtual laboratory**: the student feels they are
 performing the experiment. That means pseudo-3-D or 3-D apparatus and molecules where they
 aid learning, real interaction with apparatus and molecules, and animation that shows
 CAUSE → PROCESS → EFFECT, never decoration. Prediction is optional and non-blocking. Full
