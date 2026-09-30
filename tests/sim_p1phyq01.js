@@ -147,7 +147,11 @@ const ok = (l, c, x) => { n++; if (!c) bad++; console.log((c ? 'PASS  ' : 'FAIL 
   ok('the audit names each mistake', await E(() => /Ω₁ \+ Ω₂/.test(PX.cards().A.ev) && /2π − 2Δθ/.test(PX.cards().B.ev) && /exactly the bench/.test(PX.cards().C.ev)));
   ok('option C is marked correct in the mission brief', await E(() => document.querySelector('#opts li[data-o="C"]').classList.contains('correct') && document.querySelectorAll('#opts li.wrong').length === 3));
   ok('all six badges are earned', await E(() => ['geo', 'roll', 'coin', 'rel', 'trap', 'mas'].every(k => PX.badges()[k])) && await E(() => document.querySelectorAll('.badge.on').length) === 6);
-  ok('both charts are drawn from the model: 3 angle curves, 4 option bars', await E(() => document.querySelectorAll('#curve path').length === 3 && document.querySelectorAll('#bars rect').length === 4));
+  /* finish() sets RUN.done but the charts are redrawn on the frame loop's next slow tick (every 80 ms), so wait for it */
+  const charted = () => E(() => document.querySelectorAll('#curve path').length === 3 && document.querySelectorAll('#bars rect').length === 4);
+  let chartsOk = await charted();
+  for (let i = 0; i < 20 && !chartsOk; i++){ await sleep(50); chartsOk = await charted(); }
+  ok('both charts are drawn from the model: 3 angle curves, 4 option bars', chartsOk);
   const cl = (await p.textContent('#calclist')).replace(/\s+/g, ' ');
   ok('the write-up: Δθ = 2/51, v = ωr, Ω₁ = ω/51, 51 spins, 3ω/51, 2π − 2Δθ, option C',
      /Δθ = 2\/51/.test(cl) && /ωr/.test(cl) && /Ω₁ = ω\/51/.test(cl) && /spins per lap = 51, not 50/.test(cl) && /3ω\/51/.test(cl) && /2π − 2Δθ/.test(cl) && /option C/.test(cl));

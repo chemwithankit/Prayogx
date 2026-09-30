@@ -15,8 +15,9 @@ They do make network calls:
 
 The simulations themselves carry no ads.
 
-Current library: **33 simulations**, all Chemistry, JEE Advanced 2026 — Paper 1 Q1–Q16 and
-Paper 2 Q1–Q17, all published.
+Current library: **46 simulations**, JEE Advanced 2026, all published — 33 Chemistry (Paper 1
+Q1–Q16 and Paper 2 Q1–Q17) and 13 Physics (Paper 1 Q1–Q13, built by the simulation factory and
+script-verified).
 
 ## Production
 
@@ -308,7 +309,7 @@ release (consent, live ads, app-ads.txt, versionCode, signing) is tracked in
 | `ADV-2026-P1-CHE-Q15` | 2026 | 1 | Chemistry | Aldehydes, Ketones and Carboxylic Acids | Q.15 | C |
 | `ADV-2026-P1-CHE-Q16` | 2026 | 1 | Chemistry | Aldehydes, Ketones and Carboxylic Acids | Q.16 | B |
 | `ADV-2026-P1-PHY-Q01` | 2026 | 1 | Physics | System of Particles and Rotational Motion | Q.1 | (C) |
-| `ADV-2026-P1-PHY-Q02` | 2026 | 1 | Physics | Electromagnetic Induction | Q.1 | (C) |
+| `ADV-2026-P1-PHY-Q02` | 2026 | 1 | Physics | Electromagnetic Induction | Q.2 | (C) |
 | `ADV-2026-P1-PHY-Q03` | 2026 | 1 | Physics | System of Particles and Rotational Motion | Q.3 | (B) |
 | `ADV-2026-P1-PHY-Q04` | 2026 | 1 | Physics | Ray Optics and Optical Instruments | Q.4 | A or B |
 | `ADV-2026-P1-PHY-Q05` | 2026 | 1 | Physics | Atoms | Q.5 | (A), (C) |

@@ -115,8 +115,9 @@ const ok = (l, c, x) => { n++; if (!c) bad++; console.log((c ? 'PASS  ' : 'FAIL 
   ok('the answer panel steps through every message', ['Reading the formula', 'Identifying the donor atoms', 'Counting linkage sets', 'Seating the chelate', 'Building every arrangement', 'Folding by symmetry', 'Testing mirror images', 'Auditing the traps', 'Calculating final result'].every(m => [...msgs].some(x => x.indexOf(m) >= 0)), [...msgs].join(' / ').slice(0, 160));
   const exam = new Set(live.filter(s => s.now && s.now.name === 'build').map(s => s.ex));
   ok('live data: the build examines the seatings one by one', exam.size >= 12, exam.size + ' distinct');
-  const dist = live.filter(s => s.now && s.now.name === 'build').map(s => +s.d);
-  ok('live data: the distinct count only ever rises, from 2 to 8', dist.every((v, i) => !i || v >= dist[i - 1]) && dist[0] <= 4 && dist[dist.length - 1] === 8, dist.slice(0, 3) + '…' + dist.slice(-1));
+  /* at the first instant of the build nothing has been examined yet and the readout shows '—': skip those samples */
+  const dist = live.filter(s => s.now && s.now.name === 'build' && /^\d+$/.test(s.d)).map(s => +s.d);
+  ok('live data: the distinct count only ever rises, from 2 to 8', dist.length >= 5 && dist.every((v, i) => !i || v >= dist[i - 1]) && dist[0] <= 4 && dist[dist.length - 1] === 8, dist.slice(0, 3) + '…' + dist.slice(-1));
   ok('the total is unknown until the mirror test is done', live.some(s => s.now && s.now.name === 'build' && s.rt === '?' && s.tot === '—') && live.some(s => s.now && s.now.name === 'test' && s.rt === '8'));
   ok('the experiment finishes by itself', await E(() => PX.RUN.done));
   ok('the reasoning log is written in order', (await E(() => PX.calcKeys())).join(',') === 'load,donors,linkage,chelate,build,fold,mirror,c,d,match', (await E(() => PX.calcKeys())).join(','));

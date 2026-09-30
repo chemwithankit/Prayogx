@@ -1,7 +1,7 @@
 # PrayogX simulation standards
 
-The standard every **new** PrayogX simulation is built to, and the facts about the 35 that
-already exist (33 Chemistry, 2 Physics). Decisions and their dates are in [DECISIONS.md](DECISIONS.md). The workflows
+The standard every **new** PrayogX simulation is built to, and the facts about the 46 that
+already exist (33 Chemistry, 13 Physics). Decisions and their dates are in [DECISIONS.md](DECISIONS.md). The workflows
 that apply this standard are the project skills in `.claude/skills/`.
 
 When this document and the repository's tools disagree, **the tools win**
