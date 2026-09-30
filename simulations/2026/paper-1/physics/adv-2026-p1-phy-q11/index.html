@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Two-Chamber Heat Lab — heat through a partition, one gas at constant volume and one at constant pressure — JEE Advanced 2026 Paper 1 Q.11 | PrayogX</title>
+<meta name="description" content="An insulated container: gas S1 at fixed volume and gas S2 at atmospheric pressure behind a free piston, joined by a conducting partition. The temperature gap decays at rate (16/15) KA/xR, so it halves at t = (15/16) ln 2 xR/KA - n = 0.66 with ln 2 = 0.7. JEE Advanced 2026 Paper 1 Physics Q.11.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232a78d6'/%3E%3Cpath d='M12.5 6.5h7M13.6 6.5v7.2L7.9 24.1a1.5 1.5 0 0 0 1.3 2.3h13.6a1.5 1.5 0 0 0 1.3-2.3l-5.7-10.4V6.5' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M10.6 20.6h10.8' stroke='white' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E">
+<meta name="sim-id" content="ADV-2026-P1-PHY-Q11">
+<style>
+:root{
+  color-scheme: light;
+  --surface-0:#f4f4f1; --surface-1:#fcfcfb; --surface-2:#ececea;
+  --line:#d9d9d4; --line-strong:#bcbcb5;
+  --text-primary:#0b0b0b; --text-secondary:#52514e; --text-muted:#77766f;
+  --s1:#2a78d6; --s2:#eb6834; --s3:#1baf7a; --s4:#4a3aa7;
+  --good:#00743f; --bad:#c0392b; --accent:#2a78d6;
+  --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+  --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --serif:ui-serif,Georgia,"Times New Roman",serif;
+  --radius:12px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  color-scheme: dark;
+  --surface-0:#111110; --surface-1:#1a1a19; --surface-2:#232322;
+  --line:#34342f; --line-strong:#4a4a44;
+  --text-primary:#ffffff; --text-secondary:#c3c2b7; --text-muted:#95948b;
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#9085e9;
+  --good:#3fae7a; --bad:#e66767; --accent:#3987e5;
+}}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --surface-0:#111110; --surface-1:#1a1a19; --surface-2:#232322;
+  --line:#34342f; --line-strong:#4a4a44;
+  --text-primary:#ffffff; --text-secondary:#c3c2b7; --text-muted:#95948b;
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#9085e9;
+  --good:#3fae7a; --bad:#e66767; --accent:#3987e5;
+}
+*{box-sizing:border-box}
+[hidden]{display:none !important}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--surface-0);color:var(--text-primary);font-family:var(--sans);font-size:16px;line-height:1.6}
+header.top{border-bottom:1px solid var(--line);background:var(--surface-1)}
+.top-inner{max-width:1240px;margin:0 auto;padding:18px 20px 14px;position:relative}
+.brandbar{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.brandbar .pxmark{width:21px;height:21px;flex:none;display:block}
+.brandbar .wm{font-size:13px;font-weight:800;letter-spacing:.17em;color:var(--text-secondary);line-height:1}
+.brandbar .wm i{font-style:normal;color:var(--accent)}
+.simid{font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--text-muted)}
+h1{font-size:21px;line-height:1.3;margin:4px 0 4px;padding-right:80px}
+.meta{font-size:14px;color:var(--text-secondary);margin:0}
+.themebtn{position:absolute;top:14px;right:16px;border:1px solid var(--line-strong);background:var(--surface-2);
+  color:var(--text-secondary);border-radius:8px;padding:4px 9px;font-size:12px;cursor:pointer}
+.wrap{max-width:1240px;margin:0 auto;padding:0 20px 40px}
+section{margin:0 0 34px}
+h2{font-size:15px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-secondary);margin:26px 0 12px}
+h2 b{color:var(--accent);margin-right:8px}
+h3{font-size:17px;margin:22px 0 8px}
+/* 01 question */
+.qcard{background:var(--surface-1);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+.qtext{font-family:var(--serif);font-size:18px;line-height:1.6;flex:1 1 460px;min-width:0}
+.qfig{flex:0 0 250px;max-width:100%}
+.qfig svg{display:block;width:100%;height:auto}
+.sq{white-space:nowrap}
+.sq .rad{border-top:1.5px solid currentColor;padding:0 2px}
+#opts{list-style:none;margin:12px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+#opts li{background:var(--surface-1);border:1.5px solid var(--line);border-radius:10px;padding:10px 12px;font-family:var(--serif);font-size:19px;display:flex;gap:10px;align-items:center;min-height:52px}
+#opts li b{font-family:var(--sans);font-size:14px;color:var(--text-muted)}
+#opts li.correct{border-color:var(--good);box-shadow:0 0 0 2px color-mix(in srgb,var(--good) 25%,transparent)}
+#opts li.correct b{color:var(--good)}
+/* 02 lab */
+#keyline{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;background:var(--surface-1);border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin:0 0 8px}
+#keyline .k{font-size:13px;font-weight:800;letter-spacing:.12em;color:var(--text-muted);text-transform:uppercase}
+#ansval{font-size:22px;font-weight:800;color:var(--good)}
+#ansexpr{font-family:var(--serif);font-size:20px}
+#anssub{font-size:14px;color:var(--text-secondary);margin-left:auto}
+#keyline.blink{animation:blink .45s ease-in-out 4}
+@keyframes blink{50%{background:color-mix(in srgb,var(--good) 22%,var(--surface-1))}}
+#narr{margin:0 2px 10px;font-size:16px;color:var(--text-secondary);min-height:2.8em}
+.stage{position:relative;border-radius:16px;overflow:hidden;background:#070a12;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+canvas#labcv{display:block;width:100%;height:auto;touch-action:manipulation}
+#controls{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:12px;padding:12px;border:1px solid var(--line);border-radius:14px;background:var(--surface-1)}
+#controls button{min-height:48px;font-size:16px;font-weight:700;border-radius:10px;border:1px solid var(--line-strong);background:var(--surface-2);color:var(--text-primary);padding:0 16px;cursor:pointer;font-family:var(--sans)}
+#controls button:focus-visible,#controls input:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+#controls .go{background:var(--accent);color:#fff;border:none;font-weight:800;letter-spacing:.04em;min-width:190px}
+#controls .seg{display:flex;align-items:center;gap:0}
+#controls .seg span{font-size:13px;font-weight:700;color:var(--text-muted);margin-right:8px;letter-spacing:.06em;text-transform:uppercase}
+#controls .seg button{border-radius:0;margin-left:-1px;padding:0 13px}
+#controls .seg button:nth-child(2){border-radius:10px 0 0 10px}
+#controls .seg button:last-child{border-radius:0 10px 10px 0}
+#controls .seg button[aria-pressed="true"]{background:var(--accent);color:#fff;border-color:var(--accent)}
+#controls .v0{display:flex;flex-wrap:wrap;align-items:center;gap:10px;flex:1 1 520px;min-width:0}
+#controls .v0 label{font-size:15px;font-weight:700;white-space:nowrap}
+#controls input[type=range]{flex:1 1 150px;min-width:110px;min-height:44px;accent-color:var(--accent);margin:0}
+#v0out{font-family:var(--mono);font-size:15px;min-width:92px}
+#warn{margin:10px 2px 0;font-size:15px;color:var(--s2);font-weight:600}
+/* 03 solution */
+.sol{background:var(--surface-1);border:1px solid var(--line);border-radius:var(--radius);padding:6px 20px 16px}
+.sol ol.steps{padding-left:22px;margin:10px 0}
+.sol ol.steps li{margin:0 0 12px}
+.eq{font-family:var(--serif);font-size:18px;background:var(--surface-2);border-radius:8px;padding:8px 12px;margin:6px 0;overflow-x:auto}
+.solfig{display:flex;gap:18px;align-items:center;flex-wrap:wrap;margin:8px 0 12px}
+.solfig svg{flex:0 0 300px;max-width:100%;height:auto}
+.solfig p{flex:1 1 300px;margin:0}
+table.opt{border-collapse:collapse;width:100%;font-size:15px;margin:8px 0}
+table.opt th,table.opt td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+table.opt th{background:var(--surface-2)}
+table.opt tr.ok td{background:color-mix(in srgb,var(--good) 10%,transparent)}
+.tscroll{overflow-x:auto}
+.concept{border-left:4px solid var(--accent);padding:2px 0 2px 14px;margin:14px 0}
+ul.take{padding-left:20px} ul.take li{margin:0 0 6px}
+#solans{font-weight:800;color:var(--good)}
+.note{font-size:14px;color:var(--text-secondary)}
+/* 04 analysis */
+svg.chart{display:block;width:100%;max-width:760px;height:auto;background:var(--surface-1);border:1px solid var(--line);border-radius:12px}
+.chart text{font-family:var(--sans);fill:var(--text-secondary)}
+.cap{font-size:14px;color:var(--text-secondary);max-width:760px}
+/* how to */
+ol.howto{padding-left:22px;margin:0} ol.howto li{margin:0 0 8px}
+footer{font-size:13px;color:var(--text-muted);border-top:1px solid var(--line);padding:16px 0 0}
+/* classroom */
+body.classroom .wrap{max-width:none;padding:0 18px 30px}
+body.classroom header.top,body.classroom section:not(#lab),body.classroom footer{display:none}
+body.classroom #narr{font-size:24px;color:var(--text-primary)}
+body.classroom #keyline #ansexpr{font-size:26px}
+@media (max-width:760px){
+  .wrap{padding:0 16px 32px}
+  .top-inner{padding:14px 16px 12px}
+  h1{font-size:18px}
+  .qtext{font-size:17px}
+  .qfig{flex-basis:100%}
+  .qfig svg{max-width:260px;margin:0 auto}
+  #opts{grid-template-columns:repeat(2,minmax(0,1fr))}
+  #anssub{margin-left:0}
+  #controls{gap:8px;padding:10px}
+  #controls .go{flex:1 1 100%}
+  #controls button{padding:0 12px}
+  #controls .v0{flex-basis:100%;flex-wrap:wrap}
+  #controls .v0 input[type=range]{flex:1 1 100%;order:3}
+  .solfig svg{flex-basis:100%}
+  .sol{padding:4px 14px 12px}
+}
+@media (prefers-reduced-motion: reduce){#keyline.blink{animation:none}}
+/* long text options */
+#opts.lopts{grid-template-columns:1fr}
+#opts.lopts li{font-family:var(--sans);font-size:17px;align-items:flex-start;line-height:1.5}
+#opts.lopts li b{padding-top:2px}
+#opts.lopts .fx{font-family:var(--serif);font-size:18px;white-space:nowrap}
+#controls .seg button{white-space:nowrap}
+@media (max-width:760px){#opts.lopts .fx{white-space:normal}#controls .seg{flex-wrap:wrap;row-gap:6px}#controls .seg span{flex:1 1 100%;margin:0 0 2px}#controls .seg button:nth-child(2){border-radius:10px 0 0 10px}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-inner">
+    <div class="brandbar"><svg class="pxmark" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><rect width="32" height="32" rx="8" fill="var(--accent)"/><path d="M12.5 6.5h7M13.6 6.5v7.2L7.9 24.1a1.5 1.5 0 0 0 1.3 2.3h13.6a1.5 1.5 0 0 0 1.3-2.3l-5.7-10.4V6.5" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.6 20.6h10.8" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg><span class="wm">PRAYOG<i>X</i></span></div>
+    <div class="simid">ADV-2026-P1-PHY-Q11</div>
+    <h1>Two-Chamber Heat Lab — how fast does the temperature gap halve?</h1>
+    <p class="meta">JEE Advanced 2026 · Paper 1 · Physics · Q.11 · numerical value (+4 / 0) · Thermal properties and thermodynamics</p>
+    <button class="themebtn" id="themebtn" type="button">◐ theme</button>
+  </div>
+</header>
+
+<main class="wrap">
+
+<section id="question" aria-labelledby="qh">
+  <h2 id="qh"><b>01</b>The question</h2>
+  <div class="qcard">
+    <div class="qtext">Q.11 As shown in the figure, an insulated container is fitted with a thermally conducting but immovable partition (<i>P</i><sub>1</sub>) and a freely movable but thermally insulated piston (<i>P</i><sub>2</sub>). The partition <i>P</i><sub>1</sub> with thermal conductivity <i>K</i>, cross sectional area <i>A</i> and width <i>x</i> divides the container into two sections, <i>S</i><sub>1</sub> and <i>S</i><sub>2</sub>, each containing one mole of a monoatomic gas. The piston <i>P</i><sub>2</sub> moves freely such that the gas in <i>S</i><sub>2</sub> is always at the atmospheric pressure. Initially, the difference between the temperatures of <i>S</i><sub>1</sub> and <i>S</i><sub>2</sub> is Δ<i>T</i><sub>0</sub>. The time it takes for the temperature difference to become Δ<i>T</i><sub>0</sub>/2 is <i>nxR</i>/<i>KA</i>, where <i>R</i> is the universal gas constant. The value of <i>n</i> is:<br>[ Given: ln 2 ≈ 0.7 ]</div>
+    <div class="qfig">
+      <svg viewBox="0 0 250 130" role="img" aria-label="Figure from the question: an insulated container; on the left section S1, then a hatched conducting partition P1 of width x, then section S2 closed on the right by a movable piston P2">
+        <g style="color:var(--text-primary)" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M20 20 L230 20 M20 110 L230 110 M20 20 L20 110"/>
+          <rect x="86" y="20" width="8" height="90" fill="var(--line-strong)"/>
+          <line x1="180" y1="20" x2="180" y2="110" stroke-width="3"/><line x1="180" y1="65" x2="200" y2="65"/>
+          <path d="M80 12 L86 12 M94 12 L100 12"/><path d="M83 9 L86 12 L83 15 M97 9 L94 12 L97 15"/>
+        </g>
+        <g style="color:var(--text-primary)" font-family="Georgia,serif" font-size="14" fill="currentColor" font-style="italic">
+          <text x="44" y="70">S₁</text><text x="128" y="70">S₂</text><text x="84" y="126">P₁</text><text x="172" y="126">P₂</text><text x="86" y="10">x</text>
+        </g>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section id="lab" aria-labelledby="lh">
+  <h2 id="lh"><b>02</b>The experiment</h2>
+  <div id="keyline" aria-live="polite">
+    <span class="k">Answer</span><span id="ansval">—</span><span id="ansexpr"></span>
+    <span id="anssub">Press START: heat leaks through the partition and the run times how long the gap takes to halve.</span>
+  </div>
+  <p id="narr" aria-live="polite">Ready.</p>
+  <div class="stage"><canvas id="labcv" width="1200" height="720" role="img" aria-label="Experiment: an insulated container with gas S1 on the left of a conducting partition and gas S2 on the right, closed by a free piston at atmospheric pressure; heat flows through the partition from the hotter gas, S2 expands as it warms, thermometers read both temperatures, and a plot of the temperature gap against time marks the moment it has halved"></canvas></div>
+  <div id="controls" role="group" aria-label="experiment controls">
+    <button class="go" type="button" id="gobtn">▶ START EXPERIMENT</button>
+    <button type="button" id="replaybtn">↺ Replay</button>
+    <button type="button" id="resetbtn">Reset</button>
+    <div class="seg" role="group" aria-label="piston P2"><span>Piston P₂</span><button type="button" id="pfree" aria-pressed="true">Free</button><button type="button" id="plock" aria-pressed="false">Locked</button></div>
+    <div class="seg" role="group" aria-label="initial gap"><span>ΔT₀</span><button type="button" id="dt50" aria-pressed="false">50 K</button><button type="button" id="dt100" aria-pressed="true">100 K</button></div>
+    <div class="seg" role="group" aria-label="speed"><span>Speed</span><button type="button" id="sp1" aria-pressed="true">1×</button><button type="button" id="sp2" aria-pressed="false">½×</button></div>
+    <button type="button" id="classbtn" aria-pressed="false">Classroom</button>
+  </div>
+  <p id="warn" hidden></p>
+</section>
+
+<section id="solution" aria-labelledby="sh">
+  <h2 id="sh"><b>03</b>Detailed solution</h2>
+  <div class="sol">
+    <p>Answer: <i>n</i> = <span id="solans">—</span> (= (15/16) × 0.7 with the given ln 2; with the exact ln 2 it is 0.650. The accepted range is 0.63 to 0.70.)</p>
+    <ol class="steps">
+      <li><b>Heat through the partition.</b> The rate is <i>H</i> = <i>KA</i>(<i>T</i><sub>1</sub> − <i>T</i><sub>2</sub>)/<i>x</i>, and the rest of the container is insulated.</li>
+      <li><b>Where it goes.</b> <i>S</i><sub>1</sub> has a fixed volume, so it loses heat at constant volume: <i>C<sub>V</sub></i> d<i>T</i><sub>1</sub>/d<i>t</i> = −<i>H</i> with <i>C<sub>V</sub></i> = (3/2)<i>R</i>. <i>S</i><sub>2</sub> is held at atmospheric pressure by the free piston, so it gains heat at constant pressure and expands: <i>C<sub>P</sub></i> d<i>T</i><sub>2</sub>/d<i>t</i> = +<i>H</i> with <i>C<sub>P</sub></i> = (5/2)<i>R</i>. The partition is thin, so its own heat capacity is neglected.</li>
+      <li><b>The gap decays exponentially.</b> With Δ<i>T</i> = <i>T</i><sub>1</sub> − <i>T</i><sub>2</sub>:
+        <div class="eq">dΔ<i>T</i>/d<i>t</i> = −(<i>KA</i>/<i>x</i>)(1/<i>C<sub>V</sub></i> + 1/<i>C<sub>P</sub></i>) Δ<i>T</i> = −(<i>KA</i>/<i>xR</i>)(2/3 + 2/5) Δ<i>T</i> = −(16/15)(<i>KA</i>/<i>xR</i>) Δ<i>T</i>.</div></li>
+      <li><b>Half-time.</b> Δ<i>T</i> = Δ<i>T</i><sub>0</sub> e<sup>−16<i>KAt</i>/15<i>xR</i></sup>, so Δ<i>T</i> = Δ<i>T</i><sub>0</sub>/2 at
+        <div class="eq"><i>t</i> = (15/16) ln 2 · <i>xR</i>/<i>KA</i> = (15/16)(0.7) · <i>xR</i>/<i>KA</i> ⇒ <i>n</i> = 0.656 ≈ <b>0.66</b>.</div></li>
+      <li><b>Why the piston matters.</b> If <i>P</i><sub>2</sub> were locked, <i>S</i><sub>2</sub> would also warm at constant volume, the rate would be 4/3 and <i>n</i> = (3/4)(0.7) = 0.525. With the free piston, part of the heat that reaches <i>S</i><sub>2</sub> goes into pushing the piston out, so <i>S</i><sub>2</sub> warms more slowly and the gap closes more slowly.</li>
+    </ol>
+    <h3>Understand the concept</h3>
+    <div class="concept">Two bodies exchanging heat through a conductor close their temperature gap exponentially. The rate constant is the conductance <i>KA</i>/<i>x</i> times (1/<i>C</i><sub>1</sub> + 1/<i>C</i><sub>2</sub>). The heat capacities here depend on how each gas is held: a rigid chamber uses <i>C<sub>V</sub></i>, and a chamber at fixed pressure uses <i>C<sub>P</sub></i> = <i>C<sub>V</sub></i> + <i>R</i>, because some of its heat does work on the piston. The half-time does not depend on how big the initial gap is.</div>
+    <h3>Key takeaways</h3>
+    <ul class="take">
+      <li>Conduction: <i>H</i> = <i>KA</i>Δ<i>T</i>/<i>x</i>.</li>
+      <li>Constant volume uses <i>C<sub>V</sub></i> = 3<i>R</i>/2 and constant pressure uses <i>C<sub>P</sub></i> = 5<i>R</i>/2, for a monoatomic gas.</li>
+      <li>dΔ<i>T</i>/d<i>t</i> = −(<i>KA</i>/<i>x</i>)(1/<i>C</i><sub>1</sub> + 1/<i>C</i><sub>2</sub>)Δ<i>T</i>, so the half-time is ln 2 divided by that rate constant.</li>
+      <li>Here <i>n</i> = (15/16) ln 2 ≈ 0.66.</li>
+    </ul>
+    <p class="note">Verification: an independent derivation, a sympy route, a numerical integration of both gases' energy equations (with the piston's work computed from <i>P</i>d<i>V</i> and the half-time found from the numbers), and the page's own engine, run by <code>tests/verify_p1phyq11.py</code>. The official key (0.63 to 0.70) and the MathonGo solution (0.66) agree. Status: script-verified by the PrayogX simulation factory; no review by a person has been recorded. Time on the page is in units of <i>xR</i>/<i>KA</i>. The starting temperatures are an example, since only the gap matters.</p>
+  </div>
+</section>
+
+<section id="howto" aria-labelledby="hh">
+  <h2 id="hh">How to use this simulation</h2>
+  <ol class="howto">
+    <li>Press <b>▶ START EXPERIMENT</b>. Heat flows through the partition from the hotter <i>S</i><sub>1</sub> to <i>S</i><sub>2</sub>.</li>
+    <li>Watch <i>S</i><sub>1</sub> cool at fixed volume while <i>S</i><sub>2</sub> warms and pushes its piston out, and read both thermometers.</li>
+    <li>The plot shows the gap falling exponentially. The run marks when it reaches half and reads <i>n</i> from that time.</li>
+    <li>Try <b>Piston P₂: Locked</b> (the gap halves faster, <i>n</i> = 0.525) or change <b>ΔT₀</b> (<i>n</i> does not change).</li>
+    <li><b>Replay</b> runs it again. <b>Reset</b> clears it. <b>Classroom</b> fills the screen for a projector.</li>
+  </ol>
+</section>
+
+<footer>
+  ADV-2026-P1-PHY-Q11 · PrayogX · JEE Advanced Interactive Simulation Library · question text reproduced
+  from the official JEE (Advanced) 2026 Paper 1 for educational use. This is a virtual laboratory only.
+  1 mol of monoatomic gas in each chamber; time is in units of xR/KA; the piston's travel is drawn to relative scale.
+</footer>
+</main>
+
+<script>
+(function(){
+"use strict";
+/* ENGINE-BEGIN */
+/* S1: 1 mol monoatomic gas, fixed volume (C_V = 3R/2). S2: 1 mol at constant pressure (C_P = 5R/2), or fixed
+   volume if the piston is locked. Heat flow H = (KA/x)(T1 - T2). Time in units of xR/(KA), heat capacities in R. */
+var ENGINE = (function(){
+  var CV = 1.5, CP = 2.5, LN2_GIVEN = 0.7;
+  function caps(locked){ return [CV, locked ? CV : CP]; }
+  function deriv(st, locked){ var c = caps(locked), H = st[0] - st[1]; return [-H / c[0], H / c[1]]; }
+  function rk4(st, h, locked){ var a = deriv(st, locked), b = deriv([st[0] + h / 2 * a[0], st[1] + h / 2 * a[1]], locked), c = deriv([st[0] + h / 2 * b[0], st[1] + h / 2 * b[1]], locked), d = deriv([st[0] + h * c[0], st[1] + h * c[1]], locked);
+    return [st[0] + h / 6 * (a[0] + 2 * b[0] + 2 * c[0] + d[0]), st[1] + h / 6 * (a[1] + 2 * b[1] + 2 * c[1] + d[1])]; }
+  /* integrate until the gap halves; the decay constant is measured from the gap itself */
+  function halfTime(T1, T2, locked){
+    var st = [T1, T2], t = 0, h = 1e-4, g0 = T1 - T2, prev = st, i;
+    for (i = 0; i < 1e6; i++){
+      var nx = rk4(st, h, locked);
+      if (nx[0] - nx[1] <= g0 / 2){ var f = ((st[0] - st[1]) - g0 / 2) / ((st[0] - st[1]) - (nx[0] - nx[1])); return t + h * f; }
+      st = nx; t += h;
+    }
+    return null;
+  }
+  function run(){
+    var th = halfTime(400, 300, false), k = Math.log(2) / th;                         /* decay constant, per unit xR/KA */
+    var nGiven = LN2_GIVEN / k, nExact = th;
+    return { th: th, k: k, nExact: nExact, nGiven: nGiven, answer: nGiven.toFixed(2), inKey: nGiven >= 0.63 && nGiven <= 0.70 && nExact >= 0.63 && nExact <= 0.70 };
+  }
+  return { CV: CV, CP: CP, LN2_GIVEN: LN2_GIVEN, caps: caps, deriv: deriv, rk4: rk4, halfTime: halfTime, run: run };
+})();
+/* ENGINE-END */
+
+var QRUN = ENGINE.run();
+var ANS = QRUN.answer;
+
+function $(id){ return document.getElementById(id); }
+var cv = $("labcv"), g = cv.getContext("2d");
+var reduced = !!(window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches);
+var T2_0 = 300, TMAX = 2.0, RATE = 0.28;                 /* model time units per real second at 1x */
+
+var RUN = { state: "setup", phase: "ready", speed: 1, locked: false, dT0: 100, st: [400, 300], t: 0, trace: [], thalf: null, done: false, confirmed: false };
+var L = null, minPx = 999, clock = 0, mol = [];
+(function(){ var seed = 11, i; function r(){ seed = (seed * 16807) % 2147483647; return seed / 2147483647; } for (i = 0; i < 36; i++) mol.push([r(), r(), r() * 6.28]); })();
+
+function layout(){
+  var phone = document.documentElement.clientWidth < 700;
+  if (phone) return { phone: true, W: 720, H: 1240, ro: { x: 12, y: 12, w: 696, h: 178 }, box: { x: 12, y: 204, w: 696, h: 520 },
+    plot: { x: 12, y: 740, w: 696, h: 488 }, fs: 25, big: 31 };
+  return { phone: false, W: 1200, H: 720, ro: { x: 16, y: 14, w: 1168, h: 92 }, box: { x: 16, y: 122, w: 640, h: 584 },
+    plot: { x: 672, y: 122, w: 512, h: 584 }, fs: 16, big: 24 };
+}
+
+/* --------------------------------------------------------------- run */
+function finish(){
+  RUN.state = "done"; RUN.phase = "done"; RUN.done = true;
+  var th = RUN.thalf !== null ? RUN.thalf : ENGINE.halfTime(T2_0 + RUN.dT0, T2_0, RUN.locked), k = Math.log(2) / th;
+  RUN.measured = { locked: RUN.locked, dT0: RUN.dT0, thalf: th, k: k, nExact: th, nGiven: ENGINE.LN2_GIVEN / k };
+  if (!RUN.locked && RUN.measured.nGiven.toFixed(2) === ANS){ RUN.confirmed = true; confirmAnswer(); }
+  narrate(); refreshButtons();
+}
+function tick(dt){
+  if (!reduced) clock += dt;
+  if (RUN.state !== "running") return;
+  var dm = dt * RUN.speed * RATE, steps = Math.max(1, Math.ceil(dm / 2e-3)), h = dm / steps, i;
+  for (i = 0; i < steps; i++){
+    var prev = RUN.st, nx = ENGINE.rk4(prev, h, RUN.locked), g0 = RUN.dT0;
+    if (RUN.thalf === null && nx[0] - nx[1] <= g0 / 2){ var f = ((prev[0] - prev[1]) - g0 / 2) / ((prev[0] - prev[1]) - (nx[0] - nx[1])); RUN.thalf = RUN.t + h * f; RUN.phase = "half"; narrate(); }
+    RUN.st = nx; RUN.t += h;
+  }
+  RUN.trace.push([RUN.t, (RUN.st[0] - RUN.st[1]) / RUN.dT0]); if (RUN.trace.length > 3000) RUN.trace.shift();
+  if (RUN.t >= TMAX) finish();
+}
+function start(){
+  if (RUN.state === "running"){ RUN.state = "paused"; refreshButtons(); narrate(); return; }
+  if (RUN.state === "paused"){ RUN.state = "running"; refreshButtons(); narrate(); return; }
+  resetRun();
+  if (reduced){ RUN.thalf = ENGINE.halfTime(RUN.st[0], RUN.st[1], RUN.locked); var t = 0, st = RUN.st.slice(); while (t < TMAX){ st = ENGINE.rk4(st, 0.01, RUN.locked); t += 0.01; RUN.trace.push([t, (st[0] - st[1]) / RUN.dT0]); } RUN.st = st; RUN.t = t; finish(); return; }
+  RUN.state = "running"; RUN.phase = "flow"; narrate(); refreshButtons();
+}
+function resetRun(){ RUN.state = "setup"; RUN.phase = "ready"; RUN.st = [T2_0 + RUN.dT0, T2_0]; RUN.t = 0; RUN.trace = [[0, 1]]; RUN.thalf = null; RUN.done = false; RUN.measured = null; RUN.confirmed = false; }
+function replay(){ RUN.state = "setup"; start(); }
+function reset(){ resetRun(); refreshButtons(); narrate(); }
+function setLocked(on){ RUN.locked = !!on; $("pfree").setAttribute("aria-pressed", on ? "false" : "true"); $("plock").setAttribute("aria-pressed", on ? "true" : "false"); resetRun(); refreshButtons(); narrate(); }
+function setDT(d){ if (d !== 50 && d !== 100) d = 100; RUN.dT0 = d; $("dt50").setAttribute("aria-pressed", d === 50 ? "true" : "false"); $("dt100").setAttribute("aria-pressed", d === 100 ? "true" : "false"); resetRun(); refreshButtons(); narrate(); }
+
+/* ------------------------------------------------------------ words */
+function narrate(){
+  var t, c = ENGINE.caps(RUN.locked), k = 1 / c[0] + 1 / c[1];
+  if (RUN.phase === "ready") t = "Ready. S₁ starts at " + (T2_0 + RUN.dT0) + " K and S₂ at " + T2_0 + " K. " + (RUN.locked ? "The piston is LOCKED, so S₂ is at constant volume too." : "S₂'s piston is free, so S₂ stays at atmospheric pressure.") + " Press START.";
+  else if (RUN.phase === "flow") t = "Heat H = KA(T₁ − T₂)/x flows into S₂. S₁ cools at constant volume (C_V = 3R/2); S₂ warms " + (RUN.locked ? "at constant volume (C_V = 3R/2)." : "at constant pressure (C_P = 5R/2) and pushes the piston out.") + " The gap decays at rate " + k.toFixed(3) + " KA/xR.";
+  else if (RUN.phase === "half") t = "The gap has halved at t = " + RUN.thalf.toFixed(4) + " xR/KA. With the question's ln 2 = 0.7: n = 0.7 × " + (1 / k).toFixed(4) + " = " + (0.7 / k).toFixed(3) + ".";
+  else { var m = RUN.measured; t = "Measured: the gap halves at t = " + m.thalf.toFixed(4) + " xR/KA, so the decay rate is " + m.k.toFixed(4) + " (= " + (RUN.locked ? "4/3" : "16/15") + "). n = 0.7/" + m.k.toFixed(4) + " = " + m.nGiven.toFixed(3) + (RUN.locked ? ". The locked piston is not the question's set-up." : ", or 0.650 with the exact ln 2."); }
+  if (RUN.state === "paused") t = "Paused. " + t;
+  $("narr").textContent = t;
+  var w = $("warn");
+  if (RUN.locked){ w.hidden = false; w.textContent = "Locked piston: your own setting. In the question the piston is free, so S₂ stays at atmospheric pressure."; } else w.hidden = true;
+}
+function confirmAnswer(){
+  var m = RUN.measured;
+  $("anssub").textContent = "Confirmed by the run: the gap halves at t = " + m.thalf.toFixed(4) + " xR/KA (rate " + m.k.toFixed(4) + " = 16/15), so n = 0.7/" + m.k.toFixed(4) + " = " + m.nGiven.toFixed(3) + ".";
+  var k = $("keyline");
+  if (!reduced){ k.classList.remove("blink"); void k.offsetWidth; k.classList.add("blink"); setTimeout(function(){ k.classList.remove("blink"); }, 2000); }
+}
+function refreshButtons(){ $("gobtn").textContent = RUN.state === "running" ? "❚❚ PAUSE" : RUN.state === "paused" ? "▶ RESUME" : RUN.state === "done" ? "▶ RUN AGAIN" : "▶ START EXPERIMENT"; }
+function refreshAnswer(){ $("ansval").textContent = ANS ? "n = " + ANS : "—"; $("ansexpr").textContent = ANS ? "t½ = (15/16) ln 2 · xR/KA" : ""; $("solans").textContent = ANS || "—"; }
+
+/* ------------------------------------------------------------ drawing */
+function label(s, x, y, px, col, align, weight){
+  if (px < minPx) minPx = px;
+  g.font = (weight || "700") + " " + Math.round(px) + "px ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif";
+  g.fillStyle = col || "#e8f0ff"; g.textAlign = align || "left"; g.textBaseline = "alphabetic"; g.fillText(s, x, y);
+}
+function roundRect(x, y, w, h, r){ g.beginPath(); g.moveTo(x + r, y); g.lineTo(x + w - r, y); g.quadraticCurveTo(x + w, y, x + w, y + r); g.lineTo(x + w, y + h - r); g.quadraticCurveTo(x + w, y + h, x + w - r, y + h); g.lineTo(x + r, y + h); g.quadraticCurveTo(x, y + h, x, y + h - r); g.lineTo(x, y + r); g.quadraticCurveTo(x, y, x + r, y); g.closePath(); }
+function panel(x, y, w, h){ roundRect(x, y, w, h, 14); g.fillStyle = "rgba(10,16,32,.86)"; g.fill(); g.strokeStyle = "rgba(140,180,255,.3)"; g.lineWidth = 1.5; g.stroke(); }
+function tempCol(T){ var f = Math.max(0, Math.min(1, (T - 290) / 120)); return "rgba(" + Math.round(80 + 175 * f) + "," + Math.round(140 - 40 * f) + "," + Math.round(255 - 200 * f) + ","; }
+
+function drawReadouts(){
+  var r = L.ro, st = RUN.st, i, x, y;
+  var rows = [["Temperature S₁", st[0].toFixed(1) + " K"], ["Temperature S₂", st[1].toFixed(1) + " K"], ["Gap ΔT/ΔT₀", ((st[0] - st[1]) / RUN.dT0).toFixed(3)], ["Time t (xR/KA)", RUN.t.toFixed(3)]];
+  panel(r.x, r.y, r.w, r.h);
+  for (i = 0; i < 4; i++){
+    if (L.phone){ x = r.x + 18 + (i % 2) * 348; y = r.y + 44 + Math.floor(i / 2) * 84; }
+    else { x = r.x + 20 + i * 290; y = r.y + 34; }
+    label(rows[i][0], x, y, L.fs - (L.phone ? 0 : 1), "#8fa6cf", "left", "700");
+    label(rows[i][1], x, y + (L.phone ? 40 : 38), L.big - (L.phone ? 3 : 0), i === 0 ? "#ffb09a" : i === 1 ? "#9fc4ff" : "#ffffff", "left", "800");
+  }
+}
+function drawBox(){
+  var B = L.box, st = RUN.st;
+  roundRect(B.x, B.y, B.w, B.h, 14); g.fillStyle = "#070d1c"; g.fill();
+  var top = B.y + (L.phone ? 150 : 150), h = L.phone ? 250 : 260, x0 = B.x + 30, pw = L.phone ? 22 : 20, w1 = B.w * 0.30;
+  var xp = x0 + w1, x2s = xp + pw, V2 = st[1] / T2_0, w2 = (B.w * 0.34) * (RUN.locked ? 1 : V2), xpis = x2s + w2;
+  /* insulated walls */
+  g.fillStyle = "#39414f"; g.fillRect(x0 - 12, top - 12, B.w - 36, 12); g.fillRect(x0 - 12, top + h, B.w - 36, 12); g.fillRect(x0 - 12, top - 12, 12, h + 24);
+  label("insulated", x0 - 4, top - 20, L.fs - (L.phone ? 0 : 2), "rgba(190,210,240,.8)", "left", "600");
+  /* gases */
+  g.fillStyle = tempCol(st[0]) + "0.30)"; g.fillRect(x0, top, w1, h);
+  g.fillStyle = tempCol(st[1]) + "0.30)"; g.fillRect(x2s, top, w2, h);
+  var i, sp1 = Math.sqrt(st[0] / 300), sp2 = Math.sqrt(st[1] / 300);
+  for (i = 0; i < mol.length; i++){ var m = mol[i], left = i % 2 === 0, sp = left ? sp1 : sp2, bx = left ? x0 : x2s, bw = left ? w1 : w2, ph = clock * sp * 1.5 + m[2] * 5;
+    var mx = bx + 8 + (bw - 16) * (0.5 + 0.5 * Math.sin(ph * (0.7 + m[0]) + m[2])), my = top + 8 + (h - 16) * (0.5 + 0.5 * Math.sin(ph * (0.9 + m[1]) + 2 * m[2]));
+    g.fillStyle = left ? "#ffb09a" : "#9fc4ff"; g.beginPath(); g.arc(mx, my, L.phone ? 5 : 4, 0, Math.PI * 2); g.fill(); }
+  /* partition P1 (hatched conductor) */
+  g.fillStyle = "#b58a4a"; g.fillRect(xp, top, pw, h); g.strokeStyle = "rgba(60,30,0,.6)"; g.lineWidth = 2; for (i = 0; i < h; i += 10){ g.beginPath(); g.moveTo(xp, top + i); g.lineTo(xp + pw, top + i + 8); g.stroke(); }
+  label("P₁", xp + pw / 2, top + h + 40, L.fs + 1, "#e0b77a", "center", "800");
+  /* piston P2 */
+  g.fillStyle = RUN.locked ? "#8a93a6" : "#d6dde9"; g.fillRect(xpis, top, 12, h); g.fillRect(xpis + 12, top + h / 2 - 6, 40, 12);
+  g.fillStyle = "#39414f"; g.fillRect(x2s, top - 12, B.x + B.w - 26 - x2s, 12); g.fillRect(x2s, top + h, B.x + B.w - 26 - x2s, 12);
+  if (RUN.locked){ g.fillStyle = "#ffd166"; g.fillRect(xpis - 4, top - 22, 20, 10); g.fillRect(xpis - 4, top + h + 12, 20, 10); }
+  label("P₂" + (RUN.locked ? " (locked)" : " (free, p = 1 atm)"), xpis + 6, top + h + 40, L.fs, "#cfe0ff", "center", "800");
+  label("S₁ · V fixed", x0 + 10, top + (L.phone ? 32 : 26), L.fs + 1, "#ffd0c0", "left", "800");
+  label("S₂ · " + (RUN.locked ? "V fixed" : "p fixed"), x2s + 10, top + (L.phone ? 32 : 26), L.fs + 1, "#cfe0ff", "left", "800");
+  /* heat flow through P1 */
+  var gap = st[0] - st[1];
+  if (gap > 0.5 && RUN.state !== "setup"){ var aw = 4 + 14 * gap / RUN.dT0, yy, k2; g.fillStyle = "#ff8a5c"; for (k2 = 0; k2 < 3; k2++){ yy = top + h * (0.25 + 0.25 * k2); var ph2 = (clock * 1.2 + k2 * 0.3) % 1;
+    g.globalAlpha = 0.85; g.beginPath(); g.moveTo(xp - 26 + ph2 * (pw + 52), yy - aw); g.lineTo(xp + 6 + ph2 * (pw + 52), yy); g.lineTo(xp - 26 + ph2 * (pw + 52), yy + aw); g.closePath(); g.fill(); g.globalAlpha = 1; }
+    label("heat H", xp + pw / 2, top + h + (L.phone ? 76 : 64), L.fs, "#ffb09a", "center", "800"); }
+  /* thermometers */
+  function thermo(x, T, col){ var ty = B.y + (L.phone ? 20 : 18), th2 = L.phone ? 80 : 76, f = Math.max(0, Math.min(1, (T - 280) / 140));
+    roundRect(x - 7, ty, 14, th2, 7); g.fillStyle = "#1c2438"; g.fill(); g.fillStyle = col; g.fillRect(x - 4, ty + th2 * (1 - f), 8, th2 * f); g.beginPath(); g.arc(x, ty + th2 + 6, 10, 0, Math.PI * 2); g.fill();
+    label(T.toFixed(1) + " K", x + 18, ty + th2 / 2 + 8, L.fs + 1, col, "left", "800"); }
+  thermo(x0 + w1 / 2 - 40, st[0], "#ff9a7a"); thermo(x2s + 40, st[1], "#7fb2ff");
+  if (!RUN.locked && RUN.state !== "setup"){ label("S₂ expands: V₂/V₂₀ = " + V2.toFixed(3), x2s, top + h + (L.phone ? 116 : 96), L.fs, "#9fc4ff", "left", "700"); }
+}
+function drawPlot(){
+  var P = L.plot, x0 = P.x + (L.phone ? 76 : 64), x1 = P.x + P.w - 24, y0 = P.y + (L.phone ? 70 : 60), y1 = P.y + P.h - (L.phone ? 70 : 56);
+  panel(P.x, P.y, P.w, P.h);
+  label("GAP ΔT/ΔT₀ AGAINST TIME", P.x + 18, P.y + (L.phone ? 38 : 32), L.fs, "#cfe0ff", "left", "800");
+  function X(t){ return x0 + t / TMAX * (x1 - x0); } function Y(v){ return y1 - v * (y1 - y0); }
+  g.strokeStyle = "rgba(220,235,255,.7)"; g.lineWidth = 2; g.beginPath(); g.moveTo(x0, y0); g.lineTo(x0, y1); g.lineTo(x1, y1); g.stroke();
+  var v; for (v = 0; v <= 1.0001; v += 0.5) label(v.toFixed(1), x0 - 10, Y(v) + 6, L.fs, "#8fa6cf", "right", "600");
+  for (v = 0; v <= 2.0001; v += 0.5) label(v.toFixed(1), X(v), y1 + (L.phone ? 34 : 26), L.fs, "#8fa6cf", "center", "600");
+  label("t (xR/KA)", x1, y1 - 12, L.fs, "#cfe0ff", "right", "800");
+  g.save(); g.setLineDash([6, 6]); g.strokeStyle = "rgba(255,209,102,.8)"; g.lineWidth = 2; g.beginPath(); g.moveTo(x0, Y(0.5)); g.lineTo(x1, Y(0.5)); g.stroke(); g.restore();
+  label("half", x1 - 4, Y(0.5) - 10, L.fs, "#ffd166", "right", "800");
+  var tr = RUN.trace, i;
+  if (tr.length > 1){ g.save(); g.strokeStyle = RUN.locked ? "#ff9f5a" : "#9ff0c8"; g.lineWidth = 4; g.shadowColor = g.strokeStyle; g.shadowBlur = 8; g.beginPath(); g.moveTo(X(tr[0][0]), Y(tr[0][1])); for (i = 1; i < tr.length; i++) g.lineTo(X(tr[i][0]), Y(tr[i][1])); g.stroke(); g.restore(); }
+  if (RUN.thalf !== null){ var xh = X(RUN.thalf); g.strokeStyle = "#ffd166"; g.lineWidth = 2.5; g.beginPath(); g.moveTo(xh, Y(0.5)); g.lineTo(xh, y1); g.stroke(); g.fillStyle = "#ffd166"; g.beginPath(); g.arc(xh, Y(0.5), 7, 0, Math.PI * 2); g.fill();
+    label("t½ = " + RUN.thalf.toFixed(3), xh + 10, Y(0.5) + (L.phone ? 40 : 30), L.fs + 1, "#ffd166", "left", "800"); }
+  if (RUN.done){ var m = RUN.measured, bx = x0 + (x1 - x0) * 0.36;
+    roundRect(bx, y0 + 6, x1 - bx, L.phone ? 100 : 84, 12); g.fillStyle = "rgba(40,160,100,.22)"; g.fill();
+    label("n = 0.7 × t½/ln 2 = " + m.nGiven.toFixed(3), bx + 14, y0 + (L.phone ? 46 : 38), L.fs + 2, "#7dffb8", "left", "800");
+    label("exact ln 2: " + m.nExact.toFixed(3), bx + 14, y0 + (L.phone ? 86 : 72), L.fs, "#e6ecff", "left", "700"); }
+}
+function draw(){
+  minPx = 999;
+  L = layout();
+  if (cv.width !== L.W || cv.height !== L.H){ cv.width = L.W; cv.height = L.H; }
+  var bg = g.createLinearGradient(0, 0, 0, L.H); bg.addColorStop(0, "#0b1226"); bg.addColorStop(1, "#04060c"); g.fillStyle = bg; g.fillRect(0, 0, L.W, L.H);
+  drawReadouts(); drawBox(); drawPlot();
+}
+
+/* ------------------------------------------------------------ controls */
+function setSpeed(k){ RUN.speed = k; $("sp1").setAttribute("aria-pressed", k === 1 ? "true" : "false"); $("sp2").setAttribute("aria-pressed", k === 0.5 ? "true" : "false"); }
+$("gobtn").addEventListener("click", start);
+$("replaybtn").addEventListener("click", replay);
+$("resetbtn").addEventListener("click", reset);
+$("sp1").addEventListener("click", function(){ setSpeed(1); });
+$("sp2").addEventListener("click", function(){ setSpeed(0.5); });
+$("pfree").addEventListener("click", function(){ setLocked(false); });
+$("plock").addEventListener("click", function(){ setLocked(true); });
+$("dt50").addEventListener("click", function(){ setDT(50); });
+$("dt100").addEventListener("click", function(){ setDT(100); });
+$("classbtn").addEventListener("click", function(){
+  var on = document.body.classList.toggle("classroom"); this.setAttribute("aria-pressed", on ? "true" : "false");
+  this.textContent = on ? "Exit classroom" : "Classroom";
+});
+$("themebtn").addEventListener("click", function(){
+  var r = document.documentElement, dark = r.getAttribute("data-theme") === "dark" || (!r.getAttribute("data-theme") && window.matchMedia && matchMedia("(prefers-color-scheme: dark)").matches);
+  r.setAttribute("data-theme", dark ? "light" : "dark");
+});
+
+var lastT = null;
+function loop(ts){
+  if (lastT === null) lastT = ts;
+  var dt = Math.min(0.05, Math.max(0, (ts - lastT) / 1000)); lastT = ts;
+  tick(dt); draw();
+  requestAnimationFrame(loop);
+}
+
+window.PX = {
+  ENGINE: ENGINE, QRUN: QRUN, ANS: ANS, RUN: RUN,
+  answer: function(){ return ANS; },
+  minLabelPx: function(){ draw(); return minPx; },
+  start: start, replay: replay, reset: reset, setSpeed: setSpeed, speed: function(k){ RUN.speed = k; }, setLocked: setLocked, setDT: setDT,
+  state: function(){ return { state: RUN.state, phase: RUN.phase, locked: RUN.locked, dT0: RUN.dT0, T1: RUN.st[0], T2: RUN.st[1], t: RUN.t, thalf: RUN.thalf, measured: RUN.measured || null, done: RUN.done, confirmed: RUN.confirmed }; }
+};
+
+setLocked(false); setDT(100); refreshAnswer(); refreshButtons(); draw();
+window.addEventListener("resize", function(){ draw(); });
+requestAnimationFrame(loop);
+})();
+</script>
+</body>
+</html>

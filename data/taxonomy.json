@@ -117,6 +117,17 @@
               "simulations": [
                 "ADV-2026-P1-PHY-Q10"
               ]
+            },
+            "Heat conduction between a gas at constant volume and a gas at constant pressure - exponential decay of the temperature gap": {
+              "subtopics": [
+                "Heat conduction through a slab: H = KA dT/x",
+                "Molar heat capacities of a monoatomic gas: C_V = 3R/2 at fixed volume, C_P = 5R/2 at fixed pressure",
+                "Two bodies exchanging heat: the gap decays as exp(-(KA/x)(1/C1 + 1/C2) t)",
+                "Half time = ln 2 / rate constant"
+              ],
+              "simulations": [
+                "ADV-2026-P1-PHY-Q11"
+              ]
             }
           }
         },
