@@ -13,8 +13,8 @@ Repository: `github.com/chemwithankit/Prayogx`, branch `main`. Android package:
 - The student-facing "upload a question → AI generates a simulation" platform is
   **deferred**. Don't build toward it: no backend, accounts, credits or AI-generation
   infrastructure unless the owner asks.
-- Current library: **35 simulations** — 33 Chemistry (JEE Advanced 2026 Paper 1 Q1–Q16, Paper 2
-  Q1–Q17) and 2 Physics (Paper 1 Q1–Q2, built by the factory, `script_verified`). P1 CHE Q16 was
+- Current library: **46 simulations** — 33 Chemistry (JEE Advanced 2026 Paper 1 Q1–Q16, Paper 2
+  Q1–Q17) and 13 Physics (Paper 1 Q1–Q13, built by the factory, `script_verified`). P1 CHE Q16 was
   reviewed and published by the owner on 2026-09-29. There is no next build until the owner names one.
 
 ## Owner control
