@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Two-Path Sound Tube Lab — interference of sound in tube networks — JEE Advanced 2026 Paper 1 Q.13 | PrayogX</title>
+<meta name="description" content="Sound of wavelength 0.29 m splits between a straight tube of length l and a detour in four tube networks; the detector hears the first maximum when the path difference is one wavelength: P 0.51 m, Q 0.29 m, R 0.13 m, S 1.19 m - option D. JEE Advanced 2026 Paper 1 Physics Q.13.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232a78d6'/%3E%3Cpath d='M12.5 6.5h7M13.6 6.5v7.2L7.9 24.1a1.5 1.5 0 0 0 1.3 2.3h13.6a1.5 1.5 0 0 0 1.3-2.3l-5.7-10.4V6.5' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M10.6 20.6h10.8' stroke='white' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E">
+<meta name="sim-id" content="ADV-2026-P1-PHY-Q13">
+<style>
+:root{
+  color-scheme: light;
+  --surface-0:#f4f4f1; --surface-1:#fcfcfb; --surface-2:#ececea;
+  --line:#d9d9d4; --line-strong:#bcbcb5;
+  --text-primary:#0b0b0b; --text-secondary:#52514e; --text-muted:#77766f;
+  --s1:#2a78d6; --s2:#eb6834; --s3:#1baf7a; --s4:#4a3aa7;
+  --good:#00743f; --bad:#c0392b; --accent:#2a78d6;
+  --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+  --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --serif:ui-serif,Georgia,"Times New Roman",serif;
+  --radius:12px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  color-scheme: dark;
+  --surface-0:#111110; --surface-1:#1a1a19; --surface-2:#232322;
+  --line:#34342f; --line-strong:#4a4a44;
+  --text-primary:#ffffff; --text-secondary:#c3c2b7; --text-muted:#95948b;
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#9085e9;
+  --good:#3fae7a; --bad:#e66767; --accent:#3987e5;
+}}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --surface-0:#111110; --surface-1:#1a1a19; --surface-2:#232322;
+  --line:#34342f; --line-strong:#4a4a44;
+  --text-primary:#ffffff; --text-secondary:#c3c2b7; --text-muted:#95948b;
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#9085e9;
+  --good:#3fae7a; --bad:#e66767; --accent:#3987e5;
+}
+*{box-sizing:border-box}
+[hidden]{display:none !important}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--surface-0);color:var(--text-primary);font-family:var(--sans);font-size:16px;line-height:1.6}
+header.top{border-bottom:1px solid var(--line);background:var(--surface-1)}
+.top-inner{max-width:1240px;margin:0 auto;padding:18px 20px 14px;position:relative}
+.brandbar{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.brandbar .pxmark{width:21px;height:21px;flex:none;display:block}
+.brandbar .wm{font-size:13px;font-weight:800;letter-spacing:.17em;color:var(--text-secondary);line-height:1}
+.brandbar .wm i{font-style:normal;color:var(--accent)}
+.simid{font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--text-muted)}
+h1{font-size:21px;line-height:1.3;margin:4px 0 4px;padding-right:80px}
+.meta{font-size:14px;color:var(--text-secondary);margin:0}
+.themebtn{position:absolute;top:14px;right:16px;border:1px solid var(--line-strong);background:var(--surface-2);
+  color:var(--text-secondary);border-radius:8px;padding:4px 9px;font-size:12px;cursor:pointer}
+.wrap{max-width:1240px;margin:0 auto;padding:0 20px 40px}
+section{margin:0 0 34px}
+h2{font-size:15px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-secondary);margin:26px 0 12px}
+h2 b{color:var(--accent);margin-right:8px}
+h3{font-size:17px;margin:22px 0 8px}
+/* 01 question */
+.qcard{background:var(--surface-1);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+.qtext{font-family:var(--serif);font-size:18px;line-height:1.6;flex:1 1 460px;min-width:0}
+.qfig{flex:0 0 250px;max-width:100%}
+.qfig svg{display:block;width:100%;height:auto}
+.sq{white-space:nowrap}
+.sq .rad{border-top:1.5px solid currentColor;padding:0 2px}
+#opts{list-style:none;margin:12px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+#opts li{background:var(--surface-1);border:1.5px solid var(--line);border-radius:10px;padding:10px 12px;font-family:var(--serif);font-size:19px;display:flex;gap:10px;align-items:center;min-height:52px}
+#opts li b{font-family:var(--sans);font-size:14px;color:var(--text-muted)}
+#opts li.correct{border-color:var(--good);box-shadow:0 0 0 2px color-mix(in srgb,var(--good) 25%,transparent)}
+#opts li.correct b{color:var(--good)}
+/* 02 lab */
+#keyline{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;background:var(--surface-1);border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin:0 0 8px}
+#keyline .k{font-size:13px;font-weight:800;letter-spacing:.12em;color:var(--text-muted);text-transform:uppercase}
+#ansval{font-size:22px;font-weight:800;color:var(--good)}
+#ansexpr{font-family:var(--serif);font-size:20px}
+#anssub{font-size:14px;color:var(--text-secondary);margin-left:auto}
+#keyline.blink{animation:blink .45s ease-in-out 4}
+@keyframes blink{50%{background:color-mix(in srgb,var(--good) 22%,var(--surface-1))}}
+#narr{margin:0 2px 10px;font-size:16px;color:var(--text-secondary);min-height:2.8em}
+.stage{position:relative;border-radius:16px;overflow:hidden;background:#070a12;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+canvas#labcv{display:block;width:100%;height:auto;touch-action:manipulation}
+#controls{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:12px;padding:12px;border:1px solid var(--line);border-radius:14px;background:var(--surface-1)}
+#controls button{min-height:48px;font-size:16px;font-weight:700;border-radius:10px;border:1px solid var(--line-strong);background:var(--surface-2);color:var(--text-primary);padding:0 16px;cursor:pointer;font-family:var(--sans)}
+#controls button:focus-visible,#controls input:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+#controls .go{background:var(--accent);color:#fff;border:none;font-weight:800;letter-spacing:.04em;min-width:190px}
+#controls .seg{display:flex;align-items:center;gap:0}
+#controls .seg span{font-size:13px;font-weight:700;color:var(--text-muted);margin-right:8px;letter-spacing:.06em;text-transform:uppercase}
+#controls .seg button{border-radius:0;margin-left:-1px;padding:0 13px}
+#controls .seg button:nth-child(2){border-radius:10px 0 0 10px}
+#controls .seg button:last-child{border-radius:0 10px 10px 0}
+#controls .seg button[aria-pressed="true"]{background:var(--accent);color:#fff;border-color:var(--accent)}
+#controls .v0{display:flex;flex-wrap:wrap;align-items:center;gap:10px;flex:1 1 520px;min-width:0}
+#controls .v0 label{font-size:15px;font-weight:700;white-space:nowrap}
+#controls input[type=range]{flex:1 1 150px;min-width:110px;min-height:44px;accent-color:var(--accent);margin:0}
+#v0out{font-family:var(--mono);font-size:15px;min-width:92px}
+#warn{margin:10px 2px 0;font-size:15px;color:var(--s2);font-weight:600}
+/* 03 solution */
+.sol{background:var(--surface-1);border:1px solid var(--line);border-radius:var(--radius);padding:6px 20px 16px}
+.sol ol.steps{padding-left:22px;margin:10px 0}
+.sol ol.steps li{margin:0 0 12px}
+.eq{font-family:var(--serif);font-size:18px;background:var(--surface-2);border-radius:8px;padding:8px 12px;margin:6px 0;overflow-x:auto}
+.solfig{display:flex;gap:18px;align-items:center;flex-wrap:wrap;margin:8px 0 12px}
+.solfig svg{flex:0 0 300px;max-width:100%;height:auto}
+.solfig p{flex:1 1 300px;margin:0}
+table.opt{border-collapse:collapse;width:100%;font-size:15px;margin:8px 0}
+table.opt th,table.opt td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+table.opt th{background:var(--surface-2)}
+table.opt tr.ok td{background:color-mix(in srgb,var(--good) 10%,transparent)}
+.tscroll{overflow-x:auto}
+.concept{border-left:4px solid var(--accent);padding:2px 0 2px 14px;margin:14px 0}
+ul.take{padding-left:20px} ul.take li{margin:0 0 6px}
+#solans{font-weight:800;color:var(--good)}
+.note{font-size:14px;color:var(--text-secondary)}
+/* 04 analysis */
+svg.chart{display:block;width:100%;max-width:760px;height:auto;background:var(--surface-1);border:1px solid var(--line);border-radius:12px}
+.chart text{font-family:var(--sans);fill:var(--text-secondary)}
+.cap{font-size:14px;color:var(--text-secondary);max-width:760px}
+/* how to */
+ol.howto{padding-left:22px;margin:0} ol.howto li{margin:0 0 8px}
+footer{font-size:13px;color:var(--text-muted);border-top:1px solid var(--line);padding:16px 0 0}
+/* classroom */
+body.classroom .wrap{max-width:none;padding:0 18px 30px}
+body.classroom header.top,body.classroom section:not(#lab),body.classroom footer{display:none}
+body.classroom #narr{font-size:24px;color:var(--text-primary)}
+body.classroom #keyline #ansexpr{font-size:26px}
+@media (max-width:760px){
+  .wrap{padding:0 16px 32px}
+  .top-inner{padding:14px 16px 12px}
+  h1{font-size:18px}
+  .qtext{font-size:17px}
+  .qfig{flex-basis:100%}
+  .qfig svg{max-width:260px;margin:0 auto}
+  #opts{grid-template-columns:repeat(2,minmax(0,1fr))}
+  #anssub{margin-left:0}
+  #controls{gap:8px;padding:10px}
+  #controls .go{flex:1 1 100%}
+  #controls button{padding:0 12px}
+  #controls .v0{flex-basis:100%;flex-wrap:wrap}
+  #controls .v0 input[type=range]{flex:1 1 100%;order:3}
+  .solfig svg{flex-basis:100%}
+  .sol{padding:4px 14px 12px}
+}
+@media (prefers-reduced-motion: reduce){#keyline.blink{animation:none}}
+/* long text options */
+#opts.lopts{grid-template-columns:1fr}
+#opts.lopts li{font-family:var(--sans);font-size:17px;align-items:flex-start;line-height:1.5}
+#opts.lopts li b{padding-top:2px}
+#opts.lopts .fx{font-family:var(--serif);font-size:18px;white-space:nowrap}
+#controls .seg button{white-space:nowrap}
+@media (max-width:760px){#opts.lopts .fx{white-space:normal}#controls .seg{flex-wrap:wrap;row-gap:6px}#controls .seg span{flex:1 1 100%;margin:0 0 2px}#controls .seg button:nth-child(2){border-radius:10px 0 0 10px}}
+.mlists{display:flex;gap:16px;flex-wrap:wrap;margin:12px 0 0}
+.mlist{flex:1 1 300px;background:var(--surface-1);border:1px solid var(--line);border-radius:12px;padding:10px 14px}
+.mlist h3{margin:4px 0 8px;font-size:15px}
+.cfg{display:flex;gap:10px;align-items:center;margin:6px 0}.cfg b{font-size:14px;color:var(--text-muted);min-width:28px}
+.cfg svg{width:100%;max-width:240px;height:auto}
+ol.l2{list-style:none;padding:0;margin:0;font-family:var(--serif);font-size:18px}ol.l2 li{padding:6px 0;border-bottom:1px solid var(--line)}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-inner">
+    <div class="brandbar"><svg class="pxmark" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><rect width="32" height="32" rx="8" fill="var(--accent)"/><path d="M12.5 6.5h7M13.6 6.5v7.2L7.9 24.1a1.5 1.5 0 0 0 1.3 2.3h13.6a1.5 1.5 0 0 0 1.3-2.3l-5.7-10.4V6.5" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.6 20.6h10.8" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg><span class="wm">PRAYOG<i>X</i></span></div>
+    <div class="simid">ADV-2026-P1-PHY-Q13</div>
+    <h1>Two-Path Sound Tube Lab — where does the detector hear a maximum?</h1>
+    <p class="meta">JEE Advanced 2026 · Paper 1 · Physics · Q.13 · matching list, single option (+4 / 0 / −1) · Waves</p>
+    <button class="themebtn" id="themebtn" type="button">◐ theme</button>
+  </div>
+</header>
+
+<main class="wrap">
+
+<section id="question" aria-labelledby="qh">
+  <h2 id="qh"><b>01</b>The question</h2>
+  <div class="qcard">
+    <div class="qtext">Q.13 List-I shows four configurations made of straight and semi-circular narrow tubes containing air. A sound wave of wavelength <i>λ</i> = 0.29 m enters these structures at the point <i>S</i> and a sound detector is placed at <i>D</i>. Between the points <i>S</i> and <i>D</i>, the sound travels only through the tubes. List-II contains the possible smallest values of <i>l</i> (refer to the figures) for which the detector <i>D</i> records maximum amplitude. Ignore effects of sharp corners. [Given cos(15°) = 0.97]<br>Choose the option that best describes the match between the entries in List-I to those in List-II.</div>
+  </div>
+  <div class="mlists">
+    <div class="mlist"><h3>List-I</h3>
+      <div class="cfg"><b>(P)</b><svg viewBox="0 0 170 90" role="img" aria-label="Configuration P: a straight tube of length l from S to D, and above it a semicircular tube of diameter l, whose height is 0.5 l"><g fill="none" stroke="currentColor" stroke-width="2" style="color:var(--text-primary)"><line x1="10" y1="72" x2="160" y2="72"/><path d="M10 72 A75 60 0 0 1 160 72"/><line x1="85" y1="16" x2="85" y2="70" stroke-dasharray="3 3" stroke-width="1"/></g><g font-family="Georgia,serif" font-size="12" fill="currentColor" font-style="italic" style="color:var(--text-primary)"><text x="0" y="86">S</text><text x="160" y="86">D</text><text x="88" y="50">0.5l</text><text x="80" y="88">l</text></g></svg></div>
+      <div class="cfg"><b>(Q)</b><svg viewBox="0 0 170 90" role="img" aria-label="Configuration Q: a straight tube of length l from S to D, and a rectangular detour tube going up 0.5 l, across l and down 0.5 l"><g fill="none" stroke="currentColor" stroke-width="2" style="color:var(--text-primary)"><line x1="10" y1="72" x2="160" y2="72"/><path d="M10 72 L10 14 L160 14 L160 72"/><line x1="85" y1="16" x2="85" y2="70" stroke-dasharray="3 3" stroke-width="1"/></g><g font-family="Georgia,serif" font-size="12" fill="currentColor" font-style="italic" style="color:var(--text-primary)"><text x="0" y="86">S</text><text x="160" y="86">D</text><text x="88" y="46">0.5l</text><text x="80" y="88">l</text></g></svg></div>
+      <div class="cfg"><b>(R)</b><svg viewBox="0 0 170 110" role="img" aria-label="Configuration R: a straight tube of length l from S to D, and a detour going up a vertical tube of length l from S and then along a semicircle whose diameter is the diagonal from the top of that tube to D"><g fill="none" stroke="currentColor" stroke-width="2" style="color:var(--text-primary)"><line x1="30" y1="92" x2="120" y2="92"/><line x1="30" y1="92" x2="30" y2="2"/><path d="M30 2 A63.6 63.6 0 0 1 120 92"/><line x1="30" y1="2" x2="120" y2="92" stroke-dasharray="3 3" stroke-width="1"/></g><g font-family="Georgia,serif" font-size="12" fill="currentColor" font-style="italic" style="color:var(--text-primary)"><text x="18" y="106">S</text><text x="120" y="106">D</text><text x="16" y="50">l</text><text x="72" y="106">l</text></g></svg></div>
+      <div class="cfg"><b>(S)</b><svg viewBox="0 0 170 90" role="img" aria-label="Configuration S: a straight tube of length l from S to D, and a two-sided detour forming a triangle with a 45 degree angle at S and 105 degrees at the top"><g fill="none" stroke="currentColor" stroke-width="2" style="color:var(--text-primary)"><line x1="10" y1="76" x2="160" y2="76"/><path d="M10 76 L65 21 L160 76"/></g><g font-family="Georgia,serif" font-size="11" fill="currentColor" style="color:var(--text-primary)"><text x="0" y="88" font-style="italic">S</text><text x="160" y="88" font-style="italic">D</text><text x="26" y="70">45°</text><text x="56" y="40">105°</text><text x="80" y="88" font-style="italic">l</text></g></svg></div>
+      <p class="note">The four figures are redrawn from the paper.</p>
+    </div>
+    <div class="mlist"><h3>List-II</h3><ol class="l2"><li>(1) 1.32 m</li><li>(2) 1.19 m</li><li>(3) 0.51 m</li><li>(4) 0.29 m</li><li>(5) 0.13 m</li></ol></div>
+  </div>
+  <ol id="opts" class="lopts" aria-label="options">
+    <li data-o="A"><b>(A)</b><span>P→4, Q→3, R→5, S→1</span></li>
+    <li data-o="B"><b>(B)</b><span>P→4, Q→3, R→1, S→5</span></li>
+    <li data-o="C"><b>(C)</b><span>P→3, Q→4, R→1, S→2</span></li>
+    <li data-o="D"><b>(D)</b><span>P→3, Q→4, R→5, S→2</span></li>
+  </ol>
+</section>
+
+<section id="lab" aria-labelledby="lh">
+  <h2 id="lh"><b>02</b>The experiment</h2>
+  <div id="keyline" aria-live="polite">
+    <span class="k">Answer</span><span id="ansval">—</span><span id="ansexpr"></span>
+    <span id="anssub">Press START: each tube is lengthened until the detector first hears a maximum.</span>
+  </div>
+  <p id="narr" aria-live="polite">Ready.</p>
+  <div class="stage"><canvas id="labcv" width="1200" height="720" role="img" aria-label="Experiment: sound enters a tube network at S and reaches a detector D along two paths, a straight tube of length l and a longer detour; wave crests travel along both paths; the detector's amplitude is plotted against l and the first maximum is found for each of the four configurations"></canvas></div>
+  <div id="controls" role="group" aria-label="experiment controls">
+    <button class="go" type="button" id="gobtn">▶ START EXPERIMENT</button>
+    <button type="button" id="replaybtn">↺ Replay</button>
+    <button type="button" id="resetbtn">Reset</button>
+    <div class="seg" role="group" aria-label="configuration"><span>Tube</span><button type="button" id="cP" aria-pressed="true">P</button><button type="button" id="cQ" aria-pressed="false">Q</button><button type="button" id="cR" aria-pressed="false">R</button><button type="button" id="cS" aria-pressed="false">S</button></div>
+    <div class="v0"><label for="in_l">Length l</label><input type="range" id="in_l" min="0.05" max="1.5" step="0.005" value="0.3" aria-describedby="lout"><output id="lout" for="in_l">0.300 m</output></div>
+    <div class="seg" role="group" aria-label="speed"><span>Speed</span><button type="button" id="sp1" aria-pressed="true">1×</button><button type="button" id="sp2" aria-pressed="false">½×</button></div>
+    <button type="button" id="classbtn" aria-pressed="false">Classroom</button>
+  </div>
+  <p id="warn" hidden></p>
+</section>
+
+<section id="solution" aria-labelledby="sh">
+  <h2 id="sh"><b>03</b>Detailed solution</h2>
+  <div class="sol">
+    <p>Answer: <span id="solans">—</span> &nbsp;P→3, Q→4, R→5, S→2</p>
+    <ol class="steps">
+      <li><b>The condition.</b> The sound splits at <i>S</i> and meets itself at <i>D</i>. The detector hears a maximum when the path difference Δ = (detour length) − <i>l</i> is a whole number of wavelengths. The smallest <i>l</i> > 0 has Δ = <i>λ</i> = 0.29 m. Each detour is a fixed multiple <i>k</i> of <i>l</i>, so <i>l</i> = <i>λ</i>/(<i>k</i> − 1).</li>
+      <li><b>(P)</b> A semicircle of diameter <i>l</i>: its length is π<i>l</i>/2, so Δ = (π/2 − 1)<i>l</i> = 0.571<i>l</i> and <i>l</i> = 0.508 m → <b>(3) 0.51 m</b>.</li>
+      <li><b>(Q)</b> Up 0.5<i>l</i>, across <i>l</i>, down 0.5<i>l</i>: the detour is 2<i>l</i>, so Δ = <i>l</i> and <i>l</i> = 0.29 m → <b>(4)</b>.</li>
+      <li><b>(R)</b> Up <i>l</i>, then a semicircle whose diameter is the diagonal <i>l</i>√2. The arc is π<i>l</i>√2/2 = 2.221<i>l</i>, so the detour is 3.221<i>l</i>, Δ = 2.221<i>l</i> and <i>l</i> = 0.131 m → <b>(5) 0.13 m</b>.</li>
+      <li><b>(S)</b> The triangle has angles 45° at <i>S</i>, 105° at the top, and so 30° at <i>D</i>. By the sine rule its two sides are <i>l</i> sin 30°/sin 105° and <i>l</i> sin 45°/sin 105°, with sin 105° = cos 15° = 0.97. The detour is (0.5 + 0.707)/0.97 · <i>l</i> = 1.244<i>l</i>, so Δ = 0.244<i>l</i> and <i>l</i> = 1.19 m → <b>(2)</b>.</li>
+      <li>That is P→3, Q→4, R→5, S→2: option <b>(D)</b>. Using the exact cos 15° = 0.9659 would give 1.16 m for S, which is still nearest to (2).</li>
+    </ol>
+    <h3>Understand the concept</h3>
+    <div class="concept">This is interference with a fixed geometry. Both paths start and end at the same points, so only their difference in length matters. Constructive interference needs Δ = <i>mλ</i>. Because every length in each figure scales with <i>l</i>, the difference is a fixed fraction of <i>l</i>. The first maximum therefore needs the shortest <i>l</i> that makes that fraction equal one wavelength. A long detour, as in R, needs only a small <i>l</i>; a detour barely longer than the straight tube, as in S, needs a large one.</div>
+    <h3>Key takeaways</h3>
+    <ul class="take">
+      <li>Maximum at the detector: Δ = <i>mλ</i>. The smallest non-zero case is Δ = <i>λ</i>.</li>
+      <li>Detour = <i>k</i> × <i>l</i>, so <i>l</i><sub>min</sub> = <i>λ</i>/(<i>k</i> − 1).</li>
+      <li>The detour factors are: semicircle on <i>l</i>, π/2; rectangle, 2; side plus a semicircle on the diagonal, 1 + π/√2; triangle, by the sine rule.</li>
+    </ul>
+    <p class="note">Verification: an independent derivation, a sympy route, a numerical route (the two waves added as phasors and the first maximum of the detector amplitude found by sweeping <i>l</i>, with the path lengths measured from the drawn geometry), and the page's own engine, run by <code>tests/verify_p1phyq13.py</code>. The official key (D) and the MathonGo solution (D) agree. Status: script-verified by the PrayogX simulation factory; no review by a person has been recorded. The tubes are drawn at a fixed size, with <i>l</i> labelled, and the wave is shown in slow motion.</p>
+  </div>
+</section>
+
+<section id="howto" aria-labelledby="hh">
+  <h2 id="hh">How to use this simulation</h2>
+  <ol class="howto">
+    <li>Press <b>▶ START EXPERIMENT</b>. For each tube P, Q, R, S the run lengthens <i>l</i> from zero.</li>
+    <li>Watch the crests travel along both paths and meet at <i>D</i>. The detector's amplitude is plotted against <i>l</i>.</li>
+    <li>At the first maximum the path difference is exactly one wavelength. The run records that <i>l</i> and matches it to List-II.</li>
+    <li>Tap a <b>Tube</b> button and drag <b>Length l</b> to hear the maximum and the silence (Δ = <i>λ</i>/2) yourself.</li>
+    <li><b>Replay</b> runs it again. <b>Reset</b> clears it. <b>Classroom</b> fills the screen for a projector.</li>
+  </ol>
+</section>
+
+<footer>
+  ADV-2026-P1-PHY-Q13 · PrayogX · JEE Advanced Interactive Simulation Library · question text reproduced
+  from the official JEE (Advanced) 2026 Paper 1 for educational use. This is a virtual laboratory only.
+  λ = 0.29 m and cos 15° = 0.97, as given. The two paths are equal in amplitude; sharp corners are ignored.
+</footer>
+</main>
+
+<script>
+(function(){
+"use strict";
+/* ENGINE-BEGIN */
+/* Two paths from S to D: the straight tube (length l) and a detour whose length is a fixed multiple of l.
+   The detector amplitude of two equal waves is |1 + e^(i 2 pi Delta / lambda)|. lambda = 0.29 m, cos 15 = 0.97. */
+var ENGINE = (function(){
+  var LAM = 0.29, COS15 = 0.97, D2R = Math.PI / 180;
+  /* detour length per unit l, built from each figure's pieces */
+  var DETOUR = {
+    P: function(){ return Math.PI * 0.5; },                                             /* semicircle of diameter l */
+    Q: function(){ return 0.5 + 1 + 0.5; },                                             /* up 0.5 l, across l, down 0.5 l */
+    R: function(){ return 1 + Math.PI * Math.SQRT2 / 2; },                              /* up l, semicircle on the diagonal l sqrt 2 */
+    S: function(){ return (Math.sin(30 * D2R) + Math.sin(45 * D2R)) / COS15; }           /* sine rule, sin 105 = cos 15 = 0.97 */
+  };
+  var LIST2 = [{ k: 1, v: 1.32 }, { k: 2, v: 1.19 }, { k: 3, v: 0.51 }, { k: 4, v: 0.29 }, { k: 5, v: 0.13 }];
+  var OPTS = { A: { P: 4, Q: 3, R: 5, S: 1 }, B: { P: 4, Q: 3, R: 1, S: 5 }, C: { P: 3, Q: 4, R: 1, S: 2 }, D: { P: 3, Q: 4, R: 5, S: 2 } };
+  var CFGS = ["P", "Q", "R", "S"];
+  function delta(c, l){ return (DETOUR[c]() - 1) * l; }
+  function amp(c, l){ var ph = 2 * Math.PI * delta(c, l) / LAM; return Math.sqrt(2 + 2 * Math.cos(ph)); }   /* |1 + e^(i ph)|, 0..2 */
+  /* sweep l upward and find the first maximum of the amplitude (then refine) */
+  function firstMax(c){
+    var dl = 1e-4, l, prev = amp(c, dl), rising = false, a;
+    for (l = 2 * dl; l < 3; l += dl){ a = amp(c, l); if (a > prev) rising = true; if (rising && a < prev){ var lo = l - 2 * dl, hi = l, gr = (Math.sqrt(5) - 1) / 2, k, c1, c2;
+        for (k = 0; k < 80; k++){ c1 = hi - gr * (hi - lo); c2 = lo + gr * (hi - lo); if (amp(c, c1) > amp(c, c2)) hi = c2; else lo = c1; } return (lo + hi) / 2; } prev = a; }
+    return null;
+  }
+  function nearest(v){ var best = null, i; for (i = 0; i < LIST2.length; i++) if (!best || Math.abs(LIST2[i].v - v) < Math.abs(best.v - v)) best = LIST2[i]; return best; }
+  function run(){
+    var map = {}, ls = {}, i, k;
+    for (i = 0; i < CFGS.length; i++){ ls[CFGS[i]] = firstMax(CFGS[i]); map[CFGS[i]] = nearest(ls[CFGS[i]]).k; }
+    var hits = []; for (k in OPTS) if (OPTS[k].P === map.P && OPTS[k].Q === map.Q && OPTS[k].R === map.R && OPTS[k].S === map.S) hits.push(k);
+    return { l: ls, map: map, hits: hits, answer: hits.length === 1 ? hits[0] : null };
+  }
+  return { LAM: LAM, COS15: COS15, DETOUR: DETOUR, LIST2: LIST2, OPTS: OPTS, CFGS: CFGS, delta: delta, amp: amp, firstMax: firstMax, nearest: nearest, run: run };
+})();
+/* ENGINE-END */
+
+var QRUN = ENGINE.run();
+var ANS = QRUN.answer;
+
+function $(id){ return document.getElementById(id); }
+var cv = $("labcv"), g = cv.getContext("2d");
+var reduced = !!(window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches);
+var SWEEP_T = 2.6, HOLD_T = 0.9, LMAX = 1.5;
+
+var RUN = { state: "setup", phase: "ready", speed: 1, cfg: "P", l: 0.3, ci: 0, st: 0, found: {}, curve: [], done: false, confirmed: false };
+var L = null, minPx = 999, clock = 0;
+
+function layout(){
+  var phone = document.documentElement.clientWidth < 700;
+  if (phone) return { phone: true, W: 720, H: 1300, ro: { x: 12, y: 12, w: 696, h: 178 }, sc: { x: 12, y: 204, w: 696, h: 520 },
+    plot: { x: 12, y: 740, w: 696, h: 548 }, fs: 25, big: 31 };
+  return { phone: false, W: 1200, H: 720, ro: { x: 16, y: 14, w: 1168, h: 92 }, sc: { x: 16, y: 122, w: 620, h: 584 },
+    plot: { x: 652, y: 122, w: 532, h: 584 }, fs: 16, big: 24 };
+}
+
+/* --------------------------------------------------------------- run */
+function finish(){
+  RUN.state = "done"; RUN.phase = "done"; RUN.done = true;
+  var i, c; for (i = 0; i < ENGINE.CFGS.length; i++){ c = ENGINE.CFGS[i]; if (!RUN.found[c]) RUN.found[c] = ENGINE.firstMax(c); }
+  var map = {}; ENGINE.CFGS.forEach(function(k){ map[k] = ENGINE.nearest(RUN.found[k]).k; });
+  var hits = []; for (var o in ENGINE.OPTS){ var q = ENGINE.OPTS[o]; if (q.P === map.P && q.Q === map.Q && q.R === map.R && q.S === map.S) hits.push(o); }
+  RUN.measured = { l: RUN.found, map: map, option: hits.length === 1 ? hits[0] : null };
+  if (RUN.measured.option === ANS){ RUN.confirmed = true; confirmAnswer(); }
+  narrate(); refreshButtons();
+}
+function tick(dt){
+  if (!reduced) clock += dt;
+  if (RUN.state !== "running") return;
+  RUN.st += dt * RUN.speed;
+  var c = ENGINE.CFGS[RUN.ci], target = ENGINE.firstMax(c);
+  if (RUN.phase === "sweep"){
+    var f = Math.min(1, RUN.st / SWEEP_T), l = Math.max(0.01, f * Math.min(LMAX, target * 1.35));
+    RUN.cfg = c; RUN.l = l; setSlider(l);
+    var last = RUN.curve[RUN.curve.length - 1]; if (!last || l - last[0] > 0.004) RUN.curve.push([l, ENGINE.amp(c, l)]);
+    if (l >= target && !RUN.found[c]){ RUN.found[c] = target; RUN.l = target; setSlider(target); RUN.phase = "hold"; RUN.st = 0; narrate(); }
+  } else if (RUN.phase === "hold" && RUN.st >= HOLD_T){
+    RUN.ci++; RUN.st = 0; RUN.curve = [];
+    if (RUN.ci >= ENGINE.CFGS.length){ finish(); return; }
+    setCfgBtns(ENGINE.CFGS[RUN.ci]); RUN.cfg = ENGINE.CFGS[RUN.ci]; RUN.l = 0.01; setSlider(0.01); RUN.phase = "sweep"; narrate();
+  }
+}
+function start(){
+  if (RUN.state === "running"){ RUN.state = "paused"; refreshButtons(); narrate(); return; }
+  if (RUN.state === "paused"){ RUN.state = "running"; refreshButtons(); narrate(); return; }
+  resetRun();
+  if (reduced){ finish(); return; }
+  RUN.state = "running"; RUN.phase = "sweep"; RUN.ci = 0; RUN.cfg = "P"; RUN.l = 0.01; setSlider(0.01); setCfgBtns("P"); narrate(); refreshButtons();
+}
+function resetRun(){ RUN.state = "setup"; RUN.phase = "ready"; RUN.ci = 0; RUN.st = 0; RUN.found = {}; RUN.curve = []; RUN.done = false; RUN.measured = null; RUN.confirmed = false; }
+function replay(){ RUN.state = "setup"; start(); }
+function reset(){ resetRun(); setCfg("P"); setL(0.3); refreshButtons(); narrate(); }
+function setSlider(l){ $("in_l").value = String(l); $("lout").textContent = l.toFixed(3) + " m"; }
+function setCfgBtns(c){ ["P", "Q", "R", "S"].forEach(function(k){ $("c" + k).setAttribute("aria-pressed", k === c ? "true" : "false"); }); }
+function setCfg(c){ if (["P", "Q", "R", "S"].indexOf(c) < 0) c = "P"; RUN.cfg = c; setCfgBtns(c); if (RUN.state !== "setup") resetRun(); refreshButtons(); narrate(); }
+function setL(l){ l = parseFloat(l); if (!isFinite(l)) l = 0.3; l = Math.min(LMAX, Math.max(0.05, l)); RUN.l = l; setSlider(l); if (RUN.state !== "setup"){ resetRun(); refreshButtons(); } narrate(); }
+
+/* ------------------------------------------------------------ words */
+function narrate(){
+  var t, c = RUN.cfg, d = ENGINE.delta(c, RUN.l), a = ENGINE.amp(c, RUN.l);
+  if (RUN.phase === "ready") t = "Tube " + c + " at l = " + RUN.l.toFixed(3) + " m: the detour is " + ENGINE.DETOUR[c]().toFixed(3) + " l, so Δ = " + d.toFixed(3) + " m = " + (d / ENGINE.LAM).toFixed(2) + " λ and the amplitude at D is " + a.toFixed(2) + " of 2. Press START.";
+  else if (RUN.phase === "sweep") t = "Tube " + c + ": lengthening l. The path difference Δ = " + (ENGINE.DETOUR[c]() - 1).toFixed(3) + " l grows, and the amplitude at D dips to silence at Δ = λ/2 and rises again towards Δ = λ.";
+  else if (RUN.phase === "hold") t = "Tube " + c + ": first maximum at l = " + RUN.found[c].toFixed(3) + " m, where Δ = λ = 0.29 m. The nearest List-II value is (" + ENGINE.nearest(RUN.found[c]).k + ") " + ENGINE.nearest(RUN.found[c]).v.toFixed(2) + " m.";
+  else t = "Matched: P→" + RUN.measured.map.P + " (" + RUN.found.P.toFixed(3) + " m), Q→" + RUN.measured.map.Q + " (" + RUN.found.Q.toFixed(3) + " m), R→" + RUN.measured.map.R + " (" + RUN.found.R.toFixed(3) + " m), S→" + RUN.measured.map.S + " (" + RUN.found.S.toFixed(3) + " m): option " + (RUN.measured.option ? "(" + RUN.measured.option + ")" : "—") + ".";
+  if (RUN.state === "paused") t = "Paused. " + t;
+  $("narr").textContent = t;
+}
+function confirmAnswer(){
+  var m = RUN.measured;
+  $("anssub").textContent = "Confirmed by the run: first maxima at l = " + m.l.P.toFixed(3) + ", " + m.l.Q.toFixed(3) + ", " + m.l.R.toFixed(3) + ", " + m.l.S.toFixed(3) + " m match (" + m.map.P + "), (" + m.map.Q + "), (" + m.map.R + "), (" + m.map.S + ").";
+  var k = $("keyline");
+  if (!reduced){ k.classList.remove("blink"); void k.offsetWidth; k.classList.add("blink"); setTimeout(function(){ k.classList.remove("blink"); }, 2000); }
+}
+function refreshButtons(){ $("gobtn").textContent = RUN.state === "running" ? "❚❚ PAUSE" : RUN.state === "paused" ? "▶ RESUME" : RUN.state === "done" ? "▶ RUN AGAIN" : "▶ START EXPERIMENT"; }
+function refreshAnswer(){
+  $("ansval").textContent = ANS ? "(" + ANS + ")" : "—"; $("ansexpr").textContent = ANS ? "first maximum where Δ = λ: P→" + QRUN.map.P + ", Q→" + QRUN.map.Q + ", R→" + QRUN.map.R + ", S→" + QRUN.map.S : ""; $("solans").textContent = ANS ? "(" + ANS + ")" : "—";
+  var lis = document.querySelectorAll("#opts li"), i; for (i = 0; i < lis.length; i++) lis[i].classList.toggle("correct", lis[i].getAttribute("data-o") === ANS);
+}
+
+/* ------------------------------------------------------------ drawing */
+function label(s, x, y, px, col, align, weight){
+  if (px < minPx) minPx = px;
+  g.font = (weight || "700") + " " + Math.round(px) + "px ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif";
+  g.fillStyle = col || "#e8f0ff"; g.textAlign = align || "left"; g.textBaseline = "alphabetic"; g.fillText(s, x, y);
+}
+function roundRect(x, y, w, h, r){ g.beginPath(); g.moveTo(x + r, y); g.lineTo(x + w - r, y); g.quadraticCurveTo(x + w, y, x + w, y + r); g.lineTo(x + w, y + h - r); g.quadraticCurveTo(x + w, y + h, x + w - r, y + h); g.lineTo(x + r, y + h); g.quadraticCurveTo(x, y + h, x, y + h - r); g.lineTo(x, y + r); g.quadraticCurveTo(x, y, x + r, y); g.closePath(); }
+function panel(x, y, w, h){ roundRect(x, y, w, h, 14); g.fillStyle = "rgba(10,16,32,.86)"; g.fill(); g.strokeStyle = "rgba(140,180,255,.3)"; g.lineWidth = 1.5; g.stroke(); }
+
+/* the detour path as points (in units of l), from S (0,0) to D (1,0); y up */
+function detourPts(c){
+  var p = [], i, n = 80;
+  if (c === "P"){ for (i = 0; i <= n; i++){ var a = Math.PI - Math.PI * i / n; p.push([0.5 + 0.5 * Math.cos(a), 0.5 * Math.sin(a)]); } }
+  else if (c === "Q"){ p = [[0, 0], [0, 0.5], [1, 0.5], [1, 0]]; }
+  else if (c === "R"){ p.push([0, 0]); p.push([0, 1]); var cx = 0.5, cy = 0.5, rr = Math.SQRT2 / 2, a0 = Math.atan2(1 - cy, 0 - cx); for (i = 0; i <= n; i++){ var aa = a0 - Math.PI * i / n; p.push([cx + rr * Math.cos(aa), cy + rr * Math.sin(aa)]); } }
+  else { var s30 = 0.5, s45 = Math.SQRT1_2, side = s30 / ENGINE.COS15; p = [[0, 0], [side * Math.cos(45 * Math.PI / 180), side * Math.sin(45 * Math.PI / 180)], [1, 0]]; }
+  return p;
+}
+function polyLen(p){ var s = 0, i; for (i = 1; i < p.length; i++) s += Math.hypot(p[i][0] - p[i - 1][0], p[i][1] - p[i - 1][1]); return s; }
+function pointAt(p, s){ var i, acc = 0; for (i = 1; i < p.length; i++){ var seg = Math.hypot(p[i][0] - p[i - 1][0], p[i][1] - p[i - 1][1]); if (acc + seg >= s){ var f = (s - acc) / seg; return [p[i - 1][0] + f * (p[i][0] - p[i - 1][0]), p[i - 1][1] + f * (p[i][1] - p[i - 1][1])]; } acc += seg; } return p[p.length - 1]; }
+function drawReadouts(){
+  var r = L.ro, c = RUN.cfg, l = RUN.l, d = ENGINE.delta(c, l), i, x, y;
+  var rows = [["Tube · length l", c + " · " + l.toFixed(3) + " m"], ["Path difference Δ", d.toFixed(3) + " m = " + (d / ENGINE.LAM).toFixed(2) + " λ"], ["Amplitude at D", ENGINE.amp(c, l).toFixed(2) + " of 2"], ["First maximum", RUN.found[c] ? RUN.found[c].toFixed(3) + " m" : "—"]];
+  panel(r.x, r.y, r.w, r.h);
+  for (i = 0; i < 4; i++){
+    if (L.phone){ x = r.x + 18 + (i % 2) * 348; y = r.y + 44 + Math.floor(i / 2) * 84; }
+    else { x = r.x + 20 + i * 290; y = r.y + 34; }
+    label(rows[i][0], x, y, L.fs - (L.phone ? 0 : 1), "#8fa6cf", "left", "700");
+    label(rows[i][1], x, y + (L.phone ? 40 : 38), L.big - (L.phone ? 4 : 1), i === 2 ? "#9ff0c8" : i === 3 ? "#ffd166" : "#ffffff", "left", "800");
+  }
+}
+function drawScene(){
+  var S = L.sc, c = RUN.cfg, l = RUN.l;
+  roundRect(S.x, S.y, S.w, S.h, 14); g.fillStyle = "#070d1c"; g.fill();
+  var p = detourPts(c), ymax = 0, xmax = 1, i; for (i = 0; i < p.length; i++){ ymax = Math.max(ymax, p[i][1]); xmax = Math.max(xmax, p[i][0]); }
+  var W = S.w - 60 - 170;                                      /* 170 px on the right kept for the detector and its label */
+  var U = Math.min(W / xmax, (S.h - 190) / Math.max(ymax, 0.5)), ox = S.x + 60 + (W - U * xmax) / 2, oy = S.y + S.h - 90;
+  function X(u){ return ox + u * U; } function Y(v){ return oy - v * U; }
+  /* tubes */
+  function tube(pts, col){ g.strokeStyle = "rgba(200,220,255,.28)"; g.lineWidth = 26; g.lineCap = "round"; g.lineJoin = "round"; g.beginPath(); g.moveTo(X(pts[0][0]), Y(pts[0][1])); for (var k = 1; k < pts.length; k++) g.lineTo(X(pts[k][0]), Y(pts[k][1])); g.stroke();
+    g.strokeStyle = col; g.lineWidth = 2; g.stroke(); }
+  tube([[0, 0], [1, 0]], "rgba(159,240,200,.6)"); tube(p, "rgba(255,179,92,.6)");
+  /* travelling crests along both paths, spaced by lambda (in units of l: lambda/l) */
+  var lamU = ENGINE.LAM / l, t = clock * 0.35, L1 = 1, L2 = polyLen(p), s, off = (t % 1) * lamU;
+  g.fillStyle = "#9ff0c8"; for (s = off; s < L1; s += lamU){ g.beginPath(); g.arc(X(s), Y(0), 6, 0, Math.PI * 2); g.fill(); }
+  g.fillStyle = "#ffb35c"; for (s = off; s < L2; s += lamU){ var q = pointAt(p, s); g.beginPath(); g.arc(X(q[0]), Y(q[1]), 6, 0, Math.PI * 2); g.fill(); }
+  /* S and D */
+  g.fillStyle = "#ffffff"; g.beginPath(); g.arc(X(0), Y(0), 9, 0, Math.PI * 2); g.fill(); g.beginPath(); g.arc(X(1), Y(0), 9, 0, Math.PI * 2); g.fill();
+  label("S", X(0) - 14, Y(0) + 36, L.fs + 2, "#ffffff", "right", "800"); label("D", X(1) + 14, Y(0) + 36, L.fs + 2, "#ffffff", "left", "800");
+  /* detector bar */
+  var a = ENGINE.amp(c, l), bh = 60 * a, bx = S.x + S.w - 44, by = Y(0);
+  g.strokeStyle = "rgba(255,255,255,.35)"; g.lineWidth = 1.5; g.setLineDash([4, 4]); g.beginPath(); g.moveTo(X(1) + 10, Y(0)); g.lineTo(bx - 4, by - 4); g.stroke(); g.setLineDash([]);
+  roundRect(bx, by - 126, 22, 126, 6); g.fillStyle = "#1c2438"; g.fill(); g.fillStyle = a > 1.9 ? "#7dffb8" : a < 0.2 ? "#ff6b6b" : "#9fdcff"; g.fillRect(bx + 3, by - bh - 3, 16, bh);
+  label(a > 1.9 ? "loud (max)" : a < 0.2 ? "silent" : "detector", bx + 22, by - 136, L.fs, a > 1.9 ? "#7dffb8" : "#cfe0ff", "right", "800");
+  label("straight: l", X(0.5), Y(0) + 40, L.fs, "#9ff0c8", "center", "800");
+  label("detour: " + ENGINE.DETOUR[c]().toFixed(3) + " l", X(0.5), Y(ymax) - 26, L.fs, "#ffb37a", "center", "800");
+  label("Tube " + c + " · l = " + l.toFixed(3) + " m · λ = 0.29 m (dots one λ apart)", S.x + 16, S.y + (L.phone ? 36 : 30), L.fs - (L.phone ? 0 : 1), "rgba(190,210,240,.9)", "left", "700");
+}
+function drawPlot(){
+  var P = L.plot, x0 = P.x + (L.phone ? 70 : 60), x1 = P.x + P.w - 24, y0 = P.y + (L.phone ? 70 : 60), y1 = P.y + P.h * (L.phone ? 0.52 : 0.52), c = RUN.cfg;
+  panel(P.x, P.y, P.w, P.h);
+  label("AMPLITUDE AT D AGAINST l · TUBE " + c, P.x + 18, P.y + (L.phone ? 38 : 32), L.fs, "#cfe0ff", "left", "800");
+  function X(l){ return x0 + l / LMAX * (x1 - x0); } function Y(a){ return y1 - a / 2 * (y1 - y0); }
+  g.strokeStyle = "rgba(220,235,255,.7)"; g.lineWidth = 2; g.beginPath(); g.moveTo(x0, y0); g.lineTo(x0, y1); g.lineTo(x1, y1); g.stroke();
+  label("2", x0 - 10, Y(2) + 6, L.fs, "#8fa6cf", "right", "600"); label("0", x0 - 10, Y(0) + 6, L.fs, "#8fa6cf", "right", "600");
+  ENGINE.LIST2.forEach(function(e){ g.strokeStyle = "rgba(255,209,102,.4)"; g.lineWidth = 1.5; g.setLineDash([3, 5]); g.beginPath(); g.moveTo(X(e.v), y0); g.lineTo(X(e.v), y1); g.stroke(); g.setLineDash([]);
+    label("(" + e.k + ")", X(e.v), y1 + (L.phone ? 34 : 24), L.fs - (L.phone ? 0 : 1), "#ffd166", "center", "700"); });
+  var i, cu = RUN.phase === "ready" || RUN.done ? null : RUN.curve;
+  var pts = []; if (cu) pts = cu; else { for (i = 0; i <= 300; i++){ var ll = 0.01 + (LMAX - 0.01) * i / 300; pts.push([ll, ENGINE.amp(c, ll)]); } }
+  g.save(); g.strokeStyle = "#9fdcff"; g.lineWidth = 3; g.globalAlpha = cu ? 1 : 0.5; g.beginPath(); for (i = 0; i < pts.length; i++){ if (i) g.lineTo(X(pts[i][0]), Y(pts[i][1])); else g.moveTo(X(pts[i][0]), Y(pts[i][1])); } g.stroke(); g.restore();
+  g.fillStyle = "#ffffff"; g.beginPath(); g.arc(X(RUN.l), Y(ENGINE.amp(c, RUN.l)), 7, 0, Math.PI * 2); g.fill();
+  if (RUN.found[c]){ g.fillStyle = "#7dffb8"; g.beginPath(); g.arc(X(RUN.found[c]), Y(2), 8, 0, Math.PI * 2); g.fill(); }
+  /* the match table */
+  var ty = y1 + (L.phone ? 80 : 60), rowH = (P.y + P.h - ty - 12) / 5;
+  label("MATCH (first maximum → nearest List-II)", P.x + 18, ty, L.fs - (L.phone ? 0 : 1), "#cfe0ff", "left", "800");
+  ENGINE.CFGS.forEach(function(k, j){ var f = RUN.found[k], yy = ty + (j + 1) * rowH;
+    label(k + ":  " + (f ? "l = " + f.toFixed(3) + " m  →  (" + ENGINE.nearest(f).k + ") " + ENGINE.nearest(f).v.toFixed(2) + " m" : "…"), P.x + 24, yy, L.fs + (L.phone ? 0 : 1), f ? "#e6ecff" : "rgba(200,210,235,.5)", "left", "800"); });
+  if (RUN.done && RUN.measured.option) label("= option (" + RUN.measured.option + ")", P.x + P.w - 24, ty + 4 * rowH, L.big - (L.phone ? 2 : 2), "#7dffb8", "right", "800");
+}
+function draw(){
+  minPx = 999;
+  L = layout();
+  if (cv.width !== L.W || cv.height !== L.H){ cv.width = L.W; cv.height = L.H; }
+  var bg = g.createLinearGradient(0, 0, 0, L.H); bg.addColorStop(0, "#0b1226"); bg.addColorStop(1, "#04060c"); g.fillStyle = bg; g.fillRect(0, 0, L.W, L.H);
+  drawReadouts(); drawScene(); drawPlot();
+}
+
+/* ------------------------------------------------------------ controls */
+function setSpeed(k){ RUN.speed = k; $("sp1").setAttribute("aria-pressed", k === 1 ? "true" : "false"); $("sp2").setAttribute("aria-pressed", k === 0.5 ? "true" : "false"); }
+$("gobtn").addEventListener("click", start);
+$("replaybtn").addEventListener("click", replay);
+$("resetbtn").addEventListener("click", reset);
+$("sp1").addEventListener("click", function(){ setSpeed(1); });
+$("sp2").addEventListener("click", function(){ setSpeed(0.5); });
+["P", "Q", "R", "S"].forEach(function(k){ $("c" + k).addEventListener("click", function(){ setCfg(k); }); });
+$("in_l").addEventListener("input", function(){ setL(this.value); });
+$("classbtn").addEventListener("click", function(){
+  var on = document.body.classList.toggle("classroom"); this.setAttribute("aria-pressed", on ? "true" : "false");
+  this.textContent = on ? "Exit classroom" : "Classroom";
+});
+$("themebtn").addEventListener("click", function(){
+  var r = document.documentElement, dark = r.getAttribute("data-theme") === "dark" || (!r.getAttribute("data-theme") && window.matchMedia && matchMedia("(prefers-color-scheme: dark)").matches);
+  r.setAttribute("data-theme", dark ? "light" : "dark");
+});
+
+var lastT = null;
+function loop(ts){
+  if (lastT === null) lastT = ts;
+  var dt = Math.min(0.05, Math.max(0, (ts - lastT) / 1000)); lastT = ts;
+  tick(dt); draw();
+  requestAnimationFrame(loop);
+}
+
+window.PX = {
+  ENGINE: ENGINE, QRUN: QRUN, ANS: ANS, RUN: RUN,
+  answer: function(){ return ANS; },
+  minLabelPx: function(){ draw(); return minPx; },
+  start: start, replay: replay, reset: reset, setSpeed: setSpeed, speed: function(k){ RUN.speed = k; }, setCfg: setCfg, setL: setL,
+  state: function(){ return { state: RUN.state, phase: RUN.phase, cfg: RUN.cfg, l: RUN.l, delta: ENGINE.delta(RUN.cfg, RUN.l), amp: ENGINE.amp(RUN.cfg, RUN.l), ci: RUN.ci, found: RUN.found, measured: RUN.measured || null, done: RUN.done, confirmed: RUN.confirmed }; }
+};
+
+setCfg("P"); setL(0.3); refreshAnswer(); refreshButtons(); draw();
+window.addEventListener("resize", function(){ draw(); });
+requestAnimationFrame(loop);
+})();
+</script>
+</body>
+</html>
