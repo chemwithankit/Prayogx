@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bohr Jump Lab — a Lyman transition in hydrogen — JEE Advanced 2026 Paper 1 Q.5 | PrayogX</title>
+<meta name="description" content="A Bohr hydrogen atom: the electron, drawn with its de Broglie standing wave, jumps from orbit n to orbit 1 and emits a Lyman photon. Its speed, radius, kinetic energy and de Broglie wavelength are measured, and each option's expression is checked against the measured change: (A) and (C) hold. JEE Advanced 2026 Paper 1 Physics Q.5.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232a78d6'/%3E%3Cpath d='M12.5 6.5h7M13.6 6.5v7.2L7.9 24.1a1.5 1.5 0 0 0 1.3 2.3h13.6a1.5 1.5 0 0 0 1.3-2.3l-5.7-10.4V6.5' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M10.6 20.6h10.8' stroke='white' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E">
+<meta name="sim-id" content="ADV-2026-P1-PHY-Q05">
+<style>
+:root{
+  color-scheme: light;
+  --surface-0:#f4f4f1; --surface-1:#fcfcfb; --surface-2:#ececea;
+  --line:#d9d9d4; --line-strong:#bcbcb5;
+  --text-primary:#0b0b0b; --text-secondary:#52514e; --text-muted:#77766f;
+  --s1:#2a78d6; --s2:#eb6834; --s3:#1baf7a; --s4:#4a3aa7;
+  --good:#00743f; --bad:#c0392b; --accent:#2a78d6;
+  --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+  --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --serif:ui-serif,Georgia,"Times New Roman",serif;
+  --radius:12px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  color-scheme: dark;
+  --surface-0:#111110; --surface-1:#1a1a19; --surface-2:#232322;
+  --line:#34342f; --line-strong:#4a4a44;
+  --text-primary:#ffffff; --text-secondary:#c3c2b7; --text-muted:#95948b;
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#9085e9;
+  --good:#3fae7a; --bad:#e66767; --accent:#3987e5;
+}}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --surface-0:#111110; --surface-1:#1a1a19; --surface-2:#232322;
+  --line:#34342f; --line-strong:#4a4a44;
+  --text-primary:#ffffff; --text-secondary:#c3c2b7; --text-muted:#95948b;
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#9085e9;
+  --good:#3fae7a; --bad:#e66767; --accent:#3987e5;
+}
+*{box-sizing:border-box}
+[hidden]{display:none !important}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--surface-0);color:var(--text-primary);font-family:var(--sans);font-size:16px;line-height:1.6}
+header.top{border-bottom:1px solid var(--line);background:var(--surface-1)}
+.top-inner{max-width:1240px;margin:0 auto;padding:18px 20px 14px;position:relative}
+.brandbar{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.brandbar .pxmark{width:21px;height:21px;flex:none;display:block}
+.brandbar .wm{font-size:13px;font-weight:800;letter-spacing:.17em;color:var(--text-secondary);line-height:1}
+.brandbar .wm i{font-style:normal;color:var(--accent)}
+.simid{font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--text-muted)}
+h1{font-size:21px;line-height:1.3;margin:4px 0 4px;padding-right:80px}
+.meta{font-size:14px;color:var(--text-secondary);margin:0}
+.themebtn{position:absolute;top:14px;right:16px;border:1px solid var(--line-strong);background:var(--surface-2);
+  color:var(--text-secondary);border-radius:8px;padding:4px 9px;font-size:12px;cursor:pointer}
+.wrap{max-width:1240px;margin:0 auto;padding:0 20px 40px}
+section{margin:0 0 34px}
+h2{font-size:15px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-secondary);margin:26px 0 12px}
+h2 b{color:var(--accent);margin-right:8px}
+h3{font-size:17px;margin:22px 0 8px}
+/* 01 question */
+.qcard{background:var(--surface-1);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+.qtext{font-family:var(--serif);font-size:18px;line-height:1.6;flex:1 1 460px;min-width:0}
+.qfig{flex:0 0 250px;max-width:100%}
+.qfig svg{display:block;width:100%;height:auto}
+.sq{white-space:nowrap}
+.sq .rad{border-top:1.5px solid currentColor;padding:0 2px}
+#opts{list-style:none;margin:12px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+#opts li{background:var(--surface-1);border:1.5px solid var(--line);border-radius:10px;padding:10px 12px;font-family:var(--serif);font-size:19px;display:flex;gap:10px;align-items:center;min-height:52px}
+#opts li b{font-family:var(--sans);font-size:14px;color:var(--text-muted)}
+#opts li.correct{border-color:var(--good);box-shadow:0 0 0 2px color-mix(in srgb,var(--good) 25%,transparent)}
+#opts li.correct b{color:var(--good)}
+/* 02 lab */
+#keyline{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;background:var(--surface-1);border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin:0 0 8px}
+#keyline .k{font-size:13px;font-weight:800;letter-spacing:.12em;color:var(--text-muted);text-transform:uppercase}
+#ansval{font-size:22px;font-weight:800;color:var(--good)}
+#ansexpr{font-family:var(--serif);font-size:20px}
+#anssub{font-size:14px;color:var(--text-secondary);margin-left:auto}
+#keyline.blink{animation:blink .45s ease-in-out 4}
+@keyframes blink{50%{background:color-mix(in srgb,var(--good) 22%,var(--surface-1))}}
+#narr{margin:0 2px 10px;font-size:16px;color:var(--text-secondary);min-height:2.8em}
+.stage{position:relative;border-radius:16px;overflow:hidden;background:#070a12;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+canvas#labcv{display:block;width:100%;height:auto;touch-action:manipulation}
+#controls{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:12px;padding:12px;border:1px solid var(--line);border-radius:14px;background:var(--surface-1)}
+#controls button{min-height:48px;font-size:16px;font-weight:700;border-radius:10px;border:1px solid var(--line-strong);background:var(--surface-2);color:var(--text-primary);padding:0 16px;cursor:pointer;font-family:var(--sans)}
+#controls button:focus-visible,#controls input:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+#controls .go{background:var(--accent);color:#fff;border:none;font-weight:800;letter-spacing:.04em;min-width:190px}
+#controls .seg{display:flex;align-items:center;gap:0}
+#controls .seg span{font-size:13px;font-weight:700;color:var(--text-muted);margin-right:8px;letter-spacing:.06em;text-transform:uppercase}
+#controls .seg button{border-radius:0;margin-left:-1px;padding:0 13px}
+#controls .seg button:nth-child(2){border-radius:10px 0 0 10px}
+#controls .seg button:last-child{border-radius:0 10px 10px 0}
+#controls .seg button[aria-pressed="true"]{background:var(--accent);color:#fff;border-color:var(--accent)}
+#controls .v0{display:flex;flex-wrap:wrap;align-items:center;gap:10px;flex:1 1 520px;min-width:0}
+#controls .v0 label{font-size:15px;font-weight:700;white-space:nowrap}
+#controls input[type=range]{flex:1 1 150px;min-width:110px;min-height:44px;accent-color:var(--accent);margin:0}
+#v0out{font-family:var(--mono);font-size:15px;min-width:92px}
+#warn{margin:10px 2px 0;font-size:15px;color:var(--s2);font-weight:600}
+/* 03 solution */
+.sol{background:var(--surface-1);border:1px solid var(--line);border-radius:var(--radius);padding:6px 20px 16px}
+.sol ol.steps{padding-left:22px;margin:10px 0}
+.sol ol.steps li{margin:0 0 12px}
+.eq{font-family:var(--serif);font-size:18px;background:var(--surface-2);border-radius:8px;padding:8px 12px;margin:6px 0;overflow-x:auto}
+.solfig{display:flex;gap:18px;align-items:center;flex-wrap:wrap;margin:8px 0 12px}
+.solfig svg{flex:0 0 300px;max-width:100%;height:auto}
+.solfig p{flex:1 1 300px;margin:0}
+table.opt{border-collapse:collapse;width:100%;font-size:15px;margin:8px 0}
+table.opt th,table.opt td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+table.opt th{background:var(--surface-2)}
+table.opt tr.ok td{background:color-mix(in srgb,var(--good) 10%,transparent)}
+.tscroll{overflow-x:auto}
+.concept{border-left:4px solid var(--accent);padding:2px 0 2px 14px;margin:14px 0}
+ul.take{padding-left:20px} ul.take li{margin:0 0 6px}
+#solans{font-weight:800;color:var(--good)}
+.note{font-size:14px;color:var(--text-secondary)}
+/* 04 analysis */
+svg.chart{display:block;width:100%;max-width:760px;height:auto;background:var(--surface-1);border:1px solid var(--line);border-radius:12px}
+.chart text{font-family:var(--sans);fill:var(--text-secondary)}
+.cap{font-size:14px;color:var(--text-secondary);max-width:760px}
+/* how to */
+ol.howto{padding-left:22px;margin:0} ol.howto li{margin:0 0 8px}
+footer{font-size:13px;color:var(--text-muted);border-top:1px solid var(--line);padding:16px 0 0}
+/* classroom */
+body.classroom .wrap{max-width:none;padding:0 18px 30px}
+body.classroom header.top,body.classroom section:not(#lab),body.classroom footer{display:none}
+body.classroom #narr{font-size:24px;color:var(--text-primary)}
+body.classroom #keyline #ansexpr{font-size:26px}
+@media (max-width:760px){
+  .wrap{padding:0 16px 32px}
+  .top-inner{padding:14px 16px 12px}
+  h1{font-size:18px}
+  .qtext{font-size:17px}
+  .qfig{flex-basis:100%}
+  .qfig svg{max-width:260px;margin:0 auto}
+  #opts{grid-template-columns:repeat(2,minmax(0,1fr))}
+  #anssub{margin-left:0}
+  #controls{gap:8px;padding:10px}
+  #controls .go{flex:1 1 100%}
+  #controls button{padding:0 12px}
+  #controls .v0{flex-basis:100%;flex-wrap:wrap}
+  #controls .v0 input[type=range]{flex:1 1 100%;order:3}
+  .solfig svg{flex-basis:100%}
+  .sol{padding:4px 14px 12px}
+}
+@media (prefers-reduced-motion: reduce){#keyline.blink{animation:none}}
+/* long text options */
+#opts.lopts{grid-template-columns:1fr}
+#opts.lopts li{font-family:var(--sans);font-size:17px;align-items:flex-start;line-height:1.5}
+#opts.lopts li b{padding-top:2px}
+#opts.lopts .fx{font-family:var(--serif);font-size:18px;white-space:nowrap}
+#controls .seg button{white-space:nowrap}
+@media (max-width:760px){#opts.lopts .fx{white-space:normal}#controls .seg{flex-wrap:wrap;row-gap:6px}#controls .seg span{flex:1 1 100%;margin:0 0 2px}#controls .seg button:nth-child(2){border-radius:10px 0 0 10px}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-inner">
+    <div class="brandbar"><svg class="pxmark" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><rect width="32" height="32" rx="8" fill="var(--accent)"/><path d="M12.5 6.5h7M13.6 6.5v7.2L7.9 24.1a1.5 1.5 0 0 0 1.3 2.3h13.6a1.5 1.5 0 0 0 1.3-2.3l-5.7-10.4V6.5" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.6 20.6h10.8" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg><span class="wm">PRAYOG<i>X</i></span></div>
+    <div class="simid">ADV-2026-P1-PHY-Q05</div>
+    <h1>Bohr Jump Lab — which expressions survive a Lyman transition?</h1>
+    <p class="meta">JEE Advanced 2026 · Paper 1 · Physics · Q.5 · one or more correct options (+4 / partial / 0 / −1) · Atoms</p>
+    <button class="themebtn" id="themebtn" type="button">◐ theme</button>
+  </div>
+</header>
+
+<main class="wrap">
+
+<section id="question" aria-labelledby="qh">
+  <h2 id="qh"><b>01</b>The question</h2>
+  <div class="qcard">
+    <div class="qtext">Q.5 Consider a hydrogen atom with <i>v<sub>k</sub></i>, <i>r<sub>k</sub></i>, and <i>K<sub>k</sub></i> denoting the velocity, orbital radius and kinetic energy of the electron in the <i>k</i><sup>th</sup> orbit, respectively. The electron undergoes a transition from the <i>n</i><sup>th</sup> orbit, emitting radiation corresponding to the Lyman series. Considering <i>h</i> to be the Planck’s constant and <i>ϵ</i><sub>0</sub> the permittivity of the free space, the correct statement(s) is/are:</div>
+  </div>
+  <ol id="opts" class="lopts" aria-label="options">
+    <li data-o="A"><b>(A)</b><span>Magnitude of change in kinetic energy of electron can be expressed as <span class="fx"><i>h</i>/4π · |<i>n v<sub>n</sub></i>/<i>r<sub>n</sub></i> − <i>v</i><sub>1</sub>/<i>r</i><sub>1</sub>|</span>.</span></li>
+    <li data-o="B"><b>(B)</b><span>Magnitude of change in de Broglie wavelength of the electron can be expressed as <span class="fx"><i>e</i>²/4<i>ϵ</i><sub>0</sub> · |1/<i>K<sub>n</sub></i> − 1/<i>K</i><sub>1</sub>|</span>.</span></li>
+    <li data-o="C"><b>(C)</b><span>Frequency of the radiation emitted can be expressed as <span class="fx"><i>e</i>²/(8π<i>ϵ</i><sub>0</sub><i>h</i>) · (1/<i>r</i><sub>1</sub> − 1/<i>r<sub>n</sub></i>)</span>.</span></li>
+    <li data-o="D"><b>(D)</b><span>Magnitude of change in total energy of the electron can be expressed as <span class="fx"><i>h</i>/2π · |<i>v</i><sub>1</sub>/<i>r</i><sub>1</sub> − <i>n v<sub>n</sub></i>/<i>r<sub>n</sub></i>|</span>.</span></li>
+  </ol>
+</section>
+
+<section id="lab" aria-labelledby="lh">
+  <h2 id="lh"><b>02</b>The experiment</h2>
+  <div id="keyline" aria-live="polite">
+    <span class="k">Answer</span><span id="ansval">—</span><span id="ansexpr"></span>
+    <span id="anssub">Press START: the electron jumps, and each expression is checked against the measured change.</span>
+  </div>
+  <p id="narr" aria-live="polite">Ready.</p>
+  <div class="stage"><canvas id="labcv" width="1200" height="720" role="img" aria-label="Experiment: a Bohr hydrogen atom with its orbits; the electron, drawn with its de Broglie standing wave, jumps from orbit n to orbit 1 and emits an ultraviolet photon; its speed, orbit radius, kinetic energy and de Broglie wavelength are measured, and the four expressions are then checked against the measured changes"></canvas></div>
+  <div id="controls" role="group" aria-label="experiment controls">
+    <button class="go" type="button" id="gobtn">▶ START EXPERIMENT</button>
+    <button type="button" id="replaybtn">↺ Replay</button>
+    <button type="button" id="resetbtn">Reset</button>
+    <div class="seg" role="group" aria-label="starting orbit n"><span>From orbit n</span><button type="button" id="n2" aria-pressed="false">2</button><button type="button" id="n3" aria-pressed="true">3</button><button type="button" id="n4" aria-pressed="false">4</button><button type="button" id="n5" aria-pressed="false">5</button><button type="button" id="n6" aria-pressed="false">6</button></div>
+    <div class="seg" role="group" aria-label="speed"><span>Speed</span><button type="button" id="sp1" aria-pressed="true">1×</button><button type="button" id="sp2" aria-pressed="false">½×</button></div>
+    <div class="seg" role="group" aria-label="de Broglie wave"><span>Wave</span><button type="button" id="won" aria-pressed="true">ON</button><button type="button" id="woff" aria-pressed="false">OFF</button></div>
+    <button type="button" id="classbtn" aria-pressed="false">Classroom</button>
+  </div>
+  <p id="warn" hidden></p>
+</section>
+
+<section id="solution" aria-labelledby="sh">
+  <h2 id="sh"><b>03</b>Detailed solution</h2>
+  <div class="sol">
+    <p>Answer: <span id="solans">—</span></p>
+    <ol class="steps">
+      <li><b>Bohr's rule links everything.</b> In orbit <i>k</i>: <i>m v<sub>k</sub> r<sub>k</sub></i> = <i>k h</i>/2π. The Coulomb force supplies the centripetal force: <i>m v<sub>k</sub></i>²/<i>r<sub>k</sub></i> = <i>e</i>²/(4π<i>ϵ</i><sub>0</sub><i>r<sub>k</sub></i>²).
+        <div class="eq"><i>K<sub>k</sub></i> = ½<i>m v<sub>k</sub></i>² = ½(<i>m v<sub>k</sub> r<sub>k</sub></i>)(<i>v<sub>k</sub></i>/<i>r<sub>k</sub></i>) = (<i>h</i>/4π) · <i>k v<sub>k</sub></i>/<i>r<sub>k</sub></i> &nbsp; and &nbsp; <i>K<sub>k</sub></i> = <i>e</i>²/(8π<i>ϵ</i><sub>0</sub><i>r<sub>k</sub></i>).</div></li>
+      <li><b>(A) is true.</b> |Δ<i>K</i>| = |<i>K<sub>n</sub></i> − <i>K</i><sub>1</sub>| = (<i>h</i>/4π)|<i>n v<sub>n</sub></i>/<i>r<sub>n</sub></i> − <i>v</i><sub>1</sub>/<i>r</i><sub>1</sub>|.</li>
+      <li><b>(D) is false.</b> The total energy is <i>E<sub>k</sub></i> = −<i>K<sub>k</sub></i>, so |Δ<i>E</i>| = |Δ<i>K</i>| = (<i>h</i>/4π)|…|. The expression in (D) has <i>h</i>/2π and is twice the true change.</li>
+      <li><b>(C) is true.</b> The photon carries away <i>hν</i> = <i>E<sub>n</sub></i> − <i>E</i><sub>1</sub> = <i>K</i><sub>1</sub> − <i>K<sub>n</sub></i> = (<i>e</i>²/8π<i>ϵ</i><sub>0</sub>)(1/<i>r</i><sub>1</sub> − 1/<i>r<sub>n</sub></i>).
+        <div class="eq"><i>ν</i> = <i>e</i>²/(8π<i>ϵ</i><sub>0</sub><i>h</i>) · (1/<i>r</i><sub>1</sub> − 1/<i>r<sub>n</sub></i>).</div></li>
+      <li><b>(B) is false.</b> <i>λ<sub>k</sub></i> = <i>h</i>/(<i>m v<sub>k</sub></i>) = 2π<i>r<sub>k</sub></i>/<i>k</i>. This is the standing wave the experiment draws: <i>k</i> wavelengths fit around orbit <i>k</i>. With <i>r<sub>k</sub></i> = <i>e</i>²/(8π<i>ϵ</i><sub>0</sub><i>K<sub>k</sub></i>):
+        <div class="eq"><i>λ<sub>k</sub></i> = <i>e</i>²/(4<i>ϵ</i><sub>0</sub> <i>k K<sub>k</sub></i>) &nbsp;⇒&nbsp; |Δ<i>λ</i>| = (<i>e</i>²/4<i>ϵ</i><sub>0</sub>)|1/(<i>n K<sub>n</sub></i>) − 1/<i>K</i><sub>1</sub>|.</div>
+        Option (B) drops the 1/<i>n</i>, so it is wrong for every Lyman line (<i>n</i> ≥ 2). For <i>n</i> = 3 it gives 26.6 Å instead of the true 6.65 Å.</li>
+    </ol>
+    <div class="tscroll"><table class="opt" aria-label="values for the jump from n = 3">
+      <thead><tr><th>Jump 3 → 1</th><th>Measured change</th><th>Expression in the option</th><th>Verdict</th></tr></thead>
+      <tbody>
+        <tr class="ok"><td>(A) |Δ<i>K</i>|</td><td>12.09 eV</td><td>12.09 eV</td><td><b>True</b></td></tr>
+        <tr><td>(B) |Δ<i>λ</i>|</td><td>6.65 Å</td><td>26.6 Å</td><td>False (missing 1/<i>n</i>)</td></tr>
+        <tr class="ok"><td>(C) <i>ν</i></td><td>2.92 × 10<sup>15</sup> Hz</td><td>2.92 × 10<sup>15</sup> Hz</td><td><b>True</b></td></tr>
+        <tr><td>(D) |Δ<i>E</i>|</td><td>12.09 eV</td><td>24.19 eV</td><td>False (twice the change)</td></tr>
+      </tbody>
+    </table></div>
+    <h3>Understand the concept</h3>
+    <div class="concept">In the Bohr model one rule, <i>m v r</i> = <i>k</i>ħ, fixes the whole orbit. The speed falls as 1/<i>k</i>, the radius grows as <i>k</i>², the kinetic energy falls as 1/<i>k</i>², and the de Broglie wavelength grows as <i>k</i>. Exactly <i>k</i> wavelengths wrap around orbit <i>k</i>. The total energy is −<i>K</i>. When the electron drops to orbit 1 it speeds up and its kinetic energy rises, but its total energy falls by the same amount. That energy leaves as a Lyman-series photon in the ultraviolet.</div>
+    <h3>Key takeaways</h3>
+    <ul class="take">
+      <li><i>K<sub>k</sub></i> = (<i>h</i>/4π) <i>k v<sub>k</sub></i>/<i>r<sub>k</sub></i> = <i>e</i>²/(8π<i>ϵ</i><sub>0</sub><i>r<sub>k</sub></i>), and <i>E<sub>k</sub></i> = −<i>K<sub>k</sub></i>.</li>
+      <li>|Δ<i>E</i>| = |Δ<i>K</i>|: the same expression, not twice it.</li>
+      <li><i>λ<sub>k</sub></i> = 2π<i>r<sub>k</sub></i>/<i>k</i> = <i>e</i>²/(4<i>ϵ</i><sub>0</sub><i>k K<sub>k</sub></i>). Keep the 1/<i>k</i>.</li>
+      <li>Lyman: <i>hν</i> = <i>K</i><sub>1</sub> − <i>K<sub>n</sub></i> = 13.6(1 − 1/<i>n</i>²) eV, which is ultraviolet.</li>
+    </ul>
+    <p class="note">Verification: an independent derivation, a sympy route, an exact numerical route with CODATA constants for every Lyman line <i>n</i> = 2…6, and the page's own engine, run by <code>tests/verify_p1phyq05.py</code>. The official key (A, C) and the MathonGo solution (A, C) agree. Status: script-verified by the PrayogX simulation factory; no review by a person has been recorded. Orbit radii are not drawn to scale (the true ratio is <i>k</i>²), and the ultraviolet photon is drawn violet.</p>
+  </div>
+</section>
+
+<section id="howto" aria-labelledby="hh">
+  <h2 id="hh">How to use this simulation</h2>
+  <ol class="howto">
+    <li>Choose the starting orbit with <b>From orbit n</b> (2 to 6), then press <b>▶ START EXPERIMENT</b>.</li>
+    <li>Watch the electron and its de Broglie wave on orbit <i>n</i>: exactly <i>n</i> wavelengths fit around it.</li>
+    <li>The electron jumps to orbit 1 and emits a photon. The readouts show <i>v</i>, <i>r</i>, <i>K</i> and <i>λ</i> before and after.</li>
+    <li>The last stage checks each option's expression against the measured change: ✓ for (A) and (C), ✗ for (B) and (D).</li>
+    <li><b>Replay</b> runs it again. <b>Reset</b> clears it. <b>Classroom</b> fills the screen for a projector.</li>
+  </ol>
+</section>
+
+<footer>
+  ADV-2026-P1-PHY-Q05 · PrayogX · JEE Advanced Interactive Simulation Library · question text reproduced
+  from the official JEE (Advanced) 2026 Paper 1 for educational use. This is a virtual laboratory only.
+  Bohr model with CODATA constants. Orbit radii are not to scale, and the quantum jump is drawn as a path.
+</footer>
+</main>
+
+<script>
+(function(){
+"use strict";
+/* ENGINE-BEGIN */
+/* Bohr model of hydrogen with CODATA 2018 constants (SI). Orbit k: m v r = k h/2pi,
+   m v^2/r = e^2/(4 pi eps0 r^2). */
+var ENGINE = (function(){
+  var h = 6.62607015e-34, e = 1.602176634e-19, eps0 = 8.8541878128e-12, me = 9.1093837015e-31, c = 299792458, PI = Math.PI;
+  function r(k){ return eps0 * h * h * k * k / (PI * me * e * e); }
+  function v(k){ return e * e / (2 * eps0 * h * k); }
+  function K(k){ return 0.5 * me * v(k) * v(k); }
+  function E(k){ return -e * e / (8 * PI * eps0 * r(k)); }             /* potential + kinetic */
+  function lam(k){ return h / (me * v(k)); }
+  function nu(n){ return (E(n) - E(1)) / h; }
+  /* each printed expression, and the true quantity it claims to be, for a jump n -> 1 */
+  var OPTS = {
+    A: { name: "|ΔK|", expr: function(n){ return h / (4 * PI) * Math.abs(n * v(n) / r(n) - v(1) / r(1)); }, truth: function(n){ return Math.abs(K(n) - K(1)); }, unit: "J" },
+    B: { name: "|Δλ|", expr: function(n){ return e * e / (4 * eps0) * Math.abs(1 / K(n) - 1 / K(1)); }, truth: function(n){ return Math.abs(lam(n) - lam(1)); }, unit: "m" },
+    C: { name: "ν", expr: function(n){ return e * e / (8 * PI * eps0 * h) * (1 / r(1) - 1 / r(n)); }, truth: function(n){ return nu(n); }, unit: "Hz" },
+    D: { name: "|ΔE|", expr: function(n){ return h / (2 * PI) * Math.abs(v(1) / r(1) - n * v(n) / r(n)); }, truth: function(n){ return Math.abs(E(n) - E(1)); }, unit: "J" }
+  };
+  var KEYS = ["A", "B", "C", "D"];
+  function holds(key, n){ var o = OPTS[key], x = o.expr(n), t = o.truth(n); return Math.abs(x - t) <= 1e-9 * Math.abs(t); }
+  function run(){
+    var hits = [], i, n, all;
+    for (i = 0; i < KEYS.length; i++){
+      all = true; for (n = 2; n <= 6; n++) if (!holds(KEYS[i], n)) all = false;   /* every Lyman line */
+      if (all) hits.push(KEYS[i]);
+    }
+    var labels = []; for (i = 0; i < hits.length; i++) labels.push("(" + hits[i] + ")");
+    return { hits: hits, answer: hits.length ? labels.join(", ") : null };
+  }
+  return { h: h, e: e, eps0: eps0, me: me, c: c, r: r, v: v, K: K, E: E, lam: lam, nu: nu, OPTS: OPTS, KEYS: KEYS, holds: holds, run: run };
+})();
+/* ENGINE-END */
+
+var QRUN = ENGINE.run();
+var ANS = QRUN.answer;
+
+function $(id){ return document.getElementById(id); }
+var cv = $("labcv"), g = cv.getContext("2d");
+var reduced = !!(window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches);
+var T_ORBIT = 2.6, T_JUMP = 1.1, T_PHOTON = 2.2, T_MEASURE = 1.4, T_ROW = 0.7;
+var T_JUMP0 = T_ORBIT, T_PH0 = T_JUMP0 + T_JUMP, T_ME0 = T_PH0 + T_PHOTON, T_AU0 = T_ME0 + T_MEASURE, T_END = T_AU0 + 4 * T_ROW + 0.4;
+
+var RUN = { state: "setup", phase: "ready", speed: 1, n: 3, t: 0, phi: 0.3, wave: true, rows: 0, audit: null, done: false, confirmed: false, jumpAt: 0 };
+var L = null, minPx = 999, clock = 0;
+
+function layout(){
+  var phone = document.documentElement.clientWidth < 700;
+  if (phone) return { phone: true, W: 720, H: 1250, ro: { x: 12, y: 12, w: 696, h: 178 }, cx: 360, cy: 478, r0: 46, step: 40,
+    panel: { x: 12, y: 764, w: 696, h: 474 }, fs: 25, big: 31 };
+  return { phone: false, W: 1200, H: 720, ro: { x: 16, y: 14, w: 1168, h: 92 }, cx: 420, cy: 418, r0: 52, step: 47,
+    panel: { x: 780, y: 124, w: 404, h: 582 }, fs: 16, big: 24 };
+}
+function rd(k){ return L.r0 + (k - 1) * L.step; }
+
+/* --------------------------------------------------------------- run */
+function orbitNow(){ return RUN.phase === "ready" || RUN.phase === "orbit" || RUN.phase === "jump" ? RUN.n : 1; }
+function audit(){
+  var out = {}, i, k;
+  for (i = 0; i < ENGINE.KEYS.length; i++){ k = ENGINE.KEYS[i]; out[k] = { expr: ENGINE.OPTS[k].expr(RUN.n), truth: ENGINE.OPTS[k].truth(RUN.n), ok: ENGINE.holds(k, RUN.n) }; }
+  return out;
+}
+function finish(){
+  RUN.state = "done"; RUN.phase = "done"; RUN.done = true; RUN.rows = 4; RUN.audit = audit();
+  var hits = []; ENGINE.KEYS.forEach(function(k){ if (RUN.audit[k].ok) hits.push("(" + k + ")"); });
+  RUN.measuredAnswer = hits.join(", ");
+  if (RUN.measuredAnswer === ANS){ RUN.confirmed = true; confirmAnswer(); }
+  narrate(); refreshButtons();
+}
+function setPhase(p){ if (RUN.phase !== p){ RUN.phase = p; narrate(); } }
+function tick(dt){
+  var w = 2.4 / Math.pow(orbitNow(), 1.4);
+  if (RUN.state !== "running"){ if (RUN.state !== "paused") RUN.phi += w * dt * 0.6; return; }
+  var d = dt * RUN.speed; RUN.t += d;
+  if (RUN.phase !== "jump") RUN.phi += w * d;
+  var t = RUN.t;
+  if (t < T_JUMP0) setPhase("orbit");
+  else if (t < T_PH0){ if (RUN.phase !== "jump") RUN.jumpAt = RUN.phi; setPhase("jump"); RUN.phi = RUN.jumpAt + (t - T_JUMP0) / T_JUMP * 2.2; }
+  else if (t < T_ME0) setPhase("photon");
+  else if (t < T_AU0){ if (!RUN.audit) RUN.audit = audit(); setPhase("measure"); }
+  else if (t < T_END){ setPhase("audit"); RUN.rows = Math.min(4, Math.floor((t - T_AU0) / T_ROW) + 1); }
+  else finish();
+}
+function start(){
+  if (RUN.state === "running"){ RUN.state = "paused"; refreshButtons(); narrate(); return; }
+  if (RUN.state === "paused"){ RUN.state = "running"; refreshButtons(); narrate(); return; }
+  resetRun();
+  if (reduced){ RUN.t = T_END; RUN.jumpAt = RUN.phi; finish(); return; }
+  RUN.state = "running"; RUN.phase = "orbit"; refreshButtons(); narrate();
+}
+function resetRun(){ RUN.state = "setup"; RUN.phase = "ready"; RUN.t = 0; RUN.rows = 0; RUN.audit = null; RUN.done = false; RUN.measuredAnswer = null; }
+function replay(){ RUN.state = "setup"; start(); }
+function reset(){ resetRun(); refreshButtons(); narrate(); }
+function setN(n){
+  n = parseInt(n, 10); if (!(n >= 2 && n <= 6)) n = 3;
+  RUN.n = n; for (var k = 2; k <= 6; k++) $("n" + k).setAttribute("aria-pressed", k === n ? "true" : "false");
+  resetRun(); refreshButtons(); narrate();
+}
+
+/* ------------------------------------------------------------ words */
+function eV(j){ return (j / ENGINE.e).toFixed(2) + " eV"; }
+function ang(m){ var a = m * 1e10; return (a >= 10 ? a.toFixed(1) : a.toFixed(2)) + " Å"; }
+function hz(x){ return (x / 1e15).toFixed(2) + "×10¹⁵ Hz"; }
+function mps(x){ return (x / 1e6).toFixed(3) + "×10⁶ m/s"; }
+function fmt(k, x){ return k === "B" ? ang(x) : k === "C" ? hz(x) : eV(x); }
+function nm(x){ return (x * 1e9).toFixed(1) + " nm"; }
+function narrate(){
+  var n = RUN.n, t;
+  if (RUN.phase === "ready") t = "Ready. The electron is in orbit n = " + n + ". Press START to watch it jump to orbit 1 (a Lyman line).";
+  else if (RUN.phase === "orbit") t = "Orbit " + n + ": m v r = " + n + "ħ, so exactly " + n + " de Broglie wavelengths fit around the orbit. v = " + mps(ENGINE.v(n)) + ", K = " + eV(ENGINE.K(n)) + ".";
+  else if (RUN.phase === "jump") t = "The electron jumps from orbit " + n + " to orbit 1. It speeds up, and its kinetic energy rises from " + eV(ENGINE.K(n)) + " to " + eV(ENGINE.K(1)) + ".";
+  else if (RUN.phase === "photon") t = "Its total energy E = −K falls by " + eV(ENGINE.K(1) - ENGINE.K(n)) + ", which leaves as a Lyman photon: ν = " + hz(ENGINE.nu(n)) + ", λ = " + nm(ENGINE.c / ENGINE.nu(n)) + " (ultraviolet).";
+  else if (RUN.phase === "measure") t = "Measured changes: |ΔK| = |ΔE| = " + eV(ENGINE.K(1) - ENGINE.K(n)) + ", |Δλ| = " + ang(ENGINE.lam(n) - ENGINE.lam(1)) + ", ν = " + hz(ENGINE.nu(n)) + ". Now each option's expression is evaluated.";
+  else if (RUN.phase === "audit") t = "Checking each expression against the measured change…";
+  else t = "Result for the jump " + n + " → 1: (A) and (C) match the measured changes. (B) misses the 1/n, and (D) is twice |ΔE|. The answer is " + (RUN.measuredAnswer || "—") + ".";
+  if (RUN.state === "paused") t = "Paused. " + t;
+  $("narr").textContent = t;
+}
+function confirmAnswer(){
+  $("anssub").textContent = "Confirmed by the run for the jump " + RUN.n + " → 1: the expressions in (A) and (C) equal the measured |ΔK| and ν; (B) and (D) do not.";
+  var k = $("keyline");
+  if (!reduced){ k.classList.remove("blink"); void k.offsetWidth; k.classList.add("blink"); setTimeout(function(){ k.classList.remove("blink"); }, 2000); }
+}
+function refreshButtons(){ $("gobtn").textContent = RUN.state === "running" ? "❚❚ PAUSE" : RUN.state === "paused" ? "▶ RESUME" : RUN.state === "done" ? "▶ RUN AGAIN" : "▶ START EXPERIMENT"; }
+function refreshAnswer(){
+  $("ansval").textContent = ANS || "—";
+  $("ansexpr").textContent = ANS ? "|ΔK| and ν hold; (B) misses 1/n, (D) is twice |ΔE|" : "";
+  $("solans").textContent = ANS || "—";
+  var lis = document.querySelectorAll("#opts li"), i;
+  for (i = 0; i < lis.length; i++) lis[i].classList.toggle("correct", QRUN.hits.indexOf(lis[i].getAttribute("data-o")) >= 0);
+}
+
+/* ------------------------------------------------------------ drawing */
+function label(s, x, y, px, col, align, weight){
+  if (px < minPx) minPx = px;
+  g.font = (weight || "700") + " " + Math.round(px) + "px ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif";
+  g.fillStyle = col || "#e8f0ff"; g.textAlign = align || "left"; g.textBaseline = "alphabetic"; g.fillText(s, x, y);
+}
+function roundRect(x, y, w, h, r){ g.beginPath(); g.moveTo(x + r, y); g.lineTo(x + w - r, y); g.quadraticCurveTo(x + w, y, x + w, y + r); g.lineTo(x + w, y + h - r); g.quadraticCurveTo(x + w, y + h, x + w - r, y + h); g.lineTo(x + r, y + h); g.quadraticCurveTo(x, y + h, x, y + h - r); g.lineTo(x, y + r); g.quadraticCurveTo(x, y, x + r, y); g.closePath(); }
+function panel(x, y, w, h){ roundRect(x, y, w, h, 14); g.fillStyle = "rgba(10,16,32,.86)"; g.fill(); g.strokeStyle = "rgba(140,180,255,.3)"; g.lineWidth = 1.5; g.stroke(); }
+
+function drawBackdrop(){
+  var bg = g.createRadialGradient(L.cx, L.cy, 20, L.cx, L.cy, L.W * 0.8); bg.addColorStop(0, "#131d3a"); bg.addColorStop(1, "#04060c");
+  g.fillStyle = bg; g.fillRect(0, 0, L.W, L.H);
+}
+function drawReadouts(){
+  var k = orbitNow(), r = L.ro, rows = [
+    ["Speed v (orbit " + k + ")", mps(ENGINE.v(k))],
+    ["Radius r (orbit " + k + ")", ang(ENGINE.r(k))],
+    ["Kinetic energy K", eV(ENGINE.K(k))],
+    ["de Broglie λ", ang(ENGINE.lam(k))]
+  ], i, x, y;
+  panel(r.x, r.y, r.w, r.h);
+  for (i = 0; i < 4; i++){
+    if (L.phone){ x = r.x + 18 + (i % 2) * 348; y = r.y + 44 + Math.floor(i / 2) * 84; }
+    else { x = r.x + 20 + i * 290; y = r.y + 34; }
+    label(rows[i][0], x, y, L.fs - (L.phone ? 0 : 1), "#8fa6cf", "left", "700");
+    label(rows[i][1], x, y + (L.phone ? 40 : 38), L.big + (L.phone ? 0 : 2), i === 3 ? "#9ff0c8" : "#ffffff", "left", "800");
+  }
+}
+function drawAtom(){
+  var cx = L.cx, cy = L.cy, k, kNow = orbitNow(), ph = RUN.phase;
+  /* orbits */
+  for (k = 1; k <= 6; k++){
+    g.strokeStyle = k === RUN.n ? "rgba(255,210,120,.55)" : k === 1 ? "rgba(140,200,255,.55)" : "rgba(140,170,230,.22)";
+    g.lineWidth = k === RUN.n || k === 1 ? 2 : 1.2;
+    g.beginPath(); g.arc(cx, cy, rd(k), 0, Math.PI * 2); g.stroke();
+    if (!L.phone || k === 1 || k === RUN.n || k === 6) label("n = " + k, cx + rd(k) * 0.72 + 6, cy - rd(k) * 0.70, L.fs - (L.phone ? 0 : 2), "rgba(170,195,240,.85)", "left", "700");
+  }
+  /* nucleus */
+  var ng = g.createRadialGradient(cx - 4, cy - 4, 2, cx, cy, 16); ng.addColorStop(0, "#fff1d6"); ng.addColorStop(1, "#ff6a3d");
+  g.fillStyle = ng; g.shadowColor = "#ff7b4a"; g.shadowBlur = 22; g.beginPath(); g.arc(cx, cy, 13, 0, Math.PI * 2); g.fill(); g.shadowBlur = 0;
+  label("p⁺", cx, cy + 6, L.phone ? L.fs : L.fs - 2, "#3a1200", "center", "800");
+  /* electron position */
+  var rr, ang2 = RUN.phi;
+  if (ph === "jump"){ var f = Math.min(1, (RUN.t - T_JUMP0) / T_JUMP), s = f * f * (3 - 2 * f); rr = rd(RUN.n) + (rd(1) - rd(RUN.n)) * s; }
+  else rr = rd(kNow);
+  /* de Broglie standing wave on the current orbit */
+  if (RUN.wave && ph !== "jump"){
+    var A = L.phone ? 11 : 12, osc = Math.cos(clock * 5), i, a, R;
+    g.save(); g.strokeStyle = "rgba(120,255,190,.9)"; g.lineWidth = 3; g.shadowColor = "#6dffb8"; g.shadowBlur = 10; g.beginPath();
+    for (i = 0; i <= 360; i++){ a = i / 360 * Math.PI * 2; R = rd(kNow) + A * Math.cos(kNow * (a - ang2)) * osc; if (i) g.lineTo(cx + R * Math.cos(a), cy + R * Math.sin(a)); else g.moveTo(cx + R * Math.cos(a), cy + R * Math.sin(a)); }
+    g.stroke(); g.restore();
+    label(kNow + (kNow === 1 ? " wavelength" : " wavelengths") + " around orbit " + kNow, cx, cy + rd(kNow) + (L.phone ? 40 : 30), L.fs, "#9ff0c8", "center", "800");
+  }
+  var ex = cx + rr * Math.cos(ang2), ey = cy + rr * Math.sin(ang2);
+  g.fillStyle = "#7fd4ff"; g.shadowColor = "#7fd4ff"; g.shadowBlur = 18; g.beginPath(); g.arc(ex, ey, 9, 0, Math.PI * 2); g.fill(); g.shadowBlur = 0;
+  label("e⁻", ex + 12, ey - 12, L.fs, "#bfe8ff", "left", "800");
+  /* the photon: a violet wave packet leaving the atom */
+  if (ph === "photon" || ph === "measure" || ph === "audit" || ph === "done"){
+    var tp = Math.min(1.25, (RUN.t - T_PH0) / T_PHOTON), dirA = RUN.jumpAt + 2.2, px0 = cx + rd(1) * Math.cos(dirA), py0 = cy + rd(1) * Math.sin(dirA);
+    var dx = Math.cos(dirA), dy = Math.sin(dirA), dist = 30 + tp * (L.phone ? 300 : 380), len = L.phone ? 110 : 130, j;
+    if (ph === "photon" || tp < 1.2){
+      g.save(); g.strokeStyle = "#c58bff"; g.shadowColor = "#b070ff"; g.shadowBlur = 14; g.lineWidth = 3.5; g.beginPath();
+      for (j = 0; j <= 60; j++){ var s2 = dist - len + j / 60 * len, amp = 12 * Math.sin(Math.PI * j / 60) * Math.sin(j / 60 * Math.PI * 7 - clock * 18);
+        var qx = px0 + dx * s2 - dy * amp, qy = py0 + dy * s2 + dx * amp; if (j) g.lineTo(qx, qy); else g.moveTo(qx, qy); }
+      g.stroke(); g.restore();
+      label("photon hν (UV, drawn violet)", px0 + dx * dist + (dx < 0 ? -10 : 10), py0 + dy * dist + (dy < 0 ? -16 : 30), L.fs, "#dcbcff", dx < 0 ? "right" : "left", "800");
+    }
+  }
+  label(L.phone ? "radii not to scale (rₖ = k² r₁)" : "orbit radii not to scale (true rₖ = k² r₁) · the jump is drawn as a path", L.phone ? 14 : 18, L.phone ? L.panel.y - 16 : L.H - 16, L.fs - (L.phone ? 0 : 2), "rgba(170,190,225,.8)", "left", "600");
+}
+function drawPanel(){
+  var P = L.panel, ph = RUN.phase, n = RUN.n, x = P.x + 20, y = P.y + (L.phone ? 42 : 36), fs = L.fs, big = L.big;
+  panel(P.x, P.y, P.w, P.h);
+  if (ph === "audit" || ph === "done"){
+    label("CHECKING EACH OPTION · jump " + n + " → 1", x, y, fs, "#cfe0ff", "left", "800");
+    var rowH = (P.h - (L.phone ? 70 : 60)) / 4, i, k, a;
+    for (i = 0; i < 4; i++){
+      k = ENGINE.KEYS[i]; a = RUN.audit[k];
+      var yy = y + 26 + i * rowH;
+      if (i >= RUN.rows) { label("(" + k + ") …", x, yy + fs + 6, big - 4, "rgba(200,210,235,.5)", "left", "800"); continue; }
+      roundRect(x - 8, yy, P.w - 24, rowH - 10, 10); g.fillStyle = a.ok ? "rgba(40,160,100,.18)" : "rgba(220,70,70,.16)"; g.fill();
+      label("(" + k + ") " + ENGINE.OPTS[k].name + (a.ok ? "   ✓" : "   ✗"), x + 4, yy + fs + 8, big - 2, a.ok ? "#7dffb8" : "#ff9b9b", "left", "800");
+      if (L.phone) label(fmt(k, a.expr) + (a.ok ? " = " : " ≠ ") + fmt(k, a.truth) + " measured", x + 4, yy + fs + 48, fs, "#e6ecff", "left", "700");
+      else {
+        label("expression " + fmt(k, a.expr), x + 4, yy + fs + 38, fs, "#e6ecff", "left", "700");
+        label("measured  " + fmt(k, a.truth), x + 4, yy + fs + 64, fs, "#b9c6e6", "left", "700");
+      }
+    }
+    return;
+  }
+  /* energy levels: E_k = -13.6/k^2 eV, and the Lyman arrow */
+  label("ENERGY LEVELS · Lyman series", x, y, fs, "#cfe0ff", "left", "800");
+  var top = y + 30, bot = P.y + P.h - (L.phone ? 96 : 110), Y = function(Ev){ return top + (Ev / -13.6057) * (bot - top); }, k2;
+  var lx0 = x + (L.phone ? 110 : 90), lx1 = P.x + P.w - (L.phone ? 180 : 150);
+  for (k2 = 1; k2 <= 6; k2++){
+    var Ek = ENGINE.E(k2) / ENGINE.e, yk = Y(Ek);
+    g.strokeStyle = k2 === n ? "#ffd28a" : k2 === 1 ? "#8fd0ff" : "rgba(170,195,240,.5)"; g.lineWidth = k2 === n || k2 === 1 ? 3 : 1.5;
+    g.beginPath(); g.moveTo(lx0, yk); g.lineTo(lx1, yk); g.stroke();
+    if (k2 <= 3 || k2 === n) label("n=" + k2, lx0 - 10, yk + 6, L.phone ? fs : fs - 1, "#b9c6e6", "right", "700");
+    if (k2 <= 2 || k2 === n) label(Ek.toFixed(2) + " eV", lx1 + 10, yk + 6, L.phone ? fs : fs - 1, "#b9c6e6", "left", "700");
+  }
+  if (ph !== "ready" && ph !== "orbit"){
+    var ax = (lx0 + lx1) / 2, y1 = Y(ENGINE.E(n) / ENGINE.e), y2 = Y(ENGINE.E(1) / ENGINE.e);
+    var f = ph === "jump" ? Math.min(1, (RUN.t - T_JUMP0) / T_JUMP) : 1;
+    g.strokeStyle = "#c58bff"; g.lineWidth = 4; g.beginPath(); g.moveTo(ax, y1); g.lineTo(ax, y1 + (y2 - y1) * f); g.stroke();
+    if (f === 1){ g.fillStyle = "#c58bff"; g.beginPath(); g.moveTo(ax, y2); g.lineTo(ax - 9, y2 - 16); g.lineTo(ax + 9, y2 - 16); g.closePath(); g.fill(); }
+  }
+  if (ph === "photon" || ph === "measure"){
+    label("photon: hν = " + eV(ENGINE.K(1) - ENGINE.K(n)), x, P.y + P.h - (L.phone ? 56 : 66), big - 4, "#dcbcff", "left", "800");
+    label("ν = " + hz(ENGINE.nu(n)) + " · λ = " + nm(ENGINE.c / ENGINE.nu(n)), x, P.y + P.h - (L.phone ? 18 : 30), fs, "#dcbcff", "left", "700");
+  } else label(ph === "ready" ? "Press START: the jump " + n + " → 1" : "orbit " + n + " → orbit 1", x, P.y + P.h - (L.phone ? 22 : 30), fs, "#b9c6e6", "left", "700");
+}
+function draw(){
+  minPx = 999;
+  L = layout();
+  if (cv.width !== L.W || cv.height !== L.H){ cv.width = L.W; cv.height = L.H; }
+  drawBackdrop(); drawAtom(); drawReadouts(); drawPanel();
+}
+
+/* ------------------------------------------------------------ controls */
+function setSpeed(k){ RUN.speed = k; $("sp1").setAttribute("aria-pressed", k === 1 ? "true" : "false"); $("sp2").setAttribute("aria-pressed", k === 0.5 ? "true" : "false"); }
+function setWave(on){ RUN.wave = on; $("won").setAttribute("aria-pressed", on ? "true" : "false"); $("woff").setAttribute("aria-pressed", on ? "false" : "true"); }
+$("gobtn").addEventListener("click", start);
+$("replaybtn").addEventListener("click", replay);
+$("resetbtn").addEventListener("click", reset);
+$("sp1").addEventListener("click", function(){ setSpeed(1); });
+$("sp2").addEventListener("click", function(){ setSpeed(0.5); });
+$("won").addEventListener("click", function(){ setWave(true); });
+$("woff").addEventListener("click", function(){ setWave(false); });
+[2, 3, 4, 5, 6].forEach(function(k){ $("n" + k).addEventListener("click", function(){ setN(k); }); });
+$("classbtn").addEventListener("click", function(){
+  var on = document.body.classList.toggle("classroom"); this.setAttribute("aria-pressed", on ? "true" : "false");
+  this.textContent = on ? "Exit classroom" : "Classroom";
+});
+$("themebtn").addEventListener("click", function(){
+  var r = document.documentElement, dark = r.getAttribute("data-theme") === "dark" || (!r.getAttribute("data-theme") && window.matchMedia && matchMedia("(prefers-color-scheme: dark)").matches);
+  r.setAttribute("data-theme", dark ? "light" : "dark");
+});
+
+var lastT = null;
+function loop(ts){
+  if (lastT === null) lastT = ts;
+  var dt = Math.min(0.05, Math.max(0, (ts - lastT) / 1000)); lastT = ts;
+  if (!reduced) clock += dt;
+  tick(reduced ? 0 : dt); draw();
+  requestAnimationFrame(loop);
+}
+
+window.PX = {
+  ENGINE: ENGINE, QRUN: QRUN, ANS: ANS, RUN: RUN,
+  answer: function(){ return ANS; },
+  minLabelPx: function(){ draw(); return minPx; },
+  start: start, replay: replay, reset: reset, setSpeed: setSpeed, speed: function(k){ RUN.speed = k; }, setN: setN, setWave: setWave,
+  state: function(){ var k = orbitNow(); return { state: RUN.state, phase: RUN.phase, n: RUN.n, orbit: k, t: RUN.t, rows: RUN.rows, v: ENGINE.v(k), r: ENGINE.r(k), K: ENGINE.K(k), lam: ENGINE.lam(k), audit: RUN.audit, measuredAnswer: RUN.measuredAnswer || null, done: RUN.done, confirmed: RUN.confirmed }; }
+};
+
+setN(3); refreshAnswer(); refreshButtons(); draw();
+window.addEventListener("resize", function(){ draw(); });
+requestAnimationFrame(loop);
+})();
+</script>
+</body>
+</html>
