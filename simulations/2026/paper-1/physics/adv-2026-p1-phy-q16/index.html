@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Spin-Up Lab — which moment of inertia does each rod frame have about OCO′? — JEE Advanced 2026 Paper 1 Q.16 | PrayogX</title>
+<meta name="description" content="Four frames of identical rods spin about an axis in their own plane under the same torque; the slower one spins up, the larger its moment of inertia: P ml²/3 (5), Q 5ml²/4 (1), R 2ml²/3 (4), S ml²/6 (2) - option A. JEE Advanced 2026 Paper 1 Physics Q.16.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232a78d6'/%3E%3Cpath d='M12.5 6.5h7M13.6 6.5v7.2L7.9 24.1a1.5 1.5 0 0 0 1.3 2.3h13.6a1.5 1.5 0 0 0 1.3-2.3l-5.7-10.4V6.5' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M10.6 20.6h10.8' stroke='white' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E">
+<meta name="sim-id" content="ADV-2026-P1-PHY-Q16">
+<style>
+:root{
+  color-scheme: light;
+  --surface-0:#f4f4f1; --surface-1:#fcfcfb; --surface-2:#ececea;
+  --line:#d9d9d4; --line-strong:#bcbcb5;
+  --text-primary:#0b0b0b; --text-secondary:#52514e; --text-muted:#77766f;
+  --s1:#2a78d6; --s2:#eb6834; --s3:#1baf7a; --s4:#4a3aa7;
+  --good:#00743f; --bad:#c0392b; --accent:#2a78d6;
+  --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+  --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --serif:ui-serif,Georgia,"Times New Roman",serif;
+  --radius:12px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  color-scheme: dark;
+  --surface-0:#111110; --surface-1:#1a1a19; --surface-2:#232322;
+  --line:#34342f; --line-strong:#4a4a44;
+  --text-primary:#ffffff; --text-secondary:#c3c2b7; --text-muted:#95948b;
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#9085e9;
+  --good:#3fae7a; --bad:#e66767; --accent:#3987e5;
+}}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --surface-0:#111110; --surface-1:#1a1a19; --surface-2:#232322;
+  --line:#34342f; --line-strong:#4a4a44;
+  --text-primary:#ffffff; --text-secondary:#c3c2b7; --text-muted:#95948b;
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#9085e9;
+  --good:#3fae7a; --bad:#e66767; --accent:#3987e5;
+}
+*{box-sizing:border-box}
+[hidden]{display:none !important}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--surface-0);color:var(--text-primary);font-family:var(--sans);font-size:16px;line-height:1.6}
+header.top{border-bottom:1px solid var(--line);background:var(--surface-1)}
+.top-inner{max-width:1240px;margin:0 auto;padding:18px 20px 14px;position:relative}
+.brandbar{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.brandbar .pxmark{width:21px;height:21px;flex:none;display:block}
+.brandbar .wm{font-size:13px;font-weight:800;letter-spacing:.17em;color:var(--text-secondary);line-height:1}
+.brandbar .wm i{font-style:normal;color:var(--accent)}
+.simid{font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--text-muted)}
+h1{font-size:21px;line-height:1.3;margin:4px 0 4px;padding-right:80px}
+.meta{font-size:14px;color:var(--text-secondary);margin:0}
+.themebtn{position:absolute;top:14px;right:16px;border:1px solid var(--line-strong);background:var(--surface-2);
+  color:var(--text-secondary);border-radius:8px;padding:4px 9px;font-size:12px;cursor:pointer}
+.wrap{max-width:1240px;margin:0 auto;padding:0 20px 40px}
+section{margin:0 0 34px}
+h2{font-size:15px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-secondary);margin:26px 0 12px}
+h2 b{color:var(--accent);margin-right:8px}
+h3{font-size:17px;margin:22px 0 8px}
+/* 01 question */
+.qcard{background:var(--surface-1);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+.qtext{font-family:var(--serif);font-size:18px;line-height:1.6;flex:1 1 460px;min-width:0}
+.qfig{flex:0 0 250px;max-width:100%}
+.qfig svg{display:block;width:100%;height:auto}
+.sq{white-space:nowrap}
+.sq .rad{border-top:1.5px solid currentColor;padding:0 2px}
+#opts{list-style:none;margin:12px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+#opts li{background:var(--surface-1);border:1.5px solid var(--line);border-radius:10px;padding:10px 12px;font-family:var(--serif);font-size:19px;display:flex;gap:10px;align-items:center;min-height:52px}
+#opts li b{font-family:var(--sans);font-size:14px;color:var(--text-muted)}
+#opts li.correct{border-color:var(--good);box-shadow:0 0 0 2px color-mix(in srgb,var(--good) 25%,transparent)}
+#opts li.correct b{color:var(--good)}
+/* 02 lab */
+#keyline{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;background:var(--surface-1);border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin:0 0 8px}
+#keyline .k{font-size:13px;font-weight:800;letter-spacing:.12em;color:var(--text-muted);text-transform:uppercase}
+#ansval{font-size:22px;font-weight:800;color:var(--good)}
+#ansexpr{font-family:var(--serif);font-size:20px}
+#anssub{font-size:14px;color:var(--text-secondary);margin-left:auto}
+#keyline.blink{animation:blink .45s ease-in-out 4}
+@keyframes blink{50%{background:color-mix(in srgb,var(--good) 22%,var(--surface-1))}}
+#narr{margin:0 2px 10px;font-size:16px;color:var(--text-secondary);min-height:2.8em}
+.stage{position:relative;border-radius:16px;overflow:hidden;background:#070a12;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+canvas#labcv{display:block;width:100%;height:auto;touch-action:manipulation}
+#controls{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:12px;padding:12px;border:1px solid var(--line);border-radius:14px;background:var(--surface-1)}
+#controls button{min-height:48px;font-size:16px;font-weight:700;border-radius:10px;border:1px solid var(--line-strong);background:var(--surface-2);color:var(--text-primary);padding:0 16px;cursor:pointer;font-family:var(--sans)}
+#controls button:focus-visible,#controls input:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+#controls .go{background:var(--accent);color:#fff;border:none;font-weight:800;letter-spacing:.04em;min-width:190px}
+#controls .seg{display:flex;align-items:center;gap:0}
+#controls .seg span{font-size:13px;font-weight:700;color:var(--text-muted);margin-right:8px;letter-spacing:.06em;text-transform:uppercase}
+#controls .seg button{border-radius:0;margin-left:-1px;padding:0 13px}
+#controls .seg button:nth-child(2){border-radius:10px 0 0 10px}
+#controls .seg button:last-child{border-radius:0 10px 10px 0}
+#controls .seg button[aria-pressed="true"]{background:var(--accent);color:#fff;border-color:var(--accent)}
+#controls .v0{display:flex;flex-wrap:wrap;align-items:center;gap:10px;flex:1 1 520px;min-width:0}
+#controls .v0 label{font-size:15px;font-weight:700;white-space:nowrap}
+#controls input[type=range]{flex:1 1 150px;min-width:110px;min-height:44px;accent-color:var(--accent);margin:0}
+#v0out{font-family:var(--mono);font-size:15px;min-width:92px}
+#warn{margin:10px 2px 0;font-size:15px;color:var(--s2);font-weight:600}
+/* 03 solution */
+.sol{background:var(--surface-1);border:1px solid var(--line);border-radius:var(--radius);padding:6px 20px 16px}
+.sol ol.steps{padding-left:22px;margin:10px 0}
+.sol ol.steps li{margin:0 0 12px}
+.eq{font-family:var(--serif);font-size:18px;background:var(--surface-2);border-radius:8px;padding:8px 12px;margin:6px 0;overflow-x:auto}
+.solfig{display:flex;gap:18px;align-items:center;flex-wrap:wrap;margin:8px 0 12px}
+.solfig svg{flex:0 0 300px;max-width:100%;height:auto}
+.solfig p{flex:1 1 300px;margin:0}
+table.opt{border-collapse:collapse;width:100%;font-size:15px;margin:8px 0}
+table.opt th,table.opt td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+table.opt th{background:var(--surface-2)}
+table.opt tr.ok td{background:color-mix(in srgb,var(--good) 10%,transparent)}
+.tscroll{overflow-x:auto}
+.concept{border-left:4px solid var(--accent);padding:2px 0 2px 14px;margin:14px 0}
+ul.take{padding-left:20px} ul.take li{margin:0 0 6px}
+#solans{font-weight:800;color:var(--good)}
+.note{font-size:14px;color:var(--text-secondary)}
+/* 04 analysis */
+svg.chart{display:block;width:100%;max-width:760px;height:auto;background:var(--surface-1);border:1px solid var(--line);border-radius:12px}
+.chart text{font-family:var(--sans);fill:var(--text-secondary)}
+.cap{font-size:14px;color:var(--text-secondary);max-width:760px}
+/* how to */
+ol.howto{padding-left:22px;margin:0} ol.howto li{margin:0 0 8px}
+footer{font-size:13px;color:var(--text-muted);border-top:1px solid var(--line);padding:16px 0 0}
+/* classroom */
+body.classroom .wrap{max-width:none;padding:0 18px 30px}
+body.classroom header.top,body.classroom section:not(#lab),body.classroom footer{display:none}
+body.classroom #narr{font-size:24px;color:var(--text-primary)}
+body.classroom #keyline #ansexpr{font-size:26px}
+@media (max-width:760px){
+  .wrap{padding:0 16px 32px}
+  .top-inner{padding:14px 16px 12px}
+  h1{font-size:18px}
+  .qtext{font-size:17px}
+  .qfig{flex-basis:100%}
+  .qfig svg{max-width:260px;margin:0 auto}
+  #opts{grid-template-columns:repeat(2,minmax(0,1fr))}
+  #anssub{margin-left:0}
+  #controls{gap:8px;padding:10px}
+  #controls .go{flex:1 1 100%}
+  #controls button{padding:0 12px}
+  #controls .v0{flex-basis:100%;flex-wrap:wrap}
+  #controls .v0 input[type=range]{flex:1 1 100%;order:3}
+  .solfig svg{flex-basis:100%}
+  .sol{padding:4px 14px 12px}
+}
+@media (prefers-reduced-motion: reduce){#keyline.blink{animation:none}}
+/* long text options */
+#opts.lopts{grid-template-columns:1fr}
+#opts.lopts li{font-family:var(--sans);font-size:17px;align-items:flex-start;line-height:1.5}
+#opts.lopts li b{padding-top:2px}
+#opts.lopts .fx{font-family:var(--serif);font-size:18px;white-space:nowrap}
+#controls .seg button{white-space:nowrap}
+@media (max-width:760px){#opts.lopts .fx{white-space:normal}#controls .seg{flex-wrap:wrap;row-gap:6px}#controls .seg span{flex:1 1 100%;margin:0 0 2px}#controls .seg button:nth-child(2){border-radius:10px 0 0 10px}}
+.mlists{display:flex;gap:16px;flex-wrap:wrap;margin:12px 0 0}
+.mlist{flex:1 1 300px;background:var(--surface-1);border:1px solid var(--line);border-radius:12px;padding:10px 14px}
+.mlist h3{margin:4px 0 8px;font-size:15px}
+.cfg{display:flex;gap:10px;align-items:center;margin:6px 0}.cfg b{font-size:14px;color:var(--text-muted);min-width:28px}
+.cfg svg{width:100%;max-width:240px;height:auto}
+ol.l2{list-style:none;padding:0;margin:0;font-family:var(--serif);font-size:18px}ol.l2 li{padding:6px 0;border-bottom:1px solid var(--line)}
+#target{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;background:var(--surface-1);border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin:0 0 8px}
+#target .lbl{font-size:13px;font-weight:800;letter-spacing:.12em;color:var(--text-muted);text-transform:uppercase}
+#target .sym{font-family:var(--serif);font-size:20px}
+#target .val{font-size:22px;font-weight:800;color:var(--good)}
+#target .val:empty{display:none}
+#target.pulse{animation:pxpulse .5s ease-in-out 3}
+@keyframes pxpulse{50%{background:color-mix(in srgb,var(--good) 24%,var(--surface-1));box-shadow:0 0 0 6px color-mix(in srgb,var(--good) 30%,transparent)}}
+@media (prefers-reduced-motion: reduce){#target.pulse{animation:none}}
+body.classroom #target .sym{font-size:24px} body.classroom #target .val{font-size:28px}
+.mlist .cfg svg{max-width:220px}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-inner">
+    <div class="brandbar"><svg class="pxmark" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><rect width="32" height="32" rx="8" fill="var(--accent)"/><path d="M12.5 6.5h7M13.6 6.5v7.2L7.9 24.1a1.5 1.5 0 0 0 1.3 2.3h13.6a1.5 1.5 0 0 0 1.3-2.3l-5.7-10.4V6.5" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.6 20.6h10.8" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg><span class="wm">PRAYOG<i>X</i></span></div>
+    <div class="simid">ADV-2026-P1-PHY-Q16</div>
+    <h1>Spin-Up Lab — which moment of inertia does each rod frame have about OCO′?</h1>
+    <p class="meta">JEE Advanced 2026 · Paper 1 · Physics · Q.16 · matching list, single option (+4 / 0 / −1) · System of Particles and Rotational Motion</p>
+    <button class="themebtn" id="themebtn" type="button">◐ theme</button>
+  </div>
+</header>
+
+<main class="wrap">
+
+<section id="question" aria-labelledby="qh">
+  <h2 id="qh"><b>01</b>The question</h2>
+  <div class="qcard">
+    <div class="qtext">Q.16 <b>List-I</b> shows four planar structures made of uniform solid rods each of mass <i>m</i> and length <i>l</i>. In the <b>List-II</b> the possible moment of inertia of these structures about an axis <i>OCO</i>′, which lies in the plane of the structures, are given. Choose the option that describes the correct match between the entries in <b>List-I</b> to those in <b>List-II</b>.</div>
+  </div>
+  <div class="mlists">
+    <div class="mlist"><h3>List-I</h3>
+      <div class="cfg"><b>(P)</b><svg viewBox="0 0 200 170" role="img" aria-label="Figure P: two rods CA and CB meet at C at right angles, CA pointing down and CB to the right; the axis OCO' passes through C at 45 degrees to the rods, from O at the lower left to O' at the upper right"><g fill="none" stroke="currentColor" style="color:var(--text-primary)"><path d="M40 125 L150 15" stroke-width="1.2" stroke-dasharray="4 3"/><path d="M95 70 V150 M95 70 H175" stroke-width="3"/><path d="M95 78 h8 v-8" stroke-width="1.2"/><path d="M85 80 a14 14 0 0 0 10 4" stroke-width="1.2"/><path d="M128 28 a10 10 0 1 0 12 10" stroke-width="1.2"/><path d="M140 38 l-1 -7 6 4" stroke-width="1.2"/></g><g style="color:var(--text-primary)" fill="currentColor" font-family="Georgia,serif" font-size="12" font-style="italic"><text x="82" y="64">C</text><text x="90" y="166">A</text><text x="180" y="74">B</text><text x="30" y="138">O</text><text x="152" y="14">O′</text><text x="64" y="96" font-size="10" font-style="normal">45°</text><text x="104" y="92" font-size="10" font-style="normal">90°</text></g></svg></div>
+      <div class="cfg"><b>(Q)</b><svg viewBox="0 0 200 170" role="img" aria-label="Figure Q: an equilateral triangle ABC with C at the top; the axis OCO' passes through C, horizontal and parallel to the base AB, at 60 degrees to CA and CB"><g fill="none" stroke="currentColor" style="color:var(--text-primary)"><path d="M14 30 H186" stroke-width="1.2" stroke-dasharray="4 3"/><path d="M100 30 L55 108 H145 Z" stroke-width="3"/><path d="M162 22 a10 10 0 1 0 2 16" stroke-width="1.2"/><path d="M164 38 l-6 -1 4 -5" stroke-width="1.2"/></g><g style="color:var(--text-primary)" fill="currentColor" font-family="Georgia,serif" font-size="12" font-style="italic"><text x="96" y="22">C</text><text x="44" y="120">A</text><text x="148" y="120">B</text><text x="4" y="34">O</text><text x="186" y="24">O′</text><text x="66" y="46" font-size="10" font-style="normal">60°</text><text x="114" y="46" font-size="10" font-style="normal">60°</text></g></svg></div>
+      <div class="cfg"><b>(R)</b><svg viewBox="0 0 200 170" role="img" aria-label="Figure R: a square ABCD standing on a corner, all angles 90 degrees; the axis OCO' runs vertically along the diagonal from C at the top to A at the bottom"><g fill="none" stroke="currentColor" style="color:var(--text-primary)"><path d="M100 6 V166" stroke-width="1.2" stroke-dasharray="4 3"/><path d="M100 25 L155 80 L100 135 L45 80 Z" stroke-width="3"/><path d="M94 31 l6 6 6 -6 M149 80 l-6 -6 M94 129 l6 -6 6 6 M51 80 l6 -6" stroke-width="1.1"/><path d="M90 12 a10 10 0 0 0 18 0" stroke-width="1.2"/><path d="M108 12 l-1 -6 -4 4" stroke-width="1.2"/></g><g style="color:var(--text-primary)" fill="currentColor" font-family="Georgia,serif" font-size="12" font-style="italic"><text x="104" y="22">C</text><text x="160" y="84">B</text><text x="104" y="148">A</text><text x="32" y="84">D</text><text x="104" y="166">O</text><text x="104" y="10">O′</text></g></svg></div>
+      <div class="cfg"><b>(S)</b><svg viewBox="0 0 200 170" role="img" aria-label="Figure S: two rods CA and CB hang from C, each at 30 degrees to the vertical axis OCO' which runs from C down to O, with O' above C"><g fill="none" stroke="currentColor" style="color:var(--text-primary)"><path d="M100 6 V160" stroke-width="1.2" stroke-dasharray="4 3"/><path d="M40 129 L100 25 L160 129" stroke-width="3"/><path d="M93 37 a14 14 0 0 0 7 2 a14 14 0 0 0 7 -2" stroke-width="1.1"/><path d="M90 14 a10 10 0 0 0 18 0" stroke-width="1.2"/><path d="M108 14 l-1 -6 -4 4" stroke-width="1.2"/></g><g style="color:var(--text-primary)" fill="currentColor" font-family="Georgia,serif" font-size="12" font-style="italic"><text x="104" y="24">C</text><text x="30" y="142">A</text><text x="162" y="142">B</text><text x="104" y="160">O</text><text x="104" y="10">O′</text><text x="80" y="58" font-size="10" font-style="normal">30°</text><text x="106" y="58" font-size="10" font-style="normal">30°</text></g></svg></div>
+      <p class="note">The figures are redrawn from the paper.</p>
+    </div>
+    <div class="mlist"><h3>List-II</h3>
+      <ol class="l2">
+        <li>(1) &nbsp;<sup>5</sup>⁄<sub>4</sub> <i>ml</i>²</li>
+        <li>(2) &nbsp;<sup>1</sup>⁄<sub>6</sub> <i>ml</i>²</li>
+        <li>(3) &nbsp;<sup>1</sup>⁄<sub>12</sub> <i>ml</i>²</li>
+        <li>(4) &nbsp;<sup>2</sup>⁄<sub>3</sub> <i>ml</i>²</li>
+        <li>(5) &nbsp;<sup>1</sup>⁄<sub>3</sub> <i>ml</i>²</li>
+      </ol>
+    </div>
+  </div>
+  <ol id="opts" class="lopts" aria-label="options">
+    <li data-o="A"><b>(A)</b><span>P→5, Q→1, R→4, S→2</span></li>
+    <li data-o="B"><b>(B)</b><span>P→1, Q→3, R→4, S→2</span></li>
+    <li data-o="C"><b>(C)</b><span>P→5, Q→3, R→2, S→1</span></li>
+    <li data-o="D"><b>(D)</b><span>P→5, Q→4, R→2, S→1</span></li>
+  </ol>
+</section>
+
+<section id="lab" aria-labelledby="lh">
+  <h2 id="lh"><b>02</b>The experiment</h2>
+  <p class="keyres" id="target" data-kind="match" aria-live="polite"><span class="lbl">Target:</span><span class="sym">the match P, Q, R, S → List-II</span><span class="val" id="ansval"></span></p>
+  <p id="narr" aria-live="polite">Ready.</p>
+  <div class="stage"><canvas id="labcv" width="1200" height="720" role="img" aria-label="Experiment: each rod frame is mounted on a spindle along the axis OCO' in its own plane and spun up by the same constant torque; every rod's distance from the axis is shown; the angular speed is plotted against time, and the moment of inertia I = torque / angular acceleration is matched to List-II"></canvas></div>
+  <div id="controls" role="group" aria-label="experiment controls">
+    <button class="go" type="button" id="gobtn">▶ START EXPERIMENT</button>
+    <button type="button" id="replaybtn">↺ Replay</button>
+    <button type="button" id="resetbtn">Reset</button>
+    <div class="seg" role="group" aria-label="structure"><span>Frame</span><button type="button" id="cP" aria-pressed="true">P</button><button type="button" id="cQ" aria-pressed="false">Q</button><button type="button" id="cR" aria-pressed="false">R</button><button type="button" id="cS" aria-pressed="false">S</button></div>
+    <div class="v0"><label for="in_x" id="xlab">Turn it to look</label><input type="range" id="in_x" min="0" max="360" step="1" value="30" aria-describedby="xout"><output id="xout" for="in_x">30°</output></div>
+    <div class="seg" role="group" aria-label="speed"><span>Speed</span><button type="button" id="sp1" aria-pressed="true">1×</button><button type="button" id="sp2" aria-pressed="false">½×</button></div>
+    <button type="button" id="classbtn" aria-pressed="false">Classroom</button>
+  </div>
+</section>
+
+<section id="solution" aria-labelledby="sh">
+  <h2 id="sh"><b>03</b>Detailed solution</h2>
+  <div class="sol">
+    <p>Answer: <span id="solans"></span> &nbsp;P→5, Q→1, R→4, S→2</p>
+    <ol class="steps">
+      <li><b>The idea.</b> A uniform rod of mass <i>m</i> and length <i>l</i> with one end on the axis, making an angle <i>θ</i> with it: a piece at distance <i>s</i> along the rod is <i>r</i><sub>⊥</sub> = <i>s</i> sin <i>θ</i> from the axis, so <i>I</i> = ∫<sub>0</sub><sup><i>l</i></sup> (<i>m</i>/<i>l</i>)(<i>s</i> sin <i>θ</i>)² d<i>s</i> = <b>(<i>ml</i>²/3) sin² <i>θ</i></b>. A rod parallel to the axis at distance <i>d</i> has every piece at <i>d</i>: <b><i>I</i> = <i>md</i>²</b>. The moments of the rods of a frame add.</li>
+      <li><b>(P) Two perpendicular rods, the axis at 45° to each → (5).</b> <i>I</i> = 2 × (<i>ml</i>²/3)(sin² 45°) = 2 × (<i>ml</i>²/3)(½) = <b><i>ml</i>²/3</b>.</li>
+      <li><b>(Q) Equilateral triangle, the axis through C parallel to AB → (1).</b> CA and CB are at 60°: 2 × (<i>ml</i>²/3)(¾) = <i>ml</i>²/2. AB is parallel to the axis at <i>d</i> = <i>l</i> sin 60° = (√3/2)<i>l</i>: <i>m</i>(3<i>l</i>²/4). Total <i>ml</i>²/2 + 3<i>ml</i>²/4 = <b>5<i>ml</i>²/4</b>.</li>
+      <li><b>(R) Square, the axis along the diagonal CA → (4).</b> All four sides make 45° with the diagonal and each has one end on it: 4 × (<i>ml</i>²/3)(½) = <b>2<i>ml</i>²/3</b>.</li>
+      <li><b>(S) Two rods at 30° to the axis → (2).</b> <i>I</i> = 2 × (<i>ml</i>²/3)(sin² 30°) = 2 × (<i>ml</i>²/3)(¼) = <b><i>ml</i>²/6</b>.</li>
+      <li>That is P→5, Q→1, R→4, S→2: option <b>(A)</b>. Value (3), <i>ml</i>²/12, belongs to a single rod about a perpendicular axis through its centre; no frame here has it.</li>
+    </ol>
+    <h3>Understand the concept</h3>
+    <div class="concept">The moment of inertia measures how much mass sits <b>far from the axis</b>: each piece counts with the square of its perpendicular distance, <i>r</i><sub>⊥</sub>². Tilt a rod towards the axis and its far end comes closer, so its share falls as sin² <i>θ</i>; a rod held parallel to the axis keeps all its mass at one distance. With the same torque, the frame with the larger <i>I</i> spins up more slowly: <i>α</i> = <i>τ</i>/<i>I</i>.</div>
+    <h3>Key takeaways</h3>
+    <ul class="take">
+      <li>Rod through the axis at angle <i>θ</i> (one end on it): <i>I</i> = (<i>ml</i>²/3) sin² <i>θ</i>; sin 90° gives the familiar <i>ml</i>²/3.</li>
+      <li>Rod parallel to the axis at distance <i>d</i>: <i>I</i> = <i>md</i>².</li>
+      <li>Only the distance perpendicular to the axis counts; moments of the parts of a body add.</li>
+      <li>Same torque, bigger <i>I</i>, slower spin-up: <i>I</i> = <i>τ</i>/<i>α</i>.</li>
+    </ul>
+    <p class="note">Verification: an independent derivation per frame; the rod integral done exactly in sympy; a second route through each rod's centre (<i>ml</i>² sin² <i>θ</i>/12 + <i>md</i><sub>cm</sub>², the parallel-axis theorem); a third from the full inertia tensor of the frames placed in space; a rigid-body spin-up under a constant torque that recovers <i>I</i> = <i>τ</i>/<i>α</i>; every option audited; and the page's own engine, run by <code>tests/verify_p1phyq16.py</code>. The MathonGo solution was read first only for the approach; it, the independent result and the official key, read last, all give (A). Status: script-verified by the PrayogX simulation factory; no review by a person has been recorded.</p>
+  </div>
+</section>
+
+<section id="howto" aria-labelledby="hh">
+  <h2 id="hh">How to use this simulation</h2>
+  <ol class="howto">
+    <li>Press <b>▶ START EXPERIMENT</b>. Frames P, Q, R and S are each spun about OCO′ by the same constant torque.</li>
+    <li>Watch the dashed lines: each rod's distance from the axis. Mass far from the axis makes a frame spin up slowly.</li>
+    <li>The angular speed is plotted against time; its slope is <i>α</i>, and <i>I</i> = <i>τ</i>/<i>α</i> is matched to List-II.</li>
+    <li>Tap a <b>Frame</b> button and drag <b>Turn it to look</b> to see it from any angle, with each rod's share of <i>I</i>.</li>
+    <li><b>Replay</b> runs it again. <b>Reset</b> clears it. <b>Classroom</b> fills the screen for a projector.</li>
+  </ol>
+</section>
+
+<footer>
+  ADV-2026-P1-PHY-Q16 · PrayogX · JEE Advanced Interactive Simulation Library · question text reproduced
+  from the official JEE (Advanced) 2026 Paper 1 for educational use. This is a virtual laboratory only.
+  Rods of mass m and length l, a torque τ = ml²/2 per s² in relative units; the spindle and the motor are taken as massless.
+</footer>
+</main>
+
+<script>
+(function(){
+"use strict";
+/* ENGINE-BEGIN */
+/* Four planar frames of uniform rods (each of mass m = 1 and length l = 1), turning about an axis OCO' in their own
+   plane. A frame's points are (u, v): u along the axis (towards O'), v the perpendicular distance from it in the
+   plane; C is at the origin. A rod from p to q has I = (vp^2 + vp vq + vq^2) / 3 (in ml^2): the integral of v^2 dm
+   along it. The frames are spun by the same constant torque; I = tau / alpha. */
+var ENGINE = (function(){
+  var S3 = Math.sqrt(3), H = Math.SQRT1_2, R2 = Math.SQRT2;
+  var FRAMES = {
+    P: { pts: { C: [0, 0], A: [-H, H], B: [H, H] }, rods: [["C", "A"], ["C", "B"]] },
+    Q: { pts: { C: [0, 0], A: [-0.5, -S3 / 2], B: [0.5, -S3 / 2] }, rods: [["C", "A"], ["C", "B"], ["A", "B"]] },
+    R: { pts: { C: [0, 0], B: [-H, H], A: [-R2, 0], D: [-H, -H] }, rods: [["C", "B"], ["B", "A"], ["A", "D"], ["D", "C"]] },
+    S: { pts: { C: [0, 0], A: [-S3 / 2, -0.5], B: [-S3 / 2, 0.5] }, rods: [["C", "A"], ["C", "B"]] }
+  };
+  var CFGS = ["P", "Q", "R", "S"];
+  var LIST2 = { 1: 5 / 4, 2: 1 / 6, 3: 1 / 12, 4: 2 / 3, 5: 1 / 3 };
+  var OPTS = { A: { P: 5, Q: 1, R: 4, S: 2 }, B: { P: 1, Q: 3, R: 4, S: 2 }, C: { P: 5, Q: 3, R: 2, S: 1 }, D: { P: 5, Q: 4, R: 2, S: 1 } };
+  var TAU = 0.5;                                             /* the motor's torque, in ml^2 per s^2 */
+  function rodLen(c, r){ var p = FRAMES[c].pts[r[0]], q = FRAMES[c].pts[r[1]]; return Math.sqrt(Math.pow(p[0] - q[0], 2) + Math.pow(p[1] - q[1], 2)); }
+  function rodI(c, r){ var a = FRAMES[c].pts[r[0]][1], b = FRAMES[c].pts[r[1]][1]; return (a * a + a * b + b * b) / 3; }
+  function inertia(c){ var s = 0, k, R = FRAMES[c].rods; for (k = 0; k < R.length; k++) s += rodI(c, R[k]); return s; }
+  /* the List-II entry an I matches: equal within 1e-6, else the nearest, with its distance */
+  function classify(I){ var k, best = null, bd = 1e9, d; for (k in LIST2){ d = Math.abs(I - LIST2[k]); if (d < bd){ bd = d; best = +k; } } return { k: bd < 1e-6 ? best : null, near: best, d: bd }; }
+  /* spin-up from rest under the torque: omega += alpha dt, phi += omega dt; alpha measured = omega / t, I = tau / alpha */
+  function spinUp(c, T, dt){ var I = inertia(c), w = 0, ph = 0, t = 0; while (t < T - 1e-12){ w += TAU / I * dt; ph += w * dt; t += dt; } var al = w / t; return { omega: w, phi: ph, t: t, alpha: al, I: TAU / al }; }
+  function frac(x){ var d, n; for (d = 1; d <= 24; d++){ n = Math.round(x * d); if (Math.abs(n / d - x) < 1e-6) return d === 1 ? String(n) : n + "/" + d; } return x.toFixed(3); }
+  function run(){
+    var map = {}, I = {}, i, o, hits = [];
+    for (i = 0; i < CFGS.length; i++){ I[CFGS[i]] = inertia(CFGS[i]); map[CFGS[i]] = classify(I[CFGS[i]]).k; }
+    for (o in OPTS) if (OPTS[o].P === map.P && OPTS[o].Q === map.Q && OPTS[o].R === map.R && OPTS[o].S === map.S) hits.push(o);
+    return { map: map, I: I, hits: hits, answer: hits.length === 1 ? hits[0] : null };
+  }
+  return { FRAMES: FRAMES, CFGS: CFGS, LIST2: LIST2, OPTS: OPTS, TAU: TAU, rodLen: rodLen, rodI: rodI, inertia: inertia, classify: classify, spinUp: spinUp, frac: frac, run: run };
+})();
+/* ENGINE-END */
+
+var QRUN = ENGINE.run();
+var ANS = QRUN.answer;
+var D2R = Math.PI / 180;
+
+function $(id){ return document.getElementById(id); }
+var cv = $("labcv"), g = cv.getContext("2d");
+var reduced = !!(window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches);
+var SPIN_T = 3.0, HOLD_T = 1.2;
+var NAMES = { P: "P · two rods at 45°", Q: "Q · triangle", R: "R · square (diagonal)", S: "S · two rods at 30°" };
+var COLS = { P: "#5dffa0", Q: "#ffb86b", R: "#7cc4ff", S: "#ff8ad8" };
+
+var RUN = { state: "setup", phase: "ready", speed: 1, cfg: "P", x: 30, ci: 0, st: 0, w: 0, found: {}, done: false, confirmed: false, measured: null };
+var L = null, minPx = 999, pulseT = null;
+
+function layout(){
+  var phone = document.documentElement.clientWidth < 700;
+  if (phone) return { phone: true, W: 720, H: 1380, ro: { x: 12, y: 12, w: 696, h: 206 }, sc: { x: 12, y: 230, w: 696, h: 520 },
+    plot: { x: 12, y: 764, w: 696, h: 604 }, fs: 25, big: 31 };
+  return { phone: false, W: 1200, H: 720, ro: { x: 16, y: 14, w: 1168, h: 92 }, sc: { x: 16, y: 122, w: 600, h: 584 },
+    plot: { x: 632, y: 122, w: 552, h: 584 }, fs: 16, big: 24 };
+}
+
+/* --------------------------------------------------------------- run */
+function measure(c){ var s = ENGINE.spinUp(c, SPIN_T, 1 / 240), cl = ENGINE.classify(s.I); return { I: s.I, alpha: s.alpha, k: cl.k }; }
+function finish(){
+  RUN.state = "done"; RUN.phase = "done"; RUN.done = true; RUN.st = 0; RUN.w = 0; RUN.x = 30; setSlider(30);
+  ENGINE.CFGS.forEach(function(c){ if (!RUN.found[c]) RUN.found[c] = measure(c); });
+  var map = {}, hits = [], o;
+  ENGINE.CFGS.forEach(function(c){ map[c] = RUN.found[c].k; });
+  for (o in ENGINE.OPTS){ var q = ENGINE.OPTS[o]; if (q.P === map.P && q.Q === map.Q && q.R === map.R && q.S === map.S) hits.push(o); }
+  RUN.measured = { map: map, option: hits.length === 1 ? hits[0] : null };
+  if (RUN.measured.option === ANS){ RUN.confirmed = true; reveal(); }
+  narrate(); refreshButtons();
+}
+function tick(dt){
+  if (RUN.state !== "running") return;
+  var h = dt * RUN.speed, c = ENGINE.CFGS[RUN.ci];
+  if (RUN.phase === "spin"){
+    var step = Math.min(h, SPIN_T - RUN.st), I = ENGINE.inertia(c);
+    var q0 = Math.floor(RUN.st * 4);
+    RUN.w += ENGINE.TAU / I * step; RUN.st += step; RUN.x = (RUN.x + RUN.w * step / D2R) % 360; setSlider(RUN.x);
+    if (Math.floor(RUN.st * 4) !== q0) narrate();
+    if (RUN.st >= SPIN_T - 1e-9){
+      var al = RUN.w / RUN.st, Im = ENGINE.TAU / al;
+      RUN.found[c] = { I: Im, alpha: al, k: ENGINE.classify(Im).k }; RUN.phase = "hold"; RUN.st = 0; narrate();
+    }
+  } else if (RUN.phase === "hold"){
+    RUN.st += h; RUN.w = Math.max(0, RUN.w * (1 - 2.5 * h)); RUN.x = (RUN.x + RUN.w * h / D2R) % 360; setSlider(RUN.x);
+    if (RUN.st >= HOLD_T){
+      RUN.ci++; RUN.st = 0; RUN.w = 0;
+      if (RUN.ci >= ENGINE.CFGS.length){ finish(); return; }
+      RUN.cfg = ENGINE.CFGS[RUN.ci]; setCfgUI(RUN.cfg); RUN.x = 30; setSlider(30); RUN.phase = "spin"; narrate();
+    }
+  }
+}
+function start(){
+  if (RUN.state === "running"){ RUN.state = "paused"; refreshButtons(); narrate(); return; }
+  if (RUN.state === "paused"){ RUN.state = "running"; refreshButtons(); narrate(); return; }
+  resetRun();
+  RUN.cfg = "P"; setCfgUI("P"); RUN.x = 30; setSlider(30);
+  if (reduced){ finish(); return; }
+  RUN.state = "running"; RUN.phase = "spin"; RUN.ci = 0; narrate(); refreshButtons();
+}
+function resetRun(){ RUN.state = "setup"; RUN.phase = "ready"; RUN.ci = 0; RUN.st = 0; RUN.w = 0; RUN.found = {}; RUN.done = false; RUN.measured = null; RUN.confirmed = false; hideTarget(); }
+function replay(){ RUN.state = "setup"; start(); }
+function reset(){ resetRun(); setCfg("P"); refreshButtons(); narrate(); }
+function setSlider(v){ $("in_x").value = String(Math.round(v)); $("xout").textContent = Math.round(v) + "°"; }
+function setCfgUI(c){ ["P", "Q", "R", "S"].forEach(function(k){ $("c" + k).setAttribute("aria-pressed", k === c ? "true" : "false"); }); }
+/* exploring: a run in progress is abandoned; a finished run keeps its discovered result */
+function setCfg(c){
+  if (["P", "Q", "R", "S"].indexOf(c) < 0) c = "P";
+  if (RUN.state === "running" || RUN.state === "paused") resetRun();
+  RUN.cfg = c; setCfgUI(c); RUN.x = 30; RUN.w = 0; setSlider(30);
+  if (RUN.done) RUN.phase = "explore";
+  refreshButtons(); narrate();
+}
+function setX(v){
+  v = parseFloat(v); if (!isFinite(v)) v = 0; v = Math.min(360, Math.max(0, v));
+  if (RUN.state === "running" || RUN.state === "paused") resetRun();
+  RUN.x = v; RUN.w = 0; setSlider(v); if (RUN.done) RUN.phase = "explore"; refreshButtons(); narrate();
+}
+
+/* ------------------------------------------------------------ the target */
+function matchText(map){ return "P→" + map.P + ", Q→" + map.Q + ", R→" + map.R + ", S→" + map.S; }
+function reveal(){
+  var t = $("target");
+  $("ansval").textContent = matchText(RUN.measured.map) + " → (" + RUN.measured.option + ")";
+  var lis = document.querySelectorAll("#opts li"), i; for (i = 0; i < lis.length; i++) lis[i].classList.toggle("correct", lis[i].getAttribute("data-o") === RUN.measured.option);
+  if (!reduced){ t.classList.remove("pulse"); void t.offsetWidth; t.classList.add("pulse"); if (pulseT) clearTimeout(pulseT); pulseT = setTimeout(function(){ t.classList.remove("pulse"); pulseT = null; }, 1600); }
+}
+function hideTarget(){
+  var t = $("target"); if (pulseT){ clearTimeout(pulseT); pulseT = null; } t.classList.remove("pulse"); $("ansval").textContent = "";
+  var lis = document.querySelectorAll("#opts li"), i; for (i = 0; i < lis.length; i++) lis[i].classList.remove("correct");
+}
+
+/* ------------------------------------------------------------ words */
+function ifmt(I){ return ENGINE.frac(I) + " ml²"; }
+function narrate(){
+  var t, c = RUN.cfg, fd = RUN.found[c];
+  if (RUN.phase === "ready") t = "Ready. Each frame is mounted on a spindle along OCO′ and spun by the same constant torque τ. Press START.";
+  else if (RUN.phase === "spin") t = "Frame " + c + " spins up: ω = " + RUN.w.toFixed(2) + " rad/s after " + RUN.st.toFixed(1) + " s. The dashed lines are each rod's distance from the axis - the farther the mass, the slower the spin-up.";
+  else if (RUN.phase === "hold") t = "Frame " + c + ": α = " + fd.alpha.toFixed(2) + " rad/s², so I = τ/α = " + ifmt(fd.I) + ". That is (" + fd.k + "). " + c + " → (" + fd.k + ").";
+  else if (RUN.phase === "done") t = "Matched: " + (RUN.measured ? matchText(RUN.measured.map) : "") + " - option " + (RUN.measured && RUN.measured.option ? "(" + RUN.measured.option + ")" : "none") + ". Pick a frame and drag the slider to turn it and look.";
+  else t = "Frame " + c + " turned " + Math.round(RUN.x) + "° about OCO′: I = " + ifmt(ENGINE.inertia(c)) + " (" + ENGINE.FRAMES[c].rods.map(function(r){ return r.join("") + " " + ENGINE.frac(ENGINE.rodI(c, r)); }).join(", ") + ").";
+  if (RUN.state === "paused") t = "Paused. " + t;
+  $("narr").textContent = t;
+}
+function refreshButtons(){ $("gobtn").textContent = RUN.state === "running" ? "❚❚ PAUSE" : RUN.state === "paused" ? "▶ RESUME" : RUN.state === "done" ? "▶ RUN AGAIN" : "▶ START EXPERIMENT"; }
+
+/* ------------------------------------------------------------ drawing helpers */
+function label(s, x, y, px, col, align, weight){
+  if (px < minPx) minPx = px;
+  g.font = (weight || "700") + " " + Math.round(px) + "px ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif";
+  g.fillStyle = col || "#e8f0ff"; g.textAlign = align || "left"; g.textBaseline = "alphabetic"; g.fillText(s, x, y);
+}
+function backed(s, x, y, px, col, align){
+  g.font = "800 " + Math.round(px) + "px ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif";
+  var w = g.measureText(s).width, x0 = align === "right" ? x - w : align === "center" ? x - w / 2 : x;
+  g.fillStyle = "rgba(6,10,24,.78)"; roundRect(x0 - 6, y - px * 0.95, w + 12, px * 1.3, 6); g.fill();
+  label(s, x, y, px, col, align, "800");
+}
+function roundRect(x, y, w, h, r){ g.beginPath(); g.moveTo(x + r, y); g.lineTo(x + w - r, y); g.quadraticCurveTo(x + w, y, x + w, y + r); g.lineTo(x + w, y + h - r); g.quadraticCurveTo(x + w, y + h, x + w - r, y + h); g.lineTo(x + r, y + h); g.quadraticCurveTo(x, y + h, x, y + h - r); g.lineTo(x, y + r); g.quadraticCurveTo(x, y, x + r, y); g.closePath(); }
+function panel(x, y, w, h){ roundRect(x, y, w, h, 14); g.fillStyle = "rgba(10,16,32,.86)"; g.fill(); g.strokeStyle = "rgba(140,180,255,.3)"; g.lineWidth = 1.5; g.stroke(); }
+function heat(f){ f = Math.max(0, Math.min(1, f)); var r = Math.round(90 + 165 * f), gg = Math.round(170 + 30 * (1 - Math.abs(f - 0.5) * 2) - 60 * f), b = Math.round(255 - 200 * f); return "rgb(" + r + "," + gg + "," + b + ")"; }
+
+/* ------------------------------------------------------------ readouts */
+function drawReadouts(){
+  var r = L.ro, c = RUN.cfg, i, px, py, fd = RUN.found[c], spinning = RUN.phase === "spin" || RUN.phase === "hold";
+  var rows = [["Frame", NAMES[c]], ["Torque (same for all)", "τ = ½ ml²/s²"],
+    ["Angular speed ω", spinning || fd ? RUN.w.toFixed(2) + " rad/s" : "at rest"],
+    ["I = τ / α", fd ? ifmt(fd.I) + " → (" + fd.k + ")" : "not measured yet"]];
+  panel(r.x, r.y, r.w, r.h);
+  for (i = 0; i < 4; i++){
+    if (L.phone){ px = r.x + 18 + (i % 2) * 348; py = r.y + 40 + (i < 2 ? 0 : 1) * 96; }
+    else { px = r.x + 20 + i * 290; py = r.y + 34; }
+    label(rows[i][0], px, py, L.fs - (L.phone ? 0 : 1), "#8fa6cf", "left", "700");
+    label(rows[i][1], px, py + (L.phone ? 42 : 38), i === 0 && L.phone ? L.big - 6 : L.big - (L.phone ? 3 : 1), i === 3 ? (fd ? "#9ff0c8" : "#8fa6cf") : "#ffffff", "left", "800");
+  }
+}
+
+/* ------------------------------------------------------------ the rig: spindle, motor, the frame turning in space */
+function project(c, S, phi){
+  var P = ENGINE.FRAMES[c].pts, k, lo = 1e9, hi = -1e9;
+  for (k in P){ lo = Math.min(lo, P[k][0]); hi = Math.max(hi, P[k][0]); }
+  var s = L.phone ? 205 : 190, cx = S.x + S.w / 2, cy = S.y + S.h * 0.47, uc = (lo + hi) / 2;
+  return function(u, v){ var X = v * Math.cos(phi), Z = v * Math.sin(phi); return { x: cx + s * X, y: cy - s * (u - uc) + s * 0.2 * Z, z: Z, ax: cx, ay: cy - s * (u - uc) }; };
+}
+function drawScene(){
+  var S = L.sc, c = RUN.cfg, phi = RUN.x * D2R, F = ENGINE.FRAMES[c], k, j;
+  g.save(); roundRect(S.x, S.y, S.w, S.h, 14); g.clip();
+  var bg = g.createRadialGradient(S.x + S.w / 2, S.y + S.h * 0.45, 30, S.x + S.w / 2, S.y + S.h * 0.45, S.h * 0.8);
+  bg.addColorStop(0, "#111c38"); bg.addColorStop(1, "#05080f"); g.fillStyle = bg; g.fillRect(S.x, S.y, S.w, S.h);
+  var pr = project(c, S, phi), cx = S.x + S.w / 2;
+  /* the spindle: the axis OCO' */
+  var top = S.y + (L.phone ? 70 : 54), bot = S.y + S.h - (L.phone ? 118 : 100);
+  g.strokeStyle = "rgba(220,230,255,.85)"; g.lineWidth = 6; g.beginPath(); g.moveTo(cx, top); g.lineTo(cx, bot); g.stroke();
+  g.setLineDash([10, 8]); g.strokeStyle = "rgba(255,210,122,.8)"; g.lineWidth = 2; g.beginPath(); g.moveTo(cx, S.y + 16); g.lineTo(cx, S.y + S.h - 14); g.stroke(); g.setLineDash([]);
+  label("O′", cx + 14, S.y + (L.phone ? 44 : 34), L.fs + 2, "#ffd27a", "left", "800");
+  label("O", cx + 14, bot + (L.phone ? 106 : 88), L.fs + 2, "#ffd27a", "left", "800");
+  /* the motor: a drum on the spindle and the torque it applies */
+  var my = bot + (L.phone ? 40 : 34), mw = L.phone ? 132 : 112, mh = L.phone ? 56 : 46;
+  g.fillStyle = "#26324f"; roundRect(cx - mw / 2, my - mh / 2, mw, mh, 10); g.fill(); g.strokeStyle = "rgba(160,200,255,.6)"; g.lineWidth = 2; g.stroke();
+  label("MOTOR", cx, my + (L.phone ? 9 : 7), L.fs - (L.phone ? 0 : 2), "#cfe0ff", "center", "800");
+  var spin = RUN.phase === "spin";
+  g.strokeStyle = spin ? "#ffd27a" : "rgba(255,210,122,.5)"; g.lineWidth = 3; g.beginPath(); g.ellipse(cx, my - mh / 2 - 12, mw * 0.55, 10, 0, 0.2, Math.PI - 0.2); g.stroke();
+  var ax = cx - mw * 0.55 * Math.cos(0.2), ay = my - mh / 2 - 12 + 10 * Math.sin(0.2);
+  g.fillStyle = g.strokeStyle; g.beginPath(); g.moveTo(ax - 8, ay - 8); g.lineTo(ax + 6, ay - 2); g.lineTo(ax - 4, ay + 8); g.closePath(); g.fill();
+  backed("τ", cx + mw / 2 + 14, my + 8, L.fs + 2, "#ffd27a", "left");
+  /* the rods, back to front: mass beads coloured by r⊥² (their share of I), the distance from the axis dashed */
+  var rods = F.rods.map(function(r){ var p = F.pts[r[0]], q = F.pts[r[1]], a = pr(p[0], p[1]), b = pr(q[0], q[1]); return { r: r, p: p, q: q, a: a, b: b, z: (a.z + b.z) / 2 }; });
+  rods.sort(function(m, n){ return m.z - n.z; });
+  rods.forEach(function(R){
+    var depth = 0.75 + 0.25 * Math.max(-1, Math.min(1, R.z));
+    g.strokeStyle = "rgba(255,255,255," + (0.35 + 0.35 * depth).toFixed(2) + ")"; g.lineWidth = (L.phone ? 13 : 11) * depth; g.lineCap = "round";
+    g.beginPath(); g.moveTo(R.a.x, R.a.y); g.lineTo(R.b.x, R.b.y); g.stroke();
+    for (j = 0; j < 9; j++){
+      var f = (j + 0.5) / 9, u = R.p[0] + f * (R.q[0] - R.p[0]), v = R.p[1] + f * (R.q[1] - R.p[1]), P2 = pr(u, v);
+      g.fillStyle = heat(v * v); g.beginPath(); g.arc(P2.x, P2.y, (L.phone ? 7.5 : 6.5) * depth, 0, 7); g.fill();
+    }
+  });
+  /* r⊥ of the far end of every rod */
+  g.setLineDash([6, 6]); g.strokeStyle = "rgba(255,138,138,.85)"; g.lineWidth = 2;
+  var far = {};
+  F.rods.forEach(function(r){ [r[0], r[1]].forEach(function(n){ if (Math.abs(F.pts[n][1]) > 1e-9) far[n] = 1; }); });
+  Object.keys(far).forEach(function(n){ var p = F.pts[n], P2 = pr(p[0], p[1]); g.beginPath(); g.moveTo(P2.x, P2.y); g.lineTo(P2.ax, P2.ay); g.stroke(); });
+  g.setLineDash([]);
+  Object.keys(F.pts).forEach(function(n){ var p = F.pts[n], P2 = pr(p[0], p[1]); g.fillStyle = "#ffffff"; g.beginPath(); g.arc(P2.x, P2.y, L.phone ? 7 : 6, 0, 7); g.fill();
+    label(n, P2.x + (P2.x >= cx ? 14 : -14), P2.y - 10, L.fs + 2, n === "C" ? "#ffd27a" : "#ffffff", P2.x >= cx ? "left" : "right", "800"); });
+  backed("same τ for every frame · r⊥ dashed", S.x + 14, S.y + S.h - (L.phone ? 22 : 18), L.fs - (L.phone ? 0 : 2), "#ffb0b0", "left");
+  backed("mass far from the axis = big I", S.x + S.w - 14, S.y + (L.phone ? 40 : 30), L.fs - (L.phone ? 0 : 2), "#cfe0ff", "right");
+  g.restore();
+}
+
+/* ------------------------------------------------------------ ω(t) for every frame, each rod's share, the match */
+function drawPlot(){
+  var P = L.plot, c = RUN.cfg, ph = L.phone, k;
+  panel(P.x, P.y, P.w, P.h);
+  label(ph ? "ω AGAINST TIME · slope α = τ/I" : "ANGULAR SPEED ω AGAINST TIME (slope = α = τ/I)", P.x + 18, P.y + (ph ? 38 : 30), L.fs - (ph ? 0 : 1), "#cfe0ff", "left", "800");
+  var x0 = P.x + (ph ? 70 : 56), x1 = P.x + P.w - 60, y0 = P.y + (ph ? 206 : 236), y1 = P.y + (ph ? 62 : 52), WM = 9.6;
+  var X = function(t){ return x0 + t / SPIN_T * (x1 - x0); }, Y = function(w){ return y0 - w / WM * (y0 - y1); };
+  g.strokeStyle = "rgba(200,215,240,.6)"; g.lineWidth = 1.5; g.beginPath(); g.moveTo(x0, y1 - 6); g.lineTo(x0, y0); g.lineTo(x1, y0); g.stroke();
+  var lab = L.fs - (ph ? 0 : 2);
+  label("time t (s)", (x0 + x1) / 2, y0 + (ph ? 32 : 24), lab, "#8fa6cf", "center", "700"); label("0", x0 - 8, y0 + 6, lab, "#8fa6cf", "right", "700");
+  label(SPIN_T.toFixed(0) + " s", X(SPIN_T), y0 + (ph ? 32 : 24), lab, "#8fa6cf", "center", "700"); label("ω", x0 - 10, y1 + 10, lab, "#8fa6cf", "right", "800");
+  var ends = [];
+  ENGINE.CFGS.forEach(function(cc){
+    var fd = RUN.found[cc], live = (RUN.phase === "spin" && cc === c);
+    if (!fd && !live) return;
+    var tEnd = fd ? SPIN_T : RUN.st, al = fd ? fd.alpha : ENGINE.TAU / ENGINE.inertia(cc);
+    g.strokeStyle = COLS[cc]; g.lineWidth = cc === c ? 5 : 3; g.beginPath(); g.moveTo(X(0), Y(0)); g.lineTo(X(tEnd), Y(Math.min(WM, al * tEnd))); g.stroke();
+    var ex = X(tEnd), ey = Y(Math.min(WM, al * tEnd));
+    if (fd) ends.push([cc, ey]);
+    else { g.fillStyle = "#ffffff"; g.beginPath(); g.arc(ex, ey, 6, 0, 7); g.fill(); }
+  });
+  /* end labels to the right of the lines, pushed apart so they never overlap */
+  ends.sort(function(a, b){ return a[1] - b[1]; });
+  for (k = 1; k < ends.length; k++) if (ends[k][1] - ends[k - 1][1] < L.fs + 2) ends[k][1] = ends[k - 1][1] + L.fs + 2;
+  ends.forEach(function(e){ label(e[0], x1 + 12, e[1] + L.fs * 0.35, L.fs, COLS[e[0]], "left", "800"); });
+  /* this frame's rods: each one's share of I */
+  var F = ENGINE.FRAMES[c], by = P.y + (ph ? 270 : 284), bh = ph ? 30 : 26, maxI = 0.8;
+  label("FRAME " + c + ": EACH ROD'S SHARE OF I (in ml²)", P.x + 18, by, L.fs - (ph ? 0 : 1), "#cfe0ff", "left", "800");
+  F.rods.forEach(function(r, j){
+    var v = ENGINE.rodI(c, r), yy = by + 14 + j * (bh + 6), bx = P.x + (ph ? 96 : 80), bw = (P.w - (ph ? 260 : 220)) * Math.min(1, v / maxI);
+    label(r.join(""), P.x + 22, yy + bh * 0.75, L.fs, "#ffffff", "left", "800");
+    g.fillStyle = heat(v / 0.75); roundRect(bx, yy, Math.max(4, bw), bh, 6); g.fill();
+    label(ENGINE.frac(v), bx + Math.max(4, bw) + 10, yy + bh * 0.75, L.fs, "#ffffff", "left", "800");
+  });
+  var tot = by + 14 + F.rods.length * (bh + 6) + (ph ? 32 : 24);
+  label("total I = " + ifmt(ENGINE.inertia(c)), P.x + 22, tot, L.fs, "#9ff0c8", "left", "800");
+  /* the match */
+  var ty = P.y + P.h - (ph ? 112 : 100), rowH = ph ? 36 : 28;
+  label("MATCH (I → List-II)", P.x + 18, ty, L.fs - (ph ? 0 : 1), "#cfe0ff", "left", "800");
+  ENGINE.CFGS.forEach(function(cc, j){
+    var fz = RUN.found[cc], col = j % 2, row = Math.floor(j / 2), xx = P.x + 22 + col * (P.w / 2 - 10), yy = ty + (row + 1) * rowH + 6;
+    if (fz) label(cc + ": " + ifmt(fz.I) + " → (" + fz.k + ")", xx, yy, L.fs - (ph ? 0 : 1), COLS[cc], "left", "800");
+    else label(cc + ": not measured", xx, yy, L.fs - (ph ? 0 : 1), "#6f84aa", "left", "700");
+  });
+  if (RUN.done && RUN.measured && RUN.measured.option) label("= option (" + RUN.measured.option + ")", P.x + P.w - 22, ty, L.big - 4, "#7dffb8", "right", "800");
+}
+function draw(){
+  minPx = 999;
+  L = layout();
+  if (cv.width !== L.W || cv.height !== L.H){ cv.width = L.W; cv.height = L.H; }
+  var bg = g.createLinearGradient(0, 0, 0, L.H); bg.addColorStop(0, "#0b1226"); bg.addColorStop(1, "#04060c"); g.fillStyle = bg; g.fillRect(0, 0, L.W, L.H);
+  drawReadouts(); drawScene(); drawPlot();
+}
+
+/* ------------------------------------------------------------ controls */
+function setSpeed(k){ RUN.speed = k; $("sp1").setAttribute("aria-pressed", k === 1 ? "true" : "false"); $("sp2").setAttribute("aria-pressed", k === 0.5 ? "true" : "false"); }
+$("gobtn").addEventListener("click", start);
+$("replaybtn").addEventListener("click", replay);
+$("resetbtn").addEventListener("click", reset);
+$("sp1").addEventListener("click", function(){ setSpeed(1); });
+$("sp2").addEventListener("click", function(){ setSpeed(0.5); });
+["P", "Q", "R", "S"].forEach(function(k){ $("c" + k).addEventListener("click", function(){ setCfg(k); }); });
+$("in_x").addEventListener("input", function(){ setX(this.value); });
+$("classbtn").addEventListener("click", function(){
+  var on = document.body.classList.toggle("classroom"); this.setAttribute("aria-pressed", on ? "true" : "false");
+  this.textContent = on ? "Exit classroom" : "Classroom";
+});
+$("themebtn").addEventListener("click", function(){
+  var r = document.documentElement, dark = r.getAttribute("data-theme") === "dark" || (!r.getAttribute("data-theme") && window.matchMedia && matchMedia("(prefers-color-scheme: dark)").matches);
+  r.setAttribute("data-theme", dark ? "light" : "dark");
+});
+
+var lastT = null;
+function loop(ts){
+  if (lastT === null) lastT = ts;
+  var dt = Math.min(0.05, Math.max(0, (ts - lastT) / 1000)); lastT = ts;
+  tick(dt); draw();
+  requestAnimationFrame(loop);
+}
+
+window.PX = {
+  ENGINE: ENGINE, QRUN: QRUN, ANS: ANS, RUN: RUN,
+  answer: function(){ return ANS; },
+  minLabelPx: function(){ draw(); return minPx; },
+  start: start, replay: replay, reset: reset, setSpeed: setSpeed, speed: function(k){ RUN.speed = k; }, setCfg: setCfg, setX: setX,
+  state: function(){ return { state: RUN.state, phase: RUN.phase, cfg: RUN.cfg, x: RUN.x, t: RUN.st, omega: RUN.w, ci: RUN.ci, found: RUN.found, measured: RUN.measured || null, done: RUN.done, confirmed: RUN.confirmed, I: ENGINE.inertia(RUN.cfg) }; }
+};
+
+$("solans").textContent = ANS ? "(" + ANS + ")" : "";
+setCfg("P"); refreshButtons(); draw();
+window.addEventListener("resize", function(){ draw(); });
+requestAnimationFrame(loop);
+})();
+</script>
+</body>
+</html>

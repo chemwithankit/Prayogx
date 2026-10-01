@@ -29,6 +29,17 @@
               "simulations": [
                 "ADV-2026-P1-PHY-Q03"
               ]
+            },
+            "Moment of inertia of planar rod frames about an axis in their own plane - each rod counts by its perpendicular distance from the axis": {
+              "subtopics": [
+                "Moment of inertia as the sum of m r_perp^2; only the distance perpendicular to the axis counts",
+                "A rod with one end on the axis at angle theta: I = (ml^2/3) sin^2 theta",
+                "A rod parallel to the axis at distance d: I = m d^2; the parallel-axis theorem",
+                "Rotational dynamics: the same torque gives alpha = tau / I"
+              ],
+              "simulations": [
+                "ADV-2026-P1-PHY-Q16"
+              ]
             }
           }
         },

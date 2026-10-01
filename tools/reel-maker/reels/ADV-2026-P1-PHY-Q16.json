@@ -1,0 +1,210 @@
+{
+  "simulationId": "ADV-2026-P1-PHY-Q16",
+  "template": "question-simulation-v1",
+  "fps": 30,
+  "record": {
+    "viewport": {
+      "width": 420,
+      "height": 860,
+      "deviceScaleFactor": 2.6
+    },
+    "actions": [
+      {
+        "eval": "PX.start()"
+      }
+    ],
+    "tailSeconds": 2.2,
+    "maxSeconds": 60,
+    "stills": [
+      {
+        "name": "figure",
+        "selector": "#question .mlists",
+        "wide": true
+      }
+    ]
+  },
+  "regions": {
+    "scene": [
+      12,
+      230,
+      696,
+      520
+    ],
+    "sceneAndPlot": [
+      12,
+      230,
+      696,
+      1138
+    ]
+  },
+  "story": {
+    "hook": {
+      "beats": [
+        "Same rods.",
+        "Same torque.",
+        "Four frames."
+      ],
+      "colors": [
+        "#ffd28a",
+        "#7cc4ff",
+        "#5dffa0"
+      ],
+      "line": "Which one is *hardest* to spin?"
+    },
+    "question": {
+      "kind": "match",
+      "lists": false,
+      "figureMax": 700,
+      "highlight": []
+    },
+    "problem": [
+      "Every rod has the same mass…",
+      "but *where* it sits changes everything."
+    ],
+    "curiosity": "Can we *SEE* the moment of inertia?",
+    "moments": [
+      {
+        "id": "P",
+        "match": {
+          "cfg": "P"
+        },
+        "phases": [
+          "spin",
+          "hold"
+        ],
+        "seconds": 3.6,
+        "region": "sceneAndPlot",
+        "label": "P · TWO RODS AT 45°",
+        "sub": "the same torque spins every frame",
+        "callout": {
+          "text": "same torque on every frame",
+          "anchor": [
+            360,
+            672
+          ],
+          "side": "lane",
+          "from": 0.45
+        },
+        "result": "P → 5  I = ml²/3"
+      },
+      {
+        "id": "Q",
+        "match": {
+          "cfg": "Q"
+        },
+        "phases": [
+          "spin",
+          "hold"
+        ],
+        "seconds": 3.6,
+        "region": "sceneAndPlot",
+        "label": "Q · TRIANGLE",
+        "sub": "AB keeps all its mass far from the axis",
+        "callout": {
+          "text": "AB alone gives 3/4 ml²",
+          "anchor": [
+            300,
+            1135
+          ],
+          "side": "lane",
+          "from": 0.45
+        },
+        "result": "Q → 1  I = 5ml²/4"
+      },
+      {
+        "id": "R",
+        "match": {
+          "cfg": "R"
+        },
+        "phases": [
+          "spin",
+          "hold"
+        ],
+        "seconds": 3.4,
+        "region": "sceneAndPlot",
+        "label": "R · SQUARE ON ITS DIAGONAL",
+        "sub": "four rods at 45°",
+        "callout": {
+          "text": "4 rods × 1/6 ml²",
+          "anchor": [
+            250,
+            1090
+          ],
+          "side": "lane",
+          "from": 0.5
+        },
+        "result": "R → 4  I = 2ml²/3"
+      },
+      {
+        "id": "S",
+        "match": {
+          "cfg": "S"
+        },
+        "phases": [
+          "spin",
+          "hold"
+        ],
+        "seconds": 3.4,
+        "region": "sceneAndPlot",
+        "label": "S · TWO RODS AT 30°",
+        "sub": "the rods hug the axis",
+        "callout": {
+          "text": "the fastest spin-up",
+          "anchor": [
+            600,
+            860
+          ],
+          "side": "lane",
+          "from": 0.5
+        },
+        "result": "S → 2  I = ml²/6",
+        "aha": {
+          "seconds": 3.0,
+          "zoom": [
+            12,
+            764,
+            696,
+            260
+          ],
+          "kicker": "WATCH THE SLOPES",
+          "lines": [
+            "Same torque, but S spins up",
+            "7.5× faster than Q:",
+            "*I* is all about distance from the axis"
+          ]
+        }
+      }
+    ],
+    "answer": {},
+    "payoff": [
+      "DON'T JUST SOLVE IT.",
+      "*EXPERIENCE* IT."
+    ]
+  },
+  "thumbnail": {
+    "kicker": "JEE ADVANCED 2026",
+    "lines": [
+      "Same rods.",
+      "Which is *slowest*?"
+    ],
+    "region": "scene",
+    "frameMatch": {
+      "cfg": "Q",
+      "phase": "spin"
+    }
+  },
+  "caption": {
+    "hook": "Four frames built from identical rods, spun by the exact same torque… so why does one barely move while another whips around? 🌀",
+    "body": "This JEE Advanced 2026 Paper 1 rotational motion question comes down to one idea: every bit of mass counts by the square of its distance from the axis. We spun each frame in the real simulation and measured its moment of inertia from how fast it sped up.",
+    "cta": "Try the full experiment free on prayogx.co.in 🔬",
+    "hashtags": [
+      "#JEEAdvanced",
+      "#JEE2026",
+      "#Physics",
+      "#RotationalMotion",
+      "#MomentOfInertia",
+      "#JEEPreparation",
+      "#PrayogX"
+    ]
+  }
+}

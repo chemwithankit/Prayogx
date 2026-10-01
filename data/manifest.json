@@ -37,13 +37,13 @@
     "idPolicy": "Simulation IDs are permanent. A redo or fix edits the existing folder in place and bumps `updatedAt` / `revision`; it never mints a new ID."
   },
   "counts": {
-    "total": 48,
+    "total": 49,
     "byYear": {
-      "2026": 48
+      "2026": 49
     },
     "bySubject": {
       "Chemistry": 33,
-      "Physics": 15
+      "Physics": 16
     },
     "byChapter": {
       "Thermodynamics": 5,
@@ -56,7 +56,7 @@
       "States of Matter: Gases and Liquids": 1,
       "Coordination Compounds": 2,
       "Hydrocarbons": 1,
-      "System of Particles and Rotational Motion": 2,
+      "System of Particles and Rotational Motion": 3,
       "Electromagnetic Induction": 2,
       "Ray Optics and Optical Instruments": 1,
       "Atoms": 1,
@@ -4043,6 +4043,107 @@
       "status": "script_verified",
       "createdAt": "2026-10-01",
       "updatedAt": "2026-10-01"
+    },
+    {
+      "id": "ADV-2026-P1-PHY-Q16",
+      "slug": "adv-2026-p1-phy-q16",
+      "revision": 1,
+      "path": "simulations/2026/paper-1/physics/adv-2026-p1-phy-q16/index.html",
+      "folder": "simulations/2026/paper-1/physics/adv-2026-p1-phy-q16/",
+      "title": "Moment of inertia of four planar rod frames about an axis in their own plane, matched to List-II",
+      "shortTitle": "Spin-up lab: rod frames",
+      "summary": "Four frames of identical rods spin about an axis OCO' in their own plane under the same torque; the slower one spins up, the larger its moment of inertia. Each rod counts by its perpendicular distance from the axis: P ml^2/3 (5), Q 5ml^2/4 (1), R 2ml^2/3 (4), S ml^2/6 (2) - option A.",
+      "exam": "JEE Advanced",
+      "year": 2026,
+      "paper": "Paper 1",
+      "paperNumber": 1,
+      "subject": "Physics",
+      "branch": "Mechanics / Rotational Motion",
+      "questionNumber": 16,
+      "section": "Section 4",
+      "questionType": "Matching list (single correct option)",
+      "marking": {
+        "full": 4,
+        "partial": 0,
+        "zero": 0,
+        "negative": -1
+      },
+      "chapter": "System of Particles and Rotational Motion",
+      "topic": "Moment of inertia of planar rod frames about an axis in their own plane - each rod counts by its perpendicular distance from the axis",
+      "subtopics": [
+        "Moment of inertia as the sum of m r_perp^2; only the distance perpendicular to the axis counts",
+        "A rod with one end on the axis at angle theta: I = (ml^2/3) sin^2 theta",
+        "A rod parallel to the axis at distance d: I = m d^2; the parallel-axis theorem",
+        "Rotational dynamics: the same torque gives alpha = tau / I"
+      ],
+      "concepts": [
+        "Each rod is integrated along its length: r_perp = s sin theta, I = integral of (m/l)(s sin theta)^2 ds = (ml^2/3) sin^2 theta",
+        "P two perpendicular rods at 45 deg to the axis: 2 x (ml^2/3)(1/2) = ml^2/3 (5)",
+        "Q equilateral triangle, axis through C parallel to AB: 2 x (ml^2/3)(3/4) + m(3l^2/4) = 5ml^2/4 (1)",
+        "R square about its diagonal: 4 x (ml^2/3)(1/2) = 2ml^2/3 (4); S two rods at 30 deg: 2 x (ml^2/3)(1/4) = ml^2/6 (2)",
+        "P5 Q1 R4 S2: option A; ml^2/12 (3) belongs to no frame"
+      ],
+      "formulas": [
+        "I = sum m r_perp^2",
+        "I_rod = (ml^2/3) sin^2 theta (one end on the axis)",
+        "I = I_cm + m d^2",
+        "tau = I alpha"
+      ],
+      "tags": [
+        "moment of inertia",
+        "rotational motion",
+        "rigid body",
+        "rod",
+        "parallel axis theorem",
+        "axis in the plane",
+        "torque",
+        "angular acceleration",
+        "matching list",
+        "physics"
+      ],
+      "difficulty": "Easy-Moderate",
+      "estimatedMinutes": 4,
+      "answer": "A",
+      "answerValue": "P->5, Q->1, R->4, S->2 (option A; key A)",
+      "answerUnit": "",
+      "derivedQuantities": {
+        "I_P": "ml^2/3",
+        "I_Q": "5ml^2/4",
+        "I_R": "2ml^2/3",
+        "I_S": "ml^2/6",
+        "rod_formula": "(ml^2/3) sin^2 theta"
+      },
+      "verification": {
+        "status": "verified",
+        "methods": [
+          "MathonGo solution (their Q32 = Physics Q.16) read first as the conceptual reference (I = (ml^2/3) sin^2 theta per rod); its answer (A) agrees",
+          "Independent solve per frame from the figures: P ml^2/3, Q 5ml^2/4, R 2ml^2/3, S ml^2/6",
+          "sympy: each rod as the exact integral of (m/l) r_perp^2 ds in the figure's own coordinates; rod lengths and the printed angles checked",
+          "Parallel-axis route through each rod's centre: (ml^2/12) sin^2 theta + m d_cm^2 - equal for every frame",
+          "Full 3-D inertia tensor of each frame (point masses), the frame turned to a random orientation: n . I . n equals the exact values to 1e-6",
+          "Rigid-body spin-up from rest under a constant torque (RK4): I = tau / alpha recovered for every frame",
+          "Every option audited: B, C and D each fail on at least two rows",
+          "The page engine extracted and run in Node: map P5 Q1 R4 S2, answer A",
+          "Official key printed with the paper (checked last): Q.16 -> A"
+        ],
+        "verifiedOn": "2026-10-02",
+        "note": "Built and verified by the PrayogX simulation factory (production mode, this item only); script-verified (automated independent verifier, page suite, visual gates A-K, library and production audits). No human review has been recorded."
+      },
+      "interactivity": [
+        "Layout v3 (G5) with the target display: the question with List-I frames redrawn as figures, List-II values and the options (none marked before the run); the target shows only 'the match P, Q, R, S -> List-II' until the run reveals the computed match and option with one pulse",
+        "A spin-up rig: each frame on a vertical spindle along OCO' (in its own plane), drawn in pseudo-3-D as it turns; mass beads coloured by r_perp^2 and each far end's distance from the axis dashed; a constant-torque motor, the same torque for every frame",
+        "omega(t) plotted for every frame (slope = alpha = tau / I), I = tau / alpha measured and matched to List-II; each rod's share of I as bars; the match table; four readouts: frame, torque, angular speed, I",
+        "Frame buttons P, Q, R, S and a turn slider to look at each frame from any angle; the discovered result stays",
+        "Speed 1x / 1/2x, pause, replay, reset, classroom mode, reduced motion, portrait phone scene",
+        "Detailed solution deriving (ml^2/3) sin^2 theta and m d^2, each frame, why (3) fits none, the concept and key takeaways"
+      ],
+      "source": {
+        "file": "papers/Jee_Adv_2026_paper1_solutions_final.pdf",
+        "page": 25
+      },
+      "status": "script_verified",
+      "createdAt": "2026-10-02",
+      "updatedAt": "2026-10-02"
     },
     {
       "id": "ADV-2026-P2-CHE-Q01",
