@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sky Optics Lab — which phenomenon makes each optical effect? — JEE Advanced 2026 Paper 1 Q.14 | PrayogX</title>
+<meta name="description" content="Four optical effects, four measurements: the aurora's line spectrum (emission by excited O and N atoms), the polarization of skylight (scattering by molecules), red and violet light in a raindrop (dispersion and a partial reflection), and fringes behind a slit (diffraction) - P5, Q4, R1, S3, option A. JEE Advanced 2026 Paper 1 Physics Q.14.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232a78d6'/%3E%3Cpath d='M12.5 6.5h7M13.6 6.5v7.2L7.9 24.1a1.5 1.5 0 0 0 1.3 2.3h13.6a1.5 1.5 0 0 0 1.3-2.3l-5.7-10.4V6.5' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M10.6 20.6h10.8' stroke='white' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E">
+<meta name="sim-id" content="ADV-2026-P1-PHY-Q14">
+<style>
+:root{
+  color-scheme: light;
+  --surface-0:#f4f4f1; --surface-1:#fcfcfb; --surface-2:#ececea;
+  --line:#d9d9d4; --line-strong:#bcbcb5;
+  --text-primary:#0b0b0b; --text-secondary:#52514e; --text-muted:#77766f;
+  --s1:#2a78d6; --s2:#eb6834; --s3:#1baf7a; --s4:#4a3aa7;
+  --good:#00743f; --bad:#c0392b; --accent:#2a78d6;
+  --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+  --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --serif:ui-serif,Georgia,"Times New Roman",serif;
+  --radius:12px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  color-scheme: dark;
+  --surface-0:#111110; --surface-1:#1a1a19; --surface-2:#232322;
+  --line:#34342f; --line-strong:#4a4a44;
+  --text-primary:#ffffff; --text-secondary:#c3c2b7; --text-muted:#95948b;
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#9085e9;
+  --good:#3fae7a; --bad:#e66767; --accent:#3987e5;
+}}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --surface-0:#111110; --surface-1:#1a1a19; --surface-2:#232322;
+  --line:#34342f; --line-strong:#4a4a44;
+  --text-primary:#ffffff; --text-secondary:#c3c2b7; --text-muted:#95948b;
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#9085e9;
+  --good:#3fae7a; --bad:#e66767; --accent:#3987e5;
+}
+*{box-sizing:border-box}
+[hidden]{display:none !important}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--surface-0);color:var(--text-primary);font-family:var(--sans);font-size:16px;line-height:1.6}
+header.top{border-bottom:1px solid var(--line);background:var(--surface-1)}
+.top-inner{max-width:1240px;margin:0 auto;padding:18px 20px 14px;position:relative}
+.brandbar{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.brandbar .pxmark{width:21px;height:21px;flex:none;display:block}
+.brandbar .wm{font-size:13px;font-weight:800;letter-spacing:.17em;color:var(--text-secondary);line-height:1}
+.brandbar .wm i{font-style:normal;color:var(--accent)}
+.simid{font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--text-muted)}
+h1{font-size:21px;line-height:1.3;margin:4px 0 4px;padding-right:80px}
+.meta{font-size:14px;color:var(--text-secondary);margin:0}
+.themebtn{position:absolute;top:14px;right:16px;border:1px solid var(--line-strong);background:var(--surface-2);
+  color:var(--text-secondary);border-radius:8px;padding:4px 9px;font-size:12px;cursor:pointer}
+.wrap{max-width:1240px;margin:0 auto;padding:0 20px 40px}
+section{margin:0 0 34px}
+h2{font-size:15px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-secondary);margin:26px 0 12px}
+h2 b{color:var(--accent);margin-right:8px}
+h3{font-size:17px;margin:22px 0 8px}
+/* 01 question */
+.qcard{background:var(--surface-1);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+.qtext{font-family:var(--serif);font-size:18px;line-height:1.6;flex:1 1 460px;min-width:0}
+.qfig{flex:0 0 250px;max-width:100%}
+.qfig svg{display:block;width:100%;height:auto}
+.sq{white-space:nowrap}
+.sq .rad{border-top:1.5px solid currentColor;padding:0 2px}
+#opts{list-style:none;margin:12px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+#opts li{background:var(--surface-1);border:1.5px solid var(--line);border-radius:10px;padding:10px 12px;font-family:var(--serif);font-size:19px;display:flex;gap:10px;align-items:center;min-height:52px}
+#opts li b{font-family:var(--sans);font-size:14px;color:var(--text-muted)}
+#opts li.correct{border-color:var(--good);box-shadow:0 0 0 2px color-mix(in srgb,var(--good) 25%,transparent)}
+#opts li.correct b{color:var(--good)}
+/* 02 lab */
+#keyline{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;background:var(--surface-1);border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin:0 0 8px}
+#keyline .k{font-size:13px;font-weight:800;letter-spacing:.12em;color:var(--text-muted);text-transform:uppercase}
+#ansval{font-size:22px;font-weight:800;color:var(--good)}
+#ansexpr{font-family:var(--serif);font-size:20px}
+#anssub{font-size:14px;color:var(--text-secondary);margin-left:auto}
+#keyline.blink{animation:blink .45s ease-in-out 4}
+@keyframes blink{50%{background:color-mix(in srgb,var(--good) 22%,var(--surface-1))}}
+#narr{margin:0 2px 10px;font-size:16px;color:var(--text-secondary);min-height:2.8em}
+.stage{position:relative;border-radius:16px;overflow:hidden;background:#070a12;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+canvas#labcv{display:block;width:100%;height:auto;touch-action:manipulation}
+#controls{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:12px;padding:12px;border:1px solid var(--line);border-radius:14px;background:var(--surface-1)}
+#controls button{min-height:48px;font-size:16px;font-weight:700;border-radius:10px;border:1px solid var(--line-strong);background:var(--surface-2);color:var(--text-primary);padding:0 16px;cursor:pointer;font-family:var(--sans)}
+#controls button:focus-visible,#controls input:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+#controls .go{background:var(--accent);color:#fff;border:none;font-weight:800;letter-spacing:.04em;min-width:190px}
+#controls .seg{display:flex;align-items:center;gap:0}
+#controls .seg span{font-size:13px;font-weight:700;color:var(--text-muted);margin-right:8px;letter-spacing:.06em;text-transform:uppercase}
+#controls .seg button{border-radius:0;margin-left:-1px;padding:0 13px}
+#controls .seg button:nth-child(2){border-radius:10px 0 0 10px}
+#controls .seg button:last-child{border-radius:0 10px 10px 0}
+#controls .seg button[aria-pressed="true"]{background:var(--accent);color:#fff;border-color:var(--accent)}
+#controls .v0{display:flex;flex-wrap:wrap;align-items:center;gap:10px;flex:1 1 520px;min-width:0}
+#controls .v0 label{font-size:15px;font-weight:700;white-space:nowrap}
+#controls input[type=range]{flex:1 1 150px;min-width:110px;min-height:44px;accent-color:var(--accent);margin:0}
+#v0out{font-family:var(--mono);font-size:15px;min-width:92px}
+#warn{margin:10px 2px 0;font-size:15px;color:var(--s2);font-weight:600}
+/* 03 solution */
+.sol{background:var(--surface-1);border:1px solid var(--line);border-radius:var(--radius);padding:6px 20px 16px}
+.sol ol.steps{padding-left:22px;margin:10px 0}
+.sol ol.steps li{margin:0 0 12px}
+.eq{font-family:var(--serif);font-size:18px;background:var(--surface-2);border-radius:8px;padding:8px 12px;margin:6px 0;overflow-x:auto}
+.solfig{display:flex;gap:18px;align-items:center;flex-wrap:wrap;margin:8px 0 12px}
+.solfig svg{flex:0 0 300px;max-width:100%;height:auto}
+.solfig p{flex:1 1 300px;margin:0}
+table.opt{border-collapse:collapse;width:100%;font-size:15px;margin:8px 0}
+table.opt th,table.opt td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+table.opt th{background:var(--surface-2)}
+table.opt tr.ok td{background:color-mix(in srgb,var(--good) 10%,transparent)}
+.tscroll{overflow-x:auto}
+.concept{border-left:4px solid var(--accent);padding:2px 0 2px 14px;margin:14px 0}
+ul.take{padding-left:20px} ul.take li{margin:0 0 6px}
+#solans{font-weight:800;color:var(--good)}
+.note{font-size:14px;color:var(--text-secondary)}
+/* 04 analysis */
+svg.chart{display:block;width:100%;max-width:760px;height:auto;background:var(--surface-1);border:1px solid var(--line);border-radius:12px}
+.chart text{font-family:var(--sans);fill:var(--text-secondary)}
+.cap{font-size:14px;color:var(--text-secondary);max-width:760px}
+/* how to */
+ol.howto{padding-left:22px;margin:0} ol.howto li{margin:0 0 8px}
+footer{font-size:13px;color:var(--text-muted);border-top:1px solid var(--line);padding:16px 0 0}
+/* classroom */
+body.classroom .wrap{max-width:none;padding:0 18px 30px}
+body.classroom header.top,body.classroom section:not(#lab),body.classroom footer{display:none}
+body.classroom #narr{font-size:24px;color:var(--text-primary)}
+body.classroom #keyline #ansexpr{font-size:26px}
+@media (max-width:760px){
+  .wrap{padding:0 16px 32px}
+  .top-inner{padding:14px 16px 12px}
+  h1{font-size:18px}
+  .qtext{font-size:17px}
+  .qfig{flex-basis:100%}
+  .qfig svg{max-width:260px;margin:0 auto}
+  #opts{grid-template-columns:repeat(2,minmax(0,1fr))}
+  #anssub{margin-left:0}
+  #controls{gap:8px;padding:10px}
+  #controls .go{flex:1 1 100%}
+  #controls button{padding:0 12px}
+  #controls .v0{flex-basis:100%;flex-wrap:wrap}
+  #controls .v0 input[type=range]{flex:1 1 100%;order:3}
+  .solfig svg{flex-basis:100%}
+  .sol{padding:4px 14px 12px}
+}
+@media (prefers-reduced-motion: reduce){#keyline.blink{animation:none}}
+/* long text options */
+#opts.lopts{grid-template-columns:1fr}
+#opts.lopts li{font-family:var(--sans);font-size:17px;align-items:flex-start;line-height:1.5}
+#opts.lopts li b{padding-top:2px}
+#opts.lopts .fx{font-family:var(--serif);font-size:18px;white-space:nowrap}
+#controls .seg button{white-space:nowrap}
+@media (max-width:760px){#opts.lopts .fx{white-space:normal}#controls .seg{flex-wrap:wrap;row-gap:6px}#controls .seg span{flex:1 1 100%;margin:0 0 2px}#controls .seg button:nth-child(2){border-radius:10px 0 0 10px}}
+.mlists{display:flex;gap:16px;flex-wrap:wrap;margin:12px 0 0}
+.mlist{flex:1 1 300px;background:var(--surface-1);border:1px solid var(--line);border-radius:12px;padding:10px 14px}
+.mlist h3{margin:4px 0 8px;font-size:15px}
+.cfg{display:flex;gap:10px;align-items:center;margin:6px 0}.cfg b{font-size:14px;color:var(--text-muted);min-width:28px}
+.cfg svg{width:100%;max-width:240px;height:auto}
+ol.l2{list-style:none;padding:0;margin:0;font-family:var(--serif);font-size:18px}ol.l2 li{padding:6px 0;border-bottom:1px solid var(--line)}
+#target{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;background:var(--surface-1);border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin:0 0 8px}
+#target .lbl{font-size:13px;font-weight:800;letter-spacing:.12em;color:var(--text-muted);text-transform:uppercase}
+#target .sym{font-family:var(--serif);font-size:20px}
+#target .val{font-size:22px;font-weight:800;color:var(--good)}
+#target .val:empty{display:none}
+#target.pulse{animation:pxpulse .5s ease-in-out 3}
+@keyframes pxpulse{50%{background:color-mix(in srgb,var(--good) 24%,var(--surface-1));box-shadow:0 0 0 6px color-mix(in srgb,var(--good) 30%,transparent)}}
+@media (prefers-reduced-motion: reduce){#target.pulse{animation:none}}
+body.classroom #target .sym{font-size:24px} body.classroom #target .val{font-size:28px}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-inner">
+    <div class="brandbar"><svg class="pxmark" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><rect width="32" height="32" rx="8" fill="var(--accent)"/><path d="M12.5 6.5h7M13.6 6.5v7.2L7.9 24.1a1.5 1.5 0 0 0 1.3 2.3h13.6a1.5 1.5 0 0 0 1.3-2.3l-5.7-10.4V6.5" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.6 20.6h10.8" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg><span class="wm">PRAYOG<i>X</i></span></div>
+    <div class="simid">ADV-2026-P1-PHY-Q14</div>
+    <h1>Sky Optics Lab — which phenomenon makes each optical effect?</h1>
+    <p class="meta">JEE Advanced 2026 · Paper 1 · Physics · Q.14 · matching list, single option (+4 / 0 / −1) · Wave Optics</p>
+    <button class="themebtn" id="themebtn" type="button">◐ theme</button>
+  </div>
+</header>
+
+<main class="wrap">
+
+<section id="question" aria-labelledby="qh">
+  <h2 id="qh"><b>01</b>The question</h2>
+  <div class="qcard">
+    <div class="qtext">Q.14 In the <b>List-I</b>, four optical effects are mentioned. The physical phenomena of light which are essential to describe these optical effects are given in <b>List-II</b>. Choose the option which describes the correct match between the entries in <b>List-I</b> to those in <b>List-II</b>.</div>
+  </div>
+  <div class="mlists">
+    <div class="mlist"><h3>List-I</h3><ol class="l2">
+      <li>(P) Colorful sky in north polar region (Aurora Borealis)</li>
+      <li>(Q) Partially polarized sun light</li>
+      <li>(R) Rainbow</li>
+      <li>(S) Dark and bright fringes</li></ol></div>
+    <div class="mlist"><h3>List-II</h3><ol class="l2">
+      <li>(1) Dispersion and reflection</li>
+      <li>(2) Total internal reflection</li>
+      <li>(3) Diffraction</li>
+      <li>(4) Scattering of light by molecules in the atmosphere</li>
+      <li>(5) Emission of radiation from oxygen and nitrogen atoms excited by charged particles</li></ol></div>
+  </div>
+  <ol id="opts" class="lopts" aria-label="options">
+    <li data-o="A"><b>(A)</b><span>P→5, Q→4, R→1, S→3</span></li>
+    <li data-o="B"><b>(B)</b><span>P→4, Q→2, R→1, S→3</span></li>
+    <li data-o="C"><b>(C)</b><span>P→4, Q→1, R→2, S→3</span></li>
+    <li data-o="D"><b>(D)</b><span>P→5, Q→4, R→1, S→2</span></li>
+  </ol>
+</section>
+
+<section id="lab" aria-labelledby="lh">
+  <h2 id="lh"><b>02</b>The experiment</h2>
+  <p class="keyres" id="target" data-kind="match" aria-live="polite"><span class="lbl">Target:</span><span class="sym">the match P, Q, R, S → List-II</span><span class="val" id="ansval"></span></p>
+  <p id="narr" aria-live="polite">Ready.</p>
+  <div class="stage"><canvas id="labcv" width="1200" height="720" role="img" aria-label="Experiment: a sky optics laboratory with four stations - the aurora with a spectrometer, sunlit sky with a polarizer, a raindrop with red and violet rays, and a single slit throwing fringes on a screen; each station's measurement is plotted and matched to List-II"></canvas></div>
+  <div id="controls" role="group" aria-label="experiment controls">
+    <button class="go" type="button" id="gobtn">▶ START EXPERIMENT</button>
+    <button type="button" id="replaybtn">↺ Replay</button>
+    <button type="button" id="resetbtn">Reset</button>
+    <div class="seg" role="group" aria-label="station"><span>Station</span><button type="button" id="cP" aria-pressed="true">P</button><button type="button" id="cQ" aria-pressed="false">Q</button><button type="button" id="cR" aria-pressed="false">R</button><button type="button" id="cS" aria-pressed="false">S</button></div>
+    <div class="v0"><label for="in_x" id="xlab">Spectrometer λ</label><input type="range" id="in_x" min="400" max="700" step="0.1" value="500" aria-describedby="xout"><output id="xout" for="in_x">500.0 nm</output></div>
+    <div class="seg" role="group" aria-label="speed"><span>Speed</span><button type="button" id="sp1" aria-pressed="true">1×</button><button type="button" id="sp2" aria-pressed="false">½×</button></div>
+    <button type="button" id="classbtn" aria-pressed="false">Classroom</button>
+  </div>
+</section>
+
+<section id="solution" aria-labelledby="sh">
+  <h2 id="sh"><b>03</b>Detailed solution</h2>
+  <div class="sol">
+    <p>Answer: <span id="solans"></span> &nbsp;P→5, Q→4, R→1, S→3</p>
+    <ol class="steps">
+      <li><b>(P) Aurora borealis → (5).</b> Charged particles from the Sun are guided down the Earth's magnetic field near the poles. They excite oxygen and nitrogen in the upper atmosphere, and the atoms emit light at fixed wavelengths: green 557.7 nm and red 630.0 nm from oxygen, violet 427.8 nm from N₂⁺. A spectrometer sees separate bright <i>lines</i>. Scattered sunlight is a smooth continuum strongest in the violet, so it cannot make a green or red sky.</li>
+      <li><b>(Q) Partially polarized sunlight → (4).</b> Air molecules scatter sunlight. A scattering molecule cannot radiate along its own oscillation, so light scattered at angle <i>θ</i> from the Sun has degree of polarization <i>P</i> = sin²<i>θ</i>/(1 + cos²<i>θ</i>): zero looking at the Sun, partial in between, largest at 90°. Total internal reflection reflects both polarizations completely (|<i>r<sub>s</sub></i>| = |<i>r<sub>p</sub></i>| = 1), so it cannot polarize the light.</li>
+      <li><b>(R) Rainbow → (1).</b> Sunlight enters a raindrop, is refracted, reflects once from the back, and refracts out. Because <i>n</i> depends on wavelength (1.331 red, 1.343 violet), the minimum deviation differs by colour: the bow is at 42.4° (red) and 40.6° (violet) from the point opposite the Sun. That is <b>dispersion and reflection</b>. The reflection is <i>not</i> total: the ray meets the back at about 40°, below the critical angle of 48.7°, so most light leaves the drop. Option (2) is the trap.</li>
+      <li><b>(S) Dark and bright fringes → (3).</b> Light of one colour passing a narrow opening spreads, and its parts superpose. A single slit of width <i>a</i> is dark where <i>a</i> sin <i>θ</i> = <i>mλ</i>. This is <b>diffraction</b>. Dispersion and reflection cannot make dark fringes in light of a single colour.</li>
+      <li>That is P→5, Q→4, R→1, S→3: option <b>(A)</b>. Option (D) fails on S, (B) on P and Q, and (C) on P, Q and R.</li>
+    </ol>
+    <h3>Understand the concept</h3>
+    <div class="concept">Each optical effect has one essential mechanism, and a measurement shows which one it is. A <b>line spectrum</b> means atoms emitting. Polarization that grows towards 90° from the Sun means <b>scattering by molecules</b>. A colour-dependent angle with one reflection inside a drop means <b>dispersion and reflection</b>. Dark and bright bands in light of one colour behind an opening mean <b>diffraction</b>.</div>
+    <h3>Key takeaways</h3>
+    <ul class="take">
+      <li>The aurora is emission (atomic lines), not scattering. The blue sky is scattering.</li>
+      <li>Skylight is partially polarized by molecular scattering, most strongly at 90° from the Sun.</li>
+      <li>A rainbow needs dispersion and one internal reflection. That reflection is partial, not total.</li>
+      <li>Fringes behind a slit or edge are diffraction: dark where <i>a</i> sin <i>θ</i> = <i>mλ</i>.</li>
+    </ul>
+    <p class="note">Verification: an independent derivation for each effect; the aurora wavelengths from atomic energy levels (<i>λ</i> = <i>hc</i>/Δ<i>E</i>) against the smooth scattered-sky spectrum; the polarization of dipole scattering summed numerically and in sympy, and Fresnel's equations for total internal reflection; the rainbow ray traced through a drop by coordinates and by Descartes' condition, with the internal angle checked against the critical angle; the single slit summed as Huygens phasors; every option audited; and the page's own engine, run by <code>tests/verify_p1phyq14.py</code>. The MathonGo solution was read first only for the intended approach; the official key (A), read last, and MathonGo (A) agree. Status: script-verified by the PrayogX simulation factory; no review by a person has been recorded.</p>
+  </div>
+</section>
+
+<section id="howto" aria-labelledby="hh">
+  <h2 id="hh">How to use this simulation</h2>
+  <ol class="howto">
+    <li>Press <b>▶ START EXPERIMENT</b>. The run visits the four stations P, Q, R and S and makes one measurement at each.</li>
+    <li>Watch what each measurement reveals: a line spectrum, polarization against angle, the deviation of red and violet light, or fringes on a screen.</li>
+    <li>Each station is matched to its phenomenon in List-II. At the end the target shows the whole match and the option.</li>
+    <li>Tap a <b>Station</b> button and drag the slider to explore it yourself: the spectrometer wavelength, the viewing angle, the angle of incidence, or the slit width.</li>
+    <li><b>Replay</b> runs it again. <b>Reset</b> clears it. <b>Classroom</b> fills the screen for a projector.</li>
+  </ol>
+</section>
+
+<footer>
+  ADV-2026-P1-PHY-Q14 · PrayogX · JEE Advanced Interactive Simulation Library · question text reproduced
+  from the official JEE (Advanced) 2026 Paper 1 for educational use. This is a virtual laboratory only.
+  Representative data: the aurora line strengths, the scene's heights and sizes, and the slit and screen scale
+  are illustrative. Water: n = 1.331 (red, 700 nm) and 1.343 (violet, 400 nm). The polarization shown is
+  for ideal single scattering; the real sky reaches about 0.7 because of multiple scattering.
+</footer>
+</main>
+
+<script>
+(function(){
+"use strict";
+/* ENGINE-BEGIN */
+/* Four optical effects, each identified by a measurement:
+   P  the aurora's spectrum (atomic lines, lambda = hc/dE) against scattered sunlight (a smooth continuum);
+   Q  the polarization of light scattered by a molecule, P(theta) = sin^2/(1 + cos^2), against total internal
+      reflection (|rs| = |rp| = 1, no polarization);
+   R  a ray through a raindrop with one internal reflection: the minimum deviation for red and violet water
+      (dispersion) and the internal angle at the back against the critical angle (partial or total);
+   S  a single slit in light of one colour: dark where a sin(theta) = m lambda (diffraction).
+   Each measurement gives features; one rule table turns features into a List-II entry. */
+var ENGINE = (function(){
+  var HC = 1239.841984, D2R = Math.PI / 180;
+  /* O(1S->1D), O(1D->3P), N2+ B->X (0,0); relative strengths illustrative */
+  var LEVELS = [{ id: "O", nm: "oxygen", dE: 2.2230, s: 1.0 }, { id: "O", nm: "oxygen", dE: 1.9679, s: 0.55 }, { id: "N2+", nm: "nitrogen", dE: 2.8981, s: 0.35 }];   /* air wavelengths 557.7, 630.0, 427.8 nm */
+  var SIG = 1.2;                                                   /* line width, nm (illustrative) */
+  function lineNm(k){ return HC / LEVELS[k].dE; }
+  function aurora(l){ var s = 0, k, d; for (k = 0; k < LEVELS.length; k++){ d = l - lineNm(k); s += LEVELS[k].s * Math.exp(-d * d / (2 * SIG * SIG)); } return s; }
+  function planck(l){ var x = l * 1e-9; return 1 / Math.pow(x, 5) / (Math.exp(1.438777e-2 / (x * 5772)) - 1); }
+  function sky(l){ return planck(l) / Math.pow(l, 4) / (planck(400) / Math.pow(400, 4)); }   /* Rayleigh-scattered sunlight, 1 at 400 nm */
+  /* scan 400-700 nm for peaks, with their full width at half maximum */
+  function scan(fn){
+    var pk = [], step = 0.1, l, a, b, c, lo, hi;
+    for (l = 400 + step; l < 700 - step; l += step){
+      a = fn(l - step); b = fn(l); c = fn(l + step);
+      if (b > a && b >= c && b > 0.05){ lo = l; hi = l; while (fn(lo) > b / 2 && lo > 380) lo -= 0.02; while (fn(hi) > b / 2 && hi < 720) hi += 0.02; pk.push({ l: l, w: hi - lo, h: b }); }
+    }
+    return pk;
+  }
+  function pol(th){ var c = Math.cos(th); return (1 - c * c) / (1 + c * c); }
+  /* Fresnel reflectances from medium n1 into n2 at incidence ti; complex cos for total internal reflection */
+  function fresnel(n1, n2, ti){
+    var st = n1 / n2 * Math.sin(ti), ci = Math.cos(ti), k = 1 - st * st, cr, cim, rs, rp;
+    if (k >= 0){ cr = Math.sqrt(k); rs = (n1 * ci - n2 * cr) / (n1 * ci + n2 * cr); rp = (n2 * ci - n1 * cr) / (n2 * ci + n1 * cr); return { Rs: rs * rs, Rp: rp * rp }; }
+    cim = Math.sqrt(-k);                                           /* cos t = i cim: |a - ib|^2 / |a + ib|^2 = 1 */
+    var as = n1 * ci, bs = n2 * cim, ap = n2 * ci, bp = n1 * cim;
+    return { Rs: (as * as + bs * bs) / (as * as + bs * bs), Rp: (ap * ap + bp * bp) / (ap * ap + bp * bp) };
+  }
+  function nWater(lnm){ var u = lnm / 1000; return 1.32518 + 0.002851 / (u * u); }   /* Cauchy fit: 1.331 at 700 nm, 1.343 at 400 nm */
+  function dev(n, i){ var r = Math.asin(Math.sin(i) / n); return Math.PI + 2 * i - 4 * r; }  /* one internal reflection */
+  function minDev(n){
+    var lo = 0.01, hi = 1.56, g = (Math.sqrt(5) - 1) / 2, k, a, b;
+    for (k = 0; k < 90; k++){ a = hi - g * (hi - lo); b = lo + g * (hi - lo); if (dev(n, a) < dev(n, b)) hi = b; else lo = a; }
+    var i = (lo + hi) / 2, r = Math.asin(Math.sin(i) / n);
+    return { i: i, r: r, D: dev(n, i), bow: Math.PI - dev(n, i), crit: Math.asin(1 / n) };
+  }
+  var DIST = 1.0, LAMS = 632.8;                                    /* slit to screen, m; laser, nm */
+  function slitI(a, y){ var th = Math.atan(y / 1000 / DIST), b = Math.PI * a * 1e-3 * Math.sin(th) / (LAMS * 1e-9); return Math.abs(b) < 1e-12 ? 1 : Math.pow(Math.sin(b) / b, 2); }
+  function slitMin(a, m){ return DIST * 1000 * Math.tan(Math.asin(m * LAMS * 1e-9 / (a * 1e-3))); }
+  var LIST2 = { 1: "Dispersion and reflection", 2: "Total internal reflection", 3: "Diffraction", 4: "Scattering of light by molecules in the atmosphere", 5: "Emission of radiation from oxygen and nitrogen atoms excited by charged particles" };
+  var SHORT = { 1: "dispersion + reflection", 2: "total internal reflection", 3: "diffraction", 4: "scattering by molecules", 5: "emission by O and N atoms" };
+  var OPTS = { A: { P: 5, Q: 4, R: 1, S: 3 }, B: { P: 4, Q: 2, R: 1, S: 3 }, C: { P: 4, Q: 1, R: 2, S: 3 }, D: { P: 5, Q: 4, R: 1, S: 2 } };
+  var CFGS = ["P", "Q", "R", "S"];
+  /* the rule table: which phenomenon a set of measured features needs */
+  function phenomenon(f){
+    if (f.lineSpectrum) return 5;
+    if (f.scatterPol) return 4;
+    if (f.dispersion && f.reflection) return f.total ? 2 : 1;
+    if (f.fringesOneColour) return 3;
+    return null;
+  }
+  function measure(c){
+    var f = {}, m = {};
+    if (c === "P"){
+      var pk = scan(aurora), sk = scan(sky), j, k, near, ok = pk.length >= 2;
+      for (j = 0; j < pk.length; j++){ near = false; for (k = 0; k < LEVELS.length; k++) if (Math.abs(pk[j].l - lineNm(k)) < 0.5) near = true; if (!near || pk[j].w > 5) ok = false;   /* a line: under 5 nm wide */ }
+      f.lineSpectrum = ok && sk.length === 0; m.peaks = pk; m.skyPeaks = sk.length;
+    } else if (c === "Q"){
+      var t = fresnel(1.333, 1.0, 60 * D2R);
+      m.p0 = pol(1e-9); m.p45 = pol(45 * D2R); m.p90 = pol(90 * D2R); m.tir = Math.abs(t.Rs - t.Rp) / (t.Rs + t.Rp);
+      f.scatterPol = m.p0 < 1e-6 && m.p45 > 0 && m.p45 < 1 && Math.abs(m.p90 - 1) < 1e-9 && m.tir < 1e-9;
+    } else if (c === "R"){
+      var red = minDev(nWater(700)), vio = minDev(nWater(400));
+      m.red = red; m.vio = vio;
+      f.dispersion = Math.abs(red.bow - vio.bow) > 0.5 * D2R; f.reflection = true; f.total = red.r >= red.crit || vio.r >= vio.crit;
+    } else {
+      var a = 0.10, ys = [1, 2, 3].map(function(q){ return slitMin(a, q); });
+      m.a = a; m.ys = ys;
+      f.fringesOneColour = ys.every(function(y){ return slitI(a, y) < 1e-9; }) && slitI(a, 0) === 1;
+    }
+    return { f: f, m: m, k: phenomenon(f) };
+  }
+  function run(){
+    var map = {}, res = {}, i, o, hits = [];
+    for (i = 0; i < CFGS.length; i++){ res[CFGS[i]] = measure(CFGS[i]); map[CFGS[i]] = res[CFGS[i]].k; }
+    for (o in OPTS) if (OPTS[o].P === map.P && OPTS[o].Q === map.Q && OPTS[o].R === map.R && OPTS[o].S === map.S) hits.push(o);
+    var R = res.R.m;
+    return { map: map, res: res, hits: hits, answer: hits.length === 1 ? hits[0] : null,
+      m: { lines: [lineNm(0), lineNm(1), lineNm(2)], pol90: res.Q.m.p90, bowRed: R.red.bow / D2R, bowViolet: R.vio.bow / D2R,
+        backRed: R.red.r / D2R, critRed: R.red.crit / D2R, slitDark: res.S.f.fringesOneColour } };
+  }
+  return { D2R: D2R, LEVELS: LEVELS, lineNm: lineNm, aurora: aurora, sky: sky, scan: scan, pol: pol, fresnel: fresnel, nWater: nWater, dev: dev, minDev: minDev,
+    slitI: slitI, slitMin: slitMin, LAMS: LAMS, DIST: DIST, LIST2: LIST2, SHORT: SHORT, OPTS: OPTS, CFGS: CFGS, measure: measure, phenomenon: phenomenon, run: run };
+})();
+/* ENGINE-END */
+
+var QRUN = ENGINE.run();
+var ANS = QRUN.answer;
+var D2R = ENGINE.D2R;
+
+function $(id){ return document.getElementById(id); }
+var cv = $("labcv"), g = cv.getContext("2d");
+var reduced = !!(window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches);
+var SWEEP_T = 3.2, HOLD_T = 1.1;
+var XR = { P: { lab: "Spectrometer λ", min: 400, max: 700, step: 0.1, def: 500, unit: " nm", dp: 1 },
+           Q: { lab: "Angle from the Sun θ", min: 0, max: 180, step: 0.5, def: 90, unit: "°", dp: 1 },
+           R: { lab: "Angle of incidence i", min: 0, max: 89.5, step: 0.1, def: 59.5, unit: "°", dp: 1 },
+           S: { lab: "Slit width a", min: 0.05, max: 0.40, step: 0.005, def: 0.10, unit: " mm", dp: 3 } };
+var RED = ENGINE.minDev(ENGINE.nWater(700)), VIO = ENGINE.minDev(ENGINE.nWater(400));
+var PEAKS = ENGINE.scan(ENGINE.aurora);
+
+var RUN = { state: "setup", phase: "ready", speed: 1, cfg: "P", x: 500, ci: 0, st: 0, found: {}, done: false, confirmed: false, measured: null };
+var L = null, minPx = 999, clock = 0, pulseT = null;
+
+function layout(){
+  var phone = document.documentElement.clientWidth < 700;
+  if (phone) return { phone: true, W: 720, H: 1380, ro: { x: 12, y: 12, w: 696, h: 258 }, sc: { x: 12, y: 284, w: 696, h: 520 },
+    plot: { x: 12, y: 820, w: 696, h: 548 }, fs: 25, big: 31 };
+  return { phone: false, W: 1200, H: 720, ro: { x: 16, y: 14, w: 1168, h: 92 }, sc: { x: 16, y: 122, w: 620, h: 584 },
+    plot: { x: 652, y: 122, w: 532, h: 584 }, fs: 16, big: 24 };
+}
+
+/* --------------------------------------------------------------- run */
+function stationValue(c, f){
+  if (c === "P") return 400 + 300 * f;
+  if (c === "Q") return 90 * f;
+  if (c === "R") return RED.i / D2R * f;
+  return 0.10;
+}
+function strongest(){ var b = PEAKS[0], k; for (k = 1; k < PEAKS.length; k++) if (PEAKS[k].h > b.h) b = PEAKS[k]; return b.l; }
+function finish(){
+  RUN.state = "done"; RUN.phase = "done"; RUN.done = true;
+  ENGINE.CFGS.forEach(function(c){ if (!RUN.found[c]) RUN.found[c] = ENGINE.measure(c); });
+  var map = {}, hits = [], o;
+  ENGINE.CFGS.forEach(function(c){ map[c] = RUN.found[c].k; });
+  for (o in ENGINE.OPTS){ var q = ENGINE.OPTS[o]; if (q.P === map.P && q.Q === map.Q && q.R === map.R && q.S === map.S) hits.push(o); }
+  RUN.measured = { map: map, option: hits.length === 1 ? hits[0] : null };
+  if (RUN.measured.option === ANS){ RUN.confirmed = true; reveal(); }
+  narrate(); refreshButtons();
+}
+function tick(dt){
+  if (!reduced) clock += dt;
+  if (RUN.state !== "running") return;
+  RUN.st += dt * RUN.speed;
+  var c = ENGINE.CFGS[RUN.ci];
+  if (RUN.phase === "sweep"){
+    var f = Math.min(1, RUN.st / SWEEP_T);
+    RUN.cfg = c; RUN.x = stationValue(c, f); setSlider(RUN.x);
+    if (f >= 1){ RUN.found[c] = ENGINE.measure(c); if (c === "P"){ RUN.x = strongest(); setSlider(RUN.x); } RUN.phase = "hold"; RUN.st = 0; narrate(); }
+  } else if (RUN.phase === "hold" && RUN.st >= HOLD_T){
+    RUN.ci++; RUN.st = 0;
+    if (RUN.ci >= ENGINE.CFGS.length){ finish(); return; }
+    RUN.cfg = ENGINE.CFGS[RUN.ci]; setCfgUI(RUN.cfg); RUN.x = stationValue(RUN.cfg, 0); setSlider(RUN.x); RUN.phase = "sweep"; narrate();
+  }
+}
+function start(){
+  if (RUN.state === "running"){ RUN.state = "paused"; refreshButtons(); narrate(); return; }
+  if (RUN.state === "paused"){ RUN.state = "running"; refreshButtons(); narrate(); return; }
+  resetRun();
+  RUN.cfg = "P"; setCfgUI("P"); RUN.x = stationValue("P", 0); setSlider(RUN.x);
+  if (reduced){ finish(); return; }
+  RUN.state = "running"; RUN.phase = "sweep"; RUN.ci = 0; narrate(); refreshButtons();
+}
+function resetRun(){
+  RUN.state = "setup"; RUN.phase = "ready"; RUN.ci = 0; RUN.st = 0; RUN.found = {}; RUN.done = false; RUN.measured = null; RUN.confirmed = false;
+  hideTarget();
+}
+function replay(){ RUN.state = "setup"; start(); }
+function reset(){ resetRun(); setCfg("P"); refreshButtons(); narrate(); }
+function setSlider(v){ var r = XR[RUN.cfg]; $("in_x").value = String(v); $("xout").textContent = v.toFixed(r.dp) + r.unit; }
+function setCfgUI(c){
+  ["P", "Q", "R", "S"].forEach(function(k){ $("c" + k).setAttribute("aria-pressed", k === c ? "true" : "false"); });
+  var r = XR[c], s = $("in_x"); $("xlab").textContent = r.lab; s.min = String(r.min); s.max = String(r.max); s.step = String(r.step);
+}
+/* exploring: a run in progress is abandoned; a finished run keeps its discovered result */
+function setCfg(c){
+  if (["P", "Q", "R", "S"].indexOf(c) < 0) c = "P";
+  if (RUN.state === "running" || RUN.state === "paused") resetRun();
+  RUN.cfg = c; setCfgUI(c); RUN.x = XR[c].def; setSlider(RUN.x);
+  if (RUN.done) RUN.phase = "explore";
+  refreshButtons(); narrate();
+}
+function setX(v){
+  var r = XR[RUN.cfg]; v = parseFloat(v); if (!isFinite(v)) v = r.def; v = Math.min(r.max, Math.max(r.min, v));
+  if (RUN.state === "running" || RUN.state === "paused") resetRun();
+  RUN.x = v; setSlider(v); if (RUN.done) RUN.phase = "explore"; refreshButtons(); narrate();
+}
+
+/* ------------------------------------------------------------ the target */
+function matchText(map){ return "P→" + map.P + ", Q→" + map.Q + ", R→" + map.R + ", S→" + map.S; }
+function reveal(){
+  var t = $("target");
+  $("ansval").textContent = matchText(RUN.measured.map) + " → (" + RUN.measured.option + ")";
+  var lis = document.querySelectorAll("#opts li"), i; for (i = 0; i < lis.length; i++) lis[i].classList.toggle("correct", lis[i].getAttribute("data-o") === RUN.measured.option);
+  if (!reduced){ t.classList.remove("pulse"); void t.offsetWidth; t.classList.add("pulse"); if (pulseT) clearTimeout(pulseT); pulseT = setTimeout(function(){ t.classList.remove("pulse"); pulseT = null; }, 1600); }
+}
+function hideTarget(){
+  var t = $("target"); if (pulseT){ clearTimeout(pulseT); pulseT = null; } t.classList.remove("pulse"); $("ansval").textContent = "";
+  var lis = document.querySelectorAll("#opts li"), i; for (i = 0; i < lis.length; i++) lis[i].classList.remove("correct");
+}
+
+/* ------------------------------------------------------------ words */
+function narrate(){
+  var t, c = RUN.cfg, x = RUN.x;
+  if (RUN.phase === "ready") t = "Ready. Four stations, one measurement each: the aurora's spectrum, the polarization of skylight, light inside a raindrop, and a single slit. Press START.";
+  else if (RUN.phase === "sweep"){
+    if (c === "P") t = "Station P: the spectrometer scans the aurora from 400 to 700 nm. It finds sharp lines, not a smooth band: atoms are emitting.";
+    else if (c === "Q") t = "Station Q: you look at the sky further and further from the Sun through a polarizer. The light scattered by air molecules becomes more polarized.";
+    else if (c === "R") t = "Station R: sunlight enters a raindrop at a growing angle of incidence. Red and violet bend differently and reflect once from the back of the drop.";
+    else t = "Station S: red laser light passes a narrow slit. Photon by photon, dark and bright bands build up on the screen.";
+  } else if (RUN.phase === "hold"){
+    if (c === "P") t = "P: " + PEAKS.length + " narrow lines, at " + PEAKS.map(function(pk){ return pk.l.toFixed(1); }).join(", ") + " nm, from excited nitrogen and oxygen. Scattered sunlight has no lines. P → (5).";
+    else if (c === "Q") t = "Q: at 90° from the Sun the scattered light is fully polarized (ideal single scattering); between 0° and 90° it is partially polarized. Total internal reflection would not polarize it. Q → (4).";
+    else if (c === "R") t = "R: the deviation is least at " + (RED.D / D2R).toFixed(1) + "° (red) and " + (VIO.D / D2R).toFixed(1) + "° (violet): the bow is at " + (RED.bow / D2R).toFixed(1) + "° and " + (VIO.bow / D2R).toFixed(1) + "°. Inside, the ray meets the back at " + (RED.r / D2R).toFixed(1) + "°, below the critical angle " + (RED.crit / D2R).toFixed(1) + "°: a partial reflection. R → (1).";
+    else t = "S: with light of one colour the screen is dark where a sin θ = mλ: first dark band at " + ENGINE.slitMin(0.10, 1).toFixed(2) + " mm from the centre. That is diffraction. S → (3).";
+  } else if (RUN.phase === "done") t = "Matched: " + (RUN.measured ? matchText(RUN.measured.map) : "") + " - option " + (RUN.measured && RUN.measured.option ? "(" + RUN.measured.option + ")" : "none") + ". Pick a station and drag the slider to explore it.";
+  else t = exploreText(c, x);
+  if (RUN.state === "paused") t = "Paused. " + t;
+  $("narr").textContent = t;
+}
+function exploreText(c, x){
+  if (c === "P") return "Station P at λ = " + x.toFixed(1) + " nm: the aurora's brightness here is " + ENGINE.aurora(x).toFixed(2) + " (1 = the green line); the scattered sky would give " + ENGINE.sky(x).toFixed(2) + ".";
+  if (c === "Q") return "Station Q at θ = " + x.toFixed(1) + "° from the Sun: the scattered light is " + (100 * ENGINE.pol(x * D2R)).toFixed(0) + " % polarized.";
+  if (c === "R") return "Station R at i = " + x.toFixed(1) + "°: deviation " + (ENGINE.dev(ENGINE.nWater(700), x * D2R) / D2R).toFixed(1) + "° (red), " + (ENGINE.dev(ENGINE.nWater(400), x * D2R) / D2R).toFixed(1) + "° (violet); internal angle " + (Math.asin(Math.sin(x * D2R) / ENGINE.nWater(700)) / D2R).toFixed(1) + "°, critical " + (RED.crit / D2R).toFixed(1) + "°.";
+  return "Station S with a = " + x.toFixed(3) + " mm: the first dark band is " + ENGINE.slitMin(x, 1).toFixed(2) + " mm from the centre. A narrower slit spreads the pattern.";
+}
+function refreshButtons(){ $("gobtn").textContent = RUN.state === "running" ? "❚❚ PAUSE" : RUN.state === "paused" ? "▶ RESUME" : RUN.state === "done" ? "▶ RUN AGAIN" : "▶ START EXPERIMENT"; }
+
+/* ------------------------------------------------------------ drawing helpers */
+function label(s, x, y, px, col, align, weight){
+  if (px < minPx) minPx = px;
+  g.font = (weight || "700") + " " + Math.round(px) + "px ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif";
+  g.fillStyle = col || "#e8f0ff"; g.textAlign = align || "left"; g.textBaseline = "alphabetic"; g.fillText(s, x, y);
+}
+function backed(s, x, y, px, col, align){
+  g.font = "800 " + Math.round(px) + "px ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif";
+  var w = g.measureText(s).width, x0 = align === "right" ? x - w : align === "center" ? x - w / 2 : x;
+  g.fillStyle = "rgba(6,10,24,.78)"; roundRect(x0 - 6, y - px * 0.95, w + 12, px * 1.3, 6); g.fill();
+  label(s, x, y, px, col, align, "800");
+}
+function roundRect(x, y, w, h, r){ g.beginPath(); g.moveTo(x + r, y); g.lineTo(x + w - r, y); g.quadraticCurveTo(x + w, y, x + w, y + r); g.lineTo(x + w, y + h - r); g.quadraticCurveTo(x + w, y + h, x + w - r, y + h); g.lineTo(x + r, y + h); g.quadraticCurveTo(x, y + h, x, y + h - r); g.lineTo(x, y + r); g.quadraticCurveTo(x, y, x + r, y); g.closePath(); }
+function panel(x, y, w, h){ roundRect(x, y, w, h, 14); g.fillStyle = "rgba(10,16,32,.86)"; g.fill(); g.strokeStyle = "rgba(140,180,255,.3)"; g.lineWidth = 1.5; g.stroke(); }
+function arrow(x1, y1, x2, y2, col, w){
+  var a = Math.atan2(y2 - y1, x2 - x1), h = 10 + (w || 2) * 2;
+  g.strokeStyle = col; g.fillStyle = col; g.lineWidth = w || 2; g.beginPath(); g.moveTo(x1, y1); g.lineTo(x2, y2); g.stroke();
+  g.beginPath(); g.moveTo(x2, y2); g.lineTo(x2 - h * Math.cos(a - 0.4), y2 - h * Math.sin(a - 0.4)); g.lineTo(x2 - h * Math.cos(a + 0.4), y2 - h * Math.sin(a + 0.4)); g.closePath(); g.fill();
+}
+/* wavelength (nm) to an sRGB colour, for spectra and rays */
+function wl(l, a){
+  var r = 0, gg = 0, b = 0;
+  if (l < 440){ r = -(l - 440) / 60; b = 1; } else if (l < 490){ gg = (l - 440) / 50; b = 1; } else if (l < 510){ gg = 1; b = -(l - 510) / 20; }
+  else if (l < 580){ r = (l - 510) / 70; gg = 1; } else if (l < 645){ r = 1; gg = -(l - 645) / 65; } else r = 1;
+  return "rgba(" + Math.round(255 * r) + "," + Math.round(255 * gg) + "," + Math.round(255 * b) + "," + (a === undefined ? 1 : a) + ")";
+}
+function rnd(k){ var s = Math.sin(k * 127.1 + 311.7) * 43758.5453; return s - Math.floor(s); }
+
+/* ------------------------------------------------------------ readouts */
+function drawReadouts(){
+  var r = L.ro, c = RUN.cfg, x = RUN.x, i, px, py, fd = RUN.found[c];
+  var names = { P: "P · aurora", Q: "Q · skylight", R: "R · rainbow", S: "S · fringes" };
+  var rows = [["Station", names[c]], [XR[c].lab, x.toFixed(XR[c].dp) + XR[c].unit]];
+  if (c === "P") rows.push(["Aurora brightness", ENGINE.aurora(x).toFixed(2)]);
+  else if (c === "Q") rows.push(["Polarization", (100 * ENGINE.pol(x * D2R)).toFixed(0) + " %"]);
+  else if (c === "R") rows.push(["Deviation red · violet", (ENGINE.dev(ENGINE.nWater(700), x * D2R) / D2R).toFixed(1) + "° · " + (ENGINE.dev(ENGINE.nWater(400), x * D2R) / D2R).toFixed(1) + "°"]);
+  else rows.push(["First dark band", ENGINE.slitMin(x, 1).toFixed(2) + " mm"]);
+  rows.push(["Phenomenon", fd ? "(" + fd.k + ") " + ENGINE.SHORT[fd.k] : "not measured yet"]);
+  panel(r.x, r.y, r.w, r.h);
+  for (i = 0; i < 4; i++){
+    if (L.phone){ px = r.x + 18 + (i < 3 ? (i % 2) * 348 : 0); py = r.y + 44 + (i < 2 ? 0 : i === 2 ? 1 : 2) * 80; }   /* the phenomenon gets a full-width row */
+    else { px = r.x + 20 + i * 290; py = r.y + 34; }
+    label(rows[i][0], px, py, L.fs - (L.phone ? 0 : 1), "#8fa6cf", "left", "700");
+    label(rows[i][1], px, py + (L.phone ? 40 : 38), (i === 3 ? L.big - 6 : L.big - (L.phone ? 4 : 1)), i === 3 ? (fd ? "#9ff0c8" : "#8fa6cf") : "#ffffff", "left", "800");
+  }
+}
+
+/* ------------------------------------------------------------ the four scenes */
+function sceneP(S){
+  var gr = g.createLinearGradient(0, S.y, 0, S.y + S.h); gr.addColorStop(0, "#01030c"); gr.addColorStop(1, "#0a1830");
+  g.fillStyle = gr; roundRect(S.x, S.y, S.w, S.h, 14); g.fill();
+  var k, hz = S.y + S.h - 70;
+  for (k = 0; k < 70; k++){ g.fillStyle = "rgba(255,255,255," + (0.3 + 0.5 * rnd(k)).toFixed(2) + ")"; g.fillRect(S.x + 10 + rnd(k + 9) * (S.w - 20), S.y + 10 + rnd(k + 99) * (hz - S.y - 30), 2, 2); }
+  /* curtain: green body, red top, violet hem */
+  var x0 = S.x + 40, x1 = S.x + S.w - 40, base, top, x, w = L.phone ? 5 : 4;
+  for (x = x0; x < x1; x += w){
+    var u = (x - x0) / (x1 - x0), wave = Math.sin(u * 9 + clock * 0.9) * 18 + Math.sin(u * 23 - clock * 1.7) * 7;
+    base = hz - 70 + wave; top = base - (S.h * 0.48) * (0.75 + 0.25 * Math.sin(u * 5 + clock * 0.5));
+    var fl = 0.55 + 0.45 * Math.sin(u * 40 + clock * 3.1) * Math.sin(u * 13 - clock * 1.3);
+    var cg = g.createLinearGradient(0, top, 0, base);
+    cg.addColorStop(0, "rgba(255,60,80,0)"); cg.addColorStop(0.25, "rgba(255,70,90," + (0.35 * fl).toFixed(2) + ")");
+    cg.addColorStop(0.6, "rgba(80,255,140," + (0.55 * fl).toFixed(2) + ")"); cg.addColorStop(0.96, "rgba(110,255,150," + (0.8 * fl).toFixed(2) + ")"); cg.addColorStop(1, "rgba(150,110,255,.8)");
+    g.fillStyle = cg; g.fillRect(x, top, w + 0.5, base - top);
+  }
+  /* field lines and spiralling electrons */
+  var px = S.x + S.w * 0.62;
+  g.strokeStyle = "rgba(160,190,255,.35)"; g.setLineDash([6, 6]); g.lineWidth = 1.5;
+  for (k = -2; k <= 2; k++){ g.beginPath(); g.moveTo(px + k * 70, S.y + 20); g.quadraticCurveTo(px + k * 34, hz - 140, px + k * 8, hz); g.stroke(); }
+  g.setLineDash([]);
+  var cols = ["rgba(90,255,150,1)", "rgba(255,90,100,1)", "rgba(170,130,255,1)"];
+  for (k = 0; k < 12; k++){
+    var s = ((clock * 0.18 + k / 12) % 1), ln = (k % 5) - 2;
+    var lx = px + ln * 70 * (1 - s) + ln * 8 * s, ly = S.y + 20 + s * (hz - 120 - S.y - 20);
+    g.fillStyle = "#cfe0ff"; g.beginPath(); g.arc(lx + 9 * Math.sin(s * 40 + k), ly, 3.5, 0, Math.PI * 2); g.fill();
+    if (s > 0.62){ g.fillStyle = cols[k % 3]; g.globalAlpha = Math.max(0, 1 - (s - 0.62) * 3); g.beginPath(); g.arc(lx, ly, 10, 0, Math.PI * 2); g.fill(); g.globalAlpha = 1; }
+  }
+  g.fillStyle = "#04060c"; g.fillRect(S.x, hz, S.w, S.y + S.h - hz); g.beginPath(); g.moveTo(S.x, hz); for (x = S.x; x <= S.x + S.w; x += 20) g.lineTo(x, hz - 8 - 10 * rnd(x)); g.lineTo(S.x + S.w, hz + 2); g.closePath(); g.fill();
+  backed("electrons from the Sun follow the field lines", S.x + 16, S.y + (L.phone ? 40 : 30), L.fs - (L.phone ? 0 : 1), "#cfe0ff", "left");
+  backed("O and N₂ hit and excited (≈ 100–300 km)", S.x + 16, hz - (L.phone ? 210 : 230), L.fs - (L.phone ? 0 : 1), "#9ff0c8", "left");
+  label("polar horizon", S.x + 16, S.y + S.h - 22, L.fs - (L.phone ? 0 : 1), "#8fa6cf", "left", "700");
+}
+function sceneQ(S){
+  var gr = g.createLinearGradient(0, S.y, 0, S.y + S.h); gr.addColorStop(0, "#2d6fd6"); gr.addColorStop(1, "#9cc8f5");
+  g.fillStyle = gr; roundRect(S.x, S.y, S.w, S.h, 14); g.fill();
+  var th = RUN.x * D2R, sy = S.y + S.h * 0.30, sx = S.x + 56;
+  var mx = S.x + S.w * 0.42, my = sy, R = Math.min(S.w * 0.42, S.h * (L.phone ? 0.40 : 0.52));
+  var sg = g.createRadialGradient(sx, sy, 4, sx, sy, 60); sg.addColorStop(0, "#fffbe0"); sg.addColorStop(0.4, "rgba(255,230,140,.9)"); sg.addColorStop(1, "rgba(255,230,140,0)");
+  g.fillStyle = sg; g.beginPath(); g.arc(sx, sy, 60, 0, Math.PI * 2); g.fill();
+  label("Sun", sx, sy + (L.phone ? 74 : 64), L.fs, "#0b1530", "center", "800");
+  /* unpolarized sunlight towards the molecule */
+  var k, xx;
+  g.strokeStyle = "rgba(255,250,220,.95)"; g.lineWidth = 6; g.beginPath(); g.moveTo(sx + 40, sy); g.lineTo(mx - 16, my); g.stroke();
+  for (k = 0; k < 4; k++){ xx = sx + 90 + k * (mx - sx - 120) / 3; g.strokeStyle = "#fff"; g.lineWidth = 2.5; g.beginPath(); g.moveTo(xx, sy - 14); g.lineTo(xx, sy + 14); g.stroke(); g.fillStyle = "#fff"; g.beginPath(); g.arc(xx, sy, 4, 0, Math.PI * 2); g.fill(); }
+  /* the molecule, driven to oscillate */
+  var osc = Math.sin(clock * 9) * 6;
+  g.fillStyle = "#ffd166"; g.beginPath(); g.arc(mx, my + osc, 12, 0, Math.PI * 2); g.fill(); g.strokeStyle = "#7a5a00"; g.lineWidth = 2; g.stroke();
+  backed("air molecule", mx, my - (L.phone ? 32 : 26), L.fs - (L.phone ? 0 : 1), "#ffe9a8", "center");
+  /* scattered ray to the observer at angle theta (measured from the sunlight's direction) */
+  var ox = mx + R * Math.cos(th), oy = my + R * Math.sin(th);
+  arrow(mx + 14 * Math.cos(th), my + 14 * Math.sin(th), ox - 30 * Math.cos(th), oy - 30 * Math.sin(th), "rgba(255,255,255,.95)", 4);
+  /* polarization along the scattered ray: dots (perpendicular to the page, full) and bars (in the page, x |cos theta|) */
+  var pc = Math.abs(Math.cos(th)), nx = -Math.sin(th), ny = Math.cos(th);
+  for (k = 1; k <= 3; k++){
+    var f = k / 4, qx = mx + R * f * Math.cos(th), qy = my + R * f * Math.sin(th);
+    g.fillStyle = "#3b1d00"; g.beginPath(); g.arc(qx, qy, 4.5, 0, Math.PI * 2); g.fill();
+    if (pc > 0.04){ g.strokeStyle = "#3b1d00"; g.lineWidth = 3; g.beginPath(); g.moveTo(qx - nx * 16 * pc, qy - ny * 16 * pc); g.lineTo(qx + nx * 16 * pc, qy + ny * 16 * pc); g.stroke(); }
+  }
+  /* the observer's polarizer, its axis turning; transmitted brightness between Imin and Imax */
+  var phi = clock * 1.6, P = ENGINE.pol(th), It = 0.5 * (1 + P * Math.cos(2 * phi));
+  g.fillStyle = "rgba(20,30,50,.85)"; g.beginPath(); g.arc(ox, oy, 30, 0, Math.PI * 2); g.fill();
+  g.strokeStyle = "rgba(255,255,255," + (0.25 + 0.75 * It).toFixed(2) + ")"; g.lineWidth = 6; g.beginPath(); g.moveTo(ox - 24 * Math.cos(phi), oy - 24 * Math.sin(phi)); g.lineTo(ox + 24 * Math.cos(phi), oy + 24 * Math.sin(phi)); g.stroke();
+  backed("you + polarizer", ox, oy + (L.phone ? 62 : 54), L.fs - (L.phone ? 0 : 1), "#ffffff", "center");
+  g.strokeStyle = "rgba(11,21,48,.55)"; g.lineWidth = 2; g.setLineDash([5, 5]); g.beginPath(); g.moveTo(mx, my); g.lineTo(mx + 120, my); g.stroke(); g.setLineDash([]);
+  g.beginPath(); g.arc(mx, my, 70, 0, th, false); g.stroke();
+  backed("θ = " + RUN.x.toFixed(0) + "°", mx + 78 * Math.cos(th / 2) + 8, my + 78 * Math.sin(th / 2) + 12, L.fs, "#ffffff", "left");
+  backed("polarized " + (100 * P).toFixed(0) + " %  (• out of page, ↕ in page)", S.x + 16, S.y + S.h - 22, L.fs - (L.phone ? 0 : 1), "#ffffff", "left");
+}
+function traceDrop(n, i){
+  var b = Math.sin(i), p = [-Math.sqrt(1 - b * b), b], d = [1, 0];
+  function refract(d, nm, n1, n2){ var ci = -(nm[0] * d[0] + nm[1] * d[1]); if (ci < 0){ nm = [-nm[0], -nm[1]]; ci = -ci; } var r = n1 / n2, k = 1 - r * r * (1 - ci * ci); return [r * d[0] + (r * ci - Math.sqrt(k)) * nm[0], r * d[1] + (r * ci - Math.sqrt(k)) * nm[1]]; }
+  var d1 = refract(d, p, 1, n), t = -2 * (p[0] * d1[0] + p[1] * d1[1]), q = [p[0] + t * d1[0], p[1] + t * d1[1]];
+  var dq = d1[0] * q[0] + d1[1] * q[1], d2 = [d1[0] - 2 * dq * q[0], d1[1] - 2 * dq * q[1]];
+  var t2 = -2 * (q[0] * d2[0] + q[1] * d2[1]), s = [q[0] + t2 * d2[0], q[1] + t2 * d2[1]];
+  return { p: p, q: q, s: s, out: refract(d2, s, n, 1), thru: refract(d1, [-q[0], -q[1]], n, 1) };
+}
+function sceneR(S){
+  var gr = g.createLinearGradient(0, S.y, 0, S.y + S.h); gr.addColorStop(0, "#1a2a44"); gr.addColorStop(1, "#33465f");
+  g.fillStyle = gr; roundRect(S.x, S.y, S.w, S.h, 14); g.fill();
+  var Rd = Math.min(S.w, S.h) * (L.phone ? 0.30 : 0.31), cx = S.x + S.w * 0.52, cy = S.y + S.h * (L.phone ? 0.56 : 0.48), i = RUN.x * D2R;
+  var dg = g.createRadialGradient(cx - Rd * 0.3, cy - Rd * 0.3, Rd * 0.1, cx, cy, Rd); dg.addColorStop(0, "rgba(220,240,255,.45)"); dg.addColorStop(1, "rgba(120,170,230,.22)");
+  g.fillStyle = dg; g.beginPath(); g.arc(cx, cy, Rd, 0, Math.PI * 2); g.fill(); g.strokeStyle = "rgba(200,230,255,.8)"; g.lineWidth = 2.5; g.stroke();
+  function P(v){ return [cx + Rd * v[0], cy - Rd * v[1]]; }
+  if (i < 0.003) i = 0.003;
+  var tr = traceDrop(ENGINE.nWater(700), i), tv = traceDrop(ENGINE.nWater(400), i), e = P(tr.p);
+  g.strokeStyle = "#ffffff"; g.lineWidth = 5; g.beginPath(); g.moveTo(S.x + 10, e[1]); g.lineTo(e[0], e[1]); g.stroke();
+  label("sunlight", S.x + 16, e[1] - 12, L.fs - (L.phone ? 0 : 1), "#ffffff", "left", "800");
+  [[tv, wl(410)], [tr, wl(690)]].forEach(function(z){
+    var t = z[0], col = z[1], q = P(t.q), s = P(t.s), out = t.out, thru = t.thru;
+    g.strokeStyle = col; g.lineWidth = 3.5; g.beginPath(); g.moveTo(e[0], e[1]); g.lineTo(q[0], q[1]); g.lineTo(s[0], s[1]); g.stroke();
+    arrow(s[0], s[1], s[0] + out[0] * Rd * 0.55, s[1] - out[1] * Rd * 0.55, col, 3.5);
+    g.strokeStyle = col.replace(",1)", ",.28)"); g.lineWidth = 3; g.beginPath(); g.moveTo(q[0], q[1]); g.lineTo(q[0] + thru[0] * Rd * 0.6, q[1] - thru[1] * Rd * 0.6); g.stroke();
+  });
+  var qb = P(tr.q), rIn = Math.asin(Math.sin(i) / ENGINE.nWater(700)) / D2R;
+  backed("back of the drop: " + rIn.toFixed(1) + "° " + (rIn < RED.crit / D2R ? "<" : "≥") + " critical " + (RED.crit / D2R).toFixed(1) + "°", S.x + 16, S.y + (L.phone ? 40 : 30), L.fs - (L.phone ? 0 : 1), rIn < RED.crit / D2R ? "#ffd166" : "#ff8a8a", "left");
+  backed(rIn < RED.crit / D2R ? "partial reflection: most light leaves (faint)" : "total internal reflection", S.x + 16, S.y + (L.phone ? 76 : 56), L.fs - (L.phone ? 0 : 1), "#cfe0ff", "left");
+  backed("bow: red " + (RED.bow / D2R).toFixed(1) + "° · violet " + (VIO.bow / D2R).toFixed(1) + "° (dispersion)", S.x + S.w - 16, S.y + S.h - 22, L.fs - (L.phone ? 0 : 1), "#ffffff", "right");
+}
+function sceneS(S){
+  g.fillStyle = "#070b16"; roundRect(S.x, S.y, S.w, S.h, 14); g.fill();
+  var cy = S.y + S.h * 0.5, xl = S.x + 30, xb = S.x + S.w * 0.36, xs = S.x + S.w - 70, a = RUN.cfg === "S" ? RUN.x : 0.10;
+  var gap = 10 + a * 70, sh = S.h - 110;
+  g.fillStyle = "#3a4560"; roundRect(xl, cy - 22, 70, 44, 6); g.fill(); label("laser", xl + 35, cy + 6, L.fs - (L.phone ? 0 : 2), "#ffffff", "center", "800");
+  g.strokeStyle = "rgba(255,70,70,.95)"; g.lineWidth = 6; g.beginPath(); g.moveTo(xl + 70, cy); g.lineTo(xb, cy); g.stroke();
+  g.fillStyle = "#9aa7c2"; g.fillRect(xb - 5, S.y + 40, 10, cy - gap / 2 - S.y - 40); g.fillRect(xb - 5, cy + gap / 2, 10, S.y + S.h - 40 - cy - gap / 2);
+  /* wavefronts spreading from the slit */
+  var k, ph = (clock * 40) % 34;
+  for (k = 0; k < 9; k++){ var rr = 14 + k * 34 + ph; if (xb + rr > xs) break; g.strokeStyle = "rgba(255,90,90," + (0.5 - k * 0.045).toFixed(2) + ")"; g.lineWidth = 2; g.beginPath(); g.arc(xb, cy, rr, -0.9, 0.9); g.stroke(); }
+  /* the screen: brightness from the slit pattern, filled photon by photon during the run */
+  var fill = RUN.cfg === "S" && RUN.phase === "sweep" ? Math.min(1, RUN.st / SWEEP_T) : 1, ymm, y, I;
+  g.fillStyle = "#111"; g.fillRect(xs, S.y + 40, 40, sh);
+  for (y = 0; y < sh; y += 2){ ymm = (y - sh / 2) / (sh / 2) * 20; I = Math.sqrt(ENGINE.slitI(a, ymm)); g.fillStyle = "rgba(255,60,60," + (I * fill).toFixed(3) + ")"; g.fillRect(xs, S.y + 40 + y, 40, 2); }   /* shown as the square root of the brightness, so the side fringes are visible */
+  if (fill < 1) for (k = 0; k < 160 * fill; k++){ var yy = rnd(k * 3.1) * sh, I2 = ENGINE.slitI(a, (yy - sh / 2) / (sh / 2) * 20); if (rnd(k * 7.7) < Math.sqrt(I2)){ g.fillStyle = "#ffd0d0"; g.fillRect(xs + 4 + rnd(k) * 32, S.y + 40 + yy, 3, 3); } }
+  label("slit", xb, S.y + 30, L.fs - (L.phone ? 0 : 1), "#cfe0ff", "center", "800");
+  label("screen", xs + 20, S.y + 30, L.fs - (L.phone ? 0 : 1), "#cfe0ff", "center", "800");
+  backed("a = " + a.toFixed(3) + " mm (drawn enlarged) · λ = 633 nm", S.x + 16, S.y + S.h - 22, L.fs - (L.phone ? 0 : 1), "#ffffff", "left");
+  backed("screen shows √brightness", S.x + S.w - 16, S.y + S.h - (L.phone ? 62 : 52), L.fs - (L.phone ? 0 : 1), "#ffd0d0", "right");
+}
+function drawScene(){
+  var S = L.sc;
+  g.save(); roundRect(S.x, S.y, S.w, S.h, 14); g.clip();
+  if (RUN.cfg === "P") sceneP(S); else if (RUN.cfg === "Q") sceneQ(S); else if (RUN.cfg === "R") sceneR(S); else sceneS(S);
+  g.restore();
+}
+
+/* ------------------------------------------------------------ the measurement plot and the match table */
+function drawPlot(){
+  var P = L.plot, c = RUN.cfg, x = RUN.x, ph = L.phone;
+  panel(P.x, P.y, P.w, P.h);
+  var titles = { P: "SPECTRUM · aurora (lines) vs scattered sky", Q: "POLARIZATION P = sin²θ/(1 + cos²θ) vs θ", R: "DEVIATION vs angle of incidence", S: "SCREEN BRIGHTNESS vs position" };
+  label(titles[c], P.x + 18, P.y + (ph ? 38 : 30), L.fs, "#cfe0ff", "left", "800");
+  var x0 = P.x + (ph ? 84 : 62), x1 = P.x + P.w - 22, y0 = P.y + (ph ? 300 : 300), y1 = P.y + (ph ? 64 : 52), k, X, Y, t;
+  g.strokeStyle = "rgba(200,215,240,.6)"; g.lineWidth = 1.5; g.beginPath(); g.moveTo(x0, y1); g.lineTo(x0, y0); g.lineTo(x1, y0); g.stroke();
+  function line(fn, n, a, b, Xf, Yf, col, w, dash){ g.strokeStyle = col; g.lineWidth = w; if (dash) g.setLineDash(dash); g.beginPath(); for (k = 0; k <= n; k++){ t = a + (b - a) * k / n; if (k) g.lineTo(Xf(t), Yf(fn(t))); else g.moveTo(Xf(t), Yf(fn(t))); } g.stroke(); g.setLineDash([]); }
+  var lab = L.fs - (ph ? 0 : 2);
+  if (c === "P"){
+    X = function(l){ return x0 + (l - 400) / 300 * (x1 - x0); }; Y = function(v){ return y0 - v * (y0 - y1) * 0.92; };
+    for (t = 400; t < 700; t += 2){ g.fillStyle = wl(t, 0.18); g.fillRect(X(t), y0 + 2, X(t + 2) - X(t) + 0.5, 10); }
+    line(ENGINE.sky, 150, 400, 700, X, Y, "rgba(140,190,255,.85)", 2, [6, 5]);
+    var lim = RUN.phase === "sweep" && RUN.cfg === "P" ? x : 700;
+    for (t = 400; t <= lim; t += 0.25){ var v = ENGINE.aurora(t); if (v > 0.01){ g.strokeStyle = wl(t); g.lineWidth = 2; g.beginPath(); g.moveTo(X(t), y0); g.lineTo(X(t), Y(v)); g.stroke(); } }
+    PEAKS.forEach(function(pk){ if (pk.l <= lim) backed(pk.l.toFixed(1) + " nm", X(pk.l), Y(pk.h) - 10, lab, pk.l < 450 ? "#c9b3ff" : wl(pk.l), "center"); });
+    g.strokeStyle = "#ffffff"; g.lineWidth = 1.5; g.beginPath(); g.moveTo(X(x), y1); g.lineTo(X(x), y0); g.stroke();
+    label("400", x0, y0 + (ph ? 40 : 30), lab, "#8fa6cf", "center", "700"); label("700 nm", x1, y0 + (ph ? 40 : 30), lab, "#8fa6cf", "right", "700");
+    backed("scattered sky: smooth", x1 - 6, Y(ENGINE.sky(690)) - 14, lab, "rgba(140,190,255,1)", "right");
+  } else if (c === "Q"){
+    X = function(d){ return x0 + d / 180 * (x1 - x0); }; Y = function(v){ return y0 - v * (y0 - y1) * 0.9; };
+    line(function(d){ return 0; }, 2, 0, 180, X, Y, "rgba(255,140,140,.9)", 3, [7, 5]);
+    var lq = RUN.phase === "sweep" && RUN.cfg === "Q" ? x : 180;
+    line(function(d){ return ENGINE.pol(d * D2R); }, 180, 0, lq, X, Y, "#9ff0c8", 3.5);
+    g.fillStyle = "#ffffff"; g.beginPath(); g.arc(X(x), Y(ENGINE.pol(x * D2R)), 7, 0, Math.PI * 2); g.fill();
+    backed("total internal reflection: 0", x1, y0 - 12, lab, "#ff9c9c", "right");
+    label("0°", x0, y0 + (ph ? 40 : 30), lab, "#8fa6cf", "center", "700"); label("90°", X(90), y0 + (ph ? 40 : 30), lab, "#8fa6cf", "center", "700"); label("180°", x1, y0 + (ph ? 40 : 30), lab, "#8fa6cf", "right", "700");
+    label("1", x0 - 12, Y(1) + 6, lab, "#8fa6cf", "right", "700"); label("0", x0 - 12, y0, lab, "#8fa6cf", "right", "700");
+  } else if (c === "R"){
+    X = function(d){ return x0 + d / 90 * (x1 - x0); }; Y = function(D){ return y0 - (D - 130) / 50 * (y0 - y1); };
+    var lr = RUN.phase === "sweep" && RUN.cfg === "R" ? Math.max(0.2, x) : 89.5;
+    line(function(d){ return ENGINE.dev(ENGINE.nWater(400), d * D2R) / D2R; }, 150, 0.2, lr, X, Y, wl(410), 3);
+    line(function(d){ return ENGINE.dev(ENGINE.nWater(700), d * D2R) / D2R; }, 150, 0.2, lr, X, Y, wl(690), 3);
+    if (RUN.found.R || RUN.cfg === "R" && RUN.phase !== "sweep"){
+      [[RED, wl(690), "red"], [VIO, wl(410), "violet"]].forEach(function(z, j){ var m = z[0]; g.fillStyle = z[1]; g.beginPath(); g.arc(X(m.i / D2R), Y(m.D / D2R), 6, 0, Math.PI * 2); g.fill();
+        backed("min " + (m.D / D2R).toFixed(1) + "°", X(m.i / D2R) + (j ? -14 : 14), Y(m.D / D2R) + (j ? -16 : 34), lab, j ? "#c9b3ff" : "#ff8f8f", j ? "right" : "left"); });
+    }
+    g.strokeStyle = "#ffffff"; g.lineWidth = 1.5; g.beginPath(); g.moveTo(X(x), y1); g.lineTo(X(x), y0); g.stroke();
+    label("0°", x0, y0 + (ph ? 40 : 30), lab, "#8fa6cf", "center", "700"); label("i = 90°", x1, y0 + (ph ? 40 : 30), lab, "#8fa6cf", "right", "700");
+    label("180°", x0 - 10, y1 + 6, lab, "#8fa6cf", "right", "700"); label("130°", x0 - 10, y0, lab, "#8fa6cf", "right", "700");
+  } else {
+    var a = x; X = function(ym){ return x0 + (ym + 20) / 40 * (x1 - x0); }; Y = function(v){ return y0 - v * (y0 - y1) * 0.9; };
+    line(function(ym){ return ENGINE.slitI(a, ym); }, 300, -20, 20, X, Y, "#ff7a7a", 3);
+    for (k = 1; k <= 3; k++){ var ym = ENGINE.slitMin(a, k); if (ym < 20){ g.fillStyle = "#ffffff"; g.beginPath(); g.arc(X(ym), y0, 5, 0, Math.PI * 2); g.arc(X(-ym), y0, 5, 0, Math.PI * 2); g.fill(); } }
+    var y1m = ENGINE.slitMin(a, 1);
+    if (y1m < 20) backed("dark: a sin θ = λ", X(y1m) + 8, y0 - 26, lab, "#ffffff", "left");
+    label("−20", x0, y0 + (ph ? 40 : 30), lab, "#8fa6cf", "center", "700"); label("0", X(0), y0 + (ph ? 40 : 30), lab, "#8fa6cf", "center", "700"); label("+20 mm", x1, y0 + (ph ? 40 : 30), lab, "#8fa6cf", "right", "700");
+  }
+  /* the match table */
+  var ty = P.y + (ph ? 378 : 372), rowH = ph ? 40 : 46;
+  label("MATCH (measurement → List-II)", P.x + 18, ty, L.fs, "#cfe0ff", "left", "800");
+  var what = { P: "3 sharp lines", Q: "P(90°) = 100 %", R: (RED.bow / D2R).toFixed(1) + "° / " + (VIO.bow / D2R).toFixed(1) + "°, partial", S: "dark at a sin θ = mλ" };
+  ENGINE.CFGS.forEach(function(cc, j){
+    var fd = RUN.found[cc], yy = ty + (j + 1) * rowH;
+    if (fd) label(cc + ": " + what[cc] + " → (" + fd.k + ") " + ENGINE.SHORT[fd.k], P.x + 22, yy, L.fs - (L.phone ? 0 : 1), "#ffffff", "left", "800");
+    else label(cc + ": not measured yet", P.x + 22, yy, L.fs - (L.phone ? 0 : 1), "#6f84aa", "left", "700");
+  });
+  if (RUN.done && RUN.measured && RUN.measured.option) label("= option (" + RUN.measured.option + ")", P.x + P.w - 22, ty, L.big - 2, "#7dffb8", "right", "800");
+}
+function draw(){
+  minPx = 999;
+  L = layout();
+  if (cv.width !== L.W || cv.height !== L.H){ cv.width = L.W; cv.height = L.H; }
+  var bg = g.createLinearGradient(0, 0, 0, L.H); bg.addColorStop(0, "#0b1226"); bg.addColorStop(1, "#04060c"); g.fillStyle = bg; g.fillRect(0, 0, L.W, L.H);
+  drawReadouts(); drawScene(); drawPlot();
+}
+
+/* ------------------------------------------------------------ controls */
+function setSpeed(k){ RUN.speed = k; $("sp1").setAttribute("aria-pressed", k === 1 ? "true" : "false"); $("sp2").setAttribute("aria-pressed", k === 0.5 ? "true" : "false"); }
+$("gobtn").addEventListener("click", start);
+$("replaybtn").addEventListener("click", replay);
+$("resetbtn").addEventListener("click", reset);
+$("sp1").addEventListener("click", function(){ setSpeed(1); });
+$("sp2").addEventListener("click", function(){ setSpeed(0.5); });
+["P", "Q", "R", "S"].forEach(function(k){ $("c" + k).addEventListener("click", function(){ setCfg(k); }); });
+$("in_x").addEventListener("input", function(){ setX(this.value); });
+$("classbtn").addEventListener("click", function(){
+  var on = document.body.classList.toggle("classroom"); this.setAttribute("aria-pressed", on ? "true" : "false");
+  this.textContent = on ? "Exit classroom" : "Classroom";
+});
+$("themebtn").addEventListener("click", function(){
+  var r = document.documentElement, dark = r.getAttribute("data-theme") === "dark" || (!r.getAttribute("data-theme") && window.matchMedia && matchMedia("(prefers-color-scheme: dark)").matches);
+  r.setAttribute("data-theme", dark ? "light" : "dark");
+});
+
+var lastT = null;
+function loop(ts){
+  if (lastT === null) lastT = ts;
+  var dt = Math.min(0.05, Math.max(0, (ts - lastT) / 1000)); lastT = ts;
+  tick(dt); draw();
+  requestAnimationFrame(loop);
+}
+
+window.PX = {
+  ENGINE: ENGINE, QRUN: QRUN, ANS: ANS, RUN: RUN,
+  answer: function(){ return ANS; },
+  minLabelPx: function(){ draw(); return minPx; },
+  start: start, replay: replay, reset: reset, setSpeed: setSpeed, speed: function(k){ RUN.speed = k; }, setCfg: setCfg, setX: setX,
+  state: function(){ return { state: RUN.state, phase: RUN.phase, cfg: RUN.cfg, x: RUN.x, ci: RUN.ci, found: RUN.found, measured: RUN.measured || null, done: RUN.done, confirmed: RUN.confirmed }; }
+};
+
+$("solans").textContent = ANS ? "(" + ANS + ")" : "";
+setCfg("P"); refreshButtons(); draw();
+window.addEventListener("resize", function(){ draw(); });
+requestAnimationFrame(loop);
+})();
+</script>
+</body>
+</html>
