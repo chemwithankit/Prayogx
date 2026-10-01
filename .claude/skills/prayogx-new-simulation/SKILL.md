@@ -100,7 +100,17 @@ code.
 19. **Metadata:** write `meta.json` and `question.md` (see `prayogx-register`).
 20. **Register:** follow `prayogx-register`.
 21. **Generated-content validation:** the four tools plus the drift gate, all green.
-22. **Report:** use the format below, then **stop**. Don't commit unless the owner has
+22. **Reel (automatic for every NEW simulation):** only after steps 17–21 are green, so the page is
+    validated and in the website and app feed. Run
+    `node tools/reel-maker/generate-reel.js <ID> --draft`, which records the page read-only and writes
+    `tools/reel-maker/reels/<ID>.json`. Then write the story: a question-specific hook, problem line,
+    curiosity line, the moments (the page's phases), callouts, the aha and the caption. Check it with
+    `--preview t1,t2,…`, look at the frames, and run `node tools/reel-maker/generate-reel.js <ID> --origin new-simulation`
+    (or `auto_sim.py reel <batch> <n>` in the factory). It must end `18 / 18 reel checks passed` and
+    `READY FOR MANUAL REVIEW`. If the reel fails, fix the story or the reel tooling, never the
+    simulation. If it still fails, report "Simulation complete; Reel generation failed."
+    Existing simulations never get a reel unless the owner asks for one (`tools/reel-maker/README.md`).
+23. **Report:** use the format below, then **stop**. Don't commit unless the owner has
     authorised it; never push.
 
 ## Design brief template
@@ -133,5 +143,7 @@ VERIFICATION  verifier N/N · page suite N/N · visual gates A–K (measured pas
               independent answer <x> · official key <x> · published solution <x or n/a>
 ISSUES        <anything not done or not verified — say so plainly>
 REGISTRY      manifest (N simulations) · taxonomy · tracker.csv · README row · tests registered
+REEL          tools/reel-maker/output/<ID>/reel.mp4 · <s> s · 18/18 reel checks · READY FOR MANUAL REVIEW
+              (or: Simulation complete; Reel generation failed — <why>)
 NEXT          owner reviews; publish with ./publish.sh when approved
 ```

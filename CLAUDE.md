@@ -60,6 +60,16 @@ CAUSE → PROCESS → EFFECT, never decoration. Prediction is optional and non-b
 visible. The answer is not shown before the run. Full standard:
 [docs/SIMULATION_STANDARDS.md](docs/SIMULATION_STANDARDS.md).
 
+## Reels (tools/reel-maker)
+
+- **New simulation → reel automatically**, after it is validated and integrated
+  (`prayogx-new-simulation` step 22, pipeline §7a). **Existing simulation → a reel only when the owner
+  explicitly asks** ("Generate a Reel for Q3"), with `node tools/reel-maker/generate-reel.js <ID>`.
+- A reel treats the simulation as a read-only source: no edits to its page, tests, data or the catalogue.
+  A reel problem is fixed in the reel story (`tools/reel-maker/reels/<ID>.json`) or the reel tooling.
+- Every reel must pass all 18 reel checks and is reported **READY FOR MANUAL REVIEW**. Outputs stay in
+  `tools/reel-maker/output/` (git-ignored, never deployed). No Instagram publishing.
+
 ## Registry and generated files
 
 - ID `ADV-<YEAR>-P<n>-<SUBJ>-Q<NN>`, with `SUBJ` one of `PHY | CHE | MAT`; concept simulations

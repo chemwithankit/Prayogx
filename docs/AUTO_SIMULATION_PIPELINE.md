@@ -199,6 +199,24 @@ Production, per item, after stage 16:
 
 A failed deploy or smoke test is a **critical** failure: the batch stops (§8).
 
+## 7a. The reel
+
+Every **new** question simulation gets an Instagram reel once it is validated and integrated: after
+`production_audit_complete` for a local build, and after `live_smoke_test_complete` in production. Write the
+story spec (`node tools/reel-maker/generate-reel.js <ID> --draft`, then edit and `--preview`), then run
+`python3 tools/auto_sim.py reel <batch> <n>`. That runs the generator with `--origin new-simulation`, which
+records the real page read-only, composes, encodes and runs 18 reel checks. The outcome is stored on the item as
+`reel: ready-for-review | failed` and shown in the REEL column of `auto_sim.py report`.
+
+The reel is **not** one of the 21 stages. A reel failure never blocks, fails or undoes the simulation; it is
+reported as "Simulation complete; Reel generation failed." and fixed in the reel story or tooling. The simulation
+itself is never touched (the generator hashes its folder before and after).
+
+**Existing simulations** get a reel only when the owner asks for one, directly with
+`node tools/reel-maker/generate-reel.js <ID>` (origin `on-request`), never automatically. Reels are never
+published from here: Instagram publishing is a later phase. Reel files live in `tools/reel-maker/output/`
+(git-ignored; `tools/` is never deployed).
+
 ## 8. State, failures and resume
 
 State lives in `.tmp/auto-simulation/batch-<timestamp>/` (git-ignored, never deployed):
@@ -236,7 +254,7 @@ interim §5 gates; mathematics blocked in production; PDF pages rendered with `p
 Per item, the `PRAYOGX AUTO BUILD COMPLETE` block (type, ID, source, official answer, each gate
 PASS / FAIL with counts, commit, LIVE / NOT DEPLOYED, live URL, warnings). Per batch,
 `python3 tools/auto_sim.py report <batch>`: the ITEM | TYPE | ID | STATUS | SCIENCE | TESTS |
-DEPLOYMENT table and TOTAL / COMPLETED / BLOCKED / FAILED / DEPLOYED / NOT DEPLOYED. A batch with
+DEPLOYMENT | REEL table and TOTAL / COMPLETED / BLOCKED / FAILED / DEPLOYED / NOT DEPLOYED. A batch with
 a blocked or failed item is never reported as a success. Status language follows
 `SIMULATION_STANDARDS.md` §9: automated verification is never called human verification.
 

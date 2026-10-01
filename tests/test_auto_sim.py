@@ -82,6 +82,17 @@ try:
     chk("the factory's manual gates are exactly the checker's (B, G, H); the rest are measured",
         sorted(g[0] for g in A.VISUAL_GATES if g[2] == "manual") == sorted(re.findall(r"\b([A-K]):", manual_js)) == ["B", "G", "H"])
     chk("the visual QA stage runs the checker and the screenshot review", "tests/visual_gates.js" in dict((s[0], s[1]) for s in A.STAGES)["visual_qa_complete"])
+
+    # ------------------------------------------------------------ the reel of a new simulation (tools/reel-maker)
+    chk("the reel is not a stage: the 21 stages are unchanged, so a reel failure never blocks a simulation",
+        len(A.STAGE_NAMES) == 21 and not any("reel" in x for x in A.STAGE_NAMES))
+    rb = batch([q(UNBUILT_PHY, "Physics")])
+    chk("no reel in a dry-run batch", "dry-run" in (raises(A.reel, rb, 1) or ""), raises(A.reel, rb, 1))
+    rp = batch([q(UNBUILT_PHY, "Physics")], mode="production")
+    chk("no reel before the simulation has passed production_audit_complete",
+        "production_audit_complete" in (raises(A.reel, rp, 1) or ""), raises(A.reel, rp, 1))
+    chk("the reel command names the generator and records on the item, not as a stage",
+        "generate-reel.js" in open(os.path.join(ROOT, "tools", "auto_sim.py"), encoding="utf-8").read() and os.path.exists(os.path.join(ROOT, "tools", "reel-maker", "generate-reel.js")))
     chk("the design stage records the layout v3 decisions (no dropdowns, what is removed, what is seen first)",
         all(w in dict((s[0], s[1]) for s in A.STAGES)["design_complete"] for w in ("main visual object", "no dropdowns", "what is removed", "sees first")))
 

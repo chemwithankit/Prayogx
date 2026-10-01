@@ -1,0 +1,101 @@
+{
+  "simulationId": "ADV-2026-P1-PHY-Q03",
+  "template": "question-simulation-v1",
+  "fps": 30,
+  "record": {
+    "viewport": {
+      "width": 420,
+      "height": 860,
+      "deviceScaleFactor": 2.6
+    },
+    "actions": [
+      {
+        "eval": "PX.start()"
+      }
+    ],
+    "tailSeconds": 2.2,
+    "maxSeconds": 60
+  },
+  "regions": {
+    "upper": [0, 0, 720, 556],
+    "scene": [0, 190, 720, 560]
+  },
+  "story": {
+    "hook": {
+      "beats": ["Rolling.", "Tipping.", "Flying off."],
+      "colors": ["#7cc4ff", "#ffc94d", "#5dffa0"],
+      "line": "At what *speed* does it leave the edge?"
+    },
+    "question": {
+      "kind": "option",
+      "highlight": []
+    },
+    "problem": ["Energy alone won't tell you…", "you need the exact moment *contact is lost*."],
+    "curiosity": "Can we *SEE* the moment it lets go?",
+    "momentKicker": "SLOW MOTION",
+    "moments": [
+      {
+        "id": "roll",
+        "phases": ["roll"],
+        "seconds": 3.0,
+        "region": "upper",
+        "label": "IT ROLLS TO THE EDGE",
+        "sub": "v₀ = √(gR/3), no slipping",
+        "callout": {
+          "text": "v₀² = gR/3: too slow to jump",
+          "anchor": [190, 205],
+          "side": "lane",
+          "from": 0.35
+        }
+      },
+      {
+        "id": "pivot",
+        "phases": ["pivot"],
+        "seconds": 3.2,
+        "region": "upper",
+        "label": "IT TIPS ROUND THE CORNER",
+        "sub": "the corner is now the pivot",
+        "callout": {
+          "text": "the corner's push N falls",
+          "anchor": [400, 168],
+          "side": "lane",
+          "from": 0.3
+        }
+      },
+      {
+        "id": "release",
+        "phases": ["release"],
+        "seconds": 3.0,
+        "region": "upper",
+        "label": "THE CORNER LETS GO",
+        "sub": "watch the push N",
+        "callout": {
+          "text": "N = 0 → contact lost",
+          "anchor": [357, 496],
+          "side": "lane",
+          "from": 0.3
+        },
+        "aha": {
+          "seconds": 3.0,
+          "zoom": [0, 400, 600, 345],
+          "kicker": "THE KEY MOMENT",
+          "lines": ["N = 0 at θ = 44.4°", "mg cos θ = mv²/R", "so *v² = 5gR/7*"]
+        }
+      }
+    ],
+    "answer": {},
+    "payoff": ["DON'T JUST SOLVE IT.", "*EXPERIENCE* IT."]
+  },
+  "thumbnail": {
+    "kicker": "JEE ADVANCED 2026",
+    "lines": ["When does it", "*fly off*", "the edge?"],
+    "region": "scene",
+    "phases": ["pivot"]
+  },
+  "caption": {
+    "hook": "A cylinder rolls toward a corner… at what speed does it leave the edge? 🛞",
+    "body": "This JEE Advanced 2026 Paper 1 rotational mechanics question hides one precise moment: when the corner stops pushing. We slowed the real simulation down to watch it happen.",
+    "cta": "Try the full experiment free on prayogx.co.in 🔬",
+    "hashtags": ["#JEEAdvanced", "#JEE2026", "#Physics", "#RotationalMotion", "#JEEPreparation", "#PrayogX"]
+  }
+}

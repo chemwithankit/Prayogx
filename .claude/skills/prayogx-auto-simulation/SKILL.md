@@ -58,6 +58,7 @@ stages in a dry run.
 | 11–14 visual, verifier, suite, mobile | `prayogx-validate` §1–§4; visual gates A–K: `node tests/visual_gates.js <page>` + screenshots (pipeline §6); repair until clean |
 | 15–16 registry, audits | `prayogx-register` §1–§4, `prayogx-validate` §5, `bash tests/runall.sh` |
 | 17–21 production only | pipeline §7: commit by name → remote check → `./publish.sh` → live feed version → `auto_sim.py smoke <ID>` + `node tests/live_smoke.js <ID>` → Sheet sync (`prayogx-register` §5) |
+| reel (every new question item) | after stage 16 (local build) or 21 (production): write the story (`generate-reel.js <ID> --draft`, edit, `--preview`), then `python3 tools/auto_sim.py reel <batch> <n>`. It is recorded on the item, not as a stage: a reel failure never blocks or undoes the simulation (pipeline §7a) |
 
 Any disagreement between the independent result and the key or a source: **stop the item**
 (`auto_sim.py fail <batch> <n> <stage> --kind source --detail "…"`). Never pick a side silently.
@@ -78,6 +79,7 @@ repository. Redo any stage marked DOUBT. Check the live site before making anoth
 ## 5. Report
 
 Per item: the `PRAYOGX AUTO BUILD COMPLETE` block (pipeline §10) with exact counts, the commit
-hash and LIVE / NOT DEPLOYED. Per batch: `python3 tools/auto_sim.py report <batch>`. Blocked or
+hash, LIVE / NOT DEPLOYED and the reel (READY FOR MANUAL REVIEW, or "Simulation complete; Reel
+generation failed."). Per batch: `python3 tools/auto_sim.py report <batch>`. Blocked or
 failed items are listed, never hidden. Automated verification is never called human verification;
 Q16 is `human_verified` only because the owner reviewed it on 2026-09-29.

@@ -12,7 +12,8 @@
      stills/*.png             element screenshots asked for by the reel spec (e.g. the revealed target)
 
    The page contract it relies on (layout v3 pages): canvas#labcv, section#question, window.PX with start()
-   and RUN.done. Anything else is named in the reel spec.                                                  */
+   and RUN.done. The spec can name another element, another done test and other start actions.
+   Read-only: the page file is opened from disk and never written.                                       */
 const fs = require('fs');
 const path = require('path');
 const { launch } = require('../../tests/_browser');
@@ -26,6 +27,15 @@ const CLOCK = () => {
   const d0 = Date.now(); Date.now = () => d0 + now;
 };
 
+/* every simple field of PX.state() (and PX.stage()'s name, if the page has one) - what moments select on */
+const STATE = (doneExpr) => {
+  const out = {};
+  try { const s = PX.state ? PX.state() : {}; for (const k in s) { const v = s[k]; if (v === null || ['number', 'string', 'boolean'].indexOf(typeof v) >= 0) out[k] = typeof v === 'number' ? +v.toFixed(5) : (typeof v === 'string' ? v.slice(0, 60) : v); } } catch (e) { out.stateError = String(e).slice(0, 80); }
+  try { if (typeof PX.stage === 'function') { const st = PX.stage(); out.stage = typeof st === 'string' ? st : (st && st.name) || null; } } catch (e) { /* no stage */ }
+  out.done = !!(new Function('return (' + doneExpr + ')'))();
+  return out;
+};
+
 /* the question as rendered on the page (the actual text, not a copy) */
 const QUESTION = () => {
   const t = e => (e ? (e.innerText || '').replace(/\s+/g, ' ').trim() : '');
@@ -34,7 +44,9 @@ const QUESTION = () => {
     lists: [...document.querySelectorAll('#question .mlist')].map(m => ({ title: t(m.querySelector('h3')), items: [...m.querySelectorAll('li')].map(t) })),
     options: [...document.querySelectorAll('#opts li')].map(li => ({ key: li.getAttribute('data-o'), text: t(li.querySelector('span')) || t(li) })),
     title: t(document.querySelector('header h1')),
-    meta: t(document.querySelector('header .meta'))
+    meta: t(document.querySelector('header .meta')),
+    hasFigure: !!document.querySelector('#question .qfig svg, #question .qfig img'),
+    resultLine: document.getElementById('target') ? '#target' : document.getElementById('keyline') ? '#keyline' : null
   };
 };
 
@@ -53,20 +65,21 @@ async function record(spec, pageFile, workDir, log) {
     p.on('pageerror', e => errors.push(e.message));
     await p.goto('file://' + pageFile.split('/').map(encodeURIComponent).join('/'));
     for (let i = 0; i < 5; i++) await p.evaluate(ms => __pxClock.step(ms), 1000 / fps);
-    const ready = await p.evaluate(() => !!(window.PX && PX.start && PX.RUN && document.getElementById('labcv')));
-    if (!ready) throw new Error('the page does not expose the layout v3 contract (canvas#labcv, PX.start, PX.RUN)');
+    const sel = rec.element || '#labcv', doneExpr = rec.done || '!!(PX.RUN && PX.RUN.done)';
+    const ready = await p.evaluate(s => !!(window.PX && PX.start && document.querySelector(s)), sel);
+    if (!ready) throw new Error('the page does not expose what the recorder needs (' + sel + ' and window.PX.start); name another element or actions in the reel spec');
     const question = await p.evaluate(QUESTION);
     fs.writeFileSync(path.join(workDir, 'question.json'), JSON.stringify(question, null, 1));
 
     /* run the experiment: the spec's actions (default: PX.start()), then frames until done + a tail */
     for (const a of rec.actions || [{ eval: 'PX.start()' }]) await p.evaluate(a.eval);
-    const cv = await p.$('#labcv');
+    const cv = await p.$(sel);
     const frames = [];
     const maxF = Math.round((rec.maxSeconds || 120) * fps), tailF = Math.round((rec.tailSeconds || 2) * fps);
     let doneAt = -1;
     for (let f = 0; f < maxF; f++) {
       await p.evaluate(ms => __pxClock.step(ms), 1000 / fps);
-      const st = await p.evaluate(() => { const s = PX.state ? PX.state() : {}; return { phase: s.phase, cfg: s.cfg, state: s.state, done: !!(PX.RUN && PX.RUN.done), x: s.x }; });
+      const st = await p.evaluate(STATE, doneExpr);
       const file = 'f' + String(f).padStart(5, '0') + '.png';
       await cv.screenshot({ path: path.join(dir, file) });
       frames.push(Object.assign({ file: file, t: +(f / fps).toFixed(4) }, st));
@@ -76,12 +89,29 @@ async function record(spec, pageFile, workDir, log) {
     }
     if (doneAt < 0) throw new Error('the experiment did not finish within ' + (rec.maxSeconds || 120) + ' s of simulation time');
     const box = await cv.boundingBox();
-    const size = await p.evaluate(() => ({ w: document.getElementById('labcv').width, h: document.getElementById('labcv').height }));
-    /* element stills taken at the end of the run, e.g. the page's own revealed target line */
-    for (const s of rec.stills || []) {
+    /* canvas units: the canvas's own resolution, or CSS pixels for any other element */
+    const size = await p.evaluate(s => { const e = document.querySelector(s), r = e.getBoundingClientRect(); return e.tagName === 'CANVAS' ? { w: e.width, h: e.height } : { w: r.width, h: r.height }; }, sel);
+    /* element stills taken at the end of the run: the page's own result line (found automatically) and any the spec names */
+    const stills = (rec.stills || []).slice();
+    if (!stills.some(s => s.name === 'result') && question.resultLine) stills.push({ name: 'result', selector: question.resultLine });
+    if (question.hasFigure && !stills.some(s => s.name === 'figure')) stills.push({ name: 'figure', selector: '#question .qfig' });
+    for (const s of stills.filter(x => !x.wide)) {
       const el = await p.$(s.selector);
       if (!el) throw new Error('still ' + s.name + ': no element ' + s.selector);
       await el.screenshot({ path: path.join(workDir, 'stills', s.name + '.png') });
+    }
+    /* static stills taken at a desktop width (e.g. lists of figures that a phone stacks into a tall strip) */
+    const wide = stills.filter(x => x.wide);
+    if (wide.length) {
+      const wc = await b.newContext({ viewport: { width: 1280, height: 900 }, deviceScaleFactor: 2 });
+      const wp = await wc.newPage();
+      await wp.goto('file://' + pageFile.split('/').map(encodeURIComponent).join('/'));
+      for (const s of wide) {
+        const el = await wp.$(s.selector);
+        if (!el) throw new Error('still ' + s.name + ': no element ' + s.selector);
+        await el.screenshot({ path: path.join(workDir, 'stills', s.name + '.png') });
+      }
+      await wc.close();
     }
     const meta = { fps: fps, frames: frames, doneAt: doneAt, canvas: size, cssBox: { w: box.width, h: box.height }, dpr: vp.deviceScaleFactor,
       imagePx: { w: Math.round(box.width * vp.deviceScaleFactor), h: Math.round(box.height * vp.deviceScaleFactor) }, pageErrors: errors };

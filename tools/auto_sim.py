@@ -22,6 +22,8 @@ It never builds, commits, pushes or deploys anything itself.
   python3 tools/auto_sim.py smoke ID [--base URL]          live HTTP smoke test (read-only)
   python3 tools/auto_sim.py render PDF --pages 35          source page -> PNG + text in .tmp/ (pypdfium2)
   python3 tools/auto_sim.py gates                          the layout v3 (G5) visual QA gates A-K for new pages
+  python3 tools/auto_sim.py reel BATCH N                   the new simulation's Instagram reel (tools/reel-maker), after
+                                                           production_audit_complete; recorded on the item, never a stage
 
 Exit codes: 0 ok, 1 a check failed, 2 unusable input or an unsafe state.
 """
@@ -550,6 +552,50 @@ def fail(bdir, n, stage, kind, detail, attempts=None):
     return it
 
 
+# ------------------------------------------------------------------ the reel (tools/reel-maker) for a NEW simulation
+REEL_DIR = os.path.join(ROOT, "tools", "reel-maker")
+
+
+def reel(bdir, n, reuse=False):
+    """Make the Instagram reel of item n once its simulation is validated and integrated.
+
+    Not one of the 21 stages: a reel failure never blocks or undoes the simulation ("Simulation complete; Reel
+    generation failed."). The outcome is recorded on the item as it["reel"]. Existing simulations get a reel only
+    when the owner asks, with tools/reel-maker/generate-reel.js directly - never from here.
+    """
+    b, items = items_of(bdir)
+    it = next((x for x in items if x["n"] == n), None)
+    if not it:
+        raise Unsafe("no item %d" % n)
+    if b["mode"] == "dry-run":
+        raise Unsafe("dry-run batch: no reel is made")
+    if it["type"] != "question" or not it.get("id"):
+        raise Unsafe("reels are made for question simulations with an ID")
+    st = it["stages"]
+    if "production_audit_complete" not in st:
+        raise Unsafe("item %d has not passed production_audit_complete - a reel is made only for a validated, "
+                     "integrated simulation (next stage: %s)" % (n, next_stage(it)))
+    spec = os.path.join(REEL_DIR, "reels", it["id"] + ".json")
+    if not os.path.exists(spec):
+        raise Unsafe("no reel story for %s yet: node tools/reel-maker/generate-reel.js %s --draft, edit "
+                     "tools/reel-maker/reels/%s.json, check it with --preview, then run this again" % (it["id"], it["id"], it["id"]))
+    cmd = ["node", os.path.join(REEL_DIR, "generate-reel.js"), it["id"], "--origin", "new-simulation"] + (["--reuse-footage"] if reuse else [])
+    rc = subprocess.run(cmd, cwd=ROOT).returncode
+    out = os.path.join(REEL_DIR, "output", it["id"])
+    man = {}
+    if os.path.exists(os.path.join(out, "reel.json")):
+        with open(os.path.join(out, "reel.json"), encoding="utf-8") as f:
+            man = json.load(f)
+    v = man.get("validation", {})
+    ok = rc == 0 and man.get("status") == "ready-for-review"
+    it["reel"] = {"status": "ready-for-review" if ok else "failed", "at": now(), "origin": "new-simulation",
+                  "route": "live" if "live_smoke_test_complete" in st else "local",
+                  "path": os.path.relpath(os.path.join(out, "reel.mp4"), ROOT), "seconds": man.get("video", {}).get("seconds"),
+                  "checks": "%s/%s" % (v.get("passed", 0), len(v.get("checks", []))), "exit": rc}
+    save_item(bdir, it)
+    return it
+
+
 def verify_claims(it):
     """Re-check claimed stages against the repository; returns a list of doubts."""
     doubts = []
@@ -780,15 +826,16 @@ def smoke(sid, base=LIVE, fetch=None):
 def print_report(bdir):
     b, items = items_of(bdir)
     print("batch %s  mode %s  continueOnBlocked %s" % (os.path.basename(bdir), b["mode"], b["continueOnBlocked"]))
-    print("%-4s %-8s %-22s %-18s %-7s %-7s %s" % ("ITEM", "TYPE", "ID", "STATUS", "SCIENCE", "TESTS", "DEPLOYMENT"))
+    print("%-4s %-8s %-22s %-18s %-7s %-7s %-13s %s" % ("ITEM", "TYPE", "ID", "STATUS", "SCIENCE", "TESTS", "DEPLOYMENT", "REEL"))
     tally = {"total": 0, "completed": 0, "blocked": 0, "skipped": 0, "failed": 0, "deployed": 0}
     for it in items:
         st = it["stages"]
         sci = "PASS" if "scientific_qa_complete" in st else ("SOURCE" if it["status"] == "blocked" else "--")
         tests = "PASS" if "production_audit_complete" in st else "--"
         dep = "LIVE" if "live_smoke_test_complete" in st else "NOT DEPLOYED"
-        print("%-4s %-8s %-22s %-18s %-7s %-7s %s" % ("%02d" % it["n"], it["type"], (it.get("id") or it.get("concept") or "?")[:22],
-                                                    it["status"].upper(), sci, tests, dep))
+        rl = it.get("reel", {}).get("status", "--")
+        print("%-4s %-8s %-22s %-18s %-7s %-7s %-13s %s" % ("%02d" % it["n"], it["type"], (it.get("id") or it.get("concept") or "?")[:22],
+                                                    it["status"].upper(), sci, tests, dep, "REEL " + rl))
         tally["total"] += 1
         tally["completed"] += it["status"] == "complete"
         tally["blocked"] += it["status"] == "blocked"
@@ -815,6 +862,7 @@ def main(argv=None):
     p = sub.add_parser("trace"); p.add_argument("id"); p.add_argument("--run", action="store_true"); p.add_argument("--online", action="store_true")
     p = sub.add_parser("smoke"); p.add_argument("id"); p.add_argument("--base", default=LIVE)
     sub.add_parser("gates")
+    p = sub.add_parser("reel"); p.add_argument("batch"); p.add_argument("item", type=int); p.add_argument("--reuse-footage", action="store_true")
     p = sub.add_parser("render"); p.add_argument("pdf"); p.add_argument("--pages", required=True, help="e.g. 35 or 34-35 or 1,3")
     p.add_argument("--out"); p.add_argument("--scale", type=float, default=2.0)
     a = ap.parse_args(argv)
@@ -889,6 +937,16 @@ def main(argv=None):
             for r in render_pages(a.pdf, want, a.out, a.scale):
                 print("  page %d  %s  %dx%d px  text %d chars (%s)" % (r["page"], os.path.relpath(r["png"], ROOT), r["width"], r["height"],
                                                                          r["chars"], os.path.relpath(r["txt"], ROOT)))
+        elif a.cmd == "reel":
+            it = reel(a.batch, a.item, a.reuse_footage)
+            r = it["reel"]
+            print("reel %s: %s  (%s, %s s, %s reel checks, route %s)" % (it["id"], r["status"].upper(), r["path"], r["seconds"], r["checks"], r["route"]))
+            if r["status"] == "ready-for-review":
+                print("READY FOR MANUAL REVIEW")
+                return 0
+            print("Simulation complete; Reel generation failed." if it["status"] == "complete" else
+                  "Reel generation failed (the simulation item itself is unaffected: %s)." % it["status"])
+            return 1
         elif a.cmd == "smoke":
             res = smoke(a.id, a.base)
             for r in res:
