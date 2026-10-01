@@ -145,6 +145,16 @@ class Config:
         self.poll_interval = float(values.get("IG_POLL_INTERVAL_S", "5") or 5)
         self.poll_timeout = float(values.get("IG_POLL_TIMEOUT_S", "600") or 600)
         self.env_file_mode = values.get("_ENV_FILE_MODE")
+        # how the video reaches Meta: Instagram Login (graph.instagram.com) accepts only a public video_url; the direct
+        # (resumable) upload to rupload.facebook.com is for Facebook Login for Business (graph.facebook.com)
+        self.upload_mode = values.get("IG_UPLOAD_MODE", "").strip() or ("resumable" if self.host == "graph.facebook.com" else "video_url")
+        self.cover_hosted = False
+
+    def video_url(self, sid):
+        return "%s/%s/reel.mp4" % (self.media_base_url, sid) if self.media_base_url else None
+
+    def media_host(self):
+        return urllib.parse.urlparse(self.media_base_url).hostname if self.media_base_url else None
 
     def problems(self):
         p = []
@@ -162,6 +172,14 @@ class Config:
             p.append("IG_API_VERSION must look like v25.0")
         if self.media_base_url and not self.media_base_url.startswith("https://"):
             p.append("PRAYOGX_MEDIA_BASE_URL must be an https:// URL")
+        if self.upload_mode not in ("video_url", "resumable"):
+            p.append("IG_UPLOAD_MODE must be video_url or resumable")
+        elif self.upload_mode == "resumable" and self.host == "graph.instagram.com":
+            p.append("the direct (resumable) upload works only with Facebook Login (IG_API_HOST=graph.facebook.com); with Instagram Login "
+                     "the video must be at a public URL: set PRAYOGX_MEDIA_BASE_URL and leave IG_UPLOAD_MODE unset")
+        elif self.upload_mode == "video_url" and not self.media_base_url:
+            p.append("Instagram Login publishes from a public URL: set PRAYOGX_MEDIA_BASE_URL (https) and host <ID>/reel.mp4 there "
+                     "(or use Facebook Login: IG_API_HOST=graph.facebook.com, which uploads directly)")
         if self.env_file_mode is not None and self.env_file_mode & 0o077:
             p.append(".env is readable by other users - run: chmod 600 .env")
         return p
@@ -170,7 +188,7 @@ class Config:
         return {"IG_USER_ID": ("set (%d digits)" % len(self.ig_user_id)) if self.ig_user_id else "NOT SET",
                 "IG_ACCESS_TOKEN": "set ([REDACTED], %d characters)" % len(self.token) if self.token else "NOT SET",
                 "IG_API_HOST": self.host, "IG_API_VERSION": self.version,
-                "PRAYOGX_MEDIA_BASE_URL": self.media_base_url or "not set (the cover is a frame of the video: thumb_offset)",
+                "PRAYOGX_MEDIA_BASE_URL": self.media_base_url or "not set", "upload": self.upload_mode,
                 "IG_SHARE_TO_FEED": self.share_to_feed}
 
 
@@ -195,9 +213,14 @@ def load_config(environ=None, env_file=None):
 
 # ------------------------------------------------------------------ HTTP (official hosts only)
 class HttpTransport:
+    def __init__(self, media_host=None):
+        self.media_host = media_host                     # PRAYOGX_MEDIA_BASE_URL's host: plain GETs only, never credentials
+
     def request(self, method, url, headers=None, body=None, timeout=120):
         host = urllib.parse.urlparse(url).hostname
-        if urllib.parse.urlparse(url).scheme != "https" or host not in ALLOWED_HOSTS:
+        if self.media_host and host == self.media_host and method == "GET" and not headers and urllib.parse.urlparse(url).scheme == "https":
+            pass
+        elif urllib.parse.urlparse(url).scheme != "https" or host not in ALLOWED_HOSTS:
             raise PublishError("security", "refusing a request to %s: only %s" % (host, ", ".join(sorted(ALLOWED_HOSTS))))
         req = urllib.request.Request(url, data=body, method=method, headers=headers or {})
         try:
@@ -213,6 +236,9 @@ def classify(status, payload):
     """(kind, message) for a Graph API error response"""
     err = (payload or {}).get("error") or {}
     code, sub, msg = err.get("code"), err.get("error_subcode"), err.get("error_user_msg") or err.get("message") or ("HTTP %s" % status)
+    if "video_url" in str(msg):
+        return "config", ("Instagram needs the video at a public URL (%s): with Instagram Login (graph.instagram.com) set PRAYOGX_MEDIA_BASE_URL "
+                          "and host <ID>/reel.mp4 there, or use Facebook Login (graph.facebook.com) for the direct upload" % msg)
     if code == 190 or status == 401:
         return "auth", "the access token is invalid or expired (code 190): create a new long-lived token - " + msg
     if code in (10, 3) or (isinstance(code, int) and 200 <= code <= 299) or status == 403:
@@ -277,8 +303,12 @@ class Graph:
         row = (d.get("data") or [{}])[0]
         return int(row.get("quota_usage", 0)), int((row.get("config") or {}).get("quota_total", 100))
 
-    def create_container(self, caption, cover_url=None, thumb_offset_ms=0):
-        p = {"media_type": "REELS", "upload_type": "resumable", "caption": caption, "share_to_feed": "true" if self.cfg.share_to_feed else "false"}
+    def create_container(self, caption, cover_url=None, thumb_offset_ms=0, video_url=None):
+        p = {"media_type": "REELS", "caption": caption, "share_to_feed": "true" if self.cfg.share_to_feed else "false"}
+        if video_url:
+            p["video_url"] = video_url
+        else:
+            p["upload_type"] = "resumable"
         if cover_url:
             p["cover_url"] = cover_url
         else:
@@ -287,6 +317,14 @@ class Graph:
         if not d.get("id"):
             raise PublishError("api", "the container was not created: no id in the response")
         return d["id"]
+
+    def fetch_public(self, url):
+        """the hosted file as Meta will download it: a plain GET, no token"""
+        try:
+            status, raw = self.t.request("GET", url, timeout=600)
+        except PublishError as e:
+            return None, str(e)
+        return (raw, "") if status == 200 else (None, "HTTP %s" % status)
 
     def upload(self, container_id, video_path):
         size = os.path.getsize(video_path)
@@ -495,7 +533,8 @@ def preflight(sid, cfg, graph=None, for_publish=True, force_republish=False):
     tb = open(th, "rb").read(3) if os.path.exists(th) else b""
     add("the cover: thumbnail.jpg is a JPEG under 8 MB (sent as cover_url when PRAYOGX_MEDIA_BASE_URL hosts it, else a frame via thumb_offset)",
         tb == b"\xff\xd8\xff" and os.path.getsize(th) <= REELS["cover_bytes"],
-        ("cover_url %s/%s/thumbnail.jpg" % (cfg.media_base_url, sid)) if cfg.media_base_url else "thumb_offset %d ms (no public cover host configured)" % cfg.thumb_offset_ms)
+        ("cover_url %s/%s/thumbnail.jpg if it is hosted there unchanged, else thumb_offset" % (cfg.media_base_url, sid)) if cfg.media_base_url
+        else "thumb_offset %d ms (no public cover host configured)" % cfg.thumb_offset_ms)
     prior = [p for p in ledger_entries(sid) if p.get("status") in ("PUBLISHED", "VERIFIED", "VERIFICATION_FAILED")]
     add("not already published (tools/reel-maker/publications.json)" + (" - forced republish" if force_republish else ""), not prior or force_republish,
         "; ".join("%s %s %s" % (p.get("status"), p.get("publishedAt"), p.get("permalink") or p.get("mediaId")) for p in prior) or "no earlier publication")
@@ -509,6 +548,20 @@ def preflight(sid, cfg, graph=None, for_publish=True, force_republish=False):
     lock = os.path.join(d, "publish", "publish.lock")
     add("no other publish of this reel is running", not os.path.exists(lock), "lock " + os.path.relpath(lock, ROOT) if os.path.exists(lock) else "")
     cprob = cfg.problems()
+    if cfg.upload_mode == "video_url":
+        name = "the hosted reel is public and byte-identical to the approved reel (Instagram Login downloads it from PRAYOGX_MEDIA_BASE_URL)"
+        if not cfg.media_base_url:
+            add(name, False, "PRAYOGX_MEDIA_BASE_URL is not set")
+        elif graph is None:
+            add(name, None, "not checked (offline; add --online): %s" % cfg.video_url(sid))
+        else:
+            raw, why = graph.fetch_public(cfg.video_url(sid))
+            want = (m.get("approval") or {}).get("hashes", m.get("hashes") or {}).get("reel.mp4")
+            got = hashlib.sha256(raw).hexdigest() if raw is not None else None
+            add(name, raw is not None and got == want, "%s: %s" % (cfg.video_url(sid), why if raw is None else
+                ("%d bytes, sha256 matches" % len(raw)) if got == want else "a different file (sha256 %s, approved %s)" % (got[:12], str(want)[:12])))
+            th, _ = graph.fetch_public("%s/%s/thumbnail.jpg" % (cfg.media_base_url, sid))
+            cfg.cover_hosted = th is not None and hashlib.sha256(th).hexdigest() == (m.get("hashes") or {}).get("thumbnail.jpg")
     add("configuration: IG_USER_ID, IG_ACCESS_TOKEN, IG_API_HOST, IG_API_VERSION", not cprob, "; ".join(cprob) or "%s %s" % (cfg.host, cfg.version))
     if graph is None:
         add("live: the token works and belongs to IG_USER_ID", None, "not checked (offline; add --online)")
@@ -631,12 +684,12 @@ def cmd_reject(sid, reason, reviewer=None):
 
 
 def cover_url(cfg, sid):
-    return "%s/%s/thumbnail.jpg" % (cfg.media_base_url, sid) if cfg.media_base_url else None
+    return "%s/%s/thumbnail.jpg" % (cfg.media_base_url, sid) if cfg.media_base_url and cfg.cover_hosted else None
 
 
 def cmd_dry_run(sid, cfg, transport=None, online=False, force_republish=False):
     red = Redactor([cfg.token])
-    graph = Graph(cfg, transport or HttpTransport(), print) if online else None
+    graph = Graph(cfg, transport or HttpTransport(cfg.media_host()), print) if online else None
     items, m = preflight(sid, cfg, graph, force_republish=force_republish)
     print(red("DRY RUN - %s - nothing will be posted" % sid))
     print("configuration: " + json.dumps(cfg.describe()))
@@ -646,9 +699,14 @@ def cmd_dry_run(sid, cfg, transport=None, online=False, force_republish=False):
         size = os.path.getsize(os.path.join(reel_dir(sid), "reel.mp4")) if os.path.exists(os.path.join(reel_dir(sid), "reel.mp4")) else 0
         cu = cover_url(cfg, sid)
         print("the calls a publish would make (%s, %s):" % (cfg.host, cfg.version))
-        print("  1. POST /<IG_USER_ID>/media  media_type=REELS upload_type=resumable share_to_feed=%s %s caption=<caption.txt>"
-              % (str(cfg.share_to_feed).lower(), ("cover_url=" + cu) if cu else "thumb_offset=%d" % cfg.thumb_offset_ms))
-        print("  2. POST https://%s/ig-api-upload/%s/<container>  offset=0 file_size=%d  (reel.mp4)" % (UPLOAD_HOST, cfg.version, size))
+        vu = cfg.video_url(sid) if cfg.upload_mode == "video_url" else None
+        print("  1. POST /<IG_USER_ID>/media  media_type=REELS %s share_to_feed=%s %s caption=<caption.txt>"
+              % ("video_url=" + str(vu) if cfg.upload_mode == "video_url" else "upload_type=resumable", str(cfg.share_to_feed).lower(),
+                 ("cover_url=" + cu) if cu else "thumb_offset=%d" % cfg.thumb_offset_ms))
+        if cfg.upload_mode == "video_url":
+            print("  2. (Instagram downloads reel.mp4 from that URL - %d bytes)" % size)
+        else:
+            print("  2. POST https://%s/ig-api-upload/%s/<container>  offset=0 file_size=%d  (reel.mp4)" % (UPLOAD_HOST, cfg.version, size))
         print("  3. GET  /<container>?fields=status_code  every %.0f s until FINISHED (at most %.0f s)" % (cfg.poll_interval, cfg.poll_timeout))
         print("  4. POST /<IG_USER_ID>/media_publish  creation_id=<container>")
         print("  5. GET  /<media>?fields=id,permalink,media_product_type,caption  (verification)")
@@ -676,7 +734,7 @@ def cmd_publish(sid, cfg, transport=None, confirm=None, force_republish=False, c
     red = Redactor([cfg.token])
     secrets = [cfg.token]
     log = Log(sid, red)
-    graph = Graph(cfg, transport or HttpTransport(), log, sleep)
+    graph = Graph(cfg, transport or HttpTransport(cfg.media_host()), log, sleep)
     if force_republish:
         if confirm_republish != sid or not (reason or "").strip():
             raise PublishError("duplicate", "a forced republish needs --confirm-republish %s and --reason" % sid)
@@ -708,11 +766,15 @@ def cmd_publish(sid, cfg, transport=None, confirm=None, force_republish=False, c
 
         try:
             log("1/5 creating the Reels container …")
-            cid = graph.create_container(cap, cover_url(cfg, sid), cfg.thumb_offset_ms)
-            attempt["containerId"] = cid
+            vu = cfg.video_url(sid) if cfg.upload_mode == "video_url" else None
+            cid = graph.create_container(cap, cover_url(cfg, sid), cfg.thumb_offset_ms, vu)
+            attempt.update(containerId=cid, upload=cfg.upload_mode)
             save_reel(sid, m, secrets)
-            log("2/5 uploading reel.mp4 (%d bytes) …" % os.path.getsize(os.path.join(reel_dir(sid), "reel.mp4")))
-            graph.upload(cid, os.path.join(reel_dir(sid), "reel.mp4"))
+            if vu:
+                log("2/5 Instagram fetches the video from %s" % vu)
+            else:
+                log("2/5 uploading reel.mp4 (%d bytes) …" % os.path.getsize(os.path.join(reel_dir(sid), "reel.mp4")))
+                graph.upload(cid, os.path.join(reel_dir(sid), "reel.mp4"))
             log("3/5 waiting for Instagram to process it …")
             t0 = clock()
             while True:
@@ -792,7 +854,7 @@ def cmd_verify(sid, cfg, transport=None, sleep=time.sleep):
     if cfg.problems():
         raise PublishError("config", "; ".join(cfg.problems()))
     log = Log(sid, red)
-    graph = Graph(cfg, transport or HttpTransport(), log, sleep)
+    graph = Graph(cfg, transport or HttpTransport(cfg.media_host()), log, sleep)
     m = load_reel(sid)
     p = m.get("publish") or {}
     st = m.get("status")

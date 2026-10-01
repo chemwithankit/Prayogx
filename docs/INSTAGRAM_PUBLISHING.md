@@ -36,12 +36,25 @@ Environment variables override the file.
 | `IG_ACCESS_TOKEN` | The long-lived token. Never commit it, paste it into a story, caption, issue or chat, or put it in a URL you share. |
 | `IG_API_HOST` | `graph.instagram.com` (Instagram Login, default) or `graph.facebook.com` (Facebook Login). |
 | `IG_API_VERSION` | Default `v25.0`. |
-| `PRAYOGX_MEDIA_BASE_URL` | Optional: an `https://` folder where `<ID>/thumbnail.jpg` is publicly hosted; it becomes the cover (`cover_url`). Empty: the cover is a frame of the video (`thumb_offset`). |
+| `PRAYOGX_MEDIA_BASE_URL` | Instagram Login: **required**, the public `https://` folder holding `<ID>/reel.mp4` (and optionally `<ID>/thumbnail.jpg`, the cover). Facebook Login: optional, only for the cover. |
+| `IG_UPLOAD_MODE` | Optional override: `video_url` (default with Instagram Login) or `resumable` (default with Facebook Login). |
 | `IG_THUMB_OFFSET_MS`, `IG_SHARE_TO_FEED`, `IG_POLL_INTERVAL_S`, `IG_POLL_TIMEOUT_S` | Cover frame (ms), also show on the profile grid, processing poll interval and timeout. |
 
-**Hosting:** none is needed for the video. It is sent straight to Meta with the resumable upload
-(`rupload.facebook.com`), so the reel never has to be put on prayogx.co.in or any public server. Only a designed
-cover needs a public URL.
+**How the video reaches Meta depends on the login** (checked against Meta's docs on 2026-10-01, after a real
+publish with Instagram Login was refused with "The parameter video_url is required"):
+
+| Login | `IG_API_HOST` | Video | Hosting needed |
+|---|---|---|---|
+| **Instagram Login** (`IGAA…` token) | `graph.instagram.com` | `video_url`: Meta downloads it from a public https URL | **Yes**: put `<ID>/reel.mp4` (and optionally `<ID>/thumbnail.jpg`) under `PRAYOGX_MEDIA_BASE_URL` |
+| **Facebook Login for Business** (`EAA…` token, account linked to a Facebook Page) | `graph.facebook.com` | direct (resumable) upload to `rupload.facebook.com` | No |
+
+With Instagram Login, upload the two files from `tools/reel-maker/output/<ID>/` to any public https host you
+control (for example an object-storage bucket or a static site), so that `PRAYOGX_MEDIA_BASE_URL/<ID>/reel.mp4`
+downloads the file. The preflight (`--online`) downloads it and refuses to publish unless its sha256 equals the
+approved reel - so Meta can only receive the exact file you reviewed. A hosted `thumbnail.jpg` that matches is
+used as the cover; otherwise the cover is a frame of the video (`thumb_offset`). `IG_UPLOAD_MODE` (`video_url` or
+`resumable`) overrides the choice; `resumable` is refused with Instagram Login. Do not put reels into the
+PrayogX website repository.
 
 ## 3. The workflow
 
@@ -99,9 +112,11 @@ publish running · the configuration · (live) the token works and belongs to `I
 
 ### What a publish does
 
-1. `POST /<IG_USER_ID>/media` with `media_type=REELS`, `upload_type=resumable`, the caption, `share_to_feed`, and
-   `cover_url` or `thumb_offset` → a container ID (saved at once).
-2. `POST https://rupload.facebook.com/ig-api-upload/<version>/<container>` with `Authorization: OAuth <token>`,
+1. `POST /<IG_USER_ID>/media` with `media_type=REELS`, the caption, `share_to_feed`, `cover_url` or `thumb_offset`,
+   and either `video_url` (Instagram Login) or `upload_type=resumable` (Facebook Login) → a container ID (saved at
+   once).
+2. Instagram Login: Meta downloads the video from `video_url`. Facebook Login: `POST
+   https://rupload.facebook.com/ig-api-upload/<version>/<container>` with `Authorization: OAuth <token>`,
    `offset: 0`, `file_size` and the MP4 bytes.
 3. `GET /<container>?fields=status_code` until `FINISHED` (`ERROR` / `EXPIRED` / timeout → PUBLISH_FAILED).
 4. `POST /<IG_USER_ID>/media_publish` with `creation_id` → the media ID → PUBLISHED, written to the ledger.
@@ -129,6 +144,8 @@ A lock file stops two publishes of the same reel at once.
 | Error kind | Meaning | What to do |
 |---|---|---|
 | `config` / preflight "configuration" | A variable is missing or malformed, or `.env` is readable by others | Fill `.env` from `.env.example`; `chmod 600 .env` |
+| `config` "video_url is required" | Instagram Login with no public video | Host `<ID>/reel.mp4` and set `PRAYOGX_MEDIA_BASE_URL`, or switch to Facebook Login |
+| preflight "hosted reel … byte-identical" | The hosted file is missing, private, or a different render | Upload the current `output/<ID>/reel.mp4` again; check the URL opens without login |
 | `auth` (code 190) | Token invalid or expired | Make a new long-lived token |
 | `permission` (code 10, 200–299) | The token lacks the publish permission, or the account has no role on the app | Add `instagram_business_content_publish` (or `instagram_content_publish`); check app roles / App Review |
 | `rate_limit` (4, 17, 32, 613, 2207042) | API or the 24-hour publishing limit | Wait; the dry run shows the quota |
@@ -145,7 +162,8 @@ The publish log is `tools/reel-maker/output/<ID>/publish/publish.log` (git-ignor
 ## 5. Security
 
 - Official API only. The HTTP layer refuses any host except `graph.instagram.com`, `graph.facebook.com` and
-  `rupload.facebook.com`, and any non-https URL. No browser automation, Playwright login, passwords, cookies,
+  `rupload.facebook.com`, and any non-https URL; the one exception is plain GETs (no token, no headers) to the
+  `PRAYOGX_MEDIA_BASE_URL` host, to check the hosted reel. No browser automation, Playwright login, passwords, cookies,
   scraping, private or reverse-engineered endpoints.
 - The token comes only from the environment or the git-ignored `.env`. It is redacted from every message and
   log; `reel.json`, the ledger and logs are scanned before they are written, and a write that would contain it is

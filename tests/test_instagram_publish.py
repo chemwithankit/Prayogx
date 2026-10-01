@@ -34,7 +34,8 @@ import mp4tools as MP  # noqa: E402
 ok, fail = [], []
 SID = "ADV-2026-P1-PHY-Q15"                       # a real library entry, so the manifest check is real
 TOKEN = "IGAAFakeTokenForTests0123456789abcdefghijklmnop"
-ENV = {"IG_USER_ID": "17841400000000000", "IG_ACCESS_TOKEN": TOKEN, "IG_API_HOST": "graph.instagram.com", "IG_API_VERSION": "v25.0"}
+ENV = {"IG_USER_ID": "17841400000000000", "IG_ACCESS_TOKEN": TOKEN, "IG_API_HOST": "graph.facebook.com", "IG_API_VERSION": "v25.0"}   # Facebook Login: direct upload
+IGL = {"IG_API_HOST": "graph.instagram.com", "PRAYOGX_MEDIA_BASE_URL": "https://media.example.com/reels"}                                # Instagram Login: video_url
 CAPTION = "Four loops spin through half a field... which one makes no current?\n\nJEE Advanced 2026 · Paper 1 · Physics · Q.15\n\n#JEEAdvanced #PrayogX\n"
 
 
@@ -114,6 +115,13 @@ class Fake:
 
     def request(self, method, url, headers=None, body=None, timeout=60):
         u = urllib.parse.urlparse(url)
+        if u.hostname == "media.example.com" and method == "GET":
+            self.calls.append({"method": "GET", "host": u.hostname, "path": u.path, "query": {}, "form": {}, "headers": dict(headers or {}), "bytes": 0})
+            f = os.path.join(P.OUT_DIR, u.path.split("/")[-2], u.path.split("/")[-1])
+            data = self.over.get("hosted", {}).get(u.path.split("/")[-1])
+            if data is None:
+                data = open(f, "rb").read() if os.path.exists(f) else None
+            return (200, data) if data is not None else (404, b"not found")
         if u.hostname not in P.ALLOWED_HOSTS or u.scheme != "https":
             raise AssertionError("request to a host outside the allow-list: " + url)
         q = dict(urllib.parse.parse_qsl(u.query))
@@ -122,6 +130,8 @@ class Fake:
         self.calls.append({"method": method, "host": u.hostname, "path": path, "query": q, "form": form, "headers": dict(headers or {}), "bytes": len(body or b"")})
         key = method + " " + re.sub(r"/v\d+\.\d+", "", path)
         for pat, h in self.over.items():
+            if pat == "hosted":
+                continue
             if re.search(pat, key):
                 r = h(self, q, form) if callable(h) else h
                 if isinstance(r, Exception):
@@ -218,7 +228,8 @@ def run(tmp):
     chk("A1 missing IG_USER_ID and IG_ACCESS_TOKEN are reported, not guessed", any("IG_USER_ID" in p for p in pr) and any("IG_ACCESS_TOKEN" in p for p in pr), pr)
     chk("A2 a complete configuration has no problems", cfg().problems() == [], cfg().problems())
     bad = cfg(IG_API_HOST="i.instagram.com", IG_API_VERSION="25", IG_USER_ID="@prayogx").problems()
-    chk("A3 an unofficial host, a malformed version and a non-numeric account ID are refused", len(bad) == 3, bad)
+    chk("A3 an unofficial host, a malformed version and a non-numeric account ID are refused",
+        all(any(k in x for x in bad) for k in ("IG_API_HOST", "IG_API_VERSION", "IG_USER_ID")), bad)
     envf = os.path.join(tmp, ".env")
     open(envf, "w").write("# comment\nexport IG_USER_ID=111\nIG_ACCESS_TOKEN='%s'\nOTHER_SECRET=x\n" % TOKEN)
     os.chmod(envf, 0o644)
@@ -504,6 +515,36 @@ def run(tmp):
     f = Fake()
     m = publish(f)
     chk("F10 after a clean failure (not uncertain) a retry publishes", getattr(m, "get", lambda k: None)("status") == "VERIFIED", m)
+    # Instagram Login (graph.instagram.com): the video goes by public URL, never by the direct upload
+    e = cfg(IG_API_HOST="graph.instagram.com").problems()
+    chk("F13 Instagram Login without PRAYOGX_MEDIA_BASE_URL is a configuration problem that names the fix (not a failed post)",
+        any("PRAYOGX_MEDIA_BASE_URL" in x for x in e), e)
+    e = cfg(IG_API_HOST="graph.instagram.com", IG_UPLOAD_MODE="resumable").problems()
+    chk("F14 forcing the direct upload with Instagram Login is refused (Meta allows it only with Facebook Login)", any("Facebook Login" in x for x in e), e)
+    fresh(tmp); approve()
+    f = Fake()
+    m = publish(f, config=cfg(**IGL))
+    cr = [c for c in f.calls if c["method"] == "POST" and c["path"].endswith("/media")][0]["form"]
+    got = [c for c in f.calls if c["host"] == "media.example.com"]
+    chk("F15 Instagram Login publishes with video_url=<base>/<ID>/reel.mp4, checks the hosted file first, sends no direct upload, and verifies",
+        getattr(m, "get", lambda k: None)("status") == "VERIFIED" and cr.get("video_url") == "https://media.example.com/reels/%s/reel.mp4" % SID
+        and "upload_type" not in cr and not any(c["host"] == "rupload.facebook.com" for c in f.calls) and got and not any(c["headers"] for c in got)
+        and cr.get("cover_url") == "https://media.example.com/reels/%s/thumbnail.jpg" % SID, (cr, [c["path"] for c in got]))
+    fresh(tmp); approve()
+    f = Fake(hosted={"reel.mp4": b"an older render of the reel"})
+    e = publish(f, config=cfg(**IGL))
+    chk("F16 a hosted file that differs from the approved reel stops the publish before anything is posted", isinstance(e, P.PublishError) and e.kind == "preflight"
+        and f.posts() == [] and state()["status"] == "APPROVED", e)
+    f = Fake(hosted={"thumbnail.jpg": b"x"})
+    m = publish(f, config=cfg(**IGL))
+    cr = [c for c in f.calls if c["method"] == "POST" and c["path"].endswith("/media")][0]["form"]
+    chk("F17 a missing or different hosted cover falls back to thumb_offset (never a wrong cover)", "cover_url" not in cr and cr.get("thumb_offset") == "0", cr)
+    fresh(tmp); approve()
+    f = Fake(**{r"^POST /17841400000000000/media$": graph_error(100, "The parameter video_url is required")})
+    e = publish(f)
+    chk("F18 Meta's 'video_url is required' is reported as a configuration problem with the fix, not an unexplained API error",
+        isinstance(e, P.PublishError) and e.kind == "config" and "PRAYOGX_MEDIA_BASE_URL" in str(e) and state()["status"] == "PUBLISH_FAILED", e)
+
     fresh(tmp); approve()
     f = Fake(**{r"media_publish": P.PublishError("network", "network error: timed out")})
     e = publish(f)
