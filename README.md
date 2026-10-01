@@ -322,6 +322,7 @@ release (consent, live ads, app-ads.txt, versionCode, signing) is tracked in
 | `ADV-2026-P1-PHY-Q12` | 2026 | 1 | Physics | Moving Charges and Magnetism | Q.12 | 0.50 |
 | `ADV-2026-P1-PHY-Q13` | 2026 | 1 | Physics | Waves | Q.13 | D |
 | `ADV-2026-P1-PHY-Q14` | 2026 | 1 | Physics | Wave Optics | Q.14 | A |
+| `ADV-2026-P1-PHY-Q15` | 2026 | 1 | Physics | Electromagnetic Induction | Q.15 | C |
 | `ADV-2026-P2-CHE-Q01` | 2026 | 2 | Chemistry | Electrochemistry | Q.1 | (C) 5 |
 | `ADV-2026-P2-CHE-Q02` | 2026 | 2 | Chemistry | Chemical Bonding and Molecular Structure | Q.2 | (B) |
 | `ADV-2026-P2-CHE-Q03` | 2026 | 2 | Chemistry | Aldehydes, Ketones and Carboxylic Acids | Q.3 | (A) |

@@ -45,6 +45,17 @@
               "simulations": [
                 "ADV-2026-P1-PHY-Q02"
               ]
+            },
+            "Loops rotating through a half-plane field - the induced current follows the rate at which loop area crosses the field boundary": {
+              "subtopics": [
+                "Faraday's law: emf = -dPhi/dt, with Phi = B x (area inside the field)",
+                "A rotating sector's straight edge sweeps area at r^2 omega/2 while crossing the field boundary",
+                "No crossing, no current: a loop wholly inside or outside the field",
+                "Lenz's law and the sign of the current; lobes of one loop that circulate the same way"
+              ],
+              "simulations": [
+                "ADV-2026-P1-PHY-Q15"
+              ]
             }
           }
         },

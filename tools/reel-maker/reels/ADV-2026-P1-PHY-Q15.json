@@ -1,0 +1,142 @@
+{
+  "simulationId": "ADV-2026-P1-PHY-Q15",
+  "template": "question-simulation-v1",
+  "fps": 30,
+  "record": {
+    "viewport": {
+      "width": 420,
+      "height": 860,
+      "deviceScaleFactor": 2.6
+    },
+    "actions": [
+      {
+        "eval": "PX.start()"
+      }
+    ],
+    "tailSeconds": 2.2,
+    "maxSeconds": 60,
+    "stills": [
+      {
+        "name": "figure",
+        "selector": "#question .mlists",
+        "wide": true
+      }
+    ]
+  },
+  "regions": {
+    "scene": [6, 266, 708, 544],
+    "sceneAndPlot": [6, 266, 708, 1106]
+  },
+  "story": {
+    "hook": {
+      "beats": ["Four loops.", "Half a field.", "One spin."],
+      "colors": ["#ffd28a", "#7cc4ff", "#5dffa0"],
+      "line": "Which *current* does each one make?"
+    },
+    "question": {
+      "kind": "match",
+      "lists": false,
+      "figureMax": 700,
+      "highlight": []
+    },
+    "problem": ["Faraday's law, four times over…", "and one loop is a *trick*."],
+    "curiosity": "Can we *SEE* the flux change?",
+    "moments": [
+      {
+        "id": "P",
+        "match": {
+          "cfg": "P"
+        },
+        "phases": ["sweep", "hold"],
+        "seconds": 3.7,
+        "region": "sceneAndPlot",
+        "label": "P · HALF-DISC",
+        "sub": "area enters for half a turn, then leaves",
+        "callout": {
+          "text": "steady area in → steady current",
+          "anchor": [224, 910],
+          "side": "lane",
+          "from": 0.45
+        },
+        "result": "P → 3  + constant, then − constant"
+      },
+      {
+        "id": "Q",
+        "match": {
+          "cfg": "Q"
+        },
+        "phases": ["sweep", "hold"],
+        "seconds": 3.7,
+        "region": "sceneAndPlot",
+        "label": "Q · TWO SECTORS",
+        "sub": "each edge crossing the boundary is a pulse",
+        "callout": {
+          "text": "a pulse per sector crossing",
+          "anchor": [326, 910],
+          "side": "lane",
+          "from": 0.45
+        },
+        "result": "Q → 2  two pulses, then two back"
+      },
+      {
+        "id": "R",
+        "match": {
+          "cfg": "R"
+        },
+        "phases": ["sweep", "hold"],
+        "seconds": 3.4,
+        "region": "sceneAndPlot",
+        "label": "R · ONE SECTOR",
+        "sub": "in once, out once",
+        "callout": {
+          "text": "a pulse in, a pulse out",
+          "anchor": [428, 1110],
+          "side": "lane",
+          "from": 0.5
+        },
+        "result": "R → 1  a pulse in, a pulse out"
+      },
+      {
+        "id": "S",
+        "match": {
+          "cfg": "S"
+        },
+        "phases": ["sweep", "hold"],
+        "seconds": 3.5,
+        "region": "sceneAndPlot",
+        "label": "S · OPPOSITE SECTORS",
+        "sub": "one lobe in the field, one out",
+        "callout": {
+          "text": "the current never moves",
+          "anchor": [326, 1010],
+          "side": "lane",
+          "from": 0.5
+        },
+        "result": "S → 4  zero current",
+        "aha": {
+          "seconds": 3.0,
+          "zoom": [6, 266, 708, 544],
+          "kicker": "WATCH THE GREEN AREA",
+          "lines": ["One lobe leaves", "as the other enters:", "the flux stays constant, *i = 0*"]
+        }
+      }
+    ],
+    "answer": {},
+    "payoff": ["DON'T JUST SOLVE IT.", "*EXPERIENCE* IT."]
+  },
+  "thumbnail": {
+    "kicker": "JEE ADVANCED 2026",
+    "lines": ["Spinning loops.", "Which *current*?"],
+    "region": "scene",
+    "frameMatch": {
+      "cfg": "Q",
+      "phase": "sweep"
+    }
+  },
+  "caption": {
+    "hook": "Four conducting loops spin through a magnetic field that fills only half the plane… which one makes no current at all? 🌀",
+    "body": "This JEE Advanced 2026 Paper 1 electromagnetic induction question is all about one idea: the current follows how fast loop area crosses the field boundary. We turned each loop once in the real simulation and watched its current appear, flip and vanish.",
+    "cta": "Try the full experiment free on prayogx.co.in 🔬",
+    "hashtags": ["#JEEAdvanced", "#JEE2026", "#Physics", "#ElectromagneticInduction", "#JEEPreparation", "#PrayogX"]
+  }
+}
