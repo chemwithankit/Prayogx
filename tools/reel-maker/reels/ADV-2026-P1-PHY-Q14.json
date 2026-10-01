@@ -1,0 +1,145 @@
+{
+  "simulationId": "ADV-2026-P1-PHY-Q14",
+  "template": "question-simulation-v1",
+  "fps": 30,
+  "record": {
+    "viewport": {
+      "width": 420,
+      "height": 860,
+      "deviceScaleFactor": 2.6
+    },
+    "actions": [
+      {
+        "eval": "PX.start()"
+      }
+    ],
+    "tailSeconds": 2.2,
+    "maxSeconds": 60,
+    "stills": [
+      {
+        "name": "target",
+        "selector": "#target"
+      }
+    ]
+  },
+  "regions": {
+    "scene": [6, 266, 708, 544],
+    "plot": [6, 816, 708, 556],
+    "sceneAndPlot": [6, 266, 708, 1106]
+  },
+  "story": {
+    "hook": {
+      "beats": ["Aurora.", "Rainbow.", "Polarized sky.", "Fringes."],
+      "colors": ["#5dffa0", "#ff9f5a", "#7cc4ff", "#ff6b7a"],
+      "line": "What *really* makes each one?"
+    },
+    "question": {
+      "kind": "match",
+      "highlight": ["Aurora Borealis", "polarized", "Rainbow", "fringes", "Total internal reflection", "Diffraction", "Scattering", "Emission", "Dispersion"]
+    },
+    "problem": ["Looks like pure *memory*…", "but three of these options hide a *trap*."],
+    "curiosity": "But can we actually *SEE* it?",
+    "moments": [
+      {
+        "id": "P",
+        "match": {
+          "cfg": "P"
+        },
+        "phases": ["sweep", "hold"],
+        "seconds": 3.9,
+        "region": "sceneAndPlot",
+        "label": "P · AURORA",
+        "sub": "a spectrometer scans the polar sky",
+        "callout": {
+          "text": "3 sharp lines → atoms EMITTING",
+          "anchor": [406, 924],
+          "side": "left",
+          "from": 0.45
+        },
+        "result": "P → 5  emission by O & N atoms"
+      },
+      {
+        "id": "Q",
+        "match": {
+          "cfg": "Q"
+        },
+        "phases": ["sweep", "hold"],
+        "seconds": 3.7,
+        "region": "sceneAndPlot",
+        "label": "Q · POLARIZED SKY",
+        "sub": "look further from the Sun through a polarizer",
+        "callout": {
+          "text": "100 % polarized at 90° → SCATTERING",
+          "anchor": [391, 905],
+          "side": "left",
+          "from": 0.5
+        },
+        "result": "Q → 4  scattering by molecules"
+      },
+      {
+        "id": "S",
+        "match": {
+          "cfg": "S"
+        },
+        "phases": ["sweep", "hold"],
+        "seconds": 3.6,
+        "region": "sceneAndPlot",
+        "label": "S · FRINGES",
+        "sub": "laser light through one narrow slit",
+        "callout": {
+          "text": "dark where a sinθ = mλ → DIFFRACTION",
+          "anchor": [484, 1118],
+          "side": "right",
+          "from": 0.5
+        },
+        "result": "S → 3  diffraction"
+      },
+      {
+        "id": "R",
+        "match": {
+          "cfg": "R"
+        },
+        "phases": ["sweep", "hold"],
+        "seconds": 3.9,
+        "region": "sceneAndPlot",
+        "label": "R · RAINBOW",
+        "sub": "sunlight inside one raindrop",
+        "callout": {
+          "text": "red & violet split → DISPERSION",
+          "anchor": [380, 520],
+          "side": "right",
+          "from": 0.45
+        },
+        "result": "R → 1  dispersion + reflection",
+        "aha": {
+          "seconds": 3.0,
+          "zoom": [12, 290, 696, 120],
+          "kicker": "WAIT — THE TRAP",
+          "lines": ["40.4° < 48.7° critical", "It's NOT *total* internal reflection"],
+          "verdict": ["✗  (2) total internal reflection", "✓  (1) dispersion + reflection"]
+        }
+      }
+    ],
+    "answer": {
+      "lead": "So the match is…",
+      "still": "target",
+      "stillLabel": "THE SIMULATION'S OWN RESULT"
+    },
+    "payoff": ["DON'T JUST SOLVE IT.", "*EXPERIENCE* IT."]
+  },
+  "thumbnail": {
+    "kicker": "JEE ADVANCED 2026",
+    "lines": ["Aurora. Rainbow.", "Which *physics*", "makes each?"],
+    "region": "scene",
+    "frameMatch": {
+      "cfg": "P",
+      "phase": "hold"
+    }
+  },
+  "caption": {
+    "hook": "Aurora, rainbow, polarized sky, dark-and-bright fringes… can you match each to the physics behind it? 🌌🌈",
+    "body": "This JEE Advanced 2026 Paper 1 question looks like pure memory, but three of the four options hide a trap. Instead of memorizing, we ran four experiments in a virtual sky lab and watched each effect reveal its own mechanism.",
+    "cta": "Try the full experiment free on prayogx.co.in 🔬",
+    "hashtags": ["#JEEAdvanced", "#JEE2026", "#Physics", "#Optics", "#JEEPreparation", "#PrayogX"]
+  }
+}

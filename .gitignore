@@ -55,3 +55,7 @@ tests/appwww*/
 
 # simulation-factory batch state (tools/auto_sim.py) - local only, never committed
 .tmp/
+
+# reel maker: generated reels and its compiled encoder (tools/reel-maker/README.md)
+tools/reel-maker/output/
+tools/reel-maker/.cache/
