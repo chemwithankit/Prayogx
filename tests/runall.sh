@@ -60,7 +60,7 @@ done
 
 echo
 echo "=== workflow tools: tracker Sheet sync, simulation factory, registry rules (no network) ==="
-for f in "$HERE/test_tracker_sheet.py" "$HERE/test_auto_sim.py" "$HERE/test_registry_schema.py"; do
+for f in "$HERE/test_tracker_sheet.py" "$HERE/test_auto_sim.py" "$HERE/test_registry_schema.py" "$HERE/test_instagram_publish.py"; do
   nm=$(basename "$f")
   if [ ! -f "$f" ]; then line "$nm" "MISSING (not in this tree)"; missing=$((missing+1)); continue; fi
   out=$(python3 "$f" 2>&1 | tail -1)

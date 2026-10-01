@@ -227,6 +227,7 @@ TEMPLATES['question-simulation-v1'] = function build(spec, entry, q) {
   const S = spec.story, beats = [], cues = [];
   let t0 = 0;
   const add = (id, dur, draw, needs, extra) => { const b = Object.assign({ id: id, t0: t0, dur: dur, draw: draw, needs: needs || (() => []) }, extra || {}); beats.push(b); t0 += dur; return b; };
+  const marks = {};   /* the audio's sync points: the aha and the answer reveal */
   const cue = (t, type, gain) => cues.push({ t: +t.toFixed(3), type: type, gain: gain || 1 });
   const ctxLine = [entry.exam, entry.year].join(' ').toUpperCase();
   const chipText = ['PAPER ' + entry.paperNumber, entry.subject.toUpperCase(), 'Q.' + entry.questionNumber].join('  ·  ');
@@ -422,6 +423,7 @@ TEMPLATES['question-simulation-v1'] = function build(spec, entry, q) {
     cue(b.t0, 'whoosh', 0.6);
     if (m.callout) cue(b.t0 + dur * m.callout.from, 'ping', 0.6);
     if (m.result) cue(b.t0 + dur * 0.8, 'ding', 0.7);
+    if (m.aha) marks.aha = { t0: +(b.t0 + dur).toFixed(3), t1: +(b.t0 + dur + m.aha.seconds).toFixed(3) };
     if (m.aha) { cue(b.t0 + dur, 'hit', 1); cue(b.t0 + dur + 1.7, 'pop', 0.7); cue(b.t0 + dur + 2.0, 'pop', 0.9); }
   });
 
@@ -461,6 +463,7 @@ TEMPLATES['question-simulation-v1'] = function build(spec, entry, q) {
     watermark(1);
   });
   const ab = beats[beats.length - 1];
+  marks.answer = { t0: +ab.t0.toFixed(3), t1: +(ab.t0 + 4.4).toFixed(3), reveal: +(ab.t0 + 1.35).toFixed(3) };
   cue(ab.t0, 'whoosh', 0.6); cue(ab.t0 + 0.45, 'riser', 0.9); cue(ab.t0 + 1.35, 'reveal', 1); cue(ab.t0 + 1.75, 'impact', 0.7); cue(ab.t0 + 2.5, 'ping', 0.5);
 
   /* H. the payoff */
@@ -474,7 +477,7 @@ TEMPLATES['question-simulation-v1'] = function build(spec, entry, q) {
   });
   const pb = beats[beats.length - 1];
   cue(pb.t0, 'hit', 0.9); cue(pb.t0 + 1.3, 'shimmer', 0.8);
-  return { beats: beats, cues: cues, stills: [stillUrl], answer: { kind: kind, headline: headline, ring: ringText }, questionScale: qScale };
+  return { beats: beats, cues: cues, stills: [stillUrl], answer: { kind: kind, headline: headline, ring: ringText }, questionScale: qScale, marks: marks };
 };
 
 /* ------------------------------------------------------------------ thumbnail */
@@ -504,7 +507,7 @@ window.REEL = {
     BEATS = built.beats; CUES = built.cues; DUR = BEATS.reduce((a, b) => a + b.dur, 0);
     for (const u of built.stills) await load(u);
     STILLS = built.stills;
-    return { duration: +DUR.toFixed(3), beats: BEATS.map(b => ({ id: b.id, t0: +b.t0.toFixed(3), dur: +b.dur.toFixed(3) })), cues: CUES, answer: built.answer, questionScale: built.questionScale };
+    return { duration: +DUR.toFixed(3), beats: BEATS.map(b => ({ id: b.id, t0: +b.t0.toFixed(3), dur: +b.dur.toFixed(3) })), cues: CUES, answer: built.answer, questionScale: built.questionScale, marks: built.marks };
   },
   async render(T) {
     const b = BEATS.find(z => T >= z.t0 && T < z.t0 + z.dur) || BEATS[BEATS.length - 1], t = T - b.t0;

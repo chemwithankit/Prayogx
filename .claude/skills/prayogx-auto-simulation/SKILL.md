@@ -79,7 +79,7 @@ repository. Redo any stage marked DOUBT. Check the live site before making anoth
 ## 5. Report
 
 Per item: the `PRAYOGX AUTO BUILD COMPLETE` block (pipeline §10) with exact counts, the commit
-hash, LIVE / NOT DEPLOYED and the reel (READY FOR MANUAL REVIEW, or "Simulation complete; Reel
-generation failed."). Per batch: `python3 tools/auto_sim.py report <batch>`. Blocked or
+hash, LIVE / NOT DEPLOYED and the reel (READY_FOR_REVIEW - never approved or published by the factory - or
+"Simulation complete; Reel generation failed."). Per batch: `python3 tools/auto_sim.py report <batch>`. Blocked or
 failed items are listed, never hidden. Automated verification is never called human verification;
 Q16 is `human_verified` only because the owner reviewed it on 2026-09-29.

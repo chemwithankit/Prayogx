@@ -67,8 +67,16 @@ visible. The answer is not shown before the run. Full standard:
   explicitly asks** ("Generate a Reel for Q3"), with `node tools/reel-maker/generate-reel.js <ID>`.
 - A reel treats the simulation as a read-only source: no edits to its page, tests, data or the catalogue.
   A reel problem is fixed in the reel story (`tools/reel-maker/reels/<ID>.json`) or the reel tooling.
-- Every reel must pass all 18 reel checks and is reported **READY FOR MANUAL REVIEW**. Outputs stay in
-  `tools/reel-maker/output/` (git-ignored, never deployed). No Instagram publishing.
+- Every reel must pass all 30 reel checks (11 of them on the audio: the MP4's decoded track and the music stem) and ends
+  **READY_FOR_REVIEW**. Outputs stay in `tools/reel-maker/output/` (git-ignored, never deployed).
+- **Audio is original only**: the score and effects are composed by `tools/reel-maker/music.py` (an arranged, evolving track per reel) and listed
+  with provenance in `audio_library.json`. Never use film or chart songs, trending Instagram audio, YouTube or
+  "free music" downloads, or any track whose commercial social-media licence is not verified.
+- **Instagram publishing is human-gated** (`tools/instagram_publish.py`, docs/INSTAGRAM_PUBLISHING.md):
+  READY_FOR_REVIEW → APPROVED only when the owner runs `approve` after watching the reel; `publish` is a
+  separate command. Claude never runs `approve` or `publish` unless the owner explicitly asks for that reel in
+  this conversation, never infers approval from validation, a commit or a push, and never puts a token in a
+  file, log or message (`.env` is git-ignored; `.env.example` has placeholders only).
 
 ## Registry and generated files
 
@@ -127,6 +135,7 @@ visible. The answer is not shown before the run. Full standard:
 | Batches, dry runs, the autonomous pipeline | `.claude/skills/prayogx-auto-simulation/`, `docs/AUTO_SIMULATION_PIPELINE.md`, `tools/auto_sim.py` |
 | Sync the Google Sheet tracker (in place, never recreate) | `.claude/skills/prayogx-register/` §5, `tools/tracker_sheet.py` |
 | Fix or review an existing page | `.claude/skills/prayogx-review-existing/` |
+| Reels: generate, audio, review, approve, publish to Instagram | `tools/reel-maker/README.md`, `tools/instagram_publish.py`, `docs/INSTAGRAM_PUBLISHING.md` |
 | Tokens, components, animation CSS | `.claude/skills/prayogx-design-system/reference.md` |
 | Standards, generations, immersive direction | `docs/SIMULATION_STANDARDS.md` |
 | Decisions and open questions | `docs/DECISIONS.md` |

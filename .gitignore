@@ -59,3 +59,16 @@ tests/appwww*/
 # reel maker: generated reels and its compiled encoder (tools/reel-maker/README.md)
 tools/reel-maker/output/
 tools/reel-maker/.cache/
+
+# Instagram publishing credentials and private publishing state - never committed (docs/INSTAGRAM_PUBLISHING.md).
+# Approvals, attempts, logs and locks live in tools/reel-maker/output/<ID>/ (ignored above); the public ledger
+# tools/reel-maker/publications.json holds no secrets.
+.env
+.env.*
+!.env.example
+*.pem
+*.p12
+*.key
+*credentials*.json
+*client_secret*.json
+*.token

@@ -15,7 +15,11 @@
    Output:  tools/reel-maker/output/<ID>/ reel.mp4, thumbnail.jpg, caption.txt, reel.json   (git-ignored)
 
    Stages: recorder.js (the real page on a manual clock) -> composer/ (every frame drawn in a 1080x1920 stage)
-   -> audio.py (synthesized sound design) -> encode.swift (H.264 + AAC via AVFoundation) -> validate.js.     */
+   -> audio.py (original score + synchronized effects, mixed and loudness-normalized) -> encode.swift (H.264 +
+   AAC via AVFoundation) -> validate.js (video, story and audio checks on the MP4).
+
+   Status (reel.json): GENERATED -> VALIDATED -> READY_FOR_REVIEW, or GENERATION_FAILED / VALIDATION_FAILED. This
+   tool stops there: approval and Instagram publishing are separate, explicit steps (tools/instagram_publish.py).  */
 const fs = require('fs');
 const path = require('path');
 const crypto = require('crypto');
@@ -28,6 +32,9 @@ const HERE = __dirname, ROOT = path.resolve(HERE, '..', '..');
 const PY = fs.existsSync(path.join(ROOT, 'tests/.venv/bin/python3')) ? path.join(ROOT, 'tests/.venv/bin/python3') : 'python3';
 const fileUrl = p => 'file://' + p.split('/').map(encodeURIComponent).join('/');
 const log = s => console.log(s);
+const AAC_PRIMING = 2112;   /* Apple's AAC-LC encoder delay in samples; mp4tools.py checks the edit list it removes against it */
+const sha256 = f => crypto.createHash('sha256').update(fs.readFileSync(f)).digest('hex');
+const stamp = (m, status, note) => { m.status = status; (m.statusHistory = m.statusHistory || []).push(Object.assign({ status: status, at: new Date().toISOString(), by: 'generate-reel.js' }, note ? { note: note } : {})); };
 
 function args() {
   const a = process.argv.slice(2), o = { id: null, reuse: false, keep: false, preview: null, draft: false, origin: 'on-request' };
@@ -149,6 +156,7 @@ function caption(spec, entry) {
   if (!entry) { console.error('simulation not found: ' + o.id + ' is not in data/manifest.json (IDs look like ADV-2026-P1-PHY-Q03)'); process.exit(2); }
   const pageFile = path.join(ROOT, entry.path), outDir = path.join(HERE, 'output', o.id), work = path.join(outDir, '.work');
   if (!fs.existsSync(pageFile)) { console.error('simulation page missing: ' + entry.path); process.exit(2); }
+  if (fs.existsSync(path.join(outDir, 'publish', 'publish.lock'))) { console.error('a publish of ' + o.id + ' is running (tools/instagram_publish.py) - not regenerating its reel now'); process.exit(2); }
   const specFile = path.join(HERE, 'reels', o.id + '.json');
   if (!o.draft && !fs.existsSync(specFile)) { console.error('no reel story yet: ' + path.relative(ROOT, specFile) + '\nrun with --draft to record the page and write a first story spec, then edit it'); process.exit(2); }
   if (!o.preview && !o.draft) requireMac();
@@ -181,37 +189,73 @@ function caption(spec, entry) {
   if (c.errors.length) throw new Error('composer errors: ' + c.errors.join(' | '));
   if (o.preview) { log('previews in ' + outDir); return; }
 
-  log('sound design …');
-  fs.writeFileSync(path.join(work, 'cues.json'), JSON.stringify(c.timeline.cues));
-  execFileSync(PY, [path.join(HERE, 'audio.py'), path.join(work, 'cues.json'), String(c.frames / (spec.fps || 30)), path.join(work, 'audio.wav')], { stdio: 'inherit' });
+  log('score and sound design …');
+  const plan = { simulationId: o.id, subject: entry.subject, chapter: entry.chapter, topic: entry.topic, duration: c.frames / (spec.fps || 30), fps: spec.fps || 30,
+    beats: c.timeline.beats, cues: c.timeline.cues, marks: c.timeline.marks, audio: spec.audio || {} };
+  fs.writeFileSync(path.join(work, 'audio-plan.json'), JSON.stringify(plan, null, 1));
+  execFileSync(PY, [path.join(HERE, 'audio.py'), '--plan', path.join(work, 'audio-plan.json'), '--out', path.join(work, 'audio.wav'), '--report', path.join(work, 'audio.json')], { stdio: 'inherit' });
+  const audioRep = JSON.parse(fs.readFileSync(path.join(work, 'audio.json'), 'utf8'));
 
   log('encoding …');
   const bin = encoder();
   execFileSync(bin, ['encode', path.join(work, 'frames'), path.join(work, 'audio.wav'), path.join(outDir, 'reel.mp4'), String(spec.fps || 30), '1080', '1920'], { stdio: 'inherit' });
+  /* Reels spec: no edit lists, moov first. Without its edit list the AAC priming (2112 samples) is trimmed implicitly by
+     Apple's decoder (exact sync, proved on the decoded track in validate.js); a decoder that does not trim it plays the
+     audio 44 ms late, inside the ITU-R BT.1359 tolerance for late audio (-125 ms) - never early. */
+  const container = JSON.parse(execFileSync(PY, [path.join(HERE, 'mp4tools.py'), 'strip-edits', path.join(outDir, 'reel.mp4'), '--audio-priming', String(AAC_PRIMING)]).toString());
+  log('container: moov first ' + container.moovBeforeMdat + ', edit lists ' + container.editLists + ' (removed ' + container.removedBytes + ' bytes)');
 
   fs.writeFileSync(path.join(outDir, 'caption.txt'), caption(spec, entry));
   let commit = '';
   try { commit = execFileSync('git', ['-C', ROOT, 'rev-parse', '--short', 'HEAD']).toString().trim(); } catch (e) { commit = ''; }
   const after = folderHash(simDir);
   const manifest = {
-    simulationId: o.id, origin: o.origin, status: 'pending-validation', template: spec.template, created: new Date().toISOString(), sourcePage: entry.path, sourceRevision: entry.revision, repoCommit: commit,
+    simulationId: o.id, origin: o.origin, status: 'GENERATED', statusHistory: [], template: spec.template, created: new Date().toISOString(), sourcePage: entry.path, sourceRevision: entry.revision, repoCommit: commit,
     sourceIntegrity: { folder: path.relative(ROOT, simDir), sha256Before: before, sha256After: after, unchanged: before === after },
     answerReveal: c.timeline.answer, questionScale: c.timeline.questionScale,
     exam: entry.exam, year: entry.year, paper: entry.paperNumber, subject: entry.subject, chapter: entry.chapter, questionNumber: entry.questionNumber, answer: entry.answer,
     video: { file: 'reel.mp4', width: 1080, height: 1920, fps: spec.fps || 30, seconds: +(c.frames / (spec.fps || 30)).toFixed(3), frames: c.frames },
-    beats: c.timeline.beats, audioCues: c.timeline.cues, audio: 'synthesized sound design (tools/reel-maker/audio.py), royalty-free',
+    beats: c.timeline.beats, marks: c.timeline.marks, audioCues: c.timeline.cues,
+    audio: { summary: 'original PrayogX score and sound effects, generated by tools/reel-maker/audio.py - no third-party audio',
+      tracks: audioRep.tracks, score: audioRep.score, arc: audioRep.arc, syncEvents: audioRep.syncEvents, mix: audioRep.mix,
+      rendered: { sampleRate: audioRep.sampleRate, channels: audioRep.channels, seconds: audioRep.seconds, stats: audioRep.stats } },
     footage: { frames: footage.frames.length, fps: footage.fps, simulationSeconds: +(footage.frames.length / footage.fps).toFixed(2), canvas: footage.canvas, pageErrors: footage.pageErrors },
     files: ['reel.mp4', 'thumbnail.jpg', 'caption.txt', 'reel.json']
   };
+  stamp(manifest, 'GENERATED');
   log('validating …');
   const v = await validate(outDir, work, manifest, bin, spec);
   manifest.validation = v;
-  manifest.status = v.passed === v.checks.length ? 'ready-for-review' : 'validation-failed';
+  if (v.audio) manifest.audio.measured = v.audio;
+  if (v.passed === v.checks.length) {
+    /* the exact files that were validated: an approval is bound to these hashes, so any later change voids it */
+    manifest.hashes = { 'reel.mp4': sha256(path.join(outDir, 'reel.mp4')), 'thumbnail.jpg': sha256(path.join(outDir, 'thumbnail.jpg')), 'caption.txt': sha256(path.join(outDir, 'caption.txt')) };
+    stamp(manifest, 'VALIDATED', v.passed + '/' + v.checks.length + ' checks');
+    stamp(manifest, 'READY_FOR_REVIEW', 'awaiting a human review; nothing is published without an explicit approval');
+  } else stamp(manifest, 'VALIDATION_FAILED', (v.checks.length - v.passed) + ' checks failed');
   fs.writeFileSync(path.join(outDir, 'reel.json'), JSON.stringify(manifest, null, 2) + '\n');
   if (!o.keep) fs.rmSync(path.join(work, 'frames'), { recursive: true, force: true });
   v.checks.forEach(x => log((x.ok ? 'PASS  ' : 'FAIL  ') + x.name + (x.detail ? '   ' + x.detail : '')));
   log('\n' + v.passed + ' / ' + v.checks.length + ' reel checks passed · ' + manifest.video.seconds + ' s · ' + ((Date.now() - t0) / 1000).toFixed(0) + ' s to build');
   log('reel: ' + path.relative(ROOT, path.join(outDir, 'reel.mp4')) + '   (' + o.origin + ')');
-  log(manifest.status === 'ready-for-review' ? 'READY FOR MANUAL REVIEW' : 'REEL VALIDATION FAILED - fix the reel story or tooling and re-run (never the simulation)');
+  log(manifest.status === 'READY_FOR_REVIEW' ? 'READY_FOR_REVIEW - review it, then approve and publish only with tools/instagram_publish.py (never automatic)'
+    : 'VALIDATION_FAILED - fix the reel story or tooling and re-run (never the simulation)');
   process.exit(v.passed === v.checks.length ? 0 : 1);
-})().catch(e => { console.error(e && e.stack || e); process.exit(1); });
+})().catch(e => {
+  console.error(e && e.stack || e);
+  /* a failed build leaves a GENERATION_FAILED record, never a stale READY_FOR_REVIEW one */
+  try {
+    const o = args();
+    if (!o.preview && !o.draft) {
+      const dir = path.join(HERE, 'output', o.id);
+      if (fs.existsSync(dir)) {
+        ['reel.mp4', 'thumbnail.jpg', 'caption.txt'].forEach(f => fs.rmSync(path.join(dir, f), { force: true }));
+        const m = { simulationId: o.id, origin: o.origin, status: 'GENERATION_FAILED', statusHistory: [], error: String(e && e.message || e).slice(0, 600) };
+        stamp(m, 'GENERATION_FAILED', m.error.split('\n')[0]);
+        fs.writeFileSync(path.join(dir, 'reel.json'), JSON.stringify(m, null, 2) + '\n');
+        console.error('GENERATION_FAILED - recorded in ' + path.relative(ROOT, path.join(dir, 'reel.json')));
+      }
+    }
+  } catch (e2) { /* the original error is what matters */ }
+  process.exit(1);
+});

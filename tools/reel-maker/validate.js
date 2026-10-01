@@ -5,7 +5,9 @@
    AAC, playable, 20-40 s; the decoded video matches the composition; no black or empty stretch; every story
    beat present and in order (question, real simulation footage, aha, answer, branding); the answer never shown
    before its reveal; text inside the Instagram-safe area; the thumbnail and the caption; and the simulation's
-   own files unchanged by the run.                                                                         */
+   own files unchanged by the run. Then the audio, measured on the MP4's own decoded track (audio_check.py): the
+   track and its sync with the rendered mix, the score and the cues, licensing, clipping, loudness, silence,
+   fades, the aha and reveal accents and the ducking. Every check must pass before READY_FOR_REVIEW.          */
 const fs = require('fs');
 const path = require('path');
 const { execFileSync } = require('child_process');
@@ -41,6 +43,12 @@ async function validate(outDir, work, manifest, bin, spec) {
   ok('vertical 9:16 at 1080 x 1920', pr.width === 1080 && pr.height === 1920, pr.width + ' x ' + pr.height);
   ok('H.264 video at ' + manifest.video.fps + ' fps, AAC stereo audio, playable', pr.video === 'avc1' && Math.abs(pr.fps - manifest.video.fps) < 0.5 && pr.audio === 'aac ' && pr.channels === 2 && pr.playable,
     pr.video + ' ' + pr.fps + ' fps, ' + pr.audio + ' x' + pr.channels + ', playable ' + pr.playable);
+
+  /* the container, against Meta's Reels spec: moov first, no edit lists, <= 300 MB, video <= 25 Mbps, 23-60 fps */
+  const box = JSON.parse(execFileSync(PY, [path.join(__dirname, 'mp4tools.py'), 'inspect', mp4]).toString());
+  ok('Reels container: moov atom first, no edit lists, under 300 MB, video under 25 Mbps, 23-60 fps',
+     box.moovBeforeMdat && box.editLists === 0 && size(mp4) <= 300e6 && pr.videoBitRate > 0 && pr.videoBitRate <= 25e6 && pr.fps >= 23 && pr.fps <= 60,
+     'moov first ' + box.moovBeforeMdat + ', edit lists ' + box.editLists + ', ' + (size(mp4) / 1e6).toFixed(1) + ' MB, video ' + (pr.videoBitRate / 1e6).toFixed(1) + ' Mbps');
 
   /* decode the MP4 at the middle of every beat and compare with the composed frame */
   const fr = JSON.parse(fs.readFileSync(path.join(work, 'frames.json'), 'utf8')), fps = fr.fps, R = fr.report;
@@ -105,7 +113,22 @@ async function validate(outDir, work, manifest, bin, spec) {
   const SI = manifest.sourceIntegrity || {};
   ok('the simulation was only read: its folder is byte-identical before and after', SI.unchanged === true, SI.folder + ' sha256 ' + String(SI.sha256After).slice(0, 12));
 
-  return { passed: checks.filter(c => c.ok).length, checks: checks, probe: pr };
+  /* the audio, decoded from the MP4 itself */
+  let audio = null;
+  try {
+    const dec = path.join(work, 'decoded.wav');
+    execFileSync(bin, ['audio', mp4, dec]);
+    const input = path.join(work, 'audio-check.json');
+    fs.writeFileSync(input, JSON.stringify({ decoded: dec, rendered: path.join(work, 'audio.wav'), music: path.join(work, 'music.wav'), report: path.join(work, 'audio.json'), probe: pr,
+      beats: manifest.beats, marks: manifest.marks, seconds: manifest.video.seconds, fps: manifest.video.fps }));
+    const r = JSON.parse(execFileSync(PY, [path.join(__dirname, 'audio_check.py'), input], { maxBuffer: 16 << 20 }).toString());
+    r.checks.forEach(c => ok('audio: ' + c.name, c.ok, c.detail));
+    audio = r.measured;
+  } catch (e) {
+    ok('audio: the MP4\'s audio track could be decoded and analysed', false, String(e.message || e).split('\n')[0]);
+  }
+
+  return { passed: checks.filter(c => c.ok).length, checks: checks, probe: pr, audio: audio };
 }
 
 module.exports = { validate };

@@ -205,17 +205,19 @@ Every **new** question simulation gets an Instagram reel once it is validated an
 `production_audit_complete` for a local build, and after `live_smoke_test_complete` in production. Write the
 story spec (`node tools/reel-maker/generate-reel.js <ID> --draft`, then edit and `--preview`), then run
 `python3 tools/auto_sim.py reel <batch> <n>`. That runs the generator with `--origin new-simulation`, which
-records the real page read-only, composes, encodes and runs 18 reel checks. The outcome is stored on the item as
-`reel: ready-for-review | failed` and shown in the REEL column of `auto_sim.py report`.
+records the real page read-only, composes, scores (original music and effects), encodes and runs 30 reel checks,
+11 of them on the audio. The outcome is stored on the item as `reel: ready-for-review | failed`
+(with the reel's own state, `READY_FOR_REVIEW` or a failure) and shown in the REEL column of `auto_sim.py report`.
 
 The reel is **not** one of the 21 stages. A reel failure never blocks, fails or undoes the simulation; it is
 reported as "Simulation complete; Reel generation failed." and fixed in the reel story or tooling. The simulation
 itself is never touched (the generator hashes its folder before and after).
 
 **Existing simulations** get a reel only when the owner asks for one, directly with
-`node tools/reel-maker/generate-reel.js <ID>` (origin `on-request`), never automatically. Reels are never
-published from here: Instagram publishing is a later phase. Reel files live in `tools/reel-maker/output/`
-(git-ignored; `tools/` is never deployed).
+`node tools/reel-maker/generate-reel.js <ID>` (origin `on-request`), never automatically. The factory stops at
+READY_FOR_REVIEW and never publishes: approval and Instagram publishing are separate human steps with
+`tools/instagram_publish.py` (docs/INSTAGRAM_PUBLISHING.md); a production-mode authorisation for a simulation does
+not cover its reel. Reel files live in `tools/reel-maker/output/` (git-ignored; `tools/` is never deployed).
 
 ## 8. State, failures and resume
 

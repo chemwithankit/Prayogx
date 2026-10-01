@@ -1,137 +1,373 @@
 #!/usr/bin/env python3
-"""PrayogX Reel Maker - generated sound design (royalty-free: every sample is synthesized here with numpy).
+"""PrayogX Reel Maker - the reel's soundtrack: an original cinematic score, synchronized sound effects and the mix.
 
-    python3 tools/reel-maker/audio.py CUES.json DURATION OUT.wav
+    python3 tools/reel-maker/audio.py --plan PLAN.json --out AUDIO.wav --report AUDIO.json
 
-CUES.json is the composer's cue sheet: [{"t": seconds, "type": "whoosh" | "pop" | ..., "gain": 0..1}].
-The track is a soft evolving pad (a quiet bed so the reel is never dead silent) plus one synthesized effect per
-cue, mixed to 44.1 kHz stereo 16-bit with a gentle limiter. Deterministic: a fixed random seed.
+PLAN.json (written by generate-reel.js) holds the reel's beats, the composer's sound-effect cues, its sync marks (the
+aha and the answer reveal), the subject and chapter, and optional spec.audio settings.
+
+Every sound is made here, by code: oscillators, additive partials and filtered noise. No samples, loops or recordings
+are used, so the music and the effects are PrayogX's own work (audio_library.json records that provenance; an asset
+that is not listed there with a verified licence is refused, exit 3).
+
+The music is composed by music.py (score v2): a style from the subject and chapter (EDM, synthwave, cinematic
+hybrid, organic groove, crystal 2-step), a seeded melodic hook, voice-led 7th chords and an arrangement that follows
+the reel - intro, verse under the question, build, a groove that lands on the simulation start and changes at
+every moment, a breakdown on the aha, the drop on the answer reveal, and a resolution on the tonic major.
+
+The mix has three stems with priority VOICE > MUSIC > SFX for ducking: the music ducks under on-screen text
+(question, problem, aha, answer) and under each effect; a voice stem (none yet) would duck both. Then: loudness
+normalized to -14 LUFS integrated (ITU-R BS.1770-4), a true-peak limiter at -1 dBTP, a fade in, a fade out and
+a silent last frame. 48 kHz stereo 16-bit, deterministic.
 """
+import argparse
+import hashlib
 import json
+import math
+import os
+import re
 import sys
 import wave
 
 import numpy as np
+from scipy.ndimage import maximum_filter1d, minimum_filter1d
+from scipy.signal import butter, fftconvolve, lfilter, resample_poly, sosfilt
 
-SR = 44100
-rng = np.random.default_rng(7)
-
-
-def env(n, a, d, curve=4.0):
-    """attack a seconds, then exponential decay over the rest."""
-    t = np.arange(n) / SR
-    att = np.clip(t / max(a, 1e-4), 0, 1)
-    dec = np.exp(-curve * np.clip(t - a, 0, None) / max(d, 1e-4))
-    return att * dec
+SR = 48000
+HERE = os.path.dirname(os.path.abspath(__file__))
+ROOT = os.path.dirname(os.path.dirname(HERE))
+LIBRARY = os.path.join(HERE, "audio_library.json")
+TARGET_LUFS = -14.0
+CEILING_DBTP = -1.0
 
 
-def lowpass(x, a):
-    """one-pole low-pass, a in (0, 1): smaller is darker."""
-    y = np.empty_like(x)
-    acc = 0.0
-    for i in range(len(x)):
-        acc += a * (x[i] - acc)
-        y[i] = acc
-    return y
+# ------------------------------------------------------------------ provenance
+class ProvenanceError(Exception):
+    pass
 
 
-def sweep_noise(dur, f0, f1):
-    """noise through a moving band: the core of a whoosh."""
-    n = int(dur * SR)
-    noise = rng.standard_normal(n)
-    a = np.linspace(f0, f1, n) / SR * 2 * np.pi
-    a = np.clip(a, 0.001, 0.9)
-    out = np.empty(n)
-    lp = hp = 0.0
-    for i in range(n):
-        lp += a[i] * (noise[i] - lp)
-        hp += 0.02 * (lp - hp)
-        out[i] = lp - hp
-    return out
+def sha256_file(p):
+    h = hashlib.sha256()
+    with open(p, "rb") as f:
+        for b in iter(lambda: f.read(1 << 20), b""):
+            h.update(b)
+    return h.hexdigest()
 
 
-def tone(freq, dur, kind="sine"):
-    t = np.arange(int(dur * SR)) / SR
-    ph = 2 * np.pi * np.cumsum(np.broadcast_to(freq, t.shape)) / SR if np.ndim(freq) else 2 * np.pi * freq * t
-    return np.sin(ph) if kind == "sine" else np.sign(np.sin(ph)) * 0.3 + np.sin(ph) * 0.7
+def load_library(path=LIBRARY):
+    with open(path, encoding="utf-8") as f:
+        return {a["assetId"]: a for a in json.load(f)["assets"]}
 
 
-def fx(kind):
+def check_asset(lib, asset_id, role, root=ROOT):
+    """The asset's provenance record, or ProvenanceError. Unlisted, unverified or non-commercial assets are refused."""
+    a = lib.get(asset_id)
+    if not a:
+        raise ProvenanceError("audio asset %r is not in audio_library.json - unknown provenance, not used" % asset_id)
+    why = []
+    if a.get("role") != role:
+        why.append("role %r, wanted %r" % (a.get("role"), role))
+    if a.get("licenseVerified") is not True:
+        why.append("licence not verified")
+    if a.get("commercialUse") is not True:
+        why.append("commercial use not permitted")
+    if "instagram" not in (a.get("permittedUse") or []):
+        why.append("Instagram use not permitted")
+    if not a.get("license") or not a.get("sourceReference"):
+        why.append("no licence text or source reference")
+    if a.get("attributionRequired") and not a.get("attributionText"):
+        why.append("attribution required but no attribution text")
+    if a.get("source") == "file":
+        f, doc = os.path.join(root, a.get("file", "")), os.path.join(root, a.get("licenseDocument", ""))
+        if not a.get("file") or not os.path.isfile(f):
+            why.append("file missing")
+        elif sha256_file(f) != a.get("sha256"):
+            why.append("file sha256 does not match the licensed file")
+        if not a.get("licenseDocument") or not os.path.isfile(doc):
+            why.append("no licence document kept with the file")
+    elif a.get("source") != "generated":
+        why.append("unknown source %r" % a.get("source"))
+    if why:
+        raise ProvenanceError("audio asset %r refused: %s" % (asset_id, "; ".join(why)))
+    keys = ["assetId", "role", "source", "generator", "owner", "license", "licenseVerified", "sourceReference",
+            "permittedUse", "commercialUse", "attributionRequired", "attributionText", "file", "sha256"]
+    return {k: a[k] for k in keys if k in a}
+
+
+# ------------------------------------------------------------------ loudness (ITU-R BS.1770-4)
+def _k_weighting(sr):
+    f0, G, Q = 1681.974450955533, 3.999843853973347, 0.7071752369554196          # the BS.1770 pre-filter (shelf)
+    K = math.tan(math.pi * f0 / sr); Vh = 10 ** (G / 20); Vb = Vh ** 0.4996667741545416
+    a0 = 1 + K / Q + K * K
+    b1 = [(Vh + Vb * K / Q + K * K) / a0, 2 * (K * K - Vh) / a0, (Vh - Vb * K / Q + K * K) / a0]
+    a1 = [1, 2 * (K * K - 1) / a0, (1 - K / Q + K * K) / a0]
+    f0, Q = 38.13547087602444, 0.5003270373238773                                 # the RLB high-pass
+    K = math.tan(math.pi * f0 / sr)
+    b2 = [1, -2, 1]
+    a2 = [1, 2 * (K * K - 1) / (1 + K / Q + K * K), (1 - K / Q + K * K) / (1 + K / Q + K * K)]
+    return (b1, a1), (b2, a2)
+
+
+def _kw(x, sr):
+    (b1, a1), (b2, a2) = _k_weighting(sr)
+    return lfilter(b2, a2, lfilter(b1, a1, x, axis=0), axis=0)
+
+
+def _blocks(x, sr):
+    """400 ms blocks, 75 % overlap: (start times, summed mean square of the K-weighted channels)."""
+    y = _kw(np.atleast_2d(x.T).T, sr)
+    n, step = int(0.4 * sr), int(0.1 * sr)
+    if len(y) < n:
+        return np.array([0.0]), np.array([1e-12])
+    p2 = np.cumsum(np.concatenate([np.zeros((1, y.shape[1])), y ** 2]), axis=0)
+    starts = np.arange(0, len(y) - n + 1, step)
+    return starts / sr, ((p2[starts + n] - p2[starts]) / n).sum(axis=1)
+
+
+def block_loudness(x, sr=SR):
+    """(block start times, momentary loudness of each 400 ms block in LUFS)"""
+    t, z = _blocks(x, sr)
+    return t, -0.691 + 10 * np.log10(np.maximum(z, 1e-12))
+
+
+def integrated_lufs(x, sr=SR):
+    t, z = _blocks(x, sr)
+    L = -0.691 + 10 * np.log10(np.maximum(z, 1e-12))
+    g = z[L > -70]                                                               # absolute gate
+    if not len(g):
+        return -120.0
+    rel = -0.691 + 10 * math.log10(g.mean()) - 10                                # relative gate
+    g = z[(L > -70) & (L > rel)]
+    return float(-0.691 + 10 * math.log10(g.mean())) if len(g) else -120.0
+
+
+def true_peak_db(x):
+    up = resample_poly(np.atleast_2d(x.T).T, 4, 1, axis=0)
+    return float(20 * math.log10(max(np.abs(up).max(), np.abs(x).max(), 1e-12)))
+
+
+def limit(x, ceiling_db=CEILING_DBTP, radius=0.004):
+    """True-peak limiter: the gain each sample needs (from the 4x oversampled peak), held over +-radius and smoothed
+    with a box no wider than the hold, so the gain never exceeds what any nearby peak needs."""
+    c = 10 ** (ceiling_db / 20)
+    up = np.abs(resample_poly(x, 4, 1, axis=0)).max(axis=1)
+    pk = np.maximum(up[: 4 * len(x)].reshape(-1, 4).max(axis=1), np.abs(x).max(axis=1))
+    need = np.minimum(1.0, c / np.maximum(pk, 1e-9))
+    r = max(1, int(radius * SR))
+    g = minimum_filter1d(need, 2 * r + 1)
+    g = box(g, r)
+    return x * np.minimum(g, need)[:, None]
+
+
+def box(v, r):
+    """moving average over 2r+1 samples (edges padded with the end values)."""
+    p = np.concatenate([np.full(r, v[0]), v, np.full(r + 1, v[-1])])
+    c = np.cumsum(p)
+    return (c[2 * r + 1:] - c[: -2 * r - 1])[: len(v)] / (2 * r + 1)
+
+
+# ------------------------------------------------------------------ the music (music.py) and its building blocks
+sys.path.insert(0, HERE)
+from music import SR as _MSR, Score, bp, env_ad, hp, lp, midi_hz, palette_for, partials, sweep_noise  # noqa: E402,F401
+assert _MSR == SR
+
+
+# ------------------------------------------------------------------ sound effects (the composer's cue sheet)
+def fx(kind, rng):
     if kind == "whoosh":
-        d = 0.55; x = sweep_noise(d, 300, 5000) * np.hanning(int(d * SR)) ** 1.5; return x * 0.5
+        d = 0.55; return sweep_noise(rng, d, 300, 5000) * np.hanning(int(d * SR)) ** 1.5 * 1.2
     if kind == "riser":
         d = 0.9; n = int(d * SR); f = np.linspace(180, 900, n)
-        x = 0.35 * tone(f, d) + 0.25 * sweep_noise(d, 200, 7000)
+        x = 0.35 * np.sin(2 * np.pi * np.cumsum(f) / SR) + 0.6 * sweep_noise(rng, d, 200, 7000)
         return x * np.linspace(0, 1, n) ** 2
     if kind == "impact":
-        d = 0.8; n = int(d * SR); f = 90 * np.exp(-np.arange(n) / SR * 6) + 38
-        return 0.9 * tone(f, d) * env(n, 0.003, 0.5, 5) + 0.25 * lowpass(rng.standard_normal(n), 0.08) * env(n, 0.001, 0.12, 6)
+        d = 0.8; n = int(d * SR); tt = np.arange(n) / SR; f = 90 * np.exp(-tt * 6) + 38
+        return 0.9 * np.sin(2 * np.pi * np.cumsum(f) / SR) * env_ad(n, 0.003, 0.1) + 0.25 * lp(rng.standard_normal(n), 900) * env_ad(n, 0.001, 0.02)
     if kind == "hit":
-        d = 0.7; n = int(d * SR); f = 120 * np.exp(-np.arange(n) / SR * 9) + 45
-        return 0.8 * tone(f, d) * env(n, 0.002, 0.4, 5) + 0.35 * sweep_noise(d, 4000, 600) * env(n, 0.001, 0.2, 5)
+        d = 0.7; n = int(d * SR); tt = np.arange(n) / SR; f = 120 * np.exp(-tt * 9) + 45
+        return 0.8 * np.sin(2 * np.pi * np.cumsum(f) / SR) * env_ad(n, 0.002, 0.08) + 0.6 * sweep_noise(rng, d, 4000, 600) * env_ad(n, 0.001, 0.04)
     if kind == "pop":
-        d = 0.18; n = int(d * SR); f = 900 * np.exp(-np.arange(n) / SR * 30) + 300
-        return 0.5 * tone(f, d) * env(n, 0.001, 0.12, 6)
+        d = 0.18; n = int(d * SR); tt = np.arange(n) / SR; f = 900 * np.exp(-tt * 30) + 300
+        return 0.5 * np.sin(2 * np.pi * np.cumsum(f) / SR) * env_ad(n, 0.001, 0.02)
     if kind == "tick":
         d = 0.06; n = int(d * SR)
-        return 0.35 * tone(2400, d) * env(n, 0.0005, 0.04, 8)
+        return 0.35 * np.sin(2 * np.pi * 2400 * np.arange(n) / SR) * env_ad(n, 0.0005, 0.005)
     if kind == "ping":
         d = 0.7; n = int(d * SR)
-        return 0.32 * (tone(1318.5, d) + 0.4 * tone(2637, d)) * env(n, 0.002, 0.6, 5)
+        return 0.32 * partials(1318.5, n, [(1, 1, 7), (2, .4, 9)])
     if kind == "ding":
         d = 0.9; n = int(d * SR)
-        return 0.3 * (tone(880, d) + 0.6 * tone(1318.5, d) + 0.25 * tone(1760, d)) * env(n, 0.002, 0.8, 4)
+        return 0.3 * partials(880, n, [(1, 1, 5), (1.5, .6, 6), (2, .25, 8)])
     if kind == "reveal":
         d = 2.2; n = int(d * SR); out = np.zeros(n)
-        for k, f in enumerate([523.25, 659.25, 783.99, 1046.5]):        # C major, arpeggiated
-            s = int(k * 0.07 * SR); m = n - s
-            out[s:] += 0.22 * (tone(f, m / SR) + 0.3 * tone(2 * f, m / SR)) * env(m, 0.004, 1.9, 3)
-        return out + 0.3 * sweep_noise(d, 6000, 2000) * env(n, 0.001, 0.4, 6)
+        for k, f in enumerate([523.25, 659.25, 783.99, 1046.5]):
+            s = int(k * 0.07 * SR)
+            out[s:] += 0.22 * partials(f, n - s, [(1, 1, 1.6), (2, .3, 2.5)])
+        return out + 0.5 * sweep_noise(rng, d, 6000, 2000) * env_ad(n, 0.001, 0.07)
     if kind == "shimmer":
         d = 1.6; n = int(d * SR); out = np.zeros(n)
         for k, f in enumerate([1567.98, 2093.0, 2637.0, 3135.96]):
-            s = int(k * 0.09 * SR); m = n - s
-            out[s:] += 0.12 * tone(f, m / SR) * env(m, 0.003, 1.2, 4)
+            s = int(k * 0.09 * SR)
+            out[s:] += 0.12 * partials(f, n - s, [(1, 1, 3.3)])
         return out
     raise ValueError("unknown cue " + kind)
 
 
-def pad(dur):
-    """a quiet, slowly moving chord bed (Am - F - C - G), low-passed."""
-    n = int(dur * SR); t = np.arange(n) / SR
-    chords = [[220.0, 261.63, 329.63], [174.61, 220.0, 261.63], [196.0, 261.63, 329.63], [196.0, 246.94, 293.66]]
-    out = np.zeros(n); seg = 4.0
-    for i, ch in enumerate(chords * int(dur // (seg * 4) + 2)):
-        s = int(i * seg * SR)
-        if s >= n: break
-        m = min(n - s, int((seg + 1.0) * SR)); tt = np.arange(m) / SR
-        w = np.sin(np.pi * np.clip(tt / (seg + 1.0), 0, 1)) ** 2
-        for f in ch:
-            out[s:s + m] += (np.sin(2 * np.pi * f * tt) + 0.3 * np.sin(2 * np.pi * 2 * f * tt + 0.5)) * w
-    out = lowpass(out, 0.06)
-    fade = np.minimum(1, np.minimum(t / 1.5, (dur - t) / 1.5))
-    return 0.05 * out / (np.abs(out).max() + 1e-9) * np.clip(fade, 0, 1)
+def sfx_stem(cues, n, rng):
+    st = np.zeros((n, 2))
+    for i, c in enumerate(cues):
+        x = fx(c["type"], rng) * float(c.get("gain", 1))
+        s = int(round(float(c["t"]) * SR))
+        if s >= n:
+            continue
+        m = min(len(x), n - s)
+        pan = 0.15 * math.sin(i * 2.3)
+        st[s:s + m, 0] += x[:m] * (1 - pan); st[s:s + m, 1] += x[:m] * (1 + pan)
+    return st
+
+
+# ------------------------------------------------------------------ the mix
+def text_windows(plan):
+    """on-screen text the music ducks under: (t0, t1, dB, what)"""
+    B = {b["id"]: b for b in plan["beats"]}
+    M = plan.get("marks") or {}
+    w = [(B["question"]["t0"], B["question"]["t0"] + B["question"]["dur"], -6.0, "question text"),
+         (B["problem"]["t0"], B["problem"]["t0"] + B["problem"]["dur"] + B["curiosity"]["dur"], -4.0, "problem and curiosity lines")]
+    if M.get("aha"):
+        w.append((M["aha"]["t0"] + 0.5, M["aha"]["t1"], -6.0, "aha text"))
+    a = M.get("answer") or {}
+    if a:
+        w.append((a["reveal"] + 0.35, a["t1"], -5.0, "answer text"))
+    w.append((B["payoff"]["t0"], B["payoff"]["t0"] + 1.3, -3.0, "payoff lines"))
+    return [{"t0": round(x[0], 3), "t1": round(x[1], 3), "duckDb": x[2], "what": x[3]} for x in w]
+
+
+def envelope(x, win):
+    return np.sqrt(box((x ** 2).mean(axis=1), max(1, int(win * SR / 2))))
+
+
+def sidechain(trigger, depth_db, thr, hold=0.15, smooth=0.05):
+    """gain (linear) that dips by up to depth_db while the trigger stem is loud."""
+    e = np.clip(envelope(trigger, 0.01) / thr, 0, 1)
+    e = box(maximum_filter1d(e, int(hold * SR)), int(smooth * SR))
+    return 10 ** (depth_db * e / 20)
+
+
+def mix(plan, music, sfx, voice=None):
+    n = len(music)
+    text = text_windows(plan)
+    duck_db = np.zeros(n)
+    for w in text:
+        duck_db[int(w["t0"] * SR): int(w["t1"] * SR)] = np.minimum(duck_db[int(w["t0"] * SR): int(w["t1"] * SR)], w["duckDb"])
+    duck_db = box(duck_db, int(0.15 * SR))                                     # 0.3 s ramps in and out
+    g_text = 10 ** (duck_db / 20)
+    g_sfx = sidechain(sfx, -4.5, 0.12)                                           # music under each effect
+    g_mus = g_text * g_sfx
+    g_fx = np.ones(n)
+    if voice is not None and np.abs(voice).max() > 0:                            # VOICE > MUSIC > SFX
+        g_mus = g_mus * sidechain(voice, -10.0, 0.05, 0.3, 0.1)
+        g_fx = sidechain(voice, -6.0, 0.05, 0.3, 0.1)
+    out = music * g_mus[:, None] + sfx * g_fx[:, None] + (voice if voice is not None else 0)
+    return out, {"text": text, "musicGainDb": 20 * np.log10(np.maximum(g_mus, 1e-6)), "textDuckDb": duck_db}
+
+
+def master(x, fade_in=0.05, fade_out=1.1, tail_silence=0.06):
+    n = len(x)
+    x = hp(x, 25)
+    for _ in range(4):                                                         # normalize, limit, measure again
+        L = integrated_lufs(x)
+        x = limit(x * 10 ** ((TARGET_LUFS - L) / 20))
+        if abs(integrated_lufs(x) - TARGET_LUFS) < 0.2:
+            break
+    t = np.arange(n) / SR
+    T = n / SR
+    fade = np.clip(t / fade_in, 0, 1) * np.clip((T - tail_silence - t) / fade_out, 0, 1) ** 1.6
+    x = x * fade[:, None]
+    x[int((T - tail_silence) * SR):] = 0
+    return x
+
+
+def write_wav(path, x):
+    pcm = np.round(np.clip(x, -1, 1) * 32767).astype("<i2")
+    with wave.open(path, "wb") as w:
+        w.setnchannels(2); w.setsampwidth(2); w.setframerate(SR); w.writeframes(pcm.tobytes())
+
+
+def read_wav(path):
+    with wave.open(path, "rb") as w:
+        sr, ch, n = w.getframerate(), w.getnchannels(), w.getnframes()
+        x = np.frombuffer(w.readframes(n), dtype="<i2").astype(float).reshape(-1, ch) / 32768.0
+    if ch == 1:
+        x = np.repeat(x, 2, axis=1)
+    return x, sr
+
+
+def load_file_asset(rec, n):
+    x, sr = read_wav(os.path.join(ROOT, rec["file"]))
+    if sr != SR:
+        g = math.gcd(SR, sr); x = resample_poly(x, SR // g, sr // g, axis=0)
+    if len(x) < n:
+        x = np.concatenate([x, np.zeros((n - len(x), 2))])
+    return x[:n]
+
+
+def render(plan, out_wav, library=LIBRARY, music_out=None):
+    lib = load_library(library)
+    au = plan.get("audio") or {}
+    music_id, sfx_id = au.get("music", "prayogx-score-v2"), au.get("sfx", "prayogx-sfx-v1")
+    tracks = [check_asset(lib, music_id, "music"), check_asset(lib, sfx_id, "sfx")]
+    sc = Score(plan)
+    if tracks[0]["source"] == "generated":
+        music = sc.compose()
+    else:
+        music = load_file_asset(tracks[0], sc.n)
+    music = music / max(np.abs(music).max(), 1e-9) * 0.5
+    music *= np.clip(np.arange(sc.n) / (0.25 * SR), 0, 1)[:, None]               # a short fade in under the first hook word
+    if music_out:
+        write_wav(music_out, music)                                              # the music stem, for the arrangement checks
+    sfx = sfx_stem(plan["cues"], sc.n, np.random.default_rng(sc.seed + 1))
+    sfx = sfx / max(np.abs(sfx).max(), 1e-9) * 0.62
+    mixed, auto = mix(plan, music, sfx)
+    final = master(mixed)
+    write_wav(out_wav, final)
+    st = stats(final)
+    score = dict(sc.describe(), assetId=music_id) if tracks[0]["source"] == "generated" else {"assetId": music_id, "simStartDownbeat": sc.sim0}
+    rep = {
+        "file": os.path.basename(out_wav), "sampleRate": SR, "channels": 2, "bitDepth": 16, "seconds": round(sc.n / SR, 3),
+        "tracks": tracks, "score": score, "musicStem": os.path.basename(music_out) if music_out else None,
+        "arc": sc.sections, "syncEvents": sorted(sc.events, key=lambda e: e["t"]),
+        "sfxCues": plan["cues"], "marks": plan.get("marks") or {},
+        "mix": {"priority": ["voice", "music", "sfx"], "voice": None, "textDucking": auto["text"], "sfxDuckingDb": -4.5,
+                "musicGainDbBySection": {s["id"] + "@" + str(s["t0"]): round(float(np.median(auto["musicGainDb"][int(s["t0"] * SR): max(int(s["t0"] * SR) + 1, int(s["t1"] * SR))])), 2) for s in sc.sections},
+                "targetLufs": TARGET_LUFS, "ceilingDbtp": CEILING_DBTP, "fadeIn": 0.05, "fadeOut": 1.1, "tailSilence": 0.06},
+        "stats": st,
+    }
+    return rep
+
+
+def stats(x):
+    return {"integratedLufs": round(integrated_lufs(x), 2), "truePeakDbtp": round(true_peak_db(x), 2),
+            "samplePeakDbfs": round(float(20 * np.log10(max(np.abs(x).max(), 1e-12))), 2),
+            "clippedSamples": int((np.abs(x) >= 0.9999).sum())}
 
 
 def main():
-    cues = json.load(open(sys.argv[1]))
-    dur = float(sys.argv[2])
-    n = int(dur * SR)
-    L = pad(dur); R = L.copy()
-    for c in cues:
-        x = fx(c["type"]) * float(c.get("gain", 1))
-        s = int(float(c["t"]) * SR)
-        if s >= n: continue
-        m = min(len(x), n - s)
-        pan = 0.15 * np.sin(s)                                     # a little width, deterministic
-        L[s:s + m] += x[:m] * (1 - pan); R[s:s + m] += x[:m] * (1 + pan)
-    st = np.stack([L, R], 1)
-    peak = np.abs(st).max()
-    st = np.tanh(st / max(peak, 1e-9) * 1.2) * 0.85                   # gentle limiter
-    pcm = (st * 32767).astype("<i2")
-    with wave.open(sys.argv[3], "wb") as w:
-        w.setnchannels(2); w.setsampwidth(2); w.setframerate(SR); w.writeframes(pcm.tobytes())
-    print(json.dumps({"seconds": round(dur, 3), "cues": len(cues), "out": sys.argv[3]}))
+    ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
+    ap.add_argument("--plan", required=True); ap.add_argument("--out", required=True); ap.add_argument("--report", required=True)
+    a = ap.parse_args()
+    with open(a.plan, encoding="utf-8") as f:
+        plan = json.load(f)
+    try:
+        rep = render(plan, a.out, music_out=os.path.join(os.path.dirname(os.path.abspath(a.out)), "music.wav"))
+    except ProvenanceError as e:
+        print("AUDIO PROVENANCE: " + str(e), file=sys.stderr)
+        sys.exit(3)
+    with open(a.report, "w", encoding="utf-8") as f:
+        json.dump(rep, f, indent=2)
+    s = rep["stats"]
+    print(json.dumps({"seconds": rep["seconds"], "style": rep["score"].get("style"), "bpm": rep["score"].get("bpm"), "key": rep["score"].get("key"),
+                      "instruments": rep["score"].get("instrumentCount"),
+                      "lufs": s["integratedLufs"], "truePeak": s["truePeakDbtp"], "cues": len(plan["cues"])}))
 
 
 if __name__ == "__main__":

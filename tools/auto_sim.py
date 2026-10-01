@@ -587,8 +587,9 @@ def reel(bdir, n, reuse=False):
         with open(os.path.join(out, "reel.json"), encoding="utf-8") as f:
             man = json.load(f)
     v = man.get("validation", {})
-    ok = rc == 0 and man.get("status") == "ready-for-review"
-    it["reel"] = {"status": "ready-for-review" if ok else "failed", "at": now(), "origin": "new-simulation",
+    ok = rc == 0 and man.get("status") == "READY_FOR_REVIEW"
+    # the factory stops here: approval and Instagram publishing are separate human steps (tools/instagram_publish.py)
+    it["reel"] = {"status": "ready-for-review" if ok else "failed", "reelStatus": man.get("status", "GENERATION_FAILED"), "at": now(), "origin": "new-simulation",
                   "route": "live" if "live_smoke_test_complete" in st else "local",
                   "path": os.path.relpath(os.path.join(out, "reel.mp4"), ROOT), "seconds": man.get("video", {}).get("seconds"),
                   "checks": "%s/%s" % (v.get("passed", 0), len(v.get("checks", []))), "exit": rc}
@@ -940,9 +941,10 @@ def main(argv=None):
         elif a.cmd == "reel":
             it = reel(a.batch, a.item, a.reuse_footage)
             r = it["reel"]
-            print("reel %s: %s  (%s, %s s, %s reel checks, route %s)" % (it["id"], r["status"].upper(), r["path"], r["seconds"], r["checks"], r["route"]))
+            print("reel %s: %s  (%s, %s s, %s reel checks, route %s)" % (it["id"], r["reelStatus"], r["path"], r["seconds"], r["checks"], r["route"]))
             if r["status"] == "ready-for-review":
-                print("READY FOR MANUAL REVIEW")
+                print("READY_FOR_REVIEW - not published. A person reviews it, then: python3 tools/instagram_publish.py approve %s "
+                      "--reviewer NAME, and later publish %s (docs/INSTAGRAM_PUBLISHING.md)" % (it["id"], it["id"]))
                 return 0
             print("Simulation complete; Reel generation failed." if it["status"] == "complete" else
                   "Reel generation failed (the simulation item itself is unaffected: %s)." % it["status"])

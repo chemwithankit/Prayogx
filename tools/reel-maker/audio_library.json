@@ -1,0 +1,45 @@
+{
+  "policy": "Every sound in a PrayogX reel is listed here with its provenance. audio.py refuses any asset that is not listed, whose licenseVerified is not true, that does not permit commercial use on Instagram, or (for a file) whose sha256 does not match. Never add film or film songs, chart music, trending Instagram audio, random YouTube or 'free music' downloads, or any track whose commercial social-media licence cannot be verified from a written licence kept with the file. If the licence cannot be verified, do not use the asset.",
+  "assets": [
+    {
+      "assetId": "prayogx-score-v2",
+      "role": "music",
+      "source": "generated",
+      "generator": "tools/reel-maker/music.py (score v2), via audio.py",
+      "owner": "PrayogX",
+      "license": "PrayogX original work: composed and synthesized in-house by code for each reel (oscillators, additive partials and filtered noise). No samples, loops, presets or third-party recordings are used.",
+      "licenseVerified": true,
+      "sourceReference": "tools/reel-maker/music.py",
+      "permittedUse": [
+        "instagram",
+        "youtube",
+        "facebook",
+        "web",
+        "app"
+      ],
+      "commercialUse": true,
+      "attributionRequired": false,
+      "attributionText": ""
+    },
+    {
+      "assetId": "prayogx-sfx-v1",
+      "role": "sfx",
+      "source": "generated",
+      "generator": "tools/reel-maker/audio.py (sound effects)",
+      "owner": "PrayogX",
+      "license": "PrayogX original work: every effect is synthesized in-house by code (oscillators and filtered noise). No sample libraries are used.",
+      "licenseVerified": true,
+      "sourceReference": "tools/reel-maker/audio.py",
+      "permittedUse": [
+        "instagram",
+        "youtube",
+        "facebook",
+        "web",
+        "app"
+      ],
+      "commercialUse": true,
+      "attributionRequired": false,
+      "attributionText": ""
+    }
+  ]
+}
