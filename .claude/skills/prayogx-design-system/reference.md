@@ -53,7 +53,11 @@ checker (`tests/visual_gates.js`) reads:
 ```html
 <section id="question">  … verbatim question, option tiles …                </section>
 <section id="lab">
-  <p class="keyres">…the answer, visible from load…</p>  <p id="narr">…stage caption…</p>
+  <p class="keyres" id="target" data-kind="value"><span class="lbl">Target:</span><span class="sym">v</span><span class="val" id="ansval"></span></p>
+  <!-- the symbol only until the run determines it; then .val gets the computed value and #target
+       the class "pulse" once (CSS animation <= 2 s, none under reduced motion). Gate K checks it. -->
+  <p id="narr">…stage caption…</p>
+
   <div class="stage"><canvas id="labcv" …></canvas></div>          <!-- the hero -->
   <div id="controls" role="group" aria-label="experiment controls">   <!-- ≤ 48 px away -->
     ▶ START · Pause · Replay · Reset · Classroom · the experiment's own controls

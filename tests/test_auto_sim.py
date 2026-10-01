@@ -75,11 +75,12 @@ try:
 
     # ------------------------------------------------------------ the layout v3 (G5) visual standard
     chk("the factory names layout v3 (G5) for new pages", "layout v3 (G5)" in A.LAYOUT and "question -> large experiment -> nearby controls -> solution" in A.LAYOUT)
-    chk("visual gates A-J, ten of them, in order", [g[0] for g in A.VISUAL_GATES] == list("ABCDEFGHIJ"))
+    chk("visual gates A-K, eleven of them, in order", [g[0] for g in A.VISUAL_GATES] == list("ABCDEFGHIJK"))
+    chk("the target reveal gate K is measured, by the shared target checks", dict((g[0], g) for g in A.VISUAL_GATES)["K"][2] == "auto" and "tests/target_gate.js" in dict((g[0], g) for g in A.VISUAL_GATES)["K"][3])
     vg = open(os.path.join(ROOT, "tests", "visual_gates.js"), encoding="utf-8").read()
     manual_js = re.search(r"const MANUAL = \{([^}]*)\}", vg).group(1)
     chk("the factory's manual gates are exactly the checker's (B, G, H); the rest are measured",
-        sorted(g[0] for g in A.VISUAL_GATES if g[2] == "manual") == sorted(re.findall(r"\b([A-J]):", manual_js)) == ["B", "G", "H"])
+        sorted(g[0] for g in A.VISUAL_GATES if g[2] == "manual") == sorted(re.findall(r"\b([A-K]):", manual_js)) == ["B", "G", "H"])
     chk("the visual QA stage runs the checker and the screenshot review", "tests/visual_gates.js" in dict((s[0], s[1]) for s in A.STAGES)["visual_qa_complete"])
     chk("the design stage records the layout v3 decisions (no dropdowns, what is removed, what is seen first)",
         all(w in dict((s[0], s[1]) for s in A.STAGES)["design_complete"] for w in ("main visual object", "no dropdowns", "what is removed", "sees first")))

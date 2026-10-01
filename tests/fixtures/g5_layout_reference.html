@@ -29,6 +29,13 @@ canvas#labcv{display:block;width:100%;height:auto}
 svg.chart{display:block;width:100%;max-width:720px;height:auto}
 body.classroom .wrap{max-width:none;padding:0 18px} body.classroom #narr{font-size:24px}
 body.classroom section:not(#lab){display:none}
+.keyres{margin:0 0 10px;padding:10px 14px;border:1px solid var(--line);border-radius:12px;background:var(--surface-1);font-size:20px}
+.keyres .lbl{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-secondary);margin-right:8px}
+.keyres .sym{font-family:var(--serif);font-style:italic;font-weight:700}
+.keyres .val{font-weight:800;color:var(--good);margin-left:6px}
+#target.pulse{animation:pxpulse .55s ease-in-out 2}
+@keyframes pxpulse{0%,100%{box-shadow:0 0 0 0 rgba(0,116,63,0)}50%{box-shadow:0 0 0 6px rgba(0,116,63,.35)}}
+@media (prefers-reduced-motion: reduce){#target.pulse{animation:none}}
 </style>
 </head>
 <body>
@@ -36,9 +43,11 @@ body.classroom section:not(#lab){display:none}
   <h1>Layout v3 reference</h1>
   <section id="question"><h2>Question</h2><div class="qtext">Q.0 A fixture question, verbatim.</div></section>
   <section id="lab">
+    <p class="keyres" id="target" data-kind="value"><span class="lbl">Target:</span><span class="sym">v</span><span class="val" id="ansval"></span></p>
     <div class="stage"><canvas id="labcv" width="1200" height="720" role="img" aria-label="Fixture experiment: a large flask drawn across most of the screen"></canvas></div>
     <div id="controls" role="group" aria-label="experiment controls">
       <button class="go" type="button" id="gobtn">▶ START EXPERIMENT</button>
+      <button type="button" id="resetbtn">RESET</button>
       <div class="seg" role="group" aria-label="heating"><button type="button" aria-pressed="true">ON</button><button type="button" aria-pressed="false">OFF</button></div>
       <label>Temperature <input type="number" id="in_T" value="300" min="200" max="400"> K</label>
       <input type="range" id="in_c" min="0" max="1" step="0.01" value="0.1" aria-label="concentration">
@@ -67,7 +76,26 @@ function draw(){
 }
 draw(); window.addEventListener("resize", draw);
 document.getElementById("classbtn").addEventListener("click", function(){ document.body.classList.toggle("classroom"); });
-window.PX = { minLabelPx: function(){ draw(); return minPx; } };
+
+/* a minimal target-reveal engine: v = sqrt(5gR/7), computed, revealed when the run ends */
+var ENGINE = { g: 9.8, R: 0.5, run: function(){ var v = Math.sqrt(5 * this.g * this.R / 7); return { v: v, answer: v.toFixed(2) }; } };
+var QRUN = ENGINE.run(), ANS = QRUN.answer, T_RUN = 2.4;
+var reduced = !!(window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches);
+var RUN = { t: 0, speed: 1, state: "setup", done: false }, last = null, tgt = document.getElementById("target"), val = document.getElementById("ansval");
+function reveal(){
+  RUN.state = "done"; RUN.done = true; val.textContent = "= " + ANS + " m/s";
+  if (!reduced){ tgt.classList.add("pulse"); setTimeout(function(){ tgt.classList.remove("pulse"); }, 1200); }
+}
+function start(){ RUN.t = 0; RUN.done = false; val.textContent = ""; if (reduced){ reveal(); return; } RUN.state = "running"; }
+function reset(){ RUN.state = "setup"; RUN.t = 0; RUN.done = false; tgt.classList.remove("pulse"); val.textContent = ""; }
+function loop(ts){ var dt = last === null ? 0 : Math.min(0.05, (ts - last) / 1000); last = ts;
+  if (RUN.state === "running"){ RUN.t += dt * RUN.speed; if (RUN.t >= T_RUN) reveal(); }
+  requestAnimationFrame(loop); }
+requestAnimationFrame(loop);
+document.getElementById("gobtn").addEventListener("click", start);
+document.getElementById("resetbtn").addEventListener("click", reset);
+window.PX = { minLabelPx: function(){ draw(); return minPx; }, answer: function(){ return ANS; }, start: start, reset: reset,
+  speed: function(k){ RUN.speed = k; }, RUN: RUN, QRUN: QRUN };
 })();
 </script>
 </body>

@@ -171,6 +171,7 @@ performance or usability.
 | H | scientific correctness; no misleading exaggeration | verifier + suite |
 | I | mobile: no overflow at 390 / 360 px, taps ≥ 44 px, canvas labels ≥ 11 px on screen | measured |
 | J | classroom: experiment widened, narration ≥ 22 px, canvas labels ≥ 13 px on desktop | measured |
+| K | target reveal (pages created from 2026-10-01): `#target` shows only the symbol before and during the run and after RESET — no UNKNOWN, ?, dash or answer; the computed value after the run, one pulse, none under reduced motion; value / option / match form (`tests/target_gate.js`) | measured |
 
 Measured gates: `node tests/visual_gates.js <page>` (the list and thresholds:
 `python3 tools/auto_sim.py gates`). After the functional build: one visual refinement pass (depth,

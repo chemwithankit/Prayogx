@@ -46,8 +46,16 @@ page drop the G4 layout checks and test its own structure). It must end `N / N p
 - [ ] no answer literal in the source; `PX.answer()` equals the key
 - [ ] optional inputs: empty, invalid, negative, zero, fractional and out-of-range values fall
       back with a message
-- [ ] answer visible from load (G4: the answer strip above the screen; layout v3: the key-result
-      line in the experiment section); controls next to the screen (G4: the dock; v3: `#controls`)
+- [ ] answer display by generation. G4 and G5 pages built before 2026-10-01: the answer is visible
+      from load (G4 answer strip; G5 key-result line). New pages from 2026-10-01: the key-result
+      line shows only the target's name or symbol at load and while running, with no "UNKNOWN",
+      "?", "—" or placeholder anywhere in it, and no answer above the experiment. After a
+      successful run it shows the computed value (== `PX.answer()`), pulses once and stays.
+      Reset returns it to the symbol; reduced motion shows the value without the pulse. In the
+      suite: `const { targetChecks } = require('./target_gate');` then
+      `for (const c of await targetChecks(b, URL, src, e)) ok(c.name, c.ok, c.detail);` (`e` = the
+      manifest entry, or null before registration), and expect 8 measured gates passing (A C D E F
+      I J K), not 7. Controls sit next to the screen (G4: the dock; v3: `#controls`).
 - [ ] one START runs every stage with no further clicks; stage messages and the model's results
       appear in order (internal state such as `PX.calcKeys()` may be tested, never rendered as a
       log on a v3 page)
@@ -63,11 +71,12 @@ page drop the G4 layout checks and test its own structure). It must end `N / N p
       finds, opens and returns from it
 - [ ] performance: the full run stays smooth at 390 px; no long main-thread stalls
 
-## 4. Visual inspection — the visual QA gates A–J
+## 4. Visual inspection — the visual QA gates A–K
 
 - [ ] New (layout v3) pages: `node tests/visual_gates.js <page>` — A experiment scale, C control
       proximity, D no dropdowns, E information density, F page order, I mobile readability, J
-      classroom readability must pass (`python3 tools/auto_sim.py gates` lists the thresholds).
+      classroom readability, K target reveal must pass (`python3 tools/auto_sim.py gates` lists
+      the thresholds; K is N/A only for pages created before 2026-10-01).
 - [ ] Screenshot every stage and the reveal at 1280 px and 390 px, and **look** (gates B object
       legibility and G realism): main objects readable from several feet away, no overlaps,
       clipped text, overflowing equations or label collisions, believable apparatus with no

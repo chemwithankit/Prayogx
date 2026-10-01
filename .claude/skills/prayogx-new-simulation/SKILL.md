@@ -35,10 +35,15 @@ code.
    installed on this Mac. Structures and schemes are images, so look at them. Transcribe
    **verbatim**: numbers, units, conditions, options. Record exam, year, paper, section,
    question type, marking and source page. Report anything unclear; never invent.
-3. **Solve independently.** Governing laws, variables, constraints, units, sign conventions,
-   limiting cases. Solve completely before looking at any key.
-4. **Cross-check** against the official key printed in the paper PDF and, if available, a
-   published solution. **If anything disagrees: stop, investigate, report to the owner.**
+3. **Understand the intended reasoning, then solve independently.** Read the MathonGo solution
+   as a conceptual reference for the intended JEE approach (standards §2). Then derive the
+   answer yourself: governing laws, variables, constraints, units, sign conventions, limiting
+   cases, by ≥ 2 independent routes. Never take the answer from the solution, and do not look at
+   the official key yet.
+4. **Cross-check** against the official key printed in the paper PDF, MathonGo's answer, and
+   authoritative sources. **If anything disagrees: stop, investigate, report to the owner.**
+   Then name the underlying scientific phenomenon: the experiment is built from it, as an
+   original PrayogX interpretation, never a reproduction of the solution.
 5. **Learning objective.** The one conceptual *pivot* the student must feel. Everything else
    serves it.
 6. **Experiment type.** What real experiment or process makes the pivot tangible: apparatus,
@@ -72,6 +77,11 @@ code.
 13. **Answer calculation.** `run(D)` returns everything derived; `var QRUN = run(copyST());
     var ANS = QRUN.answer;`. Custom runs must report honestly when they no longer answer the
     question. **No answer literal in the source.**
+    **Target display** (standards §4, *Target variable*): the key-result line shows only the
+    target's name or symbol (`Target: v`) until the run determines it. Never "UNKNOWN", "?", "—"
+    or a placeholder. The run then writes the computed value into the same line with one short
+    pulse, and it stays. Reduced motion: the value appears without the pulse. Reset returns the
+    line to the symbol only.
 14. **Detailed solution:** complete, exam-level, always open, right after the experiment, and
     tied to what the student observed. Chemistry: structures, mechanism, bonds breaking and
     forming, curved arrows, intermediates, stereo- and regiochemistry, calculations. Physical
@@ -85,7 +95,7 @@ code.
 17. **Validate:** follow `prayogx-validate` (verifier + page suite).
 18. **Test mobile / browser / console:** 390 and 360 px with no overflow, zero console
     errors, reduced motion, classroom mode. Run `node tests/visual_gates.js <page>` (gates A C D
-    E F I J must pass) and screenshot every stage at 1280 and 390 px and **look** (gates B G H).
+    E F I J K must pass) and screenshot every stage at 1280 and 390 px and **look** (gates B G H).
     Repair and re-run until clean.
 19. **Metadata:** write `meta.json` and `question.md` (see `prayogx-register`).
 20. **Register:** follow `prayogx-register`.
@@ -119,7 +129,7 @@ CONCEPT         <pivot in one paragraph>     TAKEAWAYS  <3–6>
 ```
 COMPLETED     <ID> — <lab name>
 FILES         created / updated (paths)
-VERIFICATION  verifier N/N · page suite N/N · visual gates A–J (measured pass, B G H looked at) · check_library OK · production_audit N/N · drift clean
+VERIFICATION  verifier N/N · page suite N/N · visual gates A–K (measured pass, B G H looked at) · check_library OK · production_audit N/N · drift clean
               independent answer <x> · official key <x> · published solution <x or n/a>
 ISSUES        <anything not done or not verified — say so plainly>
 REGISTRY      manifest (N simulations) · taxonomy · tracker.csv · README row · tests registered

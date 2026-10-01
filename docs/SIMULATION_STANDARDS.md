@@ -54,6 +54,13 @@ What PrayogX values, in priority order when they conflict:
 - Solve it **independently first**. Only then compare with the official key (and a published
   solution, if available). If they disagree: **stop, investigate, report**. Never ship on
   the key's word alone.
+- **The MathonGo solution is a conceptual reference** (from 2026-10-01). Read it to understand
+  the intended JEE problem-solving approach, not to copy its answer: the answer is still derived
+  independently (the verifier's ≥ 2 routes) and the official key is read last. The simulation is
+  an original PrayogX interpretation, never a reproduction of the solution. The workflow:
+  MathonGo solution → understand the intended reasoning → independently verify → cross-check with
+  authoritative sources → identify the underlying scientific phenomenon → design a creative
+  interactive experiment → let the student discover the result.
 - The page **computes** the answer from its model (e.g. `var QRUN = run(copyST()); var ANS =
   QRUN.answer;`). The answer is never a stored literal; the suites check the source for this.
 - The model is valid across the **whole allowed input range**, not only the question's
@@ -87,7 +94,7 @@ not retrofitted to a newer standard unless the owner asks for a specific page.
 | G2 | P2 Q05–Q17, P1 Q02 | seven sections + prediction | locked until the run ends | gated | yes | P2 no · P1 Q02 yes |
 | G3 | P1 Q01, Q03–Q11 | compact lab (question · experiment · [explorer] · solution · how to use) | locked | gated | no | yes |
 | G4 | P1 CHE Q12–Q16, P1 PHY Q01–Q02 | layout v2 | visible above the experiment | always open | no | yes |
-| G5 | **every new page from 2026-09-30** | **layout v3 — the master visual standard (§4)** | a compact key-result line by the experiment | always open | optional | yes |
+| G5 | **every new page from 2026-09-30** | **layout v3 — the master visual standard (§4)** | a compact key-result line by the experiment: the answer from load on pages built before 2026-10-01 (P1 PHY Q03–Q13); from 2026-10-01 the target's name or symbol only, the value revealed when the experiment determines it (§4, *Target variable*) | always open | optional | yes |
 
 Consequences:
 
@@ -121,7 +128,8 @@ must serve understanding, and scientific correctness still outranks everything (
 header      brand bar · sim ID · H1 (small)
 #question   01 THE QUESTION — verbatim, near the top, options as clear tiles (never collapsed)
 #lab        02 THE EXPERIMENT — the hero
-              compact key-result line (the answer, visible from load) + one stage caption
+              compact key-result line (the TARGET: its name or symbol, the computed value
+              revealed when the experiment determines it) + one stage caption
               .stage > canvas#labcv — full content width; desktop ≥ 55 % of the screen height,
                                       phone full width and ≥ 45 % of the height (portrait scene)
               measurements drawn IN the scene, on the instruments (thermometer, meter, gauge)
@@ -171,16 +179,53 @@ main experimental action, the primary controls, the essential measurements, whet
 needed, whether molecules or diagrams are needed, what is removed, and what the student must notice
 first. The default structure changes only when the science benefits.
 
-**Gates.** Every new page passes the visual QA gates A–J (`python3 tools/auto_sim.py gates`):
-A C D E F I J are measured by `node tests/visual_gates.js <page>`; B (object legibility), G
+**Gates.** Every new page passes the visual QA gates A–K (`python3 tools/auto_sim.py gates`):
+A C D E F I J K are measured by `node tests/visual_gates.js <page>`; B (object legibility), G
 (realism) and H (scientific correctness) by looking at the screenshots and by the verifier. The
 page contract the checker reads: `section#question`, `section#lab` holding `canvas#labcv` and
 `#controls`, `section#solution`, optional `section#analysis` / `section#explorer`,
-`section#howto`, and `window.PX.minLabelPx()`.
+`section#howto`, and `window.PX.minLabelPx()`. Gate K (the target reveal, below) applies to
+pages created on or after 2026-10-01 and to any page not yet registered; older pages report N/A.
 
-**Kept from layout v2:** the answer visible from page load and confirmed by the run (it blinks once
-and stops); one START runs the whole investigation through a virtual clock (pause, speed, reduced
-motion); prediction optional and non-blocking; the `window.PX` hooks; custom values with honest
+**Target variable / result display** (from 2026-10-01). The primary quantity the experiment is
+designed to determine has one dedicated target area in the experiment: the key-result line.
+
+- Before and during the run it shows only the target's name or symbol (`Target: v`). Never
+  "UNKNOWN", "?", "—", a placeholder value or any other empty-state text.
+- When the experiment successfully determines the quantity, the actual value appears in the same
+  place (`Target: v = √(5gR/7)`). It comes from the page's scientific model (`ANS`, computed),
+  never a literal.
+- The reveal gets one short pulse / glow, then the value stays permanently visible. The animation
+  draws the eye without covering or distracting from the experiment. Under reduced motion the
+  value appears without it.
+- For a matching or multiple-choice question the target is the quantity the experiment measures
+  (or the option, e.g. `Match: P→3, Q→4, R→5, S→2 → (D)`), revealed the same way.
+- The answer is not shown above the experiment before the run. It remains in the detailed
+  solution, which stays always open.
+- Reset and a custom run return the line to the symbol only. A custom run reveals its own computed
+  value, labelled as the custom result. RESTORE and a question run reveal the question's value.
+
+The page contract gate K and the page suites read (`tests/target_gate.js`):
+
+```html
+<p class="keyres" id="target" data-kind="value">     <!-- value | option | match; inside section#lab -->
+  <span class="lbl">Target:</span>                    <!-- optional static label -->
+  <span class="sym">v</span>                          <!-- the name or symbol, never empty -->
+  <span class="val" id="ansval"></span>               <!-- empty in the markup; the run writes the value -->
+</p>
+```
+
+`window.PX` exposes `answer()` (the computed answer), `start()`, `reset()`, `speed(k)` and
+`RUN.done`. The reveal adds the class `pulse` to `#target` once (a CSS animation of ≤ 2 s) and
+removes it; under `prefers-reduced-motion` the value appears with no animation. An `option`
+target shows each answer letter as `(X)`; a `match` target also shows its pairs (`P→3, Q→4 …`).
+
+The visual language is VARIABLE → EXPERIMENT → DISCOVERY → CALCULATED VALUE → RESULT. Pages built
+before 2026-10-01 keep the answer visible from load; they are not retrofitted unless the owner asks
+for a specific page.
+
+**Kept from layout v2:** the run confirms the answer (it blinks once and stops); one START runs
+the whole investigation through a virtual clock (pause, speed, reduced motion); prediction optional and non-blocking; the `window.PX` hooks; custom values with honest
 warnings and a restore control; classroom mode.
 
 ### 4.1 Layout v2 (G4) — the pages built to it
@@ -391,8 +436,9 @@ computed answer and the written solution all agree**, and:
 - `check_library.py` exits 0, `production_audit.py` passes all checks, and the CI drift gate is
   clean;
 - every stage and the reveal have been screenshotted and **looked at** (desktop and 390 px);
-- new (layout v3) pages pass the visual QA gates A–J (§4): `node tests/visual_gates.js <page>` for
-  A C D E F I J, screenshots and the verifier for B G H.
+- new (layout v3) pages pass the visual QA gates A–K (§4): `node tests/visual_gates.js <page>` for
+  A C D E F I J K, screenshots and the verifier for B G H; the page suite reports each target check
+  (`tests/target_gate.js`) on its own line.
 
 Environment: `tests/.venv` (sympy, numpy, scipy, RDKit), Playwright 1.56.1 / Chromium build
 1194 via `tests/_browser.js`, and `bash tests/runall.sh` (exit 0 all pass, 1 fail, 2 only

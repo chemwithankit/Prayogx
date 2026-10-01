@@ -21,7 +21,7 @@ It never builds, commits, pushes or deploys anything itself.
   python3 tools/auto_sim.py trace ID [--run] [--online]    the whole pipeline, as evidenced for ID
   python3 tools/auto_sim.py smoke ID [--base URL]          live HTTP smoke test (read-only)
   python3 tools/auto_sim.py render PDF --pages 35          source page -> PNG + text in .tmp/ (pypdfium2)
-  python3 tools/auto_sim.py gates                          the layout v3 (G5) visual QA gates A-J for new pages
+  python3 tools/auto_sim.py gates                          the layout v3 (G5) visual QA gates A-K for new pages
 
 Exit codes: 0 ok, 1 a check failed, 2 unusable input or an unsafe state.
 """
@@ -61,7 +61,7 @@ STAGES = [
     ("learning_objectives_complete", "pivot, observations, manipulations, misconception", "prayogx-new-simulation 5", "read"),
     ("design_complete", "design brief written, with the layout v3 decisions: main visual object, main action, primary controls (no dropdowns), essential measurements, graphs only if useful, what is removed, what the student sees first", "prayogx-new-simulation 5-11", "read"),
     ("implementation_complete", "index.html, verifier and page suite written in the item's own paths", "prayogx-new-simulation 12-16", "work"),
-    ("visual_qa_complete", "visual gates A-J: node tests/visual_gates.js <page> passes A C D E F I J; B G H by screenshots of every stage at 1280 and 390 px, looked at, repaired", "prayogx-validate §4", "check"),
+    ("visual_qa_complete", "visual gates A-K: node tests/visual_gates.js <page> passes A C D E F I J K (K: the target reveal); B G H by screenshots of every stage at 1280 and 390 px, looked at, repaired", "prayogx-validate §4", "check"),
     ("scientific_qa_complete", "tests/verify_<id>.py: N passed, 0 failed", "prayogx-validate §2", "check"),
     ("browser_qa_complete", "tests/sim_<id>.js: N / N passed, zero console errors", "prayogx-validate §3", "check"),
     ("mobile_qa_complete", "390 / 360 px no overflow, touch sizes, reduced motion", "prayogx-validate §3", "check"),
@@ -88,6 +88,7 @@ VISUAL_GATES = [
     ("H", "scientific correctness", "manual", "the verifier and the page suite; no misleading exaggeration"),
     ("I", "mobile readability", "auto", "no overflow at 390 / 360 px, tap targets >= 44 px, canvas labels >= 11 px on screen (PX.minLabelPx)"),
     ("J", "classroom readability", "auto", "classroom mode widens the experiment, narration >= 22 px, canvas labels >= 13 px on a desktop screen"),
+    ("K", "target reveal", "auto", "#target shows only the symbol before / during the run and after RESET (no UNKNOWN, ?, dash or answer); the computed value after it, one pulse, none under reduced motion; value / option / match form (tests/target_gate.js; pages created from 2026-10-01)"),
 ]
 AUTO_STATUS = "script_verified"      # the status every factory-built page is registered with
 
@@ -821,7 +822,7 @@ def main(argv=None):
         if a.cmd == "plan":
             bdir = make_batch(load(a.spec), a.state_root)
             print(bdir)
-            print("  new pages: " + LAYOUT + "; visual gates A-J (auto_sim.py gates)")
+            print("  new pages: " + LAYOUT + "; visual gates A-K (auto_sim.py gates)")
             _, items = items_of(bdir)
             for it in items:
                 print("  %03d %-8s %-22s %s" % (it["n"], it["type"], it.get("id") or it.get("concept"), it["status"]))

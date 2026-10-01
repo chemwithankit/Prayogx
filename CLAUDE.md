@@ -35,7 +35,9 @@ Repository: `github.com/chemwithankit/Prayogx`, branch `main`. Android package:
   storage.
 - `<meta name="sim-id">`, unique element ids, `window.PX` test hooks.
 - The question is **verbatim**. **Solve independently first**, then cross-check the official
-  key. If they disagree: **stop and investigate**.
+  key. If they disagree: **stop and investigate**. The MathonGo solution is read first only as a
+  conceptual reference for the intended JEE reasoning, never as the answer's source. The page is
+  an original PrayogX experiment, not a reproduction of it.
 - The page **computes** the answer from its model; it is never hard-coded.
 - The model is valid over the whole input range. Representative data and exaggerated scales
   are labelled.
@@ -48,12 +50,15 @@ Repository: `github.com/chemwithankit/Prayogx`, branch `main`. Android package:
 ([docs/SIMULATION_STANDARDS.md §4](docs/SIMULATION_STANDARDS.md)): the question, then a large,
 immersive experiment as the hero, simple controls right beside it (no dropdowns), the detailed
 solution, a graph only if useful, and how to use — no dashboards, badges or logs on the page. Each
-page passes the visual QA gates A–J (`python3 tools/auto_sim.py gates`, `tests/visual_gates.js`).
+page passes the visual QA gates A–K (`python3 tools/auto_sim.py gates`, `tests/visual_gates.js`).
 They progressively target an **immersive virtual laboratory**: the student feels they are
 performing the experiment. That means pseudo-3-D or 3-D apparatus and molecules where they
 aid learning, real interaction with apparatus and molecules, and animation that shows
-CAUSE → PROCESS → EFFECT, never decoration. Prediction is optional and non-blocking. Full
-standard: [docs/SIMULATION_STANDARDS.md](docs/SIMULATION_STANDARDS.md).
+CAUSE → PROCESS → EFFECT, never decoration. Prediction is optional and non-blocking. From
+2026-10-01 the key-result line is the **target**: only its name or symbol (never "UNKNOWN", "?" or
+"—") until the experiment determines it, then the computed value with one short pulse, kept
+visible. The answer is not shown before the run. Full standard:
+[docs/SIMULATION_STANDARDS.md](docs/SIMULATION_STANDARDS.md).
 
 ## Registry and generated files
 

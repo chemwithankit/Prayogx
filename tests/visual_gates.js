@@ -12,20 +12,29 @@
      F  page simplicity            question -> experiment (+controls) -> solution -> [analysis] -> how to use
      I  mobile readability         no overflow, 44 px tap targets, canvas labels >= 11 px on screen
      J  classroom readability      classroom mode widens the experiment and enlarges narration
+     K  target reveal              the target area shows only the target's symbol before and during the
+                                   run, the computed value after it with one pulse, the symbol again
+                                   after RESET, no pulse under reduced motion (tests/target_gate.js).
+                                   Applies to pages created on or after 2026-10-01 and to any page not
+                                   yet in data/manifest.json; older pages report N/A (their generation
+                                   shows the answer from load).
 
    B (object legibility), G (realism) and H (scientific correctness) are MANUAL: screenshots looked
    at, and the verifier. The page contract: section#question, section#lab holding canvas#labcv and
    #controls, section#solution, optional section#analysis / #explorer, section#howto; and
    window.PX.minLabelPx() - the smallest font (canvas px) drawn in the current frame.
 
-   Exit 0: every measured gate passes. Exit 1: a gate fails. Exit 2: unusable input.   */
+   Exit 0: every measured gate passes (or is N/A). Exit 1: a gate fails. Exit 2: unusable input.   */
 const fs = require('fs');
 const path = require('path');
 const { launch } = require('./_browser');
+const { targetChecks } = require('./target_gate');
+const TARGET_FROM = '2026-10-01';      /* the target display standard applies to pages created from this date */
 
 const GATES = {
   A: 'main experiment scale', B: 'object legibility', C: 'control proximity', D: 'no dropdowns for primary controls',
-  E: 'information density', F: 'page simplicity', G: 'realism', H: 'scientific correctness', I: 'mobile readability', J: 'classroom readability'
+  E: 'information density', F: 'page simplicity', G: 'realism', H: 'scientific correctness', I: 'mobile readability', J: 'classroom readability',
+  K: 'target reveal'
 };
 const MANUAL = { B: 'screenshots of every stage at 1280 and 390 px, looked at', G: 'screenshots looked at: depth, lighting, materials, apparatus proportions', H: 'tests/verify_<id>.py and the page suite' };
 const sleep = ms => new Promise(r => setTimeout(r, ms));
@@ -83,6 +92,28 @@ function judge(d, ph, ph2, cl) {
   return out.sort((a, b) => a.gate < b.gate ? -1 : 1);
 }
 
+/* the manifest entry for a sim-id, or null when the page is not registered */
+function registryEntry(id) {
+  try {
+    const man = JSON.parse(fs.readFileSync(path.resolve(__dirname, '..', 'data', 'manifest.json'), 'utf8'));
+    return (man.simulations || []).find(s => s.id === id) || null;
+  } catch (e) { return null; }
+}
+
+/* gate K: one result from the shared target checks, or N/A for a page built before the standard */
+async function targetGate(b, url) {
+  const p = await b.newPage(); let src = '';
+  try { const r = await p.goto(url); src = r ? await r.text() : ''; } finally { await p.close(); }
+  const m = /<meta name="sim-id" content="([^"]+)"/.exec(src), id = m ? m[1] : '';
+  const entry = id ? registryEntry(id) : null;
+  if (entry && String(entry.createdAt || '') < TARGET_FROM)
+    return { gate: 'K', name: GATES.K, status: 'N/A', detail: id + ' was created ' + entry.createdAt + ', before the target standard (' + TARGET_FROM + ')' };
+  const res = await targetChecks(b, url, src, entry);
+  const bad = res.filter(c => !c.ok);
+  return { gate: 'K', name: GATES.K, status: bad.length ? 'FAIL' : 'PASS', checks: res,
+    detail: bad.length ? bad.map(c => c.name.replace(/^target /, '') + ' -> ' + c.detail).join('; ') : res.length + ' checks: symbol only before, during and after RESET; computed value with one pulse; no pulse under reduced motion' };
+}
+
 async function gates(target) {
   const url = /^https?:|^file:/.test(target) ? target : 'file://' + path.resolve(target).split('/').map(encodeURIComponent).join('/');
   const b = await launch();
@@ -91,20 +122,22 @@ async function gates(target) {
     const ph = await measure(b, url, { w: 390, h: 844, mobile: true });
     const ph2 = await measure(b, url, { w: 360, h: 780, mobile: true });
     const cl = await measure(b, url, { w: 1280, h: 800 }, true);
-    return judge(d, ph, ph2, cl);
+    const out = judge(d, ph, ph2, cl);
+    out.push(await targetGate(b, url));
+    return out.sort((a, b) => a.gate < b.gate ? -1 : 1);
   } finally { await b.close(); }
 }
 
-module.exports = { gates, GATES, judge };
+module.exports = { gates, GATES, judge, TARGET_FROM };
 
 if (require.main === module) {
   const t = process.argv[2];
   if (!t || (!/^https?:|^file:/.test(t) && !fs.existsSync(t))) { console.error('usage: node tests/visual_gates.js <page.html | URL> [--json]'); process.exit(2); }
   gates(t).then(res => {
     if (process.argv.includes('--json')) console.log(JSON.stringify(res, null, 1));
-    else res.forEach(r => console.log((r.status + '  ').slice(0, 7) + r.gate + '  ' + r.name.padEnd(34) + r.detail));
+    else res.forEach(r => console.log(r.status.padEnd(8) + r.gate + '  ' + r.name.padEnd(34) + r.detail));
     const bad = res.filter(r => r.status === 'FAIL').length;
-    console.log('\n' + (bad ? 'VISUAL GATES: ' + bad + ' FAILED' : 'VISUAL GATES: all measured gates pass (B, G, H are manual)'));
+    console.log('\n' + (bad ? 'VISUAL GATES: ' + bad + ' FAILED' : 'VISUAL GATES: all measured gates pass (B, G, H are manual' + (res.some(r => r.status === 'N/A') ? '; K is N/A for this page' : '') + ')'));
     process.exit(bad ? 1 : 0);
   }).catch(e => { console.error(e); process.exit(2); });
 }
