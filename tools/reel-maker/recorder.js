@@ -56,7 +56,8 @@ const QUESTION = () => {
       const cs = getComputedStyle(el);
       if (/flex/.test(cs.display) && cs.flexDirection === 'column' && el.children.length === 2) {
         const nu = el.children[0].textContent.replace(/\s+/g, ' ').trim(), de = el.children[1].textContent.replace(/\s+/g, ' ').trim();
-        el.replaceWith((/ /.test(nu) ? '(' + nu + ')' : nu) + '/' + (/ /.test(de) ? '(' + de + ')' : de));
+        /* a product in the denominator is bracketed (2πℓ³/(mk²)), a single symbol is not (m/k) */
+        el.replaceWith((/[ +−-]/.test(nu) ? '(' + nu + ')' : nu) + '/' + (/ /.test(de) || [...de.replace(/[⁰¹²³⁴⁵⁶⁷⁸⁹⁻₀₁₂₃₄₅₆₇₈₉]/g, '')].length > 1 ? '(' + de + ')' : de));
       }
     });
     const out = (c.innerText || '').replace(/\s+/g, ' ').trim();

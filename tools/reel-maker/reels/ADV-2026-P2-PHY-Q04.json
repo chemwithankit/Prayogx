@@ -1,0 +1,218 @@
+{
+  "simulationId": "ADV-2026-P2-PHY-Q04",
+  "template": "question-simulation-v1",
+  "fps": 30,
+  "record": {
+    "viewport": {
+      "width": 420,
+      "height": 860,
+      "deviceScaleFactor": 2.6
+    },
+    "actions": [
+      {
+        "eval": "PX.start()"
+      }
+    ],
+    "tailSeconds": 2.2,
+    "maxSeconds": 60
+  },
+  "regions": {
+    "top": [
+      0,
+      0,
+      720,
+      890
+    ],
+    "scene": [
+      12,
+      230,
+      696,
+      650
+    ],
+    "sceneGraph": [
+      0,
+      230,
+      720,
+      1290
+    ],
+    "graph": [
+      12,
+      894,
+      696,
+      614
+    ]
+  },
+  "story": {
+    "hook": {
+      "beats": [
+        "An orbit.",
+        "A tiny nudge.",
+        "A wobble."
+      ],
+      "colors": [
+        "#7cc4ff",
+        "#ffd28a",
+        "#5dffa0"
+      ],
+      "line": "How long is one *wobble*?"
+    },
+    "question": {
+      "kind": "option",
+      "highlight": []
+    },
+    "problem": [
+      "It swings in and out…",
+      "but how *fast*?"
+    ],
+    "curiosity": "Can we *SEE* the wobble?",
+    "moments": [
+      {
+        "id": "A",
+        "phases": [
+          "orbit"
+        ],
+        "seconds": 2.6,
+        "region": "top",
+        "label": "A CIRCULAR ORBIT",
+        "sub": "the pull k/r² keeps it on a circle",
+        "callout": {
+          "text": "attracting centre",
+          "anchor": [
+            360,
+            529
+          ],
+          "side": "lane",
+          "from": 0.4
+        }
+      },
+      {
+        "id": "B",
+        "phases": [
+          "nudge"
+        ],
+        "seconds": 2.4,
+        "region": "scene",
+        "label": "NUDGE IT OUT",
+        "sub": "same angular momentum ℓ",
+        "callout": {
+          "text": "δr outward",
+          "anchor": [
+            604,
+            529
+          ],
+          "side": "lane",
+          "from": 0.3
+        }
+      },
+      {
+        "id": "C",
+        "phases": [
+          "wobble"
+        ],
+        "seconds": 3.6,
+        "region": "sceneGraph",
+        "label": "IT WOBBLES",
+        "sub": "r swings in and out around r₀",
+        "callout": {
+          "text": "farthest points",
+          "anchor": [
+            130,
+            975
+          ],
+          "side": "lane",
+          "from": 0.5
+        }
+      },
+      {
+        "id": "D",
+        "phases": [
+          "compare"
+        ],
+        "seconds": 3.2,
+        "region": "graph",
+        "label": "COMPARE THE OPTIONS",
+        "sub": "measured period vs each formula",
+        "aha": {
+          "seconds": 3.0,
+          "zoom": [
+            12,
+            230,
+            696,
+            650
+          ],
+          "kicker": "WATCH THIS",
+          "lines": [
+            "One wobble takes",
+            "*exactly one orbit*:",
+            "the path closes"
+          ]
+        }
+      }
+    ],
+    "answer": {},
+    "payoff": [
+      "DON'T JUST SOLVE IT.",
+      "*EXPERIENCE* IT."
+    ]
+  },
+  "thumbnail": {
+    "kicker": "JEE ADVANCED 2026",
+    "lines": [
+      "Nudge an orbit.",
+      "Watch it *wobble*."
+    ],
+    "region": "scene",
+    "phases": [
+      "wobble"
+    ]
+  },
+  "caption": {
+    "hook": "Push an orbiting body slightly outward without changing its angular momentum… how long until it swings back? 🪐",
+    "body": "This JEE Advanced 2026 Paper 2 Physics question is about small oscillations of an orbit. We integrated the real motion in the simulation, measured the wobble and tested all four options against it.",
+    "cta": "Try the full experiment free on prayogx.co.in 🔬",
+    "hashtags": [
+      "#JEEAdvanced",
+      "#JEE2026",
+      "#Physics",
+      "#Gravitation",
+      "#Orbits",
+      "#JEEPreparation",
+      "#PrayogX"
+    ]
+  },
+  "_recorded": {
+    "key": "phase",
+    "runs": [
+      {
+        "value": "orbit",
+        "from": 0,
+        "to": 1.9667,
+        "frames": 60
+      },
+      {
+        "value": "nudge",
+        "from": 2,
+        "to": 2.9667,
+        "frames": 30
+      },
+      {
+        "value": "wobble",
+        "from": 3,
+        "to": 11.2667,
+        "frames": 249
+      },
+      {
+        "value": "compare",
+        "from": 11.3,
+        "to": 14.2667,
+        "frames": 90
+      },
+      {
+        "value": "done",
+        "from": 14.3,
+        "to": 16.5,
+        "frames": 67
+      }
+    ]
+  }
+}
