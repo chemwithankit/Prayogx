@@ -370,7 +370,7 @@ TEMPLATES['question-simulation-v1'] = function build(spec, entry, q) {
       const x = x0 + i * (pw + gap);
       g.save(); rr(x, y - 34, pw, 68, 34); g.fillStyle = got ? 'rgba(63,174,122,.28)' : 'rgba(255,255,255,.06)'; g.fill();
       g.lineWidth = got && highlight === id ? 4 : 2; g.strokeStyle = got ? C.good2 : 'rgba(147,167,204,.35)'; g.stroke();
-      line(got && m.result ? m.result.split('  ')[0] : id, x + pw / 2, y + 12, 34, { align: 'center', color: got ? C.good2 : C.dim, weight: 900 });
+      line(got && m.result ? m.result.split('  ')[0] : id, x + pw / 2, y + 12, 34, { align: 'center', color: got ? (m.result && m.result[0] === '✗' ? C.bad : C.good2) : C.dim, weight: 900 });
       g.restore();
     });
   }
@@ -410,7 +410,9 @@ TEMPLATES['question-simulation-v1'] = function build(spec, entry, q) {
         if (m.callout) callout(m.callout.text, mapf(m.callout.anchor[0], m.callout.anchor[1]), m.callout.side, prog(u, m.callout.from, 0.35), laneY);
         const ru = m.result ? E.back(prog(u, 0.78, 0.18)) : 0;
         if (ru > 0) { g.save(); g.globalAlpha = clamp(ru); g.translate(W / 2, 1420); g.scale(0.8 + 0.2 * ru, 0.8 + 0.2 * ru); g.translate(-W / 2, -1420);
-          pill('✓  ' + m.result, W / 2, 1420, 38, { align: 'center', bg: 'rgba(9,44,30,.97)', border: C.good2, color: '#eafff2' }); g.restore(); }
+          /* a result may carry its own mark: ✗ for a statement the experiment refutes */
+          const neg = m.result[0] === '✗', mark = neg || m.result[0] === '✓' ? '' : '✓  ';
+          pill(mark + m.result, W / 2, 1420, 38, { align: 'center', bg: neg ? 'rgba(52,12,20,.97)' : 'rgba(9,44,30,.97)', border: neg ? C.bad : C.good2, color: neg ? '#ffe3e6' : '#eafff2' }); g.restore(); }
       }
       if (showBoard) board(T, m.id);
       if (t < 0.4) sweep(prog(t, 0, 0.4));

@@ -1,0 +1,258 @@
+{
+  "simulationId": "ADV-2026-P2-PHY-Q05",
+  "template": "question-simulation-v1",
+  "fps": 30,
+  "record": {
+    "viewport": {
+      "width": 420,
+      "height": 860,
+      "deviceScaleFactor": 2.6
+    },
+    "actions": [
+      {
+        "eval": "PX.start()"
+      }
+    ],
+    "tailSeconds": 2.2,
+    "maxSeconds": 90
+  },
+  "regions": {
+    "top": [
+      0,
+      0,
+      720,
+      890
+    ],
+    "scene": [
+      12,
+      220,
+      696,
+      580
+    ],
+    "sceneBoard": [
+      0,
+      220,
+      720,
+      1300
+    ],
+    "board": [
+      12,
+      880,
+      696,
+      630
+    ]
+  },
+  "story": {
+    "hook": {
+      "beats": [
+        "Two prisms.",
+        "One mirror.",
+        "Four claims."
+      ],
+      "colors": [
+        "#7cc4ff",
+        "#ffd28a",
+        "#5dffa0"
+      ],
+      "line": "Which statements are *really* true?"
+    },
+    "question": {
+      "kind": "option",
+      "highlight": []
+    },
+    "problem": [
+      "Every option sounds *right*…",
+      "but some only *look* symmetric."
+    ],
+    "curiosity": "Can we *TEST* each one with real rays?",
+    "moments": [
+      {
+        "id": "RAY",
+        "phases": [
+          "trace"
+        ],
+        "seconds": 2.8,
+        "region": "top",
+        "label": "TRACE THE RAY",
+        "sub": "prism 1 → mirror M → prism 2",
+        "callout": {
+          "text": "plane mirror M",
+          "anchor": [
+            356,
+            766
+          ],
+          "side": "lane",
+          "from": 0.3
+        }
+      },
+      {
+        "id": "D",
+        "phases": [
+          "testD"
+        ],
+        "seconds": 3.0,
+        "region": "sceneBoard",
+        "label": "TEST (D)",
+        "sub": "prism 1 at minimum deviation",
+        "callout": {
+          "text": "sin i₂ = n₁ sin(A₁/2)",
+          "anchor": [
+            360,
+            1160
+          ],
+          "side": "lane",
+          "from": 0.5
+        },
+        "result": "✓ D  TRUE in 25/25 prism pairs"
+      },
+      {
+        "id": "B",
+        "phases": [
+          "testB"
+        ],
+        "seconds": 3.0,
+        "region": "sceneBoard",
+        "label": "TEST (B)",
+        "sub": "prism 2 at minimum deviation",
+        "callout": {
+          "text": "sin i₁ ≠ n₂ sin(A₂/2)",
+          "anchor": [
+            360,
+            900
+          ],
+          "side": "lane",
+          "from": 0.5
+        },
+        "result": "✗ B  FALSE in 26/26 prism pairs"
+      },
+      {
+        "id": "A",
+        "phases": [
+          "testA"
+        ],
+        "seconds": 3.0,
+        "region": "sceneBoard",
+        "label": "TEST (A)",
+        "sub": "both prisms at minimum deviation",
+        "callout": {
+          "text": "n₂/n₁ = sin(A₁/2)/sin(A₂/2)",
+          "anchor": [
+            360,
+            770
+          ],
+          "side": "lane",
+          "from": 0.5
+        },
+        "result": "✓ A  TRUE in 26/26 prism pairs"
+      },
+      {
+        "id": "C",
+        "phases": [
+          "testC"
+        ],
+        "seconds": 3.2,
+        "region": "sceneBoard",
+        "label": "TEST (C)",
+        "sub": "thin prisms, both at minimum deviation",
+        "result": "✓ C  TRUE: θ matches the formula",
+        "aha": {
+          "seconds": 3.0,
+          "zoom": [
+            12,
+            220,
+            696,
+            580
+          ],
+          "kicker": "WATCH THIS",
+          "lines": [
+            "The dashed lines bisect",
+            "the *apex angles*:",
+            "θ = (A₁ + A₂)/2"
+          ]
+        }
+      }
+    ],
+    "answer": {
+      "lead": "So the true statements are…",
+      "still": "result",
+      "stillLabel": "THE SIMULATION'S OWN RESULT"
+    },
+    "payoff": [
+      "DON'T JUST SOLVE IT.",
+      "*EXPERIENCE* IT."
+    ]
+  },
+  "thumbnail": {
+    "kicker": "JEE ADVANCED 2026",
+    "lines": [
+      "Two prisms, a mirror:",
+      "which claims",
+      "*survive*?"
+    ],
+    "region": "scene",
+    "phases": [
+      "testD"
+    ]
+  },
+  "caption": {
+    "hook": "Two prisms, one mirror, four statements… which ones actually hold up? 🔺🪞🔺",
+    "body": "This JEE Advanced 2026 Paper 2 Physics question links two isosceles prisms through a plane mirror. In the simulation we traced real rays with Snell's law, set each prism to minimum deviation and tested every statement on dozens of prism pairs.",
+    "cta": "Try the full experiment free on prayogx.co.in 🔬",
+    "hashtags": [
+      "#JEEAdvanced",
+      "#JEE2026",
+      "#Physics",
+      "#RayOptics",
+      "#Prism",
+      "#JEEPreparation",
+      "#PrayogX"
+    ]
+  },
+  "_recorded": {
+    "key": "phase",
+    "runs": [
+      {
+        "value": "trace",
+        "from": 0,
+        "to": 2.9333,
+        "frames": 89
+      },
+      {
+        "value": "testD",
+        "from": 2.9667,
+        "to": 6.9667,
+        "frames": 121
+      },
+      {
+        "value": "testB",
+        "from": 7,
+        "to": 10.5667,
+        "frames": 108
+      },
+      {
+        "value": "testA",
+        "from": 10.6,
+        "to": 14.1667,
+        "frames": 108
+      },
+      {
+        "value": "testC",
+        "from": 14.2,
+        "to": 18.2,
+        "frames": 121
+      },
+      {
+        "value": "verdict",
+        "from": 18.2333,
+        "to": 20.0333,
+        "frames": 55
+      },
+      {
+        "value": "done",
+        "from": 20.0667,
+        "to": 22.2667,
+        "frames": 67
+      }
+    ]
+  }
+}
