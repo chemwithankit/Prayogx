@@ -243,6 +243,22 @@
               ]
             }
           }
+        },
+        "Nuclei": {
+          "topics": {
+            "Radioactive nuclide produced at a constant rate - build-up to saturation and the heat its decays deliver": {
+              "subtopics": [
+                "Radioactive decay law: activity = lambda N",
+                "Production at a constant rate with decay: dN/dt = alpha - lambda N",
+                "Saturation: N -> alpha/lambda, activity -> alpha",
+                "Energy released per decay heating a liquid: ms dT/dt = E0 lambda N",
+                "Decay heat after production stops"
+              ],
+              "simulations": [
+                "ADV-2026-P2-PHY-Q02"
+              ]
+            }
+          }
         }
       }
     },

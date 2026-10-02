@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reactor Heat Lab — how fast does a liquid warm as a radioactive nuclide builds up? — JEE Advanced 2026 Paper 2 Q.2 | PrayogX</title>
+<meta name="description" content="A reactor makes a radioactive nuclide at a constant rate; its decays heat a liquid. Watch the nuclei build up to a steady level, measure the heating rate with the thermometer and test the four options against it. JEE Advanced 2026 Paper 2 Physics Q.2.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232a78d6'/%3E%3Cpath d='M12.5 6.5h7M13.6 6.5v7.2L7.9 24.1a1.5 1.5 0 0 0 1.3 2.3h13.6a1.5 1.5 0 0 0 1.3-2.3l-5.7-10.4V6.5' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M10.6 20.6h10.8' stroke='white' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E">
+<meta name="sim-id" content="ADV-2026-P2-PHY-Q02">
+<style>
+:root{
+  color-scheme: light;
+  --surface-0:#f4f4f1; --surface-1:#fcfcfb; --surface-2:#ececea;
+  --line:#d9d9d4; --line-strong:#bcbcb5;
+  --text-primary:#0b0b0b; --text-secondary:#52514e; --text-muted:#77766f;
+  --s1:#2a78d6; --s2:#eb6834; --s3:#1baf7a; --s4:#4a3aa7;
+  --good:#00743f; --bad:#c0392b; --accent:#2a78d6;
+  --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+  --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --serif:ui-serif,Georgia,"Times New Roman",serif;
+  --radius:12px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  color-scheme: dark;
+  --surface-0:#111110; --surface-1:#1a1a19; --surface-2:#232322;
+  --line:#34342f; --line-strong:#4a4a44;
+  --text-primary:#ffffff; --text-secondary:#c3c2b7; --text-muted:#95948b;
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#9085e9;
+  --good:#3fae7a; --bad:#e66767; --accent:#3987e5;
+}}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --surface-0:#111110; --surface-1:#1a1a19; --surface-2:#232322;
+  --line:#34342f; --line-strong:#4a4a44;
+  --text-primary:#ffffff; --text-secondary:#c3c2b7; --text-muted:#95948b;
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#9085e9;
+  --good:#3fae7a; --bad:#e66767; --accent:#3987e5;
+}
+*{box-sizing:border-box}
+[hidden]{display:none !important}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--surface-0);color:var(--text-primary);font-family:var(--sans);font-size:16px;line-height:1.6}
+header.top{border-bottom:1px solid var(--line);background:var(--surface-1)}
+.top-inner{max-width:1240px;margin:0 auto;padding:18px 20px 14px;position:relative}
+.brandbar{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.brandbar .pxmark{width:21px;height:21px;flex:none;display:block}
+.brandbar .wm{font-size:13px;font-weight:800;letter-spacing:.17em;color:var(--text-secondary);line-height:1}
+.brandbar .wm i{font-style:normal;color:var(--accent)}
+.simid{font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--text-muted)}
+h1{font-size:21px;line-height:1.3;margin:4px 0 4px;padding-right:80px}
+.meta{font-size:14px;color:var(--text-secondary);margin:0}
+.themebtn{position:absolute;top:14px;right:16px;border:1px solid var(--line-strong);background:var(--surface-2);
+  color:var(--text-secondary);border-radius:8px;padding:4px 9px;font-size:12px;cursor:pointer}
+.wrap{max-width:1240px;margin:0 auto;padding:0 20px 40px}
+section{margin:0 0 34px}
+h2{font-size:15px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-secondary);margin:26px 0 12px}
+h2 b{color:var(--accent);margin-right:8px}
+h3{font-size:17px;margin:22px 0 8px}
+/* 01 question */
+.qcard{background:var(--surface-1);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+.qtext{font-family:var(--serif);font-size:18px;line-height:1.6;flex:1 1 460px;min-width:0}
+.qfig{flex:0 0 250px;max-width:100%}
+.qfig svg{display:block;width:100%;height:auto}
+.sq{white-space:nowrap}
+.sq .rad{border-top:1.5px solid currentColor;padding:0 2px}
+#opts{list-style:none;margin:12px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+#opts li{background:var(--surface-1);border:1.5px solid var(--line);border-radius:10px;padding:10px 12px;font-family:var(--serif);font-size:19px;display:flex;gap:10px;align-items:center;min-height:52px}
+#opts li b{font-family:var(--sans);font-size:14px;color:var(--text-muted)}
+#opts li.correct{border-color:var(--good);box-shadow:0 0 0 2px color-mix(in srgb,var(--good) 25%,transparent)}
+#opts li.correct b{color:var(--good)}
+/* 02 lab */
+#keyline{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;background:var(--surface-1);border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin:0 0 8px}
+#keyline .k{font-size:13px;font-weight:800;letter-spacing:.12em;color:var(--text-muted);text-transform:uppercase}
+#ansval{font-size:22px;font-weight:800;color:var(--good)}
+#ansexpr{font-family:var(--serif);font-size:20px}
+#anssub{font-size:14px;color:var(--text-secondary);margin-left:auto}
+#keyline.blink{animation:blink .45s ease-in-out 4}
+@keyframes blink{50%{background:color-mix(in srgb,var(--good) 22%,var(--surface-1))}}
+#narr{margin:0 2px 10px;font-size:16px;color:var(--text-secondary);min-height:2.8em}
+.stage{position:relative;border-radius:16px;overflow:hidden;background:#070a12;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+canvas#labcv{display:block;width:100%;height:auto;touch-action:manipulation}
+#controls{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:12px;padding:12px;border:1px solid var(--line);border-radius:14px;background:var(--surface-1)}
+#controls button{min-height:48px;font-size:16px;font-weight:700;border-radius:10px;border:1px solid var(--line-strong);background:var(--surface-2);color:var(--text-primary);padding:0 16px;cursor:pointer;font-family:var(--sans)}
+#controls button:focus-visible,#controls input:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+#controls .go{background:var(--accent);color:#fff;border:none;font-weight:800;letter-spacing:.04em;min-width:190px}
+#controls .seg{display:flex;align-items:center;gap:0}
+#controls .seg span{font-size:13px;font-weight:700;color:var(--text-muted);margin-right:8px;letter-spacing:.06em;text-transform:uppercase}
+#controls .seg button{border-radius:0;margin-left:-1px;padding:0 13px}
+#controls .seg button:nth-child(2){border-radius:10px 0 0 10px}
+#controls .seg button:last-child{border-radius:0 10px 10px 0}
+#controls .seg button[aria-pressed="true"]{background:var(--accent);color:#fff;border-color:var(--accent)}
+#controls .v0{display:flex;flex-wrap:wrap;align-items:center;gap:10px;flex:1 1 520px;min-width:0}
+#controls .v0 label{font-size:15px;font-weight:700;white-space:nowrap}
+#controls input[type=range]{flex:1 1 150px;min-width:110px;min-height:44px;accent-color:var(--accent);margin:0}
+#v0out{font-family:var(--mono);font-size:15px;min-width:92px}
+#warn{margin:10px 2px 0;font-size:15px;color:var(--s2);font-weight:600}
+/* 03 solution */
+.sol{background:var(--surface-1);border:1px solid var(--line);border-radius:var(--radius);padding:6px 20px 16px}
+.sol ol.steps{padding-left:22px;margin:10px 0}
+.sol ol.steps li{margin:0 0 12px}
+.eq{font-family:var(--serif);font-size:18px;background:var(--surface-2);border-radius:8px;padding:8px 12px;margin:6px 0;overflow-x:auto}
+.solfig{display:flex;gap:18px;align-items:center;flex-wrap:wrap;margin:8px 0 12px}
+.solfig svg{flex:0 0 300px;max-width:100%;height:auto}
+.solfig p{flex:1 1 300px;margin:0}
+table.opt{border-collapse:collapse;width:100%;font-size:15px;margin:8px 0}
+table.opt th,table.opt td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+table.opt th{background:var(--surface-2)}
+table.opt tr.ok td{background:color-mix(in srgb,var(--good) 10%,transparent)}
+.tscroll{overflow-x:auto}
+.concept{border-left:4px solid var(--accent);padding:2px 0 2px 14px;margin:14px 0}
+ul.take{padding-left:20px} ul.take li{margin:0 0 6px}
+#solans{font-weight:800;color:var(--good)}
+.note{font-size:14px;color:var(--text-secondary)}
+/* 04 analysis */
+svg.chart{display:block;width:100%;max-width:760px;height:auto;background:var(--surface-1);border:1px solid var(--line);border-radius:12px}
+.chart text{font-family:var(--sans);fill:var(--text-secondary)}
+.cap{font-size:14px;color:var(--text-secondary);max-width:760px}
+/* how to */
+ol.howto{padding-left:22px;margin:0} ol.howto li{margin:0 0 8px}
+footer{font-size:13px;color:var(--text-muted);border-top:1px solid var(--line);padding:16px 0 0}
+/* classroom */
+body.classroom .wrap{max-width:none;padding:0 18px 30px}
+body.classroom header.top,body.classroom section:not(#lab),body.classroom footer{display:none}
+body.classroom #narr{font-size:24px;color:var(--text-primary)}
+body.classroom #keyline #ansexpr{font-size:26px}
+@media (max-width:760px){
+  .wrap{padding:0 16px 32px}
+  .top-inner{padding:14px 16px 12px}
+  h1{font-size:18px}
+  .qtext{font-size:17px}
+  .qfig{flex-basis:100%}
+  .qfig svg{max-width:260px;margin:0 auto}
+  #opts{grid-template-columns:repeat(2,minmax(0,1fr))}
+  #anssub{margin-left:0}
+  #controls{gap:8px;padding:10px}
+  #controls .go{flex:1 1 100%}
+  #controls button{padding:0 12px}
+  #controls .v0{flex-basis:100%;flex-wrap:wrap}
+  #controls .v0 input[type=range]{flex:1 1 100%;order:3}
+  .solfig svg{flex-basis:100%}
+  .sol{padding:4px 14px 12px}
+}
+@media (prefers-reduced-motion: reduce){#keyline.blink{animation:none}}
+/* long text options */
+#opts.lopts{grid-template-columns:1fr}
+#opts.lopts li{font-family:var(--sans);font-size:17px;align-items:flex-start;line-height:1.5}
+#opts.lopts li b{padding-top:2px}
+#opts.lopts .fx{font-family:var(--serif);font-size:18px;white-space:nowrap}
+#controls .seg button{white-space:nowrap}
+@media (max-width:760px){#opts.lopts .fx{white-space:normal}#controls .seg{flex-wrap:wrap;row-gap:6px}#controls .seg span{flex:1 1 100%;margin:0 0 2px}#controls .seg button:nth-child(2){border-radius:10px 0 0 10px}}
+.mlists{display:flex;gap:16px;flex-wrap:wrap;margin:12px 0 0}
+.mlist{flex:1 1 300px;background:var(--surface-1);border:1px solid var(--line);border-radius:12px;padding:10px 14px}
+.mlist h3{margin:4px 0 8px;font-size:15px}
+.cfg{display:flex;gap:10px;align-items:center;margin:6px 0}.cfg b{font-size:14px;color:var(--text-muted);min-width:28px}
+.cfg svg{width:100%;max-width:240px;height:auto}
+ol.l2{list-style:none;padding:0;margin:0;font-family:var(--serif);font-size:18px}ol.l2 li{padding:6px 0;border-bottom:1px solid var(--line)}
+#target{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;background:var(--surface-1);border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin:0 0 8px}
+#target .lbl{font-size:13px;font-weight:800;letter-spacing:.12em;color:var(--text-muted);text-transform:uppercase}
+#target .sym{font-family:var(--serif);font-size:20px}
+#target .val{font-size:22px;font-weight:800;color:var(--good)}
+#target .val:empty{display:none}
+#target.pulse{animation:pxpulse .5s ease-in-out 3}
+@keyframes pxpulse{50%{background:color-mix(in srgb,var(--good) 24%,var(--surface-1));box-shadow:0 0 0 6px color-mix(in srgb,var(--good) 30%,transparent)}}
+@media (prefers-reduced-motion: reduce){#target.pulse{animation:none}}
+body.classroom #target .sym{font-size:24px} body.classroom #target .val{font-size:28px}
+.mlist .cfg svg{max-width:220px}
+.qopts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;list-style:none;padding:0;margin:12px 0 0}
+.qopts li{background:var(--surface-1);border:1px solid var(--line);border-radius:10px;padding:10px 12px;font-family:var(--serif);font-size:18px}
+.qopts li b{color:var(--text-muted);margin-right:8px;font-family:inherit}
+.qopts li.correct{border-color:var(--good);box-shadow:0 0 0 2px color-mix(in srgb,var(--good) 40%,transparent)}
+@media (max-width:700px){.qopts{grid-template-columns:repeat(2,minmax(0,1fr))}}
+#controls .whatif[hidden]{display:none}
+.fr{display:inline-flex;flex-direction:column;vertical-align:middle;text-align:center;margin:0 3px;line-height:1.15}
+.fr>span:first-child{border-bottom:1.5px solid currentColor;padding:0 3px}
+.fr>span:last-child{padding:0 3px}
+.qopts li .ov{white-space:nowrap}
+@media (max-width:700px){#opts{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-inner">
+    <div class="brandbar"><svg class="pxmark" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><rect width="32" height="32" rx="8" fill="var(--accent)"/><path d="M12.5 6.5h7M13.6 6.5v7.2L7.9 24.1a1.5 1.5 0 0 0 1.3 2.3h13.6a1.5 1.5 0 0 0 1.3-2.3l-5.7-10.4V6.5" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.6 20.6h10.8" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg><span class="wm">PRAYOG<i>X</i></span></div>
+    <div class="simid">ADV-2026-P2-PHY-Q02</div>
+    <h1>Reactor Heat Lab — how fast does the liquid warm as the nuclide builds up?</h1>
+    <p class="meta">JEE Advanced 2026 · Paper 2 · Physics · Q.2 · single correct option (+3 / 0 / −1) · Nuclei</p>
+    <button class="themebtn" id="themebtn" type="button">◐ theme</button>
+  </div>
+</header>
+
+<main class="wrap">
+
+<section id="question" aria-labelledby="qh">
+  <h2 id="qh"><b>01</b>The question</h2>
+  <div class="qcard">
+    <div class="qtext">Q.2 A nuclear reactor starts producing a radioactive nuclide <i>X</i> from <i>t</i> = 0, at a constant rate of <i>α</i> per second. Each decay of <i>X</i> produces energy <i>E</i><sub>0</sub>, which is utilized to heat a liquid of mass <i>m</i> and specific heat <i>s</i>. Assuming no heat loss from the liquid and taking <i>λ</i> as the decay constant of <i>X</i>, the rate of increase in the temperature of the liquid is:</div>
+  </div>
+  <ol id="opts" class="qopts" aria-label="options">
+    <li data-o="A"><b>(A)</b><span class="ov"><span class="fr"><span><i>αE</i><sub>0</sub></span><span><i>m s</i></span></span>(1 − <i>e</i><sup>−<i>λt</i></sup>)</span></li>
+    <li data-o="B"><b>(B)</b><span class="ov"><span class="fr"><span><i>αE</i><sub>0</sub></span><span><i>m s</i></span></span>(<i>e</i><sup><i>λt</i></sup> − 1)</span></li>
+    <li data-o="C"><b>(C)</b><span class="ov"><span class="fr"><span><i>λE</i><sub>0</sub></span><span><i>m s</i></span></span>(1 − <i>e</i><sup>−<i>λt</i></sup>)</span></li>
+    <li data-o="D"><b>(D)</b><span class="ov"><span class="fr"><span><i>E</i><sub>0</sub></span><span><i>m s</i></span></span>(<i>α</i> − <i>λe</i><sup>−<i>λt</i></sup>)</span></li>
+  </ol>
+</section>
+
+<section id="lab" aria-labelledby="lh">
+  <h2 id="lh"><b>02</b>The experiment</h2>
+  <p class="keyres" id="target" data-kind="option" aria-live="polite"><span class="lbl">Target:</span><span class="sym">rate of temperature rise d<i>T</i>/d<i>t</i></span><span class="val" id="ansval"></span></p>
+  <p id="narr" aria-live="polite">Ready.</p>
+  <div class="stage"><canvas id="labcv" width="1200" height="720" role="img" aria-label="Experiment: a reactor makes nuclei of X at a constant rate and sends them into a holding tank, where each nucleus decays at random; every decay sends a packet of energy into a beaker of liquid whose thermometer rises; counters show how many nuclei were made, are still in the tank and have decayed; a graph plots the heating rate measured from the thermometer against time, and at the end the four options are drawn over the measured points and the one that fits is found"></canvas></div>
+  <div id="controls" role="group" aria-label="experiment controls">
+    <button class="go" type="button" id="gobtn">▶ START EXPERIMENT</button>
+    <button type="button" id="replaybtn">↺ Replay</button>
+    <button type="button" id="resetbtn">Reset</button>
+    <div class="v0"><label for="in_a">Production rate α</label><input type="range" id="in_a" min="1" max="4" step="0.1" value="2" aria-describedby="out_a"><output id="out_a" for="in_a">2.0 × 10¹² s⁻¹</output></div>
+    <div class="v0"><label for="in_h">Half-life of X</label><input type="range" id="in_h" min="1" max="6" step="0.5" value="2" aria-describedby="out_h"><output id="out_h" for="in_h">2.0 s</output></div>
+    <div class="v0"><label for="in_m">Liquid mass m</label><input type="range" id="in_m" min="0.1" max="0.5" step="0.05" value="0.2" aria-describedby="out_m"><output id="out_m" for="in_m">0.20 kg</output></div>
+    <div class="seg whatif" role="group" aria-label="what if" id="wigroup" hidden><span>What if…</span><button type="button" id="wi_off">switch the reactor off</button></div>
+    <div class="seg" role="group" aria-label="speed"><span>Speed</span><button type="button" id="sp1" aria-pressed="true">1×</button><button type="button" id="sp2" aria-pressed="false">½×</button></div>
+    <button type="button" id="classbtn" aria-pressed="false">Classroom</button>
+  </div>
+</section>
+
+<section id="solution" aria-labelledby="sh">
+  <h2 id="sh"><b>03</b>Detailed solution</h2>
+  <div class="sol">
+    <p>Answer: <span id="solans"></span> &nbsp;d<i>T</i>/d<i>t</i> = (<i>αE</i><sub>0</sub>/<i>ms</i>)(1 − <i>e</i><sup>−<i>λt</i></sup>)</p>
+    <ol class="steps">
+      <li><b>Count the nuclei.</b> Let <i>N</i>(<i>t</i>) be the number of nuclei of <i>X</i> present. They are made at the rate <i>α</i> and decay at the rate <i>λN</i>, so d<i>N</i>/d<i>t</i> = <i>α</i> − <i>λN</i>, with <i>N</i>(0) = 0.</li>
+      <li><b>Solve it.</b> Separating, d<i>N</i>/(<i>α</i> − <i>λN</i>) = d<i>t</i>, so −(1/<i>λ</i>) ln[(<i>α</i> − <i>λN</i>)/<i>α</i>] = <i>t</i>, which gives <b><i>N</i>(<i>t</i>) = (<i>α</i>/<i>λ</i>)(1 − <i>e</i><sup>−<i>λt</i></sup>)</b>.</li>
+      <li><b>Decays per second.</b> The activity is <i>λN</i> = <b><i>α</i>(1 − <i>e</i><sup>−<i>λt</i></sup>)</b>: zero at the start, rising towards <i>α</i>, when the nuclei decay as fast as they are made.</li>
+      <li><b>Heat.</b> Every decay gives <i>E</i><sub>0</sub> to the liquid and none is lost, so the heating power is <i>P</i> = <i>E</i><sub>0</sub><i>λN</i> and <i>ms</i> d<i>T</i>/d<i>t</i> = <i>P</i>.</li>
+      <li><b>Rate of temperature rise.</b> d<i>T</i>/d<i>t</i> = <i>E</i><sub>0</sub><i>λN</i>/(<i>ms</i>) = <b>(<i>αE</i><sub>0</sub>/<i>ms</i>)(1 − <i>e</i><sup>−<i>λt</i></sup>)</b>: option <b>(A)</b>.</li>
+      <li><b>Check the limits.</b> At <i>t</i> = 0 nothing has been made yet, so nothing can decay: d<i>T</i>/d<i>t</i> = 0. After many half-lives the nuclei decay as fast as they are made, <i>α</i> per second, so d<i>T</i>/d<i>t</i> → <i>αE</i><sub>0</sub>/(<i>ms</i>). Only (A) does both.</li>
+      <li><b>The other options.</b> (B) grows without limit, as if each nucleus made more nuclei; a steady production balanced by decay can never do that. (C) has <i>λ</i> where the production rate <i>α</i> belongs, so it has the right shape but the wrong size. (D) gives <i>E</i><sub>0</sub>(<i>α</i> − <i>λ</i>)/(<i>ms</i>) at <i>t</i> = 0, heating before a single nucleus exists.</li>
+    </ol>
+    <h3>Understand the concept</h3>
+    <div class="concept">A radioactive nuclide that is produced at a steady rate does not pile up for ever. The more nuclei there are, the more decay every second, so the number present climbs and then levels off at <i>α</i>/<i>λ</i>, where decay exactly balances production (the saturation level). The heat released follows the decays, not the production, so the liquid starts warming slowly and approaches a steady rate of rise of <i>αE</i><sub>0</sub>/(<i>ms</i>). It reaches about 97 % of that after five half-lives. The same balance explains why a reactor keeps producing "decay heat" after it is switched off: the nuclei already made go on decaying.</div>
+    <h3>Key takeaways</h3>
+    <ul class="take">
+      <li>Production at rate <i>α</i> with decay constant <i>λ</i>: d<i>N</i>/d<i>t</i> = <i>α</i> − <i>λN</i> and <i>N</i> = (<i>α</i>/<i>λ</i>)(1 − <i>e</i><sup>−<i>λt</i></sup>).</li>
+      <li>Heat follows the activity <i>λN</i>, not the production rate: <i>P</i> = <i>E</i><sub>0</sub><i>λN</i>.</li>
+      <li>Steady state (equilibrium): activity = production rate, <i>N</i> = <i>α</i>/<i>λ</i>.</li>
+      <li>Check every candidate formula at <i>t</i> = 0 and as <i>t</i> → ∞ before trusting it.</li>
+    </ul>
+    <p class="note">Verification: an independent derivation; a symbolic solution of the rate equation; a Monte Carlo of individual nuclei made and decaying at random; a convolution of the production with the decay law; a check that the total heat equals <i>E</i><sub>0</sub> times the number of decays; every option audited at <i>t</i> = 0, at large <i>t</i> and in size; and the page's own engine, run by <code>tests/verify_p2phyq02.py</code>. The MathonGo solution was read first only for the approach. The official final answer key (JEE Advanced 2026, Paper 2), read last, gives (A), in agreement. Status: script-verified by the PrayogX simulation factory; no review by a person has been recorded.</p>
+  </div>
+</section>
+
+<section id="howto" aria-labelledby="hh">
+  <h2 id="hh">How to use this simulation</h2>
+  <ol class="howto">
+    <li>Press <b>▶ START EXPERIMENT</b>. The reactor starts making nuclei of <i>X</i>, which collect in the tank and decay at random.</li>
+    <li>Each decay sends a packet of energy into the liquid. Watch the counters: made = still in the tank + decayed.</li>
+    <li>The graph plots d<i>T</i>/d<i>t</i> measured from the thermometer. It starts at zero and levels off when decay balances production.</li>
+    <li>At the end the four options are drawn over the measured points, and the one that fits is found. Then try <b>What if… switch the reactor off</b>, or change <i>α</i>, the half-life or <i>m</i>.</li>
+    <li><b>Replay</b> runs it again. <b>Reset</b> clears it. <b>Classroom</b> fills the screen for a projector.</li>
+  </ol>
+</section>
+
+<footer>
+  ADV-2026-P2-PHY-Q02 · PrayogX · JEE Advanced Interactive Simulation Library · question text reproduced
+  from the official JEE (Advanced) 2026 Paper 2 for educational use. This is a virtual laboratory only.
+  The question gives no numbers, so the experiment uses representative values (set on the sliders): a production
+  rate of about 10¹² nuclei per second, E₀ = 5 MeV, a half-life of a few seconds and a small mass of water. Time runs
+  at its real rate. The dots in the tank are a random sample, each standing for about 8 × 10¹⁰ nuclei, and the energy
+  packets show which decay heated the liquid, not how fast energy travels.
+</footer>
+</main>
+
+<script>
+(function(){
+"use strict";
+/* ENGINE-BEGIN */
+/* A reactor makes nuclei of X at a constant rate alpha (per second) from t = 0; each decays with constant lambda and
+   gives E0 to a liquid (mass m, specific heat s, no heat loss). The lab integrates dN/dt = alpha - lambda N and
+   dH/dt = E0 lambda N (H: heat delivered, J) in 0.01 s RK4 steps, and the "thermometer" T = H/(m s) is read every
+   0.25 s: the measured rate of rise is the change in T over each window divided by 0.25 s. The four printed options
+   are then fitted to those measured points; the answer is the option that fits. SI units; representative values. */
+var ENGINE = (function(){
+  var LN2 = Math.log(2), H = 0.01, WIN = 25;                    /* 25 steps of 0.01 s = one 0.25 s reading */
+  var Q = { alpha: 2e12, E0: 8e-13, m: 0.2, s: 4200, thalf: 2 };  /* E0 = 5 MeV; water */
+  function params(o){ var p = {}, k; for (k in Q) p[k] = Q[k]; if (o) for (k in o) if (o.hasOwnProperty(k)) p[k] = o[k]; p.lambda = LN2 / p.thalf; return p; }
+  /* the printed options as functions of t (K/s) */
+  var OPTS = {
+    A: function(p, t){ return p.alpha * p.E0 / (p.m * p.s) * (1 - Math.exp(-p.lambda * t)); },
+    B: function(p, t){ return p.alpha * p.E0 / (p.m * p.s) * (Math.exp(p.lambda * t) - 1); },
+    C: function(p, t){ return p.lambda * p.E0 / (p.m * p.s) * (1 - Math.exp(-p.lambda * t)); },
+    D: function(p, t){ return p.E0 / (p.m * p.s) * (p.alpha - p.lambda * Math.exp(-p.lambda * t)); }
+  };
+  function lab(o){
+    var p = params(o), L = { p: p, t: 0, N: 0, H: 0, k: 0, Hm: 0, made: 0, on: true, pts: [] };
+    function f(N, on){ return [(on ? p.alpha : 0) - p.lambda * N, p.E0 * p.lambda * N]; }
+    L.sub = function(){
+      var a = f(L.N, L.on), b = f(L.N + a[0] * H / 2, L.on), c = f(L.N + b[0] * H / 2, L.on), d = f(L.N + c[0] * H, L.on);
+      L.N += H / 6 * (a[0] + 2 * b[0] + 2 * c[0] + d[0]); L.H += H / 6 * (a[1] + 2 * b[1] + 2 * c[1] + d[1]);
+      if (L.on) L.made += p.alpha * H;
+      L.k++; L.t = L.k * H;
+      if (L.k % WIN === 0){ L.pts.push([L.t - WIN * H / 2, (L.H - L.Hm) / (p.m * p.s * WIN * H), L.on]); L.Hm = L.H; }
+    };
+    L.T = function(){ return L.H / (p.m * p.s); };
+    return L;
+  }
+  function simulate(o, tEnd, tOff){
+    var L = lab(o);
+    while (L.t < tEnd - 1e-9){ if (tOff !== undefined && tOff !== null && L.t >= tOff - 1e-9) L.on = false; L.sub(); }
+    return L;
+  }
+  /* fit each option to the measured points taken while the reactor was on: relative RMS misfit */
+  function match(pts, p){
+    var err = {}, k, i, n = 0, mx = 0, best = null, bd = 1e99;
+    for (i = 0; i < pts.length; i++) if (pts[i][2]){ n++; mx = Math.max(mx, Math.abs(pts[i][1])); }
+    for (k in OPTS){
+      var s2 = 0;
+      for (i = 0; i < pts.length; i++) if (pts[i][2]){ var d = pts[i][1] - OPTS[k](p, pts[i][0]); s2 += d * d; }
+      err[k] = n && mx > 0 ? Math.sqrt(s2 / n) / mx : 1e99;
+      if (err[k] < bd){ bd = err[k]; best = k; }
+    }
+    var others = true; for (k in err) if (k !== best && err[k] < 0.1) others = false;
+    return { err: err, best: best, option: bd < 0.01 && others ? best : null };
+  }
+  function run(o){ var p = params(o), L = simulate(o, 5 * p.thalf), m = match(L.pts, L.p); return { lab: L, match: m, answer: m.option }; }
+  return { Q: Q, OPTS: OPTS, params: params, lab: lab, simulate: simulate, match: match, run: run };
+})();
+/* ENGINE-END */
+
+var QRUN = ENGINE.run();
+var ANS = QRUN.answer;
+
+function $(id){ return document.getElementById(id); }
+var cv = $("labcv"), g = cv.getContext("2d");
+var reduced = !!(window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches);
+var SUP = { "0": "⁰", "1": "¹", "2": "²", "3": "³", "4": "⁴", "5": "⁵", "6": "⁶", "7": "⁷", "8": "⁸", "9": "⁹", "-": "⁻" };
+var OPTF = { A: "(αE₀/ms)(1 − e^(−λt))", B: "(αE₀/ms)(e^(λt) − 1)", C: "(λE₀/ms)(1 − e^(−λt))", D: "(E₀/ms)(α − λe^(−λt))" };
+var OCOL = { A: "#7cc4ff", B: "#ffb37a", C: "#c9a3ff", D: "#ff7d8a" };
+var MATCH_S = 3.6;                                               /* real seconds spent laying the options over the data */
+
+var RUN = { state: "setup", phase: "ready", speed: 1, clock: 0, lab: null, tEnd: 10, mt: 0, lines: 0, measured: null, done: false, confirmed: false,
+  off: null, p: { a: 2, thalf: 2, m: 0.2 }, shown: false, view: null };
+var L = null, minPx = 999, pulseT = null, rng = 11, DOTS = [], FLASH = [], PACK = [], dotAcc = 0;
+
+function rand(){ rng = (rng * 16807) % 2147483647; return rng / 2147483647; }
+function pp(){ return { alpha: RUN.p.a * 1e12, thalf: RUN.p.thalf, m: RUN.p.m }; }
+function cur(){ return ENGINE.params(pp()); }
+function layout(){
+  var phone = document.documentElement.clientWidth < 700;
+  if (phone) return { phone: true, W: 720, H: 1520, ro: { x: 12, y: 12, w: 696, h: 206 }, sc: { x: 12, y: 230, w: 696, h: 650 }, pn: { x: 12, y: 894, w: 696, h: 614 }, fs: 25, big: 30 };
+  return { phone: false, W: 1200, H: 720, ro: { x: 16, y: 14, w: 1168, h: 92 }, sc: { x: 16, y: 122, w: 620, h: 584 }, pn: { x: 652, y: 122, w: 532, h: 584 }, fs: 16, big: 23 };
+}
+
+/* --------------------------------------------------------------- numbers */
+function sup(s){ return String(s).replace(/[0-9-]/g, function(c){ return SUP[c]; }); }
+function sci(x, d){ if (x === 0) return "0"; var ex = Math.floor(Math.log(Math.abs(x)) / Math.LN10), m = x / Math.pow(10, ex); if (+m.toFixed(d) >= 10){ m /= 10; ex++; } return m.toFixed(d) + " × 10" + sup(ex); }
+function mK(x){ return (x * 1e3).toFixed(x * 1e3 < 10 ? 2 : 1); }      /* K -> mK */
+function pct(x){ return x > 9.99 ? "> 999 %" : (x * 100).toFixed(x < 0.01 ? 2 : 0) + " %"; }
+
+/* --------------------------------------------------------------- the live lab */
+function lastRate(){ var l = RUN.view || RUN.lab; return l && l.pts.length ? l.pts[l.pts.length - 1][1] : 0; }
+function advance(simDt){                                          /* integrate the real lab forward by simDt seconds */
+  var l = RUN.lab, target = l.t + simDt, stop = RUN.off ? RUN.off.tEnd : RUN.tEnd;
+  if (target > stop) target = stop;
+  while (l.t < target - 1e-9){ if (RUN.off && l.t >= RUN.off.t0 - 1e-9) l.on = false; l.sub(); }
+}
+function phaseOf(t){ return t < 0.12 * RUN.tEnd ? "start" : t < 0.5 * RUN.tEnd ? "build" : "steady"; }
+function finishRun(){
+  RUN.measured = ENGINE.match(RUN.lab.pts, RUN.lab.p);
+  RUN.state = "done"; RUN.phase = "done"; RUN.done = true; RUN.lines = 4; RUN.shown = true; RUN.mt = MATCH_S;
+  if (RUN.measured.option && RUN.measured.option === ANS){ RUN.confirmed = true; reveal(); }
+  $("wigroup").hidden = false; $("wi_off").disabled = false;
+  narrate(); refreshButtons();
+}
+function tick(dt){
+  var h = dt * RUN.speed;
+  if (RUN.state === "running"){
+    if (RUN.phase !== "match"){
+      advance(h);
+      var ph = phaseOf(RUN.lab.t);
+      if (ph !== RUN.phase){ RUN.phase = ph; RUN.lines = ph === "build" ? 1 : 2; narrate(); }
+      if (RUN.lab.t >= RUN.tEnd - 1e-9){ RUN.phase = "match"; RUN.mt = 0; RUN.lines = 3; narrate(); }
+      else if (Math.floor((RUN.lab.t - h) * 2) !== Math.floor(RUN.lab.t * 2)) narrate();
+    } else {
+      RUN.mt += h;
+      if (Math.floor((RUN.mt - h) / 0.9) !== Math.floor(RUN.mt / 0.9)) narrate();
+      if (RUN.mt >= MATCH_S) finishRun();
+    }
+  }
+  if (RUN.off && !RUN.off.done && RUN.state !== "paused"){
+    advance(h);
+    if (RUN.lab.t >= RUN.off.tEnd - 1e-9){ RUN.off.done = true; narrate(); }
+    else if (Math.floor((RUN.lab.t - h) * 2) !== Math.floor(RUN.lab.t * 2)) narrate();
+  }
+  animate(h);
+}
+function start(){
+  if (RUN.state === "running"){ RUN.state = "paused"; refreshButtons(); narrate(); return; }
+  if (RUN.state === "paused"){ RUN.state = "running"; refreshButtons(); narrate(); return; }
+  resetRun();
+  RUN.lab = ENGINE.lab(pp()); RUN.tEnd = 5 * RUN.p.thalf;
+  if (reduced){ advance(RUN.tEnd); RUN.lines = 3; finishRun(); return; }
+  RUN.state = "running"; RUN.phase = "start"; narrate(); refreshButtons();
+}
+function resetRun(){
+  RUN.state = "setup"; RUN.phase = "ready"; RUN.lab = null; RUN.view = null; RUN.mt = 0; RUN.lines = 0; RUN.measured = null; RUN.done = false; RUN.confirmed = false;
+  RUN.off = null; RUN.shown = false; DOTS = []; FLASH = []; PACK = []; dotAcc = 0;
+  $("wigroup").hidden = true; hideTarget();
+}
+function replay(){ RUN.state = "setup"; start(); }
+function reset(){ resetRun(); RUN.p = { a: 2, thalf: 2, m: 0.2 }; syncSliders(); refreshButtons(); narrate(); }
+
+/* exploring: a run in progress is abandoned; after a finished run a slider runs the same lab at once on the new values */
+function setParam(k, v){
+  var lim = { a: [1, 4], thalf: [1, 6], m: [0.1, 0.5] }, dflt = { a: 2, thalf: 2, m: 0.2 };
+  if (!lim[k]) return;
+  v = parseFloat(v); if (!isFinite(v)) v = dflt[k];
+  v = Math.min(lim[k][1], Math.max(lim[k][0], v));
+  if (RUN.state === "running" || RUN.state === "paused") resetRun();
+  RUN.p[k] = v; syncSliders();
+  if (RUN.done){
+    RUN.off = null; RUN.phase = "explore";
+    var r = ENGINE.run(pp()); RUN.view = r.lab; RUN.viewMatch = r.match; $("wi_off").disabled = true;
+  }
+  refreshButtons(); narrate();
+}
+function syncSliders(){
+  var p = RUN.p;
+  $("in_a").value = String(p.a); $("out_a").textContent = p.a.toFixed(1) + " × 10¹² s⁻¹";
+  $("in_h").value = String(p.thalf); $("out_h").textContent = p.thalf.toFixed(1) + " s";
+  $("in_m").value = String(p.m); $("out_m").textContent = p.m.toFixed(2) + " kg";
+}
+function whatIf(w){
+  if (!RUN.done || w !== "off" || RUN.phase === "explore") return;
+  if (RUN.off) return;
+  RUN.off = { t0: RUN.lab.t, tEnd: RUN.lab.t + 4 * RUN.lab.p.thalf, done: false }; RUN.phase = "off";
+  $("wi_off").disabled = true; narrate(); refreshButtons();
+}
+
+/* ------------------------------------------------------------ the target */
+function reveal(){
+  var t = $("target"), o = RUN.measured.option;
+  $("ansval").textContent = "dT/dt = " + OPTF[o] + " → (" + o + ")";
+  var lis = document.querySelectorAll("#opts li"), i; for (i = 0; i < lis.length; i++) lis[i].classList.toggle("correct", lis[i].getAttribute("data-o") === o);
+  if (!reduced){ t.classList.remove("pulse"); void t.offsetWidth; t.classList.add("pulse"); if (pulseT) clearTimeout(pulseT); pulseT = setTimeout(function(){ t.classList.remove("pulse"); pulseT = null; }, 1600); }
+}
+function hideTarget(){
+  var t = $("target"); if (pulseT){ clearTimeout(pulseT); pulseT = null; } t.classList.remove("pulse"); $("ansval").textContent = "";
+  var lis = document.querySelectorAll("#opts li"), i; for (i = 0; i < lis.length; i++) lis[i].classList.remove("correct");
+}
+
+/* ------------------------------------------------------------ words */
+function narrate(){
+  var t, ph = RUN.phase, l = RUN.lab, p = cur();
+  if (ph === "ready") t = "Ready. The reactor will make nuclei of X at " + RUN.p.a.toFixed(1) + " × 10¹² per second (half-life " + RUN.p.thalf.toFixed(1) + " s). How fast will the liquid warm? Press START.";
+  else if (ph === "start") t = "Reactor on at t = 0. There are no nuclei of X yet, so nothing decays and the liquid is not heated: dT/dt starts at zero.";
+  else if (ph === "build") t = "t = " + l.t.toFixed(1) + " s: " + sci(l.N, 2) + " nuclei in the tank, " + sci(p.lambda * l.N, 2) + " decaying per second. More nuclei, more decays, faster heating: " + mK(lastRate()) + " mK/s.";
+  else if (ph === "steady") t = "t = " + l.t.toFixed(1) + " s: decay is catching up with production (" + Math.round(100 * p.lambda * l.N / p.alpha) + " % of α). The tank stops filling and the heating rate levels off at " + mK(lastRate()) + " mK/s.";
+  else if (ph === "match"){
+    var k = Math.min(3, Math.floor(RUN.mt / 0.9)), key = "ABCD".charAt(k), e = ENGINE.match(l.pts, l.p).err[key];
+    t = "Testing each option against the measured points. (" + key + ") " + OPTF[key] + ": misfit " + pct(e) + ".";
+  }
+  else if (ph === "done") t = "The measured heating rate follows (" + RUN.measured.best + ") with a misfit of " + pct(RUN.measured.err[RUN.measured.best]) + ": zero at t = 0, rising to αE₀/ms = " + mK(OPTS_SAT(p)) + " mK/s. The others miss by "
+    + pct(Math.min.apply(null, "ABCD".split("").filter(function(c){ return c !== RUN.measured.best; }).map(function(c){ return RUN.measured.err[c]; }))) + " or more. Now try What if… or the sliders.";
+  else if (ph === "off"){
+    var o = RUN.off, f = OPTS_SAT(RUN.lab.p) > 0 ? lastRate() / OPTS_SAT(RUN.lab.p) : 0;
+    t = o.done ? "Reactor off for four half-lives: no new nuclei, but the ones in the tank kept decaying, so the liquid kept warming (decay heat). The rate fell to " + Math.round(100 * f) + " % of its steady value, halving every half-life."
+      : "Reactor off at t = " + o.t0.toFixed(1) + " s. Production stops, but " + sci(RUN.lab.N, 2) + " nuclei are still in the tank and still decaying: dT/dt = " + mK(lastRate()) + " mK/s and falling.";
+  }
+  else {
+    var m = RUN.viewMatch;
+    t = "α = " + RUN.p.a.toFixed(1) + " × 10¹² s⁻¹, half-life " + RUN.p.thalf.toFixed(1) + " s, m = " + RUN.p.m.toFixed(2) + " kg: the lab ran again and (" + m.best + ") still fits, misfit " + pct(m.err[m.best]) + "; the level is αE₀/ms = " + mK(OPTS_SAT(cur())) + " mK/s.";
+  }
+  if (RUN.state === "paused") t = "Paused. " + t;
+  $("narr").textContent = t;
+}
+function OPTS_SAT(p){ return p.alpha * p.E0 / (p.m * p.s); }
+function refreshButtons(){ $("gobtn").textContent = RUN.state === "running" ? "❚❚ PAUSE" : RUN.state === "paused" ? "▶ RESUME" : RUN.state === "done" ? "▶ RUN AGAIN" : "▶ START EXPERIMENT"; }
+
+/* ------------------------------------------------------------ the visible sample of nuclei (illustration only) */
+function animate(h){
+  if (reduced || RUN.state === "paused") return;
+  var live = RUN.lab && (RUN.state === "running" && RUN.phase !== "match" || (RUN.off && !RUN.off.done) || RUN.done && !RUN.off);
+  if (!live) { decayFx(h); return; }
+  var p = RUN.view ? RUN.view.p : RUN.lab.p, on = !(RUN.off) && RUN.phase !== "match";
+  if (RUN.done && !RUN.off) on = true;                               /* after the run the reactor keeps running in steady state */
+  if (RUN.off) on = false;
+  if (on){ dotAcc += 12.5 * p.alpha / 1e12 * h; while (dotAcc >= 1 && DOTS.length < 600){ dotAcc -= 1; DOTS.push({ x: rand(), y: rand(), age: 0, ph: rand() * 6.28, born: 0 }); } }
+  var pdec = 1 - Math.exp(-p.lambda * h), i;
+  for (i = DOTS.length - 1; i >= 0; i--){ DOTS[i].age += h; if (rand() < pdec){ FLASH.push({ x: DOTS[i].x, y: DOTS[i].y, a: 0 }); if (PACK.length < 80) PACK.push({ x: DOTS[i].x, y: DOTS[i].y, u: 0 }); DOTS.splice(i, 1); } }
+  decayFx(h);
+}
+function decayFx(h){
+  var i; for (i = FLASH.length - 1; i >= 0; i--){ FLASH[i].a += h / 0.4; if (FLASH[i].a >= 1) FLASH.splice(i, 1); }
+  for (i = PACK.length - 1; i >= 0; i--){ PACK[i].u += h / 0.7; if (PACK[i].u >= 1) PACK.splice(i, 1); }
+}
+
+/* ------------------------------------------------------------ drawing helpers */
+var FONT = "ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif";
+function label(s, x, y, px, col, align, weight){
+  if (px < minPx) minPx = px;
+  g.font = (weight || "700") + " " + Math.round(px) + "px " + FONT;
+  g.fillStyle = col || "#e8f0ff"; g.textAlign = align || "left"; g.textBaseline = "alphabetic"; g.fillText(s, x, y);
+}
+function tw(s, px, weight){ g.font = (weight || "700") + " " + Math.round(px) + "px " + FONT; return g.measureText(s).width; }
+function fit(s, px, maxW, weight){ var w = tw(s, px, weight); return w > maxW ? Math.max(px * maxW / w, 0) : px; }
+function minFs(){ return L.phone ? 25 : 13; }
+function fitLabel(s, x, y, px, maxW, col, align, weight){ label(s, x, y, Math.max(minFs(), fit(s, px, maxW, weight)), col, align, weight); }
+function wrapLabel(s, x, y, px, maxW, col, weight, step){
+  var min = minFs();
+  if (tw(s, px, weight) <= maxW){ label(s, x, y, px, col, "left", weight); return y; }
+  if (fit(s, px, maxW, weight) >= min){ label(s, x, y, fit(s, px, maxW, weight), col, "left", weight); return y; }
+  var cut = s.lastIndexOf(" ", Math.floor(s.length * maxW / tw(s, px, weight))), a, b;
+  if (cut < 1) cut = Math.floor(s.length / 2);
+  a = s.slice(0, cut); b = s.slice(cut).replace(/^ /, "");
+  label(a, x, y, Math.max(min, fit(a, px, maxW, weight)), col, "left", weight);
+  label(b, x + 12, y + step, Math.max(min, fit(b, px, maxW - 12, weight)), col, "left", weight);
+  return y + step;
+}
+function backed(s, x, y, px, col, align){
+  var w = tw(s, px, "800"), x0 = align === "right" ? x - w : align === "center" ? x - w / 2 : x;
+  g.fillStyle = "rgba(6,10,24,.82)"; roundRect(x0 - 6, y - px * 0.95, w + 12, px * 1.3, 6); g.fill();
+  label(s, x, y, px, col, align, "800");
+}
+function roundRect(x, y, w, h, r){ g.beginPath(); g.moveTo(x + r, y); g.lineTo(x + w - r, y); g.quadraticCurveTo(x + w, y, x + w, y + r); g.lineTo(x + w, y + h - r); g.quadraticCurveTo(x + w, y + h, x + w - r, y + h); g.lineTo(x + r, y + h); g.quadraticCurveTo(x, y + h, x, y + h - r); g.lineTo(x, y + r); g.quadraticCurveTo(x, y, x + r, y); g.closePath(); }
+function panel(x, y, w, h){ roundRect(x, y, w, h, 14); g.fillStyle = "rgba(10,16,32,.86)"; g.fill(); g.strokeStyle = "rgba(140,180,255,.3)"; g.lineWidth = 1.5; g.stroke(); }
+
+/* ------------------------------------------------------------ readouts */
+function shownLab(){ return RUN.view || RUN.lab; }
+function drawReadouts(){
+  var r = L.ro, l = shownLab(), p = l ? l.p : cur(), i, px, py;
+  var rows = [["X in the tank, N", l ? sci(l.N, 2) : "reactor off"], ["Decays per second, λN", l ? sci(p.lambda * l.N, 2) + " s⁻¹" : "0"],
+    ["Heating power, E₀λN", l ? (p.E0 * p.lambda * l.N).toFixed(3) + " W" : "0 W"], ["Thermometer dT/dt", l && l.pts.length ? mK(lastRate()) + " mK/s" : "not measured yet"]];
+  panel(r.x, r.y, r.w, r.h);
+  for (i = 0; i < 4; i++){
+    if (L.phone){ px = r.x + 18 + (i % 2) * 348; py = r.y + 40 + (i < 2 ? 0 : 1) * 96; } else { px = r.x + 20 + i * 290; py = r.y + 34; }
+    fitLabel(rows[i][0], px, py, L.fs - (L.phone ? 0 : 1), L.phone ? 326 : 270, "#8fa6cf", "left", "700");
+    var big = fit(rows[i][1], L.big - (L.phone ? 3 : 1), L.phone ? 320 : 270, "800");
+    label(rows[i][1], px, py + (L.phone ? 42 : 38), Math.max(big, minFs() + (L.phone ? 0 : 1)), i === 3 && l && l.pts.length ? "#9ff0c8" : (/^(not measured yet|reactor off|0|0 W)$/.test(rows[i][1]) ? "#8fa6cf" : "#ffffff"), "left", "800");
+  }
+}
+
+/* ------------------------------------------------------------ the scene: reactor -> tank -> beaker */
+function drawScene(){
+  var S = L.sc, ph = L.phone, l = shownLab(), p = l ? l.p : cur(), fs = L.fs - (ph ? 0 : 1), k;
+  g.save(); roundRect(S.x, S.y, S.w, S.h, 14); g.clip();
+  var bg = g.createLinearGradient(0, S.y, 0, S.y + S.h); bg.addColorStop(0, "#0d1730"); bg.addColorStop(1, "#060a14"); g.fillStyle = bg; g.fillRect(S.x, S.y, S.w, S.h);
+  var X = function(f){ return S.x + f * S.w; }, Y = function(f){ return S.y + f * S.h; };
+  var producing = !!RUN.lab && !RUN.off && (RUN.state === "running" || RUN.state === "paused" || RUN.done);
+  /* the reactor */
+  var rx = X(0.04), ry = Y(0.05), rw = S.w * 0.27, rh = S.h * 0.30;
+  var glow = producing ? 0.55 + 0.25 * Math.sin(RUN.clock * 5) : 0.12;
+  var rg = g.createRadialGradient(rx + rw / 2, ry + rh / 2, 4, rx + rw / 2, ry + rh / 2, rw * 0.7);
+  rg.addColorStop(0, "rgba(120,200,255," + glow.toFixed(2) + ")"); rg.addColorStop(1, "rgba(30,50,100,.2)");
+  g.fillStyle = "#18233d"; roundRect(rx, ry, rw, rh, 12); g.fill(); g.fillStyle = rg; roundRect(rx + 8, ry + 8, rw - 16, rh - 16, 9); g.fill();
+  g.strokeStyle = "rgba(170,200,255,.6)"; g.lineWidth = 2; roundRect(rx, ry, rw, rh, 12); g.stroke();
+  for (k = 0; k < 4; k++){ g.fillStyle = "rgba(220,235,255,.55)"; g.fillRect(rx + rw * (0.2 + 0.18 * k), ry + rh * 0.25, rw * 0.07, rh * 0.5); }
+  fitLabel("REACTOR", rx + rw / 2, ry + rh - 10, fs, rw - 12, "#e8f0ff", "center", "800");
+  fitLabel(producing ? "ON: makes X" : RUN.off ? "OFF" : "ready", rx + rw / 2, ry + 26 + (ph ? 6 : 0), fs, rw - 12, producing ? "#9ff0c8" : "#8fa6cf", "center", "800");
+  fitLabel("α = " + (p.alpha / 1e12).toFixed(1) + " × 10¹² s⁻¹", rx, ry + rh + (ph ? 34 : 24), fs, S.w * 0.34, "#7cc4ff", "left", "800");
+  /* the pipe into the tank, nuclei travelling along it */
+  var tx = X(0.39), ty = Y(0.05), tw0 = S.w * 0.57, th = S.h * 0.47;
+  var py0 = ry + rh * 0.5;
+  g.strokeStyle = "#3a4d78"; g.lineWidth = ph ? 16 : 13; g.beginPath(); g.moveTo(rx + rw, py0); g.lineTo(tx, py0); g.stroke();
+  if (producing && !reduced){ for (k = 0; k < 4; k++){ var u = ((RUN.clock * 1.4 + k / 4) % 1); g.fillStyle = "#5dffa0"; g.beginPath(); g.arc(rx + rw + u * (tx - rx - rw), py0, ph ? 6 : 5, 0, 7); g.fill(); } }
+  /* the holding tank: a random sample of the nuclei */
+  g.fillStyle = "rgba(20,40,40,.65)"; roundRect(tx, ty, tw0, th, 16); g.fill(); g.strokeStyle = "rgba(160,220,200,.6)"; g.lineWidth = 3; roundRect(tx, ty, tw0, th, 16); g.stroke();
+  fitLabel("HOLDING TANK: nuclei of X", tx + 14, ty + (ph ? 32 : 24), fs, tw0 - 28, "#cfe0ff", "left", "800");
+  var ix = tx + 14, iy = ty + (ph ? 46 : 36), iw = tw0 - 28, ih = th - (ph ? 60 : 48);
+  for (k = 0; k < DOTS.length; k++){ var d = DOTS[k], jx = ix + d.x * iw + (reduced ? 0 : 2 * Math.sin(RUN.clock * 3 + d.ph)), jy = iy + d.y * ih + (reduced ? 0 : 2 * Math.cos(RUN.clock * 2.6 + d.ph));
+    g.fillStyle = "rgba(93,255,160,.9)"; g.beginPath(); g.arc(jx, jy, ph ? 5 : 4, 0, 7); g.fill(); }
+  if (reduced && l){ var nd = Math.min(400, Math.round(12.5 * p.alpha / 1e12 * l.N / (p.alpha / p.lambda) / p.lambda)); for (k = 0; k < nd; k++){ g.fillStyle = "rgba(93,255,160,.9)"; g.beginPath(); g.arc(ix + ((k * 0.6180339) % 1) * iw, iy + ((k * 0.7548776) % 1) * ih, ph ? 5 : 4, 0, 7); g.fill(); } }
+  for (k = 0; k < FLASH.length; k++){ var f = FLASH[k]; g.strokeStyle = "rgba(255,240,180," + (1 - f.a).toFixed(2) + ")"; g.lineWidth = 2; g.beginPath(); g.arc(ix + f.x * iw, iy + f.y * ih, 4 + 14 * f.a, 0, 7); g.stroke(); }
+  /* the beaker of liquid with its thermometer */
+  var bx = X(0.50), by = Y(ph ? 0.58 : 0.60), bw = S.w * 0.30, bh = S.h * (ph ? 0.20 : 0.23);
+  var dT = l ? l.T() : 0, Tfull = Math.max(1e-6, OPTS_SAT(p) * 5 * p.thalf * 0.9), warm = Math.min(1, dT / Tfull);
+  g.fillStyle = "rgba(" + Math.round(60 + 150 * warm) + "," + Math.round(120 - 30 * warm) + "," + Math.round(220 - 150 * warm) + ",.55)"; g.fillRect(bx + 6, by + bh * 0.22, bw - 12, bh * 0.78 - 6);
+  g.strokeStyle = "rgba(220,235,255,.8)"; g.lineWidth = 3; g.beginPath(); g.moveTo(bx, by); g.lineTo(bx, by + bh); g.lineTo(bx + bw, by + bh); g.lineTo(bx + bw, by); g.stroke();
+  fitLabel("liquid m = " + p.m.toFixed(2) + " kg", bx, by + bh + (ph ? 34 : 24), fs, S.w * 0.46, "#ffd27a", "left", "800");
+  fitLabel("s = 4200 J kg⁻¹ K⁻¹", bx, by + bh + (ph ? 66 : 46), fs, S.w * 0.46, "#ffd27a", "left", "800");
+  /* energy packets from each decay down into the liquid */
+  var ex = bx + bw * 0.5, ey = by + bh * 0.35;
+  for (k = 0; k < PACK.length; k++){ var q = PACK[k], sx = ix + q.x * iw, sy = iy + q.y * ih, u2 = q.u * q.u;
+    g.fillStyle = "rgba(255,170,80," + (1 - 0.5 * q.u).toFixed(2) + ")"; g.beginPath(); g.arc(sx + (ex - sx) * u2, sy + (ey - sy) * u2, ph ? 5 : 4, 0, 7); g.fill(); }
+  var thx = X(0.88), thy = Y(ph ? 0.60 : 0.62), thh = S.h * (ph ? 0.20 : 0.22);
+  g.fillStyle = "rgba(230,240,255,.18)"; roundRect(thx - 9, thy, 18, thh, 9); g.fill(); g.strokeStyle = "rgba(230,240,255,.8)"; g.lineWidth = 2; roundRect(thx - 9, thy, 18, thh, 9); g.stroke();
+  g.fillStyle = "#ff6b6b"; g.beginPath(); g.arc(thx, thy + thh + 6, 14, 0, 7); g.fill();
+  var col = (thh - 16) * Math.min(1, 0.06 + 0.94 * warm); g.fillRect(thx - 5, thy + thh - col, 10, col + 4);
+  backed("ΔT " + mK(dT) + " mK", S.x + S.w - 12, thy - (ph ? 16 : 12), fs, "#ffffff", "right");
+  /* made = still in the tank + decayed (conservation of nuclei) */
+  var cx = X(0.04), cy = Y(0.52), made = l ? l.made : 0, inT = l ? l.N : 0, dec = Math.max(0, made - inT), cw = S.w * 0.40;
+  var rowsC = [["made so far", made, "#7cc4ff"], ["in the tank", inT, "#5dffa0"], ["decayed", dec, "#ffb37a"]], mx = Math.max(1, made);
+  for (k = 0; k < 3; k++){ var yy = cy + (ph ? 40 : 30) + k * (ph ? 74 : 56);
+    fitLabel(rowsC[k][0] + ": " + (rowsC[k][1] > 0 ? sci(rowsC[k][1], 2) : "0"), cx, yy, fs, cw, rowsC[k][2], "left", "800");
+    g.fillStyle = "rgba(140,170,220,.2)"; g.fillRect(cx, yy + 8, cw, ph ? 14 : 10); g.fillStyle = rowsC[k][2]; g.fillRect(cx, yy + 8, cw * rowsC[k][1] / mx, ph ? 14 : 10); }
+  backed(ph ? "representative values · dots: a random sample" : "representative values · dots: a random sample (each ≈ 8 × 10¹⁰ nuclei)", S.x + 14, S.y + S.h - (ph ? 18 : 14), L.fs - (ph ? 0 : 3), "#8fa6cf", "left");
+  g.restore();
+}
+
+/* ------------------------------------------------------------ the panel: the measured graph, the options, the reasoning */
+function drawPanel(){
+  var P = L.pn, ph = L.phone, l = shownLab(), p = l ? l.p : cur(), fs = L.fs - (ph ? 0 : 2), k, i;
+  panel(P.x, P.y, P.w, P.h);
+  label("dT/dt MEASURED BY THE THERMOMETER", P.x + 18, P.y + (ph ? 36 : 30), L.fs - (ph ? 0 : 1), "#cfe0ff", "left", "800");
+  var x0 = P.x + (ph ? 96 : 70), x1 = P.x + P.w - 24, gy1 = P.y + (ph ? 62 : 52), gy0 = P.y + (ph ? 300 : 290);
+  var tMax = 5 * p.thalf + (RUN.off ? 4 * p.thalf : 0), sat = OPTS_SAT(p), yMax = sat * 1.3;
+  var X = function(t){ return x0 + t / tMax * (x1 - x0); }, Y = function(v){ return gy0 - Math.max(-0.05, Math.min(1.04, v / yMax)) * (gy0 - gy1); };
+  g.strokeStyle = "rgba(200,215,240,.6)"; g.lineWidth = 1.5; g.beginPath(); g.moveTo(x0, gy1); g.lineTo(x0, gy0); g.lineTo(x1, gy0); g.stroke();
+  label("0", x0 - 8, gy0 + 4, fs, "#8fa6cf", "right", "700"); label(mK(yMax), x0 - 8, gy1 + 14, fs, "#8fa6cf", "right", "700");
+  label("mK/s", x0 - 8, gy1 + (ph ? 46 : 34), fs, "#8fa6cf", "right", "700");
+  label("0", x0, gy0 + (ph ? 32 : 22), fs, "#8fa6cf", "center", "700"); label(tMax.toFixed(0) + " s", x1, gy0 + (ph ? 32 : 22), fs, "#8fa6cf", "right", "700");
+  label("time t", (x0 + x1) / 2, gy0 + (ph ? 32 : 22), fs, "#8fa6cf", "center", "700");
+  /* the option curves, laid over the data one at a time once the run is measured */
+  var nOpt = RUN.phase === "match" ? Math.min(4, 1 + Math.floor(RUN.mt / 0.9)) : (RUN.done ? 4 : 0);
+  var mt = RUN.done ? (RUN.phase === "explore" ? RUN.viewMatch : RUN.measured) : (l ? ENGINE.match(l.pts, l.p) : null);
+  for (k = 0; k < nOpt; k++){
+    var key = "ABCD".charAt(k), fn = ENGINE.OPTS[key], tEndO = 5 * p.thalf;
+    g.strokeStyle = OCOL[key]; g.lineWidth = key === (mt && mt.best) ? 4 : 2.5; g.setLineDash(key === (mt && mt.best) ? [] : [8, 6]);
+    g.beginPath(); for (i = 0; i <= 80; i++){ var tt = tEndO * i / 80; g[i ? "lineTo" : "moveTo"](X(tt), Y(fn(p, tt))); } g.stroke(); g.setLineDash([]);
+    var ly = key === "A" ? Y(fn(p, tEndO * 0.62)) + (ph ? 40 : 30) : key === "B" ? gy1 + (ph ? 26 : 18) : key === "C" ? gy0 - (ph ? 14 : 10) : Y(fn(p, 0)) - (ph ? 10 : 8);
+    var lx = key === "B" ? X(tEndO * 0.42) : key === "D" ? X(0) + 8 : X(tEndO * 0.62);
+    backed("(" + key + ")" + (mt ? " " + pct(mt.err[key]) : ""), lx, ly, fs, OCOL[key], "left");
+  }
+  /* the measured points */
+  if (l) for (i = 0; i < l.pts.length; i++){ var q = l.pts[i]; g.fillStyle = q[2] ? "#9ff0c8" : "#ffd27a"; g.beginPath(); g.arc(X(q[0]), Y(q[1]), ph ? 5 : 4, 0, 7); g.fill(); }
+  if (RUN.off){ g.strokeStyle = "rgba(255,210,122,.6)"; g.setLineDash([4, 5]); g.beginPath(); g.moveTo(X(RUN.off.t0), gy1); g.lineTo(X(RUN.off.t0), gy0); g.stroke(); g.setLineDash([]);
+    backed("reactor off", X(RUN.off.t0) + 6, gy1 + (ph ? 60 : 44), fs, "#ffd27a", "left"); }
+  /* the reasoning, a line at a time */
+  var x = P.x + 18, w = P.w - 36, y = gy0 + (ph ? 70 : 54), st = ph ? 30 : 22;
+  var steps = [
+    ["dN/dt = α − λN   (made − decayed)", "#5dffa0"],
+    ["steady when λN = α:  N → α/λ = " + sci(p.alpha / p.lambda, 2), "#7cc4ff"],
+    ["ms dT/dt = E₀λN  →  dT/dt → αE₀/ms = " + mK(sat) + " mK/s", "#ffd27a"]];
+  var nL = RUN.done ? 3 : RUN.lines;
+  for (i = 0; i < 3; i++){
+    if (i < nL) y = wrapLabel(steps[i][0], x, y, fs + (ph ? 0 : 1), w, steps[i][1], "800", st);
+    else label("revealed as the run goes on", x, y, fs, "#5a6c8f", "left", "600");
+    y += ph ? 40 : 30;
+  }
+  if (RUN.done && mt && mt.option){ y += ph ? 6 : 2; wrapLabel("fits: (" + mt.option + ")  " + OPTF[mt.option] + "  ✓", x, y, L.big - (ph ? 2 : 3), w, "#7dffb8", "800", ph ? 36 : 28); }
+}
+function draw(){
+  minPx = 999;
+  L = layout();
+  if (cv.width !== L.W || cv.height !== L.H){ cv.width = L.W; cv.height = L.H; }
+  var bg = g.createLinearGradient(0, 0, 0, L.H); bg.addColorStop(0, "#0b1226"); bg.addColorStop(1, "#04060c"); g.fillStyle = bg; g.fillRect(0, 0, L.W, L.H);
+  drawReadouts(); drawScene(); drawPanel();
+}
+
+/* ------------------------------------------------------------ controls */
+function setSpeed(k){ RUN.speed = k; $("sp1").setAttribute("aria-pressed", k === 1 ? "true" : "false"); $("sp2").setAttribute("aria-pressed", k === 0.5 ? "true" : "false"); }
+$("gobtn").addEventListener("click", start);
+$("replaybtn").addEventListener("click", replay);
+$("resetbtn").addEventListener("click", reset);
+$("sp1").addEventListener("click", function(){ setSpeed(1); });
+$("sp2").addEventListener("click", function(){ setSpeed(0.5); });
+$("in_a").addEventListener("input", function(){ setParam("a", this.value); });
+$("in_h").addEventListener("input", function(){ setParam("thalf", this.value); });
+$("in_m").addEventListener("input", function(){ setParam("m", this.value); });
+$("wi_off").addEventListener("click", function(){ whatIf("off"); });
+$("classbtn").addEventListener("click", function(){
+  var on = document.body.classList.toggle("classroom"); this.setAttribute("aria-pressed", on ? "true" : "false");
+  this.textContent = on ? "Exit classroom" : "Classroom";
+});
+$("themebtn").addEventListener("click", function(){
+  var r = document.documentElement, dark = r.getAttribute("data-theme") === "dark" || (!r.getAttribute("data-theme") && window.matchMedia && matchMedia("(prefers-color-scheme: dark)").matches);
+  r.setAttribute("data-theme", dark ? "light" : "dark");
+});
+
+var lastT = null;
+function loop(ts){
+  if (lastT === null) lastT = ts;
+  var dt = Math.min(0.05, Math.max(0, (ts - lastT) / 1000)); lastT = ts;
+  if (!reduced && RUN.state !== "paused") RUN.clock += dt;
+  tick(RUN.state === "paused" ? 0 : dt); draw();
+  requestAnimationFrame(loop);
+}
+
+window.PX = {
+  ENGINE: ENGINE, QRUN: QRUN, ANS: ANS, RUN: RUN,
+  answer: function(){ return ANS; },
+  minLabelPx: function(){ draw(); return minPx; },
+  start: start, replay: replay, reset: reset, setSpeed: setSpeed, speed: function(k){ RUN.speed = k; },
+  set: setParam, whatIf: whatIf,
+  state: function(){ var l = RUN.lab, p = cur(); return { state: RUN.state, phase: RUN.phase, lines: RUN.lines, p: { a: RUN.p.a, thalf: RUN.p.thalf, m: RUN.p.m },
+    t: l ? l.t : 0, N: l ? l.N : 0, T: l ? l.T() : 0, made: l ? l.made : 0, on: l ? l.on : false, pts: l ? l.pts.length : 0, rate: l && l.pts.length ? lastRate() : null,
+    lambda: p.lambda, sat: OPTS_SAT(p), measured: RUN.measured || null, done: RUN.done, confirmed: RUN.confirmed,
+    off: RUN.off ? { t0: RUN.off.t0, done: RUN.off.done } : null, view: RUN.view ? { best: RUN.viewMatch.best, option: RUN.viewMatch.option, err: RUN.viewMatch.err } : null, dots: DOTS.length }; },
+  points: function(){ var l = RUN.view || RUN.lab; return l ? l.pts.map(function(q){ return [q[0], q[1], q[2]]; }) : []; }
+};
+
+$("solans").textContent = ANS ? "(" + ANS + ")" : "";
+syncSliders(); refreshButtons(); narrate(); draw();
+window.addEventListener("resize", function(){ draw(); });
+requestAnimationFrame(loop);
+})();
+</script>
+</body>
+</html>
