@@ -109,6 +109,9 @@ async function runToEnd(p, speed){
      && samples.filter(s => s.phase === 'measure').some(s => s.lines === 3) && samples.filter(s => !s.done).every(s => s.lines < 4));
   ok('the tracer moves at the real drift speed: displacement / time = vd at every sample (mm, s)', samples.filter(s => s.phase === 'measure' && s.tracerT > 0).every(s => Math.abs(s.tracer / s.tracerT - s.vd * 1e3) < 1e-9)
      && samples.filter(s => s.phase === 'measure' && s.tracerT > 0).length > 5);
+  ok('the magnifier names the drift but gives no value until the timing step has measured it',
+     samples.filter(s => s.on && !s.done && s.driftLabel).every(s => s.driftLabel === '← electrons drift') && samples.filter(s => s.on && !s.done && s.driftLabel).length > 10
+     && /^← electrons drift 0\.208 mm\/s$/.test(await (async () => { await sleep(150); return E(() => PX.state().driftLabel); })()));
   const end = samples[samples.length - 1];
   ok('measured: vd = tracer displacement / time = 0.2083 mm/s, matched to option C', end.measured && Math.abs(end.measured.vd - 1 / 4800) < 1e-12 && end.measured.option === 'C');
   ok('the run reveals the value and option in the target and marks option (C) only', end.confirmed && (await p.innerText('#ansval')) === '0.208 mm s⁻¹ → (C)'

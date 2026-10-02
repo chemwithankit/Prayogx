@@ -375,7 +375,7 @@ function start(){
 }
 function resetRun(){
   RUN.state = "setup"; RUN.phase = "ready"; RUN.pi = 0; RUN.st = 0; RUN.clock = 0; RUN.on = false; RUN.front = 0; RUN.tracer = 0; RUN.tracerT = 0;
-  RUN.measured = null; RUN.done = false; RUN.confirmed = false; RUN.lines = 0; RUN.race = null; RUN.sweep = null; RUN.shown = false; RUN.tview = 0; RUN.drift = 0;
+  RUN.measured = null; RUN.done = false; RUN.confirmed = false; RUN.lines = 0; RUN.race = null; RUN.sweep = null; RUN.shown = false; RUN.tview = 0; RUN.drift = 0; RUN.driftLabel = "";
   $("wigroup").hidden = true; hideTarget();
 }
 function replay(){ RUN.state = "setup"; start(); }
@@ -586,7 +586,9 @@ function drawMagnifier(x, y, w, h, c, on){
   backed(ph ? "1 mm (real)" : "1 mm (real scale for the drift)", ph ? sx + 10 : sx + ppm / 2, sy - 10, L.fs - (ph ? 0 : 2), "#ffffff", ph ? "left" : "center");
   if (on){
     arrow(x + w - 150, y + h * 0.3, x + w - 40, y + h * 0.3, "#ffd27a", 3); backed("E, I", x + w - 160, y + h * 0.3 + 6, L.fs - (ph ? 0 : 2), "#ffd27a", "right");
-    var lt = "← electrons drift " + mm(c.vd) + " mm/s";
+    /* the value appears with the readout's, once the timing step has measured it - never before */
+    var lt = (RUN.lines >= 4 || RUN.done) ? "← electrons drift " + mm(c.vd) + " mm/s" : "← electrons drift";
+    RUN.driftLabel = lt;
     backed(lt, ph ? x + 14 : x + w * 0.5 + 24, ph ? y + h * 0.3 + 6 : y + h * 0.84, L.fs - (ph ? 0 : 2), "#ffd27a", "left");
   }
   g.restore();
@@ -727,7 +729,7 @@ window.PX = {
   set: setParam, whatIf: whatIf, setTL: setTL,
   state: function(){ var c = cur(); return { state: RUN.state, phase: RUN.phase, on: RUN.on, lines: RUN.lines, p: { Amm2: RUN.p.Amm2, r: RUN.p.r, L: RUN.p.L, z: RUN.p.z }, tracer: RUN.tracer, tracerT: RUN.tracerT,
     measured: RUN.measured || null, done: RUN.done, confirmed: RUN.confirmed, R: c.R, I: c.I, V: c.V, E: c.E, n: c.n, vd: c.vd, vdField: c.vdField, rate: c.rate, travel: c.travel,
-    race: RUN.race ? { t: RUN.race.t, done: RUN.race.done } : null, tl: RUN.tl, guess: RUN.guess }; }
+    race: RUN.race ? { t: RUN.race.t, done: RUN.race.done } : null, tl: RUN.tl, guess: RUN.guess, driftLabel: RUN.driftLabel || "" }; }
 };
 
 $("solans").textContent = ANS ? "(" + ANS + ")" : "";
