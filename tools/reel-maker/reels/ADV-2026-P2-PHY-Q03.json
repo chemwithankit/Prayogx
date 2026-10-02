@@ -1,0 +1,218 @@
+{
+  "simulationId": "ADV-2026-P2-PHY-Q03",
+  "template": "question-simulation-v1",
+  "fps": 30,
+  "record": {
+    "viewport": {
+      "width": 420,
+      "height": 860,
+      "deviceScaleFactor": 2.6
+    },
+    "actions": [
+      {
+        "eval": "PX.start()"
+      }
+    ],
+    "tailSeconds": 2.2,
+    "maxSeconds": 60
+  },
+  "regions": {
+    "top": [
+      0,
+      0,
+      720,
+      890
+    ],
+    "scene": [
+      12,
+      230,
+      696,
+      650
+    ],
+    "sceneGraph": [
+      0,
+      230,
+      720,
+      1140
+    ],
+    "graph": [
+      12,
+      894,
+      696,
+      470
+    ]
+  },
+  "story": {
+    "hook": {
+      "beats": [
+        "A thin prism.",
+        "White light.",
+        "Six degrees."
+      ],
+      "colors": [
+        "#7cc4ff",
+        "#ffffff",
+        "#ffd28a"
+      ],
+      "line": "Which colour bends *least*?"
+    },
+    "question": {
+      "kind": "option",
+      "highlight": []
+    },
+    "problem": [
+      "Every colour bends…",
+      "but by *how much*?"
+    ],
+    "curiosity": "Can we *SEE* the minimum?",
+    "moments": [
+      {
+        "id": "A",
+        "phases": [
+          "beam"
+        ],
+        "seconds": 2.8,
+        "region": "top",
+        "label": "WHITE LIGHT IN",
+        "sub": "each colour bends by its own amount",
+        "callout": {
+          "text": "violet bends least",
+          "anchor": [
+            652,
+            590
+          ],
+          "side": "lane",
+          "from": 0.45
+        }
+      },
+      {
+        "id": "B",
+        "phases": [
+          "rotate"
+        ],
+        "seconds": 3.2,
+        "region": "sceneGraph",
+        "label": "TURN THE PRISM",
+        "sub": "the deviation dips to a minimum",
+        "callout": {
+          "text": "minimum deviation Dm",
+          "anchor": [
+            400,
+            1150
+          ],
+          "side": "lane",
+          "from": 0.5
+        }
+      },
+      {
+        "id": "C",
+        "phases": [
+          "scan"
+        ],
+        "seconds": 3.2,
+        "region": "graph",
+        "label": "SCAN THE WAVELENGTH",
+        "sub": "Dm for every colour",
+        "callout": {
+          "text": "lowest near 0.4 μm",
+          "anchor": [
+            252,
+            1112
+          ],
+          "side": "lane",
+          "from": 0.5
+        }
+      },
+      {
+        "id": "D",
+        "phases": [
+          "zoom"
+        ],
+        "seconds": 3.0,
+        "region": "graph",
+        "label": "FIND THE MINIMUM",
+        "sub": "a search homes in on λmin",
+        "aha": {
+          "seconds": 3.0,
+          "zoom": [
+            12,
+            894,
+            696,
+            330
+          ],
+          "kicker": "WATCH THIS",
+          "lines": [
+            "Shorter and longer waves",
+            "both bend more:",
+            "the *smallest* Dm is at one λ"
+          ]
+        }
+      }
+    ],
+    "answer": {},
+    "payoff": [
+      "DON'T JUST SOLVE IT.",
+      "*EXPERIENCE* IT."
+    ]
+  },
+  "thumbnail": {
+    "kicker": "JEE ADVANCED 2026",
+    "lines": [
+      "Which colour",
+      "bends *least*?"
+    ],
+    "region": "scene",
+    "phases": [
+      "beam"
+    ]
+  },
+  "caption": {
+    "hook": "A prism splits white light into colours… but which colour is bent the least, and by how much? 🌈",
+    "body": "This JEE Advanced 2026 Paper 2 Physics question uses a strange glass whose refractive index first falls, then rises with wavelength. We traced the rays, rotated the prism for minimum deviation and scanned every colour in the real simulation.",
+    "cta": "Try the full experiment free on prayogx.co.in 🔬",
+    "hashtags": [
+      "#JEEAdvanced",
+      "#JEE2026",
+      "#Physics",
+      "#RayOptics",
+      "#Prism",
+      "#JEEPreparation",
+      "#PrayogX"
+    ]
+  },
+  "_recorded": {
+    "key": "phase",
+    "runs": [
+      {
+        "value": "beam",
+        "from": 0,
+        "to": 1.9667,
+        "frames": 60
+      },
+      {
+        "value": "rotate",
+        "from": 2,
+        "to": 5.5667,
+        "frames": 108
+      },
+      {
+        "value": "scan",
+        "from": 5.6,
+        "to": 9.9667,
+        "frames": 132
+      },
+      {
+        "value": "zoom",
+        "from": 10,
+        "to": 12.3667,
+        "frames": 72
+      },
+      {
+        "value": "done",
+        "from": 12.4,
+        "to": 14.6,
+        "frames": 67
+      }
+    ]
+  }
+}
