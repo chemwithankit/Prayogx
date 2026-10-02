@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Electron Drift Lab — how fast do electrons really move in a wire? — JEE Advanced 2026 Paper 2 Q.1 | PrayogX</title>
+<meta name="description" content="A wire on a battery with internal resistance: the current is instant, but each electron drifts at a fraction of a millimetre per second. Measure R, I, the electron density and the drift velocity, and test what changes it. JEE Advanced 2026 Paper 2 Physics Q.1.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232a78d6'/%3E%3Cpath d='M12.5 6.5h7M13.6 6.5v7.2L7.9 24.1a1.5 1.5 0 0 0 1.3 2.3h13.6a1.5 1.5 0 0 0 1.3-2.3l-5.7-10.4V6.5' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M10.6 20.6h10.8' stroke='white' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E">
+<meta name="sim-id" content="ADV-2026-P2-PHY-Q01">
+<style>
+:root{
+  color-scheme: light;
+  --surface-0:#f4f4f1; --surface-1:#fcfcfb; --surface-2:#ececea;
+  --line:#d9d9d4; --line-strong:#bcbcb5;
+  --text-primary:#0b0b0b; --text-secondary:#52514e; --text-muted:#77766f;
+  --s1:#2a78d6; --s2:#eb6834; --s3:#1baf7a; --s4:#4a3aa7;
+  --good:#00743f; --bad:#c0392b; --accent:#2a78d6;
+  --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+  --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --serif:ui-serif,Georgia,"Times New Roman",serif;
+  --radius:12px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  color-scheme: dark;
+  --surface-0:#111110; --surface-1:#1a1a19; --surface-2:#232322;
+  --line:#34342f; --line-strong:#4a4a44;
+  --text-primary:#ffffff; --text-secondary:#c3c2b7; --text-muted:#95948b;
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#9085e9;
+  --good:#3fae7a; --bad:#e66767; --accent:#3987e5;
+}}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --surface-0:#111110; --surface-1:#1a1a19; --surface-2:#232322;
+  --line:#34342f; --line-strong:#4a4a44;
+  --text-primary:#ffffff; --text-secondary:#c3c2b7; --text-muted:#95948b;
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#9085e9;
+  --good:#3fae7a; --bad:#e66767; --accent:#3987e5;
+}
+*{box-sizing:border-box}
+[hidden]{display:none !important}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--surface-0);color:var(--text-primary);font-family:var(--sans);font-size:16px;line-height:1.6}
+header.top{border-bottom:1px solid var(--line);background:var(--surface-1)}
+.top-inner{max-width:1240px;margin:0 auto;padding:18px 20px 14px;position:relative}
+.brandbar{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.brandbar .pxmark{width:21px;height:21px;flex:none;display:block}
+.brandbar .wm{font-size:13px;font-weight:800;letter-spacing:.17em;color:var(--text-secondary);line-height:1}
+.brandbar .wm i{font-style:normal;color:var(--accent)}
+.simid{font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--text-muted)}
+h1{font-size:21px;line-height:1.3;margin:4px 0 4px;padding-right:80px}
+.meta{font-size:14px;color:var(--text-secondary);margin:0}
+.themebtn{position:absolute;top:14px;right:16px;border:1px solid var(--line-strong);background:var(--surface-2);
+  color:var(--text-secondary);border-radius:8px;padding:4px 9px;font-size:12px;cursor:pointer}
+.wrap{max-width:1240px;margin:0 auto;padding:0 20px 40px}
+section{margin:0 0 34px}
+h2{font-size:15px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-secondary);margin:26px 0 12px}
+h2 b{color:var(--accent);margin-right:8px}
+h3{font-size:17px;margin:22px 0 8px}
+/* 01 question */
+.qcard{background:var(--surface-1);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+.qtext{font-family:var(--serif);font-size:18px;line-height:1.6;flex:1 1 460px;min-width:0}
+.qfig{flex:0 0 250px;max-width:100%}
+.qfig svg{display:block;width:100%;height:auto}
+.sq{white-space:nowrap}
+.sq .rad{border-top:1.5px solid currentColor;padding:0 2px}
+#opts{list-style:none;margin:12px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+#opts li{background:var(--surface-1);border:1.5px solid var(--line);border-radius:10px;padding:10px 12px;font-family:var(--serif);font-size:19px;display:flex;gap:10px;align-items:center;min-height:52px}
+#opts li b{font-family:var(--sans);font-size:14px;color:var(--text-muted)}
+#opts li.correct{border-color:var(--good);box-shadow:0 0 0 2px color-mix(in srgb,var(--good) 25%,transparent)}
+#opts li.correct b{color:var(--good)}
+/* 02 lab */
+#keyline{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;background:var(--surface-1);border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin:0 0 8px}
+#keyline .k{font-size:13px;font-weight:800;letter-spacing:.12em;color:var(--text-muted);text-transform:uppercase}
+#ansval{font-size:22px;font-weight:800;color:var(--good)}
+#ansexpr{font-family:var(--serif);font-size:20px}
+#anssub{font-size:14px;color:var(--text-secondary);margin-left:auto}
+#keyline.blink{animation:blink .45s ease-in-out 4}
+@keyframes blink{50%{background:color-mix(in srgb,var(--good) 22%,var(--surface-1))}}
+#narr{margin:0 2px 10px;font-size:16px;color:var(--text-secondary);min-height:2.8em}
+.stage{position:relative;border-radius:16px;overflow:hidden;background:#070a12;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+canvas#labcv{display:block;width:100%;height:auto;touch-action:manipulation}
+#controls{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:12px;padding:12px;border:1px solid var(--line);border-radius:14px;background:var(--surface-1)}
+#controls button{min-height:48px;font-size:16px;font-weight:700;border-radius:10px;border:1px solid var(--line-strong);background:var(--surface-2);color:var(--text-primary);padding:0 16px;cursor:pointer;font-family:var(--sans)}
+#controls button:focus-visible,#controls input:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+#controls .go{background:var(--accent);color:#fff;border:none;font-weight:800;letter-spacing:.04em;min-width:190px}
+#controls .seg{display:flex;align-items:center;gap:0}
+#controls .seg span{font-size:13px;font-weight:700;color:var(--text-muted);margin-right:8px;letter-spacing:.06em;text-transform:uppercase}
+#controls .seg button{border-radius:0;margin-left:-1px;padding:0 13px}
+#controls .seg button:nth-child(2){border-radius:10px 0 0 10px}
+#controls .seg button:last-child{border-radius:0 10px 10px 0}
+#controls .seg button[aria-pressed="true"]{background:var(--accent);color:#fff;border-color:var(--accent)}
+#controls .v0{display:flex;flex-wrap:wrap;align-items:center;gap:10px;flex:1 1 520px;min-width:0}
+#controls .v0 label{font-size:15px;font-weight:700;white-space:nowrap}
+#controls input[type=range]{flex:1 1 150px;min-width:110px;min-height:44px;accent-color:var(--accent);margin:0}
+#v0out{font-family:var(--mono);font-size:15px;min-width:92px}
+#warn{margin:10px 2px 0;font-size:15px;color:var(--s2);font-weight:600}
+/* 03 solution */
+.sol{background:var(--surface-1);border:1px solid var(--line);border-radius:var(--radius);padding:6px 20px 16px}
+.sol ol.steps{padding-left:22px;margin:10px 0}
+.sol ol.steps li{margin:0 0 12px}
+.eq{font-family:var(--serif);font-size:18px;background:var(--surface-2);border-radius:8px;padding:8px 12px;margin:6px 0;overflow-x:auto}
+.solfig{display:flex;gap:18px;align-items:center;flex-wrap:wrap;margin:8px 0 12px}
+.solfig svg{flex:0 0 300px;max-width:100%;height:auto}
+.solfig p{flex:1 1 300px;margin:0}
+table.opt{border-collapse:collapse;width:100%;font-size:15px;margin:8px 0}
+table.opt th,table.opt td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+table.opt th{background:var(--surface-2)}
+table.opt tr.ok td{background:color-mix(in srgb,var(--good) 10%,transparent)}
+.tscroll{overflow-x:auto}
+.concept{border-left:4px solid var(--accent);padding:2px 0 2px 14px;margin:14px 0}
+ul.take{padding-left:20px} ul.take li{margin:0 0 6px}
+#solans{font-weight:800;color:var(--good)}
+.note{font-size:14px;color:var(--text-secondary)}
+/* 04 analysis */
+svg.chart{display:block;width:100%;max-width:760px;height:auto;background:var(--surface-1);border:1px solid var(--line);border-radius:12px}
+.chart text{font-family:var(--sans);fill:var(--text-secondary)}
+.cap{font-size:14px;color:var(--text-secondary);max-width:760px}
+/* how to */
+ol.howto{padding-left:22px;margin:0} ol.howto li{margin:0 0 8px}
+footer{font-size:13px;color:var(--text-muted);border-top:1px solid var(--line);padding:16px 0 0}
+/* classroom */
+body.classroom .wrap{max-width:none;padding:0 18px 30px}
+body.classroom header.top,body.classroom section:not(#lab),body.classroom footer{display:none}
+body.classroom #narr{font-size:24px;color:var(--text-primary)}
+body.classroom #keyline #ansexpr{font-size:26px}
+@media (max-width:760px){
+  .wrap{padding:0 16px 32px}
+  .top-inner{padding:14px 16px 12px}
+  h1{font-size:18px}
+  .qtext{font-size:17px}
+  .qfig{flex-basis:100%}
+  .qfig svg{max-width:260px;margin:0 auto}
+  #opts{grid-template-columns:repeat(2,minmax(0,1fr))}
+  #anssub{margin-left:0}
+  #controls{gap:8px;padding:10px}
+  #controls .go{flex:1 1 100%}
+  #controls button{padding:0 12px}
+  #controls .v0{flex-basis:100%;flex-wrap:wrap}
+  #controls .v0 input[type=range]{flex:1 1 100%;order:3}
+  .solfig svg{flex-basis:100%}
+  .sol{padding:4px 14px 12px}
+}
+@media (prefers-reduced-motion: reduce){#keyline.blink{animation:none}}
+/* long text options */
+#opts.lopts{grid-template-columns:1fr}
+#opts.lopts li{font-family:var(--sans);font-size:17px;align-items:flex-start;line-height:1.5}
+#opts.lopts li b{padding-top:2px}
+#opts.lopts .fx{font-family:var(--serif);font-size:18px;white-space:nowrap}
+#controls .seg button{white-space:nowrap}
+@media (max-width:760px){#opts.lopts .fx{white-space:normal}#controls .seg{flex-wrap:wrap;row-gap:6px}#controls .seg span{flex:1 1 100%;margin:0 0 2px}#controls .seg button:nth-child(2){border-radius:10px 0 0 10px}}
+.mlists{display:flex;gap:16px;flex-wrap:wrap;margin:12px 0 0}
+.mlist{flex:1 1 300px;background:var(--surface-1);border:1px solid var(--line);border-radius:12px;padding:10px 14px}
+.mlist h3{margin:4px 0 8px;font-size:15px}
+.cfg{display:flex;gap:10px;align-items:center;margin:6px 0}.cfg b{font-size:14px;color:var(--text-muted);min-width:28px}
+.cfg svg{width:100%;max-width:240px;height:auto}
+ol.l2{list-style:none;padding:0;margin:0;font-family:var(--serif);font-size:18px}ol.l2 li{padding:6px 0;border-bottom:1px solid var(--line)}
+#target{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;background:var(--surface-1);border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin:0 0 8px}
+#target .lbl{font-size:13px;font-weight:800;letter-spacing:.12em;color:var(--text-muted);text-transform:uppercase}
+#target .sym{font-family:var(--serif);font-size:20px}
+#target .val{font-size:22px;font-weight:800;color:var(--good)}
+#target .val:empty{display:none}
+#target.pulse{animation:pxpulse .5s ease-in-out 3}
+@keyframes pxpulse{50%{background:color-mix(in srgb,var(--good) 24%,var(--surface-1));box-shadow:0 0 0 6px color-mix(in srgb,var(--good) 30%,transparent)}}
+@media (prefers-reduced-motion: reduce){#target.pulse{animation:none}}
+body.classroom #target .sym{font-size:24px} body.classroom #target .val{font-size:28px}
+.mlist .cfg svg{max-width:220px}
+.qopts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;list-style:none;padding:0;margin:12px 0 0}
+.qopts li{background:var(--surface-1);border:1px solid var(--line);border-radius:10px;padding:10px 12px;font-family:var(--serif);font-size:18px}
+.qopts li b{color:var(--text-muted);margin-right:8px;font-family:inherit}
+.qopts li.correct{border-color:var(--good);box-shadow:0 0 0 2px color-mix(in srgb,var(--good) 40%,transparent)}
+@media (max-width:700px){.qopts{grid-template-columns:repeat(2,minmax(0,1fr))}}
+#controls .whatif[hidden]{display:none}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-inner">
+    <div class="brandbar"><svg class="pxmark" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><rect width="32" height="32" rx="8" fill="var(--accent)"/><path d="M12.5 6.5h7M13.6 6.5v7.2L7.9 24.1a1.5 1.5 0 0 0 1.3 2.3h13.6a1.5 1.5 0 0 0 1.3-2.3l-5.7-10.4V6.5" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.6 20.6h10.8" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg><span class="wm">PRAYOG<i>X</i></span></div>
+    <div class="simid">ADV-2026-P2-PHY-Q01</div>
+    <h1>Electron Drift Lab — how fast do electrons really move in a wire?</h1>
+    <p class="meta">JEE Advanced 2026 · Paper 2 · Physics · Q.1 · single correct option (+3 / 0 / −1) · Current Electricity</p>
+    <button class="themebtn" id="themebtn" type="button">◐ theme</button>
+  </div>
+</header>
+
+<main class="wrap">
+
+<section id="question" aria-labelledby="qh">
+  <h2 id="qh"><b>01</b>The question</h2>
+  <div class="qcard">
+    <div class="qtext">Q.1 A metal wire of cross-sectional area 0.5 mm<sup>2</sup> and length 100 m is connected across a battery of e.m.f. 2 V and internal resistance 1 Ω. The density, atomic mass and electrical conductivity of the metal are 6.35 × 10<sup>3</sup> kg m<sup>−3</sup>, 63.5 gm/mole and 2 × 10<sup>8</sup> mho m<sup>−1</sup>, respectively. Assuming one conduction electron per atom of the metal, the drift velocity (in mm s<sup>−1</sup>) of the electrons in the wire is:<br>[Take Avogadro’s number as 6 × 10<sup>23</sup> and charge of the electron as 1.6 × 10<sup>−19</sup> C.]</div>
+  </div>
+  <ol id="opts" class="qopts" aria-label="options">
+    <li data-o="A"><b>(A)</b><span>0.052</span></li>
+    <li data-o="B"><b>(B)</b><span>0.104</span></li>
+    <li data-o="C"><b>(C)</b><span>0.208</span></li>
+    <li data-o="D"><b>(D)</b><span>0.156</span></li>
+  </ol>
+</section>
+
+<section id="lab" aria-labelledby="lh">
+  <h2 id="lh"><b>02</b>The experiment</h2>
+  <p class="keyres" id="target" data-kind="option" aria-live="polite"><span class="lbl">Target:</span><span class="sym">drift velocity v<sub>d</sub> (mm s<sup>−1</sup>)</span><span class="val" id="ansval"></span></p>
+  <p id="narr" aria-live="polite">Ready.</p>
+  <div class="stage"><canvas id="labcv" width="1200" height="720" role="img" aria-label="Experiment: a battery with its internal resistance drives a current through a 100 m wire; closing the switch sets up the electric field at once and the ammeter reads the current; a magnifier into the wire shows lattice ions, electrons in fast random motion and their slow net drift, a tracer electron measured against a 1 mm scale, and a counting gate; the calculation of resistance, current, electron density and drift velocity fills in as each is measured; afterwards a graph of drift velocity against cross-section and a race between the field and an electron"></canvas></div>
+  <div id="controls" role="group" aria-label="experiment controls">
+    <button class="go" type="button" id="gobtn">▶ START EXPERIMENT</button>
+    <button type="button" id="replaybtn">↺ Replay</button>
+    <button type="button" id="resetbtn">Reset</button>
+    <div class="seg" role="group" aria-label="your guess, optional"><span>Your guess</span><button type="button" id="g1" aria-pressed="false">near light speed</button><button type="button" id="g2" aria-pressed="false">walking pace</button><button type="button" id="g3" aria-pressed="false">slower than a snail</button></div>
+    <div class="v0"><label for="in_A">Cross-section A</label><input type="range" id="in_A" min="0.1" max="2" step="0.05" value="0.5" aria-describedby="out_A"><output id="out_A" for="in_A">0.50 mm²</output></div>
+    <div class="v0"><label for="in_r">Internal resistance r</label><input type="range" id="in_r" min="0" max="3" step="0.1" value="1" aria-describedby="out_r"><output id="out_r" for="in_r">1.0 Ω</output></div>
+    <div class="v0"><label for="in_L">Wire length L</label><input type="range" id="in_L" min="10" max="200" step="5" value="100" aria-describedby="out_L"><output id="out_L" for="in_L">100 m</output></div>
+    <div class="seg" role="group" aria-label="free electrons per atom"><span>Free e⁻ per atom</span><button type="button" id="z1" aria-pressed="true">1</button><button type="button" id="z2" aria-pressed="false">2</button><button type="button" id="z3" aria-pressed="false">3</button></div>
+    <div class="seg whatif" role="group" aria-label="what if" id="wigroup" hidden><span>What if…</span><button type="button" id="wi_r0">r = 0</button><button type="button" id="wi_thick">thicker wire</button><button type="button" id="wi_race">race to 100 m</button></div>
+    <div class="seg" role="group" aria-label="race time-lapse"><span>Race time-lapse</span><button type="button" id="tl3" aria-pressed="false">×1000</button><button type="button" id="tl4" aria-pressed="false">×10 000</button><button type="button" id="tl5" aria-pressed="true">×100 000</button></div>
+    <div class="seg" role="group" aria-label="speed"><span>Speed</span><button type="button" id="sp1" aria-pressed="true">1×</button><button type="button" id="sp2" aria-pressed="false">½×</button></div>
+    <button type="button" id="classbtn" aria-pressed="false">Classroom</button>
+  </div>
+</section>
+
+<section id="solution" aria-labelledby="sh">
+  <h2 id="sh"><b>03</b>Detailed solution</h2>
+  <div class="sol">
+    <p>Answer: <span id="solans"></span> &nbsp;v<sub>d</sub> = 0.208 mm s<sup>−1</sup></p>
+    <ol class="steps">
+      <li><b>SI units.</b> <i>A</i> = 0.5 mm<sup>2</sup> = 0.5 × 10<sup>−6</sup> m<sup>2</sup>; <i>M</i> = 63.5 g mol<sup>−1</sup> = 63.5 × 10<sup>−3</sup> kg mol<sup>−1</sup>; <i>σ</i> = 2 × 10<sup>8</sup> Ω<sup>−1</sup> m<sup>−1</sup> (1 mho = 1 S = 1 Ω<sup>−1</sup>).</li>
+      <li><b>Resistance of the wire.</b> <i>R</i> = <i>L</i>/(<i>σA</i>) = 100 / (2 × 10<sup>8</sup> × 0.5 × 10<sup>−6</sup>) = <b>1 Ω</b>.</li>
+      <li><b>Current.</b> The wire is in series with the battery's internal resistance: <i>I</i> = <i>ε</i>/(<i>R</i> + <i>r</i>) = 2/(1 + 1) = <b>1 A</b>. Only <i>IR</i> = 1 V of the 2 V e.m.f. appears across the wire; the other 1 V is used up inside the battery.</li>
+      <li><b>Free-electron density.</b> One cubic metre holds <i>ρ</i>/<i>M</i> moles, so <i>n</i> = <i>ρN</i><sub>A</sub>/<i>M</i> × (1 electron per atom) = 6.35 × 10<sup>3</sup> × 6 × 10<sup>23</sup> / (63.5 × 10<sup>−3</sup>) = <b>6 × 10<sup>28</sup> m<sup>−3</sup></b>.</li>
+      <li><b>Drift velocity.</b> The charge crossing a section per second is <i>I</i> = <i>neAv</i><sub>d</sub>, so <i>v</i><sub>d</sub> = <i>I</i>/(<i>neA</i>) = 1 / (6 × 10<sup>28</sup> × 1.6 × 10<sup>−19</sup> × 0.5 × 10<sup>−6</sup>) = 1/4800 m s<sup>−1</sup> = 2.08 × 10<sup>−4</sup> m s<sup>−1</sup> = <b>0.208 mm s<sup>−1</sup></b>: option <b>(C)</b>.</li>
+      <li><b>Check through the field.</b> <i>E</i> = <i>V</i><sub>wire</sub>/<i>L</i> = 1/100 = 0.01 V m<sup>−1</sup>; from <i>J</i> = <i>σE</i> = <i>nev</i><sub>d</sub>, <i>v</i><sub>d</sub> = <i>σE</i>/(<i>ne</i>) = 2 × 10<sup>8</sup> × 0.01 / (6 × 10<sup>28</sup> × 1.6 × 10<sup>−19</sup>) = 0.208 mm s<sup>−1</sup>. The same.</li>
+      <li><b>The other options.</b> (A) 0.052, (B) 0.104 and (D) 0.156 are a quarter, a half and three quarters of the true value. Forgetting the internal resistance gives <i>I</i> = 2 A and 0.417 mm s<sup>−1</sup>, which is not an option at all.</li>
+    </ol>
+    <h3>Understand the concept</h3>
+    <div class="concept">Switching on a circuit sets up an electric field throughout the wire almost at once, so every free electron starts drifting together and the current appears immediately. The drift itself is extraordinarily slow: about 0.2 mm s<sup>−1</sup> here, so one electron would need more than five days to travel the 100 m wire. The current is large because the number of free electrons is huge (6 × 10<sup>28</sup> per cubic metre), not because they move fast. Underneath the drift, electrons move randomly at very high speeds, but that random motion averages to zero and carries no current.</div>
+    <h3>Key takeaways</h3>
+    <ul class="take">
+      <li><i>R</i> = <i>L</i>/(<i>σA</i>): conductivity is the reciprocal of resistivity.</li>
+      <li>The current depends on the whole circuit: <i>I</i> = <i>ε</i>/(<i>R</i> + <i>r</i>); the wire feels only the terminal voltage <i>IR</i>.</li>
+      <li>Free-electron density <i>n</i> = (<i>ρ</i>/<i>M</i>)<i>N</i><sub>A</sub> × (electrons per atom).</li>
+      <li><i>I</i> = <i>neAv</i><sub>d</sub>, equivalently <i>v</i><sub>d</sub> = <i>σE</i>/(<i>ne</i>): typically about 10<sup>−4</sup> m s<sup>−1</sup> in metals.</li>
+    </ul>
+    <p class="note">Verification: an independent derivation; two routes that share no code with the page (the circuit route <i>I</i>/(<i>neA</i>) and the field route <i>σE</i>/(<i>ne</i>)), in exact rational arithmetic; a counting simulation of electrons crossing a section; every option audited; and the page's own engine, run by <code>tests/verify_p2phyq01.py</code>. The MathonGo solution was read first only for the approach. The official final answer key (JEE Advanced 2026, Paper 2), read last, gives (C), in agreement. Status: script-verified by the PrayogX simulation factory; no review by a person has been recorded.</p>
+  </div>
+</section>
+
+<section id="howto" aria-labelledby="hh">
+  <h2 id="hh">How to use this simulation</h2>
+  <ol class="howto">
+    <li>Press <b>▶ START EXPERIMENT</b>. The switch closes, the field and current appear at once, and the magnifier opens into the wire.</li>
+    <li>Watch the yellow tracer electron against the 1 mm scale: it shows the real drift speed. The fast zig-zag is random motion that averages out.</li>
+    <li>The calculation fills in as each quantity is measured: <i>R</i>, then <i>I</i>, then <i>n</i>, then <i>v</i><sub>d</sub>, which is matched to the options.</li>
+    <li>Then try <b>What if…</b>: no internal resistance, a thicker wire, or the race to the end of the wire. The sliders change <i>A</i>, <i>r</i>, <i>L</i> and the free electrons per atom.</li>
+    <li><b>Replay</b> runs it again. <b>Reset</b> clears it. <b>Classroom</b> fills the screen for a projector.</li>
+  </ol>
+</section>
+
+<footer>
+  ADV-2026-P2-PHY-Q01 · PrayogX · JEE Advanced Interactive Simulation Library · question text reproduced
+  from the official JEE (Advanced) 2026 Paper 2 for educational use. This is a virtual laboratory only.
+  In the magnifier, ions and electrons are drawn far larger than real (atoms are about 0.25 nm apart) and the random
+  motion is slowed; the drift of the tracer against the 1 mm scale is shown at its real speed. The race uses the
+  time-lapse shown on it.
+</footer>
+</main>
+
+<script>
+(function(){
+"use strict";
+/* ENGINE-BEGIN */
+/* A wire (length L, cross-section A, conductivity sigma) across a battery (e.m.f. eps, internal resistance r).
+   R = L/(sigma A); I = eps/(R + r); V_wire = I R; E = V_wire/L; n = z rho NA / M (z free electrons per atom);
+   drift velocity by two routes: the circuit route I/(n e A) and the field route sigma E/(n e). SI units throughout. */
+var ENGINE = (function(){
+  var Q = { eps: 2, r: 1, L: 100, Amm2: 0.5, sigma: 2e8, rho: 6.35e3, M: 63.5e-3, NA: 6e23, e: 1.6e-19, z: 1 };
+  var OPTS = { A: 0.052, B: 0.104, C: 0.208, D: 0.156 };                 /* the printed options, mm s^-1 */
+  function params(o){ var p = {}, k; for (k in Q) p[k] = Q[k]; if (o) for (k in o) if (o.hasOwnProperty(k)) p[k] = o[k]; return p; }
+  function circuit(o){
+    var p = params(o), A = p.Amm2 * 1e-6;
+    var R = p.L / (p.sigma * A), I = p.eps / (R + p.r), V = I * R, E = V / p.L, n = p.z * p.rho * p.NA / p.M;
+    var vdCircuit = I / (n * p.e * A), vdField = p.sigma * E / (n * p.e);
+    return { p: p, A: A, R: R, I: I, V: V, E: E, n: n, vd: vdCircuit, vdField: vdField, rate: I / p.e, travel: p.L / vdCircuit };
+  }
+  /* the option a measured drift velocity (m/s) matches: within 2 % of one printed value, else none */
+  function pick(vd){ var mm = vd * 1e3, k, best = null, bd = 1e9, d; for (k in OPTS){ d = Math.abs(mm - OPTS[k]) / OPTS[k]; if (d < bd){ bd = d; best = k; } } return bd < 0.02 ? best : null; }
+  /* drift velocity against cross-section (mm^2) for a battery with internal resistance r: the graph */
+  function curve(r, o, a0, a1, N){ var out = [], i, a, c; for (i = 0; i <= N; i++){ a = a0 + (a1 - a0) * i / N; c = circuit(merge(o, { Amm2: a, r: r })); out.push([a, c.vd]); } return out; }
+  function merge(a, b){ var o = {}, k; if (a) for (k in a) o[k] = a[k]; for (k in b) o[k] = b[k]; return o; }
+  function run(){ var c = circuit(); return { c: c, answer: pick(c.vd), routesAgree: Math.abs(c.vd - c.vdField) / c.vd < 1e-12 }; }
+  return { Q: Q, OPTS: OPTS, params: params, circuit: circuit, pick: pick, curve: curve, run: run };
+})();
+/* ENGINE-END */
+
+var QRUN = ENGINE.run();
+var ANS = QRUN.answer;
+
+function $(id){ return document.getElementById(id); }
+var cv = $("labcv"), g = cv.getContext("2d");
+var reduced = !!(window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches);
+var PH = [["switch", 2.2], ["zoom", 1.6], ["count", 2.8], ["measure", 4.2]];
+var SUP = { "0": "⁰", "1": "¹", "2": "²", "3": "³", "4": "⁴", "5": "⁵", "6": "⁶", "7": "⁷", "8": "⁸", "9": "⁹", "-": "⁻" };
+var GUESS = { g1: "near light speed", g2: "walking pace", g3: "slower than a snail" };
+
+var RUN = { state: "setup", phase: "ready", speed: 1, pi: 0, st: 0, clock: 0, on: false, front: 0, tracer: 0, tracerT: 0, tview: 0, drift: 0, measured: null, done: false, confirmed: false,
+  p: { Amm2: 0.5, r: 1, L: 100, z: 1 }, tl: 100000, race: null, sweep: null, guess: null, lines: 0, shown: false };
+var L = null, minPx = 999, pulseT = null, rng = 7, ELS = [], IONS = [];
+
+function rand(){ rng = (rng * 16807) % 2147483647; return rng / 2147483647; }
+for (var i0 = 0; i0 < 70; i0++) ELS.push({ x: rand(), y: rand(), vx: rand() - 0.5, vy: rand() - 0.5 });
+for (var ix = 0; ix < 9; ix++) for (var iy = 0; iy < 4; iy++) IONS.push({ x: (ix + 0.5) / 9, y: (iy + 0.5) / 4, ph: rand() * 6.28 });
+
+function cur(){ return ENGINE.circuit(RUN.p); }
+function layout(){
+  var phone = document.documentElement.clientWidth < 700;
+  if (phone) return { phone: true, W: 720, H: 1520, ro: { x: 12, y: 12, w: 696, h: 206 }, sc: { x: 12, y: 230, w: 696, h: 650 }, pn: { x: 12, y: 894, w: 696, h: 614 }, fs: 25, big: 30 };
+  return { phone: false, W: 1200, H: 720, ro: { x: 16, y: 14, w: 1168, h: 92 }, sc: { x: 16, y: 122, w: 620, h: 584 }, pn: { x: 652, y: 122, w: 532, h: 584 }, fs: 16, big: 23 };
+}
+
+/* --------------------------------------------------------------- numbers */
+function sup(s){ return String(s).replace(/[0-9-]/g, function(c){ return SUP[c]; }); }
+function sci(x, d){ if (x === 0) return "0"; var ex = Math.floor(Math.log(Math.abs(x)) / Math.LN10), m = x / Math.pow(10, ex); if (+m.toFixed(d) >= 10){ m /= 10; ex++; } return m.toFixed(d) + " × 10" + sup(ex); }
+function sig(x, s){ return Number(x.toPrecision(s)).toString(); }
+function mm(vd){ return (vd * 1e3).toFixed(3); }
+function fA(A){ return sig(A * 1e6, 3) + " × 10⁻⁶"; }                   /* m^2, as the question writes it */
+function fM(M){ return sig(M * 1e3, 3) + " × 10⁻³"; }
+function dur(s){ if (s < 120) return s.toFixed(0) + " s"; if (s < 7200) return (s / 60).toFixed(0) + " min"; if (s < 172800) return (s / 3600).toFixed(1) + " h"; return (s / 86400).toFixed(1) + " days"; }
+
+/* --------------------------------------------------------------- run */
+function finish(){
+  var c = ENGINE.circuit();
+  RUN.state = "done"; RUN.phase = "done"; RUN.done = true; RUN.on = true; RUN.front = 1; RUN.lines = 4; RUN.shown = true;
+  RUN.measured = { vd: RUN.tracerT > 0 ? RUN.tracer / 1e3 / RUN.tracerT : c.vd, vdField: c.vdField, option: null };
+  RUN.measured.option = ENGINE.pick(RUN.measured.vd);
+  RUN.tview = RUN.tracer;
+  if (RUN.measured.option === ANS){ RUN.confirmed = true; reveal(); }
+  $("wigroup").hidden = false;
+  narrate(); refreshButtons();
+}
+function tick(dt){
+  if (RUN.state === "running"){
+    var h = dt * RUN.speed, ph = PH[RUN.pi][0], c = cur();
+    RUN.st += h; RUN.clock += h;
+    if (ph === "switch"){ if (RUN.st > 0.4) RUN.on = true; if (RUN.on) RUN.front = Math.min(1, RUN.front + h / 0.6); }
+    if (ph === "count" && RUN.st > 0.6) RUN.lines = Math.max(RUN.lines, RUN.st > 1.7 ? 2 : 1);
+    if (ph === "measure"){ RUN.tracer += c.vd * 1e3 * h; RUN.tracerT += h; if (RUN.st > 1.4) RUN.lines = Math.max(RUN.lines, 3); }
+    if (RUN.st >= PH[RUN.pi][1]){
+      RUN.pi++; RUN.st = 0;
+      if (RUN.pi >= PH.length){ RUN.lines = 4; finish(); return; }
+      RUN.phase = PH[RUN.pi][0]; narrate();
+    }
+    if (ph === "measure" && Math.floor((RUN.st - h) * 2) !== Math.floor(RUN.st * 2)) narrate();
+  }
+  if (RUN.race && RUN.state !== "paused"){
+    var cr = cur(), hr = dt * RUN.speed;
+    RUN.race.t += hr * RUN.tl;                                            /* real seconds elapsed in the time-lapse */
+    if (RUN.race.t >= cr.travel){ RUN.race.t = cr.travel; RUN.race.done = true; }
+    if (Math.floor(RUN.race.t / cr.travel * 20) !== RUN.race.q){ RUN.race.q = Math.floor(RUN.race.t / cr.travel * 20); narrate(); }
+  }
+  if (RUN.sweep && RUN.state !== "paused"){
+    RUN.sweep.t += dt * RUN.speed;
+    var u = Math.min(1, RUN.sweep.t / 3), a = 0.1 + 1.9 * u;
+    setParam("Amm2", Math.round(a * 20) / 20, true, true);
+    if (u >= 1){ RUN.sweep = null; setParam("Amm2", 0.5, true, true); narrate("thickdone"); }
+  }
+}
+function start(){
+  if (RUN.state === "running"){ RUN.state = "paused"; refreshButtons(); narrate(); return; }
+  if (RUN.state === "paused"){ RUN.state = "running"; refreshButtons(); narrate(); return; }
+  resetRun();
+  RUN.p = { Amm2: ENGINE.Q.Amm2, r: ENGINE.Q.r, L: ENGINE.Q.L, z: ENGINE.Q.z }; syncSliders();
+  if (reduced){ RUN.tracer = ENGINE.circuit().vd * 1e3 * PH[3][1]; RUN.tracerT = PH[3][1]; finish(); return; }
+  RUN.state = "running"; RUN.phase = PH[0][0]; RUN.pi = 0; narrate(); refreshButtons();
+}
+function resetRun(){
+  RUN.state = "setup"; RUN.phase = "ready"; RUN.pi = 0; RUN.st = 0; RUN.clock = 0; RUN.on = false; RUN.front = 0; RUN.tracer = 0; RUN.tracerT = 0;
+  RUN.measured = null; RUN.done = false; RUN.confirmed = false; RUN.lines = 0; RUN.race = null; RUN.sweep = null; RUN.shown = false; RUN.tview = 0; RUN.drift = 0;
+  $("wigroup").hidden = true; hideTarget();
+}
+function replay(){ RUN.state = "setup"; start(); }
+function reset(){ resetRun(); RUN.p = { Amm2: ENGINE.Q.Amm2, r: ENGINE.Q.r, L: ENGINE.Q.L, z: ENGINE.Q.z }; syncSliders(); refreshButtons(); narrate(); }
+
+/* exploring: a run in progress is abandoned; a finished run keeps its discovered result */
+function setParam(k, v, keepSweep, quiet){
+  var lim = { Amm2: [0.1, 2], r: [0, 3], L: [10, 200], z: [1, 3] };
+  if (!lim[k]) return;
+  v = parseFloat(v); if (!isFinite(v)) v = ENGINE.Q[k];
+  v = Math.min(lim[k][1], Math.max(lim[k][0], v)); if (k === "z") v = Math.round(v);
+  if (RUN.state === "running" || RUN.state === "paused") resetRun();
+  if (!keepSweep) RUN.sweep = null;
+  RUN.p[k] = v; syncSliders();
+  if (RUN.done){ RUN.phase = RUN.race ? "race" : "explore"; }
+  refreshButtons(); if (!quiet) narrate();
+}
+function syncSliders(){
+  var p = RUN.p;
+  $("in_A").value = String(p.Amm2); $("out_A").textContent = p.Amm2.toFixed(2) + " mm²";
+  $("in_r").value = String(p.r); $("out_r").textContent = p.r.toFixed(1) + " Ω";
+  $("in_L").value = String(p.L); $("out_L").textContent = p.L.toFixed(0) + " m";
+  ["z1", "z2", "z3"].forEach(function(id, i){ $(id).setAttribute("aria-pressed", p.z === i + 1 ? "true" : "false"); });
+}
+function whatIf(w){
+  if (!RUN.done) return;
+  RUN.race = null; RUN.sweep = null;
+  var q = ENGINE.Q;
+  if (w === "r0"){ RUN.p = { Amm2: q.Amm2, r: 0, L: q.L, z: q.z }; syncSliders(); RUN.phase = "explore"; narrate("r0"); }
+  else if (w === "thick"){ RUN.p = { Amm2: 0.1, r: RUN.p.r, L: q.L, z: q.z }; syncSliders(); RUN.sweep = { t: 0 }; RUN.phase = "explore"; narrate("thick"); }
+  else if (w === "race"){ RUN.p = { Amm2: q.Amm2, r: q.r, L: q.L, z: q.z }; syncSliders(); RUN.race = { t: 0, q: -1, done: false }; RUN.phase = "race"; narrate(); }
+  refreshButtons();
+}
+function setTL(k){ RUN.tl = k; [["tl3", 1000], ["tl4", 10000], ["tl5", 100000]].forEach(function(b){ $(b[0]).setAttribute("aria-pressed", b[1] === k ? "true" : "false"); }); narrate(); }
+function setGuess(id){ RUN.guess = RUN.guess === id ? null : id; ["g1", "g2", "g3"].forEach(function(k){ $(k).setAttribute("aria-pressed", RUN.guess === k ? "true" : "false"); }); narrate(); }
+
+/* ------------------------------------------------------------ the target */
+function reveal(){
+  var t = $("target"), m = RUN.measured;
+  $("ansval").textContent = mm(m.vd) + " mm s⁻¹ → (" + m.option + ")";
+  var lis = document.querySelectorAll("#opts li"), i; for (i = 0; i < lis.length; i++) lis[i].classList.toggle("correct", lis[i].getAttribute("data-o") === m.option);
+  if (!reduced){ t.classList.remove("pulse"); void t.offsetWidth; t.classList.add("pulse"); if (pulseT) clearTimeout(pulseT); pulseT = setTimeout(function(){ t.classList.remove("pulse"); pulseT = null; }, 1600); }
+}
+function hideTarget(){
+  var t = $("target"); if (pulseT){ clearTimeout(pulseT); pulseT = null; } t.classList.remove("pulse"); $("ansval").textContent = "";
+  var lis = document.querySelectorAll("#opts li"), i; for (i = 0; i < lis.length; i++) lis[i].classList.remove("correct");
+}
+
+/* ------------------------------------------------------------ words */
+function narrate(what){
+  var t, c = cur(), ph = RUN.phase;
+  if (ph === "ready") t = "Ready. A battery with a 1 Ω internal resistance drives a 100 m wire. How fast do its electrons move? Press START."
+    + (RUN.p.Amm2 !== ENGINE.Q.Amm2 || RUN.p.r !== ENGINE.Q.r || RUN.p.L !== ENGINE.Q.L || RUN.p.z !== ENGINE.Q.z ? " (START runs the question's own values.)" : "");
+  else if (ph === "switch") t = RUN.on ? "Switch closed: the field is set up along the whole wire almost at once, and the ammeter reads " + sig(c.I, 3) + " A straight away. No electron had to travel from the battery first." : "Closing the switch …";
+  else if (ph === "zoom") t = "Zooming into the wire: fixed metal ions, and free electrons darting about at random.";
+  else if (ph === "count") t = "Current is charge crossing a section per second: " + sci(c.rate, 2) + " electrons cross every second. First R = L/(σA), then I = ε/(R + r).";
+  else if (ph === "measure") t = "Follow the yellow tracer against the 1 mm scale (real speed): it has moved " + RUN.tracer.toFixed(2) + " mm in " + RUN.tracerT.toFixed(1) + " s. The zig-zag averages to nothing; the slow creep is the drift.";
+  else if (ph === "done") t = "Measured: v_d = " + mm(RUN.measured.vd) + " mm s⁻¹ - option (" + (RUN.measured.option || "none") + "). An electron would need " + dur(ENGINE.circuit().travel) + " to travel the 100 m wire. "
+    + (RUN.guess ? "Your guess was “" + GUESS[RUN.guess] + "”" + (RUN.guess === "g3" ? " - right." : " - the tracer says otherwise.") + " " : "") + "Now try What if… below.";
+  else if (ph === "race"){
+    var rc = RUN.race;
+    t = rc && rc.done ? "Race over: the field crossed 100 m in about a microsecond; the electron needed " + dur(c.travel) + " of real time (time-lapse ×" + RUN.tl.toLocaleString("en-US") + ")."
+      : "Race: the field reached the far end in about a microsecond. The electron has drifted " + (rc ? (rc.t * c.vd).toFixed(2) : "0") + " m in " + dur(rc ? rc.t : 0) + " of real time (shown at ×" + RUN.tl.toLocaleString("en-US") + ").";
+  }
+  else {
+    if (what === "r0") t = "With r = 0 the wire gets the full 2 V: I = " + sig(c.I, 3) + " A and v_d = " + mm(c.vd) + " mm s⁻¹. That matches no option - the 1 Ω inside the battery matters.";
+    else if (what === "thick") t = "Sweeping the cross-section from 0.1 to 2 mm²: watch the point on the graph. More area means more current, but not faster electrons.";
+    else if (what === "thickdone") t = "With r = 1 Ω, v_d falls as the wire thickens. Set r = 0 and repeat: the line is flat, because v_d = σE/(ne) and E = ε/L does not depend on A.";
+    else t = "A = " + RUN.p.Amm2.toFixed(2) + " mm², r = " + RUN.p.r.toFixed(1) + " Ω, L = " + RUN.p.L + " m, " + RUN.p.z + " free e⁻ per atom: R = " + sig(c.R, 3) + " Ω, I = " + sig(c.I, 3) + " A, v_d = " + mm(c.vd) + " mm s⁻¹.";
+  }
+  if (RUN.state === "paused") t = "Paused. " + t;
+  $("narr").textContent = t;
+}
+function refreshButtons(){ $("gobtn").textContent = RUN.state === "running" ? "❚❚ PAUSE" : RUN.state === "paused" ? "▶ RESUME" : RUN.state === "done" ? "▶ RUN AGAIN" : "▶ START EXPERIMENT"; }
+
+/* ------------------------------------------------------------ drawing helpers */
+var FONT = "ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif";
+function label(s, x, y, px, col, align, weight){
+  if (px < minPx) minPx = px;
+  g.font = (weight || "700") + " " + Math.round(px) + "px " + FONT;
+  g.fillStyle = col || "#e8f0ff"; g.textAlign = align || "left"; g.textBaseline = "alphabetic"; g.fillText(s, x, y);
+}
+function tw(s, px, weight){ g.font = (weight || "700") + " " + Math.round(px) + "px " + FONT; return g.measureText(s).width; }
+function fit(s, px, maxW, weight){ var w = tw(s, px, weight); return w > maxW ? Math.max(px * maxW / w, 0) : px; }
+function wrapLabel(s, x, y, px, maxW, col, weight, step){
+  var min = L.phone ? 25 : 13;
+  if (tw(s, px, weight) <= maxW){ label(s, x, y, px, col, "left", weight); return y; }
+  if (fit(s, px, maxW, weight) >= min){ label(s, x, y, fit(s, px, maxW, weight), col, "left", weight); return y; }
+  var cut = s.indexOf(" = ", s.indexOf(" = ") + 3), a, b;
+  if (cut < 0 || tw(s.slice(0, cut), px, weight) > maxW){ cut = s.lastIndexOf(" ", Math.floor(s.length * maxW / tw(s, px, weight))); }
+  a = s.slice(0, cut); b = s.slice(cut).replace(/^ /, "");
+  label(a, x, y, Math.max(min, fit(a, px, maxW, weight)), col, "left", weight);
+  label(b, x + 12, y + step, Math.max(min, fit(b, px, maxW - 12, weight)), col, "left", weight);
+  return y + step;
+}
+function backed(s, x, y, px, col, align){
+  var w = tw(s, px, "800"), x0 = align === "right" ? x - w : align === "center" ? x - w / 2 : x;
+  g.fillStyle = "rgba(6,10,24,.8)"; roundRect(x0 - 6, y - px * 0.95, w + 12, px * 1.3, 6); g.fill();
+  label(s, x, y, px, col, align, "800");
+}
+function roundRect(x, y, w, h, r){ g.beginPath(); g.moveTo(x + r, y); g.lineTo(x + w - r, y); g.quadraticCurveTo(x + w, y, x + w, y + r); g.lineTo(x + w, y + h - r); g.quadraticCurveTo(x + w, y + h, x + w - r, y + h); g.lineTo(x + r, y + h); g.quadraticCurveTo(x, y + h, x, y + h - r); g.lineTo(x, y + r); g.quadraticCurveTo(x, y, x + r, y); g.closePath(); }
+function panel(x, y, w, h){ roundRect(x, y, w, h, 14); g.fillStyle = "rgba(10,16,32,.86)"; g.fill(); g.strokeStyle = "rgba(140,180,255,.3)"; g.lineWidth = 1.5; g.stroke(); }
+function arrow(x0, y0, x1, y1, col, w){ var a = Math.atan2(y1 - y0, x1 - x0); g.strokeStyle = col; g.fillStyle = col; g.lineWidth = w || 3; g.beginPath(); g.moveTo(x0, y0); g.lineTo(x1, y1); g.stroke();
+  g.beginPath(); g.moveTo(x1, y1); g.lineTo(x1 - 12 * Math.cos(a - 0.45), y1 - 12 * Math.sin(a - 0.45)); g.lineTo(x1 - 12 * Math.cos(a + 0.45), y1 - 12 * Math.sin(a + 0.45)); g.closePath(); g.fill(); }
+function meter(x, y, rad, letter, frac, text, on){
+  var grd = g.createRadialGradient(x - rad * 0.3, y - rad * 0.3, 2, x, y, rad); grd.addColorStop(0, "#2c3a5e"); grd.addColorStop(1, "#111a30");
+  g.fillStyle = grd; g.beginPath(); g.arc(x, y, rad, 0, 7); g.fill(); g.strokeStyle = "rgba(170,200,255,.7)"; g.lineWidth = 2; g.stroke();
+  var a = -Math.PI * 0.85 + Math.PI * 0.7 * Math.max(0, Math.min(1, frac));
+  g.strokeStyle = on ? "#ffd27a" : "#8fa6cf"; g.lineWidth = 3; g.beginPath(); g.moveTo(x, y + rad * 0.25); g.lineTo(x + rad * 0.75 * Math.cos(a), y + rad * 0.25 + rad * 0.75 * Math.sin(a)); g.stroke();
+  label(letter, x, y + rad * 0.62, L.fs - (L.phone ? 0 : 1), "#cfe0ff", "center", "800");
+  backed(text, x, y - rad - 10, L.fs - (L.phone ? 0 : 2), on ? "#ffffff" : "#8fa6cf", "center");
+}
+
+/* ------------------------------------------------------------ readouts */
+function drawReadouts(){
+  var r = L.ro, c = cur(), on = RUN.on || RUN.done || RUN.phase === "explore", seen = RUN.lines >= 3 || RUN.done, vdSeen = RUN.lines >= 4 || RUN.done, i, px, py;
+  var rows = [["Current I (ammeter)", on ? sig(c.I, 3) + " A" : "switch open"], ["Across the wire / e.m.f.", on ? sig(c.V, 3) + " V of " + c.p.eps + " V" : "switch open"],
+    ["Free electrons n", seen ? sci(c.n, 2) + " m⁻³" : "not measured yet"], ["Drift velocity vd", vdSeen ? mm(c.vd) + " mm/s" : "not measured yet"]];
+  panel(r.x, r.y, r.w, r.h);
+  for (i = 0; i < 4; i++){
+    if (L.phone){ px = r.x + 18 + (i % 2) * 348; py = r.y + 40 + (i < 2 ? 0 : 1) * 96; } else { px = r.x + 20 + i * 290; py = r.y + 34; }
+    label(rows[i][0], px, py, L.fs - (L.phone ? 0 : 1), "#8fa6cf", "left", "700");
+    var big = fit(rows[i][1], L.big - (L.phone ? 3 : 1), L.phone ? 320 : 270, "800");
+    label(rows[i][1], px, py + (L.phone ? 42 : 38), Math.max(big, L.phone ? 25 : 14), i === 3 && vdSeen ? "#9ff0c8" : (/not|open/.test(rows[i][1]) ? "#8fa6cf" : "#ffffff"), "left", "800");
+  }
+}
+
+/* ------------------------------------------------------------ the scene: circuit above, magnifier below */
+function drawScene(){
+  var S = L.sc, c = cur(), ph = L.phone, on = RUN.on || RUN.done || RUN.phase === "explore" || RUN.phase === "race";
+  var front = RUN.done || RUN.phase === "explore" || RUN.phase === "race" ? 1 : RUN.front;
+  g.save(); roundRect(S.x, S.y, S.w, S.h, 14); g.clip();
+  var bg = g.createLinearGradient(0, S.y, 0, S.y + S.h); bg.addColorStop(0, "#0d1730"); bg.addColorStop(1, "#060a14"); g.fillStyle = bg; g.fillRect(S.x, S.y, S.w, S.h);
+  var cy = S.y + (ph ? 150 : 120), lx = S.x + (ph ? 40 : 34), rx = S.x + S.w - (ph ? 40 : 34), ty = S.y + (ph ? 58 : 50), by = cy + (ph ? 110 : 96);
+  /* the loop of wire: top (switch, ammeter), right (the coil), bottom, left (battery) */
+  g.strokeStyle = "#c98a3a"; g.lineWidth = 5; g.lineJoin = "round"; g.beginPath(); g.moveTo(lx, cy); g.lineTo(lx, ty); g.lineTo(rx, ty); g.lineTo(rx, by); g.lineTo(lx, by); g.lineTo(lx, cy + 34); g.stroke();
+  /* the field front running round the loop (conventional current: + terminal at the top, clockwise) */
+  if (on){
+    var per = 2 * (rx - lx) + 2 * (by - ty), lim = front * per, k, s, pt;
+    for (s = 16; s < lim; s += 46){
+      pt = along(s, lx, rx, ty, by); var nx = along(s + 14, lx, rx, ty, by);
+      arrow(pt[0], pt[1], nx[0], nx[1], "rgba(255,210,122," + (front < 1 ? "0.95" : "0.6") + ")", 2.5);
+    }
+  }
+  /* battery with its internal resistance in a glass cutaway */
+  var bx = lx - (ph ? 28 : 24), bw = ph ? 56 : 48, bh = ph ? 92 : 80, byy = cy - bh / 2 + 6;
+  g.fillStyle = "#1c2742"; roundRect(bx, byy, bw, bh, 8); g.fill(); g.strokeStyle = "rgba(170,200,255,.6)"; g.lineWidth = 2; g.stroke();
+  var glow = on ? Math.min(1, c.I * c.p.r / c.p.eps * 1.6) : 0;
+  g.fillStyle = "rgba(255,120,80," + (0.15 + 0.6 * glow).toFixed(2) + ")"; roundRect(bx + 8, byy + bh * 0.46, bw - 16, bh * 0.4, 5); g.fill();
+  g.strokeStyle = "#ffb37a"; g.lineWidth = 2; g.beginPath(); var zx = bx + 10, zy = byy + bh * 0.66; g.moveTo(zx, zy); for (k = 0; k < 6; k++) g.lineTo(zx + (k + 0.5) * (bw - 20) / 6, zy + (k % 2 ? 6 : -6)); g.lineTo(bx + bw - 10, zy); g.stroke();
+  label("+", bx + bw / 2, byy + 22, L.fs + 2, "#ffd27a", "center", "900");
+  label("ε " + c.p.eps + " V", bx + bw + 10, byy + 20, L.fs - (ph ? 0 : 2), "#ffd27a", "left", "800");
+  label("r " + c.p.r.toFixed(1) + " Ω", bx + bw + 10, byy + bh - 6, L.fs - (ph ? 0 : 2), "#ffb37a", "left", "800");
+  /* switch */
+  var swx = lx + (rx - lx) * 0.22;
+  g.fillStyle = "#06101f"; g.fillRect(swx - 22, ty - 10, 44, 20);
+  g.strokeStyle = "#e8f0ff"; g.lineWidth = 5; g.beginPath(); g.moveTo(swx - 22, ty); g.lineTo(swx + 22, on ? ty : ty - 24); g.stroke();
+  label(on ? "switch closed" : "switch open", swx, ty + (ph ? 34 : 28), L.fs - (ph ? 0 : 2), on ? "#9ff0c8" : "#8fa6cf", "center", "700");
+  /* ammeter on top, the coil on the right with the voltmeter across it */
+  meter(lx + (rx - lx) * 0.55, ty, ph ? 30 : 26, "A", on ? c.I / 2 : 0, on ? sig(c.I, 3) + " A" : "0 A", on);
+  var cx0 = rx, coilTop = ty + 26, coilBot = by - 20, turns = Math.max(3, Math.round(c.p.L / 20)), hw = ph ? 34 : 30;
+  g.fillStyle = "#06101f"; g.fillRect(cx0 - hw - 6, coilTop - 4, 2 * hw + 12, coilBot - coilTop + 8);
+  for (k = 0; k < turns; k++){ var yy = coilTop + (k + 0.5) * (coilBot - coilTop) / turns; g.strokeStyle = "#e0a050"; g.lineWidth = 4; g.beginPath(); g.ellipse(cx0, yy, hw, 6, 0, 0, 7); g.stroke(); }
+  label("wire L = " + c.p.L + " m", cx0 - hw - 12, coilTop + 18, L.fs - (ph ? 0 : 2), "#e0a050", "right", "800");
+  label("A = " + c.p.Amm2.toFixed(2) + " mm²", cx0 - hw - 12, coilTop + 18 + L.fs + 4, L.fs - (ph ? 0 : 2), "#e0a050", "right", "800");
+  meter(lx + (rx - lx) * 0.55, by, ph ? 30 : 26, "V", on ? c.V / c.p.eps : 0, on ? "across wire " + sig(c.V, 3) + " V" : "0 V", on);
+  /* the magnifier into the coil */
+  var mx = S.x + 14, my = by + (ph ? 52 : 44), mw = S.w - 28, mh = S.y + S.h - my - (ph ? 60 : 44);
+  g.strokeStyle = "rgba(200,220,255,.35)"; g.lineWidth = 2; g.setLineDash([6, 6]); g.beginPath(); g.moveTo(cx0 - hw, coilBot); g.lineTo(mx + mw * 0.7, my); g.moveTo(cx0 + hw, coilBot); g.lineTo(mx + mw, my + 8); g.stroke(); g.setLineDash([]);
+  var showMag = RUN.done || RUN.phase === "explore" || RUN.phase === "race" || ["zoom", "count", "measure"].indexOf(RUN.phase) >= 0;
+  var open = RUN.phase === "zoom" ? Math.min(1, RUN.st / 0.8) : showMag ? 1 : 0;
+  if (open > 0.05) drawMagnifier(mx, my + (1 - open) * mh * 0.5, mw, mh * open, c, on);
+  else { g.fillStyle = "rgba(20,30,55,.6)"; roundRect(mx, my, mw, mh, 14); g.fill(); label("the magnifier opens into the wire after the switch closes", mx + mw / 2, my + mh / 2, L.fs - (ph ? 0 : 1), "#6f84aa", "center", "700"); }
+  backed(ph ? "not to scale: particles huge, random motion slowed" : "not to scale: ions and electrons drawn huge; random motion slowed", S.x + 14, S.y + S.h - (ph ? 18 : 14), L.fs - (ph ? 0 : 3), "#8fa6cf", "left");
+  g.restore();
+}
+function along(s, lx, rx, ty, by){
+  var W = rx - lx, H = by - ty, P = 2 * W + 2 * H; s = ((s % P) + P) % P;
+  if (s < W) return [lx + s, ty]; s -= W; if (s < H) return [rx, ty + s]; s -= H; if (s < W) return [rx - s, by]; s -= W; return [lx, by - s];
+}
+function drawMagnifier(x, y, w, h, c, on){
+  var ph = L.phone;
+  g.save(); roundRect(x, y, w, h, 16); g.clip();
+  var grd = g.createLinearGradient(0, y, 0, y + h); grd.addColorStop(0, "#3a2a18"); grd.addColorStop(0.5, "#6b4a26"); grd.addColorStop(1, "#2c1f11"); g.fillStyle = grd; g.fillRect(x, y, w, h);
+  g.fillStyle = "rgba(255,230,190,.08)"; g.fillRect(x, y + h * 0.12, w, h * 0.12);
+  var k, e;
+  /* the 1 mm field of view: px per mm */
+  var ppm = w * 0.8, drift = on ? c.vd * 1e3 * ppm : 0;                                      /* px per real second */
+  for (k = 0; k < IONS.length; k++){ e = IONS[k]; var ox = x + e.x * w + (reduced ? 0 : 2 * Math.sin(RUN.clock * 9 + e.ph)), oy = y + 18 + e.y * (h - 36);
+    g.fillStyle = "rgba(255,170,90,.55)"; g.beginPath(); g.arc(ox, oy, ph ? 11 : 9, 0, 7); g.fill(); label("+", ox, oy + 6, L.fs - (ph ? 0 : 3), "#3a2510", "center", "900"); }
+  /* free electrons: random motion (shown slowed) plus the real drift, against the current */
+  for (k = 0; k < ELS.length; k++){ e = ELS[k];
+    var ex = x + (((e.x * w - (on ? RUN.drift : 0) + 0.5 * w * Math.sin(RUN.clock * (1.7 + e.vx) + k)) % w) + w) % w;
+    var ey = y + 12 + ((e.y * (h - 24) + 0.3 * h * Math.sin(RUN.clock * (1.3 + e.vy) + 2 * k)) % (h - 24) + (h - 24)) % (h - 24);
+    g.fillStyle = "rgba(125,196,255,.95)"; g.beginPath(); g.arc(ex, ey, ph ? 6 : 5, 0, 7); g.fill(); }
+  /* the counting gate: a glowing section of the wire */
+  var gx = x + w * 0.5;
+  g.strokeStyle = "rgba(93,255,160," + (["count", "measure"].indexOf(RUN.phase) >= 0 || RUN.done ? "0.9" : "0.35") + ")"; g.lineWidth = 4; g.beginPath(); g.ellipse(gx, y + h / 2, 14, Math.max(1, h / 2 - 6), 0, 0, 7); g.stroke();
+  if (on) backed(sci(c.rate, 2) + " e⁻ cross per second", gx, y + (ph ? 34 : 28), L.fs - (ph ? 0 : 2), "#9ff0c8", "center");
+  /* the tracer: real drift against the 1 mm scale */
+  var tv = RUN.done || RUN.phase === "explore" || RUN.phase === "race" ? RUN.tview : RUN.tracer, tx = x + w * 0.88 - (tv * ppm) % (w * 0.8);
+  if (tv > 0 || RUN.done){ g.strokeStyle = "rgba(255,210,122,.7)"; g.lineWidth = 3; g.beginPath(); g.moveTo(x + w * 0.88, y + h * 0.66); g.lineTo(tx, y + h * 0.66); g.stroke(); }
+  var jx = tx + (reduced ? 0 : 7 * Math.sin(RUN.clock * 23)), jy = y + h * 0.66 + (reduced ? 0 : 6 * Math.cos(RUN.clock * 19));
+  g.fillStyle = "#ffd27a"; g.beginPath(); g.arc(jx, jy, ph ? 10 : 8, 0, 7); g.fill(); g.strokeStyle = "#fff"; g.lineWidth = 2; g.stroke();
+  /* scale bar and directions */
+  var sx = x + w * 0.08, sy = y + h - (ph ? 24 : 18);
+  g.strokeStyle = "#ffffff"; g.lineWidth = 3; g.beginPath(); g.moveTo(sx, sy); g.lineTo(sx + ppm, sy); g.moveTo(sx, sy - 6); g.lineTo(sx, sy + 6); g.moveTo(sx + ppm, sy - 6); g.lineTo(sx + ppm, sy + 6); g.stroke();
+  backed(ph ? "1 mm (real)" : "1 mm (real scale for the drift)", ph ? sx + 10 : sx + ppm / 2, sy - 10, L.fs - (ph ? 0 : 2), "#ffffff", ph ? "left" : "center");
+  if (on){
+    arrow(x + w - 150, y + h * 0.3, x + w - 40, y + h * 0.3, "#ffd27a", 3); backed("E, I", x + w - 160, y + h * 0.3 + 6, L.fs - (ph ? 0 : 2), "#ffd27a", "right");
+    var lt = "← electrons drift " + mm(c.vd) + " mm/s";
+    backed(lt, ph ? x + 14 : x + w * 0.5 + 24, ph ? y + h * 0.3 + 6 : y + h * 0.84, L.fs - (ph ? 0 : 2), "#ffd27a", "left");
+  }
+  g.restore();
+  g.strokeStyle = "rgba(200,220,255,.6)"; g.lineWidth = 2; roundRect(x, y, w, h, 16); g.stroke();
+}
+
+/* ------------------------------------------------------------ the panel: given data, the live calculation, the graph, the race */
+function drawPanel(){
+  var P = L.pn, ph = L.phone;
+  panel(P.x, P.y, P.w, P.h);
+  if (RUN.phase === "race") return drawRace(P);
+  if (RUN.done && RUN.phase === "explore") return drawExplore(P);
+  drawLines(P, P.y + (ph ? 40 : 32), RUN.done ? 4 : RUN.lines, false);
+}
+function drawLines(P, y0, nLines, compact){
+  var ph = L.phone, c = cur(), x = P.x + 18, w = P.w - 36, fs = L.fs - (ph ? 0 : 1), gap = compact ? (ph ? 32 : 26) : (ph ? 38 : 34);
+  label(compact ? "THE CALCULATION, LIVE" : "WHERE EVERY NUMBER GOES", x, y0, fs, "#cfe0ff", "left", "800");
+  var steps = [
+    ["A, L, σ → R", "R = L/(σA) = " + c.p.L + " / (" + sci(c.p.sigma, 0) + " × " + fA(c.A) + ")", "R = " + sig(c.R, 3) + " Ω", "#e0a050"],
+    ["ε, r → I", "I = ε/(R + r) = " + c.p.eps + " / (" + sig(c.R, 3) + " + " + c.p.r.toFixed(1) + ")", "I = " + sig(c.I, 3) + " A (wire gets " + sig(c.V, 3) + " V)", "#ffd27a"],
+    ["ρ, M, NA → n", "n = " + (c.p.z > 1 ? c.p.z + " × " : "") + "ρNA/M = " + sci(c.p.rho, 2) + " × " + sci(c.p.NA, 0) + " / (" + fM(c.p.M) + ")", "n = " + sci(c.n, 2) + " m⁻³", "#7cc4ff"],
+    ["I, n, e, A → vd", "vd = I/(neA) = " + sig(c.I, 3) + " / (" + sci(c.n, 2) + " × " + sci(c.p.e, 1) + " × " + fA(c.A) + ")", "vd = " + mm(c.vd) + " mm/s", "#9ff0c8"]];
+  var y = y0 + (ph ? 18 : 14), i;
+  if (compact){
+    for (i = 0; i < 4; i++){ y += ph ? 40 : 30; y = wrapLabel(steps[i][0] + ":   " + steps[i][2], x, y, fs, w, steps[i][3], "800", ph ? 30 : 22); }
+    return y;
+  }
+  for (i = 0; i < 4; i++){
+    var shown = i < nLines;
+    y += gap;
+    label(steps[i][0], x, y, fs, shown ? steps[i][3] : "#5a6c8f", "left", "800");
+    if (shown){
+      y += (ph ? 32 : 24); y = wrapLabel(steps[i][1], x + 10, y, fs - (ph ? 0 : 1), w - 10, "#dfe8ff", "600", ph ? 30 : 22);
+      y += (ph ? 32 : 26); label(steps[i][2], x + 10, y, fs + (ph ? 0 : 1), "#ffffff", "left", "800");
+    } else { y += (ph ? 32 : 24); label("measured later in the run", x + 10, y, fs - (ph ? 0 : 1), "#5a6c8f", "left", "600"); y += ph ? 6 : 6; }
+  }
+  if (nLines >= 4 && !compact){
+    y += gap;
+    var chk = "check: vd = σE/(ne), E = V/L = " + sig(c.E, 3) + " V/m → " + mm(c.vdField) + " mm/s";
+    y = wrapLabel(chk, x, y, fs - (ph ? 0 : 1), w, "#9ff0c8", "700", ph ? 30 : 22);
+    if (RUN.done && RUN.measured && RUN.measured.option){ y += ph ? 40 : 34; label("= option (" + RUN.measured.option + ")   ✓", x, y, L.big, "#7dffb8", "left", "800"); }
+  }
+  return y;
+}
+function drawExplore(P){
+  var ph = L.phone, c = cur(), x0 = P.x + (ph ? 80 : 64), x1 = P.x + P.w - 24, gy0 = P.y + (ph ? 238 : 250), gy1 = P.y + (ph ? 56 : 52), fs = L.fs - (ph ? 0 : 2);
+  label("DRIFT VELOCITY vs CROSS-SECTION", P.x + 18, P.y + (ph ? 36 : 30), L.fs - (ph ? 0 : 1), "#cfe0ff", "left", "800");
+  var other = { L: c.p.L, z: c.p.z }, a = ENGINE.curve(c.p.r, other, 0.1, 2, 60), b = ENGINE.curve(0, other, 0.1, 2, 2), vmax = 0, k;
+  for (k = 0; k < a.length; k++) vmax = Math.max(vmax, a[k][1]); vmax = Math.max(vmax, b[0][1]) * 1.15;
+  var X = function(v){ return x0 + (v - 0.1) / 1.9 * (x1 - x0); }, Y = function(v){ return gy0 - v / vmax * (gy0 - gy1); };
+  g.strokeStyle = "rgba(200,215,240,.6)"; g.lineWidth = 1.5; g.beginPath(); g.moveTo(x0, gy1); g.lineTo(x0, gy0); g.lineTo(x1, gy0); g.stroke();
+  label("0.1", X(0.1), gy0 + (ph ? 32 : 24), fs, "#8fa6cf", "center", "700"); label("2 mm²", X(2), gy0 + (ph ? 32 : 24), fs, "#8fa6cf", "right", "700");
+  label("cross-section A", (x0 + x1) / 2, gy0 + (ph ? 32 : 24), fs, "#8fa6cf", "center", "700");
+  label("vd", x0 - 10, gy1 + 10, fs, "#8fa6cf", "right", "800"); label(mm(vmax), x0 - 8, gy1 + (ph ? 40 : 30), fs, "#8fa6cf", "right", "700"); label("0", x0 - 8, gy0 + 4, fs, "#8fa6cf", "right", "700");
+  g.setLineDash([9, 7]); g.strokeStyle = "#ffb37a"; g.lineWidth = 3; g.beginPath(); g.moveTo(X(0.1), Y(b[0][1])); g.lineTo(X(2), Y(b[2][1])); g.stroke(); g.setLineDash([]);
+  g.strokeStyle = "#7cc4ff"; g.lineWidth = 4; g.beginPath(); for (k = 0; k < a.length; k++) g[k ? "lineTo" : "moveTo"](X(a[k][0]), Y(a[k][1])); g.stroke();
+  backed("ideal battery (r = 0)", X(2) - 6, Y(b[2][1]) - 10, fs, "#ffb37a", "right");
+  backed("this battery (r = " + c.p.r.toFixed(1) + " Ω)", X(1.2), Y(ENGINE.circuit({ Amm2: 1.2, r: c.p.r, L: c.p.L, z: c.p.z }).vd) + (ph ? 34 : 28), fs, "#7cc4ff", "left");
+  var q = ENGINE.circuit();
+  if (c.p.L === q.p.L && c.p.z === q.p.z){ g.strokeStyle = "#9ff0c8"; g.lineWidth = 3; g.beginPath(); g.arc(X(q.p.Amm2), Y(q.vd), 9, 0, 7); g.stroke(); backed("the question", X(q.p.Amm2) + 14, Y(q.vd) - 12, fs, "#9ff0c8", "left"); }
+  g.fillStyle = "#ffffff"; g.beginPath(); g.arc(X(c.p.Amm2), Y(c.vd), 7, 0, 7); g.fill();
+  drawLines(P, P.y + (ph ? 290 : 300), 4, true);
+}
+function drawRace(P){
+  var ph = L.phone, c = cur(), rc = RUN.race || { t: 0 }, x0 = P.x + 30, x1 = P.x + P.w - 40, fs = L.fs - (ph ? 0 : 1), y;
+  label("THE RACE ALONG " + c.p.L + " m OF WIRE", P.x + 18, P.y + (ph ? 36 : 30), fs, "#cfe0ff", "left", "800");
+  y = P.y + (ph ? 110 : 96);
+  label("the field (signal)", x0, y - 18, fs, "#ffd27a", "left", "800");
+  g.strokeStyle = "rgba(200,215,240,.4)"; g.lineWidth = 10; g.beginPath(); g.moveTo(x0, y); g.lineTo(x1, y); g.stroke();
+  g.strokeStyle = "#ffd27a"; g.beginPath(); g.moveTo(x0, y); g.lineTo(x1, y); g.stroke();
+  label("arrived in about a microsecond", x1, y + (ph ? 36 : 30), fs - (ph ? 0 : 1), "#ffd27a", "right", "700");
+  y += ph ? 120 : 100;
+  var u = Math.min(1, rc.t / c.travel);
+  label("one drifting electron", x0, y - 18, fs, "#7cc4ff", "left", "800");
+  g.strokeStyle = "rgba(200,215,240,.4)"; g.lineWidth = 10; g.beginPath(); g.moveTo(x0, y); g.lineTo(x1, y); g.stroke();
+  g.strokeStyle = "#7cc4ff"; g.beginPath(); g.moveTo(x0, y); g.lineTo(x0 + (x1 - x0) * u, y); g.stroke();
+  g.fillStyle = "#ffd27a"; g.beginPath(); g.arc(x0 + (x1 - x0) * u, y, 9, 0, 7); g.fill();
+  label((rc.t * c.vd).toFixed(rc.t * c.vd < 10 ? 2 : 1) + " m of " + c.p.L + " m", x1, y + (ph ? 36 : 30), fs, "#7cc4ff", "right", "700");
+  y += ph ? 96 : 84;
+  label("real time elapsed: " + dur(rc.t), x0, y, L.big - 2, "#ffffff", "left", "800");
+  y += ph ? 44 : 36;
+  y = wrapLabel("time-lapse ×" + RUN.tl.toLocaleString("en-US") + " (the drift speed itself is real: " + mm(c.vd) + " mm/s)", x0, y, fs - (ph ? 0 : 1), x1 - x0, "#8fa6cf", "700", ph ? 30 : 22);
+  y += ph ? 44 : 36;
+  label("to finish: " + dur(c.travel) + " of real time", x0, y, fs, rc.done ? "#9ff0c8" : "#cfe0ff", "left", "800");
+}
+function draw(){
+  minPx = 999;
+  L = layout();
+  if (cv.width !== L.W || cv.height !== L.H){ cv.width = L.W; cv.height = L.H; }
+  var bg = g.createLinearGradient(0, 0, 0, L.H); bg.addColorStop(0, "#0b1226"); bg.addColorStop(1, "#04060c"); g.fillStyle = bg; g.fillRect(0, 0, L.W, L.H);
+  drawReadouts(); drawScene(); drawPanel();
+}
+
+/* ------------------------------------------------------------ controls */
+function setSpeed(k){ RUN.speed = k; $("sp1").setAttribute("aria-pressed", k === 1 ? "true" : "false"); $("sp2").setAttribute("aria-pressed", k === 0.5 ? "true" : "false"); }
+$("gobtn").addEventListener("click", start);
+$("replaybtn").addEventListener("click", replay);
+$("resetbtn").addEventListener("click", reset);
+$("sp1").addEventListener("click", function(){ setSpeed(1); });
+$("sp2").addEventListener("click", function(){ setSpeed(0.5); });
+$("in_A").addEventListener("input", function(){ setParam("Amm2", this.value); });
+$("in_r").addEventListener("input", function(){ setParam("r", this.value); });
+$("in_L").addEventListener("input", function(){ setParam("L", this.value); });
+["z1", "z2", "z3"].forEach(function(id, i){ $(id).addEventListener("click", function(){ setParam("z", i + 1); }); });
+["g1", "g2", "g3"].forEach(function(id){ $(id).addEventListener("click", function(){ setGuess(id); }); });
+$("wi_r0").addEventListener("click", function(){ whatIf("r0"); });
+$("wi_thick").addEventListener("click", function(){ whatIf("thick"); });
+$("wi_race").addEventListener("click", function(){ whatIf("race"); });
+$("tl3").addEventListener("click", function(){ setTL(1000); });
+$("tl4").addEventListener("click", function(){ setTL(10000); });
+$("tl5").addEventListener("click", function(){ setTL(100000); });
+$("classbtn").addEventListener("click", function(){
+  var on = document.body.classList.toggle("classroom"); this.setAttribute("aria-pressed", on ? "true" : "false");
+  this.textContent = on ? "Exit classroom" : "Classroom";
+});
+$("themebtn").addEventListener("click", function(){
+  var r = document.documentElement, dark = r.getAttribute("data-theme") === "dark" || (!r.getAttribute("data-theme") && window.matchMedia && matchMedia("(prefers-color-scheme: dark)").matches);
+  r.setAttribute("data-theme", dark ? "light" : "dark");
+});
+
+var lastT = null;
+function loop(ts){
+  if (lastT === null) lastT = ts;
+  var dt = Math.min(0.05, Math.max(0, (ts - lastT) / 1000)); lastT = ts;
+  if (!reduced && RUN.state !== "paused"){ RUN.clock += dt * RUN.speed * (RUN.state === "running" ? 0 : 1); }
+  var moving = (RUN.on || RUN.done) && RUN.state !== "paused" && !reduced;
+  RUN.drift = moving ? (RUN.drift || 0) + cur().vd * 1e3 * dt * RUN.speed * (L.sc.w - 28) * 0.8 : (RUN.on || RUN.done ? RUN.drift || 0 : 0);
+  if (RUN.done && moving) RUN.tview += cur().vd * 1e3 * dt * RUN.speed;
+  tick(dt); draw();
+  requestAnimationFrame(loop);
+}
+
+window.PX = {
+  ENGINE: ENGINE, QRUN: QRUN, ANS: ANS, RUN: RUN,
+  answer: function(){ return ANS; },
+  minLabelPx: function(){ draw(); return minPx; },
+  start: start, replay: replay, reset: reset, setSpeed: setSpeed, speed: function(k){ RUN.speed = k; },
+  set: setParam, whatIf: whatIf, setTL: setTL,
+  state: function(){ var c = cur(); return { state: RUN.state, phase: RUN.phase, on: RUN.on, lines: RUN.lines, p: { Amm2: RUN.p.Amm2, r: RUN.p.r, L: RUN.p.L, z: RUN.p.z }, tracer: RUN.tracer, tracerT: RUN.tracerT,
+    measured: RUN.measured || null, done: RUN.done, confirmed: RUN.confirmed, R: c.R, I: c.I, V: c.V, E: c.E, n: c.n, vd: c.vd, vdField: c.vdField, rate: c.rate, travel: c.travel,
+    race: RUN.race ? { t: RUN.race.t, done: RUN.race.done } : null, tl: RUN.tl, guess: RUN.guess }; }
+};
+
+$("solans").textContent = ANS ? "(" + ANS + ")" : "";
+syncSliders(); refreshButtons(); narrate(); draw();
+window.addEventListener("resize", function(){ draw(); });
+requestAnimationFrame(loop);
+})();
+</script>
+</body>
+</html>
