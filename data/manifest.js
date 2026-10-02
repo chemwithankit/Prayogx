@@ -40,13 +40,13 @@ window.SIM_MANIFEST = {
     "idPolicy": "Simulation IDs are permanent. A redo or fix edits the existing folder in place and bumps `updatedAt` / `revision`; it never mints a new ID."
   },
   "counts": {
-    "total": 53,
+    "total": 54,
     "byYear": {
-      "2026": 53
+      "2026": 54
     },
     "bySubject": {
       "Chemistry": 33,
-      "Physics": 20
+      "Physics": 21
     },
     "byChapter": {
       "Thermodynamics": 5,
@@ -61,7 +61,7 @@ window.SIM_MANIFEST = {
       "Hydrocarbons": 1,
       "System of Particles and Rotational Motion": 3,
       "Electromagnetic Induction": 2,
-      "Ray Optics and Optical Instruments": 2,
+      "Ray Optics and Optical Instruments": 3,
       "Atoms": 1,
       "Motion in a Plane": 1,
       "Electromagnetic Waves": 1,
@@ -7023,6 +7023,114 @@ window.SIM_MANIFEST = {
       "source": {
         "file": "papers/adv_2026_paper_2.pdf",
         "page": 11
+      },
+      "status": "script_verified",
+      "createdAt": "2026-10-02",
+      "updatedAt": "2026-10-02"
+    },
+    {
+      "id": "ADV-2026-P2-PHY-Q05",
+      "slug": "adv-2026-p2-phy-q05",
+      "revision": 1,
+      "path": "simulations/2026/paper-2/physics/adv-2026-p2-phy-q05/index.html",
+      "folder": "simulations/2026/paper-2/physics/adv-2026-p2-phy-q05/",
+      "title": "Two isosceles prisms linked by a mirror - minimum deviation conditions and the angle between the apex bisectors",
+      "shortTitle": "Twin-prism mirror bench",
+      "summary": "A ray passes through two isosceles prisms whose facing sides are perpendicular to a mirror, so i2 = e1. Testing each statement by exact ray tracing: (A) true, (B) false, (C) true (theta is between the apex bisectors, (A1 + A2)/2), (D) true - answer (A), (C), (D).",
+      "exam": "JEE Advanced",
+      "year": 2026,
+      "paper": "Paper 2",
+      "paperNumber": 2,
+      "subject": "Physics",
+      "branch": "Optics / Ray Optics",
+      "questionNumber": 5,
+      "section": "Section 2",
+      "questionType": "One or more correct options",
+      "marking": {
+        "full": 4,
+        "partial": 3,
+        "zero": 0,
+        "negative": -1
+      },
+      "chapter": "Ray Optics and Optical Instruments",
+      "topic": "Two isosceles prisms linked by a plane mirror - minimum deviation and the angle between the apex bisectors",
+      "subtopics": [
+        "Refraction through a prism: deviation i + e - A",
+        "Minimum deviation: the symmetric path, sin i = n sin(A/2)",
+        "Plane-mirror reflection between faces perpendicular to the mirror: i2 = e1",
+        "Thin prisms: deviation (n - 1)A",
+        "Reading a ray diagram: the bisector of an isosceles prism's apex angle"
+      ],
+      "concepts": [
+        "Faces a1b1 and a2b2 are both perpendicular to the mirror, so the reflection carries the emergence angle of prism 1 into the incidence angle of prism 2: i2 = e1",
+        "(D) true: prism 1 at minimum deviation gives sin e1 = n1 sin(A1/2), hence sin i2 = n1 sin(A1/2) whatever prism 2 is",
+        "(A) true: both at minimum deviation requires n1 sin(A1/2) = n2 sin(A2/2), i.e. n2/n1 = sin(A1/2)/sin(A2/2)",
+        "(B) false: sin i1 = n2 sin(A2/2) would need prism 1 symmetric as well - a counter-example is found",
+        "(C) true: the dashed lines are the apex-angle bisectors (they meet the bases at right angles), so theta = (A1 + A2)/2 = dm1/(2(n1 - 1)) + dm2/(2(n2 - 1)) for thin prisms",
+        "Trap: reading theta between the extended faces gives A1 + A2 and wrongly rejects (C)"
+      ],
+      "formulas": [
+        "deviation = i + e - A",
+        "minimum deviation: sin i = n sin(A/2), r = A/2",
+        "i2 = e1 (mirror perpendicular to both faces)",
+        "thin prism: dm = (n - 1)A",
+        "theta = (A1 + A2)/2"
+      ],
+      "tags": [
+        "ray optics",
+        "prism",
+        "minimum deviation",
+        "plane mirror",
+        "reflection",
+        "refraction",
+        "snell's law",
+        "thin prism",
+        "isosceles prism",
+        "multiple correct",
+        "physics"
+      ],
+      "difficulty": "Moderate-Hard",
+      "estimatedMinutes": 6,
+      "answer": "(A), (C), (D)",
+      "answerValue": "A, C and D true; B false",
+      "answerUnit": "",
+      "derivedQuantities": {
+        "i2_equals_e1": true,
+        "bench_A1_deg": 60,
+        "bench_n1": 1.5,
+        "bench_A2_deg": 50,
+        "n2_both_min_dev": 1.7747,
+        "thin_A1_deg": 5,
+        "thin_A2_deg": 4.5,
+        "theta_thin_deg": 4.75,
+        "formula_thin_deg": 4.756,
+        "face_angle_thin_deg": 9.5
+      },
+      "verification": {
+        "status": "verified",
+        "methods": [
+          "MathonGo solution (their Q23) read first as the conceptual reference; it gives (A),(D), reading theta as the angle between the faces",
+          "Independent solve: i2 = e1; (D) and (A) true, (B) false; first reading of theta as A1 + A2 rejected (C) - investigated after the key disagreed: the figure's dashed lines meet the bases at right angles, so they are the apex bisectors and theta = (A1 + A2)/2; (C) true",
+          "sympy: the minimum-deviation condition sin i = n sin(A/2) with the symmetric inside angle A/2",
+          "Independent numpy vector ray trace (Snell at four faces, mirror reflection) on 300 random prism pairs: (D) holds in all, (B) fails in almost all, (A) holds in all pairs where both can be at minimum deviation",
+          "Thin-prism limit: the formula matches theta within 0.2 % at 5 deg and the error vanishes as A -> 0; the face angle is exactly twice the formula",
+          "The page engine extracted and run in Node: answer (A), (C), (D), its trace equal to the independent trace (1e-9 deg), the same answer from four other starting prism pairs",
+          "Official final answer key (jeeadv.ac.in, JEE Advanced 2026 Paper 2, published 2026-06-01; read last): Q.5 -> ACD"
+        ],
+        "verifiedOn": "2026-10-02",
+        "note": "Built and verified by the PrayogX simulation factory in End-to-End Production Mode (owner instruction, this item only); script-verified (automated independent verifier, page suite, visual gates A-K, library and production audits). The official key (ACD) and MathonGo (AD) disagree on (C); the figure's right-angle marks decide it in favour of the key. No human review has been recorded."
+      },
+      "interactivity": [
+        "Layout v3 (G5) with the target display: the verbatim question with its redrawn figure and options (none marked before the run); the target shows only 'the correct statement(s)' until the tests reveal the set with one pulse",
+        "An optical bench: a laser on a tilting mount, two glass prisms drawn to their real angles with vertical facing sides, a mirror on a height stage; the beam traced exactly with angle labels i1, e1, i2, e2 and the apex bisectors meeting at theta",
+        "A test board: (D) the incidence is scanned for prism 1's minimum deviation with the deviation curve; (B) a counter-example with prism 2 symmetric; (A) n2 tuned until both prisms are symmetric; (C) thin prisms with theta against the formula and the face angle",
+        "Each 'always' statement checked on a grid of prism pairs; verdicts TRUE / FALSE with the measured numbers",
+        "Presets after the run: prism 1 at minimum deviation, both at minimum deviation, thin prisms; sliders for i1, A1, A2, n1, n2; settings with no path through both prisms are reported",
+        "Pause, replay, reset, classroom mode, reduced motion, portrait phone scene"
+      ],
+      "source": {
+        "file": "papers/adv_2026_paper_2.pdf",
+        "page": 13
       },
       "status": "script_verified",
       "createdAt": "2026-10-02",

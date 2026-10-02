@@ -328,6 +328,7 @@ release (consent, live ads, app-ads.txt, versionCode, signing) is tracked in
 | `ADV-2026-P2-PHY-Q02` | 2026 | 2 | Physics | Nuclei | Q.2 | A |
 | `ADV-2026-P2-PHY-Q03` | 2026 | 2 | Physics | Ray Optics and Optical Instruments | Q.3 | B |
 | `ADV-2026-P2-PHY-Q04` | 2026 | 2 | Physics | Gravitation | Q.4 | A |
+| `ADV-2026-P2-PHY-Q05` | 2026 | 2 | Physics | Ray Optics and Optical Instruments | Q.5 | A, C, D |
 | `ADV-2026-P2-CHE-Q01` | 2026 | 2 | Chemistry | Electrochemistry | Q.1 | (C) 5 |
 | `ADV-2026-P2-CHE-Q02` | 2026 | 2 | Chemistry | Chemical Bonding and Molecular Structure | Q.2 | (B) |
 | `ADV-2026-P2-CHE-Q03` | 2026 | 2 | Chemistry | Aldehydes, Ketones and Carboxylic Acids | Q.3 | (A) |

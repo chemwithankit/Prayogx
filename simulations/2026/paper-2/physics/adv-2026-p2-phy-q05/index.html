@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Twin-Prism Mirror Bench — two prisms, one mirror, which statements hold? — JEE Advanced 2026 Paper 2 Q.5 | PrayogX</title>
+<meta name="description" content="Trace a laser through two isosceles prisms linked by a mirror, find minimum deviation, and test each statement about the angles and refractive indices. JEE Advanced 2026 Paper 2 Physics Q.5.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232a78d6'/%3E%3Cpath d='M12.5 6.5h7M13.6 6.5v7.2L7.9 24.1a1.5 1.5 0 0 0 1.3 2.3h13.6a1.5 1.5 0 0 0 1.3-2.3l-5.7-10.4V6.5' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M10.6 20.6h10.8' stroke='white' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E">
+<meta name="sim-id" content="ADV-2026-P2-PHY-Q05">
+<style>
+:root{
+  color-scheme: light;
+  --surface-0:#f4f4f1; --surface-1:#fcfcfb; --surface-2:#ececea;
+  --line:#d9d9d4; --line-strong:#bcbcb5;
+  --text-primary:#0b0b0b; --text-secondary:#52514e; --text-muted:#77766f;
+  --s1:#2a78d6; --s2:#eb6834; --s3:#1baf7a; --s4:#4a3aa7;
+  --good:#00743f; --bad:#c0392b; --accent:#2a78d6;
+  --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+  --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --serif:ui-serif,Georgia,"Times New Roman",serif;
+  --radius:12px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  color-scheme: dark;
+  --surface-0:#111110; --surface-1:#1a1a19; --surface-2:#232322;
+  --line:#34342f; --line-strong:#4a4a44;
+  --text-primary:#ffffff; --text-secondary:#c3c2b7; --text-muted:#95948b;
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#9085e9;
+  --good:#3fae7a; --bad:#e66767; --accent:#3987e5;
+}}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --surface-0:#111110; --surface-1:#1a1a19; --surface-2:#232322;
+  --line:#34342f; --line-strong:#4a4a44;
+  --text-primary:#ffffff; --text-secondary:#c3c2b7; --text-muted:#95948b;
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#9085e9;
+  --good:#3fae7a; --bad:#e66767; --accent:#3987e5;
+}
+*{box-sizing:border-box}
+[hidden]{display:none !important}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--surface-0);color:var(--text-primary);font-family:var(--sans);font-size:16px;line-height:1.6}
+header.top{border-bottom:1px solid var(--line);background:var(--surface-1)}
+.top-inner{max-width:1240px;margin:0 auto;padding:18px 20px 14px;position:relative}
+.brandbar{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.brandbar .pxmark{width:21px;height:21px;flex:none;display:block}
+.brandbar .wm{font-size:13px;font-weight:800;letter-spacing:.17em;color:var(--text-secondary);line-height:1}
+.brandbar .wm i{font-style:normal;color:var(--accent)}
+.simid{font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--text-muted)}
+h1{font-size:21px;line-height:1.3;margin:4px 0 4px;padding-right:80px}
+.meta{font-size:14px;color:var(--text-secondary);margin:0}
+.themebtn{position:absolute;top:14px;right:16px;border:1px solid var(--line-strong);background:var(--surface-2);
+  color:var(--text-secondary);border-radius:8px;padding:4px 9px;font-size:12px;cursor:pointer}
+.wrap{max-width:1240px;margin:0 auto;padding:0 20px 40px}
+section{margin:0 0 34px}
+h2{font-size:15px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-secondary);margin:26px 0 12px}
+h2 b{color:var(--accent);margin-right:8px}
+h3{font-size:17px;margin:22px 0 8px}
+/* 01 question */
+.qcard{background:var(--surface-1);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+.qtext{font-family:var(--serif);font-size:18px;line-height:1.6;flex:1 1 460px;min-width:0}
+.qfig{flex:0 0 250px;max-width:100%}
+.qfig svg{display:block;width:100%;height:auto}
+.sq{white-space:nowrap}
+.sq .rad{border-top:1.5px solid currentColor;padding:0 2px}
+#opts{list-style:none;margin:12px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+#opts li{background:var(--surface-1);border:1.5px solid var(--line);border-radius:10px;padding:10px 12px;font-family:var(--serif);font-size:19px;display:flex;gap:10px;align-items:center;min-height:52px}
+#opts li b{font-family:var(--sans);font-size:14px;color:var(--text-muted)}
+#opts li.correct{border-color:var(--good);box-shadow:0 0 0 2px color-mix(in srgb,var(--good) 25%,transparent)}
+#opts li.correct b{color:var(--good)}
+/* 02 lab */
+#keyline{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;background:var(--surface-1);border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin:0 0 8px}
+#keyline .k{font-size:13px;font-weight:800;letter-spacing:.12em;color:var(--text-muted);text-transform:uppercase}
+#ansval{font-size:22px;font-weight:800;color:var(--good)}
+#ansexpr{font-family:var(--serif);font-size:20px}
+#anssub{font-size:14px;color:var(--text-secondary);margin-left:auto}
+#keyline.blink{animation:blink .45s ease-in-out 4}
+@keyframes blink{50%{background:color-mix(in srgb,var(--good) 22%,var(--surface-1))}}
+#narr{margin:0 2px 10px;font-size:16px;color:var(--text-secondary);min-height:2.8em}
+.stage{position:relative;border-radius:16px;overflow:hidden;background:#070a12;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+canvas#labcv{display:block;width:100%;height:auto;touch-action:manipulation}
+#controls{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:12px;padding:12px;border:1px solid var(--line);border-radius:14px;background:var(--surface-1)}
+#controls button{min-height:48px;font-size:16px;font-weight:700;border-radius:10px;border:1px solid var(--line-strong);background:var(--surface-2);color:var(--text-primary);padding:0 16px;cursor:pointer;font-family:var(--sans)}
+#controls button:focus-visible,#controls input:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+#controls .go{background:var(--accent);color:#fff;border:none;font-weight:800;letter-spacing:.04em;min-width:190px}
+#controls .seg{display:flex;align-items:center;gap:0}
+#controls .seg span{font-size:13px;font-weight:700;color:var(--text-muted);margin-right:8px;letter-spacing:.06em;text-transform:uppercase}
+#controls .seg button{border-radius:0;margin-left:-1px;padding:0 13px}
+#controls .seg button:nth-child(2){border-radius:10px 0 0 10px}
+#controls .seg button:last-child{border-radius:0 10px 10px 0}
+#controls .seg button[aria-pressed="true"]{background:var(--accent);color:#fff;border-color:var(--accent)}
+#controls .v0{display:flex;flex-wrap:wrap;align-items:center;gap:10px;flex:1 1 520px;min-width:0}
+#controls .v0 label{font-size:15px;font-weight:700;white-space:nowrap}
+#controls input[type=range]{flex:1 1 150px;min-width:110px;min-height:44px;accent-color:var(--accent);margin:0}
+#v0out{font-family:var(--mono);font-size:15px;min-width:92px}
+#warn{margin:10px 2px 0;font-size:15px;color:var(--s2);font-weight:600}
+/* 03 solution */
+.sol{background:var(--surface-1);border:1px solid var(--line);border-radius:var(--radius);padding:6px 20px 16px}
+.sol ol.steps{padding-left:22px;margin:10px 0}
+.sol ol.steps li{margin:0 0 12px}
+.eq{font-family:var(--serif);font-size:18px;background:var(--surface-2);border-radius:8px;padding:8px 12px;margin:6px 0;overflow-x:auto}
+.solfig{display:flex;gap:18px;align-items:center;flex-wrap:wrap;margin:8px 0 12px}
+.solfig svg{flex:0 0 300px;max-width:100%;height:auto}
+.solfig p{flex:1 1 300px;margin:0}
+table.opt{border-collapse:collapse;width:100%;font-size:15px;margin:8px 0}
+table.opt th,table.opt td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+table.opt th{background:var(--surface-2)}
+table.opt tr.ok td{background:color-mix(in srgb,var(--good) 10%,transparent)}
+.tscroll{overflow-x:auto}
+.concept{border-left:4px solid var(--accent);padding:2px 0 2px 14px;margin:14px 0}
+ul.take{padding-left:20px} ul.take li{margin:0 0 6px}
+#solans{font-weight:800;color:var(--good)}
+.note{font-size:14px;color:var(--text-secondary)}
+/* 04 analysis */
+svg.chart{display:block;width:100%;max-width:760px;height:auto;background:var(--surface-1);border:1px solid var(--line);border-radius:12px}
+.chart text{font-family:var(--sans);fill:var(--text-secondary)}
+.cap{font-size:14px;color:var(--text-secondary);max-width:760px}
+/* how to */
+ol.howto{padding-left:22px;margin:0} ol.howto li{margin:0 0 8px}
+footer{font-size:13px;color:var(--text-muted);border-top:1px solid var(--line);padding:16px 0 0}
+/* classroom */
+body.classroom .wrap{max-width:none;padding:0 18px 30px}
+body.classroom header.top,body.classroom section:not(#lab),body.classroom footer{display:none}
+body.classroom #narr{font-size:24px;color:var(--text-primary)}
+body.classroom #keyline #ansexpr{font-size:26px}
+@media (max-width:760px){
+  .wrap{padding:0 16px 32px}
+  .top-inner{padding:14px 16px 12px}
+  h1{font-size:18px}
+  .qtext{font-size:17px}
+  .qfig{flex-basis:100%}
+  .qfig svg{max-width:260px;margin:0 auto}
+  #opts{grid-template-columns:repeat(2,minmax(0,1fr))}
+  #anssub{margin-left:0}
+  #controls{gap:8px;padding:10px}
+  #controls .go{flex:1 1 100%}
+  #controls button{padding:0 12px}
+  #controls .v0{flex-basis:100%;flex-wrap:wrap}
+  #controls .v0 input[type=range]{flex:1 1 100%;order:3}
+  .solfig svg{flex-basis:100%}
+  .sol{padding:4px 14px 12px}
+}
+@media (prefers-reduced-motion: reduce){#keyline.blink{animation:none}}
+/* long text options */
+#opts.lopts{grid-template-columns:1fr}
+#opts.lopts li{font-family:var(--sans);font-size:17px;align-items:flex-start;line-height:1.5}
+#opts.lopts li b{padding-top:2px}
+#opts.lopts .fx{font-family:var(--serif);font-size:18px;white-space:nowrap}
+#controls .seg button{white-space:nowrap}
+@media (max-width:760px){#opts.lopts .fx{white-space:normal}#controls .seg{flex-wrap:wrap;row-gap:6px}#controls .seg span{flex:1 1 100%;margin:0 0 2px}#controls .seg button:nth-child(2){border-radius:10px 0 0 10px}}
+.mlists{display:flex;gap:16px;flex-wrap:wrap;margin:12px 0 0}
+.mlist{flex:1 1 300px;background:var(--surface-1);border:1px solid var(--line);border-radius:12px;padding:10px 14px}
+.mlist h3{margin:4px 0 8px;font-size:15px}
+.cfg{display:flex;gap:10px;align-items:center;margin:6px 0}.cfg b{font-size:14px;color:var(--text-muted);min-width:28px}
+.cfg svg{width:100%;max-width:240px;height:auto}
+ol.l2{list-style:none;padding:0;margin:0;font-family:var(--serif);font-size:18px}ol.l2 li{padding:6px 0;border-bottom:1px solid var(--line)}
+#target{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;background:var(--surface-1);border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin:0 0 8px}
+#target .lbl{font-size:13px;font-weight:800;letter-spacing:.12em;color:var(--text-muted);text-transform:uppercase}
+#target .sym{font-family:var(--serif);font-size:20px}
+#target .val{font-size:22px;font-weight:800;color:var(--good)}
+#target .val:empty{display:none}
+#target.pulse{animation:pxpulse .5s ease-in-out 3}
+@keyframes pxpulse{50%{background:color-mix(in srgb,var(--good) 24%,var(--surface-1));box-shadow:0 0 0 6px color-mix(in srgb,var(--good) 30%,transparent)}}
+@media (prefers-reduced-motion: reduce){#target.pulse{animation:none}}
+body.classroom #target .sym{font-size:24px} body.classroom #target .val{font-size:28px}
+.mlist .cfg svg{max-width:220px}
+.qopts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;list-style:none;padding:0;margin:12px 0 0}
+.qopts li{background:var(--surface-1);border:1px solid var(--line);border-radius:10px;padding:10px 12px;font-family:var(--serif);font-size:18px}
+.qopts li b{color:var(--text-muted);margin-right:8px;font-family:inherit}
+.qopts li.correct{border-color:var(--good);box-shadow:0 0 0 2px color-mix(in srgb,var(--good) 40%,transparent)}
+@media (max-width:700px){.qopts{grid-template-columns:repeat(2,minmax(0,1fr))}}
+#controls .whatif[hidden]{display:none}
+.fr{display:inline-flex;flex-direction:column;vertical-align:middle;text-align:center;margin:0 3px;line-height:1.15}
+.fr>span:first-child{border-bottom:1.5px solid currentColor;padding:0 3px}
+.fr>span:last-child{padding:0 3px}
+.qopts li .ov{white-space:nowrap}
+@media (max-width:700px){#opts{grid-template-columns:1fr}}
+.qfig{margin:12px auto 0;max-width:560px}.qfig svg{width:100%;height:auto;display:block}
+#opts.lopts li .ov{white-space:normal}
+#opts{grid-template-columns:1fr}
+#question .qcard{display:block}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-inner">
+    <div class="brandbar"><svg class="pxmark" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><rect width="32" height="32" rx="8" fill="var(--accent)"/><path d="M12.5 6.5h7M13.6 6.5v7.2L7.9 24.1a1.5 1.5 0 0 0 1.3 2.3h13.6a1.5 1.5 0 0 0 1.3-2.3l-5.7-10.4V6.5" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.6 20.6h10.8" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg><span class="wm">PRAYOG<i>X</i></span></div>
+    <div class="simid">ADV-2026-P2-PHY-Q05</div>
+    <h1>Twin-Prism Mirror Bench — two prisms, one mirror: which statements hold?</h1>
+    <p class="meta">JEE Advanced 2026 · Paper 2 · Physics · Q.5 · one or more correct options (+4 / partial / 0 / −1) · Ray Optics and Optical Instruments</p>
+    <button class="themebtn" id="themebtn" type="button">◐ theme</button>
+  </div>
+</header>
+
+<main class="wrap">
+
+<section id="question" aria-labelledby="qh">
+  <h2 id="qh"><b>01</b>The question</h2>
+  <div class="qcard">
+    <div class="qtext">Q.5 Consider two isosceles prisms 1 and 2 with prism angles <i>A</i><sub>1</sub> and <i>A</i><sub>2</sub> and refractive indices <i>n</i><sub>1</sub> and <i>n</i><sub>2</sub>, respectively, as shown in the figure. The faces <i>a</i><sub>1</sub><i>b</i><sub>1</sub> and <i>a</i><sub>2</sub><i>b</i><sub>2</sub> are parallel to each other and perpendicular to the mirror <i>M</i>. If a ray of light is incident on the face <i>a</i><sub>1</sub><i>c</i><sub>1</sub> and emerges from the face <i>a</i><sub>2</sub><i>c</i><sub>2</sub>, then the correct statement(s) is/are:</div>
+    <div class="qfig" role="img" aria-label="Figure: prism 1 on the left with apex a1, vertical face a1b1 and face a1c1; prism 2 on the right with apex a2, vertical face a2b2 and face a2c2; a mirror M below between them. A ray enters prism 1 at face a1c1 with incidence i1, leaves the vertical face with emergence e1, reflects from the mirror, enters prism 2 at the vertical face with incidence i2 and leaves face a2c2 with emergence e2. Dashed lines through a1 and a2, continuing inside each prism to its base at a right angle, meet above at the angle theta.">
+      <svg viewBox="0 0 520 330" aria-hidden="true" focusable="false">
+        <g fill="none" stroke="currentColor" stroke-width="1.6">
+          <path d="M196 140 L196 238 L112 192 Z"/><path d="M318 140 L318 238 L402 192 Z"/>
+          <path d="M150 310 L370 310" stroke-width="2"/>
+        </g>
+        <g stroke="currentColor" stroke-width="1" opacity=".55"><path d="M150 314 l-6 6 M162 314 l-6 6 M174 314 l-6 6 M186 314 l-6 6 M198 314 l-6 6 M210 314 l-6 6 M222 314 l-6 6 M234 314 l-6 6 M246 314 l-6 6 M258 314 l-6 6 M270 314 l-6 6 M282 314 l-6 6 M294 314 l-6 6 M306 314 l-6 6 M318 314 l-6 6 M330 314 l-6 6 M342 314 l-6 6 M354 314 l-6 6 M366 314 l-6 6"/></g>
+        <g fill="none" stroke="currentColor" stroke-width="1.2" stroke-dasharray="4 4"><path d="M257 22 L196 140 L160 213"/><path d="M257 22 L318 140 L354 213"/></g>
+        <g fill="none" stroke="currentColor" stroke-width="1"><path d="M160 213 l6 -10 l10 5"/><path d="M354 213 l-6 -10 l-10 5"/><path d="M247 41 a 22 22 0 0 0 20 0"/></g>
+        <g fill="none" stroke="currentColor" stroke-width="1.8"><path d="M86 168 L154 168 L196 190 L257 310 L318 196 L360 172 L430 172"/></g>
+        <g fill="currentColor" font-size="15" font-style="italic" font-family="Georgia, serif">
+          <text x="250" y="66">θ</text><text x="202" y="138">a₁</text><text x="96" y="200">c₁</text><text x="200" y="252">b₁</text>
+          <text x="296" y="138">a₂</text><text x="408" y="200">c₂</text><text x="300" y="252">b₂</text><text x="378" y="316">M</text>
+          <text x="98" y="160">i₁</text><text x="214" y="214">e₁</text><text x="290" y="214">i₂</text><text x="404" y="164">e₂</text>
+          <text x="174" y="172">A₁</text><text x="326" y="172">A₂</text><text x="140" y="198">n₁</text><text x="360" y="198">n₂</text>
+          <text x="118" y="268" font-style="normal" font-size="13">Prism 1</text><text x="352" y="268" font-style="normal" font-size="13">Prism 2</text>
+        </g>
+      </svg>
+    </div>
+  </div>
+  <ol id="opts" class="qopts lopts" aria-label="options">
+    <li data-o="A"><b>(A)</b><span class="ov">If both the prisms are at minimum deviation condition, then <span class="fr"><span><i>n</i><sub>2</sub></span><span><i>n</i><sub>1</sub></span></span> = sin(<span class="fr"><span><i>A</i><sub>1</sub></span><span>2</span></span>) / sin(<span class="fr"><span><i>A</i><sub>2</sub></span><span>2</span></span>).</span></li>
+    <li data-o="B"><b>(B)</b><span class="ov">If prism 2 is at minimum deviation condition, then sin <i>i</i><sub>1</sub> = <i>n</i><sub>2</sub> sin(<span class="fr"><span><i>A</i><sub>2</sub></span><span>2</span></span>) is always true.</span></li>
+    <li data-o="C"><b>(C)</b><span class="ov">If both the prisms 1 and 2 are thin and are at minimum deviation condition with angles of deviation <i>δ</i><sub><i>m</i>1</sub> and <i>δ</i><sub><i>m</i>2</sub>, respectively, then <i>θ</i> = <span class="fr"><span><i>δ</i><sub><i>m</i>1</sub></span><span>2(<i>n</i><sub>1</sub> − 1)</span></span> + <span class="fr"><span><i>δ</i><sub><i>m</i>2</sub></span><span>2(<i>n</i><sub>2</sub> − 1)</span></span>.</span></li>
+    <li data-o="D"><b>(D)</b><span class="ov">If prism 1 is at minimum deviation condition, then sin <i>i</i><sub>2</sub> = <i>n</i><sub>1</sub> sin(<span class="fr"><span><i>A</i><sub>1</sub></span><span>2</span></span>) is always true.</span></li>
+  </ol>
+</section>
+
+<section id="lab" aria-labelledby="lh">
+  <h2 id="lh"><b>02</b>The experiment</h2>
+  <p class="keyres" id="target" data-kind="option" aria-live="polite"><span class="lbl">Target:</span><span class="sym">the correct statement(s)</span><span class="val" id="ansval"></span></p>
+  <p id="narr" aria-live="polite">Ready.</p>
+  <div class="stage"><canvas id="labcv" width="1200" height="720" role="img" aria-label="Experiment: an optical bench with a laser on a tilting mount, two glass prisms with vertical faces facing each other and a mirror on a height stage between them; the beam is traced exactly through both prisms and the mirror, with protractor arcs at the angles i1, e1, i2 and e2, and the apex-angle bisectors drawn up to where they meet at theta; a test board tests statements A to D one by one by measurement"></canvas></div>
+  <div id="controls" role="group" aria-label="experiment controls">
+    <button class="go" type="button" id="gobtn">▶ START EXPERIMENT</button>
+    <button type="button" id="replaybtn">↺ Replay</button>
+    <button type="button" id="resetbtn">Reset</button>
+    <div class="v0"><label for="in_i">Incidence i₁</label><input type="range" id="in_i" min="2" max="80" step="0.5" value="40" aria-describedby="out_i"><output id="out_i" for="in_i">40.0°</output></div>
+    <div class="v0"><label for="in_a1">Prism angle A₁</label><input type="range" id="in_a1" min="4" max="70" step="0.5" value="60" aria-describedby="out_a1"><output id="out_a1" for="in_a1">60.0°</output></div>
+    <div class="v0"><label for="in_n1">Index n₁</label><input type="range" id="in_n1" min="1.3" max="1.9" step="0.005" value="1.5" aria-describedby="out_n1"><output id="out_n1" for="in_n1">1.500</output></div>
+    <div class="v0"><label for="in_a2">Prism angle A₂</label><input type="range" id="in_a2" min="4" max="70" step="0.5" value="50" aria-describedby="out_a2"><output id="out_a2" for="in_a2">50.0°</output></div>
+    <div class="v0"><label for="in_n2">Index n₂</label><input type="range" id="in_n2" min="1.3" max="1.9" step="0.005" value="1.775" aria-describedby="out_n2"><output id="out_n2" for="in_n2">1.775</output></div>
+    <div class="seg whatif" role="group" aria-label="what if" id="wigroup" hidden><span>Set…</span><button type="button" id="wi_min1">prism 1 at min deviation</button><button type="button" id="wi_both">both at min deviation</button><button type="button" id="wi_thin">thin prisms</button></div>
+    <button type="button" id="classbtn" aria-pressed="false">Classroom</button>
+  </div>
+</section>
+
+<section id="solution" aria-labelledby="sh">
+  <h2 id="sh"><b>03</b>Detailed solution</h2>
+  <div class="sol">
+    <p>Answer: <span id="solans"></span></p>
+    <ol class="steps">
+      <li><b>The mirror links the prisms.</b> Faces <i>a</i><sub>1</sub><i>b</i><sub>1</sub> and <i>a</i><sub>2</sub><i>b</i><sub>2</sub> are both perpendicular to <i>M</i>, so their normals are parallel to the mirror. The ray leaves prism 1 at <i>e</i><sub>1</sub> to that normal, i.e. at <i>e</i><sub>1</sub> to the mirror's plane; reflection keeps that angle, so it reaches prism 2 at <b><i>i</i><sub>2</sub> = <i>e</i><sub>1</sub></b>.</li>
+      <li><b>Minimum deviation.</b> A prism deviates least when the ray passes symmetrically: <i>r</i> = <i>A</i>/2 inside and equal angles outside, so sin <i>i</i> = sin <i>e</i> = <i>n</i> sin(<i>A</i>/2).</li>
+      <li><b>(D) is true.</b> With prism 1 at minimum deviation, sin <i>e</i><sub>1</sub> = <i>n</i><sub>1</sub> sin(<i>A</i><sub>1</sub>/2), and <i>i</i><sub>2</sub> = <i>e</i><sub>1</sub>, so sin <i>i</i><sub>2</sub> = <i>n</i><sub>1</sub> sin(<i>A</i><sub>1</sub>/2) whatever prism 2 is.</li>
+      <li><b>(A) is true.</b> If prism 2 is also at minimum deviation, sin <i>i</i><sub>2</sub> = <i>n</i><sub>2</sub> sin(<i>A</i><sub>2</sub>/2). Equating: <i>n</i><sub>1</sub> sin(<i>A</i><sub>1</sub>/2) = <i>n</i><sub>2</sub> sin(<i>A</i><sub>2</sub>/2), i.e. <i>n</i><sub>2</sub>/<i>n</i><sub>1</sub> = sin(<i>A</i><sub>1</sub>/2)/sin(<i>A</i><sub>2</sub>/2).</li>
+      <li><b>(B) is false.</b> Prism 2 at minimum deviation gives sin <i>i</i><sub>2</sub> = sin <i>e</i><sub>1</sub> = <i>n</i><sub>2</sub> sin(<i>A</i><sub>2</sub>/2). That equals sin <i>i</i><sub>1</sub> only if <i>i</i><sub>1</sub> = <i>e</i><sub>1</sub>, i.e. only if prism 1 is also at minimum deviation. It is not "always" true: the experiment finds a counter-example.</li>
+      <li><b>(C) is true.</b> In the figure each dashed line through <i>a</i><sub>1</sub> (or <i>a</i><sub>2</sub>) continues inside the prism and meets the base at a right angle: it is the bisector of the prism angle. With the faces <i>a</i><sub>1</sub><i>b</i><sub>1</sub>, <i>a</i><sub>2</sub><i>b</i><sub>2</sub> parallel, the bisectors make <i>A</i><sub>1</sub>/2 and <i>A</i><sub>2</sub>/2 with them, so <b><i>θ</i> = (<i>A</i><sub>1</sub> + <i>A</i><sub>2</sub>)/2</b>. For thin prisms <i>δ</i><sub><i>m</i></sub> = (<i>n</i> − 1)<i>A</i>, so <i>A</i> = <i>δ</i><sub><i>m</i></sub>/(<i>n</i> − 1) and <i>θ</i> = <i>δ</i><sub><i>m</i>1</sub>/(2(<i>n</i><sub>1</sub> − 1)) + <i>δ</i><sub><i>m</i>2</sub>/(2(<i>n</i><sub>2</sub> − 1)).</li>
+      <li><b>A trap.</b> Reading <i>θ</i> as the angle between the extended faces <i>a</i><sub>1</sub><i>c</i><sub>1</sub> and <i>a</i><sub>2</sub><i>c</i><sub>2</sub> would give <i>A</i><sub>1</sub> + <i>A</i><sub>2</sub>, twice the right value, and would wrongly reject (C). The right-angle marks on the bases show the dashed lines are bisectors.</li>
+    </ol>
+    <h3>Understand the concept</h3>
+    <div class="concept">A prism's deviation depends on how the ray enters it: it is smallest when the path inside is symmetric, and then the angles of incidence and emergence are equal with sin <i>i</i> = <i>n</i> sin(<i>A</i>/2). Here a mirror joins two prisms whose facing faces are both perpendicular to it, so whatever angle the ray leaves prism 1 with is exactly the angle it meets prism 2 with. That single link decides every statement: a symmetric prism 1 fixes what prism 2 receives, and both can be symmetric together only when <i>n</i><sub>1</sub> sin(<i>A</i><sub>1</sub>/2) = <i>n</i><sub>2</sub> sin(<i>A</i><sub>2</sub>/2). For thin prisms the deviation is simply (<i>n</i> − 1)<i>A</i>, which turns the geometry of the bisectors into a statement about deviations.</div>
+    <h3>Key takeaways</h3>
+    <ul class="take">
+      <li>Minimum deviation: symmetric path, <i>r</i> = <i>A</i>/2, sin <i>i</i> = <i>n</i> sin(<i>A</i>/2), <i>δ</i><sub><i>m</i></sub> = 2<i>i</i> − <i>A</i>.</li>
+      <li>A plane mirror perpendicular to two faces carries the emergence angle of one into the incidence angle of the other.</li>
+      <li>"Always true" needs every case; one counter-example rejects it.</li>
+      <li>Read figures carefully: a right-angle mark on an isosceles prism's base marks the bisector of its apex angle.</li>
+    </ul>
+    <p class="note">Verification: an independent derivation (corrected after a first reading of θ as A₁ + A₂, by examining the right-angle marks in the figure); a vector ray trace with Snell's law at four faces and a mirror reflection, sharing no code with the page; every statement tested across many prism pairs; the thin-prism limit; and the page's own engine, run by <code>tests/verify_p2phyq05.py</code>. The MathonGo solution was read first only for the approach; it gives (A), (D), taking θ as the angle between the faces. The official final answer key (JEE Advanced 2026, Paper 2), read last, gives (A), (C), (D), in agreement with the corrected solve. Status: script-verified by the PrayogX simulation factory; no review by a person has been recorded.</p>
+  </div>
+</section>
+
+<section id="howto" aria-labelledby="hh">
+  <h2 id="hh">How to use this simulation</h2>
+  <ol class="howto">
+    <li>Press <b>▶ START EXPERIMENT</b>. The laser beam is traced through prism 1, off the mirror and through prism 2, with every angle measured.</li>
+    <li>The bench then tests the statements one by one: it scans <i>i</i><sub>1</sub> to find prism 1's minimum deviation (D), looks for a counter-example (B), tunes <i>n</i><sub>2</sub> until prism 2 is symmetric too (A), and switches to thin prisms to compare <i>θ</i> with the formula (C).</li>
+    <li>The test board marks each statement true or false with the measured numbers; the target shows the correct set.</li>
+    <li>Then move <i>i</i><sub>1</sub>, <i>A</i><sub>1</sub>, <i>A</i><sub>2</sub>, <i>n</i><sub>1</sub> or <i>n</i><sub>2</sub>, or use <b>Set…</b> to put prism 1, or both, at minimum deviation, or to switch to thin prisms.</li>
+    <li><b>Replay</b> runs it again. <b>Reset</b> clears it. <b>Classroom</b> fills the screen for a projector.</li>
+  </ol>
+</section>
+
+<footer>
+  ADV-2026-P2-PHY-Q05 · PrayogX · JEE Advanced Interactive Simulation Library · question text reproduced
+  from the official JEE (Advanced) 2026 Paper 2 for educational use; the figure is redrawn. This is a virtual
+  laboratory only. Every angle on the bench is the real one, computed by tracing the ray with Snell's law; the
+  prisms are drawn to their real prism angles. The mirror's height is set so that the beam reaches prism 2 - its
+  height changes no angle. The prism pairs are example values; the statements are tested on many more.
+</footer>
+</main>
+
+<script>
+(function(){
+"use strict";
+/* ENGINE-BEGIN */
+/* Two isosceles prisms (apex angles A1, A2; indices n1, n2), their faces a1b1 and a2b2 vertical and facing each other,
+   a horizontal mirror between them. A ray is traced in 2-D with the vector form of Snell's law: in through face a1c1
+   at incidence i1, out through a1b1, reflected by the mirror, in through a2b2, out through a2c2. The angles i1, e1, i2,
+   e2 are measured from the traced directions. The four statements are then tested by measurement:
+   (D) prism 1 at minimum deviation (found by a golden-section search on i1) -> compare sin i2 with n1 sin(A1/2);
+   (B) prism 2 at minimum deviation (i1 found by bisection so that e2 = i2) -> compare sin i1 with n2 sin(A2/2);
+   (A) both at minimum deviation (n2 found by bisection) -> compare n2/n1 with sin(A1/2)/sin(A2/2);
+   (C) thin prisms at minimum deviation -> compare theta, the angle between the apex-angle bisectors (the dashed
+       lines of the figure), with dm1/(2(n1 - 1)) + dm2/(2(n2 - 1)).
+   Each "always" statement is tried on a grid of prism pairs; one counter-example makes it false. Equalities are judged to
+   1e-6, the precision of the minimum-deviation search (the deviation is flat at its minimum). */
+var ENGINE = (function(){
+  var D2R = Math.PI / 180, G = (Math.sqrt(5) - 1) / 2;
+  var Q = { A1: 60, n1: 1.5, A2: 50, n2: 1.775, i1: 40, d: 1, L: 1.2, h: 2.2 };
+  function params(o){ var p = {}, k; for (k in Q) p[k] = Q[k]; if (o) for (k in o) if (o.hasOwnProperty(k)) p[k] = o[k]; return p; }
+  function geom(p){                                                 /* vertices; a1b1 and a2b2 vertical */
+    var a = p.A1 * D2R, b = p.A2 * D2R;
+    return { a1: [-p.d, p.h], b1: [-p.d, p.h - p.L], c1: [-p.d - p.L * Math.sin(a), p.h - p.L * Math.cos(a)],
+             a2: [p.d, p.h], b2: [p.d, p.h - p.L], c2: [p.d + p.L * Math.sin(b), p.h - p.L * Math.cos(b)] };
+  }
+  function unit(v){ var l = Math.sqrt(v[0] * v[0] + v[1] * v[1]); return [v[0] / l, v[1] / l]; }
+  function dot(u, v){ return u[0] * v[0] + u[1] * v[1]; }
+  function ang(u, v){ return Math.acos(Math.max(-1, Math.min(1, dot(unit(u), unit(v))))) / D2R; }
+  /* Snell: d incident (unit), nrm the face normal pointing back towards the incident side, eta = n_in/n_out */
+  function refract(d, nrm, eta){
+    var ci = -dot(nrm, d), s2 = eta * eta * (1 - ci * ci); if (s2 > 1) return null;
+    var ct = Math.sqrt(1 - s2), k = eta * ci - ct; return unit([eta * d[0] + k * nrm[0], eta * d[1] + k * nrm[1]]);
+  }
+  function hitSeg(P, d, A, B){                                      /* ray P + t d against segment AB */
+    var ex = B[0] - A[0], ey = B[1] - A[1], den = d[0] * ey - d[1] * ex; if (Math.abs(den) < 1e-15) return null;
+    var t = ((A[0] - P[0]) * ey - (A[1] - P[1]) * ex) / den, u = ((A[0] - P[0]) * d[1] - (A[1] - P[1]) * d[0]) / den;
+    return t > 1e-12 && u >= -1e-9 && u <= 1 + 1e-9 ? [P[0] + t * d[0], P[1] + t * d[1]] : null;
+  }
+  function outward(A, B, inside){ var n = unit([B[1] - A[1], A[0] - B[0]]); var m = [(A[0] + B[0]) / 2 - inside[0], (A[1] + B[1]) / 2 - inside[1]]; return dot(n, m) > 0 ? n : [-n[0], -n[1]]; }
+  function trace(o){
+    var p = params(o), g = geom(p), k1 = [(g.a1[0] + g.b1[0] + g.c1[0]) / 3, (g.a1[1] + g.b1[1] + g.c1[1]) / 3], k2 = [(g.a2[0] + g.b2[0] + g.c2[0]) / 3, (g.a2[1] + g.b2[1] + g.c2[1]) / 3];
+    var r = { p: p, g: g, ok: false, pts: [] };
+    var N1 = outward(g.a1, g.c1, k1), th = Math.atan2(N1[1], N1[0]) + p.i1 * D2R;     /* the source lies at i1 from the normal, on the base side */
+    var din = [-Math.cos(th), -Math.sin(th)], P0 = [(g.a1[0] + g.c1[0]) / 2, (g.a1[1] + g.c1[1]) / 2];
+    r.pts.push([P0[0] - 1.6 * din[0], P0[1] - 1.6 * din[1]], P0);
+    var t1 = refract(din, N1, 1 / p.n1); if (!t1) return r;
+    var Q1 = hitSeg(P0, t1, g.a1, g.b1); if (!Q1){ r.fail = "base1"; return r; } r.pts.push(Q1);
+    var N2 = outward(g.a1, g.b1, k1), d1 = refract(t1, [-N2[0], -N2[1]], p.n1); if (!d1){ r.fail = "tir1"; return r; }
+    var e1 = ang(d1, N2);                                              /* emergence from a1b1, to its normal */
+    if (d1[1] >= -1e-12){ r.fail = "up"; r.e1 = e1; return r; }
+    var Q2y = p.h - p.L / 2, tanE = -d1[1] / d1[0], ym = (Q1[1] + Q2y - 2 * p.d * tanE) / 2;   /* the mirror's height: so the beam reaches mid-face 2 */
+    var M = [Q1[0] + (Q1[1] - ym) / tanE, ym]; r.pts.push(M);
+    var d1r = [d1[0], -d1[1]];                                         /* reflection from the horizontal mirror */
+    var Q2 = hitSeg(M, d1r, g.a2, g.b2); if (!Q2){ r.fail = "miss2"; return r; } r.pts.push(Q2);
+    var N3 = outward(g.a2, g.b2, k2), i2 = ang([-d1r[0], -d1r[1]], N3);
+    var t2 = refract(d1r, N3, 1 / p.n2); if (!t2){ r.fail = "tir2"; return r; }
+    var Q3 = hitSeg(Q2, t2, g.a2, g.c2); if (!Q3){ r.fail = "base2"; return r; } r.pts.push(Q3);
+    var N4 = outward(g.a2, g.c2, k2), d2 = refract(t2, [-N4[0], -N4[1]], p.n2); if (!d2){ r.fail = "tir2b"; return r; }
+    var e2 = ang(d2, N4); r.pts.push([Q3[0] + 1.6 * d2[0], Q3[1] + 1.6 * d2[1]]);
+    r.ok = true; r.e1 = e1; r.i2 = i2; r.e2 = e2; r.ym = ym; r.d1 = d1; r.d2 = d2; r.N1 = N1; r.N2 = N2; r.N3 = N3; r.N4 = N4; r.din = din;
+    r.dev1 = p.i1 + e1 - p.A1; r.dev2 = i2 + e2 - p.A2;
+    return r;
+  }
+  function golden(f, a, b, it){ var c = b - G * (b - a), d = a + G * (b - a), fc = f(c), fd = f(d), k;
+    for (k = 0; k < it; k++){ if (fc < fd){ b = d; d = c; fd = fc; c = b - G * (b - a); fc = f(c); } else { a = c; c = d; fc = fd; d = a + G * (b - a); fd = f(d); } } return (a + b) / 2; }
+  function bisect(f, a, b, it){ var fa = f(a), k, m, fm; if (fa === null || f(b) === null || fa * f(b) > 0) return null;
+    for (k = 0; k < (it || 70); k++){ m = (a + b) / 2; fm = f(m); if (fm === null) return null; if ((fm > 0) === (fa > 0)){ a = m; fa = fm; } else b = m; } return (a + b) / 2; }
+  function dev1(o, i1){ var p = params(o), n = p.n1, a = p.A1 * D2R, s = Math.sin(i1 * D2R) / n, r1 = Math.asin(s), t = n * Math.sin(a - r1); return Math.abs(t) > 1 ? 1e9 : i1 + Math.asin(t) / D2R - p.A1; }
+  function minDev1(o){ return golden(function(i){ return dev1(o, i); }, 0.5, 89.5, 90); }
+  function sym2(o, key, val){ var q = {}, k; for (k in o) q[k] = o[k]; q[key] = val; var r = trace(q); return r.ok ? r.e2 - r.i2 : null; }
+  function scanBracket(f, a, b, n){ var k, prev = null, xp = a; for (k = 0; k <= n; k++){ var x = a + (b - a) * k / n, v = f(x); if (v !== null && prev !== null && v * prev <= 0) return [xp, x]; if (v !== null){ prev = v; xp = x; } } return null; }
+  /* --- the four tests --- */
+  var GRID = [];
+  (function(){ var A1s = [30, 45, 60], A2s = [35, 50, 65], n1s = [1.4, 1.6], n2s = [1.5, 1.8], a, b, c, d; for (a = 0; a < 3; a++) for (b = 0; b < 3; b++) for (c = 0; c < 2; c++) for (d = 0; d < 2; d++) GRID.push({ A1: A1s[a], A2: A2s[b], n1: n1s[c], n2: n2s[d] }); })();
+  function testD(o){                                                 /* returns the case for o and how many grid cases agree */
+    function one(q){ var i = minDev1(q), x = {}, k; for (k in q) x[k] = q[k]; x.i1 = i; var r = trace(x); if (!r.ok) return null; var p = params(x);
+      return { i1: i, i2: r.i2, lhs: Math.sin(r.i2 * D2R), rhs: p.n1 * Math.sin(p.A1 * D2R / 2), r: r }; }
+    var c = one(o), tried = 0, held = 0, k; for (k = 0; k < GRID.length; k++){ var v = one(GRID[k]); if (v){ tried++; if (Math.abs(v.lhs - v.rhs) < 1e-6) held++; } }
+    return { c: c, tried: tried, held: held, verdict: tried > 0 && held === tried && (!c || Math.abs(c.lhs - c.rhs) < 1e-6) };
+  }
+  function testB(o){
+    function one(q){ var br = scanBracket(function(i){ return sym2(q, "i1", i); }, 5, 89, 168); if (!br) return null;
+      var i = bisect(function(x){ return sym2(q, "i1", x); }, br[0], br[1]); if (i === null) return null; var p = params(q);
+      return { i1: i, lhs: Math.sin(i * D2R), rhs: p.n2 * Math.sin(p.A2 * D2R / 2) }; }
+    var c = one(o), tried = 0, held = 0, k; for (k = 0; k < GRID.length; k++){ var v = one(GRID[k]); if (v){ tried++; if (Math.abs(v.lhs - v.rhs) < 1e-6) held++; } }
+    return { c: c, tried: tried, held: held, verdict: tried > 0 && held === tried && (!c || Math.abs(c.lhs - c.rhs) < 1e-6) };
+  }
+  function testA(o){
+    function one(q){ var x = {}, k; for (k in q) x[k] = q[k]; x.i1 = minDev1(q);
+      var br = scanBracket(function(n){ return sym2(x, "n2", n); }, 1.01, 3.5, 250); if (!br) return null;
+      var n2 = bisect(function(n){ return sym2(x, "n2", n); }, br[0], br[1]); if (n2 === null) return null; var p = params(x);
+      return { i1: x.i1, n2: n2, lhs: n2 / p.n1, rhs: Math.sin(p.A1 * D2R / 2) / Math.sin(p.A2 * D2R / 2) }; }
+    var c = one(o), tried = 0, held = 0, k; for (k = 0; k < GRID.length; k++){ var v = one(GRID[k]); if (v){ tried++; if (Math.abs(v.lhs - v.rhs) < 1e-6) held++; } }
+    return { c: c, tried: tried, held: held, verdict: tried > 0 && held === tried && (!c || Math.abs(c.lhs - c.rhs) < 1e-6) };
+  }
+  function theta(o){                                                 /* the angle between the apex-angle bisectors, from the vertices */
+    var g = geom(params(o)), m1 = [(g.b1[0] + g.c1[0]) / 2, (g.b1[1] + g.c1[1]) / 2], m2 = [(g.b2[0] + g.c2[0]) / 2, (g.b2[1] + g.c2[1]) / 2];
+    return ang([g.a1[0] - m1[0], g.a1[1] - m1[1]], [g.a2[0] - m2[0], g.a2[1] - m2[1]]);
+  }
+  function faceAngle(o){ var g = geom(params(o)); return ang([g.a1[0] - g.c1[0], g.a1[1] - g.c1[1]], [g.a2[0] - g.c2[0], g.a2[1] - g.c2[1]]); }
+  var THIN = { A1: 5, A2: 4.5, n1: 1.5 };
+  function thinCase(){ var q = { A1: THIN.A1, A2: THIN.A2, n1: THIN.n1, n2: THIN.n1 * Math.sin(THIN.A1 * D2R / 2) / Math.sin(THIN.A2 * D2R / 2) }; q.i1 = minDev1(q); return q; }
+  function testC(){
+    var q = thinCase(), r = trace(q), p = params(q), th = theta(q), rhs = r.dev1 / (2 * (p.n1 - 1)) + r.dev2 / (2 * (p.n2 - 1));
+    return { q: q, r: r, theta: th, rhs: rhs, face: faceAngle(q), sym2: Math.abs(r.e2 - r.i2), verdict: r.ok && Math.abs(r.e2 - r.i2) < 1e-4 && Math.abs(rhs / th - 1) < 0.01 };
+  }
+  function run(o){
+    var base = params(o), tD = testD(base), tB = testB({ A1: base.A1, n1: base.n1, A2: base.A2, n2: 1.6 }), tA = testA(base), tC = testC();
+    var v = { A: tA.verdict, B: tB.verdict, C: tC.verdict, D: tD.verdict }, letters = [], k;
+    for (k in v) if (v[k]) letters.push(k);
+    letters.sort();
+    return { D: tD, B: tB, A: tA, C: tC, verdicts: v, answer: letters.length ? "(" + letters.join("), (") + ")" : null };
+  }
+  return { Q: Q, params: params, geom: geom, trace: trace, dev1: dev1, minDev1: minDev1, testA: testA, testB: testB, testC: testC, testD: testD, theta: theta, faceAngle: faceAngle, thinCase: thinCase, run: run, GRID: GRID };
+})();
+/* ENGINE-END */
+
+var QRUN = ENGINE.run();
+var ANS = QRUN.answer;
+
+function $(id){ return document.getElementById(id); }
+var cv = $("labcv"), g = cv.getContext("2d");
+var reduced = !!(window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches);
+var PH = [["trace", 3.0], ["testD", 4.0], ["testB", 3.6], ["testA", 3.6], ["testC", 4.0], ["verdict", 1.8]];
+var ORDER = ["D", "B", "A", "C"];
+
+var RUN = { state: "setup", phase: "ready", speed: 1, pi: 0, st: 0, cfg: null, res: null, tested: {}, scan: [], done: false, confirmed: false, measured: null, lines: 0,
+  p: { A1: 60, n1: 1.5, A2: 50, n2: 1.775, i1: 40 } };
+var L = null, minPx = 999, pulseT = null;
+
+function layout(){
+  var phone = document.documentElement.clientWidth < 700;
+  if (phone) return { phone: true, W: 720, H: 1520, ro: { x: 12, y: 12, w: 696, h: 206 }, sc: { x: 12, y: 230, w: 696, h: 650 }, pn: { x: 12, y: 894, w: 696, h: 614 }, fs: 25, big: 30 };
+  return { phone: false, W: 1200, H: 720, ro: { x: 16, y: 14, w: 1168, h: 92 }, sc: { x: 16, y: 122, w: 620, h: 584 }, pn: { x: 652, y: 122, w: 532, h: 584 }, fs: 16, big: 23 };
+}
+function deg(x, d){ return (x === null || x === undefined || isNaN(x)) ? "—" : x.toFixed(d === undefined ? 2 : d) + "°"; }
+function lerp(a, b, u){ return a + (b - a) * u; }
+function ease(u){ return u < 0 ? 0 : u > 1 ? 1 : u * u * (3 - 2 * u); }
+
+/* --------------------------------------------------------------- run: each phase drives the bench configuration */
+function cfgAt(){
+  var R = RUN.res, ph = RUN.phase, u = ease(Math.min(1, RUN.st / (0.85 * (PH[RUN.pi] ? PH[RUN.pi][1] : 1)))),   /* each test reaches its set-up at 85 % of the phase and holds it */ b = { A1: RUN.p.A1, n1: RUN.p.n1, A2: RUN.p.A2, n2: RUN.p.n2 };
+  if (ph === "trace") return { A1: b.A1, n1: b.n1, A2: b.A2, n2: b.n2, i1: lerp(30, 40, u) };
+  if (ph === "testD"){ var i = u < 0.75 ? lerp(30, 75, u / 0.75) : lerp(75, R.D.c.i1, (u - 0.75) / 0.25); return { A1: b.A1, n1: b.n1, A2: b.A2, n2: b.n2, i1: i }; }
+  if (ph === "testB") return { A1: b.A1, n1: b.n1, A2: b.A2, n2: 1.6, i1: lerp(R.D.c.i1, R.B.c.i1, u) };
+  if (ph === "testA") return { A1: b.A1, n1: b.n1, A2: b.A2, n2: lerp(1.6, R.A.c.n2, u), i1: R.A.c.i1 };
+  if (ph === "testC"){ var q = R.C.q; return { A1: lerp(b.A1, q.A1, u), n1: b.n1, A2: lerp(b.A2, q.A2, u), n2: lerp(R.A.c.n2, q.n2, u), i1: u < 1 ? lerp(R.A.c.i1, q.i1, u) : q.i1 }; }
+  if (ph === "verdict"){ var c = R.C.q; return { A1: c.A1, n1: c.n1, A2: c.A2, n2: c.n2, i1: c.i1 }; }
+  return { A1: RUN.p.A1, n1: RUN.p.n1, A2: RUN.p.A2, n2: RUN.p.n2, i1: RUN.p.i1 };
+}
+function finish(){
+  RUN.state = "done"; RUN.phase = "done"; RUN.done = true; RUN.tested = { D: 1, B: 1, A: 1, C: 1 }; RUN.lines = 4;
+  RUN.measured = { answer: RUN.res.answer, verdicts: RUN.res.verdicts };
+  var a = RUN.res.A.c; RUN.p = { A1: RUN.p.A1, n1: RUN.p.n1, A2: RUN.p.A2, n2: Math.round(a.n2 * 1000) / 1000, i1: Math.round(a.i1 * 10) / 10 }; syncSliders();
+  if (RUN.measured.answer && RUN.measured.answer === ANS){ RUN.confirmed = true; reveal(); }
+  $("wigroup").hidden = false;
+  narrate(); refreshButtons();
+}
+function tick(dt){
+  if (RUN.state !== "running") return;
+  var h = dt * RUN.speed, ph = PH[RUN.pi][0], before = RUN.st;
+  RUN.st += h;
+  if (ph === "testD" && RUN.st / (0.85 * PH[RUN.pi][1]) < 0.76){ var c = cfgAt(), dv = ENGINE.dev1(c, c.i1); if (dv < 1e8) RUN.scan.push([c.i1, dv]); }
+  if (RUN.st >= PH[RUN.pi][1]){
+    if (ORDER.indexOf(ph.slice(4)) >= 0) RUN.tested[ph.slice(4)] = 1;
+    RUN.pi++; RUN.st = 0;
+    if (RUN.pi >= PH.length){ finish(); return; }
+    RUN.phase = PH[RUN.pi][0]; narrate();
+  } else if (Math.floor(before * 2) !== Math.floor(RUN.st * 2)) narrate();
+}
+function start(){
+  if (RUN.state === "running"){ RUN.state = "paused"; refreshButtons(); narrate(); return; }
+  if (RUN.state === "paused"){ RUN.state = "running"; refreshButtons(); narrate(); return; }
+  resetRun();
+  RUN.res = ENGINE.run({ A1: RUN.p.A1, n1: RUN.p.n1, A2: RUN.p.A2, n2: RUN.p.n2 }); RUN.fallback = false;
+  if (!RUN.res.D.c || !RUN.res.B.c || !RUN.res.A.c){                       /* the sliders give no beam path through both prisms: use the bench's own prisms */
+    RUN.p = { A1: 60, n1: 1.5, A2: 50, n2: 1.775, i1: 40 }; syncSliders(); RUN.fallback = true; RUN.res = ENGINE.run({ A1: 60, n1: 1.5, A2: 50, n2: 1.775 }); }
+  if (reduced){ finish(); return; }
+  RUN.state = "running"; RUN.phase = PH[0][0]; RUN.pi = 0; narrate(); refreshButtons();
+}
+function resetRun(){
+  RUN.state = "setup"; RUN.phase = "ready"; RUN.pi = 0; RUN.st = 0; RUN.res = null; RUN.tested = {}; RUN.scan = []; RUN.done = false; RUN.confirmed = false; RUN.measured = null; RUN.lines = 0;
+  $("wigroup").hidden = true; hideTarget();
+}
+function replay(){ RUN.state = "setup"; start(); }
+function reset(){ resetRun(); RUN.p = { A1: 60, n1: 1.5, A2: 50, n2: 1.775, i1: 40 }; syncSliders(); refreshButtons(); narrate(); }
+function setParam(k, v){
+  var lim = { i1: [2, 80], A1: [4, 70], A2: [4, 70], n1: [1.3, 1.9], n2: [1.3, 1.9] }, dflt = { i1: 40, A1: 60, A2: 50, n1: 1.5, n2: 1.775 };
+  if (!lim[k]) return;
+  v = parseFloat(v); if (!isFinite(v)) v = dflt[k];
+  v = Math.min(lim[k][1], Math.max(lim[k][0], v));
+  if (RUN.state === "running" || RUN.state === "paused") resetRun();
+  RUN.p[k] = v; syncSliders(); if (RUN.done) RUN.phase = "explore";
+  refreshButtons(); narrate();
+}
+function preset(w){
+  if (!RUN.done) return;
+  var p = RUN.p;
+  if (w === "min1"){ p.i1 = ENGINE.minDev1(p); }
+  else if (w === "both"){ var t = ENGINE.testA({ A1: p.A1, n1: p.n1, A2: p.A2, n2: p.n2 }); if (t.c){ p.i1 = t.c.i1; p.n2 = Math.min(1.9, Math.max(1.3, t.c.n2)); } }
+  else if (w === "thin"){ var q = ENGINE.thinCase(); p.A1 = q.A1; p.A2 = q.A2; p.n1 = q.n1; p.n2 = q.n2; p.i1 = q.i1; }
+  RUN.phase = "explore"; RUN.preset = w; syncSliders(); narrate();
+}
+function syncSliders(){
+  var p = RUN.p;
+  $("in_i").value = String(p.i1); $("out_i").textContent = p.i1.toFixed(1) + "°";
+  $("in_a1").value = String(p.A1); $("out_a1").textContent = p.A1.toFixed(1) + "°";
+  $("in_a2").value = String(p.A2); $("out_a2").textContent = p.A2.toFixed(1) + "°";
+  $("in_n1").value = String(p.n1); $("out_n1").textContent = p.n1.toFixed(3);
+  $("in_n2").value = String(p.n2); $("out_n2").textContent = p.n2.toFixed(3);
+}
+
+/* ------------------------------------------------------------ the target */
+function reveal(){
+  var t = $("target"), a = RUN.measured.answer;
+  $("ansval").textContent = a + " are correct";
+  var lis = document.querySelectorAll("#opts li"), i; for (i = 0; i < lis.length; i++) lis[i].classList.toggle("correct", !!RUN.measured.verdicts[lis[i].getAttribute("data-o")]);
+  if (!reduced){ t.classList.remove("pulse"); void t.offsetWidth; t.classList.add("pulse"); if (pulseT) clearTimeout(pulseT); pulseT = setTimeout(function(){ t.classList.remove("pulse"); pulseT = null; }, 1600); }
+}
+function hideTarget(){
+  var t = $("target"); if (pulseT){ clearTimeout(pulseT); pulseT = null; } t.classList.remove("pulse"); $("ansval").textContent = "";
+  var lis = document.querySelectorAll("#opts li"), i; for (i = 0; i < lis.length; i++) lis[i].classList.remove("correct");
+}
+
+/* ------------------------------------------------------------ words */
+function narrate(){
+  var t, ph = RUN.phase, R = RUN.res, c = cfgAt(), r = ENGINE.trace(c);
+  if (ph === "ready") t = "Ready. A laser, two glass prisms with their facing sides vertical, and a mirror between them. Which of the four statements always hold? Press START.";
+  else if (ph === "trace") t = (RUN.fallback ? "(Those settings give no beam path through both prisms, so the bench's own prisms are used.) " : "") + "Tracing the beam: i₁ = " + deg(c.i1, 1) + ", e₁ = " + deg(r.e1) + ". After the mirror it meets prism 2 at i₂ = " + deg(r.i2) + " - the same as e₁, because both faces are perpendicular to the mirror.";
+  else if (ph === "testD") t = RUN.st / (0.85 * PH[1][1]) < 0.76 ? "Test (D): turning the laser to find prism 1's minimum deviation. i₁ = " + deg(c.i1, 1) + ", deviation δ₁ = " + deg(ENGINE.dev1(c, c.i1)) + "."
+    : "Prism 1 at minimum deviation (i₁ = e₁ = " + deg(R.D.c.i1) + "): sin i₂ = " + R.D.c.lhs.toFixed(6) + " and n₁ sin(A₁/2) = " + R.D.c.rhs.toFixed(6) + ". Equal - in all " + R.D.tried + " prism pairs tried.";
+  else if (ph === "testB") t = "Test (B): with n₂ = 1.600, turning the laser until prism 2 is at minimum deviation (i₁ = " + deg(c.i1) + "). There sin i₁ = " + R.B.c.lhs.toFixed(4) + " but n₂ sin(A₂/2) = " + R.B.c.rhs.toFixed(4) + ": not equal - a counter-example.";
+  else if (ph === "testA") t = "Test (A): prism 1 at minimum deviation, n₂ tuned until prism 2 is symmetric too: n₂ = " + c.n2.toFixed(4) + ". Then n₂/n₁ = " + R.A.c.lhs.toFixed(6) + " and sin(A₁/2)/sin(A₂/2) = " + R.A.c.rhs.toFixed(6) + ".";
+  else if (ph === "testC") t = "Test (C): thin prisms (A₁ = 5°, A₂ = 4.5°), both at minimum deviation: δm₁ = " + deg(R.C.r.dev1, 3) + ", δm₂ = " + deg(R.C.r.dev2, 3) + ". θ between the dashed bisectors = " + deg(R.C.theta, 3)
+    + " and the formula gives " + deg(R.C.rhs, 3) + ". (The angle between the faces would be " + deg(R.C.face, 2) + ".)";
+  else if (ph === "verdict") t = "Verdict: (A) true, (B) false, (C) true, (D) true.";
+  else if (ph === "done") t = "Measured: the correct statements are " + RUN.measured.answer + ". The link is the mirror: i₂ = e₁ always. Now move the sliders or use Set…";
+  else { var p = RUN.p; t = (r.ok ? "i₁ = " + deg(p.i1, 1) + ": e₁ = " + deg(r.e1) + ", i₂ = " + deg(r.i2) + " (= e₁), e₂ = " + deg(r.e2) + "; δ₁ = " + deg(r.dev1) + ", δ₂ = " + deg(r.dev2) + "."
+      : "With these settings the beam does not reach prism 2 (" + ({ up: "it leaves prism 1 upwards, missing the mirror", tir1: "total internal reflection in prism 1", tir2: "total internal reflection in prism 2", tir2b: "total internal reflection in prism 2", base1: "it hits prism 1's base", base2: "it hits prism 2's base", miss2: "it misses prism 2" }[r.fail] || "no path") + ").")
+      + (RUN.preset === "thin" ? " θ = " + deg(ENGINE.theta(p), 3) + " = (A₁ + A₂)/2." : ""); }
+  if (RUN.state === "paused") t = "Paused. " + t;
+  $("narr").textContent = t;
+}
+function refreshButtons(){ $("gobtn").textContent = RUN.state === "running" ? "❚❚ PAUSE" : RUN.state === "paused" ? "▶ RESUME" : RUN.state === "done" ? "▶ RUN AGAIN" : "▶ START EXPERIMENT"; }
+
+/* ------------------------------------------------------------ drawing helpers */
+var FONT = "ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif";
+function label(s, x, y, px, c, align, weight){
+  if (px < minPx) minPx = px;
+  g.font = (weight || "700") + " " + Math.round(px) + "px " + FONT;
+  g.fillStyle = c || "#e8f0ff"; g.textAlign = align || "left"; g.textBaseline = "alphabetic"; g.fillText(s, x, y);
+}
+function tw(s, px, weight){ g.font = (weight || "700") + " " + Math.round(px) + "px " + FONT; return g.measureText(s).width; }
+function fit(s, px, maxW, weight){ var w = tw(s, px, weight); return w > maxW ? Math.max(px * maxW / w, 0) : px; }
+function minFs(){ return L.phone ? 25 : 13; }
+function fitLabel(s, x, y, px, maxW, c, align, weight){ label(s, x, y, Math.max(minFs(), fit(s, px, maxW, weight)), c, align, weight); }
+function wrapLabel(s, x, y, px, maxW, c, weight, step){
+  var min = minFs();
+  if (tw(s, px, weight) <= maxW){ label(s, x, y, px, c, "left", weight); return y; }
+  if (fit(s, px, maxW, weight) >= min){ label(s, x, y, fit(s, px, maxW, weight), c, "left", weight); return y; }
+  var cut = s.lastIndexOf(" ", Math.floor(s.length * maxW / tw(s, px, weight))), a, b;
+  if (cut < 1) cut = Math.floor(s.length / 2);
+  a = s.slice(0, cut); b = s.slice(cut).replace(/^ /, "");
+  label(a, x, y, Math.max(min, fit(a, px, maxW, weight)), c, "left", weight);
+  label(b, x + 12, y + step, Math.max(min, fit(b, px, maxW - 12, weight)), c, "left", weight);
+  return y + step;
+}
+function backed(s, x, y, px, c, align){
+  var w = tw(s, px, "800"), x0 = align === "right" ? x - w : align === "center" ? x - w / 2 : x;
+  g.fillStyle = "rgba(6,10,24,.82)"; roundRect(x0 - 6, y - px * 0.95, w + 12, px * 1.3, 6); g.fill();
+  label(s, x, y, px, c, align, "800");
+}
+function roundRect(x, y, w, h, r){ g.beginPath(); g.moveTo(x + r, y); g.lineTo(x + w - r, y); g.quadraticCurveTo(x + w, y, x + w, y + r); g.lineTo(x + w, y + h - r); g.quadraticCurveTo(x + w, y + h, x + w - r, y + h); g.lineTo(x + r, y + h); g.quadraticCurveTo(x, y + h, x, y + h - r); g.lineTo(x, y + r); g.quadraticCurveTo(x, y, x + r, y); g.closePath(); }
+function panel(x, y, w, h){ roundRect(x, y, w, h, 14); g.fillStyle = "rgba(10,16,32,.86)"; g.fill(); g.strokeStyle = "rgba(140,180,255,.3)"; g.lineWidth = 1.5; g.stroke(); }
+
+/* ------------------------------------------------------------ readouts */
+function drawReadouts(){
+  var r = L.ro, c = cfgAt(), tr = ENGINE.trace(c), i, px, py;
+  var rows = [["Incidence i₁ / emergence e₁", deg(c.i1, 1) + " / " + (tr.e1 !== undefined ? deg(tr.e1, 1) : "—")], ["After the mirror i₂", tr.ok ? deg(tr.i2, 2) : "no beam"],
+    ["Emergence e₂", tr.ok ? deg(tr.e2, 2) : "no beam"], ["Deviations δ₁, δ₂", tr.ok ? deg(tr.dev1, 2) + ", " + deg(tr.dev2, 2) : "—"]];
+  panel(r.x, r.y, r.w, r.h);
+  for (i = 0; i < 4; i++){
+    if (L.phone){ px = r.x + 18 + (i % 2) * 348; py = r.y + 40 + (i < 2 ? 0 : 1) * 96; } else { px = r.x + 20 + i * 290; py = r.y + 34; }
+    fitLabel(rows[i][0], px, py, L.fs - (L.phone ? 0 : 1), L.phone ? 326 : 270, "#8fa6cf", "left", "700");
+    var big = fit(rows[i][1], L.big - (L.phone ? 3 : 1), L.phone ? 320 : 270, "800");
+    label(rows[i][1], px, py + (L.phone ? 42 : 38), Math.max(big, minFs() + (L.phone ? 0 : 1)), /no beam|—/.test(rows[i][1]) ? "#8fa6cf" : "#ffffff", "left", "800");
+  }
+}
+
+/* ------------------------------------------------------------ the bench */
+function drawScene(){
+  var S = L.sc, ph = L.phone, fs = L.fs - (ph ? 0 : 1), c = cfgAt(), tr = ENGINE.trace(c), gm = tr.g, p = tr.p, k;
+  g.save(); roundRect(S.x, S.y, S.w, S.h, 14); g.clip();
+  var bg = g.createLinearGradient(0, S.y, 0, S.y + S.h); bg.addColorStop(0, "#0d1730"); bg.addColorStop(1, "#060a14"); g.fillStyle = bg; g.fillRect(S.x, S.y, S.w, S.h);
+  var ym = tr.ok ? tr.ym : p.h - p.L - 0.4, top = p.h + 2.0, bot = Math.min(ym, p.h - p.L) - 0.35, xmin = -p.d - 1.7, xmax = p.d + 1.7;
+  var sc = Math.min(S.w / (xmax - xmin), (S.h - (ph ? 90 : 60)) / (top - bot)), ox = S.x + S.w / 2, oy = S.y + 18 + (top) * sc;
+  var X = function(x){ return ox + x * sc; }, Y = function(y){ return oy - y * sc; };
+  /* the optical bench rail */
+  g.fillStyle = "#1b2440"; g.fillRect(S.x, Y(bot) + 4, S.w, 10);
+  /* the apex-angle bisectors, up to where they meet at theta */
+  var th = ENGINE.theta(c), a1 = gm.a1, a2 = gm.a2, m1 = [(gm.b1[0] + gm.c1[0]) / 2, (gm.b1[1] + gm.c1[1]) / 2], m2 = [(gm.b2[0] + gm.c2[0]) / 2, (gm.b2[1] + gm.c2[1]) / 2];
+  var u1 = [a1[0] - m1[0], a1[1] - m1[1]], u2 = [a2[0] - m2[0], a2[1] - m2[1]], den = u1[0] * u2[1] - u1[1] * u2[0], s1 = ((a2[0] - a1[0]) * u2[1] - (a2[1] - a1[1]) * u2[0]) / den;
+  var apex = [a1[0] + s1 * u1[0], a1[1] + s1 * u1[1]];
+  g.strokeStyle = "rgba(200,215,240,.55)"; g.setLineDash([7, 6]); g.lineWidth = 1.6;
+  g.beginPath(); g.moveTo(X(m1[0]), Y(m1[1])); g.lineTo(X(apex[0]), Y(apex[1])); g.moveTo(X(m2[0]), Y(m2[1])); g.lineTo(X(apex[0]), Y(apex[1])); g.stroke(); g.setLineDash([]);
+  if (Y(apex[1]) > S.y + 30){ g.strokeStyle = "rgba(255,210,122,.8)"; g.lineWidth = 2; var aa = Math.atan2(-u1[1], -u1[0]), ab = Math.atan2(-u2[1], -u2[0]);
+    g.beginPath(); g.arc(X(apex[0]), Y(apex[1]), 30, -ab, -aa, false); g.stroke(); backed("θ = " + deg(th, 2), X(apex[0]), Y(apex[1]) - 14, fs, "#ffd27a", "center"); }
+  else backed("θ = " + deg(th, 2) + (Y(apex[1]) < S.y ? " (the bisectors meet above)" : ""), S.x + S.w / 2, S.y + (ph ? 36 : 28), fs, "#ffd27a", "center");
+  /* the mirror on its height stage, between the vertical faces */
+  if (tr.ok){ g.fillStyle = "#8f9bb0"; g.fillRect(X(-p.d), Y(ym), X(p.d) - X(-p.d), 6); g.fillStyle = "#dfe6f2"; g.fillRect(X(-p.d), Y(ym) - 2, X(p.d) - X(-p.d), 3);
+    g.strokeStyle = "#5a6478"; g.lineWidth = 3; g.beginPath(); g.moveTo(X(0), Y(ym) + 6); g.lineTo(X(0), Y(bot) + 4); g.stroke();
+    label("M", X(-p.d * 0.45), Y(ym) + (ph ? 34 : 26), fs, "#cfe0ff", "center", "800"); }
+  /* the prisms: glass with real prism angles */
+  function prism(a, b, cc, nm, idx){
+    var pg = g.createLinearGradient(X(cc[0]), Y(a[1]), X(a[0]), Y(b[1])); pg.addColorStop(0, "rgba(150,205,255,.28)"); pg.addColorStop(1, "rgba(215,240,255,.5)");
+    g.fillStyle = pg; g.beginPath(); g.moveTo(X(a[0]), Y(a[1])); g.lineTo(X(b[0]), Y(b[1])); g.lineTo(X(cc[0]), Y(cc[1])); g.closePath(); g.fill();
+    g.strokeStyle = "rgba(230,245,255,.95)"; g.lineWidth = 2; g.stroke();
+    label(nm, (X(a[0]) + X(b[0]) + X(cc[0])) / 3, (Y(a[1]) + Y(b[1]) + Y(cc[1])) / 3 + 8, fs - (ph ? 0 : 2), "#cfe0ff", "center", "800");
+    label(idx, (X(a[0]) + X(b[0]) + X(cc[0])) / 3, (Y(a[1]) + Y(b[1]) + Y(cc[1])) / 3 + (ph ? 40 : 28), fs - (ph ? 0 : 2), "#8fa6cf", "center", "700");
+  }
+  prism(gm.a1, gm.b1, gm.c1, "A₁ " + deg(p.A1, 1), "n₁ " + p.n1.toFixed(3));
+  prism(gm.a2, gm.b2, gm.c2, "A₂ " + deg(p.A2, 1), "n₂ " + p.n2.toFixed(3));
+  /* the laser and the beam */
+  var P0 = tr.pts[0]; g.save(); g.translate(X(P0[0]), Y(P0[1])); g.rotate(Math.atan2(tr.din ? -tr.din[1] : 0, tr.din ? tr.din[0] : 1));
+  g.fillStyle = "#39445e"; roundRect(-46, -11, 50, 22, 5); g.fill(); g.fillStyle = "#ff5a5a"; g.fillRect(0, -4, 6, 8); g.restore();
+  if (tr.pts.length > 1){ g.strokeStyle = "rgba(255,80,80,.35)"; g.lineWidth = 7; g.beginPath(); g.moveTo(X(tr.pts[0][0]), Y(tr.pts[0][1])); for (k = 1; k < tr.pts.length; k++) g.lineTo(X(tr.pts[k][0]), Y(tr.pts[k][1])); g.stroke();
+    g.strokeStyle = "#ff6b6b"; g.lineWidth = 2.5; g.stroke(); }
+  /* the angles where the beam crosses each face */
+  function angLabel(pt, txt, dx, dy){ backed(txt, X(pt[0]) + dx, Y(pt[1]) + dy, fs - (ph ? 0 : 1), "#ffffff", "center"); }
+  if (tr.pts.length > 1) angLabel(tr.pts[1], "i₁ " + deg(c.i1, 1), ph ? -56 : -46, ph ? -26 : -18);
+  if (tr.ok){ angLabel(tr.pts[2], "e₁ " + deg(tr.e1, 1), ph ? 62 : 52, ph ? 4 : 2); angLabel(tr.pts[4], "i₂ " + deg(tr.i2, 1), ph ? -64 : -52, ph ? 30 : 22); angLabel(tr.pts[5], "e₂ " + deg(tr.e2, 1), ph ? 40 : 34, ph ? -24 : -18); }
+  backed(ph ? "angles real · mirror height set to reach prism 2" : "angles and prism shapes real; the mirror's height is set so the beam reaches prism 2", S.x + 14, S.y + S.h - (ph ? 18 : 14), L.fs - (ph ? 0 : 3), "#8fa6cf", "left");
+  g.restore();
+}
+
+/* ------------------------------------------------------------ the test board */
+function drawPanel(){
+  var P = L.pn, ph = L.phone, fs = L.fs - (ph ? 0 : 2), R = RUN.res, k;
+  panel(P.x, P.y, P.w, P.h);
+  fitLabel("TEST BOARD - each statement tested by measurement", P.x + 18, P.y + (ph ? 36 : 30), L.fs - (ph ? 0 : 1), P.w - 36, "#cfe0ff", "left", "800");
+  var x = P.x + 18, w = P.w - 36, y = P.y + (ph ? 84 : 66), rowH = ph ? 128 : 110, keys = ["A", "B", "C", "D"];
+  var heads = { A: "both at min deviation: n₂/n₁ = sin(A₁/2)/sin(A₂/2)", B: "prism 2 at min dev: sin i₁ = n₂ sin(A₂/2)", C: "thin, both min dev: θ = Σ δm/(2(n − 1))", D: "prism 1 at min dev: sin i₂ = n₁ sin(A₁/2)" };
+  for (k = 0; k < 4; k++){
+    var key = keys[k], yy = y + k * rowH, active = RUN.phase === "test" + key, tested = !!RUN.tested[key];
+    roundRect(x, yy - (ph ? 30 : 24), w, rowH - 12, 10); g.fillStyle = active ? "rgba(255,210,122,.10)" : "rgba(140,170,220,.06)"; g.fill();
+    g.strokeStyle = active ? "rgba(255,210,122,.6)" : "rgba(140,170,220,.2)"; g.lineWidth = 1.5; g.stroke();
+    label("(" + key + ")", x + 12, yy + 4, fs + (ph ? 0 : 2), "#ffffff", "left", "900");
+    fitLabel(heads[key], x + (ph ? 70 : 52), yy + 4, fs, w - (ph ? 82 : 120), "#cfe0ff", "left", "700");
+    var line = "", ok = null;
+    if (R && (tested || active)){
+      if (key === "D") line = "sin i₂ " + R.D.c.lhs.toFixed(5) + " = " + R.D.c.rhs.toFixed(5) + " · " + R.D.held + "/" + R.D.tried + " pairs";
+      if (key === "B") line = "sin i₁ " + R.B.c.lhs.toFixed(4) + " vs " + R.B.c.rhs.toFixed(4) + " · fails in " + (R.B.tried - R.B.held) + "/" + R.B.tried;
+      if (key === "A") line = "n₂/n₁ " + R.A.c.lhs.toFixed(5) + " = " + R.A.c.rhs.toFixed(5) + " · " + R.A.held + "/" + R.A.tried + " pairs";
+      if (key === "C") line = "θ " + deg(R.C.theta, 3) + " vs formula " + deg(R.C.rhs, 3) + " (faces: " + deg(R.C.face, 1) + ")";
+      if (tested) ok = R.verdicts[key];
+    }
+    if (line) fitLabel(line, x + (ph ? 70 : 52), yy + (ph ? 44 : 34), fs, w - (ph ? 210 : 120), "#9fb6dc", "left", "700");
+    else label(R ? "waiting to be tested" : "tested when the run starts", x + (ph ? 70 : 52), yy + (ph ? 44 : 34), fs, "#5a6c8f", "left", "600");
+    if (ok !== null) label(ok ? "✓ TRUE" : "✗ FALSE", x + w - 12, yy + (ph ? 44 : 4), fs + (ph ? 0 : 2), ok ? "#7dffb8" : "#ff8a8a", "right", "900");   /* on a phone, on the second line, clear of the heading */
+  }
+  /* the deviation scan of test D */
+  if (RUN.phase === "testD" && RUN.scan.length > 1){
+    var gx0 = x + (ph ? 70 : 52), gx1 = x + w - 12, gy0 = y + 4 * rowH + (ph ? 40 : 26), gy1 = gy0 - (ph ? 90 : 64);
+    if (gy0 < P.y + P.h - 10){ var lo = 1e9, hi = -1e9; for (k = 0; k < RUN.scan.length; k++){ lo = Math.min(lo, RUN.scan[k][1]); hi = Math.max(hi, RUN.scan[k][1]); } hi = Math.max(hi, lo + 1);
+      g.strokeStyle = "#ffd27a"; g.lineWidth = 2.5; g.beginPath();
+      for (k = 0; k < RUN.scan.length; k++) g[k ? "lineTo" : "moveTo"](gx0 + (RUN.scan[k][0] - 30) / 45 * (gx1 - gx0), gy0 - (RUN.scan[k][1] - lo) / (hi - lo) * (gy0 - gy1)); g.stroke();
+      label("δ₁ against i₁: the minimum", gx0, gy1 - 6, fs, "#ffd27a", "left", "700"); }
+  }
+}
+function draw(){
+  minPx = 999;
+  L = layout();
+  if (cv.width !== L.W || cv.height !== L.H){ cv.width = L.W; cv.height = L.H; }
+  var bg = g.createLinearGradient(0, 0, 0, L.H); bg.addColorStop(0, "#0b1226"); bg.addColorStop(1, "#04060c"); g.fillStyle = bg; g.fillRect(0, 0, L.W, L.H);
+  drawReadouts(); drawScene(); drawPanel();
+}
+
+/* ------------------------------------------------------------ controls */
+function setSpeed(k){ RUN.speed = k; }
+$("gobtn").addEventListener("click", start);
+$("replaybtn").addEventListener("click", replay);
+$("resetbtn").addEventListener("click", reset);
+$("in_i").addEventListener("input", function(){ RUN.preset = null; setParam("i1", this.value); });
+$("in_a1").addEventListener("input", function(){ RUN.preset = null; setParam("A1", this.value); });
+$("in_a2").addEventListener("input", function(){ RUN.preset = null; setParam("A2", this.value); });
+$("in_n1").addEventListener("input", function(){ RUN.preset = null; setParam("n1", this.value); });
+$("in_n2").addEventListener("input", function(){ RUN.preset = null; setParam("n2", this.value); });
+$("wi_min1").addEventListener("click", function(){ preset("min1"); });
+$("wi_both").addEventListener("click", function(){ preset("both"); });
+$("wi_thin").addEventListener("click", function(){ preset("thin"); });
+$("classbtn").addEventListener("click", function(){
+  var on = document.body.classList.toggle("classroom"); this.setAttribute("aria-pressed", on ? "true" : "false");
+  this.textContent = on ? "Exit classroom" : "Classroom";
+});
+$("themebtn").addEventListener("click", function(){
+  var r = document.documentElement, dark = r.getAttribute("data-theme") === "dark" || (!r.getAttribute("data-theme") && window.matchMedia && matchMedia("(prefers-color-scheme: dark)").matches);
+  r.setAttribute("data-theme", dark ? "light" : "dark");
+});
+
+var lastT = null;
+function loop(ts){
+  if (lastT === null) lastT = ts;
+  var dt = Math.min(0.05, Math.max(0, (ts - lastT) / 1000)); lastT = ts;
+  tick(RUN.state === "paused" ? 0 : dt); draw();
+  requestAnimationFrame(loop);
+}
+
+window.PX = {
+  ENGINE: ENGINE, QRUN: QRUN, ANS: ANS, RUN: RUN,
+  answer: function(){ return ANS; },
+  minLabelPx: function(){ draw(); return minPx; },
+  start: start, replay: replay, reset: reset, setSpeed: setSpeed, speed: function(k){ RUN.speed = k; },
+  set: setParam, preset: preset,
+  state: function(){ var c = cfgAt(), tr = ENGINE.trace(c); return { state: RUN.state, phase: RUN.phase, st: RUN.st, p: { A1: RUN.p.A1, n1: RUN.p.n1, A2: RUN.p.A2, n2: RUN.p.n2, i1: RUN.p.i1 }, cfg: c,
+    ok: tr.ok, e1: tr.e1, i2: tr.i2, e2: tr.e2, dev1: tr.dev1, dev2: tr.dev2, tested: Object.keys(RUN.tested), measured: RUN.measured || null, done: RUN.done, confirmed: RUN.confirmed, scan: RUN.scan.length }; }
+};
+
+$("solans").textContent = ANS || "";
+syncSliders(); refreshButtons(); narrate(); draw();
+window.addEventListener("resize", function(){ draw(); });
+requestAnimationFrame(loop);
+})();
+</script>
+</body>
+</html>
