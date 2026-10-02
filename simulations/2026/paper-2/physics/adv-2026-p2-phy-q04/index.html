@@ -210,17 +210,16 @@ body.classroom #target .sym{font-size:24px} body.classroom #target .val{font-siz
   <h2 id="lh"><b>02</b>The experiment</h2>
   <p class="keyres" id="target" data-kind="option" aria-live="polite"><span class="lbl">Target:</span><span class="sym">period of the radial oscillation <i>T</i><sub><i>r</i></sub></span><span class="val" id="ansval"></span></p>
   <p id="narr" aria-live="polite">Ready.</p>
-  <div class="stage"><canvas id="labcv" width="1200" height="720" role="img" aria-label="Experiment: seen from above, a particle circles an attracting centre on a circular orbit; it is nudged outward with its angular momentum unchanged, and its distance from the centre then rises and falls periodically; a graph plots the distance against time, the period is measured from successive maxima and compared with the four options, and the turning points are marked on the orbit to show whether it closes"></canvas></div>
+  <div class="stage"><canvas id="labcv" width="1200" height="720" role="img" aria-label="Experiment: seen from above, a charged puck glides on a frictionless air table around a fixed, oppositely charged sphere; a stopwatch on the table runs in real time; the puck circles once, is nudged outward with its angular momentum unchanged, and its distance from the sphere then rises and falls periodically; a graph plots the distance against time, the period is timed between successive farthest points and compared with the four options, and the farthest points are marked on the table to show whether the orbit closes"></canvas></div>
   <div id="controls" role="group" aria-label="experiment controls">
     <button class="go" type="button" id="gobtn">▶ START EXPERIMENT</button>
     <button type="button" id="replaybtn">↺ Replay</button>
     <button type="button" id="resetbtn">Reset</button>
-    <div class="v0"><label for="in_l">Angular momentum ℓ</label><input type="range" id="in_l" min="8" max="12" step="0.5" value="10" aria-describedby="out_l"><output id="out_l" for="in_l">10.0 kg m² s⁻¹</output></div>
-    <div class="v0"><label for="in_k">Force constant k</label><input type="range" id="in_k" min="40" max="60" step="1" value="50" aria-describedby="out_k"><output id="out_k" for="in_k">50 N m²</output></div>
-    <div class="v0"><label for="in_m">Mass m</label><input type="range" id="in_m" min="0.8" max="1.25" step="0.05" value="1" aria-describedby="out_m"><output id="out_m" for="in_m">1.00 kg</output></div>
+    <div class="v0"><label for="in_l">Angular momentum ℓ</label><input type="range" id="in_l" min="9" max="11" step="0.25" value="10" aria-describedby="out_l"><output id="out_l" for="in_l">10.0 kg m² s⁻¹</output></div>
+    <div class="v0"><label for="in_k">Force constant k</label><input type="range" id="in_k" min="45" max="55" step="1" value="50" aria-describedby="out_k"><output id="out_k" for="in_k">50 N m²</output></div>
+    <div class="v0"><label for="in_m">Mass m</label><input type="range" id="in_m" min="0.9" max="1.1" step="0.02" value="1" aria-describedby="out_m"><output id="out_m" for="in_m">1.00 kg</output></div>
     <div class="v0"><label for="in_d">Nudge δr / r₀</label><input type="range" id="in_d" min="0.01" max="0.2" step="0.01" value="0.05" aria-describedby="out_d"><output id="out_d" for="in_d">0.05</output></div>
-    <div class="seg whatif" role="group" aria-label="what if: the force law" id="wigroup" hidden><span>What if the force were…</span><button type="button" id="f15" aria-pressed="false">k/r^1.5</button><button type="button" id="f20" aria-pressed="true">k/r²</button><button type="button" id="f25" aria-pressed="false">k/r^2.5</button></div>
-    <div class="seg" role="group" aria-label="speed"><span>Speed</span><button type="button" id="sp1" aria-pressed="true">1×</button><button type="button" id="sp2" aria-pressed="false">½×</button></div>
+    <div class="seg whatif" role="group" aria-label="what if: the force law" id="wigroup" hidden><span>What if the force were…</span><button type="button" id="f15" aria-pressed="false">K/r^1.5</button><button type="button" id="f20" aria-pressed="true">k/r²</button><button type="button" id="f25" aria-pressed="false">K/r^2.5</button></div>
     <button type="button" id="classbtn" aria-pressed="false">Classroom</button>
   </div>
 </section>
@@ -239,7 +238,7 @@ body.classroom #target .sym{font-size:24px} body.classroom #target .val{font-siz
       <li><b>The other options.</b> (B) 2<i>π</i>√(<i>m</i>/<i>k</i>) has the wrong units here (<i>k</i> is in N m², so <i>m</i>/<i>k</i> is in s<sup>2</sup> m<sup>−3</sup>); it is the spring formula. (C) and (D) are a third and a fifth of the orbital period; the experiment shows the wobble takes one full revolution, not a third or a fifth of one.</li>
     </ol>
     <h3>Understand the concept</h3>
-    <div class="concept">An orbit can be split into a turning motion and an in-and-out motion. Angular momentum fixes the turning part, and what is left behaves like a ball rolling in a valley, the effective potential. The circular orbit sits at the bottom of the valley; a small nudge makes the ball roll back and forth. For the inverse-square force the valley's stiffness is such that one back-and-forth takes exactly one revolution, so the farthest point comes back at the same place every time and the orbit is a closed ellipse. For any other power law the two periods differ and the farthest point slowly turns around the centre, tracing a rosette: switch the force law in the experiment to see it.</div>
+    <div class="concept">An orbit can be split into a turning motion and an in-and-out motion. Angular momentum fixes the turning part, and what is left behaves like a ball rolling in a valley, the effective potential. The circular orbit sits at the bottom of the valley; a small nudge makes the ball roll back and forth. For the inverse-square force the valley's stiffness is such that one back-and-forth takes exactly one revolution, so the farthest point comes back at the same place every time and the orbit is a closed ellipse. For any other power law the two periods differ and the farthest point slowly turns around the centre, tracing a rosette: switch the force law in the experiment to see it. Any inverse-square attraction behaves this way: a charged puck around a charged sphere (as in the experiment, where one orbit takes about two and a half seconds) or a planet around the Sun.</div>
     <h3>Key takeaways</h3>
     <ul class="take">
       <li>Effective potential: <i>U</i><sub>eff</sub> = <i>ℓ</i><sup>2</sup>/(2<i>mr</i><sup>2</sup>) + <i>U</i>(<i>r</i>); circular orbit at its minimum.</li>
@@ -254,10 +253,10 @@ body.classroom #target .sym{font-size:24px} body.classroom #target .val{font-siz
 <section id="howto" aria-labelledby="hh">
   <h2 id="hh">How to use this simulation</h2>
   <ol class="howto">
-    <li>Press <b>▶ START EXPERIMENT</b>. The particle circles the centre at <i>r</i><sub>0</sub>; then it is nudged outward by <i>δr</i>, keeping its angular momentum.</li>
-    <li>Watch the distance <i>r</i> rise and fall on the graph. The farthest points are marked on the orbit and on the graph.</li>
+    <li>Press <b>▶ START EXPERIMENT</b>. The stopwatch starts; the puck circles the charged sphere once at <i>r</i><sub>0</sub>, then it is nudged outward by <i>δr</i>, keeping its angular momentum.</li>
+    <li>Everything runs in real time: one second on the stopwatch is one second for the puck. Watch the distance <i>r</i> rise and fall; the farthest points are marked on the table and the graph, and the stopwatch shows each lap.</li>
     <li>The period is measured between successive farthest points and compared with the four options; the one that matches is found.</li>
-    <li>Then change <i>ℓ</i>, <i>k</i>, <i>m</i> or the nudge, or try <b>What if the force were…</b> <i>k</i>/<i>r</i><sup>1.5</sup> or <i>k</i>/<i>r</i><sup>2.5</sup> to see the orbit stop closing.</li>
+    <li>Then change <i>ℓ</i>, <i>k</i>, <i>m</i> or the nudge, or try <b>What if the force were…</b> <i>K</i>/<i>r</i><sup>1.5</sup> or <i>K</i>/<i>r</i><sup>2.5</sup> to see the orbit stop closing.</li>
     <li><b>Replay</b> runs it again. <b>Reset</b> clears it. <b>Classroom</b> fills the screen for a projector.</li>
   </ol>
 </section>
@@ -266,9 +265,12 @@ body.classroom #target .sym{font-size:24px} body.classroom #target .val{font-siz
   ADV-2026-P2-PHY-Q04 · PrayogX · JEE Advanced Interactive Simulation Library · question text reproduced
   from the official JEE (Advanced) 2026 Paper 2 for educational use. This is a virtual laboratory only.
   The question gives no numbers, so the experiment uses representative SI values on the sliders (m = 1 kg,
-  k = 50 N m², ℓ = 10 kg m² s⁻¹, so r₀ = 2 m). The orbit is computed by integrating Newton's second law; the answer is
-  the small-nudge limit, and the measured period drifts above it as the nudge grows. Time runs at its real rate
-  unless a playback factor is shown.
+  k = 50 N m², ℓ = 10 kg m² s⁻¹, so r₀ = 2 m and one orbit takes 2.513 s). The inverse-square attraction is drawn as
+  Coulomb's force between a charged puck on a frictionless air table and a fixed charged sphere (k = qQ/(4πε₀); a
+  planet and the Sun obey the same law with k = GMm, but take months). Time runs in real time: the stopwatch reads
+  the same seconds as the motion. The orbit is computed by integrating Newton's second law; the answer is the
+  small-nudge limit, and the measured period drifts above it as the nudge grows. The K/r^1.5 and K/r^2.5 forces are
+  hypothetical, chosen to keep the same circular orbit.
 </footer>
 </main>
 
@@ -276,12 +278,13 @@ body.classroom #target .sym{font-size:24px} body.classroom #target .val{font-siz
 (function(){
 "use strict";
 /* ENGINE-BEGIN */
-/* A particle of mass m moves under an attractive central force F = k/r^n (n = 2 is the question's inverse square).
-   Its circular orbit for angular momentum l has r0 = (l^2/(m k))^(1/(3 - n)). It is displaced radially to r0(1 + dr)
-   with l unchanged (purely tangential speed l/(m r)), and Newton's second law is integrated in the plane with RK4.
-   The radial period is measured from the times of successive maxima of r(t) (parabolic refinement); the printed
-   options are evaluated with the same m, k, l, and the answer is the option the measured period matches.
-   Representative SI values: m = 1 kg, k = 50 N m^2, l = 10 kg m^2/s, so r0 = 2 m. */
+/* A charged puck (mass m) glides on a frictionless air table around a fixed, oppositely charged sphere: Coulomb's
+   attraction F = k/r^2 (k = qQ/(4 pi eps0)) is the question's force. On its circular orbit r0 = l^2/(m k). It is
+   displaced radially to r0(1 + dr) with l unchanged (purely tangential speed l/(m r)), and Newton's second law is
+   integrated in the plane with RK4. The radial period is measured from the times of successive maxima of r(t)
+   (parabolic refinement); the printed options are evaluated with the same m, k, l, and the answer is the option the
+   measured period matches. For the what-if laws F = K/r^n, K = k r0^(n - 2) keeps the circular orbit at r0.
+   Representative SI values: m = 1 kg, k = 50 N m^2, l = 10 kg m^2/s, so r0 = 2 m and one orbit takes 2.513 s. */
 var ENGINE = (function(){
   var Q = { m: 1, k: 50, l: 10, dr: 0.05, n: 2 };
   var OPTS = {
@@ -290,24 +293,28 @@ var ENGINE = (function(){
     C: function(p){ return 2 * Math.PI * Math.pow(p.l, 3) / (3 * p.m * p.k * p.k); },
     D: function(p){ return 2 * Math.PI * Math.pow(p.l, 3) / (5 * p.m * p.k * p.k); }
   };
-  function params(o){ var p = {}, k; for (k in Q) p[k] = Q[k]; if (o) for (k in o) if (o.hasOwnProperty(k)) p[k] = o[k]; return p; }
-  function r0(p){ return Math.pow(p.l * p.l / (p.m * p.k), 1 / (3 - p.n)); }
+  function params(o){
+    var p = {}, k; for (k in Q) p[k] = Q[k]; if (o) for (k in o) if (o.hasOwnProperty(k)) p[k] = o[k];
+    p.rc = p.l * p.l / (p.m * p.k); p.K = p.k * Math.pow(p.rc, p.n - 2);
+    return p;
+  }
+  function r0(p){ return Math.pow(p.l * p.l / (p.m * p.K), 1 / (3 - p.n)); }
   function tcirc(p){ var R = r0(p); return 2 * Math.PI * p.m * R * R / p.l; }          /* the circular orbit's period, 2 pi r/v */
   function simulate(o, revs){
     var p = params(o), R0 = r0(p), Tc = tcirc(p), r1 = R0 * (1 + p.dr), h = Tc / 4000, tEnd = (revs || 3.3) * Tc;
     var s = [r1, 0, 0, p.l / (p.m * r1)], t = 0, rec = [], i = 0;
-    function f(q){ var rr = Math.sqrt(q[0] * q[0] + q[1] * q[1]), a = -p.k / (p.m * Math.pow(rr, p.n + 1)); return [q[2], q[3], a * q[0], a * q[1]]; }
+    function f(q){ var rr = Math.sqrt(q[0] * q[0] + q[1] * q[1]), a = -p.K / (p.m * Math.pow(rr, p.n + 1)); return [q[2], q[3], a * q[0], a * q[1]]; }
     function add(q, d, c){ return [q[0] + d[0] * c, q[1] + d[1] * c, q[2] + d[2] * c, q[3] + d[3] * c]; }
-    rec.push([0, r1, s[0], s[1], p.m * (s[0] * s[3] - s[1] * s[2])]);
-    while (t < tEnd - 1e-12){
+    rec.push([0, r1, s[0], s[1], p.m * (s[0] * s[3] - s[1] * s[2]), s[2], s[3]]);
+    while (t < tEnd - 1e-9 * Tc){
       var a = f(s), b = f(add(s, a, h / 2)), c = f(add(s, b, h / 2)), d = f(add(s, c, h));
       s = [s[0] + h / 6 * (a[0] + 2 * b[0] + 2 * c[0] + d[0]), s[1] + h / 6 * (a[1] + 2 * b[1] + 2 * c[1] + d[1]), s[2] + h / 6 * (a[2] + 2 * b[2] + 2 * c[2] + d[2]), s[3] + h / 6 * (a[3] + 2 * b[3] + 2 * c[3] + d[3])];
       t += h; i++;
-      if (i % 4 === 0) rec.push([t, Math.sqrt(s[0] * s[0] + s[1] * s[1]), s[0], s[1], p.m * (s[0] * s[3] - s[1] * s[2])]);
+      if (i % 4 === 0) rec.push([t, Math.sqrt(s[0] * s[0] + s[1] * s[1]), s[0], s[1], p.m * (s[0] * s[3] - s[1] * s[2]), s[2], s[3]]);
     }
     return { p: p, r0: R0, Tc: Tc, rec: rec, tEnd: tEnd };
   }
-  /* the maxima of r(t) up to time tm: t = 0 (the nudge leaves the particle at a turning point) and every later peak */
+  /* the maxima of r(t) up to time tm: t = 0 (the nudge leaves the puck at a turning point) and every later peak */
   function maxima(rec, tm){
     var out = [{ t: 0, r: rec[0][1], x: rec[0][2], y: rec[0][3] }], i;
     for (i = 1; i < rec.length - 1; i++){
@@ -337,11 +344,13 @@ var ANS = QRUN.answer;
 function $(id){ return document.getElementById(id); }
 var cv = $("labcv"), g = cv.getContext("2d");
 var reduced = !!(window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches);
-var PH = [["orbit", 2.0], ["nudge", 1.0], ["wobble", 0], ["compare", 3.0]];
 var OCOL = { A: "#7cc4ff", B: "#ffb37a", C: "#c9a3ff", D: "#ff7d8a" };
 var OTXT = { A: "2πℓ³/(mk²)", B: "2π√(m/k)", C: "2πℓ³/(3mk²)", D: "2πℓ³/(5mk²)" };
+var COMPARE_S = 3.0;                                              /* the stopwatch is stopped while the periods are compared */
 
-var RUN = { state: "setup", phase: "ready", speed: 1, pi: 0, st: 0, clock: 0, sim: null, ts: 0, pf: 1, lines: 0, measured: null, done: false, confirmed: false,
+/* real time: one simulated second is one real second, always. Phases: one circular orbit, then the wobble
+   (the nudge is instantaneous, at its start), then the comparison with the stopwatch stopped. */
+var RUN = { state: "setup", phase: "ready", speed: 1, st: 0, sim: null, tOrbit: 0, ts: 0, cmp: 0, lines: 0, measured: null, done: false, confirmed: false,
   p: { m: 1, k: 50, l: 10, dr: 0.05, n: 2 }, view: null };
 var L = null, minPx = 999, pulseT = null;
 
@@ -352,9 +361,9 @@ function layout(){
   return { phone: false, W: 1200, H: 720, ro: { x: 16, y: 14, w: 1168, h: 92 }, sc: { x: 16, y: 122, w: 620, h: 584 }, pn: { x: 652, y: 122, w: 532, h: 584 }, fs: 16, big: 23 };
 }
 function sec(x){ return x.toFixed(3) + " s"; }
+function watchTxt(t){ var m = Math.floor(t / 60), s = t - 60 * m; return (m < 10 ? "0" : "") + m + ":" + (s < 10 ? "0" : "") + s.toFixed(2); }
 
 /* --------------------------------------------------------------- run */
-function wobbleLen(){ return RUN.sim.tEnd / RUN.pf; }
 function finish(){
   var m = ENGINE.measure(RUN.sim);
   RUN.measured = { T: m.T, maxima: m.maxima.length, apsis: m.apsis, option: m.T === null ? null : ENGINE.pick(m.T, RUN.sim.p), Tc: RUN.sim.Tc };
@@ -365,27 +374,30 @@ function finish(){
 }
 function tick(dt){
   if (RUN.state !== "running") return;
-  var h = dt * RUN.speed, ph = PH[RUN.pi][0], len = ph === "wobble" ? wobbleLen() : PH[RUN.pi][1];
+  var h = dt * RUN.speed, before = RUN.st;
   RUN.st += h;
-  if (ph === "wobble"){ RUN.ts = Math.min(RUN.sim.tEnd, RUN.st * RUN.pf); var mx = ENGINE.maxima(RUN.sim.rec, RUN.ts).length; if (mx >= 2) RUN.lines = Math.max(RUN.lines, 1); if (RUN.ts > 0.5 * RUN.sim.tEnd) RUN.lines = Math.max(RUN.lines, 2); }
-  if (ph === "compare" && RUN.st > 1.2) RUN.lines = Math.max(RUN.lines, 3);
-  if (RUN.st >= len){
-    RUN.pi++; RUN.st = 0;
-    if (RUN.pi >= PH.length){ finish(); return; }
-    RUN.phase = PH[RUN.pi][0]; narrate();
+  if (RUN.phase === "orbit"){
+    if (RUN.st >= RUN.tOrbit){ RUN.phase = "wobble"; RUN.ts = RUN.st - RUN.tOrbit; narrate(); }
+  } else if (RUN.phase === "wobble"){
+    RUN.ts = Math.min(RUN.sim.tEnd, RUN.st - RUN.tOrbit);
+    var mx = ENGINE.maxima(RUN.sim.rec, RUN.ts).length; if (mx >= 2) RUN.lines = Math.max(RUN.lines, 1); if (RUN.ts > 0.5 * RUN.sim.tEnd) RUN.lines = Math.max(RUN.lines, 2);
+    if (RUN.ts >= RUN.sim.tEnd){ RUN.phase = "compare"; RUN.cmp = 0; narrate(); }
+  } else if (RUN.phase === "compare"){
+    RUN.cmp += h; if (RUN.cmp > 1.2) RUN.lines = Math.max(RUN.lines, 3);
+    if (RUN.cmp >= COMPARE_S){ finish(); return; }
   }
-  else if (Math.floor((RUN.st - h) * 2) !== Math.floor(RUN.st * 2)) narrate();
+  if (Math.floor(before * 2) !== Math.floor(RUN.st * 2)) narrate();
 }
 function start(){
   if (RUN.state === "running"){ RUN.state = "paused"; refreshButtons(); narrate(); return; }
   if (RUN.state === "paused"){ RUN.state = "running"; refreshButtons(); narrate(); return; }
   resetRun();
-  RUN.sim = ENGINE.simulate(RUN.p); RUN.pf = Math.max(1, RUN.sim.tEnd / 8.5);
-  if (reduced){ RUN.lines = 3; finish(); return; }
-  RUN.state = "running"; RUN.phase = PH[0][0]; RUN.pi = 0; narrate(); refreshButtons();
+  RUN.sim = ENGINE.simulate(RUN.p); RUN.tOrbit = RUN.sim.Tc;                    /* one full circular orbit before the nudge */
+  if (reduced){ RUN.st = RUN.tOrbit + RUN.sim.tEnd; RUN.lines = 3; finish(); return; }
+  RUN.state = "running"; RUN.phase = "orbit"; narrate(); refreshButtons();
 }
 function resetRun(){
-  RUN.state = "setup"; RUN.phase = "ready"; RUN.pi = 0; RUN.st = 0; RUN.sim = null; RUN.ts = 0; RUN.lines = 0; RUN.measured = null; RUN.done = false; RUN.confirmed = false; RUN.view = null;
+  RUN.state = "setup"; RUN.phase = "ready"; RUN.st = 0; RUN.sim = null; RUN.ts = 0; RUN.cmp = 0; RUN.tOrbit = 0; RUN.lines = 0; RUN.measured = null; RUN.done = false; RUN.confirmed = false; RUN.view = null;
   $("wigroup").hidden = true; hideTarget();
 }
 function replay(){ RUN.state = "setup"; start(); }
@@ -393,7 +405,7 @@ function reset(){ resetRun(); RUN.p = { m: 1, k: 50, l: 10, dr: 0.05, n: 2 }; sy
 
 /* exploring: a run in progress is abandoned; after a finished run each change runs the orbit again at once */
 function setParam(k, v){
-  var lim = { l: [8, 12], k: [40, 60], m: [0.8, 1.25], dr: [0.01, 0.2], n: [1.5, 2.5] }, dflt = { l: 10, k: 50, m: 1, dr: 0.05, n: 2 };
+  var lim = { l: [9, 11], k: [45, 55], m: [0.9, 1.1], dr: [0.01, 0.2], n: [1.5, 2.5] }, dflt = { l: 10, k: 50, m: 1, dr: 0.05, n: 2 };
   if (!lim[k]) return;
   v = parseFloat(v); if (!isFinite(v)) v = dflt[k];
   v = Math.min(lim[k][1], Math.max(lim[k][0], v)); if (k === "n") v = v < 1.75 ? 1.5 : v > 2.25 ? 2.5 : 2;
@@ -426,16 +438,17 @@ function hideTarget(){
 /* ------------------------------------------------------------ words */
 function narrate(){
   var t, ph = RUN.phase, p = cur();
-  if (ph === "ready") t = "Ready. A particle circles an attracting centre on an orbit of radius r₀ = " + ENGINE.r0(p).toFixed(2) + " m. Nudge it outward, keeping its angular momentum: how long does one in-and-out wobble take? Press START.";
-  else if (ph === "orbit") t = "A circular orbit: the attraction k/r² supplies exactly the centripetal force for ℓ = " + p.l.toFixed(1) + " kg m² s⁻¹. One revolution takes " + sec(RUN.sim.Tc) + " (shown in 2 s).";
-  else if (ph === "nudge") t = "Nudge: the particle is moved out by δr = " + (p.dr * ENGINE.r0(p)).toFixed(3) + " m with the same angular momentum, so it now moves a little too slowly for a circle at that distance.";
+  if (ph === "ready") t = "Ready. A charged puck circles a fixed charged sphere on an air table, " + ENGINE.r0(p).toFixed(2) + " m from its centre. Nudge it outward, keeping its angular momentum: how long does one in-and-out wobble take? Press START - the stopwatch runs in real time.";
+  else if (ph === "orbit") t = "A circular orbit: the Coulomb attraction k/r² is exactly the centripetal force for ℓ = " + p.l.toFixed(1) + " kg m² s⁻¹. One revolution takes " + sec(RUN.sim.Tc) + " - watch the stopwatch: 1 s on it is 1 s for the puck.";
   else if (ph === "wobble"){ var m = ENGINE.measure(RUN.sim, RUN.ts);
-    t = "t = " + RUN.ts.toFixed(2) + " s: the distance swings in and out around r₀. " + (m.T === null ? "Waiting for the next farthest point…" : "Farthest points " + (m.maxima.length - 1) + " period(s) apart: Tr = " + sec(m.T) + ".") + (RUN.pf > 1.01 ? " (playback ×" + RUN.pf.toFixed(1) + ")" : ""); }
-  else if (ph === "compare") t = "Comparing the measured period with each option, using the same m, k and ℓ.";
-  else if (ph === "done") t = "Measured: Tr = " + sec(RUN.measured.T) + ", matching (" + (RUN.measured.option || "none") + ") 2πℓ³/(mk²) = " + sec(ENGINE.OPTS.A(RUN.sim.p)) + " (" + (100 * (RUN.measured.T / ENGINE.OPTS.A(RUN.sim.p) - 1)).toFixed(1) + " % above it, because the nudge is small but not zero). The farthest point comes back after " + RUN.measured.apsis.toFixed(0)
-    + "° - one full revolution - so the orbit closes. Now try What if…";
+    t = (RUN.ts < 0.8 ? "Nudge! The puck is moved out by δr = " + (p.dr * ENGINE.r0(p)).toFixed(3) + " m with the same angular momentum, so it now moves too slowly for a circle at that distance. " : "")
+      + "Stopwatch " + watchTxt(RUN.st) + ": the distance swings in and out around r₀. " + (m.T === null ? "Waiting for the next farthest point…" : "Farthest points " + (m.maxima.length - 1) + " lap(s) apart: Tr = " + sec(m.T) + "."); }
+  else if (ph === "compare") t = "Stopwatch stopped. Comparing the measured period with each option, using the same m, k and ℓ.";
+  else if (ph === "done") t = "Measured on the stopwatch: Tr = " + sec(RUN.measured.T) + ", matching (" + (RUN.measured.option || "none") + ") 2πℓ³/(mk²) = " + sec(ENGINE.OPTS.A(RUN.sim.p))
+    + " (" + (100 * (RUN.measured.T / ENGINE.OPTS.A(RUN.sim.p) - 1)).toFixed(1) + " % above it, because the nudge is small but not zero). The farthest point comes back after " + RUN.measured.apsis.toFixed(0)
+    + "° - one full orbit - so the orbit closes. Now try What if…";
   else { var v = RUN.view, vp = v.sim.p;
-    if (vp.n !== 2) t = "Force k/r^" + vp.n + ": Tr = " + sec(v.m.T) + " but one revolution takes " + sec(v.sim.Tc) + ". The farthest point now moves on by " + v.m.apsis.toFixed(0) + "° each wobble, so the orbit traces a rosette and never closes.";
+    if (vp.n !== 2) t = "Hypothetical force K/r^" + vp.n + ": Tr = " + sec(v.m.T) + " but one orbit takes " + sec(v.sim.Tc) + ". The farthest point now moves on by " + v.m.apsis.toFixed(0) + "° each wobble, so the orbit traces a rosette and never closes.";
     else t = "ℓ = " + vp.l.toFixed(1) + ", k = " + vp.k + ", m = " + vp.m.toFixed(2) + ", δr/r₀ = " + vp.dr.toFixed(2) + ": Tr = " + sec(v.m.T) + ", 2πℓ³/(mk²) = " + sec(ENGINE.OPTS.A(vp)) + (v.answer ? " - option (" + v.answer + ")." : " - the nudge is no longer small, so the period has drifted above the small-oscillation value.");
   }
   if (RUN.state === "paused") t = "Paused. " + t;
@@ -475,70 +488,134 @@ function panel(x, y, w, h){ roundRect(x, y, w, h, 14); g.fillStyle = "rgba(10,16
 
 /* ------------------------------------------------------------ what is shown: the live run, or the explored orbit */
 function shown(){
-  if (RUN.view) return { sim: RUN.view.sim, ts: RUN.view.sim.tEnd };
+  if (RUN.view) return { sim: RUN.view.sim, ts: RUN.view.sim.tEnd, phi: 0 };
   if (!RUN.sim) return null;
-  return { sim: RUN.sim, ts: RUN.phase === "wobble" || RUN.phase === "compare" || RUN.done ? RUN.ts : 0 };
+  return { sim: RUN.sim, ts: RUN.phase === "orbit" ? 0 : RUN.ts, phi: 2 * Math.PI * RUN.tOrbit / RUN.sim.Tc };
 }
-function stateAt(sim, ts){ var i = Math.min(sim.rec.length - 1, Math.max(0, Math.round(ts / sim.rec[sim.rec.length - 1][0] * (sim.rec.length - 1)))); return sim.rec[i]; }
-/* where the particle is drawn: on the circle before the nudge, sliding out during it, on the computed orbit after */
+function idxAt(sim, ts){ return Math.min(sim.rec.length - 1, Math.max(0, Math.round(ts / sim.rec[sim.rec.length - 1][0] * (sim.rec.length - 1)))); }
+function rot(x, y, a){ var c = Math.cos(a), s = Math.sin(a); return [x * c - y * s, x * s + y * c]; }
+/* the stopwatch reads real elapsed time since START, which is the puck's time too; it stops for the comparison */
+function clock(){
+  if (RUN.view) return RUN.view.sim.tEnd;
+  if (!RUN.sim) return 0;
+  if (RUN.phase === "compare" || RUN.done) return RUN.tOrbit + RUN.sim.tEnd;
+  return RUN.st;
+}
+/* where the puck is: on the circle for the first orbit, then on the computed orbit (the nudge is instantaneous) */
 function particle(){
-  var sh = shown(), p = cur(), R0 = sh ? sh.sim.r0 : ENGINE.r0(p);
-  if (!sh) return { x: R0, y: 0, r: R0 };
-  if (RUN.phase === "orbit"){ var a = 2 * Math.PI * Math.min(1, RUN.st / 2.0); return { x: R0 * Math.cos(a), y: R0 * Math.sin(a), r: R0 }; }
-  if (RUN.phase === "nudge"){ var rr = R0 * (1 + sh.sim.p.dr * Math.min(1, RUN.st / 0.8)); return { x: rr, y: 0, r: rr }; }
-  var q = stateAt(sh.sim, sh.ts); return { x: q[2], y: q[3], r: q[1], L: q[4] };
+  var sh = shown(), p = cur(), R0 = sh ? sh.sim.r0 : ENGINE.r0(p), a, q;
+  if (!sh) return { x: R0, y: 0, r: R0, vx: 0, vy: 1 };
+  if (RUN.phase === "orbit"){ a = 2 * Math.PI * RUN.st / sh.sim.Tc; return { x: R0 * Math.cos(a), y: R0 * Math.sin(a), r: R0, vx: -Math.sin(a), vy: Math.cos(a) }; }
+  var e = sh.sim.rec[idxAt(sh.sim, sh.ts)]; q = rot(e[2], e[3], sh.phi); var w = rot(e[5], e[6], sh.phi);
+  return { x: q[0], y: q[1], r: e[1], L: e[4], vx: w[0], vy: w[1] };
 }
 
 /* ------------------------------------------------------------ readouts */
 function drawReadouts(){
   var r = L.ro, sh = shown(), pt = particle(), i, px, py, mm = sh && sh.ts > 0 ? ENGINE.measure(sh.sim, sh.ts) : null, p = sh ? sh.sim.p : cur();
-  var revs = sh && sh.ts > 0 ? Math.floor(sh.ts / sh.sim.Tc + 1e-9) : 0;
   var rows = [["Distance r", pt.r.toFixed(3) + " m"], ["Angular momentum ℓ", (pt.L || p.l).toFixed(3) + " kg m²/s"],
-    ["Revolutions since the nudge", sh && sh.ts > 0 ? String(revs) : "—"], ["Radial period Tr", mm && mm.T !== null ? sec(mm.T) : "not measured yet"]];
+    ["Stopwatch (real time)", watchTxt(clock())], ["Radial period Tr", mm && mm.T !== null ? sec(mm.T) : "not measured yet"]];
   panel(r.x, r.y, r.w, r.h);
   for (i = 0; i < 4; i++){
     if (L.phone){ px = r.x + 18 + (i % 2) * 348; py = r.y + 40 + (i < 2 ? 0 : 1) * 96; } else { px = r.x + 20 + i * 290; py = r.y + 34; }
     fitLabel(rows[i][0], px, py, L.fs - (L.phone ? 0 : 1), L.phone ? 326 : 270, "#8fa6cf", "left", "700");
     var big = fit(rows[i][1], L.big - (L.phone ? 3 : 1), L.phone ? 320 : 270, "800");
-    label(rows[i][1], px, py + (L.phone ? 42 : 38), Math.max(big, minFs() + (L.phone ? 0 : 1)), i === 3 && mm && mm.T !== null ? "#9ff0c8" : (/^(—|not measured yet)$/.test(rows[i][1]) ? "#8fa6cf" : "#ffffff"), "left", "800");
+    label(rows[i][1], px, py + (L.phone ? 42 : 38), Math.max(big, minFs() + (L.phone ? 0 : 1)), i === 3 && mm && mm.T !== null ? "#9ff0c8" : (/^(not measured yet)$/.test(rows[i][1]) ? "#8fa6cf" : "#ffffff"), "left", "800");
   }
 }
 
-/* ------------------------------------------------------------ the scene: the orbital plane seen from above */
+/* ------------------------------------------------------------ the apparatus */
+/* the air table: a glass top with a grid of air holes, seen from above */
+function drawTable(S, cx, cy, sc){
+  var ph = L.phone, x0 = S.x + 10, y0 = S.y + 10, w = S.w - 20, h = S.h - 20, k;
+  var top = g.createLinearGradient(x0, y0, x0 + w, y0 + h); top.addColorStop(0, "#16324a"); top.addColorStop(1, "#0b1a2b");
+  g.fillStyle = "#3a4250"; roundRect(x0, y0, w, h, 16); g.fill();
+  g.fillStyle = top; roundRect(x0 + 8, y0 + 8, w - 16, h - 16, 12); g.fill();
+  var step = 0.5 * sc;                                            /* a hole every 0.5 m: the grid is a ruler too */
+  g.fillStyle = "rgba(140,190,230,.28)";
+  for (var gx = cx - Math.floor((cx - x0) / step) * step; gx < x0 + w - 8; gx += step) for (var gy = cy - Math.floor((cy - y0) / step) * step; gy < y0 + h - 8; gy += step){ if (gx > x0 + 8 && gy > y0 + 8){ g.beginPath(); g.arc(gx, gy, 1.6, 0, 7); g.fill(); } }
+  g.fillStyle = "rgba(255,255,255,.05)"; g.beginPath(); g.moveTo(x0 + 8, y0 + 8); g.lineTo(x0 + w * 0.45, y0 + 8); g.lineTo(x0 + 8, y0 + h * 0.4); g.closePath(); g.fill();
+  /* a 1 m scale bar */
+  var bx = x0 + 22, byy = y0 + h - (ph ? 70 : 52);
+  g.strokeStyle = "#ffffff"; g.lineWidth = 3; g.beginPath(); g.moveTo(bx, byy); g.lineTo(bx + sc, byy); g.moveTo(bx, byy - 6); g.lineTo(bx, byy + 6); g.moveTo(bx + sc, byy - 6); g.lineTo(bx + sc, byy + 6); g.stroke();
+  for (k = 1; k < 10; k++){ g.lineWidth = 1; g.beginPath(); g.moveTo(bx + k * sc / 10, byy - 3); g.lineTo(bx + k * sc / 10, byy + 3); g.stroke(); }
+  backed("1 m", bx + sc / 2, byy - 12, L.fs - (ph ? 0 : 2), "#ffffff", "center");
+}
+/* the fixed charged sphere at the centre */
+function drawSphere(cx, cy, R){
+  var sh = g.createRadialGradient(cx + 3, cy + 5, R * 0.3, cx, cy, R * 1.6); sh.addColorStop(0, "rgba(0,0,0,.45)"); sh.addColorStop(1, "rgba(0,0,0,0)");
+  g.fillStyle = sh; g.beginPath(); g.arc(cx + 4, cy + 6, R * 1.6, 0, 7); g.fill();
+  var mg = g.createRadialGradient(cx - R * 0.35, cy - R * 0.35, R * 0.1, cx, cy, R); mg.addColorStop(0, "#ffffff"); mg.addColorStop(0.3, "#c8d2de"); mg.addColorStop(1, "#56606e");
+  g.fillStyle = mg; g.beginPath(); g.arc(cx, cy, R, 0, 7); g.fill();
+  label("+Q", cx, cy + R * 0.25, Math.max(minFs(), R * 0.7), "#16324a", "center", "900");
+}
+/* the puck: a red disc riding on its air cushion, its charge marked */
+function drawPuck(x, y, R, vx, vy){
+  var ph = L.phone;
+  g.fillStyle = "rgba(160,220,255,.18)"; g.beginPath(); g.arc(x, y, R * 1.45, 0, 7); g.fill();          /* the air cushion */
+  var pg = g.createRadialGradient(x - R * 0.35, y - R * 0.35, R * 0.1, x, y, R); pg.addColorStop(0, "#ff9a8a"); pg.addColorStop(1, "#b0262a");
+  g.fillStyle = pg; g.beginPath(); g.arc(x, y, R, 0, 7); g.fill(); g.strokeStyle = "#ffd0c8"; g.lineWidth = 2; g.stroke();
+  label("−q", x, y + R * 0.3, Math.max(minFs(), R * 0.8), "#ffffff", "center", "900");
+  var sp = Math.sqrt(vx * vx + vy * vy) || 1;
+  g.strokeStyle = "rgba(255,255,255,.55)"; g.lineWidth = 2; g.beginPath(); g.moveTo(x, y); g.lineTo(x + vx / sp * R * 2.2, y - vy / sp * R * 2.2); g.stroke();
+}
+/* the stopwatch: the long hand turns once a minute of real time, a digital read-out below, the last lap under it */
+function drawWatch(x, y, R, t, laps, running){
+  var ph = L.phone, k, a;
+  g.fillStyle = "#c9ced8"; g.fillRect(x - R * 0.14, y - R * 1.32, R * 0.28, R * 0.24); g.beginPath(); g.arc(x, y - R * 1.36, R * 0.12, 0, 7); g.fill();
+  var body = g.createRadialGradient(x - R * 0.3, y - R * 0.3, R * 0.2, x, y, R * 1.1); body.addColorStop(0, "#eef1f6"); body.addColorStop(1, "#7d8796");
+  g.fillStyle = body; g.beginPath(); g.arc(x, y, R * 1.1, 0, 7); g.fill();
+  g.fillStyle = "#0e1422"; g.beginPath(); g.arc(x, y, R, 0, 7); g.fill();
+  for (k = 0; k < 60; k++){ a = k / 60 * 2 * Math.PI - Math.PI / 2; var r0 = k % 5 ? R * 0.88 : R * 0.76;
+    g.strokeStyle = k % 5 ? "rgba(220,230,255,.5)" : "#e8f0ff"; g.lineWidth = k % 5 ? 1 : 2; g.beginPath(); g.moveTo(x + r0 * Math.cos(a), y + r0 * Math.sin(a)); g.lineTo(x + R * 0.96 * Math.cos(a), y + R * 0.96 * Math.sin(a)); g.stroke(); }
+  a = (t % 60) / 60 * 2 * Math.PI - Math.PI / 2;                    /* the seconds hand */
+  g.strokeStyle = "#ff6b5b"; g.lineWidth = 2.5; g.beginPath(); g.moveTo(x - R * 0.15 * Math.cos(a), y - R * 0.15 * Math.sin(a)); g.lineTo(x + R * 0.86 * Math.cos(a), y + R * 0.86 * Math.sin(a)); g.stroke();
+  g.fillStyle = "#ff6b5b"; g.beginPath(); g.arc(x, y, 3.5, 0, 7); g.fill();
+  g.fillStyle = running ? "#5dffa0" : "#ff6b5b"; g.beginPath(); g.arc(x + R * 0.82, y - R * 0.95, ph ? 7 : 5, 0, 7); g.fill();
+  backed(watchTxt(t), x, y + R * 1.1 + (ph ? 32 : 24), L.fs + (ph ? 0 : 1), "#ffffff", "center");
+  if (laps && laps.length > 1) backed("lap " + (laps[laps.length - 1].t - laps[laps.length - 2].t).toFixed(2) + " s", x, y + R * 1.1 + (ph ? 66 : 50), L.fs - (ph ? 0 : 1), "#ffd27a", "center");
+}
+
+/* ------------------------------------------------------------ the scene: the air table from above */
 function drawScene(){
-  var S = L.sc, ph = L.phone, fs = L.fs - (ph ? 0 : 1), sh = shown(), p = sh ? sh.sim.p : cur(), R0 = sh ? sh.sim.r0 : ENGINE.r0(p), k;
+  var S = L.sc, ph = L.phone, fs = L.fs - (ph ? 0 : 1), sh = shown(), p = sh ? sh.sim.p : cur(), R0 = sh ? sh.sim.r0 : ENGINE.r0(p), k, t = clock();
   g.save(); roundRect(S.x, S.y, S.w, S.h, 14); g.clip();
-  var bg = g.createRadialGradient(S.x + S.w / 2, S.y + S.h * 0.46, 10, S.x + S.w / 2, S.y + S.h * 0.46, S.w * 0.8); bg.addColorStop(0, "#111c38"); bg.addColorStop(1, "#04060c"); g.fillStyle = bg; g.fillRect(S.x, S.y, S.w, S.h);
-  for (k = 0; k < 60; k++){ g.fillStyle = "rgba(255,255,255," + (0.15 + 0.35 * ((k * 37) % 10) / 10).toFixed(2) + ")"; g.fillRect(S.x + ((k * 97) % 1000) / 1000 * S.w, S.y + ((k * 61) % 1000) / 1000 * S.h, 2, 2); }
-  var cx = S.x + S.w / 2, cy = S.y + S.h * 0.46, rmax = R0 * (1 + 2.4 * Math.max(p.dr, 0.04)), sc = Math.min(S.w, S.h) * 0.40 / rmax;
-  if (sh && RUN.view && p.n !== 2){ var rmx = 0; for (k = 0; k < sh.sim.rec.length; k += 10) rmx = Math.max(rmx, sh.sim.rec[k][1]); sc = Math.min(S.w, S.h) * 0.42 / rmx; }
+  g.fillStyle = "#0a0f19"; g.fillRect(S.x, S.y, S.w, S.h);
+  var cx = S.x + S.w * (ph ? 0.44 : 0.42), cy = S.y + S.h * 0.47, rmax = R0 * (1 + Math.max(p.dr, 0.04)) * 1.06, sc = Math.min(S.w, S.h) * 0.40 / rmax;
+  if (sh && RUN.view && p.n !== 2){ var rmx = 0; for (k = 0; k < sh.sim.rec.length; k += 10) rmx = Math.max(rmx, sh.sim.rec[k][1]); sc = Math.min(S.w, S.h) * 0.40 / (rmx * 1.04); }
   var X = function(x){ return cx + x * sc; }, Y = function(y){ return cy - y * sc; };
-  /* the attracting centre */
-  var cg = g.createRadialGradient(cx, cy, 2, cx, cy, ph ? 46 : 38); cg.addColorStop(0, "rgba(255,230,160,1)"); cg.addColorStop(0.4, "rgba(255,170,80,.7)"); cg.addColorStop(1, "rgba(255,120,40,0)");
-  g.fillStyle = cg; g.beginPath(); g.arc(cx, cy, ph ? 46 : 38, 0, 7); g.fill();
-  /* the circular orbit r0 */
-  g.strokeStyle = "rgba(160,190,255,.45)"; g.setLineDash([8, 7]); g.lineWidth = 2; g.beginPath(); g.arc(cx, cy, R0 * sc, 0, 7); g.stroke(); g.setLineDash([]);
-  backed("r₀ = " + R0.toFixed(2) + " m", cx, cy + R0 * sc - (ph ? 22 : 16), fs - (ph ? 0 : 1), "#a9c1ff", "center");
+  drawTable(S, cx, cy, sc);
+  /* the circular orbit r0, with its radius on a fixed line so its label never meets the puck's */
+  g.strokeStyle = "rgba(160,190,255,.45)"; g.setLineDash([8, 7]); g.lineWidth = 2; g.beginPath(); g.arc(cx, cy, R0 * sc, 0, 7); g.stroke();
+  var ra = -2.35; g.beginPath(); g.moveTo(cx, cy); g.lineTo(cx + R0 * sc * Math.cos(ra), cy - R0 * sc * Math.sin(ra)); g.stroke(); g.setLineDash([]);
+  backed("r₀ = " + R0.toFixed(2) + " m", cx + 0.6 * R0 * sc * Math.cos(ra), cy - 0.6 * R0 * sc * Math.sin(ra) + 6, fs - (ph ? 0 : 1), "#a9c1ff", "center");
   /* the trail of the computed orbit, with the farthest points marked */
-  if (sh && (sh.ts > 0)){
-    var rec = sh.sim.rec, n = rec.length, iEnd = Math.min(n - 1, Math.round(sh.ts / rec[n - 1][0] * (n - 1)));
+  if (sh && sh.ts > 0){
+    var rec = sh.sim.rec, iEnd = idxAt(sh.sim, sh.ts), q0, q1;
     g.lineWidth = ph ? 3 : 2.5;
-    for (k = 1; k <= iEnd; k += 2){ var age = (iEnd - k) / Math.max(1, iEnd); g.strokeStyle = "rgba(124,196,255," + (0.95 - 0.7 * age).toFixed(2) + ")"; g.beginPath(); g.moveTo(X(rec[k - 1][2]), Y(rec[k - 1][3])); g.lineTo(X(rec[Math.min(k + 1, iEnd)][2]), Y(rec[Math.min(k + 1, iEnd)][3])); g.stroke(); }
+    for (k = 2; k <= iEnd; k += 2){ var age = (iEnd - k) / Math.max(1, iEnd); q0 = rot(rec[k - 2][2], rec[k - 2][3], sh.phi); q1 = rot(rec[k][2], rec[k][3], sh.phi);
+      g.strokeStyle = "rgba(124,196,255," + (0.95 - 0.7 * age).toFixed(2) + ")"; g.beginPath(); g.moveTo(X(q0[0]), Y(q0[1])); g.lineTo(X(q1[0]), Y(q1[1])); g.stroke(); }
     var mx = ENGINE.maxima(rec, sh.ts);
-    for (k = 0; k < mx.length; k++){ g.strokeStyle = "rgba(255,210,122,.35)"; g.lineWidth = 1.5; g.beginPath(); g.moveTo(cx, cy); g.lineTo(X(mx[k].x), Y(mx[k].y)); g.stroke();
-      g.fillStyle = "#ffd27a"; g.beginPath(); g.arc(X(mx[k].x), Y(mx[k].y), ph ? 8 : 6, 0, 7); g.fill(); }
-    if (mx.length > 1) backed(p.n === 2 ? "farthest point returns to the same place" : "farthest point moves on: a rosette", cx, S.y + S.h - (ph ? 60 : 44), fs, "#ffd27a", "center");
+    for (k = 0; k < mx.length; k++){ var am = rot(mx[k].x, mx[k].y, sh.phi); g.strokeStyle = "rgba(255,210,122,.35)"; g.lineWidth = 1.5; g.beginPath(); g.moveTo(cx, cy); g.lineTo(X(am[0]), Y(am[1])); g.stroke();
+      g.fillStyle = "#ffd27a"; g.beginPath(); g.arc(X(am[0]), Y(am[1]), ph ? 8 : 6, 0, 7); g.fill(); }
+    if (mx.length > 1) backed(p.n === 2 ? "the farthest point returns to the same place" : "the farthest point moves on: a rosette", cx, S.y + S.h - (ph ? 140 : 100), fs, "#ffd27a", "center");
   }
-  /* the particle and its distance */
-  var pt = particle();
-  g.strokeStyle = "rgba(220,235,255,.6)"; g.lineWidth = 2; g.beginPath(); g.moveTo(cx, cy); g.lineTo(X(pt.x), Y(pt.y)); g.stroke();
-  var pg = g.createRadialGradient(X(pt.x) - 3, Y(pt.y) - 3, 1, X(pt.x), Y(pt.y), ph ? 14 : 11); pg.addColorStop(0, "#ffffff"); pg.addColorStop(1, "#5dffa0");
-  g.fillStyle = pg; g.beginPath(); g.arc(X(pt.x), Y(pt.y), ph ? 13 : 10, 0, 7); g.fill();
-  if (RUN.phase === "nudge"){ g.strokeStyle = "#ffd27a"; g.fillStyle = "#ffd27a"; g.lineWidth = 3; var ax = X(R0) + 14, bx2 = X(R0 * (1 + p.dr)) + 44;
-    g.beginPath(); g.moveTo(ax, cy); g.lineTo(bx2, cy); g.stroke(); g.beginPath(); g.moveTo(bx2 + 10, cy); g.lineTo(bx2, cy - 7); g.lineTo(bx2, cy + 7); g.closePath(); g.fill();
-    backed("δr, same ℓ", bx2 - 10, cy - (ph ? 26 : 20), fs, "#ffd27a", "right"); }
-  backed("r = " + pt.r.toFixed(3) + " m", X(pt.x) + (pt.x >= 0 ? -22 : 22), Y(pt.y) + (pt.y >= 0 ? 40 : -22), fs, "#ffffff", pt.x >= 0 ? "right" : "left");   /* always on the side towards the centre */
-  backed(ph ? "representative SI values · top view" : "representative SI values (m = 1 kg, k = 50 N m², ℓ = 10 kg m²/s) · seen from above", S.x + 14, S.y + S.h - (ph ? 18 : 14), L.fs - (ph ? 0 : 3), "#8fa6cf", "left");
+  drawSphere(cx, cy, ph ? 30 : 24);
+  /* the puck and its distance, labelled on the side towards the sphere */
+  var pt = particle(), px = X(pt.x), py = Y(pt.y);
+  g.strokeStyle = "rgba(220,235,255,.45)"; g.lineWidth = 1.5; g.beginPath(); g.moveTo(cx, cy); g.lineTo(px, py); g.stroke();
+  drawPuck(px, py, ph ? 20 : 15, pt.vx, pt.vy);
+  if (RUN.phase === "wobble" && RUN.ts < 0.8){ var dx = pt.x / pt.r, dy = pt.y / pt.r;
+    g.strokeStyle = "#ffd27a"; g.lineWidth = 4; g.beginPath(); g.moveTo(px + dx * 24, py - dy * 24); g.lineTo(px + dx * 62, py - dy * 62); g.stroke();   /* outward, away from the r label */
+  }
+  var inX = pt.x >= 0 ? -1 : 1, inY = pt.y >= 0 ? 1 : -1;
+  if (RUN.phase === "wobble" && RUN.ts < 0.8) backed("nudge δr, same ℓ", px + inX * 30, py - inY * 34, fs, "#ffd27a", inX < 0 ? "right" : "left");   /* inward, opposite the r label */
+  backed("r = " + pt.r.toFixed(3) + " m", px + inX * 30, py + inY * 40, fs, "#ffffff", inX < 0 ? "right" : "left");
+  /* the stopwatch on the table's corner */
+  var wr = ph ? 52 : 40, wx = S.x + S.w - wr - (ph ? 30 : 26), wy = S.y + wr + (ph ? 44 : 36);
+  drawWatch(wx, wy, wr, t, sh && sh.ts > 0 ? ENGINE.maxima(sh.sim.rec, sh.ts) : null, RUN.state === "running" && RUN.phase !== "compare");
+  fitLabel("real time", wx, wy + wr * 1.1 + (ph ? 100 : 76), fs - (ph ? 0 : 2), wr * 2.6, "#8fa6cf", "center", "700");
+  backed(ph ? "representative values · top view" : "air table from above: Coulomb attraction k/r² · representative values", S.x + 22, S.y + S.h - (ph ? 22 : 18), L.fs - (ph ? 0 : 3), "#8fa6cf", "left");
   g.restore();
 }
 
@@ -556,22 +633,22 @@ function drawPanel(){
     var Xt = function(t){ return x0 + t / tEnd * (x1 - x0); }, Yr = function(r){ return gy0 - (r - lo) / (hi - lo) * (gy0 - gy1); };
     label(hi.toFixed(2) + " m", x0 - 8, gy1 + 14, fs, "#8fa6cf", "right", "700"); label(lo.toFixed(2) + " m", x0 - 8, gy0, fs, "#8fa6cf", "right", "700");
     label("0", x0, gy0 + (ph ? 32 : 22), fs, "#8fa6cf", "center", "700"); label(tEnd.toFixed(1) + " s", x1, gy0 + (ph ? 32 : 22), fs, "#8fa6cf", "right", "700");
-    label("time t", (x0 + x1) / 2, gy0 + (ph ? 32 : 22), fs, "#8fa6cf", "center", "700");
+    label("time since the nudge", (x0 + x1) / 2, gy0 + (ph ? 32 : 22), fs, "#8fa6cf", "center", "700");
     g.strokeStyle = "rgba(160,190,255,.45)"; g.setLineDash([6, 6]); g.beginPath(); g.moveTo(x0, Yr(R0)); g.lineTo(x1, Yr(R0)); g.stroke(); g.setLineDash([]);
     if (sh.ts > 0){
-      var iEnd = Math.min(n - 1, Math.round(sh.ts / rec[n - 1][0] * (n - 1)));
+      var iEnd = idxAt(sh.sim, sh.ts);
       g.strokeStyle = "#7cc4ff"; g.lineWidth = 3; g.beginPath(); for (k = 0; k <= iEnd; k += 2) g[k ? "lineTo" : "moveTo"](Xt(rec[k][0]), Yr(rec[k][1])); g.stroke();
       var mx = ENGINE.maxima(rec, sh.ts);
       for (k = 0; k < mx.length; k++){ g.fillStyle = "#ffd27a"; g.beginPath(); g.arc(Xt(mx[k].t), Yr(mx[k].r), ph ? 7 : 5, 0, 7); g.fill(); }
       if (mx.length > 1){ var ya = gy1 + (ph ? 10 : 8); g.strokeStyle = "#ffd27a"; g.lineWidth = 2; g.beginPath(); g.moveTo(Xt(mx[0].t), ya); g.lineTo(Xt(mx[1].t), ya); g.stroke();
-        backed("Tr = " + sec(mx[1].t - mx[0].t), (Xt(mx[0].t) + Xt(mx[1].t)) / 2, ya + (ph ? 30 : 22), fs, "#ffd27a", "center"); }
+        backed("Tr = " + sec(mx[1].t - mx[0].t), (Xt(mx[0].t) + Xt(mx[1].t)) / 2 + (ph ? 30 : 20), ya + (ph ? 30 : 22), fs, "#ffd27a", "center"); }
     }
   }
   /* lower half: the periods compared (from the comparison on), otherwise the reasoning */
   var x = P.x + 18, w = P.w - 36, y = gy0 + (ph ? 74 : 56), comparing = RUN.phase === "compare" || RUN.done;
   if (comparing && p.n === 2){
     var m = sh ? ENGINE.measure(sh.sim, sh.ts) : null, rows = [["measured Tr", m && m.T !== null ? m.T : 0, "#9ff0c8"]], keys = "ABCD", vmax = 0;
-    var nShow = RUN.done ? 4 : Math.min(4, Math.floor(RUN.st / 0.6));
+    var nShow = RUN.done ? 4 : Math.min(4, Math.floor(RUN.cmp / 0.6));
     for (k = 0; k < nShow; k++) rows.push(["(" + keys.charAt(k) + ") " + OTXT[keys.charAt(k)], ENGINE.OPTS[keys.charAt(k)](p), OCOL[keys.charAt(k)]]);
     for (k = 0; k < rows.length; k++) vmax = Math.max(vmax, rows[k][1]);
     var bh = ph ? 44 : 34, lw = ph ? 300 : 210;
@@ -587,11 +664,11 @@ function drawPanel(){
     return;
   }
   if (RUN.view && p.n !== 2){
-    wrapLabel("force k/r^" + p.n + ": Tr = " + sec(RUN.view.m.T) + ", one revolution " + sec(RUN.view.sim.Tc), x, y, fs + (ph ? 0 : 1), w, "#ffd27a", "800", ph ? 30 : 22); y += ph ? 70 : 52;
+    wrapLabel("force K/r^" + p.n + ": Tr = " + sec(RUN.view.m.T) + ", one orbit " + sec(RUN.view.sim.Tc), x, y, fs + (ph ? 0 : 1), w, "#ffd27a", "800", ph ? 30 : 22); y += ph ? 70 : 52;
     wrapLabel("farthest point advances " + RUN.view.m.apsis.toFixed(0) + "° per wobble (360° only for k/r²)", x, y, fs + (ph ? 0 : 1), w, "#ffb37a", "800", ph ? 30 : 22);
     return;
   }
-  var steps = [["ℓ fixed: Ueff = ℓ²/(2mr²) − k/r, circle at r₀ = ℓ²/(mk)", "#7cc4ff"], ["small wobble: ωr² = Ueff″(r₀)/m = k/(m r₀³)", "#ffd27a"], ["Tr = 2π√(m r₀³/k) = 2πℓ³/(mk²) = one revolution", "#5dffa0"]];
+  var steps = [["ℓ fixed: Ueff = ℓ²/(2mr²) − k/r, circle at r₀ = ℓ²/(mk)", "#7cc4ff"], ["small wobble: ωr² = Ueff″(r₀)/m = k/(m r₀³)", "#ffd27a"], ["Tr = 2π√(m r₀³/k) = 2πℓ³/(mk²) = one orbit", "#5dffa0"]];
   for (i = 0; i < 3; i++){
     if (i < RUN.lines) y = wrapLabel(steps[i][0], x, y, fs + (ph ? 0 : 1), w, steps[i][1], "800", ph ? 30 : 22);
     else label("revealed as the run goes on", x, y, fs, "#5a6c8f", "left", "600");
@@ -607,12 +684,10 @@ function draw(){
 }
 
 /* ------------------------------------------------------------ controls */
-function setSpeed(k){ RUN.speed = k; $("sp1").setAttribute("aria-pressed", k === 1 ? "true" : "false"); $("sp2").setAttribute("aria-pressed", k === 0.5 ? "true" : "false"); }
+function setSpeed(k){ RUN.speed = k; }                          /* a test hook only: the page itself always runs in real time */
 $("gobtn").addEventListener("click", start);
 $("replaybtn").addEventListener("click", replay);
 $("resetbtn").addEventListener("click", reset);
-$("sp1").addEventListener("click", function(){ setSpeed(1); });
-$("sp2").addEventListener("click", function(){ setSpeed(0.5); });
 $("in_l").addEventListener("input", function(){ setParam("l", this.value); });
 $("in_k").addEventListener("input", function(){ setParam("k", this.value); });
 $("in_m").addEventListener("input", function(){ setParam("m", this.value); });
@@ -633,7 +708,6 @@ var lastT = null;
 function loop(ts){
   if (lastT === null) lastT = ts;
   var dt = Math.min(0.05, Math.max(0, (ts - lastT) / 1000)); lastT = ts;
-  if (!reduced && RUN.state !== "paused") RUN.clock += dt;
   tick(RUN.state === "paused" ? 0 : dt); draw();
   requestAnimationFrame(loop);
 }
@@ -645,7 +719,7 @@ window.PX = {
   start: start, replay: replay, reset: reset, setSpeed: setSpeed, speed: function(k){ RUN.speed = k; },
   set: setParam,
   state: function(){ var sh = shown(), m = sh && sh.ts > 0 ? ENGINE.measure(sh.sim, sh.ts) : null, pt = particle();
-    return { state: RUN.state, phase: RUN.phase, lines: RUN.lines, p: { m: RUN.p.m, k: RUN.p.k, l: RUN.p.l, dr: RUN.p.dr, n: RUN.p.n }, ts: RUN.ts, pf: RUN.pf,
+    return { state: RUN.state, phase: RUN.phase, lines: RUN.lines, p: { m: RUN.p.m, k: RUN.p.k, l: RUN.p.l, dr: RUN.p.dr, n: RUN.p.n }, st: RUN.st, ts: RUN.ts, clock: clock(), tOrbit: RUN.tOrbit,
       r: pt.r, L: pt.L || null, maxima: m ? m.maxima.length : 0, T: m ? m.T : null, measured: RUN.measured || null, done: RUN.done, confirmed: RUN.confirmed,
       view: RUN.view ? { T: RUN.view.m.T, Tc: RUN.view.sim.Tc, apsis: RUN.view.m.apsis, answer: RUN.view.answer, n: RUN.view.sim.p.n } : null }; },
   trace: function(){ var sh = shown(); if (!sh) return []; var out = [], k; for (k = 0; k < sh.sim.rec.length; k += 10) if (sh.sim.rec[k][0] <= sh.ts + 1e-9) out.push([sh.sim.rec[k][0], sh.sim.rec[k][1], sh.sim.rec[k][4]]); return out; }

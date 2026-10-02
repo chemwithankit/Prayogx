@@ -1,7 +1,7 @@
 {
   "id": "ADV-2026-P2-PHY-Q04",
   "slug": "adv-2026-p2-phy-q04",
-  "revision": 1,
+  "revision": 2,
   "path": "simulations/2026/paper-2/physics/adv-2026-p2-phy-q04/index.html",
   "folder": "simulations/2026/paper-2/physics/adv-2026-p2-phy-q04/",
   "title": "Period of small radial oscillations of a nudged circular orbit under an inverse-square force",
@@ -86,15 +86,16 @@
       "Official final answer key (jeeadv.ac.in, JEE Advanced 2026 Paper 2, published 2026-06-01; read last): Q.4 -> A"
     ],
     "verifiedOn": "2026-10-02",
-    "note": "Built and verified by the PrayogX simulation factory in End-to-End Production Mode (owner instruction, this item only); script-verified (automated independent verifier, page suite, visual gates A-K, library and production audits). No human review has been recorded."
+    "note": "Built and verified by the PrayogX simulation factory in End-to-End Production Mode (owner instruction, this item only); script-verified (automated independent verifier, page suite, visual gates A-K, library and production audits). No human review has been recorded. Revision 2 (2026-10-02, owner request): the apparatus is drawn as a charged puck on an air table with a real-time stopwatch (simulated time = real time), and the r0 label no longer overlaps the moving label; the physics engine and the answer are unchanged."
   },
   "interactivity": [
     "Layout v3 (G5) with the target display: the verbatim question and options (none marked before the run); the target shows only 'period of the radial oscillation Tr' until the measurement reveals the period, the formula and the option with one pulse",
-    "A top view of the orbital plane: the attracting centre, the circle r0, the particle with its trail, a radial ruler and the farthest points marked with lines to the centre",
-    "The particle circles, is nudged out by dr with l unchanged, and Newton's second law is integrated; r(t) is plotted and the period measured between successive maxima",
-    "The measured period is compared with the four options evaluated with the same m, k and l (period bars); readouts show r, the conserved l, revolutions and Tr",
-    "What if the force were k/r^1.5 or k/r^2.5: the radial and orbital periods differ and the orbit becomes a rosette",
-    "Sliders for l, k, m and the nudge; a large nudge shows the period drifting above the small-oscillation value; speed, pause, replay, reset, classroom mode, reduced motion, portrait phone scene"
+    "A frictionless air table seen from above: a charged puck orbits a fixed, oppositely charged sphere (Coulomb attraction k/r^2), with air holes every 0.5 m, a 1 m scale bar, the circle r0 and the farthest points marked",
+    "Real time: a stopwatch on the table reads the same seconds as the motion (one simulated second is one real second); laps are shown at each farthest point",
+    "The puck circles once, is nudged out by dr with l unchanged (instantly, the stopwatch keeps running), and Newton's second law is integrated; r(t) is plotted and the period timed between successive farthest points",
+    "The measured period is compared with the four options evaluated with the same m, k and l (period bars); readouts show r, the conserved l, the stopwatch and Tr",
+    "What if the force were K/r^1.5 or K/r^2.5 (hypothetical, same circle): the radial and orbital periods differ and the orbit becomes a rosette",
+    "Sliders for l, k, m (one orbit always 1.4 - 4.6 s of real time) and the nudge; a large nudge shows the period drifting above the small-oscillation value; pause, replay, reset, classroom mode, reduced motion, portrait phone scene"
   ],
   "source": {
     "file": "papers/adv_2026_paper_2.pdf",

@@ -1,4 +1,6 @@
-/* ADV-2026-P2-PHY-Q04 - the orbit wobble lab: a particle on a circular orbit under F = -k/r^2 is nudged outward
+/* ADV-2026-P2-PHY-Q04 - the orbit wobble lab (revision 2: a charged puck on an air table around a charged sphere,
+   a real-time stopwatch - one simulated second is one real second): a body on a circular orbit under F = -k/r^2 is
+   nudged outward
    with its angular momentum unchanged; Newton's second law is integrated, the radial period is measured from the
    maxima of r(t) and compared with the options: 2 pi l^3/(m k^2), option A, equal to the orbital period, so the
    orbit closes; then the sliders, the nudge size and the force-law what-if (rosettes for k/r^1.5 and k/r^2.5).
@@ -64,6 +66,8 @@ async function runToEnd(p, speed){
   ok('the solution derives Ueff, its curvature, the period, the closed orbit and explains every option',
      /Understand the concept/.test(src) && /Key takeaways/.test(src) && /Stiffness of the well/.test(src) && /closes on itself/.test(src) && /spring formula/.test(src));
   ok('the representative values and the small-nudge limit are stated on the page', /representative SI values/.test(src) && /small-nudge limit/.test(src));
+  ok('the apparatus is stated: a charged puck on an air table, Coulomb attraction k/r^2, time in real time', /air table/.test(src) && /Coulomb/.test(src) && /real time/.test(src));
+  ok('no speed control on the page: the motion always runs in real time', !/id="sp1"|id="sp2"/.test(src));
 
   const b = await launch();
   const ctx = await b.newContext({ viewport: { width: 1280, height: 900 } });
@@ -89,7 +93,7 @@ async function runToEnd(p, speed){
   ok('the engine: as the nudge shrinks the period approaches 2 pi l^3/(mk^2) (dr = 0.01: within 0.03 %)', await E(a => Math.abs(PX.ENGINE.run({ dr: 0.01 }).m.T / a - 1) < 3e-4, TA));
   ok('the engine: options evaluated with the same values - A 2.513 s, B 0.889 s, C 0.838 s, D 0.503 s', await E(() => { const p0 = PX.ENGINE.params(), O = PX.ENGINE.OPTS;
      return Math.abs(O.A(p0) - 2.5133) < 1e-4 && Math.abs(O.B(p0) - 0.8886) < 1e-4 && Math.abs(O.C(p0) - 0.8378) < 1e-4 && Math.abs(O.D(p0) - 0.5027) < 1e-4; }));
-  ok('the engine: k/r^2.5 gives Tr/Torbit = sqrt(2) - the orbit would not close', await E(() => { const v = PX.ENGINE.run({ n: 2.5 }, 6.5); return Math.abs(v.m.T / v.sim.Tc - Math.SQRT2) < 0.01 && v.answer === null; }));
+  ok('the engine: K/r^2.5 (same circle) gives Tr/Torbit = sqrt(2) - the orbit would not close', await E(() => { const v = PX.ENGINE.run({ n: 2.5 }, 6.5); return Math.abs(v.m.T / v.sim.Tc - Math.SQRT2) < 0.01 && v.answer === null; }));
   ok('the solution shows the computed answer', (await p.textContent('#solans')) === '(A)');
   ok('ready state: on the circle, nothing measured, no what-if yet', await E(() => PX.state().phase === 'ready' && Math.abs(PX.state().r - 2) < 1e-12 && PX.state().T === null && document.getElementById('wigroup').hidden) && /Ready/.test(await p.textContent('#narr')));
   ok('the canvas reports its smallest label, >= 13 px on the desktop', await E(() => PX.minLabelPx()) >= 13, await E(() => PX.minLabelPx()));
@@ -100,12 +104,15 @@ async function runToEnd(p, speed){
   await p.click('#gobtn');
   const samples = await runToEnd(p, 3);
   const order = []; samples.forEach(s => { if (order[order.length - 1] !== s.phase) order.push(s.phase); });
-  ok('with no further clicks it runs orbit, nudge, wobble, the comparison, then the result', order.slice(order.indexOf('orbit')).join(',') === 'orbit,nudge,wobble,compare,done', order.join(','));
+  ok('with no further clicks it runs one orbit, the wobble (instant nudge), the comparison, then the result', order.slice(order.indexOf('orbit')).join(',') === 'orbit,wobble,compare,done', order.join(','));
+  ok('the stopwatch is the motion\'s own time: it reads the time since START during the orbit and the wobble, the circle lasting exactly one orbit',
+     samples.filter(s => s.phase === 'orbit' || s.phase === 'wobble').every(s => Math.abs(s.clock - s.st) < 1e-9) && samples.filter(s => s.phase === 'wobble').every(s => Math.abs(s.ts - (s.st - s.tOrbit)) < 1e-9 || s.ts === s.st - s.tOrbit)
+     && Math.abs(samples[samples.length - 1].tOrbit - TA) < 1e-9);
   ok('the target shows only its symbol all through the run', samples.filter(s => !s.done).every(s => s.tgt === SYM) && samples.filter(s => !s.done).length > 20);
-  ok('on the circle the distance stays r0; during the nudge it moves out to r0(1 + dr)', samples.filter(s => s.phase === 'orbit').every(s => Math.abs(s.r - 2) < 1e-12) && samples.filter(s => s.phase === 'nudge').some(s => s.r > 2.09));
+  ok('on the circle the distance stays r0; the instant nudge puts the puck at r0(1 + dr) at the start of the wobble', samples.filter(s => s.phase === 'orbit').every(s => Math.abs(s.r - 2) < 1e-12) && samples.filter(s => s.phase === 'wobble' && s.ts < 0.05).every(s => s.r > 2.09));
   ok('during the wobble the distance swings below and above r0 and angular momentum stays 10 kg m^2/s', samples.some(s => s.phase === 'wobble' && s.r < 1.95) && samples.some(s => s.phase === 'wobble' && s.r > 2.05)
      && samples.filter(s => s.phase === 'wobble' && s.L !== null).every(s => Math.abs(s.L - 10) < 1e-9));
-  ok('the reasoning appears in order: Ueff once a period is measured, the curvature, then the period', samples.filter(s => s.phase === 'orbit' || s.phase === 'nudge').every(s => s.lines === 0)
+  ok('the reasoning appears in order: Ueff once a period is measured, the curvature, then the period', samples.filter(s => s.phase === 'orbit').every(s => s.lines === 0)
      && samples.filter(s => s.phase === 'wobble' && s.maxima >= 2).every(s => s.lines >= 1) && samples.filter(s => s.phase === 'compare').some(s => s.lines === 3));
   const tr = await E(() => PX.trace());
   ok('the r(t) trace is a steady oscillation around r0 with farthest points at r0(1 + dr)', tr.length > 100 && Math.max.apply(null, tr.map(x => x[1])) < 2.1 + 1e-9 && Math.min.apply(null, tr.map(x => x[1])) < 1.92);
@@ -121,21 +128,28 @@ async function runToEnd(p, speed){
 
   /* ------------------------------------------------ what if, the sliders */
   await p.click('#f25'); await sleep(200);
-  ok('What if k/r^2.5: Tr = 1.42 x the revolution, the farthest point advances about 149 deg - a rosette', await E(() => PX.state().view.n === 2.5 && Math.abs(PX.state().view.T / PX.state().view.Tc - Math.SQRT2) < 0.01 && Math.abs(PX.state().view.apsis - 149.2) < 2)
+  ok('What if K/r^2.5: same circle (r0 = 2 m), Tr = 1.42 x the revolution, the farthest point advances about 149 deg - a rosette', await E(() => PX.state().view.n === 2.5 && Math.abs(PX.state().view.Tc - 2 * Math.PI * 1000 / 2500) < 1e-9 && Math.abs(PX.state().view.T / PX.state().view.Tc - Math.SQRT2) < 0.01 && Math.abs(PX.state().view.apsis - 149.2) < 2)
      && /rosette/.test(await p.textContent('#narr')) && await E(() => document.getElementById('f25').getAttribute('aria-pressed')) === 'true' && (await p.innerText('#ansval')).indexOf('(A)') > 0);
   await p.click('#f15'); await sleep(200);
-  ok('What if k/r^1.5: Tr = 0.82 x the revolution', await E(() => Math.abs(PX.state().view.T / PX.state().view.Tc - 1 / Math.sqrt(1.5)) < 0.01));
+  ok('What if K/r^1.5: Tr = 0.82 x the revolution', await E(() => Math.abs(PX.state().view.T / PX.state().view.Tc - 1 / Math.sqrt(1.5)) < 0.01));
   await p.click('#f20'); await sleep(200);
   ok('back to k/r^2: the orbit closes again and (A) fits', await E(() => PX.state().view.n === 2 && PX.state().view.answer === 'A' && Math.abs(PX.state().view.apsis - 360) < 0.5));
-  await p.$eval('#in_l', el => { el.value = '12'; el.dispatchEvent(new Event('input', { bubbles: true })); });
-  ok('l = 12: the orbit runs again; Tr scales as l^3 and still matches (A)', await E(() => PX.state().view.answer === 'A' && Math.abs(PX.state().view.Tc - 2 * Math.PI * 1728 / 2500) < 1e-9) && (await p.textContent('#out_l')) === '12.0 kg m² s⁻¹');
-  await p.$eval('#in_k', el => { el.value = '40'; el.dispatchEvent(new Event('input', { bubbles: true })); });
-  await p.$eval('#in_m', el => { el.value = '1.2'; el.dispatchEvent(new Event('input', { bubbles: true })); });
-  ok('k = 40, m = 1.2: still (A), the period from the new values', await E(() => PX.state().view.answer === 'A' && Math.abs(PX.state().view.Tc - 2 * Math.PI * 1728 / (1.2 * 1600)) < 1e-9) && (await p.textContent('#out_k')) === '40 N m²' && (await p.textContent('#out_m')) === '1.20 kg');
+  await p.$eval('#in_l', el => { el.value = '11'; el.dispatchEvent(new Event('input', { bubbles: true })); });
+  ok('l = 11: the orbit runs again; Tr scales as l^3 and still matches (A)', await E(() => PX.state().view.answer === 'A' && Math.abs(PX.state().view.Tc - 2 * Math.PI * 1331 / 2500) < 1e-9) && (await p.textContent('#out_l')) === '11.0 kg m² s⁻¹');
+  await p.$eval('#in_k', el => { el.value = '45'; el.dispatchEvent(new Event('input', { bubbles: true })); });
+  await p.$eval('#in_m', el => { el.value = '1.1'; el.dispatchEvent(new Event('input', { bubbles: true })); });
+  ok('k = 45, m = 1.1: still (A), the period from the new values', await E(() => PX.state().view.answer === 'A' && Math.abs(PX.state().view.Tc - 2 * Math.PI * 1331 / (1.1 * 2025)) < 1e-9) && (await p.textContent('#out_k')) === '45 N m²' && (await p.textContent('#out_m')) === '1.10 kg');
   await p.$eval('#in_d', el => { el.value = '0.2'; el.dispatchEvent(new Event('input', { bubbles: true })); });
   ok('a large nudge (0.2 r0): the period drifts above the small-oscillation value and honestly matches no option', await E(() => PX.state().view.answer === null) && /no longer small/.test(await p.textContent('#narr')));
-  await E(() => PX.set('l', 99)); ok('l is clamped to 12', await E(() => PX.state().p.l) === 12);
+  await E(() => PX.set('l', 99)); ok('l is clamped to 11 (one orbit never takes more than 4.6 s of real time)', await E(() => PX.state().p.l) === 11);
   await E(() => PX.set('k', 'x')); ok('a non-number falls back to the default (k = 50)', await E(() => PX.state().p.k) === 50);
+
+  /* ------------------------------------------------ real time: the stopwatch against the wall clock */
+  await E(() => { PX.set('l', 10); PX.set('k', 50); PX.set('m', 1); PX.set('dr', 0.05); PX.set('n', 2); PX.speed(1); });
+  await p.click('#replaybtn'); await sleep(200);
+  const w0 = await E(() => [performance.now(), PX.state().clock]); await sleep(3000); const w1 = await E(() => [performance.now(), PX.state().clock]);
+  const wall = (w1[0] - w0[0]) / 1000, watch = w1[1] - w0[1];
+  ok('real time: over 3 s of wall-clock time the stopwatch advances the same (within 3 %)', Math.abs(watch / wall - 1) < 0.03, watch.toFixed(3) + ' s on the watch, ' + wall.toFixed(3) + ' s on the wall clock');
 
   /* ------------------------------------------------ pause, replay, reset */
   await E(() => { PX.set('l', 10); PX.set('m', 1); PX.set('dr', 0.05); });
@@ -149,11 +163,9 @@ async function runToEnd(p, speed){
   await p.click('#resetbtn'); await sleep(150);
   ok('RESET returns to the ready state on the default values: nothing measured, the target symbol only, What if hidden', await E(() => PX.state().state === 'setup' && PX.state().phase === 'ready' && PX.state().T === null
      && PX.state().p.l === 10 && PX.state().p.k === 50 && PX.state().p.m === 1 && PX.state().p.dr === 0.05 && PX.state().p.n === 2 && document.getElementById('wigroup').hidden) && /Ready/.test(await p.textContent('#narr')) && (await p.innerText('#ansval')) === '');
-  await p.$eval('#in_l', el => { el.value = '8'; el.dispatchEvent(new Event('input', { bubbles: true })); });
-  ok('a slider moved before START sets up the next run (r0 = l^2/(mk) = 1.28 m)', /r₀ = 1\.28 m/.test(await p.textContent('#narr')) && await E(() => PX.state().state) === 'setup');
+  await p.$eval('#in_l', el => { el.value = '9'; el.dispatchEvent(new Event('input', { bubbles: true })); });
+  ok('a slider moved before START sets up the next run (r0 = l^2/(mk) = 1.62 m)', /1\.62 m from its centre/.test(await p.textContent('#narr')) && await E(() => PX.state().state) === 'setup');
   await p.click('#resetbtn'); await sleep(100);
-  await p.click('#sp2'); ok('speed ½× is a segmented button', await E(() => PX.RUN.speed) === 0.5 && await E(() => document.getElementById('sp2').getAttribute('aria-pressed')) === 'true');
-  await p.click('#sp1'); ok('speed 1× restores', await E(() => PX.RUN.speed) === 1);
 
   /* ------------------------------------------------ classroom */
   await p.click('#classbtn'); await sleep(250);
