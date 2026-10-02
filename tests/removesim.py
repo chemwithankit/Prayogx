@@ -7,7 +7,10 @@ p=os.path.join(ROOT,"data/manifest.json")
 man=json.load(open(p,encoding="utf-8"))
 man["simulations"]=[s for s in man["simulations"] if s["id"]!=SID]
 json.dump(man,open(p,"w",encoding="utf-8"),indent=2,ensure_ascii=False); open(p,"a").write("\n")
-shutil.rmtree(os.path.join(ROOT,"simulations/2026/paper-2/physics"),ignore_errors=True)
+# only the probe's own folder: real Paper 2 Physics simulations live beside it
+shutil.rmtree(os.path.join(ROOT,"simulations/2026/paper-2/physics",SID.lower()),ignore_errors=True)
+try: os.rmdir(os.path.join(ROOT,"simulations/2026/paper-2/physics"))   # only if the probe left it empty
+except OSError: pass
 shutil.rmtree(os.path.join(ROOT,"s",SID),ignore_errors=True)
 lp=os.path.join(ROOT,"data/revisions.json")
 lock=json.load(open(lp,encoding="utf-8")); lock.pop(SID,None)

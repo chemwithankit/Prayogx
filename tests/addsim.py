@@ -8,7 +8,7 @@ SID  = "ADV-2026-P2-PHY-Q99"
 
 # Idempotent: if a previous run left the probe behind, clear it first so the
 # revision lock can never see "changed content, same revision".
-if os.path.isdir(os.path.join(ROOT, "simulations/2026/paper-2/physics")):
+if os.path.isdir(os.path.join(ROOT, "simulations/2026/paper-2/physics", SID.lower())):
     subprocess.run([sys.executable, os.path.join(os.path.dirname(os.path.abspath(__file__)), "removesim.py")],
                    capture_output=True, text=True)
 SLUG = SID.lower()
