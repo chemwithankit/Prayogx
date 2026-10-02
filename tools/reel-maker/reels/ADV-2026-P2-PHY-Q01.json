@@ -1,0 +1,227 @@
+{
+  "simulationId": "ADV-2026-P2-PHY-Q01",
+  "template": "question-simulation-v1",
+  "fps": 30,
+  "record": {
+    "viewport": {
+      "width": 420,
+      "height": 860,
+      "deviceScaleFactor": 2.6
+    },
+    "actions": [
+      {
+        "eval": "PX.start()"
+      }
+    ],
+    "tailSeconds": 2.2,
+    "maxSeconds": 60
+  },
+  "regions": {
+    "full": [
+      0,
+      0,
+      720,
+      1520
+    ],
+    "scene": [
+      12,
+      220,
+      696,
+      620
+    ],
+    "top": [
+      0,
+      0,
+      720,
+      850
+    ],
+    "wire": [
+      12,
+      530,
+      696,
+      300
+    ]
+  },
+  "story": {
+    "hook": {
+      "beats": [
+        "A copper wire.",
+        "A 2 V battery.",
+        "1 ampere."
+      ],
+      "colors": [
+        "#ffd28a",
+        "#7cc4ff",
+        "#5dffa0"
+      ],
+      "line": "How fast do the electrons *move*?"
+    },
+    "question": {
+      "kind": "option",
+      "highlight": []
+    },
+    "problem": [
+      "Current feels *instant*…",
+      "but the battery hides a *catch*."
+    ],
+    "curiosity": "Can we *SEE* the electrons drift?",
+    "moments": [
+      {
+        "id": "A",
+        "phases": [
+          "switch"
+        ],
+        "seconds": 3.0,
+        "region": "top",
+        "label": "CLOSE THE SWITCH",
+        "sub": "R = 1 Ω, and the battery has 1 Ω inside",
+        "callout": {
+          "text": "1 A, not 2 A",
+          "anchor": [
+            389,
+            290
+          ],
+          "side": "lane",
+          "from": 0.45
+        }
+      },
+      {
+        "id": "B",
+        "phases": [
+          "zoom"
+        ],
+        "seconds": 2.8,
+        "region": "scene",
+        "label": "ZOOM INTO THE WIRE",
+        "sub": "copper ions and free electrons",
+        "callout": {
+          "text": "6.25 × 10¹⁸ e⁻ cross each second",
+          "anchor": [
+            355,
+            676
+          ],
+          "side": "lane",
+          "from": 0.45
+        }
+      },
+      {
+        "id": "C",
+        "phases": [
+          "count"
+        ],
+        "seconds": 3.0,
+        "region": "scene",
+        "label": "COUNT THE FREE ELECTRONS",
+        "sub": "one per copper atom",
+        "callout": {
+          "text": "n = ρNA/M",
+          "anchor": [
+            253,
+            710
+          ],
+          "side": "lane",
+          "from": 0.5
+        }
+      },
+      {
+        "id": "D",
+        "phases": [
+          "measure"
+        ],
+        "seconds": 3.4,
+        "region": "scene",
+        "label": "TIME ONE ELECTRON",
+        "sub": "against a real 1 mm scale",
+        "callout": {
+          "text": "vd = I/(neA)",
+          "anchor": [
+            237,
+            727
+          ],
+          "side": "lane",
+          "from": 0.5
+        },
+        "aha": {
+          "seconds": 3.0,
+          "zoom": [
+            12,
+            530,
+            696,
+            300
+          ],
+          "kicker": "WATCH THIS",
+          "lines": [
+            "A whole ampere of current…",
+            "yet each electron crawls",
+            "*0.2 mm every second*"
+          ]
+        }
+      }
+    ],
+    "answer": {},
+    "payoff": [
+      "DON'T JUST SOLVE IT.",
+      "*EXPERIENCE* IT."
+    ]
+  },
+  "thumbnail": {
+    "kicker": "JEE ADVANCED 2026",
+    "lines": [
+      "1 ampere.",
+      "How *slow*?"
+    ],
+    "region": "scene",
+    "phases": [
+      "measure"
+    ]
+  },
+  "caption": {
+    "hook": "Flip a switch and the current flows instantly… so how fast are the electrons in the wire actually moving? ⚡",
+    "body": "This JEE Advanced 2026 Paper 2 current electricity question hides a trap inside the battery. We closed the circuit in the real simulation, counted the free electrons and timed one against a 1 mm scale.",
+    "cta": "Try the full experiment free on prayogx.co.in 🔬",
+    "hashtags": [
+      "#JEEAdvanced",
+      "#JEE2026",
+      "#Physics",
+      "#CurrentElectricity",
+      "#DriftVelocity",
+      "#JEEPreparation",
+      "#PrayogX"
+    ]
+  },
+  "_recorded": {
+    "key": "phase",
+    "runs": [
+      {
+        "value": "switch",
+        "from": 0,
+        "to": 2.1667,
+        "frames": 66
+      },
+      {
+        "value": "zoom",
+        "from": 2.2,
+        "to": 3.7667,
+        "frames": 48
+      },
+      {
+        "value": "count",
+        "from": 3.8,
+        "to": 6.6,
+        "frames": 85
+      },
+      {
+        "value": "measure",
+        "from": 6.6333,
+        "to": 10.8,
+        "frames": 126
+      },
+      {
+        "value": "done",
+        "from": 10.8333,
+        "to": 13.0333,
+        "frames": 67
+      }
+    ]
+  }
+}

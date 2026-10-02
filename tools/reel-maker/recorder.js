@@ -38,7 +38,22 @@ const STATE = (doneExpr) => {
 
 /* the question as rendered on the page (the actual text, not a copy) */
 const QUESTION = () => {
-  const t = e => (e ? (e.innerText || '').replace(/\s+/g, ' ').trim() : '');
+  /* innerText flattens <sup>/<sub> (10<sup>8</sup> -> "108"), so a copy maps them to Unicode first */
+  const SUP = { '0': '⁰', '1': '¹', '2': '²', '3': '³', '4': '⁴', '5': '⁵', '6': '⁶', '7': '⁷', '8': '⁸', '9': '⁹', '-': '⁻', '−': '⁻', '+': '⁺', '(': '⁽', ')': '⁾', 'n': 'ⁿ' };
+  const SUB = { '0': '₀', '1': '₁', '2': '₂', '3': '₃', '4': '₄', '5': '₅', '6': '₆', '7': '₇', '8': '₈', '9': '₉', '-': '₋', '−': '₋', '+': '₊', '(': '₍', ')': '₎' };
+  const script = (s, map, mark) => [...s].every(c => map[c]) ? [...s].map(c => map[c]).join('') : mark + '(' + s + ')';
+  const t = e => {
+    if (!e) return '';
+    const c = e.cloneNode(true);
+    c.querySelectorAll('sup').forEach(s => s.replaceWith(script(s.textContent.trim(), SUP, '^')));
+    c.querySelectorAll('sub').forEach(s => s.replaceWith(script(s.textContent.trim(), SUB, '_')));
+    /* innerText needs a rendered node; the detached copy is laid out off-screen just long enough to read it */
+    c.style.cssText += ';position:absolute;left:-99999px;top:0';
+    document.body.appendChild(c);
+    const out = (c.innerText || '').replace(/\s+/g, ' ').trim();
+    c.remove();
+    return out;
+  };
   return {
     text: t(document.querySelector('#question .qtext')),
     lists: [...document.querySelectorAll('#question .mlist')].map(m => ({ title: t(m.querySelector('h3')), items: [...m.querySelectorAll('li')].map(t) })),
