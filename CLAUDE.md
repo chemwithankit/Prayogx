@@ -76,13 +76,38 @@ visible. The answer is not shown before the run. Full standard:
   READY_FOR_REVIEW → APPROVED only when the owner runs `approve` after watching the reel; `publish` is a
   separate command. Claude never runs `approve` or `publish` unless the owner explicitly asks for that reel in
   this conversation, never infers approval from validation, a commit or a push, and never puts a token in a
-  file, log or message (`.env` is git-ignored; `.env.example` has placeholders only).
+  file, log or message (`.env` is git-ignored; `.env.example` has placeholders only). The only exception is a
+  question the owner names in End-to-End Production Mode (below).
 - **After a VERIFIED publish** (owner's standing instruction, 2026-10-02) the publisher itself commits and pushes
   `tools/reel-maker/publications.json` alone (only from `main`, in step with GitHub, nothing else staged) and
   deletes the reel's hosted copy from the media repo. This covers only that ledger file and that hosted copy.
 - **YouTube Shorts** (`tools/youtube_publish.py`, `tools/publish.py`, docs/YOUTUBE_SHORTS_PUBLISHING.md): the same
   approval and the exact approved reel.mp4; only on the owner's explicit `--youtube` request with a stated privacy
-  (private first; unaudited API projects are private-only). Never authenticate or upload from the factory.
+  (private first; unaudited API projects are private-only). Never authenticate or upload from the factory, except for
+  a question the owner names in End-to-End Production Mode (below).
+
+## End-to-End Production Mode (explicit, per question)
+
+- **The default is unchanged.** Outside this mode every gate above stays exactly as it is: a reel, its approval, its
+  Instagram publish and its YouTube Short each need the owner's own request in the conversation.
+- **Trigger.** The owner explicitly says a named question is in End-to-End Production Mode (for example "Put
+  ADV-2026-P2-PHY-Q03 into End-to-End Production Mode"). It covers that question only, for that request. It is never
+  inferred from "production mode", a vague request, a validation result or another item.
+- **What it authorises, without stopping to ask at any stage:**
+  - the full production-mode build, including every gate, the preflight, the commit, `./publish.sh`, the live checks and the Sheet sync;
+  - the reel: the story, `auto_sim.py reel` and all 30 reel checks;
+  - approval: `instagram_publish.py approve <ID> --reviewer <owner> --note "End-to-End Production Mode authorization" --confirm <ID>`. The owner's instruction is the human approval, and it is recorded as such;
+  - hosting the reel, then `publish --confirm <ID>`, with the automatic ledger record and hosted-copy removal;
+  - the YouTube Short via `youtube_publish.py publish <ID> --privacy private --confirm <ID>`. Uploads are private unless the instruction names another privacy;
+  - committing and pushing the publication records, the reel story and any reel-tooling fix the run needed;
+  - a final check of GitHub, the live site and a clean working tree.
+- **What it never relaxes:**
+  - Every scientific, validation, test and audit gate still applies. A failure stops the pipeline at that stage and nothing later runs; for example, no reel is published after a failed check, and nothing goes public after a simulation failure.
+  - The security rules still hold: official APIs only, no secrets in files or logs, no browser automation.
+  - Nothing goes public on YouTube unless the instruction names that privacy.
+  - No force-push, and no unrelated files.
+- **Report once, at the end:** what was created, published (URLs), committed (hashes), pushed and verified, plus
+  anything that failed or was skipped.
 
 ## Registry and generated files
 

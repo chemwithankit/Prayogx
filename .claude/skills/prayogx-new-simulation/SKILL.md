@@ -108,7 +108,7 @@ code.
     `--preview t1,t2,…`, look at the frames, and run `node tools/reel-maker/generate-reel.js <ID> --origin new-simulation`
     (or `auto_sim.py reel <batch> <n>` in the factory). It must end `30 / 30 reel checks passed` and
     `READY_FOR_REVIEW`; it is never approved or published here (`tools/instagram_publish.py` is the owner's
-    step). If the reel fails, fix the story or the reel tooling, never the
+    step), except for a question the owner names in End-to-End Production Mode (CLAUDE.md). If the reel fails, fix the story or the reel tooling, never the
     simulation. If it still fails, report "Simulation complete; Reel generation failed."
     Existing simulations never get a reel unless the owner asks for one (`tools/reel-maker/README.md`).
 23. **Report:** use the format below, then **stop**. Don't commit unless the owner has

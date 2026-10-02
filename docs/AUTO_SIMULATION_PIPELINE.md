@@ -217,7 +217,8 @@ itself is never touched (the generator hashes its folder before and after).
 `node tools/reel-maker/generate-reel.js <ID>` (origin `on-request`), never automatically. The factory stops at
 READY_FOR_REVIEW and never publishes: approval and Instagram publishing are separate human steps with
 `tools/instagram_publish.py` (docs/INSTAGRAM_PUBLISHING.md); a production-mode authorisation for a simulation does
-not cover its reel. Reel files live in `tools/reel-maker/output/` (git-ignored; `tools/` is never deployed).
+not cover its reel. The only exception is a question the owner names in End-to-End Production Mode (CLAUDE.md).
+Reel files live in `tools/reel-maker/output/` (git-ignored; `tools/` is never deployed).
 
 ## 8. State, failures and resume
 
