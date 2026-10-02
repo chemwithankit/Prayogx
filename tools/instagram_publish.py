@@ -149,6 +149,14 @@ class Config:
         # (resumable) upload to rupload.facebook.com is for Facebook Login for Business (graph.facebook.com)
         self.upload_mode = values.get("IG_UPLOAD_MODE", "").strip() or ("resumable" if self.host == "graph.facebook.com" else "video_url")
         self.cover_hosted = False
+        # after a VERIFIED publish: commit + push the ledger, and delete the hosted copy (owner's standing instruction)
+        self.auto_record = values.get("PRAYOGX_AUTO_RECORD", "true").strip().lower() != "false"
+        self.auto_remove_hosted = values.get("PRAYOGX_AUTO_REMOVE_HOSTED", "true").strip().lower() != "false"
+        mr = values.get("PRAYOGX_MEDIA_REPO", "").strip()
+        if not mr and self.media_base_url:
+            g = re.match(r"https://([A-Za-z0-9-]+)\.github\.io/([A-Za-z0-9._-]+)$", self.media_base_url)
+            mr = "%s/%s" % (g.group(1), g.group(2)) if g else ""
+        self.media_repo = mr if re.fullmatch(r"[A-Za-z0-9-]+/[A-Za-z0-9._-]+", mr or "") else ""
 
     def video_url(self, sid):
         return "%s/%s/reel.mp4" % (self.media_base_url, sid) if self.media_base_url else None
@@ -409,7 +417,8 @@ def load_ledger():
 
 
 def ledger_entries(sid):
-    return [p for p in load_ledger().get("publications", []) if p.get("simulationId") == sid]
+    """this simulation's Instagram publications (entries without a platform are Instagram's; YouTube keeps its own)"""
+    return [p for p in load_ledger().get("publications", []) if p.get("simulationId") == sid and p.get("platform", "instagram") == "instagram"]
 
 
 def record_publication(entry, secrets=()):
@@ -897,6 +906,75 @@ def _reverify(sid, m, graph, log, secrets):
     return m
 
 
+# ------------------------------------------------------------------ after a verified publish
+LEDGER_REL = os.path.relpath(LEDGER, ROOT)
+
+
+def _run(cmd, cwd=None):
+    return subprocess.run(cmd, cwd=cwd, capture_output=True, text=True)
+
+
+def record_ledger(sid, m, run=_run, log=print):
+    """commit tools/reel-maker/publications.json alone and push it - only from main, in step with GitHub, with
+    no other unpushed commit; otherwise leave it committed locally (or uncommitted) and say why. Never sweeps."""
+    g = lambda *a: run(["git", "-C", ROOT] + list(a))
+    if not g("status", "--porcelain", "--", LEDGER_REL).stdout.strip():
+        return "record: nothing new to commit"
+    branch = g("rev-parse", "--abbrev-ref", "HEAD").stdout.strip()
+    if branch != "main":
+        return "record: NOT committed - on branch %r, not main; commit %s yourself" % (branch, LEDGER_REL)
+    if g("diff", "--cached", "--name-only").stdout.strip():
+        return "record: NOT committed - other changes are staged; commit %s yourself" % LEDGER_REL
+    g("fetch", "-q", "origin")
+    cnt = g("rev-list", "--left-right", "--count", "origin/main...HEAD").stdout.split()
+    behind, ahead = (int(cnt[0]), int(cnt[1])) if len(cnt) == 2 else (-1, -1)
+    p = m.get("publish") or {}
+    msg = ("Record the Instagram publication of %s\n\nPublished and verified by tools/instagram_publish.py: media %s,\n%s (approved by %s). Public facts only."
+           % (sid, p.get("mediaId"), p.get("permalink"), (m.get("approval") or {}).get("reviewer")))
+    c = g("commit", "-q", "-m", msg, "--", LEDGER_REL)
+    if c.returncode != 0:
+        return "record: NOT committed - git commit failed: %s" % (c.stderr.strip()[:200])
+    head = g("rev-parse", "--short", "HEAD").stdout.strip()
+    if behind != 0 or ahead != 0:
+        return "record: committed as %s but NOT pushed - local main was %s ahead / %s behind GitHub before it; push it yourself" % (head, ahead, behind)
+    ps = g("push", "-q", "origin", "main")
+    if ps.returncode != 0:
+        return "record: committed as %s but the push failed (%s); run ./publish.sh" % (head, ps.stderr.strip()[:200])
+    return "record: committed and pushed as %s" % head
+
+
+def remove_hosted(sid, cfg, run=_run, fetch=None):
+    """delete <ID>/reel.mp4 and thumbnail.jpg from the media repository (GitHub CLI), then check they are gone"""
+    if not cfg.media_repo:
+        return "hosted copy: not removed - PRAYOGX_MEDIA_REPO is not set (owner/repo)"
+    done = []
+    for f in ("reel.mp4", "thumbnail.jpg"):
+        path = "repos/%s/contents/%s/%s" % (cfg.media_repo, sid, f)
+        r = run(["gh", "api", path, "--jq", ".sha"])
+        if r.returncode != 0:
+            if "Not Found" in (r.stderr + r.stdout):
+                continue
+            return "hosted copy: NOT removed - gh could not read %s/%s (%s)" % (sid, f, (r.stderr.strip() or r.stdout.strip())[:160])
+        d = run(["gh", "api", "-X", "DELETE", path, "-f", "message=Remove %s %s: published to Instagram and recorded" % (sid, f), "-f", "sha=" + r.stdout.strip()])
+        if d.returncode != 0:
+            return "hosted copy: NOT fully removed - deleting %s/%s failed (%s)" % (sid, f, d.stderr.strip()[:160])
+        done.append(f)
+    if not done:
+        return "hosted copy: already gone from %s" % cfg.media_repo
+    return "hosted copy: deleted %s from %s (GitHub Pages stops serving them within a minute or two; git history keeps them)" % (" and ".join(done), cfg.media_repo)
+
+
+def after_verified(sid, cfg, m, record=True, remove=True, run=_run, log=print):
+    out = []
+    if remove and cfg.auto_remove_hosted and cfg.upload_mode == "video_url":
+        out.append(remove_hosted(sid, cfg, run))
+    if record and cfg.auto_record:
+        out.append(record_ledger(sid, m, run))
+    for line in out:
+        log(line)
+    return out
+
+
 # ------------------------------------------------------------------ CLI
 def main(argv=None):
     argv = list(sys.argv[1:] if argv is None else argv)
@@ -910,8 +988,10 @@ def main(argv=None):
     p = sub.add_parser("reject"); p.add_argument("id"); p.add_argument("--reason", required=True); p.add_argument("--reviewer")
     p = sub.add_parser("publish"); p.add_argument("id"); p.add_argument("--dry-run", action="store_true"); p.add_argument("--online", action="store_true")
     p.add_argument("--confirm"); p.add_argument("--force-republish", action="store_true"); p.add_argument("--confirm-republish"); p.add_argument("--reason")
+    p.add_argument("--keep-hosted", action="store_true", help="do not delete the hosted copy after a verified publish")
+    p.add_argument("--no-record", action="store_true", help="do not commit and push publications.json after a verified publish")
     p = sub.add_parser("preflight"); p.add_argument("id"); p.add_argument("--online", action="store_true")
-    p = sub.add_parser("verify"); p.add_argument("id")
+    p = sub.add_parser("verify"); p.add_argument("id"); p.add_argument("--keep-hosted", action="store_true"); p.add_argument("--no-record", action="store_true")
     a = ap.parse_args(argv)
     cfg = load_config()
     red = Redactor([cfg.token])
@@ -930,10 +1010,14 @@ def main(argv=None):
         elif a.cmd == "publish":
             m = cmd_publish(a.id, cfg, confirm=a.confirm, force_republish=a.force_republish, confirm_republish=a.confirm_republish, reason=a.reason)
             print("\n%s %s %s" % (a.id, m["status"], (m.get("publish") or {}).get("permalink") or ""))
+            if m["status"] == "VERIFIED":
+                after_verified(a.id, cfg, m, record=not a.no_record, remove=not a.keep_hosted)
             return 0 if m["status"] == "VERIFIED" else 1
         elif a.cmd == "verify":
             m = cmd_verify(a.id, cfg)
             print("%s %s %s" % (a.id, m["status"], (m.get("publish") or {}).get("permalink") or ""))
+            if m["status"] == "VERIFIED":
+                after_verified(a.id, cfg, m, record=not a.no_record, remove=not a.keep_hosted)
             return 0 if m["status"] == "VERIFIED" else 1
         return 0
     except PublishError as e:

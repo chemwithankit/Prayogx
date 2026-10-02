@@ -72,3 +72,5 @@ tools/reel-maker/.cache/
 *credentials*.json
 *client_secret*.json
 *.token
+# YouTube publishing: OAuth tokens and client files (the token normally lives in ~/.config/prayogx/, outside the repo)
+*youtube-token*

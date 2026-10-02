@@ -77,6 +77,12 @@ visible. The answer is not shown before the run. Full standard:
   separate command. Claude never runs `approve` or `publish` unless the owner explicitly asks for that reel in
   this conversation, never infers approval from validation, a commit or a push, and never puts a token in a
   file, log or message (`.env` is git-ignored; `.env.example` has placeholders only).
+- **After a VERIFIED publish** (owner's standing instruction, 2026-10-02) the publisher itself commits and pushes
+  `tools/reel-maker/publications.json` alone (only from `main`, in step with GitHub, nothing else staged) and
+  deletes the reel's hosted copy from the media repo. This covers only that ledger file and that hosted copy.
+- **YouTube Shorts** (`tools/youtube_publish.py`, `tools/publish.py`, docs/YOUTUBE_SHORTS_PUBLISHING.md): the same
+  approval and the exact approved reel.mp4; only on the owner's explicit `--youtube` request with a stated privacy
+  (private first; unaudited API projects are private-only). Never authenticate or upload from the factory.
 
 ## Registry and generated files
 

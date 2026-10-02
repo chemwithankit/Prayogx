@@ -127,6 +127,25 @@ If step 4 itself fails in a way that may have reached Instagram (a network error
 marked **uncertain** and is never retried blindly. `verify` reads the container: if it is `PUBLISHED`, it finds
 the post and records it; if not, the attempt is cleared and a new `publish` is safe.
 
+### After a verified publish (automatic, owner's standing instruction of 2026-10-02)
+
+Only when the publish ends **VERIFIED** (never after a failed or uncertain one), the publisher then:
+
+1. **Removes the public copy**: deletes `<ID>/reel.mp4` and `<ID>/thumbnail.jpg` from the media repository
+   (`PRAYOGX_MEDIA_REPO`, or read from a `https://<owner>.github.io/<repo>` base URL) through the signed-in GitHub
+   CLI (`gh`), each by its file sha. Instagram keeps its own copy; git history keeps the old files.
+2. **Saves the record**: commits `tools/reel-maker/publications.json` alone (`git commit -- <that path>`) and pushes
+   `main` - only when the repository is on `main`, nothing else is staged, and local `main` was exactly in step
+   with GitHub before the commit (so no other commit is pushed with it). Otherwise it commits locally or not at
+   all and says why; it never sweeps in other files and never force-pushes. The ledger is not part of the site.
+
+Each step prints one line. Turn them off per run with `--keep-hosted` / `--no-record`, or in `.env` with
+`PRAYOGX_AUTO_REMOVE_HOSTED=false` / `PRAYOGX_AUTO_RECORD=false`. `verify` does the same when it turns a reel
+VERIFIED.
+
+YouTube Shorts use the same approval and the same reel: `docs/YOUTUBE_SHORTS_PUBLISHING.md`. To choose destinations
+in one command: `python3 tools/publish.py publish <ID> --instagram [--youtube --privacy private]`.
+
 ### Duplicates
 
 `tools/reel-maker/publications.json` (tracked; public facts only: simulation ID, media ID, permalink, times,

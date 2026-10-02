@@ -581,6 +581,65 @@ def run(tmp):
     publish(Fake(**{r"^POST /17841400000000000/media$": graph_error(10, "no permission", 403)}))
     chk("G6 a failed publish is never recorded as published (no ledger entry, no media ID)", not os.path.exists(P.LEDGER) and "mediaId" not in state()["publish"])
 
+    # ============================================================ I. after a verified publish (fake git and gh: nothing real is touched)
+    class R:
+        def __init__(self, rc=0, out="", err=""):
+            self.returncode, self.stdout, self.stderr = rc, out, err
+
+    def fake(rules, log):
+        def run(cmd, cwd=None):
+            log.append(cmd)
+            k = " ".join(cmd)
+            for pat, res in rules:
+                if re.search(pat, k):
+                    return res
+            return R()
+        return run
+    igl = cfg(**IGL)
+    calls = []
+    igx = cfg(PRAYOGX_MEDIA_REPO="owner/media", **IGL)
+    out = P.remove_hosted(SID, igx, fake([(r"api repos/.+ --jq \.sha", R(0, "abc123\n"))], calls))
+    dels = [c for c in calls if "DELETE" in c]
+    chk("I1 an explicit PRAYOGX_MEDIA_REPO: the hosted reel and cover are deleted through gh, each by its sha",
+        len(dels) == 2 and all("sha=abc123" in c and "repos/owner/media/contents/%s/" % SID in " ".join(c) for c in dels) and "deleted reel.mp4 and thumbnail.jpg" in out, out)
+    igl2 = cfg(IG_API_HOST="graph.instagram.com", PRAYOGX_MEDIA_BASE_URL="https://someone.github.io/reel-host")
+    calls = []
+    out = P.remove_hosted(SID, igl2, fake([(r"api repos/.+ --jq \.sha", R(0, "abc123\n"))], calls))
+    dels = [c for c in calls if "DELETE" in c]
+    chk("I2 the media repo is read from a github.io base URL; both files are deleted by sha", igl2.media_repo == "someone/reel-host" and len(dels) == 2
+        and all("repos/someone/reel-host/contents/%s/" % SID in " ".join(c) and "sha=abc123" in c for c in dels), out)
+    out = P.remove_hosted(SID, igl2, fake([(r"--jq", R(1, "", "gh: Not Found (HTTP 404)"))], []))
+    chk("I3 files already gone: nothing deleted, said so", "already gone" in out, out)
+    out = P.remove_hosted(SID, igl, fake([], []))
+    chk("I4 a non-GitHub host without PRAYOGX_MEDIA_REPO: nothing deleted, said so", "not removed" in out and igl.media_repo == "", out)
+    m = {"publish": {"mediaId": "m-1", "permalink": "https://www.instagram.com/reel/X/"}, "approval": {"reviewer": "Ankit"}}
+    base_rules = [(r"status --porcelain", R(0, " M tools/reel-maker/publications.json\n")), (r"rev-parse --abbrev-ref", R(0, "main\n")),
+                  (r"diff --cached", R(0, "")), (r"rev-list --left-right", R(0, "0\t0\n")), (r"rev-parse --short", R(0, "abc1234\n"))]
+    calls = []
+    out = P.record_ledger(SID, m, fake(base_rules, calls))
+    com = [c for c in calls if "commit" in c][0]
+    chk("I5 in step with GitHub: only publications.json is committed (pathspec) and pushed to main",
+        com[-2:] == ["--", P.LEDGER_REL] and any(c[-3:] == ["push", "-q", "origin"] or c[-4:] == ["push", "-q", "origin", "main"] for c in calls) and "pushed as abc1234" in out, out)
+    calls = []
+    out = P.record_ledger(SID, m, fake([(r"rev-list --left-right", R(0, "0\t1\n"))] + base_rules, calls))
+    chk("I6 other unpushed commits: the record is committed but nothing is pushed", "NOT pushed" in out and not any("push" in c for c in calls), out)
+    calls = []
+    out = P.record_ledger(SID, m, fake([(r"rev-parse --abbrev-ref", R(0, "feature\n"))] + base_rules, calls))
+    chk("I7 not on main: nothing committed or pushed", "NOT committed" in out and not any("commit" in c or "push" in c for c in calls), out)
+    calls = []
+    out = P.record_ledger(SID, m, fake([(r"diff --cached", R(0, "docs/x.md\n"))] + base_rules, calls))
+    chk("I8 other changes staged: nothing committed (no sweeping)", "NOT committed" in out and not any("commit" in c for c in calls), out)
+    calls = []
+    out = P.record_ledger(SID, m, fake([(r"status --porcelain", R(0, ""))] + base_rules, calls))
+    chk("I9 nothing new in the ledger: no commit", "nothing new" in out and not any("commit" in c for c in calls), out)
+    calls = []
+    out = P.after_verified(SID, cfg(**IGL), m, record=False, remove=False, run=fake([], calls), log=lambda x: None)
+    out2 = P.after_verified(SID, cfg(), m, record=False, remove=True, run=fake([], calls), log=lambda x: None)
+    out3 = P.after_verified(SID, cfg(PRAYOGX_AUTO_RECORD="false", PRAYOGX_AUTO_REMOVE_HOSTED="false", **IGL), m, run=fake([], calls), log=lambda x: None)
+    chk("I10 --no-record / --keep-hosted, the .env switches, and the direct-upload route each turn the steps off", out == [] and out2 == [] and out3 == [] and calls == [])
+    src_main = open(os.path.join(ROOT, "tools", "instagram_publish.py")).read()
+    chk("I11 the steps run only after VERIFIED (never after a failed or uncertain publish)", src_main.count('if m["status"] == "VERIFIED":\n                after_verified(') == 2)
+
     # ============================================================ H. security
     red = P.Redactor([TOKEN])
     s = red("GET https://graph.instagram.com/v25.0/1?fields=id&access_token=%s  Authorization: OAuth %s  EAAB%s  IGAA%s" % (TOKEN, TOKEN, "x" * 30, "y" * 40))
