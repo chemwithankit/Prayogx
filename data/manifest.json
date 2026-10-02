@@ -37,13 +37,13 @@
     "idPolicy": "Simulation IDs are permanent. A redo or fix edits the existing folder in place and bumps `updatedAt` / `revision`; it never mints a new ID."
   },
   "counts": {
-    "total": 52,
+    "total": 53,
     "byYear": {
-      "2026": 52
+      "2026": 53
     },
     "bySubject": {
       "Chemistry": 33,
-      "Physics": 19
+      "Physics": 20
     },
     "byChapter": {
       "Thermodynamics": 5,
@@ -75,7 +75,8 @@
       "Solutions and Colligative Properties": 3,
       "Polymers": 1,
       "Current Electricity": 1,
-      "Nuclei": 1
+      "Nuclei": 1,
+      "Gravitation": 1
     }
   },
   "simulations": [
@@ -6912,6 +6913,112 @@
       "source": {
         "file": "papers/adv_2026_paper_2.pdf",
         "page": 10
+      },
+      "status": "script_verified",
+      "createdAt": "2026-10-02",
+      "updatedAt": "2026-10-02"
+    },
+    {
+      "id": "ADV-2026-P2-PHY-Q04",
+      "slug": "adv-2026-p2-phy-q04",
+      "revision": 1,
+      "path": "simulations/2026/paper-2/physics/adv-2026-p2-phy-q04/index.html",
+      "folder": "simulations/2026/paper-2/physics/adv-2026-p2-phy-q04/",
+      "title": "Period of small radial oscillations of a nudged circular orbit under an inverse-square force",
+      "shortTitle": "Orbit wobble lab",
+      "summary": "A particle on a circular orbit under F = -k/r^2 is nudged outward with its angular momentum unchanged and its distance oscillates. U_eff'' = k/r0^3 with r0 = l^2/(mk) gives T = 2 pi l^3/(mk^2) - option A - the same as the orbital period, so the orbit closes.",
+      "exam": "JEE Advanced",
+      "year": 2026,
+      "paper": "Paper 2",
+      "paperNumber": 2,
+      "subject": "Physics",
+      "branch": "Mechanics / Gravitation",
+      "questionNumber": 4,
+      "section": "Section 1",
+      "questionType": "Single correct option",
+      "marking": {
+        "full": 3,
+        "partial": 0,
+        "zero": 0,
+        "negative": -1
+      },
+      "chapter": "Gravitation",
+      "topic": "Radial oscillation of a nudged circular orbit under an inverse-square force - effective potential and a closed orbit",
+      "subtopics": [
+        "Central force motion with conserved angular momentum",
+        "Effective potential U_eff = l^2/(2mr^2) - k/r and the circular orbit at its minimum",
+        "Small radial oscillations: omega^2 = U_eff''(r0)/m",
+        "Inverse-square force: radial and orbital periods equal, closed (elliptical) orbits"
+      ],
+      "concepts": [
+        "With l fixed the radial motion is that of a particle in U_eff = l^2/(2mr^2) - k/r; the circular orbit is its minimum, r0 = l^2/(mk)",
+        "U_eff''(r0) = 3l^2/(m r0^4) - 2k/r0^3 = k/r0^3, so omega_r^2 = k/(m r0^3)",
+        "T = 2 pi sqrt(m r0^3/k) = 2 pi l^3/(m k^2) - option A - equal to the orbital period, so the nudged orbit closes (an ellipse)",
+        "Option B 2 pi sqrt(m/k) has the wrong units for k in N m^2 (the spring formula); C and D are a third and a fifth of the right value",
+        "For other power laws k/r^n the radial period is T_orbit/sqrt(3 - n) and the orbit traces a rosette"
+      ],
+      "formulas": [
+        "U_eff = l^2/(2mr^2) - k/r",
+        "r0 = l^2/(m k)",
+        "omega_r^2 = U_eff''(r0)/m = k/(m r0^3)",
+        "T = 2 pi sqrt(m r0^3/k) = 2 pi l^3/(m k^2)",
+        "T_orbit = 2 pi m r0^2/l"
+      ],
+      "tags": [
+        "gravitation",
+        "central force",
+        "inverse square law",
+        "effective potential",
+        "angular momentum",
+        "orbital motion",
+        "small oscillations",
+        "kepler",
+        "ellipse",
+        "closed orbits",
+        "physics"
+      ],
+      "difficulty": "Moderate",
+      "estimatedMinutes": 5,
+      "answer": "A",
+      "answerValue": "T = 2 pi l^3/(m k^2)",
+      "answerUnit": "s",
+      "derivedQuantities": {
+        "r0": "l^2/(m k)",
+        "U_eff_second_derivative": "k/r0^3",
+        "T_radial_equals_T_orbit": true,
+        "representative_m_kg": 1,
+        "representative_k_N_m2": 50,
+        "representative_l_kg_m2_per_s": 10,
+        "representative_r0_m": 2,
+        "representative_T_s": 2.5133,
+        "measured_T_dr_0_05_s": 2.5218
+      },
+      "verification": {
+        "status": "verified",
+        "methods": [
+          "MathonGo solution (their Q22 = Physics Q.4) read first as the conceptual reference; its answer (A) agrees",
+          "Independent solve: U_eff''(r0) = k/r0^3 with r0 = l^2/(mk), omega^2 = k/(m r0^3), T = 2 pi l^3/(m k^2)",
+          "sympy: the minimum of U_eff, its second derivative, T = 2 pi/sqrt(U''/m) = 2 pi l^3/(mk^2) and the equal orbital period",
+          "scipy DOP853 integration (1e-12) of the radial equation: the period tends to the formula as dr -> 0 with an excess scaling as dr^2",
+          "Kepler: the integrated period equals 2 pi sqrt(m a^3/k) with a = r0 (1 + e)^2/(1 + 2e) at every nudge (1e-8)",
+          "Options audited: units of B; C and D a third and a fifth; for k/r^1.5 the radial period is T_orbit/sqrt(3 - n)",
+          "The page engine extracted and run in Node: answer A, its period equal to the DOP853 value (1e-5), l conserved, the orbit closing (apsis 360 deg), (A) across the slider range",
+          "Official final answer key (jeeadv.ac.in, JEE Advanced 2026 Paper 2, published 2026-06-01; read last): Q.4 -> A"
+        ],
+        "verifiedOn": "2026-10-02",
+        "note": "Built and verified by the PrayogX simulation factory in End-to-End Production Mode (owner instruction, this item only); script-verified (automated independent verifier, page suite, visual gates A-K, library and production audits). No human review has been recorded."
+      },
+      "interactivity": [
+        "Layout v3 (G5) with the target display: the verbatim question and options (none marked before the run); the target shows only 'period of the radial oscillation Tr' until the measurement reveals the period, the formula and the option with one pulse",
+        "A top view of the orbital plane: the attracting centre, the circle r0, the particle with its trail, a radial ruler and the farthest points marked with lines to the centre",
+        "The particle circles, is nudged out by dr with l unchanged, and Newton's second law is integrated; r(t) is plotted and the period measured between successive maxima",
+        "The measured period is compared with the four options evaluated with the same m, k and l (period bars); readouts show r, the conserved l, revolutions and Tr",
+        "What if the force were k/r^1.5 or k/r^2.5: the radial and orbital periods differ and the orbit becomes a rosette",
+        "Sliders for l, k, m and the nudge; a large nudge shows the period drifting above the small-oscillation value; speed, pause, replay, reset, classroom mode, reduced motion, portrait phone scene"
+      ],
+      "source": {
+        "file": "papers/adv_2026_paper_2.pdf",
+        "page": 11
       },
       "status": "script_verified",
       "createdAt": "2026-10-02",
