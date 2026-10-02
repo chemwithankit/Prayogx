@@ -45,11 +45,19 @@ const QUESTION = () => {
   const t = e => {
     if (!e) return '';
     const c = e.cloneNode(true);
-    c.querySelectorAll('sup').forEach(s => s.replaceWith(script(s.textContent.trim(), SUP, '^')));
-    c.querySelectorAll('sub').forEach(s => s.replaceWith(script(s.textContent.trim(), SUB, '_')));
     /* innerText needs a rendered node; the detached copy is laid out off-screen just long enough to read it */
     c.style.cssText += ';position:absolute;left:-99999px;top:0';
-    document.body.appendChild(c);
+    e.parentNode.appendChild(c);
+    c.querySelectorAll('sup').forEach(s => s.replaceWith(script(s.textContent.trim(), SUP, '^')));
+    c.querySelectorAll('sub').forEach(s => s.replaceWith(script(s.textContent.trim(), SUB, '_')));
+    /* a stacked fraction (a column flexbox of two parts) reads as num/den, the denominator bracketed if it has a space */
+    [...c.querySelectorAll('*')].reverse().forEach(el => {
+      const cs = getComputedStyle(el);
+      if (/flex/.test(cs.display) && cs.flexDirection === 'column' && el.children.length === 2) {
+        const nu = el.children[0].textContent.replace(/\s+/g, ' ').trim(), de = el.children[1].textContent.replace(/\s+/g, ' ').trim();
+        el.replaceWith((/ /.test(nu) ? '(' + nu + ')' : nu) + '/' + (/ /.test(de) ? '(' + de + ')' : de));
+      }
+    });
     const out = (c.innerText || '').replace(/\s+/g, ' ').trim();
     c.remove();
     return out;
@@ -97,7 +105,8 @@ async function record(spec, pageFile, workDir, log) {
       const st = await p.evaluate(STATE, doneExpr);
       const file = 'f' + String(f).padStart(5, '0') + '.png';
       await cv.screenshot({ path: path.join(dir, file) });
-      frames.push(Object.assign({ file: file, t: +(f / fps).toFixed(4) }, st));
+      /* the frame time is the recorder's own; a page state field named t (e.g. simulated time) is kept as pageT */
+      frames.push(Object.assign({ file: file }, st, { t: +(f / fps).toFixed(4) }, st.t !== undefined ? { pageT: st.t } : {}));
       if (st.done && doneAt < 0) doneAt = f;
       if (doneAt >= 0 && f - doneAt >= tailF) break;
       if (log && f % 60 === 0) log('  recorded ' + (f / fps).toFixed(1) + ' s (' + st.cfg + ' ' + st.phase + ')');

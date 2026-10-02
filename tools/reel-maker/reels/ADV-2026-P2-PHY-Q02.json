@@ -1,0 +1,218 @@
+{
+  "simulationId": "ADV-2026-P2-PHY-Q02",
+  "template": "question-simulation-v1",
+  "fps": 30,
+  "record": {
+    "viewport": {
+      "width": 420,
+      "height": 860,
+      "deviceScaleFactor": 2.6
+    },
+    "actions": [
+      {
+        "eval": "PX.start()"
+      }
+    ],
+    "tailSeconds": 2.2,
+    "maxSeconds": 60
+  },
+  "regions": {
+    "top": [
+      0,
+      0,
+      720,
+      890
+    ],
+    "scene": [
+      12,
+      230,
+      696,
+      650
+    ],
+    "sceneGraph": [
+      0,
+      230,
+      720,
+      1140
+    ],
+    "graph": [
+      12,
+      894,
+      696,
+      470
+    ]
+  },
+  "story": {
+    "hook": {
+      "beats": [
+        "A reactor.",
+        "A nuclide.",
+        "A liquid."
+      ],
+      "colors": [
+        "#7cc4ff",
+        "#5dffa0",
+        "#ffd28a"
+      ],
+      "line": "How fast does it *heat up*?"
+    },
+    "question": {
+      "kind": "option",
+      "highlight": []
+    },
+    "problem": [
+      "Nuclei pile up…",
+      "but they also *decay*."
+    ],
+    "curiosity": "Can we *SEE* the heating rate?",
+    "moments": [
+      {
+        "id": "A",
+        "phases": [
+          "start"
+        ],
+        "seconds": 2.6,
+        "region": "top",
+        "label": "REACTOR ON",
+        "sub": "no nuclei yet, so no heating",
+        "callout": {
+          "text": "dT/dt starts at 0",
+          "anchor": [
+            624,
+            640
+          ],
+          "side": "lane",
+          "from": 0.4
+        }
+      },
+      {
+        "id": "B",
+        "phases": [
+          "build"
+        ],
+        "seconds": 3.0,
+        "region": "sceneGraph",
+        "label": "NUCLEI BUILD UP",
+        "sub": "more nuclei → more decays → faster heating",
+        "callout": {
+          "text": "every flash = one decay = E₀",
+          "anchor": [
+            482,
+            415
+          ],
+          "side": "lane",
+          "from": 0.45
+        }
+      },
+      {
+        "id": "C",
+        "phases": [
+          "steady"
+        ],
+        "seconds": 3.0,
+        "region": "sceneGraph",
+        "label": "DECAY CATCHES UP",
+        "sub": "λN → α: the tank stops filling",
+        "callout": {
+          "text": "dT/dt levels off",
+          "anchor": [
+            600,
+            1011
+          ],
+          "side": "lane",
+          "from": 0.45
+        }
+      },
+      {
+        "id": "D",
+        "phases": [
+          "match"
+        ],
+        "seconds": 3.4,
+        "region": "graph",
+        "label": "TEST EVERY OPTION",
+        "sub": "against the measured points",
+        "aha": {
+          "seconds": 3.0,
+          "zoom": [
+            12,
+            894,
+            696,
+            330
+          ],
+          "kicker": "WATCH THIS",
+          "lines": [
+            "Zero at the start,",
+            "levelling off later:",
+            "only *one option* fits the data"
+          ]
+        }
+      }
+    ],
+    "answer": {},
+    "payoff": [
+      "DON'T JUST SOLVE IT.",
+      "*EXPERIENCE* IT."
+    ]
+  },
+  "thumbnail": {
+    "kicker": "JEE ADVANCED 2026",
+    "lines": [
+      "Make nuclei.",
+      "Watch it *heat*."
+    ],
+    "region": "scene",
+    "phases": [
+      "steady"
+    ]
+  },
+  "caption": {
+    "hook": "A reactor makes radioactive nuclei at a steady rate, and every decay heats a liquid… so does the liquid heat faster and faster forever? 🔥",
+    "body": "This JEE Advanced 2026 Paper 2 Physics question is about production versus decay. We ran the real simulation, measured the heating rate with the thermometer and tested all four options against the data.",
+    "cta": "Try the full experiment free on prayogx.co.in 🔬",
+    "hashtags": [
+      "#JEEAdvanced",
+      "#JEE2026",
+      "#Physics",
+      "#Radioactivity",
+      "#NuclearPhysics",
+      "#JEEPreparation",
+      "#PrayogX"
+    ]
+  },
+  "_recorded": {
+    "key": "phase",
+    "runs": [
+      {
+        "value": "start",
+        "from": 0,
+        "to": 0.9333,
+        "frames": 29
+      },
+      {
+        "value": "build",
+        "from": 0.9667,
+        "to": 4.1,
+        "frames": 95
+      },
+      {
+        "value": "steady",
+        "from": 4.1333,
+        "to": 8.2667,
+        "frames": 125
+      },
+      {
+        "value": "match",
+        "from": 8.3,
+        "to": 11.8667,
+        "frames": 108
+      },
+      {
+        "value": "done",
+        "from": 11.9,
+        "to": 14.1,
+        "frames": 67
+      }
+    ]
+  }
+}
