@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prism Spectrum Lab — at which wavelength is the minimum deviation smallest? — JEE Advanced 2026 Paper 2 Q.3 | PrayogX</title>
+<meta name="description" content="A thin 6° prism whose refractive index depends on wavelength as n = αλ + β/λ². Rotate the prism to find the minimum deviation, scan the wavelength, and find where the minimum deviation is smallest. JEE Advanced 2026 Paper 2 Physics Q.3.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232a78d6'/%3E%3Cpath d='M12.5 6.5h7M13.6 6.5v7.2L7.9 24.1a1.5 1.5 0 0 0 1.3 2.3h13.6a1.5 1.5 0 0 0 1.3-2.3l-5.7-10.4V6.5' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M10.6 20.6h10.8' stroke='white' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E">
+<meta name="sim-id" content="ADV-2026-P2-PHY-Q03">
+<style>
+:root{
+  color-scheme: light;
+  --surface-0:#f4f4f1; --surface-1:#fcfcfb; --surface-2:#ececea;
+  --line:#d9d9d4; --line-strong:#bcbcb5;
+  --text-primary:#0b0b0b; --text-secondary:#52514e; --text-muted:#77766f;
+  --s1:#2a78d6; --s2:#eb6834; --s3:#1baf7a; --s4:#4a3aa7;
+  --good:#00743f; --bad:#c0392b; --accent:#2a78d6;
+  --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+  --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --serif:ui-serif,Georgia,"Times New Roman",serif;
+  --radius:12px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  color-scheme: dark;
+  --surface-0:#111110; --surface-1:#1a1a19; --surface-2:#232322;
+  --line:#34342f; --line-strong:#4a4a44;
+  --text-primary:#ffffff; --text-secondary:#c3c2b7; --text-muted:#95948b;
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#9085e9;
+  --good:#3fae7a; --bad:#e66767; --accent:#3987e5;
+}}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --surface-0:#111110; --surface-1:#1a1a19; --surface-2:#232322;
+  --line:#34342f; --line-strong:#4a4a44;
+  --text-primary:#ffffff; --text-secondary:#c3c2b7; --text-muted:#95948b;
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#9085e9;
+  --good:#3fae7a; --bad:#e66767; --accent:#3987e5;
+}
+*{box-sizing:border-box}
+[hidden]{display:none !important}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--surface-0);color:var(--text-primary);font-family:var(--sans);font-size:16px;line-height:1.6}
+header.top{border-bottom:1px solid var(--line);background:var(--surface-1)}
+.top-inner{max-width:1240px;margin:0 auto;padding:18px 20px 14px;position:relative}
+.brandbar{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.brandbar .pxmark{width:21px;height:21px;flex:none;display:block}
+.brandbar .wm{font-size:13px;font-weight:800;letter-spacing:.17em;color:var(--text-secondary);line-height:1}
+.brandbar .wm i{font-style:normal;color:var(--accent)}
+.simid{font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--text-muted)}
+h1{font-size:21px;line-height:1.3;margin:4px 0 4px;padding-right:80px}
+.meta{font-size:14px;color:var(--text-secondary);margin:0}
+.themebtn{position:absolute;top:14px;right:16px;border:1px solid var(--line-strong);background:var(--surface-2);
+  color:var(--text-secondary);border-radius:8px;padding:4px 9px;font-size:12px;cursor:pointer}
+.wrap{max-width:1240px;margin:0 auto;padding:0 20px 40px}
+section{margin:0 0 34px}
+h2{font-size:15px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-secondary);margin:26px 0 12px}
+h2 b{color:var(--accent);margin-right:8px}
+h3{font-size:17px;margin:22px 0 8px}
+/* 01 question */
+.qcard{background:var(--surface-1);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+.qtext{font-family:var(--serif);font-size:18px;line-height:1.6;flex:1 1 460px;min-width:0}
+.qfig{flex:0 0 250px;max-width:100%}
+.qfig svg{display:block;width:100%;height:auto}
+.sq{white-space:nowrap}
+.sq .rad{border-top:1.5px solid currentColor;padding:0 2px}
+#opts{list-style:none;margin:12px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+#opts li{background:var(--surface-1);border:1.5px solid var(--line);border-radius:10px;padding:10px 12px;font-family:var(--serif);font-size:19px;display:flex;gap:10px;align-items:center;min-height:52px}
+#opts li b{font-family:var(--sans);font-size:14px;color:var(--text-muted)}
+#opts li.correct{border-color:var(--good);box-shadow:0 0 0 2px color-mix(in srgb,var(--good) 25%,transparent)}
+#opts li.correct b{color:var(--good)}
+/* 02 lab */
+#keyline{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;background:var(--surface-1);border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin:0 0 8px}
+#keyline .k{font-size:13px;font-weight:800;letter-spacing:.12em;color:var(--text-muted);text-transform:uppercase}
+#ansval{font-size:22px;font-weight:800;color:var(--good)}
+#ansexpr{font-family:var(--serif);font-size:20px}
+#anssub{font-size:14px;color:var(--text-secondary);margin-left:auto}
+#keyline.blink{animation:blink .45s ease-in-out 4}
+@keyframes blink{50%{background:color-mix(in srgb,var(--good) 22%,var(--surface-1))}}
+#narr{margin:0 2px 10px;font-size:16px;color:var(--text-secondary);min-height:2.8em}
+.stage{position:relative;border-radius:16px;overflow:hidden;background:#070a12;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+canvas#labcv{display:block;width:100%;height:auto;touch-action:manipulation}
+#controls{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:12px;padding:12px;border:1px solid var(--line);border-radius:14px;background:var(--surface-1)}
+#controls button{min-height:48px;font-size:16px;font-weight:700;border-radius:10px;border:1px solid var(--line-strong);background:var(--surface-2);color:var(--text-primary);padding:0 16px;cursor:pointer;font-family:var(--sans)}
+#controls button:focus-visible,#controls input:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+#controls .go{background:var(--accent);color:#fff;border:none;font-weight:800;letter-spacing:.04em;min-width:190px}
+#controls .seg{display:flex;align-items:center;gap:0}
+#controls .seg span{font-size:13px;font-weight:700;color:var(--text-muted);margin-right:8px;letter-spacing:.06em;text-transform:uppercase}
+#controls .seg button{border-radius:0;margin-left:-1px;padding:0 13px}
+#controls .seg button:nth-child(2){border-radius:10px 0 0 10px}
+#controls .seg button:last-child{border-radius:0 10px 10px 0}
+#controls .seg button[aria-pressed="true"]{background:var(--accent);color:#fff;border-color:var(--accent)}
+#controls .v0{display:flex;flex-wrap:wrap;align-items:center;gap:10px;flex:1 1 520px;min-width:0}
+#controls .v0 label{font-size:15px;font-weight:700;white-space:nowrap}
+#controls input[type=range]{flex:1 1 150px;min-width:110px;min-height:44px;accent-color:var(--accent);margin:0}
+#v0out{font-family:var(--mono);font-size:15px;min-width:92px}
+#warn{margin:10px 2px 0;font-size:15px;color:var(--s2);font-weight:600}
+/* 03 solution */
+.sol{background:var(--surface-1);border:1px solid var(--line);border-radius:var(--radius);padding:6px 20px 16px}
+.sol ol.steps{padding-left:22px;margin:10px 0}
+.sol ol.steps li{margin:0 0 12px}
+.eq{font-family:var(--serif);font-size:18px;background:var(--surface-2);border-radius:8px;padding:8px 12px;margin:6px 0;overflow-x:auto}
+.solfig{display:flex;gap:18px;align-items:center;flex-wrap:wrap;margin:8px 0 12px}
+.solfig svg{flex:0 0 300px;max-width:100%;height:auto}
+.solfig p{flex:1 1 300px;margin:0}
+table.opt{border-collapse:collapse;width:100%;font-size:15px;margin:8px 0}
+table.opt th,table.opt td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+table.opt th{background:var(--surface-2)}
+table.opt tr.ok td{background:color-mix(in srgb,var(--good) 10%,transparent)}
+.tscroll{overflow-x:auto}
+.concept{border-left:4px solid var(--accent);padding:2px 0 2px 14px;margin:14px 0}
+ul.take{padding-left:20px} ul.take li{margin:0 0 6px}
+#solans{font-weight:800;color:var(--good)}
+.note{font-size:14px;color:var(--text-secondary)}
+/* 04 analysis */
+svg.chart{display:block;width:100%;max-width:760px;height:auto;background:var(--surface-1);border:1px solid var(--line);border-radius:12px}
+.chart text{font-family:var(--sans);fill:var(--text-secondary)}
+.cap{font-size:14px;color:var(--text-secondary);max-width:760px}
+/* how to */
+ol.howto{padding-left:22px;margin:0} ol.howto li{margin:0 0 8px}
+footer{font-size:13px;color:var(--text-muted);border-top:1px solid var(--line);padding:16px 0 0}
+/* classroom */
+body.classroom .wrap{max-width:none;padding:0 18px 30px}
+body.classroom header.top,body.classroom section:not(#lab),body.classroom footer{display:none}
+body.classroom #narr{font-size:24px;color:var(--text-primary)}
+body.classroom #keyline #ansexpr{font-size:26px}
+@media (max-width:760px){
+  .wrap{padding:0 16px 32px}
+  .top-inner{padding:14px 16px 12px}
+  h1{font-size:18px}
+  .qtext{font-size:17px}
+  .qfig{flex-basis:100%}
+  .qfig svg{max-width:260px;margin:0 auto}
+  #opts{grid-template-columns:repeat(2,minmax(0,1fr))}
+  #anssub{margin-left:0}
+  #controls{gap:8px;padding:10px}
+  #controls .go{flex:1 1 100%}
+  #controls button{padding:0 12px}
+  #controls .v0{flex-basis:100%;flex-wrap:wrap}
+  #controls .v0 input[type=range]{flex:1 1 100%;order:3}
+  .solfig svg{flex-basis:100%}
+  .sol{padding:4px 14px 12px}
+}
+@media (prefers-reduced-motion: reduce){#keyline.blink{animation:none}}
+/* long text options */
+#opts.lopts{grid-template-columns:1fr}
+#opts.lopts li{font-family:var(--sans);font-size:17px;align-items:flex-start;line-height:1.5}
+#opts.lopts li b{padding-top:2px}
+#opts.lopts .fx{font-family:var(--serif);font-size:18px;white-space:nowrap}
+#controls .seg button{white-space:nowrap}
+@media (max-width:760px){#opts.lopts .fx{white-space:normal}#controls .seg{flex-wrap:wrap;row-gap:6px}#controls .seg span{flex:1 1 100%;margin:0 0 2px}#controls .seg button:nth-child(2){border-radius:10px 0 0 10px}}
+.mlists{display:flex;gap:16px;flex-wrap:wrap;margin:12px 0 0}
+.mlist{flex:1 1 300px;background:var(--surface-1);border:1px solid var(--line);border-radius:12px;padding:10px 14px}
+.mlist h3{margin:4px 0 8px;font-size:15px}
+.cfg{display:flex;gap:10px;align-items:center;margin:6px 0}.cfg b{font-size:14px;color:var(--text-muted);min-width:28px}
+.cfg svg{width:100%;max-width:240px;height:auto}
+ol.l2{list-style:none;padding:0;margin:0;font-family:var(--serif);font-size:18px}ol.l2 li{padding:6px 0;border-bottom:1px solid var(--line)}
+#target{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;background:var(--surface-1);border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin:0 0 8px}
+#target .lbl{font-size:13px;font-weight:800;letter-spacing:.12em;color:var(--text-muted);text-transform:uppercase}
+#target .sym{font-family:var(--serif);font-size:20px}
+#target .val{font-size:22px;font-weight:800;color:var(--good)}
+#target .val:empty{display:none}
+#target.pulse{animation:pxpulse .5s ease-in-out 3}
+@keyframes pxpulse{50%{background:color-mix(in srgb,var(--good) 24%,var(--surface-1));box-shadow:0 0 0 6px color-mix(in srgb,var(--good) 30%,transparent)}}
+@media (prefers-reduced-motion: reduce){#target.pulse{animation:none}}
+body.classroom #target .sym{font-size:24px} body.classroom #target .val{font-size:28px}
+.mlist .cfg svg{max-width:220px}
+.qopts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;list-style:none;padding:0;margin:12px 0 0}
+.qopts li{background:var(--surface-1);border:1px solid var(--line);border-radius:10px;padding:10px 12px;font-family:var(--serif);font-size:18px}
+.qopts li b{color:var(--text-muted);margin-right:8px;font-family:inherit}
+.qopts li.correct{border-color:var(--good);box-shadow:0 0 0 2px color-mix(in srgb,var(--good) 40%,transparent)}
+@media (max-width:700px){.qopts{grid-template-columns:repeat(2,minmax(0,1fr))}}
+#controls .whatif[hidden]{display:none}
+.fr{display:inline-flex;flex-direction:column;vertical-align:middle;text-align:center;margin:0 3px;line-height:1.15}
+.fr>span:first-child{border-bottom:1.5px solid currentColor;padding:0 3px}
+.fr>span:last-child{padding:0 3px}
+.qopts li .ov{white-space:nowrap}
+@media (max-width:700px){#opts{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-inner">
+    <div class="brandbar"><svg class="pxmark" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><rect width="32" height="32" rx="8" fill="var(--accent)"/><path d="M12.5 6.5h7M13.6 6.5v7.2L7.9 24.1a1.5 1.5 0 0 0 1.3 2.3h13.6a1.5 1.5 0 0 0 1.3-2.3l-5.7-10.4V6.5" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.6 20.6h10.8" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg><span class="wm">PRAYOG<i>X</i></span></div>
+    <div class="simid">ADV-2026-P2-PHY-Q03</div>
+    <h1>Prism Spectrum Lab — at which wavelength is the minimum deviation smallest?</h1>
+    <p class="meta">JEE Advanced 2026 · Paper 2 · Physics · Q.3 · single correct option (+3 / 0 / −1) · Ray Optics and Optical Instruments</p>
+    <button class="themebtn" id="themebtn" type="button">◐ theme</button>
+  </div>
+</header>
+
+<main class="wrap">
+
+<section id="question" aria-labelledby="qh">
+  <h2 id="qh"><b>01</b>The question</h2>
+  <div class="qcard">
+    <div class="qtext">Q.3 A beam of polychromatic light passes through a thin prism of prism angle 6°. The refractive index of the material of the prism varies with wavelength (<i>λ</i>) as <i>n</i>(<i>λ</i>) = <i>αλ</i> + <span class="fr"><span><i>β</i></span><span><i>λ</i><sup>2</sup></span></span>, where <i>α</i> = 3 <i>μ</i>m<sup>−1</sup> and <i>β</i> = 0.096 <i>μ</i>m<sup>2</sup>. If <i>λ</i><sub>min</sub> is the wavelength at which the angle of minimum deviation <i>D</i><sub><i>m</i></sub> is smallest, then the correct value of <i>D</i><sub><i>m</i></sub> at <i>λ</i><sub>min</sub> is</div>
+  </div>
+  <ol id="opts" class="qopts" aria-label="options">
+    <li data-o="A"><b>(A)</b><span>6.4°</span></li>
+    <li data-o="B"><b>(B)</b><span>4.8°</span></li>
+    <li data-o="C"><b>(C)</b><span>3.2°</span></li>
+    <li data-o="D"><b>(D)</b><span>2.4°</span></li>
+  </ol>
+</section>
+
+<section id="lab" aria-labelledby="lh">
+  <h2 id="lh"><b>02</b>The experiment</h2>
+  <p class="keyres" id="target" data-kind="option" aria-live="polite"><span class="lbl">Target:</span><span class="sym">smallest minimum deviation <i>D</i><sub><i>m</i></sub></span><span class="val" id="ansval"></span></p>
+  <p id="narr" aria-live="polite">Ready.</p>
+  <div class="stage"><canvas id="labcv" width="1200" height="720" role="img" aria-label="Experiment: a lamp and a monochromator send light into a thin prism standing on a turntable; the deviated beam lands on a screen with a degree scale; first a white beam spreads into its colours, then the prism is rotated at one wavelength to find the minimum deviation, then the wavelength is scanned and the minimum deviation is plotted against wavelength, and a search finds the wavelength where it is smallest"></canvas></div>
+  <div id="controls" role="group" aria-label="experiment controls">
+    <button class="go" type="button" id="gobtn">▶ START EXPERIMENT</button>
+    <button type="button" id="replaybtn">↺ Replay</button>
+    <button type="button" id="resetbtn">Reset</button>
+    <div class="v0"><label for="in_A">Prism angle A</label><input type="range" id="in_A" min="2" max="10" step="0.5" value="6" aria-describedby="out_A"><output id="out_A" for="in_A">6.0°</output></div>
+    <div class="v0"><label for="in_al">α</label><input type="range" id="in_al" min="2" max="4" step="0.1" value="3" aria-describedby="out_al"><output id="out_al" for="in_al">3.0 μm⁻¹</output></div>
+    <div class="v0"><label for="in_be">β</label><input type="range" id="in_be" min="0.05" max="0.15" step="0.002" value="0.096" aria-describedby="out_be"><output id="out_be" for="in_be">0.096 μm²</output></div>
+    <div class="v0"><label for="in_l">Probe wavelength λ</label><input type="range" id="in_l" min="0.25" max="1" step="0.005" value="0.6" aria-describedby="out_l"><output id="out_l" for="in_l">0.600 μm</output></div>
+    <div class="seg whatif" role="group" aria-label="what if" id="wigroup" hidden><span>What if…</span><button type="button" id="wi_rot">rotate the prism at λmin</button></div>
+    <div class="seg" role="group" aria-label="speed"><span>Speed</span><button type="button" id="sp1" aria-pressed="true">1×</button><button type="button" id="sp2" aria-pressed="false">½×</button></div>
+    <button type="button" id="classbtn" aria-pressed="false">Classroom</button>
+  </div>
+</section>
+
+<section id="solution" aria-labelledby="sh">
+  <h2 id="sh"><b>03</b>Detailed solution</h2>
+  <div class="sol">
+    <p>Answer: <span id="solans"></span> &nbsp;<i>D</i><sub><i>m</i></sub> = 4.8° at <i>λ</i><sub>min</sub> = 0.4 <i>μ</i>m</p>
+    <ol class="steps">
+      <li><b>Thin prism.</b> For a small prism angle <i>A</i> the minimum deviation is <i>D</i><sub><i>m</i></sub> = (<i>n</i> − 1)<i>A</i>. With <i>A</i> fixed, <i>D</i><sub><i>m</i></sub> is smallest exactly where the refractive index <i>n</i>(<i>λ</i>) is smallest.</li>
+      <li><b>Minimise n(λ).</b> d<i>n</i>/d<i>λ</i> = <i>α</i> − 2<i>β</i>/<i>λ</i><sup>3</sup> = 0 gives <i>λ</i><sup>3</sup> = 2<i>β</i>/<i>α</i> = 2 × 0.096/3 = 0.064 <i>μ</i>m<sup>3</sup>, so <b><i>λ</i><sub>min</sub> = 0.4 <i>μ</i>m</b>. It is a minimum: d<sup>2</sup><i>n</i>/d<i>λ</i><sup>2</sup> = 6<i>β</i>/<i>λ</i><sup>4</sup> &gt; 0.</li>
+      <li><b>The smallest index.</b> <i>n</i> = 3 × 0.4 + 0.096/0.16 = 1.2 + 0.6 = <b>1.8</b>.</li>
+      <li><b>The deviation.</b> <i>D</i><sub><i>m</i></sub> = (1.8 − 1) × 6° = <b>4.8°</b>: option <b>(B)</b>.</li>
+      <li><b>Check with the exact prism formula.</b> <i>n</i> = sin[(<i>A</i> + <i>D</i><sub><i>m</i></sub>)/2]/sin(<i>A</i>/2) gives <i>D</i><sub><i>m</i></sub> = 2 sin<sup>−1</sup>(1.8 sin 3°) − 6° = 4.81°, within 0.3 % of the thin-prism value. The experiment measures this exact value by tracing rays.</li>
+      <li><b>The other options.</b> (C) 3.2° and (D) 2.4° would need <i>n</i> = 1.53 and 1.4, below the smallest index the material ever has (1.8), so no wavelength gives them. (A) 6.4° needs <i>n</i> = 2.07, which the material does reach, but at other wavelengths (0.28 <i>μ</i>m and 0.6 <i>μ</i>m), where <i>D</i><sub><i>m</i></sub> is not the smallest.</li>
+    </ol>
+    <h3>Understand the concept</h3>
+    <div class="concept">A prism deviates light least when the ray passes through it symmetrically; that smallest deviation for a given colour is the angle of minimum deviation. For a thin prism it is simply (<i>n</i> − 1)<i>A</i>, so the colour that is bent least is the one for which the glass has the lowest refractive index. Here the index has two parts that pull in opposite directions: <i>β</i>/<i>λ</i><sup>2</sup> falls as the wavelength grows, while <i>αλ</i> rises. Their sum has a minimum at <i>λ</i> = (2<i>β</i>/<i>α</i>)<sup>1/3</sup>, and that wavelength is deviated less than any other. The law in the question describes a hypothetical material; ordinary glass has <i>n</i> falling steadily across the visible range.</div>
+    <h3>Key takeaways</h3>
+    <ul class="take">
+      <li>Thin prism: <i>D</i><sub><i>m</i></sub> = (<i>n</i> − 1)<i>A</i>; exact: <i>n</i> = sin[(<i>A</i> + <i>D</i><sub><i>m</i></sub>)/2]/sin(<i>A</i>/2).</li>
+      <li>Minimum deviation needs the symmetric path, with equal angles of incidence and emergence.</li>
+      <li>Smallest <i>D</i><sub><i>m</i></sub> across wavelengths ⇔ smallest <i>n</i>(<i>λ</i>): set d<i>n</i>/d<i>λ</i> = 0 and check that it is a minimum.</li>
+      <li>An option that needs <i>n</i> below the material's minimum can be ruled out at once.</li>
+    </ul>
+    <p class="note">Verification: an independent derivation; exact rational arithmetic for the thin-prism result; the exact prism formula; a brute-force ray trace over wavelength and angle of incidence that shares no code with the page; a check of every option against the range of <i>n</i>; and the page's own engine, run by <code>tests/verify_p2phyq03.py</code>. The MathonGo solution was read first only for the approach. The official final answer key (JEE Advanced 2026, Paper 2), read last, gives (B), in agreement. Status: script-verified by the PrayogX simulation factory; no review by a person has been recorded.</p>
+  </div>
+</section>
+
+<section id="howto" aria-labelledby="hh">
+  <h2 id="hh">How to use this simulation</h2>
+  <ol class="howto">
+    <li>Press <b>▶ START EXPERIMENT</b>. White light passes through the prism and spreads into its colours on the screen.</li>
+    <li>The monochromator then picks one wavelength and the turntable rotates the prism: the deviation dips to a minimum, the angle of minimum deviation.</li>
+    <li>Next the wavelength is scanned and each minimum deviation is plotted; a search homes in on the wavelength where it is smallest, and the result is matched to the options.</li>
+    <li>Then move the <b>probe wavelength</b>, change <i>A</i>, <i>α</i> or <i>β</i>, or try <b>What if… rotate the prism at λmin</b>.</li>
+    <li><b>Replay</b> runs it again. <b>Reset</b> clears it. <b>Classroom</b> fills the screen for a projector.</li>
+  </ol>
+</section>
+
+<footer>
+  ADV-2026-P2-PHY-Q03 · PrayogX · JEE Advanced Interactive Simulation Library · question text reproduced
+  from the official JEE (Advanced) 2026 Paper 2 for educational use. This is a virtual laboratory only.
+  The prism angle and the deviations are drawn four times larger than real so that they can be seen; every number on
+  the screen scale, the readouts and the graph is the real angle. The refractive-index law is the question's, for a
+  hypothetical material; wavelengths outside the visible range are drawn in grey.
+</footer>
+</main>
+
+<script>
+(function(){
+"use strict";
+/* ENGINE-BEGIN */
+/* A prism of angle A (degrees) whose index is n(lambda) = alpha lambda + beta/lambda^2 (lambda in um). A ray is traced
+   exactly through the two faces (Snell's law twice): D(i) = i + e - A. The angle of minimum deviation for one
+   wavelength is found by a golden-section search over the angle of incidence i, and the wavelength where that
+   minimum deviation is smallest by a second golden-section search over lambda. The thin-prism value (n - 1)A is
+   computed only as a check. The answer is the printed option the measured smallest Dm matches. */
+var ENGINE = (function(){
+  var D2R = Math.PI / 180, G = (Math.sqrt(5) - 1) / 2;
+  var Q = { A: 6, alpha: 3, beta: 0.096 };
+  var OPTS = { A: 6.4, B: 4.8, C: 3.2, D: 2.4 };                 /* the printed options, degrees */
+  function params(o){ var p = {}, k; for (k in Q) p[k] = Q[k]; if (o) for (k in o) if (o.hasOwnProperty(k)) p[k] = o[k]; return p; }
+  function n(p, l){ return p.alpha * l + p.beta / (l * l); }
+  function dev(nn, A, i){                                          /* deviation (deg) at incidence i (deg), or null */
+    var s = Math.sin(i * D2R) / nn; if (s > 1) return null;
+    var r1 = Math.asin(s), r2 = A * D2R - r1, t = nn * Math.sin(r2);
+    if (Math.abs(t) > 1) return null;
+    return i + Math.asin(t) / D2R - A;
+  }
+  function golden(f, a, b, it){
+    var c = b - G * (b - a), d = a + G * (b - a), fc = f(c), fd = f(d), k, probes = [];
+    for (k = 0; k < it; k++){
+      if (fc < fd){ b = d; d = c; fd = fc; c = b - G * (b - a); fc = f(c); probes.push(c); }
+      else { a = c; c = d; fc = fd; d = a + G * (b - a); fd = f(d); probes.push(d); }
+    }
+    return { x: (a + b) / 2, probes: probes };
+  }
+  function minDev(nn, A){                                          /* the angle of minimum deviation by rotating the prism */
+    var f = function(i){ var v = dev(nn, A, i); return v === null ? 1e9 : v; };
+    var g = golden(f, 0, 89.9, 80);
+    return { i: g.x, D: f(g.x) };
+  }
+  function search(o, l0, l1){                                      /* the wavelength of the smallest minimum deviation */
+    var p = params(o), f = function(l){ return minDev(n(p, l), p.A).D; };
+    var g = golden(f, l0 === undefined ? 0.1 : l0, l1 === undefined ? 1.5 : l1, 60), nn = n(p, g.x);
+    return { p: p, lam: g.x, n: nn, D: f(g.x), Dthin: (nn - 1) * p.A, Dexact: 2 * Math.asin(nn * Math.sin(p.A * D2R / 2)) / D2R - p.A, probes: g.probes };
+  }
+  function scan(o, l0, l1, N){ var p = params(o), out = [], k, l; for (k = 0; k <= N; k++){ l = l0 + (l1 - l0) * k / N; out.push([l, minDev(n(p, l), p.A).D]); } return out; }
+  function pick(D){ var k, best = null, bd = 1e9, d; for (k in OPTS){ d = Math.abs(D - OPTS[k]) / OPTS[k]; if (d < bd){ bd = d; best = k; } } return bd < 0.02 ? best : null; }
+  function run(o){ var s = search(o); return { s: s, answer: pick(s.D) }; }
+  return { Q: Q, OPTS: OPTS, params: params, n: n, dev: dev, minDev: minDev, search: search, scan: scan, pick: pick, run: run };
+})();
+/* ENGINE-END */
+
+var QRUN = ENGINE.run();
+var ANS = QRUN.answer;
+
+function $(id){ return document.getElementById(id); }
+var cv = $("labcv"), g = cv.getContext("2d");
+var reduced = !!(window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches);
+var PH = [["beam", 2.0], ["rotate", 3.6], ["scan", 4.4], ["zoom", 2.4]];
+var K = 4;                                                        /* angles drawn 4x larger than real */
+var LROT = 0.6, NSCAN = 30, L0 = 0.25, L1 = 1.0;
+
+var RUN = { state: "setup", phase: "ready", speed: 1, pi: 0, st: 0, clock: 0, lam: null, inc: null, rot: [], rotMin: null, scan: [], probes: [], best: null,
+  lines: 0, measured: null, done: false, confirmed: false, p: { A: 6, alpha: 3, beta: 0.096 }, probe: 0.6, view: null, wrot: null, search: null };
+var L = null, minPx = 999, pulseT = null;
+
+function cur(){ return ENGINE.params(RUN.p); }
+function layout(){
+  var phone = document.documentElement.clientWidth < 700;
+  if (phone) return { phone: true, W: 720, H: 1520, ro: { x: 12, y: 12, w: 696, h: 206 }, sc: { x: 12, y: 230, w: 696, h: 650 }, pn: { x: 12, y: 894, w: 696, h: 614 }, fs: 25, big: 30 };
+  return { phone: false, W: 1200, H: 720, ro: { x: 16, y: 14, w: 1168, h: 92 }, sc: { x: 16, y: 122, w: 620, h: 584 }, pn: { x: 652, y: 122, w: 532, h: 584 }, fs: 16, big: 23 };
+}
+function deg(x, d){ return x.toFixed(d === undefined ? 2 : d) + "°"; }
+function um(x){ return x.toFixed(3) + " μm"; }
+function col(l){
+  if (l < 0.38) return "#9a8fc8"; if (l > 0.75) return "#c08080";
+  var h = 270 - (l - 0.38) / 0.37 * 270; return "hsl(" + h.toFixed(0) + ",95%,62%)";
+}
+
+/* --------------------------------------------------------------- run */
+function finish(){
+  var s = RUN.search || ENGINE.search(RUN.p);
+  RUN.search = s; RUN.best = { lam: s.lam, D: s.D, n: s.n }; RUN.probes = s.probes.slice(0, 14);
+  RUN.measured = { lam: s.lam, D: s.D, n: s.n, Dthin: s.Dthin, option: ENGINE.pick(s.D) };
+  RUN.state = "done"; RUN.phase = "done"; RUN.done = true; RUN.lines = 4; RUN.lam = s.lam; RUN.inc = null;
+  if (RUN.measured.option && RUN.measured.option === ANS){ RUN.confirmed = true; reveal(); }
+  $("wigroup").hidden = false; $("wi_rot").disabled = false;
+  narrate(); refreshButtons();
+}
+function rotRange(){ var p = cur(), m = ENGINE.minDev(ENGINE.n(p, LROT), p.A); return [Math.max(0, m.i - 10), m.i + 10]; }
+function fillScan(k){ var p = cur(); while (RUN.scan.length < k){ var j = RUN.scan.length, l = L0 + (L1 - L0) * j / NSCAN; RUN.scan.push([l, ENGINE.minDev(ENGINE.n(p, l), p.A).D]); } }
+function tick(dt){
+  var h = dt * RUN.speed;
+  if (RUN.state === "running"){
+    var ph = PH[RUN.pi][0], u;
+    RUN.st += h; u = Math.min(1, RUN.st / PH[RUN.pi][1]);
+    if (ph === "rotate"){
+      var rr = rotRange(), p = cur(); RUN.lam = LROT; RUN.inc = rr[0] + (rr[1] - rr[0]) * u;
+      var d = ENGINE.dev(ENGINE.n(p, LROT), p.A, RUN.inc); if (d !== null && (!RUN.rot.length || RUN.inc - RUN.rot[RUN.rot.length - 1][0] > 0.2)) RUN.rot.push([RUN.inc, d]);
+      if (u > 0.55) RUN.lines = Math.max(RUN.lines, 1);
+    }
+    if (ph === "scan"){ var k = Math.min(NSCAN + 1, Math.floor(u * (NSCAN + 1)) + 1); fillScan(k); RUN.lam = RUN.scan[RUN.scan.length - 1][0]; RUN.inc = null; if (u > 0.7) RUN.lines = Math.max(RUN.lines, 2); }
+    if (ph === "zoom"){
+      if (!RUN.search) RUN.search = ENGINE.search(RUN.p);
+      var np = Math.min(14, Math.floor(u * 15)); RUN.probes = RUN.search.probes.slice(0, np); if (np) RUN.lam = RUN.probes[np - 1];
+      if (u > 0.85) RUN.lines = Math.max(RUN.lines, 3);
+    }
+    if (RUN.st >= PH[RUN.pi][1]){
+      if (ph === "rotate"){ var pr = cur(); RUN.rotMin = ENGINE.minDev(ENGINE.n(pr, LROT), pr.A); RUN.lines = Math.max(RUN.lines, 1); }
+      if (ph === "scan"){ fillScan(NSCAN + 1); RUN.lines = Math.max(RUN.lines, 2); }
+      RUN.pi++; RUN.st = 0;
+      if (RUN.pi >= PH.length){ RUN.lines = 3; finish(); return; }
+      RUN.phase = PH[RUN.pi][0]; narrate();
+    }
+    else if (Math.floor((RUN.st - h) * 2) !== Math.floor(RUN.st * 2)) narrate();
+  }
+  if (RUN.wrot && RUN.state !== "paused"){
+    RUN.wrot.t += h; var w = Math.min(1, RUN.wrot.t / 4), q = RUN.search, pw = cur(), m = ENGINE.minDev(q.n, pw.A);
+    RUN.inc = Math.max(0, m.i - 12) + 24 * w; var dw = ENGINE.dev(q.n, pw.A, RUN.inc);
+    if (dw !== null && (!RUN.wrot.pts.length || RUN.inc - RUN.wrot.pts[RUN.wrot.pts.length - 1][0] > 0.2)) RUN.wrot.pts.push([RUN.inc, dw]);
+    if (w >= 1 && !RUN.wrot.done){ RUN.wrot.done = true; narrate(); }
+  }
+}
+function start(){
+  if (RUN.state === "running"){ RUN.state = "paused"; refreshButtons(); narrate(); return; }
+  if (RUN.state === "paused"){ RUN.state = "running"; refreshButtons(); narrate(); return; }
+  resetRun();
+  if (reduced){ var pr = cur(); RUN.rot = []; var rr = rotRange(), k; for (k = 0; k <= 40; k++){ var ii = rr[0] + (rr[1] - rr[0]) * k / 40, d = ENGINE.dev(ENGINE.n(pr, LROT), pr.A, ii); if (d !== null) RUN.rot.push([ii, d]); }
+    RUN.rotMin = ENGINE.minDev(ENGINE.n(pr, LROT), pr.A); fillScan(NSCAN + 1); RUN.lines = 3; finish(); return; }
+  RUN.state = "running"; RUN.phase = PH[0][0]; RUN.pi = 0; narrate(); refreshButtons();
+}
+function resetRun(){
+  RUN.state = "setup"; RUN.phase = "ready"; RUN.pi = 0; RUN.st = 0; RUN.lam = null; RUN.inc = null; RUN.rot = []; RUN.rotMin = null; RUN.scan = []; RUN.probes = []; RUN.best = null;
+  RUN.lines = 0; RUN.measured = null; RUN.done = false; RUN.confirmed = false; RUN.view = null; RUN.wrot = null; RUN.search = null;
+  $("wigroup").hidden = true; hideTarget();
+}
+function replay(){ RUN.state = "setup"; start(); }
+function reset(){ resetRun(); RUN.p = { A: 6, alpha: 3, beta: 0.096 }; RUN.probe = 0.6; syncSliders(); refreshButtons(); narrate(); }
+
+/* exploring: a run in progress is abandoned; after a finished run a change re-measures at once on the new values */
+function setParam(k, v){
+  var lim = { A: [2, 10], alpha: [2, 4], beta: [0.05, 0.15], probe: [0.25, 1] }   /* keeps n(lambda) >= 1.1 everywhere: a real prism */, dflt = { A: 6, alpha: 3, beta: 0.096, probe: 0.6 };
+  if (!lim[k]) return;
+  v = parseFloat(v); if (!isFinite(v)) v = dflt[k];
+  v = Math.min(lim[k][1], Math.max(lim[k][0], v));
+  if (k === "probe"){ RUN.probe = v; syncSliders(); if (RUN.done){ RUN.phase = "probe"; RUN.wrot = null; RUN.inc = null; } narrate(); return; }
+  if (RUN.state === "running" || RUN.state === "paused") resetRun();
+  RUN.p[k] = v; syncSliders();
+  if (RUN.done){ RUN.wrot = null; RUN.inc = null; RUN.phase = "explore"; RUN.view = ENGINE.run(RUN.p); RUN.view.scan = ENGINE.scan(RUN.p, L0, L1, NSCAN); $("wi_rot").disabled = true; }
+  refreshButtons(); narrate();
+}
+function syncSliders(){
+  var p = RUN.p;
+  $("in_A").value = String(p.A); $("out_A").textContent = p.A.toFixed(1) + "°";
+  $("in_al").value = String(p.alpha); $("out_al").textContent = p.alpha.toFixed(1) + " μm⁻¹";
+  $("in_be").value = String(p.beta); $("out_be").textContent = p.beta.toFixed(3) + " μm²";
+  $("in_l").value = String(RUN.probe); $("out_l").textContent = RUN.probe.toFixed(3) + " μm";
+}
+function whatIf(w){
+  if (!RUN.done || w !== "rot" || RUN.phase === "explore") return;
+  RUN.wrot = { t: 0, pts: [], done: false }; RUN.phase = "wrot"; RUN.lam = RUN.search.lam; narrate(); refreshButtons();
+}
+
+/* ------------------------------------------------------------ the target */
+function reveal(){
+  var t = $("target"), m = RUN.measured;
+  $("ansval").textContent = "Dm = " + deg(m.D) + " at λ = " + um(m.lam) + " → (" + m.option + ")";
+  var lis = document.querySelectorAll("#opts li"), i; for (i = 0; i < lis.length; i++) lis[i].classList.toggle("correct", lis[i].getAttribute("data-o") === m.option);
+  if (!reduced){ t.classList.remove("pulse"); void t.offsetWidth; t.classList.add("pulse"); if (pulseT) clearTimeout(pulseT); pulseT = setTimeout(function(){ t.classList.remove("pulse"); pulseT = null; }, 1600); }
+}
+function hideTarget(){
+  var t = $("target"); if (pulseT){ clearTimeout(pulseT); pulseT = null; } t.classList.remove("pulse"); $("ansval").textContent = "";
+  var lis = document.querySelectorAll("#opts li"), i; for (i = 0; i < lis.length; i++) lis[i].classList.remove("correct");
+}
+
+/* ------------------------------------------------------------ words */
+function narrate(){
+  var t, ph = RUN.phase, p = cur();
+  if (ph === "ready") t = "Ready. A thin " + p.A.toFixed(1) + "° prism with n(λ) = αλ + β/λ². Which wavelength does it deviate least, and by how much? Press START.";
+  else if (ph === "beam") t = "White light in: every wavelength has its own index, so each colour leaves at its own angle. Notice the violet end is bent least, and both shorter and longer waves more.";
+  else if (ph === "rotate"){ var d = RUN.rot.length ? RUN.rot[RUN.rot.length - 1][1] : null;
+    t = "One wavelength, " + um(LROT) + ": turning the prism changes the deviation. At i = " + deg(RUN.inc || 0, 1) + " it is " + (d === null ? "—" : deg(d)) + ". It dips to a minimum when the ray crosses the prism symmetrically."; }
+  else if (ph === "scan") t = "Scanning the wavelength from 0.25 to 1.0 μm, measuring the minimum deviation each time: λ = " + um(RUN.lam || L0) + ", Dm = " + deg(RUN.scan.length ? RUN.scan[RUN.scan.length - 1][1] : 0) + ".";
+  else if (ph === "zoom") t = "Homing in on the lowest point of the curve: trying λ = " + um(RUN.lam || 0.4) + ".";
+  else if (ph === "done") t = "Measured: the minimum deviation is smallest at λ = " + um(RUN.measured.lam) + ", where n = " + RUN.measured.n.toFixed(3) + " and Dm = " + deg(RUN.measured.D)
+    + " (thin-prism formula (n − 1)A: " + deg(RUN.measured.Dthin) + "): option (" + (RUN.measured.option || "none") + "). Now move the probe wavelength or try What if…";
+  else if (ph === "wrot") t = RUN.wrot && RUN.wrot.done ? "At λmin the deviation is smallest only on the symmetric path; turning the prism either way makes it larger. That smallest value, " + deg(RUN.search.D) + ", is Dm."
+    : "Turning the prism at λmin: i = " + deg(RUN.inc || 0, 1) + ", D = " + deg(RUN.wrot && RUN.wrot.pts.length ? RUN.wrot.pts[RUN.wrot.pts.length - 1][1] : 0) + ".";
+  else if (ph === "probe"){ var nn = ENGINE.n(p, RUN.probe), m = ENGINE.minDev(nn, p.A); t = "Probe λ = " + um(RUN.probe) + ": n = " + nn.toFixed(3) + ", Dm = " + deg(m.D) + (RUN.search ? (m.D > RUN.search.D + 1e-9 ? ", more than at λmin." : ", the smallest.") : "."); }
+  else { var v = RUN.view.s; t = "A = " + p.A.toFixed(1) + "°, α = " + p.alpha.toFixed(1) + " μm⁻¹, β = " + p.beta.toFixed(3) + " μm²: the smallest Dm is " + deg(v.D) + " at λ = " + um(v.lam) + " = (2β/α)^(1/3)"
+    + (RUN.view.answer ? ", option (" + RUN.view.answer + ")." : ", which matches no option."); }
+  if (RUN.state === "paused") t = "Paused. " + t;
+  $("narr").textContent = t;
+}
+function refreshButtons(){ $("gobtn").textContent = RUN.state === "running" ? "❚❚ PAUSE" : RUN.state === "paused" ? "▶ RESUME" : RUN.state === "done" ? "▶ RUN AGAIN" : "▶ START EXPERIMENT"; }
+
+/* ------------------------------------------------------------ drawing helpers */
+var FONT = "ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif";
+function label(s, x, y, px, c, align, weight){
+  if (px < minPx) minPx = px;
+  g.font = (weight || "700") + " " + Math.round(px) + "px " + FONT;
+  g.fillStyle = c || "#e8f0ff"; g.textAlign = align || "left"; g.textBaseline = "alphabetic"; g.fillText(s, x, y);
+}
+function tw(s, px, weight){ g.font = (weight || "700") + " " + Math.round(px) + "px " + FONT; return g.measureText(s).width; }
+function fit(s, px, maxW, weight){ var w = tw(s, px, weight); return w > maxW ? Math.max(px * maxW / w, 0) : px; }
+function minFs(){ return L.phone ? 25 : 13; }
+function fitLabel(s, x, y, px, maxW, c, align, weight){ label(s, x, y, Math.max(minFs(), fit(s, px, maxW, weight)), c, align, weight); }
+function wrapLabel(s, x, y, px, maxW, c, weight, step){
+  var min = minFs();
+  if (tw(s, px, weight) <= maxW){ label(s, x, y, px, c, "left", weight); return y; }
+  if (fit(s, px, maxW, weight) >= min){ label(s, x, y, fit(s, px, maxW, weight), c, "left", weight); return y; }
+  var cut = s.lastIndexOf(" ", Math.floor(s.length * maxW / tw(s, px, weight))), a, b;
+  if (cut < 1) cut = Math.floor(s.length / 2);
+  a = s.slice(0, cut); b = s.slice(cut).replace(/^ /, "");
+  label(a, x, y, Math.max(min, fit(a, px, maxW, weight)), c, "left", weight);
+  label(b, x + 12, y + step, Math.max(min, fit(b, px, maxW - 12, weight)), c, "left", weight);
+  return y + step;
+}
+function backed(s, x, y, px, c, align){
+  var w = tw(s, px, "800"), x0 = align === "right" ? x - w : align === "center" ? x - w / 2 : x;
+  g.fillStyle = "rgba(6,10,24,.82)"; roundRect(x0 - 6, y - px * 0.95, w + 12, px * 1.3, 6); g.fill();
+  label(s, x, y, px, c, align, "800");
+}
+function roundRect(x, y, w, h, r){ g.beginPath(); g.moveTo(x + r, y); g.lineTo(x + w - r, y); g.quadraticCurveTo(x + w, y, x + w, y + r); g.lineTo(x + w, y + h - r); g.quadraticCurveTo(x + w, y + h, x + w - r, y + h); g.lineTo(x + r, y + h); g.quadraticCurveTo(x, y + h, x, y + h - r); g.lineTo(x, y + r); g.quadraticCurveTo(x, y, x + r, y); g.closePath(); }
+function panel(x, y, w, h){ roundRect(x, y, w, h, 14); g.fillStyle = "rgba(10,16,32,.86)"; g.fill(); g.strokeStyle = "rgba(140,180,255,.3)"; g.lineWidth = 1.5; g.stroke(); }
+
+/* ------------------------------------------------------------ what is shown now */
+function shownLam(){ if (RUN.state === "running" || RUN.state === "paused" || RUN.phase === "wrot") return RUN.lam; if (RUN.phase === "probe" || RUN.phase === "ready" || RUN.phase === "explore") return RUN.probe; return RUN.lam; }
+function shownDev(l){ var p = cur(), nn = ENGINE.n(p, l); if (RUN.inc !== null && RUN.inc !== undefined){ var d = ENGINE.dev(nn, p.A, RUN.inc); if (d !== null) return d; } return ENGINE.minDev(nn, p.A).D; }
+
+/* ------------------------------------------------------------ readouts */
+function drawReadouts(){
+  var r = L.ro, p = cur(), l = RUN.phase === "beam" ? null : shownLam(), i, px, py, best = RUN.done ? (RUN.view ? RUN.view.s : RUN.search) : null;
+  if (!best && RUN.scan.length){ var b = RUN.scan[0], k; for (k = 1; k < RUN.scan.length; k++) if (RUN.scan[k][1] < b[1]) b = RUN.scan[k]; best = { D: b[1], lam: b[0] }; }
+  var rows = [["Wavelength λ", RUN.phase === "beam" ? "white light" : (l === null || l === undefined ? "lamp off" : um(l))], ["Index n(λ)", l ? ENGINE.n(p, l).toFixed(3) : "—"],
+    ["Deviation D", l && RUN.phase !== "ready" ? deg(shownDev(l)) : "no beam"], ["Smallest Dm found", best ? deg(best.D) : "not measured yet"]];
+  panel(r.x, r.y, r.w, r.h);
+  for (i = 0; i < 4; i++){
+    if (L.phone){ px = r.x + 18 + (i % 2) * 348; py = r.y + 40 + (i < 2 ? 0 : 1) * 96; } else { px = r.x + 20 + i * 290; py = r.y + 34; }
+    fitLabel(rows[i][0], px, py, L.fs - (L.phone ? 0 : 1), L.phone ? 326 : 270, "#8fa6cf", "left", "700");
+    var big = fit(rows[i][1], L.big - (L.phone ? 3 : 1), L.phone ? 320 : 270, "800");
+    label(rows[i][1], px, py + (L.phone ? 42 : 38), Math.max(big, minFs() + (L.phone ? 0 : 1)), i === 3 && best ? "#9ff0c8" : (/^(—|no beam|lamp off|not measured yet)$/.test(rows[i][1]) ? "#8fa6cf" : "#ffffff"), "left", "800");
+  }
+}
+
+/* ------------------------------------------------------------ the scene: lamp, monochromator, prism on a turntable, screen */
+function drawScene(){
+  var S = L.sc, ph = L.phone, p = cur(), fs = L.fs - (ph ? 0 : 1), k;
+  g.save(); roundRect(S.x, S.y, S.w, S.h, 14); g.clip();
+  var bg = g.createLinearGradient(0, S.y, 0, S.y + S.h); bg.addColorStop(0, "#0d1730"); bg.addColorStop(1, "#060a14"); g.fillStyle = bg; g.fillRect(S.x, S.y, S.w, S.h);
+  var X = function(f){ return S.x + f * S.w; }, Y = function(f){ return S.y + f * S.h; };
+  var by = Y(0.36), PX0 = X(0.40), on = RUN.phase !== "ready" || RUN.done;
+  /* the optical bench */
+  g.fillStyle = "#1b2440"; g.fillRect(X(0.02), by + S.h * 0.24, S.w * 0.96, 10);
+  /* lamp and monochromator */
+  var lx = X(0.06), mx = X(0.11), mw = S.w * 0.15, mh = S.h * 0.14;
+  var lg = g.createRadialGradient(lx, by, 2, lx, by, 30); lg.addColorStop(0, on ? "rgba(255,250,230,1)" : "rgba(120,120,120,.6)"); lg.addColorStop(1, "rgba(255,240,200,0)");
+  g.fillStyle = lg; g.beginPath(); g.arc(lx, by, 30, 0, 7); g.fill();
+  g.fillStyle = "#222c48"; roundRect(mx, by - mh / 2, mw, mh, 8); g.fill(); g.strokeStyle = "rgba(170,200,255,.6)"; g.lineWidth = 2; roundRect(mx, by - mh / 2, mw, mh, 8); g.stroke();
+  var lamS = shownLam(), white = RUN.phase === "beam";
+  fitLabel(white ? "white" : lamS ? lamS.toFixed(3) + " μm" : "—", mx + mw / 2, by + 8, fs, mw - 10, white ? "#ffffff" : lamS ? col(lamS) : "#8fa6cf", "center", "800");
+  fitLabel("monochromator", mx, by - mh / 2 - (ph ? 12 : 10), fs - (ph ? 0 : 1), S.w * 0.3, "#8fa6cf", "left", "700");
+  /* the prism (apex angle drawn K x) on a turntable, rotated with the incidence */
+  var Ad = p.A * K, hh = S.h * 0.30, half = hh * Math.tan(Ad / 2 * Math.PI / 180);
+  var mmin = lamS ? ENGINE.minDev(ENGINE.n(p, lamS), p.A) : null, rotA = (RUN.inc !== null && RUN.inc !== undefined && mmin) ? (RUN.inc - mmin.i) * 1.2 * Math.PI / 180 : 0;
+  g.strokeStyle = "rgba(170,200,255,.35)"; g.lineWidth = 3; g.beginPath(); g.ellipse(PX0, by + hh * 0.55, hh * 0.55, hh * 0.13, 0, 0, 7); g.stroke();
+  g.save(); g.translate(PX0, by); g.rotate(rotA);
+  var pg = g.createLinearGradient(-half, 0, half, 0); pg.addColorStop(0, "rgba(160,210,255,.35)"); pg.addColorStop(0.5, "rgba(220,240,255,.55)"); pg.addColorStop(1, "rgba(140,190,240,.3)");
+  g.fillStyle = pg; g.beginPath(); g.moveTo(0, -hh / 2); g.lineTo(half, hh / 2); g.lineTo(-half, hh / 2); g.closePath(); g.fill();
+  g.strokeStyle = "rgba(230,245,255,.9)"; g.lineWidth = 2; g.stroke(); g.restore();
+  fitLabel("prism A = " + p.A.toFixed(1) + "°", PX0, by + hh / 2 + (ph ? 70 : 56), fs, S.w * 0.4, "#cfe0ff", "center", "800");
+  /* the screen: an arc of real deviation angles, drawn K x */
+  var R = X(0.95) - PX0, sx0 = PX0, a, t;
+  g.strokeStyle = "rgba(220,230,255,.5)"; g.lineWidth = 4; g.beginPath(); g.arc(sx0, by, R, 0, 84 * Math.PI / 180); g.stroke();
+  for (t = 0; t <= 21; t += 1){ a = t * K * Math.PI / 180; var r0 = R - (t % 5 ? 8 : 16);
+    g.strokeStyle = "rgba(220,230,255,.7)"; g.lineWidth = t % 5 ? 1.5 : 3; g.beginPath(); g.moveTo(sx0 + r0 * Math.cos(a), by + r0 * Math.sin(a)); g.lineTo(sx0 + R * Math.cos(a), by + R * Math.sin(a)); g.stroke();
+    if (t % 5 === 0) label(t + "°", sx0 + (R - (ph ? 50 : 40)) * Math.cos(a), by + (R - (ph ? 50 : 40)) * Math.sin(a) + 8, fs - (ph ? 0 : 2), "#cfe0ff", "center", "700"); }
+  /* the beams */
+  g.lineWidth = ph ? 4 : 3;
+  function ray(l, D){ var c = col(l), a2 = D * K * Math.PI / 180;
+    g.strokeStyle = c; g.beginPath(); g.moveTo(PX0 + half * 0.4, by); g.lineTo(sx0 + R * Math.cos(a2), by + R * Math.sin(a2)); g.stroke();
+    g.fillStyle = c; g.beginPath(); g.arc(sx0 + R * Math.cos(a2), by + R * Math.sin(a2), ph ? 7 : 6, 0, 7); g.fill(); }
+  if (on){
+    g.strokeStyle = "rgba(255,250,235,.9)"; g.beginPath(); g.moveTo(lx + 20, by); g.lineTo(mx, by); g.stroke();
+    g.strokeStyle = white ? "#ffffff" : lamS ? col(lamS) : "#ffffff"; g.beginPath(); g.moveTo(mx + mw, by); g.lineTo(PX0 - half * 0.4, by); g.stroke();
+    if (white){ var shown = Math.min(1, RUN.st / 1.2); for (k = 0; k <= 15; k++){ if (k / 15 > shown) break; var lw = L0 + (L1 - L0) * k / 15; ray(lw, ENGINE.minDev(ENGINE.n(p, lw), p.A).D); } }
+    else if (lamS){ ray(lamS, shownDev(lamS)); }
+  }
+  backed(ph ? "angles drawn 4× real · scale reads real degrees" : "prism angle and deviations drawn 4× real; the scale reads real degrees", S.x + 14, S.y + S.h - (ph ? 18 : 14), L.fs - (ph ? 0 : 3), "#8fa6cf", "left");
+  g.restore();
+}
+
+/* ------------------------------------------------------------ the panel: D(i) while rotating, Dm(lambda) otherwise */
+function drawPanel(){
+  var P = L.pn, ph = L.phone, p = cur(), fs = L.fs - (ph ? 0 : 2), k, i;
+  panel(P.x, P.y, P.w, P.h);
+  var x0 = P.x + (ph ? 96 : 70), x1 = P.x + P.w - 24, gy1 = P.y + (ph ? 62 : 52), gy0 = P.y + (ph ? 300 : 290);
+  var rotating = RUN.phase === "rotate" || RUN.phase === "wrot";
+  g.strokeStyle = "rgba(200,215,240,.6)"; g.lineWidth = 1.5; g.beginPath(); g.moveTo(x0, gy1); g.lineTo(x0, gy0); g.lineTo(x1, gy0); g.stroke();
+  if (rotating){
+    var pts = RUN.phase === "rotate" ? RUN.rot : RUN.wrot.pts, lr = RUN.phase === "rotate" ? LROT : RUN.search.lam, nn = ENGINE.n(p, lr), mm = ENGINE.minDev(nn, p.A);
+    var ia = RUN.phase === "rotate" ? rotRange() : [Math.max(0, mm.i - 12), Math.max(0, mm.i - 12) + 24];
+    var dlo = mm.D, dhi = Math.max(dlo + 0.5, ENGINE.dev(nn, p.A, ia[1]) || dlo + 1, ENGINE.dev(nn, p.A, ia[0]) || dlo + 1);
+    fitLabel("D vs INCIDENCE i AT λ = " + lr.toFixed(3) + " μm", P.x + 18, P.y + (ph ? 36 : 30), L.fs - (ph ? 0 : 1), P.w - 36, "#cfe0ff", "left", "800");
+    var Xi = function(v){ return x0 + (v - ia[0]) / (ia[1] - ia[0]) * (x1 - x0); }, Yd = function(v){ return gy0 - (v - dlo + 0.15 * (dhi - dlo)) / (1.3 * (dhi - dlo)) * (gy0 - gy1); };
+    label(deg(ia[0], 0), x0, gy0 + (ph ? 32 : 22), fs, "#8fa6cf", "center", "700"); label(deg(ia[1], 0), x1, gy0 + (ph ? 32 : 22), fs, "#8fa6cf", "right", "700");
+    label("incidence i", (x0 + x1) / 2, gy0 + (ph ? 32 : 22), fs, "#8fa6cf", "center", "700");
+    label(deg(dhi, 1), x0 - 8, Yd(dhi) + 6, fs, "#8fa6cf", "right", "700"); label(deg(dlo, 1), x0 - 8, Yd(dlo) + 6, fs, "#8fa6cf", "right", "700");
+    for (k = 0; k < pts.length; k++){ g.fillStyle = col(lr); g.beginPath(); g.arc(Xi(pts[k][0]), Yd(pts[k][1]), ph ? 5 : 4, 0, 7); g.fill(); }
+    if (RUN.lines >= 1 || (RUN.wrot && RUN.wrot.done)){ g.strokeStyle = "#9ff0c8"; g.setLineDash([6, 5]); g.beginPath(); g.moveTo(x0, Yd(dlo)); g.lineTo(x1, Yd(dlo)); g.stroke(); g.setLineDash([]);
+      backed("minimum: Dm = " + deg(dlo), (x0 + x1) / 2, Yd(dlo) + (ph ? 40 : 30), fs, "#9ff0c8", "center"); }
+  } else {
+    var sc = RUN.view ? RUN.view.scan : RUN.scan, curve = ENGINE.scan(p, L0, L1, 60), ymax = 0;
+    for (k = 0; k < curve.length; k++) ymax = Math.max(ymax, curve[k][1]); ymax = Math.ceil(ymax * 1.1);
+    fitLabel("MINIMUM DEVIATION Dm vs WAVELENGTH λ", P.x + 18, P.y + (ph ? 36 : 30), L.fs - (ph ? 0 : 1), P.w - 36, "#cfe0ff", "left", "800");
+    var Xl = function(v){ return x0 + (v - 0.2) / 0.8 * (x1 - x0); }, Yv = function(v){ return gy0 - v / ymax * (gy0 - gy1); };
+    label("0.2", Xl(0.2), gy0 + (ph ? 32 : 22), fs, "#8fa6cf", "center", "700"); label("1.0 μm", x1, gy0 + (ph ? 32 : 22), fs, "#8fa6cf", "right", "700");
+    label("wavelength λ", (x0 + x1) / 2, gy0 + (ph ? 32 : 22), fs, "#8fa6cf", "center", "700");
+    label(ymax + "°", x0 - 8, gy1 + 14, fs, "#8fa6cf", "right", "700"); label("0°", x0 - 8, gy0 + 4, fs, "#8fa6cf", "right", "700");
+    for (k = 0; k < 4; k++){ var ov = ENGINE.OPTS["ABCD".charAt(k)]; if (ov < ymax){ g.strokeStyle = "rgba(200,215,240,.18)"; g.beginPath(); g.moveTo(x0, Yv(ov)); g.lineTo(x1, Yv(ov)); g.stroke(); label("(" + "ABCD".charAt(k) + ") " + ov + "°", k % 2 ? x0 + 6 : x1 - 4, Yv(ov) - 5, fs - (ph ? 0 : 1), "#6f84aa", k % 2 ? "left" : "right", "700"); } }
+    for (k = 0; k < sc.length; k++){ g.fillStyle = col(sc[k][0]); g.beginPath(); g.arc(Xl(sc[k][0]), Yv(sc[k][1]), ph ? 6 : 5, 0, 7); g.fill(); }
+    if (!RUN.view) for (k = 0; k < RUN.probes.length; k++){ var lp = RUN.probes[k], dp = ENGINE.minDev(ENGINE.n(p, lp), p.A).D; g.strokeStyle = "#ffd27a"; g.lineWidth = 2; g.beginPath(); g.arc(Xl(lp), Yv(dp), ph ? 9 : 7, 0, 7); g.stroke(); }
+    var bst = RUN.done ? (RUN.view ? RUN.view.s : RUN.search) : null;
+    if (bst){ g.strokeStyle = "#9ff0c8"; g.lineWidth = 3; g.beginPath(); g.arc(Xl(bst.lam), Yv(bst.D), ph ? 12 : 10, 0, 7); g.stroke();
+      backed("λmin " + um(bst.lam) + ", Dm " + deg(bst.D), Xl(bst.lam) + 14, Yv(bst.D) + (ph ? 46 : 34), fs, "#9ff0c8", "left"); }
+    if (RUN.phase === "probe"){ var dpr = ENGINE.minDev(ENGINE.n(p, RUN.probe), p.A).D; g.fillStyle = "#ffffff"; g.beginPath(); g.arc(Xl(RUN.probe), Yv(dpr), ph ? 8 : 7, 0, 7); g.fill(); }
+  }
+  /* the reasoning, a line at a time */
+  var x = P.x + 18, w = P.w - 36, y = gy0 + (ph ? 70 : 54), st = ph ? 30 : 22, s = RUN.done ? (RUN.view ? RUN.view.s : RUN.search) : null;
+  var steps = [
+    ["minimum deviation: symmetric path; thin prism Dm ≈ (n − 1)A", "#7cc4ff"],
+    ["so Dm is smallest where n(λ) is smallest", "#ffd27a"],
+    ["dn/dλ = α − 2β/λ³ = 0 → λmin = (2β/α)^(1/3)" + (s ? " = " + um(s.lam) : ""), "#5dffa0"]];
+  var nL = RUN.done ? 3 : RUN.lines;
+  for (i = 0; i < 3; i++){
+    if (i < nL) y = wrapLabel(steps[i][0], x, y, fs + (ph ? 0 : 1), w, steps[i][1], "800", st);
+    else label("revealed as the run goes on", x, y, fs, "#5a6c8f", "left", "600");
+    y += ph ? 40 : 30;
+  }
+  if (s){ y = wrapLabel("n = " + s.n.toFixed(3) + " → Dm = " + deg(s.D) + " (thin: " + deg(s.Dthin) + ")", x, y, fs + (ph ? 0 : 1), w, "#ffffff", "800", st); y += ph ? 44 : 34;
+    var o = RUN.view ? RUN.view.answer : RUN.measured.option; if (o) label("= option (" + o + ")   ✓", x, y, L.big - (ph ? 2 : 3), "#7dffb8", "left", "800"); }
+}
+function draw(){
+  minPx = 999;
+  L = layout();
+  if (cv.width !== L.W || cv.height !== L.H){ cv.width = L.W; cv.height = L.H; }
+  var bg = g.createLinearGradient(0, 0, 0, L.H); bg.addColorStop(0, "#0b1226"); bg.addColorStop(1, "#04060c"); g.fillStyle = bg; g.fillRect(0, 0, L.W, L.H);
+  drawReadouts(); drawScene(); drawPanel();
+}
+
+/* ------------------------------------------------------------ controls */
+function setSpeed(k){ RUN.speed = k; $("sp1").setAttribute("aria-pressed", k === 1 ? "true" : "false"); $("sp2").setAttribute("aria-pressed", k === 0.5 ? "true" : "false"); }
+$("gobtn").addEventListener("click", start);
+$("replaybtn").addEventListener("click", replay);
+$("resetbtn").addEventListener("click", reset);
+$("sp1").addEventListener("click", function(){ setSpeed(1); });
+$("sp2").addEventListener("click", function(){ setSpeed(0.5); });
+$("in_A").addEventListener("input", function(){ setParam("A", this.value); });
+$("in_al").addEventListener("input", function(){ setParam("alpha", this.value); });
+$("in_be").addEventListener("input", function(){ setParam("beta", this.value); });
+$("in_l").addEventListener("input", function(){ setParam("probe", this.value); });
+$("wi_rot").addEventListener("click", function(){ whatIf("rot"); });
+$("classbtn").addEventListener("click", function(){
+  var on = document.body.classList.toggle("classroom"); this.setAttribute("aria-pressed", on ? "true" : "false");
+  this.textContent = on ? "Exit classroom" : "Classroom";
+});
+$("themebtn").addEventListener("click", function(){
+  var r = document.documentElement, dark = r.getAttribute("data-theme") === "dark" || (!r.getAttribute("data-theme") && window.matchMedia && matchMedia("(prefers-color-scheme: dark)").matches);
+  r.setAttribute("data-theme", dark ? "light" : "dark");
+});
+
+var lastT = null;
+function loop(ts){
+  if (lastT === null) lastT = ts;
+  var dt = Math.min(0.05, Math.max(0, (ts - lastT) / 1000)); lastT = ts;
+  if (!reduced && RUN.state !== "paused") RUN.clock += dt;
+  tick(RUN.state === "paused" ? 0 : dt); draw();
+  requestAnimationFrame(loop);
+}
+
+window.PX = {
+  ENGINE: ENGINE, QRUN: QRUN, ANS: ANS, RUN: RUN,
+  answer: function(){ return ANS; },
+  minLabelPx: function(){ draw(); return minPx; },
+  start: start, replay: replay, reset: reset, setSpeed: setSpeed, speed: function(k){ RUN.speed = k; },
+  set: setParam, whatIf: whatIf,
+  state: function(){ return { state: RUN.state, phase: RUN.phase, lines: RUN.lines, p: { A: RUN.p.A, alpha: RUN.p.alpha, beta: RUN.p.beta }, probe: RUN.probe, lam: RUN.lam, inc: RUN.inc,
+    rot: RUN.rot.length, rotMin: RUN.rotMin, scan: RUN.scan.length, probes: RUN.probes.length, measured: RUN.measured || null, done: RUN.done, confirmed: RUN.confirmed,
+    view: RUN.view ? { lam: RUN.view.s.lam, D: RUN.view.s.D, answer: RUN.view.answer } : null, wrot: RUN.wrot ? { n: RUN.wrot.pts.length, done: RUN.wrot.done } : null }; },
+  scanPoints: function(){ return (RUN.view ? RUN.view.scan : RUN.scan).map(function(q){ return [q[0], q[1]]; }); },
+  rotPoints: function(){ return (RUN.wrot ? RUN.wrot.pts : RUN.rot).map(function(q){ return [q[0], q[1]]; }); }
+};
+
+$("solans").textContent = ANS ? "(" + ANS + ")" : "";
+syncSliders(); refreshButtons(); narrate(); draw();
+window.addEventListener("resize", function(){ draw(); });
+requestAnimationFrame(loop);
+})();
+</script>
+</body>
+</html>

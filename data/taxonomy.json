@@ -83,6 +83,17 @@
               "simulations": [
                 "ADV-2026-P1-PHY-Q04"
               ]
+            },
+            "Minimum deviation of a thin prism with a wavelength-dependent index - the wavelength deviated least": {
+              "subtopics": [
+                "Angle of minimum deviation: the symmetric path through a prism",
+                "Thin prism: Dm = (n - 1)A; exact: n = sin((A + Dm)/2)/sin(A/2)",
+                "Dispersion: refractive index as a function of wavelength",
+                "Minimising n(lambda) = alpha lambda + beta/lambda^2 by calculus"
+              ],
+              "simulations": [
+                "ADV-2026-P2-PHY-Q03"
+              ]
             }
           }
         },
