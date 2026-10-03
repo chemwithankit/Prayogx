@@ -307,6 +307,21 @@
   var ZOOM_STEPS = [0.5, 0.67, 0.8, 1, 1.25, 1.5, 2, 2.5, 3];   // multiples of fit width
   var READER = null;
   var READER_STATS = { bridgeLoads: 0, opened: 0, destroyed: 0, draws: 0 };
+
+  /* The page context contract: where the student is, as plain metadata.
+       { pdfPage, printedPage, chapterId, editionStatus }
+     pdfPage is the 1-based PDF page; printedPage is the book's printed page from
+     the PDF's own page labels (null when it has none, or a label is not a page
+     number - it is never assumed equal to pdfPage); chapterId comes from the
+     chapter feed; editionStatus is verification.status ("exact_match",
+     "unverified" = readable but unverified, "unavailable"), or null for a source
+     with no fingerprint. It is published (frozen) when the current page changes:
+     once when a document's first page is known (after its page labels are read),
+     then once per real page turn. Zoom, fit, resize and redraws never publish.
+     A new document starts from nothing; a failed or closed one leaves no context.
+     It never carries bytes, the File, or PDF.js objects. NCERT.ExperienceMapper
+     (experience-mapper.js) is the consumer this is shaped for. */
+  var PAGE_LISTENERS = [];
   var BRIDGE = { state: "idle", waiting: [], failures: 0 };
 
   function readerShell(ch) {
@@ -394,7 +409,8 @@
   function readerMount(feed, ch) {
     var src = feed.chapter.source || {};
     READER = { seq: 0, pick: 0, source: null, official: src.official || "", editions: src.editions || [],
-               bookPages: src.bookPages || null, chapterTitle: ch.title, state: "loading", history: [],
+               bookPages: src.bookPages || null, chapterTitle: ch.title, chapterId: feed.chapter.id || null,
+               context: null, ctxReady: false, state: "loading", history: [],
                detail: null, notice: null, local: null, verification: null, retry: null, labels: null,
                pages: 0, page: 0, zoom: 1, maxed: false, drawn: null,
                task: null, doc: null, render: null, width: 0, onResize: null, onKey: null, timer: null };
@@ -585,6 +601,8 @@
     READER.detail = null;
     READER.verification = null;
     READER.labels = null;
+    READER.context = null;     // no page context until the new document's first page is known
+    READER.ctxReady = false;
     READER.pages = 0;          // nothing from a previous document may leak into this one
     READER.page = 0;
     READER.drawn = null;
@@ -607,13 +625,18 @@
         READER.verification = verify(local, doc.numPages);
         readerState("loading", '<div class="nx-rpage" id="nx-rpage" tabindex="0" aria-label="Chapter page. Use the arrow keys to turn pages."></div>', "");
         readerVerify();
-        doc.getPageLabels().then(function (labels) {
+        // printedPage needs the labels, so the first page context waits for them;
+        // drawing does not
+        var labelled = function (labels) {
           if (!READER || my !== READER.seq) return;
           READER.labels = labels || null;
           READER.verification = verify(local, doc.numPages, labels);
           readerVerify();
           readerStatus();
-        }, function () {});
+          READER.ctxReady = true;
+          readerAnnounce();
+        };
+        doc.getPageLabels().then(labelled, function () { labelled(null); });
         READER.onResize = function () {
           clearTimeout(READER.timer);
           READER.timer = setTimeout(function () { if (READER && READER.doc) readerDraw(false); }, 150);
@@ -683,9 +706,37 @@
     if (!READER || !READER.doc) return;
     if (isNaN(n)) n = READER.page;
     n = Math.max(1, Math.min(READER.pages, n));
-    if (n === READER.page && READER.drawn && READER.drawn.pageNumber === n) { readerTools(); return; }
+    if (n === READER.page) {
+      // same page: draw it only if nothing is drawn or drawing for it; never a page change
+      if (!READER.render && !(READER.drawn && READER.drawn.pageNumber === n)) readerDraw(true);
+      readerTools();
+      return;
+    }
     READER.page = n;
+    readerAnnounce();
     readerDraw(true);
+  }
+
+  /* -------- the page context: build it, publish it when the page changes */
+  function readerContext() {
+    if (!READER || !READER.doc || !READER.page) return null;
+    var label = READER.labels ? READER.labels[READER.page - 1] : null;
+    var printed = label !== null && label !== undefined && /^\s*\d+\s*$/.test(String(label)) ? parseInt(label, 10) : null;
+    var ctx = { pdfPage: READER.page, printedPage: printed, chapterId: READER.chapterId,
+                editionStatus: READER.verification ? READER.verification.status : null };
+    return Object.freeze ? Object.freeze(ctx) : ctx;
+  }
+
+  function readerAnnounce() {
+    if (!READER || !READER.ctxReady) return;
+    var ctx = readerContext();
+    if (!ctx || (READER.context && READER.context.pdfPage === ctx.pdfPage)) return;   // not a change
+    READER.context = ctx;
+    var list = PAGE_LISTENERS.slice();
+    for (var i = 0; i < list.length; i++) {
+      // a listener's own error must not break the reader; surface it without stopping
+      try { list[i](ctx); } catch (e) { setTimeout(function () { throw e; }, 0); }
+    }
   }
 
   function readerZoom(dir) {
@@ -813,6 +864,8 @@
     if (READER.task) { READER.task.destroy(); if (READER.doc) READER_STATS.destroyed++; }
     READER.doc = null;
     READER.task = null;
+    READER.context = null;
+    READER.ctxReady = false;
     READER.width = 0;
     var holder = document.getElementById("nx-rpage");
     var c = holder && holder.querySelector("canvas");
@@ -886,30 +939,37 @@
     if (saved) document.documentElement.setAttribute("data-theme", saved);
   } catch (e) {}
 
-  window.NCERT = {
-    state: function () { return { status: STATE.status, view: STATE.view, route: STATE.route }; },
+  var api = window.NCERT || {};      // experience-mapper.js has already added NCERT.ExperienceMapper
+  window.NCERT = api;
+  api.state = function () { return { status: STATE.status, view: STATE.view, route: STATE.route }; };
+  api.reader = {
+    // the page context contract (see PAGE_LISTENERS above)
+    getCurrentPageContext: function () { return READER ? READER.context : null; },
+    onPageChange: function (fn) {
+      if (typeof fn !== "function") return function () {};
+      PAGE_LISTENERS.push(fn);
+      return function () { var i = PAGE_LISTENERS.indexOf(fn); if (i >= 0) PAGE_LISTENERS.splice(i, 1); };
+    },
     // test hooks for the reader (read-only views of its state, plus open() for URL sources)
-    reader: {
-      state: function () {
-        if (!READER) return null;
-        var L = READER.local;
-        return { state: READER.state, history: READER.history.slice(), pages: READER.pages, page: READER.page,
-                 zoom: READER.zoom, maxed: READER.maxed, drawn: READER.drawn, detail: READER.detail,
-                 notice: READER.notice, verification: READER.verification,
-                 file: L ? { name: L.name, size: L.size, type: L.type, sha256: L.sha256 } : null,
-                 source: L ? "local" : READER.source ? "url" : null,
-                 version: window.NCERTPDF ? window.NCERTPDF.version : null };
-      },
-      open: function (source) { if (READER) readerOpen(source); },
-      close: function () { readerDestroy(); },
-      stats: function () {
-        return { bridgeLoads: READER_STATS.bridgeLoads, opened: READER_STATS.opened, destroyed: READER_STATS.destroyed,
-                 draws: READER_STATS.draws, rendering: !!(READER && READER.render), hasDoc: !!(READER && READER.doc),
-                 maxFileBytes: MAX_FILE_BYTES };
-      },
-      // lets a test exercise the size limit without building a 150 MB file; returns the old value
-      _setMaxFileBytes: function (n) { var o = MAX_FILE_BYTES; MAX_FILE_BYTES = n; return o; }
-    }
+    state: function () {
+      if (!READER) return null;
+      var L = READER.local;
+      return { state: READER.state, history: READER.history.slice(), pages: READER.pages, page: READER.page,
+               zoom: READER.zoom, maxed: READER.maxed, drawn: READER.drawn, detail: READER.detail,
+               notice: READER.notice, verification: READER.verification,
+               file: L ? { name: L.name, size: L.size, type: L.type, sha256: L.sha256 } : null,
+               source: L ? "local" : READER.source ? "url" : null,
+               version: window.NCERTPDF ? window.NCERTPDF.version : null };
+    },
+    open: function (source) { if (READER) readerOpen(source); },
+    close: function () { readerDestroy(); },
+    stats: function () {
+      return { bridgeLoads: READER_STATS.bridgeLoads, opened: READER_STATS.opened, destroyed: READER_STATS.destroyed,
+               draws: READER_STATS.draws, rendering: !!(READER && READER.render), hasDoc: !!(READER && READER.doc),
+               maxFileBytes: MAX_FILE_BYTES };
+    },
+    // lets a test exercise the size limit without building a 150 MB file; returns the old value
+    _setMaxFileBytes: function (n) { var o = MAX_FILE_BYTES; MAX_FILE_BYTES = n; return o; }
   };
   window.addEventListener("pagehide", function () { readerDestroy(); });
   window.addEventListener("hashchange", route);

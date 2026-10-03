@@ -13,13 +13,17 @@
    empty password, so PDF.js asks for one (the "unsupported, password protected" path);
    {prefix: "..."} puts bytes before "%PDF-" (allowed within the first 1024 bytes);
    {height: n} makes every page n points tall (595 wide), e.g. to force the canvas clamp;
-   {marker: "..."} adds a PDF comment, so a test can prove the bytes never leave the page. */
+   {marker: "..."} adds a PDF comment, so a test can prove the bytes never leave the page;
+   {labels: 136} gives the pages printed-page labels 136, 137, ... (as NCERT chapter PDFs
+   have); {labels: "roman"} gives i, ii, iii, ... instead. */
 function makePdf(pageCount, options) {
   pageCount = pageCount || 2;
   options = options || {};
   const objs = [];                       // objs[i] is object number i + 1
   const pageIds = [];
-  objs.push('<< /Type /Catalog /Pages 2 0 R >>');
+  const labels = options.labels === undefined ? ''
+    : ' /PageLabels << /Nums [0 << /S ' + (options.labels === 'roman' ? '/r' : '/D /St ' + options.labels) + ' >>] >>';
+  objs.push('<< /Type /Catalog /Pages 2 0 R' + labels + ' >>');
   objs.push(null);                       // the page tree, filled in below
   for (let k = 1; k <= pageCount; k++) {
     const H = options.height || 842, top = H - 842;   // the drawing keeps its place at the top

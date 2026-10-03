@@ -17,8 +17,8 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
    B  a local load            G  navigation
    P  privacy: it stays here  H  zoom and the canvas clamp
    C  invalid files           I  cleanup
-   D  corrupt / unsupported   J  phone, tablet, desktop
-   E  an exact edition match
+   D  corrupt / unsupported   PC the page context contract, EM the ExperienceMapper seam
+   E  an exact edition match  J  phone, tablet, desktop
 
    NCERT_SHOTS=<dir> saves screenshots of the main states.
    --------------------------------------------------------------------------- */
@@ -352,6 +352,132 @@ const pdfFile = (name, buf, type) => ({ name, mimeType: type === undefined ? 'ap
       && gone.w.made === gone.w.ended && gone.canvases === 0, JSON.stringify(gone));
     ok('no errors', i.errs.length === 0, i.errs.join(' | '));
     await i.context().close();
+
+    // ---------------------------------------------------------------- PC
+    console.log('=== PC. page context contract');
+    const LAB = makePdf(5, { labels: 136 });                 // printed pages 136-140, like the real chapter
+    const CHID = feed.chapter.id;
+    const pc = await page();
+    await pc.route('**' + FEED + '*', r => {
+      const f2 = JSON.parse(JSON.stringify(feed));
+      f2.chapter.source.editions = [{ label: 'Test edition', sha256: sha(LAB), pdfPages: 5, pageLabels: 'book', verified: '2026-10-03' }];
+      r.fulfill({ contentType: 'application/json', body: JSON.stringify(f2) });
+    });
+    await chapter(pc);
+    await pc.evaluate(() => { window.__ctx = []; window.__off = NCERT.reader.onPageChange(c => window.__ctx.push(c)); });
+    const ev = () => pc.evaluate(() => window.__ctx);
+    const cur = () => pc.evaluate(() => NCERT.reader.getCurrentPageContext());
+    const want = (p, pr, st) => ({ pdfPage: p, printedPage: pr, chapterId: CHID, editionStatus: st });
+    const same = (a, b) => JSON.stringify(a) === JSON.stringify(b);
+    const quiet = async () => { await settle(pc, 0); await sleep(300); };   // let any (wrong) late event arrive
+    const turn = async sel => { await pc.click(sel); await quiet(); };
+    ok('no page context before a PDF is chosen', (await cur()) === null && (await ev()).length === 0);
+
+    await choose(pc, pdfFile('kech105.pdf', LAB)); await quiet();
+    let E = await ev();
+    ok('A. initial load: exactly one event, for page 1 / printed 136, this chapter, exact_match',
+      E.length === 1 && same(E[0], want(1, 136, 'exact_match')), JSON.stringify(E));
+    ok('...chapterId comes from the chapter feed', E[0].chapterId === CHID && CHID === 'NCERT-11-CHE-P1-CH05');
+    ok('K. getCurrentPageContext() returns the most recent event\'s context', same(await cur(), E[0]));
+    const shape = await pc.evaluate(() => { const c = NCERT.reader.getCurrentPageContext(); let mutated = false;
+      try { c.pdfPage = 99; } catch (e) { /* frozen */ } mutated = NCERT.reader.getCurrentPageContext().pdfPage === 99;
+      return { keys: Object.keys(c).sort(), frozen: Object.isFrozen(c), mutated,
+               primitives: Object.keys(c).every(k => c[k] === null || ['number', 'string'].indexOf(typeof c[k]) >= 0) }; });
+    ok('...metadata only: exactly pdfPage, printedPage, chapterId, editionStatus, all primitives, frozen',
+      same(shape.keys, ['chapterId', 'editionStatus', 'pdfPage', 'printedPage']) && shape.primitives && shape.frozen && !shape.mutated, JSON.stringify(shape));
+
+    await turn('#nx-t-next'); E = await ev();
+    ok('B. Next: exactly one more event, page 2 / printed 137, chapter and edition unchanged',
+      E.length === 2 && same(E[1], want(2, 137, 'exact_match')), JSON.stringify(E.slice(1)));
+    ok('N. ...a real change: page 1 -> 2, never 2 -> 2', E[0].pdfPage === 1 && E[1].pdfPage === 2);
+    await turn('#nx-t-prev'); E = await ev();
+    ok('C. Previous: exactly one more event, page 1 / printed 136', E.length === 3 && same(E[2], want(1, 136, 'exact_match')));
+    await pc.fill('#nx-pageno', '5'); await pc.press('#nx-pageno', 'Enter'); await quiet(); E = await ev();
+    ok('D. direct jump 1 -> 5 (Enter, which also fires change): exactly one event, page 5 / printed 140',
+      E.length === 4 && same(E[3], want(5, 140, 'exact_match')), JSON.stringify(E.slice(3)));
+
+    const draws0 = await pc.evaluate(() => NCERT.reader.stats().draws);
+    await turn('#nx-t-in'); await turn('#nx-t-in'); await turn('#nx-t-out'); await turn('#nx-t-fit');
+    await pc.focus('#nx-rpage'); await pc.keyboard.press('+'); await quiet(); await pc.keyboard.press('0'); await quiet();
+    await pc.setViewportSize({ width: 1100, height: 900 }); await sleep(600); await quiet();
+    await pc.setViewportSize({ width: 1280, height: 900 }); await sleep(600); await quiet();
+    await pc.fill('#nx-pageno', '5'); await pc.press('#nx-pageno', 'Enter'); await quiet();
+    await pc.focus('#nx-rpage'); await pc.keyboard.press('End'); await quiet();   // already on the last page
+    const draws1 = await pc.evaluate(() => NCERT.reader.stats().draws);
+    E = await ev();
+    ok('E. zoom in/out, fit, keys, two resizes, re-entering the same page, End on the last page: redrawn ' +
+      (draws1 - draws0) + ' times, no page-change event', draws1 - draws0 >= 6 && E.length === 4, 'events ' + E.length);
+
+    await turn('#nx-t-first');
+    for (let k = 0; k < 4; k++) await pc.click('#nx-t-next');
+    await quiet(); await sleep(300);
+    E = await ev();
+    const last5 = E.slice(4).map(c => c.pdfPage);
+    ok('F. First then four quick Nexts: one event per real turn (1, 2, 3, 4, 5), none from cancelled draws',
+      E.length === 9 && same(last5, [1, 2, 3, 4, 5]), JSON.stringify(last5));
+    ok('...the final context is the final page, with no repeat of it', same(E[8], want(5, 140, 'exact_match'))
+      && same(await cur(), E[8]) && E.every((c, k) => k === 0 || c.pdfPage !== E[k - 1].pdfPage));
+
+    await choose(pc, pdfFile('notes.txt', Buffer.from('not a pdf'), 'text/plain'), '#nx-choose-card'); await quiet();
+    ok('a refused file while a PDF is open: no event, context unchanged', (await ev()).length === 9 && same(await cur(), E[8]));
+
+    await choose(pc, pdfFile('other.pdf', FIVE), '#nx-choose-card'); await quiet();
+    E = await ev();
+    ok('G/I. another PDF (no labels, unverified): exactly one new event, page 1, printed null, unverified',
+      E.length === 10 && same(E[9], want(1, null, 'unverified')), JSON.stringify(E.slice(9)));
+    ok('...nothing leaks from the old document (its page 5 / printed 140 / exact_match)', same(await cur(), E[9]));
+    await turn('#nx-t-next'); E = await ev();
+    ok('J. no page labels: printedPage stays null while pdfPage is correct (page 2)', E.length === 11 && same(E[10], want(2, null, 'unverified')));
+    await choose(pc, pdfFile('front-matter.pdf', makePdf(3, { labels: 'roman' })), '#nx-choose-card'); await quiet();
+    E = await ev();
+    ok('J. roman-numeral labels are not page numbers: printedPage null', E.length === 12 && same(E[11], want(1, null, 'unverified')), JSON.stringify(E[11]));
+
+    await choose(pc, pdfFile('broken.pdf', Buffer.from('%PDF-1.4 nothing\n')), '#nx-choose-card'); await quiet();
+    ok('a PDF that fails to open leaves no context and sends no event', (await cur()) === null && (await ev()).length === 12);
+    await choose(pc, pdfFile('kech105.pdf', LAB), '#nx-choose-card'); await quiet();
+    E = await ev();
+    ok('H. choosing the verified PDF again: page 1 / printed 136 / exact_match', E.length === 13 && same(E[12], want(1, 136, 'exact_match')));
+
+    await pc.evaluate(() => { window.__boom = 0; window.__offBoom = NCERT.reader.onPageChange(() => { window.__boom++; throw new Error('listener boom'); }); });
+    await turn('#nx-t-next');
+    const iso = await pc.evaluate(() => ({ boom: window.__boom, n: window.__ctx.length, page: NCERT.reader.state().page }));
+    ok('a listener that throws does not stop the reader or the other listeners', iso.boom === 1 && iso.n === 14 && iso.page === 2, JSON.stringify(iso));
+    await pc.evaluate(() => { window.__offBoom(); window.__off(); });
+    await turn('#nx-t-next');
+    ok('unsubscribing stops the events', (await ev()).length === 14 && (await pc.evaluate(() => window.__boom)) === 1);
+
+    console.log('=== EM. ExperienceMapper');
+    const em = await pc.evaluate(() => {
+      const M = NCERT.ExperienceMapper;
+      const ctxs = [
+        Object.freeze({ pdfPage: 9, printedPage: 144, chapterId: 'NCERT-11-CHE-P1-CH05', editionStatus: 'exact_match' }),
+        Object.freeze({ pdfPage: 9, printedPage: 144, chapterId: 'NCERT-11-CHE-P1-CH05', editionStatus: 'unverified' }),
+        Object.freeze({ pdfPage: 3, printedPage: null, chapterId: 'NCERT-11-CHE-P1-CH05', editionStatus: 'unverified' }),
+        { pdfPage: 1, printedPage: 136, chapterId: 'X', editionStatus: null },
+        NCERT.reader.getCurrentPageContext()
+      ];
+      const before = JSON.stringify(ctxs);
+      const out = ctxs.map(c => M.getExperiencesForPage(c));
+      return { api: Object.keys(M), arrays: out.every(Array.isArray), empty: out.every(a => a.length === 0),
+               fresh: out[0] !== out[1], untouched: JSON.stringify(ctxs) === before,
+               odd: [M.getExperiencesForPage(null), M.getExperiencesForPage(undefined), M.getExperiencesForPage('x')].every(a => Array.isArray(a) && !a.length) };
+    });
+    ok('L. getExperiencesForPage(context) returns [] for exact_match, unverified and printedPage null', em.arrays && em.empty, JSON.stringify(em));
+    ok('M. it never mutates the context (frozen and plain contexts unchanged), and returns a new array each time', em.untouched && em.fresh);
+    ok('...and tolerates a missing context', em.odd);
+    ok('the mapper is the only thing on NCERT.ExperienceMapper: getExperiencesForPage', same(em.api, ['getExperiencesForPage']));
+    const msrc = fs.readFileSync(ROOT + '/ncert/experience-mapper.js', 'utf8').replace(/\/\*[\s\S]*?\*\//g, '').replace(/\/\/.*$/gm, '');
+    ok('the mapper fetches, imports and launches nothing, and names no chapter or simulation',
+      !/fetch|XMLHttpRequest|import|require\(|simulations|ncert\.nic|NCERT-1|innerHTML|location|localStorage|indexedDB/.test(msrc));
+    ok('the mapper is plain ES5', !/(^|[^\w.$])(let|const|class)\s|=>|`/.test(msrc));
+    ok('no experience UI was added (no cards, buttons or hotspots)', (await pc.$('[data-experience], .nx-experience, .nx-hotspot')) === null
+      && !/Explore|Try this/.test(await pc.innerText('#nx-chlayout')));
+    await pc.evaluate(() => { location.hash = '#/'; }); await settled(pc);
+    ok('leaving the chapter: no page context', (await cur()) === null);
+    const expectedErr = e => /listener boom/.test(e);
+    ok('no errors (apart from the deliberately throwing listener)', pc.errs.filter(e => !expectedErr(e)).length === 0
+      && pc.errs.some(expectedErr), pc.errs.join(' | '));
+    await pc.context().close();
 
     // ---------------------------------------------------------------- J
     console.log('=== J. phone, tablet, desktop');

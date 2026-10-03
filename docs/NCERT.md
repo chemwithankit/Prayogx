@@ -187,6 +187,30 @@ object URL. Reader: one page at a time (first / previous / page number / next / 
 Home / End), zoom 50–300 % of fit width, clamped to the 16.7 M-pixel canvas cap; corrupt and
 password-protected files have their own states. Tests: `tests/ncert_local.js`.
 
+**Phase 3B Page Context Contract (2026-10-03, uncommitted).** The reader publishes *where the
+student is*, as metadata only, for a future Interactive Book Engine:
+
+```
+PDF reader → page context → NCERT.ExperienceMapper → experience(s)
+{ pdfPage: 5, printedPage: 140, chapterId: "NCERT-11-CHE-P1-CH05", editionStatus: "exact_match" }
+```
+
+- `pdfPage` is the 1-based PDF page. `printedPage` is the book's printed page from the PDF's own page
+  labels; it is `null` when there are none or a label is not a number (it is never assumed equal to
+  `pdfPage`). `chapterId` comes from the chapter feed. `editionStatus` reuses the verification states:
+  `exact_match`, `unverified` (readable but unverified), `unavailable`, or `null` for a source with no
+  fingerprint.
+- `NCERT.reader.onPageChange(fn)` (returns an unsubscribe function) and
+  `NCERT.reader.getCurrentPageContext()`. The event is semantic: once when a document's first page is
+  known (after its labels are read), then once per real page turn. Zoom, fit, resize, redraws and
+  cancelled draws never fire it; a new document starts from no context, and a failed or closed one
+  leaves none. The context is frozen and never carries bytes, the File or PDF.js objects.
+- `NCERT.ExperienceMapper.getExperiencesForPage(context)` (`ncert/experience-mapper.js`) is the seam
+  where experiences will be chosen. **It returns `[]`: no experiences are mapped yet.** Future mapping
+  should be concept-aware (section → concept → learning objective → experience, not page → simulation)
+  and edition-aware (printed pages are trustworthy only for a known edition). NCERT is the first
+  source, not a limit: nothing in the contract is NCERT-specific.
+
 ## 7. Pilot: Class 11 Chemistry Part I, Chapter 5 Thermodynamics
 
 Book pages 136–167, `kech105.pdf`, Reprint 2026-27 (SHA-256 `e2b5d180…48ec5f8`, 32 pages, no PDF
