@@ -1,0 +1,155 @@
+{
+  "schemaVersion": "1.0.0",
+  "note": "TEST/EXAMPLE DATA ONLY - synthetic source 'EXAMPLE', not an NCERT mapping. Exercises the concept -> objective -> experience contract (tools/experience_schema.py): one experience, several of different types, and none.",
+  "concepts": [
+    {
+      "id": "CPT-CHE-BOYLES-LAW",
+      "title": "Boyle's law",
+      "subject": "Chemistry",
+      "locations": [
+        {
+          "sourceId": "EXAMPLE",
+          "chapterId": "EXAMPLE-BOOK-CH02",
+          "sectionId": "2.3",
+          "printedPages": [
+            41,
+            42
+          ]
+        }
+      ],
+      "learningObjectives": [
+        {
+          "id": "LO-CHE-BOYLES-LAW-PRESSURE-VOLUME",
+          "verb": "predict",
+          "statement": "Predict how the pressure of a fixed amount of gas changes when its volume is halved at constant temperature."
+        }
+      ],
+      "experiences": [
+        {
+          "id": "EXP-CHE-BOYLES-LAW-SYRINGE",
+          "type": "simulation",
+          "title": "The sealed syringe",
+          "objectives": [
+            "LO-CHE-BOYLES-LAW-PRESSURE-VOLUME"
+          ],
+          "status": "planned",
+          "libraryId": null
+        }
+      ]
+    },
+    {
+      "id": "CPT-CHE-CHEMICAL-EQUILIBRIUM",
+      "title": "Chemical equilibrium",
+      "subject": "Chemistry",
+      "locations": [
+        {
+          "sourceId": "EXAMPLE",
+          "chapterId": "EXAMPLE-BOOK-CH07",
+          "sectionId": "7.1",
+          "printedPages": [
+            190,
+            193
+          ]
+        },
+        {
+          "sourceId": "EXAMPLE",
+          "chapterId": "EXAMPLE-BOOK-CH07",
+          "sectionId": "7.4",
+          "printedPages": [
+            201,
+            202
+          ]
+        },
+        {
+          "sourceId": "EXAMPLE",
+          "chapterId": "EXAMPLE-NOTES-CH03"
+        }
+      ],
+      "learningObjectives": [
+        {
+          "id": "LO-CHE-CHEMICAL-EQUILIBRIUM-DYNAMIC",
+          "verb": "explain",
+          "statement": "Explain why an equilibrium mixture looks unchanging although both reactions continue."
+        },
+        {
+          "id": "LO-CHE-CHEMICAL-EQUILIBRIUM-CONSTANT",
+          "verb": "calculate",
+          "statement": "Calculate the equilibrium constant from measured equilibrium concentrations."
+        },
+        {
+          "id": "LO-CHE-CHEMICAL-EQUILIBRIUM-DISTURBANCE",
+          "verb": "predict",
+          "statement": "Predict the direction an equilibrium shifts when a reactant is added."
+        }
+      ],
+      "experiences": [
+        {
+          "id": "EXP-CHE-CHEMICAL-EQUILIBRIUM-MOLECULES",
+          "type": "animation",
+          "title": "Both directions at once",
+          "objectives": [
+            "LO-CHE-CHEMICAL-EQUILIBRIUM-DYNAMIC"
+          ],
+          "status": "blueprint",
+          "libraryId": null
+        },
+        {
+          "id": "EXP-CHE-CHEMICAL-EQUILIBRIUM-CONSTANT-TABLE",
+          "type": "data-explorer",
+          "title": "One constant, many mixtures",
+          "objectives": [
+            "LO-CHE-CHEMICAL-EQUILIBRIUM-CONSTANT"
+          ],
+          "status": "planned",
+          "libraryId": null
+        },
+        {
+          "id": "EXP-CHE-CHEMICAL-EQUILIBRIUM-LE-CHATELIER",
+          "type": "virtual-lab",
+          "title": "Disturb the flask",
+          "objectives": [
+            "LO-CHE-CHEMICAL-EQUILIBRIUM-DISTURBANCE",
+            "LO-CHE-CHEMICAL-EQUILIBRIUM-DYNAMIC"
+          ],
+          "status": "planned",
+          "libraryId": null
+        },
+        {
+          "id": "EXP-CHE-CHEMICAL-EQUILIBRIUM-OPPOSING-REACTIONS",
+          "type": "practice",
+          "title": "Opposing reactions (JEE)",
+          "objectives": [
+            "LO-CHE-CHEMICAL-EQUILIBRIUM-DYNAMIC"
+          ],
+          "status": "published",
+          "libraryId": "ADV-2026-P1-CHE-Q02"
+        }
+      ]
+    },
+    {
+      "id": "CPT-CHE-ENTROPY",
+      "title": "Entropy",
+      "subject": "Chemistry",
+      "locations": [
+        {
+          "sourceId": "EXAMPLE",
+          "chapterId": "EXAMPLE-BOOK-CH06",
+          "sectionId": "6.2"
+        }
+      ],
+      "learningObjectives": [
+        {
+          "id": "LO-CHE-ENTROPY-SPREADING",
+          "verb": "describe",
+          "statement": "Describe entropy as a measure of how many ways energy and matter can be arranged."
+        },
+        {
+          "id": "LO-CHE-ENTROPY-SIGN",
+          "verb": "predict",
+          "statement": "Predict the sign of the entropy change when a solid dissolves or a gas expands."
+        }
+      ],
+      "experiences": []
+    }
+  ]
+}

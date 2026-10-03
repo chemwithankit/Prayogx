@@ -211,6 +211,42 @@ PDF reader → page context → NCERT.ExperienceMapper → experience(s)
   and edition-aware (printed pages are trustworthy only for a known edition). NCERT is the first
   source, not a limit: nothing in the contract is NCERT-specific.
 
+**Concept → Learning Objective → Experience Contract (2026-10-03, uncommitted).** The content model
+the reader will eventually serve, defined in `tools/experience_schema.py` (validated by
+`tests/experience_contract.py` on a synthetic example, `tests/fixtures/experience_contract_example.json`):
+
+```
+Source → Book → Chapter → Section → Concept → Learning objective → Experience → (future media)
+```
+
+- A **concept** (`CPT-<SUBJ>-<SLUG>`, e.g. `CPT-CHE-INTERNAL-ENERGY`) is the semantic learning unit.
+  Pages are not its identity: they are **locations** (`sourceId`, `chapterId`, optional `sectionId` and
+  `printedPages`), and a concept may have several. Its id never encodes a page, a position or a random
+  value, so it survives new editions and layouts. (`CON-` remains the library's concept-*page* ids.)
+- A concept has one or more **learning objectives** (`LO-…`): what the student will be able to do
+  ("Predict how pressure changes when the volume is halved…"), never the controls ("Use the slider…"),
+  with an optional verb (identify, describe, visualize, explain, compare, predict, calculate, derive,
+  apply, analyze).
+- A concept has **zero, one or many experiences** (`EXP-…`), each serving its own objectives. An
+  experience's `type` is the learning mode, not the technology: simulation, animation, virtual-lab,
+  graph, data-explorer, interactive-diagram, molecular, derivation, worked-example, practice. Its
+  `status` is the experience's own lifecycle: planned → blueprint → building → review → published,
+  or retired. *Published* means the experience passed its own content / QA gate.
+- `libraryId` is **optional**. It links an experience to an existing PrayogX library page (an `ADV-`
+  question or `CON-` concept page) when that page delivers it, for example an NCERT concept reusing a
+  JEE page; the page must then exist, a `practice` experience must link a question page, and a
+  published experience cannot link a draft or deprecated page. **Native** interactive-book experiences,
+  and those from other sources, have no `libraryId` and need no library page at any status. The
+  experience lifecycle and the library page's (`draft` / `script_verified` / `human_verified` /
+  `deprecated`) are separate.
+- Authoring data nests experiences in their concept; runtime records (`flatten`) add `conceptId`. Both
+  are plain JSON: no files, bytes, PDF.js objects, DOM or UI state. Media production is a separate,
+  later layer that will consume an experience by id and type, and does not depend on `libraryId`;
+  nothing in the contract is NCERT-specific.
+- A page context meets a location on `chapterId` + printed page; that future **concept mapper** is not
+  built. `NCERT.ExperienceMapper.getExperiencesForPage()` still returns `[]`. No concept inventory, no
+  Chapter 5 mappings and no experiences exist yet.
+
 ## 7. Pilot: Class 11 Chemistry Part I, Chapter 5 Thermodynamics
 
 Book pages 136–167, `kech105.pdf`, Reprint 2026-27 (SHA-256 `e2b5d180…48ec5f8`, 32 pages, no PDF
