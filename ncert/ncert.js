@@ -101,6 +101,7 @@
 
   /* ---------------------------------------------------------- rendering */
   function setState(status, view, html, title) {
+    readerDestroy();          // leaving (or re-rendering) a chapter ends its document and worker
     STATE = { status: status, view: view, route: location.hash || "#/" };
     main.setAttribute("data-state", status);
     main.innerHTML = '<div class="inner">' + html + "</div>";
@@ -235,7 +236,7 @@
     setState("ready", filter.book ? "book" : filter.subj ? "subject" : filter.cls ? "class" : "browse", html, title);
   }
 
-  /* Chapter: a placeholder for the reading screen - the chapter and its sections. */
+  /* Chapter: the outline beside the reader (Phase 3A: the reader foundation only). */
   function showChapter(book, ch, feed) {
     var bp = bookPath(book);
     var secs = feed.sections || [];
@@ -250,7 +251,8 @@
         (ed ? "<li>" + esc(ed.label) + "</li>" : "") +
       "</ul>" +
       "</header>" +
-      '<p class="nx-note">The chapter reader and its simulations open here in the next build. For now this is the chapter outline.</p>' +
+      '<div class="nx-chlayout">' +
+      readerShell(ch, feed) +
       '<section class="nx-outline" aria-labelledby="nx-outline-h">' +
         '<h2 id="nx-outline-h">Sections</h2><ol class="nx-sections">';
     for (var i = 0; i < secs.length; i++) {
@@ -260,8 +262,202 @@
         '<span class="nx-secbody"><span class="nx-sectitle">' + esc(s.title) + "</span>" +
         '<span class="nx-secpages">' + esc(pages(s.pages)) + "</span></span></li>";
     }
-    html += "</ol></section>";
+    html += "</ol></section></div>";
     setState("ready", "chapter", html, ch.title + ", Class " + bp[0] + " " + book.subject);
+    readerMount(feed);
+  }
+
+  /* ---------------------------------------------------------------- reader
+     Phase 3A: the foundation only - open one PDF, render its first page at the
+     reader's width, and be honest about where the PDF comes from.
+
+     Reader states, on #nx-reader[data-reader-state]:
+       loading         PDF.js and the document are on their way
+       ready           the document is open and page 1 is drawn
+       no_hosted_pdf   PrayogX hosts no copy of this chapter (source.hosted is null)
+       source_blocked  an external source exists but the browser will not hand it over
+       error           anything else went wrong
+     Retry re-opens the last source; the official NCERT link is always offered.
+
+     PDF.js (reader.mjs) is injected only when a document is actually opened, so a
+     chapter without a hosted PDF - every chapter today - never downloads it. */
+  var READER = null;       // {seq, source, official, task, doc, render, width, onResize, timer}
+  var READER_STATS = { bridgeLoads: 0, opened: 0, destroyed: 0 };
+  var BRIDGE = { state: "idle", waiting: [], failures: 0 };
+
+  function readerShell(ch, feed) {
+    var official = (feed.chapter.source || {}).official || "";
+    return '<section class="nx-reader" id="nx-reader" data-reader-state="loading" aria-label="Chapter reader">' +
+      '<div class="nx-rbar">' +
+        '<span class="nx-rtitle">Chapter ' + esc(ch.number) + " · " + esc(ch.title) + "</span>" +
+        '<span class="nx-rstatus" id="nx-rstatus" aria-live="polite"></span>' +
+        (official ? '<a class="nx-rofficial" href="' + esc(official) + '" target="_blank" rel="noopener">Official NCERT PDF<span aria-hidden="true"> ↗</span></a>' : "") +
+      "</div>" +
+      '<div class="nx-rbody" id="nx-rbody"><p class="nx-rmsg">Preparing the reader…</p></div>' +
+      "</section>";
+  }
+
+  function readerEls() {
+    return { root: document.getElementById("nx-reader"), body: document.getElementById("nx-rbody"),
+             status: document.getElementById("nx-rstatus") };
+  }
+
+  function officialButton(primary) {
+    if (!READER || !READER.official) return "";
+    return '<a class="nx-btn' + (primary ? "" : " nx-btn-quiet") + '" href="' + esc(READER.official) +
+      '" target="_blank" rel="noopener">Open official NCERT PDF<span aria-hidden="true"> ↗</span></a>';
+  }
+
+  function readerState(state, html, status) {
+    var e = readerEls();
+    if (!e.root) return;
+    READER.state = state;
+    e.root.setAttribute("data-reader-state", state);
+    if (html !== null) e.body.innerHTML = html;
+    e.status.textContent = status || "";
+    var retry = document.getElementById("nx-rretry");
+    if (retry) retry.onclick = function () { readerOpen(READER.source); };
+  }
+
+  function readerMount(feed) {
+    var src = feed.chapter.source || {};
+    READER = { seq: 0, source: null, official: src.official || "", state: "loading", detail: null,
+               pages: 0, task: null, doc: null, render: null, width: 0, onResize: null, timer: null };
+    if (src.hosted) {
+      // a same-origin copy, only ever set once permission is recorded (docs/NCERT.md §4)
+      readerOpen({ url: "../" + String(src.hosted).replace(/^\/+/, "") });
+      return;
+    }
+    readerState("no_hosted_pdf",
+      '<div class="nx-rpanel">' +
+        "<h2>Read this chapter on the NCERT website</h2>" +
+        "<p>PrayogX does not host NCERT textbooks. Open the official chapter PDF in a new tab and keep this outline beside it.</p>" +
+        officialButton(true) +
+      "</div>", "");
+  }
+
+  function loadBridge(done) {
+    if (window.NCERTPDF) { done(null); return; }
+    BRIDGE.waiting.push(done);
+    if (BRIDGE.state === "loading") return;
+    BRIDGE.state = "loading";
+    var finished = false;
+    function finish(err) {
+      if (finished) return;
+      finished = true;
+      clearTimeout(timer);
+      window.removeEventListener("ncert-pdf-ready", onReady);
+      BRIDGE.state = err ? "idle" : "ready";
+      if (err) BRIDGE.failures++;
+      if (err && script.parentNode) script.parentNode.removeChild(script);   // let a retry load it again
+      var w = BRIDGE.waiting; BRIDGE.waiting = [];
+      for (var i = 0; i < w.length; i++) w[i](err);
+    }
+    function onReady() { finish(null); }
+    window.addEventListener("ncert-pdf-ready", onReady);
+    var script = document.createElement("script");
+    script.type = "module";
+    // a module that failed to load stays failed for this page under the same URL,
+    // so a retry asks for it under a new one
+    script.src = "reader.mjs" + (BRIDGE.failures ? "?retry=" + BRIDGE.failures : "");
+    script.onerror = function () { finish(new Error("the PDF reader could not be loaded")); };
+    var timer = setTimeout(function () { finish(new Error("the PDF reader took too long to load")); }, 30000);
+    READER_STATS.bridgeLoads++;
+    document.head.appendChild(script);
+  }
+
+  function readerOpen(source) {
+    if (!READER) return;
+    readerRelease();
+    var my = ++READER.seq;
+    READER.source = source;
+    READER.detail = null;
+    READER.pages = 0;          // nothing from a previous document may leak into this one
+    READER.drawn = null;
+    readerState("loading", '<p class="nx-rmsg">Opening the chapter…</p>', "");
+    loadBridge(function (err) {
+      if (!READER || my !== READER.seq) return;
+      if (err) { readerFail({ kind: "error", name: "BridgeError", message: err.message }); return; }
+      var task = window.NCERTPDF.open(source);
+      READER.task = task;
+      task.promise.then(function (doc) {
+        if (!READER || my !== READER.seq) { task.destroy(); return; }   // superseded: end it and its worker
+        READER.doc = doc;
+        READER.pages = doc.numPages;
+        READER_STATS.opened++;
+        readerState("loading", '<div class="nx-rpage"><canvas id="nx-rcanvas" aria-label="Page 1 of the chapter"></canvas></div>',
+                    "Page 1 of " + doc.numPages);
+        READER.onResize = function () {
+          clearTimeout(READER.timer);
+          READER.timer = setTimeout(function () { if (READER && READER.doc) readerDraw(my); }, 150);
+        };
+        window.addEventListener("resize", READER.onResize);
+        readerDraw(my);
+      }, function (e) {
+        if (!READER || my !== READER.seq) return;
+        readerFail(window.NCERTPDF.classify(e, source));
+      });
+    });
+  }
+
+  function readerDraw(my) {
+    var canvas = document.getElementById("nx-rcanvas");
+    if (!canvas || !canvas.parentNode) return;
+    // the holder has no padding, so its width is exactly what the page may use
+    var width = Math.max(200, Math.floor(canvas.parentNode.clientWidth));
+    if (READER.state === "ready" && Math.abs(width - READER.width) < 8) return;
+    if (READER.render) READER.render.cancel();
+    READER.width = width;
+    var r = window.NCERTPDF.renderPage(READER.doc, 1, canvas, width);
+    READER.render = r;
+    r.promise.then(function (info) {
+      if (!READER || my !== READER.seq || READER.render !== r) return;
+      READER.render = null;
+      READER.drawn = info;
+      readerState("ready", null, "Page 1 of " + READER.pages);
+    }, function (e) {
+      if (!READER || my !== READER.seq || READER.render !== r) return;
+      READER.render = null;
+      if (e && (e.name === "RenderingCancelledException" || e.message === "cancelled")) return;
+      readerFail(window.NCERTPDF.classify(e, READER.source));
+    });
+  }
+
+  function readerFail(info) {
+    READER.detail = info;
+    var blocked = info.kind === "blocked";
+    readerRelease();
+    readerState(blocked ? "source_blocked" : "error",
+      '<div class="nx-rpanel" role="alert">' +
+        (blocked
+          ? "<h2>The NCERT website does not let other sites load this PDF</h2>" +
+            "<p>Your browser refused to hand the file to PrayogX. Open it directly on the NCERT website instead.</p>"
+          : "<h2>The reader could not open this PDF</h2>" +
+            "<p>Something went wrong while opening or drawing it. Try again, or open the official copy.</p>") +
+        '<p class="nx-state-detail">' + esc(info.name + (info.status ? " " + info.status : "") + ": " + info.message) + "</p>" +
+        '<div class="nx-ractions">' + officialButton(true) +
+          '<button type="button" class="nx-btn nx-btn-quiet" id="nx-rretry">Try again</button></div>' +
+      "</div>", "");
+  }
+
+  /* Release the open document, its worker, any render in flight and the resize hook. */
+  function readerRelease() {
+    if (!READER) return;
+    clearTimeout(READER.timer);
+    if (READER.onResize) { window.removeEventListener("resize", READER.onResize); READER.onResize = null; }
+    if (READER.render) { READER.render.cancel(); READER.render = null; }
+    // PDF.js 6: the loading task owns the document and its worker; destroying the task ends both
+    if (READER.task) { READER.task.destroy(); if (READER.doc) READER_STATS.destroyed++; }
+    READER.doc = null;
+    READER.task = null;
+    READER.width = 0;
+  }
+
+  function readerDestroy() {
+    if (!READER) return;
+    READER.seq++;            // anything still in flight for this reader is now ignored
+    readerRelease();
+    READER = null;
   }
 
   /* ------------------------------------------------------------- routing */
@@ -320,7 +516,23 @@
     if (saved) document.documentElement.setAttribute("data-theme", saved);
   } catch (e) {}
 
-  window.NCERT = { state: function () { return { status: STATE.status, view: STATE.view, route: STATE.route }; } };
+  window.NCERT = {
+    state: function () { return { status: STATE.status, view: STATE.view, route: STATE.route }; },
+    // test hooks for the reader foundation
+    reader: {
+      state: function () {
+        return READER ? { state: READER.state, pages: READER.pages, detail: READER.detail, drawn: READER.drawn || null,
+                          version: window.NCERTPDF ? window.NCERTPDF.version : null } : null;
+      },
+      open: function (source) { if (READER) readerOpen(source); },
+      close: function () { readerDestroy(); },
+      stats: function () {
+        return { bridgeLoads: READER_STATS.bridgeLoads, opened: READER_STATS.opened, destroyed: READER_STATS.destroyed,
+                 rendering: !!(READER && READER.render), hasDoc: !!(READER && READER.doc) };
+      }
+    }
+  };
+  window.addEventListener("pagehide", function () { readerDestroy(); });
   window.addEventListener("hashchange", route);
   route();
 })();

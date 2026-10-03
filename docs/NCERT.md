@@ -171,6 +171,8 @@ No commit without the phase's approval, no push without explicit approval.
 
 **Status (2026-10-03):** Phases 1 and 2 complete. `/ncert/` (`ncert/index.html`, `ncert.js`, `ncert.css`) browses class → subject → book → chapter and shows the chapter outline, with loading, empty, error and not-found states; unlinked and `noindex`. Tested by `tests/ncert_data.py` and `tests/ncert_shell.js`. Next: Phase 3, the reader.
 
+**Phase 3A spike (2026-10-03):** PDF.js 6.3.289 (legacy build, vendored unmodified in `ncert/vendor/pdfjs-6.3.289/`) is loaded on demand through one ES-module bridge, `ncert/reader.mjs`; `ncert.js` stays ES5. A same-origin PDF opens and renders. The official NCERT PDF cannot be read by PDF.js from any other origin: ncert.nic.in sends no `Access-Control-Allow-Origin` header, so the browser blocks it (CORS), and the reader says so (`source_blocked`) and links to the official file. With `source.hosted` null the chapter shows `no_hosted_pdf` and never downloads PDF.js. Tests: `tests/ncert_reader.js` (`NCERT_ONLINE=1` also tries the real NCERT file).
+
 ## 7. Pilot: Class 11 Chemistry Part I, Chapter 5 Thermodynamics
 
 Book pages 136–167, `kech105.pdf`, Reprint 2026-27 (SHA-256 `e2b5d180…48ec5f8`, 32 pages, no PDF

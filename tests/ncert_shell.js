@@ -259,8 +259,15 @@ const shot = async (pg, name) => { if (SHOTS) await pg.screenshot({ path: path.j
     ok('the JEE library renders and shows no NCERT link', !/ncert/i.test(libText));
     ok('the JEE library loads without errors', lib.errs.length === 0, lib.errs.join(' | '));
     const js = fs.readFileSync(ROOT + '/ncert/ncert.js', 'utf8');
-    ok('ncert.js is plain ES5 (no let / const / arrow / template / class)',
-      !/(^|[^\w.])(let|const|class)\s|=>|`/.test(js.replace(/\/\*[\s\S]*?\*\//g, '').replace(/\/\/.*$/gm, '').replace(/"(?:\\.|[^"\\])*"|'(?:\\.|[^'\\])*'/g, '""')));
+    // strip comments, then regex literals (one holding a lone quote would derail the string
+    // pairing), then strings - so words in UI text ("does not let ...") are not read as code
+    const es5src = s => s.replace(/\/\*[\s\S]*?\*\//g, '').replace(/\/\/.*$/gm, '')
+      .replace(/([(=,:!&|?{};]\s*|return\s+)\/(?![*\/])(?:\\.|\[(?:\\.|[^\]\\])*\]|[^\/\\\n])+\/[gimsuy]*/g, '$1/re/')
+      .replace(/"(?:\\.|[^"\\\n])*"|'(?:\\.|[^'\\\n])*'/g, '""');
+    const es6 = /(^|[^\w.$])(let|const|class)\s|=>|`/;
+    ok('the ES5 check itself catches ES6 and ignores UI text',
+      es6.test(es5src('var a = 1;\nlet b = 2;')) && es6.test(es5src('f(x => x)')) && !es6.test(es5src('var t = "do not let it" + x.replace(/"/g, "&quot;");')));
+    ok('ncert.js is plain ES5 (no let / const / arrow / template / class)', !es6.test(es5src(js)));
   } catch (e) {
     ok('suite ran to the end', false, e && e.stack);
   } finally {

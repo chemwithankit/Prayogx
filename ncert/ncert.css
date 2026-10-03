@@ -63,10 +63,36 @@
 .nx-go{flex:none;font-size:24px;line-height:1;color:var(--text-muted)}
 .nx-chapter:hover .nx-go{color:var(--accent)}
 
-/* ---------- chapter outline ---------- */
-.nx-note{max-width:760px;margin:0 0 22px;padding:12px 14px;border-radius:10px;font-size:13.5px;
-  color:var(--text-secondary);background:var(--surface-1);border:1px dashed var(--line-strong)}
-.nx-outline{max-width:760px}
+/* ---------- chapter: outline beside the reader ---------- */
+.nx-chlayout{display:flex;flex-direction:column;gap:24px}
+.nx-outline{max-width:760px;min-width:0}
+@media (min-width:960px){
+  .nx-chlayout{display:grid;grid-template-columns:minmax(260px,30%) minmax(0,1fr);
+    grid-template-areas:"outline reader";gap:24px;align-items:start}
+  .nx-chlayout .nx-outline{grid-area:outline;max-width:none}
+  .nx-chlayout .nx-reader{grid-area:reader}
+}
+
+/* ---------- reader (Phase 3A foundation) ---------- */
+.nx-reader{background:var(--surface-1);border:1px solid var(--line);border-radius:var(--radius);
+  overflow:hidden;min-width:0}
+.nx-rbar{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;padding:10px 14px;
+  border-bottom:1px solid var(--line);font-size:13px}
+.nx-rtitle{font-weight:650;color:var(--text-primary);min-width:0}
+.nx-rstatus{color:var(--text-muted);font-family:var(--mono);font-size:12px;flex:1 1 auto}
+.nx-rofficial{color:var(--accent);text-decoration:none;font-weight:600;white-space:nowrap;
+  min-height:32px;display:inline-flex;align-items:center}
+.nx-rofficial:hover{text-decoration:underline}
+.nx-rbody{padding:16px;min-height:220px}
+.nx-rmsg{color:var(--text-muted);text-align:center;padding:60px 0;margin:0}
+.nx-rpanel{max-width:520px;margin:28px auto;text-align:center}
+.nx-rpanel h2{font-size:18px;margin:0 0 8px}
+.nx-rpanel p{color:var(--text-secondary);margin:0 0 16px}
+.nx-ractions{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+.nx-btn.nx-btn-quiet{background:var(--surface-2);color:var(--text-primary);border:1px solid var(--line-strong)}
+.nx-rpage{display:flex;justify-content:center}
+.nx-rpage canvas{display:block;max-width:100%;height:auto;background:#fff;
+  box-shadow:0 1px 3px rgba(0,0,0,.18)}
 .nx-outline h2{font-size:13px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;
   color:var(--text-muted);margin:0 0 10px}
 .nx-sections{list-style:none;margin:0;padding:0;background:var(--surface-1);border:1px solid var(--line);
@@ -105,6 +131,8 @@
   .nx-sec.nx-l2{padding-left:24px}
   .nx-secno{width:50px;font-size:12px}
   .nx-secbody{flex-direction:column;gap:1px}
+  .nx-rbody{padding:10px}
+  .nx-rpanel{margin:18px auto}
 }
 @media (prefers-reduced-motion: reduce){
   .nx-chapter{transition:none}
