@@ -63,36 +63,18 @@
 .nx-go{flex:none;font-size:24px;line-height:1;color:var(--text-muted)}
 .nx-chapter:hover .nx-go{color:var(--accent)}
 
-/* ---------- chapter: outline beside the reader ---------- */
-.nx-chlayout{display:flex;flex-direction:column;gap:24px}
+/* ---------- chapter: context column beside the reader ---------- */
+.nx-chlayout{display:flex;flex-direction:column;gap:20px}
+.nx-context{display:flex;flex-direction:column;gap:20px;min-width:0}
 .nx-outline{max-width:760px;min-width:0}
 @media (min-width:960px){
   .nx-chlayout{display:grid;grid-template-columns:minmax(260px,30%) minmax(0,1fr);
-    grid-template-areas:"outline reader";gap:24px;align-items:start}
-  .nx-chlayout .nx-outline{grid-area:outline;max-width:none}
+    grid-template-areas:"context reader";gap:24px;align-items:start}
+  .nx-chlayout .nx-context{grid-area:context}
+  .nx-chlayout .nx-outline{max-width:none}
   .nx-chlayout .nx-reader{grid-area:reader}
 }
 
-/* ---------- reader (Phase 3A foundation) ---------- */
-.nx-reader{background:var(--surface-1);border:1px solid var(--line);border-radius:var(--radius);
-  overflow:hidden;min-width:0}
-.nx-rbar{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;padding:10px 14px;
-  border-bottom:1px solid var(--line);font-size:13px}
-.nx-rtitle{font-weight:650;color:var(--text-primary);min-width:0}
-.nx-rstatus{color:var(--text-muted);font-family:var(--mono);font-size:12px;flex:1 1 auto}
-.nx-rofficial{color:var(--accent);text-decoration:none;font-weight:600;white-space:nowrap;
-  min-height:32px;display:inline-flex;align-items:center}
-.nx-rofficial:hover{text-decoration:underline}
-.nx-rbody{padding:16px;min-height:220px}
-.nx-rmsg{color:var(--text-muted);text-align:center;padding:60px 0;margin:0}
-.nx-rpanel{max-width:520px;margin:28px auto;text-align:center}
-.nx-rpanel h2{font-size:18px;margin:0 0 8px}
-.nx-rpanel p{color:var(--text-secondary);margin:0 0 16px}
-.nx-ractions{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
-.nx-btn.nx-btn-quiet{background:var(--surface-2);color:var(--text-primary);border:1px solid var(--line-strong)}
-.nx-rpage{display:flex;justify-content:center}
-.nx-rpage canvas{display:block;max-width:100%;height:auto;background:#fff;
-  box-shadow:0 1px 3px rgba(0,0,0,.18)}
 .nx-outline h2{font-size:13px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;
   color:var(--text-muted);margin:0 0 10px}
 .nx-sections{list-style:none;margin:0;padding:0;background:var(--surface-1);border:1px solid var(--line);
@@ -105,6 +87,80 @@
 .nx-secbody{flex:1;min-width:0;display:flex;align-items:baseline;gap:12px}
 .nx-sectitle{flex:1;min-width:0;overflow-wrap:anywhere}
 .nx-secpages{flex:none;font-size:12.5px;color:var(--text-muted);white-space:nowrap;font-weight:400}
+
+/* ---------- the PDF source card ---------- */
+.nx-source{background:var(--surface-1);border:1px solid var(--line);border-radius:var(--radius);
+  padding:14px 16px;display:flex;flex-direction:column;align-items:flex-start;gap:8px;min-width:0;position:relative}
+.nx-source h2{font-size:13px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--text-muted);margin:0}
+.nx-srcline{margin:0;font-size:13.5px;color:var(--text-secondary)}
+.nx-file{position:absolute;width:1px;height:1px;opacity:0;overflow:hidden;clip:rect(0 0 0 0);pointer-events:none}
+/* before any PDF is chosen, the reader itself carries the two steps; the card stays quiet */
+.nx-chlayout[data-reader-state="no_hosted_pdf"] .nx-source .nx-choose,
+.nx-chlayout[data-reader-state="loading"] .nx-source .nx-choose{display:none}
+.nx-verify{width:100%;min-width:0}
+.nx-verify p{margin:0 0 6px}
+.nx-vfile{font-size:13px;color:var(--text-secondary);overflow-wrap:anywhere}
+.nx-vname{font-weight:650;color:var(--text-primary)}
+.nx-vbadge{display:inline-block;font-size:13px;font-weight:650;border-radius:8px;padding:5px 9px}
+.nx-vok{color:var(--good);background:color-mix(in srgb, var(--good) 12%, transparent)}
+.nx-vwarn{color:#8a5a00;background:color-mix(in srgb, #e3a008 16%, transparent)}
+:root[data-theme="dark"] .nx-vwarn{color:#f0c060}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .nx-vwarn{color:#f0c060}}
+.nx-verr{color:#b42318;background:color-mix(in srgb, #d92d20 12%, transparent);font-weight:600}
+:root[data-theme="dark"] .nx-verr{color:#ff8a80}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .nx-verr{color:#ff8a80}}
+.nx-vnote{font-size:12.5px;color:var(--text-muted)}
+.nx-vchecks{margin:0 0 6px;padding-left:18px;font-size:12.5px;color:var(--text-muted)}
+.nx-privacy{margin:2px 0 0;font-size:12px;color:var(--text-muted)}
+
+/* ---------- reader ---------- */
+.nx-reader{background:var(--surface-1);border:1px solid var(--line);border-radius:var(--radius);
+  overflow:hidden;min-width:0}
+.nx-reader:focus-within{border-color:var(--line-strong)}
+.nx-rbar{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;padding:8px 12px;
+  border-bottom:1px solid var(--line);font-size:13px}
+.nx-rtitle{font-weight:650;color:var(--text-primary);min-width:0;margin-right:auto}
+.nx-rstatus{color:var(--text-muted);font-family:var(--mono);font-size:12px}
+.nx-rstatus:empty{display:none}
+.nx-tools{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px}
+.nx-tools[hidden]{display:none}
+.nx-tgroup{display:flex;align-items:center;gap:4px}
+.nx-tool{min-width:40px;height:40px;padding:0 8px;border-radius:9px;border:1px solid var(--line-strong);
+  background:var(--surface-0);color:var(--text-primary);font:600 18px/1 var(--sans);cursor:pointer;
+  display:inline-flex;align-items:center;justify-content:center}
+.nx-tool.nx-fit{font-size:13px}
+.nx-tool[aria-pressed="true"]{border-color:var(--accent);color:var(--accent)}
+.nx-tool:hover:not(:disabled){border-color:var(--accent);color:var(--accent)}
+.nx-tool:disabled{opacity:.4;cursor:default}
+.nx-tool:focus-visible,.nx-pageno:focus-visible,.nx-rpage:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.nx-pagebox{display:inline-flex;align-items:center;gap:4px;margin:0 2px;font-size:13px;color:var(--text-secondary)}
+.nx-pageno{width:52px;height:40px;border-radius:9px;border:1px solid var(--line-strong);background:var(--surface-0);
+  color:var(--text-primary);font:600 15px var(--sans);text-align:center;padding:0 4px;-moz-appearance:textfield}
+.nx-pageno::-webkit-inner-spin-button,.nx-pageno::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}
+.nx-pagetotal{white-space:nowrap}
+.nx-rofficial{color:var(--accent);text-decoration:none;font-weight:600;white-space:nowrap;
+  min-height:32px;display:inline-flex;align-items:center}
+.nx-rofficial:hover{text-decoration:underline}
+.nx-rbody{padding:16px;min-height:220px}
+.nx-rmsg{color:var(--text-muted);text-align:center;padding:60px 0;margin:0;overflow-wrap:anywhere}
+.nx-rpanel{max-width:520px;margin:28px auto;text-align:center}
+.nx-rpanel h2{font-size:18px;margin:0 0 8px}
+.nx-rpanel p{color:var(--text-secondary);margin:0 0 16px}
+.nx-ractions{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+.nx-btn.nx-btn-quiet{background:var(--surface-2);color:var(--text-primary);border:1px solid var(--line-strong)}
+.nx-onboard{text-align:left;max-width:560px}
+.nx-onboard>h2,.nx-onboard>p{text-align:center}
+.nx-steps{list-style:none;margin:20px 0 0;padding:0;display:flex;flex-direction:column;gap:12px}
+.nx-steps li{display:flex;gap:14px;align-items:flex-start;padding:14px;border:1px solid var(--line);
+  border-radius:12px;background:var(--surface-0)}
+.nx-steps strong{display:block;margin:2px 0 10px}
+.nx-stepno{flex:none;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;
+  background:var(--accent);color:#fff;font:700 14px var(--sans)}
+/* the page: fit width fills it; a zoomed page scrolls inside it, never the whole site */
+.nx-rpage{overflow:auto;max-width:100%;display:flex;justify-content:center;outline:none;border-radius:4px}
+.nx-rpage canvas{display:block;flex:none;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.18)}
+.nx-rpage.nx-wide{justify-content:flex-start}
 
 /* ---------- states ---------- */
 .nx-state{max-width:560px;margin:40px auto;text-align:center}
@@ -133,6 +189,11 @@
   .nx-secbody{flex-direction:column;gap:1px}
   .nx-rbody{padding:10px}
   .nx-rpanel{margin:18px auto}
+  .nx-rbar{padding:8px 10px}
+  .nx-tools{width:100%;justify-content:space-between}
+  .nx-tool{min-width:40px;padding:0 6px}
+  .nx-pageno{width:46px}
+  .nx-steps li{padding:12px;gap:10px}
 }
 @media (prefers-reduced-motion: reduce){
   .nx-chapter{transition:none}

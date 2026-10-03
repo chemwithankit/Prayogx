@@ -173,6 +173,20 @@ No commit without the phase's approval, no push without explicit approval.
 
 **Phase 3A spike (2026-10-03):** PDF.js 6.3.289 (legacy build, vendored unmodified in `ncert/vendor/pdfjs-6.3.289/`) is loaded on demand through one ES-module bridge, `ncert/reader.mjs`; `ncert.js` stays ES5. A same-origin PDF opens and renders. The official NCERT PDF cannot be read by PDF.js from any other origin: ncert.nic.in sends no `Access-Control-Allow-Origin` header, so the browser blocks it (CORS), and the reader says so (`source_blocked`) and links to the official file. With `source.hosted` null the chapter shows `no_hosted_pdf` and never downloads PDF.js. Tests: `tests/ncert_reader.js` (`NCERT_ONLINE=1` also tries the real NCERT file).
 
+**Phase 3B (2026-10-03, uncommitted): the student's own PDF.** The chapter page offers two steps:
+open the official NCERT PDF (new tab), then *Choose PDF* (a standard `<input type="file"
+accept="application/pdf">`). The file is checked in the browser before PDF.js sees it: not empty,
+at most **150 MB** (an NCERT chapter is about 2–15 MB; the limit only stops a wrong pick, such as a
+whole-book archive, from exhausting a phone's memory, since the bytes are held twice while opening),
+and it must carry the `%PDF-` signature within its first 1024 bytes (the MIME type is recorded, never
+trusted). Its SHA-256 is computed with Web Crypto and compared with the catalogued editions:
+**exact match** → "Verified NCERT edition · <label>"; otherwise **readable but unverified** → "PDF loaded —
+edition could not be verified", with what could be checked (page count, printed-page labels) and no
+edition claim. The bytes go to PDF.js as `{data: Uint8Array}`: no request, upload, storage, cache or
+object URL. Reader: one page at a time (first / previous / page number / next / last, arrow keys,
+Home / End), zoom 50–300 % of fit width, clamped to the 16.7 M-pixel canvas cap; corrupt and
+password-protected files have their own states. Tests: `tests/ncert_local.js`.
+
 ## 7. Pilot: Class 11 Chemistry Part I, Chapter 5 Thermodynamics
 
 Book pages 136–167, `kech105.pdf`, Reprint 2026-27 (SHA-256 `e2b5d180…48ec5f8`, 32 pages, no PDF

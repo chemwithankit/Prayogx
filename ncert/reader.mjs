@@ -38,19 +38,31 @@ function open(source) {
   };
 }
 
-/* Render one page into a canvas at the given CSS width.
+/* Render one page into a canvas.
+   size: {fitWidth, zoom} - the page is drawn fitWidth * zoom CSS pixels wide (zoom 1 = fit
+   width); a plain number is taken as {fitWidth: n, zoom: 1}. The zoom is clamped so the
+   canvas never exceeds MAX_CANVAS_PIXELS even at one device pixel per CSS pixel; the
+   result reports the zoom actually used and whether it was clamped.
    Returns {promise, cancel}. The page's resources are released after drawing. */
-function renderPage(doc, pageNumber, canvas, cssWidth) {
+function renderPage(doc, pageNumber, canvas, size) {
+  if (typeof size === "number") size = { fitWidth: size, zoom: 1 };
   let task = null, page = null, cancelled = false;
   const promise = doc.getPage(pageNumber).then((p) => {
     page = p;
     if (cancelled) throw new Error("cancelled");
     const base = p.getViewport({ scale: 1 });
-    const scale = cssWidth / base.width;
+    let zoom = size.zoom || 1, clamped = false;
+    let scale = (size.fitWidth * zoom) / base.width;
+    const area = base.width * base.height * scale * scale;
+    if (area > MAX_CANVAS_PIXELS) {
+      scale *= Math.sqrt(MAX_CANVAS_PIXELS / area);
+      zoom = (scale * base.width) / size.fitWidth;
+      clamped = true;
+    }
     const viewport = p.getViewport({ scale });
     let ratio = Math.min(window.devicePixelRatio || 1, MAX_PIXEL_RATIO);
     const pixels = viewport.width * viewport.height * ratio * ratio;
-    if (pixels > MAX_CANVAS_PIXELS) ratio = Math.sqrt(MAX_CANVAS_PIXELS / (viewport.width * viewport.height));
+    if (pixels > MAX_CANVAS_PIXELS) ratio = Math.max(1, Math.sqrt(MAX_CANVAS_PIXELS / (viewport.width * viewport.height)));
     canvas.width = Math.floor(viewport.width * ratio);
     canvas.height = Math.floor(viewport.height * ratio);
     canvas.style.width = Math.floor(viewport.width) + "px";
@@ -65,6 +77,9 @@ function renderPage(doc, pageNumber, canvas, cssWidth) {
       cssWidth: Math.floor(viewport.width),
       cssHeight: Math.floor(viewport.height),
       pixelRatio: ratio,
+      canvasPixels: canvas.width * canvas.height,
+      zoom,
+      clamped,
     }));
   }).finally(() => { if (page) page.cleanup(); });
   return {
@@ -93,6 +108,7 @@ window.NCERTPDF = {
   version: pdfjs.version,
   build: pdfjs.build,
   workerSrc: pdfjs.GlobalWorkerOptions.workerSrc,
+  maxCanvasPixels: MAX_CANVAS_PIXELS,
   open,
   renderPage,
   classify,

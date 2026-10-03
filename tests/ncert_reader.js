@@ -111,8 +111,8 @@ const shot = async (pg, name) => { if (SHOTS) await pg.screenshot({ path: path.j
     ok('a chapter without a hosted PDF says so: NO_HOSTED_PDF', s.state === 'no_hosted_pdf', JSON.stringify(s));
     ok('...and never loads PDF.js or requests any PDF', !bp.reqs.some(u => /\.mjs|pdfjs|\.pdf/.test(u))
       && (await bp.evaluate(() => NCERT.reader.stats().bridgeLoads)) === 0);
-    const links = await bp.$$eval('#nx-reader a[href]', e => e.map(x => [x.getAttribute('href'), x.target, x.rel]));
-    ok('the official NCERT PDF is offered (bar and button), opening in a new tab',
+    const links = await bp.$$eval('#nx-chlayout a[href]', e => e.map(x => [x.getAttribute('href'), x.target, x.rel]));
+    ok('the official NCERT PDF is offered (reader step and source card), opening in a new tab',
       links.length === 2 && links.every(l => l[0] === OFFICIAL && l[1] === '_blank' && /noopener/.test(l[2])), JSON.stringify(links));
     ok('the official link is the catalogue\'s source, on ncert.nic.in', /^https:\/\/ncert\.nic\.in\/textbook\/pdf\/kech105\.pdf$/.test(OFFICIAL));
     ok('no canvas is shown when there is no PDF', (await bp.$('#nx-reader canvas')) === null);
@@ -124,11 +124,11 @@ const shot = async (pg, name) => { if (SHOTS) await pg.screenshot({ path: path.j
     s = await open(bp, { url: FIX });
     ok('the synthetic PDF opens: READY', s.state === 'ready', JSON.stringify(s));
     ok('its page count is detected (3)', s.pages === 3);
-    ok('the status bar says "Page 1 of 3"', (await bp.innerText('#nx-rstatus')) === 'Page 1 of 3');
-    const hold = await bp.$eval('#nx-rcanvas', c => c.parentNode.clientWidth);
+    ok('the toolbar says page 1 of 3', (await bp.inputValue('#nx-pageno')) === '1' && (await bp.innerText('#nx-pagetotal')) === '/ 3');
+    const hold = await bp.$eval('#nx-rpage canvas', c => c.parentNode.clientWidth);
     ok('page 1 is drawn at the reader\'s width, aspect kept (A4)', s.drawn && s.drawn.pageNumber === 1
       && Math.abs(s.drawn.cssWidth - hold) <= 1 && Math.abs(s.drawn.cssHeight / s.drawn.cssWidth - 842 / 595) < 0.01, JSON.stringify(s.drawn));
-    const px = await bp.$eval('#nx-rcanvas', c => {
+    const px = await bp.$eval('#nx-rpage canvas', c => {
       const x = c.getContext('2d'), w = c.width, h = c.height;
       const at = (fx, fy) => Array.from(x.getImageData(Math.floor(w * fx), Math.floor(h * fy), 1, 1).data);
       return { band: at(0.5, (842 - 760) / 842), square: at((60 + 25) / 595, (842 - 585) / 842), blank: at(0.5, 0.5) };
@@ -145,7 +145,7 @@ const shot = async (pg, name) => { if (SHOTS) await pg.screenshot({ path: path.j
     ok('a cross-origin PDF without CORS headers: SOURCE_BLOCKED', s.state === 'source_blocked', JSON.stringify(s.detail));
     ok('...classified from evidence: cross-origin, no HTTP status', s.detail && s.detail.crossOrigin === true && !s.detail.status);
     ok('...the browser itself reported the CORS refusal', bp.allErrs.some(e => /blocked by CORS policy/.test(e)));
-    ok('...nothing from the previous document remains', s.pages === 0 && s.drawn === null && (await bp.$('#nx-rcanvas')) === null);
+    ok('...nothing from the previous document remains', s.pages === 0 && s.drawn === null && (await bp.$('#nx-rpage canvas')) === null);
     ok('...the official link and Try again are offered', (await bp.$('#nx-rbody a.nx-btn[href="' + OFFICIAL + '"]')) !== null
       && (await bp.$('#nx-rretry')) !== null);
     await shot(bp, 'reader-blocked-1280');
@@ -193,7 +193,7 @@ const shot = async (pg, name) => { if (SHOTS) await pg.screenshot({ path: path.j
     await e.unroute('**/ncert/' + FIX);
     await e.route('**/ncert/' + FIX, r => r.fulfill({ contentType: 'application/pdf', body: Buffer.from('%PDF-1.4 not really') }));
     s = await open(e, { url: FIX });
-    ok('a corrupt PDF: ERROR, named by PDF.js', s.state === 'error' && /InvalidPDF/.test(s.detail.name), JSON.stringify(s.detail));
+    ok('a corrupt PDF: CORRUPT_PDF (Phase 3B), named by PDF.js', s.state === 'corrupt_pdf' && /InvalidPDF/.test(s.detail.name), JSON.stringify(s.detail));
     await shot(e, 'reader-error-1280');
     await e.unroute('**/ncert/' + FIX);
     await e.route('**/ncert/' + FIX, r => r.fulfill({ contentType: 'application/pdf', body: makePdf(3) }));
@@ -223,7 +223,7 @@ const shot = async (pg, name) => { if (SHOTS) await pg.screenshot({ path: path.j
     ok('opening another document ends the previous worker first', s.state === 'ready' && w.made - w.ended === 1, JSON.stringify(w));
     await e.setViewportSize({ width: 1100, height: 900 }); await sleep(600);
     s = await rstate(e);
-    const hold2 = await e.$eval('#nx-rcanvas', c => c.parentNode.clientWidth);
+    const hold2 = await e.$eval('#nx-rpage canvas', c => c.parentNode.clientWidth);
     ok('a resize redraws page 1 at the new width, without a new worker',
       Math.abs(s.drawn.cssWidth - hold2) <= 1 && (await e.evaluate(() => window.__w.made - window.__w.ended)) === 1, JSON.stringify(s.drawn));
     await e.evaluate(() => { location.hash = '#/'; }); await settled(e); await sleep(300);
@@ -257,7 +257,7 @@ const shot = async (pg, name) => { if (SHOTS) await pg.screenshot({ path: path.j
         if (mode === 'ready') await open(lp, { url: FIX });
         const m = await lp.evaluate(() => {
           const vw = window.innerWidth, r = document.getElementById('nx-reader').getBoundingClientRect(),
-            o = document.querySelector('.nx-outline').getBoundingClientRect(), l = document.querySelector('.nx-chlayout').getBoundingClientRect();
+            o = document.querySelector('.nx-context').getBoundingClientRect(), l = document.querySelector('.nx-chlayout').getBoundingClientRect();
           const out = [...document.querySelectorAll('body *')].filter(e => { const b = e.getBoundingClientRect(); return b.width && b.right > vw + 0.5; });
           const btn = [...document.querySelectorAll('#nx-reader .nx-btn, #nx-reader a.nx-rofficial')].map(x => x.getBoundingClientRect().height);
           return { over: document.documentElement.scrollWidth - vw, outside: out.length, share: r.width / l.width,
@@ -265,7 +265,7 @@ const shot = async (pg, name) => { if (SHOTS) await pg.screenshot({ path: path.j
         });
         const label = wd + ' px ' + mode;
         ok(label + ': no horizontal overflow, nothing past the edge', m.over <= 0 && m.outside === 0, JSON.stringify(m));
-        if (wd >= 960) ok(label + ': reader beside the outline, about 70 % of the width', m.beside && m.share > 0.65 && m.share < 0.75, m.share.toFixed(3));
+        if (wd >= 960) ok(label + ': reader beside the context column, about 70 % of the width', m.beside && m.share > 0.65 && m.share < 0.75, m.share.toFixed(3));
         else ok(label + ': the reader comes first, full width', m.readerFirst && m.share > 0.99, JSON.stringify(m));
         if (mode === 'no_hosted_pdf') ok(label + ': links and buttons are touch-sized (>= 32 px)', m.minTarget >= 32, m.minTarget);
         if (wd !== 1280) await shot(lp, 'reader-' + mode + '-' + wd);
