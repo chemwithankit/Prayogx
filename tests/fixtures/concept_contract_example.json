@@ -1,0 +1,101 @@
+{
+  "schemaVersion": "1.0.0",
+  "note": "TEST/EXAMPLE DATA ONLY - synthetic sources EXAMPLE-BOOK and MY-BOOK, not an NCERT inventory. The concept inventory (tools/concept_schema.py) that tests/fixtures/experience_contract_example.json refers to.",
+  "concepts": [
+    {
+      "id": "CPT-CHE-BOYLE-LAW",
+      "title": "Boyle's law",
+      "locations": [
+        {
+          "sourceId": "EXAMPLE-BOOK",
+          "chapterId": "EXAMPLE-BOOK-CH02",
+          "sectionId": "2.3",
+          "printedPages": [
+            41,
+            42
+          ]
+        }
+      ],
+      "learningObjectives": [
+        {
+          "id": "LO-CHE-BOYLE-LAW-PRESSURE-VOLUME",
+          "verb": "predict",
+          "statement": "Predict how the pressure of a fixed amount of gas changes when its volume is halved at constant temperature."
+        }
+      ]
+    },
+    {
+      "id": "CPT-CHE-CHEMICAL-EQUILIBRIUM",
+      "title": "Chemical equilibrium",
+      "description": "A reversible reaction reaches a state where both directions continue at equal rates, so the composition no longer changes.",
+      "locations": [
+        {
+          "sourceId": "EXAMPLE-BOOK",
+          "chapterId": "EXAMPLE-BOOK-CH07",
+          "sectionId": "7.1",
+          "printedPages": [
+            190,
+            193
+          ]
+        },
+        {
+          "sourceId": "EXAMPLE-BOOK",
+          "chapterId": "EXAMPLE-BOOK-CH07",
+          "sectionId": "7.4",
+          "printedPages": [
+            201,
+            202
+          ]
+        }
+      ],
+      "learningObjectives": [
+        {
+          "id": "LO-CHE-CHEMICAL-EQUILIBRIUM-DYNAMIC",
+          "verb": "explain",
+          "statement": "Explain why an equilibrium mixture looks unchanging although both reactions continue."
+        },
+        {
+          "id": "LO-CHE-CHEMICAL-EQUILIBRIUM-CONSTANT",
+          "verb": "calculate",
+          "statement": "Calculate the equilibrium constant from measured equilibrium concentrations."
+        },
+        {
+          "id": "LO-CHE-CHEMICAL-EQUILIBRIUM-DISTURBANCE",
+          "verb": "predict",
+          "statement": "Predict the direction an equilibrium shifts when a reactant is added."
+        }
+      ]
+    },
+    {
+      "id": "CPT-PHY-NEWTON-SECOND-LAW",
+      "title": "Newton's second law",
+      "locations": [
+        {
+          "sourceId": "MY-BOOK",
+          "chapterId": "MY-BOOK-CH03",
+          "sectionId": "3.2"
+        },
+        {
+          "sourceId": "MY-BOOK",
+          "chapterId": "MY-BOOK-CH05",
+          "printedPages": [
+            88,
+            90
+          ]
+        }
+      ],
+      "learningObjectives": []
+    },
+    {
+      "id": "CPT-CHE-ENTROPY",
+      "title": "Entropy",
+      "locations": [
+        {
+          "sourceId": "EXAMPLE-BOOK",
+          "chapterId": "EXAMPLE-BOOK-CH06",
+          "sectionId": "6.2"
+        }
+      ]
+    }
+  ]
+}

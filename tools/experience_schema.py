@@ -1,51 +1,48 @@
-"""The content contract behind the reading experience: concept -> learning objective -> experience.
+"""The experience contract: the ways a student can learn a concept.
 
-Source-agnostic. NCERT is the first source; nothing here depends on it.
+Source-agnostic. Concepts are defined once, in the concept inventory (tools/concept_schema.py);
+an experience refers to one by id and never repeats it.
 
     Source -> Book -> Chapter -> Section -> Concept -> Learning objective -> Experience (-> future media)
 
-A CONCEPT is the semantic learning unit ("Internal energy"). It is not a page and not a simulation:
-pages are only where it appears (locations); simulations are one of several ways to learn it
-(experiences). A concept may have zero, one or many experiences, and one or many objectives.
+    Concept -> source locations        concept_schema   (reference)
+    Concept -> learning objectives     concept_schema   (semantic)
+    Experience -> concept              here, conceptId
+    Experience -> learning objectives  here, objective ids of that concept
+    Experience -> library page         here, optional libraryId (integration)
 
-Authoring document (JSON, written with Python json; deterministic and serialisable)
+A concept may have zero, one or many experiences. Each serves one or more of its concept's
+objectives, through one learning mode.
 
-    { "schemaVersion": "1.0.0",
-      "concepts": [ {
-          "id":       "CPT-CHE-INTERNAL-ENERGY",          stable; never a page, index or random id
-          "title":    "Internal energy",
-          "subject":  "Chemistry",
-          "locations": [                                   where the concept appears; one or many
-              { "sourceId": "NCERT", "chapterId": "NCERT-11-CHE-P1-CH05",
-                "sectionId": "5.1.4", "printedPages": [138, 140] } ],     sectionId, printedPages optional
-          "learningObjectives": [                          one or many
-              { "id": "LO-CHE-INTERNAL-ENERGY-HEAT-WORK",
-                "statement": "Explain how heat and work together change the internal energy of a system.",
-                "verb": "explain" } ],                     verb optional, from LO_VERBS
-          "experiences": [                                 zero, one or many; nested, so conceptId is implied
-              { "id": "EXP-CHE-INTERNAL-ENERGY-TWO-PATHS",
-                "type": "simulation",                      the learning mode (EXPERIENCE_TYPES), not a technology
-                "title": "Two paths, one change",
-                "objectives": ["LO-CHE-INTERNAL-ENERGY-HEAT-WORK"],   objectives of the same concept
-                "status": "planned",                       EXPERIENCE_STATUS
-                "libraryId": null } ] } ] }               optional link to an existing library page
+Experience document (JSON, written with Python json; deterministic and serialisable)
+
+    { "schemaVersion": "2.0.0",
+      "experiences": [ {
+          "id":         "EXP-CHE-CHEMICAL-EQUILIBRIUM-LE-CHATELIER",   stable; never a page, index or random id
+          "conceptId":  "CPT-CHE-CHEMICAL-EQUILIBRIUM",               a concept in the inventory
+          "type":       "virtual-lab",                                the learning mode (EXPERIENCE_TYPES)
+          "title":      "Disturb the flask",
+          "objectives": ["LO-CHE-CHEMICAL-EQUILIBRIUM-DISTURBANCE"],  objectives of that concept
+          "status":     "planned",                                    EXPERIENCE_STATUS
+          "libraryId":  null } ] }                                    optional link to a library page
 
 `libraryId` is optional. When an experience is delivered by, or linked to, an existing PrayogX library
 page (an ADV- question page or a CON- concept page, tools/registry_schema.py), it names that page, which
 must then exist. A native experience (an interactive-book experience, or one from another source) has
-none, and can go all the way to "published" without one. This contract does not describe how an experience is built (no files,
-canvas, prompts or URLs) and carries no media or publishing fields: those are separate layers that
-consume an experience by id and type.
+none, and can go all the way to "published" without one. This contract does not describe how an
+experience is built (no files, canvas, prompts or URLs) and carries no media or publishing fields: those
+are separate layers that consume an experience by id and type.
 
-Runtime records (`flatten`) are the same data, normalised for a client: experiences and objectives
-carry their conceptId. Never PDF.js objects, DOM nodes, files or UI state.
+Schema 2.0.0 replaced 1.x, in which experiences were nested inside a repeated copy of their concept.
 """
 import json
 import re
 
+import concept_schema
 import registry_schema
 
-SCHEMA_MAJOR = "1"
+SCHEMA_MAJOR = "2"
+EXPERIENCE_FIELDS = ("id", "conceptId", "type", "title", "objectives", "status", "libraryId")
 
 # The learning mode, not the technology ("animation", not "mp4"). Several modes for one
 # concept are several experiences.
@@ -57,170 +54,118 @@ EXPERIENCE_TYPES = ("simulation", "animation", "virtual-lab", "graph", "data-exp
 # that a library page exists. Only when an experience is linked to a page (libraryId) is the page checked.
 EXPERIENCE_STATUS = ("planned", "blueprint", "building", "review", "published", "retired")
 
-# What the student will be able to do. Optional on an objective; kept short on purpose.
-LO_VERBS = ("identify", "describe", "visualize", "explain", "compare", "predict",
-            "calculate", "derive", "apply", "analyze")
+# References to concepts and objectives follow the concept inventory's rules: one definition, not two.
+CONCEPT_ID_RE = concept_schema.CONCEPT_ID_RE
+LO_ID_RE = concept_schema.LO_ID_RE
 
-_SUBJ = "|".join(registry_schema.SUBJECTS)
-_SLUG = r"[A-Z0-9]+(?:-[A-Z0-9]+){0,9}"
-CONCEPT_ID_RE = re.compile(r"^CPT-(%s)-%s$" % (_SUBJ, _SLUG))
-LO_ID_RE = re.compile(r"^LO-(%s)-%s$" % (_SUBJ, _SLUG))
-EXP_ID_RE = re.compile(r"^EXP-(%s)-%s$" % (_SUBJ, _SLUG))
-SOURCE_ID_RE = re.compile(r"^[A-Z][A-Z0-9]{1,15}$")
-ID_MAX = 72
-# a word that is a page reference or a bare number: identity must not depend on pages or order
-_POSITIONAL = re.compile(r"^(PAGE|PG|PP|P\d+|PG\d+|PAGE\d+|\d+)$")
-_UUIDISH = re.compile(r"[0-9A-F]{8}-?[0-9A-F]{4}")
-# an objective describes learning, not the controls ("Use the slider ...")
-_UI_START = re.compile(r"^\s*(use|click|tap|drag|press|move|slide|toggle|select|open|scroll)\b", re.I)
+# An experience id is an artifact identifier, not a semantic one: it has its own rule, built on the
+# same subject / slug grammar - the form and a length limit, nothing inferred from the words (an
+# experience may be called EXP-CHE-WORKED-EXAMPLE-2 or EXP-CHE-Q12).
+EXP_ID_RE = re.compile(r"^EXP-(%s)-%s$" % (concept_schema.SUBJECT_PATTERN, concept_schema.SLUG_PATTERN))
+EXP_ID_MAX = 72
 
 
-def _id_problems(where, value, rx, kind):
-    out = []
-    if not isinstance(value, str) or not rx.match(value) or len(value) > ID_MAX:
-        return ["%s: %s id %r must look like %s" % (where, kind, value, rx.pattern)]
-    words = value.split("-")[2:]
-    if any(_POSITIONAL.match(w) for w in words) or _UUIDISH.search(value):
-        out.append("%s: %s id %r must name the idea, not a page, a position or a random value" % (where, kind, value))
-    return out
+def exp_id_problems(where, value):
+    """An experience's own id: EXP-<SUBJ>-<SLUG>, at most EXP_ID_MAX characters."""
+    if not isinstance(value, str) or not EXP_ID_RE.match(value) or len(value) > EXP_ID_MAX:
+        return ["%s: experience id %r must look like EXP-<SUBJ>-<SLUG> (upper case, at most %d characters)"
+                % (where, value, EXP_ID_MAX)]
+    return []
 
 
-def _subject_code(cid):
-    return cid.split("-")[1] if isinstance(cid, str) and cid.count("-") >= 2 else None
+def _code(ident):
+    return ident.split("-")[1] if isinstance(ident, str) and ident.count("-") >= 2 else None
 
 
-def problems(doc, library=None, structure=None):
-    """Everything wrong with an authoring document, as messages (empty list = valid).
+def inventory_index(inventory):
+    """{conceptId: set of its objective ids} from a concept inventory document. The inventory's
+    own validity is concept_schema's job; this only reads it."""
+    index = {}
+    for c in (inventory or {}).get("concepts", []) if isinstance(inventory, dict) else []:
+        if isinstance(c, dict) and isinstance(c.get("id"), str):
+            index[c["id"]] = set(lo.get("id") for lo in c.get("learningObjectives", []) or [] if isinstance(lo, dict))
+    return index
 
-    library:   optional {id: library record} (data/manifest.json entries) to check libraryId.
-    structure: optional {chapterId: {"sections": {id: [first, last]}, "pages": [first, last]}}
-               to check locations against a known book structure. Locations in chapters it
-               does not know are checked for form only, so other sources validate too."""
-    out = []
+
+def problems(doc, inventory=None, library=None):
+    """Everything wrong with an experience document, as messages (empty list = valid).
+
+    inventory: optional concept inventory document (tools/concept_schema.py). Given, every
+               conceptId must name one of its concepts and every objective must be one of that
+               concept's. Without it, references are checked for form only.
+    library:   optional {id: library record} (data/manifest.json entries) to check libraryId."""
     if not isinstance(doc, dict):
         return ["the document must be an object"]
+    out = []
     if str(doc.get("schemaVersion", "")).split(".")[0] != SCHEMA_MAJOR:
         out.append("schemaVersion must be %s.x" % SCHEMA_MAJOR)
-    concepts = doc.get("concepts")
-    if not isinstance(concepts, list):
-        return out + ["concepts must be a list"]
     try:
         json.dumps(doc, allow_nan=False)
     except (TypeError, ValueError) as exc:
         out.append("the document must be plain JSON (no files, bytes, functions or objects): %s" % exc)
-
+    if "concepts" in doc:
+        out.append("concepts are defined once, in the concept inventory: reference them by conceptId")
+    exps = doc.get("experiences")
+    if not isinstance(exps, list):
+        return out + ["experiences must be a list (it may be empty)"]
+    index = inventory_index(inventory) if inventory is not None else None
     seen = {}
-    for c in concepts:
-        if not isinstance(c, dict):
-            out.append("a concept must be an object")
-            continue
-        cid = c.get("id", "<no id>")
-        where = "concept %s" % cid
-        out.extend(_id_problems(where, cid, CONCEPT_ID_RE, "concept"))
-        code = _subject_code(cid)
-        if not isinstance(c.get("title"), str) or not c["title"].strip():
-            out.append("%s: needs a title" % where)
-        if code in registry_schema.SUBJECTS and str(c.get("subject", "")).lower() != registry_schema.SUBJECTS[code]:
-            out.append("%s: subject %r does not match the id's %s" % (where, c.get("subject"), code))
-
-        locs = c.get("locations")
-        if not isinstance(locs, list) or not locs:
-            out.append("%s: needs at least one location (where the concept appears)" % where)
-            locs = []
-        for i, loc in enumerate(locs):
-            out.extend(_location_problems("%s location %d" % (where, i + 1), loc, structure))
-
-        los = c.get("learningObjectives")
-        if not isinstance(los, list) or not los:
-            out.append("%s: needs at least one learning objective" % where)
-            los = []
-        lo_ids = set()
-        for lo in los:
-            if not isinstance(lo, dict):
-                out.append("%s: a learning objective must be an object" % where)
-                continue
-            lid = lo.get("id", "<no id>")
-            lw = "%s objective %s" % (where, lid)
-            out.extend(_id_problems(lw, lid, LO_ID_RE, "objective"))
-            if _subject_code(lid) not in (None, code):
-                out.append("%s: subject code differs from its concept's" % lw)
-            st = lo.get("statement")
-            if not isinstance(st, str) or len(st.strip()) < 12:
-                out.append("%s: needs a statement of what the student will be able to do" % lw)
-            elif _UI_START.match(st):
-                out.append("%s: describes the controls (%r), not the learning" % (lw, st.split()[0]))
-            if "verb" in lo and lo["verb"] not in LO_VERBS:
-                out.append("%s: verb %r is not one of %s" % (lw, lo["verb"], ", ".join(LO_VERBS)))
-            out.extend(_dup(seen, lid, lw))
-            lo_ids.add(lid)
-
-        exps = c.get("experiences")
-        if not isinstance(exps, list):
-            out.append("%s: experiences must be a list (it may be empty)" % where)
-            exps = []
-        for e in exps:
-            if not isinstance(e, dict):
-                out.append("%s: an experience must be an object" % where)
-                continue
-            eid = e.get("id", "<no id>")
-            ew = "%s experience %s" % (where, eid)
-            out.extend(_id_problems(ew, eid, EXP_ID_RE, "experience"))
-            if _subject_code(eid) not in (None, code):
-                out.append("%s: subject code differs from its concept's" % ew)
-            if e.get("type") not in EXPERIENCE_TYPES:
-                out.append("%s: type %r is not one of %s" % (ew, e.get("type"), ", ".join(EXPERIENCE_TYPES)))
-            if not isinstance(e.get("title"), str) or not e["title"].strip():
-                out.append("%s: needs a title" % ew)
-            obj = e.get("objectives")
-            if not isinstance(obj, list) or not obj:
-                out.append("%s: must serve at least one learning objective" % ew)
-            else:
-                for o in obj:
-                    if o not in lo_ids:
-                        out.append("%s: objective %s is not one of this concept's" % (ew, o))
-            if e.get("status") not in EXPERIENCE_STATUS:
-                out.append("%s: status %r is not one of %s" % (ew, e.get("status"), ", ".join(EXPERIENCE_STATUS)))
-            out.extend(_library_problems(ew, e, library))
-            out.extend(_dup(seen, eid, ew))
-        out.extend(_dup(seen, cid, where))
+    for e in exps:
+        out.extend(experience_problems(e, index, library, seen))
     return out
 
 
-def _dup(seen, ident, where):
-    if not isinstance(ident, str):
-        return []
-    if ident in seen:
-        return ["%s: id %s is already used by %s" % (where, ident, seen[ident])]
-    seen[ident] = where
-    return []
+def experience_problems(e, index=None, library=None, seen=None):
+    seen = {} if seen is None else seen
+    if not isinstance(e, dict):
+        return ["an experience must be an object"]
+    eid = e.get("id")
+    where = "experience %s" % (eid if eid else "<no id>")
+    out = exp_id_problems(where, eid)
+    if isinstance(eid, str):
+        if eid in seen:
+            out.append("%s: id %s is already used" % (where, eid))
+        seen[eid] = True
+    for k in e:
+        if k not in EXPERIENCE_FIELDS:
+            hint = (" (concept details live in the concept inventory; reference it by conceptId)"
+                    if k in ("concept", "locations", "learningObjectives", "subject", "description") else "")
+            out.append("%s: %r is not an experience field (%s)%s" % (where, k, ", ".join(EXPERIENCE_FIELDS), hint))
 
+    cid = e.get("conceptId")
+    cprob = concept_schema.id_problems(where, cid, CONCEPT_ID_RE, "concept")
+    if cid is None:
+        out.append("%s: needs a conceptId (the concept it teaches)" % where)
+    else:
+        out.extend(cprob)
+    if not cprob and isinstance(eid, str) and _code(eid) != _code(cid):
+        out.append("%s: subject code differs from its concept's" % where)
 
-def _location_problems(where, loc, structure):
-    out = []
-    if not isinstance(loc, dict):
-        return ["%s: must be an object" % where]
-    if not SOURCE_ID_RE.match(str(loc.get("sourceId", ""))):
-        out.append("%s: sourceId must be a short upper-case source name (A-Z, 0-9)" % where)
-    if not isinstance(loc.get("chapterId"), str) or not loc["chapterId"]:
-        out.append("%s: needs a chapterId" % where)
-    if "sectionId" in loc and (not isinstance(loc["sectionId"], str) or not loc["sectionId"]):
-        out.append("%s: sectionId, when given, must be a section id" % where)
-    pp = loc.get("printedPages")
-    if pp is not None and not (isinstance(pp, list) and len(pp) == 2 and all(isinstance(x, int) and x > 0 for x in pp)
-                               and pp[0] <= pp[1]):
-        out.append("%s: printedPages, when given, must be [first, last]" % where)
-        pp = None
-    for k in loc:
-        if k not in ("sourceId", "chapterId", "sectionId", "printedPages"):
-            out.append("%s: unknown field %r (a location is a reference, not content)" % (where, k))
-    known = (structure or {}).get(loc.get("chapterId"))
-    if known:
-        secs = known.get("sections", {})
-        if "sectionId" in loc and loc["sectionId"] not in secs:
-            out.append("%s: section %s is not in %s" % (where, loc["sectionId"], loc["chapterId"]))
-        rng = secs.get(loc.get("sectionId")) or known.get("pages")
-        if pp and rng and (pp[0] < rng[0] or pp[1] > rng[1]):
-            out.append("%s: printed pages %s fall outside %s" % (where, pp, rng))
+    if e.get("type") not in EXPERIENCE_TYPES:
+        out.append("%s: type %r is not one of %s" % (where, e.get("type"), ", ".join(EXPERIENCE_TYPES)))
+    if not isinstance(e.get("title"), str) or not e["title"].strip():
+        out.append("%s: needs a title" % where)
+    obj = e.get("objectives")
+    if not isinstance(obj, list) or not obj:
+        out.append("%s: must serve at least one learning objective" % where)
+        obj = []
+    if len(set(o for o in obj if isinstance(o, str))) != len(obj):
+        out.append("%s: lists an objective twice" % where)
+    for o in obj:
+        oprob = concept_schema.id_problems(where, o, LO_ID_RE, "objective")
+        out.extend(oprob)
+        if not oprob and not cprob and _code(o) != _code(cid):
+            out.append("%s: objective %s is for another subject than its concept" % (where, o))
+    if index is not None and cid is not None and not cprob:
+        if cid not in index:
+            out.append("%s: concept %s is not in the inventory" % (where, cid))
+        else:
+            for o in obj:
+                if isinstance(o, str) and o not in index[cid]:
+                    out.append("%s: objective %s is not one of %s's" % (where, o, cid))
+    if e.get("status") not in EXPERIENCE_STATUS:
+        out.append("%s: status %r is not one of %s" % (where, e.get("status"), ", ".join(EXPERIENCE_STATUS)))
+    out.extend(_library_problems(where, e, library))
     return out
 
 
@@ -246,17 +191,6 @@ def _library_problems(where, e, library):
     return out
 
 
-def flatten(doc):
-    """Runtime records for a client: plain, normalised copies; experiences and objectives
-    carry their conceptId. Assumes problems(doc) == []."""
-    concepts, objectives, experiences = [], [], []
-    for c in doc.get("concepts", []):
-        concepts.append({"id": c["id"], "title": c["title"], "subject": c.get("subject"),
-                         "locations": [dict(l) for l in c.get("locations", [])],
-                         "objectiveIds": [lo["id"] for lo in c.get("learningObjectives", [])],
-                         "experienceIds": [e["id"] for e in c.get("experiences", [])]})
-        for lo in c.get("learningObjectives", []):
-            objectives.append(dict(lo, conceptId=c["id"]))
-        for e in c.get("experiences", []):
-            experiences.append(dict(e, conceptId=c["id"], objectives=list(e.get("objectives", []))))
-    return {"concepts": concepts, "objectives": objectives, "experiences": experiences}
+def experiences_for(doc, concept_id):
+    """The experiences of one concept, in document order (zero, one or many)."""
+    return [dict(e) for e in (doc or {}).get("experiences", []) if isinstance(e, dict) and e.get("conceptId") == concept_id]
