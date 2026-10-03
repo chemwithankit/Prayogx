@@ -1,0 +1,111 @@
+/* ==========================================================================
+   PrayogX NCERT Explorer - page styles (Phase 2: shell, browse, chapter outline)
+   Builds on ../site/site.css: the same tokens, header, footer and themes, so the
+   two libraries read as one product. Everything here is prefixed nx-.
+   ========================================================================== */
+
+.ncert main{padding:26px 0 72px;min-height:60vh}
+.nx-nav{display:flex;align-items:center;gap:10px;flex:none}
+.nx-lib{font-size:13px;font-weight:600;color:var(--text-secondary);text-decoration:none;
+  padding:6px 4px;border-radius:6px}
+.nx-lib:hover{color:var(--accent)}
+.nx-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.ncert h1:focus{outline:none}
+
+/* ---------- breadcrumb ---------- */
+.nx-crumbs ol{list-style:none;margin:0 0 18px;padding:0;display:flex;flex-wrap:wrap;gap:4px 0;
+  font-size:13px;color:var(--text-muted)}
+.nx-crumbs li{display:flex;align-items:center;min-width:0}
+.nx-crumbs li+li::before{content:"\203A";margin:0 8px;color:var(--line-strong)}
+.nx-crumbs a{color:var(--text-secondary);text-decoration:none}
+.nx-crumbs a:hover{color:var(--accent);text-decoration:underline}
+.nx-crumbs [aria-current]{color:var(--text-primary);font-weight:600}
+
+/* ---------- headings ---------- */
+.nx-hero{margin:0 0 26px;max-width:760px}
+.nx-hero h1{font-size:32px;line-height:1.15;letter-spacing:-.01em;margin:0 0 10px}
+.nx-lede{font-size:16.5px;line-height:1.6;color:var(--text-secondary);margin:0}
+.nx-h1no{display:block;font-size:14px;font-weight:600;letter-spacing:.02em;color:var(--text-muted);margin-bottom:4px}
+.nx-facts{list-style:none;margin:14px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.nx-facts li{font-size:12.5px;color:var(--text-secondary);background:var(--surface-1);
+  border:1px solid var(--line);border-radius:999px;padding:4px 11px}
+
+/* ---------- browse ---------- */
+.nx-class{margin:0 0 30px}
+.nx-classname{font-size:13px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--text-muted);margin:0 0 12px}
+.nx-classname a{color:inherit;text-decoration:none}
+.nx-classname a:hover{color:var(--accent)}
+.nx-book{background:var(--surface-1);border:1px solid var(--line);border-radius:var(--radius);
+  max-width:760px;margin:0 0 16px;overflow:hidden;border-top:3px solid var(--c)}
+.nx-bookhead{padding:16px 18px 12px;display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 14px}
+.nx-subj{display:flex;align-items:center;gap:7px;font-size:12px;font-weight:700;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--c);width:100%}
+.nx-subj a{color:inherit;text-decoration:none}
+.nx-subj a:hover{text-decoration:underline}
+.nx-swatch{width:8px;height:8px;border-radius:50%;background:var(--c);flex:none}
+.nx-booktitle{font-size:19px;margin:0;flex:1 1 auto;min-width:0}
+.nx-booktitle a{color:var(--text-primary);text-decoration:none}
+.nx-booktitle a:hover{color:var(--accent)}
+.nx-bookmeta{font-size:12.5px;color:var(--text-muted)}
+.nx-chapters{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.nx-chapters li+li{border-top:1px solid var(--line)}
+.nx-chapter{display:flex;align-items:center;gap:14px;padding:14px 18px;min-height:64px;
+  text-decoration:none;color:inherit;transition:background-color .15s ease}
+.nx-chapter:hover{background:var(--surface-2)}
+.nx-chapter:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+.nx-chno{flex:none;width:38px;height:38px;border-radius:10px;display:grid;place-items:center;
+  font-family:var(--mono);font-size:16px;font-weight:700;color:var(--c);
+  background:color-mix(in srgb, var(--c) 12%, transparent)}
+.nx-chtext{display:flex;flex-direction:column;min-width:0;flex:1}
+.nx-chtitle{font-size:16.5px;font-weight:650;color:var(--text-primary)}
+.nx-chmeta{font-size:12.5px;color:var(--text-muted);margin-top:2px}
+.nx-go{flex:none;font-size:24px;line-height:1;color:var(--text-muted)}
+.nx-chapter:hover .nx-go{color:var(--accent)}
+
+/* ---------- chapter outline ---------- */
+.nx-note{max-width:760px;margin:0 0 22px;padding:12px 14px;border-radius:10px;font-size:13.5px;
+  color:var(--text-secondary);background:var(--surface-1);border:1px dashed var(--line-strong)}
+.nx-outline{max-width:760px}
+.nx-outline h2{font-size:13px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--text-muted);margin:0 0 10px}
+.nx-sections{list-style:none;margin:0;padding:0;background:var(--surface-1);border:1px solid var(--line);
+  border-radius:var(--radius);overflow:hidden}
+.nx-sec{display:flex;align-items:baseline;gap:12px;padding:11px 16px}
+.nx-sec+.nx-sec{border-top:1px solid var(--line)}
+.nx-sec.nx-l1{font-weight:650}
+.nx-sec.nx-l2{padding-left:34px;font-size:14.5px;color:var(--text-secondary)}
+.nx-secno{flex:none;width:58px;font-family:var(--mono);font-size:13px;color:var(--text-muted);white-space:nowrap}
+.nx-secbody{flex:1;min-width:0;display:flex;align-items:baseline;gap:12px}
+.nx-sectitle{flex:1;min-width:0;overflow-wrap:anywhere}
+.nx-secpages{flex:none;font-size:12.5px;color:var(--text-muted);white-space:nowrap;font-weight:400}
+
+/* ---------- states ---------- */
+.nx-state{max-width:560px;margin:40px auto;text-align:center}
+.nx-state h1{font-size:24px;margin:0 0 10px}
+.nx-state p{color:var(--text-secondary);margin:0 0 18px}
+.nx-state .nx-state-detail{font-family:var(--mono);font-size:12px;color:var(--text-muted)}
+.nx-btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:10px 20px;
+  border-radius:10px;border:0;background:var(--accent);color:#fff;font:600 15px var(--sans);
+  text-decoration:none;cursor:pointer}
+.nx-btn:hover{filter:brightness(1.07)}
+.nx-btn:focus-visible{outline:2px solid var(--text-primary);outline-offset:2px}
+
+/* ---------- small screens ---------- */
+@media (max-width:560px){
+  .ncert main{padding-top:18px}
+  .nx-hero h1{font-size:26px}
+  .nx-lede{font-size:15.5px}
+  .nx-nav{gap:6px}
+  .nx-lib{font-size:12.5px}
+  .nx-themetext{display:none}
+  .nx-chapter{padding:13px 14px;gap:12px}
+  .nx-bookhead{padding:14px 14px 10px}
+  .nx-sec{gap:10px;padding:10px 14px}
+  .nx-sec.nx-l2{padding-left:24px}
+  .nx-secno{width:50px;font-size:12px}
+  .nx-secbody{flex-direction:column;gap:1px}
+}
+@media (prefers-reduced-motion: reduce){
+  .nx-chapter{transition:none}
+}

@@ -169,6 +169,8 @@ header link added at the final approval gate. Until then the page is unlinked an
 
 No commit without the phase's approval, no push without explicit approval.
 
+**Status (2026-10-03):** Phases 1 and 2 complete. `/ncert/` (`ncert/index.html`, `ncert.js`, `ncert.css`) browses class → subject → book → chapter and shows the chapter outline, with loading, empty, error and not-found states; unlinked and `noindex`. Tested by `tests/ncert_data.py` and `tests/ncert_shell.js`. Next: Phase 3, the reader.
+
 ## 7. Pilot: Class 11 Chemistry Part I, Chapter 5 Thermodynamics
 
 Book pages 136–167, `kech105.pdf`, Reprint 2026-27 (SHA-256 `e2b5d180…48ec5f8`, 32 pages, no PDF
