@@ -102,6 +102,7 @@
   /* ---------------------------------------------------------- rendering */
   function setState(status, view, html, title) {
     readerDestroy();          // leaving (or re-rendering) a chapter ends its document and worker
+    panelDestroy();
     STATE = { status: status, view: view, route: location.hash || "#/" };
     main.setAttribute("data-state", status);
     main.innerHTML = '<div class="inner">' + html + "</div>";
@@ -236,7 +237,7 @@
     setState("ready", filter.book ? "book" : filter.subj ? "subject" : filter.cls ? "class" : "browse", html, title);
   }
 
-  /* Chapter: the context column (PDF source, outline) beside the reader. */
+  /* Chapter: the reader beside the contextual learning panel (docs/NCERT_UX.md, UX-1). */
   function showChapter(book, ch, feed) {
     var bp = bookPath(book);
     var secs = feed.sections || [];
@@ -251,22 +252,330 @@
         (ed ? "<li>" + esc(ed.label) + "</li>" : "") +
       "</ul>" +
       "</header>" +
-      '<div class="nx-chlayout" id="nx-chlayout" data-reader-state="loading">' +
+      '<div class="nx-chlayout" id="nx-chlayout" data-reader-state="loading" style="--c:' + subjectColor(book.subject) + '">' +
       readerShell(ch) +
-      '<aside class="nx-context" aria-label="Chapter source and sections">' +
-      sourceCard(feed) +
-      '<section class="nx-outline" aria-labelledby="nx-outline-h">' +
-        '<h2 id="nx-outline-h">Sections</h2><ol class="nx-sections">';
+      panelShell(book, ch, feed) +
+      "</div>" +
+      '<button type="button" class="nx-ctxbar" id="nx-ctxbar" hidden aria-controls="nx-panel" aria-expanded="false"></button>' +
+      '<div class="nx-scrim" id="nx-scrim" hidden></div>';
+    setState("ready", "chapter", html, ch.title + ", Class " + bp[0] + " " + book.subject);
+    panelMount(book, ch, feed);
+    readerMount(feed, ch);
+  }
+
+  /* -------------------------------------------------------- learning panel
+     The panel answers, for the page being read: where am I (identity, On this page),
+     what am I learning (Concept), what can I explore (Explore), what can I apply
+     (Apply), with the chapter map and the PDF source below. Desktop (>= 960 px): the
+     ~30 % column beside the reader. Narrower: the same panel as a bottom sheet, opened
+     from a context bar that appears only when the page has something to offer, or from
+     the reader's chapter title.
+
+     UX-1 has no concept inventory yet: Concept stays empty; Explore shows whatever
+     NCERT.ExperienceMapper.getExperiencesForPage() returns (today []); Apply uses the
+     chapter's existing JEE links for the sections on the page. Page -> section uses the
+     printed page from the page context; an unverified edition is matched the same way
+     but says so; a PDF without printed pages falls back to the section chosen in the
+     chapter map. It reads the reader's state; it never changes it, except that a
+     chapter-map choice turns the page. */
+  var PANEL = null;
+
+  function panelShell(book, ch, feed) {
+    var bp = bookPath(book), secs = feed.sections || [];
+    var rows = "";
     for (var i = 0; i < secs.length; i++) {
       var s = secs[i];
-      html += '<li class="nx-sec nx-l' + (s.level === 2 ? 2 : 1) + '" data-section="' + esc(s.id) + '">' +
+      rows += '<li class="nx-sec nx-l' + (s.level === 2 ? 2 : 1) + '" data-section="' + esc(s.id) + '">' +
+        '<button type="button" class="nx-secbtn" data-go="' + esc(s.id) + '">' +
         '<span class="nx-secno">' + esc(s.number) + "</span>" +
         '<span class="nx-secbody"><span class="nx-sectitle">' + esc(s.title) + "</span>" +
-        '<span class="nx-secpages">' + esc(pages(s.pages)) + "</span></span></li>";
+        '<span class="nx-secpages">' + esc(pages(s.pages)) + "</span></span></button></li>";
     }
-    html += "</ol></section></aside></div>";
-    setState("ready", "chapter", html, ch.title + ", Class " + bp[0] + " " + book.subject);
-    readerMount(feed, ch);
+    // aria-live="off": <main> is a polite live region, and the panel re-renders on every page turn;
+    // only #nx-live (its own polite region) announces the change, once
+    return '<aside class="nx-context" id="nx-panel" aria-label="Learning for this page" aria-live="off">' +
+      '<div class="nx-sheethead"><span class="nx-sheettitle">Chapter ' + esc(ch.number) + " · " + esc(ch.title) + "</span>" +
+        '<button type="button" class="nx-tool nx-sheetclose" id="nx-sheetclose" aria-label="Close">\u00d7</button></div>' +
+      '<section class="nx-pblock nx-identity" aria-label="Chapter">' +
+        '<p class="nx-pcrumb">Class ' + esc(bp[0]) + " \u00b7 " + esc(book.subject) + " \u00b7 " + esc(book.title) + "</p>" +
+        '<p class="nx-ptitle"><span class="nx-pchno">Chapter ' + esc(ch.number) + "</span>" + esc(ch.title) + "</p>" +
+      "</section>" +
+      '<section class="nx-pblock nx-here" id="nx-here" aria-labelledby="nx-here-h" hidden>' +
+        '<h2 class="nx-plabel" id="nx-here-h">On this page</h2><div id="nx-here-body"></div></section>' +
+      '<section class="nx-pblock" id="nx-concept" aria-labelledby="nx-concept-h" hidden>' +
+        '<h2 class="nx-plabel" id="nx-concept-h">Concept</h2><div id="nx-concept-body"></div></section>' +
+      '<section class="nx-pblock" id="nx-explore" aria-labelledby="nx-explore-h" hidden>' +
+        '<h2 class="nx-plabel" id="nx-explore-h">Explore</h2><ul class="nx-explist" id="nx-explore-body"></ul></section>' +
+      '<p class="nx-quiet" id="nx-quiet" hidden>Nothing to explore on this page yet.</p>' +
+      '<section class="nx-pblock" id="nx-apply" aria-labelledby="nx-apply-h" hidden>' +
+        '<h2 class="nx-plabel" id="nx-apply-h">Apply</h2><p class="nx-pnote">JEE practice for this section</p>' +
+        '<ul class="nx-applist" id="nx-apply-body"></ul></section>' +
+      '<details class="nx-pblock nx-map" id="nx-map" open><summary>Chapter map <span class="nx-count">(' + secs.length + ")</span></summary>" +
+        '<ol class="nx-sections">' + rows + "</ol></details>" +
+      sourceCard(feed) +
+      '<p class="nx-sr" id="nx-live" aria-live="polite"></p>' +
+      "</aside>";
+  }
+
+  function pel(id) { return document.getElementById(id); }
+  function narrow() { return !!(window.matchMedia && window.matchMedia("(max-width: 959px)").matches); }
+
+  function panelMount(book, ch, feed) {
+    PANEL = { book: book, ch: ch, feed: feed, chosen: null, reading: null, sheet: false, opener: null, live: "", onKey: null,
+              pushed: false, onPop: null, backTimer: null };
+    pel("nx-map").onclick = function (ev) {
+      var b = ev.target.closest ? ev.target.closest("[data-go]") : null;
+      if (b) panelGo(b.getAttribute("data-go"));
+    };
+    pel("nx-ctxbar").onclick = function () { panelSheet(true, null); };
+    pel("nx-sheetclose").onclick = function () { panelSheet(false); };
+    pel("nx-scrim").onclick = function () { panelSheet(false); };
+    pel("nx-rtitle").onclick = function () {
+      var map = pel("nx-map");
+      map.open = true;
+      if (narrow()) panelSheet(true, map);
+      else { var sm = map.querySelector("summary"); if (sm) sm.focus(); }
+    };
+    PANEL.onKey = function (ev) { if (PANEL && PANEL.sheet && (ev.key === "Escape" || ev.key === "Esc")) { ev.preventDefault(); panelSheet(false); } };
+    document.addEventListener("keydown", PANEL.onKey);
+    // browser Back while the sheet is open pops the entry the sheet pushed: close the sheet
+    PANEL.onPop = function () {
+      if (PANEL && PANEL.sheet && !sheetEntry()) { PANEL.pushed = false; sheetUI(false); }
+    };
+    window.addEventListener("popstate", PANEL.onPop);
+    panelRender();
+  }
+
+  function panelDestroy() {
+    if (!PANEL) return;
+    document.removeEventListener("keydown", PANEL.onKey);
+    window.removeEventListener("popstate", PANEL.onPop);
+    clearTimeout(PANEL.backTimer);
+    main.removeAttribute("data-reading");
+    main.removeAttribute("data-sheet");
+    main.removeAttribute("data-ctxbar");
+    PANEL = null;
+  }
+
+  /* A chapter-map choice: turn the PDF to the section's first printed page when the open
+     PDF has printed page labels; otherwise remember the section as the reading context. */
+  function panelGo(id) {
+    var sec = panelSection(id);
+    if (!sec) return;
+    var at = -1;
+    if (READER && READER.doc && READER.labels) {
+      for (var i = 0; i < READER.labels.length; i++) if (String(READER.labels[i]) === String(sec.pages[0])) { at = i; break; }
+    }
+    PANEL.chosen = id;
+    if (at >= 0) readerGo(at + 1);
+    panelRender();
+    if (narrow() && PANEL.sheet && at >= 0) panelSheet(false);
+  }
+
+  function panelSection(id) {
+    var secs = (PANEL && PANEL.feed.sections) || [];
+    for (var i = 0; i < secs.length; i++) if (secs[i].id === id) return secs[i];
+    return null;
+  }
+
+  /* The sections that contain a printed page: the most specific ones (a parent is dropped
+     when one of its subsections also contains the page), deeper first, then the one that
+     starts on this page, then chapter order. */
+  function sectionsAt(page) {
+    var secs = PANEL.feed.sections || [], hit = [], i, j;
+    for (i = 0; i < secs.length; i++) if (secs[i].pages && secs[i].pages[0] <= page && page <= secs[i].pages[1]) hit.push(secs[i]);
+    function within(child, parent) {
+      if (child.id === parent.id || (child.level || 1) <= (parent.level || 1) || child.id.indexOf(parent.id) !== 0) return false;
+      var c = child.id.charAt(parent.id.length);
+      return c === "." || (c >= "a" && c <= "z");
+    }
+    var out = [];
+    for (i = 0; i < hit.length; i++) {
+      var parent = false;
+      for (j = 0; j < hit.length; j++) if (within(hit[j], hit[i])) parent = true;
+      if (!parent) out.push(hit[i]);
+    }
+    out.sort(function (a, b) {
+      if ((b.level || 1) !== (a.level || 1)) return (b.level || 1) - (a.level || 1);
+      var as = a.pages[0] === page ? 0 : 1, bs = b.pages[0] === page ? 0 : 1;
+      if (as !== bs) return as - bs;
+      return secs.indexOf(a) - secs.indexOf(b);
+    });
+    return out;
+  }
+
+  /* Where the student is: {kind: "page" | "pdf" | "section" | "none", ...}. */
+  function panelWhere(ctx) {
+    if (ctx && ctx.printedPage !== null && ctx.printedPage !== undefined) {
+      return { kind: "page", label: "p.\u00a0" + ctx.printedPage, sections: sectionsAt(ctx.printedPage),
+               note: ctx.editionStatus === "exact_match" ? "" : "Your PDF\u2019s edition could not be verified \u2014 page matching may be approximate." };
+    }
+    var chosen = PANEL.chosen ? panelSection(PANEL.chosen) : null;
+    if (ctx) {
+      return { kind: "pdf", label: "PDF page " + ctx.pdfPage, sections: chosen ? [chosen] : [],
+               note: chosen ? "Your PDF has no printed page numbers; showing the chosen section."
+                            : "Your PDF has no printed page numbers. Choose a section in the chapter map." };
+    }
+    if (chosen) return { kind: "section", label: "Section " + (chosen.number || chosen.title), sections: [chosen], note: "" };
+    return { kind: "none", label: "", sections: [], note: "" };
+  }
+
+  function panelExperiences(ctx) {
+    if (!ctx) return [];
+    var M = window.NCERT && window.NCERT.ExperienceMapper;
+    try {
+      var r = M && M.getExperiencesForPage ? M.getExperiencesForPage(ctx) : [];
+      return Object.prototype.toString.call(r) === "[object Array]" ? r : [];
+    } catch (e) { return []; }
+  }
+
+  /* JEE practice: the chapter's existing apply links for these sections (no new data). */
+  function panelApply(sections) {
+    var cards = {}, sims = PANEL.feed.simulations || [], out = [], seen = {}, i, j;
+    for (i = 0; i < sims.length; i++) cards[sims[i].id] = sims[i];
+    for (i = 0; i < sections.length; i++) {
+      var ids = sections[i].apply || [];
+      for (j = 0; j < ids.length; j++) if (cards[ids[j]] && !seen[ids[j]]) { seen[ids[j]] = 1; out.push(cards[ids[j]]); }
+    }
+    return out;
+  }
+
+  function panelRender() {
+    if (!PANEL || !pel("nx-panel")) return;
+    var ctx = READER ? READER.context : null;
+    var reading = !!(READER && READER.doc);
+    if (reading !== PANEL.reading) {
+      // once a PDF is open the hero folds into the panel, and the map and source details close
+      PANEL.reading = reading;
+      main.setAttribute("data-reading", reading ? "1" : "0");
+      pel("nx-map").open = !reading;
+      var more = pel("nx-srcmore");
+      if (more) more.open = !reading;
+    }
+    var where = panelWhere(ctx);
+    var exps = panelExperiences(ctx);
+    var apply = where.kind === "none" ? [] : panelApply(where.sections);
+
+    var here = pel("nx-here");
+    here.hidden = where.kind === "none";
+    if (!here.hidden) {
+      var h = '<p class="nx-herepage">' + esc(where.label) + "</p>";
+      if (where.sections.length) {
+        h += '<ul class="nx-heresecs">';
+        for (var i = 0; i < where.sections.length; i++) {
+          var s = where.sections[i];
+          h += '<li><span class="nx-heresecno">' + esc(s.number) + "</span>" + esc(s.title) + "</li>";
+        }
+        h += "</ul>";
+      }
+      if (where.note) h += '<p class="nx-pwarn" role="note">' + esc(where.note) + "</p>";
+      pel("nx-here-body").innerHTML = h;
+    }
+
+    pel("nx-concept").hidden = true;            // no concept inventory yet (UX-2)
+    var ex = pel("nx-explore");
+    ex.hidden = !exps.length;
+    if (exps.length) {
+      var li = "";
+      for (var k = 0; k < exps.length; k++) {
+        var x = exps[k] || {};
+        li += '<li class="nx-expitem"><span class="nx-exptype">' + esc(String(x.type || "").replace(/-/g, " ")) + "</span>" +
+          '<span class="nx-exptitle">' + esc(x.title || "") + "</span></li>";
+      }
+      pel("nx-explore-body").innerHTML = li;
+    }
+    pel("nx-quiet").hidden = where.kind === "none" || !!exps.length;
+
+    var ap = pel("nx-apply");
+    ap.hidden = !apply.length;
+    if (apply.length) {
+      var al = "";
+      for (var m = 0; m < apply.length; m++) {
+        var c = apply[m];
+        var label = (c.exam || "JEE") + " " + (c.year || "") + " \u00b7 " + (c.paper || "") + " \u00b7 Q" + c.questionNumber;
+        al += '<li><a class="nx-applink" href="../#/run/' + encodeURIComponent(c.id) + '" target="_blank" rel="noopener" data-sim="' + esc(c.id) + '"' +
+          ' aria-label="' + esc(label + ": " + (c.shortTitle || c.title) + " (opens the Questions library in a new tab)") + '">' +
+          '<span class="nx-applabel">' + esc(label) + "</span>" +
+          '<span class="nx-apptitle">' + esc(c.shortTitle || c.title) + '<span aria-hidden="true">\u00a0\u2197</span></span></a></li>';
+      }
+      pel("nx-apply-body").innerHTML = al;
+    }
+
+    // the chapter map marks where the student is
+    var cur = {};
+    for (var q = 0; q < where.sections.length; q++) cur[where.sections[q].id] = 1;
+    var items = pel("nx-map").querySelectorAll(".nx-sec");
+    for (var r = 0; r < items.length; r++) {
+      if (cur[items[r].getAttribute("data-section")]) items[r].setAttribute("aria-current", "location");
+      else items[r].removeAttribute("aria-current");
+    }
+
+    // phones / tablets: a context bar only when this page has something to explore or apply
+    var bar = pel("nx-ctxbar");
+    var useful = reading && where.kind !== "none" && (exps.length > 0 || apply.length > 0);
+    bar.hidden = !useful;
+    main.setAttribute("data-ctxbar", useful ? "1" : "0");
+    var summary = where.label + (where.sections.length ? " \u00b7 " + where.sections[0].title : "") +
+      (exps.length ? " \u00b7 " + exps.length + " to explore" : "") + (apply.length ? " \u00b7 " + apply.length + " to apply" : "");
+    if (useful) bar.innerHTML = '<span class="nx-ctxtext">' + esc(summary) + '</span><span class="nx-ctxup" aria-hidden="true">\u25b4</span>';
+    bar.setAttribute("aria-label", useful ? summary + ". Open the learning panel." : "");
+
+    // one polite announcement per change of place
+    var live = reading && where.kind !== "none" ? summary : "";
+    if (live !== PANEL.live) { PANEL.live = live; pel("nx-live").textContent = live; }
+  }
+
+  /* The bottom sheet (narrow screens only), and browser history.
+     Opening pushes one history entry with the same URL (the hash does not change, so the
+     router is not involved) marked as ours. Browser Back pops it and popstate closes the
+     sheet. Every other way of closing (x, the scrim, Esc, a chapter-map choice) consumes
+     that entry with history.back(), so the next Back goes where the student expects; the
+     reader, its page and zoom are never touched. */
+  var SHEET_MARK = "prayogx-ncert-sheet";
+
+  function sheetEntry() {
+    var st = window.history && window.history.state;
+    return !!(st && st.nxSheet === SHEET_MARK);
+  }
+
+  function panelSheet(open, focusTo) {
+    if (!PANEL) return;
+    if (open) {
+      if (!narrow()) return;
+      if (PANEL.sheet) { var f0 = focusTo && focusTo.querySelector ? focusTo.querySelector("summary") : null; if (f0) f0.focus(); return; }
+      sheetUI(true, focusTo);
+      try {
+        window.history.pushState({ nxSheet: SHEET_MARK }, "", window.location.href);
+        PANEL.pushed = true;
+      } catch (e) { PANEL.pushed = false; }
+      return;
+    }
+    if (!PANEL.sheet) return;
+    if (PANEL.pushed && sheetEntry()) {
+      PANEL.pushed = false;
+      window.history.back();                     // popstate closes the sheet
+      clearTimeout(PANEL.backTimer);             // in case the browser does not report it
+      PANEL.backTimer = setTimeout(function () { if (PANEL && PANEL.sheet) sheetUI(false); }, 400);
+    } else {
+      PANEL.pushed = false;
+      sheetUI(false);
+    }
+  }
+
+  function sheetUI(open, focusTo) {
+    if (!PANEL || open === PANEL.sheet) return;
+    PANEL.sheet = open;
+    main.setAttribute("data-sheet", open ? "1" : "0");
+    pel("nx-scrim").hidden = !open;
+    pel("nx-ctxbar").setAttribute("aria-expanded", open ? "true" : "false");
+    if (open) {
+      PANEL.opener = document.activeElement;
+      var f = focusTo && focusTo.querySelector ? focusTo.querySelector("summary") : null;
+      (f || pel("nx-sheetclose")).focus();
+    } else {
+      clearTimeout(PANEL.backTimer);
+      if (PANEL.opener && PANEL.opener.focus && document.body.contains(PANEL.opener)) PANEL.opener.focus();
+    }
   }
 
   /* ---------------------------------------------------------------- reader
@@ -331,7 +640,8 @@
     }
     return '<section class="nx-reader" id="nx-reader" data-reader-state="loading" aria-label="Chapter reader">' +
       '<div class="nx-rbar">' +
-        '<span class="nx-rtitle">Chapter ' + esc(ch.number) + " · " + esc(ch.title) + "</span>" +
+        '<button type="button" class="nx-rtitle" id="nx-rtitle" aria-controls="nx-panel" title="Chapter map and PDF source">Chapter ' +
+          esc(ch.number) + " · " + esc(ch.title) + '<span class="nx-rtitlemore" aria-hidden="true"> \u25be</span></button>' +
         '<div class="nx-tools" id="nx-tools" role="toolbar" aria-label="Pages and zoom" hidden>' +
           '<div class="nx-tgroup">' + tool("first", "«", "First page") + tool("prev", "‹", "Previous page") +
             '<span class="nx-pagebox"><label class="nx-sr" for="nx-pageno">Page number</label>' +
@@ -348,18 +658,23 @@
       "</section>";
   }
 
+  /* The PDF source. Before a PDF is chosen: the official source and privacy, open. Once one is
+     chosen: a compact one-line summary (file, status, "Choose another PDF"); the verification
+     details, official source and privacy wait in one collapsed "Details". */
   function sourceCard(feed) {
     var src = feed.chapter.source || {}, ed = (src.editions || [])[0];
-    return '<section class="nx-source" aria-labelledby="nx-source-h">' +
-      '<h2 id="nx-source-h">Chapter PDF</h2>' +
-      '<p class="nx-srcline">Official NCERT chapter' + (ed ? " · catalogued edition " + esc(ed.label) : "") + "</p>" +
-      (src.official ? '<a class="nx-rofficial" href="' + esc(src.official) + '" target="_blank" rel="noopener">' +
-        'Open official NCERT PDF<span aria-hidden="true"> ↗</span></a>' : "") +
+    return '<section class="nx-pblock nx-source" aria-labelledby="nx-source-h">' +
+      '<h2 class="nx-plabel" id="nx-source-h">Chapter PDF</h2>' +
+      '<div class="nx-srcsum" id="nx-srcsum" hidden><span class="nx-srcstate" id="nx-srcstate"></span>' +
+        '<button type="button" class="nx-btn nx-btn-quiet nx-choose" id="nx-choose-card">Choose another PDF</button></div>' +
       '<input type="file" id="nx-file" class="nx-file" accept="application/pdf" tabindex="-1" aria-hidden="true">' +
-      '<button type="button" class="nx-btn nx-btn-quiet nx-choose" id="nx-choose-card">Choose another PDF</button>' +
-      '<div class="nx-verify" id="nx-verify" aria-live="polite"></div>' +
-      '<p class="nx-privacy">The PDF you choose stays on this device. PrayogX never uploads or stores it.</p>' +
-      "</section>";
+      '<details class="nx-srcmore" id="nx-srcmore" open><summary>Details, official source and privacy</summary>' +
+        '<div class="nx-verify" id="nx-verify" aria-live="polite"></div>' +
+        '<p class="nx-srcline">Official NCERT chapter' + (ed ? " · catalogued edition " + esc(ed.label) : "") + "</p>" +
+        (src.official ? '<a class="nx-rofficial" href="' + esc(src.official) + '" target="_blank" rel="noopener">' +
+          'Open official NCERT PDF<span aria-hidden="true"> ↗</span></a>' : "") +
+        '<p class="nx-privacy">The PDF you choose stays on this device. PrayogX never uploads or stores it.</p>' +
+      "</details></section>";
   }
 
   function readerEls() {
@@ -398,6 +713,7 @@
       if (retry) retry.onclick = function () { if (READER && READER.retry) READER.retry(); };
     }
     e.tools.hidden = state !== "ready";
+    panelRender();
     e.status.textContent = status || "";
   }
 
@@ -699,6 +1015,22 @@
         "“" + esc(READER.notice.name) + "” was not opened: " + esc(READER.notice.message) + "</p>";
     }
     e.verify.innerHTML = html;
+
+    // the compact summary: which file, and how far it was verified
+    var sum = document.getElementById("nx-srcsum"), st = document.getElementById("nx-srcstate");
+    if (sum && st) {
+      sum.hidden = !L;
+      if (L) {
+        var badge = !READER.doc ? ["nx-vwarn", "not opened"]
+          : v && v.status === "exact_match" ? ["nx-vok", "\u2713 Verified edition"]
+          : v && v.status === "unavailable" ? ["nx-vwarn", "Edition not checked"]
+          : v ? ["nx-vwarn", "Edition not verified"] : null;
+        st.innerHTML = '<span class="nx-srcfile">' + esc(L.name) + "</span>" +
+          (badge ? '<span class="nx-srcbadge ' + badge[0] + '">' + badge[1] + "</span>" : "");
+      }
+    }
+    var more = document.getElementById("nx-srcmore");
+    if (more && READER.notice && READER.doc) more.open = true;      // say why a new file was refused
   }
 
   /* -------- the page view: one page at a time */
@@ -737,6 +1069,7 @@
       // a listener's own error must not break the reader; surface it without stopping
       try { list[i](ctx); } catch (e) { setTimeout(function () { throw e; }, 0); }
     }
+    panelRender();
   }
 
   function readerZoom(dir) {

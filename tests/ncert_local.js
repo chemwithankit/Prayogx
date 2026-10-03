@@ -102,6 +102,12 @@ const pdfFile = (name, buf, type) => ({ name, mimeType: type === undefined ? 'ap
     await pg.goto(BASE + CH); await settled(pg);
     await pg.waitForSelector('#nx-reader[data-reader-state="no_hosted_pdf"]');
   }
+  // UX-1: once a PDF is open the verification details sit in the source card's collapsed
+  // "Details"; open it, as a student would, before reading the wording
+  const verifyText = async pg => {
+    await pg.evaluate(() => { const d = document.getElementById('nx-srcmore'); if (d) d.open = true; });
+    return pg.innerText('#nx-verify');
+  };
   const squares = pg => pg.$eval('#nx-rpage canvas', c => {
     const x = c.getContext('2d'), w = c.width, h = c.height, H = 842;
     const dark = i => { const d = x.getImageData(Math.floor(w * (85 + i * 70) / 595), Math.floor(h * (H - 585) / H), 1, 1).data; return d[0] < 60; };
@@ -228,7 +234,7 @@ const pdfFile = (name, buf, type) => ({ name, mimeType: type === undefined ? 'ap
     s = await choose(e, pdfFile('kech105.pdf', GOOD));
     ok('when the SHA-256 matches a catalogued edition: EXACT_MATCH', s.verification.status === 'exact_match' && s.verification.edition === 'Test edition',
       JSON.stringify(s.verification));
-    const ve = await e.innerText('#nx-verify');
+    const ve = await verifyText(e);
     ok('...shown as "Verified NCERT edition · Test edition"', /Verified NCERT edition · Test edition/.test(ve), ve.replace(/\n/g, ' | '));
     await shot(e, 'local-verified-1280');
     await e.context().close();
@@ -239,7 +245,7 @@ const pdfFile = (name, buf, type) => ({ name, mimeType: type === undefined ? 'ap
     await chapter(f);
     s = await choose(f, pdfFile('kech105.pdf', GOOD));
     ok('a readable PDF that does not match: READABLE_BUT_UNVERIFIED, and the reader still opens', s.state === 'ready' && s.verification.status === 'unverified');
-    const vf = await f.innerText('#nx-verify');
+    const vf = await verifyText(f);
     ok('...shown as "PDF loaded — edition could not be verified"', /PDF loaded — edition could not be verified/.test(vf));
     ok('...without claiming the 2026-27 edition', !/2026-27/.test(vf) && !/Verified NCERT/.test(vf), vf.replace(/\n/g, ' | '));
     ok('...and with what could be checked (the page count)', /3 pages; the catalogued edition has 32/.test(vf));
@@ -248,7 +254,7 @@ const pdfFile = (name, buf, type) => ({ name, mimeType: type === undefined ? 'ap
     await chapter(nc);
     s = await choose(nc, pdfFile('kech105.pdf', GOOD));
     ok('without Web Crypto the PDF still opens, marked unverified (fingerprint unavailable)', s.state === 'ready'
-      && s.verification.status === 'unavailable' && /cannot fingerprint/.test(await nc.innerText('#nx-verify')));
+      && s.verification.status === 'unavailable' && /cannot fingerprint/.test(await verifyText(nc)));
     await nc.context().close();
 
     // ---------------------------------------------------------------- G
@@ -338,7 +344,7 @@ const pdfFile = (name, buf, type) => ({ name, mimeType: type === undefined ? 'ap
     s = await choose(i, pdfFile('notes.txt', Buffer.from('not a pdf'), 'text/plain'), '#nx-choose-card');
     ok('a refused file while a PDF is open leaves that PDF exactly as it was', s.state === 'ready' && s.file.name === 'b.pdf' && s.pages === 4
       && (await live()) === 1 && (await i.$('#nx-rpage canvas')) !== null, JSON.stringify({ state: s.state, file: s.file && s.file.name }));
-    ok('...and says why the new file was refused', /“notes\.txt” was not opened/.test(await i.innerText('#nx-verify')));
+    ok('...and says why the new file was refused', /“notes\.txt” was not opened/.test(await verifyText(i)));
     await shot(i, 'local-refused-while-open-1280');
     s = await choose(i, pdfFile('broken.pdf', Buffer.from('%PDF-1.4 nothing\n')), '#nx-choose-card');
     w = await i.evaluate(() => window.__w);

@@ -306,6 +306,13 @@ fetching beyond the existing feed. Its exact form is settled when the panel is b
 
 ## 10. Implementation phases (each with its own approval and tests)
 
+**UX-1 implemented (2026-10-03, uncommitted):** the learning-path switcher inside NCERT Explorer (the main site stays
+unlinked until the deployment gate), the panel, the context bar and the sheet; tests in `tests/ncert_panel.js`.
+Browser Back closes the sheet (opening it adds one history entry at the same address; ×, Esc, a tap outside
+or a chapter-map choice consume that entry, so the next Back navigates as normal). Once a PDF is open the source card
+is a compact summary (file, verification status, "Choose another PDF"), with the verification details, official
+source and privacy note in one collapsed "Details". Not yet: the sheet's drag gesture.
+
 | Phase | Scope | Exit criteria |
 |---|---|---|
 | UX-1 | Panel structure on desktop with **no concept data**: identity, On this page (sections from page context), chapter map collapse, source card collapse, hero folding, Apply from the chapter's existing JEE links | page change updates section and Apply only; no layout shift in the reader; existing 3A/3B/page-context tests green |
