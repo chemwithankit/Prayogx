@@ -16,6 +16,12 @@ Repository: `github.com/chemwithankit/Prayogx`, branch `main`. Android package:
 - Current library: **50 simulations** — 33 Chemistry (JEE Advanced 2026 Paper 1 Q1–Q16, Paper 2
   Q1–Q17) and 17 Physics (Paper 1 Q1–Q16, Paper 2 Q1, built by the factory, `script_verified`). P1 CHE Q16 was
   reviewed and published by the owner on 2026-09-29. There is no next build until the owner names one.
+- **NCERT Explorer** (approved 2026-10-02, [docs/NCERT.md](docs/NCERT.md)): a second, additive track,
+  NCERT concept → simulation, built phase by phase with a report and the owner's approval before each
+  phase's commit. Pilot: Class 11 Chemistry Part I Ch 5, concepts `CON-CHE-DELTA-U-VS-DELTA-H`,
+  `CON-CHE-HESS-LAW`, `CON-CHE-GIBBS-SPONTANEITY`, each blueprinted before any code. NCERT PDFs are never
+  hosted or proxied; JEE pages are linked by ID only and never edited for it; `/ncert/` stays unlinked and
+  `noindex` until the deployment approval.
 
 ## Owner control
 
@@ -172,6 +178,7 @@ visible. The answer is not shown before the run. Full standard:
 | Chemistry doctrine (organic, physical, inorganic) | `.claude/skills/prayogx-chemistry/` |
 | Validate before calling it done | `.claude/skills/prayogx-validate/` |
 | Register in the library | `.claude/skills/prayogx-register/` |
+| NCERT Explorer: data, PDF source, phases; its media and durations | `docs/NCERT.md`, `tools/ncert_schema.py`, `data/ncert/`; `docs/NCERT_MEDIA.md` |
 | Batches, dry runs, the autonomous pipeline | `.claude/skills/prayogx-auto-simulation/`, `docs/AUTO_SIMULATION_PIPELINE.md`, `tools/auto_sim.py` |
 | Sync the Google Sheet tracker (in place, never recreate) | `.claude/skills/prayogx-register/` §5, `tools/tracker_sheet.py` |
 | Fix or review an existing page | `.claude/skills/prayogx-review-existing/` |

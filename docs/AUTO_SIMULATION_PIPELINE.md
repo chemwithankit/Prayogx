@@ -100,6 +100,9 @@ scientific reference, visual inspiration. If two authoritative sources conflict,
   and question number for every card, so a concept may be registered only as `draft` until they
   render concepts (`registry_schema.CONCEPT_PUBLISHABLE`). In production a concept item runs every
   stage through `production_audit_complete` and stops before `commit_complete`.
+  From 2026-10-02 concepts are published only through the NCERT Explorer ([NCERT.md](NCERT.md)):
+  never in the JEE feed, and only when mapped under `understand` in a `data/ncert/` chapter. The
+  flag turns on in NCERT Phase 5, when the `/ncert/` page can open a concept.
 
 ## 4. The per-item pipeline (21 stages)
 

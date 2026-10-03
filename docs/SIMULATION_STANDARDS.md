@@ -28,6 +28,14 @@ What PrayogX values, in priority order when they conflict:
 4. visual polish
 5. reliability: offline, self-contained, fast on ordinary phones
 
+**Choosing the representation (from 2026-10-02, new pages).** Every important concept gets the
+strongest visual and interactive representation for it, chosen in this order: interactive
+simulation → experimental / graph explorer → real-world simulation → animation → a static visual
+only when interaction or animation would add nothing. If it can be seen, let the student see it; if
+it can be manipulated, let them manipulate it; if it can be discovered, let them discover it. No
+interaction for novelty: each one must teach. Concept pages for the NCERT Explorer follow the same
+standard ([NCERT.md](NCERT.md) §2).
+
 ## 2. Permanent invariants (every new simulation)
 
 **File and runtime**

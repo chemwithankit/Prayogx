@@ -300,3 +300,15 @@ Student and teacher accounts, progress sync, analytics, payments, Hindi, Physics
 content. The seams exist — `access` in the schema and the UI, user state behind a
 namespaced store an account layer can adopt, a feed a CDN can front — but none of it
 is implemented, because V1 should stay small.
+
+---
+
+## NCERT Explorer (added 2026-10-02)
+
+A second discovery layer over the same simulation library, specified in [NCERT.md](NCERT.md).
+It is additive: `data/ncert/` (curated) → `tools/build_content.py` → `content/ncert/` (generated),
+read by its own page, `/ncert/`. The JEE feed lists question simulations only and is byte-identical
+whether or not NCERT content exists (`tests/ncert_data.py`); concept simulations are published only
+through `content/ncert/`, and the revision lock covers both. The service worker needs no change:
+`content/` is already its stale-while-revalidate feed and `simulations/` its per-revision cache.
+
