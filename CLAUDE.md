@@ -67,11 +67,20 @@ visible. The answer is not shown before the run. Full standard:
   explicitly asks** ("Generate a Reel for Q3"), with `node tools/reel-maker/generate-reel.js <ID>`.
 - A reel treats the simulation as a read-only source: no edits to its page, tests, data or the catalogue.
   A reel problem is fixed in the reel story (`tools/reel-maker/reels/<ID>.json`) or the reel tooling.
-- Every reel must pass all 30 reel checks (11 of them on the audio: the MP4's decoded track and the music stem) and ends
-  **READY_FOR_REVIEW**. Outputs stay in `tools/reel-maker/output/` (git-ignored, never deployed).
-- **Audio is original only**: the score and effects are composed by `tools/reel-maker/music.py` (an arranged, evolving track per reel) and listed
+- Every reel must pass all 30 reel checks (11 of them on the audio: the MP4's decoded track and the music stem), plus
+  the voice checks when it is narrated, and ends **READY_FOR_REVIEW**. Outputs stay in `tools/reel-maker/output/`
+  (git-ignored, never deployed).
+- **Reel duration is concept-driven, not fixed:** about 20–30 s for a basic simulation, about 40–50 s for a concept
+  explanation, longer only when the concept genuinely needs it; guidelines, not limits. Never compress a meaningful
+  explanation or pad (`tools/reel-maker/README.md` → Duration).
+- **Music and effects are original only**: the score and effects are composed by `tools/reel-maker/music.py` (an arranged, evolving track per reel) and listed
   with provenance in `audio_library.json`. Never use film or chart songs, trending Instagram audio, YouTube or
-  "free music" downloads, or any track whose commercial social-media licence is not verified.
+  "free music" downloads, or any track whose commercial social-media licence is not verified. The one other
+  permitted sound is a **verified, licensed external voiceover** (implemented 2026-10-03 as narrated variants; publishing them is not enabled yet): PrayogX
+  writes the narration, a reviewed spoken form is voiced, the audio is verified word for word locally, its provenance
+  and the standard AI-voice disclosure are recorded, and it never bypasses the checks or human approval. Paid voice
+  generation is a separate command under an explicit credit cap, never part of building a reel. A narrated reel is
+  planned in the simulation's design brief. Policy: `tools/reel-maker/README.md` → Voiceover.
 - **Instagram publishing is human-gated** (`tools/instagram_publish.py`, docs/INSTAGRAM_PUBLISHING.md):
   READY_FOR_REVIEW → APPROVED only when the owner runs `approve` after watching the reel; `publish` is a
   separate command. Claude never runs `approve` or `publish` unless the owner explicitly asks for that reel in

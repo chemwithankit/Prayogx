@@ -1,0 +1,35 @@
+{
+  "policy": "Voice profiles for narrated reels (tools/reel-maker/README.md -> Voiceover). A profile names a provider, model, voice and settings; it never carries educational content. Story specs select one with narration.voiceProfile. The licence, permitted use and the AI-voice disclosure line live once, on the profile's libraryAsset in audio_library.json. Adding a provider or voice means adding a profile and an asset, not changing audio.py or generate-reel.js.",
+  "profiles": {
+    "prayogx-en-emily-v1": {
+      "profileId": "prayogx-en-emily-v1",
+      "status": "provisional",
+      "provider": "higgsfield",
+      "providerLabel": "Higgsfield",
+      "engine": "ElevenLabs",
+      "model": "elevenlabs_v4",
+      "modelLabel": "ElevenLabs v4",
+      "voiceId": "6b3e3642-f7b7-4cb8-9688-51e233c4b92f",
+      "voiceName": "Emily",
+      "voiceType": "preset",
+      "language": "en",
+      "settings": {
+        "stability": null,
+        "similarity_boost": null
+      },
+      "libraryAsset": "voice-higgsfield-elevenlabs-v4",
+      "qualification": {
+        "date": "2026-10-03",
+        "scope": "This provider, model, preset voice and default settings; English narration; the reviewed spoken-form workflow (scientific terms, chemical formulas, units and numbers in spoken form). Not a permanent or universal voice choice.",
+        "evidence": "PrayogX Media Lab controlled tests (outside this repository): tests/voice/elevenlabs/ (English narration, word-for-word transcription gate) and tests/voice/scientific-pronunciation/ (spoken-form science); owner listening review 2026-10-03. Licence: tools/reel-maker/licences/higgsfield-elevenlabs-voice.md.",
+        "alsoQualified": "text2speech_v2 (variant elevenlabs) with the same voice passed the same tests; not configured here."
+      },
+      "verification": {
+        "method": "local transcription with whisper.cpp, compared word for word with the reviewed spoken form",
+        "transcriberModel": "ggml-small.en",
+        "rule": "missing, added, substituted, repeated or reordered words fail; transcriber spellings only through a reviewed equivalence table; low word probability is flagged for listening, not failed"
+      },
+      "notes": "The provider receives only the reviewed spoken form. Generation is a separate, explicitly authorised step under a per-run credit cap; building a reel never generates audio."
+    }
+  }
+}

@@ -14,6 +14,7 @@ import json
 import math
 import os
 import sys
+import wave
 
 import numpy as np
 from scipy.signal import fftconvolve
@@ -147,12 +148,8 @@ def check(d):
        ", ".join("%s +%.1f dB" % (k, v[0]) for k, v in acc.items()))
 
     # 10. the music gives way to on-screen text
-    g = rep["mix"]["musicGainDbBySection"]
-    qd = min(v for k, v in g.items() if k.startswith("QUESTION@"))
-    ad = min(v for k, v in g.items() if k.startswith("ANSWER@"))
-    sd = max(v for k, v in g.items() if k.startswith("SIM_START@"))
-    ok("ducking: the music dips under the question and the answer text (and under each effect)", qd <= -4 and ad <= -3 and sd > qd + 3,
-       "music %.1f dB under the question, %.1f dB under the answer, %.1f dB in the simulation" % (qd, ad, sd))
+    dk, dd = ducking_check(rep)
+    ok("ducking: the music dips under the question and the answer text (and under each effect)", dk, dd)
     # 11. the music itself: a composed, evolving track, measured on the music stem (before the effects and the mix)
     if d.get("music") and os.path.exists(d["music"]):
         mu, _ = AU.read_wav(d["music"])
@@ -167,7 +164,100 @@ def check(d):
               mv["stageChanges"], mv["stagesExpected"], mv["hookSections"], sc.get("instrumentCount"), sc.get("style"), sc.get("bpm")))
     else:
         ok("the music is composed and evolves (music stem)", False, "no music stem to measure")
+    # 12. narrated reels only: the voice checks (a silent reel has no voice in its report and skips them)
+    if (rep.get("mix") or {}).get("voice"):
+        vc, vm = check_voice(d, rep)
+        out.extend(vc)
+        meas["voice"] = vm
     return {"checks": out, "measured": meas}
+
+
+def ducking_check(rep):
+    """(ok, detail): the music dips under the question (>= 4 dB) and the answer (>= 3 dB) text, and plays at least 3 dB louder
+    in the simulation than under the question. On a narrated reel that last comparison uses the music level before the
+    voice's own ducking (musicGainDbBySectionPreVoice), because the narration deliberately ducks the music while it speaks;
+    the voice's margin over the music is checked separately (>= 6 LU). Silent reels use the original comparison."""
+    g = rep["mix"]["musicGainDbBySection"]
+    qd = min(v for k, v in g.items() if k.startswith("QUESTION@"))
+    ad = min(v for k, v in g.items() if k.startswith("ANSWER@"))
+    pre = rep["mix"].get("musicGainDbBySectionPreVoice") if rep["mix"].get("voice") else None
+    sd = max(v for k, v in (pre or g).items() if k.startswith("SIM_START@"))
+    detail = "music %.1f dB under the question, %.1f dB under the answer, %.1f dB in the simulation" % (qd, ad, sd)
+    if pre:
+        sd_now = max(v for k, v in g.items() if k.startswith("SIM_START@"))
+        detail += " before the voice's ducking (%.1f dB with it)" % sd_now
+    return qd <= -4 and ad <= -3 and sd > qd + 3, detail
+
+
+VOICE_OVER_MUSIC_LU = 6.0      # the voice at least this far above the ducked music while it speaks
+VOICE_IN_MIX_CORR = 0.5        # the final mix follows the voice while it speaks (it never vanishes in the mix)
+
+
+def check_voice(d, rep):
+    """the voice checks of a narrated reel: provenance, verification, hashes, presence, balance, format, timing,
+    disclosure. Everything is re-read from the voice record and the stems, not trusted from the report."""
+    import hashlib
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    import narration as NA
+    out, meas = [], {}
+    ok = lambda name, cond, detail="": out.append({"name": "voice: " + name, "ok": bool(cond), "detail": str(detail)})
+    v = rep["mix"]["voice"]
+    nar = d.get("narration") or {}
+    segs = nar.get("segments") or []
+    ok("narration exists: a voice profile and at least one segment", bool(nar.get("voiceProfile")) and len(segs) > 0 and len(v.get("segments", [])) == len(segs),
+       "%d narration segments, %d placed" % (len(segs), len(v.get("segments", []))))
+    nv = NA.validate({"story": d.get("story") or {}, "narration": nar})
+    ok("the voice profile and the narration are valid", nv["ok"], "; ".join(nv["errors"][:3]) or nar.get("voiceProfile"))
+    try:
+        a = AU.check_asset(AU.load_library(), v["assetId"], "voice")
+        lic = a["licenseVerified"] and a["commercialUse"] and nar.get("voiceProfile") in (a.get("voiceProfiles") or [])
+        ld = "%s (%s, %s)" % (a["assetId"], a["source"], a.get("qualificationStatus"))
+    except AU.ProvenanceError as e:
+        a, lic, ld = {}, False, str(e)
+    ok("the voice asset is licensed for commercial use and lists this profile", lic, ld)
+    try:
+        rec = json.load(open(v["record"], encoding="utf-8"))
+    except (OSError, ValueError) as e:
+        rec = {}
+        ok("the voice record can be read", False, str(e))
+    ok("verification: the voice record and every segment are VERIFIED", rec.get("status") == "VERIFIED" and all(s.get("status") == "VERIFIED" for s in rec.get("segments", [])),
+       "%s, %d segments" % (rec.get("status"), len(rec.get("segments", []))))
+    sha = lambda p: AU.sha256_file(p) if os.path.isfile(p) else None  # noqa: E731
+    bad = [s["beat"] for s in rec.get("segments", []) if sha(s["source"]["path"]) != s["source"]["sha256"] or sha(s["decoded"]["path"]) != s["decoded"]["sha256"]]
+    ok("source and decoded audio match their recorded sha256", rec.get("segments") and not bad, "mismatch: " + ", ".join(bad) if bad else "all match")
+    rh = {(s["beat"], s["spokenSha256"]) for s in rec.get("segments", [])}
+    missing = [s["beat"] for s in segs if (s["beat"], hashlib.sha256(" ".join(s["spoken"].split()).encode("utf-8")).hexdigest()) not in rh]
+    ok("every spoken form matches its verified record (spoken-form sha256)", segs and not missing, "no record for: " + ", ".join(missing) if missing else "all match")
+    vx, sr = AU.read_wav(d["voice"])
+    mx, _ = AU.read_wav(d["rendered"])
+    mb, _ = AU.read_wav(d["musicBed"])
+    quiet, corr, margin = [], [], []
+    for p in v["segments"]:
+        a0, a1 = int(p["t0"] * sr), int(p["t1"] * sr)
+        lv = short_rms_db(vx, p["t0"], p["t1"], 0.4)
+        if lv.max() < -40:
+            quiet.append(p["beat"])
+        vm, mm = vx[a0:a1].mean(axis=1), mx[a0:a1].mean(axis=1)
+        corr.append(float(np.dot(vm, mm) / math.sqrt((vm ** 2).sum() * (mm ** 2).sum() + 1e-12)))
+        tb, Lv = AU.block_loudness(vx[a0:a1]); _, Lm = AU.block_loudness(mb[a0:a1])
+        act = Lv > -50
+        margin.append(float(np.median(Lv[act] - Lm[act])) if act.any() else -99.0)
+    meas.update(voiceInMixCorrelation=[round(c, 3) for c in corr], voiceOverMusicLu=[round(m, 1) for m in margin])
+    ok("every narrated beat has voice (above -40 dBFS in its window)", not quiet, "silent: " + ", ".join(quiet) if quiet else "%d segments" % len(v["segments"]))
+    ok("the voice does not vanish in the mix: the final mix follows the voice (correlation >= %.1f)" % VOICE_IN_MIX_CORR, corr and min(corr) >= VOICE_IN_MIX_CORR,
+       "correlation " + ", ".join("%.2f" % c for c in corr))
+    ok("the music sits at least %.0f LU under the voice while it speaks" % VOICE_OVER_MUSIC_LU, margin and min(margin) >= VOICE_OVER_MUSIC_LU,
+       "voice over music " + ", ".join("%.1f LU" % m for m in margin))
+    with wave.open(d["voice"], "rb") as w:
+        vfmt = (w.getframerate(), w.getnchannels(), w.getsampwidth())
+    ok("the voice stem is 48 kHz stereo 16-bit", vfmt == (48000, 2, 2), "%s Hz, %s ch, %s-bit" % (vfmt[0], vfmt[1], 8 * vfmt[2]))
+    by = {(s["beat"], s["spokenSha256"]): s for s in rec.get("segments", [])}
+    stretch = [p["beat"] for p in v["segments"] if abs(p["seconds"] - by.get((p["beat"], p["spokenSha256"]), {}).get("decoded", {}).get("seconds", -1)) > 0.002
+               or abs(p["samples"] / 48000.0 - p["seconds"]) > 0.0001]
+    ok("no time-stretching: every placed segment keeps its verified duration", v["segments"] and not stretch, "changed: " + ", ".join(stretch) if stretch else "all durations unchanged")
+    ok("AI-voice disclosure metadata comes from the voice asset", bool(v.get("disclosureText")) and v.get("disclosureText") == a.get("disclosureText") and v.get("aiNarration") is True,
+       v.get("disclosureText"))
+    return out, meas
 
 
 MIN_INSTRUMENTS = 10

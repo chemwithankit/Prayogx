@@ -85,12 +85,21 @@ def check_asset(lib, asset_id, role, root=ROOT):
             why.append("file sha256 does not match the licensed file")
         if not a.get("licenseDocument") or not os.path.isfile(doc):
             why.append("no licence document kept with the file")
+    elif a.get("source") == "external-tts":                                     # a licensed voice, generated per reel
+        if a.get("role") != "voice":
+            why.append("external-tts is only for the voice role")
+        if not a.get("licenseDocument") or not os.path.isfile(os.path.join(root, a.get("licenseDocument", ""))):
+            why.append("no licence document kept in the repository")
+        if a.get("disclosureRequired") is not False and not (a.get("disclosureText") or "").strip():
+            why.append("no disclosureText")
     elif a.get("source") != "generated":
         why.append("unknown source %r" % a.get("source"))
     if why:
         raise ProvenanceError("audio asset %r refused: %s" % (asset_id, "; ".join(why)))
     keys = ["assetId", "role", "source", "generator", "owner", "license", "licenseVerified", "sourceReference",
-            "permittedUse", "commercialUse", "attributionRequired", "attributionText", "file", "sha256"]
+            "permittedUse", "commercialUse", "attributionRequired", "attributionText", "file", "sha256",
+            "provider", "engine", "model", "voiceProfiles", "licenseDocument", "disclosureRequired", "disclosureText",
+            "qualificationStatus", "qualificationScope"]
     return {k: a[k] for k in keys if k in a}
 
 
@@ -263,12 +272,114 @@ def mix(plan, music, sfx, voice=None):
     g_text = 10 ** (duck_db / 20)
     g_sfx = sidechain(sfx, -4.5, 0.12)                                           # music under each effect
     g_mus = g_text * g_sfx
+    g_pre = g_mus                                                               # the music's level before any voice ducking
     g_fx = np.ones(n)
     if voice is not None and np.abs(voice).max() > 0:                            # VOICE > MUSIC > SFX
         g_mus = g_mus * sidechain(voice, -10.0, 0.05, 0.3, 0.1)
         g_fx = sidechain(voice, -6.0, 0.05, 0.3, 0.1)
     out = music * g_mus[:, None] + sfx * g_fx[:, None] + (voice if voice is not None else 0)
-    return out, {"text": text, "musicGainDb": 20 * np.log10(np.maximum(g_mus, 1e-6)), "textDuckDb": duck_db}
+    return out, {"text": text, "musicGainDb": 20 * np.log10(np.maximum(g_mus, 1e-6)), "textDuckDb": duck_db,
+                 "musicGainDbPreVoice": 20 * np.log10(np.maximum(g_pre, 1e-6))}
+
+
+# ------------------------------------------------------------------ the voice stem (narrated reels only)
+VOICE_TARGET_LUFS = -16.0          # each narration segment, before the mix and the master
+VOICE_RECORD_SCHEMA = "prayogx-voice-record/1"
+REVEAL_PROTECT_S = 1.5             # the answer reveal stays clear of narration for this long (README -> Voiceover)
+
+
+class VoiceError(ProvenanceError):
+    pass
+
+
+def spoken_sha256(spoken):
+    return hashlib.sha256(" ".join(spoken.split()).encode("utf-8")).hexdigest()
+
+
+def protected_windows(plan):
+    """moments narration must not cover unless a segment is marked deliberate: the aha and the answer reveal"""
+    M, w = plan.get("marks") or {}, []
+    if M.get("aha"):
+        w.append((M["aha"]["t0"], M["aha"]["t1"], "the aha"))
+    if (M.get("answer") or {}).get("reveal") is not None:
+        w.append((M["answer"]["reveal"], M["answer"]["reveal"] + REVEAL_PROTECT_S, "the answer reveal"))
+    return w
+
+
+def voice_stem(plan, n, lib, root=ROOT):
+    """(stereo stem at SR, report) from the plan's verified voice record, or VoiceError. Only VERIFIED segments whose
+    source, decoded audio and spoken form match the record enter; each is loudness-normalized, placed at its beat
+    (offset after the beat starts) and never time-stretched: a segment longer than its beat window fails."""
+    pv = plan["voice"]
+    with open(pv["record"], encoding="utf-8") as f:
+        rec = json.load(f)
+    if rec.get("schema") != VOICE_RECORD_SCHEMA:
+        raise VoiceError("voice record schema %r, wanted %r" % (rec.get("schema"), VOICE_RECORD_SCHEMA))
+    if rec.get("status") != "VERIFIED":
+        raise VoiceError("voice record is %s, not VERIFIED - unverified narration never enters the mix" % rec.get("status"))
+    asset = check_asset(lib, rec["assetId"], "voice", root)
+    if rec.get("voiceProfile") not in (asset.get("voiceProfiles") or []):
+        raise VoiceError("voice profile %r is not licensed by asset %r" % (rec.get("voiceProfile"), rec["assetId"]))
+    nar = pv.get("narration") or {}
+    if nar.get("voiceProfile") != rec.get("voiceProfile"):
+        raise VoiceError("the story's voice profile %r is not the verified one %r" % (nar.get("voiceProfile"), rec.get("voiceProfile")))
+    B = {b["id"]: b for b in plan["beats"]}
+    by_beat = {}
+    for s in rec.get("segments", []):
+        by_beat.setdefault(s["beat"], []).append(s)
+    st, placed = np.zeros((n, 2)), []
+    for k, ns in enumerate(nar.get("segments") or [], 1):
+        cands = [s for s in by_beat.get(ns["beat"], []) if s.get("spokenSha256") == spoken_sha256(ns["spoken"])]
+        if not cands:
+            raise VoiceError("segment %d (%s): no verified audio for this spoken form (spoken-form hash mismatch)" % (k, ns["beat"]))
+        s = cands[0]
+        if s.get("status") != "VERIFIED" or (s.get("verification") or {}).get("status") != "VERIFIED":
+            raise VoiceError("segment %d (%s): audio not VERIFIED" % (k, ns["beat"]))
+        for what in ("source", "decoded"):
+            p = s[what]["path"]
+            if not os.path.isfile(p):
+                raise VoiceError("segment %d (%s): %s audio missing: %s" % (k, ns["beat"], what, p))
+            if sha256_file(p) != s[what]["sha256"]:
+                raise VoiceError("segment %d (%s): %s audio sha256 does not match the verified record" % (k, ns["beat"], what))
+        if ns["beat"] not in B:
+            raise VoiceError("segment %d: beat %r is not in this reel" % (k, ns["beat"]))
+        x, sr = read_wav(s["decoded"]["path"])                                 # mono -> stereo here
+        if sr != SR:
+            g = math.gcd(SR, sr); x = resample_poly(x, SR // g, sr // g, axis=0)
+        secs = len(x) / SR
+        if abs(secs - s["decoded"]["seconds"]) > 0.002:
+            raise VoiceError("segment %d (%s): %.4f s after resampling, %.4f s verified - refusing a time change" % (k, ns["beat"], secs, s["decoded"]["seconds"]))
+        b = B[ns["beat"]]
+        t0 = b["t0"] + float(s.get("offset", 0.3))
+        t1, end = t0 + secs, b["t0"] + b["dur"]
+        if t1 > end + 1e-6:
+            raise VoiceError("segment %d (%s) does not fit its beat: %.2f s of speech from %.2f s ends at %.2f s, the beat ends at %.2f s "
+                             "(needs %.2f s more). Lengthen the beat in the story; speech is never time-stretched or cut."
+                             % (k, ns["beat"], secs, t0, t1, end, t1 - end))
+        for w0, w1, what in protected_windows(plan):
+            if t0 < w1 and t1 > w0 and not s.get("deliberate"):
+                raise VoiceError("segment %d (%s) covers %s (%.2f-%.2f s); mark it deliberate in the story only if that is intended" % (k, ns["beat"], what, w0, w1))
+        L = integrated_lufs(x)
+        gain_db = VOICE_TARGET_LUFS - L
+        a, m = int(round(t0 * SR)), len(x)
+        if a + m > n:
+            raise VoiceError("segment %d (%s) runs past the end of the reel" % (k, ns["beat"]))
+        st[a:a + m] += x * 10 ** (gain_db / 20)
+        placed.append({"beat": ns["beat"], "t0": round(t0, 3), "t1": round(t1, 3), "seconds": round(secs, 4), "samples": m,
+                       "sourceLufs": round(L, 2), "gainDb": round(gain_db, 2), "spokenSha256": s["spokenSha256"],
+                       "sourceSha256": s["source"]["sha256"], "decodedSha256": s["decoded"]["sha256"], "jobId": s["source"].get("jobId"),
+                       "deliberate": bool(s.get("deliberate")), "listeningFlags": len((s.get("verification") or {}).get("listeningFlags") or [])})
+    if not placed:
+        raise VoiceError("the narration has no segments")
+    order = sorted(placed, key=lambda p: p["t0"])
+    for a_, b_ in zip(order, order[1:]):                                        # one narrator: lines never talk over each other
+        if b_["t0"] < a_["t1"] - 1e-6:
+            raise VoiceError("narration segments overlap: %s ends at %.2f s but %s starts at %.2f s" % (a_["beat"], a_["t1"], b_["beat"], b_["t0"]))
+    info = {"assetId": rec["assetId"], "voiceProfile": rec["voiceProfile"], "qualificationStatus": rec.get("qualificationStatus"),
+            "record": os.path.abspath(pv["record"]), "recordSha256": sha256_file(pv["record"]), "recordStatus": rec["status"],
+            "segments": placed, "targetLufs": VOICE_TARGET_LUFS, "duckMusicDb": -10.0, "duckSfxDb": -6.0,
+            "disclosureText": asset.get("disclosureText"), "aiNarration": True, "syntheticMedia": True}
+    return st, info, asset
 
 
 def master(x, fade_in=0.05, fade_out=1.1, tail_silence=0.06):
@@ -327,7 +438,16 @@ def render(plan, out_wav, library=LIBRARY, music_out=None):
         write_wav(music_out, music)                                              # the music stem, for the arrangement checks
     sfx = sfx_stem(plan["cues"], sc.n, np.random.default_rng(sc.seed + 1))
     sfx = sfx / max(np.abs(sfx).max(), 1e-9) * 0.62
-    mixed, auto = mix(plan, music, sfx)
+    voice, vinfo = None, None
+    if plan.get("voice"):                                                       # narrated reels only; silent reels skip this
+        voice, vinfo, vasset = voice_stem(plan, sc.n, lib)
+        tracks.append(vasset)
+    mixed, auto = mix(plan, music, sfx, voice)
+    if voice is not None:                                                       # the stems the voice checks measure
+        stem_dir = os.path.dirname(os.path.abspath(music_out or out_wav))
+        write_wav(os.path.join(stem_dir, "voice.wav"), voice)
+        write_wav(os.path.join(stem_dir, "music-bed.wav"), music * (10 ** (auto["musicGainDb"] / 20))[:, None])
+        vinfo.update(stem="voice.wav", musicBed="music-bed.wav")
     final = master(mixed)
     write_wav(out_wav, final)
     st = stats(final)
@@ -337,11 +457,14 @@ def render(plan, out_wav, library=LIBRARY, music_out=None):
         "tracks": tracks, "score": score, "musicStem": os.path.basename(music_out) if music_out else None,
         "arc": sc.sections, "syncEvents": sorted(sc.events, key=lambda e: e["t"]),
         "sfxCues": plan["cues"], "marks": plan.get("marks") or {},
-        "mix": {"priority": ["voice", "music", "sfx"], "voice": None, "textDucking": auto["text"], "sfxDuckingDb": -4.5,
+        "mix": {"priority": ["voice", "music", "sfx"], "voice": vinfo, "textDucking": auto["text"], "sfxDuckingDb": -4.5,
                 "musicGainDbBySection": {s["id"] + "@" + str(s["t0"]): round(float(np.median(auto["musicGainDb"][int(s["t0"] * SR): max(int(s["t0"] * SR) + 1, int(s["t1"] * SR))])), 2) for s in sc.sections},
                 "targetLufs": TARGET_LUFS, "ceilingDbtp": CEILING_DBTP, "fadeIn": 0.05, "fadeOut": 1.1, "tailSilence": 0.06},
         "stats": st,
     }
+    if voice is not None:                                                       # narrated reels only: the music before voice ducking
+        rep["mix"]["musicGainDbBySectionPreVoice"] = {s["id"] + "@" + str(s["t0"]): round(float(np.median(auto["musicGainDbPreVoice"][int(s["t0"] * SR): max(int(s["t0"] * SR) + 1, int(s["t1"] * SR))])), 2)
+                                                      for s in sc.sections}
     return rep
 
 

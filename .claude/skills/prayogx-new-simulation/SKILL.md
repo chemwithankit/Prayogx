@@ -49,7 +49,12 @@ code.
 6. **Experiment type.** What real experiment or process makes the pivot tangible: apparatus,
    molecule, field, graph.
 7. **Scientific design brief.** Write it down before coding (template below). Show it to the
-   owner if the design is unusual or needs WebGL.
+   owner if the design is unusual or needs WebGL. If a **narrated reel** is intended, plan it here,
+   not afterwards: narration beats and their sync with visual events, speaking time and pauses,
+   the reviewed spoken forms of the notation, the aha and the reveal (kept clear of narration),
+   the reel's duration, and how the page and reel still work silently. Narrate the story, not the screen:
+   any beat may be narrated, none must be, long problem statements are skipped or condensed
+   (`tools/reel-maker/README.md` → Voiceover, Narration model).
 8. **Interaction model.** Controls = the variables of the governing equations, question
    values pre-loaded, custom inputs only where meaningful (with honest off-pathway warnings
    and a restore control). Robust input parsing with clear messages. **Controls are toggles,
@@ -106,7 +111,8 @@ code.
     `tools/reel-maker/reels/<ID>.json`. Then write the story: a question-specific hook, problem line,
     curiosity line, the moments (the page's phases), callouts, the aha and the caption. Check it with
     `--preview t1,t2,…`, look at the frames, and run `node tools/reel-maker/generate-reel.js <ID> --origin new-simulation`
-    (or `auto_sim.py reel <batch> <n>` in the factory). It must end `30 / 30 reel checks passed` and
+    (or `auto_sim.py reel <batch> <n>` in the factory). It must end with every reel check passed (`30 / 30`, plus
+    the voice checks when narrated) and
     `READY_FOR_REVIEW`; it is never approved or published here (`tools/instagram_publish.py` is the owner's
     step), except for a question the owner names in End-to-End Production Mode (CLAUDE.md). If the reel fails, fix the story or the reel tooling, never the
     simulation. If it still fails, report "Simulation complete; Reel generation failed."

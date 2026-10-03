@@ -225,6 +225,9 @@ function callout(text, pt, side, u, laneY) {
 const TEMPLATES = {};
 TEMPLATES['question-simulation-v1'] = function build(spec, entry, q) {
   const S = spec.story, beats = [], cues = [];
+  /* story.beatSeconds can LENGTHEN a fixed beat (never shorten it) so narration fits; without it every beat keeps its
+     default, so silent reels compose exactly as before. Each beat animates in its first seconds, then holds. */
+  const BS = S.beatSeconds || {}, lenOf = (k, d) => Math.max(d, +BS[k] || 0);
   let t0 = 0;
   const add = (id, dur, draw, needs, extra) => { const b = Object.assign({ id: id, t0: t0, dur: dur, draw: draw, needs: needs || (() => []) }, extra || {}); beats.push(b); t0 += dur; return b; };
   const marks = {};   /* the audio's sync points: the aha and the answer reveal */
@@ -233,7 +236,7 @@ TEMPLATES['question-simulation-v1'] = function build(spec, entry, q) {
   const chipText = ['PAPER ' + entry.paperNumber, entry.subject.toUpperCase(), 'Q.' + entry.questionNumber].join('  ·  ');
 
   /* A. hook: rhythmic words, then the question line */
-  const hb = S.hook.beats || [], hookDur = 0.34 * hb.length + 1.75;
+  const hb = S.hook.beats || [], hookDur = lenOf('hook', 0.34 * hb.length + 1.75);
   add('hook', hookDur, (t) => {
     backdrop(t);
     hb.forEach((w, i) => {
@@ -252,7 +255,7 @@ TEMPLATES['question-simulation-v1'] = function build(spec, entry, q) {
   cue(hb.length ? 0.34 * hb.length + 0.45 : 0.2, 'whoosh', 0.7);
 
   /* B. context: the exam badge */
-  add('context', 1.25, (t) => {
+  add('context', lenOf('context', 1.25), (t) => {
     backdrop(t + 3);
     const u = E.back(prog(t, 0, 0.4));
     g.save(); g.globalAlpha = clamp(u);
@@ -333,7 +336,7 @@ TEMPLATES['question-simulation-v1'] = function build(spec, entry, q) {
   for (let i = 0; i < nItems; i++) cue(beats[beats.length - 1].t0 + 0.6 + i * 0.17, 'tick', 0.35);
 
   /* D. the problem */
-  add('problem', 2.3, (t) => {
+  add('problem', lenOf('problem', 2.3), (t) => {
     backdrop(t + 9);
     g.save(); const s = mix(1, 0.94, E.out(prog(t, 0, 0.5))); g.translate(W / 2, H / 2); g.scale(s, s); g.translate(-W / 2, -H / 2);
     drawQuestion(99, mix(1, 0.18, E.out(prog(t, 0, 0.5)))); g.restore();
@@ -347,7 +350,7 @@ TEMPLATES['question-simulation-v1'] = function build(spec, entry, q) {
 
   /* E. curiosity: can we see it? */
   const firstM = S.moments[0], firstFrames = framesFor(firstM.match, firstM.phases, firstM.window);
-  add('curiosity', 2.0, (t) => {
+  add('curiosity', lenOf('curiosity', 2.0), (t) => {
     backdrop(t + 12, 'rgba(57,135,229,.30)');
     const u = E.out(prog(t, 0.1, 0.5)), z = E.inOut(prog(t, 1.25, 0.75));
     g.save(); g.globalAlpha = 1 - z * 0.9; const s = 1 + z * 0.6; g.translate(W / 2, 900); g.scale(s, s); g.translate(-W / 2, -900);
@@ -376,9 +379,13 @@ TEMPLATES['question-simulation-v1'] = function build(spec, entry, q) {
   }
   S.moments.forEach((m, mi) => {
     const fr = framesFor(m.match, m.phases, m.window), dur = m.seconds, region = spec.regions[m.region];
+    /* aha.footage "continue" (opt-in, e.g. narration over the aha): the moment's own footage keeps playing through the aha,
+       spread over the moment and its aha, instead of freezing on its last frame. Without it nothing changes. */
+    const span = m.aha && m.aha.footage === 'continue' ? dur + m.aha.seconds : dur;
+    const frameAt = t => fr[Math.min(fr.length - 1, Math.floor(clamp(t / span) * (fr.length - 1)))];
     const b = add('moment-' + m.id, dur + (m.aha ? m.aha.seconds : 0), (t, T) => {
       backdrop(T, 'rgba(57,135,229,.24)');
-      const u = clamp(t / dur), idx = fr[Math.min(fr.length - 1, Math.floor(u * (fr.length - 1)))];
+      const u = clamp(t / dur), idx = frameAt(t);
       const enter = E.out(prog(t, 0, 0.45));
       let mapf;
       const inAha = m.aha && t > dur;
@@ -389,7 +396,7 @@ TEMPLATES['question-simulation-v1'] = function build(spec, entry, q) {
       } else {
         const ta = t - dur, zu = E.inOut(prog(ta, 0, 0.7)), A = m.aha;
         const zr = region.map((v, k) => mix(v, A.zoom[k], zu)), zh = Math.min(showBoard ? 440 : 560, 920 * A.zoom[3] / A.zoom[2]);   /* leave room for the text above the scoreboard */
-        mapf = footage(fr[fr.length - 1], zr, { x: 80, y: mix(box.y, 490, zu), w: 920, h: mix(box.h, zh, zu) }, { top: true });
+        mapf = footage(frameAt(t), zr, { x: 80, y: mix(box.y, 490, zu), w: 920, h: mix(box.h, zh, zu) }, { top: true });
         const ty = 490 + zh + 110;
         g.save(); g.globalAlpha = zu; const sh = 1 + Math.sin(ta * 40) * Math.max(0, 1 - ta * 2) * 0.02;
         g.translate(W / 2, 400); g.scale(sh, sh); g.translate(-W / 2, -400);
@@ -418,8 +425,7 @@ TEMPLATES['question-simulation-v1'] = function build(spec, entry, q) {
       if (t < 0.4) sweep(prog(t, 0, 0.4));
       watermark(1);
     }, (t) => {
-      const u = clamp(t / dur);
-      return [m.aha && t > dur ? fr[fr.length - 1] : fr[Math.min(fr.length - 1, Math.floor(u * (fr.length - 1)))]];
+      return [frameAt(t)];
     });
     done[m.id] = b.t0 + dur * 0.8;
     cue(b.t0, 'whoosh', 0.6);
@@ -437,7 +443,8 @@ TEMPLATES['question-simulation-v1'] = function build(spec, entry, q) {
   const subline = A.sub !== undefined ? A.sub : (kind !== 'value' && letters.length === 1 ? ((opts.find(o => o.key === letters[0]) || {}).text || '') : '');
   const stillUrl = D.stillsBase + (A.still || 'result') + '.png';
   const fitPx = (text, px, maxW, w) => { g.font = font(px, w || 900); const tw = g.measureText(plain(text)).width; return tw > maxW ? px * maxW / tw : px; };
-  add('answer', 4.4, (t) => {
+  const ansDur = lenOf('answer', 4.4);
+  add('answer', ansDur, (t) => {
     backdrop(t + 20, 'rgba(63,174,122,.20)');
     para(A.lead || (kind === 'match' ? 'So the match is…' : 'So the answer is…'), W / 2, SAFE.y0 + 150, 64, 920, 76, { align: 'center', weight: 900 }, t);
     const cy = 700;
@@ -465,11 +472,11 @@ TEMPLATES['question-simulation-v1'] = function build(spec, entry, q) {
     watermark(1);
   });
   const ab = beats[beats.length - 1];
-  marks.answer = { t0: +ab.t0.toFixed(3), t1: +(ab.t0 + 4.4).toFixed(3), reveal: +(ab.t0 + 1.35).toFixed(3) };
+  marks.answer = { t0: +ab.t0.toFixed(3), t1: +(ab.t0 + ansDur).toFixed(3), reveal: +(ab.t0 + 1.35).toFixed(3) };
   cue(ab.t0, 'whoosh', 0.6); cue(ab.t0 + 0.45, 'riser', 0.9); cue(ab.t0 + 1.35, 'reveal', 1); cue(ab.t0 + 1.75, 'impact', 0.7); cue(ab.t0 + 2.5, 'ping', 0.5);
 
   /* H. the payoff */
-  add('payoff', 3.0, (t) => {
+  add('payoff', lenOf('payoff', 3.0), (t) => {
     backdrop(t + 25, 'rgba(57,135,229,.30)');
     S.payoff.forEach((l, i) => { const tl = t - 0.15 - i * 0.55; if (tl > 0) para(l, W / 2, 760 + i * 130, i ? 104 : 78, 940, 110, { align: 'center', weight: 900, hi: C.accent2 }, tl); });
     const lu = E.back(prog(t, 1.3, 0.5));

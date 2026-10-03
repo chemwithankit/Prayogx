@@ -1,0 +1,73 @@
+{
+  "version": 3,
+  "updated": "2026-10-03",
+  "policy": "The only differences allowed between a reviewed spoken form and its local transcription. A transcriber writes some spoken words as symbols or digits; these rules map such a transcript token back to the words it stands for, and every application is listed in the verification record. Nothing else is equated: any other difference is a missing, added or substituted word and fails. A rule never changes scientific meaning, and passing here does not prove pronunciation - human listening remains the final gate. Add a rule only after a person has checked the audio it came from, and bump the version.",
+  "tokens": {
+    "kp": {
+      "spoken": "k p",
+      "observed": "whisper ggml-small.en, 2026-10-03, 'K p' (equilibrium constant)"
+    },
+    "kc": {
+      "spoken": "k c",
+      "observed": "whisper ggml-small.en, 2026-10-03, 'K c'"
+    },
+    "rt": {
+      "spoken": "r t",
+      "observed": "whisper ggml-small.en, 2026-10-03, 'R T'"
+    },
+    "h2so4": {
+      "spoken": "h two s o four",
+      "observed": "whisper ggml-small.en, 2026-10-03, 'H two S O four'"
+    },
+    "g0": {
+      "spoken": "g naught",
+      "observed": "whisper ggml-small.en, 2026-10-03, 'delta G naught' written as 'delta G0'"
+    },
+    "h0": {
+      "spoken": "h naught",
+      "observed": "whisper ggml-small.en, 2026-10-03, 'delta H naught'"
+    },
+    "s0": {
+      "spoken": "s naught",
+      "observed": "whisper ggml-small.en, 2026-10-03, 'delta S naught'"
+    },
+    "e0": {
+      "spoken": "e naught",
+      "observed": "whisper ggml-small.en, 2026-10-03, 'E naught cell / cathode / anode'"
+    },
+    "h+": {
+      "spoken": "h plus",
+      "observed": "whisper ggml-small.en, 2026-10-03, 'H plus'"
+    },
+    "oh-": {
+      "spoken": "o h minus",
+      "observed": "whisper ggml-small.en, 2026-10-03, 'O H minus'"
+    },
+    "oh": {
+      "spoken": "o h",
+      "observed": "whisper ggml-small.en, 2026-10-03, 'O H minus' written as 'OH minus'"
+    }
+  },
+  "integers": {
+    "enabled": true,
+    "range": [
+      0,
+      999999
+    ],
+    "form": "English number words for the exact value, no 'and', hyphenated tens (96,485 = ninety-six thousand four hundred eighty-five; 1 = one; 9 = nine)",
+    "observed": "whisper ggml-small.en writes spoken numbers as digits ('one' -> '1', 'ten' -> '10', 'ninety-six thousand ...' -> '96,485')"
+  },
+  "spelling": {
+    "policy": "British and American spellings of the same scientific word are the same spoken word. Both the reviewed spoken form and the transcript are compared in the canonical spelling below; every place where either side was respelled is listed in the verification record. The authored spoken text is never changed.",
+    "canonical": {
+      "millimeter": "millimetre",
+      "millimeters": "millimetres"
+    },
+    "observed": "owner review 2026-10-03: whisper ggml-small.en writes American spellings ('millimeter') for British script spellings ('millimetre')"
+  },
+  "decimals": {
+    "enabled": true,
+    "form": "a transcript decimal such as 0.21 stands for its integer part in words, the word 'point', then every decimal digit as its own word, in order (0.21 = zero point two one). The value is kept exactly: 0.20, 0.201 or 0.12 never match 'zero point two one', and 'point twenty-one' never matches 0.21.",
+    "observed": "owner approval 2026-10-03 for the Q01 answer line ('zero point two one millimetres per second'); whisper ggml-small.en writes spoken numbers as digits"
+  }
+}

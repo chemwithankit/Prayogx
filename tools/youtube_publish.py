@@ -555,11 +555,19 @@ def print_checklist(items, red):
     IP.print_checklist(items, red)
 
 
-def video_resource(md, cfg, privacy):
+def ai_narration(m):
+    """True when the approved reel's soundtrack contains AI-generated narration (reel.json -> audio.aiNarration,
+    written by generate-reel.js from the verified voice record). Silent reels have none."""
+    return ((m or {}).get("audio") or {}).get("aiNarration") is True
+
+
+def video_resource(md, cfg, privacy, synthetic=False):
+    """containsSyntheticMedia: true for a reel with AI-generated narration (decided 2026-10-03, tools/reel-maker/README.md ->
+    Voiceover), false for every silent reel, as before."""
     sn = {"title": md["title"], "description": md["description"], "tags": md["tags"]}
     if cfg.category_id:
         sn["categoryId"] = cfg.category_id
-    return {"snippet": sn, "status": {"privacyStatus": privacy, "selfDeclaredMadeForKids": cfg.made_for_kids, "containsSyntheticMedia": False}}
+    return {"snippet": sn, "status": {"privacyStatus": privacy, "selfDeclaredMadeForKids": cfg.made_for_kids, "containsSyntheticMedia": bool(synthetic)}}
 
 
 # ------------------------------------------------------------------ commands
@@ -730,7 +738,7 @@ def _upload(sid, cfg, privacy, m, md, data, yt, log, red, known, force, reason, 
 
     try:
         log("1/4 opening the upload session …")
-        session = yt.start_upload(video_resource(md, cfg, privacy), len(data), cfg.notify)
+        session = yt.start_upload(video_resource(md, cfg, privacy, ai_narration(m)), len(data), cfg.notify)
     except PublishError as e:
         raise fail(e)
     log("2/4 uploading reel.mp4 (%d bytes) …" % len(data))

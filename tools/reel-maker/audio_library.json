@@ -1,5 +1,5 @@
 {
-  "policy": "Every sound in a PrayogX reel is listed here with its provenance. audio.py refuses any asset that is not listed, whose licenseVerified is not true, that does not permit commercial use on Instagram, or (for a file) whose sha256 does not match. Never add film or film songs, chart music, trending Instagram audio, random YouTube or 'free music' downloads, or any track whose commercial social-media licence cannot be verified from a written licence kept with the file. If the licence cannot be verified, do not use the asset.",
+  "policy": "Every sound in a PrayogX reel is listed here with its provenance. audio.py refuses any asset that is not listed, whose licenseVerified is not true, that does not permit commercial use on Instagram, or (for a file) whose sha256 does not match. Never add film or film songs, chart music, trending Instagram audio, random YouTube or 'free music' downloads, or any track whose commercial social-media licence cannot be verified from a written licence kept with the file. If the licence cannot be verified, do not use the asset. An external voiceover (role voice, source external-tts) is allowed only through this list: a verified licence document kept in the repository, commercial use for the platform, the standard disclosureText, and per reel a VERIFIED voice record that references this assetId (tools/reel-maker/README.md -> Voiceover).",
   "assets": [
     {
       "assetId": "prayogx-score-v2",
@@ -40,6 +40,34 @@
       "commercialUse": true,
       "attributionRequired": false,
       "attributionText": ""
+    },
+    {
+      "assetId": "voice-higgsfield-elevenlabs-v4",
+      "role": "voice",
+      "source": "external-tts",
+      "provider": "higgsfield",
+      "engine": "ElevenLabs",
+      "model": "elevenlabs_v4",
+      "voiceProfiles": [
+        "prayogx-en-emily-v1"
+      ],
+      "owner": "Generated per reel through Higgsfield (ElevenLabs engine) from a PrayogX-written, human-reviewed script",
+      "license": "Higgsfield Terms of Use (last updated 2026-07-26) §4.4: Higgsfield claims no ownership of outputs and does not restrict their commercial use; §8: the ElevenLabs Prohibited Use Policy (last updated 2026-08-17) also applies, including AI-voice disclosure and no voice replication without consent. Reviewed 2026-10-03.",
+      "licenseDocument": "tools/reel-maker/licences/higgsfield-elevenlabs-voice.md",
+      "licenseVerified": true,
+      "sourceReference": "https://higgsfield.ai/terms-of-use-agreement ; https://elevenlabs.io/use-policy",
+      "permittedUse": [
+        "instagram",
+        "youtube"
+      ],
+      "commercialUse": true,
+      "attributionRequired": false,
+      "attributionText": "",
+      "disclosureRequired": true,
+      "disclosureText": "Narration: AI-generated voice reading a script written and checked by PrayogX.",
+      "qualificationStatus": "provisional",
+      "qualificationScope": "Profile prayogx-en-emily-v1 only (this model, preset voice and default settings; English; reviewed spoken-form workflow). Other Higgsfield voice engines are not covered.",
+      "verificationRequired": "every generated voice file must be VERIFIED by local word-for-word transcription before it enters a reel; per-reel records reference this assetId"
     }
   ]
 }

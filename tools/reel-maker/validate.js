@@ -109,6 +109,9 @@ async function validate(outDir, work, manifest, bin, spec) {
   ok('thumbnail: 1080 x 1920, the question hook, the exam, the brand, nothing off the frame', th.drew.brand && th.drew.footage && tbad.length === 0 && th.boxes.some(b => /JEE/.test(b.text)), th.boxes.length + ' text boxes');
   const ct = fs.readFileSync(cap, 'utf8');
   ok('caption: hook, exam context, hashtags, under 2200 characters, no spoiler', ct.length < 2200 && /#\w+/.test(ct) && /JEE Advanced/.test(ct) && !new RegExp('option\\s*\\(?' + ans + '\\)?\\b|P→5', 'i').test(ct), ct.length + ' characters');
+  /* narrated reels only: the standard AI-voice disclosure, exactly as the voice asset defines it (audio.py report) */
+  const VO = ((manifest.audio || {}).mix || {}).voice;
+  if (VO) ok('caption: the AI-voice disclosure line of the voice asset, word for word', !!VO.disclosureText && ct.indexOf(VO.disclosureText) >= 0, VO.disclosureText || 'no disclosure text');
 
   const SI = manifest.sourceIntegrity || {};
   ok('the simulation was only read: its folder is byte-identical before and after', SI.unchanged === true, SI.folder + ' sha256 ' + String(SI.sha256After).slice(0, 12));
@@ -120,7 +123,8 @@ async function validate(outDir, work, manifest, bin, spec) {
     execFileSync(bin, ['audio', mp4, dec]);
     const input = path.join(work, 'audio-check.json');
     fs.writeFileSync(input, JSON.stringify({ decoded: dec, rendered: path.join(work, 'audio.wav'), music: path.join(work, 'music.wav'), report: path.join(work, 'audio.json'), probe: pr,
-      beats: manifest.beats, marks: manifest.marks, seconds: manifest.video.seconds, fps: manifest.video.fps }));
+      beats: manifest.beats, marks: manifest.marks, seconds: manifest.video.seconds, fps: manifest.video.fps,
+      voice: path.join(work, 'voice.wav'), musicBed: path.join(work, 'music-bed.wav'), narration: (spec || {}).narration || null, story: (spec || {}).story || null }));
     const r = JSON.parse(execFileSync(PY, [path.join(__dirname, 'audio_check.py'), input], { maxBuffer: 16 << 20 }).toString());
     r.checks.forEach(c => ok('audio: ' + c.name, c.ok, c.detail));
     audio = r.measured;

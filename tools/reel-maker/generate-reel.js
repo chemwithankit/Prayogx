@@ -37,10 +37,11 @@ const sha256 = f => crypto.createHash('sha256').update(fs.readFileSync(f)).diges
 const stamp = (m, status, note) => { m.status = status; (m.statusHistory = m.statusHistory || []).push(Object.assign({ status: status, at: new Date().toISOString(), by: 'generate-reel.js' }, note ? { note: note } : {})); };
 
 function args() {
-  const a = process.argv.slice(2), o = { id: null, reuse: false, keep: false, preview: null, draft: false, origin: 'on-request' };
+  const a = process.argv.slice(2), o = { id: null, reuse: false, keep: false, preview: null, draft: false, origin: 'on-request', variant: null };
   for (let i = 0; i < a.length; i++) {
     if (a[i] === '--reuse-footage') o.reuse = true;
     else if (a[i] === '--draft') o.draft = true;
+    else if (a[i] === '--variant') o.variant = a[++i];
     else if (a[i] === '--origin') o.origin = a[++i];
     else if (a[i] === '--keep-work') o.keep = true;
     else if (a[i] === '--preview') o.preview = a[++i].split(',').map(Number);
@@ -48,8 +49,14 @@ function args() {
   }
   if (!o.id) { console.error('usage: node tools/reel-maker/generate-reel.js <SIMULATION-ID> [--draft] [--reuse-footage] [--preview t1,t2] [--keep-work] [--origin new-simulation|on-request]'); process.exit(2); }
   if (['new-simulation', 'on-request'].indexOf(o.origin) < 0) { console.error('--origin must be new-simulation or on-request'); process.exit(2); }
+  if (o.variant !== null && !/^[a-z]+$/.test(o.variant || '')) { console.error('--variant must be lower-case letters (e.g. narrated)'); process.exit(2); }
   return o;
 }
+
+/* a variant (e.g. a narrated version beside a published silent reel) has its own story and output folder; the publishers
+   only read output/<ID>, so a variant can never be published or overwrite the silent reel's files */
+const storyFile = o => path.join(HERE, 'reels', o.id + (o.variant ? '.' + o.variant : '') + '.json');
+const outputDir = o => o.variant ? path.join(HERE, 'output', '_variants', o.id + '.' + o.variant) : path.join(HERE, 'output', o.id);
 
 /* every file of the simulation's folder, hashed: the before/after proof that the page was only read */
 function folderHash(dir) {
@@ -143,10 +150,12 @@ async function compose(spec, entry, question, footage, work, outDir, preview) {
   } finally { await b.close(); }
 }
 
-function caption(spec, entry) {
+function caption(spec, entry, voice) {
   const c = spec.caption || {};
+  /* a narrated reel adds the voice asset's standard AI-voice disclosure (audio.py report -> mix.voice); a silent reel adds nothing */
+  const disclosure = voice && voice.disclosureText ? ['', voice.disclosureText] : [];
   return [c.hook, '', c.body, '', 'JEE Advanced ' + entry.year + ' · Paper ' + entry.paperNumber + ' · ' + entry.subject + ' · Q.' + entry.questionNumber, '', c.cta, '', (c.hashtags || []).join(' ')]
-    .filter(x => x !== undefined).join('\n').replace(/\n{3,}/g, '\n\n') + '\n';
+    .concat(disclosure).filter(x => x !== undefined).join('\n').replace(/\n{3,}/g, '\n\n') + '\n';
 }
 
 (async () => {
@@ -154,14 +163,28 @@ function caption(spec, entry) {
   const man = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'manifest.json'), 'utf8'));
   const entry = man.simulations.find(s => s.id === o.id);
   if (!entry) { console.error('simulation not found: ' + o.id + ' is not in data/manifest.json (IDs look like ADV-2026-P1-PHY-Q03)'); process.exit(2); }
-  const pageFile = path.join(ROOT, entry.path), outDir = path.join(HERE, 'output', o.id), work = path.join(outDir, '.work');
+  const pageFile = path.join(ROOT, entry.path), outDir = outputDir(o), work = path.join(outDir, '.work');
   if (!fs.existsSync(pageFile)) { console.error('simulation page missing: ' + entry.path); process.exit(2); }
   if (fs.existsSync(path.join(outDir, 'publish', 'publish.lock'))) { console.error('a publish of ' + o.id + ' is running (tools/instagram_publish.py) - not regenerating its reel now'); process.exit(2); }
-  const specFile = path.join(HERE, 'reels', o.id + '.json');
+  const specFile = storyFile(o);
   if (!o.draft && !fs.existsSync(specFile)) { console.error('no reel story yet: ' + path.relative(ROOT, specFile) + '\nrun with --draft to record the page and write a first story spec, then edit it'); process.exit(2); }
   if (!o.preview && !o.draft) requireMac();
   const simDir = path.dirname(pageFile), before = folderHash(simDir);
   const spec = o.draft && !fs.existsSync(specFile) ? { record: { maxSeconds: 90, tailSeconds: 2.2 } } : JSON.parse(fs.readFileSync(specFile, 'utf8'));
+  /* narrated reels consume an already generated, VERIFIED voice record (tools/reel-maker/voice.py). Building never calls a
+     voice provider and never spends credits; without the record the build stops (README -> Voiceover). */
+  const voiceRecord = path.join(outDir, 'voice', 'voice.json');
+  if (spec.narration && !o.draft && !o.preview) {
+    const vcmd = 'python3 tools/reel-maker/voice.py %s ' + o.id + (o.variant ? ' --variant ' + o.variant : '');
+    let vr = null;
+    try { vr = JSON.parse(fs.readFileSync(voiceRecord, 'utf8')); } catch (e) { vr = null; }
+    if (!vr || vr.status !== 'VERIFIED') {
+      console.error('this story has narration but no VERIFIED voice record (' + path.relative(ROOT, voiceRecord) + ': ' + (vr ? vr.status : 'missing') + ').\n'
+        + 'the build never generates voice. Prepare, estimate and generate it explicitly first:\n  ' + vcmd.replace('%s', 'prepare') + '\n  ' + vcmd.replace('%s', 'estimate')
+        + '\n  ' + vcmd.replace('%s', 'generate') + ' --cap <CREDITS> --confirm ' + o.id);
+      process.exit(2);
+    }
+  }
   fs.mkdirSync(work, { recursive: true });
 
   let question, footage;
@@ -192,6 +215,7 @@ function caption(spec, entry) {
   log('score and sound design …');
   const plan = { simulationId: o.id, subject: entry.subject, chapter: entry.chapter, topic: entry.topic, duration: c.frames / (spec.fps || 30), fps: spec.fps || 30,
     beats: c.timeline.beats, cues: c.timeline.cues, marks: c.timeline.marks, audio: spec.audio || {} };
+  if (spec.narration) plan.voice = { record: voiceRecord, narration: spec.narration };   /* audio.py re-checks every hash and VERIFIED status */
   fs.writeFileSync(path.join(work, 'audio-plan.json'), JSON.stringify(plan, null, 1));
   execFileSync(PY, [path.join(HERE, 'audio.py'), '--plan', path.join(work, 'audio-plan.json'), '--out', path.join(work, 'audio.wav'), '--report', path.join(work, 'audio.json')], { stdio: 'inherit' });
   const audioRep = JSON.parse(fs.readFileSync(path.join(work, 'audio.json'), 'utf8'));
@@ -205,18 +229,20 @@ function caption(spec, entry) {
   const container = JSON.parse(execFileSync(PY, [path.join(HERE, 'mp4tools.py'), 'strip-edits', path.join(outDir, 'reel.mp4'), '--audio-priming', String(AAC_PRIMING)]).toString());
   log('container: moov first ' + container.moovBeforeMdat + ', edit lists ' + container.editLists + ' (removed ' + container.removedBytes + ' bytes)');
 
-  fs.writeFileSync(path.join(outDir, 'caption.txt'), caption(spec, entry));
+  fs.writeFileSync(path.join(outDir, 'caption.txt'), caption(spec, entry, (audioRep.mix || {}).voice));
   let commit = '';
   try { commit = execFileSync('git', ['-C', ROOT, 'rev-parse', '--short', 'HEAD']).toString().trim(); } catch (e) { commit = ''; }
   const after = folderHash(simDir);
   const manifest = {
-    simulationId: o.id, origin: o.origin, status: 'GENERATED', statusHistory: [], template: spec.template, created: new Date().toISOString(), sourcePage: entry.path, sourceRevision: entry.revision, repoCommit: commit,
+    simulationId: o.id, variant: o.variant || undefined, origin: o.origin, status: 'GENERATED', statusHistory: [], template: spec.template, created: new Date().toISOString(), sourcePage: entry.path, sourceRevision: entry.revision, repoCommit: commit,
     sourceIntegrity: { folder: path.relative(ROOT, simDir), sha256Before: before, sha256After: after, unchanged: before === after },
     answerReveal: c.timeline.answer, questionScale: c.timeline.questionScale,
     exam: entry.exam, year: entry.year, paper: entry.paperNumber, subject: entry.subject, chapter: entry.chapter, questionNumber: entry.questionNumber, answer: entry.answer,
     video: { file: 'reel.mp4', width: 1080, height: 1920, fps: spec.fps || 30, seconds: +(c.frames / (spec.fps || 30)).toFixed(3), frames: c.frames },
     beats: c.timeline.beats, marks: c.timeline.marks, audioCues: c.timeline.cues,
-    audio: { summary: 'original PrayogX score and sound effects, generated by tools/reel-maker/audio.py - no third-party audio',
+    audio: { summary: (audioRep.mix || {}).voice ? 'original PrayogX score and sound effects, generated by tools/reel-maker/audio.py, and a verified, licensed AI voiceover (' + audioRep.mix.voice.assetId + ')'
+        : 'original PrayogX score and sound effects, generated by tools/reel-maker/audio.py - no third-party audio',
+      aiNarration: !!(audioRep.mix || {}).voice,   /* read by the publishers for AI / synthetic-media disclosure (a narrated reel is never built before that is wired) */
       tracks: audioRep.tracks, score: audioRep.score, arc: audioRep.arc, syncEvents: audioRep.syncEvents, mix: audioRep.mix,
       rendered: { sampleRate: audioRep.sampleRate, channels: audioRep.channels, seconds: audioRep.seconds, stats: audioRep.stats } },
     footage: { frames: footage.frames.length, fps: footage.fps, simulationSeconds: +(footage.frames.length / footage.fps).toFixed(2), canvas: footage.canvas, pageErrors: footage.pageErrors },
@@ -247,7 +273,7 @@ function caption(spec, entry) {
   try {
     const o = args();
     if (!o.preview && !o.draft) {
-      const dir = path.join(HERE, 'output', o.id);
+      const dir = outputDir(o);   /* a failed variant build never touches the silent reel's output/<ID> */
       if (fs.existsSync(dir)) {
         ['reel.mp4', 'thumbnail.jpg', 'caption.txt'].forEach(f => fs.rmSync(path.join(dir, f), { force: true }));
         const m = { simulationId: o.id, origin: o.origin, status: 'GENERATION_FAILED', statusHistory: [], error: String(e && e.message || e).slice(0, 600) };

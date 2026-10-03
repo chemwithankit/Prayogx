@@ -200,6 +200,11 @@ social-media licence cannot be verified. An outside asset can be used only when 
 `licenseVerified: true`, commercial and Instagram use, its sha256 and a licence document kept in the repository;
 otherwise the build stops. Instagram labels the sound as original audio.
 
+Narrated reels (implemented 2026-10-03 as narrated variants; this publisher does not handle variants yet, so none can be published) may add one more sound: a verified, licensed external
+voiceover, listed in `audio_library.json` with its provenance, verified word for word against the reviewed spoken
+script, and with the standard AI-voice disclosure line in the caption. Silent reels are unchanged, and the approval
+and publish steps here do not change. Policy: `tools/reel-maker/README.md` → Voiceover.
+
 ## 7. First live publish (opt-in)
 
 1. Set up the app, permissions and token (§1–2). Run `python3 tools/instagram_publish.py --reel <ID> --dry-run
