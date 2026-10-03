@@ -44,7 +44,10 @@ sims = man["simulations"]
 # A simulation with status "draft" is built but not published: build_content.py leaves it out of the
 # feed, the crawlable pages, the sitemap and the revision lock, and check_library.py does the same.
 # The feed checks below therefore run over the published set; folder and count checks run over all.
-published = [s for s in sims if s.get("status", "human_verified") != "draft"]
+# Concept simulations (CON-) are published through the NCERT Explorer only (content/ncert/), never
+# the JEE feed; the revision lock covers both.
+live = [s for s in sims if s.get("status", "human_verified") != "draft"]
+published = [s for s in live if s["id"].startswith("ADV-")]
 drafts = [s for s in sims if s.get("status") == "draft"]
 lock = json.load(open(os.path.join(ROOT, "data/revisions.json"), encoding="utf-8"))
 idx = json.load(open(os.path.join(ROOT, "content/index.json"), encoding="utf-8"))
@@ -71,10 +74,10 @@ ok("every ID matches the permanent convention", not bad_id, ", ".join(bad_id))
 ok("every ID is unique", len(set(s["id"] for s in sims)) == len(sims))
 no_rev = [s["id"] for s in sims if not isinstance(s.get("revision"), int) or s["revision"] < 1]
 ok("every simulation carries an integer revision", not no_rev, ", ".join(no_rev))
-unlocked = [s["id"] for s in published if s["id"] not in lock]
+unlocked = [s["id"] for s in live if s["id"] not in lock]
 ok("every published simulation has a recorded content hash", not unlocked, ", ".join(unlocked))
 drift = []
-for s in published:
+for s in live:
     rec = lock.get(s["id"])
     if not rec:
         continue
@@ -109,6 +112,13 @@ leaked = [s["id"] for s in drafts
           or os.path.exists(os.path.join(ROOT, "s", s["id"]))]
 ok("drafts stay off every public surface: feed, detail record, crawlable page, sitemap, lock",
    not leaked, ", ".join(leaked))
+
+concepts_in_jee = [s["id"] for s in sims if s["id"].startswith("CON-")
+                   and (s["id"] in feed or "/s/%s/" % s["id"] in sitemap
+                        or os.path.exists(os.path.join(ROOT, "content/sims", s["id"] + ".json"))
+                        or os.path.exists(os.path.join(ROOT, "s", s["id"])))]
+ok("concept simulations stay off the JEE feed, detail records, crawlable pages and sitemap",
+   not concepts_in_jee, ", ".join(concepts_in_jee))
 
 # ------------------------------------------- 5. no duplicated simulation content
 app_www = os.path.join(ROOT, "app/www")

@@ -1,0 +1,39 @@
+{
+  "schemaVersion": "1.0.0",
+  "note": "NCERT Explorer catalogue: class -> subject -> book -> chapter. Curated by hand; validated by tools/ncert_schema.py. The PDFs are NEVER hosted or proxied: 'official' is the NCERT download, 'hosted' stays null unless written permission is recorded in docs/DECISIONS.md. Page numbers are the book's printed pages, which the official chapter PDFs carry as their page labels.",
+  "books": [
+    {
+      "id": "NCERT-11-CHE-P1",
+      "class": 11,
+      "subject": "Chemistry",
+      "title": "Chemistry Part I",
+      "code": "kech1",
+      "chapters": [
+        {
+          "id": "NCERT-11-CHE-P1-CH05",
+          "number": 5,
+          "title": "Thermodynamics",
+          "file": "data/ncert/chapters/NCERT-11-CHE-P1-CH05.json",
+          "source": {
+            "official": "https://ncert.nic.in/textbook/pdf/kech105.pdf",
+            "hosted": null,
+            "bookPages": [
+              136,
+              167
+            ],
+            "titleToken": "Thermodynamics",
+            "editions": [
+              {
+                "label": "Reprint 2026-27",
+                "sha256": "e2b5d180e6f16f33f6d636a742ed6c23ce6a55636e5edb7f26207a8ed48ec5f8",
+                "pdfPages": 32,
+                "pageLabels": "book",
+                "verified": "2026-10-02"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

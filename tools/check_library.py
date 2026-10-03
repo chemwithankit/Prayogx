@@ -15,6 +15,8 @@ Checks, for every entry in data/manifest.json:
   * every published simulation has a detail record, with no stale ones left over
   * no shipped simulation was edited without bumping its `revision`
   * `access` and `status` hold values the UI knows how to render
+  * the NCERT Explorer data (data/ncert/) is valid and content/ncert/ is current
+  * concept simulations stay out of the JEE feed (they are shown by the NCERT Explorer only)
 
 Run:  python3 tools/check_library.py
 Exit code 0 = clean, 1 = problems found.
@@ -36,6 +38,7 @@ SIM_ROOT = os.path.join(ROOT, "simulations")
 ACCESS_VALUES = ("free", "premium", "pro")
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import registry_schema as schema  # noqa: E402  (IDs, status values, concept rules - one definition)
+import ncert_schema  # noqa: E402  (NCERT catalogue, chapter mapping and feed)
 STATUS_VALUES = schema.STATUS_VALUES
 
 REQUIRED = ["id", "path", "folder", "title", "year", "paper", "subject",
@@ -54,13 +57,14 @@ def main():
         manifest = json.load(fh)
     sims = manifest.get("simulations", [])
 
+    mapped = ncert_schema.mapped_concepts(ROOT)
     seen_ids = {}
     for sim in sims:
         sid = sim.get("id", "<no id>")
 
         concept = schema.kind_of(sim) == "concept"
         if concept:
-            for msg in schema.concept_problems(sim):
+            for msg in schema.concept_problems(sim, mapped):
                 fail(msg)
         else:
             for field in REQUIRED:
@@ -127,7 +131,9 @@ def main():
                 fail("data/manifest.js is out of sync with manifest.json — run tools/sync_manifest.py")
 
     # ---------------------------------------------------------------- feed
-    published = [s for s in sims if s.get("status", "human_verified") != "draft"]
+    # the JEE feed lists question simulations; concepts live only in content/ncert/
+    live = [s for s in sims if s.get("status", "human_verified") != "draft"]
+    published = [s for s in live if schema.kind_of(s) == "question"]
     if not os.path.isdir(CONTENT):
         fail("content/ is missing - run tools/build_content.py")
     else:
@@ -190,7 +196,7 @@ def main():
     else:
         with open(LOCK_PATH, encoding="utf-8") as fh:
             lock = json.load(fh)
-        for sim in published:
+        for sim in live:
             sid, rel = sim.get("id"), sim.get("path", "")
             abs_path = os.path.join(ROOT, rel)
             if not rel or not os.path.isfile(abs_path):
@@ -217,6 +223,28 @@ def main():
         st = sim.get("status", "human_verified")
         if st not in STATUS_VALUES:
             fail("%s: status %r is not one of %s" % (sim.get("id"), st, STATUS_VALUES))
+
+    # ------------------------------------------------------- NCERT Explorer
+    for msg in ncert_schema.problems(ROOT, sims):
+        fail(msg)
+    try:
+        want = ncert_schema.feed(ROOT, sims)
+    except (OSError, ValueError, KeyError, TypeError) as exc:
+        want = {}
+        fail("content/ncert/ cannot be built from data/ncert/ (%s)" % exc)
+    ncert_dir = os.path.join(ROOT, ncert_schema.FEED_DIR)
+    for rel, obj in sorted(want.items()):
+        f = os.path.join(ncert_dir, rel)
+        if not os.path.isfile(f):
+            fail("content/ncert/%s is missing - run tools/build_content.py" % rel)
+        else:
+            with open(f, encoding="utf-8") as fh:
+                if fh.read() != ncert_schema.serialise(obj):
+                    fail("content/ncert/%s is stale - run tools/build_content.py" % rel)
+    if os.path.isdir(ncert_dir):
+        for fn in sorted(os.listdir(ncert_dir)):
+            if fn.endswith(".json") and fn not in want:
+                fail("stale NCERT feed file content/ncert/%s - delete it" % fn)
 
     # orphaned simulation folders
     def norm(p):

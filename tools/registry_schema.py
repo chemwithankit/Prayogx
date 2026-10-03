@@ -45,6 +45,9 @@ CONCEPT_REQUIRED = ["id", "kind", "path", "folder", "title", "subject", "chapter
                     "learningObjectives", "source", "verification"]
 # The website, the app and the crawlable pages render exam / year / paper / question number for
 # every card. Until they render concepts, a concept may be registered only as a draft.
+# Concepts are published through the NCERT Explorer only (docs/NCERT.md): build_content.py keeps them
+# out of the JEE feed, and a published concept must be mapped under `understand` in a data/ncert/
+# chapter. This flag turns on once the NCERT page can open a concept (NCERT plan, Phase 5).
 CONCEPT_PUBLISHABLE = False
 
 
@@ -85,8 +88,11 @@ def companions(sim):
     return ("meta.json", "concept.md") if kind_of(sim) == "concept" else ("meta.json", "question.md")
 
 
-def concept_problems(sim):
-    """Everything wrong with a concept entry, as messages (empty list = valid)."""
+def concept_problems(sim, ncert_mapped=None):
+    """Everything wrong with a concept entry, as messages (empty list = valid).
+
+    ncert_mapped: the set of CON- IDs an NCERT chapter maps (ncert_schema.mapped_concepts), or None
+    when the caller cannot know - then the mapping rule is not applied."""
     sid = sim.get("id", "<no id>")
     out = []
     for f in CONCEPT_REQUIRED:
@@ -111,4 +117,7 @@ def concept_problems(sim):
     if not CONCEPT_PUBLISHABLE and sim.get("status", DEFAULT_STATUS) != "draft":
         out.append("%s: a concept can only be registered as status 'draft' until the website, the app and "
                    "the crawlable pages render concepts (docs/AUTO_SIMULATION_PIPELINE.md §3)" % sid)
+    elif ncert_mapped is not None and sim.get("status", DEFAULT_STATUS) != "draft" and sid not in ncert_mapped:
+        out.append("%s: a published concept must be mapped under 'understand' in a data/ncert/ chapter - "
+                   "the NCERT Explorer is the only place concepts are shown (docs/NCERT.md)" % sid)
     return out

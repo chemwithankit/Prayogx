@@ -19,6 +19,11 @@ This script derives the payload the clients actually download:
                            has its own indexable URL with its own title and
                            description instead of hiding behind a #fragment
     sitemap.xml            every simulation URL, for search engines
+    content/ncert/         the NCERT Explorer feed (tools/ncert_schema.py), built from data/ncert/
+
+The JEE feed above lists question simulations only. Concept simulations (CON-) are shown only by the
+NCERT Explorer, so they never reach content/index.json, the crawlable pages or the sitemap; the
+revision lock covers both, because both are cached by revision.
 
 Why: a manifest entry averages ~8.4 KB because it carries the verification log,
 the interactivity list and the concept prose. At 1000 simulations that is 8.4 MB
@@ -35,6 +40,10 @@ import json
 import re
 import os
 import sys
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import ncert_schema  # noqa: E402
+import registry_schema  # noqa: E402
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 MANIFEST = os.path.join(ROOT, "data", "manifest.json")
@@ -259,13 +268,34 @@ def update_lock(published):
     return blessed, held
 
 
+def write_ncert(sims):
+    """content/ncert/ from data/ncert/, with stale chapter files retired. Returns the file count."""
+    files = ncert_schema.feed(ROOT, sims)
+    out = os.path.join(ROOT, ncert_schema.FEED_DIR)
+    if not files:
+        return 0
+    os.makedirs(out, exist_ok=True)
+    for rel, obj in files.items():
+        with open(os.path.join(out, rel), "w", encoding="utf-8") as fh:
+            fh.write(ncert_schema.serialise(obj))
+    for fn in sorted(os.listdir(out)):
+        if fn.endswith(".json") and fn not in files:
+            try:
+                os.remove(os.path.join(out, fn))
+            except OSError:
+                print("  NOTE: stale NCERT feed file left in content/ncert: %s" % fn)
+    return len(files)
+
+
 def main():
     with open(MANIFEST, encoding="utf-8") as fh:
         manifest = json.load(fh)
     sims = manifest.get("simulations", [])
 
-    published = [s for s in sims
-                 if s.get("status", DEFAULTS["status"]) != "draft" and s.get("id")]
+    live = [s for s in sims
+            if s.get("status", DEFAULTS["status"]) != "draft" and s.get("id")]
+    published = [s for s in live if registry_schema.kind_of(s) == "question"]
+    concepts = [s for s in live if registry_schema.kind_of(s) == "concept"]
     published.sort(key=lambda s: s.get("id", ""))
 
     os.makedirs(os.path.join(OUT, "sims"), exist_ok=True)
@@ -344,6 +374,7 @@ def main():
         print("  NOTE: stale detail file(s) left in content/sims: %s" % ", ".join(stale))
 
     pages = stub_pages(published)
+    ncert_files = write_ncert(sims)
 
     # Stamp the service worker with the feed version. The worker's cache names
     # carry it, so publishing new content retires the old shell and feed caches
@@ -356,14 +387,16 @@ def main():
         if stamped != sw:
             with open(sw_path, "w", encoding="utf-8") as fh:
                 fh.write(stamped)
-    blessed, held = update_lock(published)
+    blessed, held = update_lock(published + concepts)
 
     man_b = os.path.getsize(MANIFEST)
     n = len(cards) or 1
     print("content feed built from data/manifest.json")
     print("  version        %s" % version)
     print("  simulations    %d published, %d draft"
-          % (len(cards), len(sims) - len(cards)))
+          % (len(cards), len(sims) - len(live)))
+    if concepts:
+        print("  concepts       %d published (NCERT Explorer only)" % len(concepts))
     print("  catalog.json   %6d B" % cat_b)
     print("  index.json     %6d B   (%d B per simulation)" % (idx_b, idx_b // n))
     print("  search.json    %6d B   (%d B per simulation, lazy)" % (srch_b, srch_b // n))
@@ -371,6 +404,8 @@ def main():
     print("  manifest.json  %6d B   (%d B per simulation, authoring only)"
           % (man_b, man_b // n))
     print("  s/<ID>/        %6d crawlable page(s) + sitemap.xml + robots.txt" % pages)
+    if ncert_files:
+        print("  content/ncert/ %6d file(s) for the NCERT Explorer" % ncert_files)
     print("  startup cost   %.0f%% of the manifest" % (100.0 * idx_b / man_b))
     print("  projected at 1000 simulations: index %.1f MB, manifest %.1f MB"
           % (idx_b / n * 1000 / 1e6, man_b / n * 1000 / 1e6))
