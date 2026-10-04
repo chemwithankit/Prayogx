@@ -1,0 +1,82 @@
+{
+  "id": "CON-CHE-DELTA-U-VS-DELTA-H",
+  "kind": "concept",
+  "slug": "con-che-delta-u-vs-delta-h",
+  "revision": 1,
+  "path": "simulations/concepts/chemistry/con-che-delta-u-vs-delta-h/index.html",
+  "folder": "simulations/concepts/chemistry/con-che-delta-u-vs-delta-h/",
+  "title": "Two calorimeters, one reaction - why a sealed bomb measures ΔU and a constant-pressure calorimeter measures ΔH",
+  "shortTitle": "Two calorimeters, one reaction",
+  "summary": "The same fuel burns in a sealed bomb calorimeter (constant volume, no work: q_V = ΔU) and in an idealised constant-pressure piston calorimeter (q_p = ΔH). The heats differ by the expansion work, ΔH − ΔU = Δn_g RT, which vanishes when the moles of gas do not change (graphite).",
+  "subject": "Chemistry",
+  "chapter": "Thermodynamics",
+  "topic": "Calorimetry - measuring ΔU and ΔH",
+  "subtopics": [
+    "Bomb calorimeter: constant volume, q_V = ΔU",
+    "Constant-pressure calorimetry: q_p = ΔH",
+    "Expansion work at constant pressure: w = −pΔV = −Δn_g RT",
+    "ΔH − ΔU = Δn_g RT (NCERT eq. 5.10)",
+    "Sign of q for an exothermic reaction from the calorimeter's temperature rise"
+  ],
+  "concepts": [
+    "A bolted bomb cannot change volume, so no work is done and all of ΔU appears as heat: q_V = ΔU",
+    "At constant pressure the gas volume follows the gas moles, the piston moves, and q_p = ΔU + pΔV = ΔH",
+    "ΔH − ΔU = Δn_g RT, counting only gaseous moles; Δn_g = 0 gives ΔH = ΔU (graphite)",
+    "The calorimeter gains the heat the reaction loses: q_reaction = −C_cal ΔT"
+  ],
+  "formulas": [
+    "q = −C_cal ΔT",
+    "q_V = ΔU",
+    "q_p = ΔH",
+    "w = −pΔV",
+    "pΔV = Δn_g RT",
+    "ΔH = ΔU + Δn_g RT"
+  ],
+  "tags": [
+    "thermodynamics",
+    "calorimetry",
+    "bomb calorimeter",
+    "enthalpy",
+    "internal energy",
+    "delta n gas",
+    "first law",
+    "chemistry",
+    "ncert class 11"
+  ],
+  "learningObjectives": [
+    "Explain why a bomb calorimeter measures the change in internal energy of a reaction.",
+    "Compare measurements at constant volume and at constant pressure, and the quantity each one gives.",
+    "Calculate the energy change of a reaction from the temperature change and heat capacity of a calorimeter.",
+    "Derive ΔH = ΔU + Δn_g RT for a reaction involving ideal gases.",
+    "Calculate ΔH from ΔU, or ΔU from ΔH, for a reaction or phase change involving gases.",
+    "Predict whether ΔH and ΔU differ significantly for a reaction, from the change in moles of gas.",
+    "Predict the sign of ΔH for a reaction that evolves or absorbs heat at constant pressure."
+  ],
+  "source": {
+    "title": "Chemistry Part I, Class XI",
+    "author": "NCERT",
+    "chapter": "5 Thermodynamics",
+    "sections": "5.2.2(a), 5.3 (pp. 143–146); data pp. 150–152",
+    "edition": "Reprint 2026-27",
+    "url": "https://ncert.nic.in/textbook/pdf/kech105.pdf"
+  },
+  "verification": {
+    "status": "script_verified",
+    "methods": [
+      "tests/verify_con_che_delta_u_vs_delta_h.py (three independent routes)",
+      "tests/sim_con_che_delta_u_vs_delta_h.js (page suite)"
+    ],
+    "verifiedOn": "2026-10-04",
+    "note": "Awaiting owner review (experience QA). NCERT Problem 5.6's illustrative graphite readings differ from the tabulated −393.5 kJ mol⁻¹; the tabulated value is used (docs/ncert/blueprints/CON-CHE-DELTA-U-VS-DELTA-H.md, flag F1)."
+  },
+  "interactivity": [
+    "choose the reaction (graphite, hydrogen, butane)",
+    "ignite both calorimeters",
+    "optional prediction",
+    "what-if: amount ×½/×1/×2",
+    "what-if: hypothetical Δn_g"
+  ],
+  "status": "draft",
+  "createdAt": "2026-10-04",
+  "updatedAt": "2026-10-04"
+}

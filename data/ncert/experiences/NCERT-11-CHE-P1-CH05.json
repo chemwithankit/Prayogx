@@ -1,0 +1,42 @@
+{
+  "schemaVersion": "2.0.0",
+  "experiences": [
+    {
+      "id": "EXP-CHE-TWO-CALORIMETERS",
+      "conceptId": "CPT-CHE-CALORIMETRY",
+      "type": "virtual-lab",
+      "title": "Two calorimeters, one reaction",
+      "objectives": [
+        "LO-CHE-CALORIMETRY-BOMB-DELTA-U",
+        "LO-CHE-CALORIMETRY-CONSTANT-PRESSURE-DELTA-H",
+        "LO-CHE-CALORIMETRY-CALCULATE"
+      ],
+      "status": "review",
+      "libraryId": "CON-CHE-DELTA-U-VS-DELTA-H"
+    },
+    {
+      "id": "EXP-CHE-TWO-CALORIMETERS-DELTA-H-DELTA-U",
+      "conceptId": "CPT-CHE-DELTA-H-DELTA-U-RELATION",
+      "type": "virtual-lab",
+      "title": "Two calorimeters, one reaction",
+      "objectives": [
+        "LO-CHE-DELTA-H-DELTA-U-DERIVE",
+        "LO-CHE-DELTA-H-DELTA-U-CALCULATE",
+        "LO-CHE-DELTA-H-DELTA-U-WHEN-SIGNIFICANT"
+      ],
+      "status": "review",
+      "libraryId": "CON-CHE-DELTA-U-VS-DELTA-H"
+    },
+    {
+      "id": "EXP-CHE-TWO-CALORIMETERS-HEAT-SIGN",
+      "conceptId": "CPT-CHE-EXOTHERMIC-ENDOTHERMIC",
+      "type": "virtual-lab",
+      "title": "Two calorimeters, one reaction",
+      "objectives": [
+        "LO-CHE-EXOTHERMIC-ENDOTHERMIC-SIGN"
+      ],
+      "status": "review",
+      "libraryId": "CON-CHE-DELTA-U-VS-DELTA-H"
+    }
+  ]
+}

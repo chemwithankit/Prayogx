@@ -50,7 +50,7 @@ trap cleanup EXIT
 
 echo "=== chemistry verifiers (exact arithmetic, no browser) ==="
 echo "    python3 = $(command -v python3)"
-for f in verify15.py verify16.py verify17.py "$HERE/verify_p1q01.py" "$HERE/verify_p1q02.py" "$HERE/verify_p1q03.py" "$HERE/verify_p1q04.py" "$HERE/verify_p1q05.py" "$HERE/verify_p1q06.py" "$HERE/verify_p1q07.py" "$HERE/verify_p1q08.py" "$HERE/verify_p1q09.py" "$HERE/verify_p1q10.py" "$HERE/verify_p1q11.py" "$HERE/verify_p1q12.py" "$HERE/verify_p1q13.py" "$HERE/verify_p1q14.py" "$HERE/verify_p1q15.py" "$HERE/verify_p1q16.py" "$HERE/verify_p1phyq01.py" "$HERE/verify_p1phyq02.py" "$HERE/verify_p1phyq03.py" "$HERE/verify_p1phyq04.py" "$HERE/verify_p1phyq05.py" "$HERE/verify_p1phyq06.py" "$HERE/verify_p1phyq07.py" "$HERE/verify_p1phyq08.py" "$HERE/verify_p1phyq09.py" "$HERE/verify_p1phyq10.py" "$HERE/verify_p1phyq11.py" "$HERE/verify_p1phyq12.py" "$HERE/verify_p1phyq13.py" "$HERE/verify_p1phyq14.py" "$HERE/verify_p1phyq15.py" "$HERE/verify_p1phyq16.py" "$HERE/verify_p2phyq01.py" "$HERE/verify_p2phyq02.py" "$HERE/verify_p2phyq03.py" "$HERE/verify_p2phyq04.py" "$HERE/verify_p2phyq05.py"; do
+for f in verify15.py verify16.py verify17.py "$HERE/verify_p1q01.py" "$HERE/verify_p1q02.py" "$HERE/verify_p1q03.py" "$HERE/verify_p1q04.py" "$HERE/verify_p1q05.py" "$HERE/verify_p1q06.py" "$HERE/verify_p1q07.py" "$HERE/verify_p1q08.py" "$HERE/verify_p1q09.py" "$HERE/verify_p1q10.py" "$HERE/verify_p1q11.py" "$HERE/verify_p1q12.py" "$HERE/verify_p1q13.py" "$HERE/verify_p1q14.py" "$HERE/verify_p1q15.py" "$HERE/verify_p1q16.py" "$HERE/verify_p1phyq01.py" "$HERE/verify_p1phyq02.py" "$HERE/verify_p1phyq03.py" "$HERE/verify_p1phyq04.py" "$HERE/verify_p1phyq05.py" "$HERE/verify_p1phyq06.py" "$HERE/verify_p1phyq07.py" "$HERE/verify_p1phyq08.py" "$HERE/verify_p1phyq09.py" "$HERE/verify_p1phyq10.py" "$HERE/verify_p1phyq11.py" "$HERE/verify_p1phyq12.py" "$HERE/verify_p1phyq13.py" "$HERE/verify_p1phyq14.py" "$HERE/verify_p1phyq15.py" "$HERE/verify_p1phyq16.py" "$HERE/verify_p2phyq01.py" "$HERE/verify_p2phyq02.py" "$HERE/verify_p2phyq03.py" "$HERE/verify_p2phyq04.py" "$HERE/verify_p2phyq05.py" "$HERE/verify_con_che_delta_u_vs_delta_h.py"; do
   nm=$(basename "$f")
   if [ ! -f "$f" ]; then line "$nm" "MISSING (not in this tree)"; missing=$((missing+1)); continue; fi
   out=$(python3 "$f" 2>&1 | tail -1)
@@ -124,6 +124,7 @@ run "P2 PHY Q02 reactor heat lab"        "$HERE/sim_p2phyq02.js"
 run "P2 PHY Q03 prism spectrum lab"      "$HERE/sim_p2phyq03.js"
 run "P2 PHY Q04 orbit wobble lab"        "$HERE/sim_p2phyq04.js"
 run "P2 PHY Q05 twin-prism mirror bench" "$HERE/sim_p2phyq05.js"
+run "NCERT XP-09 two calorimeters, one reaction" "$HERE/sim_con_che_delta_u_vs_delta_h.js"
 run "production suite (prodcheck)"         "$HERE/prodcheck.js"
 make_scratch
 run "single-source propagation"            "$HERE/propagation.js"  "$SCRATCH"

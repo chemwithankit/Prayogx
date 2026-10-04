@@ -232,6 +232,20 @@ chk("the ExperienceMapper seam is unchanged and still returns [] (UX-2 adds getL
     # ...defined once and never reassigned, wrapped or aliased elsewhere in the mapper
     and re.sub(r"/\*.*?\*/|//[^\n]*", "", js, flags=re.S).count("getExperiencesForPage") == 1)
 
+# ---------------------------------------------------------------- real experience documents (data/ncert/experiences/)
+EXP_DIR = os.path.join(ROOT, "data", "ncert", "experiences")
+LIB = dict((s["id"], s) for s in json.load(open(os.path.join(ROOT, "data", "manifest.json"), encoding="utf-8"))["simulations"])
+for fn in sorted(os.listdir(EXP_DIR)) if os.path.isdir(EXP_DIR) else []:
+    if not fn.endswith(".json"):
+        continue
+    doc = json.load(open(os.path.join(EXP_DIR, fn), encoding="utf-8"))
+    inv_path = os.path.join(ROOT, "data", "ncert", "concepts", fn)
+    chk("%s: has the matching concept inventory data/ncert/concepts/%s" % (fn, fn), os.path.isfile(inv_path))
+    if os.path.isfile(inv_path):
+        real_inv = json.load(open(inv_path, encoding="utf-8"))
+        chk("%s: a valid experience document against its inventory and the library" % fn,
+            X.problems(doc, real_inv, LIB) == [], X.problems(doc, real_inv, LIB))
+
 print()
 print("%d passed, %d failed" % (len(ok), len(fail)))
 sys.exit(1 if fail else 0)

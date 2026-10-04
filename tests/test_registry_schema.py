@@ -121,7 +121,7 @@ try:
     explicit = {s["id"]: s["status"] for s in MAN0["simulations"] if "status" in s}
     others = [c for c in jload("content/index.json")["simulations"] if c["id"] != Q16]
     chk("every other page keeps its own status (explicit, or the human_verified default)",
-        len(others) == len(MAN0["simulations"]) - 1 and all(c.get("status") == explicit.get(c["id"], "human_verified") for c in others),
+        len(others) == len([x for x in MAN0["simulations"] if x.get("status") != "draft"]) - 1 and all(c.get("status") == explicit.get(c["id"], "human_verified") for c in others),
         [(c["id"], c.get("status")) for c in others if c.get("status") != explicit.get(c["id"], "human_verified")])
     site = open(os.path.join(W, "site", "site.js"), encoding="utf-8").read()
     app = open(os.path.join(W, "app", "www", "app.js"), encoding="utf-8").read() if os.path.exists(os.path.join(W, "app", "www", "app.js")) else ""

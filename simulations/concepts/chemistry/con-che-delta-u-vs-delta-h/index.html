@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Two Calorimeters, One Reaction — why a sealed bomb measures ΔU and an open vessel measures ΔH | PrayogX</title>
+<meta name="description" content="Burn the same fuel in a sealed bomb calorimeter and in a constant-pressure piston calorimeter, read both thermometers, and discover why ΔH − ΔU = Δn(g)RT. NCERT Class 11 Chemistry, Thermodynamics §5.3.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232a78d6'/%3E%3Cpath d='M12.5 6.5h7M13.6 6.5v7.2L7.9 24.1a1.5 1.5 0 0 0 1.3 2.3h13.6a1.5 1.5 0 0 0 1.3-2.3l-5.7-10.4V6.5' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M10.6 20.6h10.8' stroke='white' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E">
+<meta name="sim-id" content="CON-CHE-DELTA-U-VS-DELTA-H">
+<style>
+:root{
+  color-scheme: light;
+  --surface-0:#f4f4f1; --surface-1:#fcfcfb; --surface-2:#ececea;
+  --line:#d9d9d4; --line-strong:#bcbcb5;
+  --text-primary:#0b0b0b; --text-secondary:#52514e; --text-muted:#77766f;
+  --s1:#2a78d6; --s2:#eb6834; --s3:#1baf7a; --s4:#4a3aa7;
+  --good:#00743f; --bad:#c0392b; --accent:#2a78d6;
+  --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+  --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --serif:ui-serif,Georgia,"Times New Roman",serif;
+  --radius:12px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  color-scheme: dark;
+  --surface-0:#111110; --surface-1:#1a1a19; --surface-2:#232322;
+  --line:#34342f; --line-strong:#4a4a44;
+  --text-primary:#ffffff; --text-secondary:#c3c2b7; --text-muted:#95948b;
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#9085e9;
+  --good:#3fae7a; --bad:#e66767; --accent:#3987e5;
+}}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --surface-0:#111110; --surface-1:#1a1a19; --surface-2:#232322;
+  --line:#34342f; --line-strong:#4a4a44;
+  --text-primary:#ffffff; --text-secondary:#c3c2b7; --text-muted:#95948b;
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#9085e9;
+  --good:#3fae7a; --bad:#e66767; --accent:#3987e5;
+}
+*{box-sizing:border-box}
+[hidden]{display:none !important}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--surface-0);color:var(--text-primary);font-family:var(--sans);font-size:16px;line-height:1.6}
+header.top{border-bottom:1px solid var(--line);background:var(--surface-1)}
+.top-inner{max-width:1240px;margin:0 auto;padding:18px 20px 14px;position:relative}
+.brandbar{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.brandbar .pxmark{width:21px;height:21px;flex:none;display:block}
+.brandbar .wm{font-size:13px;font-weight:800;letter-spacing:.17em;color:var(--text-secondary);line-height:1}
+.brandbar .wm i{font-style:normal;color:var(--accent)}
+.simid{font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--text-muted)}
+h1{font-size:21px;line-height:1.3;margin:4px 0 4px;padding-right:80px}
+.meta{font-size:14px;color:var(--text-secondary);margin:0}
+.themebtn{position:absolute;top:14px;right:16px;border:1px solid var(--line-strong);background:var(--surface-2);
+  color:var(--text-secondary);border-radius:8px;padding:4px 9px;font-size:12px;cursor:pointer}
+.wrap{max-width:1240px;margin:0 auto;padding:0 20px 40px}
+section{margin:0 0 34px}
+h2{font-size:15px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-secondary);margin:26px 0 12px}
+h2 b{color:var(--accent);margin-right:8px}
+h3{font-size:17px;margin:22px 0 8px}
+.qcard{background:var(--surface-1);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px}
+.qtext{font-family:var(--serif);font-size:19px;line-height:1.6;margin:0}
+.qsrc{font-size:14px;color:var(--text-secondary);margin:10px 0 0}
+#target{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;background:var(--surface-1);border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin:0 0 8px}
+#target .lbl{font-size:13px;font-weight:800;letter-spacing:.12em;color:var(--text-muted);text-transform:uppercase}
+#target .sym{font-family:var(--serif);font-size:20px}
+#target .val{font-size:21px;font-weight:800;color:var(--good)}
+#target .val:empty{display:none}
+#target.pulse{animation:pxpulse .5s ease-in-out 3}
+@keyframes pxpulse{50%{background:color-mix(in srgb,var(--good) 24%,var(--surface-1));box-shadow:0 0 0 6px color-mix(in srgb,var(--good) 30%,transparent)}}
+@media (prefers-reduced-motion: reduce){#target.pulse{animation:none}}
+#narr{margin:0 2px 10px;font-size:16px;color:var(--text-secondary);min-height:2.8em}
+.stage{position:relative;border-radius:16px;overflow:hidden;background:#070a12;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+canvas#labcv{display:block;width:100%;height:auto;touch-action:manipulation}
+#controls{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:12px;padding:12px;border:1px solid var(--line);border-radius:14px;background:var(--surface-1)}
+#controls button{min-height:48px;font-size:16px;font-weight:700;border-radius:10px;border:1px solid var(--line-strong);background:var(--surface-2);color:var(--text-primary);padding:0 16px;cursor:pointer;font-family:var(--sans)}
+#controls button:focus-visible,#controls input:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+#controls button:disabled{opacity:.45;cursor:not-allowed}
+#controls .go{background:var(--s2);color:#fff;border:none;font-weight:800;letter-spacing:.04em;min-width:170px}
+#controls .seg{display:flex;align-items:center;flex-wrap:wrap;row-gap:6px}
+#controls .seg>span{font-size:13px;font-weight:700;color:var(--text-muted);margin-right:8px;letter-spacing:.06em;text-transform:uppercase}
+#controls .seg button{border-radius:0;margin-left:-1px;padding:0 13px;white-space:nowrap}
+#controls .seg button:nth-child(2){border-radius:10px 0 0 10px}
+#controls .seg button:last-child{border-radius:0 10px 10px 0}
+#controls .seg button[aria-pressed="true"]{background:var(--accent);color:#fff;border-color:var(--accent)}
+#controls .whatif{display:flex;flex-wrap:wrap;gap:10px;align-items:center;flex:1 1 100%;border-top:1px dashed var(--line-strong);padding-top:10px}
+#controls .whatif>b{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted);flex:1 1 100%}
+#controls .dng{display:flex;align-items:center;gap:10px;flex:1 1 380px;min-width:0}
+#controls .dng label{font-size:15px;font-weight:700;white-space:nowrap}
+#controls input[type=range]{flex:1 1 150px;min-width:110px;min-height:44px;accent-color:var(--s4);margin:0}
+#dngout{font-family:var(--mono);font-size:15px;min-width:64px}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.sol{background:var(--surface-1);border:1px solid var(--line);border-radius:var(--radius);padding:6px 20px 16px}
+.sol ol.steps{padding-left:22px;margin:10px 0}
+.sol ol.steps li{margin:0 0 12px}
+.eq{font-family:var(--serif);font-size:18px;background:var(--surface-2);border-radius:8px;padding:8px 12px;margin:6px 0;overflow-x:auto}
+table.opt{border-collapse:collapse;width:100%;font-size:15px;margin:8px 0}
+table.opt th,table.opt td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+table.opt th{background:var(--surface-2)}
+table.opt td.n{font-family:var(--mono);white-space:nowrap}
+.tscroll{overflow-x:auto}
+.concept{border-left:4px solid var(--accent);padding:2px 0 2px 14px;margin:14px 0}
+ul.take{padding-left:20px} ul.take li{margin:0 0 6px}
+ul.checks{list-style:none;padding:0;margin:8px 0} ul.checks li{margin:0 0 6px;padding-left:26px;position:relative}
+ul.checks li:before{content:"✓";position:absolute;left:4px;color:var(--good);font-weight:800}
+ul.checks li.fail:before{content:"✗";color:var(--bad)}
+.note{font-size:14px;color:var(--text-secondary)}
+ol.howto{padding-left:22px;margin:0} ol.howto li{margin:0 0 8px}
+footer{font-size:13px;color:var(--text-muted);border-top:1px solid var(--line);padding:16px 0 0}
+body.classroom .wrap{max-width:none;padding:0 18px 30px}
+body.classroom header.top,body.classroom section:not(#lab),body.classroom footer{display:none}
+body.classroom #narr{font-size:24px;color:var(--text-primary)}
+body.classroom #target .sym{font-size:24px} body.classroom #target .val{font-size:28px}
+@media (max-width:760px){
+  .wrap{padding:0 16px 32px}
+  .top-inner{padding:14px 16px 12px}
+  h1{font-size:18px}
+  .qtext{font-size:17px}
+  #controls{gap:8px;padding:10px}
+  #controls .go{flex:1 1 100%}
+  #controls button{padding:0 12px}
+  #controls .seg>span{flex:1 1 100%;margin:0 0 2px}
+  #controls .dng{flex-basis:100%;flex-wrap:wrap}
+  #controls .dng input[type=range]{flex:1 1 100%;order:3}
+  #controls .dng #realbtn{order:4}
+  .sol{padding:4px 14px 12px}
+}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="top-inner">
+    <div class="brandbar"><svg class="pxmark" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><rect width="32" height="32" rx="8" fill="var(--accent)"/><path d="M12.5 6.5h7M13.6 6.5v7.2L7.9 24.1a1.5 1.5 0 0 0 1.3 2.3h13.6a1.5 1.5 0 0 0 1.3-2.3l-5.7-10.4V6.5" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.6 20.6h10.8" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg><span class="wm">PRAYOG<i>X</i></span></div>
+    <div class="simid">CON-CHE-DELTA-U-VS-DELTA-H</div>
+    <h1>Two Calorimeters, One Reaction — why a sealed bomb measures ΔU and an open vessel measures ΔH</h1>
+    <p class="meta">NCERT Class 11 · Chemistry Part I · Ch 5 Thermodynamics · §5.2.2(a) and §5.3 Calorimetry · concept experience</p>
+    <button class="themebtn" id="themebtn" type="button">◐ theme</button>
+  </div>
+</header>
+<main class="wrap">
+<section id="question" aria-labelledby="qh">
+  <h2 id="qh"><b>01</b>The question</h2>
+  <div class="qcard">
+    <p class="qtext">The same fuel burns in two identical calorimeters, one sealed and one at constant pressure. Why can they report different heats for the same reaction, and when do they agree?</p>
+    <p class="qsrc">Based on NCERT Class 11 Chemistry Part I, Unit 5 Thermodynamics, §5.2.2(a) and §5.3 (pp. 143–146). PrayogX wording; the textbook is not reproduced.</p>
+  </div>
+</section>
+
+<section id="lab" aria-labelledby="lh">
+  <h2 id="lh"><b>02</b>The experiment</h2>
+  <p class="keyres" id="target" data-kind="value" aria-live="polite"><span class="lbl">Target:</span><span class="sym">ΔH − ΔU</span><span class="val" id="ansval"></span></p>
+  <p id="narr" aria-live="polite">Ready.</p>
+  <div class="stage"><canvas id="labcv" width="1200" height="820" role="img" aria-label="Experiment: two identical calorimeters side by side, each a steel vessel inside a stirred, insulated water bath with a thermometer. The left vessel is a sealed bomb with a bolted lid (constant volume). The right vessel is closed by a free piston held at 1 bar (constant pressure, idealised). Gas molecules are drawn as tokens. After ignition, heat flows into the water and both thermometers rise; on the right the piston moves and the work arrow shows the expansion work. A results strip compares the heats per mole."></canvas></div>
+  <div id="results" class="sr-only" aria-live="off"></div>
+  <div id="controls" role="group" aria-label="experiment controls">
+    <button class="go" type="button" id="gobtn">🔥 IGNITE</button>
+    <div class="seg" role="group" aria-label="reaction" id="rxgroup"><span>Reaction</span><button type="button" data-rx="C" aria-pressed="false">Graphite</button><button type="button" data-rx="H" aria-pressed="true">Hydrogen</button><button type="button" data-rx="B" aria-pressed="false">Butane</button></div>
+    <div class="seg" role="group" aria-label="your prediction (optional)" id="predgroup"><span>Predict: hotter?</span><button type="button" data-pred="V" aria-pressed="false">Bomb</button><button type="button" data-pred="S" aria-pressed="false">Same</button><button type="button" data-pred="P" aria-pressed="false">Piston side</button></div>
+    <button type="button" id="replaybtn">↺ Replay</button>
+    <button type="button" id="resetbtn">Reset</button>
+    <button type="button" id="classbtn" aria-pressed="false">Classroom</button>
+    <div class="whatif" id="wigroup" hidden>
+      <b>What if…?</b>
+      <div class="seg" role="group" aria-label="amount of fuel" id="amtgroup"><span>Amount</span><button type="button" data-amt="0.5" aria-pressed="false">×½</button><button type="button" data-amt="1" aria-pressed="true">×1</button><button type="button" data-amt="2" aria-pressed="false">×2</button></div>
+      <div class="dng"><label for="in_dng">Hypothetical Δn<sub>g</sub></label><input type="range" id="in_dng" min="-3" max="3" step="0.5" value="-1.5" aria-describedby="dngout"><output id="dngout" for="in_dng">−1.5</output><button type="button" id="realbtn">Real reaction</button></div>
+    </div>
+  </div>
+</section>
+
+<section id="solution" aria-labelledby="sh">
+  <h2 id="sh"><b>03</b>Detailed solution</h2>
+  <div class="sol">
+    <ol class="steps">
+      <li><b>Two identical calorimeters.</b> Each is a steel vessel in a stirred, insulated water bath, as in NCERT's bomb calorimeter (Fig. 5.7). The heat capacity of the whole calorimeter is known, <i>C</i><sub>cal</sub> = <span id="s_ccal"></span> kJ K⁻¹, the value NCERT uses (NCERT writes it as <i>C</i><sub>V</sub> in Problem 5.6). The only difference is the lid: bolted (constant volume) or a free piston at 1 bar (constant pressure).</li>
+      <li><b>Heat from the thermometer.</b> The calorimeter gains the heat the reaction loses: <span class="eq">q<sub>reaction</sub> = −C<sub>cal</sub> ΔT</span> A rising temperature therefore means <i>q</i> &lt; 0: the reaction is exothermic and Δ<sub>r</sub><i>H</i> &lt; 0 (IUPAC signs: energy into the system is positive).</li>
+      <li><b>Sealed bomb: no work.</b> The bolted lid cannot move, so Δ<i>V</i> = 0 and <i>w</i> = −<i>p</i>Δ<i>V</i> = 0. The first law, Δ<i>U</i> = <i>q</i> + <i>w</i>, gives <span class="eq">q<sub>V</sub> = ΔU</span></li>
+      <li><b>Piston: the gas changes its amount, so the volume changes.</b> At constant pressure and temperature the ideal-gas law gives <i>p</i>Δ<i>V</i> = Δ<i>n</i><sub>g</sub><i>RT</i>, where Δ<i>n</i><sub>g</sub> = moles of gaseous products − moles of gaseous reactants (solids and liquids do not count). Work crosses the boundary: <span class="eq">w = −pΔV = −Δn<sub>g</sub>RT (per mole of reaction)</span> When gas disappears (Δ<i>n</i><sub>g</sub> &lt; 0) the piston sinks and the atmosphere does work on the system (<i>w</i> &gt; 0), so more heat must leave for the same Δ<i>U</i>.</li>
+      <li><b>Heat at constant pressure is ΔH.</b> With <i>H</i> = <i>U</i> + <i>pV</i>: <span class="eq">q<sub>p</sub> = ΔU − w = ΔU + pΔV = ΔH &nbsp;⇒&nbsp; ΔH − ΔU = Δn<sub>g</sub>RT</span> This is NCERT's eq. 5.10. Here <i>RT</i> = <span id="s_rt"></span> kJ mol⁻¹ (<i>R</i> = 8.314 J mol⁻¹ K⁻¹, <i>T</i> = 298 K).</li>
+      <li><b>The three reactions</b> (Δ<sub>r</sub><i>H</i> from NCERT pp. 150–152; Δ<sub>r</sub><i>U</i> = Δ<sub>r</sub><i>H</i> − Δ<i>n</i><sub>g</sub><i>RT</i>; every number below is computed by the page's own model):
+        <div class="tscroll"><table class="opt" id="soltab"><thead><tr><th>Reaction</th><th>Amount</th><th>Δn<sub>g</sub></th><th>Δ<sub>r</sub>U (kJ mol⁻¹)</th><th>Δ<sub>r</sub>H (kJ mol⁻¹)</th><th>ΔT sealed</th><th>ΔT piston</th><th>ΔH − ΔU</th><th>Δn<sub>g</sub>RT</th></tr></thead><tbody></tbody></table></div>
+      </li>
+      <li><b>When do the two calorimeters agree?</b> Only when Δ<i>n</i><sub>g</sub> = 0. Burning graphite, C(s) + O₂(g) → CO₂(g), uses one mole of gas and makes one, so Δ<i>H</i> = Δ<i>U</i>: a bomb then gives Δ<i>H</i> directly. That is why NCERT's Problem 5.6 can find Δ<i>H</i> from a bomb calorimeter. For gases appearing or disappearing, the bomb gives Δ<i>U</i>, and Δ<i>H</i> follows from the equation above.</li>
+    </ol>
+    <h3>Independent checks (computed now by the page)</h3>
+    <ul class="checks" id="checks"></ul>
+    <div class="concept"><b>Concept.</b> A calorimeter measures heat. Heat equals Δ<i>U</i> only when no work is done (fixed volume), and equals Δ<i>H</i> when the pressure is fixed. The two differ by the expansion work, Δ<i>n</i><sub>g</sub><i>RT</i>, which depends only on how many moles of gas the reaction makes or uses.</div>
+    <h3>Key takeaways</h3>
+    <ul class="take">
+      <li>Bomb calorimeter (constant volume, no work): <i>q</i><sub>V</sub> = Δ<i>U</i>.</li>
+      <li>Constant-pressure calorimeter: <i>q</i><sub>p</sub> = Δ<i>H</i>.</li>
+      <li>Δ<i>H</i> − Δ<i>U</i> = Δ<i>n</i><sub>g</sub><i>RT</i>; count only gaseous moles.</li>
+      <li>Δ<i>n</i><sub>g</sub> = 0 ⇒ Δ<i>H</i> = Δ<i>U</i>; for combustion the gap is a few kJ mol⁻¹, small but real.</li>
+      <li>A thermometer that rises means <i>q</i><sub>reaction</sub> &lt; 0 (exothermic).</li>
+    </ul>
+    <p class="note"><b>Notes on the source.</b> The right-hand calorimeter is an idealisation: NCERT's constant-pressure calorimeter (Fig. 5.8, a foamed polystyrene cup) is used for reactions in solution, and a fuel cannot be burnt in it; a free piston keeps the comparison fair. The calorimeter, water and stirrer are treated as one known heat capacity, and Δ<sub>r</sub>U is taken at 298 K (the rise is about 1.5 K). NCERT's Problem 5.6 shows the method with illustrative readings (a 1 K rise for 1 g of graphite), which give about −2.48 × 10² kJ mol⁻¹; the same reaction is listed at −393.5 kJ mol⁻¹ on pp. 151–152, and this experiment uses the listed value. NCERT also writes that ΔU as "kJ K⁻¹"; it is kJ.</p>
+  </div>
+</section>
+
+<section id="howto" aria-labelledby="hh">
+  <h2 id="hh">How to use this simulation</h2>
+  <ol class="howto">
+    <li>Look at the two calorimeters: the same fuel, water and thermometer; only the lid differs. If you like, predict which one gets hotter.</li>
+    <li>Choose <b>Graphite</b>, <b>Hydrogen</b> or <b>Butane</b>, then press <b>🔥 IGNITE</b>.</li>
+    <li>Watch both thermometers, the gas tokens, and the piston: orange arrows are heat, the violet arrow is work.</li>
+    <li>The results strip turns the readings into Δ<i>U</i> and Δ<i>H</i> per mole and compares their difference with Δ<i>n</i><sub>g</sub><i>RT</i>.</li>
+    <li>Afterwards, use <b>What if…?</b> to change the amount or try a hypothetical Δ<i>n</i><sub>g</sub>. <b>Replay</b> runs it again, <b>Reset</b> clears it, <b>Classroom</b> fills the screen.</li>
+  </ol>
+</section>
+
+<footer>
+  CON-CHE-DELTA-U-VS-DELTA-H · PrayogX · NCERT Explorer concept experience · a virtual laboratory based on NCERT Class 11
+  Chemistry Part I, Unit 5 (Reprint 2026-27); the apparatus is redrawn and the text is PrayogX's own. Model: ideal gases,
+  T = 298 K, p = 1 bar, R = 8.314 J mol⁻¹ K⁻¹, C<sub>cal</sub> = 20.7 kJ K⁻¹, fuel burnt completely in excess oxygen, water
+  formed as liquid, no heat lost. The piston calorimeter is an idealisation; the gas tokens are drawn to scale with the
+  amounts present (1 token = a stated number of moles); the magnified gap in the results strip is labelled.
+</footer>
+</main>
+
+<script>
+(function(){
+"use strict";
+/* ENGINE-BEGIN */
+/* One reaction, two calorimeters. The reaction's internal-energy change is a property of the reaction (state function):
+   Δ_rU = Δ_rH° − Δn_g·RT, from NCERT's Δ_rH° (eq. 5.10). The sealed bomb: ΔV = 0, w = 0, q_V = n·Δ_rU. The piston at
+   p = 1 bar: the gas amount changes, its volume follows the ideal-gas law, w = −pΔV, and the first law gives
+   q_p = q_V − w; ΔH is MEASURED as q_p / n - a second route that must reproduce Δ_rH°. Both waters warm by
+   ΔT = −q / C_cal. Gas is shown as tokens of the real amounts (fuel, oxygen in excess, products). */
+var ENGINE = (function(){
+  var R = 8.314, T = 298, P = 1e5, CCAL = 20.7, RT = R * T / 1000;            /* J mol-1 K-1, K, Pa, kJ K-1, kJ mol-1 */
+  /* nu: stoichiometric coefficients (fuel 1); k: tokens per mole of fuel scale; xo: excess O2 tokens */
+  var RX = {
+    C: { key: "C", label: "Graphite", fuel: "C(graphite)", eqn: "C(graphite) + O₂(g) → CO₂(g)", dH: -393.5, mass: 1.000, M: 12.0,
+         gasIn: { "O₂": 1 }, gasOut: { "CO₂": 1 }, solidIn: { "C": 1 }, liqOut: {}, k: 4, xo: 12, src: "NCERT p. 151" },
+    H: { key: "H", label: "Hydrogen", fuel: "H₂(g)", eqn: "H₂(g) + ½O₂(g) → H₂O(l)", dH: -285.8, n: 0.100,
+         gasIn: { "H₂": 1, "O₂": 0.5 }, gasOut: {}, solidIn: {}, liqOut: { "H₂O": 1 }, k: 4, xo: 10, src: "NCERT p. 150" },
+    B: { key: "B", label: "Butane", fuel: "C₄H₁₀(g)", eqn: "C₄H₁₀(g) + 13/2 O₂(g) → 4CO₂(g) + 5H₂O(l)", dH: -2658.0, n: 0.0100,
+         gasIn: { "C₄H₁₀": 1, "O₂": 6.5 }, gasOut: { "CO₂": 4 }, solidIn: {}, liqOut: { "H₂O": 5 }, k: 2, xo: 5, src: "NCERT p. 152" }
+  };
+  function sum(o){ var s = 0, k; for (k in o) if (o.hasOwnProperty(k)) s += o[k]; return s; }
+  function nFuel(r){ return r.n !== undefined ? r.n : r.mass / r.M; }
+  function dngOf(r){ return sum(r.gasOut) - sum(r.gasIn); }
+  /* the tokens: species and counts before and after, for k mol-units of the fuel */
+  function tokens(r, dngHyp){
+    var b = [], a = [], s;
+    for (s in r.solidIn) b.push({ sp: s, n: r.solidIn[s] * r.k, ph: "s" });
+    for (s in r.gasIn) b.push({ sp: s, n: r.gasIn[s] * r.k + (s === "O₂" ? r.xo : 0), ph: "g" });
+    if (dngHyp === null){
+      for (s in r.gasOut) a.push({ sp: s, n: r.gasOut[s] * r.k, ph: "g" });
+      a.push({ sp: "O₂", n: r.xo, ph: "g" });
+      for (s in r.liqOut) a.push({ sp: s, n: r.liqOut[s] * r.k, ph: "l" });
+    } else {
+      var g0 = 0, i; for (i = 0; i < b.length; i++) if (b[i].ph === "g") g0 += b[i].n;
+      a.push({ sp: "gas", n: Math.max(0, Math.round(g0 + dngHyp * r.k)), ph: "g" });
+    }
+    return { before: b, after: a };
+  }
+  function gasCount(list){ var g = 0, i; for (i = 0; i < list.length; i++) if (list[i].ph === "g") g += list[i].n; return g; }
+  function run(D){
+    var r = RX[D.rxn], s = D.scale || 1, real = dngOf(r);
+    var hyp = D.dng !== null && D.dng !== undefined && Math.abs(D.dng - real) > 1e-9;
+    var dng = hyp ? D.dng : real;
+    var n = nFuel(r) * s;                                   /* mol of fuel = mol of reaction */
+    var unit = nFuel(r) * s / r.k;                          /* mol per token */
+    var tk = tokens(r, hyp ? dng : null);
+    var ng0 = gasCount(tk.before) * unit, ng1 = ng0 + n * dng;
+    var dU = r.dH - real * RT;                              /* the reaction's ΔU (kJ mol-1), from NCERT's ΔH */
+    var qV = n * dU;                                        /* sealed: w = 0 */
+    var V0 = ng0 * R * T / P, V1 = ng1 * R * T / P;         /* m3 */
+    var w = -P * (V1 - V0) / 1000;                          /* kJ, work done ON the system at constant p */
+    var qP = qV - w;                                        /* first law with the same ΔU */
+    var dUm = qV / n, dHm = qP / n;                         /* measured, per mole */
+    var gap = dHm - dUm, dngRT = dng * RT;
+    return { rxn: r.key, label: r.label, eqn: r.eqn, fuel: r.fuel, hyp: hyp, scale: s, n: n, unit: unit, mass: r.mass ? r.mass * s : null,
+      dng: dng, dngReal: real, RT: RT, CCAL: CCAL, T0: T, dHref: r.dH + (hyp ? (dng - real) * RT : 0),
+      dU: dUm, dH: dHm, qV: qV, qP: qP, w: w, dTv: -qV / CCAL, dTp: -qP / CCAL, V0: V0 * 1000, V1: V1 * 1000, dV: (V1 - V0) * 1000,
+      ng0: ng0, ng1: ng1, tokens: tk, gap: gap, dngRT: dngRT, answer: fmtS(gap, 2) };
+  }
+  function fmtS(x, d){ var v = Math.abs(x) < 0.5 * Math.pow(10, -d) ? 0 : x; return (v < 0 ? "−" : "") + Math.abs(v).toFixed(d); }
+  return { R: R, T: T, P: P, CCAL: CCAL, RT: RT, RX: RX, run: run, dngOf: dngOf, nFuel: nFuel, fmtS: fmtS };
+})();
+/* ENGINE-END */
+
+var D0 = { rxn: "H", scale: 1, dng: null };
+var QRUN = ENGINE.run(D0), ANS = QRUN.answer;
+
+function $(id){ return document.getElementById(id); }
+var cv = $("labcv"), g = cv.getContext("2d");
+var reduced = !!(window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches);
+var STAGES = ["observe", "predict", "select", "ignite", "react", "settle", "work", "calc", "compare", "reveal"];
+var PH = [["ignite", 1.0], ["react", 3.2], ["settle", 1.8], ["work", 3.4], ["calc", 3.4], ["compare", 3.6], ["reveal", 2.6]];
+var RUN = { state: "setup", phase: "ready", pi: 0, st: 0, t: 0, clock: 0, speed: 1, D: { rxn: "H", scale: 1, dng: null }, res: null,
+  pred: null, picked: false, done: false, revealed: false, unlocked: false, measured: null };
+var L = null, minPx = 999, pulseT = null;
+
+function fmt(x, d){ return ENGINE.fmtS(x, d); }
+function plus(x, d){ var s = fmt(x, d); return (x > 0 && s.charAt(0) !== "−" && parseFloat(s) !== 0 ? "+" : "") + s; }
+function clamp(x, a, b){ return x < a ? a : x > b ? b : x; }
+function ease(u){ u = clamp(u, 0, 1); return u * u * (3 - 2 * u); }
+
+/* ---------------------------------------------------------------- run timeline (all a function of RUN.t) */
+function phaseStart(name){ var t = 0, i; for (i = 0; i < PH.length; i++){ if (PH[i][0] === name) return t; t += PH[i][1]; } return t; }
+var T_TOTAL = (function(){ var t = 0, i; for (i = 0; i < PH.length; i++) t += PH[i][1]; return t; })();
+function progress(){                     /* reaction extent 0..1: ignite + react */
+  if (RUN.state === "setup") return 0;
+  if (RUN.state === "done" || RUN.state === "explore") return 1;
+  return ease((RUN.t - 0.5) / (phaseStart("settle") - 0.5));
+}
+function heating(){                      /* thermometer approach 0..1, plateau at the end of settle */
+  if (RUN.state === "setup") return 0;
+  if (RUN.state === "done" || RUN.state === "explore") return 1;
+  var u = clamp((RUN.t - 0.6) / (phaseStart("work") - 0.6), 0, 1); return 1 - Math.pow(1 - u, 3);
+}
+function after(name){ if (RUN.state === "done" || RUN.state === "explore") return true; if (RUN.state === "setup") return false; return RUN.t >= phaseStart(name); }
+function stageIndex(){
+  if (RUN.state === "setup") return RUN.picked ? 3 : RUN.pred ? 2 : 1;
+  if (RUN.state === "done" || RUN.state === "explore") return 10;
+  return STAGES.indexOf(RUN.phase) + 1;
+}
+
+function start(){
+  if (RUN.state === "running"){ RUN.state = "paused"; refreshButtons(); narrate(); return; }
+  if (RUN.state === "paused"){ RUN.state = "running"; refreshButtons(); narrate(); return; }
+  resetRun(true);
+  RUN.D.dng = null; RUN.D.scale = 1; syncWhatIf();
+  RUN.res = ENGINE.run(RUN.D);
+  if (reduced){ finish(); return; }
+  RUN.state = "running"; RUN.t = 0; RUN.pi = 0; RUN.phase = PH[0][0]; RUN.st = 0;
+  narrate(); refreshButtons();
+}
+function finish(){
+  RUN.state = "done"; RUN.phase = "done"; RUN.done = true; RUN.t = T_TOTAL;
+  RUN.measured = { dTv: RUN.res.dTv, dTp: RUN.res.dTp, dU: RUN.res.dU, dH: RUN.res.dH, gap: RUN.res.gap, dngRT: RUN.res.dngRT, answer: RUN.res.answer };
+  RUN.unlocked = true; $("wigroup").hidden = false;
+  reveal(true); narrate(); refreshButtons(); results();
+}
+function tick(dt){
+  RUN.clock += dt;
+  if (RUN.state !== "running") return;
+  var h = dt * RUN.speed;
+  RUN.t += h; RUN.st += h;
+  while (RUN.pi < PH.length && RUN.st >= PH[RUN.pi][1]){
+    RUN.st -= PH[RUN.pi][1]; RUN.pi++;
+    if (RUN.pi >= PH.length){ finish(); return; }
+    RUN.phase = PH[RUN.pi][0]; narrate(); results();
+  }
+}
+function resetRun(keepPick){
+  RUN.state = "setup"; RUN.phase = "ready"; RUN.pi = 0; RUN.st = 0; RUN.t = 0; RUN.res = null; RUN.done = false; RUN.measured = null;
+  if (!keepPick){ RUN.picked = false; }
+  hideTarget();
+}
+function replay(){ RUN.state = "setup"; start(); }
+function reset(){
+  resetRun(false); RUN.pred = null; RUN.unlocked = false; $("wigroup").hidden = true;
+  RUN.D = { rxn: "H", scale: 1, dng: null }; syncSeg(); syncWhatIf(); refreshButtons(); narrate(); results();
+}
+function pickReaction(k){
+  if (!ENGINE.RX[k]) return;
+  if (RUN.state !== "setup") resetRun(true);
+  RUN.D.rxn = k; RUN.D.dng = null; RUN.D.scale = 1; RUN.picked = true;
+  syncSeg(); syncWhatIf(); refreshButtons(); narrate(); results();
+}
+function predict(p){ if (["V", "S", "P"].indexOf(p) < 0) return; RUN.pred = RUN.pred === p ? null : p; syncSeg(); narrate(); }
+/* what-if: the result for the changed setting appears at once (explore), without replacing the main run */
+function whatIf(k, v){
+  if (!RUN.unlocked) return;
+  if (k === "scale"){ v = parseFloat(v); if ([0.5, 1, 2].indexOf(v) < 0) return; RUN.D.scale = v; }
+  else if (k === "dng"){ if (v === null){ RUN.D.dng = null; } else { v = parseFloat(v); if (!isFinite(v)) return; RUN.D.dng = clamp(Math.round(v * 2) / 2, -3, 3); } }
+  else return;
+  RUN.res = ENGINE.run(RUN.D); RUN.state = "explore"; RUN.phase = "explore"; RUN.t = T_TOTAL; RUN.done = true;
+  reveal(false); syncWhatIf(); narrate(); refreshButtons(); results();
+}
+function syncSeg(){
+  var b = document.querySelectorAll("#rxgroup button"), i;
+  for (i = 0; i < b.length; i++) b[i].setAttribute("aria-pressed", b[i].getAttribute("data-rx") === RUN.D.rxn ? "true" : "false");
+  b = document.querySelectorAll("#predgroup button");
+  for (i = 0; i < b.length; i++) b[i].setAttribute("aria-pressed", b[i].getAttribute("data-pred") === RUN.pred ? "true" : "false");
+}
+function syncWhatIf(){
+  var b = document.querySelectorAll("#amtgroup button"), i;
+  for (i = 0; i < b.length; i++) b[i].setAttribute("aria-pressed", parseFloat(b[i].getAttribute("data-amt")) === RUN.D.scale ? "true" : "false");
+  var real = ENGINE.dngOf(ENGINE.RX[RUN.D.rxn]), v = RUN.D.dng === null ? real : RUN.D.dng;
+  $("in_dng").value = String(v); $("dngout").textContent = (v > 0 ? "+" : "") + fmt(v, 1) + (RUN.D.dng === null ? "" : " (what-if)");
+}
+
+/* ---------------------------------------------------------------- the target */
+function targetText(r){ return "ΔH − ΔU = Δn(g)·RT = " + r.answer + " kJ mol⁻¹"; }
+function reveal(pulse){
+  var t = $("target"); RUN.revealed = true;
+  $("ansval").textContent = targetText(RUN.res);
+  if (pulse && !reduced){ t.classList.remove("pulse"); void t.offsetWidth; t.classList.add("pulse"); if (pulseT) clearTimeout(pulseT); pulseT = setTimeout(function(){ t.classList.remove("pulse"); pulseT = null; }, 1600); }
+}
+function hideTarget(){ var t = $("target"); if (pulseT){ clearTimeout(pulseT); pulseT = null; } t.classList.remove("pulse"); $("ansval").textContent = ""; RUN.revealed = false; }
+
+/* ---------------------------------------------------------------- words */
+function predWord(p){ return p === "V" ? "the bomb" : p === "P" ? "the piston side" : "the same"; }
+function truth(r){ return Math.abs(r.dTp - r.dTv) < 1e-9 ? "S" : r.dTp > r.dTv ? "P" : "V"; }
+function narrate(){
+  var t, r = RUN.res || ENGINE.run(RUN.D), ph = RUN.phase;
+  if (RUN.state === "setup"){
+    t = "Two identical calorimeters: same water, same stirrer, same thermometer, same heat capacity. Only the lid differs - bolted on the left, a free piston at 1 bar on the right. "
+      + (RUN.pred ? "You predict: " + predWord(RUN.pred) + (RUN.pred === "S" ? "." : " gets hotter.") + " " : "Which one will get hotter? (Predict if you like.) ")
+      + r.label + " is loaded: " + r.eqn + ". Press IGNITE.";
+  }
+  else if (ph === "ignite") t = "Ignition: a spark across the firing leads. " + r.fuel + " burns in excess oxygen in both vessels.";
+  else if (ph === "react") t = "Heat flows from the burning gas into the water (orange arrows). The reaction loses heat, so q < 0: exothermic. Watch the gas tokens: " + gasWords(r) + ".";
+  else if (ph === "settle") t = "The stirred water settles. Sealed: ΔT = " + plus(r.dTv, 4) + " K. Piston: ΔT = " + plus(r.dTp, 4) + " K. " + (Math.abs(r.dTp - r.dTv) < 5e-5 ? "The two readings agree." : "The readings differ, by " + fmt(Math.abs(r.dTp - r.dTv), 4) + " K.") + predVerdict(r);
+  else if (ph === "work") t = Math.abs(r.dV) < 1e-9 ? "Sealed lid: it cannot move, so no work. Piston: the gas amount did not change, so the piston did not move either - no work on either side."
+    : "Sealed lid: it cannot move, ΔV = 0, so no work - all of ΔU leaves as heat. Piston: the gas volume changed by " + plus(r.dV, 2) + " L, so the piston " + (r.dV < 0 ? "sank and the atmosphere did work on the gas" : "rose and the gas did work on the atmosphere") + ": w = −pΔV = " + plus(r.w, 3) + " kJ (violet arrow).";
+  else if (ph === "calc") t = "From the thermometers: q = −C(cal)·ΔT. Sealed: q(V) = " + fmt(r.qV, 3) + " kJ, so per mole ΔU = " + fmt(r.dU, 2) + " kJ mol⁻¹. Piston: q(p) = " + fmt(r.qP, 3) + " kJ, so per mole ΔH = " + fmt(r.dH, 2) + " kJ mol⁻¹.";
+  else if (ph === "compare") t = "The difference ΔH − ΔU = " + fmt(r.gap, 2) + " kJ mol⁻¹. The gas count changed by Δn(g) = " + plusOrZero(r.dng) + " per mole, and Δn(g)·RT = " + plusOrZero(r.dng) + " × " + r.RT.toFixed(3) + " = " + fmt(r.dngRT, 2) + " kJ mol⁻¹. " + (Math.abs(r.gap - r.dngRT) < 0.005 ? "They match." : "They do not match.");
+  else if (ph === "reveal") t = "So the bomb gives q(V) = ΔU, the piston gives q(p) = ΔH, and the difference is exactly the expansion work: ΔH − ΔU = Δn(g)·RT.";
+  else if (ph === "done") t = "Measured: ΔU = " + fmt(r.dU, 2) + " and ΔH = " + fmt(r.dH, 2) + " kJ mol⁻¹; ΔH − ΔU = Δn(g)·RT = " + r.answer + " kJ mol⁻¹. " + (r.dngReal === 0 ? "Graphite: Δn(g) = 0, so no work and ΔH = ΔU. " : "Try Graphite: no change in gas moles. ") + "Or use What if…?";
+  else { t = (r.hyp ? "What if Δn(g) were " + plusOrZero(r.dng) + " (a hypothetical reaction with the same ΔU)? " : "") + "Amount ×" + (r.scale === 0.5 ? "½" : r.scale) + ": ΔT sealed " + plus(r.dTv, 4) + " K, piston " + plus(r.dTp, 4) + " K. Per mole: ΔU = " + fmt(r.dU, 2) + ", ΔH = " + fmt(r.dH, 2) + ", ΔH − ΔU = " + fmt(r.gap, 2) + " = Δn(g)·RT kJ mol⁻¹."
+      + (r.scale !== 1 ? " The temperatures scale with the amount; the per-mole values do not." : ""); }
+  if (RUN.state === "paused") t = "Paused. " + t;
+  $("narr").textContent = t;
+}
+function plusOrZero(x){ return x === 0 ? "0" : (x > 0 ? "+" : "−") + Math.abs(x); }
+function gasWords(r){ var a = r.tokens, g0 = 0, g1 = 0, i; for (i = 0; i < a.before.length; i++) if (a.before[i].ph === "g") g0 += a.before[i].n;
+  for (i = 0; i < a.after.length; i++) if (a.after[i].ph === "g") g1 += a.after[i].n; return g0 + " gas tokens become " + g1; }
+function predVerdict(r){ if (!RUN.pred) return ""; var tr = truth(r); return " You predicted " + predWord(RUN.pred) + ": " + (RUN.pred === tr ? "right." : "the measurement says " + predWord(tr) + "."); }
+function refreshButtons(){
+  $("gobtn").textContent = RUN.state === "running" ? "❚❚ PAUSE" : RUN.state === "paused" ? "▶ RESUME" : (RUN.state === "done" || RUN.state === "explore") ? "🔥 IGNITE AGAIN" : "🔥 IGNITE";
+}
+/* the accessible text of every number on the canvas */
+function results(){
+  var r = RUN.res || ENGINE.run(RUN.D), s = "Reaction " + r.eqn + ". Δn(g) = " + plusOrZero(r.dng) + ". ";
+  if (after("settle")) s += "Temperature rise: sealed " + plus(r.dTv, 4) + " K, piston " + plus(r.dTp, 4) + " K. ";
+  if (after("work")) s += "Piston volume change " + plus(r.dV, 3) + " L, work on the gas " + plus(r.w, 3) + " kJ. ";
+  if (after("calc")) s += "ΔU = " + fmt(r.dU, 2) + " kJ/mol, ΔH = " + fmt(r.dH, 2) + " kJ/mol. ";
+  if (after("compare")) s += "ΔH − ΔU = " + fmt(r.gap, 2) + " kJ/mol; Δn(g)RT = " + fmt(r.dngRT, 2) + " kJ/mol.";
+  $("results").textContent = s;
+}
+
+/* ---------------------------------------------------------------- drawing */
+var FONT = "ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif";
+var COL = { heat: "#ff9a3c", work: "#a78bfa", water: "#2f7fd8", text: "#e8eefc", dim: "#9fb0cf", good: "#4ade80", steel: "#9aa7b8" };
+var SPC = { "O₂": "#ef6a6a", "H₂": "#f2f5fa", "CO₂": "#6b7280", "C₄H₁₀": "#facc15", "gas": "#94a3b8", "C": "#1f2328", "H₂O": "#60a5fa" };
+function layout(){
+  var phone = document.documentElement.clientWidth < 700;
+  if (phone) return { phone: true, W: 720, H: 1760, fs: 25, big: 30, eq: { x: 12, y: 12, w: 696, h: 124 },
+    A: { x: 12, y: 148, w: 696, h: 520 }, B: { x: 12, y: 680, w: 696, h: 520 }, C: { x: 12, y: 1212, w: 696, h: 536 } };
+  return { phone: false, W: 1200, H: 820, fs: 16, big: 22, eq: { x: 16, y: 12, w: 1168, h: 78 },
+    A: { x: 16, y: 100, w: 576, h: 440 }, B: { x: 608, y: 100, w: 576, h: 440 }, C: { x: 16, y: 552, w: 1168, h: 256 } };
+}
+function minFs(){ return L.phone ? 25 : 13; }
+/* text with _x subscripts and ^x superscripts (one character) */
+function parts(s){ var out = [], i, c, j, buf = ""; for (i = 0; i < s.length; i++){ c = s.charAt(i);
+  if ((c === "_" || c === "^") && i + 1 < s.length){ if (buf) out.push([buf, 0]); buf = "";
+    if (s.charAt(i + 1) === "{"){ j = s.indexOf("}", i + 2); out.push([s.slice(i + 2, j), c === "_" ? 1 : 2]); i = j; }
+    else { out.push([s.charAt(i + 1), c === "_" ? 1 : 2]); i++; } } else buf += c; }
+  if (buf) out.push([buf, 0]); return out; }
+function subPx(px){ return Math.max(px * 0.72, minFs()); }
+function rw(s, px, weight){ var p = parts(s), w = 0, i; for (i = 0; i < p.length; i++){ g.font = (weight || "700") + " " + Math.round(p[i][1] ? subPx(px) : px) + "px " + FONT; w += g.measureText(p[i][0]).width; } return w; }
+function txt(s, x, y, px, c, align, weight){
+  px = Math.max(px, minFs()); if (px < minPx) minPx = px;
+  var p = parts(s), w = rw(s, px, weight), x0 = align === "center" ? x - w / 2 : align === "right" ? x - w : x, i, sp;
+  g.textAlign = "left"; g.textBaseline = "alphabetic"; g.fillStyle = c || COL.text;
+  for (i = 0; i < p.length; i++){ sp = p[i][1] ? subPx(px) : px; if (sp < minPx) minPx = sp; g.font = (weight || "700") + " " + Math.round(sp) + "px " + FONT;
+    g.fillText(p[i][0], x0, y + (p[i][1] === 1 ? px * 0.22 : p[i][1] === 2 ? -px * 0.38 : 0)); x0 += g.measureText(p[i][0]).width; }
+  return w;
+}
+function fitPx(s, px, maxW, weight){ var w = rw(s, px, weight); return w > maxW ? Math.max(minFs(), px * maxW / w) : px; }
+function rr(x, y, w, h, r){ g.beginPath(); g.moveTo(x + r, y); g.lineTo(x + w - r, y); g.quadraticCurveTo(x + w, y, x + w, y + r); g.lineTo(x + w, y + h - r); g.quadraticCurveTo(x + w, y + h, x + w - r, y + h); g.lineTo(x + r, y + h); g.quadraticCurveTo(x, y + h, x, y + h - r); g.lineTo(x, y + r); g.quadraticCurveTo(x, y, x + r, y); g.closePath(); }
+function panelBg(b, glow){ rr(b.x, b.y, b.w, b.h, 16); g.fillStyle = "rgba(14,22,42,.92)"; g.fill(); g.lineWidth = glow ? 3 : 1.5; g.strokeStyle = glow || "rgba(140,170,230,.28)"; g.stroke(); }
+function arrow(x1, y1, x2, y2, c, w){ var a = Math.atan2(y2 - y1, x2 - x1), hs = w * 3.2; g.strokeStyle = c; g.fillStyle = c; g.lineWidth = w; g.lineCap = "round";
+  g.beginPath(); g.moveTo(x1, y1); g.lineTo(x2 - Math.cos(a) * hs * 0.8, y2 - Math.sin(a) * hs * 0.8); g.stroke();
+  g.beginPath(); g.moveTo(x2, y2); g.lineTo(x2 - Math.cos(a - 0.45) * hs, y2 - Math.sin(a - 0.45) * hs); g.lineTo(x2 - Math.cos(a + 0.45) * hs, y2 - Math.sin(a + 0.45) * hs); g.closePath(); g.fill(); }
+function backed(s, x, y, px, c, align, weight){ var w = rw(s, Math.max(px, minFs()), weight || "800"), x0 = align === "right" ? x - w : align === "center" ? x - w / 2 : x;
+  rr(x0 - 8, y - px - 4, w + 16, px + 14, 7); g.fillStyle = "rgba(6,10,22,.92)"; g.fill(); txt(s, x, y, px, c, align, weight || "800"); }
+function hash(i, k){ var x = Math.sin(i * 127.1 + k * 311.7) * 43758.5453; return x - Math.floor(x); }   /* fixed, seeded hash: the same scene every run */
+
+function drawBand(r){
+  var b = L.eq, fs = L.phone ? 30 : 22, s = r.hyp ? "What-if: same ΔU, Δn_g = " + plusOrZero(r.dng) + " (hypothetical)" : r.eqn;
+  panelBg(b);
+  txt(s, b.x + b.w / 2, b.y + (L.phone ? 50 : 34), fitPx(s, fs, b.w - 30), "#ffffff", "center", "800");
+  var unitS = "1 token = " + (r.unit < 0.01 ? r.unit.toFixed(4) : r.unit.toFixed(3)) + " mol" + (r.mass ? "  ·  " + r.mass.toFixed(3) + " g graphite" : "  ·  " + r.n.toFixed(4) + " mol fuel") + "  ·  oxygen in excess";
+  var p = progress(), g0 = 0, g1 = 0, i;
+  for (i = 0; i < r.tokens.before.length; i++) if (r.tokens.before[i].ph === "g") g0 += r.tokens.before[i].n;
+  for (i = 0; i < r.tokens.after.length; i++) if (r.tokens.after[i].ph === "g") g1 += r.tokens.after[i].n;
+  var cnt = "gas tokens " + g0 + (p > 0.5 ? " → " + g1 : "");
+  var y2 = b.y + (L.phone ? 100 : 64), fs2 = L.phone ? 25 : 15;
+  if (L.phone){ txt(unitS, b.x + b.w / 2, y2 - 6, fitPx(unitS, fs2, b.w - 24), COL.dim, "center", "600"); }
+  else { txt(unitS, b.x + 18, y2, fs2, COL.dim, "left", "600"); txt(cnt, b.x + b.w - 18, y2, fs2, "#ffffff", "right", "800"); }
+}
+
+function drawCal(b, side, r){
+  var piston = side === "P", hl = RUN.phase === "work" && piston && Math.abs(r.dV) > 1e-9 ? COL.work : null;
+  panelBg(b, hl);
+  var fs = L.fs, ph = L.phone;
+  var title = piston ? "PISTON AT 1 bar · constant pressure" : "SEALED BOMB · constant volume";
+  var sub = piston ? "idealised calorimeter: the lid is a free piston" : "bolted lid: ΔV = 0";
+  txt(title, b.x + 18, b.y + (ph ? 40 : 30), fitPx(title, ph ? 28 : 19, b.w - 36), "#ffffff", "left", "800");
+  txt(sub, b.x + 18, b.y + (ph ? 76 : 54), fitPx(sub, fs, b.w - 36), COL.dim, "left", "600");
+  /* geometry */
+  var top = b.y + (ph ? 96 : 70), bot = b.y + b.h - (ph ? 18 : 16);
+  var jx = b.x + 22, jw = b.w * (ph ? 0.70 : 0.68), jy = top + (b.h - (top - b.y)) * 0.20, jh = bot - jy;
+  var wx = jx + 12, wy = jy + 26, ww = jw - 24, wh = jh - 38;
+  var vw = jw * 0.40, vx = jx + jw * 0.40 - vw / 2, vtop = top + 6, vbot = wy + wh - 18, vh = vbot - vtop;
+  /* jacket */
+  rr(jx, jy, jw, jh, 14); g.fillStyle = "#2a3346"; g.fill();
+  g.save(); rr(jx, jy, jw, jh, 14); g.clip(); g.strokeStyle = "rgba(255,255,255,.06)"; g.lineWidth = 2; var k;
+  for (k = -jh; k < jw; k += 14){ g.beginPath(); g.moveTo(jx + k, jy + jh); g.lineTo(jx + k + jh, jy); g.stroke(); } g.restore();
+  /* water */
+  var wg = g.createLinearGradient(0, wy, 0, wy + wh); wg.addColorStop(0, "#2e6fbf"); wg.addColorStop(1, "#163a73");
+  rr(wx, wy, ww, wh, 10); g.fillStyle = wg; g.fill();
+  g.strokeStyle = "rgba(190,220,255,.55)"; g.lineWidth = 2; g.beginPath(); g.moveTo(wx + 6, wy + 4); g.lineTo(wx + ww - 6, wy + 4); g.stroke();
+  /* heat glow in the water */
+  var hp = heating();
+  if (RUN.state !== "setup"){ g.save(); g.globalAlpha = 0.22 * (1 - Math.abs(hp - 0.5) * 2) + 0.06 * hp; var hg = g.createRadialGradient(vx + vw / 2, vbot - vh * 0.3, 10, vx + vw / 2, vbot - vh * 0.3, ww * 0.6);
+    hg.addColorStop(0, COL.heat); hg.addColorStop(1, "rgba(255,154,60,0)"); g.fillStyle = hg; g.fillRect(wx, wy, ww, wh); g.restore(); }
+  /* stirrer */
+  var sx = wx + ww * 0.13, sa = RUN.clock * 6;
+  g.strokeStyle = "#c8d1de"; g.lineWidth = ph ? 5 : 4; g.beginPath(); g.moveTo(sx, top - 4); g.lineTo(sx, vbot - 10); g.stroke();
+  var pw = 26 * Math.abs(Math.cos(sa)) + 4; g.fillStyle = "#c8d1de"; g.fillRect(sx - pw / 2, vbot - 24, pw, 14);
+  /* the vessel */
+  var gasTop, v0 = r.V0, vNow = r.V0 + r.dV * progress();
+  var cylTop = piston ? vtop : vtop + 30;
+  var sg = g.createLinearGradient(vx, 0, vx + vw, 0); sg.addColorStop(0, "#5b6676"); sg.addColorStop(0.45, "#c3ccd8"); sg.addColorStop(1, "#4b5563");
+  rr(vx - 8, cylTop, vw + 16, vbot - cylTop + 8, 14); g.fillStyle = sg; g.fill();
+  g.fillStyle = "#0d1626"; rr(vx, cylTop + (piston ? 0 : 10), vw, vbot - cylTop - (piston ? 0 : 10), 8); g.fill();
+  var inTop = cylTop + (piston ? 0 : 10), inBot = vbot;
+  var hRef = (inBot - inTop) * 0.45;                                  /* gas height at V0 */
+  if (piston){ gasTop = inBot - hRef * (vNow / v0); }
+  else { gasTop = inTop; }
+  /* gas region */
+  g.fillStyle = "rgba(160,190,255,.10)"; g.fillRect(vx, gasTop, vw, inBot - gasTop);
+  drawTokens(r, vx + 8, gasTop + 10, vw - 16, inBot - gasTop - 20, side);
+  /* lid or piston */
+  if (piston){
+    var py = gasTop;
+    if (RUN.state !== "setup" && Math.abs(r.dV) > 1e-9 && after("work")){            /* where the piston started */
+      var y0p = inBot - hRef; g.setLineDash([8, 6]); g.strokeStyle = "rgba(167,139,250,.9)"; g.lineWidth = 2; g.beginPath(); g.moveTo(vx - 14, y0p); g.lineTo(vx + vw + 14, y0p); g.stroke(); g.setLineDash([]);
+      txt("start", vx + vw + 18, y0p + 6, fs, COL.work, "left", "700");
+    }
+    g.fillStyle = "#d6dde8"; g.fillRect(vx - 2, py - 16, vw + 4, 16); g.fillStyle = "#8b96a6"; g.fillRect(vx - 2, py - 3, vw + 4, 3);
+    g.fillStyle = "#aab4c3"; g.fillRect(vx + vw / 2 - 5, Math.min(py - 16, top) - 8, 10, Math.max(8, py - 16 - (Math.min(py - 16, top) - 8)));
+    arrow(vx + vw / 2, top - 4, vx + vw / 2, Math.min(py - 20, top + 34), "#cbd5e1", ph ? 4 : 3);
+    txt("1 bar", vx + vw / 2 + 12, top + (ph ? 22 : 16), fs, "#cbd5e1", "left", "700");
+  } else {
+    g.fillStyle = "#b9c3d0"; g.fillRect(vx - 14, cylTop - 6, vw + 28, 22); g.fillStyle = "#6b7685";
+    for (k = 0; k < 5; k++){ g.beginPath(); g.arc(vx - 6 + k * (vw + 12) / 4, cylTop + 5, ph ? 6 : 5, 0, 6.283); g.fill(); }
+    g.strokeStyle = "#e2b04a"; g.lineWidth = 3; g.beginPath(); g.moveTo(vx + vw * 0.35, cylTop - 6); g.lineTo(vx + vw * 0.35, top - 6); g.moveTo(vx + vw * 0.65, cylTop - 6); g.lineTo(vx + vw * 0.65, top - 6); g.stroke();
+    txt("firing leads", vx + vw * 0.65 + 10, top + (ph ? 18 : 12), fs, "#e2b04a", "left", "600");
+    if (after("work")) backed("w = 0 (lid cannot move)", vx + 6, cylTop + (ph ? 58 : 44), fs, COL.work, "left", "800");
+  }
+  /* spark / flame */
+  if (RUN.state !== "setup" && progress() < 1){ var fl = 0.6 + 0.4 * Math.sin(RUN.clock * 31 + (piston ? 1 : 0)), fx = vx + vw / 2, fyy = inBot - 30;
+    g.save(); g.globalAlpha = (1 - progress()) * 0.9; var fg = g.createRadialGradient(fx, fyy, 2, fx, fyy, 46 * fl); fg.addColorStop(0, "#fff6c2"); fg.addColorStop(0.4, "#ffb347"); fg.addColorStop(1, "rgba(255,120,40,0)");
+    g.fillStyle = fg; g.beginPath(); g.arc(fx, fyy, 46 * fl, 0, 6.283); g.fill(); g.restore(); }
+  /* heat arrows: vessel -> water */
+  if (RUN.state !== "setup" && (RUN.phase === "react" || RUN.phase === "settle" || RUN.phase === "ignite")){
+    var a = 0.35 + 0.65 * (1 - hp), kk; g.save(); g.globalAlpha = a;
+    for (kk = 0; kk < 3; kk++){ var yy = inBot - (inBot - gasTop) * (0.25 + kk * 0.28), off = (RUN.clock * 40 + kk * 17) % 26;
+      arrow(vx + vw + 10 + off * 0.3, yy, vx + vw + 46 + off, yy, COL.heat, ph ? 5 : 4); }
+    g.restore();
+    txt("heat, q < 0", vx + vw + 14, inBot - (inBot - gasTop) * 0.95 + 10, fs, COL.heat, "left", "800");
+  }
+  if (piston && Math.abs(r.dV) < 1e-9 && after("work")) backed("ΔV = 0  ⇒  w = 0", vx + 4, gasTop - 26, fs, COL.work, "left", "800");
+  /* work arrow on the piston */
+  if (piston && RUN.state !== "setup" && Math.abs(r.dV) > 1e-9 && progress() > 0.15){
+    var down = r.dV < 0, pyy = gasTop - 16;
+    arrow(vx + vw * 0.18, down ? pyy - 58 : pyy - 8, vx + vw * 0.18, down ? pyy - 10 : pyy - 56, COL.work, ph ? 7 : 6);
+    backed("w = −pΔV " + (r.w > 0 ? "> 0" : "< 0"), vx + 4, pyy - 70, fs, COL.work, "left", "800");
+  }
+  /* thermometer */
+  var tx = jx + jw + (ph ? 46 : 40), tTop = top + (ph ? 118 : 84), tBot = vbot - 6, tw = ph ? 18 : 14;
+  var dT = (piston ? r.dTp : r.dTv) * hp, Tnow = ENGINE.T + dT;
+  var span = 3.0, frac = clamp((Tnow - (ENGINE.T - 0.5)) / span, 0, 1);
+  g.fillStyle = "#e6edf6"; rr(tx - tw / 2, tTop, tw, tBot - tTop, tw / 2); g.fill();
+  g.fillStyle = "#e23d3d"; g.beginPath(); g.arc(tx, tBot, tw * 0.95, 0, 6.283); g.fill();
+  var colTop = tBot - (tBot - tTop - 8) * frac; g.fillRect(tx - tw / 4, colTop, tw / 2, tBot - colTop);
+  g.strokeStyle = "#8a94a3"; g.lineWidth = 1; for (k = 0; k <= 6; k++){ var ty = tBot - (tBot - tTop - 8) * (k / 6); g.beginPath(); g.moveTo(tx + tw / 2, ty); g.lineTo(tx + tw / 2 + 8, ty); g.stroke(); }
+  g.strokeStyle = "#cbd5e1"; g.lineWidth = 2; g.beginPath(); g.moveTo(tx, tBot); g.lineTo(jx + jw - 6, tBot); g.stroke();
+  /* the reading, on the instrument; the temperature rise appears under it once the water has settled */
+  var rd = Tnow.toFixed(3) + " K", rpx = ph ? 30 : 21, dts = "ΔT " + plus(piston ? r.dTp : r.dTv, 4) + " K", dpx = ph ? 25 : 15, settled = after("settle");
+  var rwid = Math.max(rw(rd, rpx, "800"), settled ? rw(dts, dpx, "800") : 0) + 20, rh = rpx + 14 + (settled ? dpx + 10 : 0);
+  var rxx = Math.min(b.x + b.w - rwid - 6, tx - rwid / 2), ryy = top - (ph ? 4 : 2);
+  rr(rxx, ryy, rwid, rh, 8); g.fillStyle = "#06101f"; g.fill(); g.strokeStyle = piston ? COL.work : "#7dd3fc"; g.lineWidth = 2; g.stroke();
+  txt(rd, rxx + rwid / 2, ryy + rpx + 4, rpx, "#ffffff", "center", "800");
+  if (settled) txt(dts, rxx + rwid / 2, ryy + rpx + dpx + 14, dpx, "#fde68a", "center", "800");
+}
+
+function drawTokens(r, x, y, w, h, side){
+  var p = progress(), tk = r.tokens, list = [], i, j, idx = 0, sp, nb = {}, na = {}, ph = {};
+  /* a species present before and after keeps min(before, after) tokens unchanged (spectator oxygen);
+     the extra reactant tokens fade out and the extra product tokens fade in as the reaction proceeds */
+  for (i = 0; i < tk.before.length; i++){ nb[tk.before[i].sp] = (nb[tk.before[i].sp] || 0) + tk.before[i].n; ph[tk.before[i].sp] = tk.before[i].ph; }
+  for (i = 0; i < tk.after.length; i++){ na[tk.after[i].sp] = (na[tk.after[i].sp] || 0) + tk.after[i].n; ph[tk.after[i].sp] = tk.after[i].ph; }
+  for (sp in ph){ var b0 = nb[sp] || 0, a0 = na[sp] || 0, keep = Math.min(b0, a0);
+    for (j = 0; j < keep; j++) list.push({ sp: sp, ph: ph[sp], kind: 0, k: idx++ });
+    for (j = keep; j < b0; j++) list.push({ sp: sp, ph: ph[sp], kind: -1, k: idx++ });
+    for (j = keep; j < a0; j++) list.push({ sp: sp, ph: ph[sp], kind: 1, k: idx++ }); }
+  var gasList = [], dropList = [];
+  for (i = 0; i < list.length; i++){
+    var t = list[i], thr = hash(t.k, 3) * 0.8 + 0.1;
+    var vis = t.kind === 0 ? 1 : t.kind === 1 ? clamp((p - thr) * 6, 0, 1) : clamp(1 - (p - thr) * 6, 0, 1);
+    if (vis <= 0) continue;
+    if (t.ph === "g") gasList.push([t, vis]); else dropList.push([t, vis]);
+  }
+  var rad = L.phone ? 13 : 10, cols = Math.max(4, Math.floor(w / (rad * 3.2)));
+  for (i = 0; i < gasList.length; i++){
+    var tt = gasList[i][0], a = gasList[i][1];
+    var bx = x + rad + hash(tt.k, 1) * (w - 2 * rad), by = y + rad + hash(tt.k, 2) * Math.max(1, h - 2 * rad - (dropList.length ? rad * 2.4 : 0));
+    bx += Math.sin(RUN.clock * (1.3 + hash(tt.k, 4)) + tt.k) * rad * 0.6; by += Math.cos(RUN.clock * (1.1 + hash(tt.k, 5)) + tt.k * 2) * rad * 0.6;
+    bx = clamp(bx, x + rad, x + w - rad); by = clamp(by, y + rad, y + h - rad);
+    g.globalAlpha = a; g.fillStyle = SPC[tt.sp] || "#94a3b8"; g.beginPath(); g.arc(bx, by, rad, 0, 6.283); g.fill();
+    g.strokeStyle = "rgba(0,0,0,.45)"; g.lineWidth = 1.5; g.stroke();
+  }
+  /* condensed water and the solid carbon pellet sit on the floor */
+  for (i = 0; i < dropList.length; i++){
+    var d = dropList[i][0], aa = dropList[i][1], cx = x + rad + (i % cols) * rad * 2.6, cy = y + h - rad * 0.9 - Math.floor(i / cols) * rad * 2.2;
+    g.globalAlpha = aa; g.fillStyle = SPC[d.sp] || "#60a5fa";
+    if (d.ph === "l"){ g.beginPath(); g.moveTo(cx, cy - rad * 1.1); g.quadraticCurveTo(cx + rad, cy, cx, cy + rad * 0.8); g.quadraticCurveTo(cx - rad, cy, cx, cy - rad * 1.1); g.fill(); }
+    else { g.fillRect(cx - rad * 0.8, cy - rad * 0.8, rad * 1.6, rad * 1.6); g.strokeStyle = "#555"; g.strokeRect(cx - rad * 0.8, cy - rad * 0.8, rad * 1.6, rad * 1.6); }
+  }
+  g.globalAlpha = 1;
+}
+
+function drawLegend(r, b){
+  var seen = {}, keys = [], i, a = r.tokens.before.concat(r.tokens.after);
+  for (i = 0; i < a.length; i++) if (!seen[a[i].sp]){ seen[a[i].sp] = 1; keys.push(a[i]); }
+  var x = b.x + 18, y = b.y + b.h - (L.phone ? 22 : 16), fs = L.phone ? 25 : 14;
+  for (i = 0; i < keys.length; i++){
+    var name = keys[i].sp + (keys[i].ph === "l" ? "(l)" : keys[i].ph === "s" ? "(s)" : "(g)"), wv = rw(name, fs, "700") + 34;
+    if (x + wv > b.x + b.w - 10){ x = b.x + 18; y -= fs + 12; }
+    g.fillStyle = SPC[keys[i].sp] || "#94a3b8"; g.beginPath(); g.arc(x + 8, y - fs * 0.35, 8, 0, 6.283); g.fill();
+    txt(name, x + 22, y, fs, COL.dim, "left", "700"); x += wv + 8;
+  }
+}
+
+function drawResults(r){
+  var b = L.C, ph = L.phone, fs = L.fs, big = L.big;
+  panelBg(b, after("reveal") ? "rgba(74,222,128,.75)" : null);
+  if (!after("calc")){
+    var msg = RUN.state === "setup" ? "Results appear here once both thermometers settle." : after("settle") ? "Both readings have settled. Next: the work on the piston side." : "Reaction in progress: watch the two thermometers.";
+    txt(msg, b.x + b.w / 2, b.y + b.h / 2, fitPx(msg, big, b.w - 40, "700"), COL.dim, "center", "700");
+    drawLegend(r, b); return;
+  }
+  /* per-mole bars: ΔU (sealed) and ΔH (piston) */
+  var maxv = Math.max(Math.abs(r.dU), Math.abs(r.dH)), lx = b.x + 20, colW = ph ? b.w - 40 : b.w * 0.56;
+  var barX = lx + (ph ? 250 : 270), barW = colW - (barX - lx) - (ph ? 10 : 20), bh = ph ? 34 : 24, y1 = b.y + (ph ? 54 : 40), y2 = y1 + bh + (ph ? 54 : 30);
+  function bar(y, val, c, name, q){
+    txt(name, lx, y + bh * 0.72, ph ? 27 : 17, "#ffffff", "left", "800");
+    g.fillStyle = c; g.fillRect(barX, y, barW * Math.abs(val) / maxv, bh);
+    var vs = fmt(val, 2) + " kJ mol⁻¹";
+    txt(vs, barX + 10, y + bh * 0.72, fs, "#0b1020", "left", "800");
+    txt(q, lx, y + bh + (ph ? 32 : 18), fs - (ph ? 0 : 1), COL.dim, "left", "600");
+  }
+  bar(y1, r.dU, "#7dd3fc", "ΔU (sealed)", "q_V = −C_{cal} ΔT = " + fmt(r.qV, 3) + " kJ ÷ " + r.n.toFixed(4) + " mol");
+  bar(y2, r.dH, "#c4b5fd", "ΔH (piston)", "q_p = −C_{cal} ΔT = " + fmt(r.qP, 3) + " kJ ÷ " + r.n.toFixed(4) + " mol");
+  /* gap bracket + magnified inset */
+  if (after("compare")){
+    var xe1 = barX + barW * Math.abs(r.dU) / maxv, xe2 = barX + barW * Math.abs(r.dH) / maxv, by0 = y1 - 6, by1 = y2 + bh + 6;
+    g.strokeStyle = COL.good; g.lineWidth = 3; g.beginPath(); g.moveTo(xe1, by0); g.lineTo(xe1, by1); g.moveTo(xe2, by0); g.lineTo(xe2, by1); g.stroke();
+    var ix = ph ? lx : b.x + b.w * 0.60, iy = ph ? y2 + bh + 70 : b.y + 22, iw = ph ? b.w - 40 : b.w * 0.38, ih = ph ? 150 : b.h - 44;
+    rr(ix, iy, iw, ih, 12); g.fillStyle = "rgba(6,12,26,.9)"; g.fill(); g.strokeStyle = "rgba(74,222,128,.6)"; g.lineWidth = 2; g.stroke();
+    var mag = 20, gw = Math.min(iw - 40, Math.abs(r.gap) / maxv * barW * mag);
+    txt("the gap, shown ×" + mag, ix + 14, iy + (ph ? 32 : 24), fs, COL.dim, "left", "700");
+    if (gw > 0.5){ g.fillStyle = COL.good; g.fillRect(ix + 14, iy + (ph ? 44 : 34), gw, ph ? 16 : 12); }
+    else txt("no gap", ix + 14, iy + (ph ? 58 : 46), fs, COL.good, "left", "800");
+    var l1 = "ΔH − ΔU = " + fmt(r.gap, 2) + " kJ mol⁻¹", l2 = "Δn_gRT = " + plusOrZero(r.dng) + " × " + r.RT.toFixed(3) + " = " + fmt(r.dngRT, 2) + (Math.abs(r.gap - r.dngRT) < 0.005 ? "  ✓" : "  ✗");
+    txt(l1, ix + 14, iy + (ph ? 94 : 72), fitPx(l1, big, iw - 28, "800"), "#ffffff", "left", "800");
+    txt(l2, ix + 14, iy + (ph ? 132 : 102), fitPx(l2, big, iw - 28, "800"), COL.good, "left", "800");
+    if (after("reveal") && !ph){
+      var e1 = r.dngReal === 0 && !r.hyp ? "Δn_g = 0  ⇒  ΔH = ΔU" : "q_V = ΔU    q_p = ΔH";
+      txt(e1, ix + 14, iy + ih - 44, fitPx(e1, fs + 2, iw - 28, "800"), "#ffffff", "left", "800");
+      txt("ΔH − ΔU = Δn_gRT", ix + 14, iy + ih - 14, fitPx("ΔH − ΔU = Δn_gRT", big, iw - 28, "800"), COL.good, "left", "800");
+    }
+    if (after("reveal") && ph){
+      var e2 = r.dngReal === 0 && !r.hyp ? "Δn_g = 0  ⇒  ΔH = ΔU" : "q_V = ΔU  ·  q_p = ΔH";
+      txt(e2, b.x + b.w / 2, b.y + b.h - 62, fitPx(e2, 28, b.w - 30, "800"), "#ffffff", "center", "800");
+      txt("ΔH − ΔU = Δn_gRT", b.x + b.w / 2, b.y + b.h - 20, 34, COL.good, "center", "800");
+    }
+  }
+}
+
+function draw(){
+  minPx = 999; L = layout();
+  if (cv.width !== L.W || cv.height !== L.H){ cv.width = L.W; cv.height = L.H; }
+  var bg = g.createLinearGradient(0, 0, 0, L.H); bg.addColorStop(0, "#0b1226"); bg.addColorStop(1, "#04060c"); g.fillStyle = bg; g.fillRect(0, 0, L.W, L.H);
+  var r = RUN.res || ENGINE.run(RUN.D);
+  drawBand(r); drawCal(L.A, "V", r); drawCal(L.B, "P", r); drawResults(r);
+}
+
+/* ---------------------------------------------------------------- the solution's live numbers */
+function fillSolution(){
+  $("s_ccal").textContent = ENGINE.CCAL.toFixed(1); $("s_rt").textContent = ENGINE.RT.toFixed(4);
+  var tb = document.querySelector("#soltab tbody"), keys = ["C", "H", "B"], i, h = "", c = [], all = true;
+  for (i = 0; i < keys.length; i++){
+    var r = ENGINE.run({ rxn: keys[i], scale: 1, dng: null }), amt = r.mass ? r.mass.toFixed(3) + " g" : r.n.toFixed(4) + " mol";
+    h += "<tr><td>" + r.eqn + "</td><td class=\"n\">" + amt + "</td><td class=\"n\">" + plusOrZero(r.dng) + "</td><td class=\"n\">" + fmt(r.dU, 2) + "</td><td class=\"n\">" + fmt(r.dH, 2)
+      + "</td><td class=\"n\">" + plus(r.dTv, 3) + " K</td><td class=\"n\">" + plus(r.dTp, 3) + " K</td><td class=\"n\">" + fmt(r.gap, 2) + "</td><td class=\"n\">" + fmt(r.dngRT, 2) + "</td></tr>";
+    var ok1 = Math.abs(r.dH - r.dHref) < 1e-9;
+    c.push([ok1, r.label + ": ΔH measured from the piston's heat and work (" + fmt(r.dH, 4) + ") equals NCERT's Δ_rH (" + fmt(r.dHref, 1) + ") - the work route and eq. 5.10 agree."]);
+    if (r.dng === 0) c.push([Math.abs(r.dH - r.dU) < 1e-12 && Math.abs(r.dV) < 1e-12, r.label + ": Δn_g = 0, the piston does not move (ΔV = 0) and ΔH = ΔU."]);
+    else c.push([Math.abs(r.gap / r.dng - ENGINE.RT) < 1e-9, r.label + ": (ΔH − ΔU)/Δn_g = " + (r.gap / r.dng).toFixed(4) + " kJ mol⁻¹ = RT."]);
+    var rr2 = ENGINE.run({ rxn: keys[i], scale: 2, dng: null });
+    if (i === 1) c.push([Math.abs(rr2.dTv - 2 * r.dTv) < 1e-12 && Math.abs(rr2.dU - r.dU) < 1e-9, "Twice the amount doubles ΔT but leaves ΔU and ΔH per mole unchanged."]);
+    if (i === 1) c.push([Math.abs(r.dV - r.n * r.dng * ENGINE.R * ENGINE.T / ENGINE.P * 1000) < 1e-12 && Math.abs((r.ng1 - r.ng0) - r.n * r.dng) < 1e-12, "The piston's ΔV (" + fmt(r.dV, 3) + " L) equals the ideal-gas Δn·RT/p from the token count."]);
+    if (i === 1) c.push([Math.abs(-ENGINE.CCAL * r.dTv - r.qV) < 1e-12, "Heat bookkeeping: q(reaction) = −C_cal·ΔT on both sides (the calorimeter gains what the reaction loses)."]);
+  }
+  tb.innerHTML = h;
+  var ul = $("checks"), out = "";
+  for (i = 0; i < c.length; i++){ all = all && c[i][0]; out += "<li" + (c[i][0] ? "" : " class=\"fail\"") + ">" + c[i][1].replace(/_r/g, "<sub>r</sub>").replace(/_g/g, "<sub>g</sub>").replace(/_cal/g, "<sub>cal</sub>") + "</li>"; }
+  ul.innerHTML = out; return all;
+}
+
+/* ---------------------------------------------------------------- controls */
+function setSpeed(k){ RUN.speed = k; }
+$("gobtn").addEventListener("click", start);
+$("replaybtn").addEventListener("click", replay);
+$("resetbtn").addEventListener("click", reset);
+(function(){ var b = document.querySelectorAll("#rxgroup button"), i; for (i = 0; i < b.length; i++) b[i].addEventListener("click", function(){ pickReaction(this.getAttribute("data-rx")); }); })();
+(function(){ var b = document.querySelectorAll("#predgroup button"), i; for (i = 0; i < b.length; i++) b[i].addEventListener("click", function(){ predict(this.getAttribute("data-pred")); }); })();
+(function(){ var b = document.querySelectorAll("#amtgroup button"), i; for (i = 0; i < b.length; i++) b[i].addEventListener("click", function(){ whatIf("scale", this.getAttribute("data-amt")); }); })();
+$("in_dng").addEventListener("input", function(){ whatIf("dng", this.value); });
+$("realbtn").addEventListener("click", function(){ whatIf("dng", null); });
+$("classbtn").addEventListener("click", function(){
+  var on = document.body.classList.toggle("classroom"); this.setAttribute("aria-pressed", on ? "true" : "false");
+  this.textContent = on ? "Exit classroom" : "Classroom"; draw();
+});
+$("themebtn").addEventListener("click", function(){
+  var r = document.documentElement, dark = r.getAttribute("data-theme") === "dark" || (!r.getAttribute("data-theme") && window.matchMedia && matchMedia("(prefers-color-scheme: dark)").matches);
+  r.setAttribute("data-theme", dark ? "light" : "dark");
+});
+
+var lastT = null;
+function loop(ts){
+  if (lastT === null) lastT = ts;
+  var dt = Math.min(0.05, Math.max(0, (ts - lastT) / 1000)); lastT = ts;
+  tick(RUN.state === "paused" ? 0 : (reduced ? 0 : dt)); draw();
+  requestAnimationFrame(loop);
+}
+
+window.PX = {
+  ENGINE: ENGINE, QRUN: QRUN, ANS: ANS, RUN: RUN,
+  answer: function(){ return (RUN.res || ENGINE.run(RUN.D)).answer; },
+  minLabelPx: function(){ draw(); return minPx; },
+  start: start, replay: replay, reset: reset, setSpeed: setSpeed, speed: function(k){ RUN.speed = k; },
+  pick: pickReaction, predict: predict, whatIf: whatIf, solutionChecks: fillSolution,
+  stage: function(){ var i = stageIndex(); return { n: i, name: STAGES[i - 1] }; },
+  state: function(){ var r = RUN.res || ENGINE.run(RUN.D), hp = heating();
+    return { state: RUN.state, phase: RUN.phase, stage: stageIndex(), stageName: STAGES[stageIndex() - 1], t: RUN.t, reaction: RUN.D.rxn, ignited: RUN.state !== "setup",
+      prediction: RUN.pred, scale: RUN.D.scale, hypothetical: r.hyp, dng: r.dng, dngReal: r.dngReal, RT: r.RT,
+      Tv: ENGINE.T + r.dTv * hp, Tp: ENGINE.T + r.dTp * hp, dTv: r.dTv, dTp: r.dTp, qV: r.qV, qP: r.qP, w: r.w, dV: r.dV, extent: progress(),
+      dU: r.dU, dH: r.dH, gap: r.gap, dngRT: r.dngRT, revealed: RUN.revealed, whatIfOpen: RUN.unlocked, done: RUN.done }; }
+};
+
+fillSolution(); syncSeg(); syncWhatIf(); refreshButtons(); narrate(); results(); draw();
+window.addEventListener("resize", function(){ draw(); });
+requestAnimationFrame(loop);
+})();
+</script>
+</body>
+</html>
