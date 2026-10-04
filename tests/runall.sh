@@ -60,7 +60,7 @@ done
 
 echo
 echo "=== workflow tools: tracker Sheet sync, simulation factory, registry rules, NCERT data, concept and experience contracts (no network) ==="
-for f in "$HERE/test_tracker_sheet.py" "$HERE/test_auto_sim.py" "$HERE/test_registry_schema.py" "$HERE/ncert_data.py" "$HERE/concept_contract.py" "$HERE/experience_contract.py" "$HERE/test_instagram_publish.py" "$HERE/test_youtube_publish.py" "$HERE/test_narration.py" "$HERE/test_voice_layer.py" "$HERE/test_voice_generation.py"; do
+for f in "$HERE/test_tracker_sheet.py" "$HERE/test_auto_sim.py" "$HERE/test_registry_schema.py" "$HERE/ncert_data.py" "$HERE/concept_contract.py" "$HERE/experience_contract.py" "$HERE/test_visual_assets.py" "$HERE/test_instagram_publish.py" "$HERE/test_youtube_publish.py" "$HERE/test_narration.py" "$HERE/test_voice_layer.py" "$HERE/test_voice_generation.py"; do
   nm=$(basename "$f")
   if [ ! -f "$f" ]; then line "$nm" "MISSING (not in this tree)"; missing=$((missing+1)); continue; fi
   out=$(python3 "$f" 2>&1 | tail -1)
@@ -139,6 +139,7 @@ run "NCERT Explorer reader foundation"     "$HERE/ncert_reader.js"
 run "NCERT Explorer local PDF reader"       "$HERE/ncert_local.js"
 run "NCERT Explorer learning panel (UX-1)"   "$HERE/ncert_panel.js"
 run "NCERT Explorer learning context (UX-2)" "$HERE/ncert_learning.js"
+run "visual assets reach the reel via the page" "$HERE/visual_asset_capture.js"
 run "visual QA gates (layout v3)"          "$HERE/test_visual_gates.js"
 run "feed schema latch"                    "$HERE/schemagate.js"
 run "AdMob banner placement"               "$HERE/adsgate.js"

@@ -39,6 +39,7 @@ ACCESS_VALUES = ("free", "premium", "pro")
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import registry_schema as schema  # noqa: E402  (IDs, status values, concept rules - one definition)
 import ncert_schema  # noqa: E402  (NCERT catalogue, chapter mapping and feed)
+import visual_assets  # noqa: E402  (approved images embedded in experience pages)
 STATUS_VALUES = schema.STATUS_VALUES
 
 REQUIRED = ["id", "path", "folder", "title", "year", "paper", "subject",
@@ -257,6 +258,17 @@ def main():
                 rel = norm(os.path.relpath(dirpath, ROOT))
                 if rel not in known:
                     fail("orphan: %s has a simulation but no manifest entry" % rel)
+
+    # visual assets: the registry, and every page that declares one (tools/visual_assets.py)
+    for msg in visual_assets.library_problems(ROOT):
+        fail(msg)
+    vlib = visual_assets.load_library(ROOT) if os.path.isfile(os.path.join(ROOT, visual_assets.LIBRARY)) else {}
+    for sim in sims:
+        page = os.path.join(ROOT, sim.get("path", ""))
+        if sim.get("path") and os.path.isfile(page):
+            with open(page, encoding="utf-8") as fh:
+                for msg in visual_assets.page_problems(fh.read(), vlib, ROOT):
+                    fail("%s: %s" % (sim.get("id"), msg))
 
     print("Checked %d simulation(s) in %s" % (len(sims), os.path.relpath(JSON_PATH, ROOT)))
     for note in notes:

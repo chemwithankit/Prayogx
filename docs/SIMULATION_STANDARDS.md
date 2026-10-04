@@ -47,6 +47,8 @@ standard ([NCERT.md](NCERT.md) §2).
 - No external scripts, stylesheets, fonts or CDNs; no `fetch`; no `localStorage`,
   `sessionStorage` or IndexedDB. None of the 32 existing pages uses any of these. Any
   exception needs the owner's explicit approval.
+- An approved image (in-house or provider-generated) may be shown only as a listed, licensed
+  asset embedded in the page as a `data:` URI: [VISUAL_ASSETS.md](VISUAL_ASSETS.md).
 - It must open from disk, a USB stick or any static host.
 - `<meta name="sim-id" content="<ID>">`. Every element id is unique: a duplicate id once
   silently killed an animation loop.
