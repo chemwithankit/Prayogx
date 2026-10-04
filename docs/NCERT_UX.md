@@ -273,26 +273,35 @@ NCERT PDF  →  Experience Stage  →  ← Back to NCERT / Esc / browser Back  �
 | Edition note | `ctx.editionStatus !== "exact_match"` |
 
 **APIs.** `NCERT.ExperienceMapper.getExperiencesForPage(context)` stays as it is (flat list, backward
-compatible). The contextual UX will use a **companion, concept-aware operation — documented here as a
-future contract only, not implemented:**
+compatible). The contextual UX uses a **companion, concept-aware operation, implemented in UX-2**
+(`ncert/experience-mapper.js`, tested by `tests/ncert_learning.js`):
 
 ```
-getLearningContext(context) →
-{
-  page:     { pdfPage, printedPage, editionStatus },
-  match:    "printed-page" | "section" | "chapter",      how the context was found (drives the notes)
+getLearningContext(context [, { sectionId, chapterId }]) →
+null                                                       no context and no chosen section
+| {
+  page:     { pdfPage, printedPage, chapterId, editionStatus } | null,
+  match:    "printed-page" | "section" | "none",          how the place was found (drives the notes)
   sections: [ { id, number, title } ],
   concepts: [ {
       concept:     { id, title, description },
-      objectives:  [ { id, statement } ],
+      objectives:  [ { id, statement, verb } ],
       experiences: [ { id, type, title, objectives, libraryId } ]   published only, practice excluded
   } ],
-  apply:    [ { libraryId, title } ]                       JEE practice for the page / concepts
+  apply:    [ { libraryId, title, label } ]                section JEE links, then published practice experiences
 }
 ```
 
-It reads the generated concept inventory and experience feed; it contains no UI logic, no ranking and no
-fetching beyond the existing feed. Its exact form is settled when the panel is built.
+- A printed page wins; without one, `options.sectionId` (the section chosen in the chapter map) is used;
+  otherwise `match` is `"none"` and nothing is claimed.
+- Concepts located on the exact printed page come first, then those reached through a current section
+  (by `sectionId`, or — for a location without a section — by printed-page overlap), in inventory order.
+- An experience is offered only when `status === "published"`, its `conceptId` exists, and at least one of
+  its objectives belongs to that concept (foreign objectives are dropped). Hands-on types first; no
+  maximum, no ranking, no duration or media.
+- The chapter controller hands the data over once with `setChapterData({ chapterId, sections, practice,
+  learning })`, where `learning = { inventory, experiences }` is optional; the feed carries no `learning`
+  yet, so production shows the UX-1 empty state. Every call returns new objects.
 
 ## 9. Accessibility
 
@@ -327,7 +336,7 @@ source and privacy note in one collapsed "Details". Not yet: the sheet's drag ge
    practical; the panel enters an experience-focused state; `← Back to NCERT` is always obvious, and
    Back / Esc / browser Back return to the same page and reader context.
 2. **Learning context API:** `getExperiencesForPage(context)` stays backward compatible; the contextual UX
-   uses a companion `getLearningContext(context)` (§8), documented only, not implemented.
+   uses a companion `getLearningContext(context)` (§8), implemented in UX-2.
 3. **Unverified editions:** printed-page context is used when available, with a clear note that the
    edition could not be verified — never presented as exact; without labels, a graceful section /
    chapter fallback. No separate algorithm.

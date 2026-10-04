@@ -343,7 +343,25 @@
       if (PANEL && PANEL.sheet && !sheetEntry()) { PANEL.pushed = false; sheetUI(false); }
     };
     window.addEventListener("popstate", PANEL.onPop);
+    panelChapterData(feed);
     panelRender();
+  }
+
+  /* What the mapper needs for this chapter: its sections (with their JEE links), a label for
+     each linked practice page, and - when the chapter feed carries them - the concept
+     inventory and experience documents (feed.learning: {inventory, experiences}). No
+     chapter feed carries learning documents yet, so no concept is shown in production. */
+  function panelChapterData(feed) {
+    var M = window.NCERT && window.NCERT.ExperienceMapper;
+    if (!M || !M.setChapterData) return;
+    var practice = {}, sims = feed.simulations || [];
+    for (var i = 0; i < sims.length; i++) {
+      var c = sims[i];
+      practice[c.id] = { title: c.shortTitle || c.title,
+                         label: (c.exam || "JEE") + " " + (c.year || "") + " \u00b7 " + (c.paper || "") + " \u00b7 Q" + c.questionNumber };
+    }
+    M.setChapterData({ chapterId: feed.chapter.id, sections: feed.sections || [], practice: practice,
+                       learning: feed.learning || null });
   }
 
   function panelDestroy() {
@@ -378,67 +396,39 @@
     return null;
   }
 
-  /* The sections that contain a printed page: the most specific ones (a parent is dropped
-     when one of its subsections also contains the page), deeper first, then the one that
-     starts on this page, then chapter order. */
-  function sectionsAt(page) {
-    var secs = PANEL.feed.sections || [], hit = [], i, j;
-    for (i = 0; i < secs.length; i++) if (secs[i].pages && secs[i].pages[0] <= page && page <= secs[i].pages[1]) hit.push(secs[i]);
-    function within(child, parent) {
-      if (child.id === parent.id || (child.level || 1) <= (parent.level || 1) || child.id.indexOf(parent.id) !== 0) return false;
-      var c = child.id.charAt(parent.id.length);
-      return c === "." || (c >= "a" && c <= "z");
-    }
-    var out = [];
-    for (i = 0; i < hit.length; i++) {
-      var parent = false;
-      for (j = 0; j < hit.length; j++) if (within(hit[j], hit[i])) parent = true;
-      if (!parent) out.push(hit[i]);
-    }
-    out.sort(function (a, b) {
-      if ((b.level || 1) !== (a.level || 1)) return (b.level || 1) - (a.level || 1);
-      var as = a.pages[0] === page ? 0 : 1, bs = b.pages[0] === page ? 0 : 1;
-      if (as !== bs) return as - bs;
-      return secs.indexOf(a) - secs.indexOf(b);
-    });
-    return out;
-  }
-
-  /* Where the student is: {kind: "page" | "pdf" | "section" | "none", ...}. */
-  function panelWhere(ctx) {
-    if (ctx && ctx.printedPage !== null && ctx.printedPage !== undefined) {
-      return { kind: "page", label: "p.\u00a0" + ctx.printedPage, sections: sectionsAt(ctx.printedPage),
-               note: ctx.editionStatus === "exact_match" ? "" : "Your PDF\u2019s edition could not be verified \u2014 page matching may be approximate." };
-    }
-    var chosen = PANEL.chosen ? panelSection(PANEL.chosen) : null;
-    if (ctx) {
-      return { kind: "pdf", label: "PDF page " + ctx.pdfPage, sections: chosen ? [chosen] : [],
-               note: chosen ? "Your PDF has no printed page numbers; showing the chosen section."
-                            : "Your PDF has no printed page numbers. Choose a section in the chapter map." };
-    }
-    if (chosen) return { kind: "section", label: "Section " + (chosen.number || chosen.title), sections: [chosen], note: "" };
-    return { kind: "none", label: "", sections: [], note: "" };
-  }
-
-  function panelExperiences(ctx) {
-    if (!ctx) return [];
+  /* The learning context for where the student is (NCERT.ExperienceMapper.getLearningContext):
+     the page, how it was placed, its sections, concepts with their objectives and published
+     experiences, and Apply. A chosen chapter-map section stands in when the page has no
+     printed number, or before a PDF is open. */
+  function panelLearning(ctx) {
     var M = window.NCERT && window.NCERT.ExperienceMapper;
     try {
-      var r = M && M.getExperiencesForPage ? M.getExperiencesForPage(ctx) : [];
-      return Object.prototype.toString.call(r) === "[object Array]" ? r : [];
-    } catch (e) { return []; }
+      return M && M.getLearningContext ? M.getLearningContext(ctx, { sectionId: PANEL.chosen, chapterId: PANEL.feed.chapter.id }) : null;
+    } catch (e) { return null; }
   }
 
-  /* JEE practice: the chapter's existing apply links for these sections (no new data). */
-  function panelApply(sections) {
-    var cards = {}, sims = PANEL.feed.simulations || [], out = [], seen = {}, i, j;
-    for (i = 0; i < sims.length; i++) cards[sims[i].id] = sims[i];
-    for (i = 0; i < sections.length; i++) {
-      var ids = sections[i].apply || [];
-      for (j = 0; j < ids.length; j++) if (cards[ids[j]] && !seen[ids[j]]) { seen[ids[j]] = 1; out.push(cards[ids[j]]); }
+  /* How the panel states the place. */
+  function panelWhere(lc) {
+    if (!lc) return { kind: "none", label: "", note: "" };
+    var pg = lc.page;
+    if (pg && lc.match === "printed-page") {
+      return { kind: "page", label: "p. " + pg.printedPage,
+               note: pg.editionStatus === "exact_match" ? "" : "Your PDF’s edition could not be verified — page matching may be approximate." };
     }
-    return out;
+    if (pg) {
+      return { kind: "pdf", label: "PDF page " + pg.pdfPage,
+               note: lc.match === "section" ? "Your PDF has no printed page numbers; showing the chosen section."
+                                            : "Your PDF has no printed page numbers. Choose a section in the chapter map." };
+    }
+    if (lc.match === "section" && lc.sections.length) {
+      return { kind: "section", label: "Section " + (lc.sections[0].number || lc.sections[0].title), note: "" };
+    }
+    return { kind: "none", label: "", note: "" };
   }
+
+  var TYPE_LABEL = { "simulation": "Simulation", "animation": "Animation", "virtual-lab": "Virtual Lab", "graph": "Graph Explorer",
+                     "data-explorer": "Data Explorer", "interactive-diagram": "Interactive Diagram", "molecular": "Molecular",
+                     "derivation": "Derivation", "worked-example": "Worked Example" };
 
   function panelRender() {
     if (!PANEL || !pel("nx-panel")) return;
@@ -452,18 +442,22 @@
       var more = pel("nx-srcmore");
       if (more) more.open = !reading;
     }
-    var where = panelWhere(ctx);
-    var exps = panelExperiences(ctx);
-    var apply = where.kind === "none" ? [] : panelApply(where.sections);
+    var lc = panelLearning(ctx);
+    var where = panelWhere(lc);
+    var sections = lc && where.kind !== "none" ? lc.sections : [];
+    var concepts = lc && where.kind !== "none" ? lc.concepts : [];
+    var apply = lc && where.kind !== "none" ? lc.apply : [];
+    var nexp = 0;
+    for (var ce = 0; ce < concepts.length; ce++) nexp += concepts[ce].experiences.length;
 
     var here = pel("nx-here");
     here.hidden = where.kind === "none";
     if (!here.hidden) {
       var h = '<p class="nx-herepage">' + esc(where.label) + "</p>";
-      if (where.sections.length) {
+      if (sections.length) {
         h += '<ul class="nx-heresecs">';
-        for (var i = 0; i < where.sections.length; i++) {
-          var s = where.sections[i];
+        for (var i = 0; i < sections.length; i++) {
+          var s = sections[i];
           h += '<li><span class="nx-heresecno">' + esc(s.number) + "</span>" + esc(s.title) + "</li>";
         }
         h += "</ul>";
@@ -472,38 +466,66 @@
       pel("nx-here-body").innerHTML = h;
     }
 
-    pel("nx-concept").hidden = true;            // no concept inventory yet (UX-2)
+    // Concept: each concept here, with its learning objectives
+    var cb = pel("nx-concept");
+    cb.hidden = !concepts.length;
+    if (concepts.length) {
+      var ch = "";
+      for (var ci = 0; ci < concepts.length; ci++) {
+        var cc = concepts[ci];
+        ch += '<div class="nx-cpt" data-concept="' + esc(cc.concept.id) + '"><p class="nx-cpttitle">' + esc(cc.concept.title) + "</p>" +
+          (cc.concept.description ? '<p class="nx-cptdesc">' + esc(cc.concept.description) + "</p>" : "");
+        if (cc.objectives.length) {
+          ch += '<ul class="nx-objs" aria-label="Learning objectives">';
+          for (var oi = 0; oi < cc.objectives.length; oi++) ch += '<li data-objective="' + esc(cc.objectives[oi].id) + '">' + esc(cc.objectives[oi].statement) + "</li>";
+          ch += "</ul>";
+        }
+        ch += "</div>";
+      }
+      pel("nx-concept-body").innerHTML = ch;
+    }
+
+    // Explore: every published experience of these concepts, with the purpose it serves
     var ex = pel("nx-explore");
-    ex.hidden = !exps.length;
-    if (exps.length) {
-      var li = "";
-      for (var k = 0; k < exps.length; k++) {
-        var x = exps[k] || {};
-        li += '<li class="nx-expitem"><span class="nx-exptype">' + esc(String(x.type || "").replace(/-/g, " ")) + "</span>" +
-          '<span class="nx-exptitle">' + esc(x.title || "") + "</span></li>";
+    ex.hidden = !nexp;
+    if (nexp) {
+      var li = "", grouped = concepts.length > 1;
+      for (var g = 0; g < concepts.length; g++) {
+        var gc = concepts[g];
+        if (!gc.experiences.length) continue;
+        if (grouped) li += '<li class="nx-expgroup">' + esc(gc.concept.title) + "</li>";
+        var purpose = {};
+        for (var po = 0; po < gc.objectives.length; po++) purpose[gc.objectives[po].id] = gc.objectives[po].statement;
+        for (var k = 0; k < gc.experiences.length; k++) {
+          var x = gc.experiences[k];
+          li += '<li class="nx-expitem" data-experience="' + esc(x.id) + '">' +
+            '<span class="nx-exptype">' + esc(TYPE_LABEL[x.type] || x.type) + "</span>" +
+            '<span class="nx-exptitle">' + esc(x.title) + "</span>" +
+            (purpose[x.objectives[0]] ? '<span class="nx-exppurpose">' + esc(purpose[x.objectives[0]]) + "</span>" : "") + "</li>";
+        }
       }
       pel("nx-explore-body").innerHTML = li;
     }
-    pel("nx-quiet").hidden = where.kind === "none" || !!exps.length;
+    pel("nx-quiet").hidden = where.kind === "none" || !!nexp;
 
+    // Apply: JEE practice for this place
     var ap = pel("nx-apply");
     ap.hidden = !apply.length;
     if (apply.length) {
       var al = "";
       for (var m = 0; m < apply.length; m++) {
-        var c = apply[m];
-        var label = (c.exam || "JEE") + " " + (c.year || "") + " \u00b7 " + (c.paper || "") + " \u00b7 Q" + c.questionNumber;
-        al += '<li><a class="nx-applink" href="../#/run/' + encodeURIComponent(c.id) + '" target="_blank" rel="noopener" data-sim="' + esc(c.id) + '"' +
-          ' aria-label="' + esc(label + ": " + (c.shortTitle || c.title) + " (opens the Questions library in a new tab)") + '">' +
-          '<span class="nx-applabel">' + esc(label) + "</span>" +
-          '<span class="nx-apptitle">' + esc(c.shortTitle || c.title) + '<span aria-hidden="true">\u00a0\u2197</span></span></a></li>';
+        var a2 = apply[m];
+        al += '<li><a class="nx-applink" href="../#/run/' + encodeURIComponent(a2.libraryId) + '" target="_blank" rel="noopener" data-sim="' + esc(a2.libraryId) + '"' +
+          ' aria-label="' + esc(a2.label + ": " + a2.title + " (opens the Questions library in a new tab)") + '">' +
+          '<span class="nx-applabel">' + esc(a2.label) + "</span>" +
+          '<span class="nx-apptitle">' + esc(a2.title) + '<span aria-hidden="true"> ↗</span></span></a></li>';
       }
       pel("nx-apply-body").innerHTML = al;
     }
 
     // the chapter map marks where the student is
     var cur = {};
-    for (var q = 0; q < where.sections.length; q++) cur[where.sections[q].id] = 1;
+    for (var q = 0; q < sections.length; q++) cur[sections[q].id] = 1;
     var items = pel("nx-map").querySelectorAll(".nx-sec");
     for (var r = 0; r < items.length; r++) {
       if (cur[items[r].getAttribute("data-section")]) items[r].setAttribute("aria-current", "location");
@@ -512,11 +534,12 @@
 
     // phones / tablets: a context bar only when this page has something to explore or apply
     var bar = pel("nx-ctxbar");
-    var useful = reading && where.kind !== "none" && (exps.length > 0 || apply.length > 0);
+    var useful = reading && where.kind !== "none" && (nexp > 0 || apply.length > 0);
     bar.hidden = !useful;
     main.setAttribute("data-ctxbar", useful ? "1" : "0");
-    var summary = where.label + (where.sections.length ? " \u00b7 " + where.sections[0].title : "") +
-      (exps.length ? " \u00b7 " + exps.length + " to explore" : "") + (apply.length ? " \u00b7 " + apply.length + " to apply" : "");
+    var place = concepts.length ? concepts[0].concept.title : sections.length ? sections[0].title : "";
+    var summary = where.label + (place ? " \u00b7 " + place : "") +
+      (nexp ? " \u00b7 " + nexp + " to explore" : "") + (apply.length ? " \u00b7 " + apply.length + " to apply" : "");
     if (useful) bar.innerHTML = '<span class="nx-ctxtext">' + esc(summary) + '</span><span class="nx-ctxup" aria-hidden="true">\u25b4</span>';
     bar.setAttribute("aria-label", useful ? summary + ". Open the learning panel." : "");
 

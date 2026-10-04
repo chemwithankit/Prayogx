@@ -471,10 +471,11 @@ const pdfFile = (name, buf, type) => ({ name, mimeType: type === undefined ? 'ap
     ok('L. getExperiencesForPage(context) returns [] for exact_match, unverified and printedPage null', em.arrays && em.empty, JSON.stringify(em));
     ok('M. it never mutates the context (frozen and plain contexts unchanged), and returns a new array each time', em.untouched && em.fresh);
     ok('...and tolerates a missing context', em.odd);
-    ok('the mapper is the only thing on NCERT.ExperienceMapper: getExperiencesForPage', same(em.api, ['getExperiencesForPage']));
+    ok('NCERT.ExperienceMapper offers getExperiencesForPage and only the UX-2 companions (getLearningContext, setChapterData)',
+      same(em.api.slice().sort(), ['getExperiencesForPage', 'getLearningContext', 'setChapterData']), em.api.join());
     const msrc = fs.readFileSync(ROOT + '/ncert/experience-mapper.js', 'utf8').replace(/\/\*[\s\S]*?\*\//g, '').replace(/\/\/.*$/gm, '');
     ok('the mapper fetches, imports and launches nothing, and names no chapter or simulation',
-      !/fetch|XMLHttpRequest|import|require\(|simulations|ncert\.nic|NCERT-1|innerHTML|location|localStorage|indexedDB/.test(msrc));
+      !/fetch|XMLHttpRequest|import|require\(|simulations|ncert\.nic|NCERT-1|innerHTML|window\.location|location\.(hash|href)|localStorage|indexedDB/.test(msrc));
     ok('the mapper is plain ES5', !/(^|[^\w.$])(let|const|class)\s|=>|`/.test(msrc));
     ok('no experience UI was added (no cards, buttons or hotspots)', (await pc.$('[data-experience], .nx-experience, .nx-hotspot')) === null
       && !/Explore|Try this/.test(await pc.innerText('#nx-chlayout')));

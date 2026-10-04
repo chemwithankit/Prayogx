@@ -12,7 +12,8 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
    Synthetic PDFs only (tests/ncert_pdf_fixture.js). LAB carries printed-page
    labels 136-147, as NCERT chapter PDFs do, so real Chapter 5 sections and their
    existing JEE links resolve; NOLAB has none. No concept or experience data
-   exists: Explore is shown only by stubbing the ExperienceMapper inside a test.
+   exists in production feeds: here Explore is shown only by stubbing
+   getLearningContext inside a test (tests/ncert_learning.js covers real data).
 
    NCERT_SHOTS=<dir> saves screenshots.
    --------------------------------------------------------------------------- */
@@ -212,14 +213,17 @@ const shot = async (pg, name) => { if (SHOTS) await pg.screenshot({ path: path.j
     ok('the mapper still returns [] (backward compatible)', JSON.stringify(await m.evaluate(() => NCERT.ExperienceMapper.getExperiencesForPage({
       pdfPage: 1, printedPage: 136, chapterId: 'NCERT-11-CHE-P1-CH05', editionStatus: 'exact_match' }))) === '[]');
     await choose(m, LAB);
-    await m.evaluate(() => { window.__seen = []; const M = NCERT.ExperienceMapper, orig = M.getExperiencesForPage;
-      window.__restore = () => { M.getExperiencesForPage = orig; };
-      M.getExperiencesForPage = c => { window.__seen.push(c); return c.printedPage === 137 ? [{ id: 'EXP-CHE-TEST-STUB', type: 'virtual-lab', title: 'Test-only stub' }] : []; }; });
+    await m.evaluate(() => { window.__seen = []; const M = NCERT.ExperienceMapper, orig = M.getLearningContext;
+      window.__restore = () => { M.getLearningContext = orig; };
+      M.getLearningContext = (c, o) => { window.__seen.push(c); const lc = orig(c, o);
+        if (lc && c && c.printedPage === 137) lc.concepts.push({ concept: { id: 'CPT-CHE-TEST-STUB', title: 'Test-only concept', description: null },
+          objectives: [], experiences: [{ id: 'EXP-CHE-TEST-STUB', type: 'virtual-lab', title: 'Test-only stub', objectives: [], libraryId: null }] });
+        return lc; }; });
     await go(m, 2);
     s = await panel(m);
     const seen = await m.evaluate(() => window.__seen[window.__seen.length - 1]);
     ok('the panel asks the mapper with the page context itself', seen && seen.printedPage === 137 && seen.chapterId === 'NCERT-11-CHE-P1-CH05');
-    ok('when the mapper returns experiences (a test-only stub), Explore appears and the quiet line goes',
+    ok('when the learning context has experiences (a test-only stub), Explore appears and the quiet line goes',
       /Explore.*virtual lab.*Test-only stub/i.test(s.explore) && s.quiet === null, JSON.stringify(s));
     await go(m, 1);
     s = await panel(m);

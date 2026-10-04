@@ -1,0 +1,178 @@
+{
+  "note": "TEST/EXAMPLE DATA ONLY - the learning documents a chapter feed may carry (feed.learning), for tests/ncert_learning.js.",
+  "inventory": {
+    "schemaVersion": "1.0.0",
+    "note": "TEST/EXAMPLE DATA ONLY - synthetic concepts located on the real Chapter 5 structure to exercise NCERT.ExperienceMapper.getLearningContext(); not Thermodynamics content.",
+    "concepts": [
+      {
+        "id": "CPT-CHE-TEST-ALPHA",
+        "title": "Test concept Alpha",
+        "description": "A synthetic concept used only by the tests.",
+        "locations": [
+          {
+            "sourceId": "NCERT-11-CHE-P1",
+            "chapterId": "NCERT-11-CHE-P1-CH05",
+            "sectionId": "5.1.4",
+            "printedPages": [
+              138,
+              140
+            ]
+          }
+        ],
+        "learningObjectives": [
+          {
+            "id": "LO-CHE-TEST-ALPHA-FIRST",
+            "statement": "Explain the first synthetic idea of test concept Alpha.",
+            "verb": "explain"
+          },
+          {
+            "id": "LO-CHE-TEST-ALPHA-SECOND",
+            "statement": "Predict the second synthetic outcome of test concept Alpha.",
+            "verb": "predict"
+          }
+        ]
+      },
+      {
+        "id": "CPT-CHE-TEST-BETA",
+        "title": "Test concept Beta",
+        "locations": [
+          {
+            "sourceId": "NCERT-11-CHE-P1",
+            "chapterId": "NCERT-11-CHE-P1-CH05",
+            "printedPages": [
+              138,
+              138
+            ]
+          }
+        ],
+        "learningObjectives": [
+          {
+            "id": "LO-CHE-TEST-BETA-ONLY",
+            "statement": "Describe the only synthetic idea of test concept Beta."
+          }
+        ]
+      },
+      {
+        "id": "CPT-CHE-TEST-GAMMA",
+        "title": "Test concept Gamma",
+        "locations": [
+          {
+            "sourceId": "NCERT-11-CHE-P1",
+            "chapterId": "NCERT-11-CHE-P1-CH05",
+            "sectionId": "5.1.2"
+          }
+        ],
+        "learningObjectives": [
+          {
+            "id": "LO-CHE-TEST-GAMMA-ONLY",
+            "statement": "Identify the synthetic feature of test concept Gamma."
+          }
+        ]
+      },
+      {
+        "id": "CPT-CHE-TEST-DELTA",
+        "title": "Test concept Delta (another chapter)",
+        "locations": [
+          {
+            "sourceId": "EXAMPLE-BOOK",
+            "chapterId": "EXAMPLE-BOOK-CH06",
+            "printedPages": [
+              138,
+              140
+            ]
+          }
+        ],
+        "learningObjectives": [
+          {
+            "id": "LO-CHE-TEST-DELTA-ONLY",
+            "statement": "Compare the synthetic cases of test concept Delta."
+          }
+        ]
+      }
+    ]
+  },
+  "experiences": {
+    "schemaVersion": "2.0.0",
+    "note": "TEST/EXAMPLE DATA ONLY - experiences for tests/fixtures/learning_context_example.json's synthetic inventory.",
+    "experiences": [
+      {
+        "id": "EXP-CHE-TEST-ALPHA-ANIMATION",
+        "conceptId": "CPT-CHE-TEST-ALPHA",
+        "type": "animation",
+        "title": "Alpha animation (published)",
+        "objectives": [
+          "LO-CHE-TEST-ALPHA-FIRST"
+        ],
+        "status": "published",
+        "libraryId": null
+      },
+      {
+        "id": "EXP-CHE-TEST-ALPHA-SIM",
+        "conceptId": "CPT-CHE-TEST-ALPHA",
+        "type": "simulation",
+        "title": "Alpha simulation (published)",
+        "objectives": [
+          "LO-CHE-TEST-ALPHA-FIRST"
+        ],
+        "status": "published",
+        "libraryId": null
+      },
+      {
+        "id": "EXP-CHE-TEST-ALPHA-GRAPH",
+        "conceptId": "CPT-CHE-TEST-ALPHA",
+        "type": "graph",
+        "title": "Alpha graph (published, two objectives)",
+        "objectives": [
+          "LO-CHE-TEST-ALPHA-SECOND",
+          "LO-CHE-TEST-ALPHA-FIRST"
+        ],
+        "status": "published",
+        "libraryId": null
+      },
+      {
+        "id": "EXP-CHE-TEST-ALPHA-PLANNED",
+        "conceptId": "CPT-CHE-TEST-ALPHA",
+        "type": "virtual-lab",
+        "title": "Alpha lab (planned)",
+        "objectives": [
+          "LO-CHE-TEST-ALPHA-FIRST"
+        ],
+        "status": "planned",
+        "libraryId": null
+      },
+      {
+        "id": "EXP-CHE-TEST-ALPHA-REVIEW",
+        "conceptId": "CPT-CHE-TEST-ALPHA",
+        "type": "derivation",
+        "title": "Alpha derivation (in review)",
+        "objectives": [
+          "LO-CHE-TEST-ALPHA-SECOND"
+        ],
+        "status": "review",
+        "libraryId": null
+      },
+      {
+        "id": "EXP-CHE-TEST-ALPHA-PRACTICE",
+        "conceptId": "CPT-CHE-TEST-ALPHA",
+        "type": "practice",
+        "title": "Alpha practice (published)",
+        "objectives": [
+          "LO-CHE-TEST-ALPHA-FIRST"
+        ],
+        "status": "published",
+        "libraryId": "ADV-2026-P1-CHE-Q01"
+      },
+      {
+        "id": "EXP-CHE-TEST-BETA-WORKED",
+        "conceptId": "CPT-CHE-TEST-BETA",
+        "type": "worked-example",
+        "title": "Beta worked example (published)",
+        "objectives": [
+          "LO-CHE-TEST-BETA-ONLY"
+        ],
+        "status": "published",
+        "libraryId": null
+      }
+    ]
+  }
+}

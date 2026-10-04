@@ -229,6 +229,15 @@
 .nx-quiet[hidden]{display:none}
 .nx-explist,.nx-applist{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
 .nx-expitem{display:flex;flex-direction:column;gap:2px;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--surface-0)}
+.nx-exppurpose{font-size:13px;line-height:1.4;color:var(--text-secondary)}
+.nx-expgroup{font-size:12.5px;font-weight:650;color:var(--text-muted);margin:4px 0 -2px}
+.nx-expgroup:first-child{margin-top:0}
+/* UX-2: a concept and its learning objectives */
+.nx-cpt+.nx-cpt{margin-top:12px;padding-top:12px;border-top:1px solid var(--line)}
+.nx-cpttitle{margin:0;font-size:17px;font-weight:650;line-height:1.3;color:var(--text-primary)}
+.nx-cptdesc{margin:4px 0 0;font-size:13.5px;line-height:1.45;color:var(--text-secondary)}
+.nx-objs{margin:8px 0 0;padding-left:18px;font-size:13.5px;line-height:1.45;color:var(--text-secondary)}
+.nx-objs li+li{margin-top:4px}
 .nx-exptype{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--c, var(--accent))}
 .nx-exptitle{font-weight:650}
 .nx-applink{display:flex;flex-direction:column;gap:2px;padding:9px 11px;min-height:44px;border:1px solid var(--line);border-radius:10px;

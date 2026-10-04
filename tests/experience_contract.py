@@ -12,7 +12,6 @@ import json
 import math
 import os
 import re
-import subprocess
 import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -227,9 +226,11 @@ reaches = lambda c, l: (c["chapterId"] == l["chapterId"] and c["printedPage"] is
 chk("a page context meets a concept location on chapterId + printed page (what a future concept mapper needs)",
     reaches(ctx, loc) and not reaches(dict(ctx, printedPage=None), loc) and C.location_problems("x", loc) == [])
 js = open(os.path.join(ROOT, "ncert", "experience-mapper.js"), encoding="utf-8").read()
-chk("the ExperienceMapper seam is unchanged and still returns []",
-    subprocess.run(["git", "diff", "--quiet", "HEAD", "--", "ncert/experience-mapper.js"], cwd=ROOT).returncode == 0
-    and "getExperiencesForPage" in js and "return [];" in js)
+seam = re.search(r"getExperiencesForPage: function \(context\) \{(.*?)\n    \}", js, re.S)
+chk("the ExperienceMapper seam is unchanged and still returns [] (UX-2 adds getLearningContext beside it)",
+    seam is not None and seam.group(1).split() == 'if (!context || typeof context !== "object") return []; return [];'.split()
+    # ...defined once and never reassigned, wrapped or aliased elsewhere in the mapper
+    and re.sub(r"/\*.*?\*/|//[^\n]*", "", js, flags=re.S).count("getExperiencesForPage") == 1)
 
 print()
 print("%d passed, %d failed" % (len(ok), len(fail)))
