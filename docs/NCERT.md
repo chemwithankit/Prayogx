@@ -262,9 +262,10 @@ Experience → library page         tools/experience_schema.py   optional librar
   separate, later layer that will consume an experience by id and type, and does not depend on
   `libraryId`; nothing in either contract is NCERT-specific.
 - A page context meets a concept location on `chapterId` + printed page; that future **concept mapper** is
-  not built. `NCERT.ExperienceMapper.getExperiencesForPage()` still returns `[]`. No concept inventory
-  (Thermodynamics or other), no Chapter 5 mappings and no experiences exist yet; the tests use synthetic
-  sources only.
+  not built. `NCERT.ExperienceMapper.getExperiencesForPage()` still returns `[]`. The first real concept inventory,
+  Chapter 5 Thermodynamics, is `data/ncert/concepts/NCERT-11-CHE-P1-CH05.json` (concepts, learning
+  objectives and source locations only; under review, not wired into the feed or panel). No experiences
+  exist yet, and an inventory entry never starts media production.
 
 ## 7. Pilot: Class 11 Chemistry Part I, Chapter 5 Thermodynamics
 

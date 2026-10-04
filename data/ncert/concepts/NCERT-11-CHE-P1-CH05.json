@@ -1,0 +1,1547 @@
+{
+  "schemaVersion": "1.0.0",
+  "concepts": [
+    {
+      "id": "CPT-CHE-SCOPE-OF-THERMODYNAMICS",
+      "title": "Scope of chemical thermodynamics",
+      "description": "Thermodynamics studies energy transformations in macroscopic systems. It depends only on a system's initial and final equilibrium states, and says nothing about how fast or by what route a change happens.",
+      "locations": [
+        {
+          "sourceId": "NCERT-11-CHE-P1",
+          "chapterId": "NCERT-11-CHE-P1-CH05",
+          "sectionId": "intro",
+          "printedPages": [
+            136,
+            136
+          ]
+        }
+      ],
+      "learningObjectives": [
+        {
+          "id": "LO-CHE-THERMODYNAMICS-SCOPE-STATES-NOT-RATE",
+          "statement": "Explain why thermodynamics depends only on initial and final states and cannot predict the rate of a change.",
+          "verb": "explain"
+        },
+        {
+          "id": "LO-CHE-THERMODYNAMICS-SCOPE-MACROSCOPIC-EQUILIBRIUM",
+          "statement": "Describe the conditions under which the laws of thermodynamics apply: macroscopic systems in, or moving between, equilibrium states.",
+          "verb": "describe"
+        }
+      ]
+    },
+    {
+      "id": "CPT-CHE-SYSTEM-AND-SURROUNDINGS",
+      "title": "System, surroundings and boundary",
+      "description": "The system is the part of the universe under observation and the surroundings are everything else; in practice, only the neighbouring part that can interact with the system. Together they make up the universe. A real or imaginary boundary separates them and lets matter and energy crossing it be tracked.",
+      "locations": [
+        {
+          "sourceId": "NCERT-11-CHE-P1",
+          "chapterId": "NCERT-11-CHE-P1-CH05",
+          "sectionId": "5.1.1",
+          "printedPages": [
+            137,
+            137
+          ]
+        }
+      ],
+      "learningObjectives": [
+        {
+          "id": "LO-CHE-SYSTEM-SURROUNDINGS-IDENTIFY",
+          "statement": "Identify the system, the surroundings and the boundary in a described experimental set-up.",
+          "verb": "identify"
+        },
+        {
+          "id": "LO-CHE-SYSTEM-SURROUNDINGS-BOUNDARY-ROLE",
+          "statement": "Explain how a real or imaginary boundary lets the movement of matter and energy into or out of a system be tracked.",
+          "verb": "explain"
+        }
+      ]
+    },
+    {
+      "id": "CPT-CHE-TYPES-OF-SYSTEMS",
+      "title": "Open, closed and isolated systems",
+      "description": "Systems are classified by what can cross the boundary: an open system exchanges both matter and energy, a closed system exchanges energy but not matter, and an isolated system exchanges neither.",
+      "locations": [
+        {
+          "sourceId": "NCERT-11-CHE-P1",
+          "chapterId": "NCERT-11-CHE-P1-CH05",
+          "sectionId": "5.1.2",
+          "printedPages": [
+            137,
+            138
+          ]
+        }
+      ],
+      "learningObjectives": [
+        {
+          "id": "LO-CHE-TYPES-OF-SYSTEMS-COMPARE",
+          "statement": "Compare open, closed and isolated systems by the exchange of matter and energy across their boundaries.",
+          "verb": "compare"
+        },
+        {
+          "id": "LO-CHE-TYPES-OF-SYSTEMS-CLASSIFY",
+          "statement": "Identify whether a given container or process, such as an open beaker, a sealed steel vessel or a thermos flask, is an open, closed or isolated system.",
+          "verb": "identify"
+        }
+      ]
+    },
+    {
+      "id": "CPT-CHE-STATE-OF-A-SYSTEM",
+      "title": "State of a thermodynamic system",
+      "description": "A thermodynamic state is described by measurable bulk properties such as p, V, T and composition, not by the motion of individual particles. Only a limited number of these properties can be varied independently; once they are fixed, the others have definite values. The state of the surroundings never needs to be fully specified.",
+      "locations": [
+        {
+          "sourceId": "NCERT-11-CHE-P1",
+          "chapterId": "NCERT-11-CHE-P1-CH05",
+          "sectionId": "5.1.3",
+          "printedPages": [
+            138,
+            138
+          ]
+        }
+      ],
+      "learningObjectives": [
+        {
+          "id": "LO-CHE-STATE-OF-SYSTEM-MACROSCOPIC",
+          "statement": "Explain how the thermodynamic description of a state by bulk properties differs from the mechanical description by particle positions and velocities.",
+          "verb": "explain"
+        },
+        {
+          "id": "LO-CHE-STATE-OF-SYSTEM-INDEPENDENT-VARIABLES",
+          "statement": "Describe how fixing a minimum number of independent macroscopic properties fixes the values of all the others.",
+          "verb": "describe"
+        }
+      ]
+    },
+    {
+      "id": "CPT-CHE-STATE-FUNCTION",
+      "title": "State functions",
+      "description": "A state function has a value that depends only on the present state of the system, so its change depends only on the initial and final states, not on the route between them. The chapter introduces p, V and T as state functions, then U, H, S and G. Heat and work are not state functions, though their sum q + w is.",
+      "locations": [
+        {
+          "sourceId": "NCERT-11-CHE-P1",
+          "chapterId": "NCERT-11-CHE-P1-CH05",
+          "sectionId": "5.1.3",
+          "printedPages": [
+            138,
+            138
+          ]
+        },
+        {
+          "sourceId": "NCERT-11-CHE-P1",
+          "chapterId": "NCERT-11-CHE-P1-CH05",
+          "sectionId": "5.1.4",
+          "printedPages": [
+            139,
+            140
+          ]
+        },
+        {
+          "sourceId": "NCERT-11-CHE-P1",
+          "chapterId": "NCERT-11-CHE-P1-CH05",
+          "sectionId": "5.2.2",
+          "printedPages": [
+            143,
+            143
+          ]
+        },
+        {
+          "sourceId": "NCERT-11-CHE-P1",
+          "chapterId": "NCERT-11-CHE-P1-CH05",
+          "sectionId": "5.6b",
+          "printedPages": [
+            159,
+            159
+          ]
+        },
+        {
+          "sourceId": "NCERT-11-CHE-P1",
+          "chapterId": "NCERT-11-CHE-P1-CH05",
+          "sectionId": "5.6c",
+          "printedPages": [
+            160,
+            160
+          ]
+        }
+      ],
+      "learningObjectives": [
+        {
+          "id": "LO-CHE-STATE-FUNCTION-DEFINE",
+          "statement": "Explain why the change in a state function is independent of the path between two states.",
+          "verb": "explain"
+        },
+        {
+          "id": "LO-CHE-STATE-FUNCTION-VERSUS-HEAT-WORK",
+          "statement": "Compare state functions such as U and H with heat and work, whose values depend on how a change is carried out.",
+          "verb": "compare"
+        },
+        {
+          "id": "LO-CHE-STATE-FUNCTION-IDENTIFY",
+          "statement": "Identify which quantities in a described process are state functions.",
+          "verb": "identify"
+        }
+      ]
+    },
+    {
+      "id": "CPT-CHE-INTERNAL-ENERGY",
+      "title": "Internal energy as a state function",
+      "description": "Internal energy U is the total energy of a system. It changes when heat or work crosses the boundary or matter enters or leaves. Joule's adiabatic experiments showed that equal work produces the same change of state by any route, so U is a state function. Only changes in U, not its absolute value, can be measured.",
+      "locations": [
+        {
+          "sourceId": "NCERT-11-CHE-P1",
+          "chapterId": "NCERT-11-CHE-P1-CH05",
+          "sectionId": "5.1.4",
+          "printedPages": [
+            138,
+            140
+          ]
+        }
+      ],
+      "learningObjectives": [
+        {
+          "id": "LO-CHE-INTERNAL-ENERGY-WAYS-TO-CHANGE",
+          "statement": "Identify the ways in which the internal energy of a system can change: heat, work and transfer of matter.",
+          "verb": "identify"
+        },
+        {
+          "id": "LO-CHE-INTERNAL-ENERGY-JOULE-STATE-FUNCTION",
+          "statement": "Explain how equal adiabatic work producing the same change of state by different routes shows that internal energy is a state function.",
+          "verb": "explain"
+        },
+        {
+          "id": "LO-CHE-INTERNAL-ENERGY-ONLY-CHANGES",
+          "statement": "Explain why only changes in internal energy, and not its absolute value, can be measured.",
+          "verb": "explain"
+        }
+      ]
+    },
+    {
+      "id": "CPT-CHE-ADIABATIC-PROCESS",
+      "title": "Adiabatic system and process",
+      "description": "An adiabatic wall allows no heat transfer between system and surroundings; a process in such a system is adiabatic (q = 0), so the change in internal energy equals the adiabatic work, ΔU = w_ad.",
+      "locations": [
+        {
+          "sourceId": "NCERT-11-CHE-P1",
+          "chapterId": "NCERT-11-CHE-P1-CH05",
+          "sectionId": "5.1.4",
+          "printedPages": [
+            138,
+            139
+          ]
+        },
+        {
+          "sourceId": "NCERT-11-CHE-P1",
+          "chapterId": "NCERT-11-CHE-P1-CH05",
+          "sectionId": "5.2.1",
+          "printedPages": [
+            142,
+            142
+          ]
+        }
+      ],
+      "learningObjectives": [
+        {
+          "id": "LO-CHE-ADIABATIC-PROCESS-DEFINE",
+          "statement": "Describe what makes a wall, system or process adiabatic.",
+          "verb": "describe"
+        },
+        {
+          "id": "LO-CHE-ADIABATIC-PROCESS-ENERGY",
+          "statement": "Apply q = 0 to relate the change in internal energy to the work done in an adiabatic process.",
+          "verb": "apply"
+        }
+      ]
+    },
+    {
+      "id": "CPT-CHE-WORK",
+      "title": "Work as energy transfer",
+      "description": "Work done on a system, for example mechanical work by churning paddles or electrical work by an immersion rod, changes its internal energy; work done by the system lowers it. In chemistry the work considered is mainly pressure-volume work.",
+      "locations": [
+        {
+          "sourceId": "NCERT-11-CHE-P1",
+          "chapterId": "NCERT-11-CHE-P1-CH05",
+          "sectionId": "5.1.4",
+          "printedPages": [
+            138,
+            139
+          ]
+        },
+        {
+          "sourceId": "NCERT-11-CHE-P1",
+          "chapterId": "NCERT-11-CHE-P1-CH05",
+          "sectionId": "5.2.1",
+          "printedPages": [
+            140,
+            140
+          ]
+        }
+      ],
+      "learningObjectives": [
+        {
+          "id": "LO-CHE-WORK-CHANGES-INTERNAL-ENERGY",
+          "statement": "Describe how work done on or by a system changes its internal energy, using mechanical and electrical work as examples.",
+          "verb": "describe"
+        },
+        {
+          "id": "LO-CHE-WORK-HEAT-COMPARE",
+          "statement": "Compare heat and work as the two modes by which energy is transferred between a system and its surroundings.",
+          "verb": "compare"
+        }
+      ]
+    },
+    {
+      "id": "CPT-CHE-HEAT",
+      "title": "Heat as energy transfer",
+      "description": "Heat q is energy exchanged between system and surroundings because of a temperature difference, through thermally conducting walls. When no work is done at constant volume, the change in internal energy equals the heat absorbed.",
+      "locations": [
+        {
+          "sourceId": "NCERT-11-CHE-P1",
+          "chapterId": "NCERT-11-CHE-P1-CH05",
+          "sectionId": "5.1.4",
+          "printedPages": [
+            139,
+            139
+          ]
+        }
+      ],
+      "learningObjectives": [
+        {
+          "id": "LO-CHE-HEAT-TEMPERATURE-DIFFERENCE",
+          "statement": "Explain heat as the energy transferred between a system and its surroundings because of a temperature difference.",
+          "verb": "explain"
+        },
+        {
+          "id": "LO-CHE-HEAT-CHANGES-INTERNAL-ENERGY",
+          "statement": "Describe how heat transferred through conducting walls, with no work done, changes the internal energy of a system.",
+          "verb": "describe"
+        }
+      ]
+    },
+    {
+      "id": "CPT-CHE-SIGN-CONVENTION-HEAT-WORK",
+      "title": "IUPAC sign convention for heat and work",
+      "description": "In chemical thermodynamics q and w are positive when energy enters the system (heat absorbed, work done on the system) and negative when it leaves. Older texts and physics books use the opposite sign for work.",
+      "locations": [
+        {
+          "sourceId": "NCERT-11-CHE-P1",
+          "chapterId": "NCERT-11-CHE-P1-CH05",
+          "sectionId": "5.1.4",
+          "printedPages": [
+            139,
+            139
+          ]
+        },
+        {
+          "sourceId": "NCERT-11-CHE-P1",
+          "chapterId": "NCERT-11-CHE-P1-CH05",
+          "sectionId": "5.2.1",
+          "printedPages": [
+            141,
+            141
+          ]
+        }
+      ],
+      "learningObjectives": [
+        {
+          "id": "LO-CHE-SIGN-CONVENTION-PREDICT",
+          "statement": "Predict the signs of q and w for a described process using the IUPAC convention.",
+          "verb": "predict"
+        },
+        {
+          "id": "LO-CHE-SIGN-CONVENTION-COMPARE-PHYSICS",
+          "statement": "Compare the IUPAC sign convention for work with the older convention still used in physics.",
+          "verb": "compare"
+        }
+      ]
+    },
+    {
+      "id": "CPT-CHE-FIRST-LAW",
+      "title": "First law of thermodynamics",
+      "description": "For any change of state, ΔU = q + w: q and w can each vary with the route but their sum depends only on the initial and final states. The energy of an isolated system is constant, the law of conservation of energy.",
+      "locations": [
+        {
+          "sourceId": "NCERT-11-CHE-P1",
+          "chapterId": "NCERT-11-CHE-P1-CH05",
+          "sectionId": "5.1.4",
+          "printedPages": [
+            140,
+            140
+          ]
+        },
+        {
+          "sourceId": "NCERT-11-CHE-P1",
+          "chapterId": "NCERT-11-CHE-P1-CH05",
+          "sectionId": "5.2.1",
+          "printedPages": [
+            142,
+            142
+          ]
+        }
+      ],
+      "learningObjectives": [
+        {
+          "id": "LO-CHE-FIRST-LAW-STATE",
+          "statement": "Explain the first law of thermodynamics and its mathematical form, ΔU = q + w.",
+          "verb": "explain"
+        },
+        {
+          "id": "LO-CHE-FIRST-LAW-CALCULATE",
+          "statement": "Calculate the change in internal energy from given heat and work for a process.",
+          "verb": "calculate"
+        },
+        {
+          "id": "LO-CHE-FIRST-LAW-SPECIAL-CASES",
+          "statement": "Apply ΔU = q + w to isolated, constant-volume and isothermal processes.",
+          "verb": "apply"
+        }
+      ]
+    },
+    {
+      "id": "CPT-CHE-PRESSURE-VOLUME-WORK",
+      "title": "Pressure-volume work",
+      "description": "When a gas is compressed or expands against an external pressure, the work is w = -p_ex ΔV. The sign makes compression work positive. When the pressure changes in finite steps the work is a sum, and on a p-V plot the work equals the area under the external-pressure path.",
+      "locations": [
+        {
+          "sourceId": "NCERT-11-CHE-P1",
+          "chapterId": "NCERT-11-CHE-P1-CH05",
+          "sectionId": "5.2.1",
+          "printedPages": [
+            140,
+            142
+          ]
+        }
+      ],
+      "learningObjectives": [
+        {
+          "id": "LO-CHE-PV-WORK-DERIVE",
+          "statement": "Derive w = -p_ex ΔV for a gas compressed by a piston against a constant external pressure.",
+          "verb": "derive"
+        },
+        {
+          "id": "LO-CHE-PV-WORK-CALCULATE",
+          "statement": "Calculate the pressure-volume work for an expansion or compression against a constant external pressure.",
+          "verb": "calculate"
+        },
+        {
+          "id": "LO-CHE-PV-WORK-AREA",
+          "statement": "Visualize pressure-volume work as the area under the p-V path for single-step, multi-step and reversible compression.",
+          "verb": "visualize"
+        }
+      ]
+    },
+    {
+      "id": "CPT-CHE-REVERSIBLE-IRREVERSIBLE-PROCESSES",
+      "title": "Reversible and irreversible processes",
+      "description": "A reversible process can be reversed at any moment by an infinitesimal change. It proceeds infinitely slowly through a series of equilibrium states, with the system always in near equilibrium with its surroundings. All other processes are irreversible.",
+      "locations": [
+        {
+          "sourceId": "NCERT-11-CHE-P1",
+          "chapterId": "NCERT-11-CHE-P1-CH05",
+          "sectionId": "5.2.1",
+          "printedPages": [
+            141,
+            142
+          ]
+        },
+        {
+          "sourceId": "NCERT-11-CHE-P1",
+          "chapterId": "NCERT-11-CHE-P1-CH05",
+          "sectionId": "5.7",
+          "printedPages": [
+            162,
+            162
+          ]
+        }
+      ],
+      "learningObjectives": [
+        {
+          "id": "LO-CHE-REVERSIBLE-PROCESS-DESCRIBE",
+          "statement": "Describe the conditions that make a process thermodynamically reversible.",
+          "verb": "describe"
+        },
+        {
+          "id": "LO-CHE-REVERSIBLE-IRREVERSIBLE-COMPARE",
+          "statement": "Compare reversible and irreversible processes in terms of the external pressure and the equilibrium of the system with its surroundings.",
+          "verb": "compare"
+        }
+      ]
+    },
+    {
+      "id": "CPT-CHE-REVERSIBLE-ISOTHERMAL-WORK",
+      "title": "Work in reversible isothermal expansion",
+      "description": "Under reversible conditions the external pressure can be replaced by the gas pressure. With pV = nRT at constant temperature this gives w_rev = -2.303 nRT log(V_f/V_i), and q = -w for an isothermal change of an ideal gas.",
+      "locations": [
+        {
+          "sourceId": "NCERT-11-CHE-P1",
+          "chapterId": "NCERT-11-CHE-P1-CH05",
+          "sectionId": "5.2.1",
+          "printedPages": [
+            142,
+            143
+          ]
+        }
+      ],
+      "learningObjectives": [
+        {
+          "id": "LO-CHE-REVERSIBLE-ISOTHERMAL-WORK-DERIVE",
+          "statement": "Derive the expression for the work done in the reversible isothermal expansion of an ideal gas.",
+          "verb": "derive"
+        },
+        {
+          "id": "LO-CHE-REVERSIBLE-ISOTHERMAL-WORK-CALCULATE",
+          "statement": "Calculate the heat and work for the reversible isothermal expansion of an ideal gas.",
+          "verb": "calculate"
+        },
+        {
+          "id": "LO-CHE-REVERSIBLE-IRREVERSIBLE-WORK-COMPARE",
+          "statement": "Compare the work done in the same isothermal expansion carried out into vacuum, against a constant external pressure and reversibly.",
+          "verb": "compare"
+        }
+      ]
+    },
+    {
+      "id": "CPT-CHE-FREE-EXPANSION",
+      "title": "Free expansion of an ideal gas",
+      "description": "Expansion into a vacuum (p_ex = 0) does no work. For the isothermal free expansion of an ideal gas, Joule found q = 0, so ΔU = 0.",
+      "locations": [
+        {
+          "sourceId": "NCERT-11-CHE-P1",
+          "chapterId": "NCERT-11-CHE-P1-CH05",
+          "sectionId": "5.2.1",
+          "printedPages": [
+            142,
+            142
+          ]
+        }
+      ],
+      "learningObjectives": [
+        {
+          "id": "LO-CHE-FREE-EXPANSION-NO-WORK",
+          "statement": "Explain why no work is done when an ideal gas expands into a vacuum.",
+          "verb": "explain"
+        },
+        {
+          "id": "LO-CHE-FREE-EXPANSION-FIRST-LAW",
+          "statement": "Apply the first law to show that q, w and ΔU are all zero for the isothermal free expansion of an ideal gas.",
+          "verb": "apply"
+        }
+      ]
+    },
+    {
+      "id": "CPT-CHE-ENTHALPY",
+      "title": "Enthalpy",
+      "description": "Most reactions run at constant pressure, so a new state function is defined: enthalpy, H = U + pV. The heat absorbed at constant pressure equals ΔH, which is path independent even though q in general is not. At constant pressure, ΔH = ΔU + pΔV.",
+      "locations": [
+        {
+          "sourceId": "NCERT-11-CHE-P1",
+          "chapterId": "NCERT-11-CHE-P1-CH05",
+          "sectionId": "5.2.2",
+          "printedPages": [
+            143,
+            143
+          ]
+        }
+      ],
+      "learningObjectives": [
+        {
+          "id": "LO-CHE-ENTHALPY-WHY-DEFINED",
+          "statement": "Explain why enthalpy is defined for processes carried out at constant pressure.",
+          "verb": "explain"
+        },
+        {
+          "id": "LO-CHE-ENTHALPY-DERIVE-QP",
+          "statement": "Derive ΔH = q_p from the first law and the definition H = U + pV.",
+          "verb": "derive"
+        },
+        {
+          "id": "LO-CHE-ENTHALPY-STATE-FUNCTION",
+          "statement": "Explain why ΔH is independent of path although heat in general is a path-dependent quantity.",
+          "verb": "explain"
+        }
+      ]
+    },
+    {
+      "id": "CPT-CHE-EXOTHERMIC-ENDOTHERMIC",
+      "title": "Exothermic and endothermic reactions",
+      "description": "A reaction that evolves heat at constant pressure has a negative ΔH (exothermic). One that absorbs heat from the surroundings has a positive ΔH (endothermic). Enthalpy diagrams show products below or above reactants.",
+      "locations": [
+        {
+          "sourceId": "NCERT-11-CHE-P1",
+          "chapterId": "NCERT-11-CHE-P1-CH05",
+          "sectionId": "5.2.2",
+          "printedPages": [
+            143,
+            143
+          ]
+        },
+        {
+          "sourceId": "NCERT-11-CHE-P1",
+          "chapterId": "NCERT-11-CHE-P1-CH05",
+          "sectionId": "5.3",
+          "printedPages": [
+            146,
+            146
+          ]
+        },
+        {
+          "sourceId": "NCERT-11-CHE-P1",
+          "chapterId": "NCERT-11-CHE-P1-CH05",
+          "sectionId": "5.6",
+          "printedPages": [
+            157,
+            158
+          ]
+        }
+      ],
+      "learningObjectives": [
+        {
+          "id": "LO-CHE-EXOTHERMIC-ENDOTHERMIC-SIGN",
+          "statement": "Predict the sign of ΔH for a reaction that evolves or absorbs heat at constant pressure.",
+          "verb": "predict"
+        },
+        {
+          "id": "LO-CHE-EXOTHERMIC-ENDOTHERMIC-DIAGRAM",
+          "statement": "Visualize exothermic and endothermic reactions on an enthalpy diagram.",
+          "verb": "visualize"
+        }
+      ]
+    },
+    {
+      "id": "CPT-CHE-DELTA-H-DELTA-U-RELATION",
+      "title": "Relationship between ΔH and ΔU",
+      "description": "For reactions involving gases at constant temperature and pressure, pΔV = Δn_g RT, so ΔH = ΔU + Δn_g RT. The difference is usually insignificant for solids and liquids, whose volumes hardly change.",
+      "locations": [
+        {
+          "sourceId": "NCERT-11-CHE-P1",
+          "chapterId": "NCERT-11-CHE-P1-CH05",
+          "sectionId": "5.2.2",
+          "printedPages": [
+            143,
+            144
+          ]
+        },
+        {
+          "sourceId": "NCERT-11-CHE-P1",
+          "chapterId": "NCERT-11-CHE-P1-CH05",
+          "sectionId": "5.3",
+          "printedPages": [
+            146,
+            146
+          ]
+        },
+        {
+          "sourceId": "NCERT-11-CHE-P1",
+          "chapterId": "NCERT-11-CHE-P1-CH05",
+          "sectionId": "5.4",
+          "printedPages": [
+            148,
+            149
+          ]
+        },
+        {
+          "sourceId": "NCERT-11-CHE-P1",
+          "chapterId": "NCERT-11-CHE-P1-CH05",
+          "sectionId": "5.5",
+          "printedPages": [
+            156,
+            156
+          ]
+        }
+      ],
+      "learningObjectives": [
+        {
+          "id": "LO-CHE-DELTA-H-DELTA-U-DERIVE",
+          "statement": "Derive ΔH = ΔU + Δn_g RT for a reaction involving ideal gases.",
+          "verb": "derive"
+        },
+        {
+          "id": "LO-CHE-DELTA-H-DELTA-U-CALCULATE",
+          "statement": "Calculate ΔH from ΔU, or ΔU from ΔH, for a reaction or phase change involving gases.",
+          "verb": "calculate"
+        },
+        {
+          "id": "LO-CHE-DELTA-H-DELTA-U-WHEN-SIGNIFICANT",
+          "statement": "Predict whether ΔH and ΔU differ significantly for a reaction, from the change in moles of gas.",
+          "verb": "predict"
+        }
+      ]
+    },
+    {
+      "id": "CPT-CHE-EXTENSIVE-INTENSIVE-PROPERTIES",
+      "title": "Extensive and intensive properties",
+      "description": "An extensive property depends on the amount of matter (mass, volume, U, H, heat capacity); an intensive property does not (temperature, pressure, density). A molar property, an extensive property divided by the amount of substance, is intensive.",
+      "locations": [
+        {
+          "sourceId": "NCERT-11-CHE-P1",
+          "chapterId": "NCERT-11-CHE-P1-CH05",
+          "sectionId": "5.2.2",
+          "printedPages": [
+            144,
+            144
+          ]
+        },
+        {
+          "sourceId": "NCERT-11-CHE-P1",
+          "chapterId": "NCERT-11-CHE-P1-CH05",
+          "sectionId": "5.4",
+          "printedPages": [
+            151,
+            151
+          ]
+        },
+        {
+          "sourceId": "NCERT-11-CHE-P1",
+          "chapterId": "NCERT-11-CHE-P1-CH05",
+          "sectionId": "5.6c",
+          "printedPages": [
+            160,
+            160
+          ]
+        }
+      ],
+      "learningObjectives": [
+        {
+          "id": "LO-CHE-EXTENSIVE-INTENSIVE-CLASSIFY",
+          "statement": "Identify given properties as extensive or intensive.",
+          "verb": "identify"
+        },
+        {
+          "id": "LO-CHE-EXTENSIVE-INTENSIVE-PARTITION",
+          "statement": "Explain, using a gas divided by a partition, why volume is extensive and temperature is intensive.",
+          "verb": "explain"
+        },
+        {
+          "id": "LO-CHE-EXTENSIVE-INTENSIVE-MOLAR",
+          "statement": "Explain why a molar property such as molar volume or molar heat capacity is intensive.",
+          "verb": "explain"
+        }
+      ]
+    },
+    {
+      "id": "CPT-CHE-HEAT-CAPACITY",
+      "title": "Heat capacity, molar and specific heat capacity",
+      "description": "The heat transferred is proportional to the temperature change, q = C ΔT, where the heat capacity C depends on the size, composition and nature of the system. Molar heat capacity is per mole and specific heat capacity per unit mass, so q = c m ΔT.",
+      "locations": [
+        {
+          "sourceId": "NCERT-11-CHE-P1",
+          "chapterId": "NCERT-11-CHE-P1-CH05",
+          "sectionId": "5.2.2",
+          "printedPages": [
+            144,
+            145
+          ]
+        }
+      ],
+      "learningObjectives": [
+        {
+          "id": "LO-CHE-HEAT-CAPACITY-MEANING",
+          "statement": "Explain how heat capacity links the heat supplied to a system to its rise in temperature.",
+          "verb": "explain"
+        },
+        {
+          "id": "LO-CHE-HEAT-CAPACITY-COMPARE-FORMS",
+          "statement": "Compare heat capacity, molar heat capacity and specific heat capacity.",
+          "verb": "compare"
+        },
+        {
+          "id": "LO-CHE-HEAT-CAPACITY-CALCULATE",
+          "statement": "Calculate the heat needed to change the temperature of a sample from its mass or amount and its specific or molar heat capacity.",
+          "verb": "calculate"
+        }
+      ]
+    },
+    {
+      "id": "CPT-CHE-CP-CV-RELATION",
+      "title": "Relationship between Cp and Cv for an ideal gas",
+      "description": "Heat capacity at constant volume relates q_V to ΔU, and at constant pressure relates q_p to ΔH. For one mole of an ideal gas, ΔH = ΔU + RΔT, which gives Cp - Cv = R.",
+      "locations": [
+        {
+          "sourceId": "NCERT-11-CHE-P1",
+          "chapterId": "NCERT-11-CHE-P1-CH05",
+          "sectionId": "5.2.2",
+          "printedPages": [
+            145,
+            145
+          ]
+        }
+      ],
+      "learningObjectives": [
+        {
+          "id": "LO-CHE-CP-CV-DERIVE",
+          "statement": "Derive Cp - Cv = R for an ideal gas.",
+          "verb": "derive"
+        },
+        {
+          "id": "LO-CHE-CP-CV-EXPLAIN-DIFFERENCE",
+          "statement": "Explain, from ΔH = ΔU + RΔT for one mole of an ideal gas, why Cp exceeds Cv by R.",
+          "verb": "explain"
+        }
+      ]
+    },
+    {
+      "id": "CPT-CHE-CALORIMETRY",
+      "title": "Calorimetry: measuring ΔU and ΔH",
+      "description": "Calorimetry finds the heat of a process from the temperature change of a calorimeter of known heat capacity. A sealed bomb calorimeter works at constant volume and gives ΔU. A calorimeter open to the atmosphere works at constant pressure and gives ΔH.",
+      "locations": [
+        {
+          "sourceId": "NCERT-11-CHE-P1",
+          "chapterId": "NCERT-11-CHE-P1-CH05",
+          "sectionId": "5.3",
+          "printedPages": [
+            145,
+            146
+          ]
+        }
+      ],
+      "learningObjectives": [
+        {
+          "id": "LO-CHE-CALORIMETRY-BOMB-DELTA-U",
+          "statement": "Explain why a bomb calorimeter measures the change in internal energy of a reaction.",
+          "verb": "explain"
+        },
+        {
+          "id": "LO-CHE-CALORIMETRY-CONSTANT-PRESSURE-DELTA-H",
+          "statement": "Compare measurements at constant volume and at constant pressure, and the quantity each one gives.",
+          "verb": "compare"
+        },
+        {
+          "id": "LO-CHE-CALORIMETRY-CALCULATE",
+          "statement": "Calculate the energy change of a reaction from the temperature change and heat capacity of a calorimeter.",
+          "verb": "calculate"
+        }
+      ]
+    },
+    {
+      "id": "CPT-CHE-REACTION-ENTHALPY",
+      "title": "Reaction enthalpy",
+      "description": "The heat absorbed or evolved at constant pressure is the enthalpy of reaction, Δ_rH: the sum of the enthalpies of the products minus that of the reactants, each weighted by its stoichiometric coefficient.",
+      "locations": [
+        {
+          "sourceId": "NCERT-11-CHE-P1",
+          "chapterId": "NCERT-11-CHE-P1-CH05",
+          "sectionId": "5.3",
+          "printedPages": [
+            146,
+            146
+          ]
+        },
+        {
+          "sourceId": "NCERT-11-CHE-P1",
+          "chapterId": "NCERT-11-CHE-P1-CH05",
+          "sectionId": "5.4",
+          "printedPages": [
+            146,
+            147
+          ]
+        }
+      ],
+      "learningObjectives": [
+        {
+          "id": "LO-CHE-REACTION-ENTHALPY-DEFINE",
+          "statement": "Explain the reaction enthalpy as the difference between the total enthalpies of products and reactants in a balanced equation.",
+          "verb": "explain"
+        },
+        {
+          "id": "LO-CHE-REACTION-ENTHALPY-USES",
+          "statement": "Describe why knowing the reaction enthalpy matters, for example in keeping an industrial reaction at constant temperature.",
+          "verb": "describe"
+        }
+      ]
+    },
+    {
+      "id": "CPT-CHE-STANDARD-STATE",
+      "title": "Standard state and standard reaction enthalpy",
+      "description": "Reaction enthalpy depends on conditions, so a standard is fixed. The standard state of a substance at a given temperature is its pure form at 1 bar, and the standard reaction enthalpy ΔH° applies when every substance is in its standard state. Data are usually quoted at 298 K.",
+      "locations": [
+        {
+          "sourceId": "NCERT-11-CHE-P1",
+          "chapterId": "NCERT-11-CHE-P1-CH05",
+          "sectionId": "5.4",
+          "printedPages": [
+            147,
+            147
+          ]
+        }
+      ],
+      "learningObjectives": [
+        {
+          "id": "LO-CHE-STANDARD-STATE-DEFINE",
+          "statement": "Identify the standard state of a substance at a stated temperature.",
+          "verb": "identify"
+        },
+        {
+          "id": "LO-CHE-STANDARD-STATE-WHY",
+          "statement": "Explain why reaction enthalpies are compared under standard conditions.",
+          "verb": "explain"
+        }
+      ]
+    },
+    {
+      "id": "CPT-CHE-PHASE-TRANSFORMATION-ENTHALPY",
+      "title": "Enthalpy changes of phase transformations",
+      "description": "Melting, vaporisation and sublimation take place at constant temperature and pressure and absorb heat: Δ_fusH, Δ_vapH and Δ_subH are positive, and the reverse changes release the same amount. Their size reflects the strength of intermolecular forces, for example water compared with acetone.",
+      "locations": [
+        {
+          "sourceId": "NCERT-11-CHE-P1",
+          "chapterId": "NCERT-11-CHE-P1-CH05",
+          "sectionId": "5.4",
+          "printedPages": [
+            147,
+            149
+          ]
+        }
+      ],
+      "learningObjectives": [
+        {
+          "id": "LO-CHE-PHASE-ENTHALPY-COMPARE",
+          "statement": "Compare the standard enthalpies of fusion, vaporisation and sublimation and the processes they describe.",
+          "verb": "compare"
+        },
+        {
+          "id": "LO-CHE-PHASE-ENTHALPY-INTERMOLECULAR",
+          "statement": "Explain how the strength of intermolecular interactions affects the enthalpy of a phase change.",
+          "verb": "explain"
+        },
+        {
+          "id": "LO-CHE-PHASE-ENTHALPY-CALCULATE",
+          "statement": "Calculate the enthalpy change for a process that combines temperature changes and phase changes.",
+          "verb": "calculate"
+        }
+      ]
+    },
+    {
+      "id": "CPT-CHE-STANDARD-ENTHALPY-OF-FORMATION",
+      "title": "Standard enthalpy of formation",
+      "description": "Δ_fH° is the enthalpy change when one mole of a compound forms from its elements in their reference states, the most stable forms at 25 °C and 1 bar. By convention it is zero for an element in its reference state. It is a special case of Δ_rH°, and tabulated values give any reaction enthalpy: Σ a Δ_fH°(products) - Σ b Δ_fH°(reactants).",
+      "locations": [
+        {
+          "sourceId": "NCERT-11-CHE-P1",
+          "chapterId": "NCERT-11-CHE-P1-CH05",
+          "sectionId": "5.4",
+          "printedPages": [
+            149,
+            151
+          ]
+        }
+      ],
+      "learningObjectives": [
+        {
+          "id": "LO-CHE-FORMATION-ENTHALPY-DEFINE",
+          "statement": "Identify whether a given reaction's enthalpy is a standard enthalpy of formation.",
+          "verb": "identify"
+        },
+        {
+          "id": "LO-CHE-FORMATION-ENTHALPY-ELEMENTS-ZERO",
+          "statement": "Explain why the standard enthalpy of formation of an element in its reference state is taken as zero.",
+          "verb": "explain"
+        },
+        {
+          "id": "LO-CHE-FORMATION-ENTHALPY-CALCULATE-REACTION",
+          "statement": "Calculate a standard reaction enthalpy from standard enthalpies of formation.",
+          "verb": "calculate"
+        }
+      ]
+    },
+    {
+      "id": "CPT-CHE-THERMOCHEMICAL-EQUATION",
+      "title": "Thermochemical equations",
+      "description": "A thermochemical equation is a balanced equation with physical states and its Δ_rH. Its coefficients are moles, Δ_rH refers to the amounts as written (per mole of reaction), it scales with the coefficients, and it changes sign when the equation is reversed.",
+      "locations": [
+        {
+          "sourceId": "NCERT-11-CHE-P1",
+          "chapterId": "NCERT-11-CHE-P1-CH05",
+          "sectionId": "5.4",
+          "printedPages": [
+            150,
+            151
+          ]
+        }
+      ],
+      "learningObjectives": [
+        {
+          "id": "LO-CHE-THERMOCHEMICAL-EQUATION-CONVENTIONS",
+          "statement": "Describe the conventions for writing a thermochemical equation, including physical states and the meaning of the coefficients.",
+          "verb": "describe"
+        },
+        {
+          "id": "LO-CHE-THERMOCHEMICAL-EQUATION-SCALE-REVERSE",
+          "statement": "Predict how Δ_rH changes when a thermochemical equation is multiplied by a factor or reversed.",
+          "verb": "predict"
+        }
+      ]
+    },
+    {
+      "id": "CPT-CHE-HESS-LAW",
+      "title": "Hess's law of constant heat summation",
+      "description": "Because enthalpy is a state function, a reaction's enthalpy change is the same whether it happens in one step or in several. The standard reaction enthalpy is the sum of the enthalpies of any series of steps it can be divided into, so enthalpies that cannot be measured directly, such as C + ½O2 -> CO, can be calculated.",
+      "locations": [
+        {
+          "sourceId": "NCERT-11-CHE-P1",
+          "chapterId": "NCERT-11-CHE-P1-CH05",
+          "sectionId": "5.4e",
+          "printedPages": [
+            151,
+            152
+          ]
+        },
+        {
+          "sourceId": "NCERT-11-CHE-P1",
+          "chapterId": "NCERT-11-CHE-P1-CH05",
+          "sectionId": "5.5",
+          "printedPages": [
+            152,
+            153
+          ]
+        },
+        {
+          "sourceId": "NCERT-11-CHE-P1",
+          "chapterId": "NCERT-11-CHE-P1-CH05",
+          "sectionId": "5.5",
+          "printedPages": [
+            155,
+            156
+          ]
+        }
+      ],
+      "learningObjectives": [
+        {
+          "id": "LO-CHE-HESS-LAW-EXPLAIN",
+          "statement": "Explain Hess's law as a consequence of enthalpy being a state function.",
+          "verb": "explain"
+        },
+        {
+          "id": "LO-CHE-HESS-LAW-APPLY",
+          "statement": "Apply Hess's law by combining, reversing and scaling thermochemical equations to find an unknown reaction enthalpy.",
+          "verb": "apply"
+        },
+        {
+          "id": "LO-CHE-HESS-LAW-CYCLE",
+          "statement": "Visualize the different routes from reactants to products as an enthalpy cycle with the same overall change.",
+          "verb": "visualize"
+        }
+      ]
+    },
+    {
+      "id": "CPT-CHE-ENTHALPY-OF-COMBUSTION",
+      "title": "Standard enthalpy of combustion",
+      "description": "Δ_cH° is the enthalpy change per mole of a substance burnt completely, with reactants and products in their standard states. Combustion is exothermic. Butane in cooking gas and glucose in the body are examples, and combustion data can give enthalpies of formation.",
+      "locations": [
+        {
+          "sourceId": "NCERT-11-CHE-P1",
+          "chapterId": "NCERT-11-CHE-P1-CH05",
+          "sectionId": "5.5",
+          "printedPages": [
+            152,
+            153
+          ]
+        }
+      ],
+      "learningObjectives": [
+        {
+          "id": "LO-CHE-COMBUSTION-ENTHALPY-DEFINE",
+          "statement": "Describe the standard enthalpy of combustion and write the thermochemical equation for a combustion.",
+          "verb": "describe"
+        },
+        {
+          "id": "LO-CHE-COMBUSTION-ENTHALPY-FORMATION",
+          "statement": "Calculate a standard enthalpy of formation from enthalpies of combustion.",
+          "verb": "calculate"
+        }
+      ]
+    },
+    {
+      "id": "CPT-CHE-ENTHALPY-OF-ATOMIZATION",
+      "title": "Enthalpy of atomization",
+      "description": "Δ_aH° is the enthalpy change in breaking all the bonds of one mole of a substance to give gaseous atoms, as in H2 -> 2H, CH4 -> C + 4H and Na(s) -> Na(g). For a diatomic molecule it equals the bond dissociation enthalpy; for a metal like sodium it equals the enthalpy of sublimation.",
+      "locations": [
+        {
+          "sourceId": "NCERT-11-CHE-P1",
+          "chapterId": "NCERT-11-CHE-P1-CH05",
+          "sectionId": "5.5",
+          "printedPages": [
+            153,
+            153
+          ]
+        }
+      ],
+      "learningObjectives": [
+        {
+          "id": "LO-CHE-ATOMIZATION-ENTHALPY-DESCRIBE",
+          "statement": "Describe the enthalpy of atomization and the products it forms.",
+          "verb": "describe"
+        },
+        {
+          "id": "LO-CHE-ATOMIZATION-ENTHALPY-RELATE",
+          "statement": "Explain when the enthalpy of atomization equals a bond dissociation enthalpy or an enthalpy of sublimation.",
+          "verb": "explain"
+        }
+      ]
+    },
+    {
+      "id": "CPT-CHE-BOND-ENTHALPY",
+      "title": "Bond dissociation and mean bond enthalpy",
+      "description": "Bond dissociation enthalpy is the enthalpy change for breaking one mole of a particular bond in gaseous molecules. In polyatomic molecules successive bonds differ (the four C-H steps in CH4), so a mean bond enthalpy is used. For gas-phase reactions, Δ_rH° ≈ Σ bond enthalpies of reactants - Σ bond enthalpies of products.",
+      "locations": [
+        {
+          "sourceId": "NCERT-11-CHE-P1",
+          "chapterId": "NCERT-11-CHE-P1-CH05",
+          "sectionId": "5.5",
+          "printedPages": [
+            153,
+            155
+          ]
+        }
+      ],
+      "learningObjectives": [
+        {
+          "id": "LO-CHE-BOND-ENTHALPY-COMPARE",
+          "statement": "Compare bond dissociation enthalpy with mean bond enthalpy, using diatomic molecules and methane.",
+          "verb": "compare"
+        },
+        {
+          "id": "LO-CHE-BOND-ENTHALPY-MEAN-CALCULATE",
+          "statement": "Calculate a mean bond enthalpy from an enthalpy of atomization.",
+          "verb": "calculate"
+        },
+        {
+          "id": "LO-CHE-BOND-ENTHALPY-REACTION-ESTIMATE",
+          "statement": "Calculate an approximate reaction enthalpy for a gas-phase reaction from bond enthalpies.",
+          "verb": "calculate"
+        },
+        {
+          "id": "LO-CHE-BOND-ENTHALPY-LIMITS",
+          "statement": "Explain why reaction enthalpies from bond enthalpies are approximate and apply only when all species are gases.",
+          "verb": "explain"
+        }
+      ]
+    },
+    {
+      "id": "CPT-CHE-LATTICE-ENTHALPY",
+      "title": "Lattice enthalpy and the Born-Haber cycle",
+      "description": "Lattice enthalpy is the enthalpy change when one mole of an ionic solid separates into gaseous ions (+788 kJ mol⁻¹ for NaCl). It cannot be measured directly, so it is found from a Born-Haber cycle, using Hess's law with sublimation, ionization, bond dissociation, electron gain and formation enthalpies.",
+      "locations": [
+        {
+          "sourceId": "NCERT-11-CHE-P1",
+          "chapterId": "NCERT-11-CHE-P1-CH05",
+          "sectionId": "5.5",
+          "printedPages": [
+            155,
+            156
+          ]
+        }
+      ],
+      "learningObjectives": [
+        {
+          "id": "LO-CHE-LATTICE-ENTHALPY-DEFINE",
+          "statement": "Describe the lattice enthalpy of an ionic compound.",
+          "verb": "describe"
+        },
+        {
+          "id": "LO-CHE-LATTICE-ENTHALPY-BORN-HABER",
+          "statement": "Apply a Born-Haber cycle to calculate the lattice enthalpy of an ionic solid such as sodium chloride.",
+          "verb": "apply"
+        },
+        {
+          "id": "LO-CHE-LATTICE-ENTHALPY-WHY-INDIRECT",
+          "statement": "Explain why lattice enthalpy has to be found indirectly, through an enthalpy cycle.",
+          "verb": "explain"
+        }
+      ]
+    },
+    {
+      "id": "CPT-CHE-ENTHALPY-OF-SOLUTION",
+      "title": "Enthalpy of solution",
+      "description": "The enthalpy of solution is the enthalpy change when one mole of a substance dissolves in a specified amount of solvent; at infinite dilution, solute-solute interactions are negligible. For an ionic solid, Δ_solH° = Δ_latticeH° + Δ_hydH°. It is positive for most salts, so their solubility rises with temperature.",
+      "locations": [
+        {
+          "sourceId": "NCERT-11-CHE-P1",
+          "chapterId": "NCERT-11-CHE-P1-CH05",
+          "sectionId": "5.5",
+          "printedPages": [
+            156,
+            156
+          ]
+        }
+      ],
+      "learningObjectives": [
+        {
+          "id": "LO-CHE-SOLUTION-ENTHALPY-LATTICE-HYDRATION",
+          "statement": "Explain the enthalpy of solution of an ionic compound as the balance between lattice enthalpy and hydration enthalpy.",
+          "verb": "explain"
+        },
+        {
+          "id": "LO-CHE-SOLUTION-ENTHALPY-CALCULATE",
+          "statement": "Calculate the enthalpy of solution of an ionic compound from its lattice and hydration enthalpies.",
+          "verb": "calculate"
+        },
+        {
+          "id": "LO-CHE-SOLUTION-ENTHALPY-HIGH-LATTICE",
+          "statement": "Predict the effect of a very high lattice enthalpy on whether an ionic compound dissolves.",
+          "verb": "predict"
+        },
+        {
+          "id": "LO-CHE-SOLUTION-ENTHALPY-SOLUBILITY",
+          "statement": "Predict how the solubility of a salt with a positive enthalpy of solution changes with temperature.",
+          "verb": "predict"
+        }
+      ]
+    },
+    {
+      "id": "CPT-CHE-ENTHALPY-OF-DILUTION",
+      "title": "Enthalpy of dilution",
+      "description": "The enthalpy of solution depends on the amount of solvent and approaches a limiting value at infinite dilution. The enthalpy change when more solvent is added to a solution is the enthalpy of dilution. It depends on the starting concentration and on the amount of solvent added.",
+      "locations": [
+        {
+          "sourceId": "NCERT-11-CHE-P1",
+          "chapterId": "NCERT-11-CHE-P1-CH05",
+          "sectionId": "5.5",
+          "printedPages": [
+            156,
+            157
+          ]
+        }
+      ],
+      "learningObjectives": [
+        {
+          "id": "LO-CHE-DILUTION-ENTHALPY-EXPLAIN",
+          "statement": "Explain how the enthalpy of solution varies with the amount of solvent and approaches a limiting value.",
+          "verb": "explain"
+        },
+        {
+          "id": "LO-CHE-DILUTION-ENTHALPY-CALCULATE",
+          "statement": "Calculate an enthalpy of dilution from enthalpies of solution at two dilutions.",
+          "verb": "calculate"
+        }
+      ]
+    },
+    {
+      "id": "CPT-CHE-SPONTANEOUS-PROCESS",
+      "title": "Spontaneous processes",
+      "description": "A spontaneous process can proceed without help from an external agency, in one direction only, and can be reversed only by external means. Spontaneity says nothing about rate: H2 and O2 react imperceptibly slowly. Non-spontaneous changes need an external agency. The first law gives no direction. A decrease in enthalpy may contribute, but it cannot be the sole criterion, since some endothermic reactions are spontaneous.",
+      "locations": [
+        {
+          "sourceId": "NCERT-11-CHE-P1",
+          "chapterId": "NCERT-11-CHE-P1-CH05",
+          "sectionId": "5.6",
+          "printedPages": [
+            157,
+            158
+          ]
+        }
+      ],
+      "learningObjectives": [
+        {
+          "id": "LO-CHE-SPONTANEOUS-PROCESS-MEANING",
+          "statement": "Explain what makes a process spontaneous and why spontaneity says nothing about the rate of a reaction.",
+          "verb": "explain"
+        },
+        {
+          "id": "LO-CHE-SPONTANEOUS-PROCESS-DIRECTION",
+          "statement": "Describe everyday changes that occur spontaneously in one direction only, such as heat flow and the expansion of a gas.",
+          "verb": "describe"
+        },
+        {
+          "id": "LO-CHE-SPONTANEOUS-PROCESS-ENTHALPY-NOT-ENOUGH",
+          "statement": "Analyze why a decrease in enthalpy cannot by itself decide whether a process is spontaneous.",
+          "verb": "analyze"
+        }
+      ]
+    },
+    {
+      "id": "CPT-CHE-ENTROPY",
+      "title": "Entropy",
+      "description": "Entropy S is a state function that measures the randomness or disorder of a system; for a given substance it is lowest in the crystalline solid and highest in the gas. Heat adds randomness, more so at low temperature, so for a reversible process ΔS = q_rev/T. Entropy changes of reactions can be judged qualitatively from the order in the species involved.",
+      "locations": [
+        {
+          "sourceId": "NCERT-11-CHE-P1",
+          "chapterId": "NCERT-11-CHE-P1-CH05",
+          "sectionId": "5.6b",
+          "printedPages": [
+            158,
+            160
+          ]
+        }
+      ],
+      "learningObjectives": [
+        {
+          "id": "LO-CHE-ENTROPY-DISORDER",
+          "statement": "Explain entropy as a measure of the randomness or disorder of a system, using the mixing of two gases.",
+          "verb": "explain"
+        },
+        {
+          "id": "LO-CHE-ENTROPY-PREDICT-CHANGE",
+          "statement": "Predict whether entropy increases or decreases in a physical or chemical change.",
+          "verb": "predict"
+        },
+        {
+          "id": "LO-CHE-ENTROPY-QREV-OVER-T",
+          "statement": "Explain why entropy change is defined as q_rev/T and why the same heat produces a larger entropy change at lower temperature.",
+          "verb": "explain"
+        },
+        {
+          "id": "LO-CHE-ENTROPY-CALCULATE",
+          "statement": "Calculate an entropy change from the heat exchanged reversibly at a given temperature.",
+          "verb": "calculate"
+        }
+      ]
+    },
+    {
+      "id": "CPT-CHE-TOTAL-ENTROPY-CHANGE",
+      "title": "Total entropy change and spontaneity",
+      "description": "For a spontaneous process the total entropy change of system plus surroundings is positive. At equilibrium the total entropy is at its maximum and ΔS_total = 0. The surroundings' entropy change is -ΔH_sys/T, so a reaction with negative ΔS_sys can still be spontaneous. ΔS_total, unlike ΔU, distinguishes reversible from irreversible changes.",
+      "locations": [
+        {
+          "sourceId": "NCERT-11-CHE-P1",
+          "chapterId": "NCERT-11-CHE-P1-CH05",
+          "sectionId": "5.6b",
+          "printedPages": [
+            159,
+            160
+          ]
+        },
+        {
+          "sourceId": "NCERT-11-CHE-P1",
+          "chapterId": "NCERT-11-CHE-P1-CH05",
+          "sectionId": "5.6c",
+          "printedPages": [
+            161,
+            161
+          ]
+        }
+      ],
+      "learningObjectives": [
+        {
+          "id": "LO-CHE-TOTAL-ENTROPY-CRITERION",
+          "statement": "Explain why the total entropy change of the system and surroundings decides whether a process is spontaneous.",
+          "verb": "explain"
+        },
+        {
+          "id": "LO-CHE-TOTAL-ENTROPY-SURROUNDINGS-CALCULATE",
+          "statement": "Calculate the entropy change of the surroundings from the enthalpy change of a reaction, and from it the total entropy change.",
+          "verb": "calculate"
+        },
+        {
+          "id": "LO-CHE-TOTAL-ENTROPY-REVERSIBLE-IRREVERSIBLE",
+          "statement": "Compare reversible and irreversible isothermal expansions of an ideal gas in terms of ΔU and ΔS_total.",
+          "verb": "compare"
+        }
+      ]
+    },
+    {
+      "id": "CPT-CHE-GIBBS-ENERGY",
+      "title": "Gibbs energy",
+      "description": "Gibbs energy G = H - TS is an extensive state function. At constant temperature, ΔG = ΔH - TΔS (the Gibbs equation) combines the enthalpy and entropy changes of the system in energy units. The decrease in Gibbs energy is the net energy available to do useful work, hence the name free energy.",
+      "locations": [
+        {
+          "sourceId": "NCERT-11-CHE-P1",
+          "chapterId": "NCERT-11-CHE-P1-CH05",
+          "sectionId": "5.6c",
+          "printedPages": [
+            160,
+            161
+          ]
+        }
+      ],
+      "learningObjectives": [
+        {
+          "id": "LO-CHE-GIBBS-ENERGY-EQUATION",
+          "statement": "Explain the Gibbs equation, ΔG = ΔH - TΔS, and why it combines enthalpy and entropy changes.",
+          "verb": "explain"
+        },
+        {
+          "id": "LO-CHE-GIBBS-ENERGY-USEFUL-WORK",
+          "statement": "Explain why the Gibbs energy change is described as the energy available to do useful work.",
+          "verb": "explain"
+        },
+        {
+          "id": "LO-CHE-GIBBS-ENERGY-CALCULATE",
+          "statement": "Calculate ΔG from ΔH, ΔS and the temperature.",
+          "verb": "calculate"
+        }
+      ]
+    },
+    {
+      "id": "CPT-CHE-GIBBS-ENERGY-SPONTANEITY",
+      "title": "Gibbs energy change as the criterion of spontaneity",
+      "description": "From ΔS_total = ΔS_sys - ΔH_sys/T, a spontaneous process at constant temperature and pressure has ΔG < 0. A process with ΔG > 0 is non-spontaneous. It weighs the enthalpy and entropy terms together, since neither alone decides the direction of change.",
+      "locations": [
+        {
+          "sourceId": "NCERT-11-CHE-P1",
+          "chapterId": "NCERT-11-CHE-P1-CH05",
+          "sectionId": "5.6c",
+          "printedPages": [
+            161,
+            161
+          ]
+        }
+      ],
+      "learningObjectives": [
+        {
+          "id": "LO-CHE-GIBBS-SPONTANEITY-DERIVE",
+          "statement": "Derive the condition ΔG < 0 for a spontaneous process from the total entropy change.",
+          "verb": "derive"
+        },
+        {
+          "id": "LO-CHE-GIBBS-SPONTANEITY-PREDICT",
+          "statement": "Predict whether a process is spontaneous at constant temperature and pressure from the sign of ΔG.",
+          "verb": "predict"
+        }
+      ]
+    },
+    {
+      "id": "CPT-CHE-TEMPERATURE-AND-SPONTANEITY",
+      "title": "Effect of temperature on spontaneity",
+      "description": "The signs of ΔH and ΔS decide how temperature affects ΔG. A reaction with ΔH < 0 and ΔS > 0 is spontaneous at all temperatures. With ΔH > 0 and ΔS < 0 it is never spontaneous. When both have the same sign, the TΔS term makes it spontaneous only at high or only at low temperature.",
+      "locations": [
+        {
+          "sourceId": "NCERT-11-CHE-P1",
+          "chapterId": "NCERT-11-CHE-P1-CH05",
+          "sectionId": "5.6c",
+          "printedPages": [
+            161,
+            162
+          ]
+        }
+      ],
+      "learningObjectives": [
+        {
+          "id": "LO-CHE-TEMPERATURE-SPONTANEITY-PREDICT",
+          "statement": "Predict the effect of temperature on the spontaneity of a reaction from the signs of ΔH and ΔS.",
+          "verb": "predict"
+        },
+        {
+          "id": "LO-CHE-TEMPERATURE-SPONTANEITY-THRESHOLD",
+          "statement": "Calculate the temperature above or below which a reaction becomes spontaneous, taking ΔH and ΔS as constant.",
+          "verb": "calculate"
+        },
+        {
+          "id": "LO-CHE-TEMPERATURE-SPONTANEITY-HIGH-T",
+          "statement": "Explain why reactions with positive ΔH and positive ΔS are often carried out at high temperature.",
+          "verb": "explain"
+        }
+      ]
+    },
+    {
+      "id": "CPT-CHE-SECOND-LAW",
+      "title": "Entropy and the second law of thermodynamics",
+      "description": "In an isolated system, where the energy is constant, an increase in entropy is the natural direction of a spontaneous change. This is the second law. It explains why spontaneous exothermic reactions are common: the heat released increases the entropy of the surroundings.",
+      "locations": [
+        {
+          "sourceId": "NCERT-11-CHE-P1",
+          "chapterId": "NCERT-11-CHE-P1-CH05",
+          "sectionId": "5.6",
+          "printedPages": [
+            161,
+            161
+          ]
+        }
+      ],
+      "learningObjectives": [
+        {
+          "id": "LO-CHE-SECOND-LAW-STATE",
+          "statement": "Explain the second law of thermodynamics in terms of entropy change in an isolated system.",
+          "verb": "explain"
+        },
+        {
+          "id": "LO-CHE-SECOND-LAW-EXOTHERMIC",
+          "statement": "Explain, using the second law, why so many spontaneous reactions are exothermic.",
+          "verb": "explain"
+        }
+      ]
+    },
+    {
+      "id": "CPT-CHE-THIRD-LAW",
+      "title": "Absolute entropy and the third law of thermodynamics",
+      "description": "Molecular motion (translational, rotational and vibrational) grows with temperature, and so does entropy. The entropy of a pure crystalline substance approaches zero as the temperature approaches absolute zero; this is not true of solutions or supercooled liquids. This lets absolute entropies be found from thermal data and combined, as in Hess's law, into standard entropy changes.",
+      "locations": [
+        {
+          "sourceId": "NCERT-11-CHE-P1",
+          "chapterId": "NCERT-11-CHE-P1-CH05",
+          "sectionId": "5.6",
+          "printedPages": [
+            161,
+            162
+          ]
+        }
+      ],
+      "learningObjectives": [
+        {
+          "id": "LO-CHE-THIRD-LAW-STATE",
+          "statement": "Explain the third law of thermodynamics and why it applies only to pure crystalline substances.",
+          "verb": "explain"
+        },
+        {
+          "id": "LO-CHE-THIRD-LAW-MOLECULAR-MOTION",
+          "statement": "Describe how translational, rotational and vibrational motion change the entropy of a substance as the temperature rises.",
+          "verb": "describe"
+        },
+        {
+          "id": "LO-CHE-THIRD-LAW-ABSOLUTE-ENTROPY",
+          "statement": "Explain how the third law makes absolute entropies, and from them standard entropy changes, measurable.",
+          "verb": "explain"
+        }
+      ]
+    },
+    {
+      "id": "CPT-CHE-GIBBS-ENERGY-EQUILIBRIUM",
+      "title": "Gibbs energy at equilibrium",
+      "description": "In a reversible reaction that reaches dynamic equilibrium, the Gibbs energy of the system is at a minimum, so the criterion for equilibrium is Δ_rG = 0. Away from equilibrium, the system changes spontaneously towards lower Gibbs energy.",
+      "locations": [
+        {
+          "sourceId": "NCERT-11-CHE-P1",
+          "chapterId": "NCERT-11-CHE-P1-CH05",
+          "sectionId": "5.7",
+          "printedPages": [
+            162,
+            162
+          ]
+        }
+      ],
+      "learningObjectives": [
+        {
+          "id": "LO-CHE-GIBBS-EQUILIBRIUM-CRITERION",
+          "statement": "Explain why Δ_rG = 0 is the criterion for chemical equilibrium.",
+          "verb": "explain"
+        },
+        {
+          "id": "LO-CHE-GIBBS-EQUILIBRIUM-MINIMUM",
+          "statement": "Describe why a reacting system moves towards the composition of minimum Gibbs energy.",
+          "verb": "describe"
+        }
+      ]
+    },
+    {
+      "id": "CPT-CHE-STANDARD-GIBBS-ENERGY-EQUILIBRIUM-CONSTANT",
+      "title": "Standard Gibbs energy change and the equilibrium constant",
+      "description": "The standard Gibbs energy change is related to the equilibrium constant by Δ_rG° = -RT ln K = -2.303 RT log K, and Δ_rG° = Δ_rH° - TΔ_rS°. Strongly exothermic reactions tend to have a large K and go nearly to completion; strongly endothermic ones have K much smaller than 1, and the sign of Δ_rS° also shifts K. From ΔH° and ΔS°, K can be estimated at other temperatures.",
+      "locations": [
+        {
+          "sourceId": "NCERT-11-CHE-P1",
+          "chapterId": "NCERT-11-CHE-P1-CH05",
+          "sectionId": "5.7",
+          "printedPages": [
+            162,
+            163
+          ]
+        }
+      ],
+      "learningObjectives": [
+        {
+          "id": "LO-CHE-GIBBS-K-CALCULATE-K",
+          "statement": "Calculate an equilibrium constant from the standard Gibbs energy change, and the reverse.",
+          "verb": "calculate"
+        },
+        {
+          "id": "LO-CHE-GIBBS-K-PREDICT-EXTENT",
+          "statement": "Predict the extent of a reaction from the sign and magnitude of Δ_rG° or Δ_rH°.",
+          "verb": "predict"
+        },
+        {
+          "id": "LO-CHE-GIBBS-K-FROM-ENTHALPY-ENTROPY",
+          "statement": "Calculate the equilibrium constant at a given temperature from Δ_rH° and Δ_rS°, through Δ_rG°.",
+          "verb": "calculate"
+        }
+      ]
+    }
+  ]
+}

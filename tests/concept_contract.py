@@ -179,6 +179,22 @@ chk("...while concept-only semantics (positional words, random-value heuristic) 
 chk("...and the dependency runs one way: experiences import concepts, never the reverse",
     "import concept_schema" in xsrc and "import experience_schema" not in code)
 
+# ---------------------------------------------------------------- real inventories (data/ncert/concepts/)
+INV_DIR = os.path.join(ROOT, "data", "ncert", "concepts")
+for fn in sorted(os.listdir(INV_DIR)) if os.path.isdir(INV_DIR) else []:
+    if not fn.endswith(".json"):
+        continue
+    inv = json.load(open(os.path.join(INV_DIR, fn), encoding="utf-8"))
+    chap_id = fn[:-5]
+    allocs = [l for c in inv.get("concepts", []) for l in c.get("locations", [])]
+    chk("%s: a valid concept inventory, every location checked against the real chapter" % fn,
+        C.problems(inv, STRUCT) == [], C.problems(inv, STRUCT))
+    chk("%s: every location is in its own chapter and names a section" % fn,
+        allocs and all(l.get("chapterId") == chap_id and "sectionId" in l and "printedPages" in l for l in allocs))
+    chk("%s: every concept has a description and at least one learning objective with a verb" % fn,
+        all(c.get("description") and c.get("learningObjectives")
+            and all("verb" in o for o in c["learningObjectives"]) for c in inv["concepts"]))
+
 print()
 print("%d passed, %d failed" % (len(ok), len(fail)))
 sys.exit(1 if fail else 0)
