@@ -40,6 +40,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import registry_schema as schema  # noqa: E402  (IDs, status values, concept rules - one definition)
 import ncert_schema  # noqa: E402  (NCERT catalogue, chapter mapping and feed)
 import visual_assets  # noqa: E402  (approved images embedded in experience pages)
+import px_kit  # noqa: E402  (experience-kit blocks copied into pages)
 STATUS_VALUES = schema.STATUS_VALUES
 
 REQUIRED = ["id", "path", "folder", "title", "year", "paper", "subject",
@@ -269,6 +270,11 @@ def main():
             with open(page, encoding="utf-8") as fh:
                 for msg in visual_assets.page_problems(fh.read(), vlib, ROOT):
                     fail("%s: %s" % (sim.get("id"), msg))
+
+    # experience kit: canonical files match VERSIONS.json, and every PX-KIT block in any page is an exact
+    # copy of a recorded version (tools/px_kit.py) - an edited copy or a changed released version fails here
+    for msg in px_kit.problems(ROOT):
+        fail(msg)
 
     print("Checked %d simulation(s) in %s" % (len(sims), os.path.relpath(JSON_PATH, ROOT)))
     for note in notes:

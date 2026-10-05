@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>PX-KIT toy harness | PrayogX (test only)</title>
+<meta name="sim-id" content="PX-KIT-TOY">
+<style>
+:root{--bg:#0b1020;--panel:#121a2e;--text:#e8eefc;--dim:#a9b8d6;--good:#22c55e;--line:#2a3654}
+*{box-sizing:border-box}
+[hidden]{display:none !important}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.5 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+.wrap{max-width:900px;margin:0 auto;padding:12px 16px 90px}
+h1{font-size:18px;margin:6px 0}
+.note{font-size:13px;color:var(--dim);margin:0 0 10px}
+section{margin:0 0 14px}
+canvas#labcv{display:block;width:100%;height:auto;border-radius:12px;background:#05070d;touch-action:pan-y}
+#guide{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin:10px 0;min-height:3em}
+#hint{color:#fbbf24;margin:4px 0}
+.row{display:flex;flex-wrap:wrap;gap:8px}
+button{min-height:48px;font:700 16px ui-sans-serif,system-ui,sans-serif;border-radius:10px;border:1px solid var(--line);background:#1b2540;color:var(--text);padding:0 14px;cursor:pointer}
+button:disabled{opacity:.45;cursor:not-allowed}
+#nextbtn{background:var(--good);color:#04210f;border:none;font-weight:900}
+.stickybtn{position:fixed;left:50%;transform:translateX(-50%);bottom:12px;z-index:20;width:min(520px,calc(100% - 32px));min-height:56px;border:none;border-radius:14px;background:var(--good);color:#04210f;font-weight:900}
+</style>
+</head>
+<body>
+<main class="wrap">
+<section id="question"><h1>PX-KIT toy harness: heat from a heater</h1>
+<p class="note">A test-only page for the PrayogX Experience Kit (Phase 1). It is not part of the library, the catalogue or the site. A heater warms water; q = m c ΔT.</p></section>
+<section id="lab">
+<canvas id="labcv" width="720" height="440" role="img" aria-label="A cup of water, a heater and a thermometer, drawn in 2.5D for the kit tests."></canvas>
+<p id="guide" data-sci aria-live="polite"></p>
+<p id="hint" hidden></p>
+<div class="row">
+  <button type="button" id="nextbtn">…</button>
+  <button type="button" id="w100" data-act="fill" data-arg="100">100 g</button>
+  <button type="button" id="w200" data-act="fill" data-arg="200">200 g</button>
+  <button type="button" id="heatbtn" data-act="heat">Heater on</button>
+  <button type="button" id="revealbtn" data-act="reveal">Work out q</button>
+  <button type="button" id="resetbtn">Reset</button>
+</div>
+</section>
+<button type="button" id="stickybtn" class="stickybtn" hidden></button>
+</main>
+<script>
+(function () {
+"use strict";
+/* ENGINE-BEGIN */
+var ENGINE = (function () {
+  /* A heater warms water in an insulated cup. Water c = 4.2 J g-1 °C-1 (NCERT Class 11 Chemistry Part I, Unit 5,
+     Problem 5.8). The heater's power and switch-on time are illustrative. run(params, t) is pure. */
+  var C = 4.2, T0 = 25.0, P = 150, TON = 7;
+  function run(p, t) {
+    var on = p.tOn === null ? 0 : Math.max(0, Math.min(t - p.tOn, TON)), q = P * on, dT = q / (p.m * C);
+    return { m: p.m, c: C, P: P, q: q, dT: dT, T: T0 + dT, qFinal: P * TON, heating: p.tOn !== null && t - p.tOn < TON ? 1 : 0 };
+  }
+  return { C: C, T0: T0, P: P, TON: TON, run: run };
+})();
+/* ENGINE-END */
+
+/* PX-KIT clock@1 BEGIN */
+/* px-clock@1 - deterministic simulation time.
+   Time advances only through step(dt). In a page, drive() takes dt from the requestAnimationFrame timestamp,
+   which the PrayogX recorder replaces with its manual clock, so recordings are frame-exact.
+   No wall-clock reads, no randomness. */
+var CLOCK = (function () {
+  function create(opts) {
+    opts = opts || {};
+    var c = { t: 0, frame: 0, speed: 1, paused: false, substep: opts.substep || 0, maxDt: opts.maxDt || 0.05 }, subs = [], acc = 0, ticks = 0;
+    /* advance by dt seconds (scaled by speed, capped by maxDt). With substep > 0, time moves in whole fixed
+       substeps and the remainder carries to the next frame, so 30 fps and 60 fps give the same steps. */
+    c.step = function (dt) {
+      dt = +dt;
+      if (!(dt > 0)) dt = 0;
+      if (dt > c.maxDt) dt = c.maxDt;
+      c.frame++;
+      if (c.paused || dt === 0) return 0;
+      var h = dt * c.speed, n, k, i;
+      if (!(c.substep > 0)) { c.t += h; for (i = 0; i < subs.length; i++) subs[i](h, c.t); return h; }
+      acc += h; n = Math.floor(acc / c.substep + 1e-9); acc = Math.max(0, acc - n * c.substep);
+      for (k = 0; k < n; k++) {
+        c.t = ++ticks * c.substep;
+        for (i = 0; i < subs.length; i++) subs[i](c.substep, c.t);
+      }
+      return n * c.substep;
+    };
+    /* fn(h, t) runs on every (sub)step: animations, model integration, camera transitions */
+    c.on = function (fn) { subs.push(fn); return c; };
+    c.pause = function (on) { c.paused = on === undefined ? !c.paused : !!on; return c.paused; };
+    c.setSpeed = function (k) { k = +k; if (k > 0 && isFinite(k)) c.speed = k; return c.speed; };
+    c.reset = function () { c.t = 0; c.frame = 0; c.paused = false; acc = 0; ticks = 0; };
+    return c;
+  }
+  /* frame-rate-independent smoothing: deterministic for a fixed dt */
+  function approach(cur, target, rate, dt) { return cur + (target - cur) * (1 - Math.exp(-rate * dt)); }
+  /* the page loop: before() (e.g. action replay), then step, then onFrame(dt) (director, observables, drawing) */
+  function drive(c, onFrame, before) {
+    var last = null;
+    function f(ts) {
+      var dt = last === null ? 0 : (ts - last) / 1000;
+      last = ts;
+      if (before) before();
+      c.step(dt);
+      onFrame(dt);
+      requestAnimationFrame(f);
+    }
+    requestAnimationFrame(f);
+  }
+  return { create: create, approach: approach, drive: drive };
+})();
+/* PX-KIT clock@1 END */
+/* PX-KIT obs@1 BEGIN */
+/* px-obs@1 - the one scientific truth.
+   An observable is a named, typed, provenance-tagged scientific quantity. frame(ctx) computes every value once,
+   in definition order; every consumer (renderer, guide, PX.state, tests, recorder) reads that one snapshot.
+   Scientific values never contain presentation progress: present()/fp() give a gradual reveal of a value
+   without changing the observable. f()/num()/fp() record what they printed, and shown() records every
+   visible string with its kind, so tests can prove each scientific number came from an observable. */
+var OBS = (function () {
+  var STATUS = ["measured", "calculated", "illustrative", "idealized", "hypothetical", "exaggerated"];
+  var KINDS = ["sci", "ui", "decor"];
+  var ID = /^[a-z][A-Za-z0-9]*(\.[A-Za-z][A-Za-z0-9]*)*$/;
+  function create() {
+    var defs = {}, order = [], vals = null, emitted = [], shown = [], mark = 0, o = { frames: 0 };
+    function fail(m) { throw new Error("OBS: " + m); }
+    function need(id) {
+      if (!defs[id]) fail("unknown observable " + id);
+      if (!vals) fail("no frame computed yet");
+    }
+    o.def = function (id, d) {
+      d = d || {};
+      if (!ID.test(id)) fail("bad id " + id);
+      if (defs[id]) fail("duplicate observable " + id);
+      if (typeof d.unit !== "string") fail(id + ": unit must be a string ('' if none)");
+      if (!d.meaning) fail(id + ": meaning is required");
+      if (STATUS.indexOf(d.status) < 0) fail(id + ": status must be one of " + STATUS.join(", "));
+      if (typeof d.from !== "function") fail(id + ": from(ctx, get) is required");
+      if (d.signed && !d.sign) fail(id + ": a signed observable needs its sign convention");
+      var dec = d.decimals === undefined ? 2 : d.decimals;
+      if (!(dec >= 0 && dec <= 6 && Math.floor(dec) === dec)) fail(id + ": decimals must be 0-6");
+      defs[id] = { id: id, unit: d.unit, meaning: d.meaning, status: d.status, signed: !!d.signed, sign: d.sign || null,
+        decimals: dec, plus: !!d.plus, from: d.from };
+      order.push(id);
+      return o;
+    };
+    /* compute the snapshot for this frame; values may use earlier observables through get(id) */
+    o.frame = function (ctx) {
+      var out = {}, i, id, v;
+      var get = function (k) { if (!(k in out)) fail(k + " used before it is defined"); return out[k]; };
+      for (i = 0; i < order.length; i++) {
+        id = order[i];
+        v = defs[id].from(ctx, get);
+        if (typeof v !== "number" || !isFinite(v)) fail(id + " is not a finite number");
+        out[id] = v;
+      }
+      vals = out; emitted = []; shown = []; mark = 0; o.frames++;
+      return o;
+    };
+    o.v = function (id) { need(id); return vals[id]; };
+    function fmt(d, x) {
+      var p = Math.pow(10, d.decimals), s = (Math.round(x * p) / p).toFixed(d.decimals);
+      if (Number(s) === 0) s = (0).toFixed(d.decimals);
+      if (s.charAt(0) === "-") s = "−" + s.slice(1);
+      else if (d.plus && Number(s) > 0) s = "+" + s;
+      return s;
+    }
+    function unit(d, s) { return d.unit ? s + " " + d.unit : s; }
+    o.num = function (id) { need(id); var s = fmt(defs[id], vals[id]); emitted.push(s); return s; };
+    o.f = function (id) { need(id); var s = unit(defs[id], fmt(defs[id], vals[id])); emitted.push(s); return s; };
+    /* presentation transform: a gradual reveal from start toward the observable; never stored, never an observable */
+    o.present = function (id, progress, start) {
+      need(id);
+      var p = progress < 0 ? 0 : progress > 1 ? 1 : +progress || 0, s0 = start === undefined ? 0 : +start;
+      return s0 + (vals[id] - s0) * p;
+    };
+    o.fp = function (id, progress, start) { var s = unit(defs[id], fmt(defs[id], o.present(id, progress, start))); emitted.push(s); return s; };
+    o.meta = function (id) {
+      if (!defs[id]) fail("unknown observable " + id);
+      var d = defs[id];
+      return { id: d.id, unit: d.unit, meaning: d.meaning, status: d.status, signed: d.signed, sign: d.sign, decimals: d.decimals };
+    };
+    o.ids = function () { return order.slice(); };
+    o.snapshot = function () { var s = {}, i; if (!vals) return s; for (i = 0; i < order.length; i++) s[order[i]] = vals[order[i]]; return s; };
+    /* flat fields for PX.state(): the recorder keeps only flat number/string/boolean fields */
+    o.flat = function () { var s = {}, i; if (!vals) return s; for (i = 0; i < order.length; i++) s["obs_" + order[i].replace(/\./g, "_")] = vals[order[i]]; return s; };
+    /* every visible string goes through shown(). Each entry keeps the f()/num()/fp() strings printed since the
+       previous shown() call (from), so a test can check that every number in a "sci" text is one of its own
+       observable strings, not a number that only happens to be printed elsewhere in the frame. */
+    o.shown = function (text, kind) {
+      kind = kind || "sci";
+      if (KINDS.indexOf(kind) < 0) fail("bad text kind " + kind);
+      shown.push({ text: String(text), kind: kind, from: emitted.slice(mark) });
+      mark = emitted.length;
+      return String(text);
+    };
+    o.shownList = function () { return shown.slice(); };
+    o.emitted = function () { return emitted.slice(); };
+    return o;
+  }
+  return { create: create, STATUS: STATUS, KINDS: KINDS };
+})();
+/* PX-KIT obs@1 END */
+/* PX-KIT act@1 BEGIN */
+/* px-act@1 - one input path and the learning script.
+   Learner taps, the Director, tests and the recorder all call do(id, args, source). An action may validate,
+   change learning state, start an animation, change scene or request a camera shot; it never computes a
+   scientific quantity and never draws. The learning script is data: scenes, allowed actions, next-action
+   rules, exit conditions, guide ids and milestones. Conditions are objects, never evaluated strings.
+   State shape it relies on: S.scene (index into script.scenes) and S.flags (plain object). */
+var ACT = (function () {
+  var SOURCES = ["learner", "director", "test", "recorder"];
+  var COND_KEYS = ["all", "any", "not", "flag", "obs", "op", "value", "tol", "pred", "idle"];
+  var OPS = [">=", "<=", ">", "<", "==", "!="];
+  function create(o) {
+    var S = o.state, script = o.script, defs = {}, preds = {}, log = [], hits = [], api = {};
+    function fail(m) { throw new Error("ACT: " + m); }
+    function scene() { return script.scenes[S.scene]; }
+    function busy() { return !!(o.busy && o.busy()); }
+    api.def = function (id, d) {
+      if (defs[id]) fail("duplicate action " + id);
+      if (!d || typeof d.run !== "function") fail(id + ": run(S, args) is required");
+      defs[id] = { when: d.when || function () { return true; }, run: d.run, args: d.args || null, whileBusy: !!d.whileBusy };
+      return api;
+    };
+    /* named predicates: the only code a condition may call */
+    api.pred = function (name, fn) { if (preds[name]) fail("duplicate predicate " + name); preds[name] = fn; return api; };
+    api.cond = function (c) {
+      var i;
+      if (!c) return true;
+      if (c.all) { for (i = 0; i < c.all.length; i++) if (!api.cond(c.all[i])) return false; return true; }
+      if (c.any) { for (i = 0; i < c.any.length; i++) if (api.cond(c.any[i])) return true; return false; }
+      if (c.not) return !api.cond(c.not);
+      if (c.flag !== undefined) return c.flag.charAt(0) === "!" ? !S.flags[c.flag.slice(1)] : !!S.flags[c.flag];
+      if (c.obs !== undefined) {
+        var v = o.obs.v(c.obs), x = c.value, tol = c.tol || 0;
+        if (c.op === ">=") return v >= x - tol;
+        if (c.op === "<=") return v <= x + tol;
+        if (c.op === ">") return v > x;
+        if (c.op === "<") return v < x;
+        if (c.op === "==") return Math.abs(v - x) <= tol;
+        if (c.op === "!=") return Math.abs(v - x) > tol;
+        fail("bad comparator " + c.op);
+      }
+      if (c.pred !== undefined) { if (!preds[c.pred]) fail("unknown predicate " + c.pred); return !!preds[c.pred](S); }
+      if (c.idle !== undefined) return busy() !== !!c.idle;
+      fail("unknown condition " + JSON.stringify(c));
+    };
+    function allowed(id) {
+      if (id === "advance") return true;
+      var a = scene().allow || [];
+      return a.indexOf(id) >= 0 || a.indexOf("*") >= 0;
+    }
+    /* the built-in action that moves to the next scene, once the current scene's exit condition holds */
+    api.def("advance", {
+      when: function () { return S.scene < script.scenes.length - 1 && api.cond(scene().exit); },
+      run: function () { S.scene++; if (o.onScene) o.onScene(S.scene); }
+    });
+    api.check = function (id, args) {
+      var d = defs[id];
+      if (!d) return "unknown action " + id;
+      if (busy() && !d.whileBusy) return "busy";
+      if (!allowed(id)) return id + " is not allowed in scene " + scene().id;
+      if (d.args && d.args.indexOf(args) < 0) return "bad argument " + args + " for " + id;
+      if (!d.when(S, args)) return id + " is not ready";
+      return null;
+    };
+    api.do = function (id, args, source) {
+      if (SOURCES.indexOf(source) < 0) return { ok: false, reason: "bad source " + source };
+      var why = api.check(id, args);
+      if (why) return { ok: false, reason: why };
+      defs[id].run(S, args);
+      var e = { f: o.clock.frame, t: +o.clock.t.toFixed(6), id: id, args: args === undefined ? null : args, source: source };
+      log.push(e);
+      if (o.onAction) o.onAction(e);
+      return { ok: true };
+    };
+    /* the one thing to do next: the first matching rule of the current scene that can run now */
+    api.next = function () {
+      if (busy()) return null;
+      var rules = scene().next || [], i, r;
+      for (i = 0; i < rules.length; i++) {
+        r = rules[i];
+        if (api.cond(r["if"]) && !api.check(r.act, r.args)) return { id: r.act, args: r.args === undefined ? null : r.args, label: r.label || r.act };
+      }
+      return null;
+    };
+    api.doNext = function (source) { var n = api.next(); return n ? api.do(n.id, n.args === null ? undefined : n.args, source || "learner") : { ok: false, reason: "nothing to do" }; };
+    /* tap regions, registered by the presentation each frame */
+    api.hitsReset = function () { hits = []; };
+    api.hit = function (r, id, args) { hits.push({ x: r.x, y: r.y, w: r.w, h: r.h, id: id, args: args }); };
+    api.at = function (x, y) { var i, h; for (i = hits.length - 1; i >= 0; i--) { h = hits[i]; if (x >= h.x && x <= h.x + h.w && y >= h.y && y <= h.y + h.h) return h; } return null; };
+    api.log = function () { return log.slice(); };
+    api.reset = function () { log = []; hits = []; };
+    /* replay: re-apply logged inputs at the same simulation time, so a session replays the same at any frame
+       rate (Director actions are regenerated by the Director) */
+    api.replayer = function (entries) {
+      var list = [], i = 0, k;
+      for (k = 0; k < entries.length; k++) if (entries[k].source !== "director") list.push(entries[k]);
+      return function () {
+        while (i < list.length && list[i].t <= o.clock.t + 1e-6) { var e = list[i++]; api.do(e.id, e.args === null ? undefined : e.args, e.source); }
+      };
+    };
+    api.scene = scene;
+    /* static checks of the script against the defined actions, predicates and guide ids */
+    api.validate = function (guideIds) {
+      var out = [], seen = {}, i, j;
+      function cond(c, where) {
+        if (!c) return;
+        var k;
+        for (k in c) if (c.hasOwnProperty(k) && COND_KEYS.indexOf(k) < 0) out.push(where + ": unknown condition key " + k);
+        if (typeof c === "string" || typeof c === "function") out.push(where + ": conditions must be objects");
+        if (c.all) for (k = 0; k < c.all.length; k++) cond(c.all[k], where);
+        if (c.any) for (k = 0; k < c.any.length; k++) cond(c.any[k], where);
+        if (c.not) cond(c.not, where);
+        if (c.obs !== undefined && OPS.indexOf(c.op) < 0) out.push(where + ": bad comparator " + c.op);
+        if (c.pred !== undefined && !preds[c.pred]) out.push(where + ": unknown predicate " + c.pred);
+      }
+      if (!script || !script.scenes || !script.scenes.length) return ["the script has no scenes"];
+      for (i = 0; i < script.scenes.length; i++) {
+        var sc = script.scenes[i], w = "scene " + (sc.id || i);
+        if (!sc.id) out.push(w + ": id is required");
+        if (seen[sc.id]) out.push(w + ": duplicate scene id");
+        seen[sc.id] = 1;
+        if (!sc.objective) out.push(w + ": objective is required");
+        for (j = 0; j < (sc.allow || []).length; j++) if (sc.allow[j] !== "*" && !defs[sc.allow[j]]) out.push(w + ": allows unknown action " + sc.allow[j]);
+        for (j = 0; j < (sc.next || []).length; j++) {
+          if (!defs[sc.next[j].act]) out.push(w + ": next names unknown action " + sc.next[j].act);
+          cond(sc.next[j]["if"], w + " next");
+        }
+        cond(sc.exit, w + " exit");
+        if (guideIds && sc.guide && guideIds.indexOf(sc.guide) < 0) out.push(w + ": unknown guide " + sc.guide);
+        if (i < script.scenes.length - 1 && !sc.exit) out.push(w + ": a scene that is not the last needs an exit condition");
+      }
+      return out;
+    };
+    /* UI convention (proven in CON-CHE-CALORIMETER-01): the guide's NEXT button does the next action, and a
+       sticky button offers it whenever the experiment is on screen but neither the NEXT button nor the
+       page's own action buttons are. Pass DOM elements; isOnScreen(el) decides visibility. */
+    api.syncNextUI = function (u) {
+      var n = api.next(), inView = function (el) { if (!el || el.hidden || el.offsetParent === null) return false; var r = el.getBoundingClientRect(); return r.top >= 0 && r.bottom <= window.innerHeight; };
+      if (u.button){ u.button.disabled = !n; u.button.textContent = n ? "▶ " + n.label : (u.idleText || "…"); }
+      if (u.sticky) {
+        var cv = u.stage ? u.stage.getBoundingClientRect() : null, stageOn = !cv || (cv.bottom > 80 && cv.top < window.innerHeight - 80);
+        var others = false, i; for (i = 0; i < (u.primary || []).length; i++) if (inView(u.primary[i])) others = true;
+        var show = !!n && stageOn && !inView(u.button) && !others;
+        if (u.sticky.hidden === show) u.sticky.hidden = !show;
+        if (show) u.sticky.textContent = "▶ " + n.label;
+      }
+      return n;
+    };
+    return api;
+  }
+  return { create: create, SOURCES: SOURCES };
+})();
+/* PX-KIT act@1 END */
+/* PX-KIT dir@1 BEGIN */
+/* px-dir@1 - the event-aware Director.
+   A film is a list of steps. It acts only through act.do(id, args, "director"), so it obeys the same
+   validation as a learner; it waits on animation idleness, observable comparisons, named predicates,
+   learner actions or simulation seconds; it never evaluates strings and never touches scientific state.
+   update() runs once per frame after the clock step, so the same inputs give the same film every time.
+   Status lives in S.dir (serialisable): film, i, mode, mark, marks, shot, focus, say, hint, error, done. */
+var DIR = (function () {
+  var KINDS = ["do", "wait", "shot", "focus", "say", "mark", "end"];
+  var WAITS = ["idle", "obs", "pred", "learner", "seconds"];
+  var MODES = ["media", "classroom", "learner"];
+  function create(o) {
+    var S = o.state, act = o.act, clock = o.clock, films = {}, api = {}, playing = false, steps = null, w = null;
+    function fail(m) { throw new Error("DIR: " + m); }
+    function blank() { return { film: null, i: 0, mode: null, mark: null, marks: 0, shot: null, focus: null, say: null, hint: null, error: null, done: false }; }
+    S.dir = blank();
+    function check(s, n) {
+      var kinds = [], k;
+      for (k in s) if (s.hasOwnProperty(k) && KINDS.indexOf(k) >= 0) kinds.push(k);
+      if (kinds.length !== 1) fail(n + ": a step needs exactly one of " + KINDS.join(", "));
+      if (s["do"] !== undefined && typeof s["do"] !== "string") fail(n + ": do names an action");
+      if (s.wait) {
+        var ws = [];
+        for (k in s.wait) if (s.wait.hasOwnProperty(k) && WAITS.indexOf(k) >= 0) ws.push(k);
+        if (ws.length !== 1) fail(n + ": a wait needs exactly one of " + WAITS.join(", "));
+        if (s.wait.obs !== undefined && (typeof s.wait.obs !== "string" || typeof s.wait.op !== "string" || typeof s.wait.value !== "number")) fail(n + ": wait obs needs {obs, op, value}");
+        if (s.wait.pred !== undefined && typeof s.wait.pred !== "string") fail(n + ": wait pred names a predicate");
+        if (s.wait.learner !== undefined && typeof s.wait.learner !== "string") fail(n + ": wait learner names an action");
+        if (s.wait.seconds !== undefined && !(s.wait.seconds >= 0)) fail(n + ": wait seconds must be a number");
+        if (s.wait.timeout !== undefined && !(s.wait.timeout > 0)) fail(n + ": timeout must be positive");
+      }
+      if (s.shot !== undefined && typeof s.shot !== "string") fail(n + ": shot names a camera shot");
+    }
+    api.load = function (name, list) {
+      if (!list || !list.length) fail(name + ": empty film");
+      for (var i = 0; i < list.length; i++) check(list[i], name + " step " + i);
+      films[name] = list;
+      return api;
+    };
+    api.play = function (name, mode) {
+      if (!films[name]) fail("unknown film " + name);
+      if (MODES.indexOf(mode) < 0) fail("bad mode " + mode);
+      S.dir = blank(); S.dir.film = name; S.dir.mode = mode;
+      steps = films[name]; playing = true; w = null;
+    };
+    api.stop = function () { playing = false; };
+    api.reset = function () { playing = false; w = null; S.dir = blank(); };
+    api.playing = function () { return playing; };
+    var teacherTap = false;
+    api.tap = function () { teacherTap = true; };       /* classroom mode: the teacher's tap releases a learner wait */
+    function matches(pat, id) { return pat.charAt(pat.length - 1) === "*" ? id.indexOf(pat.slice(0, -1)) === 0 : pat === id; }
+    function satisfied(x) {
+      if (x.idle !== undefined) return act.cond({ idle: x.idle });
+      if (x.obs !== undefined) return act.cond({ obs: x.obs, op: x.op, value: x.value, tol: x.tol });
+      if (x.pred !== undefined) return act.cond({ pred: x.pred });
+      if (x.seconds !== undefined) return clock.t - w.from >= x.seconds - 1e-9;
+      if (x.learner !== undefined) {
+        if (S.dir.mode === "media") return true;
+        if (S.dir.mode === "classroom" && teacherTap) return true;
+        var lg = act.log(), i;
+        for (i = w.logAt; i < lg.length; i++) if (lg[i].source === "learner" && matches(x.learner, lg[i].id)) return true;
+        return false;
+      }
+      return false;
+    }
+    function finish(err) { playing = false; if (err) S.dir.error = err; else S.dir.done = true; if (o.onEnd) o.onEnd(S.dir); }
+    /* a bad step (unknown predicate, shot or observable) stops the film with an error; it never escapes into
+       the frame loop */
+    api.update = function () {
+      if (!playing) return;
+      try { run(); } catch (e) { finish("error at step " + S.dir.i + ": " + e.message); }
+    };
+    function run() {
+      var guard = 0, s, r;
+      while (playing && guard++ < 64) {
+        if (S.dir.i >= steps.length) { finish(); return; }
+        s = steps[S.dir.i];
+        if (s.wait) {
+          if (!w) { w = { from: clock.t, logAt: act.log().length, hinted: false }; teacherTap = false; }
+          if (satisfied(s.wait)) { w = null; S.dir.hint = null; S.dir.i++; continue; }
+          if (s.wait.timeout !== undefined && clock.t - w.from >= s.wait.timeout) {
+            if (s.wait.hint !== undefined) { if (!w.hinted) { w.hinted = true; S.dir.hint = s.wait.hint; } }
+            else { finish("timed out waiting at step " + S.dir.i); return; }
+          }
+          return;
+        }
+        if (s["do"] !== undefined) {
+          r = act.do(s["do"], s.args, "director");
+          if (!r.ok) { finish("refused at step " + S.dir.i + ": " + r.reason); return; }
+        } else if (s.shot !== undefined) { S.dir.shot = s.shot; if (o.cam) o.cam.go(s.shot, s.dur === undefined ? 1 : s.dur, s.lift || 0); }
+        else if (s.focus !== undefined) S.dir.focus = s.focus;
+        else if (s.say !== undefined) S.dir.say = s.say;
+        else if (s.mark !== undefined) { S.dir.mark = s.mark; S.dir.marks++; }
+        else if (s.end !== undefined) { S.dir.i = steps.length; finish(); return; }
+        S.dir.i++;
+      }
+      if (guard >= 64) finish("more than 64 steps in one frame");
+    }
+    return api;
+  }
+  return { create: create, KINDS: KINDS, WAITS: WAITS, MODES: MODES };
+})();
+/* PX-KIT dir@1 END */
+/* PX-KIT cam@1 BEGIN */
+/* px-cam@1 - renderer-independent camera mathematics (no drawing).
+   Named shots {eye:[x,y,z], at:[x,y,z], fov, tall?}; go() eases from the current view (the target leads the
+   eye slightly; an optional lift arcs the path); user() adds a bounded orbit offset and cancels a scripted
+   move; view() returns the pose any renderer can use (a 2.5D page can use `at` as its pan focus and fov as
+   zoom). It advances only through update(dt) from the clock, so transitions are deterministic. */
+var CAM = (function () {
+  function ease(t) { return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; }
+  function v3(a) { return [a[0], a[1], a[2]]; }
+  function lerp3(a, b, t) { return [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t, a[2] + (b[2] - a[2]) * t]; }
+  function create(shots, o) {
+    o = o || {};
+    var k, api = {}, maxYaw = o.maxYaw === undefined ? 0.6 : o.maxYaw, maxPitch = o.maxPitch === undefined ? 0.25 : o.maxPitch;
+    function okShot(s, n) {
+      if (!s || !s.eye || !s.at || s.eye.length !== 3 || s.at.length !== 3 || !(s.fov > 0)) throw new Error("CAM: bad shot " + n);
+      if (s.tall) okShot(s.tall, n + ".tall");
+    }
+    for (k in shots) if (shots.hasOwnProperty(k)) okShot(shots[k], k);
+    var st = { shot: null, base: null, from: null, to: null, u: 1, dur: 1, lift: 0, yaw: 0, pitch: 0 };
+    api.resolve = function (name) {
+      var s = shots[name];
+      if (!s) throw new Error("CAM: unknown shot " + name);
+      var r = o.portrait && o.portrait() && s.tall ? s.tall : s;
+      return { eye: v3(r.eye), at: v3(r.at), fov: r.fov };
+    };
+    api.set = function (name) { st.shot = name; st.base = api.resolve(name); st.u = 1; st.yaw = 0; st.pitch = 0; };
+    api.go = function (name, dur, lift) {
+      if (!st.base) { api.set(name); return; }
+      st.from = { eye: v3(st.base.eye), at: v3(st.base.at), fov: st.base.fov };
+      st.to = api.resolve(name); st.shot = name; st.dur = dur > 0 ? dur : 0.0001; st.lift = lift || 0; st.u = 0;
+      st.yaw = 0; st.pitch = 0;
+    };
+    api.update = function (dt) {
+      if (st.u >= 1 || !st.to) return;
+      st.u = Math.min(1, st.u + dt / st.dur);
+      var e = ease(st.u), et = ease(Math.min(1, st.u * 1.3)), eye = lerp3(st.from.eye, st.to.eye, e);
+      eye[1] += Math.sin(Math.PI * e) * st.lift;
+      st.base = { eye: eye, at: lerp3(st.from.at, st.to.at, et), fov: st.from.fov + (st.to.fov - st.from.fov) * e };
+    };
+    api.flying = function () { return st.u < 1; };
+    /* the learner's drag: bounded yaw/pitch around the target; a scripted move stops where it is */
+    api.user = function (dyaw, dpitch) {
+      st.u = 1;
+      st.yaw = Math.max(-maxYaw, Math.min(maxYaw, st.yaw + (dyaw || 0)));
+      st.pitch = Math.max(-maxPitch, Math.min(maxPitch, st.pitch + (dpitch || 0)));
+    };
+    api.resetUser = function () { st.yaw = 0; st.pitch = 0; };
+    api.view = function () {
+      if (!st.base) throw new Error("CAM: no shot set");
+      var b = st.base, dx = b.eye[0] - b.at[0], dz = b.eye[2] - b.at[2], c = Math.cos(st.yaw), s = Math.sin(st.yaw), dist = Math.sqrt(dx * dx + dz * dz);
+      return { eye: [b.at[0] + dx * c + dz * s, b.eye[1] + st.pitch * dist, b.at[2] - dx * s + dz * c], at: v3(b.at), fov: b.fov, shot: st.shot };
+    };
+    api.state = function () { return { shot: st.shot, u: st.u, yaw: st.yaw, pitch: st.pitch }; };
+    return api;
+  }
+  return { create: create, ease: ease };
+})();
+/* PX-KIT cam@1 END */
+
+function $(id) { return document.getElementById(id); }
+var cv = $("labcv"), g = cv.getContext("2d");
+
+/* ---- state (serialisable; no derived science in here) ---- */
+var S = { scene: 0, flags: {}, anim: null, m: 200, tOn: null };
+var RUN = { done: false };
+var clock = CLOCK.create({ substep: 0.01 });
+
+/* ---- observables: the one truth every consumer reads ---- */
+var O = OBS.create(), R = null;
+O.def("water.m", { unit: "g", meaning: "mass of water", status: "measured", decimals: 0, from: function (c) { return c.R.m; } })
+ .def("water.c", { unit: "J g⁻¹ °C⁻¹", meaning: "specific heat capacity of water (NCERT)", status: "measured", decimals: 1, from: function (c) { return c.R.c; } })
+ .def("heater.P", { unit: "W", meaning: "heater power", status: "illustrative", decimals: 0, from: function (c) { return c.R.P; } })
+ .def("heater.on", { unit: "", meaning: "1 while the heater is on", status: "calculated", decimals: 0, from: function (c) { return c.R.heating; } })
+ .def("water.T", { unit: "°C", meaning: "temperature of the water", status: "calculated", decimals: 1, from: function (c) { return c.R.T; } })
+ .def("water.dT", { unit: "°C", meaning: "rise in water temperature", status: "calculated", decimals: 2, from: function (c) { return c.R.dT; } })
+ .def("heat.water", { unit: "J", meaning: "heat taken in by the water so far", status: "calculated", signed: true, sign: "+ = into the water", plus: true, decimals: 0, from: function (c) { return c.R.q; } })
+ .def("heat.heater", { unit: "J", meaning: "heat taken in by the heater so far", status: "calculated", signed: true, sign: "+ = into the heater", decimals: 0, from: function (c, get) { return -get("heat.water"); } })
+ .def("heat.final", { unit: "J", meaning: "heat the water takes in once the heater stops", status: "calculated", signed: true, sign: "+ = into the water", decimals: 0, from: function (c) { return c.R.qFinal; } });
+function computeObs() { R = ENGINE.run({ m: S.m, tOn: S.tOn }, clock.t); O.frame({ S: S, R: R }); }
+
+/* ---- learning script: data only ---- */
+var SCRIPT = { scenes: [
+  { id: "fill", objective: "Pour a measured amount of water", allow: ["fill"], guide: "g_fill", milestone: "water_measured",
+    next: [{ "if": { flag: "!filled" }, act: "fill", args: 200, label: "Pour 200 g of water" }, { act: "advance", label: "Go to the heater" }],
+    exit: { flag: "filled" } },
+  { id: "heat", objective: "Warm the water with the heater", allow: ["heat"], guide: "g_heat", milestone: "warmed",
+    next: [{ "if": { flag: "!heated" }, act: "heat", label: "Switch the heater on" }, { act: "advance", label: "Work out the heat" }],
+    exit: { all: [{ flag: "heated" }, { pred: "heaterDone" }] } },
+  { id: "result", objective: "Find the heat from q = m c ΔT", allow: ["reveal"], guide: "g_result", milestone: "heat_found",
+    next: [{ "if": { flag: "!revealed" }, act: "reveal", label: "Work out q = m c ΔT" }] }
+] };
+var GUIDES = ["g_fill", "g_heat", "g_result"];
+
+/* ---- actions: the one input path ---- */
+var A = ACT.create({ state: S, script: SCRIPT, obs: O, clock: clock, busy: function () { return !!S.anim; } });
+A.def("fill", { args: [100, 200], when: function (s) { return !s.flags.filled; }, run: function (s, m) { s.m = m; s.flags.filled = 1; s.anim = { k: "fill", t: 0, d: 1 }; } })
+ .def("heat", { when: function (s) { return !s.flags.heated; }, run: function (s) { s.tOn = clock.t; s.flags.heated = 1; } })
+ .def("reveal", { when: function (s) { return !s.flags.revealed; }, run: function (s) { s.anim = { k: "reveal", t: 0, d: 1.5 }; } });
+A.pred("heaterDone", function (s) { return s.tOn !== null && clock.t - s.tOn >= ENGINE.TON - 1e-9; });
+
+/* ---- camera and Director ---- */
+var portrait = function () { return cv.clientHeight > cv.clientWidth * 0.9 || window.innerWidth < 600; };
+var cam = CAM.create({
+  bench: { eye: [0, 4, 16], at: [0, 2.6, 0], fov: 0.7, tall: { eye: [0, 5, 22], at: [0, 2.8, 0], fov: 0.82 } },
+  heater: { eye: [2, 3, 10], at: [1.4, 1.9, 0], fov: 0.55, tall: { eye: [2, 3, 14], at: [1.2, 2.1, 0], fov: 0.66 } },
+  result: { eye: [0, 3, 12], at: [0, 3.0, 0], fov: 0.62, tall: { eye: [0, 3, 16], at: [0, 3.0, 0], fov: 0.74 } }
+}, { portrait: portrait });
+var D = DIR.create({ state: S, act: A, clock: clock, cam: cam });
+D.load("default", [
+  { shot: "bench", dur: 0.01 }, { "do": "fill", args: 200 }, { wait: { idle: true } }, { mark: "filled" }, { "do": "advance" },
+  { shot: "heater", dur: 1 }, { "do": "heat" }, { wait: { obs: "water.T", op: ">=", value: 26.0 } }, { mark: "warming" },
+  { wait: { pred: "heaterDone" } }, { "do": "advance" }, { shot: "result", dur: 1 }, { "do": "reveal" }, { wait: { idle: true } },
+  { mark: "result" }, { wait: { seconds: 0.5 } }, { end: true }
+]);
+D.load("lesson", [
+  { say: "g_fill" }, { wait: { learner: "fill", timeout: 5, hint: "Tap a beaker size, or the beaker, to pour the water." } }, { wait: { idle: true } },
+  { "do": "advance" }, { say: "g_heat" }, { wait: { learner: "heat", timeout: 5, hint: "Tap the heater to switch it on." } }, { mark: "lesson-heating" },
+  { wait: { pred: "heaterDone" } }, { end: true }
+]);
+
+clock.on(function (h) {
+  if (S.anim) { S.anim.t += h; if (S.anim.t >= S.anim.d) { var k = S.anim.k; S.anim = null; if (k === "reveal") S.flags.revealed = 1; } }
+  cam.update(h);
+});
+
+/* ---- guide text: built from observables every frame ---- */
+function guideText() {
+  var sc = A.scene().id, u = S.anim ? S.anim.t / S.anim.d : 1;
+  if (sc === "fill") return !S.flags.filled ? "Pour water into the cup. Its mass is part of the rule." :
+    S.anim ? "Pouring." : "You poured " + O.f("water.m") + " of water at " + O.f("water.T") + ".";
+  if (sc === "heat") return !S.flags.heated ? "Switch the heater on (" + O.f("heater.P") + ", illustrative)." :
+    O.v("heater.on") ? "The water is warming: " + O.f("water.T") + "." : "The heater has stopped. The water rose by " + O.f("water.dT") + ".";
+  if (!S.flags.revealed && !S.anim) return "Work out the heat the water took in.";
+  if (S.anim) return "q = " + O.fp("heat.final", u);
+  return "q = m c ΔT = " + O.num("water.m") + " × " + O.num("water.c") + " × " + O.num("water.dT") + " = " + O.f("heat.final") +
+    ". The water took in heat (" + O.f("heat.water") + "); the heater gave it out (" + O.f("heat.heater") + ").";
+}
+
+/* PRESENT-BEGIN */
+var minPx = 999, anchors = {}, U = 52;
+function T(text, kind, x, y, px, col, align) {
+  O.shown(text, kind);
+  if (px < minPx) minPx = px;
+  g.font = "700 " + px + "px ui-sans-serif,system-ui,sans-serif"; g.fillStyle = col || "#e8eefc"; g.textAlign = align || "left"; g.fillText(text, x, y);
+}
+function draw() {
+  var W = cv.width, H = cv.height, v = cam.view(), k = 0.7 / v.fov, cx = W / 2 + (v.eye[0] - v.at[0]) * 6, cy = H * 0.62;
+  function P(x, y) { return { x: cx + (x - v.at[0]) * U * k, y: cy - (y - v.at[1]) * U * k }; }
+  minPx = 999;
+  g.fillStyle = "#0e1526"; g.fillRect(0, 0, W, H);
+  var b = P(-8, 0), b2 = P(8, 0); g.fillStyle = "#2b3140"; g.fillRect(0, b.y, W, H - b.y);
+  /* the cup; the water level shows the mass (revealed while pouring) */
+  var c0 = P(-2.2, 0), c1 = P(0.2, 4), wm = S.anim && S.anim.k === "fill" ? O.present("water.m", S.anim.t / S.anim.d, 0) : (S.flags.filled ? O.v("water.m") : 0);
+  var lvl = c0.y - (c0.y - c1.y) * 0.85 * Math.min(1, wm / 250);
+  g.fillStyle = "rgba(160,190,230,.12)"; g.fillRect(c0.x, c1.y, c1.x - c0.x, c0.y - c1.y);
+  var warm = Math.max(0, Math.min(1, O.v("water.dT") / 3));
+  g.fillStyle = "rgba(" + Math.round(70 + 150 * warm) + ",130," + Math.round(220 - 120 * warm) + ",.75)"; g.fillRect(c0.x, lvl, c1.x - c0.x, c0.y - lvl);
+  g.strokeStyle = "#cfe0ff"; g.lineWidth = 2; g.strokeRect(c0.x, c1.y, c1.x - c0.x, c0.y - c1.y);
+  anchors.beaker = { x: (c0.x + c1.x) / 2, y: (c0.y + c1.y) / 2 };
+  if (A.scene().id === "fill" && !S.flags.filled && !S.anim) A.hit({ x: c0.x, y: c1.y, w: c1.x - c0.x, h: c0.y - c1.y }, "fill", 200);
+  if (S.flags.filled) T(O.f("water.m"), "sci", (c0.x + c1.x) / 2, c0.y + 24 * k, Math.max(14, 16 * k), "#bfdbfe", "center");
+  /* the heater coil glows while it is on */
+  var h0 = P(-1.6, 0.5), h1 = P(-0.4, 3), on = O.v("heater.on");
+  g.fillStyle = on ? "rgba(255,140,60,.9)" : "#6b7280"; g.fillRect(h0.x, h1.y, h1.x - h0.x, h0.y - h1.y);
+  anchors.heater = { x: (h0.x + h1.x) / 2, y: (h0.y + h1.y) / 2 };
+  if (A.scene().id === "heat" && !S.flags.heated && !S.anim) A.hit({ x: h0.x - 10, y: h1.y - 10, w: h1.x - h0.x + 20, h: h0.y - h1.y + 20 }, "heat");
+  /* the thermometer: column and readout both from water.T */
+  var t0 = P(2.2, 0.3), t1 = P(2.2, 5.2), lo = 24, hi = 31, col = t0.y - (t0.y - t1.y) * Math.max(0, Math.min(1, (O.v("water.T") - lo) / (hi - lo)));
+  g.fillStyle = "#e5e7eb"; g.fillRect(t0.x - 6, t1.y, 12, t0.y - t1.y); g.fillStyle = "#ef4444"; g.fillRect(t0.x - 3, col, 6, t0.y - col);
+  var tk; for (tk = lo; tk <= hi; tk++) T(String(tk), "decor", t0.x + 12, t0.y - (t0.y - t1.y) * (tk - lo) / (hi - lo) + 5, Math.max(13, 13 * k), "#a9b8d6");
+  T(O.f("water.T"), "sci", t0.x, t1.y - 12, Math.max(16, 20 * k), "#7CFFB0", "center");
+  anchors.thermometer = { x: t0.x, y: col };
+  /* the result card */
+  if (A.scene().id === "result") {
+    var r0 = P(-1, 6.2);
+    if (!S.flags.revealed && !S.anim) A.hit({ x: r0.x - 120, y: r0.y - 30, w: 240, h: 44 }, "reveal");
+    if (S.anim || S.flags.revealed) T("q = " + (S.anim ? O.fp("heat.final", S.anim.t / S.anim.d) : O.f("heat.final")), "sci", r0.x, r0.y, Math.max(18, 24 * k), "#4ade80", "center");
+    anchors.result = r0;
+  }
+  T("Step " + (S.scene + 1) + " of " + SCRIPT.scenes.length + ": " + A.scene().objective, "ui", 16, 28, 16, "#ffffff");
+  if (O.v("heater.on") || S.flags.heated) T("heater power " + O.f("heater.P") + " (illustrative)", "sci", W - 16, 28, 14, "#a9b8d6", "right");
+}
+/* PRESENT-END */
+
+function frame() {
+  D.update();
+  computeObs();
+  A.hitsReset();
+  draw();
+  var gt = O.shown(guideText(), "sci");
+  if ($("guide").textContent !== gt) $("guide").textContent = gt;
+  $("hint").hidden = !S.dir.hint; if (S.dir.hint) $("hint").textContent = S.dir.hint;
+  RUN.done = !!S.dir.done;
+  A.syncNextUI({ button: $("nextbtn"), sticky: $("stickybtn"), stage: cv, primary: [$("w200"), $("heatbtn"), $("revealbtn")], idleText: "Watch…" });
+  var bs = document.querySelectorAll("[data-act]"), i;
+  for (i = 0; i < bs.length; i++) bs[i].disabled = !!A.check(bs[i].getAttribute("data-act"), bs[i].getAttribute("data-arg") ? +bs[i].getAttribute("data-arg") : undefined);
+}
+
+/* ---- inputs: every state change goes through A.do ---- */
+function learner(id, arg) { A.do(id, arg, "learner"); }
+var bs0 = document.querySelectorAll("[data-act]"), j;
+for (j = 0; j < bs0.length; j++) bs0[j].addEventListener("click", function () { learner(this.getAttribute("data-act"), this.getAttribute("data-arg") ? +this.getAttribute("data-arg") : undefined); });
+$("nextbtn").addEventListener("click", function () { A.doNext("learner"); });
+$("stickybtn").addEventListener("click", function () { A.doNext("learner"); });
+$("resetbtn").addEventListener("click", function () { reset(); });
+var drag = null;
+cv.addEventListener("pointerdown", function (e) { drag = { x: e.clientX, moved: false }; });
+window.addEventListener("pointermove", function (e) { if (!drag) return; var dx = e.clientX - drag.x; if (Math.abs(dx) > 8) { drag.moved = true; cam.user(dx * 0.002, 0); drag.x = e.clientX; } });
+window.addEventListener("pointerup", function () { setTimeout(function () { drag = null; }, 0); });
+cv.addEventListener("click", function (e) {
+  if (drag && drag.moved) return;
+  var r = cv.getBoundingClientRect(), h = A.at((e.clientX - r.left) * cv.width / r.width, (e.clientY - r.top) * cv.height / r.height);
+  if (h) learner(h.id, h.args);
+});
+
+var replayFn = null;
+function reset() {
+  S.scene = 0; S.flags = {}; S.anim = null; S.m = 200; S.tOn = null;
+  clock.reset(); A.reset(); D.reset(); cam.set("bench"); replayFn = null; RUN.done = false;
+  computeObs();
+}
+
+function snapshot() { return JSON.parse(JSON.stringify({ S: S, obs: O.snapshot(), cam: cam.state(), t: clock.t, frame: clock.frame })); }
+window.PX = {
+  RUN: RUN, ENGINE: ENGINE,
+  kit: { OBS: O, ACT: A, DIR: D, CAM: cam, CLOCK: clock, SCRIPT: SCRIPT, GUIDES: GUIDES },
+  start: function () { reset(); D.play("default", "media"); },
+  lesson: function (mode) { reset(); D.play("lesson", mode || "learner"); },
+  reset: reset,
+  answer: function () { return O.f("heat.final"); },
+  speed: function (k) { clock.setSpeed(k); }, setSpeed: function (k) { clock.setSpeed(k); },
+  minLabelPx: function () { frame(); return minPx; },
+  stage: function () { return { n: S.scene + 1, name: SCRIPT.scenes[S.scene].id }; },
+  state: function () {
+    var out = { phase: SCRIPT.scenes[S.scene].id, stage: S.scene + 1, t: clock.t, busy: !!S.anim, mark: S.dir.mark, marks: S.dir.marks, shot: cam.state().shot,
+      focus: S.dir.focus, say: S.dir.say, hint: S.dir.hint, dirError: S.dir.error, done: RUN.done, obs: O.snapshot() }, f = O.flat(), k;
+    for (k in f) out[k] = f[k];
+    return out;
+  },
+  obs: function (id) { return O.v(id); },
+  anchors: function () { return JSON.parse(JSON.stringify(anchors)); },
+  next: function () { return A.next(); },
+  doNext: function () { return A.doNext("learner"); },
+  snapshot: snapshot,
+  texts: function () { return O.shownList(); },
+  emitted: function () { return O.emitted(); },
+  log: function () { return A.log(); },
+  replay: function (entries) { reset(); replayFn = A.replayer(entries); }
+};
+
+reset();
+CLOCK.drive(clock, frame, function () { if (replayFn) replayFn(); });
+})();
+</script>
+</body>
+</html>

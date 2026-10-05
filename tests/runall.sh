@@ -60,7 +60,7 @@ done
 
 echo
 echo "=== workflow tools: tracker Sheet sync, simulation factory, registry rules, NCERT data, concept and experience contracts (no network) ==="
-for f in "$HERE/test_tracker_sheet.py" "$HERE/test_auto_sim.py" "$HERE/test_registry_schema.py" "$HERE/ncert_data.py" "$HERE/concept_contract.py" "$HERE/experience_contract.py" "$HERE/test_visual_assets.py" "$HERE/test_instagram_publish.py" "$HERE/test_youtube_publish.py" "$HERE/test_narration.py" "$HERE/test_voice_layer.py" "$HERE/test_voice_generation.py"; do
+for f in "$HERE/test_tracker_sheet.py" "$HERE/test_auto_sim.py" "$HERE/test_registry_schema.py" "$HERE/ncert_data.py" "$HERE/concept_contract.py" "$HERE/experience_contract.py" "$HERE/test_visual_assets.py" "$HERE/test_instagram_publish.py" "$HERE/test_youtube_publish.py" "$HERE/test_narration.py" "$HERE/test_voice_layer.py" "$HERE/test_voice_generation.py" "$HERE/kit/test_px_kit.py"; do
   nm=$(basename "$f")
   if [ ! -f "$f" ]; then line "$nm" "MISSING (not in this tree)"; missing=$((missing+1)); continue; fi
   out=$(python3 "$f" 2>&1 | tail -1)
@@ -126,6 +126,8 @@ run "P2 PHY Q04 orbit wobble lab"        "$HERE/sim_p2phyq04.js"
 run "P2 PHY Q05 twin-prism mirror bench" "$HERE/sim_p2phyq05.js"
 run "NCERT XP-09 two calorimeters, one reaction" "$HERE/sim_con_che_delta_u_vs_delta_h.js"
 run "NCERT concept: how a calorimeter works" "$HERE/sim_con_che_calorimeter_01.js"
+run "Experience Kit: modules (kit_unit)"   "$HERE/kit/kit_unit.js"
+run "Experience Kit: contracts on the toy" "$HERE/kit/kit_toy.js"
 run "production suite (prodcheck)"         "$HERE/prodcheck.js"
 make_scratch
 run "single-source propagation"            "$HERE/propagation.js"  "$SCRATCH"
