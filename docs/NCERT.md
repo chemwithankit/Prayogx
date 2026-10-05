@@ -111,7 +111,9 @@ Concepts are shown **only** by the NCERT Explorer. `build_content.py` keeps them
 the crawlable `s/` pages and the sitemap; the revision lock covers them, because they are cached by
 revision like every page. A concept may be published (`script_verified`, or `human_verified` after
 the owner's review) only when `registry_schema.CONCEPT_PUBLISHABLE` is on **and** a chapter maps it
-under `understand`. The flag is switched on in Phase 5, when the NCERT page can open a concept.
+under `understand`. The flag is on since 2026-10-05 (owner decision; first published concept
+CON-CHE-DELTA-U-VS-DELTA-H): the panel's **Understand** block lists the published concept pages of the
+sections at the student's place and opens the page itself in a new tab, as Apply does for JEE pages.
 
 ## 4. The PDF source
 

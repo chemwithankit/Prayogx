@@ -307,6 +307,9 @@
       '<section class="nx-pblock" id="nx-explore" aria-labelledby="nx-explore-h" hidden>' +
         '<h2 class="nx-plabel" id="nx-explore-h">Explore</h2><ul class="nx-explist" id="nx-explore-body"></ul></section>' +
       '<p class="nx-quiet" id="nx-quiet" hidden>Nothing to explore on this page yet.</p>' +
+      '<section class="nx-pblock" id="nx-understand" aria-labelledby="nx-understand-h" hidden>' +
+        '<h2 class="nx-plabel" id="nx-understand-h">Understand</h2><p class="nx-pnote">Concept experiment for this section</p>' +
+        '<ul class="nx-applist" id="nx-understand-body"></ul></section>' +
       '<section class="nx-pblock" id="nx-apply" aria-labelledby="nx-apply-h" hidden>' +
         '<h2 class="nx-plabel" id="nx-apply-h">Apply</h2><p class="nx-pnote">JEE practice for this section</p>' +
         '<ul class="nx-applist" id="nx-apply-body"></ul></section>' +
@@ -354,13 +357,14 @@
   function panelChapterData(feed) {
     var M = window.NCERT && window.NCERT.ExperienceMapper;
     if (!M || !M.setChapterData) return;
-    var practice = {}, sims = feed.simulations || [];
+    var practice = {}, pages = {}, sims = feed.simulations || [];
     for (var i = 0; i < sims.length; i++) {
       var c = sims[i];
+      if (c.kind === "concept") { pages[c.id] = { title: c.shortTitle || c.title, path: c.path }; continue; }
       practice[c.id] = { title: c.shortTitle || c.title,
                          label: (c.exam || "JEE") + " " + (c.year || "") + " \u00b7 " + (c.paper || "") + " \u00b7 Q" + c.questionNumber };
     }
-    M.setChapterData({ chapterId: feed.chapter.id, sections: feed.sections || [], practice: practice,
+    M.setChapterData({ chapterId: feed.chapter.id, sections: feed.sections || [], practice: practice, pages: pages,
                        learning: feed.learning || null });
   }
 
@@ -447,6 +451,7 @@
     var sections = lc && where.kind !== "none" ? lc.sections : [];
     var concepts = lc && where.kind !== "none" ? lc.concepts : [];
     var apply = lc && where.kind !== "none" ? lc.apply : [];
+    var understand = lc && where.kind !== "none" ? (lc.understand || []) : [];
     var nexp = 0;
     for (var ce = 0; ce < concepts.length; ce++) nexp += concepts[ce].experiences.length;
 
@@ -506,7 +511,22 @@
       }
       pel("nx-explore-body").innerHTML = li;
     }
-    pel("nx-quiet").hidden = where.kind === "none" || !!nexp;
+    pel("nx-quiet").hidden = where.kind === "none" || !!nexp || understand.length > 0;
+
+    // Understand: the published concept pages for this place (the page itself, in a new tab)
+    var un = pel("nx-understand");
+    un.hidden = !understand.length;
+    if (understand.length) {
+      var ul = "";
+      for (var u = 0; u < understand.length; u++) {
+        var u2 = understand[u], to = "../" + u2.path.replace(/index\.html$/, "");
+        ul += '<li><a class="nx-applink" href="' + esc(to) + '" target="_blank" rel="noopener" data-sim="' + esc(u2.libraryId) + '"' +
+          ' aria-label="' + esc("Concept experiment: " + u2.title + " (opens in a new tab)") + '">' +
+          '<span class="nx-applabel">Concept experiment</span>' +
+          '<span class="nx-apptitle">' + esc(u2.title) + '<span aria-hidden="true"> ↗</span></span></a></li>';
+      }
+      pel("nx-understand-body").innerHTML = ul;
+    }
 
     // Apply: JEE practice for this place
     var ap = pel("nx-apply");
@@ -534,12 +554,13 @@
 
     // phones / tablets: a context bar only when this page has something to explore or apply
     var bar = pel("nx-ctxbar");
-    var useful = reading && where.kind !== "none" && (nexp > 0 || apply.length > 0);
+    var useful = reading && where.kind !== "none" && (nexp > 0 || understand.length > 0 || apply.length > 0);
     bar.hidden = !useful;
     main.setAttribute("data-ctxbar", useful ? "1" : "0");
     var place = concepts.length ? concepts[0].concept.title : sections.length ? sections[0].title : "";
     var summary = where.label + (place ? " \u00b7 " + place : "") +
-      (nexp ? " \u00b7 " + nexp + " to explore" : "") + (apply.length ? " \u00b7 " + apply.length + " to apply" : "");
+      (nexp ? " \u00b7 " + nexp + " to explore" : "") + (understand.length ? " \u00b7 " + understand.length + " to understand" : "") +
+      (apply.length ? " \u00b7 " + apply.length + " to apply" : "");
     if (useful) bar.innerHTML = '<span class="nx-ctxtext">' + esc(summary) + '</span><span class="nx-ctxup" aria-hidden="true">\u25b4</span>';
     bar.setAttribute("aria-label", useful ? summary + ". Open the learning panel." : "");
 

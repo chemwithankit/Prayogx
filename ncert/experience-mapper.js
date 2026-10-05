@@ -22,14 +22,16 @@
        concepts: [ { concept:     { id, title, description },
                      objectives:  [ { id, statement, verb } ],
                      experiences: [ { id, type, title, objectives, libraryId } ] } ],
+       understand: [ { libraryId, title, path } ],          published concept pages of these sections
        apply:    [ { libraryId, title, label } ] }
      options.sectionId: the section to use when the page has no printed number (or
      before a PDF is open); options.chapterId: the chapter when there is no context.
      Every call returns new plain objects; nothing the caller does reaches the data.
 
    setChapterData(data) - what the chapter controller hands over once per chapter:
-     { chapterId, sections: [ { id, number, title, level, pages, apply } ],
+     { chapterId, sections: [ { id, number, title, level, pages, understand, apply } ],
        practice: { <libraryId>: { title, label } },
+       pages:    { <libraryId>: { title, path } },          the chapter feed's concept cards
        learning: { inventory: <concept inventory, tools/concept_schema.py>,
                    experiences: <experience document, tools/experience_schema.py> } | absent }
      The two learning documents are used as authored - concepts own their objectives,
@@ -57,17 +59,22 @@
 
   /* Read the controller's data into private plain copies. Anything malformed is left out. */
   function normalise(data) {
-    var out = { chapterId: str(data.chapterId), sections: [], practice: {}, concepts: [], byConcept: {} };
+    var out = { chapterId: str(data.chapterId), sections: [], practice: {}, pages: {}, concepts: [], byConcept: {} };
     var i, j, s, secs = isArr(data.sections) ? data.sections : [];
     for (i = 0; i < secs.length; i++) {
       s = secs[i] || {};
       if (!str(s.id) || !range(s.pages)) continue;
       out.sections.push({ id: s.id, number: str(s.number) || "", title: str(s.title) || s.id, level: num(s.level) || 1,
-                          pages: range(s.pages), apply: isArr(s.apply) ? s.apply.filter(str) : [] });
+                          pages: range(s.pages), understand: isArr(s.understand) ? s.understand.filter(str) : [],
+                          apply: isArr(s.apply) ? s.apply.filter(str) : [] });
     }
     var pr = data.practice && typeof data.practice === "object" ? data.practice : {};
     for (var id in pr) if (Object.prototype.hasOwnProperty.call(pr, id) && pr[id] && str(pr[id].title)) {
       out.practice[id] = { title: pr[id].title, label: str(pr[id].label) || id };
+    }
+    var pg = data.pages && typeof data.pages === "object" ? data.pages : {};
+    for (var pid in pg) if (Object.prototype.hasOwnProperty.call(pg, pid) && pg[pid] && str(pg[pid].title) && str(pg[pid].path)) {
+      out.pages[pid] = { title: pg[pid].title, path: pg[pid].path };
     }
     var learning = data.learning && typeof data.learning === "object" ? data.learning : {};
     var inv = learning.inventory, exp = learning.experiences;
@@ -195,7 +202,7 @@
       if (!ctx && !sectionId) return null;
       var page = ctx ? { pdfPage: ctx.pdfPage, printedPage: num(ctx.printedPage), chapterId: ctx.chapterId,
                          editionStatus: str(ctx.editionStatus) } : null;
-      var out = { page: page, match: "none", sections: [], concepts: [], apply: [] };
+      var out = { page: page, match: "none", sections: [], concepts: [], understand: [], apply: [] };
       var ch = chapterId ? CHAPTERS[chapterId] : null;
       if (!ch) return out;
 
@@ -214,6 +221,15 @@
         var ra = HANDS_ON.indexOf(a.type), rb = HANDS_ON.indexOf(b.type);
         return (ra < 0 ? 99 : ra) - (rb < 0 ? 99 : rb);
       });
+
+      // Understand: the sections' published concept pages (the feed lists only published ones)
+      var had = {};
+      for (i = 0; i < sections.length; i++) for (j = 0; j < sections[i].understand.length; j++) {
+        var uid = sections[i].understand[j], pc = ch.pages[uid];
+        if (!pc || had[uid]) continue;
+        had[uid] = true;
+        out.understand.push({ libraryId: uid, title: pc.title, path: pc.path });
+      }
 
       // Apply: the sections' JEE practice links, then published practice experiences of these concepts
       var seen = {};

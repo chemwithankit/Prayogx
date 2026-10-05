@@ -7,7 +7,7 @@ the working tree:
 
   * the JEE feed (content/index.json, search.json, catalog.json, content/sims/, s/, sitemap.xml,
     robots.txt, sw.js) stays BYTE-IDENTICAL when concepts are added - draft, or published through
-    the NCERT Explorer with CONCEPT_PUBLISHABLE switched on in the copy (the Phase 5 path);
+    the NCERT Explorer (CONCEPT_PUBLISHABLE, switched on; its off state is checked in the copy);
   * a published concept must be mapped under `understand`, appears only in content/ncert/, and a
     draft one linked there is simply left out;
   * WATCH shows only media with a VERIFIED publication record.
@@ -56,8 +56,9 @@ secs = {s["id"]: s for s in chapters[CH]["sections"]}
 chk("approved APPLY links: 5.1.4 PHY-Q07, 5.2.1 CHE-Q01, 5.2.2 PHY-Q11, 5.6b/c CHE-Q13",
     secs["5.1.4"]["apply"] == ["ADV-2026-P1-PHY-Q07"] and secs["5.2.1"]["apply"] == ["ADV-2026-P1-CHE-Q01"]
     and secs["5.2.2"]["apply"] == ["ADV-2026-P1-PHY-Q11"] and secs["5.6b"]["apply"] == secs["5.6c"]["apply"] == ["ADV-2026-P1-CHE-Q13"])
-chk("approved pilots are planned: DELTA-U-VS-DELTA-H (5.2.2, 5.3), HESS-LAW (5.4e), GIBBS-SPONTANEITY (5.6b, 5.6c)",
-    secs["5.2.2"]["planned"] == secs["5.3"]["planned"] == ["CON-CHE-DELTA-U-VS-DELTA-H"]
+chk("pilots: DELTA-U-VS-DELTA-H published under understand (5.2.2, 5.3); HESS-LAW (5.4e) and GIBBS-SPONTANEITY (5.6b, 5.6c) planned",
+    secs["5.2.2"]["understand"] == secs["5.3"]["understand"] == ["CON-CHE-DELTA-U-VS-DELTA-H"]
+    and secs["5.2.2"]["planned"] == secs["5.3"]["planned"] == []
     and secs["5.4e"]["planned"] == ["CON-CHE-HESS-LAW"]
     and secs["5.6b"]["planned"] == secs["5.6c"]["planned"] == ["CON-CHE-GIBBS-SPONTANEITY"])
 F = N.feed(ROOT, SIMS)
@@ -66,10 +67,18 @@ chk("the committed content/ncert/ matches the feed byte for byte",
     all(open(os.path.join(ROOT, "content", "ncert", k), encoding="utf-8").read() == N.serialise(v) for k, v in F.items()))
 chk("the feed is deterministic", N.serialise(N.feed(ROOT, SIMS)[CH + ".json"]) == N.serialise(F[CH + ".json"]))
 chf = F[CH + ".json"]
-chk("planned pages never ship", "planned" not in json.dumps(chf) and "CON-CHE" not in json.dumps(chf))
+chk("planned pages never ship", "planned" not in json.dumps(chf) and "CON-CHE-HESS-LAW" not in json.dumps(chf)
+    and "CON-CHE-GIBBS-SPONTANEITY" not in json.dumps(chf))
+chk("a draft concept never ships, even when it exists in the library (CALORIMETER-01)",
+    "CON-CHE-CALORIMETER-01" not in json.dumps(chf))
 chk("every linked simulation has a card with path and revision, and only linked ones",
-    sorted(c["id"] for c in chf["simulations"]) == ["ADV-2026-P1-CHE-Q01", "ADV-2026-P1-CHE-Q13", "ADV-2026-P1-PHY-Q07", "ADV-2026-P1-PHY-Q11"]
-    and all(c.get("path") and c.get("revision") and c["kind"] == "question" for c in chf["simulations"]))
+    sorted(c["id"] for c in chf["simulations"]) == ["ADV-2026-P1-CHE-Q01", "ADV-2026-P1-CHE-Q13", "ADV-2026-P1-PHY-Q07", "ADV-2026-P1-PHY-Q11",
+                                                    "CON-CHE-DELTA-U-VS-DELTA-H"]
+    and all(c.get("path") and c.get("revision") and c["kind"] == ("concept" if c["id"].startswith("CON-") else "question")
+            for c in chf["simulations"]))
+chk("the published concept's card points to its own page",
+    any(c["id"] == "CON-CHE-DELTA-U-VS-DELTA-H" and c["path"] == "simulations/concepts/chemistry/con-che-delta-u-vs-delta-h/index.html"
+        and c["status"] == "script_verified" for c in chf["simulations"]))
 chk("cards carry no detail prose (no verification log, no summary)",
     not any(k in c for c in chf["simulations"] for k in ("verification", "summary", "derivedQuantities")))
 
@@ -253,18 +262,20 @@ try:
     chk("a draft concept is left out of content/ncert/ (the section simply shows nothing yet)",
         cid not in open(os.path.join(W, "content", "ncert", CH + ".json")).read())
 
-    # published while CONCEPT_PUBLISHABLE is off (today): refused, as before
+    # published while CONCEPT_PUBLISHABLE is switched off (in the copy only): refused, draft only
     with_concept(status="script_verified")
-    r = run_tools()
-    chk("publishing a concept is still refused while CONCEPT_PUBLISHABLE is off",
-        r["check_library.py"][0] != 0 and "only be registered as status 'draft'" in r["check_library.py"][1])
-
-    # the Phase 5 path, in the copy only: concepts publishable through the NCERT Explorer
     rs = os.path.join(W, "tools", "registry_schema.py")
     txt = open(rs, encoding="utf-8").read()
-    open(rs, "w", encoding="utf-8").write(txt.replace("CONCEPT_PUBLISHABLE = False", "CONCEPT_PUBLISHABLE = True"))
+    open(rs, "w", encoding="utf-8").write(txt.replace("CONCEPT_PUBLISHABLE = True", "CONCEPT_PUBLISHABLE = False"))
     r = run_tools()
-    chk("a published, mapped concept passes all four tools (Phase 5 path)", all_pass(r), why(r))
+    chk("publishing a concept is refused while CONCEPT_PUBLISHABLE is off",
+        r["check_library.py"][0] != 0 and "only be registered as status 'draft'" in r["check_library.py"][1])
+
+    # the NCERT Explorer path (CONCEPT_PUBLISHABLE on, as in the repository): concepts publishable once mapped
+    open(rs, "w", encoding="utf-8").write(txt)
+    chk("the repository has concept publishing switched on", "CONCEPT_PUBLISHABLE = True" in txt)
+    r = run_tools()
+    chk("a published, mapped concept passes all four tools", all_pass(r), why(r))
     chk("JEE feed, detail records, crawlable pages, sitemap and sw.js stay byte-identical with a published concept",
         jee_snapshot() == BASE, sorted(k for k, v in jee_snapshot().items() if BASE.get(k) != v))
     chk("the published concept is in content/ncert/ under 5.4e, as a concept card",
@@ -272,7 +283,7 @@ try:
         and any(c["id"] == cid and c["kind"] == "concept" for c in jload("content/ncert/%s.json" % CH)["simulations"]))
     chk("the published concept is in the revision lock (it is cached by revision too)",
         jload("data/revisions.json").get(cid, {}).get("revision") == 1)
-    chk("the NCERT catalogue counts the concept", jload("content/ncert/catalog.json")["books"][0]["chapters"][0]["counts"]["understand"] == 1)
+    chk("the NCERT catalogue counts the concept (with DELTA-U-VS-DELTA-H: 2)", jload("content/ncert/catalog.json")["books"][0]["chapters"][0]["counts"]["understand"] == 2)
 
     # unmapped published concept: refused
     map_concept(False)

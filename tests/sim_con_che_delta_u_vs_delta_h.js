@@ -6,7 +6,7 @@
      G the ten discovery stages in order · H/I/J graphite, hydrogen, butane datasets · K ΔH − ΔU = Δn_gRT ·
      L temperatures consistent · M what-if controls · N no premature reveal · O the reveal · P phones, no overflow
      (and the measured visual gates) · Q keyboard · R reduced motion · S window.PX state · T deterministic animation
-     (manual clock: identical frames and states twice) · registration (manifest draft, experience records).
+     (manual clock: identical frames and states twice) · registration (published concept, NCERT mapping, experience records).
 
    Run:  node tests/sim_con_che_delta_u_vs_delta_h.js                                                          */
 const ROOT = process.env.PRAYOGX_ROOT || require('path').resolve(__dirname, '..');
@@ -205,7 +205,10 @@ const CLOCK = () => {
     /* ---------------------------------------------------------------- registration */
     console.log('=== registration');
     const e = man.simulations.find(x => x.id === ID), meta = JSON.parse(fs.readFileSync(ROOT + '/' + REL + 'meta.json', 'utf8'));
-    ok('the page is registered as a draft concept, byte-identical to meta.json', !!e && e.status === 'draft' && e.kind === 'concept' && JSON.stringify(e) === JSON.stringify(meta));
+    ok('the page is registered as a published (script_verified) concept, byte-identical to meta.json', !!e && e.status === 'script_verified' && e.kind === 'concept' && JSON.stringify(e) === JSON.stringify(meta));
+    const chap = JSON.parse(fs.readFileSync(ROOT + '/data/ncert/chapters/NCERT-11-CHE-P1-CH05.json', 'utf8')).sections;
+    ok('the NCERT chapter maps it under understand in 5.2.2 and 5.3 (its source sections), and nowhere as planned',
+       chap.filter(s => (s.understand || []).indexOf(ID) >= 0).map(s => s.id).join() === '5.2.2,5.3' && !chap.some(s => (s.planned || []).indexOf(ID) >= 0));
     const exp = JSON.parse(fs.readFileSync(ROOT + '/data/ncert/experiences/NCERT-11-CHE-P1-CH05.json', 'utf8')).experiences.filter(x => x.libraryId === ID);
     ok('three experience records (calorimetry primary, ΔH–ΔU, heat sign) point to this page', exp.length === 3 && exp[0].id === 'EXP-CHE-TWO-CALORIMETERS' && exp[0].conceptId === 'CPT-CHE-CALORIMETRY');
     ok('the page declares no visual asset (XP-09 tests the no-asset path)', !/name=["']px-visual-asset["']/.test(src));

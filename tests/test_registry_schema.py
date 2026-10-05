@@ -120,8 +120,9 @@ try:
         and Q16 in jload("data/revisions.json"))
     explicit = {s["id"]: s["status"] for s in MAN0["simulations"] if "status" in s}
     others = [c for c in jload("content/index.json")["simulations"] if c["id"] != Q16]
-    chk("every other page keeps its own status (explicit, or the human_verified default)",
-        len(others) == len([x for x in MAN0["simulations"] if x.get("status") != "draft"]) - 1 and all(c.get("status") == explicit.get(c["id"], "human_verified") for c in others),
+    chk("every other page keeps its own status (explicit, or the human_verified default); published concepts stay off the JEE feed",
+        len(others) == len([x for x in MAN0["simulations"] if x.get("status") != "draft" and S.kind_of(x) == "question"]) - 1
+        and all(S.kind_of(c) == "question" for c in others) and all(c.get("status") == explicit.get(c["id"], "human_verified") for c in others),
         [(c["id"], c.get("status")) for c in others if c.get("status") != explicit.get(c["id"], "human_verified")])
     site = open(os.path.join(W, "site", "site.js"), encoding="utf-8").read()
     app = open(os.path.join(W, "app", "www", "app.js"), encoding="utf-8").read() if os.path.exists(os.path.join(W, "app", "www", "app.js")) else ""
@@ -183,8 +184,17 @@ try:
         cid not in json.dumps(jload("content/index.json")) and cid not in open(os.path.join(W, "sitemap.xml")).read())
     with_concept(status="script_verified")
     r = run_tools()
-    chk("publishing a concept is refused until the clients render concepts",
+    chk("a published concept that no NCERT chapter maps under 'understand' is refused (the NCERT Explorer is its only route)",
+        r["check_library.py"][0] != 0 and "must be mapped under 'understand'" in r["check_library.py"][1], r["check_library.py"][1][-300:])
+    chk("...and it never reaches the JEE feed or the sitemap",
+        cid not in json.dumps(jload("content/index.json")) and cid not in open(os.path.join(W, "sitemap.xml")).read())
+    rs = os.path.join(W, "tools", "registry_schema.py")
+    txt = open(rs, encoding="utf-8").read()
+    open(rs, "w", encoding="utf-8").write(txt.replace("CONCEPT_PUBLISHABLE = True", "CONCEPT_PUBLISHABLE = False"))
+    r = run_tools()
+    chk("with concept publishing switched off, any published concept is refused (draft only)",
         r["check_library.py"][0] != 0 and "only be registered as status 'draft'" in r["check_library.py"][1])
+    open(rs, "w", encoding="utf-8").write(txt)
     with_concept(learningObjectives=None)
     r = run_tools()
     chk("a concept without learning objectives is refused", r["check_library.py"][0] != 0 and "learningObjectives" in r["check_library.py"][1])

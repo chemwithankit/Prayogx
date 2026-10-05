@@ -103,13 +103,22 @@ print(json.dumps([C.problems(d['inventory'], st), X.problems(d['experiences'], d
       [null, { chapterId: 'NCERT-11-CHE-P1-CH05' }]].every(a => NCERT.ExperienceMapper.getLearningContext.apply(null, Array.isArray(a) ? a : [a]) === null))));
     let lc = await LC(t, { pdfPage: 1, printedPage: 1, chapterId: 'MY-BOOK-CH01', editionStatus: null });
     ok('a chapter the mapper has no data for: the page, match "none", and empty lists',
-      same(lc, { page: { pdfPage: 1, printedPage: 1, chapterId: 'MY-BOOK-CH01', editionStatus: null }, match: 'none', sections: [], concepts: [], apply: [] }), JSON.stringify(lc));
+      same(lc, { page: { pdfPage: 1, printedPage: 1, chapterId: 'MY-BOOK-CH01', editionStatus: null }, match: 'none', sections: [], concepts: [], understand: [], apply: [] }), JSON.stringify(lc));
 
     lc = await LC(t, ctxAt(138, 3, 'unverified'));
-    ok('the shape: page, match, sections, concepts, apply - nothing else', same(Object.keys(lc), ['page', 'match', 'sections', 'concepts', 'apply'])
+    ok('the shape: page, match, sections, concepts, understand, apply - nothing else', same(Object.keys(lc), ['page', 'match', 'sections', 'concepts', 'understand', 'apply'])
       && same(Object.keys(lc.concepts[0]), ['concept', 'objectives', 'experiences']) && same(Object.keys(lc.concepts[0].concept), ['id', 'title', 'description'])
       && same(Object.keys(lc.concepts[0].experiences[0]), ['id', 'type', 'title', 'objectives', 'libraryId'])
       && same(Object.keys(lc.apply[0]), ['libraryId', 'title', 'label']) && same(Object.keys(lc.sections[0]), ['id', 'number', 'title']));
+    const und = (await LC(t, ctxAt(145, 10))).understand;
+    ok('Understand: on p. 145 (5.3) the published concept page from the chapter feed - id, title, its own path',
+      und.length === 1 && same(Object.keys(und[0]), ['libraryId', 'title', 'path']) && und[0].libraryId === 'CON-CHE-DELTA-U-VS-DELTA-H'
+      && und[0].path === 'simulations/concepts/chemistry/con-che-delta-u-vs-delta-h/index.html', JSON.stringify(und));
+    ok('...and nothing to understand where no section maps a concept (p. 138, 5.1.4)', (await LC(t, ctxAt(138, 3))).understand.length === 0);
+    const orphan = await t.evaluate(() => { NCERT.ExperienceMapper.setChapterData({ chapterId: 'MY-BOOK-CH02', practice: {}, pages: {},
+      sections: [{ id: 's1', number: '1', title: 'One', level: 1, pages: [1, 2], understand: ['CON-CHE-NOT-PUBLISHED'], apply: [] }] });
+      return NCERT.ExperienceMapper.getLearningContext(null, { chapterId: 'MY-BOOK-CH02', sectionId: 's1' }).understand; });
+    ok('...a mapped ID without a published card in the feed is never offered', Array.isArray(orphan) && orphan.length === 0, JSON.stringify(orphan));
     ok('no duration, ranking, status, media or progress in any object', !/duration|rank|score|best|status"|media|reel|progress|badge/i.test(JSON.stringify(lc).replace('"editionStatus"', '')));
     ok('the page context is carried as is: PDF page 3 and printed page 138 stay distinct, edition status kept',
       same(lc.page, { pdfPage: 3, printedPage: 138, chapterId: CHID, editionStatus: 'unverified' }) && lc.match === 'printed-page');

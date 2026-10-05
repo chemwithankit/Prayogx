@@ -146,6 +146,10 @@ try:
                                                                  cwd=ROOT).returncode == 0)
 
     # ------------------------------------------------------------ plan
+    # the concept checks below cover the gate with concept publishing switched off (registry_schema.CONCEPT_PUBLISHABLE);
+    # the switched-on contract is checked after them
+    PUBLISHABLE = A.schema.CONCEPT_PUBLISHABLE
+    A.schema.CONCEPT_PUBLISHABLE = False
     b1 = batch([q(16, sol=PAPER1), q(17, sol=PAPER1), q(UNBUILT_PHY, "Physics"),
                 {"type": "concept", "concept": "Nucleophilic aromatic substitution", "subject": "Chemistry", "source": "https://example.org/snar"},
                 q(18, paper=2, src="papers/does_not_exist.pdf"), q(17), q(4, "Mathematics"), {"type": "recipe"}])
@@ -210,6 +214,12 @@ try:
         A.advance(b9, 1, s, "ok")
     chk("production state machine: a concept cannot reach commit_complete",
         "blocked at commit_complete" in (raises(A.advance, b9, 1, "commit_complete", "x", commit="HEAD") or ""))
+    A.schema.CONCEPT_PUBLISHABLE = PUBLISHABLE
+    chk("concept publishing is switched on (NCERT Explorer; owner decision 2026-10-05)", A.schema.CONCEPT_PUBLISHABLE is True)
+    b11 = batch([{"type": "concept", "concept": "Buffer action", "subject": "Chemistry", "source": "https://example.org/b"}], mode="production")
+    _, its11 = A.items_of(b11)
+    chk("with concept publishing on, a concept carries no publishing decision blocker (the library check still requires its NCERT mapping)",
+        not any(b["kind"] == "decision" for b in its11[0]["blockers"]), its11[0]["blockers"])
     chk("a concept with no subject is refused at planning",
         A.make_batch({"items": [{"type": "concept", "concept": "Buffer action"}]}, TMP, stamp="nosubj") and
         json.load(open(os.path.join(TMP, "batch-nosubj", "item-001", "state.json")))["status"] == "blocked")

@@ -44,11 +44,11 @@ DEFAULT_STATUS = "human_verified"
 CONCEPT_REQUIRED = ["id", "kind", "path", "folder", "title", "subject", "chapter", "topic", "tags",
                     "learningObjectives", "source", "verification"]
 # The website, the app and the crawlable pages render exam / year / paper / question number for
-# every card. Until they render concepts, a concept may be registered only as a draft.
-# Concepts are published through the NCERT Explorer only (docs/NCERT.md): build_content.py keeps them
-# out of the JEE feed, and a published concept must be mapped under `understand` in a data/ncert/
-# chapter. This flag turns on once the NCERT page can open a concept (NCERT plan, Phase 5).
-CONCEPT_PUBLISHABLE = False
+# every card, so they never show concepts. Concepts are published through the NCERT Explorer only
+# (docs/NCERT.md): build_content.py keeps them out of the JEE feed, and a published concept must be
+# mapped under `understand` in a data/ncert/ chapter. On since 2026-10-05: the NCERT page opens a
+# published concept from the sections that map it (owner decision, first NCERT reel, XP-09).
+CONCEPT_PUBLISHABLE = True
 
 
 def kind_of(sim):
