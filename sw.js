@@ -10,7 +10,8 @@
               revised. Stale-while-revalidate, so the catalogue paints
               instantly and corrects itself a moment later.
      sims     simulation HTML. Large (100-140 KB each) and immutable for a
-              given ?v=<revision>. Cached on first open, bounded by an LRU cap
+              given ?v=<revision> (a URL without ?v= is network-first, saved
+              for offline). Cached on first open, bounded by an LRU cap
               so a student who browses fifty simulations does not silently fill
               their phone.
 
@@ -126,6 +127,29 @@ self.addEventListener("fetch", function (e) {
             return res;
           }).catch(function () { return hit; });
           return hit || net;
+        });
+      })
+    );
+    return;
+  }
+
+  /* ---- simulations without ?v=: network first, saved copy offline ----
+     A link with no revision on it (one simulation linking to another, a shared
+     or typed URL) cannot be treated as immutable: served from the cache, it
+     would stay on the first copy ever opened, through every later revision.
+     So it goes to the network, refreshes the saved copy, and falls back to that
+     copy only when the network fails. Versioned links below are unchanged. */
+  if (isSim(url) && !url.searchParams.has("v")) {
+    e.respondWith(
+      fetch(req).then(function (res) {
+        if (res && res.ok) {
+          var copy = res.clone();
+          caches.open(SIMS).then(function (c) { return c.put(req, copy); }).then(function () { return trim(SIMS, SIM_CAP); });
+        }
+        return res;
+      }).catch(function () {
+        return caches.open(SIMS).then(function (c) { return c.match(req); }).then(function (hit) {
+          return hit || caches.match("offline.html");
         });
       })
     );

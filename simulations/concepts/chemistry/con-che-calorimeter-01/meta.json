@@ -1,0 +1,87 @@
+{
+  "id": "CON-CHE-CALORIMETER-01",
+  "kind": "concept",
+  "slug": "con-che-calorimeter-01",
+  "revision": 1,
+  "path": "simulations/concepts/chemistry/con-che-calorimeter-01/index.html",
+  "folder": "simulations/concepts/chemistry/con-che-calorimeter-01/",
+  "title": "How does a calorimeter work? - heat from a reaction, a temperature change, and what a calorimeter measures",
+  "shortTitle": "How does a calorimeter work?",
+  "summary": "A guided virtual experiment for beginners: the student pours the water, places the reaction, inserts the thermometer, closes the calorimeter and runs the reaction, while a lab guide explains each result - leading to ΔT, q = mcΔT, heat loss, the bomb calorimeter (q_V = ΔU), constant pressure (q_p = ΔH) and ΔH − ΔU = Δn_g RT.",
+  "subject": "Chemistry",
+  "chapter": "Thermodynamics",
+  "topic": "Calorimetry - what a calorimeter does",
+  "subtopics": [
+    "Heat from a reaction warms the surrounding water",
+    "A thermometer measures the temperature change, not heat",
+    "Insulation reduces heat loss",
+    "Heat taken in by water: q = mcΔT",
+    "Bomb calorimeter: constant volume, q_V = ΔU",
+    "Constant pressure: q_p = ΔH; ΔH − ΔU = Δn_g RT"
+  ],
+  "concepts": [
+    "A calorimeter finds heat indirectly, from the temperature change of a known amount of material",
+    "Insulation keeps the heat in so the measurement is fair",
+    "q = mcΔT: the same heat warms more water by less",
+    "A sealed bomb cannot expand, so q_V = ΔU; at constant pressure q_p = ΔH"
+  ],
+  "formulas": [
+    "ΔT = final − initial",
+    "q = m c ΔT",
+    "q_V = ΔU",
+    "q_p = ΔH",
+    "ΔH − ΔU = Δn_g RT"
+  ],
+  "tags": [
+    "thermodynamics",
+    "calorimetry",
+    "calorimeter",
+    "heat capacity",
+    "specific heat",
+    "bomb calorimeter",
+    "beginner",
+    "chemistry",
+    "ncert class 11"
+  ],
+  "learningObjectives": [
+    "Explain how heat capacity links the heat supplied to a system to its rise in temperature.",
+    "Calculate the heat needed to change the temperature of a sample from its mass or amount and its specific or molar heat capacity.",
+    "Explain why a bomb calorimeter measures the change in internal energy of a reaction.",
+    "Compare measurements at constant volume and at constant pressure, and the quantity each one gives.",
+    "Calculate the energy change of a reaction from the temperature change and heat capacity of a calorimeter."
+  ],
+  "source": {
+    "title": "Chemistry Part I, Class XI",
+    "author": "NCERT",
+    "chapter": "5 Thermodynamics",
+    "sections": "5.2.2(c), 5.3 (pp. 144–146)",
+    "edition": "Reprint 2026-27",
+    "url": "https://ncert.nic.in/textbook/pdf/kech105.pdf"
+  },
+  "verification": {
+    "status": "script_verified",
+    "methods": [
+      "tests/verify_con_che_calorimeter_01.py",
+      "tests/sim_con_che_calorimeter_01.js (page suite)"
+    ],
+    "verifiedOn": "2026-10-04",
+    "note": "Concept exploration for beginners; simple illustrative numbers (2100 J, c = 4.2 J g⁻¹ °C⁻¹ as in NCERT; 30 % loss in the uninsulated run is illustrative). Awaiting owner review."
+  },
+  "interactivity": [
+    "13 scenes, each opened by the student's own action",
+    "pour the water, place the reaction tube, insert the thermometer, close the lid",
+    "inspect the lid, insulation, water, thermometer and tube",
+    "start the reaction and read ΔT",
+    "run with 100 / 200 / 400 g of water",
+    "build q = mcΔT from m, c and ΔT; change m and ΔT",
+    "insulated vs poorly insulated cups",
+    "inspect the bomb, push its wall, ignite the sample",
+    "push a piston, run a gas-forming reaction",
+    "rigid vs movable; three reactions",
+    "lab guide: what you did, what happened, why, next",
+    "Replay, Back, Pause, Reset, Classroom"
+  ],
+  "status": "draft",
+  "createdAt": "2026-10-04",
+  "updatedAt": "2026-10-04"
+}
