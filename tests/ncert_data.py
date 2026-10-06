@@ -56,8 +56,8 @@ secs = {s["id"]: s for s in chapters[CH]["sections"]}
 chk("approved APPLY links: 5.1.4 PHY-Q07, 5.2.1 CHE-Q01, 5.2.2 PHY-Q11, 5.6b/c CHE-Q13",
     secs["5.1.4"]["apply"] == ["ADV-2026-P1-PHY-Q07"] and secs["5.2.1"]["apply"] == ["ADV-2026-P1-CHE-Q01"]
     and secs["5.2.2"]["apply"] == ["ADV-2026-P1-PHY-Q11"] and secs["5.6b"]["apply"] == secs["5.6c"]["apply"] == ["ADV-2026-P1-CHE-Q13"])
-chk("pilots: DELTA-U-VS-DELTA-H published under understand (5.2.2, 5.3); HESS-LAW (5.4e) and GIBBS-SPONTANEITY (5.6b, 5.6c) planned",
-    secs["5.2.2"]["understand"] == secs["5.3"]["understand"] == ["CON-CHE-DELTA-U-VS-DELTA-H"]
+chk("pilots: DELTA-U-VS-DELTA-H and CALORIMETER-01 published under understand (5.2.2, 5.3); HESS-LAW (5.4e) and GIBBS-SPONTANEITY (5.6b, 5.6c) planned",
+    secs["5.2.2"]["understand"] == secs["5.3"]["understand"] == ["CON-CHE-DELTA-U-VS-DELTA-H", "CON-CHE-CALORIMETER-01"]
     and secs["5.2.2"]["planned"] == secs["5.3"]["planned"] == []
     and secs["5.4e"]["planned"] == ["CON-CHE-HESS-LAW"]
     and secs["5.6b"]["planned"] == secs["5.6c"]["planned"] == ["CON-CHE-GIBBS-SPONTANEITY"])
@@ -69,11 +69,11 @@ chk("the feed is deterministic", N.serialise(N.feed(ROOT, SIMS)[CH + ".json"]) =
 chf = F[CH + ".json"]
 chk("planned pages never ship", "planned" not in json.dumps(chf) and "CON-CHE-HESS-LAW" not in json.dumps(chf)
     and "CON-CHE-GIBBS-SPONTANEITY" not in json.dumps(chf))
-chk("a draft concept never ships, even when it exists in the library (CALORIMETER-01)",
-    "CON-CHE-CALORIMETER-01" not in json.dumps(chf))
+chk("a draft concept never ships, even when it exists in the library",
+    not [c for c in chf["simulations"] if next((x for x in SIMS if x["id"] == c["id"]), {}).get("status") == "draft"])
 chk("every linked simulation has a card with path and revision, and only linked ones",
     sorted(c["id"] for c in chf["simulations"]) == ["ADV-2026-P1-CHE-Q01", "ADV-2026-P1-CHE-Q13", "ADV-2026-P1-PHY-Q07", "ADV-2026-P1-PHY-Q11",
-                                                    "CON-CHE-DELTA-U-VS-DELTA-H"]
+                                                    "CON-CHE-CALORIMETER-01", "CON-CHE-DELTA-U-VS-DELTA-H"]
     and all(c.get("path") and c.get("revision") and c["kind"] == ("concept" if c["id"].startswith("CON-") else "question")
             for c in chf["simulations"]))
 chk("the published concept's card points to its own page",
@@ -283,7 +283,7 @@ try:
         and any(c["id"] == cid and c["kind"] == "concept" for c in jload("content/ncert/%s.json" % CH)["simulations"]))
     chk("the published concept is in the revision lock (it is cached by revision too)",
         jload("data/revisions.json").get(cid, {}).get("revision") == 1)
-    chk("the NCERT catalogue counts the concept (with DELTA-U-VS-DELTA-H: 2)", jload("content/ncert/catalog.json")["books"][0]["chapters"][0]["counts"]["understand"] == 2)
+    chk("the NCERT catalogue counts the concept (with DELTA-U-VS-DELTA-H and CALORIMETER-01: 3)", jload("content/ncert/catalog.json")["books"][0]["chapters"][0]["counts"]["understand"] == 3)
 
     # unmapped published concept: refused
     map_concept(False)

@@ -161,9 +161,10 @@ const shot = async (pg, name) => { if (SHOTS) await pg.screenshot({ path: path.j
     await go(a, 10);
     const und = await a.evaluate(() => [...document.querySelectorAll('#nx-understand:not([hidden]) .nx-applink')].map(e => ({ sim: e.getAttribute('data-sim'),
       href: e.getAttribute('href'), target: e.target, rel: e.rel, label: e.getAttribute('aria-label') })));
-    ok('p. 145 (5.2.2 and 5.3): Understand offers the published concept page once, in a new tab, so the PDF stays open',
-      und.length === 1 && und[0].sim === 'CON-CHE-DELTA-U-VS-DELTA-H' && und[0].href === '../simulations/concepts/chemistry/con-che-delta-u-vs-delta-h/'
-      && und[0].target === '_blank' && /noopener/.test(und[0].rel) && /new tab/.test(und[0].label), JSON.stringify(und));
+    ok('p. 145 (5.2.2 and 5.3): Understand offers each published concept page once, in a new tab, so the PDF stays open',
+      und.length === 2 && und[0].sim === 'CON-CHE-DELTA-U-VS-DELTA-H' && und[0].href === '../simulations/concepts/chemistry/con-che-delta-u-vs-delta-h/'
+      && und[1].sim === 'CON-CHE-CALORIMETER-01' && und[1].href === '../simulations/concepts/chemistry/con-che-calorimeter-01/'
+      && und.every(u => u.target === '_blank' && /noopener/.test(u.rel) && /new tab/.test(u.label)), JSON.stringify(und));
     await go(a, 3);
     ok('...and Understand is hidden where no section maps a concept (p. 138)', await a.evaluate(() => document.getElementById('nx-understand').hidden));
     await go(a, 5);

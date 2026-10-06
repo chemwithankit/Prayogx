@@ -111,9 +111,10 @@ print(json.dumps([C.problems(d['inventory'], st), X.problems(d['experiences'], d
       && same(Object.keys(lc.concepts[0].experiences[0]), ['id', 'type', 'title', 'objectives', 'libraryId'])
       && same(Object.keys(lc.apply[0]), ['libraryId', 'title', 'label']) && same(Object.keys(lc.sections[0]), ['id', 'number', 'title']));
     const und = (await LC(t, ctxAt(145, 10))).understand;
-    ok('Understand: on p. 145 (5.3) the published concept page from the chapter feed - id, title, its own path',
-      und.length === 1 && same(Object.keys(und[0]), ['libraryId', 'title', 'path']) && und[0].libraryId === 'CON-CHE-DELTA-U-VS-DELTA-H'
-      && und[0].path === 'simulations/concepts/chemistry/con-che-delta-u-vs-delta-h/index.html', JSON.stringify(und));
+    ok('Understand: on p. 145 (5.3) the published concept pages from the chapter feed, in chapter order - id, title, its own path',
+      und.length === 2 && same(Object.keys(und[0]), ['libraryId', 'title', 'path']) && und[0].libraryId === 'CON-CHE-DELTA-U-VS-DELTA-H'
+      && und[0].path === 'simulations/concepts/chemistry/con-che-delta-u-vs-delta-h/index.html'
+      && und[1].libraryId === 'CON-CHE-CALORIMETER-01' && und[1].path === 'simulations/concepts/chemistry/con-che-calorimeter-01/index.html', JSON.stringify(und));
     ok('...and nothing to understand where no section maps a concept (p. 138, 5.1.4)', (await LC(t, ctxAt(138, 3))).understand.length === 0);
     const orphan = await t.evaluate(() => { NCERT.ExperienceMapper.setChapterData({ chapterId: 'MY-BOOK-CH02', practice: {}, pages: {},
       sections: [{ id: 's1', number: '1', title: 'One', level: 1, pages: [1, 2], understand: ['CON-CHE-NOT-PUBLISHED'], apply: [] }] });

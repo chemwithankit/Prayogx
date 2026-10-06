@@ -357,7 +357,7 @@ class YouTube:
 # ------------------------------------------------------------------ metadata: YouTube's own, from the question and the simulation
 def entry_of(sid):
     man = json.load(open(IP.MANIFEST, encoding="utf-8"))
-    return next((s for s in man["simulations"] if s["id"] == sid), None)
+    return next((s for s in man["simulations"] if s["id"] == IP.library_id(sid)), None)
 
 
 _ROMAN = {"XI": "11", "XII": "12", "IX": "9", "X": "10"}
@@ -388,6 +388,10 @@ def build_metadata(sid, m=None):
     spec = json.load(open(spec_p, encoding="utf-8")) if os.path.exists(spec_p) else {}
     cap = spec.get("caption") or {}
     short = re.sub(r"[<>]", "", e.get("shortTitle") or e["title"]).strip()
+    if sid != e["id"]:
+        # a concept's explainer reel (<ID>-REEL-<R>): its own title and caption from the explainer spec, so two reels of one page differ
+        R = json.load(open(os.path.join(IP.REEL_DIR, "explainers", e["id"] + ".json"), encoding="utf-8"))["reels"][sid.rsplit("-", 1)[1]]
+        short, cap = re.sub(r"[<>]", "", R["title"]).strip(), R.get("caption") or {}
     hook = re.sub(r"[<>]", "", cap.get("hook", "")).strip()
     lines = [hook] if hook else []
     if e.get("kind") == "concept" or sid.startswith("CON-"):

@@ -243,13 +243,13 @@ const CLOCK = () => {
 
     console.log('=== registration and invariants');
     const e = man.simulations.find(x => x.id === ID), meta = JSON.parse(fs.readFileSync(ROOT + '/' + REL + 'meta.json', 'utf8'));
-    ok('registered as a draft concept (off the public feed), byte-identical to meta.json', !!e && e.status === 'draft' && JSON.stringify(e) === JSON.stringify(meta));
+    ok('registered as a published concept (script_verified, NCERT Explorer only), byte-identical to meta.json', !!e && e.status === 'script_verified' && JSON.stringify(e) === JSON.stringify(meta));
     const feed = JSON.parse(fs.readFileSync(ROOT + '/content/index.json', 'utf8'));
     ok('...and absent from the public feed', !feed.simulations.some(x => x.id === ID));
     const ex = JSON.parse(fs.readFileSync(ROOT + '/data/ncert/experiences/NCERT-11-CHE-P1-CH05.json', 'utf8')).experiences.filter(x => x.libraryId === ID);
     ok('two experience records (calorimetry, heat capacity) point to this page', ex.length === 2);
     ok('self-contained: no external script, stylesheet, fetch or storage; no visual asset declared', !/<script[^>]+src=|<link[^>]+stylesheet|fetch\(|XMLHttpRequest|localStorage|sessionStorage|indexedDB|px-visual-asset/.test(src));
-    ok('ES5 only in the script', !/(^|[^\w.$])(let|const|class)\s|=>|`/.test(src.slice(src.indexOf('<script'), src.lastIndexOf('</script>'))));
+    ok('ES5 only in the script (block comments, such as the embedded kit blocks\' notes, are not code)', !/(^|[^\w.$])(let|const|class)\s|=>|`/.test(src.slice(src.indexOf('<script'), src.lastIndexOf('</script>')).replace(/\/\*[\s\S]*?\*\//g, '')));
   } catch (err) {
     ok('suite ran to the end', false, err && err.stack);
   } finally { await b.close(); }

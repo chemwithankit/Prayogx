@@ -370,6 +370,12 @@ def reel_dir(sid):
     return os.path.join(OUT_DIR, sid)
 
 
+def library_id(sid):
+    """the library ID a publication belongs to: a concept's explainer reels are published as <ID>-REEL-<A..Z>
+    (tools/reel-maker/generate-explainer.js --stage), every other reel under its simulation's own ID"""
+    return re.sub(r"-REEL-[A-Z]$", "", sid or "")
+
+
 def load_reel(sid):
     p = os.path.join(reel_dir(sid), "reel.json")
     if not os.path.exists(p):
@@ -549,7 +555,7 @@ def preflight(sid, cfg, graph=None, for_publish=True, force_republish=False):
         "; ".join("%s %s %s" % (p.get("status"), p.get("publishedAt"), p.get("permalink") or p.get("mediaId")) for p in prior) or "no earlier publication")
     try:
         man = json.load(open(MANIFEST, encoding="utf-8"))
-        e = next((s for s in man["simulations"] if s["id"] == sid), None)
+        e = next((s for s in man["simulations"] if s["id"] == library_id(sid)), None)
     except (OSError, ValueError, KeyError):
         e = None
     add("the simulation is in the library (data/manifest.json) and not a draft", bool(e) and e.get("status") != "draft" and os.path.exists(os.path.join(ROOT, e["path"])),

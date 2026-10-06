@@ -7220,9 +7220,9 @@ window.SIM_MANIFEST = {
         "lab guide: what you did, what happened, why, next",
         "Replay, Back, Pause, Reset, Classroom"
       ],
-      "status": "draft",
+      "status": "script_verified",
       "createdAt": "2026-10-04",
-      "updatedAt": "2026-10-04"
+      "updatedAt": "2026-10-06"
     },
     {
       "id": "CON-CHE-DELTA-U-VS-DELTA-H",

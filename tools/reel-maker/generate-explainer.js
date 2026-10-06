@@ -27,7 +27,7 @@ const path = require('path');
 const crypto = require('crypto');
 const { execFileSync } = require('child_process');
 const { record } = require('./recorder');
-const { reelContext } = require('./context');
+const { reelContext, captionText } = require('./context');
 
 const HERE = __dirname, ROOT = path.resolve(HERE, '..', '..');
 const PY = fs.existsSync(path.join(ROOT, 'tests/.venv/bin/python3')) ? path.join(ROOT, 'tests/.venv/bin/python3') : 'python3';
@@ -41,6 +41,7 @@ function args() {
     if (a[i] === '--format') o.format = a[++i];
     else if (a[i] === '--reel') o.reel = a[++i];
     else if (a[i] === '--silent') o.silent = true;
+    else if (a[i] === '--stage') o.stage = true;
     else if (a[i] === '--reuse-footage') o.reuse = true;
     else if (!o.id) o.id = a[i];
   }
@@ -122,6 +123,42 @@ function check(m, spec, work, outDir, bin, footage) {
   return checks;
 }
 
+/* --stage: hand a finished, checked narrated reel to the publishers (tools/instagram_publish.py, tools/youtube_publish.py)
+   in their standard layout, under its own publication ID <ID>-REEL-<R> (output/<ID>-REEL-<R>/: reel.mp4, thumbnail.jpg,
+   caption.txt, captions.srt, reel.json). The files are copied byte for byte from the reviewed render, refused unless it is
+   READY_FOR_REVIEW with every check passed and unchanged since; the reel enters as READY_FOR_REVIEW - approval stays the
+   publisher's own human step. */
+function stage(o, spec, entry, ctx){
+  if (!o.reel){ console.error('--stage needs --reel'); process.exit(2); }
+  const src = path.join(HERE, 'output', o.id, 'explainer', 'reel-' + o.reel), x = JSON.parse(fs.readFileSync(path.join(src, 'explainer.json'), 'utf8'));
+  const passed = x.checks.filter(c => c.ok).length;
+  if (x.status !== 'READY_FOR_REVIEW' || passed !== x.checks.length || !x.audio.aiNarration){ console.error('reel ' + o.reel + ' is ' + x.status + ' (' + passed + '/' + x.checks.length + ' checks): only a narrated READY_FOR_REVIEW reel is staged'); process.exit(1); }
+  if (sha256(path.join(src, 'explainer.mp4')) !== x.hashes['explainer.mp4']){ console.error('explainer.mp4 changed after its checks - render it again'); process.exit(1); }
+  const R = spec.reels[o.reel], sid = o.id + '-REEL-' + o.reel, out = path.join(HERE, 'output', sid), work = path.join(src, '.work');
+  if (!R.caption){ console.error('the explainer spec has no caption for reel ' + o.reel); process.exit(2); }
+  fs.mkdirSync(out, { recursive: true });
+  fs.copyFileSync(path.join(src, 'explainer.mp4'), path.join(out, 'reel.mp4'));
+  fs.copyFileSync(path.join(src, 'poster.jpg'), path.join(out, 'thumbnail.jpg'));
+  fs.copyFileSync(path.join(src, 'captions.srt'), path.join(out, 'captions.srt'));
+  const audioRep = JSON.parse(fs.readFileSync(path.join(work, 'audio.json'), 'utf8'));
+  fs.writeFileSync(path.join(out, 'caption.txt'), captionText(R, entry, ctx, (audioRep.mix || {}).voice));
+  const probe = JSON.parse(execFileSync(encoder(), ['probe', path.join(out, 'reel.mp4')]).toString());
+  const at = new Date().toISOString(), by = 'generate-explainer.js --stage';
+  const m = { simulationId: sid, libraryId: o.id, reel: o.reel, kind: 'concept', context: ctx, template: spec.template, title: R.title, origin: 'on-request',
+    created: at, sourcePage: entry.path, sourceRevision: entry.revision, repoCommit: x.repoCommit, sourceIntegrity: x.sourceIntegrity, subject: entry.subject, chapter: entry.chapter,
+    video: Object.assign({ file: 'reel.mp4' }, x.video), scenes: x.scenes, explainer: path.relative(ROOT, path.join(src, 'explainer.json')),
+    audio: { summary: x.audio.summary, aiNarration: true, disclosureText: x.audio.disclosureText, narration: x.audio.narration, voiceRecord: x.audio.voiceRecord, captions: 'captions.srt',
+      tracks: audioRep.tracks, score: audioRep.score, mix: audioRep.mix, measured: x.audio.measured },
+    files: ['reel.mp4', 'thumbnail.jpg', 'caption.txt', 'captions.srt', 'reel.json'],
+    validation: { passed: passed, checks: x.checks, probe: probe },
+    hashes: { 'reel.mp4': sha256(path.join(out, 'reel.mp4')), 'thumbnail.jpg': sha256(path.join(out, 'thumbnail.jpg')), 'caption.txt': sha256(path.join(out, 'caption.txt')) },
+    statusHistory: [{ status: 'GENERATED', at: at, by: by, note: 'staged from ' + path.relative(ROOT, src) }, { status: 'VALIDATED', at: at, by: by, note: passed + '/' + x.checks.length + ' checks' },
+      { status: 'READY_FOR_REVIEW', at: at, by: by, note: 'awaiting a human review; nothing is published without an explicit approval' }], status: 'READY_FOR_REVIEW' };
+  if (m.hashes['reel.mp4'] !== x.hashes['explainer.mp4']){ console.error('copy mismatch'); process.exit(1); }
+  fs.writeFileSync(path.join(out, 'reel.json'), JSON.stringify(m, null, 2) + '\n');
+  console.log('READY_FOR_REVIEW: ' + path.relative(ROOT, out) + ' (' + sid + ', ' + passed + '/' + x.checks.length + ' checks, reel.mp4 sha256 ' + m.hashes['reel.mp4'].slice(0, 12) + ')');
+}
+
 (async () => {
   const o = args(), t0 = Date.now();
   const specFile = path.join(HERE, 'explainers', o.id + '.json');
@@ -140,6 +177,7 @@ function check(m, spec, work, outDir, bin, footage) {
   try { ctx = reelContext(entry); } catch (e) { console.error(e.message); process.exit(2); }
   if (ctx.kind !== 'concept' || spec.template !== ctx.template) { console.error(o.id + ': explainers are made for NCERT concepts (template ' + ctx.template + ')'); process.exit(2); }
   if (process.platform !== 'darwin') { console.error('encoding needs macOS (encode.swift)'); process.exit(2); }
+  if (o.stage){ stage(o, spec, entry, ctx); return; }
 
   /* a caption shows the written form of a spoken line ("q V equals minus C delta T" -> "q_V = −C ΔT", as the reel's labels
      write it); each written word keeps the count of spoken words it stands for, so its timing stays on the voice */
