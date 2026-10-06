@@ -560,6 +560,7 @@ function syncDT(){ $("in_dt").value = String(RUN.dt9); $("dtout").textContent = 
 var FONT = "ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif";
 var MONO = "ui-monospace,SFMono-Regular,Menlo,Consolas,monospace";
 function layout(){
+  if (XP) return XP.layout();
   var phone = document.documentElement.clientWidth < 700;
   if (phone) return { phone: true, W: 720, H: 1600, fs: 26, min: 25, lab: { x: 12, y: 12, w: 696, h: 836 }, hh: 96, guide: { x: 12, y: 860, w: 696, h: 728 } };
   return { phone: false, W: 1200, H: 760, fs: 16, min: 13, lab: { x: 14, y: 14, w: 776, h: 732 }, hh: 58, guide: { x: 802, y: 14, w: 384, h: 732 } };
@@ -1744,11 +1745,11 @@ function bombScene3(o){
     R3.draw(R3.mesh("lead-in-" + j, function(){ return R3.tube([tb, tl], 0.09); }), R3.m4(), j ? M3.black : M3.red); }
   return { wy: wy, tops: tops, BM: BM, JM: JM };
 }
-function bomb3D(){
-  var ph = L.phone, a = RUN.anim ? RUN.anim.k : null, u = a ? clamp(RUN.anim.t / RUN.anim.d, 0, 1) : 1, z = a === "zoom" ? ease(u) : 1, ign = a === "ignite" ? u : 0, firing = a === "ignite" && u < 0.2;
-  var base = ph ? { eye: [5, 30, 78], at: [5, 8.6, 0], fov: 0.62 } : { eye: [6.5, 23, 58], at: [6.5, 8.4, 0], fov: 0.6 };
-  if (z < 1){ base = { eye: [base.eye[0], base.eye[1] + (1 - z) * 20, base.eye[2] + (1 - z) * 70], at: base.at, fov: base.fov }; }
-  R3.begin(S.w, S.h, camFor(base), RUN.clock);
+/* the 3-D bomb calorimeter seen from cam: the apparatus, the oxygen cylinder, the ignition unit and the leads
+   (the lab's scene 11 and the explainer mode draw the same model) */
+function bombView3(cam, a, u){
+  var ign = a === "ignite" ? u : 0, firing = a === "ignite" && u < 0.2;
+  R3.begin(S.w, S.h, cam, RUN.clock);
   room3();
   var O = bombScene3({ ign: ign, burnt: RUN.ignited && a !== "ignite" });
   var O2M = R3.T(-11.2, 0, 1), IGM = R3.T(9.5, 0, 12);
@@ -1760,6 +1761,13 @@ function bomb3D(){
     R3.draw(R3.mesh("lead-out-" + j, function(){ return R3.tube(pts, 0.1); }), R3.m4(), j ? M3.black : M3.red);
     if (firing) for (k = 0; k < 4; k++){ var idx = Math.floor((((reduced ? 0.5 : RUN.clock) * 2 + k / 4) % 1) * 24); R3.sprite(pts[24 - idx], 1.2, [1, 0.95, 0.6, 0.9], true); } }
   paint3();
+  return { O: O, O2M: O2M, IGM: IGM };
+}
+function bomb3D(){
+  var ph = L.phone, a = RUN.anim ? RUN.anim.k : null, u = a ? clamp(RUN.anim.t / RUN.anim.d, 0, 1) : 1, z = a === "zoom" ? ease(u) : 1, ign = a === "ignite" ? u : 0, firing = a === "ignite" && u < 0.2;
+  var base = ph ? { eye: [5, 30, 78], at: [5, 8.6, 0], fov: 0.62 } : { eye: [6.5, 23, 58], at: [6.5, 8.4, 0], fov: 0.6 };
+  if (z < 1){ base = { eye: [base.eye[0], base.eye[1] + (1 - z) * 20, base.eye[2] + (1 - z) * 70], at: base.at, fov: base.fov }; }
+  var V3 = bombView3(camFor(base), a, u), O = V3.O, O2M = V3.O2M, IGM = V3.IGM;
   var bodyR = RECT(R3.cylRect(O.BM, BD.rb + 0.22, 0, BD.h + BD.cap)), ign2 = a === "ignite" ? u : RUN.ignited ? 1 : 0;
   bigTherm(ph ? S.x + S.w - 12 - 196 + 48 : S.x + S.w * 0.84, S.y + S.h * 0.14, S.y + S.h * 0.66, ENGINE.T0 + ENGINE.DTV * (a === "ignite" ? riseTh(u) : RUN.ignited ? 1 : 0), 24, 28, {});
   line("BOMB CALORIMETER", S.x + 16, S.y + (ph ? 38 : 30), ph ? 30 : 20, S.w * 0.5, "#ffffff", "left", "900");
@@ -1943,6 +1951,7 @@ function drawHeader(){
     g.beginPath(); g.arc(x, yd, on ? r + 3 : r, 0, 6.283); g.fillStyle = on ? "#4ade80" : past ? "#1f7a4d" : "#1f2a44"; g.fill(); }
 }
 function draw(){
+  if (XP){ XP.draw(); return; }
   minPx = 999; L = layout();
   if (cv.width !== L.W || cv.height !== L.H){ cv.width = L.W; cv.height = L.H; }
   S = { x: L.lab.x, y: L.lab.y + L.hh, w: L.lab.w, h: L.lab.h - L.hh };
@@ -2015,12 +2024,350 @@ var lastT = null, lastKey = "";
 function loop(ts){
   if (lastT === null) lastT = ts;
   var dt = Math.min(0.05, Math.max(0, (ts - lastT) / 1000)); lastT = ts;
-  tick(reduced ? 0 : dt);
+  tick(XP ? dt : reduced ? 0 : dt);
+  if (XP) XP.update(dt);
   var key = RUN.step + "|" + (RUN.anim ? RUN.anim.k : "") + "|" + RUN.state;
   if (key !== lastKey || (RUN.anim && (RUN.anim.k === "react" || RUN.anim.k === "run8"))){ lastKey = key; update(); }
   draw(); syncSticky();
   requestAnimationFrame(loop);
 }
+
+/* PX-KIT cam@1 BEGIN */
+/* px-cam@1 - renderer-independent camera mathematics (no drawing).
+   Named shots {eye:[x,y,z], at:[x,y,z], fov, tall?}; go() eases from the current view (the target leads the
+   eye slightly; an optional lift arcs the path); user() adds a bounded orbit offset and cancels a scripted
+   move; view() returns the pose any renderer can use (a 2.5D page can use `at` as its pan focus and fov as
+   zoom). It advances only through update(dt) from the clock, so transitions are deterministic. */
+var CAM = (function () {
+  function ease(t) { return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; }
+  function v3(a) { return [a[0], a[1], a[2]]; }
+  function lerp3(a, b, t) { return [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t, a[2] + (b[2] - a[2]) * t]; }
+  function create(shots, o) {
+    o = o || {};
+    var k, api = {}, maxYaw = o.maxYaw === undefined ? 0.6 : o.maxYaw, maxPitch = o.maxPitch === undefined ? 0.25 : o.maxPitch;
+    function okShot(s, n) {
+      if (!s || !s.eye || !s.at || s.eye.length !== 3 || s.at.length !== 3 || !(s.fov > 0)) throw new Error("CAM: bad shot " + n);
+      if (s.tall) okShot(s.tall, n + ".tall");
+    }
+    for (k in shots) if (shots.hasOwnProperty(k)) okShot(shots[k], k);
+    var st = { shot: null, base: null, from: null, to: null, u: 1, dur: 1, lift: 0, yaw: 0, pitch: 0 };
+    api.resolve = function (name) {
+      var s = shots[name];
+      if (!s) throw new Error("CAM: unknown shot " + name);
+      var r = o.portrait && o.portrait() && s.tall ? s.tall : s;
+      return { eye: v3(r.eye), at: v3(r.at), fov: r.fov };
+    };
+    api.set = function (name) { st.shot = name; st.base = api.resolve(name); st.u = 1; st.yaw = 0; st.pitch = 0; };
+    api.go = function (name, dur, lift) {
+      if (!st.base) { api.set(name); return; }
+      st.from = { eye: v3(st.base.eye), at: v3(st.base.at), fov: st.base.fov };
+      st.to = api.resolve(name); st.shot = name; st.dur = dur > 0 ? dur : 0.0001; st.lift = lift || 0; st.u = 0;
+      st.yaw = 0; st.pitch = 0;
+    };
+    api.update = function (dt) {
+      if (st.u >= 1 || !st.to) return;
+      st.u = Math.min(1, st.u + dt / st.dur);
+      var e = ease(st.u), et = ease(Math.min(1, st.u * 1.3)), eye = lerp3(st.from.eye, st.to.eye, e);
+      eye[1] += Math.sin(Math.PI * e) * st.lift;
+      st.base = { eye: eye, at: lerp3(st.from.at, st.to.at, et), fov: st.from.fov + (st.to.fov - st.from.fov) * e };
+    };
+    api.flying = function () { return st.u < 1; };
+    /* the learner's drag: bounded yaw/pitch around the target; a scripted move stops where it is */
+    api.user = function (dyaw, dpitch) {
+      st.u = 1;
+      st.yaw = Math.max(-maxYaw, Math.min(maxYaw, st.yaw + (dyaw || 0)));
+      st.pitch = Math.max(-maxPitch, Math.min(maxPitch, st.pitch + (dpitch || 0)));
+    };
+    api.resetUser = function () { st.yaw = 0; st.pitch = 0; };
+    api.view = function () {
+      if (!st.base) throw new Error("CAM: no shot set");
+      var b = st.base, dx = b.eye[0] - b.at[0], dz = b.eye[2] - b.at[2], c = Math.cos(st.yaw), s = Math.sin(st.yaw), dist = Math.sqrt(dx * dx + dz * dz);
+      return { eye: [b.at[0] + dx * c + dz * s, b.eye[1] + st.pitch * dist, b.at[2] - dx * s + dz * c], at: v3(b.at), fov: b.fov, shot: st.shot };
+    };
+    api.state = function () { return { shot: st.shot, u: st.u, yaw: st.yaw, pitch: st.pitch }; };
+    return api;
+  }
+  return { create: create, ease: ease };
+})();
+/* PX-KIT cam@1 END */
+
+/* ================================================================ explainer mode (media production only)
+   Switched on by ?explain (16:9, 1920 x 1080) or ?explain=tall (9:16, 1080 x 1920), or by PX.explainMode("wide" |
+   "tall") - which is how tools/reel-maker/generate-explainer.js records it through the unchanged recorder. A fixed,
+   deterministic explanation of the bomb calorimeter (docs/ncert/media/BOMB-CALORIMETER-EXPLAINER.md): scene 11's own
+   3-D apparatus (bombView3) through the kit's camera (cam@1), on the page's clock, labelled with the page's own
+   helpers. Until it is switched on XP is null, and the lab never enters this code. */
+var XP = null;
+function explainer(tall){
+  /* the storyboards: scenes (id, default seconds, camera shot) and the ignition plan - when the lab's own "ignite"
+     animation starts and how far it has got (u, 0-1) by the end (or the fraction "at") of each scene. Voice timing may
+     replace the seconds: play({ reel, durations }). "full" is the landscape explainer (BOMB-CALORIMETER-EXPLAINER.md);
+     "A" and "B" are the vertical reels (BOMB-CALORIMETER-REELS.md), one complete concept each. */
+  var REELS = {
+    full: { scenes: [
+      { id: "intro", d: 6, shot: "wide" }, { id: "inside", d: 9, shot: "interior" }, { id: "around", d: 8, shot: "calorimeter" },
+      { id: "rigid", d: 7, shot: "wall" }, { id: "ignite", d: 7, shot: "interior" }, { id: "heat", d: 9, shot: "calorimeter" },
+      { id: "measure", d: 9, shot: "thermometer" }, { id: "system", d: 11, shot: "system" }, { id: "work", d: 9, shot: "wall" },
+      { id: "takeaway", d: 10, shot: "wide" } ],
+      ign: [{ scene: "ignite", start: 1.0, u: 0.14 }, { scene: "heat", u: 0.30 }, { scene: "measure", u: 1, at: 0.85 }] },
+    A: { title: "How a bomb calorimeter measures heat", scenes: [
+      { id: "titleA", d: 4, shot: "wide" }, { id: "inside", d: 6, shot: "interior" }, { id: "around", d: 7, shot: "calorimeter" },
+      { id: "ignite", d: 6, shot: "interior" }, { id: "heat", d: 6, shot: "calorimeter" }, { id: "measure", d: 7, shot: "thermometer" },
+      { id: "absorb", d: 9, shot: "system" }, { id: "takeA", d: 6.5, shot: "system" } ],
+      ign: [{ scene: "ignite", start: 1.0, u: 0.14 }, { scene: "heat", u: 0.30 }, { scene: "measure", u: 1, at: 0.85 }] },
+    B: { title: "Why a bomb calorimeter measures ΔU", scenes: [
+      { id: "titleB", d: 6, shot: "system" }, { id: "rigid", d: 7, shot: "wall" }, { id: "noWork", d: 8, shot: "interior" },
+      { id: "firstLaw", d: 8, shot: "wall" }, { id: "takeB", d: 7.5, shot: "wide" } ],
+      ign: [{ scene: "noWork", start: 1.0, u: 0.7 }, { scene: "firstLaw", u: 1, at: 0.5 }] }
+  };
+  var REEL = "full", SC = REELS.full.scenes;
+  /* named shots in the lab's world (scene 11), each with a tall (9:16) variant */
+  var cam = CAM.create({
+    far:         { eye: [6.5, 43, 128], at: [6.5, 8.4, 0], fov: 0.6, tall: { eye: [3, 50, 150], at: [3, 8.6, 0], fov: 0.62 } },
+    wide:        { eye: [6.5, 23, 58], at: [6.5, 8.4, 0], fov: 0.6, tall: { eye: [3, 30, 82], at: [3, 8.6, 0], fov: 0.62 } },
+    calorimeter: { eye: [1.5, 15, 33], at: [0, 7.6, 0], fov: 0.6, tall: { eye: [1, 17, 47], at: [0, 8.4, 0], fov: 0.62 } },
+    system:      { eye: [2, 16.5, 38], at: [0.5, 7.4, 0], fov: 0.6, tall: { eye: [1.5, 19, 54], at: [0.5, 8.4, 0], fov: 0.62 } },
+    interior:    { eye: [0.5, 9.5, 17], at: [0, 6.4, 0], fov: 0.62, tall: { eye: [0.5, 10.5, 24], at: [0, 6.8, 0], fov: 0.64 } },
+    wall:        { eye: [-2.5, 11, 23], at: [-0.3, 6.4, 0], fov: 0.6, tall: { eye: [-2, 12.5, 32], at: [-0.3, 7.0, 0], fov: 0.62 } },
+    thermometer: { eye: [5.5, 10.5, 21], at: [2.4, 6.8, 0], fov: 0.6, tall: { eye: [5, 12, 30], at: [2.2, 7.4, 0], fov: 0.62 } }
+  }, { portrait: function(){ return tall; }, maxYaw: 0, maxPitch: 0 });
+  cam.set("wide");                                   /* until play(): the lab's own wide view */
+  var X = { captions: [], error: null, t: 0, playing: false, finished: false, i: -1, dur: SC.map(function(s){ return s.d; }), t0: [], total: 0, pushT: -1, ignT: -1 };
+  function sceneIndex(id){ var i; for (i = 0; i < SC.length; i++) if (SC[i].id === id) return i; return -1; }
+  var W = tall ? 1080 : 1920, H = tall ? 1920 : 1080, K = tall ? 1.15 : 1;
+  function starts(){ var a = 0, i; X.t0 = []; for (i = 0; i < SC.length; i++){ X.t0.push(a); a += X.dur[i]; } X.total = a; }
+  starts();
+  /* the page shows only the canvas, full frame */
+  var st = document.createElement("style");
+  st.textContent = "html,body{margin:0;background:#05070d;overflow:hidden}body>*{display:none!important}body>main{display:block!important}main>*{display:none!important}" +
+    "main>#lab{display:block!important}#lab>*{display:none!important}#lab>.stage{display:block!important}.stage>*:not(#labcv){display:none!important}" +
+    "#labcv{position:fixed;left:0;top:0;width:100vw;height:100vh;display:block}";
+  document.head.appendChild(st);
+
+  function sceneAt(t){ var i; for (i = SC.length - 1; i > 0; i--) if (t >= X.t0[i]) return i; return 0; }
+  function enter(i){
+    X.i = i;
+    var mv = i === 0 ? 3.2 : Math.min(2.4, X.dur[i] * 0.3);
+    if (SC[i].shot !== cam.state().shot) cam.go(SC[i].shot, mv, 0);
+    /* scene 4 shows that the wall cannot move; the lab records that as RUN.pushed, its own condition for ignition */
+    if (SC[i].id === "rigid") RUN.pushed = true;
+    var P = REELS[REEL].ign; if (P && SC[i].id === P[0].scene) X.ignT = X.t0[i] + (P[0].start || 0);
+  }
+  /* the ignition's progress (the lab's own "ignite" animation, u 0-1), paced to the narration by the reel's plan:
+     linear from the previous point to u at the end (or fraction "at") of each named scene */
+  function ignU(){
+    var P = REELS[REEL].ign, k, pt = X.ignT, pu = 0;
+    if (!P || X.ignT < 0 || X.t < X.ignT) return -1;
+    for (k = 0; k < P.length; k++){
+      var si = sceneIndex(P[k].scene), te = X.t0[si] + X.dur[si] * (P[k].at === undefined ? 1 : P[k].at);
+      if (X.t < te) return pu + (P[k].u - pu) * (X.t - pt) / Math.max(0.1, te - pt);
+      pt = te; pu = P[k].u;
+    }
+    return 1;
+  }
+  function update(dt){
+    if (!X.playing) return;
+    X.t += dt;
+    var i = sceneAt(X.t); if (i !== X.i) enter(i);
+    if (X.ignT >= 0 && X.t >= X.ignT && !RUN.ignited){
+      if (!RUN.anim){ RUN.pushed = true; ignite(); if (!RUN.anim || RUN.anim.k !== "ignite") X.error = X.error || "the lab refused to ignite the sample"; }
+      if (RUN.anim && RUN.anim.k === "ignite"){ var u = ignU(); RUN.anim.t = Math.min(RUN.anim.d, Math.max(0, u) * RUN.anim.d); }
+    }
+    cam.update(dt);
+    if (X.t >= X.total + 0.8) X.finished = true;
+  }
+  function play(o){
+    o = o || {};
+    if (o.reel !== undefined){ if (!REELS[o.reel]) throw new Error("explainer: no reel " + o.reel + " (have " + Object.keys(REELS).join(", ") + ")"); REEL = o.reel; }
+    SC = REELS[REEL].scenes; X.dur = SC.map(function(s){ return s.d; }); starts();
+    if (o.durations){ if (o.durations.length !== SC.length) throw new Error("explainer: " + SC.length + " durations needed"); X.dur = o.durations.slice(); starts(); }
+    /* burned-in captions of the narration: [{ t0, t1, text }] on the timeline, from generate-explainer.js (the .srt matches) */
+    X.captions = (o.captions || []).filter(function(c){ return c && c.text && c.t1 > c.t0; });
+    resetAll(); go(11); RUN.speed = 1; ORB.yaw = 0; ORB.pitch = 0;
+    X.t = 0; X.i = -1; X.pushT = -1; X.ignT = -1; X.finished = false; X.error = null; X.playing = true;
+    cam.set("far"); enter(0);
+  }
+
+  /* ---- drawing: labels on the model, equations in a lower third, all faded in on their cue ---- */
+  function fade(ts, at){ return ease(seg(ts, at, at + 0.6)); }
+  var SAFE = tall ? { x0: 60, x1: 960, y0: 220, y1: 1450 } : null;
+  /* what this frame has drawn as text (labels, cards, title): the caption finds a free place around it */
+  var OCC = [];
+  function occupy(x, y, w, h){ OCC.push({ x: x, y: y, w: w, h: h }); }
+  /* a backed label kept inside the safe area (9:16); in 16:9 exactly the page's own backed() */
+  function safeLabel(s, x, y, px, c, align, weight){
+    if (!SAFE) return backed(s, x, y, px, c, align, weight);
+    var tw = rw(s, Math.max(px, L.min), weight || "800"), x0 = align === "right" ? x - tw : align === "center" ? x - tw / 2 : x;
+    x0 = Math.max(SAFE.x0 + 9, Math.min(x0, SAFE.x1 - 9 - tw)); y = Math.max(SAFE.y0 + px + 5, Math.min(y, SAFE.y1 - 10));
+    occupy(x0 - 12, y - px - 8, tw + 24, px * 1.5 + 14);
+    return backed(s, x0, y, px, c, "left", weight);
+  }
+  function withA(a, fn){ if (a <= 0.003) return; g.save(); g.globalAlpha = a; fn(); g.restore(); }
+  function lab(s, p, dx, dy, a, c){ if (SAFE) return note(s, p, dx, dy, a, c, true); withA(a, function(){ tag(s, p.x, p.y, p.x + dx * K, p.y + dy * K, c || "#ffffff", dx < 0 ? "right" : "left"); }); }
+  function note(s, p, dx, dy, a, c, primary){ withA(a, function(){ var px = Math.round(L.fs * (primary ? 1.08 : 0.86)), x = p.x + dx * K, y = p.y + dy * K;
+    g.strokeStyle = "rgba(220,230,255,.6)"; g.lineWidth = primary ? 2.5 : 1.8; g.beginPath(); g.moveTo(p.x, p.y); g.lineTo(x, y); g.stroke();
+    g.fillStyle = "#e8eefc"; g.beginPath(); g.arc(p.x, p.y, primary ? 5 : 4, 0, 6.283); g.fill();
+    safeLabel(s, x + (dx < 0 ? -4 : 4), y + px * 0.35, px, c || "#ffffff", dx < 0 ? "right" : "left", primary ? "900" : "800"); }); }
+  function outline(r, a, c, dash){ withA(a, function(){ g.save(); rr(r.x - 6, r.y - 6, r.w + 12, r.h + 12, 16); g.strokeStyle = c; g.lineWidth = 3; if (dash) g.setLineDash(dash); g.stroke(); g.restore(); }); }
+  function box(r, a, c){ withA(a, function(){ g.save(); rr(r.x - 8, r.y - 8, r.w + 16, r.h + 16, 14); g.strokeStyle = c || COL.warn; g.lineWidth = 5; g.shadowColor = c || "rgba(251,191,36,.7)"; g.shadowBlur = 18; g.stroke(); g.restore(); }); }
+  function lower(lines, ts, at){
+    var px = Math.round(L.fs * 1.25), lh = px * 1.75, n = 0, i, wmax = 0;
+    for (i = 0; i < lines.length; i++) if (ts >= at[i]){ n = i + 1; wmax = Math.max(wmax, rw(lines[i], px, "800")); }
+    if (!n) return;
+    var w = Math.min(SAFE ? SAFE.x1 - SAFE.x0 - 20 : S.w - 80, wmax + 80), h = n * lh + 34, cx = SAFE ? (SAFE.x0 + SAFE.x1) / 2 : S.x + S.w / 2, x = cx - w / 2,
+        y = SAFE ? SAFE.y1 - h : S.y + S.h - h - 56;
+    occupy(x, y, w, h);
+    withA(fade(ts, at[0]), function(){ rr(x, y, w, h, 18); g.fillStyle = "rgba(6,10,22,.88)"; g.fill(); g.strokeStyle = "rgba(140,170,230,.35)"; g.lineWidth = 2; g.stroke(); });
+    for (i = 0; i < n; i++) (function(i){ withA(fade(ts, at[i]), function(){ line(lines[i], cx, y + 17 + lh * (i + 0.72), px, w - 40, i === n - 1 && lines[i].indexOf("=") >= 0 ? "#7dd3fc" : "#e8eefc", "center", "800"); }); })(i);
+  }
+  function brand(a){
+    withA(a, function(){ line("PrayogX", SAFE ? SAFE.x1 - 10 : S.x + S.w - 40, SAFE ? SAFE.y0 + 40 : S.y + 64, Math.round(L.fs * 1.1), 300, "#ffffff", "right", "900"); });
+  }
+  function draw(){
+    minPx = 999; L = layout(); OCC = [];
+    if (cv.width !== L.W || cv.height !== L.H){ cv.width = L.W; cv.height = L.H; }
+    S = { x: 0, y: 0, w: L.W, h: L.H };
+    g.fillStyle = "#05070d"; g.fillRect(0, 0, L.W, L.H); RUN.hits = [];
+    var a = RUN.anim ? RUN.anim.k : null, u = a ? clamp(RUN.anim.t / RUN.anim.d, 0, 1) : 1;
+    var V = bombView3(camFor(cam.view()), a, u), O = V.O;
+    if (X.i < 0) return;
+    var i = X.i, id = SC[i].id, ts = X.t - X.t0[i], moving = cam.flying(), on = moving ? 0 : 1;
+    var bodyR = RECT(R3.cylRect(O.BM, BD.rb + 0.22, 0, BD.h + BD.cap)), waterR = RECT(R3.rect([R3.xf(O.JM, [-JD.ri * 0.7, JD.fl + 0.5, 3.2]), R3.xf(O.JM, [-JD.ri * 0.45, O.wy - 0.3, 3.2])]));
+    var thermR = RECT(R3.rect([R3.xf(O.JM, [2.6, 2.0, 1.0]), R3.xf(O.JM, [3.4, 2.0 + TH.len, 1.0])])), jacketR = RECT(R3.cylRect(O.JM, JD.R + 0.15, 0, JD.H + 0.4));
+    var pBomb = P3(R3.xf(O.BM, [BD.rb + 0.15, BD.h * 0.8, 0.6])), pSample = P3(R3.xf(O.BM, [0.6, 1.9, 0.6])), pWire = P3(R3.xf(O.BM, [-0.35, 2.6, 0.5])),
+        pOxy = P3(R3.xf(O.BM, [-0.8, 4.4, 1.2])), pWater = P3(R3.xf(O.JM, [-JD.ri * 0.62, O.wy - 3.0, 3.0])), pIns = P3(R3.xf(O.JM, [-JD.R * 0.92, 7.5, JD.R * 0.38])),
+        pStir = P3(R3.xf(O.JM, [-3.0, 5.0, 0.9])), pTherm = P3(R3.xf(O.JM, [3.0, 5.5, 1.0])), pWall = P3(R3.xf(O.BM, [-BD.rb, 2.8, 0]));
+    var f = L.fs;
+    if (id === "intro"){
+      withA(fade(ts, 0.6), function(){ txt("Bomb calorimeter", S.x + 70, S.y + (tall ? 180 : 130), Math.round(f * 2.3), "#ffffff", "left", "900");
+        txt("NCERT Class 11 Chemistry · Chapter 5 Thermodynamics · §5.3", S.x + 72, S.y + (tall ? 240 : 182), Math.round(f * 0.95), COL.dim, "left", "700"); });
+    }
+    if (id === "inside"){
+      var foc = ts < 3.0 ? "bomb" : ts < 6.0 ? "sample" : "oxygen";
+      if (foc === "bomb") box(bodyR, fade(ts, 1.0) * on);
+      lab("steel bomb (sealed)", pBomb, 150, -60, fade(ts, 1.0) * on);
+      lab("sample", pSample, 170, 70, fade(ts, 3.2) * on); lab("ignition wire", pWire, -170, 60, fade(ts, 4.2) * on, "#fbbf24");
+      lab("oxygen, O₂", pOxy, -190, -90, fade(ts, 6.0) * on, "#fca5a5");
+    }
+    if (id === "around"){
+      /* primary: the bomb, the water around it, the container that holds them (its boundary); secondary: stirrer, thermometer */
+      var waterVol = RECT(R3.cylRect(O.JM, JD.ri, JD.fl, O.wy)), pCap = P3(R3.xf(O.BM, [-BD.rb * 0.7, BD.h + BD.cap * 0.5, 1.0])),
+          pWet = P3(R3.xf(O.JM, [JD.ri * 0.8, 3.0, 2.2])), pShaft = P3(R3.xf(O.JM, [-3.0, 8.6, 0.9]));
+      outline(waterVol, fade(ts, 0.8) * on * 0.9, "#7dd3fc");
+      note("bomb (the reaction happens inside)", pCap, -230, -150, fade(ts, 0.8) * on, "#ffffff", true);
+      note("water (known mass)", pWet, 210, 130, fade(ts, 1.6) * on, "#7dd3fc", true);
+      outline(jacketR, fade(ts, 2.6) * on, "rgba(255,255,255,.75)", [14, 10]);
+      withA(fade(ts, 2.6) * on, function(){ safeLabel("insulated container", jacketR.x + jacketR.w - 16, jacketR.y - 22, Math.round(f * 1.08), "#ffffff", "right", "900"); });
+      note("stirrer", pShaft, -250, -30, fade(ts, 4.2) * on, "#e8eefc", false);
+      note("thermometer", pTherm, 210, -70, fade(ts, 5.4) * on, "#e8eefc", false);
+    }
+    if (id === "rigid" || id === "work"){
+      if (id === "rigid"){ box(bodyR, fade(ts, 0.8) * on); note("rigid steel walls: they cannot move", pBomb, 150, -110, fade(ts, 1.2) * on, COL.warn, true);
+        lower(["the volume stays constant:  ΔV = 0"], ts, [3.0]); }
+      else { box(bodyR, fade(ts, 0.6) * on); lab("ΔV = 0  →  no expansion work: w = 0", pBomb, 120, -80, fade(ts, 0.8) * on, COL.warn);
+        lower(["first law:  ΔU = q + w", "w = 0,  so  ΔU = q_V"], ts, [3.6, 5.6]); }
+    }
+    if (id === "ignite"){
+      lab("ignition: a current through the wire", pWire, -190, 70, fade(ts, 0.8) * on, "#fbbf24");
+      lab("the sample burns in oxygen", pSample, 180, 80, fade(ts, 3.0) * on, "#fdba74");
+    }
+    if (id === "heat"){
+      var k, side, hu = fade(ts, 0.5);
+      for (side = -1; side <= 1; side += 2) for (k = 0; k < 3; k++){
+        /* from the bomb's steel surface into the water, stopping well short of the insulation (which keeps the heat in) */
+        var w0 = R3.xf(O.BM, [side * (BD.rb + 0.1), 1.4 + k * 2.0, 1.0]), w1 = [w0[0] + side * 1.75, w0[1], w0[2] + 0.3], s0 = P3(w0), s1 = P3(w1), ph2 = (X.t * 0.6 + k * 0.33) % 1;
+        withA(hu * (0.6 + 0.4 * Math.sin(ph2 * Math.PI)), function(){ var xa = lerp(s0.x, s1.x, 0.05 + ph2 * 0.15), xb = lerp(s0.x, s1.x, 0.8 + ph2 * 0.2);
+          arrow(xa, s0.y, xb, s1.y, "rgba(40,16,0,.6)", 14); arrow(xa, s0.y, xb, s1.y, COL.heat, 12); });
+      }
+      note("heat flows through the steel into the water", pBomb, 150, -120, fade(ts, 1.0) * on, COL.heat, true);
+      note("the stirrer spreads the heat through all the water", pStir, -150, SAFE ? 260 : -150, fade(ts, 4.8) * on, "#e8eefc", false);
+    }
+    if (id === "measure"){
+      var uu = a === "ignite" ? u : RUN.ignited ? 1 : 0, T = ENGINE.T0 + ENGINE.DTV * riseTh(uu), d7 = X.dur[i], done7 = ts > d7 * 0.86;
+      box(thermR, fade(ts, 0.3) * on);
+      bigTherm(tall ? 800 : S.x + S.w * 0.82, tall ? 330 : S.y + S.h * 0.13, tall ? 1130 : S.y + S.h * 0.80, T, 24, 28,
+        done7 ? { marks: { a: seg(ts, d7 * 0.86, d7 * 0.86 + 1.0), t0: ENGINE.T0, t1: ENGINE.T0 + ENGINE.DTV } } : {});
+      withA(fade(ts, d7 * 0.86), function(){ safeLabel("ΔT = rise in temperature", tall ? 510 : S.x + S.w * 0.56, tall ? 1300 : S.y + S.h * 0.88, Math.round(f * 1.15), "#7dd3fc", "center", "900"); });
+      withA(fade(ts, 0.8), function(){ txt("temperatures illustrative", SAFE ? SAFE.x0 + 10 : S.x + 40, SAFE ? SAFE.y1 - 10 : S.y + S.h - 30, Math.round(f * 0.8), COL.dim, "left", "700"); });
+      lab("it measures temperature, not heat", pTherm, -200, -150, fade(ts, 3.5) * on);
+    }
+    if (id === "system"){
+      box(jacketR, fade(ts, 0.6) * on, "#7dd3fc");
+      withA(fade(ts, 0.8) * on, function(){ safeLabel("calorimeter = bomb + water + container", jacketR.x + jacketR.w / 2, jacketR.y - 26, Math.round(f * 1.05), "#7dd3fc", "center", "900"); });
+      withA(fade(ts, 2.8) * on, function(){ safeLabel("heat capacity C (known)", jacketR.x + jacketR.w / 2, jacketR.y + jacketR.h + 52, Math.round(f * 1.0), "#ffffff", "center", "800"); });
+      lower(["heat absorbed by the calorimeter = C ΔT", "for the reaction:  q_V = −C ΔT"], ts, [4.6, 7.4]);
+    }
+    if (id === "takeaway"){
+      var chips = ["rigid bomb: no work", "heat into the calorimeter", "measure ΔT", "ΔU = q_V = −C ΔT"], cpx = Math.round(f * (tall ? 1.0 : 1.05));
+      var ws = chips.map(function(c){ return rw(c, cpx, "800") + 40; }), gap = 60 * K, tot = ws.reduce(function(p, c){ return p + c; }, 0) + gap * 3;
+      if (!tall){ var x = S.x + (S.w - tot) / 2, y = S.y + S.h - 110, c;
+        for (c = 0; c < 4; c++) (function(c, x){ withA(fade(ts, 0.6 + c * 1.6), function(){ rr(x, y - cpx - 18, ws[c], cpx + 36, 16); g.fillStyle = c === 3 ? "rgba(14,60,90,.95)" : "rgba(6,10,22,.9)"; g.fill();
+          g.strokeStyle = c === 3 ? "#7dd3fc" : "rgba(140,170,230,.4)"; g.lineWidth = 2; g.stroke(); txt(chips[c], x + 20, y + 4, cpx, c === 3 ? "#7dd3fc" : "#e8eefc", "left", "800");
+          if (c < 3) arrow(x + ws[c] + 10, y - cpx / 2 + 6, x + ws[c] + gap - 10, y - cpx / 2 + 6, "#93a8cc", 4); }); })(c, x), x += ws[c] + gap; }
+      else { var yy = S.y + S.h - 520, c2;
+        for (c2 = 0; c2 < 4; c2++) (function(c2, y){ withA(fade(ts, 0.6 + c2 * 1.6), function(){ var w = ws[c2], x = S.x + (S.w - w) / 2; rr(x, y - cpx - 18, w, cpx + 36, 16);
+          g.fillStyle = c2 === 3 ? "rgba(14,60,90,.95)" : "rgba(6,10,22,.9)"; g.fill(); g.strokeStyle = c2 === 3 ? "#7dd3fc" : "rgba(140,170,230,.4)"; g.lineWidth = 2; g.stroke();
+          txt(chips[c2], x + 20, y + 4, cpx, c2 === 3 ? "#7dd3fc" : "#e8eefc", "left", "800"); if (c2 < 3) arrow(S.x + S.w / 2, y + 30, S.x + S.w / 2, y + 74, "#93a8cc", 4); }); })(c2, yy + c2 * 112); }
+      withA(fade(ts, 7.2), function(){ txt("NCERT Class 11 Chemistry · Chapter 5 · §5.3(a)", S.x + 40, S.y + S.h - 30, Math.round(f * 0.8), COL.dim, "left", "700"); });
+    }
+    /* ---- the vertical reels' own scenes (BOMB-CALORIMETER-REELS.md) ---- */
+    var SX = SAFE ? SAFE.x0 + 10 : S.x + 70, SW = SAFE ? SAFE.x1 - SAFE.x0 - 20 : S.w - 140, mid = SAFE ? (SAFE.x0 + SAFE.x1) / 2 : S.x + S.w / 2;
+    function title(t, sub){ withA(fade(ts, 0.5), function(){ var px = Math.round(f * 1.75), lines = wrap(t, px, SW, "900"), k2;
+      for (k2 = 0; k2 < lines.length; k2++) txt(lines[k2], SX, (SAFE ? SAFE.y0 : S.y) + 70 + k2 * px * 1.18, px, "#ffffff", "left", "900");
+      txt(sub, SX, (SAFE ? SAFE.y0 : S.y) + 70 + lines.length * px * 1.18 + 6, Math.round(f * 0.85), COL.dim, "left", "700"); }); }
+    /* the takeaway: one statement and its equation, in a card above the lower safe edge */
+    function takeaway(lead, eq, a){ withA(a, function(){ var px = Math.round(f * 1.0), ep = Math.round(f * 1.9), w = Math.min(SW, Math.max(rw(lead, px, "800"), rw(eq, ep, "900")) + 90),
+        h = px + ep + 96, x = mid - w / 2, y = (SAFE ? SAFE.y1 : S.y + S.h - 40) - h - 40; occupy(x, y, w, h);
+      rr(x, y, w, h, 22); g.fillStyle = "rgba(10,40,64,.94)"; g.fill(); g.strokeStyle = "#7dd3fc"; g.lineWidth = 3; g.stroke();
+      line(lead, mid, y + 22 + px, px, w - 40, "#e8eefc", "center", "800"); line(eq, mid, y + 44 + px + ep, ep, w - 40, "#7dd3fc", "center", "900"); }); }
+    /* the end card over the last 1.5 s: the brand and the experiment page */
+    function endCard(){ var e = fade(ts, X.dur[i] - 1.5); if (e <= 0) return;
+      withA(e * 0.92, function(){ g.fillStyle = "#05070d"; g.fillRect(S.x, S.y, S.w, S.h); });
+      withA(e, function(){ line("PrayogX", mid, S.y + S.h * 0.42, Math.round(f * 2.6), SW, "#ffffff", "center", "900");
+        line("How does a calorimeter work? · try the experiment", mid, S.y + S.h * 0.42 + f * 2.0, Math.round(f * 0.95), SW, "#e8eefc", "center", "800");
+        line("prayogx.co.in · NCERT Class 11 Chemistry · Ch 5", mid, S.y + S.h * 0.42 + f * 3.4, Math.round(f * 0.85), SW, "#93c5fd", "center", "700"); }); }
+    if (id === "titleA") title(REELS.A.title, "NCERT Class 11 Chemistry · Chapter 5 Thermodynamics");
+    if (id === "titleB"){ title(REELS.B.title, "NCERT Class 11 Chemistry · Chapter 5 Thermodynamics");
+      box(jacketR, fade(ts, 2.0) * on * 0.8, "#7dd3fc"); lower(["measured:  q_V = −C ΔT"], ts, [2.4]); }
+    if (id === "absorb"){
+      box(jacketR, fade(ts, 0.6) * on, "#7dd3fc");
+      withA(fade(ts, 0.8) * on, function(){ safeLabel("calorimeter = bomb + water + container", jacketR.x + jacketR.w / 2, jacketR.y - 26, Math.round(f * 1.0), "#7dd3fc", "center", "900"); });
+      withA(fade(ts, 2.8) * on, function(){ safeLabel("heat capacity C (known)", jacketR.x + jacketR.w / 2, SAFE ? jacketR.y + 34 : jacketR.y + jacketR.h + 48, Math.round(f * 0.95), "#ffffff", "center", "800"); });
+      lower(["heat absorbed by the calorimeter = C ΔT"], ts, [4.6]);
+    }
+    if (id === "takeA"){ box(jacketR, 0.6, "#7dd3fc"); takeaway("The reaction released exactly that heat:", "q_V = −C ΔT", fade(ts, 0.4)); endCard(); }
+    if (id === "noWork"){
+      lab("the sample burns inside the sealed bomb", pSample, SAFE ? -160 : 170, SAFE ? -30 : 90, fade(ts, 1.2) * on, "#fdba74");
+      lab("the gases cannot push the walls outward", pBomb, 140, -150, fade(ts, 2.6) * on, COL.warn);
+      lower(["no expansion work:  w = 0"], ts, [4.6]);
+    }
+    if (id === "firstLaw"){ box(bodyR, fade(ts, 0.4) * on); lower(["first law:  ΔU = q + w", "w = 0,  so  ΔU = q_V"], ts, [1.0, 4.0]); }
+    if (id === "takeB"){ takeaway("A bomb calorimeter measures the change in internal energy:", "ΔU = q_V = −C ΔT", fade(ts, 0.4)); endCard(); }
+    /* the caption of the line being spoken: as low in the safe area as it fits clear of every label and card of this
+       frame. Not burned in over the takeaway card, which already shows that sentence (the .srt keeps it). */
+    for (var ci = 0; ci < X.captions.length && id !== "takeA" && id !== "takeB"; ci++){ var C = X.captions[ci];
+      if (X.t >= C.t0 && X.t < C.t1){ var cpx = Math.round(f * 1.0), cl = wrap(C.text, cpx, SW - 40, "800").slice(0, 2), cy = SAFE ? 1250 : S.y + S.h - 170, k3;
+        var ca = Math.min(1, (X.t - C.t0) / 0.12, (C.t1 - X.t) / 0.12), cw = 0;
+        for (k3 = 0; k3 < cl.length; k3++) cw = Math.max(cw, rw(cl[k3], cpx, "800"));
+        if (SAFE){ var bh = cl.length * cpx * 1.3 + 22, y2, o2, free;
+          for (y2 = SAFE.y1 - 16; y2 > SAFE.y0 + 360; y2 -= 10){ free = true;
+            for (o2 = 0; o2 < OCC.length; o2++){ var R = OCC[o2]; if (mid - cw / 2 - 18 < R.x + R.w && mid + cw / 2 + 18 > R.x && y2 - bh + 16 < R.y + R.h && y2 + 16 > R.y){ free = false; break; } }
+            if (free){ cy = y2; break; } } }
+        withA(ca, function(){ rr(mid - cw / 2 - 18, cy - cl.length * cpx * 1.3 - 6, cw + 36, cl.length * cpx * 1.3 + 22, 12); g.fillStyle = "rgba(0,0,0,.62)"; g.fill();
+          for (k3 = 0; k3 < cl.length; k3++) txt(cl[k3], mid, cy - (cl.length - 1 - k3) * cpx * 1.3, cpx, "#ffffff", "center", "800"); });
+        break; } }
+    /* the title scenes carry no watermark (the title has the top of the frame; the end card carries the brand) */
+    if (id !== "titleA" && id !== "titleB") brand(id === "takeaway" || id === "takeA" || id === "takeB" ? 1 : 0.55);
+  }
+  function layoutX(){ return { phone: tall, W: W, H: H, fs: tall ? 34 : 30, min: 20, lab: { x: 0, y: 0, w: W, h: H }, hh: 0, guide: { x: 0, y: 0, w: 0, h: 0 } }; }
+  return {
+    layout: layoutX, draw: draw, update: update,
+    api: { play: play, done: function(){ return X.finished; }, scenes: function(){ return SC.map(function(s, i){ return { id: s.id, t0: X.t0[i], d: X.dur[i], shot: s.shot }; }); },
+           total: function(){ return X.total; }, tall: tall },
+    state: function(){ return { explainReel: REEL, explainScene: X.i >= 0 ? SC[X.i].id : null, explainT: +X.t.toFixed(3), shot: cam.state().shot, explainDone: X.finished, explainError: X.error || "", explainIgnition: RUN.anim && RUN.anim.k === "ignite" ? +clamp(RUN.anim.t / RUN.anim.d, 0, 1).toFixed(4) : RUN.ignited ? 1 : 0 }; }
+  };
+}
+
 
 window.PX = {
   ENGINE: ENGINE, RUN: RUN,
@@ -2039,6 +2386,15 @@ window.PX = {
       lossRun: RUN.lossRun, bombPart: RUN.bpart, pushed: RUN.pushed, ignited: RUN.ignited, pistonPushed: RUN.pPushed, pistonReacted: RUN.pReacted, example: RUN.ex,
       T: T ? T.w : null, thermT: T ? T.th : null, measuredQ: measured().q, measuredDT: measured().dT, revealed: RUN.revealed, done: RUN.done }; }
 };
+
+/* explainer mode: off for every learner until switched on (the URL, or PX.explainMode for the recorder); then
+   PX.explainer drives it and PX.state() also reports its scene */
+PX.explainMode = function(kind){
+  if (!XP){ XP = explainer(kind === "tall"); PX.explainer = XP.api;
+    (function(base){ PX.state = function(){ var o = base(), e = XP.state(), k; for (k in e) o[k] = e[k]; return o; }; })(PX.state); draw(); }
+  return XP.api;
+};
+(function(){ var m = /[?&]explain(?:=(\w+))?(?:&|$)/.exec(location.search || ""); if (m) PX.explainMode(m[1] === "tall" ? "tall" : "wide"); })();
 
 syncDT(); go(1);
 window.addEventListener("resize", function(){ draw(); });

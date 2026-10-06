@@ -232,8 +232,8 @@ TEMPLATES['question-simulation-v1'] = function build(spec, entry, q) {
   const add = (id, dur, draw, needs, extra) => { const b = Object.assign({ id: id, t0: t0, dur: dur, draw: draw, needs: needs || (() => []) }, extra || {}); beats.push(b); t0 += dur; return b; };
   const marks = {};   /* the audio's sync points: the aha and the answer reveal */
   const cue = (t, type, gain) => cues.push({ t: +t.toFixed(3), type: type, gain: gain || 1 });
-  const ctxLine = [entry.exam, entry.year].join(' ').toUpperCase();
-  const chipText = ['PAPER ' + entry.paperNumber, entry.subject.toUpperCase(), 'Q.' + entry.questionNumber].join('  ·  ');
+  /* the source context (tools/reel-maker/context.js): a JEE question's exam, year, paper and question number */
+  const CX = D.context, chipText = CX.chip;
 
   /* A. hook: rhythmic words, then the question line */
   const hb = S.hook.beats || [], hookDur = lenOf('hook', 0.34 * hb.length + 1.75);
@@ -259,10 +259,10 @@ TEMPLATES['question-simulation-v1'] = function build(spec, entry, q) {
     backdrop(t + 3);
     const u = E.back(prog(t, 0, 0.4));
     g.save(); g.globalAlpha = clamp(u);
-    line(entry.exam.toUpperCase(), W / 2, 760 + (1 - u) * 60, 92, { align: 'center', weight: 900, track: 4 });
+    line(CX.big, W / 2, 760 + (1 - u) * 60, 92, { align: 'center', weight: 900, track: 4 });
     const yu = E.back(prog(t, 0.12, 0.42));
     if (yu > 0) { g.save(); g.globalAlpha *= clamp(yu); g.translate(W / 2, 900); g.scale(0.7 + 0.3 * yu, 0.7 + 0.3 * yu); g.translate(-W / 2, -900);
-      line(String(entry.year), W / 2, 930, 190, { align: 'center', weight: 900, color: C.accent2, hi: C.accent2 }); g.restore(); }
+      line(CX.year, W / 2, 930, fitPx(CX.year, 190, 920), { align: 'center', weight: 900, color: C.accent2, hi: C.accent2 }); g.restore(); }
     const bar = E.out(prog(t, 0.2, 0.5)); g.fillStyle = C.accent; g.fillRect(W / 2 - 260 * bar, 980, 520 * bar, 8);
     pill(chipText, W / 2, 1080, 40, { align: 'center', track: 3 });
     g.restore();
@@ -280,7 +280,7 @@ TEMPLATES['question-simulation-v1'] = function build(spec, entry, q) {
   const qDur = QS.seconds || clamp(2.9 + 0.17 * nItems + Math.max(0, stemText.length - 200) / 120 + (hasFig ? 0.8 : 0), 4.5, 9);   /* longer stems and figures get reading time */
   const IW = W - 2 * SAFE.x0 - 20, X0 = SAFE.x0 + 10;
   function questionCard(t, dimA, sc, dry) {
-    if (!dry) { g.save(); g.globalAlpha *= dimA; pill(entry.exam.toUpperCase() + ' ' + entry.year + '  ·  ' + chipText, W / 2, SAFE.y0 + 110, 28, { align: 'center', track: 2 }); }
+    if (!dry) { g.save(); g.globalAlpha *= dimA; pill(CX.tag, W / 2, SAFE.y0 + 110, 28, { align: 'center', track: 2 }); }
     let y = SAFE.y0 + 200, tk = 0.6;
     const sp = 32 * sc, sl = 42 * sc, ns = wrap(stemText, sp, 600, IW).length;
     if (!dry) para(stemText, X0, y, sp, IW, sl, { weight: 600, color: '#d6e2ff' }, t < 99 ? t : undefined);
@@ -499,7 +499,7 @@ async function thumbnail() {
   const m = footage(idx, D.spec.regions[T.region], { x: 70, y: 760, w: 940, h: 720 });
   pill(T.kicker, W / 2, 330, 40, { align: 'center', track: 5 });
   T.lines.forEach((l, i) => line(l, W / 2, 480 + i * 112, i ? 104 : 92, { align: 'center', weight: 900, hi: C.warn }));
-  pill('Paper ' + D.entry.paperNumber + ' · ' + D.entry.subject + ' · Q.' + D.entry.questionNumber, W / 2, 1560, 34, { align: 'center' });
+  pill(D.context.foot, W / 2, 1560, 34, { align: 'center' });
   logo(W / 2 - 150, 1640, 56); wordmark(W / 2 - 80, 1680, 34);
   return { boxes: frameBoxes.slice(), drew: Object.assign({}, drew) };
 }
@@ -510,6 +510,7 @@ window.REEL = {
     D = data;
     const tpl = TEMPLATES[D.spec.template];
     if (!tpl) throw new Error('unknown template ' + D.spec.template);
+    if (!D.context || D.context.template !== D.spec.template) throw new Error('template ' + D.spec.template + ' does not fit this ' + (D.context ? D.context.kind : 'source') + ' (use ' + (D.context ? D.context.template : '?') + ')');
     await Promise.all([document.fonts ? document.fonts.ready : null]);
     for (const n of D.stills || []) await load(D.stillsBase + n);
     const built = tpl(D.spec, D.entry, D.question);

@@ -13,7 +13,15 @@
 
    The page contract it relies on (layout v3 pages): canvas#labcv, section#question, window.PX with start()
    and RUN.done. The spec can name another element, another done test and other start actions.
-   Read-only: the page file is opened from disk and never written.                                       */
+   Read-only: the page file is opened from disk and never written.
+
+   Optional, off by default (docs/RENDERING_PIPELINE_RESEARCH.md); without them nothing changes:
+     record.gpu: true            WebGL on the machine's GPU (ANGLE -> Metal) instead of headless Chromium's software
+                                 SwiftShader: the same model and frames, about 500x faster to render (measured)
+     record.capture: "canvas-png" | "canvas-jpeg"   read the canvas's own pixels (lossless PNG, or JPEG at
+                                 record.jpegQuality, default 0.92) instead of an element screenshot (about 4x faster);
+                                 the frame is the canvas at its own resolution, so use it where that is the target size
+   footage.json always records the WebGL renderer the page was given and the capture method used.        */
 const fs = require('fs');
 const path = require('path');
 const { launch } = require('../../tests/_browser');
@@ -28,6 +36,12 @@ const CLOCK = () => {
 };
 
 /* every simple field of PX.state() (and PX.stage()'s name, if the page has one) - what moments select on */
+/* the GPU path, in the order Chromium needs them: enable the GPU in headless mode, ANGLE on Metal, ignore the blocklist */
+const GPU_ARGS = ['--enable-gpu', '--use-angle=metal', '--ignore-gpu-blocklist'];
+/* which WebGL renderer the page actually gets (a silent fallback to SwiftShader shows here) */
+const RENDERER = () => { try { const gl = document.createElement('canvas').getContext('webgl'), d = gl && gl.getExtension('WEBGL_debug_renderer_info');
+  return gl ? String(gl.getParameter(d ? d.UNMASKED_RENDERER_WEBGL : gl.RENDERER)) : 'no webgl'; } catch (e) { return 'error: ' + e.message; } };
+
 const STATE = (doneExpr) => {
   const out = {};
   try { const s = PX.state ? PX.state() : {}; for (const k in s) { const v = s[k]; if (v === null || ['number', 'string', 'boolean'].indexOf(typeof v) >= 0) out[k] = typeof v === 'number' ? +v.toFixed(5) : (typeof v === 'string' ? v.slice(0, 60) : v); } } catch (e) { out.stateError = String(e).slice(0, 80); }
@@ -81,7 +95,9 @@ async function record(spec, pageFile, workDir, log) {
   const vp = rec.viewport || { width: 420, height: 860, deviceScaleFactor: 2.6 };
   const dir = path.join(workDir, 'footage');
   fs.mkdirSync(dir, { recursive: true }); fs.mkdirSync(path.join(workDir, 'stills'), { recursive: true });
-  const b = await launch();
+  const capture = rec.capture || 'element';
+  if (['element', 'canvas-png', 'canvas-jpeg'].indexOf(capture) < 0) throw new Error('record.capture must be element, canvas-png or canvas-jpeg');
+  const b = await launch(rec.gpu ? { args: GPU_ARGS } : undefined);
   const errors = [];
   try {
     const ctx = await b.newContext({ viewport: { width: vp.width, height: vp.height }, deviceScaleFactor: vp.deviceScaleFactor, isMobile: true, hasTouch: true });
@@ -89,6 +105,7 @@ async function record(spec, pageFile, workDir, log) {
     const p = await ctx.newPage();
     p.on('pageerror', e => errors.push(e.message));
     await p.goto('file://' + pageFile.split('/').map(encodeURIComponent).join('/'));
+    const renderer = await p.evaluate(RENDERER);
     for (let i = 0; i < 5; i++) await p.evaluate(ms => __pxClock.step(ms), 1000 / fps);
     const sel = rec.element || '#labcv', doneExpr = rec.done || '!!(PX.RUN && PX.RUN.done)';
     const ready = await p.evaluate(s => !!(window.PX && PX.start && document.querySelector(s)), sel);
@@ -99,14 +116,17 @@ async function record(spec, pageFile, workDir, log) {
     /* run the experiment: the spec's actions (default: PX.start()), then frames until done + a tail */
     for (const a of rec.actions || [{ eval: 'PX.start()' }]) await p.evaluate(a.eval);
     const cv = await p.$(sel);
+    if (capture !== 'element' && !(await p.evaluate(s => document.querySelector(s).tagName === 'CANVAS', sel))) throw new Error('record.capture ' + capture + ' needs a canvas element (' + sel + ')');
+    const ext = capture === 'canvas-jpeg' ? '.jpg' : '.png', jq = rec.jpegQuality || 0.92;
     const frames = [];
     const maxF = Math.round((rec.maxSeconds || 120) * fps), tailF = Math.round((rec.tailSeconds || 2) * fps);
     let doneAt = -1;
     for (let f = 0; f < maxF; f++) {
       await p.evaluate(ms => __pxClock.step(ms), 1000 / fps);
       const st = await p.evaluate(STATE, doneExpr);
-      const file = 'f' + String(f).padStart(5, '0') + '.png';
-      await cv.screenshot({ path: path.join(dir, file) });
+      const file = 'f' + String(f).padStart(5, '0') + ext;
+      if (capture === 'element') await cv.screenshot({ path: path.join(dir, file) });
+      else fs.writeFileSync(path.join(dir, file), Buffer.from((await p.evaluate(([s, type, q]) => document.querySelector(s).toDataURL(type, q), [sel, capture === 'canvas-jpeg' ? 'image/jpeg' : 'image/png', jq])).split(',')[1], 'base64'));
       /* the frame time is the recorder's own; a page state field named t (e.g. simulated time) is kept as pageT */
       frames.push(Object.assign({ file: file }, st, { t: +(f / fps).toFixed(4) }, st.t !== undefined ? { pageT: st.t } : {}));
       if (st.done && doneAt < 0) doneAt = f;
@@ -140,7 +160,8 @@ async function record(spec, pageFile, workDir, log) {
       await wc.close();
     }
     const meta = { fps: fps, frames: frames, doneAt: doneAt, canvas: size, cssBox: { w: box.width, h: box.height }, dpr: vp.deviceScaleFactor,
-      imagePx: { w: Math.round(box.width * vp.deviceScaleFactor), h: Math.round(box.height * vp.deviceScaleFactor) }, pageErrors: errors };
+      imagePx: capture === 'element' ? { w: Math.round(box.width * vp.deviceScaleFactor), h: Math.round(box.height * vp.deviceScaleFactor) } : { w: size.w, h: size.h },
+      pageErrors: errors, renderer: renderer, capture: capture, gpu: !!rec.gpu };
     fs.writeFileSync(path.join(workDir, 'footage.json'), JSON.stringify(meta));
     return { question: question, footage: meta };
   } finally { await b.close(); }

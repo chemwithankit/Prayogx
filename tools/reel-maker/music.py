@@ -463,12 +463,15 @@ class Score:
         self.events = []
         self.arr = []
         self.motif = self._make_motif()
-        self.sections = self._sections()
+        # a concept explainer (plan kind "explainer", generate-explainer.js) gets a calm teaching bed, not the reel arc
+        self.explainer = plan.get("kind") == "explainer"
+        self.variations = []
+        self.sections = self._sections_explainer() if self.explainer else self._sections()
         S = {s["id"]: s for s in self.sections}
-        self.sim0 = S["SIM_START"]["t0"]
+        self.sim0 = S["BODY"]["t0"] if self.explainer else S["SIM_START"]["t0"]
         self.g1 = Grid(self.sim0, self.spb, self.S["swing"])
         M = plan.get("marks") or {}
-        self.reveal = (M.get("answer") or {}).get("reveal", S["ANSWER"]["t0"] + 1.35)
+        self.reveal = S["OUTRO"]["t0"] if self.explainer else (M.get("answer") or {}).get("reveal", S["ANSWER"]["t0"] + 1.35)
         self.g2 = Grid(self.reveal, self.spb, self.S["swing"])
         self._last_voicing = {}
 
@@ -490,6 +493,16 @@ class Score:
                 sec.append(("SIM_START", aha["t1"], end(mom[-1]), "the groove returns for the remaining moments"))
         sec += [("ANSWER", ans["t0"], end(B["answer"]), "a snare roll and riser, then the drop on the reveal: the hook on the lead, everything in"),
                 ("BRAND", B["payoff"]["t0"], self.T, "outro: the hook's answer phrase over the tonic major, a clean ring-out")]
+        return [{"id": a, "t0": round(b, 3), "t1": round(c, 3), "role": d} for a, b, c, d in sec]
+
+    def _sections_explainer(self):
+        """a concept explainer's arc, from its scenes: the opening scene, the explanation, the closing takeaway"""
+        sc = self.plan["beats"]
+        if len(sc) < 3:
+            raise ValueError("an explainer needs at least three scenes (opening, explanation, takeaway)")
+        sec = [("INTRO", 0.0, sc[1]["t0"], "intro: the chapter's instrument over a pad that slowly opens, under the title"),
+               ("BODY", sc[1]["t0"], sc[-1]["t0"], "a calm teaching bed under the narration: soft chords and a light pulse that change gently at each scene"),
+               ("OUTRO", sc[-1]["t0"], self.T, "outro: the hook's answer phrase resolving on the tonic major under the takeaway, a clean ring-out")]
         return [{"id": a, "t0": round(b, 3), "t1": round(c, 3), "role": d} for a, b, c, d in sec]
 
     # ---- material
@@ -727,8 +740,34 @@ class Score:
         sub = np.sin(2 * np.pi * f * np.arange(n) / SR) * adsr(n, 0.004, 0.3, 0.9, dur, 0.06) * 0.8
         self.add("sub", sub, t, inst="sub")
 
+    # ---- a concept explainer: a calm bed (no riser, roll, impact or drop - the voice carries the lesson)
+    def compose_explainer(self):
+        st, g, ident = self.S, self.g1, self.identity
+        S = {s["id"]: s for s in self.sections}
+        intro, body, outro = S["INTRO"], S["BODY"], S["OUTRO"]
+        motif = ident if ident not in ("saw_pluck",) else "piano"
+        self.play(intro["t0"], intro["t1"], Grid(0.0, self.spb), pad="supersaw", motif=motif, motif_vel=0.55, label="intro: the hook, soft", dyn=0.7)
+        self.events.append({"t": 0.0, "what": "intro under the title"})
+        # every explanation scene after the first is a cut (section bounds are rounded to the millisecond, so compare loosely)
+        cuts = [body["t0"]] + [g.nearest_beat(b["t0"]) for b in self.plan["beats"] if body["t0"] + 0.6 < b["t0"] < body["t1"] - 0.6] + [body["t1"]]
+        textures = [dict(bass="sub", chords=None, arp=None, strings="sus" if st["strings"] else None, label="bed A: pad and sustained strings"),
+                    dict(bass="sub", chords=st["chords"], arp=None, strings=None, label="bed B: soft chords"),
+                    dict(bass="sub", chords=None, arp=st["arp"], strings=None, label="bed C: a quiet arpeggio")]
+        for i in range(len(cuts) - 1):
+            z = textures[i % len(textures)]
+            self.play(cuts[i], cuts[i + 1], g, kit="light", kit_vel=0.45, bass=z["bass"], chords=z["chords"], chord_inst=st["chord_inst"], arp=z["arp"], arp_pat=3,
+                      pad="supersaw", strings=z["strings"], dyn=0.6, label=z["label"])
+            self.variations.append({"t0": round(cuts[i], 3), "t1": round(cuts[i + 1], 3), "stage": "ABC"[i % 3], "kit": "light", "lead": None})
+            self.events.append({"t": round(cuts[i], 3), "what": "scene change: " + z["label"]})
+        self.play(outro["t0"], self.T - 0.15, Grid(outro["t0"], self.spb), pad="supersaw", strings="sus" if st["strings"] else None, motif=motif,
+                  motif_vel=0.6, final=True, motif_phrase="answer", label="outro: resolution", dyn=0.7)
+        self.events.append({"t": outro["t0"], "what": "takeaway: resolution on the tonic major"})
+        return self.mixdown()
+
     # ---- the arrangement of the whole reel
     def compose(self):
+        if self.explainer:
+            return self.compose_explainer()
         S, st = self.sections, self.S
         sec = lambda i: [s for s in S if s["id"] == i]
         hook, q, pr, ans, brand = sec("HOOK")[0], sec("QUESTION")[0], sec("PROBLEM")[0], sec("ANSWER")[0], sec("BRAND")[0]
@@ -813,6 +852,10 @@ class Score:
         """filter cutoffs (Hz) per sample for the pad/chord/arp layers: the intro and the build open, the breakdown closes"""
         pts = []
         S = {s["id"]: s for s in self.sections}
+        if self.explainer:                                                     # a slow opening, a steady body, a softer close
+            pts = [(0, 500), (S["INTRO"]["t1"], 2400), (S["OUTRO"]["t0"], 2800), (self.T, 1800)]
+            t = np.arange(self.n) / SR
+            return np.exp(np.interp(t, [p[0] for p in pts], np.log([p[1] for p in pts])))
         pts += [(0, 450), (S["HOOK"]["t1"], 2600), (S["QUESTION"]["t1"], 3200), (S["PROBLEM"]["t0"], 900), (S["PROBLEM"]["t1"] - 0.05, 13000),
                 (S["PROBLEM"]["t1"], 14000)]
         for s in self.sections:
@@ -848,7 +891,7 @@ class Score:
         for k in ("pad", "chords", "arp", "strings", "motif", "lead", "perc", "drums"):
             Ly[k] = hp(Ly[k], 120 if k not in ("drums",) else 30)
         Ly["drums"] = np.tanh(1.2 * Ly["drums"] / max(np.abs(Ly["drums"]).max(), 1e-9)) * np.abs(Ly["drums"]).max()
-        g = self.pump(self.S["pump"])
+        g = self.pump(0 if self.explainer else self.S["pump"])           # no side-chain pumping under a teacher's voice
         for k in ("bass", "pad", "chords", "strings"):
             Ly[k] = Ly[k] * g[:, None]
         Ly["sub"] = Ly["sub"] * (1 - (1 - g) * 0.9)[:, None]

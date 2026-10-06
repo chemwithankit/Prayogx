@@ -9,8 +9,10 @@ no build step: the page stays one self-contained `index.html`.
 /* PX-KIT obs@1 END */
 ```
 
-Status: **Phase 1, test-only.** No production page uses the kit. The only consumer is the unregistered toy
-harness `tests/kit/toy/index.html`. Existing pages are frozen and are never retrofitted.
+Status: **Phase 1.** The toy harness `tests/kit/toy/index.html` uses every module. One page uses one block:
+CON-CHE-CALORIMETER-01's explainer mode (media production only, off for learners) embeds `cam@1` for its named camera
+shots. Every other page is unchanged; `tests/kit/test_px_kit.py` fails on any other page or block. Existing pages are
+frozen and are never retrofitted.
 
 ## Layers
 

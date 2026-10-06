@@ -1,6 +1,6 @@
 {
-  "version": 3,
-  "updated": "2026-10-03",
+  "version": 5,
+  "updated": "2026-10-06",
   "policy": "The only differences allowed between a reviewed spoken form and its local transcription. A transcriber writes some spoken words as symbols or digits; these rules map such a transcript token back to the words it stands for, and every application is listed in the verification record. Nothing else is equated: any other difference is a missing, added or substituted word and fails. A rule never changes scientific meaning, and passing here does not prove pronunciation - human listening remains the final gate. Add a rule only after a person has checked the audio it came from, and bump the version.",
   "tokens": {
     "kp": {
@@ -46,6 +46,14 @@
     "oh": {
       "spoken": "o h",
       "observed": "whisper ggml-small.en, 2026-10-03, 'O H minus' written as 'OH minus'"
+    },
+    "qv": {
+      "spoken": "q v",
+      "observed": "whisper ggml-small.en, 2026-10-06, 'q V' (heat at constant volume) written as 'Qv'; audio of CON-CHE-CALORIMETER-01 reel A line 8 checked by Ankit, 2026-10-06"
+    },
+    "w0": {
+      "spoken": "w zero",
+      "observed": "whisper ggml-small.en, 2026-10-06, 'w zero' (no expansion work) written as 'W0'; audio of CON-CHE-CALORIMETER-01 reel B line 4 checked by Ankit, 2026-10-06"
     }
   },
   "integers": {

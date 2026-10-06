@@ -83,7 +83,11 @@ def load_library(path=LIBRARY):
 
 
 def story_beats(spec):
-    """the beat ids the composer will build for this story: fixed beats plus one per moment"""
+    """the beat ids the composer will build for this story: fixed beats plus one per moment. A concept explainer
+    (template concept-explainer-v1, tools/reel-maker/generate-explainer.js) has no question beats: its beats are its
+    own scenes, in order."""
+    if (spec or {}).get("template") == "concept-explainer-v1":
+        return list((spec or {}).get("scenes") or [])
     moments = ((spec or {}).get("story") or {}).get("moments") or []
     return FIXED_BEATS[:5] + ["moment-" + str(m.get("id")) for m in moments if m.get("id") is not None] + FIXED_BEATS[5:]
 

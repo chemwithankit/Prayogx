@@ -360,6 +360,26 @@ def entry_of(sid):
     return next((s for s in man["simulations"] if s["id"] == sid), None)
 
 
+_ROMAN = {"XI": "11", "XII": "12", "IX": "9", "X": "10"}
+
+
+def ncert_context(e):
+    """An NCERT concept's source, from its registry entry: class, subject, chapter and its own page (the Python twin of
+    tools/reel-maker/context.js reelContext for kind "concept"). Missing metadata is an error naming the field."""
+    src = e.get("source") or {}
+    miss = [f for f, v in (("subject", e.get("subject")), ("chapter", e.get("chapter")), ("folder", e.get("folder")),
+                           ("source.title", src.get("title")), ("source.chapter", src.get("chapter"))) if not v]
+    if miss:
+        raise PublishError("state", "%s: YouTube metadata needs %s in data/manifest.json" % (e.get("id"), ", ".join(miss)))
+    m = re.search(r"Class\s+(XII|XI|X|IX|\d{1,2})\b", src["title"], re.I)
+    c = re.match(r"\s*(\d+)\b", src["chapter"])
+    if not m or not c:
+        raise PublishError("state", "%s: source.title must name the NCERT class and source.chapter start with its number" % e.get("id"))
+    cls = _ROMAN.get(m.group(1).upper(), m.group(1))
+    return {"cls": cls, "chapterNo": c.group(1), "link": "https://prayogx.co.in/" + e["folder"].lstrip("/"),
+            "line": "NCERT Class %s %s, Chapter %s %s" % (cls, e["subject"], c.group(1), e["chapter"])}
+
+
 def build_metadata(sid, m=None):
     e = entry_of(sid)
     if not e:
@@ -368,21 +388,31 @@ def build_metadata(sid, m=None):
     spec = json.load(open(spec_p, encoding="utf-8")) if os.path.exists(spec_p) else {}
     cap = spec.get("caption") or {}
     short = re.sub(r"[<>]", "", e.get("shortTitle") or e["title"]).strip()
-    tail = " | JEE Advanced %s %s Q%s" % (e["year"], e["subject"], e["questionNumber"])
-    title = short[: TITLE_MAX - len(tail)].rstrip() + tail
-    link = "https://prayogx.co.in/s/%s/" % sid
     hook = re.sub(r"[<>]", "", cap.get("hook", "")).strip()
     lines = [hook] if hook else []
-    lines += ["", "A virtual experiment built from JEE Advanced %s Paper %s, %s Q.%s (%s). The footage is the real PrayogX simulation, run step by step."
-              % (e["year"], e["paperNumber"], e["subject"], e["questionNumber"], e["chapter"]),
-              "", "Try the full experiment free: " + link,
+    if e.get("kind") == "concept" or sid.startswith("CON-"):
+        # an NCERT concept: its book, class and chapter, and its own page - never a JEE year, paper or question
+        nc = ncert_context(e)
+        tail = " | NCERT Class %s %s" % (nc["cls"], e["subject"])
+        link = nc["link"]
+        lines += ["", "A virtual experiment for %s (%s). The footage is the real PrayogX simulation, run step by step."
+                  % (nc["line"], e.get("shortTitle") or e["title"])]
+        head_tags = ["PrayogX", "NCERT", "NCERT Class %s" % nc["cls"], "Class %s %s" % (nc["cls"], e["subject"])]
+    else:
+        tail = " | JEE Advanced %s %s Q%s" % (e["year"], e["subject"], e["questionNumber"])
+        link = "https://prayogx.co.in/s/%s/" % sid
+        lines += ["", "A virtual experiment built from JEE Advanced %s Paper %s, %s Q.%s (%s). The footage is the real PrayogX simulation, run step by step."
+                  % (e["year"], e["paperNumber"], e["subject"], e["questionNumber"], e["chapter"])]
+        head_tags = ["PrayogX", "JEE Advanced", "JEE Advanced %s" % e["year"]]
+    title = short[: TITLE_MAX - len(tail)].rstrip() + tail
+    lines += ["", "Try the full experiment free: " + link,
               "", "Music and sound effects: original, made by PrayogX."]
     tags_src = (cap.get("hashtags") or [])[:3]
     if tags_src:
         lines += ["", " ".join(t if t.startswith("#") else "#" + t for t in tags_src)]
     desc = "\n".join(lines).replace("<", "").replace(">", "")
     tags, n = [], 0
-    for t in ["PrayogX", "JEE Advanced", "JEE Advanced %s" % e["year"], e["subject"], e["chapter"]] + list(e.get("tags") or []):
+    for t in head_tags + [e["subject"], e["chapter"]] + list(e.get("tags") or []):
         t = re.sub(r"[<>,]", "", str(t)).strip()
         if t and t.lower() not in [x.lower() for x in tags] and n + len(t) + (1 if tags else 0) <= TAGS_MAX:
             tags.append(t); n += len(t) + (1 if len(tags) > 1 else 0)

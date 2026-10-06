@@ -332,7 +332,9 @@ beat, a measurable change at every groove stage, the hook in 3+ sections, 10+ in
 
 - Encoding needs macOS (AVFoundation + `swiftc`); elsewhere the generator stops with a clear message. Recording
   and `--preview` work anywhere.
-- One template so far (`question-simulation-v1`). Pages need `window.PX.start()` and something to record; older
+- One question template (`question-simulation-v1`). NCERT concepts are not made into question reels: `generate-reel.js`
+  refuses them and points to the concept explainer (`generate-explainer.js`); `context.js` holds both kinds' source
+  context (a concept's NCERT class, subject, chapter and page, never a JEE field). Pages need `window.PX.start()` and something to record; older
   pages may need `record.element`, `record.actions` or `record.done` in the spec.
 - The audio check's sync reference is Apple's decoder (AVFoundation); see Audio → Sync for other decoders.
 - Voice-over exists only as narrated variants (Voiceover above), built from a VERIFIED voice record; the publishers do

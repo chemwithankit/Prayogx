@@ -1,0 +1,89 @@
+{
+  "simulationId": "CON-CHE-CALORIMETER-01",
+  "template": "concept-explainer-v1",
+  "title": "Bomb calorimeter — how does it work?",
+  "design": "docs/ncert/media/BOMB-CALORIMETER-EXPLAINER.md",
+  "fps": 30,
+  "durationLimits": [
+    60,
+    90
+  ],
+  "formats": {
+    "wide": {
+      "width": 1920,
+      "height": 1080
+    },
+    "tall": {
+      "width": 1080,
+      "height": 1920
+    }
+  },
+  "scenes": [
+    "intro",
+    "inside",
+    "around",
+    "rigid",
+    "ignite",
+    "heat",
+    "measure",
+    "system",
+    "work",
+    "takeaway"
+  ],
+  "reels": {
+    "A": {
+      "title": "How a bomb calorimeter measures heat",
+      "format": "tall",
+      "durationLimits": [
+        20,
+        60
+      ],
+      "storyboard": "docs/ncert/media/BOMB-CALORIMETER-REELS.md",
+      "scenes": [
+        "titleA",
+        "inside",
+        "around",
+        "ignite",
+        "heat",
+        "measure",
+        "absorb",
+        "takeA"
+      ],
+      "durations": [
+        4,
+        6,
+        7,
+        6,
+        6,
+        7,
+        9,
+        6.5
+      ],
+      "narration": "tools/reel-maker/reels/CON-CHE-CALORIMETER-01.reela.json"
+    },
+    "B": {
+      "title": "Why a bomb calorimeter measures ΔU",
+      "format": "tall",
+      "durationLimits": [
+        20,
+        60
+      ],
+      "storyboard": "docs/ncert/media/BOMB-CALORIMETER-REELS.md",
+      "scenes": [
+        "titleB",
+        "rigid",
+        "noWork",
+        "firstLaw",
+        "takeB"
+      ],
+      "durations": [
+        6,
+        7,
+        8,
+        8,
+        7.5
+      ],
+      "narration": "tools/reel-maker/reels/CON-CHE-CALORIMETER-01.reelb.json"
+    }
+  }
+}

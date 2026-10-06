@@ -52,8 +52,16 @@ toy = os.path.join(ROOT, "tests", "kit", "toy", "index.html")
 with open(toy, encoding="utf-8") as fh:
     blocks = px_kit.BLOCK.findall(fh.read())
 ok("the toy carries all five blocks", sorted(b[0] for b in blocks) == ["act", "cam", "clock", "dir", "obs"])
-hits = [p for p in px_kit.tree_files(ROOT) if "PX-KIT" in open(p, encoding="utf-8").read() and not p.startswith(os.path.join(ROOT, "tests", "kit"))]
-ok("no existing page carries kit blocks (nothing was migrated)", hits == [], [os.path.relpath(h, ROOT) for h in hits])
+# pages may carry kit blocks only where the owner approved it; any other page or block is an unplanned migration
+ALLOWED = {"simulations/concepts/chemistry/con-che-calorimeter-01/index.html": ["cam"]}   # explainer mode (B2): the kit's camera
+hits = {}
+for p in px_kit.tree_files(ROOT):
+    if p.startswith(os.path.join(ROOT, "tests", "kit")):
+        continue
+    t = open(p, encoding="utf-8").read()
+    if "PX-KIT" in t:
+        hits[os.path.relpath(p, ROOT)] = sorted(b[0] for b in px_kit.BLOCK.findall(t))
+ok("kit blocks appear only in approved pages, and only the approved blocks (nothing else was migrated)", hits == ALLOWED, hits)
 
 # 2 tamper cases, each on a fresh sandbox
 cases = []

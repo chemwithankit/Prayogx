@@ -67,27 +67,36 @@ def check(d):
     ok("the MP4 carries the rendered soundtrack: decoded waveform matches the mix, offset under one frame",
        corr > 0.9 and abs(lag) < 1 / fps, "correlation %.3f, offset %.1f ms" % (corr, lag * 1000))
 
-    # 3. the score and the effects, synchronized to the reel
+    # 3. the score and the effects, synchronized to the reel (a concept explainer: its own calm arc, below)
     roles = {t["role"] for t in rep.get("tracks", [])}
     arc = rep.get("arc", [])
     ids = [s["id"] for s in arc]
-    B = {b["id"]: b for b in d["beats"]}
-    mom = [b for b in d["beats"] if b["id"].startswith("moment-")]
+    explainer = d.get("kind") == "explainer"
     M = d.get("marks") or {}
-    want = [s for s in SECTIONS if s != "AHA" or M.get("aha")]
-    contiguous = all(abs(arc[i]["t1"] - arc[i + 1]["t0"]) < 0.002 for i in range(len(arc) - 1)) and arc and arc[0]["t0"] == 0 and abs(arc[-1]["t1"] - T) < 0.05
-    sync = (abs(next(s["t0"] for s in arc if s["id"] == "SIM_START") - mom[0]["t0"]) < 0.002
-            and abs(next(s["t0"] for s in arc if s["id"] == "ANSWER") - B["answer"]["t0"]) < 0.002
-            and abs(next(s["t0"] for s in arc if s["id"] == "BRAND") - B["payoff"]["t0"]) < 0.002
-            and (not M.get("aha") or abs(next(s["t0"] for s in arc if s["id"] == "AHA") - M["aha"]["t0"]) < 0.002)
-            and abs(rep["score"]["simStartDownbeat"] - mom[0]["t0"]) < 0.002)
-    cues = rep.get("sfxCues", [])
-    cues_ok = len(cues) >= 8 and all(0 <= c["t"] < T for c in cues)
-    has_aha_cue = not M.get("aha") or any(abs(c["t"] - M["aha"]["t0"]) < 0.05 for c in cues)
-    has_rev_cue = M.get("answer") and any(abs(c["t"] - M["answer"]["reveal"]) < 0.05 for c in cues)
-    ok("music and sound effects present, synchronized: the arc " + " > ".join(want) + " follows the reel's beats; cues at the aha and the reveal",
-       {"music", "sfx"} <= roles and [i for i in dict.fromkeys(ids)] == want and contiguous and sync and cues_ok and has_aha_cue and has_rev_cue,
-       "%s; %d cues; downbeat %.3f s = simulation start %.3f s" % (" > ".join(ids), len(cues), rep["score"]["simStartDownbeat"], mom[0]["t0"]))
+    if explainer:
+        sc = d["beats"]
+        contiguous = all(abs(arc[i]["t1"] - arc[i + 1]["t0"]) < 0.002 for i in range(len(arc) - 1)) and arc and arc[0]["t0"] == 0 and abs(arc[-1]["t1"] - T) < 0.05
+        sync = len(sc) >= 3 and ids == ["INTRO", "BODY", "OUTRO"] and abs(arc[1]["t0"] - sc[1]["t0"]) < 0.002 and abs(arc[2]["t0"] - sc[-1]["t0"]) < 0.002
+        ok("music present and synchronized: the arc INTRO > BODY > OUTRO follows the explainer's scenes (opening, explanation, takeaway)",
+           {"music", "sfx"} <= roles and contiguous and sync, "%s; body from %.3f s, takeaway from %.3f s" % (" > ".join(ids), arc[1]["t0"] if len(arc) > 1 else -1, arc[2]["t0"] if len(arc) > 2 else -1))
+    else:
+        B = {b["id"]: b for b in d["beats"]}
+        mom = [b for b in d["beats"] if b["id"].startswith("moment-")]
+        M = d.get("marks") or {}
+        want = [s for s in SECTIONS if s != "AHA" or M.get("aha")]
+        contiguous = all(abs(arc[i]["t1"] - arc[i + 1]["t0"]) < 0.002 for i in range(len(arc) - 1)) and arc and arc[0]["t0"] == 0 and abs(arc[-1]["t1"] - T) < 0.05
+        sync = (abs(next(s["t0"] for s in arc if s["id"] == "SIM_START") - mom[0]["t0"]) < 0.002
+                and abs(next(s["t0"] for s in arc if s["id"] == "ANSWER") - B["answer"]["t0"]) < 0.002
+                and abs(next(s["t0"] for s in arc if s["id"] == "BRAND") - B["payoff"]["t0"]) < 0.002
+                and (not M.get("aha") or abs(next(s["t0"] for s in arc if s["id"] == "AHA") - M["aha"]["t0"]) < 0.002)
+                and abs(rep["score"]["simStartDownbeat"] - mom[0]["t0"]) < 0.002)
+        cues = rep.get("sfxCues", [])
+        cues_ok = len(cues) >= 8 and all(0 <= c["t"] < T for c in cues)
+        has_aha_cue = not M.get("aha") or any(abs(c["t"] - M["aha"]["t0"]) < 0.05 for c in cues)
+        has_rev_cue = M.get("answer") and any(abs(c["t"] - M["answer"]["reveal"]) < 0.05 for c in cues)
+        ok("music and sound effects present, synchronized: the arc " + " > ".join(want) + " follows the reel's beats; cues at the aha and the reveal",
+           {"music", "sfx"} <= roles and [i for i in dict.fromkeys(ids)] == want and contiguous and sync and cues_ok and has_aha_cue and has_rev_cue,
+           "%s; %d cues; downbeat %.3f s = simulation start %.3f s" % (" > ".join(ids), len(cues), rep["score"]["simStartDownbeat"], mom[0]["t0"]))
 
     # 4. provenance, re-checked against the library
     try:
@@ -132,38 +141,49 @@ def check(d):
        head < 0.05 and tail.max() < -60 and last < before - 6,
        "start %.3f, last frame %.0f dBFS, last 0.4 s %.1f dB under the outro" % (head, tail.max(), before - last))
 
-    # 9. the aha and the answer reveal are heard
-    def accent(t):
-        hit = short_rms_db(x, t, t + 0.3).max()
-        bed = np.median(short_rms_db(x, t - 1.6, t - 0.1))
-        return hit - bed, hit
-    acc = {}
-    if M.get("aha"):
-        acc["aha"] = accent(M["aha"]["t0"])
-    if M.get("answer"):
-        acc["reveal"] = accent(M["answer"]["reveal"])
-    meas["accentsDb"] = {k: round(v[0], 1) for k, v in acc.items()}
-    ok("the aha and the answer reveal land: each is at least 3 dB above the bed before it",
-       "reveal" in acc and all(v[0] >= 3 for v in acc.values()),
-       ", ".join("%s +%.1f dB" % (k, v[0]) for k, v in acc.items()))
-
-    # 10. the music gives way to on-screen text
-    dk, dd = ducking_check(rep)
-    ok("ducking: the music dips under the question and the answer text (and under each effect)", dk, dd)
-    # 11. the music itself: a composed, evolving track, measured on the music stem (before the effects and the mix)
-    if d.get("music") and os.path.exists(d["music"]):
-        mu, _ = AU.read_wav(d["music"])
-        mv = musicality(mu, rep, d["beats"])
-        meas["music"] = mv
-        sc = rep.get("score") or {}
-        ok("the music is composed and evolves: an energy arc (verse < groove, a breakdown on the aha, the drop the peak), "
-           "a steady beat, the groove changing at the moments, a recurring hook, %d+ instruments" % MIN_INSTRUMENTS,
-           mv["arc_ok"] and mv["beat"] >= 0.25 and mv["stageChanges"] >= mv["stagesExpected"] and mv["hookSections"] >= 3 and sc.get("instrumentCount", 0) >= MIN_INSTRUMENTS,
-           "groove %.1f / verse %.1f / aha %.1f / drop %.1f LUFS, beat %.2f, %d of %d stage changes, hook in %d sections, %s instruments (%s, %s BPM)"
-           % (mv["lufs"].get("SIM_START", -99), mv["lufs"].get("QUESTION", -99), mv["lufs"].get("AHA", -99), mv["lufs"].get("ANSWER", -99), mv["beat"],
-              mv["stageChanges"], mv["stagesExpected"], mv["hookSections"], sc.get("instrumentCount"), sc.get("style"), sc.get("bpm")))
+    if explainer:
+        # 9-11 (explainer): a calm bed - no riser, impact or drop - composed and changing gently with the scenes
+        sco = rep.get("score") or {}
+        loud = [i for i in (sco.get("instruments") or []) if i in ("riser", "impact")]
+        ok("a calm teaching bed: no riser, impact or drop in the score (the voice carries the lesson)", not loud and sco.get("engine") == "prayogx-score-v2",
+           "instruments: " + ", ".join(sco.get("instruments") or []))
+        nb = len([v for v in sco.get("grooveVariations") or []])
+        ok("the music is composed and changes gently at the scenes: %d+ instruments, a texture per explanation scene" % 5,
+           sco.get("instrumentCount", 0) >= 5 and nb >= max(1, len(d["beats"]) - 2),
+           "%s instruments (%s, %s BPM), %d body textures for %d explanation scenes" % (sco.get("instrumentCount"), sco.get("style"), sco.get("bpm"), nb, len(d["beats"]) - 2))
     else:
-        ok("the music is composed and evolves (music stem)", False, "no music stem to measure")
+        # 9. the aha and the answer reveal are heard
+        def accent(t):
+            hit = short_rms_db(x, t, t + 0.3).max()
+            bed = np.median(short_rms_db(x, t - 1.6, t - 0.1))
+            return hit - bed, hit
+        acc = {}
+        if M.get("aha"):
+            acc["aha"] = accent(M["aha"]["t0"])
+        if M.get("answer"):
+            acc["reveal"] = accent(M["answer"]["reveal"])
+        meas["accentsDb"] = {k: round(v[0], 1) for k, v in acc.items()}
+        ok("the aha and the answer reveal land: each is at least 3 dB above the bed before it",
+           "reveal" in acc and all(v[0] >= 3 for v in acc.values()),
+           ", ".join("%s +%.1f dB" % (k, v[0]) for k, v in acc.items()))
+
+        # 10. the music gives way to on-screen text
+        dk, dd = ducking_check(rep)
+        ok("ducking: the music dips under the question and the answer text (and under each effect)", dk, dd)
+        # 11. the music itself: a composed, evolving track, measured on the music stem (before the effects and the mix)
+        if d.get("music") and os.path.exists(d["music"]):
+            mu, _ = AU.read_wav(d["music"])
+            mv = musicality(mu, rep, d["beats"])
+            meas["music"] = mv
+            sc = rep.get("score") or {}
+            ok("the music is composed and evolves: an energy arc (verse < groove, a breakdown on the aha, the drop the peak), "
+               "a steady beat, the groove changing at the moments, a recurring hook, %d+ instruments" % MIN_INSTRUMENTS,
+               mv["arc_ok"] and mv["beat"] >= 0.25 and mv["stageChanges"] >= mv["stagesExpected"] and mv["hookSections"] >= 3 and sc.get("instrumentCount", 0) >= MIN_INSTRUMENTS,
+               "groove %.1f / verse %.1f / aha %.1f / drop %.1f LUFS, beat %.2f, %d of %d stage changes, hook in %d sections, %s instruments (%s, %s BPM)"
+               % (mv["lufs"].get("SIM_START", -99), mv["lufs"].get("QUESTION", -99), mv["lufs"].get("AHA", -99), mv["lufs"].get("ANSWER", -99), mv["beat"],
+                  mv["stageChanges"], mv["stagesExpected"], mv["hookSections"], sc.get("instrumentCount"), sc.get("style"), sc.get("bpm")))
+        else:
+            ok("the music is composed and evolves (music stem)", False, "no music stem to measure")
     # 12. narrated reels only: the voice checks (a silent reel has no voice in its report and skips them)
     if (rep.get("mix") or {}).get("voice"):
         vc, vm = check_voice(d, rep)
@@ -206,7 +226,8 @@ def check_voice(d, rep):
     segs = nar.get("segments") or []
     ok("narration exists: a voice profile and at least one segment", bool(nar.get("voiceProfile")) and len(segs) > 0 and len(v.get("segments", [])) == len(segs),
        "%d narration segments, %d placed" % (len(segs), len(v.get("segments", []))))
-    nv = NA.validate({"story": d.get("story") or {}, "narration": nar})
+    nv = NA.validate({"template": "concept-explainer-v1", "scenes": [b["id"] for b in d["beats"]], "narration": nar} if d.get("kind") == "explainer"
+                     else {"story": d.get("story") or {}, "narration": nar})
     ok("the voice profile and the narration are valid", nv["ok"], "; ".join(nv["errors"][:3]) or nar.get("voiceProfile"))
     try:
         a = AU.check_asset(AU.load_library(), v["assetId"], "voice")

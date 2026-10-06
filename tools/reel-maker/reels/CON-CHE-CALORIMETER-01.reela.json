@@ -1,0 +1,66 @@
+{
+  "simulationId": "CON-CHE-CALORIMETER-01",
+  "template": "concept-explainer-v1",
+  "note": "Narration for concept explainer reel A (How a bomb calorimeter measures heat): read by tools/reel-maker/voice.py --variant reela. The film itself is tools/reel-maker/explainers/CON-CHE-CALORIMETER-01.json -> reels.A; storyboard docs/ncert/media/BOMB-CALORIMETER-REELS.md.",
+  "explainer": {
+    "spec": "tools/reel-maker/explainers/CON-CHE-CALORIMETER-01.json",
+    "reel": "A"
+  },
+  "scenes": [
+    "titleA",
+    "inside",
+    "around",
+    "ignite",
+    "heat",
+    "measure",
+    "absorb",
+    "takeA"
+  ],
+  "narration": {
+    "voiceProfile": "prayogx-en-emily-v1",
+    "reviewedBy": "Ankit",
+    "reviewedAt": "2026-10-06",
+    "segments": [
+      {
+        "beat": "titleA",
+        "text": "How a bomb calorimeter measures heat",
+        "spoken": "Let's see how a bomb calorimeter measures the heat released when something burns."
+      },
+      {
+        "beat": "inside",
+        "text": "steel bomb (sealed) · sample · ignition wire · oxygen, O₂",
+        "spoken": "Inside a sealed steel bomb, a small sample touches an ignition wire, surrounded by oxygen."
+      },
+      {
+        "beat": "around",
+        "text": "water (known mass) · insulated container · stirrer · thermometer",
+        "spoken": "The bomb sits in a known amount of water, in an insulated container, with a stirrer and a thermometer."
+      },
+      {
+        "beat": "ignite",
+        "text": "ignition: a current through the wire",
+        "spoken": "A current through the wire ignites the sample, and it burns inside the sealed bomb."
+      },
+      {
+        "beat": "heat",
+        "text": "heat flows through the steel into the water",
+        "spoken": "The heat flows through the steel into the water. The stirrer spreads it evenly."
+      },
+      {
+        "beat": "measure",
+        "text": "ΔT = rise in temperature · it measures temperature, not heat",
+        "spoken": "The thermometer rises, then levels off. It measures temperature, not heat. We record the rise: delta T."
+      },
+      {
+        "beat": "absorb",
+        "text": "calorimeter = bomb + water + container · heat absorbed by the calorimeter = C ΔT",
+        "spoken": "The bomb, water and container form the calorimeter. Its heat capacity, C, is known, so it absorbed C delta T of heat."
+      },
+      {
+        "beat": "takeA",
+        "text": "The reaction released exactly that heat: q_V = −C ΔT",
+        "spoken": "The reaction released exactly that heat: q V equals minus C delta T."
+      }
+    ]
+  }
+}

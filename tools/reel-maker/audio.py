@@ -4,7 +4,8 @@
     python3 tools/reel-maker/audio.py --plan PLAN.json --out AUDIO.wav --report AUDIO.json
 
 PLAN.json (written by generate-reel.js) holds the reel's beats, the composer's sound-effect cues, its sync marks (the
-aha and the answer reveal), the subject and chapter, and optional spec.audio settings.
+aha and the answer reveal), the subject and chapter, and optional spec.audio settings. A concept explainer's plan
+(generate-explainer.js, "kind": "explainer") has its scenes as beats, no marks and a calm score (music.py).
 
 Every sound is made here, by code: oscillators, additive partials and filtered noise. No samples, loops or recordings
 are used, so the music and the effects are PrayogX's own work (audio_library.json records that provenance; an asset
@@ -237,7 +238,10 @@ def sfx_stem(cues, n, rng):
 
 # ------------------------------------------------------------------ the mix
 def text_windows(plan):
-    """on-screen text the music ducks under: (t0, t1, dB, what)"""
+    """on-screen text the music ducks under: (t0, t1, dB, what). A concept explainer (plan kind "explainer") has none:
+    its music is a quiet bed that already ducks under the voice, which carries the lesson."""
+    if plan.get("kind") == "explainer":
+        return []
     B = {b["id"]: b for b in plan["beats"]}
     M = plan.get("marks") or {}
     w = [(B["question"]["t0"], B["question"]["t0"] + B["question"]["dur"], -6.0, "question text"),

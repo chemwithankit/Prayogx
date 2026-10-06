@@ -1,0 +1,48 @@
+{
+  "simulationId": "CON-CHE-CALORIMETER-01",
+  "template": "concept-explainer-v1",
+  "note": "Narration for concept explainer reel B (Why a bomb calorimeter measures ΔU): read by tools/reel-maker/voice.py --variant reelb. The film itself is tools/reel-maker/explainers/CON-CHE-CALORIMETER-01.json -> reels.B; storyboard docs/ncert/media/BOMB-CALORIMETER-REELS.md.",
+  "explainer": {
+    "spec": "tools/reel-maker/explainers/CON-CHE-CALORIMETER-01.json",
+    "reel": "B"
+  },
+  "scenes": [
+    "titleB",
+    "rigid",
+    "noWork",
+    "firstLaw",
+    "takeB"
+  ],
+  "narration": {
+    "voiceProfile": "prayogx-en-emily-v1",
+    "reviewedBy": "Ankit",
+    "reviewedAt": "2026-10-06",
+    "segments": [
+      {
+        "beat": "titleB",
+        "text": "Why a bomb calorimeter measures ΔU · measured: q_V = −C ΔT",
+        "spoken": "A bomb calorimeter measures q V, the heat of a reaction at constant volume, from a temperature rise. Why is that delta U?"
+      },
+      {
+        "beat": "rigid",
+        "text": "rigid steel walls: they cannot move · ΔV = 0",
+        "spoken": "The bomb's steel walls are rigid. They cannot move, so the volume stays constant: delta V is zero."
+      },
+      {
+        "beat": "noWork",
+        "text": "the gases cannot push the walls outward · w = 0",
+        "spoken": "When the sample burns, the gases cannot push the walls outward, so no expansion work is done: w is zero."
+      },
+      {
+        "beat": "firstLaw",
+        "text": "first law: ΔU = q + w · w = 0, so ΔU = q_V",
+        "spoken": "The first law says delta U equals q plus w. With w zero, delta U equals q V."
+      },
+      {
+        "beat": "takeB",
+        "text": "A bomb calorimeter measures the change in internal energy: ΔU = q_V = −C ΔT",
+        "spoken": "So a bomb calorimeter measures the change in internal energy: delta U equals q V equals minus C delta T."
+      }
+    ]
+  }
+}

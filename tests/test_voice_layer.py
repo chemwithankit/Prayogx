@@ -136,15 +136,15 @@ def main():
                                                                        "nine hundred ninety-nine thousand nine hundred ninety-nine"])
     r = VV.compare("ninety-five thousand", wj("96,000"), TABLE)
     chk("A11 a number with a different value fails (the rule never equates values)", r["status"] == "FAILED", r)
-    chk("A12 the equivalence table is versioned and small: observed tokens, exact integer and decimal rules, the reviewed spelling pair (v3)",
-        TABLE["version"] == 3 and (TABLE.get("decimals") or {}).get("enabled") and set(TABLE["tokens"]) == {"kp", "kc", "rt", "h2so4", "g0", "h0", "s0", "e0", "h+", "oh-", "oh"} and TABLE["integers"]["enabled"]
+    chk("A12 the equivalence table is versioned and small: observed tokens, exact integer and decimal rules, the reviewed spelling pair (v5)",
+        TABLE["version"] == 5 and (TABLE.get("decimals") or {}).get("enabled") and set(TABLE["tokens"]) == {"kp", "kc", "rt", "h2so4", "g0", "h0", "s0", "e0", "h+", "oh-", "oh", "qv", "w0"} and TABLE["integers"]["enabled"]
         and TABLE["spelling"]["canonical"] == {"millimeter": "millimetre", "millimeters": "millimetres"})
     r = VV.compare("a fifth of a millimetre per second", wj("a fifth of a millimeter per second"), TABLE)
     chk("A14 spelling: the reviewed millimetre / millimeter pair passes and the transcript respelling is listed",
-        r["status"] == "VERIFIED" and [e["rule"] for e in r["equivalencesApplied"]] == ['spelling "millimeter" -> "millimetre" (v3)'], r["equivalencesApplied"])
+        r["status"] == "VERIFIED" and [e["rule"] for e in r["equivalencesApplied"]] == ['spelling "millimeter" -> "millimetre" (v5)'], r["equivalencesApplied"])
     r = VV.compare("a fifth of a millimeter per second", wj("two millimetres"), TABLE)
     chk("A15 spelling works both ways, and an American-spelled script's respelling is listed too (never silent)",
-        VV.compare("a fifth of a millimeter per second", wj("a fifth of a millimetre per second"), TABLE)["expectedRespelled"][0]["rule"] == 'spelling "millimeter" -> "millimetre" (v3)')
+        VV.compare("a fifth of a millimeter per second", wj("a fifth of a millimetre per second"), TABLE)["expectedRespelled"][0]["rule"] == 'spelling "millimeter" -> "millimetre" (v5)')
     r = VV.compare("a fifth of a millimetre per second", wj("a fifth of a meter per second"), TABLE)
     chk("A16 the spelling rule never equates different words: 'meter' for 'millimetre' fails", r["status"] == "FAILED" and r["substituted"], r)
     sp = "a fifth of a millimetre per second"
@@ -153,8 +153,8 @@ def main():
         sp == "a fifth of a millimetre per second" and VV.spoken_sha256(sp) != VV.spoken_sha256("a fifth of a millimeter per second"))
     ANS = "So the drift velocity is about zero point two one millimetres per second — that's option C."
     r = VV.compare(ANS, wj("So the drift velocity is about 0.21 millimeters per second, that's option C."), TABLE)
-    chk("A18 decimal: 'zero point two one' <-> 0.21 passes, and both the decimal and the spelling rule are listed (v3)",
-        r["status"] == "VERIFIED" and [e["rule"] for e in r["equivalencesApplied"]] == ['decimal "0.21" -> "zero point two one" (v3)', 'spelling "millimeters" -> "millimetres" (v3)'],
+    chk("A18 decimal: 'zero point two one' <-> 0.21 passes, and both the decimal and the spelling rule are listed (v5)",
+        r["status"] == "VERIFIED" and [e["rule"] for e in r["equivalencesApplied"]] == ['decimal "0.21" -> "zero point two one" (v5)', 'spelling "millimeters" -> "millimetres" (v5)'],
         r["equivalencesApplied"])
     chk("A19 decimal: 'zero point two one' <-> 0.20 fails (a different value)", VV.compare("zero point two one", wj("0.20"), TABLE)["status"] == "FAILED")
     chk("A20 decimal: 'zero point two one' <-> 0.201 fails (an extra digit)", VV.compare("zero point two one", wj("0.201"), TABLE)["status"] == "FAILED")
@@ -266,10 +266,11 @@ def main():
     # ============================================================ F. disclosure and silent reels
     gr = open(os.path.join(RM, "generate-reel.js"), encoding="utf-8").read()
     vj = open(os.path.join(RM, "validate.js"), encoding="utf-8").read()
+    cx = open(os.path.join(RM, "context.js"), encoding="utf-8").read()   # the caption lives in context.js (captionText), shared by both kinds
     chk("F1 the caption adds the voice asset's disclosure only when the reel has a voice (from audio.py's report, never a literal)",
-        "voice && voice.disclosureText ? ['', voice.disclosureText] : []" in gr and "caption(spec, entry, (audioRep.mix || {}).voice)" in gr)
+        "voice && voice.disclosureText ? ['', voice.disclosureText] : []" in cx and "captionText(spec, entry, ctx, (audioRep.mix || {}).voice)" in gr)
     chk("F2 validate.js checks the disclosure word for word, for narrated reels only", "if (VO) ok('caption: the AI-voice disclosure line" in vj and "ct.indexOf(VO.disclosureText) >= 0" in vj)
-    code = "".join(open(os.path.join(RM, f), encoding="utf-8").read() for f in ("audio.py", "audio_check.py", "generate-reel.js", "validate.js", "voice_verify.py", "narration.py"))
+    code = "".join(open(os.path.join(RM, f), encoding="utf-8").read() for f in ("audio.py", "audio_check.py", "generate-reel.js", "context.js", "validate.js", "voice_verify.py", "narration.py"))
     chk("F3 the disclosure string appears in no code file (it lives once, in audio_library.json)", "AI-generated voice reading a script" not in code)
     chk("F4 reel.json records aiNarration for the publishers' synthetic-media disclosure", "aiNarration: !!(audioRep.mix || {}).voice" in gr)
     ac = open(os.path.join(RM, "audio_check.py"), encoding="utf-8").read()

@@ -27,6 +27,7 @@ const { execFileSync } = require('child_process');
 const { launch } = require('../../tests/_browser');
 const { record } = require('./recorder');
 const { validate } = require('./validate');
+const { reelContext, captionText } = require('./context');
 
 const HERE = __dirname, ROOT = path.resolve(HERE, '..', '..');
 const PY = fs.existsSync(path.join(ROOT, 'tests/.venv/bin/python3')) ? path.join(ROOT, 'tests/.venv/bin/python3') : 'python3';
@@ -118,14 +119,14 @@ function encoder() {
   return bin;
 }
 
-async function compose(spec, entry, question, footage, work, outDir, preview) {
+async function compose(spec, entry, source, question, footage, work, outDir, preview) {
   const b = await launch();
   try {
     const ctx = await b.newContext({ viewport: { width: 1080, height: 1920 }, deviceScaleFactor: 1 });
     const p = await ctx.newPage();
     const errs = []; p.on('pageerror', e => errs.push(e.message)); p.on('console', m => { if (m.type() === 'error') errs.push(m.text()); });
     await p.goto(fileUrl(path.join(HERE, 'composer', 'index.html')));
-    const data = { spec: spec, entry: entry, question: question, footage: footage, stills: fs.readdirSync(path.join(work, 'stills')).filter(f => f.endsWith('.png')),
+    const data = { spec: spec, entry: entry, context: source, question: question, footage: footage, stills: fs.readdirSync(path.join(work, 'stills')).filter(f => f.endsWith('.png')),
       footageBase: fileUrl(path.join(work, 'footage')) + '/', stillsBase: fileUrl(path.join(work, 'stills')) + '/' };
     const tl = await p.evaluate(d => REEL.init(d), data);
     const fps = spec.fps || 30, n = Math.round(tl.duration * fps);
@@ -150,13 +151,6 @@ async function compose(spec, entry, question, footage, work, outDir, preview) {
   } finally { await b.close(); }
 }
 
-function caption(spec, entry, voice) {
-  const c = spec.caption || {};
-  /* a narrated reel adds the voice asset's standard AI-voice disclosure (audio.py report -> mix.voice); a silent reel adds nothing */
-  const disclosure = voice && voice.disclosureText ? ['', voice.disclosureText] : [];
-  return [c.hook, '', c.body, '', 'JEE Advanced ' + entry.year + ' · Paper ' + entry.paperNumber + ' · ' + entry.subject + ' · Q.' + entry.questionNumber, '', c.cta, '', (c.hashtags || []).join(' ')]
-    .concat(disclosure).filter(x => x !== undefined).join('\n').replace(/\n{3,}/g, '\n\n') + '\n';
-}
 
 (async () => {
   const o = args(), t0 = Date.now();
@@ -165,12 +159,17 @@ function caption(spec, entry, voice) {
   if (!entry) { console.error('simulation not found: ' + o.id + ' is not in data/manifest.json (IDs look like ADV-2026-P1-PHY-Q03)'); process.exit(2); }
   const pageFile = path.join(ROOT, entry.path), outDir = outputDir(o), work = path.join(outDir, '.work');
   if (!fs.existsSync(pageFile)) { console.error('simulation page missing: ' + entry.path); process.exit(2); }
+  /* the source context (context.js): a JEE question or an NCERT concept; missing metadata stops here, by name */
+  let ctx;
+  try { ctx = reelContext(entry); } catch (e) { console.error(e.message); process.exit(2); }
+  if (ctx.kind !== 'question') { console.error(o.id + ' is an NCERT concept: concepts are explained, not turned into question reels - use tools/reel-maker/generate-explainer.js'); process.exit(2); }
   if (fs.existsSync(path.join(outDir, 'publish', 'publish.lock'))) { console.error('a publish of ' + o.id + ' is running (tools/instagram_publish.py) - not regenerating its reel now'); process.exit(2); }
   const specFile = storyFile(o);
   if (!o.draft && !fs.existsSync(specFile)) { console.error('no reel story yet: ' + path.relative(ROOT, specFile) + '\nrun with --draft to record the page and write a first story spec, then edit it'); process.exit(2); }
   if (!o.preview && !o.draft) requireMac();
   const simDir = path.dirname(pageFile), before = folderHash(simDir);
   const spec = o.draft && !fs.existsSync(specFile) ? { record: { maxSeconds: 90, tailSeconds: 2.2 } } : JSON.parse(fs.readFileSync(specFile, 'utf8'));
+  if (!o.draft && spec.template !== ctx.template) { console.error('the story uses template ' + spec.template + ', but ' + o.id + ' is a ' + ctx.kind + ': use ' + ctx.template); process.exit(2); }
   /* narrated reels consume an already generated, VERIFIED voice record (tools/reel-maker/voice.py). Building never calls a
      voice provider and never spends credits; without the record the build stops (README -> Voiceover). */
   const voiceRecord = path.join(outDir, 'voice', 'voice.json');
@@ -208,7 +207,7 @@ function caption(spec, entry, voice) {
     return;
   }
   log('composing …');
-  const c = await compose(spec, entry, question, footage, work, outDir, o.preview);
+  const c = await compose(spec, entry, ctx, question, footage, work, outDir, o.preview);
   if (c.errors.length) throw new Error('composer errors: ' + c.errors.join(' | '));
   if (o.preview) { log('previews in ' + outDir); return; }
 
@@ -229,12 +228,13 @@ function caption(spec, entry, voice) {
   const container = JSON.parse(execFileSync(PY, [path.join(HERE, 'mp4tools.py'), 'strip-edits', path.join(outDir, 'reel.mp4'), '--audio-priming', String(AAC_PRIMING)]).toString());
   log('container: moov first ' + container.moovBeforeMdat + ', edit lists ' + container.editLists + ' (removed ' + container.removedBytes + ' bytes)');
 
-  fs.writeFileSync(path.join(outDir, 'caption.txt'), caption(spec, entry, (audioRep.mix || {}).voice));
+  /* a narrated reel adds the voice asset's standard AI-voice disclosure (audio.py report -> mix.voice); a silent reel adds nothing */
+  fs.writeFileSync(path.join(outDir, 'caption.txt'), captionText(spec, entry, ctx, (audioRep.mix || {}).voice));
   let commit = '';
   try { commit = execFileSync('git', ['-C', ROOT, 'rev-parse', '--short', 'HEAD']).toString().trim(); } catch (e) { commit = ''; }
   const after = folderHash(simDir);
   const manifest = {
-    simulationId: o.id, variant: o.variant || undefined, origin: o.origin, status: 'GENERATED', statusHistory: [], template: spec.template, created: new Date().toISOString(), sourcePage: entry.path, sourceRevision: entry.revision, repoCommit: commit,
+    simulationId: o.id, variant: o.variant || undefined, kind: ctx.kind, context: ctx, origin: o.origin, status: 'GENERATED', statusHistory: [], template: spec.template, created: new Date().toISOString(), sourcePage: entry.path, sourceRevision: entry.revision, repoCommit: commit,
     sourceIntegrity: { folder: path.relative(ROOT, simDir), sha256Before: before, sha256After: after, unchanged: before === after },
     answerReveal: c.timeline.answer, questionScale: c.timeline.questionScale,
     exam: entry.exam, year: entry.year, paper: entry.paperNumber, subject: entry.subject, chapter: entry.chapter, questionNumber: entry.questionNumber, answer: entry.answer,

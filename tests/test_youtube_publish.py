@@ -275,6 +275,29 @@ def run(tmp):
     IP.save_json(p, edited)
     chk("D5 an edited youtube.json is kept (the reviewed text is what is uploaded)", Y.load_metadata(SID)["title"] == "Edited title | JEE Advanced 2026 Physics Q15")
     os.remove(p)
+    # an NCERT concept: its own context, never a JEE year, paper or question; missing metadata fails by name
+    CID = "CON-CHE-DELTA-U-VS-DELTA-H"
+    cm = Y.build_metadata(CID)
+    chk("D6 a concept's title names its NCERT class and subject, with no JEE year, paper or question",
+        cm["title"].endswith(" | NCERT Class 11 Chemistry") and not re.search(r"JEE|Paper \d|Q\.?\d|2026", cm["title"] + cm["description"]), cm["title"])
+    chk("D7 a concept links its own published page and states its NCERT chapter; tags lead with NCERT",
+        cm["link"] == "https://prayogx.co.in/simulations/concepts/chemistry/con-che-delta-u-vs-delta-h/" and cm["link"] in cm["description"]
+        and "NCERT Class 11 Chemistry, Chapter 5 Thermodynamics" in cm["description"] and cm["tags"][:3] == ["PrayogX", "NCERT", "NCERT Class 11"]
+        and not Y.metadata_problems(cm), cm["description"])
+    real = Y.entry_of
+    try:
+        for f, mk in (("source.title", lambda e: dict(e, source=dict(e["source"], title=""))), ("folder", lambda e: {k: v for k, v in e.items() if k != "folder"})):
+            Y.entry_of = lambda sid, f=f, mk=mk: mk(real(sid))
+            err = None
+            try:
+                Y.build_metadata(CID)
+            except Y.PublishError as e:
+                err = str(e)
+            chk("D8 a concept without %s is refused by name, never given JEE metadata" % f, err is not None and f in err, err)
+    finally:
+        Y.entry_of = real
+    chk("D9 a JEE question's metadata keeps its exam line and /s/ link (unchanged path)",
+        md["title"].endswith("| JEE Advanced 2026 Physics Q15") and md["link"] == "https://prayogx.co.in/s/%s/" % SID)
 
     # ============================================================ E. dry run and destinations
     setup(tmp)
