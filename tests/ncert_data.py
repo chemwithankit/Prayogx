@@ -56,10 +56,10 @@ secs = {s["id"]: s for s in chapters[CH]["sections"]}
 chk("approved APPLY links: 5.1.4 PHY-Q07, 5.2.1 CHE-Q01, 5.2.2 PHY-Q11, 5.6b/c CHE-Q13",
     secs["5.1.4"]["apply"] == ["ADV-2026-P1-PHY-Q07"] and secs["5.2.1"]["apply"] == ["ADV-2026-P1-CHE-Q01"]
     and secs["5.2.2"]["apply"] == ["ADV-2026-P1-PHY-Q11"] and secs["5.6b"]["apply"] == secs["5.6c"]["apply"] == ["ADV-2026-P1-CHE-Q13"])
-chk("pilots: DELTA-U-VS-DELTA-H and CALORIMETER-01 published under understand (5.2.2, 5.3); HESS-LAW (5.4e) and GIBBS-SPONTANEITY (5.6b, 5.6c) planned",
+chk("pilots: DELTA-U-VS-DELTA-H and CALORIMETER-01 published under understand (5.2.2, 5.3); REVERSIBLE-WORK (5.2.1), HESS-LAW (5.4e) and GIBBS-SPONTANEITY (5.6b, 5.6c) planned",
     secs["5.2.2"]["understand"] == secs["5.3"]["understand"] == ["CON-CHE-DELTA-U-VS-DELTA-H", "CON-CHE-CALORIMETER-01"]
     and secs["5.2.2"]["planned"] == secs["5.3"]["planned"] == []
-    and secs["5.4e"]["planned"] == ["CON-CHE-HESS-LAW"]
+    and secs["5.2.1"]["planned"] == ["CON-CHE-REVERSIBLE-WORK"] and secs["5.4e"]["planned"] == ["CON-CHE-HESS-LAW"]
     and secs["5.6b"]["planned"] == secs["5.6c"]["planned"] == ["CON-CHE-GIBBS-SPONTANEITY"])
 F = N.feed(ROOT, SIMS)
 chk("the feed is two files: the catalogue and the chapter", sorted(F) == ["%s.json" % CH, "catalog.json"])
@@ -68,6 +68,7 @@ chk("the committed content/ncert/ matches the feed byte for byte",
 chk("the feed is deterministic", N.serialise(N.feed(ROOT, SIMS)[CH + ".json"]) == N.serialise(F[CH + ".json"]))
 chf = F[CH + ".json"]
 chk("planned pages never ship", "planned" not in json.dumps(chf) and "CON-CHE-HESS-LAW" not in json.dumps(chf)
+    and "CON-CHE-REVERSIBLE-WORK" not in json.dumps(chf)
     and "CON-CHE-GIBBS-SPONTANEITY" not in json.dumps(chf))
 chk("a draft concept never ships, even when it exists in the library",
     not [c for c in chf["simulations"] if next((x for x in SIMS if x["id"] == c["id"]), {}).get("status") == "draft"])
@@ -123,7 +124,7 @@ refused("a JEE page under understand is refused", "only CON- concept simulations
 refused("a concept under apply is refused", "only ADV- JEE simulations",
         mutate_ch=lambda ch: sec(ch, "5.2.1")["apply"].append("CON-CHE-HESS-LAW"))
 refused("an unknown concept under understand is refused", "not in data/manifest.json",
-        mutate_ch=lambda ch: sec(ch, "5.4e")["understand"].append("CON-CHE-HESS-LAW"))
+        mutate_ch=lambda ch: sec(ch, "5.4e")["understand"].append("CON-CHE-NOT-REGISTERED"))
 refused("a malformed planned ID is refused", "only CON- IDs",
         mutate_ch=lambda ch: sec(ch, "5.4e")["planned"].append("CON-CHE-hess"))
 refused("pages outside the chapter are refused", "fall outside",
@@ -223,7 +224,7 @@ try:
     MAN0 = jload("data/manifest.json")
     LOCK0 = jload("data/revisions.json")
 
-    cid = "CON-CHE-HESS-LAW"
+    cid = "CON-CHE-HESS-FIXTURE"          # a test-only concept (CON-CHE-HESS-LAW itself is a real draft since 2026-10-06)
     folder = S.concept_folder(cid)
     os.makedirs(os.path.join(W, folder))
     open(os.path.join(W, folder, "index.html"), "w").write(

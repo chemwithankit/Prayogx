@@ -252,7 +252,8 @@ async function all(b, file, o) {
     const { ctx, p } = await open(b, file, { viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true });
     await p.evaluate(() => { PX.reset(); document.getElementById('labcv').scrollIntoView({ block: 'start' }); }); await frames(p, 2);
     const r = await p.evaluate(() => {
-      const vis = e => e && !e.hidden && e.offsetParent !== null, inView = e => { const q = e.getBoundingClientRect(); return q.top >= 0 && q.bottom <= innerHeight; };
+      /* a position:fixed element (the sticky button) has no offsetParent even when shown, so it counts by its box */
+      const vis = e => e && !e.hidden && (e.offsetParent !== null || (getComputedStyle(e).position === 'fixed' && e.getClientRects().length > 0)), inView = e => { const q = e.getBoundingClientRect(); return q.top >= 0 && q.bottom <= innerHeight; };
       const nb = document.getElementById('nextbtn'), sb = document.getElementById('stickybtn');
       const taps = [...document.querySelectorAll('button')].filter(vis).map(e => e.getBoundingClientRect().height);
       return { over: document.documentElement.scrollWidth - innerWidth, reach: (vis(nb) && inView(nb)) || (vis(sb) && inView(sb)), minTap: Math.min.apply(null, taps) };

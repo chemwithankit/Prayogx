@@ -1,0 +1,1353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>One gas, many paths: reversible and irreversible work | PrayogX</title>
+<meta name="description" content="Expand a gas against weights you lift off yourself: all at once, one by one, then grain by grain. Watch the work appear as an area on the p–V plot, find the reversible limit, push the gas back and see what an irreversible round trip leaves behind. NCERT Class 11 Chemistry, Thermodynamics §5.2.1.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232a78d6'/%3E%3Cpath d='M8 9h7v7h7v7' fill='none' stroke='white' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<meta name="sim-id" content="CON-CHE-REVERSIBLE-WORK">
+<style>
+:root{
+  color-scheme: light;
+  --surface-0:#f4f4f1; --surface-1:#fcfcfb; --surface-2:#ececea;
+  --line:#d9d9d4; --line-strong:#bcbcb5;
+  --text-primary:#0b0b0b; --text-secondary:#52514e; --text-muted:#77766f;
+  --s1:#2a78d6; --s2:#eb6834; --s3:#1baf7a; --s4:#4a3aa7;
+  --good:#00743f; --bad:#c0392b; --accent:#2a78d6;
+  --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+  --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --radius:12px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  color-scheme: dark;
+  --surface-0:#111110; --surface-1:#1a1a19; --surface-2:#232322;
+  --line:#34342f; --line-strong:#4a4a44;
+  --text-primary:#ffffff; --text-secondary:#c3c2b7; --text-muted:#95948b;
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#9085e9;
+  --good:#3fae7a; --bad:#e66767; --accent:#3987e5;
+}}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --surface-0:#111110; --surface-1:#1a1a19; --surface-2:#232322;
+  --line:#34342f; --line-strong:#4a4a44;
+  --text-primary:#ffffff; --text-secondary:#c3c2b7; --text-muted:#95948b;
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#9085e9;
+  --good:#3fae7a; --bad:#e66767; --accent:#3987e5;
+}
+*{box-sizing:border-box}
+[hidden]{display:none !important}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--surface-0);color:var(--text-primary);font-family:var(--sans);font-size:16px;line-height:1.6}
+header.top{border-bottom:1px solid var(--line);background:var(--surface-1)}
+.top-inner{max-width:1240px;margin:0 auto;padding:18px 20px 14px;position:relative}
+.brandbar{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.brandbar .pxmark{width:21px;height:21px;flex:none;display:block}
+.brandbar .wm{font-size:13px;font-weight:800;letter-spacing:.17em;color:var(--text-secondary);line-height:1}
+.brandbar .wm i{font-style:normal;color:var(--accent)}
+.simid{font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--text-muted)}
+h1{font-size:21px;line-height:1.3;margin:4px 0 4px;padding-right:80px}
+.meta{font-size:14px;color:var(--text-secondary);margin:0}
+.themebtn{position:absolute;top:14px;right:16px;border:1px solid var(--line-strong);background:var(--surface-2);
+  color:var(--text-secondary);border-radius:8px;padding:4px 9px;font-size:12px;cursor:pointer}
+.wrap{max-width:1240px;margin:0 auto;padding:0 20px 40px}
+section{margin:0 0 34px}
+h2{font-size:15px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-secondary);margin:26px 0 12px}
+h2 b{color:var(--accent);margin-right:8px}
+h3{font-size:17px;margin:22px 0 8px}
+.qcard{background:var(--surface-1);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px}
+.qtext{font-family:var(--sans);font-size:21px;line-height:1.5;margin:0}
+.qsub{font-size:15px;color:var(--text-secondary);margin:8px 0 0}
+#target{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;background:var(--surface-1);border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin:0 0 8px}
+#target .lbl{font-size:13px;font-weight:800;letter-spacing:.12em;color:var(--text-muted);text-transform:uppercase}
+#target .sym{font-family:var(--sans);font-size:20px;font-weight:600}
+#target .val{font-size:21px;font-weight:800;color:var(--good)}
+#target .val:empty{display:none}
+#target.pulse{animation:pxpulse .5s ease-in-out 3}
+@keyframes pxpulse{50%{background:color-mix(in srgb,var(--good) 24%,var(--surface-1));box-shadow:0 0 0 6px color-mix(in srgb,var(--good) 30%,transparent)}}
+@media (prefers-reduced-motion: reduce){#target.pulse{animation:none}}
+#narr{margin:0 2px 8px;font-size:19px;font-weight:700;color:var(--text-primary);min-height:1.6em}
+.stage{position:relative;border-radius:16px;overflow:hidden;background:#fbfaf6;box-shadow:0 10px 30px rgba(0,0,0,.18)}
+canvas#labcv{display:block;width:100%;height:auto;touch-action:pan-y}
+#controls{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:12px;padding:12px;border:1px solid var(--line);border-radius:14px;background:var(--surface-1)}
+#controls button{min-height:48px;font-size:16px;font-weight:700;border-radius:10px;border:1px solid var(--line-strong);background:var(--surface-2);color:var(--text-primary);padding:0 16px;cursor:pointer;font-family:var(--sans)}
+#controls button:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+#controls button:disabled{opacity:.45;cursor:not-allowed}
+#controls .go{background:var(--s3);color:#fff;border:none;font-weight:800;font-size:18px;min-height:56px;padding:0 22px}
+#controls .seg{display:flex;align-items:center;flex-wrap:wrap;gap:6px}
+#controls .seg>span{font-size:13px;font-weight:700;color:var(--text-muted);margin-right:4px;letter-spacing:.06em;text-transform:uppercase}
+#controls .seg button.done{box-shadow:inset 0 -4px 0 var(--s3)}
+#controls .seg button.chosen{background:var(--s4);color:#fff;border-color:var(--s4)}
+#controls .tools{display:flex;gap:8px;flex-wrap:wrap;margin-left:auto}
+#pausebtn[aria-pressed="true"]{background:var(--s4);color:#fff;border-color:var(--s4)}
+#pourbtn[data-arg="off"]{background:var(--s2);color:#fff;border-color:var(--s2)}
+.stickybtn{position:fixed;left:50%;transform:translateX(-50%);bottom:12px;z-index:20;width:min(520px,calc(100% - 32px));min-height:56px;border:none;border-radius:14px;background:#22c55e;color:#04210f;font:900 18px var(--sans);box-shadow:0 8px 24px rgba(0,0,0,.35);cursor:pointer;padding:0 16px}
+.stickybtn:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.sol{background:var(--surface-1);border:1px solid var(--line);border-radius:var(--radius);padding:6px 20px 16px}
+.sol ol.steps{padding-left:22px;margin:10px 0}
+.sol ol.steps li{margin:0 0 12px}
+.eq{font-family:var(--sans);font-size:18px;background:var(--surface-2);border-radius:8px;padding:4px 10px;display:inline-block;margin:4px 0}
+.concept{border-left:4px solid var(--accent);padding:2px 0 2px 14px;margin:14px 0}
+ul.take{padding-left:20px} ul.take li{margin:0 0 6px}
+table.ways{border-collapse:collapse;margin:8px 0;font-size:15px}
+table.ways th,table.ways td{border:1px solid var(--line);padding:4px 10px;text-align:left}
+.tablewrap{overflow-x:auto}
+.note{font-size:14px;color:var(--text-secondary)}
+ol.howto{padding-left:22px;margin:0} ol.howto li{margin:0 0 8px}
+footer{font-size:13px;color:var(--text-muted);border-top:1px solid var(--line);padding:16px 0 0}
+body.classroom .wrap{max-width:none;padding:0 18px 30px}
+body.classroom header.top,body.classroom section:not(#lab),body.classroom footer{display:none}
+body.classroom #narr{font-size:28px}
+body.classroom #target .sym{font-size:24px} body.classroom #target .val{font-size:28px}
+body.classroom #controls button{font-size:19px;min-height:56px}
+@media (max-width:760px){
+  .themebtn{min-height:44px;min-width:44px}
+  .wrap{padding:0 16px 32px}
+  .top-inner{padding:14px 16px 12px}
+  h1{font-size:18px}
+  .qtext{font-size:19px}
+  #narr{font-size:17px}
+  #controls{gap:8px;padding:10px}
+  #controls .go{flex:1 1 100%;justify-content:center}
+  #controls button{padding:0 12px}
+  #controls .seg>span{flex:1 1 100%;margin:0 0 2px}
+  #controls .tools{margin-left:0}
+  .sol{padding:4px 14px 12px}
+}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="top-inner">
+    <div class="brandbar"><svg class="pxmark" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><rect width="32" height="32" rx="8" fill="var(--accent)"/><path d="M8 9h7v7h7v7" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="wm">PRAYOG<i>X</i></span></div>
+    <div class="simid">CON-CHE-REVERSIBLE-WORK</div>
+    <h1>One Gas, Many Paths: Reversible and Irreversible Work</h1>
+    <p class="meta">NCERT Class 11 · Chemistry Part I · Ch 5 Thermodynamics · §5.2.1 Work · an interactive concept experience</p>
+    <button class="themebtn" id="themebtn" type="button">◐ theme</button>
+  </div>
+</header>
+<main class="wrap">
+<section id="question" aria-labelledby="qh">
+  <h2 id="qh"><b>01</b>Your experiment</h2>
+  <div class="qcard">
+    <p class="qtext">A gas expands from 2 L to 10 L at 25 °C. Does it always do the same work? You will expand it yourself, three different ways, and then push it back.</p>
+    <p class="qsub">The gas is NCERT's (Problem 5.2): 2 L at 10 atm, kept at 25 °C by a water bath. Weights on the piston hold it in. The lab guide in the experiment explains what happened, why, and what to do next.</p>
+  </div>
+</section>
+
+<section id="lab" aria-labelledby="lh">
+  <h2 id="lh"><b>02</b>The piston and the p–V plot</h2>
+  <p class="keyres" id="target" data-kind="value" aria-live="polite"><span class="lbl">Target:</span><span class="sym">w for the reversible expansion, 2 L → 10 L</span><span class="val" id="ansval" data-sci></span></p>
+  <p id="narr" data-sci aria-live="polite">Ready.</p>
+  <div class="stage"><canvas id="labcv" width="1200" height="760" role="img" aria-label="A glass cylinder of gas stands in a water bath. A piston holds the gas in, pressed down by weights or by a heap of sand. Beside it, a pressure–volume plot draws the outside pressure as the gas expands and shades the area under it: the work done by the gas. A lab guide explains each step."></canvas></div>
+  <div id="guidesr" class="sr-only" aria-live="polite"></div>
+  <button type="button" id="stickybtn" class="stickybtn" hidden></button>
+  <div id="controls" role="group" aria-label="experiment controls">
+    <button class="go" type="button" id="nextbtn">…</button>
+    <div class="seg" role="group" aria-label="look at a part" id="inspgroup"><span>Look at</span><button type="button" id="insp-gas" data-act="inspect" data-arg="gas">The gas</button><button type="button" id="insp-weights" data-act="inspect" data-arg="weights">The weights</button><button type="button" id="insp-bath" data-act="inspect" data-arg="bath">The water bath</button></div>
+    <div class="seg" role="group" aria-label="lift the weights" id="liftgroup" hidden><span>Weights</span><button type="button" id="liftall" data-act="liftAll">Lift all 8 weights off</button><button type="button" id="lift" data-act="lift">Lift one weight off</button></div>
+    <div class="seg" role="group" aria-label="the sand" id="pourgroup" hidden><span>Sand</span><button type="button" id="pourbtn" data-act="pour" data-arg="on">Pour the sand</button></div>
+    <div class="seg" role="group" aria-label="make your prediction" id="predgroup" hidden><span>Predict</span><button type="button" id="pr-more" data-act="predict" data-arg="more">More work</button><button type="button" id="pr-less" data-act="predict" data-arg="less">Less work</button><button type="button" id="pr-same" data-act="predict" data-arg="same">The same work</button><button type="button" id="pb-one" data-act="predictBack" data-arg="one">All at once</button><button type="button" id="pb-each" data-act="predictBack" data-arg="each">One at a time</button><button type="button" id="pb-grain" data-act="predictBack" data-arg="grain">Grain by grain</button></div>
+    <div class="seg" role="group" aria-label="push the gas back" id="backgroup" hidden><span>Push back</span><button type="button" id="cb-one" data-act="compress" data-arg="one">All 8 weights at once</button><button type="button" id="cb-each" data-act="compress" data-arg="each">One weight at a time</button><button type="button" id="cb-grain" data-act="compress" data-arg="grain">Grain by grain</button><button type="button" id="addw" data-act="add">Add one weight</button></div>
+    <div class="seg" role="group" aria-label="three ways to the same end" id="waysgroup" hidden><span>Expand</span><button type="button" id="way-vacuum" data-act="path" data-arg="vacuum">Into a vacuum (5.2)</button><button type="button" id="way-p53" data-act="path" data-arg="p53">Against 1 atm (5.3)</button><button type="button" id="way-rev" data-act="path" data-arg="rev">Grain by grain, ≈ reversibly (5.4)</button></div>
+    <div class="tools">
+      <button type="button" id="replaybtn">↺ Replay</button>
+      <button type="button" id="pausebtn" aria-pressed="false">❚❚ Pause</button>
+      <button type="button" id="resetbtn">Reset</button>
+      <button type="button" id="classbtn" aria-pressed="false">Classroom</button>
+    </div>
+  </div>
+</section>
+
+<section id="solution" aria-labelledby="sh">
+  <h2 id="sh"><b>03</b>What the experiment showed</h2>
+<p id="solnote" class="qsub">The explanation opens once you have expanded the gas grain by grain and found the reversible work yourself.</p>
+<div id="solbody" hidden>
+  <div class="sol">
+    <ol class="steps">
+      <li><b>Work is an area.</b> When the outside pressure <i>p</i><sub>ex</sub> stays constant while the volume changes by Δ<i>V</i>, the work done on the gas is <span class="eq">w = −p<sub>ex</sub> ΔV</span> (NCERT eq. 5.2). On a p–V plot, the work done by the gas is the area under the outside-pressure line.</li>
+      <li><b>All eight weights off at once.</b> The outside pressure falls straight to 2 atm and the gas expands against it from 2 L to 10 L: <span class="eq">work by the gas = 2 atm × 8 L = 16.0 L atm</span></li>
+      <li><b>One weight at a time.</b> The gas expands in eight steps, against 9, 8, … 2 atm. Each step is a strip under its own pressure, and the strips add up to more area: <span class="eq">w = −Σ p ΔV, work by the gas = 28.6 L atm</span></li>
+      <li><b>Grain by grain.</b> Each grain lowers the outside pressure so little that the gas is always in balance with it. The steps hug the curve <i>pV</i> = 20 L atm and the area approaches its largest possible value, the reversible work: <span class="eq">w<sub>rev</sub> = −2.303 nRT log(V<sub>f</sub>/V<sub>i</sub>) = −20 L atm × 2.303 × log 5 = −32.2 L atm</span> (NCERT eq. 5.5). With 800 grains the gas did 32.1 L atm.</li>
+      <li><b>Back again.</b> Pushing the gas back needs work. All at once, against 10 atm, it costs 80.0 L atm, so the round trip leaves 64.0 L atm in the surroundings. One weight at a time it leaves 8.0 L atm; grain by grain only about 0.1. In general, <i>N</i> equal steps leave (p<sub>i</sub> − p<sub>f</sub>)(V<sub>f</sub> − V<sub>i</sub>)/<i>N</i> = 64/<i>N</i> L atm. Only the reversible path can be undone without leaving anything behind.</li>
+      <li><b>Same start, same end, three ways</b> (NCERT Problems 5.2–5.4). The gas starts at 2 L and ends at 10 L each time, at the same temperature, so Δ<i>U</i> = 0 and <i>q</i> = −<i>w</i>:
+        <div class="tablewrap"><table class="ways"><tr><th>Path</th><th>w / L atm</th><th>q / L atm</th><th>ΔU</th></tr>
+        <tr><td>Into a vacuum (5.2)</td><td>0</td><td>0</td><td>0</td></tr>
+        <tr><td>Against 1 atm (5.3)</td><td>−8.0</td><td>+8.0</td><td>0</td></tr>
+        <tr><td>Reversibly (5.4)</td><td>−32.2</td><td>+32.2</td><td>0</td></tr></table></div>
+        Work and heat depend on the path; Δ<i>U</i> does not.</li>
+    </ol>
+    <div class="concept"><b>Reversible process.</b> A process is reversible if it could, at any moment, be reversed by an infinitesimal change. It proceeds infinitely slowly through a series of equilibrium states, with the system and its surroundings always in near equilibrium (NCERT p. 141). All other processes are irreversible.</div>
+    <h3>Key takeaways</h3>
+    <ul class="take">
+      <li>The work done by a gas is the area under the outside-pressure path on the p–V plot.</li>
+      <li>Same start and end, different path → different work and heat; ΔU is the same.</li>
+      <li>The slower the expansion (the closer p<sub>ex</sub> stays to the gas pressure), the more work the gas does. The reversible path gives the most.</li>
+      <li>On compression the reversible path needs the least work, and a reversible round trip leaves nothing behind.</li>
+      <li>Into a vacuum (p<sub>ex</sub> = 0) the gas does no work.</li>
+    </ul>
+    <p class="note"><b>Notes.</b> NCERT's Problem 5.4 calls this gas "1 mol" and gets 39.4 L atm. But 2 L at 10 atm and 298 K is <i>n</i> = <i>pV</i>/<i>RT</i> = 0.818 mol, so the reversible work for this gas is 32.2 L atm (39.4 L atm is right for 1 mol). The gas is ideal and kept at 25 °C by the water bath. The piston's motion between equilibria is illustrative and not to scale in time; it never changes the work. 1 L atm = 101.325 J. Source: NCERT Class 11 Chemistry Part I, Unit 5, §5.2.1 (pp. 140–143), Reprint 2026-27; PrayogX wording and drawings.</p>
+  </div>
+</div>
+</section>
+
+<section id="howto" aria-labelledby="hh">
+  <h2 id="hh">How to use this experience</h2>
+  <ol class="howto">
+    <li>Read the lab guide in the experiment, then press the big green button. It always names the next thing to do. Twice the experiment asks you to predict first, and the green button waits until you choose with the Predict buttons.</li>
+    <li>Lift the weights yourself. A weight can only come off when the piston has come to rest, so every step ends in balance.</li>
+    <li><b>Pour the sand</b> starts the grain-by-grain run; press it again to stop and look, and once more to go on.</li>
+    <li><b>Replay</b> plays your session again from the start, <b>Pause</b> freezes it and <b>Reset</b> starts over. <b>Classroom</b> fills the screen for a projector.</li>
+  </ol>
+</section>
+
+<footer>
+  CON-CHE-REVERSIBLE-WORK · PrayogX · NCERT Explorer concept experience (XP-05). Based on NCERT Class 11 Chemistry Part I,
+  Unit 5 (Reprint 2026-27), §5.2.1 and Problems 5.2–5.4; PrayogX wording and drawings.
+</footer>
+</main>
+
+<script>
+(function () {
+"use strict";
+/* ENGINE-BEGIN */
+/* One gas, many paths (NCERT 5.2.1, Problems 5.2-5.4). The gas of Problem 5.2: 2 L at 10 atm and 25 °C, kept
+   isothermal by a water bath, so nRT = p·V = 20 L atm and p_gas = nRT/V at every moment. A piston holds it, loaded
+   by the piston + air above (2 atm) and 8 equal weights of 1 atm each, or by 800 grains of sand (0.01 atm each).
+   Work done BY the gas = ∫ p_ex dV (exact for any history of p_ex); NCERT's w (on the gas) = −∫ p_ex dV (eq. 5.2, 5.3).
+   ΔU = 0 for an isothermal ideal gas, so q = −w. The piston's motion between equilibria is illustrative (a damped
+   approach in ln V; time not to scale); it never changes the work, because each step ends at its equilibrium
+   V = nRT/p_ex and p_ex is constant during the step. A grain of sand is so small that the gas stays in balance:
+   each grain is one step to its new equilibrium (a series of equilibrium states, NCERT p. 141). */
+var ENGINE = (function () {
+  var R = 0.08206, T = 298, PI = 10, VI = 2, VF = 10;                 /* L atm mol-1 K-1, K, atm, L, L (Problem 5.2) */
+  var NRT = PI * VI, PF = NRT / VF, BASE = PF;                         /* 20 L atm; 2 atm at 10 L: the piston + air */
+  var NW = 8, WATM = (PI - PF) / NW, GRAINS = 800, GATM = (PI - PF) / GRAINS, POUR = 160;   /* weights, grains, grains/s */
+  var K = 100, C = 15, VTOP = 13, VBOT = 1, LATM_J = 101.325, P53 = 1, P54_NCERT = 39.366, P54_N = 1, TC = 25;
+  function create() {
+    return { V: VI, x: Math.log(VI), v: 0, w: 0, weights: NW, grains: 0, fixed: null, hi: VTOP, pour: 0, acc: 0,
+      settled: true, steps: 0, seg: [], rec: {}, paths: {} };
+  }
+  function pex(ms) { return ms.fixed !== null ? ms.fixed : BASE + ms.weights * WATM + ms.grains * GATM; }
+  function eqV(p) { var V = p > 0 ? NRT / p : Infinity; return V > VTOP ? VTOP : V < VBOT ? VBOT : V; }
+  /* start a new straight segment of the p_ex path at the present volume */
+  function mark(ms) { ms.seg.push([pex(ms), ms.V, ms.V]); ms.settled = false; ms.steps++; }
+  function setV(ms, V) { var p = pex(ms); ms.w += p * (V - ms.V); ms.V = V; ms.x = Math.log(V); if (ms.seg.length) ms.seg[ms.seg.length - 1][2] = V; }
+  /* end the step at its equilibrium (or at a stop): the last bit of creep, done exactly */
+  function settle(ms) {
+    var p = pex(ms), lim = Math.min(ms.hi, VTOP), V = eqV(p);
+    if (V > lim) V = lim;
+    setV(ms, V); ms.v = 0; ms.settled = true;
+  }
+  function setup(ms, o) {
+    ms.V = o.V; ms.x = Math.log(o.V); ms.v = 0; ms.w = 0; ms.weights = o.weights || 0; ms.grains = o.grains || 0;
+    ms.fixed = o.fixed === undefined ? null : o.fixed; ms.hi = o.hi || VTOP; ms.pour = 0; ms.acc = 0; ms.settled = true; ms.steps = 0; ms.seg = [];
+  }
+  function load(ms, dW) { ms.weights = Math.max(0, Math.min(NW, ms.weights + dW)); mark(ms); }
+  function release(ms, p) { ms.fixed = p; mark(ms); }
+  /* one fixed substep of dt seconds */
+  function step(ms, dt) {
+    if (ms.pour) {
+      ms.acc += POUR * dt;
+      while (ms.acc >= 1 && ((ms.pour < 0 && ms.grains > 0) || (ms.pour > 0 && ms.grains < GRAINS))) {
+        ms.acc -= 1; ms.grains += ms.pour; mark(ms); settle(ms);
+      }
+      if ((ms.pour < 0 && ms.grains === 0) || (ms.pour > 0 && ms.grains === GRAINS)) { ms.pour = 0; ms.acc = 0; }
+      return;
+    }
+    if (ms.settled) return;
+    var p = pex(ms), pg = NRT / ms.V, a = K * (pg - p) / Math.max(p, 1) - C * ms.v, lim = Math.min(ms.hi, VTOP), V;
+    ms.v += a * dt; ms.x += ms.v * dt; V = Math.exp(ms.x);
+    if (V >= lim) { V = lim; ms.v = 0; }
+    if (V <= VBOT) { V = VBOT; ms.v = 0; }
+    setV(ms, V); pg = NRT / V;
+    if ((V >= lim && pg >= p) || (Math.abs(ms.v) < 0.01 && Math.abs(pg - p) < 0.002 * Math.max(p, 1))) settle(ms);
+  }
+  function finish(ms) { while (ms.pour || !ms.settled) step(ms, 0.001); }
+  /* keep a finished run: its work and its p_ex path */
+  function record(ms, key) { ms.rec[key] = ms.w; ms.paths[key] = ms.seg.slice(); }
+  function derive(ms) {
+    var p = pex(ms);
+    return { V: ms.V, pgas: NRT / ms.V, pex: p, wBy: ms.w, w: -ms.w, q: ms.w, dU: 0, settled: ms.settled && !ms.pour,
+      weights: ms.weights, grains: ms.grains, steps: ms.steps };
+  }
+  /* closed forms (the verifier's routes; the page prints only the reversible limit from them) */
+  function stepWorkBy(N, dir) {                     /* N equal pressure steps, each ending at equilibrium; dir +1 expand, -1 compress */
+    var w = 0, V = dir > 0 ? VI : VF, k, p, V2;
+    for (k = 1; k <= N; k++) { p = dir > 0 ? PI - k * (PI - PF) / N : PF + k * (PI - PF) / N; V2 = NRT / p; w += p * (V2 - V); V = V2; }
+    return w;
+  }
+  function revWorkBy(dir) { return dir * NRT * Math.log(VF / VI); }
+  function cycleLoss(N) { return (PI - PF) * (VF - VI) / N; }
+  return { R: R, T: T, PI: PI, VI: VI, VF: VF, NRT: NRT, PF: PF, BASE: BASE, NW: NW, WATM: WATM, GRAINS: GRAINS, GATM: GATM,
+    POUR: POUR, K: K, C: C, VTOP: VTOP, VBOT: VBOT, LATM_J: LATM_J, P53: P53, P54_NCERT: P54_NCERT, P54_N: P54_N, TC: TC,
+    n: NRT / (R * T), create: create, setup: setup, load: load, release: release, step: step, settle: settle, finish: finish,
+    record: record, derive: derive, pex: pex, stepWorkBy: stepWorkBy, revWorkBy: revWorkBy, cycleLoss: cycleLoss };
+})();
+/* ENGINE-END */
+
+/* PX-KIT clock@1 BEGIN */
+/* px-clock@1 - deterministic simulation time.
+   Time advances only through step(dt). In a page, drive() takes dt from the requestAnimationFrame timestamp,
+   which the PrayogX recorder replaces with its manual clock, so recordings are frame-exact.
+   No wall-clock reads, no randomness. */
+var CLOCK = (function () {
+  function create(opts) {
+    opts = opts || {};
+    var c = { t: 0, frame: 0, speed: 1, paused: false, substep: opts.substep || 0, maxDt: opts.maxDt || 0.05 }, subs = [], acc = 0, ticks = 0;
+    /* advance by dt seconds (scaled by speed, capped by maxDt). With substep > 0, time moves in whole fixed
+       substeps and the remainder carries to the next frame, so 30 fps and 60 fps give the same steps. */
+    c.step = function (dt) {
+      dt = +dt;
+      if (!(dt > 0)) dt = 0;
+      if (dt > c.maxDt) dt = c.maxDt;
+      c.frame++;
+      if (c.paused || dt === 0) return 0;
+      var h = dt * c.speed, n, k, i;
+      if (!(c.substep > 0)) { c.t += h; for (i = 0; i < subs.length; i++) subs[i](h, c.t); return h; }
+      acc += h; n = Math.floor(acc / c.substep + 1e-9); acc = Math.max(0, acc - n * c.substep);
+      for (k = 0; k < n; k++) {
+        c.t = ++ticks * c.substep;
+        for (i = 0; i < subs.length; i++) subs[i](c.substep, c.t);
+      }
+      return n * c.substep;
+    };
+    /* fn(h, t) runs on every (sub)step: animations, model integration, camera transitions */
+    c.on = function (fn) { subs.push(fn); return c; };
+    c.pause = function (on) { c.paused = on === undefined ? !c.paused : !!on; return c.paused; };
+    c.setSpeed = function (k) { k = +k; if (k > 0 && isFinite(k)) c.speed = k; return c.speed; };
+    c.reset = function () { c.t = 0; c.frame = 0; c.paused = false; acc = 0; ticks = 0; };
+    return c;
+  }
+  /* frame-rate-independent smoothing: deterministic for a fixed dt */
+  function approach(cur, target, rate, dt) { return cur + (target - cur) * (1 - Math.exp(-rate * dt)); }
+  /* the page loop: before() (e.g. action replay), then step, then onFrame(dt) (director, observables, drawing) */
+  function drive(c, onFrame, before) {
+    var last = null;
+    function f(ts) {
+      var dt = last === null ? 0 : (ts - last) / 1000;
+      last = ts;
+      if (before) before();
+      c.step(dt);
+      onFrame(dt);
+      requestAnimationFrame(f);
+    }
+    requestAnimationFrame(f);
+  }
+  return { create: create, approach: approach, drive: drive };
+})();
+/* PX-KIT clock@1 END */
+/* PX-KIT obs@1 BEGIN */
+/* px-obs@1 - the one scientific truth.
+   An observable is a named, typed, provenance-tagged scientific quantity. frame(ctx) computes every value once,
+   in definition order; every consumer (renderer, guide, PX.state, tests, recorder) reads that one snapshot.
+   Scientific values never contain presentation progress: present()/fp() give a gradual reveal of a value
+   without changing the observable. f()/num()/fp() record what they printed, and shown() records every
+   visible string with its kind, so tests can prove each scientific number came from an observable. */
+var OBS = (function () {
+  var STATUS = ["measured", "calculated", "illustrative", "idealized", "hypothetical", "exaggerated"];
+  var KINDS = ["sci", "ui", "decor"];
+  var ID = /^[a-z][A-Za-z0-9]*(\.[A-Za-z][A-Za-z0-9]*)*$/;
+  function create() {
+    var defs = {}, order = [], vals = null, emitted = [], shown = [], mark = 0, o = { frames: 0 };
+    function fail(m) { throw new Error("OBS: " + m); }
+    function need(id) {
+      if (!defs[id]) fail("unknown observable " + id);
+      if (!vals) fail("no frame computed yet");
+    }
+    o.def = function (id, d) {
+      d = d || {};
+      if (!ID.test(id)) fail("bad id " + id);
+      if (defs[id]) fail("duplicate observable " + id);
+      if (typeof d.unit !== "string") fail(id + ": unit must be a string ('' if none)");
+      if (!d.meaning) fail(id + ": meaning is required");
+      if (STATUS.indexOf(d.status) < 0) fail(id + ": status must be one of " + STATUS.join(", "));
+      if (typeof d.from !== "function") fail(id + ": from(ctx, get) is required");
+      if (d.signed && !d.sign) fail(id + ": a signed observable needs its sign convention");
+      var dec = d.decimals === undefined ? 2 : d.decimals;
+      if (!(dec >= 0 && dec <= 6 && Math.floor(dec) === dec)) fail(id + ": decimals must be 0-6");
+      defs[id] = { id: id, unit: d.unit, meaning: d.meaning, status: d.status, signed: !!d.signed, sign: d.sign || null,
+        decimals: dec, plus: !!d.plus, from: d.from };
+      order.push(id);
+      return o;
+    };
+    /* compute the snapshot for this frame; values may use earlier observables through get(id) */
+    o.frame = function (ctx) {
+      var out = {}, i, id, v;
+      var get = function (k) { if (!(k in out)) fail(k + " used before it is defined"); return out[k]; };
+      for (i = 0; i < order.length; i++) {
+        id = order[i];
+        v = defs[id].from(ctx, get);
+        if (typeof v !== "number" || !isFinite(v)) fail(id + " is not a finite number");
+        out[id] = v;
+      }
+      vals = out; emitted = []; shown = []; mark = 0; o.frames++;
+      return o;
+    };
+    o.v = function (id) { need(id); return vals[id]; };
+    function fmt(d, x) {
+      var p = Math.pow(10, d.decimals), s = (Math.round(x * p) / p).toFixed(d.decimals);
+      if (Number(s) === 0) s = (0).toFixed(d.decimals);
+      if (s.charAt(0) === "-") s = "−" + s.slice(1);
+      else if (d.plus && Number(s) > 0) s = "+" + s;
+      return s;
+    }
+    function unit(d, s) { return d.unit ? s + " " + d.unit : s; }
+    o.num = function (id) { need(id); var s = fmt(defs[id], vals[id]); emitted.push(s); return s; };
+    o.f = function (id) { need(id); var s = unit(defs[id], fmt(defs[id], vals[id])); emitted.push(s); return s; };
+    /* presentation transform: a gradual reveal from start toward the observable; never stored, never an observable */
+    o.present = function (id, progress, start) {
+      need(id);
+      var p = progress < 0 ? 0 : progress > 1 ? 1 : +progress || 0, s0 = start === undefined ? 0 : +start;
+      return s0 + (vals[id] - s0) * p;
+    };
+    o.fp = function (id, progress, start) { var s = unit(defs[id], fmt(defs[id], o.present(id, progress, start))); emitted.push(s); return s; };
+    o.meta = function (id) {
+      if (!defs[id]) fail("unknown observable " + id);
+      var d = defs[id];
+      return { id: d.id, unit: d.unit, meaning: d.meaning, status: d.status, signed: d.signed, sign: d.sign, decimals: d.decimals };
+    };
+    o.ids = function () { return order.slice(); };
+    o.snapshot = function () { var s = {}, i; if (!vals) return s; for (i = 0; i < order.length; i++) s[order[i]] = vals[order[i]]; return s; };
+    /* flat fields for PX.state(): the recorder keeps only flat number/string/boolean fields */
+    o.flat = function () { var s = {}, i; if (!vals) return s; for (i = 0; i < order.length; i++) s["obs_" + order[i].replace(/\./g, "_")] = vals[order[i]]; return s; };
+    /* every visible string goes through shown(). Each entry keeps the f()/num()/fp() strings printed since the
+       previous shown() call (from), so a test can check that every number in a "sci" text is one of its own
+       observable strings, not a number that only happens to be printed elsewhere in the frame. */
+    o.shown = function (text, kind) {
+      kind = kind || "sci";
+      if (KINDS.indexOf(kind) < 0) fail("bad text kind " + kind);
+      shown.push({ text: String(text), kind: kind, from: emitted.slice(mark) });
+      mark = emitted.length;
+      return String(text);
+    };
+    o.shownList = function () { return shown.slice(); };
+    o.emitted = function () { return emitted.slice(); };
+    return o;
+  }
+  return { create: create, STATUS: STATUS, KINDS: KINDS };
+})();
+/* PX-KIT obs@1 END */
+/* PX-KIT act@1 BEGIN */
+/* px-act@1 - one input path and the learning script.
+   Learner taps, the Director, tests and the recorder all call do(id, args, source). An action may validate,
+   change learning state, start an animation, change scene or request a camera shot; it never computes a
+   scientific quantity and never draws. The learning script is data: scenes, allowed actions, next-action
+   rules, exit conditions, guide ids and milestones. Conditions are objects, never evaluated strings.
+   State shape it relies on: S.scene (index into script.scenes) and S.flags (plain object). */
+var ACT = (function () {
+  var SOURCES = ["learner", "director", "test", "recorder"];
+  var COND_KEYS = ["all", "any", "not", "flag", "obs", "op", "value", "tol", "pred", "idle"];
+  var OPS = [">=", "<=", ">", "<", "==", "!="];
+  function create(o) {
+    var S = o.state, script = o.script, defs = {}, preds = {}, log = [], hits = [], api = {};
+    function fail(m) { throw new Error("ACT: " + m); }
+    function scene() { return script.scenes[S.scene]; }
+    function busy() { return !!(o.busy && o.busy()); }
+    api.def = function (id, d) {
+      if (defs[id]) fail("duplicate action " + id);
+      if (!d || typeof d.run !== "function") fail(id + ": run(S, args) is required");
+      defs[id] = { when: d.when || function () { return true; }, run: d.run, args: d.args || null, whileBusy: !!d.whileBusy };
+      return api;
+    };
+    /* named predicates: the only code a condition may call */
+    api.pred = function (name, fn) { if (preds[name]) fail("duplicate predicate " + name); preds[name] = fn; return api; };
+    api.cond = function (c) {
+      var i;
+      if (!c) return true;
+      if (c.all) { for (i = 0; i < c.all.length; i++) if (!api.cond(c.all[i])) return false; return true; }
+      if (c.any) { for (i = 0; i < c.any.length; i++) if (api.cond(c.any[i])) return true; return false; }
+      if (c.not) return !api.cond(c.not);
+      if (c.flag !== undefined) return c.flag.charAt(0) === "!" ? !S.flags[c.flag.slice(1)] : !!S.flags[c.flag];
+      if (c.obs !== undefined) {
+        var v = o.obs.v(c.obs), x = c.value, tol = c.tol || 0;
+        if (c.op === ">=") return v >= x - tol;
+        if (c.op === "<=") return v <= x + tol;
+        if (c.op === ">") return v > x;
+        if (c.op === "<") return v < x;
+        if (c.op === "==") return Math.abs(v - x) <= tol;
+        if (c.op === "!=") return Math.abs(v - x) > tol;
+        fail("bad comparator " + c.op);
+      }
+      if (c.pred !== undefined) { if (!preds[c.pred]) fail("unknown predicate " + c.pred); return !!preds[c.pred](S); }
+      if (c.idle !== undefined) return busy() !== !!c.idle;
+      fail("unknown condition " + JSON.stringify(c));
+    };
+    function allowed(id) {
+      if (id === "advance") return true;
+      var a = scene().allow || [];
+      return a.indexOf(id) >= 0 || a.indexOf("*") >= 0;
+    }
+    /* the built-in action that moves to the next scene, once the current scene's exit condition holds */
+    api.def("advance", {
+      when: function () { return S.scene < script.scenes.length - 1 && api.cond(scene().exit); },
+      run: function () { S.scene++; if (o.onScene) o.onScene(S.scene); }
+    });
+    api.check = function (id, args) {
+      var d = defs[id];
+      if (!d) return "unknown action " + id;
+      if (busy() && !d.whileBusy) return "busy";
+      if (!allowed(id)) return id + " is not allowed in scene " + scene().id;
+      if (d.args && d.args.indexOf(args) < 0) return "bad argument " + args + " for " + id;
+      if (!d.when(S, args)) return id + " is not ready";
+      return null;
+    };
+    api.do = function (id, args, source) {
+      if (SOURCES.indexOf(source) < 0) return { ok: false, reason: "bad source " + source };
+      var why = api.check(id, args);
+      if (why) return { ok: false, reason: why };
+      defs[id].run(S, args);
+      var e = { f: o.clock.frame, t: +o.clock.t.toFixed(6), id: id, args: args === undefined ? null : args, source: source };
+      log.push(e);
+      if (o.onAction) o.onAction(e);
+      return { ok: true };
+    };
+    /* the one thing to do next: the first matching rule of the current scene that can run now */
+    api.next = function () {
+      if (busy()) return null;
+      var rules = scene().next || [], i, r;
+      for (i = 0; i < rules.length; i++) {
+        r = rules[i];
+        if (api.cond(r["if"]) && !api.check(r.act, r.args)) return { id: r.act, args: r.args === undefined ? null : r.args, label: r.label || r.act };
+      }
+      return null;
+    };
+    api.doNext = function (source) { var n = api.next(); return n ? api.do(n.id, n.args === null ? undefined : n.args, source || "learner") : { ok: false, reason: "nothing to do" }; };
+    /* tap regions, registered by the presentation each frame */
+    api.hitsReset = function () { hits = []; };
+    api.hit = function (r, id, args) { hits.push({ x: r.x, y: r.y, w: r.w, h: r.h, id: id, args: args }); };
+    api.at = function (x, y) { var i, h; for (i = hits.length - 1; i >= 0; i--) { h = hits[i]; if (x >= h.x && x <= h.x + h.w && y >= h.y && y <= h.y + h.h) return h; } return null; };
+    api.log = function () { return log.slice(); };
+    api.reset = function () { log = []; hits = []; };
+    /* replay: re-apply logged inputs at the same simulation time, so a session replays the same at any frame
+       rate (Director actions are regenerated by the Director) */
+    api.replayer = function (entries) {
+      var list = [], i = 0, k;
+      for (k = 0; k < entries.length; k++) if (entries[k].source !== "director") list.push(entries[k]);
+      return function () {
+        while (i < list.length && list[i].t <= o.clock.t + 1e-6) { var e = list[i++]; api.do(e.id, e.args === null ? undefined : e.args, e.source); }
+      };
+    };
+    api.scene = scene;
+    /* static checks of the script against the defined actions, predicates and guide ids */
+    api.validate = function (guideIds) {
+      var out = [], seen = {}, i, j;
+      function cond(c, where) {
+        if (!c) return;
+        var k;
+        for (k in c) if (c.hasOwnProperty(k) && COND_KEYS.indexOf(k) < 0) out.push(where + ": unknown condition key " + k);
+        if (typeof c === "string" || typeof c === "function") out.push(where + ": conditions must be objects");
+        if (c.all) for (k = 0; k < c.all.length; k++) cond(c.all[k], where);
+        if (c.any) for (k = 0; k < c.any.length; k++) cond(c.any[k], where);
+        if (c.not) cond(c.not, where);
+        if (c.obs !== undefined && OPS.indexOf(c.op) < 0) out.push(where + ": bad comparator " + c.op);
+        if (c.pred !== undefined && !preds[c.pred]) out.push(where + ": unknown predicate " + c.pred);
+      }
+      if (!script || !script.scenes || !script.scenes.length) return ["the script has no scenes"];
+      for (i = 0; i < script.scenes.length; i++) {
+        var sc = script.scenes[i], w = "scene " + (sc.id || i);
+        if (!sc.id) out.push(w + ": id is required");
+        if (seen[sc.id]) out.push(w + ": duplicate scene id");
+        seen[sc.id] = 1;
+        if (!sc.objective) out.push(w + ": objective is required");
+        for (j = 0; j < (sc.allow || []).length; j++) if (sc.allow[j] !== "*" && !defs[sc.allow[j]]) out.push(w + ": allows unknown action " + sc.allow[j]);
+        for (j = 0; j < (sc.next || []).length; j++) {
+          if (!defs[sc.next[j].act]) out.push(w + ": next names unknown action " + sc.next[j].act);
+          cond(sc.next[j]["if"], w + " next");
+        }
+        cond(sc.exit, w + " exit");
+        if (guideIds && sc.guide && guideIds.indexOf(sc.guide) < 0) out.push(w + ": unknown guide " + sc.guide);
+        if (i < script.scenes.length - 1 && !sc.exit) out.push(w + ": a scene that is not the last needs an exit condition");
+      }
+      return out;
+    };
+    /* UI convention (proven in CON-CHE-CALORIMETER-01): the guide's NEXT button does the next action, and a
+       sticky button offers it whenever the experiment is on screen but neither the NEXT button nor the
+       page's own action buttons are. Pass DOM elements; isOnScreen(el) decides visibility. */
+    api.syncNextUI = function (u) {
+      var n = api.next(), inView = function (el) { if (!el || el.hidden || el.offsetParent === null) return false; var r = el.getBoundingClientRect(); return r.top >= 0 && r.bottom <= window.innerHeight; };
+      if (u.button){ u.button.disabled = !n; u.button.textContent = n ? "▶ " + n.label : (u.idleText || "…"); }
+      if (u.sticky) {
+        var cv = u.stage ? u.stage.getBoundingClientRect() : null, stageOn = !cv || (cv.bottom > 80 && cv.top < window.innerHeight - 80);
+        var others = false, i; for (i = 0; i < (u.primary || []).length; i++) if (inView(u.primary[i])) others = true;
+        var show = !!n && stageOn && !inView(u.button) && !others;
+        if (u.sticky.hidden === show) u.sticky.hidden = !show;
+        if (show) u.sticky.textContent = "▶ " + n.label;
+      }
+      return n;
+    };
+    return api;
+  }
+  return { create: create, SOURCES: SOURCES };
+})();
+/* PX-KIT act@1 END */
+/* PX-KIT dir@1 BEGIN */
+/* px-dir@1 - the event-aware Director.
+   A film is a list of steps. It acts only through act.do(id, args, "director"), so it obeys the same
+   validation as a learner; it waits on animation idleness, observable comparisons, named predicates,
+   learner actions or simulation seconds; it never evaluates strings and never touches scientific state.
+   update() runs once per frame after the clock step, so the same inputs give the same film every time.
+   Status lives in S.dir (serialisable): film, i, mode, mark, marks, shot, focus, say, hint, error, done. */
+var DIR = (function () {
+  var KINDS = ["do", "wait", "shot", "focus", "say", "mark", "end"];
+  var WAITS = ["idle", "obs", "pred", "learner", "seconds"];
+  var MODES = ["media", "classroom", "learner"];
+  function create(o) {
+    var S = o.state, act = o.act, clock = o.clock, films = {}, api = {}, playing = false, steps = null, w = null;
+    function fail(m) { throw new Error("DIR: " + m); }
+    function blank() { return { film: null, i: 0, mode: null, mark: null, marks: 0, shot: null, focus: null, say: null, hint: null, error: null, done: false }; }
+    S.dir = blank();
+    function check(s, n) {
+      var kinds = [], k;
+      for (k in s) if (s.hasOwnProperty(k) && KINDS.indexOf(k) >= 0) kinds.push(k);
+      if (kinds.length !== 1) fail(n + ": a step needs exactly one of " + KINDS.join(", "));
+      if (s["do"] !== undefined && typeof s["do"] !== "string") fail(n + ": do names an action");
+      if (s.wait) {
+        var ws = [];
+        for (k in s.wait) if (s.wait.hasOwnProperty(k) && WAITS.indexOf(k) >= 0) ws.push(k);
+        if (ws.length !== 1) fail(n + ": a wait needs exactly one of " + WAITS.join(", "));
+        if (s.wait.obs !== undefined && (typeof s.wait.obs !== "string" || typeof s.wait.op !== "string" || typeof s.wait.value !== "number")) fail(n + ": wait obs needs {obs, op, value}");
+        if (s.wait.pred !== undefined && typeof s.wait.pred !== "string") fail(n + ": wait pred names a predicate");
+        if (s.wait.learner !== undefined && typeof s.wait.learner !== "string") fail(n + ": wait learner names an action");
+        if (s.wait.seconds !== undefined && !(s.wait.seconds >= 0)) fail(n + ": wait seconds must be a number");
+        if (s.wait.timeout !== undefined && !(s.wait.timeout > 0)) fail(n + ": timeout must be positive");
+      }
+      if (s.shot !== undefined && typeof s.shot !== "string") fail(n + ": shot names a camera shot");
+    }
+    api.load = function (name, list) {
+      if (!list || !list.length) fail(name + ": empty film");
+      for (var i = 0; i < list.length; i++) check(list[i], name + " step " + i);
+      films[name] = list;
+      return api;
+    };
+    api.play = function (name, mode) {
+      if (!films[name]) fail("unknown film " + name);
+      if (MODES.indexOf(mode) < 0) fail("bad mode " + mode);
+      S.dir = blank(); S.dir.film = name; S.dir.mode = mode;
+      steps = films[name]; playing = true; w = null;
+    };
+    api.stop = function () { playing = false; };
+    api.reset = function () { playing = false; w = null; S.dir = blank(); };
+    api.playing = function () { return playing; };
+    var teacherTap = false;
+    api.tap = function () { teacherTap = true; };       /* classroom mode: the teacher's tap releases a learner wait */
+    function matches(pat, id) { return pat.charAt(pat.length - 1) === "*" ? id.indexOf(pat.slice(0, -1)) === 0 : pat === id; }
+    function satisfied(x) {
+      if (x.idle !== undefined) return act.cond({ idle: x.idle });
+      if (x.obs !== undefined) return act.cond({ obs: x.obs, op: x.op, value: x.value, tol: x.tol });
+      if (x.pred !== undefined) return act.cond({ pred: x.pred });
+      if (x.seconds !== undefined) return clock.t - w.from >= x.seconds - 1e-9;
+      if (x.learner !== undefined) {
+        if (S.dir.mode === "media") return true;
+        if (S.dir.mode === "classroom" && teacherTap) return true;
+        var lg = act.log(), i;
+        for (i = w.logAt; i < lg.length; i++) if (lg[i].source === "learner" && matches(x.learner, lg[i].id)) return true;
+        return false;
+      }
+      return false;
+    }
+    function finish(err) { playing = false; if (err) S.dir.error = err; else S.dir.done = true; if (o.onEnd) o.onEnd(S.dir); }
+    /* a bad step (unknown predicate, shot or observable) stops the film with an error; it never escapes into
+       the frame loop */
+    api.update = function () {
+      if (!playing) return;
+      try { run(); } catch (e) { finish("error at step " + S.dir.i + ": " + e.message); }
+    };
+    function run() {
+      var guard = 0, s, r;
+      while (playing && guard++ < 64) {
+        if (S.dir.i >= steps.length) { finish(); return; }
+        s = steps[S.dir.i];
+        if (s.wait) {
+          if (!w) { w = { from: clock.t, logAt: act.log().length, hinted: false }; teacherTap = false; }
+          if (satisfied(s.wait)) { w = null; S.dir.hint = null; S.dir.i++; continue; }
+          if (s.wait.timeout !== undefined && clock.t - w.from >= s.wait.timeout) {
+            if (s.wait.hint !== undefined) { if (!w.hinted) { w.hinted = true; S.dir.hint = s.wait.hint; } }
+            else { finish("timed out waiting at step " + S.dir.i); return; }
+          }
+          return;
+        }
+        if (s["do"] !== undefined) {
+          r = act.do(s["do"], s.args, "director");
+          if (!r.ok) { finish("refused at step " + S.dir.i + ": " + r.reason); return; }
+        } else if (s.shot !== undefined) { S.dir.shot = s.shot; if (o.cam) o.cam.go(s.shot, s.dur === undefined ? 1 : s.dur, s.lift || 0); }
+        else if (s.focus !== undefined) S.dir.focus = s.focus;
+        else if (s.say !== undefined) S.dir.say = s.say;
+        else if (s.mark !== undefined) { S.dir.mark = s.mark; S.dir.marks++; }
+        else if (s.end !== undefined) { S.dir.i = steps.length; finish(); return; }
+        S.dir.i++;
+      }
+      if (guard >= 64) finish("more than 64 steps in one frame");
+    }
+    return api;
+  }
+  return { create: create, KINDS: KINDS, WAITS: WAITS, MODES: MODES };
+})();
+/* PX-KIT dir@1 END */
+/* PX-KIT cam@1 BEGIN */
+/* px-cam@1 - renderer-independent camera mathematics (no drawing).
+   Named shots {eye:[x,y,z], at:[x,y,z], fov, tall?}; go() eases from the current view (the target leads the
+   eye slightly; an optional lift arcs the path); user() adds a bounded orbit offset and cancels a scripted
+   move; view() returns the pose any renderer can use (a 2.5D page can use `at` as its pan focus and fov as
+   zoom). It advances only through update(dt) from the clock, so transitions are deterministic. */
+var CAM = (function () {
+  function ease(t) { return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; }
+  function v3(a) { return [a[0], a[1], a[2]]; }
+  function lerp3(a, b, t) { return [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t, a[2] + (b[2] - a[2]) * t]; }
+  function create(shots, o) {
+    o = o || {};
+    var k, api = {}, maxYaw = o.maxYaw === undefined ? 0.6 : o.maxYaw, maxPitch = o.maxPitch === undefined ? 0.25 : o.maxPitch;
+    function okShot(s, n) {
+      if (!s || !s.eye || !s.at || s.eye.length !== 3 || s.at.length !== 3 || !(s.fov > 0)) throw new Error("CAM: bad shot " + n);
+      if (s.tall) okShot(s.tall, n + ".tall");
+    }
+    for (k in shots) if (shots.hasOwnProperty(k)) okShot(shots[k], k);
+    var st = { shot: null, base: null, from: null, to: null, u: 1, dur: 1, lift: 0, yaw: 0, pitch: 0 };
+    api.resolve = function (name) {
+      var s = shots[name];
+      if (!s) throw new Error("CAM: unknown shot " + name);
+      var r = o.portrait && o.portrait() && s.tall ? s.tall : s;
+      return { eye: v3(r.eye), at: v3(r.at), fov: r.fov };
+    };
+    api.set = function (name) { st.shot = name; st.base = api.resolve(name); st.u = 1; st.yaw = 0; st.pitch = 0; };
+    api.go = function (name, dur, lift) {
+      if (!st.base) { api.set(name); return; }
+      st.from = { eye: v3(st.base.eye), at: v3(st.base.at), fov: st.base.fov };
+      st.to = api.resolve(name); st.shot = name; st.dur = dur > 0 ? dur : 0.0001; st.lift = lift || 0; st.u = 0;
+      st.yaw = 0; st.pitch = 0;
+    };
+    api.update = function (dt) {
+      if (st.u >= 1 || !st.to) return;
+      st.u = Math.min(1, st.u + dt / st.dur);
+      var e = ease(st.u), et = ease(Math.min(1, st.u * 1.3)), eye = lerp3(st.from.eye, st.to.eye, e);
+      eye[1] += Math.sin(Math.PI * e) * st.lift;
+      st.base = { eye: eye, at: lerp3(st.from.at, st.to.at, et), fov: st.from.fov + (st.to.fov - st.from.fov) * e };
+    };
+    api.flying = function () { return st.u < 1; };
+    /* the learner's drag: bounded yaw/pitch around the target; a scripted move stops where it is */
+    api.user = function (dyaw, dpitch) {
+      st.u = 1;
+      st.yaw = Math.max(-maxYaw, Math.min(maxYaw, st.yaw + (dyaw || 0)));
+      st.pitch = Math.max(-maxPitch, Math.min(maxPitch, st.pitch + (dpitch || 0)));
+    };
+    api.resetUser = function () { st.yaw = 0; st.pitch = 0; };
+    api.view = function () {
+      if (!st.base) throw new Error("CAM: no shot set");
+      var b = st.base, dx = b.eye[0] - b.at[0], dz = b.eye[2] - b.at[2], c = Math.cos(st.yaw), s = Math.sin(st.yaw), dist = Math.sqrt(dx * dx + dz * dz);
+      return { eye: [b.at[0] + dx * c + dz * s, b.eye[1] + st.pitch * dist, b.at[2] - dx * s + dz * c], at: v3(b.at), fov: b.fov, shot: st.shot };
+    };
+    api.state = function () { return { shot: st.shot, u: st.u, yaw: st.yaw, pitch: st.pitch }; };
+    return api;
+  }
+  return { create: create, ease: ease };
+})();
+/* PX-KIT cam@1 END */
+
+function $(id) { return document.getElementById(id); }
+var cv = $("labcv"), g = cv.getContext("2d");
+var reduced = !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+
+/* ---- state (serialisable): learner facts, the run in progress, and the integrated model state ms ---- */
+var S = { scene: 0, flags: {}, anim: null, look: null, run: null, ms: ENGINE.create() };
+var RUN = { done: false };
+var clock = CLOCK.create({ substep: 0.001 });
+var D0 = null;                                                    /* the model's derived values this frame */
+
+/* ---- observables: the one truth every consumer reads ---- */
+var LA = "L atm", SIGN = "w is the work done ON the gas: + on compression, − on expansion (NCERT eq. 5.2)";
+var O = OBS.create();
+function rec(k) { return S.ms.rec[k] !== undefined ? S.ms.rec[k] : 0; }
+function both(a, b) { return S.ms.rec[a] !== undefined && S.ms.rec[b] !== undefined; }
+O.def("gas.V", { unit: "L", meaning: "volume of the gas now", status: "calculated", decimals: 1, from: function (c) { return c.D.V; } })
+ .def("gas.p", { unit: "atm", meaning: "pressure of the gas now: p = nRT/V at 25 °C", status: "calculated", decimals: 1, from: function (c) { return c.D.pgas; } })
+ .def("ext.p", { unit: "atm", meaning: "outside pressure now: the piston and air above (2 atm) plus the weights or the sand", status: "calculated", decimals: 1, from: function (c) { return c.D.pex; } })
+ .def("gas.nRT", { unit: LA, meaning: "p·V of the gas: constant at 25 °C (2 L × 10 atm, NCERT Problem 5.2)", status: "calculated", decimals: 0, from: function () { return ENGINE.NRT; } })
+ .def("gas.n", { unit: "mol", meaning: "amount of gas, n = pV/RT (NCERT's Problem 5.4 calls it 1 mol: flag F1)", status: "calculated", decimals: 3, from: function () { return ENGINE.n; } })
+ .def("bath.T", { unit: "°C", meaning: "temperature of the water bath, which keeps the gas isothermal", status: "idealized", decimals: 0, from: function () { return ENGINE.TC; } })
+ .def("vol.start", { unit: "L", meaning: "volume at the start (NCERT Problem 5.2)", status: "measured", decimals: 0, from: function () { return ENGINE.VI; } })
+ .def("vol.end", { unit: "L", meaning: "volume at the end (NCERT Problem 5.2)", status: "measured", decimals: 0, from: function () { return ENGINE.VF; } })
+ .def("p.start", { unit: "atm", meaning: "gas pressure at the start (NCERT Problem 5.2)", status: "measured", decimals: 0, from: function () { return ENGINE.PI; } })
+ .def("p.end", { unit: "atm", meaning: "gas pressure at the end, nRT/V", status: "calculated", decimals: 0, from: function () { return ENGINE.PF; } })
+ .def("weight.p", { unit: "atm", meaning: "outside pressure added by one weight (the eight are equal)", status: "idealized", decimals: 0, from: function () { return ENGINE.WATM; } })
+ .def("p53.p", { unit: "atm", meaning: "the constant outside pressure of NCERT Problem 5.3", status: "measured", decimals: 0, from: function () { return ENGINE.P53; } })
+ .def("run.wBy", { unit: LA, meaning: "work done BY the gas so far in this run: the shaded area under the outside-pressure path", status: "calculated", decimals: 1, from: function (c) { return c.D.wBy; } })
+ .def("run.wOn", { unit: LA, meaning: "work done ON the gas so far in this run (compression)", status: "calculated", decimals: 1, from: function (c) { return -c.D.wBy; } })
+ .def("run.w", { unit: LA, meaning: "w for this run so far (NCERT's sign)", status: "calculated", signed: true, sign: SIGN, plus: true, decimals: 1, from: function (c) { return c.D.w; } })
+ .def("run.q", { unit: LA, meaning: "heat taken in from the bath so far: q = −w, because ΔU = 0", status: "calculated", signed: true, sign: "+ = heat flows from the bath into the gas", plus: true, decimals: 1, from: function (c) { return c.D.q; } })
+ .def("run.dU", { unit: LA, meaning: "ΔU of the gas: 0 for an ideal gas at constant temperature", status: "idealized", decimals: 1, from: function (c) { return c.D.dU; } })
+ .def("load.weights", { unit: "", meaning: "weights on the piston now", status: "calculated", decimals: 0, from: function (c) { return c.D.weights; } })
+ .def("run.steps", { unit: "", meaning: "steps taken in this run (weights moved or grains poured)", status: "calculated", decimals: 0, from: function (c) { return c.D.steps; } })
+ .def("rec.e1", { unit: LA, meaning: "work done by the gas, all eight weights off at once (0 until done)", status: "calculated", decimals: 1, from: function () { return rec("e1"); } })
+ .def("rec.e8", { unit: LA, meaning: "work done by the gas, one weight at a time (0 until done)", status: "calculated", decimals: 1, from: function () { return rec("e8"); } })
+ .def("rec.eg", { unit: LA, meaning: "work done by the gas, grain by grain (0 until done)", status: "calculated", decimals: 1, from: function () { return rec("eg"); } })
+ .def("rec.c1", { unit: LA, meaning: "work needed to push the gas back, all eight weights at once (0 until done)", status: "calculated", decimals: 1, from: function () { return -rec("c1"); } })
+ .def("rec.c8", { unit: LA, meaning: "work needed to push the gas back, one weight at a time (0 until done)", status: "calculated", decimals: 1, from: function () { return -rec("c8"); } })
+ .def("rec.cg", { unit: LA, meaning: "work needed to push the gas back, grain by grain (0 until done)", status: "calculated", decimals: 1, from: function () { return -rec("cg"); } })
+ .def("loss.c1", { unit: LA, meaning: "round trip all at once: work left in the surroundings (push back − got out; 0 until both done)", status: "calculated", decimals: 1, from: function () { return both("e1", "c1") ? -rec("c1") - rec("e1") : 0; } })
+ .def("loss.c8", { unit: LA, meaning: "round trip one weight at a time: work left in the surroundings (0 until both done)", status: "calculated", decimals: 1, from: function () { return both("e8", "c8") ? -rec("c8") - rec("e8") : 0; } })
+ .def("loss.cg", { unit: LA, meaning: "round trip grain by grain: work left in the surroundings (0 until both done)", status: "calculated", decimals: 1, from: function () { return both("eg", "cg") ? -rec("cg") - rec("eg") : 0; } })
+ .def("way.vac.w", { unit: LA, meaning: "w for the expansion into a vacuum (NCERT Problem 5.2; 0 until done)", status: "calculated", signed: true, sign: SIGN, plus: true, decimals: 1, from: function () { return -rec("vac"); } })
+ .def("way.p53.w", { unit: LA, meaning: "w for the expansion against 1 atm (NCERT Problem 5.3; 0 until done)", status: "calculated", signed: true, sign: SIGN, plus: true, decimals: 1, from: function () { return -rec("p53"); } })
+ .def("way.rev.w", { unit: LA, meaning: "w for the grain-by-grain expansion (NCERT Problem 5.4's path; 0 until done)", status: "calculated", signed: true, sign: SIGN, plus: true, decimals: 1, from: function () { return -rec("rev"); } })
+ .def("rev.wBy", { unit: LA, meaning: "the reversible limit: work done by the gas, nRT ln(V(final)/V(initial)) (NCERT eq. 5.5)", status: "calculated", decimals: 1, from: function () { return ENGINE.revWorkBy(1); } })
+ .def("rev.w", { unit: LA, meaning: "w for the reversible expansion from 2 L to 10 L: the key result", status: "calculated", signed: true, sign: SIGN, plus: true, decimals: 1, from: function () { return -ENGINE.revWorkBy(1); } })
+ .def("p54.ncert", { unit: LA, meaning: "NCERT's printed answer to Problem 5.4, which assumes 1 mol (flag F1)", status: "measured", decimals: 1, from: function () { return ENGINE.P54_NCERT; } })
+ .def("lesson.done", { unit: "", meaning: "1 once the learner has reached the takeaway", status: "calculated", decimals: 0, from: function (c) { return c.S.flags.done ? 1 : 0; } });
+function computeObs() { D0 = ENGINE.derive(S.ms); O.frame({ S: S, D: D0 }); }
+
+/* ---- learning script: data only (no physics, no numbers) ---- */
+var SCRIPT = { scenes: [
+  { id: "meet", objective: "Meet the gas, the weights and the bath", allow: ["inspect"], guide: "g_meet", milestone: "meet",
+    next: [{ "if": { flag: "!seen_gas" }, act: "inspect", args: "gas", label: "Look at the gas" },
+           { "if": { flag: "!seen_weights" }, act: "inspect", args: "weights", label: "Look at the weights" },
+           { "if": { flag: "!seen_bath" }, act: "inspect", args: "bath", label: "Look at the water bath" },
+           { act: "advance", label: "Let the gas expand" }],
+    exit: { all: [{ flag: "seen_gas" }, { flag: "seen_weights" }, { flag: "seen_bath" }] } },
+  { id: "oneStep", objective: "Expand in one big step", allow: ["liftAll"], guide: "g_one", milestone: "oneStep",
+    next: [{ act: "liftAll", label: "Lift all eight weights off at once" }, { act: "advance", label: "Now try it one weight at a time" }],
+    exit: { flag: "done_e1" } },
+  { id: "eachWeight", objective: "Expand one weight at a time", allow: ["predict", "lift"], guide: "g_each", milestone: "eachWeight",
+    next: [{ act: "lift", label: "Lift the next weight off" }, { act: "advance", label: "Now go grain by grain" }],
+    exit: { flag: "done_e8" } },
+  { id: "grain", objective: "Expand grain by grain", allow: ["pour"], guide: "g_grain", milestone: "reversibleLimit",
+    next: [{ act: "pour", args: "on", label: "Pour the sand off, grain by grain" }, { act: "advance", label: "Now push the gas back" }],
+    exit: { flag: "done_eg" } },
+  { id: "back", objective: "Push the gas back", allow: ["predictBack", "compress", "add", "pour"], guide: "g_back", milestone: "roundTrip",
+    next: [{ "if": { flag: "!done_c1" }, act: "compress", args: "one", label: "Push back with all eight weights at once" },
+           { "if": { flag: "!done_cg" }, act: "compress", args: "grain", label: "Push back grain by grain" },
+           { act: "pour", args: "on", label: "Pour the sand on" },
+           { act: "add", label: "Add the next weight" },
+           { act: "advance", label: "Same start, same end, three ways" }],
+    exit: { all: [{ flag: "done_c1" }, { flag: "done_cg" }] } },
+  { id: "threeWays", objective: "Same start, same end, three ways", allow: ["path"], guide: "g_ways", milestone: "threeWays",
+    next: [{ "if": { flag: "!done_vac" }, act: "path", args: "vacuum", label: "Expand into a vacuum" },
+           { "if": { flag: "!done_p53" }, act: "path", args: "p53", label: "Expand against 1 atm" },
+           { "if": { flag: "!done_rev" }, act: "path", args: "rev", label: "Expand reversibly" },
+           { act: "advance", label: "Sum it up" }],
+    exit: { all: [{ flag: "done_vac" }, { flag: "done_p53" }, { flag: "done_rev" }] } },
+  { id: "takeaway", objective: "Work depends on the path", allow: ["path"], guide: "g_takeaway", milestone: "done", next: [] }   /* path stays allowed: every path is done, so its own guard refuses it */
+] };
+var GUIDES = ["g_meet", "g_one", "g_each", "g_grain", "g_back", "g_ways", "g_takeaway"];
+
+/* ---- runs: the apparatus for each scene and each path ---- */
+var RUNS = {
+  e1: { V: 2, weights: 8 }, e8: { V: 2, weights: 8 }, eg: { V: 2, grains: 800 },
+  c1: { V: 10, weights: 0 }, c8: { V: 10, weights: 0 }, cg: { V: 10, grains: 0 },
+  vac: { V: 2, weights: 0, hi: 10 }, p53: { V: 2, weights: 0, hi: 10 }, rev: { V: 2, grains: 800 }
+};
+function startRun(key) { ENGINE.setup(S.ms, RUNS[key]); S.run = { key: key, done: false }; }
+function moving() { return !S.ms.settled || S.ms.pour !== 0; }
+function busy() { return !!S.anim || moving(); }
+function after() { if (reduced) ENGINE.finish(S.ms); }
+/* a run is finished when its load is complete and the piston is at rest; then the model keeps its work and path */
+function runEnded() {
+  var r = S.run, ms = S.ms, k;
+  if (!r || r.done || moving()) return;
+  k = r.key;
+  if ((k === "e1" || k === "e8") && ms.weights !== 0) return;
+  if ((k === "c1" || k === "c8") && ms.weights !== ENGINE.NW) return;
+  if ((k === "eg" || k === "rev") && ms.grains !== 0) return;
+  if (k === "cg" && ms.grains !== ENGINE.GRAINS) return;
+  if ((k === "vac" || k === "p53") && ms.steps < 1) return;
+  r.done = true; ENGINE.record(ms, k); S.flags["done_" + k] = 1;
+}
+
+/* ---- actions: the one input path ---- */
+var A = ACT.create({ state: S, script: SCRIPT, obs: O, clock: clock, busy: busy,
+  onScene: function (i) {
+    var id = SCRIPT.scenes[i].id;
+    if (id === "oneStep") startRun("e1");
+    if (id === "eachWeight") startRun("e8");
+    if (id === "grain") startRun("eg");
+    if (id === "back") { ENGINE.setup(S.ms, { V: 10, weights: 0 }); S.run = null; }
+    if (id === "threeWays") { ENGINE.setup(S.ms, { V: 2, weights: 8 }); S.run = null; }
+    if (id === "takeaway") S.flags.done = 1;
+    if (!D.playing()) cam.go(SHOT[id], 1.0);
+  } });
+function anim(k, d, arg) { S.anim = { k: k, t: 0, d: d, arg: arg === undefined ? null : arg }; }
+function runIs(k) { return !!S.run && S.run.key === k && !S.run.done; }
+A.def("inspect", { args: ["gas", "weights", "bath"], run: function (s, a) { s.flags["seen_" + a] = 1; s.look = a; anim("inspect", 0.7, a); } })
+ .def("liftAll", { when: function (s) { return runIs("e1") && s.ms.weights === ENGINE.NW; }, run: function (s) { ENGINE.load(s.ms, -ENGINE.NW); after(); } })
+ .def("predict", { args: ["more", "less", "same"], when: function (s) { return !s.flags.predEach; }, run: function (s, a) { s.flags.predEach = a; } })
+ .def("lift", { when: function (s) { return !!s.flags.predEach && runIs("e8") && s.ms.weights > 0; }, run: function (s) { ENGINE.load(s.ms, -1); after(); } })
+ .def("pour", { args: ["on", "off"], whileBusy: true,
+   when: function (s, a) {
+     if (a === "off") return s.ms.pour !== 0;
+     if (s.ms.pour !== 0 || !s.ms.settled || !!S.anim) return false;
+     return (runIs("eg") || runIs("rev")) ? s.ms.grains > 0 : runIs("cg") ? s.ms.grains < ENGINE.GRAINS : false;
+   },
+   run: function (s, a) { if (a === "off") { s.ms.pour = 0; s.ms.acc = 0; return; } s.ms.pour = runIs("cg") ? 1 : -1; after(); } })
+ .def("predictBack", { args: ["one", "each", "grain"], when: function (s) { return !s.flags.predBack; }, run: function (s, a) { s.flags.predBack = a; } })
+ .def("compress", { args: ["one", "each", "grain"], when: function (s) { return !!s.flags.predBack && !(S.run && !S.run.done); },
+   run: function (s, a) {
+     startRun(a === "one" ? "c1" : a === "each" ? "c8" : "cg");
+     if (a === "one") ENGINE.load(s.ms, ENGINE.NW);
+     if (a === "grain") s.ms.pour = 1;
+     after();
+   } })
+ .def("add", { when: function (s) { return runIs("c8") && s.ms.weights < ENGINE.NW; }, run: function (s) { ENGINE.load(s.ms, 1); after(); } })
+ .def("path", { args: ["vacuum", "p53", "rev"], when: function (s, a) { return !s.flags["done_" + (a === "vacuum" ? "vac" : a)] && !(S.run && !S.run.done); },
+   run: function (s, a) {
+     if (a === "vacuum") { startRun("vac"); ENGINE.release(s.ms, 0); }
+     if (a === "p53") { startRun("p53"); ENGINE.release(s.ms, ENGINE.P53); }
+     if (a === "rev") { startRun("rev"); s.ms.pour = -1; }
+     after();
+   } });
+A.pred("allSeen", function (s) { return !!(s.flags.seen_gas && s.flags.seen_weights && s.flags.seen_bath); });
+A.pred("predEach", function (s) { return !!s.flags.predEach; });
+A.pred("predBack", function (s) { return !!s.flags.predBack; });
+A.pred("e1Done", function (s) { return !!s.flags.done_e1; });
+A.pred("e8Done", function (s) { return !!s.flags.done_e8; });
+A.pred("egDone", function (s) { return !!s.flags.done_eg; });
+A.pred("c1Done", function (s) { return !!s.flags.done_c1; });
+A.pred("cgDone", function (s) { return !!s.flags.done_cg; });
+A.pred("waysDone", function (s) { return !!(s.flags.done_vac && s.flags.done_p53 && s.flags.done_rev); });
+/* the Director's check that the learner's grain-by-grain run approached the reversible limit (both from observables) */
+A.pred("nearReversible", function () { return O.v("rec.eg") > 0 && O.v("rev.wBy") - O.v("rec.eg") < 0.1 && O.v("rec.eg") < O.v("rev.wBy"); });
+
+/* ---- camera (cam@1 in its 2D role: at = the focus [x, y] in canvas units, fov = 1/zoom; no rotation) ---- */
+var phone = function () { return cv.width < cv.height; };
+var cam = CAM.create({
+  all: { eye: [380, 403, 10], at: [380, 403, 0], fov: 1, tall: { eye: [360, 682, 10], at: [360, 682, 0], fov: 1 } },
+  apparatus: { eye: [380, 403, 10], at: [380, 403, 0], fov: 1, tall: { eye: [360, 682, 10], at: [360, 682, 0], fov: 1 } },
+  plot: { eye: [380, 403, 10], at: [380, 403, 0], fov: 1, tall: { eye: [360, 682, 10], at: [360, 682, 0], fov: 1 } }
+}, { portrait: phone, maxYaw: 0, maxPitch: 0 });
+var SHOT = { meet: "all", oneStep: "apparatus", eachWeight: "apparatus", grain: "plot", back: "all", threeWays: "all", takeaway: "all" };
+var D = DIR.create({ state: S, act: A, clock: clock, cam: cam });
+function lifts(n) { var out = [], i; for (i = 0; i < n; i++) out.push({ "do": "lift" }, { wait: { idle: true } }); return out; }
+/* the default film (PX.start, the recorder): the learner's three expansions, ending on the reversible work */
+var TO_RESULT = [
+  { shot: "all", dur: 0.01 }, { "do": "inspect", args: "gas" }, { wait: { idle: true } }, { "do": "inspect", args: "weights" }, { wait: { idle: true } },
+  { "do": "inspect", args: "bath" }, { wait: { idle: true } }, { mark: "meet" }, { "do": "advance" },
+  { shot: "apparatus", dur: 1 }, { "do": "liftAll" }, { wait: { idle: true } }, { wait: { pred: "e1Done" } }, { mark: "oneStepArea" }, { "do": "advance" },
+  { "do": "predict", args: "more" }].concat(lifts(8)).concat([
+  { wait: { pred: "e8Done" } }, { mark: "eachWeightArea" }, { "do": "advance" },
+  { shot: "plot", dur: 1 }, { "do": "pour", args: "on" }, { wait: { idle: true } }, { wait: { pred: "egDone" } }, { wait: { pred: "nearReversible" } }, { mark: "reversibleLimit" }
+]);
+D.load("default", TO_RESULT.concat([{ end: true }]));          /* ends on the reveal (the target standard) */
+/* the whole lesson for media (Simulation Capture): the round trip, the three NCERT paths and the takeaway */
+D.load("full", TO_RESULT.concat([
+  { "do": "advance" }, { shot: "all", dur: 1 }, { "do": "predictBack", args: "grain" },
+  { "do": "compress", args: "one" }, { wait: { idle: true } }, { wait: { pred: "c1Done" } }, { mark: "roundTripOne" },
+  { "do": "compress", args: "grain" }, { wait: { idle: true } }, { wait: { pred: "cgDone" } }, { mark: "roundTrip" }, { "do": "advance" },
+  { "do": "path", args: "vacuum" }, { wait: { idle: true } }, { "do": "path", args: "p53" }, { wait: { idle: true } },
+  { "do": "path", args: "rev" }, { wait: { idle: true } }, { wait: { pred: "waysDone" } }, { mark: "threeWays" }, { wait: { seconds: 1.5 } },
+  { "do": "advance" }, { say: "g_takeaway" }, { mark: "takeaway" }, { wait: { seconds: 3 } }, { end: true }
+]));
+/* the guided lesson (learner / classroom): the learner does every move; the Director moves the scenes on */
+D.load("lesson", [
+  { say: "g_meet" }, { wait: { learner: "inspect", timeout: 5, hint: "Tap the gas, the weights or the water bath to see what each one does." } },
+  { wait: { pred: "allSeen", timeout: 20, hint: "Look at the other parts too: the gas, the weights and the water bath." } }, { wait: { idle: true } }, { "do": "advance" },
+  { say: "g_one" }, { shot: "apparatus", dur: 1 }, { wait: { learner: "liftAll", timeout: 20, hint: "Press “Lift all 8 weights off”." } },
+  { wait: { pred: "e1Done", timeout: 20, hint: "Watch the piston come to rest." } }, { "do": "advance" },
+  { say: "g_each" }, { wait: { pred: "predEach", timeout: 30, hint: "Predict first: one weight at a time, will the gas do more, less or the same work?" } },
+  { wait: { pred: "e8Done", timeout: 60, hint: "Press “Lift one weight off” again each time the piston comes to rest." } }, { "do": "advance" },
+  { say: "g_grain" }, { shot: "plot", dur: 1 }, { wait: { learner: "pour", timeout: 20, hint: "Press “Pour the sand” and watch the steps hug the curve." } },
+  { wait: { pred: "egDone", timeout: 40, hint: "Keep pouring until the sand is gone." } }, { "do": "advance" },
+  { say: "g_back" }, { shot: "all", dur: 1 }, { wait: { pred: "predBack", timeout: 30, hint: "Predict first: which way of pushing back needs the least work?" } },
+  { wait: { pred: "c1Done", timeout: 40, hint: "Push the gas back with all eight weights at once." } },
+  { wait: { pred: "cgDone", timeout: 40, hint: "Now push it back grain by grain and compare." } }, { "do": "advance" },
+  { say: "g_ways" }, { wait: { pred: "waysDone", timeout: 60, hint: "Try all three paths: into a vacuum, against 1 atm, and reversibly." } }, { "do": "advance" },
+  { say: "g_takeaway" }, { wait: { seconds: 2 } }, { end: true }
+]);
+
+/* model, animations and the camera advance only with the clock (1 ms substeps) */
+var pulseAt = -1;
+clock.on(function (h) {
+  if (S.anim) { S.anim.t += h; if (S.anim.t >= S.anim.d) S.anim = null; }
+  ENGINE.step(S.ms, h);
+  runEnded();
+  cam.update(h);
+});
+
+/* ---- the lab guide: what happened, why, what next (a number in it always comes from an observable) ---- */
+var refusal = null;                       /* presentation only: the last refused learner action, explained by the guide */
+var PRED = { more: "more work", less: "less work", same: "the same work", one: "all at once", each: "one at a time", grain: "grain by grain" };
+function guideParts() {
+  var sc = A.scene().id, f = S.flags, P = [], r = S.run;
+  function part(head, fn) { P.push({ head: head, fn: fn }); }
+  if (refusal) {
+    var rf = refusal;
+    part("WHAT HAPPENED", function () {
+      if (rf.reason === "busy") return "Wait: the piston is still moving. A step ends only when the gas and the outside pressure balance again.";
+      if (rf.id === "lift") return "Predict first, with the Predict buttons below.";
+      if (rf.id === "compress") return S.flags.predBack ? "Let this run finish first." : "Predict first, with the Predict buttons below.";
+      return "That cannot be done now.";
+    });
+    part("WHY", function () { return rf.reason === "busy" ? "Every step ends in balance: the gas pressure equals the outside pressure." : "Predicting first is how you find out whether you have understood."; });
+  } else if (sc === "meet") {
+    part("WHAT HAPPENED", function () {
+      if (S.look === "gas") return "The gas: " + O.f("vol.start") + " at " + O.f("p.start") + ". Its pressure times its volume stays " + O.f("gas.nRT") + " while its temperature stays the same.";
+      if (S.look === "weights") return "The piston and the air above it press " + O.f("p.end") + ". Each of the eight weights adds " + O.f("weight.p") + ", so the outside pressure is now " + O.f("ext.p") + ".";
+      if (S.look === "bath") return "The water bath keeps the gas at " + O.f("bath.T") + ". When the gas does work, heat flows in from the bath to replace it.";
+      return "A gas in a cylinder, held in by a piston with weights on it, standing in a water bath.";
+    });
+    part("WHY", function () { return "The gas pushes up; the outside pressure pushes down. While they balance, the piston stays still."; });
+  } else if (sc === "oneStep") {
+    part("WHAT HAPPENED", function () {
+      if (f.done_e1) return "The outside pressure fell to " + O.f("ext.p") + " in one step, and the gas pushed the piston up to " + O.f("gas.V") + ". Work done by the gas: " + O.f("rec.e1") + ".";
+      if (r && S.ms.steps > 0) return "The gas pushes the piston up against " + O.f("ext.p") + ". The shaded area grows: " + O.f("run.wBy") + " so far.";
+      return "The gas is at " + O.f("gas.V") + " and " + O.f("gas.p") + ", balanced by the weights.";
+    });
+    part("WHY", function () { return f.done_e1 ? "Work = outside pressure × change in volume: the area of the shaded rectangle (w = −pₑₓΔV)." : "With the weights gone, the gas pressure is far above the outside pressure, so the gas expands."; });
+  } else if (sc === "eachWeight" && !f.predEach) {
+    part("PREDICT", function () { return "Same gas, same start, same end. If you lift the weights off one at a time, will the gas do more work, less work or the same work as in one step (" + O.f("rec.e1") + ")?"; });
+  } else if (sc === "eachWeight") {
+    part("WHAT HAPPENED", function () {
+      if (f.done_e8) return "Eight steps: the gas did " + O.f("rec.e8") + ", against " + O.f("rec.e1") + " in one step. You predicted " + PRED[f.predEach] + "; the areas say more work.";
+      return "Step by step the outside pressure falls, and each step adds a strip of area. So far: " + O.f("run.wBy") + ".";
+    });
+    part("WHY", function () { return "In each step the gas pushes against a higher outside pressure than in the one big step, so each strip is taller: the total area is bigger."; });
+  } else if (sc === "grain") {
+    part("WHAT HAPPENED", function () {
+      if (f.done_eg) return "Grain by grain the gas did " + O.f("rec.eg") + ". The most it can do, with infinitely small steps, is " + O.f("rev.wBy") + ".";
+      if (S.ms.pour) return "Each grain lowers the outside pressure a tiny bit, and the gas follows at once. The steps hug the curve. So far: " + O.f("run.wBy") + ".";
+      if (S.ms.steps > 0) return "Paused. The gas is in balance at " + O.f("gas.V") + " and " + O.f("gas.p") + ". Pour again to go on.";
+      return "The weights are replaced by a heap of sand that presses exactly as much. Now the steps can be very small.";
+    });
+    part("WHY", function () {
+      return f.done_eg ? "At every moment one grain put back would push the gas back in. A process that can be reversed by an infinitely small change is reversible."
+        : "The closer the outside pressure stays to the gas pressure, the more work the gas does.";
+    });
+  } else if (sc === "back" && !f.predBack) {
+    part("PREDICT", function () { return "Now push the gas back to the start. Which way needs the least work: all eight weights at once, one weight at a time, or grain by grain?"; });
+  } else if (sc === "back") {
+    part("WHAT HAPPENED", function () {
+      if (r && !r.done) return "Pushing the gas back: " + O.f("run.wOn") + " of work done on it so far.";
+      var s = "";
+      if (f.done_c1) s += "All at once took " + O.f("rec.c1") + " to push back; the gas gave " + O.f("rec.e1") + ", so " + O.f("loss.c1") + " is left in the surroundings. ";
+      if (f.done_c8) s += "One at a time leaves " + O.f("loss.c8") + ". ";
+      if (f.done_cg) s += "Grain by grain took " + O.f("rec.cg") + " and leaves only " + O.f("loss.cg") + ". ";
+      if (f.done_c1 && f.done_cg) s += "You predicted " + PRED[f.predBack] + "; the least work was " + (O.v("rec.cg") < O.v("rec.c1") && (!f.done_c8 || O.v("rec.cg") < O.v("rec.c8")) ? "grain by grain." : "not grain by grain.");
+      return s || "Choose how to push the gas back.";
+    });
+    part("WHY", function () { return "An irreversible round trip cannot be undone for free. Only a reversible path, in balance all the way, comes back with nothing left over."; });
+  } else if (sc === "threeWays") {
+    part("WHAT HAPPENED", function () {
+      if (r && !r.done) return "The gas expands. Work so far: " + O.f("run.wBy") + "; heat in from the bath: " + O.f("run.q") + ".";
+      if (f.done_vac && f.done_p53 && f.done_rev) return "Into a vacuum w = " + O.f("way.vac.w") + "; against " + O.f("p53.p") + " w = " + O.f("way.p53.w") + "; grain by grain w = " + O.f("way.rev.w") + " (the reversible limit is " + O.f("rev.w") + "). Each time ΔU = " + O.f("run.dU") + ".";
+      if (r && r.key === "vac") return "Into a vacuum nothing pushes back, so the gas does no work: w = " + O.f("way.vac.w") + ".";
+      if (r && r.key === "p53") return "Against " + O.f("p53.p") + ", held by a stop at " + O.f("vol.end") + ": w = " + O.f("way.p53.w") + ".";
+      return "The same start (" + O.f("vol.start") + ") and the same end (" + O.f("vol.end") + "), three different paths.";
+    });
+    part("WHY", function () { return "ΔU depends only on the start and the end. Work and heat depend on the path. NCERT's reversible-path problem assumes one mole and gets " + O.f("p54.ncert") + "; this gas is " + O.f("gas.n") + ", so it does " + O.f("rev.wBy") + "."; });
+  } else {
+    part("WHAT HAPPENED", function () { return "The work done by a gas is the area under the outside-pressure path. Same start, same end, different paths, different work."; });
+    part("WHY", function () { return "The reversible path, always in balance, gives the most work on expansion and needs the least on compression."; });
+  }
+  if (S.dir.hint) part("HINT", function () { return S.dir.hint; });
+  return P;
+}
+/* true while a prediction is the only way forward: the NEXT button waits for the learner's own answer */
+function predicting() { var sc = A.scene().id; return (sc === "eachWeight" && !S.flags.predEach) || (sc === "back" && !S.flags.predBack); }
+function narrText() {
+  var sc = A.scene().id;
+  if (sc === "takeaway") return "Work depends on the path; ΔU does not.";
+  if (S.flags.done_eg && sc === "grain") return "Reversible limit: w = " + O.f("rev.w") + ".";
+  return A.scene().objective + ".";
+}
+
+/* PRESENT-BEGIN */
+var minPx = 999, anchors = {}, L = null, issues = [];
+var COL = { paper: "#fbfaf6", ink: "#1d2433", dim: "#6b7280", gas: "#9ec5f0", glass: "#c9d6e3", water: "#6fb1d9", steel: "#5b6472", weight: "#3d4654",
+  sand: "#d9b26b", out: "#2a78d6", back: "#d9622b", left: "#c0392b", curve: "#4a3aa7", route: "#1baf7a", card: "#ffffff", line: "#d9d4c6", heat: "#e0861f" };
+function layout() {
+  var ph = window.innerWidth < 700, W = ph ? 720 : 1200, H = ph ? 1800 : 760;
+  if (cv.width !== W || cv.height !== H) { cv.width = W; cv.height = H; }
+  L = ph ? { ph: true, W: W, H: H, fs: 28, sm: 26, min: 26, world: { x: 16, y: 64, w: 688, h: 1236 }, app: { x: 16, y: 64, w: 688, h: 600 }, plot: { x: 16, y: 672, w: 688, h: 420 },
+             card: { x: 16, y: 1100, w: 688, h: 200 }, guide: { x: 16, y: 1308, w: 688, h: 480 } }
+         : { ph: false, W: W, H: H, fs: 19, sm: 15, min: 14, world: { x: 20, y: 58, w: 720, h: 690 }, app: { x: 20, y: 58, w: 310, h: 690 }, plot: { x: 340, y: 58, w: 400, h: 462 },
+             card: { x: 340, y: 528, w: 400, h: 220 }, guide: { x: 760, y: 58, w: 420, h: 690 } };
+}
+function font(px, w) { g.font = (w || "700") + " " + px + "px ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,sans-serif"; }
+/* every visible string is recorded with its kind; a text wider than maxW shrinks, never below the minimum size */
+function T(text, kind, x, y, px, col, align, w, maxW) {
+  O.shown(text, kind);
+  font(px, w);
+  while (maxW && px > L.min && g.measureText(text).width > maxW) { px--; font(px, w); }
+  if (maxW && g.measureText(text).width > maxW + 0.5) issues.push("too wide: " + text);
+  if (px < minPx) minPx = px;
+  g.fillStyle = col || COL.ink; g.textAlign = align || "left"; g.fillText(text, x, y);
+}
+function wrapLines(text, px, w, wt) { font(px, wt); var words = text.split(" "), lines = [], cur = "", i; for (i = 0; i < words.length; i++) { var t = cur ? cur + " " + words[i] : words[i]; if (g.measureText(t).width > w && cur) { lines.push(cur); cur = words[i]; } else cur = t; } if (cur) lines.push(cur); return lines; }
+function para(text, kind, x, y, px, w, col, wt, lh) {
+  O.shown(text, kind);
+  var lines = wrapLines(text, px, w, wt), i; if (px < minPx) minPx = px;
+  font(px, wt); g.fillStyle = col || COL.ink; g.textAlign = "left";
+  for (i = 0; i < lines.length; i++) g.fillText(lines[i], x, y + i * px * (lh || 1.3));
+  return y + lines.length * px * (lh || 1.3);
+}
+function rr(x, y, w, h, r) { g.beginPath(); g.moveTo(x + r, y); g.arcTo(x + w, y, x + w, y + h, r); g.arcTo(x + w, y + h, x, y + h, r); g.arcTo(x, y + h, x, y, r); g.arcTo(x, y, x + w, y, r); g.closePath(); }
+function panel(b, fill) { rr(b.x, b.y, b.w, b.h, 14); g.fillStyle = fill || "#fffefa"; g.fill(); g.strokeStyle = COL.line; g.lineWidth = 1.5; g.stroke(); }
+function arrow(x0, y0, x1, y1, col, wdt) {
+  var a = Math.atan2(y1 - y0, x1 - x0), hl = 10 + wdt * 2;
+  g.save(); g.strokeStyle = col; g.fillStyle = col; g.lineWidth = wdt; g.lineCap = "round";
+  g.beginPath(); g.moveTo(x0, y0); g.lineTo(x1 - Math.cos(a) * hl * 0.6, y1 - Math.sin(a) * hl * 0.6); g.stroke();
+  g.beginPath(); g.moveTo(x1, y1); g.lineTo(x1 - Math.cos(a - 0.42) * hl, y1 - Math.sin(a - 0.42) * hl); g.lineTo(x1 - Math.cos(a + 0.42) * hl, y1 - Math.sin(a + 0.42) * hl); g.closePath(); g.fill(); g.restore();
+}
+function hash(i, k) { var x = Math.sin(i * 127.1 + k * 311.7) * 43758.5453; return x - Math.floor(x); }   /* seeded: the same scene every run */
+function u() { return S.anim ? Math.min(1, S.anim.t / S.anim.d) : 1; }
+function glowing(part) { return S.look === part && S.anim && S.anim.k === "inspect"; }
+
+/* the apparatus: a glass cylinder in a water bath; the piston height is the gas volume (drawn to scale in V) */
+function drawApparatus(B) {
+  var ms = S.ms, V = O.v("gas.V"), cx = B.x + B.w * (L.ph ? 0.5 : 0.56), cw = L.ph ? 170 : 120, bw = L.ph ? 30 : 24;
+  var bot = B.y + B.h - (L.ph ? 84 : 70), pxL = L.ph ? 32 : 40, top = bot - 13 * pxL, py = bot - V * pxL, pt = L.ph ? 16 : 14, lh = L.ph ? 30 : 22;
+  var bl = cx - cw / 2 - bw, br = cx + cw / 2 + bw, bt = bot - 4 * pxL, i;
+  /* the water bath, behind the cylinder */
+  g.fillStyle = "rgba(111,177,217,.22)"; rr(bl, bt, br - bl, bot - bt + 14, 10); g.fill();
+  g.strokeStyle = glowing("bath") ? COL.heat : "rgba(111,177,217,.8)"; g.lineWidth = glowing("bath") ? 5 : 2; g.stroke();
+  T("water bath " + O.f("bath.T"), "sci", cx, bot + 14 + lh, L.sm, COL.dim, "center", "700");
+  anchors.bath = { x: cx, y: bot - 2 * pxL };
+  /* the gas, with seeded particles spread through its volume (illustrative) */
+  g.fillStyle = glowing("gas") ? "rgba(158,197,240,.8)" : "rgba(158,197,240,.5)"; g.fillRect(cx - cw / 2, py, cw, bot - py);
+  g.fillStyle = "rgba(42,120,214,.55)";
+  for (i = 0; i < 40; i++) { g.beginPath(); g.arc(cx - cw / 2 + 8 + hash(i, 1) * (cw - 16), py + 6 + hash(i, 2) * Math.max(2, bot - py - 12), L.ph ? 4 : 3, 0, 6.283); g.fill(); }
+  anchors.gas = { x: cx, y: (py + bot) / 2 };
+  /* the glass cylinder and its volume scale (decoration), left of the bath */
+  g.strokeStyle = COL.steel; g.lineWidth = 3; g.beginPath(); g.moveTo(cx - cw / 2, top); g.lineTo(cx - cw / 2, bot); g.lineTo(cx + cw / 2, bot); g.lineTo(cx + cw / 2, top); g.stroke();
+  g.strokeStyle = "rgba(91,100,114,.6)"; g.lineWidth = 1.5; g.beginPath(); g.moveTo(bl - 8, top); g.lineTo(bl - 8, bot); g.stroke();
+  for (i = 0; i <= 12; i += 2) { var ty = bot - i * pxL; g.beginPath(); g.moveTo(bl - 14, ty); g.lineTo(bl - 8, ty); g.stroke(); T(String(i), "decor", bl - 18, ty + 6, L.sm, COL.dim, "right", "600");
+    g.save(); g.setLineDash([3, 5]); g.beginPath(); g.moveTo(bl - 8, ty); g.lineTo(cx - cw / 2, ty); g.stroke(); g.restore(); }
+  T("V / L", "ui", bl - 8, top - 14, L.sm, COL.dim, "center", "700");
+  /* stops at 10 L for the vacuum and 1 atm paths */
+  if (ms.hi < 12) { var sy = bot - ms.hi * pxL; g.fillStyle = COL.left; g.fillRect(cx - cw / 2 - 6, sy - 12, 12, 8); g.fillRect(cx + cw / 2 - 6, sy - 12, 12, 8);
+    T("stop at " + O.f("vol.end"), "sci", cx, sy - 20, L.sm, COL.left, "center", "800"); }
+  /* the piston */
+  g.fillStyle = COL.steel; g.fillRect(cx - cw / 2 + 2, py - pt, cw - 4, pt);
+  anchors.piston = { x: cx, y: py - pt / 2 };
+  /* the load: weights stacked, or a heap of sand (its height ∝ the grains left) */
+  var wh = L.ph ? 20 : 18, k, y0 = py - pt, ltop = y0;
+  for (k = 0; k < ms.weights; k++) { var wy = y0 - (k + 1) * wh; g.fillStyle = glowing("weights") ? "#596579" : COL.weight; rr(cx - cw / 2 + 12, wy + 1, cw - 24, wh - 2, 4); g.fill(); }
+  if (ms.weights > 0) { ltop = y0 - ms.weights * wh; anchors.weights = { x: cx, y: y0 - ms.weights * wh / 2 }; }
+  if (ms.grains > 0) {
+    var hh = ms.grains / 800 * (L.ph ? 120 : 110);
+    g.fillStyle = COL.sand; g.beginPath(); g.moveTo(cx - cw / 2 + 6, y0); g.quadraticCurveTo(cx, y0 - hh * 2, cx + cw / 2 - 6, y0); g.closePath(); g.fill();
+    for (i = 0; i < 18; i++) { g.fillStyle = "rgba(140,100,40,.5)"; g.fillRect(cx - cw / 3 + hash(i, 5) * cw * 0.66, y0 - hash(i, 6) * hh * 0.9 - 2, 3, 3); }
+    ltop = y0 - hh; anchors.weights = { x: cx, y: y0 - hh / 2 };
+    if (ms.pour) for (i = 0; i < (L.ph ? 10 : 8); i++) { var fx = cx + (hash(i, 7) - 0.5) * cw * 0.4, fy = ltop - 4 - ((clock.t * 160 + i * 23) % 60); g.fillStyle = COL.sand; g.fillRect(fx, fy, 3, 3); }
+  }
+  if (!anchors.weights) anchors.weights = { x: cx, y: y0 - 10 };
+  if (ms.weights > 0) T(O.num("load.weights") + " × " + O.f("weight.p"), "sci", cx, ltop - 10, L.sm, COL.ink, "center", "800");
+  else if (ms.grains > 0) T("sand", "ui", cx, ltop - 10, L.sm, COL.ink, "center", "800");
+  /* heat from the bath while the gas does work (bound to q: arrows into the gas when q > 0, out when q < 0) */
+  var q = O.v("run.q");
+  if (S.run && !S.run.done && Math.abs(q) > 0.05) {
+    var into = q > 0, hy = bot - 1.4 * pxL;
+    arrow(into ? bl + 2 : cx - cw / 2 - 2, hy, into ? cx - cw / 2 - 2 : bl + 2, hy, COL.heat, 4);
+    arrow(into ? br - 2 : cx + cw / 2 + 2, hy, into ? cx + cw / 2 + 2 : br - 2, hy, COL.heat, 4);
+    T((into ? "heat in: q = " : "heat out: q = ") + O.f("run.q"), "sci", cx, bot + 14 + 2 * lh, L.sm, COL.heat, "center", "800");
+  }
+  if (S.run && !S.run.done && moving() && !ms.pour) T("motion not to scale", "ui", B.x + 14, B.y + (L.ph ? 34 : 26), Math.max(L.min, L.sm - 2), COL.dim, "left", "600");
+  if (sceneOn("meet")) { A.hit({ x: cx - cw / 2, y: py, w: cw, h: bot - py }, "inspect", "gas"); A.hit({ x: cx - cw / 2, y: ltop - 8, w: cw, h: y0 - ltop + 8 }, "inspect", "weights");
+    A.hit({ x: bl, y: bt, w: bw, h: bot - bt }, "inspect", "bath"); A.hit({ x: cx + cw / 2, y: bt, w: bw, h: bot - bt }, "inspect", "bath"); }
+}
+function sceneOn(id) { return A.scene().id === id && !S.anim; }
+
+/* the p–V plot: the outside-pressure path of each run and the area under it (the work done by the gas) */
+function drawPlot(B) {
+  var m = L.ph ? { l: 70, r: 24, t: 40, b: 62 } : { l: 56, r: 18, t: 34, b: 50 }, x0 = B.x + m.l, y0 = B.y + B.h - m.b, w = B.w - m.l - m.r, h = B.h - m.t - m.b;
+  function X(V) { return x0 + V / 12 * w; }
+  function Y(p) { return y0 - p / 11 * h; }
+  var i, nRT = O.v("gas.nRT"), sc = A.scene().id, ms = S.ms;
+  g.strokeStyle = "#ece8dd"; g.lineWidth = 1;
+  for (i = 2; i <= 12; i += 2) { g.beginPath(); g.moveTo(X(i), y0); g.lineTo(X(i), y0 - h); g.stroke(); T(String(i), "decor", X(i), y0 + L.sm + 6, L.sm, COL.dim, "center", "600"); }
+  for (i = 2; i <= 10; i += 2) { g.beginPath(); g.moveTo(x0, Y(i)); g.lineTo(x0 + w, Y(i)); g.stroke(); T(String(i), "decor", x0 - 8, Y(i) + 5, L.sm, COL.dim, "right", "600"); }
+  g.strokeStyle = COL.ink; g.lineWidth = 2; g.beginPath(); g.moveTo(x0, y0 - h); g.lineTo(x0, y0); g.lineTo(x0 + w, y0); g.stroke();
+  T("V / L", "ui", x0 + w, y0 - 10, L.sm, COL.dim, "right", "700");
+  T("p / atm", "ui", x0 + 6, B.y + m.t - 12, L.sm, COL.dim, "left", "700");
+  /* the gas's own curve, pV = nRT at 25 °C */
+  g.save(); g.setLineDash([7, 6]); g.strokeStyle = COL.curve; g.lineWidth = 2; g.beginPath();
+  for (i = 0; i <= 120; i++) { var vv = 1.8 + i * (12 - 1.8) / 120, pp = nRT / vv; if (pp > 11) continue; if (i === 0 || nRT / (vv - (12 - 1.8) / 120) > 11) g.moveTo(X(vv), Y(pp)); else g.lineTo(X(vv), Y(pp)); }
+  g.stroke(); g.restore();
+  T("gas: pV = " + O.f("gas.nRT"), "sci", X(7.4), Y(nRT / 7.4) - 30, L.sm, COL.curve, "left", "700");
+  /* a path: the staircase of outside pressure from its segments, filled down to p = 0 */
+  function path(seg, col, alpha, outline) {
+    if (!seg || !seg.length) return;
+    var k; g.beginPath(); g.moveTo(X(seg[0][1]), y0);
+    for (k = 0; k < seg.length; k++) { g.lineTo(X(seg[k][1]), Y(seg[k][0])); g.lineTo(X(seg[k][2]), Y(seg[k][0])); }
+    g.lineTo(X(seg[seg.length - 1][2]), y0); g.closePath();
+    if (alpha > 0) { g.globalAlpha = alpha; g.fillStyle = col; g.fill(); g.globalAlpha = 1; }
+    g.beginPath(); g.moveTo(X(seg[0][1]), Y(seg[0][0]));
+    for (k = 0; k < seg.length; k++) { g.lineTo(X(seg[k][1]), Y(seg[k][0])); g.lineTo(X(seg[k][2]), Y(seg[k][0])); }
+    g.strokeStyle = col; g.lineWidth = outline ? 2 : 3; if (outline) g.setLineDash([6, 5]); g.stroke(); g.setLineDash([]);
+  }
+  var P = ms.paths, cur = S.run && !S.run.done ? ms.seg : null, key = S.run ? S.run.key : null;
+  if (sc === "eachWeight" || sc === "grain") path(P.e1, COL.dim, 0, true);
+  if (sc === "grain") path(P.e8, COL.dim, 0, true);
+  if (sc === "back") {
+    var pair = key === "c8" ? "e8" : key === "cg" ? "eg" : "e1";
+    if (key && (S.run.done || cur)) { path(cur || P[key], COL.back, 0.35, false); path(P[pair], COL.out, 0.4, false); }
+  } else if (sc === "threeWays") {
+    if (key && (cur || P[key])) path(cur || P[key], COL.out, 0.35, false);
+  } else {
+    var show = cur || (key && P[key]);
+    if (show) path(show, COL.out, 0.35, false);
+  }
+  /* start and end states, and the gas now */
+  g.fillStyle = COL.ink; g.beginPath(); g.arc(X(2), Y(10), 7, 0, 6.283); g.fill(); g.beginPath(); g.arc(X(10), Y(2), 7, 0, 6.283); g.fill();
+  T("start", "ui", X(2) + 12, Y(10) - 6, L.sm, COL.ink, "left", "800"); T("end", "ui", X(10) + 4, Y(2) - 14, L.sm, COL.ink, "left", "800");
+  var gv = O.v("gas.V"), gp = O.v("gas.p");
+  if (gp <= 11) { g.fillStyle = COL.route; g.beginPath(); g.arc(X(gv), Y(gp), L.ph ? 9 : 7, 0, 6.283); g.fill(); }
+  anchors.plot = { x: X(6), y: Y(5) }; anchors.gasPoint = { x: X(gv), y: Y(Math.min(gp, 11)) };
+  /* the area label */
+  var lbl = null;
+  if (sc === "back" && key) lbl = S.run.done ? (key === "c1" ? "left over: " + O.f("loss.c1") : key === "c8" ? "left over: " + O.f("loss.c8") : "left over: " + O.f("loss.cg")) : "work on the gas: " + O.f("run.wOn");
+  else if (key && (S.run.done || ms.steps > 0)) lbl = "area = work by the gas = " + O.f("run.wBy");
+  if (lbl) T(lbl, "sci", x0 + w - 6, Y(8.4), L.fs, sc === "back" ? COL.left : COL.out, "right", "800", w - 20);
+}
+
+/* the readout card: the two pressures and the work, live */
+function drawCard(B) {
+  var x = B.x + 16, y = B.y + (L.ph ? 40 : 32), lh = L.ph ? 36 : 30, mw = B.w - 32, sc = A.scene().id;
+  panel(B, COL.card);
+  if (sc === "threeWays" && (S.flags.done_vac || S.flags.done_p53 || S.flags.done_rev)) {
+    T("Same start, same end", "ui", x, y, L.sm, COL.dim, "left", "800");
+    if (S.flags.done_vac) T("vacuum: w = " + O.f("way.vac.w"), "sci", x, y + lh, L.sm + 1, COL.ink, "left", "700", mw);
+    if (S.flags.done_p53) T("against " + O.f("p53.p") + ": w = " + O.f("way.p53.w"), "sci", x, y + 2 * lh, L.sm + 1, COL.ink, "left", "700", mw);
+    if (S.flags.done_rev) T("grain by grain: w = " + O.f("way.rev.w") + " (limit " + O.f("rev.w") + ")", "sci", x, y + 3 * lh, L.sm + 1, COL.ink, "left", "700", mw);
+    if (S.flags.done_vac && S.flags.done_p53 && S.flags.done_rev) T("ΔU = " + O.f("run.dU") + " every time; q = −w", "sci", x, y + 4 * lh, L.sm + 1, COL.route, "left", "800", mw);
+    return;
+  }
+  T("gas " + O.f("gas.p") + "   outside " + O.f("ext.p") + "   V " + O.f("gas.V"), "sci", x, y, L.sm + 1, COL.ink, "left", "800", mw);
+  if (sc === "back" && S.run) T("work done on the gas: " + O.f("run.wOn"), "sci", x, y + lh, L.sm + 1, COL.back, "left", "800", mw);
+  else T("work done by the gas: " + O.f("run.wBy"), "sci", x, y + lh, L.sm + 1, COL.out, "left", "800", mw);
+  T("w = " + O.f("run.w") + "   q = " + O.f("run.q"), "sci", x, y + 2 * lh, L.sm + 1, COL.ink, "left", "700", mw);
+  if (!L.ph || sc === "meet") T("w = −pₑₓΔV, summed over the steps", "ui", x, y + 3 * lh, L.sm, COL.dim, "left", "700", mw);
+  if (sc === "grain" && S.flags.done_eg) T("reversible limit: " + O.f("rev.wBy"), "sci", x, y + 3 * lh + (L.ph ? 0 : 26), L.sm + 1, COL.route, "left", "800", mw);
+}
+
+function draw() {
+  layout(); minPx = 999; anchors = {}; issues = [];
+  var W = L.W, H = L.H, v = cam.view(), k = 1 / v.fov, Wd = L.world, cx = Wd.x + Wd.w / 2, cy = Wd.y + Wd.h / 2;
+  g.fillStyle = COL.paper; g.fillRect(0, 0, W, H);
+  T("Step " + (S.scene + 1) + " of " + SCRIPT.scenes.length + (L.ph ? "" : " · " + A.scene().objective), "ui", 20, L.ph ? 46 : 38, L.fs, COL.ink, "left", "800");
+  /* the world (apparatus, plot, readouts) through the camera; anchors are recorded in canvas pixels */
+  g.save(); rr(Wd.x, Wd.y, Wd.w, Wd.h, 14); g.clip();
+  g.translate(cx, cy); g.scale(k, k); g.translate(-v.at[0], -v.at[1]);
+  panel(L.app, "#fffefa"); drawApparatus(L.app);
+  panel(L.plot, "#fffefa"); drawPlot(L.plot);
+  drawCard(L.card);
+  g.restore();
+  var a; for (a in anchors) anchors[a] = { x: cx + (anchors[a].x - v.at[0]) * k, y: cy + (anchors[a].y - v.at[1]) * k };
+  /* the lab guide */
+  var G = L.guide, gx = G.x + 18, gy = G.y + (L.ph ? 40 : 34), gw = G.w - 36, parts = guideParts(), nx = A.next(), i2;
+  rr(G.x, G.y, G.w, G.h, 14); g.fillStyle = "#f3f1ea"; g.fill(); g.strokeStyle = COL.line; g.lineWidth = 1.5; g.stroke();
+  T("LAB GUIDE", "ui", gx, gy, L.sm, COL.dim, "left", "800"); gy += L.ph ? 36 : 30;
+  for (i2 = 0; i2 < parts.length; i2++) {
+    T(parts[i2].head, "ui", gx, gy, L.sm, parts[i2].head === "WHY" ? COL.curve : parts[i2].head === "PREDICT" ? COL.back : COL.route, "left", "800"); gy += L.ph ? 34 : 24;
+    gy = para(parts[i2].fn(), parts[i2].head === "HINT" ? "ui" : "sci", gx, gy, L.ph ? L.sm : L.fs - 2, gw, COL.ink, "600", 1.3) + 12;
+  }
+  T("NEXT", "ui", gx, gy, L.sm, COL.back, "left", "800"); gy += L.ph ? 34 : 24;
+  gy = para(nx ? nx.label : (busy() ? "Watch…" : (predicting() ? "Choose a prediction below." : (A.scene().id === "takeaway" ? "You have finished. Reset to try again." : "…"))), "ui", gx, gy, L.ph ? L.sm : L.fs - 2, gw, COL.ink, "800", 1.3);
+  if (gy > G.y + G.h - 6) issues.push("the lab guide overflows its panel by " + Math.round(gy - G.y - G.h) + " px");
+}
+/* PRESENT-END */
+
+function frame() {
+  computeObs();                         /* the Director's waits read this frame's observables */
+  D.update();
+  computeObs();
+  A.hitsReset();
+  draw();
+  var nt = O.shown(narrText(), "sci"); if ($("narr").textContent !== nt) $("narr").textContent = nt;
+  /* the key result: only the target's name until the learner's grain-by-grain run is done, then the value with one pulse */
+  var val = $("ansval"), show = !!S.flags.done_eg, txt = show ? O.shown(O.f("rev.w"), "sci") : "";
+  if (val.textContent !== txt) { val.textContent = txt; if (show && pulseAt < 0 && !reduced) { pulseAt = clock.t; $("target").classList.add("pulse"); } }
+  if (!show) pulseAt = -1;
+  if ($("target").classList.contains("pulse") && pulseAt >= 0 && clock.t - pulseAt > 1.6) $("target").classList.remove("pulse");
+  var sr = guideParts().map(function (q) { return q.fn(); }).join(" "); if ($("guidesr").textContent !== sr) $("guidesr").textContent = sr;
+  RUN.done = !!S.dir.done;
+  if (refusal && clock.t - refusal.t > 5) refusal = null;
+  var sc = A.scene().id, f = S.flags;
+  $("inspgroup").hidden = sc !== "meet";
+  $("liftgroup").hidden = !(sc === "oneStep" || sc === "eachWeight");
+  $("liftall").hidden = sc !== "oneStep"; $("lift").hidden = sc !== "eachWeight";
+  $("pourgroup").hidden = !(sc === "grain" || (sc === "back" && runIs("cg")));
+  var pb = $("pourbtn"), pouring = S.ms.pour !== 0; pb.setAttribute("data-arg", pouring ? "off" : "on");
+  pb.textContent = pouring ? "❚❚ Stop pouring" : (sc === "back" ? "Pour the sand on" : (S.ms.steps > 0 ? "Pour again" : "Pour the sand off"));
+  var askEach = sc === "eachWeight" && !f.predEach, askBack = sc === "back" && !f.predBack;
+  $("predgroup").hidden = !(askEach || askBack);
+  ["pr-more", "pr-less", "pr-same"].forEach(function (x) { $(x).hidden = !askEach; });
+  ["pb-one", "pb-each", "pb-grain"].forEach(function (x) { $(x).hidden = !askBack; });
+  $("backgroup").hidden = !(sc === "back" && f.predBack);
+  $("addw").hidden = !runIs("c8");
+  ["one", "each", "grain"].forEach(function (x) { $("cb-" + x).classList.toggle("done", !!f["done_c" + (x === "one" ? "1" : x === "each" ? "8" : "g")]); });
+  $("waysgroup").hidden = sc !== "threeWays";
+  ["vacuum", "p53", "rev"].forEach(function (x) { $("way-" + x).classList.toggle("done", !!f["done_" + (x === "vacuum" ? "vac" : x)]); });
+  ["gas", "weights", "bath"].forEach(function (x) { $("insp-" + x).classList.toggle("done", !!f["seen_" + x]); });
+  $("solbody").hidden = !f.done_eg; $("solnote").hidden = !!f.done_eg;        /* the explanation waits for the learner's own result */
+  A.syncNextUI({ button: $("nextbtn"), sticky: $("stickybtn"), stage: cv, primary: [].slice.call(document.querySelectorAll("#controls [data-act]")),
+    idleText: busy() ? "Watch…" : (predicting() ? "Predict first ↓" : (sc === "takeaway" ? "Finished" : "…")) });
+  var bs = document.querySelectorAll("[data-act]"), i;
+  for (i = 0; i < bs.length; i++) {
+    var id = bs[i].getAttribute("data-act"), arg = bs[i].getAttribute("data-arg") || undefined, why = A.check(id, arg);
+    /* a step while the piston moves stays pressable: the refusal is the lesson, and the guide explains it */
+    bs[i].disabled = !!why && !(why === "busy" && (id === "lift" || id === "add"));
+  }
+}
+
+/* ---- inputs: every state change goes through A.do ---- */
+function learner(id, arg) { var r = A.do(id, arg, "learner"); refusal = r.ok ? null : { id: id, args: arg, t: clock.t, reason: r.reason }; return r; }
+var bs0 = document.querySelectorAll("[data-act]"), j;
+for (j = 0; j < bs0.length; j++) bs0[j].addEventListener("click", function () { learner(this.getAttribute("data-act"), this.getAttribute("data-arg") || undefined); });
+$("nextbtn").addEventListener("click", function () { refusal = null; A.doNext("learner"); });
+$("stickybtn").addEventListener("click", function () { refusal = null; A.doNext("learner"); });
+$("resetbtn").addEventListener("click", function () { reset(); });
+$("replaybtn").addEventListener("click", function () { var lg = A.log(); replay(lg); });
+$("pausebtn").addEventListener("click", function () { var on = clock.pause(); this.setAttribute("aria-pressed", on ? "true" : "false"); this.textContent = on ? "▶ Resume" : "❚❚ Pause"; });
+$("classbtn").addEventListener("click", function () { var on = document.body.classList.toggle("classroom"); this.setAttribute("aria-pressed", on ? "true" : "false"); });
+$("themebtn").addEventListener("click", function () { var r = document.documentElement, dark = r.getAttribute("data-theme") ? r.getAttribute("data-theme") === "dark" : !!(window.matchMedia && matchMedia("(prefers-color-scheme: dark)").matches); r.setAttribute("data-theme", dark ? "light" : "dark"); });
+cv.addEventListener("click", function (e) {
+  var r = cv.getBoundingClientRect(), h = A.at((e.clientX - r.left) * cv.width / r.width, (e.clientY - r.top) * cv.height / r.height);
+  if (h) learner(h.id, h.args);
+});
+
+var replayFn = null;
+function reset() {
+  S.scene = 0; S.flags = {}; S.anim = null; S.look = null; S.run = null; S.ms = ENGINE.create(); refusal = null; pulseAt = -1;
+  clock.reset(); A.reset(); D.reset(); cam.set("all"); replayFn = null; RUN.done = false;
+  $("target").classList.remove("pulse"); $("ansval").textContent = "";
+  layout(); computeObs();
+}
+function replay(entries) { reset(); replayFn = A.replayer(entries); }
+
+function snapshot() { return JSON.parse(JSON.stringify({ S: S, obs: O.snapshot(), cam: cam.state(), t: clock.t, frame: clock.frame })); }
+window.PX = {
+  RUN: RUN,
+  kit: { OBS: O, ACT: A, DIR: D, CAM: cam, CLOCK: clock, SCRIPT: SCRIPT, GUIDES: GUIDES },
+  start: function () { reset(); D.play("default", "media"); },
+  media: function (film) { reset(); D.play(film || "full", "media"); },
+  lesson: function (mode) { reset(); D.play("lesson", mode || "learner"); },
+  reset: reset,
+  answer: function () { return O.f("rev.w"); },
+  speed: function (k) { clock.setSpeed(k); }, setSpeed: function (k) { clock.setSpeed(k); },
+  minLabelPx: function () { frame(); return minPx; },
+  stage: function () { return { n: S.scene + 1, name: SCRIPT.scenes[S.scene].id }; },
+  state: function () {
+    var out = { phase: SCRIPT.scenes[S.scene].id, stage: S.scene + 1, t: clock.t, busy: busy(), run: S.run ? S.run.key : null, mark: S.dir.mark, marks: S.dir.marks, shot: cam.state().shot,
+      focus: S.dir.focus, say: S.dir.say, hint: S.dir.hint, dirError: S.dir.error, done: RUN.done, obs: O.snapshot() }, f = O.flat(), k;
+    for (k in f) out[k] = f[k];
+    return out;
+  },
+  obs: function (id) { return O.v(id); },
+  anchors: function () { return JSON.parse(JSON.stringify(anchors)); },
+  layoutIssues: function () { return issues.slice(); },
+  next: function () { return A.next(); },
+  doNext: function () { return A.doNext("learner"); },
+  act: function (id, arg) { return learner(id, arg); },
+  refusal: function () { return refusal && { id: refusal.id, args: refusal.args, reason: refusal.reason }; },
+  snapshot: snapshot,
+  texts: function () { return O.shownList(); },
+  emitted: function () { return O.emitted(); },
+  log: function () { return A.log(); },
+  replay: replay
+};
+
+reset();
+CLOCK.drive(clock, frame, function () { if (replayFn) replayFn(); });
+})();
+</script>
+</body>
+</html>

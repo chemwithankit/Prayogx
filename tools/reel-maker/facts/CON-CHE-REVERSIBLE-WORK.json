@@ -1,0 +1,401 @@
+{
+  "schema": "prayogx-facts-v1",
+  "conceptId": "CON-CHE-REVERSIBLE-WORK",
+  "ncertConcept": "CPT-CHE-REVERSIBLE-IRREVERSIBLE-PROCESSES",
+  "alsoCovers": [
+    "CPT-CHE-PRESSURE-VOLUME-WORK",
+    "CPT-CHE-REVERSIBLE-ISOTHERMAL-WORK (result only)"
+  ],
+  "section": "NCERT Class 11 Chemistry Part I, Unit 5, 5.2.1 Work",
+  "source": {
+    "book": "NCERT Chemistry Part I, Class XI",
+    "unit": "5 Thermodynamics",
+    "file": "kech105.pdf",
+    "edition": "Reprint 2026-27",
+    "sha256": "e2b5d180e6f16f33f6d636a742ed6c23ce6a55636e5edb7f26207a8ed48ec5f8",
+    "url": "https://ncert.nic.in/textbook/pdf/kech105.pdf",
+    "read": "2026-10-10, text extracted with the vendored PDF.js 6.3.289 (printed page p = PDF page p - 135)"
+  },
+  "generatedBy": "tests/verify_con_che_reversible_work.py --facts",
+  "authority": "The verifier is the authority; this sheet is its approved representation for presentation and media. It holds no formulas to evaluate: consumers display these values, they never compute new ones.",
+  "signConvention": {
+    "w": "w is the work done ON the gas: positive on compression, negative on expansion (eq. 5.2, p. 141)",
+    "workByGas": "the work done BY the gas is −w: the area under the outside-pressure path on the p–V plot",
+    "q": "isothermal ideal gas: ΔU = 0, so q = −w (p. 142)"
+  },
+  "dataset": {
+    "gas": "the gas of NCERT Problem 5.2: 2 L at 10 atm and 25 °C, expanded isothermally to 10 L",
+    "weights": "the piston and the air above it press 2 atm; 8 equal weights add 1 atm each",
+    "sand": "800 grains of sand add 0.01 atm each (grain by grain = the reversible approximation)",
+    "flagF1": "NCERT Problem 5.4 calls this gas 1 mol; it is 0.818 mol (pV/RT), so its reversible work is 32.2 L atm, not 39.4"
+  },
+  "values": [
+    {
+      "id": "gas.n",
+      "value": 0.817866,
+      "decimals": 3,
+      "unit": "mol",
+      "written": "0.818 mol",
+      "spoken": "zero point eight one eight moles",
+      "short": "0.818",
+      "meaning": "amount of the gas of Problem 5.2: n = pV/RT",
+      "status": "calculated",
+      "source": {
+        "page": 142,
+        "flag": "F1"
+      }
+    },
+    {
+      "id": "gas.nRT",
+      "value": 20.0,
+      "decimals": 0,
+      "unit": "L atm",
+      "written": "20 L atm",
+      "spoken": "twenty litre atmospheres",
+      "short": "20",
+      "meaning": "p·V of the gas, constant at 25 °C",
+      "status": "calculated",
+      "source": {
+        "page": 142
+      }
+    },
+    {
+      "id": "p.start",
+      "value": 10.0,
+      "decimals": 0,
+      "unit": "atm",
+      "written": "10 atm",
+      "spoken": "ten atmospheres",
+      "short": "10",
+      "meaning": "the gas at the start (2 L)",
+      "status": "measured",
+      "source": {
+        "page": 142,
+        "problem": "5.2"
+      }
+    },
+    {
+      "id": "p.end",
+      "value": 2.0,
+      "decimals": 0,
+      "unit": "atm",
+      "written": "2 atm",
+      "spoken": "two atmospheres",
+      "short": "2",
+      "meaning": "the gas at the end (10 L)",
+      "status": "calculated",
+      "source": {
+        "page": 142
+      }
+    },
+    {
+      "id": "work.e1",
+      "value": 16.0,
+      "decimals": 1,
+      "unit": "L atm",
+      "written": "16.0 L atm",
+      "spoken": "sixteen point zero litre atmospheres",
+      "short": "16.0",
+      "meaning": "work done by the gas, all 8 weights off at once (p_ex = 2 atm)",
+      "status": "calculated",
+      "source": {
+        "page": 141,
+        "eq": "5.2"
+      }
+    },
+    {
+      "id": "work.e8",
+      "value": 28.579365,
+      "decimals": 1,
+      "unit": "L atm",
+      "written": "28.6 L atm",
+      "spoken": "twenty-eight point six litre atmospheres",
+      "short": "28.6",
+      "meaning": "work done by the gas, one weight at a time",
+      "status": "calculated",
+      "source": {
+        "page": 141,
+        "fig": "5.5 b"
+      }
+    },
+    {
+      "id": "work.eg",
+      "value": 32.148798,
+      "decimals": 1,
+      "unit": "L atm",
+      "written": "32.1 L atm",
+      "spoken": "thirty-two point one litre atmospheres",
+      "short": "32.1",
+      "meaning": "work done by the gas, grain by grain (800 steps)",
+      "status": "calculated",
+      "source": {
+        "page": 141,
+        "fig": "5.5 c"
+      }
+    },
+    {
+      "id": "work.rev",
+      "value": 32.188758,
+      "decimals": 1,
+      "unit": "L atm",
+      "written": "32.2 L atm",
+      "spoken": "thirty-two point two litre atmospheres",
+      "short": "32.2",
+      "meaning": "the reversible limit, nRT ln(V_f/V_i)",
+      "status": "calculated",
+      "source": {
+        "page": 142,
+        "eq": "5.5"
+      }
+    },
+    {
+      "id": "w.rev",
+      "value": -32.188758,
+      "decimals": 1,
+      "unit": "L atm",
+      "written": "−32.2 L atm",
+      "spoken": "minus thirty-two point two litre atmospheres",
+      "short": "−32.2",
+      "meaning": "w (on the gas) for the reversible expansion: the key result",
+      "status": "calculated",
+      "source": {
+        "page": 142,
+        "eq": "5.5"
+      }
+    },
+    {
+      "id": "work.c1",
+      "value": 80.0,
+      "decimals": 1,
+      "unit": "L atm",
+      "written": "80.0 L atm",
+      "spoken": "eighty point zero litre atmospheres",
+      "short": "80.0",
+      "meaning": "work needed to push the gas back, all 8 weights at once",
+      "status": "calculated",
+      "source": {
+        "page": 141
+      }
+    },
+    {
+      "id": "work.c8",
+      "value": 36.579365,
+      "decimals": 1,
+      "unit": "L atm",
+      "written": "36.6 L atm",
+      "spoken": "thirty-six point six litre atmospheres",
+      "short": "36.6",
+      "meaning": "work needed to push the gas back, one weight at a time",
+      "status": "calculated",
+      "source": {
+        "page": 141
+      }
+    },
+    {
+      "id": "work.cg",
+      "value": 32.228798,
+      "decimals": 1,
+      "unit": "L atm",
+      "written": "32.2 L atm",
+      "spoken": "thirty-two point two litre atmospheres",
+      "short": "32.2",
+      "meaning": "work needed to push the gas back, grain by grain",
+      "status": "calculated",
+      "source": {
+        "page": 141
+      }
+    },
+    {
+      "id": "loss.c1",
+      "value": 64.0,
+      "decimals": 1,
+      "unit": "L atm",
+      "written": "64.0 L atm",
+      "spoken": "sixty-four point zero litre atmospheres",
+      "short": "64.0",
+      "meaning": "round trip all at once: work left in the surroundings",
+      "status": "calculated",
+      "source": {
+        "rule": "64/N"
+      }
+    },
+    {
+      "id": "loss.c8",
+      "value": 8.0,
+      "decimals": 1,
+      "unit": "L atm",
+      "written": "8.0 L atm",
+      "spoken": "eight point zero litre atmospheres",
+      "short": "8.0",
+      "meaning": "round trip one weight at a time: work left in the surroundings",
+      "status": "calculated",
+      "source": {
+        "rule": "64/N"
+      }
+    },
+    {
+      "id": "loss.cg",
+      "value": 0.08,
+      "decimals": 1,
+      "unit": "L atm",
+      "written": "0.1 L atm",
+      "spoken": "zero point one litre atmospheres",
+      "short": "0.1",
+      "meaning": "round trip grain by grain: work left in the surroundings",
+      "status": "calculated",
+      "source": {
+        "rule": "64/N"
+      }
+    },
+    {
+      "id": "w.p52",
+      "value": 0.0,
+      "decimals": 1,
+      "unit": "L atm",
+      "written": "0.0 L atm",
+      "spoken": "zero point zero litre atmospheres",
+      "short": "0.0",
+      "meaning": "Problem 5.2, into a vacuum: w = 0",
+      "status": "calculated",
+      "source": {
+        "page": 142,
+        "problem": "5.2"
+      }
+    },
+    {
+      "id": "w.p53",
+      "value": -8.0,
+      "decimals": 1,
+      "unit": "L atm",
+      "written": "−8.0 L atm",
+      "spoken": "minus eight point zero litre atmospheres",
+      "short": "−8.0",
+      "meaning": "Problem 5.3, against 1 atm: w = −8 L atm",
+      "status": "calculated",
+      "source": {
+        "page": 142,
+        "problem": "5.3"
+      }
+    },
+    {
+      "id": "p54.ncert",
+      "value": 39.366,
+      "decimals": 1,
+      "unit": "L atm",
+      "written": "39.4 L atm",
+      "spoken": "thirty-nine point four litre atmospheres",
+      "short": "39.4",
+      "meaning": "NCERT's printed answer to Problem 5.4 (for 1 mol; flag F1)",
+      "status": "measured",
+      "source": {
+        "page": 143,
+        "problem": "5.4"
+      }
+    }
+  ],
+  "equations": [
+    {
+      "id": "eq.5.2",
+      "written": "w = −p_ex ΔV = −p_ex (V_f − V_i)",
+      "source": {
+        "page": 141,
+        "equation": "5.2"
+      }
+    },
+    {
+      "id": "eq.steps",
+      "written": "w = −Σ p ΔV",
+      "source": {
+        "page": 141,
+        "fig": "5.5 b"
+      }
+    },
+    {
+      "id": "eq.5.3",
+      "written": "w = −∫ p_ex dV",
+      "source": {
+        "page": 141,
+        "equation": "5.3"
+      }
+    },
+    {
+      "id": "eq.5.5",
+      "written": "w_rev = −2.303 nRT log(V_f/V_i)",
+      "source": {
+        "page": 142,
+        "equation": "5.5"
+      }
+    },
+    {
+      "id": "eq.iso",
+      "written": "isothermal: ΔU = 0, q = −w",
+      "source": {
+        "page": 142
+      }
+    }
+  ],
+  "statements": [
+    {
+      "id": "st.area",
+      "text": "The work done by the gas is the area under the outside-pressure path on the p–V plot.",
+      "source": {
+        "page": 141,
+        "fig": "5.5"
+      }
+    },
+    {
+      "id": "st.path",
+      "text": "Same start, same end, different paths: different work and different heat. ΔU is the same (0).",
+      "source": {
+        "page": 142
+      }
+    },
+    {
+      "id": "st.reversible",
+      "text": "A reversible process could, at any moment, be reversed by an infinitesimal change; it proceeds infinitely slowly through equilibrium states.",
+      "source": {
+        "page": 141
+      }
+    },
+    {
+      "id": "st.irreversible",
+      "text": "All other processes are irreversible.",
+      "source": {
+        "page": 142
+      }
+    },
+    {
+      "id": "st.max",
+      "text": "In isothermal expansion the reversible path gives the most work; in compression it needs the least.",
+      "source": {
+        "page": 141,
+        "fig": "5.5"
+      }
+    },
+    {
+      "id": "st.roundTrip",
+      "text": "An irreversible round trip leaves work behind in the surroundings; a reversible round trip leaves none.",
+      "source": {
+        "derived": "V5"
+      }
+    },
+    {
+      "id": "st.free",
+      "text": "Into a vacuum (p_ex = 0) the gas does no work.",
+      "source": {
+        "page": 142
+      }
+    }
+  ],
+  "mustNotSay": [
+    "Work is a state function.",
+    "The gas does the same work whichever way it expands.",
+    "A reversible process is one that happens quickly.",
+    "The reversible path needs the most work to compress the gas.",
+    "In free expansion the gas does work on the vacuum.",
+    "Problem 5.4's gas is 1 mol."
+  ],
+  "spokenFormsStatus": "draft: every spoken form is reviewed at storyboarding before any voice is generated",
+  "factsSha256": "0aad01bd241d350bba6ace100e3c0efacd6ddddcf69d52d915db273914360e13",
+  "verifierSha256": "01f6f2ede140c151eb8c886e36b736110e468b4a97c91622667ab036aeb15e01"
+}

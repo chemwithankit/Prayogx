@@ -53,7 +53,9 @@ with open(toy, encoding="utf-8") as fh:
     blocks = px_kit.BLOCK.findall(fh.read())
 ok("the toy carries all five blocks", sorted(b[0] for b in blocks) == ["act", "cam", "clock", "dir", "obs"])
 # pages may carry kit blocks only where the owner approved it; any other page or block is an unplanned migration
-ALLOWED = {"simulations/concepts/chemistry/con-che-calorimeter-01/index.html": ["cam"]}   # explainer mode (B2): the kit's camera
+ALLOWED = {"simulations/concepts/chemistry/con-che-calorimeter-01/index.html": ["cam"],   # explainer mode (B2): the kit's camera
+           "simulations/concepts/chemistry/con-che-hess-law/index.html": ["act", "cam", "clock", "dir", "obs"],   # XP-12: built on the whole kit
+           "simulations/concepts/chemistry/con-che-reversible-work/index.html": ["act", "cam", "clock", "dir", "obs"]}   # XP-05: the whole kit, first time-stepped model
 hits = {}
 for p in px_kit.tree_files(ROOT):
     if p.startswith(os.path.join(ROOT, "tests", "kit")):

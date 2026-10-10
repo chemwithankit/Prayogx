@@ -37,17 +37,17 @@
     "idPolicy": "Simulation IDs are permanent. A redo or fix edits the existing folder in place and bumps `updatedAt` / `revision`; it never mints a new ID."
   },
   "counts": {
-    "total": 57,
+    "total": 58,
     "byYear": {
       "2026": 54,
-      "unknown": 3
+      "unknown": 4
     },
     "bySubject": {
-      "Chemistry": 36,
+      "Chemistry": 37,
       "Physics": 21
     },
     "byChapter": {
-      "Thermodynamics": 8,
+      "Thermodynamics": 9,
       "Chemical Kinetics": 2,
       "Chemical Bonding and Molecular Structure": 4,
       "Organic Chemistry - Some Basic Principles and Techniques": 2,
@@ -7382,6 +7382,93 @@
       "status": "draft",
       "createdAt": "2026-10-06",
       "updatedAt": "2026-10-06"
+    },
+    {
+      "id": "CON-CHE-REVERSIBLE-WORK",
+      "kind": "concept",
+      "slug": "con-che-reversible-work",
+      "revision": 1,
+      "path": "simulations/concepts/chemistry/con-che-reversible-work/index.html",
+      "folder": "simulations/concepts/chemistry/con-che-reversible-work/",
+      "title": "One gas, many paths: reversible and irreversible work - expand a gas one step, eight steps and grain by grain, and see the work as an area",
+      "shortTitle": "One gas, many paths: reversible and irreversible work",
+      "summary": "A 2D interactive concept experience: the learner lifts weights off a piston to expand NCERT's gas (2 L at 10 atm, 25 °C) to 10 L all at once (16.0 L atm), one weight at a time (28.6 L atm) and grain by grain (32.1 L atm, approaching the reversible 32.2), seeing the work as the area under the outside-pressure path; predicts first; pushes the gas back and sees an irreversible round trip leave 64/N L atm behind; and runs NCERT Problems 5.2-5.4 (w = 0, −8.0, −32.2 L atm; ΔU = 0).",
+      "subject": "Chemistry",
+      "chapter": "Thermodynamics",
+      "topic": "Pressure-volume work and reversible processes",
+      "subtopics": [
+        "Work is the area under the outside-pressure path",
+        "Single-step, multi-step and reversible expansion",
+        "Reversible and irreversible processes",
+        "Irreversible round trips leave work in the surroundings",
+        "Free expansion and isothermal ideal gas: ΔU = 0, q = −w"
+      ],
+      "concepts": [
+        "w = −p_ex ΔV for each step",
+        "The work depends on the path; ΔU does not",
+        "The reversible path gives the most work on expansion and needs the least on compression",
+        "A reversible process can be reversed by an infinitesimal change"
+      ],
+      "formulas": [
+        "w = −p_ex ΔV (eq. 5.2)",
+        "w = −Σ p ΔV",
+        "w = −∫ p_ex dV (eq. 5.3)",
+        "w_rev = −2.303 nRT log(V_f/V_i) (eq. 5.5)",
+        "isothermal ideal gas: ΔU = 0, q = −w"
+      ],
+      "tags": [
+        "thermodynamics",
+        "work",
+        "pressure-volume work",
+        "reversible process",
+        "irreversible process",
+        "p-V diagram",
+        "isothermal expansion",
+        "free expansion",
+        "beginner",
+        "chemistry",
+        "ncert class 11"
+      ],
+      "learningObjectives": [
+        "Describe the conditions that make a process thermodynamically reversible.",
+        "Compare reversible and irreversible processes in terms of the external pressure and the equilibrium of the system with its surroundings.",
+        "Visualize pressure-volume work as the area under the p-V path for single-step, multi-step and reversible changes.",
+        "Calculate the pressure-volume work for an expansion against a constant external pressure.",
+        "Compare the work done in the same isothermal expansion carried out into vacuum, against a constant external pressure and reversibly."
+      ],
+      "source": {
+        "title": "Chemistry Part I, Class XI",
+        "author": "NCERT",
+        "chapter": "5 Thermodynamics",
+        "sections": "5.2.1 Work (pp. 140–143); Problems 5.2–5.4",
+        "edition": "Reprint 2026-27",
+        "url": "https://ncert.nic.in/textbook/pdf/kech105.pdf"
+      },
+      "verification": {
+        "status": "script_verified",
+        "methods": [
+          "tests/verify_con_che_reversible_work.py",
+          "tests/sim_con_che_reversible_work.js (page suite)"
+        ],
+        "verifiedOn": "2026-10-10",
+        "note": "Exact fractions for every stepped path, three routes to the reversible limit, the 64/N round-trip law, NCERT Problems 5.2-5.4, the page ENGINE in Node. Flag F1: Problem 5.4 calls the gas 1 mol; it is 0.818 mol (owner-approved D1). Awaiting owner review."
+      },
+      "interactivity": [
+        "7 scenes, each moved on by the learner",
+        "look at the gas, the weights and the water bath",
+        "lift all eight weights off at once",
+        "predict, then lift the weights one at a time (a step only at rest)",
+        "pour the sand off grain by grain (stop and resume)",
+        "the target reveal: the reversible work",
+        "predict, then push the gas back three ways and see what is left over",
+        "NCERT Problems 5.2-5.4 on the same cylinder",
+        "live p-V plot with the shaded work",
+        "lab guide: what happened, why, next",
+        "Replay, Pause, Reset, Classroom"
+      ],
+      "status": "draft",
+      "createdAt": "2026-10-10",
+      "updatedAt": "2026-10-10"
     }
   ]
 }
