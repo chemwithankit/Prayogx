@@ -1,0 +1,435 @@
+{
+  "schema": "prayogx-facts-v1",
+  "conceptId": "CON-CHE-HESS-LAW",
+  "ncertConcept": "CPT-CHE-HESS-LAW",
+  "section": "NCERT Class 11 Chemistry Part I, Unit 5, 5.4(e) Hess's Law of Constant Heat Summation",
+  "source": {
+    "book": "NCERT Chemistry Part I, Class XI",
+    "unit": "5 Thermodynamics",
+    "file": "kech105.pdf",
+    "edition": "Reprint 2026-27",
+    "sha256": "e2b5d180e6f16f33f6d636a742ed6c23ce6a55636e5edb7f26207a8ed48ec5f8",
+    "url": "https://ncert.nic.in/textbook/pdf/kech105.pdf",
+    "read": "2026-10-06, from rendered page images (printed page p = PDF page p - 135)"
+  },
+  "generatedBy": "tests/verify_con_che_hess_law.py --facts",
+  "authority": "The verifier is the authority; this sheet is its approved representation for presentation and media. It holds no formulas to evaluate: consumers display these values, they never compute new ones.",
+  "signConvention": {
+    "negative": "enthalpy decreases: heat is given out (exothermic)",
+    "positive": "enthalpy increases: heat is taken in (endothermic)",
+    "basis": "per mole of the reaction as written, standard conditions, the same temperature (5.4(e), p. 151)",
+    "reversal": "Reversing a chemical equation reverses the sign of ΔᵣH (convention 3, p. 151)."
+  },
+  "unit": {
+    "written": "kJ mol⁻¹",
+    "spoken": "kilojoules per mole"
+  },
+  "states": {
+    "start": {
+      "written": "C(graphite) + O₂",
+      "spoken": "carbon graphite plus O two",
+      "atoms": {
+        "C": 1,
+        "O": 2
+      }
+    },
+    "co": {
+      "written": "CO + ½O₂",
+      "spoken": "C O plus half O two",
+      "atoms": {
+        "C": 1,
+        "O": 2
+      }
+    },
+    "co2": {
+      "written": "CO₂",
+      "spoken": "C O two",
+      "atoms": {
+        "C": 1,
+        "O": 2
+      }
+    }
+  },
+  "reactions": {
+    "i": {
+      "label": "(i)",
+      "from": "start",
+      "to": "co2",
+      "written": "C(graphite) + O₂ → CO₂",
+      "spoken": "carbon graphite plus O two gives C O two",
+      "dH": {
+        "id": "rxn.i.dH",
+        "value": -393.5,
+        "decimals": 1,
+        "unit": "kJ mol⁻¹",
+        "written": "−393.5 kJ mol⁻¹",
+        "spoken": "minus three hundred ninety-three point five kilojoules per mole",
+        "short": "−393.5",
+        "spokenShort": "minus three hundred ninety-three point five",
+        "meaning": "ΔᵣH of C(graphite) + O₂ → CO₂",
+        "status": "measured",
+        "source": {
+          "page": 151,
+          "section": "5.4(e)"
+        }
+      }
+    },
+    "ii": {
+      "label": "(ii)",
+      "from": "co",
+      "to": "co2",
+      "written": "CO + ½O₂ → CO₂",
+      "spoken": "C O plus half O two gives C O two",
+      "dH": {
+        "id": "rxn.ii.dH",
+        "value": -283.0,
+        "decimals": 1,
+        "unit": "kJ mol⁻¹",
+        "written": "−283.0 kJ mol⁻¹",
+        "spoken": "minus two hundred eighty-three point zero kilojoules per mole",
+        "short": "−283.0",
+        "spokenShort": "minus two hundred eighty-three point zero",
+        "meaning": "ΔᵣH of CO + ½O₂ → CO₂",
+        "status": "measured",
+        "source": {
+          "page": 151,
+          "section": "5.4(e)"
+        }
+      }
+    },
+    "iii": {
+      "label": "(iii)",
+      "from": "co2",
+      "to": "co",
+      "written": "CO₂ → CO + ½O₂",
+      "spoken": "C O two gives C O plus half O two",
+      "dH": {
+        "id": "rxn.iii.dH",
+        "value": 283.0,
+        "decimals": 1,
+        "unit": "kJ mol⁻¹",
+        "written": "+283.0 kJ mol⁻¹",
+        "spoken": "plus two hundred eighty-three point zero kilojoules per mole",
+        "short": "+283.0",
+        "spokenShort": "plus two hundred eighty-three point zero",
+        "meaning": "ΔᵣH of CO₂ → CO + ½O₂",
+        "status": "calculated",
+        "source": {
+          "page": 151,
+          "section": "5.4(e)"
+        }
+      }
+    },
+    "target": {
+      "label": "target",
+      "from": "start",
+      "to": "co",
+      "written": "C(graphite) + ½O₂ → CO",
+      "spoken": "carbon graphite plus half O two gives C O",
+      "dH": {
+        "id": "rxn.target.dH",
+        "value": -110.5,
+        "decimals": 1,
+        "unit": "kJ mol⁻¹",
+        "written": "−110.5 kJ mol⁻¹",
+        "spoken": "minus one hundred ten point five kilojoules per mole",
+        "short": "−110.5",
+        "spokenShort": "minus one hundred ten point five",
+        "meaning": "ΔᵣH of C(graphite) + ½O₂ → CO",
+        "status": "calculated",
+        "source": {
+          "page": 152,
+          "section": "5.4(e), eq. 5.16"
+        }
+      }
+    }
+  },
+  "notMeasurable": {
+    "reaction": "target",
+    "written": "C(graphite) + ½O₂ → CO",
+    "page": 151,
+    "reason": "We cannot measure C(graphite) + ½O₂ → CO directly, because some CO₂ always forms."
+  },
+  "values": [
+    {
+      "id": "level.start",
+      "value": 0.0,
+      "decimals": 1,
+      "unit": "kJ mol⁻¹",
+      "written": "0.0 kJ mol⁻¹",
+      "spoken": "zero point zero kilojoules per mole",
+      "short": "0.0",
+      "spokenShort": "zero point zero",
+      "meaning": "relative enthalpy of the start state, the reference (start = 0)",
+      "status": "idealized",
+      "source": {
+        "note": "relative scale; Δ_fH of an element in its reference state is 0 (5.4(c), p. 150)"
+      }
+    },
+    {
+      "id": "level.co2",
+      "value": -393.5,
+      "decimals": 1,
+      "unit": "kJ mol⁻¹",
+      "written": "−393.5 kJ mol⁻¹",
+      "spoken": "minus three hundred ninety-three point five kilojoules per mole",
+      "short": "−393.5",
+      "spokenShort": "minus three hundred ninety-three point five",
+      "meaning": "relative enthalpy of CO₂ (start + (i))",
+      "status": "calculated",
+      "source": {
+        "page": 151
+      }
+    },
+    {
+      "id": "level.co",
+      "value": -110.5,
+      "decimals": 1,
+      "unit": "kJ mol⁻¹",
+      "written": "−110.5 kJ mol⁻¹",
+      "spoken": "minus one hundred ten point five kilojoules per mole",
+      "short": "−110.5",
+      "spokenShort": "minus one hundred ten point five",
+      "meaning": "relative enthalpy of CO + ½O₂ (found by Hess's law)",
+      "status": "calculated",
+      "source": {
+        "page": 152
+      }
+    },
+    {
+      "id": "target.dH",
+      "value": -110.5,
+      "decimals": 1,
+      "unit": "kJ mol⁻¹",
+      "written": "−110.5 kJ mol⁻¹",
+      "spoken": "minus one hundred ten point five kilojoules per mole",
+      "short": "−110.5",
+      "spokenShort": "minus one hundred ten point five",
+      "meaning": "ΔᵣH of C(graphite) + ½O₂ → CO found by Hess's law: the key result",
+      "status": "calculated",
+      "source": {
+        "page": 152
+      }
+    },
+    {
+      "id": "direct.dH",
+      "value": -393.5,
+      "decimals": 1,
+      "unit": "kJ mol⁻¹",
+      "written": "−393.5 kJ mol⁻¹",
+      "spoken": "minus three hundred ninety-three point five kilojoules per mole",
+      "short": "−393.5",
+      "spokenShort": "minus three hundred ninety-three point five",
+      "meaning": "start → CO₂ directly, reaction (i)",
+      "status": "measured",
+      "source": {
+        "page": 151
+      }
+    },
+    {
+      "id": "viaCO.dH",
+      "value": -393.5,
+      "decimals": 1,
+      "unit": "kJ mol⁻¹",
+      "written": "−393.5 kJ mol⁻¹",
+      "spoken": "minus three hundred ninety-three point five kilojoules per mole",
+      "short": "−393.5",
+      "spokenShort": "minus three hundred ninety-three point five",
+      "meaning": "start → CO → CO₂: target + (ii)",
+      "status": "calculated",
+      "source": {
+        "page": 152
+      }
+    },
+    {
+      "id": "paths.diff",
+      "value": 0.0,
+      "decimals": 1,
+      "unit": "kJ mol⁻¹",
+      "written": "0.0 kJ mol⁻¹",
+      "spoken": "zero point zero kilojoules per mole",
+      "short": "0.0",
+      "spokenShort": "zero point zero",
+      "meaning": "via CO minus direct: zero, the routes agree",
+      "status": "calculated",
+      "source": {
+        "page": 152
+      }
+    },
+    {
+      "id": "table.fH.co",
+      "value": -110.53,
+      "decimals": 2,
+      "unit": "kJ mol⁻¹",
+      "written": "−110.53 kJ mol⁻¹",
+      "spoken": "minus one hundred ten point five three kilojoules per mole",
+      "short": "−110.53",
+      "spokenShort": "minus one hundred ten point five three",
+      "meaning": "Δ_fH⊖ of CO(g), NCERT Table 5.2",
+      "status": "measured",
+      "source": {
+        "page": 149,
+        "table": "5.2"
+      }
+    },
+    {
+      "id": "table.fH.co2",
+      "value": -393.51,
+      "decimals": 2,
+      "unit": "kJ mol⁻¹",
+      "written": "−393.51 kJ mol⁻¹",
+      "spoken": "minus three hundred ninety-three point five one kilojoules per mole",
+      "short": "−393.51",
+      "spokenShort": "minus three hundred ninety-three point five one",
+      "meaning": "Δ_fH⊖ of CO₂(g), NCERT Table 5.2",
+      "status": "measured",
+      "source": {
+        "page": 149,
+        "table": "5.2"
+      }
+    },
+    {
+      "id": "check.irev.dH",
+      "value": 393.5,
+      "decimals": 1,
+      "unit": "kJ mol⁻¹",
+      "written": "+393.5 kJ mol⁻¹",
+      "spoken": "plus three hundred ninety-three point five kilojoules per mole",
+      "short": "+393.5",
+      "spokenShort": "plus three hundred ninety-three point five",
+      "meaning": "ΔᵣH of CO₂ → C(graphite) + O₂: (i) reversed (the explainer's check question)",
+      "status": "calculated",
+      "source": {
+        "page": 151,
+        "rule": "convention 3: reversing an equation reverses the sign of ΔᵣH"
+      }
+    },
+    {
+      "id": "table.diff",
+      "value": 0.03,
+      "decimals": 2,
+      "unit": "kJ mol⁻¹",
+      "written": "+0.03 kJ mol⁻¹",
+      "spoken": "plus zero point zero three kilojoules per mole",
+      "short": "+0.03",
+      "spokenShort": "plus zero point zero three",
+      "meaning": "found ΔᵣH minus Table 5.2's Δ_fH(CO); agreement when |diff| ≤ 0.05 (the example rounds to 0.1)",
+      "status": "calculated",
+      "source": {
+        "page": 149
+      }
+    }
+  ],
+  "equations": [
+    {
+      "id": "eq.hess.general",
+      "written": "ΔᵣH = ΔᵣH₁ + ΔᵣH₂ + ΔᵣH₃ …",
+      "spoken": "delta r H equals delta r H one plus delta r H two plus delta r H three and so on",
+      "source": {
+        "page": 152,
+        "equation": "5.16"
+      }
+    },
+    {
+      "id": "eq.hess.route",
+      "written": "ΔᵣH = (i) + (iii)",
+      "spoken": "delta r H equals reaction one plus reaction three",
+      "source": {
+        "page": 152
+      }
+    },
+    {
+      "id": "eq.hess.sum",
+      "written": "(−393.5) + (+283.0) = −110.5 kJ mol⁻¹",
+      "spoken": "minus three hundred ninety-three point five plus two hundred eighty-three point zero equals minus one hundred ten point five kilojoules per mole",
+      "source": {
+        "page": 152
+      }
+    },
+    {
+      "id": "eq.cancel",
+      "written": "C(graphite) + O₂ + CO₂ → CO₂ + CO + ½O₂",
+      "result": "C(graphite) + ½O₂ → CO",
+      "cancels": [
+        "CO₂"
+      ],
+      "oxygenTally": "O₂ − ½O₂ = ½O₂",
+      "spoken": "C O two appears on both sides, so it cancels; one O two on the left and half an O two on the right leave half an O two",
+      "source": {
+        "page": 152,
+        "note": "adding (i) and (iii)"
+      }
+    },
+    {
+      "id": "eq.check",
+      "written": "C(graphite) + O₂ → CO₂ has ΔᵣH = −393.5 kJ mol⁻¹. What is ΔᵣH for CO₂ → C(graphite) + O₂?",
+      "answer": "check.irev.dH",
+      "source": {
+        "page": 151,
+        "rule": "convention 3"
+      }
+    },
+    {
+      "id": "eq.paths",
+      "written": "−393.5 = (−110.5) + (−283.0)",
+      "spoken": "minus three hundred ninety-three point five equals minus one hundred ten point five plus minus two hundred eighty-three point zero",
+      "source": {
+        "page": 152
+      }
+    }
+  ],
+  "statements": [
+    {
+      "id": "st.stateFunction",
+      "text": "Enthalpy is a state function: its change depends only on the start and the end, not on the path.",
+      "source": {
+        "page": 151
+      }
+    },
+    {
+      "id": "st.sameStartEnd",
+      "text": "Same start, same end → same ΔH.",
+      "source": {
+        "page": 151
+      }
+    },
+    {
+      "id": "st.reverse",
+      "text": "Reverse a reaction → reverse the sign of ΔH.",
+      "source": {
+        "page": 151
+      }
+    },
+    {
+      "id": "st.notMeasurable",
+      "text": "We cannot measure C(graphite) + ½O₂ → CO directly, because some CO₂ always forms.",
+      "source": {
+        "page": 151
+      }
+    },
+    {
+      "id": "st.hessLaw",
+      "text": "If a reaction takes place in several steps, its standard reaction enthalpy is the sum of the standard enthalpies of the steps.",
+      "source": {
+        "page": 151
+      }
+    },
+    {
+      "id": "st.takeaway",
+      "text": "Enthalpy depends only on the start and the end.",
+      "source": {
+        "page": 151
+      }
+    }
+  ],
+  "mustNotSay": [
+    "ΔH depends on the route taken.",
+    "Hess's law means the reaction really happens in steps.",
+    "Reversing a reaction does not change ΔH.",
+    "The ΔH of forming CO was measured directly.",
+    "CO₂ is a step in burning carbon to CO."
+  ],
+  "spokenFormsStatus": "draft: every spoken form is reviewed at storyboarding before any voice is generated",
+  "factsSha256": "afe271e52e8d1eb9f834ad07cf6f8c1c6b201f203a9b51a61ea45c46e1bfb63e",
+  "verifierSha256": "fb70c77cf98af3d1a70fffe422fc1b831035d9e1ff5fc4f2be4dc8d419ea2e9a"
+}

@@ -147,18 +147,25 @@ async function all(b, file, o) {
     await p.evaluate(() => PX.reset());
     const s0 = await p.evaluate(() => PX.state().stage); await frames(p, 300);
     add('script: nothing advances on its own (10 s without an action)', (await p.evaluate(() => PX.state().stage)) === s0);
-    const walk = await p.evaluate(() => {
+    /* o.answers: [{ scene, id, args }] - a scene where NEXT deliberately cannot go on (a prediction): the walk
+       gives the learner's answer through the same action pathway, once, then follows next() again */
+    const walk = await p.evaluate((answers) => {
       const ids = PX.kit.SCRIPT.scenes.map(s => s.id), visited = [ids[0]], steps = []; let unexpected = 0, idleFrames = 0;
+      const given = {};
       for (let i = 0; i < 4000; i++) {
         const before = PX.state().phase, n = PX.next();
         if (n) { const r = PX.doNext(); steps.push(n.id); idleFrames = 0; if (!r.ok) return { err: 'next() offered ' + n.id + ' but do() refused: ' + r.reason }; }
-        else { __pxClock.step(1000 / 30); idleFrames++; if (PX.state().phase !== before) unexpected++; }
+        else {
+          const ans = answers.find(x => x.scene === before && !given[x.scene + x.id + x.args]);
+          if (ans && !PX.state().busy) { given[ans.scene + ans.id + ans.args] = 1; const r = PX.act(ans.id, ans.args); if (!r.ok) return { err: 'the answer ' + ans.id + ' was refused: ' + r.reason }; idleFrames = 0; continue; }
+          __pxClock.step(1000 / 30); idleFrames++; if (PX.state().phase !== before) unexpected++;
+        }
         const ph = PX.state().phase; if (visited[visited.length - 1] !== ph) visited.push(ph);
         if (!n && !PX.state().busy && PX.kit.ACT.scene() === PX.kit.SCRIPT.scenes[ids.length - 1] && !PX.next() && idleFrames > 30) break;
         if (idleFrames > 600) return { err: 'dead end in scene ' + ph };
       }
       return { visited, steps, unexpected, ids };
-    });
+    }, o.answers || []);
     add('action graph: following next() from reset reaches every scene in order', !walk.err && JSON.stringify(walk.visited) === JSON.stringify(walk.ids), walk.err || walk.visited);
     add('action graph: no dead ends, and every exit condition was satisfied', !walk.err && walk.steps.filter(s => s === 'advance').length === walk.ids.length - 1, walk.steps);
     add('action graph: scenes changed only through the advance action', !walk.err && walk.unexpected === 0);

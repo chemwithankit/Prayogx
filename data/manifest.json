@@ -37,17 +37,17 @@
     "idPolicy": "Simulation IDs are permanent. A redo or fix edits the existing folder in place and bumps `updatedAt` / `revision`; it never mints a new ID."
   },
   "counts": {
-    "total": 56,
+    "total": 57,
     "byYear": {
       "2026": 54,
-      "unknown": 2
+      "unknown": 3
     },
     "bySubject": {
-      "Chemistry": 35,
+      "Chemistry": 36,
       "Physics": 21
     },
     "byChapter": {
-      "Thermodynamics": 7,
+      "Thermodynamics": 8,
       "Chemical Kinetics": 2,
       "Chemical Bonding and Molecular Structure": 4,
       "Organic Chemistry - Some Basic Principles and Techniques": 2,
@@ -7302,6 +7302,86 @@
       "status": "script_verified",
       "createdAt": "2026-10-04",
       "updatedAt": "2026-10-04"
+    },
+    {
+      "id": "CON-CHE-HESS-LAW",
+      "kind": "concept",
+      "slug": "con-che-hess-law",
+      "revision": 1,
+      "path": "simulations/concepts/chemistry/con-che-hess-law/index.html",
+      "folder": "simulations/concepts/chemistry/con-che-hess-law/",
+      "title": "Hess's Law: the enthalpy staircase - find an enthalpy change that cannot be measured, by adding measured steps",
+      "shortTitle": "Hess's Law: the enthalpy staircase",
+      "summary": "A 2D interactive concept experience: the learner sees why C(graphite) + ½O₂ → CO cannot be measured directly, builds a route of measured reactions on an enthalpy diagram, reverses a reaction and sees its sign reverse, adds the steps to find −110.5 kJ mol⁻¹, compares two routes to CO₂ and checks the result against NCERT Table 5.2.",
+      "subject": "Chemistry",
+      "chapter": "Thermodynamics",
+      "topic": "Hess's law of constant heat summation",
+      "subtopics": [
+        "Enthalpy is a state function",
+        "Reversing a reaction reverses the sign of ΔᵣH",
+        "Adding the steps of a route",
+        "Two routes, one total",
+        "Finding an enthalpy change that cannot be measured"
+      ],
+      "concepts": [
+        "Enthalpy depends only on the start and the end",
+        "Same start, same end → same ΔH",
+        "Reverse a reaction → reverse the sign of ΔH",
+        "A ΔH that cannot be measured is found by adding measured steps"
+      ],
+      "formulas": [
+        "ΔᵣH = ΔᵣH₁ + ΔᵣH₂ + ΔᵣH₃ … (eq. 5.16)",
+        "ΔᵣH(reversed) = −ΔᵣH"
+      ],
+      "tags": [
+        "thermodynamics",
+        "hess's law",
+        "enthalpy",
+        "state function",
+        "thermochemical equations",
+        "enthalpy diagram",
+        "beginner",
+        "chemistry",
+        "ncert class 11"
+      ],
+      "learningObjectives": [
+        "Explain Hess's law as a consequence of enthalpy being a state function.",
+        "Apply Hess's law by combining and reversing thermochemical equations to find an unknown reaction enthalpy.",
+        "Visualize the different routes from reactants to products as an enthalpy diagram with the same overall change."
+      ],
+      "source": {
+        "title": "Chemistry Part I, Class XI",
+        "author": "NCERT",
+        "chapter": "5 Thermodynamics",
+        "sections": "5.4(e) (pp. 151–152); Table 5.2 (p. 149)",
+        "edition": "Reprint 2026-27",
+        "url": "https://ncert.nic.in/textbook/pdf/kech105.pdf"
+      },
+      "verification": {
+        "status": "script_verified",
+        "methods": [
+          "tests/verify_con_che_hess_law.py",
+          "tests/sim_con_che_hess_law.js (page suite)"
+        ],
+        "verifiedOn": "2026-10-06",
+        "note": "NCERT's own worked example (5.4(e)) with Table 5.2 as an independent check; values as printed. Awaiting owner review."
+      },
+      "interactivity": [
+        "8 scenes, each moved on by the learner",
+        "look at the three states",
+        "try to measure the target directly",
+        "place reaction (i)",
+        "reverse reaction (ii) and see its sign reverse",
+        "place (iii) and see the CO level found",
+        "add the steps (the target reveal)",
+        "compare two routes to CO₂",
+        "check with NCERT Table 5.2",
+        "lab guide: what happened, why, next",
+        "Replay, Pause, Reset, Undo, Classroom"
+      ],
+      "status": "draft",
+      "createdAt": "2026-10-06",
+      "updatedAt": "2026-10-06"
     }
   ]
 }
