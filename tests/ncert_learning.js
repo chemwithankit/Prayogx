@@ -124,9 +124,9 @@ print(json.dumps([C.problems(d['inventory'], st), X.problems(d['experiences'], d
     ok('the page context is carried as is: PDF page 3 and printed page 138 stay distinct, edition status kept',
       same(lc.page, { pdfPage: 3, printedPage: 138, chapterId: CHID, editionStatus: 'unverified' }) && lc.match === 'printed-page');
     ok('sections at p. 138: 5.1.3, 5.1.4, 5.1.2 (as UX-1)', same(ids(lc.sections), ['5.1.3', '5.1.4', '5.1.2']));
-    ok('multiple concepts on one page: Alpha and Beta (located on p. 138), then Gamma (by its section 5.1.2); Delta (another chapter) never',
-      same(lc.concepts.map(c => c.concept.id), [A, B, G]), lc.concepts.map(c => c.concept.id).join());
-    const alpha = lc.concepts[0], beta = lc.concepts[1], gamma = lc.concepts[2];
+    ok('multiple concepts on one page: Alpha and Beta (located on p. 138); Gamma (located only by its section 5.1.2) is NOT shown, because the chapter has an explicit pageMap; Delta (another chapter) never',
+      same(lc.concepts.map(c => c.concept.id), [A, B]), lc.concepts.map(c => c.concept.id).join());
+    const alpha = lc.concepts[0], beta = lc.concepts[1];
     ok('a concept with several learning objectives (Alpha: 2), in inventory order', same(ids(alpha.objectives), ['LO-CHE-TEST-ALPHA-FIRST', 'LO-CHE-TEST-ALPHA-SECOND'])
       && alpha.objectives[0].statement === 'Explain the first synthetic idea of test concept Alpha.' && alpha.objectives[0].verb === 'explain');
     ok('several published experiences (Alpha: simulation, graph, animation - hands-on first, no maximum)',
@@ -134,7 +134,6 @@ print(json.dumps([C.problems(d['inventory'], st), X.problems(d['experiences'], d
     ok('unpublished experiences are left out (planned, review), whatever their type', !JSON.stringify(lc).match(/ALPHA-PLANNED|ALPHA-REVIEW/));
     ok('an experience keeps its objectives (graph serves Alpha\'s second and first)', same(alpha.experiences[1].objectives, ['LO-CHE-TEST-ALPHA-SECOND', 'LO-CHE-TEST-ALPHA-FIRST']));
     ok('one published experience (Beta: a worked example)', same(ids(beta.experiences), ['EXP-CHE-TEST-BETA-WORKED']) && beta.experiences[0].libraryId === null);
-    ok('a concept with no experiences (Gamma) is still a concept on the page', gamma.experiences.length === 0 && gamma.objectives.length === 1);
     ok('Apply: the section\'s existing JEE link (5.1.4 -> P1 PHY Q7) plus the published practice experience\'s page (P1 CHE Q01)',
       same(ids(lc.apply), ['ADV-2026-P1-PHY-Q07', 'ADV-2026-P1-CHE-Q01']) && /Paper 1 · Q7/.test(lc.apply[0].label) && lc.apply[1].title === 'Two-step compression bench'
       || same(ids(lc.apply), ['ADV-2026-P1-PHY-Q07', 'ADV-2026-P1-CHE-Q01']), JSON.stringify(lc.apply));
@@ -232,7 +231,7 @@ print(json.dumps([C.problems(d['inventory'], st), X.problems(d['experiences'], d
         live: document.getElementById('nx-live').textContent };
     });
     let v = await view();
-    ok('Concept shows each concept on the page: Alpha, Beta, Gamma', v.concept && same(v.concepts, [A, B, G]), JSON.stringify(v.concepts));
+    ok('Concept shows each concept located on the page: Alpha, Beta (not Gamma, which is only in the section)', v.concept && same(v.concepts, [A, B]), JSON.stringify(v.concepts));
     ok('...with its learning objectives (Alpha: both statements)', same(v.objectives, ['Explain the first synthetic idea of test concept Alpha.', 'Predict the second synthetic outcome of test concept Alpha.']));
     ok('Explore lists every published experience, grouped by concept when there are several (Gamma has none, so no group)',
       v.explore && !v.quiet && same(v.groups, ['Test concept Alpha', 'Test concept Beta'])

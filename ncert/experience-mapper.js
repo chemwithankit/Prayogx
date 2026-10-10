@@ -59,7 +59,7 @@
 
   /* Read the controller's data into private plain copies. Anything malformed is left out. */
   function normalise(data) {
-    var out = { chapterId: str(data.chapterId), sections: [], practice: {}, pages: {}, concepts: [], byConcept: {} };
+    var out = { chapterId: str(data.chapterId), sections: [], practice: {}, pages: {}, pageMap: null, concepts: [], byConcept: {} };
     var i, j, s, secs = isArr(data.sections) ? data.sections : [];
     for (i = 0; i < secs.length; i++) {
       s = secs[i] || {};
@@ -67,6 +67,15 @@
       out.sections.push({ id: s.id, number: str(s.number) || "", title: str(s.title) || s.id, level: num(s.level) || 1,
                           pages: range(s.pages), understand: isArr(s.understand) ? s.understand.filter(str) : [],
                           apply: isArr(s.apply) ? s.apply.filter(str) : [] });
+    }
+    // Explicit page map { "<printed page>": { understand: [ids], apply: [ids] } } - null when the chapter has none
+    var pm = data.pageMap && typeof data.pageMap === "object" && !isArr(data.pageMap) ? data.pageMap : null;
+    if (pm) {
+      out.pageMap = {};
+      for (var key in pm) if (Object.prototype.hasOwnProperty.call(pm, key) && /^[0-9]+$/.test(key) && pm[key] && typeof pm[key] === "object") {
+        out.pageMap[key] = { understand: isArr(pm[key].understand) ? pm[key].understand.filter(str) : [],
+                             apply: isArr(pm[key].apply) ? pm[key].apply.filter(str) : [] };
+      }
     }
     var pr = data.practice && typeof data.practice === "object" ? data.practice : {};
     for (var id in pr) if (Object.prototype.hasOwnProperty.call(pr, id) && pr[id] && str(pr[id].title)) {
@@ -215,7 +224,11 @@
       if (out.match === "none") return out;
       for (i = 0; i < sections.length; i++) out.sections.push({ id: sections[i].id, number: sections[i].number, title: sections[i].title });
 
+      var strict = printed !== null && !!ch.pageMap;               // page-scoped: only what is mapped to THIS page
       var found = conceptsFor(ch, chapterId, printed, sections);
+      if (strict) found = found.filter(function (c) {
+        return c.locations.some(function (l) { return l.chapterId === chapterId && l.printedPages && l.printedPages[0] <= printed && printed <= l.printedPages[1]; });
+      });
       for (i = 0; i < found.length; i++) out.concepts.push(copyConcept(found[i]));
       for (i = 0; i < out.concepts.length; i++) out.concepts[i].experiences = stableSort(out.concepts[i].experiences, function (a, b) {
         var ra = HANDS_ON.indexOf(a.type), rb = HANDS_ON.indexOf(b.type);
@@ -223,9 +236,12 @@
       });
 
       // Understand: the sections' published concept pages (the feed lists only published ones)
-      var had = {};
-      for (i = 0; i < sections.length; i++) for (j = 0; j < sections[i].understand.length; j++) {
-        var uid = sections[i].understand[j], pc = ch.pages[uid];
+      var had = {}, here = strict ? (ch.pageMap[String(printed)] || { understand: [], apply: [] }) : null;
+      var uids = [];
+      if (strict) uids = here.understand;
+      else for (i = 0; i < sections.length; i++) for (j = 0; j < sections[i].understand.length; j++) uids.push(sections[i].understand[j]);
+      for (i = 0; i < uids.length; i++) {
+        var uid = uids[i], pc = ch.pages[uid];
         if (!pc || had[uid]) continue;
         had[uid] = true;
         out.understand.push({ libraryId: uid, title: pc.title, path: pc.path });
@@ -240,7 +256,8 @@
         seen[id] = true;
         out.apply.push({ libraryId: id, title: card ? card.title : fallback, label: card ? card.label : id });
       }
-      for (i = 0; i < sections.length; i++) for (j = 0; j < sections[i].apply.length; j++) add(sections[i].apply[j], null);
+      if (strict) for (i = 0; i < here.apply.length; i++) add(here.apply[i], null);
+      else for (i = 0; i < sections.length; i++) for (j = 0; j < sections[i].apply.length; j++) add(sections[i].apply[j], null);
       for (i = 0; i < found.length; i++) for (j = 0; j < found[i].experiences.length; j++) {
         var x = found[i].experiences[j];
         if (x.type === "practice" && x.libraryId) add(x.libraryId, x.title);

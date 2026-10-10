@@ -20,6 +20,12 @@ Each section maps
     apply       ADV- JEE simulations ("Related JEE problems")
     planned     CON- pages approved but not built: checked for form, never shipped
 
+A chapter may also carry `pageMap`: {"<printed page>": ["CON-...", "ADV-..."]}. This is the EXPLICIT
+page -> resource mapping (owner rule, 2026-10-10): the Explorer's page panel shows a resource on a page
+only if it is listed here for that page. Nothing is inferred from the section or chapter. Every ID must
+be listed in the chapter's sections (CON- under `understand`, ADV- under `apply`) on a section that
+contains that page.
+
 The PDFs are never hosted or proxied. `source.official` is the NCERT download; `source.hosted` must
 stay null until written permission is recorded (docs/NCERT.md).
 
@@ -249,6 +255,42 @@ def _section_problems(cid, chap, bp, by_id):
             ids = s.get(key, [])
             if isinstance(ids, list) and len(set(ids)) != len(ids):
                 out.append("%s: %s repeats an ID" % (where, key))
+    out += _page_map_problems(cid, chap, bp, by_id)
+    return out
+
+
+def _page_map_problems(cid, chap, bp, by_id):
+    pm = chap.get("pageMap")
+    if pm is None:
+        return []
+    out = []
+    if not isinstance(pm, dict):
+        return ["%s: pageMap must be an object {printed page: [IDs]}" % cid]
+    secs = chap.get("sections", [])
+    for key, ids in pm.items():
+        where = "%s pageMap[%s]" % (cid, key)
+        if not (isinstance(key, str) and key.isdigit()):
+            out.append("%s: the key must be a printed page number" % where)
+            continue
+        page = int(key)
+        if bp and not (bp[0] <= page <= bp[1]):
+            out.append("%s: page falls outside the chapter's %s" % (where, bp))
+        if not isinstance(ids, list) or not ids:
+            out.append("%s: must be a non-empty list of IDs" % where)
+            continue
+        if len(set(ids)) != len(ids):
+            out.append("%s: repeats an ID" % where)
+        for i in ids:
+            kind = schema.kind_of({"id": i}) if isinstance(i, str) else None
+            if kind not in ("concept", "question") or not schema.valid_id(i):
+                out.append("%s: %r is not a CON- or ADV- ID" % (where, i))
+                continue
+            if i not in by_id:
+                out.append("%s: %s is not in data/manifest.json" % (where, i))
+            field = "understand" if kind == "concept" else "apply"
+            home = [s for s in secs if i in s.get(field, []) and s["pages"][0] <= page <= s["pages"][1]]
+            if not home:
+                out.append("%s: %s must be listed under %s of a section that contains page %d" % (where, i, field, page))
     return out
 
 
@@ -292,10 +334,16 @@ def feed(root, sims):
                 sections.append({"id": s["id"], "number": s.get("number", ""), "title": s["title"],
                                  "level": s["level"], "pages": s["pages"], "concepts": s.get("concepts", []),
                                  "understand": und, "watch": wat, "apply": app})
+            pmap = {}
+            for key, ids in sorted((chap.get("pageMap") or {}).items(), key=lambda kv: int(kv[0])):
+                und = [i for i in ids if i in live and schema.kind_of(live[i]) == "concept"]
+                app = [i for i in ids if i in live and schema.kind_of(live[i]) == "question"]
+                if und or app:
+                    pmap[key] = {"understand": und, "apply": app}
             meta = {"id": ch["id"], "number": ch["number"], "title": ch["title"],
                     "source": dict((k, v) for k, v in ch["source"].items())}
             body = {"book": {k: book[k] for k in ("id", "class", "subject", "title")},
-                    "chapter": meta, "sections": sections,
+                    "chapter": meta, "sections": sections, "pageMap": pmap,
                     "simulations": [cards[k] for k in sorted(cards)]}
             ver = _version(body)
             files["%s.json" % ch["id"]] = dict([("schemaVersion", "1.0.0"), ("version", ver)] + list(body.items()))

@@ -308,7 +308,7 @@
         '<h2 class="nx-plabel" id="nx-explore-h">Explore</h2><ul class="nx-explist" id="nx-explore-body"></ul></section>' +
       '<p class="nx-quiet" id="nx-quiet" hidden>Nothing to explore on this page yet.</p>' +
       '<section class="nx-pblock" id="nx-understand" aria-labelledby="nx-understand-h" hidden>' +
-        '<h2 class="nx-plabel" id="nx-understand-h">Understand</h2><p class="nx-pnote">Concept experiment for this section</p>' +
+        '<h2 class="nx-plabel" id="nx-understand-h">Understand</h2><p class="nx-pnote">Concept experiment for this page</p>' +
         '<ul class="nx-applist" id="nx-understand-body"></ul></section>' +
       '<section class="nx-pblock" id="nx-apply" aria-labelledby="nx-apply-h" hidden>' +
         '<h2 class="nx-plabel" id="nx-apply-h">Apply</h2><p class="nx-pnote">JEE practice for this section</p>' +
@@ -364,7 +364,7 @@
       practice[c.id] = { title: c.shortTitle || c.title,
                          label: (c.exam || "JEE") + " " + (c.year || "") + " \u00b7 " + (c.paper || "") + " \u00b7 Q" + c.questionNumber };
     }
-    M.setChapterData({ chapterId: feed.chapter.id, sections: feed.sections || [], practice: practice, pages: pages,
+    M.setChapterData({ chapterId: feed.chapter.id, sections: feed.sections || [], practice: practice, pages: pages, pageMap: feed.pageMap || null,
                        learning: feed.learning || null });
   }
 
@@ -406,6 +406,8 @@
      printed number, or before a PDF is open. */
   function panelLearning(ctx) {
     var M = window.NCERT && window.NCERT.ExperienceMapper;
+    // before a PDF is open, a deep link (…/p143) still says which page the student means
+    if (!ctx && DEEP !== null && !PANEL.chosen) ctx = { pdfPage: 0, printedPage: DEEP, chapterId: PANEL.feed.chapter.id, editionStatus: null };
     try {
       return M && M.getLearningContext ? M.getLearningContext(ctx, { sectionId: PANEL.chosen, chapterId: PANEL.feed.chapter.id }) : null;
     } catch (e) { return null; }
@@ -993,6 +995,10 @@
           READER.verification = verify(local, doc.numPages, labels);
           readerVerify();
           readerStatus();
+          if (JUMP !== null && labels) {                // open at the page the link names
+            for (var li = 0; li < labels.length; li++) if (String(labels[li]).replace(/^\s+|\s+$/g, "") === String(JUMP)) { readerGo(li + 1); break; }
+          }
+          JUMP = null;
           READER.ctxReady = true;
           readerAnnounce();
         };
@@ -1108,6 +1114,13 @@
     var ctx = readerContext();
     if (!ctx || (READER.context && READER.context.pdfPage === ctx.pdfPage)) return;   // not a change
     READER.context = ctx;
+    if (ctx.printedPage !== null) {                 // the address bar follows the page: refresh and bookmarks return here
+      DEEP = ctx.printedPage;
+      try {
+        var seg = (location.hash || "").replace(/^#\/?/, "").replace(/\/+$/, "").split("/").slice(0, 4).join("/");
+        if (seg.split("/").length === 4) history.replaceState(history.state, "", "#/" + seg + "/p" + ctx.printedPage);
+      } catch (e) { /* the address bar is a convenience */ }
+    }
     var list = PAGE_LISTENERS.slice();
     for (var i = 0; i < list.length; i++) {
       // a listener's own error must not break the reader; surface it without stopping
@@ -1261,6 +1274,8 @@
   }
 
   /* ------------------------------------------------------------- routing */
+  var JUMP = null;     // the deep-linked page, consumed by the first PDF that opens (a re-picked file starts at page 1)
+  var DEEP = null;     // printed page named by the URL (#/…/ch05/p143); kept in step with the page being read
   function parse() {
     var h = (location.hash || "").replace(/^#\/?/, "").replace(/\/+$/, "");
     if (!h) return [];
@@ -1270,8 +1285,19 @@
   }
 
   function route() {
-    var my = ++seq;
     var parts = parse();
+    // only the page segment (…/p143) changed on the chapter already open: follow it, never rebuild the reader
+    var baseOf = function (h) { return String(h || "").replace(/^#\/?/, "").replace(/\/+$/, "").replace(/\/p[0-9]{1,4}$/i, "").toLowerCase(); };
+    if (STATE && STATE.view === "chapter" && baseOf(STATE.route) === baseOf(location.hash)) {
+      var m = /\/p([0-9]{1,4})\/?$/i.exec(location.hash || "");
+      DEEP = m ? parseInt(m[1], 10) : DEEP;
+      STATE.route = location.hash || "#/";
+      return;
+    }
+    var my = ++seq;
+    // an optional 5th segment, p<printed page>, is the deep link / bookmark to a page of the chapter
+    DEEP = JUMP = null;
+    if (parts.length === 5 && /^p[0-9]{1,4}$/.test(parts[4])) { DEEP = JUMP = parseInt(parts[4].slice(1), 10); parts = parts.slice(0, 4); }
     if (parts.length > 4) { showNotFound(); return; }
     if (!CAT) showLoading("the NCERT library");
     loadCatalog(function (err) {

@@ -243,10 +243,10 @@ const shot = async (pg, name) => { if (SHOTS) await pg.screenshot({ path: path.j
     const keys = await pg.evaluate(() => Object.keys(localStorage));
     ok('nothing is stored apart from the shared theme (no progress yet)', keys.length === 0, keys.join(','));
 
-    // ------------------------------------- the JEE library does not know about it
+    // ------------------------------------- the JEE library: one header link only
     console.log('=== JEE library untouched');
     const idx = fs.readFileSync(ROOT + '/index.html', 'utf8'), sitejs = fs.readFileSync(ROOT + '/site/site.js', 'utf8');
-    ok('the library page does not link to /ncert/', !/ncert/i.test(idx));
+    ok('the library page has exactly one header link to /ncert/ (owner, 2026-10-10)', (idx.match(/href="ncert\/"/g) || []).length === 1);
     ok('site.js does not mention the NCERT Explorer', !/ncert/i.test(sitejs));
     const sitemap = fs.readFileSync(ROOT + '/sitemap.xml', 'utf8');
     ok('/ncert/ is not in the sitemap', !/ncert/i.test(sitemap));
@@ -256,7 +256,7 @@ const shot = async (pg, name) => { if (SHOTS) await pg.screenshot({ path: path.j
     await lib.goto('http://127.0.0.1:' + P + '/');
     await lib.waitForSelector('article.card', { timeout: 15000 });
     const libText = await lib.evaluate(() => document.body.innerHTML);
-    ok('the JEE library renders and shows no NCERT link', !/ncert/i.test(libText));
+    ok('the JEE library renders with its single NCERT Explorer header link', (libText.match(/href="ncert\/"/g) || []).length === 1);
     ok('the JEE library loads without errors', lib.errs.length === 0, lib.errs.join(' | '));
     const js = fs.readFileSync(ROOT + '/ncert/ncert.js', 'utf8');
     // strip comments, then regex literals (one holding a lone quote would derail the string

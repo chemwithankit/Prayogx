@@ -95,8 +95,8 @@ const shot = async (pg, name) => { if (SHOTS) await pg.screenshot({ path: path.j
     ok('the header offers both learning paths: Questions and NCERT Explorer (current)',
       JSON.stringify(paths) === JSON.stringify([['Questions', '../', null], ['NCERT Explorer', '#/', 'page']]), JSON.stringify(paths));
     ok('...inside a labelled navigation', (await a.getAttribute('.nx-nav', 'aria-label')) === 'PrayogX learning paths');
-    ok('the main JEE site is not changed and does not link here (unlinked until the deployment gate)',
-      !/ncert/i.test(fs.readFileSync(ROOT + '/index.html', 'utf8')) && !/ncert/i.test(fs.readFileSync(ROOT + '/site/site.js', 'utf8'))
+    ok('the main JEE site links here with one header link (owner, 2026-10-10); site.js is unchanged and the page stays noindex',
+      (fs.readFileSync(ROOT + '/index.html', 'utf8').match(/href="ncert\/"/g) || []).length === 1 && !/ncert/i.test(fs.readFileSync(ROOT + '/site/site.js', 'utf8'))
       && (await a.getAttribute('meta[name="robots"]', 'content')).indexOf('noindex') >= 0);
 
     // ---------------------------------------------------------------- no PDF
