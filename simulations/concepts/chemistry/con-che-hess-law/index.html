@@ -158,6 +158,8 @@ body.classroom #controls button{font-size:19px;min-height:56px}
 
 <section id="solution" aria-labelledby="sh">
   <h2 id="sh"><b>03</b>What the experiment showed</h2>
+<p id="solnote" class="qsub">The explanation opens once you have added the steps and found the answer yourself.</p>
+<div id="solbody" hidden>
   <div class="sol">
     <ol class="steps">
       <li><b>States, not paths.</b> C(graphite) + O₂, CO + ½O₂ and CO₂ are the same matter (one carbon atom, two oxygen atoms) in three states. Each state has its own enthalpy, <i>H</i>. We measure levels from the start, C(graphite) + O₂ = 0.</li>
@@ -178,6 +180,7 @@ body.classroom #controls button{font-size:19px;min-height:56px}
     </ul>
     <p class="note"><b>Notes.</b> All values are per mole of the reaction as written, at standard conditions and the same temperature, from NCERT Class 11 Chemistry Part I, Unit 5: §5.4(e) (pp. 151–152) and Table 5.2 (p. 149). The levels are drawn relative to the start state, and the diagram's vertical scale is exact. PrayogX wording and drawings.</p>
   </div>
+</div>
 </section>
 
 <section id="howto" aria-labelledby="hh">
@@ -1088,6 +1091,7 @@ function frame() {
   $("predgroup").hidden = !(askRev || askHeat);
   ["pr-same", "pr-flip", "pr-zero"].forEach(function (x) { $(x).hidden = !askRev; });
   ["ph-out", "ph-in"].forEach(function (x) { $(x).hidden = !askHeat; });
+  $("solbody").hidden = !S.flags.summed; $("solnote").hidden = !!S.flags.summed;     /* the explanation waits for the learner's own result */
   $("workgroup").hidden = ["sum", "compare", "check"].indexOf(sc) < 0;
   $("sumbtn").hidden = sc !== "sum"; $("comparebtn").hidden = sc !== "compare"; $("checkbtn").hidden = sc !== "check";
   $("place-ii").textContent = S.rev.ii ? "Place (iii)" : "Place (ii)";

@@ -124,7 +124,10 @@ async function film(p, name, max) {
       ok('prediction: "takes in heat" does not unlock the sum', (await act('predictHeat', 'in')).ok && !(await act('sum')).ok);
       ok('prediction: "gives out heat" is right and unlocks the sum', (await act('predictHeat', 'out')).ok && await p.evaluate(() => PX.next() && PX.next().id === 'sum'));
       ok('target: before the sum the key result shows only its name', (await p.evaluate(() => document.getElementById('ansval').textContent)) === '');
-      await act('sum'); await idle();
+      ok('solution: section 03 is closed (hidden, note shown) until the learner has added the steps',
+        await p.evaluate(() => document.getElementById('solbody').hidden && !document.getElementById('solnote').hidden && !/−110\.5/.test(document.getElementById('solbody').offsetParent === null ? '' : document.getElementById('solbody').innerText)));
+      await act('sum'); await idle(); await run(p, 2);
+      ok('solution: after the sum, section 03 opens and shows the explanation', await p.evaluate(() => !document.getElementById('solbody').hidden && document.getElementById('solnote').hidden && /Hess/.test(document.getElementById('solbody').innerText)));
       ok('target: after the sum it shows −110.5 kJ mol⁻¹ from the observable', (await p.evaluate(() => document.getElementById('ansval').textContent)) === fact('target.dH').written);
       ok('guard: undo is refused once the steps are added', !(await act('undo')).ok);
       ok('page: no errors', errors.length === 0, errors);
