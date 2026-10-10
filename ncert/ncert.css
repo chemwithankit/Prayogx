@@ -246,6 +246,13 @@
 .nx-applink:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .nx-applabel{font-size:11.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--text-muted)}
 .nx-apptitle{font-size:14px;font-weight:600;color:var(--text-primary)}
+.nx-card{gap:4px;padding:11px 12px}
+.nx-cardtop{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.nx-cardkind{font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--c, var(--accent));
+  border:1px solid currentColor;border-radius:999px;padding:1px 7px;white-space:nowrap}
+.nx-cardwhy{font-size:12.5px;line-height:1.4;color:var(--text-secondary)}
+.nx-cardmeta{font-size:12px;color:var(--text-muted)}
+.nx-card:hover .nx-cardmeta{color:var(--accent)}
 
 /* chapter map: the section outline, collapsible; rows turn the PDF */
 .nx-map{padding:0}

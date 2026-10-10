@@ -311,7 +311,7 @@
         '<h2 class="nx-plabel" id="nx-understand-h">Understand</h2><p class="nx-pnote">Concept experiment for this page</p>' +
         '<ul class="nx-applist" id="nx-understand-body"></ul></section>' +
       '<section class="nx-pblock" id="nx-apply" aria-labelledby="nx-apply-h" hidden>' +
-        '<h2 class="nx-plabel" id="nx-apply-h">Apply</h2><p class="nx-pnote">JEE practice for this section</p>' +
+        '<h2 class="nx-plabel" id="nx-apply-h">Apply</h2><p class="nx-pnote">JEE practice for this page</p>' +
         '<ul class="nx-applist" id="nx-apply-body"></ul></section>' +
       '<details class="nx-pblock nx-map" id="nx-map" open><summary>Chapter map <span class="nx-count">(' + secs.length + ")</span></summary>" +
         '<ol class="nx-sections">' + rows + "</ol></details>" +
@@ -436,6 +436,26 @@
                      "data-explorer": "Data Explorer", "interactive-diagram": "Interactive Diagram", "molecular": "Molecular",
                      "derivation": "Derivation", "worked-example": "Worked Example" };
 
+  /* A resource card: what it is, what it is about, how long, and where it opens. Everything comes from
+     the chapter feed's card for the ID; a field the feed lacks is simply not shown. */
+  function simCard(id) {
+    var sims = (PANEL && PANEL.feed.simulations) || [];
+    for (var i = 0; i < sims.length; i++) if (sims[i].id === id) return sims[i];
+    return {};
+  }
+
+  function cardHTML(href, id, label, kind, title, aria) {
+    var c = simCard(id), meta = [];
+    if (c.estimatedMinutes) meta.push("about " + c.estimatedMinutes + " min");
+    if (c.difficulty) meta.push(c.difficulty);
+    return '<a class="nx-applink nx-card" href="' + esc(href) + '" target="_blank" rel="noopener" data-sim="' + esc(id) + '"' +
+      ' aria-label="' + esc(aria) + '">' +
+      '<span class="nx-cardtop"><span class="nx-applabel">' + esc(label) + '</span><span class="nx-cardkind">' + esc(kind) + "</span></span>" +
+      '<span class="nx-apptitle">' + esc(title) + "</span>" +
+      (c.topic ? '<span class="nx-cardwhy">' + esc(c.topic) + "</span>" : "") +
+      '<span class="nx-cardmeta">' + (meta.length ? esc(meta.join(" \u00b7 ")) + " \u00b7 " : "") + 'Opens in a new tab<span aria-hidden="true"> \u2197</span></span></a>';
+  }
+
   function panelRender() {
     if (!PANEL || !pel("nx-panel")) return;
     var ctx = READER ? READER.context : null;
@@ -515,32 +535,27 @@
     }
     pel("nx-quiet").hidden = where.kind === "none" || !!nexp || understand.length > 0;
 
-    // Understand: the published concept pages for this place (the page itself, in a new tab)
+    // Understand: the published concept pages for this page (each opens in a new tab; the PDF stays put)
     var un = pel("nx-understand");
     un.hidden = !understand.length;
     if (understand.length) {
       var ul = "";
       for (var u = 0; u < understand.length; u++) {
         var u2 = understand[u], to = "../" + u2.path.replace(/index\.html$/, "");
-        ul += '<li><a class="nx-applink" href="' + esc(to) + '" target="_blank" rel="noopener" data-sim="' + esc(u2.libraryId) + '"' +
-          ' aria-label="' + esc("Concept experiment: " + u2.title + " (opens in a new tab)") + '">' +
-          '<span class="nx-applabel">Concept experiment</span>' +
-          '<span class="nx-apptitle">' + esc(u2.title) + '<span aria-hidden="true"> ↗</span></span></a></li>';
+        ul += '<li>' + cardHTML(to, u2.libraryId, "Concept experiment", "Interactive", u2.title, "Concept experiment: " + u2.title + " (opens in a new tab)") + '</li>';
       }
       pel("nx-understand-body").innerHTML = ul;
     }
 
-    // Apply: JEE practice for this place
+    // Apply: JEE practice for this page
     var ap = pel("nx-apply");
     ap.hidden = !apply.length;
     if (apply.length) {
       var al = "";
       for (var m = 0; m < apply.length; m++) {
         var a2 = apply[m];
-        al += '<li><a class="nx-applink" href="../#/run/' + encodeURIComponent(a2.libraryId) + '" target="_blank" rel="noopener" data-sim="' + esc(a2.libraryId) + '"' +
-          ' aria-label="' + esc(a2.label + ": " + a2.title + " (opens the Questions library in a new tab)") + '">' +
-          '<span class="nx-applabel">' + esc(a2.label) + "</span>" +
-          '<span class="nx-apptitle">' + esc(a2.title) + '<span aria-hidden="true"> ↗</span></span></a></li>';
+        al += '<li>' + cardHTML("../#/run/" + encodeURIComponent(a2.libraryId), a2.libraryId, a2.label, "Practice", a2.title,
+          a2.label + ": " + a2.title + " (opens the Questions library in a new tab)") + '</li>';
       }
       pel("nx-apply-body").innerHTML = al;
     }
