@@ -248,8 +248,8 @@ print(json.dumps([C.problems(d['inventory'], st), X.problems(d['experiences'], d
     ok('the panel shows exactly what getLearningContext() returns for the current page', panelVsApi);
     await go(u, 6);
     v = await view();
-    ok('a page change re-reads the context: p. 141 has no concept - the UX-1 empty state, with its JEE link', !v.concept && !v.explore && v.quiet
-      && same(v.apply, ['ADV-2026-P1-CHE-Q01']));
+    ok('a page change re-reads the context: p. 141 has no NCERT concept or experience, only its JEE link (the published XP-05 concept page is under Understand)',
+      !v.concept && !v.explore && same(v.apply, ['ADV-2026-P1-CHE-Q01']), JSON.stringify(v));
     await go(u, 4);
     v = await view();
     ok('p. 139: Alpha only (Beta is on p. 138; 5.1.2 no longer contains the page)', same(v.concepts, [A]) && v.exps.length === 3);

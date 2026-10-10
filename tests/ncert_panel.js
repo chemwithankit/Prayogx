@@ -157,7 +157,7 @@ const shot = async (pg, name) => { if (SHOTS) await pg.screenshot({ path: path.j
     s = await panel(a);
     ok('p. 141: only 5.2.1 (its parent 5.2 is not repeated), with its JEE link', JSON.stringify(s.secs) === '["5.2.1"]'
       && JSON.stringify(s.apply) === '["ADV-2026-P1-CHE-Q01"]', JSON.stringify(s));
-    ok('...announced once, politely', /p\.\s141 · Work · 1 to apply/.test(s.live), s.live);
+    ok('...announced once, politely (XP-05 to understand, the JEE question to apply)', /p\.\s141 · Work · 1 to understand · 1 to apply/.test(s.live), s.live);
     await go(a, 10);
     const und = await a.evaluate(() => [...document.querySelectorAll('#nx-understand:not([hidden]) .nx-applink')].map(e => ({ sim: e.getAttribute('data-sim'),
       href: e.getAttribute('href'), target: e.target, rel: e.rel, label: e.getAttribute('aria-label') })));
