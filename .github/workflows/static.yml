@@ -94,9 +94,11 @@ jobs:
             echo "::error::papers/ must never be deployed"
             exit 1
           fi
-          if find _site -iname '*.pdf' | grep -q .; then
+          # The one exception (owner, 2026-10-29): the approved PrayogX Learn short notes,
+          # exactly learn/<slug>/notes.pdf. Any other PDF anywhere still stops the deploy.
+          if find _site -iname '*.pdf' ! -regex '_site/learn/[a-z0-9-]*/notes\.pdf' | grep -q .; then
             echo "::error::a PDF reached the deploy directory:"
-            find _site -iname '*.pdf'
+            find _site -iname '*.pdf' ! -regex '_site/learn/[a-z0-9-]*/notes\.pdf'
             exit 1
           fi
           echo "Deploying:"
