@@ -35,7 +35,7 @@ const ok=(l,c,x)=>{n++;if(!c)bad++;console.log((c?'PASS  ':'FAIL  ')+l+(x!==unde
   const v1 = feedVersion();
   const c1 = await b.newContext({viewport:{width:1280,height:900}});
   const w1 = await c1.newPage();
-  await w1.goto(S,{waitUntil:'networkidle'});
+  await w1.goto(S + '#/jee',{waitUntil:'networkidle'});
   const before = await w1.evaluate(()=>{ const n=document.querySelectorAll('article.card').length, m=(document.body.innerText.match(/\((\d+) left\)/)||[0,0])[1]; return n + (+m); });
   ok('website shows ' + NSIMS, before===NSIMS, before);
   const a1 = await (await b.newContext({viewport:{width:390,height:844}})).newPage();
@@ -60,7 +60,7 @@ const ok=(l,c,x)=>{n++;if(!c)bad++;console.log((c?'PASS  ':'FAIL  ')+l+(x!==unde
   const errs=[]; w2.on('pageerror',e=>errs.push(e.message));
   w2.on('console',m=>{if(m.type()==='error')errs.push(m.text());});
   w2.on('response',r=>{ if(r.status()>=400) errs.push(r.status()+' '+r.url()); });
-  await w2.goto(S,{waitUntil:'networkidle'});
+  await w2.goto(S + '#/jee',{waitUntil:'networkidle'});
   /* the grid draws 24 cards per batch; the rest wait behind "Show N more (M left)" */
   const after = await w2.evaluate(()=>{ const n=document.querySelectorAll('article.card').length, m=(document.body.innerText.match(/\((\d+) left\)/)||[0,0])[1]; return n + (+m); });
   ok('WEBSITE picks it up with no code change', after===NSIMS + 1, after);
@@ -81,7 +81,7 @@ const ok=(l,c,x)=>{n++;if(!c)bad++;console.log((c?'PASS  ':'FAIL  ')+l+(x!==unde
   ok('...and a working detail page', /Propagation probe/.test(det) && /Single-source delivery/.test(det));
 
   // PWA: service worker + offline
-  await w2.goto(S,{waitUntil:'networkidle'});
+  await w2.goto(S + '#/jee',{waitUntil:'networkidle'});
   await w2.waitForFunction(()=>navigator.serviceWorker&&navigator.serviceWorker.controller,null,{timeout:15000}).catch(()=>{});
   const swOK = await w2.evaluate(async()=>{const r=await navigator.serviceWorker.getRegistration();return !!(r&&r.active);});
   ok('PWA service worker active on the updated site', swOK);

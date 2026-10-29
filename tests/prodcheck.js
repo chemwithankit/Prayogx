@@ -29,7 +29,7 @@ const ok=(l,c,x)=>{n++;if(!c)bad++;console.log((c?'PASS  ':'FAIL  ')+l+(x!==unde
 
   // ---------------------------------------------------------------- catalogue
   console.log('\n--- catalogue ---');
-  await p.goto(S,{waitUntil:'networkidle'});
+  await p.goto(S + '?catalogue#/jee',{waitUntil:'networkidle'});
   const cat = await p.evaluate(()=>({
     cards:(document.querySelectorAll('article.card').length + (+((document.body.innerText.match(/\((\d+) left\)/) || [0, 0])[1]))),
     total:document.querySelector('.count.total .n').textContent,
@@ -105,7 +105,7 @@ const ok=(l,c,x)=>{n++;if(!c)bad++;console.log((c?'PASS  ':'FAIL  ')+l+(x!==unde
 
   // ------------------------------------------------------------ back navigation
   console.log('\n--- back navigation ---');
-  await p.goto(S,{waitUntil:'networkidle'});
+  await p.goto(S + '?catalogue#/jee',{waitUntil:'networkidle'});
   await p.click('article.card h3 a'); await sleep(700);
   const onDetail = await p.evaluate(()=>!!document.querySelector('.detail'));
   await p.goBack(); await sleep(700);
@@ -122,7 +122,7 @@ const ok=(l,c,x)=>{n++;if(!c)bad++;console.log((c?'PASS  ':'FAIL  ')+l+(x!==unde
   for (const w of [390,360]) {
     const m = await (await b.newContext({viewport:{width:w,height:820},isMobile:true,hasTouch:true})).newPage();
     m.on('pageerror',e=>errs.push('M'+w+' '+e.message));
-    await m.goto(S,{waitUntil:'networkidle'}); await sleep(700);
+    await m.goto(S + '?catalogue#/jee',{waitUntil:'networkidle'}); await sleep(700);
     const ov = await m.evaluate(()=>document.documentElement.scrollWidth-document.documentElement.clientWidth);
     ok('no horizontal overflow at '+w+' px', ov<=0, ov);
     await m.goto(S+'s/ADV-2026-P2-CHE-Q17/',{waitUntil:'domcontentloaded'}); await sleep(400);
@@ -132,7 +132,7 @@ const ok=(l,c,x)=>{n++;if(!c)bad++;console.log((c?'PASS  ':'FAIL  ')+l+(x!==unde
 
   // ------------------------------------------------------------------ PWA
   console.log('\n--- PWA ---');
-  await p.goto(S,{waitUntil:'networkidle'});
+  await p.goto(S + '?catalogue#/jee',{waitUntil:'networkidle'});
   await p.waitForFunction(()=>navigator.serviceWorker&&navigator.serviceWorker.controller,null,{timeout:15000}).catch(()=>{});
   const mf = await (await p.request.get(S+'manifest.webmanifest')).json();
   ok('installable manifest', !!mf.name && !!mf.start_url && mf.display==='standalone' &&
@@ -154,7 +154,7 @@ const ok=(l,c,x)=>{n++;if(!c)bad++;console.log((c?'PASS  ':'FAIL  ')+l+(x!==unde
          server reproduces (route interception is handled before the service
          worker ever sees the request). */
   await ctx.setOffline(true); await sleep(400);
-  await p.goto(S,{waitUntil:'domcontentloaded'}).catch(()=>{}); await sleep(1100);
+  await p.goto(S + '?catalogue#/jee',{waitUntil:'domcontentloaded'}).catch(()=>{}); await sleep(1100);
   ok('the catalogue still renders when the browser reports offline',
      (await p.evaluate(()=>(document.querySelectorAll('article.card').length + (+((document.body.innerText.match(/\((\d+) left\)/) || [0, 0])[1])))))===NSIMS,
      await p.evaluate(()=>(document.querySelectorAll('article.card').length + (+((document.body.innerText.match(/\((\d+) left\)/) || [0, 0])[1])))));

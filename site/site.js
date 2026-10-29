@@ -80,8 +80,10 @@
   }
 
   /* --------------------------------------------------------------- routing */
-  /* #/                       → catalogue (filters live in the hash query)
-     #/?y=2026&s=Chemistry…   → catalogue with filters applied (bookmarkable)
+  /* #/                       → the PrayogX home: two entry points, JEE simulations and Learn
+     #/jee                    → catalogue (filters live in the hash query)
+     #/jee?y=2026&s=Chemistry… → catalogue with filters applied (bookmarkable;
+                                the older #/?y=… form still opens the catalogue)
      #/sim/<SIMULATION-ID>    → detail page for one simulation (bookmarkable)
      #/run/<SIMULATION-ID>    → the simulation itself, framed, with a bar on top
 
@@ -90,13 +92,14 @@
      frame loads, what the service worker caches and what the sitemap lists. */
   function parseHash() {
     var h = location.hash.replace(/^#/, "");
-    if (!h || h === "/") return { view: "list", f: {} };
+    if (!h || h === "/") return { view: "home" };
     var r = h.match(/^\/run\/([^/?]+)/);
     if (r) return { view: "run", id: decodeURIComponent(r[1]) };
     var m = h.match(/^\/sim\/([^/?]+)/);
     if (m) return { view: "sim", id: decodeURIComponent(m[1]) };
     var q = h.indexOf("?");
     var f = {};
+    if (q < 0 && !/^\/jee\/?$/.test(h)) return { view: "home" };   /* unknown route: home */
     if (q >= 0) {
       h.slice(q + 1).split("&").forEach(function (kv) {
         if (!kv) return;
@@ -157,7 +160,7 @@
     ["q", "y", "s", "c", "t", "fav"].forEach(function (k) {
       if (f[k]) parts.push(k + "=" + encodeURIComponent(f[k]));
     });
-    return "#/" + (parts.length ? "?" + parts.join("&") : "");
+    return "#/jee" + (parts.length ? "?" + parts.join("&") : "");
   }
   function setFilters(f, replace) {
     var h = filterHash(f);
@@ -434,6 +437,36 @@
     }
   }
 
+  /* ------------------------------------------------------------ home view
+     The front door: two separate learning environments. JEE opens the
+     catalogue below (#/jee); Learn is its own static portal at learn/. */
+  function renderHome() {
+    var subjects = uniqSorted(SIMS.map(function (s) { return s.subject; }));
+    app.innerHTML =
+      '<div class="home">' +
+        '<h1 class="homeh">What would you like to do today?</h1>' +
+        '<div class="homegrid">' +
+          '<a class="homecard jee" href="#/jee" id="home-jee">' +
+            '<span class="hk">JEE ADVANCED</span>' +
+            '<span class="ht">JEE Advanced Simulations</span>' +
+            '<span class="hs">Interactive virtual experiments built from real JEE Advanced questions. Enter the data, ' +
+              'run the experiment, discover the answer.</span>' +
+            '<span class="hm">' + SIMS.length + " simulations · " + esc(subjects.join(" · ")) + "</span>" +
+            '<span class="hgo">Open the simulations →</span>' +
+          "</a>" +
+          '<a class="homecard learn" href="learn/" id="home-learn">' +
+            '<span class="hk">CLASSES 9–12</span>' +
+            '<span class="ht">Learn — Classes 9th to 12th</span>' +
+            '<span class="hs">Short Doodle explainer videos, downloadable notes and quick quizzes, organised class by ' +
+              'class, subject by subject and chapter by chapter.</span>' +
+            '<span class="hm">Class 9 · Class 10 · Class 11 · Class 12 · Extra</span>' +
+            '<span class="hgo">Start learning →</span>' +
+          "</a>" +
+        "</div>" +
+      "</div>";
+    window.scrollTo(0, 0);
+  }
+
   /* ---------------------------------------------------------- detail view */
   /* The card record is enough to draw the header and the OPEN button
      immediately; the prose arrives from content/sims/<ID>.json a moment later.
@@ -642,7 +675,8 @@
     var r = parseHash();
     if (r.view === "run") { openRunner(r.id); return; }
     closeRunner();
-    if (r.view === "sim") renderSim(r.id); else renderList(r.f || {});
+    if (r.view === "home") renderHome();
+    else if (r.view === "sim") renderSim(r.id); else renderList(r.f || {});
   }
 
   /* --------------------------------------------------------------- offline

@@ -75,7 +75,7 @@ const freePort = () => new Promise(res => { const sv = net.createServer();
   p.on('console', m => { if (m.type() === 'error' && !/404|Failed to load resource/.test(m.text()))
                            errs.push(m.text()); });
 
-  await p.goto(S, { waitUntil: 'networkidle' }); await sleep(900);
+  await p.goto(S + '#/jee', { waitUntil: 'networkidle' }); await sleep(900);
   const h0 = await p.evaluate(() => history.length);
   const openHref = await p.evaluate(id =>
     document.querySelector('article.card a.open').getAttribute('href'), null);
@@ -146,7 +146,7 @@ const freePort = () => new Promise(res => { const sv = net.createServer();
   await p.click('#rback'); await sleep(1100);
   const left = await runState(p);
   ok('← Library returns to the Library, as it says',
-     !left.open && left.cards > 0 && left.hash === '#/', left.hash + ', ' + left.cards + ' cards');
+     !left.open && left.cards > 0 && left.hash === '#/jee', left.hash + ', ' + left.cards + ' cards');
   const frameGone = await p.evaluate(() =>
     document.querySelectorAll('#rstage iframe').length);
   ok('and the simulation is unloaded rather than left running behind it',

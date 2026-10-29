@@ -5,6 +5,22 @@ Owner's instruction (2026-10-29, "PrayogX Doodle Pipeline — Website Publishing
 the existing Doodle workflow (motion studio → Instagram Trial Reel → YouTube Short → Drive notes → Reels Log), not a
 separate system. Pilot: CBSE series 11–15 (2026-10-29).
 
+## The portal (owner's structure and design brief, 2026-10-29)
+
+- The site root (`index.html`, `#/`) shows exactly two entry points: **JEE Advanced Simulations** (the catalogue,
+  now at `#/jee`; old `#/?…` filter links still open it) and **Learn — Classes 9th to 12th** (`learn/`).
+- `learn/` → five class cards (Class 9, 10, 11, 12, Extra / Supplementary) → `learn/<class>/` subject cards →
+  `learn/<class>/<subject>/` chapter cards in textbook order, with a **Chapters / Find a topic** switch (topic-wise
+  search and chapter / discipline filters) → `learn/<class>/<subject>/<chapter>/` the chapter's topics in order
+  (videos to Watch, planned topics marked Coming soon) → `learn/<slug>/` the video page (title and chapter context,
+  the video first, notes, up-next and previous in the chapter, explanation, simulation, quiz).
+- `data/learn/curriculum.json` holds classes → subjects → ordered chapters (`aliases`, `about`, and `planned` topics
+  from the owner's Physics & Chemistry topic bank; Maths and Biology have no chapter-grouped bank yet, so their
+  chapters show only what is published). Counts are always computed; nothing is invented (no progress data exists,
+  so none is shown).
+- Design rules (learn/learn.css): one accent per subject, line icons, no gradients, 16px+ text, 44px touch targets,
+  visible focus, a skip link, small hover motion that is off under reduced motion; phone layouts are single-column.
+
 ## What a topic page holds
 
 Class → Subject → Chapter → Topic, at `https://prayogx.co.in/learn/<slug>/`:
@@ -22,10 +38,11 @@ Class → Subject → Chapter → Topic, at `https://prayogx.co.in/learn/<slug>/
 |---|---|
 | `data/learn/topics/<slug>.json` | source of truth per topic (written with Python `json`) |
 | `tools/build_learn.py` | validates, then writes the pages; `--check` validates only; `--online` asks YouTube oEmbed whether each video embeds |
-| `learn/index.html`, `learn/<slug>/index.html` | **generated**, never hand-edited |
+| `data/learn/curriculum.json` | classes, subjects, ordered chapters, descriptions, planned topics (Python `json`) |
+| `learn/index.html`, `learn/<class>/…`, `learn/<slug>/index.html` | **generated**, never hand-edited (class folders are rebuilt from scratch) |
 | `learn/learn.css`, `learn/learn.js` | shared page style (on top of `site/site.css`) and the quiz |
 | `learn/<slug>/notes.pdf`, `img/`, `sim.html` | the topic's assets |
-| `tests/learn_pages.js`, `tests/learn_sims.js` | Playwright suites (pages at 390 / 360 / 1280 px; simulation numbers) |
+| `tests/learn_pages.js`, `tests/learn_sims.js` | Playwright suites (home, portal, class, subject, chapter and topic pages at 1280 / 390 / 360 px, a crawl of every internal link; simulation numbers) |
 
 `tools/build_content.py` adds the ready Learn pages to `sitemap.xml`; the library header links to `learn/`.
 

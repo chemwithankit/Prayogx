@@ -57,11 +57,14 @@ def main():
 
     # The catalogue is a static page, so a browser caches data/manifest.js and
     # the stylesheet indefinitely and a newly published simulation never shows
-    # up. Stamp the asset references with a hash of the manifest, so that every
-    # publish serves them from new URLs.
-    version = hashlib.sha256(
-        json.dumps(manifest, sort_keys=True, ensure_ascii=False).encode("utf-8")
-    ).hexdigest()[:8]
+    # up. Stamp the asset references with a hash of the manifest and of the
+    # shell code itself (site.css, site.js), so that every publish, and every
+    # change to the site's own look or routes, serves them from new URLs.
+    h = hashlib.sha256(json.dumps(manifest, sort_keys=True, ensure_ascii=False).encode("utf-8"))
+    for rel in ("site/site.css", "site/site.js"):
+        with open(os.path.join(ROOT, rel), "rb") as fh:
+            h.update(fh.read())
+    version = h.hexdigest()[:8]
     index_path = os.path.join(ROOT, "index.html")
     with open(index_path, encoding="utf-8") as fh:
         page = fh.read()

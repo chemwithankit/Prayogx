@@ -1,0 +1,2089 @@
+{
+ "source": "NCERT rationalised textbooks (2023-24 onwards) and the owner's CBSE topic banks (cbse-series/topics.json); check chapter inclusion against the current CBSE curriculum each session.",
+ "classes": [
+  {
+   "id": "class-9",
+   "class": 9,
+   "label": "Class 9",
+   "blurb": "Motion, matter, the cell and number systems: the foundations of school science and maths.",
+   "subjects": [
+    {
+     "id": "science",
+     "name": "Science",
+     "disciplines": [
+      "Physics",
+      "Chemistry",
+      "Biology"
+     ],
+     "chapters": [
+      {
+       "name": "Matter in Our Surroundings",
+       "discipline": "Chemistry",
+       "aliases": [
+        "Matter and Its Nature"
+       ],
+       "about": "What matter is made of, why its particles move and attract, and how solids, liquids and gases change state.",
+       "planned": [
+        "What is matter?",
+        "Particles of matter",
+        "Particles have spaces between them",
+        "Particles are continuously moving",
+        "Particles attract one another",
+        "Solid, liquid and gas",
+        "Properties of solids, liquids and gases",
+        "Compressibility",
+        "Diffusion",
+        "Why diffusion is faster in gases",
+        "Melting and freezing",
+        "Boiling and condensation",
+        "Evaporation",
+        "Factors affecting evaporation",
+        "Evaporation causes cooling",
+        "Latent heat of fusion",
+        "Latent heat of vaporisation",
+        "Temperature versus heat",
+        "Kelvin and Celsius scales",
+        "Sublimation",
+        "Plasma and Bose–Einstein condensate (extension)"
+       ],
+       "plannedSource": "CBSE Physics & Chemistry explainer topic bank (owner)"
+      },
+      {
+       "name": "Is Matter Around Us Pure?",
+       "discipline": "Chemistry",
+       "about": "Mixtures, solutions, suspensions and colloids, and how to separate the parts of a mixture.",
+       "planned": [
+        "Pure substance versus mixture",
+        "Element versus compound",
+        "Homogeneous versus heterogeneous mixture",
+        "Solution, solute and solvent",
+        "Concentration of a solution",
+        "Saturated and unsaturated solutions",
+        "Suspension versus colloid versus solution",
+        "Tyndall effect",
+        "Brownian motion",
+        "Separating mixtures by filtration",
+        "Evaporation as a separation method",
+        "Centrifugation",
+        "Separating funnel",
+        "Sublimation for separation",
+        "Chromatography",
+        "Distillation",
+        "Fractional distillation",
+        "Crystallisation",
+        "Physical change versus chemical change",
+        "Why air is a mixture and water is a compound"
+       ],
+       "plannedSource": "CBSE Physics & Chemistry explainer topic bank (owner)"
+      },
+      {
+       "name": "Atoms and Molecules",
+       "discipline": "Chemistry",
+       "about": "Laws of chemical combination, atoms, molecules, formulae and the mole.",
+       "planned": [
+        "Law of conservation of mass",
+        "Law of constant proportions",
+        "Dalton’s atomic theory",
+        "What is an atom?",
+        "What is a molecule?",
+        "Atomicity",
+        "Symbols of elements",
+        "Valency",
+        "Writing chemical formulae using valency",
+        "Ions and polyatomic ions",
+        "Molecular mass",
+        "Formula unit mass",
+        "Atomic mass unit",
+        "What is a mole? (introductory)",
+        "Avogadro constant",
+        "Mass conservation in a chemical reaction",
+        "Why chemical equations must be balanced"
+       ],
+       "plannedSource": "CBSE Physics & Chemistry explainer topic bank (owner)"
+      },
+      {
+       "name": "Structure of the Atom",
+       "discipline": "Chemistry",
+       "about": "Electrons, protons and neutrons, the atomic models, and how electrons are arranged.",
+       "planned": [
+        "Discovery of the electron",
+        "Discovery of the proton",
+        "Discovery of the neutron",
+        "Thomson’s atomic model",
+        "Rutherford’s gold-foil experiment",
+        "Bohr’s atomic model",
+        "Atomic number",
+        "Mass number",
+        "Isotopes",
+        "Isobars",
+        "Electronic shells",
+        "Valence electrons",
+        "Valency from electronic configuration (basic)",
+        "How ions form",
+        "Cations versus anions",
+        "Why atoms are electrically neutral"
+       ],
+       "plannedSource": "CBSE Physics & Chemistry explainer topic bank (owner)"
+      },
+      {
+       "name": "The Fundamental Unit of Life",
+       "discipline": "Biology",
+       "about": "The cell: who discovered it, what it is made of and what each part does."
+      },
+      {
+       "name": "Tissues",
+       "discipline": "Biology",
+       "about": "Groups of cells that work together in plants and animals."
+      },
+      {
+       "name": "Motion",
+       "discipline": "Physics",
+       "about": "Distance, displacement, speed, velocity, acceleration and the graphs of motion.",
+       "planned": [
+        "Rest and motion: why motion depends on the observer",
+        "Distance versus displacement",
+        "Speed versus velocity",
+        "Average speed versus average velocity",
+        "Uniform and non-uniform motion",
+        "Acceleration: what it really means",
+        "Positive, negative and zero acceleration",
+        "Retardation or deceleration",
+        "Distance–time graph: reading motion",
+        "Velocity–time graph: reading motion",
+        "Slope of a distance–time graph",
+        "Slope of a velocity–time graph",
+        "Area under a velocity–time graph",
+        "How to interpret a flat, rising or falling graph",
+        "Instantaneous speed (intuitive introduction)",
+        "Scalar and vector quantities",
+        "SI units of distance, speed, velocity and acceleration",
+        "Why a round trip can have zero displacement but non-zero distance"
+       ],
+       "plannedSource": "CBSE Physics & Chemistry explainer topic bank (owner)"
+      },
+      {
+       "name": "Force and Laws of Motion",
+       "discipline": "Physics",
+       "about": "Forces, inertia and Newton's three laws, with momentum.",
+       "planned": [
+        "Force as a push or pull",
+        "Balanced versus unbalanced forces",
+        "Newton’s First Law of Motion",
+        "Inertia and its everyday examples",
+        "Mass as a measure of inertia",
+        "Newton’s Second Law of Motion",
+        "Force, mass and acceleration: F = ma",
+        "Newton’s Third Law of Motion",
+        "Action–reaction pairs: why they do not cancel",
+        "Momentum and its meaning",
+        "Impulse: force acting over time",
+        "Conservation of momentum",
+        "Why passengers jerk when a bus starts or stops",
+        "Why seat belts reduce injury",
+        "Why a cricketer pulls hands back while catching",
+        "Recoil of a gun and rocket motion (introductory)",
+        "SI unit of force: newton",
+        "Difference between mass and weight"
+       ],
+       "plannedSource": "CBSE Physics & Chemistry explainer topic bank (owner)"
+      },
+      {
+       "name": "Gravitation",
+       "discipline": "Physics",
+       "about": "Why things fall, the universal law of gravitation, weight, pressure and buoyancy.",
+       "planned": [
+        "Universal law of gravitation",
+        "Why objects fall toward Earth",
+        "Gravitational force and distance",
+        "Why gravity acts between all masses",
+        "Free fall",
+        "Acceleration due to gravity, g",
+        "Mass versus weight",
+        "Weight on the Moon versus weight on Earth",
+        "Why astronauts appear weightless (introductory)",
+        "Thrust and pressure",
+        "Pressure in solids",
+        "Pressure in liquids and depth",
+        "Buoyancy or upthrust",
+        "Archimedes’ principle",
+        "Why objects float or sink",
+        "Density and relative density",
+        "Why a sharp knife cuts better",
+        "Why dams are thicker at the bottom",
+        "Applications of Archimedes’ principle"
+       ],
+       "plannedSource": "CBSE Physics & Chemistry explainer topic bank (owner)"
+      },
+      {
+       "name": "Work and Energy",
+       "discipline": "Physics",
+       "aliases": [
+        "Work, Energy and Power"
+       ],
+       "about": "Work, kinetic and potential energy, conservation of energy and power.",
+       "planned": [
+        "Scientific meaning of work",
+        "When force does zero work",
+        "Positive and negative work",
+        "Work done by a constant force",
+        "Kinetic energy",
+        "Potential energy",
+        "Gravitational potential energy",
+        "Energy transformation",
+        "Law of conservation of energy",
+        "Mechanical energy",
+        "Power and its meaning",
+        "Watt and kilowatt-hour",
+        "Why electricity bills use kWh",
+        "Work versus energy versus power",
+        "Energy transformations in a falling object",
+        "Why a stretched bow stores energy"
+       ],
+       "plannedSource": "CBSE Physics & Chemistry explainer topic bank (owner)"
+      },
+      {
+       "name": "Sound",
+       "discipline": "Physics",
+       "about": "How sound is produced and travels, its properties, echoes and ultrasound.",
+       "planned": [
+        "How sound is produced",
+        "Sound as a mechanical wave",
+        "Why sound needs a medium",
+        "Longitudinal waves",
+        "Compression and rarefaction",
+        "Amplitude, frequency and time period",
+        "Wavelength and wave speed",
+        "Relationship v = fλ",
+        "Loudness versus pitch",
+        "How amplitude affects loudness",
+        "How frequency affects pitch",
+        "Human hearing range",
+        "Infrasound and ultrasound",
+        "Echo and reflection of sound",
+        "Reverberation",
+        "How SONAR works",
+        "Uses of ultrasound",
+        "Why sound travels faster in solids than gases",
+        "Why sound cannot travel through a vacuum",
+        "Structure and working of the human ear (basic)"
+       ],
+       "plannedSource": "CBSE Physics & Chemistry explainer topic bank (owner)"
+      },
+      {
+       "name": "Improvement in Food Resources",
+       "discipline": "Biology",
+       "about": "Better crops and animal husbandry for more and healthier food."
+      }
+     ]
+    },
+    {
+     "id": "mathematics",
+     "name": "Mathematics",
+     "disciplines": [
+      "Mathematics"
+     ],
+     "chapters": [
+      {
+       "name": "Number Systems",
+       "about": "Rational and irrational numbers, decimals and the real number line."
+      },
+      {
+       "name": "Polynomials",
+       "about": "Polynomials, their zeroes, the factor theorem and algebraic identities."
+      },
+      {
+       "name": "Coordinate Geometry",
+       "about": "Locating points on a plane with x and y coordinates."
+      },
+      {
+       "name": "Linear Equations in Two Variables",
+       "about": "Equations like ax + by + c = 0, their solutions and graphs."
+      },
+      {
+       "name": "Introduction to Euclid's Geometry",
+       "about": "Euclid's definitions, axioms and postulates."
+      },
+      {
+       "name": "Lines and Angles",
+       "about": "Angle pairs, parallel lines and a transversal."
+      },
+      {
+       "name": "Triangles",
+       "about": "Congruence rules and properties of triangles."
+      },
+      {
+       "name": "Quadrilaterals",
+       "about": "Parallelograms and the mid-point theorem."
+      },
+      {
+       "name": "Circles",
+       "about": "Chords, arcs and angles in a circle."
+      },
+      {
+       "name": "Heron's Formula",
+       "about": "The area of any triangle from its three sides."
+      },
+      {
+       "name": "Surface Areas and Volumes",
+       "about": "Surface areas and volumes of cones, spheres and hemispheres."
+      },
+      {
+       "name": "Statistics",
+       "about": "Organising data and drawing bar graphs and histograms."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "class-10",
+   "class": 10,
+   "label": "Class 10",
+   "blurb": "Light, electricity, chemical reactions, life processes and the algebra and geometry of board year.",
+   "subjects": [
+    {
+     "id": "science",
+     "name": "Science",
+     "disciplines": [
+      "Physics",
+      "Chemistry",
+      "Biology"
+     ],
+     "chapters": [
+      {
+       "name": "Chemical Reactions and Equations",
+       "discipline": "Chemistry",
+       "about": "Writing and balancing equations, and the main types of reactions.",
+       "planned": [
+        "Signs of a chemical reaction",
+        "Word equations versus chemical equations",
+        "Writing chemical formulae in equations",
+        "Balancing chemical equations",
+        "Law of conservation of mass in equations",
+        "Combination reactions",
+        "Decomposition reactions",
+        "Thermal decomposition",
+        "Electrolytic decomposition",
+        "Photochemical decomposition",
+        "Displacement reactions",
+        "Double displacement reactions",
+        "Precipitation reactions",
+        "Oxidation and reduction",
+        "Redox reactions",
+        "Exothermic versus endothermic reactions",
+        "Corrosion",
+        "Rancidity",
+        "Why silver turns black",
+        "Why iron rusts",
+        "How painting or galvanising prevents rusting",
+        "Catalysts (extension)"
+       ],
+       "plannedSource": "CBSE Physics & Chemistry explainer topic bank (owner)"
+      },
+      {
+       "name": "Acids, Bases and Salts",
+       "discipline": "Chemistry",
+       "about": "Indicators, pH, neutralisation and everyday salts.",
+       "planned": [
+        "Acids and bases: basic definitions",
+        "Indicators and colour changes",
+        "Litmus, turmeric and phenolphthalein",
+        "Natural versus synthetic indicators",
+        "Olfactory indicators",
+        "Acids in water and hydronium ions",
+        "Why dry HCl does not change dry litmus",
+        "Strong versus weak acids (conceptual)",
+        "Concentrated versus dilute solutions",
+        "Bases and hydroxide ions",
+        "Neutralisation reaction",
+        "pH scale",
+        "What pH 7 means",
+        "pH of everyday substances",
+        "Importance of pH in the stomach",
+        "Tooth decay and pH",
+        "Soil pH and plant growth",
+        "Acid rain (extension)",
+        "Reaction of acids with metals",
+        "Reaction of acids with metal carbonates",
+        "Reaction of acids with metal hydrogen carbonates",
+        "Bleaching powder: preparation and uses",
+        "Baking soda: properties and uses",
+        "Washing soda: properties and uses",
+        "Water of crystallisation",
+        "Plaster of Paris and gypsum",
+        "Why Plaster of Paris hardens with water"
+       ],
+       "plannedSource": "CBSE Physics & Chemistry explainer topic bank (owner)"
+      },
+      {
+       "name": "Metals and Non-metals",
+       "discipline": "Chemistry",
+       "about": "Properties, reactivity, ionic compounds and corrosion.",
+       "planned": [
+        "Physical properties of metals",
+        "Physical properties of non-metals",
+        "Malleability and ductility",
+        "Sonority",
+        "Exceptions to common metal properties",
+        "Chemical properties of metals",
+        "Reaction of metals with oxygen",
+        "Reaction of metals with water",
+        "Reaction of metals with acids",
+        "Reactivity series",
+        "Displacement based on reactivity",
+        "Ionic bond formation",
+        "Properties of ionic compounds",
+        "Occurrence of metals",
+        "Minerals versus ores",
+        "Extraction of metals by reduction",
+        "Roasting versus calcination",
+        "Electrolytic refining",
+        "Corrosion and prevention",
+        "Alloys and why they are useful",
+        "Why sodium is stored in kerosene",
+        "Why copper does not react with dilute HCl"
+       ],
+       "plannedSource": "CBSE Physics & Chemistry explainer topic bank (owner)"
+      },
+      {
+       "name": "Carbon and its Compounds",
+       "discipline": "Chemistry",
+       "aliases": [
+        "Carbon and Its Compounds"
+       ],
+       "about": "Covalent bonds, versatile carbon, functional groups, soaps and detergents.",
+       "planned": [
+        "Why carbon forms many compounds",
+        "Catenation",
+        "Tetravalency of carbon",
+        "Covalent bonding",
+        "Single, double and triple bonds",
+        "Electron-dot structures",
+        "Saturated versus unsaturated hydrocarbons",
+        "Alkanes, alkenes and alkynes",
+        "Homologous series",
+        "Functional groups",
+        "IUPAC naming (basic)",
+        "Isomerism (introductory)",
+        "Combustion of carbon compounds",
+        "Oxidation of ethanol",
+        "Ethanol: properties and uses",
+        "Ethanoic acid: properties and uses",
+        "Esterification",
+        "Saponification",
+        "Soaps versus detergents",
+        "How soap cleans",
+        "Micelles",
+        "Why soap forms scum in hard water",
+        "Addition and substitution reactions",
+        "Hydrocarbons in fuels"
+       ],
+       "plannedSource": "CBSE Physics & Chemistry explainer topic bank (owner)"
+      },
+      {
+       "name": "Life Processes",
+       "discipline": "Biology",
+       "about": "Nutrition, respiration, transport and excretion in living things."
+      },
+      {
+       "name": "Control and Coordination",
+       "discipline": "Biology",
+       "about": "The nervous system, reflexes, and plant and animal hormones."
+      },
+      {
+       "name": "How do Organisms Reproduce?",
+       "discipline": "Biology",
+       "about": "Asexual and sexual reproduction in plants and humans."
+      },
+      {
+       "name": "Heredity",
+       "discipline": "Biology",
+       "about": "How traits are inherited: Mendel's experiments and sex determination."
+      },
+      {
+       "name": "Light – Reflection and Refraction",
+       "discipline": "Physics",
+       "aliases": [
+        "Light: Reflection and Refraction"
+       ],
+       "about": "Mirrors, lenses, image formation and the refractive index.",
+       "planned": [
+        "Light travels in straight lines (ray model)",
+        "Reflection of light",
+        "Laws of reflection",
+        "Regular versus diffused reflection",
+        "Image formation by a plane mirror",
+        "Real versus virtual images",
+        "Lateral inversion",
+        "Spherical mirrors: concave and convex",
+        "Pole, principal axis, centre of curvature and focus",
+        "Principal focus and focal length",
+        "Ray diagrams for a concave mirror",
+        "Ray diagrams for a convex mirror",
+        "Mirror formula",
+        "Magnification by mirrors",
+        "Uses of concave mirrors",
+        "Why vehicles use convex rear-view mirrors",
+        "Refraction of light",
+        "Why light bends at a boundary",
+        "Refractive index",
+        "Optically denser versus rarer medium",
+        "Refraction through a glass slab",
+        "Why a pencil looks bent in water",
+        "Lens types: convex and concave",
+        "Converging versus diverging lenses",
+        "Principal focus and focal length of lenses",
+        "Ray diagrams for lenses",
+        "Lens formula",
+        "Magnification by lenses",
+        "Power of a lens and dioptre",
+        "Why a swimming pool looks shallower",
+        "Dispersion of white light",
+        "Spectrum of white light",
+        "Why a prism splits white light"
+       ],
+       "plannedSource": "CBSE Physics & Chemistry explainer topic bank (owner)"
+      },
+      {
+       "name": "The Human Eye and the Colourful World",
+       "discipline": "Physics",
+       "aliases": [
+        "Human Eye and Colourful World",
+        "The Human Eye and the Colourful World"
+       ],
+       "about": "How we see, defects of vision, dispersion and the blue sky.",
+       "planned": [
+        "Parts of the human eye",
+        "How the eye forms an image",
+        "Accommodation of the eye",
+        "Near point and far point",
+        "Myopia or short-sightedness",
+        "Correcting myopia with a concave lens",
+        "Hypermetropia or long-sightedness",
+        "Correcting hypermetropia with a convex lens",
+        "Presbyopia",
+        "Cataract (basic concept)",
+        "Why stars twinkle",
+        "Why planets generally do not twinkle as much",
+        "Atmospheric refraction",
+        "Advance sunrise and delayed sunset",
+        "Dispersion versus scattering",
+        "Why the sky appears blue",
+        "Why sunrise and sunset look reddish",
+        "Why danger signals are red",
+        "Tyndall effect",
+        "Colour of objects and reflected light"
+       ],
+       "plannedSource": "CBSE Physics & Chemistry explainer topic bank (owner)"
+      },
+      {
+       "name": "Electricity",
+       "discipline": "Physics",
+       "about": "Current, potential difference, Ohm's law, resistance, power and heating.",
+       "planned": [
+        "Electric charge and electric current",
+        "Conventional current versus electron flow",
+        "SI unit of current: ampere",
+        "Potential difference and voltage",
+        "Why a battery drives current",
+        "Circuit symbols and simple circuits",
+        "Electric circuit: open versus closed",
+        "Ohm’s law",
+        "V–I graph for an ohmic conductor",
+        "Resistance",
+        "Factors affecting resistance",
+        "Resistivity",
+        "Conductors versus insulators",
+        "Series combination of resistors",
+        "Parallel combination of resistors",
+        "Why household appliances are connected in parallel",
+        "Equivalent resistance",
+        "Heating effect of electric current",
+        "Joule’s law of heating",
+        "Electric power",
+        "P = VI and related forms",
+        "Electrical energy and kilowatt-hour",
+        "Why a fuse melts",
+        "Overloading and short circuit",
+        "Fuse versus MCB",
+        "Why thick wires have lower resistance"
+       ],
+       "plannedSource": "CBSE Physics & Chemistry explainer topic bank (owner)"
+      },
+      {
+       "name": "Magnetic Effects of Electric Current",
+       "discipline": "Physics",
+       "about": "Magnetic fields of currents, the motor rule and domestic circuits.",
+       "planned": [
+        "Magnetic field and field lines",
+        "Properties of magnetic field lines",
+        "Magnetic field around a straight current-carrying wire",
+        "Right-hand thumb rule",
+        "Magnetic field around a circular loop",
+        "Magnetic field of a solenoid",
+        "Electromagnet versus permanent magnet",
+        "Factors affecting electromagnet strength",
+        "Force on a current-carrying conductor",
+        "Fleming’s left-hand rule",
+        "Electric motor: principle and working",
+        "Electromagnetic induction",
+        "Fleming’s right-hand rule",
+        "Electric generator: principle and working",
+        "Alternating current versus direct current",
+        "Domestic electric supply (basic)",
+        "Live, neutral and earth wires",
+        "Earthing and electrical safety",
+        "Motor versus generator"
+       ],
+       "plannedSource": "CBSE Physics & Chemistry explainer topic bank (owner)"
+      },
+      {
+       "name": "Our Environment",
+       "discipline": "Biology",
+       "about": "Ecosystems, food chains and how our waste affects them."
+      }
+     ]
+    },
+    {
+     "id": "mathematics",
+     "name": "Mathematics",
+     "disciplines": [
+      "Mathematics"
+     ],
+     "chapters": [
+      {
+       "name": "Real Numbers",
+       "about": "The fundamental theorem of arithmetic and irrational numbers."
+      },
+      {
+       "name": "Polynomials",
+       "about": "Zeroes of polynomials and their relation with the coefficients."
+      },
+      {
+       "name": "Pair of Linear Equations in Two Variables",
+       "about": "Solving two equations together, by graph and by algebra."
+      },
+      {
+       "name": "Quadratic Equations",
+       "about": "Solving ax² + bx + c = 0 and the nature of its roots."
+      },
+      {
+       "name": "Arithmetic Progressions",
+       "about": "Number patterns with a common difference: nth term and sum."
+      },
+      {
+       "name": "Triangles",
+       "about": "Similar triangles and the basic proportionality theorem."
+      },
+      {
+       "name": "Coordinate Geometry",
+       "about": "The distance and section formulae."
+      },
+      {
+       "name": "Introduction to Trigonometry",
+       "about": "Trigonometric ratios and identities."
+      },
+      {
+       "name": "Some Applications of Trigonometry",
+       "about": "Heights and distances."
+      },
+      {
+       "name": "Circles",
+       "about": "Tangents to a circle."
+      },
+      {
+       "name": "Areas Related to Circles",
+       "about": "Areas of sectors and segments."
+      },
+      {
+       "name": "Surface Areas and Volumes",
+       "about": "Combinations of solids."
+      },
+      {
+       "name": "Statistics",
+       "about": "Mean, median and mode of grouped data."
+      },
+      {
+       "name": "Probability",
+       "about": "The chance of an event, from simple experiments."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "class-11",
+   "class": 11,
+   "label": "Class 11",
+   "blurb": "Mechanics, thermodynamics, atomic structure, bonding, functions and the living world.",
+   "subjects": [
+    {
+     "id": "physics",
+     "name": "Physics",
+     "disciplines": [
+      "Physics"
+     ],
+     "chapters": [
+      {
+       "name": "Units and Measurement",
+       "discipline": "Physics",
+       "aliases": [
+        "Physical World, Units and Measurements"
+       ],
+       "planned": [
+        "Physics and its scope",
+        "Fundamental versus derived quantities",
+        "SI base units",
+        "Dimensions of physical quantities",
+        "Dimensional formula",
+        "Dimensional analysis",
+        "Checking equations using dimensions",
+        "Limitations of dimensional analysis",
+        "Significant figures",
+        "Rules for significant figures",
+        "Accuracy versus precision",
+        "Errors in measurement",
+        "Absolute, relative and percentage error",
+        "Least count of an instrument",
+        "Order of magnitude",
+        "Scientific notation",
+        "Parallax error and how to reduce it",
+        "Scalar and vector quantities",
+        "Unit conversion and dimensional consistency"
+       ],
+       "plannedSource": "CBSE Physics & Chemistry explainer topic bank (owner)"
+      },
+      {
+       "name": "Motion in a Straight Line",
+       "discipline": "Physics",
+       "planned": [
+        "Position, path length and displacement",
+        "Average velocity and instantaneous velocity",
+        "Average and instantaneous acceleration",
+        "Position–time graph",
+        "Velocity–time graph",
+        "Acceleration–time graph",
+        "Slope and area interpretations in motion graphs",
+        "Equations of uniformly accelerated motion",
+        "Free-fall motion as constant acceleration",
+        "Relative velocity in one dimension",
+        "Choosing a sign convention",
+        "Can speed be zero while acceleration is non-zero?",
+        "Can velocity be zero while acceleration is non-zero?"
+       ],
+       "plannedSource": "CBSE Physics & Chemistry explainer topic bank (owner)"
+      },
+      {
+       "name": "Motion in a Plane",
+       "discipline": "Physics",
+       "planned": [
+        "Vectors and scalars",
+        "Vector magnitude and direction",
+        "Vector addition by triangle law",
+        "Parallelogram law of vector addition",
+        "Vector components",
+        "Unit vectors",
+        "Adding vectors by components",
+        "Projectile motion",
+        "Horizontal and vertical components of projectile velocity",
+        "Time of flight",
+        "Maximum height",
+        "Horizontal range",
+        "Why projectile motion traces a parabola (ideal case)",
+        "Uniform circular motion",
+        "Angular displacement and angular speed",
+        "Centripetal acceleration",
+        "Why centripetal acceleration points inward",
+        "Relative velocity in two dimensions"
+       ],
+       "plannedSource": "CBSE Physics & Chemistry explainer topic bank (owner)"
+      },
+      {
+       "name": "Laws of Motion",
+       "discipline": "Physics",
+       "planned": [
+        "Inertia and Newton’s First Law",
+        "Newton’s Second Law in vector form",
+        "Newton’s Third Law",
+        "Free-body diagrams",
+        "Normal reaction",
+        "Tension in a string",
+        "Static and kinetic friction",
+        "Limiting friction",
+        "Coefficient of friction",
+        "Why friction can be useful",
+        "Rolling friction versus sliding friction",
+        "Inclined-plane forces",
+        "Momentum conservation",
+        "Impulse–momentum theorem",
+        "Collision: elastic versus inelastic",
+        "Recoil and propulsion",
+        "Why action–reaction forces act on different bodies"
+       ],
+       "plannedSource": "CBSE Physics & Chemistry explainer topic bank (owner)"
+      },
+      {
+       "name": "Work, Energy and Power",
+       "discipline": "Physics",
+       "planned": [
+        "Work by a constant force",
+        "Work by a variable force (area under force–displacement graph)",
+        "Kinetic energy theorem",
+        "Potential energy and reference level",
+        "Conservative versus non-conservative forces",
+        "Spring potential energy",
+        "Conservation of mechanical energy",
+        "Power as rate of doing work",
+        "Instantaneous power",
+        "Elastic and inelastic collisions",
+        "Energy loss in real systems",
+        "Efficiency and useful energy output"
+       ],
+       "plannedSource": "CBSE Physics & Chemistry explainer topic bank (owner)"
+      },
+      {
+       "name": "System of Particles and Rotational Motion",
+       "discipline": "Physics",
+       "planned": [
+        "Centre of mass",
+        "Centre of mass of two particles",
+        "Motion of the centre of mass",
+        "Torque or moment of force",
+        "Moment arm",
+        "Couple and turning effect",
+        "Angular displacement, velocity and acceleration",
+        "Rotational kinematics",
+        "Moment of inertia",
+        "Radius of gyration",
+        "Parallel-axis theorem",
+        "Perpendicular-axis theorem",
+        "Angular momentum",
+        "Conservation of angular momentum",
+        "Torque and angular momentum",
+        "Rolling motion",
+        "Why a skater spins faster when pulling arms in",
+        "Translational versus rotational equilibrium",
+        "Conditions for equilibrium"
+       ],
+       "plannedSource": "CBSE Physics & Chemistry explainer topic bank (owner)"
+      },
+      {
+       "name": "Gravitation",
+       "discipline": "Physics",
+       "planned": [
+        "Newton’s universal law of gravitation",
+        "Gravitational constant G",
+        "Acceleration due to gravity and its variation",
+        "Variation of g with altitude (conceptual)",
+        "Variation of g with depth (conceptual)",
+        "Gravitational field and field strength",
+        "Gravitational potential energy",
+        "Gravitational potential",
+        "Escape speed",
+        "Orbital speed of a satellite",
+        "Why satellites remain in orbit",
+        "Geostationary satellites",
+        "Weightlessness in orbit",
+        "Kepler’s laws of planetary motion",
+        "Universal gravitation versus local value of g"
+       ],
+       "plannedSource": "CBSE Physics & Chemistry explainer topic bank (owner)"
+      },
+      {
+       "name": "Mechanical Properties of Solids",
+       "discipline": "Physics"
+      },
+      {
+       "name": "Mechanical Properties of Fluids",
+       "discipline": "Physics"
+      },
+      {
+       "name": "Thermal Properties of Matter",
+       "discipline": "Physics"
+      },
+      {
+       "name": "Thermodynamics",
+       "discipline": "Physics",
+       "planned": [
+        "System, surroundings and boundary",
+        "Open, closed and isolated systems",
+        "State variables",
+        "Thermal equilibrium",
+        "Zeroth law of thermodynamics",
+        "Heat versus temperature",
+        "Internal energy",
+        "Work done by a gas",
+        "First law of thermodynamics",
+        "Isothermal process",
+        "Adiabatic process",
+        "Isobaric and isochoric processes",
+        "Heat capacity versus specific heat capacity",
+        "Reversible versus irreversible process",
+        "Second law of thermodynamics",
+        "Heat engines",
+        "Efficiency of a heat engine",
+        "Refrigerator and coefficient of performance",
+        "Why no heat engine is 100% efficient"
+       ],
+       "plannedSource": "CBSE Physics & Chemistry explainer topic bank (owner)"
+      },
+      {
+       "name": "Kinetic Theory",
+       "discipline": "Physics",
+       "planned": [
+        "Molecular picture of matter",
+        "Assumptions of the kinetic theory of gases",
+        "Pressure from molecular collisions",
+        "Temperature and average kinetic energy",
+        "Ideal gas equation",
+        "Boltzmann constant",
+        "RMS speed of gas molecules",
+        "Degrees of freedom",
+        "Law of equipartition of energy",
+        "Mean free path (introductory)",
+        "Real gases versus ideal gases",
+        "Why gas pressure increases when temperature rises at fixed volume"
+       ],
+       "plannedSource": "CBSE Physics & Chemistry explainer topic bank (owner)"
+      },
+      {
+       "name": "Oscillations",
+       "discipline": "Physics"
+      },
+      {
+       "name": "Waves",
+       "discipline": "Physics"
+      }
+     ]
+    },
+    {
+     "id": "chemistry",
+     "name": "Chemistry",
+     "disciplines": [
+      "Chemistry"
+     ],
+     "chapters": [
+      {
+       "name": "Some Basic Concepts of Chemistry",
+       "discipline": "Chemistry",
+       "planned": [
+        "Chemistry in everyday life",
+        "Laws of chemical combination",
+        "Law of conservation of mass",
+        "Law of definite proportions",
+        "Law of multiple proportions",
+        "Gay-Lussac’s law of gaseous volumes",
+        "Avogadro’s law",
+        "Dalton’s atomic theory",
+        "Atomic mass and molecular mass",
+        "Formula mass",
+        "Mole concept",
+        "Avogadro constant",
+        "Molar mass",
+        "Mass–mole–particle conversions",
+        "Molar volume of a gas (conditions specified)",
+        "Percentage composition",
+        "Empirical formula",
+        "Molecular formula",
+        "Stoichiometry",
+        "Limiting reagent",
+        "Excess reagent",
+        "Theoretical versus actual yield",
+        "Percentage yield",
+        "Concentration units: mass percent and volume percent",
+        "Molarity",
+        "Molality",
+        "Mole fraction",
+        "Parts per million (ppm)",
+        "Significant figures in chemical calculations",
+        "Dimensional checks in chemistry calculations"
+       ],
+       "plannedSource": "CBSE Physics & Chemistry explainer topic bank (owner)"
+      },
+      {
+       "name": "Structure of Atom",
+       "discipline": "Chemistry",
+       "planned": [
+        "Electromagnetic radiation",
+        "Wavelength, frequency and speed of light",
+        "Planck’s quantum theory",
+        "Photon energy",
+        "Photoelectric effect and light quanta",
+        "Atomic spectra",
+        "Emission versus absorption spectra",
+        "Rutherford’s nuclear model",
+        "Bohr’s postulates",
+        "Bohr radius and energy levels (conceptual)",
+        "Limitations of Bohr’s model",
+        "de Broglie hypothesis",
+        "Wave–particle duality",
+        "Heisenberg uncertainty principle",
+        "Quantum mechanical model of atom",
+        "Orbit versus orbital",
+        "Quantum numbers: n, l, m and s",
+        "Shells, subshells and orbitals",
+        "s, p, d and f orbitals",
+        "Shapes of s and p orbitals",
+        "Nodes in orbitals (introductory)",
+        "Aufbau principle",
+        "Pauli exclusion principle",
+        "Hund’s rule of maximum multiplicity",
+        "Electronic configuration",
+        "Half-filled and fully filled subshell stability",
+        "Exceptions in electronic configuration (Cr and Cu)",
+        "Paramagnetic versus diamagnetic atoms"
+       ],
+       "plannedSource": "CBSE Physics & Chemistry explainer topic bank (owner)"
+      },
+      {
+       "name": "Classification of Elements and Periodicity in Properties",
+       "discipline": "Chemistry",
+       "aliases": [
+        "Classification of Elements and Periodicity"
+       ],
+       "planned": [
+        "Modern periodic law",
+        "Long form of periodic table",
+        "Periods, groups and blocks",
+        "s-, p-, d- and f-block elements",
+        "Effective nuclear charge (conceptual)",
+        "Shielding effect",
+        "Atomic radius trends",
+        "Ionic radius",
+        "Ionisation enthalpy",
+        "Successive ionisation enthalpies",
+        "Electron gain enthalpy",
+        "Electronegativity",
+        "Metallic and non-metallic character",
+        "Valency and periodic trends",
+        "Isoelectronic species and size",
+        "Why noble gases are stable",
+        "Periodic trend exceptions",
+        "How periodicity follows from electronic configuration"
+       ],
+       "plannedSource": "CBSE Physics & Chemistry explainer topic bank (owner)"
+      },
+      {
+       "name": "Chemical Bonding and Molecular Structure",
+       "discipline": "Chemistry",
+       "planned": [
+        "Why atoms form chemical bonds",
+        "Octet rule and its limitations",
+        "Lewis dot structures",
+        "Ionic bond",
+        "Covalent bond",
+        "Coordinate (dative) bond",
+        "Bond length",
+        "Bond angle",
+        "Bond enthalpy",
+        "Bond order",
+        "Resonance",
+        "Formal charge",
+        "Lattice enthalpy (conceptual)",
+        "Fajan’s rule",
+        "Electronegativity and bond polarity",
+        "Dipole moment",
+        "Polar versus non-polar molecules",
+        "VSEPR theory",
+        "Shapes of common molecules",
+        "Hybridisation: sp, sp2 and sp3",
+        "Sigma and pi bonds",
+        "Molecular orbital theory (introductory)",
+        "Bonding and antibonding orbitals",
+        "Bond order using molecular orbital theory",
+        "Magnetic nature of O2",
+        "Hydrogen bonding",
+        "Intermolecular versus intramolecular forces",
+        "Why water has an unusually high boiling point",
+        "Why CO2 is non-polar but has polar bonds"
+       ],
+       "plannedSource": "CBSE Physics & Chemistry explainer topic bank (owner)"
+      },
+      {
+       "name": "Thermodynamics",
+       "discipline": "Chemistry",
+       "aliases": [
+        "Chemical Thermodynamics"
+       ],
+       "planned": [
+        "System and surroundings",
+        "Open, closed and isolated systems",
+        "State functions versus path functions",
+        "Extensive versus intensive properties",
+        "Heat and work in chemistry",
+        "Internal energy",
+        "First law of thermodynamics",
+        "Sign conventions for heat and work",
+        "Expansion work",
+        "Enthalpy",
+        "Enthalpy change of a reaction",
+        "Exothermic versus endothermic reactions",
+        "Standard enthalpy of formation",
+        "Enthalpy of combustion",
+        "Enthalpy of atomisation",
+        "Bond enthalpy and reaction enthalpy",
+        "Hess’s law",
+        "Calorimetry",
+        "Entropy (intuitive)",
+        "Second law of thermodynamics",
+        "Gibbs energy",
+        "Spontaneous versus non-spontaneous processes",
+        "Relationship between Gibbs energy, enthalpy and entropy",
+        "Why spontaneity is not the same as fast reaction"
+       ],
+       "plannedSource": "CBSE Physics & Chemistry explainer topic bank (owner)"
+      },
+      {
+       "name": "Equilibrium",
+       "discipline": "Chemistry",
+       "planned": [
+        "Dynamic equilibrium",
+        "Physical versus chemical equilibrium",
+        "Law of mass action",
+        "Equilibrium constant Kc",
+        "Equilibrium constant Kp",
+        "Relationship between Kp and Kc",
+        "Reaction quotient Q",
+        "Predicting reaction direction using Q and K",
+        "Homogeneous versus heterogeneous equilibrium",
+        "Le Chatelier’s principle",
+        "Effect of concentration on equilibrium",
+        "Effect of pressure and volume",
+        "Effect of temperature",
+        "Effect of catalyst on equilibrium",
+        "Ionic equilibrium",
+        "Strong versus weak electrolytes",
+        "Acids and bases: Arrhenius, Brønsted–Lowry and Lewis",
+        "Conjugate acid–base pairs",
+        "Ionisation constant of acids and bases",
+        "pH and pOH",
+        "Water ionisation constant Kw",
+        "Common-ion effect",
+        "Buffer solutions",
+        "How buffers resist pH change",
+        "Henderson–Hasselbalch equation (conceptual)",
+        "Salt hydrolysis",
+        "Acidic, basic and neutral salts",
+        "Solubility product Ksp",
+        "Common-ion effect on solubility",
+        "Precipitation prediction using ionic product"
+       ],
+       "plannedSource": "CBSE Physics & Chemistry explainer topic bank (owner)"
+      },
+      {
+       "name": "Redox Reactions",
+       "discipline": "Chemistry",
+       "planned": [
+        "Oxidation and reduction: classical definitions",
+        "Electron transfer view of redox",
+        "Oxidation number",
+        "Rules for assigning oxidation number",
+        "Oxidising agent versus reducing agent",
+        "Identifying oxidation and reduction in one reaction",
+        "Disproportionation reaction",
+        "Comproportionation (supplementary)",
+        "Balancing redox equations by oxidation-number method",
+        "Balancing redox equations by ion–electron method",
+        "Redox reactions in daily life",
+        "Combustion as a redox reaction",
+        "Why oxidation and reduction occur together"
+       ],
+       "plannedSource": "CBSE Physics & Chemistry explainer topic bank (owner)"
+      },
+      {
+       "name": "Organic Chemistry – Some Basic Principles and Techniques",
+       "discipline": "Chemistry",
+       "aliases": [
+        "Organic Chemistry: Basic Principles and Techniques"
+       ],
+       "planned": [
+        "Why carbon forms a huge number of compounds",
+        "Catenation and tetravalency",
+        "Classification of organic compounds",
+        "Open-chain versus cyclic compounds",
+        "Homologous series",
+        "Functional groups",
+        "IUPAC nomenclature principles",
+        "Structural isomerism",
+        "Chain, position and functional isomerism",
+        "Inductive effect",
+        "Resonance effect",
+        "Electromeric effect",
+        "Hyperconjugation (introductory)",
+        "Homolytic versus heterolytic bond fission",
+        "Free radicals, carbocations and carbanions",
+        "Electrophiles and nucleophiles",
+        "Substitution, addition, elimination and rearrangement",
+        "Purification by crystallisation",
+        "Distillation and fractional distillation",
+        "Steam distillation",
+        "Differential extraction",
+        "Chromatography",
+        "Qualitative detection of nitrogen, sulphur and halogens (overview)",
+        "Quantitative elemental analysis (overview)",
+        "Why reaction mechanisms use curved arrows"
+       ],
+       "plannedSource": "CBSE Physics & Chemistry explainer topic bank (owner)"
+      },
+      {
+       "name": "Hydrocarbons",
+       "discipline": "Chemistry",
+       "planned": [
+        "Alkanes and their general formula",
+        "Conformations of ethane",
+        "Free-radical halogenation of alkanes",
+        "Combustion of hydrocarbons",
+        "Alkenes and double bonds",
+        "Cis–trans/geometrical isomerism (basic)",
+        "Electrophilic addition to alkenes",
+        "Markovnikov’s rule",
+        "Peroxide effect and anti-Markovnikov addition (HBr)",
+        "Hydrogenation of alkenes",
+        "Ozonolysis (conceptual)",
+        "Alkynes and triple bonds",
+        "Acidity of terminal alkynes",
+        "Addition reactions of alkynes",
+        "Aromaticity (introductory)",
+        "Benzene structure and resonance",
+        "Electrophilic substitution in benzene",
+        "Nitration, halogenation and sulphonation of benzene",
+        "Friedel–Crafts alkylation and acylation",
+        "Why benzene prefers substitution over addition",
+        "Uses and environmental impacts of hydrocarbons"
+       ],
+       "plannedSource": "CBSE Physics & Chemistry explainer topic bank (owner)"
+      }
+     ]
+    },
+    {
+     "id": "mathematics",
+     "name": "Mathematics",
+     "disciplines": [
+      "Mathematics"
+     ],
+     "chapters": [
+      {
+       "name": "Sets"
+      },
+      {
+       "name": "Relations and Functions"
+      },
+      {
+       "name": "Trigonometric Functions"
+      },
+      {
+       "name": "Complex Numbers and Quadratic Equations"
+      },
+      {
+       "name": "Linear Inequalities"
+      },
+      {
+       "name": "Permutations and Combinations"
+      },
+      {
+       "name": "Binomial Theorem"
+      },
+      {
+       "name": "Sequences and Series"
+      },
+      {
+       "name": "Straight Lines"
+      },
+      {
+       "name": "Conic Sections"
+      },
+      {
+       "name": "Introduction to Three Dimensional Geometry"
+      },
+      {
+       "name": "Limits and Derivatives"
+      },
+      {
+       "name": "Statistics"
+      },
+      {
+       "name": "Probability"
+      }
+     ]
+    },
+    {
+     "id": "biology",
+     "name": "Biology",
+     "disciplines": [
+      "Biology"
+     ],
+     "chapters": [
+      {
+       "name": "The Living World",
+       "discipline": "Biology"
+      },
+      {
+       "name": "Biological Classification",
+       "discipline": "Biology"
+      },
+      {
+       "name": "Plant Kingdom",
+       "discipline": "Biology"
+      },
+      {
+       "name": "Animal Kingdom",
+       "discipline": "Biology"
+      },
+      {
+       "name": "Morphology of Flowering Plants",
+       "discipline": "Biology"
+      },
+      {
+       "name": "Anatomy of Flowering Plants",
+       "discipline": "Biology"
+      },
+      {
+       "name": "Structural Organisation in Animals",
+       "discipline": "Biology"
+      },
+      {
+       "name": "Cell: The Unit of Life",
+       "discipline": "Biology"
+      },
+      {
+       "name": "Biomolecules",
+       "discipline": "Biology"
+      },
+      {
+       "name": "Cell Cycle and Cell Division",
+       "discipline": "Biology"
+      },
+      {
+       "name": "Photosynthesis in Higher Plants",
+       "discipline": "Biology"
+      },
+      {
+       "name": "Respiration in Plants",
+       "discipline": "Biology"
+      },
+      {
+       "name": "Plant Growth and Development",
+       "discipline": "Biology"
+      },
+      {
+       "name": "Breathing and Exchange of Gases",
+       "discipline": "Biology"
+      },
+      {
+       "name": "Body Fluids and Circulation",
+       "discipline": "Biology"
+      },
+      {
+       "name": "Excretory Products and their Elimination",
+       "discipline": "Biology"
+      },
+      {
+       "name": "Locomotion and Movement",
+       "discipline": "Biology"
+      },
+      {
+       "name": "Neural Control and Coordination",
+       "discipline": "Biology"
+      },
+      {
+       "name": "Chemical Coordination and Integration",
+       "discipline": "Biology"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "class-12",
+   "class": 12,
+   "label": "Class 12",
+   "blurb": "Electromagnetism, optics, modern physics, solutions and kinetics, calculus and genetics.",
+   "subjects": [
+    {
+     "id": "physics",
+     "name": "Physics",
+     "disciplines": [
+      "Physics"
+     ],
+     "chapters": [
+      {
+       "name": "Electric Charges and Fields",
+       "discipline": "Physics",
+       "planned": [
+        "Properties of electric charge",
+        "Quantisation of charge",
+        "Conservation of charge",
+        "Conductors and insulators",
+        "Coulomb’s law",
+        "Superposition principle",
+        "Electric field",
+        "Electric field lines and their rules",
+        "Electric dipole",
+        "Electric dipole moment",
+        "Field due to a dipole (conceptual)",
+        "Torque on an electric dipole",
+        "Electric flux",
+        "Gauss’s law",
+        "Applications of Gauss’s law",
+        "Electric field of an infinite line charge (conceptual)",
+        "Field of a plane sheet",
+        "Field outside a charged spherical shell",
+        "Why electric field inside a conductor is zero in electrostatic equilibrium"
+       ],
+       "plannedSource": "CBSE Physics & Chemistry explainer topic bank (owner)"
+      },
+      {
+       "name": "Electrostatic Potential and Capacitance",
+       "discipline": "Physics",
+       "planned": [
+        "Electric potential",
+        "Potential difference",
+        "Potential due to a point charge",
+        "Equipotential surfaces",
+        "Why electric field is perpendicular to an equipotential surface",
+        "Potential energy of charges",
+        "Electrostatic equilibrium",
+        "Capacitance",
+        "Parallel-plate capacitor",
+        "Effect of dielectric on capacitance",
+        "Capacitors in series",
+        "Capacitors in parallel",
+        "Energy stored in a capacitor",
+        "Charging and discharging (conceptual)",
+        "Dielectric polarisation",
+        "Why sharp points enhance electric fields (conceptual)"
+       ],
+       "plannedSource": "CBSE Physics & Chemistry explainer topic bank (owner)"
+      },
+      {
+       "name": "Current Electricity",
+       "discipline": "Physics",
+       "planned": [
+        "Electric current and drift velocity",
+        "Current density",
+        "Mobility of charge carriers",
+        "Ohm’s law and its limits",
+        "Resistance and resistivity",
+        "Temperature dependence of resistance",
+        "Electrical power",
+        "Electromotive force (emf)",
+        "Terminal voltage and internal resistance",
+        "Cells in series and parallel",
+        "Kirchhoff’s junction rule",
+        "Kirchhoff’s loop rule",
+        "Wheatstone bridge",
+        "Metre bridge",
+        "Potentiometer: principle",
+        "Why a potentiometer can measure emf accurately",
+        "Resistor colour code (practical explainer)",
+        "Superconductivity (supplementary concept)"
+       ],
+       "plannedSource": "CBSE Physics & Chemistry explainer topic bank (owner)"
+      },
+      {
+       "name": "Moving Charges and Magnetism",
+       "discipline": "Physics",
+       "planned": [
+        "Magnetic force on a moving charge",
+        "Lorentz force",
+        "Motion of a charged particle in a magnetic field",
+        "Radius and period of circular motion in a magnetic field",
+        "Force on a current-carrying wire",
+        "Biot–Savart law",
+        "Magnetic field due to a straight wire",
+        "Ampere’s circuital law",
+        "Field inside a solenoid",
+        "Force between parallel currents",
+        "Definition of ampere (conceptual)",
+        "Torque on a current loop",
+        "Moving-coil galvanometer",
+        "Converting galvanometer into ammeter",
+        "Converting galvanometer into voltmeter",
+        "Cyclotron: principle and limitations",
+        "Velocity selector (supplementary)"
+       ],
+       "plannedSource": "CBSE Physics & Chemistry explainer topic bank (owner)"
+      },
+      {
+       "name": "Magnetism and Matter",
+       "discipline": "Physics",
+       "planned": [
+        "Bar magnet as a dipole",
+        "Magnetic field lines",
+        "Magnetic dipole moment",
+        "Torque on a magnetic dipole",
+        "Earth’s magnetism",
+        "Magnetic declination and inclination",
+        "Diamagnetic, paramagnetic and ferromagnetic materials",
+        "Magnetic susceptibility",
+        "Permeability",
+        "Hysteresis (supplementary)",
+        "Permanent magnets versus electromagnets",
+        "Why a compass aligns with Earth’s magnetic field"
+       ],
+       "plannedSource": "CBSE Physics & Chemistry explainer topic bank (owner)"
+      },
+      {
+       "name": "Electromagnetic Induction",
+       "discipline": "Physics"
+      },
+      {
+       "name": "Alternating Current",
+       "discipline": "Physics"
+      },
+      {
+       "name": "Electromagnetic Waves",
+       "discipline": "Physics",
+       "planned": [
+        "Displacement current (conceptual)",
+        "Maxwell’s prediction of electromagnetic waves",
+        "Electromagnetic waves need no medium",
+        "Electric and magnetic fields in an EM wave",
+        "Speed of electromagnetic waves",
+        "Electromagnetic spectrum",
+        "Radio waves and communication",
+        "Microwaves and applications",
+        "Infrared radiation",
+        "Visible light as a small spectrum band",
+        "Ultraviolet radiation",
+        "X-rays",
+        "Gamma rays",
+        "How wavelength and frequency vary across the spectrum",
+        "Uses and risks of different electromagnetic waves"
+       ],
+       "plannedSource": "CBSE Physics & Chemistry explainer topic bank (owner)"
+      },
+      {
+       "name": "Ray Optics and Optical Instruments",
+       "discipline": "Physics",
+       "planned": [
+        "Reflection and refraction recap",
+        "Sign convention for spherical mirrors",
+        "Mirror formula and magnification",
+        "Refraction at a spherical surface",
+        "Lens maker’s formula",
+        "Power of a lens",
+        "Combination of thin lenses",
+        "Total internal reflection",
+        "Critical angle",
+        "Optical fibre",
+        "Prism and minimum deviation",
+        "Dispersion of light",
+        "Scattering of light",
+        "Simple microscope",
+        "Compound microscope",
+        "Astronomical telescope",
+        "Resolving power (intuitive)",
+        "Why mirages appear",
+        "Real versus virtual image in optical instruments"
+       ],
+       "plannedSource": "CBSE Physics & Chemistry explainer topic bank (owner)"
+      },
+      {
+       "name": "Wave Optics",
+       "discipline": "Physics",
+       "planned": [
+        "Huygens’ principle",
+        "Wavefronts and rays",
+        "Reflection and refraction using wavefronts",
+        "Interference of light",
+        "Coherent sources",
+        "Constructive and destructive interference",
+        "Young’s double-slit experiment",
+        "Fringe width",
+        "Diffraction of light",
+        "Interference versus diffraction",
+        "Polarisation of light",
+        "What polarisation tells us about light",
+        "Malus’ law (supplementary)",
+        "Why light is an electromagnetic transverse wave"
+       ],
+       "plannedSource": "CBSE Physics & Chemistry explainer topic bank (owner)"
+      },
+      {
+       "name": "Dual Nature of Radiation and Matter",
+       "discipline": "Physics",
+       "planned": [
+        "Photoelectric effect",
+        "Threshold frequency",
+        "Work function",
+        "Photoelectric current",
+        "Stopping potential",
+        "Why brighter light does not always eject higher-energy electrons",
+        "Einstein’s photoelectric equation",
+        "Particle nature of light",
+        "Wave–particle duality",
+        "de Broglie wavelength",
+        "Matter waves",
+        "Electron diffraction",
+        "Why the classical wave model cannot explain the photoelectric effect"
+       ],
+       "plannedSource": "CBSE Physics & Chemistry explainer topic bank (owner)"
+      },
+      {
+       "name": "Atoms",
+       "discipline": "Physics"
+      },
+      {
+       "name": "Nuclei",
+       "discipline": "Physics"
+      },
+      {
+       "name": "Semiconductor Electronics: Materials, Devices and Simple Circuits",
+       "discipline": "Physics",
+       "aliases": [
+        "Semiconductor Electronics"
+       ],
+       "planned": [
+        "Conductors, insulators and semiconductors",
+        "Energy bands (basic)",
+        "Intrinsic semiconductor",
+        "Doping",
+        "n-type and p-type semiconductors",
+        "Majority and minority charge carriers",
+        "p–n junction",
+        "Depletion region",
+        "Forward bias and reverse bias",
+        "Diode as a rectifier",
+        "LED: how it emits light",
+        "Photodiode",
+        "Solar cell",
+        "Zener diode (supplementary)",
+        "Transistor as a switch (supplementary)",
+        "Logic gates: AND, OR and NOT (supplementary)",
+        "Why silicon is widely used in electronics"
+       ],
+       "plannedSource": "CBSE Physics & Chemistry explainer topic bank (owner)"
+      }
+     ]
+    },
+    {
+     "id": "chemistry",
+     "name": "Chemistry",
+     "disciplines": [
+      "Chemistry"
+     ],
+     "chapters": [
+      {
+       "name": "Solutions",
+       "discipline": "Chemistry",
+       "planned": [
+        "Solution, solute and solvent",
+        "Types of solutions",
+        "Solubility of solids in liquids",
+        "Solubility of gases in liquids",
+        "Factors affecting solubility",
+        "Henry’s law",
+        "Molarity",
+        "Molality",
+        "Mole fraction",
+        "Mass percentage and ppm",
+        "Temperature dependence of concentration units",
+        "Vapour pressure",
+        "Raoult’s law",
+        "Ideal versus non-ideal solutions",
+        "Positive and negative deviations from Raoult’s law",
+        "Azeotropes (conceptual)",
+        "Colligative properties",
+        "Relative lowering of vapour pressure",
+        "Elevation of boiling point",
+        "Depression of freezing point",
+        "Osmotic pressure",
+        "Reverse osmosis",
+        "Isotonic, hypotonic and hypertonic solutions",
+        "Abnormal molar mass",
+        "Van’t Hoff factor",
+        "Why salt lowers the freezing point of water",
+        "Why osmosis matters in cells"
+       ],
+       "plannedSource": "CBSE Physics & Chemistry explainer topic bank (owner)"
+      },
+      {
+       "name": "Electrochemistry",
+       "discipline": "Chemistry",
+       "planned": [
+        "Electrochemical cells",
+        "Galvanic versus electrolytic cells",
+        "Anode and cathode",
+        "Oxidation at anode, reduction at cathode",
+        "Electron flow versus conventional current",
+        "Salt bridge and its role",
+        "Cell notation",
+        "Electrode potential",
+        "Standard hydrogen electrode",
+        "Standard electrode potential",
+        "Cell emf",
+        "Predicting feasibility using cell potential",
+        "Nernst equation",
+        "Concentration cells (introductory)",
+        "Relationship between Gibbs energy and cell potential",
+        "Relationship between equilibrium constant and cell potential",
+        "Conductance and conductivity",
+        "Molar conductivity",
+        "Effect of dilution on conductivity",
+        "Kohlrausch’s law",
+        "Strong versus weak electrolytes",
+        "Electrolysis",
+        "Faraday’s laws of electrolysis",
+        "Battery versus fuel cell",
+        "Lead storage battery",
+        "Hydrogen–oxygen fuel cell",
+        "Corrosion as an electrochemical process",
+        "How sacrificial protection works"
+       ],
+       "plannedSource": "CBSE Physics & Chemistry explainer topic bank (owner)"
+      },
+      {
+       "name": "Chemical Kinetics",
+       "discipline": "Chemistry",
+       "planned": [
+        "Rate of a chemical reaction",
+        "Average versus instantaneous rate",
+        "Factors affecting reaction rate",
+        "Rate law",
+        "Reaction order",
+        "Molecularity",
+        "Order versus molecularity",
+        "Rate constant and its units",
+        "Integrated rate equation",
+        "Zero-order reactions",
+        "First-order reactions",
+        "Half-life of a first-order reaction",
+        "Pseudo-first-order reaction",
+        "Collision theory",
+        "Activation energy",
+        "Arrhenius equation",
+        "Catalysts and activation energy",
+        "Energy profile diagram",
+        "Why a catalyst speeds up a reaction but does not change equilibrium",
+        "Temperature coefficient of reaction rate",
+        "How to read concentration–time graphs",
+        "Rate-determining step (supplementary)"
+       ],
+       "plannedSource": "CBSE Physics & Chemistry explainer topic bank (owner)"
+      },
+      {
+       "name": "The d- and f-Block Elements",
+       "discipline": "Chemistry",
+       "planned": [
+        "Transition elements",
+        "Why transition metals show variable oxidation states",
+        "Electronic configurations of d-block elements",
+        "Colour of transition-metal ions",
+        "Paramagnetism in transition metals",
+        "Catalytic properties of transition metals",
+        "Complex formation",
+        "Alloy formation",
+        "Interstitial compounds",
+        "Why many transition metals have high melting points",
+        "Lanthanides and actinides",
+        "Lanthanide contraction",
+        "Consequences of lanthanide contraction",
+        "Common oxidation states of lanthanides",
+        "Radioactivity in actinides (overview)",
+        "Potassium dichromate: oxidising action",
+        "Potassium permanganate: oxidising action",
+        "Why KMnO4 has an intense colour"
+       ],
+       "plannedSource": "CBSE Physics & Chemistry explainer topic bank (owner)"
+      },
+      {
+       "name": "Coordination Compounds",
+       "discipline": "Chemistry",
+       "planned": [
+        "What is a coordination compound?",
+        "Central metal atom or ion",
+        "Ligands",
+        "Coordination number",
+        "Denticity and chelation",
+        "Monodentate versus polydentate ligands",
+        "Oxidation number in complexes",
+        "Nomenclature of coordination compounds",
+        "Geometrical isomerism in complexes",
+        "Optical isomerism (basic)",
+        "Structural isomerism in coordination compounds",
+        "Valence bond theory (introductory)",
+        "Crystal field splitting",
+        "High-spin versus low-spin complexes (conceptual)",
+        "Colour of coordination compounds",
+        "Magnetic behaviour of complexes",
+        "Stability of complexes",
+        "Chelate effect",
+        "Coordination compounds in biology and medicine",
+        "Haemoglobin and metal coordination",
+        "Why cisplatin is used in cancer treatment (overview)"
+       ],
+       "plannedSource": "CBSE Physics & Chemistry explainer topic bank (owner)"
+      },
+      {
+       "name": "Haloalkanes and Haloarenes",
+       "discipline": "Chemistry",
+       "planned": [
+        "Classification of haloalkanes",
+        "C–X bond polarity",
+        "Nucleophilic substitution",
+        "SN1 mechanism",
+        "SN2 mechanism",
+        "SN1 versus SN2",
+        "Leaving-group ability",
+        "Effect of substrate structure on substitution",
+        "Carbocation stability",
+        "Stereochemistry in SN2 reactions",
+        "Racemisation in SN1 reactions (conceptual)",
+        "Elimination versus substitution",
+        "E1 and E2 (extension)",
+        "Why aryl halides are less reactive to nucleophilic substitution",
+        "Preparation and reactions of haloalkanes",
+        "Wurtz reaction",
+        "Finkelstein reaction",
+        "Swarts reaction",
+        "Environmental effects of certain halogenated compounds"
+       ],
+       "plannedSource": "CBSE Physics & Chemistry explainer topic bank (owner)"
+      },
+      {
+       "name": "Alcohols, Phenols and Ethers",
+       "discipline": "Chemistry",
+       "planned": [
+        "Functional groups: alcohol, phenol and ether",
+        "Classification of alcohols",
+        "Hydrogen bonding in alcohols",
+        "Why alcohols have higher boiling points than similar hydrocarbons",
+        "Acidity of alcohols versus phenols",
+        "Why phenol is more acidic than ethanol",
+        "Preparation of alcohols",
+        "Oxidation of primary and secondary alcohols",
+        "Dehydration of alcohols",
+        "Lucas test (overview)",
+        "Reactions of phenol",
+        "Bromination of phenol",
+        "Kolbe reaction",
+        "Reimer–Tiemann reaction",
+        "Ether structure and naming",
+        "Williamson ether synthesis",
+        "Cleavage of ethers by HI",
+        "Uses and safety considerations of alcohols and phenols"
+       ],
+       "plannedSource": "CBSE Physics & Chemistry explainer topic bank (owner)"
+      },
+      {
+       "name": "Aldehydes, Ketones and Carboxylic Acids",
+       "discipline": "Chemistry",
+       "planned": [
+        "Carbonyl group",
+        "Aldehyde versus ketone",
+        "Polarity of the carbonyl bond",
+        "Nucleophilic addition",
+        "Why aldehydes are generally more reactive than ketones",
+        "Oxidation and reduction of carbonyl compounds",
+        "Tollens’ test",
+        "Fehling’s test",
+        "Aldol condensation",
+        "Cannizzaro reaction",
+        "Haloform reaction",
+        "Carboxyl group",
+        "Acidity of carboxylic acids",
+        "Why carboxylic acids form dimers (conceptual)",
+        "Esterification",
+        "Decarboxylation",
+        "Hell–Volhard–Zelinsky reaction (overview)",
+        "Preparation and uses of carboxylic acids",
+        "Distinguishing tests for aldehydes and ketones"
+       ],
+       "plannedSource": "CBSE Physics & Chemistry explainer topic bank (owner)"
+      },
+      {
+       "name": "Amines",
+       "discipline": "Chemistry",
+       "planned": [
+        "Amine functional group",
+        "Primary, secondary and tertiary amines",
+        "Basicity of amines",
+        "Why amines are basic",
+        "Effect of resonance on aniline basicity",
+        "Preparation of amines",
+        "Hoffmann bromamide degradation",
+        "Gabriel phthalimide synthesis",
+        "Carbylamine test",
+        "Diazotisation",
+        "Diazonium salts",
+        "Azo coupling",
+        "Why aniline is less basic than many aliphatic amines",
+        "Reactions of amines with acids",
+        "Uses of amines"
+       ],
+       "plannedSource": "CBSE Physics & Chemistry explainer topic bank (owner)"
+      },
+      {
+       "name": "Biomolecules",
+       "discipline": "Chemistry",
+       "planned": [
+        "Carbohydrates",
+        "Monosaccharides, disaccharides and polysaccharides",
+        "Glucose and fructose",
+        "Reducing versus non-reducing sugars",
+        "Glycosidic bond",
+        "Starch versus cellulose",
+        "Proteins and amino acids",
+        "Peptide bond",
+        "Primary, secondary, tertiary and quaternary protein structure",
+        "Denaturation of proteins",
+        "Enzymes as biological catalysts",
+        "Vitamins: broad roles",
+        "Fat-soluble versus water-soluble vitamins",
+        "Nucleic acids: DNA and RNA",
+        "Nucleotides and nucleosides",
+        "Base pairing in DNA",
+        "Lipids (overview)",
+        "Why enzymes are selective"
+       ],
+       "plannedSource": "CBSE Physics & Chemistry explainer topic bank (owner)"
+      }
+     ]
+    },
+    {
+     "id": "mathematics",
+     "name": "Mathematics",
+     "disciplines": [
+      "Mathematics"
+     ],
+     "chapters": [
+      {
+       "name": "Relations and Functions"
+      },
+      {
+       "name": "Inverse Trigonometric Functions"
+      },
+      {
+       "name": "Matrices"
+      },
+      {
+       "name": "Determinants"
+      },
+      {
+       "name": "Continuity and Differentiability"
+      },
+      {
+       "name": "Application of Derivatives"
+      },
+      {
+       "name": "Integrals"
+      },
+      {
+       "name": "Application of Integrals"
+      },
+      {
+       "name": "Differential Equations"
+      },
+      {
+       "name": "Vector Algebra"
+      },
+      {
+       "name": "Three Dimensional Geometry"
+      },
+      {
+       "name": "Linear Programming"
+      },
+      {
+       "name": "Probability"
+      }
+     ]
+    },
+    {
+     "id": "biology",
+     "name": "Biology",
+     "disciplines": [
+      "Biology"
+     ],
+     "chapters": [
+      {
+       "name": "Sexual Reproduction in Flowering Plants",
+       "discipline": "Biology"
+      },
+      {
+       "name": "Human Reproduction",
+       "discipline": "Biology"
+      },
+      {
+       "name": "Reproductive Health",
+       "discipline": "Biology"
+      },
+      {
+       "name": "Principles of Inheritance and Variation",
+       "discipline": "Biology"
+      },
+      {
+       "name": "Molecular Basis of Inheritance",
+       "discipline": "Biology"
+      },
+      {
+       "name": "Evolution",
+       "discipline": "Biology"
+      },
+      {
+       "name": "Human Health and Disease",
+       "discipline": "Biology"
+      },
+      {
+       "name": "Microbes in Human Welfare",
+       "discipline": "Biology"
+      },
+      {
+       "name": "Biotechnology: Principles and Processes",
+       "discipline": "Biology"
+      },
+      {
+       "name": "Biotechnology and its Applications",
+       "discipline": "Biology"
+      },
+      {
+       "name": "Organisms and Populations",
+       "discipline": "Biology"
+      },
+      {
+       "name": "Ecosystem",
+       "discipline": "Biology"
+      },
+      {
+       "name": "Biodiversity and Conservation",
+       "discipline": "Biology"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "extra",
+   "class": "Supplementary",
+   "label": "Extra / Supplementary",
+   "blurb": "Curious questions beyond the syllabus: why the sky is blue, why we yawn, why 0.999… equals 1, and more.",
+   "subjects": [
+    {
+     "id": "science",
+     "name": "Science",
+     "disciplines": [
+      "Physics",
+      "Chemistry"
+     ],
+     "chapters": []
+    },
+    {
+     "id": "biology",
+     "name": "Biology",
+     "disciplines": [
+      "Biology"
+     ],
+     "chapters": []
+    },
+    {
+     "id": "mathematics",
+     "name": "Mathematics",
+     "disciplines": [
+      "Mathematics"
+     ],
+     "chapters": []
+    }
+   ]
+  }
+ ]
+}

@@ -90,7 +90,7 @@ const freePort = () => new Promise(res => { const sv = net.createServer();
     const ctx = await b.newContext({ viewport: { width: 1100, height: 850 } });
     const p = await ctx.newPage();
     const errs = []; p.on('pageerror', e => errs.push(e.message));
-    await p.goto(S, { waitUntil: 'networkidle' }); await sleep(1100);
+    await p.goto(S + '#/jee', { waitUntil: 'networkidle' }); await sleep(1100);
     const st = await p.evaluate(() => ({
       cards: (document.querySelectorAll('article.card').length + (+((document.body.innerText.match(/\((\d+) left\)/) || [0, 0])[1]))),
       gate: !!document.getElementById('schemagate'),

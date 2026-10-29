@@ -26,6 +26,47 @@
     try { localStorage.setItem("jee-sim-theme", dark ? "light" : "dark"); } catch (e) {}
   });
 
+  /* ---- subject pages: Chapter-wise / Topic-wise views, and the topic search and filters */
+  var tabC = document.getElementById("tab-chapters"), tabT = document.getElementById("tab-topics");
+  if (tabC && tabT) {
+    var viewC = document.getElementById("view-chapters"), viewT = document.getElementById("view-topics");
+    var show = function (topics, push) {
+      tabC.setAttribute("aria-selected", topics ? "false" : "true");
+      tabT.setAttribute("aria-selected", topics ? "true" : "false");
+      viewC.hidden = !!topics; viewT.hidden = !topics;
+      if (push && history.replaceState) history.replaceState(null, "", topics ? "#topics" : location.pathname);
+    };
+    tabC.addEventListener("click", function () { show(false, true); });
+    tabT.addEventListener("click", function () { show(true, true); var q = document.getElementById("tq"); if (q) q.focus(); });
+    show(location.hash === "#topics", false);
+
+    var q = document.getElementById("tq"), sel = document.getElementById("tch"), grid = document.getElementById("tgrid");
+    var chips = document.querySelectorAll("[data-filter-discipline]");
+    var count = document.getElementById("tcount"), none = document.getElementById("tnone");
+    var filter = function () {
+      if (!grid) return;
+      var terms = (q ? q.value : "").toLowerCase().split(/\s+/), chap = sel ? sel.value : "", disc = [], i, j, shown = 0;
+      for (i = 0; i < chips.length; i++) if (chips[i].getAttribute("aria-pressed") === "true") disc.push(chips[i].getAttribute("data-filter-discipline"));
+      var cards = grid.children;
+      for (i = 0; i < cards.length; i++) {
+        var c = cards[i], hay = c.getAttribute("data-search") || "", ok = true;
+        for (j = 0; j < terms.length; j++) if (terms[j] && hay.indexOf(terms[j]) < 0) { ok = false; break; }
+        if (ok && chap && c.getAttribute("data-chapter") !== chap) ok = false;
+        if (ok && disc.length && disc.indexOf(c.getAttribute("data-discipline")) < 0) ok = false;
+        c.hidden = !ok;
+        if (ok) shown++;
+      }
+      if (count) count.textContent = shown + " of " + cards.length + " topic" + (cards.length === 1 ? "" : "s");
+      if (none) none.hidden = shown > 0;
+    };
+    if (q) q.addEventListener("input", filter);
+    if (sel) sel.addEventListener("change", filter);
+    for (var ci = 0; ci < chips.length; ci++) chips[ci].addEventListener("click", function () {
+      this.setAttribute("aria-pressed", this.getAttribute("aria-pressed") === "true" ? "false" : "true"); filter();
+    });
+    filter();
+  }
+
   /* ---- simulation frame: same origin, so it is sized to its content (no scroll inside a scroll) */
   var simf = document.querySelector(".simbox iframe");
   if (simf) {
