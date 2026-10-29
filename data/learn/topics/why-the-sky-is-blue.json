@@ -1,0 +1,170 @@
+{
+ "id": "LEARN-SUP-PHY-WHY-THE-SKY-IS-BLUE",
+ "slug": "why-the-sky-is-blue",
+ "status": "ready",
+ "class": "Supplementary",
+ "subject": "Physics",
+ "chapter": "Light and colour",
+ "topic": "Why the sky is blue and sunsets are red",
+ "title": "Why the Sky is Blue and Sunsets are Red",
+ "series": 10,
+ "studioJob": "why-sky-blue",
+ "reelId": "STUDIO-WHY-SKY-BLUE",
+ "summary": "Air scatters blue light far more than red. Blue fills the sky by day; at sunset the long path through the air removes the blue, and red and orange reach you.",
+ "video": {
+  "youtubeId": "o-YP8-a7Yvk",
+  "instagram": "https://www.instagram.com/reel/DfAfvPJDXmZ/"
+ },
+ "notes": {
+  "pdf": "notes.pdf",
+  "title": "01 – Why the Sky is Blue and Sunsets are Red",
+  "driveDoc": "116_9Lsz6cfI0uVQ8fz_3gnq_mhpWok_ruuXEoz7VL9k"
+ },
+ "thumb": "thumb.jpg",
+ "tags": [
+  "Rayleigh scattering",
+  "blue sky",
+  "sunset",
+  "wavelength",
+  "scattering of light",
+  "1/λ⁴",
+  "Tyndall"
+ ],
+ "keyPoints": [
+  "**Rayleigh scattering ∝ 1/λ⁴**: shorter wavelength, more scattering.",
+  "Blue (≈450 nm) scatters about 5–6 times more than red (≈700 nm).",
+  "Sunset: light crosses much more air, so the blue is scattered out on the way.",
+  "No atmosphere (the Moon): a black sky."
+ ],
+ "sections": [
+  {
+   "h": "Scattering and wavelength",
+   "blocks": [
+    {
+     "img": "img/scattering.png",
+     "alt": "Bar chart of scattering strength for violet, blue, green, yellow and red light",
+     "caption": "Scattering ∝ 1/λ⁴, relative to red."
+    },
+    {
+     "table": {
+      "head": [
+       "Term",
+       "Meaning"
+      ],
+      "rows": [
+       [
+        "White light",
+        "A mixture of all colours (VIBGYOR)."
+       ],
+       [
+        "Wavelength",
+        "Red is long (≈700 nm); blue is short (≈450 nm); violet is shortest (≈400 nm)."
+       ],
+       [
+        "Rayleigh scattering",
+        "Scattering by particles much smaller than the wavelength, such as air molecules; strength ∝ 1/λ⁴."
+       ]
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "h": "Step by step",
+   "blocks": [
+    {
+     "list": [
+      "Sunlight is white: it contains every colour.",
+      "Air molecules scatter short-wavelength blue far more than red.",
+      "Scattered blue reaches your eyes from every direction, so the whole sky looks blue.",
+      "Why not violet? Sunlight has less violet, some is absorbed high up, and our eyes are less sensitive to it.",
+      "At sunset the light crosses a much thicker layer of air; most blue is scattered out, so red and orange reach you."
+     ]
+    }
+   ]
+  },
+  {
+   "h": "Related facts",
+   "blocks": [
+    {
+     "list": [
+      "Clouds are white: water droplets are much bigger than the wavelength and scatter all colours almost equally.",
+      "Danger signals are red: red is scattered least by fog and smoke, so it travels farthest.",
+      "The sky is blue over deserts too, so it is not a reflection of the ocean."
+     ]
+    }
+   ]
+  }
+ ],
+ "quiz": [
+  {
+   "q": "Which colour of visible light is scattered least by air?",
+   "options": [
+    "Violet",
+    "Blue",
+    "Green",
+    "Red"
+   ],
+   "answer": 3,
+   "explain": "Scattering ∝ 1/λ⁴, and red has the longest wavelength."
+  },
+  {
+   "q": "Why would an astronaut on the Moon see a black sky?",
+   "options": [
+    "It is always night there",
+    "There is no atmosphere to scatter sunlight",
+    "The Moon absorbs light",
+    "The Sun is far away"
+   ],
+   "answer": 1,
+   "explain": "No air means no scattering, so no light comes from the rest of the sky."
+  },
+  {
+   "q": "Why are sunsets red?",
+   "options": [
+    "The Sun cools down",
+    "Light crosses much more air, so blue is scattered out",
+    "Red light is reflected by the sea",
+    "The Sun emits only red in the evening"
+   ],
+   "answer": 1,
+   "explain": "The Sun emits the same light; the longer path removes the blue."
+  },
+  {
+   "q": "Why are clouds white?",
+   "options": [
+    "They are made of ice only",
+    "Their droplets are big and scatter all colours almost equally",
+    "They reflect the ground",
+    "They absorb blue"
+   ],
+   "answer": 1,
+   "explain": "Droplets much bigger than the wavelength scatter all colours about equally, so the mixture looks white."
+  },
+  {
+   "q": "Scattering by air molecules is proportional to:",
+   "options": [
+    "λ",
+    "λ²",
+    "1/λ²",
+    "1/λ⁴"
+   ],
+   "answer": 3,
+   "explain": "Rayleigh scattering ∝ 1/λ⁴."
+  }
+ ],
+ "simulation": {
+  "decision": "REQUIRED",
+  "status": "pass",
+  "path": "sim.html",
+  "reason": "Moving the Sun and watching the same 1/λ⁴ rule turn the sky blue and the Sun red is a real cause-and-effect experiment students cannot do at home; the readouts make the longer path at sunset visible.",
+  "objective": "See how the Sun's height changes the air the light crosses, and with it the colour of the Sun and the sky.",
+  "instructions": [
+   "Drag the Sun-height slider from high to the horizon.",
+   "Watch the Sun and sky colours and the blue and red percentages that reach you.",
+   "Tick 'No atmosphere' to see the Moon's black sky."
+  ],
+  "qa": "tests/learn_sims.js 171/171 (2026-10-29)"
+ },
+ "related": []
+}

@@ -1,0 +1,159 @@
+{
+ "id": "LEARN-C9-PHY-REST-AND-MOTION",
+ "slug": "rest-and-motion",
+ "status": "ready",
+ "class": 9,
+ "subject": "Physics",
+ "chapter": "Motion",
+ "topic": "Rest and motion: why motion depends on the observer",
+ "title": "Rest and Motion: Motion is Relative",
+ "series": 1,
+ "studioJob": "rest-and-motion",
+ "reelId": "STUDIO-REST-AND-MOTION",
+ "summary": "Are you moving right now? It depends on who is watching. Rest and motion are always measured from a reference point.",
+ "video": {
+  "youtubeId": "EQQt9FCwr7o",
+  "instagram": "https://www.instagram.com/reel/De_iSozDa0_/"
+ },
+ "notes": {
+  "pdf": "notes.pdf",
+  "title": "01 – Rest and Motion (Motion is Relative)",
+  "driveDoc": "1XCZhqdFDSQ0LACLTrqbhb8rDIWM4lVr5jQUktQTH9lI"
+ },
+ "thumb": "thumb.jpg",
+ "tags": [
+  "rest",
+  "motion",
+  "reference point",
+  "frame of reference",
+  "relative motion",
+  "observer"
+ ],
+ "keyPoints": [
+  "An object is **at rest** if its position does not change with time, relative to a reference point.",
+  "It is **in motion** if its position changes with time, relative to that point.",
+  "The same object can be at rest for one observer and moving for another.",
+  "Nothing is in absolute rest: even the ground moves with the Earth around the Sun."
+ ],
+ "sections": [
+  {
+   "h": "Relative to whom?",
+   "blocks": [
+    {
+     "p": "Sitting in a moving train, are you at rest or moving? Both answers are right, because **rest and motion are relative**: they mean nothing until you choose a **reference point** (an observer or origin) to measure position from."
+    },
+    {
+     "img": "img/train.png",
+     "alt": "A train with you and a friend inside, and a person on the platform",
+     "caption": "Your friend sees you at rest; the person on the platform sees you moving."
+    }
+   ]
+  },
+  {
+   "h": "Key definitions",
+   "blocks": [
+    {
+     "table": {
+      "head": [
+       "Term",
+       "Meaning"
+      ],
+      "rows": [
+       [
+        "Reference point",
+        "A fixed point (or observer) from which position is measured; also called the origin."
+       ],
+       [
+        "Rest",
+        "Position does not change with time, relative to the reference point."
+       ],
+       [
+        "Motion",
+        "Position changes with time, relative to the reference point."
+       ]
+      ]
+     }
+    },
+    {
+     "formula": "Position changes with time → motion.   Position does not change → rest."
+    }
+   ]
+  },
+  {
+   "h": "More examples",
+   "blocks": [
+    {
+     "list": [
+      "Passengers in a bus are at rest relative to each other but moving relative to the road.",
+      "A tree is at rest relative to the ground but moving relative to the Sun.",
+      "A geostationary satellite stays over one spot of Earth, yet moves fast relative to the Sun."
+     ]
+    },
+    {
+     "p": "**Common mistake:** saying something is simply \"at rest\" or \"moving\". Always name the reference point. Slow motion is still motion if the position changes."
+    }
+   ]
+  }
+ ],
+ "quiz": [
+  {
+   "q": "A girl sits in a moving car. Relative to the car she is:",
+   "options": [
+    "in motion",
+    "at rest",
+    "both at rest and in motion",
+    "neither"
+   ],
+   "answer": 1,
+   "explain": "Her position inside the car does not change, so relative to the car she is at rest (relative to the road she is moving)."
+  },
+  {
+   "q": "What must you choose before calling an object \"at rest\"?",
+   "options": [
+    "Its speed",
+    "A reference point",
+    "Its mass",
+    "A clock"
+   ],
+   "answer": 1,
+   "explain": "Rest and motion are relative: you first need a reference point to measure position from."
+  },
+  {
+   "q": "Is a building at rest?",
+   "options": [
+    "Yes, always",
+    "Relative to the Earth yes; relative to the Sun no",
+    "No, never",
+    "Only at night"
+   ],
+   "answer": 1,
+   "explain": "Its position does not change relative to the ground, but the Earth carries it around the Sun."
+  },
+  {
+   "q": "An object is in motion when its position:",
+   "options": [
+    "is far away",
+    "changes with time relative to a reference point",
+    "is high above the ground",
+    "never changes"
+   ],
+   "answer": 1,
+   "explain": "Motion means the position changes with time, measured from a chosen reference point."
+  }
+ ],
+ "simulation": {
+  "decision": "REQUIRED",
+  "status": "pass",
+  "path": "sim.html",
+  "reason": "Switching the observer and watching the same passenger stay still or move is the heart of this idea; students can test it themselves instead of only being told.",
+  "objective": "See that the same passenger is at rest for one observer and in motion for another.",
+  "instructions": [
+   "Choose who is watching: the person on the platform or your friend in the train.",
+   "Press Play (or drag the time slider).",
+   "Watch your position measured from that observer: does it change?",
+   "Switch observers and compare."
+  ],
+  "qa": "tests/learn_sims.js 171/171 (2026-10-29)"
+ },
+ "related": []
+}

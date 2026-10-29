@@ -1,0 +1,136 @@
+{
+ "id": "LEARN-C9-BIO-CELL-THEORY",
+ "slug": "cell-theory",
+ "status": "ready",
+ "class": 9,
+ "subject": "Biology",
+ "chapter": "The Fundamental Unit of Life",
+ "topic": "Cell Theory",
+ "title": "Cell Theory",
+ "series": 4,
+ "studioJob": "cell-theory",
+ "reelId": "STUDIO-CELL-THEORY",
+ "summary": "Your body has about 37 trillion cells. Three scientists showed that every living thing is built from cells, and every cell comes from another cell.",
+ "video": {
+  "youtubeId": "0lSuiIq4_dQ",
+  "instagram": "https://www.instagram.com/reel/DfCiNf3HYJB/"
+ },
+ "notes": {
+  "pdf": "notes.pdf",
+  "title": "01 – Cell Theory",
+  "driveDoc": "1dBHW9VGp82lzXVJoE2tVTeg_AB2arig8QelrNpSkAT4"
+ },
+ "thumb": "thumb.jpg",
+ "tags": [
+  "cell theory",
+  "Schleiden",
+  "Schwann",
+  "Virchow",
+  "postulates",
+  "omnis cellula e cellula",
+  "cell division"
+ ],
+ "keyPoints": [
+  "**All living organisms are made of one or more cells** (Schleiden 1838, Schwann 1839).",
+  "**The cell is the basic structural and functional unit of life.**",
+  "**All cells arise from pre-existing cells** (Virchow 1855, \"Omnis cellula e cellula\").",
+  "Exception: **viruses** are not made of cells."
+ ],
+ "sections": [
+  {
+   "h": "How the theory was built",
+   "blocks": [
+    {
+     "img": "img/timeline.png",
+     "alt": "Timeline from Hooke 1665 to Virchow 1855",
+     "caption": "From cork (1665) to the cell theory (1838-1855)."
+    },
+    {
+     "p": "In **1838** the botanist **Matthias Schleiden** concluded that all **plants** are made of cells. In **1839** the zoologist **Theodor Schwann** found the same for **animals** and called the cell the basic unit of life. In **1855** **Rudolf Virchow** added the missing piece: new cells come only from the division of existing cells."
+    }
+   ]
+  },
+  {
+   "h": "The three postulates",
+   "blocks": [
+    {
+     "img": "img/postulates.png",
+     "alt": "The three postulates of the cell theory",
+     "caption": "The cell theory in three lines."
+    },
+    {
+     "img": "img/division.png",
+     "alt": "One cell dividing into 2, 4 and more",
+     "caption": "Postulate 3: after n divisions, 2^n cells."
+    }
+   ]
+  },
+  {
+   "h": "Plant and animal cells",
+   "blocks": [
+    {
+     "img": "img/plant_animal.png",
+     "alt": "Labelled plant and animal cells",
+     "caption": "Different in detail, both cells: one theory covers both."
+    },
+    {
+     "p": "**Limits:** viruses are acellular, and the theory does not explain how the very first cell formed."
+    }
+   ]
+  }
+ ],
+ "quiz": [
+  {
+   "q": "Who proposed that all cells arise from pre-existing cells?",
+   "options": [
+    "Robert Hooke",
+    "Matthias Schleiden",
+    "Rudolf Virchow",
+    "Robert Brown"
+   ],
+   "answer": 2,
+   "explain": "Rudolf Virchow, 1855: \"Omnis cellula e cellula\"."
+  },
+  {
+   "q": "Which of these does NOT fit the cell theory?",
+   "options": [
+    "Amoeba",
+    "Virus",
+    "Mushroom",
+    "Bacterium"
+   ],
+   "answer": 1,
+   "explain": "Viruses are not made of cells (acellular)."
+  },
+  {
+   "q": "Schleiden studied ___, and Schwann studied ___.",
+   "options": [
+    "animals, plants",
+    "plants, animals",
+    "bacteria, viruses",
+    "cork, pond water"
+   ],
+   "answer": 1,
+   "explain": "Schleiden (a botanist) studied plants in 1838; Schwann (a zoologist) studied animals in 1839."
+  },
+  {
+   "q": "A bacterium divides every 20 minutes. Starting from one, how many after 2 hours?",
+   "options": [
+    "12",
+    "32",
+    "64",
+    "128"
+   ],
+   "answer": 2,
+   "explain": "2 hours = 6 divisions, so 2^6 = 64 bacteria."
+  }
+ ],
+ "simulation": {
+  "decision": "NOT_REQUIRED",
+  "reason": "The postulates are historical conclusions; the timeline, postulate chart and cell-division diagram carry them. The only quantitative idea (2^n doubling) is worked in the quiz."
+ },
+ "related": [
+  "discovery-of-the-cell",
+  "robert-hooke-discovery-of-cells"
+ ]
+}

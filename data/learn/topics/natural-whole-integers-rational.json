@@ -1,0 +1,176 @@
+{
+ "id": "LEARN-C9-MAT-NATURAL-WHOLE-INTEGERS-RATIONAL",
+ "slug": "natural-whole-integers-rational",
+ "status": "ready",
+ "class": 9,
+ "subject": "Mathematics",
+ "chapter": "Number Systems",
+ "topic": "Natural Numbers, Whole Numbers, Integers and Rational Numbers",
+ "title": "Natural, Whole, Integers and Rational Numbers",
+ "series": 3,
+ "studioJob": "number-family",
+ "reelId": "STUDIO-NUMBER-FAMILY",
+ "summary": "Each new family of numbers answers a question the old one could not, and every family lives inside the next: N ⊂ W ⊂ Z ⊂ Q.",
+ "video": {
+  "youtubeId": "awVvvp5N5cc",
+  "instagram": "https://www.instagram.com/reel/De_fmvRgcW6/"
+ },
+ "notes": {
+  "pdf": "notes.pdf",
+  "title": "01 – Natural, Whole, Integers and Rational Numbers",
+  "driveDoc": "1lADkj5oxO0SUY7dGFSi8jSa5fE0c-Xc8YIV6u2WtBcc"
+ },
+ "thumb": "thumb.jpg",
+ "tags": [
+  "natural numbers",
+  "whole numbers",
+  "integers",
+  "rational numbers",
+  "number system",
+  "N W Z Q",
+  "p/q"
+ ],
+ "keyPoints": [
+  "**N** = {1, 2, 3, …}; **W** = {0, 1, 2, …}; **Z** = {…, −2, −1, 0, 1, 2, …}.",
+  "**Q** = p/q with p, q integers and **q ≠ 0**.",
+  "N ⊂ W ⊂ Z ⊂ Q: every integer is rational (n = n/1).",
+  "5/0 is not a number; 0/5 = 0 is fine."
+ ],
+ "sections": [
+  {
+   "h": "Four families, one inside the next",
+   "blocks": [
+    {
+     "img": "img/nested-sets.png",
+     "alt": "Nested boxes: natural numbers inside whole numbers inside integers inside rational numbers",
+     "caption": "N ⊂ W ⊂ Z ⊂ Q."
+    },
+    {
+     "table": {
+      "head": [
+       "Family",
+       "Set",
+       "The question it answers"
+      ],
+      "rows": [
+       [
+        "Natural numbers (N)",
+        "{1, 2, 3, 4, …}",
+        "How do we count?"
+       ],
+       [
+        "Whole numbers (W)",
+        "{0, 1, 2, 3, …}",
+        "How many apples on an empty plate? Zero."
+       ],
+       [
+        "Integers (Z)",
+        "{…, −3, −2, −1, 0, 1, 2, 3, …}",
+        "Temperature below zero, like −5 °C?"
+       ],
+       [
+        "Rational numbers (Q)",
+        "p/q, p and q integers, q ≠ 0",
+        "Half a pizza each for two friends? 1/2."
+       ]
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "h": "Key ideas",
+   "blocks": [
+    {
+     "list": [
+      "An integer n is rational because n = n/1 (5 = 5/1, −3 = −3/1).",
+      "Rationals can be positive, negative or zero: 3/4, −7/2, 0 = 0/5.",
+      "A rational number has many forms: 1/2 = 2/4 = 50/100.",
+      "Not every number is rational: √2 and π cannot be written as p/q (irrational, the next topic)."
+     ]
+    },
+    {
+     "formula": "Rational number = p/q, with p, q integers and q ≠ 0"
+    }
+   ]
+  },
+  {
+   "h": "Examples and common mistakes",
+   "blocks": [
+    {
+     "list": [
+      "7 is natural, whole, an integer and rational.",
+      "0 is whole, an integer and rational, but **not natural** (in CBSE / NCERT, N starts at 1).",
+      "−4 is an integer and rational, but not whole or natural.",
+      "2/3 and −1/2 are rational only."
+     ]
+    }
+   ]
+  }
+ ],
+ "quiz": [
+  {
+   "q": "Is −8 a whole number?",
+   "options": [
+    "Yes",
+    "No, it is an integer and a rational number",
+    "No, it is not a number",
+    "Only in Class 9"
+   ],
+   "answer": 1,
+   "explain": "Whole numbers start at 0 and go up; −8 is an integer, and every integer is rational."
+  },
+  {
+   "q": "Which is the smallest whole number?",
+   "options": [
+    "1",
+    "0",
+    "−1",
+    "There is none"
+   ],
+   "answer": 1,
+   "explain": "W = {0, 1, 2, …}, so the smallest is 0."
+  },
+  {
+   "q": "Is 3/0 a rational number?",
+   "options": [
+    "Yes",
+    "No, q cannot be 0",
+    "Only if 3 is even",
+    "It equals 0"
+   ],
+   "answer": 1,
+   "explain": "In p/q the denominator q must not be 0; division by zero is not defined."
+  },
+  {
+   "q": "Which statement is true?",
+   "options": [
+    "Every integer is a natural number",
+    "Every whole number is a natural number",
+    "Every integer is a rational number",
+    "Every rational number is an integer"
+   ],
+   "answer": 2,
+   "explain": "Any integer n can be written as n/1, so every integer is rational (N ⊂ W ⊂ Z ⊂ Q)."
+  },
+  {
+   "q": "Write 6 as a rational number.",
+   "options": [
+    "6/0",
+    "0/6",
+    "6/1",
+    "1/6"
+   ],
+   "answer": 2,
+   "explain": "6 = 6/1 (or 12/2, 18/3, …)."
+  }
+ ],
+ "simulation": {
+  "decision": "NOT_REQUIRED",
+  "reason": "Classifying numbers into families is a definitional idea best shown by the nested-sets picture and examples; a simulation would not add a variable to explore."
+ },
+ "related": [
+  "rational-numbers-on-number-line",
+  "equivalent-fractions"
+ ]
+}

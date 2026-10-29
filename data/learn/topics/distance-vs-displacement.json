@@ -1,0 +1,180 @@
+{
+ "id": "LEARN-C9-PHY-DISTANCE-VS-DISPLACEMENT",
+ "slug": "distance-vs-displacement",
+ "status": "ready",
+ "class": 9,
+ "subject": "Physics",
+ "chapter": "Motion",
+ "topic": "Distance versus displacement",
+ "title": "Distance vs Displacement",
+ "series": 6,
+ "studioJob": "distance-displacement",
+ "reelId": "STUDIO-DISTANCE-DISPLACEMENT",
+ "summary": "Distance counts the whole path you walked; displacement only looks at the straight line from start to end, with its direction.",
+ "video": {
+  "youtubeId": "FP4TOt6_6kU",
+  "instagram": "https://www.instagram.com/reel/DfAfguxkgMa/"
+ },
+ "notes": {
+  "pdf": "notes.pdf",
+  "title": "02 – Distance vs Displacement",
+  "driveDoc": "1v_X7mYVDEULFEZ2uM_MeOxJpY8dGcE-azGFgnm84Q-M"
+ },
+ "thumb": "thumb.jpg",
+ "tags": [
+  "distance",
+  "displacement",
+  "scalar",
+  "vector",
+  "path",
+  "Pythagoras"
+ ],
+ "keyPoints": [
+  "**Distance** = total path length (scalar).",
+  "**Displacement** = straight line from start to end, with direction (vector).",
+  "|Displacement| ≤ distance (equal only for straight-line motion in one direction).",
+  "Back at the start: displacement = 0, distance ≠ 0."
+ ],
+ "sections": [
+  {
+   "h": "Path or arrow?",
+   "blocks": [
+    {
+     "img": "img/east-north.png",
+     "alt": "A walk 4 m east then 3 m north, with the 5 m displacement arrow",
+     "caption": "Distance 7 m, displacement 5 m."
+    },
+    {
+     "formula": "For two perpendicular walks a and b:  displacement = √(a² + b²)"
+    }
+   ]
+  },
+  {
+   "h": "Comparison",
+   "blocks": [
+    {
+     "table": {
+      "head": [
+       "Feature",
+       "Distance",
+       "Displacement"
+      ],
+      "rows": [
+       [
+        "Meaning",
+        "Total length of the path travelled",
+        "Shortest straight line from start to end, with direction"
+       ],
+       [
+        "Type",
+        "Scalar (size only)",
+        "Vector (size + direction)"
+       ],
+       [
+        "Zero while moving?",
+        "No, it only increases",
+        "Yes, after returning to the start"
+       ],
+       [
+        "Depends on the path?",
+        "Yes",
+        "No, only on start and end"
+       ],
+       [
+        "SI unit",
+        "metre (m)",
+        "metre (m)"
+       ]
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "h": "Worked examples",
+   "blocks": [
+    {
+     "list": [
+      "Home → school → home (1 km each way): distance 2 km; displacement 0.",
+      "Half a circle of radius r: distance πr; displacement 2r (the diameter).",
+      "One full lap of a circular track: distance 2πr; displacement 0."
+     ]
+    }
+   ]
+  }
+ ],
+ "quiz": [
+  {
+   "q": "A runner goes 6 m north then 8 m east. The displacement is:",
+   "options": [
+    "14 m",
+    "10 m",
+    "2 m",
+    "48 m"
+   ],
+   "answer": 1,
+   "explain": "√(6² + 8²) = √100 = 10 m (the distance is 14 m)."
+  },
+  {
+   "q": "Can displacement be greater than distance?",
+   "options": [
+    "Yes, often",
+    "Never",
+    "Only on a circle",
+    "Only when running"
+   ],
+   "answer": 1,
+   "explain": "The straight line is the shortest path, so |displacement| ≤ distance."
+  },
+  {
+   "q": "A car goes 5 km forward and 5 km back. Its displacement is:",
+   "options": [
+    "10 km",
+    "5 km",
+    "0 km",
+    "2.5 km"
+   ],
+   "answer": 2,
+   "explain": "It ends where it started, so the displacement is 0."
+  },
+  {
+   "q": "Which is a vector?",
+   "options": [
+    "Distance",
+    "Displacement",
+    "Time",
+    "Mass"
+   ],
+   "answer": 1,
+   "explain": "Displacement has size and direction."
+  },
+  {
+   "q": "For half a circle of radius r, the displacement is:",
+   "options": [
+    "πr",
+    "2πr",
+    "2r",
+    "r"
+   ],
+   "answer": 2,
+   "explain": "Start and end are opposite ends of a diameter: 2r."
+  }
+ ],
+ "simulation": {
+  "decision": "REQUIRED",
+  "status": "pass",
+  "path": "../speed-vs-velocity/sim.html",
+  "reason": "Choosing different paths between the same points and watching distance grow while displacement stays fixed (or returns to zero) is exactly the comparison this topic is about; the existing Speed vs Velocity simulation already does it, so it is reused.",
+  "objective": "Compare the path length with the straight start-to-finish arrow for different paths.",
+  "instructions": [
+   "Pick a path: straight, there-and-back, zig-zag or circle.",
+   "Press Play or drag the time slider.",
+   "Compare the distance with the displacement readout.",
+   "On there-and-back and the full circle, watch the displacement return to zero."
+  ],
+  "qa": "tests/learn_sims.js 171/171 (2026-10-29)"
+ },
+ "related": [
+  "speed-vs-velocity"
+ ]
+}

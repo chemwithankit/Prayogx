@@ -1,0 +1,140 @@
+{
+ "id": "LEARN-SUP-MAT-WHY-0-999-EQUALS-1",
+ "slug": "why-0-999-equals-1",
+ "status": "ready",
+ "class": "Supplementary",
+ "subject": "Mathematics",
+ "chapter": "Numbers and infinity",
+ "topic": "Why 0.999… Equals 1",
+ "title": "Why 0.999… Equals 1",
+ "series": 5,
+ "studioJob": "zero-point-nine",
+ "reelId": "STUDIO-ZERO-POINT-NINE",
+ "summary": "0.999… with the 9s never stopping is exactly 1, not \"a little less\". Three short proofs show why.",
+ "video": {
+  "youtubeId": "gENVwX-EdC4",
+  "instagram": "https://www.instagram.com/reel/DfAc20ojhpm/"
+ },
+ "notes": {
+  "pdf": "notes.pdf",
+  "title": "03 – Why 0.999… Equals 1",
+  "driveDoc": "1hKgzIZJytPwTWSzAS_QGZXZG7iqxnLf4K8q4j9JbU04"
+ },
+ "thumb": "thumb.jpg",
+ "tags": [
+  "0.999",
+  "recurring decimal",
+  "repeating decimal",
+  "infinity",
+  "proof",
+  "limits"
+ ],
+ "keyPoints": [
+  "**0.999… = 1**: two names for one number.",
+  "1/3 = 0.333…, so 3 × 1/3 = 0.999… = 1.",
+  "Let x = 0.999…; 10x − x = 9, so x = 1.",
+  "0.999 with three 9s is less than 1; only the **never-ending** 0.999… equals 1."
+ ],
+ "sections": [
+  {
+   "h": "Proof 1: one third",
+   "blocks": [
+    {
+     "formula": "1/3 = 0.333…   ⇒   3 × 1/3 = 3 × 0.333…   ⇒   1 = 0.999…"
+    }
+   ]
+  },
+  {
+   "h": "Proof 2: algebra",
+   "blocks": [
+    {
+     "list": [
+      "Let x = 0.999…",
+      "Then 10x = 9.999…",
+      "Subtract: 10x − x = 9.999… − 0.999… (the endless 9s cancel)",
+      "9x = 9, so **x = 1**"
+     ]
+    }
+   ]
+  },
+  {
+   "h": "Proof 3: no number in between",
+   "blocks": [
+    {
+     "img": "img/gap.png",
+     "alt": "Bars showing the gap to 1 shrinking with more 9s",
+     "caption": "Each extra 9 shrinks the gap; with endless 9s no gap is left."
+    },
+    {
+     "p": "Between any two different numbers there is always another (their average). Try to find one between 0.999… and 1: there is none, so they are the same number."
+    }
+   ]
+  },
+  {
+   "h": "Related facts",
+   "blocks": [
+    {
+     "list": [
+      "The same trick works for any recurring decimal: 0.777… = 7/9, 0.4545… = 45/99 = 5/11.",
+      "Every terminating decimal has a recurring-9 twin: 0.5 = 0.4999…",
+      "Recurring decimals are rational numbers (they can be written as p/q)."
+     ]
+    }
+   ]
+  }
+ ],
+ "quiz": [
+  {
+   "q": "0.999… (the 9s never stop) is:",
+   "options": [
+    "a little less than 1",
+    "exactly 1",
+    "a little more than 1",
+    "not a number"
+   ],
+   "answer": 1,
+   "explain": "It is exactly 1: 0.999… and 1 are two names for the same number."
+  },
+  {
+   "q": "Write 0.444… as a fraction.",
+   "options": [
+    "4/10",
+    "4/9",
+    "44/100",
+    "1/4"
+   ],
+   "answer": 1,
+   "explain": "x = 0.444…, 10x = 4.444…, so 9x = 4 and x = 4/9."
+  },
+  {
+   "q": "Is 0.999 (exactly three 9s) equal to 1?",
+   "options": [
+    "Yes",
+    "No, it is 1 − 0.001",
+    "Only when rounded",
+    "It is more than 1"
+   ],
+   "answer": 1,
+   "explain": "With a finite number of 9s there is a gap (here 0.001). Only the never-ending 0.999… equals 1."
+  },
+  {
+   "q": "If x = 0.999…, what is 10x − x?",
+   "options": [
+    "9.999…",
+    "0.9",
+    "9",
+    "10"
+   ],
+   "answer": 2,
+   "explain": "10x − x = 9.999… − 0.999… = 9, so 9x = 9 and x = 1."
+  }
+ ],
+ "simulation": {
+  "decision": "NOT_REQUIRED",
+  "reason": "A proof-based idea: the three proofs and the shrinking-gap picture carry it; an interactive slider would only repeat the picture."
+ },
+ "related": [
+  "natural-whole-integers-rational",
+  "rational-numbers-on-number-line"
+ ]
+}

@@ -1,0 +1,179 @@
+{
+ "id": "LEARN-C9-MAT-RATIONAL-NUMBERS-ON-NUMBER-LINE",
+ "slug": "rational-numbers-on-number-line",
+ "status": "ready",
+ "class": 9,
+ "subject": "Mathematics",
+ "chapter": "Number Systems",
+ "topic": "Rational Numbers on the Number Line",
+ "title": "Rational Numbers on the Number Line",
+ "series": 8,
+ "studioJob": "rational-number-line",
+ "reelId": "STUDIO-RATIONAL-NUMBER-LINE",
+ "summary": "To place p/q, cut each unit into q equal parts and count p parts from 0: right for positive, left for negative.",
+ "video": {
+  "youtubeId": "uzBdXhhvIhQ",
+  "instagram": "https://www.instagram.com/reel/DfAdEdmAic5/"
+ },
+ "notes": {
+  "pdf": "notes.pdf",
+  "title": "02 – Rational Numbers on the Number Line",
+  "driveDoc": "1R90pwvpbMcppI84o5blwwEH-XOJcB4qaVkBU4LWYZIg"
+ },
+ "thumb": "thumb.jpg",
+ "tags": [
+  "number line",
+  "rational numbers",
+  "fractions",
+  "improper fractions",
+  "negative fractions",
+  "density"
+ ],
+ "keyPoints": [
+  "**Denominator q** = how many equal parts in each unit.",
+  "**Numerator p** = how many parts to count from 0.",
+  "Positive → count right; negative → count left.",
+  "Between any two rationals there is another: their average (a + b)/2."
+ ],
+ "sections": [
+  {
+   "h": "Cut, then count",
+   "blocks": [
+    {
+     "img": "img/number-line.png",
+     "alt": "Number line from −2 to 2 with 3/4, 5/3 and −1/2 marked",
+     "caption": "3/4, 5/3 and −1/2 placed by cutting and counting."
+    },
+    {
+     "list": [
+      "Draw the line and mark 0, 1, 2, … (and −1, −2, … if needed).",
+      "Cut **each unit** into q equal parts (q = denominator).",
+      "From 0, count p parts: right if positive, left if negative.",
+      "Where you stop is p/q."
+     ]
+    }
+   ]
+  },
+  {
+   "h": "Worked examples",
+   "blocks": [
+    {
+     "table": {
+      "head": [
+       "Number",
+       "Parts per unit",
+       "Count from 0",
+       "Where it lands"
+      ],
+      "rows": [
+       [
+        "3/4",
+        "4",
+        "3 parts right",
+        "Between 0 and 1, just before 1"
+       ],
+       [
+        "5/3",
+        "3",
+        "5 parts right",
+        "Between 1 and 2 (5/3 = 1⅔)"
+       ],
+       [
+        "−1/2",
+        "2",
+        "1 part left",
+        "Halfway between 0 and −1"
+       ]
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "h": "Density of rational numbers",
+   "blocks": [
+    {
+     "p": "Between 1/2 and 3/4 lies their average (1/2 + 3/4)/2 = **5/8**; between 1/2 and 5/8 lies 9/16; and so on forever. There are **infinitely many** rationals between any two."
+    },
+    {
+     "p": "**Common mistakes:** cutting the whole visible line instead of each unit; counting tick marks instead of the gaps; putting −1/2 to the right of 0."
+    }
+   ]
+  }
+ ],
+ "quiz": [
+  {
+   "q": "To place 5/3, each unit is cut into:",
+   "options": [
+    "5 parts",
+    "3 parts",
+    "8 parts",
+    "2 parts"
+   ],
+   "answer": 1,
+   "explain": "The denominator (3) tells how many equal parts per unit; then count 5 parts."
+  },
+  {
+   "q": "Between which two integers does 11/4 lie?",
+   "options": [
+    "1 and 2",
+    "2 and 3",
+    "3 and 4",
+    "11 and 12"
+   ],
+   "answer": 1,
+   "explain": "11/4 = 2¾, so it lies between 2 and 3."
+  },
+  {
+   "q": "Where is −1/2?",
+   "options": [
+    "Halfway between 0 and 1",
+    "Halfway between 0 and −1",
+    "At −2",
+    "Halfway between −1 and −2"
+   ],
+   "answer": 1,
+   "explain": "Cut each unit into 2 parts and count 1 part to the left of 0."
+  },
+  {
+   "q": "A rational number between 1/3 and 1/2 is:",
+   "options": [
+    "5/12",
+    "2/3",
+    "1/4",
+    "3/4"
+   ],
+   "answer": 0,
+   "explain": "Their average: (1/3 + 1/2)/2 = (5/6)/2 = 5/12."
+  },
+  {
+   "q": "Do 1/2, 2/4 and 3/6 land on different points?",
+   "options": [
+    "Yes, three points",
+    "No, all on the same point",
+    "Only 2/4 differs",
+    "Only 3/6 differs"
+   ],
+   "answer": 1,
+   "explain": "Equivalent fractions are the same number, so they land on one point."
+  }
+ ],
+ "simulation": {
+  "decision": "REQUIRED",
+  "status": "pass",
+  "path": "sim.html",
+  "reason": "Placing any p/q by cutting each unit and counting parts, including improper and negative fractions, is a procedure students learn best by doing; the existing fractions simulation only covers −1 to 1 without improper fractions, so a focused one was built.",
+  "objective": "Place any fraction on the number line by cutting each unit into q parts and counting p of them.",
+  "instructions": [
+   "Set p and q with the + and − buttons (or pick an example).",
+   "Press Cut and count: each unit is cut into q parts, then p parts are counted from 0.",
+   "Read where it lands and between which integers it lies.",
+   "Try a negative and an improper fraction."
+  ],
+  "qa": "tests/learn_sims.js 171/171 (2026-10-29)"
+ },
+ "related": [
+  "equivalent-fractions",
+  "natural-whole-integers-rational"
+ ]
+}

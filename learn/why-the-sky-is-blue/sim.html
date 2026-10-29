@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="sim-id" content="LEARN-SUP-PHY-SKY-BLUE-SIM">
+<title>Why the sky is blue · PrayogX Learn simulation</title>
+<style>
+:root{--bg:#f4f4f1;--card:#fcfcfb;--line:#d9d9d4;--ink:#0b0b0b;--mut:#52514e;--acc:#2a78d6}
+@media (prefers-color-scheme:dark){:root{--bg:#111110;--card:#1a1a19;--line:#34342f;--ink:#fff;--mut:#c3c2b7;--acc:#3987e5}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+.wrap{max-width:980px;margin:0 auto;padding:12px}
+h1{font-size:17px;margin:2px 0 8px}
+.grid{display:grid;grid-template-columns:minmax(0,1fr) 290px;gap:12px}
+@media (max-width:720px){.grid{grid-template-columns:minmax(0,1fr)}}
+.stage{border:1px solid var(--line);border-radius:12px;overflow:hidden}
+svg{display:block;width:100%;height:auto}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px}
+.lab{font-size:13px;color:var(--mut);margin:0 0 4px}
+input[type=range]{width:100%}
+.tog{display:flex;align-items:center;gap:8px;margin:10px 0;min-height:42px}
+.tog input{width:22px;height:22px}
+table{width:100%;border-collapse:collapse;font-size:14px;margin-top:6px}
+td{padding:4px 2px;border-bottom:1px solid var(--line)}
+td.v{text-align:right;font-weight:700;font-variant-numeric:tabular-nums}
+.sw{display:inline-block;width:14px;height:14px;border-radius:4px;vertical-align:-2px;margin-right:6px;border:1px solid rgba(0,0,0,.2)}
+.note{margin-top:10px;font-size:13.5px;padding:8px 10px;border-radius:9px;background:var(--bg);border:1px solid var(--line);min-height:3.4em}
+.fine{font-size:12px;color:var(--mut);margin-top:8px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>Move the Sun: watch scattering colour the sky and the Sun</h1>
+<div class="grid">
+  <div class="stage"><svg id="sv" viewBox="0 0 640 380" role="img" aria-label="Sky, Sun and the path of sunlight through the air"></svg></div>
+  <div class="panel">
+    <p class="lab"><label for="elev">Sun height above the horizon: <b id="r-el">60°</b></label></p>
+    <input type="range" id="elev" min="1" max="90" value="60" aria-label="Sun elevation in degrees">
+    <label class="tog"><input type="checkbox" id="noair"> No atmosphere (like the Moon)</label>
+    <table>
+      <tr><td>Air the light crosses</td><td class="v" id="r-m">–</td></tr>
+      <tr><td><span class="sw" style="background:#3c6fe0"></span>Blue reaching you directly</td><td class="v" id="r-b">–</td></tr>
+      <tr><td><span class="sw" style="background:#e04030"></span>Red reaching you directly</td><td class="v" id="r-r">–</td></tr>
+    </table>
+    <div class="note" id="note" aria-live="polite"></div>
+    <p class="fine">Simplified model: three colours (450, 550, 650 nm), Rayleigh scattering by air only (∝ 1/λ⁴), single scattering; dust, haze and clouds are left out.</p>
+  </div>
+</div>
+</div>
+<script>
+(function () {
+  "use strict";
+  var LAMBDA = [0.65, 0.55, 0.45];          /* µm: red, green, blue */
+  var el = 60, air = true;
+  /* Rayleigh optical depth of the whole atmosphere, sea level (a standard fit, λ in µm) */
+  function tau(l) { return 0.008569 * Math.pow(l, -4) * (1 + 0.0113 * Math.pow(l, -2) + 0.00013 * Math.pow(l, -4)); }
+  /* relative air mass (Kasten & Young 1989): how many times more air than straight overhead */
+  function airMass(h) { return 1 / (Math.sin(h * Math.PI / 180) + 0.50572 * Math.pow(h + 6.07995, -1.6364)); }
+  function model() {
+    var m = airMass(el), sun = [], sky = [], i;
+    for (i = 0; i < 3; i++) {
+      var t = air ? Math.exp(-tau(LAMBDA[i]) * m) : 1;
+      sun.push(t);
+      sky.push(air ? 1 - Math.exp(-tau(LAMBDA[i]) * Math.min(m, 3)) : 0);   /* light scattered into the sky we look up at */
+    }
+    return { m: m, sun: sun, sky: sky };
+  }
+  function rgb(c, k) {
+    var mx = Math.max(c[0], c[1], c[2]) || 1, s = k / mx;
+    return "rgb(" + Math.round(255 * Math.min(1, c[0] * s)) + "," + Math.round(255 * Math.min(1, c[1] * s)) + "," + Math.round(255 * Math.min(1, c[2] * s)) + ")";
+  }
+  function draw() {
+    var r = model(), W = 640, H = 380, gy = 330;
+    var skyTop = air ? rgb(r.sky, 0.95) : "#05060a", skyLow = air ? rgb([r.sky[0] + 0.35 * r.sun[0], r.sky[1] + 0.35 * r.sun[1], r.sky[2] + 0.35 * r.sun[2]], 0.98) : "#0b0c12";
+    if (air && el < 8) skyLow = rgb(r.sun, 0.95);
+    var ang = el * Math.PI / 180, sx = 320 - Math.cos(ang) * 250, sy = gy - Math.sin(ang) * 270;
+    var g = '<defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="' + skyTop + '"/><stop offset="1" stop-color="' + skyLow + '"/></linearGradient></defs>';
+    g += '<rect width="' + W + '" height="' + H + '" fill="url(#sky)"/>';
+    /* the atmosphere layer and the light path through it */
+    if (air) {
+      var ax = 320 - Math.cos(ang) * (60 / Math.max(Math.sin(ang), 0.06)), ay = gy - 60;
+      if (ax < 0) ax = 0;
+      g += '<line x1="0" y1="' + (gy - 60) + '" x2="' + W + '" y2="' + (gy - 60) + '" stroke="#ffffff" stroke-opacity="0.5" stroke-dasharray="6 6"/>';
+      g += '<text x="' + (W - 8) + '" y="' + (gy - 66) + '" text-anchor="end" font-size="12" fill="#ffffff" fill-opacity="0.85">top of the air (not to scale)</text>';
+      g += '<line x1="' + ax + '" y1="' + ay + '" x2="320" y2="' + (gy - 8) + '" stroke="' + rgb(r.sun, 1) + '" stroke-width="5" stroke-linecap="round"/>';
+      g += '<line x1="' + sx + '" y1="' + sy + '" x2="' + ax + '" y2="' + ay + '" stroke="#ffffff" stroke-width="3" stroke-dasharray="4 6"/>';
+    } else {
+      g += '<line x1="' + sx + '" y1="' + sy + '" x2="320" y2="' + (gy - 8) + '" stroke="#ffffff" stroke-width="3"/>';
+    }
+    g += '<circle cx="' + sx + '" cy="' + sy + '" r="26" fill="' + rgb(r.sun, 1) + '"/>';
+    g += '<rect x="0" y="' + gy + '" width="' + W + '" height="' + (H - gy) + '" fill="#3b4a3a"/>';
+    g += '<circle cx="320" cy="' + (gy - 14) + '" r="7" fill="#f2d2b0"/><rect x="314" y="' + (gy - 7) + '" width="12" height="7" fill="#f2d2b0"/>';
+    g += '<text x="320" y="' + (gy + 30) + '" text-anchor="middle" font-size="14" fill="#ffffff">you</text>';
+    document.getElementById("sv").innerHTML = g;
+    document.getElementById("r-el").textContent = el + "°";
+    document.getElementById("r-m").textContent = air ? r.m.toFixed(1) + "× overhead" : "none";
+    document.getElementById("r-b").textContent = Math.round(r.sun[2] * 100) + "%";
+    document.getElementById("r-r").textContent = Math.round(r.sun[0] * 100) + "%";
+    var n;
+    if (!air) n = "No air, no scattering: the sky is black and the Sun looks white.";
+    else if (el >= 30) n = "High Sun: short path. Air scatters blue (450 nm) about 4 times more than red (650 nm), so blue light comes at you from every part of the sky.";
+    else if (el >= 8) n = "Lower Sun: the light crosses more air, so more of its blue is scattered away. The Sun turns yellow.";
+    else n = "Near the horizon the light crosses " + Math.round(r.m) + " times more air: almost all the blue is scattered out, so red and orange reach you.";
+    document.getElementById("note").textContent = n;
+  }
+  var s = document.getElementById("elev");
+  s.oninput = function () { el = +s.value; draw(); };
+  document.getElementById("noair").onchange = function () { air = !this.checked; draw(); };
+  window.PX = {
+    setElevation: function (d) { el = Math.max(1, Math.min(90, d)); s.value = el; draw(); },
+    setAir: function (on) { air = !!on; document.getElementById("noair").checked = !air; draw(); },
+    state: function () { var r = model(); return { elevation: el, air: air, airMass: r.m, sun: r.sun.slice(), sky: r.sky.slice(), blueTransmission: r.sun[2], redTransmission: r.sun[0] }; }
+  };
+  draw();
+})();
+</script>
+</body>
+</html>

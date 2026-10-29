@@ -12,6 +12,12 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
                                         velocity for four paths over 10 s
      learn/equivalent-fractions/sim.html  LCM re-cut and the order of two
                                         fractions, negatives included
+     learn/rest-and-motion/sim.html     your position from the platform (moves 40 m)
+                                        and from your friend (fixed at −1.5 m)
+     learn/rational-numbers-on-number-line/sim.html  where p/q lands, its side
+                                        and the integers around it
+     learn/why-the-sky-is-blue/sim.html  air mass, 1/λ⁴ scattering, blue sky,
+                                        red low Sun, black sky without air
    --------------------------------------------------------------------------- */
 
 let n = 0, bad = 0;
@@ -79,7 +85,54 @@ const gcd = (a, b) => { a = Math.abs(a); b = Math.abs(b); while (b) [a, b] = [b,
       ok(`fractions ${tag}: verdict names the bigger fraction`, verdict.includes('−7/9 > −4/5'), verdict);
       const ov2 = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
       ok(`fractions ${tag}: no horizontal overflow`, ov2 <= 0, ov2);
-      ok(`both sims ${tag}: no console errors`, errs.length === 0, errs.join(' | '));
+
+      // ---- rest and motion: you start at −20 m and ride 4 m/s for 10 s; friend sits 1.5 m ahead
+      await page.goto(base + 'rest-and-motion/sim.html', { waitUntil: 'load' });
+      for (const [o, t, pos, ch, mov] of [['platform', 10, 20, 40, true], ['platform', 5, 0, 20, true], ['friend', 10, -1.5, 0, false], ['friend', 3, -1.5, 0, false]]) {
+        const s = await page.evaluate(v => { PX.setObserver(v[0]); PX.setTime(v[1]); return PX.state(); }, [o, t]);
+        ok(`rest ${o} t=${t} ${tag}: position ${pos} m, change ${ch} m, ${mov ? 'moving' : 'at rest'}`,
+          near(s.position, pos, 1e-9) && near(s.change, ch, 1e-9) && s.moving === mov, `${s.position} ${s.change} ${s.moving}`);
+      }
+      const rv = await page.$eval('#verdict', e => e.textContent);
+      ok(`rest ${tag}: friend view says AT REST`, rv.includes('AT REST'), rv);
+      await page.evaluate(() => PX.setObserver('platform'));
+      ok(`rest ${tag}: platform view says IN MOTION`, (await page.$eval('#verdict', e => e.textContent)).includes('IN MOTION'));
+      const ov3 = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
+      ok(`rest ${tag}: no horizontal overflow`, ov3 <= 0, ov3);
+
+      // ---- rational numbers on the number line
+      await page.goto(base + 'rational-numbers-on-number-line/sim.html', { waitUntil: 'load' });
+      for (const [p, q, lo, hi] of [[3, 4, 0, 1], [5, 3, 1, 2], [-1, 2, -1, 0], [11, 4, 2, 3], [-7, 3, -3, -2], [6, 3, 2, 2]]) {
+        const s = await page.evaluate(v => { PX.set(v[0], v[1]); PX.place(); return PX.state(); }, [p, q]);
+        ok(`number line ${p}/${q} ${tag}: between ${lo} and ${hi}, ${p < 0 ? 'left' : 'right'}, ${Math.abs(p)} parts`,
+          s.placed && near(s.value, p / q, 1e-12) && s.between[0] === lo && s.between[1] === hi && s.direction === (p < 0 ? 'left' : 'right') && s.parts === Math.abs(p),
+          JSON.stringify(s));
+      }
+      const nl = await page.$eval('#out', e => e.textContent);
+      ok(`number line ${tag}: 6/3 named as the integer 2 and equivalent to 2/1`, nl.includes('integer 2') && nl.includes('2/1'), nl);
+      await page.click('[data-try="5,3"]');
+      await page.waitForFunction(() => PX.state().placed, null, { timeout: 5000 });
+      ok(`number line ${tag}: Try 5/3 animates to the point`, (await page.$eval('#out', e => e.textContent)).includes('between 1 and 2'));
+      const ov4 = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
+      ok(`number line ${tag}: no horizontal overflow`, ov4 <= 0, ov4);
+
+      // ---- sky: independent Rayleigh check (λ⁻⁴ ratio, plane-parallel air mass at high Sun)
+      await page.goto(base + 'why-the-sky-is-blue/sim.html', { waitUntil: 'load' });
+      const hi = await page.evaluate(() => { PX.setAir(true); PX.setElevation(90); return PX.state(); });
+      ok(`sky 90° ${tag}: air mass 1, sky blue-dominant, Sun near white`,
+        near(hi.airMass, 1, 0.01) && hi.sky[2] > 3 * hi.sky[0] && Math.min.apply(null, hi.sun) > 0.75, JSON.stringify(hi));
+      const r = (0.65 / 0.45) ** 4;
+      ok(`sky ${tag}: blue scatters ≈ (650/450)⁴ = ${r.toFixed(2)} × red`, near(hi.sky[2] / hi.sky[0], r, 0.35), (hi.sky[2] / hi.sky[0]).toFixed(2));
+      const m30 = await page.evaluate(() => { PX.setElevation(30); return PX.state().airMass; });
+      ok(`sky 30° ${tag}: air mass ≈ 1/sin 30° = 2`, near(m30, 2, 0.02), m30);
+      const lo2 = await page.evaluate(() => { PX.setElevation(2); return PX.state(); });
+      ok(`sky 2° ${tag}: long path, red reaches you far more than blue`, lo2.airMass > 15 && lo2.redTransmission > 10 * lo2.blueTransmission, JSON.stringify(lo2));
+      const none = await page.evaluate(() => { PX.setAir(false); return PX.state(); });
+      ok(`sky no air ${tag}: black sky, white Sun`, none.sky.every(v => v === 0) && none.sun.every(v => v === 1));
+      ok(`sky no air ${tag}: note says the sky is black`, (await page.$eval('#note', e => e.textContent)).includes('black'));
+      const ov5 = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
+      ok(`sky ${tag}: no horizontal overflow`, ov5 <= 0, ov5);
+      ok(`all sims ${tag}: no console errors`, errs.length === 0, errs.join(' | '));
       await ctx.close();
     }
   } finally {

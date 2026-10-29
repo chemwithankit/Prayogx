@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="sim-id" content="LEARN-C9-MAT-RATIONAL-NUMBER-LINE-SIM">
+<title>Rational numbers on the number line · PrayogX Learn simulation</title>
+<style>
+:root{--bg:#f4f4f1;--card:#fcfcfb;--line:#d9d9d4;--ink:#0b0b0b;--mut:#52514e;--acc:#2a78d6;--pos:#2a78d6;--neg:#c62828;--part:#e08a1e}
+@media (prefers-color-scheme:dark){:root{--bg:#111110;--card:#1a1a19;--line:#34342f;--ink:#fff;--mut:#c3c2b7;--acc:#3987e5;--pos:#5aa2f0;--neg:#ef5350;--part:#f0a23a}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+.wrap{max-width:980px;margin:0 auto;padding:12px}
+h1{font-size:17px;margin:2px 0 8px}
+.top{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.frac{display:inline-flex;flex-direction:column;align-items:center;font-weight:800;font-size:34px;line-height:1.05;min-width:70px;color:var(--c,var(--pos))}
+.frac .bar{width:100%;height:3px;background:currentColor;margin:3px 0}
+.steps{display:grid;grid-template-columns:auto auto auto;gap:4px 6px;align-items:center;font-size:13px;color:var(--mut)}
+button{font:inherit;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:9px;padding:6px 12px;cursor:pointer;min-width:42px;min-height:42px}
+button.main{background:var(--acc);border-color:var(--acc);color:#fff;font-weight:650}
+.stage{margin-top:10px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:8px}
+svg{display:block;width:100%;height:auto}
+.out{margin-top:10px;padding:10px 12px;border-radius:10px;border:1px solid var(--line);background:var(--card);min-height:3em}
+.row{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;align-items:center}
+.small{font-size:13px;color:var(--mut)}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>Place p/q on the number line: cut, then count</h1>
+<div class="top">
+  <div class="frac" id="frac"><span id="fn">3</span><span class="bar"></span><span id="fd">4</span></div>
+  <div class="steps">numerator p<button type="button" id="p-" aria-label="Numerator down">−</button><button type="button" id="p+" aria-label="Numerator up">+</button>
+    denominator q<button type="button" id="q-" aria-label="Denominator down">−</button><button type="button" id="q+" aria-label="Denominator up">+</button></div>
+  <button type="button" class="main" id="go">Cut and count</button>
+</div>
+<div class="stage"><svg id="sv" viewBox="0 0 640 210" role="img" aria-label="Number line from minus 3 to 3"></svg></div>
+<div class="out" id="out" aria-live="polite"></div>
+<div class="row"><span class="small">Try:</span>
+  <button type="button" data-try="3,4">3/4</button><button type="button" data-try="5,3">5/3</button>
+  <button type="button" data-try="-1,2">−1/2</button><button type="button" data-try="11,4">11/4</button><button type="button" data-try="-7,3">−7/3</button></div>
+</div>
+<script>
+(function () {
+  "use strict";
+  var p = 3, q = 4, shown = 0, cut = false, anim = null;   /* shown = parts counted so far */
+  var still = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var MIN = -3, MAX = 3;
+  function cssv(n) { return getComputedStyle(document.documentElement).getPropertyValue(n).trim() || "#888"; }
+  function gcd(a, b) { a = Math.abs(a); b = Math.abs(b); while (b) { var t = a % b; a = b; b = t; } return a || 1; }
+  function clamp() { if (q < 1) q = 1; if (q > 8) q = 8; if (p > MAX * q) p = MAX * q; if (p < MIN * q) p = MIN * q; }
+  function fstr(n, d) { return (n < 0 ? "−" : "") + Math.abs(n) + "/" + d; }
+  function mixed(n, d) {
+    var s = n < 0 ? "−" : "", a = Math.abs(n), w = Math.floor(a / d), r = a % d;
+    if (!r) return s + w;
+    return s + (w ? w + " " : "") + r + "/" + d;
+  }
+  function draw() {
+    clamp();
+    var W = window.innerWidth < 560 ? 400 : 640, x0 = 22, x1 = W - 22, y = 120, nx = function (v) { return x0 + (v - MIN) / (MAX - MIN) * (x1 - x0); };
+    var ink = cssv("--ink"), mut = cssv("--mut"), part = cssv("--part"), col = p < 0 ? cssv("--neg") : cssv("--pos");
+    var g = '<line x1="' + x0 + '" y1="' + y + '" x2="' + x1 + '" y2="' + y + '" stroke="' + ink + '" stroke-width="3"/>', k, j;
+    if (cut) for (k = MIN; k < MAX; k++) for (j = 1; j < q; j++) {
+      var tx = nx(k + j / q);
+      g += '<line x1="' + tx + '" y1="' + (y - 9) + '" x2="' + tx + '" y2="' + (y + 9) + '" stroke="' + part + '" stroke-width="2"/>';
+    }
+    for (k = MIN; k <= MAX; k++) g += '<line x1="' + nx(k) + '" y1="' + (y - 16) + '" x2="' + nx(k) + '" y2="' + (y + 16) + '" stroke="' + ink + '" stroke-width="3"/>' +
+      '<text x="' + nx(k) + '" y="' + (y + 42) + '" font-size="20" text-anchor="middle" fill="' + ink + '">' + (k < 0 ? "−" + (-k) : k) + "</text>";
+    /* the hops: one arc per counted part */
+    var dir = p < 0 ? -1 : 1, i;
+    for (i = 0; i < shown; i++) {
+      var a = nx(dir * i / q), b = nx(dir * (i + 1) / q), m = (a + b) / 2;
+      g += '<path d="M' + a + " " + (y - 4) + " Q " + m + " " + (y - 46) + " " + b + " " + (y - 4) + '" fill="none" stroke="' + col + '" stroke-width="3"/>';
+    }
+    if (shown) g += '<text x="' + nx(dir * shown / q) + '" y="' + (y - 52) + '" font-size="15" text-anchor="middle" fill="' + col + '">' + shown + "</text>";
+    if (shown === Math.abs(p) && cut) {
+      g += '<circle cx="' + nx(p / q) + '" cy="' + y + '" r="10" fill="' + col + '" stroke="' + cssv("--card") + '" stroke-width="3"/>' +
+           '<text x="' + nx(p / q) + '" y="' + (y + 72) + '" font-size="22" font-weight="800" text-anchor="middle" fill="' + col + '">' + fstr(p, q) + "</text>";
+    }
+    var sv = document.getElementById("sv"); sv.setAttribute("viewBox", "0 0 " + W + " 210"); sv.innerHTML = g;
+    var fr = document.getElementById("frac");
+    fr.style.setProperty("--c", col);
+    document.getElementById("fn").textContent = (p < 0 ? "−" : "") + Math.abs(p);
+    document.getElementById("fd").textContent = q;
+    var out = document.getElementById("out"), v = p / q, lo = Math.floor(v), hi = Math.ceil(v), msg;
+    if (!cut) msg = "Press <b>Cut and count</b>: each unit is cut into <b>" + q + "</b> equal parts (the denominator), then <b>" + Math.abs(p) +
+      "</b> parts are counted from 0 (the numerator), " + (p < 0 ? "to the <b>left</b> because it is negative." : "to the <b>right</b>.");
+    else if (shown < Math.abs(p)) msg = "Counting " + shown + " of " + Math.abs(p) + " parts…";
+    else {
+      msg = "<b>" + fstr(p, q) + "</b> = " + mixed(p, q);
+      msg += lo === hi ? ", exactly the integer " + (lo < 0 ? "−" + (-lo) : lo) + "." : ", between <b>" + (lo < 0 ? "−" + (-lo) : lo) + "</b> and <b>" + (hi < 0 ? "−" + (-hi) : hi) + "</b>.";
+      var g2 = gcd(p, q);
+      if (g2 > 1) msg += " It lands on the same point as " + fstr(p / g2, q / g2) + " (equivalent fraction).";
+    }
+    out.innerHTML = msg;
+  }
+  function go() {
+    if (anim) { clearInterval(anim); anim = null; }
+    cut = true; shown = 0;
+    if (still || p === 0) { shown = Math.abs(p); draw(); return; }
+    draw();
+    anim = setInterval(function () { shown++; draw(); if (shown >= Math.abs(p)) { clearInterval(anim); anim = null; } }, 220);
+  }
+  function change(dp, dq) { return function () { if (anim) { clearInterval(anim); anim = null; } p += dp; q += dq; cut = false; shown = 0; draw(); }; }
+  document.getElementById("p-").onclick = change(-1, 0); document.getElementById("p+").onclick = change(1, 0);
+  document.getElementById("q-").onclick = change(0, -1); document.getElementById("q+").onclick = change(0, 1);
+  document.getElementById("go").onclick = go;
+  var tries = document.querySelectorAll("[data-try]");
+  for (var t = 0; t < tries.length; t++) tries[t].onclick = function () { var v = this.getAttribute("data-try").split(","); p = +v[0]; q = +v[1]; go(); };
+  if (window.matchMedia) { var mq = window.matchMedia("(prefers-color-scheme: dark)"); if (mq.addEventListener) mq.addEventListener("change", draw); }
+  window.addEventListener("resize", draw);
+  window.PX = {
+    set: function (np, nq) { if (anim) { clearInterval(anim); anim = null; } p = np; q = nq; cut = false; shown = 0; draw(); },
+    place: function () { if (anim) { clearInterval(anim); anim = null; } cut = true; shown = Math.abs(p); draw(); },
+    state: function () { var v = p / q; return { p: p, q: q, value: v, between: [Math.floor(v), Math.ceil(v)], parts: Math.abs(p), direction: p < 0 ? "left" : "right", placed: cut && shown === Math.abs(p) }; }
+  };
+  draw();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="sim-id" content="LEARN-C9-PHY-REST-AND-MOTION-SIM">
+<title>Rest and motion · PrayogX Learn simulation</title>
+<style>
+:root{--bg:#f4f4f1;--card:#fcfcfb;--line:#d9d9d4;--ink:#0b0b0b;--mut:#52514e;--acc:#2a78d6;--you:#d9822b;--fr:#16956a;--pl:#6f4fd6;--rest:#00743f;--move:#c62828}
+@media (prefers-color-scheme:dark){:root{--bg:#111110;--card:#1a1a19;--line:#34342f;--ink:#fff;--mut:#c3c2b7;--acc:#3987e5;--you:#f0a23a;--fr:#3fae7a;--pl:#a48bff;--rest:#3fae7a;--move:#ef5350}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+.wrap{max-width:980px;margin:0 auto;padding:12px}
+h1{font-size:17px;margin:2px 0 8px}
+.stage{background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+svg{display:block;width:100%;height:auto}
+.panel{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
+@media (max-width:640px){.panel{grid-template-columns:1fr}}
+.box{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 12px}
+.lab{font-size:13px;color:var(--mut);margin:0 0 6px}
+.seg{display:flex;gap:6px;flex-wrap:wrap}
+button{font:inherit;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:9px;padding:8px 12px;cursor:pointer;min-height:42px}
+button[aria-pressed="true"]{background:var(--acc);border-color:var(--acc);color:#fff}
+.row{display:flex;gap:8px;align-items:center;margin-top:8px}
+.row input{flex:1}
+table{width:100%;border-collapse:collapse;font-size:14px}
+td{padding:4px 2px;border-bottom:1px solid var(--line)}
+td.v{text-align:right;font-weight:700;font-variant-numeric:tabular-nums}
+.verdict{margin-top:8px;padding:8px 10px;border-radius:9px;font-weight:700}
+.verdict.rest{background:color-mix(in srgb,var(--rest) 14%,var(--card));color:var(--rest)}
+.verdict.move{background:color-mix(in srgb,var(--move) 12%,var(--card));color:var(--move)}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>Who is moving? It depends on who is watching</h1>
+<div class="stage"><svg id="sv" viewBox="0 0 640 300" role="img" aria-label="A train passing a platform, seen by the chosen observer"></svg></div>
+<div class="panel">
+  <div class="box">
+    <p class="lab">Watch from</p>
+    <div class="seg" role="group" aria-label="Observer">
+      <button type="button" data-obs="platform" id="o-platform">Person on the platform</button>
+      <button type="button" data-obs="friend" id="o-friend">Your friend in the train</button>
+    </div>
+    <div class="row"><button type="button" id="play">▶ Play</button><button type="button" id="reset">Reset</button></div>
+    <div class="row"><label for="time" class="lab" style="margin:0">time</label><input type="range" id="time" min="0" max="1000" value="0" aria-label="Time"></div>
+  </div>
+  <div class="box">
+    <p class="lab">Your position, measured from the observer</p>
+    <table><tr><td>Time</td><td class="v" id="r-t">0.0 s</td></tr>
+      <tr><td>Your position now</td><td class="v" id="r-x">–</td></tr>
+      <tr><td>Change since t = 0</td><td class="v" id="r-dx">–</td></tr></table>
+    <div class="verdict" id="verdict" aria-live="polite"></div>
+  </div>
+</div>
+</div>
+<script>
+(function () {
+  "use strict";
+  var T = 10, V = 4;                 /* trip of 10 s at 4 m/s */
+  var X0 = -20, SEAT = 1.5;          /* you start 20 m before the platform person; your friend sits 1.5 m ahead of you */
+  var obs = "platform", u = 0, playing = false, last = 0;
+  var still = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var svg = document.getElementById("sv"), slider = document.getElementById("time");
+  function cssv(n) { return getComputedStyle(document.documentElement).getPropertyValue(n).trim() || "#888"; }
+  function youX(t) { return X0 + V * t; }                 /* ground frame, metres */
+  function rel(t) { return obs === "platform" ? youX(t) - 0 : youX(t) - (youX(t) + SEAT); }   /* you minus observer */
+  function fmt(x) { return (x >= 0 ? "+" : "−") + Math.abs(x).toFixed(1) + " m"; }
+
+  function draw() {
+    var t = u * T, S = 9;           /* px per metre */
+    /* camera: the observer stays at the centre of the picture */
+    var camX = obs === "platform" ? 0 : youX(t) + SEAT;
+    var px = function (x) { return 320 + (x - camX) * S; };
+    var cMut = cssv("--mut"), cLine = cssv("--line"), cYou = cssv("--you"), cFr = cssv("--fr"), cPl = cssv("--pl");
+    var g = "";
+    /* ground, sleepers and trees move with the ground frame */
+    g += '<rect x="0" y="232" width="640" height="68" fill="' + cLine + '" opacity="0.6"/>';
+    for (var k = -60; k <= 60; k += 2) { var sx = px(k); if (sx > -20 && sx < 660) g += '<rect x="' + (sx - 3) + '" y="238" width="6" height="14" fill="' + cMut + '" opacity="0.5"/>'; }
+    g += '<line x1="0" y1="240" x2="640" y2="240" stroke="' + cMut + '" stroke-width="3"/>';
+    for (var tr = -50; tr <= 50; tr += 12) { var tx = px(tr); if (tx > -40 && tx < 680) g += '<rect x="' + (tx - 4) + '" y="150" width="8" height="40" fill="#8d6e63"/><circle cx="' + tx + '" cy="140" r="22" fill="#4caf50" opacity="0.8"/>'; }
+    /* platform and its person (at x = 0) */
+    var pX = px(0);
+    g += '<rect x="' + (pX - 60) + '" y="214" width="120" height="18" fill="' + cMut + '" opacity="0.7"/>';
+    g += '<circle cx="' + pX + '" cy="168" r="9" fill="' + cPl + '"/><rect x="' + (pX - 7) + '" y="177" width="14" height="37" rx="4" fill="' + cPl + '"/>';
+    g += '<text x="' + pX + '" y="152" text-anchor="middle" font-size="13" font-weight="700" fill="' + cPl + '">platform</text>';
+    /* the train (you are 6 m from its rear) */
+    var rear = youX(t) - 6, tx0 = px(rear), tw = 22 * S;
+    g += '<rect x="' + tx0 + '" y="160" width="' + tw + '" height="64" rx="12" fill="' + cssv("--acc") + '" opacity="0.9"/>';
+    for (var w = 1; w < 7; w++) g += '<rect x="' + (tx0 + w * 28 - 12) + '" y="170" width="20" height="18" rx="3" fill="#dcefff"/>';
+    g += '<circle cx="' + (tx0 + 30) + '" cy="228" r="9" fill="#222"/><circle cx="' + (tx0 + tw - 30) + '" cy="228" r="9" fill="#222"/>';
+    var yX = px(youX(t)), fX = px(youX(t) + SEAT);
+    g += '<circle cx="' + yX + '" cy="196" r="7" fill="' + cYou + '"/><rect x="' + (yX - 6) + '" y="203" width="12" height="16" rx="3" fill="' + cYou + '"/>';
+    g += '<circle cx="' + fX + '" cy="196" r="7" fill="' + cFr + '"/><rect x="' + (fX - 6) + '" y="203" width="12" height="16" rx="3" fill="' + cFr + '"/>';
+    g += '<text x="' + yX + '" y="276" text-anchor="middle" font-size="13" font-weight="700" fill="' + cYou + '">you</text>';
+    g += '<text x="' + fX + '" y="292" text-anchor="middle" font-size="13" font-weight="700" fill="' + cFr + '">friend</text>';
+    /* the observer's eye marker */
+    g += '<text x="320" y="24" text-anchor="middle" font-size="14" fill="' + cMut + '">camera fixed to: ' + (obs === "platform" ? "the platform" : "your friend in the train") + '</text>';
+    svg.innerHTML = g;
+
+    var x = rel(t), dx = rel(t) - rel(0);
+    document.getElementById("r-t").textContent = t.toFixed(1) + " s";
+    document.getElementById("r-x").textContent = fmt(x);
+    document.getElementById("r-dx").textContent = fmt(dx);
+    var v = document.getElementById("verdict"), moving = Math.abs(rel(T) - rel(0)) > 1e-9;
+    v.className = "verdict " + (moving ? "move" : "rest");
+    v.textContent = moving ? "Your position keeps changing: you are IN MOTION relative to the platform."
+                           : "Your position never changes: you are AT REST relative to your friend.";
+    slider.value = Math.round(u * 1000);
+    var bs = document.querySelectorAll("[data-obs]");
+    for (var i = 0; i < bs.length; i++) bs[i].setAttribute("aria-pressed", bs[i].getAttribute("data-obs") === obs ? "true" : "false");
+    document.getElementById("play").textContent = playing ? "❚❚ Pause" : "▶ Play";
+  }
+  function tick(ts) {
+    if (!playing) return;
+    if (last) u = Math.min(1, u + (ts - last) / 1000 / T);
+    last = ts; if (u >= 1) playing = false;
+    draw(); if (playing) requestAnimationFrame(tick);
+  }
+  document.getElementById("play").onclick = function () {
+    if (playing) { playing = false; draw(); return; }
+    if (u >= 1) u = 0;
+    if (still) { u = 1; draw(); return; }
+    playing = true; last = 0; requestAnimationFrame(tick);
+  };
+  document.getElementById("reset").onclick = function () { playing = false; u = 0; draw(); };
+  slider.oninput = function () { playing = false; u = slider.value / 1000; draw(); };
+  var bs = document.querySelectorAll("[data-obs]");
+  for (var j = 0; j < bs.length; j++) bs[j].onclick = function () { obs = this.getAttribute("data-obs"); draw(); };
+  if (window.matchMedia) { var mq = window.matchMedia("(prefers-color-scheme: dark)"); if (mq.addEventListener) mq.addEventListener("change", draw); }
+  window.PX = {
+    setObserver: function (o) { if (o === "platform" || o === "friend") { obs = o; draw(); } },
+    setTime: function (s) { playing = false; u = Math.max(0, Math.min(1, s / T)); draw(); },
+    state: function () { var t = u * T; return { observer: obs, t: t, position: rel(t), change: rel(t) - rel(0), moving: Math.abs(rel(T) - rel(0)) > 1e-9 }; }
+  };
+  draw();
+})();
+</script>
+</body>
+</html>
