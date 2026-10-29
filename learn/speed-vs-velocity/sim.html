@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="sim-id" content="LEARN-C9-PHY-SPEED-VS-VELOCITY-SIM">
+<title>Speed vs Velocity · PrayogX Learn simulation</title>
+<style>
+:root{--bg:#f4f4f1;--card:#fcfcfb;--line:#d9d9d4;--ink:#0b0b0b;--mut:#52514e;--acc:#2a78d6;--path:#e08a1e;--vel:#6f4fd6;--disp:#6f4fd6;--good:#00743f}
+@media (prefers-color-scheme:dark){:root{--bg:#111110;--card:#1a1a19;--line:#34342f;--ink:#fff;--mut:#c3c2b7;--acc:#3987e5;--path:#f0a23a;--vel:#a48bff;--disp:#a48bff;--good:#3fae7a}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+.wrap{max-width:980px;margin:0 auto;padding:12px}
+h1{font-size:17px;margin:2px 0 8px}
+.grid{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:12px}
+@media (max-width:720px){.grid{grid-template-columns:minmax(0,1fr)}}
+.stage{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:6px}
+svg{display:block;width:100%;height:auto;touch-action:none}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px}
+.paths{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:10px}
+button{font:inherit;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:9px;padding:8px 10px;cursor:pointer;min-height:40px}
+button[aria-pressed="true"]{border-color:var(--acc);background:var(--acc);color:#fff}
+.row{display:flex;gap:6px;align-items:center;margin:8px 0}
+.row input{flex:1}
+.ro{display:grid;grid-template-columns:auto 1fr;gap:4px 10px;font-size:14px;margin-top:8px}
+.ro dt{color:var(--mut)}
+.ro dd{margin:0;font-weight:650;font-variant-numeric:tabular-nums}
+.ro .p{color:var(--path)} .ro .v{color:var(--vel)}
+.note{margin-top:10px;padding:8px 10px;border-radius:9px;background:var(--bg);border:1px solid var(--line);font-size:13.5px;min-height:3.2em}
+.legend{display:flex;flex-wrap:wrap;gap:12px;font-size:12.5px;color:var(--mut);margin:6px 4px 2px}
+.sw{display:inline-block;width:14px;height:4px;border-radius:2px;vertical-align:middle;margin-right:5px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>Speed vs Velocity: move the runner, compare the numbers</h1>
+<div class="grid">
+  <div class="stage">
+    <svg id="sv" viewBox="0 0 600 420" role="img" aria-label="Path, runner, displacement and velocity arrows"></svg>
+    <div class="legend"><span><span class="sw" style="background:var(--path)"></span>path covered (distance)</span>
+      <span><span class="sw" style="background:var(--disp)"></span>displacement (start → now)</span>
+      <span><span class="sw" style="background:var(--good)"></span>velocity right now</span></div>
+  </div>
+  <div class="panel">
+    <div class="paths" role="group" aria-label="Choose a path">
+      <button type="button" data-path="straight" id="p-straight">Straight</button>
+      <button type="button" data-path="back" id="p-back">There and back</button>
+      <button type="button" data-path="zigzag" id="p-zigzag">Zig-zag</button>
+      <button type="button" data-path="circle" id="p-circle">Circle</button>
+    </div>
+    <div class="row"><button type="button" id="play">▶ Play</button><button type="button" id="reset">Reset</button></div>
+    <div class="row"><label for="time" style="font-size:13px;color:var(--mut)">time</label><input type="range" id="time" min="0" max="1000" value="0" aria-label="Time"></div>
+    <dl class="ro">
+      <dt>Time</dt><dd id="r-t">0.0 s</dd>
+      <dt>Distance</dt><dd class="p" id="r-d">0.0 m</dd>
+      <dt>Displacement</dt><dd class="v" id="r-x">0.0 m</dd>
+      <dt>Average speed</dt><dd class="p" id="r-as">–</dd>
+      <dt>Average velocity</dt><dd class="v" id="r-av">–</dd>
+      <dt>Speed now</dt><dd id="r-s">–</dd>
+    </dl>
+    <div class="note" id="note" aria-live="polite"></div>
+  </div>
+</div>
+</div>
+<script>
+(function () {
+  "use strict";
+  var T = 10;                       /* every trip lasts 10 s, at a constant speed */
+  var SC = 10;                      /* px per metre */
+  var O = { x: 100, y: 300 };       /* start point in px */
+  /* each path: a list of points in metres (x east, y north); the runner moves at constant speed along it */
+  var PATHS = {
+    straight: { pts: [[0, 0], [40, 0]], name: "Straight" },
+    back: { pts: [[0, 0], [20, 0], [0, 0]], name: "There and back" },
+    zigzag: { pts: [[0, 0], [10, 10], [20, 0], [30, 10], [40, 0]], name: "Zig-zag" },
+    circle: { pts: circlePts(), name: "Circle" }
+  };
+  function circlePts() {
+    var out = [], n = 120, R = 10, i, a;
+    for (i = 0; i <= n; i++) { a = -Math.PI / 2 + (2 * Math.PI * i) / n; out.push([20 + R * Math.cos(a), 10 + R * Math.sin(a)]); }
+    return out;          /* starts at the bottom of a circle centred (20, 10), one full lap */
+  }
+  function lens(pts) { var L = [0], i; for (i = 1; i < pts.length; i++) L.push(L[i - 1] + hyp(pts[i][0] - pts[i - 1][0], pts[i][1] - pts[i - 1][1])); return L; }
+  function hyp(a, b) { return Math.sqrt(a * a + b * b); }
+  var cur = "straight", u = 0, playing = false, last = 0;
+  var still = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var svg = document.getElementById("sv"), slider = document.getElementById("time");
+
+  function at(path, s) {                /* position and heading at arc length s */
+    var P = path.pts, L = path.L, i;
+    for (i = 1; i < P.length; i++) if (s <= L[i] || i === P.length - 1) break;
+    var seg = L[i] - L[i - 1] || 1, f = Math.max(0, Math.min(1, (s - L[i - 1]) / seg));
+    return { x: P[i - 1][0] + f * (P[i][0] - P[i - 1][0]), y: P[i - 1][1] + f * (P[i][1] - P[i - 1][1]),
+             hx: (P[i][0] - P[i - 1][0]) / seg, hy: (P[i][1] - P[i - 1][1]) / seg, i: i };
+  }
+  function px(p) { return [O.x + p[0] * SC, O.y - p[1] * SC]; }
+  function dir(dx, dy) {
+    if (hyp(dx, dy) < 1e-6) return "";
+    var a = Math.atan2(dy, dx) * 180 / Math.PI, n = ["east", "north-east", "north", "north-west", "west", "south-west", "south", "south-east"];
+    return n[(Math.round(a / 45) + 8) % 8];
+  }
+  function arrow(x1, y1, x2, y2, col, w) {
+    var L = hyp(x2 - x1, y2 - y1);
+    if (L < 2) return "";
+    var ux = (x2 - x1) / L, uy = (y2 - y1) / L, h = 12;
+    return '<line x1="' + x1 + '" y1="' + y1 + '" x2="' + (x2 - ux * h * 0.8) + '" y2="' + (y2 - uy * h * 0.8) + '" stroke="' + col + '" stroke-width="' + w + '" stroke-linecap="round"/>' +
+      '<polygon points="' + x2 + "," + y2 + " " + (x2 - ux * h - uy * h * 0.55) + "," + (y2 - uy * h + ux * h * 0.55) + " " + (x2 - ux * h + uy * h * 0.55) + "," + (y2 - uy * h - ux * h * 0.55) + '" fill="' + col + '"/>';
+  }
+  function cssv(n) { return getComputedStyle(document.documentElement).getPropertyValue(n).trim() || "#888"; }
+
+  function draw() {
+    var path = PATHS[cur], total = path.L[path.L.length - 1], t = u * T, s = u * total;
+    var p = at(path, s), sp = total / T, i, d = "";
+    var cPath = cssv("--path"), cVel = cssv("--vel"), cGood = cssv("--good"), cLine = cssv("--line"), cMut = cssv("--mut");
+    var g = "";
+    for (i = 0; i <= 50; i += 10) {     /* metre grid */
+      g += '<line x1="' + (O.x + i * SC) + '" y1="40" x2="' + (O.x + i * SC) + '" y2="' + (O.y + 40) + '" stroke="' + cLine + '" stroke-width="1"/>';
+    }
+    for (i = -10; i <= 20; i += 10) g += '<line x1="40" y1="' + (O.y - i * SC) + '" x2="580" y2="' + (O.y - i * SC) + '" stroke="' + cLine + '" stroke-width="1"/>';
+    g += '<text x="' + (O.x + 400) + '" y="' + (O.y + 58) + '" font-size="17" fill="' + cMut + '" text-anchor="middle">40 m</text>' +
+      '<text x="590" y="30" font-size="17" text-anchor="end" fill="' + cMut + '">N ↑   E →</text>';
+    /* full path faint, covered part bold */
+    for (i = 0; i < path.pts.length; i++) d += (i ? " L" : "M") + px(path.pts[i]).join(" ");
+    g += '<path d="' + d + '" fill="none" stroke="' + cPath + '" stroke-opacity="0.25" stroke-width="5" stroke-linejoin="round"/>';
+    var dc = "M" + px(path.pts[0]).join(" ");
+    for (i = 1; i < p.i; i++) dc += " L" + px(path.pts[i]).join(" ");
+    dc += " L" + px([p.x, p.y]).join(" ");
+    g += '<path d="' + dc + '" fill="none" stroke="' + cPath + '" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>';
+    var a = px(path.pts[0]), b = px([p.x, p.y]);
+    g += '<circle cx="' + a[0] + '" cy="' + a[1] + '" r="6" fill="' + cMut + '"/><text x="' + (a[0] - 6) + '" y="' + (a[1] + 24) + '" font-size="17" fill="' + cMut + '">start</text>';
+    g += arrow(a[0], a[1], b[0], b[1], cVel, 5);
+    if (u > 0 && u < 1) g += arrow(b[0], b[1], b[0] + p.hx * 55, b[1] - p.hy * 55, cGood, 4);
+    g += '<circle cx="' + b[0] + '" cy="' + b[1] + '" r="11" fill="' + cssv("--acc") + '" stroke="#fff" stroke-width="3"/>';
+    svg.innerHTML = g;
+
+    var dx = p.x - path.pts[0][0], dy = p.y - path.pts[0][1], disp = hyp(dx, dy);
+    document.getElementById("r-t").textContent = t.toFixed(1) + " s";
+    document.getElementById("r-d").textContent = s.toFixed(1) + " m";
+    document.getElementById("r-x").textContent = disp.toFixed(1) + " m" + (disp > 0.05 ? " " + dir(dx, dy) : "");
+    document.getElementById("r-as").textContent = t > 0 ? (s / t).toFixed(2) + " m/s" : "–";
+    document.getElementById("r-av").textContent = t > 0 ? (disp / t).toFixed(2) + " m/s" + (disp > 0.05 ? " " + dir(dx, dy) : "") : "–";
+    document.getElementById("r-s").textContent = u > 0 && u < 1 ? sp.toFixed(2) + " m/s, heading " + dir(p.hx, p.hy) : (u >= 1 ? "stopped" : sp.toFixed(2) + " m/s when moving");
+    var n = "";
+    if (u >= 1) {
+      if (cur === "straight") n = "Straight line, one direction: distance = displacement, so average speed = average velocity.";
+      else if (cur === "back") n = "Back at the start: distance 40 m but displacement 0, so average velocity is 0 even though average speed is 4 m/s.";
+      else if (cur === "zigzag") n = "The zig-zag covers more path than the straight arrow, so average speed is bigger than average velocity.";
+      else n = "One full lap: speed stayed the same all the way, but the velocity arrow kept turning, and the average velocity for the lap is 0.";
+    } else if (u > 0) n = cur === "circle" ? "Watch the green arrow: same length (same speed), new direction every moment, so the velocity is changing." :
+      "Orange = path covered (distance). Purple = straight arrow from start (displacement).";
+    else n = "Press Play or drag the time slider.";
+    document.getElementById("note").textContent = n;
+    slider.value = Math.round(u * 1000);
+    var bs = document.querySelectorAll("[data-path]");
+    for (i = 0; i < bs.length; i++) bs[i].setAttribute("aria-pressed", bs[i].getAttribute("data-path") === cur ? "true" : "false");
+    document.getElementById("play").textContent = playing ? "❚❚ Pause" : "▶ Play";
+  }
+  for (var k in PATHS) if (PATHS.hasOwnProperty(k)) PATHS[k].L = lens(PATHS[k].pts);
+
+  function tick(ts) {
+    if (!playing) return;
+    if (last) u = Math.min(1, u + (ts - last) / 1000 / T);
+    last = ts;
+    if (u >= 1) playing = false;
+    draw();
+    if (playing) requestAnimationFrame(tick);
+  }
+  function play() {
+    if (playing) { playing = false; draw(); return; }
+    if (u >= 1) u = 0;
+    if (still) { u = 1; draw(); return; }    /* reduced motion: jump to the end of the trip */
+    playing = true; last = 0; requestAnimationFrame(tick);
+  }
+  document.getElementById("play").addEventListener("click", play);
+  document.getElementById("reset").addEventListener("click", function () { playing = false; u = 0; draw(); });
+  slider.addEventListener("input", function () { playing = false; u = slider.value / 1000; draw(); });
+  var bs = document.querySelectorAll("[data-path]");
+  for (var j = 0; j < bs.length; j++) bs[j].addEventListener("click", function () { playing = false; cur = this.getAttribute("data-path"); u = 0; draw(); });
+  if (window.matchMedia) { var mq = window.matchMedia("(prefers-color-scheme: dark)"); if (mq.addEventListener) mq.addEventListener("change", draw); }
+
+  window.PX = {
+    setPath: function (n) { if (PATHS[n]) { cur = n; u = 0; playing = false; draw(); } },
+    setTime: function (sec) { playing = false; u = Math.max(0, Math.min(1, sec / T)); draw(); },
+    state: function () {
+      var path = PATHS[cur], total = path.L[path.L.length - 1], p = at(path, u * total);
+      var disp = hyp(p.x - path.pts[0][0], p.y - path.pts[0][1]), t = u * T;
+      return { path: cur, t: t, distance: u * total, displacement: disp, avgSpeed: t ? u * total / t : null, avgVelocity: t ? disp / t : null, speed: total / T };
+    }
+  };
+  draw();
+})();
+</script>
+</body>
+</html>

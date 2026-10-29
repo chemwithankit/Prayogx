@@ -216,6 +216,10 @@ def stub_pages(published):
         made += 1
 
     urls = ["%s/" % SITE_URL] + ["%s/s/%s/" % (SITE_URL, s["id"]) for s in published]
+    # PrayogX Learn topic pages (tools/build_learn.py), ready ones only
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    from build_learn import learn_urls
+    urls += learn_urls()
     lastmod = max([s.get("updatedAt", "") for s in published] or [""])
     body = "".join(
         "<url><loc>%s</loc>%s</url>" % (esc(u), "<lastmod>%s</lastmod>" % esc(lastmod) if lastmod else "")

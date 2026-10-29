@@ -1,0 +1,192 @@
+{
+ "id": "LEARN-C9-PHY-SPEED-VS-VELOCITY",
+ "slug": "speed-vs-velocity",
+ "status": "ready",
+ "class": 9,
+ "subject": "Physics",
+ "chapter": "Motion",
+ "topic": "Speed versus velocity",
+ "title": "Speed vs Velocity",
+ "series": 11,
+ "studioJob": "speed-velocity",
+ "reelId": "STUDIO-SPEED-VELOCITY",
+ "summary": "Two cars at the same 60 km/h can have different velocities. Speed tells how fast; velocity also tells which way.",
+ "video": {
+  "youtubeId": "0hAzgJ0VDVc",
+  "instagram": "https://www.instagram.com/reel/DfCuvZuExzh/"
+ },
+ "notes": {
+  "pdf": "notes.pdf",
+  "title": "03 – Speed versus Velocity",
+  "driveDoc": "1kNX7OF-RuGOqNY-dewAwE2Sug3w3L-zVFPRbk19JGGs"
+ },
+ "keyPoints": [
+  "**Speed = distance ÷ time**: a scalar (no direction).",
+  "**Velocity = displacement ÷ time**: a vector (has direction).",
+  "Same speed, opposite directions → **different velocities**.",
+  "Constant speed on a circle → **changing velocity** (direction changes).",
+  "SI unit of both: **m/s**; 1 km/h = 5/18 m/s."
+ ],
+ "sections": [
+  {
+   "h": "The idea in one minute",
+   "blocks": [
+    {
+     "p": "Two cars on a highway both read **60 km/h**. One heads east, the other west. Their **speed** is the same, but their **velocity** is not, because velocity includes the **direction** of motion."
+    },
+    {
+     "img": "img/sv_cars.png",
+     "alt": "Two cars at 60 km/h, one going east and one going west",
+     "caption": "Same speed, opposite directions: different velocities."
+    }
+   ]
+  },
+  {
+   "h": "Distance and displacement come first",
+   "blocks": [
+    {
+     "p": "**Distance** is the length of the actual path. **Displacement** is the straight arrow from start to finish, with a direction. Speed is built on distance; velocity is built on displacement."
+    },
+    {
+     "img": "img/sv_path.png",
+     "alt": "A wiggly path from A to B with a straight displacement arrow",
+     "caption": "Orange: the path (distance). Purple: the displacement."
+    },
+    {
+     "formula": "Speed = distance ÷ time      Velocity = displacement ÷ time"
+    }
+   ]
+  },
+  {
+   "h": "The twist: constant speed, changing velocity",
+   "blocks": [
+    {
+     "p": "A car going round a circular track at a steady 60 km/h never changes its **speed**, but its **direction** changes at every moment, so its **velocity keeps changing**. This is uniform circular motion, an accelerated motion."
+    },
+    {
+     "img": "img/sv_circle.png",
+     "alt": "Velocity arrows tangent to a circle at four points",
+     "caption": "Velocity is always along the tangent; its direction keeps turning."
+    }
+   ]
+  },
+  {
+   "h": "Speed vs velocity at a glance",
+   "blocks": [
+    {
+     "table": {
+      "head": [
+       "Point",
+       "Speed",
+       "Velocity"
+      ],
+      "rows": [
+       [
+        "Formula",
+        "Distance ÷ time",
+        "Displacement ÷ time"
+       ],
+       [
+        "Quantity",
+        "Scalar",
+        "Vector"
+       ],
+       [
+        "Direction",
+        "Not needed",
+        "Must be stated"
+       ],
+       [
+        "Can be negative?",
+        "No",
+        "Yes"
+       ],
+       [
+        "Round trip average",
+        "Non-zero",
+        "Zero"
+       ],
+       [
+        "SI unit",
+        "m/s",
+        "m/s"
+       ]
+      ]
+     }
+    }
+   ]
+  }
+ ],
+ "quiz": [
+  {
+   "q": "Which of these is a vector quantity?",
+   "options": [
+    "Speed",
+    "Distance",
+    "Velocity",
+    "Time"
+   ],
+   "answer": 2,
+   "explain": "Velocity has both size and direction, so it is a vector. Speed, distance and time have size only."
+  },
+  {
+   "q": "Two buses both move at 40 km/h, one north and one south. Which statement is true?",
+   "options": [
+    "Same speed and same velocity",
+    "Same speed, different velocity",
+    "Different speed, same velocity",
+    "Different speed and different velocity"
+   ],
+   "answer": 1,
+   "explain": "The speeds are equal (40 km/h), but the directions are opposite, so the velocities are different."
+  },
+  {
+   "q": "A car goes round a circular track at a constant 60 km/h. Its velocity:",
+   "options": [
+    "stays constant",
+    "keeps changing because its direction changes",
+    "is zero",
+    "equals its speed at every moment, so it does not change"
+   ],
+   "answer": 1,
+   "explain": "The size stays 60 km/h, but the direction changes all the time, so the velocity changes. That is uniform circular motion."
+  },
+  {
+   "q": "A girl walks 30 m east and then 30 m back west in 20 s. Her average velocity is:",
+   "options": [
+    "3 m/s",
+    "1.5 m/s",
+    "0 m/s",
+    "6 m/s"
+   ],
+   "answer": 2,
+   "explain": "She ends where she started, so her displacement is 0 and her average velocity is 0 m/s. (Her average speed is 60 m ÷ 20 s = 3 m/s.)"
+  },
+  {
+   "q": "72 km/h is equal to:",
+   "options": [
+    "20 m/s",
+    "72 m/s",
+    "7.2 m/s",
+    "259 m/s"
+   ],
+   "answer": 0,
+   "explain": "Multiply by 5/18: 72 × 5/18 = 20 m/s."
+  }
+ ],
+ "simulation": {
+  "decision": "REQUIRED",
+  "status": "pass",
+  "path": "sim.html",
+  "reason": "Students benefit from moving an object along different paths and watching distance vs displacement, and speed vs velocity, diverge; the circular track shows the velocity arrow turning at constant speed - cause and effect that a fixed video cannot let them test.",
+  "objective": "See when speed and velocity agree, when they differ, and why constant speed on a circle still means changing velocity.",
+  "instructions": [
+   "Pick a path: straight, there-and-back, zig-zag or circle.",
+   "Press Play (or drag the time slider) and watch the distance and the displacement arrow.",
+   "Compare the average speed and the average velocity readouts.",
+   "On the circle, watch the purple velocity arrow turn while the speed stays the same."
+  ],
+  "qa": "tests/learn_sims.js 102/102 (2026-10-29)"
+ },
+ "related": []
+}

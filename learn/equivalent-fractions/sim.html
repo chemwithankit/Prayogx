@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="sim-id" content="LEARN-C9-MAT-EQUIVALENT-FRACTIONS-SIM">
+<title>Compare fractions · PrayogX Learn simulation</title>
+<style>
+:root{--bg:#f4f4f1;--card:#fcfcfb;--line:#d9d9d4;--ink:#0b0b0b;--mut:#52514e;--acc:#2a78d6;--a:#d9822b;--b:#6f4fd6;--good:#00743f;--neg:#c62828;--empty:#ececea}
+@media (prefers-color-scheme:dark){:root{--bg:#111110;--card:#1a1a19;--line:#34342f;--ink:#fff;--mut:#c3c2b7;--acc:#3987e5;--a:#f0a23a;--b:#a48bff;--good:#3fae7a;--neg:#ef5350;--empty:#2a2a28}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+.wrap{max-width:980px;margin:0 auto;padding:12px}
+h1{font-size:17px;margin:2px 0 8px}
+.pickers{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media (max-width:560px){.pickers{grid-template-columns:1fr}}
+.pick{background:var(--card);border:1px solid var(--line);border-top:4px solid var(--c);border-radius:12px;padding:10px 12px;display:flex;align-items:center;gap:12px}
+.frac{display:inline-flex;flex-direction:column;align-items:center;font-weight:800;font-size:28px;line-height:1.05;min-width:64px;color:var(--c)}
+.frac .bar{width:100%;height:3px;background:var(--c);margin:3px 0}
+.steps{display:grid;grid-template-columns:auto auto auto;gap:4px 6px;align-items:center;font-size:13px;color:var(--mut)}
+button{font:inherit;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:9px;padding:6px 10px;cursor:pointer;min-width:40px;min-height:38px}
+button.main{background:var(--acc);border-color:var(--acc);color:#fff;font-weight:650}
+.stage{margin-top:10px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px}
+svg{display:block;width:100%;height:auto}
+.verdict{margin-top:10px;padding:10px 12px;border-radius:10px;border:1px solid var(--line);background:var(--bg);font-size:15px;min-height:3em}
+.verdict b{font-size:17px}
+.row{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;align-items:center}
+.small{font-size:13px;color:var(--mut)}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>Which fraction is bigger? Cut both into the same pieces</h1>
+<div class="pickers">
+  <div class="pick" style="--c:var(--a)">
+    <div class="frac" id="fa"><span id="fa-n">3</span><span class="bar"></span><span id="fa-d">4</span></div>
+    <div class="steps">numerator<button type="button" id="an-" aria-label="First numerator down">−</button><button type="button" id="an+" aria-label="First numerator up">+</button>
+      denominator<button type="button" id="ad-" aria-label="First denominator down">−</button><button type="button" id="ad+" aria-label="First denominator up">+</button></div>
+  </div>
+  <div class="pick" style="--c:var(--b)">
+    <div class="frac" id="fb"><span id="fb-n">5</span><span class="bar"></span><span id="fb-d">6</span></div>
+    <div class="steps">numerator<button type="button" id="bn-" aria-label="Second numerator down">−</button><button type="button" id="bn+" aria-label="Second numerator up">+</button>
+      denominator<button type="button" id="bd-" aria-label="Second denominator down">−</button><button type="button" id="bd+" aria-label="Second denominator up">+</button></div>
+  </div>
+</div>
+<div class="row"><button type="button" class="main" id="cut">Same pieces (LCM)</button><button type="button" id="uncut">Original pieces</button>
+  <span class="small">Fractions from −1 to 1. A negative fraction is shaded red and sits left of 0.</span></div>
+<div class="stage"><svg id="sv" viewBox="0 0 640 330" role="img" aria-label="Fraction bars and number line"></svg></div>
+<div class="verdict" id="verdict" aria-live="polite"></div>
+<div class="row"><span class="small">Try:</span>
+  <button type="button" data-try="1,2,4,8">1/2 vs 4/8</button><button type="button" data-try="3,4,5,6">3/4 vs 5/6</button>
+  <button type="button" data-try="-3,4,-5,6">−3/4 vs −5/6</button><button type="button" data-try="-3,5,-6,10">−3/5 vs −6/10</button></div>
+</div>
+<script>
+(function () {
+  "use strict";
+  var A = { n: 3, d: 4 }, B = { n: 5, d: 6 }, cut = false;
+  var MAXD = 12;
+  function gcd(a, b) { a = Math.abs(a); b = Math.abs(b); while (b) { var t = a % b; a = b; b = t; } return a || 1; }
+  function lcm(a, b) { return a / gcd(a, b) * b; }
+  function cssv(n) { return getComputedStyle(document.documentElement).getPropertyValue(n).trim() || "#888"; }
+  function fstr(f) { return (f.n < 0 ? "−" : "") + Math.abs(f.n) + "/" + f.d; }
+  function clamp(f) { if (f.d < 1) f.d = 1; if (f.d > MAXD) f.d = MAXD; if (f.n > f.d) f.n = f.d; if (f.n < -f.d) f.n = -f.d; }
+
+  var VW = 640;   /* drawing width: 640 on wide screens, 420 on phones so the labels stay readable */
+  function bar(y, f, parts, colVar, label) {
+    var x0 = VW < 640 ? 120 : 150, W = VW - x0 - 20, H = 50, k = Math.abs(f.n) * parts / f.d, i, g = "";
+    var col = f.n < 0 ? cssv("--neg") : cssv(colVar), empty = cssv("--empty"), line = cssv("--line"), ink = cssv("--ink");
+    for (i = 0; i < parts; i++) {
+      g += '<rect x="' + (x0 + i * W / parts) + '" y="' + y + '" width="' + (W / parts) + '" height="' + H + '" fill="' + (i < k ? col : empty) + '" stroke="' + line + '" stroke-width="2"/>';
+    }
+    g += '<rect x="' + x0 + '" y="' + y + '" width="' + W + '" height="' + H + '" fill="none" stroke="' + ink + '" stroke-width="2"/>';
+    g += '<text x="16" y="' + (y + 34) + '" font-size="30" font-weight="800" fill="' + cssv(colVar) + '">' + label + "</text>";
+    return g;
+  }
+  function draw() {
+    var svg = document.getElementById("sv");
+    VW = (svg.clientWidth || 640) < 520 ? 420 : 640;
+    svg.setAttribute("viewBox", "0 0 " + VW + " 330");
+    clamp(A); clamp(B);
+    var L = lcm(A.d, B.d), pa = cut ? L : A.d, pb = cut ? L : B.d, ink = cssv("--ink"), mut = cssv("--mut");
+    var la = cut ? fstr({ n: A.n * L / A.d, d: L }) : fstr(A), lb = cut ? fstr({ n: B.n * L / B.d, d: L }) : fstr(B);
+    var g = bar(20, A, pa, "--a", la) + bar(100, B, pb, "--b", lb);
+    g += '<text x="' + (VW / 2) + '" y="176" font-size="15" text-anchor="middle" fill="' + mut + '">' + (VW < 640 ? "bars = size · red = negative" : "Bars show the size of each part · red = negative (left of 0 on the line)") + "</text>";
+    /* number line from -1 to 1 */
+    var y = 250, x0 = 40, x1 = VW - 40, nx = function (v) { return x0 + (v + 1) / 2 * (x1 - x0); }, i;
+    g += '<line x1="' + x0 + '" y1="' + y + '" x2="' + x1 + '" y2="' + y + '" stroke="' + ink + '" stroke-width="3"/>';
+    for (i = -1; i <= 1; i += 0.5) g += '<line x1="' + nx(i) + '" y1="' + (y - 10) + '" x2="' + nx(i) + '" y2="' + (y + 10) + '" stroke="' + ink + '" stroke-width="2"/>' +
+      '<text x="' + nx(i) + '" y="' + (y + 36) + '" font-size="20" text-anchor="middle" fill="' + mut + '">' + (i === -0.5 ? "−1/2" : i === 0.5 ? "1/2" : i < 0 ? "−1" : i) + "</text>";
+    var va = A.n / A.d, vb = B.n / B.d, same = A.n * B.d === B.n * A.d;
+    g += '<circle cx="' + nx(va) + '" cy="' + y + '" r="11" fill="' + cssv("--a") + '" stroke="' + cssv("--card") + '" stroke-width="3"/>';
+    g += '<circle cx="' + nx(vb) + '" cy="' + (same ? y : y) + '" r="' + (same ? 6 : 11) + '" fill="' + cssv("--b") + '" stroke="' + cssv("--card") + '" stroke-width="3"/>';
+    g += '<text x="' + nx(va) + '" y="' + (y - 24) + '" font-size="21" font-weight="800" text-anchor="middle" fill="' + cssv("--a") + '">' + fstr(A) + "</text>";
+    g += '<text x="' + nx(vb) + '" y="' + (y - (same || Math.abs(nx(va) - nx(vb)) < 60 ? 50 : 24)) + '" font-size="21" font-weight="800" text-anchor="middle" fill="' + cssv("--b") + '">' + fstr(B) + "</text>";
+    document.getElementById("sv").innerHTML = g;
+    document.getElementById("fa-n").textContent = (A.n < 0 ? "−" : "") + Math.abs(A.n);
+    document.getElementById("fa-d").textContent = A.d;
+    document.getElementById("fb-n").textContent = (B.n < 0 ? "−" : "") + Math.abs(B.n);
+    document.getElementById("fb-d").textContent = B.d;
+    var na = A.n * L / A.d, nb = B.n * L / B.d, v;
+    if (!cut) v = "Press <b>Same pieces</b> to cut both into " + L + "ths (LCM of " + A.d + " and " + B.d + " = " + L + ").";
+    else if (na === nb) v = "<b>Equal!</b> " + fstr(A) + " = " + fstr({ n: na, d: L }) + " = " + fstr(B) + ". They are <b>equivalent fractions</b>.";
+    else {
+      var big = na > nb ? A : B, small = na > nb ? B : A;
+      v = "<b>" + fstr(big) + " &gt; " + fstr(small) + "</b> because " + fstr({ n: Math.max(na, nb), d: L }) + " &gt; " + fstr({ n: Math.min(na, nb), d: L }) + ".";
+      if (A.n < 0 && B.n < 0) v += " With negatives the one <b>nearer to 0</b> is bigger: fewer pieces on the negative side.";
+    }
+    document.getElementById("verdict").innerHTML = v;
+  }
+  function step(f, key, d) { return function () { f[key] += d; draw(); }; }
+  document.getElementById("an-").onclick = step(A, "n", -1); document.getElementById("an+").onclick = step(A, "n", 1);
+  document.getElementById("ad-").onclick = step(A, "d", -1); document.getElementById("ad+").onclick = step(A, "d", 1);
+  document.getElementById("bn-").onclick = step(B, "n", -1); document.getElementById("bn+").onclick = step(B, "n", 1);
+  document.getElementById("bd-").onclick = step(B, "d", -1); document.getElementById("bd+").onclick = step(B, "d", 1);
+  document.getElementById("cut").onclick = function () { cut = true; draw(); };
+  document.getElementById("uncut").onclick = function () { cut = false; draw(); };
+  var tries = document.querySelectorAll("[data-try]"), j;
+  for (j = 0; j < tries.length; j++) tries[j].onclick = function () {
+    var v = this.getAttribute("data-try").split(",");
+    A.n = +v[0]; A.d = +v[1]; B.n = +v[2]; B.d = +v[3]; cut = false; draw();
+  };
+  window.addEventListener("resize", draw);
+  if (window.matchMedia) { var mq = window.matchMedia("(prefers-color-scheme: dark)"); if (mq.addEventListener) mq.addEventListener("change", draw); }
+  window.PX = {
+    set: function (an, ad, bn, bd) { A.n = an; A.d = ad; B.n = bn; B.d = bd; cut = false; draw(); },
+    cut: function () { cut = true; draw(); },
+    state: function () {
+      var L = lcm(A.d, B.d), na = A.n * L / A.d, nb = B.n * L / B.d;
+      return { a: fstr(A), b: fstr(B), lcm: L, aParts: na, bParts: nb, cut: cut, order: na === nb ? "=" : na > nb ? ">" : "<" };
+    }
+  };
+  draw();
+})();
+</script>
+</body>
+</html>

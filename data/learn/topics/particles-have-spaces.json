@@ -1,0 +1,164 @@
+{
+ "id": "LEARN-C9-CHE-PARTICLES-HAVE-SPACES",
+ "slug": "particles-have-spaces",
+ "status": "ready",
+ "class": 9,
+ "subject": "Chemistry",
+ "chapter": "Matter in Our Surroundings",
+ "topic": "Particles have spaces between them",
+ "title": "Particles Have Spaces Between Them",
+ "series": 12,
+ "studioJob": "particle-spaces",
+ "reelId": "STUDIO-PARTICLE-SPACES",
+ "summary": "50 mL of water plus 50 mL of alcohol gives only about 96 mL. The reason: particles of matter have spaces between them.",
+ "video": {
+  "youtubeId": "TscTY0pHiBw",
+  "instagram": "https://www.instagram.com/reel/DfCs6LglLWP/"
+ },
+ "notes": {
+  "pdf": "notes.pdf",
+  "title": "03 – Particles Have Spaces Between Them",
+  "driveDoc": "1BPx8Gz20jb1Sdq5bK1a7S_ZFxIOxZxoP3fy8p8dxFrs"
+ },
+ "keyPoints": [
+  "Matter is made of tiny **particles with spaces between them**.",
+  "When liquids mix, some particles fit into the spaces between others: 50 mL + 50 mL ≈ **96 mL**.",
+  "Sugar dissolves because its particles move into the **spaces between water particles**.",
+  "Space between particles: **solid < liquid < gas**; gases compress most easily."
+ ],
+ "sections": [
+  {
+   "h": "The puzzle",
+   "blocks": [
+    {
+     "p": "Mix **50 mL of water** with **50 mL of alcohol** (ethanol). You expect 100 mL but measure only **about 96 mL**. Nothing spilled."
+    },
+    {
+     "img": "img/ps_cylinders.png",
+     "alt": "50 mL water plus 50 mL alcohol giving about 96 mL",
+     "caption": "The total volume is less than the sum."
+    }
+   ]
+  },
+  {
+   "h": "Why it happens",
+   "blocks": [
+    {
+     "p": "All matter is made of tiny **particles**, and there is empty **space between them**. When two liquids mix, some particles of one slip into the gaps between the particles of the other, so the mixture takes up less room."
+    },
+    {
+     "img": "img/ps_marbles.png",
+     "alt": "Sand filling the gaps in a jar of marbles",
+     "caption": "Analogy: sand runs into the gaps between marbles and the level hardly rises."
+    },
+    {
+     "p": "At Class 9 level the key idea is the spaces; the attraction between water and alcohol particles also pulls them a little closer."
+    }
+   ]
+  },
+  {
+   "h": "Sugar disappearing in water",
+   "blocks": [
+    {
+     "p": "Dissolve a spoon of sugar in half a beaker of water: the sugar vanishes and the level **hardly changes**. Its particles have gone into the spaces between the water particles."
+    },
+    {
+     "img": "img/ps_sugar.png",
+     "alt": "Sugar particles sitting in the spaces between water particles",
+     "caption": "White: sugar particles in the gaps."
+    }
+   ]
+  },
+  {
+   "h": "Spaces in solids, liquids and gases",
+   "blocks": [
+    {
+     "img": "img/ps_states.png",
+     "alt": "Particle spacing in a solid, a liquid and a gas",
+     "caption": "Spacing grows from solid to liquid to gas."
+    },
+    {
+     "table": {
+      "head": [
+       "Property",
+       "Solid",
+       "Liquid",
+       "Gas"
+      ],
+      "rows": [
+       [
+        "Space between particles",
+        "Least",
+        "More",
+        "Most"
+       ],
+       [
+        "Attraction",
+        "Strongest",
+        "Moderate",
+        "Weakest"
+       ],
+       [
+        "Compressibility",
+        "Negligible",
+        "Very little",
+        "High"
+       ]
+      ]
+     }
+    }
+   ]
+  }
+ ],
+ "quiz": [
+  {
+   "q": "50 mL of water and 50 mL of alcohol are mixed. The total volume is about:",
+   "options": [
+    "100 mL",
+    "96 mL",
+    "50 mL",
+    "104 mL"
+   ],
+   "answer": 1,
+   "explain": "Some particles fit into the spaces between others, so the mixture is about 96 mL, a little less than 100 mL."
+  },
+  {
+   "q": "When sugar dissolves in water, the water level:",
+   "options": [
+    "rises a lot",
+    "hardly changes",
+    "falls sharply",
+    "doubles"
+   ],
+   "answer": 1,
+   "explain": "Sugar particles move into the spaces between water particles, so they add very little volume."
+  },
+  {
+   "q": "In which of these are the spaces between particles largest?",
+   "options": [
+    "Iron",
+    "Ice",
+    "Water",
+    "Air"
+   ],
+   "answer": 3,
+   "explain": "Air is a gas; gas particles are far apart, with the largest spaces."
+  },
+  {
+   "q": "Why can a gas be compressed much more than a solid?",
+   "options": [
+    "Gas particles are larger",
+    "Gas particles have large spaces between them",
+    "Solid particles move faster",
+    "Gases have no particles"
+   ],
+   "answer": 1,
+   "explain": "The large spaces between gas particles let them be pushed closer together; solid particles are already packed closely."
+  }
+ ],
+ "simulation": {
+  "decision": "NOT_REQUIRED",
+  "reason": "One qualitative observation (volumes do not simply add because particles fit into spaces). The video's mixing animation, the marbles-and-sand analogy and the diagrams show it fully; a slider-driven packing model would add little and a quantitative contraction model would mislead at this level."
+ },
+ "related": []
+}

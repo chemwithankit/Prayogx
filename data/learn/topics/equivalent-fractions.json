@@ -1,0 +1,153 @@
+{
+ "id": "LEARN-C9-MAT-EQUIVALENT-FRACTIONS",
+ "slug": "equivalent-fractions",
+ "status": "ready",
+ "class": 9,
+ "subject": "Mathematics",
+ "chapter": "Number Systems",
+ "topic": "Equivalent fractions and comparison of rational numbers",
+ "title": "Equivalent Fractions and Comparing Rational Numbers",
+ "series": 13,
+ "studioJob": "equivalent-fractions",
+ "reelId": "STUDIO-EQUIVALENT-FRACTIONS",
+ "summary": "1 slice of 2 or 4 slices of 8: who ate more pizza? Learn equivalent fractions, the LCM trick for comparing, and why −3/4 > −5/6.",
+ "video": {
+  "youtubeId": "8eVGey5fxpc",
+  "instagram": "https://www.instagram.com/reel/DfCxI9ZFTba/"
+ },
+ "notes": {
+  "pdf": "notes.pdf",
+  "title": "04 – Equivalent Fractions and Comparison of Rational Numbers",
+  "driveDoc": "1tnJGbLC007CjLg8wX0myzEqpmrRpQtzOPiUOcWz9k5Y"
+ },
+ "keyPoints": [
+  "Multiply or divide the numerator and denominator by the **same non-zero number**: the value does not change.",
+  "To compare, make the **denominators equal** (use the LCM), then compare numerators.",
+  "Cross-multiplication: for a/b and c/d (b, d > 0), compare **a × d** with **b × c**.",
+  "For negatives the order flips: **−3/4 > −5/6** (nearer to 0)."
+ ],
+ "sections": [
+  {
+   "h": "Same amount, different names",
+   "blocks": [
+    {
+     "p": "Rahul eats 1 of 2 slices; Priya eats 4 of 8 slices of the same pizza. They ate the **same amount**: 1/2 and 4/8 are **equivalent fractions**."
+    },
+    {
+     "formula": "p/q = (p × m)/(q × m)   for any non-zero m"
+    },
+    {
+     "img": "img/fr_bars.png",
+     "alt": "Fraction bars for 1/2, 2/4, 3/6 and 4/8 shading the same length",
+     "caption": "1/2 = 2/4 = 3/6 = 4/8: the shaded length is the same."
+    }
+   ]
+  },
+  {
+   "h": "Comparing two rational numbers",
+   "blocks": [
+    {
+     "list": [
+      "Write both with a positive denominator.",
+      "Find the LCM of the denominators.",
+      "Rewrite both with the LCM as denominator.",
+      "Compare the numerators."
+     ]
+    },
+    {
+     "p": "**3/4 vs 5/6:** LCM(4, 6) = 12, so 3/4 = 9/12 and 5/6 = 10/12. Since 10 > 9, **5/6 > 3/4**."
+    },
+    {
+     "img": "img/fr_compare.png",
+     "alt": "Twelfths bars: 9 of 12 against 10 of 12",
+     "caption": "With equal pieces, the comparison is easy."
+    }
+   ]
+  },
+  {
+   "h": "The negative twist",
+   "blocks": [
+    {
+     "p": "For negative numbers the order reverses. −3/4 = −0.75 sits to the **right** of −5/6 ≈ −0.83 on the number line, nearer to 0, so **−3/4 > −5/6**."
+    },
+    {
+     "img": "img/fr_numberline.png",
+     "alt": "Number line from -1 to 0 marking -5/6 and -3/4",
+     "caption": "The one nearer to 0 is bigger."
+    }
+   ]
+  }
+ ],
+ "quiz": [
+  {
+   "q": "Which fraction is equivalent to 3/5?",
+   "options": [
+    "6/15",
+    "9/15",
+    "5/3",
+    "4/6"
+   ],
+   "answer": 1,
+   "explain": "Multiply top and bottom by 3: (3×3)/(5×3) = 9/15."
+  },
+  {
+   "q": "Which is greater: 3/4 or 5/6?",
+   "options": [
+    "3/4",
+    "5/6",
+    "They are equal",
+    "Cannot be compared"
+   ],
+   "answer": 1,
+   "explain": "With denominator 12: 3/4 = 9/12 and 5/6 = 10/12; 10/12 is greater, so 5/6 > 3/4."
+  },
+  {
+   "q": "Which is greater: −3/4 or −5/6?",
+   "options": [
+    "−3/4",
+    "−5/6",
+    "They are equal",
+    "Cannot be compared"
+   ],
+   "answer": 0,
+   "explain": "−3/4 = −0.75 is nearer to 0 than −5/6 ≈ −0.83, so −3/4 is greater."
+  },
+  {
+   "q": "Are 5/8 and 15/24 equivalent?",
+   "options": [
+    "Yes, because 5 × 24 = 8 × 15",
+    "No, because 15 is not 5",
+    "No, because 24 is bigger",
+    "Only if both are negative"
+   ],
+   "answer": 0,
+   "explain": "Cross-multiply: 5 × 24 = 120 and 8 × 15 = 120. Equal products, so they are equivalent."
+  },
+  {
+   "q": "Adding 1 to both the numerator and denominator of 1/2 gives 2/3. Is 2/3 equivalent to 1/2?",
+   "options": [
+    "Yes",
+    "No",
+    "Only for positive numbers",
+    "Only in lowest terms"
+   ],
+   "answer": 1,
+   "explain": "Adding the same number does not keep the value (1/2 = 0.5, 2/3 ≈ 0.67). Only multiplying or dividing both by the same number does."
+  }
+ ],
+ "simulation": {
+  "decision": "REQUIRED",
+  "status": "pass",
+  "path": "sim.html",
+  "reason": "Choosing any two fractions (including negatives) and watching both bars re-cut into LCM pieces, and both points land on a number line, lets students test their own guesses about equivalence and order - exploration a fixed video example cannot give.",
+  "objective": "Turn any two fractions into the same-sized pieces and see which is bigger, on bars and on a number line.",
+  "instructions": [
+   "Set the two fractions with the + and − buttons (numerators may be negative).",
+   "Press 'Same pieces' to re-cut both bars into LCM pieces.",
+   "Read the verdict and check where both fractions sit on the number line.",
+   "Try −3/4 against −5/6 to see the order flip."
+  ],
+  "qa": "tests/learn_sims.js 102/102 (2026-10-29)"
+ },
+ "related": []
+}
