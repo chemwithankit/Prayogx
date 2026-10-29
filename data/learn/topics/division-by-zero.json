@@ -1,0 +1,153 @@
+{
+ "id": "LEARN-SUP-MAT-DIVISION-BY-ZERO",
+ "slug": "division-by-zero",
+ "status": "ready",
+ "class": "Supplementary",
+ "subject": "Mathematics",
+ "chapter": "Numbers and infinity",
+ "topic": "Why Division by Zero Is Undefined",
+ "title": "Why Division by Zero Is Undefined",
+ "series": 20,
+ "studioJob": "divide-by-zero",
+ "reelId": "STUDIO-DIVIDE-BY-ZERO",
+ "summary": "A calculator says ERROR for 12 ÷ 0 because no number times 0 gives 12. It is not infinity either.",
+ "video": {
+  "youtubeId": "FyxFFFzekGM",
+  "instagram": "https://www.instagram.com/reel/DfFuzafE0qm/"
+ },
+ "notes": {
+  "pdf": "notes.pdf",
+  "title": "06 – Why Division by Zero Is Undefined",
+  "driveDoc": "1wLfzM57Ti24MZi7tHGHNqskNetFKx9HKDpkmr25jTOE"
+ },
+ "thumb": "thumb.jpg",
+ "tags": [
+  "division by zero",
+  "undefined",
+  "infinity",
+  "zero",
+  "calculator error"
+ ],
+ "keyPoints": [
+  "Division undoes multiplication: a ÷ b = c means c × b = a.",
+  "**a ÷ 0** (a ≠ 0): no c gives c × 0 = a → **undefined**.",
+  "**0 ÷ 0**: every c works → no single answer → undefined.",
+  "**Infinity is not a number**; near 0, 12/x runs to +∞ on one side and −∞ on the other."
+ ],
+ "sections": [
+  {
+   "h": "Why there is no answer",
+   "blocks": [
+    {
+     "p": "12 ÷ 3 = 4 because 4 × 3 = 12. So 12 ÷ 0 = c would need c × 0 = 12, but **every number × 0 = 0**. No c exists."
+    },
+    {
+     "img": "img/dz_machine.png",
+     "alt": "Several numbers multiplied by zero all give zero, never 12",
+     "caption": "Whatever goes in, × 0 gives 0."
+    }
+   ]
+  },
+  {
+   "h": "Not infinity either",
+   "blocks": [
+    {
+     "img": "img/dz_graph.png",
+     "alt": "Graph of 12 divided by x near zero going up on the right and down on the left",
+     "caption": "Two opposite directions, so no single value."
+    },
+    {
+     "p": "12 ÷ 0.1 = 120, 12 ÷ 0.01 = 1200 (towards +∞); 12 ÷ (−0.01) = −1200 (towards −∞)."
+    }
+   ]
+  },
+  {
+   "h": "What is allowed",
+   "blocks": [
+    {
+     "table": {
+      "head": [
+       "Expression",
+       "Value"
+      ],
+      "rows": [
+       [
+        "0 ÷ 5",
+        "0"
+       ],
+       [
+        "5 × 0",
+        "0"
+       ],
+       [
+        "5 ÷ 0",
+        "Undefined"
+       ],
+       [
+        "0 ÷ 0",
+        "Undefined"
+       ]
+      ]
+     }
+    },
+    {
+     "p": "That is why a rational number p/q needs **q ≠ 0**."
+    }
+   ]
+  }
+ ],
+ "quiz": [
+  {
+   "q": "0 ÷ 9 equals:",
+   "options": [
+    "0",
+    "9",
+    "Undefined",
+    "1"
+   ],
+   "answer": 0,
+   "explain": "0 × 9 = 0, so 0 ÷ 9 = 0."
+  },
+  {
+   "q": "9 ÷ 0 is undefined because:",
+   "options": [
+    "It is too large",
+    "No number times 0 gives 9",
+    "It equals infinity",
+    "Calculators cannot show it"
+   ],
+   "answer": 1,
+   "explain": "Any number × 0 = 0, never 9."
+  },
+  {
+   "q": "Why is 0 ÷ 0 undefined?",
+   "options": [
+    "No number works",
+    "Every number works, so there is no single answer",
+    "It equals 1",
+    "It equals 0"
+   ],
+   "answer": 1,
+   "explain": "c × 0 = 0 for every c, so no unique value."
+  },
+  {
+   "q": "For which x is 5/(x − 3) undefined?",
+   "options": [
+    "x = 0",
+    "x = 5",
+    "x = 3",
+    "x = −3"
+   ],
+   "answer": 2,
+   "explain": "The denominator x − 3 is 0 when x = 3."
+  }
+ ],
+ "simulation": {
+  "decision": "NOT_REQUIRED",
+  "reason": "A proof-by-reasoning idea: the multiplication check and the 12/x graph in the video and notes carry it fully; a slider would only repeat the graph."
+ },
+ "related": [
+  "why-0-999-equals-1",
+  "natural-whole-integers-rational"
+ ]
+}

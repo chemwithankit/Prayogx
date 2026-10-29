@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="sim-id" content="LEARN-C9-CHE-PARTICLES-MOVING-SIM">
+<title>Diffusion lab · PrayogX Learn simulation</title>
+<style>
+:root{--bg:#f4f4f1;--card:#fcfcfb;--line:#d9d9d4;--ink:#0b0b0b;--mut:#52514e;--acc:#2a78d6;--water:#d7ecfa;--ink2:#6a3fd6}
+@media (prefers-color-scheme:dark){:root{--bg:#111110;--card:#1a1a19;--line:#34342f;--ink:#fff;--mut:#c3c2b7;--acc:#3987e5;--water:#173246;--ink2:#a98bff}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+.wrap{max-width:980px;margin:0 auto;padding:12px}
+h1{font-size:17px;margin:2px 0 8px}
+.grid{display:grid;grid-template-columns:minmax(0,1fr) 290px;gap:12px}
+@media (max-width:720px){.grid{grid-template-columns:minmax(0,1fr)}}
+.stage{background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+svg{display:block;width:100%;height:auto}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px}
+.lab{font-size:13px;color:var(--mut);margin:0 0 4px}
+input[type=range]{width:100%}
+button{font:inherit;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:9px;padding:8px 12px;cursor:pointer;min-height:42px}
+button.main{background:var(--acc);border-color:var(--acc);color:#fff;font-weight:650}
+.row{display:flex;gap:8px;margin:10px 0;flex-wrap:wrap}
+table{width:100%;border-collapse:collapse;font-size:14px}
+td{padding:4px 2px;border-bottom:1px solid var(--line)}
+td.v{text-align:right;font-weight:700;font-variant-numeric:tabular-nums}
+.note{margin-top:10px;font-size:13.5px;padding:8px 10px;border-radius:9px;background:var(--bg);border:1px solid var(--line);min-height:3.4em}
+.fine{font-size:12px;color:var(--mut);margin-top:8px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>Drop ink into water: how fast do the particles spread?</h1>
+<div class="grid">
+  <div class="stage"><svg id="sv" viewBox="0 0 400 420" role="img" aria-label="A glass of water with ink particles spreading"></svg></div>
+  <div class="panel">
+    <p class="lab"><label for="temp">Water temperature: <b id="r-T">20 °C</b></label></p>
+    <input type="range" id="temp" min="5" max="90" value="20" aria-label="Water temperature in degrees Celsius">
+    <div class="row"><button type="button" class="main" id="drop">Drop ink</button><button type="button" id="reset">Reset</button></div>
+    <table>
+      <tr><td>Time since the drop</td><td class="v" id="r-t">–</td></tr>
+      <tr><td>Particle speed (relative to 20 °C)</td><td class="v" id="r-v">–</td></tr>
+      <tr><td>Diffusion rate (relative to 20 °C)</td><td class="v" id="r-d">–</td></tr>
+      <tr><td>Spread of the ink (rms)</td><td class="v" id="r-s">–</td></tr>
+    </table>
+    <div class="note" id="note" aria-live="polite"></div>
+    <p class="fine">Model: particles move faster when hotter (speed ∝ √T), and warm water is also less viscous, so ink diffuses faster: D ∝ T/η (Stokes–Einstein, with the standard viscosity of water). Each particle takes random steps; the spread grows like √(D × time). Sizes and times are not to scale.</p>
+  </div>
+</div>
+</div>
+<script>
+(function () {
+  "use strict";
+  var N = 160, T = 20, t = 0, dropped = false, playing = false, last = 0, parts = [];
+  var still = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var X0 = 60, X1 = 340, Y0 = 70, Y1 = 390, CX = 200, CY = 200;
+  function cssv(n) { return getComputedStyle(document.documentElement).getPropertyValue(n).trim() || "#888"; }
+  /* deterministic random numbers (mulberry32), so a run is repeatable */
+  var seed = 7;
+  function rand() { seed |= 0; seed = seed + 0x6D2B79F5 | 0; var r = Math.imul(seed ^ seed >>> 15, 1 | seed); r = r + Math.imul(r ^ r >>> 7, 61 | r) ^ r; return ((r ^ r >>> 14) >>> 0) / 4294967296; }
+  function gauss() { var u = Math.max(1e-9, rand()), v = rand(); return Math.sqrt(-2 * Math.log(u)) * Math.cos(2 * Math.PI * v); }
+  function speed() { return Math.sqrt((T + 273.15) / 293.15); }   /* rms particle speed ∝ √T(K), relative to 20 °C */
+  /* water viscosity (Vogel fit: η = 2.414e-5 × 10^(247.8 / (T − 140)) Pa·s, T in K) and the Stokes–Einstein
+     diffusion coefficient D ∝ T / η, relative to 20 °C */
+  function visc(tk) { return 2.414e-5 * Math.pow(10, 247.8 / (tk - 140)); }
+  function diff() { var tk = T + 273.15; return (tk / 293.15) * (visc(293.15) / visc(tk)); }
+  function reflect(x, lo, hi) { var w = hi - lo, y = (x - lo) % (2 * w); if (y < 0) y += 2 * w; return lo + (y < w ? y : 2 * w - y); }
+  function reset() { seed = 7; t = 0; dropped = false; playing = false; parts = []; draw(); }
+  function drop() {
+    seed = 7; t = 0; dropped = true; parts = [];
+    for (var i = 0; i < N; i++) parts.push({ x: CX + gauss() * 4, y: CY + gauss() * 4 });
+    if (still) { advance(10); return; }
+    playing = true; last = 0; requestAnimationFrame(tick);
+  }
+  /* advance the walk by s seconds in steps of 0.05 s; the step size grows with √D (diffusion: spread ∝ √(D t)) */
+  function advance(s) {
+    var n = Math.round(s / 0.05), k, i, sg = 14 * Math.sqrt(diff()) * Math.sqrt(0.05);
+    for (k = 0; k < n; k++) for (i = 0; i < N; i++) { parts[i].x = reflect(parts[i].x + gauss() * sg, X0 + 4, X1 - 4); parts[i].y = reflect(parts[i].y + gauss() * sg, Y0 + 4, Y1 - 4); }
+    t += n * 0.05; draw();
+  }
+  function rms() { if (!parts.length) return 0; var s = 0; parts.forEach(function (p) { s += (p.x - CX) * (p.x - CX) + (p.y - CY) * (p.y - CY); }); return Math.sqrt(s / parts.length); }
+  function tick(ts) {
+    if (!playing) return;
+    var dt = last ? Math.min(0.1, (ts - last) / 1000) : 0; last = ts;
+    if (dt) advance(dt);
+    if (t >= 20) { playing = false; draw(); return; }
+    requestAnimationFrame(tick);
+  }
+  function draw() {
+    var hot = T >= 50, ink = cssv("--ink2"), g = "";
+    g += '<path d="M' + (X0 - 14) + ' ' + (Y0 - 20) + ' L' + (X0 - 4) + ' ' + (Y1 + 8) + ' L' + (X1 + 4) + ' ' + (Y1 + 8) + ' L' + (X1 + 14) + ' ' + (Y0 - 20) + '" fill="' + cssv("--water") + '" stroke="' + cssv("--ink") + '" stroke-width="3"/>';
+    if (hot) for (var k = 0; k < 3; k++) g += '<path d="M' + (150 + k * 50) + ' 40 q 10 -14 0 -28" fill="none" stroke="' + cssv("--mut") + '" stroke-width="3" stroke-linecap="round" opacity="0.6"/>';
+    parts.forEach(function (p) { g += '<circle cx="' + p.x.toFixed(1) + '" cy="' + p.y.toFixed(1) + '" r="3.2" fill="' + ink + '" opacity="0.8"/>'; });
+    var r = rms();
+    if (dropped && r > 2) g += '<circle cx="' + CX + '" cy="' + CY + '" r="' + r.toFixed(1) + '" fill="none" stroke="' + ink + '" stroke-dasharray="5 5" stroke-width="2"/>';
+    document.getElementById("sv").innerHTML = g;
+    document.getElementById("r-T").textContent = T + " °C";
+    document.getElementById("r-t").textContent = dropped ? t.toFixed(1) + " s" : "–";
+    document.getElementById("r-v").textContent = speed().toFixed(2) + "×";
+    document.getElementById("r-d").textContent = diff().toFixed(2) + "×";
+    document.getElementById("r-s").textContent = dropped ? r.toFixed(0) + " px" : "–";
+    document.getElementById("note").textContent = !dropped ? "Pick a temperature and press Drop ink." :
+      (T >= 50 ? "Hot water: particles move faster, so the ink spreads quickly." : T <= 15 ? "Cold water: particles move slower, so the ink spreads slowly." : "The ink particles keep moving and spreading on their own: diffusion.");
+  }
+  var sl = document.getElementById("temp");
+  sl.oninput = function () { T = +sl.value; draw(); };
+  document.getElementById("drop").onclick = drop;
+  document.getElementById("reset").onclick = reset;
+  if (window.matchMedia) { var mq = window.matchMedia("(prefers-color-scheme: dark)"); if (mq.addEventListener) mq.addEventListener("change", draw); }
+  window.PX = {
+    setTemp: function (c) { T = Math.max(5, Math.min(90, c)); sl.value = T; draw(); },
+    drop: function () { playing = false; seed = 7; t = 0; dropped = true; parts = []; for (var i = 0; i < N; i++) parts.push({ x: CX + gauss() * 4, y: CY + gauss() * 4 }); draw(); },
+    advance: function (s) { playing = false; advance(s); },
+    state: function () { return { temp: T, t: t, dropped: dropped, spread: rms(), speed: speed(), diffusion: diff(), n: parts.length }; }
+  };
+  draw();
+})();
+</script>
+</body>
+</html>

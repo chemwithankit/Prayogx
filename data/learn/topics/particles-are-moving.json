@@ -1,0 +1,143 @@
+{
+ "id": "LEARN-C9-CHE-PARTICLES-ARE-MOVING",
+ "slug": "particles-are-moving",
+ "status": "ready",
+ "class": 9,
+ "subject": "Chemistry",
+ "chapter": "Matter in Our Surroundings",
+ "topic": "Particles are continuously moving",
+ "title": "Particles of Matter Are Continuously Moving",
+ "series": 17,
+ "studioJob": "particles-moving",
+ "reelId": "STUDIO-PARTICLES-MOVING",
+ "summary": "An agarbatti's smell reaches the next room without a fan. The particles of matter never stop moving, and they move faster when it is hotter.",
+ "video": {
+  "youtubeId": "5kCrQwd1sPg",
+  "instagram": "https://www.instagram.com/reel/DfFvP_2gnzB/"
+ },
+ "notes": {
+  "pdf": "notes.pdf",
+  "title": "04 – Particles of Matter Are Continuously Moving",
+  "driveDoc": "1SgeEzhSfcYQJBaKM2zVrKiZjbavD97JJjfMLYev07J4"
+ },
+ "thumb": "thumb.jpg",
+ "tags": [
+  "diffusion",
+  "particles of matter",
+  "kinetic energy",
+  "temperature",
+  "agarbatti",
+  "ink in water"
+ ],
+ "keyPoints": [
+  "Particles of matter are **continuously moving**: they have **kinetic energy**.",
+  "Their intermixing on their own is **diffusion**.",
+  "Temperature ↑ → kinetic energy ↑ → particles move faster → diffusion faster.",
+  "Diffusion is fastest in gases, slower in liquids, slowest in solids."
+ ],
+ "sections": [
+  {
+   "h": "The agarbatti puzzle",
+   "blocks": [
+    {
+     "p": "The scent particles of a burning agarbatti move on their own into the **spaces between air particles** and spread to the next room. This intermixing is **diffusion**."
+    },
+    {
+     "img": "img/pm_diffusion.png",
+     "alt": "Scent particles spreading among air particles from the kitchen to the next room",
+     "caption": "No fan needed: the particles move by themselves."
+    }
+   ]
+  },
+  {
+   "h": "Cold water vs hot water",
+   "blocks": [
+    {
+     "img": "img/pm_ink.png",
+     "alt": "Ink spreading slowly in cold water and fast in hot water",
+     "caption": "Hotter water, faster particles, faster spreading."
+    },
+    {
+     "formula": "Temperature ↑ → kinetic energy ↑ → speed of particles ↑ → diffusion faster"
+    }
+   ]
+  },
+  {
+   "h": "Daily-life examples",
+   "blocks": [
+    {
+     "list": [
+      "Hot food is smelt from far away; cold food only up close.",
+      "Perfume sprayed in one corner fills the room.",
+      "A crystal of potassium permanganate colours still water by itself."
+     ]
+    }
+   ]
+  }
+ ],
+ "quiz": [
+  {
+   "q": "The intermixing of particles of two kinds of matter on their own is called:",
+   "options": [
+    "Evaporation",
+    "Diffusion",
+    "Condensation",
+    "Sublimation"
+   ],
+   "answer": 1,
+   "explain": "That is the definition of diffusion."
+  },
+  {
+   "q": "Ink spreads faster in hot water because:",
+   "options": [
+    "Hot water is thicker",
+    "Particles have more kinetic energy and move faster",
+    "Ink dissolves only when hot",
+    "Hot water has fewer particles"
+   ],
+   "answer": 1,
+   "explain": "Higher temperature gives the particles more kinetic energy, so they move and mix faster."
+  },
+  {
+   "q": "Arrange in increasing rate of diffusion:",
+   "options": [
+    "Gas, liquid, solid",
+    "Solid, liquid, gas",
+    "Liquid, solid, gas",
+    "Solid, gas, liquid"
+   ],
+   "answer": 1,
+   "explain": "Particles move most freely in gases and least in solids."
+  },
+  {
+   "q": "The energy particles have because of their motion is:",
+   "options": [
+    "Potential energy",
+    "Kinetic energy",
+    "Chemical energy",
+    "Nuclear energy"
+   ],
+   "answer": 1,
+   "explain": "Energy of motion is kinetic energy."
+  }
+ ],
+ "simulation": {
+  "decision": "REQUIRED",
+  "status": "pass",
+  "path": "sim.html",
+  "reason": "Changing the temperature and watching the same ink drop spread faster or slower is a cause-and-effect experiment students can repeat at will; the readouts tie it to particle speed.",
+  "objective": "See how temperature changes the speed of particles and how fast an ink drop spreads.",
+  "instructions": [
+   "Set the water temperature with the slider.",
+   "Press Drop ink and watch the particles spread.",
+   "Note the spread after a few seconds.",
+   "Reset, change the temperature and compare."
+  ],
+  "qa": "tests/learn_sims.js 222/222 (2026-10-30)"
+ },
+ "related": [
+  "particles-of-matter",
+  "particles-have-spaces",
+  "what-is-matter"
+ ]
+}

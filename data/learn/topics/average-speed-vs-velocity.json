@@ -1,0 +1,181 @@
+{
+ "id": "LEARN-C9-PHY-AVERAGE-SPEED-VS-VELOCITY",
+ "slug": "average-speed-vs-velocity",
+ "status": "ready",
+ "class": 9,
+ "subject": "Physics",
+ "chapter": "Motion",
+ "topic": "Average speed versus average velocity",
+ "title": "Average Speed vs Average Velocity",
+ "series": 16,
+ "studioJob": "avg-speed-velocity",
+ "reelId": "STUDIO-AVG-SPEED-VELOCITY",
+ "summary": "Walk 4 km to school and back in an hour: average speed 4 km/h, average velocity zero. One uses total distance, the other displacement.",
+ "video": {
+  "youtubeId": "AGEu4HfPTxk",
+  "instagram": "https://www.instagram.com/reel/DfFtaBIDf56/"
+ },
+ "notes": {
+  "pdf": "notes.pdf",
+  "title": "04 – Average Speed vs Average Velocity",
+  "driveDoc": "1ZAFTGdeUUOFMtdoFxMJ9re7JAEqeqrAdJJzl2DINCbQ"
+ },
+ "thumb": "thumb.jpg",
+ "tags": [
+  "average speed",
+  "average velocity",
+  "displacement",
+  "distance",
+  "round trip",
+  "motion"
+ ],
+ "keyPoints": [
+  "**Average speed** = total distance ÷ total time (scalar).",
+  "**Average velocity** = total displacement ÷ total time (vector).",
+  "A round trip has average velocity **0** but a non-zero average speed.",
+  "Never average two speeds directly: 4 and 12 km/h over equal distances give **6**, not 8.",
+  "|Average velocity| ≤ average speed."
+ ],
+ "sections": [
+  {
+   "h": "The surprising walk",
+   "blocks": [
+    {
+     "p": "A boy walks 2 km to school and 2 km back in **1 hour**. Distance = 4 km, so average speed = **4 km/h**. He ends where he started, so displacement = 0 and average velocity = **0**."
+    },
+    {
+     "img": "img/as_trip.png",
+     "alt": "Home to school and back: two trails of 2 km, displacement zero",
+     "caption": "Distance 4 km, displacement 0."
+    },
+    {
+     "formula": "Average speed = total distance ÷ total time;  average velocity = total displacement ÷ total time"
+    }
+   ]
+  },
+  {
+   "h": "The trap: averaging two speeds",
+   "blocks": [
+    {
+     "p": "Going 12 km at 4 km/h takes 3 h; returning 12 km at 12 km/h takes 1 h. Average speed = 24 km ÷ 4 h = **6 km/h**, not (4 + 12) ÷ 2 = 8, because more time is spent on the slow leg."
+    },
+    {
+     "img": "img/as_trap.png",
+     "alt": "Time bars: 3 hours at 4 km/h and 1 hour at 12 km/h",
+     "caption": "The slow leg takes 3 times longer."
+    }
+   ]
+  },
+  {
+   "h": "Comparison",
+   "blocks": [
+    {
+     "table": {
+      "head": [
+       "Feature",
+       "Average speed",
+       "Average velocity"
+      ],
+      "rows": [
+       [
+        "Uses",
+        "Total distance",
+        "Displacement"
+       ],
+       [
+        "Type",
+        "Scalar",
+        "Vector"
+       ],
+       [
+        "Zero after moving?",
+        "No",
+        "Yes (round trip)"
+       ],
+       [
+        "Relation",
+        "≥ |average velocity|",
+        "≤ average speed"
+       ]
+      ]
+     }
+    }
+   ]
+  }
+ ],
+ "quiz": [
+  {
+   "q": "A car goes 60 km east in 1 h and 40 km west in 1 h. Its average speed is:",
+   "options": [
+    "10 km/h",
+    "50 km/h",
+    "20 km/h",
+    "100 km/h"
+   ],
+   "answer": 1,
+   "explain": "Distance 100 km in 2 h = 50 km/h."
+  },
+  {
+   "q": "For the same car, the average velocity is:",
+   "options": [
+    "50 km/h east",
+    "10 km/h east",
+    "0",
+    "20 km/h west"
+   ],
+   "answer": 1,
+   "explain": "Displacement = 60 − 40 = 20 km east in 2 h = 10 km/h east."
+  },
+  {
+   "q": "A runner finishes one full lap of a circular track. Average velocity for the lap is:",
+   "options": [
+    "Equal to average speed",
+    "Zero",
+    "Twice the average speed",
+    "Cannot be found"
+   ],
+   "answer": 1,
+   "explain": "Start and end are the same point, so displacement and average velocity are zero."
+  },
+  {
+   "q": "12 km at 4 km/h, then 12 km back at 12 km/h. Average speed?",
+   "options": [
+    "8 km/h",
+    "6 km/h",
+    "16 km/h",
+    "3 km/h"
+   ],
+   "answer": 1,
+   "explain": "Times 3 h + 1 h = 4 h; 24 km ÷ 4 h = 6 km/h."
+  },
+  {
+   "q": "Which is always true?",
+   "options": [
+    "|avg velocity| ≥ avg speed",
+    "|avg velocity| ≤ avg speed",
+    "They are always equal",
+    "Avg speed can be negative"
+   ],
+   "answer": 1,
+   "explain": "Displacement is never longer than the path, so |average velocity| ≤ average speed."
+  }
+ ],
+ "simulation": {
+  "decision": "REQUIRED",
+  "status": "pass",
+  "path": "../speed-vs-velocity/sim.html",
+  "reason": "Choosing a straight, there-and-back, zig-zag or circular path and comparing the average-speed and average-velocity readouts is exactly this topic; the existing Speed vs Velocity simulation already computes both, so it is reused.",
+  "objective": "Compare average speed (path length ÷ time) with average velocity (displacement ÷ time) on different paths.",
+  "instructions": [
+   "Pick a path: straight, there-and-back, zig-zag or circle.",
+   "Press Play or drag the time slider to the end.",
+   "Read the average speed and the average velocity.",
+   "On there-and-back and the full circle, see the average velocity fall to zero while the average speed does not."
+  ],
+  "qa": "tests/learn_sims.js 222/222 (2026-10-30)"
+ },
+ "related": [
+  "distance-vs-displacement",
+  "speed-vs-velocity"
+ ]
+}

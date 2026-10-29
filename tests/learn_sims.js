@@ -18,6 +18,10 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
                                         and the integers around it
      learn/why-the-sky-is-blue/sim.html  air mass, 1/λ⁴ scattering, blue sky,
                                         red low Sun, black sky without air
+     learn/decimal-expansions/sim.html  long division of p/q: terminating or the
+                                        repeating block, against exact arithmetic
+     learn/particles-are-moving/sim.html  diffusion: D ∝ T/η (water viscosity), spread
+                                        grows like √(D t)
    --------------------------------------------------------------------------- */
 
 let n = 0, bad = 0;
@@ -132,6 +136,36 @@ const gcd = (a, b) => { a = Math.abs(a); b = Math.abs(b); while (b) [a, b] = [b,
       ok(`sky no air ${tag}: note says the sky is black`, (await page.$eval('#note', e => e.textContent)).includes('black'));
       const ov5 = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
       ok(`sky ${tag}: no horizontal overflow`, ov5 <= 0, ov5);
+
+      // ---- decimal expansions: independent long division
+      await page.goto(base + 'decimal-expansions/sim.html', { waitUntil: 'load' });
+      const longDiv = (P, Q) => { let r = P % Q; const seen = new Map(); let d = ''; while (r && !seen.has(r)) { seen.set(r, d.length); r *= 10; d += Math.floor(r / Q); r %= Q; }
+        return r ? { pre: d.slice(0, seen.get(r)), block: d.slice(seen.get(r)), term: false } : { pre: d, block: '', term: true }; };
+      for (const [P, Q] of [[1, 4], [1, 3], [1, 7], [1, 6], [3, 12], [22, 7], [7, 20], [5, 13], [3, 8]]) {
+        const s = await page.evaluate(v => { PX.set(v[0], v[1]); PX.run(); return PX.state(); }, [P, Q]);
+        const w = longDiv(P, Q);
+        ok(`decimals ${P}/${Q} ${tag}: ${Math.floor(P / Q)}.${w.pre}${w.block ? '(' + w.block + ')' : ''}`, s.whole === Math.floor(P / Q) && s.pre === w.pre && s.block === w.block && s.terminating === w.term, JSON.stringify(s));
+      }
+      await page.evaluate(() => { PX.set(1, 7); PX.run(); });
+      const dOut = await page.$eval('#out', e => e.textContent);
+      ok(`decimals ${tag}: 1/7 names the returning remainder 1 and the block 142857`, dOut.includes('142857') && dOut.includes('came back') && dOut.includes('recurring'), dOut);
+      await page.evaluate(() => { PX.set(3, 12); PX.run(); });
+      ok(`decimals ${tag}: 3/12 reduces to 1/4 and terminates`, (await page.$eval('#out', e => e.textContent)).includes('1/4'));
+      const ov6 = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
+      ok(`decimals ${tag}: no horizontal overflow`, ov6 <= 0, ov6);
+
+      // ---- diffusion lab: hotter spreads faster; spread grows like √t (same random seed)
+      await page.goto(base + 'particles-are-moving/sim.html', { waitUntil: 'load' });
+      const spreadAt = (c, s) => page.evaluate(v => { PX.setTemp(v[0]); PX.drop(); PX.advance(v[1]); return PX.state(); }, [c, s]);
+      const cold = await spreadAt(10, 2), hot = await spreadAt(80, 2);
+      const eta = tk => 2.414e-5 * 10 ** (247.8 / (tk - 140)), Dr = (353.15 / eta(353.15)) / (283.15 / eta(283.15));
+      ok(`diffusion ${tag}: D(80 °C)/D(10 °C) = T/η ratio (Stokes–Einstein) ≈ ${Dr.toFixed(2)}`, near(hot.diffusion / cold.diffusion, Dr, 0.01), (hot.diffusion / cold.diffusion).toFixed(3));
+      ok(`diffusion ${tag}: 80 °C spreads about √(D ratio) = ${Math.sqrt(Dr).toFixed(2)}× more than 10 °C in 2 s`, near(hot.spread / cold.spread, Math.sqrt(Dr), 0.25), (hot.spread / cold.spread).toFixed(2));
+      ok(`diffusion ${tag}: speed ratio = √(353.15/283.15)`, near(hot.speed / cold.speed, Math.sqrt(353.15 / 283.15), 0.005), (hot.speed / cold.speed).toFixed(4));
+      const s1 = await spreadAt(20, 1), s4 = await spreadAt(20, 4);
+      ok(`diffusion ${tag}: 4× the time ≈ 2× the spread (√t)`, s4.spread / s1.spread > 1.6 && s4.spread / s1.spread < 2.4, (s4.spread / s1.spread).toFixed(2));
+      const ov7 = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
+      ok(`diffusion ${tag}: no horizontal overflow`, ov7 <= 0, ov7);
       ok(`all sims ${tag}: no console errors`, errs.length === 0, errs.join(' | '));
       await ctx.close();
     }

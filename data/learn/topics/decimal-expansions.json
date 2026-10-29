@@ -1,0 +1,182 @@
+{
+ "id": "LEARN-C9-MAT-DECIMAL-EXPANSIONS",
+ "slug": "decimal-expansions",
+ "status": "ready",
+ "class": 9,
+ "subject": "Mathematics",
+ "chapter": "Number Systems",
+ "topic": "Terminating and Recurring Decimal Expansions",
+ "title": "Terminating and Recurring Decimals",
+ "series": 18,
+ "studioJob": "decimal-expansions",
+ "reelId": "STUDIO-DECIMAL-EXPANSIONS",
+ "summary": "1/4 = 0.25 stops, but 1/3 = 0.333… never does. The remainders of long division decide: a remainder of 0 stops it, a returning remainder makes it repeat.",
+ "video": {
+  "youtubeId": "wtU6DRs9VoA",
+  "instagram": "https://www.instagram.com/reel/DfFuKmhj7E4/"
+ },
+ "notes": {
+  "pdf": "notes.pdf",
+  "title": "05 – Terminating and Recurring Decimal Expansions",
+  "driveDoc": "1JiNvciOhinrpJbfzZG2yz15t5RfltFldwzwHy912QvY"
+ },
+ "thumb": "thumb.jpg",
+ "tags": [
+  "terminating decimal",
+  "recurring decimal",
+  "decimal expansion",
+  "long division",
+  "remainder",
+  "irrational numbers"
+ ],
+ "keyPoints": [
+  "Remainder becomes **0** → the decimal **terminates**.",
+  "Remainders are always **less than the divisor**, so if 0 never comes, one must come back → the digits **repeat**.",
+  "1/7 = 0.142857 repeating (remainders 3, 2, 6, 4, 5, 1, then 3 again).",
+  "In lowest form, a denominator with **only 2s and 5s** terminates; any other prime factor repeats.",
+  "Rational ⇔ terminating or recurring; neither ⇒ irrational."
+ ],
+ "sections": [
+  {
+   "h": "Why decimals stop or repeat",
+   "blocks": [
+    {
+     "p": "At every step of long division a remainder is left. If it becomes **0**, the division stops. Dividing by q, the remainder can only be 0 to q − 1, so if 0 never comes, some remainder **must come back**, and from then on the digits repeat."
+    },
+    {
+     "img": "img/de_division.png",
+     "alt": "Long division of 1 by 7 with the remainders listed",
+     "caption": "The remainder 3 returns at step 7."
+    },
+    {
+     "img": "img/de_wheel.png",
+     "alt": "A wheel of remainders 0 to 6 with the loop 3, 2, 6, 4, 5, 1",
+     "caption": "Only 7 possible remainders: a loop is unavoidable."
+    }
+   ]
+  },
+  {
+   "h": "The shortcut",
+   "blocks": [
+    {
+     "formula": "p/q in lowest form terminates ⇔ q = 2ᵐ × 5ⁿ"
+    },
+    {
+     "table": {
+      "head": [
+       "Fraction",
+       "Denominator",
+       "Decimal"
+      ],
+      "rows": [
+       [
+        "3/12 = 1/4",
+        "2 × 2",
+        "0.25"
+       ],
+       [
+        "7/20",
+        "2 × 2 × 5",
+        "0.35"
+       ],
+       [
+        "1/6",
+        "2 × 3",
+        "0.1666…"
+       ],
+       [
+        "2/11",
+        "11",
+        "0.1818…"
+       ]
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "h": "Recurring decimal to p/q",
+   "blocks": [
+    {
+     "p": "Let x = 0.2727…; then 100x = 27.2727…, so 99x = 27 and x = 27/99 = **3/11**."
+    }
+   ]
+  }
+ ],
+ "quiz": [
+  {
+   "q": "The decimal expansion of 7/8 is:",
+   "options": [
+    "0.875 (terminating)",
+    "0.8757… (recurring)",
+    "0.78",
+    "0.0875"
+   ],
+   "answer": 0,
+   "explain": "8 = 2³, so it terminates: 7/8 = 0.875."
+  },
+  {
+   "q": "Which fraction has a non-terminating recurring expansion?",
+   "options": [
+    "13/125",
+    "3/12",
+    "5/6",
+    "7/20"
+   ],
+   "answer": 2,
+   "explain": "6 = 2 × 3 has the prime factor 3."
+  },
+  {
+   "q": "0.444… written as p/q is:",
+   "options": [
+    "4/10",
+    "4/9",
+    "44/100",
+    "2/5"
+   ],
+   "answer": 1,
+   "explain": "x = 0.444…, 10x − x = 4, so x = 4/9."
+  },
+  {
+   "q": "Why must the decimal of 1/7 repeat?",
+   "options": [
+    "7 is odd",
+    "Remainders can only be 0–6 and 0 never comes, so one returns",
+    "7 is greater than 1",
+    "Calculators round it"
+   ],
+   "answer": 1,
+   "explain": "With finitely many possible remainders and no 0, a remainder must recur."
+  },
+  {
+   "q": "0.101001000100001… (the gaps keep growing) is:",
+   "options": [
+    "Rational",
+    "Irrational",
+    "Terminating",
+    "Recurring"
+   ],
+   "answer": 1,
+   "explain": "It neither terminates nor repeats, so it is irrational."
+  }
+ ],
+ "simulation": {
+  "decision": "REQUIRED",
+  "status": "pass",
+  "path": "sim.html",
+  "reason": "Dividing any p/q and watching the remainders land on a wheel shows why some decimals stop and others must repeat; students can test their own fractions, which a fixed video cannot offer.",
+  "objective": "Divide any fraction and see whether its decimal terminates or repeats, and why.",
+  "instructions": [
+   "Set p and q with the + and − buttons, or pick an example.",
+   "Press Divide and follow the long division step by step.",
+   "Watch the remainders light up on the wheel.",
+   "See whether the remainder reaches 0 (terminates) or comes back (repeats)."
+  ],
+  "qa": "tests/learn_sims.js 222/222 (2026-10-30)"
+ },
+ "related": [
+  "natural-whole-integers-rational",
+  "why-0-999-equals-1",
+  "rational-numbers-on-number-line"
+ ]
+}

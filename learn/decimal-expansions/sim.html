@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="sim-id" content="LEARN-C9-MAT-DECIMAL-EXPANSIONS-SIM">
+<title>Decimal expansions · PrayogX Learn simulation</title>
+<style>
+:root{--bg:#f4f4f1;--card:#fcfcfb;--line:#d9d9d4;--ink:#0b0b0b;--mut:#52514e;--acc:#2a78d6;--term:#16884a;--rec:#c2185b}
+@media (prefers-color-scheme:dark){:root{--bg:#111110;--card:#1a1a19;--line:#34342f;--ink:#fff;--mut:#c3c2b7;--acc:#3987e5;--term:#4cc27c;--rec:#f06292}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+.wrap{max-width:980px;margin:0 auto;padding:12px}
+h1{font-size:17px;margin:2px 0 8px}
+.top{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.frac{display:inline-flex;flex-direction:column;align-items:center;font-weight:800;font-size:34px;line-height:1.05;min-width:70px}
+.frac .bar{width:100%;height:3px;background:currentColor;margin:3px 0}
+.steps{display:grid;grid-template-columns:auto auto auto;gap:4px 6px;align-items:center;font-size:13px;color:var(--mut)}
+button{font:inherit;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:9px;padding:6px 12px;cursor:pointer;min-width:42px;min-height:42px}
+button.main{background:var(--acc);border-color:var(--acc);color:#fff;font-weight:650}
+.grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px;margin-top:10px}
+@media (max-width:640px){.grid{grid-template-columns:minmax(0,1fr)}}
+.box{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 12px;min-width:0}
+svg{display:block;width:100%;height:auto;max-width:360px;margin:0 auto}
+table{width:100%;border-collapse:collapse;font-size:14px;font-variant-numeric:tabular-nums}
+th,td{padding:3px 4px;border-bottom:1px solid var(--line);text-align:center}
+th{font-size:12px;color:var(--mut);font-weight:600}
+tr.again td{color:var(--rec);font-weight:700}
+.out{margin-top:10px;padding:10px 12px;border-radius:10px;border:1px solid var(--line);background:var(--card);min-height:3em;overflow-wrap:anywhere}
+.dec{font:700 22px ui-monospace,Menlo,monospace;overflow-wrap:anywhere}
+.ov{text-decoration:overline}
+.row{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;align-items:center}
+.small{font-size:13px;color:var(--mut)}
+.tablewrap{max-height:300px;overflow:auto}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>Divide p by q: watch the remainders decide if the decimal stops or repeats</h1>
+<div class="top">
+  <div class="frac"><span id="fn">1</span><span class="bar"></span><span id="fd">7</span></div>
+  <div class="steps">numerator p<button type="button" id="p-" aria-label="Numerator down">−</button><button type="button" id="p+" aria-label="Numerator up">+</button>
+    denominator q<button type="button" id="q-" aria-label="Denominator down">−</button><button type="button" id="q+" aria-label="Denominator up">+</button></div>
+  <button type="button" class="main" id="go">Divide</button>
+</div>
+<div class="grid">
+  <div class="box"><p class="small" style="margin:0 0 6px">Remainder wheel: dividing by q, a remainder can only be 0 to q − 1</p><svg id="wheel" viewBox="0 0 360 360" role="img" aria-label="Remainder wheel"></svg></div>
+  <div class="box"><p class="small" style="margin:0 0 6px">Long division, step by step</p><div class="tablewrap"><table><thead><tr><th>Step</th><th>Divide</th><th>Digit</th><th>Remainder</th></tr></thead><tbody id="rows"></tbody></table></div></div>
+</div>
+<div class="out" id="out" aria-live="polite"></div>
+<div class="row"><span class="small">Try:</span>
+  <button type="button" data-try="1,4">1/4</button><button type="button" data-try="1,3">1/3</button><button type="button" data-try="1,7">1/7</button>
+  <button type="button" data-try="1,6">1/6</button><button type="button" data-try="3,12">3/12</button><button type="button" data-try="22,7">22/7</button></div>
+</div>
+<script>
+(function () {
+  "use strict";
+  var p = 1, q = 7, shown = 0, done = false, anim = null, res = null;
+  var still = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function cssv(n) { return getComputedStyle(document.documentElement).getPropertyValue(n).trim() || "#888"; }
+  function gcd(a, b) { while (b) { var t = a % b; a = b; b = t; } return a; }
+  /* long division of p / q (p >= 0, q >= 1): the integer part, then digit steps until the remainder is 0 or repeats */
+  function divide(P, Q) {
+    var whole = Math.floor(P / Q), r = P % Q, steps = [], seen = {}, start = -1;
+    while (r !== 0 && steps.length < 60) {
+      if (seen[r] !== undefined) { start = seen[r]; break; }
+      seen[r] = steps.length;
+      var n = r * 10, d = Math.floor(n / Q), r2 = n % Q;
+      steps.push({ n: n, d: d, r: r2, from: r });
+      r = r2;
+    }
+    var digits = steps.map(function (s) { return s.d; }).join("");
+    return { whole: whole, steps: steps, terminating: r === 0, start: start, pre: start < 0 ? digits : digits.slice(0, start), block: start < 0 ? "" : digits.slice(start) };
+  }
+  function factorsOnly25(n) { while (n % 2 === 0) n /= 2; while (n % 5 === 0) n /= 5; return n === 1; }
+  function decText(R) { return R.whole + (R.steps.length ? "." + R.pre : ""); }
+  function draw() {
+    if (q < 2) q = 2; if (q > 20) q = 20; if (p < 1) p = 1; if (p > 99) p = 99;
+    res = divide(p, q);
+    document.getElementById("fn").textContent = p; document.getElementById("fd").textContent = q;
+    var rec = cssv("--rec"), term = cssv("--term"), ink = cssv("--ink"), line = cssv("--line");
+    var vis = res.steps.slice(0, shown), cx = 180, cy = 180, R = 135;
+    function pt(r, rad) { var a = -Math.PI / 2 + r / q * 2 * Math.PI; return [cx + rad * Math.cos(a), cy + rad * Math.sin(a)]; }
+    var g = '<circle cx="180" cy="180" r="' + R + '" fill="none" stroke="' + line + '" stroke-width="3"/>', i, k;
+    var path = [p % q].concat(vis.map(function (s) { return s.r; }));
+    for (i = 1; i < path.length; i++) {
+      var a = pt(path[i - 1], R - 26), b = pt(path[i], R - 26);
+      g += '<line x1="' + a[0] + '" y1="' + a[1] + '" x2="' + b[0] + '" y2="' + b[1] + '" stroke="' + (path[i] === 0 ? term : rec) + '" stroke-width="3" opacity="0.8"/>';
+    }
+    var nodeR = Math.max(10, Math.min(20, 120 / q));
+    for (k = 0; k < q; k++) {
+      var c = pt(k, R), on = path.indexOf(k) >= 0;
+      g += '<circle cx="' + c[0] + '" cy="' + c[1] + '" r="' + nodeR + '" fill="' + (on ? (k === 0 ? term : rec) : cssv("--card")) + '" stroke="' + (k === 0 ? term : ink) + '" stroke-width="2"/>' +
+           '<text x="' + c[0] + '" y="' + (c[1] + nodeR * 0.4) + '" text-anchor="middle" font-size="' + nodeR * 1.1 + '" font-weight="700" fill="' + (on ? "#fff" : ink) + '">' + k + "</text>";
+    }
+    document.getElementById("wheel").innerHTML = g;
+    var rows = "";
+    vis.forEach(function (s, j) {
+      var again = done && j === vis.length - 1 && !res.terminating;
+      rows += '<tr' + (again ? ' class="again"' : "") + "><td>" + (j + 1) + "</td><td>" + s.n + " ÷ " + q + "</td><td>" + s.d + "</td><td>" + s.r + "</td></tr>";
+    });
+    document.getElementById("rows").innerHTML = rows;
+    var out = document.getElementById("out"), lo = gcd(p, q), qq = q / lo;
+    if (!shown && !done) { out.innerHTML = "Press <b>Divide</b> to divide " + p + " by " + q + " step by step."; return; }
+    if (!done) { out.innerHTML = "Dividing… remainder so far: <b>" + vis[vis.length - 1].r + "</b>"; return; }
+    var why = "In lowest form " + p / lo + "/" + qq + ": the denominator " + qq + (factorsOnly25(qq) ? " has only 2s and 5s, so it terminates." : " has a prime factor other than 2 and 5, so it repeats.");
+    if (res.terminating) out.innerHTML = '<span class="dec">' + p + "/" + q + " = " + decText(res) + "</span><br>The remainder became <b>0</b>: the decimal <b>terminates</b>. " + why;
+    else out.innerHTML = '<span class="dec">' + p + "/" + q + " = " + decText(res) + '<span class="ov">' + res.block + "</span></span><br>The remainder <b>" + res.steps[res.start].from + "</b> came back, so the digits <b>" + res.block + "</b> repeat for ever: <b>non-terminating recurring</b>. " + why;
+  }
+  function stop() { if (anim) { clearInterval(anim); anim = null; } }
+  function go() {
+    stop(); res = divide(p, q); done = false; shown = 0;
+    var total = res.steps.length;
+    if (still || !total) { shown = total; done = true; draw(); return; }
+    draw();
+    anim = setInterval(function () { shown++; if (shown >= total) { done = true; stop(); } draw(); }, 330);
+  }
+  function change(dp, dq) { return function () { stop(); p += dp; q += dq; shown = 0; done = false; draw(); }; }
+  document.getElementById("p-").onclick = change(-1, 0); document.getElementById("p+").onclick = change(1, 0);
+  document.getElementById("q-").onclick = change(0, -1); document.getElementById("q+").onclick = change(0, 1);
+  document.getElementById("go").onclick = go;
+  var tries = document.querySelectorAll("[data-try]");
+  for (var t = 0; t < tries.length; t++) tries[t].onclick = function () { var v = this.getAttribute("data-try").split(","); p = +v[0]; q = +v[1]; go(); };
+  if (window.matchMedia) { var mq = window.matchMedia("(prefers-color-scheme: dark)"); if (mq.addEventListener) mq.addEventListener("change", draw); }
+  window.PX = {
+    set: function (np, nq) { stop(); p = np; q = nq; shown = 0; done = false; draw(); },
+    run: function () { stop(); res = divide(p, q); shown = res.steps.length; done = true; draw(); },
+    state: function () { var R = divide(p, q); return { p: p, q: q, whole: R.whole, pre: R.pre, block: R.block, terminating: R.terminating, remainders: R.steps.map(function (s) { return s.r; }), done: done }; }
+  };
+  draw();
+})();
+</script>
+</body>
+</html>
