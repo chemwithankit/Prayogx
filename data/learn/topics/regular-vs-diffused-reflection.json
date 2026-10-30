@@ -1,0 +1,143 @@
+{
+ "id": "LEARN-C10-PHY-REGULAR-DIFFUSED",
+ "slug": "regular-vs-diffused-reflection",
+ "status": "draft",
+ "class": 10,
+ "subject": "Physics",
+ "chapter": "Light – Reflection and Refraction",
+ "topic": "Regular versus diffused reflection",
+ "title": "Regular vs Diffused Reflection",
+ "series": 394,
+ "studioJob": "regular-diffused-reflection",
+ "reelId": "STUDIO-REGULAR-DIFFUSED-REFLECTION",
+ "summary": "A mirror and a white wall both reflect light; only the mirror shows your face. Smooth surfaces keep rays parallel; rough ones scatter them.",
+ "video": {
+  "instagram": "https://www.instagram.com/reel/DfGpUlADCsD/",
+  "youtubeId": "PENDINGYT00"
+ },
+ "notes": {
+  "pdf": "notes.pdf",
+  "title": "04 – Regular vs Diffused Reflection",
+  "driveDoc": "1_yH0tc9kQd-c8HNrpU0jt1LGrNXGS8AITLRceC15tPA"
+ },
+ "thumb": "thumb.jpg",
+ "tags": [
+  "regular reflection",
+  "diffused reflection",
+  "irregular reflection",
+  "roughness",
+  "laws of reflection"
+ ],
+ "keyPoints": [
+  "**Smooth** surface → parallel rays stay parallel → image: **regular reflection**.",
+  "**Rough** surface → rays scatter → no image: **diffused reflection**.",
+  "Each ray still obeys **i = r** at its own tiny facet.",
+  "Diffused reflection lets us see a book from any angle; a wet road becomes smoother and glares."
+ ],
+ "sections": [
+  {
+   "h": "Smooth vs rough",
+   "blocks": [
+    {
+     "img": "img/rd_compare.png",
+     "alt": "Parallel rays reflecting parallel from a smooth surface and scattering from a rough one",
+     "caption": "Same laws, different surfaces."
+    },
+    {
+     "table": {
+      "head": [
+       "Feature",
+       "Regular",
+       "Diffused"
+      ],
+      "rows": [
+       [
+        "Surface",
+        "Smooth",
+        "Rough"
+       ],
+       [
+        "Reflected rays",
+        "Parallel",
+        "Scattered"
+       ],
+       [
+        "Image",
+        "Forms",
+        "Does not form"
+       ],
+       [
+        "Laws of reflection",
+        "Obeyed",
+        "Obeyed at every facet"
+       ]
+      ]
+     }
+    }
+   ]
+  }
+ ],
+ "quiz": [
+  {
+   "q": "A white wall shows no image because:",
+   "options": [
+    "it absorbs all light",
+    "its rough surface scatters the rays",
+    "it breaks the laws of reflection",
+    "it is luminous"
+   ],
+   "answer": 1,
+   "explain": "Diffused reflection scatters the rays, so no image forms."
+  },
+  {
+   "q": "Does diffused reflection obey the laws of reflection?",
+   "options": [
+    "No",
+    "Yes, at every tiny part of the surface",
+    "Only for red light",
+    "Only at night"
+   ],
+   "answer": 1,
+   "explain": "The normals point different ways, but i = r holds at each point."
+  },
+  {
+   "q": "Which gives regular reflection?",
+   "options": [
+    "A sheet of paper",
+    "A painted wall",
+    "Still water",
+    "A cloth"
+   ],
+   "answer": 2,
+   "explain": "Still water is smooth."
+  },
+  {
+   "q": "A wet road at night looks shiny because water:",
+   "options": [
+    "glows",
+    "fills the bumps and makes the surface smoother",
+    "absorbs light",
+    "is luminous"
+   ],
+   "answer": 1,
+   "explain": "A smoother surface reflects more regularly, causing glare."
+  }
+ ],
+ "simulation": {
+  "decision": "REQUIRED",
+  "status": "pass",
+  "path": "sim.html",
+  "reason": "A roughness slider shows the cause and effect directly: the same parallel rays scatter more as the surface gets rougher, while each still obeys i = r.",
+  "objective": "See how surface roughness turns regular reflection into diffused reflection.",
+  "instructions": [
+   "Start with the slider at 0% (smooth).",
+   "Increase the roughness and watch the reflected rays spread.",
+   "Check the readout: every ray still has i = r."
+  ],
+  "qa": "tests/learn_sims.js 252/252 (2026-10-30)"
+ },
+ "related": [
+  "laws-of-reflection",
+  "reflection-of-light"
+ ]
+}

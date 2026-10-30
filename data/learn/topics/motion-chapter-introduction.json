@@ -1,0 +1,149 @@
+{
+ "id": "LEARN-C9-PHY-MOTION-CHAPTER-INTRO",
+ "slug": "motion-chapter-introduction",
+ "status": "ready",
+ "class": 9,
+ "subject": "Physics",
+ "chapter": "Motion",
+ "topic": "Chapter introduction: Motion",
+ "title": "Motion: Chapter Introduction",
+ "series": 1,
+ "studioJob": "motion-intro",
+ "reelId": "STUDIO-MOTION-INTRO",
+ "summary": "Sitting still? With the Earth you are moving at about 1,500 km/h. Motion is a change of position with time, measured from a reference point, and this chapter gives the tools to describe it.",
+ "video": {
+  "instagram": "https://www.instagram.com/reel/DfGnAGcjRzP/",
+  "youtubeId": "gtkeqraIvl4"
+ },
+ "notes": {
+  "pdf": "notes.pdf",
+  "title": "00 – Motion: Chapter Introduction",
+  "driveDoc": "1WiIMpo3THLtbjUGR6lTxSizKMt2joQ3gC28J5YBe_lY"
+ },
+ "thumb": "thumb.jpg",
+ "tags": [
+  "motion",
+  "chapter introduction",
+  "reference point",
+  "rest",
+  "relative motion"
+ ],
+ "keyPoints": [
+  "**Motion** = change of position with time, relative to a **reference point**.",
+  "Rest and motion are **relative**: still for the chair, moving for the Sun.",
+  "The chapter's tools: **distance/displacement**, **speed/velocity**, **acceleration** and **graphs**.",
+  "On a distance-time graph: flat = at rest, steeper = faster."
+ ],
+ "sections": [
+  {
+   "h": "Are you really at rest?",
+   "blocks": [
+    {
+     "p": "The Earth spins (about **1,500 km/h** at India's latitude) and orbits the Sun (about **1,07,000 km/h**). Whether you are at rest depends on what you compare with."
+    },
+    {
+     "img": "img/mo_relative.png",
+     "alt": "A student at rest relative to a chair, but moving with the Earth round the Sun",
+     "caption": "Rest for the chair, motion for the Sun."
+    }
+   ]
+  },
+  {
+   "h": "The chapter's toolkit",
+   "blocks": [
+    {
+     "table": {
+      "head": [
+       "Question",
+       "Tool"
+      ],
+      "rows": [
+       [
+        "How far?",
+        "Distance and displacement"
+       ],
+       [
+        "How fast?",
+        "Speed and velocity"
+       ],
+       [
+        "Is the speed changing?",
+        "Acceleration"
+       ],
+       [
+        "The whole journey",
+        "Distance-time and velocity-time graphs"
+       ]
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "h": "A graph tells the story",
+   "blocks": [
+    {
+     "img": "img/mo_graph.png",
+     "alt": "A distance-time graph: straight rise, flat while stopped, then steeper",
+     "caption": "Flat = stopped; steeper = faster."
+    }
+   ]
+  }
+ ],
+ "quiz": [
+  {
+   "q": "An object is in motion when its position:",
+   "options": [
+    "is far away",
+    "changes with time relative to a reference point",
+    "is high up",
+    "never changes"
+   ],
+   "answer": 1,
+   "explain": "Motion is a change of position with time, measured from a reference point."
+  },
+  {
+   "q": "A passenger in a moving train is at rest relative to:",
+   "options": [
+    "the platform",
+    "the trees outside",
+    "the other passengers",
+    "the Sun"
+   ],
+   "answer": 2,
+   "explain": "Her position does not change relative to the train and the people in it."
+  },
+  {
+   "q": "A flat line on a distance-time graph means the object is:",
+   "options": [
+    "moving fast",
+    "at rest",
+    "accelerating",
+    "moving backwards"
+   ],
+   "answer": 1,
+   "explain": "The distance is not changing with time."
+  },
+  {
+   "q": "Which quantity tells how fast velocity changes?",
+   "options": [
+    "Distance",
+    "Speed",
+    "Acceleration",
+    "Displacement"
+   ],
+   "answer": 2,
+   "explain": "Acceleration = change in velocity ÷ time."
+  }
+ ],
+ "simulation": {
+  "decision": "NOT_REQUIRED",
+  "reason": "A chapter overview: each tool it introduces has its own topic page, and the speed-vs-velocity simulation already lets students drive the journeys."
+ },
+ "related": [
+  "rest-and-motion",
+  "distance-vs-displacement",
+  "speed-vs-velocity",
+  "average-speed-vs-velocity"
+ ]
+}

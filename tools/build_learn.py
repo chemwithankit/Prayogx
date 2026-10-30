@@ -372,7 +372,9 @@ def chapters_of(cur, ready, c, s):
             if hit:
                 used.add(hit["slug"])
             items.append({"title": hit["title"] if hit else title, "topic": hit})
-        items += [{"title": t["title"], "topic": t} for t in have if t["slug"] not in used]
+        extra = [t for t in have if t["slug"] not in used]
+        intro = [t for t in extra if t["topic"].lower().startswith("chapter introduction")]  # a chapter intro opens its chapter
+        items = [{"title": t["title"], "topic": t} for t in intro] + items + [{"title": t["title"], "topic": t} for t in extra if t not in intro]
         out.append({"name": chp["name"], "slug": slugify(chp["name"]), "n": None if c["id"] == "extra" else i + 1,
                     "about": chp.get("about", ""), "discipline": chp.get("discipline"), "items": items,
                     "videos": [it["topic"] for it in items if it["topic"]], "planned": bool(chp.get("planned"))})

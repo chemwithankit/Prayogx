@@ -22,6 +22,8 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
                                         repeating block, against exact arithmetic
      learn/particles-are-moving/sim.html  diffusion: D ∝ T/η (water viscosity), spread
                                         grows like √(D t)
+     learn/laws-of-reflection/sim.html  r = i from the normal, the surface angle, the target
+     learn/regular-vs-diffused-reflection/sim.html  spread grows with roughness, i = r per facet
    --------------------------------------------------------------------------- */
 
 let n = 0, bad = 0;
@@ -166,6 +168,28 @@ const gcd = (a, b) => { a = Math.abs(a); b = Math.abs(b); while (b) [a, b] = [b,
       ok(`diffusion ${tag}: 4× the time ≈ 2× the spread (√t)`, s4.spread / s1.spread > 1.6 && s4.spread / s1.spread < 2.4, (s4.spread / s1.spread).toFixed(2));
       const ov7 = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
       ok(`diffusion ${tag}: no horizontal overflow`, ov7 <= 0, ov7);
+
+      // ---- laws of reflection: r = i (from the normal); the surface angle is 90 - i; the target needs r = 50
+      await page.goto(base + 'laws-of-reflection/sim.html', { waitUntil: 'load' });
+      for (const a of [0, 30, 60, 85]) {
+        const st = await page.evaluate(v => { PX.setAngle(v); return PX.state(); }, a);
+        ok(`laws ${tag}: i = ${a} -> r = ${a}, from surface ${90 - a}`, st.i === a && st.r === a && st.fromSurface === 90 - a, JSON.stringify(st));
+      }
+      const hit = await page.evaluate(() => { PX.setTarget(0); PX.setAngle(50); return PX.state(); });
+      const miss = await page.evaluate(() => { PX.setAngle(30); return PX.state(); });
+      ok(`laws ${tag}: target at 50 is hit at i = 50 and missed at 30`, hit.hit && !miss.hit);
+      const ov8 = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
+      ok(`laws ${tag}: no horizontal overflow`, ov8 <= 0, ov8);
+
+      // ---- regular vs diffused: spread grows with roughness; every ray obeys i = r and leaves upwards
+      await page.goto(base + 'regular-vs-diffused-reflection/sim.html', { waitUntil: 'load' });
+      const sp = [];
+      for (const r of [0, 30, 60, 100]) sp.push(await page.evaluate(v => { PX.setRoughness(v); return PX.state(); }, r));
+      ok(`diffused ${tag}: smooth surface = regular (spread ~0)`, sp[0].regular && sp[0].spread < 0.01, sp[0].spread);
+      ok(`diffused ${tag}: spread grows with roughness`, sp[1].spread < sp[2].spread && sp[2].spread < sp[3].spread && !sp[3].regular, sp.map(x => x.spread.toFixed(1)).join(' < '));
+      ok(`diffused ${tag}: every ray i = r at its facet and leaves upwards`, sp.every(x => x.rays.every(y => Math.abs(y.i - y.r) < 1e-6 && y.up)));
+      const ov9 = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
+      ok(`diffused ${tag}: no horizontal overflow`, ov9 <= 0, ov9);
       ok(`all sims ${tag}: no console errors`, errs.length === 0, errs.join(' | '));
       await ctx.close();
     }

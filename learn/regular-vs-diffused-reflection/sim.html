@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="sim-id" content="LEARN-C10-PHY-REGULAR-DIFFUSED-SIM">
+<title>Regular vs diffused reflection · PrayogX Learn simulation</title>
+<style>
+:root{--bg:#f4f4f1;--card:#fcfcfb;--line:#d9d9d4;--ink:#0b0b0b;--mut:#52514e;--in:#c77800;--out:#1565c0;--surf:#a1887f}
+@media (prefers-color-scheme:dark){:root{--bg:#111110;--card:#1a1a19;--line:#34342f;--ink:#fff;--mut:#c3c2b7;--in:#ffd54f;--out:#4fc3f7;--surf:#bcaaa4}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+.wrap{max-width:980px;margin:0 auto;padding:12px}
+h1{font-size:17px;margin:2px 0 8px}
+.grid{display:grid;grid-template-columns:minmax(0,1fr) 290px;gap:12px}
+@media (max-width:720px){.grid{grid-template-columns:minmax(0,1fr)}}
+.stage{background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+svg{display:block;width:100%;height:auto}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px}
+.lab{font-size:13px;color:var(--mut);margin:0 0 4px}
+input[type=range]{width:100%}
+table{width:100%;border-collapse:collapse;font-size:14px;margin-top:8px}
+td{padding:4px 2px;border-bottom:1px solid var(--line)}
+td.v{text-align:right;font-weight:700;font-variant-numeric:tabular-nums}
+.note{margin-top:10px;font-size:13.5px;padding:8px 10px;border-radius:9px;background:var(--bg);border:1px solid var(--line);min-height:3.4em}
+.fine{font-size:12px;color:var(--mut);margin-top:8px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>Make the surface rougher: watch parallel rays scatter</h1>
+<div class="grid">
+  <div class="stage"><svg id="sv" viewBox="0 0 400 300" role="img" aria-label="Parallel rays reflecting from a surface of adjustable roughness"></svg></div>
+  <div class="panel">
+    <p class="lab"><label for="rough">Surface roughness: <b id="r-r">0%</b></label></p>
+    <input type="range" id="rough" min="0" max="100" value="0" aria-label="Surface roughness in percent">
+    <table>
+      <tr><td>Spread of reflected rays</td><td class="v" id="r-s">–</td></tr>
+      <tr><td>Type of reflection</td><td class="v" id="r-t">–</td></tr>
+      <tr><td>i = r at every point?</td><td class="v" id="r-l">–</td></tr>
+    </table>
+    <div class="note" id="note" aria-live="polite"></div>
+    <p class="fine">Each ray is reflected with i = r about the normal of the tiny facet it hits. Facet tilts are kept below 22° so no ray re-enters the surface (multiple reflections are left out).</p>
+  </div>
+</div>
+</div>
+<script>
+(function () {
+  "use strict";
+  var R = 0, N = 9, IN = 35 * Math.PI / 180, Y0 = 240, X0 = 20, X1 = 380, SEG = 20;
+  function cssv(n) { return getComputedStyle(document.documentElement).getPropertyValue(n).trim() || "#888"; }
+  /* a fixed pseudo-random bump pattern; the height scales with roughness (max facet tilt about 22 deg) */
+  var BASE = []; (function () { var s = 11; for (var i = 0; i <= (X1 - X0) / SEG; i++) { s = (s * 9301 + 49297) % 233280; BASE.push(s / 233280 * 2 - 1); } })();
+  function surface() { var pts = []; for (var i = 0; i < BASE.length; i++) pts.push([X0 + i * SEG, Y0 - (i % 2 ? 1 : -1) * Math.abs(BASE[i]) * 4 * (R / 100)]); return pts; }
+  function trace() {
+    var pts = surface(), d = [Math.sin(IN), Math.cos(IN)], out = [];
+    for (var k = 0; k < N; k++) {
+      var s = [10 + k * 26, 40], best = null;   /* all 9 rays land between x = 150 and 360 */
+      for (var i = 0; i < pts.length - 1; i++) {
+        var a = pts[i], b = pts[i + 1], ex = b[0] - a[0], ey = b[1] - a[1], den = d[0] * ey - d[1] * ex;
+        if (Math.abs(den) < 1e-9) continue;
+        var t = ((a[0] - s[0]) * ey - (a[1] - s[1]) * ex) / den, u = ((a[0] - s[0]) * d[1] - (a[1] - s[1]) * d[0]) / den;
+        if (t > 0 && u >= 0 && u <= 1 && (!best || t < best.t)) {
+          var len = Math.sqrt(ex * ex + ey * ey), n = [ey / len, -ex / len];
+          if (n[1] > 0) n = [-n[0], -n[1]];
+          var dot = d[0] * n[0] + d[1] * n[1], r = [d[0] - 2 * dot * n[0], d[1] - 2 * dot * n[1]];
+          best = { t: t, p: [s[0] + t * d[0], s[1] + t * d[1]], n: n, r: r, i: Math.acos(-dot) * 180 / Math.PI, rr: Math.acos(r[0] * n[0] + r[1] * n[1]) * 180 / Math.PI };
+        }
+      }
+      if (best) out.push({ s: s, hit: best });
+    }
+    return { pts: pts, rays: out };
+  }
+  function spread(rays) {
+    var a = rays.map(function (x) { return Math.atan2(x.hit.r[0], -x.hit.r[1]) * 180 / Math.PI; });
+    var m = a.reduce(function (p, c) { return p + c; }, 0) / a.length;
+    return Math.sqrt(a.reduce(function (p, c) { return p + (c - m) * (c - m); }, 0) / a.length);
+  }
+  function draw() {
+    var tr = trace(), ci = cssv("--in"), co = cssv("--out"), g = "";
+    g += '<path d="M' + tr.pts.map(function (p) { return p[0] + " " + p[1]; }).join(" L") + " L" + X1 + " 290 L" + X0 + ' 290 Z" fill="' + cssv("--surf") + '"/>';
+    tr.rays.forEach(function (x) {
+      var h = x.hit; if (!h) return;
+      g += '<line x1="' + x.s[0] + '" y1="' + x.s[1] + '" x2="' + h.p[0] + '" y2="' + h.p[1] + '" stroke="' + ci + '" stroke-width="2.5"/>';
+      g += '<line x1="' + h.p[0] + '" y1="' + h.p[1] + '" x2="' + (h.p[0] + 170 * h.r[0]) + '" y2="' + (h.p[1] + 170 * h.r[1]) + '" stroke="' + co + '" stroke-width="2.5"/>';
+    });
+    document.getElementById("sv").innerHTML = g;
+    var sp = spread(tr.rays), ok = tr.rays.every(function (x) { return Math.abs(x.hit.i - x.hit.rr) < 0.01; });
+    document.getElementById("r-r").textContent = R + "%";
+    document.getElementById("r-s").textContent = sp.toFixed(1) + "°";
+    document.getElementById("r-t").textContent = sp < 1 ? "REGULAR" : "DIFFUSED";
+    document.getElementById("r-l").textContent = ok ? "yes" : "no";
+    document.getElementById("note").textContent = sp < 1 ? "Smooth surface: parallel rays stay parallel, so an image can form (regular reflection)." :
+      "Rough surface: the facet normals point different ways, so the rays scatter (diffused reflection), yet each one still obeys i = r.";
+  }
+  var sl = document.getElementById("rough");
+  sl.oninput = function () { R = +sl.value; draw(); };
+  if (window.matchMedia) { var mq = window.matchMedia("(prefers-color-scheme: dark)"); if (mq.addEventListener) mq.addEventListener("change", draw); }
+  window.PX = {
+    setRoughness: function (v) { R = Math.max(0, Math.min(100, Math.round(v))); sl.value = R; draw(); },
+    state: function () { var tr = trace(); return { roughness: R, spread: spread(tr.rays), regular: spread(tr.rays) < 1, rays: tr.rays.map(function (x) { return { i: x.hit.i, r: x.hit.rr, up: x.hit.r[1] < 0 }; }) }; }
+  };
+  draw();
+})();
+</script>
+</body>
+</html>

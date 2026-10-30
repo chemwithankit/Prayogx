@@ -1,0 +1,125 @@
+{
+ "id": "LEARN-C10-PHY-REFLECTION-OF-LIGHT",
+ "slug": "reflection-of-light",
+ "status": "ready",
+ "class": 10,
+ "subject": "Physics",
+ "chapter": "Light – Reflection and Refraction",
+ "topic": "Reflection of light",
+ "title": "Reflection of Light",
+ "series": 392,
+ "studioJob": "reflection-of-light",
+ "reelId": "STUDIO-REFLECTION-OF-LIGHT",
+ "summary": "The Moon makes no light, yet it shines at night: sunlight bounces off it to our eyes. That bouncing back is reflection.",
+ "video": {
+  "instagram": "https://www.instagram.com/reel/DfGokTRjheb/",
+  "youtubeId": "xauT936Gz7w"
+ },
+ "notes": {
+  "pdf": "notes.pdf",
+  "title": "02 – Reflection of Light",
+  "driveDoc": "1MaQPZiOjYFyVq7abHsb1caCorQDcDq_uBecmFMW3ptw"
+ },
+ "thumb": "thumb.jpg",
+ "tags": [
+  "reflection of light",
+  "luminous",
+  "non-luminous",
+  "moon",
+  "mirror"
+ ],
+ "keyPoints": [
+  "**Reflection**: light falls on a surface and returns into the **same medium**.",
+  "**Luminous** objects make light (Sun, bulb, candle); **non-luminous** ones (Moon, book, wall) are seen by reflected light.",
+  "No light, no reflection: in a dark room even a white wall vanishes."
+ ],
+ "sections": [
+  {
+   "h": "Why the Moon shines",
+   "blocks": [
+    {
+     "img": "img/rl_moon.png",
+     "alt": "Sunlight reflected by the Moon towards the Earth",
+     "caption": "Sun (luminous) → Moon (non-luminous) → Earth."
+    }
+   ]
+  },
+  {
+   "h": "Luminous and non-luminous",
+   "blocks": [
+    {
+     "table": {
+      "head": [
+       "Type",
+       "Examples"
+      ],
+      "rows": [
+       [
+        "Luminous: make their own light",
+        "Sun, bulb, candle flame"
+       ],
+       [
+        "Non-luminous: seen by reflected light",
+        "Moon, book, wall, your face"
+       ]
+      ]
+     }
+    }
+   ]
+  }
+ ],
+ "quiz": [
+  {
+   "q": "Reflection of light means light:",
+   "options": [
+    "passes into another medium",
+    "returns into the same medium from a surface",
+    "is absorbed",
+    "changes colour"
+   ],
+   "answer": 1,
+   "explain": "That is the definition of reflection."
+  },
+  {
+   "q": "Which is non-luminous?",
+   "options": [
+    "Sun",
+    "Candle flame",
+    "Moon",
+    "Bulb"
+   ],
+   "answer": 2,
+   "explain": "The Moon makes no light; it reflects sunlight."
+  },
+  {
+   "q": "In a completely dark room a white wall is invisible because:",
+   "options": [
+    "it absorbs all light",
+    "no light falls on it to be reflected",
+    "white is transparent",
+    "the eye stops working"
+   ],
+   "answer": 1,
+   "explain": "No light means nothing to reflect into our eyes."
+  },
+  {
+   "q": "Which reflects more light?",
+   "options": [
+    "Black paper",
+    "Polished steel",
+    "Charcoal",
+    "Black cloth"
+   ],
+   "answer": 1,
+   "explain": "Smooth, shiny surfaces reflect most of the light falling on them."
+  }
+ ],
+ "simulation": {
+  "decision": "NOT_REQUIRED",
+  "reason": "A definition and a classification carried by the Moon example and the dark-room test in the video; nothing to vary."
+ },
+ "related": [
+  "light-chapter-introduction",
+  "laws-of-reflection"
+ ]
+}

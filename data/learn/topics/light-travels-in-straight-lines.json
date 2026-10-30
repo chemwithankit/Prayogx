@@ -1,0 +1,117 @@
+{
+ "id": "LEARN-C10-PHY-LIGHT-STRAIGHT-LINES",
+ "slug": "light-travels-in-straight-lines",
+ "status": "ready",
+ "class": 10,
+ "subject": "Physics",
+ "chapter": "Light – Reflection and Refraction",
+ "topic": "Light travels in straight lines (ray model)",
+ "title": "Light Travels in Straight Lines",
+ "series": 391,
+ "studioJob": "light-straight-lines",
+ "reelId": "STUDIO-LIGHT-STRAIGHT-LINES",
+ "summary": "You can hear a friend round a corner but not see them: sound bends, light travels in straight lines. We draw its path as a ray.",
+ "video": {
+  "instagram": "https://www.instagram.com/reel/DfGoOEDgg9k/",
+  "youtubeId": "YKXChpXfzfA"
+ },
+ "notes": {
+  "pdf": "notes.pdf",
+  "title": "01 – Light Travels in Straight Lines (Ray Model)",
+  "driveDoc": "1bj4idGO0Myvaf0bHzaNwvuRqezVbBw8zzAvkZJ3LOsA"
+ },
+ "thumb": "thumb.jpg",
+ "tags": [
+  "light travels in straight lines",
+  "ray",
+  "beam",
+  "shadow",
+  "ray model",
+  "rectilinear propagation"
+ ],
+ "keyPoints": [
+  "In a uniform medium light travels in **straight lines**.",
+  "**Ray** = path + direction (an arrow); **beam** = many rays.",
+  "Sharp shadows and the 3-card test are the evidence.",
+  "Sound (wavelength ~1 m) bends round corners; light (< 0.001 mm) practically does not."
+ ],
+ "sections": [
+  {
+   "h": "The 3-card test",
+   "blocks": [
+    {
+     "img": "img/sl_cards.png",
+     "alt": "A candle seen through holes in 3 cards only when they are aligned",
+     "caption": "Aligned holes: the flame is seen. Move a card: blocked."
+    }
+   ]
+  },
+  {
+   "h": "Sharp shadows",
+   "blocks": [
+    {
+     "img": "img/sl_shadow.png",
+     "alt": "Rays from a point source graze a ball and form a sharp shadow",
+     "caption": "Edge rays stay straight, so the shadow is sharp."
+    },
+    {
+     "p": "The ray model works for everyday sizes because light's wavelength is tiny; it is a model, not the whole story."
+    }
+   ]
+  }
+ ],
+ "quiz": [
+  {
+   "q": "A ray of light is:",
+   "options": [
+    "a bundle of light",
+    "a straight line with an arrow showing the path of light",
+    "a shadow",
+    "a wave of sound"
+   ],
+   "answer": 1,
+   "explain": "A ray shows the path and direction of light."
+  },
+  {
+   "q": "In the 3-card test the candle is seen only when:",
+   "options": [
+    "the cards are far apart",
+    "the holes are in one straight line",
+    "the room is bright",
+    "one card is moved"
+   ],
+   "answer": 1,
+   "explain": "Light travels in straight lines."
+  },
+  {
+   "q": "Why do we hear but not see a person round a corner?",
+   "options": [
+    "Sound is faster",
+    "Sound bends round corners; light travels practically straight",
+    "Light is absorbed by walls",
+    "Eyes are slower than ears"
+   ],
+   "answer": 1,
+   "explain": "Sound's large wavelength lets it bend; light's tiny wavelength does not."
+  },
+  {
+   "q": "A beam of light is:",
+   "options": [
+    "a single ray",
+    "a bundle of rays",
+    "a shadow",
+    "a mirror"
+   ],
+   "answer": 1,
+   "explain": "Many rays together make a beam."
+  }
+ ],
+ "simulation": {
+  "decision": "NOT_REQUIRED",
+  "reason": "The evidence is a classroom activity (the 3-card test) shown in the video with a real photograph and in the notes; a simulation would only repeat it."
+ },
+ "related": [
+  "light-chapter-introduction",
+  "reflection-of-light"
+ ]
+}

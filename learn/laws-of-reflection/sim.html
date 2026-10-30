@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="sim-id" content="LEARN-C10-PHY-LAWS-OF-REFLECTION-SIM">
+<title>Laws of reflection · PrayogX Learn simulation</title>
+<style>
+:root{--bg:#f4f4f1;--card:#fcfcfb;--line:#d9d9d4;--ink:#0b0b0b;--mut:#52514e;--acc:#2a78d6;--las:#d32f2f;--i:#c77800;--r:#16884a}
+@media (prefers-color-scheme:dark){:root{--bg:#111110;--card:#1a1a19;--line:#34342f;--ink:#fff;--mut:#c3c2b7;--acc:#3987e5;--las:#ff5252;--i:#ffd54f;--r:#69f0ae}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+.wrap{max-width:980px;margin:0 auto;padding:12px}
+h1{font-size:17px;margin:2px 0 8px}
+.grid{display:grid;grid-template-columns:minmax(0,1fr) 290px;gap:12px}
+@media (max-width:720px){.grid{grid-template-columns:minmax(0,1fr)}}
+.stage{background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+svg{display:block;width:100%;height:auto}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px}
+.lab{font-size:13px;color:var(--mut);margin:0 0 4px}
+input[type=range]{width:100%}
+table{width:100%;border-collapse:collapse;font-size:14px;margin-top:8px}
+td{padding:4px 2px;border-bottom:1px solid var(--line)}
+td.v{text-align:right;font-weight:700;font-variant-numeric:tabular-nums}
+.note{margin-top:10px;font-size:13.5px;padding:8px 10px;border-radius:9px;background:var(--bg);border:1px solid var(--line);min-height:3.4em}
+button{font:inherit;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:9px;padding:8px 12px;cursor:pointer;min-height:42px;margin-top:8px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>Aim the laser: change the angle of incidence and hit the target</h1>
+<div class="grid">
+  <div class="stage"><svg id="sv" viewBox="0 0 400 340" role="img" aria-label="A laser reflecting off a plane mirror, with the normal and the angles"></svg></div>
+  <div class="panel">
+    <p class="lab"><label for="ang">Angle of incidence i (from the NORMAL): <b id="r-a">30°</b></label></p>
+    <input type="range" id="ang" min="0" max="85" value="30" aria-label="Angle of incidence in degrees">
+    <table>
+      <tr><td>Angle of incidence i</td><td class="v" id="r-i">–</td></tr>
+      <tr><td>Angle of reflection r</td><td class="v" id="r-r">–</td></tr>
+      <tr><td>Angle from the mirror surface</td><td class="v" id="r-s">–</td></tr>
+    </table>
+    <button type="button" id="new">New target</button>
+    <div class="note" id="note" aria-live="polite"></div>
+  </div>
+</div>
+</div>
+<script>
+(function () {
+  "use strict";
+  var I = 30, TARGETS = [50, 20, 65, 40, 10], t = 0, P = [200, 290], L = 230;
+  function cssv(n) { return getComputedStyle(document.documentElement).getPropertyValue(n).trim() || "#888"; }
+  function rad(d) { return d * Math.PI / 180; }
+  function hit() { return Math.abs(I - TARGETS[t]) <= 2; }
+  function arc(r, a0, a1, col) {   /* angles in degrees measured from the normal (up), positive to the right */
+    var p0 = [P[0] + r * Math.sin(rad(a0)), P[1] - r * Math.cos(rad(a0))], p1 = [P[0] + r * Math.sin(rad(a1)), P[1] - r * Math.cos(rad(a1))];
+    return '<path d="M' + p0[0] + " " + p0[1] + " A " + r + " " + r + " 0 0 " + (a1 > a0 ? 1 : 0) + " " + p1[0] + " " + p1[1] + '" fill="none" stroke="' + col + '" stroke-width="3"/>';
+  }
+  function draw() {
+    var ink = cssv("--ink"), las = cssv("--las"), ci = cssv("--i"), cr = cssv("--r"), mut = cssv("--mut");
+    var A = [P[0] - L * Math.sin(rad(I)), P[1] - L * Math.cos(rad(I))], B = [P[0] + L * Math.sin(rad(I)), P[1] - L * Math.cos(rad(I))];
+    var T = TARGETS[t], TP = [P[0] + 200 * Math.sin(rad(T)), P[1] - 200 * Math.cos(rad(T))];
+    var g = '<rect x="20" y="' + P[1] + '" width="360" height="8" fill="' + mut + '"/>';
+    for (var k = 0; k < 18; k++) g += '<line x1="' + (26 + k * 20) + '" y1="' + (P[1] + 8) + '" x2="' + (18 + k * 20) + '" y2="' + (P[1] + 20) + '" stroke="' + mut + '" stroke-width="2"/>';
+    g += '<line x1="' + P[0] + '" y1="' + P[1] + '" x2="' + P[0] + '" y2="30" stroke="' + ink + '" stroke-width="2" stroke-dasharray="6 5"/>';
+    g += '<text x="' + (P[0] + 6) + '" y="40" font-size="12" font-weight="700" fill="' + ink + '">NORMAL</text>';
+    g += '<g transform="translate(' + TP[0] + " " + TP[1] + ')"><circle r="16" fill="' + (hit() ? cr : las) + '" opacity="0.9"/><circle r="10" fill="#fff"/><circle r="5" fill="' + (hit() ? cr : las) + '"/></g>';
+    g += '<line x1="' + A[0] + '" y1="' + A[1] + '" x2="' + P[0] + '" y2="' + P[1] + '" stroke="' + las + '" stroke-width="4"/>';
+    g += '<line x1="' + P[0] + '" y1="' + P[1] + '" x2="' + B[0] + '" y2="' + B[1] + '" stroke="' + las + '" stroke-width="4"/>';
+    g += '<rect x="' + (A[0] - 18) + '" y="' + (A[1] - 9) + '" width="36" height="18" rx="4" fill="' + mut + '" transform="rotate(' + (90 - I) + " " + A[0] + " " + A[1] + ')"/>';
+    if (I > 0) {
+      g += arc(70, -I, 0, ci) + arc(70, 0, I, cr);
+      g += '<text x="' + (P[0] - 90 * Math.sin(rad(I / 2)) - 8) + '" y="' + (P[1] - 90 * Math.cos(rad(I / 2)) + 4) + '" font-size="13" font-weight="700" fill="' + ci + '" text-anchor="middle">i</text>';
+      g += '<text x="' + (P[0] + 90 * Math.sin(rad(I / 2)) + 8) + '" y="' + (P[1] - 90 * Math.cos(rad(I / 2)) + 4) + '" font-size="13" font-weight="700" fill="' + cr + '" text-anchor="middle">r</text>';
+    }
+    document.getElementById("sv").innerHTML = g;
+    document.getElementById("r-a").textContent = I + "°";
+    document.getElementById("r-i").textContent = I + "°";
+    document.getElementById("r-r").textContent = I + "°";
+    document.getElementById("r-s").textContent = (90 - I) + "°";
+    document.getElementById("note").textContent = hit() ? "Bullseye! The reflected ray leaves at r = i = " + I + "° from the normal." :
+      (I === 0 ? "Along the normal (i = 0°) the ray comes straight back: r = 0°." : "r always equals i, measured from the normal. The angle from the surface (" + (90 - I) + "°) is NOT i. Target needs r = " + T + "°.");
+  }
+  var sl = document.getElementById("ang");
+  sl.oninput = function () { I = +sl.value; draw(); };
+  document.getElementById("new").onclick = function () { t = (t + 1) % TARGETS.length; draw(); };
+  if (window.matchMedia) { var mq = window.matchMedia("(prefers-color-scheme: dark)"); if (mq.addEventListener) mq.addEventListener("change", draw); }
+  window.PX = {
+    setAngle: function (d) { I = Math.max(0, Math.min(85, Math.round(d))); sl.value = I; draw(); },
+    setTarget: function (k) { t = k % TARGETS.length; draw(); },
+    state: function () { return { i: I, r: I, fromSurface: 90 - I, target: TARGETS[t], hit: hit() }; }
+  };
+  draw();
+})();
+</script>
+</body>
+</html>

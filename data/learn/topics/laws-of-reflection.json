@@ -1,0 +1,138 @@
+{
+ "id": "LEARN-C10-PHY-LAWS-OF-REFLECTION",
+ "slug": "laws-of-reflection",
+ "status": "ready",
+ "class": 10,
+ "subject": "Physics",
+ "chapter": "Light – Reflection and Refraction",
+ "topic": "Laws of reflection",
+ "title": "Laws of Reflection",
+ "series": 393,
+ "studioJob": "laws-of-reflection",
+ "reelId": "STUDIO-LAWS-OF-REFLECTION",
+ "summary": "To hit a hidden target with a laser and a mirror you need 2 rules: i = r (both measured from the normal) and all three rays in one plane.",
+ "video": {
+  "instagram": "https://www.instagram.com/reel/DfGo4k4kkDp/",
+  "youtubeId": "tRWi1ABVdSA"
+ },
+ "notes": {
+  "pdf": "notes.pdf",
+  "title": "03 – Laws of Reflection",
+  "driveDoc": "10tNwv1bYxfs50S4zXsTHay4I1YLXFbT9lgsbdOnCTR0"
+ },
+ "thumb": "thumb.jpg",
+ "tags": [
+  "laws of reflection",
+  "angle of incidence",
+  "angle of reflection",
+  "normal",
+  "plane mirror"
+ ],
+ "keyPoints": [
+  "**First law**: angle of incidence = angle of reflection (i = r).",
+  "Angles are measured from the **normal**, not from the surface.",
+  "**Second law**: incident ray, normal and reflected ray lie in the **same plane**.",
+  "Along the normal (i = 0) the ray returns on itself."
+ ],
+ "sections": [
+  {
+   "h": "The two laws",
+   "blocks": [
+    {
+     "img": "img/lr_laws.png",
+     "alt": "Incident and reflected rays making equal 40 degree angles with the normal",
+     "caption": "i = r = 40°, measured from the normal."
+    },
+    {
+     "formula": "i = r   (both from the normal)"
+    }
+   ]
+  },
+  {
+   "h": "Solved examples",
+   "blocks": [
+    {
+     "list": [
+      "A ray makes 30° with the mirror: i = 90° − 30° = 60°, so r = 60°.",
+      "The angle between incident and reflected rays is 90°: i = r = 45°.",
+      "Light falls along the normal: i = r = 0°."
+     ]
+    }
+   ]
+  }
+ ],
+ "quiz": [
+  {
+   "q": "A ray makes 35° with a plane mirror. The angle of reflection is:",
+   "options": [
+    "35°",
+    "55°",
+    "70°",
+    "90°"
+   ],
+   "answer": 1,
+   "explain": "i = 90° − 35° = 55°, and r = i."
+  },
+  {
+   "q": "Angles of incidence and reflection are measured from:",
+   "options": [
+    "the mirror surface",
+    "the normal",
+    "the horizontal",
+    "the incident ray"
+   ],
+   "answer": 1,
+   "explain": "Both are measured from the normal."
+  },
+  {
+   "q": "The angle between incident and reflected rays is 120°. i = ?",
+   "options": [
+    "30°",
+    "60°",
+    "120°",
+    "240°"
+   ],
+   "answer": 1,
+   "explain": "i + r = 120° and i = r, so i = 60°."
+  },
+  {
+   "q": "The second law says the incident ray, normal and reflected ray:",
+   "options": [
+    "are equal",
+    "lie in the same plane",
+    "are parallel",
+    "meet at infinity"
+   ],
+   "answer": 1,
+   "explain": "All three lie in one plane."
+  },
+  {
+   "q": "A ray falls along the normal. It reflects:",
+   "options": [
+    "at 90°",
+    "back along the same path",
+    "along the mirror",
+    "it does not reflect"
+   ],
+   "answer": 1,
+   "explain": "i = 0°, so r = 0°."
+  }
+ ],
+ "simulation": {
+  "decision": "REQUIRED",
+  "status": "pass",
+  "path": "sim.html",
+  "reason": "Swinging the angle and watching r follow i, with the surface angle shown separately, lets students test the law and the common mistake themselves; the target turns it into a challenge.",
+  "objective": "Discover that r = i (measured from the normal) by aiming a laser at a target.",
+  "instructions": [
+   "Move the slider to change the angle of incidence.",
+   "Watch the angle of reflection and the angle from the surface.",
+   "Hit the target, then press New target and try again."
+  ],
+  "qa": "tests/learn_sims.js 252/252 (2026-10-30)"
+ },
+ "related": [
+  "reflection-of-light",
+  "regular-vs-diffused-reflection"
+ ]
+}
