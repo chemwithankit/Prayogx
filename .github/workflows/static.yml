@@ -95,10 +95,11 @@ jobs:
             exit 1
           fi
           # The one exception (owner, 2026-10-29): the approved PrayogX Learn short notes,
-          # exactly learn/<slug>/notes.pdf. Any other PDF anywhere still stops the deploy.
-          if find _site -iname '*.pdf' ! -regex '_site/learn/[a-z0-9-]*/notes\.pdf' | grep -q .; then
+          # exactly learn/<slug>/notes.pdf, and the Learn workbooks learn/<slug>/worksheet.pdf (owner, 2026-11-01).
+          # Any other PDF anywhere still stops the deploy.
+          if find _site -iname '*.pdf' ! -regex '_site/learn/[a-z0-9-]*/\(notes\|worksheet\)\.pdf' | grep -q .; then
             echo "::error::a PDF reached the deploy directory:"
-            find _site -iname '*.pdf' ! -regex '_site/learn/[a-z0-9-]*/notes\.pdf'
+            find _site -iname '*.pdf' ! -regex '_site/learn/[a-z0-9-]*/\(notes\|worksheet\)\.pdf'
             exit 1
           fi
           echo "Deploying:"
