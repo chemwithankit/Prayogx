@@ -1,0 +1,142 @@
+{
+ "slug": "rest-and-motion",
+ "title": "Rest and Motion: Motion is Relative",
+ "class": 9,
+ "subject": "Physics",
+ "chapter": "Motion",
+ "objective": "Are you moving right now? It depends on who is watching. Rest and motion are always measured from a reference point.",
+ "fill": [
+  {
+   "q": "An object is at rest if its position does not change with ____ relative to a reference point.",
+   "a": "time"
+  },
+  {
+   "q": "The fixed point used to describe position is called the ____ point.",
+   "a": "reference"
+  },
+  {
+   "q": "A passenger in a moving bus is at ____ relative to the bus and in ____ relative to the road.",
+   "a": "rest; motion"
+  },
+  {
+   "q": "Nothing on the Earth is in ____ rest, because the Earth itself moves.",
+   "a": "absolute"
+  }
+ ],
+ "tf": [
+  {
+   "q": "An object can be at rest and in motion at the same time.",
+   "a": true,
+   "explain": "Yes, for two different reference points."
+  },
+  {
+   "q": "A parked car is at rest relative to the Sun.",
+   "a": false,
+   "explain": "The car moves with the Earth around the Sun."
+  },
+  {
+   "q": "Two trains moving side by side at the same speed are at rest relative to each other.",
+   "a": true,
+   "explain": "The distance between them does not change."
+  },
+  {
+   "q": "We can say whether something moves without choosing a reference point.",
+   "a": false,
+   "explain": "Rest and motion have meaning only relative to a reference point."
+  }
+ ],
+ "ar": [
+  {
+   "a": "A person sleeping in a moving train is in motion.",
+   "r": "Motion is described relative to a reference point.",
+   "answer": 0,
+   "explain": "Relative to the ground the sleeper changes position, and the reason (reference point) is exactly why."
+  },
+  {
+   "a": "A tree is always at rest.",
+   "r": "A tree does not change its position relative to the ground.",
+   "answer": 3,
+   "explain": "A is false: relative to a moving bus or the Sun the tree moves. R is true."
+  }
+ ],
+ "mcq": [
+  {
+   "q": "A girl sits in a moving car. Relative to the car she is:",
+   "options": [
+    "in motion",
+    "at rest",
+    "both",
+    "neither"
+   ],
+   "answer": 1,
+   "explain": "Her position inside the car does not change."
+  },
+  {
+   "q": "A roadside tree appears to move backward to a bus passenger. This shows:",
+   "options": [
+    "the tree moves",
+    "motion depends on the observer",
+    "the bus is at rest",
+    "the Earth is at rest"
+   ],
+   "answer": 1,
+   "explain": "Relative to the bus the tree's position changes."
+  },
+  {
+   "q": "Which is at rest relative to the Earth's surface?",
+   "options": [
+    "a flying bird",
+    "a parked scooter",
+    "the Moon",
+    "a rolling ball"
+   ],
+   "answer": 1,
+   "explain": "Its position on the ground does not change."
+  },
+  {
+   "q": "To decide whether an object moves, first choose:",
+   "options": [
+    "its speed",
+    "its mass",
+    "a reference point",
+    "its colour"
+   ],
+   "answer": 2,
+   "explain": "Motion is always relative to a reference point."
+  }
+ ],
+ "num": [],
+ "short": [
+  {
+   "q": "Define rest and motion. Why must a reference point be named?",
+   "lines": 5,
+   "solution": "Rest: position unchanged with time relative to a reference point; motion: position changes. The same object can be at rest for one observer and moving for another, so the statement is incomplete without the reference point."
+  },
+  {
+   "q": "A ball is thrown up inside a train moving at constant speed. Describe its path for a passenger and for a person on the platform.",
+   "lines": 5,
+   "solution": "For the passenger it goes straight up and down. For the person on the platform it also moves forward with the train, so its path is a curve."
+  }
+ ],
+ "match": {
+  "left": [
+   "Passenger seen from inside the bus",
+   "Passenger seen from the road",
+   "Fixed point for describing position",
+   "State no object on Earth has"
+  ],
+  "right": [
+   "Reference point",
+   "At rest",
+   "Absolute rest",
+   "In motion"
+  ],
+  "answer": [
+   1,
+   3,
+   0,
+   2
+  ],
+  "explain": "The passenger keeps the same place in the bus but changes place relative to the road; the Earth's own motion rules out absolute rest."
+ }
+}

@@ -1,0 +1,142 @@
+{
+ "slug": "unicellular-and-multicellular",
+ "title": "Unicellular and Multicellular Organisms",
+ "class": 9,
+ "subject": "Biology",
+ "chapter": "The Fundamental Unit of Life",
+ "objective": "An amoeba is one cell; you are about 37 trillion. In one, a single cell does everything; in the other, cells share the work.",
+ "fill": [
+  {
+   "q": "An organism made of a single cell is called ____.",
+   "a": "unicellular"
+  },
+  {
+   "q": "In multicellular organisms different cells do different jobs: this is called division of ____.",
+   "a": "labour"
+  },
+  {
+   "q": "Every multicellular organism starts as a single cell called the ____.",
+   "a": "zygote"
+  },
+  {
+   "q": "Amoeba and Paramecium are ____ organisms.",
+   "a": "unicellular"
+  }
+ ],
+ "tf": [
+  {
+   "q": "A unicellular organism carries out all life processes in one cell.",
+   "a": true,
+   "explain": "One cell does everything."
+  },
+  {
+   "q": "Humans are unicellular.",
+   "a": false,
+   "explain": "We have trillions of cells."
+  },
+  {
+   "q": "Nerve cells and muscle cells have the same shape and job.",
+   "a": false,
+   "explain": "They are specialised for different jobs."
+  },
+  {
+   "q": "A bacterium is unicellular.",
+   "a": true,
+   "explain": "It is a single cell."
+  }
+ ],
+ "ar": [
+  {
+   "a": "Multicellular organisms show division of labour.",
+   "r": "Different cells in them are specialised for different jobs.",
+   "answer": 0,
+   "explain": "R defines division of labour."
+  },
+  {
+   "a": "Amoeba needs separate cells for digestion and movement.",
+   "r": "Amoeba is unicellular.",
+   "answer": 3,
+   "explain": "A is false: its one cell does every job; R is true."
+  }
+ ],
+ "mcq": [
+  {
+   "q": "Which is multicellular?",
+   "options": [
+    "Amoeba",
+    "bacteria",
+    "mango tree",
+    "Paramecium"
+   ],
+   "answer": 2,
+   "explain": "Plants have many cells."
+  },
+  {
+   "q": "Division of labour means:",
+   "options": [
+    "cells divide fast",
+    "different cells do different jobs",
+    "one cell does all jobs",
+    "cells stop working"
+   ],
+   "answer": 1,
+   "explain": "Specialisation."
+  },
+  {
+   "q": "A multicellular organism begins as:",
+   "options": [
+    "many cells",
+    "a tissue",
+    "a zygote",
+    "an organ"
+   ],
+   "answer": 2,
+   "explain": "One fertilised cell."
+  },
+  {
+   "q": "Which cell carries oxygen in humans?",
+   "options": [
+    "nerve cell",
+    "red blood cell",
+    "muscle cell",
+    "skin cell"
+   ],
+   "answer": 1,
+   "explain": "Specialised for transport."
+  }
+ ],
+ "num": [],
+ "short": [
+  {
+   "q": "Compare unicellular and multicellular organisms with examples.",
+   "lines": 5,
+   "solution": "Unicellular: one cell does all life processes (Amoeba, bacteria). Multicellular: many cells with division of labour (plants, animals, humans)."
+  },
+  {
+   "q": "Why do multicellular organisms need division of labour?",
+   "lines": 5,
+   "solution": "With many cells, different groups specialise (muscle for movement, nerve for signals), so the body works efficiently."
+  }
+ ],
+ "match": {
+  "left": [
+   "Amoeba",
+   "Human",
+   "Zygote",
+   "Specialised cells"
+  ],
+  "right": [
+   "Multicellular",
+   "First cell of a multicellular organism",
+   "Division of labour",
+   "Unicellular"
+  ],
+  "answer": [
+   3,
+   0,
+   1,
+   2
+  ],
+  "explain": "Size and complexity come from many specialised cells."
+ }
+}

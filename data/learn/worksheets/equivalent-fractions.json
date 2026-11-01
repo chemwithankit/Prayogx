@@ -1,0 +1,152 @@
+{
+ "slug": "equivalent-fractions",
+ "title": "Equivalent Fractions and Comparing Rational Numbers",
+ "class": 9,
+ "subject": "Mathematics",
+ "chapter": "Number Systems",
+ "objective": "1 slice of 2 or 4 slices of 8: who ate more pizza? Learn equivalent fractions, the LCM trick for comparing, and why −3/4 > −5/6.",
+ "fill": [
+  {
+   "q": "Multiplying numerator and denominator by the same non-zero number gives an ____ fraction.",
+   "a": "equivalent"
+  },
+  {
+   "q": "To compare fractions, first make the ____ equal.",
+   "a": "denominators"
+  },
+  {
+   "q": "For a/b and c/d, compare a × d with ____.",
+   "a": "b × c"
+  },
+  {
+   "q": "Among negatives, the one nearer to ____ is greater.",
+   "a": "0"
+  }
+ ],
+ "tf": [
+  {
+   "q": "2/3 and 6/9 are equivalent.",
+   "a": true,
+   "explain": "Multiply both by 3."
+  },
+  {
+   "q": "−3/4 is greater than −5/6.",
+   "a": true,
+   "explain": "−0.75 is nearer to 0 than −0.83."
+  },
+  {
+   "q": "3/5 > 5/8.",
+   "a": false,
+   "explain": "24/40 < 25/40."
+  },
+  {
+   "q": "Dividing numerator and denominator by the same number changes the value.",
+   "a": false,
+   "explain": "The value is unchanged."
+  }
+ ],
+ "ar": [
+  {
+   "a": "3/4 = 9/12.",
+   "r": "Multiplying numerator and denominator by the same non-zero number keeps the value.",
+   "answer": 0,
+   "explain": "Multiply by 3; R explains A."
+  },
+  {
+   "a": "−2/3 < −3/4.",
+   "r": "Among negatives, the one nearer to 0 is greater.",
+   "answer": 3,
+   "explain": "A is false (−0.67 > −0.75); R is true."
+  }
+ ],
+ "mcq": [
+  {
+   "q": "An equivalent fraction of 4/7 is:",
+   "options": [
+    "8/14",
+    "4/14",
+    "8/7",
+    "7/4"
+   ],
+   "answer": 0,
+   "explain": "Multiply both by 2."
+  },
+  {
+   "q": "Which is larger, 5/6 or 7/9?",
+   "options": [
+    "5/6",
+    "7/9",
+    "equal",
+    "cannot say"
+   ],
+   "answer": 0,
+   "explain": "45/54 > 42/54."
+  },
+  {
+   "q": "Simplest form of 18/24 is:",
+   "options": [
+    "9/12",
+    "3/4",
+    "6/8",
+    "2/3"
+   ],
+   "answer": 1,
+   "explain": "Divide by 6."
+  },
+  {
+   "q": "Order −1/2, −2/3, −3/4 from smallest:",
+   "options": [
+    "−1/2,−2/3,−3/4",
+    "−3/4,−2/3,−1/2",
+    "−2/3,−1/2,−3/4",
+    "equal"
+   ],
+   "answer": 1,
+   "explain": "−0.75 < −0.67 < −0.5."
+  }
+ ],
+ "num": [
+  {
+   "q": "Arrange in ascending order: 2/3, 3/5, 7/10.",
+   "steps": [
+    "LCM of 3, 5, 10 is 30",
+    "2/3 = 20/30, 3/5 = 18/30, 7/10 = 21/30",
+    "Compare numerators: 18 < 20 < 21"
+   ],
+   "answer": "3/5 < 2/3 < 7/10"
+  }
+ ],
+ "short": [
+  {
+   "q": "Compare 7/12 and 5/8 using the LCM.",
+   "lines": 5,
+   "solution": "LCM 24: 14/24 and 15/24, so 5/8 is greater."
+  },
+  {
+   "q": "Why is −3/4 greater than −5/6?",
+   "lines": 5,
+   "solution": "On the number line −3/4 (−0.75) is to the right of −5/6 (−0.83), nearer to 0."
+  }
+ ],
+ "match": {
+  "left": [
+   "2/3 = 8/12",
+   "Same denominators",
+   "Cross-multiply",
+   "Negatives"
+  ],
+  "right": [
+   "a × d vs b × c",
+   "Compare numerators",
+   "Nearer 0 is greater",
+   "Equivalent fractions"
+  ],
+  "answer": [
+   3,
+   1,
+   0,
+   2
+  ],
+  "explain": "All methods compare equal-sized parts."
+ }
+}

@@ -1,0 +1,142 @@
+{
+ "slug": "division-by-zero",
+ "title": "Why Division by Zero Is Undefined",
+ "class": "Supplementary",
+ "subject": "Mathematics",
+ "chapter": "Numbers and infinity",
+ "objective": "A calculator says ERROR for 12 ÷ 0 because no number times 0 gives 12. It is not infinity either.",
+ "fill": [
+  {
+   "q": "a ÷ b = c means c × b = ____.",
+   "a": "a"
+  },
+  {
+   "q": "For a ≠ 0, a ÷ 0 is ____.",
+   "a": "undefined"
+  },
+  {
+   "q": "For 0 ÷ 0, every number works, so there is no ____ answer.",
+   "a": "single"
+  },
+  {
+   "q": "Infinity is not a ____.",
+   "a": "number"
+  }
+ ],
+ "tf": [
+  {
+   "q": "5 ÷ 0 = 0.",
+   "a": false,
+   "explain": "0 × 0 is 0, not 5; no number works."
+  },
+  {
+   "q": "0 ÷ 5 = 0.",
+   "a": true,
+   "explain": "0 × 5 = 0."
+  },
+  {
+   "q": "0 ÷ 0 = 1.",
+   "a": false,
+   "explain": "Any number c satisfies c × 0 = 0, so no single answer."
+  },
+  {
+   "q": "12/x becomes very large as x gets close to 0.",
+   "a": true,
+   "explain": "But it is +∞ on one side and −∞ on the other."
+  }
+ ],
+ "ar": [
+  {
+   "a": "9 ÷ 0 is undefined.",
+   "r": "No number multiplied by 0 gives 9.",
+   "answer": 0,
+   "explain": "R shows why no answer exists."
+  },
+  {
+   "a": "0 ÷ 0 = 0.",
+   "r": "Any number times 0 is 0.",
+   "answer": 3,
+   "explain": "A is false (every number works, so no unique answer); R is true."
+  }
+ ],
+ "mcq": [
+  {
+   "q": "0 ÷ 7 equals:",
+   "options": [
+    "7",
+    "0",
+    "undefined",
+    "1"
+   ],
+   "answer": 1,
+   "explain": "0 × 7 = 0."
+  },
+  {
+   "q": "7 ÷ 0 is:",
+   "options": [
+    "0",
+    "7",
+    "infinity",
+    "undefined"
+   ],
+   "answer": 3,
+   "explain": "No number times 0 gives 7."
+  },
+  {
+   "q": "Why is 0 ÷ 0 undefined?",
+   "options": [
+    "no number works",
+    "every number works, so no unique answer",
+    "it equals 1",
+    "it is infinity"
+   ],
+   "answer": 1,
+   "explain": "No single value."
+  },
+  {
+   "q": "Division is defined as the reverse of:",
+   "options": [
+    "addition",
+    "subtraction",
+    "multiplication",
+    "powers"
+   ],
+   "answer": 2,
+   "explain": "a ÷ b = c ⇔ c × b = a."
+  }
+ ],
+ "num": [],
+ "short": [
+  {
+   "q": "Explain using multiplication why 8 ÷ 0 is undefined.",
+   "lines": 5,
+   "solution": "8 ÷ 0 = c would need c × 0 = 8. But c × 0 = 0 for every c, so no c exists."
+  },
+  {
+   "q": "Why can't we say 8 ÷ 0 = infinity?",
+   "lines": 5,
+   "solution": "Infinity is not a number; also 8/x goes to +∞ from one side and −∞ from the other, so no single value."
+  }
+ ],
+ "match": {
+  "left": [
+   "0 ÷ 5",
+   "5 ÷ 0",
+   "0 ÷ 0",
+   "Division"
+  ],
+  "right": [
+   "Undefined (no answer)",
+   "Undefined (every answer)",
+   "Reverse of multiplication",
+   "0"
+  ],
+  "answer": [
+   3,
+   0,
+   1,
+   2
+  ],
+  "explain": "Check every division by turning it into multiplication."
+ }
+}

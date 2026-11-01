@@ -1,0 +1,162 @@
+{
+ "slug": "average-speed-vs-velocity",
+ "title": "Average Speed vs Average Velocity",
+ "class": 9,
+ "subject": "Physics",
+ "chapter": "Motion",
+ "objective": "Walk 4 km to school and back in an hour: average speed 4 km/h, average velocity zero. One uses total distance, the other displacement.",
+ "fill": [
+  {
+   "q": "Average speed = total distance ÷ total ____.",
+   "a": "time"
+  },
+  {
+   "q": "Average velocity = total ____ ÷ total time.",
+   "a": "displacement"
+  },
+  {
+   "q": "For a round trip, average velocity is ____.",
+   "a": "zero"
+  },
+  {
+   "q": "|Average velocity| is always ____ than or equal to average speed.",
+   "a": "less"
+  }
+ ],
+ "tf": [
+  {
+   "q": "For a round trip, average speed is zero.",
+   "a": false,
+   "explain": "Distance is non-zero, so average speed is non-zero."
+  },
+  {
+   "q": "Average speed for two equal distances at 4 km/h and 12 km/h is 8 km/h.",
+   "a": false,
+   "explain": "Total time matters: it is 6 km/h."
+  },
+  {
+   "q": "Average velocity can be zero while the object moved.",
+   "a": true,
+   "explain": "If it returns to the start."
+  },
+  {
+   "q": "Average speed is a scalar.",
+   "a": true,
+   "explain": "It uses distance, which has no direction."
+  }
+ ],
+ "ar": [
+  {
+   "a": "For a round trip, average velocity is zero.",
+   "r": "Average velocity = total displacement ÷ total time.",
+   "answer": 0,
+   "explain": "Displacement is zero, so R explains A."
+  },
+  {
+   "a": "Average speed of 30 km/h and 60 km/h over equal distances is 45 km/h.",
+   "r": "Average speed = total distance ÷ total time.",
+   "answer": 3,
+   "explain": "A is false (it is 40 km/h); R is the correct rule."
+  }
+ ],
+ "mcq": [
+  {
+   "q": "A cyclist goes 10 km in 1 h and returns in 1 h. Average speed:",
+   "options": [
+    "0",
+    "5 km/h",
+    "10 km/h",
+    "20 km/h"
+   ],
+   "answer": 2,
+   "explain": "20 km ÷ 2 h."
+  },
+  {
+   "q": "In the same trip, average velocity is:",
+   "options": [
+    "0",
+    "5 km/h",
+    "10 km/h",
+    "20 km/h"
+   ],
+   "answer": 0,
+   "explain": "Displacement is zero."
+  },
+  {
+   "q": "Equal distances at 4 km/h and 12 km/h. Average speed:",
+   "options": [
+    "8 km/h",
+    "6 km/h",
+    "16 km/h",
+    "3 km/h"
+   ],
+   "answer": 1,
+   "explain": "For d each: 2d ÷ (d/4 + d/12) = 6."
+  },
+  {
+   "q": "Which can never be negative?",
+   "options": [
+    "velocity",
+    "displacement",
+    "average speed",
+    "average velocity"
+   ],
+   "answer": 2,
+   "explain": "Speed has no direction."
+  }
+ ],
+ "num": [
+  {
+   "q": "A car goes 60 km at 30 km/h and returns 60 km at 60 km/h. Find average speed and average velocity.",
+   "steps": [
+    "Time going = 60 ÷ 30 = 2 h",
+    "Time returning = 60 ÷ 60 = 1 h",
+    "Average speed = 120 ÷ 3 = 40 km/h",
+    "Displacement = 0, so average velocity = 0"
+   ],
+   "answer": "40 km/h; 0"
+  },
+  {
+   "q": "A student walks 600 m to school in 10 min and returns in 15 min. Find the average speed for the round trip in m/s.",
+   "steps": [
+    "Total distance = 1200 m",
+    "Total time = 25 min = 1500 s",
+    "Average speed = 1200 ÷ 1500 = 0.8 m/s"
+   ],
+   "answer": "0.8 m/s"
+  }
+ ],
+ "short": [
+  {
+   "q": "Why can't we just average two speeds?",
+   "lines": 5,
+   "solution": "Average speed is total distance ÷ total time. At the lower speed you spend more time, so it counts more; a simple average ignores this."
+  },
+  {
+   "q": "A bus goes 60 km at 30 km/h and returns at 60 km/h. Find average speed and average velocity.",
+   "lines": 5,
+   "solution": "Time = 2 h + 1 h = 3 h; distance 120 km; average speed 40 km/h. Displacement 0, so average velocity 0."
+  }
+ ],
+ "match": {
+  "left": [
+   "Total distance ÷ total time",
+   "Displacement ÷ total time",
+   "Average velocity of a round trip",
+   "Two equal distances at 4 and 12 km/h"
+  ],
+  "right": [
+   "Average velocity",
+   "Zero",
+   "6 km/h",
+   "Average speed"
+  ],
+  "answer": [
+   3,
+   0,
+   1,
+   2
+  ],
+  "explain": "Averages are always totals divided by total time."
+ }
+}

@@ -1,0 +1,142 @@
+{
+ "slug": "cell-theory",
+ "title": "Cell Theory",
+ "class": 9,
+ "subject": "Biology",
+ "chapter": "The Fundamental Unit of Life",
+ "objective": "Your body has about 37 trillion cells. Three scientists showed that every living thing is built from cells, and every cell comes from another cell.",
+ "fill": [
+  {
+   "q": "All living organisms are made of one or more ____.",
+   "a": "cells"
+  },
+  {
+   "q": "The cell is the basic ____ and functional unit of life.",
+   "a": "structural"
+  },
+  {
+   "q": "\"Omnis cellula e cellula\" means every cell comes from a ____ cell.",
+   "a": "pre-existing"
+  },
+  {
+   "q": "____ are an exception because they are not made of cells.",
+   "a": "Viruses"
+  }
+ ],
+ "tf": [
+  {
+   "q": "Schleiden studied plants and Schwann studied animals.",
+   "a": true,
+   "explain": "Together they proposed that all organisms are made of cells."
+  },
+  {
+   "q": "New cells can form from non-living matter.",
+   "a": false,
+   "explain": "Virchow: cells come only from pre-existing cells."
+  },
+  {
+   "q": "A virus is a cell.",
+   "a": false,
+   "explain": "Viruses have no cell structure."
+  },
+  {
+   "q": "Unicellular organisms also follow cell theory.",
+   "a": true,
+   "explain": "They are made of one cell."
+  }
+ ],
+ "ar": [
+  {
+   "a": "Viruses are an exception to cell theory.",
+   "r": "Viruses are not made of cells.",
+   "answer": 0,
+   "explain": "R is the reason they do not fit."
+  },
+  {
+   "a": "New cells can arise from non-living matter.",
+   "r": "All cells arise from pre-existing cells.",
+   "answer": 3,
+   "explain": "A is false; R (Virchow) is true."
+  }
+ ],
+ "mcq": [
+  {
+   "q": "\"All cells arise from pre-existing cells\" was given by:",
+   "options": [
+    "Hooke",
+    "Schwann",
+    "Virchow",
+    "Brown"
+   ],
+   "answer": 2,
+   "explain": "1855."
+  },
+  {
+   "q": "Which is not part of cell theory?",
+   "options": [
+    "all organisms are made of cells",
+    "the cell is the basic unit of life",
+    "cells come from cells",
+    "all cells have a nucleus"
+   ],
+   "answer": 3,
+   "explain": "Bacteria have no nucleus."
+  },
+  {
+   "q": "Cell theory was proposed around:",
+   "options": [
+    "1665",
+    "1838-1839",
+    "1931",
+    "1990"
+   ],
+   "answer": 1,
+   "explain": "Schleiden and Schwann."
+  },
+  {
+   "q": "An exception to cell theory:",
+   "options": [
+    "bacteria",
+    "yeast",
+    "virus",
+    "amoeba"
+   ],
+   "answer": 2,
+   "explain": "Viruses are not cellular."
+  }
+ ],
+ "num": [],
+ "short": [
+  {
+   "q": "State the three points of cell theory with the scientists.",
+   "lines": 5,
+   "solution": "All organisms are made of cells (Schleiden, Schwann); the cell is the basic unit of structure and function; all cells arise from pre-existing cells (Virchow)."
+  },
+  {
+   "q": "Why are viruses an exception to cell theory?",
+   "lines": 5,
+   "solution": "They are not made of cells and cannot reproduce on their own; they multiply only inside a host cell."
+  }
+ ],
+ "match": {
+  "left": [
+   "Schleiden",
+   "Schwann",
+   "Virchow",
+   "Virus"
+  ],
+  "right": [
+   "Cells from pre-existing cells",
+   "Plants are made of cells",
+   "Animals are made of cells",
+   "Exception to cell theory"
+  ],
+  "answer": [
+   1,
+   2,
+   0,
+   3
+  ],
+  "explain": "Cell theory combined the work of several scientists."
+ }
+}

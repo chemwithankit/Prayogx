@@ -1,0 +1,152 @@
+{
+ "slug": "rational-numbers-on-number-line",
+ "title": "Rational Numbers on the Number Line",
+ "class": 9,
+ "subject": "Mathematics",
+ "chapter": "Number Systems",
+ "objective": "To place p/q, cut each unit into q equal parts and count p parts from 0: right for positive, left for negative.",
+ "fill": [
+  {
+   "q": "To mark 3/4, divide each unit into ____ equal parts.",
+   "a": "4"
+  },
+  {
+   "q": "The numerator tells how many ____ to count from 0.",
+   "a": "parts"
+  },
+  {
+   "q": "Negative rationals lie to the ____ of 0.",
+   "a": "left"
+  },
+  {
+   "q": "A rational number between a and b is (a + b) ÷ ____.",
+   "a": "2"
+  }
+ ],
+ "tf": [
+  {
+   "q": "−2/3 lies between −1 and 0.",
+   "a": true,
+   "explain": "It is negative and less than 1 in size."
+  },
+  {
+   "q": "There is no rational number between 1/2 and 3/4.",
+   "a": false,
+   "explain": "For example 5/8 lies between them."
+  },
+  {
+   "q": "To mark 7/4 we count 7 quarter-parts from 0.",
+   "a": true,
+   "explain": "7 parts of size 1/4."
+  },
+  {
+   "q": "Positive rationals are marked to the left of zero.",
+   "a": false,
+   "explain": "They go to the right."
+  }
+ ],
+ "ar": [
+  {
+   "a": "There are infinitely many rationals between 0 and 1.",
+   "r": "The average of two rationals is a rational between them.",
+   "answer": 0,
+   "explain": "Averaging can be repeated forever."
+  },
+  {
+   "a": "−3/4 lies to the right of 0.",
+   "r": "−3/4 is negative.",
+   "answer": 3,
+   "explain": "A is false; R is true."
+  }
+ ],
+ "mcq": [
+  {
+   "q": "To mark 5/3, each unit is divided into:",
+   "options": [
+    "5 parts",
+    "3 parts",
+    "8 parts",
+    "15 parts"
+   ],
+   "answer": 1,
+   "explain": "The denominator."
+  },
+  {
+   "q": "A rational number between 1/3 and 1/2:",
+   "options": [
+    "5/12",
+    "1/4",
+    "2/3",
+    "1"
+   ],
+   "answer": 0,
+   "explain": "Their average is 5/12."
+  },
+  {
+   "q": "−7/4 lies between:",
+   "options": [
+    "0 and 1",
+    "−1 and −2",
+    "1 and 2",
+    "−2 and −3"
+   ],
+   "answer": 1,
+   "explain": "−1.75."
+  },
+  {
+   "q": "How many rationals lie between 0 and 1?",
+   "options": [
+    "none",
+    "one",
+    "ten",
+    "infinitely many"
+   ],
+   "answer": 3,
+   "explain": "We can always find another by averaging."
+  }
+ ],
+ "num": [
+  {
+   "q": "Find two rational numbers between 1/4 and 1/2 by averaging.",
+   "steps": [
+    "(1/4 + 1/2) ÷ 2 = 3/8",
+    "(1/4 + 3/8) ÷ 2 = 5/16",
+    "Check: 1/4 = 4/16 < 5/16 < 6/16 = 3/8 < 1/2"
+   ],
+   "answer": "3/8 and 5/16"
+  }
+ ],
+ "short": [
+  {
+   "q": "Explain how to mark −5/4 on the number line.",
+   "lines": 5,
+   "solution": "Divide each unit into 4 equal parts; from 0 count 5 parts to the left. That point is −5/4 (between −1 and −2)."
+  },
+  {
+   "q": "Find three rational numbers between 1/2 and 1.",
+   "lines": 5,
+   "solution": "Average: 3/4; then between 1/2 and 3/4: 5/8; between 3/4 and 1: 7/8."
+  }
+ ],
+ "match": {
+  "left": [
+   "Denominator",
+   "Numerator",
+   "Negative sign",
+   "(a + b)/2"
+  ],
+  "right": [
+   "Count to the left",
+   "Number of equal parts per unit",
+   "Parts counted from 0",
+   "A rational between a and b"
+  ],
+  "answer": [
+   1,
+   2,
+   0,
+   3
+  ],
+  "explain": "The number line places every rational exactly."
+ }
+}

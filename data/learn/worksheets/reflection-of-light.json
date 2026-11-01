@@ -1,0 +1,142 @@
+{
+ "slug": "reflection-of-light",
+ "title": "Reflection of Light",
+ "class": 10,
+ "subject": "Physics",
+ "chapter": "Light – Reflection and Refraction",
+ "objective": "The Moon makes no light, yet it shines at night: sunlight bounces off it to our eyes. That bouncing back is reflection.",
+ "fill": [
+  {
+   "q": "Light returning into the same medium after striking a surface is ____.",
+   "a": "reflection"
+  },
+  {
+   "q": "Objects that make their own light are ____.",
+   "a": "luminous"
+  },
+  {
+   "q": "The Moon is a ____ object.",
+   "a": "non-luminous"
+  },
+  {
+   "q": "In a dark room even a white wall cannot be seen because there is no ____.",
+   "a": "light"
+  }
+ ],
+ "tf": [
+  {
+   "q": "The Sun is a non-luminous object.",
+   "a": false,
+   "explain": "It makes its own light."
+  },
+  {
+   "q": "We see a book by the light it reflects.",
+   "a": true,
+   "explain": "It does not make light."
+  },
+  {
+   "q": "A candle flame is luminous.",
+   "a": true,
+   "explain": "It produces light."
+  },
+  {
+   "q": "Reflection can happen without any light falling on a surface.",
+   "a": false,
+   "explain": "No light, no reflection."
+  }
+ ],
+ "ar": [
+  {
+   "a": "A white wall is invisible in a dark room.",
+   "r": "There is no light for the wall to reflect.",
+   "answer": 0,
+   "explain": "R explains A."
+  },
+  {
+   "a": "The Moon is luminous.",
+   "r": "The Moon reflects sunlight.",
+   "answer": 3,
+   "explain": "A is false; R is true."
+  }
+ ],
+ "mcq": [
+  {
+   "q": "Which is luminous?",
+   "options": [
+    "Moon",
+    "book",
+    "bulb (switched on)",
+    "wall"
+   ],
+   "answer": 2,
+   "explain": "It produces light."
+  },
+  {
+   "q": "We see a non-luminous object because it:",
+   "options": [
+    "absorbs all light",
+    "reflects light into our eyes",
+    "makes light",
+    "is hot"
+   ],
+   "answer": 1,
+   "explain": "Reflected light reaches the eye."
+  },
+  {
+   "q": "In a dark room a white wall is invisible because:",
+   "options": [
+    "it absorbs light",
+    "no light falls on it to reflect",
+    "it is too far",
+    "walls are dark"
+   ],
+   "answer": 1,
+   "explain": "No light."
+  },
+  {
+   "q": "The Moon shines because it:",
+   "options": [
+    "burns",
+    "reflects sunlight",
+    "is hot",
+    "emits radio waves"
+   ],
+   "answer": 1,
+   "explain": "Reflected sunlight."
+  }
+ ],
+ "num": [],
+ "short": [
+  {
+   "q": "Distinguish luminous and non-luminous objects with two examples each.",
+   "lines": 5,
+   "solution": "Luminous make light: Sun, bulb. Non-luminous are seen by reflected light: Moon, book."
+  },
+  {
+   "q": "Why is the Moon visible at night?",
+   "lines": 5,
+   "solution": "It reflects sunlight towards the Earth."
+  }
+ ],
+ "match": {
+  "left": [
+   "Sun",
+   "Moon",
+   "Light bouncing back into the same medium",
+   "Dark room"
+  ],
+  "right": [
+   "Reflection",
+   "Nothing to reflect",
+   "Non-luminous",
+   "Luminous"
+  ],
+  "answer": [
+   3,
+   2,
+   0,
+   1
+  ],
+  "explain": "Most things we see are seen by reflected light."
+ }
+}

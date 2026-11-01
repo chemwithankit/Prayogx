@@ -1,0 +1,142 @@
+{
+ "slug": "discovery-of-the-cell",
+ "title": "Discovery of the Cell",
+ "class": 9,
+ "subject": "Biology",
+ "chapter": "The Fundamental Unit of Life",
+ "objective": "In 1665 a thin slice of cork showed tiny boxes Robert Hooke called cells. Then came living cells (1674) and the nucleus (1831).",
+ "fill": [
+  {
+   "q": "In 1665 Robert Hooke observed thin slices of ____.",
+   "a": "cork"
+  },
+  {
+   "q": "Hooke named the boxes \"cells\" from the Latin word cella, meaning a small ____.",
+   "a": "room"
+  },
+  {
+   "q": "In 1674, ____ saw the first living cells in pond water.",
+   "a": "Leeuwenhoek"
+  },
+  {
+   "q": "Robert Brown discovered the ____ in 1831.",
+   "a": "nucleus"
+  }
+ ],
+ "tf": [
+  {
+   "q": "Hooke's cork cells were living.",
+   "a": false,
+   "explain": "Cork cells are dead; he saw only the walls."
+  },
+  {
+   "q": "Leeuwenhoek saw living cells.",
+   "a": true,
+   "explain": "He saw free-living cells in pond water."
+  },
+  {
+   "q": "The nucleus was discovered before the cell.",
+   "a": false,
+   "explain": "The cell (1665) came first; the nucleus in 1831."
+  },
+  {
+   "q": "The word \"cell\" came from the honeycomb-like boxes in cork.",
+   "a": true,
+   "explain": "They looked like small rooms."
+  }
+ ],
+ "ar": [
+  {
+   "a": "Hooke saw only cell walls in cork.",
+   "r": "Cork is made of dead cells.",
+   "answer": 0,
+   "explain": "Dead cells keep only their walls; R explains A."
+  },
+  {
+   "a": "Leeuwenhoek discovered the nucleus.",
+   "r": "Leeuwenhoek observed living cells in pond water.",
+   "answer": 3,
+   "explain": "A is false (Robert Brown did, 1831); R is true."
+  }
+ ],
+ "mcq": [
+  {
+   "q": "Who coined the term \"cell\"?",
+   "options": [
+    "Leeuwenhoek",
+    "Hooke",
+    "Brown",
+    "Schwann"
+   ],
+   "answer": 1,
+   "explain": "In Micrographia, 1665."
+  },
+  {
+   "q": "Hooke's cork cells showed only:",
+   "options": [
+    "nuclei",
+    "cell walls",
+    "chloroplasts",
+    "cytoplasm"
+   ],
+   "answer": 1,
+   "explain": "The cells were dead."
+  },
+  {
+   "q": "The nucleus was discovered by:",
+   "options": [
+    "Hooke",
+    "Purkinje",
+    "Robert Brown",
+    "Virchow"
+   ],
+   "answer": 2,
+   "explain": "1831."
+  },
+  {
+   "q": "Leeuwenhoek's important discovery was:",
+   "options": [
+    "cell wall",
+    "living cells in pond water",
+    "nucleus",
+    "cell theory"
+   ],
+   "answer": 1,
+   "explain": "1674."
+  }
+ ],
+ "num": [],
+ "short": [
+  {
+   "q": "Why did Hooke see empty boxes in cork?",
+   "lines": 5,
+   "solution": "Cork is made of dead cells. Their living contents were gone, leaving only the cell walls."
+  },
+  {
+   "q": "Arrange in order with years: nucleus, cork cells, living cells.",
+   "lines": 5,
+   "solution": "Cork cells (Hooke, 1665) → living cells (Leeuwenhoek, 1674) → nucleus (Brown, 1831)."
+  }
+ ],
+ "match": {
+  "left": [
+   "Robert Hooke",
+   "Leeuwenhoek",
+   "Robert Brown",
+   "Latin cella"
+  ],
+  "right": [
+   "Cork cells, 1665",
+   "Living cells, 1674",
+   "A small room",
+   "Nucleus, 1831"
+  ],
+  "answer": [
+   0,
+   1,
+   3,
+   2
+  ],
+  "explain": "Each discovery needed better microscopes."
+ }
+}

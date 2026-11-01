@@ -1,0 +1,142 @@
+{
+ "slug": "why-do-we-yawn",
+ "title": "Why Do We Yawn?",
+ "class": "Supplementary",
+ "subject": "Biology",
+ "chapter": "Human body",
+ "objective": "It isn't low oxygen. The leading idea is brain cooling, and yawns are contagious, especially between people who are close.",
+ "fill": [
+  {
+   "q": "Giving people extra ____ does not reduce yawning.",
+   "a": "oxygen"
+  },
+  {
+   "q": "A leading idea is that yawning helps ____ the brain.",
+   "a": "cool"
+  },
+  {
+   "q": "Yawning often comes before sleep and after ____.",
+   "a": "waking"
+  },
+  {
+   "q": "Yawns are ____: seeing someone yawn makes us yawn.",
+   "a": "contagious"
+  }
+ ],
+ "tf": [
+  {
+   "q": "We yawn mainly because of low oxygen.",
+   "a": false,
+   "explain": "Extra oxygen does not change yawning."
+  },
+  {
+   "q": "Babies yawn even before birth.",
+   "a": true,
+   "explain": "Yawns are seen in the womb."
+  },
+  {
+   "q": "Contagious yawning is stronger among close friends and family.",
+   "a": true,
+   "explain": "It is linked to social closeness."
+  },
+  {
+   "q": "Yawning happens only when we are tired.",
+   "a": false,
+   "explain": "Also in boredom and state changes."
+  }
+ ],
+ "ar": [
+  {
+   "a": "Yawning is not caused by low oxygen.",
+   "r": "Breathing extra oxygen does not change how often people yawn.",
+   "answer": 0,
+   "explain": "The experiment is the evidence for A."
+  },
+  {
+   "a": "Yawning happens only when we are sleepy.",
+   "r": "Yawns often come before sleep.",
+   "answer": 3,
+   "explain": "A is false (boredom, after waking, contagion); R is true."
+  }
+ ],
+ "mcq": [
+  {
+   "q": "Which evidence argues against the low-oxygen idea?",
+   "options": [
+    "people yawn at night",
+    "extra oxygen does not reduce yawning",
+    "babies yawn",
+    "dogs yawn"
+   ],
+   "answer": 1,
+   "explain": "Oxygen makes no difference."
+  },
+  {
+   "q": "The brain-cooling idea says a yawn:",
+   "options": [
+    "warms the body",
+    "brings cool air and blood flow to cool the brain",
+    "adds oxygen",
+    "removes sleep"
+   ],
+   "answer": 1,
+   "explain": "Jaw stretch + deep cool breath."
+  },
+  {
+   "q": "Contagious yawning means:",
+   "options": [
+    "yawning spreads by germs",
+    "seeing a yawn triggers yours",
+    "yawning causes illness",
+    "yawns are rare"
+   ],
+   "answer": 1,
+   "explain": "A social effect."
+  },
+  {
+   "q": "Yawns are common:",
+   "options": [
+    "during exams only",
+    "before sleep and after waking",
+    "never in babies",
+    "only in humans"
+   ],
+   "answer": 1,
+   "explain": "State changes."
+  }
+ ],
+ "num": [],
+ "short": [
+  {
+   "q": "Why do scientists reject the idea that we yawn for oxygen?",
+   "lines": 5,
+   "solution": "In experiments, breathing extra oxygen or carbon dioxide did not change how often people yawned."
+  },
+  {
+   "q": "Explain the brain-cooling idea of yawning.",
+   "lines": 5,
+   "solution": "The jaw stretch increases blood flow and the deep breath brings in cooler air; together they cool the brain, which may help alertness."
+  }
+ ],
+ "match": {
+  "left": [
+   "Low oxygen idea",
+   "Brain cooling",
+   "Seeing a yawn",
+   "Babies in the womb"
+  ],
+  "right": [
+   "Contagious yawning",
+   "Yawn too",
+   "Leading idea",
+   "Not supported"
+  ],
+  "answer": [
+   3,
+   2,
+   0,
+   1
+  ],
+  "explain": "Science tests ideas with evidence."
+ }
+}

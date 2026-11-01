@@ -1,0 +1,152 @@
+{
+ "slug": "decimal-expansions",
+ "title": "Terminating and Recurring Decimals",
+ "class": 9,
+ "subject": "Mathematics",
+ "chapter": "Number Systems",
+ "objective": "1/4 = 0.25 stops, but 1/3 = 0.333… never does. The remainders of long division decide: a remainder of 0 stops it, a returning remainder makes it repeat.",
+ "fill": [
+  {
+   "q": "If the remainder becomes 0, the decimal ____.",
+   "a": "terminates"
+  },
+  {
+   "q": "1/3 = 0.333…, a ____ decimal.",
+   "a": "recurring"
+  },
+  {
+   "q": "In lowest form, a denominator with only factors 2 and ____ gives a terminating decimal.",
+   "a": "5"
+  },
+  {
+   "q": "1/7 has a repeating block of ____ digits.",
+   "a": "6"
+  }
+ ],
+ "tf": [
+  {
+   "q": "3/8 has a terminating decimal expansion.",
+   "a": true,
+   "explain": "8 = 2³."
+  },
+  {
+   "q": "1/6 terminates.",
+   "a": false,
+   "explain": "6 has the factor 3, so it recurs."
+  },
+  {
+   "q": "Every rational number is terminating or recurring.",
+   "a": true,
+   "explain": "Remainders must end at 0 or repeat."
+  },
+  {
+   "q": "0.101001000100001… is rational.",
+   "a": false,
+   "explain": "It neither terminates nor repeats."
+  }
+ ],
+ "ar": [
+  {
+   "a": "7/80 has a terminating decimal.",
+   "r": "80 = 2⁴ × 5 has only 2s and 5s.",
+   "answer": 0,
+   "explain": "R is the test that guarantees termination."
+  },
+  {
+   "a": "1/12 terminates.",
+   "r": "12 = 2² × 3.",
+   "answer": 3,
+   "explain": "A is false (factor 3 makes it recur); R is true."
+  }
+ ],
+ "mcq": [
+  {
+   "q": "Which terminates?",
+   "options": [
+    "1/3",
+    "2/7",
+    "7/20",
+    "1/6"
+   ],
+   "answer": 2,
+   "explain": "20 = 2² × 5."
+  },
+  {
+   "q": "1/7 = 0.142857 repeating; the repeating block length is:",
+   "options": [
+    "3",
+    "6",
+    "7",
+    "1"
+   ],
+   "answer": 1,
+   "explain": "142857."
+  },
+  {
+   "q": "Why must long division repeat if it never ends?",
+   "options": [
+    "digits are random",
+    "remainders are less than the divisor, so one returns",
+    "the divisor grows",
+    "rounding"
+   ],
+   "answer": 1,
+   "explain": "Only finitely many remainders."
+  },
+  {
+   "q": "A non-terminating, non-recurring decimal is:",
+   "options": [
+    "rational",
+    "irrational",
+    "an integer",
+    "a fraction"
+   ],
+   "answer": 1,
+   "explain": "By definition."
+  }
+ ],
+ "num": [
+  {
+   "q": "Without long division, decide whether 17/125 and 11/24 terminate. Then write 17/125 as a decimal.",
+   "steps": [
+    "125 = 5³ (only 5s) so 17/125 terminates",
+    "24 = 2³ × 3 (has 3) so 11/24 recurs",
+    "17/125 = (17 × 8)/(125 × 8) = 136/1000 = 0.136"
+   ],
+   "answer": "17/125 = 0.136 (terminates); 11/24 recurs"
+  }
+ ],
+ "short": [
+  {
+   "q": "How can you tell, without dividing, whether 13/40 terminates?",
+   "lines": 5,
+   "solution": "Lowest form 13/40; 40 = 2³ × 5 has only 2s and 5s, so it terminates (0.325)."
+  },
+  {
+   "q": "Write the decimal for 1/7 and explain why it repeats.",
+   "lines": 5,
+   "solution": "0.142857142857… The remainders 1,3,2,6,4,5 cycle back, so the digits repeat with period 6."
+  }
+ ],
+ "match": {
+  "left": [
+   "Remainder becomes 0",
+   "Remainder repeats",
+   "Denominator 2s and 5s only",
+   "Neither terminates nor repeats"
+  ],
+  "right": [
+   "Irrational",
+   "Terminates",
+   "Recurring",
+   "Terminating"
+  ],
+  "answer": [
+   3,
+   2,
+   1,
+   0
+  ],
+  "explain": "The remainders decide the type of decimal."
+ }
+}

@@ -1,0 +1,142 @@
+{
+ "slug": "regular-vs-diffused-reflection",
+ "title": "Regular vs Diffused Reflection",
+ "class": 10,
+ "subject": "Physics",
+ "chapter": "Light – Reflection and Refraction",
+ "objective": "A mirror and a white wall both reflect light; only the mirror shows your face. Smooth surfaces keep rays parallel; rough ones scatter them.",
+ "fill": [
+  {
+   "q": "A smooth surface gives ____ reflection.",
+   "a": "regular"
+  },
+  {
+   "q": "A rough surface gives ____ reflection.",
+   "a": "diffused"
+  },
+  {
+   "q": "In diffused reflection each ray still obeys i = ____.",
+   "a": "r"
+  },
+  {
+   "q": "A wet road looks shiny because water makes the surface ____.",
+   "a": "smoother"
+  }
+ ],
+ "tf": [
+  {
+   "q": "Diffused reflection breaks the laws of reflection.",
+   "a": false,
+   "explain": "Each ray obeys i = r at its own tiny facet."
+  },
+  {
+   "q": "A mirror forms an image by regular reflection.",
+   "a": true,
+   "explain": "Parallel rays stay parallel."
+  },
+  {
+   "q": "We can read a book from any angle because of diffused reflection.",
+   "a": true,
+   "explain": "Light scatters in all directions."
+  },
+  {
+   "q": "Diffused reflection forms clear images.",
+   "a": false,
+   "explain": "Scattered rays cannot form an image."
+  }
+ ],
+ "ar": [
+  {
+   "a": "A rough surface gives diffused reflection.",
+   "r": "Its tiny facets face different directions.",
+   "answer": 0,
+   "explain": "Each ray obeys i = r at its own facet, so the rays scatter."
+  },
+  {
+   "a": "Diffused reflection violates the laws of reflection.",
+   "r": "Diffused reflection does not form an image.",
+   "answer": 3,
+   "explain": "A is false; R is true."
+  }
+ ],
+ "mcq": [
+  {
+   "q": "A plane mirror gives:",
+   "options": [
+    "diffused reflection",
+    "regular reflection",
+    "no reflection",
+    "refraction"
+   ],
+   "answer": 1,
+   "explain": "Smooth surface."
+  },
+  {
+   "q": "Paper reflects light:",
+   "options": [
+    "regularly",
+    "diffusely",
+    "not at all",
+    "by refraction"
+   ],
+   "answer": 1,
+   "explain": "Its surface is rough."
+  },
+  {
+   "q": "In diffused reflection, parallel incident rays:",
+   "options": [
+    "stay parallel",
+    "scatter in many directions",
+    "stop",
+    "bend"
+   ],
+   "answer": 1,
+   "explain": "Facets point different ways."
+  },
+  {
+   "q": "Glare from a wet road is due to:",
+   "options": [
+    "diffused reflection",
+    "regular reflection from a smoother surface",
+    "refraction",
+    "absorption"
+   ],
+   "answer": 1,
+   "explain": "Water fills the roughness."
+  }
+ ],
+ "num": [],
+ "short": [
+  {
+   "q": "Why does diffused reflection not form an image, though each ray obeys the laws?",
+   "lines": 5,
+   "solution": "The surface has tiny facets facing different ways; each ray obeys i = r at its facet, but the reflected rays go in different directions, so they cannot meet to form an image."
+  },
+  {
+   "q": "Give one use of each type of reflection.",
+   "lines": 5,
+   "solution": "Regular: mirrors for seeing images. Diffused: lets us see objects and read books from any angle."
+  }
+ ],
+ "match": {
+  "left": [
+   "Smooth surface",
+   "Rough surface",
+   "Mirror",
+   "Book page"
+  ],
+  "right": [
+   "Regular reflection",
+   "Image formed",
+   "Diffused reflection",
+   "Seen from any angle"
+  ],
+  "answer": [
+   0,
+   2,
+   1,
+   3
+  ],
+  "explain": "Surface smoothness decides the type of reflection."
+ }
+}

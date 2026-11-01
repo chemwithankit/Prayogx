@@ -1,0 +1,142 @@
+{
+ "slug": "particles-have-spaces",
+ "title": "Particles Have Spaces Between Them",
+ "class": 9,
+ "subject": "Chemistry",
+ "chapter": "Matter in Our Surroundings",
+ "objective": "50 mL of water plus 50 mL of alcohol gives only about 96 mL. The reason: particles of matter have spaces between them.",
+ "fill": [
+  {
+   "q": "Particles of matter have ____ between them.",
+   "a": "spaces"
+  },
+  {
+   "q": "Sugar dissolves because its particles go into the ____ between water particles.",
+   "a": "spaces"
+  },
+  {
+   "q": "Space between particles is least in ____ and most in gases.",
+   "a": "solids"
+  },
+  {
+   "q": "Gases are easily ____ because their particles are far apart.",
+   "a": "compressed"
+  }
+ ],
+ "tf": [
+  {
+   "q": "50 mL alcohol + 50 mL water gives exactly 100 mL.",
+   "a": false,
+   "explain": "It gives about 96 mL: particles fit into spaces."
+  },
+  {
+   "q": "Gases can be compressed more than solids.",
+   "a": true,
+   "explain": "Their particles are farther apart."
+  },
+  {
+   "q": "Particles in a solid have no space at all between them.",
+   "a": false,
+   "explain": "Small spaces exist, but fewer."
+  },
+  {
+   "q": "Dissolving sugar does not raise the water level much.",
+   "a": true,
+   "explain": "Sugar particles occupy the spaces."
+  }
+ ],
+ "ar": [
+  {
+   "a": "Gases can be compressed easily.",
+   "r": "Particles of a gas have large spaces between them.",
+   "answer": 0,
+   "explain": "R explains A."
+  },
+  {
+   "a": "50 mL water + 50 mL alcohol gives exactly 100 mL.",
+   "r": "Particles of liquids have spaces between them.",
+   "answer": 3,
+   "explain": "A is false (about 96 mL); R is true and explains why."
+  }
+ ],
+ "mcq": [
+  {
+   "q": "Space between particles is greatest in:",
+   "options": [
+    "solid",
+    "liquid",
+    "gas",
+    "all equal"
+   ],
+   "answer": 2,
+   "explain": "Gas particles are far apart."
+  },
+  {
+   "q": "Mixing two liquids gives a smaller total volume because:",
+   "options": [
+    "particles vanish",
+    "particles fit into spaces",
+    "liquids evaporate",
+    "mass is lost"
+   ],
+   "answer": 1,
+   "explain": "Spaces get filled."
+  },
+  {
+   "q": "Which is easiest to compress?",
+   "options": [
+    "iron",
+    "water",
+    "air",
+    "ice"
+   ],
+   "answer": 2,
+   "explain": "Gas."
+  },
+  {
+   "q": "Sugar dissolves in water because:",
+   "options": [
+    "it melts",
+    "it fills the spaces between water particles",
+    "it reacts",
+    "water absorbs it"
+   ],
+   "answer": 1,
+   "explain": "Particle spaces."
+  }
+ ],
+ "num": [],
+ "short": [
+  {
+   "q": "Describe an activity that shows particles have spaces.",
+   "lines": 5,
+   "solution": "Mix 50 mL alcohol with 50 mL water: the total is about 96 mL, not 100 mL, because some particles fill spaces between others."
+  },
+  {
+   "q": "Arrange solid, liquid and gas by the space between particles, and give one consequence.",
+   "lines": 5,
+   "solution": "Solid < liquid < gas. So gases compress easily and solids hardly at all."
+  }
+ ],
+ "match": {
+  "left": [
+   "Gas",
+   "Solid",
+   "50 mL + 50 mL ≈ 96 mL",
+   "Sugar dissolving"
+  ],
+  "right": [
+   "Particles far apart",
+   "Fills spaces between water particles",
+   "Particles closely packed",
+   "Particles fill spaces"
+  ],
+  "answer": [
+   0,
+   2,
+   3,
+   1
+  ],
+  "explain": "Spaces between particles explain mixing and compression."
+ }
+}

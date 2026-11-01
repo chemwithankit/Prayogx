@@ -1,0 +1,152 @@
+{
+ "slug": "what-is-matter",
+ "title": "What is Matter?",
+ "class": 9,
+ "subject": "Chemistry",
+ "chapter": "Matter in Our Surroundings",
+ "objective": "Anything that has mass and takes up space is matter, even the air you cannot see.",
+ "fill": [
+  {
+   "q": "Matter is anything that has ____ and occupies space.",
+   "a": "mass"
+  },
+  {
+   "q": "The SI unit of mass is ____.",
+   "a": "kg"
+  },
+  {
+   "q": "1 litre = ____ mL.",
+   "a": "1000"
+  },
+  {
+   "q": "The SI unit of volume is ____.",
+   "a": "m³"
+  }
+ ],
+ "tf": [
+  {
+   "q": "Air is matter.",
+   "a": true,
+   "explain": "It has mass and fills space (a balloon)."
+  },
+  {
+   "q": "Light is matter.",
+   "a": false,
+   "explain": "It has no mass and does not occupy space."
+  },
+  {
+   "q": "1 L = 1 dm³.",
+   "a": true,
+   "explain": "Both equal 1000 cm³."
+  },
+  {
+   "q": "Feelings like joy are matter.",
+   "a": false,
+   "explain": "They have no mass or volume."
+  }
+ ],
+ "ar": [
+  {
+   "a": "Air is matter.",
+   "r": "Air has mass and occupies space.",
+   "answer": 0,
+   "explain": "R is the definition of matter applied to air."
+  },
+  {
+   "a": "Light is matter.",
+   "r": "Light helps us see objects.",
+   "answer": 3,
+   "explain": "A is false (no mass, no volume); R is true but irrelevant."
+  }
+ ],
+ "mcq": [
+  {
+   "q": "Which is matter?",
+   "options": [
+    "heat",
+    "sound",
+    "air",
+    "light"
+   ],
+   "answer": 2,
+   "explain": "Air has mass and volume."
+  },
+  {
+   "q": "Which is not matter?",
+   "options": [
+    "water",
+    "stone",
+    "shadow",
+    "oxygen"
+   ],
+   "answer": 2,
+   "explain": "A shadow has no mass."
+  },
+  {
+   "q": "250 mL equals:",
+   "options": [
+    "2.5 L",
+    "0.25 L",
+    "25 L",
+    "0.025 L"
+   ],
+   "answer": 1,
+   "explain": "250 ÷ 1000."
+  },
+  {
+   "q": "Matter must have:",
+   "options": [
+    "colour",
+    "smell",
+    "mass and volume",
+    "life"
+   ],
+   "answer": 2,
+   "explain": "By definition."
+  }
+ ],
+ "num": [
+  {
+   "q": "Convert: (a) 2.5 L to mL, (b) 750 mL to L, (c) 3 dm³ to L.",
+   "steps": [
+    "1 L = 1000 mL, so 2.5 L = 2500 mL",
+    "750 mL = 750 ÷ 1000 = 0.75 L",
+    "1 dm³ = 1 L, so 3 dm³ = 3 L"
+   ],
+   "answer": "2500 mL; 0.75 L; 3 L"
+  }
+ ],
+ "short": [
+  {
+   "q": "How can you show that air is matter?",
+   "lines": 5,
+   "solution": "An inflated balloon fills space (volume), and a full balloon weighs slightly more than an empty one (mass). So air is matter."
+  },
+  {
+   "q": "Classify: water, light, sand, sound, air, heat.",
+   "lines": 5,
+   "solution": "Matter: water, sand, air. Not matter: light, sound, heat."
+  }
+ ],
+ "match": {
+  "left": [
+   "Has mass and volume",
+   "SI unit of mass",
+   "1 dm³",
+   "Light, sound, heat"
+  ],
+  "right": [
+   "kg",
+   "Matter",
+   "1 litre",
+   "Not matter"
+  ],
+  "answer": [
+   1,
+   0,
+   2,
+   3
+  ],
+  "explain": "Only things with mass and volume are matter."
+ }
+}

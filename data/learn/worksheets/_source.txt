@@ -1,0 +1,615 @@
+# Worksheet source (one line per question). Built into <slug>.json by tools/worksheets_from_source.py.
+# F q|answer   T statement|T or F|why   M q|a;b;c;d|correct 1-4|why   S q|solution   X left => right (true pairs)   XE why
+@rest-and-motion
+F An object is at rest if its position does not change with ____ relative to a reference point.|time
+F The fixed point used to describe position is called the ____ point.|reference
+F A passenger in a moving bus is at ____ relative to the bus and in ____ relative to the road.|rest; motion
+F Nothing on the Earth is in ____ rest, because the Earth itself moves.|absolute
+T An object can be at rest and in motion at the same time.|T|Yes, for two different reference points.
+T A parked car is at rest relative to the Sun.|F|The car moves with the Earth around the Sun.
+T Two trains moving side by side at the same speed are at rest relative to each other.|T|The distance between them does not change.
+T We can say whether something moves without choosing a reference point.|F|Rest and motion have meaning only relative to a reference point.
+M A girl sits in a moving car. Relative to the car she is:|in motion;at rest;both;neither|2|Her position inside the car does not change.
+M A roadside tree appears to move backward to a bus passenger. This shows:|the tree moves;motion depends on the observer;the bus is at rest;the Earth is at rest|2|Relative to the bus the tree's position changes.
+M Which is at rest relative to the Earth's surface?|a flying bird;a parked scooter;the Moon;a rolling ball|2|Its position on the ground does not change.
+M To decide whether an object moves, first choose:|its speed;its mass;a reference point;its colour|3|Motion is always relative to a reference point.
+S Define rest and motion. Why must a reference point be named?|Rest: position unchanged with time relative to a reference point; motion: position changes. The same object can be at rest for one observer and moving for another, so the statement is incomplete without the reference point.
+S A ball is thrown up inside a train moving at constant speed. Describe its path for a passenger and for a person on the platform.|For the passenger it goes straight up and down. For the person on the platform it also moves forward with the train, so its path is a curve.
+X Passenger seen from inside the bus => At rest
+X Passenger seen from the road => In motion
+X Fixed point for describing position => Reference point
+X State no object on Earth has => Absolute rest
+XE The passenger keeps the same place in the bus but changes place relative to the road; the Earth's own motion rules out absolute rest.
+@motion-chapter-introduction
+F Motion is a change of ____ with time.|position
+F Motion is always described relative to a ____ point.|reference
+F On a distance-time graph, a flat line means the object is at ____.|rest
+F A steeper distance-time graph means the object is moving ____.|faster
+T A chair is at rest for you but moving for an observer on the Sun.|T|Rest and motion depend on the reference point.
+T Speed and velocity mean exactly the same thing.|F|Velocity also has a direction; speed does not.
+T A distance-time graph can tell us whether an object is moving.|T|A changing distance shows motion; a flat line shows rest.
+T Acceleration tells how fast an object is.|F|It tells how fast the velocity changes.
+M Motion is:|change of mass;change of position with time;change of colour;change of shape|2|By definition.
+M Which quantity describes how fast velocity changes?|distance;speed;acceleration;displacement|3|Acceleration is the rate of change of velocity.
+M On a distance-time graph, which line shows the fastest motion?|flat;gentle slope;steep slope;falling to zero|3|Steeper slope = more distance per second.
+M Which is NOT a tool of this chapter?|displacement;velocity;acceleration;density|4|Density belongs to matter, not motion.
+S Why do we need a reference point to describe motion?|Position is measured from some point. The same object can be still for one observer and moving for another, so motion is meaningless without stating the reference.
+S Name the main quantities this chapter uses and what each tells us.|Distance/displacement: how far and in which direction. Speed/velocity: how fast (velocity with direction). Acceleration: how quickly velocity changes. Graphs: show all these at a glance.
+X Change of position with time => Motion
+X Flat distance-time graph => At rest
+X Rate of change of velocity => Acceleration
+X Point we measure from => Reference point
+XE These are the chapter's basic definitions.
+@distance-vs-displacement
+F Distance is the total ____ length travelled.|path
+F Displacement is the shortest straight line from start to ____, with direction.|end
+F Distance is a ____ quantity; displacement is a ____ quantity.|scalar; vector
+F If you return to your starting point, your displacement is ____.|zero
+T Displacement can be greater than distance.|F||Displacement| ≤ distance, always.
+T Distance and displacement are equal for straight-line motion in one direction.|T|The path is the straight line itself.
+T Displacement can be negative.|T|Its sign shows direction along the chosen axis.
+T Distance can be zero for a moving object.|F|A moving object always covers some path.
+M A runner completes one full lap of a 400 m track. Displacement is:|400 m;200 m;0 m;800 m|3|Start and end are the same point.
+M You walk 3 m east, then 4 m north. Displacement is:|7 m;5 m;1 m;12 m|2|√(3² + 4²) = 5 m.
+M Which is a vector?|distance;speed;displacement;time|3|It has magnitude and direction.
+M You walk 6 m forward and 2 m back. Distance and displacement are:|8 m, 4 m;4 m, 8 m;8 m, 8 m;4 m, 4 m|1|Distance 6 + 2 = 8 m; displacement 6 − 2 = 4 m.
+S Give two differences between distance and displacement.|Distance is total path length and a scalar; displacement is start-to-end straight line and a vector. Distance is never zero for a moving object; displacement can be zero for a round trip.
+S A car goes 10 km north then 10 km south. Find distance and displacement.|Distance = 20 km. Displacement = 0, because it ends where it started.
+X Total path length => Distance
+X Straight line start to end with direction => Displacement
+X Displacement after a round trip => Zero
+X Only magnitude, no direction => Scalar
+XE Distance counts every step; displacement only compares start and end.
+@speed-vs-velocity
+F Speed = distance ÷ ____.|time
+F Velocity = ____ ÷ time.|displacement
+F The SI unit of speed and velocity is ____.|m/s
+F 1 km/h = ____ m/s.|5/18
+T Two cars at 60 km/h in opposite directions have the same velocity.|F|Same speed, but opposite directions mean different velocities.
+T An object moving in a circle at constant speed has a changing velocity.|T|Its direction keeps changing.
+T Speed is a vector quantity.|F|Speed has no direction; it is a scalar.
+T 72 km/h equals 20 m/s.|T|72 × 5/18 = 20.
+M Which has direction?|speed;distance;velocity;time|3|Velocity is a vector.
+M 36 km/h in m/s is:|10;20;36;3.6|1|36 × 5/18 = 10.
+M A car goes round a circular track at a steady 40 km/h. Its velocity is:|constant;zero;changing;40 km/h north|3|Direction changes continuously.
+M Speed and velocity have the same magnitude when motion is:|circular;in a straight line, one direction;back and forth;random|2|Then distance = displacement.
+S Distinguish speed and velocity with one example.|Speed = distance/time, no direction (scalar). Velocity = displacement/time, with direction (vector). Example: 50 km/h is a speed; 50 km/h east is a velocity.
+S Convert 90 km/h into m/s and 15 m/s into km/h.|90 × 5/18 = 25 m/s. 15 × 18/5 = 54 km/h.
+X Distance ÷ time => Speed
+X Displacement ÷ time => Velocity
+X km/h to m/s factor => 5/18
+X Constant speed on a circle => Changing velocity
+XE Velocity changes whenever speed or direction changes.
+@average-speed-vs-velocity
+F Average speed = total distance ÷ total ____.|time
+F Average velocity = total ____ ÷ total time.|displacement
+F For a round trip, average velocity is ____.|zero
+F |Average velocity| is always ____ than or equal to average speed.|less
+T For a round trip, average speed is zero.|F|Distance is non-zero, so average speed is non-zero.
+T Average speed for two equal distances at 4 km/h and 12 km/h is 8 km/h.|F|Total time matters: it is 6 km/h.
+T Average velocity can be zero while the object moved.|T|If it returns to the start.
+T Average speed is a scalar.|T|It uses distance, which has no direction.
+M A cyclist goes 10 km in 1 h and returns in 1 h. Average speed:|0;5 km/h;10 km/h;20 km/h|3|20 km ÷ 2 h.
+M In the same trip, average velocity is:|0;5 km/h;10 km/h;20 km/h|1|Displacement is zero.
+M Equal distances at 4 km/h and 12 km/h. Average speed:|8 km/h;6 km/h;16 km/h;3 km/h|2|For d each: 2d ÷ (d/4 + d/12) = 6.
+M Which can never be negative?|velocity;displacement;average speed;average velocity|3|Speed has no direction.
+S Why can't we just average two speeds?|Average speed is total distance ÷ total time. At the lower speed you spend more time, so it counts more; a simple average ignores this.
+S A bus goes 60 km at 30 km/h and returns at 60 km/h. Find average speed and average velocity.|Time = 2 h + 1 h = 3 h; distance 120 km; average speed 40 km/h. Displacement 0, so average velocity 0.
+X Total distance ÷ total time => Average speed
+X Displacement ÷ total time => Average velocity
+X Average velocity of a round trip => Zero
+X Two equal distances at 4 and 12 km/h => 6 km/h
+XE Averages are always totals divided by total time.
+@discovery-of-the-cell
+F In 1665 Robert Hooke observed thin slices of ____.|cork
+F Hooke named the boxes "cells" from the Latin word cella, meaning a small ____.|room
+F In 1674, ____ saw the first living cells in pond water.|Leeuwenhoek
+F Robert Brown discovered the ____ in 1831.|nucleus
+T Hooke's cork cells were living.|F|Cork cells are dead; he saw only the walls.
+T Leeuwenhoek saw living cells.|T|He saw free-living cells in pond water.
+T The nucleus was discovered before the cell.|F|The cell (1665) came first; the nucleus in 1831.
+T The word "cell" came from the honeycomb-like boxes in cork.|T|They looked like small rooms.
+M Who coined the term "cell"?|Leeuwenhoek;Hooke;Brown;Schwann|2|In Micrographia, 1665.
+M Hooke's cork cells showed only:|nuclei;cell walls;chloroplasts;cytoplasm|2|The cells were dead.
+M The nucleus was discovered by:|Hooke;Purkinje;Robert Brown;Virchow|3|1831.
+M Leeuwenhoek's important discovery was:|cell wall;living cells in pond water;nucleus;cell theory|2|1674.
+S Why did Hooke see empty boxes in cork?|Cork is made of dead cells. Their living contents were gone, leaving only the cell walls.
+S Arrange in order with years: nucleus, cork cells, living cells.|Cork cells (Hooke, 1665) → living cells (Leeuwenhoek, 1674) → nucleus (Brown, 1831).
+X Robert Hooke => Cork cells, 1665
+X Leeuwenhoek => Living cells, 1674
+X Robert Brown => Nucleus, 1831
+X Latin cella => A small room
+XE Each discovery needed better microscopes.
+@robert-hooke-discovery-of-cells
+F Hooke described cells in his book ____ (1665).|Micrographia
+F He lit specimens with an oil lamp and a water-filled glass ____.|globe
+F Hooke saw only the cell ____ in cork.|walls
+F He estimated about 1.26 ____ cells in one cubic inch of cork.|billion
+T Hooke used a compound microscope he designed.|T|He built and improved it himself.
+T Hooke saw nuclei in cork cells.|F|Cork cells are dead; only walls remain.
+T Micrographia was a book of drawings of tiny things seen through a microscope.|T|It was a bestseller of its time.
+T Hooke studied living pond-water organisms first.|F|That was Leeuwenhoek.
+M Hooke's specimen was:|onion peel;cork;pond water;blood|2|A thin slice of cork.
+M Why did Hooke need a water-filled globe?|to cool the lamp;to focus light on the specimen;to wet the cork;to magnify the eye|2|It concentrated lamplight.
+M The cork cells looked like:|circles;a honeycomb of boxes;threads;stars|2|Small rooms side by side.
+M Hooke's book was published in:|1590;1665;1674;1831|2|Micrographia, 1665.
+S Why is Hooke's work a turning point in biology?|For the first time living material was seen to be built of small units. He named them cells, starting the study that led to cell theory.
+S Why could Hooke see walls but not cell contents?|Cork is dead tissue; the living contents had disappeared, and his microscope could not show fine detail anyway.
+X Micrographia => Hooke's book, 1665
+X Water-filled globe => Focused lamplight
+X Cork cells => Dead, only walls
+X 1,259,712,000 => Cells per cubic inch (estimate)
+XE Hooke's tools and careful counting made the discovery.
+@cell-theory
+F All living organisms are made of one or more ____.|cells
+F The cell is the basic ____ and functional unit of life.|structural
+F "Omnis cellula e cellula" means every cell comes from a ____ cell.|pre-existing
+F ____ are an exception because they are not made of cells.|Viruses
+T Schleiden studied plants and Schwann studied animals.|T|Together they proposed that all organisms are made of cells.
+T New cells can form from non-living matter.|F|Virchow: cells come only from pre-existing cells.
+T A virus is a cell.|F|Viruses have no cell structure.
+T Unicellular organisms also follow cell theory.|T|They are made of one cell.
+M "All cells arise from pre-existing cells" was given by:|Hooke;Schwann;Virchow;Brown|3|1855.
+M Which is not part of cell theory?|all organisms are made of cells;the cell is the basic unit of life;cells come from cells;all cells have a nucleus|4|Bacteria have no nucleus.
+M Cell theory was proposed around:|1665;1838-1839;1931;1990|2|Schleiden and Schwann.
+M An exception to cell theory:|bacteria;yeast;virus;amoeba|3|Viruses are not cellular.
+S State the three points of cell theory with the scientists.|All organisms are made of cells (Schleiden, Schwann); the cell is the basic unit of structure and function; all cells arise from pre-existing cells (Virchow).
+S Why are viruses an exception to cell theory?|They are not made of cells and cannot reproduce on their own; they multiply only inside a host cell.
+X Schleiden => Plants are made of cells
+X Schwann => Animals are made of cells
+X Virchow => Cells from pre-existing cells
+X Virus => Exception to cell theory
+XE Cell theory combined the work of several scientists.
+@unicellular-and-multicellular
+F An organism made of a single cell is called ____.|unicellular
+F In multicellular organisms different cells do different jobs: this is called division of ____.|labour
+F Every multicellular organism starts as a single cell called the ____.|zygote
+F Amoeba and Paramecium are ____ organisms.|unicellular
+T A unicellular organism carries out all life processes in one cell.|T|One cell does everything.
+T Humans are unicellular.|F|We have trillions of cells.
+T Nerve cells and muscle cells have the same shape and job.|F|They are specialised for different jobs.
+T A bacterium is unicellular.|T|It is a single cell.
+M Which is multicellular?|Amoeba;bacteria;mango tree;Paramecium|3|Plants have many cells.
+M Division of labour means:|cells divide fast;different cells do different jobs;one cell does all jobs;cells stop working|2|Specialisation.
+M A multicellular organism begins as:|many cells;a tissue;a zygote;an organ|3|One fertilised cell.
+M Which cell carries oxygen in humans?|nerve cell;red blood cell;muscle cell;skin cell|2|Specialised for transport.
+S Compare unicellular and multicellular organisms with examples.|Unicellular: one cell does all life processes (Amoeba, bacteria). Multicellular: many cells with division of labour (plants, animals, humans).
+S Why do multicellular organisms need division of labour?|With many cells, different groups specialise (muscle for movement, nerve for signals), so the body works efficiently.
+X Amoeba => Unicellular
+X Human => Multicellular
+X Zygote => First cell of a multicellular organism
+X Specialised cells => Division of labour
+XE Size and complexity come from many specialised cells.
+@what-is-matter
+F Matter is anything that has ____ and occupies space.|mass
+F The SI unit of mass is ____.|kg
+F 1 litre = ____ mL.|1000
+F The SI unit of volume is ____.|m³
+T Air is matter.|T|It has mass and fills space (a balloon).
+T Light is matter.|F|It has no mass and does not occupy space.
+T 1 L = 1 dm³.|T|Both equal 1000 cm³.
+T Feelings like joy are matter.|F|They have no mass or volume.
+M Which is matter?|heat;sound;air;light|3|Air has mass and volume.
+M Which is not matter?|water;stone;shadow;oxygen|3|A shadow has no mass.
+M 250 mL equals:|2.5 L;0.25 L;25 L;0.025 L|2|250 ÷ 1000.
+M Matter must have:|colour;smell;mass and volume;life|3|By definition.
+S How can you show that air is matter?|An inflated balloon fills space (volume), and a full balloon weighs slightly more than an empty one (mass). So air is matter.
+S Classify: water, light, sand, sound, air, heat.|Matter: water, sand, air. Not matter: light, sound, heat.
+X Has mass and volume => Matter
+X SI unit of mass => kg
+X 1 dm³ => 1 litre
+X Light, sound, heat => Not matter
+XE Only things with mass and volume are matter.
+@particles-of-matter
+F Matter is made of very tiny ____.|particles
+F Matter is not ____; it is made of particles.|continuous
+F In the KMnO₄ activity the colour stays even after many ____.|dilutions
+F Particles of matter are too small to see even with an ordinary ____.|microscope
+T A few crystals of KMnO₄ contain a huge number of particles.|T|The colour spreads through many dilutions.
+T Matter is one continuous block with no particles.|F|Experiments show it is particulate.
+T Particles of matter can be seen with a hand lens.|F|They are far too small.
+T Dissolving sugar spreads its particles through the water.|T|The sugar is still there, as particles.
+M The KMnO₄ dilution activity shows that particles are:|large;very small and numerous;coloured only;fixed|2|Colour remains after many dilutions.
+M Matter is:|continuous;made of particles;made of energy;empty|2|Particulate nature.
+M After dissolving salt, the salt:|disappears;is spread as particles;turns into water;becomes air|2|Taste shows it is there.
+M Particles of matter are best described as:|visible grains;extremely tiny;as big as cells;as big as dust|2|Far below microscope range.
+S Describe the KMnO₄ dilution activity and its conclusion.|Dissolve a few crystals in water and keep diluting. The colour stays through many dilutions, so a few crystals hold millions of tiny particles: matter is made of very small particles.
+S Why does sugar seem to disappear in water?|Its particles spread into the spaces between water particles; it is still present, which we can taste.
+X KMnO₄ dilution => Particles are tiny and many
+X Matter => Made of particles
+X Dissolving => Particles spread out
+X Ordinary microscope => Cannot show particles
+XE Everyday activities reveal the particle nature of matter.
+@particles-have-spaces
+F Particles of matter have ____ between them.|spaces
+F Sugar dissolves because its particles go into the ____ between water particles.|spaces
+F Space between particles is least in ____ and most in gases.|solids
+F Gases are easily ____ because their particles are far apart.|compressed
+T 50 mL alcohol + 50 mL water gives exactly 100 mL.|F|It gives about 96 mL: particles fit into spaces.
+T Gases can be compressed more than solids.|T|Their particles are farther apart.
+T Particles in a solid have no space at all between them.|F|Small spaces exist, but fewer.
+T Dissolving sugar does not raise the water level much.|T|Sugar particles occupy the spaces.
+M Space between particles is greatest in:|solid;liquid;gas;all equal|3|Gas particles are far apart.
+M Mixing two liquids gives a smaller total volume because:|particles vanish;particles fit into spaces;liquids evaporate;mass is lost|2|Spaces get filled.
+M Which is easiest to compress?|iron;water;air;ice|3|Gas.
+M Sugar dissolves in water because:|it melts;it fills the spaces between water particles;it reacts;water absorbs it|2|Particle spaces.
+S Describe an activity that shows particles have spaces.|Mix 50 mL alcohol with 50 mL water: the total is about 96 mL, not 100 mL, because some particles fill spaces between others.
+S Arrange solid, liquid and gas by the space between particles, and give one consequence.|Solid < liquid < gas. So gases compress easily and solids hardly at all.
+X Gas => Particles far apart
+X Solid => Particles closely packed
+X 50 mL + 50 mL ≈ 96 mL => Particles fill spaces
+X Sugar dissolving => Fills spaces between water particles
+XE Spaces between particles explain mixing and compression.
+@particles-are-moving
+F Particles of matter are continuously ____.|moving
+F Moving particles have ____ energy.|kinetic
+F The intermixing of particles on their own is called ____.|diffusion
+F Diffusion is fastest in ____.|gases
+T Diffusion is faster in hot water than in cold water.|T|Higher temperature, faster particles.
+T Diffusion is fastest in solids.|F|It is slowest in solids.
+T The smell of incense spreads because of diffusion.|T|Gas particles move and mix with air.
+T Particles stop moving when matter is at rest.|F|They move continuously.
+M Ink spreads faster in:|cold water;hot water;ice;oil|2|More kinetic energy.
+M Diffusion is slowest in:|gases;liquids;solids;all equal|3|Particles are tightly held.
+M Raising the temperature makes particles:|slower;faster;stop;larger|2|Kinetic energy rises.
+M The smell of food reaching you from the kitchen is due to:|evaporation;diffusion;condensation;sublimation|2|Gas particles mix with air.
+S What is diffusion? Give two examples.|Intermixing of particles of different substances on their own. Examples: smell of perfume spreading; ink spreading in water.
+S Why is diffusion faster in gases and at higher temperature?|Gas particles are far apart and move freely; heat increases their kinetic energy, so they move and mix faster.
+X Continuous movement => Kinetic energy
+X Particles mixing on their own => Diffusion
+X Fastest diffusion => Gases
+X Higher temperature => Faster diffusion
+XE Moving particles explain diffusion.
+@natural-whole-integers-rational
+F Natural numbers start from ____.|1
+F Whole numbers are natural numbers together with ____.|0
+F Integers include negative numbers, zero and ____ numbers.|positive
+F A rational number is p/q where p, q are integers and q ≠ ____.|0
+T 0 is a natural number.|F|Natural numbers start from 1.
+T Every integer is a rational number.|T|n = n/1.
+T −3 is a whole number.|F|Whole numbers are 0, 1, 2, …
+T 0/5 is a rational number.|T|0/5 = 0, and the denominator is not 0.
+M Which is a whole number but not natural?|1;0;−1;1/2|2|0.
+M Which is not rational?|−7;3/4;0;5/0|4|Division by zero is undefined.
+M The correct order of sets is:|Q ⊂ Z ⊂ W ⊂ N;N ⊂ W ⊂ Z ⊂ Q;W ⊂ N ⊂ Z ⊂ Q;Z ⊂ N ⊂ W ⊂ Q|2|Each set contains the previous.
+M −4 belongs to:|N only;W only;Z and Q;none|3|It is an integer and rational.
+S Write N, W, Z and Q and show how they are related.|N = {1,2,3,…}, W = {0,1,2,…}, Z = {…,−1,0,1,…}, Q = {p/q, q ≠ 0}. N ⊂ W ⊂ Z ⊂ Q.
+S Is 0 rational? Is 5/0 rational? Explain.|0 = 0/1, so it is rational. 5/0 is not a number because division by zero is undefined.
+X {1, 2, 3, …} => Natural numbers
+X {0, 1, 2, …} => Whole numbers
+X {…, −1, 0, 1, …} => Integers
+X p/q, q ≠ 0 => Rational numbers
+XE Each family adds numbers the previous one lacked.
+@rational-numbers-on-number-line
+F To mark 3/4, divide each unit into ____ equal parts.|4
+F The numerator tells how many ____ to count from 0.|parts
+F Negative rationals lie to the ____ of 0.|left
+F A rational number between a and b is (a + b) ÷ ____.|2
+T −2/3 lies between −1 and 0.|T|It is negative and less than 1 in size.
+T There is no rational number between 1/2 and 3/4.|F|For example 5/8 lies between them.
+T To mark 7/4 we count 7 quarter-parts from 0.|T|7 parts of size 1/4.
+T Positive rationals are marked to the left of zero.|F|They go to the right.
+M To mark 5/3, each unit is divided into:|5 parts;3 parts;8 parts;15 parts|2|The denominator.
+M A rational number between 1/3 and 1/2:|5/12;1/4;2/3;1|1|Their average is 5/12.
+M −7/4 lies between:|0 and 1;−1 and −2;1 and 2;−2 and −3|2|−1.75.
+M How many rationals lie between 0 and 1?|none;one;ten;infinitely many|4|We can always find another by averaging.
+S Explain how to mark −5/4 on the number line.|Divide each unit into 4 equal parts; from 0 count 5 parts to the left. That point is −5/4 (between −1 and −2).
+S Find three rational numbers between 1/2 and 1.|Average: 3/4; then between 1/2 and 3/4: 5/8; between 3/4 and 1: 7/8.
+X Denominator => Number of equal parts per unit
+X Numerator => Parts counted from 0
+X Negative sign => Count to the left
+X (a + b)/2 => A rational between a and b
+XE The number line places every rational exactly.
+@equivalent-fractions
+F Multiplying numerator and denominator by the same non-zero number gives an ____ fraction.|equivalent
+F To compare fractions, first make the ____ equal.|denominators
+F For a/b and c/d, compare a × d with ____.|b × c
+F Among negatives, the one nearer to ____ is greater.|0
+T 2/3 and 6/9 are equivalent.|T|Multiply both by 3.
+T −3/4 is greater than −5/6.|T|−0.75 is nearer to 0 than −0.83.
+T 3/5 > 5/8.|F|24/40 < 25/40.
+T Dividing numerator and denominator by the same number changes the value.|F|The value is unchanged.
+M An equivalent fraction of 4/7 is:|8/14;4/14;8/7;7/4|1|Multiply both by 2.
+M Which is larger, 5/6 or 7/9?|5/6;7/9;equal;cannot say|1|45/54 > 42/54.
+M Simplest form of 18/24 is:|9/12;3/4;6/8;2/3|2|Divide by 6.
+M Order −1/2, −2/3, −3/4 from smallest:|−1/2,−2/3,−3/4;−3/4,−2/3,−1/2;−2/3,−1/2,−3/4;equal|2|−0.75 < −0.67 < −0.5.
+S Compare 7/12 and 5/8 using the LCM.|LCM 24: 14/24 and 15/24, so 5/8 is greater.
+S Why is −3/4 greater than −5/6?|On the number line −3/4 (−0.75) is to the right of −5/6 (−0.83), nearer to 0.
+X 2/3 = 8/12 => Equivalent fractions
+X Same denominators => Compare numerators
+X Cross-multiply => a × d vs b × c
+X Negatives => Nearer 0 is greater
+XE All methods compare equal-sized parts.
+@decimal-expansions
+F If the remainder becomes 0, the decimal ____.|terminates
+F 1/3 = 0.333…, a ____ decimal.|recurring
+F In lowest form, a denominator with only factors 2 and ____ gives a terminating decimal.|5
+F 1/7 has a repeating block of ____ digits.|6
+T 3/8 has a terminating decimal expansion.|T|8 = 2³.
+T 1/6 terminates.|F|6 has the factor 3, so it recurs.
+T Every rational number is terminating or recurring.|T|Remainders must end at 0 or repeat.
+T 0.101001000100001… is rational.|F|It neither terminates nor repeats.
+M Which terminates?|1/3;2/7;7/20;1/6|3|20 = 2² × 5.
+M 1/7 = 0.142857 repeating; the repeating block length is:|3;6;7;1|2|142857.
+M Why must long division repeat if it never ends?|digits are random;remainders are less than the divisor, so one returns;the divisor grows;rounding|2|Only finitely many remainders.
+M A non-terminating, non-recurring decimal is:|rational;irrational;an integer;a fraction|2|By definition.
+S How can you tell, without dividing, whether 13/40 terminates?|Lowest form 13/40; 40 = 2³ × 5 has only 2s and 5s, so it terminates (0.325).
+S Write the decimal for 1/7 and explain why it repeats.|0.142857142857… The remainders 1,3,2,6,4,5 cycle back, so the digits repeat with period 6.
+X Remainder becomes 0 => Terminating
+X Remainder repeats => Recurring
+X Denominator 2s and 5s only => Terminates
+X Neither terminates nor repeats => Irrational
+XE The remainders decide the type of decimal.
+@light-chapter-introduction
+F We see non-luminous objects by the light they ____ into our eyes.|reflect
+F Light returning into the same medium is called ____.|reflection
+F Light bending when it enters another medium is called ____.|refraction
+F Refraction happens because the ____ of light changes.|speed
+T Mirrors work by refraction.|F|Mirrors use reflection.
+T Lenses work by refraction.|T|Light bends as it enters and leaves the glass.
+T Our eye contains a lens.|T|It focuses light on the retina.
+T We see the Moon because it makes its own light.|F|It reflects sunlight.
+M Bending of light at the boundary of two media is:|reflection;refraction;dispersion;absorption|2|Its speed changes.
+M Which works mainly by reflection?|lens;prism;plane mirror;spectacles|3|Mirrors reflect.
+M Refraction is caused by a change in:|colour;speed of light;source;temperature only|2|Light changes speed in a new medium.
+M Part 2 of the chapter deals with:|mirrors;refraction and lenses;electricity;sound|2|Part 1 is mirrors.
+S Distinguish reflection and refraction.|Reflection: light bounces back into the same medium (mirror). Refraction: light bends on entering another medium because its speed changes (lens).
+S How do we see a book in a lit room?|Light from a source falls on the book; the book reflects it into our eyes.
+X Mirror => Reflection
+X Lens => Refraction
+X Moon => Seen by reflected light
+X Change in speed => Bending of light
+XE The chapter has two parts: reflection and refraction.
+@light-travels-in-straight-lines
+F In a uniform medium light travels in ____ lines.|straight
+F A ray shows the path and ____ of light.|direction
+F A bundle of rays is called a ____.|beam
+F Sharp ____ are evidence that light travels in straight lines.|shadows
+T Light bends around corners as easily as sound.|F|Light's wavelength is tiny, so it hardly bends.
+T In the 3-card test, light passes only when the holes are in a line.|T|It travels straight.
+T A ray is drawn as a line with an arrow.|T|The arrow shows direction.
+T Shadows form because light passes through opaque objects.|F|Opaque objects block light.
+M Sharp shadows show that light:|bends;travels in straight lines;is a sound;is slow|2|Straight-line travel.
+M We hear but do not see around a corner because sound:|is faster;has a much longer wavelength;is louder;is a particle|2|Long waves bend round obstacles.
+M A ray of light is:|a beam;the path and direction of light;a shadow;a mirror|2|Definition.
+M In the 3-card test, the candle is seen only when:|the holes are aligned;cards touch;lights are off;cards are bent|1|Straight path needed.
+S Describe the 3-card activity and its conclusion.|Make holes in three cards and line them up between a candle and your eye. You see the flame only when the holes are in a straight line, so light travels in straight lines.
+S Why can we hear a person around a corner but not see them?|Sound waves (about 1 m long) bend round the corner; light waves are far shorter than 0.001 mm, so they practically do not bend.
+X Ray => Path and direction of light
+X Beam => Many rays
+X Sharp shadow => Straight-line travel
+X Long wavelength => Bends around corners
+XE Straight-line travel explains shadows and the 3-card test.
+@reflection-of-light
+F Light returning into the same medium after striking a surface is ____.|reflection
+F Objects that make their own light are ____.|luminous
+F The Moon is a ____ object.|non-luminous
+F In a dark room even a white wall cannot be seen because there is no ____.|light
+T The Sun is a non-luminous object.|F|It makes its own light.
+T We see a book by the light it reflects.|T|It does not make light.
+T A candle flame is luminous.|T|It produces light.
+T Reflection can happen without any light falling on a surface.|F|No light, no reflection.
+M Which is luminous?|Moon;book;bulb (switched on);wall|3|It produces light.
+M We see a non-luminous object because it:|absorbs all light;reflects light into our eyes;makes light;is hot|2|Reflected light reaches the eye.
+M In a dark room a white wall is invisible because:|it absorbs light;no light falls on it to reflect;it is too far;walls are dark|2|No light.
+M The Moon shines because it:|burns;reflects sunlight;is hot;emits radio waves|2|Reflected sunlight.
+S Distinguish luminous and non-luminous objects with two examples each.|Luminous make light: Sun, bulb. Non-luminous are seen by reflected light: Moon, book.
+S Why is the Moon visible at night?|It reflects sunlight towards the Earth.
+X Sun => Luminous
+X Moon => Non-luminous
+X Light bouncing back into the same medium => Reflection
+X Dark room => Nothing to reflect
+XE Most things we see are seen by reflected light.
+@laws-of-reflection
+F First law: angle of incidence = angle of ____.|reflection
+F Angles are measured from the ____, not from the surface.|normal
+F The incident ray, normal and reflected ray lie in the same ____.|plane
+F A ray along the normal returns along ____.|itself
+T i = r for every reflection at a mirror.|T|First law of reflection.
+T The angle of incidence is measured from the mirror surface.|F|It is measured from the normal.
+T A ray hitting a mirror at 90° to the surface reflects back on itself.|T|Then i = 0.
+T The reflected ray can leave the plane of incidence.|F|Second law: all three lie in one plane.
+M A ray makes 30° with the mirror surface. Angle of reflection:|30°;60°;90°;0°|2|i = 90° − 30° = 60° = r.
+M If i = 45°, the angle between incident and reflected rays is:|45°;90°;180°;0°|2|i + r = 90°.
+M The normal is:|along the mirror;perpendicular to the mirror at the point of incidence;the reflected ray;a light ray|2|Definition.
+M Which law says the three rays lie in one plane?|first;second;third;none|2|The second law.
+S State the two laws of reflection.|1. The angle of incidence equals the angle of reflection. 2. The incident ray, the normal at the point of incidence and the reflected ray lie in the same plane.
+S A ray strikes a mirror at 25° to the surface. Find i and r.|i = 90° − 25° = 65°; r = 65°.
+X i = r => First law
+X Same plane => Second law
+X Perpendicular at point of incidence => Normal
+X i = 0 => Ray returns on itself
+XE Always measure from the normal.
+@regular-vs-diffused-reflection
+F A smooth surface gives ____ reflection.|regular
+F A rough surface gives ____ reflection.|diffused
+F In diffused reflection each ray still obeys i = ____.|r
+F A wet road looks shiny because water makes the surface ____.|smoother
+T Diffused reflection breaks the laws of reflection.|F|Each ray obeys i = r at its own tiny facet.
+T A mirror forms an image by regular reflection.|T|Parallel rays stay parallel.
+T We can read a book from any angle because of diffused reflection.|T|Light scatters in all directions.
+T Diffused reflection forms clear images.|F|Scattered rays cannot form an image.
+M A plane mirror gives:|diffused reflection;regular reflection;no reflection;refraction|2|Smooth surface.
+M Paper reflects light:|regularly;diffusely;not at all;by refraction|2|Its surface is rough.
+M In diffused reflection, parallel incident rays:|stay parallel;scatter in many directions;stop;bend|2|Facets point different ways.
+M Glare from a wet road is due to:|diffused reflection;regular reflection from a smoother surface;refraction;absorption|2|Water fills the roughness.
+S Why does diffused reflection not form an image, though each ray obeys the laws?|The surface has tiny facets facing different ways; each ray obeys i = r at its facet, but the reflected rays go in different directions, so they cannot meet to form an image.
+S Give one use of each type of reflection.|Regular: mirrors for seeing images. Diffused: lets us see objects and read books from any angle.
+X Smooth surface => Regular reflection
+X Rough surface => Diffused reflection
+X Mirror => Image formed
+X Book page => Seen from any angle
+XE Surface smoothness decides the type of reflection.
+@division-by-zero
+F a ÷ b = c means c × b = ____.|a
+F For a ≠ 0, a ÷ 0 is ____.|undefined
+F For 0 ÷ 0, every number works, so there is no ____ answer.|single
+F Infinity is not a ____.|number
+T 5 ÷ 0 = 0.|F|0 × 0 is 0, not 5; no number works.
+T 0 ÷ 5 = 0.|T|0 × 5 = 0.
+T 0 ÷ 0 = 1.|F|Any number c satisfies c × 0 = 0, so no single answer.
+T 12/x becomes very large as x gets close to 0.|T|But it is +∞ on one side and −∞ on the other.
+M 0 ÷ 7 equals:|7;0;undefined;1|2|0 × 7 = 0.
+M 7 ÷ 0 is:|0;7;infinity;undefined|4|No number times 0 gives 7.
+M Why is 0 ÷ 0 undefined?|no number works;every number works, so no unique answer;it equals 1;it is infinity|2|No single value.
+M Division is defined as the reverse of:|addition;subtraction;multiplication;powers|3|a ÷ b = c ⇔ c × b = a.
+S Explain using multiplication why 8 ÷ 0 is undefined.|8 ÷ 0 = c would need c × 0 = 8. But c × 0 = 0 for every c, so no c exists.
+S Why can't we say 8 ÷ 0 = infinity?|Infinity is not a number; also 8/x goes to +∞ from one side and −∞ from the other, so no single value.
+X 0 ÷ 5 => 0
+X 5 ÷ 0 => Undefined (no answer)
+X 0 ÷ 0 => Undefined (every answer)
+X Division => Reverse of multiplication
+XE Check every division by turning it into multiplication.
+@why-0-999-equals-1
+F 1/3 = 0.333…, so 3 × 1/3 = ____.|0.999…
+F If x = 0.999…, then 10x − x = ____.|9
+F So 9x = 9 and x = ____.|1
+F 0.999 with three 9s is ____ than 1.|less
+T 0.999… is slightly less than 1.|F|The never-ending 0.999… equals 1 exactly.
+T 0.999 (three 9s) equals 1.|F|It is 0.001 less than 1.
+T 0.999… and 1 are two names for the same number.|T|No number lies between them.
+T 2/3 = 0.666… .|T|2 × 0.333… .
+M x = 0.999…; 10x =|9.99…;9.999…;99.9;10|2|Shift the decimal point.
+M 10x − x equals:|0.999…;9;10;1|2|9.999… − 0.999… = 9.
+M Which equals 1?|0.9;0.99;0.999;0.999…|4|Only the endless one.
+M 0.4999… equals:|0.4;0.5;0.49;0.45|2|Same reasoning.
+S Prove that 0.999… = 1.|Let x = 0.999…. Then 10x = 9.999…. Subtract: 9x = 9, so x = 1.
+S Use 1/3 = 0.333… to show 0.999… = 1.|Multiply by 3: 3 × 1/3 = 1 and 3 × 0.333… = 0.999…, so they are equal.
+X 0.333… => 1/3
+X 0.999… => 1
+X 0.999 (three 9s) => Less than 1
+X 10x − x = 9 => x = 1
+XE Endless repeating 9s equal the next number.
+@why-do-we-yawn
+F Giving people extra ____ does not reduce yawning.|oxygen
+F A leading idea is that yawning helps ____ the brain.|cool
+F Yawning often comes before sleep and after ____.|waking
+F Yawns are ____: seeing someone yawn makes us yawn.|contagious
+T We yawn mainly because of low oxygen.|F|Extra oxygen does not change yawning.
+T Babies yawn even before birth.|T|Yawns are seen in the womb.
+T Contagious yawning is stronger among close friends and family.|T|It is linked to social closeness.
+T Yawning happens only when we are tired.|F|Also in boredom and state changes.
+M Which evidence argues against the low-oxygen idea?|people yawn at night;extra oxygen does not reduce yawning;babies yawn;dogs yawn|2|Oxygen makes no difference.
+M The brain-cooling idea says a yawn:|warms the body;brings cool air and blood flow to cool the brain;adds oxygen;removes sleep|2|Jaw stretch + deep cool breath.
+M Contagious yawning means:|yawning spreads by germs;seeing a yawn triggers yours;yawning causes illness;yawns are rare|2|A social effect.
+M Yawns are common:|during exams only;before sleep and after waking;never in babies;only in humans|2|State changes.
+S Why do scientists reject the idea that we yawn for oxygen?|In experiments, breathing extra oxygen or carbon dioxide did not change how often people yawned.
+S Explain the brain-cooling idea of yawning.|The jaw stretch increases blood flow and the deep breath brings in cooler air; together they cool the brain, which may help alertness.
+X Low oxygen idea => Not supported
+X Brain cooling => Leading idea
+X Seeing a yawn => Contagious yawning
+X Babies in the womb => Yawn too
+XE Science tests ideas with evidence.
+@why-the-sky-is-blue
+F Scattering by tiny air molecules is called ____ scattering.|Rayleigh
+F Rayleigh scattering is proportional to 1/____.|λ⁴
+F ____ light scatters about 5-6 times more than red.|Blue
+F On the Moon the sky looks ____ because there is no atmosphere.|black
+T Red light scatters more than blue light.|F|Shorter wavelengths (blue) scatter more.
+T At sunset, sunlight travels through more air.|T|The blue is scattered out on the way.
+T Without an atmosphere the sky would be black.|T|Nothing to scatter light.
+T The sky is blue because it reflects the ocean.|F|It is due to scattering by air molecules.
+M The sky appears blue because blue light:|is absorbed;is scattered most;is reflected by clouds;travels fastest|2|Short wavelength.
+M Sunsets look red because:|the Sun cools;blue is scattered out over a long path;red is scattered most;clouds are red|2|Longer path through air.
+M Rayleigh scattering depends on wavelength as:|λ;1/λ;1/λ²;1/λ⁴|4|Strongly favours short waves.
+M The sky on the Moon is:|blue;red;black;white|3|No air.
+S Why is the sky blue?|Air molecules scatter sunlight; scattering ∝ 1/λ⁴, so blue (short wavelength) scatters much more and fills the sky.
+S Why are sunrises and sunsets red?|Near the horizon sunlight crosses much more air; most blue is scattered away, leaving red and orange to reach us.
+X 1/λ⁴ => Rayleigh scattering
+X Blue sky => Short wavelengths scatter most
+X Red sunset => Long path through air
+X Black sky => No atmosphere
+XE Wavelength and path length decide the sky's colour.
+# ---- application layer: assertion-reason (A) and numericals (N), added 2026-11-01 ----
+@rest-and-motion
+A A person sleeping in a moving train is in motion.|Motion is described relative to a reference point.|1|Relative to the ground the sleeper changes position, and the reason (reference point) is exactly why.
+A A tree is always at rest.|A tree does not change its position relative to the ground.|4|A is false: relative to a moving bus or the Sun the tree moves. R is true.
+@motion-chapter-introduction
+A Motion is relative.|The same object can be at rest for one observer and moving for another.|1|R is the meaning of relative motion.
+A A flat distance-time graph shows uniform motion.|On a flat graph the distance does not change with time.|4|A is false: flat means rest. R is true.
+@distance-vs-displacement
+A Displacement can be zero even when distance is not.|Displacement depends only on the start and end points.|1|A round trip ends where it began; R explains it.
+A Distance is a vector.|Distance has only magnitude.|4|A is false (distance is a scalar); R is true.
+N A boy walks 40 m east and then 30 m north. Find his distance and displacement.|Distance = 40 + 30 = 70 m; Displacement = √(40² + 30²) = √2500 = 50 m; Direction: towards the north-east (tan θ = 30/40)|Distance 70 m; displacement 50 m towards the north-east
+N A particle goes once around a circle of radius 7 m. Find distance and displacement after one full round and after half a round.|Full round: distance = 2πr = 2 × 22/7 × 7 = 44 m, displacement = 0; Half round: distance = πr = 22 m; Displacement = diameter = 2r = 14 m|Full: 44 m, 0; half: 22 m, 14 m
+@speed-vs-velocity
+A A body moving with constant speed can have a changing velocity.|Velocity depends on direction as well as speed.|1|Circular motion is the example; R explains it.
+A Speed can be negative.|Velocity can be negative.|4|A is false (speed has no direction); R is true.
+N A car covers 180 km in 2.5 h. Find its speed in km/h and m/s.|Speed = 180 ÷ 2.5 = 72 km/h; 72 × 5/18 = 20 m/s|72 km/h = 20 m/s
+N A runner goes 100 m north in 12.5 s. Find speed and velocity.|Speed = 100 ÷ 12.5 = 8 m/s; Velocity = 8 m/s towards the north (same magnitude, with direction)|8 m/s; 8 m/s north
+@average-speed-vs-velocity
+A For a round trip, average velocity is zero.|Average velocity = total displacement ÷ total time.|1|Displacement is zero, so R explains A.
+A Average speed of 30 km/h and 60 km/h over equal distances is 45 km/h.|Average speed = total distance ÷ total time.|4|A is false (it is 40 km/h); R is the correct rule.
+N A car goes 60 km at 30 km/h and returns 60 km at 60 km/h. Find average speed and average velocity.|Time going = 60 ÷ 30 = 2 h; Time returning = 60 ÷ 60 = 1 h; Average speed = 120 ÷ 3 = 40 km/h; Displacement = 0, so average velocity = 0|40 km/h; 0
+N A student walks 600 m to school in 10 min and returns in 15 min. Find the average speed for the round trip in m/s.|Total distance = 1200 m; Total time = 25 min = 1500 s; Average speed = 1200 ÷ 1500 = 0.8 m/s|0.8 m/s
+@discovery-of-the-cell
+A Hooke saw only cell walls in cork.|Cork is made of dead cells.|1|Dead cells keep only their walls; R explains A.
+A Leeuwenhoek discovered the nucleus.|Leeuwenhoek observed living cells in pond water.|4|A is false (Robert Brown did, 1831); R is true.
+@robert-hooke-discovery-of-cells
+A Hooke could count cells in cork.|Cork cells looked like separate boxes in rows.|1|The box-like pattern made estimating possible.
+A Hooke saw the nucleus in cork cells.|Cork cells are dead.|4|A is false; R is true.
+@cell-theory
+A Viruses are an exception to cell theory.|Viruses are not made of cells.|1|R is the reason they do not fit.
+A New cells can arise from non-living matter.|All cells arise from pre-existing cells.|4|A is false; R (Virchow) is true.
+@unicellular-and-multicellular
+A Multicellular organisms show division of labour.|Different cells in them are specialised for different jobs.|1|R defines division of labour.
+A Amoeba needs separate cells for digestion and movement.|Amoeba is unicellular.|4|A is false: its one cell does every job; R is true.
+@what-is-matter
+A Air is matter.|Air has mass and occupies space.|1|R is the definition of matter applied to air.
+A Light is matter.|Light helps us see objects.|4|A is false (no mass, no volume); R is true but irrelevant.
+N Convert: (a) 2.5 L to mL, (b) 750 mL to L, (c) 3 dm³ to L.|1 L = 1000 mL, so 2.5 L = 2500 mL; 750 mL = 750 ÷ 1000 = 0.75 L; 1 dm³ = 1 L, so 3 dm³ = 3 L|2500 mL; 0.75 L; 3 L
+@particles-of-matter
+A The colour of KMnO₄ solution remains after many dilutions.|One crystal contains millions of tiny particles.|1|Enough particles remain after each dilution; R explains A.
+A We can see particles of matter with a school microscope.|Particles of matter are extremely small.|4|A is false; R is true.
+@particles-have-spaces
+A Gases can be compressed easily.|Particles of a gas have large spaces between them.|1|R explains A.
+A 50 mL water + 50 mL alcohol gives exactly 100 mL.|Particles of liquids have spaces between them.|4|A is false (about 96 mL); R is true and explains why.
+@particles-are-moving
+A Diffusion is faster in hot water.|Particles move faster at higher temperature.|1|More kinetic energy speeds mixing.
+A Diffusion is fastest in solids.|Particles in solids are tightly packed.|4|A is false; R is true and is why diffusion is slowest in solids.
+@natural-whole-integers-rational
+A Every integer is a rational number.|Any integer n can be written as n/1.|1|R shows why A holds.
+A 0 is a natural number.|0 is a whole number.|4|A is false; R is true.
+@rational-numbers-on-number-line
+A There are infinitely many rationals between 0 and 1.|The average of two rationals is a rational between them.|1|Averaging can be repeated forever.
+A −3/4 lies to the right of 0.|−3/4 is negative.|4|A is false; R is true.
+N Find two rational numbers between 1/4 and 1/2 by averaging.|(1/4 + 1/2) ÷ 2 = 3/8; (1/4 + 3/8) ÷ 2 = 5/16; Check: 1/4 = 4/16 < 5/16 < 6/16 = 3/8 < 1/2|3/8 and 5/16
+@equivalent-fractions
+A 3/4 = 9/12.|Multiplying numerator and denominator by the same non-zero number keeps the value.|1|Multiply by 3; R explains A.
+A −2/3 < −3/4.|Among negatives, the one nearer to 0 is greater.|4|A is false (−0.67 > −0.75); R is true.
+N Arrange in ascending order: 2/3, 3/5, 7/10.|LCM of 3, 5, 10 is 30; 2/3 = 20/30, 3/5 = 18/30, 7/10 = 21/30; Compare numerators: 18 < 20 < 21|3/5 < 2/3 < 7/10
+@decimal-expansions
+A 7/80 has a terminating decimal.|80 = 2⁴ × 5 has only 2s and 5s.|1|R is the test that guarantees termination.
+A 1/12 terminates.|12 = 2² × 3.|4|A is false (factor 3 makes it recur); R is true.
+N Without long division, decide whether 17/125 and 11/24 terminate. Then write 17/125 as a decimal.|125 = 5³ (only 5s) so 17/125 terminates; 24 = 2³ × 3 (has 3) so 11/24 recurs; 17/125 = (17 × 8)/(125 × 8) = 136/1000 = 0.136|17/125 = 0.136 (terminates); 11/24 recurs
+@light-chapter-introduction
+A A lens works by refraction.|Light bends as it passes from air into glass.|1|R describes refraction in the lens.
+A We see the Moon because it is luminous.|The Moon reflects sunlight.|4|A is false; R is true.
+@light-travels-in-straight-lines
+A Opaque objects cast sharp shadows.|Light travels in straight lines.|1|Rays cannot curve into the shadow; R explains A.
+A Light bends round corners like sound.|Light has a much shorter wavelength than sound.|4|A is false; R is true and is why light does not bend noticeably.
+@reflection-of-light
+A A white wall is invisible in a dark room.|There is no light for the wall to reflect.|1|R explains A.
+A The Moon is luminous.|The Moon reflects sunlight.|4|A is false; R is true.
+@laws-of-reflection
+A A ray falling along the normal retraces its path.|For i = 0°, r = 0°.|1|The first law gives r = i = 0.
+A Angle of incidence is measured from the mirror surface.|The normal is perpendicular to the mirror.|4|A is false (measured from the normal); R is true.
+N A ray strikes a plane mirror at 35° to the surface. Find the angle of incidence, angle of reflection and the angle between incident and reflected rays.|Angle of incidence i = 90° − 35° = 55°; Angle of reflection r = i = 55°; Angle between the rays = i + r = 110°|55°, 55°, 110°
+N The angle between the incident and reflected rays is 70°. Find the angle of incidence and the angle the ray makes with the mirror.|i + r = 70° and i = r, so i = 35°; Angle with mirror = 90° − 35° = 55°|i = 35°; 55° with the mirror
+@regular-vs-diffused-reflection
+A A rough surface gives diffused reflection.|Its tiny facets face different directions.|1|Each ray obeys i = r at its own facet, so the rays scatter.
+A Diffused reflection violates the laws of reflection.|Diffused reflection does not form an image.|4|A is false; R is true.
+@division-by-zero
+A 9 ÷ 0 is undefined.|No number multiplied by 0 gives 9.|1|R shows why no answer exists.
+A 0 ÷ 0 = 0.|Any number times 0 is 0.|4|A is false (every number works, so no unique answer); R is true.
+@why-0-999-equals-1
+A 0.999… = 1.|There is no number between 0.999… and 1.|1|Two numbers with nothing between them are equal.
+A 0.99 = 1.|0.99 has only two 9s.|4|A is false; R is true and is why 0.99 < 1.
+N Using the x method, write 0.777… as a fraction.|Let x = 0.777…; 10x = 7.777…; 10x − x = 7, so 9x = 7; x = 7/9|7/9
+@why-do-we-yawn
+A Yawning is not caused by low oxygen.|Breathing extra oxygen does not change how often people yawn.|1|The experiment is the evidence for A.
+A Yawning happens only when we are sleepy.|Yawns often come before sleep.|4|A is false (boredom, after waking, contagion); R is true.
+@why-the-sky-is-blue
+A The sky looks blue.|Air molecules scatter short wavelengths most.|1|R explains A.
+A Sunsets look red because red light is scattered most.|At sunset light travels a long path through air.|4|A is false (blue is scattered out, red remains); R is true.
+N Using scattering ∝ 1/λ⁴, how many times more is blue light (450 nm) scattered than red light (700 nm)?|Ratio = (700/450)⁴; 700/450 ≈ 1.556; 1.556² ≈ 2.42; 2.42² ≈ 5.86|About 5.9 times

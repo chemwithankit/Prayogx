@@ -1,0 +1,142 @@
+{
+ "slug": "natural-whole-integers-rational",
+ "title": "Natural, Whole, Integers and Rational Numbers",
+ "class": 9,
+ "subject": "Mathematics",
+ "chapter": "Number Systems",
+ "objective": "Each new family of numbers answers a question the old one could not, and every family lives inside the next: N ⊂ W ⊂ Z ⊂ Q.",
+ "fill": [
+  {
+   "q": "Natural numbers start from ____.",
+   "a": "1"
+  },
+  {
+   "q": "Whole numbers are natural numbers together with ____.",
+   "a": "0"
+  },
+  {
+   "q": "Integers include negative numbers, zero and ____ numbers.",
+   "a": "positive"
+  },
+  {
+   "q": "A rational number is p/q where p, q are integers and q ≠ ____.",
+   "a": "0"
+  }
+ ],
+ "tf": [
+  {
+   "q": "0 is a natural number.",
+   "a": false,
+   "explain": "Natural numbers start from 1."
+  },
+  {
+   "q": "Every integer is a rational number.",
+   "a": true,
+   "explain": "n = n/1."
+  },
+  {
+   "q": "−3 is a whole number.",
+   "a": false,
+   "explain": "Whole numbers are 0, 1, 2, …"
+  },
+  {
+   "q": "0/5 is a rational number.",
+   "a": true,
+   "explain": "0/5 = 0, and the denominator is not 0."
+  }
+ ],
+ "ar": [
+  {
+   "a": "Every integer is a rational number.",
+   "r": "Any integer n can be written as n/1.",
+   "answer": 0,
+   "explain": "R shows why A holds."
+  },
+  {
+   "a": "0 is a natural number.",
+   "r": "0 is a whole number.",
+   "answer": 3,
+   "explain": "A is false; R is true."
+  }
+ ],
+ "mcq": [
+  {
+   "q": "Which is a whole number but not natural?",
+   "options": [
+    "1",
+    "0",
+    "−1",
+    "1/2"
+   ],
+   "answer": 1,
+   "explain": "0."
+  },
+  {
+   "q": "Which is not rational?",
+   "options": [
+    "−7",
+    "3/4",
+    "0",
+    "5/0"
+   ],
+   "answer": 3,
+   "explain": "Division by zero is undefined."
+  },
+  {
+   "q": "The correct order of sets is:",
+   "options": [
+    "Q ⊂ Z ⊂ W ⊂ N",
+    "N ⊂ W ⊂ Z ⊂ Q",
+    "W ⊂ N ⊂ Z ⊂ Q",
+    "Z ⊂ N ⊂ W ⊂ Q"
+   ],
+   "answer": 1,
+   "explain": "Each set contains the previous."
+  },
+  {
+   "q": "−4 belongs to:",
+   "options": [
+    "N only",
+    "W only",
+    "Z and Q",
+    "none"
+   ],
+   "answer": 2,
+   "explain": "It is an integer and rational."
+  }
+ ],
+ "num": [],
+ "short": [
+  {
+   "q": "Write N, W, Z and Q and show how they are related.",
+   "lines": 5,
+   "solution": "N = {1,2,3,…}, W = {0,1,2,…}, Z = {…,−1,0,1,…}, Q = {p/q, q ≠ 0}. N ⊂ W ⊂ Z ⊂ Q."
+  },
+  {
+   "q": "Is 0 rational? Is 5/0 rational? Explain.",
+   "lines": 5,
+   "solution": "0 = 0/1, so it is rational. 5/0 is not a number because division by zero is undefined."
+  }
+ ],
+ "match": {
+  "left": [
+   "{1, 2, 3, …}",
+   "{0, 1, 2, …}",
+   "{…, −1, 0, 1, …}",
+   "p/q, q ≠ 0"
+  ],
+  "right": [
+   "Integers",
+   "Rational numbers",
+   "Whole numbers",
+   "Natural numbers"
+  ],
+  "answer": [
+   3,
+   2,
+   0,
+   1
+  ],
+  "explain": "Each family adds numbers the previous one lacked."
+ }
+}

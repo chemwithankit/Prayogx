@@ -1,0 +1,153 @@
+{
+ "slug": "why-0-999-equals-1",
+ "title": "Why 0.999… Equals 1",
+ "class": "Supplementary",
+ "subject": "Mathematics",
+ "chapter": "Numbers and infinity",
+ "objective": "0.999… with the 9s never stopping is exactly 1, not \"a little less\". Three short proofs show why.",
+ "fill": [
+  {
+   "q": "1/3 = 0.333…, so 3 × 1/3 = ____.",
+   "a": "0.999…"
+  },
+  {
+   "q": "If x = 0.999…, then 10x − x = ____.",
+   "a": "9"
+  },
+  {
+   "q": "So 9x = 9 and x = ____.",
+   "a": "1"
+  },
+  {
+   "q": "0.999 with three 9s is ____ than 1.",
+   "a": "less"
+  }
+ ],
+ "tf": [
+  {
+   "q": "0.999… is slightly less than 1.",
+   "a": false,
+   "explain": "The never-ending 0.999… equals 1 exactly."
+  },
+  {
+   "q": "0.999 (three 9s) equals 1.",
+   "a": false,
+   "explain": "It is 0.001 less than 1."
+  },
+  {
+   "q": "0.999… and 1 are two names for the same number.",
+   "a": true,
+   "explain": "No number lies between them."
+  },
+  {
+   "q": "2/3 = 0.666… .",
+   "a": true,
+   "explain": "2 × 0.333… ."
+  }
+ ],
+ "ar": [
+  {
+   "a": "0.999… = 1.",
+   "r": "There is no number between 0.999… and 1.",
+   "answer": 0,
+   "explain": "Two numbers with nothing between them are equal."
+  },
+  {
+   "a": "0.99 = 1.",
+   "r": "0.99 has only two 9s.",
+   "answer": 3,
+   "explain": "A is false; R is true and is why 0.99 < 1."
+  }
+ ],
+ "mcq": [
+  {
+   "q": "x = 0.999…; 10x =",
+   "options": [
+    "9.99…",
+    "9.999…",
+    "99.9",
+    "10"
+   ],
+   "answer": 1,
+   "explain": "Shift the decimal point."
+  },
+  {
+   "q": "10x − x equals:",
+   "options": [
+    "0.999…",
+    "9",
+    "10",
+    "1"
+   ],
+   "answer": 1,
+   "explain": "9.999… − 0.999… = 9."
+  },
+  {
+   "q": "Which equals 1?",
+   "options": [
+    "0.9",
+    "0.99",
+    "0.999",
+    "0.999…"
+   ],
+   "answer": 3,
+   "explain": "Only the endless one."
+  },
+  {
+   "q": "0.4999… equals:",
+   "options": [
+    "0.4",
+    "0.5",
+    "0.49",
+    "0.45"
+   ],
+   "answer": 1,
+   "explain": "Same reasoning."
+  }
+ ],
+ "num": [
+  {
+   "q": "Using the x method, write 0.777… as a fraction.",
+   "steps": [
+    "Let x = 0.777…",
+    "10x = 7.777…",
+    "10x − x = 7, so 9x = 7",
+    "x = 7/9"
+   ],
+   "answer": "7/9"
+  }
+ ],
+ "short": [
+  {
+   "q": "Prove that 0.999… = 1.",
+   "lines": 5,
+   "solution": "Let x = 0.999…. Then 10x = 9.999…. Subtract: 9x = 9, so x = 1."
+  },
+  {
+   "q": "Use 1/3 = 0.333… to show 0.999… = 1.",
+   "lines": 5,
+   "solution": "Multiply by 3: 3 × 1/3 = 1 and 3 × 0.333… = 0.999…, so they are equal."
+  }
+ ],
+ "match": {
+  "left": [
+   "0.333…",
+   "0.999…",
+   "0.999 (three 9s)",
+   "10x − x = 9"
+  ],
+  "right": [
+   "x = 1",
+   "Less than 1",
+   "1",
+   "1/3"
+  ],
+  "answer": [
+   3,
+   2,
+   1,
+   0
+  ],
+  "explain": "Endless repeating 9s equal the next number."
+ }
+}

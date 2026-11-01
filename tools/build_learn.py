@@ -363,7 +363,7 @@ def chapters_of(cur, ready, c, s):
                 src.append({"name": n})
     else:
         src = s["chapters"]
-    out = []
+    out, num = [], 0
     for i, chp in enumerate(src):
         have = [t for t in mine if place(cur, t)[3] == chp["name"]]
         used, items = set(), []
@@ -375,10 +375,25 @@ def chapters_of(cur, ready, c, s):
         extra = [t for t in have if t["slug"] not in used]
         intro = [t for t in extra if t["topic"].lower().startswith("chapter introduction")]  # a chapter intro opens its chapter
         items = [{"title": t["title"], "topic": t} for t in intro] + items + [{"title": t["title"], "topic": t} for t in extra if t not in intro]
-        out.append({"name": chp["name"], "slug": slugify(chp["name"]), "n": None if c["id"] == "extra" else i + 1,
-                    "about": chp.get("about", ""), "discipline": chp.get("discipline"), "items": items,
+        # a labelled chapter (a foundation group, a reading-material unit) sits outside the book's chapter numbering
+        if c["id"] != "extra" and not chp.get("label"):
+            num += 1
+        out.append({"name": chp["name"], "slug": slugify(chp["name"]),
+                    "n": None if c["id"] == "extra" or chp.get("label") else num, "label": chp.get("label"),
+                    "formerly": chp.get("formerly", []), "about": chp.get("about", ""), "discipline": chp.get("discipline"), "items": items,
                     "videos": [it["topic"] for it in items if it["topic"]], "planned": bool(chp.get("planned"))})
     return out
+
+
+def chap_label(chp):
+    return chp.get("label") or (("Chapter %d" % chp["n"]) if chp["n"] else "Theme")
+
+
+def redirect_page(url, rel):
+    """a retired chapter URL (the chapter was renamed for a new syllabus) forwards to its new page"""
+    return ('<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>Moved · PrayogX Learn</title>'
+            '<meta name="robots" content="noindex"><link rel="canonical" href="%s"><meta http-equiv="refresh" content="0; url=%s">'
+            '</head><body><p>This chapter has moved: <a href="%s">%s</a></p></body></html>\n') % (url, rel, rel, url)
 
 
 def chapter_of_topic(cur, ready, t):
@@ -412,6 +427,18 @@ def topic_card(t, prefix, cur, show_chapter=True):
 
 
 # ------------------------------------------------------------------ topic (video) page
+def worksheet_link(t):
+    """the downloadable PrayogX workbook (tools/build_worksheets.js) when learn/<slug>/worksheet.pdf exists"""
+    f = os.path.join(OUT, t["slug"], "worksheet.pdf")
+    if not os.path.exists(f):
+        return ""
+    kb = os.path.getsize(f) / 1024.0
+    return ('<a class="dl" href="worksheet.pdf" download="%s"><span class="ico">%s</span><span><span class="t">Download the '
+            'workbook</span><br><span class="s">PDF, %d KB · fill in the blanks, true/false, assertion-reason, MCQ, numericals, '
+            'short answer, match the columns; detailed solutions at the end</span></span></a>') % (
+        esc("PrayogX - %s - workbook.pdf" % t["title"]), icon("doc", 22), kb)
+
+
 def topic_page(t, by_slug, ready, cur):
     slug = t["slug"]
     c, s, chp = chapter_of_topic(cur, ready, t)
@@ -450,12 +477,13 @@ def topic_page(t, by_slug, ready, cur):
     <p class="lede">%(lede)s</p>
     <a class="dl" href="%(pdf)s" download="%(dlname)s"><span class="ico">%(doc)s</span>
       <span><span class="t">Download the short notes</span><br><span class="s">PDF, %(size)s · solved examples, practice set and answer key</span></span></a>
+    %(worksheet)s
     %(upnext)s
     <div class="pn">%(prev)s%(allv)s</div>
   </div>
 </div>""" % {"yt": esc(t["video"]["youtubeId"]), "title": esc(t["title"]), "ig": esc(t["video"]["instagram"]),
              "ctx": esc("%s%s" % (chapnum, t["subject"])),
-             "lede": inline(t["summary"]), "pdf": esc(t["notes"]["pdf"]), "dlname": esc("PrayogX - %s - short notes.pdf" % t["title"]),
+             "lede": inline(t["summary"]), "worksheet": worksheet_link(t), "pdf": esc(t["notes"]["pdf"]), "dlname": esc("PrayogX - %s - short notes.pdf" % t["title"]),
              "size": size, "doc": icon("doc", 22), "upnext": upnext,
              "allv": ('<a class="pnb" href="%s">%s All videos in this chapter</a>' % (esc(chap_href), icon("back", 16))) if next_t else "",
              "prev": ('<a class="pnb" href="../%s/">%s Previous: %s</a>' % (esc(prev_t["slug"]), icon("back", 16), esc(prev_t["title"])) if prev_t else "")}
@@ -549,6 +577,8 @@ def subject_page(cur, ready, c, s):
         disc = ('<span class="disc" style="--c:%s">%s</span>' % (COLOR.get(chp["discipline"], "var(--accent)"), esc(chp["discipline"]))
                 if chp.get("discipline") and multi else "")
         status = ('<span class="have">%s</span>' % esc(count_txt(nv, "video"))) if nv else '<span class="none">Videos coming soon</span>'
+        if chp.get("label"):
+            status = '<span class="plan">%s</span>' % esc(chp["label"]) + status
         if chp["planned"] and np_ > nv:
             status += '<span class="plan">%s planned</span>' % esc(count_txt(np_, "topic"))
         cards.append(('<a class="chapcard%s" href="%s/" id="ch-%s"%s><span class="cn">%s</span><span class="cb"><span class="t">%s</span>%s'
@@ -609,9 +639,9 @@ def chapter_page(cur, ready, c, s, chp, chs):
         if not chp["planned"] and c["id"] != "extra":
             listing += '<p class="soon">More topics for this chapter are on the way.</p>'
     pager = '<nav class="chapnav" aria-label="Chapters">%s%s</nav>' % (
-        ('<a href="../%s/">%s Chapter %s: %s</a>' % (esc(prev_c["slug"]), icon("back", 16), esc(prev_c["n"] or ""), esc(prev_c["name"]))) if prev_c else "<span></span>",
-        ('<a class="nx" href="../%s/">Chapter %s: %s %s</a>' % (esc(next_c["slug"]), esc(next_c["n"] or ""), esc(next_c["name"]), icon("arrow", 16))) if next_c else "<span></span>")
-    label = ("Chapter %d" % chp["n"]) if chp["n"] else "Theme"
+        ('<a href="../%s/">%s %s: %s</a>' % (esc(prev_c["slug"]), icon("back", 16), esc(chap_label(prev_c)), esc(prev_c["name"]))) if prev_c else "<span></span>",
+        ('<a class="nx" href="../%s/">%s: %s %s</a>' % (esc(next_c["slug"]), esc(chap_label(next_c)), esc(next_c["name"]), icon("arrow", 16))) if next_c else "<span></span>")
+    label = chap_label(chp)
     disc = (' · %s' % chp["discipline"]) if chp.get("discipline") and len(s["disciplines"]) > 1 else ""
     body = (crumbs([("Learn", "../../../"), (c["label"], "../../"), (s["name"], "../"), (chp["name"], None)]) +
             ('<div class="lhead chaphead" style="--c:%s"><div class="learn-kick">%s%s</div><h1>%s</h1>%s<p class="meta">%s</p>%s</div>'
@@ -691,6 +721,12 @@ def main(argv=None):
             chs = chapters_of(cur, ready, c, s)
             for chp in chs:
                 write(os.path.join(OUT, c["id"], s["id"], chp["slug"], "index.html"), chapter_page(cur, ready, c, s, chp, chs)); n += 1; nchap += 1
+            live = {x["slug"] for x in chs}
+            for chp in chs:
+                for old in chp["formerly"]:
+                    if slugify(old) not in live:
+                        write(os.path.join(OUT, c["id"], s["id"], slugify(old), "index.html"),
+                              redirect_page("%s/learn/%s/%s/%s/" % (SITE_URL, c["id"], s["id"], chp["slug"]), "../%s/" % chp["slug"]))
     print("learn/: %d page(s) written: portal, %d class, %d subject, %d chapter and %d topic page(s) (%d draft(s) held back)" % (
         n, len(cur["classes"]), sum(len(c["subjects"]) for c in cur["classes"]), nchap, len(ready), len(topics) - len(ready)))
     return 0

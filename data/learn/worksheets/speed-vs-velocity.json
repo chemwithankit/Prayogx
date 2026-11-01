@@ -1,0 +1,159 @@
+{
+ "slug": "speed-vs-velocity",
+ "title": "Speed vs Velocity",
+ "class": 9,
+ "subject": "Physics",
+ "chapter": "Motion",
+ "objective": "Two cars at the same 60 km/h can have different velocities. Speed tells how fast; velocity also tells which way.",
+ "fill": [
+  {
+   "q": "Speed = distance ÷ ____.",
+   "a": "time"
+  },
+  {
+   "q": "Velocity = ____ ÷ time.",
+   "a": "displacement"
+  },
+  {
+   "q": "The SI unit of speed and velocity is ____.",
+   "a": "m/s"
+  },
+  {
+   "q": "1 km/h = ____ m/s.",
+   "a": "5/18"
+  }
+ ],
+ "tf": [
+  {
+   "q": "Two cars at 60 km/h in opposite directions have the same velocity.",
+   "a": false,
+   "explain": "Same speed, but opposite directions mean different velocities."
+  },
+  {
+   "q": "An object moving in a circle at constant speed has a changing velocity.",
+   "a": true,
+   "explain": "Its direction keeps changing."
+  },
+  {
+   "q": "Speed is a vector quantity.",
+   "a": false,
+   "explain": "Speed has no direction; it is a scalar."
+  },
+  {
+   "q": "72 km/h equals 20 m/s.",
+   "a": true,
+   "explain": "72 × 5/18 = 20."
+  }
+ ],
+ "ar": [
+  {
+   "a": "A body moving with constant speed can have a changing velocity.",
+   "r": "Velocity depends on direction as well as speed.",
+   "answer": 0,
+   "explain": "Circular motion is the example; R explains it."
+  },
+  {
+   "a": "Speed can be negative.",
+   "r": "Velocity can be negative.",
+   "answer": 3,
+   "explain": "A is false (speed has no direction); R is true."
+  }
+ ],
+ "mcq": [
+  {
+   "q": "Which has direction?",
+   "options": [
+    "speed",
+    "distance",
+    "velocity",
+    "time"
+   ],
+   "answer": 2,
+   "explain": "Velocity is a vector."
+  },
+  {
+   "q": "36 km/h in m/s is:",
+   "options": [
+    "10",
+    "20",
+    "36",
+    "3.6"
+   ],
+   "answer": 0,
+   "explain": "36 × 5/18 = 10."
+  },
+  {
+   "q": "A car goes round a circular track at a steady 40 km/h. Its velocity is:",
+   "options": [
+    "constant",
+    "zero",
+    "changing",
+    "40 km/h north"
+   ],
+   "answer": 2,
+   "explain": "Direction changes continuously."
+  },
+  {
+   "q": "Speed and velocity have the same magnitude when motion is:",
+   "options": [
+    "circular",
+    "in a straight line, one direction",
+    "back and forth",
+    "random"
+   ],
+   "answer": 1,
+   "explain": "Then distance = displacement."
+  }
+ ],
+ "num": [
+  {
+   "q": "A car covers 180 km in 2.5 h. Find its speed in km/h and m/s.",
+   "steps": [
+    "Speed = 180 ÷ 2.5 = 72 km/h",
+    "72 × 5/18 = 20 m/s"
+   ],
+   "answer": "72 km/h = 20 m/s"
+  },
+  {
+   "q": "A runner goes 100 m north in 12.5 s. Find speed and velocity.",
+   "steps": [
+    "Speed = 100 ÷ 12.5 = 8 m/s",
+    "Velocity = 8 m/s towards the north (same magnitude, with direction)"
+   ],
+   "answer": "8 m/s; 8 m/s north"
+  }
+ ],
+ "short": [
+  {
+   "q": "Distinguish speed and velocity with one example.",
+   "lines": 5,
+   "solution": "Speed = distance/time, no direction (scalar). Velocity = displacement/time, with direction (vector). Example: 50 km/h is a speed; 50 km/h east is a velocity."
+  },
+  {
+   "q": "Convert 90 km/h into m/s and 15 m/s into km/h.",
+   "lines": 5,
+   "solution": "90 × 5/18 = 25 m/s. 15 × 18/5 = 54 km/h."
+  }
+ ],
+ "match": {
+  "left": [
+   "Distance ÷ time",
+   "Displacement ÷ time",
+   "km/h to m/s factor",
+   "Constant speed on a circle"
+  ],
+  "right": [
+   "Velocity",
+   "Speed",
+   "Changing velocity",
+   "5/18"
+  ],
+  "answer": [
+   1,
+   0,
+   3,
+   2
+  ],
+  "explain": "Velocity changes whenever speed or direction changes."
+ }
+}

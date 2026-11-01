@@ -1,0 +1,142 @@
+{
+ "slug": "light-travels-in-straight-lines",
+ "title": "Light Travels in Straight Lines",
+ "class": 10,
+ "subject": "Physics",
+ "chapter": "Light – Reflection and Refraction",
+ "objective": "You can hear a friend round a corner but not see them: sound bends, light travels in straight lines. We draw its path as a ray.",
+ "fill": [
+  {
+   "q": "In a uniform medium light travels in ____ lines.",
+   "a": "straight"
+  },
+  {
+   "q": "A ray shows the path and ____ of light.",
+   "a": "direction"
+  },
+  {
+   "q": "A bundle of rays is called a ____.",
+   "a": "beam"
+  },
+  {
+   "q": "Sharp ____ are evidence that light travels in straight lines.",
+   "a": "shadows"
+  }
+ ],
+ "tf": [
+  {
+   "q": "Light bends around corners as easily as sound.",
+   "a": false,
+   "explain": "Light's wavelength is tiny, so it hardly bends."
+  },
+  {
+   "q": "In the 3-card test, light passes only when the holes are in a line.",
+   "a": true,
+   "explain": "It travels straight."
+  },
+  {
+   "q": "A ray is drawn as a line with an arrow.",
+   "a": true,
+   "explain": "The arrow shows direction."
+  },
+  {
+   "q": "Shadows form because light passes through opaque objects.",
+   "a": false,
+   "explain": "Opaque objects block light."
+  }
+ ],
+ "ar": [
+  {
+   "a": "Opaque objects cast sharp shadows.",
+   "r": "Light travels in straight lines.",
+   "answer": 0,
+   "explain": "Rays cannot curve into the shadow; R explains A."
+  },
+  {
+   "a": "Light bends round corners like sound.",
+   "r": "Light has a much shorter wavelength than sound.",
+   "answer": 3,
+   "explain": "A is false; R is true and is why light does not bend noticeably."
+  }
+ ],
+ "mcq": [
+  {
+   "q": "Sharp shadows show that light:",
+   "options": [
+    "bends",
+    "travels in straight lines",
+    "is a sound",
+    "is slow"
+   ],
+   "answer": 1,
+   "explain": "Straight-line travel."
+  },
+  {
+   "q": "We hear but do not see around a corner because sound:",
+   "options": [
+    "is faster",
+    "has a much longer wavelength",
+    "is louder",
+    "is a particle"
+   ],
+   "answer": 1,
+   "explain": "Long waves bend round obstacles."
+  },
+  {
+   "q": "A ray of light is:",
+   "options": [
+    "a beam",
+    "the path and direction of light",
+    "a shadow",
+    "a mirror"
+   ],
+   "answer": 1,
+   "explain": "Definition."
+  },
+  {
+   "q": "In the 3-card test, the candle is seen only when:",
+   "options": [
+    "the holes are aligned",
+    "cards touch",
+    "lights are off",
+    "cards are bent"
+   ],
+   "answer": 0,
+   "explain": "Straight path needed."
+  }
+ ],
+ "num": [],
+ "short": [
+  {
+   "q": "Describe the 3-card activity and its conclusion.",
+   "lines": 5,
+   "solution": "Make holes in three cards and line them up between a candle and your eye. You see the flame only when the holes are in a straight line, so light travels in straight lines."
+  },
+  {
+   "q": "Why can we hear a person around a corner but not see them?",
+   "lines": 5,
+   "solution": "Sound waves (about 1 m long) bend round the corner; light waves are far shorter than 0.001 mm, so they practically do not bend."
+  }
+ ],
+ "match": {
+  "left": [
+   "Ray",
+   "Beam",
+   "Sharp shadow",
+   "Long wavelength"
+  ],
+  "right": [
+   "Bends around corners",
+   "Path and direction of light",
+   "Straight-line travel",
+   "Many rays"
+  ],
+  "answer": [
+   1,
+   3,
+   2,
+   0
+  ],
+  "explain": "Straight-line travel explains shadows and the 3-card test."
+ }
+}

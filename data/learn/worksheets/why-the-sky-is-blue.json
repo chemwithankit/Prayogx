@@ -1,0 +1,153 @@
+{
+ "slug": "why-the-sky-is-blue",
+ "title": "Why the Sky is Blue and Sunsets are Red",
+ "class": "Supplementary",
+ "subject": "Physics",
+ "chapter": "Light and colour",
+ "objective": "Air scatters blue light far more than red. Blue fills the sky by day; at sunset the long path through the air removes the blue, and red and orange reach you.",
+ "fill": [
+  {
+   "q": "Scattering by tiny air molecules is called ____ scattering.",
+   "a": "Rayleigh"
+  },
+  {
+   "q": "Rayleigh scattering is proportional to 1/____.",
+   "a": "λ⁴"
+  },
+  {
+   "q": "____ light scatters about 5-6 times more than red.",
+   "a": "Blue"
+  },
+  {
+   "q": "On the Moon the sky looks ____ because there is no atmosphere.",
+   "a": "black"
+  }
+ ],
+ "tf": [
+  {
+   "q": "Red light scatters more than blue light.",
+   "a": false,
+   "explain": "Shorter wavelengths (blue) scatter more."
+  },
+  {
+   "q": "At sunset, sunlight travels through more air.",
+   "a": true,
+   "explain": "The blue is scattered out on the way."
+  },
+  {
+   "q": "Without an atmosphere the sky would be black.",
+   "a": true,
+   "explain": "Nothing to scatter light."
+  },
+  {
+   "q": "The sky is blue because it reflects the ocean.",
+   "a": false,
+   "explain": "It is due to scattering by air molecules."
+  }
+ ],
+ "ar": [
+  {
+   "a": "The sky looks blue.",
+   "r": "Air molecules scatter short wavelengths most.",
+   "answer": 0,
+   "explain": "R explains A."
+  },
+  {
+   "a": "Sunsets look red because red light is scattered most.",
+   "r": "At sunset light travels a long path through air.",
+   "answer": 3,
+   "explain": "A is false (blue is scattered out, red remains); R is true."
+  }
+ ],
+ "mcq": [
+  {
+   "q": "The sky appears blue because blue light:",
+   "options": [
+    "is absorbed",
+    "is scattered most",
+    "is reflected by clouds",
+    "travels fastest"
+   ],
+   "answer": 1,
+   "explain": "Short wavelength."
+  },
+  {
+   "q": "Sunsets look red because:",
+   "options": [
+    "the Sun cools",
+    "blue is scattered out over a long path",
+    "red is scattered most",
+    "clouds are red"
+   ],
+   "answer": 1,
+   "explain": "Longer path through air."
+  },
+  {
+   "q": "Rayleigh scattering depends on wavelength as:",
+   "options": [
+    "λ",
+    "1/λ",
+    "1/λ²",
+    "1/λ⁴"
+   ],
+   "answer": 3,
+   "explain": "Strongly favours short waves."
+  },
+  {
+   "q": "The sky on the Moon is:",
+   "options": [
+    "blue",
+    "red",
+    "black",
+    "white"
+   ],
+   "answer": 2,
+   "explain": "No air."
+  }
+ ],
+ "num": [
+  {
+   "q": "Using scattering ∝ 1/λ⁴, how many times more is blue light (450 nm) scattered than red light (700 nm)?",
+   "steps": [
+    "Ratio = (700/450)⁴",
+    "700/450 ≈ 1.556",
+    "1.556² ≈ 2.42",
+    "2.42² ≈ 5.86"
+   ],
+   "answer": "About 5.9 times"
+  }
+ ],
+ "short": [
+  {
+   "q": "Why is the sky blue?",
+   "lines": 5,
+   "solution": "Air molecules scatter sunlight; scattering ∝ 1/λ⁴, so blue (short wavelength) scatters much more and fills the sky."
+  },
+  {
+   "q": "Why are sunrises and sunsets red?",
+   "lines": 5,
+   "solution": "Near the horizon sunlight crosses much more air; most blue is scattered away, leaving red and orange to reach us."
+  }
+ ],
+ "match": {
+  "left": [
+   "1/λ⁴",
+   "Blue sky",
+   "Red sunset",
+   "Black sky"
+  ],
+  "right": [
+   "Short wavelengths scatter most",
+   "Long path through air",
+   "No atmosphere",
+   "Rayleigh scattering"
+  ],
+  "answer": [
+   3,
+   0,
+   1,
+   2
+  ],
+  "explain": "Wavelength and path length decide the sky's colour."
+ }
+}

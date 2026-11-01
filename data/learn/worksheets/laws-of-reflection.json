@@ -1,0 +1,160 @@
+{
+ "slug": "laws-of-reflection",
+ "title": "Laws of Reflection",
+ "class": 10,
+ "subject": "Physics",
+ "chapter": "Light – Reflection and Refraction",
+ "objective": "To hit a hidden target with a laser and a mirror you need 2 rules: i = r (both measured from the normal) and all three rays in one plane.",
+ "fill": [
+  {
+   "q": "First law: angle of incidence = angle of ____.",
+   "a": "reflection"
+  },
+  {
+   "q": "Angles are measured from the ____, not from the surface.",
+   "a": "normal"
+  },
+  {
+   "q": "The incident ray, normal and reflected ray lie in the same ____.",
+   "a": "plane"
+  },
+  {
+   "q": "A ray along the normal returns along ____.",
+   "a": "itself"
+  }
+ ],
+ "tf": [
+  {
+   "q": "i = r for every reflection at a mirror.",
+   "a": true,
+   "explain": "First law of reflection."
+  },
+  {
+   "q": "The angle of incidence is measured from the mirror surface.",
+   "a": false,
+   "explain": "It is measured from the normal."
+  },
+  {
+   "q": "A ray hitting a mirror at 90° to the surface reflects back on itself.",
+   "a": true,
+   "explain": "Then i = 0."
+  },
+  {
+   "q": "The reflected ray can leave the plane of incidence.",
+   "a": false,
+   "explain": "Second law: all three lie in one plane."
+  }
+ ],
+ "ar": [
+  {
+   "a": "A ray falling along the normal retraces its path.",
+   "r": "For i = 0°, r = 0°.",
+   "answer": 0,
+   "explain": "The first law gives r = i = 0."
+  },
+  {
+   "a": "Angle of incidence is measured from the mirror surface.",
+   "r": "The normal is perpendicular to the mirror.",
+   "answer": 3,
+   "explain": "A is false (measured from the normal); R is true."
+  }
+ ],
+ "mcq": [
+  {
+   "q": "A ray makes 30° with the mirror surface. Angle of reflection:",
+   "options": [
+    "30°",
+    "60°",
+    "90°",
+    "0°"
+   ],
+   "answer": 1,
+   "explain": "i = 90° − 30° = 60° = r."
+  },
+  {
+   "q": "If i = 45°, the angle between incident and reflected rays is:",
+   "options": [
+    "45°",
+    "90°",
+    "180°",
+    "0°"
+   ],
+   "answer": 1,
+   "explain": "i + r = 90°."
+  },
+  {
+   "q": "The normal is:",
+   "options": [
+    "along the mirror",
+    "perpendicular to the mirror at the point of incidence",
+    "the reflected ray",
+    "a light ray"
+   ],
+   "answer": 1,
+   "explain": "Definition."
+  },
+  {
+   "q": "Which law says the three rays lie in one plane?",
+   "options": [
+    "first",
+    "second",
+    "third",
+    "none"
+   ],
+   "answer": 1,
+   "explain": "The second law."
+  }
+ ],
+ "num": [
+  {
+   "q": "A ray strikes a plane mirror at 35° to the surface. Find the angle of incidence, angle of reflection and the angle between incident and reflected rays.",
+   "steps": [
+    "Angle of incidence i = 90° − 35° = 55°",
+    "Angle of reflection r = i = 55°",
+    "Angle between the rays = i + r = 110°"
+   ],
+   "answer": "55°, 55°, 110°"
+  },
+  {
+   "q": "The angle between the incident and reflected rays is 70°. Find the angle of incidence and the angle the ray makes with the mirror.",
+   "steps": [
+    "i + r = 70° and i = r, so i = 35°",
+    "Angle with mirror = 90° − 35° = 55°"
+   ],
+   "answer": "i = 35°; 55° with the mirror"
+  }
+ ],
+ "short": [
+  {
+   "q": "State the two laws of reflection.",
+   "lines": 5,
+   "solution": "1. The angle of incidence equals the angle of reflection. 2. The incident ray, the normal at the point of incidence and the reflected ray lie in the same plane."
+  },
+  {
+   "q": "A ray strikes a mirror at 25° to the surface. Find i and r.",
+   "lines": 5,
+   "solution": "i = 90° − 25° = 65°; r = 65°."
+  }
+ ],
+ "match": {
+  "left": [
+   "i = r",
+   "Same plane",
+   "Perpendicular at point of incidence",
+   "i = 0"
+  ],
+  "right": [
+   "First law",
+   "Second law",
+   "Ray returns on itself",
+   "Normal"
+  ],
+  "answer": [
+   0,
+   1,
+   3,
+   2
+  ],
+  "explain": "Always measure from the normal."
+ }
+}

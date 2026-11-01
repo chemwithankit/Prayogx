@@ -1,0 +1,161 @@
+{
+ "slug": "distance-vs-displacement",
+ "title": "Distance vs Displacement",
+ "class": 9,
+ "subject": "Physics",
+ "chapter": "Motion",
+ "objective": "Distance counts the whole path you walked; displacement only looks at the straight line from start to end, with its direction.",
+ "fill": [
+  {
+   "q": "Distance is the total ____ length travelled.",
+   "a": "path"
+  },
+  {
+   "q": "Displacement is the shortest straight line from start to ____, with direction.",
+   "a": "end"
+  },
+  {
+   "q": "Distance is a ____ quantity; displacement is a ____ quantity.",
+   "a": "scalar; vector"
+  },
+  {
+   "q": "If you return to your starting point, your displacement is ____.",
+   "a": "zero"
+  }
+ ],
+ "tf": [
+  {
+   "q": "Displacement can be greater than distance.",
+   "a": false,
+   "explain": "|Displacement| ≤ distance, always."
+  },
+  {
+   "q": "Distance and displacement are equal for straight-line motion in one direction.",
+   "a": true,
+   "explain": "The path is the straight line itself."
+  },
+  {
+   "q": "Displacement can be negative.",
+   "a": true,
+   "explain": "Its sign shows direction along the chosen axis."
+  },
+  {
+   "q": "Distance can be zero for a moving object.",
+   "a": false,
+   "explain": "A moving object always covers some path."
+  }
+ ],
+ "ar": [
+  {
+   "a": "Displacement can be zero even when distance is not.",
+   "r": "Displacement depends only on the start and end points.",
+   "answer": 0,
+   "explain": "A round trip ends where it began; R explains it."
+  },
+  {
+   "a": "Distance is a vector.",
+   "r": "Distance has only magnitude.",
+   "answer": 3,
+   "explain": "A is false (distance is a scalar); R is true."
+  }
+ ],
+ "mcq": [
+  {
+   "q": "A runner completes one full lap of a 400 m track. Displacement is:",
+   "options": [
+    "400 m",
+    "200 m",
+    "0 m",
+    "800 m"
+   ],
+   "answer": 2,
+   "explain": "Start and end are the same point."
+  },
+  {
+   "q": "You walk 3 m east, then 4 m north. Displacement is:",
+   "options": [
+    "7 m",
+    "5 m",
+    "1 m",
+    "12 m"
+   ],
+   "answer": 1,
+   "explain": "√(3² + 4²) = 5 m."
+  },
+  {
+   "q": "Which is a vector?",
+   "options": [
+    "distance",
+    "speed",
+    "displacement",
+    "time"
+   ],
+   "answer": 2,
+   "explain": "It has magnitude and direction."
+  },
+  {
+   "q": "You walk 6 m forward and 2 m back. Distance and displacement are:",
+   "options": [
+    "8 m, 4 m",
+    "4 m, 8 m",
+    "8 m, 8 m",
+    "4 m, 4 m"
+   ],
+   "answer": 0,
+   "explain": "Distance 6 + 2 = 8 m; displacement 6 − 2 = 4 m."
+  }
+ ],
+ "num": [
+  {
+   "q": "A boy walks 40 m east and then 30 m north. Find his distance and displacement.",
+   "steps": [
+    "Distance = 40 + 30 = 70 m",
+    "Displacement = √(40² + 30²) = √2500 = 50 m",
+    "Direction: towards the north-east (tan θ = 30/40)"
+   ],
+   "answer": "Distance 70 m; displacement 50 m towards the north-east"
+  },
+  {
+   "q": "A particle goes once around a circle of radius 7 m. Find distance and displacement after one full round and after half a round.",
+   "steps": [
+    "Full round: distance = 2πr = 2 × 22/7 × 7 = 44 m, displacement = 0",
+    "Half round: distance = πr = 22 m",
+    "Displacement = diameter = 2r = 14 m"
+   ],
+   "answer": "Full: 44 m, 0; half: 22 m, 14 m"
+  }
+ ],
+ "short": [
+  {
+   "q": "Give two differences between distance and displacement.",
+   "lines": 5,
+   "solution": "Distance is total path length and a scalar; displacement is start-to-end straight line and a vector. Distance is never zero for a moving object; displacement can be zero for a round trip."
+  },
+  {
+   "q": "A car goes 10 km north then 10 km south. Find distance and displacement.",
+   "lines": 5,
+   "solution": "Distance = 20 km. Displacement = 0, because it ends where it started."
+  }
+ ],
+ "match": {
+  "left": [
+   "Total path length",
+   "Straight line start to end with direction",
+   "Displacement after a round trip",
+   "Only magnitude, no direction"
+  ],
+  "right": [
+   "Scalar",
+   "Distance",
+   "Displacement",
+   "Zero"
+  ],
+  "answer": [
+   1,
+   2,
+   3,
+   0
+  ],
+  "explain": "Distance counts every step; displacement only compares start and end."
+ }
+}

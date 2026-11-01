@@ -1,0 +1,142 @@
+{
+ "slug": "motion-chapter-introduction",
+ "title": "Motion: Chapter Introduction",
+ "class": 9,
+ "subject": "Physics",
+ "chapter": "Motion",
+ "objective": "Sitting still? With the Earth you are moving at about 1,500 km/h. Motion is a change of position with time, measured from a reference point, and this chapter gives the tools to describe it.",
+ "fill": [
+  {
+   "q": "Motion is a change of ____ with time.",
+   "a": "position"
+  },
+  {
+   "q": "Motion is always described relative to a ____ point.",
+   "a": "reference"
+  },
+  {
+   "q": "On a distance-time graph, a flat line means the object is at ____.",
+   "a": "rest"
+  },
+  {
+   "q": "A steeper distance-time graph means the object is moving ____.",
+   "a": "faster"
+  }
+ ],
+ "tf": [
+  {
+   "q": "A chair is at rest for you but moving for an observer on the Sun.",
+   "a": true,
+   "explain": "Rest and motion depend on the reference point."
+  },
+  {
+   "q": "Speed and velocity mean exactly the same thing.",
+   "a": false,
+   "explain": "Velocity also has a direction; speed does not."
+  },
+  {
+   "q": "A distance-time graph can tell us whether an object is moving.",
+   "a": true,
+   "explain": "A changing distance shows motion; a flat line shows rest."
+  },
+  {
+   "q": "Acceleration tells how fast an object is.",
+   "a": false,
+   "explain": "It tells how fast the velocity changes."
+  }
+ ],
+ "ar": [
+  {
+   "a": "Motion is relative.",
+   "r": "The same object can be at rest for one observer and moving for another.",
+   "answer": 0,
+   "explain": "R is the meaning of relative motion."
+  },
+  {
+   "a": "A flat distance-time graph shows uniform motion.",
+   "r": "On a flat graph the distance does not change with time.",
+   "answer": 3,
+   "explain": "A is false: flat means rest. R is true."
+  }
+ ],
+ "mcq": [
+  {
+   "q": "Motion is:",
+   "options": [
+    "change of mass",
+    "change of position with time",
+    "change of colour",
+    "change of shape"
+   ],
+   "answer": 1,
+   "explain": "By definition."
+  },
+  {
+   "q": "Which quantity describes how fast velocity changes?",
+   "options": [
+    "distance",
+    "speed",
+    "acceleration",
+    "displacement"
+   ],
+   "answer": 2,
+   "explain": "Acceleration is the rate of change of velocity."
+  },
+  {
+   "q": "On a distance-time graph, which line shows the fastest motion?",
+   "options": [
+    "flat",
+    "gentle slope",
+    "steep slope",
+    "falling to zero"
+   ],
+   "answer": 2,
+   "explain": "Steeper slope = more distance per second."
+  },
+  {
+   "q": "Which is NOT a tool of this chapter?",
+   "options": [
+    "displacement",
+    "velocity",
+    "acceleration",
+    "density"
+   ],
+   "answer": 3,
+   "explain": "Density belongs to matter, not motion."
+  }
+ ],
+ "num": [],
+ "short": [
+  {
+   "q": "Why do we need a reference point to describe motion?",
+   "lines": 5,
+   "solution": "Position is measured from some point. The same object can be still for one observer and moving for another, so motion is meaningless without stating the reference."
+  },
+  {
+   "q": "Name the main quantities this chapter uses and what each tells us.",
+   "lines": 5,
+   "solution": "Distance/displacement: how far and in which direction. Speed/velocity: how fast (velocity with direction). Acceleration: how quickly velocity changes. Graphs: show all these at a glance."
+  }
+ ],
+ "match": {
+  "left": [
+   "Change of position with time",
+   "Flat distance-time graph",
+   "Rate of change of velocity",
+   "Point we measure from"
+  ],
+  "right": [
+   "At rest",
+   "Acceleration",
+   "Reference point",
+   "Motion"
+  ],
+  "answer": [
+   3,
+   0,
+   1,
+   2
+  ],
+  "explain": "These are the chapter's basic definitions."
+ }
+}
