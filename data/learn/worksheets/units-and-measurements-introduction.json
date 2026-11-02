@@ -1,0 +1,190 @@
+{
+ "slug": "units-and-measurements-introduction",
+ "title": "Units and Measurement: Chapter Introduction",
+ "class": 11,
+ "subject": "Physics",
+ "chapter": "Units and Measurement",
+ "objective": "A number alone means nothing: every measurement is a number and a unit. The chapter builds the SI system, significant figures and dimensions, the base of all physics.",
+ "fill": [
+  {
+   "q": "Every measurement is written as a number and a ____.",
+   "a": "unit"
+  },
+  {
+   "q": "There are ____ SI base units.",
+   "a": "7"
+  },
+  {
+   "q": "The SI base unit of mass is the ____.",
+   "a": "kilogram"
+  },
+  {
+   "q": "The SI base unit of electric current is the ____.",
+   "a": "ampere"
+  },
+  {
+   "q": "Checking a formula by comparing the dimensions of its two sides uses the principle of ____ of dimensions.",
+   "a": "homogeneity"
+  }
+ ],
+ "tf": [
+  {
+   "q": "The newton is an SI base unit.",
+   "a": false,
+   "explain": "It is a derived unit: 1 N = 1 kg m s⁻²."
+  },
+  {
+   "q": "The kelvin is the SI base unit of temperature.",
+   "a": true,
+   "explain": "It is one of the 7 base units."
+  },
+  {
+   "q": "2.54 cm has 3 significant figures.",
+   "a": true,
+   "explain": "All non-zero digits are significant."
+  },
+  {
+   "q": "A dimensionally correct formula is always physically correct.",
+   "a": false,
+   "explain": "Dimensions cannot check pure-number constants such as ½."
+  },
+  {
+   "q": "The Mars Climate Orbiter was lost because of a unit mix-up.",
+   "a": true,
+   "explain": "Thrust data in pound-force seconds was read as newton-seconds."
+  }
+ ],
+ "ar": [
+  {
+   "a": "v = u + at² is dimensionally wrong.",
+   "r": "The term at² has dimensions [L], not [LT⁻¹].",
+   "answer": 0,
+   "explain": "R is exactly why the two sides disagree."
+  },
+  {
+   "a": "The newton is a derived unit.",
+   "r": "Every SI unit other than the 7 base units is built from the base units.",
+   "answer": 0,
+   "explain": "1 N = 1 kg m s⁻²."
+  }
+ ],
+ "mcq": [
+  {
+   "q": "Which is NOT an SI base unit?",
+   "options": [
+    "metre",
+    "newton",
+    "mole",
+    "candela"
+   ],
+   "answer": 1,
+   "explain": "The newton is derived from kg, m and s."
+  },
+  {
+   "q": "The SI base unit of luminous intensity is the:",
+   "options": [
+    "lux",
+    "candela",
+    "lumen",
+    "watt"
+   ],
+   "answer": 1,
+   "explain": "Candela is one of the 7 base units."
+  },
+  {
+   "q": "The dimensions of velocity are:",
+   "options": [
+    "[LT⁻²]",
+    "[LT⁻¹]",
+    "[L²T⁻¹]",
+    "[MLT⁻¹]"
+   ],
+   "answer": 1,
+   "explain": "Velocity = displacement ÷ time."
+  },
+  {
+   "q": "The number of significant figures in 0.0250 is:",
+   "options": [
+    "2",
+    "3",
+    "4",
+    "5"
+   ],
+   "answer": 1,
+   "explain": "Leading zeros do not count; the final zero after the decimal point does: 2, 5, 0."
+  },
+  {
+   "q": "The Mars Climate Orbiter mix-up was between:",
+   "options": [
+    "metre and foot",
+    "pound-force and newton",
+    "kilogram and pound",
+    "second and hour"
+   ],
+   "answer": 1,
+   "explain": "One team used pound-force, the other expected newton."
+  }
+ ],
+ "num": [
+  {
+   "q": "Write 1 newton in SI base units and give its dimensions.",
+   "steps": [
+    "F = ma",
+    "unit = kg × m s⁻²"
+   ],
+   "answer": "1 N = 1 kg m s⁻²; dimensions [MLT⁻²]"
+  },
+  {
+   "q": "Check s = ut + ½at² dimensionally.",
+   "steps": [
+    "[s] = [L]",
+    "[ut] = [LT⁻¹][T] = [L]",
+    "[at²] = [LT⁻²][T²] = [L]"
+   ],
+   "answer": "Every term is [L], so the formula is dimensionally correct."
+  },
+  {
+   "q": "1 pound-force = 4.45 N. Convert a thrust of 10 pound-force to newton.",
+   "steps": [
+    "10 × 4.45 N"
+   ],
+   "answer": "44.5 N"
+  }
+ ],
+ "short": [
+  {
+   "q": "Why is a number alone not a measurement?",
+   "lines": 5,
+   "solution": "A number says how many, the unit says of what. 5 m, 5 s and 5 kg are completely different quantities; without the unit the number has no meaning, as the Mars Climate Orbiter loss showed."
+  },
+  {
+   "q": "What does the number of significant figures in a reading tell us?",
+   "lines": 5,
+   "solution": "It shows how precise and reliable the reading is: 2.54 cm (3 significant figures) is more precise than 2.5 cm (2 significant figures)."
+  }
+ ],
+ "match": {
+  "left": [
+   "metre",
+   "kilogram",
+   "second",
+   "ampere",
+   "candela"
+  ],
+  "right": [
+   "length",
+   "electric current",
+   "mass",
+   "luminous intensity",
+   "time"
+  ],
+  "answer": [
+   0,
+   2,
+   4,
+   1,
+   3
+  ],
+  "explain": "These are 5 of the 7 SI base units; the other 2 are kelvin (temperature) and mole (amount of substance)."
+ }
+}

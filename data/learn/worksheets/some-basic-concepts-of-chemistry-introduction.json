@@ -1,0 +1,169 @@
+{
+ "slug": "some-basic-concepts-of-chemistry-introduction",
+ "title": "Some Basic Concepts of Chemistry: Chapter Introduction",
+ "class": 11,
+ "subject": "Chemistry",
+ "chapter": "Some Basic Concepts of Chemistry",
+ "objective": "One drop of water holds about 1.7 × 10²¹ molecules. The chapter shows how chemists measure matter and count its particles with the mole.",
+ "fill": [
+  {
+   "q": "One mole contains ____ particles.",
+   "a": "6.022 × 10²³"
+  },
+  {
+   "q": "A pure substance made of only one kind of atom is an ____.",
+   "a": "element"
+  },
+  {
+   "q": "Lavoisier showed that in a chemical reaction mass is neither created nor ____.",
+   "a": "destroyed"
+  },
+  {
+   "q": "Working out the amounts of reactants and products from a balanced equation is called ____.",
+   "a": "stoichiometry"
+  },
+  {
+   "q": "Dalton said that all matter is made of ____.",
+   "a": "atoms"
+  }
+ ],
+ "tf": [
+  {
+   "q": "Air is a compound.",
+   "a": false,
+   "explain": "Air is a mixture: its gases keep their own properties and their proportion can vary."
+  },
+  {
+   "q": "Water is a compound.",
+   "a": true,
+   "explain": "Hydrogen and oxygen are combined in a fixed ratio."
+  },
+  {
+   "q": "In a chemical reaction the total mass of the products equals the total mass of the reactants.",
+   "a": true,
+   "explain": "This is the law of conservation of mass."
+  },
+  {
+   "q": "One mole of every substance has the same mass.",
+   "a": false,
+   "explain": "One mole always has the same number of particles, but molar masses differ."
+  }
+ ],
+ "ar": [
+  {
+   "a": "The mole is a counting unit.",
+   "r": "One mole always means 6.022 × 10²³ entities, just as one dozen means 12.",
+   "answer": 0,
+   "explain": "R explains why the mole counts particles."
+  },
+  {
+   "a": "Burning paper appears to lose mass.",
+   "r": "Mass is destroyed when a substance burns.",
+   "answer": 2,
+   "explain": "A is true because the gases formed escape; R is false: mass is conserved."
+  }
+ ],
+ "mcq": [
+  {
+   "q": "Which of these is a mixture?",
+   "options": [
+    "water",
+    "oxygen",
+    "air",
+    "carbon dioxide"
+   ],
+   "answer": 2,
+   "explain": "Air is a mixture of gases."
+  },
+  {
+   "q": "One mole of particles is:",
+   "options": [
+    "6.022 × 10²³",
+    "6.022 × 10²²",
+    "12",
+    "1000"
+   ],
+   "answer": 0,
+   "explain": "This is the Avogadro constant."
+  },
+  {
+   "q": "In 2H₂ + O₂ → 2H₂O, how many moles of O₂ react with 4 mol of H₂?",
+   "options": [
+    "1",
+    "2",
+    "4",
+    "8"
+   ],
+   "answer": 1,
+   "explain": "H₂ : O₂ = 2 : 1, so 4 mol H₂ needs 2 mol O₂."
+  },
+  {
+   "q": "Who proposed the atomic theory in 1808?",
+   "options": [
+    "Lavoisier",
+    "Dalton",
+    "Avogadro",
+    "Proust"
+   ],
+   "answer": 1,
+   "explain": "John Dalton, building on the laws of chemical combination."
+  }
+ ],
+ "num": [
+  {
+   "q": "How many molecules are in one drop of water (0.05 g, molar mass 18 g mol⁻¹)?",
+   "steps": [
+    "n = 0.05 ÷ 18 = 2.78 × 10⁻³ mol",
+    "N = 2.78 × 10⁻³ × 6.022 × 10²³"
+   ],
+   "answer": "about 1.7 × 10²¹ molecules"
+  },
+  {
+   "q": "In 2H₂ + O₂ → 2H₂O, how many moles of water form from 4 mol of H₂?",
+   "steps": [
+    "H₂ : H₂O = 2 : 2 = 1 : 1"
+   ],
+   "answer": "4 mol of H₂O"
+  },
+  {
+   "q": "Find the molar mass of water (H = 1, O = 16).",
+   "steps": [
+    "2 × 1 + 16"
+   ],
+   "answer": "18 g mol⁻¹"
+  }
+ ],
+ "short": [
+  {
+   "q": "What is the chapter Some Basic Concepts of Chemistry about?",
+   "lines": 5,
+   "solution": "Matter and its kinds, measurement (SI units, significant figures), the laws of chemical combination that led to Dalton's atoms, the mole concept and stoichiometry: chemistry as counting particles."
+  },
+  {
+   "q": "Why do chemists need the mole?",
+   "lines": 5,
+   "solution": "Atoms are too small and too many to count one by one, so they are counted in groups of 6.022 × 10²³, just as eggs are counted in dozens."
+  }
+ ],
+ "match": {
+  "left": [
+   "Air",
+   "Water",
+   "Oxygen",
+   "6.022 × 10²³"
+  ],
+  "right": [
+   "Element",
+   "One mole",
+   "Compound",
+   "Mixture"
+  ],
+  "answer": [
+   3,
+   2,
+   0,
+   1
+  ],
+  "explain": "Elements have one kind of atom, compounds a fixed combination, mixtures any proportion; a mole is a fixed number of particles."
+ }
+}

@@ -613,3 +613,59 @@ A Yawning happens only when we are sleepy.|Yawns often come before sleep.|4|A is
 A The sky looks blue.|Air molecules scatter short wavelengths most.|1|R explains A.
 A Sunsets look red because red light is scattered most.|At sunset light travels a long path through air.|4|A is false (blue is scattered out, red remains); R is true.
 N Using scattering ∝ 1/λ⁴, how many times more is blue light (450 nm) scattered than red light (700 nm)?|Ratio = (700/450)⁴; 700/450 ≈ 1.556; 1.556² ≈ 2.42; 2.42² ≈ 5.86|About 5.9 times
+# ---- Class 11 chapter introductions, added 2026-11-02 ----
+@units-and-measurements-introduction
+F Every measurement is written as a number and a ____.|unit
+F There are ____ SI base units.|7
+F The SI base unit of mass is the ____.|kilogram
+F The SI base unit of electric current is the ____.|ampere
+F Checking a formula by comparing the dimensions of its two sides uses the principle of ____ of dimensions.|homogeneity
+T The newton is an SI base unit.|F|It is a derived unit: 1 N = 1 kg m s⁻².
+T The kelvin is the SI base unit of temperature.|T|It is one of the 7 base units.
+T 2.54 cm has 3 significant figures.|T|All non-zero digits are significant.
+T A dimensionally correct formula is always physically correct.|F|Dimensions cannot check pure-number constants such as ½.
+T The Mars Climate Orbiter was lost because of a unit mix-up.|T|Thrust data in pound-force seconds was read as newton-seconds.
+M Which is NOT an SI base unit?|metre;newton;mole;candela|2|The newton is derived from kg, m and s.
+M The SI base unit of luminous intensity is the:|lux;candela;lumen;watt|2|Candela is one of the 7 base units.
+M The dimensions of velocity are:|[LT⁻²];[LT⁻¹];[L²T⁻¹];[MLT⁻¹]|2|Velocity = displacement ÷ time.
+M The number of significant figures in 0.0250 is:|2;3;4;5|2|Leading zeros do not count; the final zero after the decimal point does: 2, 5, 0.
+M The Mars Climate Orbiter mix-up was between:|metre and foot;pound-force and newton;kilogram and pound;second and hour|2|One team used pound-force, the other expected newton.
+A v = u + at² is dimensionally wrong.|The term at² has dimensions [L], not [LT⁻¹].|1|R is exactly why the two sides disagree.
+A The newton is a derived unit.|Every SI unit other than the 7 base units is built from the base units.|1|1 N = 1 kg m s⁻².
+N Write 1 newton in SI base units and give its dimensions.|F = ma; unit = kg × m s⁻²|1 N = 1 kg m s⁻²; dimensions [MLT⁻²]
+N Check s = ut + ½at² dimensionally.|[s] = [L]; [ut] = [LT⁻¹][T] = [L]; [at²] = [LT⁻²][T²] = [L]|Every term is [L], so the formula is dimensionally correct.
+N 1 pound-force = 4.45 N. Convert a thrust of 10 pound-force to newton.|10 × 4.45 N|44.5 N
+S Why is a number alone not a measurement?|A number says how many, the unit says of what. 5 m, 5 s and 5 kg are completely different quantities; without the unit the number has no meaning, as the Mars Climate Orbiter loss showed.
+S What does the number of significant figures in a reading tell us?|It shows how precise and reliable the reading is: 2.54 cm (3 significant figures) is more precise than 2.5 cm (2 significant figures).
+X metre => length
+X kilogram => mass
+X second => time
+X ampere => electric current
+X candela => luminous intensity
+XE These are 5 of the 7 SI base units; the other 2 are kelvin (temperature) and mole (amount of substance).
+@some-basic-concepts-of-chemistry-introduction
+F One mole contains ____ particles.|6.022 × 10²³
+F A pure substance made of only one kind of atom is an ____.|element
+F Lavoisier showed that in a chemical reaction mass is neither created nor ____.|destroyed
+F Working out the amounts of reactants and products from a balanced equation is called ____.|stoichiometry
+F Dalton said that all matter is made of ____.|atoms
+T Air is a compound.|F|Air is a mixture: its gases keep their own properties and their proportion can vary.
+T Water is a compound.|T|Hydrogen and oxygen are combined in a fixed ratio.
+T In a chemical reaction the total mass of the products equals the total mass of the reactants.|T|This is the law of conservation of mass.
+T One mole of every substance has the same mass.|F|One mole always has the same number of particles, but molar masses differ.
+M Which of these is a mixture?|water;oxygen;air;carbon dioxide|3|Air is a mixture of gases.
+M One mole of particles is:|6.022 × 10²³;6.022 × 10²²;12;1000|1|This is the Avogadro constant.
+M In 2H₂ + O₂ → 2H₂O, how many moles of O₂ react with 4 mol of H₂?|1;2;4;8|2|H₂ : O₂ = 2 : 1, so 4 mol H₂ needs 2 mol O₂.
+M Who proposed the atomic theory in 1808?|Lavoisier;Dalton;Avogadro;Proust|2|John Dalton, building on the laws of chemical combination.
+A The mole is a counting unit.|One mole always means 6.022 × 10²³ entities, just as one dozen means 12.|1|R explains why the mole counts particles.
+A Burning paper appears to lose mass.|Mass is destroyed when a substance burns.|3|A is true because the gases formed escape; R is false: mass is conserved.
+N How many molecules are in one drop of water (0.05 g, molar mass 18 g mol⁻¹)?|n = 0.05 ÷ 18 = 2.78 × 10⁻³ mol; N = 2.78 × 10⁻³ × 6.022 × 10²³|about 1.7 × 10²¹ molecules
+N In 2H₂ + O₂ → 2H₂O, how many moles of water form from 4 mol of H₂?|H₂ : H₂O = 2 : 2 = 1 : 1|4 mol of H₂O
+N Find the molar mass of water (H = 1, O = 16).|2 × 1 + 16|18 g mol⁻¹
+S What is the chapter Some Basic Concepts of Chemistry about?|Matter and its kinds, measurement (SI units, significant figures), the laws of chemical combination that led to Dalton's atoms, the mole concept and stoichiometry: chemistry as counting particles.
+S Why do chemists need the mole?|Atoms are too small and too many to count one by one, so they are counted in groups of 6.022 × 10²³, just as eggs are counted in dozens.
+X Air => Mixture
+X Water => Compound
+X Oxygen => Element
+X 6.022 × 10²³ => One mole
+XE Elements have one kind of atom, compounds a fixed combination, mixtures any proportion; a mole is a fixed number of particles.

@@ -1,0 +1,152 @@
+{
+ "id": "LEARN-C11-CHE-BASIC-CONCEPTS-INTRO",
+ "slug": "some-basic-concepts-of-chemistry-introduction",
+ "status": "ready",
+ "class": 11,
+ "subject": "Chemistry",
+ "chapter": "Some Basic Concepts of Chemistry",
+ "topic": "Chapter introduction: Some Basic Concepts of Chemistry",
+ "title": "Some Basic Concepts of Chemistry: Chapter Introduction",
+ "series": 392,
+ "studioJob": "basic-concepts-chemistry-intro",
+ "reelId": "STUDIO-CHEM-BASICS-INTRO",
+ "summary": "One drop of water holds about 1.7 × 10²¹ molecules. The chapter shows how chemists measure matter and count its particles with the mole.",
+ "video": {
+  "instagram": "",
+  "youtubeId": "_HL892BYrEg"
+ },
+ "notes": {
+  "pdf": "notes.pdf",
+  "title": "00 – Some Basic Concepts of Chemistry: Chapter Introduction",
+  "driveDoc": "17v4s69vg8sZqv-vdTcB2ht8aIvVoqmE9IRXH7HObvyU"
+ },
+ "tags": [
+  "matter",
+  "measurement",
+  "laws of chemical combination",
+  "Dalton",
+  "mole",
+  "stoichiometry",
+  "chapter introduction"
+ ],
+ "keyPoints": [
+  "Matter: **solid, liquid, gas**; **elements, compounds, mixtures**.",
+  "Measurement uses **SI units** and **significant figures**.",
+  "**Lavoisier**: mass is neither created nor destroyed; such laws led **Dalton** to atoms.",
+  "**1 mole = 6.022 × 10²³ particles**, a counting unit like a dozen; it powers **stoichiometry**."
+ ],
+ "sections": [
+  {
+   "h": "How many molecules in one drop?",
+   "blocks": [
+    {
+     "p": "A drop of water is about 0.05 g. Its molecules:"
+    },
+    {
+     "formula": "0.05 g ÷ 18 g mol⁻¹ = 2.78 × 10⁻³ mol;  × 6.022 × 10²³ ≈ 1.7 × 10²¹ molecules"
+    },
+    {
+     "p": "Counting one per second would take about 5 × 10¹³ years, far longer than the age of the universe (about 1.4 × 10¹⁰ years). So chemists count in moles."
+    }
+   ]
+  },
+  {
+   "h": "The chapter in five steps",
+   "blocks": [
+    {
+     "table": {
+      "head": [
+       "Step",
+       "Idea"
+      ],
+      "rows": [
+       [
+        "Matter",
+        "States (solid, liquid, gas) and kinds (elements, compounds, mixtures)"
+       ],
+       [
+        "Measurement",
+        "SI units, significant figures"
+       ],
+       [
+        "Laws",
+        "Conservation of mass (Lavoisier) and other laws of chemical combination → Dalton's atomic theory"
+       ],
+       [
+        "Mole",
+        "6.022 × 10²³ particles; molar mass"
+       ],
+       [
+        "Stoichiometry",
+        "Amounts of reactants and products from a balanced equation"
+       ]
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "h": "Stoichiometry in one line",
+   "blocks": [
+    {
+     "formula": "2H₂ + O₂ → 2H₂O   (2 mol + 1 mol → 2 mol)"
+    },
+    {
+     "p": "So 4 mol of H₂ needs 2 mol of O₂ and gives 4 mol of water."
+    }
+   ]
+  }
+ ],
+ "quiz": [
+  {
+   "q": "Which of these is a mixture?",
+   "options": [
+    "Water",
+    "Oxygen",
+    "Air",
+    "Carbon dioxide"
+   ],
+   "answer": 2,
+   "explain": "Air is a mixture of gases in varying proportion."
+  },
+  {
+   "q": "One mole of particles is:",
+   "options": [
+    "12",
+    "6.022 × 10²³",
+    "1000",
+    "6.022 × 10²²"
+   ],
+   "answer": 1,
+   "explain": "This is the Avogadro constant."
+  },
+  {
+   "q": "Lavoisier's law says that in a reaction mass is:",
+   "options": [
+    "Created",
+    "Destroyed",
+    "Neither created nor destroyed",
+    "Doubled"
+   ],
+   "answer": 2,
+   "explain": "Law of conservation of mass."
+  },
+  {
+   "q": "In 2H₂ + O₂ → 2H₂O, 4 mol of H₂ needs how much O₂?",
+   "options": [
+    "1 mol",
+    "2 mol",
+    "4 mol",
+    "8 mol"
+   ],
+   "answer": 1,
+   "explain": "H₂ : O₂ = 2 : 1."
+  }
+ ],
+ "simulation": {
+  "decision": "NOT_REQUIRED",
+  "reason": "A chapter overview; the mole and stoichiometry topics that follow get their own pages."
+ },
+ "related": [],
+ "thumb": "thumb.jpg"
+}

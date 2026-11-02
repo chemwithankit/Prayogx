@@ -137,7 +137,7 @@ const norm = s => String(s).toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
         const tag = `${t.slug} @${width}`;
         const src = await page.$eval('.video iframe', f => f.getAttribute('src'));
         ok(`${tag}: video embeds ${t.video.youtubeId}`, src.includes('/embed/' + t.video.youtubeId));
-        ok(`${tag}: Instagram fallback link`, (await page.$eval('.video-alt a', a => a.href)) === t.video.instagram);
+        ok(`${tag}: fallback link`, (await page.$eval('.video-alt a', a => a.href)) === (t.video.instagram || `https://www.youtube.com/shorts/${t.video.youtubeId}`));
         const crumb = await page.$$eval('.crumbs a', a => a.map(x => x.getAttribute('href')));
         ok(`${tag}: breadcrumb ends at its chapter`, crumb[crumb.length - 1] === `../${w.c.id}/${w.s.id}/${w.slug}/`, crumb.join(' '));
         ok(`${tag}: an up-next or back-to-chapter link`, !!(await page.$('.upnext')));

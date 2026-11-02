@@ -1,0 +1,181 @@
+{
+ "id": "LEARN-C11-PHY-UNITS-CHAPTER-INTRO",
+ "slug": "units-and-measurements-introduction",
+ "status": "ready",
+ "class": 11,
+ "subject": "Physics",
+ "chapter": "Units and Measurement",
+ "topic": "Chapter introduction: Units and Measurement",
+ "title": "Units and Measurement: Chapter Introduction",
+ "series": 391,
+ "studioJob": "units-measurements-intro",
+ "reelId": "STUDIO-UNITS-INTRO",
+ "summary": "A number alone means nothing: every measurement is a number and a unit. The chapter builds the SI system, significant figures and dimensions, the base of all physics.",
+ "video": {
+  "instagram": "",
+  "youtubeId": "C9xljfXYMd4"
+ },
+ "notes": {
+  "pdf": "notes.pdf",
+  "title": "00 – Units and Measurement: Chapter Introduction",
+  "driveDoc": "1rkpUaEhy9F6o9mUwnVt152sO98ie3DuX9Pghl9kjIew"
+ },
+ "tags": [
+  "units",
+  "measurement",
+  "SI units",
+  "significant figures",
+  "dimensions",
+  "dimensional analysis",
+  "chapter introduction"
+ ],
+ "keyPoints": [
+  "Every measurement = **number + unit**; 5 m, 5 s and 5 kg are different things.",
+  "The **SI system** has **7 base units**: metre, kilogram, second, ampere, kelvin, mole, candela. Every other unit is derived from them.",
+  "**Significant figures** show how precise a reading is.",
+  "**Dimensions** let you check a formula without any experiment."
+ ],
+ "sections": [
+  {
+   "h": "Why units matter",
+   "blocks": [
+    {
+     "p": "In 1999 NASA's **Mars Climate Orbiter** (about 125 million dollars) was lost at Mars. One team gave thruster data in pound-force seconds, the other read it as newton-seconds. Same number, different unit."
+    },
+    {
+     "formula": "1 pound-force = 4.45 N"
+    }
+   ]
+  },
+  {
+   "h": "The 7 SI base units",
+   "blocks": [
+    {
+     "table": {
+      "head": [
+       "Quantity",
+       "Unit",
+       "Symbol"
+      ],
+      "rows": [
+       [
+        "Length",
+        "metre",
+        "m"
+       ],
+       [
+        "Mass",
+        "kilogram",
+        "kg"
+       ],
+       [
+        "Time",
+        "second",
+        "s"
+       ],
+       [
+        "Electric current",
+        "ampere",
+        "A"
+       ],
+       [
+        "Temperature",
+        "kelvin",
+        "K"
+       ],
+       [
+        "Amount of substance",
+        "mole",
+        "mol"
+       ],
+       [
+        "Luminous intensity",
+        "candela",
+        "cd"
+       ]
+      ]
+     }
+    },
+    {
+     "p": "Every other unit is derived from these, for example **1 N = 1 kg m s⁻²**."
+    }
+   ]
+  },
+  {
+   "h": "Significant figures and dimensions",
+   "blocks": [
+    {
+     "p": "2.5 cm has 2 significant figures, 2.54 cm has 3: the second reading is more precise."
+    },
+    {
+     "p": "Dimensions check formulas: **v = u + at** gives [LT⁻¹] on every term (correct), while **v = u + at²** would add [L] to [LT⁻¹] (wrong)."
+    }
+   ]
+  },
+  {
+   "h": "What the chapter covers",
+   "blocks": [
+    {
+     "list": [
+      "SI units: base and derived units.",
+      "Significant figures and rounding in calculations.",
+      "Dimensions of physical quantities and dimensional formulae.",
+      "Dimensional analysis: checking equations and deducing relations."
+     ]
+    }
+   ]
+  }
+ ],
+ "quiz": [
+  {
+   "q": "Which is NOT an SI base unit?",
+   "options": [
+    "metre",
+    "newton",
+    "kelvin",
+    "candela"
+   ],
+   "answer": 1,
+   "explain": "The newton is derived: 1 N = 1 kg m s⁻²."
+  },
+  {
+   "q": "The Mars Climate Orbiter was lost because of:",
+   "options": [
+    "An engine failure",
+    "A unit mix-up between pound-force and newton",
+    "A wrong launch date",
+    "A solar storm"
+   ],
+   "answer": 1,
+   "explain": "One team used pound-force, the other expected newton."
+  },
+  {
+   "q": "How many significant figures does 2.54 cm have?",
+   "options": [
+    "1",
+    "2",
+    "3",
+    "4"
+   ],
+   "answer": 2,
+   "explain": "All non-zero digits are significant."
+  },
+  {
+   "q": "Which formula is dimensionally wrong?",
+   "options": [
+    "v = u + at",
+    "s = ut + ½at²",
+    "v = u + at²",
+    "v² = u² + 2as"
+   ],
+   "answer": 2,
+   "explain": "at² has dimensions [L], not [LT⁻¹]."
+  }
+ ],
+ "simulation": {
+  "decision": "NOT_REQUIRED",
+  "reason": "A chapter overview; the topics that follow get their own pages."
+ },
+ "related": [],
+ "thumb": "thumb.jpg"
+}
