@@ -792,3 +792,54 @@ X Molality => mol per kg of solvent
 X Henry's law => Gas solubility and pressure
 X Raoult's law => Vapour pressure of solutions
 XE Each term matches its meaning from the chapter introduction.
+@relations-and-functions-introduction
+F A function gives every input exactly ____ output.|one
+F A function in which different inputs always give different outputs is called ____.|one-one
+F A function in which every element of the co-domain is an image is called ____.|onto
+F A function that is both one-one and onto is called ____.|bijective
+F A relation that is reflexive, symmetric and transitive is an ____ relation.|equivalence
+T Student → birthday is a function.|T|Each student has exactly one birthday.
+T Student → birthday is one-one.|F|Two students can share a birthday, so it is many-one.
+T Every function has an inverse.|F|Only bijective functions are invertible.
+T "Is in the same class as" is an equivalence relation.|T|It is reflexive, symmetric and transitive.
+M Which is not a function from students to numbers?|student → roll number;student → age;student → phone numbers of all friends;student → height in cm|3|One student can have many friends' numbers.
+M f: ℝ → ℝ, f(x) = x² is:|one-one;onto;many-one;bijective|3|f(2) = f(−2) = 4.
+M f: ℝ → ℝ, f(x) = 2x + 3 is:|many-one;bijective;not onto;not a function|2|Distinct x give distinct values and every real number is reached.
+M The relation "is the father of" on people is:|reflexive;symmetric;transitive;none of these|4|No one is their own father; it is not symmetric or transitive.
+A f(x) = x² on ℝ has no inverse.|f is not one-one on ℝ.|1|A function needs to be bijective to be invertible.
+A Roll-number assignment for 40 students using 1-40 is invertible.|It is one-one and onto.|1|A bijection has an inverse.
+N Find the inverse of f(x) = 2x + 3 on ℝ.|Put y = 2x + 3; x = (y − 3) / 2|f⁻¹(y) = (y − 3) / 2
+N A = {1, 2, 3}. Is R = {(1,1), (2,2), (3,3), (1,2), (2,1)} an equivalence relation?|Reflexive: (1,1), (2,2), (3,3) ∈ R ✓; Symmetric: (1,2) and (2,1) ∈ R ✓; Transitive: (1,2),(2,1) give (1,1) ∈ R; (2,1),(1,2) give (2,2) ∈ R ✓|Yes, it is an equivalence relation
+N Check whether f: ℕ → ℕ, f(n) = 2n is onto.|Images are 2, 4, 6, …; 1 is not an image|Not onto (but one-one)
+S Distinguish a relation from a function with an example.|A relation is any set of pairs linking A to B; a function is a relation in which every element of A has exactly one image. Student → friends is a relation, student → roll number is a function.
+S Why is student → birthday a function but not one-one?|Each student has exactly one birthday (function), but two different students can have the same birthday, so different inputs can share an output (many-one).
+X One-one => Different inputs, different outputs
+X Onto => Every element of B is used
+X Bijective => One-one and onto
+X Equivalence => Reflexive, symmetric, transitive
+XE Each type matches its defining property.
+@sexual-reproduction-in-flowering-plants-introduction
+F Pollen grains are formed in the ____ of the stamen.|anther
+F The part of the pistil that receives pollen is the ____.|stigma
+F The pollen tube carries ____ male gametes into the ovule.|two
+F Fusion of a male gamete with the two polar nuclei is called ____ fusion.|triple
+F After fertilisation the ovule develops into the ____.|seed
+T The stamen is the female reproductive part of a flower.|F|The stamen is male; the pistil is female.
+T Insects, wind and water can all be agents of pollination.|T|These carry pollen to the stigma.
+T The zygote is triploid.|F|The zygote is diploid (2n); the primary endosperm nucleus is triploid (3n).
+T After fertilisation the ovary becomes the fruit.|T|The ovules inside become seeds.
+M The female reproductive part of a flower is the:|stamen;pistil;sepal;petal|2|Pistil: stigma, style, ovary.
+M Double fertilisation is characteristic of:|ferns;mosses;flowering plants;algae|3|It occurs in angiosperms.
+M The primary endosperm nucleus is:|haploid;diploid;triploid;tetraploid|3|One male gamete (n) + two polar nuclei (n + n) = 3n.
+M Formation of seeds without fertilisation is called:|pollination;apomixis;syngamy;germination|2|Apomixis.
+A Double fertilisation gives both a zygote and an endosperm.|One male gamete fuses with the egg and the other with the two polar nuclei.|1|R describes the two fusions in A.
+A A mango is a ripened ovary.|After fertilisation the ovary develops into the fruit.|1|R explains A.
+N If a plant's egg cell has 12 chromosomes, how many are in its zygote and its primary endosperm nucleus?|Egg (n) = 12, so n = 12; Zygote = n + n = 2n; PEN = n + n + n = 3n|Zygote 24, PEN 36
+N A flower has 5 ovules, each fertilised. How many male gametes and how many pollen tubes are needed?|Each ovule needs one pollen tube; each tube brings 2 male gametes; 5 × 2|5 pollen tubes, 10 male gametes
+S Describe double fertilisation.|The pollen tube releases two male gametes into the embryo sac. One fuses with the egg (syngamy) to form the diploid zygote; the other fuses with the two polar nuclei (triple fusion) to form the triploid primary endosperm nucleus.
+S What happens to the ovule and the ovary after fertilisation?|The ovule develops into the seed (zygote → embryo, PEN → endosperm) and the ovary develops into the fruit.
+X Anther => Pollen grains
+X Stigma => Receives pollen
+X Zygote => Egg + male gamete
+X Endosperm => Polar nuclei + male gamete
+XE Each structure matches its role in reproduction.

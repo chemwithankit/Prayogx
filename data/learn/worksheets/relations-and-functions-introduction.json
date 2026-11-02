@@ -1,0 +1,173 @@
+{
+ "slug": "relations-and-functions-introduction",
+ "title": "Relations and Functions: Chapter Introduction",
+ "class": 12,
+ "subject": "Mathematics",
+ "chapter": "Relations and Functions",
+ "objective": "Roll numbers and birthdays are both functions, but only roll numbers are one-one. The chapter classifies relations and functions and shows which functions can be reversed.",
+ "fill": [
+  {
+   "q": "A function gives every input exactly ____ output.",
+   "a": "one"
+  },
+  {
+   "q": "A function in which different inputs always give different outputs is called ____.",
+   "a": "one-one"
+  },
+  {
+   "q": "A function in which every element of the co-domain is an image is called ____.",
+   "a": "onto"
+  },
+  {
+   "q": "A function that is both one-one and onto is called ____.",
+   "a": "bijective"
+  },
+  {
+   "q": "A relation that is reflexive, symmetric and transitive is an ____ relation.",
+   "a": "equivalence"
+  }
+ ],
+ "tf": [
+  {
+   "q": "Student → birthday is a function.",
+   "a": true,
+   "explain": "Each student has exactly one birthday."
+  },
+  {
+   "q": "Student → birthday is one-one.",
+   "a": false,
+   "explain": "Two students can share a birthday, so it is many-one."
+  },
+  {
+   "q": "Every function has an inverse.",
+   "a": false,
+   "explain": "Only bijective functions are invertible."
+  },
+  {
+   "q": "\"Is in the same class as\" is an equivalence relation.",
+   "a": true,
+   "explain": "It is reflexive, symmetric and transitive."
+  }
+ ],
+ "ar": [
+  {
+   "a": "f(x) = x² on ℝ has no inverse.",
+   "r": "f is not one-one on ℝ.",
+   "answer": 0,
+   "explain": "A function needs to be bijective to be invertible."
+  },
+  {
+   "a": "Roll-number assignment for 40 students using 1-40 is invertible.",
+   "r": "It is one-one and onto.",
+   "answer": 0,
+   "explain": "A bijection has an inverse."
+  }
+ ],
+ "mcq": [
+  {
+   "q": "Which is not a function from students to numbers?",
+   "options": [
+    "student → roll number",
+    "student → age",
+    "student → phone numbers of all friends",
+    "student → height in cm"
+   ],
+   "answer": 2,
+   "explain": "One student can have many friends' numbers."
+  },
+  {
+   "q": "f: ℝ → ℝ, f(x) = x² is:",
+   "options": [
+    "one-one",
+    "onto",
+    "many-one",
+    "bijective"
+   ],
+   "answer": 2,
+   "explain": "f(2) = f(−2) = 4."
+  },
+  {
+   "q": "f: ℝ → ℝ, f(x) = 2x + 3 is:",
+   "options": [
+    "many-one",
+    "bijective",
+    "not onto",
+    "not a function"
+   ],
+   "answer": 1,
+   "explain": "Distinct x give distinct values and every real number is reached."
+  },
+  {
+   "q": "The relation \"is the father of\" on people is:",
+   "options": [
+    "reflexive",
+    "symmetric",
+    "transitive",
+    "none of these"
+   ],
+   "answer": 3,
+   "explain": "No one is their own father; it is not symmetric or transitive."
+  }
+ ],
+ "num": [
+  {
+   "q": "Find the inverse of f(x) = 2x + 3 on ℝ.",
+   "steps": [
+    "Put y = 2x + 3",
+    "x = (y − 3) / 2"
+   ],
+   "answer": "f⁻¹(y) = (y − 3) / 2"
+  },
+  {
+   "q": "A = {1, 2, 3}. Is R = {(1,1), (2,2), (3,3), (1,2), (2,1)} an equivalence relation?",
+   "steps": [
+    "Reflexive: (1,1), (2,2), (3,3) ∈ R ✓",
+    "Symmetric: (1,2) and (2,1) ∈ R ✓",
+    "Transitive: (1,2),(2,1) give (1,1) ∈ R",
+    "(2,1),(1,2) give (2,2) ∈ R ✓"
+   ],
+   "answer": "Yes, it is an equivalence relation"
+  },
+  {
+   "q": "Check whether f: ℕ → ℕ, f(n) = 2n is onto.",
+   "steps": [
+    "Images are 2, 4, 6, …",
+    "1 is not an image"
+   ],
+   "answer": "Not onto (but one-one)"
+  }
+ ],
+ "short": [
+  {
+   "q": "Distinguish a relation from a function with an example.",
+   "lines": 5,
+   "solution": "A relation is any set of pairs linking A to B; a function is a relation in which every element of A has exactly one image. Student → friends is a relation, student → roll number is a function."
+  },
+  {
+   "q": "Why is student → birthday a function but not one-one?",
+   "lines": 5,
+   "solution": "Each student has exactly one birthday (function), but two different students can have the same birthday, so different inputs can share an output (many-one)."
+  }
+ ],
+ "match": {
+  "left": [
+   "One-one",
+   "Onto",
+   "Bijective",
+   "Equivalence"
+  ],
+  "right": [
+   "One-one and onto",
+   "Every element of B is used",
+   "Different inputs, different outputs",
+   "Reflexive, symmetric, transitive"
+  ],
+  "answer": [
+   2,
+   1,
+   0,
+   3
+  ],
+  "explain": "Each type matches its defining property."
+ }
+}

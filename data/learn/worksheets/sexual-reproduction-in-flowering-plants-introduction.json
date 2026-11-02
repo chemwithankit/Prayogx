@@ -1,0 +1,165 @@
+{
+ "slug": "sexual-reproduction-in-flowering-plants-introduction",
+ "title": "Sexual Reproduction in Flowering Plants: Chapter Introduction",
+ "class": 12,
+ "subject": "Biology",
+ "chapter": "Sexual Reproduction in Flowering Plants",
+ "objective": "A flower is a plant's reproductive organ. Pollen reaches the stigma, a pollen tube delivers two male gametes, double fertilisation follows, and the ovule becomes a seed and the ovary a fruit.",
+ "fill": [
+  {
+   "q": "Pollen grains are formed in the ____ of the stamen.",
+   "a": "anther"
+  },
+  {
+   "q": "The part of the pistil that receives pollen is the ____.",
+   "a": "stigma"
+  },
+  {
+   "q": "The pollen tube carries ____ male gametes into the ovule.",
+   "a": "two"
+  },
+  {
+   "q": "Fusion of a male gamete with the two polar nuclei is called ____ fusion.",
+   "a": "triple"
+  },
+  {
+   "q": "After fertilisation the ovule develops into the ____.",
+   "a": "seed"
+  }
+ ],
+ "tf": [
+  {
+   "q": "The stamen is the female reproductive part of a flower.",
+   "a": false,
+   "explain": "The stamen is male; the pistil is female."
+  },
+  {
+   "q": "Insects, wind and water can all be agents of pollination.",
+   "a": true,
+   "explain": "These carry pollen to the stigma."
+  },
+  {
+   "q": "The zygote is triploid.",
+   "a": false,
+   "explain": "The zygote is diploid (2n); the primary endosperm nucleus is triploid (3n)."
+  },
+  {
+   "q": "After fertilisation the ovary becomes the fruit.",
+   "a": true,
+   "explain": "The ovules inside become seeds."
+  }
+ ],
+ "ar": [
+  {
+   "a": "Double fertilisation gives both a zygote and an endosperm.",
+   "r": "One male gamete fuses with the egg and the other with the two polar nuclei.",
+   "answer": 0,
+   "explain": "R describes the two fusions in A."
+  },
+  {
+   "a": "A mango is a ripened ovary.",
+   "r": "After fertilisation the ovary develops into the fruit.",
+   "answer": 0,
+   "explain": "R explains A."
+  }
+ ],
+ "mcq": [
+  {
+   "q": "The female reproductive part of a flower is the:",
+   "options": [
+    "stamen",
+    "pistil",
+    "sepal",
+    "petal"
+   ],
+   "answer": 1,
+   "explain": "Pistil: stigma, style, ovary."
+  },
+  {
+   "q": "Double fertilisation is characteristic of:",
+   "options": [
+    "ferns",
+    "mosses",
+    "flowering plants",
+    "algae"
+   ],
+   "answer": 2,
+   "explain": "It occurs in angiosperms."
+  },
+  {
+   "q": "The primary endosperm nucleus is:",
+   "options": [
+    "haploid",
+    "diploid",
+    "triploid",
+    "tetraploid"
+   ],
+   "answer": 2,
+   "explain": "One male gamete (n) + two polar nuclei (n + n) = 3n."
+  },
+  {
+   "q": "Formation of seeds without fertilisation is called:",
+   "options": [
+    "pollination",
+    "apomixis",
+    "syngamy",
+    "germination"
+   ],
+   "answer": 1,
+   "explain": "Apomixis."
+  }
+ ],
+ "num": [
+  {
+   "q": "If a plant's egg cell has 12 chromosomes, how many are in its zygote and its primary endosperm nucleus?",
+   "steps": [
+    "Egg (n) = 12, so n = 12",
+    "Zygote = n + n = 2n",
+    "PEN = n + n + n = 3n"
+   ],
+   "answer": "Zygote 24, PEN 36"
+  },
+  {
+   "q": "A flower has 5 ovules, each fertilised. How many male gametes and how many pollen tubes are needed?",
+   "steps": [
+    "Each ovule needs one pollen tube",
+    "each tube brings 2 male gametes",
+    "5 × 2"
+   ],
+   "answer": "5 pollen tubes, 10 male gametes"
+  }
+ ],
+ "short": [
+  {
+   "q": "Describe double fertilisation.",
+   "lines": 5,
+   "solution": "The pollen tube releases two male gametes into the embryo sac. One fuses with the egg (syngamy) to form the diploid zygote; the other fuses with the two polar nuclei (triple fusion) to form the triploid primary endosperm nucleus."
+  },
+  {
+   "q": "What happens to the ovule and the ovary after fertilisation?",
+   "lines": 5,
+   "solution": "The ovule develops into the seed (zygote → embryo, PEN → endosperm) and the ovary develops into the fruit."
+  }
+ ],
+ "match": {
+  "left": [
+   "Anther",
+   "Stigma",
+   "Zygote",
+   "Endosperm"
+  ],
+  "right": [
+   "Egg + male gamete",
+   "Polar nuclei + male gamete",
+   "Pollen grains",
+   "Receives pollen"
+  ],
+  "answer": [
+   2,
+   3,
+   0,
+   1
+  ],
+  "explain": "Each structure matches its role in reproduction."
+ }
+}

@@ -1,0 +1,183 @@
+{
+ "status": "ready",
+ "video": {
+  "youtubeId": "b5PwHdQnM4s"
+ },
+ "thumb": "thumb.jpg",
+ "related": [],
+ "id": "LEARN-C12-MAT-RELATIONS-FUNCTIONS-INTRO",
+ "slug": "relations-and-functions-introduction",
+ "class": 12,
+ "subject": "Mathematics",
+ "chapter": "Relations and Functions",
+ "topic": "Chapter introduction: Relations and Functions",
+ "title": "Relations and Functions: Chapter Introduction",
+ "series": 400,
+ "studioJob": "relations-functions-intro",
+ "reelId": "STUDIO-RELFUNC-INTRO",
+ "summary": "Roll numbers and birthdays are both functions, but only roll numbers are one-one. The chapter classifies relations and functions and shows which functions can be reversed.",
+ "notes": {
+  "pdf": "notes.pdf",
+  "title": "00 – Relations and Functions: Chapter Introduction",
+  "driveDoc": "1YAYBzFeWquLpcEC68PjbiUnfmF1Fb-Le2MKkNKQsb_A"
+ },
+ "tags": [
+  "relation",
+  "function",
+  "one-one",
+  "onto",
+  "bijective",
+  "inverse",
+  "equivalence relation",
+  "chapter introduction"
+ ],
+ "keyPoints": [
+  "A **relation** from A to B is any set of pairs (a subset of A × B); a **function** gives each input exactly one output.",
+  "**One-one**: different inputs give different outputs (roll numbers). Birthdays are a function but **many-one**.",
+  "**Onto**: every element of B is an output. **Bijective** = one-one + onto; only bijective functions have an **inverse**.",
+  "A relation that is **reflexive, symmetric and transitive** is an **equivalence relation** (\"is in the same class as\")."
+ ],
+ "sections": [
+  {
+   "h": "Relation vs function",
+   "blocks": [
+    {
+     "table": {
+      "head": [
+       "Arrows from A",
+       "Function?"
+      ],
+      "rows": [
+       [
+        "a → 1 and a → 3",
+        "No: a has two outputs"
+       ],
+       [
+        "each element has exactly one arrow",
+        "Yes"
+       ],
+       [
+        "c has no arrow",
+        "No: every input needs an output"
+       ]
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "h": "Types of functions",
+   "blocks": [
+    {
+     "table": {
+      "head": [
+       "Type",
+       "Meaning",
+       "Example"
+      ],
+      "rows": [
+       [
+        "One-one (injective)",
+        "different inputs → different outputs",
+        "student → roll number"
+       ],
+       [
+        "Many-one",
+        "two inputs share an output",
+        "student → birthday"
+       ],
+       [
+        "Onto (surjective)",
+        "every element of B is used",
+        "roll numbers 1-4 for 4 students"
+       ],
+       [
+        "Bijective",
+        "one-one and onto",
+        "invertible"
+       ]
+      ]
+     }
+    },
+    {
+     "formula": "f(x) = 2x + 3 on ℝ is bijective;  f⁻¹(y) = (y − 3) / 2"
+    }
+   ]
+  },
+  {
+   "h": "Types of relations",
+   "blocks": [
+    {
+     "list": [
+      "**Reflexive**: (a, a) ∈ R for every a.",
+      "**Symmetric**: (a, b) ∈ R ⇒ (b, a) ∈ R.",
+      "**Transitive**: (a, b), (b, c) ∈ R ⇒ (a, c) ∈ R.",
+      "All three together: **equivalence relation**, e.g. \"lives in the same city as\"."
+     ]
+    }
+   ]
+  },
+  {
+   "h": "What the chapter covers",
+   "blocks": [
+    {
+     "list": [
+      "Types of relations: empty, universal, reflexive, symmetric, transitive, equivalence.",
+      "Types of functions: one-one, onto, bijective.",
+      "Composition of functions g∘f and invertible functions."
+     ]
+    }
+   ]
+  }
+ ],
+ "quiz": [
+  {
+   "q": "Which assignment is a function?",
+   "options": [
+    "Each student → their friends",
+    "Each student → their roll number",
+    "Each teacher → students they teach",
+    "Each number → its square roots"
+   ],
+   "answer": 1,
+   "explain": "Each student has exactly one roll number."
+  },
+  {
+   "q": "Student → birthday is:",
+   "options": [
+    "One-one",
+    "Many-one",
+    "Not a function",
+    "Bijective"
+   ],
+   "answer": 1,
+   "explain": "Two students can share a birthday."
+  },
+  {
+   "q": "A function has an inverse only if it is:",
+   "options": [
+    "One-one only",
+    "Onto only",
+    "Bijective",
+    "Many-one"
+   ],
+   "answer": 2,
+   "explain": "Invertible ⇔ one-one and onto."
+  },
+  {
+   "q": "\"Is in the same class as\" on a school's students is:",
+   "options": [
+    "Reflexive only",
+    "Symmetric only",
+    "An equivalence relation",
+    "Not a relation"
+   ],
+   "answer": 2,
+   "explain": "It is reflexive, symmetric and transitive."
+  }
+ ],
+ "simulation": {
+  "decision": "NOT_REQUIRED",
+  "reason": "A chapter overview; the function-type topics that follow get their own pages."
+ }
+}
