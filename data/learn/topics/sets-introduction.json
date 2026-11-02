@@ -1,0 +1,189 @@
+{
+ "status": "ready",
+ "video": {
+  "youtubeId": "Nc6KiGqNl48"
+ },
+ "notes": {
+  "pdf": "notes.pdf",
+  "title": "00 – Sets: Chapter Introduction",
+  "driveDoc": "1N-43fA3tbiJGssGwuwV6I8i0svhxgFOYkEwZiqvI-Zw"
+ },
+ "thumb": "thumb.jpg",
+ "simulation": {
+  "decision": "NOT_REQUIRED",
+  "reason": "A chapter overview; Venn diagram topics that follow get their own pages."
+ },
+ "related": [],
+ "id": "LEARN-C11-MAT-SETS-CHAPTER-INTRO",
+ "slug": "sets-introduction",
+ "class": 11,
+ "subject": "Mathematics",
+ "chapter": "Sets",
+ "topic": "Chapter introduction: Sets",
+ "title": "Sets: Chapter Introduction",
+ "series": 395,
+ "studioJob": "sets-intro",
+ "reelId": "STUDIO-SETS-INTRO",
+ "summary": "A set is a well-defined collection: anyone can decide whether a thing belongs to it or not. The chapter builds the language of sets that the rest of mathematics uses.",
+ "tags": [
+  "sets",
+  "roster form",
+  "set-builder form",
+  "empty set",
+  "Venn diagram",
+  "union",
+  "intersection",
+  "chapter introduction"
+ ],
+ "keyPoints": [
+  "A **set** is a **well-defined** collection of objects.",
+  "\"Best cricketers\" is not a set; \"months starting with J\" = {January, June, July} is.",
+  "Notation: A = {2, 4, 6, 8, 10}; **4 ∈ A** (4 belongs to A).",
+  "Sets can be **empty**, **finite** or **infinite**; **union** and **intersection** are shown on **Venn diagrams**."
+ ],
+ "sections": [
+  {
+   "h": "What makes a collection a set",
+   "blocks": [
+    {
+     "p": "A collection is **well-defined** when, for any object, we can say for certain whether it belongs to the collection or not."
+    },
+    {
+     "table": {
+      "head": [
+       "Collection",
+       "Set?",
+       "Why"
+      ],
+      "rows": [
+       [
+        "Best cricketers of India",
+        "No",
+        "\"Best\" depends on opinion"
+       ],
+       [
+        "Months whose names start with J",
+        "Yes",
+        "Exactly January, June, July"
+       ],
+       [
+        "Even natural numbers from 1 to 10",
+        "Yes",
+        "Exactly 2, 4, 6, 8, 10"
+       ]
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "h": "Writing sets",
+   "blocks": [
+    {
+     "list": [
+      "Sets are named with capital letters, elements are written inside curly brackets { }.",
+      "**Roster form:** A = {2, 4, 6, 8, 10}.",
+      "**Set-builder form:** A = {x : x is an even natural number, x ≤ 10}.",
+      "**4 ∈ A** means 4 belongs to A; **5 ∉ A** means 5 does not."
+     ]
+    }
+   ]
+  },
+  {
+   "h": "Types and operations",
+   "blocks": [
+    {
+     "table": {
+      "head": [
+       "Idea",
+       "Example"
+      ],
+      "rows": [
+       [
+        "Empty set ∅",
+        "{x : x is a natural number less than 1}"
+       ],
+       [
+        "Finite set",
+        "{a, e, i, o, u}"
+       ],
+       [
+        "Infinite set",
+        "N = {1, 2, 3, …}"
+       ],
+       [
+        "Union A ∪ B",
+        "everything in A or B (or both)"
+       ],
+       [
+        "Intersection A ∩ B",
+        "only what is common to A and B"
+       ]
+      ]
+     }
+    },
+    {
+     "formula": "A = {1, 2, 3}, B = {2, 3, 4}:  A ∪ B = {1, 2, 3, 4},  A ∩ B = {2, 3}"
+    }
+   ]
+  },
+  {
+   "h": "What the chapter covers",
+   "blocks": [
+    {
+     "list": [
+      "Sets and their representations; empty, finite, infinite and equal sets.",
+      "Subsets, power set, universal set.",
+      "Venn diagrams; union, intersection, difference and complement of sets."
+     ]
+    }
+   ]
+  }
+ ],
+ "quiz": [
+  {
+   "q": "Which of these is a set?",
+   "options": [
+    "The tallest students of a class",
+    "Months starting with J",
+    "Good books",
+    "Famous scientists"
+   ],
+   "answer": 1,
+   "explain": "Only this collection is well-defined: {January, June, July}."
+  },
+  {
+   "q": "If A = {2, 4, 6, 8, 10}, which is true?",
+   "options": [
+    "5 ∈ A",
+    "4 ∈ A",
+    "10 ∉ A",
+    "2 ∉ A"
+   ],
+   "answer": 1,
+   "explain": "4 is an element of A."
+  },
+  {
+   "q": "The set of natural numbers is:",
+   "options": [
+    "Empty",
+    "Finite",
+    "Infinite",
+    "Not a set"
+   ],
+   "answer": 2,
+   "explain": "N = {1, 2, 3, …} never ends."
+  },
+  {
+   "q": "A = {1, 2, 3}, B = {2, 3, 4}. A ∩ B is:",
+   "options": [
+    "{1, 2, 3, 4}",
+    "{2, 3}",
+    "{1, 4}",
+    "∅"
+   ],
+   "answer": 1,
+   "explain": "Only 2 and 3 are in both sets."
+  }
+ ]
+}

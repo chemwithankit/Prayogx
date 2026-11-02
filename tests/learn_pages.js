@@ -94,7 +94,7 @@ const norm = s => String(s).toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
           if (phone && !(c.id === 'class-9' || mine.length)) continue;   // phones: the populated pages and all of Class 9
           await visit(`/learn/${c.id}/${s.id}/`, `${c.id}/${s.id}`);
           const chs = await page.$$eval('.chapcard', a => a.map(x => x.getAttribute('href')));
-          const want = c.id === 'extra' ? [...new Set(mine.map(t => slugify(t.chapter) + '/'))] : s.chapters.map(x => slugify(x.name) + '/');
+          const want = c.id === 'extra' ? [...new Set([...mine].sort((x, y) => (x.series || 0) - (y.series || 0)).map(t => slugify(t.chapter) + '/'))] : s.chapters.map(x => slugify(x.name) + '/');
           ok(`${c.id}/${s.id} @${width}: chapters in curriculum order`, chs.join() === want.join(), chs.length + ' cards');
           if (mine.length) {
             await page.click('#tab-topics');

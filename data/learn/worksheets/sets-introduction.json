@@ -1,0 +1,170 @@
+{
+ "slug": "sets-introduction",
+ "title": "Sets: Chapter Introduction",
+ "class": 11,
+ "subject": "Mathematics",
+ "chapter": "Sets",
+ "objective": "A set is a well-defined collection: anyone can decide whether a thing belongs to it or not. The chapter builds the language of sets that the rest of mathematics uses.",
+ "fill": [
+  {
+   "q": "A set is a ____ collection of objects.",
+   "a": "well-defined"
+  },
+  {
+   "q": "The objects in a set are called its ____.",
+   "a": "elements"
+  },
+  {
+   "q": "A set with no element is the ____ set.",
+   "a": "empty"
+  },
+  {
+   "q": "The symbol ∈ is read as \"____ to\".",
+   "a": "belongs"
+  },
+  {
+   "q": "The common part of two sets is their ____.",
+   "a": "intersection"
+  }
+ ],
+ "tf": [
+  {
+   "q": "\"The best cricketers of India\" is a set.",
+   "a": false,
+   "explain": "\"Best\" depends on opinion, so it is not well-defined."
+  },
+  {
+   "q": "The months whose names start with J form a set.",
+   "a": true,
+   "explain": "It is exactly {January, June, July}."
+  },
+  {
+   "q": "The set of natural numbers is finite.",
+   "a": false,
+   "explain": "N = {1, 2, 3, …} never ends; it is infinite."
+  },
+  {
+   "q": "If A = {2, 4, 6}, then 6 ∈ A.",
+   "a": true,
+   "explain": "6 is listed in A."
+  }
+ ],
+ "ar": [
+  {
+   "a": "{a, e, i, o, u} is a finite set.",
+   "r": "It has a countable, limited number of elements.",
+   "answer": 0,
+   "explain": "5 elements; R explains A."
+  },
+  {
+   "a": "\"Beautiful flowers\" is not a set.",
+   "r": "Every collection of objects is a set.",
+   "answer": 2,
+   "explain": "A is true; R is false: only well-defined collections are sets."
+  }
+ ],
+ "mcq": [
+  {
+   "q": "Which is a set?",
+   "options": [
+    "good students",
+    "months starting with J",
+    "tall trees",
+    "famous films"
+   ],
+   "answer": 1,
+   "explain": "Only this collection is well-defined."
+  },
+  {
+   "q": "If A = {1, 2, 3} and B = {2, 3, 4}, A ∪ B is:",
+   "options": [
+    "{2, 3}",
+    "{1, 2, 3, 4}",
+    "{1, 4}",
+    "{1, 2, 3}"
+   ],
+   "answer": 1,
+   "explain": "Union collects every element of A or B once."
+  },
+  {
+   "q": "If A = {1, 2, 3} and B = {2, 3, 4}, A ∩ B is:",
+   "options": [
+    "{2, 3}",
+    "{1, 2, 3, 4}",
+    "{1, 4}",
+    "∅"
+   ],
+   "answer": 0,
+   "explain": "Only 2 and 3 are in both."
+  },
+  {
+   "q": "{x : x is a natural number less than 1} is:",
+   "options": [
+    "finite with 1 element",
+    "infinite",
+    "empty",
+    "not a set"
+   ],
+   "answer": 2,
+   "explain": "No natural number is less than 1."
+  }
+ ],
+ "num": [
+  {
+   "q": "Write the set of even natural numbers less than 11 in roster form and count its elements.",
+   "steps": [
+    "Even natural numbers below 11: 2, 4, 6, 8, 10",
+    "Roster form: {2, 4, 6, 8, 10}"
+   ],
+   "answer": "{2, 4, 6, 8, 10}; 5 elements"
+  },
+  {
+   "q": "A = {1, 3, 5, 7}, B = {3, 5, 9}. Find A ∪ B and A ∩ B.",
+   "steps": [
+    "A ∪ B: all elements of A or B = {1, 3, 5, 7, 9}",
+    "A ∩ B: elements in both = {3, 5}"
+   ],
+   "answer": "A ∪ B = {1, 3, 5, 7, 9}; A ∩ B = {3, 5}"
+  },
+  {
+   "q": "Write A = {x : x is a prime number less than 10} in roster form.",
+   "steps": [
+    "Primes below 10: 2, 3, 5, 7"
+   ],
+   "answer": "{2, 3, 5, 7}"
+  }
+ ],
+ "short": [
+  {
+   "q": "What makes a collection well-defined? Give one example and one non-example.",
+   "lines": 5,
+   "solution": "We can decide for certain whether any object belongs to it. Example: months starting with J = {January, June, July}. Non-example: best cricketers (depends on opinion)."
+  },
+  {
+   "q": "Draw a Venn diagram idea for A ∪ B and A ∩ B in words.",
+   "lines": 5,
+   "solution": "Two overlapping circles A and B inside a rectangle (the universal set). A ∪ B is the whole region covered by either circle; A ∩ B is only the overlapping region."
+  }
+ ],
+ "match": {
+  "left": [
+   "∅",
+   "{a, e, i, o, u}",
+   "{1, 2, 3, …}",
+   "A ∩ B"
+  ],
+  "right": [
+   "Finite set",
+   "Infinite set",
+   "Empty set",
+   "Common elements"
+  ],
+  "answer": [
+   2,
+   0,
+   1,
+   3
+  ],
+  "explain": "Each symbol or example matches one idea from the chapter introduction."
+ }
+}

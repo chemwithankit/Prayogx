@@ -1,0 +1,146 @@
+{
+ "slug": "the-living-world-introduction",
+ "title": "The Living World: Chapter Introduction",
+ "class": 11,
+ "subject": "Biology",
+ "chapter": "The Living World",
+ "objective": "A mule cannot reproduce, yet it is alive. Metabolism, cellular organisation and consciousness define life; binomial names and the taxonomic hierarchy organise 1.7-1.8 million described species.",
+ "fill": [
+  {
+   "q": "The sum of all chemical reactions in a body is called ____.",
+   "a": "metabolism"
+  },
+  {
+   "q": "Naming each organism with a genus and a species name is called ____ nomenclature.",
+   "a": "binomial"
+  },
+  {
+   "q": "Binomial nomenclature was given by Carolus ____.",
+   "a": "Linnaeus"
+  },
+  {
+   "q": "The lowest (most specific) taxonomic category is the ____.",
+   "a": "species"
+  },
+  {
+   "q": "The scientific name of the mango is Mangifera ____.",
+   "a": "indica"
+  }
+ ],
+ "tf": [
+  {
+   "q": "Growth is a defining feature of living organisms.",
+   "a": false,
+   "explain": "Non-living masses also grow, by accumulation from outside."
+  },
+  {
+   "q": "A mule is a living organism even though it cannot reproduce.",
+   "a": true,
+   "explain": "Reproduction is not a defining feature."
+  },
+  {
+   "q": "Cellular organisation is a defining feature of life.",
+   "a": true,
+   "explain": "All living organisms are made of cells."
+  },
+  {
+   "q": "In Homo sapiens, \"sapiens\" is the genus.",
+   "a": false,
+   "explain": "\"Homo\" is the genus; \"sapiens\" is the specific epithet."
+  }
+ ],
+ "ar": [
+  {
+   "a": "Reproduction is not a defining feature of life.",
+   "r": "Mules and worker bees are alive but cannot reproduce.",
+   "answer": 0,
+   "explain": "R is the reason A is true."
+  },
+  {
+   "a": "Local names are enough for science.",
+   "r": "One plant has different names in different places.",
+   "answer": 3,
+   "explain": "A is false; R is true and is why binomial names are needed."
+  }
+ ],
+ "mcq": [
+  {
+   "q": "Which is a defining property of living organisms?",
+   "options": [
+    "growth",
+    "reproduction",
+    "metabolism",
+    "movement"
+   ],
+   "answer": 2,
+   "explain": "No non-living object shows metabolism."
+  },
+  {
+   "q": "The correct order of taxonomic categories is:",
+   "options": [
+    "kingdom, class, phylum, order",
+    "kingdom, phylum, class, order",
+    "phylum, kingdom, order, class",
+    "order, class, phylum, kingdom"
+   ],
+   "answer": 1,
+   "explain": "Kingdom → phylum → class → order → family → genus → species."
+  },
+  {
+   "q": "The scientific name of humans is:",
+   "options": [
+    "Homo erectus",
+    "Homo sapiens",
+    "Homo indica",
+    "Sapiens homo"
+   ],
+   "answer": 1,
+   "explain": "Genus Homo, species sapiens."
+  },
+  {
+   "q": "About how many species have been described?",
+   "options": [
+    "17 thousand",
+    "1.7-1.8 million",
+    "170 million",
+    "1.8 billion"
+   ],
+   "answer": 1,
+   "explain": "NCERT quotes about 1.7-1.8 million."
+  }
+ ],
+ "num": [],
+ "short": [
+  {
+   "q": "Why are growth and reproduction not defining features of living organisms?",
+   "lines": 5,
+   "solution": "Non-living things such as mountains and sand mounds also increase in mass (from outside), and many living organisms such as mules and worker bees cannot reproduce. So neither is found in all and only living things."
+  },
+  {
+   "q": "State two rules of binomial nomenclature.",
+   "lines": 5,
+   "solution": "The name has two words: the genus (starts with a capital letter) and the specific epithet (small letter). It is printed in italics, or each word is underlined separately when handwritten."
+  }
+ ],
+ "match": {
+  "left": [
+   "Mangifera",
+   "sapiens",
+   "Linnaeus",
+   "Metabolism"
+  ],
+  "right": [
+   "Specific epithet of humans",
+   "Genus of mango",
+   "Binomial nomenclature",
+   "Defining feature of life"
+  ],
+  "answer": [
+   1,
+   0,
+   2,
+   3
+  ],
+  "explain": "Each term matches its idea from the chapter introduction."
+ }
+}

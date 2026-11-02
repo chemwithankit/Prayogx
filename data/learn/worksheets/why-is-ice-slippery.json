@@ -1,0 +1,139 @@
+{
+ "slug": "why-is-ice-slippery",
+ "title": "Why Is Ice Slippery?",
+ "class": "Supplementary",
+ "subject": "Physics",
+ "chapter": "Heat and matter",
+ "objective": "Not because your weight melts it: that lowers the melting point by only a fraction of a degree. A thin liquid-like surface layer (premelting) and frictional melting do the work, and scientists still debate the details.",
+ "fill": [
+  {
+   "q": "The old idea that our weight melts ice is called ____ melting.",
+   "a": "pressure"
+  },
+  {
+   "q": "A liquid-like layer on ice below 0 °C is called ____.",
+   "a": "premelting"
+  },
+  {
+   "q": "The premelting layer was first proposed by Michael ____.",
+   "a": "Faraday"
+  },
+  {
+   "q": "Sliding produces heat because of ____.",
+   "a": "friction"
+  }
+ ],
+ "tf": [
+  {
+   "q": "Pressure from our weight lowers the melting point of ice by several degrees.",
+   "a": false,
+   "explain": "Only by a fraction of a degree."
+  },
+  {
+   "q": "Ice can be slippery even at −30 °C.",
+   "a": true,
+   "explain": "Which pressure melting cannot explain."
+  },
+  {
+   "q": "A moving skate can melt a thin water film by friction.",
+   "a": true,
+   "explain": "Frictional heating melts the surface."
+  },
+  {
+   "q": "Scientists fully agree on why ice is slippery.",
+   "a": false,
+   "explain": "The details are still debated."
+  }
+ ],
+ "ar": [
+  {
+   "a": "Ice is slippery even when you stand still.",
+   "r": "A liquid-like layer covers ice below 0 °C.",
+   "answer": 0,
+   "explain": "Premelting works without motion."
+  },
+  {
+   "a": "Pressure melting explains slipping at −30 °C.",
+   "r": "Pressure lowers the melting point of ice.",
+   "answer": 3,
+   "explain": "A is false (the effect is a fraction of a degree); R is true."
+  }
+ ],
+ "mcq": [
+  {
+   "q": "Why does pressure melting fail as the full explanation?",
+   "options": [
+    "ice is too hard",
+    "the melting point falls only a fraction of a degree",
+    "pressure raises the melting point",
+    "ice has no surface"
+   ],
+   "answer": 1,
+   "explain": "The effect is far too small."
+  },
+  {
+   "q": "Premelting means:",
+   "options": [
+    "ice melting at 0 °C",
+    "a liquid-like surface layer below 0 °C",
+    "water freezing",
+    "ice turning into vapour"
+   ],
+   "answer": 1,
+   "explain": "A thin mobile layer exists below the melting point."
+  },
+  {
+   "q": "Frictional melting matters most for:",
+   "options": [
+    "a person standing still",
+    "a moving skater",
+    "ice in a freezer",
+    "falling snow"
+   ],
+   "answer": 1,
+   "explain": "Sliding produces the heat."
+  }
+ ],
+ "num": [
+  {
+   "q": "Pressure lowers ice's melting point by about 0.0074 °C per atmosphere. By how much does a pressure of 100 atmospheres lower it?",
+   "steps": [
+    "Change = 0.0074 × 100"
+   ],
+   "answer": "about 0.74 °C, far too little to explain slipping at −30 °C"
+  }
+ ],
+ "short": [
+  {
+   "q": "Explain the three ideas proposed for why ice is slippery.",
+   "lines": 5,
+   "solution": "Pressure melting: weight melts the ice (too small an effect). Frictional melting: sliding heats and melts a thin film (true for moving skates). Premelting: a liquid-like layer exists on ice below 0 °C (explains slipping even when standing still)."
+  },
+  {
+   "q": "Why is this called an open question?",
+   "lines": 5,
+   "solution": "Experiments confirm a mobile surface layer and frictional melting, but how much each contributes, and the exact behaviour of the surface molecules, is still being researched."
+  }
+ ],
+ "match": {
+  "left": [
+   "Pressure melting",
+   "Friction",
+   "Premelting",
+   "Faraday"
+  ],
+  "right": [
+   "Too small an effect",
+   "Liquid-like layer below 0 °C",
+   "Proposed the surface layer",
+   "Melts a film under a moving skate"
+  ],
+  "answer": [
+   0,
+   3,
+   1,
+   2
+  ],
+  "explain": "Each idea matches its role in the explanation."
+ }
+}
