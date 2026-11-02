@@ -1,0 +1,171 @@
+{
+ "slug": "solutions-introduction",
+ "title": "Solutions: Chapter Introduction",
+ "class": 12,
+ "subject": "Chemistry",
+ "chapter": "Solutions",
+ "objective": "Soda fizzes when opened and the sea does not freeze at 0 °C: both are solution behaviour. The chapter covers concentration, Henry's and Raoult's laws and colligative properties.",
+ "fill": [
+  {
+   "q": "A solution is a ____ mixture of two or more components.",
+   "a": "homogeneous"
+  },
+  {
+   "q": "The component present in the largest amount is the ____.",
+   "a": "solvent"
+  },
+  {
+   "q": "Molarity is moles of solute per litre of ____.",
+   "a": "solution"
+  },
+  {
+   "q": "The solubility of a gas in a liquid is proportional to its partial pressure: this is ____'s law.",
+   "a": "Henry"
+  },
+  {
+   "q": "Properties that depend only on the number of solute particles are called ____ properties.",
+   "a": "colligative"
+  }
+ ],
+ "tf": [
+  {
+   "q": "Molality changes with temperature.",
+   "a": false,
+   "explain": "It uses the mass of solvent, which does not change with temperature."
+  },
+  {
+   "q": "A non-volatile solute lowers the vapour pressure of the solvent.",
+   "a": true,
+   "explain": "It occupies part of the surface, so fewer solvent molecules escape."
+  },
+  {
+   "q": "Adding salt raises the freezing point of water.",
+   "a": false,
+   "explain": "It lowers (depresses) the freezing point."
+  },
+  {
+   "q": "Soda fizzes on opening because the pressure above it falls.",
+   "a": true,
+   "explain": "Lower pressure means lower CO₂ solubility."
+  }
+ ],
+ "ar": [
+  {
+   "a": "Molality is preferred to molarity for precise work at varying temperature.",
+   "r": "Volume changes with temperature but mass does not.",
+   "answer": 0,
+   "explain": "R explains A."
+  },
+  {
+   "a": "Divers use air diluted with helium.",
+   "r": "At high pressure underwater, more nitrogen dissolves in blood (Henry's law).",
+   "answer": 0,
+   "explain": "Helium is less soluble, avoiding the bends."
+  }
+ ],
+ "mcq": [
+  {
+   "q": "Molality is expressed as:",
+   "options": [
+    "mol L⁻¹",
+    "mol kg⁻¹ of solvent",
+    "g L⁻¹",
+    "no unit"
+   ],
+   "answer": 1,
+   "explain": "m = moles of solute / kg of solvent."
+  },
+  {
+   "q": "Which is a colligative property?",
+   "options": [
+    "colour",
+    "osmotic pressure",
+    "density",
+    "taste"
+   ],
+   "answer": 1,
+   "explain": "It depends on the number of particles only."
+  },
+  {
+   "q": "Opening a soda bottle releases CO₂ because:",
+   "options": [
+    "temperature rises",
+    "pressure falls",
+    "the sugar burns",
+    "water boils"
+   ],
+   "answer": 1,
+   "explain": "Henry's law."
+  },
+  {
+   "q": "Sea water freezes:",
+   "options": [
+    "above 0 °C",
+    "exactly at 0 °C",
+    "below 0 °C",
+    "never"
+   ],
+   "answer": 2,
+   "explain": "Dissolved salt depresses the freezing point (about −1.9 °C)."
+  }
+ ],
+ "num": [
+  {
+   "q": "Find the molarity of a solution with 0.5 mol of NaCl in 2 L of solution.",
+   "steps": [
+    "M = n / V = 0.5 / 2"
+   ],
+   "answer": "0.25 M"
+  },
+  {
+   "q": "Find the molality of 4 g of NaOH (molar mass 40 g mol⁻¹) in 500 g of water.",
+   "steps": [
+    "n = 4 / 40 = 0.1 mol",
+    "m = 0.1 / 0.5 kg"
+   ],
+   "answer": "0.2 mol kg⁻¹"
+  },
+  {
+   "q": "18 g of glucose (180 g mol⁻¹) is dissolved in 90 g of water (18 g mol⁻¹). Find the mole fraction of glucose.",
+   "steps": [
+    "n(glucose) = 18 / 180 = 0.1",
+    "n(water) = 90 / 18 = 5",
+    "x = 0.1 / 5.1"
+   ],
+   "answer": "about 0.0196"
+  }
+ ],
+ "short": [
+  {
+   "q": "State Henry's law and use it to explain why soda fizzes on opening.",
+   "lines": 5,
+   "solution": "The partial pressure of a gas above a solution is proportional to its mole fraction in the solution (p = K_H x). Soda is bottled under high CO₂ pressure; opening lowers the pressure, so less CO₂ stays dissolved and the excess escapes as bubbles."
+  },
+  {
+   "q": "Why does sea water not freeze at 0 °C?",
+   "lines": 5,
+   "solution": "Dissolved salts depress the freezing point (a colligative property): the more solute particles, the lower it goes. Sea water freezes at about −1.9 °C."
+  }
+ ],
+ "match": {
+  "left": [
+   "Molarity",
+   "Molality",
+   "Henry's law",
+   "Raoult's law"
+  ],
+  "right": [
+   "Gas solubility and pressure",
+   "mol per kg of solvent",
+   "Vapour pressure of solutions",
+   "mol per litre of solution"
+  ],
+  "answer": [
+   3,
+   1,
+   0,
+   2
+  ],
+  "explain": "Each term matches its meaning from the chapter introduction."
+ }
+}

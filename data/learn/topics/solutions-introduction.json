@@ -1,0 +1,160 @@
+{
+ "id": "LEARN-C12-CHE-SOLUTIONS-CHAPTER-INTRO",
+ "slug": "solutions-introduction",
+ "status": "ready",
+ "class": 12,
+ "subject": "Chemistry",
+ "chapter": "Solutions",
+ "topic": "Chapter introduction: Solutions",
+ "title": "Solutions: Chapter Introduction",
+ "series": 399,
+ "studioJob": "solutions-intro",
+ "reelId": "STUDIO-SOLUTIONS-INTRO",
+ "summary": "Soda fizzes when opened and the sea does not freeze at 0 °C: both are solution behaviour. The chapter covers concentration, Henry's and Raoult's laws and colligative properties.",
+ "video": {
+  "youtubeId": "OyZPnn72XMw"
+ },
+ "notes": {
+  "pdf": "notes.pdf",
+  "title": "00 – Solutions: Chapter Introduction",
+  "driveDoc": "1MkDPeW54Y-l29z4kryqEAR4Z12kI-VPULIIPxvrDbYM"
+ },
+ "thumb": "thumb.jpg",
+ "tags": [
+  "solutions",
+  "molarity",
+  "molality",
+  "Henry's law",
+  "Raoult's law",
+  "colligative properties",
+  "chapter introduction"
+ ],
+ "keyPoints": [
+  "A **solution** is a homogeneous mixture; the component present in the largest amount is the **solvent**, the dissolved one the **solute**.",
+  "**Molarity** = moles of solute per litre of solution; also molality, mole fraction, ppm.",
+  "**Henry's law**: gas solubility rises with pressure (p = K_H x); opening soda lowers the pressure, so CO₂ bubbles out.",
+  "**Raoult's law**: a non-volatile solute lowers the solvent's vapour pressure; **colligative properties** (boiling point ↑, freezing point ↓, osmotic pressure) depend only on the number of solute particles."
+ ],
+ "sections": [
+  {
+   "h": "Solution, solvent, solute",
+   "blocks": [
+    {
+     "p": "Salt water is a solution: water (the larger component) is the **solvent**, salt is the **solute**. The mixture is uniform throughout (**homogeneous**)."
+    }
+   ]
+  },
+  {
+   "h": "Concentration",
+   "blocks": [
+    {
+     "table": {
+      "head": [
+       "Term",
+       "Definition"
+      ],
+      "rows": [
+       [
+        "Molarity (M)",
+        "moles of solute / litres of solution"
+       ],
+       [
+        "Molality (m)",
+        "moles of solute / kg of solvent"
+       ],
+       [
+        "Mole fraction (x)",
+        "moles of a component / total moles"
+       ],
+       [
+        "ppm",
+        "parts of solute per million parts of solution"
+       ]
+      ]
+     }
+    },
+    {
+     "formula": "0.5 mol NaCl in 2 L solution → M = 0.5 / 2 = 0.25 M"
+    }
+   ]
+  },
+  {
+   "h": "Henry's and Raoult's laws",
+   "blocks": [
+    {
+     "formula": "Henry: p = K_H · x      Raoult (non-volatile solute): (p° − p) / p° = x_solute"
+    },
+    {
+     "p": "Soda is bottled under high CO₂ pressure. When it is opened the pressure falls, the gas's solubility falls, and the extra CO₂ escapes as bubbles. A non-volatile solute takes up part of the surface, so fewer solvent molecules escape and the vapour pressure is lower."
+    }
+   ]
+  },
+  {
+   "h": "Colligative properties",
+   "blocks": [
+    {
+     "list": [
+      "Relative lowering of vapour pressure.",
+      "Elevation of boiling point.",
+      "Depression of freezing point (sea water freezes near −1.9 °C).",
+      "Osmotic pressure."
+     ]
+    },
+    {
+     "p": "All four depend on the **number** of solute particles, not on what they are."
+    }
+   ]
+  }
+ ],
+ "quiz": [
+  {
+   "q": "In salt water, the solvent is:",
+   "options": [
+    "Salt",
+    "Water",
+    "Both",
+    "Neither"
+   ],
+   "answer": 1,
+   "explain": "The solvent is the component present in the largest amount."
+  },
+  {
+   "q": "Molarity is defined as moles of solute per:",
+   "options": [
+    "kg of solvent",
+    "litre of solution",
+    "litre of solvent",
+    "total moles"
+   ],
+   "answer": 1,
+   "explain": "M = n / V(L) of solution."
+  },
+  {
+   "q": "Soda fizzes on opening because:",
+   "options": [
+    "Temperature rises",
+    "Pressure falls, so CO₂ solubility falls",
+    "Sugar reacts",
+    "Water evaporates"
+   ],
+   "answer": 1,
+   "explain": "Henry's law: solubility of a gas is proportional to its partial pressure."
+  },
+  {
+   "q": "Which is NOT a colligative property?",
+   "options": [
+    "Elevation of boiling point",
+    "Osmotic pressure",
+    "Colour of the solution",
+    "Depression of freezing point"
+   ],
+   "answer": 2,
+   "explain": "Colour depends on the solute's nature, not on the number of particles."
+  }
+ ],
+ "simulation": {
+  "decision": "NOT_REQUIRED",
+  "reason": "A chapter overview; the colligative-property topics that follow get their own pages."
+ },
+ "related": []
+}
