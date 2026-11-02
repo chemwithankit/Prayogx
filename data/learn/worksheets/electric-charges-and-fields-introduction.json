@@ -1,0 +1,170 @@
+{
+ "slug": "electric-charges-and-fields-introduction",
+ "title": "Electric Charges and Fields: Chapter Introduction",
+ "class": 12,
+ "subject": "Physics",
+ "chapter": "Electric Charges and Fields",
+ "objective": "A rubbed comb lifts paper bits without touching them. Rubbing moves electrons, a charged body attracts even neutral paper by induction, and every charge reaches out through its electric field.",
+ "fill": [
+  {
+   "q": "Rubbing a plastic comb with dry hair transfers ____ to the comb.",
+   "a": "electrons"
+  },
+  {
+   "q": "Like charges ____ each other.",
+   "a": "repel"
+  },
+  {
+   "q": "A charged body attracting a neutral body is explained by ____.",
+   "a": "induction"
+  },
+  {
+   "q": "In Coulomb's law, the force varies inversely as the ____ of the distance.",
+   "a": "square"
+  },
+  {
+   "q": "Electric field lines start on ____ charges and end on negative charges.",
+   "a": "positive"
+  }
+ ],
+ "tf": [
+  {
+   "q": "A neutral piece of paper cannot be attracted by a charged comb.",
+   "a": false,
+   "explain": "Induction makes the nearer side oppositely charged, so it is attracted."
+  },
+  {
+   "q": "Unlike charges attract each other.",
+   "a": true,
+   "explain": "One of the basic properties of charge."
+  },
+  {
+   "q": "Two electric field lines can cross each other.",
+   "a": false,
+   "explain": "At a crossing the field would have two directions, which is impossible."
+  },
+  {
+   "q": "Doubling the distance between two charges halves the force.",
+   "a": false,
+   "explain": "F ∝ 1/r², so the force becomes one-fourth."
+  }
+ ],
+ "ar": [
+  {
+   "a": "A charged comb attracts small bits of paper.",
+   "r": "Charges in the paper shift, so the nearer side is oppositely charged.",
+   "answer": 0,
+   "explain": "R is the induction that explains A."
+  },
+  {
+   "a": "Field lines from a positive charge point outward.",
+   "r": "Field lines start on positive charges.",
+   "answer": 0,
+   "explain": "R explains the direction in A."
+  }
+ ],
+ "mcq": [
+  {
+   "q": "A comb rubbed with dry hair becomes negative because it:",
+   "options": [
+    "loses protons",
+    "gains electrons",
+    "loses electrons",
+    "gains protons"
+   ],
+   "answer": 1,
+   "explain": "Only electrons move when bodies are rubbed."
+  },
+  {
+   "q": "If both charges are doubled and the distance is unchanged, the force becomes:",
+   "options": [
+    "2F",
+    "4F",
+    "F/2",
+    "F/4"
+   ],
+   "answer": 1,
+   "explain": "F ∝ q₁q₂, so it becomes 2 × 2 = 4 times."
+  },
+  {
+   "q": "The SI unit of electric charge is the:",
+   "options": [
+    "ampere",
+    "coulomb",
+    "volt",
+    "newton"
+   ],
+   "answer": 1,
+   "explain": "Charge is measured in coulombs."
+  },
+  {
+   "q": "The force on a charge q₀ in an electric field E is:",
+   "options": [
+    "E/q₀",
+    "q₀E",
+    "q₀/E",
+    "q₀²E"
+   ],
+   "answer": 1,
+   "explain": "F = q₀E."
+  }
+ ],
+ "num": [
+  {
+   "q": "Two charges exert a force of 36 N on each other. Find the force when the distance between them is tripled.",
+   "steps": [
+    "F ∝ 1/r²",
+    "F' = 36 ÷ 3² = 36 ÷ 9"
+   ],
+   "answer": "4 N"
+  },
+  {
+   "q": "Find the force between two charges of 1 μC each placed 0.3 m apart in air (k = 9 × 10⁹ N m² C⁻²).",
+   "steps": [
+    "F = k q₁q₂ / r² = 9 × 10⁹ × (1 × 10⁻⁶)² / (0.3)²",
+    "= 9 × 10⁻³ / 0.09"
+   ],
+   "answer": "0.1 N"
+  },
+  {
+   "q": "A charge of 2 μC is placed in a field of 5 × 10³ N/C. Find the force on it.",
+   "steps": [
+    "F = qE = 2 × 10⁻⁶ × 5 × 10³"
+   ],
+   "answer": "1 × 10⁻² N = 0.01 N"
+  }
+ ],
+ "short": [
+  {
+   "q": "Explain why a rubbed comb lifts bits of paper.",
+   "lines": 5,
+   "solution": "Rubbing transfers electrons from the hair to the comb, so the comb is negative. Near it, charges in the neutral paper shift: positive charge nearer, negative farther. The nearer attraction is stronger than the farther repulsion, so the paper is pulled up (induction)."
+  },
+  {
+   "q": "What is an electric field? How does it explain force without contact?",
+   "lines": 5,
+   "solution": "The region around a charge where another charge experiences a force; E = F/q₀. The charge does not need to touch: its field exists in the space around it and acts on any charge placed there."
+  }
+ ],
+ "match": {
+  "left": [
+   "Like charges",
+   "Unlike charges",
+   "F ∝ 1/r²",
+   "Lines from + to −"
+  ],
+  "right": [
+   "Electric field lines",
+   "Attract",
+   "Repel",
+   "Coulomb's law"
+  ],
+  "answer": [
+   2,
+   1,
+   3,
+   0
+  ],
+  "explain": "Each idea matches its rule from the chapter introduction."
+ }
+}

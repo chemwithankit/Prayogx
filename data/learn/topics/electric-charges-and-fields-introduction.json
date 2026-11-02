@@ -1,0 +1,162 @@
+{
+ "id": "LEARN-C12-PHY-CHARGES-FIELDS-CHAPTER-INTRO",
+ "slug": "electric-charges-and-fields-introduction",
+ "status": "ready",
+ "class": 12,
+ "subject": "Physics",
+ "chapter": "Electric Charges and Fields",
+ "topic": "Chapter introduction: Electric Charges and Fields",
+ "title": "Electric Charges and Fields: Chapter Introduction",
+ "series": 398,
+ "studioJob": "charges-fields-intro",
+ "reelId": "STUDIO-CHARGES-FIELDS-INTRO",
+ "summary": "A rubbed comb lifts paper bits without touching them. Rubbing moves electrons, a charged body attracts even neutral paper by induction, and every charge reaches out through its electric field.",
+ "video": {
+  "youtubeId": "8O-AdGKFRGQ"
+ },
+ "notes": {
+  "pdf": "notes.pdf",
+  "title": "00 – Electric Charges and Fields: Chapter Introduction",
+  "driveDoc": "11t48oQ_3QW4zSBHoOCT8nfWtljXLeLWb6ro4wVxD4Mw"
+ },
+ "thumb": "thumb.jpg",
+ "tags": [
+  "electric charge",
+  "induction",
+  "Coulomb's law",
+  "electric field",
+  "field lines",
+  "dipole",
+  "Gauss's law",
+  "chapter introduction"
+ ],
+ "keyPoints": [
+  "Rubbing transfers **electrons**: a plastic comb run through dry hair gains electrons and becomes **negative**.",
+  "Two kinds of charge: **like charges repel, unlike charges attract**.",
+  "A charged body attracts a **neutral** one by **induction**: the nearer opposite charge wins.",
+  "**Coulomb's law** F = kq₁q₂/r²: double the distance and the force becomes one-fourth. Each charge sets up an **electric field**; field lines start on + and end on −."
+ ],
+ "sections": [
+  {
+   "h": "Why the paper jumps",
+   "blocks": [
+    {
+     "list": [
+      "Rubbing moves electrons from the hair to the comb: the comb becomes negatively charged, the hair positively.",
+      "The paper is neutral, but near the comb its charges shift slightly: positive charge nearer the comb, negative charge farther away.",
+      "The nearer (attractive) charge feels a stronger force than the farther (repulsive) one, so the net force pulls the paper to the comb. This is **induction**."
+     ]
+    }
+   ]
+  },
+  {
+   "h": "Coulomb's law",
+   "blocks": [
+    {
+     "formula": "F = k q₁q₂ / r²,   k = 1/(4πε₀) ≈ 9 × 10⁹ N m² C⁻²"
+    },
+    {
+     "table": {
+      "head": [
+       "Change",
+       "Effect on F"
+      ],
+      "rows": [
+       [
+        "Double one charge",
+        "F doubles"
+       ],
+       [
+        "Double the distance r",
+        "F becomes F/4"
+       ],
+       [
+        "Halve the distance r",
+        "F becomes 4F"
+       ]
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "h": "Electric field and field lines",
+   "blocks": [
+    {
+     "p": "A charge q sets up an **electric field** E around it; another charge q₀ placed there feels F = q₀E. The field is how a force acts without contact."
+    },
+    {
+     "list": [
+      "Field lines start on positive charges and end on negative charges.",
+      "The tangent to a field line gives the direction of E; closer lines mean a stronger field.",
+      "Two field lines never cross."
+     ]
+    }
+   ]
+  },
+  {
+   "h": "What the chapter covers",
+   "blocks": [
+    {
+     "list": [
+      "Electric charge, conductors and insulators, charging by induction, basic properties of charge.",
+      "Coulomb's law and forces between multiple charges.",
+      "Electric field, field lines, electric dipole.",
+      "Electric flux and Gauss's law, with its applications."
+     ]
+    }
+   ]
+  }
+ ],
+ "quiz": [
+  {
+   "q": "A plastic comb run through dry hair becomes:",
+   "options": [
+    "Positive, by losing electrons",
+    "Negative, by gaining electrons",
+    "Neutral",
+    "Positive, by gaining protons"
+   ],
+   "answer": 1,
+   "explain": "Electrons move from the hair to the comb."
+  },
+  {
+   "q": "A charged comb attracts neutral paper because of:",
+   "options": [
+    "Gravity",
+    "Induction",
+    "Magnetism",
+    "Friction"
+   ],
+   "answer": 1,
+   "explain": "Charges in the paper shift; the nearer opposite charge wins."
+  },
+  {
+   "q": "If the distance between two charges is doubled, the force becomes:",
+   "options": [
+    "Double",
+    "Half",
+    "One-fourth",
+    "Four times"
+   ],
+   "answer": 2,
+   "explain": "F ∝ 1/r², so F becomes F/4."
+  },
+  {
+   "q": "Electric field lines:",
+   "options": [
+    "Start on negative and end on positive charges",
+    "Start on positive and end on negative charges",
+    "Form closed loops around a charge",
+    "Can cross each other"
+   ],
+   "answer": 1,
+   "explain": "They begin on + and end on −, and never cross."
+  }
+ ],
+ "simulation": {
+  "decision": "NOT_REQUIRED",
+  "reason": "A chapter overview; Coulomb's law and field topics that follow get their own pages."
+ },
+ "related": []
+}
