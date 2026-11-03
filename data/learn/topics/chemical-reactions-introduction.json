@@ -1,0 +1,155 @@
+{
+ "id": "LEARN-C10-CHE-CHEMICAL-REACTIONS-INTRO",
+ "slug": "chemical-reactions-introduction",
+ "status": "ready",
+ "class": 10,
+ "subject": "Chemistry",
+ "chapter": "Chemical Reactions and Equations",
+ "topic": "Chapter introduction: Chemical Reactions and Equations",
+ "title": "Chemical Reactions and Equations: Chapter Introduction",
+ "series": 408,
+ "studioJob": "chem-reactions-intro",
+ "reelId": "STUDIO-CHEM-REACTIONS-INTRO",
+ "summary": "A burning magnesium ribbon leaves only white powder: the same atoms in a new arrangement. How to spot a reaction, write and balance its equation, and name its type.",
+ "video": {
+  "youtubeId": "JfUUCPn4vQs",
+  "instagram": "https://www.instagram.com/reel/DfR3AYagmDk/"
+ },
+ "notes": {
+  "pdf": "notes.pdf",
+  "title": "00 – Chemical Reactions and Equations: Chapter Introduction",
+  "driveDoc": "1CvuK7C0zFpN-PPt05-HXDtP-OFK6hXznwewTVoYm930"
+ },
+ "thumb": "thumb.jpg",
+ "tags": [
+  "chemical reaction",
+  "chemical equation",
+  "balancing",
+  "combination",
+  "decomposition",
+  "displacement",
+  "redox",
+  "corrosion",
+  "rancidity"
+ ],
+ "keyPoints": [
+  "Burning magnesium gives magnesium oxide: **2Mg + O₂ → 2MgO**. The atoms are the same, only rearranged.",
+  "Signs of a reaction: **gas** given off, **colour** change, **temperature** change, **precipitate** formed (or a change of state).",
+  "A **balanced** equation has the same number of atoms of each element on both sides (law of conservation of mass).",
+  "Types: **combination, decomposition, displacement, double displacement, redox**. Everyday effects: **corrosion** (rusting) and **rancidity** (chips packets are flushed with nitrogen)."
+ ],
+ "sections": [
+  {
+   "h": "Balancing Mg + O₂ → MgO",
+   "blocks": [
+    {
+     "table": {
+      "head": [
+       "Step",
+       "Mg (left / right)",
+       "O (left / right)"
+      ],
+      "rows": [
+       [
+        "Mg + O₂ → MgO",
+        "1 / 1",
+        "2 / 1 ✗"
+       ],
+       [
+        "Mg + O₂ → 2MgO",
+        "1 / 2 ✗",
+        "2 / 2"
+       ],
+       [
+        "2Mg + O₂ → 2MgO",
+        "2 / 2 ✓",
+        "2 / 2 ✓"
+       ]
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "h": "Types of reactions",
+   "blocks": [
+    {
+     "table": {
+      "head": [
+       "Type",
+       "Pattern",
+       "Example"
+      ],
+      "rows": [
+       [
+        "Combination",
+        "A + B → AB",
+        "CaO + H₂O → Ca(OH)₂"
+       ],
+       [
+        "Decomposition",
+        "AB → A + B",
+        "CaCO₃ → CaO + CO₂ (heat)"
+       ],
+       [
+        "Displacement",
+        "A + BC → AC + B",
+        "Fe + CuSO₄ → FeSO₄ + Cu"
+       ],
+       [
+        "Double displacement",
+        "AB + CD → AD + CB",
+        "Na₂SO₄ + BaCl₂ → BaSO₄↓ + 2NaCl"
+       ],
+       [
+        "Redox",
+        "oxidation + reduction together",
+        "CuO + H₂ → Cu + H₂O"
+       ]
+      ]
+     }
+    }
+   ]
+  }
+ ],
+ "quiz": [
+  {
+   "q": "Burning magnesium in air gives:",
+   "options": [
+    "MgO",
+    "MgCO₃",
+    "Mg(OH)₂",
+    "MgCl₂"
+   ],
+   "answer": 0,
+   "explain": "2Mg + O₂ → 2MgO, a white powder."
+  },
+  {
+   "q": "Fe + CuSO₄ → FeSO₄ + Cu is a:",
+   "options": [
+    "combination",
+    "decomposition",
+    "displacement",
+    "double displacement"
+   ],
+   "answer": 2,
+   "explain": "Iron displaces copper from its salt."
+  },
+  {
+   "q": "Chips packets are flushed with nitrogen to prevent:",
+   "options": [
+    "corrosion",
+    "rancidity",
+    "displacement",
+    "combustion"
+   ],
+   "answer": 1,
+   "explain": "No oxygen, so the oils do not oxidise."
+  }
+ ],
+ "simulation": {
+  "decision": "NOT_REQUIRED",
+  "reason": "A chapter overview; reaction-type topics that follow get their own pages."
+ },
+ "related": []
+}

@@ -1,0 +1,127 @@
+{
+ "id": "LEARN-C10-MAT-REAL-NUMBERS-INTRO",
+ "slug": "real-numbers-introduction",
+ "status": "ready",
+ "class": 10,
+ "subject": "Mathematics",
+ "chapter": "Real Numbers",
+ "topic": "Chapter introduction: Real Numbers",
+ "title": "Real Numbers: Chapter Introduction",
+ "series": 409,
+ "studioJob": "real-numbers-intro",
+ "reelId": "STUDIO-REAL-NUMBERS-INTRO",
+ "summary": "Break 360 down and only primes are left, the same ones whichever way you break it. The Fundamental Theorem of Arithmetic, HCF and LCM, and why √2 is irrational.",
+ "video": {
+  "youtubeId": "yQfjE-tljKo",
+  "instagram": "https://www.instagram.com/reel/DfR4d9ij-7m/"
+ },
+ "notes": {
+  "pdf": "notes.pdf",
+  "title": "00 – Real Numbers: Chapter Introduction",
+  "driveDoc": "1Os32ACAplvA08lWkdBSOp-lG3F-T5YLfcGXSuPYMbOs"
+ },
+ "thumb": "thumb.jpg",
+ "tags": [
+  "prime factorisation",
+  "Fundamental Theorem of Arithmetic",
+  "HCF",
+  "LCM",
+  "irrational numbers",
+  "root 2"
+ ],
+ "keyPoints": [
+  "**360 = 2 × 2 × 2 × 3 × 3 × 5 = 2³ × 3² × 5**, whichever factor tree you use.",
+  "**Fundamental Theorem of Arithmetic:** every composite number is a product of primes, and this factorisation is unique (apart from the order).",
+  "**HCF** = product of the smallest powers of common primes; **LCM** = product of the greatest powers of all primes. 12 and 18: HCF 6, LCM 36, and HCF × LCM = 12 × 18.",
+  "**√2 cannot be written as p/q** (p, q integers, q ≠ 0): it is irrational. The chapter proves √2, √3, √5 irrational by contradiction."
+ ],
+ "sections": [
+  {
+   "h": "HCF and LCM by prime factorisation",
+   "blocks": [
+    {
+     "table": {
+      "head": [
+       "Number",
+       "Prime factors"
+      ],
+      "rows": [
+       [
+        "12",
+        "2² × 3"
+       ],
+       [
+        "18",
+        "2 × 3²"
+       ],
+       [
+        "HCF",
+        "2 × 3 = 6"
+       ],
+       [
+        "LCM",
+        "2² × 3² = 36"
+       ]
+      ]
+     }
+    },
+    {
+     "formula": "HCF × LCM = 6 × 36 = 216 = 12 × 18"
+    }
+   ]
+  },
+  {
+   "h": "Why √2 is irrational (idea of the proof)",
+   "blocks": [
+    {
+     "list": [
+      "Suppose √2 = p/q in lowest terms.",
+      "Then p² = 2q², so 2 divides p², hence 2 divides p (a prime dividing a square divides the number).",
+      "Write p = 2r: then q² = 2r², so 2 divides q too.",
+      "p and q both even contradicts lowest terms, so √2 is irrational."
+     ]
+    }
+   ]
+  }
+ ],
+ "quiz": [
+  {
+   "q": "The prime factorisation of 360 is:",
+   "options": [
+    "2² × 3² × 10",
+    "2³ × 3² × 5",
+    "2³ × 45",
+    "2 × 3 × 60"
+   ],
+   "answer": 1,
+   "explain": "Only primes: 2³ × 3² × 5."
+  },
+  {
+   "q": "HCF of 12 and 18 is:",
+   "options": [
+    "2",
+    "3",
+    "6",
+    "36"
+   ],
+   "answer": 2,
+   "explain": "Common primes 2 and 3: 2 × 3 = 6."
+  },
+  {
+   "q": "Which number is irrational?",
+   "options": [
+    "√4",
+    "0.25",
+    "√2",
+    "22/7"
+   ],
+   "answer": 2,
+   "explain": "√2 cannot be written as p/q."
+  }
+ ],
+ "simulation": {
+  "decision": "NOT_REQUIRED",
+  "reason": "A chapter overview; factor trees are shown in the reel."
+ },
+ "related": []
+}

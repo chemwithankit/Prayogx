@@ -1,0 +1,159 @@
+{
+ "slug": "chemical-reactions-introduction",
+ "title": "Chemical Reactions and Equations: Chapter Introduction",
+ "class": 10,
+ "subject": "Chemistry",
+ "chapter": "Chemical Reactions and Equations",
+ "objective": "A burning magnesium ribbon leaves only white powder: the same atoms in a new arrangement. How to spot a reaction, write and balance its equation, and name its type.",
+ "fill": [
+  {
+   "q": "When magnesium burns in air, it forms ____.",
+   "a": "magnesium oxide"
+  },
+  {
+   "q": "A substance that forms in a reaction is called a ____.",
+   "a": "product"
+  },
+  {
+   "q": "An insoluble solid formed in a reaction is a ____.",
+   "a": "precipitate"
+  },
+  {
+   "q": "A balanced equation obeys the law of conservation of ____.",
+   "a": "mass"
+  },
+  {
+   "q": "Rusting of iron is an example of ____.",
+   "a": "corrosion"
+  }
+ ],
+ "tf": [
+  {
+   "q": "In a chemical reaction new substances are formed.",
+   "a": true,
+   "explain": "The atoms rearrange into new substances."
+  },
+  {
+   "q": "Mg + O₂ → MgO is balanced.",
+   "a": false,
+   "explain": "O: 2 on the left, 1 on the right; balanced form is 2Mg + O₂ → 2MgO."
+  },
+  {
+   "q": "Chips packets are filled with oxygen to keep chips fresh.",
+   "a": false,
+   "explain": "They are flushed with nitrogen to prevent rancidity."
+  },
+  {
+   "q": "A change of colour can show that a reaction has occurred.",
+   "a": true,
+   "explain": "It is one of the signs of a chemical reaction."
+  }
+ ],
+ "ar": [
+  {
+   "a": "A balanced equation has equal atoms of each element on both sides.",
+   "r": "Mass is neither created nor destroyed in a reaction.",
+   "answer": 0,
+   "explain": "R explains A."
+  },
+  {
+   "a": "Iron articles are painted.",
+   "r": "Paint keeps air and moisture away and prevents rusting.",
+   "answer": 0,
+   "explain": "R explains A."
+  }
+ ],
+ "mcq": [
+  {
+   "q": "CaCO₃ → CaO + CO₂ is a:",
+   "options": [
+    "combination",
+    "decomposition",
+    "displacement",
+    "double displacement"
+   ],
+   "answer": 1,
+   "explain": "One substance breaks into two."
+  },
+  {
+   "q": "Which is a combination reaction?",
+   "options": [
+    "CaO + H₂O → Ca(OH)₂",
+    "Zn + CuSO₄ → ZnSO₄ + Cu",
+    "2H₂O → 2H₂ + O₂",
+    "AgNO₃ + NaCl → AgCl + NaNO₃"
+   ],
+   "answer": 0,
+   "explain": "Two substances combine into one."
+  },
+  {
+   "q": "In a redox reaction:",
+   "options": [
+    "only oxidation occurs",
+    "only reduction occurs",
+    "oxidation and reduction occur together",
+    "no electrons move"
+   ],
+   "answer": 2,
+   "explain": "Oxidation and reduction happen together."
+  },
+  {
+   "q": "The white powder left after burning magnesium is:",
+   "options": [
+    "MgO",
+    "Mg",
+    "MgCO₃",
+    "Mg(OH)₂"
+   ],
+   "answer": 0,
+   "explain": "Magnesium oxide."
+  }
+ ],
+ "num": [
+  {
+   "q": "Balance: H₂ + O₂ → H₂O.",
+   "steps": [
+    "O: 2 vs 1 → 2H₂O",
+    "H: 2 vs 4 → 2H₂"
+   ],
+   "answer": "2H₂ + O₂ → 2H₂O"
+  },
+  {
+   "q": "Balance: Fe + H₂O → Fe₃O₄ + H₂.",
+   "steps": [
+    "Fe: 3Fe",
+    "O: 4H₂O",
+    "H: 4H₂"
+   ],
+   "answer": "3Fe + 4H₂O → Fe₃O₄ + 4H₂"
+  }
+ ],
+ "short": [
+  {
+   "q": "List four observations that show a chemical reaction has taken place.",
+   "lines": 5,
+   "solution": "Evolution of a gas, change in colour, change in temperature, formation of a precipitate (also change in state)."
+  }
+ ],
+ "match": {
+  "left": [
+   "A + B → AB",
+   "AB → A + B",
+   "A + BC → AC + B",
+   "AB + CD → AD + CB"
+  ],
+  "right": [
+   "Decomposition",
+   "Double displacement",
+   "Displacement",
+   "Combination"
+  ],
+  "answer": [
+   3,
+   0,
+   2,
+   1
+  ],
+  "explain": "Each pattern matches its reaction type."
+ }
+}

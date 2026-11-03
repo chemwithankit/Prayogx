@@ -1,0 +1,159 @@
+{
+ "slug": "real-numbers-introduction",
+ "title": "Real Numbers: Chapter Introduction",
+ "class": 10,
+ "subject": "Mathematics",
+ "chapter": "Real Numbers",
+ "objective": "Break 360 down and only primes are left, the same ones whichever way you break it. The Fundamental Theorem of Arithmetic, HCF and LCM, and why √2 is irrational.",
+ "fill": [
+  {
+   "q": "Every composite number can be expressed as a product of ____.",
+   "a": "primes"
+  },
+  {
+   "q": "The prime factorisation of 360 is 2³ × 3² × ____.",
+   "a": "5"
+  },
+  {
+   "q": "HCF of 12 and 18 is ____.",
+   "a": "6"
+  },
+  {
+   "q": "LCM of 12 and 18 is ____.",
+   "a": "36"
+  },
+  {
+   "q": "A number that cannot be written as p/q is called ____.",
+   "a": "irrational"
+  }
+ ],
+ "tf": [
+  {
+   "q": "The prime factorisation of a number is unique apart from order.",
+   "a": true,
+   "explain": "Fundamental Theorem of Arithmetic."
+  },
+  {
+   "q": "√2 is a rational number.",
+   "a": false,
+   "explain": "It cannot be written as p/q."
+  },
+  {
+   "q": "HCF × LCM equals the product of two numbers.",
+   "a": true,
+   "explain": "6 × 36 = 216 = 12 × 18."
+  },
+  {
+   "q": "1 is a prime number.",
+   "a": false,
+   "explain": "A prime has exactly two factors; 1 has only one."
+  }
+ ],
+ "ar": [
+  {
+   "a": "360 = 2³ × 3² × 5 however you factorise it.",
+   "r": "Prime factorisation of a composite number is unique.",
+   "answer": 0,
+   "explain": "R explains A."
+  },
+  {
+   "a": "√2 is irrational.",
+   "r": "√2 cannot be written as p/q with integers p, q (q ≠ 0).",
+   "answer": 0,
+   "explain": "R explains A."
+  }
+ ],
+ "mcq": [
+  {
+   "q": "HCF of 2³ × 3 and 2 × 3² is:",
+   "options": [
+    "2",
+    "3",
+    "6",
+    "18"
+   ],
+   "answer": 2,
+   "explain": "Smallest powers of common primes: 2 × 3."
+  },
+  {
+   "q": "LCM of 8 and 12 is:",
+   "options": [
+    "4",
+    "24",
+    "48",
+    "96"
+   ],
+   "answer": 1,
+   "explain": "2³ × 3 = 24."
+  },
+  {
+   "q": "Which is irrational?",
+   "options": [
+    "√9",
+    "0.5",
+    "√3",
+    "7/2"
+   ],
+   "answer": 2,
+   "explain": "√3 cannot be written as p/q."
+  },
+  {
+   "q": "The prime factorisation of 140 is:",
+   "options": [
+    "2² × 5 × 7",
+    "2 × 70",
+    "4 × 35",
+    "2² × 35"
+   ],
+   "answer": 0,
+   "explain": "140 = 2 × 2 × 5 × 7."
+  }
+ ],
+ "num": [
+  {
+   "q": "Find the HCF and LCM of 24 and 36 by prime factorisation.",
+   "steps": [
+    "24 = 2³ × 3",
+    "36 = 2² × 3²",
+    "HCF = 2² × 3",
+    "LCM = 2³ × 3²"
+   ],
+   "answer": "HCF 12, LCM 72"
+  },
+  {
+   "q": "The HCF of two numbers is 9 and their product is 1620. Find their LCM.",
+   "steps": [
+    "LCM = product ÷ HCF = 1620 ÷ 9"
+   ],
+   "answer": "180"
+  }
+ ],
+ "short": [
+  {
+   "q": "State the Fundamental Theorem of Arithmetic.",
+   "lines": 5,
+   "solution": "Every composite number can be expressed as a product of primes, and this factorisation is unique apart from the order of the prime factors."
+  }
+ ],
+ "match": {
+  "left": [
+   "2³ × 3² × 5",
+   "2² × 3",
+   "2 × 3²",
+   "√2"
+  ],
+  "right": [
+   "18",
+   "360",
+   "Irrational",
+   "12"
+  ],
+  "answer": [
+   1,
+   3,
+   0,
+   2
+  ],
+  "explain": "Each item matches its value or type."
+ }
+}
