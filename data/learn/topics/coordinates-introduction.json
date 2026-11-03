@@ -1,0 +1,151 @@
+{
+ "id": "LEARN-C9-MAT-COORDINATES-INTRO",
+ "slug": "coordinates-introduction",
+ "status": "ready",
+ "class": 9,
+ "subject": "Mathematics",
+ "chapter": "Coordinate Geometry",
+ "topic": "Chapter introduction: Orienting Yourself, the Use of Coordinates",
+ "title": "Coordinates: Chapter Introduction",
+ "series": 405,
+ "studioJob": "coordinates-intro",
+ "reelId": "STUDIO-COORDINATES-INTRO",
+ "summary": "Two numbers pin any seat in an exam hall, and any point on a plane: coordinates turn geometry into numbers.",
+ "video": {
+  "youtubeId": "NUNfIrqgQu8",
+  "instagram": "https://www.instagram.com/reel/DfRP5EbCceM/"
+ },
+ "notes": {
+  "pdf": "notes.pdf",
+  "title": "00 – Coordinates: Chapter Introduction",
+  "driveDoc": "1LUv2g2_MMdMxNCQpBgeWTaGBfwUcvMnkeV4Ww48js54"
+ },
+ "thumb": "thumb.jpg",
+ "tags": [
+  "coordinates",
+  "x-axis",
+  "y-axis",
+  "origin",
+  "quadrants",
+  "distance",
+  "plotting"
+ ],
+ "keyPoints": [
+  "Two perpendicular number lines, the **x-axis** and **y-axis**, meet at the **origin** O (0, 0).",
+  "A point is an ordered pair **(x, y)**: x along the x-axis, then y parallel to the y-axis.",
+  "The axes split the plane into **four quadrants**: I (+, +), II (−, +), III (−, −), IV (+, −).",
+  "Distances follow from numbers: (1, 1) to (4, 5) has legs 3 and 4, so the distance is 5."
+ ],
+ "sections": [
+  {
+   "h": "Plotting a point",
+   "blocks": [
+    {
+     "list": [
+      "Start at O (0, 0).",
+      "Move x units along the x-axis (right if positive, left if negative).",
+      "Then move y units parallel to the y-axis (up if positive, down if negative)."
+     ]
+    },
+    {
+     "formula": "(3, 2): 3 right, then 2 up"
+    }
+   ]
+  },
+  {
+   "h": "Quadrants",
+   "blocks": [
+    {
+     "table": {
+      "head": [
+       "Quadrant",
+       "Signs",
+       "Example"
+      ],
+      "rows": [
+       [
+        "I",
+        "(+, +)",
+        "(3, 2)"
+       ],
+       [
+        "II",
+        "(−, +)",
+        "(−2, 4)"
+       ],
+       [
+        "III",
+        "(−, −)",
+        "(−1, −3)"
+       ],
+       [
+        "IV",
+        "(+, −)",
+        "(5, −2)"
+       ]
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "h": "Distance without a ruler",
+   "blocks": [
+    {
+     "formula": "(1, 1) → (4, 5): horizontal 3, vertical 4, distance = √(3² + 4²) = 5"
+    }
+   ]
+  }
+ ],
+ "quiz": [
+  {
+   "q": "The point (−3, 2) lies in quadrant:",
+   "options": [
+    "I",
+    "II",
+    "III",
+    "IV"
+   ],
+   "answer": 1,
+   "explain": "x negative, y positive."
+  },
+  {
+   "q": "The coordinates of the origin are:",
+   "options": [
+    "(1, 1)",
+    "(0, 0)",
+    "(0, 1)",
+    "(1, 0)"
+   ],
+   "answer": 1,
+   "explain": "Both axes meet at zero."
+  },
+  {
+   "q": "To plot (4, −1) you go:",
+   "options": [
+    "4 up, 1 right",
+    "4 right, 1 down",
+    "4 left, 1 up",
+    "1 right, 4 down"
+   ],
+   "answer": 1,
+   "explain": "x first, then y."
+  },
+  {
+   "q": "The distance between (1, 1) and (4, 5) is:",
+   "options": [
+    "3",
+    "4",
+    "5",
+    "7"
+   ],
+   "answer": 2,
+   "explain": "√(3² + 4²) = 5."
+  }
+ ],
+ "simulation": {
+  "decision": "NOT_REQUIRED",
+  "reason": "A chapter overview; plotting topics that follow get their own pages."
+ },
+ "related": []
+}
