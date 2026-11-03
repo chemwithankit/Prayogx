@@ -1,0 +1,146 @@
+{
+ "slug": "exploring-mixtures-introduction",
+ "title": "Exploring Mixtures and their Separation: Chapter Introduction",
+ "class": 9,
+ "subject": "Chemistry",
+ "chapter": "Is Matter Around Us Pure?",
+ "objective": "Muddy water settles but milk never does: particle size decides how a mixture behaves. Solutions, colloids and suspensions, and the ways to separate them.",
+ "fill": [
+  {
+   "q": "A mixture whose particles are too small to see and never settle is a ____.",
+   "a": "solution"
+  },
+  {
+   "q": "A mixture whose particles are large and settle on standing is a ____.",
+   "a": "suspension"
+  },
+  {
+   "q": "Milk is an example of a ____.",
+   "a": "colloid"
+  },
+  {
+   "q": "Scattering of a light beam by colloid particles is called the ____ effect.",
+   "a": "Tyndall"
+  },
+  {
+   "q": "Iron filings can be separated from sand using a ____.",
+   "a": "magnet"
+  }
+ ],
+ "tf": [
+  {
+   "q": "Air is a mixture.",
+   "a": true,
+   "explain": "It contains nitrogen, oxygen, argon, carbon dioxide and more."
+  },
+  {
+   "q": "A suspension's particles pass through filter paper.",
+   "a": false,
+   "explain": "They are large enough to be trapped by filter paper."
+  },
+  {
+   "q": "A light beam is visible when passed through a true solution.",
+   "a": false,
+   "explain": "Solution particles are too small to scatter light."
+  },
+  {
+   "q": "Colloid particles settle down on standing.",
+   "a": false,
+   "explain": "They stay dispersed."
+  }
+ ],
+ "ar": [
+  {
+   "a": "Milk shows the Tyndall effect.",
+   "r": "Milk is a colloid whose particles scatter light.",
+   "answer": 0,
+   "explain": "R explains A."
+  },
+  {
+   "a": "Muddy water becomes clear on standing.",
+   "r": "Suspension particles are pulled down by gravity.",
+   "answer": 0,
+   "explain": "R explains A."
+  }
+ ],
+ "mcq": [
+  {
+   "q": "Which is a suspension?",
+   "options": [
+    "salt water",
+    "milk",
+    "muddy water",
+    "sugar solution"
+   ],
+   "answer": 2,
+   "explain": "Its particles settle."
+  },
+  {
+   "q": "The size of colloid particles is about:",
+   "options": [
+    "less than 1 nm",
+    "1 to 1000 nm",
+    "more than 1000 nm",
+    "exactly 1 mm"
+   ],
+   "answer": 1,
+   "explain": "Between solutions and suspensions."
+  },
+  {
+   "q": "Coloured components of an ink are best separated by:",
+   "options": [
+    "filtration",
+    "chromatography",
+    "magnet",
+    "sedimentation"
+   ],
+   "answer": 1,
+   "explain": "Components travel at different speeds on paper."
+  },
+  {
+   "q": "Salt can be recovered from sea water by:",
+   "options": [
+    "filtration",
+    "evaporation",
+    "magnet",
+    "chromatography"
+   ],
+   "answer": 1,
+   "explain": "The water evaporates and the salt is left."
+  }
+ ],
+ "num": [],
+ "short": [
+  {
+   "q": "Explain why mud settles but milk does not.",
+   "lines": 5,
+   "solution": "Mud particles are large (a suspension), so gravity pulls them down. Milk's particles are mid-size (a colloid); they stay dispersed and only scatter light."
+  },
+  {
+   "q": "Name a method to separate each: sand + water, salt + water, iron + sand, inks.",
+   "lines": 5,
+   "solution": "Sand + water: filtration; salt + water: evaporation; iron + sand: magnet; inks: chromatography."
+  }
+ ],
+ "match": {
+  "left": [
+   "Salt water",
+   "Milk",
+   "Muddy water",
+   "Iron + sand"
+  ],
+  "right": [
+   "Solution",
+   "Suspension",
+   "Colloid",
+   "Magnet"
+  ],
+  "answer": [
+   0,
+   2,
+   1,
+   3
+  ],
+  "explain": "Each mixture matches its type or separation method."
+ }
+}

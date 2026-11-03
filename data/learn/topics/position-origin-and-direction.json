@@ -1,0 +1,141 @@
+{
+ "id": "LEARN-C9-PHY-POSITION-ORIGIN",
+ "slug": "position-origin-and-direction",
+ "status": "ready",
+ "class": 9,
+ "subject": "Physics",
+ "chapter": "Motion",
+ "topic": "Position needs an origin and a direction",
+ "title": "Position Needs an Origin and a Direction",
+ "series": 403,
+ "studioJob": "position-origin-doodle",
+ "reelId": "STUDIO-POSITION-DOODLE",
+ "summary": "\"200 m\" means nothing until you say from where and which way. Position is a signed number with a unit, measured from a chosen origin.",
+ "video": {
+  "youtubeId": "_o27tFAamqI",
+  "instagram": "https://www.instagram.com/reel/DfRDgTOlNjI/"
+ },
+ "notes": {
+  "pdf": "notes.pdf",
+  "title": "Position Needs an Origin and a Direction",
+  "driveDoc": "1GLayZVXANpfALazYVmRpCECKkr6xRQKp66j64ZZN1aU"
+ },
+ "thumb": "thumb.jpg",
+ "tags": [
+  "position",
+  "origin",
+  "reference point",
+  "direction",
+  "sign convention",
+  "displacement",
+  "motion"
+ ],
+ "keyPoints": [
+  "To give a position, first choose a reference point, the **origin (O)**.",
+  "Choose one direction as **positive**; positions on the other side are **negative**.",
+  "Position = **sign + number + unit**, e.g. shop +200 m, school −150 m.",
+  "Changing the origin changes every position, but **not the displacement** (final − initial position)."
+ ],
+ "sections": [
+  {
+   "h": "The running example",
+   "blocks": [
+    {
+     "table": {
+      "head": [
+       "Place",
+       "Origin: home",
+       "Origin: school"
+      ],
+      "rows": [
+       [
+        "School",
+        "−150 m",
+        "0"
+       ],
+       [
+        "Home",
+        "0",
+        "+150 m"
+       ],
+       [
+        "Shop",
+        "+200 m",
+        "+350 m"
+       ]
+      ]
+     }
+    },
+    {
+     "formula": "Displacement home → shop = 200 − 0 = 350 − 150 = +200 m"
+    }
+   ]
+  },
+  {
+   "h": "Rules",
+   "blocks": [
+    {
+     "list": [
+      "Pick the origin and the positive direction, and state them.",
+      "A negative position means \"on the other side of the origin\", not \"less than nothing\".",
+      "Positions depend on the origin; displacements and distances do not."
+     ]
+    }
+   ]
+  }
+ ],
+ "quiz": [
+  {
+   "q": "Your home is the origin and right is positive. A shop 200 m to the left is at:",
+   "options": [
+    "+200 m",
+    "−200 m",
+    "0",
+    "200"
+   ],
+   "answer": 1,
+   "explain": "Left of the origin is the negative direction."
+  },
+  {
+   "q": "What must you choose before writing a position?",
+   "options": [
+    "Only a unit",
+    "An origin and a positive direction",
+    "A speed",
+    "A time"
+   ],
+   "answer": 1,
+   "explain": "Position is measured from an origin along a chosen direction."
+  },
+  {
+   "q": "If the origin is moved, the positions of objects:",
+   "options": [
+    "stay the same",
+    "change",
+    "become zero",
+    "become negative"
+   ],
+   "answer": 1,
+   "explain": "Each position is measured from the new origin."
+  },
+  {
+   "q": "Home is at +150 m and the shop at +350 m (school as origin). The displacement home → shop is:",
+   "options": [
+    "+500 m",
+    "+200 m",
+    "−200 m",
+    "+350 m"
+   ],
+   "answer": 1,
+   "explain": "350 − 150 = +200 m, the same as with home as origin."
+  }
+ ],
+ "simulation": {
+  "decision": "NOT_REQUIRED",
+  "reason": "The reel's number line already shows it; the motion topics that follow have their own pages."
+ },
+ "related": [
+  "distance-vs-displacement",
+  "rest-and-motion"
+ ]
+}

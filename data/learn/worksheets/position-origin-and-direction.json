@@ -1,0 +1,159 @@
+{
+ "slug": "position-origin-and-direction",
+ "title": "Position Needs an Origin and a Direction",
+ "class": 9,
+ "subject": "Physics",
+ "chapter": "Motion",
+ "objective": "\"200 m\" means nothing until you say from where and which way. Position is a signed number with a unit, measured from a chosen origin.",
+ "fill": [
+  {
+   "q": "The fixed point from which position is measured is called the ____.",
+   "a": "origin"
+  },
+  {
+   "q": "Positions on the side opposite to the chosen positive direction are ____.",
+   "a": "negative"
+  },
+  {
+   "q": "A position is written as a sign, a number and a ____.",
+   "a": "unit"
+  },
+  {
+   "q": "Changing the origin changes positions but not the ____.",
+   "a": "displacement"
+  }
+ ],
+ "tf": [
+  {
+   "q": "\"The shop is 200 m away\" fully describes the shop's position.",
+   "a": false,
+   "explain": "It needs an origin and a direction."
+  },
+  {
+   "q": "A position of −150 m means the object is on the negative side of the origin.",
+   "a": true,
+   "explain": "The sign gives the side."
+  },
+  {
+   "q": "Moving the origin changes the displacement between two places.",
+   "a": false,
+   "explain": "Displacement = final − initial; the shift cancels."
+  },
+  {
+   "q": "The origin itself is at position 0.",
+   "a": true,
+   "explain": "Every position is measured from it."
+  }
+ ],
+ "ar": [
+  {
+   "a": "A position needs a sign.",
+   "r": "The sign tells on which side of the origin the object lies.",
+   "answer": 0,
+   "explain": "R explains A."
+  },
+  {
+   "a": "The displacement from home to shop is +200 m for any origin.",
+   "r": "Displacement is the difference of two positions measured from the same origin.",
+   "answer": 0,
+   "explain": "Shifting the origin shifts both positions equally."
+  }
+ ],
+ "mcq": [
+  {
+   "q": "Home is the origin, right is positive. A school 150 m to the left is at:",
+   "options": [
+    "+150 m",
+    "−150 m",
+    "0",
+    "150"
+   ],
+   "answer": 1,
+   "explain": "Left is the negative direction."
+  },
+  {
+   "q": "With home as origin the shop is at +200 m. With the school (−150 m) as origin, the shop is at:",
+   "options": [
+    "+50 m",
+    "+200 m",
+    "+350 m",
+    "−350 m"
+   ],
+   "answer": 2,
+   "explain": "200 − (−150) = 350."
+  },
+  {
+   "q": "Which does not depend on the choice of origin?",
+   "options": [
+    "position of home",
+    "position of shop",
+    "displacement home → shop",
+    "position of school"
+   ],
+   "answer": 2,
+   "explain": "It is a difference of positions."
+  },
+  {
+   "q": "To describe a position on a straight road you need:",
+   "options": [
+    "only a number",
+    "a number and a unit",
+    "an origin, a direction, a number and a unit",
+    "only a direction"
+   ],
+   "answer": 2,
+   "explain": "All of these."
+  }
+ ],
+ "num": [
+  {
+   "q": "With home as origin, the shop is at +200 m and the school at −150 m. Find the distance between the school and the shop.",
+   "steps": [
+    "Distance = 200 − (−150)"
+   ],
+   "answer": "350 m"
+  },
+  {
+   "q": "Take the school as origin. Find the positions of home and shop, and the displacement home → shop.",
+   "steps": [
+    "Home = 0 − (−150) = +150 m",
+    "Shop = 200 − (−150) = +350 m",
+    "Displacement = 350 − 150"
+   ],
+   "answer": "Home +150 m, shop +350 m, displacement +200 m"
+  }
+ ],
+ "short": [
+  {
+   "q": "Why is \"200 m\" not a complete position?",
+   "lines": 5,
+   "solution": "It does not say from where (origin) or in which direction (sign); the same 200 m could be left or right of any point."
+  },
+  {
+   "q": "Explain why changing the origin does not change displacement.",
+   "lines": 5,
+   "solution": "Moving the origin adds the same amount to every position, so the difference between two positions (the displacement) stays the same."
+  }
+ ],
+ "match": {
+  "left": [
+   "Origin",
+   "+200 m",
+   "−150 m",
+   "Final − initial position"
+  ],
+  "right": [
+   "150 m on the negative side",
+   "Displacement",
+   "200 m on the positive side",
+   "Position 0"
+  ],
+  "answer": [
+   3,
+   2,
+   0,
+   1
+  ],
+  "explain": "Each item matches its meaning."
+ }
+}
