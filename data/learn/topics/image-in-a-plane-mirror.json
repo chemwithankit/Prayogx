@@ -1,0 +1,143 @@
+{
+ "id": "LEARN-C10-PHY-PLANE-MIRROR-IMAGE",
+ "slug": "image-in-a-plane-mirror",
+ "status": "ready",
+ "class": 10,
+ "subject": "Physics",
+ "chapter": "Light – Reflection and Refraction",
+ "topic": "9.1 Image formed by a plane mirror",
+ "title": "Image Formed by a Plane Mirror",
+ "series": 395,
+ "studioJob": "plane-mirror-image",
+ "reelId": "STUDIO-PLANE-MIRROR-IMAGE",
+ "summary": "Stand 2 m from a mirror and your image is 4 m from you. Why a plane mirror's image is virtual, erect, the same size, as far behind as you are in front, and laterally inverted.",
+ "video": {
+  "youtubeId": "ggNLa0156ts",
+  "instagram": "https://www.instagram.com/reel/DfRqGvWFVBg/"
+ },
+ "notes": {
+  "pdf": "notes.pdf",
+  "title": "05 – Image Formed by a Plane Mirror",
+  "driveDoc": "1SlTLhpWu5UDQLKnr6vpZWSS-JhZOWQX8BgGPPa2HGdQ"
+ },
+ "thumb": "thumb.jpg",
+ "tags": [
+  "plane mirror",
+  "virtual image",
+  "erect image",
+  "lateral inversion",
+  "image distance",
+  "reflection"
+ ],
+ "keyPoints": [
+  "Rays from an object reflect off the mirror; traced back, they appear to come from one point **behind** the mirror: the image.",
+  "The image is as far **behind** the mirror as the object is **in front** (2 m in front → 4 m from you).",
+  "It is **virtual** (cannot be caught on a screen) and **erect**, and the **same size** as the object.",
+  "It is **laterally inverted**: your right hand appears as the image's left (hence the mirror-written AMBULANCE)."
+ ],
+ "sections": [
+  {
+   "h": "Properties of the image",
+   "blocks": [
+    {
+     "table": {
+      "head": [
+       "Property",
+       "Plane mirror"
+      ],
+      "rows": [
+       [
+        "Nature",
+        "Virtual (cannot be obtained on a screen)"
+       ],
+       [
+        "Orientation",
+        "Erect"
+       ],
+       [
+        "Size",
+        "Same as the object (magnification = 1)"
+       ],
+       [
+        "Position",
+        "As far behind the mirror as the object is in front"
+       ],
+       [
+        "Left-right",
+        "Laterally inverted"
+       ]
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "h": "How the image forms",
+   "blocks": [
+    {
+     "list": [
+      "Two rays leave the top of the object and strike the mirror.",
+      "Each reflects with angle of reflection = angle of incidence.",
+      "The reflected rays diverge; the eye traces them straight back.",
+      "The dashed extensions meet behind the mirror: the virtual image."
+     ]
+    }
+   ]
+  },
+  {
+   "h": "Worked example",
+   "blocks": [
+    {
+     "formula": "Object 2 m in front → image 2 m behind → you to image = 2 + 2 = 4 m"
+    },
+    {
+     "p": "If you walk 1 m towards the mirror, the image also moves 1 m towards it, so the distance between you and your image falls by 2 m."
+    }
+   ]
+  }
+ ],
+ "quiz": [
+  {
+   "q": "You stand 3 m in front of a plane mirror. Your distance from your image is:",
+   "options": [
+    "3 m",
+    "1.5 m",
+    "6 m",
+    "9 m"
+   ],
+   "answer": 2,
+   "explain": "Image 3 m behind the mirror: 3 + 3 = 6 m."
+  },
+  {
+   "q": "A plane mirror's image cannot be caught on a screen because it is:",
+   "options": [
+    "real",
+    "virtual",
+    "inverted",
+    "magnified"
+   ],
+   "answer": 1,
+   "explain": "The reflected rays only appear to meet behind the mirror."
+  },
+  {
+   "q": "AMBULANCE is written in mirror form on the vehicle's front because of:",
+   "options": [
+    "refraction",
+    "lateral inversion",
+    "dispersion",
+    "total internal reflection"
+   ],
+   "answer": 1,
+   "explain": "A rear-view mirror inverts it back so drivers read it correctly."
+  }
+ ],
+ "simulation": {
+  "decision": "NOT_REQUIRED",
+  "reason": "The reel's ray diagram covers it; ray-tracing simulations come with spherical mirrors."
+ },
+ "related": [
+  "laws-of-reflection",
+  "reflection-of-light",
+  "regular-vs-diffused-reflection"
+ ]
+}

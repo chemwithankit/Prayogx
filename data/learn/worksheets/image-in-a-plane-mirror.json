@@ -1,0 +1,159 @@
+{
+ "slug": "image-in-a-plane-mirror",
+ "title": "Image Formed by a Plane Mirror",
+ "class": 10,
+ "subject": "Physics",
+ "chapter": "Light – Reflection and Refraction",
+ "objective": "Stand 2 m from a mirror and your image is 4 m from you. Why a plane mirror's image is virtual, erect, the same size, as far behind as you are in front, and laterally inverted.",
+ "fill": [
+  {
+   "q": "The image formed by a plane mirror is always ____ and erect.",
+   "a": "virtual"
+  },
+  {
+   "q": "The image is as far ____ the mirror as the object is in front of it.",
+   "a": "behind"
+  },
+  {
+   "q": "The size of the image in a plane mirror is ____ the size of the object.",
+   "a": "equal to"
+  },
+  {
+   "q": "Right appearing as left in a mirror is called lateral ____.",
+   "a": "inversion"
+  },
+  {
+   "q": "If you stand 2 m from a plane mirror, your image is ____ m from you.",
+   "a": "4"
+  }
+ ],
+ "tf": [
+  {
+   "q": "A plane mirror's image can be caught on a screen.",
+   "a": false,
+   "explain": "It is virtual: the rays only appear to meet behind the mirror."
+  },
+  {
+   "q": "The image becomes smaller as you move away from a plane mirror.",
+   "a": false,
+   "explain": "Its size stays the same; it only looks smaller because it is farther away."
+  },
+  {
+   "q": "The image in a plane mirror is erect.",
+   "a": true,
+   "explain": "It is upright, the same way up as the object."
+  },
+  {
+   "q": "The magnification of a plane mirror is 1.",
+   "a": true,
+   "explain": "Image size equals object size."
+  }
+ ],
+ "ar": [
+  {
+   "a": "The image formed by a plane mirror is virtual.",
+   "r": "The reflected rays do not actually meet; their extensions meet behind the mirror.",
+   "answer": 0,
+   "explain": "R explains A."
+  },
+  {
+   "a": "The letter \"R\" appears as \"Я\" in a plane mirror.",
+   "r": "A plane mirror laterally inverts the image.",
+   "answer": 0,
+   "explain": "R explains A."
+  }
+ ],
+ "mcq": [
+  {
+   "q": "You stand 5 m from a plane mirror. Your distance from your image is:",
+   "options": [
+    "5 m",
+    "2.5 m",
+    "10 m",
+    "25 m"
+   ],
+   "answer": 2,
+   "explain": "Image 5 m behind the mirror: 5 + 5."
+  },
+  {
+   "q": "Which word is written laterally inverted on ambulances?",
+   "options": [
+    "POLICE",
+    "FIRE",
+    "AMBULANCE",
+    "STOP"
+   ],
+   "answer": 2,
+   "explain": "So it reads correctly in a rear-view mirror."
+  },
+  {
+   "q": "The image in a plane mirror is:",
+   "options": [
+    "real and inverted",
+    "virtual and erect",
+    "real and erect",
+    "virtual and inverted"
+   ],
+   "answer": 1,
+   "explain": "Rays appear to meet behind the mirror; it stays upright."
+  },
+  {
+   "q": "A person walks towards a mirror at 1 m/s. The image approaches the person at:",
+   "options": [
+    "1 m/s",
+    "2 m/s",
+    "0.5 m/s",
+    "0 m/s"
+   ],
+   "answer": 1,
+   "explain": "Both move towards the mirror, so the gap closes twice as fast."
+  }
+ ],
+ "num": [
+  {
+   "q": "A candle is 30 cm in front of a plane mirror. It is moved 10 cm closer. Find the new distance between the candle and its image.",
+   "steps": [
+    "New object distance = 20 cm",
+    "image 20 cm behind"
+   ],
+   "answer": "40 cm"
+  },
+  {
+   "q": "You stand 3 m from a mirror and step back 1 m. How far is your image from you now?",
+   "steps": [
+    "Object distance 4 m",
+    "image 4 m behind",
+    "4 + 4"
+   ],
+   "answer": "8 m"
+  }
+ ],
+ "short": [
+  {
+   "q": "Draw and explain how a plane mirror forms the image of a point object.",
+   "lines": 5,
+   "solution": "Two rays from the point reflect with i = r; the reflected rays diverge; extended backwards they meet behind the mirror at the virtual image, as far behind as the object is in front."
+  }
+ ],
+ "match": {
+  "left": [
+   "Virtual",
+   "Erect",
+   "Same size",
+   "Lateral inversion"
+  ],
+  "right": [
+   "Upright",
+   "Magnification 1",
+   "Cannot be caught on a screen",
+   "Right appears as left"
+  ],
+  "answer": [
+   2,
+   0,
+   1,
+   3
+  ],
+  "explain": "Each property matches its meaning."
+ }
+}
