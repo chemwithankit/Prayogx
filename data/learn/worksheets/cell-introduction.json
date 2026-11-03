@@ -1,0 +1,146 @@
+{
+ "slug": "cell-introduction",
+ "title": "Cell: Chapter Introduction",
+ "class": 9,
+ "subject": "Biology",
+ "chapter": "The Fundamental Unit of Life",
+ "objective": "You began as a single cell. Every living thing is built of cells: how they were discovered, what is inside, how they divide, and the cell theory.",
+ "fill": [
+  {
+   "q": "The basic structural and functional unit of life is the ____.",
+   "a": "cell"
+  },
+  {
+   "q": "The word \"cell\" was first used by ____ in 1665.",
+   "a": "Robert Hooke"
+  },
+  {
+   "q": "The outer boundary of an animal cell is the cell ____.",
+   "a": "membrane"
+  },
+  {
+   "q": "The part of the cell that controls its activities is the ____.",
+   "a": "nucleus"
+  },
+  {
+   "q": "An amoeba is made of ____ cell.",
+   "a": "one"
+  }
+ ],
+ "tf": [
+  {
+   "q": "Every living thing is made of cells.",
+   "a": true,
+   "explain": "Cell theory: all organisms consist of one or more cells."
+  },
+  {
+   "q": "Hooke saw living cells in cork.",
+   "a": false,
+   "explain": "Cork cells are dead; Hooke saw their empty walls."
+  },
+  {
+   "q": "New cells can form from non-living matter.",
+   "a": false,
+   "explain": "New cells arise only from pre-existing cells."
+  },
+  {
+   "q": "One cell divides to give two cells.",
+   "a": true,
+   "explain": "Cell division doubles the number: 1 → 2 → 4."
+  }
+ ],
+ "ar": [
+  {
+   "a": "You began life as a single cell.",
+   "r": "A human starts as one cell that divides again and again.",
+   "answer": 0,
+   "explain": "R explains A."
+  },
+  {
+   "a": "Cells are called the building blocks of life.",
+   "r": "All living things are built from cells.",
+   "answer": 0,
+   "explain": "R explains A."
+  }
+ ],
+ "mcq": [
+  {
+   "q": "Hooke observed cells in a thin slice of:",
+   "options": [
+    "onion",
+    "cork",
+    "leaf",
+    "cheek"
+   ],
+   "answer": 1,
+   "explain": "He looked at cork under his microscope."
+  },
+  {
+   "q": "Which is unicellular?",
+   "options": [
+    "amoeba",
+    "fish",
+    "tree",
+    "frog"
+   ],
+   "answer": 0,
+   "explain": "Its whole body is one cell."
+  },
+  {
+   "q": "Mitochondria are an example of:",
+   "options": [
+    "a cell wall",
+    "an organelle",
+    "a tissue",
+    "an organ"
+   ],
+   "answer": 1,
+   "explain": "They are organelles inside the cell."
+  },
+  {
+   "q": "After three rounds of division, one cell becomes:",
+   "options": [
+    "3 cells",
+    "6 cells",
+    "8 cells",
+    "9 cells"
+   ],
+   "answer": 2,
+   "explain": "1 → 2 → 4 → 8."
+  }
+ ],
+ "num": [],
+ "short": [
+  {
+   "q": "State the three points of cell theory.",
+   "lines": 5,
+   "solution": "All living things are made of cells; the cell is the basic unit of life; new cells arise from pre-existing cells."
+  },
+  {
+   "q": "Name three parts of an animal cell and the job of each.",
+   "lines": 5,
+   "solution": "Cell membrane: boundary that controls what enters and leaves. Nucleus: controls the cell and holds genetic material. Mitochondria: release energy."
+  }
+ ],
+ "match": {
+  "left": [
+   "Robert Hooke",
+   "Nucleus",
+   "Cell membrane",
+   "Mitochondria"
+  ],
+  "right": [
+   "Outer boundary",
+   "Named the cell",
+   "Controls the cell",
+   "Release energy"
+  ],
+  "answer": [
+   1,
+   2,
+   0,
+   3
+  ],
+  "explain": "Each term matches its role."
+ }
+}
