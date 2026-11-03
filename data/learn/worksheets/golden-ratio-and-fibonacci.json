@@ -1,0 +1,158 @@
+{
+ "slug": "golden-ratio-and-fibonacci",
+ "title": "Golden Ratio and the Fibonacci Sequence",
+ "class": "Supplementary",
+ "subject": "Mathematics",
+ "chapter": "Patterns in nature",
+ "objective": "Count a sunflower's seed spirals and you often get 34 and 55. They come from the Fibonacci sequence, whose ratios settle on the golden ratio, 1.618…",
+ "fill": [
+  {
+   "q": "In the Fibonacci sequence, each term is the ____ of the two terms before it.",
+   "a": "sum"
+  },
+  {
+   "q": "The term after 8 and 13 is ____.",
+   "a": "21"
+  },
+  {
+   "q": "The golden ratio is approximately ____.",
+   "a": "1.618"
+  },
+  {
+   "q": "The golden ratio is written with the Greek letter ____.",
+   "a": "φ (phi)"
+  },
+  {
+   "q": "Sunflower seeds grow about ____ degrees apart.",
+   "a": "137.5"
+  }
+ ],
+ "tf": [
+  {
+   "q": "13/8 is closer to the golden ratio than 3/2.",
+   "a": true,
+   "explain": "13/8 = 1.625 and 3/2 = 1.5; φ ≈ 1.618."
+  },
+  {
+   "q": "Every flower has a Fibonacci number of petals.",
+   "a": false,
+   "explain": "Many do, but not all."
+  },
+  {
+   "q": "The golden ratio equals (1 + √5)/2.",
+   "a": true,
+   "explain": "(1 + 2.236)/2 ≈ 1.618."
+  },
+  {
+   "q": "Seeds placed 135° apart pack without gaps.",
+   "a": false,
+   "explain": "135° is 3/8 of a turn, so seeds line up in 8 spokes with gaps."
+  }
+ ],
+ "ar": [
+  {
+   "a": "Sunflower seeds fill the head without gaps.",
+   "r": "Each seed grows about 137.5° from the last.",
+   "answer": 0,
+   "explain": "R explains A."
+  },
+  {
+   "a": "Fibonacci ratios get closer to 1.618.",
+   "r": "Each term is the sum of the two before it.",
+   "answer": 0,
+   "explain": "R explains A: that rule makes the ratio settle on φ."
+  }
+ ],
+ "mcq": [
+  {
+   "q": "The 10th Fibonacci number (starting 1, 1) is:",
+   "options": [
+    "34",
+    "55",
+    "89",
+    "21"
+   ],
+   "answer": 1,
+   "explain": "1, 1, 2, 3, 5, 8, 13, 21, 34, 55."
+  },
+  {
+   "q": "21/13 is about:",
+   "options": [
+    "1.5",
+    "1.615",
+    "1.667",
+    "2"
+   ],
+   "answer": 1,
+   "explain": "21 ÷ 13 = 1.615."
+  },
+  {
+   "q": "Squares with Fibonacci sides and quarter arcs make the:",
+   "options": [
+    "golden spiral",
+    "circle",
+    "parabola",
+    "helix"
+   ],
+   "answer": 0,
+   "explain": "The arcs join into a spiral."
+  },
+  {
+   "q": "Pinecones often show spiral counts of:",
+   "options": [
+    "8 and 13",
+    "10 and 20",
+    "7 and 9",
+    "4 and 6"
+   ],
+   "answer": 0,
+   "explain": "Consecutive Fibonacci numbers."
+  }
+ ],
+ "num": [
+  {
+   "q": "Find the 12th Fibonacci number (starting 1, 1).",
+   "steps": [
+    "1, 1, 2, 3, 5, 8, 13, 21, 34, 55",
+    "34 + 55 = 89",
+    "55 + 89 = 144"
+   ],
+   "answer": "144"
+  },
+  {
+   "q": "Compute 34/21 to three decimals.",
+   "steps": [
+    "34 ÷ 21 = 1.619"
+   ],
+   "answer": "1.619"
+  }
+ ],
+ "short": [
+  {
+   "q": "Explain how the golden spiral is drawn.",
+   "lines": 5,
+   "solution": "Tile squares of sides 1, 1, 2, 3, 5, 8 into a rectangle, then draw a quarter circle in each square, joined end to end."
+  }
+ ],
+ "match": {
+  "left": [
+   "1, 1, 2, 3, 5",
+   "1.618",
+   "137.5°",
+   "34 and 55"
+  ],
+  "right": [
+   "Golden angle",
+   "Golden ratio",
+   "Sunflower spirals",
+   "Fibonacci sequence"
+  ],
+  "answer": [
+   3,
+   1,
+   0,
+   2
+  ],
+  "explain": "Each item matches its name."
+ }
+}

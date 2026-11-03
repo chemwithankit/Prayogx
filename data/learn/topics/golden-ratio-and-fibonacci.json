@@ -1,0 +1,152 @@
+{
+ "id": "LEARN-SUP-MAT-GOLDEN-RATIO",
+ "slug": "golden-ratio-and-fibonacci",
+ "status": "ready",
+ "class": "Supplementary",
+ "subject": "Mathematics",
+ "chapter": "Patterns in nature",
+ "topic": "Golden Ratio and Fibonacci Sequence",
+ "title": "Golden Ratio and the Fibonacci Sequence",
+ "series": 407,
+ "studioJob": "golden-ratio",
+ "reelId": "STUDIO-GOLDEN-RATIO",
+ "summary": "Count a sunflower's seed spirals and you often get 34 and 55. They come from the Fibonacci sequence, whose ratios settle on the golden ratio, 1.618…",
+ "video": {
+  "youtubeId": "iAHKS_cOdx8",
+  "instagram": "https://www.instagram.com/reel/DfRn7iUE3Jv/"
+ },
+ "notes": {
+  "pdf": "notes.pdf",
+  "title": "Golden Ratio and the Fibonacci Sequence",
+  "driveDoc": "1LhT7d7F5wi1dH8Cb7ARq_GJgDBrYWFfWCERQgAYh8B0"
+ },
+ "thumb": "thumb.jpg",
+ "tags": [
+  "Fibonacci sequence",
+  "golden ratio",
+  "phi",
+  "golden spiral",
+  "golden angle",
+  "sunflower",
+  "phyllotaxis"
+ ],
+ "keyPoints": [
+  "**Fibonacci sequence:** 1, 1, 2, 3, 5, 8, 13, 21, …: each term is the sum of the two before it.",
+  "Ratios of consecutive terms (8/5 = 1.6, 13/8 = 1.625, 21/13 = 1.615 …) approach the **golden ratio φ = (1 + √5)/2 ≈ 1.618**.",
+  "Squares with Fibonacci sides tile a near-golden rectangle; quarter arcs through them draw the **golden spiral**.",
+  "Sunflower seeds grow about **137.5°** (the golden angle) apart, so they pack without gaps; seed spirals often come in consecutive Fibonacci counts such as 34 and 55."
+ ],
+ "sections": [
+  {
+   "h": "The ratio settles",
+   "blocks": [
+    {
+     "table": {
+      "head": [
+       "Fraction",
+       "Value"
+      ],
+      "rows": [
+       [
+        "2/1",
+        "2"
+       ],
+       [
+        "3/2",
+        "1.5"
+       ],
+       [
+        "5/3",
+        "1.667"
+       ],
+       [
+        "8/5",
+        "1.6"
+       ],
+       [
+        "13/8",
+        "1.625"
+       ],
+       [
+        "21/13",
+        "1.615"
+       ],
+       [
+        "34/21",
+        "1.619"
+       ]
+      ]
+     }
+    },
+    {
+     "formula": "φ = (1 + √5) / 2 ≈ 1.618"
+    }
+   ]
+  },
+  {
+   "h": "In nature (often, not always)",
+   "blocks": [
+    {
+     "list": [
+      "Sunflower heads: 34 and 55 (or 55 and 89) spirals",
+      "Pinecones: 8 and 13 spirals",
+      "Many flowers: 3, 5 or 8 petals (lily 3, buttercup 5, cosmos 8)",
+      "Not every spiral is golden: the nautilus shell's spiral, for example, is not."
+     ]
+    }
+   ]
+  },
+  {
+   "h": "Why plants do it",
+   "blocks": [
+    {
+     "list": [
+      "Each new seed or leaf grows about 137.5° round from the last (360°/φ²).",
+      "This angle never lines seeds up in straight rows, so they fill the head without gaps.",
+      "A simple fraction of a turn, like 135° (3/8), lines seeds into spokes with gaps."
+     ]
+    }
+   ]
+  }
+ ],
+ "quiz": [
+  {
+   "q": "The next Fibonacci number after 13 and 21 is:",
+   "options": [
+    "29",
+    "34",
+    "42",
+    "26"
+   ],
+   "answer": 1,
+   "explain": "13 + 21 = 34."
+  },
+  {
+   "q": "Ratios of consecutive Fibonacci numbers approach:",
+   "options": [
+    "1.414",
+    "1.5",
+    "1.618",
+    "3.14"
+   ],
+   "answer": 2,
+   "explain": "They settle on the golden ratio φ ≈ 1.618."
+  },
+  {
+   "q": "Sunflower seeds pack without gaps because each grows about … from the last:",
+   "options": [
+    "90°",
+    "120°",
+    "137.5°",
+    "180°"
+   ],
+   "answer": 2,
+   "explain": "The golden angle, 137.5°."
+  }
+ ],
+ "simulation": {
+  "decision": "NOT_REQUIRED",
+  "reason": "A short enrichment topic; the reel already shows the seed-packing model."
+ },
+ "related": []
+}
