@@ -1,0 +1,146 @@
+{
+ "slug": "stamen-and-anther",
+ "title": "The Stamen and the Four-Chambered Anther",
+ "class": 12,
+ "subject": "Biology",
+ "chapter": "Sexual Reproduction in Flowering Plants",
+ "objective": "Touch a lily and your finger turns orange. Where is that pollen made? Inside the stamen, in an anther with four chambers.",
+ "fill": [
+  {
+   "q": "A stamen has a filament and an ____.",
+   "a": "anther"
+  },
+  {
+   "q": "A typical anther has ____ lobes.",
+   "a": "2"
+  },
+  {
+   "q": "A typical anther has ____ microsporangia.",
+   "a": "4"
+  },
+  {
+   "q": "The innermost wall layer is the ____.",
+   "a": "tapetum"
+  },
+  {
+   "q": "Pollen grains form from ____ tissue.",
+   "a": "sporogenous"
+  }
+ ],
+ "tf": [
+  {
+   "q": "The filament is the long, thin stalk.",
+   "a": true,
+   "explain": "The anther sits on top of it."
+  },
+  {
+   "q": "The epidermis is the innermost wall layer.",
+   "a": false,
+   "explain": "It is the outermost."
+  },
+  {
+   "q": "The tapetum nourishes developing pollen.",
+   "a": true,
+   "explain": "It is the innermost layer."
+  },
+  {
+   "q": "Each lobe of a typical anther has two chambers.",
+   "a": true,
+   "explain": "2 lobes × 2 chambers = 4."
+  }
+ ],
+ "ar": [
+  {
+   "a": "An anther has four microsporangia.",
+   "r": "It has two lobes with two chambers each.",
+   "answer": 0,
+   "explain": "R explains A."
+  },
+  {
+   "a": "The tapetum is close to the developing pollen.",
+   "r": "It is the innermost wall layer.",
+   "answer": 0,
+   "explain": "R explains A."
+  }
+ ],
+ "mcq": [
+  {
+   "q": "The correct order of layers from outside is:",
+   "options": [
+    "epidermis, endothecium, middle layers, tapetum",
+    "tapetum, middle layers, endothecium, epidermis",
+    "endothecium, epidermis, tapetum, middle layers",
+    "epidermis, tapetum, endothecium, middle layers"
+   ],
+   "answer": 0,
+   "explain": "Outermost to innermost."
+  },
+  {
+   "q": "Which nourishes pollen grains?",
+   "options": [
+    "Epidermis",
+    "Endothecium",
+    "Middle layers",
+    "Tapetum"
+   ],
+   "answer": 3,
+   "explain": "The tapetum."
+  },
+  {
+   "q": "Pollen is made inside the:",
+   "options": [
+    "ovary",
+    "anther",
+    "stigma",
+    "sepal"
+   ],
+   "answer": 1,
+   "explain": "In the microsporangia."
+  },
+  {
+   "q": "The centre of a young microsporangium holds:",
+   "options": [
+    "sporogenous tissue",
+    "xylem",
+    "the ovule",
+    "the stigma"
+   ],
+   "answer": 0,
+   "explain": "It gives rise to pollen grains."
+  }
+ ],
+ "num": [],
+ "short": [
+  {
+   "q": "Name the four wall layers of a microsporangium, from outside.",
+   "lines": 5,
+   "solution": "Epidermis, endothecium, middle layers, tapetum."
+  },
+  {
+   "q": "What are the two parts of a stamen?",
+   "lines": 5,
+   "solution": "The filament and the anther."
+  }
+ ],
+ "match": {
+  "left": [
+   "Filament",
+   "Anther",
+   "Tapetum",
+   "Sporogenous tissue"
+  ],
+  "right": [
+   "nourishes pollen",
+   "pollen chambers",
+   "stalk",
+   "forms pollen"
+  ],
+  "answer": [
+   2,
+   1,
+   0,
+   3
+  ],
+  "explain": "Each part matches its role."
+ }
+}

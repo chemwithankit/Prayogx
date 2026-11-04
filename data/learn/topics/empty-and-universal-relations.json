@@ -1,0 +1,117 @@
+{
+ "id": "LEARN-C12-MAT-EMPTY-UNIVERSAL-RELATIONS",
+ "slug": "empty-and-universal-relations",
+ "status": "ready",
+ "class": 12,
+ "subject": "Mathematics",
+ "chapter": "Relations and Functions",
+ "topic": "Relations and their types: empty and universal",
+ "title": "Empty and Universal Relations",
+ "series": 419,
+ "studioJob": "relations-empty-universal",
+ "reelId": "STUDIO-RELATIONS-EMPTY-UNIVERSAL",
+ "summary": "In a boys' school, who is whose sister? Nobody, and Maths has a name for that. What a relation is, and its two extreme cases.",
+ "video": {
+  "youtubeId": "zyn2D8bcVGo"
+ },
+ "notes": {
+  "pdf": "notes.pdf",
+  "title": "01 – Empty and Universal Relations",
+  "driveDoc": "1mZ_D7avH4EfR76VaZR8m2SKBDTqoHMtqNDJzSPF9WM4"
+ },
+ "thumb": "thumb.jpg",
+ "tags": [
+  "relations",
+  "empty relation",
+  "universal relation",
+  "trivial relations",
+  "A × A"
+ ],
+ "keyPoints": [
+  "A **relation** R in a set A is a subset of **A × A**.",
+  "**Empty relation:** no element is related to any element, so R is the empty set.",
+  "**Universal relation:** every element is related to every element, so R = A × A.",
+  "Both are called **trivial relations**.",
+  "Every other relation lies between the two."
+ ],
+ "sections": [
+  {
+   "h": "NCERT's examples",
+   "blocks": [
+    {
+     "table": {
+      "head": [
+       "Set A: students of a boys' school",
+       "R",
+       "Type"
+      ],
+      "rows": [
+       [
+        "a is a sister of b",
+        "empty set",
+        "Empty"
+       ],
+       [
+        "difference between heights is less than 3 metres",
+        "A × A",
+        "Universal"
+       ]
+      ]
+     }
+    }
+   ]
+  }
+ ],
+ "quiz": [
+  {
+   "q": "A relation in A is a subset of:",
+   "options": [
+    "A",
+    "A × A",
+    "A + A",
+    "the empty set only"
+   ],
+   "answer": 1,
+   "explain": "It is a set of ordered pairs from A."
+  },
+  {
+   "q": "If no pair satisfies the rule, the relation is:",
+   "options": [
+    "universal",
+    "empty",
+    "reflexive",
+    "symmetric"
+   ],
+   "answer": 1,
+   "explain": "R is the empty set."
+  },
+  {
+   "q": "If A has 4 elements, a universal relation has:",
+   "options": [
+    "4 pairs",
+    "8 pairs",
+    "16 pairs",
+    "0 pairs"
+   ],
+   "answer": 2,
+   "explain": "A × A has 4 × 4 pairs."
+  }
+ ],
+ "simulation": {
+  "decision": "REQUIRED",
+  "reason": "Picking a rule or tapping pairs and watching the grid move between empty and universal lets students test the definitions on their own relations.",
+  "status": "pass",
+  "path": "sim.html",
+  "objective": "See which ordered pairs a rule selects, and when the relation is empty or universal.",
+  "instructions": [
+   "Choose a rule and see which pairs light up.",
+   "Read whether R is empty, universal or in between.",
+   "Tap cells to build your own relation.",
+   "Try to make R empty, then universal."
+  ],
+  "qa": "tests/learn_sims.js 750/750 (2026-11-04)"
+ },
+ "related": [
+  "relations-and-functions-introduction"
+ ]
+}

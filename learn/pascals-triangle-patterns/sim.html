@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="sim-id" content="LEARN-SUP-MAT-PASCAL-TRIANGLE-SIM">
+<title>Pattern finder · PrayogX Learn simulation</title>
+<style>
+:root{--bg:#f4f4f1;--card:#fcfcfb;--line:#d9d9d4;--ink:#0b0b0b;--mut:#52514e;--acc:#2a78d6;--b:#6f4fd6;--good:#00743f;--neg:#c62828;--empty:#ececea;--pos:#d9542b}
+@media (prefers-color-scheme:dark){:root{--bg:#111110;--card:#1a1a19;--line:#34342f;--ink:#fff;--mut:#c3c2b7;--acc:#3987e5;--b:#a48bff;--good:#3fae7a;--neg:#ef5350;--empty:#2a2a28;--pos:#f0824f}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+.wrap{max-width:980px;margin:0 auto;padding:12px}
+h1{font-size:17px;margin:2px 0 8px}
+h2{font-size:15px;margin:0 0 6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin-top:10px}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+button{font:inherit;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:9px;padding:6px 10px;cursor:pointer;min-height:40px}
+button[aria-pressed="true"]{background:var(--acc);border-color:var(--acc);color:#fff;font-weight:650}
+.small{font-size:13px;color:var(--mut)}
+.verdict{margin-top:8px;padding:8px 10px;border-radius:10px;border:1px solid var(--line);background:var(--bg);min-height:2.6em}
+svg{display:block;width:100%;height:auto}
+input[type=range]{flex:1 1 180px;min-width:0;height:40px;accent-color:var(--acc)}
+#tri{margin-top:8px;overflow:hidden}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>Pattern finder: one rule, many patterns</h1>
+<div class="card">
+<div class="row" id="modes"></div>
+<div class="row" style="margin-top:6px"><label class="small" for="rows">Rows: <b id="rv">8</b></label><input type="range" id="rows" min="3" max="16" step="1" value="8" aria-label="Number of rows"></div>
+<div id="tri"></div>
+<div class="verdict" id="v" aria-live="polite"></div>
+<p class="small" style="margin:8px 0 0">Tap a number to see the two numbers above it that add up to it. Rows are counted from 0, as in (a + b)⁰.</p>
+</div>
+</div>
+<script>
+(function () {
+  "use strict";
+  var MODES = [["rule", "The rule"], ["rows", "Row sums"], ["natural", "Natural numbers"], ["tri", "Triangular"], ["fib", "Fibonacci"], ["odd", "Odd numbers"], ["binom", "(a + b)ⁿ"]];
+  var S = { mode: "rule", rows: 8, pick: null, line: 4 };
+  function $(id) { return document.getElementById(id); }
+  function table(n) { var T = [], r, k; for (r = 0; r < n; r++) { T[r] = []; for (k = 0; k <= r; k++) { T[r][k] = (k === 0 || k === r) ? 1 : T[r - 1][k - 1] + T[r - 1][k]; } } return T; }
+  function sum(a) { var s = 0, i; for (i = 0; i < a.length; i++) { s += a[i]; } return s; }
+  function fibSum(T, n) { var s = 0, k; for (k = 0; n - k >= k; k++) { if (n - k < T.length) { s += T[n - k][k]; } } return s; }
+  function lit(r, k, v) {
+    var m = S.mode, p = S.pick;
+    if (m === "natural") { return k === 1 && r >= 1; }
+    if (m === "tri") { return k === 2 && r >= 2; }
+    if (m === "odd") { return v % 2 === 1; }
+    if (m === "fib") { return r + k === S.line; }
+    if (m === "binom" || m === "rows") { return r === S.line; }
+    if (m === "rule" && p) { return (r === p[0] && k === p[1]) || (r === p[0] - 1 && (k === p[1] || k === p[1] - 1)); }
+    return false;
+  }
+  function render() {
+    var T = table(S.rows), n = S.rows, step = 640 / (n + 1), h = step * 0.8, r, k, x, y, v, on, fs, out = "", i;
+    for (r = 0; r < n; r++) {
+      for (k = 0; k <= r; k++) {
+        v = T[r][k]; x = 320 + (k - r / 2) * step; y = (r + 0.6) * h; on = lit(r, k, v);
+        fs = Math.min(18, step * (v > 999 ? 0.26 : v > 99 ? 0.33 : 0.42));
+        out += '<g data-r="' + r + '" data-k="' + k + '" style="cursor:pointer"><rect x="' + (x - step * 0.46) + '" y="' + (y - h * 0.44) + '" width="' + step * 0.92 + '" height="' + h * 0.88 + '" rx="4" fill="' + (on ? "var(--acc)" : "var(--empty)") + '"/>' +
+          '<text x="' + x + '" y="' + (y + fs * 0.36) + '" text-anchor="middle" font-size="' + fs + '" font-weight="700" fill="' + (on ? "#fff" : "var(--ink)") + '">' + v + '</text></g>';
+      }
+    }
+    $("tri").innerHTML = '<svg viewBox="0 0 640 ' + (n + 0.3) * h + '" role="img" aria-label="Pascal\'s triangle">' + out + '</svg>';
+    $("rv").textContent = String(n);
+    for (i = 0; i < MODES.length; i++) { $("m-" + MODES[i][0]).setAttribute("aria-pressed", S.mode === MODES[i][0] ? "true" : "false"); }
+    var row = T[Math.min(S.line, n - 1)], m = S.mode, txt;
+    if (m === "rule") { txt = S.pick ? "<b>" + T[S.pick[0] - 1][S.pick[1] - 1] + " + " + T[S.pick[0] - 1][S.pick[1]] + " = " + T[S.pick[0]][S.pick[1]] + "</b>: the two numbers above." : "Tap any number that is not on the edge."; }
+    else if (m === "rows") { txt = "Row " + S.line + " adds up to <b>" + sum(row) + " = 2<sup>" + S.line + "</sup></b>. Tap another row."; }
+    else if (m === "natural") { txt = "The second diagonal counts <b>1, 2, 3, 4, ...</b>"; }
+    else if (m === "tri") { txt = "The next diagonal gives <b>1, 3, 6, 10, 15, ...</b>: the triangular numbers."; }
+    else if (m === "fib") { txt = "This slanted line adds up to <b>" + fibSum(T, S.line) + "</b>. Tap a number to choose another line: the sums are the Fibonacci numbers."; }
+    else if (m === "odd") { txt = "Only the odd numbers are lit. Add rows and watch triangles inside triangles appear: the <b>Sierpinski pattern</b>."; }
+    else { txt = "(a + b)<sup>" + S.line + "</sup> has the coefficients <b>" + row.join(", ") + "</b>. Tap another row."; }
+    $("v").innerHTML = txt;
+  }
+  (function build() {
+    var i, b;
+    for (i = 0; i < MODES.length; i++) {
+      b = document.createElement("button"); b.type = "button"; b.id = "m-" + MODES[i][0]; b.textContent = MODES[i][1]; b.setAttribute("data-m", MODES[i][0]);
+      b.onclick = function () { PX.setMode(this.getAttribute("data-m")); };
+      $("modes").appendChild(b);
+    }
+    $("rows").oninput = function () { PX.setRows(parseInt(this.value, 10)); };
+    $("tri").onclick = function (e) {
+      var t = e.target; while (t && t !== this && !(t.getAttribute && t.getAttribute("data-r"))) { t = t.parentNode; }
+      if (t && t !== this) { PX.tap(parseInt(t.getAttribute("data-r"), 10), parseInt(t.getAttribute("data-k"), 10)); }
+    };
+  }());
+  window.PX = {
+    setMode: function (m) { S.mode = m; S.pick = null; render(); },
+    setRows: function (n) { S.rows = n; S.line = Math.min(S.line, n - 1); $("rows").value = String(n); render(); },
+    tap: function (r, k) {
+      if (S.mode === "rule") { S.pick = (k > 0 && k < r) ? [r, k] : null; }
+      else if (S.mode === "fib") { S.line = r + k; }
+      else { S.line = r; }
+      render();
+    },
+    reset: function () { S.mode = "rule"; S.pick = null; S.line = 4; PX.setRows(8); },
+    state: function () { var T = table(S.rows), row = T[Math.min(S.line, S.rows - 1)]; return { mode: S.mode, rows: S.rows, line: S.line, table: T, rowSum: sum(row), row: row, fib: fibSum(T, S.line), text: $("v").textContent }; }
+  };
+  render();
+}());
+</script>
+</body>
+</html>

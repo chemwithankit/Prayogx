@@ -1222,3 +1222,126 @@ X Narrowing => blood vessels
 X Grooves => tyre
 X 2014 => result not repeated
 XE Each word matches its link.
+
+@electric-charge-like-and-unlike
+F Rubbing transfers ____ from one body to another.|electrons
+F A body that loses electrons becomes ____.|positive
+F A body that gains electrons becomes ____.|negative
+F Like charges ____ each other.|repel
+F Unlike charges ____ each other.|attract
+T Rubbing creates new charge.|F|It only moves electrons.
+T Glass rubbed with silk becomes positive.|T|It loses electrons to the silk.
+T Plastic rubbed with fur becomes negative.|T|It gains electrons.
+T The total charge of a rubbed pair is zero if both began neutral.|T|Charge only moved.
+M Silk rubbed on glass becomes:|positive;negative;neutral;magnetic|2|It gains electrons.
+M Two negative objects will:|attract;repel;not act;neutralise|2|Like charges repel.
+M A positive and a negative object will:|attract;repel;not act;spin|1|Unlike charges attract.
+M Sparks from a sweater come from:|heat;charge build-up and discharge;magnets;friction melting|2|Charge builds up, then discharges.
+A The total charge of a neutral pair stays zero after rubbing.|Electrons only move from one body to the other.|1|R explains A.
+A A rubbed glass rod repels another rubbed glass rod.|Both carry the same kind of charge.|1|R explains A.
+N A neutral rod gives 5 electrons to a cloth. What is the rod's charge, in units of e?|It lost 5 electrons|+5
+N After rubbing, a body has +6 units of charge. What is its neutral partner's charge now?|The total stays 0|−6
+S Why does a sweater spark when pulled off?|Rubbing moves electrons so opposite charges build up on the sweater and shirt; they discharge as a spark.
+X Glass with silk => positive
+X Silk with glass => negative
+X Plastic with fur => negative
+X Fur with plastic => positive
+XE Each rubbed object matches its charge.
+
+@nucleophilic-addition-carbonyl
+F In C=O, carbon carries delta ____.|plus
+F In C=O, oxygen carries delta ____.|minus
+F A nucleophile is electron-____.|rich
+F During addition, carbon changes from sp² to ____.|sp³
+F HCN adds to carbonyl compounds to give a ____.|cyanohydrin
+T The nucleophile attacks the carbonyl oxygen.|F|It attacks the electrophilic carbon.
+T The alkoxide intermediate is tetrahedral at carbon.|T|Carbon is sp³.
+T Aldehydes are generally more reactive than ketones.|T|Less hindered, more electrophilic.
+T Alkyl groups increase the positive charge on the carbonyl carbon.|F|They release electrons and reduce it.
+M The first step of the mechanism is:|proton loss;nucleophile attack on carbon;oxygen leaving;ring closing|2|The nucleophile attacks the delta plus carbon.
+M The geometry at carbon changes from:|tetrahedral to flat;flat to tetrahedral;linear to flat;flat to linear|2|sp² to sp³.
+M Which is most reactive?|Propanone;Ethanal;Butanone;Pentan-3-one|2|Ethanal is an aldehyde.
+M The alkoxide intermediate then:|loses CO₂;takes a proton;forms a ring;loses carbon|2|It gives the product.
+A Aldehydes react faster than ketones.|Ketones have two alkyl groups around the carbonyl carbon.|1|R explains A.
+A The carbonyl carbon is attacked by nucleophiles.|Oxygen pulls electrons and leaves carbon delta plus.|1|R explains A.
+S Write the steps of nucleophilic addition in order.|Nucleophile attacks the carbon, pi electrons move to oxygen, a tetrahedral alkoxide forms, it takes a proton.
+S Give two reasons why aldehydes are more reactive than ketones.|Steric: less crowding. Electronic: fewer electron-releasing alkyl groups, so carbon is more positive.
+X sp² => flat
+X sp³ => tetrahedral
+X HCN => cyanohydrin
+X Nu⁻ => electron-rich
+XE Each term matches its partner.
+
+@empty-and-universal-relations
+F A relation in A is a subset of A × ____.|A
+F A relation with no pairs is an ____ relation.|empty
+F If R = A × A, the relation is ____.|universal
+F Empty and universal relations are called ____ relations.|trivial
+F If A has 3 elements, A × A has ____ pairs.|9
+T The empty set is a relation in A.|T|It is a subset of A × A.
+T A universal relation contains every ordered pair.|T|R = A × A.
+T Every relation is empty or universal.|F|Most lie between the two.
+T In a boys' school, "a is the sister of b" is universal.|F|It is empty.
+M If A = {1, 2}, the relation a + b = 10 is:|universal;empty;both;neither|2|No pair adds to 10.
+M If A = {1, 2}, the relation "difference of a and b is less than 5" is:|empty;universal;has one pair;has two pairs|2|All four pairs pass.
+M The number of pairs in a universal relation on 4 elements is:|4;8;12;16|4|4 × 4.
+M In NCERT's example, height difference < 3 m is:|empty;universal;a function;a graph|2|Every pair passes.
+A The relation "a is a sister of b" on a boys' school is empty.|No student is anyone's sister.|1|R explains A.
+A Any relation in A contains at most n² pairs.|A × A has n² ordered pairs.|1|R explains A.
+N A has 5 elements. How many pairs does A × A have?|5 × 5|25
+N A has 3 elements. How many relations in A exist?|Subsets of a set of 9 pairs: 2⁹|512
+S Define the empty and universal relations.|Empty: no element is related to any element, R is the empty set. Universal: each element is related to every element, R = A × A.
+X R = empty set => empty relation
+X R = A × A => universal relation
+X Both extremes => trivial relations
+X (a, b) => ordered pair
+XE Each statement matches its name.
+
+@stamen-and-anther
+F A stamen has a filament and an ____.|anther
+F A typical anther has ____ lobes.|2
+F A typical anther has ____ microsporangia.|4
+F The innermost wall layer is the ____.|tapetum
+F Pollen grains form from ____ tissue.|sporogenous
+T The filament is the long, thin stalk.|T|The anther sits on top of it.
+T The epidermis is the innermost wall layer.|F|It is the outermost.
+T The tapetum nourishes developing pollen.|T|It is the innermost layer.
+T Each lobe of a typical anther has two chambers.|T|2 lobes × 2 chambers = 4.
+M The correct order of layers from outside is:|epidermis, endothecium, middle layers, tapetum;tapetum, middle layers, endothecium, epidermis;endothecium, epidermis, tapetum, middle layers;epidermis, tapetum, endothecium, middle layers|1|Outermost to innermost.
+M Which nourishes pollen grains?|Epidermis;Endothecium;Middle layers;Tapetum|4|The tapetum.
+M Pollen is made inside the:|ovary;anther;stigma;sepal|2|In the microsporangia.
+M The centre of a young microsporangium holds:|sporogenous tissue;xylem;the ovule;the stigma|1|It gives rise to pollen grains.
+A An anther has four microsporangia.|It has two lobes with two chambers each.|1|R explains A.
+A The tapetum is close to the developing pollen.|It is the innermost wall layer.|1|R explains A.
+S Name the four wall layers of a microsporangium, from outside.|Epidermis, endothecium, middle layers, tapetum.
+S What are the two parts of a stamen?|The filament and the anther.
+X Filament => stalk
+X Anther => pollen chambers
+X Tapetum => nourishes pollen
+X Sporogenous tissue => forms pollen
+XE Each part matches its role.
+
+@pascals-triangle-patterns
+F Each number is the ____ of the two above it.|sum
+F The sum of row 3 is ____.|8
+F The third diagonal starts 1, 3, 6, ____.|10
+F The next number after 1, 1, 2, 3, 5 is ____.|8
+F In India the triangle is called Meru ____.|Prastara
+T Row sums are powers of 2.|T|1, 2, 4, 8, 16.
+T Row 2 gives the coefficients of (a + b)².|T|1, 2, 1.
+T Every number in the triangle is odd.|F|2, 4 and 6 appear.
+T The triangle was first written by Pascal.|F|It appears much earlier in India.
+M Row 4 is:|1 3 3 1;1 4 6 4 1;1 5 10 10 5 1;1 2 1|2|Rows are counted from 0.
+M The sum of row 5 is:|16;25;32;64|3|2⁵.
+M (a + b)³ has coefficients:|1, 2, 1;1, 3, 3, 1;1, 4, 6, 4, 1;1, 1|2|Row 3.
+M Slanted lines add up to:|primes;squares;Fibonacci numbers;cubes|3|1, 1, 2, 3, 5, 8.
+A The triangle gives binomial coefficients.|Each coefficient of (a + b)ⁿ⁺¹ is the sum of two coefficients of (a + b)ⁿ.|1|R explains A.
+A Row sums double each time.|Each number feeds into two numbers below it.|1|R explains A.
+N Find the sum of row 6.|2⁶|64
+N Write the next row after 1 5 10 10 5 1. What is its third number?|5 + 10|15
+S Write rows 0 to 4 of the triangle.|1; 1 1; 1 2 1; 1 3 3 1; 1 4 6 4 1.
+X Row sums => powers of 2
+X Second diagonal => natural numbers
+X Third diagonal => triangular numbers
+X Slanted lines => Fibonacci
+XE Each place matches its pattern.

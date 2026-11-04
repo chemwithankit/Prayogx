@@ -1,0 +1,156 @@
+{
+ "slug": "empty-and-universal-relations",
+ "title": "Empty and Universal Relations",
+ "class": 12,
+ "subject": "Mathematics",
+ "chapter": "Relations and Functions",
+ "objective": "In a boys' school, who is whose sister? Nobody, and Maths has a name for that. What a relation is, and its two extreme cases.",
+ "fill": [
+  {
+   "q": "A relation in A is a subset of A × ____.",
+   "a": "A"
+  },
+  {
+   "q": "A relation with no pairs is an ____ relation.",
+   "a": "empty"
+  },
+  {
+   "q": "If R = A × A, the relation is ____.",
+   "a": "universal"
+  },
+  {
+   "q": "Empty and universal relations are called ____ relations.",
+   "a": "trivial"
+  },
+  {
+   "q": "If A has 3 elements, A × A has ____ pairs.",
+   "a": "9"
+  }
+ ],
+ "tf": [
+  {
+   "q": "The empty set is a relation in A.",
+   "a": true,
+   "explain": "It is a subset of A × A."
+  },
+  {
+   "q": "A universal relation contains every ordered pair.",
+   "a": true,
+   "explain": "R = A × A."
+  },
+  {
+   "q": "Every relation is empty or universal.",
+   "a": false,
+   "explain": "Most lie between the two."
+  },
+  {
+   "q": "In a boys' school, \"a is the sister of b\" is universal.",
+   "a": false,
+   "explain": "It is empty."
+  }
+ ],
+ "ar": [
+  {
+   "a": "The relation \"a is a sister of b\" on a boys' school is empty.",
+   "r": "No student is anyone's sister.",
+   "answer": 0,
+   "explain": "R explains A."
+  },
+  {
+   "a": "Any relation in A contains at most n² pairs.",
+   "r": "A × A has n² ordered pairs.",
+   "answer": 0,
+   "explain": "R explains A."
+  }
+ ],
+ "mcq": [
+  {
+   "q": "If A = {1, 2}, the relation a + b = 10 is:",
+   "options": [
+    "universal",
+    "empty",
+    "both",
+    "neither"
+   ],
+   "answer": 1,
+   "explain": "No pair adds to 10."
+  },
+  {
+   "q": "If A = {1, 2}, the relation \"difference of a and b is less than 5\" is:",
+   "options": [
+    "empty",
+    "universal",
+    "has one pair",
+    "has two pairs"
+   ],
+   "answer": 1,
+   "explain": "All four pairs pass."
+  },
+  {
+   "q": "The number of pairs in a universal relation on 4 elements is:",
+   "options": [
+    "4",
+    "8",
+    "12",
+    "16"
+   ],
+   "answer": 3,
+   "explain": "4 × 4."
+  },
+  {
+   "q": "In NCERT's example, height difference < 3 m is:",
+   "options": [
+    "empty",
+    "universal",
+    "a function",
+    "a graph"
+   ],
+   "answer": 1,
+   "explain": "Every pair passes."
+  }
+ ],
+ "num": [
+  {
+   "q": "A has 5 elements. How many pairs does A × A have?",
+   "steps": [
+    "5 × 5"
+   ],
+   "answer": "25"
+  },
+  {
+   "q": "A has 3 elements. How many relations in A exist?",
+   "steps": [
+    "Subsets of a set of 9 pairs: 2⁹"
+   ],
+   "answer": "512"
+  }
+ ],
+ "short": [
+  {
+   "q": "Define the empty and universal relations.",
+   "lines": 5,
+   "solution": "Empty: no element is related to any element, R is the empty set. Universal: each element is related to every element, R = A × A."
+  }
+ ],
+ "match": {
+  "left": [
+   "R = empty set",
+   "R = A × A",
+   "Both extremes",
+   "(a, b)"
+  ],
+  "right": [
+   "trivial relations",
+   "empty relation",
+   "ordered pair",
+   "universal relation"
+  ],
+  "answer": [
+   1,
+   3,
+   0,
+   2
+  ],
+  "explain": "Each statement matches its name."
+ }
+}

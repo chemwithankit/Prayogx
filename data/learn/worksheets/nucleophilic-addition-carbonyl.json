@@ -1,0 +1,146 @@
+{
+ "slug": "nucleophilic-addition-carbonyl",
+ "title": "Nucleophilic Addition to the Carbonyl Group",
+ "class": 12,
+ "subject": "Chemistry",
+ "chapter": "Aldehydes, Ketones and Carboxylic Acids",
+ "objective": "Most reactions of aldehydes and ketones begin with one move. How a nucleophile attacks the polar C=O, and why aldehydes react faster than ketones.",
+ "fill": [
+  {
+   "q": "In C=O, carbon carries delta ____.",
+   "a": "plus"
+  },
+  {
+   "q": "In C=O, oxygen carries delta ____.",
+   "a": "minus"
+  },
+  {
+   "q": "A nucleophile is electron-____.",
+   "a": "rich"
+  },
+  {
+   "q": "During addition, carbon changes from sp² to ____.",
+   "a": "sp³"
+  },
+  {
+   "q": "HCN adds to carbonyl compounds to give a ____.",
+   "a": "cyanohydrin"
+  }
+ ],
+ "tf": [
+  {
+   "q": "The nucleophile attacks the carbonyl oxygen.",
+   "a": false,
+   "explain": "It attacks the electrophilic carbon."
+  },
+  {
+   "q": "The alkoxide intermediate is tetrahedral at carbon.",
+   "a": true,
+   "explain": "Carbon is sp³."
+  },
+  {
+   "q": "Aldehydes are generally more reactive than ketones.",
+   "a": true,
+   "explain": "Less hindered, more electrophilic."
+  },
+  {
+   "q": "Alkyl groups increase the positive charge on the carbonyl carbon.",
+   "a": false,
+   "explain": "They release electrons and reduce it."
+  }
+ ],
+ "ar": [
+  {
+   "a": "Aldehydes react faster than ketones.",
+   "r": "Ketones have two alkyl groups around the carbonyl carbon.",
+   "answer": 0,
+   "explain": "R explains A."
+  },
+  {
+   "a": "The carbonyl carbon is attacked by nucleophiles.",
+   "r": "Oxygen pulls electrons and leaves carbon delta plus.",
+   "answer": 0,
+   "explain": "R explains A."
+  }
+ ],
+ "mcq": [
+  {
+   "q": "The first step of the mechanism is:",
+   "options": [
+    "proton loss",
+    "nucleophile attack on carbon",
+    "oxygen leaving",
+    "ring closing"
+   ],
+   "answer": 1,
+   "explain": "The nucleophile attacks the delta plus carbon."
+  },
+  {
+   "q": "The geometry at carbon changes from:",
+   "options": [
+    "tetrahedral to flat",
+    "flat to tetrahedral",
+    "linear to flat",
+    "flat to linear"
+   ],
+   "answer": 1,
+   "explain": "sp² to sp³."
+  },
+  {
+   "q": "Which is most reactive?",
+   "options": [
+    "Propanone",
+    "Ethanal",
+    "Butanone",
+    "Pentan-3-one"
+   ],
+   "answer": 1,
+   "explain": "Ethanal is an aldehyde."
+  },
+  {
+   "q": "The alkoxide intermediate then:",
+   "options": [
+    "loses CO₂",
+    "takes a proton",
+    "forms a ring",
+    "loses carbon"
+   ],
+   "answer": 1,
+   "explain": "It gives the product."
+  }
+ ],
+ "num": [],
+ "short": [
+  {
+   "q": "Write the steps of nucleophilic addition in order.",
+   "lines": 5,
+   "solution": "Nucleophile attacks the carbon, pi electrons move to oxygen, a tetrahedral alkoxide forms, it takes a proton."
+  },
+  {
+   "q": "Give two reasons why aldehydes are more reactive than ketones.",
+   "lines": 5,
+   "solution": "Steric: less crowding. Electronic: fewer electron-releasing alkyl groups, so carbon is more positive."
+  }
+ ],
+ "match": {
+  "left": [
+   "sp²",
+   "sp³",
+   "HCN",
+   "Nu⁻"
+  ],
+  "right": [
+   "tetrahedral",
+   "flat",
+   "electron-rich",
+   "cyanohydrin"
+  ],
+  "answer": [
+   1,
+   0,
+   3,
+   2
+  ],
+  "explain": "Each term matches its partner."
+ }
+}

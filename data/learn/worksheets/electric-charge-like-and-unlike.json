@@ -1,0 +1,156 @@
+{
+ "slug": "electric-charge-like-and-unlike",
+ "title": "Electric Charge: Like Charges Repel, Unlike Attract",
+ "class": 12,
+ "subject": "Physics",
+ "chapter": "Electric Charges and Fields",
+ "objective": "Those sparks when you pull off a sweater come from electric charge. How rubbing moves electrons, what positive and negative mean, and why like charges repel.",
+ "fill": [
+  {
+   "q": "Rubbing transfers ____ from one body to another.",
+   "a": "electrons"
+  },
+  {
+   "q": "A body that loses electrons becomes ____.",
+   "a": "positive"
+  },
+  {
+   "q": "A body that gains electrons becomes ____.",
+   "a": "negative"
+  },
+  {
+   "q": "Like charges ____ each other.",
+   "a": "repel"
+  },
+  {
+   "q": "Unlike charges ____ each other.",
+   "a": "attract"
+  }
+ ],
+ "tf": [
+  {
+   "q": "Rubbing creates new charge.",
+   "a": false,
+   "explain": "It only moves electrons."
+  },
+  {
+   "q": "Glass rubbed with silk becomes positive.",
+   "a": true,
+   "explain": "It loses electrons to the silk."
+  },
+  {
+   "q": "Plastic rubbed with fur becomes negative.",
+   "a": true,
+   "explain": "It gains electrons."
+  },
+  {
+   "q": "The total charge of a rubbed pair is zero if both began neutral.",
+   "a": true,
+   "explain": "Charge only moved."
+  }
+ ],
+ "ar": [
+  {
+   "a": "The total charge of a neutral pair stays zero after rubbing.",
+   "r": "Electrons only move from one body to the other.",
+   "answer": 0,
+   "explain": "R explains A."
+  },
+  {
+   "a": "A rubbed glass rod repels another rubbed glass rod.",
+   "r": "Both carry the same kind of charge.",
+   "answer": 0,
+   "explain": "R explains A."
+  }
+ ],
+ "mcq": [
+  {
+   "q": "Silk rubbed on glass becomes:",
+   "options": [
+    "positive",
+    "negative",
+    "neutral",
+    "magnetic"
+   ],
+   "answer": 1,
+   "explain": "It gains electrons."
+  },
+  {
+   "q": "Two negative objects will:",
+   "options": [
+    "attract",
+    "repel",
+    "not act",
+    "neutralise"
+   ],
+   "answer": 1,
+   "explain": "Like charges repel."
+  },
+  {
+   "q": "A positive and a negative object will:",
+   "options": [
+    "attract",
+    "repel",
+    "not act",
+    "spin"
+   ],
+   "answer": 0,
+   "explain": "Unlike charges attract."
+  },
+  {
+   "q": "Sparks from a sweater come from:",
+   "options": [
+    "heat",
+    "charge build-up and discharge",
+    "magnets",
+    "friction melting"
+   ],
+   "answer": 1,
+   "explain": "Charge builds up, then discharges."
+  }
+ ],
+ "num": [
+  {
+   "q": "A neutral rod gives 5 electrons to a cloth. What is the rod's charge, in units of e?",
+   "steps": [
+    "It lost 5 electrons"
+   ],
+   "answer": "+5"
+  },
+  {
+   "q": "After rubbing, a body has +6 units of charge. What is its neutral partner's charge now?",
+   "steps": [
+    "The total stays 0"
+   ],
+   "answer": "−6"
+  }
+ ],
+ "short": [
+  {
+   "q": "Why does a sweater spark when pulled off?",
+   "lines": 5,
+   "solution": "Rubbing moves electrons so opposite charges build up on the sweater and shirt; they discharge as a spark."
+  }
+ ],
+ "match": {
+  "left": [
+   "Glass with silk",
+   "Silk with glass",
+   "Plastic with fur",
+   "Fur with plastic"
+  ],
+  "right": [
+   "negative",
+   "negative",
+   "positive",
+   "positive"
+  ],
+  "answer": [
+   3,
+   0,
+   1,
+   2
+  ],
+  "explain": "Each rubbed object matches its charge."
+ }
+}

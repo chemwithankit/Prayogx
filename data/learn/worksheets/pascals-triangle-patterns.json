@@ -1,0 +1,156 @@
+{
+ "slug": "pascals-triangle-patterns",
+ "title": "Pascal's Triangle and Number Patterns",
+ "class": "Supplementary",
+ "subject": "Mathematics",
+ "chapter": "Number patterns",
+ "objective": "One simple rule builds a triangle full of patterns: powers of 2, triangular numbers, Fibonacci and more. And India wrote it down centuries before Pascal.",
+ "fill": [
+  {
+   "q": "Each number is the ____ of the two above it.",
+   "a": "sum"
+  },
+  {
+   "q": "The sum of row 3 is ____.",
+   "a": "8"
+  },
+  {
+   "q": "The third diagonal starts 1, 3, 6, ____.",
+   "a": "10"
+  },
+  {
+   "q": "The next number after 1, 1, 2, 3, 5 is ____.",
+   "a": "8"
+  },
+  {
+   "q": "In India the triangle is called Meru ____.",
+   "a": "Prastara"
+  }
+ ],
+ "tf": [
+  {
+   "q": "Row sums are powers of 2.",
+   "a": true,
+   "explain": "1, 2, 4, 8, 16."
+  },
+  {
+   "q": "Row 2 gives the coefficients of (a + b)².",
+   "a": true,
+   "explain": "1, 2, 1."
+  },
+  {
+   "q": "Every number in the triangle is odd.",
+   "a": false,
+   "explain": "2, 4 and 6 appear."
+  },
+  {
+   "q": "The triangle was first written by Pascal.",
+   "a": false,
+   "explain": "It appears much earlier in India."
+  }
+ ],
+ "ar": [
+  {
+   "a": "The triangle gives binomial coefficients.",
+   "r": "Each coefficient of (a + b)ⁿ⁺¹ is the sum of two coefficients of (a + b)ⁿ.",
+   "answer": 0,
+   "explain": "R explains A."
+  },
+  {
+   "a": "Row sums double each time.",
+   "r": "Each number feeds into two numbers below it.",
+   "answer": 0,
+   "explain": "R explains A."
+  }
+ ],
+ "mcq": [
+  {
+   "q": "Row 4 is:",
+   "options": [
+    "1 3 3 1",
+    "1 4 6 4 1",
+    "1 5 10 10 5 1",
+    "1 2 1"
+   ],
+   "answer": 1,
+   "explain": "Rows are counted from 0."
+  },
+  {
+   "q": "The sum of row 5 is:",
+   "options": [
+    "16",
+    "25",
+    "32",
+    "64"
+   ],
+   "answer": 2,
+   "explain": "2⁵."
+  },
+  {
+   "q": "(a + b)³ has coefficients:",
+   "options": [
+    "1, 2, 1",
+    "1, 3, 3, 1",
+    "1, 4, 6, 4, 1",
+    "1, 1"
+   ],
+   "answer": 1,
+   "explain": "Row 3."
+  },
+  {
+   "q": "Slanted lines add up to:",
+   "options": [
+    "primes",
+    "squares",
+    "Fibonacci numbers",
+    "cubes"
+   ],
+   "answer": 2,
+   "explain": "1, 1, 2, 3, 5, 8."
+  }
+ ],
+ "num": [
+  {
+   "q": "Find the sum of row 6.",
+   "steps": [
+    "2⁶"
+   ],
+   "answer": "64"
+  },
+  {
+   "q": "Write the next row after 1 5 10 10 5 1. What is its third number?",
+   "steps": [
+    "5 + 10"
+   ],
+   "answer": "15"
+  }
+ ],
+ "short": [
+  {
+   "q": "Write rows 0 to 4 of the triangle.",
+   "lines": 5,
+   "solution": "1; 1 1; 1 2 1; 1 3 3 1; 1 4 6 4 1."
+  }
+ ],
+ "match": {
+  "left": [
+   "Row sums",
+   "Second diagonal",
+   "Third diagonal",
+   "Slanted lines"
+  ],
+  "right": [
+   "natural numbers",
+   "Fibonacci",
+   "powers of 2",
+   "triangular numbers"
+  ],
+  "answer": [
+   2,
+   0,
+   3,
+   1
+  ],
+  "explain": "Each place matches its pattern."
+ }
+}

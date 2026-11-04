@@ -24,6 +24,9 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
                                         grows like √(D t)
      learn/laws-of-reflection/sim.html  r = i from the normal, the surface angle, the target
      learn/regular-vs-diffused-reflection/sim.html  spread grows with roughness, i = r per facet
+     learn/electric-charge-like-and-unlike/sim.html  rubbing keeps the pair's total 0; like repel, unlike attract
+     learn/empty-and-universal-relations/sim.html  rule → pairs against a brute-force filter; empty, universal
+     learn/pascals-triangle-patterns/sim.html  binomials by the product formula, row sums, Fibonacci sums
      learn/roster-and-set-builder-form/sim.html  rule → elements, roster and set-builder text,
                                         order, infinite sets, letters of a word without repeats
      learn/image-in-a-plane-mirror/sim.html  image distance, gap, walking, the reflection point
@@ -155,6 +158,52 @@ for (const key of Object.keys(MATERIALS)) FD[key] = fdContact(SKIN, Object.assig
       await page.evaluate(() => { PX.reset(); PX.setRule('even'); PX.setLimit(100); });
       const ovS = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
       ok(`sets ${tag}: no horizontal overflow with 50 elements`, ovS <= 0, ovS);
+
+      // ---- electric charge: conservation, signs and the force rule
+      await page.goto(base + 'electric-charge-like-and-unlike/sim.html', { waitUntil: 'load' });
+      const rubbed = await page.evaluate(() => { PX.reset(); PX.rub(); PX.rub(); PX.setPair('pf'); PX.rub(); return PX.state(); });
+      ok(`charge rub ${tag}: glass +6, silk −6, fur +3, plastic −3, pair totals 0`, rubbed.q.glass === 6 && rubbed.q.silk === -6 && rubbed.q.fur === 3 && rubbed.q.plastic === -3 && rubbed.q.glass + rubbed.q.silk === 0 && rubbed.q.fur + rubbed.q.plastic === 0, JSON.stringify(rubbed.q));
+      for (const [a, b, want] of [['glass', 'fur', 'repel'], ['silk', 'plastic', 'repel'], ['glass', 'plastic', 'attract'], ['silk', 'fur', 'attract'], ['glass', 'silk', 'attract']]) {
+        const s = await page.evaluate(v => { PX.pick(v[0], v[1]); return PX.state(); }, [a, b]);
+        ok(`charge ${a} vs ${b} ${tag}: ${want}`, s.force === want, s.force);
+      }
+      const neutral = await page.evaluate(() => { PX.reset(); PX.pick('plastic', 'fur'); return PX.state().force; });
+      ok(`charge ${tag}: unrubbed objects exert no force`, neutral === 'none', neutral);
+      const ovChg = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
+      ok(`charge ${tag}: no horizontal overflow`, ovChg <= 0, ovChg);
+
+      // ---- relations: each rule against a brute-force filter of A × A
+      await page.goto(base + 'empty-and-universal-relations/sim.html', { waitUntil: 'load' });
+      const relRules = { sum10: (a, b) => a + b === 10, eq: (a, b) => a === b, lt: (a, b) => a < b, even: (a, b) => (a + b) % 2 === 0, diff: (a, b) => Math.abs(a - b) < 5 };
+      for (const [id, fn] of Object.entries(relRules)) {
+        const s = await page.evaluate(v => { PX.setRule(v); return PX.state(); }, id);
+        const want = []; for (const a of [1, 2, 3, 4]) for (const b of [1, 2, 3, 4]) if (fn(a, b)) want.push([a, b]);
+        const ty = want.length === 0 ? 'empty' : want.length === 16 ? 'universal' : 'between';
+        ok(`relations ${id} ${tag}: ${want.length} pairs, ${ty}`, JSON.stringify(s.pairs) === JSON.stringify(want) && s.type === ty, `${s.count} ${s.type}`);
+      }
+      const tog = await page.evaluate(() => { PX.setRule('sum10'); PX.toggle(0); return PX.state(); });
+      ok(`relations ${tag}: tapping a cell leaves the empty relation`, tog.count === 1 && tog.type === 'between' && tog.pairs[0][0] === 1 && tog.pairs[0][1] === 1, JSON.stringify(tog.pairs));
+      const ovRel = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
+      ok(`relations ${tag}: no horizontal overflow`, ovRel <= 0, ovRel);
+
+      // ---- Pascal: every entry by the product formula, row sums 2^n, slanted sums Fibonacci
+      await page.goto(base + 'pascals-triangle-patterns/sim.html', { waitUntil: 'load' });
+      const nCk = (n, k) => { let v = 1; for (let i = 1; i <= k; i++) v = v * (n - k + i) / i; return Math.round(v); };
+      const tbl = await page.evaluate(() => { PX.reset(); PX.setRows(16); return PX.state().table; });
+      ok(`pascal ${tag}: 16 rows equal nCk`, tbl.every((row, n) => row.every((v, k) => v === nCk(n, k))), tbl[15].join(' '));
+      for (const r of [0, 3, 7, 12]) {
+        const s = await page.evaluate(v => { PX.setMode('rows'); PX.tap(v, 0); return PX.state(); }, r);
+        ok(`pascal row ${r} ${tag}: sum 2^${r}`, s.rowSum === 2 ** r, s.rowSum);
+      }
+      const fibs = [1, 1, 2, 3, 5, 8, 13, 21, 34, 55];
+      for (let n = 0; n < 10; n++) {
+        const s = await page.evaluate(v => { PX.setMode('fib'); PX.tap(v, 0); return PX.state(); }, n);
+        ok(`pascal slanted line ${n} ${tag}: ${fibs[n]}`, s.fib === fibs[n], s.fib);
+      }
+      const rule = await page.evaluate(() => { PX.setMode('rule'); PX.tap(4, 2); return PX.state().text; });
+      ok(`pascal rule ${tag}: 3 + 3 = 6`, rule.includes('3 + 3 = 6'), rule);
+      const ovPas = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
+      ok(`pascal ${tag}: no horizontal overflow at 16 rows`, ovPas <= 0, ovPas);
 
       // ---- rest and motion: you start at −20 m and ride 4 m/s for 10 s; friend sits 1.5 m ahead
       await page.goto(base + 'rest-and-motion/sim.html', { waitUntil: 'load' });

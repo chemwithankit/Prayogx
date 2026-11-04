@@ -1,0 +1,116 @@
+{
+ "id": "LEARN-C12-PHY-ELECTRIC-CHARGE",
+ "slug": "electric-charge-like-and-unlike",
+ "status": "ready",
+ "class": 12,
+ "subject": "Physics",
+ "chapter": "Electric Charges and Fields",
+ "topic": "Electric charge: like charges repel, unlike attract",
+ "title": "Electric Charge: Like Charges Repel, Unlike Attract",
+ "series": 417,
+ "studioJob": "electric-charge-basics",
+ "reelId": "STUDIO-ELECTRIC-CHARGE-BASICS",
+ "summary": "Those sparks when you pull off a sweater come from electric charge. How rubbing moves electrons, what positive and negative mean, and why like charges repel.",
+ "video": {
+  "youtubeId": "vsDUJxnfUT4"
+ },
+ "notes": {
+  "pdf": "notes.pdf",
+  "title": "01 – Electric Charge: Like Charges Repel, Unlike Attract",
+  "driveDoc": "1tlqqdstWPvnEiAMh4sgWhY4__P6dIjcOvPH7QkQGkPw"
+ },
+ "thumb": "thumb.jpg",
+ "tags": [
+  "electric charge",
+  "static electricity",
+  "like charges repel",
+  "conservation of charge"
+ ],
+ "keyPoints": [
+  "Rubbing two bodies **transfers electrons** from one to the other.",
+  "Charge is **not created**: the pair's total stays the same.",
+  "The body that **loses electrons** becomes positive; the one that **gains** them becomes negative.",
+  "Glass rubbed with silk is **positive**, and the silk **negative**. Plastic rubbed with fur is **negative**.",
+  "**Like charges repel, unlike charges attract.**"
+ ],
+ "sections": [
+  {
+   "h": "What each rubbed object becomes",
+   "blocks": [
+    {
+     "table": {
+      "head": [
+       "Pair",
+       "Loses electrons (+)",
+       "Gains electrons (−)"
+      ],
+      "rows": [
+       [
+        "Glass and silk",
+        "Glass",
+        "Silk"
+       ],
+       [
+        "Plastic and fur",
+        "Fur",
+        "Plastic"
+       ]
+      ]
+     }
+    }
+   ]
+  }
+ ],
+ "quiz": [
+  {
+   "q": "When glass is rubbed with silk, the glass becomes:",
+   "options": [
+    "negative",
+    "positive",
+    "neutral",
+    "magnetic"
+   ],
+   "answer": 1,
+   "explain": "It loses electrons to the silk."
+  },
+  {
+   "q": "Rubbing two bodies:",
+   "options": [
+    "creates charge",
+    "destroys charge",
+    "transfers electrons",
+    "transfers protons"
+   ],
+   "answer": 2,
+   "explain": "Only electrons move; the total stays the same."
+  },
+  {
+   "q": "Two positive rods will:",
+   "options": [
+    "attract",
+    "repel",
+    "not interact",
+    "stick"
+   ],
+   "answer": 1,
+   "explain": "Like charges repel."
+  }
+ ],
+ "simulation": {
+  "decision": "REQUIRED",
+  "reason": "Rubbing a pair yourself and watching the total stay 0, then choosing any two rubbed objects to predict attraction or repulsion, tests the rule on cases the video does not show.",
+  "status": "pass",
+  "path": "sim.html",
+  "objective": "See that rubbing only moves electrons, then predict which rubbed objects repel or attract.",
+  "instructions": [
+   "Choose a pair and press Rub once.",
+   "Watch the two charges: the pair's total stays 0.",
+   "Rub the other pair too.",
+   "Pick two objects and predict: will they repel or attract?"
+  ],
+  "qa": "tests/learn_sims.js 750/750 (2026-11-04)"
+ },
+ "related": [
+  "electric-charges-and-fields-introduction"
+ ]
+}

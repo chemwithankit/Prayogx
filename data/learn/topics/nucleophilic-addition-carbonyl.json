@@ -1,0 +1,105 @@
+{
+ "id": "LEARN-C12-CHE-NUCLEOPHILIC-ADDITION",
+ "slug": "nucleophilic-addition-carbonyl",
+ "status": "ready",
+ "class": 12,
+ "subject": "Chemistry",
+ "chapter": "Aldehydes, Ketones and Carboxylic Acids",
+ "topic": "Nucleophilic addition to the carbonyl group",
+ "title": "Nucleophilic Addition to the Carbonyl Group",
+ "series": 418,
+ "studioJob": "nucleophilic-addition",
+ "reelId": "STUDIO-NUCLEOPHILIC-ADDITION",
+ "summary": "Most reactions of aldehydes and ketones begin with one move. How a nucleophile attacks the polar C=O, and why aldehydes react faster than ketones.",
+ "video": {
+  "youtubeId": "DkHrLq5A8tk"
+ },
+ "notes": {
+  "pdf": "notes.pdf",
+  "title": "06 – Nucleophilic Addition to the Carbonyl Group",
+  "driveDoc": "1KP0x47gDVt78ZgUVaUcgcxwQCqSXVc4ufYc6InMCoS0"
+ },
+ "thumb": "thumb.jpg",
+ "tags": [
+  "nucleophilic addition",
+  "carbonyl group",
+  "aldehydes",
+  "ketones",
+  "cyanohydrin"
+ ],
+ "keyPoints": [
+  "The C=O bond is **polar**: carbon is delta plus, oxygen delta minus.",
+  "A **nucleophile** attacks the electrophilic carbon; the pi electrons move onto oxygen.",
+  "The carbon changes from **sp² (flat)** to **sp³ (tetrahedral)**, giving an **alkoxide intermediate**.",
+  "The intermediate takes a **proton** to give the product: HCN gives a **cyanohydrin**.",
+  "**Aldehydes react faster than ketones**: less crowding, and a more positive carbon."
+ ],
+ "sections": [
+  {
+   "h": "Why aldehydes react faster",
+   "blocks": [
+    {
+     "table": {
+      "head": [
+       "Reason",
+       "Aldehyde",
+       "Ketone"
+      ],
+      "rows": [
+       [
+        "Steric",
+        "One alkyl group and a small H: easy to reach",
+        "Two alkyl groups: crowded"
+       ],
+       [
+        "Electronic",
+        "One electron-releasing group: carbon more positive",
+        "Two electron-releasing groups: carbon less positive"
+       ]
+      ]
+     }
+    }
+   ]
+  }
+ ],
+ "quiz": [
+  {
+   "q": "The nucleophile attacks the:",
+   "options": [
+    "oxygen",
+    "carbonyl carbon",
+    "hydrogen",
+    "alkyl group"
+   ],
+   "answer": 1,
+   "explain": "The carbon carries the delta plus."
+  },
+  {
+   "q": "During addition the carbon's hybridisation changes from:",
+   "options": [
+    "sp to sp²",
+    "sp² to sp³",
+    "sp³ to sp²",
+    "sp³ to sp"
+   ],
+   "answer": 1,
+   "explain": "Flat to tetrahedral."
+  },
+  {
+   "q": "Which is more reactive towards HCN?",
+   "options": [
+    "Propanone",
+    "Ethanal",
+    "They are equal",
+    "Neither reacts"
+   ],
+   "answer": 1,
+   "explain": "An aldehyde is less hindered and more electrophilic."
+  }
+ ],
+ "simulation": {
+  "decision": "NOT_REQUIRED",
+  "reason": "A fixed sequence of mechanism steps: a student would only step through what the video already shows, and reactivity differences have no honest number to vary at this level."
+ },
+ "related": []
+}

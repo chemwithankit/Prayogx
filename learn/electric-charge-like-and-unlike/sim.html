@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="sim-id" content="LEARN-C12-PHY-ELECTRIC-CHARGE-SIM">
+<title>Charge lab · PrayogX Learn simulation</title>
+<style>
+:root{--bg:#f4f4f1;--card:#fcfcfb;--line:#d9d9d4;--ink:#0b0b0b;--mut:#52514e;--acc:#2a78d6;--b:#6f4fd6;--good:#00743f;--neg:#c62828;--empty:#ececea;--pos:#d9542b}
+@media (prefers-color-scheme:dark){:root{--bg:#111110;--card:#1a1a19;--line:#34342f;--ink:#fff;--mut:#c3c2b7;--acc:#3987e5;--b:#a48bff;--good:#3fae7a;--neg:#ef5350;--empty:#2a2a28;--pos:#f0824f}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+.wrap{max-width:980px;margin:0 auto;padding:12px}
+h1{font-size:17px;margin:2px 0 8px}
+h2{font-size:15px;margin:0 0 6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin-top:10px}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+button{font:inherit;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:9px;padding:6px 10px;cursor:pointer;min-height:40px}
+button[aria-pressed="true"]{background:var(--acc);border-color:var(--acc);color:#fff;font-weight:650}
+.small{font-size:13px;color:var(--mut)}
+.verdict{margin-top:8px;padding:8px 10px;border-radius:10px;border:1px solid var(--line);background:var(--bg);min-height:2.6em}
+svg{display:block;width:100%;height:auto}
+.bodies{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px}
+.body{border:1px solid var(--line);border-radius:10px;padding:8px;text-align:center;background:var(--bg)}
+.q{font-size:22px;font-weight:800}
+.pos{color:var(--pos)}.neg{color:var(--acc)}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>Charge lab: rub, then test</h1>
+<div class="card">
+<h2>1. Rub a pair</h2>
+<div class="row"><button type="button" id="p-gs">Glass + silk</button><button type="button" id="p-pf">Plastic + fur</button><button type="button" id="rub">Rub once</button><button type="button" id="reset">Reset</button></div>
+<div class="bodies"><div class="body"><div id="n0"></div><div class="q" id="q0"></div></div><div class="body"><div id="n1"></div><div class="q" id="q1"></div></div></div>
+<div class="verdict" id="v1" aria-live="polite"></div>
+</div>
+<div class="card">
+<h2>2. Bring two rubbed objects together</h2>
+<div class="row" id="pickA"></div>
+<div class="row" id="pickB" style="margin-top:6px"></div>
+<svg id="sv" viewBox="0 0 640 230" role="img" aria-label="Two hanging charged balls"></svg>
+<div class="verdict" id="v2" aria-live="polite"></div>
+<p class="small" style="margin:8px 0 0">Each rub moves 3 electrons here, to keep the numbers easy to follow. Real objects move vastly more. Which body loses electrons depends on the pair: these two pairs are the NCERT examples.</p>
+</div>
+</div>
+<script>
+(function () {
+  "use strict";
+  // the loser of electrons is listed first in each pair
+  var PAIRS = { gs: { a: "glass", b: "silk" }, pf: { a: "fur", b: "plastic" } };
+  var NAMES = ["glass", "silk", "plastic", "fur"];
+  var PER = 3;
+  var S = { pair: "gs", q: { glass: 0, silk: 0, plastic: 0, fur: 0 }, A: "glass", B: "silk" };
+  function $(id) { return document.getElementById(id); }
+  function sgn(n) { return n > 0 ? "+" + n : n < 0 ? "−" + (-n) : "0"; }
+  function cap(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
+  function force() {
+    var a = S.q[S.A], b = S.q[S.B];
+    if (S.A === S.B) { return "same"; }
+    if (a === 0 || b === 0) { return "none"; }
+    return a * b > 0 ? "repel" : "attract";
+  }
+  function ball(x, y, q, name) {
+    var c = q > 0 ? "var(--pos)" : q < 0 ? "var(--acc)" : "var(--mut)";
+    return '<line x1="' + (x < 320 ? 250 : 390) + '" y1="10" x2="' + x + '" y2="' + y + '" stroke="var(--ink)" stroke-width="2"/>' +
+      '<circle cx="' + x + '" cy="' + y + '" r="34" fill="' + c + '"/><text x="' + x + '" y="' + (y + 7) + '" text-anchor="middle" font-size="22" font-weight="800" fill="#fff">' + sgn(q) + '</text>' +
+      '<text x="' + x + '" y="' + (y + 56) + '" text-anchor="middle" font-size="16" fill="var(--ink)">' + name + '</text>';
+  }
+  function render() {
+    var p = PAIRS[S.pair], f = force(), off = f === "repel" ? 70 : f === "attract" ? -40 : 0, i;
+    $("p-gs").setAttribute("aria-pressed", S.pair === "gs" ? "true" : "false");
+    $("p-pf").setAttribute("aria-pressed", S.pair === "pf" ? "true" : "false");
+    $("n0").textContent = cap(p.a); $("n1").textContent = cap(p.b);
+    $("q0").textContent = sgn(S.q[p.a]); $("q1").textContent = sgn(S.q[p.b]);
+    $("q0").className = "q pos"; $("q1").className = "q neg";
+    $("v1").innerHTML = S.q[p.a] === 0 ? "Both start neutral. Press <b>Rub once</b>." : "<b>" + cap(p.a) + " lost electrons, " + p.b + " gained them.</b> Total of the pair: " + sgn(S.q[p.a] + S.q[p.b]) + ". Charge moved; none was created.";
+    for (i = 0; i < NAMES.length; i++) {
+      $("a-" + NAMES[i]).setAttribute("aria-pressed", S.A === NAMES[i] ? "true" : "false");
+      $("b-" + NAMES[i]).setAttribute("aria-pressed", S.B === NAMES[i] ? "true" : "false");
+    }
+    $("sv").innerHTML = '<rect x="150" y="4" width="340" height="8" rx="4" fill="var(--mut)"/>' + ball(250 - off, 130, S.q[S.A], cap(S.A)) + ball(390 + off, 130, S.q[S.B], cap(S.B));
+    $("v2").innerHTML = f === "same" ? "Pick two different objects." : f === "none" ? "One of them is neutral: rub it first." : f === "repel" ? "<b>Like charges repel.</b> Both are " + (S.q[S.A] > 0 ? "positive" : "negative") + "." : "<b>Unlike charges attract.</b> One is positive, the other negative.";
+  }
+  (function build() {
+    var i, b;
+    function mk(pre, row, n, key) {
+      b = document.createElement("button"); b.type = "button"; b.id = pre + "-" + n; b.textContent = cap(n);
+      b.onclick = function () { S[key] = n; render(); };
+      row.appendChild(b);
+    }
+    for (i = 0; i < NAMES.length; i++) { mk("a", $("pickA"), NAMES[i], "A"); mk("b", $("pickB"), NAMES[i], "B"); }
+    $("p-gs").onclick = function () { PX.setPair("gs"); };
+    $("p-pf").onclick = function () { PX.setPair("pf"); };
+    $("rub").onclick = function () { PX.rub(); };
+    $("reset").onclick = function () { PX.reset(); };
+  }());
+  window.PX = {
+    setPair: function (p) { S.pair = p; render(); },
+    rub: function () { var p = PAIRS[S.pair]; S.q[p.a] += PER; S.q[p.b] -= PER; render(); },
+    pick: function (a, b) { S.A = a; S.B = b; render(); },
+    reset: function () { S.pair = "gs"; S.q = { glass: 0, silk: 0, plastic: 0, fur: 0 }; S.A = "glass"; S.B = "silk"; render(); },
+    state: function () { return { pair: S.pair, q: { glass: S.q.glass, silk: S.q.silk, plastic: S.q.plastic, fur: S.q.fur }, force: force() }; }
+  };
+  render();
+}());
+</script>
+</body>
+</html>
