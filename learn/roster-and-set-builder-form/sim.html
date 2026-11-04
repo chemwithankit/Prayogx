@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="sim-id" content="LEARN-C11-MAT-ROSTER-SET-BUILDER-SIM">
+<title>Set machine · PrayogX Learn simulation</title>
+<style>
+:root{--bg:#f4f4f1;--card:#fcfcfb;--line:#d9d9d4;--ink:#0b0b0b;--mut:#52514e;--acc:#2a78d6;--b:#6f4fd6;--good:#00743f;--neg:#c62828;--empty:#ececea}
+@media (prefers-color-scheme:dark){:root{--bg:#111110;--card:#1a1a19;--line:#34342f;--ink:#fff;--mut:#c3c2b7;--acc:#3987e5;--b:#a48bff;--good:#3fae7a;--neg:#ef5350;--empty:#2a2a28}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+.wrap{max-width:980px;margin:0 auto;padding:12px}
+h1{font-size:17px;margin:2px 0 8px}
+h2{font-size:15px;margin:0 0 6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin-top:10px}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+button{font:inherit;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:9px;padding:6px 10px;cursor:pointer;min-height:40px}
+button[aria-pressed="true"]{background:var(--acc);border-color:var(--acc);color:#fff;font-weight:650}
+.small{font-size:13px;color:var(--mut)}
+input[type=range]{flex:1 1 180px;min-width:0;height:40px;accent-color:var(--acc)}
+input[type=text]{font:inherit;text-transform:uppercase;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:9px;padding:6px 10px;min-height:40px;width:190px;max-width:100%}
+.grid{display:grid;grid-template-columns:repeat(10,1fr);gap:3px;margin-top:10px}
+.cell{text-align:center;font-size:13px;line-height:26px;border-radius:6px;background:var(--empty);color:var(--mut);transition:background .15s}
+.cell.in{background:var(--acc);color:#fff;font-weight:700}
+.cell.out{opacity:.35}
+.form{margin-top:8px;padding:8px 10px;border-radius:10px;border:1px solid var(--line);background:var(--bg);overflow-wrap:anywhere}
+.form b{display:block;font-size:13px;color:var(--mut);font-weight:650}
+#builder{color:var(--b);font-weight:700}
+#roster{color:var(--acc);font-weight:700}
+.verdict{margin-top:8px;padding:8px 10px;border-radius:10px;border:1px solid var(--line);background:var(--bg);min-height:2.6em}
+.tiles{display:flex;flex-wrap:wrap;gap:5px;margin-top:8px}
+.tile{width:34px;height:38px;line-height:38px;text-align:center;border-radius:7px;background:var(--acc);color:#fff;font-weight:700}
+.tile.rep{background:var(--empty);color:var(--neg);text-decoration:line-through}
+@media (prefers-reduced-motion:reduce){.cell{transition:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>Set machine: one rule, two ways to write it</h1>
+
+<div class="card">
+<h2>1. Choose the common property</h2>
+<div class="row" id="rules"></div>
+<div class="row" style="margin-top:6px">
+  <label class="small" for="lim">x ≤ <b id="limv">20</b></label>
+  <input type="range" id="lim" min="5" max="100" step="1" value="20" aria-label="Upper limit of x">
+  <button type="button" id="inf" aria-pressed="false">No upper limit</button>
+</div>
+<div class="grid" id="grid" aria-hidden="true"></div>
+<div class="form"><b>Set-builder form</b><span id="builder"></span></div>
+<div class="form"><b>Roster form <span id="count"></span></b><span id="roster"></span></div>
+<div class="row" style="margin-top:8px"><button type="button" id="shuffle">Shuffle the roster</button><button type="button" id="sort">Put it back in order</button></div>
+<div class="verdict" id="verdict" aria-live="polite"></div>
+</div>
+
+<div class="card">
+<h2>2. Turn a word into a set</h2>
+<div class="row">
+  <label class="small" for="word">Word</label>
+  <input type="text" id="word" maxlength="14" value="SCHOOL" autocomplete="off" spellcheck="false">
+  <button type="button" data-word="SCHOOL">SCHOOL</button><button type="button" data-word="BANANA">BANANA</button><button type="button" data-word="MATHEMATICS">MATHEMATICS</button>
+</div>
+<div class="tiles" id="tiles" aria-hidden="true"></div>
+<div class="form"><b>Roster form</b><span id="wroster"></span></div>
+<div class="verdict" id="wverdict" aria-live="polite"></div>
+</div>
+</div>
+<script>
+(function () {
+  "use strict";
+  function isPrime(n) { if (n < 2) { return false; } for (var i = 2; i * i <= n; i++) { if (n % i === 0) { return false; } } return true; }
+  function isSquare(n) { var r = Math.round(Math.sqrt(n)); return r * r === n; }
+  var RULES = {
+    even: { label: "Even", text: "x is an even natural number", test: function (n) { return n % 2 === 0; } },
+    odd: { label: "Odd", text: "x is an odd natural number", test: function (n) { return n % 2 === 1; } },
+    prime: { label: "Prime", text: "x is a prime number", test: isPrime },
+    m3: { label: "Multiple of 3", text: "x is a natural number and a multiple of 3", test: function (n) { return n % 3 === 0; } },
+    m5: { label: "Multiple of 5", text: "x is a natural number and a multiple of 5", test: function (n) { return n % 5 === 0; } },
+    square: { label: "Perfect square", text: "x is a perfect square natural number", test: isSquare }
+  };
+  var ORDER = ["even", "odd", "prime", "m3", "m5", "square"];
+  var S = { rule: "even", limit: 20, infinite: false, shuffled: false, word: "SCHOOL" };
+  var shown = [];
+  function $(id) { return document.getElementById(id); }
+
+  function members(max) {
+    var out = [], n;
+    for (n = 1; n <= max; n++) { if (RULES[S.rule].test(n)) { out.push(n); } }
+    return out;
+  }
+  function mix(a) {
+    // a fixed, visible reorder: the list reversed, then every pair swapped, so it never equals the sorted list
+    var r = a.slice().reverse(), i, t;
+    for (i = 0; i + 1 < r.length; i += 2) { t = r[i]; r[i] = r[i + 1]; r[i + 1] = t; }
+    return r;
+  }
+  function render() {
+    var rule = RULES[S.rule], els, i, cells = $("grid").children, list, n;
+    els = members(S.infinite ? 100 : S.limit);
+    for (i = 0; i < 100; i++) {
+      n = i + 1;
+      cells[i].className = "cell" + (rule.test(n) && (S.infinite || n <= S.limit) ? " in" : "") + (!S.infinite && n > S.limit ? " out" : "");
+    }
+    $("limv").textContent = S.infinite ? "∞" : String(S.limit);
+    $("lim").disabled = S.infinite;
+    $("inf").setAttribute("aria-pressed", S.infinite ? "true" : "false");
+    for (i = 0; i < ORDER.length; i++) { $("r-" + ORDER[i]).setAttribute("aria-pressed", ORDER[i] === S.rule ? "true" : "false"); }
+    $("builder").textContent = "{x : " + rule.text + (S.infinite ? "" : ", x ≤ " + S.limit) + "}";
+    if (S.infinite) {
+      shown = els.slice(0, 5);
+      list = "{" + shown.join(", ") + ", ...}";
+      $("count").textContent = "(infinite)";
+      $("verdict").innerHTML = "<b>Infinite set.</b> The roster can never be finished, so the dots only hint at the pattern. The property describes it exactly: use set-builder form.";
+    } else {
+      shown = S.shuffled ? mix(els) : els;
+      list = "{" + shown.join(", ") + "}";
+      $("count").textContent = "(" + els.length + (els.length === 1 ? " element)" : " elements)");
+      if (S.shuffled) {
+        $("verdict").innerHTML = "<b>Same set.</b> The order changed, the elements did not: order does not matter in a set.";
+      } else if (els.length <= 10) {
+        $("verdict").innerHTML = "<b>Small set: roster form is easy.</b> Only " + els.length + " to write.";
+      } else {
+        $("verdict").innerHTML = "<b>Big set: set-builder form is shorter.</b> The roster needs all " + els.length + " elements; the rule fits in one line.";
+      }
+    }
+    $("roster").textContent = list;
+    $("shuffle").disabled = S.infinite;
+    $("sort").disabled = S.infinite;
+    renderWord();
+  }
+  function wordState() {
+    var w = S.word.toUpperCase().replace(/[^A-Z]/g, ""), seen = {}, letters = [], tiles = [], i, c;
+    for (i = 0; i < w.length; i++) {
+      c = w.charAt(i);
+      tiles.push({ c: c, rep: !!seen[c] });
+      if (!seen[c]) { seen[c] = true; letters.push(c); }
+    }
+    return { word: w, letters: letters, tiles: tiles, repeats: w.length - letters.length };
+  }
+  function renderWord() {
+    var ws = wordState(), box = $("tiles"), i, d;
+    while (box.firstChild) { box.removeChild(box.firstChild); }
+    for (i = 0; i < ws.tiles.length; i++) {
+      d = document.createElement("div");
+      d.className = "tile" + (ws.tiles[i].rep ? " rep" : "");
+      d.textContent = ws.tiles[i].c;
+      box.appendChild(d);
+    }
+    $("wroster").textContent = "{" + ws.letters.join(", ") + "}";
+    if (!ws.word) {
+      $("wverdict").textContent = "Type a word using the letters A to Z.";
+    } else if (ws.repeats) {
+      $("wverdict").innerHTML = "<b>" + ws.word.length + " letters in the word, " + ws.letters.length + " in the set.</b> " + ws.repeats + (ws.repeats === 1 ? " repeat is" : " repeats are") + " dropped: an element is written only once.";
+    } else {
+      $("wverdict").innerHTML = "<b>No repeats:</b> all " + ws.letters.length + " letters stay in the set.";
+    }
+  }
+
+  (function build() {
+    var i, b, g = $("grid"), d, btns;
+    for (i = 0; i < ORDER.length; i++) {
+      b = document.createElement("button");
+      b.type = "button"; b.id = "r-" + ORDER[i]; b.textContent = RULES[ORDER[i]].label;
+      b.setAttribute("data-rule", ORDER[i]);
+      b.onclick = function () { PX.setRule(this.getAttribute("data-rule")); };
+      $("rules").appendChild(b);
+    }
+    for (i = 1; i <= 100; i++) { d = document.createElement("div"); d.textContent = String(i); g.appendChild(d); }
+    $("lim").oninput = function () { PX.setLimit(parseInt(this.value, 10)); };
+    $("inf").onclick = function () { PX.setInfinite(!S.infinite); };
+    $("shuffle").onclick = function () { PX.shuffle(true); };
+    $("sort").onclick = function () { PX.shuffle(false); };
+    $("word").oninput = function () { S.word = this.value; renderWord(); };
+    btns = document.querySelectorAll("[data-word]");
+    for (i = 0; i < btns.length; i++) { btns[i].onclick = function () { PX.setWord(this.getAttribute("data-word")); }; }
+  }());
+
+  window.PX = {
+    setRule: function (r) { S.rule = r; S.shuffled = false; render(); },
+    setLimit: function (n) { S.limit = n; S.shuffled = false; $("lim").value = String(n); render(); },
+    setInfinite: function (v) { S.infinite = !!v; S.shuffled = false; render(); },
+    shuffle: function (v) { S.shuffled = !!v; render(); },
+    setWord: function (w) { S.word = w; $("word").value = w; renderWord(); },
+    reset: function () { S.rule = "even"; S.limit = 20; S.infinite = false; S.shuffled = false; S.word = "SCHOOL"; $("lim").value = "20"; $("word").value = "SCHOOL"; render(); },
+    state: function () {
+      var ws = wordState();
+      return { rule: S.rule, limit: S.limit, infinite: S.infinite, shuffled: S.shuffled, elements: members(S.infinite ? 100 : S.limit), shown: shown.slice(),
+        roster: $("roster").textContent, builder: $("builder").textContent, word: ws.word, letters: ws.letters, repeats: ws.repeats };
+    }
+  };
+  render();
+}());
+</script>
+</body>
+</html>

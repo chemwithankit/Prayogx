@@ -97,8 +97,19 @@
   }
  ],
  "simulation": {
-  "decision": "NOT_REQUIRED",
-  "reason": "A notation topic; no experiment to simulate."
+  "decision": "REQUIRED",
+  "reason": "Changing the rule and the upper limit and watching the roster grow or stop while the set-builder line stays short lets students discover for themselves when each form wins; shuffling and typing their own word tests the order and no-repeat rules, which a fixed video example cannot offer.",
+  "status": "pass",
+  "path": "sim.html",
+  "objective": "Pick a rule and see the same set in roster and set-builder form, then test the order and no-repeat rules.",
+  "instructions": [
+   "Choose a property: even, odd, prime, multiple or perfect square.",
+   "Move the slider to change the upper limit and watch the roster grow.",
+   "Press No upper limit to see why infinite sets need set-builder form.",
+   "Press Shuffle to check that order does not matter.",
+   "Type any word and see which letters stay in the set."
+  ],
+  "qa": "tests/learn_sims.js 306/306 (2026-11-04)"
  },
  "related": [
   "sets-introduction"

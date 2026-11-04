@@ -24,6 +24,8 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
                                         grows like √(D t)
      learn/laws-of-reflection/sim.html  r = i from the normal, the surface angle, the target
      learn/regular-vs-diffused-reflection/sim.html  spread grows with roughness, i = r per facet
+     learn/roster-and-set-builder-form/sim.html  rule → elements, roster and set-builder text,
+                                        order, infinite sets, letters of a word without repeats
    --------------------------------------------------------------------------- */
 
 let n = 0, bad = 0;
@@ -91,6 +93,32 @@ const gcd = (a, b) => { a = Math.abs(a); b = Math.abs(b); while (b) [a, b] = [b,
       ok(`fractions ${tag}: verdict names the bigger fraction`, verdict.includes('−7/9 > −4/5'), verdict);
       const ov2 = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
       ok(`fractions ${tag}: no horizontal overflow`, ov2 <= 0, ov2);
+
+      // ---- roster and set-builder form: the set machine, against an independent filter
+      await page.goto(base + 'roster-and-set-builder-form/sim.html', { waitUntil: 'load' });
+      const primeQ = v => { if (v < 2) return false; for (let k = 2; k < v; k++) if (v % k === 0) return false; return true; };
+      const setRules = { even: v => v % 2 === 0, odd: v => v % 2 !== 0, prime: primeQ, m3: v => v % 3 === 0, m5: v => v % 5 === 0, square: v => Number.isInteger(Math.sqrt(v)) };
+      for (const [r, L] of [['even', 100], ['even', 20], ['odd', 15], ['prime', 30], ['prime', 100], ['m3', 50], ['m5', 7], ['square', 100], ['square', 5]]) {
+        const s = await page.evaluate(v => { PX.reset(); PX.setRule(v[0]); PX.setLimit(v[1]); return PX.state(); }, [r, L]);
+        const want = Array.from({ length: L }, (_, k) => k + 1).filter(setRules[r]);
+        ok(`sets ${r} x ≤ ${L} ${tag}: ${want.length} elements, roster and builder agree`, JSON.stringify(s.elements) === JSON.stringify(want) && s.roster === '{' + want.join(', ') + '}' && s.builder.endsWith(', x ≤ ' + L + '}'),
+          `${s.elements.length} ${s.builder}`);
+      }
+      const even100 = await page.evaluate(() => { PX.reset(); PX.setRule('even'); PX.setLimit(100); return PX.state().elements.length; });
+      ok(`sets ${tag}: even numbers up to 100 are 50 (the reel's hook)`, even100 === 50, even100);
+      const sh = await page.evaluate(() => { PX.reset(); PX.shuffle(true); return PX.state(); });
+      ok(`sets shuffle ${tag}: order changes, same elements`, JSON.stringify(sh.shown) !== JSON.stringify(sh.elements) && JSON.stringify([...sh.shown].sort((p, q) => p - q)) === JSON.stringify(sh.elements), sh.roster);
+      ok(`sets shuffle ${tag}: verdict says same set`, (await page.$eval('#verdict', e => e.textContent)).includes('Same set'));
+      const inf = await page.evaluate(() => { PX.reset(); PX.setRule('prime'); PX.setInfinite(true); return PX.state(); });
+      ok(`sets infinite ${tag}: dots and no upper limit`, inf.roster === '{2, 3, 5, 7, 11, ...}' && !inf.builder.includes('≤'), inf.roster);
+      for (const w of ['SCHOOL', 'BANANA', 'MATHEMATICS', 'PRAYOGX']) {
+        const s = await page.evaluate(v => { PX.setWord(v); return PX.state(); }, w);
+        const want = [...new Set(w)];
+        ok(`sets word ${w} ${tag}: ${want.length} letters, ${w.length - want.length} repeats dropped`, JSON.stringify(s.letters) === JSON.stringify(want) && s.repeats === w.length - want.length, s.letters.join(''));
+      }
+      await page.evaluate(() => { PX.reset(); PX.setRule('even'); PX.setLimit(100); });
+      const ovS = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
+      ok(`sets ${tag}: no horizontal overflow with 50 elements`, ovS <= 0, ovS);
 
       // ---- rest and motion: you start at −20 m and ride 4 m/s for 10 s; friend sits 1.5 m ahead
       await page.goto(base + 'rest-and-motion/sim.html', { waitUntil: 'load' });
