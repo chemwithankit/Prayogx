@@ -1,0 +1,106 @@
+{
+ "id": "LEARN-C11-MAT-ROSTER-SET-BUILDER",
+ "slug": "roster-and-set-builder-form",
+ "status": "ready",
+ "class": 11,
+ "subject": "Mathematics",
+ "chapter": "Sets",
+ "topic": "What is a set, and two ways to write one",
+ "title": "Roster Form and Set-builder Form",
+ "series": 414,
+ "studioJob": "sets-roster-builder",
+ "reelId": "STUDIO-SETS-ROSTER-BUILDER",
+ "summary": "Two ways to write one set: Roster form lists the elements, Set-builder form states their common property. When to use each.",
+ "video": {
+  "youtubeId": "IsNM60GmDHg"
+ },
+ "notes": {
+  "pdf": "notes.pdf",
+  "title": "01 – Roster Form and Set-builder Form",
+  "driveDoc": "1UmiSgp4LxIvmuam_I_zAsM084P417z4pcb9IF22rSPI"
+ },
+ "thumb": "thumb.jpg",
+ "tags": [
+  "sets",
+  "roster form",
+  "set-builder form",
+  "set notation"
+ ],
+ "keyPoints": [
+  "**Roster form:** list all elements in curly brackets, separated by commas: {a, e, i, o, u}.",
+  "In roster form **order does not matter** and **elements are not repeated**: SCHOOL gives {S, C, H, O, L}.",
+  "**Set-builder form:** state the common property: {x : x is an even natural number, x ≤ 100}.",
+  "The colon means **such that**.",
+  "Use roster for small sets, set-builder for big or infinite sets."
+ ],
+ "sections": [
+  {
+   "h": "Which form when?",
+   "blocks": [
+    {
+     "table": {
+      "head": [
+       "Form",
+       "Best for",
+       "Example"
+      ],
+      "rows": [
+       [
+        "Roster",
+        "Small sets",
+        "{a, e, i, o, u}"
+       ],
+       [
+        "Set-builder",
+        "Big or infinite sets",
+        "{x : x is a natural number}"
+       ]
+      ]
+     }
+    }
+   ]
+  }
+ ],
+ "quiz": [
+  {
+   "q": "How many elements are in the set of letters of SCHOOL?",
+   "options": [
+    "4",
+    "5",
+    "6",
+    "7"
+   ],
+   "answer": 1,
+   "explain": "{S, C, H, O, L}: the repeated O is written once."
+  },
+  {
+   "q": "In {x : x < 5}, the colon means:",
+   "options": [
+    "divided by",
+    "such that",
+    "ratio",
+    "and"
+   ],
+   "answer": 1,
+   "explain": "Read: the set of all x such that x < 5."
+  },
+  {
+   "q": "Which form suits the set of all natural numbers?",
+   "options": [
+    "Roster, listing all",
+    "Set-builder",
+    "Neither",
+    "Venn only"
+   ],
+   "answer": 1,
+   "explain": "An infinite set is described by a property."
+  }
+ ],
+ "simulation": {
+  "decision": "NOT_REQUIRED",
+  "reason": "A notation topic; no experiment to simulate."
+ },
+ "related": [
+  "sets-introduction"
+ ]
+}

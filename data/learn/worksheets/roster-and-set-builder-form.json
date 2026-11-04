@@ -1,0 +1,156 @@
+{
+ "slug": "roster-and-set-builder-form",
+ "title": "Roster Form and Set-builder Form",
+ "class": 11,
+ "subject": "Mathematics",
+ "chapter": "Sets",
+ "objective": "Two ways to write one set: Roster form lists the elements, Set-builder form states their common property. When to use each.",
+ "fill": [
+  {
+   "q": "In roster form, elements are written inside ____ brackets.",
+   "a": "curly"
+  },
+  {
+   "q": "The letters of SCHOOL form a set of ____ elements.",
+   "a": "5"
+  },
+  {
+   "q": "In set-builder form, the colon means ____.",
+   "a": "such that"
+  },
+  {
+   "q": "A set must be ____ defined.",
+   "a": "well"
+  },
+  {
+   "q": "The roster form of the vowels is {a, e, i, o, ____}.",
+   "a": "u"
+  }
+ ],
+ "tf": [
+  {
+   "q": "{1, 2, 3} = {3, 1, 2}.",
+   "a": true,
+   "explain": "Order does not matter."
+  },
+  {
+   "q": "In roster form an element may be repeated.",
+   "a": false,
+   "explain": "Elements are not repeated."
+  },
+  {
+   "q": "An infinite set is best written in set-builder form.",
+   "a": true,
+   "explain": "A property describes all elements."
+  },
+  {
+   "q": "\"The tall students of a class\" is a set.",
+   "a": false,
+   "explain": "\"Tall\" is not well-defined."
+  }
+ ],
+ "ar": [
+  {
+   "a": "{a, b} and {b, a} are the same set.",
+   "r": "The order of elements in a set does not matter.",
+   "answer": 0,
+   "explain": "R explains A."
+  },
+  {
+   "a": "Set-builder form is used for infinite sets.",
+   "r": "Infinite sets cannot be fully listed.",
+   "answer": 0,
+   "explain": "R explains A."
+  }
+ ],
+ "mcq": [
+  {
+   "q": "The letters of BANANA in roster form are:",
+   "options": [
+    "{B, A, N}",
+    "{B, A, N, A, N, A}",
+    "{B, N}",
+    "{A, N}"
+   ],
+   "answer": 0,
+   "explain": "Each letter is written once."
+  },
+  {
+   "q": "{x : x is a natural number, x < 4} equals:",
+   "options": [
+    "{0, 1, 2, 3}",
+    "{1, 2, 3}",
+    "{1, 2, 3, 4}",
+    "{2, 3}"
+   ],
+   "answer": 1,
+   "explain": "Natural numbers start at 1."
+  },
+  {
+   "q": "{2, 4, 6, 8} in set-builder form is:",
+   "options": [
+    "{x : x is even}",
+    "{x : x = 2n, n ∈ N, n ≤ 4}",
+    "{x : x < 8}",
+    "{x : x = n²}"
+   ],
+   "answer": 1,
+   "explain": "Four even numbers from n = 1 to 4."
+  },
+  {
+   "q": "Which suits roster form best?",
+   "options": [
+    "all natural numbers",
+    "all real numbers",
+    "days of a week",
+    "all fractions"
+   ],
+   "answer": 2,
+   "explain": "A small set."
+  }
+ ],
+ "num": [
+  {
+   "q": "How many elements has {x : x is a prime number, x < 10}?",
+   "steps": [
+    "{2, 3, 5, 7}"
+   ],
+   "answer": "4"
+  },
+  {
+   "q": "How many elements has the set of letters of MATHEMATICS?",
+   "steps": [
+    "{M, A, T, H, E, I, C, S}"
+   ],
+   "answer": "8"
+  }
+ ],
+ "short": [
+  {
+   "q": "Write {x : x is an integer, −3 < x < 2} in roster form.",
+   "lines": 5,
+   "solution": "The integers strictly between −3 and 2 are {−2, −1, 0, 1}."
+  }
+ ],
+ "match": {
+  "left": [
+   "{a, e, i, o, u}",
+   "{x : x is a vowel}",
+   ":",
+   "{ }"
+  ],
+  "right": [
+   "such that",
+   "set-builder form",
+   "roster form",
+   "curly brackets"
+  ],
+  "answer": [
+   2,
+   1,
+   0,
+   3
+  ],
+  "explain": "Each item matches its meaning."
+ }
+}

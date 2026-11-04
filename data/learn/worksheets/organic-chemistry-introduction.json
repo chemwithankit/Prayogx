@@ -1,0 +1,156 @@
+{
+ "slug": "organic-chemistry-introduction",
+ "title": "Organic Chemistry: Chapter Introduction",
+ "class": 11,
+ "subject": "Chemistry",
+ "chapter": "Organic Chemistry – Some Basic Principles and Techniques",
+ "objective": "Paracetamol, plastic, cotton and DNA share one element: carbon. Why carbon forms millions of compounds, and what this chapter teaches.",
+ "fill": [
+  {
+   "q": "Organic chemistry is the chemistry of ____ compounds.",
+   "a": "carbon"
+  },
+  {
+   "q": "A carbon atom forms ____ covalent bonds.",
+   "a": "4"
+  },
+  {
+   "q": "Carbon bonding to carbon to form chains is called ____.",
+   "a": "catenation"
+  },
+  {
+   "q": "The shape of methane is ____.",
+   "a": "tetrahedral"
+  },
+  {
+   "q": "Cotton is mainly the carbon compound ____.",
+   "a": "cellulose"
+  }
+ ],
+ "tf": [
+  {
+   "q": "DNA is a carbon compound.",
+   "a": true,
+   "explain": "It is a biomolecule built on carbon skeletons."
+  },
+  {
+   "q": "Carbon atoms can form rings.",
+   "a": true,
+   "explain": "Catenation gives chains and rings."
+  },
+  {
+   "q": "Carbon usually forms 2 bonds.",
+   "a": false,
+   "explain": "Carbon is tetravalent: 4 bonds."
+  },
+  {
+   "q": "There are only a few thousand carbon compounds.",
+   "a": false,
+   "explain": "There are millions."
+  }
+ ],
+ "ar": [
+  {
+   "a": "Carbon forms millions of compounds.",
+   "r": "Carbon is tetravalent and shows catenation.",
+   "answer": 0,
+   "explain": "R explains A."
+  },
+  {
+   "a": "Organic chemistry is a separate branch of chemistry.",
+   "r": "Carbon compounds are extremely numerous.",
+   "answer": 0,
+   "explain": "R explains A."
+  }
+ ],
+ "mcq": [
+  {
+   "q": "Which is NOT a carbon compound?",
+   "options": [
+    "paracetamol",
+    "polythene",
+    "sodium chloride",
+    "DNA"
+   ],
+   "answer": 2,
+   "explain": "NaCl contains no carbon."
+  },
+  {
+   "q": "The molecular formula of methane is:",
+   "options": [
+    "CH₂",
+    "CH₄",
+    "C₂H₆",
+    "CO₂"
+   ],
+   "answer": 1,
+   "explain": "One carbon with 4 hydrogens."
+  },
+  {
+   "q": "Catenation means:",
+   "options": [
+    "bonding to oxygen",
+    "self-linking of carbon atoms",
+    "loss of electrons",
+    "dissolving"
+   ],
+   "answer": 1,
+   "explain": "C–C bonds form chains and rings."
+  },
+  {
+   "q": "The bond angle in methane is about:",
+   "options": [
+    "90°",
+    "109.5°",
+    "120°",
+    "180°"
+   ],
+   "answer": 1,
+   "explain": "Tetrahedral angle."
+  }
+ ],
+ "num": [
+  {
+   "q": "How many C–H bonds are in propane, C₃H₈?",
+   "steps": [
+    "Each H forms one bond with carbon"
+   ],
+   "answer": "8"
+  },
+  {
+   "q": "How many C–C bonds are in a straight chain of 6 carbons?",
+   "steps": [
+    "n carbons in a chain have n − 1 C–C bonds"
+   ],
+   "answer": "5"
+  }
+ ],
+ "short": [
+  {
+   "q": "Give two reasons why carbon forms so many compounds.",
+   "lines": 5,
+   "solution": "Tetravalency: 4 bonds per atom. Catenation: strong C–C bonds give chains and rings."
+  }
+ ],
+ "match": {
+  "left": [
+   "paracetamol",
+   "polythene",
+   "cellulose",
+   "DNA"
+  ],
+  "right": [
+   "plastic",
+   "biomolecule",
+   "cotton",
+   "medicine"
+  ],
+  "answer": [
+   3,
+   0,
+   2,
+   1
+  ],
+  "explain": "Each carbon compound matches its everyday class."
+ }
+}
