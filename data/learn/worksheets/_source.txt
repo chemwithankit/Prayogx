@@ -1077,6 +1077,54 @@ X Respiration => Releasing energy
 X Transportation => Moving materials
 X Excretion => Removing wastes
 XE Each process matches its role.
+@why-metal-feels-colder-than-wood
+F A material that conducts heat well is called a ____.|conductor
+F A material that conducts heat poorly is called an ____.|insulator
+F Objects kept in the same room reach the same ____.|temperature
+F Our skin senses the rate of ____ flow, not temperature directly.|heat
+F The property that measures how fast a material conducts heat is thermal ____.|conductivity
+T A steel railing at 10 °C is colder than a wooden bench at 10 °C.|F|Both are at the same temperature; steel only feels colder.
+T Wood is a poor conductor of heat.|T|Its thermal conductivity is about 0.1–0.2 W/m·K.
+T On a hot day, metal feels hotter than wood at the same temperature.|T|Metal conducts heat into the skin faster.
+T Copper conducts heat better than glass.|T|About 400 vs 1 W/m·K.
+M Why do cooking pans have wooden handles?|wood is heavy;wood is a poor conductor;wood is cheap;wood melts|2|Heat reaches the hand slowly.
+M A tiled floor feels colder than a carpet because tiles:|are at a lower temperature;conduct heat away faster;absorb cold;are wet|2|Same temperature, faster heat flow.
+M Which conducts heat the fastest?|wood;glass;steel;copper|4|Copper, about 400 W/m·K.
+M Two objects in a room for a long time will be:|at different temperatures;at the same temperature;both at 0 °C;at body temperature|2|Thermal equilibrium.
+A Metal feels colder than wood at the same temperature.|Metal conducts heat away from the skin much faster.|1|R explains A.
+A A wooden spoon stays cool in hot soup.|Wood is a poor conductor of heat.|1|R explains A.
+S Explain why a metal railing feels colder than a wooden bench on a winter morning.|Both are at the air temperature. Skin senses heat loss: metal conducts heat away from the finger quickly so the skin cools; wood conducts slowly and the touched spot warms, so little heat is lost.
+S Why does the same metal feel hotter than wood on a hot afternoon?|Now the objects are hotter than skin; metal conducts heat into the skin much faster than wood, so it feels hotter.
+X Copper => Very good conductor
+X Wood => Insulator
+X Thermometer => Measures temperature
+X Skin => Senses rate of heat flow
+XE Each item matches its description.
+@si-system-seven-base-units
+F The SI has ____ base units.|seven
+F The SI unit of electric current is the ____.|ampere
+F The SI unit of amount of substance is the ____.|mole
+F The SI unit of luminous intensity is the ____.|candela
+F 1 newton = 1 kg m s^____.|-2
+T The kilogram is a base unit.|T|Mass is a base quantity; its unit is the kilogram.
+T The newton is a base unit.|F|It is derived: kg m s⁻².
+T Degree Celsius is the SI base unit of temperature.|F|The base unit is the kelvin.
+T 1 J = 1 N m.|T|Work = force × distance.
+M Which is NOT an SI base unit?|metre;kelvin;newton;candela|3|The newton is derived.
+M The SI unit of power, watt, in base units is:|kg m² s⁻³;kg m s⁻²;kg m² s⁻²;kg s⁻¹|1|W = J/s = kg m² s⁻³.
+M The Mars Climate Orbiter was lost because of:|a meteor;a unit mismatch;a fuel leak;a solar flare|2|Pound-force seconds vs newton seconds.
+M 1 coulomb equals:|1 A s;1 A/s;1 V A;1 J/s|1|Charge = current × time.
+A Every unit in mechanics can be written using kg, m and s.|Mechanical units are derived from mass, length and time.|1|R explains A.
+A The SI is used worldwide in science.|One common system avoids costly unit errors.|1|R explains A.
+N Express the joule in base units.|J = N m = (kg m s⁻²)(m)|kg m² s⁻²
+N Express the pascal (N/m²) in base units.|Pa = N / m² = kg m s⁻² / m²|kg m⁻¹ s⁻²
+S Name the seven SI base quantities with their units and symbols.|Length metre m; mass kilogram kg; time second s; electric current ampere A; temperature kelvin K; amount of substance mole mol; luminous intensity candela cd.
+X metre => length
+X kelvin => temperature
+X mole => amount of substance
+X candela => luminous intensity
+XE Each unit matches its base quantity.
+
 @organic-chemistry-introduction
 F Organic chemistry is the chemistry of ____ compounds.|carbon
 F A carbon atom forms ____ covalent bonds.|4

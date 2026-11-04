@@ -1,0 +1,136 @@
+{
+ "id": "LEARN-SUP-PHY-METAL-FEELS-COLDER",
+ "slug": "why-metal-feels-colder-than-wood",
+ "status": "ready",
+ "class": "Supplementary",
+ "subject": "Physics",
+ "chapter": "Heat in everyday life",
+ "topic": "Why metal feels colder than wood at the same temperature",
+ "title": "Why Metal Feels Colder than Wood",
+ "series": 411,
+ "studioJob": "metal-feels-colder",
+ "reelId": "STUDIO-METAL-FEELS-COLDER",
+ "summary": "A steel railing and a wooden bench at the same 10 °C, yet the steel feels icy. Skin senses how fast heat leaves it, and metal conducts heat hundreds of times faster than wood.",
+ "video": {
+  "youtubeId": "c9YRuKS__XQ"
+ },
+ "notes": {
+  "pdf": "notes.pdf",
+  "title": "02 – Why Metal Feels Colder than Wood",
+  "driveDoc": "1G_R_ob2XvPuJN3f-icKiP_IaYMSieGcd0vEcQ-8Gi8k"
+ },
+ "thumb": "thumb.jpg",
+ "tags": [
+  "thermal conductivity",
+  "heat conduction",
+  "conductor",
+  "insulator",
+  "thermal equilibrium",
+  "touch sensation"
+ ],
+ "keyPoints": [
+  "Objects left together reach the **same temperature** (a thermometer reads both 10 °C).",
+  "Skin does not sense temperature directly; it senses the **rate of heat flow** out of (or into) it.",
+  "Metal is a good **conductor**: it pulls heat from your finger and spreads it away, so the skin cools fast.",
+  "Wood is an **insulator**: heat leaves slowly and the touched spot warms up, so it does not feel cold. On a hot day metal feels hotter for the same reason."
+ ],
+ "sections": [
+  {
+   "h": "Thermal conductivity (approximate, W/m·K)",
+   "blocks": [
+    {
+     "table": {
+      "head": [
+       "Material",
+       "Thermal conductivity"
+      ],
+      "rows": [
+       [
+        "Copper",
+        "≈ 400"
+       ],
+       [
+        "Aluminium",
+        "≈ 205"
+       ],
+       [
+        "Steel",
+        "≈ 15–50"
+       ],
+       [
+        "Glass",
+        "≈ 1"
+       ],
+       [
+        "Wood",
+        "≈ 0.1–0.2"
+       ]
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "h": "Everyday examples",
+   "blocks": [
+    {
+     "list": [
+      "Cooking pans are metal (heat flows in fast); handles are wood or plastic (heat flows slowly).",
+      "A tiled floor feels colder than a carpet in the same room.",
+      "A metal seat in the sun can burn, while a wooden bench beside it is only warm."
+     ]
+    }
+   ]
+  }
+ ],
+ "quiz": [
+  {
+   "q": "A steel rod and a wooden rod in the same room have:",
+   "options": [
+    "different temperatures",
+    "the same temperature",
+    "the steel colder by 10 °C",
+    "the wood colder"
+   ],
+   "answer": 1,
+   "explain": "They reach thermal equilibrium with the room."
+  },
+  {
+   "q": "Metal feels colder because it:",
+   "options": [
+    "is at a lower temperature",
+    "conducts heat away from the skin faster",
+    "absorbs cold",
+    "is heavier"
+   ],
+   "answer": 1,
+   "explain": "Skin senses the rate of heat loss."
+  },
+  {
+   "q": "Which is the best thermal insulator?",
+   "options": [
+    "copper",
+    "aluminium",
+    "steel",
+    "wood"
+   ],
+   "answer": 3,
+   "explain": "Wood conducts heat very slowly."
+  }
+ ],
+ "simulation": {
+  "decision": "REQUIRED",
+  "reason": "Changing the material and the temperature and watching two fingers on two surfaces lets students test the idea themselves: the objects share one temperature, yet heat leaves the skin at different rates, and above skin temperature the feel reverses.",
+  "status": "pass",
+  "path": "sim.html",
+  "objective": "See why two objects at the same temperature feel different, and how the feel reverses above skin temperature.",
+  "instructions": [
+   "Choose a material for each hand.",
+   "Set the temperature of both objects with the slider.",
+   "Press Touch both, or drag the time slider, and watch the contact temperature and heat flow.",
+   "Raise the temperature above 33 °C and see the feel reverse."
+  ],
+  "qa": "tests/learn_sims.js (2026-11-04)"
+ },
+ "related": []
+}

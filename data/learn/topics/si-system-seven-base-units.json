@@ -1,0 +1,173 @@
+{
+ "id": "LEARN-C11-PHY-SI-BASE-UNITS",
+ "slug": "si-system-seven-base-units",
+ "status": "ready",
+ "class": 11,
+ "subject": "Physics",
+ "chapter": "Units and Measurement",
+ "topic": "The SI system: seven base units",
+ "title": "The SI System: Seven Base Units",
+ "series": 412,
+ "studioJob": "si-base-units",
+ "reelId": "STUDIO-SI-BASE-UNITS",
+ "summary": "In 1999 NASA lost the Mars Climate Orbiter because one team used pound-force and another newtons. Why the world uses one system, the SI, built on seven base units.",
+ "video": {
+  "youtubeId": "Sxj-vBchANc"
+ },
+ "notes": {
+  "pdf": "notes.pdf",
+  "title": "01 – The SI System: Seven Base Units",
+  "driveDoc": "1_DoogIqlcK8VC5OeSvW7PwGNSa09C5c_Jd8WpeBDqcE"
+ },
+ "thumb": "thumb.jpg",
+ "tags": [
+  "SI units",
+  "base units",
+  "derived units",
+  "newton",
+  "joule",
+  "Mars Climate Orbiter"
+ ],
+ "keyPoints": [
+  "**Mars Climate Orbiter (1999)** was lost because one team's software gave impulse in pound-force seconds while the navigation team expected newton seconds.",
+  "The **SI** (Système International, 1960) is the one system of units used worldwide in science.",
+  "It has **seven base units**: metre (m), kilogram (kg), second (s), ampere (A), kelvin (K), mole (mol), candela (cd).",
+  "Every other unit is **derived**: newton N = kg m s⁻² (from F = ma), joule J = N m = kg m² s⁻²."
+ ],
+ "sections": [
+  {
+   "h": "The seven base quantities",
+   "blocks": [
+    {
+     "table": {
+      "head": [
+       "Quantity",
+       "Unit",
+       "Symbol"
+      ],
+      "rows": [
+       [
+        "Length",
+        "metre",
+        "m"
+       ],
+       [
+        "Mass",
+        "kilogram",
+        "kg"
+       ],
+       [
+        "Time",
+        "second",
+        "s"
+       ],
+       [
+        "Electric current",
+        "ampere",
+        "A"
+       ],
+       [
+        "Thermodynamic temperature",
+        "kelvin",
+        "K"
+       ],
+       [
+        "Amount of substance",
+        "mole",
+        "mol"
+       ],
+       [
+        "Luminous intensity",
+        "candela",
+        "cd"
+       ]
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "h": "Some derived units",
+   "blocks": [
+    {
+     "table": {
+      "head": [
+       "Quantity",
+       "Unit",
+       "In base units"
+      ],
+      "rows": [
+       [
+        "Force",
+        "newton (N)",
+        "kg m s⁻²"
+       ],
+       [
+        "Work, energy",
+        "joule (J)",
+        "kg m² s⁻²"
+       ],
+       [
+        "Power",
+        "watt (W)",
+        "kg m² s⁻³"
+       ],
+       [
+        "Pressure",
+        "pascal (Pa)",
+        "kg m⁻¹ s⁻²"
+       ],
+       [
+        "Charge",
+        "coulomb (C)",
+        "A s"
+       ]
+      ]
+     }
+    }
+   ]
+  }
+ ],
+ "quiz": [
+  {
+   "q": "How many base units does the SI have?",
+   "options": [
+    "5",
+    "6",
+    "7",
+    "9"
+   ],
+   "answer": 2,
+   "explain": "m, kg, s, A, K, mol, cd."
+  },
+  {
+   "q": "The SI unit of temperature is:",
+   "options": [
+    "degree Celsius",
+    "kelvin",
+    "fahrenheit",
+    "joule"
+   ],
+   "answer": 1,
+   "explain": "Kelvin (K) is the base unit."
+  },
+  {
+   "q": "1 newton equals:",
+   "options": [
+    "kg m s⁻¹",
+    "kg m s⁻²",
+    "kg m² s⁻²",
+    "kg s⁻²"
+   ],
+   "answer": 1,
+   "explain": "F = ma: kg × m s⁻²."
+  }
+ ],
+ "simulation": {
+  "decision": "NOT_REQUIRED",
+  "reason": "Reference knowledge: the seven units and their definitions are facts to learn, and a converter would only be a calculator; nothing a student changes teaches beyond the video."
+ },
+ "related": [
+  "units-and-measurements-introduction"
+ ]
+}

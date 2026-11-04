@@ -1,0 +1,156 @@
+{
+ "slug": "si-system-seven-base-units",
+ "title": "The SI System: Seven Base Units",
+ "class": 11,
+ "subject": "Physics",
+ "chapter": "Units and Measurement",
+ "objective": "In 1999 NASA lost the Mars Climate Orbiter because one team used pound-force and another newtons. Why the world uses one system, the SI, built on seven base units.",
+ "fill": [
+  {
+   "q": "The SI has ____ base units.",
+   "a": "seven"
+  },
+  {
+   "q": "The SI unit of electric current is the ____.",
+   "a": "ampere"
+  },
+  {
+   "q": "The SI unit of amount of substance is the ____.",
+   "a": "mole"
+  },
+  {
+   "q": "The SI unit of luminous intensity is the ____.",
+   "a": "candela"
+  },
+  {
+   "q": "1 newton = 1 kg m s^____.",
+   "a": "-2"
+  }
+ ],
+ "tf": [
+  {
+   "q": "The kilogram is a base unit.",
+   "a": true,
+   "explain": "Mass is a base quantity; its unit is the kilogram."
+  },
+  {
+   "q": "The newton is a base unit.",
+   "a": false,
+   "explain": "It is derived: kg m s⁻²."
+  },
+  {
+   "q": "Degree Celsius is the SI base unit of temperature.",
+   "a": false,
+   "explain": "The base unit is the kelvin."
+  },
+  {
+   "q": "1 J = 1 N m.",
+   "a": true,
+   "explain": "Work = force × distance."
+  }
+ ],
+ "ar": [
+  {
+   "a": "Every unit in mechanics can be written using kg, m and s.",
+   "r": "Mechanical units are derived from mass, length and time.",
+   "answer": 0,
+   "explain": "R explains A."
+  },
+  {
+   "a": "The SI is used worldwide in science.",
+   "r": "One common system avoids costly unit errors.",
+   "answer": 0,
+   "explain": "R explains A."
+  }
+ ],
+ "mcq": [
+  {
+   "q": "Which is NOT an SI base unit?",
+   "options": [
+    "metre",
+    "kelvin",
+    "newton",
+    "candela"
+   ],
+   "answer": 2,
+   "explain": "The newton is derived."
+  },
+  {
+   "q": "The SI unit of power, watt, in base units is:",
+   "options": [
+    "kg m² s⁻³",
+    "kg m s⁻²",
+    "kg m² s⁻²",
+    "kg s⁻¹"
+   ],
+   "answer": 0,
+   "explain": "W = J/s = kg m² s⁻³."
+  },
+  {
+   "q": "The Mars Climate Orbiter was lost because of:",
+   "options": [
+    "a meteor",
+    "a unit mismatch",
+    "a fuel leak",
+    "a solar flare"
+   ],
+   "answer": 1,
+   "explain": "Pound-force seconds vs newton seconds."
+  },
+  {
+   "q": "1 coulomb equals:",
+   "options": [
+    "1 A s",
+    "1 A/s",
+    "1 V A",
+    "1 J/s"
+   ],
+   "answer": 0,
+   "explain": "Charge = current × time."
+  }
+ ],
+ "num": [
+  {
+   "q": "Express the joule in base units.",
+   "steps": [
+    "J = N m = (kg m s⁻²)(m)"
+   ],
+   "answer": "kg m² s⁻²"
+  },
+  {
+   "q": "Express the pascal (N/m²) in base units.",
+   "steps": [
+    "Pa = N / m² = kg m s⁻² / m²"
+   ],
+   "answer": "kg m⁻¹ s⁻²"
+  }
+ ],
+ "short": [
+  {
+   "q": "Name the seven SI base quantities with their units and symbols.",
+   "lines": 5,
+   "solution": "Length metre m; mass kilogram kg; time second s; electric current ampere A; temperature kelvin K; amount of substance mole mol; luminous intensity candela cd."
+  }
+ ],
+ "match": {
+  "left": [
+   "metre",
+   "kelvin",
+   "mole",
+   "candela"
+  ],
+  "right": [
+   "luminous intensity",
+   "temperature",
+   "length",
+   "amount of substance"
+  ],
+  "answer": [
+   2,
+   1,
+   3,
+   0
+  ],
+  "explain": "Each unit matches its base quantity."
+ }
+}

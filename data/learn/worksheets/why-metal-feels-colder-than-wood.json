@@ -1,0 +1,146 @@
+{
+ "slug": "why-metal-feels-colder-than-wood",
+ "title": "Why Metal Feels Colder than Wood",
+ "class": "Supplementary",
+ "subject": "Physics",
+ "chapter": "Heat in everyday life",
+ "objective": "A steel railing and a wooden bench at the same 10 °C, yet the steel feels icy. Skin senses how fast heat leaves it, and metal conducts heat hundreds of times faster than wood.",
+ "fill": [
+  {
+   "q": "A material that conducts heat well is called a ____.",
+   "a": "conductor"
+  },
+  {
+   "q": "A material that conducts heat poorly is called an ____.",
+   "a": "insulator"
+  },
+  {
+   "q": "Objects kept in the same room reach the same ____.",
+   "a": "temperature"
+  },
+  {
+   "q": "Our skin senses the rate of ____ flow, not temperature directly.",
+   "a": "heat"
+  },
+  {
+   "q": "The property that measures how fast a material conducts heat is thermal ____.",
+   "a": "conductivity"
+  }
+ ],
+ "tf": [
+  {
+   "q": "A steel railing at 10 °C is colder than a wooden bench at 10 °C.",
+   "a": false,
+   "explain": "Both are at the same temperature; steel only feels colder."
+  },
+  {
+   "q": "Wood is a poor conductor of heat.",
+   "a": true,
+   "explain": "Its thermal conductivity is about 0.1–0.2 W/m·K."
+  },
+  {
+   "q": "On a hot day, metal feels hotter than wood at the same temperature.",
+   "a": true,
+   "explain": "Metal conducts heat into the skin faster."
+  },
+  {
+   "q": "Copper conducts heat better than glass.",
+   "a": true,
+   "explain": "About 400 vs 1 W/m·K."
+  }
+ ],
+ "ar": [
+  {
+   "a": "Metal feels colder than wood at the same temperature.",
+   "r": "Metal conducts heat away from the skin much faster.",
+   "answer": 0,
+   "explain": "R explains A."
+  },
+  {
+   "a": "A wooden spoon stays cool in hot soup.",
+   "r": "Wood is a poor conductor of heat.",
+   "answer": 0,
+   "explain": "R explains A."
+  }
+ ],
+ "mcq": [
+  {
+   "q": "Why do cooking pans have wooden handles?",
+   "options": [
+    "wood is heavy",
+    "wood is a poor conductor",
+    "wood is cheap",
+    "wood melts"
+   ],
+   "answer": 1,
+   "explain": "Heat reaches the hand slowly."
+  },
+  {
+   "q": "A tiled floor feels colder than a carpet because tiles:",
+   "options": [
+    "are at a lower temperature",
+    "conduct heat away faster",
+    "absorb cold",
+    "are wet"
+   ],
+   "answer": 1,
+   "explain": "Same temperature, faster heat flow."
+  },
+  {
+   "q": "Which conducts heat the fastest?",
+   "options": [
+    "wood",
+    "glass",
+    "steel",
+    "copper"
+   ],
+   "answer": 3,
+   "explain": "Copper, about 400 W/m·K."
+  },
+  {
+   "q": "Two objects in a room for a long time will be:",
+   "options": [
+    "at different temperatures",
+    "at the same temperature",
+    "both at 0 °C",
+    "at body temperature"
+   ],
+   "answer": 1,
+   "explain": "Thermal equilibrium."
+  }
+ ],
+ "num": [],
+ "short": [
+  {
+   "q": "Explain why a metal railing feels colder than a wooden bench on a winter morning.",
+   "lines": 5,
+   "solution": "Both are at the air temperature. Skin senses heat loss: metal conducts heat away from the finger quickly so the skin cools; wood conducts slowly and the touched spot warms, so little heat is lost."
+  },
+  {
+   "q": "Why does the same metal feel hotter than wood on a hot afternoon?",
+   "lines": 5,
+   "solution": "Now the objects are hotter than skin; metal conducts heat into the skin much faster than wood, so it feels hotter."
+  }
+ ],
+ "match": {
+  "left": [
+   "Copper",
+   "Wood",
+   "Thermometer",
+   "Skin"
+  ],
+  "right": [
+   "Measures temperature",
+   "Insulator",
+   "Senses rate of heat flow",
+   "Very good conductor"
+  ],
+  "answer": [
+   3,
+   1,
+   0,
+   2
+  ],
+  "explain": "Each item matches its description."
+ }
+}

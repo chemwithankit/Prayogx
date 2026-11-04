@@ -28,6 +28,8 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
                                         order, infinite sets, letters of a word without repeats
      learn/image-in-a-plane-mirror/sim.html  image distance, gap, walking, the reflection point
                                         against a least-path search (Fermat)
+     learn/why-metal-feels-colder-than-wood/sim.html  contact temperature and heat flow against
+                                        a finite-difference heat solver
      learn/golden-ratio-and-fibonacci/sim.html  golden angle from the Fibonacci limit, packing
                                         by brute force, spokes, spiral counts, ratios
      learn/coordinates-introduction/sim.html  quadrants, axes, ordered pairs, Pythagoras distance
@@ -281,6 +283,33 @@ for (const key of Object.keys(MATERIALS)) FD[key] = fdContact(SKIN, Object.assig
       ok(`mirror ${tag}: dragging the object moves the image with it`, dragged.objectDist > 2 && dragged.imageDist === dragged.objectDist, dragged.objectDist);
       const ovM = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
       ok(`mirror ${tag}: no horizontal overflow`, ovM <= 0, ovM);
+
+      // ---- metal vs wood: contact temperature and heat flow against the finite-difference solver
+      await page.goto(base + 'why-metal-feels-colder-than-wood/sim.html', { waitUntil: 'load' });
+      for (const key of Object.keys(MATERIALS)) {
+        const s = await page.evaluate(k => { PX.reset(); PX.setMaterial(0, k); PX.setTemp(10); PX.setTime(1); return PX.state(); }, key);
+        ok(`heat ${key} ${tag}: contact ${FD[key].contact.toFixed(2)} °C (solver)`, near(s.left.contact, FD[key].contact, 0.15), s.left.contact.toFixed(2));
+        ok(`heat ${key} ${tag}: heat flow after 1 s within 2% of the solver`, Math.abs(s.left.flow / FD[key].flow - 1) < 0.02, `${s.left.flow.toFixed(0)} / ${FD[key].flow.toFixed(0)}`);
+      }
+      const mw = await page.evaluate(() => { PX.reset(); PX.setMaterial(0, 'copper'); PX.setMaterial(1, 'wood'); PX.setTime(1); return PX.state(); });
+      ok(`heat ${tag}: copper feels colder than wood at the same 10 °C`, mw.left.contact < 15 && mw.right.contact > 24 && mw.left.flow > 3 * mw.right.flow, `${mw.left.feel} / ${mw.right.feel}`);
+      ok(`heat ${tag}: the flow ratio is far below the conductivity ratio`, mw.left.flow / mw.right.flow < 5 && mw.left.k / mw.right.k > 2000);
+      ok(`heat ${tag}: both thermometers read the same`, (await page.$eval('#th0', e => e.textContent)) === (await page.$eval('#th1', e => e.textContent)));
+      const eq = await page.evaluate(() => { PX.setTemp(33); return PX.state(); });
+      ok(`heat ${tag}: at skin temperature no heat flows, they feel the same`, near(eq.left.flow, 0, 1e-9) && eq.left.feel === eq.right.feel && (await page.$eval('#verdict', e => e.textContent)).includes('No heat flows'));
+      const hotS = await page.evaluate(() => { PX.setTemp(60); return PX.state(); });
+      ok(`heat ${tag}: on a hot object metal feels hotter`, hotS.left.contact > hotS.right.contact + 10 && hotS.left.flow < 0 && (await page.$eval('#verdict', e => e.textContent)).includes('hotter'), `${hotS.left.contact.toFixed(1)} ${hotS.right.contact.toFixed(1)}`);
+      const seam = await page.evaluate(() => { PX.reset(); PX.setTime(2); return [PX.tempAt(0, -1e-7), PX.tempAt(0, 1e-7), PX.state().left.contact]; });
+      ok(`heat ${tag}: the profile is continuous at the skin`, near(seam[0], seam[2], 0.02) && near(seam[1], seam[2], 0.02), seam.map(v => v.toFixed(3)).join(' '));
+      await page.evaluate(() => PX.reset());
+      await page.click('#play');
+      await sleep(motion === 'reduce' ? 150 : 500);
+      const hp = await page.evaluate(() => PX.state().t);
+      ok(`heat ${tag}: Touch both runs (reduced motion jumps to the end)`, motion === 'reduce' ? hp === 5 : hp > 0, hp);
+      await page.click('#reset');
+      ok(`heat ${tag}: Reset returns to no contact`, (await page.evaluate(() => PX.state().t)) === 0);
+      const ovH = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
+      ok(`heat ${tag}: no horizontal overflow`, ovH <= 0, ovH);
 
       // ---- golden ratio: the angle from the Fibonacci limit, packing by brute force
       await page.goto(base + 'golden-ratio-and-fibonacci/sim.html', { waitUntil: 'load' });

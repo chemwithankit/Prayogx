@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="sim-id" content="LEARN-SUP-PHY-METAL-FEELS-COLDER-SIM">
+<title>Touch test · PrayogX Learn simulation</title>
+<style>
+:root{--bg:#f4f4f1;--card:#fcfcfb;--line:#d9d9d4;--ink:#0b0b0b;--mut:#52514e;--acc:#2a78d6;--b:#6f4fd6;--good:#00743f;--neg:#c62828;--warm:#c4670a;--empty:#ececea}
+@media (prefers-color-scheme:dark){:root{--bg:#111110;--card:#1a1a19;--line:#34342f;--ink:#fff;--mut:#c3c2b7;--acc:#3987e5;--b:#a48bff;--good:#3fae7a;--neg:#ef5350;--warm:#f0a040;--empty:#2a2a28}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+.wrap{max-width:980px;margin:0 auto;padding:12px}
+h1{font-size:17px;margin:2px 0 8px}
+h2{font-size:15px;margin:0 0 6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin-top:10px}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.gap{margin-top:8px}
+button{font:inherit;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:9px;padding:6px 10px;cursor:pointer;min-height:40px;touch-action:manipulation}
+button[aria-pressed="true"]{background:var(--acc);border-color:var(--acc);color:#fff;font-weight:650}
+button:disabled{opacity:.45;cursor:default}
+.small{font-size:13px;color:var(--mut)}
+label.small{min-width:0}
+input[type=range]{flex:1 1 180px;min-width:0;height:40px;accent-color:var(--acc)}
+input[type=number],input[type=text]{font:inherit;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:9px;padding:6px 8px;min-height:40px;width:92px;max-width:100%}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:6px;margin-top:8px}
+.stat{padding:6px 10px;border-radius:10px;border:1px solid var(--line);background:var(--bg);min-width:0;overflow-wrap:anywhere}
+.stat b{display:block;font-size:12px;font-weight:600;color:var(--mut)}
+.stat span{font-size:17px;font-weight:700}
+.verdict{margin-top:8px;padding:8px 10px;border-radius:10px;border:1px solid var(--line);background:var(--bg);min-height:2.6em}
+svg{display:block;width:100%;height:auto;touch-action:none;user-select:none;-webkit-user-select:none}
+svg text{font-family:inherit;fill:var(--ink)}
+.drag{cursor:grab}
+.hands{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media (max-width:640px){.hands{grid-template-columns:1fr}}
+.hand{min-width:0;border:1px solid var(--line);border-radius:10px;padding:8px;background:var(--bg)}
+.hand h3{font-size:14px;margin:0 0 6px}
+.mats{display:flex;flex-wrap:wrap;gap:5px}
+.mats button{padding:4px 8px;font-size:13px}
+canvas{display:block;width:100%;height:150px;border-radius:8px;margin-top:8px}
+.legend{display:flex;justify-content:space-between;font-size:12px;color:var(--mut);margin-top:3px}
+.bar{height:12px;border-radius:6px;background:var(--empty);overflow:hidden;margin-top:6px}
+.bar i{display:block;height:100%;background:var(--warm);width:0}
+.kv{display:flex;justify-content:space-between;gap:8px;font-size:14px;margin-top:4px}
+.kv b{font-weight:700;text-align:right}
+.feel{font-weight:750;margin-top:6px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>Touch test: same temperature, different feel</h1>
+<div class="card">
+<div class="row">
+  <label class="small" for="room">Both objects are at <b id="roomv"></b></label>
+  <input type="range" id="room" min="0" max="60" step="1" aria-label="Temperature of both objects in degrees Celsius">
+</div>
+<div class="row">
+  <label class="small" for="time">Touching for <b id="timev"></b></label>
+  <input type="range" id="time" min="0" max="5" step="0.1" aria-label="Seconds of contact">
+  <button type="button" id="play">Touch both</button>
+  <button type="button" id="reset">Reset</button>
+</div>
+<div class="hands gap">
+  <div class="hand" id="hand0"></div>
+  <div class="hand" id="hand1"></div>
+</div>
+<div class="verdict" id="verdict" aria-live="polite"></div>
+<p class="small" style="margin:8px 0 0">Model: two thick solids pressed together, typical textbook values for each material, skin at 33 °C. Real skin also has blood flow and a rough surface, so treat the numbers as a good guide, not a measurement.</p>
+</div>
+</div>
+<script>
+(function () {
+  "use strict";
+  var SKIN = { k: 0.37, rho: 1100, c: 3400, T: 33 };
+  var MATS = {
+    copper: { name: "Copper", k: 400, rho: 8960, c: 385 },
+    aluminium: { name: "Aluminium", k: 205, rho: 2700, c: 900 },
+    steel: { name: "Steel", k: 45, rho: 7850, c: 490 },
+    glass: { name: "Glass", k: 1, rho: 2500, c: 840 },
+    wood: { name: "Wood", k: 0.15, rho: 600, c: 1700 }
+  };
+  var ORDER = ["copper", "aluminium", "steel", "glass", "wood"], DEPTH = 0.002;
+  var S = { T: 10, t: 0, mats: ["steel", "wood"] }, timer = null;
+  var reduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function $(id) { return document.getElementById(id); }
+  function eff(m) { return Math.sqrt(m.k * m.rho * m.c); }
+  function diff(m) { return m.k / (m.rho * m.c); }
+  function erf(x) { /* Abramowitz and Stegun 7.1.26 */
+    var s = x < 0 ? -1 : 1, a = Math.abs(x), u = 1 / (1 + 0.3275911 * a);
+    return s * (1 - (((((1.061405429 * u - 1.453152027) * u) + 1.421413741) * u - 0.284496736) * u + 0.254829592) * u * Math.exp(-a * a));
+  }
+  /* two thick solids touching: the surface jumps at once to a fixed contact temperature */
+  function touch(key) {
+    var m = MATS[key], es = eff(SKIN), eo = eff(m), b = es * eo / (es + eo), tc = (es * SKIN.T + eo * S.T) / (es + eo), dT = SKIN.T - S.T;
+    return { key: key, name: m.name, k: m.k, effusivity: eo, contact: tc,
+      flow: S.t > 0 ? dT * b / Math.sqrt(Math.PI * S.t) : 0,
+      heat: S.t > 0 ? 2 * dT * b * Math.sqrt(S.t / Math.PI) * 1e-4 : 0,
+      feel: feel(tc) };
+  }
+  function feel(tc) {
+    if (tc < 15) { return "Icy cold"; } if (tc < 24) { return "Cold"; } if (tc < 31) { return "Cool"; }
+    if (tc <= 35) { return "Neither warm nor cold"; } if (tc <= 42) { return "Warm"; } if (tc <= 50) { return "Hot"; }
+    return "Painfully hot";
+  }
+  function tempAt(key, x) { /* x > 0 into the object, x < 0 into the skin */
+    var m = MATS[key], tc = touch(key).contact;
+    if (S.t <= 0) { return x < 0 ? SKIN.T : S.T; }
+    return x < 0 ? tc + (SKIN.T - tc) * erf(-x / (2 * Math.sqrt(diff(SKIN) * S.t))) : tc + (S.T - tc) * erf(x / (2 * Math.sqrt(diff(m) * S.t)));
+  }
+  function ramp(T) { /* blue at 0 °C, pale at skin temperature, red at 60 °C */
+    var a = [42, 120, 214], n = [226, 222, 208], h = [214, 64, 42], u, p, q, i, o = [];
+    if (T <= 33) { u = Math.max(0, T / 33); p = a; q = n; } else { u = Math.min(1, (T - 33) / 27); p = n; q = h; }
+    for (i = 0; i < 3; i++) { o.push(Math.round(p[i] + (q[i] - p[i]) * u)); }
+    return "rgb(" + o.join(",") + ")";
+  }
+  function draw(i) {
+    var c = $("cv" + i), w = c.clientWidth || 300, h = 150, r = window.devicePixelRatio || 1, x = c.getContext("2d"), n = 60, j, depth;
+    if (c.width !== Math.round(w * r)) { c.width = Math.round(w * r); c.height = Math.round(h * r); }
+    x.setTransform(r, 0, 0, r, 0, 0);
+    for (j = 0; j < n; j++) {
+      depth = ((j + 0.5) / n * 2 - 1) * DEPTH;
+      x.fillStyle = ramp(tempAt(S.mats[i], depth));
+      x.fillRect(0, j * h / n, w, h / n + 1);
+    }
+    x.fillStyle = "#0b0b0b"; x.fillRect(0, h / 2 - 1, w, 2);
+    x.font = "600 13px system-ui,sans-serif";
+    x.fillText("Skin", 8, 18); x.fillText(MATS[S.mats[i]].name, 8, h - 9);
+  }
+  function fmt(v, d) { var s = v.toFixed(d); return (parseFloat(s) === 0 ? (0).toFixed(d) : s); }
+  function render() {
+    var a = touch(S.mats[0]), b = touch(S.mats[1]), both = [a, b], top = Math.max(Math.abs(a.flow), Math.abs(b.flow)), i, j, p, ratio, kr, hi, lo, into;
+    $("roomv").textContent = S.T + " °C"; $("room").value = String(S.T);
+    $("timev").textContent = S.t.toFixed(1) + " s"; $("time").value = String(S.t);
+    for (i = 0; i < 2; i++) {
+      p = both[i];
+      for (j = 0; j < ORDER.length; j++) { $("m" + i + ORDER[j]).setAttribute("aria-pressed", ORDER[j] === S.mats[i] ? "true" : "false"); }
+      $("th" + i).textContent = S.T + " °C";
+      $("ct" + i).textContent = S.t > 0 ? fmt(p.contact, 1) + " °C" : "not touching";
+      $("fl" + i).textContent = S.t > 0 ? fmt(Math.abs(p.flow) / 1000, 1) + " kW/m²" : "0";
+      $("br" + i).style.width = top > 0 ? (Math.abs(p.flow) / top * 100) + "%" : "0";
+      $("fe" + i).textContent = S.t > 0 ? p.feel : "Touch it to find out";
+      draw(i);
+    }
+    if (S.t <= 0) {
+      $("verdict").innerHTML = "<b>A thermometer reads both at " + S.T + " °C.</b> Predict which will feel colder, then press Touch both.";
+    } else if (Math.abs(SKIN.T - S.T) < 0.5) {
+      $("verdict").innerHTML = "<b>No heat flows.</b> The objects are at skin temperature, so metal and wood feel exactly the same.";
+    } else if (a.key === b.key) {
+      $("verdict").innerHTML = "<b>Same material, same feel.</b> Choose a different material for one hand.";
+    } else {
+      hi = Math.abs(a.flow) >= Math.abs(b.flow) ? a : b; lo = hi === a ? b : a;
+      ratio = Math.abs(hi.flow) / Math.abs(lo.flow); kr = hi.k / lo.k; into = S.T > SKIN.T;
+      $("verdict").innerHTML = "<b>" + hi.name + " feels " + (into ? "hotter" : "colder") + ":</b> heat flows " + (into ? "into" : "out of") + " the skin " + ratio.toFixed(1) + "× faster, and the skin surface settles at " + fmt(hi.contact, 1) + " °C instead of " + fmt(lo.contact, 1) + " °C. " +
+        (kr > 1 ? hi.name + " conducts " + (kr >= 10 ? Math.round(kr) : kr.toFixed(1)) + "× better than " + lo.name.toLowerCase() + ", but the flow rises far less, because heat must also cross your own skin." : "");
+    }
+  }
+  function stop() { if (timer !== null) { clearInterval(timer); timer = null; } }
+  function play() {
+    var t0 = Date.now();
+    stop();
+    if (reduced) { S.t = 5; render(); return; }
+    S.t = 0.1; render();
+    timer = setInterval(function () {
+      S.t = Math.min(5, Math.round((Date.now() - t0) / 100) / 10 + 0.1);
+      render();
+      if (S.t >= 5) { stop(); }
+    }, 60);
+  }
+  (function build() {
+    var i, j, h, b;
+    for (i = 0; i < 2; i++) {
+      h = $("hand" + i);
+      h.innerHTML = "<h3>" + (i ? "Right" : "Left") + " hand touches</h3><div class='mats' id='ms" + i + "'></div><canvas id='cv" + i + "' aria-hidden='true'></canvas>" +
+        "<div class='legend'><span>4 mm across: skin above, object below</span><span>blue colder, red hotter</span></div>" +
+        "<div class='kv'><span>Thermometer on the object</span><b id='th" + i + "'></b></div>" +
+        "<div class='kv'><span>Where skin meets it</span><b id='ct" + i + "'></b></div>" +
+        "<div class='kv'><span>Heat flow now</span><b id='fl" + i + "'></b></div>" +
+        "<div class='bar'><i id='br" + i + "'></i></div><div class='feel' id='fe" + i + "'></div>";
+      for (j = 0; j < ORDER.length; j++) {
+        b = document.createElement("button");
+        b.type = "button"; b.id = "m" + i + ORDER[j]; b.textContent = MATS[ORDER[j]].name;
+        b.setAttribute("data-h", String(i)); b.setAttribute("data-m", ORDER[j]);
+        b.onclick = function () { PX.setMaterial(parseInt(this.getAttribute("data-h"), 10), this.getAttribute("data-m")); };
+        $("ms" + i).appendChild(b);
+      }
+    }
+    $("room").oninput = function () { PX.setTemp(parseInt(this.value, 10)); };
+    $("time").oninput = function () { PX.setTime(parseFloat(this.value)); };
+    $("play").onclick = play;
+    $("reset").onclick = function () { PX.reset(); };
+    window.addEventListener("resize", render);
+  }());
+
+  window.PX = {
+    setTemp: function (T) { S.T = T; render(); },
+    setTime: function (t) { stop(); S.t = t; render(); },
+    setMaterial: function (h, m) { S.mats[h] = m; render(); },
+    play: play,
+    reset: function () { stop(); S.T = 10; S.t = 0; S.mats = ["steel", "wood"]; render(); },
+    tempAt: function (h, x) { return tempAt(S.mats[h], x); },
+    state: function () { return { T: S.T, t: S.t, skin: SKIN.T, left: touch(S.mats[0]), right: touch(S.mats[1]), materials: MATS, skinProps: SKIN }; }
+  };
+  render();
+}());
+</script>
+</body>
+</html>
