@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="sim-id" content="LEARN-C10-MAT-REAL-NUMBERS-INTRO-SIM">
+<title>Prime breaker · PrayogX Learn simulation</title>
+<style>
+:root{--bg:#f4f4f1;--card:#fcfcfb;--line:#d9d9d4;--ink:#0b0b0b;--mut:#52514e;--acc:#2a78d6;--b:#6f4fd6;--good:#00743f;--neg:#c62828;--warm:#c4670a;--empty:#ececea}
+@media (prefers-color-scheme:dark){:root{--bg:#111110;--card:#1a1a19;--line:#34342f;--ink:#fff;--mut:#c3c2b7;--acc:#3987e5;--b:#a48bff;--good:#3fae7a;--neg:#ef5350;--warm:#f0a040;--empty:#2a2a28}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+.wrap{max-width:980px;margin:0 auto;padding:12px}
+h1{font-size:17px;margin:2px 0 8px}
+h2{font-size:15px;margin:0 0 6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin-top:10px}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.gap{margin-top:8px}
+button{font:inherit;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:9px;padding:6px 10px;cursor:pointer;min-height:40px;touch-action:manipulation}
+button[aria-pressed="true"]{background:var(--acc);border-color:var(--acc);color:#fff;font-weight:650}
+button:disabled{opacity:.45;cursor:default}
+.small{font-size:13px;color:var(--mut)}
+label.small{min-width:0}
+input[type=range]{flex:1 1 180px;min-width:0;height:40px;accent-color:var(--acc)}
+input[type=number],input[type=text]{font:inherit;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:9px;padding:6px 8px;min-height:40px;width:92px;max-width:100%}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:6px;margin-top:8px}
+.stat{padding:6px 10px;border-radius:10px;border:1px solid var(--line);background:var(--bg);min-width:0;overflow-wrap:anywhere}
+.stat b{display:block;font-size:12px;font-weight:600;color:var(--mut)}
+.stat span{font-size:17px;font-weight:700}
+.verdict{margin-top:8px;padding:8px 10px;border-radius:10px;border:1px solid var(--line);background:var(--bg);min-height:2.6em}
+svg{display:block;width:100%;height:auto;touch-action:none;user-select:none;-webkit-user-select:none}
+svg text{font-family:inherit;fill:var(--ink)}
+.drag{cursor:grab}
+.step{display:flex;flex-wrap:wrap;gap:5px;align-items:center;margin-top:6px}
+.step .times{color:var(--mut)}
+.chip{min-height:36px;min-width:40px;padding:4px 9px;border-radius:9px;font-weight:700;text-align:center;line-height:26px;font-size:15px}
+button.chip{background:var(--bg);border:2px solid var(--acc);color:var(--ink)}
+button.chip[aria-pressed="true"]{background:var(--acc);color:#fff}
+span.chip{background:var(--good);color:#fff}
+.old .chip{opacity:.55;min-height:28px;line-height:20px;font-size:13px;min-width:30px;border-width:1px;padding:2px 6px}
+.old span.chip.done{background:var(--empty);color:var(--mut)}
+#pairs{min-height:44px}
+.result{font-size:18px;font-weight:750;overflow-wrap:anywhere}
+table{border-collapse:collapse;width:100%;margin-top:8px;font-size:14px}
+th,td{border:1px solid var(--line);padding:5px 6px;text-align:center}
+th{color:var(--mut);font-weight:600}
+td.pick{background:var(--acc);color:#fff;font-weight:700}
+td.pick2{background:var(--b);color:#fff;font-weight:700}
+.tw{overflow-x:auto}
+ol{margin:6px 0 0;padding-left:20px;font-size:14px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>Prime breaker: does the route matter?</h1>
+<div class="card">
+<h2>1. Break a number your own way</h2>
+<div class="row">
+  <label class="small" for="n">Number (2 to 9999)</label>
+  <input type="number" id="n" min="2" max="9999" step="1">
+  <button type="button" data-n="360">360</button><button type="button" data-n="1001">1001</button><button type="button" data-n="4096">4096</button><button type="button" data-n="97">97</button>
+</div>
+<div id="steps"></div>
+<div class="small gap" id="hint"></div>
+<div class="row" id="pairs"></div>
+<div class="row gap">
+  <button type="button" id="auto">Finish at random</button>
+  <button type="button" id="again">Start again, another way</button>
+</div>
+<div class="stats"><div class="stat"><b>Prime factorisation</b><span id="res"></span></div><div class="stat"><b>Different routes tried</b><span id="routes"></span></div></div>
+<ol id="log"></ol>
+<div class="verdict" id="verdict" aria-live="polite"></div>
+</div>
+<div class="card">
+<h2>2. HCF and LCM from the primes</h2>
+<div class="row">
+  <label class="small" for="a">a</label><input type="number" id="a" min="2" max="9999" step="1">
+  <label class="small" for="b">b</label><input type="number" id="b" min="2" max="9999" step="1">
+  <button type="button" data-ab="12,18">12, 18</button><button type="button" data-ab="96,360">96, 360</button><button type="button" data-ab="35,48">35, 48</button>
+</div>
+<div class="tw"><table id="tbl"></table></div>
+<div class="stats">
+  <div class="stat"><b>HCF</b><span id="hcf"></span></div>
+  <div class="stat"><b>LCM</b><span id="lcm"></span></div>
+  <div class="stat"><b>HCF × LCM</b><span id="prod"></span></div>
+  <div class="stat"><b>a × b</b><span id="ab"></span></div>
+</div>
+<div class="verdict" id="hverdict" aria-live="polite"></div>
+</div>
+</div>
+<script>
+(function () {
+  "use strict";
+  var SUP = { 0: "⁰", 1: "¹", 2: "²", 3: "³", 4: "⁴", 5: "⁵", 6: "⁶", 7: "⁷", 8: "⁸", 9: "⁹" };
+  var S = { n: 360, rows: [[360]], sel: -1, routes: [], a: 12, b: 18 };
+  function $(id) { return document.getElementById(id); }
+  function isPrime(v) { var i; if (v < 2) { return false; } for (i = 2; i * i <= v; i++) { if (v % i === 0) { return false; } } return true; }
+  function cur() { return S.rows[S.rows.length - 1]; }
+  function done() { var r = cur(), i; for (i = 0; i < r.length; i++) { if (!isPrime(r[i])) { return false; } } return true; }
+  function pairsOf(v) { var o = [], i; for (i = 2; i * i <= v; i++) { if (v % i === 0) { o.push([i, v / i]); } } return o; }
+  function factorise(v) { var o = {}, p = 2; while (v > 1) { if (v % p === 0) { o[p] = (o[p] || 0) + 1; v = v / p; } else { p += 1; } } return o; }
+  function sup(e) { var s = String(e), o = "", i; if (e === 1) { return ""; } for (i = 0; i < s.length; i++) { o += SUP[s.charAt(i)]; } return o; }
+  function powers(o) {
+    var k = Object.keys(o).map(Number).sort(function (x, y) { return x - y; }), p = [], i;
+    for (i = 0; i < k.length; i++) { p.push(k[i] + sup(o[k[i]])); }
+    return p.join(" × ");
+  }
+  function counts(list) { var o = {}, i; for (i = 0; i < list.length; i++) { o[list[i]] = (o[list[i]] || 0) + 1; } return o; }
+  function routeText() { var o = [], i; for (i = 0; i < S.rows.length; i++) { o.push(S.rows[i].join(" × ")); } return o.join(" → "); }
+  function record() {
+    var t = routeText(), i;
+    if (!done() || S.rows.length < 2) { return; }
+    for (i = 0; i < S.routes.length; i++) { if (S.routes[i].text === t) { return; } }
+    S.routes.push({ text: t, result: powers(counts(cur())) });
+  }
+  function rowEl(list, live) {
+    var d = document.createElement("div"), i, c, t;
+    d.className = "step" + (live ? "" : " old");
+    for (i = 0; i < list.length; i++) {
+      if (i) { t = document.createElement("span"); t.className = "times"; t.textContent = "×"; d.appendChild(t); }
+      if (live && !isPrime(list[i])) {
+        c = document.createElement("button"); c.type = "button"; c.className = "chip"; c.textContent = String(list[i]);
+        c.setAttribute("data-i", String(i)); c.setAttribute("aria-pressed", S.sel === i ? "true" : "false");
+        c.onclick = function () { S.sel = parseInt(this.getAttribute("data-i"), 10); render(); };
+      } else {
+        c = document.createElement("span"); c.className = "chip" + (isPrime(list[i]) ? "" : " done"); c.textContent = String(list[i]);
+      }
+      d.appendChild(c);
+    }
+    return d;
+  }
+  function render() {
+    var box = $("steps"), i, r = cur(), fin = done(), p, b, all, same = true;
+    $("n").value = String(S.n);
+    while (box.firstChild) { box.removeChild(box.firstChild); }
+    for (i = 0; i < S.rows.length; i++) { box.appendChild(rowEl(S.rows[i], i === S.rows.length - 1)); }
+    box = $("pairs");
+    while (box.firstChild) { box.removeChild(box.firstChild); }
+    if (S.sel >= 0 && !fin) {
+      p = pairsOf(r[S.sel]);
+      for (i = 0; i < p.length; i++) {
+        b = document.createElement("button"); b.type = "button"; b.textContent = p[i][0] + " × " + p[i][1]; b.setAttribute("data-f", String(p[i][0]));
+        b.onclick = function () { PX.split(S.sel, parseInt(this.getAttribute("data-f"), 10)); };
+        box.appendChild(b);
+      }
+    }
+    $("hint").textContent = fin ? "Only primes are left: nothing more can be split." : S.sel >= 0 ? "Split " + r[S.sel] + " as:" : "Tap a blue number to split it. Green numbers are prime.";
+    $("res").textContent = fin ? powers(counts(r)) : "keep splitting";
+    $("routes").textContent = String(S.routes.length);
+    box = $("log");
+    while (box.firstChild) { box.removeChild(box.firstChild); }
+    for (i = 0; i < S.routes.length; i++) {
+      b = document.createElement("li"); b.textContent = S.routes[i].text.split(" → ")[1] + " … gives " + S.routes[i].result;
+      box.appendChild(b);
+      if (S.routes[i].result !== S.routes[0].result) { same = false; }
+    }
+    $("auto").disabled = fin;
+    all = S.routes.length;
+    if (isPrime(S.n)) {
+      $("verdict").innerHTML = "<b>" + S.n + " is prime.</b> It cannot be split: it is already its own prime factorisation.";
+    } else if (all >= 2 && same) {
+      $("verdict").innerHTML = "<b>" + all + " different routes, one answer: " + S.routes[0].result + ".</b> That is the Fundamental Theorem of Arithmetic. Your choices change the journey, never the primes.";
+    } else if (fin) {
+      $("verdict").innerHTML = "<b>Your primes: " + powers(counts(r)) + ".</b> Can a different first split give different primes? Press Start again and try to beat it.";
+    } else {
+      $("verdict").textContent = "Every composite number breaks into primes. Pick any split you like.";
+    }
+    renderHcf();
+  }
+  function hcfModel() {
+    var fa = factorise(S.a), fb = factorise(S.b), keys = {}, k, list = [], h = 1, l = 1, i, p, ea, eb;
+    for (k in fa) { if (fa.hasOwnProperty(k)) { keys[k] = 1; } }
+    for (k in fb) { if (fb.hasOwnProperty(k)) { keys[k] = 1; } }
+    list = Object.keys(keys).map(Number).sort(function (x, y) { return x - y; });
+    for (i = 0; i < list.length; i++) {
+      p = list[i]; ea = fa[p] || 0; eb = fb[p] || 0;
+      h *= Math.pow(p, Math.min(ea, eb)); l *= Math.pow(p, Math.max(ea, eb));
+    }
+    return { fa: fa, fb: fb, primes: list, hcf: h, lcm: l };
+  }
+  function renderHcf() {
+    var m = hcfModel(), t = $("tbl"), i, p, ea, eb, html = "<tr><th>Power of each prime</th>";
+    for (i = 0; i < m.primes.length; i++) { html += "<th>" + m.primes[i] + "</th>"; }
+    html += "</tr><tr><th>" + S.a + "</th>";
+    for (i = 0; i < m.primes.length; i++) { p = m.primes[i]; html += "<td>" + (m.fa[p] || 0) + "</td>"; }
+    html += "</tr><tr><th>" + S.b + "</th>";
+    for (i = 0; i < m.primes.length; i++) { p = m.primes[i]; html += "<td>" + (m.fb[p] || 0) + "</td>"; }
+    html += "</tr><tr><th>HCF: smaller power</th>";
+    for (i = 0; i < m.primes.length; i++) { p = m.primes[i]; ea = m.fa[p] || 0; eb = m.fb[p] || 0; html += "<td class='pick'>" + Math.min(ea, eb) + "</td>"; }
+    html += "</tr><tr><th>LCM: greater power</th>";
+    for (i = 0; i < m.primes.length; i++) { p = m.primes[i]; ea = m.fa[p] || 0; eb = m.fb[p] || 0; html += "<td class='pick2'>" + Math.max(ea, eb) + "</td>"; }
+    t.innerHTML = html + "</tr>";
+    $("a").value = String(S.a); $("b").value = String(S.b);
+    $("hcf").textContent = String(m.hcf); $("lcm").textContent = String(m.lcm);
+    $("prod").textContent = String(m.hcf * m.lcm); $("ab").textContent = String(S.a * S.b);
+    $("hverdict").innerHTML = "<b>" + S.a + " = " + powers(m.fa) + ", " + S.b + " = " + powers(m.fb) + ".</b> Each prime's power is counted once in the HCF and once in the LCM, so together they use up exactly the primes of a and b: HCF × LCM = a × b." + (m.hcf === 1 ? " These two share no prime, so the HCF is 1." : "");
+  }
+  function clampN(v) { return Math.max(2, Math.min(9999, Math.round(v) || 2)); }
+  function setN(v) { S.n = clampN(v); S.rows = [[S.n]]; S.sel = -1; S.routes = []; render(); }
+  function split(i, f) {
+    var r = cur().slice(), v = r[i];
+    if (!(v % f === 0) || f < 2 || f >= v) { return false; }
+    r.splice(i, 1, f, v / f);
+    S.rows.push(r); S.sel = -1; record();
+    /* the next composite is selected, so a split is one tap away */
+    for (i = 0; i < r.length; i++) { if (!isPrime(r[i])) { S.sel = i; break; } }
+    render();
+    return true;
+  }
+  function auto() {
+    var r, i, p;
+    while (!done()) {
+      r = cur();
+      for (i = 0; i < r.length; i++) { if (!isPrime(r[i])) { break; } }
+      p = pairsOf(r[i]);
+      split(i, p[Math.floor(Math.random() * p.length)][0]);
+    }
+  }
+  $("n").oninput = function () { if (this.value !== "" && parseInt(this.value, 10) >= 2) { setN(parseInt(this.value, 10)); } };
+  $("auto").onclick = auto;
+  $("again").onclick = function () { PX.restart(); };
+  function setAB(a, b) { S.a = clampN(a); S.b = clampN(b); renderHcf(); }
+  $("a").oninput = function () { if (this.value !== "" && parseInt(this.value, 10) >= 2) { setAB(parseInt(this.value, 10), S.b); } };
+  $("b").oninput = function () { if (this.value !== "" && parseInt(this.value, 10) >= 2) { setAB(S.a, parseInt(this.value, 10)); } };
+  (function () {
+    var b = document.querySelectorAll("[data-n]"), c = document.querySelectorAll("[data-ab]"), i;
+    for (i = 0; i < b.length; i++) { b[i].onclick = function () { setN(parseInt(this.getAttribute("data-n"), 10)); }; }
+    for (i = 0; i < c.length; i++) { c[i].onclick = function () { var v = this.getAttribute("data-ab").split(","); setAB(parseInt(v[0], 10), parseInt(v[1], 10)); }; }
+  }());
+
+  window.PX = {
+    setN: setN, split: split, auto: auto, setAB: setAB,
+    select: function (i) { S.sel = i; render(); },
+    restart: function () { S.rows = [[S.n]]; S.sel = -1; render(); },
+    reset: function () { S.a = 12; S.b = 18; setN(360); },
+    state: function () {
+      var m = hcfModel();
+      return { n: S.n, row: cur().slice(), finished: done(), result: done() ? powers(counts(cur())) : "", routes: S.routes.length, routeResults: S.routes.map(function (r) { return r.result; }),
+        a: S.a, b: S.b, hcf: m.hcf, lcm: m.lcm };
+    }
+  };
+  render();
+}());
+</script>
+</body>
+</html>

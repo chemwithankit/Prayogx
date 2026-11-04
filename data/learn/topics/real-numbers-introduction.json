@@ -120,8 +120,18 @@
   }
  ],
  "simulation": {
-  "decision": "NOT_REQUIRED",
-  "reason": "A chapter overview; factor trees are shown in the reel."
+  "decision": "REQUIRED",
+  "status": "pass",
+  "path": "sim.html",
+  "reason": "The Fundamental Theorem of Arithmetic says the primes do not depend on how you split a number. That is a claim students can try to break: they choose every split of any number and see each route end in the same primes, which one worked factor tree cannot show. HCF and LCM then follow for any pair they enter.",
+  "objective": "Break a number by different routes to test whether the primes ever change, then build the HCF and LCM from them.",
+  "instructions": [
+   "Tap a blue number and choose how to split it, until only primes are left.",
+   "Press Start again and take a different route.",
+   "Try your own number, up to 9999.",
+   "Enter two numbers and compare HCF × LCM with a × b."
+  ],
+  "qa": "tests/learn_sims.js 654/654 (2026-11-04)"
  },
  "related": []
 }

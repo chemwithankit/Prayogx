@@ -132,8 +132,19 @@
   }
  ],
  "simulation": {
-  "decision": "NOT_REQUIRED",
-  "reason": "The reel's ray diagram covers it; ray-tracing simulations come with spherical mirrors."
+  "decision": "REQUIRED",
+  "status": "pass",
+  "path": "sim.html",
+  "reason": "Dragging the object and the eye tests what a single ray diagram cannot: the image tracks the object at an equal distance, stays put when only the eye moves, still exists when no reflected ray reaches the eye, and the gap changes twice as fast as you walk. Students can also try their own words for lateral inversion.",
+  "objective": "Move the object and the eye, and find out what sets where the image is and whether you can see it.",
+  "instructions": [
+   "Drag the object (or use the slider) and compare its distance from the mirror with the image's.",
+   "Press Walk 1 m closer and see how much the gap to your image changes.",
+   "Drag the eye: do the rays change? Does the image move?",
+   "Move the eye far to one side until no ray reaches it.",
+   "Type a word and see what the mirror does to it."
+  ],
+  "qa": "tests/learn_sims.js 654/654 (2026-11-04)"
  },
  "related": [
   "laws-of-reflection",

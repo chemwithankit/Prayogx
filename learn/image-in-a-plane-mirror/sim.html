@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="sim-id" content="LEARN-C10-PHY-PLANE-MIRROR-IMAGE-SIM">
+<title>Mirror bench · PrayogX Learn simulation</title>
+<style>
+:root{--bg:#f4f4f1;--card:#fcfcfb;--line:#d9d9d4;--ink:#0b0b0b;--mut:#52514e;--acc:#2a78d6;--b:#6f4fd6;--good:#00743f;--neg:#c62828;--warm:#c4670a;--empty:#ececea}
+@media (prefers-color-scheme:dark){:root{--bg:#111110;--card:#1a1a19;--line:#34342f;--ink:#fff;--mut:#c3c2b7;--acc:#3987e5;--b:#a48bff;--good:#3fae7a;--neg:#ef5350;--warm:#f0a040;--empty:#2a2a28}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+.wrap{max-width:980px;margin:0 auto;padding:12px}
+h1{font-size:17px;margin:2px 0 8px}
+h2{font-size:15px;margin:0 0 6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin-top:10px}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.gap{margin-top:8px}
+button{font:inherit;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:9px;padding:6px 10px;cursor:pointer;min-height:40px;touch-action:manipulation}
+button[aria-pressed="true"]{background:var(--acc);border-color:var(--acc);color:#fff;font-weight:650}
+button:disabled{opacity:.45;cursor:default}
+.small{font-size:13px;color:var(--mut)}
+label.small{min-width:0}
+input[type=range]{flex:1 1 180px;min-width:0;height:40px;accent-color:var(--acc)}
+input[type=number],input[type=text]{font:inherit;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:9px;padding:6px 8px;min-height:40px;width:92px;max-width:100%}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:6px;margin-top:8px}
+.stat{padding:6px 10px;border-radius:10px;border:1px solid var(--line);background:var(--bg);min-width:0;overflow-wrap:anywhere}
+.stat b{display:block;font-size:12px;font-weight:600;color:var(--mut)}
+.stat span{font-size:17px;font-weight:700}
+.verdict{margin-top:8px;padding:8px 10px;border-radius:10px;border:1px solid var(--line);background:var(--bg);min-height:2.6em}
+svg{display:block;width:100%;height:auto;touch-action:none;user-select:none;-webkit-user-select:none}
+svg text{font-family:inherit;fill:var(--ink)}
+.drag{cursor:grab}
+.mirrorbox{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:8px}
+.word{min-width:0;padding:8px;border-radius:10px;border:1px solid var(--line);background:var(--bg);text-align:center;overflow:hidden}
+.word b{display:block;font-size:12px;font-weight:600;color:var(--mut)}
+.word div{font-size:clamp(14px,4.4vw,26px);font-weight:800;letter-spacing:.02em;white-space:nowrap}
+#mword{transform:scaleX(-1);color:var(--acc)}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>Mirror bench: where is the image, really?</h1>
+<div class="card">
+<h2>1. Seen from above: drag the object, the image or the eye</h2>
+<svg id="bench" viewBox="0 0 640 360" role="img" aria-label="Top view of a plane mirror with an object, its image behind the mirror and an eye"></svg>
+<div class="row gap">
+  <label class="small" for="od">Object to mirror <b id="odv"></b></label>
+  <input type="range" id="od" min="0.5" max="7" step="0.1" aria-label="Object distance from the mirror in metres">
+</div>
+<div class="row">
+  <label class="small" for="ey">Eye sideways <b id="eyv"></b></label>
+  <input type="range" id="ey" min="-4" max="4" step="0.1" aria-label="Eye position along the mirror in metres">
+</div>
+<div class="row gap">
+  <button type="button" id="closer">Walk 1 m closer</button>
+  <button type="button" id="away">Walk 1 m away</button>
+  <button type="button" id="reset">Reset</button>
+</div>
+<div class="stats">
+  <div class="stat"><b>Object to mirror</b><span id="s-do"></span></div>
+  <div class="stat"><b>Mirror to image</b><span id="s-di"></span></div>
+  <div class="stat"><b>Object to image</b><span id="s-gap"></span></div>
+  <div class="stat"><b>Angles at the mirror</b><span id="s-ang"></span></div>
+</div>
+<div class="verdict" id="verdict" aria-live="polite"></div>
+</div>
+<div class="card">
+<h2>2. What happens to words?</h2>
+<div class="row">
+  <label class="small" for="word">Word</label>
+  <input type="text" id="word" maxlength="10" value="AMBULANCE" autocomplete="off" spellcheck="false" style="width:170px;text-transform:uppercase">
+  <button type="button" data-word="AMBULANCE">AMBULANCE</button><button type="button" data-word="MOM">MOM</button><button type="button" data-word="TOOT">TOOT</button>
+</div>
+<div class="mirrorbox">
+  <div class="word"><b>Written on the paper</b><div id="pword"></div></div>
+  <div class="word"><b>In the mirror</b><div id="mword"></div></div>
+</div>
+<div class="verdict" id="wverdict" aria-live="polite"></div>
+</div>
+</div>
+<script>
+(function () {
+  "use strict";
+  var NS = "http://www.w3.org/2000/svg", SC = 40, MX = 320, MY = 180, HALF = 2.5, EYEW = 0.35, SYM = "AHIMOTUVWXY";
+  var S = { d: 2, y: 0.8, ed: 4, ey: -1.5, word: "AMBULANCE", last: null };
+  function $(id) { return document.getElementById(id); }
+  function clamp(v, a, b) { return Math.max(a, Math.min(b, v)); }
+  function r1(v) { return Math.round(v * 10) / 10; }
+  /* labels and drag targets stay readable when the drawing is scaled down on a phone */
+  function textScale(id, vbw) { var w = $(id).getBoundingClientRect().width; return w > 0 ? Math.max(1, 13 / (14 * w / vbw)) : 1; }
+  function X(m) { return MX + m * SC; }
+  function Y(m) { return MY - m * SC; }
+  function f(v) { var s = v.toFixed(1); return s === "-0.0" ? "0.0" : s.replace("-", "−"); }
+  function el(name, a, txt) {
+    var e = document.createElementNS(NS, name), k;
+    for (k in a) { if (a.hasOwnProperty(k)) { e.setAttribute(k, a[k]); } }
+    if (txt !== undefined) { e.textContent = txt; }
+    return e;
+  }
+  /* the point on the mirror where a ray from the object reaches a target in front of it:
+     the straight line from the target to the image crosses the mirror there */
+  function hit(ty, td) { return (S.y * td + ty * S.d) / (S.d + td); }
+  function model() {
+    var h = hit(S.ey, S.ed), i = Math.atan2(Math.abs(S.y - h), S.d) * 180 / Math.PI, r = Math.atan2(Math.abs(S.ey - h), S.ed) * 180 / Math.PI;
+    return { hit: h, i: i, r: r, visible: Math.abs(h) <= HALF, gap: 2 * S.d };
+  }
+  function line(g, x1, y1, x2, y2, col, w, dash) {
+    g.appendChild(el("line", { x1: x1, y1: y1, x2: x2, y2: y2, stroke: col, "stroke-width": w, "stroke-dasharray": dash || "none", "stroke-linecap": "round" }));
+  }
+  function render() {
+    var g = $("bench"), m = model(), k, ty, h, y, ok, Z = textScale("bench", 640), fs = 14 * Z, hr = 24 * Z;
+    while (g.firstChild) { g.removeChild(g.firstChild); }
+    g.appendChild(el("rect", { x: MX, y: 0, width: 320, height: 360, fill: "var(--empty)" }));
+    g.appendChild(el("text", { x: 14, y: 8 + fs, "font-size": fs, fill: "var(--mut)" }, "In front of the mirror"));
+    g.appendChild(el("text", { x: 626, y: 8 + fs, "font-size": fs, "text-anchor": "end" }, "Behind the mirror"));
+    line(g, X(-7), MY + 164, X(-6), MY + 164, "var(--mut)", 2);
+    g.appendChild(el("text", { x: X(-6) + 6, y: MY + 169, "font-size": fs }, "1 m"));
+    line(g, X(-S.d), Y(S.y), X(S.d), Y(S.y), "var(--line)", 1.5, "2 5");
+    /* rays: two, to the two edges of the eye */
+    for (k = -1; k <= 1; k += 2) {
+      ty = S.ey + k * EYEW; h = hit(ty, S.ed); ok = Math.abs(h) <= HALF;
+      if (ok) {
+        line(g, X(-S.d), Y(S.y), X(0), Y(h), "var(--warm)", 2.2);
+        line(g, X(0), Y(h), X(-S.ed), Y(ty), "var(--warm)", 2.2);
+        line(g, X(0), Y(h), X(S.d), Y(S.y), "var(--b)", 1.8, "7 6");
+      }
+    }
+    if (m.visible) { line(g, X(-1.2), Y(m.hit), X(0.5), Y(m.hit), "var(--mut)", 1.2, "3 4"); }
+    /* the mirror */
+    g.appendChild(el("rect", { x: MX - 2, y: Y(HALF), width: 7, height: HALF * 2 * SC, rx: 2, fill: "var(--acc)" }));
+    for (y = -HALF; y < HALF; y += 0.5) { line(g, MX + 5, Y(y), MX + 14, Y(y + 0.2), "var(--acc)", 1.3); }
+    /* image, object, eye */
+    g.appendChild(el("circle", { cx: X(S.d), cy: Y(S.y), r: 12, fill: "none", stroke: "var(--b)", "stroke-width": 2.5, "stroke-dasharray": "5 4" }));
+    g.appendChild(el("text", { x: X(S.d), y: Y(S.y) - 12 - fs * 0.5, "font-size": fs, "text-anchor": "middle" }, "image"));
+    g.appendChild(el("circle", { id: "h-image", "class": "drag", cx: X(S.d), cy: Y(S.y), r: hr, fill: "transparent" }));
+    g.appendChild(el("circle", { cx: X(-S.d), cy: Y(S.y), r: 12, fill: "var(--neg)" }));
+    g.appendChild(el("text", { x: X(-S.d), y: Y(S.y) - 12 - fs * 0.5, "font-size": fs, "text-anchor": "middle" }, "object"));
+    g.appendChild(el("circle", { id: "h-object", "class": "drag", cx: X(-S.d), cy: Y(S.y), r: hr, fill: "transparent" }));
+    g.appendChild(el("path", { d: "M" + (X(-S.ed) - 14) + " " + Y(S.ey) + "Q" + X(-S.ed) + " " + (Y(S.ey) - 17) + " " + (X(-S.ed) + 14) + " " + Y(S.ey) + "Q" + X(-S.ed) + " " + (Y(S.ey) + 17) + " " + (X(-S.ed) - 14) + " " + Y(S.ey), fill: "var(--card)", stroke: "var(--ink)", "stroke-width": 2 }));
+    g.appendChild(el("circle", { cx: X(-S.ed), cy: Y(S.ey), r: 5, fill: "var(--ink)" }));
+    g.appendChild(el("text", { x: X(-S.ed), y: Y(S.ey) + 18 + fs, "font-size": fs, "text-anchor": "middle" }, "eye"));
+    g.appendChild(el("circle", { id: "h-eye", "class": "drag", cx: X(-S.ed), cy: Y(S.ey), r: hr, fill: "transparent" }));
+
+    $("od").value = String(S.d); $("ey").value = String(S.ey);
+    $("odv").textContent = f(S.d) + " m"; $("eyv").textContent = f(S.ey) + " m";
+    $("s-do").textContent = f(S.d) + " m"; $("s-di").textContent = f(S.d) + " m"; $("s-gap").textContent = f(m.gap) + " m";
+    $("s-ang").textContent = m.visible ? "i = " + m.i.toFixed(1) + "°, r = " + m.r.toFixed(1) + "°" : "no ray reaches the eye";
+    if (S.last !== null) {
+      $("verdict").innerHTML = "<b>You moved " + f(Math.abs(S.last.walked)) + " m, the gap changed by " + f(Math.abs(S.last.gap)) + " m.</b> The image moved the same distance the other way, so the gap changes twice as fast.";
+    } else if (!m.visible) {
+      $("verdict").innerHTML = "<b>The eye sees no image from here,</b> because no reflected ray reaches it. The image has not moved: it is still " + f(S.d) + " m behind the mirror.";
+    } else {
+      $("verdict").innerHTML = "<b>The dashed lines meet " + f(S.d) + " m behind the mirror.</b> No light goes there, so the image is virtual. Move the eye: the rays change, but the image stays in the same place.";
+    }
+    $("closer").disabled = S.d <= 0.5; $("away").disabled = S.d >= 7;
+    renderWord();
+  }
+  function wordState() {
+    var w = S.word.toUpperCase().replace(/[^A-Z]/g, ""), rev = w.split("").reverse().join(""), sym = w.length > 0, i;
+    for (i = 0; i < w.length; i++) { if (SYM.indexOf(w.charAt(i)) < 0) { sym = false; } }
+    return { word: w, reversed: rev, same: sym && rev === w };
+  }
+  function renderWord() {
+    var ws = wordState();
+    $("pword").textContent = ws.word; $("mword").textContent = ws.word;
+    if (!ws.word) { $("wverdict").textContent = "Type a word using the letters A to Z."; }
+    else if (ws.same) { $("wverdict").innerHTML = "<b>It reads the same.</b> Every letter is left-right symmetric and the word is a palindrome, so lateral inversion cannot be seen."; }
+    else { $("wverdict").innerHTML = "<b>Left and right swap, up and down do not.</b> The letters now run the other way, as " + ws.reversed + ", and each is flipped. Each point stays directly opposite itself in the mirror."; }
+  }
+  function setObject(d, y) { S.d = r1(clamp(d, 0.5, 7)); S.y = r1(clamp(y, -4, 4)); S.last = null; render(); }
+  function setEye(d, y) { S.ed = r1(clamp(d, 0.5, 7)); S.ey = r1(clamp(y, -4, 4)); S.last = null; render(); }
+  function walk(delta) {
+    var d0 = S.d, nd = r1(clamp(S.d + delta, 0.5, 7));
+    S.d = nd; S.last = { walked: nd - d0, gap: 2 * (nd - d0) }; render();
+  }
+  /* dragging */
+  var drag = null;
+  function pt(ev) {
+    var g = $("bench"), p = g.createSVGPoint(), q;
+    p.x = ev.clientX; p.y = ev.clientY; q = p.matrixTransform(g.getScreenCTM().inverse());
+    return { x: (q.x - MX) / SC, y: (MY - q.y) / SC };
+  }
+  $("bench").addEventListener("pointerdown", function (ev) {
+    var id = ev.target.id;
+    if (id !== "h-object" && id !== "h-image" && id !== "h-eye") { return; }
+    drag = id; ev.preventDefault();
+    try { $("bench").setPointerCapture(ev.pointerId); } catch (e) {}
+  });
+  $("bench").addEventListener("pointermove", function (ev) {
+    if (!drag) { return; }
+    var p = pt(ev);
+    if (drag === "h-object") { setObject(-p.x, p.y); }
+    else if (drag === "h-image") { setObject(p.x, p.y); }
+    else { setEye(-p.x, p.y); }
+  });
+  function stop() { drag = null; }
+  $("bench").addEventListener("pointerup", stop);
+  $("bench").addEventListener("pointercancel", stop);
+  $("od").oninput = function () { setObject(parseFloat(this.value), S.y); };
+  $("ey").oninput = function () { setEye(S.ed, parseFloat(this.value)); };
+  $("closer").onclick = function () { walk(-1); };
+  $("away").onclick = function () { walk(1); };
+  $("reset").onclick = function () { PX.reset(); };
+  $("word").oninput = function () { S.word = this.value; renderWord(); };
+  window.addEventListener("resize", render);
+  (function () {
+    var b = document.querySelectorAll("[data-word]"), i;
+    for (i = 0; i < b.length; i++) { b[i].onclick = function () { PX.setWord(this.getAttribute("data-word")); }; }
+  }());
+
+  window.PX = {
+    setObject: setObject, setEye: setEye, walk: walk,
+    setWord: function (w) { S.word = w; $("word").value = w; renderWord(); },
+    reset: function () { S.d = 2; S.y = 0.8; S.ed = 4; S.ey = -1.5; S.word = "AMBULANCE"; S.last = null; $("word").value = S.word; render(); },
+    state: function () {
+      var m = model(), ws = wordState();
+      return { objectDist: S.d, imageDist: S.d, objectY: S.y, imageY: S.y, eyeDist: S.ed, eyeY: S.ey, gap: m.gap, hit: m.hit, i: m.i, r: m.r, visible: m.visible,
+        walked: S.last ? S.last.walked : 0, gapChange: S.last ? S.last.gap : 0, word: ws.word, reversed: ws.reversed, sameInMirror: ws.same };
+    }
+  };
+  render();
+}());
+</script>
+</body>
+</html>

@@ -144,8 +144,18 @@
   }
  ],
  "simulation": {
-  "decision": "NOT_REQUIRED",
-  "reason": "A chapter overview; plotting topics that follow get their own pages."
+  "decision": "REQUIRED",
+  "status": "pass",
+  "path": "sim.html",
+  "reason": "Although it opens the chapter, its whole content is a procedure: plotting, signs to quadrants, order in a pair and distance from numbers. Like placing fractions on a number line, that is learned by doing it, and only the student's own points show that (a, b) and (b, a) differ and that the signs alone decide the quadrant.",
+  "objective": "Place points by their coordinates, see what the signs and the order do, and find distances from the numbers alone.",
+  "instructions": [
+   "Tap the plane or use the sliders to move P, and watch the walk from O.",
+   "Press Swap x and y to compare the two points.",
+   "Add a second point and read the distance from the two legs.",
+   "Press Plot this point and place the coordinates you are given."
+  ],
+  "qa": "tests/learn_sims.js 654/654 (2026-11-04)"
  },
  "related": []
 }

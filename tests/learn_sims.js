@@ -26,6 +26,15 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
      learn/regular-vs-diffused-reflection/sim.html  spread grows with roughness, i = r per facet
      learn/roster-and-set-builder-form/sim.html  rule → elements, roster and set-builder text,
                                         order, infinite sets, letters of a word without repeats
+     learn/image-in-a-plane-mirror/sim.html  image distance, gap, walking, the reflection point
+                                        against a least-path search (Fermat)
+     learn/golden-ratio-and-fibonacci/sim.html  golden angle from the Fibonacci limit, packing
+                                        by brute force, spokes, spiral counts, ratios
+     learn/coordinates-introduction/sim.html  quadrants, axes, ordered pairs, Pythagoras distance
+     learn/real-numbers-introduction/sim.html  factorisation by trial division, routes, HCF by Euclid
+     learn/position-origin-and-direction/sim.html  positions, displacement unchanged by the origin
+     learn/why-is-ice-slippery/sim.html  melting-point drop against Clausius-Clapeyron, the
+                                        IAPWS anchor point, what no pressure can do
    --------------------------------------------------------------------------- */
 
 let n = 0, bad = 0;
@@ -35,6 +44,31 @@ const near = (a, b, tol = 0.02) => Math.abs(a - b) <= tol;
 const freePort = () => new Promise(res => { const sv = net.createServer();
   sv.listen(0, '127.0.0.1', () => { const q = sv.address().port; sv.close(() => res(q)); }); });
 const gcd = (a, b) => { a = Math.abs(a); b = Math.abs(b); while (b) [a, b] = [b, a % b]; return a; };
+
+
+/* Independent heat solver: explicit finite differences for two thick solids pressed together,
+   each with its own grid. Returns the interface temperature and the heat flow at t seconds. */
+function fdContact(A, B, t) {
+  const dt = 2e-4, steps = Math.round(t / dt), N = 900;
+  const side = m => { const al = m.k / (m.rho * m.c), dx = 2 * Math.sqrt(al * dt); return { m, al, dx, T: new Float64Array(N).fill(m.T), f: al * dt / (dx * dx) }; };
+  const a = side(A), b = side(B);
+  const gA = A.k / a.dx, gB = B.k / b.dx;
+  let Ti = 0;
+  for (let s = 0; s < steps; s++) {
+    Ti = (gA * a.T[1] + gB * b.T[1]) / (gA + gB); // flux in = flux out at the interface
+    a.T[0] = Ti; b.T[0] = Ti;
+    for (const q of [a, b]) {
+      const n = Float64Array.from(q.T);
+      for (let i = 1; i < N - 1; i++) n[i] = q.T[i] + q.f * (q.T[i + 1] - 2 * q.T[i] + q.T[i - 1]);
+      q.T = n;
+    }
+  }
+  return { contact: Ti, flow: A.k * (a.T[1] - a.T[0]) / a.dx };
+}
+const SKIN = { k: 0.37, rho: 1100, c: 3400, T: 33 };
+const MATERIALS = { copper: { k: 400, rho: 8960, c: 385 }, steel: { k: 45, rho: 7850, c: 490 }, glass: { k: 1, rho: 2500, c: 840 }, wood: { k: 0.15, rho: 600, c: 1700 } };
+const FD = {};
+for (const key of Object.keys(MATERIALS)) FD[key] = fdContact(SKIN, Object.assign({ T: 10 }, MATERIALS[key]), 1);
 
 (async () => {
   const port = await freePort();
@@ -218,6 +252,175 @@ const gcd = (a, b) => { a = Math.abs(a); b = Math.abs(b); while (b) [a, b] = [b,
       ok(`diffused ${tag}: every ray i = r at its facet and leaves upwards`, sp.every(x => x.rays.every(y => Math.abs(y.i - y.r) < 1e-6 && y.up)));
       const ov9 = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
       ok(`diffused ${tag}: no horizontal overflow`, ov9 <= 0, ov9);
+      // ---- plane mirror: image distance, gap, and the reflection point found by least path (Fermat)
+      await page.goto(base + 'image-in-a-plane-mirror/sim.html', { waitUntil: 'load' });
+      const fermat = (d, y, ed, ey) => { let best = 1e9, by = 0; for (let h = -8; h <= 8; h += 0.0005) { const L = Math.hypot(d, y - h) + Math.hypot(ed, ey - h); if (L < best) { best = L; by = h; } } return by; };
+      for (const [d, y, ed, ey] of [[2, 0.8, 4, -1.5], [0.5, 0, 7, 2], [6.5, -3, 1, 2], [3, 1, 3, 1]]) {
+        const s = await page.evaluate(v => { PX.setObject(v[0], v[1]); PX.setEye(v[2], v[3]); return PX.state(); }, [d, y, ed, ey]);
+        ok(`mirror object ${d} m ${tag}: image ${d} m behind, gap ${2 * d} m`, s.imageDist === d && s.imageY === y && near(s.gap, 2 * d, 1e-9), `${s.imageDist} ${s.gap}`);
+        ok(`mirror ${d},${y} eye ${ed},${ey} ${tag}: reflection point = least path`, near(s.hit, fermat(d, y, ed, ey), 0.002), s.hit.toFixed(4));
+        ok(`mirror ${d},${y} ${tag}: i = r at that point`, near(s.i, s.r, 1e-6), `${s.i.toFixed(3)} ${s.r.toFixed(3)}`);
+      }
+      const w0 = await page.evaluate(() => { PX.reset(); PX.walk(1); PX.walk(-1); return PX.state(); });
+      ok(`mirror ${tag}: walking 1 m closer cuts the gap by 2 m`, w0.walked === -1 && w0.gapChange === -2 && w0.gap === 4, `${w0.walked} ${w0.gapChange} ${w0.gap}`);
+      ok(`mirror ${tag}: the verdict states it`, (await page.$eval('#verdict', e => e.textContent)).includes('gap changed by 2.0 m'));
+      const before = await page.evaluate(() => { PX.reset(); PX.setObject(2, 0); PX.setEye(3, 0); return PX.state(); });
+      const offM = await page.evaluate(() => { PX.setObject(2, 4); PX.setEye(3, 4); return PX.state(); });
+      ok(`mirror ${tag}: a ray that misses the mirror reaches no eye`, before.visible && !offM.visible, `${before.hit} ${offM.hit}`);
+      ok(`mirror ${tag}: unseen image is still d behind`, offM.imageDist === 2 && (await page.$eval('#verdict', e => e.textContent)).includes('has not moved'));
+      const movedEye = await page.evaluate(() => { PX.setObject(2, 0.5); PX.setEye(3, -2); const a = PX.state(); PX.setEye(5, 2); const b = PX.state(); return [a, b]; });
+      ok(`mirror ${tag}: moving the eye never moves the image`, movedEye[0].imageDist === movedEye[1].imageDist && movedEye[0].imageY === movedEye[1].imageY && movedEye[0].hit !== movedEye[1].hit);
+      const wAmb = await page.evaluate(() => { PX.setWord('AMBULANCE'); return PX.state(); });
+      const wMom = await page.evaluate(() => { PX.setWord('MOM'); return PX.state(); });
+      ok(`mirror words ${tag}: AMBULANCE reverses, MOM looks the same`, wAmb.reversed === 'ECNALUBMA' && !wAmb.sameInMirror && wMom.sameInMirror);
+      await page.evaluate(() => PX.reset());
+      const hb = await (await page.$('#h-object')).boundingBox();
+      await page.mouse.move(hb.x + hb.width / 2, hb.y + hb.height / 2); await page.mouse.down();
+      await page.mouse.move(hb.x + hb.width / 2 - 30, hb.y + hb.height / 2, { steps: 3 }); await page.mouse.up();
+      const dragged = await page.evaluate(() => PX.state());
+      ok(`mirror ${tag}: dragging the object moves the image with it`, dragged.objectDist > 2 && dragged.imageDist === dragged.objectDist, dragged.objectDist);
+      const ovM = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
+      ok(`mirror ${tag}: no horizontal overflow`, ovM <= 0, ovM);
+
+      // ---- golden ratio: the angle from the Fibonacci limit, packing by brute force
+      await page.goto(base + 'golden-ratio-and-fibonacci/sim.html', { waitUntil: 'load' });
+      const fib = [1, 1]; while (fib.length < 40) fib.push(fib[fib.length - 1] + fib[fib.length - 2]);
+      const limit = fib[39] / fib[38], goldenAngle = 360 * (1 - 1 / limit);
+      const gs = await page.evaluate(() => { PX.reset(); return PX.state(); });
+      ok(`golden ${tag}: φ and the golden angle match the Fibonacci limit`, near(gs.phi, limit, 1e-9) && near(gs.golden, goldenAngle, 1e-6), `${gs.phi} ${gs.golden}`);
+      const closestPair = (a, n) => { const p = []; for (let i = 1; i <= n; i++) p.push([Math.sqrt(i) * Math.cos(i * a * Math.PI / 180), Math.sqrt(i) * Math.sin(i * a * Math.PI / 180)]);
+        let m = Infinity; for (let i = 0; i < n; i++) for (let j = i + 1; j < n; j++) m = Math.min(m, Math.hypot(p[i][0] - p[j][0], p[i][1] - p[j][1])); return m; };
+      const packs = {};
+      for (const a of [120, 135, 137, 138, 144]) packs[a] = await page.evaluate(v => { PX.setAngle(v); return PX.state(); }, a);
+      ok(`golden ${tag}: closest pair agrees with brute force`, near(gs.min, closestPair(goldenAngle, 300), 1e-6) && near(packs[135].min, closestPair(135, 300), 1e-6), gs.min.toFixed(3));
+      ok(`golden ${tag}: 137.5° beats every neighbour for packing`, [120, 135, 137, 138, 144].every(a => gs.min > packs[a].min), [120, 135, 137, 138, 144].map(a => packs[a].min.toFixed(2)).join(' '));
+      ok(`golden ${tag}: fractions leave bigger holes`, [120, 135, 144].every(a => packs[a].hole > 2 * gs.hole), `${gs.hole.toFixed(2)} vs ${packs[135].hole.toFixed(2)}`);
+      ok(`golden ${tag}: 120°, 135°, 144° make 3, 8, 5 spokes; the golden angle none`, packs[120].spokes === 3 && packs[135].spokes === 8 && packs[144].spokes === 5 && gs.spokes === 0);
+      await page.evaluate(() => PX.setAngle(135));
+      ok(`golden ${tag}: 135° is named 3/8 of a turn`, (await page.$eval('#verdict', e => e.textContent)).includes('3/8'));
+      const rim = await page.evaluate(() => { PX.golden(); PX.setSeeds(400); return PX.state().steps; });
+      ok(`golden ${tag}: rim neighbours 34 and 55 seeds apart (the reel's spiral counts)`, rim[0] === 34 && rim[1] === 55, rim.join(','));
+      for (const [a, b] of [[1, 1], [2, 7], [50, 3]]) {
+        const s = await page.evaluate(v => { PX.setStart(v[0], v[1]); return PX.state(); }, [a, b]);
+        let x = a, y = b; for (let i = 2; i < s.terms.length; i++) [x, y] = [y, x + y];
+        ok(`golden start ${a}, ${b} ${tag}: last term ${y}, ratio settles on φ`, s.terms[s.terms.length - 1] === y && near(s.ratios[s.ratios.length - 1], limit, 2e-3), s.ratios[s.ratios.length - 1].toFixed(5));
+      }
+      await page.evaluate(() => PX.reset());
+      await page.click('#grow');
+      await sleep(motion === 'reduce' ? 100 : 2500);
+      ok(`golden ${tag}: Grow it ends with every seed shown`, (await page.evaluate(() => PX.state().shown)) === 300);
+      const ovG = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
+      ok(`golden ${tag}: no horizontal overflow`, ovG <= 0, ovG);
+
+      // ---- coordinates: signs to quadrants, ordered pairs, Pythagoras
+      await page.goto(base + 'coordinates-introduction/sim.html', { waitUntil: 'load' });
+      for (const [x, y, name] of [[3, 2, 'Quadrant I'], [-2, 4, 'Quadrant II'], [-1, -3, 'Quadrant III'], [5, -2, 'Quadrant IV'], [0, 0, 'the origin'], [4, 0, 'on the x-axis'], [0, -3, 'on the y-axis']]) {
+        const s = await page.evaluate(v => { PX.reset(); PX.setP(v[0], v[1]); return PX.state(); }, [x, y]);
+        ok(`coordinates (${x}, ${y}) ${tag}: ${name}`, s.x === x && s.y === y && s.place === name, s.place);
+      }
+      for (const [a, b, c, d] of [[1, 1, 4, 5], [-2, -2, 3, 2], [0, 0, 6, 6], [-6, 6, 6, -6]]) {
+        const s = await page.evaluate(v => { PX.reset(); PX.setSecond(true); PX.setP(v[0], v[1]); PX.setQ(v[2], v[3]); return PX.state(); }, [a, b, c, d]);
+        const want = Math.sqrt((c - a) ** 2 + (d - b) ** 2);
+        ok(`coordinates (${a}, ${b}) to (${c}, ${d}) ${tag}: distance ${want.toFixed(3)}`, near(s.distance, want, 1e-9), s.distance);
+      }
+      ok(`coordinates ${tag}: last case shows a surd`, (await page.$eval('#s-d', e => e.textContent)).startsWith('√288'));
+      await page.evaluate(() => { PX.reset(); PX.setP(5, 1); PX.swap(); });
+      const sw = await page.evaluate(() => PX.state());
+      ok(`coordinates ${tag}: swapping gives a different point`, sw.x === 1 && sw.y === 5 && (await page.$eval('#verdict', e => e.textContent)).includes('ordered pair'));
+      const gm = await page.evaluate(() => { PX.reset(); PX.setGame(true); PX.setP(3, -4); return PX.state(); });
+      ok(`coordinates game ${tag}: swapped answer for (−4, 3) is caught`, !gm.hit && gm.target[0] === -4 && (await page.$eval('#verdict', e => e.textContent)).includes('You swapped them'));
+      await page.evaluate(() => PX.setP(4, -3));
+      ok(`coordinates game ${tag}: wrong signs for (−4, 3) are caught`, (await page.$eval('#verdict', e => e.textContent)).includes('wrong signs'));
+      await page.evaluate(() => PX.setP(-4, 3));
+      ok(`coordinates game ${tag}: the right point is accepted`, (await page.evaluate(() => PX.state().hit)) && (await page.$eval('#verdict', e => e.textContent)).includes('Exactly right'));
+      await page.evaluate(() => PX.reset());
+      const pb = await (await page.$('#plane')).boundingBox();
+      await page.mouse.click(pb.x + pb.width * (220 + 33 * 4) / 440, pb.y + pb.height * (220 + 33 * 2) / 440);
+      const tapped = await page.evaluate(() => PX.state());
+      ok(`coordinates ${tag}: a tap places the point at (4, −2)`, tapped.x === 4 && tapped.y === -2, `${tapped.x},${tapped.y}`);
+      const ovC = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
+      ok(`coordinates ${tag}: no horizontal overflow`, ovC <= 0, ovC);
+
+      // ---- real numbers: any route gives the trial-division primes; HCF by Euclid
+      await page.goto(base + 'real-numbers-introduction/sim.html', { waitUntil: 'load' });
+      const trial = v => { const f = []; for (let p = 2; p * p <= v; p++) while (v % p === 0) { f.push(p); v /= p; } if (v > 1) f.push(v); return f; };
+      for (const v of [360, 1001, 4096, 9999, 7560, 97]) {
+        const s = await page.evaluate(x => { PX.setN(x); const out = []; for (let i = 0; i < 6; i++) { PX.restart(); PX.auto(); out.push(PX.state().row.slice().sort((a, b) => a - b)); } return { rows: out, st: PX.state() }; }, v);
+        const want = JSON.stringify(trial(v));
+        ok(`primes ${v} ${tag}: six random routes all give ${trial(v).join('×')}`, s.rows.every(r => JSON.stringify(r) === want) && s.st.finished, JSON.stringify(s.rows[0]));
+      }
+      const r360 = await page.evaluate(() => { PX.setN(360); PX.split(0, 36); return PX.state(); });
+      ok(`primes ${tag}: 360 splits as 36 × 10`, JSON.stringify(r360.row) === '[36,10]', JSON.stringify(r360.row));
+      const routeA = await page.evaluate(() => { PX.split(0, 6); PX.split(0, 2); PX.split(2, 2); PX.split(4, 2); return PX.state(); });
+      ok(`primes ${tag}: route one ends in 2³ × 3² × 5`, routeA.finished && routeA.result === '2³ × 3² × 5', routeA.result);
+      const routeB = await page.evaluate(() => { PX.restart(); PX.split(0, 2); PX.split(1, 2); PX.split(2, 2); PX.split(3, 3); PX.split(4, 3); return PX.state(); });
+      ok(`primes ${tag}: route two gives the same, two routes counted`, routeB.result === '2³ × 3² × 5' && routeB.routes === 2, `${routeB.result} ${routeB.routes}`);
+      ok(`primes ${tag}: the verdict names the theorem`, (await page.$eval('#verdict', e => e.textContent)).includes('Fundamental Theorem'));
+      const badSplit = await page.evaluate(() => { PX.setN(360); return PX.split(0, 7); });
+      ok(`primes ${tag}: a non-factor is refused`, badSplit === false);
+      await page.evaluate(() => PX.setN(97));
+      ok(`primes ${tag}: a prime cannot be split`, (await page.$eval('#verdict', e => e.textContent)).includes('97 is prime'));
+      for (const [a, b] of [[12, 18], [96, 360], [35, 48], [9999, 7560], [17, 17]]) {
+        const s = await page.evaluate(v => { PX.setAB(v[0], v[1]); return PX.state(); }, [a, b]);
+        const h = gcd(a, b);
+        ok(`primes HCF ${a}, ${b} ${tag}: ${h}, LCM ${a * b / h}`, s.hcf === h && s.lcm === a * b / h && s.hcf * s.lcm === a * b, `${s.hcf} ${s.lcm}`);
+      }
+      await page.evaluate(() => { PX.setN(4096); PX.auto(); PX.setAB(9999, 7560); });
+      const ovR = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
+      ok(`primes ${tag}: no horizontal overflow on the longest case`, ovR <= 0, ovR);
+
+      // ---- position: the reel's table, then any origin leaves the displacement alone
+      await page.goto(base + 'position-origin-and-direction/sim.html', { waitUntil: 'load' });
+      const home0 = await page.evaluate(() => { PX.reset(); return PX.state(); });
+      ok(`position ${tag}: origin at home gives school −150, shop +200`, home0.positions.school === -150 && home0.positions.home === 0 && home0.positions.shop === 200, JSON.stringify(home0.positions));
+      const sch = await page.evaluate(() => { PX.reset(); PX.originAt('school'); return PX.state(); });
+      ok(`position ${tag}: origin at school gives 0, +150, +350 and still +200`, sch.positions.school === 0 && sch.positions.home === 150 && sch.positions.shop === 350 && sch.displacement === 200, JSON.stringify(sch.positions));
+      for (const o of [-300, -70, 0, 130, 400]) {
+        const s = await page.evaluate(v => { PX.reset(); PX.setOrigin(v); return PX.state(); }, o);
+        ok(`position origin ${o} ${tag}: positions shift by it, displacement +200`, s.positions.shop === 200 - o && s.positions.school === -150 - o && s.displacement === 200 && s.distance === 200, JSON.stringify(s.positions));
+      }
+      const fl = await page.evaluate(() => { PX.reset(); PX.flip(); return PX.state(); });
+      ok(`position flip ${tag}: signs reverse, displacement −200, distance 200`, fl.positions.shop === -200 && fl.positions.school === 150 && fl.displacement === -200 && fl.distance === 200, JSON.stringify(fl));
+      ok(`position flip ${tag}: no negative zero at the origin`, !Object.is(fl.positions.home, -0));
+      const tr = await page.evaluate(() => { PX.reset(); PX.setTrip('shop', 'school'); return PX.state(); });
+      ok(`position trip ${tag}: shop to school is −350 m`, tr.displacement === -350 && tr.distance === 350);
+      await page.evaluate(() => { PX.reset(); PX.setOrigin(100); });
+      ok(`position ${tag}: verdict says positions change, the trip does not`, (await page.$eval('#verdict', e => e.textContent)).includes('Every position changed'));
+      await page.evaluate(() => PX.reset());
+      const gb = await (await page.$('#grab')).boundingBox();
+      await page.mouse.move(gb.x + gb.width / 2, gb.y + gb.height / 2); await page.mouse.down();
+      await page.mouse.move(gb.x + gb.width / 2 + 40, gb.y + gb.height / 2, { steps: 3 }); await page.mouse.up();
+      const dg = await page.evaluate(() => PX.state());
+      ok(`position ${tag}: dragging the flag moves the origin`, dg.origin > 0 && dg.displacement === 200, dg.origin);
+      const ovP = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
+      ok(`position ${tag}: no horizontal overflow`, ovP <= 0, ovP);
+
+      // ---- ice: drop against Clausius-Clapeyron, the IAPWS anchor point, what no pressure can do
+      await page.goto(base + 'why-is-ice-slippery/sim.html', { waitUntil: 'load' });
+      const ccSlope = 273.15 * (1.0908e-3 - 1.0002e-3) / 333550; // dT/dP = T Δv / L, K per Pa
+      for (const [m, area, cm2] of [[60, 'shoes', 300], [60, 'skates', 10], [60, 'edge', 1], [150, 'edge', 1]]) {
+        const s = await page.evaluate(v => { PX.reset(); PX.setMass(v[0]); PX.setArea(v[1]); return PX.state(); }, [m, area]);
+        const load = m * 9.81 / (cm2 * 1e-4), want = load * ccSlope;
+        ok(`ice ${m} kg on ${area} ${tag}: pressure ${(load / 101325).toFixed(1)} atm above air`, near(s.loadAtm, load / 101325, 1e-6), s.loadAtm.toFixed(3));
+        // Clausius-Clapeyron at 0 °C is the tangent to the melting curve, so it only holds for small drops;
+        // the real curve steepens, so a bigger drop must sit a little above the tangent, never below it
+        if (want < 0.5) ok(`ice ${m} kg on ${area} ${tag}: drop within 3% of Clausius-Clapeyron (${want.toFixed(4)} °C)`, Math.abs(s.drop / want - 1) < 0.03, s.drop.toFixed(4));
+        else ok(`ice ${m} kg on ${area} ${tag}: drop just above the tangent ${want.toFixed(4)} °C (curve steepens)`, s.drop > want && s.drop < want * 1.06, s.drop.toFixed(4));
+        ok(`ice ${m} kg on ${area} ${tag}: a fraction of a degree at most`, s.drop < 1.2, s.drop.toFixed(3));
+      }
+      const minus1 = await page.evaluate(() => PX.meltP(272.15));
+      ok(`ice ${tag}: melting pressure at −1 °C is about 13 MPa`, near(minus1 / 1e6, 13.2, 0.3), (minus1 / 1e6).toFixed(2));
+      const anchor = await page.evaluate(() => [PX.meltP(251.165), PX.meltP(273.16)]);
+      ok(`ice ${tag}: melting curve hits the IAPWS points (208.566 MPa, 611.657 Pa)`, near(anchor[0] / 1e6, 208.566, 0.05) && near(anchor[1], 611.657, 1e-6), anchor.join(' '));
+      const rink = await page.evaluate(() => { PX.reset(); return PX.state(); });
+      const mNeed = rink.needAtm && (rink.needAtm - 1) * 101325 * 10e-4 / 9.81;
+      ok(`ice ${tag}: 60 kg on skates at −5 °C does not melt it; about ${Math.round(mNeed / 100) / 10} tonnes would`, !rink.melts && near(rink.massNeeded, mNeed, 1) && rink.massNeeded > 3000, rink.massNeeded.toFixed(0));
+      const warmI = await page.evaluate(() => { PX.reset(); PX.setArea('edge'); PX.setIce(-0.2); return PX.state(); });
+      ok(`ice ${tag}: a skate edge can melt ice at −0.2 °C`, warmI.melts && warmI.massNeeded < 60, warmI.massNeeded.toFixed(1));
+      const cold30 = await page.evaluate(() => { PX.reset(); PX.setIce(-30); return PX.state(); });
+      ok(`ice ${tag}: at −30 °C no pressure works, and the page says so`, !cold30.possible && !cold30.melts && (await page.$eval('#verdict', e => e.textContent)).includes('No pressure'));
+      const ovI = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
+      ok(`ice ${tag}: no horizontal overflow`, ovI <= 0, ovI);
       ok(`all sims ${tag}: no console errors`, errs.length === 0, errs.join(' | '));
       await ctx.close();
     }

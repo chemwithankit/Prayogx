@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="sim-id" content="LEARN-SUP-PHY-WHY-ICE-SLIPPERY-SIM">
+<title>Ice pressure test · PrayogX Learn simulation</title>
+<style>
+:root{--bg:#f4f4f1;--card:#fcfcfb;--line:#d9d9d4;--ink:#0b0b0b;--mut:#52514e;--acc:#2a78d6;--b:#6f4fd6;--good:#00743f;--neg:#c62828;--warm:#c4670a;--empty:#ececea}
+@media (prefers-color-scheme:dark){:root{--bg:#111110;--card:#1a1a19;--line:#34342f;--ink:#fff;--mut:#c3c2b7;--acc:#3987e5;--b:#a48bff;--good:#3fae7a;--neg:#ef5350;--warm:#f0a040;--empty:#2a2a28}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+.wrap{max-width:980px;margin:0 auto;padding:12px}
+h1{font-size:17px;margin:2px 0 8px}
+h2{font-size:15px;margin:0 0 6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin-top:10px}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.gap{margin-top:8px}
+button{font:inherit;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:9px;padding:6px 10px;cursor:pointer;min-height:40px;touch-action:manipulation}
+button[aria-pressed="true"]{background:var(--acc);border-color:var(--acc);color:#fff;font-weight:650}
+button:disabled{opacity:.45;cursor:default}
+.small{font-size:13px;color:var(--mut)}
+label.small{min-width:0}
+input[type=range]{flex:1 1 180px;min-width:0;height:40px;accent-color:var(--acc)}
+input[type=number],input[type=text]{font:inherit;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:9px;padding:6px 8px;min-height:40px;width:92px;max-width:100%}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:6px;margin-top:8px}
+.stat{padding:6px 10px;border-radius:10px;border:1px solid var(--line);background:var(--bg);min-width:0;overflow-wrap:anywhere}
+.stat b{display:block;font-size:12px;font-weight:600;color:var(--mut)}
+.stat span{font-size:17px;font-weight:700}
+.verdict{margin-top:8px;padding:8px 10px;border-radius:10px;border:1px solid var(--line);background:var(--bg);min-height:2.6em}
+svg{display:block;width:100%;height:auto;touch-action:none;user-select:none;-webkit-user-select:none}
+svg text{font-family:inherit;fill:var(--ink)}
+.drag{cursor:grab}
+.gauge{margin-top:10px}
+.gauge .lab{display:flex;justify-content:space-between;gap:8px;font-size:13px;color:var(--mut)}
+.track{position:relative;height:18px;border-radius:9px;background:var(--empty);overflow:hidden;margin-top:3px}
+.track i{position:absolute;left:0;top:0;bottom:0;background:var(--acc);border-radius:9px}
+.track u{position:absolute;top:0;bottom:0;width:3px;background:var(--neg);margin-left:-1px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>Ice pressure test: can your weight melt it?</h1>
+<div class="card">
+<div class="row"><label class="small" for="mass">Your mass <b id="massv"></b></label><input type="range" id="mass" min="20" max="150" step="1" aria-label="Mass in kilograms"></div>
+<div class="row gap"><span class="small">Standing on:</span><span class="row" id="areas"></span></div>
+<div class="row gap"><label class="small" for="ice">Ice temperature <b id="icev"></b></label><input type="range" id="ice" min="-30" max="-0.1" step="0.1" aria-label="Ice temperature in degrees Celsius"></div>
+<div class="row"><span class="small">Try:</span><button type="button" data-ice="-0.2">−0.2 °C</button><button type="button" data-ice="-5">−5 °C (ice rink)</button><button type="button" data-ice="-30">−30 °C</button><button type="button" id="reset">Reset</button></div>
+<div class="gauge">
+  <div class="lab"><span>Pressure from your weight</span><span>red mark: pressure needed to melt this ice</span></div>
+  <div class="track" aria-hidden="true"><i id="bar"></i><u id="mark"></u></div>
+  <div class="lab"><span>1 atm</span><span>10</span><span>100</span><span>1000</span><span>10 000 atm</span></div>
+</div>
+<div class="stats">
+  <div class="stat"><b>Your pressure on the ice</b><span id="s-p"></span></div>
+  <div class="stat"><b>Melting point falls by</b><span id="s-d"></span></div>
+  <div class="stat"><b>Pressure needed</b><span id="s-need"></span></div>
+  <div class="stat"><b>Mass needed to melt it</b><span id="s-m"></span></div>
+</div>
+<div class="verdict" id="verdict" aria-live="polite"></div>
+<p class="small" style="margin:8px 0 0">Model: the measured melting curve of ordinary ice (IAPWS), with typical contact areas. Real blades dig in and vary, so the areas are round figures.</p>
+</div>
+</div>
+<script>
+(function () {
+  "use strict";
+  var ATM = 101325, G = 9.81, TT = 273.16, PT = 611.657, FLOOR = 251.165;
+  var AREAS = { shoes: { name: "Two shoes", cm2: 300 }, skates: { name: "Two skate blades", cm2: 10 }, edge: { name: "One skate edge", cm2: 1 } };
+  var ORDER = ["shoes", "skates", "edge"];
+  var S = { mass: 60, area: "skates", ice: -5 };
+  function $(id) { return document.getElementById(id); }
+  /* melting pressure of ice Ih (IAPWS 2011), Pa, at T in kelvin */
+  function meltP(T) {
+    var th = T / TT;
+    return PT * (1 + 0.119539337e7 * (1 - Math.pow(th, 3)) + 0.808183159e5 * (1 - Math.pow(th, 25.75)) + 0.333826860e4 * (1 - Math.pow(th, 103.75)));
+  }
+  /* the melting temperature at a pressure, by bisection on the same curve */
+  function meltT(P) {
+    var lo = FLOOR, hi = TT, mid, i;
+    for (i = 0; i < 60; i++) { mid = (lo + hi) / 2; if (meltP(mid) > P) { lo = mid; } else { hi = mid; } }
+    return (lo + hi) / 2;
+  }
+  function model() {
+    var A = AREAS[S.area].cm2 * 1e-4, load = S.mass * G / A, P = ATM + load, base = meltT(ATM), drop = base - meltT(P), possible = base + S.ice >= FLOOR,
+      need = possible ? meltP(base + S.ice) : null, needLoad = possible ? Math.max(0, need - ATM) : null;
+    return { pressureAtm: P / ATM, loadAtm: load / ATM, drop: drop, meltsAt: -drop, possible: possible, needAtm: possible ? need / ATM : null, massNeeded: possible ? needLoad * A / G : null, melts: possible && drop >= -S.ice };
+  }
+  function logPct(atm) { return Math.max(0, Math.min(100, Math.log(atm) / Math.LN10 / 4 * 100)); }
+  function kg(v) {
+    if (v >= 1000) { return (v / 1000 >= 100 ? Math.round(v / 1000) : (v / 1000).toFixed(1)) + " tonnes"; }
+    return Math.round(v) + " kg";
+  }
+  function atm(v) { return v >= 100 ? String(Math.round(v)) + " atm" : v.toFixed(1) + " atm"; }
+  function drop(v) { return v < 0.01 ? v.toFixed(4) + " °C" : v.toFixed(2) + " °C"; }
+  function render() {
+    var m = model(), i, t;
+    $("massv").textContent = S.mass + " kg"; $("mass").value = String(S.mass);
+    $("icev").textContent = S.ice.toFixed(1).replace("-", "−") + " °C"; $("ice").value = String(S.ice);
+    for (i = 0; i < ORDER.length; i++) { $("a-" + ORDER[i]).setAttribute("aria-pressed", ORDER[i] === S.area ? "true" : "false"); }
+    $("bar").style.width = logPct(m.pressureAtm) + "%";
+    $("mark").style.left = (m.possible ? logPct(m.needAtm) : 100) + "%";
+    $("mark").style.display = m.possible ? "block" : "none";
+    $("s-p").textContent = atm(m.pressureAtm);
+    $("s-d").textContent = drop(m.drop);
+    $("s-need").textContent = m.possible ? atm(m.needAtm) : "none works";
+    $("s-m").textContent = m.possible ? kg(m.massNeeded) : "impossible";
+    t = " Ice is slippery anyway, so something else must do it: friction melts a film under a moving blade, and a thin liquid-like layer covers ice even when you stand still.";
+    if (!m.possible) {
+      $("verdict").innerHTML = "<b>No pressure can melt this ice.</b> Below about −22 °C ordinary ice turns into a denser ice instead of melting, yet ice this cold is still slippery." + t;
+    } else if (m.melts) {
+      $("verdict").innerHTML = "<b>Yes, but only just below 0 °C.</b> Your weight lowers the melting point by " + drop(m.drop) + ", enough for this ice. Now make it colder: most ice is far below this.";
+    } else {
+      $("verdict").innerHTML = "<b>No. Your weight lowers the melting point by only " + drop(m.drop) + ".</b> Melting this ice would take " + kg(m.massNeeded) + " on the same contact area." + t;
+    }
+  }
+  (function build() {
+    var i, b, btn;
+    for (i = 0; i < ORDER.length; i++) {
+      b = document.createElement("button"); b.type = "button"; b.id = "a-" + ORDER[i]; b.textContent = AREAS[ORDER[i]].name + " (" + AREAS[ORDER[i]].cm2 + " cm²)";
+      b.setAttribute("data-a", ORDER[i]);
+      b.onclick = function () { PX.setArea(this.getAttribute("data-a")); };
+      $("areas").appendChild(b);
+    }
+    $("mass").oninput = function () { PX.setMass(parseInt(this.value, 10)); };
+    $("ice").oninput = function () { PX.setIce(parseFloat(this.value)); };
+    $("reset").onclick = function () { PX.reset(); };
+    btn = document.querySelectorAll("[data-ice]");
+    for (i = 0; i < btn.length; i++) { btn[i].onclick = function () { PX.setIce(parseFloat(this.getAttribute("data-ice"))); }; }
+  }());
+
+  window.PX = {
+    setMass: function (v) { S.mass = v; render(); },
+    setArea: function (k) { S.area = k; render(); },
+    setIce: function (v) { S.ice = v; render(); },
+    reset: function () { S.mass = 60; S.area = "skates"; S.ice = -5; render(); },
+    meltP: meltP,
+    state: function () { var m = model(); m.mass = S.mass; m.area = S.area; m.areaCm2 = AREAS[S.area].cm2; m.ice = S.ice; return m; }
+  };
+  render();
+}());
+</script>
+</body>
+</html>

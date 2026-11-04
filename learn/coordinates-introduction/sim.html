@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="sim-id" content="LEARN-C9-MAT-COORDINATES-INTRO-SIM">
+<title>Plot lab · PrayogX Learn simulation</title>
+<style>
+:root{--bg:#f4f4f1;--card:#fcfcfb;--line:#d9d9d4;--ink:#0b0b0b;--mut:#52514e;--acc:#2a78d6;--b:#6f4fd6;--good:#00743f;--neg:#c62828;--warm:#c4670a;--empty:#ececea}
+@media (prefers-color-scheme:dark){:root{--bg:#111110;--card:#1a1a19;--line:#34342f;--ink:#fff;--mut:#c3c2b7;--acc:#3987e5;--b:#a48bff;--good:#3fae7a;--neg:#ef5350;--warm:#f0a040;--empty:#2a2a28}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+.wrap{max-width:980px;margin:0 auto;padding:12px}
+h1{font-size:17px;margin:2px 0 8px}
+h2{font-size:15px;margin:0 0 6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin-top:10px}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.gap{margin-top:8px}
+button{font:inherit;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:9px;padding:6px 10px;cursor:pointer;min-height:40px;touch-action:manipulation}
+button[aria-pressed="true"]{background:var(--acc);border-color:var(--acc);color:#fff;font-weight:650}
+button:disabled{opacity:.45;cursor:default}
+.small{font-size:13px;color:var(--mut)}
+label.small{min-width:0}
+input[type=range]{flex:1 1 180px;min-width:0;height:40px;accent-color:var(--acc)}
+input[type=number],input[type=text]{font:inherit;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:9px;padding:6px 8px;min-height:40px;width:92px;max-width:100%}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:6px;margin-top:8px}
+.stat{padding:6px 10px;border-radius:10px;border:1px solid var(--line);background:var(--bg);min-width:0;overflow-wrap:anywhere}
+.stat b{display:block;font-size:12px;font-weight:600;color:var(--mut)}
+.stat span{font-size:17px;font-weight:700}
+.verdict{margin-top:8px;padding:8px 10px;border-radius:10px;border:1px solid var(--line);background:var(--bg);min-height:2.6em}
+svg{display:block;width:100%;height:auto;touch-action:none;user-select:none;-webkit-user-select:none}
+svg text{font-family:inherit;fill:var(--ink)}
+.drag{cursor:grab}
+.lab{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:12px;align-items:start}
+@media (max-width:700px){.lab{grid-template-columns:1fr}}
+#plane{max-width:480px;margin:0 auto;cursor:crosshair}
+.target{font-size:17px;font-weight:750}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>Plot lab: two numbers pin any point</h1>
+<div class="card">
+<div class="lab">
+  <svg id="plane" viewBox="0 0 440 440" role="img" aria-label="Coordinate plane from minus 6 to 6 on both axes. Tap to place a point."></svg>
+  <div>
+    <div class="row">
+      <button type="button" id="free" aria-pressed="true">Explore</button>
+      <button type="button" id="game" aria-pressed="false">Plot this point</button>
+      <button type="button" id="reset">Reset</button>
+    </div>
+    <div class="row gap" id="xrow"><label class="small" for="px">x = <b id="pxv"></b></label><input type="range" id="px" min="-6" max="6" step="1" aria-label="x coordinate of P"></div>
+    <div class="row" id="yrow"><label class="small" for="py">y = <b id="pyv"></b></label><input type="range" id="py" min="-6" max="6" step="1" aria-label="y coordinate of P"></div>
+    <div id="task" hidden class="gap"><span class="small">Tap the plane to plot:</span> <span class="target" id="tgt"></span> <button type="button" id="next">Next point</button></div>
+    <div class="row gap">
+      <button type="button" id="swap">Swap x and y</button>
+      <button type="button" id="second" aria-pressed="false">Add a second point Q</button>
+    </div>
+    <div class="row gap" id="which" hidden><span class="small">A tap moves:</span><button type="button" id="moveP" aria-pressed="true">P</button><button type="button" id="moveQ" aria-pressed="false">Q</button></div>
+    <div class="stats">
+      <div class="stat"><b>P</b><span id="s-p"></span></div>
+      <div class="stat"><b>Where it is</b><span id="s-q"></span></div>
+      <div class="stat" id="distbox" hidden><b>P to Q</b><span id="s-d"></span></div>
+    </div>
+  </div>
+</div>
+<div class="verdict" id="verdict" aria-live="polite"></div>
+</div>
+</div>
+<script>
+(function () {
+  "use strict";
+  var NS = "http://www.w3.org/2000/svg", C = 220, U = 33, LIM = 6;
+  var TARGETS = [[-4, 3], [2, -5], [-3, -2], [0, 4], [5, 0], [1, 6]];
+  var S = { x: 3, y: 2, qx: -2, qy: -2, second: false, active: "P", game: false, ti: 0, swapped: false };
+  function $(id) { return document.getElementById(id); }
+  function el(name, a, txt) {
+    var e = document.createElementNS(NS, name), k;
+    for (k in a) { if (a.hasOwnProperty(k)) { e.setAttribute(k, a[k]); } }
+    if (txt !== undefined) { e.textContent = txt; }
+    return e;
+  }
+  function sx(v) { return C + v * U; }
+  function sy(v) { return C - v * U; }
+  function num(v) { return v < 0 ? "−" + Math.abs(v) : String(v); }
+  function pair(x, y) { return "(" + num(x) + ", " + num(y) + ")"; }
+  function place(x, y) {
+    if (x === 0 && y === 0) { return { name: "the origin", q: 0 }; }
+    if (y === 0) { return { name: "on the x-axis", q: 0 }; }
+    if (x === 0) { return { name: "on the y-axis", q: 0 }; }
+    if (x > 0 && y > 0) { return { name: "Quadrant I", q: 1 }; }
+    if (x < 0 && y > 0) { return { name: "Quadrant II", q: 2 }; }
+    if (x < 0 && y < 0) { return { name: "Quadrant III", q: 3 }; }
+    return { name: "Quadrant IV", q: 4 };
+  }
+  function steps(x, y) {
+    var a = x === 0 ? "stay on the y-axis" : Math.abs(x) + (x > 0 ? " right" : " left");
+    var b = y === 0 ? "stay on the x-axis" : Math.abs(y) + (y > 0 ? " up" : " down");
+    return a + ", then " + b;
+  }
+  function distance() {
+    var dx = Math.abs(S.qx - S.x), dy = Math.abs(S.qy - S.y), d2 = dx * dx + dy * dy, d = Math.sqrt(d2);
+    return { dx: dx, dy: dy, d2: d2, d: d, whole: Math.round(d) === d };
+  }
+  function line(g, x1, y1, x2, y2, col, w, dash) {
+    g.appendChild(el("line", { x1: x1, y1: y1, x2: x2, y2: y2, stroke: col, "stroke-width": w, "stroke-dasharray": dash || "none", "stroke-linecap": "round" }));
+  }
+  function render() {
+    var g = $("plane"), i, p = place(S.x, S.y), Q = [null, [1, -1], [-1, -1], [-1, 1], [1, 1]], t, D;
+    while (g.firstChild) { g.removeChild(g.firstChild); }
+    if (p.q) {
+      g.appendChild(el("rect", { x: p.q === 1 || p.q === 4 ? C : C - LIM * U, y: p.q === 1 || p.q === 2 ? C - LIM * U : C, width: LIM * U, height: LIM * U, fill: "var(--acc)", opacity: 0.14 }));
+    }
+    for (i = -LIM; i <= LIM; i++) {
+      line(g, sx(i), sy(-LIM), sx(i), sy(LIM), "var(--line)", 1);
+      line(g, sx(-LIM), sy(i), sx(LIM), sy(i), "var(--line)", 1);
+      if (i !== 0 && i % 2 === 0) {
+        g.appendChild(el("text", { x: sx(i), y: C + 16, "font-size": 12, "text-anchor": "middle" }, num(i)));
+        g.appendChild(el("text", { x: C - 7, y: sy(i) + 4, "font-size": 12, "text-anchor": "end" }, num(i)));
+      }
+    }
+    line(g, sx(-LIM) - 8, C, sx(LIM) + 8, C, "var(--ink)", 2);
+    line(g, C, sy(-LIM) - 8, C, sy(LIM) + 8, "var(--ink)", 2);
+    g.appendChild(el("text", { x: sx(LIM) + 10, y: C - 7, "font-size": 14, "text-anchor": "end", "font-weight": 700 }, "x"));
+    g.appendChild(el("text", { x: C + 8, y: sy(LIM) - 2, "font-size": 14, "font-weight": 700 }, "y"));
+    g.appendChild(el("text", { x: C - 8, y: C + 16, "font-size": 13, "text-anchor": "end", "font-weight": 700 }, "O"));
+    t = ["I", "II", "III", "IV"];
+    for (i = 1; i <= 4; i++) { g.appendChild(el("text", { x: C + Q[i][0] * 5.2 * U, y: C + Q[i][1] * 5.2 * U + 6, "font-size": 16, "text-anchor": "middle", fill: "var(--mut)", "font-weight": 700 }, t[i - 1])); }
+    /* the walk: along x first, then parallel to y */
+    line(g, C, C, sx(S.x), C, "var(--warm)", 4);
+    line(g, sx(S.x), C, sx(S.x), sy(S.y), "var(--b)", 4);
+    g.appendChild(el("circle", { cx: sx(S.x), cy: sy(S.y), r: 8, fill: "var(--neg)" }));
+    if (!S.game) {
+      g.appendChild(el("text", { x: sx(S.x) + (S.x > 3 ? -12 : 12), y: sy(S.y) - 10, "font-size": 14, "font-weight": 700, "text-anchor": S.x > 3 ? "end" : "start" }, "P" + pair(S.x, S.y)));
+    }
+    if (S.second && !S.game) {
+      line(g, sx(S.x), sy(S.y), sx(S.qx), sy(S.y), "var(--good)", 2.5, "6 5");
+      line(g, sx(S.qx), sy(S.y), sx(S.qx), sy(S.qy), "var(--good)", 2.5, "6 5");
+      line(g, sx(S.x), sy(S.y), sx(S.qx), sy(S.qy), "var(--good)", 3);
+      g.appendChild(el("circle", { cx: sx(S.qx), cy: sy(S.qy), r: 8, fill: "var(--good)" }));
+      g.appendChild(el("text", { x: sx(S.qx) + (S.qx > 3 ? -12 : 12), y: sy(S.qy) + 22, "font-size": 14, "font-weight": 700, "text-anchor": S.qx > 3 ? "end" : "start" }, "Q" + pair(S.qx, S.qy)));
+    }
+    /* readouts */
+    $("px").value = String(S.x); $("py").value = String(S.y);
+    $("pxv").textContent = num(S.x); $("pyv").textContent = num(S.y);
+    $("s-p").textContent = pair(S.x, S.y); $("s-q").textContent = p.name;
+    $("free").setAttribute("aria-pressed", S.game ? "false" : "true");
+    $("game").setAttribute("aria-pressed", S.game ? "true" : "false");
+    $("second").setAttribute("aria-pressed", S.second ? "true" : "false");
+    $("moveP").setAttribute("aria-pressed", S.active === "P" ? "true" : "false");
+    $("moveQ").setAttribute("aria-pressed", S.active === "Q" ? "true" : "false");
+    $("which").hidden = !S.second || S.game;
+    $("distbox").hidden = !S.second || S.game;
+    $("task").hidden = !S.game;
+    $("xrow").hidden = S.game; $("yrow").hidden = S.game;
+    $("swap").hidden = S.game; $("second").hidden = S.game;
+    if (S.game) {
+      t = TARGETS[S.ti];
+      $("tgt").textContent = pair(t[0], t[1]);
+      $("verdict").innerHTML = gameLine(t);
+      return;
+    }
+    if (S.second) {
+      D = distance();
+      $("s-d").textContent = D.whole ? String(D.d) : "√" + D.d2 + " ≈ " + D.d.toFixed(2);
+      $("verdict").innerHTML = "<b>Across " + D.dx + ", up or down " + D.dy + ".</b> The two legs make a right triangle, so the distance is √(" + D.dx + "² + " + D.dy + "²) = " + (D.whole ? D.d : "√" + D.d2 + " ≈ " + D.d.toFixed(2)) + ". No ruler needed: the numbers alone give it.";
+    } else if (S.swapped && S.x !== S.y) {
+      $("verdict").innerHTML = "<b>" + pair(S.x, S.y) + " is a different point from " + pair(S.y, S.x) + ".</b> The order matters: that is why it is called an ordered pair.";
+    } else {
+      $("verdict").innerHTML = "<b>From O: " + steps(S.x, S.y) + ".</b> " + (p.q ? "The signs (" + (S.x > 0 ? "+" : "−") + ", " + (S.y > 0 ? "+" : "−") + ") put it in " + p.name + "." : "A coordinate of 0 puts it on an axis, in no quadrant.");
+    }
+  }
+  function gameLine(t) {
+    if (S.x === t[0] && S.y === t[1]) { return "<b>Exactly right.</b> " + pair(t[0], t[1]) + " is " + steps(t[0], t[1]) + ". Press Next point."; }
+    if (S.x === t[1] && S.y === t[0]) { return "<b>You swapped them.</b> That is " + pair(S.x, S.y) + ". The first number is always x."; }
+    if (Math.abs(S.x) === Math.abs(t[0]) && Math.abs(S.y) === Math.abs(t[1])) { return "<b>Right sizes, wrong signs.</b> Check which way each number sends you."; }
+    return "You are at " + pair(S.x, S.y) + ". Start at O: first x, then y.";
+  }
+  function clampI(v) { return Math.max(-LIM, Math.min(LIM, Math.round(v))); }
+  function setP(x, y) { S.x = clampI(x); S.y = clampI(y); S.swapped = false; render(); }
+  function setQ(x, y) { S.qx = clampI(x); S.qy = clampI(y); render(); }
+  function tap(ev) {
+    var g = $("plane"), p = g.createSVGPoint(), q;
+    p.x = ev.clientX; p.y = ev.clientY; q = p.matrixTransform(g.getScreenCTM().inverse());
+    if (S.active === "Q" && S.second && !S.game) { setQ((q.x - C) / U, (C - q.y) / U); } else { setP((q.x - C) / U, (C - q.y) / U); }
+  }
+  var down = false;
+  $("plane").addEventListener("pointerdown", function (ev) { down = true; ev.preventDefault(); try { this.setPointerCapture(ev.pointerId); } catch (e) {} tap(ev); });
+  $("plane").addEventListener("pointermove", function (ev) { if (down) { tap(ev); } });
+  $("plane").addEventListener("pointerup", function () { down = false; });
+  $("plane").addEventListener("pointercancel", function () { down = false; });
+  $("px").oninput = function () { setP(parseInt(this.value, 10), S.y); };
+  $("py").oninput = function () { setP(S.x, parseInt(this.value, 10)); };
+  $("swap").onclick = function () { PX.swap(); };
+  $("second").onclick = function () { PX.setSecond(!S.second); };
+  $("moveP").onclick = function () { S.active = "P"; render(); };
+  $("moveQ").onclick = function () { S.active = "Q"; render(); };
+  $("free").onclick = function () { PX.setGame(false); };
+  $("game").onclick = function () { PX.setGame(true); };
+  $("next").onclick = function () { PX.nextTarget(); };
+  $("reset").onclick = function () { PX.reset(); };
+
+  window.PX = {
+    setP: setP, setQ: setQ,
+    swap: function () { var t = S.x; S.x = S.y; S.y = t; S.swapped = true; render(); },
+    setSecond: function (v) { S.second = !!v; S.active = v ? "Q" : "P"; render(); },
+    setGame: function (v) { S.game = !!v; if (v) { S.x = 0; S.y = 0; S.active = "P"; } render(); },
+    nextTarget: function () { S.ti = (S.ti + 1) % TARGETS.length; S.x = 0; S.y = 0; render(); },
+    reset: function () { S.x = 3; S.y = 2; S.qx = -2; S.qy = -2; S.second = false; S.active = "P"; S.game = false; S.ti = 0; S.swapped = false; render(); },
+    state: function () {
+      var D = distance(), t = TARGETS[S.ti];
+      return { x: S.x, y: S.y, qx: S.qx, qy: S.qy, place: place(S.x, S.y).name, quadrant: place(S.x, S.y).q, second: S.second, distance: D.d, dx: D.dx, dy: D.dy, game: S.game, target: t, hit: S.x === t[0] && S.y === t[1] };
+    }
+  };
+  render();
+}());
+</script>
+</body>
+</html>

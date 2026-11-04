@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="sim-id" content="LEARN-C9-PHY-POSITION-ORIGIN-SIM">
+<title>Origin mover · PrayogX Learn simulation</title>
+<style>
+:root{--bg:#f4f4f1;--card:#fcfcfb;--line:#d9d9d4;--ink:#0b0b0b;--mut:#52514e;--acc:#2a78d6;--b:#6f4fd6;--good:#00743f;--neg:#c62828;--warm:#c4670a;--empty:#ececea}
+@media (prefers-color-scheme:dark){:root{--bg:#111110;--card:#1a1a19;--line:#34342f;--ink:#fff;--mut:#c3c2b7;--acc:#3987e5;--b:#a48bff;--good:#3fae7a;--neg:#ef5350;--warm:#f0a040;--empty:#2a2a28}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+.wrap{max-width:980px;margin:0 auto;padding:12px}
+h1{font-size:17px;margin:2px 0 8px}
+h2{font-size:15px;margin:0 0 6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin-top:10px}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.gap{margin-top:8px}
+button{font:inherit;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:9px;padding:6px 10px;cursor:pointer;min-height:40px;touch-action:manipulation}
+button[aria-pressed="true"]{background:var(--acc);border-color:var(--acc);color:#fff;font-weight:650}
+button:disabled{opacity:.45;cursor:default}
+.small{font-size:13px;color:var(--mut)}
+label.small{min-width:0}
+input[type=range]{flex:1 1 180px;min-width:0;height:40px;accent-color:var(--acc)}
+input[type=number],input[type=text]{font:inherit;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:9px;padding:6px 8px;min-height:40px;width:92px;max-width:100%}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:6px;margin-top:8px}
+.stat{padding:6px 10px;border-radius:10px;border:1px solid var(--line);background:var(--bg);min-width:0;overflow-wrap:anywhere}
+.stat b{display:block;font-size:12px;font-weight:600;color:var(--mut)}
+.stat span{font-size:17px;font-weight:700}
+.verdict{margin-top:8px;padding:8px 10px;border-radius:10px;border:1px solid var(--line);background:var(--bg);min-height:2.6em}
+svg{display:block;width:100%;height:auto;touch-action:none;user-select:none;-webkit-user-select:none}
+svg text{font-family:inherit;fill:var(--ink)}
+.drag{cursor:grab}
+table{border-collapse:collapse;width:100%;margin-top:8px;font-size:15px}
+th,td{border:1px solid var(--line);padding:6px 8px;text-align:center}
+th{color:var(--mut);font-weight:600;font-size:13px}
+td b{font-size:16px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>Origin mover: what changes, what stays?</h1>
+<div class="card">
+<svg id="road" viewBox="0 0 640 230" role="img" aria-label="A straight road with a school, a home and a shop, and an origin flag you can drag"></svg>
+<div class="row gap">
+  <label class="small" for="org">Origin <b id="orgv"></b></label>
+  <input type="range" id="org" min="-300" max="400" step="10" aria-label="Where the origin sits along the road, in metres from home">
+</div>
+<div class="row">
+  <span class="small">Put it at:</span><span class="row" id="at"></span>
+  <button type="button" id="flip">Flip positive direction</button>
+  <button type="button" id="reset">Reset</button>
+</div>
+<div class="row gap"><span class="small">Trip from:</span><span class="row" id="from"></span></div>
+<div class="row gap"><span class="small">Trip to:</span><span class="row" id="to"></span></div>
+<table id="tbl"></table>
+<div class="stats">
+  <div class="stat"><b>Displacement (final − initial)</b><span id="s-disp"></span></div>
+  <div class="stat"><b>Distance along the road</b><span id="s-dist"></span></div>
+</div>
+<div class="verdict" id="verdict" aria-live="polite"></div>
+</div>
+</div>
+<script>
+(function () {
+  "use strict";
+  var NS = "http://www.w3.org/2000/svg";
+  var PLACES = { school: { name: "School", at: -150, col: "var(--b)" }, home: { name: "Home", at: 0, col: "var(--good)" }, shop: { name: "Shop", at: 200, col: "var(--warm)" } };
+  var ORDER = ["school", "home", "shop"];
+  var S = { origin: 0, dir: 1, from: "home", to: "shop", prev: null };
+  function $(id) { return document.getElementById(id); }
+  function el(name, a, txt) {
+    var e = document.createElementNS(NS, name), k;
+    for (k in a) { if (a.hasOwnProperty(k)) { e.setAttribute(k, a[k]); } }
+    if (txt !== undefined) { e.textContent = txt; }
+    return e;
+  }
+  /* labels and drag targets stay readable when the drawing is scaled down on a phone */
+  function textScale(id, vbw) { var w = $(id).getBoundingClientRect().width; return w > 0 ? Math.max(1, 13 / (14 * w / vbw)) : 1; }
+  function X(w) { return 30 + (w + 320) * 580 / 740; }
+  function pos(key) { var v = S.dir * (PLACES[key].at - S.origin); return v === 0 ? 0 : v; }
+  function sgn(v) { return v === 0 ? "0 m" : (v > 0 ? "+" : "−") + Math.abs(v) + " m"; }
+  function disp() { var v = pos(S.to) - pos(S.from); return v === 0 ? 0 : v; }
+  function dist() { return Math.abs(PLACES[S.to].at - PLACES[S.from].at); }
+  function render() {
+    var g = $("road"), k, i, p, t, html, d = disp(), x0, x1, y = 124, ox = X(S.origin), arrow, Z = textScale("road", 640), fs = 14 * Z;
+    while (g.firstChild) { g.removeChild(g.firstChild); }
+    g.appendChild(el("rect", { x: 10, y: y - 11, width: 620, height: 22, rx: 5, fill: "var(--empty)" }));
+    /* the ruler belongs to the origin: its numbers move with the flag */
+    for (i = -7; i <= 7; i++) {
+      t = S.origin + i * 100;
+      if (t >= -320 && t <= 420) {
+        g.appendChild(el("line", { x1: X(t), y1: y + 11, x2: X(t), y2: y + 19, stroke: "var(--mut)", "stroke-width": 1.5 }));
+        g.appendChild(el("text", { x: X(t), y: y + 19 + fs, "font-size": fs * 0.95, "text-anchor": "middle", fill: "var(--mut)" }, sgn(S.dir * i * 100).replace(" m", "")));
+      }
+    }
+    for (i = 0; i < 3; i++) {
+      k = ORDER[i]; p = PLACES[k];
+      g.appendChild(el("rect", { x: X(p.at) - 15, y: y - 42, width: 30, height: 30, rx: 5, fill: p.col }));
+      g.appendChild(el("path", { d: "M" + (X(p.at) - 19) + " " + (y - 41) + "L" + X(p.at) + " " + (y - 58) + "L" + (X(p.at) + 19) + " " + (y - 41) + "Z", fill: p.col }));
+      g.appendChild(el("text", { x: X(p.at), y: y - 64, "font-size": fs, "text-anchor": "middle", "font-weight": 700 }, p.name));
+    }
+    /* trip arrow */
+    if (S.from !== S.to) {
+      x0 = X(PLACES[S.from].at); x1 = X(PLACES[S.to].at); arrow = x1 > x0 ? -9 : 9;
+      g.appendChild(el("line", { x1: x0, y1: y, x2: x1, y2: y, stroke: "var(--acc)", "stroke-width": 5 }));
+      g.appendChild(el("path", { d: "M" + x1 + " " + y + "l" + arrow + " -8l0 16Z", fill: "var(--acc)" }));
+    }
+    /* origin flag and positive direction */
+    g.appendChild(el("line", { x1: ox, y1: y + 14, x2: ox, y2: y - 26, stroke: "var(--neg)", "stroke-width": 3 }));
+    g.appendChild(el("path", { d: "M" + ox + " " + (y - 26) + "l20 7l-20 7Z", fill: "var(--neg)" }));
+    g.appendChild(el("text", { x: ox, y: y + 24 + fs * 2, "font-size": fs, "text-anchor": "middle", "font-weight": 700, fill: "var(--neg)" }, "O"));
+    g.appendChild(el("text", { x: S.dir > 0 ? 626 : 14, y: 224, "font-size": fs, "font-weight": 700, "text-anchor": S.dir > 0 ? "end" : "start" }, S.dir > 0 ? "positive →" : "← positive"));
+    g.appendChild(el("circle", { id: "grab", "class": "drag", cx: ox, cy: y - 2, r: 34 * Z, fill: "transparent" }));
+
+    $("org").value = String(S.origin);
+    $("orgv").textContent = S.origin === 0 ? "at Home" : Math.abs(S.origin) + " m " + (S.origin > 0 ? "right" : "left") + " of Home";
+    html = "<tr>";
+    for (i = 0; i < 3; i++) { html += "<th>" + PLACES[ORDER[i]].name + "</th>"; }
+    html += "</tr><tr>";
+    for (i = 0; i < 3; i++) { html += "<td><b>" + sgn(pos(ORDER[i])) + "</b></td>"; }
+    $("tbl").innerHTML = html + "</tr>";
+    $("s-disp").textContent = sgn(d); $("s-dist").textContent = dist() + " m";
+    btns("at", "data-at", null); btns("from", "data-k", S.from); btns("to", "data-k", S.to);
+    verdict(d);
+  }
+  function btns(box, attr, val) {
+    var b = $(box).querySelectorAll("button"), i, k;
+    for (i = 0; i < b.length; i++) {
+      k = b[i].getAttribute(attr);
+      b[i].setAttribute("aria-pressed", (val === null ? PLACES[k].at === S.origin : k === val) ? "true" : "false");
+    }
+  }
+  function verdict(d) {
+    var from = PLACES[S.from].name, to = PLACES[S.to].name, p = S.prev;
+    if (S.from === S.to) {
+      $("verdict").innerHTML = "<b>Same start and end.</b> Displacement is 0 wherever the origin is.";
+    } else if (p === "flip") {
+      $("verdict").innerHTML = "<b>Every sign flipped, every size stayed.</b> " + from + " to " + to + " is now " + sgn(d) + ": the same trip, described with the opposite convention. The distance is still " + dist() + " m.";
+    } else if (p === "origin") {
+      $("verdict").innerHTML = "<b>Every position changed, the trip did not.</b> Moving O shifts all positions by the same amount, so final − initial = " + sgn(pos(S.to)) + " − (" + sgn(pos(S.from)) + ") = " + sgn(d) + " still.";
+    } else {
+      $("verdict").innerHTML = "<b>" + from + " to " + to + ": " + sgn(pos(S.to)) + " − (" + sgn(pos(S.from)) + ") = " + sgn(d) + ".</b> Predict: if you drag the flag, what will change, the positions, the displacement or both?";
+    }
+  }
+  function setOrigin(v) { S.origin = Math.max(-300, Math.min(400, Math.round(v / 10) * 10)); S.prev = "origin"; render(); }
+  var drag = false;
+  function point(ev) {
+    var g = $("road"), p = g.createSVGPoint(), q;
+    p.x = ev.clientX; p.y = ev.clientY; q = p.matrixTransform(g.getScreenCTM().inverse());
+    return (q.x - 30) * 740 / 580 - 320;
+  }
+  $("road").addEventListener("pointerdown", function (ev) {
+    if (ev.target.id !== "grab") { return; }
+    drag = true; ev.preventDefault();
+    try { this.setPointerCapture(ev.pointerId); } catch (e) {}
+  });
+  $("road").addEventListener("pointermove", function (ev) { if (drag) { setOrigin(point(ev)); } });
+  $("road").addEventListener("pointerup", function () { drag = false; });
+  $("road").addEventListener("pointercancel", function () { drag = false; });
+  $("org").oninput = function () { setOrigin(parseInt(this.value, 10)); };
+  window.addEventListener("resize", render);
+  $("flip").onclick = function () { PX.flip(); };
+  $("reset").onclick = function () { PX.reset(); };
+  (function () {
+    var i, b, k;
+    function add(box, attr, fn) {
+      for (i = 0; i < 3; i++) {
+        k = ORDER[i]; b = document.createElement("button"); b.type = "button"; b.textContent = PLACES[k].name; b.setAttribute(attr, k); b.onclick = fn;
+        $(box).appendChild(b);
+      }
+    }
+    add("at", "data-at", function () { PX.originAt(this.getAttribute("data-at")); });
+    add("from", "data-k", function () { PX.setTrip(this.getAttribute("data-k"), S.to); });
+    add("to", "data-k", function () { PX.setTrip(S.from, this.getAttribute("data-k")); });
+  }());
+
+  window.PX = {
+    setOrigin: setOrigin,
+    originAt: function (k) { setOrigin(PLACES[k].at); },
+    flip: function () { S.dir = -S.dir; S.prev = "flip"; render(); },
+    setDir: function (d) { S.dir = d; S.prev = "flip"; render(); },
+    setTrip: function (a, b) { S.from = a; S.to = b; S.prev = null; render(); },
+    reset: function () { S.origin = 0; S.dir = 1; S.from = "home"; S.to = "shop"; S.prev = null; render(); },
+    state: function () { return { origin: S.origin, dir: S.dir, from: S.from, to: S.to, positions: { school: pos("school"), home: pos("home"), shop: pos("shop") }, displacement: disp(), distance: dist() }; }
+  };
+  render();
+}());
+</script>
+</body>
+</html>

@@ -145,8 +145,18 @@
   }
  ],
  "simulation": {
-  "decision": "NOT_REQUIRED",
-  "reason": "A short enrichment topic; the reel already shows the seed-packing model."
+  "decision": "REQUIRED",
+  "status": "pass",
+  "path": "sim.html",
+  "reason": "The claim that 137.5° packs best is only convincing when students can try to beat it: moving the angle by a fraction of a degree breaks the pattern, simple fractions collapse into spokes, and the spiral counts come out of the seeds. Choosing their own starting numbers tests whether the ratio really needs Fibonacci's 1, 1.",
+  "objective": "Change the turn between seeds and find the angle that packs best, then test whether any start leads to φ.",
+  "instructions": [
+   "Move the angle slider and watch the seeds; try 135°, 137°, 137.5° and 138°.",
+   "Compare the closest two seeds and the biggest hole for each angle.",
+   "At 137.5°, colour the spirals with 21, 34 and 55.",
+   "Enter your own two starting numbers and watch the ratio."
+  ],
+  "qa": "tests/learn_sims.js 654/654 (2026-11-04)"
  },
  "related": []
 }

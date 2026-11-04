@@ -131,8 +131,18 @@
   }
  ],
  "simulation": {
-  "decision": "NOT_REQUIRED",
-  "reason": "The reel's number line already shows it; the motion topics that follow have their own pages."
+  "decision": "REQUIRED",
+  "status": "pass",
+  "path": "sim.html",
+  "reason": "What depends on the origin and what does not is a hypothesis to test: dragging the origin to any point and flipping the positive direction shows every position change while the displacement stays fixed (and only its sign flips with the direction). A fixed example shows this for one or two origins, not any origin.",
+  "objective": "Move the origin and flip the direction, and find which numbers change and which stay the same.",
+  "instructions": [
+   "Predict what will change, then drag the red flag along the road.",
+   "Put the origin at School and compare the table with the notes.",
+   "Press Flip positive direction and compare the signs and sizes.",
+   "Choose another trip and repeat."
+  ],
+  "qa": "tests/learn_sims.js 654/654 (2026-11-04)"
  },
  "related": [
   "distance-vs-displacement",

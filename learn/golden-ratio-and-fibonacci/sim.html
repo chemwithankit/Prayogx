@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="sim-id" content="LEARN-SUP-MAT-GOLDEN-RATIO-SIM">
+<title>Golden lab · PrayogX Learn simulation</title>
+<style>
+:root{--bg:#f4f4f1;--card:#fcfcfb;--line:#d9d9d4;--ink:#0b0b0b;--mut:#52514e;--acc:#2a78d6;--b:#6f4fd6;--good:#00743f;--neg:#c62828;--warm:#c4670a;--empty:#ececea}
+@media (prefers-color-scheme:dark){:root{--bg:#111110;--card:#1a1a19;--line:#34342f;--ink:#fff;--mut:#c3c2b7;--acc:#3987e5;--b:#a48bff;--good:#3fae7a;--neg:#ef5350;--warm:#f0a040;--empty:#2a2a28}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+.wrap{max-width:980px;margin:0 auto;padding:12px}
+h1{font-size:17px;margin:2px 0 8px}
+h2{font-size:15px;margin:0 0 6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin-top:10px}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.gap{margin-top:8px}
+button{font:inherit;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:9px;padding:6px 10px;cursor:pointer;min-height:40px;touch-action:manipulation}
+button[aria-pressed="true"]{background:var(--acc);border-color:var(--acc);color:#fff;font-weight:650}
+button:disabled{opacity:.45;cursor:default}
+.small{font-size:13px;color:var(--mut)}
+label.small{min-width:0}
+input[type=range]{flex:1 1 180px;min-width:0;height:40px;accent-color:var(--acc)}
+input[type=number],input[type=text]{font:inherit;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:9px;padding:6px 8px;min-height:40px;width:92px;max-width:100%}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:6px;margin-top:8px}
+.stat{padding:6px 10px;border-radius:10px;border:1px solid var(--line);background:var(--bg);min-width:0;overflow-wrap:anywhere}
+.stat b{display:block;font-size:12px;font-weight:600;color:var(--mut)}
+.stat span{font-size:17px;font-weight:700}
+.verdict{margin-top:8px;padding:8px 10px;border-radius:10px;border:1px solid var(--line);background:var(--bg);min-height:2.6em}
+svg{display:block;width:100%;height:auto;touch-action:none;user-select:none;-webkit-user-select:none}
+svg text{font-family:inherit;fill:var(--ink)}
+.drag{cursor:grab}
+.flower{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px;align-items:start;margin-top:8px}
+@media (max-width:700px){.flower{grid-template-columns:1fr}}
+canvas{display:block;width:100%;max-width:440px;aspect-ratio:1;margin:0 auto;border-radius:12px;background:var(--bg);border:1px solid var(--line)}
+#chart{max-width:680px;margin:6px auto 0}
+.terms{margin-top:8px;overflow-wrap:anywhere;font-weight:650}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>Golden lab: why one angle wins</h1>
+<div class="card">
+<h2>1. Grow a sunflower: choose the turn between seeds</h2>
+<div class="flower">
+  <canvas id="cv" role="img" aria-label="Seeds placed one after another, each turned by the chosen angle"></canvas>
+  <div>
+    <div class="row">
+      <label class="small" for="ang">Turn <b id="angv"></b></label>
+      <input type="range" id="ang" min="90" max="180" step="0.1" aria-label="Turn between seeds in degrees">
+    </div>
+    <div class="row" id="presets"></div>
+    <div class="row gap">
+      <label class="small" for="num">Seeds <b id="numv"></b></label>
+      <input type="range" id="num" min="50" max="500" step="10" aria-label="Number of seeds">
+    </div>
+    <div class="row gap"><button type="button" id="grow">Grow it</button><button type="button" id="reset">Reset</button></div>
+    <div class="row gap"><span class="small">Colour the spirals:</span><span class="row" id="arms"></span></div>
+    <div class="stats">
+      <div class="stat"><b>Closest two seeds</b><span id="s-min"></span></div>
+      <div class="stat"><b>Biggest empty hole</b><span id="s-hole"></span></div>
+      <div class="stat"><b>Rim neighbours are</b><span id="s-steps"></span></div>
+    </div>
+  </div>
+</div>
+<div class="verdict" id="verdict" aria-live="polite"></div>
+</div>
+<div class="card">
+<h2>2. Does the ratio need Fibonacci's start?</h2>
+<div class="row">
+  <label class="small" for="a">First</label><input type="number" id="a" min="1" max="99" step="1">
+  <label class="small" for="b">Second</label><input type="number" id="b" min="1" max="99" step="1">
+  <button type="button" data-ab="1,1">1, 1</button><button type="button" data-ab="2,7">2, 7</button><button type="button" data-ab="50,3">50, 3</button>
+</div>
+<div class="terms" id="terms"></div>
+<svg id="chart" viewBox="0 0 640 220" role="img" aria-label="Each term divided by the term before it, settling on the golden ratio"></svg>
+<div class="verdict" id="rverdict" aria-live="polite"></div>
+</div>
+</div>
+<script>
+(function () {
+  "use strict";
+  var NS = "http://www.w3.org/2000/svg", PHI = (1 + Math.sqrt(5)) / 2, GOLD = 360 / (PHI * PHI), TERMS = 14;
+  var S = { angle: GOLD, n: 300, shown: 300, arms: 0, a: 1, b: 1 }, cache = null, timer = null;
+  var reduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function $(id) { return document.getElementById(id); }
+  function seeds(angle, n) {
+    var out = [], i, r, t;
+    for (i = 1; i <= n; i++) { r = Math.sqrt(i); t = i * angle * Math.PI / 180; out.push([r * Math.cos(t), r * Math.sin(t)]); }
+    return out;
+  }
+  function measure() {
+    var key = S.angle + "|" + S.n, s, i, j, d, best, bj, min = 1e9, counts = {}, list = [], k, R, G = 40, gx, gy, X, Y, hole = 0, spokes = 0, p, q;
+    if (cache && cache.key === key) { return cache; }
+    s = seeds(S.angle, S.n);
+    for (i = 0; i < s.length; i++) {
+      best = 1e9; bj = -1;
+      for (j = 0; j < s.length; j++) {
+        if (j !== i) {
+          d = (s[i][0] - s[j][0]) * (s[i][0] - s[j][0]) + (s[i][1] - s[j][1]) * (s[i][1] - s[j][1]);
+          if (d < best) { best = d; bj = j; }
+        }
+      }
+      if (best < min) { min = best; }
+      if (i >= s.length * 0.75) { k = Math.abs(i - bj); counts[k] = (counts[k] || 0) + 1; }
+    }
+    for (k in counts) { if (counts.hasOwnProperty(k)) { list.push({ step: parseInt(k, 10), count: counts[k] }); } }
+    list.sort(function (u, v) { return v.count - u.count; });
+    R = Math.sqrt(S.n);
+    for (gx = 0; gx < G; gx++) {
+      for (gy = 0; gy < G; gy++) {
+        X = (gx / (G - 1) * 2 - 1) * R; Y = (gy / (G - 1) * 2 - 1) * R;
+        if (X * X + Y * Y <= R * R * 0.8) {
+          best = 1e9;
+          for (k = 0; k < s.length; k++) { d = (s[k][0] - X) * (s[k][0] - X) + (s[k][1] - Y) * (s[k][1] - Y); if (d < best) { best = d; } }
+          if (best > hole) { hole = best; }
+        }
+      }
+    }
+    for (q = 1; q <= 34 && !spokes; q++) {
+      p = q * S.angle / 360;
+      if (Math.abs(p - Math.round(p)) < 0.0015) { spokes = q; }
+    }
+    cache = { key: key, seeds: s, min: Math.sqrt(min), hole: Math.sqrt(hole), steps: list.slice(0, 2).map(function (x) { return x.step; }).sort(function (u, v) { return u - v; }), spokes: spokes,
+      turnsNum: spokes ? Math.round(spokes * S.angle / 360) : 0 };
+    return cache;
+  }
+  function closest(angle) {
+    var s = seeds(angle, S.n), i, j, d, min = 1e9;
+    for (i = 0; i < s.length; i++) {
+      for (j = i + 1; j < s.length; j++) {
+        d = (s[i][0] - s[j][0]) * (s[i][0] - s[j][0]) + (s[i][1] - s[j][1]) * (s[i][1] - s[j][1]);
+        if (d < min) { min = d; }
+      }
+    }
+    return Math.sqrt(min);
+  }
+  /* seeds on one spiral share n mod k; neighbouring spirals differ by the previous Fibonacci number,
+     so this puts the arms in order round the head and the colours run smoothly from arm to arm */
+  function armOrder(n) {
+    var k = S.arms, prev = { 13: 8, 21: 13, 34: 21, 55: 34 }[k], inv = 1;
+    while ((prev * inv) % k !== 1) { inv += 1; }
+    return ((n % k) * inv) % k;
+  }
+  function css(n) { return getComputedStyle(document.documentElement).getPropertyValue(n); }
+  function drawFlower() {
+    var c = $("cv"), w = c.clientWidth || 320, r = window.devicePixelRatio || 1, x = c.getContext("2d"), m = measure(), R = Math.sqrt(S.n), sc = (w / 2 - 8) / (R + 0.8), i, col = css("--warm");
+    if (c.width !== Math.round(w * r)) { c.width = Math.round(w * r); c.height = Math.round(w * r); }
+    x.setTransform(r, 0, 0, r, 0, 0);
+    x.clearRect(0, 0, w, w);
+    for (i = 0; i < S.shown && i < m.seeds.length; i++) {
+      x.fillStyle = S.arms ? "hsl(" + Math.round(armOrder(i + 1) / S.arms * 360) + ",80%," + (armOrder(i + 1) % 2 ? 30 : 62) + "%)" : col;
+      x.beginPath();
+      x.arc(w / 2 + m.seeds[i][0] * sc, w / 2 + m.seeds[i][1] * sc, Math.max(1.2, sc * 0.42), 0, 6.2832);
+      x.fill();
+    }
+  }
+  function render() {
+    var m = measure(), i, b, gold = Math.abs(S.angle - GOLD) < 0.01;
+    $("angv").textContent = (gold ? GOLD.toFixed(1) : S.angle.toFixed(1)) + "°";
+    $("ang").value = String(Math.round(S.angle * 10) / 10);
+    $("numv").textContent = String(S.n); $("num").value = String(S.n);
+    b = document.querySelectorAll("[data-angle]");
+    for (i = 0; i < b.length; i++) { b[i].setAttribute("aria-pressed", Math.abs(parseFloat(b[i].getAttribute("data-angle")) - S.angle) < 0.001 ? "true" : "false"); }
+    b = document.querySelectorAll("[data-arms]");
+    for (i = 0; i < b.length; i++) { b[i].setAttribute("aria-pressed", parseInt(b[i].getAttribute("data-arms"), 10) === S.arms ? "true" : "false"); }
+    drawFlower();
+    $("s-min").textContent = m.min.toFixed(2); $("s-hole").textContent = m.hole.toFixed(2);
+    $("s-steps").textContent = m.steps.join(" and ") + " seeds apart";
+    if (m.spokes) {
+      $("verdict").innerHTML = "<b>" + m.turnsNum + "/" + m.spokes + " of a turn: seeds fall into " + m.spokes + " straight spokes</b> with wasted space between them. Every " + m.spokes + "th seed lands in the same direction as the last.";
+    } else if (gold) {
+      $("verdict").innerHTML = "<b>360°/φ² = " + GOLD.toFixed(3) + "°: the seeds spread evenly.</b> φ is the number hardest to approximate by a fraction, so no direction ever repeats closely. Neighbours on the rim are " + m.steps.join(" and ") + " seeds apart, and those are the spiral counts you can colour.";
+    } else {
+      $("verdict").innerHTML = "<b>" + S.angle.toFixed(1) + "°: close, but look at the gaps.</b> The closest two seeds are " + m.min.toFixed(2) + " apart; at the golden angle they would be " + closest(GOLD).toFixed(2) + " apart. Move the slider a little either way and watch the pattern.";
+    }
+  }
+  function terms() {
+    var t = [S.a, S.b], i;
+    for (i = 2; i < TERMS; i++) { t.push(t[i - 1] + t[i - 2]); }
+    return t;
+  }
+  function el(name, a, txt) {
+    var e = document.createElementNS(NS, name), k;
+    for (k in a) { if (a.hasOwnProperty(k)) { e.setAttribute(k, a[k]); } }
+    if (txt !== undefined) { e.textContent = txt; }
+    return e;
+  }
+  function ratios() { var t = terms(), o = [], i; for (i = 1; i < t.length; i++) { o.push(t[i] / t[i - 1]); } return o; }
+  /* labels and drag targets stay readable when the drawing is scaled down on a phone */
+  function textScale(id, vbw) { var w = $(id).getBoundingClientRect().width; return w > 0 ? Math.max(1, 13 / (14 * w / vbw)) : 1; }
+  function renderChart() {
+    var Z = textScale("chart", 640), fs = 13 * Z, g = $("chart"), t = terms(), r = ratios(), L = 18 + 28 * Z, W = 626 - L, T = 12, H = 180, lo = 1, hi = 2.5, i, x, y, pts = "", v, capped;
+    while (g.firstChild) { g.removeChild(g.firstChild); }
+    function px(k) { return L + k / (r.length - 1) * W; }
+    function py(val) { return T + (hi - Math.max(lo, Math.min(hi, val))) / (hi - lo) * H; }
+    for (v = 1; v <= 2.5; v += 0.5) {
+      g.appendChild(el("line", { x1: L, y1: py(v), x2: L + W, y2: py(v), stroke: "var(--line)", "stroke-width": 1 }));
+      g.appendChild(el("text", { x: L - 8, y: py(v) + fs * 0.35, "font-size": fs, "text-anchor": "end" }, v.toFixed(1)));
+    }
+    g.appendChild(el("line", { x1: L, y1: py(PHI), x2: L + W, y2: py(PHI), stroke: "var(--warm)", "stroke-width": 2, "stroke-dasharray": "7 5" }));
+    g.appendChild(el("text", { x: L + W, y: py(PHI) - 7, "font-size": fs, "text-anchor": "end", "font-weight": 700 }, "φ = 1.618…"));
+    g.appendChild(el("text", { x: L + W / 2, y: 216, "font-size": fs, "text-anchor": "middle" }, "term ÷ the term before it, step by step"));
+    for (i = 0; i < r.length; i++) { x = px(i); y = py(r[i]); pts += (i ? " " : "") + x + "," + y; }
+    g.appendChild(el("polyline", { points: pts, fill: "none", stroke: "var(--acc)", "stroke-width": 2.5 }));
+    for (i = 0; i < r.length; i++) {
+      capped = r[i] > hi || r[i] < lo;
+      g.appendChild(el("circle", { cx: px(i), cy: py(r[i]), r: 4.5, fill: capped ? "var(--neg)" : "var(--acc)" }));
+    }
+    $("a").value = String(S.a); $("b").value = String(S.b);
+    $("terms").textContent = t.slice(0, 11).join(", ") + ", …";
+    i = r.length - 1;
+    $("rverdict").innerHTML = "<b>" + t[i + 1] + " ÷ " + t[i] + " = " + r[i].toFixed(6) + ",</b> only " + Math.abs(r[i] - PHI).toFixed(6) + " from φ. " +
+      (S.a === 1 && S.b === 1 ? "Now try other starting numbers: does the ratio still go there?" : "A different start, the same destination: it is the add-the-last-two rule that makes φ, not the numbers 1, 1.") +
+      (r[0] > hi || r[0] < lo ? " (Red dots are off the scale.)" : "");
+  }
+  function stop() { if (timer !== null) { clearInterval(timer); timer = null; } }
+  function grow() {
+    stop();
+    if (reduced) { S.shown = S.n; render(); return; }
+    S.shown = 0;
+    timer = setInterval(function () {
+      S.shown = Math.min(S.n, S.shown + Math.max(2, Math.round(S.n / 60)));
+      drawFlower();
+      if (S.shown >= S.n) { stop(); }
+    }, 30);
+  }
+  function setAngle(v) { stop(); S.angle = v; S.shown = S.n; render(); }
+  function setSeeds(n) { stop(); S.n = n; S.shown = n; render(); }
+  function setStart(a, b) {
+    S.a = Math.max(1, Math.min(99, Math.round(a) || 1)); S.b = Math.max(1, Math.min(99, Math.round(b) || 1)); renderChart();
+  }
+  (function build() {
+    var P = [[120, "120°"], [135, "135°"], [137, "137°"], [GOLD, "137.5°"], [138, "138°"], [144, "144°"]], A = [[0, "Off"], [13, "13"], [21, "21"], [34, "34"], [55, "55"]], i, b, ab;
+    for (i = 0; i < P.length; i++) {
+      b = document.createElement("button"); b.type = "button"; b.textContent = P[i][1]; b.setAttribute("data-angle", String(P[i][0]));
+      b.onclick = function () { setAngle(parseFloat(this.getAttribute("data-angle"))); };
+      $("presets").appendChild(b);
+    }
+    for (i = 0; i < A.length; i++) {
+      b = document.createElement("button"); b.type = "button"; b.textContent = A[i][1]; b.setAttribute("data-arms", String(A[i][0]));
+      b.onclick = function () { PX.setArms(parseInt(this.getAttribute("data-arms"), 10)); };
+      $("arms").appendChild(b);
+    }
+    $("ang").oninput = function () { setAngle(parseFloat(this.value)); };
+    $("num").oninput = function () { setSeeds(parseInt(this.value, 10)); };
+    $("grow").onclick = grow;
+    $("reset").onclick = function () { PX.reset(); };
+    $("a").oninput = function () { if (this.value !== "") { setStart(parseFloat(this.value), S.b); } };
+    $("b").oninput = function () { if (this.value !== "") { setStart(S.a, parseFloat(this.value)); } };
+    ab = document.querySelectorAll("[data-ab]");
+    for (i = 0; i < ab.length; i++) { ab[i].onclick = function () { var v = this.getAttribute("data-ab").split(","); setStart(parseInt(v[0], 10), parseInt(v[1], 10)); }; }
+    window.addEventListener("resize", function () { drawFlower(); renderChart(); });
+  }());
+
+  window.PX = {
+    setAngle: setAngle, setSeeds: setSeeds, setStart: setStart, grow: grow,
+    golden: function () { setAngle(GOLD); },
+    setArms: function (k) { S.arms = k; render(); },
+    reset: function () { stop(); S.angle = GOLD; S.n = 300; S.shown = 300; S.arms = 0; S.a = 1; S.b = 1; render(); renderChart(); },
+    state: function () {
+      var m = measure();
+      return { angle: S.angle, golden: GOLD, phi: PHI, n: S.n, shown: S.shown, arms: S.arms, min: m.min, hole: m.hole, steps: m.steps, spokes: m.spokes, seeds: m.seeds, terms: terms(), ratios: ratios() };
+    }
+  };
+  render(); renderChart();
+}());
+</script>
+</body>
+</html>
