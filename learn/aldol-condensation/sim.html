@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="sim-id" content="LEARN-C12-CHE-ALPHA-H-CHECKER-SIM">
+<title>Alpha-H checker · PrayogX Learn simulation</title>
+<style>
+:root{--bg:#f4f4f1;--card:#fcfcfb;--line:#d9d9d4;--ink:#0b0b0b;--mut:#52514e;--acc:#2a78d6;--good:#00743f;--neg:#c62828;--empty:#ececea;--hc:#6f4fd6;--oc:#d9480f}
+@media (prefers-color-scheme:dark){:root{--bg:#111110;--card:#1a1a19;--line:#34342f;--ink:#fff;--mut:#c3c2b7;--acc:#3987e5;--good:#3fae7a;--neg:#ef5350;--empty:#2a2a28;--hc:#a48bff;--oc:#ff8a50}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+.wrap{max-width:980px;margin:0 auto;padding:12px}
+h1{font-size:17px;margin:2px 0 8px}
+h2{font-size:15px;margin:0 0 6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin-top:10px}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+button{font:inherit;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:9px;padding:6px 10px;cursor:pointer;min-height:40px}
+button[aria-pressed="true"]{background:var(--acc);border-color:var(--acc);color:#fff;font-weight:650}
+button:disabled{opacity:.45;cursor:default}
+.small{font-size:13px;color:var(--mut)}
+.verdict{margin-top:8px;padding:8px 10px;border-radius:10px;border:1px solid var(--line);background:var(--bg);min-height:2.6em;overflow-wrap:anywhere}
+.form{margin-top:8px;padding:8px 10px;border-radius:10px;border:1px solid var(--line);background:var(--bg);overflow-wrap:anywhere}
+.form b{display:block;font-size:13px;color:var(--mut);font-weight:650}
+.mol{margin-top:10px;padding:14px 10px;text-align:center;font-size:24px;font-weight:700;border-radius:10px;background:var(--bg);border:1px solid var(--line);overflow-wrap:anywhere}
+.al{color:var(--oc);background:color-mix(in srgb,var(--oc) 16%,transparent);border-radius:6px;padding:0 3px}
+.co{color:var(--acc)}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>Alpha-H checker: will it give aldol?</h1>
+<div class="card">
+<h2>1. Choose a compound</h2>
+<div class="row" id="cs"></div>
+<div class="mol" id="mol"></div>
+<p class="small" style="margin:6px 0 0">Blue is the carbonyl group. The α-carbon is the carbon next to it.</p>
+</div>
+<div class="card">
+<h2>2. Predict, then test</h2>
+<div class="row">
+  <span class="small">Aldol with dilute NaOH?</span>
+  <button type="button" id="py" aria-pressed="false">Yes</button><button type="button" id="pn" aria-pressed="false">No</button>
+  <button type="button" id="alpha">Mark the α-carbons</button>
+  <button type="button" id="base">Add dilute NaOH</button>
+  <button type="button" id="heat">Heat</button>
+</div>
+<div class="verdict" id="verdict" aria-live="polite"></div>
+<div class="form" id="f1" hidden><b>Enolate</b><span id="eno"></span></div>
+<div class="form" id="f2" hidden><b>Aldol</b><span id="ald"></span></div>
+<div class="form" id="f3" hidden><b>After heating: water leaves</b><span id="con"></span></div>
+<p class="small" id="score"></p>
+</div>
+</div>
+<script>
+(function () {
+  "use strict";
+  // parts: [text, kind]; kind a = the alpha carbon's group, c = carbonyl. aH: H on each alpha carbon; aC: alpha carbons
+  var C = {
+    ethanal: { name: "Ethanal", parts: [["CH₃", "a"], ["CHO", "c"]], aH: [3], eno: "⁻CH₂CHO", ald: "CH₃CH(OH)CH₂CHO (3-hydroxybutanal)", con: "CH₃CH=CHCHO (but-2-enal)" },
+    propanal: { name: "Propanal", parts: [["CH₃", ""], ["CH₂", "a"], ["CHO", "c"]], aH: [2], eno: "CH₃C⁻HCHO", ald: "CH₃CH₂CH(OH)CH(CH₃)CHO (3-hydroxy-2-methylpentanal)", con: "CH₃CH₂CH=C(CH₃)CHO (2-methylpent-2-enal)" },
+    butanal: { name: "Butanal", parts: [["CH₃CH₂", ""], ["CH₂", "a"], ["CHO", "c"]], aH: [2], eno: "CH₃CH₂C⁻HCHO", ald: "CH₃CH₂CH₂CH(OH)CH(C₂H₅)CHO (2-ethyl-3-hydroxyhexanal)", con: "CH₃CH₂CH₂CH=C(C₂H₅)CHO (2-ethylhex-2-enal)" },
+    propanone: { name: "Propanone", parts: [["CH₃", "a"], ["CO", "c"], ["CH₃", "a"]], aH: [3, 3], eno: "⁻CH₂COCH₃", ald: "(CH₃)₂C(OH)CH₂COCH₃ (4-hydroxy-4-methylpentan-2-one, a ketol)", con: "(CH₃)₂C=CHCOCH₃ (4-methylpent-3-en-2-one)" },
+    methanal: { name: "Methanal", parts: [["H", ""], ["CHO", "c"]], aH: [], why: "There is no α-carbon at all: only H is attached to the carbonyl group." },
+    benzaldehyde: { name: "Benzaldehyde", parts: [["C₆H₅", "a"], ["CHO", "c"]], aH: [0], why: "The α-carbon is a ring carbon, and it carries no H. The H atoms on the ring sit further away." },
+    pivaldehyde: { name: "2,2-Dimethylpropanal", parts: [["(CH₃)₃", ""], ["C", "a"], ["CHO", "c"]], aH: [0], why: "It has 10 H atoms, but none on the α-carbon, and only those count." }
+  };
+  var ORDER = ["ethanal", "propanal", "butanal", "propanone", "methanal", "benzaldehyde", "pivaldehyde"];
+  var S = { c: "ethanal", pred: null, marked: false, based: false, heated: false, right: {}, tried: {} };
+  function $(id) { return document.getElementById(id); }
+  function total(id) { var a = C[id].aH, t = 0, i; for (i = 0; i < a.length; i++) { t += a[i]; } return t; }
+  function reacts(id) { return total(id) > 0; }
+  function render() {
+    var c = C[S.c], i, h = "", p, n = total(S.c), yes = reacts(S.c), done = 0, right = 0, k;
+    for (i = 0; i < ORDER.length; i++) { $("c-" + ORDER[i]).setAttribute("aria-pressed", ORDER[i] === S.c ? "true" : "false"); }
+    for (i = 0; i < c.parts.length; i++) {
+      p = c.parts[i];
+      if (i) { h += "–"; }
+      h += '<span class="' + (p[1] === "c" ? "co" : (p[1] === "a" && S.marked ? "al" : "")) + '">' + p[0] + "</span>";
+    }
+    $("mol").innerHTML = h;
+    $("py").setAttribute("aria-pressed", S.pred === true ? "true" : "false");
+    $("pn").setAttribute("aria-pressed", S.pred === false ? "true" : "false");
+    $("base").disabled = S.pred === null;
+    $("heat").disabled = !(S.based && yes);
+    $("f1").hidden = !(S.based && yes); $("f2").hidden = !(S.based && yes); $("f3").hidden = !(S.heated && yes);
+    if (yes) { $("eno").textContent = c.eno; $("ald").textContent = c.ald; $("con").textContent = c.con; }
+    if (!S.based) {
+      $("verdict").textContent = S.marked
+        ? (c.aH.length ? "α-H atoms: " + n + "." : "No α-carbon here.")
+        : (S.pred === null ? "Make your prediction first." : "Now add dilute NaOH.");
+    } else if (yes) {
+      $("verdict").innerHTML = "<b>" + (S.pred ? "You were right. " : "It reacts. ") + "Aldol forms.</b> " + n + " α-H atoms: the base removes one, and the enolate attacks a second molecule's carbonyl carbon.";
+    } else {
+      $("verdict").innerHTML = "<b>" + (S.pred === false ? "You were right. " : "No reaction. ") + "No aldol.</b> " + c.why;
+    }
+    for (k in S.tried) { if (S.tried.hasOwnProperty(k)) { done++; if (S.right[k]) { right++; } } }
+    $("score").textContent = done ? right + " of " + done + " predictions right, out of " + ORDER.length + " compounds." : "";
+  }
+  (function build() {
+    var i, b;
+    for (i = 0; i < ORDER.length; i++) {
+      b = document.createElement("button"); b.type = "button"; b.id = "c-" + ORDER[i]; b.textContent = C[ORDER[i]].name;
+      b.setAttribute("data-c", ORDER[i]); b.onclick = function () { PX.pick(this.getAttribute("data-c")); }; $("cs").appendChild(b);
+    }
+    $("py").onclick = function () { PX.predict(true); };
+    $("pn").onclick = function () { PX.predict(false); };
+    $("alpha").onclick = function () { PX.mark(); };
+    $("base").onclick = function () { PX.base(); };
+    $("heat").onclick = function () { PX.heat(); };
+  }());
+  window.PX = {
+    pick: function (id) { S.c = id; S.pred = null; S.marked = false; S.based = false; S.heated = false; render(); },
+    predict: function (v) { if (!S.based) { S.pred = !!v; render(); } },
+    mark: function () { S.marked = true; render(); },
+    base: function () { if (S.pred === null) { return; } S.based = true; S.marked = true; if (!S.tried[S.c]) { S.tried[S.c] = true; S.right[S.c] = S.pred === reacts(S.c); } render(); },
+    heat: function () { if (S.based && reacts(S.c)) { S.heated = true; render(); } },
+    reset: function () { S.right = {}; S.tried = {}; PX.pick("ethanal"); },
+    state: function () {
+      var c = C[S.c], k, right = 0, done = 0;
+      for (k in S.tried) { if (S.tried.hasOwnProperty(k)) { done++; if (S.right[k]) { right++; } } }
+      return { compound: S.c, alphaC: c.aH.length, alphaH: total(S.c), reacts: reacts(S.c), pred: S.pred, based: S.based, heated: S.heated,
+        aldol: S.based && reacts(S.c) ? c.ald : "", condensed: S.heated ? c.con : "", tried: done, right: right, ids: ORDER.slice() };
+    }
+  };
+  render();
+}());
+</script>
+</body>
+</html>

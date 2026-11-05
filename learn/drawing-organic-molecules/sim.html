@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="sim-id" content="LEARN-C11-CHE-BOND-LINE-DECODER-SIM">
+<title>Bond-line decoder · PrayogX Learn simulation</title>
+<style>
+:root{--bg:#f4f4f1;--card:#fcfcfb;--line:#d9d9d4;--ink:#0b0b0b;--mut:#52514e;--acc:#2a78d6;--good:#00743f;--neg:#c62828;--empty:#ececea;--hc:#6f4fd6;--oc:#d9480f}
+@media (prefers-color-scheme:dark){:root{--bg:#111110;--card:#1a1a19;--line:#34342f;--ink:#fff;--mut:#c3c2b7;--acc:#3987e5;--good:#3fae7a;--neg:#ef5350;--empty:#2a2a28;--hc:#a48bff;--oc:#ff8a50}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+.wrap{max-width:980px;margin:0 auto;padding:12px}
+h1{font-size:17px;margin:2px 0 8px}
+h2{font-size:15px;margin:0 0 6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin-top:10px}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+button{font:inherit;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:9px;padding:6px 10px;cursor:pointer;min-height:40px}
+button[aria-pressed="true"]{background:var(--acc);border-color:var(--acc);color:#fff;font-weight:650}
+button:disabled{opacity:.45;cursor:default}
+.small{font-size:13px;color:var(--mut)}
+.verdict{margin-top:8px;padding:8px 10px;border-radius:10px;border:1px solid var(--line);background:var(--bg);min-height:2.6em;overflow-wrap:anywhere}
+.form{margin-top:8px;padding:8px 10px;border-radius:10px;border:1px solid var(--line);background:var(--bg);overflow-wrap:anywhere}
+.form b{display:block;font-size:13px;color:var(--mut);font-weight:650}
+svg{display:block;width:100%;max-width:520px;margin:8px auto 0;height:auto}
+.b{stroke:var(--ink);stroke-width:4;stroke-linecap:round}
+.hit{fill:transparent;cursor:pointer}
+.dot{fill:var(--acc)}
+.lab{font:700 15px ui-sans-serif,system-ui,sans-serif;fill:var(--hc);text-anchor:middle}
+.ct{font:700 14px ui-sans-serif,system-ui,sans-serif;fill:#fff;text-anchor:middle}
+.ot{font:700 17px ui-sans-serif,system-ui,sans-serif;fill:var(--oc);text-anchor:middle}
+.step{display:flex;align-items:center;gap:6px}
+.step b{min-width:2em;text-align:center;font-size:18px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>Bond-line decoder: count what the zigzag hides</h1>
+<div class="card">
+<h2>1. Choose a molecule</h2>
+<div class="row" id="mols"></div>
+<svg id="pic" viewBox="0 0 420 230" role="img" aria-label="Bond-line drawing of the chosen molecule"></svg>
+<div class="row" style="margin-top:6px" id="views"></div>
+<div class="verdict" id="tap" aria-live="polite">Tap a corner or a line end to decode that one carbon.</div>
+</div>
+<div class="card">
+<h2>2. Your count</h2>
+<div class="row">
+  <div class="step"><span class="small">Carbons</span><button type="button" id="cm" aria-label="One carbon fewer">−</button><b id="cv">0</b><button type="button" id="cp" aria-label="One carbon more">+</button></div>
+  <div class="step"><span class="small">Hydrogens</span><button type="button" id="hm" aria-label="One hydrogen fewer">−</button><b id="hv">0</b><button type="button" id="hp" aria-label="One hydrogen more">+</button></div>
+  <button type="button" id="check">Check</button>
+</div>
+<div class="verdict" id="verdict" aria-live="polite"></div>
+<div class="form" id="reveal" hidden><b>The same molecule, written other ways</b><span id="cond"></span></div>
+</div>
+</div>
+<script>
+(function () {
+  "use strict";
+  var ZZ = function (n) { var a = [], i; for (i = 0; i < n; i++) { a.push([60 + i * (300 / (n - 1)), i % 2 ? 80 : 150, "C"]); } return a; };
+  var MOLS = {
+    butane: { name: "Butane", atoms: ZZ(4), bonds: [[0, 1, 1], [1, 2, 1], [2, 3, 1]], cond: "CH₃CH₂CH₂CH₃, or CH₃(CH₂)₂CH₃" },
+    isobutane: { name: "2-Methylpropane", atoms: [[90, 165, "C"], [210, 115, "C"], [330, 165, "C"], [210, 35, "C"]], bonds: [[0, 1, 1], [1, 2, 1], [1, 3, 1]], cond: "(CH₃)₂CHCH₃" },
+    butene: { name: "But-1-ene", atoms: ZZ(4), bonds: [[0, 1, 2], [1, 2, 1], [2, 3, 1]], cond: "CH₂=CHCH₂CH₃" },
+    butadiene: { name: "Buta-1,3-diene", atoms: ZZ(4), bonds: [[0, 1, 2], [1, 2, 1], [2, 3, 2]], cond: "CH₂=CHCH=CH₂" },
+    propanol: { name: "Propan-1-ol", atoms: ZZ(4).map(function (a, i) { return [a[0], a[1], i === 3 ? "O" : "C"]; }), bonds: [[0, 1, 1], [1, 2, 1], [2, 3, 1]], cond: "CH₃CH₂CH₂OH" },
+    methylbutane: { name: "2-Methylbutane", atoms: ZZ(4).concat([[160, 22, "C"]]), bonds: [[0, 1, 1], [1, 2, 1], [2, 3, 1], [1, 4, 1]], cond: "(CH₃)₂CHCH₂CH₃" },
+    cyclohexane: { name: "Cyclohexane", atoms: [[210, 25, "C"], [290, 70, "C"], [290, 160, "C"], [210, 205, "C"], [130, 160, "C"], [130, 70, "C"]], bonds: [[0, 1, 1], [1, 2, 1], [2, 3, 1], [3, 4, 1], [4, 5, 1], [5, 0, 1]], cond: "(CH₂)₆, a ring" }
+  };
+  var ORDER = ["butane", "isobutane", "butene", "butadiene", "propanol", "methylbutane", "cyclohexane"];
+  var VIEWS = [["line", "Bond-line"], ["carbons", "Show carbons"], ["hydrogens", "Show hydrogens"]];
+  var SUB = "₀₁₂₃₄₅₆₇₈₉";
+  var S = { mol: "butane", view: "line", tapped: {}, c: 0, h: 0, checked: false, last: -1 };
+  function $(id) { return document.getElementById(id); }
+  function sub(n) { return n === 1 ? "" : String(n).split("").map(function (d) { return SUB.charAt(+d); }).join(""); }
+
+  function decode(id) {
+    var m = MOLS[id], out = [], i, j, used, b;
+    for (i = 0; i < m.atoms.length; i++) {
+      used = 0;
+      for (j = 0; j < m.bonds.length; j++) { b = m.bonds[j]; if (b[0] === i || b[1] === i) { used += b[2]; } }
+      out.push({ el: m.atoms[i][2], bonds: used, h: (m.atoms[i][2] === "C" ? 4 : 2) - used });
+    }
+    return out;
+  }
+  function totals(id) {
+    var d = decode(id), t = { c: 0, h: 0, o: 0 }, i;
+    for (i = 0; i < d.length; i++) { t.h += d[i].h; if (d[i].el === "C") { t.c++; } else { t.o++; } }
+    t.formula = "C" + sub(t.c) + "H" + sub(t.h) + (t.o ? "O" + sub(t.o) : "");
+    return t;
+  }
+  function lab(a) { if (a.el === "O") { return "OH"; } return a.h === 0 ? "C" : "C" + "H" + sub(a.h); }
+  function node(t, at, txt) {
+    var e = document.createElementNS("http://www.w3.org/2000/svg", t), k;
+    for (k in at) { if (at.hasOwnProperty(k)) { e.setAttribute(k, at[k]); } }
+    if (txt) { e.textContent = txt; }
+    return e;
+  }
+  function draw() {
+    var m = MOLS[S.mol], d = decode(S.mol), g = $("pic"), i, b, p, q, dx, dy, L, ox, oy, a, show, up;
+    while (g.firstChild) { g.removeChild(g.firstChild); }
+    for (i = 0; i < m.bonds.length; i++) {
+      b = m.bonds[i]; p = m.atoms[b[0]]; q = m.atoms[b[1]];
+      dx = q[0] - p[0]; dy = q[1] - p[1]; L = Math.sqrt(dx * dx + dy * dy); ox = -dy / L * 4; oy = dx / L * 4;
+      if (b[2] === 2) {
+        g.appendChild(node("line", { "class": "b", x1: p[0] + ox, y1: p[1] + oy, x2: q[0] + ox, y2: q[1] + oy }));
+        g.appendChild(node("line", { "class": "b", x1: p[0] - ox, y1: p[1] - oy, x2: q[0] - ox, y2: q[1] - oy }));
+      } else {
+        g.appendChild(node("line", { "class": "b", x1: p[0], y1: p[1], x2: q[0], y2: q[1] }));
+      }
+    }
+    for (i = 0; i < m.atoms.length; i++) {
+      a = m.atoms[i]; show = S.view !== "line" || S.tapped[i]; up = a[1] < 115;
+      if (a[2] === "O") {
+        g.appendChild(node("circle", { cx: a[0], cy: a[1], r: 18, fill: "var(--card)" }));
+        g.appendChild(node("text", { "class": "ot", x: a[0], y: a[1] + 6 }, "OH"));
+      } else if (show) {
+        g.appendChild(node("circle", { "class": "dot", cx: a[0], cy: a[1], r: 12 }));
+        g.appendChild(node("text", { "class": "ct", x: a[0], y: a[1] + 5 }, "C"));
+        if (S.view === "hydrogens" || S.tapped[i]) {
+          g.appendChild(node("text", { "class": "lab", x: a[0], y: a[1] + (up ? -18 : 30) }, d[i].h ? "H" + sub(d[i].h) : "no H"));
+        }
+      }
+      var hit = node("circle", { "class": "hit", cx: a[0], cy: a[1], r: 24, "data-i": i });
+      hit.onclick = function () { PX.tap(parseInt(this.getAttribute("data-i"), 10)); };
+      g.appendChild(hit);
+    }
+  }
+  function render() {
+    var i, t = totals(S.mol), ok;
+    for (i = 0; i < ORDER.length; i++) { $("m-" + ORDER[i]).setAttribute("aria-pressed", ORDER[i] === S.mol ? "true" : "false"); }
+    for (i = 0; i < VIEWS.length; i++) { $("v-" + VIEWS[i][0]).setAttribute("aria-pressed", VIEWS[i][0] === S.view ? "true" : "false"); }
+    $("cv").textContent = String(S.c); $("hv").textContent = String(S.h);
+    draw();
+    if (!S.checked) {
+      $("verdict").textContent = "Decode the drawing, set your count, then press Check.";
+      $("reveal").hidden = true;
+    } else {
+      ok = S.c === t.c && S.h === t.h;
+      $("verdict").innerHTML = ok
+        ? "<b>Correct: " + t.formula + ".</b> " + t.c + " carbons, and every carbon has its 4 bonds."
+        : "<b>Not yet.</b> " + (S.c !== t.c ? "Recount the carbons: every corner and every line end that has no letter is one carbon." : "The carbons are right. For each carbon, H = 4 minus the bonds you can see. A double bond counts as 2.");
+      $("reveal").hidden = !ok;
+      $("cond").textContent = ok ? MOLS[S.mol].name + ": " + MOLS[S.mol].cond + " = " + t.formula : "";
+    }
+  }
+  (function build() {
+    var i, b;
+    for (i = 0; i < ORDER.length; i++) {
+      b = document.createElement("button"); b.type = "button"; b.id = "m-" + ORDER[i]; b.textContent = MOLS[ORDER[i]].name;
+      b.setAttribute("data-m", ORDER[i]); b.onclick = function () { PX.setMol(this.getAttribute("data-m")); }; $("mols").appendChild(b);
+    }
+    for (i = 0; i < VIEWS.length; i++) {
+      b = document.createElement("button"); b.type = "button"; b.id = "v-" + VIEWS[i][0]; b.textContent = VIEWS[i][1];
+      b.setAttribute("data-v", VIEWS[i][0]); b.onclick = function () { PX.setView(this.getAttribute("data-v")); }; $("views").appendChild(b);
+    }
+    $("cm").onclick = function () { PX.guess(Math.max(0, S.c - 1), S.h); };
+    $("cp").onclick = function () { PX.guess(Math.min(12, S.c + 1), S.h); };
+    $("hm").onclick = function () { PX.guess(S.c, Math.max(0, S.h - 1)); };
+    $("hp").onclick = function () { PX.guess(S.c, Math.min(30, S.h + 1)); };
+    $("check").onclick = function () { PX.check(); };
+  }());
+  window.PX = {
+    setMol: function (id) { S.mol = id; S.tapped = {}; S.c = 0; S.h = 0; S.checked = false; S.view = "line"; $("tap").textContent = "Tap a corner or a line end to decode that one carbon."; render(); },
+    setView: function (v) { S.view = v; render(); },
+    tap: function (i) {
+      var a = decode(S.mol)[i];
+      S.last = i; S.tapped[i] = true;
+      $("tap").innerHTML = a.el === "O"
+        ? "<b>This end is written out: OH.</b> Letters are shown for every atom except C and its H."
+        : "<b>" + lab(a) + ".</b> You can see " + a.bonds + (a.bonds === 1 ? " bond" : " bonds") + " here, so 4 − " + a.bonds + " = " + a.h + " H.";
+      render();
+    },
+    guess: function (c, h) { S.c = c; S.h = h; S.checked = false; render(); },
+    check: function () { S.checked = true; render(); },
+    reset: function () { S.view = "line"; PX.setMol("butane"); },
+    state: function () {
+      var t = totals(S.mol);
+      return { mol: S.mol, view: S.view, carbons: t.c, hydrogens: t.h, oxygens: t.o, formula: t.formula, perAtom: decode(S.mol), guessC: S.c, guessH: S.h, checked: S.checked,
+        correct: S.checked && S.c === t.c && S.h === t.h, condensed: MOLS[S.mol].cond, ids: ORDER.slice() };
+    }
+  };
+  render();
+}());
+</script>
+</body>
+</html>

@@ -1,0 +1,132 @@
+{
+ "id": "LEARN-C11-CHE-DRAWING-MOLECULES",
+ "slug": "drawing-organic-molecules",
+ "status": "ready",
+ "class": 11,
+ "subject": "Chemistry",
+ "chapter": "Organic Chemistry – Some Basic Principles and Techniques",
+ "topic": "Drawing organic molecules",
+ "title": "Drawing Organic Molecules: Four Ways",
+ "series": 428,
+ "studioJob": "drawing-organic",
+ "reelId": "STUDIO-DRAWING-ORGANIC",
+ "summary": "One butane molecule, four ways to write it: complete, condensed, bond-line and 3D. How to read each, and how to count what a zigzag hides.",
+ "video": {
+  "youtubeId": "hXmdd0t3i9k"
+ },
+ "notes": {
+  "pdf": "notes.pdf",
+  "title": "04 – Drawing Organic Molecules: Four Ways",
+  "driveDoc": "1E4uncMzet4UAgmZNZV_HkinCYiL2RXbAey8KO0Gcg6c"
+ },
+ "thumb": "thumb.jpg",
+ "tags": [
+  "bond-line formula",
+  "condensed formula",
+  "structural formula",
+  "wedge and dash"
+ ],
+ "keyPoints": [
+  "**Complete structural formula:** every atom and every bond is shown.",
+  "**Condensed formula:** bonds are dropped, as in CH₃CH₂CH₂CH₃; repeated groups go in a bracket, CH₃(CH₂)₂CH₃.",
+  "**Bond-line formula:** every corner and every line end is a carbon.",
+  "H atoms on carbon are not written: each carbon has 4 bonds, and the rest are to H.",
+  "**3D drawing:** a solid wedge comes towards you, a dashed wedge goes away, a normal line lies in the plane of the paper."
+ ],
+ "sections": [
+  {
+   "h": "Reading a bond-line formula",
+   "blocks": [
+    {
+     "table": {
+      "head": [
+       "Drawing",
+       "Carbons",
+       "Hydrogens",
+       "Formula"
+      ],
+      "rows": [
+       [
+        "Zigzag with 4 points",
+        "4",
+        "10",
+        "C₄H₁₀ (butane)"
+       ],
+       [
+        "Zigzag with 4 points, first bond double",
+        "4",
+        "8",
+        "C₄H₈ (but-1-ene)"
+       ],
+       [
+        "3-point zigzag ending in OH",
+        "3",
+        "8",
+        "C₃H₈O (propan-1-ol)"
+       ],
+       [
+        "Hexagon",
+        "6",
+        "12",
+        "C₆H₁₂ (cyclohexane)"
+       ]
+      ]
+     }
+    }
+   ]
+  }
+ ],
+ "quiz": [
+  {
+   "q": "In a bond-line formula, each corner and line end is:",
+   "options": [
+    "a hydrogen",
+    "a carbon",
+    "a bond",
+    "an oxygen"
+   ],
+   "answer": 1,
+   "explain": "Other atoms are written as letters."
+  },
+  {
+   "q": "A carbon in the middle of a zigzag, with 2 single bonds shown, has:",
+   "options": [
+    "0 H",
+    "1 H",
+    "2 H",
+    "3 H"
+   ],
+   "answer": 2,
+   "explain": "4 − 2 = 2."
+  },
+  {
+   "q": "A dashed wedge means the bond:",
+   "options": [
+    "comes towards you",
+    "goes away from you",
+    "lies in the paper",
+    "is double"
+   ],
+   "answer": 1,
+   "explain": "A solid wedge comes towards you."
+  }
+ ],
+ "simulation": {
+  "decision": "REQUIRED",
+  "reason": "The skill is decoding drawings the video never shows: branches, double bonds, a ring and an OH group. Tapping each carbon and getting the count checked practises exactly that.",
+  "status": "pass",
+  "path": "sim.html",
+  "objective": "Decode bond-line drawings and count their carbons and hydrogens.",
+  "instructions": [
+   "Choose a molecule.",
+   "Tap a corner or a line end to decode that carbon.",
+   "Set your count of carbons and hydrogens, then press Check.",
+   "Compare butane with 2-methylpropane: same formula, different drawing."
+  ],
+  "qa": "tests/learn_sims.js (2026-11-05)"
+ },
+ "related": [
+  "shapes-of-carbon-compounds",
+  "organic-chemistry-introduction"
+ ]
+}

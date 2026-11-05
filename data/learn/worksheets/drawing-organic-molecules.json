@@ -1,0 +1,156 @@
+{
+ "slug": "drawing-organic-molecules",
+ "title": "Drawing Organic Molecules: Four Ways",
+ "class": 11,
+ "subject": "Chemistry",
+ "chapter": "Organic Chemistry – Some Basic Principles and Techniques",
+ "objective": "One butane molecule, four ways to write it: complete, condensed, bond-line and 3D. How to read each, and how to count what a zigzag hides.",
+ "fill": [
+  {
+   "q": "In a bond-line formula, every corner and line end is a ____.",
+   "a": "carbon"
+  },
+  {
+   "q": "Each carbon forms ____ bonds.",
+   "a": "4"
+  },
+  {
+   "q": "CH₃CH₂CH₂CH₃ is a ____ formula.",
+   "a": "condensed"
+  },
+  {
+   "q": "A solid wedge comes ____ you.",
+   "a": "towards"
+  },
+  {
+   "q": "A dashed wedge goes ____ from you.",
+   "a": "away"
+  }
+ ],
+ "tf": [
+  {
+   "q": "H atoms on carbon are written in a bond-line formula.",
+   "a": false,
+   "explain": "They are left out."
+  },
+  {
+   "q": "Atoms other than C and H are written as letters.",
+   "a": true,
+   "explain": "For example OH."
+  },
+  {
+   "q": "Butane and 2-methylpropane have the same formula.",
+   "a": true,
+   "explain": "Both are C₄H₁₀."
+  },
+  {
+   "q": "A normal line in a 3D drawing lies in the plane of the paper.",
+   "a": true,
+   "explain": "Only wedges leave the plane."
+  }
+ ],
+ "ar": [
+  {
+   "a": "Bond-line formulas leave out H atoms on carbon.",
+   "r": "Carbon's 4 bonds tell us how many H atoms there are.",
+   "answer": 0,
+   "explain": "R explains A."
+  },
+  {
+   "a": "But-1-ene has 2 fewer H atoms than butane.",
+   "r": "A double bond uses 2 of carbon's bonds on one neighbour.",
+   "answer": 0,
+   "explain": "R explains A."
+  }
+ ],
+ "mcq": [
+  {
+   "q": "A zigzag with 4 points and only single bonds is:",
+   "options": [
+    "propane",
+    "butane",
+    "pentane",
+    "butene"
+   ],
+   "answer": 1,
+   "explain": "4 carbons."
+  },
+  {
+   "q": "A middle carbon with 2 single bonds shown carries:",
+   "options": [
+    "0 H",
+    "1 H",
+    "2 H",
+    "3 H"
+   ],
+   "answer": 2,
+   "explain": "4 − 2 = 2."
+  },
+  {
+   "q": "CH₃(CH₂)₂CH₃ is the same as:",
+   "options": [
+    "CH₃CH₂CH₃",
+    "CH₃CH₂CH₂CH₃",
+    "CH₂=CH₂",
+    "C₆H₁₂"
+   ],
+   "answer": 1,
+   "explain": "The bracket repeats CH₂ twice."
+  },
+  {
+   "q": "A hexagon in bond-line form with single bonds is:",
+   "options": [
+    "benzene",
+    "hexane",
+    "cyclohexane",
+    "cyclopentane"
+   ],
+   "answer": 2,
+   "explain": "C₆H₁₂."
+  }
+ ],
+ "num": [
+  {
+   "q": "How many H atoms are in cyclohexane?",
+   "steps": [
+    "6 carbons × 2"
+   ],
+   "answer": "12"
+  },
+  {
+   "q": "How many H atoms does an end carbon with one single bond carry?",
+   "steps": [
+    "4 − 1"
+   ],
+   "answer": "3"
+  }
+ ],
+ "short": [
+  {
+   "q": "Write the condensed and molecular formula of a 3-point zigzag ending in OH.",
+   "lines": 5,
+   "solution": "CH₃CH₂CH₂OH, which is C₃H₈O."
+  }
+ ],
+ "match": {
+  "left": [
+   "Solid wedge",
+   "Dashed wedge",
+   "Normal line",
+   "Corner"
+  ],
+  "right": [
+   "towards you",
+   "one carbon",
+   "plane of the paper",
+   "away from you"
+  ],
+  "answer": [
+   0,
+   3,
+   2,
+   1
+  ],
+  "explain": "Each item matches its partner."
+ }
+}

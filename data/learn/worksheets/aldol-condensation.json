@@ -1,0 +1,156 @@
+{
+ "slug": "aldol-condensation",
+ "title": "Aldol Condensation: The Alpha Hydrogen Key",
+ "class": 12,
+ "subject": "Chemistry",
+ "chapter": "Aldehydes, Ketones and Carboxylic Acids",
+ "objective": "Two small ethanal molecules join into one bigger molecule. How the alpha hydrogen makes it happen, and which compounds cannot do it.",
+ "fill": [
+  {
+   "q": "The carbon next to the carbonyl carbon is the ____ carbon.",
+   "a": "alpha"
+  },
+  {
+   "q": "Dilute NaOH removes an alpha H to give an ____ ion.",
+   "a": "enolate"
+  },
+  {
+   "q": "The aldol from ethanal is 3-____butanal.",
+   "a": "hydroxy"
+  },
+  {
+   "q": "Heating the aldol removes ____.",
+   "a": "water"
+  },
+  {
+   "q": "The final product from ethanal is but-2-____.",
+   "a": "enal"
+  }
+ ],
+ "tf": [
+  {
+   "q": "Methanal gives aldol condensation.",
+   "a": false,
+   "explain": "It has no alpha carbon."
+  },
+  {
+   "q": "Benzaldehyde gives aldol condensation.",
+   "a": false,
+   "explain": "It has no alpha H."
+  },
+  {
+   "q": "Propanone has 6 alpha H atoms.",
+   "a": true,
+   "explain": "3 on each side."
+  },
+  {
+   "q": "The enolate acts as a nucleophile.",
+   "a": true,
+   "explain": "It attacks a carbonyl carbon."
+  }
+ ],
+ "ar": [
+  {
+   "a": "Ethanal undergoes aldol condensation.",
+   "r": "Ethanal has alpha hydrogens.",
+   "answer": 0,
+   "explain": "R explains A."
+  },
+  {
+   "a": "Benzaldehyde does not give aldol condensation.",
+   "r": "Benzaldehyde has no alpha hydrogen.",
+   "answer": 0,
+   "explain": "R explains A."
+  }
+ ],
+ "mcq": [
+  {
+   "q": "Which has alpha hydrogens?",
+   "options": [
+    "Methanal",
+    "Benzaldehyde",
+    "Propanal",
+    "2,2-Dimethylpropanal"
+   ],
+   "answer": 2,
+   "explain": "The CH₂ next to CHO."
+  },
+  {
+   "q": "The aldol from ethanal is:",
+   "options": [
+    "CH₃CH(OH)CH₂CHO",
+    "CH₃CH=CHCHO",
+    "CH₃CH₂OH",
+    "CH₃COOH"
+   ],
+   "answer": 0,
+   "explain": "A β-hydroxy aldehyde."
+  },
+  {
+   "q": "The base used for aldol condensation is:",
+   "options": [
+    "concentrated HCl",
+    "dilute NaOH",
+    "Tollens' reagent",
+    "H₂ with Ni"
+   ],
+   "answer": 1,
+   "explain": "Dilute alkali."
+  },
+  {
+   "q": "2,2-Dimethylpropanal gives no aldol because:",
+   "options": [
+    "it has no H at all",
+    "its alpha carbon has no H",
+    "it is a ketone",
+    "it has no C=O"
+   ],
+   "answer": 1,
+   "explain": "Its 10 H atoms are all on other carbons."
+  }
+ ],
+ "num": [
+  {
+   "q": "How many alpha H atoms does ethanal have?",
+   "steps": [
+    "CH₃ next to CHO"
+   ],
+   "answer": "3"
+  },
+  {
+   "q": "How many carbons are in the aldol from 2 ethanal molecules?",
+   "steps": [
+    "2 + 2"
+   ],
+   "answer": "4"
+  }
+ ],
+ "short": [
+  {
+   "q": "Why does propanal give aldol condensation but methanal does not?",
+   "lines": 5,
+   "solution": "Propanal has 2 alpha H atoms that a base can remove. Methanal has no alpha carbon, so no enolate can form."
+  }
+ ],
+ "match": {
+  "left": [
+   "Enolate",
+   "Aldol",
+   "But-2-enal",
+   "Methanal"
+  ],
+  "right": [
+   "CH₃CH=CHCHO",
+   "CH₃CH(OH)CH₂CHO",
+   "nucleophile",
+   "no alpha carbon"
+  ],
+  "answer": [
+   2,
+   1,
+   0,
+   3
+  ],
+  "explain": "Each item matches its partner."
+ }
+}

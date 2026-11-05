@@ -29,6 +29,8 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
      learn/pascals-triangle-patterns/sim.html  binomials by the product formula, row sums, Fibonacci sums
      learn/oxidation-reduction-aldehydes-ketones/sim.html  products and carbon counts of each compound and reagent
      learn/tollens-and-fehlings-tests/sim.html  each compound and test against an independent table
+     learn/drawing-organic-molecules/sim.html  C, H and O counts from the drawing against a formula table
+     learn/aldol-condensation/sim.html  alpha-H counts, who reacts, aldol and condensation products
      learn/shapes-of-carbon-compounds/sim.html  bonds to groups, hybridisation, shape, angle, s character
      learn/roster-and-set-builder-form/sim.html  rule → elements, roster and set-builder text,
                                         order, infinite sets, letters of a word without repeats
@@ -246,6 +248,40 @@ for (const key of Object.keys(MATERIALS)) FD[key] = fdContact(SKIN, Object.assig
       ok(`builder ${tag}: refuses more than 4 bonds`, over.used === 3 && over.complete === false, over.used);
       const ovU = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
       ok(`builder ${tag}: no horizontal overflow`, ovU <= 0, ovU);
+
+      // ---- bond-line decoder: counts from the graph against an independent formula table
+      await page.goto(base + 'drawing-organic-molecules/sim.html', { waitUntil: 'load' });
+      for (const [m, c, h, o, fm, rp] of [['butane', 4, 10, 0, 'C₄H₁₀', 0], ['isobutane', 4, 10, 0, 'C₄H₁₀', 0], ['butene', 4, 8, 0, 'C₄H₈', 1], ['butadiene', 4, 6, 0, 'C₄H₆', 2], ['propanol', 3, 8, 1, 'C₃H₈O', 0], ['methylbutane', 5, 12, 0, 'C₅H₁₂', 0], ['cyclohexane', 6, 12, 0, 'C₆H₁₂', 1]]) {
+        const s = await page.evaluate(v => { PX.setMol(v); return PX.state(); }, m);
+        ok(`decoder ${m} ${tag}: ${fm}`, s.carbons === c && s.hydrogens === h && s.oxygens === o && s.formula === fm, s.formula);
+        ok(`decoder ${m} ${tag}: H = 2C + 2 − 2(rings + pi bonds)`, s.hydrogens === 2 * c + 2 - 2 * rp, s.hydrogens);
+        ok(`decoder ${m} ${tag}: every carbon has 4 bonds`, s.perAtom.every(a => a.el !== 'C' || a.bonds + a.h === 4));
+        const w = await page.evaluate(v => { PX.guess(v[0], v[1] + 1); PX.check(); return PX.state(); }, [c, h]);
+        ok(`decoder ${m} ${tag}: a wrong count is refused`, !w.correct);
+        const r = await page.evaluate(v => { PX.guess(v[0], v[1]); PX.check(); return PX.state(); }, [c, h]);
+        ok(`decoder ${m} ${tag}: the right count is accepted`, r.correct);
+      }
+      await page.evaluate(() => { PX.reset(); PX.tap(1); });
+      ok(`decoder ${tag}: a tapped butane corner reads CH₂`, (await page.$eval('#tap', e => e.textContent)).includes('CH₂'));
+      await page.evaluate(() => { PX.setView('hydrogens'); });
+      ok(`decoder ${tag}: labels drawn on every carbon`, (await page.$$eval('#pic .lab', e => e.length)) === 4);
+      const ovD = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
+      ok(`decoder ${tag}: no horizontal overflow`, ovD <= 0, ovD);
+
+      // ---- alpha-H checker: alpha H counts and outcomes against an independent table
+      await page.goto(base + 'aldol-condensation/sim.html', { waitUntil: 'load' });
+      for (const [c, ac, ah, yes, ald, con] of [['ethanal', 1, 3, true, '3-hydroxybutanal', 'but-2-enal'], ['propanal', 1, 2, true, '3-hydroxy-2-methylpentanal', '2-methylpent-2-enal'], ['butanal', 1, 2, true, '2-ethyl-3-hydroxyhexanal', '2-ethylhex-2-enal'], ['propanone', 2, 6, true, '4-hydroxy-4-methylpentan-2-one', '4-methylpent-3-en-2-one'], ['methanal', 0, 0, false], ['benzaldehyde', 1, 0, false], ['pivaldehyde', 1, 0, false]]) {
+        const s = await page.evaluate(v => { PX.pick(v); PX.predict(true); PX.base(); PX.heat(); return PX.state(); }, c);
+        ok(`alpha ${c} ${tag}: ${ac} α-C, ${ah} α-H, ${yes ? 'reacts' : 'no aldol'}`, s.alphaC === ac && s.alphaH === ah && s.reacts === yes, `${s.alphaC} ${s.alphaH} ${s.reacts}`);
+        if (yes) ok(`alpha ${c} ${tag}: ${ald} then ${con}`, s.aldol.includes(ald) && s.condensed.includes(con), s.condensed);
+        else ok(`alpha ${c} ${tag}: no product, Heat stays off`, s.aldol === '' && s.condensed === '' && await page.$eval('#heat', e => e.disabled));
+      }
+      const sc = await page.evaluate(() => { PX.reset(); PX.predict(false); PX.base(); PX.pick('benzaldehyde'); PX.predict(false); PX.base(); return PX.state(); });
+      ok(`alpha ${tag}: the score counts right and wrong predictions`, sc.tried === 2 && sc.right === 1, `${sc.right}/${sc.tried}`);
+      const blocked = await page.evaluate(() => { PX.reset(); PX.base(); return PX.state(); });
+      ok(`alpha ${tag}: no test before a prediction`, !blocked.based);
+      const ovA = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
+      ok(`alpha ${tag}: no horizontal overflow`, ovA <= 0, ovA);
 
       // ---- rest and motion: you start at −20 m and ride 4 m/s for 10 s; friend sits 1.5 m ahead
       await page.goto(base + 'rest-and-motion/sim.html', { waitUntil: 'load' });
