@@ -1,0 +1,146 @@
+{
+ "slug": "tollens-and-fehlings-tests",
+ "title": "Tollens' and Fehling's Tests",
+ "class": 12,
+ "subject": "Chemistry",
+ "chapter": "Aldehydes, Ketones and Carboxylic Acids",
+ "objective": "Warm a clear liquid and a mirror forms in the test tube. How Tollens' and Fehling's tests tell aldehydes from ketones.",
+ "fill": [
+  {
+   "q": "Tollens' reagent is ammoniacal ____ nitrate.",
+   "a": "silver"
+  },
+  {
+   "q": "Aldehydes give a silver ____ with Tollens' reagent.",
+   "a": "mirror"
+  },
+  {
+   "q": "Fehling's solution contains ____ ions.",
+   "a": "Cu²⁺"
+  },
+  {
+   "q": "Fehling's test gives a red-brown precipitate of ____.",
+   "a": "Cu₂O"
+  },
+  {
+   "q": "In Tollens' test the aldehyde is oxidised to a ____.",
+   "a": "carboxylate"
+  }
+ ],
+ "tf": [
+  {
+   "q": "Ketones give a silver mirror.",
+   "a": false,
+   "explain": "They have no H on the carbonyl carbon."
+  },
+  {
+   "q": "Benzaldehyde gives Fehling's test.",
+   "a": false,
+   "explain": "Aromatic aldehydes do not."
+  },
+  {
+   "q": "Benzaldehyde gives Tollens' test.",
+   "a": true,
+   "explain": "It reduces silver ions."
+  },
+  {
+   "q": "Aldehydes act as reducing agents in these tests.",
+   "a": true,
+   "explain": "They reduce Ag⁺ and Cu²⁺."
+  }
+ ],
+ "ar": [
+  {
+   "a": "Aldehydes give Tollens' test.",
+   "r": "Aldehydes are easily oxidised.",
+   "answer": 0,
+   "explain": "R explains A."
+  },
+  {
+   "a": "Ketones do not give Tollens' test.",
+   "r": "Ketones have no H on the carbonyl carbon.",
+   "answer": 0,
+   "explain": "R explains A."
+  }
+ ],
+ "mcq": [
+  {
+   "q": "Which gives a silver mirror?",
+   "options": [
+    "Propanone",
+    "Ethanal",
+    "Pentan-3-one",
+    "Butanone"
+   ],
+   "answer": 1,
+   "explain": "Ethanal is an aldehyde."
+  },
+  {
+   "q": "Fehling's solution is:",
+   "options": [
+    "colourless",
+    "blue",
+    "red",
+    "yellow"
+   ],
+   "answer": 1,
+   "explain": "Cu²⁺ is blue."
+  },
+  {
+   "q": "Which gives neither test?",
+   "options": [
+    "Ethanal",
+    "Propanal",
+    "Benzaldehyde",
+    "Propanone"
+   ],
+   "answer": 3,
+   "explain": "A ketone."
+  },
+  {
+   "q": "In Tollens' test Ag⁺ becomes:",
+   "options": [
+    "AgCl",
+    "Ag metal",
+    "Ag₂O",
+    "AgNO₃"
+   ],
+   "answer": 1,
+   "explain": "It is reduced."
+  }
+ ],
+ "num": [],
+ "short": [
+  {
+   "q": "How would you distinguish ethanal from propanone?",
+   "lines": 5,
+   "solution": "Warm with Tollens' reagent: ethanal gives a silver mirror, propanone gives no change."
+  },
+  {
+   "q": "How would you distinguish ethanal from benzaldehyde?",
+   "lines": 5,
+   "solution": "Heat with Fehling's solution: ethanal gives a red-brown precipitate, benzaldehyde gives no change."
+  }
+ ],
+ "match": {
+  "left": [
+   "Tollens' positive",
+   "Fehling's positive",
+   "Benzaldehyde",
+   "Ketone"
+  ],
+  "right": [
+   "red-brown Cu₂O",
+   "Tollens' only",
+   "neither test",
+   "silver mirror"
+  ],
+  "answer": [
+   3,
+   0,
+   1,
+   2
+  ],
+  "explain": "Each item matches its result."
+ }
+}

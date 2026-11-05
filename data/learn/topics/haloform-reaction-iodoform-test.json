@@ -1,0 +1,141 @@
+{
+ "id": "LEARN-C12-CHE-HALOFORM",
+ "slug": "haloform-reaction-iodoform-test",
+ "status": "ready",
+ "class": 12,
+ "subject": "Chemistry",
+ "chapter": "Aldehydes, Ketones and Carboxylic Acids",
+ "topic": "Haloform reaction",
+ "title": "The Haloform Reaction: Iodoform Test",
+ "series": 427,
+ "studioJob": "haloform-test",
+ "reelId": "STUDIO-HALOFORM-TEST",
+ "summary": "Yellow crystals with a hospital smell reveal the CH₃CO group. How the iodoform test works and which compounds pass it.",
+ "video": {
+  "youtubeId": "ggK9M6aU5L8"
+ },
+ "notes": {
+  "pdf": "notes.pdf",
+  "title": "09 – The Haloform Reaction: Iodoform Test",
+  "driveDoc": "1BP002d7FG_PQkQMyyisXRVgSmHpqD7UUDJzdbz5lOPI"
+ },
+ "thumb": "thumb.jpg",
+ "tags": [
+  "haloform reaction",
+  "iodoform test",
+  "methyl ketone",
+  "CH3CO group"
+ ],
+ "keyPoints": [
+  "**Iodine and NaOH** act on compounds with a CH₃CO group.",
+  "The 3 H atoms of the methyl group are **replaced by iodine**, giving CI₃.",
+  "The **C–C bond breaks**: yellow **iodoform, CHI₃**, and a carboxylate with 1 carbon fewer.",
+  "**Positive:** ethanal, methyl ketones, and ethanol or propan-2-ol, which oxidise to them.",
+  "**Negative:** methanol, propanal, pentan-3-one."
+ ],
+ "sections": [
+  {
+   "h": "Who passes",
+   "blocks": [
+    {
+     "table": {
+      "head": [
+       "Compound",
+       "Iodoform test",
+       "Why"
+      ],
+      "rows": [
+       [
+        "Ethanal",
+        "Positive",
+        "CH₃CO group"
+       ],
+       [
+        "Propanone",
+        "Positive",
+        "Methyl ketone"
+       ],
+       [
+        "Ethanol",
+        "Positive",
+        "Oxidises to ethanal"
+       ],
+       [
+        "Propan-2-ol",
+        "Positive",
+        "Oxidises to propanone"
+       ],
+       [
+        "Methanol",
+        "Negative",
+        "Cannot form CH₃CO"
+       ],
+       [
+        "Propanal",
+        "Negative",
+        "No CH₃CO"
+       ],
+       [
+        "Pentan-3-one",
+        "Negative",
+        "No methyl next to C=O"
+       ]
+      ]
+     }
+    }
+   ]
+  }
+ ],
+ "quiz": [
+  {
+   "q": "Iodoform is:",
+   "options": [
+    "CH₃I",
+    "CHI₃",
+    "CI₄",
+    "CH₂I₂"
+   ],
+   "answer": 1,
+   "explain": "A yellow solid."
+  },
+  {
+   "q": "Which gives the iodoform test?",
+   "options": [
+    "Methanol",
+    "Propanal",
+    "Ethanol",
+    "Pentan-3-one"
+   ],
+   "answer": 2,
+   "explain": "It oxidises to ethanal."
+  },
+  {
+   "q": "The carboxylate formed has:",
+   "options": [
+    "1 carbon more",
+    "the same carbons",
+    "1 carbon fewer",
+    "no carbon"
+   ],
+   "answer": 2,
+   "explain": "The CI₃ carbon leaves as CHI₃."
+  }
+ ],
+ "simulation": {
+  "decision": "REQUIRED",
+  "reason": "Trying each compound with the iodoform test and working out a mystery compound tests the rule on cases the video only lists; the Test bench already does this, so it is reused.",
+  "status": "pass",
+  "path": "../tollens-and-fehlings-tests/sim.html",
+  "objective": "Test which compounds give iodoform, and use it to identify a mystery compound.",
+  "instructions": [
+   "Choose a compound and predict.",
+   "Press Iodoform and read the result and the reason.",
+   "Try methanol and ethanol, then propanal and ethanal.",
+   "Use Mystery compound and Reveal."
+  ],
+  "qa": "tests/learn_sims.js 840/840 (2026-11-05)"
+ },
+ "related": [
+  "tollens-and-fehlings-tests"
+ ]
+}

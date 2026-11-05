@@ -1,0 +1,122 @@
+{
+ "id": "LEARN-C12-CHE-TOLLENS-FEHLING",
+ "slug": "tollens-and-fehlings-tests",
+ "status": "ready",
+ "class": 12,
+ "subject": "Chemistry",
+ "chapter": "Aldehydes, Ketones and Carboxylic Acids",
+ "topic": "Tollens’ test",
+ "title": "Tollens' and Fehling's Tests",
+ "series": 425,
+ "studioJob": "tollens-fehling",
+ "reelId": "STUDIO-TOLLENS-FEHLING",
+ "summary": "Warm a clear liquid and a mirror forms in the test tube. How Tollens' and Fehling's tests tell aldehydes from ketones.",
+ "video": {
+  "youtubeId": "8vWqLEEm9qY"
+ },
+ "notes": {
+  "pdf": "notes.pdf",
+  "title": "08 – Tollens' and Fehling's Tests",
+  "driveDoc": "1OfHc_aWh83gbPm5HgsbbDaCcTKnoH9vBPaKjUV7qXjg"
+ },
+ "thumb": "thumb.jpg",
+ "tags": [
+  "Tollens test",
+  "Fehling test",
+  "silver mirror",
+  "aldehydes",
+  "ketones"
+ ],
+ "keyPoints": [
+  "**Tollens' reagent** is ammoniacal silver nitrate.",
+  "Aldehydes reduce it, and silver deposits as a **silver mirror**. The aldehyde becomes a carboxylate.",
+  "**Fehling's solution** is blue, with Cu²⁺. Aliphatic aldehydes give a **red-brown precipitate of Cu₂O**.",
+  "Ketones do not respond to either test.",
+  "**Aromatic aldehydes** such as benzaldehyde give Tollens' but not Fehling's."
+ ],
+ "sections": [
+  {
+   "h": "Results",
+   "blocks": [
+    {
+     "table": {
+      "head": [
+       "Compound",
+       "Tollens'",
+       "Fehling's"
+      ],
+      "rows": [
+       [
+        "Aliphatic aldehyde",
+        "Silver mirror",
+        "Red-brown precipitate"
+       ],
+       [
+        "Aromatic aldehyde",
+        "Silver mirror",
+        "No change"
+       ],
+       [
+        "Ketone",
+        "No change",
+        "No change"
+       ]
+      ]
+     }
+    }
+   ]
+  }
+ ],
+ "quiz": [
+  {
+   "q": "Tollens' reagent is:",
+   "options": [
+    "alkaline copper sulphate",
+    "ammoniacal silver nitrate",
+    "iodine and NaOH",
+    "acidified dichromate"
+   ],
+   "answer": 1,
+   "explain": "It contains the silver ammine complex."
+  },
+  {
+   "q": "Fehling's test gives a red-brown precipitate of:",
+   "options": [
+    "CuO",
+    "Cu₂O",
+    "Ag",
+    "CHI₃"
+   ],
+   "answer": 1,
+   "explain": "Cu²⁺ is reduced to copper(I) oxide."
+  },
+  {
+   "q": "Benzaldehyde gives:",
+   "options": [
+    "both tests",
+    "Tollens' only",
+    "Fehling's only",
+    "neither"
+   ],
+   "answer": 1,
+   "explain": "Aromatic aldehydes do not respond to Fehling's."
+  }
+ ],
+ "simulation": {
+  "decision": "REQUIRED",
+  "reason": "Running each test on any compound, and working out a mystery compound from the results, is how students actually use these tests; the video can only show a few cases.",
+  "status": "pass",
+  "path": "sim.html",
+  "objective": "Run Tollens', Fehling's and iodoform tests on eight compounds, then identify a mystery compound.",
+  "instructions": [
+   "Choose a compound and predict each result.",
+   "Run the tests and compare.",
+   "Press Mystery compound and run the tests.",
+   "Decide, then press Reveal."
+  ],
+  "qa": "tests/learn_sims.js 840/840 (2026-11-05)"
+ },
+ "related": [
+  "oxidation-reduction-aldehydes-ketones"
+ ]
+}

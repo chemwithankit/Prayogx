@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="sim-id" content="LEARN-C11-CHE-CARBON-BUILDER-SIM">
+<title>Carbon builder · PrayogX Learn simulation</title>
+<style>
+:root{--bg:#f4f4f1;--card:#fcfcfb;--line:#d9d9d4;--ink:#0b0b0b;--mut:#52514e;--acc:#2a78d6;--good:#00743f;--neg:#c62828;--empty:#ececea}
+@media (prefers-color-scheme:dark){:root{--bg:#111110;--card:#1a1a19;--line:#34342f;--ink:#fff;--mut:#c3c2b7;--acc:#3987e5;--good:#3fae7a;--neg:#ef5350;--empty:#2a2a28}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+.wrap{max-width:980px;margin:0 auto;padding:12px}
+h1{font-size:17px;margin:2px 0 8px}
+h2{font-size:15px;margin:0 0 6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin-top:10px}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+button{font:inherit;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:9px;padding:6px 10px;cursor:pointer;min-height:40px}
+button[aria-pressed="true"]{background:var(--acc);border-color:var(--acc);color:#fff;font-weight:650}
+.small{font-size:13px;color:var(--mut)}
+.verdict{margin-top:8px;padding:8px 10px;border-radius:10px;border:1px solid var(--line);background:var(--bg);min-height:2.6em}
+svg{display:block;width:100%;height:auto}
+.big{font-size:22px;font-weight:800}
+.sum{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:8px;text-align:center}
+.sum>div{border:1px solid var(--line);border-radius:10px;padding:6px;background:var(--bg)}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>Carbon builder: bonds decide the shape</h1>
+<div class="card">
+<h2>Add bonds to one carbon</h2>
+<div class="row"><button type="button" id="s">+ single (1)</button><button type="button" id="d">+ double (2)</button><button type="button" id="t">+ triple (3)</button><button type="button" id="u">Undo</button><button type="button" id="r">Clear</button></div>
+<svg id="sv" viewBox="0 0 640 300" role="img" aria-label="A carbon atom with its bonds"></svg>
+<div class="sum"><div><div class="small">Bonds used</div><div class="big" id="used"></div></div><div><div class="small">Groups</div><div class="big" id="groups"></div></div><div><div class="small">Hybridisation</div><div class="big" id="hyb"></div></div></div>
+<div class="verdict" id="v" aria-live="polite"></div>
+<div class="row" style="margin-top:8px"><span class="small">Try:</span><button type="button" data-try="s,s,s,s">Methane carbon</button><button type="button" data-try="s,s,d">Ethene carbon</button><button type="button" data-try="s,t">Ethyne carbon</button><button type="button" data-try="d,d">Allene middle carbon</button></div>
+</div>
+</div>
+<script>
+(function () {
+  "use strict";
+  var ORD = { s: 1, d: 2, t: 3 };
+  var S = { b: [] };
+  function $(id) { return document.getElementById(id); }
+  function used() { var n = 0, i; for (i = 0; i < S.b.length; i++) { n += ORD[S.b[i]]; } return n; }
+  function info() {
+    var u = used(), g = S.b.length, complete = u === 4, map = { 4: ["sp³", "Tetrahedral", "109.5°", 25], 3: ["sp²", "Trigonal planar", "120°", 33], 2: ["sp", "Linear", "180°", 50] }, m = map[g];
+    return { used: u, groups: g, complete: complete, hyb: complete ? m[0] : null, shape: complete ? m[1] : null, angle: complete ? m[2] : null, s: complete ? m[3] : null };
+  }
+  function draw() {
+    var n = S.b.length, out = "", i, a, x, y, k, o, dx, dy, spread;
+    for (i = 0; i < n; i++) {
+      spread = n === 4 ? [-135, -45, 45, 135][i] : n === 3 ? [-90, 30, 150][i] : n === 2 ? [180, 0][i] : -90;
+      a = spread * Math.PI / 180; x = 320 + Math.cos(a) * 110; y = 150 + Math.sin(a) * 110;
+      for (k = 0; k < ORD[S.b[i]]; k++) {
+        o = (k - (ORD[S.b[i]] - 1) / 2) * 11; dx = -Math.sin(a) * o; dy = Math.cos(a) * o;
+        out += '<line x1="' + (320 + dx) + '" y1="' + (150 + dy) + '" x2="' + (x + dx) + '" y2="' + (y + dy) + '" stroke="var(--mut)" stroke-width="6"/>';
+      }
+      out += '<circle cx="' + x + '" cy="' + y + '" r="22" fill="var(--empty)" stroke="var(--ink)" stroke-width="2"/>';
+    }
+    return out + '<circle cx="320" cy="150" r="34" fill="#2B2D33"/><text x="320" y="160" text-anchor="middle" font-size="28" font-weight="800" fill="#fff">C</text>';
+  }
+  function render() {
+    var f = info(), left = 4 - f.used;
+    $("sv").innerHTML = draw();
+    $("used").textContent = f.used + " / 4"; $("groups").textContent = String(f.groups); $("hyb").textContent = f.hyb || "?";
+    $("s").disabled = left < 1; $("d").disabled = left < 2; $("t").disabled = left < 3;
+    $("v").innerHTML = f.complete ? "<b>" + f.shape + ", " + f.angle + ".</b> " + f.groups + " groups around carbon give " + f.hyb + ", with " + f.s + "% s character." : "Carbon needs 4 bonds in all. " + left + " still to add.";
+  }
+  (function build() {
+    var i, btns;
+    $("s").onclick = function () { PX.add("s"); }; $("d").onclick = function () { PX.add("d"); }; $("t").onclick = function () { PX.add("t"); };
+    $("u").onclick = function () { S.b.pop(); render(); }; $("r").onclick = function () { PX.reset(); };
+    btns = document.querySelectorAll("[data-try]");
+    for (i = 0; i < btns.length; i++) { btns[i].onclick = function () { PX.set(this.getAttribute("data-try").split(",")); }; }
+  }());
+  window.PX = {
+    add: function (k) { if (used() + ORD[k] <= 4) { S.b.push(k); render(); } },
+    set: function (a) { S.b = a.slice(); render(); },
+    reset: function () { S.b = []; render(); },
+    state: info
+  };
+  render();
+}());
+</script>
+</body>
+</html>

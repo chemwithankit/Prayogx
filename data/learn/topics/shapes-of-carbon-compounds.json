@@ -1,0 +1,130 @@
+{
+ "id": "LEARN-C11-CHE-CARBON-SHAPES",
+ "slug": "shapes-of-carbon-compounds",
+ "status": "ready",
+ "class": 11,
+ "subject": "Chemistry",
+ "chapter": "Organic Chemistry – Some Basic Principles and Techniques",
+ "topic": "Shapes of carbon compounds: sp3, sp2, sp",
+ "title": "Shapes of Carbon Compounds: sp³, sp², sp",
+ "series": 426,
+ "studioJob": "carbon-shapes",
+ "reelId": "STUDIO-CARBON-SHAPES",
+ "summary": "Methane, ethene and ethyne all contain carbon but have different shapes. Hybridisation, and a quick way to find it.",
+ "video": {
+  "youtubeId": "R9khXwWleJQ"
+ },
+ "notes": {
+  "pdf": "notes.pdf",
+  "title": "03 – Shapes of Carbon Compounds: sp³, sp², sp",
+  "driveDoc": "1LX3Z2PFn1x-5FwNyiEPIqjrnThUig-UwFrmyQKts8Nw"
+ },
+ "thumb": "thumb.jpg",
+ "tags": [
+  "hybridisation",
+  "sp3",
+  "sp2",
+  "sp",
+  "molecular shape"
+ ],
+ "keyPoints": [
+  "**sp³:** 4 single bonds, tetrahedral, about 109.5°, as in methane.",
+  "**sp²:** one double bond, trigonal planar, 120°, as in ethene.",
+  "**sp:** one triple bond, linear, 180°, as in ethyne.",
+  "**Shortcut:** count the groups around carbon: 4 is sp³, 3 is sp², 2 is sp.",
+  "More **s character** (25%, 33%, 50%) means shorter, stronger bonds."
+ ],
+ "sections": [
+  {
+   "h": "At a glance",
+   "blocks": [
+    {
+     "table": {
+      "head": [
+       "Groups",
+       "Hybridisation",
+       "Shape",
+       "Angle",
+       "s character"
+      ],
+      "rows": [
+       [
+        "4",
+        "sp³",
+        "Tetrahedral",
+        "109.5°",
+        "25%"
+       ],
+       [
+        "3",
+        "sp²",
+        "Trigonal planar",
+        "120°",
+        "33%"
+       ],
+       [
+        "2",
+        "sp",
+        "Linear",
+        "180°",
+        "50%"
+       ]
+      ]
+     }
+    }
+   ]
+  }
+ ],
+ "quiz": [
+  {
+   "q": "The carbon in ethene is:",
+   "options": [
+    "sp",
+    "sp²",
+    "sp³",
+    "sp³d"
+   ],
+   "answer": 1,
+   "explain": "Three groups around each carbon."
+  },
+  {
+   "q": "The bond angle in ethyne is:",
+   "options": [
+    "109.5°",
+    "120°",
+    "180°",
+    "90°"
+   ],
+   "answer": 2,
+   "explain": "sp carbon is linear."
+  },
+  {
+   "q": "Which has the greatest s character?",
+   "options": [
+    "sp",
+    "sp²",
+    "sp³",
+    "all equal"
+   ],
+   "answer": 0,
+   "explain": "50% in sp."
+  }
+ ],
+ "simulation": {
+  "decision": "REQUIRED",
+  "reason": "Adding single, double and triple bonds to one carbon and watching groups, hybridisation and shape change is the shortcut itself, and it covers cases the video does not, such as two double bonds.",
+  "status": "pass",
+  "path": "sim.html",
+  "objective": "Build the bonds around one carbon and find its hybridisation and shape.",
+  "instructions": [
+   "Add single, double or triple bonds until carbon has 4.",
+   "Read the groups, hybridisation and shape.",
+   "Try the examples.",
+   "Check the allene carbon: two double bonds, 2 groups, sp."
+  ],
+  "qa": "tests/learn_sims.js 840/840 (2026-11-05)"
+ },
+ "related": [
+  "why-carbon-forms-millions"
+ ]
+}

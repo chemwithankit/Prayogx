@@ -1,0 +1,156 @@
+{
+ "slug": "haloform-reaction-iodoform-test",
+ "title": "The Haloform Reaction: Iodoform Test",
+ "class": 12,
+ "subject": "Chemistry",
+ "chapter": "Aldehydes, Ketones and Carboxylic Acids",
+ "objective": "Yellow crystals with a hospital smell reveal the CH₃CO group. How the iodoform test works and which compounds pass it.",
+ "fill": [
+  {
+   "q": "Iodoform has the formula ____.",
+   "a": "CHI₃"
+  },
+  {
+   "q": "Iodoform is a ____ solid.",
+   "a": "yellow"
+  },
+  {
+   "q": "The test uses iodine and ____.",
+   "a": "NaOH"
+  },
+  {
+   "q": "The test detects the ____ group.",
+   "a": "CH₃CO"
+  },
+  {
+   "q": "The carboxylate formed has ____ carbon fewer.",
+   "a": "1"
+  }
+ ],
+ "tf": [
+  {
+   "q": "Ethanol gives the iodoform test.",
+   "a": true,
+   "explain": "It oxidises to ethanal."
+  },
+  {
+   "q": "Methanol gives the iodoform test.",
+   "a": false,
+   "explain": "It cannot form CH₃CO."
+  },
+  {
+   "q": "Propanal gives the iodoform test.",
+   "a": false,
+   "explain": "It has no CH₃CO group."
+  },
+  {
+   "q": "Propanone gives the iodoform test.",
+   "a": true,
+   "explain": "It is a methyl ketone."
+  }
+ ],
+ "ar": [
+  {
+   "a": "Propan-2-ol gives the iodoform test.",
+   "r": "It is oxidised to a methyl ketone under test conditions.",
+   "answer": 0,
+   "explain": "R explains A."
+  },
+  {
+   "a": "Propanone gives an acid salt with fewer carbons.",
+   "r": "The C–C bond next to CI₃ breaks.",
+   "answer": 0,
+   "explain": "R explains A."
+  }
+ ],
+ "mcq": [
+  {
+   "q": "Which gives iodoform?",
+   "options": [
+    "Methanol",
+    "Propanal",
+    "Propan-2-ol",
+    "Pentan-3-one"
+   ],
+   "answer": 2,
+   "explain": "It oxidises to propanone."
+  },
+  {
+   "q": "Which is the only aldehyde that gives iodoform?",
+   "options": [
+    "Methanal",
+    "Ethanal",
+    "Propanal",
+    "Benzaldehyde"
+   ],
+   "answer": 1,
+   "explain": "It has CH₃CO."
+  },
+  {
+   "q": "During the test, the methyl group's H atoms are replaced by:",
+   "options": [
+    "OH",
+    "iodine",
+    "oxygen",
+    "sodium"
+   ],
+   "answer": 1,
+   "explain": "Giving CI₃."
+  },
+  {
+   "q": "Pentan-3-one gives a negative test because:",
+   "options": [
+    "it has no carbonyl",
+    "neither side of C=O is methyl",
+    "it is an alcohol",
+    "it is an acid"
+   ],
+   "answer": 1,
+   "explain": "No CH₃CO group."
+  }
+ ],
+ "num": [
+  {
+   "q": "How many carbons does the carboxylate from propanone have?",
+   "steps": [
+    "3 − 1"
+   ],
+   "answer": "2"
+  },
+  {
+   "q": "How many iodine atoms are in one iodoform molecule?",
+   "steps": [
+    "CHI₃"
+   ],
+   "answer": "3"
+  }
+ ],
+ "short": [
+  {
+   "q": "How would you distinguish ethanol from methanol?",
+   "lines": 5,
+   "solution": "Warm with iodine and NaOH: ethanol gives yellow iodoform, methanol gives no change."
+  }
+ ],
+ "match": {
+  "left": [
+   "Yellow precipitate",
+   "Propanone",
+   "Methanol",
+   "I₂ + NaOH"
+  ],
+  "right": [
+   "test reagents",
+   "positive",
+   "CHI₃",
+   "negative"
+  ],
+  "answer": [
+   2,
+   1,
+   3,
+   0
+  ],
+  "explain": "Each item matches its partner."
+ }
+}

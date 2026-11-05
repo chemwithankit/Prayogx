@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="sim-id" content="LEARN-C12-CHE-TEST-BENCH-SIM">
+<title>Test bench · PrayogX Learn simulation</title>
+<style>
+:root{--bg:#f4f4f1;--card:#fcfcfb;--line:#d9d9d4;--ink:#0b0b0b;--mut:#52514e;--acc:#2a78d6;--good:#00743f;--neg:#c62828;--empty:#ececea}
+@media (prefers-color-scheme:dark){:root{--bg:#111110;--card:#1a1a19;--line:#34342f;--ink:#fff;--mut:#c3c2b7;--acc:#3987e5;--good:#3fae7a;--neg:#ef5350;--empty:#2a2a28}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+.wrap{max-width:980px;margin:0 auto;padding:12px}
+h1{font-size:17px;margin:2px 0 8px}
+h2{font-size:15px;margin:0 0 6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin-top:10px}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+button{font:inherit;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:9px;padding:6px 10px;cursor:pointer;min-height:40px}
+button[aria-pressed="true"]{background:var(--acc);border-color:var(--acc);color:#fff;font-weight:650}
+.small{font-size:13px;color:var(--mut)}
+.verdict{margin-top:8px;padding:8px 10px;border-radius:10px;border:1px solid var(--line);background:var(--bg);min-height:2.6em}
+svg{display:block;width:100%;height:auto}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>Test bench: Tollens', Fehling's and iodoform</h1>
+<div class="card">
+<h2>1. Compound</h2><div class="row" id="comps"></div>
+<div class="row" style="margin-top:6px"><button type="button" id="mystery">Mystery compound</button><button type="button" id="reveal">Reveal</button></div>
+</div>
+<div class="card">
+<h2>2. Run a test</h2><div class="row" id="tests"></div>
+<svg id="sv" viewBox="0 0 640 210" role="img" aria-label="Three test tubes, one for each test"></svg>
+<div class="verdict" id="v" aria-live="polite"></div>
+<p class="small" style="margin:8px 0 0">Results follow the NCERT rules for these compounds. Tube colours are illustrations.</p>
+</div>
+</div>
+<script>
+(function () {
+  "use strict";
+  // kind: al aliphatic aldehyde, ar aromatic aldehyde, k ketone, o alcohol; io: gives iodoform
+  var C = [
+    { id: "ethanal", name: "Ethanal", kind: "al", io: true, why: "CH₃CHO has the CH₃CO group." },
+    { id: "propanal", name: "Propanal", kind: "al", io: false, why: "It has no CH₃CO group." },
+    { id: "benzaldehyde", name: "Benzaldehyde", kind: "ar", io: false, why: "It has no CH₃CO group." },
+    { id: "propanone", name: "Propanone", kind: "k", io: true, why: "CH₃COCH₃ is a methyl ketone." },
+    { id: "pentan3one", name: "Pentan-3-one", kind: "k", io: false, why: "Neither side of C=O is a methyl group." },
+    { id: "ethanol", name: "Ethanol", kind: "o", io: true, why: "It is oxidised to ethanal, which has CH₃CO." },
+    { id: "propan2ol", name: "Propan-2-ol", kind: "o", io: true, why: "It is oxidised to propanone." },
+    { id: "methanol", name: "Methanol", kind: "o", io: false, why: "It cannot form a CH₃CO group." }
+  ];
+  var T = [["tollens", "Tollens'"], ["fehling", "Fehling's"], ["iodoform", "Iodoform"]];
+  var S = { comp: "ethanal", done: {}, mystery: false, m: 0 };
+  function $(id) { return document.getElementById(id); }
+  function cur() { var i; for (i = 0; i < C.length; i++) { if (C[i].id === S.comp) { return C[i]; } } return null; }
+  function result(c, t) {
+    if (t === "tollens") { return c.kind === "al" || c.kind === "ar"; }
+    if (t === "fehling") { return c.kind === "al"; }
+    return c.io;
+  }
+  var POS = { tollens: "Silver mirror", fehling: "Red-brown Cu₂O", iodoform: "Yellow CHI₃" };
+  function tube(x, t) {
+    var run = S.done[t], yes = run && result(cur(), t), base = t === "fehling" ? "#3A86FF" : "#DDEEFF";
+    var liquid = !run ? base : (t === "fehling" && yes ? "#D9C6AF" : base);
+    var extra = "";
+    if (yes && t === "tollens") { extra = '<path d="M' + (x - 34) + ' 62 L' + (x - 34) + ' 142 A34 34 0 0 0 ' + (x + 34) + ' 142 L' + (x + 34) + ' 62 Z" fill="#AEB8C2"/>'; }
+    if (yes && t === "fehling") { extra = '<path d="M' + (x - 32) + ' 140 L' + (x + 32) + ' 140 A32 32 0 0 1 ' + (x - 32) + ' 140 Z" fill="#B5451E"/>'; }
+    if (yes && t === "iodoform") { extra = '<path d="M' + (x - 32) + ' 140 L' + (x + 32) + ' 140 A32 32 0 0 1 ' + (x - 32) + ' 140 Z" fill="#F2C200"/>'; }
+    return '<path d="M' + (x - 34) + ' 62 L' + (x - 34) + ' 142 A34 34 0 0 0 ' + (x + 34) + ' 142 L' + (x + 34) + ' 62 Z" fill="' + liquid + '"/>' + extra +
+      '<path d="M' + (x - 34) + ' 20 L' + (x - 34) + ' 142 A34 34 0 0 0 ' + (x + 34) + ' 142 L' + (x + 34) + ' 20" fill="none" stroke="var(--ink)" stroke-width="3"/>' +
+      '<text x="' + x + '" y="202" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)">' + (run ? (yes ? POS[t] : "No change") : "Not run") + '</text>';
+  }
+  function render() {
+    var i, c = cur(), keys = 0, k;
+    for (i = 0; i < C.length; i++) { $("c-" + C[i].id).setAttribute("aria-pressed", !S.mystery && S.comp === C[i].id ? "true" : "false"); }
+    $("mystery").setAttribute("aria-pressed", S.mystery ? "true" : "false");
+    $("sv").innerHTML = tube(110, "tollens") + tube(320, "fehling") + tube(530, "iodoform");
+    for (k in S.done) { if (S.done[k]) { keys++; } }
+    if (S.mystery) { $("v").innerHTML = keys ? "<b>Mystery compound.</b> Run more tests, then decide and press Reveal." : "<b>Mystery compound.</b> Run the tests and work out what it could be."; return; }
+    $("v").innerHTML = keys ? "<b>" + c.name + ".</b> Iodoform rule: " + c.why : "Run a test on " + c.name + ". Predict first.";
+  }
+  (function build() {
+    var i, b;
+    for (i = 0; i < C.length; i++) {
+      b = document.createElement("button"); b.type = "button"; b.id = "c-" + C[i].id; b.textContent = C[i].name; b.setAttribute("data-c", C[i].id);
+      b.onclick = function () { PX.setCompound(this.getAttribute("data-c")); };
+      $("comps").appendChild(b);
+    }
+    for (i = 0; i < T.length; i++) {
+      b = document.createElement("button"); b.type = "button"; b.id = "t-" + T[i][0]; b.textContent = T[i][1]; b.setAttribute("data-t", T[i][0]);
+      b.onclick = function () { PX.run(this.getAttribute("data-t")); };
+      $("tests").appendChild(b);
+    }
+    $("mystery").onclick = function () { PX.mystery(); };
+    $("reveal").onclick = function () { PX.reveal(); };
+  }());
+  window.PX = {
+    setCompound: function (id) { S.comp = id; S.done = {}; S.mystery = false; render(); },
+    run: function (t) { S.done[t] = true; render(); },
+    mystery: function () { S.m = (S.m + 3) % C.length; S.comp = C[S.m].id; S.done = {}; S.mystery = true; render(); },
+    reveal: function () { if (S.mystery) { S.mystery = false; S.done = { tollens: true, fehling: true, iodoform: true }; render(); } },
+    reset: function () { S.comp = "ethanal"; S.done = {}; S.mystery = false; S.m = 0; render(); },
+    state: function () { var c = cur(); return { comp: c.id, mystery: S.mystery, tollens: result(c, "tollens"), fehling: result(c, "fehling"), iodoform: result(c, "iodoform"), text: $("v").textContent, labels: $("sv").textContent }; }
+  };
+  render();
+}());
+</script>
+</body>
+</html>

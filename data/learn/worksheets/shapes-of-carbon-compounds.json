@@ -1,0 +1,156 @@
+{
+ "slug": "shapes-of-carbon-compounds",
+ "title": "Shapes of Carbon Compounds: sp³, sp², sp",
+ "class": 11,
+ "subject": "Chemistry",
+ "chapter": "Organic Chemistry – Some Basic Principles and Techniques",
+ "objective": "Methane, ethene and ethyne all contain carbon but have different shapes. Hybridisation, and a quick way to find it.",
+ "fill": [
+  {
+   "q": "sp³ carbon is ____ in shape.",
+   "a": "tetrahedral"
+  },
+  {
+   "q": "sp² carbon has a bond angle of ____ degrees.",
+   "a": "120"
+  },
+  {
+   "q": "sp carbon is ____ in shape.",
+   "a": "linear"
+  },
+  {
+   "q": "A carbon with 3 groups around it is ____ hybridised.",
+   "a": "sp²"
+  },
+  {
+   "q": "sp has ____ percent s character.",
+   "a": "50"
+  }
+ ],
+ "tf": [
+  {
+   "q": "Methane's carbon is sp³.",
+   "a": true,
+   "explain": "Four single bonds."
+  },
+  {
+   "q": "Ethyne's carbon is sp².",
+   "a": false,
+   "explain": "It is sp."
+  },
+  {
+   "q": "More s character gives a shorter bond.",
+   "a": true,
+   "explain": "s orbitals lie closer to the nucleus."
+  },
+  {
+   "q": "A double bond counts as 2 groups.",
+   "a": false,
+   "explain": "It counts as one group."
+  }
+ ],
+ "ar": [
+  {
+   "a": "The C–H bond in ethyne is shorter than in ethane.",
+   "r": "sp carbon has more s character.",
+   "answer": 0,
+   "explain": "R explains A."
+  },
+  {
+   "a": "Ethene's carbons are trigonal planar.",
+   "r": "Each carbon has 3 groups around it.",
+   "answer": 0,
+   "explain": "R explains A."
+  }
+ ],
+ "mcq": [
+  {
+   "q": "The carbon in ethene is:",
+   "options": [
+    "sp",
+    "sp²",
+    "sp³",
+    "sp³d"
+   ],
+   "answer": 1,
+   "explain": "3 groups."
+  },
+  {
+   "q": "The bond angle in methane is about:",
+   "options": [
+    "90°",
+    "109.5°",
+    "120°",
+    "180°"
+   ],
+   "answer": 1,
+   "explain": "Tetrahedral."
+  },
+  {
+   "q": "The shape around sp carbon is:",
+   "options": [
+    "tetrahedral",
+    "bent",
+    "trigonal planar",
+    "linear"
+   ],
+   "answer": 3,
+   "explain": "180°."
+  },
+  {
+   "q": "Which has the least s character?",
+   "options": [
+    "sp",
+    "sp²",
+    "sp³",
+    "all equal"
+   ],
+   "answer": 2,
+   "explain": "25%."
+  }
+ ],
+ "num": [
+  {
+   "q": "How many groups surround each carbon in ethyne?",
+   "steps": [
+    "One H and the triple bond"
+   ],
+   "answer": "2"
+  },
+  {
+   "q": "How many sp³ carbons are in propene, CH₃CH=CH₂?",
+   "steps": [
+    "Only the CH₃ carbon"
+   ],
+   "answer": "1"
+  }
+ ],
+ "short": [
+  {
+   "q": "State the shortcut to find hybridisation.",
+   "lines": 5,
+   "solution": "Count the groups around carbon: 4 is sp³, 3 is sp², 2 is sp. A multiple bond counts as one group."
+  }
+ ],
+ "match": {
+  "left": [
+   "sp³",
+   "sp²",
+   "sp",
+   "50% s character"
+  ],
+  "right": [
+   "109.5°",
+   "180°",
+   "sp",
+   "120°"
+  ],
+  "answer": [
+   0,
+   3,
+   1,
+   2
+  ],
+  "explain": "Each item matches its partner."
+ }
+}

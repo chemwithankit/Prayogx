@@ -1,0 +1,156 @@
+{
+ "slug": "why-carbon-forms-millions",
+ "title": "Why Carbon Forms Millions of Compounds",
+ "class": 11,
+ "subject": "Chemistry",
+ "chapter": "Organic Chemistry – Some Basic Principles and Techniques",
+ "objective": "Over 100 elements, yet most known compounds contain carbon. Four reasons, and why silicon can't do the same.",
+ "fill": [
+  {
+   "q": "A carbon atom forms ____ covalent bonds.",
+   "a": "4"
+  },
+  {
+   "q": "C₅H₁₂ has ____ structural isomers.",
+   "a": "3"
+  },
+  {
+   "q": "C₁₀H₂₂ has ____ structural isomers.",
+   "a": "75"
+  },
+  {
+   "q": "Si–Si bonds are ____ than C–C bonds.",
+   "a": "weaker"
+  },
+  {
+   "q": "Compounds with the same atoms in a different arrangement are ____.",
+   "a": "isomers"
+  }
+ ],
+ "tf": [
+  {
+   "q": "Carbon can form single, double and triple bonds.",
+   "a": true,
+   "explain": "Bond variety is one reason."
+  },
+  {
+   "q": "Long silicon chains are as stable as carbon chains.",
+   "a": false,
+   "explain": "Si–Si bonds are weaker."
+  },
+  {
+   "q": "Carbon bonds easily to oxygen and nitrogen.",
+   "a": true,
+   "explain": "That adds even more compounds."
+  },
+  {
+   "q": "Isomers have different molecular formulas.",
+   "a": false,
+   "explain": "Same formula, different arrangement."
+  }
+ ],
+ "ar": [
+  {
+   "a": "Carbon forms long stable chains.",
+   "r": "C–C bonds are strong.",
+   "answer": 0,
+   "explain": "R explains A."
+  },
+  {
+   "a": "Silicon forms far fewer chain compounds than carbon.",
+   "r": "Si–Si bonds are weak.",
+   "answer": 0,
+   "explain": "R explains A."
+  }
+ ],
+ "mcq": [
+  {
+   "q": "Carbon compounds are so many mainly because of:",
+   "options": [
+    "tetravalency and catenation",
+    "high density",
+    "metallic bonding",
+    "low melting point"
+   ],
+   "answer": 0,
+   "explain": "4 bonds and strong chains."
+  },
+  {
+   "q": "C₄H₁₀ has how many structural isomers?",
+   "options": [
+    "1",
+    "2",
+    "3",
+    "4"
+   ],
+   "answer": 1,
+   "explain": "Butane and 2-methylpropane."
+  },
+  {
+   "q": "The C–C bond energy is about:",
+   "options": [
+    "100 kJ/mol",
+    "225 kJ/mol",
+    "350 kJ/mol",
+    "900 kJ/mol"
+   ],
+   "answer": 2,
+   "explain": "Stronger than Si–Si."
+  },
+  {
+   "q": "Which is NOT a reason for many carbon compounds?",
+   "options": [
+    "4 bonds",
+    "strong C–C bonds",
+    "metallic lustre",
+    "isomerism"
+   ],
+   "answer": 2,
+   "explain": "Carbon is a non-metal."
+  }
+ ],
+ "num": [
+  {
+   "q": "How many C–H bonds are in C₄H₁₀?",
+   "steps": [
+    "One per H atom"
+   ],
+   "answer": "10"
+  },
+  {
+   "q": "How many C–C bonds are in a straight chain of 5 carbons?",
+   "steps": [
+    "n − 1"
+   ],
+   "answer": "4"
+  }
+ ],
+ "short": [
+  {
+   "q": "Give the four reasons why carbon forms so many compounds.",
+   "lines": 5,
+   "solution": "Four bonds, strong C–C bonds, single, double and triple bonds with many partners, and isomerism."
+  }
+ ],
+ "match": {
+  "left": [
+   "C₄H₁₀",
+   "C₅H₁₂",
+   "C₁₀H₂₂",
+   "C₂₀H₄₂"
+  ],
+  "right": [
+   "366,319 isomers",
+   "2 isomers",
+   "3 isomers",
+   "75 isomers"
+  ],
+  "answer": [
+   1,
+   2,
+   3,
+   0
+  ],
+  "explain": "Each formula matches its isomer count."
+ }
+}

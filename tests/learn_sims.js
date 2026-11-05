@@ -28,6 +28,8 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
      learn/empty-and-universal-relations/sim.html  rule → pairs against a brute-force filter; empty, universal
      learn/pascals-triangle-patterns/sim.html  binomials by the product formula, row sums, Fibonacci sums
      learn/oxidation-reduction-aldehydes-ketones/sim.html  products and carbon counts of each compound and reagent
+     learn/tollens-and-fehlings-tests/sim.html  each compound and test against an independent table
+     learn/shapes-of-carbon-compounds/sim.html  bonds to groups, hybridisation, shape, angle, s character
      learn/roster-and-set-builder-form/sim.html  rule → elements, roster and set-builder text,
                                         order, infinite sets, letters of a word without repeats
      learn/image-in-a-plane-mirror/sim.html  image distance, gap, walking, the reflection point
@@ -221,6 +223,29 @@ for (const key of Object.keys(MATERIALS)) FD[key] = fdContact(SKIN, Object.assig
       }
       const ovX = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
       ok(`redox ${tag}: no horizontal overflow`, ovX <= 0, ovX);
+
+      // ---- test bench: an independent results table
+      await page.goto(base + 'tollens-and-fehlings-tests/sim.html', { waitUntil: 'load' });
+      const bench = { ethanal: [1, 1, 1], propanal: [1, 1, 0], benzaldehyde: [1, 0, 0], propanone: [0, 0, 1], pentan3one: [0, 0, 0], ethanol: [0, 0, 1], propan2ol: [0, 0, 1], methanol: [0, 0, 0] };
+      for (const [c, [t, fe, io]] of Object.entries(bench)) {
+        const s = await page.evaluate(v => { PX.setCompound(v); return PX.state(); }, c);
+        ok(`bench ${c} ${tag}: Tollens ${t}, Fehling ${fe}, iodoform ${io}`, s.tollens === !!t && s.fehling === !!fe && s.iodoform === !!io, `${s.tollens} ${s.fehling} ${s.iodoform}`);
+      }
+      const mys = await page.evaluate(() => { PX.reset(); PX.mystery(); const a = PX.state(); PX.run('tollens'); const hidden = PX.state().text; PX.reveal(); return [a.mystery, hidden, PX.state().mystery, PX.state().labels]; });
+      ok(`bench mystery ${tag}: the name stays hidden until Reveal`, mys[0] === true && mys[1].startsWith('Mystery') && mys[2] === false && !mys[3].includes('Not run'), mys[1]);
+      const ovB = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
+      ok(`bench ${tag}: no horizontal overflow`, ovB <= 0, ovB);
+
+      // ---- carbon builder: valence, groups, hybridisation
+      await page.goto(base + 'shapes-of-carbon-compounds/sim.html', { waitUntil: 'load' });
+      for (const [b, g, h, sh, an, sc] of [[['s', 's', 's', 's'], 4, 'sp³', 'Tetrahedral', '109.5°', 25], [['s', 's', 'd'], 3, 'sp²', 'Trigonal planar', '120°', 33], [['s', 't'], 2, 'sp', 'Linear', '180°', 50], [['d', 'd'], 2, 'sp', 'Linear', '180°', 50]]) {
+        const s = await page.evaluate(v => { PX.set(v); return PX.state(); }, b);
+        ok(`builder ${b.join('')} ${tag}: ${g} groups, ${h}`, s.used === 4 && s.groups === g && s.hyb === h && s.shape === sh && s.angle === an && s.s === sc, `${s.groups} ${s.hyb}`);
+      }
+      const over = await page.evaluate(() => { PX.reset(); PX.add('t'); PX.add('d'); return PX.state(); });
+      ok(`builder ${tag}: refuses more than 4 bonds`, over.used === 3 && over.complete === false, over.used);
+      const ovU = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
+      ok(`builder ${tag}: no horizontal overflow`, ovU <= 0, ovU);
 
       // ---- rest and motion: you start at −20 m and ride 4 m/s for 10 s; friend sits 1.5 m ahead
       await page.goto(base + 'rest-and-motion/sim.html', { waitUntil: 'load' });
