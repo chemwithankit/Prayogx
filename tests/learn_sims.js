@@ -31,6 +31,7 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
      learn/tollens-and-fehlings-tests/sim.html  each compound and test against an independent table
      learn/drawing-organic-molecules/sim.html  C, H and O counts from the drawing against a formula table
      learn/aldol-condensation/sim.html  alpha-H counts, who reacts, aldol and condensation products
+     learn/classifying-organic-compounds/sim.html  each compound's class against an independent table
      learn/shapes-of-carbon-compounds/sim.html  bonds to groups, hybridisation, shape, angle, s character
      learn/roster-and-set-builder-form/sim.html  rule → elements, roster and set-builder text,
                                         order, infinite sets, letters of a word without repeats
@@ -282,6 +283,19 @@ for (const key of Object.keys(MATERIALS)) FD[key] = fdContact(SKIN, Object.assig
       ok(`alpha ${tag}: no test before a prediction`, !blocked.based);
       const ovA = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
       ok(`alpha ${tag}: no horizontal overflow`, ovA <= 0, ovA);
+
+      // ---- compound sorter: each class against an independent table
+      await page.goto(base + 'classifying-organic-compounds/sim.html', { waitUntil: 'load' });
+      for (const [c, cl, ar] of [['ethane', 'acyclic'], ['isobutane', 'acyclic'], ['ethanal', 'acyclic'], ['cyclopropane', 'alicyclic'], ['cyclohexane', 'alicyclic'], ['cyclohexene', 'alicyclic'], ['benzene', 'aromatic'], ['toluene', 'aromatic'], ['furan', 'heterocyclic', true], ['thiophene', 'heterocyclic', true], ['pyridine', 'heterocyclic', true], ['thf', 'heterocyclic']]) {
+        const s = await page.evaluate(v => { PX.pick(v[0]); PX.sort(v[1]); return PX.state(); }, [c, cl]);
+        ok(`sorter ${c} ${tag}: ${cl}`, s.answer === cl && s.correct && s.alsoAromatic === !!ar, s.answer);
+        const wrong = await page.evaluate(v => { PX.sort(v === 'acyclic' ? 'aromatic' : 'acyclic'); return PX.state(); }, cl);
+        ok(`sorter ${c} ${tag}: a wrong bin is refused`, !wrong.correct);
+      }
+      const scS = await page.evaluate(() => { PX.reset(); PX.sort('acyclic'); PX.pick('benzene'); PX.sort('alicyclic'); PX.sort('aromatic'); return PX.state(); });
+      ok(`sorter ${tag}: only the first try scores`, scS.tried === 2 && scS.right === 1, `${scS.right}/${scS.tried}`);
+      const ovSort = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
+      ok(`sorter ${tag}: no horizontal overflow`, ovSort <= 0, ovSort);
 
       // ---- rest and motion: you start at −20 m and ride 4 m/s for 10 s; friend sits 1.5 m ahead
       await page.goto(base + 'rest-and-motion/sim.html', { waitUntil: 'load' });

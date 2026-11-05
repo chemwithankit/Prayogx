@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="sim-id" content="LEARN-C11-CHE-COMPOUND-SORTER-SIM">
+<title>Compound sorter · PrayogX Learn simulation</title>
+<style>
+:root{--bg:#f4f4f1;--card:#fcfcfb;--line:#d9d9d4;--ink:#0b0b0b;--mut:#52514e;--acc:#2a78d6;--good:#00743f;--neg:#c62828;--empty:#ececea;--hc:#6f4fd6;--oc:#d9480f}
+@media (prefers-color-scheme:dark){:root{--bg:#111110;--card:#1a1a19;--line:#34342f;--ink:#fff;--mut:#c3c2b7;--acc:#3987e5;--good:#3fae7a;--neg:#ef5350;--empty:#2a2a28;--hc:#a48bff;--oc:#ff8a50}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+.wrap{max-width:980px;margin:0 auto;padding:12px}
+h1{font-size:17px;margin:2px 0 8px}
+h2{font-size:15px;margin:0 0 6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin-top:10px}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+button{font:inherit;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:9px;padding:6px 10px;cursor:pointer;min-height:40px}
+button[aria-pressed="true"]{background:var(--acc);border-color:var(--acc);color:#fff;font-weight:650}
+button:disabled{opacity:.45;cursor:default}
+.small{font-size:13px;color:var(--mut)}
+.verdict{margin-top:8px;padding:8px 10px;border-radius:10px;border:1px solid var(--line);background:var(--bg);min-height:2.6em;overflow-wrap:anywhere}
+.form{margin-top:8px;padding:8px 10px;border-radius:10px;border:1px solid var(--line);background:var(--bg);overflow-wrap:anywhere}
+.form b{display:block;font-size:13px;color:var(--mut);font-weight:650}
+svg{display:block;width:100%;max-width:340px;margin:8px auto 0;height:auto}
+.b{stroke:var(--ink);stroke-width:4;stroke-linecap:round;fill:none}
+.at{font:700 20px ui-sans-serif,system-ui,sans-serif;text-anchor:middle;fill:var(--oc)}
+.nm{text-align:center;font-size:18px;font-weight:700;margin-top:4px}
+.qs{margin:8px 0 0;padding-left:20px}
+.qs li{margin:3px 0}
+.yes{color:var(--good);font-weight:700}
+.no{color:var(--mut);font-weight:700}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>Compound sorter: where does it go?</h1>
+<div class="card">
+<h2>1. Look at the skeleton</h2>
+<div class="row" id="cs"></div>
+<svg id="pic" viewBox="0 0 300 170" role="img" aria-label="Skeleton of the chosen compound"></svg>
+<div class="nm" id="nm"></div>
+</div>
+<div class="card">
+<h2>2. Sort it</h2>
+<div class="row" id="bins"></div>
+<div class="verdict" id="verdict" aria-live="polite"></div>
+<ol class="qs" id="qs" hidden></ol>
+<p class="small" id="score"></p>
+<div class="row"><button type="button" id="next">Next compound</button><button type="button" id="again">Start again</button></div>
+</div>
+</div>
+<script>
+(function () {
+  "use strict";
+  // ring: ring size or 0; hetero: the ring atom other than carbon; benz: a benzene ring; dbl: ring edges drawn double; note: the point it teaches
+  var C = {
+    ethane: { name: "Ethane", ring: 0, n: 2, note: "Two carbons, no ring." },
+    isobutane: { name: "2-Methylpropane", ring: 0, n: 4, branch: true, note: "A branch is still an open chain: no ring closes." },
+    ethanal: { name: "Ethanal", ring: 0, n: 2, group: "CHO", note: "A functional group does not change the skeleton." },
+    cyclopropane: { name: "Cyclopropane", ring: 3, dbl: [], note: "The smallest carbon ring." },
+    cyclohexane: { name: "Cyclohexane", ring: 6, dbl: [], note: "A ring of carbon only." },
+    cyclohexene: { name: "Cyclohexene", ring: 6, dbl: [1], note: "One double bond does not make a ring aromatic." },
+    benzene: { name: "Benzene", ring: 6, benz: true, dbl: [0, 2, 4], note: "The parent aromatic ring." },
+    toluene: { name: "Toluene", ring: 6, benz: true, dbl: [0, 2, 4], group: "CH₃", note: "A group on a benzene ring keeps it aromatic." },
+    furan: { name: "Furan", ring: 5, hetero: "O", dbl: [1, 3], also: true, note: "Oxygen is in the ring. It is also a heterocyclic aromatic compound." },
+    thiophene: { name: "Thiophene", ring: 5, hetero: "S", dbl: [1, 3], also: true, note: "Sulfur is in the ring. It is also a heterocyclic aromatic compound." },
+    pyridine: { name: "Pyridine", ring: 6, hetero: "N", dbl: [1, 3, 5], also: true, note: "Nitrogen is in the ring. It is also a heterocyclic aromatic compound." },
+    thf: { name: "Tetrahydrofuran", ring: 5, hetero: "O", dbl: [], note: "Oxygen is in the ring, but this one is not aromatic." }
+  };
+  var ORDER = ["ethane", "isobutane", "ethanal", "cyclopropane", "cyclohexane", "cyclohexene", "benzene", "toluene", "furan", "thiophene", "pyridine", "thf"];
+  var BINS = [["acyclic", "Acyclic"], ["alicyclic", "Alicyclic"], ["aromatic", "Aromatic"], ["heterocyclic", "Heterocyclic"]];
+  var S = { c: "ethane", pick: null, done: {} };
+  function $(id) { return document.getElementById(id); }
+  function classify(id) { var c = C[id]; if (!c.ring) { return "acyclic"; } if (c.hetero) { return "heterocyclic"; } return c.benz ? "aromatic" : "alicyclic"; }
+  function node(t, at, txt) { var e = document.createElementNS("http://www.w3.org/2000/svg", t), k; for (k in at) { if (at.hasOwnProperty(k)) { e.setAttribute(k, at[k]); } } if (txt) { e.textContent = txt; } return e; }
+  function line(g, a, b) { g.appendChild(node("line", { "class": "b", x1: a[0], y1: a[1], x2: b[0], y2: b[1] })); }
+  function draw() {
+    var c = C[S.c], g = $("pic"), i, P = [], t, a, b, cx = 150, cy = 90, r = 62, k = 0.74, A, B;
+    while (g.firstChild) { g.removeChild(g.firstChild); }
+    if (!c.ring) {
+      for (i = 0; i < (c.branch ? 3 : c.n); i++) { P.push([c.branch ? 80 + i * 70 : 110 + i * 80, i % 2 ? 70 : 110]); }
+      for (i = 0; i + 1 < P.length; i++) { line(g, P[i], P[i + 1]); }
+      if (c.branch) { line(g, P[1], [P[1][0], 18]); }
+      if (c.group) { g.appendChild(node("text", { "class": "at", x: P[P.length - 1][0] + 34, y: P[P.length - 1][1] - 2 }, c.group)); }
+      return;
+    }
+    for (i = 0; i < c.ring; i++) { t = -Math.PI / 2 + i * 2 * Math.PI / c.ring; P.push([cx + r * Math.cos(t), cy + r * Math.sin(t)]); }
+    for (i = 0; i < c.ring; i++) {
+      a = P[i]; b = P[(i + 1) % c.ring];
+      if (c.hetero && (i === 0 || i === c.ring - 1)) {
+        var q = i === 0 ? b : a, tp = P[0];
+        line(g, q, [q[0] + (tp[0] - q[0]) * 0.72, q[1] + (tp[1] - q[1]) * 0.72]);
+      } else { line(g, a, b); }
+    }
+    for (i = 0; i < c.dbl.length; i++) {
+      a = P[c.dbl[i]]; b = P[(c.dbl[i] + 1) % c.ring];
+      A = [cx + (a[0] - cx) * k, cy + (a[1] - cy) * k]; B = [cx + (b[0] - cx) * k, cy + (b[1] - cy) * k];
+      line(g, [A[0] + (B[0] - A[0]) * 0.16, A[1] + (B[1] - A[1]) * 0.16], [B[0] + (A[0] - B[0]) * 0.16, B[1] + (A[1] - B[1]) * 0.16]);
+    }
+    if (c.hetero) { g.appendChild(node("text", { "class": "at", x: P[0][0], y: P[0][1] + 7 }, c.hetero)); }
+    if (c.group) { line(g, P[1], [P[1][0] + 34, P[1][1] - 20]); g.appendChild(node("text", { "class": "at", x: P[1][0] + 62, y: P[1][1] - 22 }, c.group)); }
+  }
+  function render() {
+    var i, c = C[S.c], ans = classify(S.c), k, right = 0, n = 0, yes = function (v) { return '<span class="' + (v ? "yes" : "no") + '">' + (v ? "Yes" : "No") + "</span>"; };
+    for (i = 0; i < ORDER.length; i++) { $("c-" + ORDER[i]).setAttribute("aria-pressed", ORDER[i] === S.c ? "true" : "false"); }
+    for (i = 0; i < BINS.length; i++) { $("b-" + BINS[i][0]).setAttribute("aria-pressed", BINS[i][0] === S.pick ? "true" : "false"); }
+    $("nm").textContent = c.name; draw();
+    if (S.pick === null) { $("verdict").textContent = "Choose where this compound goes."; $("qs").hidden = true; }
+    else {
+      $("verdict").innerHTML = (S.pick === ans ? "<b>Right: " : "<b>Not quite: it is ") + ans + ".</b> " + c.note;
+      $("qs").hidden = false;
+      $("qs").innerHTML = "<li>Does the chain close into a ring? " + yes(!!c.ring) + "</li>" + (c.ring ? "<li>Is an atom other than carbon in the ring? " + yes(!!c.hetero) + "</li>" : "") + (c.ring && !c.hetero ? "<li>Is it a benzene ring? " + yes(!!c.benz) + "</li>" : "");
+    }
+    for (k in S.done) { if (S.done.hasOwnProperty(k)) { n++; if (S.done[k]) { right++; } } }
+    $("score").textContent = n ? right + " of " + n + " sorted right on the first try, out of " + ORDER.length + " compounds." : "";
+  }
+  (function build() {
+    var i, b;
+    for (i = 0; i < ORDER.length; i++) { b = document.createElement("button"); b.type = "button"; b.id = "c-" + ORDER[i]; b.textContent = C[ORDER[i]].name; b.setAttribute("data-c", ORDER[i]); b.onclick = function () { PX.pick(this.getAttribute("data-c")); }; $("cs").appendChild(b); }
+    for (i = 0; i < BINS.length; i++) { b = document.createElement("button"); b.type = "button"; b.id = "b-" + BINS[i][0]; b.textContent = BINS[i][1]; b.setAttribute("data-b", BINS[i][0]); b.onclick = function () { PX.sort(this.getAttribute("data-b")); }; $("bins").appendChild(b); }
+    $("next").onclick = function () { PX.pick(ORDER[(ORDER.indexOf(S.c) + 1) % ORDER.length]); };
+    $("again").onclick = function () { PX.reset(); };
+  }());
+  window.PX = {
+    pick: function (id) { S.c = id; S.pick = null; render(); },
+    sort: function (b) { S.pick = b; if (!S.done.hasOwnProperty(S.c)) { S.done[S.c] = b === classify(S.c); } render(); },
+    reset: function () { S.done = {}; PX.pick("ethane"); },
+    state: function () {
+      var k, right = 0, n = 0;
+      for (k in S.done) { if (S.done.hasOwnProperty(k)) { n++; if (S.done[k]) { right++; } } }
+      return { compound: S.c, answer: classify(S.c), pick: S.pick, correct: S.pick === classify(S.c), tried: n, right: right, alsoAromatic: !!C[S.c].also, ids: ORDER.slice() };
+    }
+  };
+  render();
+}());
+</script>
+</body>
+</html>

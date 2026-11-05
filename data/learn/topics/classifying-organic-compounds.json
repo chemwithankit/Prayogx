@@ -1,0 +1,134 @@
+{
+ "id": "LEARN-C11-CHE-CLASSIFY-ORGANIC",
+ "slug": "classifying-organic-compounds",
+ "status": "ready",
+ "class": 11,
+ "subject": "Chemistry",
+ "chapter": "Organic Chemistry – Some Basic Principles and Techniques",
+ "topic": "Classification of organic compounds",
+ "title": "Classifying Organic Compounds",
+ "series": 430,
+ "studioJob": "classify-organic",
+ "reelId": "STUDIO-CLASSIFY-ORGANIC",
+ "summary": "Millions of organic compounds, one first question: is the carbon chain open, or a ring? How to sort compounds into acyclic, alicyclic, aromatic and heterocyclic.",
+ "video": {
+  "youtubeId": "hfMxCMudgRg"
+ },
+ "notes": {
+  "pdf": "notes.pdf",
+  "title": "05 – Classifying Organic Compounds",
+  "driveDoc": "1GqwvvAmBMZsE8DrvE1xV-YUGBs3j4xhIAW78X6V7_Yc"
+ },
+ "thumb": "thumb.jpg",
+ "tags": [
+  "classification of organic compounds",
+  "acyclic",
+  "alicyclic",
+  "aromatic",
+  "heterocyclic"
+ ],
+ "keyPoints": [
+  "Look at the **skeleton** first: an open chain, or a ring?",
+  "**Acyclic** (open-chain, aliphatic): the chain does not close, as in ethane and butane.",
+  "**Alicyclic:** a ring of carbon atoms, as in cyclohexane.",
+  "**Aromatic:** benzene and compounds with a benzene ring, such as toluene.",
+  "**Heterocyclic:** the ring holds another atom, such as oxygen in furan.",
+  "Then look at the **functional group**."
+ ],
+ "sections": [
+  {
+   "h": "Sorting compounds",
+   "blocks": [
+    {
+     "table": {
+      "head": [
+       "Compound",
+       "Class",
+       "Why"
+      ],
+      "rows": [
+       [
+        "2-Methylpropane",
+        "Acyclic",
+        "A branch closes no ring"
+       ],
+       [
+        "Cyclohexene",
+        "Alicyclic",
+        "A carbon ring, not a benzene ring"
+       ],
+       [
+        "Toluene",
+        "Aromatic",
+        "Has a benzene ring"
+       ],
+       [
+        "Furan",
+        "Heterocyclic (also aromatic)",
+        "Oxygen in the ring"
+       ],
+       [
+        "Tetrahydrofuran",
+        "Heterocyclic",
+        "Oxygen in the ring, not aromatic"
+       ]
+      ]
+     }
+    }
+   ]
+  }
+ ],
+ "quiz": [
+  {
+   "q": "Open-chain compounds are also called:",
+   "options": [
+    "aromatic",
+    "aliphatic",
+    "heterocyclic",
+    "alicyclic"
+   ],
+   "answer": 1,
+   "explain": "Their chain does not close."
+  },
+  {
+   "q": "Which is alicyclic?",
+   "options": [
+    "Benzene",
+    "Furan",
+    "Cyclohexane",
+    "Butane"
+   ],
+   "answer": 2,
+   "explain": "A ring of carbon atoms."
+  },
+  {
+   "q": "Furan is heterocyclic because:",
+   "options": [
+    "it has a double bond",
+    "it has oxygen in its ring",
+    "it is an open chain",
+    "it has 6 carbons"
+   ],
+   "answer": 1,
+   "explain": "An atom other than carbon is in the ring."
+  }
+ ],
+ "simulation": {
+  "decision": "REQUIRED",
+  "reason": "Sorting is the skill, and the tricky cases are ones the video does not show: a branch that is still open, a double bond that does not make a ring aromatic, and a ring with O that is not aromatic.",
+  "status": "pass",
+  "path": "sim.html",
+  "objective": "Sort 12 compounds by their skeleton and see why each goes where it does.",
+  "instructions": [
+   "Choose a compound and look at its skeleton.",
+   "Sort it into a class.",
+   "Read the questions that decide it.",
+   "Try cyclohexene, then tetrahydrofuran."
+  ],
+  "qa": "tests/learn_sims.js (2026-11-05)"
+ },
+ "related": [
+  "drawing-organic-molecules",
+  "why-carbon-forms-millions"
+ ]
+}

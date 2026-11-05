@@ -1,0 +1,156 @@
+{
+ "slug": "classifying-organic-compounds",
+ "title": "Classifying Organic Compounds",
+ "class": 11,
+ "subject": "Chemistry",
+ "chapter": "Organic Chemistry – Some Basic Principles and Techniques",
+ "objective": "Millions of organic compounds, one first question: is the carbon chain open, or a ring? How to sort compounds into acyclic, alicyclic, aromatic and heterocyclic.",
+ "fill": [
+  {
+   "q": "Open-chain compounds are called ____ compounds.",
+   "a": "acyclic"
+  },
+  {
+   "q": "Open-chain compounds are also called ____ compounds.",
+   "a": "aliphatic"
+  },
+  {
+   "q": "A ring of carbon atoms only, like cyclohexane, is ____.",
+   "a": "alicyclic"
+  },
+  {
+   "q": "Benzene and toluene are ____ compounds.",
+   "a": "aromatic"
+  },
+  {
+   "q": "A ring holding an atom other than carbon is ____.",
+   "a": "heterocyclic"
+  }
+ ],
+ "tf": [
+  {
+   "q": "Butane is a cyclic compound.",
+   "a": false,
+   "explain": "Its chain is open."
+  },
+  {
+   "q": "A branched chain is still acyclic.",
+   "a": true,
+   "explain": "No ring closes."
+  },
+  {
+   "q": "Cyclohexene is aromatic because it has a double bond.",
+   "a": false,
+   "explain": "It is alicyclic."
+  },
+  {
+   "q": "Furan has oxygen in its ring.",
+   "a": true,
+   "explain": "That makes it heterocyclic."
+  }
+ ],
+ "ar": [
+  {
+   "a": "Ethanal is an acyclic compound.",
+   "r": "Its carbon chain does not close into a ring.",
+   "answer": 0,
+   "explain": "R explains A."
+  },
+  {
+   "a": "Thiophene is heterocyclic.",
+   "r": "Its ring contains a sulfur atom.",
+   "answer": 0,
+   "explain": "R explains A."
+  }
+ ],
+ "mcq": [
+  {
+   "q": "Which is alicyclic?",
+   "options": [
+    "Ethane",
+    "Benzene",
+    "Cyclohexane",
+    "Furan"
+   ],
+   "answer": 2,
+   "explain": "A ring of carbon only."
+  },
+  {
+   "q": "Which is heterocyclic?",
+   "options": [
+    "Toluene",
+    "Pyridine",
+    "Cyclopropane",
+    "Butane"
+   ],
+   "answer": 1,
+   "explain": "Nitrogen is in the ring."
+  },
+  {
+   "q": "Which is acyclic?",
+   "options": [
+    "2-Methylpropane",
+    "Cyclopropane",
+    "Benzene",
+    "Thiophene"
+   ],
+   "answer": 0,
+   "explain": "A branch is still an open chain."
+  },
+  {
+   "q": "The first question when classifying is:",
+   "options": [
+    "the functional group",
+    "open chain or ring",
+    "the colour",
+    "the boiling point"
+   ],
+   "answer": 1,
+   "explain": "The skeleton comes first."
+  }
+ ],
+ "num": [
+  {
+   "q": "How many carbon atoms are in the ring of cyclohexane?",
+   "steps": [
+    "hexa = 6"
+   ],
+   "answer": "6"
+  },
+  {
+   "q": "How many ring atoms does furan have?",
+   "steps": [
+    "4 C + 1 O"
+   ],
+   "answer": "5"
+  }
+ ],
+ "short": [
+  {
+   "q": "Sort these: butane, cyclohexane, toluene, furan.",
+   "lines": 5,
+   "solution": "Butane is acyclic, cyclohexane is alicyclic, toluene is aromatic, furan is heterocyclic."
+  }
+ ],
+ "match": {
+  "left": [
+   "Open chain",
+   "Carbon ring",
+   "Benzene ring",
+   "O, N or S in the ring"
+  ],
+  "right": [
+   "aromatic",
+   "alicyclic",
+   "acyclic",
+   "heterocyclic"
+  ],
+  "answer": [
+   2,
+   1,
+   0,
+   3
+  ],
+  "explain": "Each item matches its partner."
+ }
+}
