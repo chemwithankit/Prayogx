@@ -1,0 +1,128 @@
+{
+ "id": "LEARN-C12-CHE-CARBONYL-REDOX",
+ "slug": "oxidation-reduction-aldehydes-ketones",
+ "status": "ready",
+ "class": 12,
+ "subject": "Chemistry",
+ "chapter": "Aldehydes, Ketones and Carboxylic Acids",
+ "topic": "Reducing and oxidising aldehydes and ketones",
+ "title": "Reducing and Oxidising Aldehydes and Ketones",
+ "series": 423,
+ "studioJob": "carbonyl-redox",
+ "reelId": "STUDIO-CARBONYL-REDOX",
+ "summary": "Reduction is easy for both aldehydes and ketones, but in oxidation the aldehyde reacts at once and the ketone resists. The reason is one H atom.",
+ "video": {
+  "youtubeId": "iIuI6CaUkKc"
+ },
+ "notes": {
+  "pdf": "notes.pdf",
+  "title": "07 – Reducing and Oxidising Aldehydes and Ketones",
+  "driveDoc": "1LybD99cVOCz7Ht7aJu7Ptlk3HT389cxt6ndW7ZIN8ng"
+ },
+ "thumb": "thumb.jpg",
+ "tags": [
+  "aldehydes",
+  "ketones",
+  "oxidation",
+  "reduction",
+  "Clemmensen",
+  "Wolff-Kishner"
+ ],
+ "keyPoints": [
+  "**NaBH₄ or LiAlH₄** reduce aldehydes to primary alcohols and ketones to secondary alcohols.",
+  "**Clemmensen** (Zn–Hg, conc. HCl) and **Wolff-Kishner** (NH₂NH₂, KOH) turn C=O into CH₂.",
+  "An aldehyde has an **H on the carbonyl carbon**, so it oxidises easily to a carboxylic acid with the same carbons.",
+  "A ketone has no such H: it needs **strong conditions**.",
+  "Ketone oxidation **breaks a C–C bond** and gives a mixture of acids with fewer carbons."
+ ],
+ "sections": [
+  {
+   "h": "What each reagent does",
+   "blocks": [
+    {
+     "table": {
+      "head": [
+       "Reagent",
+       "Aldehyde",
+       "Ketone"
+      ],
+      "rows": [
+       [
+        "NaBH₄ / LiAlH₄",
+        "1° alcohol",
+        "2° alcohol"
+       ],
+       [
+        "Clemmensen, Wolff-Kishner",
+        "Alkane",
+        "Alkane"
+       ],
+       [
+        "Mild oxidant",
+        "Carboxylic acid",
+        "No reaction"
+       ],
+       [
+        "Strong oxidant",
+        "Carboxylic acid",
+        "Mixture of acids, fewer carbons"
+       ]
+      ]
+     }
+    }
+   ]
+  }
+ ],
+ "quiz": [
+  {
+   "q": "NaBH₄ reduces a ketone to a:",
+   "options": [
+    "1° alcohol",
+    "2° alcohol",
+    "3° alcohol",
+    "alkane"
+   ],
+   "answer": 1,
+   "explain": "The carbonyl carbon carries two carbon groups."
+  },
+  {
+   "q": "Aldehydes oxidise easily because they have:",
+   "options": [
+    "two alkyl groups",
+    "an H on the carbonyl carbon",
+    "no oxygen",
+    "a ring"
+   ],
+   "answer": 1,
+   "explain": "That C–H bond is oxidised."
+  },
+  {
+   "q": "Clemmensen reduction uses:",
+   "options": [
+    "NaBH₄",
+    "Zn–Hg and conc. HCl",
+    "NH₂NH₂ and KOH",
+    "KMnO₄"
+   ],
+   "answer": 1,
+   "explain": "Wolff-Kishner uses hydrazine and KOH."
+  }
+ ],
+ "simulation": {
+  "decision": "REQUIRED",
+  "reason": "Choosing any compound and reagent, predicting the product and checking it tests the aldehyde and ketone rules on combinations the video does not show, including the no-reaction cases.",
+  "status": "pass",
+  "path": "sim.html",
+  "objective": "Predict the product of each compound and reagent, and see why a ketone resists mild oxidation.",
+  "instructions": [
+   "Choose a compound.",
+   "Choose a reagent and predict the product.",
+   "Press React and compare.",
+   "Try a mild and a strong oxidant on a ketone."
+  ],
+  "qa": "tests/learn_sims.js 792/792 (2026-11-05)"
+ },
+ "related": [
+  "nucleophilic-addition-carbonyl"
+ ]
+}

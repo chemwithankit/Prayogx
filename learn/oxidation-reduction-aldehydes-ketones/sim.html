@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="sim-id" content="LEARN-C12-CHE-CARBONYL-REDOX-SIM">
+<title>Reagent lab · PrayogX Learn simulation</title>
+<style>
+:root{--bg:#f4f4f1;--card:#fcfcfb;--line:#d9d9d4;--ink:#0b0b0b;--mut:#52514e;--acc:#2a78d6;--good:#00743f;--neg:#c62828}
+@media (prefers-color-scheme:dark){:root{--bg:#111110;--card:#1a1a19;--line:#34342f;--ink:#fff;--mut:#c3c2b7;--acc:#3987e5;--good:#3fae7a;--neg:#ef5350}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+.wrap{max-width:980px;margin:0 auto;padding:12px}
+h1{font-size:17px;margin:2px 0 8px}
+h2{font-size:15px;margin:0 0 6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin-top:10px}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+button{font:inherit;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:9px;padding:6px 10px;cursor:pointer;min-height:40px}
+button[aria-pressed="true"]{background:var(--acc);border-color:var(--acc);color:#fff;font-weight:650}
+.small{font-size:13px;color:var(--mut)}
+.eq{font-size:20px;font-weight:750;overflow-wrap:anywhere;margin-top:4px}
+.res{margin-top:8px;padding:10px 12px;border-radius:10px;border:1px solid var(--line);background:var(--bg);min-height:5em}
+.no{color:var(--neg)}.yes{color:var(--good)}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>Reagent lab: predict, then react</h1>
+<div class="card"><h2>1. Choose a compound</h2><div class="row" id="comps"></div></div>
+<div class="card"><h2>2. Choose a reagent</h2><div class="row" id="reags"></div>
+<div class="row" style="margin-top:8px"><button type="button" id="go" aria-pressed="false">React</button><span class="small">Predict the product first.</span></div>
+<div class="res" id="res" aria-live="polite"></div>
+<p class="small" style="margin:8px 0 0">Tollens' reagent is shown as the mild oxidant. In alkaline Tollens' solution the acid forms as its salt. Strong oxidation of a ketone breaks a C–C bond next to the carbonyl group, so a mixture forms.</p>
+</div>
+</div>
+<script>
+(function () {
+  "use strict";
+  var COMPS = [
+    { id: "ethanal", name: "Ethanal", f: "CH₃CHO", c: 2, type: "aldehyde" },
+    { id: "propanal", name: "Propanal", f: "CH₃CH₂CHO", c: 3, type: "aldehyde" },
+    { id: "propanone", name: "Propanone", f: "CH₃COCH₃", c: 3, type: "ketone" },
+    { id: "butanone", name: "Butanone", f: "CH₃COCH₂CH₃", c: 4, type: "ketone" }
+  ];
+  var REAGS = [
+    { id: "hydride", name: "NaBH₄" },
+    { id: "clem", name: "Zn–Hg, conc. HCl" },
+    { id: "wk", name: "NH₂NH₂, then KOH" },
+    { id: "tollens", name: "Tollens' (mild)" },
+    { id: "strong", name: "Hot KMnO₄ (strong)" }
+  ];
+  var ALC = { ethanal: ["Ethanol", "CH₃CH₂OH", "1° alcohol"], propanal: ["Propan-1-ol", "CH₃CH₂CH₂OH", "1° alcohol"], propanone: ["Propan-2-ol", "CH₃CH(OH)CH₃", "2° alcohol"], butanone: ["Butan-2-ol", "CH₃CH(OH)CH₂CH₃", "2° alcohol"] };
+  var ALK = { ethanal: ["Ethane", "CH₃CH₃"], propanal: ["Propane", "CH₃CH₂CH₃"], propanone: ["Propane", "CH₃CH₂CH₃"], butanone: ["Butane", "CH₃CH₂CH₂CH₃"] };
+  var ACID = { ethanal: ["Ethanoic acid", "CH₃COOH"], propanal: ["Propanoic acid", "CH₃CH₂COOH"] };
+  var MIX = { propanone: { list: "CH₃COOH + HCOOH (HCOOH goes on to CO₂)", most: 2 }, butanone: { list: "CH₃CH₂COOH + CH₃COOH + HCOOH", most: 3 } };
+  var S = { comp: "ethanal", reag: "hydride", done: false };
+  function $(id) { return document.getElementById(id); }
+  function comp() { var i; for (i = 0; i < COMPS.length; i++) { if (COMPS[i].id === S.comp) { return COMPS[i]; } } return null; }
+  function react() {
+    var c = comp(), r = S.reag, a;
+    if (r === "hydride") { a = ALC[c.id]; return { happens: true, name: a[0], formula: a[1], kind: a[2], carbons: c.c, note: "The C=O is reduced: " + (c.type === "aldehyde" ? "an aldehyde gives a primary alcohol." : "a ketone gives a secondary alcohol.") }; }
+    if (r === "clem" || r === "wk") { a = ALK[c.id]; return { happens: true, name: a[0], formula: a[1], kind: "alkane", carbons: c.c, note: "C=O becomes CH₂: the oxygen is gone." }; }
+    if (c.type === "aldehyde") { a = ACID[c.id]; return { happens: true, name: a[0], formula: a[1], kind: "carboxylic acid", carbons: c.c, note: "The C–H bond on the carbonyl carbon is oxidised. Same number of carbons." }; }
+    if (r === "tollens") { return { happens: false, name: "No reaction", formula: c.f, kind: "none", carbons: c.c, note: "A ketone has no H on the carbonyl carbon, so a mild oxidant does nothing." }; }
+    return { happens: true, name: "Mixture of acids", formula: MIX[c.id].list, kind: "mixture", carbons: MIX[c.id].most, note: "A C–C bond breaks, so each acid has fewer carbons than the ketone." };
+  }
+  function render() {
+    var i, p;
+    for (i = 0; i < COMPS.length; i++) { $("c-" + COMPS[i].id).setAttribute("aria-pressed", S.comp === COMPS[i].id ? "true" : "false"); }
+    for (i = 0; i < REAGS.length; i++) { $("r-" + REAGS[i].id).setAttribute("aria-pressed", S.reag === REAGS[i].id ? "true" : "false"); }
+    if (!S.done) { $("res").innerHTML = '<div class="small">' + comp().name + " is a " + comp().type + " with " + comp().c + " carbons. What will form?</div>"; return; }
+    p = react();
+    $("res").innerHTML = '<div class="eq ' + (p.happens ? "yes" : "no") + '">' + comp().f + " → " + p.formula + "</div><div><b>" + p.name + "</b>" + (p.kind === "none" ? "" : " (" + p.kind + ")") + "</div><div class=\"small\">" + p.note + "</div>";
+  }
+  (function build() {
+    var i, b;
+    function mk(row, pre, it, key) {
+      b = document.createElement("button"); b.type = "button"; b.id = pre + it.id; b.textContent = it.name;
+      b.onclick = function () { S[key] = it.id; S.done = false; render(); };
+      row.appendChild(b);
+    }
+    for (i = 0; i < COMPS.length; i++) { mk($("comps"), "c-", COMPS[i], "comp"); }
+    for (i = 0; i < REAGS.length; i++) { mk($("reags"), "r-", REAGS[i], "reag"); }
+    $("go").onclick = function () { S.done = true; render(); };
+  }());
+  window.PX = {
+    set: function (c, r) { S.comp = c; S.reag = r; S.done = true; render(); },
+    reset: function () { S.comp = "ethanal"; S.reag = "hydride"; S.done = false; render(); },
+    state: function () { var p = react(); p.compound = S.comp; p.reagent = S.reag; p.start = comp().c; return p; }
+  };
+  render();
+}());
+</script>
+</body>
+</html>

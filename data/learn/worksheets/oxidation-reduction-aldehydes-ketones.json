@@ -1,0 +1,156 @@
+{
+ "slug": "oxidation-reduction-aldehydes-ketones",
+ "title": "Reducing and Oxidising Aldehydes and Ketones",
+ "class": 12,
+ "subject": "Chemistry",
+ "chapter": "Aldehydes, Ketones and Carboxylic Acids",
+ "objective": "Reduction is easy for both aldehydes and ketones, but in oxidation the aldehyde reacts at once and the ketone resists. The reason is one H atom.",
+ "fill": [
+  {
+   "q": "NaBH₄ reduces an aldehyde to a ____ alcohol.",
+   "a": "primary"
+  },
+  {
+   "q": "NaBH₄ reduces a ketone to a ____ alcohol.",
+   "a": "secondary"
+  },
+  {
+   "q": "Clemmensen reduction uses zinc amalgam and concentrated ____.",
+   "a": "HCl"
+  },
+  {
+   "q": "Wolff-Kishner reduction uses hydrazine and ____.",
+   "a": "KOH"
+  },
+  {
+   "q": "Oxidation of an aldehyde gives a ____ acid.",
+   "a": "carboxylic"
+  }
+ ],
+ "tf": [
+  {
+   "q": "An aldehyde has an H on the carbonyl carbon.",
+   "a": true,
+   "explain": "That is why it oxidises easily."
+  },
+  {
+   "q": "A ketone has an H on the carbonyl carbon.",
+   "a": false,
+   "explain": "It has two carbon groups."
+  },
+  {
+   "q": "Ketones need strong conditions to oxidise.",
+   "a": true,
+   "explain": "A C–C bond must break."
+  },
+  {
+   "q": "Oxidation of an aldehyde changes the number of carbons.",
+   "a": false,
+   "explain": "The acid has the same carbons."
+  }
+ ],
+ "ar": [
+  {
+   "a": "Aldehydes are easily oxidised.",
+   "r": "They have an H on the carbonyl carbon.",
+   "answer": 0,
+   "explain": "R explains A."
+  },
+  {
+   "a": "Ketones resist mild oxidants.",
+   "r": "Oxidising them needs a C–C bond to break.",
+   "answer": 0,
+   "explain": "R explains A."
+  }
+ ],
+ "mcq": [
+  {
+   "q": "Propanone with NaBH₄ gives:",
+   "options": [
+    "propan-1-ol",
+    "propan-2-ol",
+    "propane",
+    "propanoic acid"
+   ],
+   "answer": 1,
+   "explain": "A secondary alcohol."
+  },
+  {
+   "q": "Ethanal on oxidation gives:",
+   "options": [
+    "ethanol",
+    "ethane",
+    "ethanoic acid",
+    "methanol"
+   ],
+   "answer": 2,
+   "explain": "Same two carbons."
+  },
+  {
+   "q": "Propanone with Clemmensen reagents gives:",
+   "options": [
+    "propan-2-ol",
+    "propane",
+    "ethanoic acid",
+    "propene"
+   ],
+   "answer": 1,
+   "explain": "C=O becomes CH₂."
+  },
+  {
+   "q": "Strong oxidation of a ketone gives:",
+   "options": [
+    "one alcohol",
+    "an alkane",
+    "a mixture of acids with fewer carbons",
+    "no change"
+   ],
+   "answer": 2,
+   "explain": "A C–C bond breaks."
+  }
+ ],
+ "num": [
+  {
+   "q": "How many carbons has the acid from propanal?",
+   "steps": [
+    "Same as the aldehyde"
+   ],
+   "answer": "3"
+  },
+  {
+   "q": "How many reagent systems turn C=O into CH₂ in this topic?",
+   "steps": [
+    "Clemmensen and Wolff-Kishner"
+   ],
+   "answer": "2"
+  }
+ ],
+ "short": [
+  {
+   "q": "Why is an aldehyde oxidised more easily than a ketone?",
+   "lines": 5,
+   "solution": "It has an H on the carbonyl carbon, so the C–H bond oxidises; a ketone must break a C–C bond."
+  }
+ ],
+ "match": {
+  "left": [
+   "NaBH₄",
+   "Clemmensen",
+   "Mild oxidant on aldehyde",
+   "Strong oxidant on ketone"
+  ],
+  "right": [
+   "carboxylic acid",
+   "alkane",
+   "mixture of acids",
+   "alcohol"
+  ],
+  "answer": [
+   3,
+   1,
+   0,
+   2
+  ],
+  "explain": "Each reagent matches its product."
+ }
+}

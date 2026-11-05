@@ -27,6 +27,7 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
      learn/electric-charge-like-and-unlike/sim.html  rubbing keeps the pair's total 0; like repel, unlike attract
      learn/empty-and-universal-relations/sim.html  rule → pairs against a brute-force filter; empty, universal
      learn/pascals-triangle-patterns/sim.html  binomials by the product formula, row sums, Fibonacci sums
+     learn/oxidation-reduction-aldehydes-ketones/sim.html  products and carbon counts of each compound and reagent
      learn/roster-and-set-builder-form/sim.html  rule → elements, roster and set-builder text,
                                         order, infinite sets, letters of a word without repeats
      learn/image-in-a-plane-mirror/sim.html  image distance, gap, walking, the reflection point
@@ -204,6 +205,22 @@ for (const key of Object.keys(MATERIALS)) FD[key] = fdContact(SKIN, Object.assig
       ok(`pascal rule ${tag}: 3 + 3 = 6`, rule.includes('3 + 3 = 6'), rule);
       const ovPas = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
       ok(`pascal ${tag}: no horizontal overflow at 16 rows`, ovPas <= 0, ovPas);
+
+      // ---- reagent lab: an independent table of expected outcomes
+      await page.goto(base + 'oxidation-reduction-aldehydes-ketones/sim.html', { waitUntil: 'load' });
+      const redox = [['ethanal', 'hydride', 'Ethanol', 2], ['propanal', 'hydride', 'Propan-1-ol', 3], ['propanone', 'hydride', 'Propan-2-ol', 3], ['butanone', 'hydride', 'Butan-2-ol', 4],
+        ['ethanal', 'clem', 'Ethane', 2], ['propanone', 'wk', 'Propane', 3], ['butanone', 'clem', 'Butane', 4],
+        ['ethanal', 'tollens', 'Ethanoic acid', 2], ['propanal', 'strong', 'Propanoic acid', 3], ['propanone', 'tollens', 'No reaction', 3], ['butanone', 'tollens', 'No reaction', 4]];
+      for (const [c, r, want, n] of redox) {
+        const s = await page.evaluate(v => { PX.set(v[0], v[1]); return PX.state(); }, [c, r]);
+        ok(`redox ${c} + ${r} ${tag}: ${want}, ${n} C`, s.name === want && s.carbons === n, `${s.name} ${s.carbons}`);
+      }
+      for (const c of ['propanone', 'butanone']) {
+        const s = await page.evaluate(v => { PX.set(v, 'strong'); return PX.state(); }, c);
+        ok(`redox ${c} strong ${tag}: a mixture, every acid with fewer carbons`, s.kind === 'mixture' && s.carbons < s.start, `${s.carbons} < ${s.start}`);
+      }
+      const ovX = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
+      ok(`redox ${tag}: no horizontal overflow`, ovX <= 0, ovX);
 
       // ---- rest and motion: you start at −20 m and ride 4 m/s for 10 s; friend sits 1.5 m ahead
       await page.goto(base + 'rest-and-motion/sim.html', { waitUntil: 'load' });
