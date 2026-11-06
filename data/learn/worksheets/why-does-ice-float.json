@@ -1,0 +1,156 @@
+{
+ "slug": "why-does-ice-float",
+ "title": "Why Does Ice Float?",
+ "class": "Supplementary",
+ "subject": "Physics",
+ "chapter": "Heat and matter",
+ "objective": "Most solids sink in their own liquid, but ice floats. How open hexagons make ice less dense, and why that keeps lakes alive.",
+ "fill": [
+  {
+   "q": "A solid floats if it is ____ dense than the liquid.",
+   "a": "less"
+  },
+  {
+   "q": "Density equals mass divided by ____.",
+   "a": "volume"
+  },
+  {
+   "q": "In ice, water molecules form open ____.",
+   "a": "hexagons"
+  },
+  {
+   "q": "On freezing, water's volume grows by about ____ percent.",
+   "a": "9"
+  },
+  {
+   "q": "A lake freezes from the ____.",
+   "a": "top"
+  }
+ ],
+ "tf": [
+  {
+   "q": "Most solids sink in their own liquid.",
+   "a": true,
+   "explain": "Water is unusual."
+  },
+  {
+   "q": "Ice has less mass than the water it came from.",
+   "a": false,
+   "explain": "The mass stays the same."
+  },
+  {
+   "q": "Iron floats on mercury.",
+   "a": true,
+   "explain": "Mercury is denser."
+  },
+  {
+   "q": "Ice floats in ethanol.",
+   "a": false,
+   "explain": "Ethanol is less dense than ice."
+  }
+ ],
+ "ar": [
+  {
+   "a": "Ice floats on water.",
+   "r": "Ice is less dense than water.",
+   "answer": 0,
+   "explain": "R explains A."
+  },
+  {
+   "a": "Water pipes can burst in winter.",
+   "r": "Water expands when it freezes.",
+   "answer": 0,
+   "explain": "R explains A."
+  }
+ ],
+ "mcq": [
+  {
+   "q": "Ice is less dense than water because:",
+   "options": [
+    "it is colder",
+    "its molecules leave empty space",
+    "it has less mass",
+    "it has no hydrogen"
+   ],
+   "answer": 1,
+   "explain": "Open hexagons."
+  },
+  {
+   "q": "Which floats in water?",
+   "options": [
+    "Iron",
+    "Gold",
+    "Wax",
+    "Aluminium"
+   ],
+   "answer": 2,
+   "explain": "Wax is 0.90 g/cm³."
+  },
+  {
+   "q": "About how much of an iceberg is under water?",
+   "options": [
+    "8%",
+    "50%",
+    "92%",
+    "100%"
+   ],
+   "answer": 2,
+   "explain": "0.92 ÷ 1.00."
+  },
+  {
+   "q": "Fish survive under a frozen lake because:",
+   "options": [
+    "ice is warm",
+    "ice stays on top",
+    "water turns to air",
+    "fish freeze"
+   ],
+   "answer": 1,
+   "explain": "Water stays liquid below."
+  }
+ ],
+ "num": [
+  {
+   "q": "A floating block has density 0.8 in a liquid of density 1.0. What percent is under the surface?",
+   "steps": [
+    "0.8 ÷ 1.0"
+   ],
+   "answer": "80"
+  },
+  {
+   "q": "Density of a 10 g object with volume 5 cm³, in g/cm³?",
+   "steps": [
+    "10 ÷ 5"
+   ],
+   "answer": "2"
+  }
+ ],
+ "short": [
+  {
+   "q": "Why does solid wax sink in liquid wax but ice float on water?",
+   "lines": 5,
+   "solution": "Solid wax is denser than liquid wax. Ice is less dense than water, because freezing locks molecules into open hexagons."
+  }
+ ],
+ "match": {
+  "left": [
+   "Ice",
+   "Water",
+   "Iron",
+   "Mercury"
+  ],
+  "right": [
+   "about 1.00 g/cm³",
+   "about 0.92 g/cm³",
+   "about 13.5 g/cm³",
+   "about 7.87 g/cm³"
+  ],
+  "answer": [
+   1,
+   0,
+   3,
+   2
+  ],
+  "explain": "Each item matches its partner."
+ }
+}

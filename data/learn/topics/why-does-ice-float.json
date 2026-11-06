@@ -1,0 +1,131 @@
+{
+ "id": "LEARN-SUP-PHY-WHY-ICE-FLOATS",
+ "slug": "why-does-ice-float",
+ "status": "ready",
+ "class": "Supplementary",
+ "subject": "Physics",
+ "chapter": "Heat and matter",
+ "topic": "Why does ice float?",
+ "title": "Why Does Ice Float?",
+ "series": 431,
+ "studioJob": "why-ice-floats",
+ "reelId": "STUDIO-WHY-ICE-FLOATS",
+ "summary": "Most solids sink in their own liquid, but ice floats. How open hexagons make ice less dense, and why that keeps lakes alive.",
+ "video": {
+  "youtubeId": "8Awey11iw5U"
+ },
+ "notes": {
+  "pdf": "notes.pdf",
+  "title": "Why Does Ice Float?",
+  "driveDoc": "1VYhVXM2mWX5xWCPSudheNStbfEI4F0oq3lnf8IVDVkI"
+ },
+ "thumb": "thumb.jpg",
+ "tags": [
+  "ice",
+  "density",
+  "floating",
+  "hydrogen bonds"
+ ],
+ "keyPoints": [
+  "A solid **floats** if it is less dense than the liquid.",
+  "When water freezes, its molecules lock into **open hexagons** with empty space between them.",
+  "The mass stays the same but the **volume grows about 9%**, so density falls to about 0.92 g/cm³.",
+  "Lakes freeze from the **top**, so water stays liquid below and fish survive.",
+  "A floating object's fraction under the surface = its density ÷ the liquid's density."
+ ],
+ "sections": [
+  {
+   "h": "Density decides",
+   "blocks": [
+    {
+     "table": {
+      "head": [
+       "Solid",
+       "Liquid",
+       "Result"
+      ],
+      "rows": [
+       [
+        "Ice (0.92)",
+        "Water (1.00)",
+        "Floats, about 92% under"
+       ],
+       [
+        "Ice (0.92)",
+        "Ethanol (0.79)",
+        "Sinks"
+       ],
+       [
+        "Wax (0.90)",
+        "Water (1.00)",
+        "Floats, 90% under"
+       ],
+       [
+        "Iron (7.87)",
+        "Water (1.00)",
+        "Sinks"
+       ],
+       [
+        "Iron (7.87)",
+        "Mercury (13.5)",
+        "Floats, about 58% under"
+       ]
+      ]
+     }
+    }
+   ]
+  }
+ ],
+ "quiz": [
+  {
+   "q": "Ice floats on water because it is:",
+   "options": [
+    "lighter in mass",
+    "less dense",
+    "colder",
+    "hollow"
+   ],
+   "answer": 1,
+   "explain": "Same mass, more volume."
+  },
+  {
+   "q": "When water freezes, its volume:",
+   "options": [
+    "falls about 9%",
+    "stays the same",
+    "grows about 9%",
+    "doubles"
+   ],
+   "answer": 2,
+   "explain": "Open hexagons leave empty space."
+  },
+  {
+   "q": "Ice dropped in ethanol will:",
+   "options": [
+    "float",
+    "sink",
+    "stay on the surface",
+    "vanish"
+   ],
+   "answer": 1,
+   "explain": "Ethanol (0.79) is less dense than ice (0.92)."
+  }
+ ],
+ "simulation": {
+  "decision": "REQUIRED",
+  "reason": "The video only shows ice in water. Trying other pairs, such as ice in ethanol or iron on mercury, tests the density rule on cases that surprise students, and shows how much of a floating object sits under the surface.",
+  "status": "pass",
+  "path": "sim.html",
+  "objective": "Predict whether a solid floats or sinks, and how much of it sits under the surface.",
+  "instructions": [
+   "Choose a solid and a liquid.",
+   "Predict Floats or Sinks.",
+   "Press Drop it in and read the densities.",
+   "Try ice in ethanol, then iron in mercury."
+  ],
+  "qa": "tests/learn_sims.js (2026-11-06)"
+ },
+ "related": [
+  "why-is-ice-slippery"
+ ]
+}

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="sim-id" content="LEARN-SUP-PHY-FLOAT-OR-SINK-SIM">
+<title>Float or sink bench · PrayogX Learn simulation</title>
+<style>
+:root{--bg:#f4f4f1;--card:#fcfcfb;--line:#d9d9d4;--ink:#0b0b0b;--mut:#52514e;--acc:#2a78d6;--good:#00743f;--neg:#c62828;--empty:#ececea;--hc:#6f4fd6;--oc:#d9480f}
+@media (prefers-color-scheme:dark){:root{--bg:#111110;--card:#1a1a19;--line:#34342f;--ink:#fff;--mut:#c3c2b7;--acc:#3987e5;--good:#3fae7a;--neg:#ef5350;--empty:#2a2a28;--hc:#a48bff;--oc:#ff8a50}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+.wrap{max-width:980px;margin:0 auto;padding:12px}
+h1{font-size:17px;margin:2px 0 8px}
+h2{font-size:15px;margin:0 0 6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin-top:10px}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+button{font:inherit;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:9px;padding:6px 10px;cursor:pointer;min-height:40px}
+button[aria-pressed="true"]{background:var(--acc);border-color:var(--acc);color:#fff;font-weight:650}
+button:disabled{opacity:.45;cursor:default}
+.small{font-size:13px;color:var(--mut)}
+.verdict{margin-top:8px;padding:8px 10px;border-radius:10px;border:1px solid var(--line);background:var(--bg);min-height:2.6em;overflow-wrap:anywhere}
+.form{margin-top:8px;padding:8px 10px;border-radius:10px;border:1px solid var(--line);background:var(--bg);overflow-wrap:anywhere}
+.form b{display:block;font-size:13px;color:var(--mut);font-weight:650}
+svg{display:block;width:100%;max-width:420px;margin:8px auto 0;height:auto}
+.liq{stroke:var(--line);stroke-width:2}
+.blk{stroke:var(--ink);stroke-width:2.5}
+.glass{fill:none;stroke:var(--ink);stroke-width:3}
+.lab{font:600 13px ui-sans-serif,system-ui,sans-serif;fill:var(--mut);text-anchor:middle}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>Float or sink bench: density decides</h1>
+<div class="card">
+<h2>1. Choose a solid and a liquid</h2>
+<div class="row" id="solids"></div>
+<div class="row" id="liquids" style="margin-top:8px"></div>
+</div>
+<div class="card">
+<h2>2. Predict, then drop it in</h2>
+<div class="row">
+  <button type="button" id="pf" aria-pressed="false">Floats</button><button type="button" id="ps" aria-pressed="false">Sinks</button>
+  <button type="button" id="drop">Drop it in</button>
+</div>
+<svg id="pic" viewBox="0 0 420 240" role="img" aria-label="The solid in the liquid"></svg>
+<div class="verdict" id="verdict" aria-live="polite"></div>
+<p class="small" id="score"></p>
+<p class="small">Densities are typical values near room temperature; ice is at 0 °C. The drawing is not to scale.</p>
+</div>
+</div>
+<script>
+(function () {
+  "use strict";
+  var SOLIDS = { ice: ["Ice", 0.917, "#d6eefb"], wax: ["Wax", 0.90, "#ecd9a0"], wood: ["Oak wood", 0.75, "#b5835a"], aluminium: ["Aluminium", 2.70, "#b9c2cc"], iron: ["Iron", 7.87, "#6b7280"], gold: ["Gold", 19.3, "#e0a526"] };
+  var LIQUIDS = { water: ["Water", 1.00, "#8ecae6"], ethanol: ["Ethanol", 0.789, "#cfe8d5"], glycerol: ["Glycerol", 1.26, "#e6dcf3"], mercury: ["Mercury", 13.5, "#aab2bd"] };
+  var SO = ["ice", "wax", "wood", "aluminium", "iron", "gold"], LO = ["water", "ethanol", "glycerol", "mercury"];
+  var S = { s: "ice", l: "water", pred: null, dropped: false, done: {} };
+  function $(id) { return document.getElementById(id); }
+  function floats(s, l) { return SOLIDS[s][1] < LIQUIDS[l][1]; }
+  function under(s, l) { return floats(s, l) ? SOLIDS[s][1] / LIQUIDS[l][1] : 1; }
+  function node(t, a, x) { var e = document.createElementNS("http://www.w3.org/2000/svg", t), k; for (k in a) { if (a.hasOwnProperty(k)) { e.setAttribute(k, a[k]); } } if (x) { e.textContent = x; } return e; }
+  function draw() {
+    var g = $("pic"), top = 70, bottom = 215, h = 60, y;
+    while (g.firstChild) { g.removeChild(g.firstChild); }
+    g.appendChild(node("rect", { "class": "liq", x: 95, y: top, width: 230, height: bottom - top, fill: LIQUIDS[S.l][2] }));
+    y = !S.dropped ? 2 : (floats(S.s, S.l) ? top - h * (1 - under(S.s, S.l)) : bottom - h - 3);
+    g.appendChild(node("rect", { "class": "blk", x: 175, y: y, width: 70, height: h, rx: 6, fill: SOLIDS[S.s][2] }));
+    g.appendChild(node("path", { "class": "glass", d: "M95 40 V215 H325 V40" }));
+    g.appendChild(node("text", { "class": "lab", x: 210, y: 234 }, LIQUIDS[S.l][0] + " " + LIQUIDS[S.l][1] + " g/cm³"));
+  }
+  function render() {
+    var i, k, n = 0, r = 0, pct = Math.round(under(S.s, S.l) * 100), fl = floats(S.s, S.l), a = SOLIDS[S.s], b = LIQUIDS[S.l];
+    for (i = 0; i < SO.length; i++) { $("s-" + SO[i]).setAttribute("aria-pressed", SO[i] === S.s ? "true" : "false"); }
+    for (i = 0; i < LO.length; i++) { $("l-" + LO[i]).setAttribute("aria-pressed", LO[i] === S.l ? "true" : "false"); }
+    $("pf").setAttribute("aria-pressed", S.pred === true ? "true" : "false");
+    $("ps").setAttribute("aria-pressed", S.pred === false ? "true" : "false");
+    $("drop").disabled = S.pred === null || S.dropped;
+    draw();
+    if (!S.dropped) { $("verdict").textContent = S.pred === null ? "Make your prediction first." : "Now drop it in."; }
+    else {
+      $("verdict").innerHTML = "<b>" + (S.pred === fl ? "You were right: " : "Not this time: ") + "it " + (fl ? "floats" : "sinks") + ".</b> " + a[0] + " " + a[1] + " g/cm³ is " + (fl ? "less" : "more") + " dense than " + b[0].toLowerCase() + " " + b[1] + " g/cm³." + (fl ? " " + pct + "% of it sits under the surface: " + a[1] + " ÷ " + b[1] + "." : "");
+    }
+    for (k in S.done) { if (S.done.hasOwnProperty(k)) { n++; if (S.done[k]) { r++; } } }
+    $("score").textContent = n ? r + " of " + n + " predictions right." : "";
+  }
+  (function build() {
+    var i, b;
+    for (i = 0; i < SO.length; i++) { b = document.createElement("button"); b.type = "button"; b.id = "s-" + SO[i]; b.textContent = SOLIDS[SO[i]][0]; b.setAttribute("data-k", SO[i]); b.onclick = function () { PX.pick(this.getAttribute("data-k"), S.l); }; $("solids").appendChild(b); }
+    for (i = 0; i < LO.length; i++) { b = document.createElement("button"); b.type = "button"; b.id = "l-" + LO[i]; b.textContent = LIQUIDS[LO[i]][0]; b.setAttribute("data-k", LO[i]); b.onclick = function () { PX.pick(S.s, this.getAttribute("data-k")); }; $("liquids").appendChild(b); }
+    $("pf").onclick = function () { PX.predict(true); };
+    $("ps").onclick = function () { PX.predict(false); };
+    $("drop").onclick = function () { PX.drop(); };
+  }());
+  window.PX = {
+    pick: function (s, l) { S.s = s; S.l = l; S.pred = null; S.dropped = false; render(); },
+    predict: function (v) { if (!S.dropped) { S.pred = !!v; render(); } },
+    drop: function () { var k = S.s + "/" + S.l; if (S.pred === null) { return; } S.dropped = true; if (!S.done.hasOwnProperty(k)) { S.done[k] = S.pred === floats(S.s, S.l); } render(); },
+    reset: function () { S.done = {}; PX.pick("ice", "water"); },
+    state: function () { var k, n = 0, r = 0; for (k in S.done) { if (S.done.hasOwnProperty(k)) { n++; if (S.done[k]) { r++; } } }
+      return { solid: S.s, liquid: S.l, ds: SOLIDS[S.s][1], dl: LIQUIDS[S.l][1], floats: floats(S.s, S.l), under: under(S.s, S.l), dropped: S.dropped, pred: S.pred, tried: n, right: r, solids: SO.slice(), liquids: LO.slice() }; }
+  };
+  render();
+}());
+</script>
+</body>
+</html>
