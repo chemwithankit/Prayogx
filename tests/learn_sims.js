@@ -47,6 +47,8 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
      learn/position-origin-and-direction/sim.html  positions, displacement unchanged by the origin
      learn/why-is-ice-slippery/sim.html  melting-point drop against Clausius-Clapeyron, the
                                         IAPWS anchor point, what no pressure can do
+     learn/cannizzaro-reaction/sim.html  aldol vs Cannizzaro by alpha-H and base; oxidation numbers
+                                        of the carbonyl carbon from a bond count
      learn/functional-groups/sim.html  the group decides each test, the chain does not;
                                         formula and b.p. against an independent table
    --------------------------------------------------------------------------- */
@@ -632,6 +634,24 @@ for (const key of Object.keys(MATERIALS)) FD[key] = fdContact(SKIN, Object.assig
       ok(`groups ${tag}: b.p. rises with the chain for the same group`, fgBp[0] < fgBp[1] && fgBp[1] < fgBp[2], fgBp.join(' < '));
       const ov10 = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
       ok(`groups ${tag}: no horizontal overflow`, ov10 <= 0, ov10);
+      // ---- two fates: aldol vs Cannizzaro by alpha-H and base; oxidation numbers from an independent bond count
+      await page.goto(base + 'cannizzaro-reaction/sim.html', { waitUntil: 'load' });
+      const CZ = { hcho: [0, 0, 2, -2], benz: [0, 1, 3, -1], piv: [0, 1, 3, -1], eth: [3], prop: [2] }; // [alpha H, start, oxidised, reduced]
+      let czOk = true, czBad = [];
+      for (const k of Object.keys(CZ)) for (const b of ['conc', 'dilute']) {
+        const st = await page.evaluate(v => { PX.reset(); PX.aldehyde(v[0]); PX.base(v[1]); PX.predict('none'); PX.run(); return PX.state(); }, [k, b]);
+        const want = CZ[k][0] > 0 ? 'aldol' : (b === 'conc' ? 'cannizzaro' : 'none');
+        let good = st.outcome === want && st.alphaH === CZ[k][0];
+        if (want === 'cannizzaro') good = good && st.start === CZ[k][1] && st.oxidised === CZ[k][2] && st.reduced === CZ[k][3] && st.oxidised - st.start === st.start - st.reduced;
+        if (!good) { czOk = false; czBad.push(`${k}/${b}:${st.outcome}`); }
+      }
+      ok(`twofates ${tag}: 10 runs match alpha-H rule and bond-count oxidation numbers (rise = fall)`, czOk, czBad.join(' '));
+      const czB = await page.evaluate(() => { PX.reset(); PX.aldehyde('benz'); PX.base('conc'); PX.predict('cannizzaro'); PX.run(); return [PX.state().acid, PX.state().alcohol, document.getElementById('fates').hidden]; });
+      ok(`twofates ${tag}: benzaldehyde gives sodium benzoate and benzyl alcohol, both shown`, czB[0] === 'C₆H₅COO⁻Na⁺' && czB[1] === 'C₆H₅CH₂OH' && czB[2] === false, czB.join(' | '));
+      const czLock = await page.evaluate(() => { PX.reset(); PX.run(); return PX.state().ran; });
+      ok(`twofates ${tag}: no run before a prediction`, czLock === false);
+      const ov11 = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
+      ok(`twofates ${tag}: no horizontal overflow`, ov11 <= 0, ov11);
       ok(`all sims ${tag}: no console errors`, errs.length === 0, errs.join(' | '));
       await ctx.close();
     }

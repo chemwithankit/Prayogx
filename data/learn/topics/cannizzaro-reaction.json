@@ -1,0 +1,161 @@
+{
+ "id": "LEARN-C12-CHE-CANNIZZARO",
+ "slug": "cannizzaro-reaction",
+ "status": "ready",
+ "class": 12,
+ "subject": "Chemistry",
+ "chapter": "Aldehydes, Ketones and Carboxylic Acids",
+ "topic": "Cannizzaro reaction",
+ "title": "The Cannizzaro Reaction",
+ "series": 433,
+ "studioJob": "cannizzaro-reaction",
+ "reelId": "STUDIO-CANNIZZARO-REACTION",
+ "summary": "Two identical aldehyde molecules, two different products. How an aldehyde with no α-hydrogen, in concentrated alkali, is oxidised and reduced in the same reaction.",
+ "video": {
+  "youtubeId": "PM4TldyHi58"
+ },
+ "notes": {
+  "pdf": "notes.pdf",
+  "title": "11 – The Cannizzaro Reaction",
+  "driveDoc": "1dWGXBgliNgzs5TK1iwnGXaHhLnb6iqxDUiEmk3c391E"
+ },
+ "thumb": "thumb.jpg",
+ "tags": [
+  "Cannizzaro reaction",
+  "disproportionation",
+  "hydride transfer",
+  "benzaldehyde",
+  "no alpha hydrogen"
+ ],
+ "keyPoints": [
+  "**Condition:** an aldehyde with **no α-hydrogen** (HCHO, C₆H₅CHO) heated with **concentrated** NaOH or KOH.",
+  "**Result:** one molecule is **oxidised** to a carboxylate salt, the other is **reduced** to an alcohol.",
+  "2 C₆H₅CHO + NaOH → C₆H₅COONa + C₆H₅CH₂OH",
+  "Oxidation and reduction of the same compound in one reaction is called **disproportionation**.",
+  "The key step is a **hydride (H⁻) transfer** from one molecule to the other, passed directly, never free in solution."
+ ],
+ "sections": [
+  {
+   "h": "The mechanism in three steps",
+   "blocks": [
+    {
+     "list": [
+      "**Step 1, nucleophilic addition:** OH⁻ adds to the carbonyl carbon of one molecule, giving a tetrahedral intermediate (O⁻, OH and H on the same carbon).",
+      "**Step 2, hydride transfer:** the intermediate re-forms C=O and passes its H, with the bonding pair, directly to the carbonyl carbon of a second molecule. The first becomes an acid, the second an alkoxide.",
+      "**Step 3, proton transfer:** the acid gives its proton to the alkoxide: a carboxylate ion and an alcohol."
+     ]
+    }
+   ]
+  },
+  {
+   "h": "Why it is oxidation and reduction",
+   "blocks": [
+    {
+     "table": {
+      "head": [
+       "Carbon",
+       "Bonds",
+       "Oxidation number"
+      ],
+      "rows": [
+       [
+        "C of C₆H₅CHO",
+        "C=O, C–H, C–C",
+        "+1"
+       ],
+       [
+        "C of C₆H₅COO⁻",
+        "C=O, C–O⁻, C–C",
+        "+3 (oxidised)"
+       ],
+       [
+        "C of C₆H₅CH₂OH",
+        "C–O, 2 C–H, C–C",
+        "−1 (reduced)"
+       ]
+      ]
+     }
+    },
+    {
+     "p": "With an α-hydrogen the aldehyde gives aldol instead. Benzoic acid itself is obtained only after the salt is acidified."
+    }
+   ]
+  }
+ ],
+ "quiz": [
+  {
+   "q": "Which aldehyde can undergo the Cannizzaro reaction?",
+   "options": [
+    "Ethanal",
+    "Propanal",
+    "Benzaldehyde",
+    "Butanal"
+   ],
+   "answer": 2,
+   "explain": "Benzaldehyde has no α-hydrogen."
+  },
+  {
+   "q": "The Cannizzaro reaction needs:",
+   "options": [
+    "dilute NaOH",
+    "concentrated NaOH or KOH",
+    "dilute HCl",
+    "Tollens' reagent"
+   ],
+   "answer": 1,
+   "explain": "Concentrated alkali; dilute base gives aldol with aldehydes that have an α-H."
+  },
+  {
+   "q": "The products of 2 C₆H₅CHO with conc. NaOH are:",
+   "options": [
+    "benzoic acid and benzene",
+    "sodium benzoate and benzyl alcohol",
+    "benzyl alcohol only",
+    "an aldol"
+   ],
+   "answer": 1,
+   "explain": "One molecule is oxidised to the carboxylate, the other reduced to the alcohol."
+  },
+  {
+   "q": "The key step that links the two molecules is:",
+   "options": [
+    "proton transfer",
+    "hydride (H⁻) transfer",
+    "loss of water",
+    "free radical attack"
+   ],
+   "answer": 1,
+   "explain": "The tetrahedral intermediate passes H⁻ directly to the second molecule's carbonyl carbon."
+  },
+  {
+   "q": "Oxidation and reduction of the same compound in one reaction is called:",
+   "options": [
+    "condensation",
+    "disproportionation",
+    "hydrolysis",
+    "neutralisation"
+   ],
+   "answer": 1,
+   "explain": "The carbonyl carbon goes from +1 to +3 in one molecule and to −1 in the other."
+  }
+ ],
+ "simulation": {
+  "decision": "REQUIRED",
+  "reason": "Which path an aldehyde takes is a prediction students can test on new compounds, including formaldehyde and 2,2-dimethylpropanal, and the oxidation numbers worked out from the bonds show the rise and fall that make it disproportionation, which the reel can only state.",
+  "status": "pass",
+  "path": "sim.html",
+  "objective": "Predict whether an aldehyde gives aldol, Cannizzaro or neither, and see the oxidation number of the carbonyl carbon change.",
+  "instructions": [
+   "Choose an aldehyde and count its α-hydrogens.",
+   "Choose concentrated or dilute NaOH.",
+   "Predict, then run the reaction.",
+   "Read the two products and their oxidation numbers.",
+   "Try HCHO and (CH₃)₃CCHO, then an aldehyde with an α-hydrogen."
+  ],
+  "qa": "tests/learn_sims.js (2026-11-07)"
+ },
+ "related": [
+  "aldol-condensation",
+  "nucleophilic-addition-carbonyl"
+ ]
+}

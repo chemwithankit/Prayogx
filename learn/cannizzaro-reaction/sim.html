@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="sim-id" content="LEARN-C12-CHE-TWO-FATES-SIM">
+<title>Two fates · PrayogX Learn simulation</title>
+<style>
+:root{--bg:#f4f4f1;--card:#fcfcfb;--line:#d9d9d4;--ink:#0b0b0b;--mut:#52514e;--acc:#2a78d6;--ox:#b45f00;--red:#1d7a35;--no:#c62828;--empty:#ececea}
+@media (prefers-color-scheme:dark){:root{--bg:#111110;--card:#1a1a19;--line:#34342f;--ink:#fff;--mut:#c3c2b7;--acc:#3987e5;--ox:#ffa41b;--red:#5bd46a;--no:#ef5350;--empty:#2a2a28}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+.wrap{max-width:980px;margin:0 auto;padding:12px}
+h1{font-size:17px;margin:2px 0 8px}
+h2{font-size:15px;margin:0 0 6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin-top:10px}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:6px}
+button{font:inherit;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:9px;padding:6px 10px;cursor:pointer;min-height:44px}
+button[aria-pressed="true"]{background:var(--acc);border-color:var(--acc);color:#fff;font-weight:650}
+button:disabled{opacity:.45;cursor:default}
+.mol{text-align:center;font-size:24px;font-weight:750;margin-top:8px;overflow-wrap:anywhere}
+.meta{text-align:center;font-size:14px;color:var(--mut)}
+.verdict{margin-top:8px;padding:8px 10px;border-radius:10px;border:1px solid var(--line);background:var(--bg);min-height:2.6em;overflow-wrap:anywhere}
+.fates{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px}
+.fate{border-radius:10px;padding:8px;border:2px solid var(--line);text-align:center;overflow-wrap:anywhere}
+.fate b{display:block;font-size:13px;letter-spacing:.04em}
+.fate .f{font-size:19px;font-weight:750}
+.fate .on{font-size:14px;color:var(--mut)}
+.ox{border-color:var(--ox)} .ox b{color:var(--ox)}
+.rd{border-color:var(--red)} .rd b{color:var(--red)}
+.small{font-size:13px;color:var(--mut)}
+@media (max-width:420px){.fates{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>Two fates: aldol or Cannizzaro?</h1>
+<div class="card">
+<h2>1. Choose an aldehyde</h2>
+<div class="row" id="ald"></div>
+<div class="mol" id="mol"></div>
+<div class="meta" id="meta"></div>
+</div>
+<div class="card">
+<h2>2. Choose the base and predict</h2>
+<div class="row" id="bases"></div>
+<div class="row"><span class="small">Your prediction:</span><span class="row" id="preds" style="margin:0"></span></div>
+<div class="row"><button type="button" id="run">Run the reaction</button><button type="button" id="again">Start again</button></div>
+<div class="verdict" id="verdict" aria-live="polite"></div>
+<div class="fates" id="fates" hidden>
+<div class="fate ox"><b>OXIDATION</b><div class="f" id="pox"></div><div class="on" id="nox"></div></div>
+<div class="fate rd"><b>REDUCTION</b><div class="f" id="prd"></div><div class="on" id="nrd"></div></div>
+</div>
+<p class="small" id="score"></p>
+</div>
+<p class="small">Oxidation number of the carbonyl carbon from its bonds: each bond to O counts +1, each bond to H counts −1, a bond to C counts 0. With an α-hydrogen, the usual change in dilute base is aldol; Cannizzaro needs an aldehyde with no α-hydrogen and concentrated alkali.</p>
+</div>
+<script>
+(function () {
+  "use strict";
+  // R: the group on the carbonyl carbon; rH: H atoms on that group's first carbon (the α-carbon); hOnC: H atoms on the carbonyl carbon
+  var A = {
+    hcho: { name: "Methanal (formaldehyde)", f: "HCHO", R: "H", alphaC: false, aH: 0, totH: 2, hOnC: 2, acid: "HCOO⁻Na⁺", acidN: "sodium methanoate", alc: "CH₃OH", alcN: "methanol" },
+    benz: { name: "Benzaldehyde", f: "C₆H₅CHO", R: "C₆H₅", alphaC: true, aH: 0, totH: 6, hOnC: 1, acid: "C₆H₅COO⁻Na⁺", acidN: "sodium benzoate", alc: "C₆H₅CH₂OH", alcN: "benzyl alcohol" },
+    piv: { name: "2,2-Dimethylpropanal", f: "(CH₃)₃CCHO", R: "(CH₃)₃C", alphaC: true, aH: 0, totH: 10, hOnC: 1, acid: "(CH₃)₃CCOO⁻Na⁺", acidN: "sodium 2,2-dimethylpropanoate", alc: "(CH₃)₃CCH₂OH", alcN: "2,2-dimethylpropan-1-ol" },
+    eth: { name: "Ethanal", f: "CH₃CHO", R: "CH₃", alphaC: true, aH: 3, totH: 4, hOnC: 1 },
+    prop: { name: "Propanal", f: "CH₃CH₂CHO", R: "CH₃CH₂", alphaC: true, aH: 2, totH: 6, hOnC: 1 }
+  };
+  var AO = ["benz", "hcho", "piv", "eth", "prop"];
+  var P = [["cannizzaro", "Cannizzaro"], ["aldol", "Aldol"], ["none", "Neither"]];
+  var S, tried = {};
+  function $(id) { return document.getElementById(id); }
+  function fresh() { return { a: "benz", base: "conc", pred: null, ran: false }; }
+  // oxidation number of a carbon from its bonds: O bonds +1 each (bond order counted), H bonds -1 each, C bonds 0
+  function oxn(oBonds, hBonds) { return oBonds - hBonds; }
+  function outcome(k, base) {
+    var a = A[k];
+    if (a.aH > 0) { return "aldol"; }
+    return base === "conc" ? "cannizzaro" : "none";
+  }
+  function numbers(k) {
+    var a = A[k], h = a.hOnC;
+    return {
+      start: oxn(2, h),            // C=O plus its H atoms
+      ox: oxn(3, h - 1),           // carboxylate: C=O and C-O-, one H fewer
+      rd: oxn(1, h + 1)            // alcohol: C-OH and one H more
+    };
+  }
+  function sign(n) { return n > 0 ? "+" + n : n < 0 ? "−" + (-n) : "0"; }
+  function render() {
+    var i, a = A[S.a], out = outcome(S.a, S.base), n = numbers(S.a);
+    for (i = 0; i < AO.length; i++) { $("a-" + AO[i]).setAttribute("aria-pressed", AO[i] === S.a ? "true" : "false"); }
+    $("b-conc").setAttribute("aria-pressed", S.base === "conc" ? "true" : "false");
+    $("b-dilute").setAttribute("aria-pressed", S.base === "dilute" ? "true" : "false");
+    for (i = 0; i < P.length; i++) { $("p-" + P[i][0]).setAttribute("aria-pressed", P[i][0] === S.pred ? "true" : "false"); }
+    $("mol").textContent = a.f;
+    $("meta").textContent = a.name + " · " + a.totH + " H atoms in all · " + (a.alphaC ? a.aH + " H on the α-carbon" : "no α-carbon at all");
+    $("run").disabled = S.pred === null;
+    $("fates").hidden = !(S.ran && out === "cannizzaro");
+    if (!S.ran) { $("verdict").textContent = S.pred === null ? "Predict first: aldol, Cannizzaro or neither?" : "Now run the reaction."; }
+    else {
+      var head = (S.pred === out ? "Right. " : "Not quite. ");
+      if (out === "cannizzaro") {
+        $("verdict").textContent = head + "No α-hydrogen and concentrated alkali: Cannizzaro. One molecule is oxidised, the other reduced. The carbonyl carbon starts at " + sign(n.start) + ".";
+        $("pox").textContent = a.acid; $("nox").textContent = a.acidN + " · C: " + sign(n.start) + " → " + sign(n.ox);
+        $("prd").textContent = a.alc; $("nrd").textContent = a.alcN + " · C: " + sign(n.start) + " → " + sign(n.rd);
+      } else if (out === "aldol") {
+        $("verdict").textContent = head + "It has " + a.aH + " α-hydrogen" + (a.aH > 1 ? "s" : "") + ", so base removes one and aldol takes over. Cannizzaro is for aldehydes with no α-hydrogen.";
+      } else {
+        $("verdict").textContent = head + "No α-hydrogen, so no aldol; and dilute base is not enough for Cannizzaro, which needs concentrated alkali.";
+      }
+    }
+    var k, n2 = 0, r2 = 0;
+    for (k in tried) { if (tried.hasOwnProperty(k)) { n2++; if (tried[k]) { r2++; } } }
+    $("score").textContent = n2 ? r2 + " of " + n2 + " predictions right on the first try." : "";
+  }
+  window.PX = {
+    aldehyde: function (k) { S.a = k; S.pred = null; S.ran = false; render(); },
+    base: function (b) { S.base = b; S.pred = null; S.ran = false; render(); },
+    predict: function (p) { S.pred = p; S.ran = false; render(); },
+    run: function () { if (S.pred === null) { return; } S.ran = true; var key = S.a + "|" + S.base; if (!tried.hasOwnProperty(key)) { tried[key] = S.pred === outcome(S.a, S.base); } render(); },
+    reset: function () { S = fresh(); tried = {}; render(); },
+    state: function () {
+      var a = A[S.a], out = outcome(S.a, S.base), n = numbers(S.a);
+      return { aldehyde: S.a, base: S.base, alphaH: a.aH, outcome: out, ran: S.ran, start: n.start, oxidised: n.ox, reduced: n.rd,
+        acid: out === "cannizzaro" ? a.acid : null, alcohol: out === "cannizzaro" ? a.alc : null };
+    }
+  };
+  (function build() {
+    var i, b;
+    function add(box, id, txt, fn) { b = document.createElement("button"); b.type = "button"; b.id = id; b.textContent = txt; b.onclick = fn; $(box).appendChild(b); }
+    function af(k) { return function () { PX.aldehyde(k); }; }
+    function pf(k) { return function () { PX.predict(k); }; }
+    for (i = 0; i < AO.length; i++) { add("ald", "a-" + AO[i], A[AO[i]].f, af(AO[i])); }
+    add("bases", "b-conc", "Concentrated NaOH", function () { PX.base("conc"); });
+    add("bases", "b-dilute", "Dilute NaOH", function () { PX.base("dilute"); });
+    for (i = 0; i < P.length; i++) { add("preds", "p-" + P[i][0], P[i][1], pf(P[i][0])); }
+    $("run").onclick = function () { PX.run(); };
+    $("again").onclick = function () { PX.reset(); };
+    S = fresh(); render();
+  }());
+}());
+</script>
+</body>
+</html>

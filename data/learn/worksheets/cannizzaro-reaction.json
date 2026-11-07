@@ -1,0 +1,158 @@
+{
+ "slug": "cannizzaro-reaction",
+ "title": "The Cannizzaro Reaction",
+ "class": 12,
+ "subject": "Chemistry",
+ "chapter": "Aldehydes, Ketones and Carboxylic Acids",
+ "objective": "Two identical aldehyde molecules, two different products. How an aldehyde with no α-hydrogen, in concentrated alkali, is oxidised and reduced in the same reaction.",
+ "fill": [
+  {
+   "q": "The Cannizzaro reaction needs an aldehyde with no ____ hydrogen.",
+   "a": "alpha"
+  },
+  {
+   "q": "The Cannizzaro reaction uses ____ NaOH or KOH.",
+   "a": "concentrated"
+  },
+  {
+   "q": "In the Cannizzaro reaction one molecule is oxidised and the other is ____.",
+   "a": "reduced"
+  },
+  {
+   "q": "Oxidation and reduction of the same compound in one reaction is called ____.",
+   "a": "disproportionation"
+  },
+  {
+   "q": "The key step passes a ____ ion directly from one molecule to the other.",
+   "a": "hydride"
+  }
+ ],
+ "tf": [
+  {
+   "q": "Ethanal gives the Cannizzaro reaction.",
+   "a": false,
+   "explain": "It has α-hydrogens, so it gives aldol."
+  },
+  {
+   "q": "Benzaldehyde has no α-hydrogen.",
+   "a": true,
+   "explain": "The carbon next to C=O is a ring carbon with no H."
+  },
+  {
+   "q": "The hydride ion moves freely through the solution.",
+   "a": false,
+   "explain": "It is passed directly between the two molecules."
+  },
+  {
+   "q": "Benzoic acid is obtained only after acidifying the salt.",
+   "a": true,
+   "explain": "The base step gives sodium benzoate."
+  }
+ ],
+ "ar": [
+  {
+   "a": "Benzaldehyde gives the Cannizzaro reaction.",
+   "r": "It has no α-hydrogen.",
+   "answer": 0,
+   "explain": "R explains A."
+  },
+  {
+   "a": "The Cannizzaro reaction is a disproportionation.",
+   "r": "One molecule is oxidised and another identical molecule is reduced.",
+   "answer": 0,
+   "explain": "R explains A."
+  }
+ ],
+ "mcq": [
+  {
+   "q": "Which gives the Cannizzaro reaction?",
+   "options": [
+    "CH₃CHO",
+    "CH₃CH₂CHO",
+    "HCHO",
+    "CH₃COCH₃"
+   ],
+   "answer": 2,
+   "explain": "HCHO has no α-hydrogen."
+  },
+  {
+   "q": "With conc. NaOH, benzaldehyde gives:",
+   "options": [
+    "benzoic acid only",
+    "sodium benzoate and benzyl alcohol",
+    "an aldol",
+    "benzene"
+   ],
+   "answer": 1,
+   "explain": "One oxidised, one reduced."
+  },
+  {
+   "q": "The oxidation number of the carbonyl carbon in benzaldehyde is:",
+   "options": [
+    "0",
+    "+1",
+    "+2",
+    "−1"
+   ],
+   "answer": 1,
+   "explain": "C=O counts +2, C–H −1, C–C 0."
+  },
+  {
+   "q": "Formaldehyde with conc. NaOH gives:",
+   "options": [
+    "methanol and sodium methanoate",
+    "ethanol only",
+    "ethanal",
+    "methane"
+   ],
+   "answer": 0,
+   "explain": "HCHO has no α-hydrogen."
+  }
+ ],
+ "num": [
+  {
+   "q": "Find the oxidation number of the CH₂OH carbon in benzyl alcohol.",
+   "steps": [
+    "C–O counts +1",
+    "2 C–H count −2",
+    "C–C counts 0"
+   ],
+   "answer": "−1"
+  },
+  {
+   "q": "How many molecules of benzaldehyde react for each molecule of benzyl alcohol formed?",
+   "steps": [
+    "2 C₆H₅CHO give 1 C₆H₅COONa and 1 C₆H₅CH₂OH"
+   ],
+   "answer": "2"
+  }
+ ],
+ "short": [
+  {
+   "q": "Write the balanced equation for the Cannizzaro reaction of benzaldehyde.",
+   "lines": 5,
+   "solution": "2 C₆H₅CHO + NaOH (conc.) → C₆H₅COONa + C₆H₅CH₂OH"
+  }
+ ],
+ "match": {
+  "left": [
+   "No α-hydrogen + conc. NaOH",
+   "α-hydrogen + dilute NaOH",
+   "Carbonyl carbon +1 → +3",
+   "Carbonyl carbon +1 → −1"
+  ],
+  "right": [
+   "Reduction",
+   "Aldol",
+   "Oxidation",
+   "Cannizzaro"
+  ],
+  "answer": [
+   3,
+   1,
+   2,
+   0
+  ],
+  "explain": "Each condition or change matches its name."
+ }
+}
