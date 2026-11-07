@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="sim-id" content="LEARN-C11-CHE-GROUP-SWAPPER-SIM">
+<title>Group swapper · PrayogX Learn simulation</title>
+<style>
+:root{--bg:#f4f4f1;--card:#fcfcfb;--line:#d9d9d4;--ink:#0b0b0b;--mut:#52514e;--acc:#2a78d6;--grp:#b26a00;--good:#00743f;--empty:#ececea}
+@media (prefers-color-scheme:dark){:root{--bg:#111110;--card:#1a1a19;--line:#34342f;--ink:#fff;--mut:#c3c2b7;--acc:#3987e5;--grp:#ffd60a;--good:#3fae7a;--empty:#2a2a28}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+.wrap{max-width:980px;margin:0 auto;padding:12px}
+h1{font-size:17px;margin:2px 0 8px}
+h2{font-size:15px;margin:0 0 6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin-top:10px}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:6px}
+.lab{font-size:13px;color:var(--mut);min-width:52px}
+button{font:inherit;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:9px;padding:6px 10px;cursor:pointer;min-height:44px}
+button[aria-pressed="true"]{background:var(--acc);border-color:var(--acc);color:#fff;font-weight:650}
+.mol{text-align:center;margin-top:10px;font-size:26px;font-weight:750;overflow-wrap:anywhere}
+.mol span{color:var(--grp)}
+.meta{text-align:center;font-size:14px;color:var(--mut)}
+.bench{display:flex;gap:14px;align-items:center;margin-top:8px}
+svg{flex:0 0 96px;width:96px;height:150px}
+.verdict{flex:1;padding:8px 10px;border-radius:10px;border:1px solid var(--line);background:var(--bg);min-height:5em;overflow-wrap:anywhere}
+.find{margin-top:8px;padding:8px 10px;border-radius:10px;background:var(--empty);min-height:2.6em}
+.tw{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:13px}
+th,td{border:1px solid var(--line);padding:5px 6px;text-align:center}
+tr th:first-child{white-space:nowrap}
+td.on{font-weight:700;color:var(--good)}
+td.off{color:var(--mut)}
+.small{font-size:13px;color:var(--mut)}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>Group swapper: what decides the result?</h1>
+<div class="card">
+<h2>1. Build a molecule</h2>
+<div class="row"><span class="lab">Chain</span><span class="row" id="chains" style="margin:0"></span></div>
+<div class="row"><span class="lab">Group</span><span class="row" id="groups" style="margin:0"></span></div>
+<div class="mol" id="mol"></div>
+<div class="meta" id="meta"></div>
+</div>
+<div class="card">
+<h2>2. Test it</h2>
+<div class="row" id="tests"></div>
+<div class="bench">
+<svg id="tube" viewBox="0 0 96 150" role="img" aria-label="Test tube"></svg>
+<div class="verdict" id="verdict" aria-live="polite"></div>
+</div>
+</div>
+<div class="card">
+<h2>3. Your results</h2>
+<div class="tw"><table id="grid"></table></div>
+<div class="find" id="find" aria-live="polite"></div>
+<div class="row"><button type="button" id="again">Start again</button></div>
+<p class="small">Results are the usual school laboratory observations for these simple compounds. Boiling points are rounded handbook values at 1 atm.</p>
+</div>
+</div>
+<script>
+(function () {
+  "use strict";
+  var CH = { 1: "CH₃", 2: "CH₃CH₂", 3: "CH₃CH₂CH₂" };
+  // add: atoms the group brings; names and b.p. (°C) are for chains of 1, 2 and 3 carbons
+  var G = {
+    OH: { tag: "–OH", show: "–OH", family: "Alcohol", add: { C: 0, H: 1, O: 1, N: 0 }, names: ["Methanol", "Ethanol", "Propan-1-ol"], bp: [65, 78, 97] },
+    CHO: { tag: "–CHO", show: "–CHO", family: "Aldehyde", add: { C: 1, H: 1, O: 1, N: 0 }, names: ["Ethanal", "Propanal", "Butanal"], bp: [20, 48, 75] },
+    CO: { tag: "C=O", show: "–CO–CH₃", family: "Ketone", add: { C: 2, H: 3, O: 1, N: 0 }, names: ["Propanone", "Butanone", "Pentan-2-one"], bp: [56, 80, 102] },
+    COOH: { tag: "–COOH", show: "–COOH", family: "Carboxylic acid", add: { C: 1, H: 1, O: 2, N: 0 }, names: ["Ethanoic acid", "Propanoic acid", "Butanoic acid"], bp: [118, 141, 164] },
+    NH2: { tag: "–NH₂", show: "–NH₂", family: "Amine", add: { C: 0, H: 2, O: 0, N: 1 }, names: ["Methanamine", "Ethanamine", "Propan-1-amine"], bp: [-6, 17, 48] }
+  };
+  var GO = ["OH", "CHO", "CO", "COOH", "NH2"];
+  var T = {
+    bicarb: { name: "NaHCO₃", none: "No fizz." },
+    litmus: { name: "Litmus", none: "Litmus does not change: neutral." },
+    tollens: { name: "Tollens' reagent", none: "No silver mirror." },
+    dnp: { name: "2,4-DNP", none: "No precipitate." }
+  };
+  var TO = ["bicarb", "litmus", "tollens", "dnp"];
+  // the group alone decides each result: [what is seen, short mark, what the tube shows]
+  var R = {
+    COOH: { bicarb: ["Fizzes: CO₂ gas is given off.", "fizz", "fizz"], litmus: ["Blue litmus turns red: acidic.", "red", "red"] },
+    NH2: { litmus: ["Red litmus turns blue: basic.", "blue", "blue"] },
+    CHO: { tollens: ["A silver mirror forms on warming.", "mirror", "mirror"], dnp: ["An orange-yellow precipitate forms.", "ppt", "ppt"] },
+    CO: { dnp: ["An orange-yellow precipitate forms.", "ppt", "ppt"] }
+  };
+  var S, timer = null, reduced = !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+  function $(id) { return document.getElementById(id); }
+  function fresh() { return { chain: 2, group: "OH", test: null, seen: {} }; }
+  function formula(n, g) {
+    var a = G[g].add, c = n + a.C, h = 2 * n + 1 + a.H;
+    function p(e, k) { return k ? e + (k > 1 ? k : "") : ""; }
+    return p("C", c) + p("H", h) + p("N", a.N) + p("O", a.O);
+  }
+  function sub(x) { return x.replace(/\d/g, function (d) { return "₀₁₂₃₄₅₆₇₈₉".charAt(+d); }); }
+  function result(g, t) { return (R[g] && R[g][t]) || null; }
+  function node(t, at) { var e = document.createElementNS("http://www.w3.org/2000/svg", t), k; for (k in at) { if (at.hasOwnProperty(k)) { e.setAttribute(k, at[k]); } } return e; }
+  function drawTube(kind, f) {
+    var g = $("tube"), i, x, y, ink = getComputedStyle(document.body).color;
+    while (g.firstChild) { g.removeChild(g.firstChild); }
+    var liquid = kind === "red" ? "#e5484d" : kind === "blue" ? "#3987e5" : kind === "mirror" ? "#c9ced6" : "#9fd8f2";
+    g.appendChild(node("path", { d: "M28 52 V126 a20 20 0 0 0 40 0 V52 Z", fill: kind ? liquid : "#9fd8f2", opacity: 0.8 }));
+    if (kind === "ppt") { g.appendChild(node("path", { d: "M28 118 V126 a20 20 0 0 0 40 0 V118 Z", fill: "#f08c00" })); }
+    if (kind === "fizz") {
+      for (i = 0; i < 9; i++) {
+        y = 138 - ((f * (2 + i % 3) + i * 19) % 86); x = 34 + (i * 13) % 28;
+        g.appendChild(node("circle", { cx: x, cy: y, r: 2 + i % 3, fill: "none", stroke: "#fff", "stroke-width": 1.6 }));
+      }
+    }
+    g.appendChild(node("path", { d: "M28 12 V126 a20 20 0 0 0 40 0 V12", fill: "none", stroke: ink, "stroke-width": 3, "stroke-linecap": "round" }));
+  }
+  function finding() {
+    var g, t, k, a, b, n, sameChain = null, sameGroup = null;
+    for (t = 0; t < TO.length; t++) {
+      for (g = 0; g < GO.length; g++) {
+        n = [1, 2, 3].filter(function (c) { return S.seen[GO[g] + "|" + TO[t] + "|" + c]; });
+        if (n.length > 1 && !sameGroup) { sameGroup = [GO[g], TO[t]]; }
+        for (k = 0; k < GO.length; k++) {
+          for (a = 1; a <= 3; a++) {
+            b = S.seen[GO[k] + "|" + TO[t] + "|" + a] && S.seen[GO[g] + "|" + TO[t] + "|" + a];
+            if (b && !!result(GO[k], TO[t]) !== !!result(GO[g], TO[t]) && !sameChain) { sameChain = TO[t]; }
+          }
+        }
+      }
+    }
+    if (sameChain && sameGroup) { return "You found both: changing the group changes the result, and changing the chain does not. The boiling point still moves with the chain, so the group largely decides, not completely."; }
+    if (sameChain) { return "Same chain, different result in " + T[sameChain].name + ". Now keep the group and change the chain."; }
+    if (sameGroup) { return "Chain changed, result unchanged in " + T[sameGroup[1]].name + ". Now keep the chain and change the group."; }
+    return "Run a test, change one thing, and run it again.";
+  }
+  function grid() {
+    var h = "<tr><th>Group</th>", i, j, r, c, cs;
+    for (j = 0; j < TO.length; j++) { h += "<th>" + T[TO[j]].name + "</th>"; }
+    h += "</tr>";
+    for (i = 0; i < GO.length; i++) {
+      h += "<tr><th>" + G[GO[i]].tag + "</th>";
+      for (j = 0; j < TO.length; j++) {
+        cs = [1, 2, 3].filter(function (n) { return S.seen[GO[i] + "|" + TO[j] + "|" + n]; });
+        r = result(GO[i], TO[j]);
+        c = cs.length ? (r ? r[1] : "none") + " (" + cs.join(", ") + "C)" : "";
+        h += '<td class="' + (cs.length && r ? "on" : "off") + '">' + c + "</td>";
+      }
+      h += "</tr>";
+    }
+    $("grid").innerHTML = h;
+  }
+  function render() {
+    var i, g = G[S.group], r = S.test ? result(S.group, S.test) : null;
+    for (i = 1; i <= 3; i++) { $("c-" + i).setAttribute("aria-pressed", i === S.chain ? "true" : "false"); }
+    for (i = 0; i < GO.length; i++) { $("g-" + GO[i]).setAttribute("aria-pressed", GO[i] === S.group ? "true" : "false"); }
+    for (i = 0; i < TO.length; i++) { $("t-" + TO[i]).setAttribute("aria-pressed", TO[i] === S.test ? "true" : "false"); }
+    $("mol").innerHTML = CH[S.chain] + "<span>" + g.show + "</span>";
+    $("meta").textContent = g.names[S.chain - 1] + " · " + g.family + " · " + sub(formula(S.chain, S.group)) + " · boils at " + g.bp[S.chain - 1] + " °C";
+    $("verdict").textContent = S.test ? T[S.test].name + ": " + (r ? r[0] : T[S.test].none) : "Choose a test.";
+    if (timer) { clearInterval(timer); timer = null; }
+    var kind = r ? r[2] : null, f = 0;
+    drawTube(kind, 0);
+    if (kind === "fizz" && !reduced) { timer = setInterval(function () { f++; drawTube("fizz", f); }, 50); }
+    grid();
+    $("find").textContent = finding();
+  }
+  window.PX = {
+    chain: function (n) { S.chain = n; S.test = null; render(); },
+    group: function (k) { S.group = k; S.test = null; render(); },
+    test: function (t) { S.test = t; S.seen[S.group + "|" + t + "|" + S.chain] = 1; render(); },
+    reset: function () { S = fresh(); render(); },
+    state: function () {
+      var g = G[S.group], r = S.test ? result(S.group, S.test) : null;
+      return { chain: S.chain, group: S.group, family: g.family, name: g.names[S.chain - 1], formula: formula(S.chain, S.group), bp: g.bp[S.chain - 1], test: S.test, reacts: !!r, mark: r ? r[1] : "none", finding: $("find").textContent };
+    }
+  };
+  (function build() {
+    var i, b;
+    function add(box, id, txt, fn) { b = document.createElement("button"); b.type = "button"; b.id = id; b.textContent = txt; b.onclick = fn; $(box).appendChild(b); }
+    function cf(n) { return function () { PX.chain(n); }; }
+    function gf(k) { return function () { PX.group(k); }; }
+    function tf(k) { return function () { PX.test(k); }; }
+    for (i = 1; i <= 3; i++) { add("chains", "c-" + i, i + " C", cf(i)); }
+    for (i = 0; i < GO.length; i++) { add("groups", "g-" + GO[i], G[GO[i]].tag, gf(GO[i])); }
+    for (i = 0; i < TO.length; i++) { add("tests", "t-" + TO[i], T[TO[i]].name, tf(TO[i])); }
+    $("again").onclick = function () { PX.reset(); };
+    S = fresh(); render();
+  }());
+}());
+</script>
+</body>
+</html>

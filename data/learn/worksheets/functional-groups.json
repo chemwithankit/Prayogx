@@ -1,0 +1,160 @@
+{
+ "slug": "functional-groups",
+ "title": "Functional Groups",
+ "class": 11,
+ "subject": "Chemistry",
+ "chapter": "Organic Chemistry – Some Basic Principles and Techniques",
+ "objective": "Two molecules can share the same carbon chain and still behave differently. How one small group of atoms gives a compound its chemical identity: –OH, –CHO, C=O, –COOH and –NH₂.",
+ "fill": [
+  {
+   "q": "A functional group is an atom or group of ____ that largely decides a compound's chemical properties.",
+   "a": "atoms"
+  },
+  {
+   "q": "The group –OH marks the ____ family.",
+   "a": "alcohol"
+  },
+  {
+   "q": "The group –CHO marks the ____ family.",
+   "a": "aldehyde"
+  },
+  {
+   "q": "The group –COOH marks the ____ family.",
+   "a": "carboxylic acid"
+  },
+  {
+   "q": "The group –NH₂ marks the ____ family.",
+   "a": "amine"
+  }
+ ],
+ "tf": [
+  {
+   "q": "A functional group is always a single atom.",
+   "a": false,
+   "explain": "It can be one atom or a group of atoms."
+  },
+  {
+   "q": "An aldehyde and a ketone both contain C=O.",
+   "a": true,
+   "explain": "In a ketone, C=O sits between two carbons."
+  },
+  {
+   "q": "Two compounds with the same carbon chain must react the same way.",
+   "a": false,
+   "explain": "A different functional group gives different reactions."
+  },
+  {
+   "q": "Chain length can change the boiling point.",
+   "a": true,
+   "explain": "The group largely decides chemical behaviour, not every property."
+  }
+ ],
+ "ar": [
+  {
+   "a": "Ethanol and propanoic acid react differently with NaHCO₃.",
+   "r": "They carry different functional groups.",
+   "answer": 0,
+   "explain": "R explains A."
+  },
+  {
+   "a": "An aldehyde and a ketone are different families.",
+   "r": "In an aldehyde, C=O is at the end of the chain.",
+   "answer": 0,
+   "explain": "R explains A."
+  }
+ ],
+ "mcq": [
+  {
+   "q": "Which compound is a ketone?",
+   "options": [
+    "CH₃CH₂–CHO",
+    "CH₃CH₂–CO–CH₃",
+    "CH₃CH₂–OH",
+    "CH₃CH₂–NH₂"
+   ],
+   "answer": 1,
+   "explain": "C=O sits between two carbon atoms."
+  },
+  {
+   "q": "Which compound is a carboxylic acid?",
+   "options": [
+    "CH₃CH₂–OH",
+    "CH₃CH₂–CHO",
+    "CH₃CH₂–COOH",
+    "CH₃CH₂–NH₂"
+   ],
+   "answer": 2,
+   "explain": "It carries –COOH."
+  },
+  {
+   "q": "Which gives CO₂ with NaHCO₃?",
+   "options": [
+    "Ethanol",
+    "Propanal",
+    "Butanone",
+    "Propanoic acid"
+   ],
+   "answer": 3,
+   "explain": "Carboxylic acids release CO₂."
+  },
+  {
+   "q": "Which group has nitrogen?",
+   "options": [
+    "–OH",
+    "–CHO",
+    "–COOH",
+    "–NH₂"
+   ],
+   "answer": 3,
+   "explain": "N is in the amine group."
+  }
+ ],
+ "num": [
+  {
+   "q": "How many carbon atoms are in CH₃CH₂–COOH?",
+   "steps": [
+    "2 in the chain + 1 in –COOH"
+   ],
+   "answer": "3"
+  },
+  {
+   "q": "How many oxygen atoms are in the –COOH group?",
+   "steps": [
+    "C=O has 1",
+    "–OH has 1"
+   ],
+   "answer": "2"
+  }
+ ],
+ "short": [
+  {
+   "q": "Name the family of each: CH₃CH₂–OH, CH₃CH₂–CHO, CH₃CH₂–NH₂.",
+   "lines": 5,
+   "solution": "Alcohol, aldehyde, amine."
+  }
+ ],
+ "match": {
+  "left": [
+   "–OH",
+   "–CHO",
+   "C=O between two carbons",
+   "–COOH",
+   "–NH₂"
+  ],
+  "right": [
+   "Amine",
+   "Aldehyde",
+   "Alcohol",
+   "Carboxylic acid",
+   "Ketone"
+  ],
+  "answer": [
+   2,
+   1,
+   4,
+   3,
+   0
+  ],
+  "explain": "Each group matches its family."
+ }
+}

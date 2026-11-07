@@ -47,6 +47,8 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
      learn/position-origin-and-direction/sim.html  positions, displacement unchanged by the origin
      learn/why-is-ice-slippery/sim.html  melting-point drop against Clausius-Clapeyron, the
                                         IAPWS anchor point, what no pressure can do
+     learn/functional-groups/sim.html  the group decides each test, the chain does not;
+                                        formula and b.p. against an independent table
    --------------------------------------------------------------------------- */
 
 let n = 0, bad = 0;
@@ -609,6 +611,27 @@ for (const key of Object.keys(MATERIALS)) FD[key] = fdContact(SKIN, Object.assig
       ok(`ice ${tag}: at −30 °C no pressure works, and the page says so`, !cold30.possible && !cold30.melts && (await page.$eval('#verdict', e => e.textContent)).includes('No pressure'));
       const ovI = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
       ok(`ice ${tag}: no horizontal overflow`, ovI <= 0, ovI);
+      // ---- group swapper: the group decides each test, the chain does not; formula and b.p. from an independent table
+      await page.goto(base + 'functional-groups/sim.html', { waitUntil: 'load' });
+      const FGT = { COOH: ['bicarb', 'litmus'], NH2: ['litmus'], CHO: ['tollens', 'dnp'], CO: ['dnp'], OH: [] };
+      const FGF = { OH: ['CH4O', 'C2H6O', 'C3H8O'], CHO: ['C2H4O', 'C3H6O', 'C4H8O'], CO: ['C3H6O', 'C4H8O', 'C5H10O'], COOH: ['C2H4O2', 'C3H6O2', 'C4H8O2'], NH2: ['CH5N', 'C2H7N', 'C3H9N'] };
+      const FGB = { OH: [64.7, 78.4, 97.2], CHO: [20.2, 48, 74.8], CO: [56.1, 79.6, 102], COOH: [118.1, 141.2, 163.8], NH2: [-6.3, 16.6, 47.8] };
+      let fgOk = true, fgBad = [];
+      for (const g of Object.keys(FGT)) for (const c of [1, 2, 3]) for (const t of ['bicarb', 'litmus', 'tollens', 'dnp']) {
+        const st = await page.evaluate(v => { PX.reset(); PX.chain(v[1]); PX.group(v[0]); PX.test(v[2]); return PX.state(); }, [g, c, t]);
+        const want = FGT[g].includes(t);
+        if (st.reacts !== want || st.formula !== FGF[g][c - 1] || Math.abs(st.bp - FGB[g][c - 1]) > 1) { fgOk = false; fgBad.push(`${g}/${c}/${t}`); }
+      }
+      ok(`groups ${tag}: 60 runs match the independent table (result, formula, b.p. within 1 °C)`, fgOk, fgBad.slice(0, 4).join(' '));
+      const acidLit = await page.evaluate(() => { PX.reset(); PX.group('COOH'); PX.test('litmus'); return PX.state().mark; });
+      const amLit = await page.evaluate(() => { PX.reset(); PX.group('NH2'); PX.test('litmus'); return PX.state().mark; });
+      ok(`groups ${tag}: litmus turns red for the acid and blue for the amine`, acidLit === 'red' && amLit === 'blue', acidLit + ' ' + amLit);
+      const fgFind = await page.evaluate(() => { PX.reset(); PX.group('COOH'); PX.chain(1); PX.test('bicarb'); PX.chain(3); PX.test('bicarb'); PX.group('OH'); PX.test('bicarb'); return PX.state().finding; });
+      ok(`groups ${tag}: changing chain and group in one test gives the full finding`, /both/.test(fgFind), fgFind.slice(0, 40));
+      const fgBp = await page.evaluate(() => { PX.reset(); PX.group('OH'); const a = []; [1, 2, 3].forEach(c => { PX.chain(c); a.push(PX.state().bp); }); return a; });
+      ok(`groups ${tag}: b.p. rises with the chain for the same group`, fgBp[0] < fgBp[1] && fgBp[1] < fgBp[2], fgBp.join(' < '));
+      const ov10 = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
+      ok(`groups ${tag}: no horizontal overflow`, ov10 <= 0, ov10);
       ok(`all sims ${tag}: no console errors`, errs.length === 0, errs.join(' | '));
       await ctx.close();
     }

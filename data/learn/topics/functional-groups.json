@@ -1,0 +1,177 @@
+{
+ "id": "LEARN-C11-CHE-FUNCTIONAL-GROUPS",
+ "slug": "functional-groups",
+ "status": "ready",
+ "class": 11,
+ "subject": "Chemistry",
+ "chapter": "Organic Chemistry – Some Basic Principles and Techniques",
+ "topic": "Functional groups",
+ "title": "Functional Groups",
+ "series": 432,
+ "studioJob": "functional-groups",
+ "reelId": "STUDIO-FUNCTIONAL-GROUPS",
+ "summary": "Two molecules can share the same carbon chain and still behave differently. How one small group of atoms gives a compound its chemical identity: –OH, –CHO, C=O, –COOH and –NH₂.",
+ "video": {
+  "youtubeId": "XOTB3W_ay2o"
+ },
+ "notes": {
+  "pdf": "notes.pdf",
+  "title": "06 – Functional Groups",
+  "driveDoc": "167IhLQhx1H0xo407HxJf83Wu1vMqIWI-kQfb3lhyCIk"
+ },
+ "thumb": "thumb.jpg",
+ "tags": [
+  "functional groups",
+  "alcohol",
+  "aldehyde",
+  "ketone",
+  "carboxylic acid",
+  "amine"
+ ],
+ "keyPoints": [
+  "A **functional group** is an atom or group of atoms that largely decides a compound's characteristic chemical properties and reactions.",
+  "Think of it this way: the **carbon chain** is the body, the **functional group** is the identity.",
+  "**–OH** alcohol, **–CHO** aldehyde, **C=O** in the middle of a chain ketone, **–COOH** carboxylic acid, **–NH₂** amine.",
+  "An aldehyde and a ketone both have C=O. In an aldehyde it is at the end of the chain, with an H on it.",
+  "Compounds with the same group react alike, so learn groups, not single molecules."
+ ],
+ "sections": [
+  {
+   "h": "One chain, five identities",
+   "blocks": [
+    {
+     "p": "Keep the chain CH₃CH₂– and change only the group. The carbon in –CHO and –COOH belongs to the group, so the chain stays the same."
+    },
+    {
+     "table": {
+      "head": [
+       "Group",
+       "Family",
+       "Example",
+       "Name"
+      ],
+      "rows": [
+       [
+        "–OH",
+        "Alcohol",
+        "CH₃CH₂–OH",
+        "Ethanol"
+       ],
+       [
+        "–CHO",
+        "Aldehyde",
+        "CH₃CH₂–CHO",
+        "Propanal"
+       ],
+       [
+        "C=O (between two carbons)",
+        "Ketone",
+        "CH₃CH₂–CO–CH₃",
+        "Butanone"
+       ],
+       [
+        "–COOH",
+        "Carboxylic acid",
+        "CH₃CH₂–COOH",
+        "Propanoic acid"
+       ],
+       [
+        "–NH₂",
+        "Amine",
+        "CH₃CH₂–NH₂",
+        "Ethanamine"
+       ]
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "h": "Why \"largely\" decides",
+   "blocks": [
+    {
+     "p": "Propanoic acid fizzes with sodium hydrogencarbonate and gives CO₂. Ethanol does not, even though both carry the same chain. That difference comes from the group."
+    },
+    {
+     "p": "The group does not decide everything. Longer chains still change physical properties such as boiling point: ethanol boils at about 78 °C and propan-1-ol at about 97 °C."
+    }
+   ]
+  }
+ ],
+ "quiz": [
+  {
+   "q": "A functional group is best described as:",
+   "options": [
+    "always a single atom",
+    "an atom or group of atoms that largely decides a compound's chemical properties",
+    "the longest carbon chain",
+    "any hydrogen atom in a molecule"
+   ],
+   "answer": 1,
+   "explain": "It can be one atom or several, and it gives the compound its characteristic reactions."
+  },
+  {
+   "q": "CH₃CH₂–CHO belongs to which family?",
+   "options": [
+    "Alcohol",
+    "Ketone",
+    "Aldehyde",
+    "Amine"
+   ],
+   "answer": 2,
+   "explain": "–CHO at the end of a chain marks an aldehyde."
+  },
+  {
+   "q": "How is a ketone different from an aldehyde?",
+   "options": [
+    "A ketone has no oxygen",
+    "In a ketone, C=O sits between two carbon atoms",
+    "A ketone has an –OH group",
+    "A ketone has nitrogen"
+   ],
+   "answer": 1,
+   "explain": "Both have C=O, but an aldehyde's is at the chain end with an H attached."
+  },
+  {
+   "q": "Which compound fizzes with NaHCO₃?",
+   "options": [
+    "CH₃CH₂–OH",
+    "CH₃CH₂–NH₂",
+    "CH₃CH₂–CHO",
+    "CH₃CH₂–COOH"
+   ],
+   "answer": 3,
+   "explain": "A carboxylic acid is acidic enough to release CO₂."
+  },
+  {
+   "q": "Which group marks an amine?",
+   "options": [
+    "–OH",
+    "–COOH",
+    "–NH₂",
+    "–CHO"
+   ],
+   "answer": 2,
+   "explain": "–NH₂ is the group of a primary amine."
+  }
+ ],
+ "simulation": {
+  "decision": "REQUIRED",
+  "reason": "That the group, not the chain, decides a reaction is a hypothesis students can test: changing the chain leaves each test result the same while changing the group changes it, and the boiling point still moves with the chain, which shows why the group only largely decides.",
+  "status": "pass",
+  "path": "sim.html",
+  "objective": "Change the chain and the group separately and find which one decides each test result.",
+  "instructions": [
+   "Build a molecule from a chain and a group.",
+   "Run a test and read the result.",
+   "Keep the group, change the chain, and run the same test.",
+   "Keep the chain, change the group, and run it again.",
+   "Compare the boiling points as the chain grows."
+  ],
+  "qa": "tests/learn_sims.js (2026-11-07)"
+ },
+ "related": [
+  "classifying-organic-compounds",
+  "drawing-organic-molecules"
+ ]
+}
