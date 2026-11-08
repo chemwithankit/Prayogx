@@ -1,0 +1,197 @@
+{
+ "id": "LEARN-C11-CHE-HOMOLOGOUS-SERIES",
+ "slug": "homologous-series",
+ "status": "ready",
+ "class": 11,
+ "subject": "Chemistry",
+ "chapter": "Organic Chemistry – Some Basic Principles and Techniques",
+ "topic": "Homologous series",
+ "title": "Homologous Series",
+ "series": 434,
+ "studioJob": "homologous-series",
+ "reelId": "STUDIO-HOMOLOGOUS-SERIES",
+ "summary": "Methane, ethane, propane, butane: four different compounds, one family. How each member differs from the next by one CH₂ unit, and what that means for their properties.",
+ "video": {
+  "youtubeId": "IgMgn1hqoWs"
+ },
+ "notes": {
+  "pdf": "notes.pdf",
+  "title": "07 – Homologous Series",
+  "driveDoc": "1Pgre72P9fE66_bYPJwS6uAjHF3W_tG8aWcaG_5VSAr0"
+ },
+ "thumb": "thumb.jpg",
+ "tags": [
+  "homologous series",
+  "homologue",
+  "CH2",
+  "general formula",
+  "alkanes",
+  "boiling point"
+ ],
+ "keyPoints": [
+  "A **homologous series** is a series of organic compounds with the **same functional group** and the **same general formula**, in which successive members differ by **–CH₂–**.",
+  "Each member is a **homologue**. Successive members differ in molar mass by **14 u** (CH₂ = 12 + 2).",
+  "Alkanes CₙH₂ₙ₊₂: CH₄ → C₂H₆ → C₃H₈ → C₄H₁₀ → C₅H₁₂, each one CH₂ more.",
+  "**Chemical properties are similar** (not identical), because the members share the same functional group.",
+  "**Physical properties change gradually** with chain length: boiling point rises, for example."
+ ],
+ "sections": [
+  {
+   "h": "Three common series",
+   "blocks": [
+    {
+     "table": {
+      "head": [
+       "Series",
+       "General formula",
+       "First three members"
+      ],
+      "rows": [
+       [
+        "Alkanes",
+        "CₙH₂ₙ₊₂",
+        "CH₄, C₂H₆, C₃H₈"
+       ],
+       [
+        "Alcohols",
+        "CₙH₂ₙ₊₁OH",
+        "CH₃OH, C₂H₅OH, C₃H₇OH"
+       ],
+       [
+        "Carboxylic acids",
+        "CₙH₂ₙ₊₁COOH (n = 0, 1, 2 …)",
+        "HCOOH, CH₃COOH, C₂H₅COOH"
+       ]
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "h": "Similar chemistry, gradual physical change",
+   "blocks": [
+    {
+     "table": {
+      "head": [
+       "Alkane",
+       "Formula",
+       "Molar mass (u)",
+       "Boiling point (°C)"
+      ],
+      "rows": [
+       [
+        "Methane",
+        "CH₄",
+        "16",
+        "−161.5"
+       ],
+       [
+        "Ethane",
+        "C₂H₆",
+        "30",
+        "−88.6"
+       ],
+       [
+        "Propane",
+        "C₃H₈",
+        "44",
+        "−42.1"
+       ],
+       [
+        "Butane",
+        "C₄H₁₀",
+        "58",
+        "−0.5"
+       ],
+       [
+        "Pentane",
+        "C₅H₁₂",
+        "72",
+        "36.1"
+       ]
+      ]
+     }
+    },
+    {
+     "p": "All of them burn in oxygen to give CO₂ and H₂O, and all undergo substitution with chlorine in light: similar chemistry. The boiling point rises steadily as the chain grows, because larger molecules attract one another more strongly. Boiling points at 1 atm (CRC Handbook)."
+    }
+   ]
+  }
+ ],
+ "quiz": [
+  {
+   "q": "Successive members of a homologous series differ by:",
+   "options": [
+    "CH",
+    "CH₂",
+    "CH₃",
+    "C₂H₄"
+   ],
+   "answer": 1,
+   "explain": "One carbon and two hydrogens: –CH₂–."
+  },
+  {
+   "q": "The molar mass difference between successive homologues is:",
+   "options": [
+    "12 u",
+    "14 u",
+    "16 u",
+    "28 u"
+   ],
+   "answer": 1,
+   "explain": "CH₂ = 12 + 2 × 1 = 14 u."
+  },
+  {
+   "q": "Which is the next member after C₃H₈ in the alkane series?",
+   "options": [
+    "C₄H₈",
+    "C₄H₁₀",
+    "C₃H₁₀",
+    "C₅H₁₂"
+   ],
+   "answer": 1,
+   "explain": "Add CH₂: C₃H₈ + CH₂ = C₄H₁₀, which fits CₙH₂ₙ₊₂."
+  },
+  {
+   "q": "Members of a homologous series have:",
+   "options": [
+    "identical chemical properties",
+    "similar chemical properties",
+    "the same boiling point",
+    "different functional groups"
+   ],
+   "answer": 1,
+   "explain": "Similar, not identical: the same functional group; physical properties change gradually."
+  },
+  {
+   "q": "Which pair belongs to the same homologous series?",
+   "options": [
+    "C₂H₆ and C₂H₅OH",
+    "CH₄ and C₂H₄",
+    "CH₃OH and C₂H₅OH",
+    "CH₃COOH and C₂H₅OH"
+   ],
+   "answer": 2,
+   "explain": "Both are alcohols and differ by one CH₂."
+  }
+ ],
+ "simulation": {
+  "decision": "REQUIRED",
+  "reason": "Predicting the next member is a test students can run on families the reel never shows (alcohols and carboxylic acids), and the pair test makes them apply all three conditions, including spotting that CH₄ and C₂H₄ or C₂H₆ and C₂H₅OH are not homologues, which the reel can only state.",
+  "status": "pass",
+  "path": "sim.html",
+  "objective": "Predict each next member of a series, see the +CH₂, +14 u pattern and the rising boiling point, and decide whether two compounds are homologues.",
+  "instructions": [
+   "Choose a family: alkanes, alcohols or carboxylic acids.",
+   "Predict the formula of the next member.",
+   "Add CH₂ and check your prediction.",
+   "Read the table: formula, molar mass and boiling point.",
+   "In part 4, decide whether each pair is in the same series."
+  ],
+  "qa": "tests/learn_sims.js (2026-11-08)"
+ },
+ "related": [
+  "functional-groups",
+  "classifying-organic-compounds"
+ ]
+}

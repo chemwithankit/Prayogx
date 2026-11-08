@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="sim-id" content="LEARN-C11-CHE-SERIES-BUILDER-SIM">
+<title>Series builder · PrayogX Learn simulation</title>
+<style>
+:root{--bg:#f4f4f1;--card:#fcfcfb;--line:#d9d9d4;--ink:#0b0b0b;--mut:#52514e;--acc:#2a78d6;--grp:#b26a00;--good:#00743f;--bad:#b3261e;--bar:#2a78d6;--empty:#ececea}
+@media (prefers-color-scheme:dark){:root{--bg:#111110;--card:#1a1a19;--line:#34342f;--ink:#fff;--mut:#c3c2b7;--acc:#3987e5;--grp:#ffd60a;--good:#3fae7a;--bad:#ff8a80;--bar:#3987e5;--empty:#2a2a28}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+.wrap{max-width:980px;margin:0 auto;padding:12px}
+h1{font-size:17px;margin:2px 0 8px}
+h2{font-size:15px;margin:0 0 6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin-top:10px}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:6px}
+button{font:inherit;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:9px;padding:6px 10px;cursor:pointer;min-height:44px}
+button[aria-pressed="true"]{background:var(--acc);border-color:var(--acc);color:#fff;font-weight:650}
+button:disabled{opacity:.45;cursor:not-allowed}
+.gen{font-size:14px;color:var(--mut)}
+.gen b{color:var(--grp)}
+.mol{text-align:center;margin-top:10px;font-size:26px;font-weight:750;overflow-wrap:anywhere}
+.chain{text-align:center;font-size:16px;overflow-wrap:anywhere}
+.chain .u{color:var(--grp);font-weight:700}
+.meta{text-align:center;font-size:14px;color:var(--mut)}
+.verdict{margin-top:8px;padding:8px 10px;border-radius:10px;border:1px solid var(--line);background:var(--bg);min-height:3em;overflow-wrap:anywhere}
+.tw{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:13px}
+th,td{border:1px solid var(--line);padding:5px 6px;text-align:center}
+td.d{color:var(--grp);font-weight:700}
+.bp{display:flex;align-items:center;gap:6px}
+.bp i{display:block;height:10px;border-radius:5px;background:var(--bar);min-width:2px}
+.small{font-size:13px;color:var(--mut)}
+.ok{color:var(--good);font-weight:700}.no{color:var(--bad);font-weight:700}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>Series builder: what stays the same, what changes?</h1>
+<div class="card">
+<h2>1. Choose a family</h2>
+<div class="row" id="fams"></div>
+<p class="gen" id="gen"></p>
+</div>
+<div class="card">
+<h2>2. Grow the chain one CH₂ at a time</h2>
+<div class="mol" id="mol"></div>
+<div class="chain" id="chain"></div>
+<div class="meta" id="meta"></div>
+<div class="row"><span class="small">Predict the next member:</span><span class="row" id="preds" style="margin:0"></span></div>
+<div class="row"><button type="button" id="add">Add CH₂ ▸</button><button type="button" id="back">◂ Remove CH₂</button><button type="button" id="again">Start again</button></div>
+<div class="verdict" id="verdict" aria-live="polite"></div>
+</div>
+<div class="card">
+<h2>3. The series so far</h2>
+<div class="tw"><table><thead><tr><th>Member</th><th>Formula</th><th>Molar mass (u)</th><th>Change</th><th>Boiling point (°C)</th></tr></thead><tbody id="tab"></tbody></table></div>
+<p class="small">Boiling points at 1 atm (CRC Handbook), straight-chain members. Molar masses with C = 12, H = 1, O = 16.</p>
+</div>
+<div class="card">
+<h2>4. Same series or not?</h2>
+<div class="mol" id="pair" style="font-size:22px"></div>
+<div class="row"><button type="button" id="yes">Same series</button><button type="button" id="nope">Not the same series</button><button type="button" id="next">Next pair ▸</button></div>
+<div class="verdict" id="pv" aria-live="polite"></div>
+<p class="small" id="score"></p>
+</div>
+<p class="small">A homologous series: the same functional group, the same general formula, and each member differing from the next by –CH₂– (14 u). Chemical properties are similar; physical properties such as boiling point change gradually.</p>
+</div>
+<script>
+(function () {
+  "use strict";
+  var SUB = "₀₁₂₃₄₅₆₇₈₉";
+  function sub(n) { var s = String(n), o = "", i; for (i = 0; i < s.length; i++) { o += SUB.charAt(+s.charAt(i)); } return n === 1 ? "" : o; }
+  // c, h, o: molecular-formula counts of the member with n carbon atoms
+  var F = {
+    alkane: { label: "Alkanes", gen: "CₙH₂ₙ₊₂", group: "no functional group: only C–C and C–H single bonds",
+      cnt: function (n) { return { c: n, h: 2 * n + 2, o: 0 }; },
+      f: function (n) { return n === 1 ? "CH₄" : "C" + sub(n) + "H" + sub(2 * n + 2); },
+      names: ["Methane", "Ethane", "Propane", "Butane", "Pentane", "Hexane"],
+      chain: function (n) { if (n === 1) { return ["CH₄"]; } var a = ["CH₃"], i; for (i = 0; i < n - 2; i++) { a.push("CH₂"); } a.push("CH₃"); return a; },
+      bp: [-161.5, -88.6, -42.1, -0.5, 36.1, 68.7] },
+    alcohol: { label: "Alcohols", gen: "CₙH₂ₙ₊₁OH", group: "–OH",
+      cnt: function (n) { return { c: n, h: 2 * n + 2, o: 1 }; },
+      f: function (n) { return n === 1 ? "CH₃OH" : "C" + sub(n) + "H" + sub(2 * n + 1) + "OH"; },
+      names: ["Methanol", "Ethanol", "Propan-1-ol", "Butan-1-ol", "Pentan-1-ol", "Hexan-1-ol"],
+      chain: function (n) { var a = ["CH₃"], i; for (i = 0; i < n - 1; i++) { a.push("CH₂"); } a.push("OH"); return a; },
+      bp: [64.7, 78.3, 97.2, 117.7, 138.0, 157.6] },
+    acid: { label: "Carboxylic acids", gen: "CₙH₂ₙ₊₁COOH (n = 0, 1, 2 …)", group: "–COOH",
+      cnt: function (n) { return { c: n, h: 2 * n, o: 2 }; },
+      f: function (n) { return n === 1 ? "HCOOH" : n === 2 ? "CH₃COOH" : "C" + sub(n - 1) + "H" + sub(2 * n - 1) + "COOH"; },
+      names: ["Methanoic acid", "Ethanoic acid", "Propanoic acid", "Butanoic acid", "Pentanoic acid", "Hexanoic acid"],
+      chain: function (n) { if (n === 1) { return ["H", "COOH"]; } var a = ["CH₃"], i; for (i = 0; i < n - 2; i++) { a.push("CH₂"); } a.push("COOH"); return a; },
+      bp: [100.8, 117.9, 141.2, 163.8, 186.1, 205.8] }
+  };
+  var FO = ["alkane", "alcohol", "acid"], MAX = 6;
+  function mass(k) { return 12 * k.c + k.h + 16 * k.o; }
+  // the pairs for "same series?": family plus formula counts, judged by the rule, never by a stored answer
+  var PAIRS = [
+    [{ fam: "alcohol", n: 1 }, { fam: "alcohol", n: 3 }],
+    [{ fam: "alkane", n: 2 }, { fam: "alcohol", n: 2 }],
+    [{ fam: "acid", n: 2 }, { fam: "acid", n: 3 }],
+    [{ fam: "alkane", n: 1 }, { fam: "alkene", n: 2, f: "C₂H₄", name: "Ethene", c: 2, h: 4, o: 0 }],
+    [{ fam: "alkane", n: 4 }, { fam: "alkane", n: 6 }]
+  ];
+  function info(m) {
+    if (m.fam === "alkene") { return { fam: "alkene", f: m.f, name: m.name, k: { c: m.c, h: m.h, o: m.o } }; }
+    var d = F[m.fam]; return { fam: m.fam, f: d.f(m.n), name: d.names[m.n - 1], k: d.cnt(m.n) };
+  }
+  function judge(p) {
+    var a = info(p[0]), b = info(p[1]), dc = b.k.c - a.k.c, dh = b.k.h - a.k.h, dO = b.k.o - a.k.o;
+    var same = a.fam === b.fam && dc !== 0 && dh === 2 * dc && dO === 0;
+    return { same: same, a: a, b: b, dc: dc, dh: dh, dO: dO, dm: mass(b.k) - mass(a.k) };
+  }
+  var S, P;
+  function $(id) { return document.getElementById(id); }
+  function fresh() { return { fam: "alkane", n: 1, pred: null, last: "" }; }
+  function freshP() { return { i: 0, ans: null, tried: {} }; }
+  // a formula written the family's way from its carbon count and the H atoms on the chain
+  function fmt(fam, c, hx) {
+    if (fam === "alkane") { return "C" + sub(c) + "H" + sub(hx); }
+    if (fam === "alcohol") { return "C" + sub(c) + "H" + sub(hx) + "OH"; }
+    return c === 1 ? "HCOOH" : "C" + sub(c - 1) + "H" + sub(hx) + "COOH";
+  }
+  function hx(fam, c) { return fam === "alkane" ? 2 * c + 2 : fam === "alcohol" ? 2 * c + 1 : 2 * (c - 1) + 1; }
+  // the next member and two tempting wrong ones: one more C but no more H, and two CH2 at once
+  function choices(fam, n) {
+    var right = F[fam].f(n + 1), w1 = fmt(fam, n + 1, hx(fam, n)), w2 = fmt(fam, n + 2, hx(fam, n + 2));
+    return n % 3 === 0 ? [right, w1, w2] : n % 3 === 1 ? [w1, right, w2] : [w2, w1, right];
+  }
+  function render() {
+    var d = F[S.fam], k = d.cnt(S.n), i, ch = d.chain(S.n), html = "", rows = "";
+    for (i = 0; i < FO.length; i++) { $("f-" + FO[i]).setAttribute("aria-pressed", FO[i] === S.fam ? "true" : "false"); }
+    $("gen").innerHTML = "General formula <b>" + d.gen + "</b> · functional group: " + d.group;
+    $("mol").textContent = d.f(S.n);
+    for (i = 0; i < ch.length; i++) { html += (i ? "–" : "") + (ch[i] === "CH₂" ? '<span class="u">CH₂</span>' : ch[i]); }
+    $("chain").innerHTML = html;
+    $("meta").textContent = d.names[S.n - 1] + " · " + k.c + " C, " + k.h + " H" + (k.o ? ", " + k.o + " O" : "") + " · molar mass " + mass(k) + " u · boils at " + d.bp[S.n - 1] + " °C";
+    var box = $("preds"); box.innerHTML = "";
+    if (S.n < MAX) {
+      var c = choices(S.fam, S.n);
+      for (i = 0; i < c.length; i++) {
+        var b = document.createElement("button"); b.type = "button"; b.id = "p-" + i; b.textContent = c[i];
+        b.setAttribute("aria-pressed", S.pred === c[i] ? "true" : "false");
+        b.onclick = (function (v) { return function () { PX.predict(v); }; }(c[i]));
+        box.appendChild(b);
+      }
+    } else { box.textContent = "the end of this table: six members"; }
+    $("add").disabled = S.pred === null || S.n >= MAX;
+    $("back").disabled = S.n <= 1;
+    $("verdict").textContent = S.last || (S.n < MAX ? "Pick the formula you expect for the next member, then add CH₂." : "Six members built. Compare the table: formula +CH₂, mass +14 u, boiling point rising.");
+    var lo = -180, hi = 220;
+    for (i = 1; i <= S.n; i++) {
+      var ki = d.cnt(i), dm = i > 1 ? mass(ki) - mass(d.cnt(i - 1)) : 0, w = Math.round(100 * (d.bp[i - 1] - lo) / (hi - lo));
+      rows += "<tr><td>" + d.names[i - 1] + "</td><td>" + d.f(i) + "</td><td>" + mass(ki) + "</td><td class=\"d\">" + (i > 1 ? "+CH₂ (+" + dm + " u)" : "—") +
+        "</td><td><div class=\"bp\"><i style=\"width:" + w + "px\"></i>" + d.bp[i - 1] + "</div></td></tr>";
+    }
+    $("tab").innerHTML = rows;
+    var p = PAIRS[P.i], a = info(p[0]), bb = info(p[1]);
+    $("pair").textContent = a.f + "  and  " + bb.f;
+    $("yes").setAttribute("aria-pressed", P.ans === true ? "true" : "false");
+    $("nope").setAttribute("aria-pressed", P.ans === false ? "true" : "false");
+    if (P.ans === null) { $("pv").textContent = "Same functional group? Same general formula? Do they differ by whole CH₂ units?"; }
+    else {
+      var j = judge(p), right = P.ans === j.same, why;
+      if (j.same) { why = a.name + " and " + bb.name + " are both " + F[j.a.fam].label.toLowerCase() + ": they differ by " + Math.abs(j.dc) + " CH₂ (" + Math.abs(j.dm) + " u)."; }
+      else {
+        why = a.name + " and " + bb.name + " are in different families: " + (j.dO ? "one carries –OH, a different functional group." : "C₂H₄ has a C=C double bond (an alkene, CₙH₂ₙ).") +
+          " They differ by " + [j.dc ? j.dc + " C" : "", j.dh ? j.dh + " H" : "", j.dO ? j.dO + " O" : ""].filter(Boolean).join(" and ") + ", not by whole CH₂ units.";
+      }
+      $("pv").innerHTML = '<span class="' + (right ? "ok" : "no") + '">' + (right ? "Right." : "Not quite.") + "</span> " + why;
+    }
+    var n2 = 0, r2 = 0, key;
+    for (key in P.tried) { if (P.tried.hasOwnProperty(key)) { n2++; if (P.tried[key]) { r2++; } } }
+    $("score").textContent = n2 ? r2 + " of " + n2 + " pairs right on the first try." : "";
+  }
+  window.PX = {
+    family: function (f) { S.fam = f; S.n = 1; S.pred = null; S.last = ""; render(); },
+    predict: function (v) { S.pred = v; S.last = ""; render(); },
+    add: function () {
+      if (S.pred === null || S.n >= MAX) { return; }
+      var d = F[S.fam], right = d.f(S.n + 1), was = d.f(S.n), good = S.pred === right;
+      S.n++; S.pred = null;
+      S.last = (good ? "Right: " : "Not quite: ") + was + " + CH₂ = " + right + ". One more C and two more H, so the mass rises by 14 u, and the boiling point goes from " + d.bp[S.n - 2] + " °C to " + d.bp[S.n - 1] + " °C.";
+      render();
+    },
+    remove: function () { if (S.n > 1) { S.n--; S.pred = null; S.last = ""; render(); } },
+    answer: function (yes) { P.ans = yes; if (!P.tried.hasOwnProperty(P.i)) { P.tried[P.i] = yes === judge(PAIRS[P.i]).same; } render(); },
+    nextPair: function () { P.i = (P.i + 1) % PAIRS.length; P.ans = null; render(); },
+    reset: function () { S = fresh(); P = freshP(); render(); },
+    state: function () {
+      var d = F[S.fam], k = d.cnt(S.n), prev = S.n > 1 ? d.cnt(S.n - 1) : null, j = judge(PAIRS[P.i]);
+      return { family: S.fam, n: S.n, formula: d.f(S.n), name: d.names[S.n - 1], c: k.c, h: k.h, o: k.o, mass: mass(k), bp: d.bp[S.n - 1],
+        dC: prev ? k.c - prev.c : null, dH: prev ? k.h - prev.h : null, dMass: prev ? mass(k) - mass(prev) : null,
+        pred: S.pred, canAdd: !$("add").disabled, pair: P.i, pairSame: j.same, pairDC: j.dc, pairDM: j.dm, answered: P.ans };
+    },
+    pairs: function () { return PAIRS.length; }
+  };
+  (function build() {
+    var i, b;
+    function add(box, id, txt, fn) { b = document.createElement("button"); b.type = "button"; b.id = id; b.textContent = txt; b.onclick = fn; $(box).appendChild(b); }
+    function ff(k) { return function () { PX.family(k); }; }
+    for (i = 0; i < FO.length; i++) { add("fams", "f-" + FO[i], F[FO[i]].label, ff(FO[i])); }
+    $("add").onclick = function () { PX.add(); };
+    $("back").onclick = function () { PX.remove(); };
+    $("again").onclick = function () { PX.reset(); };
+    $("yes").onclick = function () { PX.answer(true); };
+    $("nope").onclick = function () { PX.answer(false); };
+    $("next").onclick = function () { PX.nextPair(); };
+    S = fresh(); P = freshP(); render();
+  }());
+}());
+</script>
+</body>
+</html>

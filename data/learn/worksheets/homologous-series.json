@@ -1,0 +1,156 @@
+{
+ "slug": "homologous-series",
+ "title": "Homologous Series",
+ "class": 11,
+ "subject": "Chemistry",
+ "chapter": "Organic Chemistry – Some Basic Principles and Techniques",
+ "objective": "Methane, ethane, propane, butane: four different compounds, one family. How each member differs from the next by one CH₂ unit, and what that means for their properties.",
+ "fill": [
+  {
+   "q": "Successive members of a homologous series differ by ____.",
+   "a": "CH₂"
+  },
+  {
+   "q": "Each member of a homologous series is called a ____.",
+   "a": "homologue"
+  },
+  {
+   "q": "The general formula of the alkanes is ____.",
+   "a": "CₙH₂ₙ₊₂"
+  },
+  {
+   "q": "Successive homologues differ in molar mass by ____ u.",
+   "a": "14"
+  },
+  {
+   "q": "Members of a homologous series have the same ____ group.",
+   "a": "functional"
+  }
+ ],
+ "tf": [
+  {
+   "q": "Members of a homologous series have identical chemical properties.",
+   "a": false,
+   "explain": "They are similar, not identical."
+  },
+  {
+   "q": "The boiling point of straight-chain alkanes rises as the chain gets longer.",
+   "a": true,
+   "explain": "Methane −161.5 °C, butane −0.5 °C."
+  },
+  {
+   "q": "CH₄ and C₂H₄ belong to the same homologous series.",
+   "a": false,
+   "explain": "C₂H₄ is an alkene (CₙH₂ₙ); they differ by C, not CH₂."
+  },
+  {
+   "q": "Methanol and propan-1-ol belong to the same homologous series.",
+   "a": true,
+   "explain": "Both are alcohols and differ by 2 CH₂."
+  }
+ ],
+ "ar": [
+  {
+   "a": "Ethane and propane are members of the same homologous series.",
+   "r": "They have the same general formula and differ by one CH₂ unit.",
+   "answer": 0,
+   "explain": "R explains A."
+  },
+  {
+   "a": "Butane has a higher boiling point than ethane.",
+   "r": "Members of a homologous series have similar chemical properties.",
+   "answer": 1,
+   "explain": "Both true; R does not explain A: the larger molecule attracts its neighbours more strongly."
+  }
+ ],
+ "mcq": [
+  {
+   "q": "The next member after C₂H₅OH in its series is:",
+   "options": [
+    "C₃H₇OH",
+    "C₂H₇OH",
+    "C₃H₅OH",
+    "C₄H₉OH"
+   ],
+   "answer": 0,
+   "explain": "Add CH₂."
+  },
+  {
+   "q": "Which is not an alkane?",
+   "options": [
+    "C₃H₈",
+    "C₅H₁₂",
+    "C₄H₈",
+    "C₆H₁₄"
+   ],
+   "answer": 2,
+   "explain": "C₄H₈ does not fit CₙH₂ₙ₊₂."
+  },
+  {
+   "q": "Members of a homologous series show a gradual change in:",
+   "options": [
+    "functional group",
+    "general formula",
+    "boiling point",
+    "type of bonds"
+   ],
+   "answer": 2,
+   "explain": "Physical properties change gradually."
+  },
+  {
+   "q": "Which pair are homologues?",
+   "options": [
+    "CH₃COOH and C₂H₅COOH",
+    "C₂H₆ and C₂H₅OH",
+    "CH₄ and C₂H₄",
+    "CH₃OH and CH₃COOH"
+   ],
+   "answer": 0,
+   "explain": "Same group, differ by one CH₂."
+  }
+ ],
+ "num": [
+  {
+   "q": "Find the molar mass of the fifth member of the alkane series (C = 12, H = 1).",
+   "steps": [
+    "C₅H₁₂: 5 × 12 + 12 × 1"
+   ],
+   "answer": "72"
+  },
+  {
+   "q": "How many CH₂ units separate CH₃OH and C₄H₉OH?",
+   "steps": [
+    "C₄H₉OH − CH₃OH = C₃H₆ = 3 CH₂"
+   ],
+   "answer": "3"
+  }
+ ],
+ "short": [
+  {
+   "q": "Write the formulas of the first four alkanes and show the common difference.",
+   "lines": 5,
+   "solution": "CH₄, C₂H₆, C₃H₈, C₄H₁₀; each differs from the next by CH₂ (14 u)"
+  }
+ ],
+ "match": {
+  "left": [
+   "Same functional group",
+   "Longer carbon chain",
+   "Successive members",
+   "Alkanes"
+  ],
+  "right": [
+   "CₙH₂ₙ₊₂",
+   "Differ by CH₂",
+   "Similar chemical properties",
+   "Higher boiling point"
+  ],
+  "answer": [
+   2,
+   3,
+   1,
+   0
+  ],
+  "explain": "Each feature matches its consequence or formula."
+ }
+}

@@ -652,6 +652,26 @@ for (const key of Object.keys(MATERIALS)) FD[key] = fdContact(SKIN, Object.assig
       ok(`twofates ${tag}: no run before a prediction`, czLock === false);
       const ov11 = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
       ok(`twofates ${tag}: no horizontal overflow`, ov11 <= 0, ov11);
+      // ---- series builder: next member = previous + CH2, checked against an independent atom count; pairs by the three conditions
+      await page.goto(base + 'homologous-series/sim.html', { waitUntil: 'load' });
+      const HS = { alkane: [2, 2, 0], alcohol: [2, 2, 1], acid: [2, 0, 2] }; // H = 2n + a, O = o  ->  [step H, a, o]
+      let hsOk = true, hsBad = [];
+      for (const fam of Object.keys(HS)) {
+        const rows = await page.evaluate(f => { PX.reset(); PX.family(f); const out = [PX.state()]; for (let i = 0; i < 5; i++) { PX.predict(document.getElementById('p-0').textContent); PX.add(); out.push(PX.state()); } return out; }, fam);
+        rows.forEach((st, i) => {
+          const n = i + 1, h = 2 * n + HS[fam][1], o = HS[fam][2], m = 12 * n + h + 16 * o;
+          const good = st.n === n && st.c === n && st.h === h && st.o === o && st.mass === m && (i === 0 || (st.dC === 1 && st.dH === 2 && st.dMass === 14)) && (i === 0 || st.bp > rows[i - 1].bp);
+          if (!good) { hsOk = false; hsBad.push(`${fam}${n}:${st.formula}/${st.mass}`); }
+        });
+      }
+      ok(`seriesbuilder ${tag}: 18 members match CnH(2n+a) counts, +CH2 = +14 u each step, boiling point rising`, hsOk, hsBad.join(' '));
+      const hsPairs = await page.evaluate(() => { PX.reset(); const r = []; for (let i = 0; i < PX.pairs(); i++) { r.push([PX.state().pairSame, PX.state().pairDC]); PX.nextPair(); } return r; });
+      ok(`seriesbuilder ${tag}: pairs judged by the rule (MeOH/PrOH yes 2, ethane/ethanol no, acids yes 1, CH4/C2H4 no, butane/hexane yes 2)`,
+        JSON.stringify(hsPairs) === JSON.stringify([[true, 2], [false, 0], [true, 1], [false, 1], [true, 2]]), JSON.stringify(hsPairs));
+      const hsLock = await page.evaluate(() => { PX.reset(); PX.add(); return [PX.state().n, PX.state().canAdd]; });
+      ok(`seriesbuilder ${tag}: no CH2 added before a prediction`, hsLock[0] === 1 && hsLock[1] === false, hsLock.join(','));
+      const ov12 = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
+      ok(`seriesbuilder ${tag}: no horizontal overflow`, ov12 <= 0, ov12);
       ok(`all sims ${tag}: no console errors`, errs.length === 0, errs.join(' | '));
       await ctx.close();
     }
