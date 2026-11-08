@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="sim-id" content="LEARN-C12-CHE-CARBONYL-DETECTIVE-SIM">
+<title>Carbonyl detective · PrayogX Learn simulation</title>
+<style>
+:root{--bg:#f4f4f1;--card:#fcfcfb;--line:#d9d9d4;--ink:#0b0b0b;--mut:#52514e;--acc:#2a78d6;--grp:#b26a00;--good:#00743f;--bad:#b3261e;--empty:#ececea}
+@media (prefers-color-scheme:dark){:root{--bg:#111110;--card:#1a1a19;--line:#34342f;--ink:#fff;--mut:#c3c2b7;--acc:#3987e5;--grp:#ffd60a;--good:#3fae7a;--bad:#ff8a80;--empty:#2a2a28}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+.wrap{max-width:980px;margin:0 auto;padding:12px}
+h1{font-size:17px;margin:2px 0 8px}
+h2{font-size:15px;margin:0 0 6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin-top:10px}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:6px}
+button{font:inherit;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:9px;padding:6px 10px;cursor:pointer;min-height:44px}
+button[aria-pressed="true"]{background:var(--acc);border-color:var(--acc);color:#fff;font-weight:650}
+button:disabled{opacity:.45;cursor:not-allowed}
+.mys{text-align:center;font-size:22px;font-weight:750;margin-top:6px}
+.tubes{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:8px}
+.tube{width:92px;text-align:center;font-size:13px}
+.tube svg{width:56px;height:150px;display:block;margin:0 auto}
+.res{min-height:2.6em;color:var(--mut)}
+.verdict{margin-top:8px;padding:8px 10px;border-radius:10px;border:1px solid var(--line);background:var(--bg);min-height:3em;overflow-wrap:anywhere}
+.small{font-size:13px;color:var(--mut)}
+.ok{color:var(--good);font-weight:700}.no{color:var(--bad);font-weight:700}
+.tw{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:13px}
+th,td{border:1px solid var(--line);padding:5px 6px;text-align:center}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>Carbonyl detective: aldehyde or ketone?</h1>
+<div class="card">
+<h2>1. Your mystery compound</h2>
+<div class="mys" id="mys"></div>
+<p class="small" id="clue"></p>
+<div class="row"><button type="button" id="prevm">◂ Previous</button><button type="button" id="nextm">Next mystery ▸</button></div>
+</div>
+<div class="card">
+<h2>2. Run tests (as few as you need)</h2>
+<div class="row" id="tests"></div>
+<div class="tubes" id="tubes"></div>
+</div>
+<div class="card">
+<h2>3. Your verdict</h2>
+<div class="row" id="ids"></div>
+<div class="verdict" id="verdict" aria-live="polite"></div>
+<p class="small" id="score"></p>
+</div>
+<div class="card">
+<h2>What each test detects</h2>
+<div class="tw"><table><thead><tr><th>Test</th><th>Positive when</th><th>Sign</th></tr></thead><tbody>
+<tr><td>Tollens' ([Ag(NH₃)₂]⁺)</td><td>the compound is an aldehyde (H on the C=O carbon)</td><td>silver mirror</td></tr>
+<tr><td>Fehling's (Cu²⁺, blue)</td><td>the compound is an <b>aliphatic</b> aldehyde</td><td>brick-red Cu₂O</td></tr>
+<tr><td>Iodoform (I₂ / NaOH)</td><td>the compound has a CH₃CO– group (methyl ketones, ethanal)</td><td>yellow CHI₃</td></tr>
+</tbody></table></div>
+<p class="small">Results follow these general rules under ordinary test conditions. Some special compounds, such as α-hydroxy ketones, can also reduce Tollens' and Fehling's reagents.</p>
+</div>
+</div>
+<script>
+(function () {
+  "use strict";
+  // each compound by its structure: hOnCO = H atoms on the carbonyl carbon; arom = aromatic ring on the carbonyl carbon; ch3co = a CH3 on the carbonyl carbon
+  var M = [
+    { f: "CH₃CH₂CHO", n: "Propanal", hOnCO: 1, arom: false, ch3co: false },
+    { f: "CH₃COCH₃", n: "Propanone", hOnCO: 0, arom: false, ch3co: true },
+    { f: "C₆H₅CHO", n: "Benzaldehyde", hOnCO: 1, arom: true, ch3co: false },
+    { f: "CH₃CHO", n: "Ethanal", hOnCO: 1, arom: false, ch3co: true },
+    { f: "CH₃CH₂COCH₂CH₃", n: "Pentan-3-one", hOnCO: 0, arom: false, ch3co: false },
+    { f: "C₆H₅COCH₃", n: "Acetophenone", hOnCO: 0, arom: true, ch3co: true }
+  ];
+  var TESTS = [["tollens", "Tollens'"], ["fehling", "Fehling's"], ["iodoform", "Iodoform"]];
+  function result(m, t) {
+    var ald = m.hOnCO > 0;
+    if (t === "tollens") { return ald; }
+    if (t === "fehling") { return ald && !m.arom; }
+    return m.ch3co;
+  }
+  var S;
+  function $(id) { return document.getElementById(id); }
+  function fresh() { return { i: 0, done: {}, guess: null, firstTry: {} }; }
+  function tubeSVG(t, pos, ran) {
+    var liq = t === "fehling" ? (ran && pos ? "#9fb7d6" : "#2f7bea") : t === "iodoform" ? "#efe2bd" : "#d6e4f2";
+    var extra = "";
+    if (ran && pos && t === "tollens") { extra = '<rect x="4" y="60" width="48" height="84" fill="#c9d1da"/><rect x="12" y="66" width="5" height="70" fill="#fff" opacity=".8"/>'; }
+    if (ran && pos && t === "fehling") { extra = '<rect x="6" y="122" width="44" height="20" rx="8" fill="#b5452b"/>'; }
+    if (ran && pos && t === "iodoform") { extra = '<rect x="6" y="122" width="44" height="20" rx="8" fill="#ffd21f"/>'; }
+    return '<svg viewBox="0 0 56 150" aria-hidden="true"><path d="M4 4 L4 122 A24 24 0 0 0 52 122 L52 4" fill="none" stroke="currentColor" stroke-width="3"/>' +
+      '<rect x="5" y="60" width="46" height="84" fill="' + liq + '" opacity=".55"/>' + extra + "</svg>";
+  }
+  function sign(t, pos) {
+    if (!pos) { return t === "fehling" ? "stays blue: negative" : "no change: negative"; }
+    return t === "tollens" ? "silver mirror: positive" : t === "fehling" ? "brick-red Cu₂O: positive" : "yellow CHI₃: positive";
+  }
+  function render() {
+    var m = M[S.i], i, html = "", k;
+    $("mys").textContent = "Mystery " + (S.i + 1) + " of " + M.length + ": " + m.f;
+    $("clue").textContent = "A colourless carbonyl compound. Is it an aldehyde or a ketone, and which tests show it?";
+    for (i = 0; i < TESTS.length; i++) {
+      k = TESTS[i][0];
+      $("t-" + k).setAttribute("aria-pressed", S.done[k] ? "true" : "false");
+      html += '<div class="tube">' + tubeSVG(k, result(m, k), !!S.done[k]) + "<b>" + TESTS[i][1] + '</b><div class="res">' + (S.done[k] ? sign(k, result(m, k)) : "not run") + "</div></div>";
+    }
+    $("tubes").innerHTML = html;
+    var ran = 0; for (k in S.done) { if (S.done.hasOwnProperty(k)) { ran++; } }
+    $("g-ald").disabled = ran === 0; $("g-ket").disabled = ran === 0;
+    $("g-ald").setAttribute("aria-pressed", S.guess === "aldehyde" ? "true" : "false");
+    $("g-ket").setAttribute("aria-pressed", S.guess === "ketone" ? "true" : "false");
+    if (S.guess === null) { $("verdict").textContent = ran === 0 ? "Run at least one test first." : "Decide: aldehyde or ketone?"; }
+    else {
+      var truth = m.hOnCO > 0 ? "aldehyde" : "ketone", good = S.guess === truth, why;
+      why = m.n + " is " + (truth === "aldehyde" ? "an aldehyde: there is an H on the carbonyl carbon, so Tollens' gives a silver mirror." : "a ketone: both sides of C=O are carbon, so Tollens' gives no mirror.");
+      if (truth === "aldehyde" && m.arom) { why += " It is aromatic, so Fehling's stays blue: Fehling's alone would have fooled you."; }
+      if (m.ch3co) { why += " It has a CH₃CO– group, so iodoform is positive" + (truth === "aldehyde" ? " even though it is an aldehyde (the ethanal exception)." : "."); }
+      else { why += " No CH₃CO– group, so iodoform is negative" + (truth === "ketone" ? ", even though it is a ketone." : "."); }
+      $("verdict").innerHTML = '<span class="' + (good ? "ok" : "no") + '">' + (good ? "Solved." : "Not quite.") + "</span> " + why;
+    }
+    var n = 0, r = 0; for (k in S.firstTry) { if (S.firstTry.hasOwnProperty(k)) { n++; if (S.firstTry[k]) { r++; } } }
+    $("score").textContent = n ? r + " of " + n + " mysteries solved on the first verdict." : "";
+  }
+  window.PX = {
+    mystery: function (i) { S.i = (i + M.length) % M.length; S.done = {}; S.guess = null; render(); },
+    test: function (t) { S.done[t] = true; render(); },
+    verdict: function (g) {
+      var ran = 0, k; for (k in S.done) { if (S.done.hasOwnProperty(k)) { ran++; } }
+      if (!ran) { return; }
+      S.guess = g; if (!S.firstTry.hasOwnProperty(S.i)) { S.firstTry[S.i] = g === (M[S.i].hOnCO > 0 ? "aldehyde" : "ketone"); } render();
+    },
+    reset: function () { S = fresh(); render(); },
+    count: function () { return M.length; },
+    state: function () {
+      var m = M[S.i];
+      return { i: S.i, formula: m.f, name: m.n, type: m.hOnCO > 0 ? "aldehyde" : "ketone", tollens: result(m, "tollens"), fehling: result(m, "fehling"), iodoform: result(m, "iodoform"),
+        ran: Object.keys(S.done), guess: S.guess };
+    }
+  };
+  (function build() {
+    var i, b;
+    function add(box, id, txt, fn) { b = document.createElement("button"); b.type = "button"; b.id = id; b.textContent = txt; b.onclick = fn; $(box).appendChild(b); }
+    function tf(k) { return function () { PX.test(k); }; }
+    for (i = 0; i < TESTS.length; i++) { add("tests", "t-" + TESTS[i][0], "Run " + TESTS[i][1], tf(TESTS[i][0])); }
+    add("ids", "g-ald", "Aldehyde", function () { PX.verdict("aldehyde"); });
+    add("ids", "g-ket", "Ketone", function () { PX.verdict("ketone"); });
+    $("prevm").onclick = function () { PX.mystery(S.i - 1); };
+    $("nextm").onclick = function () { PX.mystery(S.i + 1); };
+    S = fresh(); render();
+  }());
+}());
+</script>
+</body>
+</html>

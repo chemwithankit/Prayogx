@@ -1,0 +1,186 @@
+{
+ "id": "LEARN-C12-CHE-DISTINGUISH-ALD-KET",
+ "slug": "distinguishing-aldehydes-ketones",
+ "status": "ready",
+ "class": 12,
+ "subject": "Chemistry",
+ "chapter": "Aldehydes, Ketones and Carboxylic Acids",
+ "topic": "Distinguishing tests for aldehydes and ketones",
+ "title": "Aldehyde or Ketone? The Distinguishing Tests",
+ "series": 435,
+ "studioJob": "carbonyl-mystery",
+ "reelId": "STUDIO-CARBONYL-MYSTERY",
+ "summary": "Two colourless compounds, both with C=O. How Tollens', Fehling's and the iodoform test tell an aldehyde from a ketone, and why they work.",
+ "video": {
+  "youtubeId": "cPw9RUfPXCw"
+ },
+ "notes": {
+  "pdf": "notes.pdf",
+  "title": "12 – Distinguishing Aldehydes and Ketones",
+  "driveDoc": "1r2cT4sWAcE21vSaRTaU5Y5Mhj4SnrqxF-X2XXbPYvKs"
+ },
+ "thumb": "thumb.jpg",
+ "tags": [
+  "Tollens test",
+  "silver mirror",
+  "Fehling test",
+  "iodoform test",
+  "aldehyde vs ketone",
+  "redox"
+ ],
+ "keyPoints": [
+  "**Aldehyde:** H on the carbonyl carbon (R–CHO). **Ketone:** carbon on both sides (R–CO–R′).",
+  "Aldehydes are **easily oxidised**; ketones **resist mild oxidation**. The tests use this difference.",
+  "**Tollens' test:** aldehydes reduce Ag⁺ to metallic Ag, a **silver mirror**. Ketones generally do not.",
+  "**Fehling's test:** **aliphatic** aldehydes reduce blue Cu²⁺ to **brick-red Cu₂O**. Aromatic aldehydes (benzaldehyde) generally do not.",
+  "**Iodoform test (I₂/NaOH):** compounds with **CH₃CO–** give yellow **CHI₃**: methyl ketones, and **ethanal**, the one aldehyde that does."
+ ],
+ "sections": [
+  {
+   "h": "Why the silver mirror forms",
+   "blocks": [
+    {
+     "p": "In Tollens' test the aldehyde is oxidised to a carboxylate ion while silver ions gain electrons and are reduced to metallic silver, which coats the glass:"
+    },
+    {
+     "p": "RCHO + 2[Ag(NH₃)₂]⁺ + 3OH⁻ → RCOO⁻ + 2Ag + 4NH₃ + 2H₂O"
+    },
+    {
+     "p": "Fehling's test works the same way with copper: RCHO + 2Cu²⁺ + 5OH⁻ → RCOO⁻ + Cu₂O + 3H₂O."
+    }
+   ]
+  },
+  {
+   "h": "Choosing tests",
+   "blocks": [
+    {
+     "table": {
+      "head": [
+       "Compound",
+       "Tollens'",
+       "Fehling's",
+       "Iodoform"
+      ],
+      "rows": [
+       [
+        "Propanal CH₃CH₂CHO",
+        "+",
+        "+",
+        "–"
+       ],
+       [
+        "Benzaldehyde C₆H₅CHO",
+        "+",
+        "–",
+        "–"
+       ],
+       [
+        "Ethanal CH₃CHO",
+        "+",
+        "+",
+        "+"
+       ],
+       [
+        "Propanone CH₃COCH₃",
+        "–",
+        "–",
+        "+"
+       ],
+       [
+        "Pentan-3-one C₂H₅COC₂H₅",
+        "–",
+        "–",
+        "–"
+       ],
+       [
+        "Acetophenone C₆H₅COCH₃",
+        "–",
+        "–",
+        "+"
+       ]
+      ]
+     }
+    },
+    {
+     "p": "Start with Tollens' for aldehyde versus ketone; use Fehling's to separate aliphatic from aromatic aldehydes, and iodoform to find a CH₃CO– group. Results are general rules under ordinary conditions; α-hydroxy ketones are an exception to the Tollens'/Fehling's rule."
+    }
+   ]
+  }
+ ],
+ "quiz": [
+  {
+   "q": "Tollens' reagent gives a silver mirror with:",
+   "options": [
+    "propanone",
+    "propanal",
+    "pentan-3-one",
+    "acetophenone"
+   ],
+   "answer": 1,
+   "explain": "Propanal is an aldehyde; aldehydes reduce Ag⁺ to Ag."
+  },
+  {
+   "q": "In Tollens' test, silver ions are:",
+   "options": [
+    "oxidised",
+    "reduced",
+    "unchanged",
+    "precipitated as AgCl"
+   ],
+   "answer": 1,
+   "explain": "Ag⁺ gains an electron to become metallic Ag."
+  },
+  {
+   "q": "Which aldehyde does NOT give Fehling's test?",
+   "options": [
+    "ethanal",
+    "propanal",
+    "benzaldehyde",
+    "methanal"
+   ],
+   "answer": 2,
+   "explain": "Aromatic aldehydes generally do not reduce Fehling's solution."
+  },
+  {
+   "q": "The precipitate in a positive Fehling's test is:",
+   "options": [
+    "Ag",
+    "Cu₂O",
+    "CHI₃",
+    "CuO"
+   ],
+   "answer": 1,
+   "explain": "Brick-red copper(I) oxide."
+  },
+  {
+   "q": "Which aldehyde gives the iodoform test?",
+   "options": [
+    "propanal",
+    "benzaldehyde",
+    "ethanal",
+    "butanal"
+   ],
+   "answer": 2,
+   "explain": "Ethanal has a CH₃CO– group."
+  }
+ ],
+ "simulation": {
+  "decision": "REQUIRED",
+  "reason": "Choosing which tests to run and reading their combined results is a strategy students must practise on compounds the reel never shows (benzaldehyde, pentan-3-one, acetophenone), where a single test misleads: Fehling's alone misses benzaldehyde and iodoform alone flags ethanal.",
+  "status": "pass",
+  "path": "sim.html",
+  "objective": "Identify each mystery carbonyl compound as an aldehyde or a ketone with as few tests as possible, and see why each result follows from its structure.",
+  "instructions": [
+   "Read the mystery compound's formula.",
+   "Run one test and read the tube.",
+   "Run more tests only if you need them.",
+   "Decide: aldehyde or ketone.",
+   "Try benzaldehyde, ethanal and acetophenone: which single test would have fooled you?"
+  ],
+  "qa": "tests/learn_sims.js (2026-11-08)"
+ },
+ "related": [
+  "cannizzaro-reaction",
+  "nucleophilic-addition-carbonyl"
+ ]
+}

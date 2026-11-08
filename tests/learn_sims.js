@@ -672,6 +672,16 @@ for (const key of Object.keys(MATERIALS)) FD[key] = fdContact(SKIN, Object.assig
       ok(`seriesbuilder ${tag}: no CH2 added before a prediction`, hsLock[0] === 1 && hsLock[1] === false, hsLock.join(','));
       const ov12 = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
       ok(`seriesbuilder ${tag}: no horizontal overflow`, ov12 <= 0, ov12);
+      // ---- carbonyl detective: test results from structure (H on C=O, aromatic, CH3CO-), matched to an independent table
+      await page.goto(base + 'distinguishing-aldehydes-ketones/sim.html', { waitUntil: 'load' });
+      const CD = { 'Propanal': [1, 1, 0, 'aldehyde'], 'Propanone': [0, 0, 1, 'ketone'], 'Benzaldehyde': [1, 0, 0, 'aldehyde'], 'Ethanal': [1, 1, 1, 'aldehyde'], 'Pentan-3-one': [0, 0, 0, 'ketone'], 'Acetophenone': [0, 0, 1, 'ketone'] };
+      const cdRows = await page.evaluate(() => { PX.reset(); const r = []; for (let i = 0; i < PX.count(); i++) { PX.mystery(i); r.push(PX.state()); } return r; });
+      const cdBad = cdRows.filter(s => { const w = CD[s.name]; return !w || +s.tollens !== w[0] || +s.fehling !== w[1] || +s.iodoform !== w[2] || s.type !== w[3]; }).map(s => s.name);
+      ok(`detective ${tag}: 6 compounds give the textbook Tollens'/Fehling's/iodoform pattern`, cdRows.length === 6 && cdBad.length === 0, cdBad.join(' '));
+      const cdLock = await page.evaluate(() => { PX.reset(); PX.verdict('aldehyde'); const a = PX.state().guess; PX.test('tollens'); PX.verdict('aldehyde'); return [a, PX.state().guess, document.getElementById('verdict').textContent.indexOf('Solved') >= 0]; });
+      ok(`detective ${tag}: no verdict before a test; a right verdict is marked solved`, cdLock[0] === null && cdLock[1] === 'aldehyde' && cdLock[2] === true, cdLock.join(','));
+      const ov13 = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
+      ok(`detective ${tag}: no horizontal overflow`, ov13 <= 0, ov13);
       ok(`all sims ${tag}: no console errors`, errs.length === 0, errs.join(' | '));
       await ctx.close();
     }

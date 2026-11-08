@@ -1,0 +1,156 @@
+{
+ "slug": "distinguishing-aldehydes-ketones",
+ "title": "Aldehyde or Ketone? The Distinguishing Tests",
+ "class": 12,
+ "subject": "Chemistry",
+ "chapter": "Aldehydes, Ketones and Carboxylic Acids",
+ "objective": "Two colourless compounds, both with C=O. How Tollens', Fehling's and the iodoform test tell an aldehyde from a ketone, and why they work.",
+ "fill": [
+  {
+   "q": "In an aldehyde the carbonyl carbon carries a ____ atom.",
+   "a": "hydrogen"
+  },
+  {
+   "q": "Tollens' test gives a silver ____ with aldehydes.",
+   "a": "mirror"
+  },
+  {
+   "q": "In Fehling's test aliphatic aldehydes give a brick-red precipitate of ____.",
+   "a": "Cu₂O"
+  },
+  {
+   "q": "The yellow precipitate in the iodoform test is ____.",
+   "a": "CHI₃"
+  },
+  {
+   "q": "The iodoform test detects the ____ group.",
+   "a": "CH₃CO–"
+  }
+ ],
+ "tf": [
+  {
+   "q": "Ketones are easily oxidised by Tollens' reagent.",
+   "a": false,
+   "explain": "Ketones resist mild oxidation."
+  },
+  {
+   "q": "Benzaldehyde gives Tollens' test but generally not Fehling's test.",
+   "a": true,
+   "explain": "Aromatic aldehydes do not reduce Fehling's solution."
+  },
+  {
+   "q": "Ethanal gives the iodoform test.",
+   "a": true,
+   "explain": "It has a CH₃CO– group."
+  },
+  {
+   "q": "In Tollens' test the aldehyde is reduced.",
+   "a": false,
+   "explain": "The aldehyde is oxidised; Ag⁺ is reduced."
+  }
+ ],
+ "ar": [
+  {
+   "a": "Aldehydes give Tollens' test.",
+   "r": "Aldehydes are easily oxidised to carboxylate ions.",
+   "answer": 0,
+   "explain": "R explains A."
+  },
+  {
+   "a": "Propanone gives the iodoform test.",
+   "r": "Propanone is an aldehyde.",
+   "answer": 2,
+   "explain": "A is true; propanone is a ketone."
+  }
+ ],
+ "mcq": [
+  {
+   "q": "Which gives a silver mirror?",
+   "options": [
+    "propanone",
+    "propanal",
+    "pentan-3-one",
+    "acetophenone"
+   ],
+   "answer": 1,
+   "explain": "Propanal is an aldehyde."
+  },
+  {
+   "q": "Which gives the iodoform test but not Tollens' test?",
+   "options": [
+    "propanal",
+    "benzaldehyde",
+    "propanone",
+    "methanal"
+   ],
+   "answer": 2,
+   "explain": "A methyl ketone."
+  },
+  {
+   "q": "In a positive Fehling's test, Cu²⁺ is:",
+   "options": [
+    "oxidised to Cu³⁺",
+    "reduced to Cu₂O",
+    "unchanged",
+    "precipitated as CuO"
+   ],
+   "answer": 1,
+   "explain": "Copper(II) to copper(I)."
+  },
+  {
+   "q": "A compound gives Tollens' + , Fehling's – and iodoform – . It is:",
+   "options": [
+    "ethanal",
+    "propanone",
+    "benzaldehyde",
+    "propanal"
+   ],
+   "answer": 2,
+   "explain": "An aromatic aldehyde."
+  }
+ ],
+ "num": [
+  {
+   "q": "How many moles of Ag are deposited when 1 mol of an aldehyde reacts with Tollens' reagent?",
+   "steps": [
+    "RCHO + 2[Ag(NH₃)₂]⁺ + 3OH⁻ → RCOO⁻ + 2Ag + 4NH₃ + 2H₂O"
+   ],
+   "answer": "2"
+  },
+  {
+   "q": "Find the oxidation-state change of copper in Fehling's test.",
+   "steps": [
+    "Cu²⁺ (+2) → Cu₂O (+1)"
+   ],
+   "answer": "1"
+  }
+ ],
+ "short": [
+  {
+   "q": "Suggest tests to distinguish propanal from propanone.",
+   "lines": 5,
+   "solution": "Tollens': propanal gives a silver mirror, propanone does not (also Fehling's: propanal brick red; iodoform: propanone yellow CHI₃)."
+  }
+ ],
+ "match": {
+  "left": [
+   "Tollens' test",
+   "Fehling's test",
+   "Iodoform test",
+   "Ag⁺ in Tollens' test"
+  ],
+  "right": [
+   "Reduced to Ag",
+   "Yellow CHI₃",
+   "Brick-red Cu₂O",
+   "Silver mirror"
+  ],
+  "answer": [
+   3,
+   2,
+   1,
+   0
+  ],
+  "explain": "Each test matches its positive sign."
+ }
+}
