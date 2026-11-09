@@ -138,6 +138,8 @@ def problems(t, slugs, cur):
     v = t["video"]
     if not YT_ID.match(v.get("youtubeId", "")):
         p.append("video.youtubeId is not an 11-character YouTube ID")
+    if v.get("format") not in (None, "long"):  # owner, 2026-11-09: "long" = a regular (long-form) YouTube video, not a Short
+        p.append('video.format must be "long" or absent')
     if v.get("instagram") and not IG_URL.match(v["instagram"]):  # optional since 2026-11-01: Instagram is uploaded by hand
         p.append("video.instagram is not an Instagram reel URL")
     d = os.path.join(OUT, slug)
@@ -470,7 +472,7 @@ def topic_page(t, by_slug, ready, cur):
     <div class="video"><iframe src="https://www.youtube-nocookie.com/embed/%(yt)s?rel=0&amp;modestbranding=1&amp;playsinline=1"
       title="%(title)s: Doodle explainer video" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen"
       allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
-    <p class="video-alt">Video not playing? %(ig)s<a href="https://www.youtube.com/shorts/%(yt)s" rel="noopener" target="_blank">YouTube</a></p>
+    <p class="video-alt">Video not playing? %(ig)s<a href="https://www.youtube.com/%(ytpath)s%(yt)s" rel="noopener" target="_blank">YouTube</a></p>
   </div>
   <div class="side">
     <p class="lede">%(lede)s</p>
@@ -480,7 +482,7 @@ def topic_page(t, by_slug, ready, cur):
     %(upnext)s
     <div class="pn">%(prev)s%(allv)s</div>
   </div>
-</div>""" % {"yt": esc(t["video"]["youtubeId"]), "title": esc(t["title"]), "ig": ('<a href="%s" rel="noopener" target="_blank">Watch on Instagram</a> · ' % esc(t["video"]["instagram"])) if t["video"].get("instagram") else "",
+</div>""" % {"yt": esc(t["video"]["youtubeId"]), "ytpath": "watch?v=" if t["video"].get("format") == "long" else "shorts/", "title": esc(t["title"]), "ig": ('<a href="%s" rel="noopener" target="_blank">Watch on Instagram</a> · ' % esc(t["video"]["instagram"])) if t["video"].get("instagram") else "",
              "ctx": esc("%s%s" % (chapnum, t["subject"])),
              "lede": inline(t["summary"]), "worksheet": worksheet_link(t), "pdf": esc(t["notes"]["pdf"]), "dlname": esc("PrayogX - %s - short notes.pdf" % t["title"]),
              "size": size, "doc": icon("doc", 22), "upnext": upnext,

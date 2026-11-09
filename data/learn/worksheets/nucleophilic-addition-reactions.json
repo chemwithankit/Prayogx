@@ -1,0 +1,156 @@
+{
+ "slug": "nucleophilic-addition-reactions",
+ "title": "Nucleophilic Addition Reactions: One Carbonyl, Five Pathways",
+ "class": 12,
+ "subject": "Chemistry",
+ "chapter": "Aldehydes, Ketones and Carboxylic Acids",
+ "objective": "Every nucleophilic addition reaction of aldehydes and ketones in one place: HCN, NaHSO₃, Grignard reagents, alcohols, and the addition–elimination of ammonia derivatives, with the product each one gives.",
+ "fill": [
+  {
+   "q": "With HCN, the species that actually attacks the carbonyl carbon is ____.",
+   "a": "CN⁻"
+  },
+  {
+   "q": "An aldehyde with NaHSO₃ gives a crystalline ____ addition compound.",
+   "a": "bisulphite"
+  },
+  {
+   "q": "A ketone with a Grignard reagent, then H₃O⁺, gives a ____ alcohol.",
+   "a": "tertiary (3°)"
+  },
+  {
+   "q": "One molecule of alcohol adds to an aldehyde to give a ____.",
+   "a": "hemiacetal"
+  },
+  {
+   "q": "NH₂OH converts an aldehyde or ketone into an ____.",
+   "a": "oxime"
+  }
+ ],
+ "tf": [
+  {
+   "q": "Pure HCN adds to carbonyl compounds very slowly; a base speeds it up.",
+   "a": true,
+   "explain": "The base makes CN⁻, the stronger nucleophile."
+  },
+  {
+   "q": "In the bisulphite adduct, the HSO₃⁻ ion bonds to carbon through its oxygen.",
+   "a": false,
+   "explain": "It bonds through sulphur: R₂C(OH)SO₃⁻Na⁺."
+  },
+  {
+   "q": "Formaldehyde with CH₃MgBr, then H₃O⁺, gives a primary alcohol.",
+   "a": true,
+   "explain": "HCHO gives 1°, other aldehydes 2°, ketones 3°."
+  },
+  {
+   "q": "The reaction of carbonyl compounds with H₂N–Z is a simple addition.",
+   "a": false,
+   "explain": "It is addition followed by loss of water: addition–elimination."
+  }
+ ],
+ "ar": [
+  {
+   "a": "Ketones give the bisulphite addition compound less readily than aldehydes.",
+   "r": "The two alkyl groups crowd the carbonyl carbon.",
+   "answer": 0,
+   "explain": "R explains A."
+  },
+  {
+   "a": "2,4-DNP gives a coloured precipitate with aldehydes and ketones.",
+   "r": "The C=O group becomes C=N–NHC₆H₃(NO₂)₂ with loss of water.",
+   "answer": 0,
+   "explain": "R explains A."
+  }
+ ],
+ "mcq": [
+  {
+   "q": "CH₃CHO + HCN (base) gives:",
+   "options": [
+    "CH₃CH(OH)CN",
+    "CH₃CH₂CN",
+    "CH₃CONH₂",
+    "CH₃CH=NOH"
+   ],
+   "answer": 0,
+   "explain": "CN and OH on the same carbon: a cyanohydrin."
+  },
+  {
+   "q": "Which gives a 2° alcohol with CH₃MgBr, then H₃O⁺?",
+   "options": [
+    "HCHO",
+    "CH₃CHO",
+    "CH₃COCH₃",
+    "CO₂"
+   ],
+   "answer": 1,
+   "explain": "Other aldehydes give secondary alcohols."
+  },
+  {
+   "q": "An acetal has on one carbon:",
+   "options": [
+    "OH and OR",
+    "two OR groups",
+    "OH and CN",
+    "C=N"
+   ],
+   "answer": 1,
+   "explain": "Hemiacetal: OH + OR; acetal: OR + OR."
+  },
+  {
+   "q": "Semicarbazide gives a:",
+   "options": [
+    "semicarbazone",
+    "hydrazone",
+    "oxime",
+    "cyanohydrin"
+   ],
+   "answer": 0,
+   "explain": "NH₂NHCONH₂ → >C=N–NHCONH₂."
+  }
+ ],
+ "num": [
+  {
+   "q": "How many carbon groups are on the OH-bearing carbon of the alcohol from acetone + CH₃MgBr?",
+   "steps": [
+    "(CH₃)₃COH: three CH₃ groups"
+   ],
+   "answer": "3"
+  },
+  {
+   "q": "How many molecules of CH₃OH are used to turn one CH₃CHO into its acetal?",
+   "steps": [
+    "One gives the hemiacetal, the second the acetal"
+   ],
+   "answer": "2"
+  }
+ ],
+ "short": [
+  {
+   "q": "Write the products of CH₃CHO with (i) HCN (ii) NH₂OH (iii) 2 CH₃OH in dry HCl, and name each.",
+   "lines": 5,
+   "solution": "(i) CH₃CH(OH)CN, a cyanohydrin (ii) CH₃CH=NOH, an oxime (iii) CH₃CH(OCH₃)₂, an acetal"
+  }
+ ],
+ "match": {
+  "left": [
+   "HCN",
+   "NaHSO₃",
+   "RMgX, H₃O⁺",
+   "NH₂NH₂"
+  ],
+  "right": [
+   "bisulphite adduct",
+   "alcohol",
+   "hydrazone",
+   "cyanohydrin"
+  ],
+  "answer": [
+   3,
+   0,
+   1,
+   2
+  ],
+  "explain": "Each reagent matches its product."
+ }
+}

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="sim-id" content="LEARN-C12-CHE-REACTION-CHAMBERS-SIM">
+<title>Reaction chambers · PrayogX Learn simulation</title>
+<style>
+:root{--bg:#f4f4f1;--card:#fcfcfb;--line:#d9d9d4;--ink:#0b0b0b;--mut:#52514e;--acc:#2a78d6;--good:#00743f;--bad:#b3261e;--f0:#007a99;--f1:#9a7400;--f2:#00813f;--f3:#c2412f;--f4:#1f6fd1}
+@media (prefers-color-scheme:dark){:root{--bg:#111110;--card:#1a1a19;--line:#34342f;--ink:#fff;--mut:#c3c2b7;--acc:#3987e5;--good:#3fae7a;--bad:#ff8a80;--f0:#38e1ff;--f1:#ffd23f;--f2:#46e08a;--f3:#ff7a6b;--f4:#5aa9ff}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+.wrap{max-width:980px;margin:0 auto;padding:12px}
+h1{font-size:17px;margin:2px 0 8px}
+h2{font-size:15px;margin:0 0 6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin-top:10px}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:6px}
+.fam{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-top:8px;padding-left:8px;border-left:4px solid var(--line)}
+.fam .lab{flex:0 0 100%;font-size:13px;color:var(--mut)}
+button{font:inherit;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:9px;padding:6px 10px;cursor:pointer;min-height:44px}
+button[aria-pressed="true"]{background:var(--acc);border-color:var(--acc);color:#fff;font-weight:650}
+button:disabled{opacity:.45;cursor:not-allowed}
+.eq{font-size:20px;font-weight:700;text-align:center;margin:8px 0 2px;overflow-wrap:anywhere;line-height:1.6}
+.eq .arrow{display:inline-block;margin:0 6px;font-size:15px;color:var(--mut);font-weight:600}
+.prod{font-size:24px;font-weight:800;text-align:center;overflow-wrap:anywhere;min-height:1.4em}
+.verdict{margin-top:8px;padding:8px 10px;border-radius:10px;border:1px solid var(--line);background:var(--bg);min-height:3em;overflow-wrap:anywhere}
+.small{font-size:13px;color:var(--mut)}
+.ok{color:var(--good);font-weight:700}.no{color:var(--bad);font-weight:700}
+.meter{height:14px;border-radius:7px;background:var(--line);overflow:hidden;margin-top:4px;max-width:420px}
+.meter i{display:block;height:100%;background:var(--acc);transition:width .3s}
+@media (prefers-reduced-motion:reduce){.meter i{transition:none}}
+.c0{color:var(--f0)}.c1{color:var(--f1)}.c2{color:var(--f2)}.c3{color:var(--f3)}.c4{color:var(--f4)}
+.b0{border-left-color:var(--f0)}.b1{border-left-color:var(--f1)}.b2{border-left-color:var(--f2)}.b3{border-left-color:var(--f3)}.b4{border-left-color:var(--f4)}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>Reaction chambers: one carbonyl, five pathways</h1>
+<div class="card">
+<h2>1. Pick the carbonyl compound</h2>
+<div class="row" id="g-carb"></div>
+<p class="small" id="carbnote"></p>
+<div class="small">How open and how δ+ the C=O carbon is (a fuller bar → faster addition)</div>
+<div class="meter" aria-hidden="true"><i id="meter" style="width:0%"></i></div>
+</div>
+<div class="card">
+<h2>2. Pick the reagent (the chamber)</h2>
+<div id="g-reag"></div>
+</div>
+<div class="card">
+<h2>3. Predict the product, then react</h2>
+<div class="row" id="g-pred"></div>
+<div class="row"><button type="button" id="react">React</button><button type="button" id="reset">Reset</button></div>
+<div class="eq" id="eq" aria-live="polite"></div>
+<div class="prod" id="prod" aria-live="polite"></div>
+<div class="verdict" id="verdict" aria-live="polite">Pick a carbonyl, a reagent and your prediction, then press React.</div>
+<p class="small" id="score"></p>
+</div>
+<div class="card">
+<h2>The five pathways</h2>
+<p class="small"><b class="c0">HCN</b> (base, CN⁻ attacks) → cyanohydrin · <b class="c1">NaHSO₃</b> (S of HSO₃⁻ attacks) → bisulphite addition compound · <b class="c2">RMgX</b> in dry ether, then H₃O⁺ → alcohol with a new C–C bond (HCHO 1°, other aldehydes 2°, ketones 3°) · <b class="c3">ROH, dry HCl</b> → hemiacetal (OH + OR) → acetal (OR + OR); ketone + ethylene glycol → cyclic ketal · <b class="c4">H₂N–Z</b> (acid) → addition, then loss of H₂O → C=N–Z (addition–elimination).</p>
+</div>
+</div>
+<script>
+(function () {
+  "use strict";
+  var SUB = {"0":"₀","1":"₁","2":"₂","3":"₃","4":"₄","5":"₅","6":"₆"};
+  var sub = function (s) { return s.replace(/([A-Za-z)])(\d)/g, function (m, a, d) { return a + SUB[d]; }); };
+  // carbonyl compounds: the two groups on the C=O carbon (H counts as no carbon group)
+  var CARB = [
+    {key: "hcho", f: "HCHO", name: "formaldehyde", r: ["H", "H"], kind: "aldehyde", crowd: 0, note: "No carbon groups: the most open and the most δ+ carbon."},
+    {key: "ald", f: "CH3CHO", name: "acetaldehyde", r: ["CH3", "H"], kind: "aldehyde", crowd: 1, note: "One CH₃: a little crowding, slightly less δ+."},
+    {key: "benz", f: "C6H5CHO", name: "benzaldehyde", r: ["C6H5", "H"], kind: "aldehyde", crowd: 1.4, note: "One C₆H₅: its ring shares electrons with C=O by resonance, so the carbon is less δ+ than in aliphatic aldehydes."},
+    {key: "acet", f: "CH3COCH3", name: "acetone", r: ["CH3", "CH3"], kind: "ketone", crowd: 2, note: "Two CH₃ groups: more crowding and less δ+, so ketones add more slowly than aldehydes."}
+  ];
+  // reagents: family, what attacks, what is added to the carbon (X, Y), or the C=N–Z group
+  var REAG = [
+    {key: "hcn", fam: 0, f: "HCN", cond: "base", attack: "CN⁻ (through C)", type: "cyanohydrin", add: ["OH", "CN"]},
+    {key: "bis", fam: 1, f: "NaHSO3", cond: "", attack: "HSO₃⁻ (through S)", type: "bisulphite addition compound", add: ["OH", "SO3Na"]},
+    {key: "grig", fam: 2, f: "CH3MgBr", cond: "1. dry ether 2. H₃O⁺", attack: "the CH₃ of CH₃MgBr (a new C–C bond)", type: "alcohol", grig: true},
+    {key: "meoh1", fam: 3, f: "CH3OH (1 mol)", cond: "dry HCl", attack: "the O of CH₃OH", type: "hemiacetal", add: ["OH", "OCH3"]},
+    {key: "meoh2", fam: 3, f: "CH3OH (2 mol)", cond: "dry HCl", attack: "the O of CH₃OH (twice)", type: "acetal", add: ["OCH3", "OCH3"]},
+    {key: "glyc", fam: 3, f: "HOCH2CH2OH", cond: "dry HCl", attack: "each O of ethylene glycol", type: "cyclic acetal / ketal", ring: true},
+    {key: "oxime", fam: 4, f: "NH2OH", cond: "acid", attack: "the N of NH₂", type: "oxime", z: "OH"},
+    {key: "hz", fam: 4, f: "NH2NH2", cond: "acid", attack: "the N of one NH₂", type: "hydrazone", z: "NH2"},
+    {key: "phz", fam: 4, f: "C6H5NHNH2", cond: "acid", attack: "the N of the terminal NH₂", type: "phenylhydrazone", z: "NHC6H5"},
+    {key: "semi", fam: 4, f: "NH2NHCONH2", cond: "acid", attack: "the N of the NH₂ on NH (not the amide NH₂)", type: "semicarbazone", z: "NHCONH2"},
+    {key: "dnp", fam: 4, f: "2,4-DNP", cond: "acid", attack: "the N of the terminal NH₂ of 2,4-dinitrophenylhydrazine", type: "2,4-DNP hydrazone", z: "NHC6H3(NO2)2"}
+  ];
+  var TYPES = ["cyanohydrin", "bisulphite addition compound", "alcohol", "hemiacetal", "acetal", "cyclic acetal / ketal", "oxime", "hydrazone", "phenylhydrazone", "semicarbazone", "2,4-DNP hydrazone"];
+  var FAMN = ["HCN", "NaHSO₃", "Grignard reagent", "Alcohols (dry HCl)", "Ammonia derivatives H₂N–Z"];
+  var ALCNAME = {"H,H": "ethanol", "CH3,H": "propan-2-ol", "C6H5,H": "1-phenylethanol", "CH3,CH3": "2-methylpropan-2-ol"};
+  var S = {c: -1, r: -1, p: -1, done: false, right: 0, tries: 0};
+
+  // the carbon written from its groups: CH2, CH3CH, (CH3)2C, C6H5CH
+  function core(r) {
+    var cs = r.filter(function (x) { return x !== "H"; }), h = r.length - cs.length;
+    var lead = cs.length === 2 && cs[0] === cs[1] ? "(" + cs[0] + ")2" : cs.length === 2 ? cs[0] + "(" + cs[1] + ")" : cs.length === 1 ? cs[0] : "";
+    return lead + "C" + (h === 0 ? "" : h === 1 ? "H" : "H2");
+  }
+  /** the product, built from the carbonyl's two groups and what the reagent adds: never stored per pair */
+  function product(ci, ri) {
+    var c = CARB[ci], g = REAG[ri], out = {type: g.type, fam: g.fam, attack: g.attack, cond: g.cond, note: "", formula: "", name: "", cls: ""};
+    if (g.grig) {
+      var r2 = c.r.concat(["CH3"]), cs = r2.filter(function (x) { return x !== "H"; });
+      out.cls = ["", "1°", "2°", "3°"][cs.length];
+      out.formula = core(c.r) + "(OH)CH3";
+      if (c.key === "hcho") out.formula = "CH3CH2OH";
+      out.name = ALCNAME[c.r.join(",")] + " (" + out.cls + " alcohol)";
+      out.note = "The OH carbon now carries " + cs.length + " carbon group" + (cs.length > 1 ? "s" : "") + ": a " + out.cls + " alcohol.";
+    } else if (g.z) {
+      out.formula = core(c.r) + "=N" + g.z;
+      out.name = c.name + " " + g.type;
+      out.note = "Addition, then H₂O leaves: C=O becomes C=N–" + sub(g.z) + " (nucleophilic addition–elimination)." + (g.key === "dnp" ? " A yellow-orange precipitate: a test for the C=O group." : "");
+    } else if (g.ring) {
+      out.formula = core(c.r) + "(OCH2CH2O)";
+      out.type = c.kind === "ketone" ? "cyclic ketal" : "cyclic acetal";
+      out.name = c.name + " ethylene glycol " + (c.kind === "ketone" ? "ketal" : "acetal");
+      out.note = "Both O of the glycol bond to the same carbon and H₂O leaves: a five-membered ring (1,3-dioxolane)." + (c.kind === "ketone" ? " This is how ketones are protected." : "");
+    } else {
+      out.formula = core(c.r) + (g.add[0] === g.add[1] ? "(" + g.add[0] + ")2" : "(" + g.add[0] + ")" + g.add[1]);
+      out.name = c.name + " " + g.type;
+      if (g.key === "hcn") out.note = "Pure HCN reacts very slowly; base makes CN⁻, which adds to C. O⁻ then takes H⁺: CN and OH on one carbon.";
+      if (g.key === "bis") out.note = c.kind === "ketone" ? "For most ketones the equilibrium lies to the left (crowding); small methyl ketones such as acetone still give the crystalline adduct." : "Equilibrium lies to the right for most aldehydes. The crystalline adduct gives the aldehyde back with dilute acid or alkali: separation and purification.";
+      if (g.key === "meoh1") out.note = c.kind === "ketone" ? "Ketones form hemiketals and ketals with simple alcohols only poorly; ethylene glycol is used instead." : "One ROH adds: OH + OR on the same carbon.";
+      if (g.key === "meoh2") out.note = c.kind === "ketone" ? "Ketones form ketals with simple alcohols only poorly; use ethylene glycol (cyclic ketal)." : "The second ROH replaces the OH, which leaves as H₂O: OR + OR.";
+      if (c.kind === "ketone" && (g.key === "meoh1" || g.key === "meoh2")) out.poor = true;
+    }
+    out.formula = sub(out.formula);
+    return out;
+  }
+  function mkButtons(host, items, label, onPick, group) {
+    host.innerHTML = "";
+    items.forEach(function (it, i) {
+      var b = document.createElement("button");
+      b.type = "button"; b.textContent = label(it); b.setAttribute("aria-pressed", "false"); b.dataset.i = i; b.dataset.group = group;
+      b.addEventListener("click", function () { onPick(i); });
+      host.appendChild(b);
+    });
+  }
+  function press(group, i) {
+    Array.prototype.forEach.call(document.querySelectorAll('button[data-group="' + group + '"]'), function (b) { b.setAttribute("aria-pressed", String(+b.dataset.i === i)); });
+  }
+  var $ = function (id) { return document.getElementById(id); };
+  function render() {
+    press("c", S.c); press("r", S.r); press("p", S.p);
+    $("react").disabled = !(S.c >= 0 && S.r >= 0 && S.p >= 0);
+    var c = S.c >= 0 ? CARB[S.c] : null, g = S.r >= 0 ? REAG[S.r] : null;
+    $("carbnote").textContent = c ? c.note : "";
+    $("meter").style.width = c ? (100 - c.crowd * 40) + "%" : "0%";
+    if (!S.done) {
+      $("eq").innerHTML = c && g ? sub(c.f) + ' <span class="arrow">+ ' + sub(g.f) + (g.cond ? " (" + g.cond + ")" : "") + " →</span> ?" : "";
+      $("prod").textContent = "";
+    }
+    $("score").textContent = S.tries ? "Correct predictions: " + S.right + " of " + S.tries : "";
+  }
+  function pick(k) { return function (i) { S[k] = i; S.done = false; $("verdict").textContent = "Press React to see the product."; render(); }; }
+  function react() {
+    if (!(S.c >= 0 && S.r >= 0 && S.p >= 0)) return null;
+    var P = product(S.c, S.r), c = CARB[S.c], g = REAG[S.r];
+    var guess = TYPES[S.p], right = guess === g.type || (!!g.ring && guess === "cyclic acetal / ketal");
+    S.done = true; S.tries++; if (right) S.right++;
+    $("eq").innerHTML = sub(c.f) + ' <span class="arrow">+ ' + sub(g.f) + (g.cond ? " (" + g.cond + ")" : "") + " →</span> " + '<span class="c' + g.fam + '">' + P.formula + "</span>";
+    $("prod").innerHTML = '<span class="c' + g.fam + '">' + P.type + (P.cls && P.type === "alcohol" ? " (" + P.cls + ")" : "") + "</span>";
+    $("verdict").innerHTML = (right ? '<span class="ok">✓ Right.</span> ' : '<span class="no">✗ Not quite:</span> you predicted <b>' + guess + "</b>. ") +
+      "<b>" + FAMN[g.fam] + "</b>: " + g.attack + " attacks the C=O carbon. " + P.note + " <span class=\"small\">(" + P.name + ")</span>";
+    render();
+    return {right: right, formula: P.formula, type: P.type, cls: P.cls, name: P.name};
+  }
+  function reset() { S = {c: -1, r: -1, p: -1, done: false, right: 0, tries: 0}; $("verdict").textContent = "Pick a carbonyl, a reagent and your prediction, then press React."; render(); }
+
+  mkButtons($("g-carb"), CARB, function (c) { return sub(c.f) + " · " + c.name; }, pick("c"), "c");
+  var host = $("g-reag"); host.innerHTML = "";
+  [0, 1, 2, 3, 4].forEach(function (fi) {
+    var box = document.createElement("div"); box.className = "fam b" + fi;
+    var lab = document.createElement("span"); lab.className = "lab c" + fi; lab.textContent = (fi + 1) + ". " + FAMN[fi]; box.appendChild(lab);
+    REAG.forEach(function (g, i) {
+      if (g.fam !== fi) return;
+      var b = document.createElement("button"); b.type = "button"; b.textContent = sub(g.f); b.dataset.i = i; b.dataset.group = "r"; b.setAttribute("aria-pressed", "false");
+      b.addEventListener("click", function () { pick("r")(i); }); box.appendChild(b);
+    });
+    host.appendChild(box);
+  });
+  mkButtons($("g-pred"), TYPES, function (t) { return t; }, pick("p"), "p");
+  $("react").addEventListener("click", react);
+  $("reset").addEventListener("click", reset);
+  render();
+
+  window.PX = {
+    carbonyl: function (i) { pick("c")(i); return CARB[i].f; },
+    reagent: function (k) { var i = typeof k === "number" ? k : REAG.map(function (g) { return g.key; }).indexOf(k); pick("r")(i); return REAG[i].f; },
+    predict: function (t) { var i = typeof t === "number" ? t : TYPES.indexOf(t); pick("p")(i); return TYPES[i]; },
+    react: react, reset: reset,
+    product: function (ci, rk) { var ri = REAG.map(function (g) { return g.key; }).indexOf(rk); return product(ci, ri); },
+    table: function () { return CARB.map(function (c, ci) { return REAG.map(function (g, ri) { return product(ci, ri).formula; }); }); },
+    state: function () { return {c: S.c, r: S.r, p: S.p, done: S.done, right: S.right, tries: S.tries, eq: $("eq").textContent, prod: $("prod").textContent}; },
+    count: function () { return {carbonyls: CARB.length, reagents: REAG.length, types: TYPES.length}; }
+  };
+})();
+</script>
+</body>
+</html>

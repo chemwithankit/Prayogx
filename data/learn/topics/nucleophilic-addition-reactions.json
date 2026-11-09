@@ -1,0 +1,243 @@
+{
+ "id": "LEARN-C12-CHE-NUCLEOPHILIC-ADDITION-REACTIONS",
+ "slug": "nucleophilic-addition-reactions",
+ "status": "ready",
+ "class": 12,
+ "subject": "Chemistry",
+ "chapter": "Aldehydes, Ketones and Carboxylic Acids",
+ "topic": "Nucleophilic addition reactions: all five families",
+ "title": "Nucleophilic Addition Reactions: One Carbonyl, Five Pathways",
+ "series": 437,
+ "studioJob": "nucleophilic-reactions",
+ "reelId": "STUDIO-NUCLEOPHILIC-REACTIONS",
+ "summary": "Every nucleophilic addition reaction of aldehydes and ketones in one place: HCN, NaHSO₃, Grignard reagents, alcohols, and the addition–elimination of ammonia derivatives, with the product each one gives.",
+ "video": {
+  "youtubeId": "VOYbxtZrgOg",
+  "format": "long"
+ },
+ "notes": {
+  "pdf": "notes.pdf",
+  "title": "06b – Nucleophilic Addition Reactions: One Carbonyl, Five Pathways",
+  "driveDoc": "1E2rKlyOr0c399siYvtXWzZy5CxGjAXg4IbuQkc2zyx4"
+ },
+ "thumb": "thumb.jpg",
+ "tags": [
+  "nucleophilic addition",
+  "cyanohydrin",
+  "bisulphite addition compound",
+  "Grignard reagent",
+  "acetal",
+  "ketal",
+  "oxime",
+  "hydrazone",
+  "semicarbazone",
+  "2,4-DNP"
+ ],
+ "keyPoints": [
+  "**HCN** (with a base, so **CN⁻** attacks) → **cyanohydrin**: CN and OH on the same carbon, e.g. CH₃CH(OH)CN.",
+  "**NaHSO₃** (HSO₃⁻ attacks through **S**) → **bisulphite addition compound**, a crystalline solid. Dilute acid or alkali gives the aldehyde back, so it separates and purifies aldehydes.",
+  "**Grignard reagent** R–MgX in dry ether, then **H₃O⁺** → **alcohol** with a new **C–C bond**: HCHO gives 1°, other aldehydes 2°, ketones 3°.",
+  "**Alcohols**, dry HCl: one ROH → **hemiacetal** (OH + OR); a second ROH → **acetal** (OR + OR) + H₂O; ketone + **ethylene glycol** → **cyclic ketal**.",
+  "**Ammonia derivatives H₂N–Z** (acid): addition, then **loss of H₂O** → **C=N–Z** (nucleophilic **addition–elimination**): oxime, hydrazone, phenylhydrazone, semicarbazone, 2,4-DNP hydrazone."
+ ],
+ "sections": [
+  {
+   "h": "The five pathways",
+   "blocks": [
+    {
+     "table": {
+      "head": [
+       "Reagent (condition)",
+       "What attacks the C=O carbon",
+       "Product (from CH₃CHO)"
+      ],
+      "rows": [
+       [
+        "HCN (base)",
+        "CN⁻, through C",
+        "CH₃CH(OH)CN, a cyanohydrin"
+       ],
+       [
+        "NaHSO₃",
+        "HSO₃⁻, through S",
+        "CH₃CH(OH)SO₃⁻Na⁺, the bisulphite addition compound"
+       ],
+       [
+        "CH₃MgBr (dry ether), then H₃O⁺",
+        "the CH₃ group (new C–C bond)",
+        "CH₃CH(OH)CH₃, propan-2-ol (2°)"
+       ],
+       [
+        "CH₃OH (1 mol), dry HCl",
+        "O of CH₃OH",
+        "CH₃CH(OH)OCH₃, a hemiacetal"
+       ],
+       [
+        "CH₃OH (2 mol), dry HCl",
+        "O of CH₃OH, twice; H₂O leaves",
+        "CH₃CH(OCH₃)₂, an acetal"
+       ],
+       [
+        "H₂N–Z (acid)",
+        "N of the NH₂; then H₂O leaves",
+        "CH₃CH=N–Z"
+       ]
+      ]
+     }
+    },
+    {
+     "p": "Pure HCN reacts very slowly; a base turns it into CN⁻, the real nucleophile. For NaHSO₃ the equilibrium lies to the right for most aldehydes and to the left for most ketones, because the two alkyl groups of a ketone crowd the carbon."
+    }
+   ]
+  },
+  {
+   "h": "Grignard reagents: which alcohol?",
+   "blocks": [
+    {
+     "table": {
+      "head": [
+       "Carbonyl compound",
+       "+ CH₃MgBr, then H₃O⁺",
+       "Alcohol"
+      ],
+      "rows": [
+       [
+        "HCHO",
+        "CH₃CH₂OH",
+        "1° (ethanol)"
+       ],
+       [
+        "CH₃CHO",
+        "CH₃CH(OH)CH₃",
+        "2° (propan-2-ol)"
+       ],
+       [
+        "CH₃COCH₃",
+        "(CH₃)₃COH",
+        "3° (2-methylpropan-2-ol)"
+       ]
+      ]
+     }
+    },
+    {
+     "p": "Count the carbon groups on the carbon that carries the OH: one, two or three."
+    }
+   ]
+  },
+  {
+   "h": "Ammonia derivatives: C=O becomes C=N–Z",
+   "blocks": [
+    {
+     "table": {
+      "head": [
+       "Reagent H₂N–Z",
+       "Product"
+      ],
+      "rows": [
+       [
+        "NH₂OH, hydroxylamine",
+        "oxime, >C=N–OH"
+       ],
+       [
+        "NH₂NH₂, hydrazine",
+        "hydrazone, >C=N–NH₂"
+       ],
+       [
+        "C₆H₅NHNH₂, phenylhydrazine",
+        "phenylhydrazone, >C=N–NHC₆H₅"
+       ],
+       [
+        "NH₂NHCONH₂, semicarbazide",
+        "semicarbazone, >C=N–NHCONH₂"
+       ],
+       [
+        "2,4-dinitrophenylhydrazine (2,4-DNP)",
+        "2,4-DNP hydrazone, a yellow-orange precipitate"
+       ]
+      ]
+     }
+    },
+    {
+     "p": "The reaction is acid catalysed and reversible; rapid loss of water from the addition product drives it to >C=N–Z. Ammonia or a primary amine gives an imine (a Schiff base with an amine). The mechanism of the first step is on the page for the nucleophilic addition reel."
+    }
+   ]
+  }
+ ],
+ "quiz": [
+  {
+   "q": "In the reaction of CH₃CHO with HCN, the species that attacks the carbonyl carbon is:",
+   "options": [
+    "HCN",
+    "H⁺",
+    "CN⁻",
+    "OH⁻"
+   ],
+   "answer": 2,
+   "explain": "A base turns HCN into CN⁻, the real nucleophile."
+  },
+  {
+   "q": "CH₃COCH₃ + CH₃MgBr, then H₃O⁺, gives:",
+   "options": [
+    "a 1° alcohol",
+    "a 2° alcohol",
+    "a 3° alcohol",
+    "an acetal"
+   ],
+   "answer": 2,
+   "explain": "A ketone gives a tertiary alcohol: (CH₃)₃COH."
+  },
+  {
+   "q": "An aldehyde with two molecules of an alcohol in dry HCl gives:",
+   "options": [
+    "a hemiacetal",
+    "an acetal",
+    "a cyanohydrin",
+    "an oxime"
+   ],
+   "answer": 1,
+   "explain": "One ROH gives the hemiacetal; the second replaces the OH (lost as water): the acetal."
+  },
+  {
+   "q": "Which reaction is an addition–elimination?",
+   "options": [
+    "CH₃CHO + HCN",
+    "CH₃CHO + NaHSO₃",
+    "CH₃CHO + NH₂OH",
+    "CH₃CHO + CH₃MgBr"
+   ],
+   "answer": 2,
+   "explain": "NH₂OH adds, then water is lost to give the oxime C=N–OH."
+  },
+  {
+   "q": "Ketones are best protected as cyclic ketals using:",
+   "options": [
+    "methanol",
+    "ethylene glycol",
+    "NaHSO₃",
+    "HCN"
+   ],
+   "answer": 1,
+   "explain": "Both OH groups of ethylene glycol bond to the same carbon, forming a five-membered ring."
+  }
+ ],
+ "simulation": {
+  "decision": "REQUIRED",
+  "reason": "Predicting the product from a reagent is the skill this topic tests, and it has to be practised on pairs the video never shows (formaldehyde, benzaldehyde and acetone with every reagent). The chambers build each product's formula from the carbonyl's two groups and what the reagent adds, and work out the alcohol class, so the student sees why the product changes.",
+  "status": "pass",
+  "path": "sim.html",
+  "objective": "Pick a carbonyl compound and a reagent, predict the product type, then react: the page builds the product, names the attacking species and says whether it is an addition or an addition–elimination.",
+  "instructions": [
+   "Pick a carbonyl compound and see how open and δ+ its carbon is.",
+   "Pick a reagent from one of the five chambers.",
+   "Predict the product type.",
+   "Press React: compare your prediction with the product the chamber builds.",
+   "Try the same reagent with a ketone and with formaldehyde."
+  ],
+  "qa": "tests/learn_sims.js (2026-11-09)"
+ },
+ "related": [
+  "nucleophilic-addition-carbonyl",
+  "oxidation-reduction-aldehydes-ketones",
+  "distinguishing-aldehydes-ketones"
+ ]
+}

@@ -698,6 +698,27 @@ for (const key of Object.keys(MATERIALS)) FD[key] = fdContact(SKIN, Object.assig
       ok(`name builder ${tag}: no check before all parts; right parts pass, the wrong end fails`, nbRun[0] === false && nbRun[1] === true && nbRun[2] === '2-methylpropan-1-ol' && nbRun[3] === false && nbRun[4] === '2-methylpropan-3-ol' && nbRun[5] === true && nbRun[6] === 'butan-2-ol', nbRun.join(','));
       const ov14 = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
       ok(`name builder ${tag}: no horizontal overflow`, ov14 <= 0, ov14);
+      // ---- reaction chambers: products built from the carbonyl's groups, checked against an independent list
+      await page.goto(base + 'nucleophilic-addition-reactions/sim.html', { waitUntil: 'load' });
+      const RC = await page.evaluate(() => [
+        PX.product(0, 'hcn').formula, PX.product(1, 'hcn').formula, PX.product(3, 'hcn').formula, PX.product(2, 'bis').formula,
+        PX.product(0, 'grig').formula + '|' + PX.product(0, 'grig').cls, PX.product(1, 'grig').formula + '|' + PX.product(1, 'grig').cls, PX.product(3, 'grig').formula + '|' + PX.product(3, 'grig').cls,
+        PX.product(1, 'meoh1').formula, PX.product(1, 'meoh2').formula, PX.product(3, 'glyc').type,
+        PX.product(1, 'oxime').formula, PX.product(3, 'hz').formula, PX.product(2, 'phz').formula, PX.product(1, 'semi').formula, PX.product(1, 'dnp').formula,
+      ]);
+      const RCX = ['CH₂(OH)CN', 'CH₃CH(OH)CN', '(CH₃)₂C(OH)CN', 'C₆H₅CH(OH)SO₃Na', 'CH₃CH₂OH|1°', 'CH₃CH(OH)CH₃|2°', '(CH₃)₂C(OH)CH₃|3°',
+        'CH₃CH(OH)OCH₃', 'CH₃CH(OCH₃)₂', 'cyclic ketal', 'CH₃CH=NOH', '(CH₃)₂C=NNH₂', 'C₆H₅CH=NNHC₆H₅', 'CH₃CH=NNHCONH₂', 'CH₃CH=NNHC₆H₃(NO₂)₂'];
+      const rcBad = RCX.filter((x, i) => RC[i] !== x);
+      ok(`reaction chambers ${tag}: products and alcohol classes match the textbook`, rcBad.length === 0, rcBad.join(' '));
+      const rcRun = await page.evaluate(() => {
+        PX.reset(); const gate = document.getElementById('react').disabled;
+        PX.carbonyl(3); PX.reagent('grig'); PX.predict('alcohol'); const a = PX.react();
+        PX.carbonyl(1); PX.reagent('oxime'); PX.predict('hydrazone'); const b = PX.react();
+        return [gate, a.right, a.cls, b.right, PX.state().right, PX.state().tries, PX.count().reagents];
+      });
+      ok(`reaction chambers ${tag}: react waits for all three choices; right and wrong predictions are scored`, rcRun[0] === true && rcRun[1] === true && rcRun[2] === '3°' && rcRun[3] === false && rcRun[4] === 1 && rcRun[5] === 2 && rcRun[6] === 11, rcRun.join(','));
+      const ov15 = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
+      ok(`reaction chambers ${tag}: no horizontal overflow`, ov15 <= 0, ov15);
       ok(`all sims ${tag}: no console errors`, errs.length === 0, errs.join(' | '));
       await ctx.close();
     }
