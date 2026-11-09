@@ -682,6 +682,22 @@ for (const key of Object.keys(MATERIALS)) FD[key] = fdContact(SKIN, Object.assig
       ok(`detective ${tag}: no verdict before a test; a right verdict is marked solved`, cdLock[0] === null && cdLock[1] === 'aldehyde' && cdLock[2] === true, cdLock.join(','));
       const ov13 = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
       ok(`detective ${tag}: no horizontal overflow`, ov13 <= 0, ov13);
+      // ---- name builder: names computed from structure, matched to an independent list; parts and numbering judged
+      await page.goto(base + 'iupac-naming-root-suffix-prefix/sim.html', { waitUntil: 'load' });
+      const NB = ['butane', '2-methylpropane', 'propene', 'but-1-ene', 'ethanol', 'propan-2-ol', 'propanal', 'propanone', '2-chloropropane', '2-methylbutane', '2-methylpropan-1-ol', 'butan-2-ol'];
+      const nbNames = await page.evaluate(() => PX.names());
+      const nbBad = NB.filter((n, i) => nbNames[i] !== n);
+      ok(`name builder ${tag}: 12 molecules get their textbook IUPAC names`, nbNames.length === 12 && nbBad.length === 0, nbBad.join(' '));
+      const nbRun = await page.evaluate(() => {
+        PX.reset(); PX.mol(10); const gate = PX.check();
+        PX.choose('root', 3); PX.choose('bond', 'an'); PX.choose('grp', 'ol'); PX.choose('sub', 'methyl'); PX.choose('dir', 'L');
+        const good = PX.check(), b1 = PX.state().built; PX.choose('dir', 'R'); const bad = PX.check(), b2 = PX.state().built;
+        PX.mol(11); PX.choose('root', 4); PX.choose('bond', 'an'); PX.choose('grp', 'ol'); PX.choose('sub', 'none'); PX.choose('dir', 'R');
+        return [gate, good, b1, bad, b2, PX.check(), PX.state().built];
+      });
+      ok(`name builder ${tag}: no check before all parts; right parts pass, the wrong end fails`, nbRun[0] === false && nbRun[1] === true && nbRun[2] === '2-methylpropan-1-ol' && nbRun[3] === false && nbRun[4] === '2-methylpropan-3-ol' && nbRun[5] === true && nbRun[6] === 'butan-2-ol', nbRun.join(','));
+      const ov14 = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
+      ok(`name builder ${tag}: no horizontal overflow`, ov14 <= 0, ov14);
       ok(`all sims ${tag}: no console errors`, errs.length === 0, errs.join(' | '));
       await ctx.close();
     }

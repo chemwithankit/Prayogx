@@ -1,0 +1,209 @@
+{
+ "id": "LEARN-C11-CHE-IUPAC-NAMING",
+ "slug": "iupac-naming-root-suffix-prefix",
+ "status": "ready",
+ "class": 11,
+ "subject": "Chemistry",
+ "chapter": "Organic Chemistry – Some Basic Principles and Techniques",
+ "topic": "IUPAC naming: root, suffix and prefix",
+ "title": "IUPAC Naming: Root, Suffix and Prefix",
+ "series": 436,
+ "studioJob": "iupac-naming",
+ "reelId": "STUDIO-IUPAC-NAMING",
+ "summary": "How a chemical name is built from a molecule: the root counts the parent chain's carbons, the suffix gives its bonds and principal group, and the prefix names what is attached.",
+ "video": {
+  "youtubeId": "LQakEG1gWVI"
+ },
+ "notes": {
+  "pdf": "notes.pdf",
+  "title": "08 – IUPAC Naming: Root, Suffix and Prefix",
+  "driveDoc": "1Iy38LVEdBmqzEQ6C0SXOFsi6xCWMwVZL-ZhXA2m-S_Y"
+ },
+ "thumb": "thumb.jpg",
+ "tags": [
+  "IUPAC nomenclature",
+  "word root",
+  "primary suffix",
+  "secondary suffix",
+  "prefix",
+  "locant"
+ ],
+ "keyPoints": [
+  "**Root:** the number of carbons in the **parent chain**: meth 1, eth 2, prop 3, but 4, pent 5, hex 6.",
+  "**Primary suffix:** the bonds in the chain: **-ane** (all single), **-ene** (C=C), **-yne** (C≡C).",
+  "**Secondary suffix:** the **principal functional group**: **-ol** (–OH), **-al** (–CHO), **-one** (C=O inside the chain), **-oic acid** (–COOH).",
+  "**Prefix:** groups attached to the parent chain: **methyl** (CH₃–), **ethyl** (C₂H₅–), **chloro** (Cl–), **bromo** (Br–), **nitro** (NO₂–).",
+  "Number the chain so the **principal group gets the lowest locant**: CH₃–CH(CH₃)–CH₂OH is **2-methylpropan-1-ol**."
+ ],
+ "sections": [
+  {
+   "h": "The parts of a name",
+   "blocks": [
+    {
+     "table": {
+      "head": [
+       "Part",
+       "Tells you",
+       "Examples"
+      ],
+      "rows": [
+       [
+        "Prefix",
+        "what is attached, and where",
+        "2-methyl, 2-chloro"
+       ],
+       [
+        "Root",
+        "carbons in the parent chain",
+        "meth, eth, prop, but, pent, hex"
+       ],
+       [
+        "Primary suffix",
+        "single, double or triple C–C bonds",
+        "-ane / -an, -ene, -yne"
+       ],
+       [
+        "Secondary suffix",
+        "the principal functional group",
+        "-ol, -al, -one, -oic acid"
+       ]
+      ]
+     }
+    },
+    {
+     "p": "The final \"e\" of -ane is dropped before a suffix that starts with a vowel: propane → propan-1-ol, propanal, propanone."
+    }
+   ]
+  },
+  {
+   "h": "Worked example: 2-methylpropan-1-ol",
+   "blocks": [
+    {
+     "p": "CH₃–CH(CH₃)–CH₂OH. The longest chain that contains the –OH has 3 carbons → prop. All bonds are single → an. The –OH is the principal group → ol. Numbering from the –OH end puts it on C1 → propan-1-ol. A CH₃ branch sits on C2 → 2-methyl. Name: 2-methylpropan-1-ol."
+    },
+    {
+     "table": {
+      "head": [
+       "Molecule",
+       "Name"
+      ],
+      "rows": [
+       [
+        "CH₃CH₂CH₂CH₃",
+        "butane"
+       ],
+       [
+        "CH₂=CHCH₃",
+        "propene"
+       ],
+       [
+        "CH₃CH₂OH",
+        "ethanol"
+       ],
+       [
+        "CH₃CH(OH)CH₃",
+        "propan-2-ol"
+       ],
+       [
+        "CH₃CH₂CHO",
+        "propanal"
+       ],
+       [
+        "CH₃COCH₃",
+        "propanone"
+       ],
+       [
+        "CH₃CHClCH₃",
+        "2-chloropropane"
+       ],
+       [
+        "CH₃CH(OH)CH₂CH₃",
+        "butan-2-ol"
+       ]
+      ]
+     }
+    },
+    {
+     "p": "This page covers the basic logic. Choosing the parent chain when several groups compete, functional-group priority, alphabetical order of prefixes and multiple substituents come next in the series."
+    }
+   ]
+  }
+ ],
+ "quiz": [
+  {
+   "q": "The root word for a parent chain of four carbons is:",
+   "options": [
+    "prop",
+    "but",
+    "pent",
+    "eth"
+   ],
+   "answer": 1,
+   "explain": "meth 1, eth 2, prop 3, but 4."
+  },
+  {
+   "q": "In propan-1-ol, the part \"an\" tells you that:",
+   "options": [
+    "there is an OH group",
+    "all C–C bonds are single",
+    "the chain has three carbons",
+    "a methyl group is attached"
+   ],
+   "answer": 1,
+   "explain": "\"an\" is the primary suffix for a saturated chain."
+  },
+  {
+   "q": "The suffix for an aldehyde is:",
+   "options": [
+    "-ol",
+    "-one",
+    "-al",
+    "-oic acid"
+   ],
+   "answer": 2,
+   "explain": "–CHO gives -al, as in propanal."
+  },
+  {
+   "q": "The IUPAC name of CH₃–CH(CH₃)–CH₂OH is:",
+   "options": [
+    "2-methylpropan-3-ol",
+    "butan-1-ol",
+    "2-methylpropan-1-ol",
+    "isopropanol"
+   ],
+   "answer": 2,
+   "explain": "Number from the –OH end so the OH gets locant 1."
+  },
+  {
+   "q": "The IUPAC name of CH₃–CH(OH)–CH₂–CH₃ is:",
+   "options": [
+    "butan-3-ol",
+    "butan-2-ol",
+    "2-hydroxybutane",
+    "propan-2-ol"
+   ],
+   "answer": 1,
+   "explain": "Four carbons, all single bonds, OH on C2 when numbered from the nearer end."
+  }
+ ],
+ "simulation": {
+  "decision": "REQUIRED",
+  "reason": "Naming is a skill students must practise on molecules the reel never names (propene, but-1-ene, propanal, 2-chloropropane, 2-methylbutane, butan-2-ol), and numbering from the wrong end is the commonest mistake: the builder makes the student choose every part and the numbering direction, then shows which part was wrong.",
+  "status": "pass",
+  "path": "sim.html",
+  "objective": "Build the IUPAC name of each molecule from its root, bonds, suffix, prefix and numbering direction, and see which part decides each piece of the name.",
+  "instructions": [
+   "Count the carbons in the parent chain and pick the root.",
+   "Pick the bonds in the chain (an, en or yn).",
+   "Pick the principal group (the suffix) and any attached group (the prefix).",
+   "Choose which end to number from.",
+   "Check your name, then try the next molecule."
+  ],
+  "qa": "tests/learn_sims.js (2026-11-09)"
+ },
+ "related": [
+  "homologous-series",
+  "functional-groups",
+  "classifying-organic-compounds"
+ ]
+}

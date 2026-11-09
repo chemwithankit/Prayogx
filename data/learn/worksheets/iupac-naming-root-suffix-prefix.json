@@ -1,0 +1,156 @@
+{
+ "slug": "iupac-naming-root-suffix-prefix",
+ "title": "IUPAC Naming: Root, Suffix and Prefix",
+ "class": 11,
+ "subject": "Chemistry",
+ "chapter": "Organic Chemistry – Some Basic Principles and Techniques",
+ "objective": "How a chemical name is built from a molecule: the root counts the parent chain's carbons, the suffix gives its bonds and principal group, and the prefix names what is attached.",
+ "fill": [
+  {
+   "q": "The root word for a parent chain of three carbons is ____.",
+   "a": "prop"
+  },
+  {
+   "q": "The primary suffix for a chain with only C–C single bonds is ____.",
+   "a": "-ane"
+  },
+  {
+   "q": "The secondary suffix for an alcohol is ____.",
+   "a": "-ol"
+  },
+  {
+   "q": "A CH₃– group attached to the parent chain is named ____.",
+   "a": "methyl"
+  },
+  {
+   "q": "The IUPAC name of CH₃CH₂CHO is ____.",
+   "a": "propanal"
+  }
+ ],
+ "tf": [
+  {
+   "q": "The root word depends on the number of carbons in the parent chain.",
+   "a": true,
+   "explain": "meth 1, eth 2, prop 3, but 4."
+  },
+  {
+   "q": "The suffix -ene shows a C≡C triple bond.",
+   "a": false,
+   "explain": "-ene is C=C; -yne is C≡C."
+  },
+  {
+   "q": "In propan-1-ol the \"e\" of propane is dropped before -ol.",
+   "a": true,
+   "explain": "It is dropped before a suffix that starts with a vowel."
+  },
+  {
+   "q": "The chain is numbered so that the principal group gets the highest locant.",
+   "a": false,
+   "explain": "It gets the lowest locant."
+  }
+ ],
+ "ar": [
+  {
+   "a": "Propanone has the suffix -one.",
+   "r": "Its C=O group is inside the carbon chain.",
+   "answer": 0,
+   "explain": "R explains A."
+  },
+  {
+   "a": "Butan-2-ol is numbered from the end nearer the OH group.",
+   "r": "The principal group must get the lowest locant.",
+   "answer": 0,
+   "explain": "R explains A."
+  }
+ ],
+ "mcq": [
+  {
+   "q": "The IUPAC name of CH₃CH(OH)CH₃ is:",
+   "options": [
+    "propan-1-ol",
+    "propan-2-ol",
+    "2-propanol-1",
+    "propanone"
+   ],
+   "answer": 1,
+   "explain": "OH on the middle carbon."
+  },
+  {
+   "q": "Which prefix names a Cl atom on the chain?",
+   "options": [
+    "chloro",
+    "chloride",
+    "chlorine",
+    "chloryl"
+   ],
+   "answer": 0,
+   "explain": "Halogens are named fluoro, chloro, bromo, iodo."
+  },
+  {
+   "q": "The IUPAC name of CH₂=CHCH₃ is:",
+   "options": [
+    "propane",
+    "propene",
+    "propyne",
+    "propanal"
+   ],
+   "answer": 1,
+   "explain": "C=C gives -ene."
+  },
+  {
+   "q": "The IUPAC name of CH₃–CH(CH₃)–CH₂OH is:",
+   "options": [
+    "butan-1-ol",
+    "2-methylpropan-3-ol",
+    "2-methylpropan-1-ol",
+    "1-methylpropan-2-ol"
+   ],
+   "answer": 2,
+   "explain": "Number from the –OH end."
+  }
+ ],
+ "num": [
+  {
+   "q": "How many carbon atoms are in the parent chain of 2-methylbutane?",
+   "steps": [
+    "but = 4 carbons in the parent chain"
+   ],
+   "answer": "4"
+  },
+  {
+   "q": "What is the locant of the OH group in butan-2-ol?",
+   "steps": [
+    "Numbered from the nearer end"
+   ],
+   "answer": "2"
+  }
+ ],
+ "short": [
+  {
+   "q": "Explain each part of the name 2-methylpropan-1-ol.",
+   "lines": 5,
+   "solution": "2-methyl: CH₃ branch on C2 (prefix); prop: 3-carbon parent chain (root); an: all single bonds (primary suffix); 1-ol: OH on C1 (secondary suffix)."
+  }
+ ],
+ "match": {
+  "left": [
+   "meth",
+   "but",
+   "-yne",
+   "-al"
+  ],
+  "right": [
+   "1 carbon",
+   "–CHO group",
+   "C≡C triple bond",
+   "4 carbons"
+  ],
+  "answer": [
+   0,
+   3,
+   2,
+   1
+  ],
+  "explain": "Each part matches its meaning."
+ }
+}

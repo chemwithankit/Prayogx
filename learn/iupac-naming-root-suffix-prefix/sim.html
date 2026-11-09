@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="sim-id" content="LEARN-C11-CHE-NAME-BUILDER-SIM">
+<title>Name builder · PrayogX Learn simulation</title>
+<style>
+:root{--bg:#f4f4f1;--card:#fcfcfb;--line:#d9d9d4;--ink:#0b0b0b;--mut:#52514e;--acc:#2a78d6;--root:#00813f;--suf:#b26a00;--pre:#1f6fd1;--good:#00743f;--bad:#b3261e}
+@media (prefers-color-scheme:dark){:root{--bg:#111110;--card:#1a1a19;--line:#34342f;--ink:#fff;--mut:#c3c2b7;--acc:#3987e5;--root:#3fd07a;--suf:#ffb020;--pre:#4ea8ff;--good:#3fae7a;--bad:#ff8a80}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+.wrap{max-width:980px;margin:0 auto;padding:12px}
+h1{font-size:17px;margin:2px 0 8px}
+h2{font-size:15px;margin:0 0 6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin-top:10px}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:6px}
+button{font:inherit;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:9px;padding:6px 10px;cursor:pointer;min-height:44px}
+button[aria-pressed="true"]{background:var(--acc);border-color:var(--acc);color:#fff;font-weight:650}
+button:disabled{opacity:.45;cursor:not-allowed}
+.mol{width:100%;max-width:640px;display:block;margin:4px auto 0}
+.lab{font-size:13px;color:var(--mut);flex:0 0 100%}
+.row>.row{flex:1 1 100%;min-width:0}
+.built{font-size:24px;font-weight:800;text-align:center;margin-top:6px;overflow-wrap:anywhere;min-height:1.4em}
+.verdict{margin-top:8px;padding:8px 10px;border-radius:10px;border:1px solid var(--line);background:var(--bg);min-height:3em;overflow-wrap:anywhere}
+.verdict ul{margin:4px 0 0;padding-left:20px}
+.small{font-size:13px;color:var(--mut)}
+.ok{color:var(--good);font-weight:700}.no{color:var(--bad);font-weight:700}
+.r{color:var(--root)}.s{color:var(--suf)}.p{color:var(--pre)}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>Name builder: root, suffix and prefix</h1>
+<div class="card">
+<h2>1. The molecule</h2>
+<div class="small" id="which"></div>
+<svg class="mol" id="mol" viewBox="0 0 560 230" role="img" aria-label="condensed structural formula"></svg>
+<div class="row"><button type="button" id="prevm">◂ Previous</button><button type="button" id="nextm">Next molecule ▸</button></div>
+</div>
+<div class="card">
+<h2>2. Build its name</h2>
+<div class="row"><span class="lab"><b class="r">Root</b>: carbons in the parent chain</span><span id="g-root" class="row" style="margin:0"></span></div>
+<div class="row"><span class="lab"><b class="r">Bonds</b> in the chain</span><span id="g-bond" class="row" style="margin:0"></span></div>
+<div class="row"><span class="lab"><b class="s">Suffix</b>: principal group</span><span id="g-grp" class="row" style="margin:0"></span></div>
+<div class="row"><span class="lab"><b class="p">Prefix</b>: attached group</span><span id="g-sub" class="row" style="margin:0"></span></div>
+<div class="row"><span class="lab">Number the chain from the</span><span id="g-dir" class="row" style="margin:0"></span></div>
+<div class="built" id="built" aria-live="polite"></div>
+<div class="row"><button type="button" id="check">Check my name</button><button type="button" id="show">Show the answer</button></div>
+<div class="verdict" id="verdict" aria-live="polite"></div>
+<p class="small" id="score"></p>
+</div>
+<div class="card">
+<h2>How the name is put together</h2>
+<p class="small"><b class="p">prefix</b> (with its locant) + <b class="r">root</b> + <b class="r">an / en / yn</b> (bonds) + <b class="s">suffix</b> (with its locant). Number the parent chain so the principal group gets the lowest number; if there is none, the multiple bond; then the attached group. The final "e" of -ane drops before a vowel: propane → propan-1-ol. Locants that cannot vary are left out (ethanol, propanal, propanone, propene).</p>
+</div>
+</div>
+<script>
+(function () {
+  "use strict";
+  // each molecule as its structure, left to right: chain bond orders, and groups on chain carbons (0-based index)
+  var M = [
+    { b: [1, 1, 1], g: [] },
+    { b: [1, 1], g: [{ at: 1, k: "CH3" }] },
+    { b: [2, 1], g: [] },
+    { b: [1, 1, 2], g: [] },
+    { b: [1], g: [{ at: 1, k: "OH" }] },
+    { b: [1, 1], g: [{ at: 1, k: "OH" }] },
+    { b: [1, 1], g: [{ at: 2, k: "=O" }] },
+    { b: [1, 1], g: [{ at: 1, k: "=O" }] },
+    { b: [1, 1], g: [{ at: 1, k: "Cl" }] },
+    { b: [1, 1, 1], g: [{ at: 2, k: "CH3" }] },
+    { b: [1, 1], g: [{ at: 0, k: "OH" }, { at: 1, k: "CH3" }] },
+    { b: [1, 1, 1], g: [{ at: 2, k: "OH" }] }
+  ];
+  var ROOT = ["", "meth", "eth", "prop", "but", "pent", "hex"];
+  var SUBN = { CH3: "methyl", Cl: "chloro" };
+  var GV = { OH: 1, "=O": 2, CH3: 1, Cl: 1 };
+  var SUBDIG = { 2: "₂", 3: "₃" };
+  function len(m) { return m.b.length + 1; }
+  // the facts the name needs, read from the structure
+  function facts(m) {
+    var n = len(m), i, uns = null, ps = null, sub = null;
+    for (i = 0; i < m.b.length; i++) { if (m.b[i] > 1) { uns = { t: m.b[i] === 2 ? "en" : "yn", i: i }; } }
+    for (i = 0; i < m.g.length; i++) {
+      var g = m.g[i];
+      if (g.k === "OH") { ps = { t: "ol", i: g.at, atom: true }; }
+      else if (g.k === "=O") { ps = { t: (g.at === 0 || g.at === n - 1) ? "al" : "one", i: g.at, atom: true }; }
+      else { sub = { t: SUBN[g.k], i: g.at }; }
+    }
+    return { n: n, uns: uns, ps: ps, sub: sub };
+  }
+  // locant of a carbon (atom) or of a bond's lower carbon, numbering from the left (L) or the right (R)
+  function locC(n, i, d) { return d === "L" ? i + 1 : n - i; }
+  function locB(n, i, d) { return d === "L" ? i + 1 : n - i - 1; }
+  function locs(F, d) {
+    return [F.ps ? locC(F.n, F.ps.i, d) : 0, F.uns ? locB(F.n, F.uns.i, d) : 0, F.sub ? locC(F.n, F.sub.i, d) : 0];
+  }
+  // lowest locants: principal group first, then the multiple bond, then the substituent
+  function bestDirs(F) {
+    var a = locs(F, "L"), b = locs(F, "R"), k;
+    for (k = 0; k < 3; k++) { if (a[k] < b[k]) { return ["L"]; } if (b[k] < a[k]) { return ["R"]; } }
+    return ["L", "R"];
+  }
+  // assemble a name from its parts; a part that does not exist in the molecule gets "?" as its locant
+  function assemble(n, prim, sec, subName, L) {
+    var s = "";
+    if (subName) { s += (L.sub || "?") + "-" + subName; }
+    s += ROOT[n] || "?";
+    var pr = prim === "en" ? "ene" : prim === "yn" ? "yne" : "ane";
+    var ul = prim !== "an" ? (n <= 3 ? "" : "-" + (L.uns || "?") + "-") : "";
+    if (!sec) { return s + ul + pr; }
+    var stem = ul + (prim === "an" ? "an" : prim);
+    var need = sec === "ol" ? n >= 3 : sec === "one" ? n >= 5 : false;
+    return s + stem + (need ? "-" + (L.ps || "?") + "-" : "") + sec;
+  }
+  function trueName(m) {
+    var F = facts(m), d = bestDirs(F)[0], l = locs(F, d);
+    return assemble(F.n, F.uns ? F.uns.t : "an", F.ps ? F.ps.t : null, F.sub ? F.sub.t : null, { ps: l[0], uns: l[1], sub: l[2] });
+  }
+  var S;
+  function $(id) { return document.getElementById(id); }
+  function fresh() { return { i: 0, root: null, bond: null, grp: null, sub: null, dir: null, checked: false, shown: false, firstTry: {} }; }
+  function hCount(m, i) {
+    var n = len(m), used = 0, k;
+    if (i > 0) { used += m.b[i - 1]; }
+    if (i < n - 1) { used += m.b[i]; }
+    for (k = 0; k < m.g.length; k++) { if (m.g[k].at === i) { used += GV[m.g[k].k]; } }
+    return 4 - used;
+  }
+  function cLabel(h) { return h === 0 ? "C" : "CH" + (h > 1 ? SUBDIG[h] : ""); }
+  function draw() {
+    var m = M[S.i], n = len(m), F = facts(m), x0 = 280 - (n - 1) * 60, html = "", i, k;
+    var col = { root: "var(--root)", suf: "var(--suf)", pre: "var(--pre)" };
+    var reveal = S.checked || S.shown;
+    for (i = 0; i < n - 1; i++) {
+      var o = m.b[i], xa = x0 + i * 120 + 34, xb = x0 + (i + 1) * 120 - 34;
+      for (k = 0; k < o; k++) { var y = 140 + (k - (o - 1) / 2) * 9; html += '<line x1="' + xa + '" y1="' + y + '" x2="' + xb + '" y2="' + y + '" stroke="currentColor" stroke-width="3"/>'; }
+    }
+    for (i = 0; i < n; i++) {
+      var x = x0 + i * 120;
+      html += '<text x="' + x + '" y="149" text-anchor="middle" font-size="26" font-weight="700" fill="' + (reveal ? col.root : "currentColor") + '">' + cLabel(hCount(m, i)) + "</text>";
+      if (S.dir) {
+        var good = reveal && bestDirs(F).indexOf(S.dir) >= 0;
+        html += '<text x="' + x + '" y="200" text-anchor="middle" font-size="20" font-weight="700" fill="' + (reveal ? (good ? "var(--good)" : "var(--bad)") : "var(--mut)") + '">' + locC(n, i, S.dir) + "</text>";
+      }
+    }
+    for (k = 0; k < m.g.length; k++) {
+      var g = m.g[k], gx = x0 + g.at * 120, isSub = g.k === "CH3" || g.k === "Cl";
+      var c = reveal ? (isSub ? col.pre : col.suf) : "currentColor";
+      if (g.k === "=O") { html += '<line x1="' + (gx - 5) + '" y1="118" x2="' + (gx - 5) + '" y2="72" stroke="' + c + '" stroke-width="3"/><line x1="' + (gx + 5) + '" y1="118" x2="' + (gx + 5) + '" y2="72" stroke="' + c + '" stroke-width="3"/>'; }
+      else { html += '<line x1="' + gx + '" y1="118" x2="' + gx + '" y2="72" stroke="' + c + '" stroke-width="3"/>'; }
+      html += '<text x="' + gx + '" y="60" text-anchor="middle" font-size="26" font-weight="700" fill="' + c + '">' + (g.k === "=O" ? "O" : g.k === "CH3" ? "CH₃" : g.k) + "</text>";
+    }
+    $("mol").innerHTML = html;
+  }
+  var GROUPS = {
+    root: [[1, "meth (1)"], [2, "eth (2)"], [3, "prop (3)"], [4, "but (4)"], [5, "pent (5)"]],
+    bond: [["an", "all single: an"], ["en", "C=C: en"], ["yn", "C≡C: yn"]],
+    grp: [["none", "none"], ["ol", "–OH: ol"], ["al", "–CHO: al"], ["one", "C=O in chain: one"]],
+    sub: [["none", "none"], ["methyl", "CH₃–: methyl"], ["chloro", "Cl–: chloro"]],
+    dir: [["L", "left end"], ["R", "right end"]]
+  };
+  function ready() { return S.root !== null && S.bond && S.grp && S.sub && S.dir; }
+  function studentName() {
+    var m = M[S.i], F = facts(m), l = locs(F, S.dir), n = S.root;
+    // the student's own choices; locants come from their numbering direction and the molecule's real positions
+    var L = { ps: F.ps && S.grp !== "none" ? l[0] : 0, uns: F.uns && S.bond !== "an" ? l[1] : 0, sub: F.sub && S.sub !== "none" ? l[2] : 0 };
+    return assemble(n, S.bond, S.grp === "none" ? null : S.grp, S.sub === "none" ? null : S.sub, L);
+  }
+  function verdictParts() {
+    var m = M[S.i], F = facts(m), r = [];
+    r.push([S.root === F.n, "Root: the parent chain has " + F.n + " carbons → " + ROOT[F.n] + "."]);
+    var tb = F.uns ? F.uns.t : "an";
+    r.push([S.bond === tb, tb === "an" ? "Bonds: all C–C bonds are single → an." : "Bonds: there is a C" + (tb === "en" ? "=" : "≡") + "C bond → " + tb + "."]);
+    var tg = F.ps ? F.ps.t : "none";
+    r.push([S.grp === tg, tg === "none" ? "Suffix: no principal group, so the name ends in -ane/-ene/-yne." : "Suffix: the principal group gives -" + tg + (tg === "al" ? " (the C=O is at the end of the chain)." : tg === "one" ? " (the C=O is inside the chain)." : ".")]);
+    var ts = F.sub ? F.sub.t : "none";
+    r.push([S.sub === ts, ts === "none" ? "Prefix: nothing is attached to the parent chain." : "Prefix: the attached group is " + ts + "."]);
+    var bd = bestDirs(F);
+    r.push([bd.indexOf(S.dir) >= 0, bd.length === 2 ? "Numbering: both ends give the same locants here." : "Numbering: start from the " + (bd[0] === "L" ? "left" : "right") + " end so the " + (F.ps ? "principal group" : F.uns ? "multiple bond" : "attached group") + " gets the lowest number."]);
+    return r;
+  }
+  function render() {
+    var m = M[S.i], k, key, j;
+    $("which").textContent = "Molecule " + (S.i + 1) + " of " + M.length;
+    for (key in GROUPS) {
+      if (!GROUPS.hasOwnProperty(key)) { continue; }
+      for (j = 0; j < GROUPS[key].length; j++) {
+        $("o-" + key + "-" + GROUPS[key][j][0]).setAttribute("aria-pressed", String(S[key]) === String(GROUPS[key][j][0]) ? "true" : "false");
+      }
+    }
+    draw();
+    $("check").disabled = !ready();
+    $("built").innerHTML = ready() ? '<span class="small">Your name</span><br>' + studentName() : '<span class="small">Choose all five parts to build the name.</span>';
+    if (S.shown) { $("verdict").innerHTML = "IUPAC name: <b>" + trueName(m) + "</b>"; }
+    else if (S.checked) {
+      var parts = verdictParts(), good = studentName() === trueName(m), h = "";
+      for (k = 0; k < parts.length; k++) { h += "<li>" + (parts[k][0] ? "✓ " : "✗ ") + parts[k][1] + "</li>"; }
+      $("verdict").innerHTML = '<span class="' + (good ? "ok" : "no") + '">' + (good ? "Correct: " : "Not yet. The name is ") + trueName(m) + "</span><ul>" + h + "</ul>";
+    } else { $("verdict").textContent = "Build the name, then check it."; }
+    var n = 0, r = 0; for (k in S.firstTry) { if (S.firstTry.hasOwnProperty(k)) { n++; if (S.firstTry[k]) { r++; } } }
+    $("score").textContent = n ? r + " of " + n + " molecules named right on the first check." : "";
+  }
+  window.PX = {
+    mol: function (i) { S.i = (i + M.length) % M.length; S.root = null; S.bond = null; S.grp = null; S.sub = null; S.dir = null; S.checked = false; S.shown = false; render(); },
+    choose: function (key, v) { S[key] = key === "root" ? +v : v; S.checked = false; S.shown = false; render(); },
+    check: function () { if (!ready()) { return false; } S.checked = true; S.shown = false; var g = studentName() === trueName(M[S.i]); if (!S.firstTry.hasOwnProperty(S.i)) { S.firstTry[S.i] = g; } render(); return g; },
+    show: function () { S.shown = true; render(); },
+    reset: function () { S = fresh(); render(); },
+    count: function () { return M.length; },
+    names: function () { var r = [], i; for (i = 0; i < M.length; i++) { r.push(trueName(M[i])); } return r; },
+    state: function () { return { i: S.i, name: trueName(M[S.i]), built: ready() ? studentName() : null, checked: S.checked, dirs: bestDirs(facts(M[S.i])) }; }
+  };
+  (function build() {
+    var key, j, b;
+    function mk(k, v) { return function () { PX.choose(k, v); }; }
+    for (key in GROUPS) {
+      if (!GROUPS.hasOwnProperty(key)) { continue; }
+      for (j = 0; j < GROUPS[key].length; j++) {
+        b = document.createElement("button"); b.type = "button"; b.id = "o-" + key + "-" + GROUPS[key][j][0]; b.textContent = GROUPS[key][j][1];
+        b.onclick = mk(key, GROUPS[key][j][0]); $("g-" + key).appendChild(b);
+      }
+    }
+    $("check").onclick = function () { PX.check(); };
+    $("show").onclick = function () { PX.show(); };
+    $("prevm").onclick = function () { PX.mol(S.i - 1); };
+    $("nextm").onclick = function () { PX.mol(S.i + 1); };
+    S = fresh(); render();
+  }());
+}());
+</script>
+</body>
+</html>
