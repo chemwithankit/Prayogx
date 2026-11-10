@@ -1,0 +1,123 @@
+{
+ "slug": "carboxyl-group-structure-naming",
+ "title": "The Carboxyl Group: Structure and Naming",
+ "class": 12,
+ "subject": "Chemistry",
+ "chapter": "Aldehydes, Ketones and Carboxylic Acids",
+ "objective": "What –COOH really is: a carbonyl and a hydroxyl on one sp² carbon, joined by resonance that makes the carbon less electrophilic than in aldehydes; and how carboxylic acids get their common and IUPAC names.",
+ "fill": [
+  {
+   "q": "The carboxyl group is a carbonyl group plus a ____ group.",
+   "a": "hydroxyl"
+  },
+  {
+   "q": "The carboxyl carbon is ____ hybridised.",
+   "a": "sp²"
+  },
+  {
+   "q": "The IUPAC name of HCOOH is ____ acid.",
+   "a": "methanoic"
+  },
+  {
+   "q": "HOOC–COOH is ethane____ acid.",
+   "a": "dioic"
+  }
+ ],
+ "tf": [
+  {
+   "q": "The carboxyl carbon is more electrophilic than an aldehyde's carbonyl carbon.",
+   "a": false,
+   "explain": "Resonance with the –OH lone pair makes it less electrophilic."
+  },
+  {
+   "q": "Acetic acid takes its name from vinegar.",
+   "a": true,
+   "explain": "Latin acetum = vinegar."
+  },
+  {
+   "q": "In naming acids, the COOH carbon is C-1.",
+   "a": true,
+   "explain": "Numbering starts at the carboxyl carbon."
+  }
+ ],
+ "ar": [
+  {
+   "a": "Carboxylic acids do not give the nucleophilic addition reactions of aldehydes.",
+   "r": "Resonance makes the carboxyl carbon less electrophilic.",
+   "answer": 0,
+   "explain": "R explains A."
+  }
+ ],
+ "mcq": [
+  {
+   "q": "The IUPAC name of (CH₃)₂CHCOOH is:",
+   "options": [
+    "butanoic acid",
+    "2-methylpropanoic acid",
+    "3-methylpropanoic acid",
+    "isobutanoic acid"
+   ],
+   "answer": 1,
+   "explain": "Three-carbon chain from the COOH carbon, methyl on C-2."
+  },
+  {
+   "q": "Butyric acid is named after:",
+   "options": [
+    "ants",
+    "vinegar",
+    "butter",
+    "wine"
+   ],
+   "answer": 2,
+   "explain": "Latin butyrum = butter."
+  },
+  {
+   "q": "Bond angles round the carboxyl carbon are about:",
+   "options": [
+    "90°",
+    "109.5°",
+    "120°",
+    "180°"
+   ],
+   "answer": 2,
+   "explain": "sp², planar."
+  }
+ ],
+ "num": [
+  {
+   "q": "How many carbons are in the parent chain of 2-methylpropanoic acid?",
+   "steps": [
+    "propan-: three carbons"
+   ],
+   "answer": "3"
+  }
+ ],
+ "short": [
+  {
+   "q": "Show with curved arrows the resonance in the carboxyl group.",
+   "lines": 5,
+   "solution": "R–C(=O)–OH ⟷ R–C(–O⁻)=O⁺–H: an –OH lone pair moves into the C–O bond; the C=O π pair moves onto O."
+  }
+ ],
+ "match": {
+  "left": [
+   "HCOOH",
+   "CH₃COOH",
+   "HOOC–COOH",
+   "C₆H₅COOH"
+  ],
+  "right": [
+   "ethanoic acid",
+   "ethanedioic acid",
+   "benzoic acid",
+   "methanoic acid"
+  ],
+  "answer": [
+   3,
+   0,
+   1,
+   2
+  ],
+  "explain": "Each formula matches its IUPAC name."
+ }
+}

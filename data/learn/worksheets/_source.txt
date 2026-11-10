@@ -1766,3 +1766,23 @@ X acetaldehyde => acetic acid
 X acetone => solvent
 X vanillin => vanilla flavour
 XE Each compound matches its main use.
+
+@carboxyl-group-structure-naming
+F The carboxyl group is a carbonyl group plus a ____ group.|hydroxyl
+F The carboxyl carbon is ____ hybridised.|sp²
+F The IUPAC name of HCOOH is ____ acid.|methanoic
+F HOOC–COOH is ethane____ acid.|dioic
+T The carboxyl carbon is more electrophilic than an aldehyde's carbonyl carbon.|F|Resonance with the –OH lone pair makes it less electrophilic.
+T Acetic acid takes its name from vinegar.|T|Latin acetum = vinegar.
+T In naming acids, the COOH carbon is C-1.|T|Numbering starts at the carboxyl carbon.
+M The IUPAC name of (CH₃)₂CHCOOH is:|butanoic acid;2-methylpropanoic acid;3-methylpropanoic acid;isobutanoic acid|2|Three-carbon chain from the COOH carbon, methyl on C-2.
+M Butyric acid is named after:|ants;vinegar;butter;wine|3|Latin butyrum = butter.
+M Bond angles round the carboxyl carbon are about:|90°;109.5°;120°;180°|3|sp², planar.
+A Carboxylic acids do not give the nucleophilic addition reactions of aldehydes.|Resonance makes the carboxyl carbon less electrophilic.|1|R explains A.
+N How many carbons are in the parent chain of 2-methylpropanoic acid?|propan-: three carbons|3
+S Show with curved arrows the resonance in the carboxyl group.|R–C(=O)–OH ⟷ R–C(–O⁻)=O⁺–H: an –OH lone pair moves into the C–O bond; the C=O π pair moves onto O.
+X HCOOH => methanoic acid
+X CH₃COOH => ethanoic acid
+X HOOC–COOH => ethanedioic acid
+X C₆H₅COOH => benzoic acid
+XE Each formula matches its IUPAC name.

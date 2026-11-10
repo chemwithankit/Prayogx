@@ -1,0 +1,177 @@
+{
+ "status": "ready",
+ "class": 12,
+ "subject": "Chemistry",
+ "chapter": "Aldehydes, Ketones and Carboxylic Acids",
+ "video": {
+  "youtubeId": "aJRKFW97_ks"
+ },
+ "thumb": "thumb.jpg",
+ "id": "LEARN-C12-CHE-CARBOXYL-GROUP",
+ "slug": "carboxyl-group-structure-naming",
+ "topic": "The carboxyl group: structure and naming",
+ "title": "The Carboxyl Group: Structure and Naming",
+ "series": 439,
+ "studioJob": "carboxyl-group",
+ "reelId": "STUDIO-CARBOXYL-GROUP",
+ "summary": "What –COOH really is: a carbonyl and a hydroxyl on one sp² carbon, joined by resonance that makes the carbon less electrophilic than in aldehydes; and how carboxylic acids get their common and IUPAC names.",
+ "notes": {
+  "pdf": "notes.pdf",
+  "title": "14 – The Carboxyl Group: Structure and Naming",
+  "driveDoc": "1lECSG8NwGhtx3um7_5JxLiV3lSUONYfpLtEZ8dALgX0"
+ },
+ "tags": [
+  "carboxyl group",
+  "carboxylic acids",
+  "resonance",
+  "IUPAC names",
+  "formic acid",
+  "acetic acid",
+  "oic acid",
+  "oxalic acid",
+  "benzoic acid"
+ ],
+ "keyPoints": [
+  "**–COOH** = a **carbonyl** (C=O) + a **hydroxyl** (–OH) on one carbon: carb-oxyl.",
+  "The carboxyl carbon is **sp²**: planar, bonds about **120°** apart.",
+  "**Resonance**: an –OH lone pair moves toward C while the C=O pair moves onto O, so the carbon is **less electrophilic** than in aldehydes and ketones (no nucleophilic addition).",
+  "**Common names** come from the source: formic (formica, ant), acetic (acetum, vinegar), butyric (butyrum, butter).",
+  "**IUPAC**: alkane − e + **oic acid**; the COOH carbon is C-1; two COOH groups keep the e (ethanedioic acid)."
+ ],
+ "sections": [
+  {
+   "h": "Resonance in the carboxyl group",
+   "blocks": [
+    {
+     "formula": "R–C(=O)–OH  ⟷  R–C(–O⁻)=O⁺–H"
+    },
+    {
+     "p": "One curved arrow takes a lone pair of the –OH oxygen into the C–O bond; another takes the C=O π pair onto the carbonyl oxygen. The carbon's δ⁺ is partly made up, so it is **less electrophilic** than the carbonyl carbon of an aldehyde."
+    }
+   ]
+  },
+  {
+   "h": "Names",
+   "blocks": [
+    {
+     "table": {
+      "head": [
+       "Formula",
+       "Common name (source)",
+       "IUPAC name"
+      ],
+      "rows": [
+       [
+        "HCOOH",
+        "formic acid (formica, ant)",
+        "methanoic acid"
+       ],
+       [
+        "CH₃COOH",
+        "acetic acid (acetum, vinegar)",
+        "ethanoic acid"
+       ],
+       [
+        "CH₃CH₂COOH",
+        "propionic acid",
+        "propanoic acid"
+       ],
+       [
+        "CH₃CH₂CH₂COOH",
+        "butyric acid (butyrum, butter)",
+        "butanoic acid"
+       ],
+       [
+        "(CH₃)₂CHCOOH",
+        "isobutyric acid",
+        "2-methylpropanoic acid"
+       ],
+       [
+        "HOOC–COOH",
+        "oxalic acid",
+        "ethanedioic acid"
+       ],
+       [
+        "C₆H₅COOH",
+        "benzoic acid",
+        "benzoic acid"
+       ]
+      ]
+     }
+    },
+    {
+     "list": [
+      "Replace the final **-e** of the alkane by **-oic acid**.",
+      "Number from the **COOH carbon (C-1)**.",
+      "Two COOH groups: **keep the -e**, add **-dioic acid**."
+     ]
+    }
+   ]
+  }
+ ],
+ "quiz": [
+  {
+   "q": "The carboxyl group is made of:",
+   "options": [
+    "C=O and NH₂",
+    "C=O and OH",
+    "C–O and OH only",
+    "two C=O groups"
+   ],
+   "answer": 1,
+   "explain": "Carbonyl (C=O) + hydroxyl (–OH): carb-oxyl."
+  },
+  {
+   "q": "Why is the carboxyl carbon less electrophilic than an aldehyde's carbonyl carbon?",
+   "options": [
+    "it is sp³",
+    "resonance with the –OH lone pair",
+    "it has no oxygen",
+    "it carries a negative charge"
+   ],
+   "answer": 1,
+   "explain": "An –OH lone pair is delocalised toward the carbon, partly making up its δ⁺."
+  },
+  {
+   "q": "The IUPAC name of CH₃COOH is:",
+   "options": [
+    "methanoic acid",
+    "ethanoic acid",
+    "acetic aldehyde",
+    "propanoic acid"
+   ],
+   "answer": 1,
+   "explain": "Two carbons: ethane − e + oic acid."
+  },
+  {
+   "q": "HOOC–COOH is named:",
+   "options": [
+    "ethanoic acid",
+    "ethanedioic acid",
+    "oxalic aldehyde",
+    "methanedioic acid"
+   ],
+   "answer": 1,
+   "explain": "With two COOH groups the -e of ethane is kept: ethane-dioic acid (oxalic acid)."
+  },
+  {
+   "q": "Formic acid gets its name from:",
+   "options": [
+    "vinegar",
+    "butter",
+    "ants",
+    "milk"
+   ],
+   "answer": 2,
+   "explain": "Latin formica = ant; ant stings contain formic acid."
+  }
+ ],
+ "simulation": {
+  "decision": "NOT_REQUIRED",
+  "reason": "Structure and naming rules: the bond-line structures, the resonance arrows and the naming table carry them, and the quiz and workbook practise them. There is no variable to manipulate."
+ },
+ "related": [
+  "uses-of-aldehydes-ketones",
+  "nucleophilic-addition-reactions"
+ ]
+}
