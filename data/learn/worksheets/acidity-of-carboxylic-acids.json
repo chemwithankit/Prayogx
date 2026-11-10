@@ -1,0 +1,129 @@
+{
+ "slug": "acidity-of-carboxylic-acids",
+ "title": "Why Carboxylic Acids Are Acidic: Resonance and Substituents",
+ "class": 12,
+ "subject": "Chemistry",
+ "chapter": "Aldehydes, Ketones and Carboxylic Acids",
+ "objective": "Why vinegar fizzes with baking soda: the carboxylate ion shares its charge equally between two oxygens (resonance, arrow by arrow), which makes carboxylic acids stronger than phenols and alcohols; electron-withdrawing groups such as chlorine make them stronger still.",
+ "fill": [
+  {
+   "q": "Carboxylic acids liberate ____ gas from NaHCO₃.",
+   "a": "CO₂"
+  },
+  {
+   "q": "The conjugate base of a carboxylic acid is the ____ ion.",
+   "a": "carboxylate"
+  },
+  {
+   "q": "A lower pKa means a ____ acid.",
+   "a": "stronger"
+  },
+  {
+   "q": "The effect by which Cl increases acidity is the ____ effect.",
+   "a": "–I (inductive)"
+  }
+ ],
+ "tf": [
+  {
+   "q": "Phenol liberates CO₂ from NaHCO₃.",
+   "a": false,
+   "explain": "Phenol is too weak an acid."
+  },
+  {
+   "q": "Both C–O bonds of the acetate ion have the same length.",
+   "a": true,
+   "explain": "Two equivalent resonance structures."
+  },
+  {
+   "q": "Electron-donating groups increase the acidity of carboxylic acids.",
+   "a": false,
+   "explain": "They decrease it; electron-withdrawing groups increase it."
+  }
+ ],
+ "ar": [
+  {
+   "a": "Chloroacetic acid is stronger than acetic acid.",
+   "r": "Cl withdraws electrons (–I) and stabilises the carboxylate.",
+   "answer": 0,
+   "explain": "R explains A."
+  },
+  {
+   "a": "Ethanol does not react with NaHCO₃.",
+   "r": "Ethoxide has no resonance stabilisation.",
+   "answer": 0,
+   "explain": "R explains A."
+  }
+ ],
+ "mcq": [
+  {
+   "q": "Increasing acidity:",
+   "options": [
+    "ethanol < phenol < acetic acid",
+    "acetic acid < phenol < ethanol",
+    "phenol < ethanol < acetic acid",
+    "ethanol < acetic acid < phenol"
+   ],
+   "answer": 0,
+   "explain": "pKa ≈ 16, 10, 4.8."
+  },
+  {
+   "q": "pKa of trichloroacetic acid is about:",
+   "options": [
+    "4.8",
+    "2.9",
+    "1.3",
+    "0.7"
+   ],
+   "answer": 3,
+   "explain": "Three Cl: strongest."
+  },
+  {
+   "q": "In phenoxide, the negative charge is delocalised onto:",
+   "options": [
+    "two equal O atoms",
+    "ring carbons",
+    "the H atoms",
+    "nowhere"
+   ],
+   "answer": 1,
+   "explain": "Less electronegative carbons, so less stabilisation."
+  }
+ ],
+ "num": [
+  {
+   "q": "How many equivalent resonance structures does the acetate ion have?",
+   "steps": [
+    "R–C(=O)–O⁻ and R–C(–O⁻)=O"
+   ],
+   "answer": "2"
+  }
+ ],
+ "short": [
+  {
+   "q": "Explain with curved arrows why acetic acid is a stronger acid than ethanol.",
+   "lines": 5,
+   "solution": "In acetate, an O⁻ lone pair forms C=O while the C=O π pair moves onto the other O: two equivalent structures share the charge. Ethoxide has no resonance: the charge stays on one O. The more stable anion makes acetic acid stronger."
+  }
+ ],
+ "match": {
+  "left": [
+   "CH₃COOH",
+   "ClCH₂COOH",
+   "Cl₂CHCOOH",
+   "Cl₃CCOOH"
+  ],
+  "right": [
+   "pKa 4.8",
+   "pKa 2.9",
+   "pKa 0.7",
+   "pKa 1.3"
+  ],
+  "answer": [
+   0,
+   1,
+   3,
+   2
+  ],
+  "explain": "Each acid matches its pKa."
+ }
+}

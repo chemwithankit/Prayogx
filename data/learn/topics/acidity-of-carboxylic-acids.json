@@ -1,0 +1,182 @@
+{
+ "status": "ready",
+ "class": 12,
+ "subject": "Chemistry",
+ "chapter": "Aldehydes, Ketones and Carboxylic Acids",
+ "video": {
+  "youtubeId": "uyJ6h_NkG0c"
+ },
+ "thumb": "thumb.jpg",
+ "id": "LEARN-C12-CHE-ACIDITY-OF-CARBOXYLIC-ACIDS",
+ "slug": "acidity-of-carboxylic-acids",
+ "topic": "Acidity of carboxylic acids",
+ "title": "Why Carboxylic Acids Are Acidic: Resonance and Substituents",
+ "series": 442,
+ "studioJob": "acid-strength",
+ "reelId": "STUDIO-ACID-STRENGTH",
+ "summary": "Why vinegar fizzes with baking soda: the carboxylate ion shares its charge equally between two oxygens (resonance, arrow by arrow), which makes carboxylic acids stronger than phenols and alcohols; electron-withdrawing groups such as chlorine make them stronger still.",
+ "notes": {
+  "pdf": "notes.pdf",
+  "title": "17 – Why Carboxylic Acids Are Acidic",
+  "driveDoc": "13lSw3Hsm8i9oCdbKEBY3ZEYUVqxsV5AjALvi1UUndw4"
+ },
+ "tags": [
+  "acidity",
+  "carboxylate ion",
+  "resonance",
+  "pKa",
+  "inductive effect",
+  "phenol",
+  "NaHCO3 test"
+ ],
+ "keyPoints": [
+  "Carboxylic acids liberate **CO₂ from NaHCO₃** (a test for –COOH); alcohols and phenol do not.",
+  "RCOOH ⇌ RCOO⁻ + H⁺: the **more stable the carboxylate**, the stronger the acid.",
+  "In RCOO⁻, **resonance** shares the charge equally between **two oxygens**; both C–O bonds are equal.",
+  "Acidity: **RCOOH (pKa ≈ 4.8) > phenol (≈ 10) > alcohol (≈ 16)**.",
+  "Electron-withdrawing groups raise acidity (**–I effect**): pKa 4.8 → 2.9 → 1.3 → 0.7 for 0 → 3 Cl."
+ ],
+ "sections": [
+  {
+   "h": "Resonance in the carboxylate ion",
+   "blocks": [
+    {
+     "formula": "R–C(=O)–O⁻  ⟷  R–C(–O⁻)=O"
+    },
+    {
+     "p": "An O⁻ lone pair moves in to make C=O; the old C=O π pair moves onto the other oxygen. The two structures are **equivalent**, so the charge is shared equally and the ion is stable."
+    }
+   ]
+  },
+  {
+   "h": "Acid, phenol, alcohol",
+   "blocks": [
+    {
+     "table": {
+      "head": [
+       "Anion",
+       "Charge spread over",
+       "pKa of the acid"
+      ],
+      "rows": [
+       [
+        "RCOO⁻",
+        "two equal O atoms",
+        "≈ 4–5"
+       ],
+       [
+        "C₆H₅O⁻",
+        "O and ring carbons (less electronegative)",
+        "≈ 10"
+       ],
+       [
+        "CH₃CH₂O⁻",
+        "one O (no resonance)",
+        "≈ 16"
+       ]
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "h": "Chlorine makes it stronger",
+   "blocks": [
+    {
+     "table": {
+      "head": [
+       "Acid",
+       "pKa"
+      ],
+      "rows": [
+       [
+        "CH₃COOH",
+        "4.76"
+       ],
+       [
+        "ClCH₂COOH",
+        "2.86"
+       ],
+       [
+        "Cl₂CHCOOH",
+        "≈ 1.3"
+       ],
+       [
+        "Cl₃CCOOH",
+        "≈ 0.7"
+       ]
+      ]
+     }
+    },
+    {
+     "p": "Each Cl pulls electron density through the σ bonds (**–I effect**), spreading the carboxylate's charge further. Electron-donating alkyl groups do the opposite."
+    }
+   ]
+  }
+ ],
+ "quiz": [
+  {
+   "q": "Which liberates CO₂ from NaHCO₃?",
+   "options": [
+    "ethanol",
+    "phenol",
+    "acetic acid",
+    "acetone"
+   ],
+   "answer": 2,
+   "explain": "Carboxylic acids are strong enough to decompose hydrogencarbonate."
+  },
+  {
+   "q": "In the acetate ion the two C–O bonds are:",
+   "options": [
+    "one double, one single",
+    "equal",
+    "both triple",
+    "unequal single bonds"
+   ],
+   "answer": 1,
+   "explain": "Two equivalent resonance structures make them identical."
+  },
+  {
+   "q": "Why is acetic acid more acidic than phenol?",
+   "options": [
+    "it has more H atoms",
+    "its anion shares the charge between two equal O atoms",
+    "phenol has no resonance",
+    "acetic acid is aromatic"
+   ],
+   "answer": 1,
+   "explain": "In phenoxide the charge moves onto less electronegative carbons."
+  },
+  {
+   "q": "The strongest acid is:",
+   "options": [
+    "CH₃COOH",
+    "ClCH₂COOH",
+    "Cl₂CHCOOH",
+    "Cl₃CCOOH"
+   ],
+   "answer": 3,
+   "explain": "Three Cl atoms: the strongest –I effect, pKa ≈ 0.7."
+  },
+  {
+   "q": "A lower pKa means:",
+   "options": [
+    "a weaker acid",
+    "a stronger acid",
+    "a weaker base only",
+    "no change"
+   ],
+   "answer": 1,
+   "explain": "pKa = −log Ka; lower pKa, larger Ka."
+  }
+ ],
+ "simulation": {
+  "decision": "NOT_REQUIRED",
+  "reason": "The reasoning is qualitative (charge spread by resonance and by the –I effect) and the one trend is a short monotonic ladder, carried by the drawn resonance, the comparison table and the quiz."
+ },
+ "related": [
+  "carboxylic-acid-dimers",
+  "carboxyl-group-structure-naming"
+ ]
+}
