@@ -1,0 +1,129 @@
+{
+ "slug": "decarboxylation-and-reduction",
+ "title": "Losing CO₂: Decarboxylation, Kolbe Electrolysis and Reduction",
+ "class": 12,
+ "subject": "Chemistry",
+ "chapter": "Aldehydes, Ketones and Carboxylic Acids",
+ "objective": "How the –COOH group itself changes: soda lime removes it as CO₂ (one carbon less), Kolbe electrolysis joins two alkyl groups, and LiAlH₄ or diborane reduces it to a primary alcohol, while NaBH₄ cannot.",
+ "fill": [
+  {
+   "q": "Soda lime is a mixture of NaOH and ____.",
+   "a": "CaO"
+  },
+  {
+   "q": "Sodium acetate heated with soda lime gives ____.",
+   "a": "methane"
+  },
+  {
+   "q": "Kolbe electrolysis of sodium acetate gives ____.",
+   "a": "ethane"
+  },
+  {
+   "q": "LiAlH₄ reduces a carboxylic acid to a ____ alcohol.",
+   "a": "primary"
+  }
+ ],
+ "tf": [
+  {
+   "q": "Decarboxylation with soda lime gives an alkane with one carbon less.",
+   "a": true,
+   "explain": "The carboxyl carbon leaves as CO₂."
+  },
+  {
+   "q": "NaBH₄ reduces carboxylic acids to alcohols.",
+   "a": false,
+   "explain": "NaBH₄ does not reduce –COOH."
+  },
+  {
+   "q": "In Kolbe electrolysis the alkane forms at the cathode.",
+   "a": false,
+   "explain": "It forms at the anode."
+  }
+ ],
+ "ar": [
+  {
+   "a": "Sodium butanoate gives propane with soda lime.",
+   "r": "One carbon is removed as CO₂.",
+   "answer": 0,
+   "explain": "R explains A."
+  },
+  {
+   "a": "Kolbe electrolysis doubles the alkyl chain.",
+   "r": "Two alkyl radicals formed at the anode join.",
+   "answer": 0,
+   "explain": "R explains A."
+  }
+ ],
+ "mcq": [
+  {
+   "q": "The by-product of soda-lime decarboxylation is:",
+   "options": [
+    "Na₂CO₃",
+    "NaCl",
+    "CaCO₃ only",
+    "H₂"
+   ],
+   "answer": 0,
+   "explain": "RCOONa + NaOH → RH + Na₂CO₃."
+  },
+  {
+   "q": "Kolbe electrolysis of sodium propanoate gives:",
+   "options": [
+    "ethane",
+    "propane",
+    "butane",
+    "hexane"
+   ],
+   "answer": 2,
+   "explain": "Two ethyl groups: CH₃CH₂–CH₂CH₃."
+  },
+  {
+   "q": "Diborane converts CH₃COOH into:",
+   "options": [
+    "CH₃CHO",
+    "CH₃CH₂OH",
+    "CH₄",
+    "C₂H₆"
+   ],
+   "answer": 1,
+   "explain": "Reduction to the primary alcohol."
+  }
+ ],
+ "num": [
+  {
+   "q": "How many carbons are in the alkane from Kolbe electrolysis of sodium acetate?",
+   "steps": [
+    "CH₃–CH₃"
+   ],
+   "answer": "2"
+  }
+ ],
+ "short": [
+  {
+   "q": "Write the anode reactions in the Kolbe electrolysis of sodium acetate.",
+   "lines": 5,
+   "solution": "CH₃COO⁻ − e⁻ → CH₃COO·; CH₃COO· → CH₃· + CO₂; CH₃· + ·CH₃ → C₂H₆."
+  }
+ ],
+ "match": {
+  "left": [
+   "soda lime, heat",
+   "Kolbe electrolysis",
+   "LiAlH₄",
+   "NaBH₄"
+  ],
+  "right": [
+   "alkane, one C less",
+   "R–R",
+   "no reduction of COOH",
+   "1° alcohol"
+  ],
+  "answer": [
+   0,
+   1,
+   3,
+   2
+  ],
+  "explain": "Each reagent matches what it does to RCOOH."
+ }
+}

@@ -1,0 +1,147 @@
+{
+ "status": "ready",
+ "class": 12,
+ "subject": "Chemistry",
+ "chapter": "Aldehydes, Ketones and Carboxylic Acids",
+ "video": {
+  "youtubeId": "coJCCTTmiU8"
+ },
+ "thumb": "thumb.jpg",
+ "id": "LEARN-C12-CHE-DECARBOXYLATION-REDUCTION",
+ "slug": "decarboxylation-and-reduction",
+ "topic": "Reduction and decarboxylation of carboxylic acids",
+ "title": "Losing CO₂: Decarboxylation, Kolbe Electrolysis and Reduction",
+ "series": 444,
+ "studioJob": "decarboxylation",
+ "reelId": "STUDIO-DECARBOXYLATION",
+ "summary": "How the –COOH group itself changes: soda lime removes it as CO₂ (one carbon less), Kolbe electrolysis joins two alkyl groups, and LiAlH₄ or diborane reduces it to a primary alcohol, while NaBH₄ cannot.",
+ "notes": {
+  "pdf": "notes.pdf",
+  "title": "19 – Reduction and Decarboxylation",
+  "driveDoc": "18zMAgKezjfIvjxnx8mlu_evv33eO2k7XzZMgHeAY4HA"
+ },
+ "tags": [
+  "decarboxylation",
+  "soda lime",
+  "Kolbe electrolysis",
+  "reduction",
+  "LiAlH4",
+  "diborane"
+ ],
+ "keyPoints": [
+  "**Soda lime** (NaOH + CaO), heat: RCOONa → **R–H** + Na₂CO₃, an alkane with **one carbon less** (CH₃COONa → CH₄).",
+  "Simple arrow picture: the O⁻ lone pair forms C=O, the C–C pair moves onto the alkyl carbon, **CO₂ leaves**; the carbanion takes an H.",
+  "**Kolbe electrolysis**: at the anode RCOO⁻ → R· + CO₂; **2R· → R–R** (CH₃COONa → ethane).",
+  "**LiAlH₄** or **B₂H₆**, then H₃O⁺: RCOOH → **RCH₂OH**; **NaBH₄ does not** reduce –COOH."
+ ],
+ "sections": [
+  {
+   "h": "Three ways the COOH changes",
+   "blocks": [
+    {
+     "table": {
+      "head": [
+       "Reaction",
+       "Reagent",
+       "Product (from acetic acid / acetate)"
+      ],
+      "rows": [
+       [
+        "Decarboxylation",
+        "soda lime, heat",
+        "CH₄ (one carbon less)"
+       ],
+       [
+        "Kolbe electrolysis",
+        "electrolysis of CH₃COONa (aq)",
+        "C₂H₆ (two CH₃ joined)"
+       ],
+       [
+        "Reduction",
+        "LiAlH₄ or B₂H₆, then H₃O⁺",
+        "CH₃CH₂OH (1° alcohol)"
+       ]
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "h": "Kolbe electrolysis at the anode",
+   "blocks": [
+    {
+     "list": [
+      "CH₃COO⁻ − e⁻ → CH₃COO·",
+      "CH₃COO· → CH₃· + CO₂",
+      "CH₃· + ·CH₃ → CH₃–CH₃"
+     ]
+    }
+   ]
+  }
+ ],
+ "quiz": [
+  {
+   "q": "Sodium acetate heated with soda lime gives:",
+   "options": [
+    "methane",
+    "ethane",
+    "ethene",
+    "acetone"
+   ],
+   "answer": 0,
+   "explain": "One carbon is lost as CO₂ (Na₂CO₃)."
+  },
+  {
+   "q": "Kolbe electrolysis of sodium acetate gives:",
+   "options": [
+    "methane",
+    "ethane",
+    "propane",
+    "ethanol"
+   ],
+   "answer": 1,
+   "explain": "Two methyl radicals join."
+  },
+  {
+   "q": "Which reagent does NOT reduce a carboxylic acid?",
+   "options": [
+    "LiAlH₄",
+    "B₂H₆",
+    "NaBH₄",
+    "all reduce it"
+   ],
+   "answer": 2,
+   "explain": "NaBH₄ does not reduce the carboxyl group."
+  },
+  {
+   "q": "Soda lime is a mixture of:",
+   "options": [
+    "NaOH and CaO",
+    "Na₂CO₃ and CaCO₃",
+    "NaCl and lime",
+    "KOH and MgO"
+   ],
+   "answer": 0,
+   "explain": "NaOH and CaO, 3 : 1."
+  },
+  {
+   "q": "Sodium propanoate with soda lime gives:",
+   "options": [
+    "methane",
+    "ethane",
+    "propane",
+    "butane"
+   ],
+   "answer": 1,
+   "explain": "Three carbons minus one: ethane."
+  }
+ ],
+ "simulation": {
+  "decision": "NOT_REQUIRED",
+  "reason": "Three fixed reactions whose only quantity is a carbon count (−1, ×2, unchanged), carried by the board, the table and the quiz; there is nothing for a student to vary."
+ },
+ "related": [
+  "esterification-and-oh-reactions",
+  "preparing-carboxylic-acids"
+ ]
+}
