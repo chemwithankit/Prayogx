@@ -1,0 +1,129 @@
+{
+ "slug": "uses-of-aldehydes-ketones",
+ "title": "Uses of Aldehydes and Ketones: From Formalin to Vanilla",
+ "class": 12,
+ "subject": "Chemistry",
+ "chapter": "Aldehydes, Ketones and Carboxylic Acids",
+ "objective": "Where aldehydes and ketones turn up in daily life: formalin and Bakelite from formaldehyde, acetic acid from acetaldehyde, acetone as a solvent, and vanillin, cinnamaldehyde and benzaldehyde as smells and flavours, each explained from its C=O group.",
+ "fill": [
+  {
+   "q": "Formalin is an aqueous solution of about 40% ____.",
+   "a": "formaldehyde"
+  },
+  {
+   "q": "Phenol and formaldehyde give the polymer ____.",
+   "a": "Bakelite"
+  },
+  {
+   "q": "The flavouring compound of vanilla is ____.",
+   "a": "vanillin"
+  },
+  {
+   "q": "Oxidation of acetaldehyde gives ____ acid.",
+   "a": "acetic"
+  }
+ ],
+ "tf": [
+  {
+   "q": "Acetone is used as an industrial solvent.",
+   "a": true,
+   "explain": "Acetone and ethyl methyl ketone are common solvents."
+  },
+  {
+   "q": "Formaldehyde is less reactive than acetone towards nucleophiles.",
+   "a": false,
+   "explain": "HCHO has no alkyl groups, so it is the most reactive."
+  },
+  {
+   "q": "Benzaldehyde is used in perfumery and dyes.",
+   "a": true,
+   "explain": "It has an almond odour."
+  }
+ ],
+ "ar": [
+  {
+   "a": "Acetone mixes with water and also dissolves grease.",
+   "r": "It has a polar C=O group and non-polar CH₃ groups.",
+   "answer": 0,
+   "explain": "R explains A."
+  },
+  {
+   "a": "Formalin preserves biological specimens.",
+   "r": "Formaldehyde joins protein chains through –CH₂– bridges.",
+   "answer": 0,
+   "explain": "R explains A."
+  }
+ ],
+ "mcq": [
+  {
+   "q": "The compound used to preserve biological specimens is:",
+   "options": [
+    "acetone",
+    "formaldehyde",
+    "acetaldehyde",
+    "benzaldehyde"
+   ],
+   "answer": 1,
+   "explain": "Formalin is ~40% HCHO in water."
+  },
+  {
+   "q": "Cinnamaldehyde gives the flavour of:",
+   "options": [
+    "vanilla",
+    "almond",
+    "cinnamon",
+    "lemon"
+   ],
+   "answer": 2,
+   "explain": "Cinnamaldehyde comes from cinnamon."
+  },
+  {
+   "q": "In the first step of Bakelite formation, the HCHO carbon is attacked by:",
+   "options": [
+    "the O⁻ of phenoxide",
+    "the ring carbon ortho to O⁻",
+    "water",
+    "H⁺"
+   ],
+   "answer": 1,
+   "explain": "The ring's C=C π electrons at the ortho carbon attack."
+  }
+ ],
+ "num": [
+  {
+   "q": "How many alkyl groups are attached to the carbonyl carbon of formaldehyde?",
+   "steps": [
+    "HCHO: two H atoms, no alkyl group"
+   ],
+   "answer": "0"
+  }
+ ],
+ "short": [
+  {
+   "q": "Explain, with curved arrows, the first step of the reaction of phenoxide with formaldehyde.",
+   "lines": 5,
+   "solution": "The O⁻ lone pair moves into the ring; the ring C=C at the ortho carbon attacks the HCHO carbon; the C=O π pair moves onto O. After proton transfer the ring carries –CH₂OH."
+  }
+ ],
+ "match": {
+  "left": [
+   "formaldehyde",
+   "acetaldehyde",
+   "acetone",
+   "vanillin"
+  ],
+  "right": [
+   "formalin, Bakelite",
+   "acetic acid",
+   "vanilla flavour",
+   "solvent"
+  ],
+  "answer": [
+   0,
+   1,
+   3,
+   2
+  ],
+  "explain": "Each compound matches its main use."
+ }
+}
