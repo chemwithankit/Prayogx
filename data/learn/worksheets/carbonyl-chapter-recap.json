@@ -1,0 +1,129 @@
+{
+ "slug": "carbonyl-chapter-recap",
+ "title": "Aldehydes, Ketones and Carboxylic Acids: The Whole Chapter in One Minute",
+ "class": 12,
+ "subject": "Chemistry",
+ "chapter": "Aldehydes, Ketones and Carboxylic Acids",
+ "objective": "The chapter in one place: the polar, planar C=O group; how aldehydes and ketones are made; nucleophilic addition; aldol and Cannizzaro; Tollens' and Fehling's tests; and why carboxylic acids are acidic.",
+ "fill": [
+  {
+   "q": "The carbonyl carbon is ____ hybridised.",
+   "a": "sp²"
+  },
+  {
+   "q": "In C=O, the oxygen carries a partial ____ charge.",
+   "a": "negative"
+  },
+  {
+   "q": "Aldehydes without an α-hydrogen give the ____ reaction.",
+   "a": "Cannizzaro"
+  },
+  {
+   "q": "Aldehydes give a silver mirror with ____ reagent.",
+   "a": "Tollens'"
+  }
+ ],
+ "tf": [
+  {
+   "q": "The typical reaction of aldehydes and ketones is nucleophilic addition.",
+   "a": true,
+   "explain": "The nucleophile attacks the δ⁺ carbonyl carbon."
+  },
+  {
+   "q": "Ketones give a red precipitate with Fehling's solution.",
+   "a": false,
+   "explain": "Ketones generally do not reduce Fehling's solution."
+  },
+  {
+   "q": "Electron-withdrawing groups increase the acidity of carboxylic acids.",
+   "a": true,
+   "explain": "They stabilise the carboxylate ion."
+  }
+ ],
+ "ar": [
+  {
+   "a": "Aldehydes and ketones undergo nucleophilic addition.",
+   "r": "The carbonyl carbon is δ⁺.",
+   "answer": 0,
+   "explain": "R explains A."
+  },
+  {
+   "a": "Carboxylic acids are more acidic than alcohols.",
+   "r": "The carboxylate ion is stabilised by resonance.",
+   "answer": 0,
+   "explain": "R explains A."
+  }
+ ],
+ "mcq": [
+  {
+   "q": "Ozonolysis of an alkene gives:",
+   "options": [
+    "alcohols",
+    "aldehydes and/or ketones",
+    "carboxylic acids only",
+    "alkanes"
+   ],
+   "answer": 1,
+   "explain": "O₃, then Zn/H₂O, cleaves the C=C."
+  },
+  {
+   "q": "Which compound gives the aldol reaction?",
+   "options": [
+    "HCHO",
+    "C₆H₅CHO",
+    "CH₃CHO",
+    "(CH₃)₃CCHO"
+   ],
+   "answer": 2,
+   "explain": "CH₃CHO has α-hydrogens."
+  },
+  {
+   "q": "HCN adds to a ketone to give:",
+   "options": [
+    "an oxime",
+    "a cyanohydrin",
+    "an acetal",
+    "a hydrazone"
+   ],
+   "answer": 1,
+   "explain": "The CN⁻ attacks the carbonyl carbon."
+  }
+ ],
+ "num": [
+  {
+   "q": "What is the approximate bond angle around the carbonyl carbon, in degrees?",
+   "steps": [
+    "sp², trigonal planar"
+   ],
+   "answer": "120"
+  }
+ ],
+ "short": [
+  {
+   "q": "Give a chemical test to distinguish ethanal from propanone.",
+   "lines": 5,
+   "solution": "Ethanal gives a silver mirror with Tollens' reagent (and a red-brown precipitate with Fehling's solution); propanone does not."
+  }
+ ],
+ "match": {
+  "left": [
+   "HCN",
+   "NH₂OH",
+   "no α-H, conc. alkali",
+   "RCOCl, H₂/Pd–BaSO₄"
+  ],
+  "right": [
+   "Cannizzaro",
+   "oxime",
+   "aldehyde",
+   "cyanohydrin"
+  ],
+  "answer": [
+   3,
+   1,
+   0,
+   2
+  ],
+  "explain": "Each reagent or condition matches its product or reaction."
+ }
+}
