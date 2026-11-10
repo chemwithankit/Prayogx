@@ -1,0 +1,129 @@
+{
+ "slug": "uses-of-carboxylic-acids",
+ "title": "Vinegar to Nylon: Uses of Carboxylic Acids",
+ "class": 12,
+ "subject": "Chemistry",
+ "chapter": "Aldehydes, Ketones and Carboxylic Acids",
+ "objective": "Where carboxylic acids are used: formic acid in industry, acetic acid as a solvent and vinegar, adipic acid for nylon-6,6 through amide links, sodium benzoate as a food preservative, fatty-acid salts as soap, and aspirin as a medicine.",
+ "fill": [
+  {
+   "q": "Vinegar is a dilute solution of ____ acid.",
+   "a": "acetic"
+  },
+  {
+   "q": "Sodium benzoate is used as a food ____.",
+   "a": "preservative"
+  },
+  {
+   "q": "Nylon-6,6 is made from hexamethylenediamine and ____ acid.",
+   "a": "adipic"
+  },
+  {
+   "q": "Soap is the sodium salt of a long-chain ____ acid.",
+   "a": "fatty"
+  }
+ ],
+ "tf": [
+  {
+   "q": "Formic acid is used in the leather and electroplating industries.",
+   "a": true,
+   "explain": "NCERT lists rubber, textile, dyeing, leather and electroplating."
+  },
+  {
+   "q": "In nylon-6,6 the units are joined by ester links.",
+   "a": false,
+   "explain": "They are joined by amide links –CO–NH–."
+  },
+  {
+   "q": "Aspirin is a carboxylic acid.",
+   "a": true,
+   "explain": "Acetylsalicylic acid carries a –COOH group."
+  }
+ ],
+ "ar": [
+  {
+   "a": "Soap removes grease.",
+   "r": "Its non-polar tail dissolves grease and its ionic head stays in water.",
+   "answer": 0,
+   "explain": "R explains A."
+  },
+  {
+   "a": "Adipic acid can form a long polymer chain with a diamine.",
+   "r": "It has a –COOH group at each end.",
+   "answer": 0,
+   "explain": "R explains A."
+  }
+ ],
+ "mcq": [
+  {
+   "q": "The IUPAC name of adipic acid is:",
+   "options": [
+    "butanedioic acid",
+    "pentanedioic acid",
+    "hexanedioic acid",
+    "heptanedioic acid"
+   ],
+   "answer": 2,
+   "explain": "HOOC–(CH₂)₄–COOH has six carbons."
+  },
+  {
+   "q": "Esters of benzoic acid are used in:",
+   "options": [
+    "perfumery",
+    "explosives",
+    "fertilisers",
+    "batteries"
+   ],
+   "answer": 0,
+   "explain": "They have pleasant smells."
+  },
+  {
+   "q": "When an amide link forms in nylon, the molecule lost is:",
+   "options": [
+    "CO₂",
+    "H₂O",
+    "HCl",
+    "NH₃"
+   ],
+   "answer": 1,
+   "explain": "A condensation reaction loses water."
+  }
+ ],
+ "num": [
+  {
+   "q": "How many carbon atoms are in one molecule of adipic acid?",
+   "steps": [
+    "HOOC–(CH₂)₄–COOH"
+   ],
+   "answer": "6"
+  }
+ ],
+ "short": [
+  {
+   "q": "Explain how an amide link forms between a –COOH group and an –NH₂ group.",
+   "lines": 5,
+   "solution": "The N lone pair attacks the carbonyl carbon; water is lost; –CO–NH– forms."
+  }
+ ],
+ "match": {
+  "left": [
+   "formic acid",
+   "acetic acid",
+   "adipic acid",
+   "sodium benzoate"
+  ],
+  "right": [
+   "vinegar",
+   "nylon-6,6",
+   "food preservative",
+   "leather, electroplating"
+  ],
+  "answer": [
+   3,
+   0,
+   1,
+   2
+  ],
+  "explain": "Each acid matches one use."
+ }
+}
