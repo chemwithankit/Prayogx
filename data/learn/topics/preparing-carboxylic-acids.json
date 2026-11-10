@@ -1,0 +1,159 @@
+{
+ "status": "ready",
+ "class": 12,
+ "subject": "Chemistry",
+ "chapter": "Aldehydes, Ketones and Carboxylic Acids",
+ "video": {
+  "youtubeId": "LqCbMkLXKuI"
+ },
+ "thumb": "thumb.jpg",
+ "id": "LEARN-C12-CHE-PREPARING-CARBOXYLIC-ACIDS",
+ "slug": "preparing-carboxylic-acids",
+ "topic": "Preparing carboxylic acids",
+ "title": "Preparing Carboxylic Acids: Four Routes",
+ "series": 440,
+ "studioJob": "carboxylic-prep",
+ "reelId": "STUDIO-CARBOXYLIC-PREP",
+ "summary": "Four ways to make a carboxylic acid: oxidising primary alcohols and aldehydes, oxidising alkylbenzenes, hydrolysing nitriles and esters, and adding a Grignard reagent to dry ice, which adds one carbon (mechanism with curved arrows).",
+ "notes": {
+  "pdf": "notes.pdf",
+  "title": "15 – Preparing Carboxylic Acids",
+  "driveDoc": "1PKRnfgE2wcfa4kAzz9qrydNqXP-cR6zgdqfPmNprHzU"
+ },
+ "tags": [
+  "preparation of carboxylic acids",
+  "oxidation",
+  "alkylbenzene",
+  "benzoic acid",
+  "nitrile hydrolysis",
+  "Grignard reagent",
+  "dry ice",
+  "CO2"
+ ],
+ "keyPoints": [
+  "**Oxidation**: RCH₂OH → RCHO → **RCOOH** with KMnO₄ or K₂Cr₂O₇; the carbon count stays the same.",
+  "**Alkylbenzenes** → **benzoic acid** with KMnO₄ (then H₃O⁺): the whole side chain becomes one COOH, if the carbon attached to the ring carries an H.",
+  "**Hydrolysis**: R–C≡N → amide → **RCOOH**; esters and acid chlorides also give acids.",
+  "**RMgX + CO₂** (dry ice), then H₃O⁺ → RCOOH with **one carbon more**: the C–Mg bond pair attacks the carbon of CO₂."
+ ],
+ "sections": [
+  {
+   "h": "The four routes",
+   "blocks": [
+    {
+     "table": {
+      "head": [
+       "Route",
+       "Starting material",
+       "Reagent",
+       "Product"
+      ],
+      "rows": [
+       [
+        "Oxidation",
+        "1° alcohol or aldehyde",
+        "KMnO₄ or K₂Cr₂O₇ (acid)",
+        "RCOOH (same C count)"
+       ],
+       [
+        "Side-chain oxidation",
+        "alkylbenzene (toluene)",
+        "KMnO₄/OH⁻, then H₃O⁺",
+        "benzoic acid"
+       ],
+       [
+        "Hydrolysis",
+        "nitrile, amide, ester, acid chloride",
+        "H₂O with H⁺ or OH⁻",
+        "RCOOH"
+       ],
+       [
+        "Grignard",
+        "R–X → RMgX",
+        "CO₂ (dry ice), then H₃O⁺",
+        "RCOOH (one C more)"
+       ]
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "h": "Grignard + CO₂, arrow by arrow",
+   "blocks": [
+    {
+     "list": [
+      "CH₃Br + Mg in dry ether → **CH₃MgBr**; its C–Mg bond is polar (C δ⁻).",
+      "The **C–Mg bond pair** attacks the carbon of **CO₂** (new C–C bond); a **C=O π pair** moves onto O.",
+      "This gives **CH₃COO⁻ ⁺MgBr**; **H₃O⁺** gives **CH₃COOH**: 1 C → 2 C."
+     ]
+    }
+   ]
+  }
+ ],
+ "quiz": [
+  {
+   "q": "Toluene → (alkaline KMnO₄, then H₃O⁺) gives:",
+   "options": [
+    "benzaldehyde",
+    "benzoic acid",
+    "phenol",
+    "benzyl alcohol"
+   ],
+   "answer": 1,
+   "explain": "The side chain is oxidised to –COOH."
+  },
+  {
+   "q": "Which route gives an acid with one carbon more than the starting halide?",
+   "options": [
+    "KMnO₄ oxidation",
+    "nitrile hydrolysis",
+    "RMgX + CO₂, then H₃O⁺",
+    "ester hydrolysis"
+   ],
+   "answer": 2,
+   "explain": "The carbon of CO₂ becomes the COOH carbon."
+  },
+  {
+   "q": "Partial hydrolysis of R–C≡N gives:",
+   "options": [
+    "an amine",
+    "an amide",
+    "an alcohol",
+    "an aldehyde"
+   ],
+   "answer": 1,
+   "explain": "Nitrile → amide → carboxylic acid."
+  },
+  {
+   "q": "Which is NOT oxidised to benzoic acid by KMnO₄?",
+   "options": [
+    "toluene",
+    "ethylbenzene",
+    "propylbenzene",
+    "tert-butylbenzene"
+   ],
+   "answer": 3,
+   "explain": "Its ring-attached carbon carries no H."
+  },
+  {
+   "q": "In CH₃MgBr + CO₂, the electrons that attack the CO₂ carbon come from:",
+   "options": [
+    "the Br lone pair",
+    "the C–Mg bond",
+    "the Mg atom's lone pair",
+    "a C=O bond of CO₂"
+   ],
+   "answer": 1,
+   "explain": "The polar C–Mg bond (C δ⁻) is the nucleophile."
+  }
+ ],
+ "simulation": {
+  "decision": "NOT_REQUIRED",
+  "reason": "Four fixed transformations: the worked board, the route table and the curved-arrow mechanism carry them, and the quiz and workbook practise choosing a route. There is no continuous variable to explore."
+ },
+ "related": [
+  "carboxyl-group-structure-naming",
+  "oxidation-reduction-aldehydes-ketones"
+ ]
+}

@@ -1,0 +1,123 @@
+{
+ "slug": "preparing-carboxylic-acids",
+ "title": "Preparing Carboxylic Acids: Four Routes",
+ "class": 12,
+ "subject": "Chemistry",
+ "chapter": "Aldehydes, Ketones and Carboxylic Acids",
+ "objective": "Four ways to make a carboxylic acid: oxidising primary alcohols and aldehydes, oxidising alkylbenzenes, hydrolysing nitriles and esters, and adding a Grignard reagent to dry ice, which adds one carbon (mechanism with curved arrows).",
+ "fill": [
+  {
+   "q": "Primary alcohols are oxidised to carboxylic acids by acidified K₂Cr₂O₇ or ____.",
+   "a": "KMnO₄"
+  },
+  {
+   "q": "Toluene on oxidation gives ____ acid.",
+   "a": "benzoic"
+  },
+  {
+   "q": "Partial hydrolysis of a nitrile gives an ____.",
+   "a": "amide"
+  },
+  {
+   "q": "RMgX + CO₂, then H₃O⁺, gives an acid with ____ carbon more.",
+   "a": "one"
+  }
+ ],
+ "tf": [
+  {
+   "q": "Oxidation of ethanol to ethanoic acid changes the number of carbons.",
+   "a": false,
+   "explain": "The carbon count stays the same."
+  },
+  {
+   "q": "Propylbenzene gives benzoic acid with hot KMnO₄.",
+   "a": true,
+   "explain": "The whole side chain becomes one COOH."
+  },
+  {
+   "q": "Esters give carboxylic acids on hydrolysis.",
+   "a": true,
+   "explain": "Acid hydrolysis gives the acid; basic hydrolysis gives its salt."
+  }
+ ],
+ "ar": [
+  {
+   "a": "tert-Butylbenzene is not oxidised to benzoic acid by KMnO₄.",
+   "r": "Its ring-attached carbon carries no H.",
+   "answer": 0,
+   "explain": "R explains A."
+  }
+ ],
+ "mcq": [
+  {
+   "q": "CH₃CH₂MgBr + CO₂, then H₃O⁺, gives:",
+   "options": [
+    "ethanoic acid",
+    "propanoic acid",
+    "butanoic acid",
+    "ethanol"
+   ],
+   "answer": 1,
+   "explain": "Two carbons + one from CO₂ = propanoic acid."
+  },
+  {
+   "q": "Dry ice is solid:",
+   "options": [
+    "water",
+    "CO₂",
+    "nitrogen",
+    "ammonia"
+   ],
+   "answer": 1,
+   "explain": "Solid carbon dioxide."
+  },
+  {
+   "q": "The species that attacks CO₂ in the Grignard route is:",
+   "options": [
+    "Br⁻",
+    "the C–Mg bond pair",
+    "Mg²⁺",
+    "H₃O⁺"
+   ],
+   "answer": 1,
+   "explain": "The polar C–Mg bond, carbon δ⁻."
+  }
+ ],
+ "num": [
+  {
+   "q": "How many carbons does the acid from CH₃Br via the Grignard route have?",
+   "steps": [
+    "CH₃COOH"
+   ],
+   "answer": "2"
+  }
+ ],
+ "short": [
+  {
+   "q": "Convert bromobenzene into benzoic acid.",
+   "lines": 5,
+   "solution": "C₆H₅Br + Mg (dry ether) → C₆H₅MgBr; + CO₂ → C₆H₅COO⁻ ⁺MgBr; + H₃O⁺ → C₆H₅COOH."
+  }
+ ],
+ "match": {
+  "left": [
+   "CH₃CH₂OH, KMnO₄",
+   "toluene, KMnO₄",
+   "RCN, H₃O⁺",
+   "CH₃MgBr, CO₂ then H₃O⁺"
+  ],
+  "right": [
+   "CH₃COOH",
+   "benzoic acid",
+   "CH₃COOH",
+   "RCOOH"
+  ],
+  "answer": [
+   2,
+   1,
+   3,
+   0
+  ],
+  "explain": "Each starting material and reagent gives that acid."
+ }
+}
