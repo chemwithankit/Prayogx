@@ -1,0 +1,166 @@
+{
+ "status": "ready",
+ "class": 12,
+ "subject": "Chemistry",
+ "chapter": "Aldehydes, Ketones and Carboxylic Acids",
+ "video": {
+  "youtubeId": "ruJYO5FCiCY"
+ },
+ "thumb": "thumb.jpg",
+ "id": "LEARN-C12-CHE-ESTERIFICATION",
+ "slug": "esterification-and-oh-reactions",
+ "topic": "Esterification and other reactions of the C–OH group",
+ "title": "Esterification and the C–OH Swap: Esters, Acid Chlorides, Anhydrides, Amides",
+ "series": 443,
+ "studioJob": "esterification",
+ "reelId": "STUDIO-ESTERIFICATION",
+ "summary": "Fruity esters from an acid and an alcohol, with the acid-catalysed mechanism drawn arrow by arrow, and three more ways to replace the –OH of –COOH: acid chlorides (best with SOCl₂), anhydrides and amides.",
+ "notes": {
+  "pdf": "notes.pdf",
+  "title": "18 – Esterification and Other Reactions of the C–OH Group",
+  "driveDoc": "1S0Ne9z5sYKGxrQaPd0E_uUT4GH85ePYFJ_4uB1uyDOA"
+ },
+ "tags": [
+  "esterification",
+  "ester",
+  "mechanism",
+  "acid chloride",
+  "thionyl chloride",
+  "anhydride",
+  "amide"
+ ],
+ "keyPoints": [
+  "**RCOOH + R′OH ⇌ RCOOR′ + H₂O** (conc. H₂SO₄): reversible; remove water or use excess alcohol.",
+  "Mechanism: **protonate C=O**, the **alcohol O adds** to C, a proton shift makes **–OH₂⁺**, **water leaves**, −H⁺ gives the **ester**.",
+  "The water's oxygen comes from the **acid**.",
+  "**SOCl₂** is the best reagent for **RCOCl**: SO₂ and HCl escape as gases (PCl₅ and PCl₃ also work).",
+  "**P₂O₅** dehydrates two acids to an **anhydride**; **NH₃** gives an ammonium salt that, heated, gives an **amide**."
+ ],
+ "sections": [
+  {
+   "h": "The mechanism",
+   "blocks": [
+    {
+     "list": [
+      "**H⁺** protonates the carbonyl O: the C becomes more δ⁺.",
+      "The **alcohol's O lone pair** adds to that C; the C=O π pair moves onto O.",
+      "A **proton shift** turns one –OH into **–OH₂⁺**.",
+      "An –OH lone pair re-forms C=O⁺ as **H₂O leaves**.",
+      "**−H⁺**: the ester. The water's O came from the acid."
+     ]
+    }
+   ]
+  },
+  {
+   "h": "Replacing the OH",
+   "blocks": [
+    {
+     "table": {
+      "head": [
+       "Reagent",
+       "Product",
+       "By-products"
+      ],
+      "rows": [
+       [
+        "R′OH, H⁺",
+        "ester RCOOR′",
+        "H₂O"
+       ],
+       [
+        "PCl₅",
+        "acid chloride RCOCl",
+        "POCl₃ + HCl"
+       ],
+       [
+        "PCl₃",
+        "acid chloride RCOCl",
+        "H₃PO₃"
+       ],
+       [
+        "SOCl₂",
+        "acid chloride RCOCl",
+        "SO₂ + HCl (gases)"
+       ],
+       [
+        "P₂O₅ or conc. H₂SO₄, heat",
+        "anhydride (RCO)₂O",
+        "H₂O"
+       ],
+       [
+        "NH₃, then heat",
+        "amide RCONH₂",
+        "H₂O (via RCOO⁻NH₄⁺)"
+       ]
+      ]
+     }
+    }
+   ]
+  }
+ ],
+ "quiz": [
+  {
+   "q": "CH₃COOH + C₂H₅OH, conc. H₂SO₄, gives:",
+   "options": [
+    "ethyl acetate + water",
+    "acetaldehyde",
+    "diethyl ether",
+    "acetic anhydride"
+   ],
+   "answer": 0,
+   "explain": "Esterification: CH₃COOC₂H₅ + H₂O."
+  },
+  {
+   "q": "The first step of acid-catalysed esterification is:",
+   "options": [
+    "loss of water",
+    "protonation of the carbonyl oxygen",
+    "attack of OH⁻",
+    "loss of CO₂"
+   ],
+   "answer": 1,
+   "explain": "Protonation makes the carbonyl carbon more electrophilic."
+  },
+  {
+   "q": "In esterification, the water's oxygen comes from:",
+   "options": [
+    "the alcohol",
+    "the acid",
+    "the catalyst",
+    "the air"
+   ],
+   "answer": 1,
+   "explain": "The acid's –OH becomes –OH₂⁺ and leaves as water."
+  },
+  {
+   "q": "SOCl₂ is preferred for making acid chlorides because:",
+   "options": [
+    "it is cheapest",
+    "its by-products are gases",
+    "it gives an ester",
+    "it needs no heating ever"
+   ],
+   "answer": 1,
+   "explain": "SO₂ and HCl escape, leaving pure RCOCl."
+  },
+  {
+   "q": "Heating ammonium acetate gives:",
+   "options": [
+    "acetamide",
+    "ethylamine",
+    "acetic anhydride",
+    "methane"
+   ],
+   "answer": 0,
+   "explain": "RCOO⁻NH₄⁺ loses water: RCONH₂."
+  }
+ ],
+ "simulation": {
+  "decision": "NOT_REQUIRED",
+  "reason": "A fixed mechanism and a set of reagent → product swaps, carried by the arrow-by-arrow board, the table and the quiz. No continuous variable for a student to explore."
+ },
+ "related": [
+  "acidity-of-carboxylic-acids",
+  "preparing-carboxylic-acids"
+ ]
+}

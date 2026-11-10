@@ -1,0 +1,129 @@
+{
+ "slug": "esterification-and-oh-reactions",
+ "title": "Esterification and the C–OH Swap: Esters, Acid Chlorides, Anhydrides, Amides",
+ "class": 12,
+ "subject": "Chemistry",
+ "chapter": "Aldehydes, Ketones and Carboxylic Acids",
+ "objective": "Fruity esters from an acid and an alcohol, with the acid-catalysed mechanism drawn arrow by arrow, and three more ways to replace the –OH of –COOH: acid chlorides (best with SOCl₂), anhydrides and amides.",
+ "fill": [
+  {
+   "q": "Acid + alcohol with conc. H₂SO₄ gives an ____ and water.",
+   "a": "ester"
+  },
+  {
+   "q": "The best reagent for converting RCOOH to RCOCl is ____.",
+   "a": "SOCl₂"
+  },
+  {
+   "q": "Dehydration of acetic acid with P₂O₅ gives acetic ____.",
+   "a": "anhydride"
+  },
+  {
+   "q": "Heating ammonium acetate gives ____.",
+   "a": "acetamide"
+  }
+ ],
+ "tf": [
+  {
+   "q": "Esterification is reversible.",
+   "a": true,
+   "explain": "Remove water or use excess alcohol to push it forward."
+  },
+  {
+   "q": "In esterification the water's oxygen comes from the alcohol.",
+   "a": false,
+   "explain": "It comes from the acid's –OH."
+  },
+  {
+   "q": "PCl₃ converts RCOOH to RCOCl with H₃PO₃ as by-product.",
+   "a": true,
+   "explain": "3RCOOH + PCl₃ → 3RCOCl + H₃PO₃."
+  }
+ ],
+ "ar": [
+  {
+   "a": "The carbonyl oxygen is protonated first in esterification.",
+   "r": "Protonation makes the carbonyl carbon more electrophilic.",
+   "answer": 0,
+   "explain": "R explains A."
+  },
+  {
+   "a": "SOCl₂ gives purer acid chlorides than PCl₅.",
+   "r": "SO₂ and HCl escape as gases.",
+   "answer": 0,
+   "explain": "R explains A."
+  }
+ ],
+ "mcq": [
+  {
+   "q": "The leaving group in the esterification mechanism is:",
+   "options": [
+    "OH⁻",
+    "H₂O",
+    "H⁺",
+    "R′O⁻"
+   ],
+   "answer": 1,
+   "explain": "–OH₂⁺ leaves as neutral water."
+  },
+  {
+   "q": "CH₃COOH + SOCl₂ gives:",
+   "options": [
+    "CH₃COCl + SO₂ + HCl",
+    "CH₃CHO",
+    "CH₃COOCH₃",
+    "CH₃CONH₂"
+   ],
+   "answer": 0,
+   "explain": "An acid chloride; the other products are gases."
+  },
+  {
+   "q": "Which pushes the ester equilibrium forward?",
+   "options": [
+    "adding water",
+    "removing water",
+    "adding ester",
+    "cooling to 0 °C"
+   ],
+   "answer": 1,
+   "explain": "Le Chatelier: remove a product."
+  }
+ ],
+ "num": [
+  {
+   "q": "How many molecules of RCOOH react with one PCl₃?",
+   "steps": [
+    "3RCOOH + PCl₃ → 3RCOCl + H₃PO₃"
+   ],
+   "answer": "3"
+  }
+ ],
+ "short": [
+  {
+   "q": "Write the mechanism of the acid-catalysed esterification of CH₃COOH with C₂H₅OH.",
+   "lines": 5,
+   "solution": "Protonate C=O; C₂H₅OH's O lone pair adds to C (C=O π to O); proton shift gives –OH₂⁺; an OH lone pair re-forms C=O as H₂O leaves; −H⁺ gives CH₃COOC₂H₅."
+  }
+ ],
+ "match": {
+  "left": [
+   "R′OH, H⁺",
+   "SOCl₂",
+   "P₂O₅",
+   "NH₃, heat"
+  ],
+  "right": [
+   "anhydride",
+   "ester",
+   "amide",
+   "acid chloride"
+  ],
+  "answer": [
+   1,
+   3,
+   0,
+   2
+  ],
+  "explain": "Each reagent replaces the OH with that group."
+ }
+}
