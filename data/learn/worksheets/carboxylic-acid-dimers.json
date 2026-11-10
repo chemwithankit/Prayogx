@@ -1,0 +1,114 @@
+{
+ "slug": "carboxylic-acid-dimers",
+ "title": "Why Carboxylic Acids Boil So High: Hydrogen-Bonded Dimers",
+ "class": 12,
+ "subject": "Chemistry",
+ "chapter": "Aldehydes, Ketones and Carboxylic Acids",
+ "objective": "Four molecules of about the same mass boil from 0 °C to 118 °C. Carboxylic acids win because two hydrogen bonds join them into dimers that survive even in the vapour; the same dimers double acetic acid's measured molar mass in benzene.",
+ "fill": [
+  {
+   "q": "Two acetic acid molecules held by two hydrogen bonds form a ____.",
+   "a": "dimer"
+  },
+  {
+   "q": "Acetic acid's molar mass measured in benzene is about ____.",
+   "a": "120"
+  },
+  {
+   "q": "Aliphatic acids are miscible with water up to ____ carbons.",
+   "a": "four"
+  }
+ ],
+ "tf": [
+  {
+   "q": "Carboxylic acids boil higher than alcohols of similar molar mass.",
+   "a": true,
+   "explain": "More extensive hydrogen-bonded association: dimers."
+  },
+  {
+   "q": "Hydrogen bonds in carboxylic acids are completely broken in the vapour phase.",
+   "a": false,
+   "explain": "Most acids remain dimers in the vapour."
+  },
+  {
+   "q": "Benzoic acid dissolves readily in cold water.",
+   "a": false,
+   "explain": "It is nearly insoluble in cold water."
+  }
+ ],
+ "ar": [
+  {
+   "a": "Acetic acid shows an abnormal molar mass in benzene.",
+   "r": "It dimerises through hydrogen bonds.",
+   "answer": 0,
+   "explain": "R explains A."
+  },
+  {
+   "a": "Hexanoic acid is less soluble in water than ethanoic acid.",
+   "r": "Its larger hydrocarbon part does not hydrogen-bond with water.",
+   "answer": 0,
+   "explain": "R explains A."
+  }
+ ],
+ "mcq": [
+  {
+   "q": "Increasing b.p.:",
+   "options": [
+    "butane < propanal < propan-1-ol < ethanoic acid",
+    "propanal < butane < ethanoic acid < propan-1-ol",
+    "ethanoic acid < propan-1-ol < propanal < butane",
+    "butane < propan-1-ol < propanal < ethanoic acid"
+   ],
+   "answer": 0,
+   "explain": "No H-bonding < dipole–dipole < H-bonding < dimers."
+  },
+  {
+   "q": "In the dimer, the hydrogen of O–H bonds to:",
+   "options": [
+    "the CH₃ carbon",
+    "the C=O oxygen of the other molecule",
+    "the other O–H hydrogen",
+    "the carboxyl carbon"
+   ],
+   "answer": 1,
+   "explain": "O–H···O=C."
+  }
+ ],
+ "num": [
+  {
+   "q": "How many hydrogen bonds hold one carboxylic acid dimer together?",
+   "steps": [
+    "O–H···O=C, twice"
+   ],
+   "answer": "2"
+  }
+ ],
+ "short": [
+  {
+   "q": "Draw the acetic acid dimer and explain why acetic acid boils at 118 °C while propan-1-ol boils at 97 °C.",
+   "lines": 5,
+   "solution": "Two CH₃COOH molecules joined by two O–H···O=C hydrogen bonds; this stronger, more extensive association (persisting even in the vapour) needs more energy to overcome than the single H-bonds of the alcohol."
+  }
+ ],
+ "match": {
+  "left": [
+   "butane",
+   "propanal",
+   "propan-1-ol",
+   "ethanoic acid"
+  ],
+  "right": [
+   "49 °C",
+   "118 °C",
+   "≈ 0 °C",
+   "97 °C"
+  ],
+  "answer": [
+   2,
+   0,
+   3,
+   1
+  ],
+  "explain": "Each compound matches its boiling point."
+ }
+}

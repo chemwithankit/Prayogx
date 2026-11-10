@@ -1,0 +1,166 @@
+{
+ "status": "ready",
+ "class": 12,
+ "subject": "Chemistry",
+ "chapter": "Aldehydes, Ketones and Carboxylic Acids",
+ "video": {
+  "youtubeId": "bKODXOzBp30"
+ },
+ "thumb": "thumb.jpg",
+ "id": "LEARN-C12-CHE-CARBOXYLIC-ACID-DIMERS",
+ "slug": "carboxylic-acid-dimers",
+ "topic": "Why carboxylic acids boil so high: dimers",
+ "title": "Why Carboxylic Acids Boil So High: Hydrogen-Bonded Dimers",
+ "series": 441,
+ "studioJob": "acid-dimers",
+ "reelId": "STUDIO-ACID-DIMERS",
+ "summary": "Four molecules of about the same mass boil from 0 °C to 118 °C. Carboxylic acids win because two hydrogen bonds join them into dimers that survive even in the vapour; the same dimers double acetic acid's measured molar mass in benzene.",
+ "notes": {
+  "pdf": "notes.pdf",
+  "title": "16 – Why Carboxylic Acids Boil So High",
+  "driveDoc": "1GhtBUnnXWbZ2vnJao2TcjPV32bA4EcdjhVI9os7pC3k"
+ },
+ "tags": [
+  "boiling point",
+  "hydrogen bonding",
+  "dimer",
+  "carboxylic acids",
+  "abnormal molar mass",
+  "solubility"
+ ],
+ "keyPoints": [
+  "Similar mass (≈ 60), very different b.p.: butane ≈ 0 °C, propanal 49 °C, propan-1-ol 97 °C, **acetic acid 118 °C**.",
+  "The O–H of one acid bonds to the C=O oxygen of another, and back: **two hydrogen bonds** make a cyclic **dimer**.",
+  "The association is stronger and more extensive than in alcohols, and the dimers survive **even in the vapour**.",
+  "In benzene, acetic acid's measured molar mass is about **120**, double the true 60 (abnormal molar mass).",
+  "Acids up to **C4** are miscible with water; solubility falls as the chain grows."
+ ],
+ "sections": [
+  {
+   "h": "Same mass, different boiling points",
+   "blocks": [
+    {
+     "table": {
+      "head": [
+       "Compound",
+       "Family",
+       "M (g/mol)",
+       "b.p."
+      ],
+      "rows": [
+       [
+        "butane",
+        "alkane",
+        "58",
+        "≈ 0 °C"
+       ],
+       [
+        "propanal",
+        "aldehyde",
+        "58",
+        "49 °C"
+       ],
+       [
+        "propan-1-ol",
+        "alcohol",
+        "60",
+        "97 °C"
+       ],
+       [
+        "ethanoic acid",
+        "carboxylic acid",
+        "60",
+        "118 °C"
+       ]
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "h": "The dimer",
+   "blocks": [
+    {
+     "p": "Two acid molecules face each other: each O–H hydrogen bonds to the other molecule's C=O oxygen (**O–H···O=C**, twice), closing an eight-membered ring. Breaking this association needs more energy, so the boiling point is high; most acids remain dimers even in the vapour phase and in aprotic solvents such as benzene."
+    }
+   ]
+  },
+  {
+   "h": "Solubility",
+   "blocks": [
+    {
+     "list": [
+      "Up to four carbons: miscible with water (hydrogen bonds with water).",
+      "Longer chains: the hydrocarbon part grows, solubility falls.",
+      "Benzoic acid: nearly insoluble in cold water."
+     ]
+    }
+   ]
+  }
+ ],
+ "quiz": [
+  {
+   "q": "Which has the highest boiling point (all M ≈ 60)?",
+   "options": [
+    "butane",
+    "propanal",
+    "propan-1-ol",
+    "ethanoic acid"
+   ],
+   "answer": 3,
+   "explain": "Carboxylic acids form hydrogen-bonded dimers."
+  },
+  {
+   "q": "An acetic acid dimer is held together by:",
+   "options": [
+    "one hydrogen bond",
+    "two hydrogen bonds",
+    "a covalent bond",
+    "an ionic bond"
+   ],
+   "answer": 1,
+   "explain": "O–H···O=C on each side of the ring."
+  },
+  {
+   "q": "The molar mass of acetic acid measured in benzene is about:",
+   "options": [
+    "30",
+    "60",
+    "120",
+    "240"
+   ],
+   "answer": 2,
+   "explain": "It is mostly dimerised, so colligative methods see about twice 60."
+  },
+  {
+   "q": "Carboxylic acids in the vapour phase exist mainly as:",
+   "options": [
+    "single molecules",
+    "dimers",
+    "ions",
+    "polymers"
+   ],
+   "answer": 1,
+   "explain": "The hydrogen bonds are not broken completely even in the vapour."
+  },
+  {
+   "q": "Why does solubility in water fall from butanoic to hexanoic acid?",
+   "options": [
+    "fewer H-bonds per COOH",
+    "a larger hydrocarbon part",
+    "the acid gets stronger",
+    "dimers break up"
+   ],
+   "answer": 1,
+   "explain": "Only COOH bonds with water; the growing non-polar chain does not."
+  }
+ ],
+ "simulation": {
+  "decision": "NOT_REQUIRED",
+  "reason": "A comparison of evidence (four boiling points) and one structural reason (the dimer), carried by the bar chart, the drawn dimer and the quiz. There is no variable a student could usefully manipulate beyond the table."
+ },
+ "related": [
+  "carboxyl-group-structure-naming",
+  "uses-of-aldehydes-ketones"
+ ]
+}
