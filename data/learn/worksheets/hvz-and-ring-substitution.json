@@ -1,0 +1,129 @@
+{
+ "slug": "hvz-and-ring-substitution",
+ "title": "HVZ Reaction and Why Benzoic Acid Goes Meta",
+ "class": 12,
+ "subject": "Chemistry",
+ "chapter": "Aldehydes, Ketones and Carboxylic Acids",
+ "objective": "Two places a carboxylic acid can be substituted: the α-carbon (HVZ: X₂ and red phosphorus, then water) and the benzene ring of an aromatic acid, where –COOH is deactivating and meta-directing and blocks Friedel-Crafts reactions.",
+ "fill": [
+  {
+   "q": "In the HVZ reaction the halogen is used with a small amount of red ____.",
+   "a": "phosphorus"
+  },
+  {
+   "q": "CH₃COOH gives ____ acid in the HVZ reaction with Cl₂.",
+   "a": "chloroacetic"
+  },
+  {
+   "q": "–COOH on a benzene ring is a ____-directing group.",
+   "a": "meta"
+  },
+  {
+   "q": "Nitration of benzoic acid gives ____-nitrobenzoic acid.",
+   "a": "m"
+  }
+ ],
+ "tf": [
+  {
+   "q": "HVZ replaces an α-hydrogen by a halogen.",
+   "a": true,
+   "explain": "The product is an α-halo acid."
+  },
+  {
+   "q": "(CH₃)₃CCOOH undergoes the HVZ reaction.",
+   "a": false,
+   "explain": "It has no α-hydrogen."
+  },
+  {
+   "q": "Benzoic acid undergoes Friedel-Crafts acylation easily.",
+   "a": false,
+   "explain": "The ring is deactivated and AlCl₃ bonds to –COOH."
+  }
+ ],
+ "ar": [
+  {
+   "a": "Benzoic acid is nitrated at the meta position.",
+   "r": "–COOH withdraws electrons and leaves positive charge at ortho and para.",
+   "answer": 0,
+   "explain": "R explains A."
+  },
+  {
+   "a": "Trimethylacetic acid does not give the HVZ reaction.",
+   "r": "It has no α-hydrogen.",
+   "answer": 0,
+   "explain": "R explains A."
+  }
+ ],
+ "mcq": [
+  {
+   "q": "The HVZ product from propanoic acid with Br₂ / red P, then water, is:",
+   "options": [
+    "3-bromopropanoic acid",
+    "2-bromopropanoic acid",
+    "bromoethane",
+    "propanoyl bromide"
+   ],
+   "answer": 1,
+   "explain": "The bromine goes to the α-carbon (C-2)."
+  },
+  {
+   "q": "In benzoic acid, positive charge from resonance appears at:",
+   "options": [
+    "meta only",
+    "ortho and para",
+    "ipso only",
+    "all ring carbons equally"
+   ],
+   "answer": 1,
+   "explain": "So the electrophile goes meta."
+  },
+  {
+   "q": "Bromination of benzoic acid (Br₂/FeBr₃) gives:",
+   "options": [
+    "o-bromobenzoic acid",
+    "p-bromobenzoic acid",
+    "m-bromobenzoic acid",
+    "bromobenzene"
+   ],
+   "answer": 2,
+   "explain": "Meta substitution."
+  }
+ ],
+ "num": [
+  {
+   "q": "How many α-hydrogens does acetic acid have?",
+   "steps": [
+    "The CH₃ carbon is the α-carbon."
+   ],
+   "answer": "3"
+  }
+ ],
+ "short": [
+  {
+   "q": "Give two reasons why benzoic acid does not undergo Friedel-Crafts reaction.",
+   "lines": 5,
+   "solution": "The ring is deactivated by –COOH; the catalyst AlCl₃ (a Lewis acid) bonds to the carboxyl group."
+  }
+ ],
+ "match": {
+  "left": [
+   "X₂ / red P, then H₂O",
+   "conc. HNO₃ + H₂SO₄ on benzoic acid",
+   "Br₂ / FeBr₃ on benzoic acid",
+   "RCOCl / AlCl₃ on benzoic acid"
+  ],
+  "right": [
+   "m-nitrobenzoic acid",
+   "α-halo acid",
+   "no reaction",
+   "m-bromobenzoic acid"
+  ],
+  "answer": [
+   1,
+   0,
+   3,
+   2
+  ],
+  "explain": "Each reagent matches its product."
+ }
+}

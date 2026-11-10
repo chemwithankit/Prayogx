@@ -1,0 +1,152 @@
+{
+ "status": "ready",
+ "class": 12,
+ "subject": "Chemistry",
+ "chapter": "Aldehydes, Ketones and Carboxylic Acids",
+ "video": {
+  "youtubeId": "A2OaoLBXhTM"
+ },
+ "thumb": "thumb.jpg",
+ "id": "LEARN-C12-CHE-HVZ-RING-SUBSTITUTION",
+ "slug": "hvz-and-ring-substitution",
+ "topic": "Hell-Volhard-Zelinsky reaction and ring substitution",
+ "title": "HVZ Reaction and Why Benzoic Acid Goes Meta",
+ "series": 445,
+ "studioJob": "hvz-ring",
+ "reelId": "STUDIO-HVZ-RING",
+ "summary": "Two places a carboxylic acid can be substituted: the α-carbon (HVZ: X₂ and red phosphorus, then water) and the benzene ring of an aromatic acid, where –COOH is deactivating and meta-directing and blocks Friedel-Crafts reactions.",
+ "notes": {
+  "pdf": "notes.pdf",
+  "title": "20 – HVZ Reaction and Ring Substitution",
+  "driveDoc": "11ywf9HqoM2MQtyaCWP2TJwNhbpW4ohwqp08d_69My4I"
+ },
+ "tags": [
+  "HVZ reaction",
+  "alpha-halo acid",
+  "red phosphorus",
+  "meta-directing",
+  "benzoic acid",
+  "Friedel-Crafts"
+ ],
+ "keyPoints": [
+  "**HVZ**: R–CH₂–COOH + X₂ / **red P**, then H₂O → **R–CHX–COOH** (an α-halo acid).",
+  "HVZ needs **at least one α-hydrogen**: CH₃COOH → ClCH₂COOH.",
+  "On a benzene ring –COOH pulls π electrons: **positive charge at ortho and para**, so it is **deactivating and meta-directing**.",
+  "Benzoic acid → **m-nitrobenzoic acid** (nitration), **m-bromobenzoic acid** (bromination); **no Friedel-Crafts** (AlCl₃ bonds to COOH)."
+ ],
+ "sections": [
+  {
+   "h": "The two substitutions",
+   "blocks": [
+    {
+     "table": {
+      "head": [
+       "Where",
+       "Reagent",
+       "Product"
+      ],
+      "rows": [
+       [
+        "α-carbon (HVZ)",
+        "Cl₂ or Br₂ / red P, then H₂O",
+        "α-halo acid, e.g. ClCH₂COOH"
+       ],
+       [
+        "Ring: nitration",
+        "conc. HNO₃ + conc. H₂SO₄",
+        "m-nitrobenzoic acid"
+       ],
+       [
+        "Ring: bromination",
+        "Br₂ / FeBr₃",
+        "m-bromobenzoic acid"
+       ],
+       [
+        "Ring: Friedel-Crafts",
+        "R–Cl or RCOCl / AlCl₃",
+        "no reaction"
+       ]
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "h": "Why meta",
+   "blocks": [
+    {
+     "list": [
+      "A ring C=C pair moves towards the ring–C bond; the C=O π pair moves onto O.",
+      "The resonance structures put + charge at the ortho and para carbons.",
+      "The meta carbon is least electron-poor, so the electrophile attacks there."
+     ]
+    }
+   ]
+  }
+ ],
+ "quiz": [
+  {
+   "q": "The HVZ reaction uses:",
+   "options": [
+    "Br₂ / FeBr₃",
+    "Br₂ / red P, then H₂O",
+    "NaOH / CaO",
+    "LiAlH₄"
+   ],
+   "answer": 1,
+   "explain": "Halogen with a little red phosphorus, then water."
+  },
+  {
+   "q": "Which acid does NOT undergo HVZ?",
+   "options": [
+    "CH₃COOH",
+    "CH₃CH₂COOH",
+    "(CH₃)₃CCOOH",
+    "(CH₃)₂CHCOOH"
+   ],
+   "answer": 2,
+   "explain": "It has no α-hydrogen."
+  },
+  {
+   "q": "Nitration of benzoic acid gives mainly:",
+   "options": [
+    "o-nitrobenzoic acid",
+    "m-nitrobenzoic acid",
+    "p-nitrobenzoic acid",
+    "nitrobenzene"
+   ],
+   "answer": 1,
+   "explain": "–COOH is meta-directing."
+  },
+  {
+   "q": "Towards electrophiles, –COOH on a benzene ring is:",
+   "options": [
+    "activating, o/p-directing",
+    "deactivating, meta-directing",
+    "activating, meta-directing",
+    "deactivating, o/p-directing"
+   ],
+   "answer": 1,
+   "explain": "It withdraws electrons by resonance."
+  },
+  {
+   "q": "Benzoic acid does not give Friedel-Crafts reactions because:",
+   "options": [
+    "it is a gas",
+    "AlCl₃ bonds to the carboxyl group and the ring is deactivated",
+    "it has no hydrogen on the ring",
+    "it is too reactive"
+   ],
+   "answer": 1,
+   "explain": "Both reasons together."
+  }
+ ],
+ "simulation": {
+  "decision": "NOT_REQUIRED",
+  "reason": "Two fixed reactions with fixed products; the reasoning (α-H present or not, resonance charges at ortho and para) is carried by the board, the table and the quiz, and there is no quantity for a student to vary."
+ },
+ "related": [
+  "decarboxylation-and-reduction",
+  "acidity-of-carboxylic-acids"
+ ]
+}
