@@ -1,0 +1,129 @@
+{
+ "slug": "aldehydes-ketones-acids-introduction",
+ "title": "Aldehydes, Ketones and Carboxylic Acids: Chapter Introduction",
+ "class": 12,
+ "subject": "Chemistry",
+ "chapter": "Aldehydes, Ketones and Carboxylic Acids",
+ "objective": "Vanilla, cinnamon, vinegar and nail-polish remover share one secret: the carbonyl group, C=O. What sits on the carbonyl carbon makes an aldehyde, a ketone or a carboxylic acid, and what this chapter will cover.",
+ "fill": [
+  {
+   "q": "Aldehydes, ketones and carboxylic acids all contain the ____ group.",
+   "a": "carbonyl"
+  },
+  {
+   "q": "A ketone has two ____ groups on the carbonyl carbon.",
+   "a": "carbon"
+  },
+  {
+   "q": "The acid in vinegar is ____ acid.",
+   "a": "acetic"
+  },
+  {
+   "q": "The smell of cinnamon comes from the aldehyde ____.",
+   "a": "cinnamaldehyde"
+  }
+ ],
+ "tf": [
+  {
+   "q": "Acetone is an aldehyde.",
+   "a": false,
+   "explain": "Acetone (CH₃COCH₃) is a ketone."
+  },
+  {
+   "q": "An aldehyde has at least one hydrogen on the carbonyl carbon.",
+   "a": true,
+   "explain": "R–CHO."
+  },
+  {
+   "q": "A carboxylic acid has an –OH group on the carbonyl carbon.",
+   "a": true,
+   "explain": "R–COOH."
+  }
+ ],
+ "ar": [
+  {
+   "a": "CH₃COCH₃ is a ketone.",
+   "r": "Its carbonyl carbon carries two carbon groups.",
+   "answer": 0,
+   "explain": "R explains A."
+  },
+  {
+   "a": "All three families are carbonyl compounds.",
+   "r": "Each contains a C=O group.",
+   "answer": 0,
+   "explain": "R explains A."
+  }
+ ],
+ "mcq": [
+  {
+   "q": "The functional group of a ketone is:",
+   "options": [
+    "–CHO",
+    ">C=O between two carbons",
+    "–COOH",
+    "–OH"
+   ],
+   "answer": 1,
+   "explain": "R–CO–R′."
+  },
+  {
+   "q": "Which is an aldehyde?",
+   "options": [
+    "CH₃COCH₃",
+    "CH₃CHO",
+    "CH₃COOH",
+    "CH₃OH"
+   ],
+   "answer": 1,
+   "explain": "CH₃CHO has an H on the carbonyl carbon."
+  },
+  {
+   "q": "Vanillin, the smell of vanilla, is:",
+   "options": [
+    "a ketone",
+    "an aldehyde",
+    "a carboxylic acid",
+    "an ester"
+   ],
+   "answer": 1,
+   "explain": "It carries a –CHO group."
+  }
+ ],
+ "num": [
+  {
+   "q": "How many hydrogens are on the carbonyl carbon of methanal (HCHO)?",
+   "steps": [
+    "Both groups on the carbonyl carbon are H"
+   ],
+   "answer": "2"
+  }
+ ],
+ "short": [
+  {
+   "q": "How does a ketone differ from an aldehyde in structure?",
+   "lines": 5,
+   "solution": "In a ketone the carbonyl carbon carries two carbon groups; in an aldehyde it carries at least one hydrogen."
+  }
+ ],
+ "match": {
+  "left": [
+   "CH₃CHO",
+   "CH₃COCH₃",
+   "CH₃COOH",
+   "vanilla"
+  ],
+  "right": [
+   "vanillin, an aldehyde",
+   "carboxylic acid",
+   "aldehyde",
+   "ketone"
+  ],
+  "answer": [
+   2,
+   3,
+   1,
+   0
+  ],
+  "explain": "Each compound or source matches its family."
+ }
+}
