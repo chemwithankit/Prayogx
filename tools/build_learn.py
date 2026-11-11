@@ -8,7 +8,7 @@
 Sources of truth:
   data/learn/curriculum.json         classes (9, 10, 11, 12, Extra) -> subjects -> ordered chapters (with aliases)
   data/learn/topics/<slug>.json      one per Doodle topic (format in docs/LEARN_PUBLISHING.md)
-Each topic's own assets sit beside its page: learn/<slug>/notes.pdf (the same approved Drive notes, exported),
+Each topic's own assets sit beside its page: learn/<slug>/notes.pdf (the same approved Drive notes, exported), learn/<slug>/handwritten-notes.pdf (chalk videos: the board pages),
 learn/<slug>/img/ (the notes' diagrams), learn/<slug>/thumb.jpg (the reel cover) and, only when the topic's
 simulation decision is REQUIRED, learn/<slug>/sim.html.
 
@@ -441,6 +441,19 @@ def worksheet_link(t):
         esc("PrayogX - %s - workbook.pdf" % t["title"]), icon("doc", 22), kb)
 
 
+def handwritten_link(t):
+    """the board's own pages as handwritten notes (owner 2026-11-11: the chalk series' board carousel as a PDF), when
+    learn/<slug>/handwritten-notes.pdf exists"""
+    f = os.path.join(OUT, t["slug"], "handwritten-notes.pdf")
+    if not os.path.exists(f):
+        return ""
+    kb = os.path.getsize(f) / 1024.0
+    size = "%.1f MB" % (kb / 1024) if kb > 1024 else "%d KB" % kb
+    return ('<a class="dl" href="handwritten-notes.pdf" download="%s"><span class="ico">%s</span><span><span class="t">Download the '
+            'handwritten notes</span><br><span class="s">PDF, %s · every board page from the video, written out in chalk</span></span></a>') % (
+        esc("PrayogX - %s - handwritten notes.pdf" % t["title"]), icon("doc", 22), size)
+
+
 def topic_page(t, by_slug, ready, cur):
     slug = t["slug"]
     c, s, chp = chapter_of_topic(cur, ready, t)
@@ -478,13 +491,14 @@ def topic_page(t, by_slug, ready, cur):
     <p class="lede">%(lede)s</p>
     <a class="dl" href="%(pdf)s" download="%(dlname)s"><span class="ico">%(doc)s</span>
       <span><span class="t">Download the short notes</span><br><span class="s">PDF, %(size)s · solved examples, practice set and answer key</span></span></a>
+    %(handwritten)s
     %(worksheet)s
     %(upnext)s
     <div class="pn">%(prev)s%(allv)s</div>
   </div>
 </div>""" % {"yt": esc(t["video"]["youtubeId"]), "ytpath": "watch?v=" if t["video"].get("format") == "long" else "shorts/", "title": esc(t["title"]), "ig": ('<a href="%s" rel="noopener" target="_blank">Watch on Instagram</a> · ' % esc(t["video"]["instagram"])) if t["video"].get("instagram") else "",
              "ctx": esc("%s%s" % (chapnum, t["subject"])),
-             "lede": inline(t["summary"]), "worksheet": worksheet_link(t), "pdf": esc(t["notes"]["pdf"]), "dlname": esc("PrayogX - %s - short notes.pdf" % t["title"]),
+             "lede": inline(t["summary"]), "worksheet": worksheet_link(t), "handwritten": handwritten_link(t), "pdf": esc(t["notes"]["pdf"]), "dlname": esc("PrayogX - %s - short notes.pdf" % t["title"]),
              "size": size, "doc": icon("doc", 22), "upnext": upnext,
              "allv": ('<a class="pnb" href="%s">%s All videos in this chapter</a>' % (esc(chap_href), icon("back", 16))) if next_t else "",
              "prev": ('<a class="pnb" href="../%s/">%s Previous: %s</a>' % (esc(prev_t["slug"]), icon("back", 16), esc(prev_t["title"])) if prev_t else "")}
