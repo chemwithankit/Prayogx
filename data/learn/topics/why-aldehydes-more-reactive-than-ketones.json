@@ -1,0 +1,171 @@
+{
+ "status": "ready",
+ "class": 12,
+ "subject": "Chemistry",
+ "chapter": "Aldehydes, Ketones and Carboxylic Acids",
+ "video": {
+  "youtubeId": "jgkftjVtjdQ"
+ },
+ "thumb": "thumb.jpg",
+ "id": "LEARN-C12-CHE-CARBONYL-REACTIVITY",
+ "slug": "why-aldehydes-more-reactive-than-ketones",
+ "topic": "Why aldehydes are generally more reactive than ketones",
+ "title": "Aldehyde vs Ketone: Why Aldehydes React Faster",
+ "series": 453,
+ "studioJob": "carbonyl-reactivity",
+ "reelId": "STUDIO-CARBONYL-REACTIVITY",
+ "summary": "Both have the same C=O, yet a nucleophile attacks an aldehyde faster. Two reasons: alkyl groups push electrons (+I) and lower the carbonyl carbon's δ+, and a ketone's two groups crowd the path to it. So HCHO > CH₃CHO > CH₃COCH₃.",
+ "notes": {
+  "pdf": "notes.pdf",
+  "title": "06 – Why Aldehydes Are More Reactive than Ketones",
+  "driveDoc": "1B4ZW_8KG5-r2eFqzWQ9V4L7e6cSaLfH1_Ar1v1G6S5Q"
+ },
+ "tags": [
+  "reactivity",
+  "nucleophilic addition",
+  "inductive effect",
+  "steric hindrance",
+  "carbonyl group"
+ ],
+ "keyPoints": [
+  "A nucleophile attacks the **δ+ carbonyl carbon**: the more positive and the more open it is, the faster the attack.",
+  "**Electronic**: alkyl groups release electrons (**+I**) and lower the δ+; an aldehyde has one, a ketone two.",
+  "**Steric**: an aldehyde's carbonyl carbon carries a small H; a ketone's carries two larger groups that **block the approach**.",
+  "Order (nucleophilic addition): **HCHO > CH₃CHO > CH₃COCH₃**."
+ ],
+ "sections": [
+  {
+   "h": "Two reasons at one carbon",
+   "blocks": [
+    {
+     "table": {
+      "head": [
+       "Reason",
+       "Aldehyde (CH₃CHO)",
+       "Ketone (CH₃COCH₃)"
+      ],
+      "rows": [
+       [
+        "Alkyl groups on C=O",
+        "one CH₃ (+ one H)",
+        "two CH₃"
+       ],
+       [
+        "δ+ on the carbonyl carbon",
+        "higher",
+        "lower (more +I)"
+       ],
+       [
+        "Path for the nucleophile",
+        "open (small H)",
+        "crowded (two CH₃)"
+       ],
+       [
+        "Reactivity",
+        "faster",
+        "slower"
+       ]
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "h": "Order of reactivity",
+   "blocks": [
+    {
+     "table": {
+      "head": [
+       "Compound",
+       "Groups on C=O",
+       "Rank"
+      ],
+      "rows": [
+       [
+        "methanal, HCHO",
+        "H, H",
+        "1 (most reactive)"
+       ],
+       [
+        "ethanal, CH₃CHO",
+        "CH₃, H",
+        "2"
+       ],
+       [
+        "propanone, CH₃COCH₃",
+        "CH₃, CH₃",
+        "3"
+       ]
+      ]
+     }
+    }
+   ]
+  }
+ ],
+ "quiz": [
+  {
+   "q": "Most reactive towards nucleophilic addition:",
+   "options": [
+    "acetone",
+    "ethanal",
+    "methanal",
+    "butanone"
+   ],
+   "answer": 2,
+   "explain": "Two H: no +I group and least crowding."
+  },
+  {
+   "q": "Alkyl groups make the carbonyl carbon:",
+   "options": [
+    "more δ+",
+    "less δ+",
+    "negative",
+    "unchanged"
+   ],
+   "answer": 1,
+   "explain": "They release electrons (+I)."
+  },
+  {
+   "q": "\"Two large groups block the nucleophile\" describes the:",
+   "options": [
+    "inductive effect",
+    "resonance effect",
+    "steric effect",
+    "hydrogen bonding"
+   ],
+   "answer": 2,
+   "explain": "Crowding is a steric effect."
+  },
+  {
+   "q": "How many alkyl groups are on propanone's carbonyl carbon?",
+   "options": [
+    "0",
+    "1",
+    "2",
+    "3"
+   ],
+   "answer": 2,
+   "explain": "Two CH₃ groups."
+  },
+  {
+   "q": "Correct order of reactivity:",
+   "options": [
+    "HCHO > CH₃CHO > CH₃COCH₃",
+    "CH₃COCH₃ > CH₃CHO > HCHO",
+    "CH₃CHO > HCHO > CH₃COCH₃",
+    "all equal"
+   ],
+   "answer": 0,
+   "explain": "Fewer alkyl groups, faster attack."
+  }
+ ],
+ "simulation": {
+  "decision": "NOT_REQUIRED",
+  "reason": "The owner's decision (2026-11-12): no simulation for this chapter's remaining videos."
+ },
+ "related": [
+  "nucleophilic-addition-carbonyl",
+  "nucleophilic-addition-reactions",
+  "physical-properties-aldehydes-ketones"
+ ]
+}

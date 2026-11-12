@@ -1,0 +1,129 @@
+{
+ "slug": "why-aldehydes-more-reactive-than-ketones",
+ "title": "Aldehyde vs Ketone: Why Aldehydes React Faster",
+ "class": 12,
+ "subject": "Chemistry",
+ "chapter": "Aldehydes, Ketones and Carboxylic Acids",
+ "objective": "Both have the same C=O, yet a nucleophile attacks an aldehyde faster. Two reasons: alkyl groups push electrons (+I) and lower the carbonyl carbon's δ+, and a ketone's two groups crowd the path to it. So HCHO > CH₃CHO > CH₃COCH₃.",
+ "fill": [
+  {
+   "q": "A nucleophile attacks the carbonyl ____ atom.",
+   "a": "carbon"
+  },
+  {
+   "q": "Alkyl groups release electrons; this is the +____ effect.",
+   "a": "I"
+  },
+  {
+   "q": "Blocking of the nucleophile by large groups is a ____ effect.",
+   "a": "steric"
+  },
+  {
+   "q": "The most reactive carbonyl compound towards nucleophiles is ____.",
+   "a": "methanal"
+  }
+ ],
+ "tf": [
+  {
+   "q": "A ketone has two alkyl groups on its carbonyl carbon.",
+   "a": true,
+   "explain": "Propanone has two CH₃ groups."
+  },
+  {
+   "q": "Alkyl groups make the carbonyl carbon more positive.",
+   "a": false,
+   "explain": "They release electrons and lower the δ+."
+  },
+  {
+   "q": "Acetaldehyde is more reactive than acetone towards HCN.",
+   "a": true,
+   "explain": "One CH₃ instead of two."
+  }
+ ],
+ "ar": [
+  {
+   "a": "Ketones are less reactive than aldehydes.",
+   "r": "Two alkyl groups lower the δ+ and crowd the carbonyl carbon.",
+   "answer": 0,
+   "explain": "R explains A."
+  },
+  {
+   "a": "Methanal is the most reactive aldehyde.",
+   "r": "It has two H and no alkyl group on the carbonyl carbon.",
+   "answer": 0,
+   "explain": "R explains A."
+  }
+ ],
+ "mcq": [
+  {
+   "q": "Most reactive towards nucleophilic addition:",
+   "options": [
+    "acetone",
+    "ethanal",
+    "methanal",
+    "butanone"
+   ],
+   "answer": 2,
+   "explain": "Two H on the carbonyl carbon."
+  },
+  {
+   "q": "Two reasons aldehydes react faster:",
+   "options": [
+    "resonance and H-bonding",
+    "+I effect and steric hindrance",
+    "mass and polarity",
+    "acidity and basicity"
+   ],
+   "answer": 1,
+   "explain": "Electronic and steric."
+  },
+  {
+   "q": "Increasing reactivity:",
+   "options": [
+    "HCHO < CH₃CHO < CH₃COCH₃",
+    "CH₃COCH₃ < CH₃CHO < HCHO",
+    "CH₃CHO < HCHO < CH₃COCH₃",
+    "all equal"
+   ],
+   "answer": 1,
+   "explain": "More alkyl groups, slower."
+  }
+ ],
+ "num": [
+  {
+   "q": "How many alkyl groups are on the carbonyl carbon of propanone?",
+   "steps": [
+    "count the CH₃ groups"
+   ],
+   "answer": "2"
+  }
+ ],
+ "short": [
+  {
+   "q": "Why is benzaldehyde less reactive than ethanal in nucleophilic addition?",
+   "lines": 5,
+   "solution": "The benzene ring's resonance with the C=O lowers the carbonyl carbon's δ+."
+  }
+ ],
+ "match": {
+  "left": [
+   "Electronic reason",
+   "Steric reason",
+   "Most reactive",
+   "Least reactive of the three"
+  ],
+  "right": [
+   "large groups block the nucleophile",
+   "HCHO",
+   "CH₃COCH₃",
+   "+I effect lowers δ+"
+  ],
+  "answer": [
+   3,
+   0,
+   1,
+   2
+  ],
+  "explain": "Each idea matches its meaning."
+ }
+}
