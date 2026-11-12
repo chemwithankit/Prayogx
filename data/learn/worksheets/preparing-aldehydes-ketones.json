@@ -1,0 +1,129 @@
+{
+ "slug": "preparing-aldehydes-ketones",
+ "title": "Making Aldehydes and Ketones: Methods and Named Reactions",
+ "class": 12,
+ "subject": "Chemistry",
+ "chapter": "Aldehydes, Ketones and Carboxylic Acids",
+ "objective": "Four routes make both aldehydes and ketones (from alcohols, alkenes and alkynes); named reactions make only one: Rosenmund, Stephen, Etard and Gatterman-Koch for aldehydes; Grignard on nitriles, dialkylcadmium and Friedel-Crafts acylation for ketones.",
+ "fill": [
+  {
+   "q": "Oxidation of a primary alcohol gives an ____.",
+   "a": "aldehyde"
+  },
+  {
+   "q": "Rosenmund reduction uses H₂ over palladium on ____.",
+   "a": "BaSO₄"
+  },
+  {
+   "q": "The Etard reaction converts toluene into ____.",
+   "a": "benzaldehyde"
+  },
+  {
+   "q": "Benzene and RCOCl with anhydrous AlCl₃ give an aryl ____.",
+   "a": "ketone"
+  }
+ ],
+ "tf": [
+  {
+   "q": "Ozonolysis of an alkene can give aldehydes, ketones or both.",
+   "a": true,
+   "explain": "Depends on the groups on the double-bond carbons."
+  },
+  {
+   "q": "Hydration of ethyne gives propanone.",
+   "a": false,
+   "explain": "Ethyne gives ethanal; other alkynes give ketones."
+  },
+  {
+   "q": "The Stephen reaction goes through an imine.",
+   "a": true,
+   "explain": "RCN → RCH=NH → RCHO."
+  }
+ ],
+ "ar": [
+  {
+   "a": "Rosenmund reduction stops at the aldehyde.",
+   "r": "BaSO₄ poisons the Pd catalyst.",
+   "answer": 0,
+   "explain": "R explains A."
+  },
+  {
+   "a": "Dialkylcadmium converts an acyl chloride into a ketone.",
+   "r": "R′ replaces Cl on the acyl group.",
+   "answer": 0,
+   "explain": "R explains A."
+  }
+ ],
+ "mcq": [
+  {
+   "q": "Gatterman-Koch reaction uses:",
+   "options": [
+    "CO + HCl",
+    "CrO₂Cl₂",
+    "SnCl₂/HCl",
+    "R₂Cd"
+   ],
+   "answer": 0,
+   "explain": "With anhydrous AlCl₃ (or CuCl)."
+  },
+  {
+   "q": "A ketone is made from a nitrile using:",
+   "options": [
+    "SnCl₂/HCl",
+    "a Grignard reagent, then hydrolysis",
+    "H₂, Pd–BaSO₄",
+    "O₃"
+   ],
+   "answer": 1,
+   "explain": "RCN + R′MgX → RCOR′."
+  },
+  {
+   "q": "Oxidation of a secondary alcohol gives:",
+   "options": [
+    "an aldehyde",
+    "a ketone",
+    "a carboxylic acid",
+    "an ether"
+   ],
+   "answer": 1,
+   "explain": "2° → ketone."
+  }
+ ],
+ "num": [
+  {
+   "q": "How many named reactions in this topic make benzaldehyde (Etard, Gatterman-Koch)?",
+   "steps": [
+    "count them"
+   ],
+   "answer": "2"
+  }
+ ],
+ "short": [
+  {
+   "q": "How would you make acetophenone from benzene?",
+   "lines": 5,
+   "solution": "Friedel-Crafts acylation: benzene + CH₃COCl with anhydrous AlCl₃ gives C₆H₅COCH₃."
+  }
+ ],
+ "match": {
+  "left": [
+   "Rosenmund",
+   "Stephen",
+   "Etard",
+   "Friedel-Crafts acylation"
+  ],
+  "right": [
+   "RCOCl, H₂, Pd–BaSO₄",
+   "toluene, CrO₂Cl₂",
+   "RCN, SnCl₂/HCl, H₃O⁺",
+   "benzene, RCOCl, AlCl₃"
+  ],
+  "answer": [
+   0,
+   2,
+   1,
+   3
+  ],
+  "explain": "Each named reaction matches its reagents."
+ }
+}

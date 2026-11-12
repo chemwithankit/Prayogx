@@ -1,0 +1,187 @@
+{
+ "status": "ready",
+ "class": 12,
+ "subject": "Chemistry",
+ "chapter": "Aldehydes, Ketones and Carboxylic Acids",
+ "video": {
+  "youtubeId": "TtR3_C6sN0E"
+ },
+ "thumb": "thumb.jpg",
+ "id": "LEARN-C12-CHE-CARBONYL-PREP",
+ "slug": "preparing-aldehydes-ketones",
+ "topic": "Preparing aldehydes and ketones",
+ "title": "Making Aldehydes and Ketones: Methods and Named Reactions",
+ "series": 451,
+ "studioJob": "carbonyl-prep",
+ "reelId": "STUDIO-CARBONYL-PREP",
+ "summary": "Four routes make both aldehydes and ketones (from alcohols, alkenes and alkynes); named reactions make only one: Rosenmund, Stephen, Etard and Gatterman-Koch for aldehydes; Grignard on nitriles, dialkylcadmium and Friedel-Crafts acylation for ketones.",
+ "notes": {
+  "pdf": "notes.pdf",
+  "title": "04 – Preparing Aldehydes and Ketones",
+  "driveDoc": "14tK0mQQJEfp9id2xqHHbtW2sY4gto1-cFchUHEtrSGM"
+ },
+ "tags": [
+  "preparation",
+  "Rosenmund reduction",
+  "Stephen reaction",
+  "Etard reaction",
+  "Gatterman-Koch",
+  "Friedel-Crafts acylation",
+  "ozonolysis"
+ ],
+ "keyPoints": [
+  "**Both**: oxidation or Cu/Ag **dehydrogenation** of alcohols (1° → aldehyde, 2° → ketone), **ozonolysis** of alkenes, **hydration** of alkynes (ethyne → ethanal).",
+  "**Rosenmund**: RCOCl + H₂, Pd–BaSO₄ → RCHO. **Stephen**: RCN + SnCl₂/HCl → imine → RCHO.",
+  "**Etard**: toluene + CrO₂Cl₂ → benzaldehyde. **Gatterman-Koch**: benzene + CO + HCl, anhyd. AlCl₃ → benzaldehyde.",
+  "**Ketones**: RCN + R′MgX then H₃O⁺; RCOCl + R′₂Cd; **Friedel-Crafts acylation** of benzene (RCOCl, anhyd. AlCl₃)."
+ ],
+ "sections": [
+  {
+   "h": "Routes for both",
+   "blocks": [
+    {
+     "table": {
+      "head": [
+       "From",
+       "Reagent",
+       "Gives"
+      ],
+      "rows": [
+       [
+        "1° / 2° alcohol",
+        "oxidation, or Cu/Ag + heat",
+        "aldehyde / ketone"
+       ],
+       [
+        "alkene",
+        "O₃, then Zn/H₂O",
+        "aldehydes and/or ketones"
+       ],
+       [
+        "alkyne",
+        "H₂O, HgSO₄, dil. H₂SO₄",
+        "ethanal from ethyne; others ketones"
+       ]
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "h": "Named reactions",
+   "blocks": [
+    {
+     "table": {
+      "head": [
+       "Reaction",
+       "Gives",
+       "Reagents"
+      ],
+      "rows": [
+       [
+        "Rosenmund reduction",
+        "aldehyde",
+        "RCOCl, H₂, Pd–BaSO₄"
+       ],
+       [
+        "Stephen reaction",
+        "aldehyde",
+        "RCN, SnCl₂/HCl, then H₃O⁺"
+       ],
+       [
+        "Etard reaction",
+        "benzaldehyde",
+        "toluene, CrO₂Cl₂, then H₃O⁺"
+       ],
+       [
+        "Gatterman-Koch",
+        "benzaldehyde",
+        "benzene, CO + HCl, anhyd. AlCl₃"
+       ],
+       [
+        "Grignard + nitrile",
+        "ketone",
+        "RCN, R′MgX, then H₃O⁺"
+       ],
+       [
+        "Dialkylcadmium",
+        "ketone",
+        "RCOCl, R′₂Cd"
+       ],
+       [
+        "Friedel-Crafts acylation",
+        "aryl ketone",
+        "benzene, RCOCl, anhyd. AlCl₃"
+       ]
+      ]
+     }
+    }
+   ]
+  }
+ ],
+ "quiz": [
+  {
+   "q": "Rosenmund reduction gives:",
+   "options": [
+    "an alcohol",
+    "an aldehyde",
+    "a ketone",
+    "an acid"
+   ],
+   "answer": 1,
+   "explain": "RCOCl + H₂ over Pd–BaSO₄ → RCHO."
+  },
+  {
+   "q": "Oxidation of a secondary alcohol gives:",
+   "options": [
+    "an aldehyde",
+    "a ketone",
+    "an acid",
+    "an ester"
+   ],
+   "answer": 1,
+   "explain": "2° alcohol → ketone."
+  },
+  {
+   "q": "The Etard reaction uses:",
+   "options": [
+    "CrO₂Cl₂",
+    "SnCl₂/HCl",
+    "R₂Cd",
+    "O₃"
+   ],
+   "answer": 0,
+   "explain": "Chromyl chloride on toluene."
+  },
+  {
+   "q": "Benzene + CO + HCl with anhydrous AlCl₃ gives:",
+   "options": [
+    "acetophenone",
+    "benzaldehyde",
+    "benzoic acid",
+    "phenol"
+   ],
+   "answer": 1,
+   "explain": "Gatterman-Koch reaction."
+  },
+  {
+   "q": "Friedel-Crafts acylation of benzene gives:",
+   "options": [
+    "an aldehyde",
+    "an aryl ketone",
+    "an alcohol",
+    "an ester"
+   ],
+   "answer": 1,
+   "explain": "C₆H₆ + RCOCl → C₆H₅COR."
+  }
+ ],
+ "simulation": {
+  "decision": "NOT_REQUIRED",
+  "reason": "A catalogue of reactions and reagents; the board shows each one, and there is no quantity for a student to vary."
+ },
+ "related": [
+  "aldehydes-vs-ketones-naming",
+  "nucleophilic-addition-carbonyl"
+ ]
+}
