@@ -1,0 +1,129 @@
+{
+ "slug": "carbonyl-group-structure-polarity",
+ "title": "The Carbonyl Group: Structure and Polarity",
+ "class": 12,
+ "subject": "Chemistry",
+ "chapter": "Aldehydes, Ketones and Carboxylic Acids",
+ "objective": "Why the carbon of C=O is every nucleophile's target: an sp², planar carbon, a π bond from sideways p–p overlap, and a polar C=O with δ⁺ carbon and δ⁻ oxygen, explained by resonance.",
+ "fill": [
+  {
+   "q": "The carbonyl carbon is ____ hybridised.",
+   "a": "sp²"
+  },
+  {
+   "q": "The bond angles around the carbonyl carbon are about ____ degrees.",
+   "a": "120"
+  },
+  {
+   "q": "In C=O, the oxygen carries a partial ____ charge.",
+   "a": "negative"
+  },
+  {
+   "q": "The π bond of C=O forms by sideways overlap of ____ orbitals.",
+   "a": "p"
+  }
+ ],
+ "tf": [
+  {
+   "q": "The carbonyl group is planar.",
+   "a": true,
+   "explain": "The carbon and the three atoms on it lie in one plane."
+  },
+  {
+   "q": "The carbonyl oxygen is electrophilic.",
+   "a": false,
+   "explain": "The oxygen is δ⁻ and nucleophilic; the carbon is electrophilic."
+  },
+  {
+   "q": "Carbonyl compounds are more polar than ethers.",
+   "a": true,
+   "explain": "C=O is strongly polarised."
+  }
+ ],
+ "ar": [
+  {
+   "a": "The carbonyl carbon is electrophilic.",
+   "r": "Oxygen pulls the C=O electrons towards itself.",
+   "answer": 0,
+   "explain": "R explains A."
+  },
+  {
+   "a": "The carbonyl group is planar.",
+   "r": "The carbonyl carbon is sp² hybridised.",
+   "answer": 0,
+   "explain": "R explains A."
+  }
+ ],
+ "mcq": [
+  {
+   "q": "The carbonyl carbon forms how many σ bonds?",
+   "options": [
+    "two",
+    "three",
+    "four",
+    "one"
+   ],
+   "answer": 1,
+   "explain": "sp² carbon: three σ bonds and one π bond."
+  },
+  {
+   "q": "Nucleophiles attack the carbonyl:",
+   "options": [
+    "oxygen",
+    "carbon",
+    "hydrogen",
+    "lone pair"
+   ],
+   "answer": 1,
+   "explain": "The δ⁺ carbon."
+  },
+  {
+   "q": "The dipolar resonance structure of C=O is:",
+   "options": [
+    "C⁻–O⁺",
+    "C⁺–O⁻",
+    "C=O⁺",
+    "C⁻=O"
+   ],
+   "answer": 1,
+   "explain": "The π electrons move onto oxygen."
+  }
+ ],
+ "num": [
+  {
+   "q": "How many lone pairs does the carbonyl oxygen carry?",
+   "steps": [
+    "Oxygen in C=O"
+   ],
+   "answer": "2"
+  }
+ ],
+ "short": [
+  {
+   "q": "Why do nucleophiles attack the carbon of a carbonyl group?",
+   "lines": 5,
+   "solution": "Oxygen is more electronegative, so the carbon is δ⁺ (electron-poor, electrophilic); the dipolar resonance structure C⁺–O⁻ shows it too."
+  }
+ ],
+ "match": {
+  "left": [
+   "sp² carbon",
+   "p–p sideways overlap",
+   "oxygen",
+   "carbon"
+  ],
+  "right": [
+   "δ⁺, electrophilic",
+   "planar, 120°",
+   "δ⁻, nucleophilic",
+   "π bond"
+  ],
+  "answer": [
+   1,
+   3,
+   2,
+   0
+  ],
+  "explain": "Each feature matches what it gives the carbonyl group."
+ }
+}
