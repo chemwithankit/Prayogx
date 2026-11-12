@@ -1,0 +1,181 @@
+{
+ "status": "ready",
+ "class": 12,
+ "subject": "Chemistry",
+ "chapter": "Aldehydes, Ketones and Carboxylic Acids",
+ "video": {
+  "youtubeId": "NexQbvaq1CI"
+ },
+ "thumb": "thumb.jpg",
+ "id": "LEARN-C12-CHE-CARBONYL-NAMING",
+ "slug": "aldehydes-vs-ketones-naming",
+ "topic": "Aldehydes vs ketones: naming and structure",
+ "title": "Aldehyde or Ketone? Structure and IUPAC Names",
+ "series": 450,
+ "studioJob": "carbonyl-naming",
+ "reelId": "STUDIO-CARBONYL-NAMING",
+ "summary": "Methanal and propanone both have C=O, yet one is an aldehyde and one a ketone. Where the C=O sits decides it, and the names follow: -al for aldehydes, -one for ketones, plus the common names.",
+ "notes": {
+  "pdf": "notes.pdf",
+  "title": "03 – Aldehydes vs Ketones: Naming and Structure",
+  "driveDoc": "1oNCxaPj-6vyMJeTDqFokNXN83phPemnNkLkzWGMm6Sk"
+ },
+ "tags": [
+  "aldehyde",
+  "ketone",
+  "IUPAC naming",
+  "nomenclature",
+  "methanal",
+  "propanone",
+  "acetone"
+ ],
+ "keyPoints": [
+  "**Aldehyde**: an H on the carbonyl carbon, so C=O sits at the **end** of the chain (R–CHO).",
+  "**Ketone**: carbon groups on both sides, so C=O sits **inside** the chain (R–CO–R′).",
+  "IUPAC: alkane − e + **al** (methanal, ethanal, propanal; the CHO carbon is C-1, no locant); alkane − e + **one** (propanone, butanone, pentan-2-one, pentan-3-one).",
+  "Common names: **formaldehyde**, **acetaldehyde**; **dimethyl ketone = acetone**. The smallest ketone, propanone, has three carbons."
+ ],
+ "sections": [
+  {
+   "h": "Aldehyde or ketone",
+   "blocks": [
+    {
+     "table": {
+      "head": [
+       "",
+       "Aldehyde",
+       "Ketone"
+      ],
+      "rows": [
+       [
+        "On the carbonyl C",
+        "at least one H",
+        "two carbon groups"
+       ],
+       [
+        "Position of C=O",
+        "chain end",
+        "inside the chain"
+       ],
+       [
+        "IUPAC ending",
+        "-al",
+        "-one"
+       ],
+       [
+        "Smallest",
+        "methanal (1 C)",
+        "propanone (3 C)"
+       ]
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "h": "Names",
+   "blocks": [
+    {
+     "table": {
+      "head": [
+       "Formula",
+       "IUPAC",
+       "Common"
+      ],
+      "rows": [
+       [
+        "HCHO",
+        "methanal",
+        "formaldehyde"
+       ],
+       [
+        "CH₃CHO",
+        "ethanal",
+        "acetaldehyde"
+       ],
+       [
+        "CH₃COCH₃",
+        "propanone",
+        "acetone (dimethyl ketone)"
+       ],
+       [
+        "CH₃COCH₂CH₃",
+        "butanone",
+        "ethyl methyl ketone"
+       ],
+       [
+        "CH₃CH₂COCH₂CH₃",
+        "pentan-3-one",
+        "diethyl ketone"
+       ]
+      ]
+     }
+    }
+   ]
+  }
+ ],
+ "quiz": [
+  {
+   "q": "The IUPAC name of CH₃CHO is:",
+   "options": [
+    "methanal",
+    "ethanal",
+    "ethanol",
+    "propanone"
+   ],
+   "answer": 1,
+   "explain": "Two carbons, -e + al."
+  },
+  {
+   "q": "In a ketone, the C=O group is:",
+   "options": [
+    "at the chain end",
+    "inside the chain",
+    "on a ring only",
+    "bonded to an H"
+   ],
+   "answer": 1,
+   "explain": "Carbon groups on both sides."
+  },
+  {
+   "q": "The smallest ketone has how many carbons?",
+   "options": [
+    "1",
+    "2",
+    "3",
+    "4"
+   ],
+   "answer": 2,
+   "explain": "Propanone, CH₃COCH₃."
+  },
+  {
+   "q": "CH₃CH₂COCH₂CH₃ is named:",
+   "options": [
+    "pentan-2-one",
+    "pentan-3-one",
+    "pentanal",
+    "butanone"
+   ],
+   "answer": 1,
+   "explain": "C=O on the third carbon of five."
+  },
+  {
+   "q": "The common name of propanone is:",
+   "options": [
+    "formaldehyde",
+    "acetaldehyde",
+    "acetone",
+    "acetic acid"
+   ],
+   "answer": 2,
+   "explain": "Dimethyl ketone, acetone."
+  }
+ ],
+ "simulation": {
+  "decision": "NOT_REQUIRED",
+  "reason": "Naming rules and a structural distinction; there is no quantity or process for a student to vary."
+ },
+ "related": [
+  "carbonyl-group-structure-polarity"
+ ]
+}

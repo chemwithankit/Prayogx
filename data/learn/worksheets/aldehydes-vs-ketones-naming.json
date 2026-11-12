@@ -1,0 +1,129 @@
+{
+ "slug": "aldehydes-vs-ketones-naming",
+ "title": "Aldehyde or Ketone? Structure and IUPAC Names",
+ "class": 12,
+ "subject": "Chemistry",
+ "chapter": "Aldehydes, Ketones and Carboxylic Acids",
+ "objective": "Methanal and propanone both have C=O, yet one is an aldehyde and one a ketone. Where the C=O sits decides it, and the names follow: -al for aldehydes, -one for ketones, plus the common names.",
+ "fill": [
+  {
+   "q": "In an aldehyde, the carbonyl carbon carries at least one ____ atom.",
+   "a": "hydrogen"
+  },
+  {
+   "q": "The IUPAC ending for aldehydes is ____.",
+   "a": "-al"
+  },
+  {
+   "q": "The IUPAC ending for ketones is ____.",
+   "a": "-one"
+  },
+  {
+   "q": "The common name of propanone is ____.",
+   "a": "acetone"
+  }
+ ],
+ "tf": [
+  {
+   "q": "In a ketone, the C=O group is at the end of the chain.",
+   "a": false,
+   "explain": "It is inside the chain, with carbon groups on both sides."
+  },
+  {
+   "q": "The –CHO carbon of an aldehyde is always numbered C-1.",
+   "a": true,
+   "explain": "So no locant is written."
+  },
+  {
+   "q": "The smallest ketone has two carbon atoms.",
+   "a": false,
+   "explain": "Propanone, with three carbons."
+  }
+ ],
+ "ar": [
+  {
+   "a": "Ketones need a locant from five carbons on.",
+   "r": "The C=O can then sit at more than one position.",
+   "answer": 0,
+   "explain": "R explains A."
+  },
+  {
+   "a": "Aldehyde names need no locant.",
+   "r": "The –CHO carbon is always C-1.",
+   "answer": 0,
+   "explain": "R explains A."
+  }
+ ],
+ "mcq": [
+  {
+   "q": "The IUPAC name of HCHO is:",
+   "options": [
+    "methanol",
+    "methanal",
+    "formic acid",
+    "ethanal"
+   ],
+   "answer": 1,
+   "explain": "One carbon, -e + al."
+  },
+  {
+   "q": "CH₃COCH₂CH₂CH₃ is:",
+   "options": [
+    "pentan-3-one",
+    "pentan-2-one",
+    "pentanal",
+    "butanone"
+   ],
+   "answer": 1,
+   "explain": "C=O on the second carbon."
+  },
+  {
+   "q": "Acetaldehyde is the common name of:",
+   "options": [
+    "HCHO",
+    "CH₃CHO",
+    "CH₃COCH₃",
+    "CH₃COOH"
+   ],
+   "answer": 1,
+   "explain": "Ethanal."
+  }
+ ],
+ "num": [
+  {
+   "q": "How many carbon atoms does the smallest ketone have?",
+   "steps": [
+    "propanone"
+   ],
+   "answer": "3"
+  }
+ ],
+ "short": [
+  {
+   "q": "State one structural difference between an aldehyde and a ketone.",
+   "lines": 5,
+   "solution": "In an aldehyde the carbonyl carbon carries at least one H (C=O at the chain end); in a ketone it carries two carbon groups (C=O inside the chain)."
+  }
+ ],
+ "match": {
+  "left": [
+   "HCHO",
+   "CH₃CHO",
+   "CH₃COCH₃",
+   "CH₃CH₂COCH₂CH₃"
+  ],
+  "right": [
+   "propanone",
+   "ethanal",
+   "methanal",
+   "pentan-3-one"
+  ],
+  "answer": [
+   2,
+   1,
+   0,
+   3
+  ],
+  "explain": "Each formula matches its IUPAC name."
+ }
+}
