@@ -1,0 +1,129 @@
+{
+ "slug": "physical-properties-aldehydes-ketones",
+ "title": "Same Weight, 0 °C vs 97 °C: Physical Properties of Aldehydes and Ketones",
+ "class": 12,
+ "subject": "Chemistry",
+ "chapter": "Aldehydes, Ketones and Carboxylic Acids",
+ "objective": "Five compounds of the same mass boil from 0 °C to 97 °C. Aldehydes and ketones sit in the middle: their polar C=O gives dipole-dipole attraction, but with no O–H they cannot hydrogen-bond with each other. Water can hydrogen-bond to the C=O oxygen, so small aldehydes and ketones mix with water while long chains do not.",
+ "fill": [
+  {
+   "q": "The C=O bond is polar: carbon carries a partial ____ charge.",
+   "a": "positive"
+  },
+  {
+   "q": "Aldehydes and ketones attract each other by dipole-____ forces.",
+   "a": "dipole"
+  },
+  {
+   "q": "Methanal at room temperature is a ____.",
+   "a": "gas"
+  },
+  {
+   "q": "Water's H forms a hydrogen bond with the carbonyl ____.",
+   "a": "oxygen"
+  }
+ ],
+ "tf": [
+  {
+   "q": "Aldehydes form hydrogen bonds with each other.",
+   "a": false,
+   "explain": "They have no O–H, so no H to donate."
+  },
+  {
+   "q": "Propanone mixes with water in all proportions.",
+   "a": true,
+   "explain": "It hydrogen-bonds with water through the C=O oxygen."
+  },
+  {
+   "q": "Solubility in water rises as the alkyl chain grows.",
+   "a": false,
+   "explain": "The non-polar part grows, so solubility falls."
+  }
+ ],
+ "ar": [
+  {
+   "a": "Acetone boils lower than propan-1-ol.",
+   "r": "Acetone has no O–H, so it cannot hydrogen-bond with itself.",
+   "answer": 0,
+   "explain": "R explains A."
+  },
+  {
+   "a": "Small aldehydes dissolve in water.",
+   "r": "Water hydrogen-bonds to the carbonyl oxygen.",
+   "answer": 0,
+   "explain": "R explains A."
+  }
+ ],
+ "mcq": [
+  {
+   "q": "Highest boiling point (similar mass):",
+   "options": [
+    "n-butane",
+    "methoxyethane",
+    "propanal",
+    "propan-1-ol"
+   ],
+   "answer": 3,
+   "explain": "Hydrogen bonding through O–H."
+  },
+  {
+   "q": "Aldehydes boil above alkanes of similar mass because of:",
+   "options": [
+    "hydrogen bonding",
+    "dipole-dipole attraction",
+    "ionic bonding",
+    "higher mass"
+   ],
+   "answer": 1,
+   "explain": "The polar C=O."
+  },
+  {
+   "q": "Lowest boiling point (similar mass):",
+   "options": [
+    "acetone",
+    "propanal",
+    "n-butane",
+    "propan-1-ol"
+   ],
+   "answer": 2,
+   "explain": "Only weak dispersion forces."
+  }
+ ],
+ "num": [
+  {
+   "q": "Boiling point gap in °C between propanal (49 °C) and propan-1-ol (97 °C)?",
+   "steps": [
+    "subtract"
+   ],
+   "answer": "48"
+  }
+ ],
+ "short": [
+  {
+   "q": "Arrange propane, ethanal and ethanol in increasing boiling point and give the reason.",
+   "lines": 5,
+   "solution": "Propane (dispersion only, −42 °C) < ethanal (dipole-dipole, 20 °C) < ethanol (hydrogen bonds, 78 °C)."
+  }
+ ],
+ "match": {
+  "left": [
+   "n-butane",
+   "propanal",
+   "acetone",
+   "propan-1-ol"
+  ],
+  "right": [
+   "56 °C",
+   "97 °C",
+   "49 °C",
+   "0 °C"
+  ],
+  "answer": [
+   3,
+   2,
+   0,
+   1
+  ],
+  "explain": "Same mass, boiling point rises with the attraction between molecules."
+ }
+}

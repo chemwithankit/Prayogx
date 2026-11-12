@@ -1,0 +1,183 @@
+{
+ "status": "ready",
+ "class": 12,
+ "subject": "Chemistry",
+ "chapter": "Aldehydes, Ketones and Carboxylic Acids",
+ "video": {
+  "youtubeId": "bY3YuCX54Dg"
+ },
+ "thumb": "thumb.jpg",
+ "id": "LEARN-C12-CHE-CARBONYL-PHYSICAL",
+ "slug": "physical-properties-aldehydes-ketones",
+ "topic": "Physical properties of aldehydes and ketones",
+ "title": "Same Weight, 0 °C vs 97 °C: Physical Properties of Aldehydes and Ketones",
+ "series": 452,
+ "studioJob": "carbonyl-physical",
+ "reelId": "STUDIO-CARBONYL-PHYSICAL",
+ "summary": "Five compounds of the same mass boil from 0 °C to 97 °C. Aldehydes and ketones sit in the middle: their polar C=O gives dipole-dipole attraction, but with no O–H they cannot hydrogen-bond with each other. Water can hydrogen-bond to the C=O oxygen, so small aldehydes and ketones mix with water while long chains do not.",
+ "notes": {
+  "pdf": "notes.pdf",
+  "title": "05 – Physical Properties of Aldehydes and Ketones",
+  "driveDoc": "1oumvSPyROBPfOF1Mpx6pXeNQ8cTj4AKxRUQ7OUsWaf8"
+ },
+ "tags": [
+  "physical properties",
+  "boiling point",
+  "dipole-dipole",
+  "hydrogen bonding",
+  "solubility",
+  "intermolecular forces"
+ ],
+ "keyPoints": [
+  "Same molar mass (58–60): **butane 0 °C < methoxyethane 8 °C < propanal 49 °C < acetone 56 °C < propan-1-ol 97 °C** (NCERT 8.3).",
+  "The C=O is **polar** (C δ+, O δ−): neighbouring molecules attract **dipole to dipole**, so aldehydes and ketones boil above hydrocarbons and ethers.",
+  "No **O–H**, so no hydrogen bonds between their own molecules: they boil **below alcohols** of similar mass.",
+  "Water's H **hydrogen-bonds to the carbonyl O**: methanal, ethanal and propanone mix in all proportions; **longer chains are less soluble**."
+ ],
+ "sections": [
+  {
+   "h": "Boiling points at similar mass",
+   "blocks": [
+    {
+     "table": {
+      "head": [
+       "Compound",
+       "Family",
+       "Boiling point",
+       "Attraction"
+      ],
+      "rows": [
+       [
+        "n-butane",
+        "alkane",
+        "0 °C (273 K)",
+        "weak dispersion only"
+       ],
+       [
+        "methoxyethane",
+        "ether",
+        "8 °C (281 K)",
+        "weak dipole"
+       ],
+       [
+        "propanal",
+        "aldehyde",
+        "49 °C (322 K)",
+        "dipole-dipole"
+       ],
+       [
+        "acetone",
+        "ketone",
+        "56 °C (329 K)",
+        "dipole-dipole"
+       ],
+       [
+        "propan-1-ol",
+        "alcohol",
+        "97 °C (370 K)",
+        "hydrogen bonds"
+       ]
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "h": "State, smell and solubility",
+   "blocks": [
+    {
+     "table": {
+      "head": [
+       "Property",
+       "What to remember"
+      ],
+      "rows": [
+       [
+        "State",
+        "methanal gas; ethanal volatile liquid; others liquids or solids"
+       ],
+       [
+        "Smell",
+        "lower aldehydes pungent; larger ones fragrant (perfumes, flavours)"
+       ],
+       [
+        "In water",
+        "small ones mix in all proportions (H-bonds to C=O); solubility falls as the chain grows"
+       ],
+       [
+        "Organic solvents",
+        "all dissolve in benzene, ether, methanol, chloroform"
+       ]
+      ]
+     }
+    }
+   ]
+  }
+ ],
+ "quiz": [
+  {
+   "q": "Of these (similar mass), which boils highest?",
+   "options": [
+    "n-butane",
+    "propanal",
+    "propan-1-ol",
+    "methoxyethane"
+   ],
+   "answer": 2,
+   "explain": "Propan-1-ol hydrogen-bonds through its O–H (97 °C)."
+  },
+  {
+   "q": "Aldehydes boil higher than alkanes of similar mass because of:",
+   "options": [
+    "hydrogen bonding",
+    "dipole-dipole attraction",
+    "ionic bonds",
+    "greater mass"
+   ],
+   "answer": 1,
+   "explain": "The polar C=O attracts neighbouring C=O groups."
+  },
+  {
+   "q": "Aldehydes cannot hydrogen-bond with each other because they have no:",
+   "options": [
+    "C=O",
+    "O–H",
+    "C–H",
+    "lone pairs"
+   ],
+   "answer": 1,
+   "explain": "No H on oxygen to donate."
+  },
+  {
+   "q": "Which mixes with water in all proportions?",
+   "options": [
+    "propanone",
+    "decanal",
+    "hexan-2-one",
+    "benzophenone"
+   ],
+   "answer": 0,
+   "explain": "Small carbonyls H-bond with water through the C=O oxygen."
+  },
+  {
+   "q": "Solubility of aldehydes in water as the chain grows:",
+   "options": [
+    "increases",
+    "decreases",
+    "stays the same",
+    "becomes infinite"
+   ],
+   "answer": 1,
+   "explain": "The non-polar alkyl part grows."
+  }
+ ],
+ "simulation": {
+  "decision": "NOT_REQUIRED",
+  "reason": "The owner's decision (2026-11-12): no simulation for this chapter's remaining videos."
+ },
+ "related": [
+  "preparing-aldehydes-ketones",
+  "nucleophilic-addition-carbonyl",
+  "carboxylic-acid-dimers"
+ ]
+}
