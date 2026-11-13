@@ -1,0 +1,164 @@
+{
+ "status": "ready",
+ "class": 12,
+ "subject": "Chemistry",
+ "chapter": "The d- and f-Block Elements",
+ "video": {
+  "youtubeId": "XLI97_pMWAQ"
+ },
+ "thumb": "thumb.jpg",
+ "id": "LEARN-C12-CHE-DBLOCK-SIZE",
+ "slug": "atomic-size-ionisation-enthalpy-3d",
+ "topic": "Atomic size and ionisation enthalpy across the 3d series",
+ "title": "Five More Protons, Same Size: Radius and Ionisation Enthalpy across the 3d Series",
+ "series": 464,
+ "studioJob": "dblock-size",
+ "reelId": "STUDIO-DBLOCK-SIZE",
+ "summary": "Across the 3d series each new electron enters the inner (n−1)d subshell and shields the outer 4s electrons, nearly cancelling the extra nuclear charge. So atomic radii change only slightly and the first ionisation enthalpy rises slowly (631 → 906 kJ/mol), unlike across a normal period.",
+ "notes": {
+  "pdf": "notes.pdf",
+  "title": "05 – Atomic Size and Ionisation Enthalpy across the 3d Series",
+  "driveDoc": "1jNC4y9IUBNBe-W8Xox06kIsH0QEtU-afOJoa9hleTCw"
+ },
+ "tags": [
+  "atomic radius",
+  "ionisation enthalpy",
+  "shielding",
+  "3d series",
+  "periodic trends"
+ ],
+ "keyPoints": [
+  "Across a transition series the new electron enters the **inner (n−1)d** subshell and **shields** the outer ns electrons.",
+  "The extra nuclear pull and the extra shielding nearly balance: **radii change only slightly**, nearly constant in the middle.",
+  "**First ionisation enthalpy rises slowly**: 631 (Sc) → 906 (Zn) kJ/mol, versus about three times across period 3.",
+  "**Zn** has the highest IE (stable 3d¹⁰ 4s²); 4d and 5d radii are almost equal (lanthanoid contraction)."
+ ],
+ "sections": [
+  {
+   "h": "The data (3d series)",
+   "blocks": [
+    {
+     "table": {
+      "head": [
+       "",
+       "Sc",
+       "Ti",
+       "V",
+       "Cr",
+       "Mn",
+       "Fe",
+       "Co",
+       "Ni",
+       "Cu",
+       "Zn"
+      ],
+      "rows": [
+       [
+        "Metallic radius / pm",
+        "164",
+        "147",
+        "135",
+        "129",
+        "137",
+        "126",
+        "125",
+        "125",
+        "128",
+        "137"
+       ],
+       [
+        "1st IE / kJ mol⁻¹",
+        "631",
+        "656",
+        "650",
+        "653",
+        "717",
+        "762",
+        "758",
+        "736",
+        "745",
+        "906"
+       ]
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "h": "Why the change is small",
+   "blocks": [
+    {
+     "p": "The nuclear charge rises by one at each step, but each added electron goes into the inner 3d subshell. It partly shields the outer 4s electrons from the added charge, so the effective pull on them grows only a little."
+    },
+    {
+     "p": "Across period 3 there is no such inner shielding: the first IE climbs from 496 (Na) to 1520 kJ/mol (Ar)."
+    }
+   ]
+  }
+ ],
+ "quiz": [
+  {
+   "q": "Across the 3d series, atomic radii:",
+   "options": [
+    "increase sharply",
+    "decrease sharply",
+    "change only slightly",
+    "double"
+   ],
+   "answer": 2,
+   "explain": "Shielding by inner d electrons."
+  },
+  {
+   "q": "Highest first IE in the 3d series:",
+   "options": [
+    "Sc",
+    "Cr",
+    "Cu",
+    "Zn"
+   ],
+   "answer": 3,
+   "explain": "Stable 3d¹⁰ 4s²."
+  },
+  {
+   "q": "Across the 3d series the added electron enters:",
+   "options": [
+    "4s",
+    "4p",
+    "3d",
+    "4d"
+   ],
+   "answer": 2,
+   "explain": "The inner (n−1)d."
+  },
+  {
+   "q": "First IE of Sc is about:",
+   "options": [
+    "496",
+    "631",
+    "906",
+    "1520"
+   ],
+   "answer": 1,
+   "explain": "631 kJ/mol."
+  },
+  {
+   "q": "Zr and Hf are almost the same size because of:",
+   "options": [
+    "inert pair effect",
+    "lanthanoid contraction",
+    "hydrogen bonding",
+    "d–d transitions"
+   ],
+   "answer": 1,
+   "explain": "Poor shielding by 4f electrons."
+  }
+ ],
+ "simulation": {
+  "decision": "NOT_REQUIRED",
+  "reason": "Two data trends with one shared reason; the video's charts and shielding diagram carry them, and there is no quantity for a student to vary."
+ },
+ "related": [
+  "d-block-electronic-configurations",
+  "what-makes-a-transition-element"
+ ]
+}

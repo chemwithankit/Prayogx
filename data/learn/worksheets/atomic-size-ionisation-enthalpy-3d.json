@@ -1,0 +1,129 @@
+{
+ "slug": "atomic-size-ionisation-enthalpy-3d",
+ "title": "Five More Protons, Same Size: Radius and Ionisation Enthalpy across the 3d Series",
+ "class": 12,
+ "subject": "Chemistry",
+ "chapter": "The d- and f-Block Elements",
+ "objective": "Across the 3d series each new electron enters the inner (n−1)d subshell and shields the outer 4s electrons, nearly cancelling the extra nuclear charge. So atomic radii change only slightly and the first ionisation enthalpy rises slowly (631 → 906 kJ/mol), unlike across a normal period.",
+ "fill": [
+  {
+   "q": "Across the 3d series the added electron enters the inner ____ subshell.",
+   "a": "3d"
+  },
+  {
+   "q": "Inner d electrons ____ the outer 4s electrons from the added nuclear charge.",
+   "a": "shield"
+  },
+  {
+   "q": "The highest first ionisation enthalpy in the 3d series is shown by ____.",
+   "a": "zinc"
+  },
+  {
+   "q": "Zr and Hf have nearly equal radii because of ____ contraction.",
+   "a": "lanthanoid"
+  }
+ ],
+ "tf": [
+  {
+   "q": "Atomic radii change sharply across the 3d series.",
+   "a": false,
+   "explain": "The change is small."
+  },
+  {
+   "q": "The first IE of Zn is higher than that of Sc.",
+   "a": true,
+   "explain": "906 vs 631 kJ/mol."
+  },
+  {
+   "q": "Across period 3 the first IE roughly triples.",
+   "a": true,
+   "explain": "Na 496 → Ar 1520 kJ/mol."
+  }
+ ],
+ "ar": [
+  {
+   "a": "Radii change only slightly across a transition series.",
+   "r": "The added electrons enter the inner (n−1)d subshell and shield the outer electrons.",
+   "answer": 0,
+   "explain": "R explains A."
+  },
+  {
+   "a": "Zinc has a high first ionisation enthalpy.",
+   "r": "Zinc is a liquid at room temperature.",
+   "answer": 2,
+   "explain": "A true; R false: mercury is the liquid; zinc's IE is high because 3d¹⁰ 4s² is stable."
+  }
+ ],
+ "mcq": [
+  {
+   "q": "Across the 3d series, radii:",
+   "options": [
+    "increase sharply",
+    "decrease sharply",
+    "change only slightly",
+    "double"
+   ],
+   "answer": 2,
+   "explain": "Shielding nearly balances the extra charge."
+  },
+  {
+   "q": "The 3d metal with the highest first IE:",
+   "options": [
+    "Sc",
+    "Cr",
+    "Cu",
+    "Zn"
+   ],
+   "answer": 3,
+   "explain": "Stable 3d¹⁰ 4s²."
+  },
+  {
+   "q": "Metallic radius of Cr:",
+   "options": [
+    "186 pm",
+    "164 pm",
+    "129 pm",
+    "99 pm"
+   ],
+   "answer": 2,
+   "explain": "Cr 129, Cu 128 pm."
+  }
+ ],
+ "num": [
+  {
+   "q": "By how many kJ/mol does the first IE rise from Sc (631) to Zn (906)?",
+   "steps": [
+    "906 − 631"
+   ],
+   "answer": "275"
+  }
+ ],
+ "short": [
+  {
+   "q": "Why does the first IE rise much more across period 3 than across the 3d series?",
+   "lines": 5,
+   "solution": "In period 3 the added electrons enter the same outer shell and shield poorly, so the pull grows fast; in the 3d series they enter the inner 3d and shield the outer 4s."
+  }
+ ],
+ "match": {
+  "left": [
+   "Sc",
+   "Cr",
+   "Zn",
+   "Zr and Hf"
+  ],
+  "right": [
+   "164 pm, 631 kJ/mol",
+   "almost equal radii",
+   "highest 1st IE (906)",
+   "129 pm"
+  ],
+  "answer": [
+   0,
+   3,
+   2,
+   1
+  ],
+  "explain": "Each item matches its description."
+ }
+}
