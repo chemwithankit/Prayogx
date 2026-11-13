@@ -42,6 +42,7 @@ Class → Subject → Chapter → Topic, at `https://prayogx.co.in/learn/<slug>/
 | `learn/index.html`, `learn/<class>/…`, `learn/<slug>/index.html` | **generated**, never hand-edited (class folders are rebuilt from scratch) |
 | `learn/learn.css`, `learn/learn.js` | shared page style (on top of `site/site.css`) and the quiz |
 | `learn/<slug>/notes.pdf`, `img/`, `sim.html` | the topic's assets |
+| `learn/<slug>/cards/NN.jpg`, `memory-cards.pdf` | the video's memory cards (its 4:5 Instagram carousel, owner 2026-11-13): shown as a swipeable "Memory cards" section plus a PDF download (motion studio `scripts/session-helpers/cards.sh`) |
 | `tests/learn_pages.js`, `tests/learn_sims.js` | Playwright suites (home, portal, class, subject, chapter and topic pages at 1280 / 390 / 360 px, a crawl of every internal link; simulation numbers) |
 
 `tools/build_content.py` adds the ready Learn pages to `sitemap.xml`; the library header links to `learn/`.

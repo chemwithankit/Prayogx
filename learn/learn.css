@@ -244,3 +244,5 @@ a:hover > .go{color:var(--c,var(--accent));transform:translateX(3px)}
   .classcard:hover,.subjcard:hover,.chapcard:hover,.vcard:hover{transform:none}
   a:hover > .go{transform:none}
 }
+.mcards{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 2px 12px;margin:10px 0 14px;-webkit-overflow-scrolling:touch}
+.mcards img{flex:0 0 min(80%,360px);width:min(80%,360px);height:auto;aspect-ratio:4/5;border-radius:14px;scroll-snap-align:start;border:1px solid var(--line);background:#0A1730}

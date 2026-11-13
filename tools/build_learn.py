@@ -8,7 +8,7 @@
 Sources of truth:
   data/learn/curriculum.json         classes (9, 10, 11, 12, Extra) -> subjects -> ordered chapters (with aliases)
   data/learn/topics/<slug>.json      one per Doodle topic (format in docs/LEARN_PUBLISHING.md)
-Each topic's own assets sit beside its page: learn/<slug>/notes.pdf (the same approved Drive notes, exported), learn/<slug>/handwritten-notes.pdf (chalk videos: the board pages),
+Each topic's own assets sit beside its page: learn/<slug>/notes.pdf (the same approved Drive notes, exported), learn/<slug>/handwritten-notes.pdf (chalk videos: the board pages), learn/<slug>/cards/NN.jpg + memory-cards.pdf (the video's memory cards = its Instagram carousel),
 learn/<slug>/img/ (the notes' diagrams), learn/<slug>/thumb.jpg (the reel cover) and, only when the topic's
 simulation decision is REQUIRED, learn/<slug>/sim.html.
 
@@ -454,6 +454,35 @@ def handwritten_link(t):
         esc("PrayogX - %s - handwritten notes.pdf" % t["title"]), icon("doc", 22), size)
 
 
+def card_files(t):
+    """the video's memory cards (owner 2026-11-13: every video's 4:5 Instagram carousel, shown on its page): learn/<slug>/cards/NN.jpg"""
+    d = os.path.join(OUT, t["slug"], "cards")
+    return sorted(f for f in os.listdir(d) if re.match(r"^\d\d\.jpg$", f)) if os.path.isdir(d) else []
+
+
+def cards_link(t):
+    """download link for learn/<slug>/memory-cards.pdf (the same cards as one PDF), when it exists"""
+    f = os.path.join(OUT, t["slug"], "memory-cards.pdf")
+    if not os.path.exists(f):
+        return ""
+    kb = os.path.getsize(f) / 1024.0
+    size = "%.1f MB" % (kb / 1024) if kb > 1024 else "%d KB" % kb
+    return ('<a class="dl" href="memory-cards.pdf" download="%s"><span class="ico">%s</span><span><span class="t">Download the '
+            'memory cards</span><br><span class="s">PDF, %s · %d cards: the whole topic at a glance, for quick revision</span></span></a>') % (
+        esc("PrayogX - %s - memory cards.pdf" % t["title"]), icon("doc", 22), size, len(card_files(t)))
+
+
+def cards_section(t):
+    files = card_files(t)
+    if not files:
+        return ""
+    n = len(files)
+    imgs = "".join('<img src="cards/%s" alt="Memory card %d of %d: %s" width="1080" height="1350" loading="lazy" decoding="async">' % (
+        f, i + 1, n, esc(t["title"])) for i, f in enumerate(files))
+    return ('<section class="sect" id="cards"><h2>Memory cards</h2><p>Swipe through the %d cards to revise this topic in a minute.</p>'
+            '<div class="mcards" tabindex="0" role="region" aria-label="Memory cards">%s</div>%s</section>') % (n, imgs, cards_link(t))
+
+
 def topic_page(t, by_slug, ready, cur):
     slug = t["slug"]
     c, s, chp = chapter_of_topic(cur, ready, t)
@@ -491,19 +520,19 @@ def topic_page(t, by_slug, ready, cur):
     <p class="lede">%(lede)s</p>
     <a class="dl" href="%(pdf)s" download="%(dlname)s"><span class="ico">%(doc)s</span>
       <span><span class="t">Download the short notes</span><br><span class="s">PDF, %(size)s · solved examples, practice set and answer key</span></span></a>
-    %(handwritten)s
+    %(handwritten)s%(cardsdl)s
     %(worksheet)s
     %(upnext)s
     <div class="pn">%(prev)s%(allv)s</div>
   </div>
 </div>""" % {"yt": esc(t["video"]["youtubeId"]), "ytpath": "watch?v=" if t["video"].get("format") == "long" else "shorts/", "title": esc(t["title"]), "ig": ('<a href="%s" rel="noopener" target="_blank">Watch on Instagram</a> · ' % esc(t["video"]["instagram"])) if t["video"].get("instagram") else "",
              "ctx": esc("%s%s" % (chapnum, t["subject"])),
-             "lede": inline(t["summary"]), "worksheet": worksheet_link(t), "handwritten": handwritten_link(t), "pdf": esc(t["notes"]["pdf"]), "dlname": esc("PrayogX - %s - short notes.pdf" % t["title"]),
+             "lede": inline(t["summary"]), "worksheet": worksheet_link(t), "handwritten": handwritten_link(t), "cardsdl": cards_link(t), "pdf": esc(t["notes"]["pdf"]), "dlname": esc("PrayogX - %s - short notes.pdf" % t["title"]),
              "size": size, "doc": icon("doc", 22), "upnext": upnext,
              "allv": ('<a class="pnb" href="%s">%s All videos in this chapter</a>' % (esc(chap_href), icon("back", 16))) if next_t else "",
              "prev": ('<a class="pnb" href="../%s/">%s Previous: %s</a>' % (esc(prev_t["slug"]), icon("back", 16), esc(prev_t["title"])) if prev_t else "")}
     keys = '<section class="sect"><h2>Key points</h2><ul class="keypts">%s</ul></section>' % "".join("<li>%s</li>" % inline(x) for x in t["keyPoints"])
-    jumps = ('<nav class="jump" aria-label="On this page"><a href="#concept">Explanation</a>' + ('<a href="#simulation">Simulation</a>' if has_sim else "")
+    jumps = ('<nav class="jump" aria-label="On this page"><a href="#concept">Explanation</a>' + ('<a href="#cards">Memory cards</a>' if card_files(t) else "") + ('<a href="#simulation">Simulation</a>' if has_sim else "")
              + '<a href="#quiz-sect">Quiz</a></nav>')
     sects = "".join('<section class="sect"%s><h2>%s</h2>%s</section>' % (
         ' id="concept"' if i == 0 else "", esc(sec["h"]), "".join(block_html(b) for b in sec["blocks"]))
@@ -530,7 +559,7 @@ def topic_page(t, by_slug, ready, cur):
     morehtml = ('<section class="sect"><h2>More from %s</h2><div class="vgrid">%s</div></section>' % (
         esc(chp["name"]), "".join(topic_card(x, "../", cur, show_chapter=False) for x in uniq))) if uniq else ""
     body = ('%s<article class="topic" style="--c:%s">%s<div class="study">%s%s%s%s%s</div>%s</article>') % (
-        nav, col, hero, jumps, keys, sects, simhtml, quiz, morehtml)
+        nav, col, hero, jumps, keys, sects + cards_section(t), simhtml, quiz, morehtml)
     return shell("%s · PrayogX Learn" % t["title"], t["summary"], "%s/learn/%s/" % (SITE_URL, slug), "../../", body)
 
 
