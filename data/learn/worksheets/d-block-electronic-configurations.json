@@ -1,0 +1,129 @@
+{
+ "slug": "d-block-electronic-configurations",
+ "title": "d-Block Configurations: Why Chromium and Copper Break the Rule",
+ "class": 12,
+ "subject": "Chemistry",
+ "chapter": "The d- and f-Block Elements",
+ "objective": "The d-block's general configuration is (n−1)d¹⁻¹⁰ ns¹⁻², with 4s filling before 3d. Chromium (3d⁵4s¹) and copper (3d¹⁰4s¹) move one 4s electron into 3d, because 3d and 4s are very close in energy and half-filled and full d sets are extra stable.",
+ "fill": [
+  {
+   "q": "The general outer configuration of the d-block is (n−1)d____ ns¹⁻².",
+   "a": "¹⁻¹⁰"
+  },
+  {
+   "q": "The configuration of Cr is [Ar] 3d____ 4s¹.",
+   "a": "⁵"
+  },
+  {
+   "q": "The configuration of Cu is [Ar] 3d¹⁰ 4s____.",
+   "a": "¹"
+  },
+  {
+   "q": "Half-filled and completely filled d subshells are extra ____.",
+   "a": "stable"
+  }
+ ],
+ "tf": [
+  {
+   "q": "The 4s orbital fills before 3d.",
+   "a": true,
+   "explain": "4s is filled first in the neutral atoms of the 3d series."
+  },
+  {
+   "q": "Copper is [Ar] 3d⁹ 4s².",
+   "a": false,
+   "explain": "It is [Ar] 3d¹⁰ 4s¹."
+  },
+  {
+   "q": "3d and 4s orbitals are very close in energy.",
+   "a": true,
+   "explain": "That is why stability decides Cr and Cu."
+  }
+ ],
+ "ar": [
+  {
+   "a": "Chromium is 3d⁵ 4s¹, not 3d⁴ 4s².",
+   "r": "A half-filled d set is extra stable.",
+   "answer": 0,
+   "explain": "R explains A."
+  },
+  {
+   "a": "Copper is 3d¹⁰ 4s¹.",
+   "r": "4s is always lower in energy than 3d.",
+   "answer": 2,
+   "explain": "A true; R false: 3d and 4s are very close in energy."
+  }
+ ],
+ "mcq": [
+  {
+   "q": "The configuration of Cr (Z = 24):",
+   "options": [
+    "[Ar] 3d⁴ 4s²",
+    "[Ar] 3d⁵ 4s¹",
+    "[Ar] 3d⁶",
+    "[Ar] 3d³ 4s² 4p¹"
+   ],
+   "answer": 1,
+   "explain": "Half-filled d."
+  },
+  {
+   "q": "The configuration of Cu (Z = 29):",
+   "options": [
+    "[Ar] 3d⁹ 4s²",
+    "[Ar] 3d¹⁰ 4s¹",
+    "[Ar] 3d¹⁰",
+    "[Ar] 3d⁸ 4s² 4p¹"
+   ],
+   "answer": 1,
+   "explain": "Full d."
+  },
+  {
+   "q": "Mn²⁺ is:",
+   "options": [
+    "[Ar] 3d⁵",
+    "[Ar] 3d³ 4s²",
+    "[Ar] 3d⁴ 4s¹",
+    "[Ar] 3d⁶"
+   ],
+   "answer": 0,
+   "explain": "Both 4s electrons leave."
+  }
+ ],
+ "num": [
+  {
+   "q": "How many unpaired electrons does Cr (3d⁵ 4s¹) have?",
+   "steps": [
+    "five in 3d, one in 4s"
+   ],
+   "answer": "6"
+  }
+ ],
+ "short": [
+  {
+   "q": "Why is copper 3d¹⁰ 4s¹ and not 3d⁹ 4s²?",
+   "lines": 5,
+   "solution": "3d and 4s are very close in energy and a completely filled d¹⁰ set is extra stable, so one 4s electron moves to 3d."
+  }
+ ],
+ "match": {
+  "left": [
+   "Cr",
+   "Cu",
+   "Zn",
+   "Mn"
+  ],
+  "right": [
+   "3d⁵ 4s¹",
+   "3d⁵ 4s²",
+   "3d¹⁰ 4s²",
+   "3d¹⁰ 4s¹"
+  ],
+  "answer": [
+   0,
+   3,
+   2,
+   1
+  ],
+  "explain": "Each element matches its configuration."
+ }
+}

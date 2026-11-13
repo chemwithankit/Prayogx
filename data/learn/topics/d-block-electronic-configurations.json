@@ -1,0 +1,165 @@
+{
+ "status": "ready",
+ "class": 12,
+ "subject": "Chemistry",
+ "chapter": "The d- and f-Block Elements",
+ "video": {
+  "youtubeId": "hReWhdGF4PI"
+ },
+ "thumb": "thumb.jpg",
+ "id": "LEARN-C12-CHE-DBLOCK-CONFIG",
+ "slug": "d-block-electronic-configurations",
+ "topic": "Electronic configurations of the d-block elements",
+ "title": "d-Block Configurations: Why Chromium and Copper Break the Rule",
+ "series": 462,
+ "studioJob": "dblock-config",
+ "reelId": "STUDIO-DBLOCK-CONFIG",
+ "summary": "The d-block's general configuration is (n−1)d¹⁻¹⁰ ns¹⁻², with 4s filling before 3d. Chromium (3d⁵4s¹) and copper (3d¹⁰4s¹) move one 4s electron into 3d, because 3d and 4s are very close in energy and half-filled and full d sets are extra stable.",
+ "notes": {
+  "pdf": "notes.pdf",
+  "title": "03 – Electronic Configurations of the d-Block Elements",
+  "driveDoc": "1BBasG6e0YsTuLxwuFnT2z3nAklr6T4Pu79xkPGhEMco"
+ },
+ "tags": [
+  "electronic configuration",
+  "chromium",
+  "copper",
+  "exchange energy",
+  "half-filled",
+  "3d series"
+ ],
+ "keyPoints": [
+  "General outer configuration: **(n−1)d¹⁻¹⁰ ns¹⁻²**; 4s fills before 3d.",
+  "**Cr: 3d⁵ 4s¹** (not 3d⁴ 4s²): a half-filled d set.",
+  "**Cu: 3d¹⁰ 4s¹** (not 3d⁹ 4s²): a completely filled d set.",
+  "Why: 3d and 4s are **very close in energy**, and **d⁵ and d¹⁰ are extra stable** (exchange energy, symmetry)."
+ ],
+ "sections": [
+  {
+   "h": "The 3d series",
+   "blocks": [
+    {
+     "table": {
+      "head": [
+       "Element",
+       "Configuration",
+       "Element",
+       "Configuration"
+      ],
+      "rows": [
+       [
+        "Sc",
+        "[Ar] 3d¹ 4s²",
+        "Fe",
+        "[Ar] 3d⁶ 4s²"
+       ],
+       [
+        "Ti",
+        "[Ar] 3d² 4s²",
+        "Co",
+        "[Ar] 3d⁷ 4s²"
+       ],
+       [
+        "V",
+        "[Ar] 3d³ 4s²",
+        "Ni",
+        "[Ar] 3d⁸ 4s²"
+       ],
+       [
+        "**Cr**",
+        "**[Ar] 3d⁵ 4s¹**",
+        "**Cu**",
+        "**[Ar] 3d¹⁰ 4s¹**"
+       ],
+       [
+        "Mn",
+        "[Ar] 3d⁵ 4s²",
+        "Zn",
+        "[Ar] 3d¹⁰ 4s²"
+       ]
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "h": "Why chromium and copper are different",
+   "blocks": [
+    {
+     "list": [
+      "The 3d and 4s orbitals are very close in energy, so a small extra stability decides the arrangement.",
+      "Half-filled (d⁵) and completely filled (d¹⁰) sets are extra stable: more exchange energy and a symmetrical distribution.",
+      "So one 4s electron moves into 3d: Cr 3d⁵4s¹, Cu 3d¹⁰4s¹."
+     ]
+    },
+    {
+     "p": "In the 4d series palladium goes further: 4d¹⁰ 5s⁰."
+    }
+   ]
+  }
+ ],
+ "quiz": [
+  {
+   "q": "The configuration of Cr (Z = 24) is:",
+   "options": [
+    "[Ar] 3d⁴ 4s²",
+    "[Ar] 3d⁵ 4s¹",
+    "[Ar] 3d⁶",
+    "[Ar] 3d³ 4s² 4p¹"
+   ],
+   "answer": 1,
+   "explain": "A half-filled 3d⁵ set."
+  },
+  {
+   "q": "The configuration of Cu (Z = 29) is:",
+   "options": [
+    "[Ar] 3d⁹ 4s²",
+    "[Ar] 3d¹⁰ 4s¹",
+    "[Ar] 3d¹⁰",
+    "[Ar] 3d⁸ 4s² 4p¹"
+   ],
+   "answer": 1,
+   "explain": "A full 3d¹⁰ set."
+  },
+  {
+   "q": "General outer configuration of the d-block:",
+   "options": [
+    "ns¹⁻²",
+    "ns² np¹⁻⁶",
+    "(n−1)d¹⁻¹⁰ ns¹⁻²",
+    "(n−2)f¹⁻¹⁴"
+   ],
+   "answer": 2,
+   "explain": "Inner d, outer s."
+  },
+  {
+   "q": "Cr and Cu break the filling order because:",
+   "options": [
+    "4s is much lower than 3d",
+    "d⁵ and d¹⁰ sets are extra stable",
+    "they are radioactive",
+    "they have no 4s electrons"
+   ],
+   "answer": 1,
+   "explain": "With 3d and 4s close in energy, stability decides."
+  },
+  {
+   "q": "Which fills first?",
+   "options": [
+    "3d",
+    "4s",
+    "4p",
+    "4d"
+   ],
+   "answer": 1,
+   "explain": "4s before 3d."
+  }
+ ],
+ "simulation": {
+  "decision": "NOT_REQUIRED",
+  "reason": "Configurations are read off and compared; the video's orbital boxes already show each filling, and there is no quantity for a student to vary."
+ },
+ "related": [
+  "d-and-f-block-introduction"
+ ]
+}
