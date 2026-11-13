@@ -1,0 +1,129 @@
+{
+ "slug": "variable-oxidation-states-transition-metals",
+ "title": "One Element, Six Oxidation States: Why Transition Metals Vary",
+ "class": 12,
+ "subject": "Chemistry",
+ "chapter": "The d- and f-Block Elements",
+ "objective": "The ns and (n−1)d electrons of a transition metal are close in energy, so both can take part in bonding. Manganese (3d⁵ 4s²) shows every state from +2 to +7; the most states occur in the middle of the series, Sc shows only +3 and Zn only +2, and the states change in steps of one.",
+ "fill": [
+  {
+   "q": "Transition metals show variable oxidation states because the ns and (n−1)____ electrons are close in energy.",
+   "a": "d"
+  },
+  {
+   "q": "Manganese shows oxidation states from +2 to +____.",
+   "a": "7"
+  },
+  {
+   "q": "The oxidation state of Mn in KMnO₄ is +____.",
+   "a": "7"
+  },
+  {
+   "q": "Zinc shows only the +____ oxidation state.",
+   "a": "2"
+  }
+ ],
+ "tf": [
+  {
+   "q": "The most oxidation states occur in the middle of the 3d series.",
+   "a": true,
+   "explain": "Manganese, +2 to +7."
+  },
+  {
+   "q": "Scandium shows +2 to +7.",
+   "a": false,
+   "explain": "Scandium shows only +3."
+  },
+  {
+   "q": "Oxidation states of transition elements usually differ by one.",
+   "a": true,
+   "explain": "For example Fe²⁺ and Fe³⁺."
+  }
+ ],
+ "ar": [
+  {
+   "a": "Manganese shows oxidation states from +2 to +7.",
+   "r": "Both its 4s and 3d electrons can take part in bonding.",
+   "answer": 0,
+   "explain": "R explains A."
+  },
+  {
+   "a": "Zinc shows only +2.",
+   "r": "Zinc has the largest atomic radius in the 3d series.",
+   "answer": 2,
+   "explain": "A true; R false: Sc is the largest; zinc's full 3d¹⁰ is not used."
+  }
+ ],
+ "mcq": [
+  {
+   "q": "Oxidation state of Mn in MnO₂:",
+   "options": [
+    "+2",
+    "+3",
+    "+4",
+    "+7"
+   ],
+   "answer": 2,
+   "explain": "x + 2(−2) = 0."
+  },
+  {
+   "q": "Highest oxidation state of vanadium (3d³ 4s²):",
+   "options": [
+    "+3",
+    "+4",
+    "+5",
+    "+6"
+   ],
+   "answer": 2,
+   "explain": "Five electrons."
+  },
+  {
+   "q": "Most oxidation states in the 3d series:",
+   "options": [
+    "Sc",
+    "Mn",
+    "Cu",
+    "Zn"
+   ],
+   "answer": 1,
+   "explain": "+2 to +7."
+  }
+ ],
+ "num": [
+  {
+   "q": "What is the oxidation state of Cr in K₂Cr₂O₇?",
+   "steps": [
+    "2(+1) + 2x + 7(−2) = 0"
+   ],
+   "answer": "6"
+  }
+ ],
+ "short": [
+  {
+   "q": "Why does the number of oxidation states rise to a maximum at Mn and then fall?",
+   "lines": 5,
+   "solution": "Up to Mn more electrons (4s + 3d) are available; after Mn the d electrons pair up and fewer are used, and Zn's full d¹⁰ leaves only +2."
+  }
+ ],
+ "match": {
+  "left": [
+   "Sc",
+   "Mn",
+   "Zn",
+   "Fe"
+  ],
+  "right": [
+   "only +2",
+   "only +3",
+   "+2 to +7",
+   "+2 and +3 (differ by one)"
+  ],
+  "answer": [
+   1,
+   2,
+   0,
+   3
+  ],
+  "explain": "Each element matches its oxidation states."
+ }
+}

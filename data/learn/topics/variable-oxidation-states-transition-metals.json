@@ -1,0 +1,149 @@
+{
+ "status": "ready",
+ "class": 12,
+ "subject": "Chemistry",
+ "chapter": "The d- and f-Block Elements",
+ "video": {
+  "youtubeId": "yTWe8YQEEK4"
+ },
+ "thumb": "thumb.jpg",
+ "id": "LEARN-C12-CHE-DBLOCK-OXSTATES",
+ "slug": "variable-oxidation-states-transition-metals",
+ "topic": "Why transition metals show variable oxidation states",
+ "title": "One Element, Six Oxidation States: Why Transition Metals Vary",
+ "series": 465,
+ "studioJob": "dblock-oxstates",
+ "reelId": "STUDIO-DBLOCK-OXSTATES",
+ "summary": "The ns and (n−1)d electrons of a transition metal are close in energy, so both can take part in bonding. Manganese (3d⁵ 4s²) shows every state from +2 to +7; the most states occur in the middle of the series, Sc shows only +3 and Zn only +2, and the states change in steps of one.",
+ "notes": {
+  "pdf": "notes.pdf",
+  "title": "06 – Why Transition Metals Show Variable Oxidation States",
+  "driveDoc": "1yymQ2dmKhp79fdXJGDGcF6uCPe8rkTEijgSqQymYkLU"
+ },
+ "tags": [
+  "oxidation states",
+  "variable valency",
+  "manganese",
+  "KMnO4",
+  "transition metals"
+ ],
+ "keyPoints": [
+  "**ns and (n−1)d** electrons are close in energy, so **both take part in bonding**: variable oxidation states.",
+  "**Mn (3d⁵ 4s²)** shows **+2 to +7**: Mn²⁺ (+2), MnO₂ (+4), KMnO₄ (+7).",
+  "The **most** states occur **in the middle** of the series; **Sc only +3**, **Zn only +2**.",
+  "States differ **by one** (Fe²⁺/Fe³⁺); in the p-block usually **by two** (Sn²⁺/Sn⁴⁺)."
+ ],
+ "sections": [
+  {
+   "h": "Oxidation states across the 3d series",
+   "blocks": [
+    {
+     "table": {
+      "head": [
+       "Sc",
+       "Ti",
+       "V",
+       "Cr",
+       "Mn",
+       "Fe",
+       "Co",
+       "Ni",
+       "Cu",
+       "Zn"
+      ],
+      "rows": [
+       [
+        "+3",
+        "+2 to +4",
+        "+2 to +5",
+        "+2 to +6",
+        "+2 to +7",
+        "+2, +3, +4, +6",
+        "+2 to +4",
+        "+2 to +4",
+        "+1, +2",
+        "+2"
+       ]
+      ]
+     }
+    },
+    {
+     "p": "Up to manganese, the highest oxidation state equals the number of 4s + 3d electrons: Sc +3, Ti +4, V +5, Cr +6, Mn +7."
+    }
+   ]
+  },
+  {
+   "h": "Steps of one, not two",
+   "blocks": [
+    {
+     "p": "Transition-metal states change one unit at a time (V +2, +3, +4, +5; Fe²⁺/Fe³⁺; Cu⁺/Cu²⁺). In the p-block the common states usually differ by two (Sn²⁺/Sn⁴⁺, Pb²⁺/Pb⁴⁺)."
+    }
+   ]
+  }
+ ],
+ "quiz": [
+  {
+   "q": "Most oxidation states in the 3d series:",
+   "options": [
+    "Sc",
+    "Mn",
+    "Cu",
+    "Zn"
+   ],
+   "answer": 1,
+   "explain": "+2 to +7."
+  },
+  {
+   "q": "Oxidation state of Mn in MnO₂:",
+   "options": [
+    "+2",
+    "+3",
+    "+4",
+    "+7"
+   ],
+   "answer": 2,
+   "explain": "x + 2(−2) = 0."
+  },
+  {
+   "q": "Zinc shows only:",
+   "options": [
+    "+1",
+    "+2",
+    "+3",
+    "+4"
+   ],
+   "answer": 1,
+   "explain": "Full 3d¹⁰; only the 4s² is used."
+  },
+  {
+   "q": "Transition metals show variable oxidation states because:",
+   "options": [
+    "they are radioactive",
+    "ns and (n−1)d are close in energy",
+    "they have no d electrons",
+    "they are non-metals"
+   ],
+   "answer": 1,
+   "explain": "Both sets of electrons can bond."
+  },
+  {
+   "q": "Oxidation states of transition elements usually differ by:",
+   "options": [
+    "one",
+    "two",
+    "three",
+    "four"
+   ],
+   "answer": 0,
+   "explain": "Fe²⁺/Fe³⁺."
+  }
+ ],
+ "simulation": {
+  "decision": "NOT_REQUIRED",
+  "reason": "A counting idea shown on one ladder; the video's leaving electrons and the NCERT table carry it, and there is no quantity for a student to vary."
+ },
+ "related": [
+  "d-block-electronic-configurations",
+  "atomic-size-ionisation-enthalpy-3d"
+ ]
+}
