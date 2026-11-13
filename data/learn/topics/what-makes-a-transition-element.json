@@ -1,0 +1,148 @@
+{
+ "status": "ready",
+ "class": 12,
+ "subject": "Chemistry",
+ "chapter": "The d- and f-Block Elements",
+ "video": {
+  "youtubeId": "KN3QiECV63g"
+ },
+ "thumb": "thumb.jpg",
+ "id": "LEARN-C12-CHE-DBLOCK-TRANSITION",
+ "slug": "what-makes-a-transition-element",
+ "topic": "What makes an element a transition element",
+ "title": "Zinc Is in the d-Block, So Why Is It Not a Transition Metal?",
+ "series": 461,
+ "studioJob": "dblock-transition",
+ "reelId": "STUDIO-DBLOCK-TRANSITION",
+ "summary": "A transition element has an incompletely filled d subshell in its atom or in a common ion. Iron (3d⁶) passes; copper (3d¹⁰ atom) passes through Cu²⁺ (3d⁹); zinc stays 3d¹⁰ even as Zn²⁺, so Zn, Cd and Hg are d-block but not transition metals.",
+ "notes": {
+  "pdf": "notes.pdf",
+  "title": "02 – What Makes an Element a Transition Element",
+  "driveDoc": "1ZB1QjvI0-wylyJ_cwJcknb37ymhgm4ox2JSk5xFFwR0"
+ },
+ "tags": [
+  "transition elements",
+  "definition",
+  "electronic configuration",
+  "zinc",
+  "group 12"
+ ],
+ "keyPoints": [
+  "A **transition element** has an **incompletely filled d subshell** in its atom **or** in any common ion.",
+  "**Fe**: 3d⁶ 4s², incomplete → transition metal.",
+  "**Cu**: 3d¹⁰ 4s¹ in the atom, but **Cu²⁺ is 3d⁹** → transition metal.",
+  "**Zn, Cd, Hg**: d¹⁰ in the atom and in their ions → d-block, but **not transition metals**."
+ ],
+ "sections": [
+  {
+   "h": "The test, case by case",
+   "blocks": [
+    {
+     "table": {
+      "head": [
+       "Element",
+       "Atom",
+       "Common ion",
+       "Transition metal?"
+      ],
+      "rows": [
+       [
+        "Iron, Fe",
+        "[Ar] 3d⁶ 4s²",
+        "Fe²⁺ 3d⁶, Fe³⁺ 3d⁵",
+        "Yes (incomplete d)"
+       ],
+       [
+        "Copper, Cu",
+        "[Ar] 3d¹⁰ 4s¹",
+        "Cu²⁺ 3d⁹",
+        "Yes (through the ion)"
+       ],
+       [
+        "Zinc, Zn",
+        "[Ar] 3d¹⁰ 4s²",
+        "Zn²⁺ 3d¹⁰",
+        "No (always full)"
+       ]
+      ]
+     }
+    },
+    {
+     "p": "When a d-block atom forms an ion, the **4s electrons leave first**, then 3d electrons."
+    }
+   ]
+  },
+  {
+   "h": "Group 12",
+   "blocks": [
+    {
+     "p": "Zinc, cadmium and mercury keep a full (n−1)d¹⁰ subshell in the atom and in their common ions, so they are not regarded as transition metals, though they belong to the d-block."
+    }
+   ]
+  }
+ ],
+ "quiz": [
+  {
+   "q": "Which is NOT a transition metal?",
+   "options": [
+    "Fe",
+    "Cu",
+    "Zn",
+    "Cr"
+   ],
+   "answer": 2,
+   "explain": "Zn and Zn²⁺ are both 3d¹⁰."
+  },
+  {
+   "q": "The configuration of Cu²⁺ is:",
+   "options": [
+    "3d¹⁰",
+    "3d⁹",
+    "3d⁸ 4s¹",
+    "3d¹⁰ 4s¹"
+   ],
+   "answer": 1,
+   "explain": "Cu loses 4s¹ and one 3d electron."
+  },
+  {
+   "q": "When Zn forms Zn²⁺, the electrons removed are:",
+   "options": [
+    "two 3d",
+    "one 3d and one 4s",
+    "two 4s",
+    "none"
+   ],
+   "answer": 2,
+   "explain": "4s electrons leave first."
+  },
+  {
+   "q": "Copper is a transition metal because:",
+   "options": [
+    "its atom is 3d¹⁰",
+    "Cu²⁺ is 3d⁹",
+    "it is in group 11",
+    "it conducts electricity"
+   ],
+   "answer": 1,
+   "explain": "Its common ion has an incomplete d subshell."
+  },
+  {
+   "q": "A transition element must have an incomplete d subshell in:",
+   "options": [
+    "the atom only",
+    "a common ion only",
+    "the atom or a common ion",
+    "neither"
+   ],
+   "answer": 2,
+   "explain": "Either is enough."
+  }
+ ],
+ "simulation": {
+  "decision": "NOT_REQUIRED",
+  "reason": "A definition applied to three worked cases; there is no quantity or process for a student to vary."
+ },
+ "related": [
+  "d-and-f-block-introduction"
+ ]
+}

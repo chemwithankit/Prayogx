@@ -1,0 +1,130 @@
+{
+ "slug": "what-makes-a-transition-element",
+ "title": "Zinc Is in the d-Block, So Why Is It Not a Transition Metal?",
+ "class": 12,
+ "subject": "Chemistry",
+ "chapter": "The d- and f-Block Elements",
+ "objective": "A transition element has an incompletely filled d subshell in its atom or in a common ion. Iron (3d⁶) passes; copper (3d¹⁰ atom) passes through Cu²⁺ (3d⁹); zinc stays 3d¹⁰ even as Zn²⁺, so Zn, Cd and Hg are d-block but not transition metals.",
+ "fill": [
+  {
+   "q": "A transition element has an incompletely filled ____ subshell in its atom or a common ion.",
+   "a": "d"
+  },
+  {
+   "q": "The configuration of Cu²⁺ is 3d____.",
+   "a": "9"
+  },
+  {
+   "q": "When Zn forms Zn²⁺, the two ____ electrons leave.",
+   "a": "4s"
+  },
+  {
+   "q": "Zn, Cd and Hg belong to group ____.",
+   "a": "12"
+  }
+ ],
+ "tf": [
+  {
+   "q": "Zinc is a d-block element.",
+   "a": true,
+   "explain": "It is in group 12."
+  },
+  {
+   "q": "Zinc is a transition metal.",
+   "a": false,
+   "explain": "Zn and Zn²⁺ are both 3d¹⁰."
+  },
+  {
+   "q": "Copper is a transition metal even though its atom is 3d¹⁰.",
+   "a": true,
+   "explain": "Cu²⁺ is 3d⁹."
+  }
+ ],
+ "ar": [
+  {
+   "a": "Copper is a transition metal.",
+   "r": "Cu²⁺ has an incompletely filled 3d subshell.",
+   "answer": 0,
+   "explain": "R explains A."
+  },
+  {
+   "a": "Mercury is not regarded as a transition metal.",
+   "r": "Mercury is a liquid at room temperature.",
+   "answer": 1,
+   "explain": "Both true; R does not explain A: the reason is its full 5d¹⁰ subshell."
+  }
+ ],
+ "mcq": [
+  {
+   "q": "Which is NOT a transition metal?",
+   "options": [
+    "Fe",
+    "Cu",
+    "Zn",
+    "Cr"
+   ],
+   "answer": 2,
+   "explain": "Always d¹⁰."
+  },
+  {
+   "q": "The configuration of Fe is:",
+   "options": [
+    "[Ar] 3d⁶ 4s²",
+    "[Ar] 3d⁸",
+    "[Ar] 3d⁵ 4s³",
+    "[Ar] 4s² 3d⁴"
+   ],
+   "answer": 0,
+   "explain": "26 electrons."
+  },
+  {
+   "q": "In forming ions, d-block atoms lose first their:",
+   "options": [
+    "3d electrons",
+    "4s electrons",
+    "4p electrons",
+    "core electrons"
+   ],
+   "answer": 1,
+   "explain": "4s leaves before 3d."
+  }
+ ],
+ "num": [
+  {
+   "q": "How many 3d electrons does Cu²⁺ have?",
+   "steps": [
+    "29 − 2 = 27 electrons",
+    "[Ar] has 18"
+   ],
+   "answer": "9"
+  }
+ ],
+ "short": [
+  {
+   "q": "Is scandium (3d¹ 4s²; Sc³⁺ 3d⁰) a transition element? Why?",
+   "lines": 5,
+   "solution": "Yes: its atom has an incomplete 3d subshell, which satisfies the definition."
+  }
+ ],
+ "match": {
+  "left": [
+   "Fe",
+   "Cu²⁺",
+   "Zn²⁺",
+   "Not a transition metal"
+  ],
+  "right": [
+   "3d¹⁰",
+   "Hg",
+   "3d⁶ 4s²",
+   "3d⁹"
+  ],
+  "answer": [
+   2,
+   3,
+   0,
+   1
+  ],
+  "explain": "Each item matches its description."
+ }
+}
