@@ -53,7 +53,7 @@ Class → Subject → Chapter → Topic, at `https://prayogx.co.in/learn/<slug>/
 `subject` (Physics | Chemistry | Mathematics | Biology), `chapter`, `topic`, `title`, `summary`, `series`,
 `studioJob`, `reelId`, `video {youtubeId, instagram}`, `notes {pdf, title, driveDoc}`, `keyPoints[]`,
 `sections[{h, blocks[]}]` (each block exactly one of `p`, `formula`, `list`, `img`+`alt`+`caption`, `table{head,rows}`;
-inline `**bold**` only), `quiz[{q, options[3-5], answer (index), explain}]` (3–5 questions),
+inline `**bold**` only), `quiz[{q, options[3-5], answer (index), explain}]` (3–10 questions; new topics carry 10, owner 2026-11-15),
 `simulation {decision, reason, status, path, objective, instructions[], qa}`, `related[]`.
 
 The validator refuses: missing fields, a slug/file mismatch, a non-PDF or missing notes file, missing images or alt

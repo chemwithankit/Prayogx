@@ -174,10 +174,10 @@ def problems(t, slugs, cur):
                 w = len(tb.get("head", []))
                 if not w or any(len(r) != w for r in tb.get("rows", [])):
                     p.append("section %r: table rows must match the header width" % s["h"])
-    # quiz: 3-5 questions, 3-5 distinct options, a valid answer and an explanation each
+    # quiz: 3-10 questions (new topics carry 10, owner 2026-11-15), 3-5 distinct options, a valid answer and an explanation each
     qs = t["quiz"]
-    if not 3 <= len(qs) <= 5:
-        p.append("quiz must have 3-5 questions (has %d)" % len(qs))
+    if not 3 <= len(qs) <= 10:
+        p.append("quiz must have 3-10 questions (has %d)" % len(qs))
     seen = set()
     for i, q in enumerate(qs, 1):
         opts = q.get("options") or []
