@@ -1,0 +1,284 @@
+{
+ "status": "ready",
+ "class": 12,
+ "subject": "Chemistry",
+ "chapter": "The d- and f-Block Elements",
+ "video": {
+  "youtubeId": "rbBopPZY8bo"
+ },
+ "thumb": "thumb.jpg",
+ "id": "LEARN-C12-CHE-DBLOCK-MAGNETISM",
+ "slug": "paramagnetism-spin-only-magnetic-moment",
+ "topic": "Paramagnetism and the spin-only magnetic moment",
+ "title": "A Balance That Counts Electrons: Paramagnetism and the Spin-only Magnetic Moment",
+ "series": 468,
+ "studioJob": "dblock-magnetism",
+ "reelId": "STUDIO-DBLOCK-MAGNETISM",
+ "summary": "Every electron is a tiny magnet; in a pair the spins cancel, so only unpaired electrons make an ion paramagnetic. Count them from the ion's d configuration (singly up to d⁵, then pairing) and the spin-only formula gives the magnetic moment: μ = √(n(n+2)) BM, from 1.73 for one unpaired electron to 5.92 for Mn²⁺ (d⁵). A measured μ (Gouy balance) counts the unpaired electrons.",
+ "notes": {
+  "pdf": "notes.pdf",
+  "title": "09 – Magnetic Properties: Paramagnetism and the Spin-only Magnetic Moment",
+  "driveDoc": "1sus4MgmG1vOqG7dkFsyEu_EVjRz4Idx4JUQN5euZWvI"
+ },
+ "tags": [
+  "paramagnetism",
+  "diamagnetism",
+  "unpaired electrons",
+  "spin-only formula",
+  "magnetic moment",
+  "Bohr magneton"
+ ],
+ "keyPoints": [
+  "**Paramagnetic** = attracted by a field (unpaired electrons); **diamagnetic** = weakly repelled (all paired).",
+  "Count **n**: write the ion's configuration (4s leaves first), fill the 3d orbitals **singly first**, then pair: d¹–d⁵ → n = d; d⁶–d¹⁰ → n = 10 − d.",
+  "**μ = √(n(n+2)) BM**: 1.73, 2.84, 3.87, 4.90, 5.92 for n = 1 to 5. It does **not** double: n = 2 gives 2.84, not 3.46.",
+  "μ peaks at **d⁵** (Mn²⁺ 5.92 calc., 5.96 observed); a measured μ tells you the number of unpaired electrons."
+ ],
+ "sections": [
+  {
+   "h": "Spin-only values",
+   "blocks": [
+    {
+     "table": {
+      "head": [
+       "n",
+       "0",
+       "1",
+       "2",
+       "3",
+       "4",
+       "5"
+      ],
+      "rows": [
+       [
+        "μ (BM)",
+        "0",
+        "1.73",
+        "2.84",
+        "3.87",
+        "4.90",
+        "**5.92**"
+       ]
+      ]
+     }
+    },
+    {
+     "p": "For 3d ions the orbital contribution is effectively quenched, so μ depends only on n. One unpaired electron: 1.73 BM."
+    }
+   ]
+  },
+  {
+   "h": "Calculated vs observed (NCERT Table 4.7)",
+   "blocks": [
+    {
+     "table": {
+      "head": [
+       "Ion",
+       "Config.",
+       "n",
+       "Calc.",
+       "Obs."
+      ],
+      "rows": [
+       [
+        "Ti³⁺",
+        "3d¹",
+        "1",
+        "1.73",
+        "1.75"
+       ],
+       [
+        "V²⁺",
+        "3d³",
+        "3",
+        "3.87",
+        "3.86"
+       ],
+       [
+        "Cr²⁺",
+        "3d⁴",
+        "4",
+        "4.90",
+        "4.80"
+       ],
+       [
+        "Mn²⁺",
+        "3d⁵",
+        "5",
+        "5.92",
+        "5.96"
+       ],
+       [
+        "Fe²⁺",
+        "3d⁶",
+        "4",
+        "4.90",
+        "5.3–5.5"
+       ],
+       [
+        "Co²⁺",
+        "3d⁷",
+        "3",
+        "3.87",
+        "4.4–5.2"
+       ],
+       [
+        "Ni²⁺",
+        "3d⁸",
+        "2",
+        "2.84",
+        "2.9–3.4"
+       ],
+       [
+        "Cu²⁺",
+        "3d⁹",
+        "1",
+        "1.73",
+        "1.8–2.2"
+       ],
+       [
+        "Zn²⁺",
+        "3d¹⁰",
+        "0",
+        "0",
+        "0"
+       ]
+      ]
+     }
+    },
+    {
+     "p": "Fe²⁺ and Co²⁺ read higher than spin-only because their orbital contribution is not fully quenched."
+    }
+   ]
+  },
+  {
+   "h": "Worked example (NCERT Example 4.8)",
+   "blocks": [
+    {
+     "p": "Z = 25, divalent ion in water: Mn²⁺ = 3d⁵, n = 5, μ = √(5 × 7) = √35 = **5.92 BM**."
+    }
+   ]
+  }
+ ],
+ "quiz": [
+  {
+   "q": "Paramagnetism is caused by:",
+   "options": [
+    "paired electrons",
+    "unpaired electrons",
+    "protons",
+    "neutrons"
+   ],
+   "answer": 1,
+   "explain": "Each unpaired electron's moment is not cancelled."
+  },
+  {
+   "q": "Which ion is diamagnetic?",
+   "options": [
+    "Cu²⁺",
+    "Mn²⁺",
+    "Zn²⁺",
+    "Fe³⁺"
+   ],
+   "answer": 2,
+   "explain": "Zn²⁺ is 3d¹⁰: all paired."
+  },
+  {
+   "q": "The spin-only formula is:",
+   "options": [
+    "μ = n(n+2)",
+    "μ = √(n(n+2)) BM",
+    "μ = 1.73 n",
+    "μ = √(n+2)"
+   ],
+   "answer": 1,
+   "explain": "n = number of unpaired electrons."
+  },
+  {
+   "q": "Magnetic moment of one unpaired electron:",
+   "options": [
+    "1.00 BM",
+    "1.41 BM",
+    "1.73 BM",
+    "2.00 BM"
+   ],
+   "answer": 2,
+   "explain": "√(1 × 3) = 1.73."
+  },
+  {
+   "q": "Unpaired electrons in Fe²⁺ (Z = 26):",
+   "options": [
+    "2",
+    "4",
+    "5",
+    "6"
+   ],
+   "answer": 1,
+   "explain": "Fe²⁺ = 3d⁶: one pair, four single."
+  },
+  {
+   "q": "μ for two unpaired electrons:",
+   "options": [
+    "2.84 BM",
+    "3.46 BM",
+    "1.73 BM",
+    "3.87 BM"
+   ],
+   "answer": 0,
+   "explain": "√8 = 2.84; it is not 2 × 1.73."
+  },
+  {
+   "q": "Which ion has the largest magnetic moment?",
+   "options": [
+    "Ti³⁺",
+    "Ni²⁺",
+    "Mn²⁺",
+    "Cu²⁺"
+   ],
+   "answer": 2,
+   "explain": "Mn²⁺ = 3d⁵, five unpaired (5.92 BM)."
+  },
+  {
+   "q": "An ion has μ = 3.87 BM. Its unpaired electrons:",
+   "options": [
+    "1",
+    "2",
+    "3",
+    "4"
+   ],
+   "answer": 2,
+   "explain": "n(n+2) = 15 → n = 3."
+  },
+  {
+   "q": "Unpaired electrons in Ni²⁺ (Z = 28):",
+   "options": [
+    "0",
+    "2",
+    "3",
+    "8"
+   ],
+   "answer": 1,
+   "explain": "3d⁸: three pairs and two single."
+  },
+  {
+   "q": "A Gouy balance shows a paramagnetic sample:",
+   "options": [
+    "appearing heavier when the magnet is on",
+    "appearing lighter",
+    "changing colour",
+    "melting"
+   ],
+   "answer": 0,
+   "explain": "It is drawn into the field."
+  }
+ ],
+ "simulation": {
+  "decision": "NOT_REQUIRED",
+  "reason": "The idea is a counting rule plus one formula over eleven configurations (d⁰–d¹⁰); the video, memory cards, the worked table and 25 workbook questions teach it fully, and there is no continuous variable a student would usefully change."
+ },
+ "related": [
+  "higher-oxidation-states-oxides-fluorides",
+  "d-block-electronic-configurations",
+  "variable-oxidation-states-transition-metals"
+ ]
+}

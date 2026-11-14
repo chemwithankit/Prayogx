@@ -1,0 +1,201 @@
+{
+ "slug": "paramagnetism-spin-only-magnetic-moment",
+ "title": "A Balance That Counts Electrons: Paramagnetism and the Spin-only Magnetic Moment",
+ "class": 12,
+ "subject": "Chemistry",
+ "chapter": "The d- and f-Block Elements",
+ "objective": "Every electron is a tiny magnet; in a pair the spins cancel, so only unpaired electrons make an ion paramagnetic. Count them from the ion's d configuration (singly up to d⁵, then pairing) and the spin-only formula gives the magnetic moment: μ = √(n(n+2)) BM, from 1.73 for one unpaired electron to 5.92 for Mn²⁺ (d⁵). A measured μ (Gouy balance) counts the unpaired electrons.",
+ "fill": [
+  {
+   "q": "Substances attracted by a magnetic field are called ____.",
+   "a": "paramagnetic"
+  },
+  {
+   "q": "Substances weakly repelled by a magnetic field are called ____.",
+   "a": "diamagnetic"
+  },
+  {
+   "q": "Paramagnetism arises from the presence of ____ electrons.",
+   "a": "unpaired"
+  },
+  {
+   "q": "The spin-only formula is μ = √(n(n + ____)) BM.",
+   "a": "2"
+  },
+  {
+   "q": "The magnetic moment of one unpaired electron is ____ BM.",
+   "a": "1.73"
+  },
+  {
+   "q": "The unit of magnetic moment is the ____ magneton.",
+   "a": "Bohr"
+  },
+  {
+   "q": "The number of unpaired electrons in Mn²⁺ is ____.",
+   "a": "5"
+  }
+ ],
+ "tf": [
+  {
+   "q": "Zn²⁺ is paramagnetic.",
+   "a": false,
+   "explain": "Zn²⁺ is 3d¹⁰: all electrons are paired, so it is diamagnetic."
+  },
+  {
+   "q": "Fe²⁺ has the configuration 3d⁴.",
+   "a": false,
+   "explain": "The 4s electrons leave first: Fe²⁺ is 3d⁶ (4 unpaired)."
+  },
+  {
+   "q": "For 3d ions the orbital contribution to μ is effectively quenched.",
+   "a": true,
+   "explain": "So μ depends only on the number of unpaired electrons."
+  },
+  {
+   "q": "Two unpaired electrons give a moment of 3.46 BM.",
+   "a": false,
+   "explain": "μ = √8 = 2.84 BM; μ is not proportional to n."
+  },
+  {
+   "q": "Ferromagnetism is an extreme form of paramagnetism.",
+   "a": true,
+   "explain": "NCERT 4.3.9."
+  }
+ ],
+ "ar": [
+  {
+   "a": "Zn²⁺ salts are diamagnetic.",
+   "r": "Zn²⁺ has a completely filled 3d¹⁰ configuration.",
+   "answer": 0,
+   "explain": "All paired, so there is no net moment."
+  },
+  {
+   "a": "Mn²⁺ has a higher magnetic moment than Cu²⁺.",
+   "r": "Mn²⁺ has more d electrons than Cu²⁺.",
+   "answer": 2,
+   "explain": "Mn²⁺ (d⁵) has fewer d electrons than Cu²⁺ (d⁹); it has more UNPAIRED electrons (5 vs 1)."
+  }
+ ],
+ "mcq": [
+  {
+   "q": "The spin-only magnetic moment of Cu²⁺ (Z = 29) is:",
+   "options": [
+    "0 BM",
+    "1.73 BM",
+    "2.84 BM",
+    "3.87 BM"
+   ],
+   "answer": 1,
+   "explain": "Cu²⁺ is 3d⁹: one unpaired electron."
+  },
+  {
+   "q": "The number of unpaired electrons in Ni²⁺ (Z = 28):",
+   "options": [
+    "0",
+    "2",
+    "3",
+    "8"
+   ],
+   "answer": 1,
+   "explain": "Ni²⁺ is 3d⁸: three pairs and two single electrons."
+  },
+  {
+   "q": "Which ion has the highest magnetic moment?",
+   "options": [
+    "Ti³⁺",
+    "V²⁺",
+    "Fe³⁺",
+    "Ni²⁺"
+   ],
+   "answer": 2,
+   "explain": "Fe³⁺ is 3d⁵: five unpaired, 5.92 BM."
+  },
+  {
+   "q": "Which ion is diamagnetic?",
+   "options": [
+    "Sc³⁺",
+    "Ti³⁺",
+    "Cr³⁺",
+    "Co²⁺"
+   ],
+   "answer": 0,
+   "explain": "Sc³⁺ is 3d⁰."
+  },
+  {
+   "q": "An ion has μ = 4.90 BM. Its number of unpaired electrons is:",
+   "options": [
+    "2",
+    "3",
+    "4",
+    "5"
+   ],
+   "answer": 2,
+   "explain": "n(n+2) = 24, so n = 4."
+  }
+ ],
+ "num": [
+  {
+   "q": "Calculate the spin-only magnetic moment of Cr³⁺ (Z of Cr = 24).",
+   "steps": [
+    "Cr = [Ar] 3d⁵4s¹, Cr³⁺ = 3d³",
+    "n = 3",
+    "μ = √(3 × 5) = √15"
+   ],
+   "answer": "3.87 BM"
+  },
+  {
+   "q": "Calculate the spin-only magnetic moment of Fe²⁺ (Z of Fe = 26).",
+   "steps": [
+    "Fe²⁺ = 3d⁶",
+    "n = 4",
+    "μ = √(4 × 6) = √24"
+   ],
+   "answer": "4.90 BM"
+  },
+  {
+   "q": "An ion of the 3d series has μ = 2.84 BM. Find n.",
+   "steps": [
+    "n(n + 2) = 2.84² ≈ 8",
+    "n² + 2n − 8 = 0",
+    "n = 2"
+   ],
+   "answer": "2"
+  }
+ ],
+ "short": [
+  {
+   "q": "Why are most transition-metal ions paramagnetic?",
+   "lines": 5,
+   "solution": "Their 3d orbitals are partly filled, so they hold unpaired electrons; each unpaired electron has a magnetic moment that is not cancelled by a partner of opposite spin."
+  },
+  {
+   "q": "How does a Gouy balance show that CuSO₄ is paramagnetic?",
+   "lines": 5,
+   "solution": "The sample hangs between the poles of an electromagnet; when the field is switched on it is drawn into the field and appears heavier on the balance. The change gives the susceptibility, from which μ is found."
+  }
+ ],
+ "match": {
+  "left": [
+   "Sc³⁺ (3d⁰)",
+   "Ti³⁺ (3d¹)",
+   "Ni²⁺ (3d⁸)",
+   "V²⁺ (3d³)",
+   "Mn²⁺ (3d⁵)"
+  ],
+  "right": [
+   "3.87 BM",
+   "2.84 BM",
+   "0 BM",
+   "5.92 BM",
+   "1.73 BM"
+  ],
+  "answer": [
+   2,
+   4,
+   1,
+   0,
+   3
+  ],
+  "explain": "Count n from the configuration, then μ = √(n(n+2))."
+ }
+}
