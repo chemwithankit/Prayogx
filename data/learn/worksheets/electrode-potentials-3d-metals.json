@@ -1,0 +1,129 @@
+{
+ "slug": "electrode-potentials-3d-metals",
+ "title": "Zinc Fizzes, Copper Stays Silent: Electrode Potentials of the 3d Metals",
+ "class": 12,
+ "subject": "Chemistry",
+ "chapter": "The d- and f-Block Elements",
+ "objective": "Copper is the only 3d metal with a positive E°(M²⁺/M) (+0.34 V), so it gives no H₂ with dilute acids. Turning Cu(s) into Cu²⁺(aq) costs more (atomisation + two ionisations) than hydration pays back: 921 against zinc's 711 kJ/mol. Stable d⁵ and d¹⁰ bend the trend: Mn and Zn dip, Mn³⁺ is a strong oxidant, Fe³⁺ is stable.",
+ "fill": [
+  {
+   "q": "The only 3d metal with a positive E°(M²⁺/M) is ____.",
+   "a": "copper"
+  },
+  {
+   "q": "E°(Cu²⁺/Cu) = +____ V.",
+   "a": "0.34"
+  },
+  {
+   "q": "Energy released when water surrounds an ion is the ____ enthalpy.",
+   "a": "hydration"
+  },
+  {
+   "q": "E°(Mn³⁺/Mn²⁺) is high because Mn²⁺ has the stable d____ configuration.",
+   "a": "5"
+  }
+ ],
+ "tf": [
+  {
+   "q": "Zinc liberates H₂ from dilute HCl.",
+   "a": true,
+   "explain": "Its E° is −0.76 V."
+  },
+  {
+   "q": "Copper dissolves in nitric acid with evolution of H₂.",
+   "a": false,
+   "explain": "It dissolves, but the acid is reduced; no H₂."
+  },
+  {
+   "q": "Fe³⁺ is d⁵.",
+   "a": true,
+   "explain": "So E°(Fe³⁺/Fe²⁺) is comparatively low."
+  }
+ ],
+ "ar": [
+  {
+   "a": "Copper does not liberate H₂ from dilute acids.",
+   "r": "E°(Cu²⁺/Cu) is positive.",
+   "answer": 0,
+   "explain": "R explains A."
+  },
+  {
+   "a": "E° of Zn is more negative than the trend.",
+   "r": "Zn²⁺ has a stable d¹⁰ configuration.",
+   "answer": 0,
+   "explain": "R explains A."
+  }
+ ],
+ "mcq": [
+  {
+   "q": "The only positive E°(M²⁺/M) in the 3d series:",
+   "options": [
+    "Zn",
+    "Ni",
+    "Cu",
+    "Fe"
+   ],
+   "answer": 2,
+   "explain": "+0.34 V."
+  },
+  {
+   "q": "Net enthalpy for Zn(s) → Zn²⁺(aq):",
+   "options": [
+    "711 kJ/mol",
+    "921 kJ/mol",
+    "130 kJ/mol",
+    "2059 kJ/mol"
+   ],
+   "answer": 0,
+   "explain": "130 + 906 + 1734 − 2059."
+  },
+  {
+   "q": "A strong oxidising agent:",
+   "options": [
+    "Mn³⁺",
+    "Fe²⁺",
+    "Zn²⁺",
+    "Sc³⁺"
+   ],
+   "answer": 0,
+   "explain": "It becomes d⁵ Mn²⁺."
+  }
+ ],
+ "num": [
+  {
+   "q": "Find the net enthalpy (kJ/mol) for Ni(s) → Ni²⁺(aq): ΔaH 431, IE₁ 736, IE₂ 1752, ΔhydH −2121.",
+   "steps": [
+    "431 + 736 + 1752 − 2121"
+   ],
+   "answer": "798"
+  }
+ ],
+ "short": [
+  {
+   "q": "Why is Cr²⁺ reducing while Mn³⁺ is oxidising, though both are d⁴?",
+   "lines": 5,
+   "solution": "Cr²⁺ → Cr³⁺ gives d³ (half-filled t₂g, more stable), so it loses an electron easily; Mn³⁺ → Mn²⁺ gives the half-filled d⁵, so it gains one easily."
+  }
+ ],
+ "match": {
+  "left": [
+   "Cu",
+   "Zn",
+   "Mn³⁺/Mn²⁺",
+   "Fe³⁺/Fe²⁺"
+  ],
+  "right": [
+   "−0.76 V",
+   "+1.57 V",
+   "+0.77 V",
+   "+0.34 V"
+  ],
+  "answer": [
+   3,
+   0,
+   1,
+   2
+  ],
+  "explain": "Each item matches its E°."
+ }
+}

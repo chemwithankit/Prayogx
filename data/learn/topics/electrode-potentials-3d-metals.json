@@ -1,0 +1,189 @@
+{
+ "status": "ready",
+ "class": 12,
+ "subject": "Chemistry",
+ "chapter": "The d- and f-Block Elements",
+ "video": {
+  "youtubeId": "LndGW7Jw954"
+ },
+ "thumb": "thumb.jpg",
+ "id": "LEARN-C12-CHE-DBLOCK-ELECTRODE",
+ "slug": "electrode-potentials-3d-metals",
+ "topic": "Trends in standard electrode potentials of 3d metals",
+ "title": "Zinc Fizzes, Copper Stays Silent: Electrode Potentials of the 3d Metals",
+ "series": 466,
+ "studioJob": "dblock-electrode",
+ "reelId": "STUDIO-DBLOCK-ELECTRODE",
+ "summary": "Copper is the only 3d metal with a positive E°(M²⁺/M) (+0.34 V), so it gives no H₂ with dilute acids. Turning Cu(s) into Cu²⁺(aq) costs more (atomisation + two ionisations) than hydration pays back: 921 against zinc's 711 kJ/mol. Stable d⁵ and d¹⁰ bend the trend: Mn and Zn dip, Mn³⁺ is a strong oxidant, Fe³⁺ is stable.",
+ "notes": {
+  "pdf": "notes.pdf",
+  "title": "07 – Trends in Standard Electrode Potentials of the 3d Metals",
+  "driveDoc": "1EviavH_NHuUVuktZV9Z5dOD7AGfqnTOg-cgSMZ1nH6U"
+ },
+ "tags": [
+  "standard electrode potential",
+  "E°",
+  "copper",
+  "hydration enthalpy",
+  "oxidising agent",
+  "3d series"
+ ],
+ "keyPoints": [
+  "**More negative E°(M²⁺/M)** = the metal forms M²⁺(aq) more easily; metals below 0 V give **H₂** with dilute acids.",
+  "**Copper alone is positive (+0.34 V)**: no H₂ from dilute acids, though **oxidising acids** (nitric, hot conc. sulphuric) dissolve it.",
+  "**Energy bill** M(s) → M²⁺(aq) = atomisation + IE₁ + IE₂ + hydration: **Zn 711**, **Cu 921 kJ/mol** (NCERT Table 4.4).",
+  "**Stable d⁵ / d¹⁰**: Mn and Zn are more negative than the trend; **Mn³⁺** (→ d⁵) is a strong oxidant (+1.57 V); **Fe³⁺** is already d⁵ (+0.77 V)."
+ ],
+ "sections": [
+  {
+   "h": "E°(M²⁺/M) across the 3d series",
+   "blocks": [
+    {
+     "table": {
+      "head": [
+       "Ti",
+       "V",
+       "Cr",
+       "Mn",
+       "Fe",
+       "Co",
+       "Ni",
+       "Cu",
+       "Zn"
+      ],
+      "rows": [
+       [
+        "−1.63",
+        "−1.18",
+        "−0.90",
+        "−1.18",
+        "−0.44",
+        "−0.28",
+        "−0.25",
+        "**+0.34**",
+        "−0.76"
+       ]
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "h": "The energy bill (kJ/mol, NCERT Table 4.4)",
+   "blocks": [
+    {
+     "table": {
+      "head": [
+       "",
+       "Atomisation",
+       "IE₁",
+       "IE₂",
+       "Hydration",
+       "Net"
+      ],
+      "rows": [
+       [
+        "Zn",
+        "130",
+        "906",
+        "1734",
+        "−2059",
+        "**711**"
+       ],
+       [
+        "Cu",
+        "339",
+        "745",
+        "1958",
+        "−2121",
+        "**921**"
+       ]
+      ]
+     }
+    },
+    {
+     "p": "Copper's costs (atomisation and the second ionisation) are much higher, and its hydration enthalpy cannot make up for them, so E°(Cu²⁺/Cu) is positive. Across the series the net bill follows the E° order (Mn 643, Zn 711, Fe 743, Ni 798, Cu 921)."
+    }
+   ]
+  },
+  {
+   "h": "Stable d⁵ and d¹⁰",
+   "blocks": [
+    {
+     "list": [
+      "Mn²⁺ (d⁵) and Zn²⁺ (d¹⁰) are especially stable: E° of Mn and Zn are more negative than the trend (Ni too, because of its high hydration enthalpy).",
+      "E°(Mn³⁺/Mn²⁺) = +1.57 V: Mn³⁺ gains a stable d⁵ by taking one electron, so it is a strong oxidising agent.",
+      "E°(Fe³⁺/Fe²⁺) = +0.77 V, comparatively low: Fe³⁺ is already d⁵.",
+      "Co³⁺/Co²⁺ = +1.97 V: Co³⁺ is also strongly oxidising."
+     ]
+    }
+   ]
+  }
+ ],
+ "quiz": [
+  {
+   "q": "The only 3d metal with a positive E°(M²⁺/M):",
+   "options": [
+    "Zn",
+    "Ni",
+    "Cu",
+    "Fe"
+   ],
+   "answer": 2,
+   "explain": "+0.34 V."
+  },
+  {
+   "q": "Which acid dissolves copper?",
+   "options": [
+    "dilute HCl",
+    "dilute H₂SO₄",
+    "nitric acid",
+    "acetic acid"
+   ],
+   "answer": 2,
+   "explain": "An oxidising acid; no H₂ is given."
+  },
+  {
+   "q": "Net bill for Cu(s) → Cu²⁺(aq), NCERT data:",
+   "options": [
+    "711 kJ/mol",
+    "921 kJ/mol",
+    "2121 kJ/mol",
+    "339 kJ/mol"
+   ],
+   "answer": 1,
+   "explain": "339 + 745 + 1958 − 2121."
+  },
+  {
+   "q": "Mn³⁺ is a strong oxidising agent because:",
+   "options": [
+    "Mn³⁺ is d⁵",
+    "Mn²⁺ is the stable d⁵",
+    "Mn has no d electrons",
+    "Mn is a noble metal"
+   ],
+   "answer": 1,
+   "explain": "Taking one electron gives half-filled d⁵."
+  },
+  {
+   "q": "E°(Fe³⁺/Fe²⁺) is comparatively low because:",
+   "options": [
+    "Fe³⁺ is d⁵",
+    "Fe²⁺ is d¹⁰",
+    "Fe has no 4s electrons",
+    "iron is a gas"
+   ],
+   "answer": 0,
+   "explain": "Fe³⁺ is already half-filled."
+  }
+ ],
+ "simulation": {
+  "decision": "NOT_REQUIRED",
+  "reason": "The idea is a sum of four tabulated energies compared across metals; the worked Zn and Cu bills and the table teach it fully, and varying a metal would add nothing beyond the table."
+ },
+ "related": [
+  "variable-oxidation-states-transition-metals",
+  "atomic-size-ionisation-enthalpy-3d",
+  "d-block-electronic-configurations"
+ ]
+}
