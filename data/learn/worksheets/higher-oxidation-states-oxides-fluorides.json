@@ -1,0 +1,129 @@
+{
+ "slug": "higher-oxidation-states-oxides-fluorides",
+ "title": "Fluorine Fails, Oxygen Wins: Highest Oxidation States in Oxides and Fluorides",
+ "class": 12,
+ "subject": "Chemistry",
+ "chapter": "The d- and f-Block Elements",
+ "objective": "A metal reaches its highest oxidation state only with oxygen or fluorine. Fluorine is the more electronegative, yet manganese's highest fluoride is MnF₄ (+4) while its oxide reaches +7 (Mn₂O₇, MnO₄⁻): one oxygen forms a multiple bond and counts two electrons, one fluorine counts only one. From Sc₂O₃ to Mn₂O₇ the highest oxide's oxidation state equals the group number.",
+ "fill": [
+  {
+   "q": "The highest oxidation state of Mn in a fluoride is +____.",
+   "a": "4"
+  },
+  {
+   "q": "In MnO₄⁻ the oxidation state of Mn is +____.",
+   "a": "7"
+  },
+  {
+   "q": "Oxygen stabilises high oxidation states because it forms ____ bonds with metals.",
+   "a": "multiple"
+  },
+  {
+   "q": "In the highest oxides from Sc to Mn, the oxidation state equals the ____ number.",
+   "a": "group"
+  }
+ ],
+ "tf": [
+  {
+   "q": "MnF₇ is a well-known compound.",
+   "a": false,
+   "explain": "It has never been made; the highest Mn fluoride is MnF₄."
+  },
+  {
+   "q": "Mn₂O₇ is a covalent oxide.",
+   "a": true,
+   "explain": "Each Mn is tetrahedrally surrounded by O, with an Mn–O–Mn bridge."
+  },
+  {
+   "q": "Oxygen stabilises higher states than fluorine because it is more electronegative.",
+   "a": false,
+   "explain": "Fluorine is more electronegative; oxygen wins by multiple bonding."
+  }
+ ],
+ "ar": [
+  {
+   "a": "The highest oxide of Mn is Mn₂O₇ but its highest fluoride is MnF₄.",
+   "r": "Oxygen can form multiple bonds with metals.",
+   "answer": 0,
+   "explain": "R explains A."
+  },
+  {
+   "a": "KMnO₄ is a strong oxidising agent.",
+   "r": "Mn in the +7 state readily accepts electrons.",
+   "answer": 0,
+   "explain": "R explains A."
+  }
+ ],
+ "mcq": [
+  {
+   "q": "The highest fluoride of manganese:",
+   "options": [
+    "MnF₂",
+    "MnF₃",
+    "MnF₄",
+    "MnF₇"
+   ],
+   "answer": 2,
+   "explain": "NCERT Table 4.5."
+  },
+  {
+   "q": "The highest oxide of vanadium:",
+   "options": [
+    "VO",
+    "V₂O₃",
+    "VO₂",
+    "V₂O₅"
+   ],
+   "answer": 3,
+   "explain": "Group 5, oxidation state +5."
+  },
+  {
+   "q": "Oxidation state of Mn in MnO₃F:",
+   "options": [
+    "+4",
+    "+5",
+    "+6",
+    "+7"
+   ],
+   "answer": 3,
+   "explain": "x − 6 − 1 = 0."
+  }
+ ],
+ "num": [
+  {
+   "q": "Find the oxidation state of Cr in Cr₂O₇²⁻.",
+   "steps": [
+    "2x + 7(−2) = −2, so 2x = 12"
+   ],
+   "answer": "6"
+  }
+ ],
+ "short": [
+  {
+   "q": "Why does Cu⁺(aq) disproportionate?",
+   "lines": 5,
+   "solution": "2Cu⁺ → Cu²⁺ + Cu. Cu²⁺(aq) has a much more negative hydration enthalpy than Cu⁺(aq), which more than compensates for the second ionisation enthalpy of Cu."
+  }
+ ],
+ "match": {
+  "left": [
+   "Sc₂O₃",
+   "TiO₂",
+   "V₂O₅",
+   "Mn₂O₇"
+  ],
+  "right": [
+   "+7",
+   "+3",
+   "+4",
+   "+5"
+  ],
+  "answer": [
+   1,
+   2,
+   3,
+   0
+  ],
+  "explain": "Each oxide matches the oxidation state of its metal (= group number)."
+ }
+}
