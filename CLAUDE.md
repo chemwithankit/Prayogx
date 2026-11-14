@@ -101,6 +101,35 @@ visible. The answer is not shown before the run. Full standard:
   (private first; unaudited API projects are private-only). Never authenticate or upload from the factory, except for
   a question the owner names in End-to-End Production Mode (below).
 
+## PrayogX Reel Studio (owner's permanent production standard, 2026-11-14)
+
+- **Every request for a reel, Short or explainer video, single or batch, runs through the
+  `prayogx-reel-studio` skill** (`.claude/skills/prayogx-reel-studio/`), without the owner re-pasting it.
+- **One reel = one independent creative project.** A batch only organises several projects. It is never a
+  reason to reduce research, creative effort, production quality or attention on one reel.
+- Per reel, in order, each with its own file in the studio job: research dossier → creative exploration
+  (with a diversity check against recent reels) → script → storyboard, camera and sound plan → build →
+  render and inspection → QA loop (five-stage review, 100-point scorecard, approve at ≥ 90 with no critical
+  failure) → deliverables. No animation code before the storyboard gate.
+- Batches: a manifest, one reel at a time through every stage, waves of at most three, stop and report
+  rather than rush. Technical reuse is fine; creative repetition is not.
+- It adds to the standards below and the owner's rules in memory; it replaces none of them, and the
+  approval, publishing, commit and deploy gates are unchanged.
+
+## PrayogX Doodle Explainer (owner's persistent video style, 2026-10-15)
+
+- **Default style** for any request for a "PrayogX Doodle Explainer" (e.g. "Create a PrayogX Doodle Explainer about
+  [topic], [X] seconds"): read and follow [docs/prayogx-doodle-explainer-style.md](docs/prayogx-doodle-explainer-style.md)
+  without the owner re-pasting it. A request that names a different style wins.
+- In short: a teacher showing **real evidence** (genuine clips, website / paper snippets, verified and licensed, never
+  fabricated) marked with an **animated highlighter** (yellow marker circles, arrows, underlines drawn on the spoken
+  word), linked to **simple 2D / 2.5D illustrations**, with Hinglish keywords, narration-led timing and purposeful,
+  sparing sound. Teaching arc: hook → the whole idea once → one tagged example per part → name the concept → takeaway.
+  Improvise creatively per concept; scientific accuracy outranks effects.
+- Built in the motion studio (`~/Documents/motion-design-studio/motion-studio`, `jobs/<slug>/`), not `tools/reel-maker`.
+  Reference: `jobs/newtons-first-law/`. Downloads and paid voice / video generation need the owner's OK; commit and
+  publishing gates are unchanged.
+
 ## End-to-End Production Mode (explicit, per question)
 
 - **The default is unchanged.** Outside this mode every gate above stays exactly as it is: a reel, its approval, its
@@ -183,6 +212,8 @@ visible. The answer is not shown before the run. Full standard:
 | Sync the Google Sheet tracker (in place, never recreate) | `.claude/skills/prayogx-register/` §5, `tools/tracker_sheet.py` |
 | Fix or review an existing page | `.claude/skills/prayogx-review-existing/` |
 | Reels: generate, audio, review, approve, publish to Instagram | `tools/reel-maker/README.md`, `tools/instagram_publish.py`, `docs/INSTAGRAM_PUBLISHING.md` |
+| Produce a reel / explainer video, single or batch (always) | `.claude/skills/prayogx-reel-studio/` |
+| Concept explainer videos (PrayogX Doodle Explainer style) | `docs/prayogx-doodle-explainer-style.md`; built in `~/Documents/motion-design-studio/motion-studio` |
 | Tokens, components, animation CSS | `.claude/skills/prayogx-design-system/reference.md` |
 | Standards, generations, immersive direction | `docs/SIMULATION_STANDARDS.md` |
 | Decisions and open questions | `docs/DECISIONS.md` |
