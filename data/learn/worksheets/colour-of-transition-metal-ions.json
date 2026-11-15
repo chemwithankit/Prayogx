@@ -1,0 +1,201 @@
+{
+ "slug": "colour-of-transition-metal-ions",
+ "title": "The Light Thief: Why Transition-Metal Ions Are Coloured",
+ "class": 12,
+ "subject": "Chemistry",
+ "chapter": "The d- and f-Block Elements",
+ "objective": "Ligands split the five d orbitals of a transition-metal ion into a lower and an upper level. A d electron absorbs the one band of visible light whose energy equals the gap and jumps up (a d–d transition); the rest of the light reaches the eye, so we see the complementary colour: Ti³⁺(aq) eats green-yellow and looks purple, Cu²⁺(aq) eats red-orange and looks blue. The ligand sets the gap (ruby and emerald are both Cr³⁺), and d⁰ / d¹⁰ ions such as Sc³⁺ and Zn²⁺ are colourless.",
+ "fill": [
+  {
+   "q": "The colour of transition-metal ions arises from ____ transitions.",
+   "a": "d–d"
+  },
+  {
+   "q": "The colour we see is the ____ colour of the light absorbed.",
+   "a": "complementary"
+  },
+  {
+   "q": "The frequency of light absorbed is determined by the nature of the ____.",
+   "a": "ligand"
+  },
+  {
+   "q": "Sc³⁺ (Z of Sc = 21) has ____ d electrons, so it is colourless.",
+   "a": "0"
+  },
+  {
+   "q": "Zn²⁺ (Z of Zn = 30) has ____ d electrons, so it is colourless.",
+   "a": "10"
+  },
+  {
+   "q": "In a free ion the five d orbitals have ____ energy.",
+   "a": "equal"
+  }
+ ],
+ "tf": [
+  {
+   "q": "Cu²⁺(aq) is blue because it absorbs blue light.",
+   "a": false,
+   "explain": "It absorbs red-orange light; blue is the complementary colour that is transmitted."
+  },
+  {
+   "q": "Ligands split the d orbitals into two sets of different energy.",
+   "a": true,
+   "explain": "With six ligands: three lower, two upper."
+  },
+  {
+   "q": "Ti⁴⁺ salts are coloured.",
+   "a": false,
+   "explain": "Ti⁴⁺ is 3d⁰: no d electron, so no d–d transition."
+  },
+  {
+   "q": "The energy absorbed in a d–d transition usually lies in the visible region.",
+   "a": true,
+   "explain": "NCERT 4.3.10."
+  },
+  {
+   "q": "The same metal ion always has the same colour, whatever its ligands.",
+   "a": false,
+   "explain": "Cr³⁺ is red in ruby and green in emerald; the ligand sets the gap."
+  }
+ ],
+ "ar": [
+  {
+   "a": "Zn²⁺ salts are colourless.",
+   "r": "Zn²⁺ has a completely filled 3d¹⁰ configuration.",
+   "answer": 0,
+   "explain": "No empty d orbital above, so no d–d transition."
+  },
+  {
+   "a": "Cu²⁺(aq) appears blue.",
+   "r": "Cu²⁺ absorbs blue light.",
+   "answer": 2,
+   "explain": "The reason is false: it absorbs red-orange; blue is what remains."
+  }
+ ],
+ "mcq": [
+  {
+   "q": "Which aquated ion is purple?",
+   "options": [
+    "Ti³⁺",
+    "Ni²⁺",
+    "Cu²⁺",
+    "Zn²⁺"
+   ],
+   "answer": 0,
+   "explain": "Ti³⁺ (3d¹) absorbs green-yellow; NCERT Table 4.8."
+  },
+  {
+   "q": "Which ion is colourless in water?",
+   "options": [
+    "V³⁺",
+    "Mn²⁺",
+    "Sc³⁺",
+    "Co²⁺"
+   ],
+   "answer": 2,
+   "explain": "Sc³⁺ is 3d⁰."
+  },
+  {
+   "q": "A solution absorbs green-yellow light. Its colour is:",
+   "options": [
+    "green",
+    "yellow",
+    "purple",
+    "orange"
+   ],
+   "answer": 2,
+   "explain": "Red + blue are left: purple."
+  },
+  {
+   "q": "Ni²⁺(aq) is:",
+   "options": [
+    "blue",
+    "green",
+    "pink",
+    "colourless"
+   ],
+   "answer": 1,
+   "explain": "NCERT Table 4.8: Ni²⁺ (3d⁸) green."
+  },
+  {
+   "q": "Which configuration cannot show a d–d transition?",
+   "options": [
+    "3d¹",
+    "3d⁵",
+    "3d⁹",
+    "3d¹⁰"
+   ],
+   "answer": 3,
+   "explain": "No vacancy in the d orbitals."
+  },
+  {
+   "q": "In a d–d transition the electron moves:",
+   "options": [
+    "from s to d",
+    "between two d levels",
+    "out of the ion",
+    "into the nucleus"
+   ],
+   "answer": 1,
+   "explain": "Lower d set → upper d set."
+  }
+ ],
+ "num": [
+  {
+   "q": "[Ti(H₂O)₆]³⁺ absorbs most strongly near 500 nm. Use E = 1240/λ(nm) eV to find the energy gap.",
+   "steps": [
+    "E = 1240 / 500"
+   ],
+   "answer": "≈ 2.5 eV"
+  },
+  {
+   "q": "Ruby's gap is about 2.23 eV and emerald's about 2.05 eV. Find the wavelength each absorbs most (λ = 1240/E).",
+   "steps": [
+    "1240/2.23 ≈ 556 nm",
+    "1240/2.05 ≈ 605 nm"
+   ],
+   "answer": "ruby ≈ 556 nm (yellow-green), emerald ≈ 605 nm (orange-red)"
+  }
+ ],
+ "short": [
+  {
+   "q": "Explain why Ti³⁺(aq) is coloured but Ti⁴⁺(aq) is colourless.",
+   "lines": 5,
+   "solution": "Ti³⁺ is 3d¹: its one d electron can absorb visible light and jump from the lower to the upper d level (d–d transition); the complementary colour (purple) is seen. Ti⁴⁺ is 3d⁰: no d electron, no d–d transition, no visible absorption."
+  },
+  {
+   "q": "What is meant by complementary colour? Give one example from transition-metal ions.",
+   "lines": 5,
+   "solution": "The colour that remains when one band is removed from white light (opposite on the colour wheel). Cu²⁺(aq) absorbs red-orange and looks blue."
+  },
+  {
+   "q": "Ruby and emerald both contain Cr³⁺. Why do they have different colours?",
+   "lines": 5,
+   "solution": "The surroundings (ligand field) of Cr³⁺ differ: ruby's d-orbital gap is larger, so it absorbs yellow-green and looks red; emerald's gap is smaller, so it absorbs red-orange and looks green."
+  }
+ ],
+ "match": {
+  "left": [
+   "Sc³⁺ (3d⁰)",
+   "Ti³⁺ (3d¹)",
+   "Mn²⁺ (3d⁵)",
+   "Ni²⁺ (3d⁸)",
+   "Cu²⁺ (3d⁹)"
+  ],
+  "right": [
+   "pink",
+   "purple",
+   "colourless",
+   "blue",
+   "green"
+  ],
+  "answer": [
+   2,
+   1,
+   0,
+   4,
+   3
+  ],
+  "explain": "Match each aquated ion with its colour (NCERT Table 4.8)."
+ }
+}
