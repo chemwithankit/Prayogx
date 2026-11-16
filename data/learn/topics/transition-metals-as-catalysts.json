@@ -1,0 +1,225 @@
+{
+ "status": "ready",
+ "class": 12,
+ "subject": "Chemistry",
+ "chapter": "The d- and f-Block Elements",
+ "video": {
+  "youtubeId": "ZVUuxCSG4xs"
+ },
+ "thumb": "thumb.jpg",
+ "id": "LEARN-C12-CHE-DBLOCK-CATALYSTS",
+ "slug": "transition-metals-as-catalysts",
+ "topic": "Transition metals as catalysts",
+ "title": "Iron, Nitrogen and an Electron Ferry: Why Transition Metals Are Good Catalysts",
+ "series": 471,
+ "studioJob": "dblock-catalysts",
+ "reelId": "STUDIO-DBLOCK-CATALYSTS",
+ "summary": "A catalyst speeds up a reaction without being used up by lowering its activation energy. Transition metals are good catalysts because they can adopt multiple oxidation states and form complexes. On a metal surface (iron in the Haber process, V₂O₅ in the Contact process, nickel in hydrogenation) reactant molecules bond to surface atoms using 3d and 4s electrons, so their concentration rises and their bonds weaken. In solution, Fe³⁺ ferries electrons between I⁻ and S₂O₈²⁻ (2Fe³⁺ + 2I⁻ → 2Fe²⁺ + I₂; 2Fe²⁺ + S₂O₈²⁻ → 2Fe³⁺ + 2SO₄²⁻) and is regenerated.",
+ "notes": {
+  "pdf": "notes.pdf",
+  "title": "12 – Catalytic Properties: Why Transition Metals Are Good Catalysts",
+  "driveDoc": "1QbbeRzQIlOoNmkBMBEB_bWRRz47AzXLeIeWDJMQiY-o"
+ },
+ "tags": [
+  "catalysis",
+  "catalyst",
+  "activation energy",
+  "Haber process",
+  "Contact process",
+  "transition metals"
+ ],
+ "keyPoints": [
+  "A **catalyst** speeds up a reaction and is **not used up**: it lowers the **activation energy**.",
+  "At a **surface**, reactants bond to metal atoms (**3d + 4s electrons**): their **concentration rises** and their **bonds weaken**.",
+  "**Fe** (Haber), **V₂O₅** (Contact) and **Ni** (hydrogenation of oils) are industrial transition-metal catalysts.",
+  "**Fe³⁺ ⇄ Fe²⁺** ferries electrons between I⁻ and S₂O₈²⁻ (two repelling anions) and comes back unchanged."
+ ],
+ "sections": [
+  {
+   "h": "Catalysts in industry",
+   "blocks": [
+    {
+     "table": {
+      "head": [
+       "Process",
+       "Catalyst",
+       "Reaction"
+      ],
+      "rows": [
+       [
+        "Haber",
+        "finely divided Fe",
+        "N₂ + 3H₂ ⇌ 2NH₃"
+       ],
+       [
+        "Contact",
+        "V₂O₅",
+        "2SO₂ + O₂ ⇌ 2SO₃"
+       ],
+       [
+        "Hydrogenation",
+        "Ni",
+        "vegetable oil + H₂ → vanaspati"
+       ]
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "h": "Two ways transition metals catalyse",
+   "blocks": [
+    {
+     "table": {
+      "head": [
+       "Route",
+       "How",
+       "Effect"
+      ],
+      "rows": [
+       [
+        "Surface bonding",
+        "reactants bond to surface atoms (3d + 4s electrons)",
+        "**concentration ↑, bonds weaker, Eₐ ↓**"
+       ],
+       [
+        "Changing oxidation state",
+        "the ion takes an electron and gives it back",
+        "**reactants meet via the ion; it is regenerated**"
+       ]
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "h": "Worked example",
+   "blocks": [
+    {
+     "p": "2I⁻ + S₂O₈²⁻ → I₂ + 2SO₄²⁻ is slow: both are negative and repel. With Fe³⁺: 2Fe³⁺ + 2I⁻ → 2Fe²⁺ + I₂, then 2Fe²⁺ + S₂O₈²⁻ → 2Fe³⁺ + 2SO₄²⁻. Adding the steps, Fe³⁺ cancels: it is a catalyst. E°: +0.54 V (I₂/I⁻) < +0.77 V (Fe³⁺/Fe²⁺) < +2.01 V (S₂O₈²⁻/SO₄²⁻), so both steps are feasible."
+    }
+   ]
+  }
+ ],
+ "quiz": [
+  {
+   "q": "A catalyst increases the rate of a reaction by:",
+   "options": [
+    "raising ΔH",
+    "lowering the activation energy",
+    "shifting the equilibrium",
+    "being used up"
+   ],
+   "answer": 1,
+   "explain": "It provides a path of lower Eₐ and is regenerated."
+  },
+  {
+   "q": "The catalyst in the Haber process is:",
+   "options": [
+    "Ni",
+    "V₂O₅",
+    "finely divided Fe",
+    "Pt"
+   ],
+   "answer": 2,
+   "explain": "N₂ + 3H₂ ⇌ 2NH₃ on iron."
+  },
+  {
+   "q": "V₂O₅ is the catalyst in:",
+   "options": [
+    "the Contact process",
+    "the Haber process",
+    "hydrogenation of oils",
+    "the Ostwald process"
+   ],
+   "answer": 0,
+   "explain": "2SO₂ + O₂ ⇌ 2SO₃ for sulphuric acid."
+  },
+  {
+   "q": "Nickel catalyses:",
+   "options": [
+    "the formation of NH₃",
+    "the hydrogenation of vegetable oils",
+    "the oxidation of SO₂",
+    "the decomposition of KClO₃"
+   ],
+   "answer": 1,
+   "explain": "Oils become solid fats (vanaspati ghee)."
+  },
+  {
+   "q": "First-row transition metals bond to reactants on their surface using:",
+   "options": [
+    "2s and 2p electrons",
+    "3d and 4s electrons",
+    "4f electrons",
+    "only core electrons"
+   ],
+   "answer": 1,
+   "explain": "NCERT 4.3.12."
+  },
+  {
+   "q": "Which is NOT an effect of reactants bonding to a catalyst surface?",
+   "options": [
+    "concentration at the surface increases",
+    "bonds in the reactants weaken",
+    "activation energy is lowered",
+    "ΔH of the reaction increases"
+   ],
+   "answer": 3,
+   "explain": "A catalyst never changes ΔH."
+  },
+  {
+   "q": "Why is 2I⁻ + S₂O₈²⁻ → I₂ + 2SO₄²⁻ slow without a catalyst?",
+   "options": [
+    "both reactants are negative ions and repel",
+    "iodine is a solid",
+    "persulphate is neutral",
+    "the reaction is endothermic"
+   ],
+   "answer": 0,
+   "explain": "Two anions rarely collide effectively."
+  },
+  {
+   "q": "In 2Fe³⁺ + 2I⁻ → 2Fe²⁺ + I₂, iron is:",
+   "options": [
+    "oxidised",
+    "reduced",
+    "unchanged",
+    "precipitated"
+   ],
+   "answer": 1,
+   "explain": "Fe³⁺ gains an electron to become Fe²⁺."
+  },
+  {
+   "q": "At the end of the iodide–persulphate reaction, the iron is present as:",
+   "options": [
+    "Fe²⁺ only",
+    "Fe³⁺, regenerated",
+    "Fe metal",
+    "FeI₃"
+   ],
+   "answer": 1,
+   "explain": "2Fe²⁺ + S₂O₈²⁻ → 2Fe³⁺ + 2SO₄²⁻ gives it back."
+  },
+  {
+   "q": "Zn²⁺ is a poor catalyst for the iodide–persulphate reaction because:",
+   "options": [
+    "it is too large",
+    "zinc shows only the +2 oxidation state",
+    "it is coloured",
+    "it forms no ions"
+   ],
+   "answer": 1,
+   "explain": "It cannot take and give back electrons."
+  }
+ ],
+ "simulation": {
+  "decision": "NOT_REQUIRED",
+  "reason": "The two mechanisms are qualitative pictures (surface bonding, an electron ferry); the video, memory cards, the tables and 29 workbook questions teach them fully, and there is no continuous variable a student would usefully change beyond the generic energy-hill picture."
+ },
+ "related": [
+  "why-transition-metals-form-complexes",
+  "colour-of-transition-metal-ions",
+  "variable-oxidation-states-transition-metals"
+ ]
+}
