@@ -1,0 +1,189 @@
+{
+ "slug": "potassium-dichromate",
+ "title": "The Orange That Turns Green: Potassium Dichromate",
+ "class": 12,
+ "subject": "Chemistry",
+ "chapter": "The d- and f-Block Elements",
+ "objective": "Potassium dichromate is made from chromite ore: fusion with sodium carbonate in air gives yellow sodium chromate (Fe₂O₃ is filtered off), acid turns it into orange sodium dichromate (two CrO₄ tetrahedra share one oxygen), and KCl precipitates the less soluble K₂Cr₂O₇. Chromate and dichromate interconvert with pH while Cr stays +6. In acid, Cr₂O₇²⁻ + 14H⁺ + 6e⁻ → 2Cr³⁺ + 7H₂O (E° = 1.33 V): a strong oxidising agent that turns orange to green, oxidising Fe²⁺, I⁻, H₂S and, in the 1954 breathalyser, ethanol.",
+ "fill": [
+  {
+   "q": "Potassium dichromate is prepared from the ore called ____.",
+   "a": "chromite"
+  },
+  {
+   "q": "Sodium chromate solution is ____ in colour.",
+   "a": "yellow"
+  },
+  {
+   "q": "On acidification, chromate changes to orange ____.",
+   "a": "dichromate"
+  },
+  {
+   "q": "In acid, one dichromate ion accepts ____ electrons.",
+   "a": "six"
+  },
+  {
+   "q": "The Cr–O–Cr bond angle in the dichromate ion is about ____°.",
+   "a": "126"
+  }
+ ],
+ "tf": [
+  {
+   "q": "In the chromate–dichromate interconversion, the oxidation state of Cr changes.",
+   "a": false,
+   "explain": "Cr is +6 in both."
+  },
+  {
+   "q": "Sodium dichromate is more soluble than potassium dichromate.",
+   "a": true,
+   "explain": "That is why KCl gives K₂Cr₂O₇ crystals."
+  },
+  {
+   "q": "Acidified potassium dichromate oxidises Fe²⁺ to Fe³⁺.",
+   "a": true,
+   "explain": "Cr₂O₇²⁻ + 14H⁺ + 6Fe²⁺ → 2Cr³⁺ + 6Fe³⁺ + 7H₂O."
+  },
+  {
+   "q": "The green colour after oxidation is due to dichromate ions.",
+   "a": false,
+   "explain": "Green is the product, Cr³⁺."
+  },
+  {
+   "q": "The chromate ion is tetrahedral.",
+   "a": true,
+   "explain": "Cr at the centre, four O at the corners."
+  }
+ ],
+ "ar": [
+  {
+   "a": "K₂Cr₂O₇ is a strong oxidising agent in acid.",
+   "r": "Each Cr in Cr₂O₇²⁻ can gain 3 electrons going from +6 to +3.",
+   "answer": 0,
+   "explain": "E° = 1.33 V."
+  },
+  {
+   "a": "KCl is added to sodium dichromate solution in the preparation.",
+   "r": "Potassium dichromate is less soluble than sodium dichromate.",
+   "answer": 0,
+   "explain": "So it crystallises out."
+  }
+ ],
+ "mcq": [
+  {
+   "q": "Chromite ore is:",
+   "options": [
+    "Fe₂O₃",
+    "FeCr₂O₄",
+    "Cr₂O₃",
+    "K₂CrO₄"
+   ],
+   "answer": 1,
+   "explain": "Iron(II) chromite."
+  },
+  {
+   "q": "During fusion of chromite, iron ends up as:",
+   "options": [
+    "Fe",
+    "FeO",
+    "Fe₂O₃",
+    "FeCl₃"
+   ],
+   "answer": 2,
+   "explain": "It is filtered off."
+  },
+  {
+   "q": "On adding NaOH to orange K₂Cr₂O₇ solution, the colour becomes:",
+   "options": [
+    "green",
+    "yellow",
+    "violet",
+    "colourless"
+   ],
+   "answer": 1,
+   "explain": "Dichromate → chromate."
+  },
+  {
+   "q": "In acidic medium, Cr in dichromate changes from:",
+   "options": [
+    "+6 to +3",
+    "+3 to +6",
+    "+6 to +2",
+    "+7 to +2"
+   ],
+   "answer": 0,
+   "explain": "Each Cr gains 3e⁻."
+  },
+  {
+   "q": "E° for Cr₂O₇²⁻/Cr³⁺ is about:",
+   "options": [
+    "+0.34 V",
+    "+0.77 V",
+    "+1.33 V",
+    "+2.01 V"
+   ],
+   "answer": 2,
+   "explain": "A strong oxidant."
+  },
+  {
+   "q": "Acidified K₂Cr₂O₇ oxidises H₂S to:",
+   "options": [
+    "SO₂",
+    "S",
+    "H₂SO₄",
+    "SO₃"
+   ],
+   "answer": 1,
+   "explain": "A pale yellow deposit of sulphur."
+  }
+ ],
+ "num": [
+  {
+   "q": "How many moles of Fe²⁺ are oxidised by 1 mol of Cr₂O₇²⁻ in acid?",
+   "steps": [
+    "Cr₂O₇²⁻ accepts 6e⁻",
+    "each Fe²⁺ gives 1e⁻"
+   ],
+   "answer": "6 mol"
+  },
+  {
+   "q": "How many moles of I₂ are formed when 2 mol of Cr₂O₇²⁻ react with excess iodide in acid?",
+   "steps": [
+    "2 × 6e⁻ = 12e⁻",
+    "2I⁻ → I₂ + 2e⁻"
+   ],
+   "answer": "6 mol I₂"
+  }
+ ],
+ "short": [
+  {
+   "q": "Describe the preparation of potassium dichromate from chromite ore with equations.",
+   "lines": 5,
+   "solution": "4FeCr₂O₄ + 8Na₂CO₃ + 7O₂ → 8Na₂CrO₄ + 2Fe₂O₃ + 8CO₂; filter off Fe₂O₃; 2Na₂CrO₄ + 2H⁺ → Na₂Cr₂O₇ + 2Na⁺ + H₂O; Na₂Cr₂O₇ + 2KCl → K₂Cr₂O₇ + 2NaCl (orange crystals)."
+  },
+  {
+   "q": "Explain the effect of pH on a dichromate solution.",
+   "lines": 5,
+   "solution": "2CrO₄²⁻ + 2H⁺ ⇌ Cr₂O₇²⁻ + H₂O. Acid favours orange dichromate; base (OH⁻) converts it back to yellow chromate. Cr remains +6, so the change is not redox."
+  },
+  {
+   "q": "Write ionic equations for acidified K₂Cr₂O₇ with iodide and with H₂S.",
+   "lines": 5,
+   "solution": "Cr₂O₇²⁻ + 14H⁺ + 6I⁻ → 2Cr³⁺ + 3I₂ + 7H₂O; Cr₂O₇²⁻ + 8H⁺ + 3H₂S → 2Cr³⁺ + 3S + 7H₂O."
+  }
+ ],
+ "match": {
+  "left": [
+   "CrO₄²⁻",
+   "Cr₂O₇²⁻"
+  ],
+  "right": [
+   "orange, two tetrahedra sharing one O",
+   "yellow, tetrahedral, Cr +6"
+  ],
+  "answer": [
+   1,
+   0
+  ],
+  "explain": ""
+ }
+}
