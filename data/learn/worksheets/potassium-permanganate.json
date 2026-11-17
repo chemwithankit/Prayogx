@@ -1,0 +1,188 @@
+{
+ "slug": "potassium-permanganate",
+ "title": "The Mineral Chameleon: Potassium Permanganate",
+ "class": 12,
+ "subject": "Chemistry",
+ "chapter": "The d- and f-Block Elements",
+ "objective": "Potassium permanganate is made by fusing pyrolusite (MnO₂) with KOH and an oxidiser to give dark green potassium manganate (Mn +6). In neutral or acidic water manganate disproportionates (3MnO₄²⁻ + 4H⁺ → 2MnO₄⁻ + MnO₂ + 2H₂O), the 'mineral chameleon' Glauber saw; commercially it is oxidised at an anode. In acid MnO₄⁻ takes 5 electrons to give almost colourless Mn²⁺ (so it is its own indicator in titrations); in neutral or faintly alkaline solution it takes 3 electrons and gives brown MnO₂.",
+ "fill": [
+  {
+   "q": "KMnO₄ is prepared from the manganese ore called ____.",
+   "a": "pyrolusite"
+  },
+  {
+   "q": "Fusion of MnO₂ with KOH and an oxidiser gives dark ____ potassium manganate.",
+   "a": "green"
+  },
+  {
+   "q": "In acid, one permanganate ion accepts ____ electrons.",
+   "a": "five"
+  },
+  {
+   "q": "In neutral medium, permanganate is reduced to brown ____.",
+   "a": "MnO₂"
+  },
+  {
+   "q": "A reaction in which the same element is both oxidised and reduced is called ____.",
+   "a": "disproportionation"
+  }
+ ],
+ "tf": [
+  {
+   "q": "Potassium manganate is paramagnetic.",
+   "a": true,
+   "explain": "Mn(VI) is 3d¹."
+  },
+  {
+   "q": "KMnO₄ needs an external indicator in redox titrations.",
+   "a": false,
+   "explain": "It is a self-indicator."
+  },
+  {
+   "q": "In acid, MnO₄⁻ is reduced to Mn²⁺.",
+   "a": true,
+   "explain": "MnO₄⁻ + 8H⁺ + 5e⁻ → Mn²⁺ + 4H₂O."
+  },
+  {
+   "q": "Commercially, manganate is converted to permanganate by electrolytic oxidation.",
+   "a": true,
+   "explain": "MnO₄²⁻ → MnO₄⁻ + e⁻."
+  },
+  {
+   "q": "The oxidation state of Mn in KMnO₄ is +6.",
+   "a": false,
+   "explain": "It is +7."
+  }
+ ],
+ "ar": [
+  {
+   "a": "KMnO₄ is a self-indicator.",
+   "r": "Purple MnO₄⁻ becomes almost colourless Mn²⁺, so the first excess drop shows pink.",
+   "answer": 0,
+   "explain": "No separate indicator."
+  },
+  {
+   "a": "Permanganate gives MnO₂ in neutral solution but Mn²⁺ in acid.",
+   "r": "The number of electrons it accepts depends on the medium (3 vs 5).",
+   "answer": 0,
+   "explain": "The medium decides the product."
+  }
+ ],
+ "mcq": [
+  {
+   "q": "The colour of the permanganate ion is:",
+   "options": [
+    "green",
+    "purple",
+    "brown",
+    "colourless"
+   ],
+   "answer": 1,
+   "explain": "MnO₄⁻."
+  },
+  {
+   "q": "In 3MnO₄²⁻ + 4H⁺ → 2MnO₄⁻ + MnO₂ + 2H₂O, Mn changes:",
+   "options": [
+    "+6 to +7 and +4",
+    "+7 to +2",
+    "+4 to +6",
+    "+6 to +2"
+   ],
+   "answer": 0,
+   "explain": "Disproportionation."
+  },
+  {
+   "q": "In neutral medium, MnO₄⁻ accepts:",
+   "options": [
+    "1e⁻",
+    "3e⁻",
+    "5e⁻",
+    "7e⁻"
+   ],
+   "answer": 1,
+   "explain": "→ MnO₂."
+  },
+  {
+   "q": "The end point in a KMnO₄–Fe²⁺ titration is:",
+   "options": [
+    "colourless",
+    "pale pink",
+    "green",
+    "brown"
+   ],
+   "answer": 1,
+   "explain": "First excess MnO₄⁻."
+  },
+  {
+   "q": "Which is diamagnetic?",
+   "options": [
+    "MnO₄²⁻",
+    "MnO₄⁻",
+    "Mn³⁺",
+    "Mn²⁺"
+   ],
+   "answer": 1,
+   "explain": "d⁰."
+  },
+  {
+   "q": "In acid, KMnO₄ oxidises oxalate to:",
+   "options": [
+    "CO",
+    "CO₂",
+    "HCOOH",
+    "CH₄"
+   ],
+   "answer": 1,
+   "explain": "At about 333 K."
+  }
+ ],
+ "num": [
+  {
+   "q": "How many moles of Fe²⁺ are oxidised by 0.04 mol MnO₄⁻ in acid?",
+   "steps": [
+    "ratio 1 : 5"
+   ],
+   "answer": "0.20 mol"
+  },
+  {
+   "q": "How many moles of I₂ are formed when 2 mol MnO₄⁻ react with excess I⁻ in acid?",
+   "steps": [
+    "2 × 5e⁻ = 10e⁻",
+    "2I⁻ → I₂ + 2e⁻"
+   ],
+   "answer": "5 mol"
+  }
+ ],
+ "short": [
+  {
+   "q": "Describe the preparation of KMnO₄ from pyrolusite with equations.",
+   "lines": 5,
+   "solution": "2MnO₂ + 4KOH + O₂ → 2K₂MnO₄ + 2H₂O (green manganate); then 3MnO₄²⁻ + 4H⁺ → 2MnO₄⁻ + MnO₂ + 2H₂O, or commercially electrolytic oxidation MnO₄²⁻ → MnO₄⁻ + e⁻."
+  },
+  {
+   "q": "Write the half-reactions of permanganate in acidic and neutral media.",
+   "lines": 5,
+   "solution": "Acid: MnO₄⁻ + 8H⁺ + 5e⁻ → Mn²⁺ + 4H₂O (E° = 1.52 V). Neutral / faintly alkaline: MnO₄⁻ + 2H₂O + 3e⁻ → MnO₂ + 4OH⁻ (E° = 0.59 V)."
+  },
+  {
+   "q": "Give the ionic equations for acidified KMnO₄ with Fe²⁺ and with iodide.",
+   "lines": 5,
+   "solution": "5Fe²⁺ + MnO₄⁻ + 8H⁺ → Mn²⁺ + 4H₂O + 5Fe³⁺; 10I⁻ + 2MnO₄⁻ + 16H⁺ → 2Mn²⁺ + 8H₂O + 5I₂."
+  }
+ ],
+ "match": {
+  "left": [
+   "MnO₄²⁻",
+   "MnO₄⁻"
+  ],
+  "right": [
+   "purple, Mn +7, diamagnetic",
+   "green, Mn +6, paramagnetic"
+  ],
+  "answer": [
+   1,
+   0
+  ],
+  "explain": ""
+ }
+}
