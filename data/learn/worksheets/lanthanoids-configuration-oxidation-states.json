@@ -1,0 +1,187 @@
+{
+ "slug": "lanthanoids-configuration-oxidation-states",
+ "title": "Same Face, Different Inside: The Lanthanoids",
+ "class": 12,
+ "subject": "Chemistry",
+ "chapter": "The d- and f-Block Elements",
+ "objective": "The lanthanoids (lanthanum and the fourteen elements after it) have the general configuration [Xe] 4f¹⁻¹⁴ 5d⁰⁻¹ 6s². Each new electron goes into the deep 4f subshell, shielded by 5s²5p⁶, while the outer 6s² stays the same, so the elements are very alike (the Ytterby minerals took chemists over a century to sort out). Losing 6s² and one more electron gives the characteristic +3 state (La³⁺ 4f⁰ … Lu³⁺ 4f¹⁴). +4 and +2 appear near empty, half-filled or full 4f (Ce⁴⁺ 4f⁰, Tb⁴⁺ 4f⁷, Eu²⁺ 4f⁷, Yb²⁺ 4f¹⁴), but Ce⁴⁺ is a strong oxidant and Eu²⁺ a strong reductant: both return to +3.",
+ "fill": [
+  {
+   "q": "The lanthanoids are lanthanum and the ____ elements that follow it.",
+   "a": "fourteen"
+  },
+  {
+   "q": "In lanthanoids, the new electrons enter the ____ subshell.",
+   "a": "4f"
+  },
+  {
+   "q": "The characteristic oxidation state of lanthanoids is ____.",
+   "a": "+3"
+  },
+  {
+   "q": "Ce⁴⁺ has the 4f configuration ____.",
+   "a": "4f⁰"
+  },
+  {
+   "q": "Gadolinium has the configuration [Xe] 4f⁷ 5d¹ ____.",
+   "a": "6s²"
+  }
+ ],
+ "tf": [
+  {
+   "q": "The 4f electrons are shielded by the 5s and 5p electrons.",
+   "a": true,
+   "explain": "They lie deep inside."
+  },
+  {
+   "q": "Eu²⁺ is a strong oxidising agent.",
+   "a": false,
+   "explain": "It is a strong reducing agent."
+  },
+  {
+   "q": "Lanthanoids are placed in a separate row of the periodic table.",
+   "a": true,
+   "explain": "Below the main table."
+  },
+  {
+   "q": "La³⁺ has a 4f¹ configuration.",
+   "a": false,
+   "explain": "La³⁺ is 4f⁰."
+  },
+  {
+   "q": "Yb²⁺ has a completely filled 4f subshell.",
+   "a": true,
+   "explain": "4f¹⁴."
+  }
+ ],
+ "ar": [
+  {
+   "a": "+3 is the most common oxidation state of lanthanoids.",
+   "r": "The energy to remove 6s² and one more electron is repaid by hydration/lattice energy of Ln³⁺.",
+   "answer": 0,
+   "explain": "For all members."
+  },
+  {
+   "a": "Eu²⁺ is a strong reducing agent.",
+   "r": "Eu²⁺ readily loses an electron to reach the common +3 state.",
+   "answer": 0,
+   "explain": "Eu³⁺ is 4f⁶."
+  }
+ ],
+ "mcq": [
+  {
+   "q": "The general configuration of the lanthanoids is:",
+   "options": [
+    "[Xe]4f¹⁻¹⁴5d⁰⁻¹6s²",
+    "[Ar]3d¹⁻¹⁰4s²",
+    "[Rn]5f¹⁻¹⁴6d⁰⁻¹7s²",
+    "[Kr]4d¹⁻¹⁰5s²"
+   ],
+   "answer": 0,
+   "explain": "NCERT 4.5."
+  },
+  {
+   "q": "Which ion is a strong oxidising agent?",
+   "options": [
+    "Ce⁴⁺",
+    "Eu²⁺",
+    "Yb²⁺",
+    "Lu³⁺"
+   ],
+   "answer": 0,
+   "explain": "Reverts to Ce³⁺."
+  },
+  {
+   "q": "The number of 4f electrons in Gd³⁺ is:",
+   "options": [
+    "6",
+    "7",
+    "8",
+    "0"
+   ],
+   "answer": 1,
+   "explain": "Half-filled."
+  },
+  {
+   "q": "Which shows +4 because it reaches 4f⁰?",
+   "options": [
+    "Ce",
+    "Eu",
+    "Yb",
+    "Gd"
+   ],
+   "answer": 0,
+   "explain": "Ce⁴⁺."
+  },
+  {
+   "q": "The 4f configuration of Lu³⁺ is:",
+   "options": [
+    "4f⁰",
+    "4f⁷",
+    "4f¹³",
+    "4f¹⁴"
+   ],
+   "answer": 3,
+   "explain": "Completely filled."
+  },
+  {
+   "q": "Lanthanoids have very similar chemistry because:",
+   "options": [
+    "their 4f electrons are deep inside and outer configuration is the same",
+    "they are all gases",
+    "they have no electrons",
+    "they are radioactive"
+   ],
+   "answer": 0,
+   "explain": "Shielded 4f."
+  }
+ ],
+ "num": [
+  {
+   "q": "Write the 4f configuration of Pr³⁺ (Pr = [Xe]4f³6s²).",
+   "steps": [
+    "lose 6s² and one 4f electron"
+   ],
+   "answer": "4f²"
+  },
+  {
+   "q": "Write the 4f configuration of Tb⁴⁺ (Tb = [Xe]4f⁹6s²).",
+   "steps": [
+    "lose 6s² and two 4f electrons"
+   ],
+   "answer": "4f⁷"
+  }
+ ],
+ "short": [
+  {
+   "q": "Give the general electronic configuration of the lanthanoids with two examples.",
+   "lines": 5,
+   "solution": "[Xe] 4f¹⁻¹⁴ 5d⁰⁻¹ 6s². Ce: [Xe]4f¹5d¹6s²; Gd: [Xe]4f⁷5d¹6s² (half-filled 4f retained)."
+  },
+  {
+   "q": "Why do Ce⁴⁺ and Eu²⁺ exist, and why do they revert to +3?",
+   "lines": 5,
+   "solution": "They reach special configurations (Ce⁴⁺ 4f⁰, Eu²⁺ 4f⁷), but +3 is energetically preferred; Ce⁴⁺ is therefore a strong oxidant and Eu²⁺ a strong reductant."
+  },
+  {
+   "q": "Why are lanthanoids difficult to separate from one another?",
+   "lines": 5,
+   "solution": "Successive electrons enter the inner 4f subshell (shielded by 5s²5p⁶); the outer configuration and ionic sizes are almost the same, so their chemistry is nearly identical."
+  }
+ ],
+ "match": {
+  "left": [
+   "Ce⁴⁺",
+   "Eu²⁺"
+  ],
+  "right": [
+   "4f⁷, strong reductant",
+   "4f⁰, strong oxidant"
+  ],
+  "answer": [
+   1,
+   0
+  ],
+  "explain": ""
+ }
+}
