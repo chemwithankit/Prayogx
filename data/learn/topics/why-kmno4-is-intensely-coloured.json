@@ -1,0 +1,217 @@
+{
+ "status": "ready",
+ "class": 12,
+ "subject": "Chemistry",
+ "chapter": "The d- and f-Block Elements",
+ "video": {
+  "youtubeId": "0LsCjeZXxB8"
+ },
+ "thumb": "thumb.jpg",
+ "id": "LEARN-C12-CHE-DBLOCK-KMNO4-COLOUR",
+ "slug": "why-kmno4-is-intensely-coloured",
+ "topic": "Why KMnO₄ is so intensely coloured",
+ "title": "No d Electrons, Still Purple: Why KMnO₄ Is So Intensely Coloured",
+ "series": 475,
+ "studioJob": "dblock-kmno4colour",
+ "reelId": "STUDIO-DBLOCK-KMNO4COLOUR",
+ "summary": "In MnO₄⁻ manganese is +7 (3d⁰), so no d–d transition is possible. The colour comes from ligand-to-metal charge transfer: visible light moves an electron from an oxygen into the empty d orbitals of Mn. This absorbs green-yellow light (≈ 525 nm), so the solution looks purple. Charge transfer is an allowed transition, so it absorbs far more light than restricted d–d transitions: KMnO₄ is intensely coloured while Ti³⁺(aq) or Mn²⁺(aq) are pale. Chromate (yellow) and dichromate (orange), also d⁰, are coloured the same way.",
+ "notes": {
+  "pdf": "notes.pdf",
+  "title": "16 – Why KMnO₄ Is So Intensely Coloured (Charge Transfer)",
+  "driveDoc": "1bRAtCNKgIYURTZt69sPmYaNMW9wSjyNZpGE1v7_pBig"
+ },
+ "tags": [
+  "charge transfer",
+  "LMCT",
+  "permanganate",
+  "colour",
+  "d0 ions",
+  "transition metals"
+ ],
+ "keyPoints": [
+  "In MnO₄⁻, Mn is **+7 (3d⁰)**: no d–d transition is possible.",
+  "Light moves an electron from **O to the empty d orbitals of Mn**: **ligand-to-metal charge transfer**.",
+  "It absorbs **green-yellow** (≈ 525 nm); red + blue left over look **purple**.",
+  "Charge transfer is **allowed**, d–d is **restricted**: so KMnO₄ is far more intensely coloured. CrO₄²⁻ and Cr₂O₇²⁻ (d⁰) too."
+ ],
+ "sections": [
+  {
+   "h": "d–d vs charge transfer",
+   "blocks": [
+    {
+     "table": {
+      "head": [
+       "Ion",
+       "d electrons",
+       "Origin",
+       "Intensity"
+      ],
+      "rows": [
+       [
+        "Ti³⁺(aq)",
+        "3d¹",
+        "d–d",
+        "pale"
+       ],
+       [
+        "Mn²⁺(aq)",
+        "3d⁵",
+        "d–d (very weak)",
+        "almost colourless"
+       ],
+       [
+        "MnO₄⁻",
+        "3d⁰",
+        "O → Mn charge transfer",
+        "**deep purple**"
+       ],
+       [
+        "CrO₄²⁻ / Cr₂O₇²⁻",
+        "3d⁰",
+        "O → Cr charge transfer",
+        "yellow / orange"
+       ]
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "h": "Numbers",
+   "blocks": [
+    {
+     "p": "d–d bands: molar absorptivity ε ≲ 100 L mol⁻¹ cm⁻¹. MnO₄⁻: ε ≈ 3 × 10³ L mol⁻¹ cm⁻¹ at 525 nm (tens to hundreds of times stronger)."
+    }
+   ]
+  },
+  {
+   "h": "Worked example",
+   "blocks": [
+    {
+     "p": "Oxidation state of Mn in KMnO₄: +1 + x + 4(−2) = 0 → x = +7; Mn⁷⁺ = [Ar] 3d⁰. The purple colour therefore cannot be d–d; it is O → Mn charge transfer absorbing green-yellow light."
+    }
+   ]
+  }
+ ],
+ "quiz": [
+  {
+   "q": "The oxidation state of Mn in KMnO₄ is:",
+   "options": [
+    "+2",
+    "+4",
+    "+6",
+    "+7"
+   ],
+   "answer": 3,
+   "explain": "+1 + x − 8 = 0."
+  },
+  {
+   "q": "Mn⁷⁺ has the configuration:",
+   "options": [
+    "3d⁵",
+    "3d²",
+    "3d⁰",
+    "3d⁷"
+   ],
+   "answer": 2,
+   "explain": "No d electrons."
+  },
+  {
+   "q": "The colour of KMnO₄ is due to:",
+   "options": [
+    "d–d transition",
+    "ligand-to-metal charge transfer",
+    "f–f transition",
+    "unpaired electrons"
+   ],
+   "answer": 1,
+   "explain": "O → Mn."
+  },
+  {
+   "q": "In the charge transfer in MnO₄⁻, the electron moves from:",
+   "options": [
+    "Mn to O",
+    "O to Mn",
+    "K to Mn",
+    "Mn to K"
+   ],
+   "answer": 1,
+   "explain": "Ligand to metal."
+  },
+  {
+   "q": "KMnO₄ absorbs mainly:",
+   "options": [
+    "purple light",
+    "green-yellow light",
+    "red light",
+    "ultraviolet only"
+   ],
+   "answer": 1,
+   "explain": "Near 525 nm."
+  },
+  {
+   "q": "Why is KMnO₄ more intensely coloured than Ti³⁺(aq)?",
+   "options": [
+    "it has more d electrons",
+    "charge transfer is allowed; d–d is restricted",
+    "it is a solid",
+    "Ti³⁺ is d⁰"
+   ],
+   "answer": 1,
+   "explain": "More photons absorbed."
+  },
+  {
+   "q": "Which d⁰ species is coloured?",
+   "options": [
+    "Sc³⁺",
+    "Ti⁴⁺",
+    "Cr₂O₇²⁻",
+    "Zn²⁺"
+   ],
+   "answer": 2,
+   "explain": "O → Cr charge transfer (Zn²⁺ is d¹⁰)."
+  },
+  {
+   "q": "Chromate is:",
+   "options": [
+    "green",
+    "yellow",
+    "purple",
+    "colourless"
+   ],
+   "answer": 1,
+   "explain": "Cr(VI), charge transfer."
+  },
+  {
+   "q": "Sc³⁺(aq) is colourless because:",
+   "options": [
+    "it is d⁰ with no visible absorption",
+    "it is d¹⁰",
+    "it is paramagnetic",
+    "it is a complex"
+   ],
+   "answer": 0,
+   "explain": "No d–d, no visible CT."
+  },
+  {
+   "q": "The purple of KMnO₄ is the colour:",
+   "options": [
+    "absorbed",
+    "complementary to the light absorbed",
+    "of Mn metal",
+    "of oxygen"
+   ],
+   "answer": 1,
+   "explain": "Red + blue left over."
+  }
+ ],
+ "simulation": {
+  "decision": "NOT_REQUIRED",
+  "reason": "The idea is a single explanation (d⁰, O → Mn charge transfer, allowed vs restricted); the video, memory cards, the comparison table and 25 workbook questions teach it fully, and there is no continuous variable a student would usefully change."
+ },
+ "related": [
+  "potassium-permanganate",
+  "colour-of-transition-metal-ions",
+  "potassium-dichromate"
+ ]
+}

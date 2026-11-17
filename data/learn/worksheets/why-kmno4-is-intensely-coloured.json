@@ -1,0 +1,187 @@
+{
+ "slug": "why-kmno4-is-intensely-coloured",
+ "title": "No d Electrons, Still Purple: Why KMnO₄ Is So Intensely Coloured",
+ "class": 12,
+ "subject": "Chemistry",
+ "chapter": "The d- and f-Block Elements",
+ "objective": "In MnO₄⁻ manganese is +7 (3d⁰), so no d–d transition is possible. The colour comes from ligand-to-metal charge transfer: visible light moves an electron from an oxygen into the empty d orbitals of Mn. This absorbs green-yellow light (≈ 525 nm), so the solution looks purple. Charge transfer is an allowed transition, so it absorbs far more light than restricted d–d transitions: KMnO₄ is intensely coloured while Ti³⁺(aq) or Mn²⁺(aq) are pale. Chromate (yellow) and dichromate (orange), also d⁰, are coloured the same way.",
+ "fill": [
+  {
+   "q": "In MnO₄⁻, manganese is in the ____ oxidation state.",
+   "a": "+7"
+  },
+  {
+   "q": "Mn⁷⁺ has the configuration 3d____.",
+   "a": "⁰"
+  },
+  {
+   "q": "The colour of KMnO₄ is due to ligand-to-metal ____ transfer.",
+   "a": "charge"
+  },
+  {
+   "q": "KMnO₄ absorbs ____-yellow light.",
+   "a": "green"
+  },
+  {
+   "q": "In MnO₄⁻, the electron moves from ____ to manganese.",
+   "a": "oxygen"
+  }
+ ],
+ "tf": [
+  {
+   "q": "The purple colour of KMnO₄ comes from d–d transitions.",
+   "a": false,
+   "explain": "Mn⁷⁺ is d⁰."
+  },
+  {
+   "q": "Charge-transfer transitions are usually more intense than d–d transitions.",
+   "a": true,
+   "explain": "They are allowed."
+  },
+  {
+   "q": "Chromate and dichromate are coloured by charge transfer.",
+   "a": true,
+   "explain": "Cr(VI) is d⁰."
+  },
+  {
+   "q": "KMnO₄ appears purple because it absorbs purple light.",
+   "a": false,
+   "explain": "It absorbs green-yellow."
+  },
+  {
+   "q": "Sc³⁺(aq) is colourless.",
+   "a": true,
+   "explain": "d⁰, no visible absorption."
+  }
+ ],
+ "ar": [
+  {
+   "a": "MnO₄⁻ is coloured although Mn is d⁰.",
+   "r": "An electron moves from O to the empty d orbitals of Mn on absorbing visible light.",
+   "answer": 0,
+   "explain": "Charge transfer."
+  },
+  {
+   "a": "KMnO₄ solution is far more intensely coloured than Ti³⁺(aq).",
+   "r": "Charge transfer is allowed; d–d transitions are restricted.",
+   "answer": 0,
+   "explain": "Many more photons absorbed."
+  }
+ ],
+ "mcq": [
+  {
+   "q": "The number of d electrons in Mn⁷⁺ is:",
+   "options": [
+    "0",
+    "2",
+    "5",
+    "7"
+   ],
+   "answer": 0,
+   "explain": "3d⁰."
+  },
+  {
+   "q": "The colour of MnO₄⁻ is due to:",
+   "options": [
+    "d–d transition",
+    "LMCT",
+    "MLCT",
+    "f–f transition"
+   ],
+   "answer": 1,
+   "explain": "O → Mn."
+  },
+  {
+   "q": "Which is coloured by charge transfer?",
+   "options": [
+    "[Ti(H₂O)₆]³⁺",
+    "[Cu(H₂O)₆]²⁺",
+    "Cr₂O₇²⁻",
+    "[Ni(H₂O)₆]²⁺"
+   ],
+   "answer": 2,
+   "explain": "Cr(VI), d⁰."
+  },
+  {
+   "q": "At the same concentration, which is most intensely coloured?",
+   "options": [
+    "Ti³⁺(aq)",
+    "Mn²⁺(aq)",
+    "MnO₄⁻",
+    "Sc³⁺(aq)"
+   ],
+   "answer": 2,
+   "explain": "Allowed CT absorption."
+  },
+  {
+   "q": "KMnO₄ absorbs most strongly near:",
+   "options": [
+    "400 nm",
+    "525 nm",
+    "650 nm",
+    "750 nm"
+   ],
+   "answer": 1,
+   "explain": "Green-yellow."
+  },
+  {
+   "q": "Why is d–d absorption weak?",
+   "options": [
+    "it is restricted (forbidden by symmetry)",
+    "there are no electrons",
+    "it is in the UV",
+    "it needs a magnet"
+   ],
+   "answer": 0,
+   "explain": "Laporte rule."
+  }
+ ],
+ "num": [
+  {
+   "q": "Find the oxidation state of Mn in KMnO₄.",
+   "steps": [
+    "+1 + x + 4(−2) = 0"
+   ],
+   "answer": "+7"
+  },
+  {
+   "q": "Find the oxidation state of Cr in K₂Cr₂O₇ and its d-electron count.",
+   "steps": [
+    "2(+1) + 2x + 7(−2) = 0"
+   ],
+   "answer": "+6, 3d⁰"
+  }
+ ],
+ "short": [
+  {
+   "q": "Explain the colour of KMnO₄.",
+   "lines": 5,
+   "solution": "Mn is +7 (3d⁰), so no d–d transition. Visible light (green-yellow, ≈ 525 nm) moves an electron from oxygen to the empty d orbitals of Mn (ligand-to-metal charge transfer); the remaining red + blue light looks purple."
+  },
+  {
+   "q": "Why are charge-transfer colours intense?",
+   "lines": 5,
+   "solution": "Charge-transfer transitions are allowed, whereas d–d transitions are restricted by symmetry (Laporte rule), so many more photons are absorbed in charge transfer."
+  },
+  {
+   "q": "Name two ions other than MnO₄⁻ coloured by charge transfer.",
+   "lines": 5,
+   "solution": "CrO₄²⁻ (yellow) and Cr₂O₇²⁻ (orange); both contain Cr(VI), d⁰, with O → Cr charge transfer."
+  }
+ ],
+ "match": {
+  "left": [
+   "MnO₄⁻",
+   "Ti³⁺(aq)"
+  ],
+  "right": [
+   "d¹, pale purple, d–d",
+   "d⁰, purple, O → Mn charge transfer"
+  ],
+  "answer": [
+   1,
+   0
+  ],
+  "explain": ""
+ }
+}
