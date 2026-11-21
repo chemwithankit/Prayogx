@@ -23,7 +23,7 @@ This skill adds discipline; it replaces nothing. Read before the first reel of a
 | Visual Production Bible (one screen = one concept = one dominant action) | studio `VIDEO_STYLE_GUIDE.md`, `STORYBOARD_TEMPLATE.md` |
 | Teaching standard, Mole reel benchmark, lessons log §6 | `docs/concept-explainer-standard.md` |
 | Doodle Explainer style (default look), chalkboard only for its topic types | `docs/prayogx-doodle-explainer-style.md` |
-| Owner's standing rules | the memory index (`MEMORY.md`): English terms + Hindi glue, natural hooks, no "comment CONCEPT", AI teacher avatar, no full-3D reels, stock media licences, chalk rules, deliverables per video |
+| Owner's standing rules | the memory index (`MEMORY.md`): English terms + Hindi glue, natural hooks, no "comment CONCEPT", no AI teacher avatar in new reels (2026-11-17), no full-3D reels, stock media licences, chalk rules, deliverables per video |
 | Publishing gates | CLAUDE.md: nothing is approved, published, pushed or deployed without the owner's say; YouTube private; AI disclosure in the description |
 
 Studio: `~/Documents/motion-design-studio/motion-studio` (Remotion). One job per reel: `jobs/<slug>/` and
@@ -51,7 +51,7 @@ what each must deliver, not who does it:
 
 [creative-director](agents/creative-director.md) · [research-director](agents/research-director.md) ·
 [scriptwriter](agents/scriptwriter.md) · [storyboard-director](agents/storyboard-director.md) ·
-[cinematographer](agents/cinematographer.md) · [animation-director](agents/animation-director.md) ·
+[hook-creator](agents/hook-creator.md) · [cinematographer](agents/cinematographer.md) · [animation-director](agents/animation-director.md) ·
 [sound-director](agents/sound-director.md) · [qa-director](agents/qa-director.md)
 
 Subagents may help with research or an independent QA read. They never write the creative treatment, and
@@ -77,10 +77,24 @@ creative director.**
 Details: [research-protocol](workflows/research-protocol.md) ·
 [storyboard-protocol](workflows/storyboard-protocol.md) · [quality-gates](workflows/quality-gates.md).
 
+## 3b. PrayogX 2.0 tools (2026-11-21, new reels only)
+
+Past reels, videos, Learn pages and the website are never changed by these.
+
+1. `python3 tools/content_package.py init <RM-ID>` before research: the package in `<studio>/packages/<RM-ID>/`
+   (facts, glossary, coverage, 35+ questions, equations) is the one source for the script, notes, quiz (10),
+   workbook (25), carousel and caption.
+2. `hooks.json` from the [hook-creator](agents/hook-creator.md) after research.
+3. `python3 tools/maths_validator.py` checks every equation and number (Python decides, not a model).
+4. `python3 tools/reel_pipeline.py check <slug>` after every stage: it stops at the first failed gate and
+   writes `jobs/<slug>/state.json`. A reel is READY_FOR_REVIEW only when every gate passes.
+5. The independent QA writes `jobs/<slug>/qa.json` (schema `tools/schemas/qa.schema.json`).
+6. `python3 tools/model_router.py` for any Gemini or other provider call (off until a key and budget exist).
+
 ## 4. Batches
 
 Follow [workflows/batch-production.md](workflows/batch-production.md). In short: write the manifest, then
-take the reels **one at a time, each through all eight stages**, in waves of at most three. Stop and report
+take the reels **one at a time, each through all eight stages**, in waves of at most two. Stop and report
 rather than rush. A batch is complete only when every reel has passed its own gates.
 
 ## 5. Completed means

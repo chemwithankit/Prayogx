@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PrayogX 2.0 qa",
+  "type": "object",
+  "required": [
+    "reviewer",
+    "independent",
+    "render",
+    "checks",
+    "score",
+    "criticalFailures"
+  ],
+  "properties": {
+    "reviewer": {
+      "type": "string"
+    },
+    "independent": {
+      "const": true
+    },
+    "render": {
+      "type": "string"
+    },
+    "checks": {
+      "type": "array",
+      "minItems": 10,
+      "maxItems": 10,
+      "items": {
+        "type": "object",
+        "required": [
+          "n",
+          "answer",
+          "evidence"
+        ],
+        "properties": {
+          "n": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 10
+          },
+          "answer": {
+            "enum": [
+              "yes",
+              "no"
+            ]
+          },
+          "evidence": {
+            "type": "string",
+            "minLength": 5
+          }
+        }
+      }
+    },
+    "score": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "areas": {
+      "type": "object"
+    },
+    "criticalFailures": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

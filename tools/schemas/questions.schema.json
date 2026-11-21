@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PrayogX 2.0 questions",
+  "type": "object",
+  "required": [
+    "questions"
+  ],
+  "properties": {
+    "questions": {
+      "type": "array",
+      "minItems": 35,
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "q",
+          "answer",
+          "factRefs",
+          "difficulty"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "q": {
+            "type": "string",
+            "minLength": 5
+          },
+          "options": {
+            "type": "array"
+          },
+          "answer": {
+            "type": [
+              "string",
+              "number",
+              "integer"
+            ]
+          },
+          "factRefs": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string"
+            }
+          },
+          "difficulty": {
+            "enum": [
+              "easy",
+              "medium",
+              "hard"
+            ]
+          },
+          "use": {
+            "type": "array",
+            "items": {
+              "enum": [
+                "quiz",
+                "workbook"
+              ]
+            }
+          }
+        }
+      }
+    }
+  }
+}

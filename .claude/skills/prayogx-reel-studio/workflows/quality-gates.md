@@ -19,7 +19,20 @@ end, no still stretch > 2 s under narration, correct size and frame rate.
 | Cinematography and transitions | 10 | purposeful, varied moves; one continuous world |
 | Sound design and music | 15 | designed effects on events, music follows the story, clean balanced mix |
 | Typography and composition | 10 | readable on a phone, nothing clipped or colliding, frames well filled |
-| Editing, polish and branding | 10 | no glitches or awkward pauses, brand and avatar correct |
+| Editing, polish and branding | 10 | no glitches or awkward pauses, brand correct, no avatar in new reels |
+
+### Scorecard v2 measures (2026-11-21, new reels)
+Score each area from these measures, not from impressions. Automated ones come from `tools/reel_pipeline.py`.
+- Hook: something visibly changes by 1 s; hook type not used in the last three reels; first line ≤ 12 words.
+- Accuracy: `maths_validator.py` passes on every equation and number; every fact has two checks in the package.
+- Coverage: every preparation and named reaction in `coverage.json` is in the video, with a reaction shot.
+- Script: Hinglish lint 0 errors; about 2.6 words per second on average, no stretch above 3.2.
+- Objects: every object in `visual-design.md` has a reference and reads as the real thing in `qa/objects.jpg`.
+- Animation: no still stretch > 2 s under narration; reuse check passes.
+- Sound: −1 dBTP, voice 10–20 LU over music, every key term voiced correctly.
+- Consistency: glossary terms identical in the script, caption, notes, quiz and workbook.
+- Calibration: after the owner watches a reel, add `{slug, qaScore, ownerScore}` to `packages/calibration.json`;
+  if QA is more than 5 points above the owner on three reels, make the QA prompt stricter.
 
 **Approve at ≥ 90.** Score what is on screen, not what was intended.
 
@@ -30,7 +43,7 @@ end, no still stretch > 2 s under narration, correct size and frame rate.
 - narration mis-voiced, inaudible or out of sync;
 - a hook that misleads, or a story a first-time viewer cannot follow;
 - a treatment that repeats another recent reel's;
-- an owner rule broken (language, CTA, licences, chalk rules, avatar).
+- an owner rule broken (language, CTA, licences, chalk rules, no avatar in new reels).
 
 ## Improvement loop
 Problem → cause → change (script, storyboard, animation, sound or edit) → re-render → re-inspect. Each pass

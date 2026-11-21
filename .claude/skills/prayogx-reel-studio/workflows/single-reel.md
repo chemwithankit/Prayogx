@@ -7,6 +7,10 @@ revised before the next begins.
 ## 1. Research → `research.md`
 `research-protocol.md`. Primary source read in full, ≥ 2 further sources, numbers solved independently.
 
+## 1b. Package and hook
+`tools/content_package.py init <RM-ID>` (before research), fill the package from the research, then
+`agents/hook-creator.md` → `hooks.json`. Run `tools/reel_pipeline.py check <slug>` after each stage from here on.
+
 ## 2. Creative exploration → `creative.md`
 `agents/creative-director.md`. Three or more treatments, one chosen, the carried-through picture named, the
 diversity check against the last five jobs recorded.

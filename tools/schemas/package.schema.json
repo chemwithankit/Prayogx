@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PrayogX 2.0 package",
+  "type": "object",
+  "required": [
+    "id",
+    "version",
+    "title",
+    "class",
+    "subject",
+    "aliases",
+    "status"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^RM-(9|10|11|12)-(PHY|CHE|MAT|BIO|SUP)-\\d{2}-\\d{3}$"
+    },
+    "version": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "title": {
+      "type": "string"
+    },
+    "class": {
+      "type": [
+        "string",
+        "integer"
+      ]
+    },
+    "subject": {
+      "type": "string"
+    },
+    "aliases": {
+      "type": "object"
+    },
+    "status": {
+      "enum": [
+        "draft",
+        "researched",
+        "scripted",
+        "packaged",
+        "ready-for-review",
+        "approved",
+        "published"
+      ]
+    },
+    "simulation": {
+      "type": "object",
+      "required": [
+        "decision"
+      ],
+      "properties": {
+        "decision": {
+          "enum": [
+            "REQUIRED",
+            "NOT_REQUIRED",
+            "UNDECIDED"
+          ]
+        },
+        "reason": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

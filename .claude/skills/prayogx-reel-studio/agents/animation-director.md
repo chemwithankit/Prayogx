@@ -15,4 +15,4 @@ Deliverable: the built scenes in `src/<slug>/`, and section 5 of `production-pla
   mathematics; Three.js or an AI plate for a single scene that needs depth; stock media only under a
   no-attribution licence, with provenance logged. Paid generation and downloads need the owner's OK.
 - Typography moves: keywords enter on their word, hold long enough to read, and leave. No static slides.
-- The AI teacher avatar and brand mark follow the standing rules.
+- No AI teacher avatar in new reels (owner, 2026-11-17); the brand mark follows the standing rules.

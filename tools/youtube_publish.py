@@ -63,6 +63,8 @@ UPLOAD = "https://www.googleapis.com/upload/youtube/v3"
 ALLOWED_HOSTS = {"oauth2.googleapis.com", "www.googleapis.com"}
 SCOPES_BASE = ["https://www.googleapis.com/auth/youtube.upload", "https://www.googleapis.com/auth/youtube.readonly"]
 SCOPE_PLAYLIST = "https://www.googleapis.com/auth/youtube.force-ssl"
+SCOPES_ANALYTICS = ["https://www.googleapis.com/auth/yt-analytics.readonly",
+                    "https://www.googleapis.com/auth/webmasters.readonly"]
 PRIVACY = ("private", "unlisted", "public")
 SHORTS_MAX_S = 180
 TITLE_MAX, DESC_MAX_BYTES, TAGS_MAX = 100, 5000, 500
@@ -132,9 +134,13 @@ class Config:
         self.poll_interval = float(v.get("YT_POLL_INTERVAL_S", "10") or 10)
         self.poll_timeout = float(v.get("YT_POLL_TIMEOUT_S", "300") or 300)
         self.env_file_mode = v.get("_ENV_FILE_MODE")
+        self.analytics = v.get("YT_ANALYTICS", "false").strip().lower() == "true"
 
     def scopes(self):
-        return SCOPES_BASE + ([SCOPE_PLAYLIST] if self.playlist_id else [])
+        # YT_ANALYTICS=true (PrayogX 2.0, 2026-11-21) adds two READ-ONLY scopes for tools/analytics_report.py:
+        # YouTube Analytics and Search Console. Off by default; turning it on needs one new `auth` sign-in.
+        extra = SCOPES_ANALYTICS if self.analytics else []
+        return SCOPES_BASE + ([SCOPE_PLAYLIST] if self.playlist_id else []) + extra
 
     def problems(self, need_token=True):
         p = []

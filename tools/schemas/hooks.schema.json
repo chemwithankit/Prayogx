@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PrayogX 2.0 hooks",
+  "type": "object",
+  "required": [
+    "candidates",
+    "chosen",
+    "reason",
+    "first3s"
+  ],
+  "properties": {
+    "candidates": {
+      "type": "array",
+      "minItems": 5,
+      "items": {
+        "type": "object",
+        "required": [
+          "type",
+          "line",
+          "visual",
+          "claimCheck"
+        ],
+        "properties": {
+          "type": {
+            "enum": [
+              "visual-paradox",
+              "real-observation",
+              "wrong-intuition",
+              "number-shock",
+              "question",
+              "mystery",
+              "challenge",
+              "story-moment"
+            ]
+          },
+          "line": {
+            "type": "string",
+            "minLength": 5
+          },
+          "visual": {
+            "type": "string",
+            "minLength": 5
+          },
+          "claimCheck": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "chosen": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "reason": {
+      "type": "string",
+      "minLength": 10
+    },
+    "first3s": {
+      "type": "object",
+      "required": [
+        "frame0",
+        "byFrame30"
+      ],
+      "properties": {
+        "frame0": {
+          "type": "string"
+        },
+        "byFrame30": {
+          "type": "string",
+          "minLength": 5
+        }
+      }
+    }
+  }
+}

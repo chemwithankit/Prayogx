@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PrayogX 2.0 equations",
+  "type": "object",
+  "required": [
+    "equations"
+  ],
+  "properties": {
+    "equations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "kind",
+          "expr"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "kind": {
+            "enum": [
+              "chemical",
+              "numeric"
+            ]
+          },
+          "expr": {
+            "type": "string"
+          },
+          "expected": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "tolerance": {
+            "type": "number"
+          },
+          "conditions": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}
