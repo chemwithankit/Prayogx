@@ -13,7 +13,7 @@ One-time setup by the owner (read-only access): set YT_ANALYTICS=true in .env, r
 `python3 tools/youtube_publish.py auth` once, and for Search Console set SEARCH_CONSOLE_SITE (for example
 sc-domain:prayogx.co.in). Tokens stay in the existing token file outside the repo and are never printed.
 """
-import argparse, glob, json, os, subprocess, sys, urllib.parse
+import argparse, glob, json, os, subprocess, sys, urllib.error, urllib.parse, urllib.request
 from datetime import date, timedelta
 
 sys.path.insert(0, os.path.dirname(__file__))
@@ -30,16 +30,24 @@ def client():
     return YP.YouTube(cfg, YP.HttpTransport())
 
 
+READ_HOSTS = ('youtubeanalytics.googleapis.com', 'www.googleapis.com', 'searchconsole.googleapis.com')
+
+
 def get(yt, url, body=None):
+    """Read-only call to an official Google analytics host (the publisher's own host list stays unchanged)."""
+    if urllib.parse.urlparse(url).hostname not in READ_HOSTS:
+        sys.exit(f'refusing {url}: not a Google analytics host')
     h = {'Authorization': 'Bearer ' + yt.access_token()}
     if body is not None:
         h['Content-Type'] = 'application/json'
         body = json.dumps(body).encode()
-    st, _, raw = yt.t.request('POST' if body else 'GET', url, h, body, timeout=60)
-    d = json.loads(raw.decode() or '{}')
-    if st != 200:
-        sys.exit(f'HTTP {st}: {d.get("error", {}).get("message", "")}')
-    return d
+    req = urllib.request.Request(url, data=body, headers=h, method='POST' if body else 'GET')
+    try:
+        with urllib.request.urlopen(req, timeout=60) as r:
+            return json.loads(r.read().decode() or '{}')
+    except urllib.error.HTTPError as e:
+        d = json.loads(e.read().decode() or '{}')
+        sys.exit(f'HTTP {e.code}: {d.get("error", {}).get("message", "")}')
 
 
 def package_of():
