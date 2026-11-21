@@ -1,0 +1,33 @@
+{
+  "_about": "Smart QA thresholds (owner approved 2026-11-22, docs/architecture/10-smart-qa-render.md). The ONE source for every measured QA rule of new reels. qa_auto.mjs, qa_ledger.py and scene_render.py all read this file.",
+  "canvas": {"width": 1080, "height": 1920},
+  "text": {
+    "minPx": 40,
+    "equationMinPx": 48,
+    "criticalBelowPx": 28,
+    "minOpacity": 0.5,
+    "equationMarks": ["→", "⇌", "->", "⟶"]
+  },
+  "safeArea": {"marginPx": 64},
+  "collision": {"minOverlapShare": 0.15},
+  "still": {"maxSecondsUnderNarration": 2.0},
+  "sampleEverySeconds": 0.5,
+  "severities": ["critical", "major", "minor"],
+  "blocking": ["critical", "major"],
+  "deductions": {"critical": 8, "major": 3, "minor": 0.5, "minorCapPerArea": 2},
+  "areas": {"accuracy": 20, "story": 15, "visuals": 20, "camera": 10, "sound": 15, "typography": 10, "polish": 10},
+  "passScore": 90,
+  "maxCorrectionRounds": 2,
+  "autoRules": {
+    "text-clipped": {"severity": "critical", "area": "typography", "check": 7},
+    "text-tiny": {"severity": "critical", "area": "typography", "check": 7},
+    "text-small": {"severity": "major", "area": "typography", "check": 7},
+    "equation-small": {"severity": "major", "area": "typography", "check": 7},
+    "safe-area": {"severity": "major", "area": "typography", "check": 7},
+    "text-collision": {"severity": "major", "area": "typography", "check": 7},
+    "number-unsourced": {"severity": "major", "area": "accuracy", "check": 1},
+    "still-under-narration": {"severity": "major", "area": "visuals", "check": 5},
+    "nondeterministic-code": {"severity": "major", "area": "polish", "check": 9}
+  },
+  "stillsDiffThreshold": 1.5
+}

@@ -1,0 +1,132 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PrayogX Smart QA review round (independent reviewer's input to qa_ledger.py review)",
+  "type": "object",
+  "required": [
+    "reviewer",
+    "independent",
+    "render",
+    "checks",
+    "issues"
+  ],
+  "properties": {
+    "reviewer": {
+      "type": "string",
+      "minLength": 3
+    },
+    "independent": {
+      "const": true
+    },
+    "render": {
+      "type": "string",
+      "minLength": 3
+    },
+    "impression": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "checks": {
+      "type": "array",
+      "minItems": 10,
+      "maxItems": 10,
+      "items": {
+        "type": "object",
+        "required": [
+          "n",
+          "answer",
+          "evidence"
+        ],
+        "properties": {
+          "n": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 10
+          },
+          "answer": {
+            "enum": [
+              "yes",
+              "no"
+            ]
+          },
+          "evidence": {
+            "type": "string",
+            "minLength": 5
+          }
+        }
+      }
+    },
+    "verified": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "reopened": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "issues": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "severity",
+          "area",
+          "check",
+          "t",
+          "issue",
+          "fix"
+        ],
+        "properties": {
+          "severity": {
+            "enum": [
+              "critical",
+              "major",
+              "minor"
+            ]
+          },
+          "area": {
+            "enum": [
+              "accuracy",
+              "story",
+              "visuals",
+              "camera",
+              "sound",
+              "typography",
+              "polish"
+            ]
+          },
+          "check": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 10
+          },
+          "scene": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "t": {
+            "type": "string",
+            "minLength": 4
+          },
+          "issue": {
+            "type": "string",
+            "minLength": 5
+          },
+          "fix": {
+            "type": "string",
+            "minLength": 3
+          },
+          "evidence": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

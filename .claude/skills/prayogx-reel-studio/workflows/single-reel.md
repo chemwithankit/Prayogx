@@ -38,7 +38,16 @@ dominant action on a word, a camera decision, a sound decision and a reason. **N
 `bash scripts/session-helpers/render.sh <job> <Comp>` (render, thumbnail, release copy, `qa_reel.py`). Then
 a full contact sheet of the final render. A render that passes the script is only a candidate.
 
+Smart QA reels (from 2026-11-22) follow these steps instead of the full re-render loop:
+1. Run `node scripts/session-helpers/qa_auto.mjs <job> --stills`.
+2. Run `python3 tools/qa_ledger.py auto <slug>`, which is Round 0 and must be clean.
+3. For the first render, run `python3 tools/scene_render.py <slug> <Comp> --all`.
+4. After every fix, run `scene_render.py` again without `--all`, so only the changed scenes are re-rendered.
+5. Make the thumbnail and the release copy once, after the reel passes (`render.sh`, or `jobs/<slug>/release.sh`).
+
 ## 7. QA and improvement loop → `review.md`
+Smart QA reels: the ledger runs this stage (`agents/qa-director.md` §Smart QA, `quality-gates.md` §Smart QA). The
+limit is two correction rounds, after which the ledger escalates.
 `quality-gates.md`. Problem → cause → fix → re-render → re-inspect, logged. Approve at ≥ 90/100 with no
 critical failure.
 

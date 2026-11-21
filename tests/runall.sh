@@ -60,7 +60,7 @@ done
 
 echo
 echo "=== workflow tools: tracker Sheet sync, simulation factory, registry rules, NCERT data, concept and experience contracts (no network) ==="
-for f in "$HERE/test_tracker_sheet.py" "$HERE/test_px2.py" "$HERE/test_auto_sim.py" "$HERE/test_registry_schema.py" "$HERE/ncert_data.py" "$HERE/concept_contract.py" "$HERE/experience_contract.py" "$HERE/test_visual_assets.py" "$HERE/test_instagram_publish.py" "$HERE/test_youtube_publish.py" "$HERE/test_narration.py" "$HERE/test_voice_layer.py" "$HERE/test_voice_generation.py" "$HERE/kit/test_px_kit.py"; do
+for f in "$HERE/test_tracker_sheet.py" "$HERE/test_px2.py" "$HERE/test_smart_qa.py" "$HERE/test_auto_sim.py" "$HERE/test_registry_schema.py" "$HERE/ncert_data.py" "$HERE/concept_contract.py" "$HERE/experience_contract.py" "$HERE/test_visual_assets.py" "$HERE/test_instagram_publish.py" "$HERE/test_youtube_publish.py" "$HERE/test_narration.py" "$HERE/test_voice_layer.py" "$HERE/test_voice_generation.py" "$HERE/kit/test_px_kit.py"; do
   nm=$(basename "$f")
   if [ ! -f "$f" ]; then line "$nm" "MISSING (not in this tree)"; missing=$((missing+1)); continue; fi
   out=$(python3 "$f" 2>&1 | tail -1)

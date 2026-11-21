@@ -45,10 +45,32 @@ Score each area from these measures, not from impressions. Automated ones come f
 - a treatment that repeats another recent reel's;
 - an owner rule broken (language, CTA, licences, chalk rules, no avatar in new reels).
 
+## Smart QA: severities, computed score, two rounds (owner, 2026-11-22)
+Applies to jobs started from 2026-11-22. All thresholds are in `tools/qa_rules.json`, the one source.
+
+| Severity | Definition | Blocks? |
+|---|---|---|
+| **critical** | anything in "Critical failures" above: wrong or made-up science, misleading picture, named reaction not shown, generic stand-in for a key object, clipped or < 28 px meaningful text, mis-voiced key term, broken render, owner rule broken | always |
+| **major** | clearly hurts understanding or phone quality and the fix is clear: text 28–39 px (equations < 48), inside the 64 px edge margin, a collision, a still > 2 s under narration, a too-small hero, a wipe onto an empty frame, weak visible change in a reaction | yes, unless it is raised late (below) |
+| **minor** | polish a casual viewer would not notice | never; it is logged and fixed if cheap |
+
+- A mandatory check is "no" only when an open critical or major issue maps to it.
+- **Score** = each area's maximum minus open issues in that area: critical −8, major −3, minor −0.5 (at most −2 per
+  area). "Fixed" counts until it is verified. **Pass** = 0 open critical or major issues, ten checks "yes", score
+  ≥ 90.
+- **Round 0** (`qa_auto.mjs` + `qa_ledger.py auto`) is clean before review 1. Its rules re-run on every later
+  render, so a fixed measurable issue that comes back is **reopened** automatically.
+- **Rounds:** review 1 (anything) → fix pass 1 → review 2 → fix pass 2 → verification review. From review 2 on, a new
+  non-critical issue in an unchanged scene goes to the **backlog** and does not block.
+- **Escalate to the owner** (`qa/escalation.md`, written by the ledger) when a critical issue is open after review
+  2, the score did not improve between reviews, or the review limit is reached. Never run a fourth review.
+- **Renders during QA:** `tools/scene_render.py` re-renders only the changed scenes and joins them. Make the
+  thumbnail and the release copy once, after the reel passes.
+
 ## Improvement loop
 Problem → cause → change (script, storyboard, animation, sound or edit) → re-render → re-inspect. Each pass
-is logged in `review.md` under "Improvements made in QA". Loop until the gate is met; if it cannot be met,
-stop and tell the owner what is in the way.
+is logged in `review.md` under "Improvements made in QA". Within the round limit above, the loop runs until the gate
+is met. If it cannot be met, the ledger escalates, and the escalation note tells the owner what is in the way.
 
 ## Honesty
 Claude cannot hear the mix or watch motion in real time: audio is judged by measurement and cue lists,

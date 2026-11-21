@@ -89,6 +89,13 @@ Past reels, videos, Learn pages and the website are never changed by these.
 4. `python3 tools/reel_pipeline.py check <slug>` after every stage: it stops at the first failed gate and
    writes `jobs/<slug>/state.json`. A reel is READY_FOR_REVIEW only when every gate passes.
 5. The independent QA writes `jobs/<slug>/qa.json` (schema `tools/schemas/qa.schema.json`).
+   **Smart QA** (from 2026-11-22) uses the ledger, which writes `qa.json` from the reviewer's round files:
+   - `scripts/session-helpers/qa_auto.mjs` and `tools/qa_ledger.py auto` run Round 0;
+   - `qa_ledger.py review | fix | status` run the review rounds, with severities, a computed score, two correction
+     rounds and escalation;
+   - `tools/scene_render.py` re-renders only the changed scenes.
+
+   See [quality-gates.md](workflows/quality-gates.md) §Smart QA.
 6. `python3 tools/model_router.py` for any Gemini or other provider call (off until a key and budget exist).
 
 ## 4. Batches

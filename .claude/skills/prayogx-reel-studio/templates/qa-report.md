@@ -26,8 +26,11 @@ Render: · Duration: · `qa_reel.py`: __/__ (final), __/__ (release)
 Critical failures: none / (list)
 
 ## Improvements made in QA
-| Pass | Problem | Cause | Fix | Re-checked on |
-|---|---|---|---|---|
+| Pass | Ledger ID | Severity | Problem | Cause | Fix | Scenes re-rendered | Re-checked on |
+|---|---|---|---|---|---|---|---|
+
+Smart QA reels: paste the output of `python3 tools/qa_ledger.py status <slug>`. The ledger (`qa/issues.json`) is the
+record; this table summarises it.
 
 ## Remaining gaps (honest)
 

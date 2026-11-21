@@ -13,7 +13,12 @@ python3 tools/maths_validator.py "MnO4^- + 8 H^+ + 5 e^- -> Mn^2+ + 4 H2O"
 python3 tools/content_package.py check RM-12-CHE-08-013
 #   write jobs/<slug>/hooks.json (Hook Creator), then the usual Studio stages
 python3 tools/reel_pipeline.py check <slug>                      # 2. after every stage; stops at the first failure
-#   independent QA writes jobs/<slug>/qa.json (ten checks + score)
+#   Smart QA (2026-11-22, docs/architecture/10-smart-qa-render.md):
+node scripts/session-helpers/qa_auto.mjs <slug> --stills         #    (in the studio) Round 0 measurements
+python3 tools/qa_ledger.py auto <slug>                           #    Round 0 rules: fix until clean
+python3 tools/scene_render.py <slug> <Comp> --all                #    first render; later without --all = changed scenes only
+python3 tools/qa_ledger.py review <slug> jobs/<slug>/qa/round-1.json   # independent reviewer's round → qa.json
+python3 tools/qa_ledger.py fix <slug> R1-1 R1-2 …                #    then scene_render.py, review 2, at most two fix passes
 python3 tools/content_package.py export RM-12-CHE-08-013         # 3. quiz.json + workbook.json
 ```
 
@@ -31,6 +36,7 @@ READY_FOR_REVIEW from the gate runner = every gate passed. Approval and publishi
 | `tools/schemas/*.json` | the agent output formats |
 | `.claude/skills/prayogx-reel-studio/agents/hook-creator.md` | the new Hook Creator role; Scorecard v2 measures in `quality-gates.md` |
 | `tests/test_px2.py` | 23 checks, in `tests/runall.sh` |
+| `tools/qa_ledger.py`, `tools/scene_render.py`, `tools/qa_rules.json` | Smart QA: Round 0, severities, issue ledger, computed score, two rounds, escalation, scene renders (`tests/test_smart_qa.py`, 29 checks) |
 
 ## What only you can switch on
 

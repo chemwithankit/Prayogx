@@ -33,6 +33,14 @@ def run(cmd):
     return r.returncode == 0, last[-1] if last else ''
 
 
+SMART_QA_FROM = datetime(2026, 11, 22).timestamp()
+
+
+def smart_qa(slug):
+    """Jobs started on or after 2026-11-22 use Smart QA (Round 0 + ledger); earlier jobs keep their old gates."""
+    return os.path.getmtime(job(slug, 'package.ref')) >= SMART_QA_FROM
+
+
 def g_package(slug, rm):
     errs = content_package.check(rm)
     return (not errs, f'{len(errs)} package errors, first: {errs[0]}' if errs else 'package valid')
@@ -86,7 +94,16 @@ def g_render(slug, rm):
     if not ok:
         return ok, msg
     bad = [r['check'] for r in load(job(slug, 'qa/qa_check.json')).get('results', []) if not r.get('pass')]
-    return (not bad, 'qa_reel.py failed: ' + '; '.join(bad[:3]) if bad else 'qa_reel.py all pass')
+    if bad:
+        return False, 'qa_reel.py failed: ' + '; '.join(bad[:3])
+    if smart_qa(slug):  # Smart QA Round 0 (2026-11-22, jobs started from that date on)
+        if not os.path.exists(job(slug, 'qa/round-0.json')):
+            return False, 'run qa_auto.mjs, then tools/qa_ledger.py auto (Round 0)'
+        blk = [i['id'] for i in load(job(slug, 'qa/round-0.json'))['issues'] if i['severity'] in ('critical', 'major')]
+        if blk:
+            return False, f'Round 0 blocking issues open: {blk[:5]}'
+        return True, 'qa_reel.py all pass; Round 0 clean'
+    return True, 'qa_reel.py all pass'
 
 
 def g_qa(slug, rm):
@@ -97,6 +114,8 @@ def g_qa(slug, rm):
     errs = validate(q, schema('qa'))
     if errs:
         return False, errs[0]
+    if 'decision' in q and q['decision'] != 'PASS':
+        return False, f'Smart QA ledger: {q["decision"]} (score {q["score"]}; tools/qa_ledger.py status {slug})'
     no = [c['n'] for c in q['checks'] if c['answer'] != 'yes']
     if no or q['criticalFailures'] or q['score'] < 90:
         return False, f'score {q["score"]}, checks answered no: {no}, critical: {q["criticalFailures"][:2]}'
