@@ -1,0 +1,189 @@
+{
+ "slug": "lanthanoids-vs-actinoids",
+ "title": "Twins, Round by Round: Lanthanoids vs Actinoids",
+ "class": 12,
+ "subject": "Chemistry",
+ "chapter": "The d- and f-Block Elements",
+ "objective": "The two f-block rows below the periodic table (in line, it would be 32 columns wide) look like twins: both fill f orbitals, prefer +3 and contract across the row. But actinoid 5f lies close to 6d and 7s and extends further out, so actinoids reach +3 to +7 (lanthanoids never above +4), contract more, are more reactive, form more complexes and oxo ions such as UO₂²⁺, have more complex magnetism and lower early ionisation enthalpies. Every actinoid is radioactive; among the lanthanoids only promethium is.",
+ "fill": [
+  {
+   "q": "Lanthanoids fill the ____ subshell; actinoids fill the 5f subshell.",
+   "a": "4f"
+  },
+  {
+   "q": "The highest oxidation state shown by a lanthanoid is ____.",
+   "a": "+4"
+  },
+  {
+   "q": "The highest oxidation state shown by an actinoid is ____.",
+   "a": "+7"
+  },
+  {
+   "q": "The only lanthanoid with no stable isotope is ____.",
+   "a": "promethium"
+  },
+  {
+   "q": "With the f-block in line, the periodic table would be ____ columns wide.",
+   "a": "32"
+  }
+ ],
+ "tf": [
+  {
+   "q": "The actinoid contraction is smaller than the lanthanoid contraction.",
+   "a": false,
+   "explain": "It is greater (5f shields poorly)."
+  },
+  {
+   "q": "All actinoids are radioactive.",
+   "a": true,
+   "explain": "Elements beyond U are man-made."
+  },
+  {
+   "q": "Lanthanoids form linear oxo ions like UO₂²⁺.",
+   "a": false,
+   "explain": "Only actinoids do."
+  },
+  {
+   "q": "Actinoids have a greater tendency to form complexes than lanthanoids.",
+   "a": true,
+   "explain": "5f orbitals extend further out."
+  },
+  {
+   "q": "The early actinoids have higher first ionisation enthalpies than the early lanthanoids.",
+   "a": false,
+   "explain": "They are lower."
+  }
+ ],
+ "ar": [
+  {
+   "a": "Assertion: Actinoids show a wider range of oxidation states. Reason: 5f, 6d and 7s are close in energy.",
+   "r": "Both true; the reason explains the assertion.",
+   "answer": 0,
+   "explain": ""
+  },
+  {
+   "a": "Assertion: Lanthanoids reach +7. Reason: 4f electrons are easily removed.",
+   "r": "Both false: Ln stop at +4; 4f is buried.",
+   "answer": 0,
+   "explain": ""
+  }
+ ],
+ "mcq": [
+  {
+   "q": "Which pair is correct?",
+   "options": [
+    "Ln: 4f",
+    " An: 5f",
+    "Ln: 5f",
+    " An: 4f",
+    "both 4f",
+    "both 5d"
+   ],
+   "answer": 0,
+   "explain": "f subshells."
+  },
+  {
+   "q": "Actinoids show more oxidation states because:",
+   "options": [
+    "5f, 6d and 7s energies are close",
+    "they are radioactive",
+    "they are larger",
+    "they have no d electrons"
+   ],
+   "answer": 0,
+   "explain": "Comparable energies."
+  },
+  {
+   "q": "Which is radioactive?",
+   "options": [
+    "Pm",
+    "Ce",
+    "Gd",
+    "Lu"
+   ],
+   "answer": 0,
+   "explain": "Promethium."
+  },
+  {
+   "q": "Which ion has no lanthanoid analogue?",
+   "options": [
+    "UO₂²⁺",
+    "M³⁺",
+    "M²⁺",
+    "MCl₃"
+   ],
+   "answer": 0,
+   "explain": "Uranyl."
+  },
+  {
+   "q": "Magnetic properties are more complex for:",
+   "options": [
+    "actinoids",
+    "lanthanoids",
+    "both equally",
+    "neither"
+   ],
+   "answer": 0,
+   "explain": "NCERT 4.6."
+  },
+  {
+   "q": "Which series is more reactive?",
+   "options": [
+    "actinoids",
+    "lanthanoids",
+    "both equal",
+    "neither"
+   ],
+   "answer": 0,
+   "explain": "An combine with non-metals at moderate temperatures."
+  }
+ ],
+ "num": [
+  {
+   "q": "How many elements are in each series (Ce to Lu)?",
+   "steps": [
+    "71 − 58 + 1"
+   ],
+   "answer": "14"
+  },
+  {
+   "q": "How many f electrons does Am³⁺ have? (Am: [Rn] 5f⁷ 7s²)",
+   "steps": [
+    "7 − 1"
+   ],
+   "answer": "6"
+  }
+ ],
+ "short": [
+  {
+   "q": "Compare the oxidation states of lanthanoids and actinoids.",
+   "lines": 5,
+   "solution": "Ln mainly +3 (+2, +4), never above +4; An +3 to +7 because 5f, 6d and 7s are close in energy."
+  },
+  {
+   "q": "Why do actinoids form complexes more readily?",
+   "lines": 5,
+   "solution": "Their 5f orbitals extend further out and take more part in bonding."
+  },
+  {
+   "q": "Compare radioactivity in the two series.",
+   "lines": 5,
+   "solution": "Among lanthanoids only promethium has no stable isotope; all actinoids are radioactive."
+  }
+ ],
+ "match": {
+  "left": [
+   "Lanthanoids",
+   "Actinoids"
+  ],
+  "right": [
+   "5f, +3 to +7, larger contraction, all radioactive, more complexes",
+   "4f, +3 (+2, +4), smaller contraction, only Pm radioactive"
+  ],
+  "answer": [
+   1,
+   0
+  ],
+  "explain": ""
+ }
+}
