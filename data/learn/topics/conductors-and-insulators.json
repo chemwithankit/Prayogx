@@ -1,0 +1,203 @@
+{
+ "status": "ready",
+ "class": 12,
+ "subject": "Physics",
+ "chapter": "Electric Charges and Fields",
+ "video": {
+  "youtubeId": "_Ii9Ff8oN6A"
+ },
+ "thumb": "thumb.jpg",
+ "id": "LEARN-C12-PHY-CONDUCTORS-INSULATORS",
+ "slug": "conductors-and-insulators",
+ "topic": "Conductors and insulators",
+ "title": "Why a Comb Stays Charged but a Spoon Doesn't: Conductors, Insulators and Earthing",
+ "series": 481,
+ "studioJob": "conductors-insulators-earthing",
+ "reelId": "STUDIO-CONDUCTORS-INSULATORS-EARTHING",
+ "summary": "Rub a plastic comb on dry hair and it lifts paper bits; rub a steel spoon and nothing happens. Rubbing moves electrons, and what happens next depends on the material. Conductors (metals, the human body, the earth) have free electrons, so charge spreads over them and leaks away through the hand and body into the earth. Insulators (plastic, glass, nylon, wood) hold their electrons bound, so charge stays where it was put. Earthing connects a body to the earth, a giant charge reservoir; at home the earth wire and fuse use it for safety, and fuel tankers are earthed to prevent static sparks.",
+ "notes": {
+  "pdf": "notes.pdf",
+  "title": "03 – Conductors, Insulators and Earthing",
+  "driveDoc": "1hG4dGUKXd1rITmq3a9QDCbkdgYm2X7tRau45taF-pWM"
+ },
+ "tags": [
+  "conductors",
+  "insulators",
+  "earthing",
+  "grounding",
+  "free electrons",
+  "semiconductors"
+ ],
+ "keyPoints": [
+  "**Charge**: rubbing moves electrons from one object to another; an object with extra or missing electrons is charged.",
+  "**Conductors** (metals, human body, earth) have free electrons (≈ 1 per Cu atom): charge spreads over the whole surface and can flow away.",
+  "**Insulators** (plastic, glass, nylon, wood): electrons are bound to atoms, so charge stays where it was put.",
+  "**Why the spoon fails**: its charge leaks through the hand and body into the earth. Held by a plastic handle, a metal rod does stay charged.",
+  "**Scale**: resistivity of copper ≈ 1.7 × 10⁻⁸ Ω·m, glass ≥ 10¹⁰ Ω·m (≈ 10¹⁸ times); semiconductors such as silicon lie between.",
+  "**Earthing**: joining a body to the earth lets its extra charge flow away; the earth is a giant charge reservoir.",
+  "**Safety**: an appliance's metal body is joined by the earth wire to a plate buried in the ground; in a fault the current goes to earth and the fuse blows. Fuel tankers are earthed to prevent static sparks."
+ ],
+ "sections": [
+  {
+   "h": "Conductors vs insulators",
+   "blocks": [
+    {
+     "table": {
+      "head": [
+       "",
+       "Conductors",
+       "Insulators"
+      ],
+      "rows": [
+       [
+        "Electrons",
+        "free to move (≈ 1 per Cu atom)",
+        "bound to their atoms"
+       ],
+       [
+        "Charge given to it",
+        "spreads over the whole surface",
+        "stays where it was put"
+       ],
+       [
+        "Held in the hand and rubbed",
+        "charge leaks to the earth",
+        "stays charged"
+       ],
+       [
+        "Resistivity",
+        "copper ≈ 1.7 × 10⁻⁸ Ω·m",
+        "glass ≥ 10¹⁰ Ω·m"
+       ],
+       [
+        "Examples",
+        "metals, human body, earth, salt water",
+        "plastic, glass, nylon, wood, rubber"
+       ]
+      ]
+     }
+    }
+   ]
+  }
+ ],
+ "quiz": [
+  {
+   "q": "Which of these is a conductor?",
+   "options": [
+    "glass",
+    "human body",
+    "nylon",
+    "porcelain"
+   ],
+   "answer": 1,
+   "explain": "The body conducts: that is why charge on a hand-held metal rod leaks to the earth."
+  },
+  {
+   "q": "Which of these is an insulator?",
+   "options": [
+    "copper",
+    "earth",
+    "wood",
+    "iron"
+   ],
+   "answer": 2,
+   "explain": "Wood is an insulator; copper, iron and the earth are conductors."
+  },
+  {
+   "q": "Charge given to a metal sphere:",
+   "options": [
+    "spreads over its whole surface",
+    "stays where it was put",
+    "disappears",
+    "goes to the centre"
+   ],
+   "answer": 0,
+   "explain": "Free electrons move until the charge spreads over the whole surface of the conductor."
+  },
+  {
+   "q": "A metal rod held in the hand is not charged by rubbing because:",
+   "options": [
+    "metals have no electrons",
+    "rubbing makes no charge on metals",
+    "the rod is too heavy",
+    "the charge flows through the body to the earth"
+   ],
+   "answer": 3,
+   "explain": "Metal, hand and body are all conductors, so the charge leaks to the earth."
+  },
+  {
+   "q": "The process of sharing a body's charge with the earth is called:",
+   "options": [
+    "induction",
+    "polarisation",
+    "earthing",
+    "insulation"
+   ],
+   "answer": 2,
+   "explain": "Sharing a body's extra charge with the earth is earthing (grounding)."
+  },
+  {
+   "q": "Copper has roughly how many free electrons per atom?",
+   "options": [
+    "zero",
+    "one",
+    "ten",
+    "twenty-nine"
+   ],
+   "answer": 1,
+   "explain": "About one electron per copper atom is free to move: ≈ 8.5 × 10²⁸ per m³."
+  },
+  {
+   "q": "In a fault, the earth wire of an electric iron:",
+   "options": [
+    "carries the current to the ground and the fuse blows",
+    "stops all current",
+    "makes the iron hotter",
+    "charges the user"
+   ],
+   "answer": 0,
+   "explain": "The low-resistance earth wire takes the current to the ground, the current rises and the fuse blows."
+  },
+  {
+   "q": "By roughly how many orders of magnitude does the resistivity of glass exceed that of copper?",
+   "options": [
+    "about 2",
+    "about 6",
+    "about 18",
+    "about 40"
+   ],
+   "answer": 2,
+   "explain": "10¹⁰ / (1.7 × 10⁻⁸) ≈ 6 × 10¹⁷, about 18 orders of magnitude."
+  },
+  {
+   "q": "Fuel tankers are earthed before refuelling to:",
+   "options": [
+    "make fuel flow faster",
+    "cool the tank",
+    "charge the battery",
+    "prevent static sparks"
+   ],
+   "answer": 3,
+   "explain": "Earthing drains static charge, so no spark can ignite the fuel vapour."
+  },
+  {
+   "q": "Why can the earth take in charge without changing much?",
+   "options": [
+    "it is an insulator",
+    "it is a huge conductor, a charge reservoir",
+    "it has no electrons",
+    "it is positively charged"
+   ],
+   "answer": 1,
+   "explain": "The earth is so large that adding or removing charge hardly changes it."
+  }
+ ],
+ "simulation": {
+  "decision": "NOT_REQUIRED",
+  "reason": "A classification-and-reason topic: the video shows each case (comb, spoon, handle, earthing, home earth wire); there is no continuous variable whose change a student must explore."
+ },
+ "related": [
+  "electric-charge-like-and-unlike",
+  "electric-charges-and-fields-introduction"
+ ]
+}

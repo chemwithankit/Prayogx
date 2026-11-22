@@ -1,0 +1,175 @@
+{
+ "slug": "conductors-and-insulators",
+ "title": "Why a Comb Stays Charged but a Spoon Doesn't: Conductors, Insulators and Earthing",
+ "class": 12,
+ "subject": "Physics",
+ "chapter": "Electric Charges and Fields",
+ "objective": "Rub a plastic comb on dry hair and it lifts paper bits; rub a steel spoon and nothing happens. Rubbing moves electrons, and what happens next depends on the material. Conductors (metals, the human body, the earth) have free electrons, so charge spreads over them and leaks away through the hand and body into the earth. Insulators (plastic, glass, nylon, wood) hold their electrons bound, so charge stays where it was put. Earthing connects a body to the earth, a giant charge reservoir; at home the earth wire and fuse use it for safety, and fuel tankers are earthed to prevent static sparks.",
+ "fill": [
+  {
+   "q": "Materials that let charge move through them easily are called ____.",
+   "a": "conductors"
+  },
+  {
+   "q": "Materials that do not let charge move through them easily are called ____.",
+   "a": "insulators"
+  },
+  {
+   "q": "Copper has about ____ free electron per atom.",
+   "a": "one"
+  },
+  {
+   "q": "Connecting a charged body to the earth so its extra charge flows away is called ____.",
+   "a": "earthing (grounding)"
+  },
+  {
+   "q": "Silicon, which lies between conductors and insulators, is a ____.",
+   "a": "semiconductor"
+  }
+ ],
+ "tf": [
+  {
+   "q": "The human body is an insulator.",
+   "a": false,
+   "explain": "It is a conductor, so charge on a hand-held metal rod leaks through it to the earth."
+  },
+  {
+   "q": "In an insulator, the electrons are bound to their atoms.",
+   "a": true,
+   "explain": "So charge stays where it was put."
+  },
+  {
+   "q": "Charge given to a conductor spreads over its whole surface.",
+   "a": true,
+   "explain": "Free electrons move until the charge is spread out."
+  },
+  {
+   "q": "Metals can never be charged by rubbing.",
+   "a": false,
+   "explain": "They can, if held by an insulating handle so the charge cannot leak away."
+  }
+ ],
+ "ar": [
+  {
+   "a": "Assertion: A metal rod held in the hand cannot be charged by rubbing. Reason: The human body is a conductor.",
+   "r": "Both true; the reason explains the assertion.",
+   "answer": 0,
+   "explain": ""
+  },
+  {
+   "a": "Assertion: Charge given to an insulator spreads over its surface. Reason: Insulators have many free electrons.",
+   "r": "Both false: charge on an insulator stays put; its electrons are bound.",
+   "answer": 0,
+   "explain": ""
+  }
+ ],
+ "mcq": [
+  {
+   "q": "Which of these is a conductor?",
+   "options": [
+    "glass",
+    "nylon",
+    "human body",
+    "porcelain"
+   ],
+   "answer": 2,
+   "explain": "The body conducts."
+  },
+  {
+   "q": "A steel spoon held in the hand does not stay charged after rubbing because:",
+   "options": [
+    "metals have no electrons",
+    "the charge flows through the body to the earth",
+    "rubbing cannot move electrons",
+    "steel is an insulator"
+   ],
+   "answer": 1,
+   "explain": "The leak to the earth."
+  },
+  {
+   "q": "The earth wire of an appliance is joined to:",
+   "options": [
+    "the live wire",
+    "the neutral wire",
+    "the metal body",
+    "the switch"
+   ],
+   "answer": 2,
+   "explain": "So a fault current goes to the ground and the fuse blows."
+  },
+  {
+   "q": "The resistivity of glass is larger than copper's by roughly a factor of:",
+   "options": [
+    "10²",
+    "10⁶",
+    "10¹⁸",
+    "10⁴⁰"
+   ],
+   "answer": 2,
+   "explain": "10¹⁰ / 1.7 × 10⁻⁸ ≈ 6 × 10¹⁷."
+  }
+ ],
+ "num": [
+  {
+   "q": "Estimate the earth's capacitance C = 4πε₀R with R = 6.4 × 10⁶ m.",
+   "steps": [
+    "4π × 8.85 × 10⁻¹² × 6.4 × 10⁶"
+   ],
+   "answer": "≈ 7 × 10⁻⁴ F (about 700 µF)"
+  },
+  {
+   "q": "Estimate the free-electron density of copper (density 8.96 × 10³ kg/m³, molar mass 63.5 g/mol, one free electron per atom).",
+   "steps": [
+    "(8.96 × 10³ / 0.0635) × 6.02 × 10²³"
+   ],
+   "answer": "≈ 8.5 × 10²⁸ per m³"
+  }
+ ],
+ "short": [
+  {
+   "q": "Why does a plastic comb get charged on combing dry hair but a steel spoon held in the hand does not?",
+   "lines": 5,
+   "solution": "Plastic is an insulator, so the charge stays where it was rubbed; the spoon is a conductor, so its charge flows through the hand and body to the earth."
+  },
+  {
+   "q": "How can a metal rod be charged by rubbing?",
+   "lines": 5,
+   "solution": "Hold it by a plastic (insulating) handle, so the charge has no path to the earth."
+  },
+  {
+   "q": "Why is the earth called a giant charge reservoir?",
+   "lines": 5,
+   "solution": "It is so large that adding or removing charge hardly changes it, like a bucket of water poured into the ocean."
+  },
+  {
+   "q": "Describe how the earth wire protects a person using an electric iron.",
+   "lines": 5,
+   "solution": "The metal body is joined by the earth wire to a plate buried deep in the ground. If the live wire touches the body, current flows through the low-resistance earth wire instead of the person, and the fuse blows."
+  },
+  {
+   "q": "Why are fuel tankers earthed before refuelling?",
+   "lines": 5,
+   "solution": "So static charge cannot build up and cause a spark that could ignite the fuel vapour."
+  },
+  {
+   "q": "Why do you sometimes get a shock touching a metal door knob after walking on a carpet?",
+   "lines": 5,
+   "solution": "Your body is charged by friction while your shoes insulate it from the ground; the charge jumps to the metal knob."
+  }
+ ],
+ "match": {
+  "left": [
+   "copper, iron, human body, earth",
+   "glass, plastic, nylon, wood"
+  ],
+  "right": [
+   "insulators",
+   "conductors"
+  ],
+  "answer": [
+   1,
+   0
+  ],
+  "explain": ""
+ }
+}
