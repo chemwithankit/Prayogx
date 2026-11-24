@@ -86,6 +86,29 @@
     window.addEventListener("resize", fit);
   }
 
+  /* ---- video format: Portrait 9:16 / Landscape 16:9 (owner 2026-11-24), on pages that have both versions */
+  var pl = document.querySelector(".player[data-landscape]");
+  if (pl) {
+    var watch = pl.parentNode, frame = pl.querySelector("iframe"), sw = pl.querySelector(".fmt"), btns = pl.querySelectorAll(".fmtb");
+    var embed = function (id) { return "https://www.youtube-nocookie.com/embed/" + id + "?rel=0&modestbranding=1&playsinline=1"; };
+    var setFmt = function (fmt) {
+      var id = pl.getAttribute(fmt === "landscape" ? "data-landscape" : "data-portrait");
+      if (frame && frame.getAttribute("src") !== embed(id)) frame.setAttribute("src", embed(id));
+      watch.className = watch.className.replace(/\s*\bwide\b/g, "") + (fmt === "landscape" ? " wide" : "");
+      for (var i = 0; i < btns.length; i++) btns[i].setAttribute("aria-pressed", btns[i].getAttribute("data-fmt") === fmt ? "true" : "false");
+    };
+    var pref = null;
+    try { pref = localStorage.getItem("prayogx-video-format"); } catch (e) {}
+    if (pref !== "portrait" && pref !== "landscape") pref = window.innerWidth >= 820 ? "landscape" : "portrait";
+    if (sw) sw.removeAttribute("hidden");
+    setFmt(pref);
+    for (var b = 0; b < btns.length; b++) btns[b].addEventListener("click", function () {
+      var f = this.getAttribute("data-fmt");
+      setFmt(f);
+      try { localStorage.setItem("prayogx-video-format", f); } catch (e) {}
+    });
+  }
+
   /* ---- quiz */
   var holder = document.getElementById("quiz");
   var dataEl = document.getElementById("quiz-data");

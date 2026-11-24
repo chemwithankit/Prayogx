@@ -140,6 +140,8 @@ def problems(t, slugs, cur):
         p.append("video.youtubeId is not an 11-character YouTube ID")
     if v.get("format") not in (None, "long"):  # owner, 2026-11-09: "long" = a regular (long-form) YouTube video, not a Short
         p.append('video.format must be "long" or absent')
+    if v.get("landscapeId") and not YT_ID.match(v["landscapeId"]):  # owner 2026-11-24: the 16:9 YouTube version
+        p.append("video.landscapeId is not an 11-character YouTube ID")
     if v.get("instagram") and not IG_URL.match(v["instagram"]):  # optional since 2026-11-01: Instagram is uploaded by hand
         p.append("video.instagram is not an Instagram reel URL")
     d = os.path.join(OUT, slug)
@@ -422,6 +424,8 @@ def topic_card(t, prefix, cur, show_chapter=True):
     meta.append(t["subject"])
     if has_sim:
         meta.append("simulation")
+    if t["video"].get("landscapeId"):
+        meta.append("9:16 + 16:9")
     return ('<a class="vcard" style="--c:%s" href="%s%s/" data-search="%s" data-discipline="%s" data-chapter="%s">%s'
             '<span class="vbody"><span class="t">%s</span><span class="s">%s</span><span class="m">%s</span></span></a>') % (
         COLOR.get(t["subject"], "var(--accent)"), prefix, esc(t["slug"]), esc(search), esc(t["subject"]), esc(chname), thumb,
@@ -429,6 +433,29 @@ def topic_card(t, prefix, cur, show_chapter=True):
 
 
 # ------------------------------------------------------------------ topic (video) page
+def player_html(t):
+    """the topic's video. With only one version (every page before 2026-11-24) the markup is unchanged. With a 16:9
+    version too (video.landscapeId, owner 2026-11-24) the player gets a Portrait / Landscape switch (learn.js), which
+    swaps the embed and widens the layout; without JavaScript the portrait video plays."""
+    v = t["video"]
+    ig = ('<a href="%s" rel="noopener" target="_blank">Watch on Instagram</a> · ' % esc(v["instagram"])) if v.get("instagram") else ""
+    frame = ('<div class="video"><iframe src="https://www.youtube-nocookie.com/embed/%(yt)s?rel=0&amp;modestbranding=1&amp;playsinline=1"\n'
+             '      title="%(title)s: Doodle explainer video" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen"\n'
+             '      allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>') % {"yt": esc(v["youtubeId"]), "title": esc(t["title"])}
+    if not v.get("landscapeId"):
+        return ('<div class="watch">\n  <div class="player">\n    %s\n'
+                '    <p class="video-alt">Video not playing? %s<a href="https://www.youtube.com/%s%s" rel="noopener" target="_blank">YouTube</a></p>\n'
+                '  </div>') % (frame, ig, "watch?v=" if v.get("format") == "long" else "shorts/", esc(v["youtubeId"]))
+    return ('<div class="watch dual">\n  <div class="player" data-portrait="%(p)s" data-landscape="%(l)s">\n'
+            '    <div class="fmt" role="group" aria-label="Choose your viewing experience" hidden>'
+            '<button type="button" class="fmtb" data-fmt="portrait" aria-pressed="true"><span class="ar p" aria-hidden="true"></span>Portrait 9:16</button>'
+            '<button type="button" class="fmtb" data-fmt="landscape" aria-pressed="false"><span class="ar l" aria-hidden="true"></span>Landscape 16:9</button></div>\n'
+            '    %(frame)s\n'
+            '    <p class="video-alt">Video not playing? %(ig)s<a href="https://www.youtube.com/shorts/%(p)s" rel="noopener" target="_blank">YouTube Short</a>'
+            ' · <a href="https://www.youtube.com/watch?v=%(l)s" rel="noopener" target="_blank">YouTube (16:9)</a></p>\n'
+            '  </div>') % {"p": esc(v["youtubeId"]), "l": esc(v["landscapeId"]), "frame": frame, "ig": ig}
+
+
 def worksheet_link(t):
     """the downloadable PrayogX workbook (tools/build_worksheets.js) when learn/<slug>/worksheet.pdf exists"""
     f = os.path.join(OUT, t["slug"], "worksheet.pdf")
@@ -509,13 +536,7 @@ def topic_page(t, by_slug, ready, cur):
             esc(chap_href), "That's all the videos in this chapter so far", icon("back", 18), esc("Back to " + chp["name"])))
     hero = """
 <div class="thead"><span class="chip subj">%(ctx)s</span><h1>%(title)s</h1></div>
-<div class="watch">
-  <div class="player">
-    <div class="video"><iframe src="https://www.youtube-nocookie.com/embed/%(yt)s?rel=0&amp;modestbranding=1&amp;playsinline=1"
-      title="%(title)s: Doodle explainer video" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen"
-      allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
-    <p class="video-alt">Video not playing? %(ig)s<a href="https://www.youtube.com/%(ytpath)s%(yt)s" rel="noopener" target="_blank">YouTube</a></p>
-  </div>
+%(player)s
   <div class="side">
     <p class="lede">%(lede)s</p>
     <a class="dl" href="%(pdf)s" download="%(dlname)s"><span class="ico">%(doc)s</span>
@@ -525,7 +546,7 @@ def topic_page(t, by_slug, ready, cur):
     %(upnext)s
     <div class="pn">%(prev)s%(allv)s</div>
   </div>
-</div>""" % {"yt": esc(t["video"]["youtubeId"]), "ytpath": "watch?v=" if t["video"].get("format") == "long" else "shorts/", "title": esc(t["title"]), "ig": ('<a href="%s" rel="noopener" target="_blank">Watch on Instagram</a> · ' % esc(t["video"]["instagram"])) if t["video"].get("instagram") else "",
+</div>""" % {"player": player_html(t), "title": esc(t["title"]), "ig": ('<a href="%s" rel="noopener" target="_blank">Watch on Instagram</a> · ' % esc(t["video"]["instagram"])) if t["video"].get("instagram") else "",
              "ctx": esc("%s%s" % (chapnum, t["subject"])),
              "lede": inline(t["summary"]), "worksheet": worksheet_link(t), "handwritten": handwritten_link(t), "cardsdl": cards_link(t), "pdf": esc(t["notes"]["pdf"]), "dlname": esc("PrayogX - %s - short notes.pdf" % t["title"]),
              "size": size, "doc": icon("doc", 22), "upnext": upnext,
