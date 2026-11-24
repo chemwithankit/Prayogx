@@ -176,6 +176,15 @@ def problems(t, slugs, cur):
                 w = len(tb.get("head", []))
                 if not w or any(len(r) != w for r in tb.get("rows", [])):
                     p.append("section %r: table rows must match the header width" % s["h"])
+    # JEE Main PYQs (owner 2026-11-25): optional, a separate section; each tagged with its exam, our own solution
+    for i, x in enumerate(t.get("pyq", []), 1):
+        o = x.get("options") or []
+        if not str(x.get("exam", "")).startswith("JEE Main ") or not x.get("q") or not x.get("explain"):
+            p.append("pyq %d needs exam ('JEE Main <year> (<date>, Shift <n>)'), q and explain" % i)
+        if o and (len(o) != 4 or not isinstance(x.get("answer"), int) or not 0 <= x["answer"] < 4):
+            p.append("pyq %d: an MCQ needs 4 options and an answer index 0-3" % i)
+        if not o and not str(x.get("answer", "")).strip():
+            p.append("pyq %d: a numerical needs its answer value" % i)
     # quiz: 3-10 questions (new topics carry 10, owner 2026-11-15), 3-5 distinct options, a valid answer and an explanation each
     qs = t["quiz"]
     if not 3 <= len(qs) <= 10:
@@ -554,7 +563,7 @@ def topic_page(t, by_slug, ready, cur):
              "prev": ('<a class="pnb" href="../%s/">%s Previous: %s</a>' % (esc(prev_t["slug"]), icon("back", 16), esc(prev_t["title"])) if prev_t else "")}
     keys = '<section class="sect"><h2>Key points</h2><ul class="keypts">%s</ul></section>' % "".join("<li>%s</li>" % inline(x) for x in t["keyPoints"])
     jumps = ('<nav class="jump" aria-label="On this page"><a href="#concept">Explanation</a>' + ('<a href="#cards">Memory cards</a>' if card_files(t) else "") + ('<a href="#simulation">Simulation</a>' if has_sim else "")
-             + '<a href="#quiz-sect">Quiz</a></nav>')
+             + '<a href="#quiz-sect">Quiz</a>' + ('<a href="#pyq">JEE Main PYQs</a>' if t.get("pyq") else "") + '</nav>')
     sects = "".join('<section class="sect"%s><h2>%s</h2>%s</section>' % (
         ' id="concept"' if i == 0 else "", esc(sec["h"]), "".join(block_html(b) for b in sec["blocks"]))
         for i, sec in enumerate(t["sections"]))
@@ -571,6 +580,18 @@ def topic_page(t, by_slug, ready, cur):
     quiz = ('<section class="sect" id="quiz-sect"><h2>Quick quiz</h2><p>%d questions. Choose an answer for each, then submit to see '
             'your score and the explanations.</p><div class="quiz" id="quiz" aria-live="polite"><noscript>The quiz needs JavaScript.</noscript></div>'
             '<script type="application/json" id="quiz-data">%s</script></section>') % (len(t["quiz"]), quiz_json)
+    pyq = ""
+    if t.get("pyq"):  # owner 2026-11-25: real JEE Main questions on this topic, a separate section (not in the workbook)
+        L = "abcd"
+        items = "".join(
+            '<li><span class="pyqsrc">%s</span><p class="pyqq">%s</p>%s<details class="pyqa"><summary>Show answer</summary><p><b>%s</b> %s</p></details></li>' % (
+                esc(x["exam"]), inline(x["q"]),
+                ('<ol class="pyqo">%s</ol>' % "".join('<li><span class="ol">(%s)</span> %s</li>' % (L[k], inline(o)) for k, o in enumerate(x["options"]))) if x.get("options") else "",
+                ("(%s) %s." % (L[x["answer"]], inline(x["options"][x["answer"]]))) if x.get("options") else ("Answer: %s." % inline(str(x["answer"]))),
+                inline(x["explain"]))
+            for x in t["pyq"])
+        pyq = ('<section class="sect" id="pyq"><h2>JEE Main previous year questions</h2><p>Real JEE Main questions on this topic. '
+               'Try each one first, then open the answer.</p><ol class="pyql">%s</ol></section>') % items
     rel = [by_slug[r] for r in t.get("related", []) if r in by_slug and by_slug[r]["status"] == "ready"]
     more = [x for x in rel + [v for v in vids if v is not t] if x is not next_t]
     seen, uniq = set(), []
@@ -580,7 +601,7 @@ def topic_page(t, by_slug, ready, cur):
     morehtml = ('<section class="sect"><h2>More from %s</h2><div class="vgrid">%s</div></section>' % (
         esc(chp["name"]), "".join(topic_card(x, "../", cur, show_chapter=False) for x in uniq))) if uniq else ""
     body = ('%s<article class="topic" style="--c:%s">%s<div class="study">%s%s%s%s%s</div>%s</article>') % (
-        nav, col, hero, jumps, keys, sects + cards_section(t), simhtml, quiz, morehtml)
+        nav, col, hero, jumps, keys, sects + cards_section(t), simhtml, quiz + pyq, morehtml)
     return shell("%s · PrayogX Learn" % t["title"], t["summary"], "%s/learn/%s/" % (SITE_URL, slug), "../../", body)
 
 

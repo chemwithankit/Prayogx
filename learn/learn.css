@@ -257,3 +257,14 @@ a:hover > .go{color:var(--c,var(--accent));transform:translateX(3px)}
 }
 .mcards{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 2px 12px;margin:10px 0 14px;-webkit-overflow-scrolling:touch}
 .mcards img{flex:0 0 min(80%,360px);width:min(80%,360px);height:auto;aspect-ratio:4/5;border-radius:14px;scroll-snap-align:start;border:1px solid var(--line);background:#0A1730}
+/* JEE Main previous year questions (owner 2026-11-25): a separate section on topics that have them */
+.pyql{list-style:none;counter-reset:pq;margin:12px 0 0;padding:0}
+.pyql>li{counter-increment:pq;position:relative;padding:14px 16px 12px 52px;margin:0 0 12px;border:1px solid var(--border,rgba(127,127,127,.25));border-radius:14px}
+.pyql>li::before{content:counter(pq);position:absolute;left:16px;top:14px;width:24px;height:24px;border-radius:50%;background:var(--accent);color:#fff;font-weight:800;font-size:13px;display:flex;align-items:center;justify-content:center}
+.pyqsrc{display:inline-block;font-size:12px;font-weight:800;letter-spacing:.3px;color:#9a5b00;background:rgba(255,181,71,.16);border:1px solid rgba(255,181,71,.45);border-radius:6px;padding:1px 7px}
+.pyqq{margin:8px 0 6px}
+.pyqo{list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px 24px;margin:0 0 8px;padding:0}
+@media (max-width:560px){.pyqo{grid-template-columns:minmax(0,1fr)}}
+.pyqo .ol{font-weight:700;color:var(--text-secondary);margin-right:4px}
+.pyqa summary{cursor:pointer;font-weight:700;color:var(--accent);width:max-content}
+.pyqa p{margin:6px 0 0}
