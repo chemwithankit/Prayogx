@@ -1,0 +1,173 @@
+{
+ "slug": "additivity-and-conservation-of-charge",
+ "title": "Where Does Electric Charge Go? Additivity and Conservation of Charge",
+ "class": 12,
+ "subject": "Physics",
+ "chapter": "Electric Charges and Fields",
+ "objective": "Rub a glass rod with silk and the two get charges that are always exactly equal and opposite. Rubbing moves electrons from the glass to the silk; it never makes charge. Charge is additive (the total is the algebraic sum, signs included) and conserved (the total charge of an isolated system never changes). The rule holds even when particles transform: a free neutron becomes a proton, an electron and an antineutrino, and a gamma photon near a nucleus becomes an electron and a positron, with the total charge unchanged every time.",
+ "fill": [
+  {
+   "q": "When glass is rubbed with silk, ____ move from the glass to the silk.",
+   "a": "electrons"
+  },
+  {
+   "q": "The total charge of a system is the ____ sum of the individual charges.",
+   "a": "algebraic"
+  },
+  {
+   "q": "The total charge of an isolated system remains ____.",
+   "a": "constant"
+  },
+  {
+   "q": "In n → p + e⁻ + ν̄e, the charge of the antineutrino is ____.",
+   "a": "0"
+  },
+  {
+   "q": "The minimum photon energy for pair production near a nucleus is about ____ MeV.",
+   "a": "1.022"
+  }
+ ],
+ "tf": [
+  {
+   "q": "Protons move from glass to silk during rubbing.",
+   "a": false,
+   "explain": "Only electrons move; protons are bound in the nuclei."
+  },
+  {
+   "q": "Rubbing creates new charge.",
+   "a": false,
+   "explain": "It moves electrons that were already there."
+  },
+  {
+   "q": "A conserved total charge must be zero.",
+   "a": false,
+   "explain": "It stays constant; it can be nonzero."
+  },
+  {
+   "q": "In pair production, the total charge after is zero.",
+   "a": true,
+   "explain": "(−1) + (+1) = 0."
+  }
+ ],
+ "ar": [
+  {
+   "a": "Assertion: The total charge of an isolated system is always zero. Reason: Charge is conserved.",
+   "r": "Assertion false (it is constant, not necessarily zero); reason true.",
+   "answer": 0,
+   "explain": ""
+  },
+  {
+   "a": "Assertion: Glass and silk get equal and opposite charges on rubbing. Reason: Electrons transfer from glass to silk.",
+   "r": "Both true; the reason explains the assertion.",
+   "answer": 0,
+   "explain": ""
+  }
+ ],
+ "mcq": [
+  {
+   "q": "The total charge of +3 μC, −7 μC and +1 μC is:",
+   "options": [
+    "+11 μC",
+    "−3 μC",
+    "+3 μC",
+    "−11 μC"
+   ],
+   "answer": 1,
+   "explain": "Algebraic sum."
+  },
+  {
+   "q": "After rubbing, glass has +q. The silk has:",
+   "options": [
+    "+q",
+    "0",
+    "−q",
+    "−2q"
+   ],
+   "answer": 2,
+   "explain": "Equal and opposite."
+  },
+  {
+   "q": "Pair production needs a nucleus to:",
+   "options": [
+    "supply charge",
+    "absorb recoil momentum",
+    "supply electrons",
+    "cancel the positron"
+   ],
+   "answer": 1,
+   "explain": "Momentum."
+  },
+  {
+   "q": "In a magnetic field, an electron and a positron created together:",
+   "options": [
+    "curve the same way",
+    "curve in opposite directions",
+    "do not curve",
+    "stop at once"
+   ],
+   "answer": 1,
+   "explain": "Opposite charges."
+  }
+ ],
+ "num": [
+  {
+   "q": "Find the charge of 10¹² electrons (e = 1.602 × 10⁻¹⁹ C).",
+   "steps": [
+    "10¹² × 1.602 × 10⁻¹⁹"
+   ],
+   "answer": "−1.602 × 10⁻⁷ C"
+  },
+  {
+   "q": "How many electrons make up −1 μC?",
+   "steps": [
+    "10⁻⁶ / 1.602 × 10⁻¹⁹"
+   ],
+   "answer": "≈ 6.24 × 10¹²"
+  }
+ ],
+ "short": [
+  {
+   "q": "Why are the charges on rubbed glass and silk equal and opposite?",
+   "lines": 5,
+   "solution": "Electrons only move from glass to silk; the silk gains exactly what the glass loses, so the total stays zero."
+  },
+  {
+   "q": "Distinguish additivity from conservation of charge.",
+   "lines": 5,
+   "solution": "Additivity: the total is the algebraic sum of the charges. Conservation: that total does not change in an isolated system."
+  },
+  {
+   "q": "Write neutron decay and check the charge balance.",
+   "lines": 5,
+   "solution": "n → p + e⁻ + ν̄e; 0 = (+1) + (−1) + 0."
+  },
+  {
+   "q": "Why can a single photon not create a pair in empty space?",
+   "lines": 5,
+   "solution": "Energy and momentum cannot both be conserved; a nucleus must take the recoil momentum."
+  },
+  {
+   "q": "A neutral comb takes 10¹² electrons from hair. Give the comb, hair and total charge.",
+   "lines": 5,
+   "solution": "Comb −1.602 × 10⁻⁷ C, hair +1.602 × 10⁻⁷ C, total 0."
+  }
+ ],
+ "match": {
+  "left": [
+   "Franklin, 1747",
+   "Anderson, 1932",
+   "n → p + e⁻ + ν̄e"
+  ],
+  "right": [
+   "rubbing moves electricity, does not create it",
+   "free neutron decay",
+   "discovered the positron"
+  ],
+  "answer": [
+   0,
+   2,
+   1
+  ],
+  "explain": ""
+ }
+}

@@ -2646,3 +2646,30 @@ S Why are fuel tankers earthed before refuelling?|So static charge cannot build 
 S Why do you sometimes get a shock touching a metal door knob after walking on a carpet?|Your body is charged by friction while your shoes insulate it from the ground; the charge jumps to the metal knob.
 X copper, iron, human body, earth => conductors
 X glass, plastic, nylon, wood => insulators
+
+@additivity-and-conservation-of-charge
+F When glass is rubbed with silk, ____ move from the glass to the silk.|electrons
+F The total charge of a system is the ____ sum of the individual charges.|algebraic
+F The total charge of an isolated system remains ____.|constant
+F In n → p + e⁻ + ν̄e, the charge of the antineutrino is ____.|0
+F The minimum photon energy for pair production near a nucleus is about ____ MeV.|1.022
+T Protons move from glass to silk during rubbing.|F|Only electrons move; protons are bound in the nuclei.
+T Rubbing creates new charge.|F|It moves electrons that were already there.
+T A conserved total charge must be zero.|F|It stays constant; it can be nonzero.
+T In pair production, the total charge after is zero.|T|(−1) + (+1) = 0.
+M The total charge of +3 μC, −7 μC and +1 μC is:|+11 μC;−3 μC;+3 μC;−11 μC|2|Algebraic sum.
+M After rubbing, glass has +q. The silk has:|+q;0;−q;−2q|3|Equal and opposite.
+M Pair production needs a nucleus to:|supply charge;absorb recoil momentum;supply electrons;cancel the positron|2|Momentum.
+M In a magnetic field, an electron and a positron created together:|curve the same way;curve in opposite directions;do not curve;stop at once|2|Opposite charges.
+A Assertion: The total charge of an isolated system is always zero. Reason: Charge is conserved.|Assertion false (it is constant, not necessarily zero); reason true.|1|
+A Assertion: Glass and silk get equal and opposite charges on rubbing. Reason: Electrons transfer from glass to silk.|Both true; the reason explains the assertion.|1|
+N Find the charge of 10¹² electrons (e = 1.602 × 10⁻¹⁹ C).|10¹² × 1.602 × 10⁻¹⁹|−1.602 × 10⁻⁷ C
+N How many electrons make up −1 μC?|10⁻⁶ / 1.602 × 10⁻¹⁹|≈ 6.24 × 10¹²
+S Why are the charges on rubbed glass and silk equal and opposite?|Electrons only move from glass to silk; the silk gains exactly what the glass loses, so the total stays zero.
+S Distinguish additivity from conservation of charge.|Additivity: the total is the algebraic sum of the charges. Conservation: that total does not change in an isolated system.
+S Write neutron decay and check the charge balance.|n → p + e⁻ + ν̄e; 0 = (+1) + (−1) + 0.
+S Why can a single photon not create a pair in empty space?|Energy and momentum cannot both be conserved; a nucleus must take the recoil momentum.
+S A neutral comb takes 10¹² electrons from hair. Give the comb, hair and total charge.|Comb −1.602 × 10⁻⁷ C, hair +1.602 × 10⁻⁷ C, total 0.
+X Franklin, 1747 => rubbing moves electricity, does not create it
+X Anderson, 1932 => discovered the positron
+X n → p + e⁻ + ν̄e => free neutron decay

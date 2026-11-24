@@ -1,0 +1,204 @@
+{
+ "status": "ready",
+ "class": 12,
+ "subject": "Physics",
+ "chapter": "Electric Charges and Fields",
+ "video": {
+  "youtubeId": "4oERwYLgTX8"
+ },
+ "thumb": "thumb.jpg",
+ "id": "LEARN-C12-PHY-CHARGE-CONSERVATION",
+ "slug": "additivity-and-conservation-of-charge",
+ "topic": "Charge adds up and is never created or destroyed",
+ "title": "Where Does Electric Charge Go? Additivity and Conservation of Charge",
+ "series": 482,
+ "studioJob": "charge-conservation",
+ "reelId": "STUDIO-CHARGE-CONSERVATION",
+ "summary": "Rub a glass rod with silk and the two get charges that are always exactly equal and opposite. Rubbing moves electrons from the glass to the silk; it never makes charge. Charge is additive (the total is the algebraic sum, signs included) and conserved (the total charge of an isolated system never changes). The rule holds even when particles transform: a free neutron becomes a proton, an electron and an antineutrino, and a gamma photon near a nucleus becomes an electron and a positron, with the total charge unchanged every time.",
+ "notes": {
+  "pdf": "notes.pdf",
+  "title": "04 – Additivity and Conservation of Charge",
+  "driveDoc": "1JptV1eyxTyFRg6E2QFeNszOmU62KTRkUoPFqdfP8iMo"
+ },
+ "tags": [
+  "conservation of charge",
+  "additivity of charge",
+  "electric charge",
+  "pair production",
+  "neutron decay",
+  "isolated system"
+ ],
+ "keyPoints": [
+  "**Glass + silk**: electrons move from glass to silk, so glass is +q and silk −q, always equal and opposite. Protons never move.",
+  "**Additivity**: Q = q₁ + q₂ + … + qₙ, an algebraic sum with signs (+1 + 2 − 3 = 0; +2 − 5 = −3).",
+  "**Conservation**: the total charge of an isolated system stays constant, Q_initial = Q_final. Charge is moved, never created or destroyed.",
+  "**Conserved ≠ zero**: a charged isolated system keeps its net charge.",
+  "**Neutron decay**: n → p + e⁻ + ν̄e; 0 = (+1) + (−1) + 0 (the antineutrino has no charge).",
+  "**Pair production**: near a nucleus (which takes the recoil), a gamma photon of at least 1.022 MeV gives γ → e⁻ + e⁺; 0 = (−1) + (+1). The two curve oppositely in a magnetic field.",
+  "**Numbers**: e = 1.602 × 10⁻¹⁹ C; 10¹² electrons carry 1.602 × 10⁻⁷ C."
+ ],
+ "sections": [
+  {
+   "h": "The charge ledger",
+   "blocks": [
+    {
+     "table": {
+      "head": [
+       "Process",
+       "Before",
+       "After",
+       "Total"
+      ],
+      "rows": [
+       [
+        "Glass rubbed with silk",
+        "glass 0, silk 0",
+        "glass +q, silk −q",
+        "0 → 0"
+       ],
+       [
+        "Neutron decay",
+        "n: 0",
+        "p +1, e⁻ −1, ν̄e 0",
+        "0 → 0"
+       ],
+       [
+        "Pair production",
+        "γ: 0",
+        "e⁻ −1, e⁺ +1",
+        "0 → 0"
+       ],
+       [
+        "Comb and hair (10¹² e⁻)",
+        "0, 0",
+        "comb −1.6 × 10⁻⁷ C, hair +1.6 × 10⁻⁷ C",
+        "0 → 0"
+       ]
+      ]
+     }
+    }
+   ]
+  }
+ ],
+ "quiz": [
+  {
+   "q": "When glass is rubbed with silk, which particles move?",
+   "options": [
+    "protons from silk to glass",
+    "electrons from glass to silk",
+    "electrons from silk to glass",
+    "neutrons from glass to silk"
+   ],
+   "answer": 1,
+   "explain": "Only electrons move: glass loses electrons to the silk."
+  },
+  {
+   "q": "After rubbing, glass has charge +q. The charge on the silk is:",
+   "options": [
+    "+q",
+    "0",
+    "−2q",
+    "−q"
+   ],
+   "answer": 3,
+   "explain": "Silk gains exactly what glass loses, so it carries −q."
+  },
+  {
+   "q": "The total charge of +1 C, +2 C and −3 C is:",
+   "options": [
+    "0 C",
+    "+6 C",
+    "−6 C",
+    "+3 C"
+   ],
+   "answer": 0,
+   "explain": "Algebraic sum: +1 + 2 − 3 = 0."
+  },
+  {
+   "q": "The total charge of +2 μC and −5 μC is:",
+   "options": [
+    "+7 μC",
+    "+3 μC",
+    "−3 μC",
+    "−7 μC"
+   ],
+   "answer": 2,
+   "explain": "+2 − 5 = −3 μC; signs count."
+  },
+  {
+   "q": "Conservation of charge means the total charge of an isolated system:",
+   "options": [
+    "always becomes zero",
+    "stays constant",
+    "increases on rubbing",
+    "depends on temperature"
+   ],
+   "answer": 1,
+   "explain": "Charge is conserved: the total of an isolated system stays constant."
+  },
+  {
+   "q": "In n → p + e⁻ + ν̄e, the charge of ν̄e is:",
+   "options": [
+    "+1",
+    "−1",
+    "0",
+    "+2"
+   ],
+   "answer": 2,
+   "explain": "The electron antineutrino carries no charge: 0 = (+1) + (−1) + 0."
+  },
+  {
+   "q": "In pair production γ → e⁻ + e⁺, the total charge after is:",
+   "options": [
+    "0",
+    "+1",
+    "−1",
+    "+2"
+   ],
+   "answer": 0,
+   "explain": "(−1) + (+1) = 0: the photon had zero charge too."
+  },
+  {
+   "q": "Pair production needs a nearby nucleus mainly to:",
+   "options": [
+    "supply charge",
+    "supply electrons",
+    "cancel the positron",
+    "absorb recoil momentum"
+   ],
+   "answer": 3,
+   "explain": "A photon alone cannot conserve both energy and momentum; the nucleus takes the recoil."
+  },
+  {
+   "q": "A neutral comb gains 10¹² electrons from hair. The hair's charge is about:",
+   "options": [
+    "−1.6 × 10⁻⁷ C",
+    "+1.6 × 10⁻⁷ C",
+    "0",
+    "+1.6 × 10⁻¹⁹ C"
+   ],
+   "answer": 1,
+   "explain": "The hair loses 10¹² electrons: +10¹² × 1.602 × 10⁻¹⁹ ≈ +1.6 × 10⁻⁷ C."
+  },
+  {
+   "q": "Charge is called additive because:",
+   "options": [
+    "it is always positive",
+    "it can be created by rubbing",
+    "charges add algebraically with signs",
+    "it has mass"
+   ],
+   "answer": 2,
+   "explain": "Charges add algebraically, with their signs."
+  }
+ ],
+ "simulation": {
+  "decision": "NOT_REQUIRED",
+  "reason": "The rule is shown by counting, not by varying a continuous quantity; the video's charge meter, the ledger table, memory cards and 25 workbook questions teach it."
+ },
+ "related": [
+  "conductors-and-insulators",
+  "electric-charge-like-and-unlike",
+  "electric-charges-and-fields-introduction"
+ ]
+}
