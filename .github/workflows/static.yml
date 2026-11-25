@@ -115,6 +115,11 @@ jobs:
         with:
           path: '_site'
 
+      # Owner 2026-11-26: deploy-pages queried the artifact ~1 s after upload and got "0 found" three runs in a row
+      # (artifact present via the API). A short wait lets GitHub's artifact index catch up.
+      - name: Wait for the Pages artifact to be indexed
+        run: sleep 30
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v5
