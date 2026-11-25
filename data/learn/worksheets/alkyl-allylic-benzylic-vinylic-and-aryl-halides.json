@@ -1,0 +1,173 @@
+{
+ "slug": "alkyl-allylic-benzylic-vinylic-and-aryl-halides",
+ "title": "Alkyl, Vinyl, Allyl and Aryl Halides: Which Carbon Holds X?",
+ "class": 12,
+ "subject": "Chemistry",
+ "chapter": "Haloalkanes and Haloarenes",
+ "objective": "Alkyl, vinyl (vinylic), allyl (allylic) and aryl halides differ only in the carbon that holds the halogen. Alkyl: a saturated sp³ carbon (1°, 2°, 3° by the alkyl groups on it). Vinyl: X directly on a carbon of a C=C (sp²). Allyl: X on the sp³ carbon next to a C=C. Aryl: X directly on a carbon of an aromatic ring (sp²), e.g. chlorobenzene. Bonus: X on the sp³ CH₂ next to a benzene ring is a benzyl (benzylic) halide. Identify the carbon attached to X: that's the key.",
+ "fill": [
+  {
+   "q": "Monohalo compounds are classified by the hybridisation of the carbon bonded to the ____.",
+   "a": "halogen"
+  },
+  {
+   "q": "In an allylic halide, X is on an sp³ carbon next to a ____ double bond.",
+   "a": "C=C"
+  },
+  {
+   "q": "In a benzylic halide, X is on an sp³ carbon attached to a ____ ring.",
+   "a": "benzene"
+  },
+  {
+   "q": "In a vinylic halide, X is on an ____ carbon of a C=C.",
+   "a": "sp²"
+  },
+  {
+   "q": "Aryl halides are also called ____.",
+   "a": "haloarenes"
+  }
+ ],
+ "tf": [
+  {
+   "q": "CH₂=CH–CH₂Cl is a vinylic halide.",
+   "a": false,
+   "explain": "Cl is one carbon away from the C=C: allylic."
+  },
+  {
+   "q": "Benzyl chloride is an aryl halide.",
+   "a": false,
+   "explain": "Cl is on the CH₂ outside the ring: benzylic."
+  },
+  {
+   "q": "In chlorobenzene the carbon bonded to Cl is sp².",
+   "a": true,
+   "explain": "It is a ring carbon."
+  },
+  {
+   "q": "(CH₃)₃CCl is a tertiary alkyl halide.",
+   "a": true,
+   "explain": "Three alkyl groups on the C–Cl carbon."
+  }
+ ],
+ "ar": [
+  {
+   "a": "Assertion: CH₂=CHCH₂Cl is an allylic halide. Reason: Cl is bonded to an sp² carbon.",
+   "r": "Assertion true, reason false.",
+   "answer": 2,
+   "explain": ""
+  },
+  {
+   "a": "Assertion: Chlorobenzene needs 623 K and 300 atm to give phenol with NaOH. Reason: Its C–Cl bond is on an sp² carbon and is shorter and stronger.",
+   "r": "Both true; the reason explains the assertion.",
+   "answer": 0,
+   "explain": ""
+  }
+ ],
+ "mcq": [
+  {
+   "q": "CH₂=CHCl is a:",
+   "options": [
+    "allylic halide",
+    "vinylic halide",
+    "aryl halide",
+    "alkyl halide"
+   ],
+   "answer": 1,
+   "explain": "Cl on a C=C carbon."
+  },
+  {
+   "q": "C₆H₅CH₂Br is a:",
+   "options": [
+    "aryl halide",
+    "vinylic halide",
+    "benzylic halide",
+    "allylic halide"
+   ],
+   "answer": 2,
+   "explain": "Br on the sp³ CH₂ attached to the ring."
+  },
+  {
+   "q": "Which pair has an sp² carbon bonded to X in both?",
+   "options": [
+    "alkyl and allylic",
+    "allylic and benzylic",
+    "vinylic and aryl",
+    "benzylic and aryl"
+   ],
+   "answer": 2,
+   "explain": "NCERT 6.1.3."
+  },
+  {
+   "q": "(CH₃)₂CHCl is:",
+   "options": [
+    "primary",
+    "secondary",
+    "tertiary",
+    "vinylic"
+   ],
+   "answer": 1,
+   "explain": "Two alkyl groups."
+  }
+ ],
+ "num": [
+  {
+   "q": "How many alkyl groups are on the carbon holding Cl in (CH₃)₃CCl?",
+   "steps": [
+    "tertiary"
+   ],
+   "answer": "3"
+  },
+  {
+   "q": "Temperature in kelvin for converting chlorobenzene to phenol with NaOH (NCERT).",
+   "steps": [
+    "K"
+   ],
+   "answer": "623"
+  }
+ ],
+ "short": [
+  {
+   "q": "Write the three steps to classify a monohalo compound.",
+   "lines": 5,
+   "solution": "Find the carbon bonded to X; decide sp³ or sp²; look next door (C=C, ring or nothing)."
+  },
+  {
+   "q": "Distinguish allylic and vinylic halides with an example each.",
+   "lines": 5,
+   "solution": "Allylic: X on the sp³ C next to C=C (CH₂=CHCH₂Cl). Vinylic: X on a C=C carbon (CH₂=CHCl)."
+  },
+  {
+   "q": "Distinguish benzylic and aryl halides with an example each.",
+   "lines": 5,
+   "solution": "Benzylic: X on the sp³ C attached to a ring (C₆H₅CH₂Cl). Aryl: X directly on a ring carbon (C₆H₅Cl)."
+  },
+  {
+   "q": "Classify CH₃–CH=CH–CH₂Br, CH₂=CBr–CH₃ and C₆H₅–CHCl–CH₃.",
+   "lines": 5,
+   "solution": "Allylic (1°); vinylic; benzylic (2°)."
+  },
+  {
+   "q": "Classify 1-chlorocyclohexene and 3-chlorocyclohexene.",
+   "lines": 5,
+   "solution": "1-chloro: Cl on a C=C carbon, vinylic; 3-chloro: Cl next to the C=C, allylic."
+  }
+ ],
+ "match": {
+  "left": [
+   "sp³ C–X next to C=C",
+   "X on a ring carbon",
+   "X on a C=C carbon"
+  ],
+  "right": [
+   "vinylic",
+   "allylic",
+   "aryl"
+  ],
+  "answer": [
+   1,
+   2,
+   0
+  ],
+  "explain": "Each position with its class."
+ }
+}

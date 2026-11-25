@@ -1,0 +1,221 @@
+{
+ "status": "ready",
+ "class": 12,
+ "subject": "Chemistry",
+ "chapter": "Haloalkanes and Haloarenes",
+ "video": {
+  "youtubeId": "SLjXLtH0K10"
+ },
+ "thumb": "thumb.jpg",
+ "id": "LEARN-C12-CHE-HALIDE-CARBON-TYPES",
+ "slug": "alkyl-allylic-benzylic-vinylic-and-aryl-halides",
+ "topic": "Alkyl, allylic, benzylic, vinylic and aryl halides",
+ "title": "Alkyl, Vinyl, Allyl and Aryl Halides: Which Carbon Holds X?",
+ "series": 485,
+ "studioJob": "halide-carbon-types",
+ "reelId": "STUDIO-HALIDE-CARBON-TYPES",
+ "summary": "Alkyl, vinyl (vinylic), allyl (allylic) and aryl halides differ only in the carbon that holds the halogen. Alkyl: a saturated sp³ carbon (1°, 2°, 3° by the alkyl groups on it). Vinyl: X directly on a carbon of a C=C (sp²). Allyl: X on the sp³ carbon next to a C=C. Aryl: X directly on a carbon of an aromatic ring (sp²), e.g. chlorobenzene. Bonus: X on the sp³ CH₂ next to a benzene ring is a benzyl (benzylic) halide. Identify the carbon attached to X: that's the key.",
+ "notes": {
+  "pdf": "notes.pdf",
+  "title": "03 – Alkyl, Vinyl, Allyl and Aryl Halides",
+  "driveDoc": "1DzvQ0GZ4w-dmHOSb6BjbCpbJKHznQb-RcnvW5_jLrgQ"
+ },
+ "tags": [
+  "haloalkanes",
+  "classification",
+  "alkyl halide",
+  "vinyl halide",
+  "allyl halide",
+  "aryl halide",
+  "benzyl halide"
+ ],
+ "keyPoints": [
+  "**Three steps**: find the carbon bonded to X → is it **sp³ or sp²**? → what is **next door**?",
+  "**sp³ C–X**: **alkyl** (R–X; 1°, 2°, 3° by alkyl groups on that carbon), **allylic** (next to a C=C, e.g. CH₂=CHCH₂Cl) and **benzylic** (attached to a benzene ring, e.g. C₆H₅CH₂Cl).",
+  "**sp² C–X**: **vinylic** (X on the C=C carbon, e.g. CH₂=CHCl) and **aryl** (X directly on a ring carbon, e.g. C₆H₅Cl, a haloarene).",
+  "**The trap**: a C=C in the molecule does not make it vinylic; X one carbon away from the C=C is **allylic**. X on the CH₂ outside a ring is **benzylic**, not aryl.",
+  "**Why it matters**: benzyl chloride gives benzyl alcohol with NaOH(aq) easily; chlorobenzene needs **623 K and 300 atm**, because its sp² C–Cl bond is shorter and stronger."
+ ],
+ "sections": [
+  {
+   "h": "The five classes",
+   "blocks": [
+    {
+     "table": {
+      "head": [
+       "C holding X",
+       "Class",
+       "Example"
+      ],
+      "rows": [
+       [
+        "sp³",
+        "alkyl (1°, 2°, 3°)",
+        "CH₃CH₂Cl, (CH₃)₂CHCl, (CH₃)₃CCl"
+       ],
+       [
+        "sp³",
+        "allylic (next to C=C)",
+        "CH₂=CH–CH₂Cl"
+       ],
+       [
+        "sp³",
+        "benzylic (next to a ring)",
+        "C₆H₅–CH₂Cl"
+       ],
+       [
+        "sp²",
+        "vinylic (on the C=C)",
+        "CH₂=CH–Cl"
+       ],
+       [
+        "sp²",
+        "aryl (on the ring)",
+        "C₆H₅–Cl"
+       ]
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "h": "JEE Main PYQ",
+   "blocks": [
+    {
+     "p": "**JEE Main 2024 (27 January, Shift 2).** Which among the following halide(s) will not show SN1 reaction?"
+    },
+    {
+     "list": [
+      "(A) H₂C=CH–CH₂Cl",
+      "(B) CH₃–CH=CH–Cl",
+      "(C) C₆H₅–CH₂Cl",
+      "(D) (CH₃)₂CH–Cl"
+     ]
+    },
+    {
+     "p": "**Answer: (B).** Classify first. (A) Cl is on the sp³ carbon next to the C=C: allylic. (C) Cl is on the sp³ CH₂ attached to the ring: benzylic. (D) secondary alkyl. (B) Cl sits on a C=C carbon: **vinylic**, an sp² C–Cl. Losing Cl⁻ would leave the positive charge on an sp² carbon (a vinyl cation), which is very unstable, and the sp² C–Cl bond is also stronger; so (B) does not undergo SN1. Allylic and benzylic cations are stabilised by resonance and the 2° cation by alkyl groups, so (A), (C) and (D) can."
+    }
+   ]
+  }
+ ],
+ "quiz": [
+  {
+   "q": "Halides are classified as alkyl, allylic, benzylic, vinylic or aryl by looking at:",
+   "options": [
+    "the number of halogen atoms",
+    "the hybridisation and neighbour of the carbon bonded to X",
+    "the length of the carbon chain",
+    "the colour of the compound"
+   ],
+   "answer": 1,
+   "explain": "NCERT 6.1.2–6.1.3: the carbon bonded to X decides the class."
+  },
+  {
+   "q": "CH2=CH–CH2–Cl is a:",
+   "options": [
+    "vinylic halide",
+    "allylic halide",
+    "aryl halide",
+    "benzylic halide"
+   ],
+   "answer": 1,
+   "explain": "Cl is on the sp³ CH₂ next to the C=C."
+  },
+  {
+   "q": "CH2=CH–Cl is a:",
+   "options": [
+    "allylic halide",
+    "alkyl halide",
+    "vinylic halide",
+    "benzylic halide"
+   ],
+   "answer": 2,
+   "explain": "Cl sits on a C=C carbon (sp²)."
+  },
+  {
+   "q": "C6H5–CH2–Cl (benzyl chloride) is a:",
+   "options": [
+    "aryl halide",
+    "benzylic halide",
+    "vinylic halide",
+    "allylic halide"
+   ],
+   "answer": 1,
+   "explain": "Cl is on the sp³ CH₂ attached to the ring."
+  },
+  {
+   "q": "C6H5–Cl (chlorobenzene) is a:",
+   "options": [
+    "benzylic halide",
+    "alkyl halide",
+    "aryl halide",
+    "allylic halide"
+   ],
+   "answer": 2,
+   "explain": "Cl is directly on a ring carbon (sp²)."
+  },
+  {
+   "q": "In which pair is the carbon bonded to X sp2 in both?",
+   "options": [
+    "alkyl and allylic halides",
+    "allylic and benzylic halides",
+    "vinylic and aryl halides",
+    "benzylic and aryl halides"
+   ],
+   "answer": 2,
+   "explain": "Both have X on an sp² carbon."
+  },
+  {
+   "q": "(CH3)3C–Cl is a:",
+   "options": [
+    "primary alkyl halide",
+    "secondary alkyl halide",
+    "tertiary alkyl halide",
+    "allylic halide"
+   ],
+   "answer": 2,
+   "explain": "Three alkyl groups on the carbon holding Cl."
+  },
+  {
+   "q": "Chlorobenzene gives phenol with aqueous NaOH only at:",
+   "options": [
+    "room temperature",
+    "373 K and 1 atm",
+    "623 K and 300 atm",
+    "273 K and 10 atm"
+   ],
+   "answer": 2,
+   "explain": "NCERT 6.7.1 (Dow process conditions)."
+  },
+  {
+   "q": "Why is the C–Cl bond of chlorobenzene harder to break than that of benzyl chloride?",
+   "options": [
+    "chlorine is bigger in chlorobenzene",
+    "the carbon bonded to Cl is sp2, so the bond is shorter and stronger",
+    "chlorobenzene has more carbon atoms",
+    "benzyl chloride has no ring"
+   ],
+   "answer": 1,
+   "explain": "More s-character: shorter, stronger C–Cl bond."
+  },
+  {
+   "q": "C6H5–CHCl–CH3 is a:",
+   "options": [
+    "aryl halide",
+    "vinylic halide",
+    "benzylic halide",
+    "allylic halide"
+   ],
+   "answer": 2,
+   "explain": "Cl on the sp³ carbon attached to the ring; two alkyl/aryl groups: 2° benzylic."
+  }
+ ],
+ "simulation": {
+  "decision": "NOT_REQUIRED",
+  "reason": "Classification by where the halogen sits; no continuous variable to explore."
+ },
+ "related": [
+  "mono-di-and-polyhalogen-compounds",
+  "haloalkanes-and-haloarenes-introduction"
+ ]
+}
