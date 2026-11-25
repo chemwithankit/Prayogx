@@ -2701,3 +2701,31 @@ X thyroxine => iodine hormone
 X chloramphenicol => typhoid
 X halothane => anaesthetic
 XE Each compound with its use.
+
+@mono-di-and-polyhalogen-compounds
+F Halogen compounds are classified first by counting the number of ____ atoms.|halogen
+F A compound with three or more halogen atoms is called a ____ compound.|polyhalogen
+F In a gem-dihalide both halogens are on the ____ carbon.|same
+F In a vic-dihalide the halogens are on ____ carbons.|adjacent
+F The common name of 1,1-dichloroethane is ____ chloride.|ethylidene
+T CHCl₃ is a monohalo compound because it has one carbon.|F|Count halogens: 3 Cl, a polyhalogen (trihalo) compound.
+T Ethylene dichloride is 1,2-dichloroethane.|T|Vic-dihalide, common name alkylene dihalide.
+T CH₂BrCl is a dihalo compound.|T|Two halogen atoms, of different kinds.
+T 1,3-dibromopropane is a vic-dihalide.|F|C1 and C3 are not adjacent: neither gem nor vic.
+M C₂H₅Cl is a:|monohaloalkane;dihaloalkane;polyhalogen compound;haloarene|1|One Cl atom.
+M Which is a vic-dihalide?|CH₃CCl₂CH₃;CH₃CHClCH₂Cl;CH₂Cl₂;CHCl₃|2|Cl on adjacent C2 and C3.
+M In the common system, gem-dihalides are named as:|alkylene dihalides;alkylidene halides;alkyl halides;aryl halides|2|NCERT 6.2.
+M The IUPAC name of CH₃–CBr₂–CH₃ is:|1,1-dibromopropane;1,2-dibromopropane;2,2-dibromopropane;1,3-dibromopropane|3|Both Br on C2.
+A Assertion: CHCl₃ is a polyhalogen compound. Reason: It contains three halogen atoms.|Both true; the reason explains the assertion.|1|
+A Assertion: Ethylidene chloride is a vic-dihalide. Reason: Its two Cl atoms are on the same carbon.|Assertion false (it is gem); reason true.|4|
+N Count the halogen atoms in CCl₄.|4 Cl: a tetrahalo (polyhalogen) compound|4
+N How many halogen atoms does dichlorobenzene contain?|C₆H₄Cl₂|2
+S Define mono-, di- and polyhalogen compounds with an example each.|Mono: one X (C₂H₅Cl); di: two X (ClCH₂CH₂Cl); poly: three or more (CHCl₃).
+S Distinguish gem- and vic-dihalides.|Gem: both X on the same carbon (CH₃CHCl₂); vic: on adjacent carbons (ClCH₂CH₂Cl).
+S Give the common and IUPAC names of CH₃CHCl₂ and ClCH₂CH₂Cl.|Ethylidene chloride, 1,1-dichloroethane; ethylene dichloride, 1,2-dichloroethane.
+S Write the structure of 2,3-dichlorobutane and classify it.|CH₃–CHCl–CHCl–CH₃: vic-dihalide.
+S Write the structure of 2,2-dichlorobutane and classify it.|CH₃–CCl₂–CH₂–CH₃: gem-dihalide.
+X gem => same carbon
+X vic => adjacent carbons
+X ethylidene chloride => 1,1-dichloroethane
+XE Each term with its meaning.

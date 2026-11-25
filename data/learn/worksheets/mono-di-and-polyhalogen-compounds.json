@@ -1,0 +1,173 @@
+{
+ "slug": "mono-di-and-polyhalogen-compounds",
+ "title": "Count the Halogens: Mono, Di, Poly, Gem and Vic",
+ "class": 12,
+ "subject": "Chemistry",
+ "chapter": "Haloalkanes and Haloarenes",
+ "objective": "Halogen compounds are classified first by the number of halogen atoms: one is mono, two is di, three or more is poly (tri-, tetra-). Count the halogens, not the carbons: chloroform, CHCl₃, has one carbon but three chlorines, so it is a polyhalogen compound. Dihalides split by position: both halogens on the same carbon is a gem-dihalide (alkylidene halide, e.g. ethylidene chloride, 1,1-dichloroethane); on adjacent carbons a vic-dihalide (alkylene dihalide, e.g. ethylene dichloride, 1,2-dichloroethane).",
+ "fill": [
+  {
+   "q": "Halogen compounds are classified first by counting the number of ____ atoms.",
+   "a": "halogen"
+  },
+  {
+   "q": "A compound with three or more halogen atoms is called a ____ compound.",
+   "a": "polyhalogen"
+  },
+  {
+   "q": "In a gem-dihalide both halogens are on the ____ carbon.",
+   "a": "same"
+  },
+  {
+   "q": "In a vic-dihalide the halogens are on ____ carbons.",
+   "a": "adjacent"
+  },
+  {
+   "q": "The common name of 1,1-dichloroethane is ____ chloride.",
+   "a": "ethylidene"
+  }
+ ],
+ "tf": [
+  {
+   "q": "CHCl₃ is a monohalo compound because it has one carbon.",
+   "a": false,
+   "explain": "Count halogens: 3 Cl, a polyhalogen (trihalo) compound."
+  },
+  {
+   "q": "Ethylene dichloride is 1,2-dichloroethane.",
+   "a": true,
+   "explain": "Vic-dihalide, common name alkylene dihalide."
+  },
+  {
+   "q": "CH₂BrCl is a dihalo compound.",
+   "a": true,
+   "explain": "Two halogen atoms, of different kinds."
+  },
+  {
+   "q": "1,3-dibromopropane is a vic-dihalide.",
+   "a": false,
+   "explain": "C1 and C3 are not adjacent: neither gem nor vic."
+  }
+ ],
+ "ar": [
+  {
+   "a": "Assertion: CHCl₃ is a polyhalogen compound. Reason: It contains three halogen atoms.",
+   "r": "Both true; the reason explains the assertion.",
+   "answer": 0,
+   "explain": ""
+  },
+  {
+   "a": "Assertion: Ethylidene chloride is a vic-dihalide. Reason: Its two Cl atoms are on the same carbon.",
+   "r": "Assertion false (it is gem); reason true.",
+   "answer": 3,
+   "explain": ""
+  }
+ ],
+ "mcq": [
+  {
+   "q": "C₂H₅Cl is a:",
+   "options": [
+    "monohaloalkane",
+    "dihaloalkane",
+    "polyhalogen compound",
+    "haloarene"
+   ],
+   "answer": 0,
+   "explain": "One Cl atom."
+  },
+  {
+   "q": "Which is a vic-dihalide?",
+   "options": [
+    "CH₃CCl₂CH₃",
+    "CH₃CHClCH₂Cl",
+    "CH₂Cl₂",
+    "CHCl₃"
+   ],
+   "answer": 1,
+   "explain": "Cl on adjacent C2 and C3."
+  },
+  {
+   "q": "In the common system, gem-dihalides are named as:",
+   "options": [
+    "alkylene dihalides",
+    "alkylidene halides",
+    "alkyl halides",
+    "aryl halides"
+   ],
+   "answer": 1,
+   "explain": "NCERT 6.2."
+  },
+  {
+   "q": "The IUPAC name of CH₃–CBr₂–CH₃ is:",
+   "options": [
+    "1,1-dibromopropane",
+    "1,2-dibromopropane",
+    "2,2-dibromopropane",
+    "1,3-dibromopropane"
+   ],
+   "answer": 2,
+   "explain": "Both Br on C2."
+  }
+ ],
+ "num": [
+  {
+   "q": "Count the halogen atoms in CCl₄.",
+   "steps": [
+    "4 Cl: a tetrahalo (polyhalogen) compound"
+   ],
+   "answer": "4"
+  },
+  {
+   "q": "How many halogen atoms does dichlorobenzene contain?",
+   "steps": [
+    "C₆H₄Cl₂"
+   ],
+   "answer": "2"
+  }
+ ],
+ "short": [
+  {
+   "q": "Define mono-, di- and polyhalogen compounds with an example each.",
+   "lines": 5,
+   "solution": "Mono: one X (C₂H₅Cl); di: two X (ClCH₂CH₂Cl); poly: three or more (CHCl₃)."
+  },
+  {
+   "q": "Distinguish gem- and vic-dihalides.",
+   "lines": 5,
+   "solution": "Gem: both X on the same carbon (CH₃CHCl₂); vic: on adjacent carbons (ClCH₂CH₂Cl)."
+  },
+  {
+   "q": "Give the common and IUPAC names of CH₃CHCl₂ and ClCH₂CH₂Cl.",
+   "lines": 5,
+   "solution": "Ethylidene chloride, 1,1-dichloroethane; ethylene dichloride, 1,2-dichloroethane."
+  },
+  {
+   "q": "Write the structure of 2,3-dichlorobutane and classify it.",
+   "lines": 5,
+   "solution": "CH₃–CHCl–CHCl–CH₃: vic-dihalide."
+  },
+  {
+   "q": "Write the structure of 2,2-dichlorobutane and classify it.",
+   "lines": 5,
+   "solution": "CH₃–CCl₂–CH₂–CH₃: gem-dihalide."
+  }
+ ],
+ "match": {
+  "left": [
+   "gem",
+   "vic",
+   "ethylidene chloride"
+  ],
+  "right": [
+   "adjacent carbons",
+   "1,1-dichloroethane",
+   "same carbon"
+  ],
+  "answer": [
+   2,
+   0,
+   1
+  ],
+  "explain": "Each term with its meaning."
+ }
+}
