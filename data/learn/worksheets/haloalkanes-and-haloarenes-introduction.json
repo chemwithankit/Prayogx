@@ -1,0 +1,173 @@
+{
+ "slug": "haloalkanes-and-haloarenes-introduction",
+ "title": "One Atom, Many Lives: Haloalkanes and Haloarenes",
+ "class": 12,
+ "subject": "Chemistry",
+ "chapter": "Haloalkanes and Haloarenes",
+ "objective": "In 1847 James Simpson found that chloroform, CHCl₃, could put people to sleep for surgery. Replace a hydrogen of a hydrocarbon with a halogen and you get a haloalkane (halogen on an sp³ alkyl carbon) or a haloarene (halogen on an sp² ring carbon). They are everywhere: chloramphenicol for typhoid, thyroxine with four iodine atoms, chloroquine for malaria, halothane for anaesthesia. The polar C–X bond, with a δ+ carbon, is why they react, and it opens the whole chapter.",
+ "fill": [
+  {
+   "q": "Replacing an H of a hydrocarbon by a halogen gives a ____ compound.",
+   "a": "halogen"
+  },
+  {
+   "q": "In a haloalkane the halogen is attached to an ____ hybridised carbon.",
+   "a": "sp³"
+  },
+  {
+   "q": "In a haloarene the halogen is attached to an ____ hybridised carbon.",
+   "a": "sp²"
+  },
+  {
+   "q": "Chloroform has the formula ____.",
+   "a": "CHCl₃"
+  },
+  {
+   "q": "Thyroxine contains ____ iodine atoms.",
+   "a": "four"
+  }
+ ],
+ "tf": [
+  {
+   "q": "Chloramphenicol is a chlorine-containing antibiotic used against typhoid.",
+   "a": true,
+   "explain": "NCERT example."
+  },
+  {
+   "q": "In the C–X bond, the halogen carries a partial positive charge.",
+   "a": false,
+   "explain": "X is more electronegative: X is δ−, C is δ+."
+  },
+  {
+   "q": "Halothane is a haloarene.",
+   "a": false,
+   "explain": "All its carbons are sp³: a haloalkane."
+  },
+  {
+   "q": "C–I is the weakest carbon–halogen bond.",
+   "a": true,
+   "explain": "It is the longest C–X bond."
+  }
+ ],
+ "ar": [
+  {
+   "a": "Assertion: The carbon of a C–X bond is attacked by nucleophiles. Reason: Carbon carries a partial positive charge.",
+   "r": "Both true; the reason explains the assertion.",
+   "answer": 0,
+   "explain": ""
+  },
+  {
+   "a": "Assertion: Benzyl chloride is a haloarene. Reason: It contains a benzene ring.",
+   "r": "Assertion false (Cl is on an sp³ CH₂ carbon: a haloalkane); reason true.",
+   "answer": 3,
+   "explain": ""
+  }
+ ],
+ "mcq": [
+  {
+   "q": "Which is a haloarene?",
+   "options": [
+    "C₂H₅Cl",
+    "CH₃Br",
+    "C₆H₅Cl",
+    "CHCl₃"
+   ],
+   "answer": 2,
+   "explain": "Cl on a benzene-ring carbon."
+  },
+  {
+   "q": "Chloroquine is used to treat:",
+   "options": [
+    "typhoid",
+    "malaria",
+    "goitre",
+    "pain"
+   ],
+   "answer": 1,
+   "explain": "NCERT example."
+  },
+  {
+   "q": "In C–Cl, the nucleophile attacks:",
+   "options": [
+    "the Cl atom",
+    "the δ+ carbon",
+    "a hydrogen",
+    "nothing"
+   ],
+   "answer": 1,
+   "explain": "The δ+ carbon."
+  },
+  {
+   "q": "Freons are harmful because they:",
+   "options": [
+    "cause goitre",
+    "deplete the ozone layer",
+    "are radioactive",
+    "are acids"
+   ],
+   "answer": 1,
+   "explain": "They release Cl radicals in the stratosphere."
+  }
+ ],
+ "num": [
+  {
+   "q": "Count the halogen atoms in halothane, CF₃CHClBr.",
+   "steps": [
+    "3 F + 1 Cl + 1 Br"
+   ],
+   "answer": "5"
+  },
+  {
+   "q": "How many hydrogens of methane are replaced in chloroform?",
+   "steps": [
+    "CH₄ → CHCl₃"
+   ],
+   "answer": "3"
+  }
+ ],
+ "short": [
+  {
+   "q": "Define haloalkanes and haloarenes with an example each.",
+   "lines": 5,
+   "solution": "Haloalkane: X on an sp³ alkyl carbon, e.g. C₂H₅Cl. Haloarene: X on an sp² ring carbon, e.g. C₆H₅Cl."
+  },
+  {
+   "q": "Why is the C–X bond polar?",
+   "lines": 5,
+   "solution": "X is more electronegative than C; electrons shift to X, making C δ+ and X δ−."
+  },
+  {
+   "q": "Name four useful halogen compounds and their uses.",
+   "lines": 5,
+   "solution": "Chloramphenicol (typhoid), thyroxine (thyroid hormone), chloroquine (malaria), halothane (anaesthetic)."
+  },
+  {
+   "q": "Who discovered chloroform's anaesthetic use, and when?",
+   "lines": 5,
+   "solution": "James Young Simpson, Edinburgh, November 1847."
+  },
+  {
+   "q": "Give two environmental problems caused by halogen compounds.",
+   "lines": 5,
+   "solution": "Freons deplete ozone; DDT builds up in food chains."
+  }
+ ],
+ "match": {
+  "left": [
+   "thyroxine",
+   "chloramphenicol",
+   "halothane"
+  ],
+  "right": [
+   "anaesthetic",
+   "typhoid",
+   "iodine hormone"
+  ],
+  "answer": [
+   2,
+   1,
+   0
+  ],
+  "explain": "Each compound with its use."
+ }
+}
