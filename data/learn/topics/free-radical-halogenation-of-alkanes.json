@@ -1,0 +1,150 @@
+{
+ "status": "ready",
+ "class": 12,
+ "subject": "Chemistry",
+ "chapter": "Haloalkanes and Haloarenes",
+ "video": {
+  "youtubeId": "74Y21RVC3Ok",
+  "format": "long"
+ },
+ "thumb": "thumb.jpg",
+ "id": "LEARN-C12-CHE-FREE-RADICAL-HALOGENATION",
+ "slug": "free-radical-halogenation-of-alkanes",
+ "topic": "Free-radical halogenation of alkanes",
+ "title": "Free Radical Mechanism: Halogenation of Alkanes",
+ "series": 490,
+ "studioJob": "free-radical-halogenation",
+ "reelId": "STUDIO-FREE-RADICAL-HALOGENATION",
+ "summary": "Butane + Cl₂ in UV light gives 1-chlorobutane and 2-chlorobutane, because butane has primary and secondary hydrogens. The free-radical chain has three stages: initiation (Cl₂ splits homolytically into 2 Cl•), propagation (Cl• abstracts an H to give HCl and a butyl radical, which takes Cl from Cl₂ and releases a new Cl•) and termination (two radicals combine). The yield of any one product is low: isomers and polychloro products form a mixture that is hard to separate.",
+ "notes": {
+  "pdf": "notes.pdf",
+  "title": "08 – Free-Radical Halogenation of Alkanes",
+  "blurb": "the three stages with equations and electron movement, the two products, why the yield is low, solved examples"
+ },
+ "worksheetKind": "cbse",
+ "tags": [
+  "free radical mechanism",
+  "free radical halogenation",
+  "chlorination of butane",
+  "chain initiation",
+  "chain propagation",
+  "chain termination",
+  "homolytic cleavage",
+  "NCERT 6.4"
+ ],
+ "keyPoints": [
+  "C₄H₁₀ + Cl₂ —UV→ **1-chlorobutane + 2-chlorobutane**: one H is replaced by Cl.",
+  "Butane has **6 primary** H (terminal C) and **4 secondary** H (middle C), so two products form.",
+  "**Initiation:** Cl₂ —UV→ 2 Cl• by **homolytic cleavage**: each Cl keeps one electron.",
+  "**Propagation 1:** Cl• + C₄H₁₀ → HCl + C₄H₉• (hydrogen abstraction; one C–H electron stays on carbon).",
+  "**Propagation 2:** C₄H₉• + Cl₂ → C₄H₉Cl + Cl•; the new Cl• keeps the **chain** going.",
+  "**Termination:** two radicals combine, e.g. Cl• + Cl• → Cl₂; the chain stops.",
+  "**Low yield:** isomeric and polychloro products form a mixture that is hard to separate."
+ ],
+ "sections": [
+  {
+   "h": "The overall reaction",
+   "blocks": [
+    {
+     "formula": "C₄H₁₀ + Cl₂ —UV light→ CH₃CH₂CH₂CH₂Cl + CH₃CH₂CHClCH₃"
+    },
+    {
+     "p": "One hydrogen atom is **replaced** by a chlorine atom. Butane's hydrogens sit in two environments: **primary** (6, on the terminal carbons) and **secondary** (4, on the middle carbons). Replacing a primary H gives **1-chlorobutane**; replacing a secondary H gives **2-chlorobutane**."
+    }
+   ]
+  },
+  {
+   "h": "Stage 1 · Chain initiation",
+   "blocks": [
+    {
+     "formula": "Cl₂ —UV light→ 2 Cl•"
+    },
+    {
+     "p": "UV light breaks the Cl–Cl bond **homolytically**: the two electrons of the bond split equally, one to each chlorine atom, giving two chlorine **free radicals** (an atom with an unpaired electron)."
+    }
+   ]
+  },
+  {
+   "h": "Stage 2 · Chain propagation",
+   "blocks": [
+    {
+     "p": "**Step 1, hydrogen abstraction.** Cl• pulls an H atom off butane. One electron of the C–H bond pairs with chlorine's electron to make H–Cl; the other electron stays on carbon, giving the **butyl free radical**."
+    },
+    {
+     "formula": "Cl• + CH₃CH₂CH₂CH₃ → HCl + CH₃CH₂CH₂CH₂•"
+    },
+    {
+     "p": "**Step 2, product formation.** The butyl radical's unpaired electron pairs with one electron of Cl₂ to form the C–Cl bond; the other electron leaves with the second chlorine as a **new Cl•**."
+    },
+    {
+     "formula": "C₄H₉• + Cl₂ → C₄H₉Cl + Cl•"
+    },
+    {
+     "p": "The new Cl• attacks another butane molecule, so the steps repeat: a **chain reaction**. Abstraction from a middle carbon gives CH₃CH₂ĊHCH₃ and, by the same steps, **2-chlorobutane**."
+    }
+   ]
+  },
+  {
+   "h": "Stage 3 · Chain termination",
+   "blocks": [
+    {
+     "formula": "Cl• + Cl• → Cl₂"
+    },
+    {
+     "p": "Two radicals combine into a stable molecule (each gives one electron to the new bond). As radicals are used up, the chain reaction stops."
+    }
+   ]
+  },
+  {
+   "h": "Why the yield is low",
+   "blocks": [
+    {
+     "list": [
+      "Different hydrogens (1° and 2°) are replaced, so **isomeric** products form.",
+      "The products still have hydrogens, so substitution continues to **di- and polychloro** compounds.",
+      "The **mixture** is hard to separate, so the yield of any single compound is **low**."
+     ]
+    }
+   ]
+  },
+  {
+   "h": "Quick revision",
+   "blocks": [
+    {
+     "table": {
+      "head": [
+       "Stage",
+       "What happens",
+       "Example"
+      ],
+      "rows": [
+       [
+        "Initiation",
+        "radicals form (homolysis)",
+        "Cl₂ → 2 Cl•"
+       ],
+       [
+        "Propagation",
+        "radical + molecule → product + new radical",
+        "Cl• + C₄H₁₀ → HCl + C₄H₉•; C₄H₉• + Cl₂ → C₄H₉Cl + Cl•"
+       ],
+       [
+        "Termination",
+        "two radicals combine; the chain stops",
+        "Cl• + Cl• → Cl₂"
+       ]
+      ]
+     }
+    }
+   ]
+  }
+ ],
+ "simulation": {
+  "decision": "NOT_REQUIRED",
+  "reason": "The mechanism is a fixed sequence of steps shown electron by electron in the video; no continuous variable for the student to explore."
+ },
+ "related": [
+  "haloalkanes-from-alcohols",
+  "the-polar-c-x-bond"
+ ]
+}
