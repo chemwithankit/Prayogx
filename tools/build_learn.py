@@ -112,7 +112,7 @@ def place(cur, t):
 def problems(t, slugs, cur):
     p = []
     need = ("id", "slug", "status", "class", "subject", "chapter", "topic", "title", "summary", "video", "notes",
-            "keyPoints", "sections", "quiz", "simulation")
+            "keyPoints", "sections", "simulation")
     for k in need:
         if k not in t or t[k] in ("", None, [], {}):
             p.append("missing %s" % k)
@@ -136,8 +136,9 @@ def problems(t, slugs, cur):
     if "tags" in t and (not isinstance(t["tags"], list) or not all(isinstance(x, str) and x for x in t["tags"])):
         p.append("tags must be a list of words or phrases")
     v = t["video"]
-    if not YT_ID.match(v.get("youtubeId", "")):
-        p.append("video.youtubeId is not an 11-character YouTube ID")
+    # owner 2026-11-26: a page may go live before its video is uploaded ({"pending": true}); the player says "coming soon"
+    if not v.get("pending") and not YT_ID.match(v.get("youtubeId", "")):
+        p.append("video.youtubeId is not an 11-character YouTube ID (or set video.pending)")
     if v.get("format") not in (None, "long"):  # owner, 2026-11-09: "long" = a regular (long-form) YouTube video, not a Short
         p.append('video.format must be "long" or absent')
     if v.get("landscapeId") and not YT_ID.match(v["landscapeId"]):  # owner 2026-11-24: the 16:9 YouTube version
@@ -185,8 +186,9 @@ def problems(t, slugs, cur):
         if not o and not str(x.get("answer", "")).strip():
             p.append("pyq %d: a numerical needs its answer value" % i)
     # quiz: 3-10 questions (new topics carry 10, owner 2026-11-15), 3-5 distinct options, a valid answer and an explanation each
-    qs = t["quiz"]
-    if not 3 <= len(qs) <= 10:
+    # optional since 2026-11-26 (new pipeline: the DPP replaces the quiz)
+    qs = t.get("quiz", [])
+    if qs and not 3 <= len(qs) <= 10:
         p.append("quiz must have 3-10 questions (has %d)" % len(qs))
     seen = set()
     for i, q in enumerate(qs, 1):
@@ -446,6 +448,9 @@ def player_html(t):
     version too (video.landscapeId, owner 2026-11-24) the player gets a Portrait / Landscape switch (learn.js), which
     swaps the embed and widens the layout; without JavaScript the portrait video plays."""
     v = t["video"]
+    if not v.get("youtubeId"):
+        return ('<div class="watch">\n  <div class="player">\n    <div class="video" style="display:flex;align-items:center;justify-content:center;'
+                'background:#0b1226;color:#fff;text-align:center;font-weight:700"><span>Video coming soon</span></div>\n  </div>')
     ig = ('<a href="%s" rel="noopener" target="_blank">Watch on Instagram</a> · ' % esc(v["instagram"])) if v.get("instagram") else ""
     frame = ('<div class="video"><iframe src="https://www.youtube-nocookie.com/embed/%(yt)s?rel=0&amp;modestbranding=1&amp;playsinline=1"\n'
              '      title="%(title)s: Doodle explainer video" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen"\n'
@@ -464,12 +469,27 @@ def player_html(t):
             '  </div>') % {"p": esc(v["youtubeId"]), "l": esc(v["landscapeId"]), "frame": frame, "ig": ig}
 
 
+def dpp_link(t):
+    """the JEE Main DPP (owner 2026-11-26 pipeline: 20 MCQs, PYQs + practice, key and solutions) when learn/<slug>/dpp.pdf exists"""
+    f = os.path.join(OUT, t["slug"], "dpp.pdf")
+    if not os.path.exists(f):
+        return ""
+    kb = os.path.getsize(f) / 1024.0
+    return ('<a class="dl" href="dpp.pdf" download="%s"><span class="ico">%s</span><span><span class="t">Download the '
+            'JEE Main DPP</span><br><span class="s">PDF, %d KB · 20 MCQs: JEE Main PYQs + practice, answer key and solutions</span></span></a>') % (
+        esc("PrayogX - %s - JEE Main DPP.pdf" % t["title"]), icon("doc", 22), kb)
+
+
 def worksheet_link(t):
     """the downloadable PrayogX workbook (tools/build_worksheets.js) when learn/<slug>/worksheet.pdf exists"""
     f = os.path.join(OUT, t["slug"], "worksheet.pdf")
     if not os.path.exists(f):
         return ""
     kb = os.path.getsize(f) / 1024.0
+    if t.get("worksheetKind") == "cbse":  # owner 2026-11-26 pipeline: a 15-question CBSE worksheet, answered on the sheet
+        return ('<a class="dl" href="worksheet.pdf" download="%s"><span class="ico">%s</span><span><span class="t">Download the '
+                'CBSE worksheet</span><br><span class="s">PDF, %d KB · 15 questions in the CBSE pattern, write your answers on the sheet; answer key at the end</span></span></a>') % (
+            esc("PrayogX - %s - CBSE worksheet.pdf" % t["title"]), icon("doc", 22), kb)
     return ('<a class="dl" href="worksheet.pdf" download="%s"><span class="ico">%s</span><span><span class="t">Download the '
             'workbook</span><br><span class="s">PDF, %d KB · fill in the blanks, true/false, assertion-reason, MCQ, numericals, '
             'short answer, match the columns; detailed solutions at the end</span></span></a>') % (
@@ -548,21 +568,21 @@ def topic_page(t, by_slug, ready, cur):
   <div class="side">
     <p class="lede">%(lede)s</p>
     <a class="dl" href="%(pdf)s" download="%(dlname)s"><span class="ico">%(doc)s</span>
-      <span><span class="t">Download the short notes</span><br><span class="s">PDF, %(size)s · solved examples, practice set and answer key</span></span></a>
+      <span><span class="t">Download the short notes</span><br><span class="s">PDF, %(size)s · %(nblurb)s</span></span></a>
     %(handwritten)s%(cardsdl)s
-    %(worksheet)s
+    %(worksheet)s%(dpp)s
     %(upnext)s
     <div class="pn">%(prev)s%(allv)s</div>
   </div>
 </div>""" % {"player": player_html(t), "title": esc(t["title"]), "ig": ('<a href="%s" rel="noopener" target="_blank">Watch on Instagram</a> · ' % esc(t["video"]["instagram"])) if t["video"].get("instagram") else "",
              "ctx": esc("%s%s" % (chapnum, t["subject"])),
-             "lede": inline(t["summary"]), "worksheet": worksheet_link(t), "handwritten": handwritten_link(t), "cardsdl": cards_link(t), "pdf": esc(t["notes"]["pdf"]), "dlname": esc("PrayogX - %s - short notes.pdf" % t["title"]),
+             "lede": inline(t["summary"]), "worksheet": worksheet_link(t), "dpp": dpp_link(t), "nblurb": esc(t["notes"].get("blurb", "solved examples, practice set and answer key")), "handwritten": handwritten_link(t), "cardsdl": cards_link(t), "pdf": esc(t["notes"]["pdf"]), "dlname": esc("PrayogX - %s - short notes.pdf" % t["title"]),
              "size": size, "doc": icon("doc", 22), "upnext": upnext,
              "allv": ('<a class="pnb" href="%s">%s All videos in this chapter</a>' % (esc(chap_href), icon("back", 16))) if next_t else "",
              "prev": ('<a class="pnb" href="../%s/">%s Previous: %s</a>' % (esc(prev_t["slug"]), icon("back", 16), esc(prev_t["title"])) if prev_t else "")}
     keys = '<section class="sect"><h2>Key points</h2><ul class="keypts">%s</ul></section>' % "".join("<li>%s</li>" % inline(x) for x in t["keyPoints"])
     jumps = ('<nav class="jump" aria-label="On this page"><a href="#concept">Explanation</a>' + ('<a href="#cards">Memory cards</a>' if card_files(t) else "") + ('<a href="#simulation">Simulation</a>' if has_sim else "")
-             + '<a href="#quiz-sect">Quiz</a>' + ('<a href="#pyq">JEE Main PYQs</a>' if t.get("pyq") else "") + '</nav>')
+             + ('<a href="#quiz-sect">Quiz</a>' if t.get("quiz") else "") + ('<a href="#pyq">JEE Main PYQs</a>' if t.get("pyq") else "") + '</nav>')
     sects = "".join('<section class="sect"%s><h2>%s</h2>%s</section>' % (
         ' id="concept"' if i == 0 else "", esc(sec["h"]), "".join(block_html(b) for b in sec["blocks"]))
         for i, sec in enumerate(t["sections"]))
@@ -575,10 +595,10 @@ def topic_page(t, by_slug, ready, cur):
             inline(sim["objective"]), "".join("<li>%s</li>" % inline(x) for x in sim["instructions"]),
             esc(sim.get("path", "sim.html")), esc(t["title"]), esc(sim.get("path", "sim.html")))
     quiz_json = json.dumps({"questions": [{"q": q["q"], "options": q["options"], "answer": q["answer"], "explain": q["explain"]}
-                                          for q in t["quiz"]]}, ensure_ascii=False).replace("</", "<\\/")
+                                          for q in t.get("quiz", [])]}, ensure_ascii=False).replace("</", "<\\/")
     quiz = ('<section class="sect" id="quiz-sect"><h2>Quick quiz</h2><p>%d questions. Choose an answer for each, then submit to see '
             'your score and the explanations.</p><div class="quiz" id="quiz" aria-live="polite"><noscript>The quiz needs JavaScript.</noscript></div>'
-            '<script type="application/json" id="quiz-data">%s</script></section>') % (len(t["quiz"]), quiz_json)
+            '<script type="application/json" id="quiz-data">%s</script></section>') % (len(t["quiz"]), quiz_json) if t.get("quiz") else ""
     pyq = ""
     if t.get("pyq"):  # owner 2026-11-25: real JEE Main questions on this topic, a separate section (not in the workbook)
         L = "abcd"
@@ -780,8 +800,8 @@ def main(argv=None):
             print("FAIL %-28s %s" % (t.get("slug"), "; ".join(ps)))
         else:
             c, s, i, chname = place(cur, t)
-            print("ok   %-28s %-6s %s / %s / %s  quiz %d  simulation %s" % (t["slug"], t["status"], c["label"], s["name"], chname, len(t["quiz"]), simtxt))
-        if a.online and not ps:
+            print("ok   %-28s %-6s %s / %s / %s  quiz %d  simulation %s" % (t["slug"], t["status"], c["label"], s["name"], chname, len(t.get("quiz", [])), simtxt))
+        if a.online and not ps and t["video"].get("youtubeId"):
             ok, why = youtube_embeddable(t["video"]["youtubeId"])
             print("     video %s: %s" % (t["video"]["youtubeId"], why if ok is not True else "embeds"))
     if bad:

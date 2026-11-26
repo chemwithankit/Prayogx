@@ -1,0 +1,168 @@
+{
+ "status": "ready",
+ "class": 12,
+ "subject": "Chemistry",
+ "chapter": "Haloalkanes and Haloarenes",
+ "video": {
+  "pending": true
+ },
+ "thumb": "thumb.jpg",
+ "id": "LEARN-C12-CHE-CX-BOND",
+ "slug": "the-polar-c-x-bond",
+ "topic": "The polar C–X bond",
+ "title": "The Polar C–X Bond: Polarity, Bond Length and Strength",
+ "series": 488,
+ "studioJob": "cx-bond",
+ "summary": "The C–X bond is polar: the halogen pulls the shared pair, so carbon is δ+ and the halogen δ−, and nucleophiles attack that carbon. From F to I the halogen gets bigger, so the C–X bond gets longer (139 → 214 pm) and weaker (452 → 234 kJ mol⁻¹). That is why R–I reacts fastest and R–F slowest, even though fluorine is the most electronegative halogen; and why CH₃Cl, not CH₃F, has the largest dipole moment (μ = q × d).",
+ "notes": {
+  "pdf": "notes.pdf",
+  "title": "06 – The Polar C–X Bond",
+  "blurb": "polarity, bond length, bond enthalpy, dipole moment and reactivity, with NCERT data"
+ },
+ "worksheetKind": "cbse",
+ "tags": [
+  "C–X bond",
+  "polarity",
+  "bond length",
+  "bond enthalpy",
+  "dipole moment",
+  "haloalkanes",
+  "reactivity order",
+  "NCERT 6.3"
+ ],
+ "keyPoints": [
+  "The C–X bond is **polar**: X is more electronegative than C, so carbon is **δ+** and the halogen **δ−**.",
+  "Nucleophiles (OH⁻, CN⁻, RO⁻) attack the **δ+ carbon** and push out X⁻.",
+  "From F to I the halogen gets bigger: **bond length increases** (139, 178, 193, 214 pm).",
+  "Longer bond, poorer overlap: **bond enthalpy decreases** (452, 351, 293, 234 kJ mol⁻¹).",
+  "μ = q × d, so the largest dipole is **CH₃Cl** (1.860 D) > CH₃F > CH₃Br > CH₃I.",
+  "Reactivity towards nucleophiles: **R–I > R–Br > R–Cl > R–F**: the weakest bond breaks first."
+ ],
+ "sections": [
+  {
+   "h": "Polarity: a tug of war for the shared pair",
+   "blocks": [
+    {
+     "p": "In a haloalkane the halogen X is bonded to an sp³ carbon by one shared pair. Every halogen is **more electronegative than carbon**, so it pulls the shared pair towards itself. Carbon becomes **δ+** and the halogen **δ−**: the C–X bond is a **polar bond**."
+    },
+    {
+     "table": {
+      "head": [
+       "Atom",
+       "C",
+       "F",
+       "Cl",
+       "Br",
+       "I"
+      ],
+      "rows": [
+       [
+        "Electronegativity (Pauling)",
+        "2.55",
+        "3.98",
+        "3.16",
+        "2.96",
+        "2.66"
+       ]
+      ]
+     }
+    },
+    {
+     "p": "**Why it matters:** the δ+ carbon is the target of every nucleophile (OH⁻, CN⁻, RO⁻). The nucleophile attacks it and X leaves as X⁻: the start of nucleophilic substitution, SN1, SN2 and elimination."
+    }
+   ]
+  },
+  {
+   "h": "Size, bond length and bond strength",
+   "blocks": [
+    {
+     "p": "Down group 17 the halogen atom gets **bigger**, so the C–X bond gets **longer**. A bigger halogen overlaps less well with carbon, and a longer bond is a **weaker** bond, so the bond enthalpy falls."
+    },
+    {
+     "table": {
+      "head": [
+       "Bond",
+       "Bond length (pm)",
+       "Bond enthalpy (kJ mol⁻¹)",
+       "Dipole moment (D)"
+      ],
+      "rows": [
+       [
+        "CH₃–F",
+        "139",
+        "452",
+        "1.847"
+       ],
+       [
+        "CH₃–Cl",
+        "178",
+        "351",
+        "1.860"
+       ],
+       [
+        "CH₃–Br",
+        "193",
+        "293",
+        "1.830"
+       ],
+       [
+        "CH₃–I",
+        "214",
+        "234",
+        "1.636"
+       ]
+      ]
+     }
+    },
+    {
+     "p": "Data: NCERT Class 12 Chemistry, Table 6.2."
+    }
+   ]
+  },
+  {
+   "h": "The dipole-moment twist",
+   "blocks": [
+    {
+     "formula": "μ = q × d"
+    },
+    {
+     "p": "Fluorine carries the biggest partial charge, but the C–F bond is very short. Chlorine's charge is a little smaller, but its bond is much longer, so the product is largest for **CH₃Cl**: CH₃Cl > CH₃F > CH₃Br > CH₃I."
+    }
+   ]
+  },
+  {
+   "h": "Solving the puzzle: reactivity",
+   "blocks": [
+    {
+     "p": "All four C–X bonds are polar, so the nucleophile is attracted in every case. But X can only leave if the **C–X bond breaks**, and the weakest bond breaks fastest. So, for the same alkyl group:"
+    },
+    {
+     "formula": "R–I > R–Br > R–Cl > R–F"
+    },
+    {
+     "p": "**Takeaway:** polarity invites the nucleophile; bond strength decides how easily the halogen leaves. From F to I: bond longer, bond weaker, reactivity higher."
+    }
+   ]
+  },
+  {
+   "h": "Common mistakes",
+   "blocks": [
+    {
+     "list": [
+      "“C–F is the most reactive because F is the most electronegative.” It is the least reactive: C–F is the strongest bond.",
+      "“CH₃F has the largest dipole moment.” It is CH₃Cl, because μ depends on distance as well as charge.",
+      "“Bond length falls down the group.” It rises, 139 → 214 pm."
+     ]
+    }
+   ]
+  }
+ ],
+ "simulation": {
+  "decision": "NOT_REQUIRED",
+  "reason": "The trends are fixed data (NCERT Table 6.2) shown to scale in the video; there is no continuous variable for the student to explore."
+ },
+ "related": [
+  "naming-haloalkanes-and-haloarenes",
+  "name-and-classify-haloalkanes-ncert-questions"
+ ]
+}
