@@ -1,0 +1,270 @@
+{
+ "status": "ready",
+ "class": 12,
+ "subject": "Chemistry",
+ "chapter": "Haloalkanes and Haloarenes",
+ "video": {
+  "youtubeId": "xHOi4ce5Zs4"
+ },
+ "thumb": "thumb.jpg",
+ "id": "LEARN-C12-CHE-HALOALKANE-NAMING",
+ "slug": "naming-haloalkanes-and-haloarenes",
+ "topic": "Naming haloalkanes and haloarenes",
+ "title": "Naming Haloalkanes and Haloarenes: Common and IUPAC Names",
+ "series": 486,
+ "studioJob": "haloalkane-naming",
+ "reelId": "STUDIO-HALOALKANE-NAMING",
+ "summary": "Every halide has two correct names. The common name is the alkyl group + halide (isopropyl chloride, ethyl chloride). The IUPAC name writes the halogen as a prefix (fluoro, chloro, bromo, iodo) on the longest chain, numbered from the end that gives the lowest locants; when both ends tie, alphabetical order decides (2-bromo-3-methylbutane). On benzene one halogen keeps the same name (chlorobenzene); two use o-, m-, p- in common names and 1,2 / 1,3 / 1,4 in IUPAC.",
+ "notes": {
+  "pdf": "notes.pdf",
+  "title": "04 – Naming Haloalkanes and Haloarenes",
+  "driveDoc": "1h918jriEwALEx7-kqcpYGkYyFkXiEt5YbPTlp0tSPes"
+ },
+ "tags": [
+  "haloalkanes",
+  "nomenclature",
+  "IUPAC name",
+  "common name",
+  "lowest locant",
+  "alphabetical order",
+  "dichlorobenzene"
+ ],
+ "keyPoints": [
+  "**Two correct names**: (CH₃)₂CHCl is **isopropyl chloride** (common) and **2-chloropropane** (IUPAC).",
+  "**Common name** = alkyl group + halide: CH₃CH₂Cl ethyl chloride, CH₃Br methyl bromide.",
+  "**IUPAC**: halogen as a **prefix** (fluoro, chloro, bromo, iodo); longest chain; number for the **lowest locants**: CH₃CH₂CH₂Br is **1-bromopropane**, not 3-.",
+  "**Tie → alphabetical order**: (CH₃)₂CHCH(Br)CH₃ gives {2,3} from both ends, so bromo gets 2: **2-bromo-3-methylbutane**.",
+  "**Haloarenes**: one X → same name (chlorobenzene); two X → **o-, m-, p-** = **1,2 / 1,3 / 1,4**."
+ ],
+ "sections": [
+  {
+   "h": "Common and IUPAC names side by side",
+   "blocks": [
+    {
+     "table": {
+      "head": [
+       "Structure",
+       "Common name",
+       "IUPAC name"
+      ],
+      "rows": [
+       [
+        "CH₃CH₂Cl",
+        "ethyl chloride",
+        "chloroethane"
+       ],
+       [
+        "CH₃CH₂CH₂Br",
+        "n-propyl bromide",
+        "1-bromopropane"
+       ],
+       [
+        "(CH₃)₂CHCl",
+        "isopropyl chloride",
+        "2-chloropropane"
+       ],
+       [
+        "CH₃CH₂CHClCH₃",
+        "sec-butyl chloride",
+        "2-chlorobutane"
+       ],
+       [
+        "(CH₃)₃CBr",
+        "tert-butyl bromide",
+        "2-bromo-2-methylpropane"
+       ],
+       [
+        "(CH₃)₃CCH₂Cl",
+        "neopentyl chloride",
+        "1-chloro-2,2-dimethylpropane"
+       ],
+       [
+        "CH₂=CHCl",
+        "vinyl chloride",
+        "chloroethene"
+       ],
+       [
+        "CH₂=CHCH₂Br",
+        "allyl bromide",
+        "3-bromoprop-1-ene"
+       ],
+       [
+        "CHCl₃",
+        "chloroform",
+        "trichloromethane"
+       ],
+       [
+        "CCl₄",
+        "carbon tetrachloride",
+        "tetrachloromethane"
+       ]
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "h": "Dihalobenzenes",
+   "blocks": [
+    {
+     "table": {
+      "head": [
+       "Positions",
+       "Common",
+       "IUPAC"
+      ],
+      "rows": [
+       [
+        "neighbouring carbons",
+        "o-dichlorobenzene",
+        "1,2-dichlorobenzene"
+       ],
+       [
+        "one carbon between",
+        "m-dichlorobenzene",
+        "1,3-dichlorobenzene"
+       ],
+       [
+        "opposite carbons",
+        "p-dichlorobenzene",
+        "1,4-dichlorobenzene"
+       ]
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "h": "Common mistakes",
+   "blocks": [
+    {
+     "list": [
+      "Numbering from the wrong end (3-bromopropane ✗, 1-bromopropane ✓).",
+      "Using alphabetical order before the lowest-locant rule: it only breaks a tie.",
+      "Writing a common name as the IUPAC name: ethyl bromide ✗, bromoethane ✓ (one word).",
+      "Reading meta as 1,4: meta is 1,3, para is 1,4."
+     ]
+    }
+   ]
+  }
+ ],
+ "quiz": [
+  {
+   "q": "The IUPAC name of isopropyl chloride, (CH3)2CHCl, is:",
+   "options": [
+    "1-chloropropane",
+    "2-chloropropane",
+    "propyl chloride",
+    "2-chloroisopropane"
+   ],
+   "answer": 1,
+   "explain": "Same compound: the common name says isopropyl + chloride; IUPAC numbers the propane chain and Cl sits on C2."
+  },
+  {
+   "q": "The common name of an alkyl halide is formed by:",
+   "options": [
+    "the halo prefix followed by the alkane name",
+    "the alkyl group name followed by the halide name",
+    "the number of carbons followed by -ide",
+    "the halogen symbol followed by the alkane"
+   ],
+   "answer": 1,
+   "explain": "NCERT 6.2: alkyl group name, then the halide (ethyl chloride, methyl bromide)."
+  },
+  {
+   "q": "In the IUPAC system, the halogen in an alkyl halide is written as:",
+   "options": [
+    "a suffix -ide",
+    "a prefix such as chloro- or bromo- on the parent alkane",
+    "a separate word after the alkane",
+    "a Greek letter"
+   ],
+   "answer": 1,
+   "explain": "IUPAC names halides as halo-substituted hydrocarbons, written as one word (bromoethane)."
+  },
+  {
+   "q": "The IUPAC name of CH3CH2CH2Br is:",
+   "options": [
+    "3-bromopropane",
+    "1-bromopropane",
+    "propyl bromide-1",
+    "bromopropyl"
+   ],
+   "answer": 1,
+   "explain": "Number from the end nearer Br: it gets locant 1, not 3."
+  },
+  {
+   "q": "(CH3)2CHCH(Br)CH3 is correctly named:",
+   "options": [
+    "3-bromo-2-methylbutane",
+    "2-bromo-3-methylbutane",
+    "3-methyl-2-bromobutane",
+    "2-methyl-3-bromobutane"
+   ],
+   "answer": 1,
+   "explain": "Both ends give {2,3}: a tie, so bromo (B before M) gets the lower number, 2."
+  },
+  {
+   "q": "When both numbering directions give the same set of locants, the lower number goes to:",
+   "options": [
+    "the halogen, always",
+    "the heavier substituent",
+    "the substituent that comes first in alphabetical order",
+    "the substituent at the left end"
+   ],
+   "answer": 2,
+   "explain": "Alphabetical order only breaks a tie in the locants."
+  },
+  {
+   "q": "The common and IUPAC names of C6H5Cl are:",
+   "options": [
+    "phenyl chloride and chlorobenzene",
+    "both chlorobenzene",
+    "chlorobenzene and 1-chlorobenzene",
+    "benzyl chloride and chlorobenzene"
+   ],
+   "answer": 1,
+   "explain": "One halogen on benzene: the common and IUPAC names are the same."
+  },
+  {
+   "q": "p-Dichlorobenzene has the IUPAC name:",
+   "options": [
+    "1,2-dichlorobenzene",
+    "1,3-dichlorobenzene",
+    "1,4-dichlorobenzene",
+    "1,6-dichlorobenzene"
+   ],
+   "answer": 2,
+   "explain": "para = opposite carbons = 1,4."
+  },
+  {
+   "q": "In 1,3-dichlorobenzene the two chlorines are:",
+   "options": [
+    "ortho to each other",
+    "meta to each other",
+    "para to each other",
+    "on the same carbon"
+   ],
+   "answer": 1,
+   "explain": "meta = one carbon between = 1,3."
+  },
+  {
+   "q": "Which is an IUPAC name (not a common name)?",
+   "options": [
+    "ethyl bromide",
+    "bromoethane",
+    "isopropyl chloride",
+    "methyl iodide"
+   ],
+   "answer": 1,
+   "explain": "Ethyl bromide, isopropyl chloride and methyl iodide are common names; bromoethane is IUPAC."
+  }
+ ],
+ "simulation": {
+  "decision": "NOT_REQUIRED",
+  "reason": "Naming rules applied to fixed structures; no continuous variable to explore, and the video already counts the locants."
+ },
+ "related": [
+  "alkyl-allylic-benzylic-vinylic-and-aryl-halides"
+ ]
+}
