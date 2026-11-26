@@ -154,8 +154,7 @@ def problems(t, slugs, cur):
                 p.append("notes PDF is not a PDF")
         if os.path.getsize(pdf) > PDF_MAX:
             p.append("notes PDF over %d MB" % (PDF_MAX // 1048576))
-    if not t["notes"].get("driveDoc"):
-        p.append("notes.driveDoc (the approved Drive notes it was exported from) is missing")
+    # notes.driveDoc is optional (owner 2026-11-26: Drive holds only the production log, not notes)
     if t.get("thumb") and not os.path.isfile(os.path.join(d, t["thumb"])):
         p.append("thumb missing: learn/%s/%s" % (slug, t["thumb"]))
     for s in t["sections"]:
