@@ -476,8 +476,8 @@ def dpp_link(t):
         return ""
     kb = os.path.getsize(f) / 1024.0
     return ('<a class="dl" href="dpp.pdf" download="%s"><span class="ico">%s</span><span><span class="t">Download the '
-            'JEE Main DPP</span><br><span class="s">PDF, %d KB · 20 MCQs: JEE Main PYQs + practice, answer key and solutions</span></span></a>') % (
-        esc("PrayogX - %s - JEE Main DPP.pdf" % t["title"]), icon("doc", 22), kb)
+            'JEE Main DPP</span><br><span class="s">PDF, %d KB · %d MCQs: JEE Main PYQs + practice, answer key and solutions</span></span></a>') % (
+        esc("PrayogX - %s - JEE Main DPP.pdf" % t["title"]), icon("doc", 22), kb, t.get("dppCount", 20))
 
 
 def worksheet_link(t):
@@ -488,8 +488,8 @@ def worksheet_link(t):
     kb = os.path.getsize(f) / 1024.0
     if t.get("worksheetKind") == "cbse":  # owner 2026-11-26 pipeline: a 15-question CBSE worksheet, answered on the sheet
         return ('<a class="dl" href="worksheet.pdf" download="%s"><span class="ico">%s</span><span><span class="t">Download the '
-                'CBSE worksheet</span><br><span class="s">PDF, %d KB · 15 questions in the CBSE pattern, write your answers on the sheet; answer key at the end</span></span></a>') % (
-            esc("PrayogX - %s - CBSE worksheet.pdf" % t["title"]), icon("doc", 22), kb)
+                'CBSE worksheet</span><br><span class="s">PDF, %d KB · %d questions in the CBSE pattern, write your answers on the sheet; answer key at the end</span></span></a>') % (
+            esc("PrayogX - %s - CBSE worksheet.pdf" % t["title"]), icon("doc", 22), kb, t.get("worksheetCount", 15))
     return ('<a class="dl" href="worksheet.pdf" download="%s"><span class="ico">%s</span><span><span class="t">Download the '
             'workbook</span><br><span class="s">PDF, %d KB · fill in the blanks, true/false, assertion-reason, MCQ, numericals, '
             'short answer, match the columns; detailed solutions at the end</span></span></a>') % (

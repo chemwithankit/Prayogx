@@ -1,0 +1,130 @@
+{
+ "status": "ready",
+ "class": 12,
+ "subject": "Chemistry",
+ "chapter": "Haloalkanes and Haloarenes",
+ "video": {
+  "youtubeId": "HPKuDMH4spo",
+  "format": "long"
+ },
+ "thumb": "thumb.jpg",
+ "id": "LEARN-C12-CHE-MARKOVNIKOV-HX",
+ "slug": "markovnikov-rule-addition-of-hx",
+ "topic": "Adding HX and X2 to alkenes",
+ "title": "Markovnikov's Rule: Addition of HX to Alkenes",
+ "series": 491,
+ "studioJob": "markovnikov-hx",
+ "reelId": "STUDIO-MARKOVNIKOV-HX",
+ "summary": "Propene + HI gives 2-iodopropane (major) and 1-iodopropane (minor). In step 1 the π electrons of C=C move to the H of HI, forming a C–H bond on the CH₂ carbon, while the H–I pair goes to iodine (I⁻); the + is left on the middle carbon, a secondary carbocation. A 2° carbocation is more stable than a 1° one, so that pathway is favoured, and I⁻ then bonds to it. Markovnikov's rule: H goes to the double-bond carbon with more H atoms, the halogen to the one with fewer.",
+ "notes": {
+  "pdf": "notes.pdf",
+  "title": "09 – Markovnikov's Rule: Addition of HX",
+  "blurb": "the reaction, the two-step mechanism with curly arrows, carbocation stability, the rule and solved examples"
+ },
+ "worksheetKind": "cbse",
+ "worksheetCount": 10,
+ "dppCount": 10,
+ "tags": [
+  "Markovnikov's rule",
+  "addition of HX to alkenes",
+  "carbocation",
+  "propene HI",
+  "2-iodopropane",
+  "unsymmetrical alkene",
+  "NCERT 6.4"
+ ],
+ "keyPoints": [
+  "CH₃CH=CH₂ + HI → **CH₃CH(I)CH₃ (major)** + CH₃CH₂CH₂I (minor).",
+  "Propene is an **unsymmetrical alkene** (CH₂ has 2 H, CH has 1 H); HI is polar, **H<sup>δ+</sup>–I<sup>δ−</sup>**.",
+  "**Step 1:** π pair → H (new C–H on CH₂); H–I pair → I (I⁻); the + sits on the middle carbon: a **2° carbocation**.",
+  "**2° > 1°:** two carbon groups on C⁺ stabilise the charge; the more stable intermediate is favoured.",
+  "**Step 2:** I⁻ gives its electron pair to C⁺: 2-iodopropane.",
+  "**Markovnikov's rule:** H → the C with more H atoms; X → the C with fewer H atoms."
+ ],
+ "sections": [
+  {
+   "h": "The reaction",
+   "blocks": [
+    {
+     "formula": "CH₃–CH=CH₂ + HI → CH₃–CH(I)–CH₃ (major) + CH₃–CH₂–CH₂I (minor)"
+    },
+    {
+     "p": "The C=C double bond has one **σ** and one **π** bond. The **π bond breaks**, H and I add to the two double-bond carbons, and an **alkyl halide** forms: the **addition of hydrogen halides to alkenes**. Because propene is **unsymmetrical** (CH₂ has 2 H, CH has 1 H), H and I can add in two orientations, giving two products."
+    }
+   ]
+  },
+  {
+   "h": "Step 1 · the carbocation",
+   "blocks": [
+    {
+     "p": "Iodine is more electronegative, so HI is polar: **H<sup>δ+</sup>–I<sup>δ−</sup>**. The **π electrons** of the double bond move to the H<sup>δ+</sup> (curly arrow) and form a new C–H bond on the **CH₂ carbon**. At the same time the **H–I pair moves to iodine** (curly arrow), giving **I⁻**. The middle carbon is left with a positive charge: a **secondary carbocation**."
+    },
+    {
+     "formula": "CH₃–CH=CH₂ + H–I → CH₃–C⁺H–CH₃ + I⁻"
+    }
+   ]
+  },
+  {
+   "h": "Why the secondary carbocation?",
+   "blocks": [
+    {
+     "table": {
+      "head": [
+       "H adds to",
+       "Carbocation",
+       "C⁺ bonded to",
+       "Stability"
+      ],
+      "rows": [
+       [
+        "CH₂ (terminal)",
+        "CH₃–C⁺H–CH₃ (2°)",
+        "2 carbon groups",
+        "more stable"
+       ],
+       [
+        "CH (middle)",
+        "CH₃–CH₂–C⁺H₂ (1°)",
+        "1 carbon group",
+        "less stable"
+       ]
+      ]
+     }
+    },
+    {
+     "p": "Carbon groups attached to C⁺ help stabilise the charge, so **2° > 1°**. The reaction prefers the pathway through the **more stable intermediate**."
+    }
+   ]
+  },
+  {
+   "h": "Step 2 · the products",
+   "blocks": [
+    {
+     "p": "**I⁻** gives its electron pair to the positive carbon (curly arrow), forming the C–I bond."
+    },
+    {
+     "formula": "CH₃–C⁺H–CH₃ + I⁻ → CH₃–CH(I)–CH₃ (2-iodopropane, major)"
+    },
+    {
+     "formula": "CH₃–CH₂–C⁺H₂ + I⁻ → CH₃–CH₂–CH₂I (1-iodopropane, minor)"
+    }
+   ]
+  },
+  {
+   "h": "Markovnikov's rule",
+   "blocks": [
+    {
+     "p": "When an **unsymmetrical reagent** (HX) adds to an **unsymmetrical alkene**, the **hydrogen** goes to the double-bond carbon that already has **more hydrogen atoms**, and the **halogen** goes to the carbon with **fewer hydrogen atoms**. The logic behind it is the stability of the carbocation."
+    }
+   ]
+  }
+ ],
+ "simulation": {
+  "decision": "NOT_REQUIRED",
+  "reason": "The mechanism is a fixed two-step sequence shown electron pair by electron pair in the video; no continuous variable to explore."
+ },
+ "related": [
+  "free-radical-halogenation-of-alkanes",
+  "haloalkanes-from-alcohols"
+ ]
+}
