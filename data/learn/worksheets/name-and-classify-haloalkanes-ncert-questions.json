@@ -1,0 +1,173 @@
+{
+ "slug": "name-and-classify-haloalkanes-ncert-questions",
+ "title": "Name and Classify Haloalkanes: NCERT Questions Solved",
+ "class": 12,
+ "subject": "Chemistry",
+ "chapter": "Haloalkanes and Haloarenes",
+ "objective": "Three NCERT exercise questions solved with one checklist: longest chain (look inside the branches), lowest locants, alphabetical order on a tie; and the class (1°, 2°, 3°) is decided only by the carbon that carries the halogen. CH₃CH₂C(CH₃)₂CH₂I is 1-iodo-2,2-dimethylbutane (1°), CH₃C(Cl)(C₂H₅)CH₂CH₃ is 3-chloro-3-methylpentane (3°), and CH₃CH(Cl)CH(Br)CH₃ is 2-bromo-3-chlorobutane.",
+ "fill": [
+  {
+   "q": "The class (1°, 2°, 3°) of an alkyl halide is decided by the carbon that carries the ____.",
+   "a": "halogen"
+  },
+  {
+   "q": "A carbon bonded to three other carbons makes a ____ alkyl halide when it carries X.",
+   "a": "tertiary"
+  },
+  {
+   "q": "If both ends give the same locants, ____ order decides the lower number.",
+   "a": "alphabetical"
+  },
+  {
+   "q": "The longest chain may run through a group written as C₂H₅, which adds ____ carbons.",
+   "a": "2"
+  },
+  {
+   "q": "CH₃CH(Cl)CH(Br)CH₃ has two halogens, so it is a ____ compound.",
+   "a": "dihalogen"
+  }
+ ],
+ "tf": [
+  {
+   "q": "CH₃CH₂C(CH₃)₂CH₂I is a tertiary alkyl halide.",
+   "a": false,
+   "explain": "The C–I carbon is bonded to one carbon: primary."
+  },
+  {
+   "q": "The parent chain of CH₃C(Cl)(C₂H₅)CH₂CH₃ is pentane.",
+   "a": true,
+   "explain": "The chain runs through the ethyl group: 5 carbons."
+  },
+  {
+   "q": "Alphabetical order is applied before the lowest-locant rule.",
+   "a": false,
+   "explain": "It only breaks a tie."
+  },
+  {
+   "q": "(CH₃)₃CBr is a tertiary alkyl halide.",
+   "a": true,
+   "explain": "The C–Br carbon is bonded to three carbons."
+  }
+ ],
+ "ar": [
+  {
+   "a": "Assertion: CH₃CH₂C(CH₃)₂CH₂I is a primary alkyl halide. Reason: The class depends only on the carbon that carries the halogen.",
+   "r": "Both true; the reason explains the assertion.",
+   "answer": 0,
+   "explain": ""
+  },
+  {
+   "a": "Assertion: CH₃CH(Cl)CH(Br)CH₃ is named 2-chloro-3-bromobutane. Reason: When locants tie, the prefix first in alphabetical order gets the lower number.",
+   "r": "Assertion false, reason true.",
+   "answer": 3,
+   "explain": ""
+  }
+ ],
+ "mcq": [
+  {
+   "q": "The IUPAC name of CH₃CH₂C(CH₃)₂CH₂I is:",
+   "options": [
+    "4-iodo-3,3-dimethylbutane",
+    "1-iodo-2,2-dimethylbutane",
+    "2,2-dimethyl-1-iodobutane",
+    "1-iodo-3,3-dimethylbutane"
+   ],
+   "answer": 1,
+   "explain": "Number from the I end: 1,2,2."
+  },
+  {
+   "q": "The IUPAC name of CH₃C(Cl)(C₂H₅)CH₂CH₃ is:",
+   "options": [
+    "2-chloro-2-ethylbutane",
+    "3-methyl-3-chloropentane",
+    "3-chloro-3-methylpentane",
+    "2-ethyl-2-chlorobutane"
+   ],
+   "answer": 2,
+   "explain": "5-carbon chain; chloro before methyl."
+  },
+  {
+   "q": "The IUPAC name of CH₃CH(Cl)CH(Br)CH₃ is:",
+   "options": [
+    "2-chloro-3-bromobutane",
+    "2-bromo-3-chlorobutane",
+    "3-bromo-2-chlorobutane",
+    "3-chloro-2-bromobutane"
+   ],
+   "answer": 1,
+   "explain": "Tie {2,3}; bromo first alphabetically."
+  },
+  {
+   "q": "CH₃CH=CHC(Br)(CH₃)₂ (NCERT Ex 6.1 ix) is a:",
+   "options": [
+    "vinyl halide",
+    "aryl halide",
+    "allyl halide",
+    "benzyl halide"
+   ],
+   "answer": 2,
+   "explain": "Br on the sp³ carbon next to C=C."
+  }
+ ],
+ "num": [
+  {
+   "q": "Number of carbons in the parent chain of CH₃C(Cl)(C₂H₅)CH₂CH₃.",
+   "steps": [
+    "carbons"
+   ],
+   "answer": "5"
+  },
+  {
+   "q": "Number of carbons bonded to the C–Cl carbon in 3-chloro-3-methylpentane.",
+   "steps": [
+    "carbons"
+   ],
+   "answer": "3"
+  }
+ ],
+ "short": [
+  {
+   "q": "Give the IUPAC name and class of (CH₃)₂CHCH(Cl)CH₃ (NCERT Ex 6.1 i).",
+   "lines": 5,
+   "solution": "2-Chloro-3-methylbutane; secondary alkyl halide."
+  },
+  {
+   "q": "Give the IUPAC name and class of CH₃C(C₂H₅)₂CH₂Br (NCERT Ex 6.1 vi).",
+   "lines": 5,
+   "solution": "1-Bromo-2-ethyl-2-methylbutane; primary alkyl halide."
+  },
+  {
+   "q": "Classify p-ClC₆H₄CH₂CH(CH₃)₂ and m-ClCH₂C₆H₄CH₂C(CH₃)₃ (NCERT Ex 6.1 x, xi).",
+   "lines": 5,
+   "solution": "Aryl halide (Cl on the ring); primary benzyl halide (Cl on a CH₂ attached to the ring)."
+  },
+  {
+   "q": "Write the four C₄H₉Br isomers and classify each (NCERT Ex 6.6).",
+   "lines": 5,
+   "solution": "1-Bromobutane (1°), 2-bromobutane (2°), 1-bromo-2-methylpropane (1°), 2-bromo-2-methylpropane (3°)."
+  },
+  {
+   "q": "Why is CH₃CH₂C(CH₃)₂CH₂I not named 4-iodo-3,3-dimethylbutane?",
+   "lines": 5,
+   "solution": "From the I end the locants are 1,2,2, lower than 4,3,3."
+  }
+ ],
+ "match": {
+  "left": [
+   "CH₃CH₂C(CH₃)₂CH₂I",
+   "CH₃C(Cl)(C₂H₅)CH₂CH₃",
+   "CH₃CH(Cl)CH(Br)CH₃"
+  ],
+  "right": [
+   "1-iodo-2,2-dimethylbutane (1°)",
+   "2-bromo-3-chlorobutane",
+   "3-chloro-3-methylpentane (3°)"
+  ],
+  "answer": [
+   0,
+   2,
+   1
+  ],
+  "explain": "Each NCERT structure with its IUPAC name."
+ }
+}
