@@ -1,0 +1,99 @@
+{
+ "status": "ready",
+ "class": 12,
+ "subject": "Chemistry",
+ "chapter": "Haloalkanes and Haloarenes",
+ "video": {
+  "youtubeId": "NmM2BouHv9o"
+ },
+ "thumb": "thumb.jpg",
+ "id": "LEARN-C12-CHE-HALOARENE-EAS",
+ "slug": "haloarenes-by-electrophilic-substitution",
+ "topic": "Haloarenes by electrophilic substitution",
+ "title": "Haloarenes by Electrophilic Substitution: Reaction and Mechanism",
+ "series": 495,
+ "studioJob": "haloarene-eas",
+ "reelId": "STUDIO-HALOARENE-EAS",
+ "summary": "Aryl chlorides and bromides are made by electrophilic substitution: C₆H₆ + Br₂ → C₆H₅Br + HBr with FeBr₃ (or Fe) in the dark, and Cl₂ / FeCl₃ gives chlorobenzene. FeBr₃ (a Lewis acid) turns Br₂ into the electrophile Br⁺; Br⁺ attacks the ring to form the arenium ion (σ-complex), whose + charge is spread over the ortho and para carbons; loss of H⁺ restores aromaticity and regenerates the catalyst. Iodination needs an oxidising agent (HNO₃ / HIO₄); fluorine is too reactive.",
+ "notes": {
+  "pdf": "notes.pdf",
+  "title": "Haloarenes by Electrophilic Substitution",
+  "blurb": "the reaction, the three-step mechanism with the arenium ion, toluene, iodine and fluorine, common mistakes"
+ },
+ "worksheetKind": "cbse",
+ "worksheetCount": 10,
+ "dppCount": 10,
+ "tags": [
+  "haloarenes",
+  "electrophilic substitution",
+  "bromobenzene",
+  "chlorobenzene",
+  "FeBr3",
+  "Lewis acid",
+  "arenium ion",
+  "sigma complex",
+  "mechanism",
+  "toluene"
+ ],
+ "keyPoints": [
+  "C₆H₆ + Br₂ → C₆H₅Br + HBr with **FeBr₃ (or Fe), in the dark**; Cl₂ / FeCl₃ gives C₆H₅Cl.",
+  "It is **substitution, not addition**: the aromatic ring is kept.",
+  "Step 1: **Br₂ + FeBr₃ → Br⁺ + FeBr₄⁻** (FeBr₃ is a Lewis acid).",
+  "Step 2: the π electrons attack Br⁺ → **arenium ion (σ-complex)**, + spread over the ortho and para carbons.",
+  "Step 3: FeBr₄⁻ removes **H⁺**, the ring is aromatic again and FeBr₃ is regenerated.",
+  "Iodination needs **HNO₃ or HIO₄** (removes HI); **fluorine** is too reactive for this method."
+ ],
+ "sections": [
+  {
+   "h": "The reaction",
+   "blocks": [
+    {
+     "p": "**C₆H₆ + Br₂ → C₆H₅Br + HBr** (FeBr₃ or Fe, dark) and **C₆H₆ + Cl₂ → C₆H₅Cl + HCl** (FeCl₃ or Fe, dark). One H of the ring is replaced by the halogen; benzene does not add Br₂ because addition would destroy its aromaticity."
+    }
+   ]
+  },
+  {
+   "h": "The mechanism",
+   "blocks": [
+    {
+     "table": {
+      "head": [
+       "Step",
+       "What happens"
+      ],
+      "rows": [
+       [
+        "1 · electrophile",
+        "A Br of Br₂ gives a lone pair to Fe; the Br–Br bond breaks with both electrons going to the Br on iron: Br₂ + FeBr₃ → Br⁺ + FeBr₄⁻."
+       ],
+       [
+        "2 · attack",
+        "Two π electrons of a ring C=C attack Br⁺; a new C–Br bond forms. The carbon becomes sp³ (H and Br) and the next carbon carries +: the arenium ion (σ-complex). By resonance the + is shared by the two ortho carbons and the para carbon. Aromaticity is lost."
+       ],
+       [
+        "3 · loss of H⁺",
+        "A Br of FeBr₄⁻ removes H⁺ from the sp³ carbon; the C–H electrons re-form the C=C. The ring is aromatic again: C₆H₅Br + HBr, and FeBr₃ is regenerated."
+       ]
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "h": "Toluene, iodine and fluorine",
+   "blocks": [
+    {
+     "p": "**Toluene** + X₂ (Fe, dark) gives **o- and p-halotoluene** (the CH₃ group directs ortho / para); they are separated by their very different melting points. In light, the halogen goes on the CH₃ side chain instead. **Iodination** is reversible (HI reduces C₆H₅I back), so HNO₃ or HIO₄ is added to oxidise HI. **Fluorine** reacts too violently, so fluoro compounds are not made this way."
+    }
+   ]
+  }
+ ],
+ "simulation": {
+  "decision": "NOT_REQUIRED",
+  "reason": "A named reaction and a fixed three-step mechanism, drawn step by step in the video; no continuous variable to explore."
+ },
+ "related": [
+  "finkelstein-and-swarts-reactions",
+  "ncert-example-6-3-monochloro-isomers"
+ ]
+}
