@@ -1,0 +1,110 @@
+{
+ "status": "ready",
+ "class": 12,
+ "subject": "Chemistry",
+ "chapter": "Haloalkanes and Haloarenes",
+ "video": {
+  "youtubeId": "ZfL7jUbtpzo"
+ },
+ "thumb": "thumb.jpg",
+ "id": "LEARN-C12-CHE-HALOGEN-EXCHANGE",
+ "slug": "finkelstein-and-swarts-reactions",
+ "topic": "Finkelstein and Swarts reactions",
+ "title": "Halogen Exchange: Finkelstein and Swarts Reactions",
+ "series": 494,
+ "studioJob": "halogen-exchange",
+ "reelId": "STUDIO-HALOGEN-EXCHANGE",
+ "summary": "Halogen exchange (NCERT 6.4.3) swaps the Cl or Br of an alkyl halide for another halogen. Finkelstein: R–X + NaI in dry acetone gives R–I; NaCl / NaBr is insoluble in dry acetone and precipitates, so by Le Chatelier's principle the reaction goes forward. Swarts: heating R–Cl / R–Br with a heavy metallic fluoride (AgF, Hg₂F₂, CoF₂ or SbF₃) gives the alkyl fluoride. Trick: Finkelstein → iodide, Swarts → fluoride.",
+ "notes": {
+  "pdf": "notes.pdf",
+  "title": "Finkelstein and Swarts Reactions",
+  "blurb": "both reactions, why Finkelstein goes forward, the four Swarts reagents, a side-by-side table and common mistakes"
+ },
+ "worksheetKind": "cbse",
+ "worksheetCount": 10,
+ "dppCount": 10,
+ "tags": [
+  "Finkelstein reaction",
+  "Swarts reaction",
+  "halogen exchange",
+  "alkyl iodide",
+  "alkyl fluoride",
+  "dry acetone",
+  "Le Chatelier"
+ ],
+ "keyPoints": [
+  "**Finkelstein:** R–X + NaI → R–I + NaX (X = Cl, Br), in **dry acetone**: makes alkyl iodides.",
+  "NaCl / NaBr is **insoluble in dry acetone** and precipitates; by **Le Chatelier's principle** the reaction moves forward.",
+  "**Swarts:** heat R–Cl / R–Br with a metallic fluoride, **AgF, Hg₂F₂, CoF₂ or SbF₃**: makes alkyl fluorides.",
+  "Direct fluorination with F₂ is violent, so alkyl fluorides are made by the Swarts reaction.",
+  "Trick: **Finkelstein → Iodide, Swarts → Fluoride.**"
+ ],
+ "sections": [
+  {
+   "h": "Finkelstein reaction",
+   "blocks": [
+    {
+     "p": "**R–X + NaI → R–I + NaX** (X = Cl, Br), with **dry acetone** written over the arrow. Iodide replaces chloride or bromide on the carbon. NaI dissolves in dry acetone but **NaCl and NaBr do not**: they precipitate, a product leaves the solution, and by **Le Chatelier's principle** the equilibrium shifts forward, giving a good yield of alkyl iodide."
+    },
+    {
+     "p": "Examples: CH₃CH₂Cl + NaI → CH₃CH₂I + NaCl↓ (chloroethane → iodoethane); CH₃Br + NaI → CH₃I + NaBr↓ (bromomethane → iodomethane)."
+    }
+   ]
+  },
+  {
+   "h": "Swarts reaction",
+   "blocks": [
+    {
+     "p": "Heating an alkyl chloride or bromide with a **heavy metallic fluoride** (AgF, Hg₂F₂, CoF₂ or SbF₃) gives the **alkyl fluoride**. Direct fluorination with F₂ is violent, so this is the best laboratory route."
+    },
+    {
+     "p": "Examples: H₃C–Br + AgF → H₃C–F + AgBr (on heating); 2 CH₃CH₂Cl + Hg₂F₂ → 2 CH₃CH₂F + Hg₂Cl₂."
+    }
+   ]
+  },
+  {
+   "h": "Side by side",
+   "blocks": [
+    {
+     "table": {
+      "head": [
+       "",
+       "Finkelstein",
+       "Swarts"
+      ],
+      "rows": [
+       [
+        "Reagent",
+        "NaI",
+        "AgF, Hg₂F₂, CoF₂, SbF₃"
+       ],
+       [
+        "Condition",
+        "dry acetone",
+        "heat (Δ)"
+       ],
+       [
+        "Product",
+        "alkyl iodide, R–I",
+        "alkyl fluoride, R–F"
+       ],
+       [
+        "By-product",
+        "NaCl / NaBr (precipitates)",
+        "AgBr, Hg₂Cl₂, …"
+       ]
+      ]
+     }
+    }
+   ]
+  }
+ ],
+ "simulation": {
+  "decision": "NOT_REQUIRED",
+  "reason": "Two named reactions with fixed reagents and conditions, shown step by step in the video; no continuous variable to explore."
+ },
+ "related": [
+  "ncert-example-6-3-monochloro-isomers",
+  "addition-of-halogens-to-alkenes"
+ ]
+}
