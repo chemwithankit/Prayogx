@@ -1,0 +1,145 @@
+{
+ "status": "ready",
+ "class": 12,
+ "subject": "Chemistry",
+ "chapter": "Haloalkanes and Haloarenes",
+ "video": {
+  "youtubeId": "fStcdvB7NUU"
+ },
+ "thumb": "thumb.jpg",
+ "id": "LEARN-C12-CHE-HALOGEN-ADDITION",
+ "slug": "addition-of-halogens-to-alkenes",
+ "topic": "Addition of halogens to alkenes",
+ "title": "Addition of Halogens to Alkenes: the Bromine Test",
+ "series": 492,
+ "studioJob": "halogen-addition",
+ "reelId": "STUDIO-HALOGEN-ADDITION",
+ "summary": "Ethene + Br₂ in CCl₄ gives BrCH₂–CH₂Br: the π bond breaks and one Br adds to each double-bond carbon, giving a vic-dibromide. The reddish-brown colour of bromine disappears, so the reaction is the lab test for unsaturation. Propene gives 1,2-dibromopropane and cyclohexene gives 1,2-dibromocyclohexane. Benzene fails the test: adding Br₂ would destroy its aromatic stability, so the colour stays.",
+ "notes": {
+  "pdf": "notes.pdf",
+  "title": "09B – Addition of Halogens to Alkenes",
+  "blurb": "the reaction, the colour test for unsaturation, examples, the benzene trap and solved examples"
+ },
+ "worksheetKind": "cbse",
+ "worksheetCount": 10,
+ "dppCount": 10,
+ "tags": [
+  "addition of halogens to alkenes",
+  "bromine test",
+  "test for unsaturation",
+  "vic-dibromide",
+  "Br2 CCl4",
+  "benzene aromaticity",
+  "NCERT 6.4"
+ ],
+ "keyPoints": [
+  "CH₂=CH₂ + Br₂ (CCl₄) → **BrCH₂–CH₂Br**: the π bond breaks; one Br on **each** double-bond carbon.",
+  "The product is a **vic-dibromide** (Br on adjacent carbons). CCl₄ is an **inert solvent**.",
+  "Br₂ is **reddish-brown**; the dibromide is **colourless**: the colour is discharged → **test for unsaturation**.",
+  "Propene → **1,2-dibromopropane** (CH₃ untouched); cyclohexene → **1,2-dibromocyclohexane**.",
+  "**Benzene fails:** resonance makes it aromatic; adding Br₂ would break aromaticity, so the colour stays."
+ ],
+ "sections": [
+  {
+   "h": "The reaction",
+   "blocks": [
+    {
+     "formula": "CH₂=CH₂ + Br₂ —(CCl₄)→ BrCH₂–CH₂Br"
+    },
+    {
+     "p": "The **π bond** of the double bond breaks and one bromine atom adds to **each of the two adjacent carbons**. The product, with the two halogens on neighbouring carbons, is a **vicinal (vic-) dibromide**. CCl₄ is only an **inert solvent**."
+    }
+   ]
+  },
+  {
+   "h": "The colour test: test for unsaturation",
+   "blocks": [
+    {
+     "table": {
+      "head": [
+       "",
+       "Colour"
+      ],
+      "rows": [
+       [
+        "Br₂ in CCl₄",
+        "reddish-brown"
+       ],
+       [
+        "vic-dibromide",
+        "colourless"
+       ]
+      ]
+     }
+    },
+    {
+     "p": "As bromine adds to the alkene, its reddish-brown colour is **discharged**. This decolourisation shows that a **C=C double bond** is present: the **test for unsaturation**."
+    }
+   ]
+  },
+  {
+   "h": "The rule, with examples",
+   "blocks": [
+    {
+     "p": "**Break the π bond and put one Br on each of the two carbons of the double bond.** Other carbons are not touched."
+    },
+    {
+     "table": {
+      "head": [
+       "Alkene",
+       "Product (colourless)"
+      ],
+      "rows": [
+       [
+        "CH₂=CH₂",
+        "BrCH₂–CH₂Br, 1,2-dibromoethane"
+       ],
+       [
+        "CH₃–CH=CH₂",
+        "CH₃–CH(Br)–CH₂Br, 1,2-dibromopropane"
+       ],
+       [
+        "cyclohexene",
+        "1,2-dibromocyclohexane"
+       ]
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "h": "The benzene trap",
+   "blocks": [
+    {
+     "p": "Benzene is drawn with three C=C bonds but does **not** decolourise Br₂/CCl₄. Its π electrons are delocalised by **resonance**, which makes it **aromatic** and especially stable. Adding Br₂ would destroy the aromaticity, so no addition occurs and the **reddish-brown colour stays**."
+    },
+    {
+     "table": {
+      "head": [
+       "Compound",
+       "Br₂ / CCl₄ test"
+      ],
+      "rows": [
+       [
+        "Alkenes, cyclohexene",
+        "✓ colour disappears (pass)"
+       ],
+       [
+        "Benzene",
+        "✗ colour stays (fail)"
+       ]
+      ]
+     }
+    }
+   ]
+  }
+ ],
+ "simulation": {
+  "decision": "NOT_REQUIRED",
+  "reason": "A fixed reaction and colour test shown in the video; no continuous variable for the student to explore."
+ },
+ "related": [
+  "markovnikov-rule-addition-of-hx",
+  "free-radical-halogenation-of-alkanes"
+ ]
+}
