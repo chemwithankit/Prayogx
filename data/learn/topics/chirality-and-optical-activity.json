@@ -1,0 +1,133 @@
+{
+ "status": "ready",
+ "class": 12,
+ "subject": "Chemistry",
+ "chapter": "Haloalkanes and Haloarenes",
+ "video": {
+  "youtubeId": "88Bosaduvaw"
+ },
+ "thumb": "thumb.jpg",
+ "id": "LEARN-C12-CHE-CHIRALITY-OPTICAL-ACTIVITY",
+ "slug": "chirality-and-optical-activity",
+ "topic": "Chirality and optical activity",
+ "title": "Chirality and Optical Activity: Mirror Images",
+ "series": 502,
+ "studioJob": "chirality-optical-activity",
+ "reelId": "STUDIO-CHIRALITY-OPTICAL-ACTIVITY",
+ "summary": "A chiral object cannot be superimposed on its mirror image. Chiral molecules rotate plane polarised light: they are optically active. In this lesson: why a left glove does not fit the right hand, plane polarised light from a Nicol prism, the polarimeter, d (+) and l (-), the chiral carbon (four different groups) in butan-2-ol, the 3D mirror test, enantiomers, achiral propan-2-ol, the racemic mixture, and two solved questions.",
+ "notes": {
+  "pdf": "notes.pdf",
+  "title": "Chirality and Optical Activity",
+  "blurb": "plane polarised light and optical activity, chirality, enantiomers and the racemic mixture, solved questions"
+ },
+ "worksheetKind": "cbse",
+ "worksheetCount": 10,
+ "dppCount": 10,
+ "tags": [
+  "chirality",
+  "optical activity",
+  "chiral carbon",
+  "enantiomers",
+  "racemic mixture",
+  "plane polarised light",
+  "polarimeter",
+  "stereochemistry"
+ ],
+ "keyPoints": [
+  "**Chiral**: Like a **left and a right hand**. Achiral: the mirror image **fits**.",
+  "**Optical activity**: Light from a **Nicol prism**, angle in a polarimeter. d = **dextrorotatory**, l = **laevorotatory**.",
+  "**Chiral carbon**: Stereocentre **C*** in butan-2-ol. Propan-2-ol (two CH₃): **achiral**.",
+  "**Enantiomers**: Non-superimposable **mirror images**. Racemic mixture (±): 50 : 50, **rotation 0**."
+ ],
+ "sections": [
+  {
+   "h": "Plane polarised light and optical activity",
+   "blocks": [
+    {
+     "p": "Ordinary light vibrates in every plane. A **Nicol prism** passes only the vibrations of one plane: **plane polarised light**. Some compounds rotate this plane when it passes through their solution: they are **optically active**. The angle is measured in a **polarimeter**."
+    },
+    {
+     "table": {
+      "head": [
+       "Rotation",
+       "Name",
+       "Sign"
+      ],
+      "rows": [
+       [
+        "clockwise (to the right)",
+        "dextrorotatory",
+        "d or (+)"
+       ],
+       [
+        "anticlockwise (to the left)",
+        "laevorotatory",
+        "l or (−)"
+       ]
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "h": "Chirality",
+   "blocks": [
+    {
+     "list": [
+      "**Chiral** (Greek cheir, hand): an object or molecule whose mirror image cannot be superimposed on it, like a left and a right hand.",
+      "**Chiral carbon (stereocentre, C*):** a carbon bonded to four different groups. Butan-2-ol: CH₃–C*H(OH)–C₂H₅ (H, OH, CH₃, C₂H₅).",
+      "**Achiral:** the mirror image superimposes. Propan-2-ol has two identical CH₃ groups on C2: achiral, optically inactive."
+     ]
+    },
+    {
+     "p": "**The mirror test:** draw butan-2-ol with wedge (towards you) and dash (away) bonds, reflect it, and turn the image round: H and OH match, but CH₃ and C₂H₅ end up on the wrong sides (front ↔ back). It never superimposes."
+    }
+   ]
+  },
+  {
+   "h": "Enantiomers and the racemic mixture",
+   "blocks": [
+    {
+     "p": "**Enantiomers** are non-superimposable mirror images. They have identical physical properties (boiling point, density, solubility, refractive index) and rotate plane polarised light by the **same angle in opposite directions**: (+)-butan-2-ol +13.5°, (−)-butan-2-ol −13.5°."
+    },
+    {
+     "p": "A **racemic mixture** (±, dl) has equal amounts of the two enantiomers: their rotations cancel, so it is optically inactive. Converting one enantiomer into a racemic mixture is **racemisation**."
+    },
+    {
+     "list": [
+      "✗ Every molecule with a carbon is chiral (it needs a carbon with four different groups, or another source of asymmetry).",
+      "✗ Enantiomers have different boiling points (they are identical, except in the direction of rotation).",
+      "✗ A racemic mixture contains no chiral molecules (it contains both enantiomers in equal amounts)."
+     ]
+    }
+   ]
+  },
+  {
+   "h": "Solved questions",
+   "blocks": [
+    {
+     "p": "**Q1.** 2-chlorobutane, CH₃–C*H(Cl)–CH₂CH₃: C2 carries H, Cl, CH₃ and C₂H₅, all different, so it is chiral and has two enantiomers."
+    },
+    {
+     "p": "**Q2.** A sample of chiral molecules showing zero rotation contains d and l forms in equal amounts: a racemic mixture."
+    }
+   ]
+  }
+ ],
+ "simulation": {
+  "decision": "NOT_REQUIRED",
+  "reason": "The idea is a fixed sequence of steps drawn in the video and the notes; there is no continuous variable for a student to explore."
+ },
+ "related": [
+  "sn1-mechanism-and-carbocation-stability",
+  "retention-inversion-and-racemisation"
+ ],
+ "pyq": [
+  {
+   "exam": "JEE Main 2024 (30 January, Shift 2)",
+   "q": "2-chlorobutane + Cl₂ → C₄H₈Cl₂ (isomers). The total number of optically active isomers shown by C₄H₈Cl₂ obtained in this reaction is ________. (numerical)",
+   "answer": "6",
+   "explain": ". Cl₂ can replace an H on C1, C2, C3 or C4 of CH₃–CHCl–CH₂–CH₃: 1,2-dichlorobutane (C2 chiral: 2 enantiomers), 2,2- (achiral), 2,3- (two C*: (R,R) and (S,S) active, meso inactive: 2) and, from C4, 1,3-dichlorobutane (C3 chiral: 2). Total 2 + 2 + 2 = 6."
+  }
+ ]
+}

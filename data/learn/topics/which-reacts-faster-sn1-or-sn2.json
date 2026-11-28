@@ -1,0 +1,150 @@
+{
+ "status": "ready",
+ "class": 12,
+ "subject": "Chemistry",
+ "chapter": "Haloalkanes and Haloarenes",
+ "video": {
+  "pending": true
+ },
+ "thumb": "thumb.jpg",
+ "id": "LEARN-C12-CHE-WHICH-REACTS-FASTER",
+ "slug": "which-reacts-faster-sn1-or-sn2",
+ "topic": "Question reel: which reacts faster by SN1 or SN2?",
+ "title": "Which Reacts Faster by SN1 or SN2? 5 Solved Questions",
+ "series": 505,
+ "studioJob": "which-reacts-faster",
+ "reelId": "STUDIO-WHICH-REACTS-FASTER",
+ "summary": "A question set: two rules, five pairs, each solved with a reason. In this lesson: the two rules (SN2: least crowding; SN1: most stable carbocation) and the leaving group order I ＞ Br ＞ Cl, then five solved pairs: 1- vs 2-bromobutane, 1-bromo-3-methylbutane vs 1-bromo-2-methylbutane, 2-bromopropane vs 2-bromo-2-methylpropane, benzyl chloride vs 1-chloro-1-phenylethane, ethyl chloride vs ethyl iodide.",
+ "notes": {
+  "pdf": "notes.pdf",
+  "title": "Which Reacts Faster by SN1 or SN2? 5 Solved Questions",
+  "blurb": "the two rules, solved pairs, more orders worth knowing"
+ },
+ "worksheetKind": "cbse",
+ "worksheetCount": 10,
+ "dppCount": 10,
+ "tags": [
+  "SN1 SN2 reactivity",
+  "which reacts faster",
+  "steric hindrance",
+  "carbocation stability",
+  "leaving group",
+  "solved questions",
+  "question reel"
+ ],
+ "keyPoints": [
+  "**SN2 rule**: 1-bromobutane **beats** 2-bromobutane. A branch **next to C–X** also slows it.",
+  "**SN1 rule**: 2-bromo-2-methylpropane **beats** 2-bromopropane. Benzylic: **resonance** helps.",
+  "**Leaving group**: Same alkyl group: **ethyl iodide** fastest. True for **SN1 and SN2**.",
+  "**Trap**: Both are **1°**: look at the branch. The nearer branch **blocks the back**."
+ ],
+ "sections": [
+  {
+   "h": "The two rules",
+   "blocks": [
+    {
+     "list": [
+      "**SN2** (backside attack): less crowding at and next to the carbon = faster. CH₃X > 1° > 2° > 3°; a branch on the carbon next to C–X also slows it.",
+      "**SN1** (carbocation first): the more stable the carbocation, the faster. 3° > 2° > 1° > CH₃X; allylic and benzylic carbocations are resonance-stabilised.",
+      "**Leaving group** (both): R–I > R–Br > R–Cl > R–F, because the C–X bond weakens from F to I."
+     ]
+    }
+   ]
+  },
+  {
+   "h": "Solved pairs",
+   "blocks": [
+    {
+     "table": {
+      "head": [
+       "#",
+       "Pair",
+       "Faster",
+       "Reason"
+      ],
+      "rows": [
+       [
+        "1",
+        "SN2: 1-bromobutane / 2-bromobutane",
+        "1-bromobutane",
+        "1°, less crowded"
+       ],
+       [
+        "2",
+        "SN2: 1-bromo-3-methylbutane / 1-bromo-2-methylbutane",
+        "1-bromo-3-methylbutane",
+        "both 1°; in the 2-methyl isomer the branch is next to C–Br and blocks the back side"
+       ],
+       [
+        "3",
+        "SN1: 2-bromopropane / 2-bromo-2-methylpropane",
+        "2-bromo-2-methylpropane",
+        "3° carbocation is more stable than 2°"
+       ],
+       [
+        "4",
+        "SN1: C₆H₅CH₂Cl / C₆H₅CH(CH₃)Cl",
+        "C₆H₅CH(CH₃)Cl",
+        "both benzylic (resonance); the extra CH₃ further stabilises the 2° benzylic cation"
+       ],
+       [
+        "5",
+        "CH₃CH₂Cl / CH₃CH₂I",
+        "CH₃CH₂I",
+        "weaker C–I bond, better leaving group (both mechanisms)"
+       ]
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "h": "More orders worth knowing",
+   "blocks": [
+    {
+     "p": "SN1 among benzylic bromides: C₆H₅C(CH₃)(C₆H₅)Br > C₆H₅CH(C₆H₅)Br > C₆H₅CH(CH₃)Br > C₆H₅CH₂Br. SN2 among the bromobutanes: CH₃CH₂CH₂CH₂Br > (CH₃)₂CHCH₂Br > CH₃CH₂CH(Br)CH₃ > (CH₃)₃CBr."
+    },
+    {
+     "list": [
+      "✗ Two 1° halides always react at the same SN2 rate (a branch next to C–X slows the reaction).",
+      "✗ R–Cl is the best leaving group because Cl is most electronegative (R–I is the most reactive: the weakest C–X bond)."
+     ]
+    }
+   ]
+  }
+ ],
+ "simulation": {
+  "decision": "NOT_REQUIRED",
+  "reason": "The idea is a fixed sequence of steps drawn in the video and the notes; there is no continuous variable for a student to explore."
+ },
+ "related": [
+  "sn1-vs-sn2-which-path",
+  "beta-elimination-and-saytzeff-rule"
+ ],
+ "pyq": [
+  {
+   "exam": "JEE Main 2024 (9 April, Shift 1)",
+   "q": "Assertion (A): SN2 reaction of C₆H₅CH₂Br occurs more readily than the SN2 reaction of CH₃CH₂Br. Reason (R): The partially bonded unhybridized p-orbital that develops in the trigonal bipyramidal transition state is stabilized by conjugation with the phenyl ring.",
+   "options": [
+    "(A) is correct but (R) is not correct",
+    "(A) is not correct but (R) is correct",
+    "Both (A) and (R) are correct but (R) is not the correct explanation of (A)",
+    "Both (A) and (R) are correct and (R) is the correct explanation of (A)"
+   ],
+   "answer": 3,
+   "explain": "In the SN2 transition state the carbon carries a p orbital partly bonded to Nu and Br; in benzyl bromide it overlaps with the ring π system, lowering the energy. Both true, R explains A."
+  },
+  {
+   "exam": "JEE Main 2023 (24 January, Shift 1)",
+   "q": "Assertion A: Hydrolysis of an alkyl chloride is a slow reaction but in the presence of NaI, the rate of hydrolysis increases. Reason R: I⁻ is a good nucleophile as well as a good leaving group.",
+   "options": [
+    "A is false but R is true",
+    "A is true but R is false",
+    "Both A and R are true and R is the correct explanation of A",
+    "Both A and R are true and R is not the correct explanation of A"
+   ],
+   "answer": 2,
+   "explain": "I⁻ first displaces Cl⁻ quickly (good nucleophile), then the C–I bond is hydrolysed quickly (good leaving group); NaI is regenerated."
+  }
+ ]
+}

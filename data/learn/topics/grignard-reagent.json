@@ -1,0 +1,116 @@
+{
+ "status": "ready",
+ "class": 12,
+ "subject": "Chemistry",
+ "chapter": "Haloalkanes and Haloarenes",
+ "video": {
+  "pending": true
+ },
+ "thumb": "thumb.jpg",
+ "id": "LEARN-C12-CHE-GRIGNARD-REAGENT",
+ "slug": "grignard-reagent",
+ "topic": "Grignard reagent",
+ "title": "Grignard Reagent: Why It Needs Dry Ether",
+ "series": 509,
+ "studioJob": "grignard-reagent",
+ "reelId": "STUDIO-GRIGNARD-REAGENT",
+ "summary": "Alkyl halides react with magnesium in dry ether to give alkylmagnesium halides, RMgX: very useful, and destroyed by any trace of water. In this lesson: RX + Mg in dry ether gives RMgX (Victor Grignard, Nobel 1912), magnesium slipping between C and Br, the polar C-Mg bond with a carbanion-like carbon, the curved-arrow mechanism with water (RMgX + H2O → RH + Mg(OH)X), why moisture, alcohols and amines destroy it, and two solved questions.",
+ "notes": {
+  "pdf": "notes.pdf",
+  "title": "Grignard Reagent",
+  "blurb": "preparation, the c–mg bond, reaction with water (and other proton sources), solved questions"
+ },
+ "worksheetKind": "cbse",
+ "worksheetCount": 10,
+ "dppCount": 10,
+ "tags": [
+  "Grignard reagent",
+  "RMgX",
+  "alkyl magnesium halide",
+  "dry ether",
+  "carbanion",
+  "Victor Grignard",
+  "reactions with metals"
+ ],
+ "keyPoints": [
+  "**Grignard reagent**: Alkyl **magnesium halide**. Victor Grignard: **Nobel Prize 1912**.",
+  "**The C–Mg bond**: Covalent but **very polar**. Carbon behaves like a **carbanion**.",
+  "**With water**: C–Mg pair takes **water's H**. Alcohols and amines do it too: **keep it dry**.",
+  "**Example**: Ethylmagnesium **bromide**. Methylmagnesium bromide gives **methane**."
+ ],
+ "sections": [
+  {
+   "h": "Preparation",
+   "blocks": [
+    {
+     "p": "R–X + Mg —dry ether→ R–Mg–X · CH₃CH₂Br + Mg → CH₃CH₂MgBr (ethylmagnesium bromide)"
+    },
+    {
+     "p": "Discovered by Victor Grignard (Nobel Prize in Chemistry, 1912). Magnesium inserts between the carbon and the halogen."
+    }
+   ]
+  },
+  {
+   "h": "The C–Mg bond",
+   "blocks": [
+    {
+     "p": "The C–Mg bond is covalent but highly polar: Mg is electropositive, so the bonding electrons are pulled towards carbon (Cδ−–Mgδ+). The carbon behaves like a carbanion (electron-rich, basic and nucleophilic). The Mg–X bond is essentially ionic."
+    }
+   ]
+  },
+  {
+   "h": "Reaction with water (and other proton sources)",
+   "blocks": [
+    {
+     "p": "RMgX + H₂O → R–H + Mg(OH)X"
+    },
+    {
+     "p": "**Mechanism:** the electron pair of the C–Mg bond attacks the H of water; the O–H electron pair goes to oxygen. The alkyl group leaves as the alkane R–H."
+    },
+    {
+     "p": "Water, alcohols, acids, and even amines are acidic enough to convert a Grignard reagent into a hydrocarbon. So it must be prepared and used in **dry ether**, with no moisture."
+    },
+    {
+     "list": [
+      "✗ The C–Mg bond is ionic (it is polar covalent; Mg–X is ionic).",
+      "✗ The carbon of RMgX is δ+ (it is δ−).",
+      "✗ Grignard reagents can be made in aqueous solution (water destroys them)."
+     ]
+    }
+   ]
+  },
+  {
+   "h": "Solved questions",
+   "blocks": [
+    {
+     "p": "**Q1.** CH₃MgBr + H₂O → CH₄ (methane) + Mg(OH)Br."
+    },
+    {
+     "p": "**Q2.** Dry ether is needed because even traces of moisture convert RMgX into the alkane RH."
+    }
+   ]
+  }
+ ],
+ "simulation": {
+  "decision": "NOT_REQUIRED",
+  "reason": "The idea is a fixed sequence of steps drawn in the video and the notes; there is no continuous variable for a student to explore."
+ },
+ "related": [
+  "elimination-vs-substitution",
+  "wurtz-reaction"
+ ],
+ "pyq": [
+  {
+   "exam": "JEE Main 2025 (4 April, Shift 1)",
+   "q": "An organic compound (X) with molecular formula C₃H₆O is not readily oxidised. On reduction it gives C₃H₈O (Y), which reacts with HBr to give a bromide (Z), which is converted to a Grignard reagent. This Grignard reagent on reaction with (X) followed by hydrolysis gives 2,3-dimethylbutan-2-ol. Compounds (X), (Y) and (Z) respectively are:",
+   "options": [
+    "CH₃COCH₃, CH₃CH₂CH₂OH, CH₃CH(Br)CH₃",
+    "CH₃COCH₃, CH₃CH(OH)CH₃, CH₃CH(Br)CH₃",
+    "CH₃CH₂CHO, CH₃CH₂CH₂OH, CH₃CH₂CH₂Br",
+    "CH₃CH₂CHO, CH₃CH=CH₂, CH₃CH(Br)CH₃"
+   ],
+   "answer": 1,
+   "explain": "X = acetone (C₃H₆O, a ketone: not readily oxidised); Y = propan-2-ol (reduction); Z = 2-bromopropane; (CH₃)₂CHMgBr + acetone → after hydrolysis (CH₃)₂CH–C(OH)(CH₃)₂ = 2,3-dimethylbutan-2-ol."
+  }
+ ]
+}

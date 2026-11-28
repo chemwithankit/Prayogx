@@ -1,0 +1,206 @@
+{
+ "status": "ready",
+ "class": 12,
+ "subject": "Chemistry",
+ "chapter": "Haloalkanes and Haloarenes",
+ "video": {
+  "youtubeId": "t2zZ4a3RzWc"
+ },
+ "thumb": "thumb.jpg",
+ "id": "LEARN-C12-CHE-NUCLEOPHILIC-SUBSTITUTION",
+ "slug": "nucleophilic-substitution",
+ "topic": "Nucleophilic substitution: the idea",
+ "title": "Nucleophilic Substitution Explained: KCN vs AgCN, Ambident Nucleophiles",
+ "series": 499,
+ "studioJob": "nucleophilic-substitution",
+ "reelId": "STUDIO-NUCLEOPHILIC-SUBSTITUTION",
+ "summary": "A nucleophile (an electron-rich species) replaces the halogen of a haloalkane: Nu⁻ + R–X → R–Nu + X⁻. In this lesson: why the δ+ carbon is attacked, the leaving group, the general mechanism with two curved arrows, SN2 vs SN1 named, the nucleophile decides the product (alcohol, ether, amine, nitrile, ester), and ambident nucleophiles: KCN vs AgCN, KNO2 vs AgNO2. Two questions solved, including a JEE Main 2024 PYQ.",
+ "notes": {
+  "pdf": "notes.pdf",
+  "title": "Nucleophilic Substitution Explained",
+  "blurb": "why it happens, the general mechanism, the nucleophile decides the product, ambident nucleophiles"
+ },
+ "worksheetKind": "cbse",
+ "worksheetCount": 10,
+ "dppCount": 10,
+ "tags": [
+  "nucleophilic substitution",
+  "nucleophile",
+  "leaving group",
+  "ambident nucleophile",
+  "KCN AgCN",
+  "isocyanide"
+ ],
+ "keyPoints": [
+  "**The reaction**: The **δ+ carbon** is the reactive centre. X⁻ is the **leaving group**.",
+  "**Two arrows**: **SN2**: one step. **SN1**: two steps, via a **carbocation**.",
+  "**Nucleophile → product**: Change the **nucleophile**, change the product. Leaving group: **R–I fastest**, R–F slowest.",
+  "**Ambident**: KCN ionic: attack via **C**. AgCN covalent: attack via **N**."
+ ],
+ "sections": [
+  {
+   "h": "Why it happens",
+   "blocks": [
+    {
+     "p": "The C–X bond is polar: X is more electronegative, so the carbon carries a partial positive charge (δ+). This δ+ carbon is the **reactive centre** that the nucleophile attacks. The halogen leaves with the bonding pair as X⁻: the **leaving group**."
+    }
+   ]
+  },
+  {
+   "h": "The general mechanism",
+   "blocks": [
+    {
+     "p": "Two curved arrows: (1) a lone pair of the nucleophile → the δ+ carbon (new C–Nu bond); (2) the C–X bond pair → X (X⁻ leaves). Example: CH₃CH₂Br + OH⁻ (aqueous KOH) → CH₃CH₂OH + Br⁻."
+    },
+    {
+     "p": "The substitution follows one of two paths: **SN2** (one step) or **SN1** (two steps, through a carbocation)."
+    },
+    {
+     "p": "Leaving-group ability follows the C–X bond strength: **R–I > R–Br > R–Cl > R–F** in reactivity."
+    }
+   ]
+  },
+  {
+   "h": "The nucleophile decides the product",
+   "blocks": [
+    {
+     "table": {
+      "head": [
+       "Reagent",
+       "Nucleophile",
+       "Product",
+       "Class"
+      ],
+      "rows": [
+       [
+        "NaOH / KOH (aq)",
+        "OH⁻",
+        "R–OH",
+        "alcohol"
+       ],
+       [
+        "H₂O",
+        "H₂O",
+        "R–OH",
+        "alcohol"
+       ],
+       [
+        "NaOR′",
+        "R′O⁻",
+        "R–OR′",
+        "ether"
+       ],
+       [
+        "NaI",
+        "I⁻",
+        "R–I",
+        "alkyl iodide"
+       ],
+       [
+        "NH₃",
+        "NH₃",
+        "R–NH₂",
+        "amine"
+       ],
+       [
+        "KCN",
+        "CN⁻ (via C)",
+        "R–CN",
+        "nitrile (cyanide)"
+       ],
+       [
+        "AgCN",
+        "Ag–CN (via N)",
+        "R–NC",
+        "isonitrile (isocyanide)"
+       ],
+       [
+        "KNO₂",
+        "O=N–O⁻ (via O)",
+        "R–O–N=O",
+        "alkyl nitrite"
+       ],
+       [
+        "AgNO₂",
+        "Ag–O–N=O (via N)",
+        "R–NO₂",
+        "nitroalkane"
+       ],
+       [
+        "R′COOAg",
+        "R′COO⁻",
+        "R′COOR",
+        "ester"
+       ],
+       [
+        "LiAlH₄",
+        "H⁻",
+        "R–H",
+        "hydrocarbon"
+       ]
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "h": "Ambident nucleophiles",
+   "blocks": [
+    {
+     "p": "Nucleophiles with two attacking sites: CN⁻ (C or N) and NO₂⁻ (O or N). **KCN** is ionic, so free CN⁻ attacks through carbon (C–C bond is more stable): alkyl cyanide. **AgCN** is mainly covalent; carbon is bonded to silver, so the lone pair on nitrogen attacks: isocyanide. Similarly KNO₂ gives alkyl nitrites, AgNO₂ gives nitroalkanes."
+    },
+    {
+     "list": [
+      "✗ KCN gives isocyanides (it gives cyanides).",
+      "✗ The halogen-bearing carbon is δ− (it is δ+)."
+     ]
+    }
+   ]
+  },
+  {
+   "h": "Solved questions",
+   "blocks": [
+    {
+     "p": "**Q1.** CH₃CH₂Br + (a) aq KOH → CH₃CH₂OH (ethanol) (b) KCN → CH₃CH₂CN (propanenitrile) (c) AgCN → CH₃CH₂NC (ethyl isocyanide)."
+    },
+    {
+     "p": "**Q2 (JEE Main 2024, 29 Jan, Evening).** Alkyl halide → alkyl isocyanide: **AgCN**."
+    }
+   ]
+  }
+ ],
+ "simulation": {
+  "decision": "NOT_REQUIRED",
+  "reason": "The idea is a fixed sequence of steps drawn in the video and the notes; there is no continuous variable for a student to explore."
+ },
+ "related": [
+  "physical-properties-of-haloalkanes",
+  "sn2-mechanism-and-walden-inversion"
+ ],
+ "pyq": [
+  {
+   "exam": "JEE Main 2024 (29 January, Shift 2)",
+   "q": "Alkyl halide is converted into alkyl isocyanide by reaction with:",
+   "options": [
+    "NaCN",
+    "NH₄CN",
+    "KCN",
+    "AgCN"
+   ],
+   "answer": 3,
+   "explain": "AgCN Covalent AgCN: the N lone pair attacks → R–NC."
+  },
+  {
+   "exam": "JEE Main 2025 (28 January, Shift 1)",
+   "q": "CH₃–CH₂–CH₂–Br gives A with AgNO₂ and B with AgCN. A and B respectively are:",
+   "options": [
+    "CH₃CH₂CH₂NO₂, CH₃CH₂CH₂CN",
+    "CH₃CH₂CH₂ONO, CH₃CH₂CH₂NC",
+    "CH₃CH₂CH₂ONO, CH₃CH₂CH₂CN",
+    "CH₃CH₂CH₂NO₂, CH₃CH₂CH₂NC"
+   ],
+   "answer": 3,
+   "explain": "AgNO₂ attacks through N → 1-nitropropane; AgCN through N → propyl isocyanide."
+  }
+ ]
+}

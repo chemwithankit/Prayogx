@@ -1,0 +1,96 @@
+{
+ "status": "ready",
+ "class": 12,
+ "subject": "Chemistry",
+ "chapter": "Haloalkanes and Haloarenes",
+ "video": {
+  "pending": true
+ },
+ "thumb": "thumb.jpg",
+ "id": "LEARN-C12-CHE-WURTZ-REACTION",
+ "slug": "wurtz-reaction",
+ "topic": "Wurtz reaction",
+ "title": "Wurtz Reaction: Join Two Alkyl Groups",
+ "series": 510,
+ "studioJob": "wurtz-reaction",
+ "reelId": "STUDIO-WURTZ-REACTION",
+ "summary": "Alkyl halides react with sodium in dry ether to give alkanes with double the number of carbon atoms. In this lesson: 2RX + 2Na in dry ether gives R-R + 2NaX, bromomethane to ethane, how it works in a simple ionic picture (Na gives electrons, R- attacks a second R-X from the back, beyond NCERT), why two different halides give a mixture of three alkanes, why methane cannot be made, and two solved questions.",
+ "notes": {
+  "pdf": "notes.pdf",
+  "title": "Wurtz Reaction",
+  "blurb": "the reaction, how it works (a simple picture, beyond ncert), uses and limits, solved questions"
+ },
+ "worksheetKind": "cbse",
+ "worksheetCount": 10,
+ "dppCount": 10,
+ "tags": [
+  "Wurtz reaction",
+  "sodium dry ether",
+  "alkane preparation",
+  "symmetrical alkanes",
+  "reactions with metals",
+  "haloalkanes"
+ ],
+ "keyPoints": [
+  "**Wurtz reaction**: Two alkyl groups **join**. The number of carbons **doubles**.",
+  "**Example**: Bromomethane → **ethane**. Bromoethane → **butane**.",
+  "**How it works**: A simple picture, **beyond NCERT**. R⁻ attacks from the **back**.",
+  "**Limitation**: Best for **symmetrical** alkanes. **Methane** cannot be made."
+ ],
+ "sections": [
+  {
+   "h": "The reaction",
+   "blocks": [
+    {
+     "p": "2 R–X + 2 Na —dry ether→ R–R + 2 NaX"
+    },
+    {
+     "p": "Examples: 2 CH₃Br + 2 Na → CH₃–CH₃ (ethane) + 2 NaBr; 2 CH₃CH₂Br + 2 Na → CH₃CH₂CH₂CH₃ (butane) + 2 NaBr."
+    }
+   ]
+  },
+  {
+   "h": "How it works (a simple picture, beyond NCERT)",
+   "blocks": [
+    {
+     "list": [
+      "Sodium is strongly electropositive. Two Na atoms each give one electron to R–X: R–X + 2 Na → R⁻Na⁺ + NaX (alkyl sodium, a carbanion-like R).",
+      "R⁻ then attacks the carbon of a second R–X from the back; X⁻ leaves and a new C–C bond forms: R⁻ + R–X → R–R + X⁻."
+     ]
+    }
+   ]
+  },
+  {
+   "h": "Uses and limits",
+   "blocks": [
+    {
+     "p": "Best for **symmetrical alkanes** (R–R, an even number of carbons when R is a straight chain). With two different halides, R–X and R′–X, three alkanes form (R–R, R–R′, R′–R′), which are hard to separate: CH₃Br + C₂H₅Br gives ethane, propane and butane. Methane cannot be made (R–R always has at least two carbons)."
+    },
+    {
+     "list": [
+      "✗ Wurtz reaction is done in aqueous solution (it needs dry ether; Na reacts with water).",
+      "✗ CH₃Br + C₂H₅Br gives only propane (it gives a mixture of three alkanes)."
+     ]
+    }
+   ]
+  },
+  {
+   "h": "Solved questions",
+   "blocks": [
+    {
+     "p": "**Q1.** Bromoethane + Na, dry ether → butane."
+    },
+    {
+     "p": "**Q2.** 2,3-Dimethylbutane: cut the central C–C bond → two isopropyl groups → use 2-bromopropane (isopropyl bromide)."
+    }
+   ]
+  }
+ ],
+ "simulation": {
+  "decision": "NOT_REQUIRED",
+  "reason": "The idea is a fixed sequence of steps drawn in the video and the notes; there is no continuous variable for a student to explore."
+ },
+ "related": [
+  "grignard-reagent"
+ ]
+}

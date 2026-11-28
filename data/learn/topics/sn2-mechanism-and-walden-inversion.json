@@ -1,0 +1,121 @@
+{
+ "status": "ready",
+ "class": 12,
+ "subject": "Chemistry",
+ "chapter": "Haloalkanes and Haloarenes",
+ "video": {
+  "pending": true
+ },
+ "thumb": "thumb.jpg",
+ "id": "LEARN-C12-CHE-SN2-WALDEN",
+ "slug": "sn2-mechanism-and-walden-inversion",
+ "topic": "SN2 mechanism and Walden inversion",
+ "title": "SN2 Mechanism: Backside Attack and Walden Inversion",
+ "series": 500,
+ "studioJob": "sn2-walden",
+ "reelId": "STUDIO-SN2-WALDEN",
+ "summary": "SN2 = Substitution, Nucleophilic, bimolecular: one step in which the nucleophile enters from the back as the halide leaves. In this lesson: rate = k[CH3Cl][OH-] (second order), backside attack at 180°, one step through the transition state with partial bonds and three H in one plane, Walden inversion (like an umbrella turning inside out), reactivity CH3X ＞ 1° ＞ 2° ＞ 3°, and two solved questions including (R)-2-bromobutane → (S)-butan-2-ol.",
+ "notes": {
+  "pdf": "notes.pdf",
+  "title": "SN2 Mechanism",
+  "blurb": "reaction and rate law, the mechanism (one step), reactivity, stereochemistry"
+ },
+ "worksheetKind": "cbse",
+ "worksheetCount": 10,
+ "dppCount": 10,
+ "tags": [
+  "SN2 mechanism",
+  "Walden inversion",
+  "backside attack",
+  "transition state",
+  "inversion of configuration",
+  "steric hindrance"
+ ],
+ "keyPoints": [
+  "**SN2**: **One step**, second order. S, N, 2 = substitution, nucleophilic, **bimolecular**.",
+  "**Backside attack**: The front is **blocked** by X. Transition state: **partial bonds**, 3 groups in a plane.",
+  "**Walden inversion**: Configuration is **inverted**. Label may change: check **priorities**.",
+  "**Reactivity**: Bulky groups block the **backside**. 1-bromobutane beats **2-bromobutane**."
+ ],
+ "sections": [
+  {
+   "h": "Reaction and rate law",
+   "blocks": [
+    {
+     "p": "CH₃Cl + OH⁻ → CH₃OH + Cl⁻ · rate = k [CH₃Cl] [OH⁻] (second order)"
+    },
+    {
+     "p": "Doubling both concentrations makes the reaction four times faster. (Hughes and Ingold proposed the mechanism in 1937.)"
+    }
+   ]
+  },
+  {
+   "h": "The mechanism (one step)",
+   "blocks": [
+    {
+     "list": [
+      "**Backside attack:** the nucleophile approaches the carbon from the side opposite the halogen (180°), because the large, electron-rich halogen blocks the front.",
+      "**Transition state:** the C–OH bond is half formed and the C–Cl bond half broken (partial bonds); the three hydrogens lie in one plane; the carbon is momentarily bonded to five groups.",
+      "**Inversion:** as Cl⁻ leaves, the three groups flip to the other side, like an umbrella turning inside out in the wind: **inversion of configuration (Walden inversion)**."
+     ]
+    }
+   ]
+  },
+  {
+   "h": "Reactivity",
+   "blocks": [
+    {
+     "p": "The backside must be accessible, so steric hindrance decides the rate: **CH₃X > 1° > 2° > 3°**. Tertiary halides hardly react by SN2. For the same alkyl group, R–I > R–Br > R–Cl (leaving-group ability)."
+    }
+   ]
+  },
+  {
+   "h": "Stereochemistry",
+   "blocks": [
+    {
+     "p": "An optically active substrate gives a product of inverted configuration. Whether the R/S label changes depends on the priorities: for (R)-2-bromobutane + OH⁻ (SN2), OH takes the place of Br at the same priority rank, so the product is **(S)-butan-2-ol**."
+    },
+    {
+     "list": [
+      "✗ SN2 is first order (it is second order).",
+      "✗ Inversion always changes R to S (only when the priority order is unchanged).",
+      "✗ 3° halides react fastest by SN2 (they react slowest)."
+     ]
+    }
+   ]
+  },
+  {
+   "h": "Solved questions",
+   "blocks": [
+    {
+     "p": "**Q1.** 1-bromobutane (1°, less crowded) reacts faster than 2-bromobutane by SN2."
+    },
+    {
+     "p": "**Q2.** (R)-2-bromobutane + OH⁻ (SN2) → (S)-butan-2-ol."
+    }
+   ]
+  }
+ ],
+ "simulation": {
+  "decision": "NOT_REQUIRED",
+  "reason": "The idea is a fixed sequence of steps drawn in the video and the notes; there is no continuous variable for a student to explore."
+ },
+ "related": [
+  "nucleophilic-substitution",
+  "sn1-mechanism-and-carbocation-stability"
+ ],
+ "pyq": [
+  {
+   "exam": "JEE Main 2024 (30 January, Shift 2)",
+   "q": "Statement I: High concentration of strong nucleophilic reagent with secondary alkyl halides which do not have bulky substituents will follow SN2 mechanism. Statement II: A secondary alkyl halide when treated with a large excess of ethanol follows SN1 mechanism.",
+   "options": [
+    "Statement I is true but Statement II is false.",
+    "Statement I is false but Statement II is true.",
+    "Both statement I and Statement II are false.",
+    "Both statement I and Statement II are true."
+   ],
+   "answer": 3,
+   "explain": "A strong nucleophile at high concentration with an unhindered 2° halide favours SN2; a large excess of a weak nucleophile / polar protic solvent (ethanol) favours SN1 (solvolysis)."
+  }
+ ]
+}

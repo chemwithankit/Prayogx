@@ -1,0 +1,148 @@
+{
+ "status": "ready",
+ "class": 12,
+ "subject": "Chemistry",
+ "chapter": "Haloalkanes and Haloarenes",
+ "video": {
+  "pending": true
+ },
+ "thumb": "thumb.jpg",
+ "id": "LEARN-C12-CHE-E1-E2-MECHANISMS",
+ "slug": "e1-and-e2-mechanisms",
+ "topic": "E1 and E2 mechanisms (extension)",
+ "title": "E1 vs E2 Mechanism: One Jump or Stop-and-Go?",
+ "series": 507,
+ "studioJob": "e1-e2-mechanisms",
+ "reelId": "STUDIO-E1-E2-MECHANISMS",
+ "summary": "Two ways an alkyl halide loses HX to give an alkene: in one step (E2) or in two steps through a carbocation (E1). Beyond NCERT; important for JEE. In this lesson: E2 with a strong base, rate = k[RX][base], one step with H and X anti; E1 with a weak base in a protic solvent, rate = k[RX], two steps through a carbocation; energy profiles, comparison, rearrangement, Saytzeff, and two solved questions on tert-butyl bromide.",
+ "notes": {
+  "pdf": "notes.pdf",
+  "title": "E1 vs E2 Mechanism",
+  "blurb": "e2: bimolecular elimination, e1: unimolecular elimination, comparison, solved questions"
+ },
+ "worksheetKind": "cbse",
+ "worksheetCount": 10,
+ "dppCount": 10,
+ "tags": [
+  "E1 mechanism",
+  "E2 mechanism",
+  "elimination reaction",
+  "anti periplanar",
+  "carbocation",
+  "energy profile",
+  "JEE organic chemistry"
+ ],
+ "keyPoints": [
+  "**E2**: β-H, C=C and X⁻: **all at once**. H and X must be **anti (180°)**.",
+  "**E1**: Step 1 **slow**: X⁻ leaves, R⁺ forms. Step 2 fast: weak base takes **β-H⁺**.",
+  "**When?**: E1 competes with **SN1**. E1 can **rearrange** (carbocation).",
+  "**Both**: Energy: E2 **one hump**, E1 **two**. E1 valley = **the carbocation**."
+ ],
+ "sections": [
+  {
+   "h": "E2: bimolecular elimination",
+   "blocks": [
+    {
+     "list": [
+      "**Conditions:** a strong base at high concentration (alcoholic KOH, RO⁻).",
+      "**Rate:** rate = k[RX][base], second order.",
+      "**Mechanism (one step):** the base removes a β-H; the C–H electron pair forms the C=C π bond; the C–X bond breaks and X⁻ leaves, all together. No intermediate.",
+      "**Geometry:** H and X are anti (anti-periplanar, 180° apart)."
+     ]
+    }
+   ]
+  },
+  {
+   "h": "E1: unimolecular elimination",
+   "blocks": [
+    {
+     "list": [
+      "**Conditions:** 3° (or stable) halides, a weak base, a polar protic solvent, heat (e.g. warming in ethanol).",
+      "**Rate:** rate = k[RX], first order.",
+      "**Step 1 (slow, rate-determining):** C–X breaks: carbocation + X⁻.",
+      "**Step 2 (fast):** a weak base (solvent) removes H⁺ from a β-carbon; the C–H pair forms C=C."
+     ]
+    },
+    {
+     "p": "E1 competes with SN1 (same carbocation); since it goes through a carbocation, rearrangement is possible."
+    }
+   ]
+  },
+  {
+   "h": "Comparison",
+   "blocks": [
+    {
+     "table": {
+      "head": [
+       "",
+       "E2",
+       "E1"
+      ],
+      "rows": [
+       [
+        "Steps",
+        "one",
+        "two"
+       ],
+       [
+        "Rate law",
+        "k[RX][base]",
+        "k[RX]"
+       ],
+       [
+        "Base",
+        "strong",
+        "weak"
+       ],
+       [
+        "Intermediate",
+        "none",
+        "carbocation"
+       ],
+       [
+        "Rearrangement",
+        "no",
+        "possible"
+       ],
+       [
+        "Energy profile",
+        "one hump",
+        "two humps, carbocation in the valley"
+       ],
+       [
+        "Major alkene",
+        "usually the more substituted (Saytzeff)",
+        ""
+       ]
+      ]
+     }
+    },
+    {
+     "list": [
+      "✗ E1 is second order (it is first order; the base is not in the slow step).",
+      "✗ In E2, H and X can be on the same side (they must be anti)."
+     ]
+    }
+   ]
+  },
+  {
+   "h": "Solved questions",
+   "blocks": [
+    {
+     "p": "**Q1.** tert-Butyl bromide + concentrated alcoholic KOH, heat: strong base at high concentration → E2, giving (CH₃)₂C=CH₂ (2-methylpropene)."
+    },
+    {
+     "p": "**Q2.** tert-Butyl bromide warmed in ethanol only: weak base, protic solvent, 3° → E1 (2-methylpropene) with SN1 (tert-butyl ethyl ether)."
+    }
+   ]
+  }
+ ],
+ "simulation": {
+  "decision": "NOT_REQUIRED",
+  "reason": "The idea is a fixed sequence of steps drawn in the video and the notes; there is no continuous variable for a student to explore."
+ },
+ "related": [
+  "beta-elimination-and-saytzeff-rule",
+  "elimination-vs-substitution"
+ ]
+}

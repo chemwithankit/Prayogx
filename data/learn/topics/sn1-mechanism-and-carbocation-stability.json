@@ -1,0 +1,149 @@
+{
+ "status": "ready",
+ "class": 12,
+ "subject": "Chemistry",
+ "chapter": "Haloalkanes and Haloarenes",
+ "video": {
+  "pending": true
+ },
+ "thumb": "thumb.jpg",
+ "id": "LEARN-C12-CHE-SN1-MECHANISM",
+ "slug": "sn1-mechanism-and-carbocation-stability",
+ "topic": "SN1 mechanism and carbocation stability",
+ "title": "SN1 Mechanism: Carbocation and Two Steps",
+ "series": 501,
+ "studioJob": "sn1-mechanism",
+ "reelId": "STUDIO-SN1-MECHANISM",
+ "summary": "SN1 = Substitution, Nucleophilic, unimolecular: the halide first leaves on its own to give a carbocation, which the nucleophile then captures. In this lesson: rate = k[(CH3)3CBr] (first order), why doubling the nucleophile does not change the rate, step 1 (slow): the C–Br bond breaks and a planar carbocation with an empty p orbital forms, step 2 (fast): OH- attacks from above or below, carbocation stability 3° ＞ 2° ＞ 1° ＞ CH3+ (+I effect and hyperconjugation), allylic and benzylic halides (resonance), and two solved questions.",
+ "notes": {
+  "pdf": "notes.pdf",
+  "title": "SN1 Mechanism",
+  "blurb": "reaction and rate law, the mechanism (two steps), carbocation stability decides the rate, solved questions"
+ },
+ "worksheetKind": "cbse",
+ "worksheetCount": 10,
+ "dppCount": 10,
+ "tags": [
+  "SN1 mechanism",
+  "carbocation",
+  "carbocation stability",
+  "rate determining step",
+  "hyperconjugation",
+  "polar protic solvent",
+  "unimolecular"
+ ],
+ "keyPoints": [
+  "**SN1**: **Two steps**, first order. S, N, 1 = substitution, nucleophilic, **unimolecular**.",
+  "**Step 1 · slow**: Rate-determining: **no nucleophile** in it. Polar protic solvent **stabilises the ions**.",
+  "**Step 2 · fast**: Nu lone pair → the **empty p orbital**. Doubling [Nu⁻] does **not change the rate**.",
+  "**Stability**: SN1: **3° > 2° > 1° > CH₃X**. Allylic and benzylic: **resonance**, fast SN1."
+ ],
+ "sections": [
+  {
+   "h": "Reaction and rate law",
+   "blocks": [
+    {
+     "p": "(CH₃)₃C–Br + OH⁻ → (CH₃)₃C–OH + Br⁻ · rate = k [(CH₃)₃CBr] (first order)"
+    },
+    {
+     "p": "The rate depends only on the alkyl halide. Doubling [OH⁻] leaves the rate unchanged, because the nucleophile does not take part in the slow step."
+    }
+   ]
+  },
+  {
+   "h": "The mechanism (two steps)",
+   "blocks": [
+    {
+     "list": [
+      "**Step 1 (slow, rate-determining):** the C–Br bond breaks heterolytically; both bonding electrons go to bromine (curved arrow from the bond to Br). Products: a **carbocation** (CH₃)₃C⁺ and Br⁻.",
+      "**The carbocation:** the positive carbon is sp² and **planar**, with one **empty p orbital** perpendicular to the plane.",
+      "**Step 2 (fast):** a lone pair of OH⁻ attacks the empty p orbital, from above or from below the plane, giving (CH₃)₃C–OH."
+     ]
+    },
+    {
+     "p": "**Solvent:** polar protic solvents (water, alcohols) favour SN1: the O end (δ−) of the solvent surrounds the cation and the H end (δ+) the halide ion, stabilising both."
+    }
+   ]
+  },
+  {
+   "h": "Carbocation stability decides the rate",
+   "blocks": [
+    {
+     "table": {
+      "head": [
+       "Carbocation",
+       "(CH₃)₃C⁺ (3°)",
+       "(CH₃)₂CH⁺ (2°)",
+       "CH₃CH₂⁺ (1°)",
+       "CH₃⁺"
+      ],
+      "rows": [
+       [
+        "Stability",
+        "highest",
+        "→",
+        "→",
+        "lowest"
+       ]
+      ]
+     }
+    },
+    {
+     "p": "Alkyl groups spread the positive charge by the **+I (inductive) effect** and **hyperconjugation**. So the SN1 order is **3° > 2° > 1° > CH₃X**, the reverse of SN2. Allylic (CH₂=CH–CH₂⁺) and benzylic (C₆H₅CH₂⁺) carbocations are stabilised by **resonance**, so allylic and benzylic halides react fast by SN1. For the same alkyl group: R–I > R–Br > R–Cl."
+    },
+    {
+     "list": [
+      "✗ SN1 is second order (it is first order: rate = k[RX]).",
+      "✗ The nucleophile attacks in the slow step (it attacks in the fast second step).",
+      "✗ CH₃X reacts fastest by SN1 (CH₃⁺ is the least stable cation; 3° halides react fastest)."
+     ]
+    }
+   ]
+  },
+  {
+   "h": "Solved questions",
+   "blocks": [
+    {
+     "p": "**Q1.** tert-butyl bromide reacts faster than ethyl bromide by SN1: it gives a 3° carbocation, the most stable."
+    },
+    {
+     "p": "**Q2.** Doubling [OH⁻] in the hydrolysis of tert-butyl bromide: no change in rate, since rate = k[(CH₃)₃CBr]."
+    }
+   ]
+  }
+ ],
+ "simulation": {
+  "decision": "NOT_REQUIRED",
+  "reason": "The idea is a fixed sequence of steps drawn in the video and the notes; there is no continuous variable for a student to explore."
+ },
+ "related": [
+  "sn2-mechanism-and-walden-inversion",
+  "chirality-and-optical-activity"
+ ],
+ "pyq": [
+  {
+   "exam": "JEE Main 2020 (3 September, Shift 1)",
+   "q": "The SN1 mechanism is: R–X → R⁺X⁻ (ion pair) → R⁺ ∥ X⁻ (solvent-separated ion pair); then R⁺ + Y⁻ → R–Y. A student writes: (a) the reaction is favoured by weak nucleophiles; (b) R⁺ would be easily formed if the substituents are bulky; (c) the reaction is accompanied by racemization; (d) the reaction is favoured by non-polar solvents. Which observations are correct?",
+   "options": [
+    "(a) and (b)",
+    "(a) and (c)",
+    "(a), (b) and (c)",
+    "(b) and (d)"
+   ],
+   "answer": 2,
+   "explain": "(a), (b) and (c). Weak nucleophiles (solvolysis) suit SN1; bulky alkyl groups stabilise R⁺ and relieve crowding; the planar R⁺ is attacked from both faces (racemization). Non-polar solvents do not stabilise the ions, so (d) is wrong."
+  },
+  {
+   "exam": "JEE Main 2019 (12 April, Shift 2)",
+   "q": "Which one of the following is likely to give a precipitate with AgNO₃ solution?",
+   "options": [
+    "CH₂=CH–Cl",
+    "(CH₃)₃CCl",
+    "CCl₄",
+    "CHCl₃"
+   ],
+   "answer": 1,
+   "explain": "(CH₃)₃CCl ionises easily to the stable 3° carbocation, and Cl⁻ meets Ag⁺ as a white AgCl precipitate. Vinyl chloride, CCl₄ and CHCl₃ do not ionise."
+  }
+ ]
+}

@@ -1,0 +1,114 @@
+{
+ "status": "ready",
+ "class": 12,
+ "subject": "Chemistry",
+ "chapter": "Haloalkanes and Haloarenes",
+ "video": {
+  "pending": true
+ },
+ "thumb": "thumb.jpg",
+ "id": "LEARN-C12-CHE-PHYSICAL-PROPERTIES",
+ "slug": "physical-properties-of-haloalkanes",
+ "topic": "Physical properties of haloalkanes",
+ "title": "Why Is CH3Cl a Gas but CH3I a Liquid? Physical Properties of Haloalkanes",
+ "series": 498,
+ "studioJob": "physical-properties",
+ "reelId": "STUDIO-PHYSICAL-PROPERTIES",
+ "summary": "Every trend follows from two things: the polar C–X bond (dipole–dipole attraction) and molecular size / mass (van der Waals forces). In this lesson: why boiling points are higher than the parent alkanes (dipole–dipole and van der Waals forces), R–I ＞ R–Br ＞ R–Cl ＞ R–F against the room-temperature line, branching lowers the boiling point, para-dichlorobenzene melts highest, density and why haloalkanes barely dissolve in water. Two ordering questions solved.",
+ "notes": {
+  "pdf": "notes.pdf",
+  "title": "Why Is CH3Cl a Gas but CH3I a Liquid? Physical Properties of Haloalkanes",
+  "blurb": "boiling points, melting points of dihalobenzenes, density and solubility, solved questions"
+ },
+ "worksheetKind": "cbse",
+ "worksheetCount": 10,
+ "dppCount": 10,
+ "tags": [
+  "physical properties of haloalkanes",
+  "boiling point",
+  "branching",
+  "dichlorobenzene melting point",
+  "density",
+  "solubility"
+ ],
+ "keyPoints": [
+  "**Higher b.p.**: Haloalkanes boil **above** their parent alkanes. Polar C–X and **more mass**.",
+  "**Halogen order**: Bigger halogen → **stronger** attractions. CH₃I liquid, CH₃Cl **gas** at 25 °C.",
+  "**Branching**: Branched = more **spherical**. Less surface → **lower b.p.**",
+  "**Dihalobenzenes**: Symmetry → better **crystal packing**. p-C₆H₄Cl₂ melts at **323 K**."
+ ],
+ "sections": [
+  {
+   "h": "Boiling points",
+   "blocks": [
+    {
+     "p": "Haloalkanes boil higher than their parent hydrocarbons (e.g. CH₄ −162 °C, CH₃Cl −24 °C): the C–X bond is polar (dipole–dipole forces) and the mass is greater (stronger van der Waals forces)."
+    },
+    {
+     "table": {
+      "head": [
+       "Trend",
+       "Example"
+      ],
+      "rows": [
+       [
+        "Same alkyl group: R–I > R–Br > R–Cl > R–F",
+        "CH₃I 42 °C · CH₃Br 4 °C · CH₃Cl −24 °C · CH₃F −78 °C"
+       ],
+       [
+        "More halogen atoms → higher b.p.",
+        "CH₃Cl < CH₂Cl₂ < CHCl₃ < CCl₄"
+       ],
+       [
+        "Isomers: more branching → lower b.p.",
+        "1-bromobutane 375 K > 2-bromobutane 364 K > 2-bromo-2-methylpropane 346 K"
+       ]
+      ]
+     }
+    },
+    {
+     "p": "Branched molecules are more spherical, so the area of contact (and the van der Waals attraction) is smaller."
+    }
+   ]
+  },
+  {
+   "h": "Melting points of dihalobenzenes",
+   "blocks": [
+    {
+     "p": "o-, m- and p-dichlorobenzene boil at nearly the same temperature (453, 446, 448 K), but the **para** isomer melts much higher (323 K vs 256 K and 249 K): it is symmetrical and fits the crystal lattice better."
+    }
+   ]
+  },
+  {
+   "h": "Density and solubility",
+   "blocks": [
+    {
+     "list": [
+      "✗ Branching raises the b.p. (it lowers it).",
+      "✗ Para isomer has the highest b.p. (it has the highest m.p.; the b.p. values are nearly equal).",
+      "✗ Haloalkanes dissolve in water because they are polar."
+     ]
+    }
+   ]
+  },
+  {
+   "h": "Solved questions",
+   "blocks": [
+    {
+     "p": "**Q1.** Increasing b.p.: CH₃Cl (−24 °C) < CH₃Br (4 °C) < CH₂Br₂ (97 °C) < CHBr₃ (149 °C): size and mass increase."
+    },
+    {
+     "p": "**Q2.** Increasing b.p.: isopropyl chloride (36 °C, branched) < 1-chloropropane (47 °C) < 1-chlorobutane (78 °C, longer chain)."
+    }
+   ]
+  }
+ ],
+ "simulation": {
+  "decision": "NOT_REQUIRED",
+  "reason": "The idea is a fixed sequence of steps drawn in the video and the notes; there is no continuous variable for a student to explore."
+ },
+ "related": [
+  "predict-the-product-preparation",
+  "nucleophilic-substitution"
+ ]
+}

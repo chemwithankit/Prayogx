@@ -1,0 +1,159 @@
+{
+ "status": "ready",
+ "class": 12,
+ "subject": "Chemistry",
+ "chapter": "Haloalkanes and Haloarenes",
+ "video": {
+  "youtubeId": "31j3TFZNY5c"
+ },
+ "thumb": "thumb.jpg",
+ "id": "LEARN-C12-CHE-RETENTION-INVERSION-RACEMISATION",
+ "slug": "retention-inversion-and-racemisation",
+ "topic": "Retention, inversion and racemisation",
+ "title": "Retention, Inversion and Racemisation",
+ "series": 503,
+ "studioJob": "retention-inversion-racemisation",
+ "reelId": "STUDIO-RETENTION-INVERSION-RACEMISATION",
+ "summary": "What happens to the configuration (the 3D arrangement of the four groups) at a chiral carbon C* during a reaction. In this lesson: configuration at a chiral carbon, retention when no bond to C* breaks ((-)-2-methylbutan-1-ol + HCl), the sign trap, inversion in SN2 (2-bromooctane + OH-, the umbrella flip), racemisation in SN1 (planar carbocation attacked from both faces, 50 : 50), and two solved questions.",
+ "notes": {
+  "pdf": "notes.pdf",
+  "title": "Retention, Inversion and Racemisation",
+  "blurb": "configuration, retention, inversion (sn2), racemisation (sn1)"
+ },
+ "worksheetKind": "cbse",
+ "worksheetCount": 10,
+ "dppCount": 10,
+ "tags": [
+  "retention of configuration",
+  "inversion of configuration",
+  "racemisation",
+  "racemic mixture",
+  "SN1 SN2 stereochemistry",
+  "Walden inversion",
+  "chiral carbon"
+ ],
+ "keyPoints": [
+  "**Retention**: (−)-2-methylbutan-1-ol + HCl → **(+)**-1-chloro-2-methylbutane: **same** configuration.",
+  "**Sign trap**: The sign is **measured**, not predicted. It can change while the **configuration stays**.",
+  "**Inversion · SN2**: 2-bromooctane + OH⁻ → octan-2-ol, **inverted**. One step: **Walden inversion**.",
+  "**Racemisation · SN1**: Both enantiomers form **equally**. Racemic mixture: **rotation 0**."
+ ],
+ "sections": [
+  {
+   "h": "Configuration",
+   "blocks": [
+    {
+     "p": "A carbon bonded to four different groups is a **chiral carbon (C*)**. The 3D arrangement of those groups is its **configuration**. A reaction can keep it, invert it, or scramble it."
+    }
+   ]
+  },
+  {
+   "h": "Retention",
+   "blocks": [
+    {
+     "list": [
+      "If **no bond to C* is broken**, the configuration is **retained**.",
+      "(−)-2-methylbutan-1-ol, CH₃CH₂–C*H(CH₃)–CH₂–OH + HCl → (+)-1-chloro-2-methylbutane, CH₃CH₂–C*H(CH₃)–CH₂–Cl. The C–O bond that breaks belongs to the CH₂ next to C*."
+     ]
+    },
+    {
+     "p": "**Sign trap:** the sign of rotation changed from (−) to (+), yet the configuration is the same. The sign (+/−) is measured in a polarimeter; it does not tell the configuration."
+    }
+   ]
+  },
+  {
+   "h": "Inversion (SN2)",
+   "blocks": [
+    {
+     "p": "The nucleophile attacks C* from the side opposite the leaving group (backside attack); the other three groups flip like an umbrella in the wind. The product has the **inverted** configuration (Walden inversion). Example: (−)-2-bromooctane + OH⁻ → (+)-octan-2-ol."
+    }
+   ]
+  },
+  {
+   "h": "Racemisation (SN1)",
+   "blocks": [
+    {
+     "p": "The halide ion leaves first, giving a **planar carbocation** (both faces open). The nucleophile attacks from above or below with equal chance, giving the two enantiomers 50 : 50: a **racemic mixture**, rotation zero. Converting an optically active compound into a racemic mixture is **racemisation**."
+    },
+    {
+     "table": {
+      "head": [
+       "Case",
+       "When",
+       "Product"
+      ],
+      "rows": [
+       [
+        "Retention",
+        "no bond to C* broken",
+        "same configuration"
+       ],
+       [
+        "Inversion",
+        "SN2 at C*",
+        "inverted configuration"
+       ],
+       [
+        "Racemisation",
+        "SN1 at C*",
+        "50 : 50 enantiomers, inactive"
+       ]
+      ]
+     }
+    },
+    {
+     "list": [
+      "✗ A change of sign means the configuration changed.",
+      "✗ SN1 gives inversion (it gives racemisation).",
+      "✗ A racemic mixture contains no chiral molecules (it contains both enantiomers equally)."
+     ]
+    }
+   ]
+  },
+  {
+   "h": "Solved questions",
+   "blocks": [
+    {
+     "p": "**Q1.** Optically active 2-bromobutane + OH⁻ under SN2 conditions → butan-2-ol with the inverted configuration."
+    },
+    {
+     "p": "**Q2.** The same reaction under SN1 conditions → racemic butan-2-ol, optically inactive."
+    }
+   ]
+  }
+ ],
+ "simulation": {
+  "decision": "NOT_REQUIRED",
+  "reason": "The idea is a fixed sequence of steps drawn in the video and the notes; there is no continuous variable for a student to explore."
+ },
+ "related": [
+  "chirality-and-optical-activity",
+  "sn1-vs-sn2-which-path"
+ ],
+ "pyq": [
+  {
+   "exam": "JEE Main 2024 (27 January, Shift 1)",
+   "q": "The correct statement regarding nucleophilic substitution reaction in a chiral alkyl halide is:",
+   "options": [
+    "Retention occurs in SN1 reaction and inversion occurs in SN2 reaction.",
+    "Racemisation occurs in SN2 reaction and retention occurs in SN1 reaction.",
+    "Racemisation occurs in both SN1 and SN2 reactions.",
+    "Racemisation occurs in SN1 reaction and inversion occurs in SN2 reaction."
+   ],
+   "answer": 3,
+   "explain": "SN1: planar carbocation, attack from both faces → racemisation. SN2: backside attack → inversion."
+  },
+  {
+   "exam": "JEE Main 2024 (8 April, Shift 2)",
+   "q": "Statement (I): SN2 reactions are 'stereospecific', indicating that they result in the formation of only one stereo-isomer as the product. Statement (II): SN1 reactions generally result in formation of product as racemic mixtures. Choose the correct answer:",
+   "options": [
+    "Both Statement I and Statement II are false",
+    "Statement I is false but Statement II is true",
+    "Statement I is true but Statement II is false",
+    "Both Statement I and Statement II are true"
+   ],
+   "answer": 3,
+   "explain": "SN2 gives one stereoisomer (inverted): stereospecific. SN1 gives a racemic product through the planar carbocation."
+  }
+ ]
+}

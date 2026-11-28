@@ -1,0 +1,183 @@
+{
+ "status": "ready",
+ "class": 12,
+ "subject": "Chemistry",
+ "chapter": "Haloalkanes and Haloarenes",
+ "video": {
+  "pending": true
+ },
+ "thumb": "thumb.jpg",
+ "id": "LEARN-C12-CHE-SN1-VS-SN2",
+ "slug": "sn1-vs-sn2-which-path",
+ "topic": "SN1 vs SN2: which path?",
+ "title": "SN1 vs SN2: Which Path?",
+ "series": 504,
+ "studioJob": "sn1-vs-sn2",
+ "reelId": "STUDIO-SN1-VS-SN2",
+ "summary": "Both replace X by a nucleophile. SN2 does it in one step from the back; SN1 in two steps through a carbocation. The substrate, the nucleophile and the solvent decide the path. In this lesson: the two paths, then the three deciding factors on a decision meter: the substrate (1° SN2, 3° SN1, 2° depends), the nucleophile (strong and concentrated vs weak) and the solvent (polar protic vs aprotic), the rate laws and stereochemistry side by side, allylic and benzylic halides, and two solved questions.",
+ "notes": {
+  "pdf": "notes.pdf",
+  "title": "SN1 vs SN2",
+  "blurb": "the two paths, what decides the path, how to tell them apart, solved questions"
+ },
+ "worksheetKind": "cbse",
+ "worksheetCount": 10,
+ "dppCount": 10,
+ "tags": [
+  "SN1 vs SN2",
+  "nucleophilic substitution",
+  "substrate",
+  "nucleophile strength",
+  "polar protic solvent",
+  "polar aprotic solvent",
+  "carbocation"
+ ],
+ "keyPoints": [
+  "**Two paths**: Same overall change: **X replaced by Nu**. Different **road**.",
+  "**Substrate**: 1°: **open back**. 3°: crowded but **stable R⁺**. 2°: the **other factors** decide.",
+  "**Nucleophile · solvent**: OH⁻, CN⁻ attack at once; **H₂O, ROH wait** for R⁺. Aprotic: acetone, DMSO. Protic: **water, alcohol**.",
+  "**Result**: Allylic, benzylic: **fast by both**. (R⁺ stabilised by **resonance**.)"
+ ],
+ "sections": [
+  {
+   "h": "The two paths",
+   "blocks": [
+    {
+     "list": [
+      "**SN2:** one step; the nucleophile attacks the carbon from the side opposite X as X leaves.",
+      "**SN1:** two steps; R–X → R⁺ + X⁻ (slow), then R⁺ + Nu⁻ → R–Nu (fast)."
+     ]
+    }
+   ]
+  },
+  {
+   "h": "What decides the path",
+   "blocks": [
+    {
+     "table": {
+      "head": [
+       "Factor",
+       "Favours SN2",
+       "Favours SN1"
+      ],
+      "rows": [
+       [
+        "Substrate",
+        "CH₃X, 1° (little crowding, open back side)",
+        "3° (stable carbocation); also allylic, benzylic"
+       ],
+       [
+        "Nucleophile",
+        "strong, high concentration (OH⁻, CN⁻, RO⁻)",
+        "weak, neutral (H₂O, ROH), often the solvent itself"
+       ],
+       [
+        "Solvent",
+        "polar aprotic (acetone, DMSO, DMF): Nu⁻ stays free",
+        "polar protic (water, alcohols): ions stabilised"
+       ]
+      ]
+     }
+    },
+    {
+     "p": "2° halides lie in between: a strong, concentrated nucleophile pushes them towards SN2; a weak nucleophile in a protic solvent towards SN1."
+    }
+   ]
+  },
+  {
+   "h": "How to tell them apart",
+   "blocks": [
+    {
+     "table": {
+      "head": [
+       "",
+       "SN2",
+       "SN1"
+      ],
+      "rows": [
+       [
+        "Steps",
+        "one",
+        "two (carbocation)"
+       ],
+       [
+        "Rate law",
+        "k[RX][Nu⁻], second order",
+        "k[RX], first order"
+       ],
+       [
+        "Chiral substrate gives",
+        "inversion",
+        "racemisation"
+       ],
+       [
+        "Reactivity",
+        "CH₃X > 1° > 2° > 3°",
+        "3° > 2° > 1° > CH₃X"
+       ],
+       [
+        "Rearrangement",
+        "no",
+        "possible (carbocation)"
+       ]
+      ]
+     }
+    },
+    {
+     "p": "**Allylic and benzylic halides** are primary, yet their carbocations are resonance-stabilised, so they react fast by SN1; they also react fast by SN2."
+    },
+    {
+     "list": [
+      "✗ 3° halides react by SN2 with OH⁻ (the back side is blocked; they go by SN1, or eliminate).",
+      "✗ A strong nucleophile speeds up SN1 (it is not in the rate law)."
+     ]
+    }
+   ]
+  },
+  {
+   "h": "Solved questions",
+   "blocks": [
+    {
+     "p": "**Q1.** Ethyl bromide + concentrated NaOH: 1° halide, strong concentrated nucleophile → SN2."
+    },
+    {
+     "p": "**Q2.** tert-Butyl bromide warmed in ethanol: 3° halide, weak nucleophile, protic solvent → SN1."
+    }
+   ]
+  }
+ ],
+ "simulation": {
+  "decision": "NOT_REQUIRED",
+  "reason": "The idea is a fixed sequence of steps drawn in the video and the notes; there is no continuous variable for a student to explore."
+ },
+ "related": [
+  "retention-inversion-and-racemisation",
+  "which-reacts-faster-sn1-or-sn2"
+ ],
+ "pyq": [
+  {
+   "exam": "JEE Main 2023 (13 April, Shift 1)",
+   "q": "2-Methylpropyl bromide reacts with C₂H₅O⁻ and gives 'A', whereas on reaction with C₂H₅OH it gives 'B'. The mechanism followed in these reactions and the products 'A' and 'B' respectively are:",
+   "options": [
+    "SN2, A = iso-butyl ethyl ether; SN1, B = tert-butyl ethyl ether",
+    "SN1, A = tert-butyl ethyl ether; SN1, B = 2-butyl ethyl ether",
+    "SN2, A = 2-butyl ethyl ether; SN2, B = iso-butyl ethyl ether",
+    "SN1, A = tert-butyl ethyl ether; SN2, B = iso-butyl ethyl ether"
+   ],
+   "answer": 0,
+   "explain": "With the strong nucleophile C₂H₅O⁻, the 1° halide reacts by SN2 without rearrangement: (CH₃)₂CHCH₂–OC₂H₅ (iso-butyl ethyl ether). In ethanol (weak Nu, protic) the path is SN1; the 1° cation shifts a hydride to the 3° cation, giving (CH₃)₃C–OC₂H₅."
+  },
+  {
+   "exam": "JEE Main 2024 (30 January, Shift 2)",
+   "q": "Statement I: High concentration of strong nucleophilic reagent with secondary alkyl halides which do not have bulky substituents will follow SN2 mechanism. Statement II: A secondary alkyl halide when treated with a large excess of ethanol follows SN1 mechanism.",
+   "options": [
+    "Statement I is true but Statement II is false.",
+    "Statement I is false but Statement II is true.",
+    "Both Statement I and Statement II are false.",
+    "Both Statement I and Statement II are true."
+   ],
+   "answer": 3,
+   "explain": "Unhindered 2° + high concentration of strong Nu⁻ → SN2; 2° in a large excess of ethanol (weak Nu, protic) → SN1 (solvolysis)."
+  }
+ ]
+}

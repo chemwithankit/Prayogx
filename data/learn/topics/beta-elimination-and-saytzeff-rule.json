@@ -1,0 +1,136 @@
+{
+ "status": "ready",
+ "class": 12,
+ "subject": "Chemistry",
+ "chapter": "Haloalkanes and Haloarenes",
+ "video": {
+  "pending": true
+ },
+ "thumb": "thumb.jpg",
+ "id": "LEARN-C12-CHE-BETA-ELIMINATION-SAYTZEFF",
+ "slug": "beta-elimination-and-saytzeff-rule",
+ "topic": "β-Elimination and Saytzeff rule",
+ "title": "β-Elimination and Saytzeff Rule: Which Alkene Wins?",
+ "series": 506,
+ "studioJob": "beta-elimination-saytzeff",
+ "reelId": "STUDIO-BETA-ELIMINATION-SAYTZEFF",
+ "summary": "Heating an alkyl halide with alcoholic KOH removes the halogen and a hydrogen from the next carbon: an alkene forms. In this lesson: alcoholic KOH and heat, dehydrohalogenation of bromoethane, α- and β-carbons, the bond changes with curved arrows (base takes the β-H, C=C forms, Br- leaves), 2-bromopentane giving pent-2-ene (81 %) and pent-1-ene (19 %), the Saytzeff rule, and two solved questions.",
+ "notes": {
+  "pdf": "notes.pdf",
+  "title": "β-Elimination and Saytzeff Rule",
+  "blurb": "the reaction, what happens (bond changes), saytzeff (zaitsev) rule, solved questions"
+ },
+ "worksheetKind": "cbse",
+ "worksheetCount": 10,
+ "dppCount": 10,
+ "tags": [
+  "beta elimination",
+  "Saytzeff rule",
+  "Zaitsev rule",
+  "dehydrohalogenation",
+  "alcoholic KOH",
+  "alkene",
+  "elimination reaction"
+ ],
+ "keyPoints": [
+  "**β-Elimination**: **Alcoholic KOH, heat**: H and X leave. Also called **dehydrohalogenation**.",
+  "**α and β**: α carries the **halogen**. β is the **next** carbon.",
+  "**In one go**: Three curved arrows, **one step**. Products: alkene, **H₂O, Br⁻**.",
+  "**Saytzeff rule**: More substituted = **more stable**. From **2-bromopentane**."
+ ],
+ "sections": [
+  {
+   "h": "The reaction",
+   "blocks": [
+    {
+     "p": "CH₃CH₂Br + KOH (alcoholic) —heat→ CH₂=CH₂ + KBr + H₂O"
+    },
+    {
+     "p": "This is **dehydrohalogenation** (removal of HX). The carbon bearing the halogen is the **α-carbon**; the carbon next to it is the **β-carbon**. The hydrogen always leaves from a β-carbon: **β-elimination**."
+    }
+   ]
+  },
+  {
+   "h": "What happens (bond changes)",
+   "blocks": [
+    {
+     "list": [
+      "① The base (OH⁻) removes a β-hydrogen as H⁺ (forming H₂O).",
+      "② The electron pair of the C–H bond moves between Cα and Cβ to form the π bond (C=C).",
+      "③ The C–Br bond breaks; its electron pair leaves with Br⁻.",
+      "In this picture all three changes happen together, in one step."
+     ]
+    }
+   ]
+  },
+  {
+   "h": "Saytzeff (Zaitsev) rule",
+   "blocks": [
+    {
+     "p": "When there are two or more kinds of β-hydrogen, more than one alkene can form. The **major product is the more substituted alkene**: the one with more alkyl groups on the doubly bonded carbons. It is the more stable alkene."
+    },
+    {
+     "table": {
+      "head": [
+       "2-Bromopentane + alc. KOH",
+       "Alkyl groups on C=C",
+       "Yield"
+      ],
+      "rows": [
+       [
+        "pent-2-ene, CH₃CH=CHCH₂CH₃",
+        "2",
+        "about 81 % (major)"
+       ],
+       [
+        "pent-1-ene, CH₂=CHCH₂CH₂CH₃",
+        "1",
+        "about 19 %"
+       ]
+      ]
+     }
+    },
+    {
+     "list": [
+      "✗ The hydrogen leaves from the α-carbon (it leaves from a β-carbon).",
+      "✗ The less substituted alkene is major (by Saytzeff, the more substituted one is).",
+      "✗ Aqueous KOH gives the alkene (aqueous KOH mainly substitutes to give the alcohol; alcoholic KOH eliminates)."
+     ]
+    }
+   ]
+  },
+  {
+   "h": "Solved questions",
+   "blocks": [
+    {
+     "p": "**Q1.** 2-Bromobutane + alc. KOH, heat → but-2-ene (major, 2 alkyl groups) and but-1-ene (minor)."
+    },
+    {
+     "p": "**Q2.** 2-Bromo-2-methylbutane → 2-methylbut-2-ene (major, 3 alkyl groups on C=C) rather than 2-methylbut-1-ene (2)."
+    }
+   ]
+  }
+ ],
+ "simulation": {
+  "decision": "NOT_REQUIRED",
+  "reason": "The idea is a fixed sequence of steps drawn in the video and the notes; there is no continuous variable for a student to explore."
+ },
+ "related": [
+  "which-reacts-faster-sn1-or-sn2",
+  "e1-and-e2-mechanisms"
+ ],
+ "pyq": [
+  {
+   "exam": "JEE Main 2023 (29 January, Shift 2)",
+   "q": "The one giving maximum number of isomeric alkenes on dehydrohalogenation reaction is (excluding rearrangement):",
+   "options": [
+    "1-Bromo-2-methylbutane",
+    "2-Bromopropane",
+    "2-Bromopentane",
+    "2-Bromo-3,3-dimethylpentane"
+   ],
+   "answer": 2,
+   "explain": "2-Bromopentane gives pent-1-ene, cis-pent-2-ene and trans-pent-2-ene: 3. 1-Bromo-2-methylbutane: one (2-methylbut-1-ene). 2-Bromopropane: propene only. 2-Bromo-3,3-dimethylpentane: C3 has no H, so only 3,3-dimethylpent-1-ene."
+  }
+ ]
+}

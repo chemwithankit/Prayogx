@@ -1,0 +1,144 @@
+{
+ "status": "ready",
+ "class": 12,
+ "subject": "Chemistry",
+ "chapter": "Haloalkanes and Haloarenes",
+ "video": {
+  "pending": true
+ },
+ "thumb": "thumb.jpg",
+ "id": "LEARN-C12-CHE-ELIMINATION-VS-SUBSTITUTION",
+ "slug": "elimination-vs-substitution",
+ "topic": "Elimination vs substitution",
+ "title": "Elimination vs Substitution: Alcohol or Alkene?",
+ "series": 508,
+ "studioJob": "elimination-vs-substitution",
+ "reelId": "STUDIO-ELIMINATION-VS-SUBSTITUTION",
+ "summary": "An alkyl halide with a β-hydrogen can be attacked at carbon (substitution) or lose HX (elimination). The conditions decide which wins. In this lesson: OH- as a nucleophile or as a base, aqueous vs alcoholic KOH, 1° vs 3° halides, the size of the base (tert-butoxide), temperature, and two solved questions: bromoethane + aqueous KOH and 2-bromo-2-methylpropane + alcoholic KOH.",
+ "notes": {
+  "pdf": "notes.pdf",
+  "title": "Elimination vs Substitution",
+  "blurb": "two jobs for oh⁻, what decides, solved questions"
+ },
+ "worksheetKind": "cbse",
+ "worksheetCount": 10,
+ "dppCount": 10,
+ "tags": [
+  "elimination vs substitution",
+  "aqueous KOH",
+  "alcoholic KOH",
+  "dehydrohalogenation",
+  "bulky base",
+  "tert-butoxide",
+  "haloalkane reactions"
+ ],
+ "keyPoints": [
+  "**Two jobs**: Nucleophile → **alcohol**. Base → **alkene**.",
+  "**Medium**: Water **cages** OH⁻. Alcohol gives **ethoxide**, a stronger base.",
+  "**Halide · base**: tert-Butoxide **cannot reach C**. It takes an outer **β-H** instead.",
+  "**Temperature**: **Heat** favours the alkene. Low temperature: **substitution**."
+ ],
+ "sections": [
+  {
+   "h": "Two jobs for OH⁻",
+   "blocks": [
+    {
+     "list": [
+      "**As a nucleophile** it attacks the carbon bearing X: **substitution** → alcohol (CH₃CH₂Br → CH₃CH₂OH).",
+      "**As a base** it removes a β-hydrogen: **elimination** → alkene (CH₃CH₂Br → CH₂=CH₂)."
+     ]
+    }
+   ]
+  },
+  {
+   "h": "What decides",
+   "blocks": [
+    {
+     "table": {
+      "head": [
+       "Factor",
+       "Substitution",
+       "Elimination"
+      ],
+      "rows": [
+       [
+        "Medium",
+        "aqueous KOH (OH⁻ caged by water: acts as a nucleophile)",
+        "alcoholic KOH (ethoxide, a stronger base), heat"
+       ],
+       [
+        "Alkyl halide",
+        "1° (carbon easy to reach)",
+        "3° (crowded carbon; outer β-H exposed)"
+       ],
+       [
+        "Base / nucleophile",
+        "small, good nucleophile",
+        "strong or bulky base (e.g. tert-butoxide)"
+       ],
+       [
+        "Temperature",
+        "lower",
+        "higher"
+       ]
+      ]
+     }
+    },
+    {
+     "p": "NCERT: the product depends on the nature of the alkyl halide, the strength and size of the base or nucleophile, and the reaction conditions."
+    },
+    {
+     "list": [
+      "✗ Aqueous KOH gives the alkene (it gives the alcohol).",
+      "✗ A bulky base gives more substitution (it cannot reach the carbon, so it eliminates)."
+     ]
+    }
+   ]
+  },
+  {
+   "h": "Solved questions",
+   "blocks": [
+    {
+     "p": "**Q1.** Bromoethane + aqueous KOH, heat → ethanol (substitution)."
+    },
+    {
+     "p": "**Q2.** 2-Bromo-2-methylpropane + alcoholic KOH, heat → 2-methylpropene (elimination)."
+    }
+   ]
+  }
+ ],
+ "simulation": {
+  "decision": "NOT_REQUIRED",
+  "reason": "The idea is a fixed sequence of steps drawn in the video and the notes; there is no continuous variable for a student to explore."
+ },
+ "related": [
+  "e1-and-e2-mechanisms",
+  "grignard-reagent"
+ ],
+ "pyq": [
+  {
+   "exam": "JEE Main 2023 (13 April, Shift 2)",
+   "q": "1-Bromopropane is reacted with the reagents in List-I to give the products in List-II. List-I: A. KOH (alc), B. KCN (alc), C. AgNO₂, D. H₃CCOOAg. List-II: I. Nitrile, II. Ester, III. Alkene, IV. Nitroalkane.",
+   "options": [
+    "A-III, B-I, C-IV, D-II",
+    "A-I, B-II, C-III, D-IV",
+    "A-I, B-III, C-IV, D-II",
+    "A-IV, B-III, C-II, D-I"
+   ],
+   "answer": 0,
+   "explain": "Alc. KOH: elimination → propene (III). KCN: CN⁻ attacks through C → nitrile (I). AgNO₂: through N → nitroalkane (IV). CH₃COOAg → ester (II)."
+  },
+  {
+   "exam": "JEE Main 2025 (4 April, Shift 2)",
+   "q": "Statement (I): Alcohols are formed when alkyl chlorides are treated with aqueous potassium hydroxide by elimination reaction. Statement (II): In alcoholic potassium hydroxide, alkyl chlorides form alkenes by abstracting the hydrogen from the β-carbon.",
+   "options": [
+    "Both Statement I and Statement II are incorrect",
+    "Statement I is incorrect but Statement II is correct",
+    "Statement I is correct but Statement II is incorrect",
+    "Both Statement I and Statement II are correct"
+   ],
+   "answer": 1,
+   "explain": "Aqueous KOH gives alcohols by substitution, not elimination: I is incorrect. II is correct (β-elimination)."
+  }
+ ]
+}

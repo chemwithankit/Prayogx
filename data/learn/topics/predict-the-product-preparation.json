@@ -1,0 +1,160 @@
+{
+ "status": "ready",
+ "class": 12,
+ "subject": "Chemistry",
+ "chapter": "Haloalkanes and Haloarenes",
+ "video": {
+  "youtubeId": "n0vQVXx0G7w"
+ },
+ "thumb": "thumb.jpg",
+ "id": "LEARN-C12-CHE-PREDICT-PRODUCT-PREP",
+ "slug": "predict-the-product-preparation",
+ "topic": "Question reel: predict the product (preparation)",
+ "title": "Predict the Product: Haloalkane Preparation Questions Solved",
+ "series": 497,
+ "studioJob": "predict-product-prep",
+ "reelId": "STUDIO-PREDICT-PRODUCT-PREP",
+ "summary": "Three questions solve almost every \"predict the product\" problem: (1) what is the reagent? (2) which bond breaks? (3) where does the halogen go? In this lesson: identify the reagent, the bond that breaks, and where the halogen goes. Reagent toolkit, three traps (SOCl2, the peroxide effect, toluene light vs dark) and four questions solved on the board: SOCl2 on propan-1-ol, HBr on propene with and without peroxide, the Finkelstein reaction, and toluene + Cl2 in the dark vs sunlight.",
+ "notes": {
+  "pdf": "notes.pdf",
+  "title": "Predict the Product",
+  "blurb": "the reagent toolkit, three traps, solved questions"
+ },
+ "worksheetKind": "cbse",
+ "worksheetCount": 10,
+ "dppCount": 10,
+ "tags": [
+  "predict the product",
+  "haloalkanes preparation",
+  "SOCl2",
+  "Markovnikov rule",
+  "peroxide effect",
+  "Finkelstein reaction",
+  "benzyl chloride"
+ ],
+ "keyPoints": [
+  "**The trick**: Read the **reagent** first. Then the **condition** (light, dark, peroxide).",
+  "**Alcohols**: SOCl₂: gases escape → **pure** product. PCl₅ / HX also replace **OH**.",
+  "**Alkenes + HBr**: Markovnikov: via the **2° carbocation**. Peroxide flips **HBr only**.",
+  "**Exchange**: Finkelstein: **dry acetone**, NaCl↓. Swarts: metallic fluoride, **heat**."
+ ],
+ "sections": [
+  {
+   "h": "The reagent toolkit",
+   "blocks": [
+    {
+     "table": {
+      "head": [
+       "Start",
+       "Reagent / condition",
+       "Product"
+      ],
+      "rows": [
+       [
+        "R–OH",
+        "SOCl₂ (best), PCl₅, PCl₃, HX (ZnCl₂ for HCl)",
+        "R–X"
+       ],
+       [
+        "alkene",
+        "HX",
+        "R–X, Markovnikov (X on the C with fewer H)"
+       ],
+       [
+        "alkene",
+        "HBr + peroxide",
+        "R–Br, anti-Markovnikov (HBr only)"
+       ],
+       [
+        "alkene",
+        "X₂ in CCl₄",
+        "vic-dihalide"
+       ],
+       [
+        "alkane",
+        "X₂, light / heat",
+        "R–X (free radical substitution, mixtures)"
+       ],
+       [
+        "R–Cl / R–Br",
+        "NaI, dry acetone",
+        "R–I (Finkelstein)"
+       ],
+       [
+        "R–Cl / R–Br",
+        "AgF, Hg₂F₂, CoF₂, SbF₃, heat",
+        "R–F (Swarts)"
+       ],
+       [
+        "benzene / toluene",
+        "X₂, Fe or FeX₃, dark",
+        "Ar–X on the ring (o/p for toluene)"
+       ],
+       [
+        "toluene",
+        "Cl₂, light",
+        "C₆H₅CH₂Cl (side chain)"
+       ],
+       [
+        "ArN₂⁺X⁻",
+        "Cu₂Cl₂/HCl, Cu₂Br₂/HBr; KI",
+        "Ar–Cl, Ar–Br; Ar–I"
+       ]
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "h": "Three traps",
+   "blocks": [
+    {
+     "list": [
+      "✗ SOCl₂ gives a pure product because SO₂ and HCl escape as gases.",
+      "✗ Peroxide reverses the addition only for HBr (not HCl or HI).",
+      "✗ Toluene + Cl₂: light → side chain; dark + Lewis acid → ring."
+     ]
+    }
+   ]
+  },
+  {
+   "h": "Solved questions",
+   "blocks": [
+    {
+     "p": "**Q1.** CH₃CH₂CH₂OH + SOCl₂ → CH₃CH₂CH₂Cl + SO₂↑ + HCl↑ (**1-chloropropane**)."
+    },
+    {
+     "p": "**Q2.** CH₃CH=CH₂ + HBr → CH₃CHBrCH₃ (**2-bromopropane**): H adds to C1, Br to C2 through the more stable 2° carbocation. With peroxide: CH₃CH₂CH₂Br (**1-bromopropane**)."
+    },
+    {
+     "p": "**Q3.** CH₃CH₂CH₂Cl + NaI (dry acetone) → CH₃CH₂CH₂I + NaCl↓ (**1-iodopropane**)."
+    },
+    {
+     "p": "**Q4.** Toluene + Cl₂: (a) FeCl₃, dark → **o- and p-chlorotoluene**; (b) sunlight → **benzyl chloride**."
+    }
+   ]
+  }
+ ],
+ "simulation": {
+  "decision": "NOT_REQUIRED",
+  "reason": "The idea is a fixed sequence of steps drawn in the video and the notes; there is no continuous variable for a student to explore."
+ },
+ "related": [
+  "sandmeyer-reaction",
+  "physical-properties-of-haloalkanes"
+ ],
+ "pyq": [
+  {
+   "exam": "JEE Main 2024 (31 January, Shift 1)",
+   "q": "The product (C) in the reaction sequence CH₃–CH₂–CH₂–Br —KOH(alc), Δ→ A —HBr→ B —KOH(aq), Δ→ C is:",
+   "options": [
+    "Propan-1-ol",
+    "Propene",
+    "Propyne",
+    "Propan-2-ol"
+   ],
+   "answer": 3,
+   "explain": "Propan-2-ol A = propene (elimination); B = 2-bromopropane (Markovnikov); C = propan-2-ol (substitution by OH⁻)."
+  }
+ ]
+}

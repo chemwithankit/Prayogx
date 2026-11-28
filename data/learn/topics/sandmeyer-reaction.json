@@ -1,0 +1,121 @@
+{
+ "status": "ready",
+ "class": 12,
+ "subject": "Chemistry",
+ "chapter": "Haloalkanes and Haloarenes",
+ "video": {
+  "youtubeId": "cXYqj5itV38"
+ },
+ "thumb": "thumb.jpg",
+ "id": "LEARN-C12-CHE-SANDMEYER-REACTION",
+ "slug": "sandmeyer-reaction",
+ "topic": "Sandmeyer reaction",
+ "title": "Sandmeyer Reaction: Diazonium Salt to Haloarene, Mechanism",
+ "series": 496,
+ "studioJob": "sandmeyer-reaction",
+ "reelId": "STUDIO-SANDMEYER-REACTION",
+ "summary": "An aromatic amine is first turned into a diazonium salt; the diazonium group is then replaced by Cl, Br or I. The halogen goes exactly where the NH₂ group was. In this lesson: aniline is diazotised with NaNO2 and HCl at 273–278 K; the diazonium group is then replaced by Cl (Cu2Cl2/HCl), Br (Cu2Br2/HBr) or I (KI, no copper). Mechanism step by step: Cu+ gives one electron (fishhook arrow), N2 leaves to give the aryl radical, and the radical takes Cl from CuCl2, regenerating Cu+. Key points and two solved questions.",
+ "notes": {
+  "pdf": "notes.pdf",
+  "title": "Sandmeyer Reaction",
+  "blurb": "the reaction, why it works, mechanism (fishhook arrows: one electron each), key points"
+ },
+ "worksheetKind": "cbse",
+ "worksheetCount": 10,
+ "dppCount": 10,
+ "tags": [
+  "Sandmeyer reaction",
+  "diazonium salt",
+  "diazotisation",
+  "haloarenes",
+  "aryl radical",
+  "mechanism",
+  "fishhook arrow"
+ ],
+ "keyPoints": [
+  "**Diazotisation**: Keep it **cold** (0–5 °C). Warm diazonium salts **decompose**.",
+  "**Sandmeyer**: **N₂ gas** leaves: the driving force. X goes **exactly** where NH₂ was.",
+  "**Mechanism · 1–2**: **Fishhook** arrows: one electron each. Ar• = **aryl radical**.",
+  "**Mechanism · 3**: New **C–Cl** bond. Cu⁺ is **regenerated**."
+ ],
+ "sections": [
+  {
+   "h": "The reaction",
+   "blocks": [
+    {
+     "list": [
+      "**Diazotisation** (273–278 K): C₆H₅NH₂ + NaNO₂ + 2HCl → C₆H₅N₂⁺Cl⁻ + NaCl + 2H₂O",
+      "**Sandmeyer:** C₆H₅N₂⁺Cl⁻ —Cu₂Cl₂ / HCl→ C₆H₅Cl + N₂↑ · C₆H₅N₂⁺Cl⁻ —Cu₂Br₂ / HBr→ C₆H₅Br + N₂↑",
+      "**Iodide:** C₆H₅N₂⁺Cl⁻ + KI → C₆H₅I + KCl + N₂↑ (no copper needed)"
+     ]
+    }
+   ]
+  },
+  {
+   "h": "Why it works",
+   "blocks": [
+    {
+     "p": "The diazonium group is an excellent **leaving group**: it leaves as N₂ gas, which escapes, so the reaction goes to completion. Cu(I) of the cuprous halide gives **one electron** to the diazonium ion and later delivers the halogen; the reaction therefore runs through **radicals**."
+    }
+   ]
+  },
+  {
+   "h": "Mechanism (fishhook arrows: one electron each)",
+   "blocks": [
+    {
+     "table": {
+      "head": [
+       "Step",
+       "What happens"
+      ],
+      "rows": [
+       [
+        "1 · electron transfer",
+        "ArN₂⁺ + Cu⁺ → Ar–N=N• + Cu²⁺ (Cu⁺ gives one electron; the ion becomes a neutral radical)."
+       ],
+       [
+        "2 · loss of N₂",
+        "Ar–N=N• → Ar• + N₂↑. The C–N bond breaks homolytically: one electron stays on carbon (the **aryl radical**), the other forms the N≡N bond."
+       ],
+       [
+        "3 · halogen transfer",
+        "Ar• + CuCl₂ → ArCl + CuCl. A new C–Cl bond forms and Cu⁺ is regenerated."
+       ]
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "h": "Key points",
+   "blocks": [
+    {
+     "list": [
+      "✗ Warming the diazotisation mixture.",
+      "✗ Writing Cu₂I₂ for iodobenzene: KI alone is enough.",
+      "✗ Moving the halogen to another position: it replaces NH₂ in place."
+     ]
+    }
+   ]
+  },
+  {
+   "h": "Solved questions",
+   "blocks": [
+    {
+     "p": "**Q1.** Aniline → iodobenzene: C₆H₅NH₂ —NaNO₂, HCl, 273–278 K→ C₆H₅N₂⁺Cl⁻ —KI→ C₆H₅I + N₂ + KCl."
+    },
+    {
+     "p": "**Q2.** p-Toluidine —NaNO₂/HCl (273–278 K)→ p-CH₃C₆H₄N₂⁺Cl⁻ —Cu₂Br₂/HBr→ **p-bromotoluene** (CH₃ untouched)."
+    }
+   ]
+  }
+ ],
+ "simulation": {
+  "decision": "NOT_REQUIRED",
+  "reason": "The idea is a fixed sequence of steps drawn in the video and the notes; there is no continuous variable for a student to explore."
+ },
+ "related": [
+  "haloarenes-by-electrophilic-substitution",
+  "predict-the-product-preparation"
+ ]
+}
